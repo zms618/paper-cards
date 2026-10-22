@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Through the Lens Of Contrast Self-Improving Visual Reasoning In VLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Through the Lens Of Contrast Self-Improving Visual Reasoning In VLMS.pdf",
+ "title": "Through the Lens of Contrast: Self-Improving Visual Reasoning in VLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "利用视觉对比缓解VLM幻觉，构建数据集提升推理能力",
+ "innovations": [
+  "发现视觉对比现象：面对对比性VQA对（视觉相似图像+同义问题）时，VLM能更精确地识别相关视觉线索",
+  "提出VC-STaR自提升框架，利用视觉对比缓解模型生成推理路径中的视觉幻觉问题",
+  "构建VisCoR-55K视觉推理数据集，通过SFT提升多种VLM的推理能力，优于现有SOTA视觉推理数据集"
+ ],
+ "method_framework": "VC-STaR首先从多样化VQA数据集中根据多模态相似性策划对比性图像对，然后让VLM在对比设置下生成推理路径（rationale）。对比设置迫使模型更精确地关注相关视觉线索，从而减少幻觉。生成的高质量推理路径构成VisCoR-55K数据集，用于SFT提升VLM推理能力。",
+ "experiment_framework": "在多个VQA基准上评估多种VLM。基线包括现有自提升方法和SOTA视觉推理数据集的SFT效果。指标包括推理准确率和幻觉率。数据集规模VisCoR-55K。",
+ "takeaways": [
+  "VLM固有的对比能力可以自举提升其视觉推理能力，无需外部奖励模型",
+  "视觉对比设置能有效缓解推理路径中的视觉幻觉，生成更可靠的rationale",
+  "VC-STaR生成的数据集在提升VLM推理方面优于人工标注的SOTA视觉推理数据集"
+ ],
+ "weaknesses": [
+  "对比性图像对的策划依赖多模态相似性度量，在图像差异微小的场景下可能失效",
+  "仅在VQA任务上验证，其他视觉推理任务（如地理定位、文档理解）的适用性未知",
+  "自提升过程的迭代轮次对性能的影响分析不够深入"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "缓解VLM幻觉属于可靠性主线，且触及多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

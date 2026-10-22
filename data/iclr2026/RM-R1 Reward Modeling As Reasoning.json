@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/RM-R1 Reward Modeling As Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RM-R1 Reward Modeling As Reasoning.pdf",
+ "title": "RM-R1: Reward Modeling as Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "将奖励建模重构为推理任务，自生成评分细则提升可解释性。",
+ "innovations": [
+  "提出生成式推理奖励模型(ReasRM)，主张RM应先深度思考、可解释推理再打分，而非直接输出标量。",
+  "提出Chain-of-Rubrics(CoR)机制：自生成样本级chat评分细则或数学/代码解题过程，再对照细则评判候选回复。",
+  "两阶段训练：先蒸馏高质量推理链，再用可验证奖励做RL；以较小模型超过INF-ORM-70B与GPT-4o。"
+ ],
+ "method_framework": "让奖励模型先为给定样本自生成评分细则(CoR)，再对照该细则对候选回复逐步推理并给出判断；训练先蒸馏高质量推理链、再用可验证奖励RL增强，使奖励判断可解释且准确。",
+ "experiment_framework": "在三个奖励模型基准上评测，对比开源大模型(INF-ORM-Llama3.1-70B)与闭源(GPT-4o)，报告平均精度，并做成功要素的深入分析。",
+ "takeaways": [
+  "把推理链引入奖励建模可同时提升RM的可解释性与判断准确性。",
+  "RM-R1以较小模型在三个RM基准平均上超过70B开源与GPT-4o，最高4.9%。"
+ ],
+ "weaknesses": [
+  "CoR依赖模型自生成评分细则，细则本身的质量/偏差会直接传导到奖励判断，存在自我强化偏差风险。",
+  "前9页未见三基准完整分项表，CoR蒸馏与RLVR两阶段各自贡献的消融明细缺失。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "奖励建模方法创新，但未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

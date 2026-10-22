@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Make It Count Text-to- Generation with an Accurate Number of.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Make It Count Text-to- Generation with an Accurate Number of.pdf",
+ "title": "Make It Count Text-to- Generation with an Accurate Number of",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "扩散模型特征分析+布局修正实现精确计数生成",
+ "innovations": [
+  "识别扩散模型中表征物体身份的自注意力特征",
+  "ReLayout网络修正物体布局",
+  "基于交叉注意力和自注意力掩码的布局引导生成"
+ ],
+ "method_framework": "CountGen分三阶段：1)早期生成中识别物体布局；2)ReLayout网络修正物体数量；3)布局引导的图像生成，通过交叉注意力损失和自注意力掩码确保正确计数",
+ "experiment_framework": "在T2I-CompBench-Count和CoCoCount数据集评估，使用YOLOv9自动检测和人工评估，与SDXL、DALL-E 3等7种基线比较",
+ "takeaways": [
+  "利用扩散模型内部特征进行物体计数",
+  "布局修正网络可保持场景结构",
+  "测试时优化方法可提升计数准确性"
+ ],
+ "weaknesses": [
+  "方法依赖特定层(lup52)的特征提取",
+  "ReLayout训练数据生成方式可能限制泛化性",
+  "高物体数量时性能下降"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "文本到图像计数生成，仅触及落地域无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

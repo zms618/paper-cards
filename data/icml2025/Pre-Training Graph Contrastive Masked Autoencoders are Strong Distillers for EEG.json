@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Pre-Training Graph Contrastive Masked Autoencoders are Strong Distillers for EEG.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Pre-Training Graph Contrastive Masked Autoencoders are Strong Distillers for EEG.pdf",
+ "title": "Pre-Training Graph Contrastive Masked Autoencoders are Strong Distillers for EEG",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "统一图自监督预训练与拓扑蒸馏，缓解EEG标注稀缺问题",
+ "innovations": [
+  "提出统一的图自监督预训练范式，无缝融合图对比预训练与图掩码自编码器预训练",
+  "设计图拓扑蒸馏损失，使在低密度数据上训练的轻量学生模型能向高密度教师模型学习",
+  "将高密度无标签EEG与低密度有标签EEG之间的差距建模为图迁移学习+知识蒸馏问题"
+ ],
+ "method_framework": "把EEG信号建模为图(通道为节点、电极连接为边)；统一对比学习(拉近同一EEG不同视图)与掩码重建(遮蔽部分节点/边再复原)两种自监督目标在高密度无标签EEG上预训练图编码器；再通过图拓扑蒸馏损失把高密度教师的图结构知识迁移到仅见低密度数据的轻量学生模型，用于下游脑疾病分类。",
+ "experiment_framework": "在多个静息态EEG脑疾病诊断数据集上评测；对比仅用低密度标注、纯对比/纯掩码自监督预训练及有无蒸馏的设置；指标为分类准确率；考察高密度无标签预训练与蒸馏带来的增益。",
+ "takeaways": [
+  "统一图对比+图掩码自监督比单一自监督更能利用高密度无标签EEG",
+  "图拓扑蒸馏可把高密度教师知识迁移到低密度轻量学生，缓解标注与密度稀缺",
+  "该范式提升了低密度标注EEG脑疾病分类性能"
+ ],
+ "weaknesses": [
+  "图构造(通道图/邻接)与掩码策略较依赖先验，对不同EEG采集协议的适配性讨论不足",
+  "高密度教师与低密度学生的域差异(设备/被试)如何影响蒸馏效果缺乏消融",
+  "实证数据集规模与病种有限，临床多中心泛化未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

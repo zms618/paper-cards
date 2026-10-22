@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/UniDef_Universal Defense Against Unauthorized Manipulation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/UniDef_Universal Defense Against Unauthorized Manipulation.pdf",
+ "title": "UniDef Universal Defense Against Unauthorized Manipulation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "通用图像防御框架，通过全局干扰和梯度估计实现跨模型保护",
+ "innovations": [
+  "一致分布偏离(CDD)策略全局干扰扩散过程",
+  "基于有限差分的雅可比估计(FDJE)模块实现模型无关保护",
+  "首次提出跨模型和任务的通用防御框架"
+ ],
+ "method_framework": "UniDef结合CDD策略和FDJE模块，通过优化整个去噪过程中的分布偏离，实现图像语义的完全破坏，同时保持跨模型泛化能力。",
+ "experiment_framework": "ImageNet和Landscape数据集，对比AdvDM、Mist等基线，使用PSNR、CLIP、FID、LPIPS指标评估SD v1.4/1.5/2.1及多种下游任务。",
+ "takeaways": [
+  "全局视角干扰扩散模型比局部干扰更有效",
+  "模型无关的梯度估计可显著提升保护泛化性",
+  "利用图像潜在编码z作为方向估计全局梯度"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，需要整个去噪过程的积分",
+  "对外部去噪操作鲁棒性有所下降",
+  "未探讨对其他类型生成模型的适用性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "模型无关防御框架与可靠性主线交织，跨模型保护具可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/MDP_Multidimensional Vision Model Pruning with Latency Constraint.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/MDP_Multidimensional Vision Model Pruning with Latency Constraint.pdf",
+ "title": "MDP Multidimensional Vision Model Pruning with Latency Constraint",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "常规多维度剪枝，MINLP优化延迟约束，求解复杂度高",
+ "innovations": [
+  "多维度联合剪枝框架，支持通道、注意力头、嵌入等多种粒度",
+  "精确延迟建模技术，捕获所有可剪枝维度对延迟的影响",
+  "将剪枝问题重构为混合整数非线性规划(MINLP)优化问题"
+ ],
+ "method_framework": "MDP框架通过识别和编码可剪枝维度，构建重要性和延迟约束函数，将剪枝问题重构为MINLP优化问题，在延迟预算下全局最优地确定剪枝结构。",
+ "experiment_framework": "ImageNet分类(ResNet50/DEIT)、PASCAL VOC/SSD目标检测、NuScenes/StreamPETR 3D检测，与HALP、Isomorphic等基线比较，评估Top-1/mAP/速度指标。",
+ "takeaways": [
+  "多维度联合优化比单一粒度剪枝更有效，特别是在高剪枝比例下",
+  "精确延迟建模对实际加速效果至关重要，线性模型在复杂架构中失效"
+ ],
+ "weaknesses": [
+  "MINLP求解复杂度随维度增加而显著提高",
+  "依赖预训练模型的重要性评分，可能限制新架构的应用"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "模型压缩工程工作，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

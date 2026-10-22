@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Hogwild! Inference Parallel LLM Generation via Concurrent Attention.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Hogwild! Inference Parallel LLM Generation via Concurrent Attention.pdf",
+ "title": "Hogwild! Inference: Parallel LLM Generation via Concurrent Attention",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "共享KV缓存实现LLM并行推理，但小模型表现不佳且协作策略检测不可靠",
+ "innovations": [
+  "共享KV缓存实现并行注意力机制",
+  "零样本协作提示策略",
+  "基于RoPE的缓存块旋转技术"
+ ],
+ "method_framework": "多个LLM实例共享KV缓存，通过旋转位置编码实现并行注意力，模型自主决定协作策略而不依赖预定义框架",
+ "experiment_framework": "GSM8k×5合成任务和LIMO数学推理数据集，对比基线包括单线程、自一致性、思维骨架方法",
+ "takeaways": [
+  "共享缓存可让LLM自主协作而不需预定义框架",
+  "查询旋转技术高效实现多视角注意力"
+ ],
+ "weaknesses": [
+  "小模型(1.7B/4B)在任务中表现不佳",
+  "协作策略检测不总是可靠"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

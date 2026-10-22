@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Rodrigues Network for Learning Robot Actions.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rodrigues Network for Learning Robot Actions.pdf",
+ "title": "Rodrigues Network for Learning Robot Actions",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "将经典 Rodrigues 公式改造为神经算子，注入运动学偏置。",
+ "innovations": [
+  "提出 Neural Rodrigues Operator：将经典正运动学旋转公式改造为可学习神经算子，注入运动学感知归纳偏置。",
+  "把经典公式中固定的 sin/cos 系数替换为可训练权重，把关节角推广为抽象特征。",
+  "基于该算子构建 RodriNet，统一应用于运动预测、模仿学习与单图 3D 手部重建。"
+ ],
+ "method_framework": "把多肢体系统的旋转关节结构显式编码进网络层：每一层用神经 Rodrigues 算子在关节-连杆图上做消息传递，按运动学链传播旋转变换；相比把动作当无结构 token 的 MLP/Transformer，该结构先验使网络更高效地预测与生成关节动作。",
+ "experiment_framework": "先在两个合成运动学/运动预测任务上对比标准骨干验证表达力；再在真实应用上验证：机器人基准上结合 Diffusion Policy 的模仿学习、单图 3D 手部重建；报告预测误差与下游任务指标。",
+ "takeaways": [
+  "把结构化运动学先验注入网络架构，可在多个动作学习域一致地改善表现。",
+  "经典机器人控制公式可作为可学习算子的设计蓝本，而非仅作固定先验。",
+  "RodriNet 与 Diffusion Policy 等现有策略方法正交兼容，可直接替换骨干。"
+ ],
+ "weaknesses": [
+  "真实任务验证集中在模仿学习与手部重建，对高自由度全身控制/接触丰富任务的收益未充分验证。",
+  "运动学归纳偏置依赖已知关节树结构，对拓扑不确定或柔性物体场景的适用性未讨论。",
+  "属机器人动作学习/架构方向，与视觉可靠性/医学影像/多模态推理主线关联弱。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "机器人动作学习与可靠性主线关联弱，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

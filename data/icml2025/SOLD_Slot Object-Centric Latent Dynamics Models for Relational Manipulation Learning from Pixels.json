@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/SOLD_Slot Object-Centric Latent Dynamics Models for Relational Manipulation Learning from Pixels.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SOLD_Slot Object-Centric Latent Dynamics Models for Relational Manipulation Learning from Pixels.pdf",
+ "title": "SOLD: Slot Object-Centric Latent Dynamics Models for Relational Manipulation Learning from Pixels",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "Slot-Attention与MBRL组合，在仿真多物体操作中超越基线",
+ "innovations": [
+  "提出SOLD：以Slot-Attention从像素无监督学习对象中心的隐式动力学模型，替代Dreamer式整图(hilistic)表征",
+  "结构化槽位隐空间既提升可解释性，又作为行为模型的输入空间支持对象间关系推理",
+  "在一系列需关系推理+灵巧控制的多物体操作环境上超过DreamerV3与TD-MPC2"
+ ],
+ "method_framework": "在MBRL框架下，先用Slot-Attention把像素观测无监督地解析为若干对象槽(slot)，再在槽级隐空间上学习动力学模型并做想象rollout训练行为策略；由于动力学按对象建模，行为模型可显式推理动作如何影响特定对象及其关系，从而在多物体场景获得更好样本效率与可解释性。",
+ "experiment_framework": "在多个多物体关系操作环境上评测；对比DreamerV3、TD-MPC2等SOTA基于模型RL算法；指标为任务成功率与样本效率，并报告槽位表征的可解释性可视化。",
+ "takeaways": [
+  "对象中心的槽位世界模型比整图表征更适合多物体关系推理与灵巧操作",
+  "结构化隐空间既提升可解释性又提升行为学习效率",
+  "SOLD在关系操作上稳定优于DreamerV3与TD-MPC2"
+ ],
+ "weaknesses": [
+  "核心是Slot-Attention与Dreamer式MBRL的组合，方法组件均成熟，概念增量性较强",
+  "仅在仿真多物体操作环境验证，真实像素噪声/遮挡/物体数变化下的槽位稳定性在前9页未充分展示",
+  "槽位数量需预设或易漂移，对象遮挡与重叠时的分割退化问题讨论有限；与AI可靠性主线无直接关联"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

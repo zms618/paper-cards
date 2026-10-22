@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Why do Unlearnable Examples Work A Novel Perspective Of Mutual Information.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Why do Unlearnable Examples Work A Novel Perspective Of Mutual Information.pdf",
+ "title": "Why do Unlearnable Examples Work: A Novel Perspective of Mutual Information",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.5
+ },
+ "one_line": "互信息缩减视角解释不可学习样本，提出MI-UE方法",
+ "innovations": [
+  "提出互信息缩减新视角：有效不可学习样本必然降低干净特征与投毒特征间的互信息，网络越深互信息越低则不可学习性越强",
+  "从协方差缩减角度证明：最小化类内投毒特征的条件协方差可降低分布间互信息",
+  "据此提出MI-UE：通过最大化类内特征余弦相似度来缩减协方差，从而有效阻碍泛化；在防御机制下仍显著优于既往方法"
+ ],
+ "method_framework": "把不可学习样本的机理归结为互信息缩减；据此在投毒优化中直接最大化同类样本特征间余弦相似度(即最小化类内条件协方差)，使投毒特征分布间互信息下降，从而让模型在投毒数据上无法泛化。",
+ "experiment_framework": "在常用图像分类基准上生成不可学习样本；基线为以往不可学习样本方法(多为经验启发式)；指标为在投毒数据上训练后模型的测试精度(越低越不可学习)；并在多种防御机制下评测稳健性。",
+ "takeaways": [
+  "不可学习样本有效的根本原因是降低了干净/投毒特征间互信息，而非经验噪声",
+  "类内特征协方差缩减是可优化的直接杠杆，最大化类内余弦相似度即可",
+  "理论指导下的MI-UE比纯启发式方法更有效且更抗防御"
+ ],
+ "weaknesses": [
+  "互信息/协方差分析在特征空间层进行，与最终分类泛化鸿沟之间的定量联系仍较间接",
+  "主要在图像分类基准验证，对文本/多模态数据保护的迁移未证",
+  "在防御机制下的优势需确认防御强度设置是否公允，避免过弱基线"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "投毒防御与互信息缩减机制，可靠性主线明确",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

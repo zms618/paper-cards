@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/TPP-SD Accelerating Transformer Point Process Sampling with Speculative Decoding.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/TPP-SD Accelerating Transformer Point Process Sampling with Speculative Decoding.pdf",
+ "title": "TPP-SD: Accelerating Transformer Point Process Sampling with Speculative Decoding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.75
+ },
+ "one_line": "将推测解码引入点过程采样，实现2-6倍加速但扩展性存疑",
+ "innovations": [
+  "识别点过程采样中的thinning算法与语言模型推测解码的结构相似性",
+  "提出TPP-SD框架，将推测解码应用于Transformer TPP模型",
+  "设计针对连续分布的调整分布采样方法，解决TPP-SD中的连续分布归一化问题"
+ ],
+ "method_framework": "TPP-SD采用三阶段流程：1)使用小型draft模型自回归生成多个候选事件；2)使用大型目标模型并行验证候选事件；3)对拒绝的候选从调整分布重新采样，保持输出分布不变。",
+ "experiment_framework": "合成数据集(泊松、霍克斯、多变量霍克斯)和真实数据集(Taobao、Amazon、Taxi、StackOverflow)，比较TPP-SD与自回归采样的似然差异、KS统计量/Wasserstein距离和加速比。",
+ "takeaways": [
+  "推测解码技术可有效加速Transformer TPP采样而不影响输出分布质量",
+  "调整分布采样方法解决了连续分布归一化的挑战",
+  "模型架构对加速效果有显著影响"
+ ],
+ "weaknesses": [
+  "仅关注采样效率，未探讨模型训练效率",
+  "draft模型与目标模型的对齐度对性能影响未充分分析",
+  "方法在极高维事件类型空间中的扩展性未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

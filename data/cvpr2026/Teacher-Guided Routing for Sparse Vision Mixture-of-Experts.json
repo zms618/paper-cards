@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Teacher-Guided Routing for Sparse Vision Mixture-of-Experts.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Teacher-Guided Routing for Sparse Vision Mixture-of-Experts.pdf",
+ "title": "Teacher-Guided Routing for Sparse Vision Mixture-of-Experts",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "教师引导路由稳定稀疏MoE训练，但依赖预训练教师且泛化性有限",
+ "innovations": [
+  "教师引导路由(TGR-MoE)框架",
+  "利用预训练密集教师模型提供路由伪监督",
+  "教师路由负载均衡和熵损失设计"
+ ],
+ "method_framework": "构建教师路由从教师中间表示生成路由分布作为学生路由的伪监督，结合KL散度蒸馏损失和标准任务损失训练学生模型",
+ "experiment_framework": "ImageNet-1K预训练，CIFAR-10/100和Oxford-IIIT Pets下游任务，对比VMoE及变体，评估准确性和路由一致性",
+ "takeaways": [
+  "教师引导路由显著减少训练过程中的路由波动",
+  "蒸馏损失在早期训练阶段尤为重要，可稳定路由决策"
+ ],
+ "weaknesses": [
+  "依赖预训练教师模型，增加训练复杂度",
+  "仅验证了视觉任务，泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "MoE训练稳定性方法，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

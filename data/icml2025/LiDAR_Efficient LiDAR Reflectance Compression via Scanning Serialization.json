@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/LiDAR_Efficient LiDAR Reflectance Compression via Scanning Serialization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/LiDAR_Efficient LiDAR Reflectance Compression via Scanning Serialization.pdf",
+ "title": "Efficient LiDAR Reflectance Compression via Scanning Serialization",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.0
+ },
+ "one_line": "将LiDAR反射率序列化实现压缩，参数量小但适用性有限。",
+ "innovations": [
+  "首次系统研究LiDAR点云反射率（reflectance）的神经压缩问题，填补了该领域空白",
+  "提出扫描顺序序列化（scan-order serialization）：将3D点云反射率按设备扫描轨迹转为1D序列，利用设备内在的空间相关性",
+  "SerLiC以2.2M参数达到SOTA压缩性能，最小版本仅111K参数，比现有方法小50-1000倍"
+ ],
+ "method_framework": "SerLiC流程：(1) 序列化：将3D LiDAR点云的反射率值按扫描顺序（设备原生的扫描轨迹）排列为1D序列；(2) 分词：将每个点的反射率tokenize为上下文表征；(3) 神经压缩：用轻量编解码器对序列化后的反射率做压缩。利用扫描顺序的空间邻近性来提高压缩效率。",
+ "experiment_framework": "在KITTI和nuScenes数据集上评测，对比G-PCC等传统编码方法和Unicorn等神经压缩方法；指标包括率失真性能（bpp vs PSNR）、编解码延迟、参数量；下游检测任务验证压缩后反射率的可用性。",
+ "takeaways": [
+  "反射率是LiDAR点云中重要但被压缩研究忽略的属性，对下游检测任务有实质贡献",
+  "扫描顺序序列化利用了LiDAR设备的固有结构，比3D稀疏卷积更高效",
+  "SerLiC以极小参数量实现了SOTA率失真性能，适合车载边缘部署"
+ ],
+ "weaknesses": [
+  "仅验证车载LiDAR数据，其他类型LiDAR（如固态、FMCW）的适用性未知",
+  "序列化后的1D建模可能丢失3D空间中跨扫描线的相关性",
+  "反射率压缩对下游检测的影响仅在有限任务上验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Adaptive Dropout Unleashing Dropout across Layers for Generalizable Super-Resolution.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Adaptive Dropout Unleashing Dropout across Layers for Generalizable Super-Resolution.pdf",
+ "title": "Adaptive Dropout: Unleashing Dropout across Layers for Generalizable Image Super-Resolution",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 5.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 4.9
+ },
+ "one_line": "改造dropout公式解决方差漂移，但理论假设不成立且实验不完整。",
+ "innovations": [
+  "量化 dropout 训练/推理不一致：通道 dropout 后 Var[â_k] 训练期为 (μ²+σ²)/(1−p)−μ²、推理期为 σ²，相对偏差 s_k=p/(1−p)(μ²/σ²+1)（均值不变但方差在激活后引发均值漂移）；改造后 s_k^ad=(1−w)²s_k，w=0 即标准 dropout，w=1 退化为恒等，从而把可加的中间层 dropout 变成可控扰动。",
+  "自适应训练策略（层间退火）：用可学权重隐式版 w_i=σ(f_2(ReLU(f_1(x_k))))，浅层gow用 value w（B×1 共享）、深层用 vector w（B×C 逐通道），并按 z（该类命中累计次数）做逐类指数衰减 e^{−λz} 的显式版按迭代逐块把 w 置 0（Algorithm 1），浅层早退出扰动以保拟合、深层久留泛化阶段抗退化过拟合。",
+  "用 channel ablation 作为泛化诊断（逐通道遮蔽后能量守恒归一化再算 PSNR，Fig.2a），证明'只正则最后一层'反而加剧中间层通道失衡，从而给出中间层显式正则的必要性的可测量判据，而不只是主表上的 PSNR 数字。"
+ ],
+ "method_framework": "盲超分训练（DIV2K、L1、500k iter、lr 2e-4 cosine、32×32 LR）中，在每个残差块（及 SwinIR 全部替换 dropout）插入自适应 dropout：训练时 f(x)=w·x+(1−w)·dropout(x,p)，p 固定 0.5、w 由可学模块或逐块退火调度给出；最后一层前保留原版 dropout；测试期标准推断，无额外模块。",
+ "experiment_framework": "训练 DIV2K（多退化设定沿用 Dropout[29]），测试为 Set5/Set14/BSD100/Manga109/Urban100 的合成退化（clean/blur/noise/jpeg/blur+noise+jpeg）与真实数据集；指标 PSNR；另迁移到其他图像复原任务。",
+ "takeaways": [
+  "中间层需要显式正则的真正障碍是方差漂移而非容量，把 dropout 结果与原特征按 w 加权求和即可在保留拟合能力的同时获得泛化收益。",
+  "channel ablation 的 PSNR 衰减曲线可以作为'特征是否学到泛化表示'的独立诊断量，不必依赖最终 PSNR 的绝对值比较。",
+  "浅层用标量 w、深层用逐通道 w 的分层配置（随数据集复杂度切换）说明扰动强度应当与层级的泛化需求匹配。"
+ ],
+ "weaknesses": [
+  "s_k 的分析建立在'通道 dropout 后紧跟非线性激活、均值不变'的理想化假设上，实际 SR 残差块里 BN/LayerNorm 会重算统计量，μ²/σ² 不可观测，因此该推导更像设计说明书而非可验证约束——最终 p 仍固定 0.5、w 与退火节奏仍靠预设，超参无原理支撑（正文中只有 Fig.5 的曲线观察）。",
+  "三套方案（隐式/显式 + vector w/value w + 固定 w=0.5）互相嵌套，且 vector w 在 Manga109/Urban100 更优、value w 在 Set14/BSD100 更优，作者按'数据集复杂度'分块选用，等价于按测试集做了一次隐式选择，存在验证/测试边界问题；Fig.4/Fig.5 里的曲线比较也没有方差条。",
+  "正文明显截断：第 9 页停在'For testing, we use the synthetic datasets Set5, Set14, BSD100, Mang'，主对比表（各退化下与无正则/标准 dropout/固定 w/可学 w 的 PSNR、真实世界数据集上的结果、其他复原任务的迁移以及超参 w 的敏感性）在可见正文里全部缺失；全文未见多种子方差与显著性检验,因此主提升幅度无法复核；与 Real-ESRGAN 式二阶退化链的公平性也未交代（设置里只说沿用 Dropout[29]）。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "超分任务与可靠性主线无关，无可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/LieRE_Lie Rotational Positional Encodings.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/LieRE_Lie Rotational Positional Encodings.pdf",
+ "title": "LieRE: Lie Rotational Positional Encodings",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6
+ },
+ "one_line": "将RoPE固定2D旋转推广为李群旋转，提升高维模态位置建模能力",
+ "innovations": [
+  "指出RoPE的固定块对角旋转矩阵是一个限制性归纳偏置，在高维结构模态上表达能力不足",
+  "提出LieRE：基于李群（Lie group）旋转的位置编码，将固定2D旋转推广为更一般的高维旋转群表示",
+  "LieRE是RoPE的原则性推广，可根据数据维度和结构灵活调整旋转群的维度和生成方式"
+ ],
+ "method_framework": "RoPE通过固定的块对角2D旋转矩阵对key-query做相对位置编码。LieRE将此推广：用李群的旋转矩阵（而非固定2D旋转）来参数化位置编码。旋转群的维度和结构可以根据输入模态的维度调整，从而在高维数据上获得更强的位置建模能力。旋转矩阵通过李代数指数映射生成。",
+ "experiment_framework": "在多种模态任务上评测（视觉、医学影像等），对比RoPE和其他位置编码；指标为下游任务精度；验证不同维度下的位置编码表达能力。",
+ "takeaways": [
+  "RoPE的固定2D旋转是一个过强的归纳偏置，限制了在高维模态上的性能",
+  "基于李群的旋转推广提供了更灵活的位置编码框架，可适配不同维度的数据",
+  "LieRE在高维结构数据上比RoPE有更好的位置建模能力"
+ ],
+ "weaknesses": [
+  "李群旋转矩阵的参数化增加了位置编码的计算复杂度",
+  "旋转群的具体选择（哪个李群）需要人工设计，缺乏自动选择机制",
+  "前9页实验细节不够完整，具体提升幅度不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

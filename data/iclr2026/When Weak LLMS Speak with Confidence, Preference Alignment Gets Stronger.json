@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/When Weak LLMS Speak with Confidence, Preference Alignment Gets Stronger.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/When Weak LLMS Speak with Confidence, Preference Alignment Gets Stronger.pdf",
+ "title": "When Weak LLMs Speak with Confidence, Preference Alignment Gets Stronger",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "弱LLM高置信样本加权对齐，降低标注成本但偏置与校准问题未解",
+ "innovations": [
+  "意外发现：仅挑选弱LLM高置信样本做偏好对齐，效果优于使用全量人工标注",
+  "提出CW-PO：按弱LLM的置信度对训练样本重加权，且可插入不同偏好优化目标",
+  "仅用20%人工标注经CW-PO对齐，即超过标准DPO用100%标注训练的模型"
+ ],
+ "method_framework": "用弱LLM生成偏好判断并输出其置信度；训练时按该置信度对偏好样本重加权(CW-PO)，可叠加到DPO等不同目标上；高置信样本权重高、低置信样本被降权，从而在降低人工标注量的同时提升对齐质量。",
+ "experiment_framework": "在标准偏好对齐基准上评测；基线为全量人工标注DPO及其他偏好对齐方法；指标为对齐后模型的胜率/有用无害诚实评分；报告20%标注+CW-PO超过100%标注DPO。",
+ "takeaways": [
+  "弱LLM作为标注者并非不可用，关键在于用其置信度做样本筛选/重加权",
+  "置信度加权可显著降低偏好对齐的人工标注成本，甚至反超全量标注",
+  "该方法是目标无关的，可迁移到多种偏好优化目标"
+ ],
+ "weaknesses": [
+  "弱LLM的高置信样本可能系统性偏置在其擅长的类别上，覆盖不全",
+  "置信度与正确性的校准关系未充分分析，高置信错误样本如何影响训练未隔离",
+  "主要在通用对话对齐基准验证，对安全/事实性等敏感对齐目标的效果未单独评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "偏好对齐非可靠性主线，但置信度加权有校准迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

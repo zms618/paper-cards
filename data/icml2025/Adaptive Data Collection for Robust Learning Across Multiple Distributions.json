@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Adaptive Data Collection for Robust Learning Across Multiple Distributions.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adaptive Data Collection for Robust Learning Across Multiple Distributions.pdf",
+ "title": "Adaptive Data Collection for Robust Learning Across Multiple Distributions",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 6.9
+ },
+ "one_line": "将多臂老虎机与在线梯度下降结合，优化多分布最差情况性能",
+ "innovations": [
+  "形式化多分布鲁棒学习的数据收集问题为minimax优化目标：min_θ max_k μ_k(θ)",
+  "提出UCB-OGD算法：每轮用UCB准则选择损失最高的数据源采集数据，然后用OGD更新模型参数",
+  "证明UCB-OGD的极小化遗憾为O(T^{1/2}(K ln T)^{1/2})，并给出匹配下界（差ln T因子）"
+ ],
+ "method_framework": "迭代框架：每轮(1)SELECT步骤——基于当前各数据源经验损失的置信上界UCB，选择最差的数据源k_t；(2)从k_t采集一批新样本标注；(3)UPDATE步骤——在k_t的已采集数据上做一步在线梯度下降更新模型参数θ。目标是最小化累计极小化遗憾：Σ_t max_k μ_k(θ_t) - T min_θ max_k μ_k(θ)。",
+ "experiment_framework": "多个任务：(1)CIFAR10分类（10类=10个数据源，预算10K）；(2)PASCAL VOC2012目标检测（4个场景子集，预算3K）；(3)VQAv2视觉问答（3类问题，预算1K）；(4)COSMOS真实路口车辆检测测试床（3摄像头，预算2.5K）。基线：随机采样、Eps-OGD、UC、BALD、DBAL、BADGE等主动学习方法。指标：最差类准确率/min mAP、平均准确率/mean mAP。",
+ "takeaways": [
+  "UCB-OGD在所有任务上均优于随机采样和Eps-OGD，最小类准确率提升显著（CIFAR10: 52.3% vs 36.3%）",
+  "与主动学习方法相比，UCB-OGD在min accuracy指标上优于UC、BALD、BADGE等（CIFAR10: 52.3 vs 49.3）",
+  "真实COSMOS测试床上UCB-OGD的min mAP达61.7%，比随机采样提升4.7个百分点"
+ ],
+ "weaknesses": [
+  "理论分析基于凸损失假设，深度神经网络的非凸场景仅通过实验验证",
+  "每轮选择单一数据源采集，未探索混合采集的策略",
+  "数据源数量K较大时UCB的置信区间计算可能不够精确"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多分布鲁棒学习与主动学习结合，提升最差性能",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/One-Minute Video Generation with Test-Time Training.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/One-Minute Video Generation with Test-Time Training.pdf",
+ "title": "One-Minute Video Generation with Test-Time Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "TTT层扩展预训练Transformer生成一分钟视频，但泛化性和真实感有限。",
+ "innovations": [
+  "将测试时训练(TTT)层引入视频生成，隐藏状态本身是神经网络",
+  "设计局部注意力+全局TTT的混合架构",
+  "芯片张量并行优化TTT-MLP效率"
+ ],
+ "method_framework": "在预训练CogVideo-X中添加TTT层，通过门控机制控制，结合局部自注意力和全局TTT处理长视频。",
+ "experiment_framework": "基于Tom and Jerry数据集，与Mamba 2、Gated DeltaNet等基线对比，通过人类评估(Elo评分)衡量文本对齐、运动平滑度、美学和场景一致性。",
+ "takeaways": [
+  "TTT层的神经网络隐藏状态能更好保持长程上下文",
+  "混合架构平衡了计算效率和长序列建模能力"
+ ],
+ "weaknesses": [
+  "仅限于Tom and Jerry特定领域，泛化性待验证",
+  "物理真实感不足，效率可进一步优化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "视频生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

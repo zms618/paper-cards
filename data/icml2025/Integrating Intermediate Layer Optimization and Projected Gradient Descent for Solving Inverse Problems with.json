@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Integrating Intermediate Layer Optimization and Projected Gradient Descent for Solving Inverse Problems with.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Integrating Intermediate Layer Optimization and Projected Gradient Descent for Solving Inverse Problems with.pdf",
+ "title": "Integrating Intermediate Layer Optimization and Projected Gradient Descent for Solving Inverse Problems with Diffusion Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "优化扩散模型中间层并融合PGD，解决逆问题显存与收敛问题。",
+ "innovations": [
+  "用中间层优化(ILO)缓解 DMPlug 类方法的显存负担，得到 DMILO。",
+  "引入稀疏偏差扩展预训练扩散模型的表达范围，可恢复落在模型值域之外的信号。",
+  "将 ILO 与投影梯度下降(PGD)结合得到 DMILO-PGD，降低次优收敛风险，并给出直观理论分析。"
+ ],
+ "method_framework": "以预训练扩散模型为先验求解逆问题 y=A(x)+ε；在中间层而非末端做优化以省显存；加稀疏偏差项跳出模型值域；再用 PGD 投影到数据一致性约束上，迭代逼近稳定重建。",
+ "experiment_framework": "在多种图像数据集上评测线性与非线性逆问题；基线为 DMPlug 及其它扩散逆问题 SOTA；指标为重建质量(PSNR/SSIM 等)，并比较显存/收敛效率。",
+ "takeaways": [
+  "中间层优化可在不牺牲质量的前提下显著降低扩散逆问题求解的显存开销。",
+  "融合 PGD 能缓解此类迭代方法的次优收敛，带来稳定提升。"
+ ],
+ "weaknesses": [
+  "仍属基于优化的采样型逆问题求解，计算开销相对一步/少步方法偏高。",
+  "理论分析是直觉性/条件性的，收敛保证较弱。",
+  "逆问题重建方法，与可靠性主线的不确定性/幻觉抑制等要素关联弱，医学影像仅为提及应用。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

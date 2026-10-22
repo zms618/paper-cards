@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Discern Truth from Falsehood Reducing Over-Refusal via Contrastive Refinement.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Discern Truth from Falsehood Reducing Over-Refusal via Contrastive Refinement.pdf",
+ "title": "Discern Truth from Falsehood: Reducing OVER-REFUSAL via Contrastive Refinement",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.1
+ },
+ "one_line": "对比式精炼减少大模型过度拒绝，但牺牲部分知识能力",
+ "innovations": [
+  "揭示真正有毒和表面有毒提示之间的梯度相似性是过度拒绝的根本原因",
+  "提出两阶段安全对齐框架，先进行对比式精炼(DCR)再进行标准安全对齐",
+  "理论证明中间表示的对比学习可以降低提示间的梯度相似性"
+ ],
+ "method_framework": "DCR方法在安全对齐前增加对比式精炼阶段，使用Circle Loss在中间层特征上区分真正有毒和表面有毒提示，降低它们之间的梯度相似性，从而在后续安全对齐中避免过度拒绝。",
+ "experiment_framework": "在Qwen2.5-1.5B/7B和LLaMA-3-8B上评估，使用XSTest等5个过度拒绝基准和5个有害性基准，比较STL、STL-aug、Surgical和SCANS基线。",
+ "takeaways": [
+  "通过理论分析揭示过度拒绝的根本原因是提示间的梯度相似性",
+  "对比式学习在中间表示上能有效区分不同类型提示",
+  "两阶段框架比直接数据增强更有效"
+ ],
+ "weaknesses": [
+  "方法略微降低了模型在知识密集型QA任务上的能力",
+  "对比式精炼阶段需要额外的计算资源",
+  "依赖中间层特征的选择可能影响效果"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "解决大模型过度拒绝问题，属于可靠性主线与安全落地的交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Are Indistinguishable to Humans Also Indistinguishable to Classifiers.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Are Indistinguishable to Humans Also Indistinguishable to Classifiers.pdf",
+ "title": "Are Images Indistinguishable to Humans Also Indistinguishable to Classifiers?",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "分布分类量化生成差异，但度量单调性与实验设计存疑",
+ "innovations": [
+  "把「real vs generated」当成分布分类问题、用分类器准确率直接量化分布距离，替代 FID（不做高斯假设，也不受 Inception 特征选择影响）；并用 Table 1 的同分布二分类（U vs U、E vs E，三种分类器均在 50.14–50.83%）作为任务有效性的 sanity check——高准确率因此不能归因于任务本身简单",
+  "揭示分类器与 FID/人类的三重矛盾：FID 相近但归纳偏置不同的模型（U-ViT-H/2 vs DiT-XL）分类器 99.66% 可分（三路 99.87%、四路 99.91%，且加分布越多越易分），而同族不同规模的 EDM2-XS(2.91) vs EDM2-XXL(1.81) 只有 ResNet-50 的 74.91%、ConvNeXt-T 57.35%、ViT-S 59.57% 接近随机；用户研究里人类恰好相反（前一组接近随机，后一组可与分类器相当）",
+  "特征级诊断与两条落地用法：空间上把图中心裁到 16×16 仍 99.78% 可分、随机取 128/64 区域任意一片都 99.97%，说明 U-ViT-H/2 的伪影遍布全图；频域上只有最低频段（low-pass threshold=10）区分度骤降而高通/带通其余档仍高精度，定位出「低频已学得像、高频没学会」；由此解释 model autophagy disorder（每代训练分布与生成分布错配累积），并给出 augment 优于 replace 与 classifier guidance 提升真实性"
+ ],
+ "method_framework": "把真实与生成分布拼成二至四类分类任务；ResNet-50/ConvNeXt/ViT-S 或 MAE/MoCo 加线性探针；以 top-1 准确率为分布差异度量；另做裁剪与频带切片诊断",
+ "experiment_framework": "CIFAR-10、ImageNet-256/512、COCO2014；EDM/EDM2/U-ViT/DiT/PixArt 等生成器；准确率加带误差棒的用户研究",
+ "takeaways": [
+  "「同分布 control（同分布两路互分）」应作为任何 distribution-level 探测实验的固定配置，否则 99% 的准确率无法排除任务退化解",
+  "按空间裁切与频带（low/high/band-pass）分层测可分性，能把「生成分布差多远」定位到具体的频率/区域，这套协议可平移到医学影像与多模态生成模型的故障定位",
+  "「生成器要对齐的是真实分布，用生成数据增强真实数据优于替换」这一结论来自分布错配累积的解释，可直接给数据合成类 pipeline 定方向"
+ ],
+ "weaknesses": [
+  "度量的单调性有问题：E2-XS vs E2-XXL 接近随机被解释为「共享归纳偏置」，但同一指标下 U-H/2 vs ImageNet 是 99.95%、U-H/2 vs DiT 是 99.66%，即两个都「很接近真实」的组合却差一个量级；用它做「生成还差多远」的绝对尺子会误导，只能当相对比较的探针用",
+  "分类器训练时同时看到真实与生成样本（故不是通用 generated-image detection），测到的是两个分布的差异总量而非生成器伪影；更麻烦的是作者把样本量（5k/10k/50k/1.28M）与模型架构差异混在同一批曲线里报告，读者无法分辨 88.28→100% 的提升来自样本量还是架构",
+  "正文在 Fig.5 频域分析处截断：面向落地的两条 claim（augment>replace 的定量表、classifier guidance 提升真实性的具体做法与指标）在抽取文本中缺失无法复核；且 augment/replace 结论只在监督与半监督分类上验证，没有医学影像或多模态落地域上的对应实验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "分布分类方法有可迁移价值，但未触及可靠性主线与落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

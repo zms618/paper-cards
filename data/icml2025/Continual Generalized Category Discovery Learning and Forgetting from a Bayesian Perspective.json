@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Continual Generalized Category Discovery Learning and Forgetting from a Bayesian Perspective.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Continual Generalized Category Discovery Learning and Forgetting from a Bayesian Perspective.pdf",
+ "title": "Continual Generalized Category Discovery: Learning and Forgetting from a Bayesian Perspective",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "贝叶斯框架缓解C-GCD遗忘，但预训练依赖限制泛化",
+ "innovations": [
+  "通过贝叶斯视角分析C-GCD的遗忘动态，揭示协方差失配是性能下降的主因",
+  "提出VB-CGCD框架，整合变分推断与协方差感知的最近类均值分类",
+  "设计协方差驱动的早停策略，平衡新旧类别的学习与遗忘"
+ ],
+ "method_framework": "VB-CGCD采用两阶段设计：离线阶段使用自监督学习微调骨干网络并通过SVI拟合类别分布；在线阶段通过聚类分配伪标签，再通过自纠正重标记和变分贝叶斯分布估计优化分类器，同时使用协方差感知早停策略防止灾难性遗忘。",
+ "experiment_framework": "在Cifar100、ImageNet100、TinyImageNet和CUB200数据集上评估，与GM、MetaGCD、PromptCCD、Happy等方法比较，并引入仅10%标记数据的新基准测试。",
+ "takeaways": [
+  "协方差对齐是平衡稳定性和可塑性的关键，可通过贝叶斯方法有效建模",
+  "变分推断能抑制伪标签噪声，提高分布估计的鲁棒性"
+ ],
+ "weaknesses": [
+  "方法依赖预训练模型，可能限制在特定领域的泛化能力",
+  "协方差对齐策略在类别数量变化大的场景可能需要调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

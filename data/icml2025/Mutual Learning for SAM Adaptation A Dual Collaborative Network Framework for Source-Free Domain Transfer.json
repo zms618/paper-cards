@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Mutual Learning for SAM Adaptation A Dual Collaborative Network Framework for Source-Free Domain Transfer.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Mutual Learning for SAM Adaptation A Dual Collaborative Network Framework for Source-Free Domain Transfer.pdf",
+ "title": "Mutual Learning for SAM Adaptation: A Dual Collaborative Network Framework for Source-Free Domain Transfer",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "双协作网络互学习框架解决无源域SAM适配，动态角色防教师退化",
+ "innovations": [
+  "提出动态师生角色分配机制：每次迭代根据两个协作网络的可靠性动态决定谁是教师谁是学生",
+  "设计三组件互学习机制：直接对齐损失（知识传递）、反向蒸馏损失（鼓励多样性）、三元关系损失（精化特征表示）",
+  "在无源域设定下适配SAM，无需访问源域数据，适用于医学影像、伪装目标检测等专业领域"
+ ],
+ "method_framework": "将SAM的图像编码器与提示编码器复制为两个并行网络；每个训练迭代评估两个网络在当前批次上的预测可靠性，动态指定教师与学生；教师网络的伪标签指导学生网络训练，反向蒸馏损失防止两个网络收敛到同一解；三元关系损失精化特征空间结构。",
+ "experiment_framework": "在多个目标域数据集上验证（含医学影像、伪装目标检测、机器人视觉等）；对比固定师生结构的自训练方法；指标为分割mIoU或Dice系数；无源域设定下仅使用目标域无标签数据。",
+ "takeaways": [
+  "严重域偏移下固定教师-学生结构会导致教师退化（教师也不准），动态角色分配可缓解此问题",
+  "反向蒸馏（学生教教师）能鼓励两个网络保持多样性，避免协同坍缩",
+  "无源域SAM适配在医学影像等专业领域有重要实用价值"
+ ],
+ "weaknesses": [
+  "双网络设计使计算开销翻倍，训练效率降低",
+  "可靠性评估指标的选择对最终效果影响较大",
+  "仅在分割任务上验证，检测/分类等其他视觉任务的适用性未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

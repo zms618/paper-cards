@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Designing Instance-Level Sampling Schedules via REINFORCE with James-Stein Shrinkage.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Designing Instance-Level Sampling Schedules via REINFORCE with James-Stein Shrinkage.pdf",
+ "title": "Designing Instance-Level Sampling Schedules via REINFORCE with James-Stein Shrinkage",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "实例级采样调度框架，用James-Stein收缩减少梯度误差",
+ "innovations": [
+  "实例级采样调度框架",
+  "James-Stein收缩基线用于方差减少",
+  "单次通过Dirichlet策略设计"
+ ],
+ "method_framework": "将采样调度视为单次通过策略，通过Dirichlet分布输出整个时间步序列，结合James-Stein收缩基线减少梯度估计误差，实现无需修改预训练采样器的实例自适应调度。",
+ "experiment_framework": "在HPD v2数据集上评估，对比SD-XL、SD-3.5、Flux等模型，使用HPS v2作为指标，测试不同采样步数下的性能。",
+ "takeaways": [
+  "James-Stein收缩基线在低样本条件下有效减少梯度估计误差",
+  "实例级调度可在相同计算预算下提升生成质量，尤其在低步数场景"
+ ],
+ "weaknesses": [
+  "仅评估文本到图像生成任务，未扩展到其他模态",
+  "计算开销虽低于自回归方法，但仍需额外训练调度器"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "采样调度方法与可靠性主线无直接交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

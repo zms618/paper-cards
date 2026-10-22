@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Diffusion Federated Dataset.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Diffusion Federated Dataset.pdf",
+ "title": "Diffusion Federated Dataset",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 8,
+  "overall": 7
+ },
+ "one_line": "扩散模型能量参数化实现联邦学习合成数据生成",
+ "innovations": [
+  "将联邦合成数据生成重新定义为从混合分布的协作采样",
+  "提出无需交换模型参数的扩散模型能量参数化方法",
+  "理论推导了ULA的收敛保证和步长选择"
+ ],
+ "method_framework": "DfD框架：客户端独立训练扩散模型，服务器通过ULA算法协作采样，利用能量参数化计算全局分数，生成高质量合成数据",
+ "experiment_framework": "MNIST/CIFAR-10/CelebA数据集，10个客户端，非独立同分布设置，FID/P&R/D&C评估生成质量，分类器评估数据效用",
+ "takeaways": [
+  "能量参数化使扩散模型可直接用于采样而不需修改训练",
+  "交换预测而非参数显著降低通信开销",
+  "理论分析提供了ULA步长的明确指导"
+ ],
+ "weaknesses": [
+  "仅在跨设备联邦学习场景受限，需要可信客户端",
+  "服务器最终获得合成数据而非生成模型",
+  "差分隐私应用会降低样本质量"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

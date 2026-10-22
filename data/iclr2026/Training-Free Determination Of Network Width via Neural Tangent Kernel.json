@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Training-Free Determination Of Network Width via Neural Tangent Kernel.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Training-Free Determination Of Network Width via Neural Tangent Kernel.pdf",
+ "title": "Training-Free Determination of Network Width via Neural Tangent Kernel",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "基于NTK特征值的训练-free宽度确定，理论有限但实验不足",
+ "innovations": [
+  "从理论上证明NTK最小特征值对宽但有限网络的测试损失有强影响，给出上界",
+  "定义基数宽度（cardinal width）：泛化性能饱和时的网络宽度，可通过初始化时的NTK最小特征值增长饱和点确定",
+  "提出完全训练-free的宽度确定方法，无需实际训练网络即可估计最小所需宽度"
+ ],
+ "method_framework": "在无限宽regime下，梯度训练等价于NTK核回归。理论上证明测试误差上界由NTK的最小特征值控制。对于足够大但有限的宽度，经验NTK的最小特征值同样成立。因此，通过监控初始化时不同宽度下NTK最小特征值的增长何时饱和，即可确定基数宽度。",
+ "experiment_framework": "在多个数据集和架构上验证NTK最小特征值与测试损失的关系，评估预测的基数宽度与实际性能饱和点的匹配度。",
+ "takeaways": [
+  "NTK最小特征值是测试损失的良好预测指标，可在训练前估计所需网络宽度",
+  "基数宽度（性能饱和点）可通过监控NTK最小特征值的增长饱和来确定",
+  "该方法完全不需要训练网络，大幅节省宽度搜索的计算成本"
+ ],
+ "weaknesses": [
+  "理论主要基于均方损失和无限宽假设，对交叉熵损失和现代大模型的适用性存疑",
+  "NTK计算本身的开销在大模型上可能不小",
+  "仅讨论宽度，未讨论深度和其他超参数的确定"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "NTK理论方法与可靠性主线无直接交点，属基础理论工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

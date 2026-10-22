@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Backdoor Attacks in Token Selection of Attention Mechanism.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Backdoor Attacks in Token Selection of Attention Mechanism.pdf",
+ "title": "Backdoor Attacks in Token Selection of Attention Mechanism",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 5.0,
+  "overall": 5.8
+ },
+ "one_line": "理论分析单头注意力后门攻击，但实验局限且假设理想化",
+ "innovations": [
+  "首次建立注意力机制中后门攻击的理论框架，分析token选择过程如何被攻击者利用",
+  "证明单头自注意力Transformer在梯度下降下可插值投毒训练数据，给出干净样本和触发样本均高概率分类正确/错误的理论保证",
+  "提出攻击成功的五个关键条件：信号强度比、相关token贡献、投毒token优势、两者可比性、投毒token方差主导"
+ ],
+ "method_framework": "基于Tarzanagh等人的单头注意力优化动力学分析框架，将注意力输出分解为相关信号分量和投毒信号分量。在假设干净信号与投毒信号正交的条件下，通过分析梯度下降过程中softmax注意力权重的演化，推导五个条件保证：(1)干净数据相关信号足够强；(2)投毒信号与错误标签相关性足够强；(3)投毒token贡献超过相关token；(4)两者贡献量级可比；(5)投毒token不确定性主导方差。满足时模型在干净数据上泛化良好，在触发数据上被错误分类。",
+ "experiment_framework": "仅在合成数据集上验证理论发现，构造二维高斯数据模拟相关token和投毒token，训练单头自注意力Transformer，检查五个条件是否成立以及攻击成功率。",
+ "takeaways": [
+  "后门攻击成功的关键在于投毒token与错误标签的相关性梯度积累超过相关token与正确标签的相关性",
+  "触发强度需适中：过强导致干净数据泛化崩溃，过弱则攻击无效",
+  "注意力的token选择机制是后门攻击的核心作用点——投毒token通过均匀注意力分布获得等效强度"
+ ],
+ "weaknesses": [
+  "仅在单头自注意力和合成数据上验证，未扩展到多头注意力或真实LLM规模",
+  "理论分析假设信号正交，实际场景中投毒信号与干净信号往往相关",
+  "缺乏真实数据集（如GLUE、SST-2）和实际后门攻击方法的对比实验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "后门攻击理论分析，未触及可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Neuclip_Efficient Large-Scale CLIP Training with Neural Normalizer Optimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Neuclip_Efficient Large-Scale CLIP Training with Neural Normalizer Optimization.pdf",
+ "title": "NeuCLIP: Efficient Large-Scale CLIP Training with Neural Normalizer Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "用凸变分分析优化CLIP归一化，提升大规模训练效率但与可靠性主线关联弱",
+ "innovations": [
+  "通过凸共轭(Fenchel-Moreau)将每个锚点的对比损失重写为以对数归一化项为辅助变量的等价最小化问题，暴露归一化项为优化变量",
+  "用变分分析把n个辅助变量的优化转化为一个紧凑的归一化预测网络(NPN)，其梯度避免对配分函数的非线性依赖，消除AmorLIP式鸡生蛋问题",
+  "设计带归纳偏置的NPN架构(编码器上前馈层+log-sum-exp池化)，并配合多次NPN更新与周期性重初始化的交替优化加速技术"
+ ],
+ "method_framework": "将鲁棒全局对比损失用凸分析展开，引入与每个样本对数归一化项对应的辅助变量；再用变分法把对n个辅助变量的优化转化为对一个紧凑NPN网络参数的优化，得到编码器与NPN的统一目标函数。交替优化：用传统随机梯度更新CLIP双塔编码器，用AdaGrad更新NPN，每迭代内做多次NPN更新并周期性用采样嵌入重初始化NPN参数以获得更准的归一化估计。",
+ "experiment_framework": "在5个图文数据集上训练：CC3M(2.7M)、CC12M(9.2M)、DFN-14M/192M/1B(14M到10亿)，8张H100；图像编码器ResNet-50或ViT-B，文本Transformer。基线OpenCLIP/FastCLIP/SigLIP/AmorLIP。指标为Datacomp基准38任务平均分、ImageNet及变体分类平均、检索平均；消融在CC3M与DFN-14M上做。",
+ "takeaways": [
+  "NeuCLIP在从百万到十亿样本规模的CLIP训练上一致优于OpenCLIP/FastCLIP/SigLIP/AmorLIP，尤其在小批次大设置下改善明显",
+  "统一目标使编码器与NPN都可用标准SGD更新而不产生梯度估计偏差，这是相比逐样本EMA估计器的关键优化优势",
+  "NPN的归纳偏置架构与周期性重初始化对归一化估计精度有显著贡献(消融验证)"
+ ],
+ "weaknesses": [
+  "工作主线是CLIP训练优化效率而非模型可靠性/可信性，与鲁棒泛化、幻觉抑制等落地主线关联较弱",
+  "NPN引入额外网络与多次更新/重初始化超参(Tu=10, Tr=500)，实际调参成本与吞吐开销未充分量化",
+  "前9页未给出与SigLIP等大批次方法在同等绝对算力下的公平对比，收益主要来自归一化估计而非端到端效率"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "CLIP训练效率优化，与可靠性主线关联弱但方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

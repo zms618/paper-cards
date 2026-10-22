@@ -1,0 +1,35 @@
+{
+ "title": "SkipGPT: Each Token is One of a Kind",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "elevance": 5.5,
+  "evidence": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "动态token感知路由解耦剪枝，省参数但硬件加速收益未量化",
+ "innovations": [
+  "水平动力学：global token-aware路由按token复杂度在整个前向中灵活分配计算预算，突破固定层/固定token比率",
+  "垂直动力学：对MLP与self-attention解耦施加不同剪枝策略，因二者功能角色不同(MLP似局部进程、注意力似高层认知)",
+  "两阶段训练：先软参数化disentangled路由训练避免过早剪枝，再LoRA微调恢复性能；并揭示注意力比MLP更冗余、长上下文下后段token更需注意力"
+ ],
+ "method_framework": "用模块输入输出余弦相似性度量重要性；训路由决定跳过哪些token的哪些组件；先冻结主干只训路由(软参数)，再冻结路由用LoRA补偿被剪层损失；动态按token/组件分配计算。",
+ "experiment_framework": "LLM标准推理基准；对比静态结构化剪枝与现有自适应计算方法；报告削减>40%参数后匹配或超越稠密模型；含路由行为的模块重要性分析。",
+ "takeaways": [
+  "token间计算需求异质且MLP/注意力冗余度不同，动态解耦剪枝比静态统一剪枝更高效",
+  "长上下文下后段token需更多注意力、更少MLP，为架构设计提供经验依据"
+ ],
+ "weaknesses": [
+  "引入路由器增加实现与训练复杂度，动态分支在现有GPU上的实际硬件加速收益未充分量化",
+  "relevance偏离可靠性主线，属推理效率；两阶段训练+LoRA仍需额外微调成本，免训练场景不适用"
+ ],
+ "confidence": "high",
+ "key": "icml2025/SkipGPT_Each Token is One of a Kind.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SkipGPT_Each Token is One of a Kind.pdf",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

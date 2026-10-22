@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Mitigating Semantic Collapse in Partially Relevant Video Retrieval.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Mitigating Semantic Collapse in Partially Relevant Video Retrieval.pdf",
+ "title": "Mitigating Semantic Collapse in Partially Relevant Video Retrieval",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "双分支架构缓解部分相关视频检索语义崩溃",
+ "innovations": [
+  "Text Correlation Preservation Learning (TCPL)利用基础模型的语义关系缓解文本嵌入空间中的语义崩溃",
+  "Cross-Branch Video Alignment (CBVA)通过对比学习区分视频内不同事件缓解视频嵌入空间中的语义崩溃",
+  "Order-Preserving Token Merging和自适应CBVA增强视频对齐的精确性"
+ ],
+ "method_framework": "结合TCPL和CBVA的双分支架构，TCPL利用CLIP的语义关系保持文本嵌入多样性，CBVA通过帧级和片段级对比学习区分视频内不同事件，并通过token merging增强视频表示的精确性",
+ "experiment_framework": "在QVHighlights、TVR、ActivityNet Captions和Charades-STA四个PRVR基准数据集上进行评估，使用召回率指标(R@Q)和SumR评估整体检索性能",
+ "takeaways": [
+  "利用基础模型的语义结构可以缓解文本嵌入空间的语义崩溃问题",
+  "跨分支对比学习结合token merging策略可以有效区分视频内不同事件，提高视频表示的精确性"
+ ],
+ "weaknesses": [
+  "方法依赖于CLIP等预训练模型，可能存在领域适应性问题",
+  "自适应CBVA中的参数选择(如阈值τ)需要针对不同数据集进行调整，增加了复杂性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

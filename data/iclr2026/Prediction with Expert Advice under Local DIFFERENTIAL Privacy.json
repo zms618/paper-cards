@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Prediction with Expert Advice under Local DIFFERENTIAL Privacy.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Prediction with Expert Advice under Local DIFFERENTIAL Privacy.pdf",
+ "title": "Prediction with Expert Advice under Local Differential Privacy",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "LDP下专家预测的随机游走算法，理论创新但泛化验证不足",
+ "innovations": [
+  "证明经典随机游走 Follow-the-Perturbed-Leader(RW-FTPL)天然满足 LDP，并给出其切换行为的紧刻画",
+  "RW-AdaBatch：利用 LDP 诱导的有限切换行为做随数据难易增强的隐私放大(类似 shuffle 模型的 local-to-central)，且几乎无效用代价",
+  "RW-Meta：用噪声共享在本身即非平凡学习算法的数据相关专家间做私有选择与执行，无额外隐私预算开销，遗憾界随专家间独立性增强而收紧"
+ ],
+ "method_framework": "在线博弈中每轮向各专家建议加权，先在噪声化(加噪到增益向量)的 LDP 环境下运行。RW-AdaBatch 高概率预测不变时自适应合并批次以获得置换不变性从而放大中心DP保证；RW-Meta 通过高效噪声共享同时完成专家选择与拟合，形式化遗憾界用专家经验协方差矩阵的主特征值刻画任务难度。",
+ "experiment_framework": "在 COVID-19 期间医院上报的真实数据上，预测每周哪家医院上报最高密度新冠患者；对比经典 LDP 基线与 SOTA 中心DP(CDP)算法，报告相对性能倍数与遗憾。",
+ "takeaways": [
+  "RW-Meta 在该公共卫生预测任务上比经典基线与 SOTA 中心DP算法高 1.5–3 倍",
+  "LDP 下的有限切换特性可被利用做随数据变易而增强的隐私放大，且效用代价可忽略",
+  "在私有设定中允许'数据相关专家'并零成本选择是可行的，突破了以往仅考虑数据独立专家的限制"
+ ],
+ "weaknesses": [
+  "属在线学习/差分隐私理论，与鲁棒性、泛化、不确定性等 ML 可靠性主线距离较远",
+  "隐私放大下界无闭式解，需数值计算，工程可复现门槛高",
+  "前9页未见大规模多数据集验证，仅 COVID 单一真实任务，泛化证据有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "在线学习/差分隐私理论，与可靠性主线距离较远",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

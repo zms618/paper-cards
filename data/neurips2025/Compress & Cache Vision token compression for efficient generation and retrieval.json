@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Compress & Cache Vision token compression for efficient generation and retrieval.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Compress & Cache Vision token compression for efficient generation and retrieval.pdf",
+ "title": "Compress & Cache: Vision token compression for efficient generation and retrieval",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "双前向传递压缩视觉token，但压缩率有限且未充分分析计算-精度权衡",
+ "innovations": [
+  "双前向传递训练策略",
+  "任务无关的视觉token压缩",
+  "统一生成与判别任务的压缩表示",
+  "阶段特定适配器"
+ ],
+ "method_framework": "利用LVLM自身进行视觉token压缩，通过双前向传递策略：第一前向压缩视觉信息为摘要token，第二前向结合语言指令生成答案，结合自回归和对比损失优化。",
+ "experiment_framework": "生成任务：GQA、MMB等8个数据集；判别任务：Flickr30K、COCO等检索基准；视觉RAG：ArxivQA等6个数据集",
+ "takeaways": [
+  "双前向传递策略有效压缩视觉token",
+  "对比损失同时提升生成与判别性能",
+  "离线压缩与在线推理解耦提升效率"
+ ],
+ "weaknesses": [
+  "需要额外的离线压缩阶段",
+  "压缩后token数量仍较多(4-32)",
+  "未充分探讨不同压缩率下的计算-精度权衡"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

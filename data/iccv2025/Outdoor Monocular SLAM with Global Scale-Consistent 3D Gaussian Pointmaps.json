@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Outdoor Monocular SLAM with Global Scale-Consistent 3D Gaussian Pointmaps.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Outdoor Monocular SLAM with Global Scale-Consistent 3D Gaussian Pointmaps.pdf",
+ "title": "Outdoor Monocular SLAM with Global Scale-Consistent 3D Gaussian Pointmaps",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "3D高斯点图SLAM，改进跟踪与映射但依赖预训练模型",
+ "innovations": [
+  "自一致3DGS点图跟踪模块，避免累积尺度漂移",
+  "基于补丁的点图动态映射模块，引入几何先验",
+  "尺度自一致的位姿估计，减少迭代次数"
+ ],
+ "method_framework": "结合3D高斯溅射、自一致点图跟踪和基于补丁的点图动态映射，通过点图锚定位姿估计和几何监督优化实现鲁棒户外SLAM",
+ "experiment_framework": "Waymo、KITTI和DL3DV数据集，对比NeRF-SLAM、NICER-SLAM、GlORIE-SLAM、MonoGS和OpenGS-SLAM，使用ATE、PSNR、SSIM和LPIPS指标",
+ "takeaways": [
+  "点图锚定位姿估计显著提升收敛速度和鲁棒性",
+  "基于补丁的尺度对齐有效解决单目尺度模糊问题",
+  "几何监督损失提升场景重建质量"
+ ],
+ "weaknesses": [
+  "依赖预训练点图模型，可能受限于预训练模型质量",
+  "计算复杂度较高，实时性能可能受限",
+  "在极端光照条件下表现未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "SLAM技术本身与可靠性主线无直接交点，仅属常规扎实工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

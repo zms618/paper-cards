@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Points-to-3D Structure-Aware 3D Generation with Point Cloud Priors.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Points-to-3D Structure-Aware 3D Generation with Point Cloud Priors.pdf",
+ "title": "Points-to-3D Structure-Aware 3D Generation with Point Cloud Priors",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "点云先验初始化+两阶段采样，提升3D生成几何一致性。",
+ "innovations": [
+  "将点云先验显式融入3D生成框架的潜在空间初始化",
+  "设计结构修复网络实现可见区域保持与不可见区域合理补全",
+  "提出两阶段采样策略（结构修复+边界细化）确保全局一致性和边界质量"
+ ],
+ "method_framework": "基于TRELLIS扩散模型，将点云体素化并编码为稀疏结构潜在表示，结合可见性掩码作为输入，通过条件流匹配训练结构修复网络，实现几何可控的3D生成。",
+ "experiment_framework": "在Toys4K（单物体）和3D-FRONT（场景）数据集上评估，使用PSNR、SSIM、LPIPS、CD、F-Score等指标，与TRELLIS、SAM3D等基线比较，并分析可见区域性能。",
+ "takeaways": [
+  "将3D先验直接注入潜在空间初始化比间接条件提供更精确的几何控制",
+  "两阶段采样策略平衡了全局结构一致性和局部细节质量",
+  "点云先验可来自传感器或单图像预测器，增强方法实用性"
+ ],
+ "weaknesses": [
+  "依赖高质量点云输入，VGGT估计点云可能引入误差",
+  "两阶段采样策略增加了推理复杂度",
+  "未充分讨论方法在极端遮挡或噪声点云情况下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

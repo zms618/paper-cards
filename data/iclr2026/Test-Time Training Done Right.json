@@ -1,0 +1,41 @@
+{
+ "title": "Test-Time Training Done Right",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.6
+ },
+ "one_line": "大块测试时训练提升GPU利用率，但缺乏细粒度对照与机制解耦",
+ "innovations": [
+  "指出现有 TTT 用极小在线 mini-batch（每 16/64 token 更新一次）导致 GPU FLOPs 利用率常低于 5%，且块级因果依赖使其难推广到图像/视频等非 1D 数据",
+  "反方向提出超大块更新(LaCT)：块长 2K~1M token，把硬件利用率提升数个数量级，并支持非线性状态规模扩到模型参数的 40%",
+  "无需手写定制 kernel 即可扩展，且可便捷接入 Muon 等优化器做在线记忆更新；在新视角合成、语言模型、自回归视频扩散上验证，最大 14B 参数、56K token，最长百万上下文"
+ ],
+ "method_framework": "TTT 在推理时更新部分权重(快速权重)以暂存过去 token 记忆；LaCT 把更新粒度从极小 mini-batch 改为超大 chunk，使矩阵运算在现代 GPU 上高效并行；大块更新同时允许把快速权重/状态维做大，从而提升状态容量而不依赖手工 kernel。",
+ "experiment_framework": "跨模态：图像集合的新视角合成、语言建模、自回归视频扩散；指标为 GPU 利用率/吞吐、状态容量、下游任务质量；规模从小模型到 14B 视频扩散、序列长达 56K~1M token；对比小 mini-batch 的传统 TTT。",
+ "takeaways": [
+  "TTT 的瓶颈在 GPU 利用率而非理论，改用超大块更新可同时提效并放大状态容量",
+  "大块更新天然摆脱 1D 有序序列限制，可用于图像/视频等网格数据",
+  "无需定制 kernel 即可把 TTT 扩到 14B、百万级上下文，使 TTT 真正可扩展"
+ ],
+ "weaknesses": [
+  "‘大块更新’弱化了逐 token 的在线适应粒度，对需要细粒度因果记忆的任务，其记忆精度是否等价于小 mini-batch 未充分对照",
+  "方法主要是工程/系统层面的反向选择，核心 TTT 机制沿用前作；跨模态结论在视频扩散上的收益是否来自大块还是状态变大，二者未彻底解耦",
+  "relevance 给 5：属长上下文/TTT 架构效率，与可靠性(验证/不确定性/幻觉)×落地域(医学影像/多模态推理任务)主线不直接对应，按规则不因其 video/多模态措辞抬分"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Test-Time Training Done Right.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Test-Time Training Done Right.pdf",
+ "raw_overall": 6.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "长上下文架构效率，与可靠性主线不直接对应",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

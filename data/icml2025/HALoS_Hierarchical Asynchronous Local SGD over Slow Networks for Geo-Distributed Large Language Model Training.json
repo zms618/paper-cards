@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/HALoS_Hierarchical Asynchronous Local SGD over Slow Networks for Geo-Distributed Large Language Model Training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/HALoS_Hierarchical Asynchronous Local SGD over Slow Networks for Geo-Distributed Large Language Model Training.pdf",
+ "title": "HALoS: Hierarchical Asynchronous Local SGD over Slow Networks for Geo-Distributed Large Language Model Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "分层异步优化框架提升地理分布式LLM训练效率",
+ "innovations": [
+  "分层异步优化框架",
+  "本地参数服务器与全局模型合并",
+  "严格收敛分析"
+ ],
+ "method_framework": "HALoS采用三级架构：本地参数服务器(LPS)异步收集区域内梯度并累积更新，全局参数服务器(GPS)异步合并区域更新，通过全局模型合并减少通信延迟",
+ "experiment_framework": "Pythia模型在4区域16异构工作节点环境，对比DiLoCo和Async-Local-SGD，测量训练时间和token消耗",
+ "takeaways": [
+  "分层异步设计可显著降低跨区域通信开销",
+  "全局动量系数需谨慎选择以平衡收敛速度"
+ ],
+ "weaknesses": [
+  "理论分析依赖i.i.d.数据假设",
+  "实验仅限于Pythia模型，未测试更大规模模型"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

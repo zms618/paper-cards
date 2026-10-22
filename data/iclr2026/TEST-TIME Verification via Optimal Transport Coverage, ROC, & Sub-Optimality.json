@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TEST-TIME Verification via Optimal Transport Coverage, ROC, & Sub-Optimality.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TEST-TIME Verification via Optimal Transport Coverage, ROC, & Sub-Optimality.pdf",
+ "title": "Test-Time Verification via Optimal Transport: Coverage, ROC, and Sub-Optimality",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "将测试时验证建模为最优传输问题，分析覆盖率与次优性三阶段关系",
+ "innovations": [
+  "首次将测试时验证形式化为最优传输问题，建立生成器分布、验证器区域和采样策略之间的统一几何框架",
+  "发现次优性-覆盖曲线存在三个阶段：传输区、策略改进区和饱和区，揭示了验证器不完美时的性能边界",
+  "分析了顺序采样和批量采样两类算法的计算复杂度及其与三阶段行为的关系"
+ ],
+ "method_framework": "将可验证测试时缩放建模为最优传输问题：生成器的输出分布作为源分布，最优策略作为目标分布，验证器定义的收敛区域作为传输约束。通过分析传输成本随覆盖率变化的曲线，识别出三个阶段。进一步比较顺序采样（如Best-of-N）和批量采样的计算复杂度-性能权衡。",
+ "experiment_framework": "使用Qwen、Llama、Gemma等多个LLM模型进行实证验证；在数学推理等客观任务上评估；验证理论预测的三阶段行为和不同采样算法的性能曲线。",
+ "takeaways": [
+  "验证器不完美时，增加采样数量并非总是有益——存在饱和区，超过后次优性不再下降",
+  "策略改进区中，验证器的收敛域形状决定了增加覆盖率是否能降低次优性",
+  "最优传输框架提供了统一视角，解释了不同测试时缩放策略的性能边界和适用条件"
+ ],
+ "weaknesses": [
+  "理论框架基于分布层面的分析，对具体token级采样过程的指导意义有限",
+  "实验验证主要在数学推理等客观任务上，开放域生成的验证行为是否符合三阶段模型未知",
+  "验证器收敛域的实际估计方法在正文中讨论较少，工程落地性需进一步探索"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "测试时验证与可靠性主线交点，三阶段分析具防守力",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

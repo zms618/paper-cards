@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Token-Level Self-Play with Importance-Aware Guidance for Large Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Token-Level Self-Play with Importance-Aware Guidance for Large Language Models.pdf",
+ "title": "Token-Level Self-Play with Importance-Aware Guidance for Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "SWIFT用token权重和自玩提升LLM对齐，但依赖教师且计算开销大",
+ "innovations": [
+  "引入token级重要性权重分配机制",
+  "提出tokenizer不匹配情况下的token映射策略",
+  "将自玩框架与token级奖励函数结合"
+ ],
+ "method_framework": "SWIFT基于自玩框架，利用教师模型估计token级重要性权重，通过加权序列级KL散度优化学生模型，实现细粒度对齐和知识蒸馏。",
+ "experiment_framework": "在HuggingFace Open LLM Leaderboard和MT-bench评估对齐性能，在Dolly等数据集用ROUGE-L评估知识蒸馏效果，对比DPO、SPIN等基线。",
+ "takeaways": [
+  "token级重要性权重能有效提升模型性能",
+  "tokenizer映射策略解决了不同模型间的token对齐问题",
+  "自玩框架结合教师指导可减少对人工标注数据的依赖"
+ ],
+ "weaknesses": [
+  "依赖教师模型性能，教师质量影响学生模型效果",
+  "token权重计算增加了计算复杂度",
+  "实验主要在通用对话数据集上验证，缺乏特定领域验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

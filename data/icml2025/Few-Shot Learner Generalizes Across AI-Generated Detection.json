@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Few-Shot Learner Generalizes Across AI-Generated Detection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Few-Shot Learner Generalizes Across AI-Generated Detection.pdf",
+ "title": "Few-Shot Learner Generalizes Across AI-Generated Image Detection",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "FSD通过专用度量空间实现少样本AI假图检测，但机制解释不足",
+ "innovations": [
+  "提出Few-Shot Detector(FSD),学习专门度量空间,用极少样本即可区分未见生成模型的假图",
+  "无需进一步训练即可捕捉未见图像类内共性(intra-category commonality)",
+  "在GenImage上仅用10个额外样本即比SOTA平均准确率高11.6%"
+ ],
+ "method_framework": "现有假图检测器在已见生成模型上表现好,但对未见模型泛化骤降,且从在线生成模型收集训练数据昂贵。FSD通过学习一个专门的度量空间,让新生成模型的少量(如10个)样本即可锚定该类假图共性,从而无需重训即可在未见模型上泛化检测。",
+ "experiment_framework": "主基准GenImage;基线为大VLM语义分析类(Ojha等)与扩散重建类方法;设定留出未见生成模型做跨模型泛化,指标为平均准确率(仅10个额外样本即+11.6%)。",
+ "takeaways": [
+  "专用度量空间能以极少样本实现跨未见生成模型的假图检测泛化",
+  "FSD仅用10个额外样本即在GenImage上比SOTA高11.6%",
+  "方法不需进一步训练即可迁移到新出现的生成模型"
+ ],
+ "weaknesses": [
+  "跨模型泛化的根本机制(为何该度量能捕捉类内共性)理论解释偏弱",
+  "与最新强VLM检测器的对比随生成模型迭代可能迅速过时",
+  "主线为AI假图检测,与医学影像、多模态大模型推理主线仅部分相关(可信内容)"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

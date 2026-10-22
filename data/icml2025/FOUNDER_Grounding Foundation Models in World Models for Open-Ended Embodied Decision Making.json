@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/FOUNDER_Grounding Foundation Models in World Models for Open-Ended Embodied Decision Making.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FOUNDER_Grounding Foundation Models in World Models for Open-Ended Embodied Decision Making.pdf",
+ "title": "FOUNDER: Grounding Foundation Models in World Models for Open-Ended Embodied Decision Making",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "将基础模型语义映射到世界模型状态空间，实现无奖励具身决策。",
+ "innovations": [
+  "学习映射函数将基础模型(FM)的语义表征grounding到世界模型(WM)的状态空间",
+  "实现无奖励(reward-free)的开放式任务学习，通过想象进行目标条件策略学习",
+  "结合FM的泛化知识和WM的动态建模能力，互补两者的优势"
+ ],
+ "method_framework": "FOUNDER包含两个核心组件：(1)世界模型：学习环境的动态转移函数，支持在潜在空间中想象 rollout；(2)Grounding映射：将FM(如CLIP)从外部观测中提取的语义表示映射到WM的状态空间。映射后的语义向量作为目标状态，在WM中通过想象学习目标条件策略。整个过程无需人工设计奖励函数，FM提供任务语义，WM提供物理动态。",
+ "experiment_framework": "在具身决策环境中验证。对比基线：纯WM方法、纯FM方法、其他结合方法。评估指标：任务成功率、样本效率、泛化能力。测试开放式任务的解决能力。",
+ "takeaways": [
+  "FM语义表征与WM状态空间的映射是可行的，能有效grounding抽象语义到物理状态",
+  "无奖励学习范式在开放式具身任务上有效，减少了奖励工程的成本",
+  "FM和WM的结合在泛化性和样本效率上均优于单一方法"
+ ],
+ "weaknesses": [
+  "仅在短时域任务上验证，长时域任务的分解和推理能力未充分测试",
+  "FM表征到WM空间的映射质量受对齐程度影响，语义鸿沟问题仍存在",
+  "世界模型的预测误差会累积，长时程rollout的可靠性未分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

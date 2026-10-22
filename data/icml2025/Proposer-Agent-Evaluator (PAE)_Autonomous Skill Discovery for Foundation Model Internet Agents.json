@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Proposer-Agent-Evaluator (PAE)_Autonomous Skill Discovery for Foundation Model Internet Agents.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Proposer-Agent-Evaluator (PAE)_Autonomous Skill Discovery for Foundation Model Internet Agents.pdf",
+ "title": "Proposer-Agent-Evaluator (PAE): Autonomous Skill Discovery for Foundation Model Internet Agents",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "VLM提议-执行-评估RL闭环，Web导航提升50%，但评估局限且消融不足",
+ "innovations": [
+  "提出Proposer-Agent-Evaluator(PAE)自主技能发现框架：利用VLM作为任务提议者和评估者，智能体策略执行任务，评估者提供0/1稀疏奖励信号进行RL训练",
+  "发现并利用VLM的不对称能力：VLM擅长构思任务和判断成败，但不擅长实际执行导航，以此弱模型提议/评估来提升强智能体",
+  "设计上下文感知任务提议者，仅从网站名称或用户截图即可生成可行任务指令，并加入反思步骤提升泛化"
+ ],
+ "method_framework": "PAE系统包含三个组件：(1)上下文感知任务提议者，从网站信息（名称/截图/演示）生成自然语言任务指令；(2)智能体策略（基于VLM）接收网页截图和编号元素标记，输出点击/输入等操作；(3)基于图像的自动评估者，仅根据最终截图判断任务成败给出稀疏0/1奖励。三者构成在线RL训练闭环，无需人工标注任务模板。",
+ "experiment_framework": "在WebVoyager（真实在线网站如Amazon）和WebArena（自托管网站如PostMill）上验证，包含100+领域。基线包括LLaVa-1.6-7B/34B微调版、Qwen2VL-72B。指标为任务成功率。PAE使LLaVa-1.6-7B达到与LLaVa-1.6-34B微调版和Qwen2VL-72B相当的性能，相对提升约50%。",
+ "takeaways": [
+  "利用VLM作为提议者和评估者的不对称能力，可以实现无需人工标注任务模板的自主技能发现",
+  "自主发现的技能可以零样本泛化到未见任务和未见网站",
+  "即使提议者/评估者模型弱于智能体模型，仍能有效提升智能体性能"
+ ],
+ "weaknesses": [
+  "评估仅在Web导航场景验证，未展示在其他智能体领域（如机器人、GUI）的可扩展性",
+  "评估者基于图像判断成败存在误判风险，文中未量化评估者准确率对最终性能的影响",
+  "前9页内消融实验细节不完整，缺少对反思步骤和上下文信息来源的充分消融对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

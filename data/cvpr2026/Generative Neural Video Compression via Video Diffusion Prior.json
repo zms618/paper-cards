@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Generative Neural Video Compression via Video Diffusion Prior.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Generative Neural Video Compression via Video Diffusion Prior.pdf",
+ "title": "Generative Neural Video Compression via Video Diffusion Prior",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "将视频扩散先验引入压缩，提升超低比特率质量但计算成本高",
+ "innovations": [
+  "首个将视频扩散模型引入神经视频压缩的框架",
+  "基于流匹配的潜在空间联合细化机制",
+  "压缩感知适配器注入压缩域特征到扩散模型",
+  "两阶段训练策略对齐扩散流形与压缩潜在表示"
+ ],
+ "method_framework": "GNVC-VD结合时空潜在压缩与序列级生成细化，使用3D VAE编码视频为时空潜在序列，通过条件变换编码压缩，再利用预训练VideoDiT进行流匹配细化，最后3D VAE解码生成视频。",
+ "experiment_framework": "在HEVC-B、UVG和MCL-JCV数据集上评估，对比传统(HEVC/VVC)、神经(DCVC-FM/DCVC-RT)和生成(PLVC/GLC-Video)编解码器，使用LPIPS、DISTS、CLIP-F、Ewarp和FVD等指标。",
+ "takeaways": [
+  "视频扩散先验可有效解决超低比特率下的时间闪烁问题",
+  "流匹配与压缩感知适配器的结合能高效补偿量化失真",
+  "两阶段训练策略有效弥合扩散流形与压缩潜在表示的差距"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，需要多个迭代步骤",
+  "依赖预训练的视频扩散模型，可能限制在特定领域的应用",
+  "未充分讨论模型在不同视频类型上的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视频压缩与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

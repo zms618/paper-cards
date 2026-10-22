@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/A Unified Framework for Industrial Cel-Animation Colorization with Temporal-Structural Awareness.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Unified Framework for Industrial Cel-Animation Colorization with Temporal-Structural Awareness.pdf",
+ "title": "A Unified Framework for Industrial Cel-Animation Colorization with Temporal-Structural Awareness",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.0,
+  "overall": 4.8
+ },
+ "one_line": "常规组合光流与注意力，工业动画涂色指标提升有限",
+ "innovations": [
+  "子集匹配：把多关键帧中标签索引相同的段合并为一个参考段子集，网络直接预测目标段属于 K 个子集中的哪一个（S_final∈R^{N_i×K}），一次性处理段在新旧关键帧中突然出现或消失的情形",
+  "门控分数融合 S_final=Σ_k G_k⊙S_{k→i}：由匹配分支的 affinity score 超池化后投影出段级、数据相关的 (0,1) 门，综合相对时间与区域相似度权衡多关键帧匹配分",
+  "多尺度特征匹配模块：在 d={4,8,16} 三个分辨率上用 Enc_line 取 Q/K、Enc_color 取 V 做 cross-attention（softmax(QK^T/√D)V），把高阶结构对齐补在 RAFT 光流之外，缓解大幅运动与形变下的错配"
+ ],
+ "method_framework": "RAFT 光流从两端关键帧 warp 出粗色图；U-Net 式 Enc_line/Enc_color 在 d=4/8/16 做 cross-attention 得到 F_{k→i}，与粗色叠加后经 SPP 段聚合、相对时间与位置嵌入进 9 层 multiplex transformer；门控融合多关键帧匹配分并用交叉熵预测段标签。",
+ "experiment_framework": "Paint Bucket Colorization 公开集与自建 Industrial Animation 集（15 段 200 帧），S=3/5/10；对比 BasicPBC、Ant、RAFT、LVCD、Manganinja、Tooncrafter；指标分段 Acc/Acc-Thres 与像素 Acc/F-Acc/B-MIoU。",
+ "takeaways": [
+  "段级标签准确率（并忽略 <10 像素小段）比像素指标更贴近工业涂色的实际需求，也更易与人工填色流程对齐",
+  "光流做像素级匹配、高阶特征 cross-attention 做结构级匹配并行使用，后者专门补大幅形变下的段对应",
+  "长序列的相对时间需归一化到 [−1,1] 后拆成符号与绝对值分别由 MLP 编码，否则远近关键帧的时间信息会串进段特征"
+ ],
+ "weaknesses": [
+  "消融无法归因且指标接近噪声：去掉 GSF 的版本在 S=3 的 PB 集上 Acc 0.8350 只与 BasicPBC 相近、而去掉 MS-MA 的版本已到 0.8845，说明两模块贡献高度耦合；全部指标为单次运行无方差，0.006 级的 Pixel-Acc 差异（0.9912 vs 0.9908）无从判断显著性",
+  "子集匹配与门控融合虽宣称利用时序，实验却只用到 2 个关键帧、序列最长 S=10 且推理时硬性限制参考帧数为 2；相对时间范围 T_max 固定为 50，正文未见其敏感性分析",
+  "一半主实验集 Industrial Animation Dataset 为作者自建（15 段、200 张、分辨率不统一且不公开），可比性存疑；Ant[3] 在该集上直接缺整行结果（预训练权重不可得），像素级基线也都需额外后处理（按段平均 RGB 再对齐参考色）才能算 Acc，公平性交代不充分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "动画涂色与可靠性主线无交点，仅为常规视觉任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

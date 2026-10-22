@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/CrowdGaussian_Reconstructing High-Fidelity 3D Gaussians for Human Crowd from a.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/CrowdGaussian_Reconstructing High-Fidelity 3D Gaussians for Human Crowd from a.pdf",
+ "title": "CrowdGaussian Reconstructing High-Fidelity 3D Gaussians for Human Crowd from a",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "两阶段框架重建人群3D高斯，解决遮挡但依赖预训练模型",
+ "innovations": [
+  "LORM自监督适应框架处理遮挡",
+  "CrowdRefiner单步扩散模型",
+  "自校准学习策略SCL"
+ ],
+ "method_framework": "两阶段框架：第一阶段用LORM从遮挡图像重建完整3D人体，第二阶段用CrowdRefiner细化高斯表示",
+ "experiment_framework": "THuman2.1和HuGe100K数据集，对比PSHuman、SyncHuman、LHM、IDOL等方法，使用PSNR、SSIM、LPIPS指标",
+ "takeaways": [
+  "自监督适应框架可解决3D重建中的遮挡问题",
+  "单步扩散模型结合几何先验可有效提升细节质量"
+ ],
+ "weaknesses": [
+  "依赖预训练大模型，可能受限于其表示能力",
+  "实验主要在合成数据上进行，真实场景泛化能力需进一步验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "3D重建与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

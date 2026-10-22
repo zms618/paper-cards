@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/P(all-atom) Is Unlocking New Path For Protein Design.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/P(all-atom) Is Unlocking New Path For Protein Design.pdf",
+ "title": "P(all-atom) Is Unlocking New Path For Protein Design",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.75
+ },
+ "one_line": "双轨all-atom联合分布建模，提升蛋白生成可设计性但缺乏实验验证",
+ "innovations": [
+  "直接学习all-atom联合分布P(structure,seq)，同时建模序列与结构的相互依赖",
+  "双轨框架把蛋白token化为残基级与原子级表示，经多层解码融合",
+  "提出atom14表示统一描述未知侧链坐标，保证生成构象的物理高保真"
+ ],
+ "method_framework": "摒弃固定backbone或hallucination后接序列模型的两段式，直接对all-atom的联合分布建模；用残基级与原子级双轨编码，配合‘遍历’表示与recycling机制逐层解码；atom14表示统一处理未知侧链坐标。",
+ "experiment_framework": "在蛋白设计任务上评测；对比现有backbone/hallucination类生成模型；指标为可设计性(designability)、多样性与新颖性(novelty)。",
+ "takeaways": [
+  "all-atom联合建模可更好刻画序列-结构相互依赖",
+  "atom14统一表示提升了生成构象的物理保真",
+  "在可设计性、多样性、新颖性三项上全面提升"
+ ],
+ "weaknesses": [
+  "与医学影像、多模态大模型推理主线关联弱",
+  "缺真实湿实验验证，可设计性多为计算预测",
+  "前9页未见对大蛋白/复合物场景扩展性的充分讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

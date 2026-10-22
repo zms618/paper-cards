@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/BinaryAttention_One-Bit QK-Attention for Vision and Diffusion Transformers.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/BinaryAttention_One-Bit QK-Attention for Vision and Diffusion Transformers.pdf",
+ "title": "BinaryAttention One-Bit QK-Attention for Vision and Diffusion Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "1位QK注意力加速Transformer，但计算量仍高于W8A8方法",
+ "innovations": [
+  "1位QK注意力机制的理论证明",
+  "引入可学习偏置项缓解1位量化信息损失",
+  "混合量化方案实现端到端加速"
+ ],
+ "method_framework": "将查询和键量化为1位表示，使用XNOR和popcount计算相似度，引入偏置增强，并对注意力权重和值进行8位量化",
+ "experiment_framework": "ImageNet-1K分类、目标检测、分割和图像生成任务，与FlashAttention2和SageAttention比较速度和精度",
+ "takeaways": [
+  "1位注意力在理论上能保持相似性关系",
+  "硬件感知的优化实现显著加速",
+  "偏置项设计对保持注意力分布至关重要"
+ ],
+ "weaknesses": [
+  "与W8A8量化方法相比计算量仍较高",
+  "在低分辨率下速度优势不明显"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "1位注意力加速技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

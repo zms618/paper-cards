@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Quest A Robust Attention Formulation using Query-Modulated Spherical Attention.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Quest A Robust Attention Formulation using Query-Modulated Spherical Attention.pdf",
+ "title": "QUEST: A Robust Attention Formulation using Query-Modulated Spherical Attention",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.2
+ },
+ "one_line": "球面约束注意力缓解logit爆炸，但创新性与证据有限。",
+ "innovations": [
+  "揭示标准缩放点积注意力中Q/K向量范数任意增大导致logit爆炸、进而引发训练不稳定的机制，并用toy例子说明模型陷入次优解",
+  "提出QUEST球面注意力：将Key约束到超球面以消除范数漂移，同时保留Query对注意力分布锐度的灵活调制",
+  "作为标准注意力的drop-in替换，在视觉为主及其他域带来稳定训练与一致性能增益"
+ ],
+ "method_framework": "把Key投影约束在单位超球面以消除范数导致的logit爆炸；保留Query对注意力分布锐度（温度）的调制；替换标准softmax注意力即得QUEST，不改变整体Transformer结构。",
+ "experiment_framework": "以视觉（ViT）为主并扩展其他域；对比标准注意力在训练稳定性、干净精度、数据腐蚀与对抗攻击鲁棒性上的表现。",
+ "takeaways": [
+  "QUEST训练无明显不稳定，且在多种超参与域下获得一致性能提升",
+  "球面约束使模型学到更鲁棒的模式，对数据腐蚀与对抗攻击更鲁棒",
+  "Q/K范数失控是注意力训练不稳定与注意力过度集中于少数token的一个被忽视来源"
+ ],
+ "weaknesses": [
+  "改进本质是注意力归一化类改造，新颖性增量相对已有归一化方法有限",
+  "鲁棒性提升幅度与代表性强基线（对抗训练/已有鲁棒注意力）的系统对比在前9页不充分",
+  "主要在视觉域验证，对LLM等大规模自回归场景的稳定性与效率收益证据有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "注意力机制稳定性改进与视觉鲁棒性训练，符合可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

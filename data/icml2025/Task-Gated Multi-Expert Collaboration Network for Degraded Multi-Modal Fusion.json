@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Task-Gated Multi-Expert Collaboration Network for Degraded Multi-Modal Fusion.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Task-Gated Multi-Expert Collaboration Network for Degraded Multi-Modal Fusion.pdf",
+ "title": "Task-Gated Multi-Expert Collaboration Network for Degraded Multi-Modal Image Fusion",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 6.0,
+  "overall": 5.6
+ },
+ "one_line": "任务门控多专家网络处理退化多模态图像融合，但未解决未知退化问题",
+ "innovations": [
+  "两阶段任务感知门控：退化感知门控按退化类型动态分配专家组做复原；融合感知门控平衡跨模态信息保留",
+  "多专家协作框架分离复原与融合子任务，解决两任务信息处理的内在冲突",
+  "设计两阶段训练策略统一复原与融合学习"
+ ],
+ "method_framework": "输入退化的可见光与红外图像；第一阶段退化感知门控根据噪声/模糊/条纹类型路由到不同复原专家组；第二阶段融合感知门控在复原后特征间做跨模态加权整合；MoE结构使不同退化类型走不同专家路径；两阶段训练先复原后融合再联合微调。",
+ "experiment_framework": "在退化多模态图像融合基准上对比DRMF (ACM MM 2024)、Text-IF (CVPR 2024)等SOTA，指标为融合质量与复原保真度（前9页未列全数值）。",
+ "takeaways": [
+  "真实场景多模态图像融合需先处理退化再融合，端到端单任务会妥协",
+  "MoE+任务门控可同时应对多种退化类型，比单一复原网络更鲁棒",
+  "两阶段训练可缓解复原与融合目标冲突"
+ ],
+ "weaknesses": [
+  "门控依赖退化类型先验，未知退化类型下的路由失败未分析",
+  "MoE增加推理计算量，实际部署成本未量化",
+  "前9页未给出具体指标数值",
+  "域为可见光-红外图像融合（搜救/安防），非医学影像也非多模态LLM推理"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

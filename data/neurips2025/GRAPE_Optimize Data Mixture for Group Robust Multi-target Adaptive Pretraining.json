@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/GRAPE_Optimize Data Mixture for Group Robust Multi-target Adaptive Pretraining.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/GRAPE_Optimize Data Mixture for Group Robust Multi-target Adaptive Pretraining.pdf",
+ "title": "GRAPE : Optimize Data Mixture for Group Robust Multi-target Adaptive Pretraining",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "多目标域重加权框架提升多任务推理，但计算开销大且未在大模型验证",
+ "innovations": [
+  "提出首个多源多目标域重加权框架GRAPE",
+  "使用改进率(RoI)作为任务学习进度评估指标",
+  "通过minimax优化联合优化域权重和任务权重",
+  "动态课程学习机制优先处理学习缓慢的任务"
+ ],
+ "method_framework": "GRAPE采用minimax优化框架，内层使用分布式鲁棒优化(DRO)调整任务权重，优先关注改进率最低的任务；外层优化域权重以最大化这些困难任务的损失降低。",
+ "experiment_framework": "在ClimbLab和SlimPajama数据集上评估，对比6种基线方法；使用6个推理任务和8个低资源语言作为目标指标，评估5-shot准确率和困惑度。",
+ "takeaways": [
+  "改进率(RoI)作为任务学习进度评估指标有效且计算高效",
+  "动态课程学习机制能自动识别任务难度并调整优先级",
+  "域重加权与任务重加权结合能显著提升多任务性能"
+ ],
+ "weaknesses": [
+  "计算开销增加约15%，内存开销增加约25%",
+  "理论分析依赖于强凸性假设，在实际非凸LLM预训练中收敛保证较弱",
+  "仅在小规模模型(125M-0.7B)上验证，未在更大规模模型上测试"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

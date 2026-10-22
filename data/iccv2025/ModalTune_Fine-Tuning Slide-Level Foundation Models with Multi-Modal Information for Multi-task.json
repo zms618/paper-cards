@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/ModalTune_Fine-Tuning Slide-Level Foundation Models with Multi-Modal Information for Multi-task.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/ModalTune_Fine-Tuning Slide-Level Foundation Models with Multi-Modal Information for Multi-task.pdf",
+ "title": "ModalTune Fine-Tuning Slide-Level Foundation Models with Multi-Modal Information for Multi-task",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "适配器整合多模态与文本编码的多任务病理模型",
+ "innovations": [
+  "Modal Adapter无需修改SLFM权重即可整合新模态",
+  "使用LLM将任务编码为文本实现统一多任务学习",
+  "跨任务和癌症类型的泛化框架"
+ ],
+ "method_framework": "基于预训练SLFM(Gigapath)，通过Modal Adapter整合多模态特征，使用LLM编码任务为文本嵌入，通过KL散度对齐多模态特征与文本特征",
+ "experiment_framework": "TCGA四个癌症数据集(BRCA, NSCLGG, NSCLC, RCC)训练，COADREAD和BLCA作为OOD测试，评估亚型分类和生存预测",
+ "takeaways": [
+  "模态间交互需要鲁棒策略而非简单融合",
+  "文本嵌入统一多任务学习简化训练流程",
+  "保持预训练模型权重可提高泛化能力"
+ ],
+ "weaknesses": [
+  "仅测试了转录组学一种额外模态",
+  "泛化性能在跨癌症类型时有所下降",
+  "依赖特定文本编码器(CONCH)"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态病理模型与可靠性主线交点，OOD泛化有防守价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

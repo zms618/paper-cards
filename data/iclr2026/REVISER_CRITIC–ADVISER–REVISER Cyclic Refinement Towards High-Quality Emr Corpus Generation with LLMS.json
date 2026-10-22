@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/REVISER_CRITIC–ADVISER–REVISER Cyclic Refinement Towards High-Quality Emr Corpus Generation with LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/REVISER_CRITIC–ADVISER–REVISER Cyclic Refinement Towards High-Quality Emr Corpus Generation with LLMS.pdf",
+ "title": "Critic-Adviser-Reviser Cyclic Refinement: Towards High-Quality EMR Corpus Generation with LLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "三阶段LLM循环精炼合成EMR，临床质量原则显式嵌入，下游任务超越基线。",
+ "innovations": [
+  "提出Critic-Adviser-Reviser三智能体循环精炼框架，在语料/章节/文档三个粒度逐层提升EMR质量",
+  "将临床质量原则（分布对齐/章节完整性/文档一致性）显式嵌入生成过程，而非仅模仿真实病历",
+  "无需真实EMR文本训练或提示即可生成高质量合成病历，在下游诊断预测等临床任务上超越基线"
+ ],
+ "method_framework": "LLM-CARe分三阶段精炼：(1)语料级——对齐数据集真实分布；(2)章节级——确保各章节完整性；(3)文档级——保证单条记录内部逻辑一致性。每阶段中Critic评估草稿、Adviser提供针对性反馈、Reviser更新记录，形成循环精炼。三智能体角色随阶段适配不同质量维度。",
+ "experiment_framework": "在含192k记录、302种疾病的真实EMR数据集上验证；用强LLM作为裁判评估生成质量+统计对比真实EMR；下游任务评测：诊断预测、检查推荐、治疗推荐；对比GAN-based和自回归EMR生成基线。",
+ "takeaways": [
+  "多智能体循环精炼可在无需真实EMR的情况下生成满足临床质量原则的合成病历",
+  "分粒度（语料→章节→文档）逐步精炼比一次性生成更能同时保证全局分布和局部一致性",
+  "合成EMR在下游临床任务上的效用可通过质量原则引导的精炼显著提升"
+ ],
+ "weaknesses": [
+  "Critic/Adviser/Reviser均依赖LLM，其临床判断能力本身的可靠性未充分验证",
+  "循环精炼的多轮交互增加了推理成本，效率与质量的权衡未量化",
+  "前9页未见与真实EMR训练的下游模型性能差距的详细分析，合成数据与真实数据的效用上限不明"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学EMR生成与可靠性主线交点，临床质量原则显式嵌入",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

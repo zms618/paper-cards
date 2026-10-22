@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/ADCD-Net_Robust Document Forgery Localization via Adaptive DCT Feature.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/ADCD-Net_Robust Document Forgery Localization via Adaptive DCT Feature.pdf",
+ "title": "ADCD-Net: Robust Document Image Forgery Localization via Adaptive DCT Feature and Hierarchical Content Disentanglement",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "自适应DCT特征与内容解耦，但门控机制与消融实验存疑",
+ "innovations": [
+  "把「8×8 DCT 块是否对齐」建模成二分类任务，用 Edct 末层头 fasp(FL_dct) 输出概率 ŝ_aln，统一加权各层融合 F_{fuse}^{i+1}=f(F_{rgb}^i+ŝ_aln·F_{dct}^i)，对齐被打乱时自动退回 RGB 伪迹，缓解 DTD 类方法过拟合 DCT 的脆性问题。",
+  "HCD 每层用 MLP 把融合特征解耦为 F_cnt、F_frg 两支，并将 F_frg 随机空间打乱后与 F_cnt 重组，要求 Drec 重建 [X, X_dct] 两个版本，用重建一致性堵住 U 形网络的内容捷径，抑制文字-背景特征偏置。",
+  "PPE 用 OCR 背景掩按 p_prs=ΣX_bg·F_frg/ΣX_bg 估计「原始原型」，以余弦相似度生成多尺度 pristine map，再经两层 MLP 化为 scale/bias 对末层特征做逐元素仿射调制，放大细微篡改区响应。"
+ ],
+ "method_framework": "双路提取 RGB 与 8×8 DCT 特征，用二分类预测的对齐分数 ŝ_aln 加权融合；HCD 以每层 MLP 解耦内容/篡改两支、打乱重组后重建防捷径；凭 OCR 背景掩算原始原型做 cos 相似度调制，解码输出篡改图。",
+ "experiment_framework": "DocTamper 训练，跨域测 Test(3万)/FCD/SCD；竞品 MVSS-Net、CAT-Net、TruFor、APSC-Net、MA-Net、DTD、PS-Net、ConvNext-Uper；指标 P/R/F1 与 FAR，另测噪声/模糊/缩放/裁切/JPEG 扰动。",
+ "takeaways": [
+  "对「只在特定前置条件下才成立」的取证伪迹（如 8×8 DCT 块对齐），与其硬拼特征，不如学一个 gate 判断何时启用，这是低成本高收益的通用降噪手段。",
+  "「随机打乱某一支再重组重建」的强制解耦写法比堆对抗损失更轻量，可搬到任意多分支解耦的密集预测任务。",
+  "极类不平衡的篡改定位上，正负样本只在图内取的表内 SupCon 对比损失，比全局对比更不易被背景支配。"
+ ],
+ "weaknesses": [
+  "消融表 Table 3 自相矛盾：ŝ_aln=0（完全弃用 DCT）在 7 种扰动中有 5 种 F1 更高、平均高出 8.37%，说明自适应门控多数情况下并未真正带来增益，正文只以「总体最高」草率收尾。",
+  "主表与消融均无多种子方差/显著性检验；标题主打的 20.79% 平均提升来自 Fig.4 曲线（正文无数值表），且 HCD、PPE 的消融在正文截断处丢失，无法核验二者各自的贡献。",
+  "PPE 依赖「背景绝大多数原始」先验并外接 OCR 取背景掩，一旦篡改落在背景区（大面积印章/底纹替换）即失效，正文未见该情形的失败案例分析。",
+  "对齐标签完全由随机 resize/crop/像素移位人工构造，真实世界的对齐破坏（滚动快门、跨图拼接、扫描重采样）未纳入，门控泛化性缺少对照实验。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "文档篡改定位属于医学影像可靠性外延，方法设计有可迁移解耦模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

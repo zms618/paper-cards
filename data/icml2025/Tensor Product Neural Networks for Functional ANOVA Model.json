@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Tensor Product Neural Networks for Functional ANOVA Model.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Tensor Product Neural Networks for Functional ANOVA Model.pdf",
+ "title": "Tensor Product Neural Networks for Functional ANOVA Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 6.25
+ },
+ "one_line": "解决函数ANOVA分解不唯一问题，但实证不足且与主线弱相关。",
+ "innovations": [
+  "指出现有函数ANOVA神经网络（NAM/NBM）因分解不唯一而分量估计不稳定的根本问题",
+  "提出ANOVA-TPNN，基于张量乘积基展开构造网络结构，理论上保证唯一的ANOVA分解",
+  "证明ANOVA-TPNN对任意光滑函数的逼近能力，同时保持可解释性"
+ ],
+ "method_framework": "把目标函数按函数ANOVA分解为常数项+一阶项+二阶交互项；用张量乘积基展开构造每个分量对应的子网络，通过正交化/中心化约束使分解唯一；整个网络可端到端SGD训练，训练后每个分量直接可读，提供全局可解释性。",
+ "experiment_framework": "在表格数据回归/分类任务上对比NAM、NBM等现有可解释神经网络，指标为预测精度与分量估计稳定性（前9页未列全数值），报告ANOVA-TPNN分量估计更稳定且精度不损失。",
+ "takeaways": [
+  "函数ANOVA的可解释性依赖于分解唯一性，现有深度ANOVA网络在这一点上是病态的",
+  "张量乘积基展开可在保持深度网络可训练性的同时施加正交约束，得到唯一分解",
+  "唯一分解使全局特征重要性/交互效应的解释可信，而非局部近似（LIME/SHAP）"
+ ],
+ "weaknesses": [
+  "张量乘积参数量随维度增长快，高维特征下可扩展性未充分验证",
+  "前9页未给出具体数据集与稳定性/精度数值，实证强度只能定性",
+  "仅显式建模到二阶交互，更高阶效应需额外扩展",
+  "域为可解释表格学习，与医学影像/多模态大模型推理主线仅在可信AI维度弱相关"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

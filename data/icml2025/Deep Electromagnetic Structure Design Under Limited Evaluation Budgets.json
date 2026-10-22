@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Deep Electromagnetic Structure Design Under Limited Evaluation Budgets.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Deep Electromagnetic Structure Design Under Limited Evaluation Budgets.pdf",
+ "title": "Deep Electromagnetic Structure Design Under Limited Evaluation Budgets",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "四叉树渐进搜索加一致性采样，减少电磁设计仿真评估次数。",
+ "innovations": [
+  "提出PQS：将类图像布局转为quadtree分层表示，实现从全局图案到局部细节的渐进搜索，避免高维空间穷举",
+  "设计一致性驱动的样本选择机制，通过预测一致性量化预测可靠性，平衡exploitation/exploration",
+  "降低对高精度预测器的依赖，在有限仿真预算下完成EMS设计"
+ ],
+ "method_framework": "把二值布局图用quadtree分层编码；优化器在各层节点上渐进剪枝/扩展；候选设计选择时用多个预测器/视图的一致性作为可靠性代理，选择最值得仿真评估的样本；最终目标为O(y_i)。",
+ "experiment_framework": "在两个真实工程任务（Dual-layer Frequency Selective Surface与High-gain Antenna）上对比预测器/生成式baseline，指标为达到目标性能所需的仿真评估次数与设计周期天数。",
+ "takeaways": [
+  "PQS在有限预算下优于baseline，相比生成式方法减少75-85%评估成本，节省20-39天设计周期",
+  "quadtree分层渐进搜索比在原始高维空间直接搜索更高效",
+  "预测一致性可作为无需额外标注的可靠性信号指导样本选择"
+ ],
+ "weaknesses": [
+  "属工程设计应用，与可靠性/可信AI主线相关性弱",
+  "一致性作为可靠性代理较启发式，缺乏与真实预测误差的严格校准分析",
+  "前9页未给出完整数值表，具体性能指标需看实验章节"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

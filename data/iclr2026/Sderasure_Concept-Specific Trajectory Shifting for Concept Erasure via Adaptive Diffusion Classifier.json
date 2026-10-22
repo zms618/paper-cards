@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Sderasure_Concept-Specific Trajectory Shifting for Concept Erasure via Adaptive Diffusion Classifier.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sderasure_Concept-Specific Trajectory Shifting for Concept Erasure via Adaptive Diffusion Classifier.pdf",
+ "title": "SDErasure: Concept-Specific Trajectory Shifting for Concept Erasure via Adaptive Diffusion Classifier",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "扩散分类器定位关键步，轨迹平移做最小侵入概念擦除。",
+ "innovations": [
+  "指出现有post-finetuning擦除用统一策略破坏参数分布，导致擦除概念图异常、无关概念质量下降。",
+  "关键洞察：每个概念生成只依赖窄子集的关键时间步；据此做针对性干预。",
+  "三步：扩散分类器引导的步选择、Score Rematching损失（适配无锚擦除与有锚修改）、Quality Regulation（early-preserve+concept-retain）双维护质量。"
+ ],
+ "method_framework": "用扩散分类器定位目标概念生成依赖的关键时间步；仅在这些步上做轨迹平移/score重匹配，把目标概念的生成轨迹推离锚定概念；同时加early-preserve与concept-retain损失，保护无关概念质量。",
+ "experiment_framework": "在文生图扩散模型上做概念擦除；对比post-finetuning擦除方法；指标擦除成功率与生成质量FID；报告FID从9.51降到6.74同时消除目标概念。",
+ "takeaways": [
+  "概念生成是时间步局部的，只在关键步干预可大幅减小擦除的侵入性。",
+  "针对性轨迹平移+双维质量正则，可在擦除有害概念的同时保住整体生成质量。"
+ ],
+ "weaknesses": [
+  "属扩散模型概念擦除/安全方向，与多模态LLM推理/医学影像主线相关性中等。",
+  "依赖扩散分类器定位关键步，分类器误差会传递到擦除效果。",
+  "面对prompt改写/对抗绕过的鲁棒性前9页未充分评测。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "扩散模型概念擦除与可靠性主线交织，有可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

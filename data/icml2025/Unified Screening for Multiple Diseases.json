@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Unified Screening for Multiple Diseases.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Unified Screening for Multiple Diseases.pdf",
+ "title": "Unified Screening for Multiple Diseases",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 7.0,
+  "overall": 5.9
+ },
+ "one_line": "竞争风险下多病筛查优化，仅两病理论验证，缺乏真实数据",
+ "innovations": [
+  "把多病种统一筛查建模为referral问题，在竞争风险下选择激活哪些单病筛查策略子集",
+  "构建含疾病风险/预算约束/诊断误差限的优化框架，刻画最优referral策略的结构性质",
+  "两病情形证明一病的最优激活阈值依赖另一病风险，形成风险依赖的决策边界"
+ ],
+ "method_framework": "以QALY增益为目标、筛查成本预算B与假阳性误差为约束，把患者按风险向量x映射到4种(是否激活两病筛查)动作的策略q(a|x)；用Lagrange对偶求解，证明最优策略为阈值型且阈值随竞争风险耦合；诊断策略用似然比LR后验概率阈值gamma控制假阳性。",
+ "experiment_framework": "对比独立筛查(各病独立阈值)与统一筛查的QALY收益；主要为两病(N=2)理论刻画与数值/仿真验证，风险向量域取均匀分布，评估不同预算与误差约束下的决策边界差异。",
+ "takeaways": [
+  "统一筛查优于独立筛查，因为它显式权衡竞争风险与预算",
+  "一病的最优筛查激活阈值依赖另一病风险，决策边界呈风险依赖形态",
+  "框架可处理诊断误差限，保证假阳性率不超限"
+ ],
+ "weaknesses": [
+  "仅分析N=2两病情形，多病种组合边界数量组合爆炸，可扩展性未证",
+  "前9页内未见真实临床队列数据，多为合成/参数化数值，外推性存疑",
+  "诊断模型假设似然比可显式写出，真实多病临床场景建模困难"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

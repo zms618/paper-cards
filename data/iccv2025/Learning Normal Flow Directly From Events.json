@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/Learning Normal Flow Directly From Events.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Learning Normal Flow Directly From Events.pdf",
+ "title": "Learning Normal Flow Directly From Events",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "基于点编码的事件法向流估计，提升跨域鲁棒性但依赖真实光流监督",
+ "innovations": [
+  "基于VecKM的点编码事件法向流估计",
+  "双项损失函数引导法向流预测",
+  "基于旋转一致性的不确定性量化",
+  "结合IMU的法向流运动估计算法"
+ ],
+ "method_framework": "使用VecKM编码器将局部事件点云转换为向量表示，通过MLP预测法向流，采用径向和角向双项损失函数进行监督训练，支持多种数据增强提升跨域泛化能力。",
+ "experiment_framework": "在MVSEC、EVIMO2和DSEC数据集上进行评估，使用投影端点误差(PEE)和符号正确率(%Pos)作为指标，比较了MultiCM、E-RAFT、TCM等基线方法。",
+ "takeaways": [
+  "点编码方法在处理事件数据时具有独特优势，可产生时空锐利的预测",
+  "数据增强策略(如随机旋转)显著提升跨域泛化能力",
+  "不确定性量化对下游任务如运动估计有重要价值"
+ ],
+ "weaknesses": [
+  "在低分辨率、慢速静态场景中性能不如基于CNN的方法",
+  "依赖真实光流作为监督信号，获取成本高",
+  "未充分探讨计算效率与实时性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "事件法向流估计提升跨域鲁棒性，符合可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

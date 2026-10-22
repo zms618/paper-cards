@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Socialjax_An Evaluation Suite for Multi-Agent Reinforcement Learning In Sequential Social Dilemmas.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Socialjax_An Evaluation Suite for Multi-Agent Reinforcement Learning In Sequential Social Dilemmas.pdf",
+ "title": "SocialJax: An Evaluation Suite for Multi-Agent Reinforcement Learning in Sequential Social Dilemmas",
+ "scores": {
+  "novelty": 4,
+  "depth": 5,
+  "evidence": 6,
+  "relevance": 3.0,
+  "overall": 4.3
+ },
+ "one_line": "JAX重写MARL环境套件，提升效率但方法创新有限",
+ "innovations": [
+  "提供基于JAX的序贯社会困境MARL环境套件(9个环境)，把原本需上千CPU的Melting Pot类实验搬到GPU/TPU高效并行",
+  "公开配套基线算法实现，弥补Melting Pot基线代码不公开、可复现性差的问题",
+  "用Schelling图系统验证各环境确实刻画了个体-集体利益张力这一社会困境性质"
+ ],
+ "method_framework": "将Melting Pot式序贯社会困境环境用JAX重写，环境与算法同置于JAX以在加速器上向量化并行；保留部分可观测与社交泛化评测协议，提供Coins/Gift/Harvest/PrisonerDilemma等9个环境及标准baseline。",
+ "experiment_framework": "与Melting Pot RLlib基线对比实时吞吐量；在套件内跑通并验证基线MARL算法；用Schelling图检验各环境的社会困境动力学。",
+ "takeaways": [
+  "SocialJax训练pipeline相对Melting Pot RLlib基线实时性能至少快50x",
+  "公开基线提升了序贯社会困境MARL的可复现性",
+  "Schelling图验证保证这些环境确实捕捉社会困境结构"
+ ],
+ "weaknesses": [
+  "属MARL环境/基准工程，与可靠性、医学影像、多模态推理主线无关",
+  "主要贡献是效率与可复现性，方法/算法创新有限",
+  "评测协议仍以Melting Pot泛化范式为准，环境性质验证依赖Schelling图这一间接指标；前9页未见完整基线对比表"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.13,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 3,
+ "relevance_reason": "MARL环境工程，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

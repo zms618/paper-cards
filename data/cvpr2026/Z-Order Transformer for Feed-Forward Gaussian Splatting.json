@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Z-Order Transformer for Feed-Forward Gaussian Splatting.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Z-Order Transformer for Feed-Forward Gaussian Splatting.pdf",
+ "title": "Z-Order Transformer for Feed-Forward Gaussian Splatting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "Z序曲线排序高斯+稀疏注意力提升3DGS效率，但视图选择与跨域验证不足",
+ "innovations": [
+  "Z-order编码高斯表示：把像素级GS按Z曲线映射成紧凑2D序列，保持空间局部性，替代稠密体素网格(消除立方级内存/量化模糊)，支持高效聚合与前馈推断",
+  "稀疏注意力(ZFormer)：group attention+top-k attention利用Z序局部性，避开全注意力的平方开销，比纯卷积/纯全注意力都有明显提升",
+  "Z-order最大覆盖视图选择：推断时按覆盖冗余排序选视图(16视图ZS 28.73 vs RS 27.97 PSNR)，平衡质量与耗时"
+ ],
+ "method_framework": "多视图图像→编码器(全局+几何特征)→像素GS(深度warp初始化)→Z-order GS(多级聚合+稀疏注意力transformer)→高斯头预测属性→逆Z变换回3D；训练联合优化深度与SH(用像素颜色初始化SH稳定训练)。",
+ "experiment_framework": "RealEstate10K/DL3DV训练，ACID跨域测试；对比3DGS/MipSplatting/DepthSplat/AnySplat；PSNR/SSIM/LPIPS+运行时间+#GS数量(2/12视图)；6组消融(结构/策略/Z层数/视图选择)。",
+ "takeaways": [
+  "'空间序就是注意力先验'：用空间填充曲线(Z-order)把无序点集变成有序序列再配稀疏注意力，比体素/全注意力更省更准，可迁移到点云/粒子类前馈任务",
+  "'聚合粒度与渲染质量联动'：两级Z-order层(8.05×10⁵ GS)比单级(17.8×10⁵)大幅压缩高斯数且保质量，'更少原语'本身是重要指标",
+  "'视图冗余要用覆盖度量'：按最大覆盖选视图在变输入场景(2-12视图)稳定有效，比随机选择PSNR+0.7-1.0"
+ ],
+ "weaknesses": [
+  "与DepthSplat的PSNR差距(28.56 vs 26.05)主要来自2视图设定，12视图与更大视角的收益未充分展示；AnySplat对比含分辨率/架构差异",
+  "Z-order层数(2层最优)为经验选择，>2层退化机理未分析；视图选择算法的最坏情形(极端稀疏覆盖)未测",
+  "无多种子/方差报告；跨数据集ACID的提升包含训练域差异(RealEstate10K与DL3DV两训练集结果并列展示)，未见统一协议下的统计检验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3DGS效率优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

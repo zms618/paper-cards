@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RAQUA_toward Strategic Response GENERATION for Ambiguous Visual Questions.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RAQUA_toward Strategic Response GENERATION for Ambiguous Visual Questions.pdf",
+ "title": "rAQUA: Toward Strategic Response Generation for Ambiguous Visual Questions",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "模糊VQA数据集与策略选择，但标注主观性未量化",
+ "innovations": [
+  "提出AQUA数据集，将模糊VQA实例按模糊性质和程度分为四个等级（无歧义/可从上下文推断/多合理答案需列举/高度模糊需澄清）",
+  "训练VLM策略感知响应生成：SFT建立策略空间，GRPO优化策略对齐，使模型根据模糊类型自适应选择响应策略",
+  "发现主流开源和商用VLM（GPT/Gemini/Qwen）在模糊VQA中普遍过度自信，不主动寻求澄清或承认不确定性"
+ ],
+ "method_framework": "AQUA数据集将VQA按模糊度分四级：L0无歧义直接回答，L1可从上下文推断指代，L2多合理答案需列举选项，L3高度模糊需请求澄清。先用SFT教模型策略空间，再用GRPO奖励策略对齐输出，使模型根据模糊等级自适应选择响应策略。",
+ "experiment_framework": "评测多种开源和商用VLM（GPT-5, Gemini 2.5, Qwen等）在AQUA上的策略选择能力；对比SFT+GRPO微调前后；分析错误模式；验证策略响应的有效性。",
+ "takeaways": [
+  "现有VLM在模糊VQA中普遍过度自信，缺乏识别模糊和选择合适响应策略的能力",
+  "模糊度应分级处理，而非简单的二值（回答或提问）策略",
+  "SFT+GRPO可有效训练VLM根据模糊类型自适应选择响应策略"
+ ],
+ "weaknesses": [
+  "四级模糊分类的标注主观性和一致性未充分量化",
+  "仅在视觉问答场景验证，对其他多模态任务（如图像描述、对话）的迁移性未知",
+  "前9页未见与现有模糊VQA方法的系统对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "模糊VQA策略选择，但未量化标注主观性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

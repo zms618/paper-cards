@@ -1,0 +1,41 @@
+{
+ "title": "Target-Aware Video Diffusion Models",
+ "one_line": "目标感知视频扩散模型，通过掩码指定目标并引导交互动作生成。",
+ "innovations": [
+  "将目标感知引入image-to-video生成：以分割掩码指定目标对象，无需提前提供动作轨迹等稠密线索",
+  "引入特殊token[TGT]编码目标空间信息，并加交叉注意力损失将其cross-attention图对齐到输入目标掩码",
+  "选择性地仅对语义最相关的注意力区域与transformer block施加该损失，提升精度"
+ ],
+ "method_framework": "在基线image-to-video扩散模型上扩展为额外接收目标掩码输入；文本提示中加入[TGT]token。微调时用交叉注意力损失强制[TGT]的cross-attention图与输入目标掩码对齐，使文本条件获得空间grounding；损失仅施加于最相关区域与block。模型可作为运动规划器推断人-物交互。",
+ "experiment_framework": "在新策划数据集上微调；对比现有target-unaware及稠密控制(深度/边缘/光流/轨迹)方案；指标为actor与指定目标交互的准确性；下游应用含零样本3D HOI动作合成(带物理合理性)与长时视频创作；并验证对掩码质量变化的鲁棒性及对动物/机械手等其他agent的泛化。",
+ "takeaways": [
+  "仅用掩码+文本即可让视频模型学会对指定目标执行定向动作，无需预先给定动作轨迹",
+  "交叉注意力对齐损失是注入目标空间感知的关键，仅加掩码输入不足以保证target-awareness",
+  "在人类视频上训练的模型可无缝泛化到动物与机械手等其他agent"
+ ],
+ "weaknesses": [
+  "依赖目标掩码（即使可半自动获得），对复杂多目标/遮挡场景的处理能力未充分验证",
+  "交互精度主要靠定性与下游展示，定量的人机交互成功指标与人评规模有限",
+  "作为世界模型/运动规划器的物理正确性与长时一致性仍偏定性，缺少严格物理评测"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Target-Aware Video Diffusion Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Target-Aware Video Diffusion Models.pdf",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视频生成与可靠性主线无实质交点，仅具知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

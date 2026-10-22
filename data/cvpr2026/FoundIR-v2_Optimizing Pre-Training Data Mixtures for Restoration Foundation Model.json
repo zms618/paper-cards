@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/FoundIR-v2_Optimizing Pre-Training Data Mixtures for Restoration Foundation Model.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/FoundIR-v2_Optimizing Pre-Training Data Mixtures for Restoration Foundation Model.pdf",
+ "title": "FoundIR-v2 Optimizing Pre-Training Data Mixtures for Restoration Foundation Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "动态数据混合与MoE调度提升图像修复，但规模与扩展性受限",
+ "innovations": [
+  "数据均衡调度范式动态优化不同任务数据混合比例",
+  "MoE驱动的调度器自适应分配任务特定的扩散先验",
+  "高质量GT数据过滤减轻数据混合训练中的目标冲突"
+ ],
+ "method_framework": "FoundIR-v2采用双调度策略：数据均衡调度动态优化训练数据混合比例，MoE驱动调度器自适应分配任务特定的扩散先验，结合VAE编码器和SDXL骨干网络进行生成式预训练。",
+ "experiment_framework": "在多个公开基准数据集上评估，包括去模糊、去雾、去雨、低光增强等任务，使用PSNR、SSIM和感知指标进行量化比较，与多种先进方法进行对比。",
+ "takeaways": [
+  "数据混合比例对多任务修复模型性能有显著影响",
+  "动态调整数据比例可提升模型在早期学习阶段的综合修复能力",
+  "任务特定的扩散先验分配可提高不同退化类型的修复质量"
+ ],
+ "weaknesses": [
+  "仅在一个NVIDIA H20 GPU上训练，可能限制模型规模",
+  "数据清洗过程依赖多模态IQA模型，可能引入额外误差",
+  "未充分探讨模型在不同硬件资源下的扩展性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "图像修复任务与可靠性主线无直接交点，仅属常规扎实工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

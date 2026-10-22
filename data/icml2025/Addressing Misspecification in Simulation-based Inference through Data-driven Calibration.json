@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Addressing Misspecification in Simulation-based Inference through Data-driven Calibration.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Addressing Misspecification in Simulation-based Inference through Data-driven Calibration.pdf",
+ "title": "Addressing Misspecification in Simulation-based Inference through Data-driven Calibration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 6.8
+ },
+ "one_line": "OT耦合NPE后验，小校准集缓解仿真误设，但假设限制适用场景",
+ "innovations": [
+  "将仿真-真实观测间的误设差距形式化为半平衡最优传输（OT）耦合问题，无需对误设性质做额外假设",
+  "提出RoPE算法，基于NPE后验与OT耦合的混合估计真实观测后验，通过熵正则化γ控制校准与信息量的平衡",
+  "推导了RoPE的自校准性质：当仿真数量趋于无穷时，估计后验的边缘分布收敛于先验分布"
+ ],
+ "method_framework": "RoPE在神经后验估计（NPE）基础上，引入小规模真实数据校准集。核心假设：给定仿真观测xs，真实观测xo不再包含参数θ的额外信息（xo⊥θ|xs）。通过求解半平衡熵正则化OT问题，学习真实观测与仿真观测间的耦合矩阵P*。最终后验估计为：p(θ|xo) = Σ α_ij * p(θ|x_js)，其中α_ij由OT耦合矩阵归一化得到。OT代价函数通过微调NPE的特征提取器在真实数据上学得。",
+ "experiment_framework": "在4个合成任务和2个真实世界任务（光隧道、风洞）上验证，包含血流动力学（Hemodynamics）医学相关任务。基线包括NPE、NNPE、J-NPE、NPE-RS、HVAE、MLP、tuning-only、OT-only。指标为LPP（平均后验对数概率，衡量信息量）和ACAUC（平均覆盖AUC，衡量校准度）。测试集2000个标注样本，重复3次随机种子。",
+ "takeaways": [
+  "RoPE在严重误设仿真器下 consistently 获得比标准NPE更好的校准度和信息量平衡",
+  "半平衡OT的边际松弛参数τ可使方法对先验误设具有鲁棒性",
+  "熵正则化γ提供了从保守（趋近先验）到自信（稀疏混合）的可调控制旋钮"
+ ],
+ "weaknesses": [
+  "核心假设xo⊥θ|xs在高度误设场景下可能不成立，限制了方法适用范围",
+  "校准集虽小但仍需真实标注参数θ，在某些昂贵测量场景下获取成本高",
+  "ACAUC指标仅评估1D边缘区间校准，未验证多维联合后验的校准质量"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "误设校准直击可靠性主线，医学任务落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "title": "How Do Large Language Monkeys Get Their Power (Laws)?",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "重尾分布解释LLM多采样幂律scaling，但缺乏可操作改进方法",
+ "innovations": [
+  "识别并量化这一谜题：逐题失败率随尝试数应指数下降，但聚合成功率却呈多项式幂律",
+  "证明当单尝试成功概率的分布为重尾(heavy-tailed)时，逐题指数衰减可与聚合多项式scaling一致",
+  "在数学解题、证明助手、多模态越狱等多任务上实证验证该解释，澄清inference-time scaling law的来源"
+ ],
+ "method_framework": "若每题独立多次采样、任一正确即成功，则单题失败率随尝试数指数下降。本文指出聚合(NLL平均成功率)却呈多项式，原因是不同题难度差异巨大(单尝试成功率呈重尾分布)：重尾上少数难题主导平均，使指数叠加后整体表现为多项式幂律。",
+ "experiment_framework": "在数学问题、证明助手编程、多模态越狱等任务的多次采样结果上，测量平均成功率随尝试数的scaling形式，验证重尾分布假设能否同时解释逐题指数与聚合多项式。",
+ "takeaways": [
+  "LLM的inference-time多项式scaling并非神秘涌现，而源于单尝试成功率的重尾分布",
+  "多采样的收益主要由少数极难题(重尾尾部)决定",
+  "'猴子打莎士比亚'式多次尝试的力量有其可解析的统计来源"
+ ],
+ "weaknesses": [
+  "重尾分布的参数化与形状假设可能较强，对任务分布变化的稳健性需更多检验",
+  "解释了scaling形式，但未给出如何主动改变分布以加速scaling的可操作方法",
+  "实证任务集中于离散选择题式成功率，对连续/开放生成任务的适用性未明"
+ ],
+ "confidence": "high",
+ "key": "icml2025/How Do Large Language Monkeys Get Their Power (Laws).pdf",
+ "conf": "icml2025",
+ "path": "icml2025/How Do Large Language Monkeys Get Their Power (Laws).pdf",
+ "raw_overall": 7.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

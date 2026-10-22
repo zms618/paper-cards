@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TINYML_SNAP-UQ Self-Supervised Next-Activation Pre-Diction for Single-Pass Uncertainty In TINYML.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TINYML_SNAP-UQ Self-Supervised Next-Activation Pre-Diction for Single-Pass Uncertainty In TINYML.pdf",
+ "title": "SNAP-UQ: Self-supervised Next-Activation Prediction for Single-Pass Uncertainty in TinyML",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "层间激活预测的惊讶度信号，实现MCU上单次前向传播的不确定性估计。",
+ "innovations": [
+  "提出基于层间动态的深度方向惊讶度（depth-wise surprisal）作为不确定性信号，而非仅依赖输出softmax置信度",
+  "使用低秩投影的微型int8预测头，从前一层激活预测下一层激活的均值和尺度，预测误差标准化后形成不确定性分数",
+  "全整数友好设计（int8量化、对角协方差、查表替换指数运算），仅增加几十KB闪存占用即可在MCU上部署"
+ ],
+ "method_framework": "SNAP-UQ在主干网络的2-3个深度位置插入微型预测头。每个头从前一层激活的低秩投影预测下一层激活的均值和方差。实际激活与预测分布之间的标准化预测误差即为该层的惊讶度信号。多层惊讶度聚合后，经轻量单调校准器映射为最终不确定性分数。无需多次前向传播、无需时间缓冲、无需辅助退出分支。",
+ "experiment_framework": "在视觉和音频多种骨干网络上评估；基线包括早期退出（early-exit）、深度集成（deep ensembles）等不确定性方法；指标包括闪存占用、推理延迟、分布偏移下的精度下降事件检测AUPRC和故障检测AUROC。",
+ "takeaways": [
+  "层间动态比输出置信度更早检测到分布偏移，在CID/OOD场景下更敏感",
+  "单次前向传播的不确定性估计在MCU资源约束下可达到与多 pass 方法相近的检测性能",
+  "int8量化和查表设计使不确定性估计的部署开销极低（几十KB），适合微控制器场景"
+ ],
+ "weaknesses": [
+  "预测头需要少量训练数据进行自监督训练，冷启动场景下的适用性未充分讨论",
+  "实验主要在视觉和音频分类任务上验证，回归和序列任务的不确定性估计效果未知",
+  "惊讶度信号与实际错误的关联强度在不同网络架构间的差异缺乏系统分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "TinyML不确定性估计与可靠性主线交点，单次前向传播设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

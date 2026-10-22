@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Small Batch Size Training for Language Models When Vanilla SGD Works, and Why Gradient Accumulation Is.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Small Batch Size Training for Language Models When Vanilla SGD Works, and Why Gradient Accumulation Is.pdf",
+ "title": "Small Batch Size Training for Language Models: When Vanilla SGD Works, and Why Gradient Accumulation Is Wasteful",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "小批量SGD与Adam相当，但梯度累积效率低下",
+ "innovations": [
+  "提出保持β2半衰期恒定的缩放规则",
+  "发现小批量训练使SGD与复杂优化器性能相当",
+  "证明小批量训练对超参数选择更鲁棒"
+ ],
+ "method_framework": "通过调整Adam超参数β2的半衰期(以token为单位)，实现从小批量到大批量的稳定训练，并验证SGD在小批量下的竞争力",
+ "experiment_framework": "30M参数模型在FineWeb-Edu数据集上测试不同优化器(SGD, Adam, Adafactor, Muon)和批量大小(1-4096)的性能",
+ "takeaways": [
+  "保持β2半衰期恒定是有效的缩放规则",
+  "小批量训练减少超参数调优需求",
+  "小批量结合内存高效优化器可实现全微调的性能"
+ ],
+ "weaknesses": [
+  "未探讨不同模型架构的泛化性",
+  "缺乏对计算效率的详细分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

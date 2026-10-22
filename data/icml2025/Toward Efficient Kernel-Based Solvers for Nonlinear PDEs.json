@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Toward Efficient Kernel-Based Solvers for Nonlinear PDEs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Toward Efficient Kernel-Based Solvers for Nonlinear PDEs.pdf",
+ "title": "Toward Efficient Kernel-Based Solvers for Nonlinear PDEs",
+ "scores": {
+  "novelty": 4,
+  "depth": 5,
+  "evidence": 5,
+  "relevance": 3,
+  "overall": 4.3
+ },
+ "one_line": "核插值求导替代微分算子嵌入，提升PDE求解效率但缺乏充分验证",
+ "innovations": [
+  "将微分算子从核中移除，改用标准核插值形式建模解并对插值函数求导计算导数，避免了解与导数间复杂Gram矩阵构建",
+  "相比SOTA核求解器，在配置点数量较多时计算效率显著提升"
+ ],
+ "method_framework": "使用标准核插值建模PDE解，通过对插值函数直接求导获得各阶导数，而非将微分算子嵌入核函数中。这样消除了解值与导数值之间的联合Gram矩阵，简化了求解过程，同时保留了核方法的不确定性量化能力。",
+ "experiment_framework": "在多个非线性PDE基准问题上与SOTA核求解器对比，验证求解精度和计算效率。",
+ "takeaways": [
+  "从核插值直接求导比将微分算子嵌入核更高效，避免大规模Gram矩阵",
+  "核方法求解PDE仍可保留不确定性量化优势"
+ ],
+ "weaknesses": [
+  "与可靠性/鲁棒性/多模态推理主线完全无关，属于科学计算方向",
+  "实验规模和基线对比可能不够充分",
+  "方法扩展性到高维PDE的效果未充分验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

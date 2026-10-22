@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Geometric Algebra Planes Convex Implicit Neural Volumes.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Geometric Algebra Planes Convex Implicit Neural Volumes.pdf",
+ "title": "Geometric Algebra Planes: Convex Implicit Neural Volumes",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "GA-Planes隐式表示族，凸优化训练，但表达力有限且对比不足。",
+ "innovations": [
+  "提出基于几何代数的隐式神经体表示族，支持凸优化训练",
+  "证明GA-Planes推广了多种现有表示(张量基元素+神经解码器任意组合)",
+  "2D下证明等价于低秩+低分辨率矩阵分解，3D下在NeRF/分割/视频分割上表现有竞争力"
+ ],
+ "method_framework": "用几何代数的多重向量(multivector)作为体表示的基。不同级别的特征存储在不同grade的基元素中，然后通过神经解码器渲染。凸优化版本将解码器参数固定，仅优化基元素系数，使训练变为凸问题。",
+ "experiment_framework": "2D自然图像拟合(对比低秩+稀疏分解)；3D辐射场重建、3D分割、视频分割；对比voxel grid和传统隐式表示；指标为重建质量、模型大小、可优化性；报告GA-Planes在各任务上具竞争力。",
+ "takeaways": [
+  "几何代数提供了统一框架来设计隐式体表示",
+  "凸优化训练避免了非凸优化的初始化敏感和慢收敛问题",
+  "GA-Planes兼容凸/非凸两种训练模式，适应不同逆问题需求"
+ ],
+ "weaknesses": [
+  "凸训练模式下表达能力受限，需配合非凸解码器",
+  "几何代数的抽象性增加了理解和实现门槛",
+  "前9页内未看到与最新3DGS等表示的对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

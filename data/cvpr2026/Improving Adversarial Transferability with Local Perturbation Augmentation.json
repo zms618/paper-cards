@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Improving Adversarial Transferability with Local Perturbation Augmentation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Improving Adversarial Transferability with Local Perturbation Augmentation.pdf",
+ "title": "Improving Adversarial Transferability with Local Perturbation Augmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "局部扰动增强提升对抗迁移性，但超参数多且计算开销大",
+ "innovations": [
+  "局部扰动增强策略构建多个增强子空间",
+  "专用扰动初始化策略提供高迁移性起始方向",
+  "扰动邻域采样策略替代随机邻域采样"
+ ],
+ "method_framework": "LPAA框架结合局部扰动增强(LPA)和扰动初始化(PI)策略，通过随机掩码和增强系数构建多个子空间，聚合梯度信息并扩大搜索范围，提升对抗样本迁移性。",
+ "experiment_framework": "ILSVRC 2012验证集(1000张图像)，对比GRA/PGN/ANDA/MuMoDIG等基线，在5个CNN和6个ViT模型上评估攻击成功率，并在防御模型上测试。",
+ "takeaways": [
+  "局部扰动增强可有效避免对抗样本对代理模型的过拟合",
+  "扰动初始化策略显著提升初始性能和降低对初始扰动的敏感性",
+  "LPAA与输入变换方法兼容可进一步提升性能"
+ ],
+ "weaknesses": [
+  "方法引入多个超参数(N, p, β等)需要仔细调优",
+  "计算开销增加，每个迭代需要计算N个子空间的梯度"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "对抗攻击方法与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

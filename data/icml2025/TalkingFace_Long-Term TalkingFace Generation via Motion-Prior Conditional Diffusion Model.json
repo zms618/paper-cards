@@ -1,0 +1,38 @@
+{
+ "title": "TalkingFace: Long-Term TalkingFace Generation via Motion-Prior Conditional Diffusion Model",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 4,
+  "overall": 4.75
+ },
+ "one_line": "双先验条件扩散模型解决长序列人脸生成漂移问题",
+ "innovations": [
+  "用归档片段运动先验为长序列提供全局运动参考，解决漂移问题",
+  "当前片段运动先验保证局部时序一致性",
+  "条件扩散模型同时建模头部、嘴唇、表情运动"
+ ],
+ "method_framework": "音频输入+参考人脸图像；从归档长片段提取运动先验作为全局条件；当前片段提取局部运动先验；条件扩散模型基于音频与双运动先验预测人脸运动序列；解码为视频帧。",
+ "experiment_framework": "在TalkingFace生成基准（如HDTF等）上对比GAN类与扩散类方法，指标为唇形同步、身份一致性、时序稳定性（前9页未列全数值）。",
+ "takeaways": [
+  "长序列TalkingFace漂移主要缺全局运动先验",
+  "归档+当前双先验条件扩散可同时保证全局一致与局部平滑",
+  "扩散模型在人脸运动生成上优于GAN类方法"
+ ],
+ "weaknesses": [
+  "前9页未给出具体FID/同步指标数值",
+  "归档片段需与目标身份匹配，跨身份迁移未验证",
+  "推理速度未量化",
+  "域为人脸视频生成，与主线无关"
+ ],
+ "confidence": "low",
+ "key": "icml2025/TalkingFace_Long-Term TalkingFace Generation via Motion-Prior Conditional Diffusion Model.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/TalkingFace_Long-Term TalkingFace Generation via Motion-Prior Conditional Diffusion Model.pdf",
+ "raw_overall": 5.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

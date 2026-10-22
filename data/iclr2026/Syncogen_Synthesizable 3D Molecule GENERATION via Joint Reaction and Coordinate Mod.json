@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Syncogen_Synthesizable 3D Molecule GENERATION via Joint Reaction and Coordinate Mod.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Syncogen_Synthesizable 3D Molecule GENERATION via Joint Reaction and Coordinate Mod.pdf",
+ "title": "Syncogen: Synthesizable 3D Molecule Generation via Joint Reaction and Coordinate Modeling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "联合建模反应与坐标的3D分子生成，合成性有局限",
+ "innovations": [
+  "首次将可合成性约束扩展到3D分子生成，联合采样分子构建块、化学反应和原子坐标的联合分布",
+  "结合掩码图扩散和流匹配，同时生成分子图和3D构象",
+  "构建SyncogenSpace数据集家族，包含120万+合成感知构建块图和750万构象"
+ ],
+ "method_framework": "Syncogen采用非自回归多模态生成范式：同时建模分子图（构建块+反应连接）和3D坐标。图部分使用掩码扩散学习构建块和反应模板的分布，坐标部分使用流匹配学习原子位置。两者联合训练，使生成的分子既具有合成可行性，又具有合理的3D构象。",
+ "experiment_framework": "在小分子图和构象联合生成任务上评估；在蛋白质配体生成（linker设计和药效团条件生成）任务上验证；基线包括现有3D分子生成方法；指标包括合成可行性、构象准确度、对接亲和力等。",
+ "takeaways": [
+  "联合建模反应路径和3D坐标是实现可合成3D分子生成的有效途径",
+  " amortized模型无需评分函数即可在药物发现任务上达到优越性能",
+  "非自回归多模态生成框架适用于从类似物扩展到从头设计的多种分子设计场景"
+ ],
+ "weaknesses": [
+  "合成可行性受限于已知反应模板的覆盖范围，新反应类型的通用性有限",
+  "3D构象的生成精度与专门的构象生成模型相比仍有差距",
+  "实验主要在标准药物发现基准上验证，实际药物研发管线的集成效果未评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "分子生成与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

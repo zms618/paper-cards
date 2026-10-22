@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Unified Total Variation Framework Membrane Potential Perturbation Dynamic.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Unified Total Variation Framework Membrane Potential Perturbation Dynamic.pdf",
+ "title": "A Unified Total Variation Framework For Membrane Potential Perturbation Dynamic",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "将MPPD重写为TV框架，用coarea公式替换正则项提升对抗鲁棒性。",
+ "innovations": [
+  "证明 MPPD 就是全变差：若扰动 δ 是 (i,t) 的可测函数，膜电位沿节点索引与时间步的局部变分满足式 (19) 的递推，从而原 MS-MPPD 正则项恰为 TV-ℓ2 项（式 20），把已有正则器纳入 TV 去噪理论框架。",
+  "提出 MPPD-TV-ℓ1：以膜电位扰动的绝对值（而非平方）为正则项，并用 coarea 公式把 Θ 上的 TV 写成各等值面 Hausdorff 测度沿 ψ 的积分（Thm 2、Thm 3），在保留脉冲式阶跃特征的同时抑制细粒度扰动；同时论证离散计数测度下 L1 空间严格大于 L2 空间，使可作为膜电位的函数类更宽。",
+  "给出主导 TV 性质（Thm 4：膜电位 TV ⩽ ∥w^l∥_1·log_λ(1/e) × 脉冲 TV）与关于权重 w(i,j) 的闭式次梯度（Prop 5：sign(·)·Σ_k λ^k ∇s），使不可微 TV 项可直接嵌入 STBP 反传而不增加计算开销。"
+ ],
+ "method_framework": "把 MPPD 递推重写为膜电位在「节点索引 × 时间步」二维上的局部变分（要求 δ 是 (i,t) 的可测函数），证明现有 MS-MPPD 正则即 TV-ℓ2；再用 coarea 公式把 TV 化为等值面积分得到 MPPD-TV-ℓ1（用绝对值取代平方），给出主导界与闭式次梯度后可反传，作为正则项 α·L_TV 加进任务损失做高斯/对抗鲁棒训练。",
+ "experiment_framework": "VGG11+DLIF 与 WRN16 骨干，CIFAR-10/100、Tiny ImageNet，T=8，SGD+余弦退火，α=1；8 个 SOTA 基线（SNN-BP、HIRE-SNN、SNN-RAT、FEEL、SR、ANN-PGD-AT、ANN-RiFT、MPPD-TV-ℓ2）+ Non-MPPD 消融；训练扰动为高斯/AT/AT+Reg，测试用 FGSM、PGD(7–40)、C&W、APGD、AutoAttack，ζ=8/255。",
+ "takeaways": [
+  "把已有正则项重新识别为某个成熟理论（这里是 TV 去噪）的实例，再换用该理论里更强的变体（ℓ1 替代 ℓ2）并补齐次梯度实现，是一条低成本、高回报的改造路径。",
+  "主导界 ∥w∥_1·log_λ(1/e) 量化了衰减因子 λ 与稳定性之间的张力，可迁移到其他带时间衰减的脉冲/时序模型里去标定 λ。",
+  "对抗训练设定下换正则才见明显收益（AT 时 AutoAttack 23.04 对 19.75），说明做鲁棒性改造必须按训练扰动类型分别报告，否则结论会被摘要层模糊化。"
+ ],
+ "weaknesses": [
+  "收益高度依赖设定：高斯扰动训练下 MPPD-TV-ℓ1 相对 TV-ℓ2 只有微弱提升（VGG11 的 AutoAttack 0.290 对 0.000、PGD7 1.140 对 0.230；WRN16 的 AutoAttack 0.010 对 0.010），而 AT 设定下提升明显（23.04 对 19.75）；摘要把两类扰动并列称为 robust，实证显示增益几乎全部来自对抗训练。",
+  "Thm 4 的主导界含 log_λ(1/e)，λ→1 时发散，正文却自认 λ 通常取近 1 才能「同时保持时间平滑性并确保主导性质」，与定理要求直接冲突且未给出标定原则；α=1、T=8、surrogate ω=1 全部沿用前作默认设置，正文无 α 与 λ 的敏感性消融。",
+  "实验只报单次分类精度、无随机种子方差与显著性检验，且正文在 Table 1 的 AT+Reg 段截断，CIFAR-100 与 Tiny ImageNet 结果不可见；另外「L1 空间更大所以更通用」在离散计数测度下近乎平凡（有限集上任意有界函数皆可积），真正起作用的 coarea 去噪优势只在引言定性提及，没有按层/按时间步分解 TV 项的对应实验。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "脉冲神经网络的对抗鲁棒性提升，触及可靠性主线与医学影像落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

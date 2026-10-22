@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Optimize the Unseen - Fast NeRF Cleanup with Free Space Prior.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Optimize the Unseen - Fast NeRF Cleanup with Free Space Prior.pdf",
+ "title": "Optimize the Unseen - Fast NeRF Cleanup with Free Space Prior",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "Free Space Prior清理NeRF伪影，但假设未见区域无内容限制泛化性",
+ "innovations": [
+  "Free Space Prior全局先验",
+  "3D空间随机采样优化密度",
+  "平衡清理与场景完整性的双损失函数",
+  "无需额外内存的轻量级方法"
+ ],
+ "method_framework": "通过在3D空间随机采样点并应用Free Space Prior Loss，结合原始NeRF的光度损失，优化密度分布使未见区域密度趋近零，同时保留可见区域结构。",
+ "experiment_framework": "Nerfbusters数据集，对比Nerfbusters和BayesRays基线，使用PSNR和Coverage指标评估，并引入更严格的预测掩码评估方法。",
+ "takeaways": [
+  "简单全局先验可解决复杂问题",
+  "平衡不同损失函数的重要性",
+  "方法在不同NeRF架构和数据集上的泛化能力"
+ ],
+ "weaknesses": [
+  "假设未见区域无内容可能不适用于所有场景",
+  "未充分分析不同场景类型的最优λ值",
+  "缺乏对极端情况下的鲁棒性测试"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

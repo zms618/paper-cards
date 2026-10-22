@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/AVQACL_A Novel Benchmark for Audio-Visual Question Answering Continual Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "C:\\Users\\James\\Desktop\\study\\paper\\项目记忆\\论文卡片\\精读卡片库\\cvpr2025\\AVQACL_A Novel Benchmark for Audio-Visual Question Answering Continual Learning.pdf",
+ "title": "AVQACL: A Novel Benchmark for Audio-Visual Question Answering Continual Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "视听问答持续学习基准，QCIF蒸馏与语义约束提升有限",
+ "innovations": [
+  "提出 AVQACL 基准：把 AVQA/MUSIC-AVQA 先按问句类型切成 T 个任务、再按物体与声音类别切 K 个子任务嵌套，Split-AVQA 取 T=4,K=6,C=120,M=20，Split-MUSIC-AVQA 取 T=5,K=11,C=22,M=2，并把 4 选 1 答案改写为从 2135/40 个候选中作答的开放集形式（Tab.1）。",
+  "QCIF 以问题为 query 引导跨模态融合：视觉端 V_att=MultiHeadAttention(xq,V,V) 后接残差+线性+LayerNorm（Eq.4-5），音频端同样以 xq 做时序注意（Eq.6-7），再 f=Tanh([A_out;V_out]) 与 xq 逐元素乘（Eq.8-9），压掉与问句无关的音视频背景。",
+  "抗遗忘由两条显式约束构成：TKD-STFC 用 KL 蒸馏新旧模型输出并对特征做时空差分约束 L_STFC=λ_STFC(L_TA+L_TV+L_SV)（Eq.10-12，△f_i=f_{i+δ_d}-f_i）；QSCC 以 L_QSCC=1-mean cos_sim(q_new,q_old) 约束问句特征跨任务稳定（Eq.13-15）。"
+ ],
+ "method_framework": "冻结VGGish与ResNet-18抽音视频特征、LSTM编问句；QCIF以xq为query做视觉时空/音频时序注意后元素乘融合；训练加TKD-STFC（KL蒸馏+时空差分L_TA+L_TV+L_SV）与QSCC（问句特征余弦一致性），总损L_TKD-STFC+L_CE-QSCC。",
+ "experiment_framework": "两基准、6个复现基线、T步增量训练，报MA与AF；Ours在Split-AVQA MA=32.05/AF=2.47、Split-MUSIC-AVQA MA=33.64/AF=27.08，消融与实现细节未在正文内。",
+ "takeaways": [
+  "视听问答在持续数据流下退化严重：Vanilla MA 仅 18.34/28.79、AF 高达 40.94/33.17，三模态同时增量时认知与时空推理能力明显不足。",
+  "蒸馏/回放类（iCaRL、AV-CIL、SSIL）比正则类（EWC、LwF）更能压住 AF，说明本任务的主要失效是旧任务时空知识被覆盖而非权重漂移。",
+  "Ours 距 Upper Bound（55.42/65.57）仍有 23.4/31.9 点差距，开放集答案空间下的持续学习远未解决，是明确留给后续的方向。"
+ ],
+ "weaknesses": [
+  "正文读到 5.1 Implementation details 首句即截断，骨干微调方式、epoch 与优化器、记忆容量 5000/700 的选择依据、λ_STFC 与 λ_QSCC 取值及灵敏度曲线、多种子方差均未给出，方法难以复现。",
+  "与最强基线 SSIL 差距很小（MA 32.05 vs 30.50、33.64 vs 32.16，AF 2.47 vs 2.68），且三个模块本质是交叉注意力、KL 蒸馏、余弦一致性三种已有技术在 CL 框架下的串联，缺少逐模块消融来分离 QCIF/TKD-STFC/QSCC 各自的贡献。",
+  "主表只报 MA 与 AF 两个聚合量，不给每个增量步的逐任务准确率曲线；Upper Bound 与 Ours 差 23.37/31.93 点却未分析来源，且 2135 候选开放集下随机猜测口径（≈0.05%）与原有 4 选 1 设置的差异对 AF 统计的影响未讨论。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "视听持续学习基准，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

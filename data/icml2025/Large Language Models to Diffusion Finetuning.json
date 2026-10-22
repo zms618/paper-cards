@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Large Language Models to Diffusion Finetuning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Large Language Models to Diffusion Finetuning.pdf",
+ "title": "Large Language Models to Diffusion Finetuning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "将LLM转为扩散模型，实现测试时计算扩展与性能提升。",
+ "innovations": [
+  "L2D微调方法，保留LM单步能力同时赋予扩散多步推理",
+  "交叉熵损失训练扩散模型，连接传统语言建模",
+  "并行扩散路径设计，高效利用预训练知识"
+ ],
+ "method_framework": "LM作为单步扩散模型，引入并行扩散路径，通过LoRA微调新参数，保持原始LM能力同时获得多步推理能力。",
+ "experiment_framework": "数学、编程和知识任务评估，包括GSM8K、MATH、HumanEval、MBPP、MMLU等，5-shot设置，pass@10指标。",
+ "takeaways": [
+  "参数高效微调方法，仅优化少量参数",
+  "扩散过程可随步数增加单调提升性能",
+  "支持自适应ODE求解器和分类器自由引导"
+ ],
+ "weaknesses": [
+  "训练数据局限于指令跟随数据集，可能限制知识获取",
+  "采样策略相对简单，未充分利用logits操作"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

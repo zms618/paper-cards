@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Statistical Learning Perspective On Semi-Dual Adversarial Neural Optimal Transport Solvers.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Statistical Learning Perspective On Semi-Dual Adversarial Neural Optimal Transport Solvers.pdf",
+ "title": "A Statistical Learning Perspective On Semi-Dual Adversarial Neural Optimal Transport Solvers",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 3,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "半对偶OT求解器的理论分解，但缺乏实验验证与显式常数。",
+ "innovations": [
+  "首次为同时学习对偶势 φ 与传输映射 T 的半对偶极小极大 OT 求解器建立 ‖T*−T̂^R‖_{L2(p)} 的泛化误差界（Thm 4.1），把误差拆成内/外两层各自的估计误差与逼近误差四项，绕开了已有工作只能给 duality gap 的局限。",
+  "用两侧函数类的 Rademacher 复杂度显式刻画极小极大的估计误差：EE ≤ 8R_{p,N}(H)+8R_{q,M}(F)，其中 H={h:h(x)=⟨x,T(x)⟩−φ(T(x))}，把 saddle 结构的统计速率归约到标准统计学习工具（Thm 4.2）。",
+  "逼近误差用存在性而非构造性处理：证明存在有限宽高 ReLU 网络类 T(ε,F)（Rem 4.5）与 β-强凸 Lipschitz 类 F(β,ε)（Thm 4.6）使逼近误差 < ε，从而合成为 ε+32/β(R+R) 的可任意小泛化界（Thm 4.9、Cor 4.10）。"
+ ],
+ "method_framework": "对二次代价的半对偶问题做极小极大化 min_φ max_T L(φ,T)（φ 取 ICNN 类 F、T 取 MLP 类 T）；先把 L2 误差分解为外/内 × 估计/逼近四项（Thm 4.1），估计项由 Rademacher 复杂度 R_{p,N}(H)、R_{q,M}(F) 界定（Thm 4.2），逼近项由存在性构造的网络类压到 ε 以内（Thm 4.3、4.6），合成 Thm 4.9。",
+ "experiment_framework": "正文在 §5「EXPERIMENTAL ILLUSTRATIONS」首句处截断，未给出任何数据集、基线、指标与结果表；仅声明实验代码与素材开源于 GitHub（StatOT）。",
+ "takeaways": [
+  "极小极大（对抗式）OT 求解器的界不能靠套用非极小极大的半对偶界，必须单独处理内层 max_T 引入的第二个自由度——这一「内/外 × 估计/逼近」分解模板可复用于其他 saddle 型损失。",
+  "把假设从「φ 强凸」下推到源/目标密度的 Hölder 光滑性（经 Caffarelli 正则性，Rem 4.8）是让理论可用的关键一步，值得在同类分析里照搬。",
+  "理论终点停在「界可任意小 + O(1/√N) 形式」，落地前需后续工作补显式常数、样本相图与经验验证。"
+ ],
+ "weaknesses": [
+  "正文在 §5 首句「In this section, we ex」处截断，实验节表格、任务、基线与指标全部不可见，全文唯一经验支撑只有摘要与引言里一句「illustrative experiment」，理论结果的实证力度无从核验。",
+  "Thm 4.9 / Cor 4.10 给出的是 ε+O(1/√N)+O(1/√M) 的定性界：ε 未显式给出，逼近类 F(ε,β)、T(ε,F) 本身随 ε 变化而非常数，「多大样本够用」读不出来，也无法与 Hütter & Rigollet 等非极小极大的显式速率做数值比较。",
+  "整套结论依赖 β-强凸这一强假设（Thm 4.1 要求 F 强凸、Thm 4.6 要求最优势 φ* 本身 β-强凸），该性质只有经 Caffarelli 正则性（Rem 4.8）才成立；高维图像等真实密度是否满足该正则性，正文没有任何实验或反例讨论。"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "理论分解新颖但缺乏实验验证，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

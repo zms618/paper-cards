@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Novelty Detection in Reinforcement Learning with World Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Novelty Detection in Reinforcement Learning with World Models.pdf",
+ "title": "Novelty Detection in Reinforcement Learning with World Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6.1
+ },
+ "one_line": "基于世界模型KL不等式的新奇检测，误报率低但探索依赖性强",
+ "innovations": [
+  "无需人工设定阈值/漂移参数：用世界模型自身RSSM的posterior p(z|h,x)与prior p(z|h)、以及h0空状态dropout后KL之间的不等式关系，违界即报新奇，避免对异常规模的先验假设",
+  "从KL平衡损失的训练动力学推导出该界，区分posterior collapse与过拟合两种失效情形，并给出两个命题(交叉熵比较变负直接触发/非负则定义隐空间鲁棒边界)",
+  "证明该界可迁移到transformer世界模型(IRIS)，并分析'策略收敛后世界模型只见局部转移空间导致误报未探索状态'的exploration伪影"
+ ],
+ "method_framework": "DreamerV2/RSSM训练后，在线推理时计算KL[p(z_t|h_t,x_t)||p(z_t|h_t)]并与KL[p(z_t|h_t,x_t)||p(z_t|h_0)]-KL[p(z_t|h_t,x_t)||p(z_t|h_0,x_t)]比较；当观测x_t导致该不等式被违背(尤其左端KL飙升而右端相对下降)即判定为新奇；h0为传入的空隐藏状态以模拟历史dropout。",
+ "experiment_framework": "在MiniGrid(DoorKey/LavaGap/BrokenDoor/DoorGone/Teleport/ActionFlip,NovGrid)、Atari(Boxing/Kangaroo/Freeway/SeaQuest,HackAtari)、连续DMC(Cartpole/Quadruped/Humanoid/Walker,RealWorldRL Suite)注入观测/动力学突变；基线RIQN(ensemble+cusum,SOTA RL新奇检测)与自构PP-Mare重建误差法；指标平均检测延迟ADE、误报率FP、AUC、推理加速比。",
+ "takeaways": [
+  "KL界在所有环境误报率≤1e-2，远低于RIQN(常5%-68%)，且AUC与ADE多数相当或更优，同时DMC/Atari推理比RIQN快约10^3/10^2倍",
+  "在transformer(IRIS)上同样低误报，但扩散世界模型因直接生成像素而非隐状态无法用KL界，需退化为PP-Mare",
+  "FakeGoal实验显示：把训练时未探索的门后视角误判为新奇(检测准确率仅0.49)，改用双向探索训练KLExplored后升至0.91，说明新奇定义依赖agent信念"
+ ],
+ "weaknesses": [
+  "落点为游戏/机器人RL部署的新奇检测，与主任务的医学影像/多模态大模型推理可靠性不直接相关；只做检测不做响应(halting/adapt作者列为future work)",
+  "作者自陈存在experimenter bias(方法先于选定评测环境开发)，且实验全靠虚拟替代测试床，真实世界不可行；对扩散世界模型不适用",
+  "理论界基于VAE变分近似，作者建议未来用JS/Wasserstein获更强保证；FakeGoal类'未探索即误报'问题暴露其把agent信念外的合法转移也判为新奇的根本歧义"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

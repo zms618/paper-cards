@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/4DWorldBench_A Comprehensive Evaluation Framework for 3D4D World Generation Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/4DWorldBench_A Comprehensive Evaluation Framework for 3D4D World Generation Models.pdf",
+ "title": "4DWorldBench: A Comprehensive Evaluation Framework for 3D/4D World Generation Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "统一模态映射到文本空间的3D/4D生成评测框架，但缺乏判题可靠性验证",
+ "innovations": [
+  "自适应条件映射：把图像/视频条件（除文本外）统一用 Keye-VL 1.5 转成物理过程描述，生成视频也转成字幕 Tˆ，从而让不同模态条件在同一个文本判题空间里可比，并据此为每个样本按语义自适应挑选物理维度（基础物理/事件推理/力与运动/热与相变）再生成诊断问句",
+  "物理真实度与条件对齐都化为 claim 隔离式二元判定：由 LLM 问出可从视频直接推出的 is/yes-no 题，再用 s_i=1(Aˆ_i=A*_i) 逐题计分取均值得到 Sphy=Σs_i/N、Salign=Σs_i/N，把主观物理合理性变成可跨模型复现的连续分数",
+  "混合评测融合四轨：CLIP-IQA+/CLIP-Aesthetic+FastVQA+mPLUG-Owl3 的感知质量项、SLAM 重投影误差的 3D 一致性、光流相似度+MLLM-judge 的运动一致性（防「几乎不动」骗过特征相似度）、Gram 矩阵的风格一致性"
+ ],
+ "method_framework": "条件（文本/图/视频）先经 MLLM 统一转文本→按语义自适应选维度并生成诊断问题 Q_i→LLM/MLLM 对生成字幕作答→逐题二值比对期望答案求均值打分；感知质量与运动一致性再叠加传统特征型指标，最后汇成四维度榜单。",
+ "experiment_framework": "覆盖 Image/Text/Video-to-3D/4D 共 13 个生成模型（SyncDreamer、V3D、ViewCrafter、FlexWorld、Director3D、4Dfy、dreamin4D、CamI2V、ReCamMaster、TrajectoryCrafter、EX-4D、Vista 等），条件样本含 50 条物理+76 条非物理文本、48+63 图像、48+48 视频，指标为各维度 0-1 分与人工研究一致性。",
+ "takeaways": [
+  "用「条件转文本→生成转文本→按条件生成可判题的 is/yes-no 诊断问题→逐题二值打分」的框架，可以把任意生成模型塞进同一个判题流水线，这套 claim 隔离式协议可直接搬到可信 AI 侧的幻觉/失败检测评测",
+  "特征相似度容易被「物体几乎不动」的偷懒视频骗出高分，必须叠加 MLLM-judge 做物体级运动合理性把关——这是混合评测里最具普适性的一条经验",
+  "按短时片段（而非整段）计算 SLAM 重投影误差与 Gram 矩阵再平均，能有效削掉对帧率与相机运动速率的敏感性，是视频类指标的通用去偏做法"
+ ],
+ "weaknesses": [
+  "所有分数都由 LLM/MLLM 判题产出，但正文未给出 judge 与人类标注的一致度（如 Pearson/Spearman、Cohen's kappa）数值，仅在摘要称「初步人工研究」且第 5 节前即截断，判题偏差与位置偏置（LLMs 倾向答 yes）是否校准无从判断",
+  "物理真实度与条件对齐都只报 0/1 二值题的平均准确率 Sphy/Salign，无置信区间、无题级混淆（错在物理维度还是时序可视化），而题目本身由 LLM 自动生成，期望答案 A*_i 的 ground-truth 来源与人工校验比例全文未披露",
+  "榜单上同一模型各维度分数量级受所选子指标拼接方式影响（如感知质量写成 a+b 两项相加、运动一致性也是 a+b 相加），跨列比较缺乏归一化，且不完整的 3D 模型直接剔除物理/运动列，导致 3D 与 4D 榜单间整体分数不可直接比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "评测框架设计有迁移价值，但缺乏可靠性验证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

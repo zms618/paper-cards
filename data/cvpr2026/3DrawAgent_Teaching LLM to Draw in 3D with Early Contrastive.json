@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/3DrawAgent_Teaching LLM to Draw in 3D with Early Contrastive.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/3DrawAgent_Teaching LLM to Draw in 3D with Early Contrastive.pdf",
+ "title": "3DrawAgent: Teaching LLM to Draw in 3D with Early Contrastive Experience",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "冻结LLM靠对比经验库生成3D贝塞尔草图，但核心指标未超训练基线",
+ "innovations": [
+  "把训练免 GRPO 从群体相对优势改造成任意两样本 (S+,S−) 的成对对比，只要 CLIP 多视角得分 ri>rj 就构造偏好对，彻底去掉真实草图锚点、梯度更新与成规模 rollout",
+  "用 LLM 对每对比对做结构化评判 Atext=LLM(pjudge,T,Si,Sj,E)，再把自然语言优势以 Add/Delete/Modify/Keep 四种离散操作写入外部经验库 E，反复迭代注入上下文",
+  "3D 表示上把每笔画定义为 4 个三维控制点的三次贝塞尔，配合支持正交/透视投影的可微渲染器把 16 视 2D 投影喂给 CLIP 打分，打通语言符号推理与几何可验证之间的闭环"
+ ],
+ "method_framework": "冻结 LLM 在角色指令+输出格式约束+坐标系+少量真值示例的上下文中一次性生成 <curves> 包裹的三维贝塞尔控制点序列，经解析与可微渲染成 16 视图；用多视角 CLIP 余弦均值做无监督感知奖励，按得分差构造正负对比对，由 LLM 抽取几何知识更新经验库，再以上下文形式引导后续生成。",
+ "experiment_framework": "ModelNet40 与 QuickDraw 类别提示 + Diff3DS 细粒度文本/参考图；基线 Diff3DS（SDS 优化 3D 有理贝塞尔）、3Doodle、Dream3DVG（3DGS 双分支）；指标 CLIP-ST/CLIP-SI（ViT-B/32 多视角余弦均值）与 AES（CLIP ViT-L/14+MLP 美学回归）；单卡 RTX 3090。",
+ "takeaways": [
+  "免训练对齐里让 LLM 输出自然语言'为什么 A 比 B 好'再归纳成可增删的经验条目，比直接堆标量奖励更易让冻结模型内化空间约束",
+  "曲线退化（控制点重合导致直线段）、线条过多（500+ 笔）、嵌套列表破坏解析是生成式矢量草图的三类典型失败，可用统计直方图而非仅定性图来暴露",
+  "奖励分布高度极化（30 个 0.0、170 个落在 0.6-0.7）说明 CLIP 类奖励区分度有限，对比对的构造应优先选得分差足够大的样本"
+ ],
+ "weaknesses": [
+  "核心语义对齐指标并未超过训练型基线：细粒度 CLIP-ST 上本方法 0.664/0.669 低于 Dream3DVG 的 0.670，类别级 0.643/0.649 与 Diff3DS 的 0.648 基本持平，正文用 'highly competitive' 掩盖了免训练方法在主要指标上并不领先的事实",
+  "表 2 消融自相矛盾：K=10 在 Epoch 1/2 为 0.6135/0.5612，明显差于 K=5 的 0.6461/0.6643，正文仅以 'no meaningful gain' 带过；GT=True 首个 epoch 更高（0.6648）但第 2-4  epoch 全面低于 GT=False（0.6261 vs 0.6416），'没有真值也能学'的结论缺少对这一反转的解释",
+  "所有消融只报单个 CLIP-S 标量、无任何方差或显著性；用户研究仅 60 次投票（46.66%/36.67%/16.67%）未给人数与置信区间，且评测全靠 CLIP 相似度与美学回归器，缺少 Chamfer、拓扑闭合率、深度误差等几何客观指标；主配置还依赖闭源 Gemini-2.5Pro，可复现性差"
+ ],
+ "confidence": "high",
+ "raw_overall": 4.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3D绘图与可靠性主线无关，仅工程实现价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Brain-Inspired Gating Mechanism Unlocks Robust Computation In Spiking Neural Net.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Brain-Inspired Gating Mechanism Unlocks Robust Computation In Spiking Neural Net.pdf",
+ "title": "A BRAIN-INSPIRED GATING MECHANISM UNLOCKS ROBUST COMPUTATION IN SPIKING NEURAL NETWORKS",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "将LSTM门控生物化融入脉冲神经元，理论抗噪但实验证据不足",
+ "innovations": [
+  "提出 Dynamic Gated Neuron：在 LIF 中引入随突触活动演化的动态电导，膜电位衰减系数变为 ρᵗ=φ(1−g_l·Δt−Δt·ΣC_iD_iᵗ)，等价于把 LSTM 遗忘门生物化地写进脉冲神经元",
+  "用 SDE + Van Kampen 线性噪声近似推导出 DGN 与 LIF 膜电位稳态方差的闭式解（Eq.13/14），指出「输入相关泄漏缩放 G₀」与「与 W_i 正相关的补偿项 C_iΣW_jµ_j/G₀」双重抗噪机制",
+  "采用「干净数据训练 + 只在测试时施加未见过的加性/减性/混合噪声与 FGSM/PGD/BIM 攻击」的评测协议，规避主流混合噪声训练集中的噪声模式记忆问题"
+ ],
+ "method_framework": "DGN 将突触电流 Dᵗ 按 τs 指数衰减注入，同时用 ΣC_iD_iᵗ 调节膜漏电导 g_l，使衰减率 ρ 输入自适应；随后用离散式膜电位更新 + 阈值 ϑ 发放与软复位构成脉冲神经元。",
+ "experiment_framework": "Ti46Alpha、TIDIGITS、SHD、SSC 四数据集；对比 LIF/ALIF/HeterLIF/LSTM/RNN/TC-LIF，干净训练后在未见噪声（加性 p=0.006、减性 p=0.3）与 FGSM/PGD/BIM 攻击下测精度。",
+ "takeaways": [
+  "「输入相关衰减率」比「可学习静态泄漏因子」更抗噪：衰减系数随输入统计自适应，噪声强时自动增大等效电导压低膜电位方差",
+  "干净训练、测试期换未见噪声类型的协议，是区分真鲁棒与「记住了噪声模式」的低成本可信评测姿势，可直接搬到脉冲/非脉冲分类任务",
+  "用闭式稳态方差把门控结构的收益变成可解释量（泄漏缩放 + 补偿项），比只报抗噪准确率更能说服审稿人"
+ ],
+ "weaknesses": [
+  "所有对比模型都用各自公开代码的默认超参、未做统一超参搜索，而抗噪差距主要来自「干净训练 + 测试未见噪声」这一共用设置，超参差异会与门控效应混淆",
+  "表 1/表 2 全部只报单次准确率、无随机种子标准差与显著性检验；且 DGN 并非处处最优（SHD 上前馈 LSTM 89.20%、TC-LIF 88.91% 均高于 DGN 87.78%），结论对收敛点选择敏感",
+  "理论分析依赖小扰动线性化与 δV≪V_steady 的一阶截断，而表 2 的高强度噪声与 PGD/BIM 场景显然不满足该假设，闭式解与实测方差之间缺少定量校验；正文还在 §4.2 中段截断，消融与能耗分析不可见"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "脉冲神经网络的动态门控机制提升鲁棒性，符合可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

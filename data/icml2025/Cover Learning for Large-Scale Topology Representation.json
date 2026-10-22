@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Cover Learning for Large-Scale Topology Representation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Cover Learning for Large-Scale Topology Representation.pdf",
+ "title": "Cover Learning for Large-Scale Topology Representation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.25
+ },
+ "one_line": "形式化覆盖学习为优化问题，提出模糊覆盖框架和ShapeDiscover算法",
+ "innovations": [
+  "首次将覆盖学习形式化为通用无监督学习问题，统一了Mapper、Ball Mapper等TDA方法",
+  "提出模糊覆盖(fuzzy cover)连续参数化框架，将离散覆盖空间转化为可优化的函数空间",
+  "推导覆盖学习的几何-拓扑损失函数，理论证明覆盖元素的测度、边界和同伦性质可有效优化"
+ ],
+ "method_framework": "覆盖学习目标：找到数据空间的开覆盖{Ui}，使得(1)每个Ui测度小(覆盖元素紧凑)；(2)每个Ui边界测度小(几何正则)；(3)覆盖是同伦良好的(神经定理保证神经复形恢复数据拓扑)。将硬覆盖松弛为模糊覆盖g:X→Γ^{k-1}(单纯形上的连续函数)，用梯度下降优化损失。实现ShapeDiscover算法：用GNN参数化模糊覆盖，结合拓扑持久性正则化。",
+ "experiment_framework": "定量实验：与几何复形、Mapper等方法比较拓扑推断的大小和正确性；定性实验：在3D点云、图像特征等高维数据上可视化大规模拓扑结构；消融分析损失项各组件的贡献。",
+ "takeaways": [
+  "ShapeDiscover学到的神经复形比传统拓扑推断方法更小且拓扑正确",
+  "模糊覆盖的连续参数化使拓扑结构可通过梯度优化学习",
+  "统一框架同时解决了Mapper(仅低维)和几何复形(扩展性差)的局限"
+ ],
+ "weaknesses": [
+  "理论基于Riemannian流形假设，实际离散数据的近似质量未充分分析",
+  "模糊覆盖的k个元素数量和阈值选择仍需人工设定",
+  "实证主要在小规模合成数据上验证，大规模真实数据集的扩展性未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.78,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

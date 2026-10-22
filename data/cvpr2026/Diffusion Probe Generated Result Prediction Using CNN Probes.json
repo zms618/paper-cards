@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Diffusion Probe Generated Result Prediction Using CNN Probes.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Diffusion Probe Generated Result Prediction Using CNN Probes.pdf",
+ "title": "Diffusion Probe Generated Result Prediction Using CNN Probes",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.4
+ },
+ "one_line": "基于早期交叉注意力图的轻量CNN探针预测扩散模型生成质量",
+ "innovations": [
+  "首次将探针概念引入扩散模型，揭示早期交叉注意力与最终质量的强相关性",
+  "设计轻量级CNN探针架构，实现早期质量预测而不需完整生成",
+  "提出模型无关的通用框架，在多种T2I模型上验证有效性"
+ ],
+ "method_framework": "提取早期去噪步骤的交叉注意力图，通过轻量级CNN网络映射到最终质量分数，使用MSE损失训练，无需修改基础模型",
+ "experiment_framework": "在SDXL、FLUX和Qwen-Image模型上测试，使用MS-COCO数据集，评估SRCC、AUC-ROC等指标，并在提示优化、种子选择和RL训练中验证实用性",
+ "takeaways": [
+  "早期交叉注意力分布可作为生成质量的可靠预测信号",
+  "轻量级探针可显著减少多采样场景的计算开销",
+  "方法设计简洁且模型无关，易于集成到现有工作流"
+ ],
+ "weaknesses": [
+  "仅评估了固定分辨率(1024×1024)，未测试不同分辨率的泛化能力",
+  "依赖预训练的质量评估模型作为标签，可能引入评估偏差",
+  "未充分分析不同类型提示词的预测准确性差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "轻量探针预测生成质量，属于可靠性主线但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

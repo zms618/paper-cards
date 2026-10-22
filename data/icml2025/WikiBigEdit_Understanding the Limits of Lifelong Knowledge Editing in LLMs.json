@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/WikiBigEdit_Understanding the Limits of Lifelong Knowledge Editing in LLMs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/WikiBigEdit_Understanding the Limits of Lifelong Knowledge Editing in LLMs.pdf",
+ "title": "WikiBigEdit: Understanding the Limits of Lifelong Knowledge Editing in LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 7,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "构建真实Wikidata编辑基准，揭示现有方法在真实规模下的局限性。",
+ "innovations": [
+  "提出WikiBigEdit：大规模、真实世界Wikidata编辑基准，初始即含50万+编辑QA对，配套全自动抽取流水线可持续扩展(future-proof)",
+  "首次把终身知识编辑研究推向真实、大规模编辑场景，弥补此前基准小(约2万)、合成、早于现代LLM知识截止期的缺陷",
+  "在统一pipeline下对照知识编辑、检索增强(RAG)与持续微调，完整刻画各方法在真实规模下的实用边界"
+ ],
+ "method_framework": "从Wikidata真实事实变更中自动抽取'旧事实→新事实'编辑，生成对应QA对，围绕知识编辑三要素评测：泛化(不只记住QA对)、局部性(不破坏既有知识)、保持(记住所有历次编辑)；流水线随新编辑持续增长以做面向未来的评测。",
+ "experiment_framework": "50万+真实编辑QA对；评测对象为现有终身知识编辑技术；对照通用修改手段——检索增强生成(RAG)与持续微调；指标含泛化、局部性、保持三类；考察大规模真实事实更新下的能力上限。",
+ "takeaways": [
+  "现有知识编辑方法在小/合成基准上表现好，但放到真实大规模编辑时能力上限明显暴露",
+  "在真实规模下，RAG与持续微调等通用手段与专用知识编辑方法的取舍需重新审视",
+  "终身(大量累积)编辑下的保持(retention)是最难、现有方法最薄弱的环节"
+ ],
+ "weaknesses": [
+  "编辑多源于Wikidata结构化事实，对非结构化、多跳、推理型知识更新的覆盖有限",
+  "知识编辑方法效果与具体LLM骨干/规模强相关，结论的普适性需跨更多模型验证",
+  "属基准研究，虽揭示局限，但未提出新的更强编辑方法，'如何突破'着墨较少"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Streamsplat_towards Online Dynamic 3D Reconstruction Uncalibrated Video Streams.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Streamsplat_towards Online Dynamic 3D Reconstruction Uncalibrated Video Streams.pdf",
+ "title": "StreamSplat: Towards Online Dynamic 3D Reconstruction from Uncalibrated Video Streams",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "前馈动态3D重建框架，加速1200倍但质量与鲁棒性存疑",
+ "innovations": [
+  "提出概率采样机制：从未标定输入鲁棒预测3D高斯，无需离线相机标定和逐场景优化",
+  "设计双向变形场：实现跨帧可靠关联，缓解长序列在线重建中的长期误差累积问题",
+  "提出自适应高斯融合操作：传播持久高斯的同时处理新生和消失的高斯，支持任意长视频流的在线更新"
+ ],
+ "method_framework": "全前馈框架逐帧处理未标定视频流：(1)从当前帧预测3D高斯及其不确定性；(2)双向变形场将当前帧高斯与缓存的规范高斯对齐，处理运动和遮挡；(3)自适应融合操作合并新旧高斯，保留持久部分并处理新生/消失高斯。整个过程无需离线优化，逐帧增量更新动态3DGS表示。",
+ "experiment_framework": "在标准动态和静态3D重建基准上验证，对比离线优化方法和在线前馈方法。指标包括PSNR/SSIM/LPIPS（新视角合成质量）、深度估计精度。额外测试任意长视频流的在线重建稳定性和速度（1200x加速）。",
+ "takeaways": [
+  "全前馈在线动态3D重建可以达到接近离线优化方法的质量，同时实现三个数量级的加速",
+  "双向变形场是缓解在线长序列重建误差累积的关键设计",
+  "自适应高斯融合使得系统能处理场景中物体的出现和消失，支持真实动态场景的持续重建"
+ ],
+ "weaknesses": [
+  "前馈方法的重建质量仍可能在复杂动态场景下不如逐场景优化方法",
+  "概率采样机制的不确定性建模在极端遮挡或大运动场景下的鲁棒性未充分验证",
+  "前9页未展示完整的定量对比表格，具体质量数值不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "动态3D重建与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

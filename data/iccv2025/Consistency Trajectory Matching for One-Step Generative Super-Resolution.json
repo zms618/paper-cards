@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Consistency Trajectory Matching for One-Step Generative Super-Resolution.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Consistency Trajectory Matching for One-Step Generative Super-Resolution.pdf",
+ "title": "Consistency Trajectory Matching for One-Step Generative Super-Resolution",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "一致性轨迹匹配实现一步超分，但泛化性与鲁棒性验证不足",
+ "innovations": [
+  "一致性训练直接建立从噪声LR到HR的PF-ODE映射",
+  "分布轨迹匹配(DTM)损失对齐SR结果与自然图像分布",
+  "蒸馏-free的一步生成式超分辨率方法"
+ ],
+ "method_framework": "基于PF-ODE的一致性训练建立从噪声LR到HR的确定性映射，结合分布轨迹匹配损失对齐SR结果与自然图像分布，实现一步推理",
+ "experiment_framework": "ImageNet-Test、RealSR、RealSet65数据集，对比ESRGAN、BSRGAN、SwinIR、StableSR、ResShift、SinSR等方法，使用PSNR、SSIM、LPIPS、CLIPIQA、MUSIQ、MANIQA、NIQE等指标",
+ "takeaways": [
+  "一致性训练可替代蒸馏实现一步生成模型",
+  "轨迹级匹配可有效对齐生成分布与真实分布",
+  "多阶段训练策略结合CT和DTM损失提升性能"
+ ],
+ "weaknesses": [
+  "未充分讨论方法在不同退化模型下的鲁棒性",
+  "DTM损失的计算复杂度可能较高",
+  "实验主要在标准数据集上进行，缺乏更广泛的泛化性验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "超分任务与可靠性主线无交点，仅常规图像处理工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

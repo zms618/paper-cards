@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Explainable Concept Generation through Vision-Language Preference Learning for Understanding Neural Networks'.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Explainable Concept Generation through Vision-Language Preference Learning for Understanding Neural Networks'.pdf",
+ "title": "Explainable Concept Generation through Vision-Language Preference Learning for Understanding Neural Networks' Internal Representations",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "用RL优化VLM生成TCAV概念，但人类可读性存疑",
+ "innovations": [
+  "把TCAV中人工猜测/收集概念图像集的过程转化为图像生成问题，免除人工枚举候选概念",
+  "提出基于强化学习的偏好优化(RLPO)，从粗略文本描述微调视觉-语言生成模型，使其生成能触发DNN激活的有意义概念",
+  "比较TCAV(XAI)、人类反馈、GPT-4o(AI)三种打分反馈，证明XAI反馈生成模型专属概念最快最省"
+ ],
+ "method_framework": "以视觉-语言生成模型从概念文本生成图像，用TCAV分数作为奖励信号做RL偏好优化，使生成的概念图像集对目标类别有高解释力；迭代生成-打分-偏好更新，得到人工/检索难以想到但确被网络激活的概念。",
+ "experiment_framework": "对预训练分类/视觉模型生成概念；消融打分机制(RLPO-XAIF/HF/AIF)；与检索式概念方法(Fel等)做人类survey对比；指标含XAI-score、探索间隙EG、概念多样性、执行时间。",
+ "takeaways": [
+  "RLPO能生成人类通常想不到但确会触发DNN激活的多样概念，探索间隙高",
+  "XAI(TCAV)反馈比人类反馈和GPT-4o反馈更快更省地生成模型专属概念(56s vs 180s / 72s)",
+  "检索式概念多与测试图像相似，缺乏模型特异性，而生成式能挖到网络真正用到的概念"
+ ],
+ "weaknesses": [
+  "人类survey显示多数被试无法识别生成概念的重要性，仅领域专家可，说明可解释性的人类可读性存疑",
+  "依赖TCAV分数作为奖励，奖励本身的偏差会传递给生成的概念",
+  "在常见分类模型上验证，未在多模态大模型/医学等高风险场景验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

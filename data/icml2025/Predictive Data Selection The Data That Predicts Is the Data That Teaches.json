@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Predictive Data Selection The Data That Predicts Is the Data That Teaches.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Predictive Data Selection The Data That Predicts Is the Data That Teaches.pdf",
+ "title": "Predictive Data Selection: The Data That Predicts Is the Data That Teaches",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "轻量fastText打分器筛选预训练数据，30B token达300B效果，计算降10倍。",
+ "innovations": [
+  "提出预测式数据选择(PRESELECT)假设：模型loss能预测下游能力的文本，也是有效贡献学习的数据",
+  "只需训练部署一个fastText打分器即可筛选，轻量高效，无需大模型反复打分",
+  "开源打分器与精选数据集；30B选定token超过300B token基线，并在3B规模上胜过DCLM、FineWeb-Edu等强基线"
+ ],
+ "method_framework": "受压缩效率(归一化loss)与下游表现相关性启发，训练一个fastText文本打分器估计每段文本对下游能力的预测价值；按分数筛选预训练语料，使模型在更少token上学到更丰富的能力，实现数据高效预训练。",
+ "experiment_framework": "在RefinedWeb等语料上用1B与3B参数模型评测；对比随机选择、DCLM、FineWeb-Edu等数据选择基线；指标为15个下游benchmark平均准确率与达到同等性能所需token/计算量，报告30B vs 300B token对比。",
+ "takeaways": [
+  "用fastText打分器选出的30B token训练模型超过300B token原生基线，实现约10倍计算节约",
+  "PRESELECT在3B模型、100B token规模上显著优于DCLM与FineWeb-Edu",
+  "文本对下游能力的预测性loss可作为廉价代理来直接挑选高价值预训练数据"
+ ],
+ "weaknesses": [
+  "打分器与所选下游能力的对齐程度决定收益，对未覆盖能力域的可迁移性未充分验证",
+  "fastText打分依赖词级特征，对需要语义/结构理解的复杂文本的判别力存疑",
+  "1B/3B规模验证，向数十/数百B模型规模外推时选择曲线是否保持一致缺少证据"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

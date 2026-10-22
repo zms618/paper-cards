@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MixMin_Finding Data Mixtures via Convex Minimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MixMin_Finding Data Mixtures via Convex Minimization.pdf",
+ "title": "MixMin: Finding Data Mixtures via Convex Minimization",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "凸优化求解数据混合权重，理论保证但实际假设存疑。",
+ "innovations": [
+  "将数据混合比例优化表述为凸最小化问题，提供理论保证",
+  "无需梯度反传即可高效求解最优数据混合权重",
+  "在多个预训练场景下验证优于启发式数据混合策略"
+ ],
+ "method_framework": "MixMin将数据混合问题(如何为不同数据源分配权重)表述为凸优化问题：(1)给定目标任务的性能指标；(2)将数据混合权重优化建模为凸最小化；(3)通过求解凸问题找到最优混合比例。核心优势：凸优化保证全局最优，且计算高效。",
+ "experiment_framework": "在多个大规模预训练场景上评估(如NLP/CV预训练)。基线包括启发式混合策略和网格搜索。指标为下游任务性能。",
+ "takeaways": [
+  "数据混合比例可通过凸优化高效求解，且有理论最优保证",
+  "凸优化方法比启发式/网格搜索更高效且更优",
+  "该框架可应用于多种预训练数据混合场景"
+ ],
+ "weaknesses": [
+  "凸优化的假设(如性能对混合权重线性)在实际中可能不成立",
+  "仅验证了预训练阶段的数据混合，微调阶段的适用性未知",
+  "与动态数据混合方法(课程学习)的对比未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

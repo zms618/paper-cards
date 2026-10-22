@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SUPERF_Neural Implicit Fields for MULTI- Super-Resolution.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SUPERF_Neural Implicit Fields for MULTI- Super-Resolution.pdf",
+ "title": "SuperF: Neural Implicit Fields for Multi-Image Super-Resolution",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "神经隐式场做测试时优化多图超分，避免单图幻觉但计算开销大",
+ "innovations": [
+  "为多帧亚像素移位的低分辨率图像共享同一个INR，并联合优化帧对齐与隐式表示",
+  "将亚像素对齐直接参数化为可优化的仿射变换参数，并按输出分辨率构建超采样坐标网格优化",
+  "测试时优化、不依赖高分辨率训练数据，避免单图超分产生不匹配现实的幻觉结构"
+ ],
+ "method_framework": "基于坐标式神经网络（神经场）做测试时优化的多图超分(MISR)：对多帧亚像素移位的LR图像共享一个连续INR，将帧对齐建模为可优化仿射参数，联合优化对齐与隐式表示，以多视图亚像素移位约束缓解不适定逆问题。",
+ "experiment_framework": "在卫星图像模拟burst与手持相机地面图像上评测，上采样因子最高8倍；对比采用自burst融合/层分离的INR基线；指标为超分质量且无需HR训练数据。",
+ "takeaways": [
+  "共享INR+联合对齐可在无HR训练数据下做超分，避免单图SR的幻觉结构",
+  "将亚像素对齐参数化为仿射参数优于直接套用的burst-fusion INR基线",
+  "在卫星与手持相机场景8倍上采样上取得有竞争力结果"
+ ],
+ "weaknesses": [
+  "依赖多帧亚像素移位采集，对单帧或无移位序列不适用",
+  "测试时逐样本优化计算开销大，实时性受限",
+  "医学影像仅作为相关域提及，未在真实医学影像数据上验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "多图超分避免幻觉，但未触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

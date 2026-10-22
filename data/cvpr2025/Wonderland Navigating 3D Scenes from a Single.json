@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Wonderland Navigating 3D Scenes from a Single.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Wonderland Navigating 3D Scenes from a Single.pdf",
+ "title": "Wonderland Navigating 3D Scenes from a Single",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "视频扩散潜空间+双分支相机控制重建3D场景",
+ "innovations": [
+  "双分支相机引导机制",
+  "基于潜空间的大规模重建模型LaLRM",
+  "渐进式训练策略"
+ ],
+ "method_framework": "利用视频扩散模型生成3D感知的潜表示，通过双分支相机控制实现精确相机轨迹控制，再通过LaLRM模型将潜表示直接重建为3D高斯溅射表示",
+ "experiment_framework": "在RealEstate10K、DL3DV和Tanks-and-Temples数据集上评估，使用FID、FVD、Rerr、Terr等指标比较相机引导视频生成质量，使用PSNR、SSIM、LPIPS评估3D重建效果",
+ "takeaways": [
+  "视频扩散模型的潜空间能有效压缩多视图信息并保持3D一致性",
+  "双分支相机控制机制在不损害视觉质量的情况下实现精确相机控制"
+ ],
+ "weaknesses": [
+  "方法依赖预训练的视频扩散模型",
+  "未充分讨论模型在极端场景下的鲁棒性",
+  "计算资源需求较高"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D重建与可靠性主线无交点，仅视频扩散模型有可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

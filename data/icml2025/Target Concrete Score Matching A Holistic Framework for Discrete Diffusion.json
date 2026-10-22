@@ -1,0 +1,38 @@
+{
+ "title": "Target Concrete Score Matching: A Holistic Framework for Discrete Diffusion",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.75
+ },
+ "one_line": "统一离散扩散框架，理论整合但实证不足",
+ "innovations": [
+  "提出Target Concrete Score Matching统一框架，把现有离散扩散方法（SEDD、CTMC、吸收态）自然归为特例",
+  "核心是在原始干净数据空间估计目标分布的concrete score，使后训练目标可直接复用",
+  "同一目标扩展到奖励微调、偏好对齐、AR模型蒸馏等后训练阶段"
+ ],
+ "method_framework": "在干净数据空间而非噪声空间定义score matching目标；通过估计目标分布的concrete score（对离散token的对数概率梯度）统一预训练与后训练；预训练时从数据样本直接估计score；后训练时把奖励/偏好信号转化为对目标分布score的修正；蒸馏时从AR模型采样的分布估计score。",
+ "experiment_framework": "在语言建模基准上验证统一框架的预训练效果与后训练能力，对比SEDD、CTMC、吸收态扩散及AR基线；报告困惑度与下游任务奖励对齐效果（前9页未列全数值）。",
+ "takeaways": [
+  "现有离散扩散方法可在TCSM框架下统一，理论碎片问题得到解决",
+  "干净空间的concrete score估计使后训练（RLHF/奖励微调）成为可能，补齐离散扩散短板",
+  "AR模型蒸馏到离散扩散可用同一score目标实现"
+ ],
+ "weaknesses": [
+  "统一框架的实证增益是否超过各专门方法未明确",
+  "前9页未给出具体困惑度/奖励数值",
+  "大规模语言建模的可扩展性需更多证据",
+  "域为离散扩散模型方法论，与医学影像/多模态大模型推理主线弱相关"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Target Concrete Score Matching A Holistic Framework for Discrete Diffusion.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Target Concrete Score Matching A Holistic Framework for Discrete Diffusion.pdf",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/OCTAX_Accelerated CHIP-8 Arcade Environ-Ments for Reinforcement Learning In Jax.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/OCTAX_Accelerated CHIP-8 Arcade Environ-Ments for Reinforcement Learning In Jax.pdf",
+ "title": "OCTAX: Accelerated CHIP-8 Arcade Environments for Reinforcement Learning in JAX",
+ "scores": {
+  "novelty": 4,
+  "depth": 5,
+  "evidence": 4.5,
+  "relevance": 4.0,
+  "overall": 4.3
+ },
+ "one_line": "JAX实现的CHIP-8环境套件，工程贡献为主，算法创新有限。",
+ "innovations": [
+  "首个在JAX中端到端实现经典街机游戏的环境，通过CHIP-8仿真填补JAX生态缺少真实街机视觉与玩法复杂度的空白。",
+  "实现GPU原生向量化执行，相较传统CPU模拟器取得数量级加速，支持大规模并行与多种子实验。",
+  "模块化设计便于扩展新游戏，并支持用大模型自动生成新环境。"
+ ],
+ "method_framework": "用JAX实现CHIP-8虚拟机的加载与取指-译码-执行循环，封装为标准RL交互环境；环境执行与训练在同一GPU上端到端完成，避免CPU-GPU数据传输瓶颈；覆盖益智/动作/策略多类游戏，输出图像观测。",
+ "experiment_framework": "在多款CHIP-8街机游戏上训练RL智能体，与CPU模拟器及现有JAX/CPU环境（如MinAtar、Brax、Gymnax）对比训练速度与可扩展性；报告相对CPU模拟器的数量级加速（具体帧率/种子统计在所提取页之后）；框架开源。",
+ "takeaways": [
+  "端到端GPU环境可显著缓解RL实验的环境执行瓶颈，使多种子、大规模实验可行。",
+  "CHIP-8作为Atari前身既能提供街机复杂度又便于在JAX中全向量化。",
+  "模块化加LLM生成的设计降低了新RL环境的构建成本。"
+ ],
+ "weaknesses": [
+  "核心为环境/工具工程贡献，算法与科学新颖性有限，CHIP-8游戏规模与难度远低于现代Atari。",
+  "所提取页缺少具体帧率、多种子统计显著性等可核验量化证据。",
+  "环境保真度与现有Atari/ALE的可比性、对DQN/PPO之外现代RL算法的适配未充分验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.48,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "纯工程工具贡献，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

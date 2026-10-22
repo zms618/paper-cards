@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Distributionally Robust Active Learning for Gaussian Process Regression.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Distributionally Robust Active Learning for Gaussian Process Regression.pdf",
+ "title": "Distributionally Robust Active Learning for Gaussian Process Regression",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.0
+ },
+ "one_line": "为GPR提出分布鲁棒主动学习，但候选集构造依赖先验且计算复杂度未充分讨论。",
+ "innovations": [
+  "为GPR建立分布鲁棒主动学习(DRAL)框架，直接针对目标分布候选集的最坏情况期望误差做标签采集",
+  "证明最坏情况期望平方误差的上界，表明在温和条件下有限个标签即可使误差任意小",
+  "弥补了现有基于信息增益/不确定性采样的AL启发式方法缺乏目标分布预测误差理论保证的空白"
+ ],
+ "method_framework": "现有GPR主动学习采集函数(US/RS/方差缩减/信息增益)不利用未标注集所蕴含的目标分布先验、也无目标预测误差保证；本文在分布鲁棒学习框架下定义目标分布候选集，设计采集函数在该集合上最小化最坏情况期望平方误差，并推导其上界，从而在有限标签下保证最坏情况误差收敛。",
+ "experiment_framework": "在合成与真实数据集上，对比US/RS/方差缩减/信息增益等AL采集函数，以最坏情况与平均预测误差为指标，验证所提两种DRAL方法的有效性与理论上界。",
+ "takeaways": [
+  "GPR主动学习可显式对目标分布候选集做分布鲁棒，而不只是启发式选点",
+  "最坏情况期望平方误差有上界，有限标签下可任意小",
+  "在目标分布难精确指定的场景下比标准AL更稳健"
+ ],
+ "weaknesses": [
+  "目标分布候选集的构造方式较依赖先验，实际难以精确设定",
+  "鲁棒采集函数的计算复杂度(最坏情况优化)未充分讨论",
+  "主要在中小规模GPR验证，大规模核方法可扩展性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

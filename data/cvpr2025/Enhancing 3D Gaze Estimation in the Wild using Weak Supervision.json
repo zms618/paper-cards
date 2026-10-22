@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Enhancing 3D Gaze Estimation in the Wild using Weak Supervision.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Enhancing 3D Gaze Estimation in the Wild using Weak Supervision.pdf",
+ "title": "Enhancing 3D Gaze Estimation in the Wild using Weak Supervision",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "弱监督框架提升3D视线估计，但伪标签依赖和鲁棒性不足",
+ "innovations": [
+  "ST-WSGE自训练弱监督框架利用2D视线跟随数据生成3D伪标签",
+  "Gaze Transformer模态无关架构统一处理图像和视频数据",
+  "几何投影方法将2D视线标签与预测3D视线结合生成伪3D标签"
+ ],
+ "method_framework": "两阶段训练框架：首先在3D视线数据集上训练初始模型，然后利用该模型在2D视线跟随数据集上生成3D伪标签，最后结合原始3D数据集和带伪标签的2D数据集重新训练模型。",
+ "experiment_framework": "数据集：Gaze360、GFIE、MPIIFaceGaze等；基线：Swin(2D)-LSTM、Swin(2D)-Tr；指标：视线角度误差(度)",
+ "takeaways": [
+  "利用2D视线跟随数据可显著提升3D视线估计的泛化能力",
+  "模态无关的Transformer架构能有效融合图像和视频信息提升性能"
+ ],
+ "weaknesses": [
+  "伪标签生成依赖于预训练模型的准确性",
+  "未充分探讨模型在不同极端条件下的鲁棒性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "视线估计与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

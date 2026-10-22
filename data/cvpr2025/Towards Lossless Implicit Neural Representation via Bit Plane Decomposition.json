@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Towards Lossless Implicit Neural Representation via Bit Plane Decomposition.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Towards Lossless Implicit Neural Representation via Bit Plane Decomposition.pdf",
+ "title": "Towards Lossless Implicit Neural Representation via Bit Plane Decomposition",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "位平面分解降低INR参数上界，但训练噪声与收敛问题待解",
+ "innovations": [
+  "量化INR模型大小的上界理论",
+  "位平面分解方法降低上界",
+  "发现位偏差现象",
+  "扩展INR应用到无损压缩、位深度扩展和模型量化"
+ ],
+ "method_framework": "将信号分解为位平面，通过添加位坐标作为输入维度，使INR能够逐位表示信号，从而降低所需精度并加速收敛",
+ "experiment_framework": "在MIT-5k、TESTIMAGES、DIV2K和Kodak数据集上评估16位和8位图像拟合，使用PSNR、SSIM、RMSE和BER作为指标",
+ "takeaways": [
+  "位平面分解可有效降低INR所需参数上界",
+  "位偏差现象使MSB比LSB收敛更快",
+  "BCE损失函数在位平面表示中表现最佳"
+ ],
+ "weaknesses": [
+  "训练过程中存在盐椒噪声伪影",
+  "增加输入维度会降低收敛速度",
+  "位轴上的频谱偏差仍存在"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.925,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "INR压缩与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

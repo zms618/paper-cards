@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Understanding the Nature Of Attention with Low-Rank Sparse Decomposition.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Understanding the Nature Of Attention with Low-Rank Sparse Decomposition.pdf",
+ "title": "Towards Understanding the Nature of Attention with Low-Rank Sparse Decomposition",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "Lorsa用稀疏头分解注意力叠加，发现新头类型，但大规模验证不足。",
+ "innovations": [
+  "提出Lorsa：以一维OV电路的过完备稀疏注意力头替换MHSA，针对注意力叠加问题分解出单义的原子特征-特征交互单元",
+  "发现新的头类型subtoken induction heads，在字符级而非token级工作；并给出更干净的归纳头/后继头/attention sink及算术专用头家族",
+  "自动可解释性评估表明Lorsa与SAE可解释性相当且电路发现性质更优，并在toy Transformer上实现完全稀疏化以揭示干净全局电路"
+ ],
+ "method_framework": "用过完备、稀疏激活、单维输出的注意力头集合替换原始MHSA模块，每个头解释跨token位置的一个原子特征交互。通过低秩稀疏分解从叠加的多头行为中分离出单义注意力单元，并配探索界面与自动可解释性(z-pattern)分析。",
+ "experiment_framework": "在Pythia-160M、Llama等规模模型上评估重建保真度与稀疏度的权衡、可扩展性；用top激活与归因模式做自动可解释性，与SAE对比；含架构设计消融、与原MHSA头的相关性分析及错误分析，并在toy Transformer上做全稀疏化验证。",
+ "takeaways": [
+  "低秩稀疏注意力能把叠加在多头中的原子注意力行为解耦为更细粒度、更干净的单义单元",
+  "Lorsa在单义性上与SAE相当，但电路发现能力更优",
+  "存在字符级工作的subtoken induction heads，扩展了已知注意力行为家族"
+ ],
+ "weaknesses": [
+  "实验主要集中在中小规模模型(Pythia-160M等)，大规模前沿模型上的可扩展性证据偏弱",
+  "替换模型引入额外过完备头，重建保真度与稀疏度存在权衡，未必零成本复现原计算",
+  "属机理可解释性方向，与可靠性/医学影像/多模态推理主线仅弱相关"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "机理可解释性与可靠性主线弱相关，无落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

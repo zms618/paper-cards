@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Tspulse_Tiny Pre-Trained Models with DISENTANGLED Representations for Rapid Time-Series Analysis.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tspulse_Tiny Pre-Trained Models with DISENTANGLED Representations for Rapid Time-Series Analysis.pdf",
+ "title": "TSPulse: Tiny Pre-Trained Models with Disentangled Representations for Rapid Time-Series Analysis",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "轻量级时间序列模型通过三视角解耦表示实现诊断任务零样本迁移",
+ "innovations": [
+  "提出跨表示空间（时间/频谱）和抽象层级（局部/全局）的显式解耦预训练框架，学习三个互补嵌入视图",
+  "设计轻量级事后融合器，根据任务类型选择性注意力融合解耦视图",
+  "提出混合掩码策略增强预训练中的缺失多样性，缓解掩码诱导偏差"
+ ],
+ "method_framework": "TSPulse是仅1M参数的超轻量预训练模型家族。在掩码重建预训练目标基础上，加入显式的跨空间与跨抽象层级解耦约束，学习时间域、频谱域和语义域三个互补嵌入视图；再通过轻量级事后融合器按任务类型选择性融合各视图；同时采用混合掩码策略提升鲁棒性。",
+ "experiment_framework": "在75+数据集上评估四类时间序列诊断任务：异常检测（TSB-AD榜单+20%）、相似性搜索（+25%）、插补（+50%）、多变量分类（+5-16%），对比Moment、UniTS、GPT4TS等大10-100倍的模型。",
+ "takeaways": [
+  "解耦多视角表示比单一嵌入更利于零样本迁移到时间序列诊断任务",
+  "1M参数的小模型通过精心设计的预训练目标可超越大10-100倍的模型",
+  "混合掩码策略有效缓解了传统掩码重建方法的偏差问题"
+ ],
+ "weaknesses": [
+  "仅针对时间序列诊断任务，未验证在预测任务上的迁移效果",
+  "解耦表示的理论分析不足，三个视图间的互补性缺乏严格论证",
+  "事后融合器的设计较简单，可能未充分挖掘解耦表示的潜力"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "时间序列诊断任务与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

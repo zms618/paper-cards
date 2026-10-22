@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/A3 Few-shot Prompt Learning of Unlearnable Examples with Cross-Modal Adversarial.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A3 Few-shot Prompt Learning of Unlearnable Examples with Cross-Modal Adversarial.pdf",
+ "title": "A3: Few-shot Prompt Learning of Unlearnable Examples with Cross-Modal Adversarial Feature Alignment",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 7.5,
+  "overall": 6.0
+ },
+ "one_line": "跨模态对抗增广对齐，提升提示学习对不可学习样本的鲁棒性",
+ "innovations": [
+  "把对抗增广从图像模态扩展到文本模态：对图像采 K_im 种增广、对文本（随机 token 掩码/重排 + 文本嵌入小幅随机旋转）采 K_tx 种，形成 K_im×K_tx 的相似度矩阵 S(˜x,˜t)",
+  "优化 min_ϑ E[ max_{i,j} L(S(˜x,˜t)_{ij}, y) ]，即只在“最不相似”的图文增广对上做对齐，迫使提示学习依赖底层语义而非 UE 植入的捷径",
+  "把 UE 的替代模型换成本身的提示学习器（CoCoOp），构造 EM/REM/HYPO 的 adaptive 变体，从而提出更针对 PL 的攻击"
+ ],
+ "method_framework": "冻结 CLIP 双编码器，沿用 CoCoOp 的 meta-net m_ϱ 从增广图像特征预测 prompt；对每个训练对采样 K_im×K_tx 个增广组合，取相似度最低者计算交叉熵并反传，更新 prompt V 与 meta-net。",
+ "experiment_framework": "ImageNet/Caltech101/Flowers102/Food101/Pets/UCF101 等 7 个数据集；16-shot，standard 与 base-to-novel 划分；对比 CoOp/CoCoOp/KgCoOp/ProDA 及 AT/ISS/UEraser；攻击含 EM/REM/HYPO/LSP/AR/OPS。",
+ "takeaways": [
+  "“在最难的增广对上对齐”是一个通用 anti-shortcut 训练准则，可迁移到任何依赖捷径特征的鲁棒学习场景",
+  "攻防双向都做（先构造针对 PL 的 adaptive UE，再提 A3）比只报防御更可信，值得在数据污染类工作中采用"
+ ],
+ "weaknesses": [
+  "对抗增广的核心思路继承自 UEraser，本文的增量主要是把它搬到文本模态，机制创新性有限",
+  "正文 9 页截断，主结果表、消融（K_im/K_tx 取值、文本增广各策略贡献）与方差均不可见，核心 claim 无法完整核实",
+  "评测只报准确率，未给出干净数据上的性能代价（A3 为抗 UE 引入的强增广是否损害正常少样本精度），claim 与实验不对齐"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "跨模态对抗对齐提升提示学习鲁棒性，触及可靠性主线与落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/AVF-MAE_Scaling Affective Video Facial Masked Autoencoders via Efficient Audio-Visual.pdf",
+ "conf": "cvpr2025",
+ "path": "C:\\Users\\James\\Desktop\\study\\paper\\项目记忆\\论文卡片\\精读卡片库\\cvpr2025\\AVF-MAE_Scaling Affective Video Facial Masked Autoencoders via Efficient Audio-Visual.pdf",
+ "title": "AVF-MAE++: Scaling Affective Video Facial Masked Autoencoders via Efficient Audio-Visual Self-Supervised Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4,
+  "relevance": 5.0,
+  "overall": 5.0
+ },
+ "one_line": "在HiCMAE上叠加LGI-Former与IAV-CL，双缩放模型数据",
+ "innovations": [
+  "音视频编解码器解耦的掩码比设定：编码器沿用极高掩码 ρv=90%/ρa=80% 迫使单模态学底层表征，解码器统一降到 ρd=50% 降重建难度，视频走 running cell masking、音频走 random masking（Eq.2-3）。",
+  "把原单模态编码器换成 LGI-Former 四阶段结构：阶段 I 局部区域内自注意力、II 全局区域间自注意力、III 局部-全局交互、IV 全局-局部交互（Eq.4-7），逐阶段解耦邻域与全局依赖。",
+  "IAV-CL 交叉对比学习含 DiER Unit（并行 MHSA+MHCA 做稠密音视频交互 Eq.9-11，再接 ER 层 Eq.12-13）与 HAFE Layer（Eq.14-16）做全局-局部对齐，配合三阶段渐进语义注入 PSI：无标签预训练→有标签混合预训练（CEA 13 类 31218、MER 3 类 1007）→17 个下游数据集定向微调。"
+ ],
+ "method_framework": "在 HiCMAE 骨架上做模型（Base/Large/Huge）与数据（1.36M 无标签 clip 混合）双缩放；编码器高掩码 ρv=90%/ρa=80%，解码器 ρd=50%；单模态改用 LGI-Former 四阶段；IAV-CL 用 DiER+HAFE 做音视频交叉对比，三阶段渐进注入语义。",
+ "experiment_framework": "三类下游任务 CEA/DEA/MER 定向微调：CEA 覆盖 10 个数据集报 UAR/WAR/WA-F1，DEA 为连续维度回归，共 17 个下游集；另做模型与数据的缩放曲线评测（消融表在正文截断之外）。",
+ "takeaways": [
+  "音视频 MAE 的主要增益来自模型与数据双缩放，LGI-Former/IAV-CL 属次因，属于对既有骨架的规模外推。",
+  "编码器维持极高掩码、解码器单独降掩码码率的分层设定，可同时保住表征与可重建性。",
+  "无标签混合语料（CN-Celeb、MER2024、VoxCeleb2-dev、AV-Speech、CelebV-HQ）加有标签混合预训练，对跨数据集的定向微调有增益。"
+ ],
+ "weaknesses": [
+  "正文读到 Sec 4.1 中段即被截断（DEA 定义首句处结束），全部下游数值表、与 HiCMAE/AV-MAE 等基线的横向对比、消融实验均不在可读范围内，无法核验提升幅度与显著性。",
+  "方法主体是在已有 HiCMAE 上串行叠加 LGI-Former 与 IAV-CL 两套模块，缺少分解式消融说明究竟哪一处改动贡献主增益，模块增益归属不清。",
+  "三阶段渐进训练依赖手工数据集配比（如 CEA 有标签混合 13 类 31218、MER 3 类仅 1007），且掩码比固定为 90/80/50 未见灵敏度曲线，超参选择依据仅在方法段一句带过。"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "音视频自监督学习，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/MER-Tracker Towards High-Speed 3D Point Tracking via Multi-View Event-RGB Hybrid.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/MER-Tracker Towards High-Speed 3D Point Tracking via Multi-View Event-RGB Hybrid.pdf",
+ "title": "MER-Tracker Towards High-Speed 3D Point Tracking via Multi-View Event-RGB Hybrid",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "多模态融合实现高速3D跟踪，但泛化与规模验证不足",
+ "innovations": [
+  "首个多视图事件-RGB混合相机系统",
+  "异构3D特征融合方法",
+  "基于时间相关的LoRA微调Transformer"
+ ],
+ "method_framework": "双模态2D特征提取器提取RGB和事件流特征，通过线性插值和锚采样融合异构3D特征，最后使用基于时间相关的LoRA微调Transformer预测高帧率3D点轨迹。",
+ "experiment_framework": "FMV-Kubric(70训练/30测试)、FMV-Panoptic(6场景)、真实物体(5场景)；对比MVTracker等基线；指标包括MTE、δavg、OA、AJ和RMSE。",
+ "takeaways": [
+  "事件相机与RGB相机互补融合解决高速运动模糊问题",
+  "线性插值+锚采样方法解决时空非平滑和不平衡问题"
+ ],
+ "weaknesses": [
+  "仅在小规模实验室测试，未在大规模真实场景验证",
+  "依赖预训练模型，可能限制在特定领域的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "高速3D跟踪与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

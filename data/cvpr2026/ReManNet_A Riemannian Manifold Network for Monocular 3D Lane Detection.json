@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/ReManNet_A Riemannian Manifold Network for Monocular 3D Lane Detection.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ReManNet_A Riemannian Manifold Network for Monocular 3D Lane Detection.pdf",
+ "title": "ReManNet A Riemannian Manifold Network for Monocular 3D Lane Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "黎曼流形网络提升3D车道检测几何一致性，但复杂度高且依赖初始预测",
+ "innovations": [
+  "道路流形假设：将道路定义为R3中的2D流形，车道为1D子流形",
+  "ReManNet网络：使用SPD流形上的黎曼高斯描述符编码几何结构",
+  "3D隧道车道IoU损失：测量沿车道的管状邻域重叠，实现形状级对齐"
+ ],
+ "method_framework": "ReManNet先通过图像主干网络生成初始车道预测，然后使用位置加权卷积层编码空间上下文，将特征映射到SPD流形上的黎曼高斯描述符，通过门控机制融合几何描述符与视觉特征，最终输出 refined 3D车道预测。",
+ "experiment_framework": "在OpenLane基准上评估，与多种SOTA方法比较，使用F1分数、类别准确率、x/z方向误差等指标，并在不同场景下测试性能。",
+ "takeaways": [
+  "将几何结构编码为黎曼流形上的描述符可提升3D重建的几何一致性",
+  "设计形状级损失函数(3D-TLIoU)比传统点级损失更能保持车道全局几何结构"
+ ],
+ "weaknesses": [
+  "方法复杂度较高，涉及多个流形操作和变换",
+  "依赖初始锚点预测的准确性，可能受初始预测质量影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "3D车道检测属于纯几何重建，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

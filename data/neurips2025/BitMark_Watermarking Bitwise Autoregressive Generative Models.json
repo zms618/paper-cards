@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/BitMark_Watermarking Bitwise Autoregressive Generative Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/BitMark_Watermarking Bitwise Autoregressive Generative Models.pdf",
+ "title": "BitMark: Watermarking Bitwise Autoregressive Generative Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "比特级自回归生成模型水印，有放射性但未解决扩散模型问题",
+ "innovations": [
+  "首个针对比特级自回归图像生成模型的水印方案",
+  "在比特层面而非标记层面嵌入水印，解决编码-解码不一致问题",
+  "实现放射性水印，防止模型崩溃"
+ ],
+ "method_framework": "BitMark通过在比特流中嵌入绿色/红色列表序列，在生成过程中轻微调整logit，使图像包含更多绿色序列，同时保持视觉质量和生成速度。",
+ "experiment_framework": "在Infinity和Instella模型上评估，使用MS-COCO数据集，对比FID、KID、CLIP指标，测试多种攻击方法（高斯噪声、模糊、JPEG压缩等）",
+ "takeaways": [
+  "比特级水印比标记级水印更鲁棒，因编码-解码比特重叠率(77.4%)远高于标记(2.4%)",
+  "放射性水印特性可有效防止模型崩溃，适用于商业模型保护"
+ ],
+ "weaknesses": [
+  "水印强度与图像质量存在权衡关系，δ>3时质量显著下降",
+  "仅针对自回归模型，未涵盖扩散模型等其他生成模型"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

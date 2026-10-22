@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Olica_Efficient Structured Pruning of Large Language Models without Retraining.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Olica_Efficient Structured Pruning of Large Language Models without Retraining.pdf",
+ "title": "Olica: Efficient Structured Pruning of Large Language Models without Retraining",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "常规结构剪枝方法，PCA分解与线性校准结合",
+ "innovations": [
+  "正交分解处理多头注意力层矩阵乘积",
+  "线性校准重建前馈网络层残差误差",
+  "快速分解方法降低PCA复杂度"
+ ],
+ "method_framework": "通过PCA处理MHA层的WqW⊤k和WvW⊤o矩阵乘积，结合线性校准重建FFN层残差误差，实现无需重训练的结构剪枝",
+ "experiment_framework": "LLaMA-1/2和Vicuna模型，WikiText2和7个下游任务， perplexity和准确率指标，与LLM-Pruner等基线对比",
+ "takeaways": [
+  "利用矩阵乘积统一实体进行PCA提取关键信息",
+  "线性校准结合低秩近似减少额外参数"
+ ],
+ "weaknesses": [
+  "仅关注结构剪枝，未考虑其他压缩方法",
+  "线性校准可能无法处理复杂非线性误差"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

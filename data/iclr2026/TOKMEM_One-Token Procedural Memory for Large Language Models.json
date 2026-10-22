@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TOKMEM_One-Token Procedural Memory for Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TOKMEM_One-Token Procedural Memory for Large Language Models.pdf",
+ "title": "TokMem: One-Token Procedural Memory for Large Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "单token过程记忆框架，冻结LLM实现模块化持续学习。",
+ "innovations": [
+  "将任务过程知识压缩为单个可训练记忆token，每个token同时作为过程索引和生成控制信号，开销恒定",
+  "记忆token与LLM主干参数隔离，新过程可持续添加而不干扰已有过程，支持模块化持续学习",
+  "推理时按需链式召回多个记忆token（如解析、搜索、格式化），实现多步骤函数调用而无需长提示词"
+ ],
+ "method_framework": "TokMem维护一个记忆库，每个记忆token对应一个可复用任务过程。训练时将记忆token插入文本序列，仅训练这些token而冻结LLM主干，通过下一个token预测学习过程表示。推理时根据查询召回相关记忆token，逐步引导生成，完成一个阶段后自动召回下一阶段的过程token，形成多步工作流。",
+ "experiment_framework": "在Super-Natural Instructions的1000个任务上评估原子召回能力，在多步函数调用任务上评估组合召回能力；基线包括检索增强提示（RAG）和参数高效微调（PEFT）；指标为任务准确率和可训练参数量对比。",
+ "takeaways": [
+  "单token过程记忆在原子任务和组合任务上均优于检索增强提示，且避免了重复上下文开销",
+  "记忆token的参数隔离特性使得持续学习不会干扰已有技能",
+  "以极少的可训练参数量即可匹配甚至超过PEFT方法的性能"
+ ],
+ "weaknesses": [
+  "单token容量有限，复杂过程是否能充分压缩到一个向量中缺乏系统分析",
+  "记忆token的召回依赖查询与过程的匹配，召回错误可能导致级联失败",
+  "实验主要在英文NLP任务上验证，多模态和跨语言场景的适用性未探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.68,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "过程记忆框架与可靠性主线无直接交点，属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

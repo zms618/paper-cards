@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Recovery Guarantee for Sparse Neural Networks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Recovery Guarantee for Sparse Neural Networks.pdf",
+ "title": "A RECOVERY GUARANTEE FOR SPARSE NEURAL NETWORKS",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 6.0
+ },
+ "one_line": "稀疏网络理论恢复保证，但实验与理论严重脱节",
+ "innovations": [
+  "用固定生成器向量 h_i 取代第一层权重 u_i、融合为 w_i=u_i v_i，把两层 ReLU 网写成 y=Aw 的线性感知模型，从而把稀疏网络训练归约为压缩感知式的稀疏信号恢复",
+  "在植入稀疏网假设下证明激活模式集合满足两条性质（每神经元激活不少于 εn 条数据、任意两神经元激活模式至少差 γn 位），由此推出感知矩阵 A 的受限强凸与受限平滑（Lemma 1）",
+  "据此给出 IHT 恢复定理（Theorem 1）：硬阈值投影放宽到˜s≥32(β/α)²s、步长 η=2/(3β)，在 K=O((β/α)log(f(w₀)/ε)) 步内以高概率达到 f(w_K)−f(w*)≤ε"
+ ],
+ "method_framework": "两层 ReLU 网凸化：固定生成器 h_i 替代第一层权重、融合 w=uv 得 y=Aw；在植入稀疏网假设下证 A 的受限强凸/平滑（Lemma 1，由激活模式两条性质以高概率推出），再用阈值放大的迭代硬阈值 IHT 高概率恢复稀疏权重 w*。",
+ "experiment_framework": "三类任务：植入稀疏 MLP 拟合（PSNR）、MNIST 二分类与 10 分类（准确率）、MNIST/CIFAR-10 隐式神经表示；在隐藏维 m × 稀疏度 s 网格上与 IMP 对比的热力图，各 3 次随机试验。",
+ "takeaways": [
+  "样本复杂度只随「活跃（非零）神经元数」增长而非总神经元数，说明稀疏神经元权重可被压缩感知式恢复，为稀疏训练提供了理论入口",
+  "把 IMP 每轮剪枝率从默认 20% 降到 10% 作为加强基线，反衬出稀疏训练此前高度依赖启发式调参",
+  "用 count-sketch 做噪声但省内存的全权重估计，使 IHT 能扩展到向量输出与更深层 MLP，超出理论设定仍取得竞争甚至更优结果"
+ ],
+ "weaknesses": [
+  "所有热力图与准确率都是 3 次随机试验均值，正文与附录均未报标准差或显著性检验；而理论结论是「以高概率」成立的高斯数据结论，实验侧没有任何与误差界对应的量化对照",
+  "Theorem 1 只在枚举全部激活模式、A 固定、标量输出、两层、高斯数据的设定下成立，实验中却改用随机采样 A、小批量随机梯度、向量输出与三层网、并在迭代中顺序更新 A，越界设置的收益缺桥接分析",
+  "实验仅与 IMP 一条基线对比，未与动态稀疏训练等其他稀疏训练范式比较；「IHT 优化期内存远小于 IMP」只是定性陈述，没给同等显存预算下两者可跑的 m/s 网格对照"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "稀疏网络理论工作，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

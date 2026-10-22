@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Structured Preconditioners in Adaptive Optimization A Unified Analysis.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Structured Preconditioners in Adaptive Optimization A Unified Analysis.pdf",
+ "title": "Structured Preconditioners in Adaptive Optimization: A Unified Analysis",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 4.5,
+  "relevance": 5,
+  "overall": 5.9
+ },
+ "one_line": "统一自适应优化预条件分析，但实证薄弱且与主线无关",
+ "innovations": [
+  "提出首个统一在线凸优化与随机凸优化的自适应预条件分析框架（Theorem 2.1），统一了对角 AdaGrad、全矩阵 AdaGrad、AdaGrad-Norm、层间自适应等算法",
+  "提出 well-structured preconditioner 这一新颖充分条件，克服 Gupta 2017 案例分析的技术障碍，实现一族算法的统一推导",
+  "证明单侧 Shampoo 的新遗憾界，比原双侧 Shampoo 好至多一个 d 倍因子，并经离线到在线归约得到随机凸优化收敛率"
+ ],
+ "method_framework": "以 AdaReg 元算法为骨架，把预条件子刻画为凸集合 H⊂S+ 上的半范数，遗憾界分解为解范数项与梯度范数项的乘积；不同预条件结构对应不同子代数（对角矩阵/全矩阵/R^{dL}⊗I），从而在同一框架下比较。",
+ "experiment_framework": "理论为主：在特定函数类上给出各算法最坏情形收敛率对比表（Table 2）；实证仅在合成线性回归上验证（d=1000，H 特征值前10个为1其余按 1/(i-10)^2 衰减），比较 1-sided Shampoo 与其他 AdaReg 变体的收敛曲线。",
+ "takeaways": [
+  "更结构化、更省显存算力的预条件子未必收敛更慢：增大预条件集合虽减小梯度范数项但增大解范数项，权衡后更结构化者反而可能更优",
+  "单侧 Shampoo 在理论与合成实验中均可超过全矩阵 AdaGrad，并非仅是其计算廉价替身",
+  "统一框架可直接指导优化器选型，理论预测的优劣与实验一致"
+ ],
+ "weaknesses": [
+  "实证证据非常弱，仅 d=1000 的合成线性回归，无大规模深度学习或真实训练验证",
+  "与主线（鲁棒性/可信AI/医学影像/多模态推理）无关，属纯优化器理论，落地相关性低",
+  "结论依赖特定函数类与范数归一约定，对一般非凸训练的外推缺乏讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

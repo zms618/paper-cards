@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/OmniCast_A Masked Latent Diffusion Model for Weather Forecasting Across Time Scales.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/OmniCast_A Masked Latent Diffusion Model for Weather Forecasting Across Time Scales.pdf",
+ "title": "OmniCast: A Masked Latent Diffusion Model for Weather Forecasting Across Time Scales",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "掩码扩散模型用于跨尺度天气预报，性能与基线相当",
+ "innovations": [
+  "掩码潜在扩散模型避免自回归误差累积",
+  "连续VAE嵌入解决天气数据压缩挑战",
+  "联合时空生成同时处理初始和边界条件"
+ ],
+ "method_framework": "两阶段框架：VAE编码原始天气数据到低维连续空间，扩散Transformer通过掩码预测未来潜在序列，迭代解码生成完整预测",
+ "experiment_framework": "ChaosBench和WeatherBench2评估，对比PanguWeather、GraphCast等基线，使用RMSE、ABS BIAS、SSIM、SDIV、SRES、CRPS、SSR等指标",
+ "takeaways": [
+  "掩码生成框架可有效缓解长期预测中的误差累积问题",
+  "连续潜在空间比离散量化更适合天气数据建模"
+ ],
+ "weaknesses": [
+  "短期预测性能略低于专门优化的模型",
+  "计算复杂度虽低于NWP但仍较高"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

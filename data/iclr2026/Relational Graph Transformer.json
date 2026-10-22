@@ -1,0 +1,41 @@
+{
+ "title": "Relational Graph Transformer",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.7
+ },
+ "one_line": "RELGT：关系图Transformer，五要素token化+局部全局注意力，RelBench上超GNN。",
+ "innovations": [
+  "提出面向关系表的多元素tokenization：将每个节点分解为特征、类型、跳距、时间、局部结构五要素，无需昂贵预计算即可编码异质性、时序与拓扑。",
+  "设计采样子图上的局部注意力+对可学习质心的全局注意力，同时建模细粒度局部结构与数据库级全局模式。",
+  "在RelBench 21个任务上一致匹配或超过GNN基线(最高+18%)，确立Graph Transformer作为RDL的强架构。"
+ ],
+ "method_framework": "把多表关系库表示为异质时序关系实体图；为每个种子节点采样定长子图作为局部上下文窗口，按五要素tokenize；Transformer在局部token做局部注意力并 attend 可学习全局质心token得到全局表示，最后接下游预测头；时间编码用于防止时序数据泄漏。",
+ "experiment_framework": "基准：RelBench的21个任务；基线为各类关系GNN(RDL)模型；指标为下游预测精度；强调在大规模、异质、时序图上无需昂贵位置编码预计算的可扩展性。",
+ "takeaways": [
+  "消息传递GNN在关系图上存在长程依赖瓶颈(如transactions间需多跳)，Graph Transformer可缓解。",
+  "现成Graph Transformer的位置编码/同质性假设不适用于大规模异质时序关系图，需专门设计。",
+  "局部+全局质心的注意力组合是在关系图上兼顾结构细节与全局模式的有效方案。"
+ ],
+ "weaknesses": [
+  "与主线(可靠性×医学影像/多模态推理)关联弱，属关系图神经网络，电子健康记录仅为应用举例。",
+  "多元素tokenization的五要素与采样子图窗口大小为设计选择，节选页未见各要素的消融证据。",
+  "节选前9页未见21任务的完整逐任务结果表与相对最强GNN的平均增益，'最高+18%'的代表性需谨慎。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Relational Graph Transformer.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Relational Graph Transformer.pdf",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "关系图Transformer，与可靠性主线关联弱，仅为应用举例",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

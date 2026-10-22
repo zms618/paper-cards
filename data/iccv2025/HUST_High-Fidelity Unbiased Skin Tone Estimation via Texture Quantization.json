@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/HUST_High-Fidelity Unbiased Skin Tone Estimation via Texture Quantization.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/HUST_High-Fidelity Unbiased Skin Tone Estimation via Texture Quantization.pdf",
+ "title": "HUST High-Fidelity Unbiased Skin Tone Estimation via Texture Quantization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.6
+ },
+ "one_line": "VQGAN纹理量化与双判别器实现肤色估计，依赖多光照图像",
+ "innovations": [
+  "基于VQGAN的高保真纹理码本学习",
+  "双判别器实现高保真UV纹理重建",
+  "基于组身份损失的无偏漫反射反照率解歧"
+ ],
+ "method_framework": "HUST框架通过VQGAN学习高保真纹理码本，利用双判别器微调编码器实现UV纹理重建，再通过交叉注意力和组身份损失实现从纹理到反照率的无监督域适应。",
+ "experiment_framework": "FAIR基准测试(ITA误差、偏差分数)、CelebAMask-HQ数据集(PSNR、SSIM、LPIPS、ID)、消融研究",
+ "takeaways": [
+  "大规模高质量面部图像训练可提升纹理码本保真度",
+  "双判别器设计在潜空间和图像空间联合约束可提高UV纹理重建质量",
+  "组身份损失可有效确保跨不同光照条件的一致反照率估计"
+ ],
+ "weaknesses": [
+  "方法需要多张同一个人的不同光照条件图像才能获得最佳结果",
+  "年龄分组策略可能无法完全解决时间跨度大的面部变化问题",
+  "未提供方法在极端光照条件下的鲁棒性评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "肤色估计属于医学影像应用，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Probing Rotary Position Embeddings through Frequency Entropy.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Probing Rotary Position Embeddings through Frequency Entropy.pdf",
+ "title": "Probing Rotary Position Embeddings through Frequency Entropy",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "频率熵分析RoPE冗余维度，语言模型实验验证可移除性。",
+ "innovations": [
+  "提出频率熵(FE)指标量化RoPE各频率维度利用率",
+  "区分SpectrumFE和SequenceFE两种互补度量",
+  "通过加权RoPE实验验证低熵维度的冗余性"
+ ],
+ "method_framework": "将查询向量分割为RoPE块，计算ℓ2范数作为离散信号，通过STFT和DFT分别计算SpectrumFE和SequenceFE，量化频率利用情况。",
+ "experiment_framework": "在Llama-4等模型上分析RoPE和NoPE层的频率熵特征，通过加权RoPE实验评估不同熵阈值下的困惑度和下游任务性能。",
+ "takeaways": [
+  "频率熵提供了分析RoPE内部结构的统一框架",
+  "低SpectrumFE维度对应频带限制行为，低SequenceFE维度对应周期性振荡"
+ ],
+ "weaknesses": [
+  "实验主要在语言模型上进行，未扩展到其他领域",
+  "未深入探讨频率熵与模型性能之间的因果关系"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "RoPE分析属模型架构优化，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Why less IS more (Sometimes) A Theory Of Data Curation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Why less IS more (Sometimes) A Theory Of Data Curation.pdf",
+ "title": "Why less is more (Sometimes): A Theory of Data Curation",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "理论推导数据筛选缩放律，但现实信号获取成本未评估",
+ "innovations": [
+  "给出在label-agnostic与label-aware两种筛选规则下测试误差的精确缩放律曲线",
+  "推导与数据规模/质量挂钩的精确相变曲线，解析地刻画小而精数据集何时超过全量数据",
+  "为LIMO/s1等少数据却更强的矛盾现象提供原则性解释，并说明筛选可缓解模型崩溃",
+  "刻画不完美oracle(按难度/正确性选样本)这一更现实的筛选设定"
+ ],
+ "method_framework": "把数据筛选建模为不完美oracle按样本难度与正确性挑选训练子集；在经典缩放律框架上叠加筛选规则，推导测试误差随数据量/质量的解析曲线与相变点；区分label-agnostic(只看难度)与label-aware(看正确性)筛选。",
+ "experiment_framework": "在ImageNet上验证理论预测；指标为测试精度随筛选子集规模/质量的变化；对照全量训练与筛选训练，检验何时筛选提升精度及缓解模型崩溃。",
+ "takeaways": [
+  "在特定数据规模-质量条件下，小而精数据集确实可超过全量数据，且有解析相变边界",
+  "筛选规则是否使用标签正确性(label-aware)显著改变最优筛选方向",
+  "该理论统一解释了近期LLM数学推理中看似矛盾的筛选策略"
+ ],
+ "weaknesses": [
+  "理论建立在不完美oracle可获得难度/正确性信号的假设上，现实中获取该信号的成本未计入",
+  "实证仅ImageNet，对LLM大规模推理数据筛选的定量预测吻合度需更多验证",
+  "相变曲线依赖数据生成模型的假设，对高度非平稳的真实互联网数据的适用边界未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "数据筛选理论提升可靠性，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

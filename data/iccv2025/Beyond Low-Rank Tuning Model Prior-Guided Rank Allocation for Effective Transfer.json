@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Beyond Low-Rank Tuning Model Prior-Guided Rank Allocation for Effective Transfer.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Beyond Low-Rank Tuning Model Prior-Guided Rank Allocation for Effective Transfer.pdf",
+ "title": "Beyond Low-Rank Tuning Model Prior-Guided Rank Allocation for Effective Transfer",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "基于稳定秩的LoRA秩分配，减少计算开销但通用性存疑",
+ "innovations": [
+  "利用预训练权重矩阵的稳定秩作为自然先验进行层秩分配",
+  "提出轻量级随机部分更新策略减少计算开销",
+  "在医学影像和小样本大差距场景下验证方法有效性"
+ ],
+ "method_framework": "SR-LoRA利用预训练模型权重矩阵的稳定秩作为先验，为每个LoRA模块分配相应秩，避免复杂搜索过程，并引入随机部分更新策略减少参数量。",
+ "experiment_framework": "在MedFM(医学影像)和VTAB(多领域)数据集上评估，与多种PEFT方法对比，使用1/5/10-shot设置，评估指标包括mAP、AUC和ACC。",
+ "takeaways": [
+  "稳定秩作为模型内在容量的有效指标，指导秩分配",
+  "随机部分更新策略在保持性能的同时显著减少计算开销"
+ ],
+ "weaknesses": [
+  "方法主要针对视觉Transformer架构，通用性有待验证",
+  "稳定秩的计算可能增加额外开销，未在论文中明确讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像落地扎实但可靠性主线交织不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Counterfactual Effect Decomposition in Multi-Agent Sequential Decision Making.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Counterfactual Effect Decomposition in Multi-Agent Sequential Decision Making.pdf",
+ "title": "Counterfactual Effect Decomposition in Multi-Agent Sequential Decision Making",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "双层分解反事实效应，但实验规模小且计算复杂度高",
+ "innovations": [
+  "提出TCFE的双层分解：总智能体特定效应(tot-ASE，通过后续智能体行为传播) + 反向状态特定效应(r-SSE，通过状态转移传播)",
+  "基于agent-specific effect的公理化框架，用Shapley值将tot-ASE唯一归因到各智能体",
+  "用内在因果归因(ICC)将r-SSE分解到各状态变量的'内在'贡献"
+ ],
+ "method_framework": "在MMDP-SCM框架下，总反事实效应(TCFE)度量'如果采取替代动作，结果会如何变化'。第一层分解：TCFE = tot-ASE - r-SSE。tot-ASE度量动作通过改变后续所有智能体行为产生的效应；r-SSE度量动作通过改变状态转移产生的效应。第二层：tot-ASE用Shapley值归因到各智能体(满足效率、对称性、虚拟性公理)；r-SSE用ICC量化各状态变量对反事实结果的信息贡献。",
+ "experiment_framework": "两个环境：(1)Gridworld环境，两个RL智能体由LLM规划器指导完成任务序列；(2)脓毒症管理模拟器(AI辅助临床决策)。可视化分解结果，验证解释的可解释性和合理性。",
+ "takeaways": [
+  "总反事实效应不能简单分解为直接效应+间接效应，需要区分'通过智能体行为传播'和'通过状态传播'两条路径",
+  "Shapley值在agent-specific effect框架下唯一满足归因公理",
+  "分解结果在脓毒症模拟器中能直观解释AI建议对治疗结果的因果贡献"
+ ],
+ "weaknesses": [
+  "依赖噪声单调性假设，该假设限制了反事实分布的表达能力",
+  "Shapley值计算复杂度随智能体数量指数增长",
+  "实验环境规模较小(2个智能体)，大规模多智能体系统的扩展性未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

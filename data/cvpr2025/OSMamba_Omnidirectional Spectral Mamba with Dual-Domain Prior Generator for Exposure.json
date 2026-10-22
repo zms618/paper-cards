@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/OSMamba_Omnidirectional Spectral Mamba with Dual-Domain Prior Generator for Exposure.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/OSMamba_Omnidirectional Spectral Mamba with Dual-Domain Prior Generator for Exposure.pdf",
+ "title": "OSMamba Omnidirectional Spectral Mamba with Dual-Domain Prior Generator for Exposure",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "结合频谱扫描与扩散先验的曝光校正方法，参数量大且需两阶段训练",
+ "innovations": [
+  "全向频谱扫描机制(OS-Scan)捕获频谱长程依赖",
+  "双域先验生成器(DDPG)恢复极端曝光区域细节",
+  "结合状态空间模型与扩散模型的优势"
+ ],
+ "method_framework": "基于UNet架构，集成全向频谱状态空间模块(OS-SSB)，包含幅度和相位Mamba并行处理，通过双域先验生成器注入扩散先验指导细节恢复",
+ "experiment_framework": "在MSEC、SICE和LCDP三个曝光校正基准数据集上评估，使用PSNR和SSIM指标，与FECNet、CoTF等SOTA方法对比",
+ "takeaways": [
+  "频域全向扫描可有效捕获长程依赖关系",
+  "双域先验生成器对极端曝光区域细节恢复有效",
+  "结合生成式与判别式模型优势的混合框架"
+ ],
+ "weaknesses": [
+  "模型参数量较大(7.5M)",
+  "推理过程需要两阶段训练(预训练+微调)",
+  "扩散先验生成器需要额外计算步骤"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "曝光校正属于图像处理，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

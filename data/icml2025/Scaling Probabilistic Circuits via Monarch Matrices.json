@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Scaling Probabilistic Circuits via Monarch Matrices.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Scaling Probabilistic Circuits via Monarch Matrices.pdf",
+ "title": "Scaling Probabilistic Circuits via Monarch Matrices",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "Monarch矩阵替换PC稠密块，有限提升生成性能但限制表达自由。",
+ "innovations": [
+  "为PC求和块提出稀疏且结构化的Monarch参数化，替换稠密矩阵。",
+  "首次同时利用PC的稀疏性质与张量化硬件并行，克服以往二者不可兼得的问题。",
+  "该结构从电路乘法自然导出，在多个困难基准上取得SOTA生成建模性能。"
+ ],
+ "method_framework": "概率电路可精确高效计算似然与边缘，但扩展受限于求和块稠密矩阵的内存/计算。本文用稀疏Monarch矩阵(分块局部连接、可张量化)替换求和块稠密矩阵：既因稀疏而省内存算力，又因结构规整可高效GPU并行；该结构化稀疏恰好由电路乘法的数学结构自然导出，从而在保持tractability的同时放大PC规模。",
+ "experiment_framework": "在多个密度估计/生成建模标准基准上评测；对比传统稠密PC、剪枝式稀疏PC与其它张量化PC实现，指标为对数似然与内存/算力成本，报告随模型规模扩展的曲线与SOTA生成性能。",
+ "takeaways": [
+  "结构化稀疏(Monarch)可兼得稀疏省算与硬件并行，突破PC扩展瓶颈。",
+  "该参数化在保持概率电路可精确推理的同时带来SOTA生成性能。"
+ ],
+ "weaknesses": [
+  "Monarch结构强加了连接模式，可能限制对任意稀疏结构的表达自由度。",
+  "收益主要在密度估计/生成基准，PC的下游(因果/可解释)优势未在此展开。",
+  "与可靠性/可信AI主线关系较弱，属概率模型扩展方向。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

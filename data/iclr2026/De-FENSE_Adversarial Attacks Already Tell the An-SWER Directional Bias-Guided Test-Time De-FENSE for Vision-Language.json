@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/De-FENSE_Adversarial Attacks Already Tell the An-SWER Directional Bias-Guided Test-Time De-FENSE for Vision-Language.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/De-FENSE_Adversarial Attacks Already Tell the An-SWER Directional Bias-Guided Test-Time De-FENSE for Vision-Language.pdf",
+ "title": "Adversarial Attacks Already Tell the AN-SWER: Directional BIAS-GUIDED TEST-TIME DE-FENSE for VISION-LANGUAGE Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "利用对抗样本方向偏置的测试时防御，计算开销大且依赖CLIP",
+ "innovations": [
+  "发现对抗样本在特征空间中的方向性偏置现象",
+  "提出方向性偏置引导的防御框架DBD",
+  "实现对抗样本上准确率超过干净样本的反直觉结果"
+ ],
+ "method_framework": "DBD通过多域变换生成参考特征，计算方向性偏置(DB)分数，采用双流特征重建策略：高DB分数样本沿防御方向偏移特征，低DB分数样本使用变换特征平均作为时域增强。",
+ "experiment_framework": "在10个细粒度分类数据集和5个ImageNet-OOD数据集上评估，使用PGD攻击，对比CLIP、TeCoA、APT、TTC和R-TPT等基线方法。",
+ "takeaways": [
+  "对抗样本隐含真实决策边界的方向先验",
+  "多域变换组合可有效提取鲁棒特征",
+  "测试时防御可同时保持干净样本准确率和提升对抗鲁棒性"
+ ],
+ "weaknesses": [
+  "依赖预训练CLIP模型，可能受限于基础模型架构",
+  "计算开销较大，需要31种变换和特征过滤",
+  "DB分数阈值和偏移量超参数需要调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "对抗样本方向偏置防御，属于OOD检测与鲁棒性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

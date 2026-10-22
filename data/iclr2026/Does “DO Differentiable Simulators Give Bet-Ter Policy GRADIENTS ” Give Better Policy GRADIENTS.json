@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Does “DO Differentiable Simulators Give Bet-Ter Policy GRADIENTS ” Give Better Policy GRADIENTS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Does “DO Differentiable Simulators Give Bet-Ter Policy GRADIENTS ” Give Better Policy GRADIENTS.pdf",
+ "title": "Does “DO Differentiable Simulators Give BET-TER Policy GRADIENTS?” Give Better Policy GRADIENTS?",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "DDCG和IVW-H解决可微模拟器梯度估计偏差，但泛化性存疑",
+ "innovations": [
+  "DDCG：轻量级统计测试检测非光滑区域并切换估计器",
+  "IVW-H：步级逆方差加权实现稳定方差控制",
+  "重新评估经验偏差在实际机器人控制中的影响"
+ ],
+ "method_framework": "DDCG通过统计测试检测非光滑区域，在安全区域使用1st-order梯度，否则回退到0th-order梯度；IVW-H在每一步对每个动作维度应用逆方差加权组合两种梯度估计器。",
+ "experiment_framework": "在接触物理模拟任务（Ball with Wall, Momentum Transfer）和标准连续控制任务（CartPole, Hopper, Ant）上评估，与0th-order、1st-order、AoBG、IVW和GIPPO等方法比较。",
+ "takeaways": [
+  "统计测试比基于置信区间的检测更高效且鲁棒",
+  "步级方差控制在实际机器人控制中可能比显式不连续性检测更重要",
+  "DDCG在小样本情况下表现优于需要大量调参的AoBG"
+ ],
+ "weaknesses": [
+  "DDCG在高度复杂的不连续环境中的泛化能力未充分验证",
+  "IVW-H在真实物理环境中的表现尚未验证",
+  "方法在多模态大模型推理中的应用未探索"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "可微模拟器梯度估计与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

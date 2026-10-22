@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Dehallu3D_Hallucination-Mitigated 3D Generation from a Single via Cyclic.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Dehallu3D_Hallucination-Mitigated 3D Generation from a Single via Cyclic.pdf",
+ "title": "Dehallu3D Hallucination-Mitigated 3D Generation from a Single via Cyclic",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "循环视图一致性优化减少3D生成幻觉，但计算开销大且指标验证不足",
+ "innovations": [
+  "提出Dehallu3D框架解决3D重建中的幻觉问题",
+  "设计循环视图一致性优化(CVCR)模块",
+  "创建异常风险度量(ORM)指标评估几何保真度"
+ ],
+ "method_framework": "两阶段优化：粗略网格重建和循环视图一致性细化，通过相邻视图一致性和自适应平滑性约束减少异常同时保留细节",
+ "experiment_framework": "Google Scanned Objects数据集，与SF3D、Unique3D等SOTA方法比较，使用PSNR、SSIM、LPIPS、CD、F-Score和ORM指标",
+ "takeaways": [
+  "循环视图一致性约束可有效减少3D生成中的异常",
+  "自适应平滑性约束可保留尖锐几何特征",
+  "表面暴露加权法线损失可优化全局结构"
+ ],
+ "weaknesses": [
+  "计算开销较大，72个视图需要更多渲染时间",
+  "仅使用正交视图，可能限制某些复杂几何的重建",
+  "ORM指标与人类感知相关性未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D生成幻觉抑制属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

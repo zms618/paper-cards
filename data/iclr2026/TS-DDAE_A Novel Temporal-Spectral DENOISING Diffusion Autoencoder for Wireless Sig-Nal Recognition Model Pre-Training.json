@@ -1,0 +1,41 @@
+{
+ "title": "TS-DDAE: A Novel Temporal-Spectral Denoising Diffusion Autoencoder for Wireless Signal Recognition Model Pre-Training",
+ "one_line": "扩散自编码器预训练无线信号，时频域噪声重构替代mask方法。",
+ "innovations": [
+  "提出TS-DDAE：用扩散自编码器对信号施加时域与频域噪声再重构，替代会破坏信号局部依赖的mask-reconstruction预训练",
+  "设计TS-Net架构：时域encoder用self-attention、频域encoder用channel attention，二者耦合",
+  "同时挖掘时域与频域隐特征，作为WSR基础模型在多任务上优于SOTA"
+ ],
+ "method_framework": "针对既有WSR预训练用mask-reconstruction（置零幅度会扰乱波形时频结构）且忽视频域的问题，TS-DDAE以扩散方式对信号施加时域+频域噪声，训练神经网络去噪重构原始信号，从而学到保留时频结构的表征。TS-Net分别用self-attention编码时域、channel attention编码频域并耦合。",
+ "experiment_framework": "在多个WSR数据集与任务（调制识别、无线技术识别等）上预训练后微调；对比IQFormer、SpectrumFM等SOTA WSR模型；指标为下游识别精度；报告优于SOTA并具备基础模型潜力。",
+ "takeaways": [
+  "扩散式时域+频域去噪预训练比mask-reconstruction更好地保留信号时频结构",
+  "联合建模时域与频域可提升WSR表征质量",
+  "TS-DDAE有潜力成为无线信号识别的基础模型"
+ ],
+ "weaknesses": [
+  "扩散预训练的计算成本远高于mask-reconstruction，训练效率未充分讨论",
+  "主要在特定无线信号基准验证，对6G之外更宽信号类型的通用性有限",
+  "核心是把扩散自编码器迁移到信号领域，方法创新性偏应用组合"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/TS-DDAE_A Novel Temporal-Spectral DENOISING Diffusion Autoencoder for Wireless Sig-Nal Recognition Model Pre-Training.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TS-DDAE_A Novel Temporal-Spectral DENOISING Diffusion Autoencoder for Wireless Sig-Nal Recognition Model Pre-Training.pdf",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "raw_overall": 5.43,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "无线信号处理与可靠性主线无实质交点，仅属应用迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

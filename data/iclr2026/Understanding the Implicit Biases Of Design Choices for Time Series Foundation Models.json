@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Understanding the Implicit Biases Of Design Choices for Time Series Foundation Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Understanding the Implicit Biases Of Design Choices for Time Series Foundation Models.pdf",
+ "title": "Understanding the Implicit Biases of Design Choices for Time Series Foundation Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.7
+ },
+ "one_line": "分析TSFM设计偏置，但缺乏主线关联与突破性发现。",
+ "innovations": [
+  "转向理解而非刷榜：系统刻画TSFM设计选择(patch size/embedding/损失)对模型性质(时间行为/几何结构/均值回归激进度)的隐式偏置",
+  "用理论+受控实证证明某些偏置反直觉，且偏置随模型与数据性质(是否贴近常见基准)而变",
+  "以outlier handling为案例研究多个偏置如何以复杂方式相互作用"
+ ],
+ "method_framework": "TSFM行为由设计中的细微归纳偏置强决定。本文不造新模型，而是用理论加受控实证评估各'旋钮'(patch size、embedding选择、训练目标)如何在模型基本性质上引入隐式偏置：连续embedding比量化embedding更保几何；MAE类损失在不确定时趋向均值回归等；这些偏置对/错取决于模型与数据性质。",
+ "experiment_framework": "理论推导+受控实证，在标准时序基准与定性不同的数据上对比不同设计选择；考察几何保持、均值回归程度等；以outlier handling案例研究偏置交互。",
+ "takeaways": [
+  "TSFM的很多'调参直觉'在数据/规模变大或变性质后可能产生相反、甚至有害的效果",
+  "设计旋钮通过隐式偏置影响时间行为与几何结构，而非单纯提升基准分数",
+  "多个偏置会复杂交互(outlier案例)，单独优化单个旋钮可能误判"
+ ],
+ "weaknesses": [
+  "属时间序列预测方向，与本主线(可靠性×多模态推理/医学影像)无直接关联",
+  "以理解/诊断为主，不提供可直接落地的新方法或基准提升",
+  "结论多在受控设置与特定时序模型上得到，对通用基础模型的外推性有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "时序预测与可靠性主线无直接关联，属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

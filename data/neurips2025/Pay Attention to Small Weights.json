@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Pay Attention to Small Weights.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Pay Attention to Small Weights.pdf",
+ "title": "Pay Attention to Small Weights",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.8
+ },
+ "one_line": "小权重选择优化器，NLP/ViT实验显示效率提升但适用性有限。",
+ "innovations": [
+  "发现微调中大梯度与小权重的相关性",
+  "提出基于权重幅度的参数选择策略",
+  "设计梯度无关的高效优化器NANOADAM"
+ ],
+ "method_framework": "NANOADAM通过动态选择小幅度权重进行更新，结合密度调度器调整更新比例，无需梯度计算和误差反馈机制，显著降低内存使用。",
+ "experiment_framework": "在NLP(BERT-base/SST-2)和视觉(ViT-Large/CIFAR-10)任务上评估，与MicroAdam、AdamW-8bit和GaLore等基线比较，测试内存效率和泛化性能。",
+ "takeaways": [
+  "小权重更新策略可有效保留预训练知识",
+  "梯度无关的参数选择可提高计算效率"
+ ],
+ "weaknesses": [
+  "未探讨不同任务类型间的适用性差异",
+  "理论分析局限于两层网络模型"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

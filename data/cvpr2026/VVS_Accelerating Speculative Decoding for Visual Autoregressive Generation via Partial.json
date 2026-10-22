@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/VVS_Accelerating Speculative Decoding for Visual Autoregressive Generation via Partial.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/VVS_Accelerating Speculative Decoding for Visual Autoregressive Generation via Partial.pdf",
+ "title": "VVS Accelerating Speculative Decoding for Visual Autoregressive Generation via Partial",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "VVS通过部分验证跳过加速视觉自回归生成，减少2.8倍前向传递",
+ "innovations": [
+  "首次探索SD过程中的部分验证跳过",
+  "验证冗余性和陈旧特征可重用性分析",
+  "动态验证跳过调度机制"
+ ],
+ "method_framework": "VVS框架包含三个模块：无验证令牌选择器、令牌级特征缓存与重用、细粒度跳过步骤调度器，通过跳过部分验证减少目标模型前向传递次数。",
+ "experiment_framework": "在MS-COCO数据集上评估LlamaGen-XL模型，使用FID、CLIP分数等指标，比较VVS与传统SD方法的加速与质量权衡。",
+ "takeaways": [
+  "验证冗余性分析为跳过验证提供理论依据",
+  "陈旧特征重用机制维持生成质量",
+  "动态跳过调度实现质量与速度的平衡"
+ ],
+ "weaknesses": [
+  "连续跳过步骤可能导致误差累积",
+  "特征重用机制在不同视觉任务上的泛化性未充分验证",
+  "计算相似度的开销仍需优化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "加速解码技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

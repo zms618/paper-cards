@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/SegmentDreamer_Towards High-fidelity Text-to-3D Synthesis with Segmented Consistency Trajectory Distillation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/SegmentDreamer_Towards High-fidelity Text-to-3D Synthesis with Segmented Consistency Trajectory Distillation.pdf",
+ "title": "SegmentDreamer Towards High-fidelity Text-to-3D Synthesis with Segmented Consistency Trajectory Distillation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "分段蒸馏解决3D生成条件不平衡，但依赖特定表示且分割策略缺乏理论指导",
+ "innovations": [
+  "提出分段一致性轨迹蒸馏(SCTD)解决自一致性和交叉一致性不平衡问题",
+  "将PF-ODE轨迹划分为多个子轨迹，提供更紧的蒸馏误差上界",
+  "设计高效稳定的蒸馏管道，结合3DGS实现快速高质量3D生成"
+ ],
+ "method_framework": "SegmentDreamer通过SCTD重新构建SDS，将PF-ODE轨迹划分为多个子轨迹，确保每个子轨迹内的一致性，同时明确自一致性和交叉一致性关系，结合3DGS实现高效3D表示。",
+ "experiment_framework": "使用Stable Diffusion 2.1作为基础生成模型，Point-E初始化3D高斯，CLIP分数、ImageReward分数、FID分数和用户研究评估文本对齐、人类偏好和保真度。",
+ "takeaways": [
+  "分段一致性策略可有效解决CD方法中的条件引导不平衡问题",
+  "一致性函数近似策略可减少计算成本并提高优化稳定性"
+ ],
+ "weaknesses": [
+  "方法依赖于特定的3D表示(3DGS)，可能限制在其他3D表示上的应用",
+  "轨迹分割策略的选择(等分割vs单调递增分割)对结果有显著影响，缺乏理论指导"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D生成技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

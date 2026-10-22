@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Distribution-Aligned Decoding for Efﬁcient LLM Task Adaptation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Distribution-Aligned Decoding for Efﬁcient LLM Task Adaptation.pdf",
+ "title": "Distribution-Aligned Decoding for Efﬁcient LLM Task Adaptation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "KL梯度构建转向向量，实现LLM任务分布对齐",
+ "innovations": [
+  "将任务适配重新定义为输出分布对齐问题",
+  "提出基于KL散度梯度的转向向量解码方法",
+  "推导出转向向量的全局最优解"
+ ],
+ "method_framework": "通过短期微调获取预训练模型与微调模型的输出分布差异，利用KL散度负梯度构建转向向量，投影到logit空间并应用置信度约束，在解码过程中调整模型输出分布。",
+ "experiment_framework": "在TruthfulQA(多选题/开放生成)和8个常识推理数据集上评估，结合LoRA/P-Tuning/Prompt Tuning/IA3四种PEFT方法，使用准确率等指标。",
+ "takeaways": [
+  "分布对齐视角为高效LLM适配提供新思路",
+  "logit空间投影解决了概率单纯形约束问题",
+  "置信度过滤机制提高了方法稳定性"
+ ],
+ "weaknesses": [
+  "需要短期微调作为初始化步骤",
+  "置信度阈值α需要手动调整",
+  "部分任务上MC1指标有所下降"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

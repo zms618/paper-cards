@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/GraphI2P_to-Point Cloud Registration with Exploring Pattern of Correspondence via.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/GraphI2P_to-Point Cloud Registration with Exploring Pattern of Correspondence via.pdf",
+ "title": "GraphI2P -to-Point Cloud Registration with Exploring Pattern of Correspondence via",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "虚拟球面与图学习解决非同步配准，但依赖预训练模型且计算复杂",
+ "innovations": [
+  "虚拟球面表示解耦像素位置与深度预测",
+  "基于分布的自适应采样模块统一点云分布",
+  "基于图学习的对应关系选择模块避免视锥选择误差"
+ ],
+ "method_framework": "通过深度估计生成虚拟点云，转换为虚拟球面表示，使用分布自适应采样统一点云分布，基于图学习选择可靠对应关系，最终通过SVD计算刚性变换。",
+ "experiment_framework": "KITTI和nuScenes数据集，对比CFI2P、VP2P等方法，使用RTE、RRE、RR和IR指标评估同帧和非同步随机帧配准性能。",
+ "takeaways": [
+  "虚拟球面表示能有效解耦深度估计误差",
+  "图学习可提升对应关系一致性而不依赖RANSAC",
+  "分布自适应采样能有效弥合虚拟点云与LiDAR点云间的域差距"
+ ],
+ "weaknesses": [
+  "依赖预训练深度估计模型，可能引入额外误差",
+  "计算复杂度较高，需要处理大量点云数据",
+  "未在更多样化的场景中验证方法鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "点云配准非可靠性主线，无可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

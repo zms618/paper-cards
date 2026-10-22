@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Balancing Efficiency and Expressiveness Subgraph GNNs with Walk-Based Centrality.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Balancing Efficiency and Expressiveness Subgraph GNNs with Walk-Based Centrality.pdf",
+ "title": "Balancing Efficiency and Expressiveness: Subgraph GNNs with Walk-Based Centrality",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.75
+ },
+ "one_line": "HyMN：中心性子采样+结构编码，降计算成本，分子图性能接近完整GNN",
+ "innovations": [
+  "提出使用Estrada子图中心性等基于游走的节点中心性度量来指导子图GNN的子采样策略，选择高中心性节点对应的标记子图",
+  "证明中心性子图采样与中心性结构编码(CSE)在表达力上互不包含（定理4.1），二者结合可互补增强",
+  "将K阶CSE（邻接矩阵幂级数展开）作为节点特征增强，与子采样子图GNN联合构成HyMN混合标记网络"
+ ],
+ "method_framework": "HyMN首先计算每个节点的子图中心性（基于邻接矩阵幂级数展开），按中心性排序选择Top-T个节点作为标记节点生成子图袋。同时将K阶中心性项(A^k)vv/k!作为结构编码拼接到节点特征中。子图GNN仅处理T个选中的标记子图而非全部N个，将复杂度从O(N²·dmax)降至O(T·N·dmax)。通过自定义消息函数在特征张量中实现标记，无需显式存储子图连接。",
+ "experiment_framework": "在OGB分子数据集(MOLHIV/MOLBACE/MOLTOX21)上测试ROC-AUC，对比GCN/GIN/FULL/OSAN/MAG-GNN/CS-GNN/POLICY-LEARN等方法。另在三角形计数任务上测试MAE，并做wall-clock运行时间分析。",
+ "takeaways": [
+  "HyMN在MOLHIV上以仅T=2个子采样达到77.55% ROC-AUC，接近或超过完整子图GNN",
+  "中心性采样显著优于随机采样和可学习策略采样，在三角形计数任务上MAE更低",
+  "CSE结构编码与高中心性子图采样在表达力上互补，二者结合优于单一方法"
+ ],
+ "weaknesses": [
+  "中心性计算依赖邻接矩阵幂级数，在超大图上仍需近似计算， scalability分析不足",
+  "仅在分子图和小型图任务上验证，未在社交网络等大图上测试实际效果",
+  "中心性度量的图同构不变性可能限制对需要判别特定子结构任务的表达力"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/GIF Generative Inspiration for Face Recognition at Scale.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/GIF Generative Inspiration for Face Recognition at Scale.pdf",
+ "title": "GIF Generative Inspiration for Face Recognition at Scale",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "结构化身份码降低人脸识别计算复杂度，但依赖CLIP引入偏差",
+ "innovations": [
+  "将原子标量标签替换为结构化身份码，实现O(log m)计算复杂度",
+  "使用CLIP视觉编码器初始化代码向量，并通过高斯势能核优化实现均匀分布",
+  "分层聚类构建身份码，解决少数类崩溃问题"
+ ],
+ "method_framework": "GIF方法首先将标量标签转换为超球面上的代码向量，然后通过分层聚类构建结构化身份码。训练时，模型预测身份码而非标量标签，结合分类损失和对齐损失优化人脸识别模型。",
+ "experiment_framework": "在WebFace260M、MS1MV2等数据集上评估，与Virtual FC、DCQ、F2C、PFC等SOTA方法比较，使用LFW、CFP-FP、AgeDB、IJB-B和IJB-C等指标。",
+ "takeaways": [
+  "将分类问题重构为并行的小规模分类问题，显著降低计算复杂度",
+  "代码向量优化独立于样本分布，有效解决少数类崩溃问题"
+ ],
+ "weaknesses": [
+  "方法依赖于CLIP预训练模型，可能引入额外偏差",
+  "代码构建过程需要额外的超参数调整（如v和l的选择）"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "人脸识别与可靠性主线无关，仅计算优化无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

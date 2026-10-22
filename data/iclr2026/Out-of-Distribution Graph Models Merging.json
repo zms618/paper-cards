@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Out-of-Distribution Graph Models Merging.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Out-of-Distribution Graph Models Merging.pdf",
+ "title": "Out-of-Distribution Graph Models Merging",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "无需数据的异质GNN合并，图生成+MoE实现跨域泛化",
+ "innovations": [
+  "提出Out-of-Distribution Graph Models Merging新问题设定：将多个在不同分布域上预训练的GNN合并为统一泛化模型，无需原始训练数据",
+  "设计图生成策略实例化多域混合分布，用于后续合并微调",
+  "通过MoE模块整合异质GNN骨干，配合掩码机制实现广义适配，架构无关且零样本数据需求"
+ ],
+ "method_framework": "首先提出图生成策略，从各预训练GNN的参数中推断并生成覆盖多域混合分布的合成图。然后用MoE模块将多个预训练GNN作为不同expert整合，配合掩码机制选择性激活各expert的知识。最后在生成的合成图上进行轻量微调，实现跨域泛化。整个框架不需要原始源域或目标域数据。",
+ "experiment_framework": "在多个图数据集上（如PTC等），对比GCN/GAT/GIN等不同骨干的预训练模型合并效果。测试域内和OOD场景下的准确率。与模型合并基线方法对比。包含理论分析。",
+ "takeaways": [
+  "无需原始数据即可合并多个异质GNN并获得跨域泛化能力",
+  "图生成策略能有效实例化多域混合分布，为合并微调提供训练信号",
+  "MoE+掩码机制可整合不同架构GNN的互补知识"
+ ],
+ "weaknesses": [
+  "图生成策略的质量高度依赖预训练GNN的表达能力，在弱模型上生成效果可能退化",
+  "MoE合并方式带来额外推理开销，实际部署效率未详细分析",
+  "实验主要在节点分类任务上验证，对图级任务和大规模图的扩展性未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "OOD泛化主线+图数据落地域，无数据合并设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

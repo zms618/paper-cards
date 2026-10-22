@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Confidential Guardian Cryptographically Prohibiting the Abuse of Model Abstention.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Confidential Guardian Cryptographically Prohibiting the Abuse of Model Abstention.pdf",
+ "title": "Confidential Guardian: Cryptographically Prohibiting the Abuse of Model Abstention",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "elevance": 7.0,
+  "evidence": 5.5,
+  "overall": 6.25
+ },
+ "one_line": "提出校准检测+ZKP防御弃权滥用，但实验覆盖有限且计算开销大。",
+ "innovations": [
+  "识别新型威胁：不诚实机构可借不确定性弃权歧视特定群体(Mirage攻击在不降低整体精度下压低目标区域置信度)",
+  "提出Confidential Guardian：通过参考数据集校准偏差检测人工抑制的置信度",
+  "用零知识证明(ZKP)验证推理，确保上报置信度确实来自部署模型同时保护模型机密"
+ ],
+ "method_framework": "Mirage攻击在目标输入区域(uncertainty region)故意降低模型置信度而不翻转标签(保持ε-间隙到随机猜测)， covertly使该区域用户被弃权。Confidential Guardian在参考数据集上分析校准指标(ECE等)，检测超出审计员容忍度α的校准偏差。再用ZKP验证推理确保置信度不是伪造的，同时不泄露模型权重。",
+ "experiment_framework": "在图像分类数据集上演示Mirage攻击的有效性和Confidential Guardian的检测能力；指标为ECE、目标区域精度、弃权率。",
+ "takeaways": [
+  "Mirage攻击可在不降低整体精度的情况下 covertly 压低特定区域置信度",
+  "Confidential Guardian通过校准偏差检测+ZKP推理验证阻止弃权滥用",
+  "ZKP保护模型机密性同时保证报告置信度的真实性"
+ ],
+ "weaknesses": [
+  "参考数据集必须覆盖不确定区域，未覆盖区域的校准偏差无法检测",
+  "ZKP验证推理对大模型造成计算瓶颈",
+  "实验限于神经网络，其他模型类别未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

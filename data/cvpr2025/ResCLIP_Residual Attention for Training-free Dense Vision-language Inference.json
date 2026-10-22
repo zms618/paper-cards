@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/ResCLIP_Residual Attention for Training-free Dense Vision-language Inference.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ResCLIP_Residual Attention for Training-free Dense Vision-language Inference.pdf",
+ "title": "ResCLIP Residual Attention for Training-free Dense Vision-language Inference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "改进CLIP注意力机制，但依赖分割质量且计算开销大",
+ "innovations": [
+  "发现CLIP中间层的交叉相关注意力具有定位特性",
+  "提出残差交叉相关自注意力(RCS)模块",
+  "设计语义反馈细化(SFR)模块增强同类区域关注"
+ ],
+ "method_framework": "ResCLIP结合RCS和SFR两个模块，RCS融合中间层交叉相关注意力与最后一层自注意力，SFR利用语义分割图细化注意力分数，形成最终预测。",
+ "experiment_framework": "在8个语义分割基准数据集上评估，包括VOC、Context、COCO-Stuff等，与SCLIP、ClearCLIP、NACLIP等基线比较，使用mIoU指标。",
+ "takeaways": [
+  "利用中间层注意力信息改进最后一层注意力机制",
+  "语义反馈模块可增强同类区域关注和局部一致性"
+ ],
+ "weaknesses": [
+  "方法依赖于初始分割质量，可能存在误差传递",
+  "计算复杂度增加，需要处理多层注意力信息"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅改进CLIP注意力机制，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

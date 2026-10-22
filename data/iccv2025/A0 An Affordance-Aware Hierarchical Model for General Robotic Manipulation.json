@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/A0 An Affordance-Aware Hierarchical Model for General Robotic Manipulation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A0 An Affordance-Aware Hierarchical Model for General Robotic Manipulation.pdf",
+ "title": "A0: An Affordance-Aware Hierarchical Model for General Robotic Manipulation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "本体无关接触点表征与分层扩散模型，跨机械臂执行但实验证据不足",
+ "innovations": [
+  "提出本体无关的 affordance 表示 R=(I,L,C,T)，只预测以物体为中心的接触点 c0 与接触后 2D 路点序列 T，从而把真实/HOI/仿真三种来源数据统一成同一格式，可跨本体迁移",
+  "Position Offset Attention：把相邻帧 SigLIP 视觉 token 相减得到运动 token I_m 后沿 token 维拼接进当前帧特征，为 diffusion DiT 提供跨帧运动信息",
+  "两阶段训练：用 PixMo-One-Point 百万级单接触点做纯首点坐标 MSE 预训练（仅需单帧），再用 DROID/HOI4D/ManiSkill 的路点做 T 步 chunk MSE 的 SFT， Inference 用 K_D=5 步 ODE 快速求解"
+ ],
+ "method_framework": "DiT 扩散预测归一化 2D 路点（首点为接触点、其余为接触后方向）；SigLIP 提图像特征并经相邻帧相减得运动 token 后拼接，图文交替跨注意力注入；预训只监督首点坐标、SFT 监督全部路点，最后深度反投影加 GraspNet 选抓取。",
+ "experiment_framework": "离线 MAE（DROID/HOI4D/ManiSkill 8:2）；实机 Franka、Kinova、Realman、Dobot 四任务各 20 trials，对比 MOKA、ReKep、Magma、Molmo、RDT、π0。",
+ "takeaways": [
+  "把操作拆成「物体中心接触点+后续轨迹」的高层 affordance 与低层执行，可跨本体迁移，只需少量标注微调",
+  "用互联网单接触点数据做百万级定位预训练再 SFT 到机器人轨迹，是低成本获得跨 embodiment 定位能力的路线"
+ ],
+ "weaknesses": [
+  "Table 2 中 Kinova 上 A0-1B 的 Place Object 只有 60，低于 MOKA 的 70，仅靠四项均值胜出，却宣称「持续优于最强基线」，与表内数字不符",
+  "每任务仅 20 次 trials 且无任何标准差或置信区间；消融只验 POA 与 SIAL 两个模块，去掉 POA 三个集 MAE 仅涨 0.4–1.0 像素，贡献边际很小",
+  "下游执行完全复用 MOKA 的深度反投影加 GraspNet 采样加 VLM 选高度，把单帧 2D 点直接当 3D 轨迹执行，深度误差与执行模块缺陷无法与 A0 本身的贡献分离"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "机器人操作与可靠性主线无实质交点，仅跨本体迁移设计有参考价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Study On Pave Specification for Learnware.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Study On Pave Specification for Learnware.pdf",
+ "title": "A Study On Pave Specification for Learnware",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.3
+ },
+ "one_line": "NTK视角下PAVE规格的核嵌入等价证明与低秩近似，但实验支持不足。",
+ "innovations": [
+  "在 NTK 线性化假设下把参数向量重写为梯度累加，证明 ⟨τ_h,τ_u⟩=ΣΣ k̃_{f,L,g}(x_i,h(x_i),x_j,y_j)，即 τ 是一个经验 kernel mean embedding，因而 PAVE 相似度与 RKME 所用的 MMD 在模型排序上一致（Thm 3），解释了两类规格共享底层原理的原因。",
+  "把隐式核 k̃_{f,L,g} 拆成输入空间 NTK 核 K̃_f 与输出空间逐元素一致性权重矩阵 K̃_{L,g}（由任务损失对预测、映射头对参数的导数动态构造），显式刻画 PAVE 同时编码输入语义与输出语义的方式（Lemma 1-2）。",
+  "用 LoRA 式低秩 τ≈BA=[(B1A1)…(BLAL)] 表示参数向量（降到预训练参数的 1% 以内、常不足 1M），并证明在 Kaiming 型初始化 A∼U(−√(3s/n),√(3s/n)) 下 E[⟨B1A,B2A⟩]=s⟨B1,B2⟩，从而余弦相似度只对 B 计算（Thm 4），避免展开成 BA 后的高额开销。"
+ ],
+ "method_framework": "以微调预训练模型得到的参数增量 τ_h（式 1）为规格；在 NTK 线性化下把 τ 视作梯度累加与 kernel mean embedding，证明其与 RKME 的 MMD 排序一致（Thm 3）；再用 LoRA 式低秩 τ≈BA 压缩存储，凭 Kaiming 初始化的期望等式只对 B 求余弦相似度（Thm 4），按相似度从仓库召回最匹配的 learnware。",
+ "experiment_framework": "15 个 NLP 数据集（GLUE 等）+ 12 个 CV 数据集（EuroSAT/GTSRB/SUN397）+ 9 个医疗 LLM 基准 + 9 个医疗 SFT 数据集；基线为 BERT-B/L、RoBERTa-B/L 微调、RKME、随机、Oracle；指标 Mcc/Acc/F1/Pcc/Scc 与 win-tie-loss。",
+ "takeaways": [
+  "「用同一套参数空间向量同时刻画模型能力与用户任务需求、再用余弦相似度召回」这一范式，可直接用于免评测的第三方模型/专家筛选，也不妨改造成部署前的模型可信度闸门。",
+  "把新规格与已有规格（RKME）通过 NTK 核连通、进而判定二者排序等价的理论套路，可复用到其他 specification 上，快速判断新旧方法是否本质等价。",
+  "低秩 + 只对 B 计算相似度的技巧把存储与计算压到预训练参数的 1% 以内，成本极低；但该技巧落地前必须自己补齐 rank r 选取、常数 s 敏感性以及与真实任务损失的相关性报告。"
+ ],
+ "weaknesses": [
+  "PAVE 本身来自作者团队此前工作（Tan et al. 2025），本文是「study」而非新机制：增量主要是 NTK 视角的等价性刻画与低秩近似；Thm 3 的 order-consistency 只在 NTK 线性化 regime 下成立，而真实大模型微调远非线性化，正文未讨论该假设的失效边界。",
+  "Table 1 中 PAVE♦ 均值 0.709 仅略高于 RoBERTa-L 的 0.699，但对 RoBERTa-L 的逐任务战绩是 10 胜 0 平 8 负，说明优势主要由 CoLA、MNLI、STS-B 等少数任务的大幅涨幅拉动，「识别到的 learnware 优于用户微调的预训练模型」这一核心 claim 对个别数据集高度敏感，且全文无方差或显著性检验。",
+  "低秩近似只依赖式 (9) 这一期望等式，正文在 §3.3 用 “we gonna give some key ideas here” 跳过误差界推导，Figure 3 也只并列余弦数值矩阵、未报排序一致性指标；rank r 与缩放常数 s 的选取依据、低秩后相似度与实际任务损失的关联强度均无量化。此外正文在 §4.1「Compared methods」处截断，CV、医疗 LLM/SFT 的结果表与消融表均不可见。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "模型规格方法与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

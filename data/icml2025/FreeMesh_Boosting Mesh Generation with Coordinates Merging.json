@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/FreeMesh_Boosting Mesh Generation with Coordinates Merging.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FreeMesh_Boosting Mesh Generation with Coordinates Merging.pdf",
+ "title": "FreeMesh: Boosting Mesh Generation with Coordinates Merging",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "坐标重排+BPE合并的mesh tokenizer，降低熵但未验证跨域泛化",
+ "innovations": [
+  "提出PTME(Per-Token-Mesh-Entropy)指标=信息熵×压缩率，可在不训练模型的前提下理论比较不同mesh序列化tokenizer的优劣",
+  "提出RMC(Rearrange & Merge Coordinates)：先将AMT/EDR序列中方向词移到坐标前(不改变PTME)，再对坐标子串跑BPE合并高频模式为新token",
+  "系统验证RMC在RAW/AMT/EDR三种基础tokenizer上均显著降低PTME与压缩率，并改善高面数mesh(2000/4000面)的生成拓扑"
+ ],
+ "method_framework": "用Shannon熵分析mesh序列化序列；将坐标视为9字符单元(x1x2x3 y1y2y3 z1z2z3)，先按9字符分组重排方向词与坐标，再用SentencePiece BPE在10000 meshes上训练词表(8192)，把高频坐标n-gram合并为新token，从而降低序列熵与压缩率。",
+ "experiment_framework": "在点云条件自回归mesh生成上评测；基线tokenizer为MeshXL(RAW)/MeshAnythingV2(AMT)/EdgeRunner(EDR)；比较原始/MC(直接合并)/RAC(仅重排)/RMC四种变体；指标为PTME、压缩率CR、Chamfer Distance与Hausdorff Distance；面数覆盖~500/1000/2000/4000。",
+ "takeaways": [
+  "朴素MC(不重排)无法降低PTME，RMC通过先重排再合并才能显著压缩，验证了坐标重排的必要性",
+  "RMC在2000/4000面高面数生成上拓扑与稳定性明显优于RAW/RAC/MC",
+  "词表≥8192后PTME下降趋于平台，说明8192为性价比拐点"
+ ],
+ "weaknesses": [
+  "仅在点云条件生成这一单一任务上验证，未与当前SOTA mesh生成方法(MeshAnythingV2/EdgeRunner)在标准benchmark(如Thingi10K)上做端到端对比",
+  "PTME作为理论指标与下游生成质量(CD/HD)的相关性仅在少量配置上展示，缺乏跨数据集的相关性定量分析",
+  "属于tokenizer层面的工程改进，模型架构未变；BPE训练需要10000 meshes且对mesh分布敏感，跨域泛化未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Apollo An Exploration of Video Understanding in Large Multimodal.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Apollo An Exploration of Video Understanding in Large Multimodal.pdf",
+ "title": "Apollo: An Exploration of Video Understanding in Large Multimodal Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "组件堆叠的视频LMM，数据工程掩盖创新，实验报告不完整",
+ "innovations": [
+  "Scaling Consistency：用 Qwen2-0.5B/1.5B/7B 与 Qwen1.5-4B 共 84 个模型测「源模型集合与 7B 模型集合的 R²」，发现 R² 随源模型规模呈 y=0.12·log(x)+0.78 的对数线性上升、随数据集规模（75K→1M）在约 500K 样本处饱和，据此把大模型的调参决策降到 2–4B / 500K 样本的小规模代理实验上",
+  "把 ApolloBench 当作「视频感知必要性」过滤器：先在 10 个开源 LMM 上对比 video / 单帧 / text-only 三种输入，凡用 text 或 center frame 就能答对（>50% 模型）的题全部剔除，再按 Temporal OCR / Egocentric / Spatial / Perception / Reasoning 五类各取 400 题（用熵挑区分度最高者 + 人工校验），评测开销降到 41× 且与原 benchmark 高相关",
+  "给出两条反直觉的架构结论：SigLIP-SO400M + InternVideo2 双编码器通道维拼接（按 [34,37] 先插值再 concat）比任一单编码器高约 7%（ApolloBench），且在 clip 之间插任意文本/可学习 token 均涨 2–3%（最终用 clip 时间戳，不需学新 token）；视频编码器只在 Temporal Perception 上优于图像编码器，全空间上不如 SigLIP"
+ ],
+ "method_framework": "fps 采样加双编码器通道拼接，Perceiver 每帧压 16 token，clip 间插时间戳；两/三阶段渐进解冻，LLM 冻结时只用视频数据",
+ "experiment_framework": "ApolloBench/Video-MME 等；10 个开源 LMM 做消融；21 变体乘 4 LLM 共 84 模型",
+ "takeaways": [
+  "「同一题在 video / 单帧 / text-only 三种输入下的正确率差」可以直接量化一个 benchmark 有多依赖目标模态，是给任意多模态评测集去污染的低成本协议",
+  "用 R² 对齐曲线（而非最终分数）来判定小模型代理实验是否可信，可推广到任何昂贵训练循环的「小模型先调参」工作流",
+  "fps 采样优于均匀采样且能被 resampler 的 tokens/frame 补偿（16–32 token/frame 最优），这条结论给了计算预算与视频长度的显式旋钮"
+ ],
+ "weaknesses": [
+  "Tab.2 训练 schedule 表自相矛盾/抽取错位：三阶段的 Overall 59.2 反而低于两阶段的 56.3/57.8 与个别行，1-stage 的 Reasoning 只有 22.6 而 2-stage/3-stage 分别是 60.2/41.6；且正文明说「each schedule three hyperparameters were tested, and we report the best-performing model」——等于超参层面做了选择性报告，Finding 8「渐进解冻最优」无法据此复核",
+  "正文在 6.3 数据组成处截断：Fig.6 只有趋势无数值，「10–14% text 是必需」与「video-heavy 最优」的具体消融配置、每类数据的来源与配比表缺失；Scaling Consistency 的「决策可迁移」也只停在 R² 相关度，没有把小模型选出的配置真的在 7B 上跑一次完整验证，因果链缺最后一步",
+  "Apollo 模型族本身是组件堆叠（fps 采样 + 双编码器 + Perceiver + 多阶段 + 数据混比），SOTA 主要来自训练规模与数据工程；且基准相关矩阵显示 ApolloBench 与 Video-MME(L)/LongVideoBench 的 film 相关度约 0.9–1.0，在高度冗余的 benchmark 族上刷点会系统性高估新意"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "视频LMM组件堆叠，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

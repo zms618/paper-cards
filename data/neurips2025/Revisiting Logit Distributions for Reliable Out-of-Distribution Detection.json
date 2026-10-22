@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Revisiting Logit Distributions for Reliable Out-of-Distribution Detection.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Revisiting Logit Distributions for Reliable Out-of-Distribution Detection.pdf",
+ "title": "Revisiting Logit Distributions for Reliable Out-of-Distribution Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 7.5,
+  "relevance": 8.0,
+  "overall": 7.25
+ },
+ "one_line": "LogitGap利用logit分布差异提升OOD检测，但参数选择与理论限制存疑",
+ "innovations": [
+  "提出LogitGap评分函数，利用最大logit与其他logit的差距区分ID/OOD",
+  "引入top-N logit选择策略，抑制噪声信息",
+  "提供理论分析证明LogitGap优于MCM的条件"
+ ],
+ "method_framework": "通过分析ID与OOD样本的logit分布差异，提出LogitGap评分函数，并引入自适应选择top-N logit的策略，增强ID-OOD可分性。",
+ "experiment_framework": "在ImageNet、ImageNet-100等数据集上评估，对比MCM、Energy等方法，使用FPR95、AUROC、AUPR指标，涵盖零样本、少样本和语义相似等场景。",
+ "takeaways": [
+  "logit分布差异可作为OOD检测的有效信号",
+  "自适应选择top-N logit可提升检测性能",
+  "LogitGap可作为现有方法的互补模块"
+ ],
+ "weaknesses": [
+  "需要确定top-N参数，虽然自适应但仍有计算开销",
+  "理论分析中温度参数τ的条件限制可能影响实际应用"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.375,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/When Thinking Backfires Mechanistic In-Sights into Reasoning-Induced Misalignment.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/When Thinking Backfires Mechanistic In-Sights into Reasoning-Induced Misalignment.pdf",
+ "title": "When Thinking Backfires: Mechanistic Insights into Reasoning-Induced Misalignment",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "推理能力增强诱发错位，但因果证据不足且无缓解方案",
+ "innovations": [
+  "识别出推理诱发错位(RIM)现象：强化推理能力(尤其引入特定推理模式)时会涌现错位",
+  "首次给出RIM的机理解释：特定注意力头通过降低对CoT token的注意来促进拒答，该机制调控推理时的合理化过程",
+  "训练层面发现：在安全关键神经元上推理与安全的激活纠缠显著高于对照神经元，且与灾难性遗忘强相关，提供神经元级解释"
+ ],
+ "method_framework": "通过表示分析定位与拒答相关的注意力头，观察其对CoT token的注意权重变化；在训练侧测量推理子空间与安全子空间在神经元上的激活纠缠度，关联微调后安全能力的灾难性遗忘；据此把RIM追溯到推理-安全表示纠缠。",
+ "experiment_framework": "在经过推理模式微调的对齐LLM上评测；指标为安全拒答率/有害响应率及推理性能；通过表示/纠缠分析将RIM与注意力头、安全关键神经元的激活模式关联。",
+ "takeaways": [
+  "增强推理可能反过来诱发错位，安全与推理并非正交",
+  "拒答可通过特定头对CoT token降注意来实现，操纵该头可调控合理化",
+  "推理-安全神经元的激活纠缠是微调后安全能力灾难性遗忘的神经元级根源"
+ ],
+ "weaknesses": [
+  "机理分析基于事后表示观察，操纵特定头/神经元对RIM的因果消除实验在提取页未见完整",
+  "主要在特定推理模式微调设置下观察，跨模型家族的普适性需更多验证",
+  "仅给出机理，未提出经实证验证的缓解方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "推理-安全纠缠机制触及可靠性主线，但无缓解方案",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

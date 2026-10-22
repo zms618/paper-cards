@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Open-Vocabulary Domain Generalization in Urban-Scene Segmentation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Open-Vocabulary Domain Generalization in Urban-Scene Segmentation.pdf",
+ "title": "Open-Vocabulary Domain Generalization in Urban-Scene Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "状态空间模型改进CAT-Seg，解决城市场景开放词汇域泛化",
+ "innovations": [
+  "提出OVDG-SS新任务，同时处理未见域和未见类",
+  "构建首个OVDG-SS基准，涵盖合成到真实和真实到真实泛化",
+  "设计S2-Corr状态空间驱动的文本-图像相关性细化机制"
+ ],
+ "method_framework": "基于CAT-Seg基线，用状态空间模型替代注意力机制，引入图像和文本条件调制、距离感知衰减机制和分块蛇形扫描策略，抑制域偏移引起的噪声",
+ "experiment_framework": "数据集：CS-7/GTA-7训练，ACDC/BDD/Mapi等7个目标域评估；基线：CAT-Seg/MaskAdapter等；指标：mIoU",
+ "takeaways": [
+  "域偏移会破坏预训练VLM的文本-图像相关性",
+  "状态空间模型比注意力机制更适合处理域偏移下的相关性聚合",
+  "调制机制可注入域相关线索指导相关性聚合"
+ ],
+ "weaknesses": [
+  "仅关注城市场景分割，泛化性受限",
+  "S2-Corr模块增加了计算复杂度",
+  "未充分分析不同域偏移类型的敏感性差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "城市场景开放词汇域泛化，可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

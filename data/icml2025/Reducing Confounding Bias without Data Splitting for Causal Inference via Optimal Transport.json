@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Reducing Confounding Bias without Data Splitting for Causal Inference via Optimal Transport.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Reducing Confounding Bias without Data Splitting for Causal Inference via Optimal Transport.pdf",
+ "title": "Reducing Confounding Bias without Data Splitting for Causal Inference via Optimal Transport",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "用最优传输替代样本切分，但因果推断主线偏离当前热点",
+ "innovations": [
+  "打破按处理值切分样本再对齐的惯例，改为在包含全部训练样本的同一集合上用不同概率测度刻画分布偏移",
+  "借助最优传输理论分析混杂偏差与结果估计误差，学习平衡表征以缩小处理的边际分布与条件分布间偏差",
+  "该范式可自然统一地适用于二值与连续处理设定，避免切分造成的样本量缩减"
+ ],
+ "method_framework": "不再把样本按处理分组后做组间对齐，而是将混杂偏差建模为同一全样本集上不同概率测度（边际 p(x) 与按处理加权条件 p(x|t)）之间的差异；用最优传输距离作为正则学习平衡表征，使在某一处理组上训练的结果预测模型可泛化到总体。",
+ "experiment_framework": "在二值处理与连续处理两类因果推断基准上评测；对比 TARNet/CFRNet 等需切分组的表征平衡方法；指标为平均/个体处理效应估计误差（如 ATE/PEHE）。",
+ "takeaways": [
+  "数据切分会削弱分布估计与对齐，是因果表征方法的隐性瓶颈",
+  "用全样本同一集合上的测度差异刻画偏差可统一二值与连续处理",
+  "最优传输为无切分分布对齐提供了可分析的偏差界"
+ ],
+ "weaknesses": [
+  "主线偏离可靠性/医学影像/多模态推理，属因果推断",
+  "未涉及高维/隐藏混杂下的可识别性讨论",
+  "前 9 页未见与最新深度因果方法在大规模真实观测数据上的系统对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

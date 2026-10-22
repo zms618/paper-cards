@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Robust Deep Reinforcement Learning against Adversarial Behavior Manipulation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Robust Deep Reinforcement Learning against Adversarial Behavior Manipulation.pdf",
+ "title": "Robust Deep Reinforcement Learning against Adversarial Behavior Manipulation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "黑盒行为攻击与折扣正则防御，理论分析有限且无落地域关联。",
+ "innovations": [
+  "提出基于对抗示范模仿学习的行为目标攻击，在对受害者策略有限访问下即可工作且环境无关。",
+  "理论证明策略对状态变化的敏感性(尤其轨迹早期阶段)直接影响防御效果。",
+  "提出首个专门针对行为目标攻击的防御：时间折扣正则，在保持任务性能下增强鲁棒性。"
+ ],
+ "method_framework": "攻击者通过干预状态观测、并模仿一组对抗示范来诱导受害者策略走向目标策略(黑盒、环境无关)；防御侧依据'轨迹早期状态敏感主导操纵效果'的理论洞察，用时间折扣正则对早期状态扰动敏感性加约束，降低策略被引导的可能。",
+ "experiment_framework": "在 DRL 任务环境中评估所提黑盒攻击的成功率，并对比奖励最小化攻击的现有防御；再评测时间折扣正则防御对行为目标攻击的抵御与对干净任务性能的保持。",
+ "takeaways": [
+  "行为目标攻击不同于奖励最小化攻击，现有针对奖励攻击的防御对其无效。",
+  "轨迹早期阶段策略对状态变化的敏感性是行为操纵得手的关键。",
+  "时间折扣正则可在不牺牲任务性能的前提下抵御黑盒行为目标攻击。"
+ ],
+ "weaknesses": [
+  "攻击依赖可采集对抗示范，示范分布与真实可干预观测存在差距时攻击强度未知。",
+  "时间折扣正则的理论基于敏感性分析，对复杂高维 DRL 环境的可扩展性验证有限。",
+  "属对抗鲁棒方向，与医学影像/多模态推理落地域无直接交集。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "对抗鲁棒性研究，无医学/多模态落地域关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

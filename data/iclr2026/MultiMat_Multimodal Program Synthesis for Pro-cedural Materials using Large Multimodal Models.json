@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/MultiMat_Multimodal Program Synthesis for Pro-cedural Materials using Large Multimodal Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/MultiMat_Multimodal Program Synthesis for Pro-cedural Materials using Large Multimodal Models.pdf",
+ "title": "MultiMat: Multimodal Program Synthesis for Procedural Materials using Large Multimodal Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "多模态材质图生成，视觉反馈+约束树搜索，领域局限且计算开销大",
+ "innovations": [
+  "首次将视觉中间状态反馈引入过程化材质图生成，使多模态模型同时利用文本与视觉信息",
+  "设计约束树搜索推理算法，遇到无效状态可回溯，保证静态正确性并提升推理效率",
+  "实现Adobe Substance Designer格式与紧凑语言表示之间的完整转译器，支持全特征集"
+ ],
+ "method_framework": "基于大多模态模型构建多模态程序合成框架，在生成节点图的每一步将中间节点状态的可视化结果输入模型作为视觉反馈；配合约束树搜索算法在生成过程中实时验证节点有效性，无效时回溯重新生成；同时开发完整转译器支持生产级材质格式与语言模型表示的互转。",
+ "experiment_framework": "在新建的生产级过程化材质数据集上训练，对比MatFormer、VLMaterial等文本-only基线，在无条件生成和条件生成(逆向渲染)两个任务上评估视觉质量与保真度。",
+ "takeaways": [
+  "视觉中间状态反馈显著提升材质图生成的视觉质量与保真度",
+  "约束树搜索可有效减少无效图的产生，提升推理效率",
+  "MultiMat在无条件和有条件材质合成任务上均达到新SOTA"
+ ],
+ "weaknesses": [
+  "仅应用于计算机图形学的过程化材质生成领域，方法的通用性未验证",
+  "视觉反馈的计算开销较大，每步生成都需要渲染中间状态",
+  "依赖特定软件(Adobe Substance Designer)的格式生态，开放性受限"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "纯图形学材质生成，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

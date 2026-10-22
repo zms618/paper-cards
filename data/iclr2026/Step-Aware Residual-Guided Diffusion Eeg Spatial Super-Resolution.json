@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Step-Aware Residual-Guided Diffusion Eeg Spatial Super-Resolution.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Step-Aware Residual-Guided Diffusion Eeg Spatial Super-Resolution.pdf",
+ "title": "Step-Aware Residual-Guided Diffusion for EEG Spatial Super-Resolution",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "步感知残差引导扩散模型提升EEG超分辨率，但推理速度慢且下游验证不足",
+ "innovations": [
+  "提出步感知残差引导扩散框架SRGDiff：将EEG空间超分辨率建模为动态条件生成问题",
+  "设计动态残差条件：从低密度输入学习每一步的时空细节残差，逐步引导去噪过程恢复高密度EEG",
+  "采用步依赖仿射调制：残差条件与前一步去噪器特征加性融合后，通过步依赖的仿射变换缩放移位激活，平衡保真度和一致性"
+ ],
+ "method_framework": "将低密度EEG超分辨率重建建模为条件扩散生成过程。核心创新是动态残差条件：在每个去噪步，从低密度输入中提取当前步需要补充的时空残差细节。残差条件与去噪器特征图加性融合后，通过步依赖仿射调制(scaling+shifting)调整激活。这样每一步都针对性地补充该阶段最需要的时空信息，逐步从低密度恢复到高密度EEG，同时保持信号保真度和空间一致性。",
+ "experiment_framework": "在SEED、SEED-IV、Localize-MI三个数据集上验证，对比ESTformer、STAD等基线。评估覆盖信号级(SNR)、特征级、下游任务级指标。测试多种上采样倍数（包括最具挑战的8倍上采样）。",
+ "takeaways": [
+  "EEG空间超分辨率中，步感知的动态残差引导比固定条件更有效，不同去噪阶段需要补充不同的时空细节",
+  "SRGDiff在8倍上采样设置下实现约75%的相对SNR提升，显著优于现有方法",
+  "残差引导扩散有效缓解了低密度和高密度EEG记录之间的空间-频谱分布偏移"
+ ],
+ "weaknesses": [
+  "扩散模型的多步采样导致推理速度较慢，对实时BCI应用的适用性存疑",
+  "仅在情绪识别和源定位两类下游任务上验证，对其他BCI应用（如运动想象、癫痫检测）的效果未证明",
+  "前9页未展示完整的下游任务定量对比表格，下游性能提升幅度不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "EEG超分辨率属医学影像落地域，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

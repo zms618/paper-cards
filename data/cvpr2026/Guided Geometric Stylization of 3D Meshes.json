@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Guided Geometric Stylization of 3D Meshes.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Guided Geometric Stylization of 3D Meshes.pdf",
+ "title": "Guided Geometric Stylization of 3D Meshes",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "扩散模型驱动的3D网格风格化，依赖预训练模型且计算开销大。",
+ "innovations": [
+  "使用LoRA从参考图像提取几何风格特征",
+  "近似VAE编码器优化梯度传播",
+  "辅助网格和笼系数正则化保持语义一致性",
+  "可选对称性正则化"
+ ],
+ "method_framework": "通过DreamBooth训练LoRA提取图像风格特征，使用SDS损失引导基于Jacobian的网格变形，采用粗到细的变形策略保持网格拓扑和语义。",
+ "experiment_framework": "对比Paparazzi、Neural 3D Mesh Renderer等基线，通过用户研究评估几何对齐、内容保持和风格转移效果，进行消融实验验证各组件作用。",
+ "takeaways": [
+  "近似VAE编码器对稳定优化至关重要",
+  "笼系数正则化有助于大规模几何变换",
+  "方法支持文本条件和局部变形"
+ ],
+ "weaknesses": [
+  "依赖预训练扩散模型，可能受限于模型能力",
+  "计算开销较大，需要多次渲染和优化",
+  "对称性检测可能不适用于所有几何结构"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "3D网格风格化与可靠性主线无交点，属纯图形学渲染工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Why We Need new Benchmarks for Local Intrinsic Dimension Estimation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Why We Need new Benchmarks for Local Intrinsic Dimension Estimation.pdf",
+ "title": "Why We Need New Benchmarks for Local Intrinsic Dimension Estimation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "诊断现有LID评测缺陷，提出跨域保结构基准揭示方法局限性",
+ "innovations": [
+  "把同一流形映射到多种域表示并保持其结构，实现跨架构的like-for-like公平对比",
+  "设计流行数据集的更难变体，专门针对关键流形性质",
+  "施加带已知LID偏移的受控变换，即使绝对LID未知也能压力测试方法",
+  "揭示简单流形上的精度不能跨域迁移，SOTA在针对性压力下失败"
+ ],
+ "method_framework": "构造保结构的多域流形映射以隔离架构归纳偏置的影响；在常用数据集上注入针对流形性质的更难变体；用已知LID偏移的受控变换做压力测试；据此统一评测神经LID估计器在不同域/应力下的失败模式。",
+ "experiment_framework": "在含非平凡合成数据与真实数据集的套件上评测多种神经LID估计器；基线为现有LID估计方法；指标为LID估计误差；报告简单流形精度不跨域迁移、SOTA在目标应力下失败并给出明确失败模式。",
+ "takeaways": [
+  "领域特定架构的归纳偏置会使同一流形得到不一致LID估计，现有评测掩盖了这一点",
+  "简单合成数据上的SOTA不等于跨域可靠，需保结构跨域测试",
+  "带已知LID偏移的受控变换是在无真值场景下压力测试估计器的有效手段"
+ ],
+ "weaknesses": [
+  "本身不提出新估计器，而是诊断现有方法，缺少被验证的改进方案",
+  "基准虽保结构但真实高维数据的LID真值仍未知，结论多为相对比较",
+  "对LID估计下游应用(OOD检测/异常检测)的影响未与下游性能挂钩"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "诊断LID评测缺陷，与可靠性主线部分相关但无直接落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

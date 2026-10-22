@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/A Causal Marriage between VLM and IRM from Understanding to.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Causal Marriage between VLM and IRM from Understanding to.pdf",
+ "title": "A Causal Marriage between VLM and IRM from Understanding to Reasoning",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 7.5,
+  "overall": 6.0
+ },
+ "one_line": "形式化CLIP与IRM等价，但假设不成立且实验证据不足",
+ "innovations": [
+  "把提示拆成类特定 token（因果因子）与类无关上下文 token（环境因子），在 Definition.4 三条必要条件（类集Y=词表V、上下文 token 与 V 不相交、zinv 可分解为 z(env)+z(cls)）下证明词汇约束的 InfoNCE 双层目标（Eq.9-10）与 IRM 目标 Eq.3 等价，从而绕开 IRM 的双层优化",
+  "中训练只改数据与监督不改双塔结构：在 LAION 上挖掘类词表 V 与环境词表 E，剪掉环境 token 并用同类不同环境词表的标题互换合成不变对 D_V^(K)，与原始批 D^(K) 以 λ 加权联合训练（Eq.11），实现「分类不变 + 自监督保多样性」的单一阶段约束",
+  "把 CLIP-IRM 的不变对齐分做成 MLLM 的过程级奖励：滑窗取 MLLM 生成的前 w 个 token 过 CLIP 文本编码器，r_k^(proc)=ℓ_InfoNCE(v_img,h_k;V)−αℓ_env(t;E)，再用最大相似度 r_k^(patch)=max_m sim(v_m,h_k) 做局部视觉 grounding 增强，混进 GRPO 的 r(τ)=Σr_k^(task)+λ_proc r_k^(proc)"
+ ],
+ "method_framework": "理论侧借用 token 级因果表示的可识别性定理（Theorem 2/Corol.3）说明最优 CLIP 恢复模态不变块，再用词汇监督重构 InfoNCE 与 IRM 等价；方法侧中训练 CLIP 得到 CLIP-IRM；应用侧把其 token 感知不变对齐分当过程奖励注入 GRPO 训练 MLLM。",
+ "experiment_framework": "OOD 理解侧在 PACS/VLCS/OfficeHome/NICO++/DomainNet 上与 ERM、SWAD、RSC、GroupDRO、Fishr、CORAL、MMD、SagNet、IRM、Mixup 等不变学习基线比零样本泛化；推理侧用 CLIP-IRM 过程奖励在 GRPO 下训练 MLLM，并接 few-shot prompt tuning。",
+ "takeaways": [
+  "「不变学习」可以不靠双层优化：把环境 token 显式剪掉、并用同类异环境对做互补合成，就能在普通对比损失里隐式实现 IRM 的跨环境不变约束，这是最可复用的工程洞察",
+  "把视觉编码器冻结在过程奖励里、只让 MLLM 解码器生成 token 并滑窗送入 CLIP 文本塔，是在不微调大模型的前提下注入「接地性」监督的轻量方案",
+  "词表约束的 InfoNCE 同时充当对齐监督与环境惩罚（ℓ_env），一个信号同时管住「该对齐什么」和「不该对齐什么」，比额外加判别器便宜"
+ ],
+ "weaknesses": [
+  "理论基石 Theorem 2 与 Corollary 3 直接引用并复用于 [9]，本文只在 Definition.4 的词汇约束假设下补了 Theorem 5，而这些假设（f、g_i 为微分同胚、隐变量密度处处为正、类词表与环境词表可完美分离）在实际 LAION 噪声文本上几乎不可能严格成立，等价性更多是形式映射",
+  "Table 1 中 CLIP-IRM 的具体数值在第 9 页前被截断，无法核对提升幅度与显著性，且全部主表未见多种子标准差或显著性检验；同时中训练后 CLIP 在 in-distribution 上是否退化（与零样本 CLIP 的对比）在该页内无法确认",
+  "过程奖励的 RL 部分正文中几乎只有公式（Eq.12-14），第 9 页内没有对应的 MLLM 推理基准、答案正确率或 OOD 推理评测表，λ_proc 退火曲线、滑窗 w、冻结时机等超参也无消融，IRM 保证是否真正迁移到序列决策未被实验验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "因果去混杂设计连接不变学习与多模态，可迁移到可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

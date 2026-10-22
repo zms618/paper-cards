@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/A Bit is All You Need Efficient Video Capture via.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Bit is All You Need Efficient Video Capture via.pdf",
+ "title": "A Bit is All You Need! Efficient Video Capture via Single Bit Imaging",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "单比特成像用帧间变阈值降采样，网络复原高比特视频",
+ "innovations": [
+  "把逐像素高位 ADC 换成逐帧单一比较器：M(u,v,k)=H(X(u,v,k)−T(k))，阈值在帧间（而非帧内）变化并扫过传感器动态范围，用 n 个阈值替代 m 位量化，使数据率降到 1/8–1/16 且输入无关的恒定码率",
+  "阈值序列设计给出三条取舍链：均匀平滑阈值最大误差最小但跨帧「同一区域仍是同一值」损失时间分辨率；把同一组阈值做置换以最大化相邻值最小间距（非平滑）可带来 >1.4dB（overlap）/1.8dB（no-overlap）PSNR 提升；再用经验分位数或 Beta 分布的反 CDF Φ⁻¹(T₁(k)) 做非均匀映射",
+  "训练阈值与网络权重联合优化：用 sigmoid 近似前向不可导的阈值操作以支持梯度回传，实验收训后阈值几乎回到均匀非平滑初始化值，等价于验证了该启发式的局部最优性"
+ ],
+ "method_framework": "模拟端按 T(k) 逐帧二值化得到 M，把二值帧乘上对应阈值作为输入；用无光流模块的轻量视频复原网络（Aswin/EfficientSCI++/Res2former/Shiftnet）以 L1 损失拟合高比特深帧；边界帧用平移 10 帧的重建结果替换以缓解上下文缺失。",
+ "experiment_framework": "GoPro 训练（22 视频、250fps、8bit）/测试 11 视频，输入 10 阈值重复共 20 帧；消融阈值四种策略、阈值长度 n∈{8,10,20,10rep}、输入缩放三种；OOD 用 XVFI 125 视频（1000fps）与 QUIVER 30 视频（2000fps）测 PSNR/SSIM。",
+ "takeaways": [
+  "二值输入必须乘上对应帧的阈值 τ 再喂网络（0→0,1→τ 映射比直接喂 0/1 高约 1.2dB），否则网络只能学到相对顺序而非绝对强度",
+  "阈值序列长度存在倒 U 形最优点：n 从 8 增到 10 几乎不涨（29.23→29.29），强行增到 20 因相邻阈值过密反而掉 2.8dB，重复 10 阈值两次凑 20 帧才是正确做法",
+  "「非平滑阈值 + 经验分位数」是廉价且接近最优的选择，端到端学阈值收益微乎其微，工程上不必为上采样精度额外付出训练成本"
+ ],
+ "weaknesses": [
+  "全部量化结果都建立在「无噪」模拟的 1-bit 测量上（正文从 noise-less still image 出发推导），未建模比较器噪声、像素非唯一性和 ISP 后端处理，而真实传感器功耗节省声称正是来自换掉 ADC，二者缺乏同一套实验支撑",
+  "硬件只做一个 proof-of-concept 样机（数字帧转模拟电压再过高速比较器），没有真正用 CMOS 像素阵列实拍的数据集，也没有功耗/面积/带宽的实测数据，宣称的「功耗降一个数量级、芯片成本降低」更像设计推算而非测量结果",
+  "正文前 9 页在 RAW 视频恢复与后续 OOD 段落处截断，4.2 节及之后的关键消融（RAW 域结果、真实高速相机数据定量指标、阈值策略在 RAW 上的差异）缺失，且所有表格只报单次 PSNR/SSIM，无标准差"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "视频压缩技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

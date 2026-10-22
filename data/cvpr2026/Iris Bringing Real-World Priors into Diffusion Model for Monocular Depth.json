@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Iris Bringing Real-World Priors into Diffusion Model for Monocular Depth.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Iris Bringing Real-World Priors into Diffusion Model for Monocular Depth.pdf",
+ "title": "Iris Bringing Real-World Priors into Diffusion Model for Monocular Depth",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.6
+ },
+ "one_line": "频谱门控蒸馏扩散模型，提升单目深度跨域泛化",
+ "innovations": [
+  "Priors-to-Geometry Deterministic (PGD)两阶段框架",
+  "Spectral-Gated Distillation (SGD)低频先验蒸馏",
+  "Spectral-Gated Consistency (SGC)高频细节一致性"
+ ],
+ "method_framework": "Iris采用两阶段确定性扩散框架：第一阶段在高时间步通过SGD从真实世界教师模型蒸馏低频先验，第二阶段在低时间步通过SGC从合成数据学习高频几何细节，两阶段共享权重。",
+ "experiment_framework": "数据集：Hypersim(39K)、Virtual KITTI(20K)合成数据与SA-1B(100K)真实数据；基线：Depth Anything V2、Lotus等；指标：AbsRel、δ1等深度估计标准指标。",
+ "takeaways": [
+  "频谱分离的先验注入可有效解决跨域深度估计中的梯度干扰问题",
+  "确定性扩散模型在保持生成模型细节能力的同时提高了推理效率"
+ ],
+ "weaknesses": [
+  "依赖预训练教师模型生成伪标签，可能引入特定偏差",
+  "两阶段架构增加了训练复杂度，需要仔细平衡超参数"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "单目深度估计与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

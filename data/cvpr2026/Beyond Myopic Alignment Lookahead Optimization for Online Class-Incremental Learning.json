@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Beyond Myopic Alignment Lookahead Optimization for Online Class-Incremental Learning.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Beyond Myopic Alignment Lookahead Optimization for Online Class-Incremental Learning.pdf",
+ "title": "Beyond Myopic Alignment Lookahead Optimization for Online Class-Incremental Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "LOR通过前瞻优化缓解梯度冲突，但计算开销大且依赖超参数。",
+ "innovations": [
+  "提出超梯度方法在OCIL中通过梯度冲突减少机制工作的理论分析",
+  "识别现有梯度对齐方法的短视性",
+  "引入LOR框架探索潜在未来模型状态以做出更鲁棒的决策"
+ ],
+ "method_framework": "LOR框架通过探索多个潜在未来状态，使用Log-Sum-Exp函数作为平滑近似，实现min-max优化，寻找在所有探索的前瞻方向中表现最差情况下的最优参数更新。",
+ "experiment_framework": "在Seq-CIFAR10、Seq-CIFAR100和Seq-TinyImageNet数据集上评估，使用Reduced ResNet-18，比较AAA、Acc和FM指标，与多种基线方法对比。",
+ "takeaways": [
+  "前瞻优化可有效解决增量学习中的稳定性-可塑性困境",
+  "min-max优化框架有助于找到更平坦、更可泛化的损失区域",
+  "理论分析与实验结果相互验证方法的鲁棒性"
+ ],
+ "weaknesses": [
+  "计算复杂度增加，需要多个前瞻步骤",
+  "方法依赖于超参数的选择，如前瞻学习率和偏好向量数量"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "增量学习稳定性与可塑性权衡，但未直接触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

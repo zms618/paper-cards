@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Accelerating Diffusion-based Video Editing via Heterogeneous Caching Beyond Full Computing.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Accelerating Diffusion-based Video Editing via Heterogeneous Caching Beyond Full Computing.pdf",
+ "title": "Accelerating Diffusion-based Video Editing via Heterogeneous Caching Beyond Full Computing",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "异构缓存加速视频扩散模型，但泛化性和参数调整限制明显",
+ "innovations": [
+  "异构缓存策略同时处理时间步和空间标记冗余",
+  "基于ROI的标记分类和语义聚类",
+  "训练-free的缓存机制无需重新训练"
+ ],
+ "method_framework": "HetCache通过分析时间步差异和标记相关性，将计算分为全计算、部分计算和重用步骤，在部分计算步骤中仅保留最具代表性的上下文标记，减少冗余注意力计算。",
+ "experiment_framework": "在VACE-Benchmark和VPBench上评估视频修复和文本引导编辑，使用PSNR、SSIM、VFID、VBench等指标，与Wan2.1-VACE和TeaCache对比。",
+ "takeaways": [
+  "异构缓存策略可有效减少扩散模型计算量",
+  "ROI驱动的标记分类对视频编辑任务至关重要",
+  "训练-free方法在保持质量的同时提升效率"
+ ],
+ "weaknesses": [
+  "仅针对特定视频编辑任务优化，泛化性有限",
+  "标记选择比例rctx需要根据不同任务调整",
+  "未探索不同缓存阈值对结果的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "视频扩散模型加速，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

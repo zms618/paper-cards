@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/AdaDecode_Accelerating LLM Decoding with Adaptive Layer Parallelism.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/AdaDecode_Accelerating LLM Decoding with Adaptive Layer Parallelism.pdf",
+ "title": "AdaDecode: Accelerating LLM Decoding with Adaptive Layer Parallelism",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "轻量中间层预测+并行KV缓存，加速LLM解码但依赖难度分布",
+ "innovations": [
+  "提出轻量中间层LM头：基于原始末层LM头权重分解，仅训练变换矩阵T^(i)，参数量减少31倍",
+  "设计自适应层并行机制：中间层高置信预测触发后续token的并行处理，被跳过层的KV缓存延迟并行计算",
+  "基于修正拒绝采样的验证机制，保证输出与标准自回归解码完全一致"
+ ],
+ "method_framework": "(1)训练阶段：冻结原模型参数，在中间层添加轻量LM头E^(i)=E*T^(i)，用KL散度对齐中间层预测与末层预测；(2)解码阶段：token逐层前向传播，当某层LM头预测概率超过阈值γ时提前生成下一个token，并将当前token加入深层的并行处理队列；(3)验证阶段：末层输出后用修正拒绝采样验证所有提前预测的token，接受或拒绝。",
+ "experiment_framework": "在多个生成任务上验证（摘要、翻译、代码生成等）。对比方法：标准自回归解码、投机解码、层跳过（FREE、LITE）、Medusa等。指标：解码吞吐量（tokens/s）、输出一致性（与标准解码的匹配率）。",
+ "takeaways": [
+  "AdaDecode在多种生成任务上实现最高1.73倍加速，同时保持与标准解码的输出一致性",
+  "轻量LM头仅需16M参数（vs 0.5B的全参数LM头），即可有效逼近末层预测分布",
+  "高置信度token在中间层即可准确预测，后续层对这些token的预测改变很小"
+ ],
+ "weaknesses": [
+  "加速比依赖token的难度分布，对低难度/高重复性文本加速更明显",
+  "需要为每个模型训练中间层LM头，跨模型迁移性未验证",
+  "阈值γ的选择对加速比和验证通过率有显著影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM解码加速与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

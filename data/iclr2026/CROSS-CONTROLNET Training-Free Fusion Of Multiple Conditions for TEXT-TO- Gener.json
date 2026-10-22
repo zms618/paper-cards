@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/CROSS-CONTROLNET Training-Free Fusion Of Multiple Conditions for TEXT-TO- Gener.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/CROSS-CONTROLNET Training-Free Fusion Of Multiple Conditions for TEXT-TO- Gener.pdf",
+ "title": "CROSS-CONTROLNET: TRAINING-FREE Fusion Of Multiple Conditions for TEXT-TO- GENER",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "训练-free多条件融合框架，解决文本生成图像中的冲突控制信号问题",
+ "innovations": [
+  "基于空间和通道方差的条件强度量化",
+  "PixFusion和ChannelFusion双模块特征融合",
+  "前景-背景解耦的KV注入机制"
+ ],
+ "method_framework": "Cross-ControlNet通过三个模块实现多条件融合：PixFusion利用高斯平滑的空间标准差图进行像素级融合；ChannelFusion通过一致性比率实现通道级混合融合；KV-Injection基于文本注意力掩码进行前景-背景解耦的键值注入。",
+ "experiment_framework": "基于COCO2017构建2000图像多条件基准，对比Multi-ControlNet等基线，使用CLIP、MSE、mIoU等指标评估冲突和互补条件下的生成质量。",
+ "takeaways": [
+  "基于方差的条件强度量化可有效指导多条件融合",
+  "前景-背景解耦机制能处理冲突控制信号",
+  "训练-free方法在保持灵活性的同时提升生成质量"
+ ],
+ "weaknesses": [
+  "阈值δ的选择可能影响性能",
+  "仅评估了Stable Diffusion和FLUX模型，泛化性需进一步验证",
+  "实验主要基于合成数据集，真实场景表现待考察"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "文本生成图像多条件融合，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

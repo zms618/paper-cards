@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning the Electronic Hamiltonian of Large Atomic Structures.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning the Electronic Hamiltonian of Large Atomic Structures.pdf",
+ "title": "Learning the Electronic Hamiltonian of Large Atomic Structures",
+ "scores": {
+  "novelty": 4,
+  "depth": 5,
+  "evidence": 5,
+  "relevance": 3,
+  "overall": 4.3
+ },
+ "one_line": "局部等变GNN预测哈密顿量，但基组局限与强关联体系未验证",
+ "innovations": [
+  "设计严格局部等变GNN架构，能够预测大尺度（千原子级）非周期原子结构的电子哈密顿量",
+  "将哈密顿量矩阵分解为局域子块H_{i,j}，用GNN逐对预测原子间耦合项",
+  "在大单元胞材料体系上验证可替代部分DFT计算"
+ ],
+ "method_framework": "将原子结构表示为图（原子为节点，键为边）；GNN学习每个原子对的局域环境，输出哈密顿量矩阵的子块H_{i,j}（编码原子i和j上基组之间的耦合）；网络设计为旋转/平移等变，保证物理一致性；由于严格局部性，模型可扩展到任意大小的原子结构。",
+ "experiment_framework": "大尺度材料体系（10+Å单元胞、数千原子）；对比DFT计算结果；指标为哈密顿量预测精度、电子结构性质（能带等）的准确性；验证不同大小和复杂度结构的泛化。",
+ "takeaways": [
+  "严格局部等变GNN可以准确预测大尺度原子结构的电子哈密顿量",
+  "局域性设计使模型突破了传统GNN在材料科学中的尺寸限制",
+  "ML预测哈密顿量为大尺度材料电子结构计算提供了DFT之外的高效替代"
+ ],
+ "weaknesses": [
+  "与大模型/可靠性/多模态主线完全无关",
+  "仅在特定基组下验证，基组变化时的迁移性未知",
+  "对强关联电子体系的适用性未讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

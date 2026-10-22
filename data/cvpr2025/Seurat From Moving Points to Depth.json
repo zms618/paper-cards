@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Seurat From Moving Points to Depth.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Seurat From Moving Points to Depth.pdf",
+ "title": "Seurat From Moving Points to Depth",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "基于点轨迹的双分支Transformer预测深度比率，需额外单目估计器",
+ "innovations": [
+  "利用点轨迹的运动模式推断深度变化",
+  "双分支Transformer架构处理查询和支持轨迹",
+  "滑动窗口预测和窗口对数比率深度损失"
+ ],
+ "method_framework": "使用现成点跟踪器提取2D轨迹，通过时空Transformer处理轨迹，预测深度比率，结合单目深度估计器获得最终深度估计",
+ "experiment_framework": "TAPVid-3D基准测试，比较LocoTrack/CoTracker与ZoeDepth/DepthPro组合，使用3D-AJ/APD/TC指标",
+ "takeaways": [
+  "轨迹密度变化可提供深度线索",
+  "滑动窗口处理长序列提高稳定性",
+  "双分支设计避免查询点分布偏差"
+ ],
+ "weaknesses": [
+  "依赖局部刚性假设",
+  "需要额外的单目深度估计器进行尺度匹配",
+  "未充分讨论物体旋转对深度估计的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "点轨迹深度估计与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Multi-Schema Proximity Network for Composed Retrieval.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Multi-Schema Proximity Network for Composed Retrieval.pdf",
+ "title": "Multi-Schema Proximity Network for Composed Retrieval",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "双塔架构加多模交互，组合检索性能提升有限",
+ "innovations": [
+  "多模式交互(MSI)模块利用文本描述作为隐式指导建立参考图与目标图间的对应关系",
+  "放松邻近损失(RPLoss)通过去噪和重加权策略避免噪声负样本对训练的干扰",
+  "使用最优传输平衡可学习查询分配，增强模型捕获复杂交互的能力"
+ ],
+ "method_framework": "MAPNet采用双塔架构，BLIP-2编码器提取图像和文本特征，Q-Former生成多样化查询，通过最优传输实现平衡分配，结合MMD和RPLoss对齐查询与目标特征。",
+ "experiment_framework": "在CIRR、FashionIQ和LaSCo三个数据集上评估，使用Recall@K和Recalls@K作为指标，与SPRC等SOTA方法对比，并进行消融研究验证各组件贡献。",
+ "takeaways": [
+  "最优传输机制可有效平衡查询分配，避免少数查询主导特征表示",
+  "基于相似性的自适应重加权策略能缓解噪声负样本问题",
+  "多模式交互设计对复杂视觉关系的建模至关重要"
+ ],
+ "weaknesses": [
+  "方法依赖预训练模型，计算开销较大",
+  "未充分探讨模型在不同噪声水平下的鲁棒性",
+  "在Recalls@K指标上提升有限，表明对简单交互场景改进有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "组合检索方法有可迁移设计模式但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

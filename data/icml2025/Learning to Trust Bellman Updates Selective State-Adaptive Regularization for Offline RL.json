@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning to Trust Bellman Updates Selective State-Adaptive Regularization for Offline RL.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning to Trust Bellman Updates Selective State-Adaptive Regularization for Offline RL.pdf",
+ "title": "Learning to Trust Bellman Updates: Selective State-Adaptive Regularization for Offline RL",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "状态自适应正则化缓解离线RL外推误差，但计算开销大且未验证高风险场景。",
+ "innovations": [
+  "提出状态自适应的正则化系数：不再对所有状态统一施加正则化，而是根据每个状态的数据覆盖质量动态调整对Bellman更新的信任程度",
+  "实现乐观与悲观的灵活权衡：数据充足的状态信任Bellman更新，数据稀疏的状态施加更强正则化，避免一刀切",
+  "将该方法与CQL和TD3+BC两种主流离线RL算法结合，在D4RL基准上均取得显著提升"
+ ],
+ "method_framework": "核心思想是离线数据中不同状态的数据质量差异很大，统一正则化强度会导致弱正则化无法抑制外推误差、强正则化退化为行为克隆的两难。方法为每个状态学习一个自适应正则化系数：该系数衡量在该状态下critic的Bellman更新是否可靠；数据覆盖充分的状态系数小（信任更新），数据稀疏的状态系数大（加强正则化约束）。可即插即用地集成到CQL、TD3+BC等离线RL框架中。",
+ "experiment_framework": "D4RL基准的MuJoCo连续控制任务（HalfCheetah、Hopper、Walker2d）和AntMaze导航任务；基线为CQL、TD3+BC及其它主流离线RL方法；指标为归一化回报；将所提方法作为模块嵌入CQL和TD3+BC验证通用性。",
+ "takeaways": [
+  "离线RL中不同状态的数据质量差异显著，统一正则化强度不是最优策略",
+  "状态自适应地信任/不信任Bellman更新，能在抑制外推误差和保持策略改进之间取得更好平衡",
+  "该正则化模块具有良好的算法无关性，可即插即用地增强多种离线RL方法"
+ ],
+ "weaknesses": [
+  "状态自适应系数的估计本身需要额外的网络和训练开销，计算成本增加",
+  "仅在MuJoCo和AntMaze等模拟环境验证，在医疗决策等高风险离线RL场景中是否安全有效未验证",
+  "系数估计的误差会直接传导到策略学习，误差累积效应未系统分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

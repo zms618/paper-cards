@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/InfiniCube_Unbounded and Controllable Dynamic 3D Driving Scene Generation with.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/InfiniCube_Unbounded and Controllable Dynamic 3D Driving Scene Generation with.pdf",
+ "title": "InfiniCube Unbounded and Controllable Dynamic 3D Driving Scene Generation with",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "体素+视频模型生成3D驾驶场景，但训练成本高且缺乏物理验证。",
+ "innovations": [
+  "无界体素世界生成与outpainting技术",
+  "3D引导缓冲区实现长视频生成",
+  "双分支前馈动态3D重建方法"
+ ],
+ "method_framework": "基于HD地图和边界框条件，先生成大规模语义体素世界，渲染为引导缓冲区辅助视频生成，最后通过双分支重建将视频和体素转换为动态3D高斯场景。",
+ "experiment_framework": "Waymo Open Dataset，与Panacea、Vista等基线比较，使用FID评估视频质量，进行消融研究验证组件有效性。",
+ "takeaways": [
+  "体素世界作为3D表示可提供一致的场景结构",
+  "引导缓冲区技术有效缓解长视频累积误差",
+  "双分支重建结合体素和像素空间优势"
+ ],
+ "weaknesses": [
+  "训练成本高(总计304 GPU天)",
+  "仅评估视觉质量，缺乏物理仿真验证",
+  "文本控制依赖额外训练的ControlNet"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "3D场景生成与可靠性主线无关，仅可迁移的表示学习",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

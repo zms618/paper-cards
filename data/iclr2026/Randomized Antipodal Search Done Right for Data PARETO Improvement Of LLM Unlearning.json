@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Randomized Antipodal Search Done Right for Data PARETO Improvement Of LLM Unlearning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Randomized Antipodal Search Done Right for Data PARETO Improvement Of LLM Unlearning.pdf",
+ "title": "Randomized Antipodal Search Done Right for Data Pareto Improvement of LLM Unlearning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "RASLIK算法提升LLM遗忘-保留权衡，但依赖线性化近似且消融不足。",
+ "innovations": [
+  "提出LLM遗忘的'数据帕累托改进'概念，把遗忘/保留权衡的前沿显式化，论证检索是扩展该前沿的一阶因素而非预处理细节。",
+  "提出RASLIK检索算法：在线性化影响核上用置换-投影哈希构建随机梯度草图，并做对径(antipodal)搜索同时定位对齐样本(遗忘)与反对齐样本(保留)。",
+  "引入受控随机化平滑不稳定阈值决策、降低选择方差，配合sketching达到亚线性复杂度，质量与效率双提升。"
+ ],
+ "method_framework": "在线推理时由不期望输出触发遗忘，需从海量训练语料检索相关数据；RASLIK用置换-投影哈希对影响核做随机草图，再对径搜索同时找出与不期望输出对齐(应忘)和反对齐(应留)的样本，喂给既有遗忘优化器以帕累托改进遗忘-保留权衡。",
+ "experiment_framework": "跨多个模型、数据集与遗忘算法，对比确定性基线乃至oracle采样，报告遗忘-保留帕累托前沿外移与检索复杂度。",
+ "takeaways": [
+  "LLM遗忘的瓶颈在检索而非优化，好的检索能同时提升遗忘彻底度与保留度。",
+  "随机化对径搜索(RASLIK)跨模型/数据集/算法稳定优于确定性基线甚至oracle采样，是可扩展的数据中心遗忘方案。"
+ ],
+ "weaknesses": [
+  "依赖线性化影响核近似，对深层/大模型影响估计的准确性边界未充分讨论。",
+  "前9页只见动机与方法，未见多模型完整帕累托表与草图维度/哈希次数等关键超参消融。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "LLM遗忘可靠性主线与数据检索方法设计的硬交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

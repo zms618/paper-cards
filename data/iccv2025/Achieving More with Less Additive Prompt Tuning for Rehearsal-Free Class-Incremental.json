@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Achieving More with Less Additive Prompt Tuning for Rehearsal-Free Class-Incremental.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Achieving More with Less Additive Prompt Tuning for Rehearsal-Free Class-Incremental.pdf",
+ "title": "Achieving More with Less: Additive Prompt Tuning for Rehearsal-Free Class-Incremental Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "CLS token K/V加向量替代prompt拼接，省GFLOPs但机制解释不足",
+ "innovations": [
+  "把 prompt-based CIL 的「拼接 prompt token」换成「只在每层 CLS token 自注意力处给其 K、V 各加一个可学向量」（式3-4，patch token 的 K/V 不动），输入序列长度不变；ViT-B/16 下每层固定 2 个向量、共 24 个可训参数，同时去掉 prompt pool 查询所需的额外一次 ViT 前向。",
+  "训练目标简化为纯交叉熵（式5）：因为不再需要相似度选择机制，省掉 L2P/CodaPrompt 那类多损失项设计，可训练参数只剩每层的 {p_k^l, p_v^l} 与一个 task-specific 分类头 h_t。",
+  "渐进式 prompt 融合 PPF（式6）：训练新任务前先存旧 prompt，训练完后取 P^PPF_{t+1}=αP_t+(1−α)P_{t+1} 加权平均，且仅在推理时替换使用，兼顾旧知识留存与新任务适配。"
+ ],
+ "method_framework": "每层给 CLS 自注意力的 K、V 各加一个可学向量（patch token 不变），用交叉熵训这两组向量与任务头；推理前把新旧 prompt 按 α 加权平均（PPF）再使用。",
+ "experiment_framework": "Split CIFAR-100/ImageNet-R/CUB200/Stanford Cars，ViT-B/16，10/20 任务；对比 L2P/DualPrompt/CodaPrompt/ESN/EvoPrompt/OVOR/CPrompt；指标 AvgAcc、Forgetting 带方差与 GFLOPs、可训参数量。",
+ "takeaways": [
+  "prompt 未必非要拼进 token 序列：往 CLS 的 K/V 上加向量同样能引导特征，序列长度不变让 GFLOPs 直接回到裸 ViT 水平（APT 16.80 vs OVOR-Deep 16.81），把 PEFT 的额外开销从比例项压成 0。",
+  "持续学习里最贵的不一定是显存，而是为「选 prompt」而额外跑的那次 ViT 前向；去掉 prompt pool 这类动态路由，能同时省 GFLOPs 和损失设计。",
+  "「训练前存旧参数、训练后做加权平均」的 PPF 套路比复杂正则便宜得多，且只在推理时生效，值得在其它 PEFT 持续学习场景直接套用。"
+ ],
+ "weaknesses": [
+  "PPF（式6）只是新旧 prompt 的线性加权（α 只给了 ImageNet-R 0.8、其余 0.7 两个取值），是纯启发式；正文没有与「训练后直接沿用新 prompt」「完全取均值」等替代策略的对照，也没有说明为什么加权平均能比单用新 prompt 少忘，消融节在 5.5 节之后即被截断。",
+  "效率证据偏薄：Tab.2 只统计 self-attention 块的 GFLOPs，且 OVOR-Deep 的 16.81 与 APT 的 16.80 实质打平，却仍声称「所有方法中推理开销最低」；同时全文只有 GFLOPs、没有任何毫秒级时延或显存占用，省掉那次额外前向带来的真实加速并没有测出来。",
+  "机制解释停留在可视化：5.4 节只用注意力热力图说明 APT「注意力更集中」，没有把集中度与准确率做量化关联；另外每任务都要训一个 task-specific 分类头 h_t 且无回放，所谓 No memory is used 只指数据缓冲，旧任务头必须随任务数线性累积，这部分部署开销未计入。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "增量学习机制与可靠性主线无实质交点，仅是效率优化",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

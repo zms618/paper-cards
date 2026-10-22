@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Mixture of Hidden-Dimensions Not All Hidden-States' Dimensions are Needed in Transformer.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Mixture of Hidden-Dimensions Not All Hidden-States' Dimensions are Needed in Transformer.pdf",
+ "title": "Mixture of Hidden-Dimensions: Not All Hidden-States' Dimensions are Needed in Transformer",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "elevance": 5.5,
+  "evidence": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "MOHD混合共享/专用子维度提升Transformer参数效率",
+ "innovations": [
+  "共享和专用子维度混合激活机制",
+  "激活流维护机制（缩放和分组融合）",
+  "子维度负载平衡损失"
+ ],
+ "method_framework": "MOHD将隐藏维度分为共享子维度（始终激活）和专用子维度（动态路由），通过路由器选择激活子集，结合激活缩放和分组融合机制保持信息完整性",
+ "experiment_framework": "基于RedPajama数据集预训练355M-1.13B模型，在10个NLP任务上评估，与LLaMA2和DeepSeek MoE对比",
+ "takeaways": [
+  "隐藏维度存在显著稀疏性，50%维度贡献92.54%激活量",
+  "共享和专用子维度分离设计能有效提升参数效率",
+  "激活流维护机制对保持性能至关重要"
+ ],
+ "weaknesses": [
+  "未探索医学影像或多模态大模型推理应用",
+  "路由机制的计算开销未充分分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/SageAttention3_Microscaling FP4 Attention for Inference and An Exploration of 8-bit Training.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/SageAttention3_Microscaling FP4 Attention for Inference and An Exploration of 8-bit Training.pdf",
+ "title": "SageAttention3: Microscaling FP4 Attention for Inference and An Exploration of 8-bit Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "FP4注意力加速5倍，8位训练微调无损但长序列收敛慢",
+ "innovations": [
+  "FP4微缩量化注意力实现1038 TOPS",
+  "两级量化方法解决注意力图精度问题",
+  "首个8位可训练注意力机制SageBwd"
+ ],
+ "method_framework": "基于Blackwell GPU的FP4 Tensor Core实现微缩量化注意力，结合两级量化优化注意力图精度，训练时保持关键矩阵乘法在FP16",
+ "experiment_framework": "CogVideoX、HunyuanVideo等模型，RTX5090/4090，CosSim、L1、RMSE等指标",
+ "takeaways": [
+  "微缩量化块大小选择对精度影响显著",
+  "训练时梯度传播对量化误差敏感需特殊处理"
+ ],
+ "weaknesses": [
+  "FP4注意力在预训练任务中表现不佳",
+  "8位注意力在长序列训练中收敛速度较慢"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Flash Invariant Point Attention.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Flash Invariant Point Attention.pdf",
+ "title": "Flash Invariant Point Attention",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.75
+ },
+ "one_line": "线性化几何感知IPA，提升生物分子建模效率但牺牲部分精度",
+ "innovations": [
+  "将二次复杂度的IPA算法线性化",
+  "利用FlashAttention实现O(L)内存复杂度",
+  "因子化对表示实现近似而不损失性能",
+  "支持训练数千残基的生物分子结构"
+ ],
+ "method_framework": "通过因子化对表示和FlashAttention，将原始IPA的二次复杂度降低为线性，同时保持SE(3)不变性。",
+ "experiment_framework": "在FoldFlow和RNA-FrameFlow模型上测试，使用PDB和RNASolo数据集，评估sc-RMSD和sc-TM指标。",
+ "takeaways": [
+  "几何感知算法与高效注意力机制的结合",
+  "因子化近似在保持性能的同时大幅降低内存需求"
+ ],
+ "weaknesses": [
+  "因子化是对原始表示的近似，可能不适用于所有应用",
+  "当前FlashAttention实现限制了头维度大小"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.05,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

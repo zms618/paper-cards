@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Gradient Flow Provably Learns Robust Classifiers for Orthonormal GMMs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Gradient Flow Provably Learns Robust Classifiers for Orthonormal GMMs.pdf",
+ "title": "Gradient Flow Provably Learns Robust Classifiers for Orthonormal GMMs",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 4.5,
+  "relevance": 6,
+  "overall": 6.25
+ },
+ "one_line": "理论证明正交GMM上pReLU梯度流可达近最优鲁棒分类器",
+ "innovations": [
+  "刻画了正交GMM二分类问题中任意分类器可达到的最大ℓ2鲁棒性半径，并证明Bayes最优分类器近优鲁棒",
+  "证明使用多项式ReLU(pReLU, p>2)激活的两层网络梯度流可收敛到近最优鲁棒分类器，无需对抗样本",
+  "揭示激活函数选择决定梯度流隐式偏置能否学到数据的多簇结构，而该结构是实现最大鲁棒性的关键"
+ ],
+ "method_framework": "数据为两类正交中心各向同性高斯混合(高维D)。先从理论上推导最大ℓ2攻击半径和Bayes最优分类器(近邻簇规则)。然后分析两层pReLU网络f(x)=Σa_i[w_i·x]_+^p的梯度流动力学，证明当簇内方差足够小时，p>2的pReLU网络梯度流收敛到近邻簇分类器，从而达到近最优鲁棒性。",
+ "experiment_framework": "理论证明为主，辅以合成GMM数据实验验证：对比ReLU、Tanh、pReLU(p=3)激活及线性分类器、MLP在12正8负簇、D=2000设置下的鲁棒性；展示ReLU/Tanh/LogReg失败而pReLU成功。",
+ "takeaways": [
+  "对于具有良好几何分离的数据分布，标准训练(非对抗)可产出 provably 鲁棒的分类器",
+  "激活函数的多项式阶数p>2是让梯度流学到多簇结构的关键，ReLU(p=1)不足",
+  "鲁棒性的上界由类条件概率质量的几何分离度决定，而非模型容量"
+ ],
+ "weaknesses": [
+  "仅在高度理想化的正交GMM合成分布上证明，与真实数据分布差距大",
+  "需要内簇方差α²/D→0的强条件，真实场景难以满足",
+  "前9页内未看到在真实数据集上的验证，实际适用性存疑"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

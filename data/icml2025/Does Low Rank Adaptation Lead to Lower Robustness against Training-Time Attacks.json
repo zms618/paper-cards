@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Does Low Rank Adaptation Lead to Lower Robustness against Training-Time Attacks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Does Low Rank Adaptation Lead to Lower Robustness against Training-Time Attacks.pdf",
+ "title": "Does Low Rank Adaptation Lead to Lower Robustness against Training-Time Attacks?",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "理论分析LoRA对训练时攻击的双面安全特性，实验仅限语言模型。",
+ "innovations": [
+  "提出训练时鲁棒性(TTR)分析框架",
+  "结合NTK与信息几何理论分析LoRA安全特性",
+  "揭示LoRA对后门攻击和数据投毒攻击的不同鲁棒性"
+ ],
+ "method_framework": "基于神经 tangent kernel(NTK)建模LoRA训练动态，结合信息几何理论分析其低秩结构对安全性的影响，建立理论框架比较LoRA与全微调的鲁棒性差异。",
+ "experiment_framework": "在GLUE基准上评估BERT-large，使用SST-2等6个二分类任务，对比LoRA与全微调在无目标投毒攻击和后门攻击下的性能差异。",
+ "takeaways": [
+  "低秩结构使LoRA对后门攻击更鲁棒但对数据投毒更脆弱",
+  "秩和初始化方差是影响LoRA安全性的关键因素",
+  "信息几何理论可解释模型结构对安全性的影响"
+ ],
+ "weaknesses": [
+  "实验仅限于语言模型，未扩展到多模态或医学影像",
+  "理论分析基于无限宽度假设，实际应用中可能存在偏差",
+  "未提出具体改进LoRA安全性的方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

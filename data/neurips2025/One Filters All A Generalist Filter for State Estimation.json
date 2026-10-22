@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/One Filters All A Generalist Filter for State Estimation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/One Filters All A Generalist Filter for State Estimation.pdf",
+ "title": "One Filters All: A Generalist Filter for State Estimation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "冻结LLM微调嵌入层实现状态估计，跨系统泛化但计算效率低",
+ "innovations": [
+  "将LLM知识引入状态估计领域",
+  "设计System-as-Prompt(SaP)实现跨系统泛化",
+  "冻结LLM核心层仅微调嵌入和投影层"
+ ],
+ "method_framework": "通过观测嵌入将连续观测值转换为文本原型，结合SaP提示引导冻结LLM进行推理，最后通过状态投影获得估计结果",
+ "experiment_framework": "低维非线性系统(Selkov/Oscillator/Hopf/双摆)和高维混沌系统(Lorenz96/VL20)，RMSE和运行时间指标，对比传统贝叶斯滤波器和学习滤波器",
+ "takeaways": [
+  "冻结LLM核心层可保留预训练知识并减少计算开销",
+  "SaP提示设计是实现跨系统泛化的关键",
+  "LLM-Filter在模型不匹配和跨系统场景下表现鲁棒"
+ ],
+ "weaknesses": [
+  "计算效率低于专用学习滤波器RStateNet",
+  "未充分探索不同LLM架构的影响",
+  "高维系统中内存消耗较大"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

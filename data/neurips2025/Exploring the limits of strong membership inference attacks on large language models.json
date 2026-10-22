@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Exploring the limits of strong membership inference attacks on large language models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Exploring the limits of strong membership inference attacks on large language models.pdf",
+ "title": "Exploring the limits of strong membership inference attacks on large language models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "扩展LiRA到中小LLM，发现MIA效果有限且决策不稳定",
+ "innovations": [
+  "首次将强成员推理攻击扩展到10M-1B参数的LLM",
+  "发现样本级决策不稳定性和训练随机性的影响",
+  "揭示MIA成功与LLM隐私指标间复杂关系",
+  "建立弱攻击与强攻击间性能差距的上界"
+ ],
+ "method_framework": "使用LiRA攻击方法，训练4000+个GPT-2参考模型(10M-1B参数)，在C4数据集上评估，通过改变训练轮次和数据集大小研究MIA有效性",
+ "experiment_framework": "C4数据集(50M-100M样本)，GPT-2模型(10M-1B参数)，ROC-AUC和TPR@FPR指标，128个参考模型",
+ "takeaways": [
+  "强MIA在典型LLM训练条件下效果有限(AUC<0.7)",
+  "即使AUC优于随机，许多样本决策不稳定，接近随机猜测",
+  "模型大小与MIA脆弱性呈非单调关系"
+ ],
+ "weaknesses": [
+  "实验仅限于GPT-2架构，未测试其他LLM",
+  "未探索防御策略对MIA的影响",
+  "决策不稳定性的原因分析不够深入"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

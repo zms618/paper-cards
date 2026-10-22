@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Sparse VideoGen_Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Sparse VideoGen_Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity.pdf",
+ "title": "Sparse VideoGen: Accelerating Video Diffusion Transformers with Spatial-Temporal Sparsity",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "SVG通过training-free稀疏加速视频DiT，但假设局限与评测不足",
+ "innovations": [
+  "揭示视频DiT的3D全注意力中注意力头可按稀疏模式动态分为Spatial Head(仅帧内空间token主导)与Temporal Head(仅跨帧时间token主导)",
+  "提出online profiling策略动态捕获稀疏模式并预测注意力头类型",
+  "设计硬件高效的张量布局变换与定制CUDA kernel，把上述稀疏模式落到实际加速"
+ ],
+ "method_framework": "在冻结视频DiT上做training-free稀疏推理：先在线分析各注意力头的稀疏模式归类为空间头或时间头，空间头只在帧内、时间头只在跨帧选取少量关键token参与注意力；配合重排张量布局与专用稀疏核避免不规则访存开销。",
+ "experiment_framework": "在CogVideoX、HunyuanVideo等开源视频DiT上，720p多帧数下对比稠密全注意力，指标为生成质量(PSNR/VBench类)与生成耗时；声称HunyuanVideo 128帧从38分钟降到16分钟且质量近无损。",
+ "takeaways": [
+  "视频DiT注意力天然存在空间/时间分工，按头类型施加不同稀疏模式可大幅砍二次复杂度",
+  "training-free+定制稀疏核的工程组合，能在大模型上直接换取近2x生成加速而无需重训"
+ ],
+ "weaknesses": [
+  "加速比高度依赖空间/时间头假设，对运动剧烈、跨帧强关联的复杂视频，稀疏模式是否仍二分前9页未论证",
+  "online profiling与张量布局变换本身有额外开销，端到端收益随分辨率/帧数的缩放关系未充分给出",
+  "质量以PSNR为主，缺乏人类偏好/VBench等更贴近观感的评测，近无损声明需谨慎"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

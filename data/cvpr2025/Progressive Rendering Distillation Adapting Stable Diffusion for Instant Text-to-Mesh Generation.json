@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Progressive Rendering Distillation Adapting Stable Diffusion for Instant Text-to-Mesh Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Progressive Rendering Distillation Adapting Stable Diffusion for Instant Text-to-Mesh Generation.pdf",
+ "title": "Progressive Rendering Distillation Adapting Stable Diffusion for Instant Text-to-Mesh Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "渐进式蒸馏将2D扩散模型转为3D生成器，但缺乏定量消融",
+ "innovations": [
+  "渐进式渲染蒸馏(PRD)无需3D数据即可将2D扩散模型适配为3D生成器",
+  "参数高效三平面适配器(PETA)仅增加2.5%参数",
+  "多视角教师模型蒸馏提升生成质量和一致性"
+ ],
+ "method_framework": "PRD通过渐进式去噪潜在变量并解码为3D输出，利用多视角扩散模型进行知识蒸馏，无需3D监督数据即可训练原生3D生成器。",
+ "experiment_framework": "使用360K文本提示训练，与Shape-E、Direct3D、3DTopia等方法比较，采用CLIP分数和R@1指标评估，测试1.6M复杂文本提示。",
+ "takeaways": [
+  "多视角教师模型结合可提升3D生成一致性和质量",
+  "参数高效适配方法可避免灾难性遗忘",
+  "无需3D数据的训练方案可扩展到更复杂文本提示"
+ ],
+ "weaknesses": [
+  "仅展示了定性结果，缺乏详细的定量消融实验",
+  "多教师模型增加了训练复杂度和内存需求"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

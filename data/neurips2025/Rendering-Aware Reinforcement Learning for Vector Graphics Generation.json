@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Rendering-Aware Reinforcement Learning for Vector Graphics Generation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Rendering-Aware Reinforcement Learning for Vector Graphics Generation.pdf",
+ "title": "Rendering-Aware Reinforcement Learning for Vector Graphics Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "RLRF用渲染反馈强化学习提升SVG生成，但泛化与计算成本受限",
+ "innovations": [
+  "首次将在线强化学习应用于逆向渲染代码生成任务",
+  "设计结合像素级相似性、语义对齐和代码效率的复合奖励函数",
+  "通过渲染反馈解决自回归SVG生成中的非可微性问题"
+ ],
+ "method_framework": "两阶段训练：第一阶段监督微调(SVG-SFT)，第二阶段强化学习(RLRF)使用GRPO算法和复合奖励函数优化模型",
+ "experiment_framework": "SVG-Stack-Hard测试集，对比MSE、SSIM、DINO、LPIPS和代码效率指标，评估Im2SVG任务",
+ "takeaways": [
+  "复合奖励函数可有效指导模型生成高质量SVG",
+  "渲染反馈能显著提升模型对复杂图像的处理能力",
+  "方法可扩展到文本到SVG生成任务"
+ ],
+ "weaknesses": [
+  "仅使用20k高熵样本进行RL训练，可能限制泛化能力",
+  "计算成本较高，每个训练步骤生成2048个rollouts",
+  "未充分探讨不同类型图像的最佳奖励权重"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

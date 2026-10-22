@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/A Conditional Probability Framework for Compositional Zero-shot Learning.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Conditional Probability Framework for Compositional Zero-shot Learning.pdf",
+ "title": "A Conditional Probability Framework for Compositional Zero-shot Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 6.0,
+  "overall": 5.5
+ },
+ "one_line": "条件概率分解组合零样本学习，消融不足且机制创新有限",
+ "innovations": [
+  "把组合似然 p(o,a|x) 分解为 p(o|x)p(a|o,x)，属性分支直接以 p(a|x,v^o) 形式做交叉熵，迫使属性判别依赖对象表示而非图像全局属性统计",
+  "用对象类名的文本 embedding（GloVe/CLIP）与 patch token 求相似得到 patch 级权重加权深层 patch 后加到类 token（式1-2），零额外参数把语义约束注入对象特征 v^o",
+  "以文本增强后的对象特征 v^o 作为 query 对第3/6/9层浅层 patch 做 cross-attention（式4）得到属性表示 v^a，深-浅两层特征分工处理对象语义与属性外观"
+ ],
+ "method_framework": "ViT 抽深/浅层特征；文本描述生成 patch 注意力增强对象特征 v^o(式1-2)，L_obj 监督；v^o 作 query 对浅层 patch 交叉注意力得属性 v^a(式4)，L_att 监督；再加组合级 L_com，三项加权联合训练，推理时三项分数加性取 argmax。",
+ "experiment_framework": "MIT-States、UT-Zappos50K、C-GQA 三数据集，CW/OW 双协议，对比约 15 个 SOTA；指标为 Seen/Unseen Acc、AUC、HM（含校准项），另给 CLIP 变体与 1457fps 速度。",
+ "takeaways": [
+  "组合泛化可用 p(o|x)p(a|o,x) 统一刻画语义约束与上下文依赖，推理端用三项加性融合避免小样本下乘性概率消失，可平移到任何组合式分类任务",
+  "「文本类名 embedding → patch 级注意力」是参数免费的即插即用模块，能直接插进已有双分支解耦框架而不改变其推理开销",
+  "CW/OW 双协议 + Seen/Unseen/AUC/HM 四指标已成为 CZSL 的标准评测配置，做同类任务时建议默认对齐，避免只报单一 seen 准确率"
+ ],
+ "weaknesses": [
+  "消融只做在 C-GQA 上，且正文止于表 4 开头（Key Component Analysis 刚起），α1/α2 权重与温度 τ=0.05 的敏感性实验全在补充材料，无法核验是否过网格搜索",
+  "全部指标只报均值、无方差与显著性检验，且 ResNet18 与 ViT-B 基线的提升分列不同表格，跨 backbone 的涨幅中混有 backbone 差异而非方法贡献",
+  "p(o|a,x) 的条件概率分解本身是 CoT/CANet 已用的既有视角，本文并未给出「语义约束」如何真正进入损失的形式化刻画，缺独立实验隔离该机制的增量"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "组合学习方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

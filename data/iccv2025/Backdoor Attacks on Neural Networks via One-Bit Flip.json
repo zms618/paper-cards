@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Backdoor Attacks on Neural Networks via One-Bit Flip.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Backdoor Attacks on Neural Networks via One-Bit Flip.pdf",
+ "title": "Backdoor Attacks on Neural Networks via One-Bit Flip",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "量化模型单比特翻转后门攻击，效率与隐蔽性权衡",
+ "innovations": [
+  "首个针对量化模型的单比特翻转后门攻击",
+  "无需迭代搜索比特，直接识别可利用权重",
+  "在多种架构和数据集上实现高攻击成功率"
+ ],
+ "method_framework": "SOLEFLIP通过三步流程：1)识别可利用权重；2)生成触发器；3)单比特翻转激活后门。利用量化权重分布特性，选择翻转最高非符号位或符号位实现高效攻击。",
+ "experiment_framework": "在CIFAR-10、SVHN和ImageNet数据集上评估ResNet-18、VGG-16和ViT-base-16模型，比较攻击成功率(ASR)、良性准确率退化(BAD)和翻转比特数(Nflip)。",
+ "takeaways": [
+  "量化模型权重分布特性可被利用实现高效单比特攻击",
+  "触发器生成与权重选择相结合可提高攻击隐蔽性"
+ ],
+ "weaknesses": [
+  "仅针对量化模型，不适用于全精度模型",
+  "需要白盒访问模型架构和部分样本"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "后门攻击与可靠性主线相关但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "title": "Self-Aligned Reward: Towards Effective and Efficient Reasoners",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "自对齐奖励SAR提升效率精度，但非主线且缺乏与PRM对比",
+ "innovations": [
+  "可验证奖励只有粗粒度二值对错反馈，导致冗长/重复推理；SAR为通用自引导信号弥补该缺口",
+  "SAR定义为在查询条件下答案与独立答案间的相对困惑度差，偏好简洁且贴合查询的回答",
+  "定量证明SAR能判质量：简洁正确>冗余正确，部分正确>全错"
+ ],
+ "method_framework": "在RL(PPO/GRPO)中，除可验证对错奖励外加入自对齐困惑度差奖励，鼓励简洁、查询相关的回答而非靠长度惩罚牺牲精度；无需外部裁判模型。",
+ "experiment_framework": "在4个模型(Qwen3-1.7B/4B、Phi-3.5-mini、Gemma3-1B)、7个基准上评测；集成SAR后答案长度降约30%、精度升约4%；域外任务泛化良好，在正确性-效率上达Pareto前沿。",
+ "takeaways": [
+  "长度惩罚会牺牲精度，而困惑度差奖励可同时提升效率与精度",
+  "自对齐信号是可验证奖励的有效细粒度补充",
+  "SAR在删去冗余阐述的同时保留高级推理行为"
+ ],
+ "weaknesses": [
+  "为文本数学/逻辑推理，非多模态或医学影像主线",
+  "困惑度在某些流畅但错误的回答上可能误导，判别精度依赖定量但有限",
+  "前9页未见与过程奖励模型(PRM)的直接对比"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/SELF-ALIGNED Reward Towards Effective and Efficient Reasoners.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SELF-ALIGNED Reward Towards Effective and Efficient Reasoners.pdf",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "文本推理效率提升，非主线且缺乏与PRM对比",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

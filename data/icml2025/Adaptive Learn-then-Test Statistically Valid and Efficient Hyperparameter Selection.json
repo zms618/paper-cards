@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Adaptive Learn-then-Test Statistically Valid and Efficient Hyperparameter Selection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adaptive Learn-then-Test Statistically Valid and Efficient Hyperparameter Selection.pdf",
+ "title": "Adaptive Learn-then-Test: Statistically Valid and Efficient Hyperparameter Selection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "将e-process引入LTT框架，实现自适应超参数选择，减少测试轮次",
+ "innovations": [
+  "将e-process（证据过程）引入LTT框架，替代传统p值多重假设检验，支持顺序自适应的提前终止",
+  "推导了自适应采集策略下的有限样本FWER和FDR控制保证",
+  "证明aLTT在保持统计有效性的同时，仅需LTT一小部分的测试轮次即可达到相同TPR"
+ ],
+ "method_framework": "将超参数选择建模为多重假设检验问题：每个超参数对应一个零假设（其总体风险>α）。aLTT在每轮中：(1)用ε-greedy策略选择待测试超参数子集；(2)收集测试数据估计经验风险；(3)更新e-process证据值。当e-process超过阈值时提前拒绝/接受假设。提供FWER和FDR两种控制模式。",
+ "experiment_framework": "两个应用场景：(1)离线RL策略选择——HalfCheetah环境，TD3+BC算法生成20个不同β超参数的策略；(2)LLM提示工程。对比基线为传统LTT（p值法）。指标为TPR（真正例率）和所需测试轮次。",
+ "takeaways": [
+  "aLTT在HalfCheetah任务上达到与LTT相同TPR时，仅需约1/3的测试轮次",
+  "e-process方法允许顺序自适应测试，而传统p值法需要预先固定测试轮次",
+  "ε-greedy采集策略比均匀随机采集效率更高"
+ ],
+ "weaknesses": [
+  "实验仅在HalfCheetah和提示工程两个简单场景验证，缺乏大规模真实部署案例",
+  "e-process的构造依赖具体风险函数的性质，通用性可能受限",
+  "理论保证基于有界风险函数假设，对无界损失函数的扩展未讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.03,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "超参数选择作为可靠性主线方法，提供统计有效性保证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/On the Dynamic Regret of Following the Regularized Leader Optimism with History Pruning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/On the Dynamic Regret of Following the Regularized Leader Optimism with History Pruning.pdf",
+ "title": "On the Dynamic Regret of Following the Regularized Leader: Optimism with History Pruning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 4.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "理论改进FTRL动态regret，但缺乏实验验证与实用准则。",
+ "innovations": [
+  "指出FTRL动态环境中‘懒惰迭代’的根因不是懒惰投影，而是算法状态(线性化历史)与迭代解耦导致状态无界增长",
+  "通过对未来代价的乐观组合与对历史代价的线性化剪枝，使FTRL恢复已知动态regret界",
+  "给出贪婪与敏捷更新间的有原则插值，实现无循环依赖的乐观与类AdaFTRL的最小递归正则化"
+ ],
+ "method_framework": "在OCO动态regret框架下，对历史代价做线性化并按需要剪枝以同步算法状态与迭代解；叠加对未来代价的乐观预测，推导相对于路径长度PT的动态regret界。",
+ "experiment_framework": "纯理论论文，以动态regret界推导与算法设计为主；正文为OCO分析，无数值实验。",
+ "takeaways": [
+  "FTRL并非天生不适合动态环境，关键在于用历史剪枝同步状态与迭代",
+  "乐观组合未来代价可在不引入循环依赖的前提下改进动态regret",
+  "贪婪与敏捷更新可通过历史剪枝程度做连续插值"
+ ],
+ "weaknesses": [
+  "结果为紧集OCO渐近界，对高维非光滑/随机环境的可操作性讨论有限",
+  "无实验验证，动态regret界的紧致性与实际算法速度未实测",
+  "历史剪枝阈值的选择缺乏可自动调节的实用准则"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

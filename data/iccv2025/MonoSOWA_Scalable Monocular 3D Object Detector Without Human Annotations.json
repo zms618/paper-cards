@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/MonoSOWA_Scalable Monocular 3D Object Detector Without Human Annotations.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/MonoSOWA_Scalable Monocular 3D Object Detector Without Human Annotations.pdf",
+ "title": "MonoSOWA Scalable Monocular 3D Object Detector Without Human Annotations",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "无标注单目3D检测，通过运动模型与空间变换实现跨摄像头泛化",
+ "innovations": [
+  "首个无需2D/3D人工标注的单目3D目标检测方法",
+  "局部物体运动模型(LOMM)分离自车运动与物体运动",
+  "规范物体空间(COS)解决不同焦距摄像头的数据融合",
+  "饱和接近度准则提高点云拟合鲁棒性"
+ ],
+ "method_framework": "结合2D检测器和单目深度估计器生成伪点云，通过LOMM区分静止/运动物体，分步骤估计物体朝向、位置和尺寸，最后通过COS变换实现跨摄像头泛化",
+ "experiment_framework": "在KITTI、KITTI-360和Waymo三个数据集上评估，与VSRD、WeakM3D等弱监督方法对比，使用APBEV/AP3D@0.5和APBEV/AP3D@0.3指标",
+ "takeaways": [
+  "局部物体运动模型能有效分离自车运动与物体运动",
+  "规范物体空间变换是解决多摄像头数据融合的有效方法",
+  "饱和接近度准则提高了点云拟合的鲁棒性"
+ ],
+ "weaknesses": [
+  "依赖IMU等自车运动数据",
+  "对遮挡物体的处理仍有提升空间",
+  "方法复杂度较高，计算效率仍有优化空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "跨摄像头泛化与单目检测，可靠性主线边缘应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

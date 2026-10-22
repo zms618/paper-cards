@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Towards Black-Box Membership Inference Attack for Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Towards Black-Box Membership Inference Attack for Diffusion Models.pdf",
+ "title": "Towards Black-Box Membership Inference Attack for Diffusion Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "REDIFFUSE实现黑盒扩散模型成员推理攻击，但计算开销大且性能不稳定",
+ "innovations": [
+  "提出无需访问U-Net的黑盒成员推理攻击方法",
+  "利用扩散模型对训练数据无偏噪声预测的特性",
+  "将方法扩展到扩散Transformer架构",
+  "通过多次API调用平均输出降低估计误差"
+ ],
+ "method_framework": "REDIFFUSE算法通过多次调用图像变化API，平均输出图像并与原始图像比较，差异低于阈值则判定为训练成员。",
+ "experiment_framework": "在CIFAR10/100、STL10、ImageNet、LAION-5B等数据集上测试DDIM、Stable Diffusion和扩散Transformer模型，使用AUC、ASR和TP指标。",
+ "takeaways": [
+  "黑盒API访问的成员推理攻击方法实用性强",
+  "平均多次API调用可有效降低估计误差",
+  "方法在不同扩散模型架构上均有效"
+ ],
+ "weaknesses": [
+  "依赖API调用的次数增加计算开销",
+  "未讨论API调用延迟对实时应用的影响",
+  "方法在特定数据集上的性能差异较大"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

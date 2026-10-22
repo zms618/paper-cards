@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Preference learning made easy Everything should be understood through win rate.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Preference learning made easy Everything should be understood through win rate.pdf",
+ "title": "Preference learning made easy: Everything should be understood through win rate",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6
+ },
+ "one_line": "理论统一偏好学习框架，但优化困难限制实践价值",
+ "innovations": [
+  "证明生成模型在偏好数据采样分布下唯一自洽的评估是一种胜率(h-win rate)，为偏好学习确立统一锚点",
+  "将现有方法划分为胜率优化(WRO)与非WRO两类，并给出WRO类方法的两个理论性质",
+  "证明DPO、对偏好样本SFT等常见非WRO方法缺失上述理论性质，并提出缓解思路；实证表明WRO实践中受优化困难拖累"
+ ],
+ "method_framework": "从成对偏好数据的采样分布出发，先推导出只有h-win rate既评估模型又尊重偏好分布；据此把偏好学习方法分为以胜率为目标的WRO(如RLHF、NLHF)与非WRO(如DPO、SFT-on-preferred)，用统一视角分析各自的理论保证与优化难度。",
+ "experiment_framework": "以理论推导为主，辅以实证分析：比较WRO与非WRO方法在偏好学习任务上的表现，检验优化成功率是否比影响目标解的选择更能预测最终性能，归纳方法最佳实践。",
+ "takeaways": [
+  "胜率是偏好学习唯一兼具理论自洽性的评估视角，可作为统一理解整个领域的锚点",
+  "DPO、偏好样本SFT等非WRO方法缺失WRO的关键理论性质，需向WRO对齐或改进WRO优化",
+  "WRO在实践中的劣势主要来自优化困难而非目标本身，优化成功率比目标选择更能预测性能"
+ ],
+ "weaknesses": [
+  "理论框架偏抽象，对如何在大规模LLM上稳定优化WRO目标的可操作指导有限",
+  "实证部分服务于理论论点，缺乏对最新DPO变体/在线DPO等方法的系统覆盖",
+  "h-win rate的实际估计在数据稀缺或高维生成空间中的方差与可行性讨论不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

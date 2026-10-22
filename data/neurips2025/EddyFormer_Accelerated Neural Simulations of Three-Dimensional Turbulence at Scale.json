@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/EddyFormer_Accelerated Neural Simulations of Three-Dimensional Turbulence at Scale.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/EddyFormer_Accelerated Neural Simulations of Three-Dimensional Turbulence at Scale.pdf",
+ "title": "EddyFormer: Accelerated Neural Simulations of Three-Dimensional Turbulence at Scale",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.25
+ },
+ "one_line": "Transformer加速湍流模拟，但物理约束不足且泛化有限",
+ "innovations": [
+  "谱元方法(SEM)标记化分解流场为网格尺度和次网格尺度",
+  "双流架构分别处理局部和全局湍流特征",
+  "基于谱元注意力的高效长程依赖建模"
+ ],
+ "method_framework": "EddyFormer结合谱元方法与Transformer架构，通过SEM标记化分解流场，SGS流捕获局部涡旋相互作用，LES流通过谱元注意力建模全局结构，实现多尺度湍流模拟。",
+ "experiment_framework": "三维各向同性湍流(Re94)和Kolmogorov流(KF4)数据集，对比FNO、F-FNO等基线，使用L2误差、相关函数、结构函数等指标评估。",
+ "takeaways": [
+  "谱元方法标记化有效平衡局部表达能力和全局交互效率",
+  "双流架构(LES+SGS)能有效分离和建模不同尺度的湍流特征",
+  "注意力掩码技术实现域外泛化"
+ ],
+ "weaknesses": [
+  "仅限于特定湍流类型，未验证更复杂流动条件",
+  "模型参数和计算效率分析不够深入",
+  "缺乏对物理守恒定律的显式约束"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

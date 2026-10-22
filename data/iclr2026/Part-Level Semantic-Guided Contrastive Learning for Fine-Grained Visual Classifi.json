@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Part-Level Semantic-Guided Contrastive Learning for Fine-Grained Visual Classifi.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Part-Level Semantic-Guided Contrastive Learning for Fine-Grained Visual Classifi.pdf",
+ "title": "Part-Level Semantic-Guided Contrastive Learning for Fine-Grained Visual Classification",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "PSCL：文本引导部位定位+多分支推理+多粒度对比学习，提升细粒度分类。",
+ "innovations": [
+  "Part Localization Module：用clearCLIP实现文本可控的区域选择，解耦且语义引导地提取空间特征。",
+  "Multi-scale Multi-part Branch Progressive Reasoning：跨多部位多尺度捕捉判别特征并降低分支间冗余。",
+  "基于多粒度文本特征的视觉-语言对比学习(VLCL-MG)，引入中间粒度类别概念改善特征对齐与类间可分性。"
+ ],
+ "method_framework": "先用clearCLIP根据文本描述定位关键部位区域；多尺度多分支网络对各部位特征渐进推理并去冗余；再用细/中/粗多粒度文本概念构造对比目标，使视觉特征与中间语义对齐，增强相似子类间的可分性。",
+ "experiment_framework": "在5个公开FGVC数据集(鸟类/汽车等细粒度类)上评测；对比主流FGVC方法；指标分类准确率；报告各模块消融与跨刚性/非刚性类别的泛化性。",
+ "takeaways": [
+  "语义引导的部位定位+多粒度文本对比可提升细粒度判别力。",
+  "多分支渐进推理在捕捉部位细节的同时抑制冗余。",
+  "视觉-语言协同在刚性与非刚性物体上均有收益。"
+ ],
+ "weaknesses": [
+  "三模块叠加使系统较复杂，各模块独立增益与计算成本需更细消融。",
+  "依赖clearCLIP文本提示做部位定位，提示设计质量影响结果。",
+  "评测集中于传统FGVC基准，真实小样本/开放世界场景验证有限。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "细粒度分类与多模态对比学习有可靠性主线迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

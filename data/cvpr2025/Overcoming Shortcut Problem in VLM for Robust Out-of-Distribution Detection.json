@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Overcoming Shortcut Problem in VLM for Robust Out-of-Distribution Detection.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Overcoming Shortcut Problem in VLM for Robust Out-of-Distribution Detection.pdf",
+ "title": "Overcoming Shortcut Problem in VLM for Robust Out-of-Distribution Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 6.7
+ },
+ "one_line": "背景解耦与掩码正则化缓解VLM捷径问题，但依赖分割且泛化性有限",
+ "innovations": [
+  "背景解耦生成伪OOD监督",
+  "掩码引导区域正则化减少模型对背景的关注",
+  "提出ImageNet-Bg评估集专门测试背景干扰鲁棒性"
+ ],
+ "method_framework": "OSPCoOp方法包括背景解耦生成伪OOD样本和掩码引导区域正则化，通过分割模型分离前景背景，利用掩码约束模型注意力，减少对ID无关区域的响应",
+ "experiment_framework": "ImageNet-1K作为ID数据集，iNaturalist/SUN/Places/Texture作为传统OOD数据集，ImageNet-Bg作为新提出的背景干扰OOD数据集，使用AUROC和FPR95作为评估指标",
+ "takeaways": [
+  "利用分割和修复技术生成伪OOD样本的有效性",
+  "掩码引导区域正则化能有效减少模型对背景的过度关注",
+  "在少样本场景下表现优异，甚至1-shot设置也能取得良好结果"
+ ],
+ "weaknesses": [
+  "方法依赖于分割模型的准确性，分割不完整会影响效果",
+  "需要额外的计算资源进行图像修复和掩码生成",
+  "实验主要集中在背景干扰的OOD检测，对其他类型的OOD泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "OOD检测与背景解耦设计模式，明确触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

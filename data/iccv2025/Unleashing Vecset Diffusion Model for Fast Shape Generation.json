@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Unleashing Vecset Diffusion Model for Fast Shape Generation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Unleashing Vecset Diffusion Model for Fast Shape Generation.pdf",
+ "title": "Unleashing Vecset Diffusion Model for Fast Shape Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "FlashVDM加速3D生成，但组件复杂且泛化性存疑",
+ "innovations": [
+  "Progressive Flow Distillation稳定3D扩散模型蒸馏",
+  "Lightning Vecset Decoder包含自适应KV选择和分层体积解码",
+  "组合技术实现1秒内高质量3D形状生成"
+ ],
+ "method_framework": "FlashVDM框架包含VAE加速和扩散加速两部分，通过分层体积解码、自适应KV选择和高效解码器设计加速VAE，通过渐进流蒸馏加速扩散采样。",
+ "experiment_framework": "在Hunyuan3D-2上评估，使用体积IoU和表面IoU指标，与3DShape2VecSet、Michelangelo、Direct3D等方法比较，并进行了用户研究。",
+ "takeaways": [
+  "利用3D形状表面的稀疏性进行高效解码",
+  "渐进式蒸馏策略解决3D扩散模型稳定性问题",
+  "结合对抗训练提升有限步数生成质量"
+ ],
+ "weaknesses": [
+  "方法组件较多，实现复杂",
+  "未充分讨论方法在不同类型3D数据上的泛化能力",
+  "对硬件依赖性强，可能影响实际部署"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D生成与可靠性主线无关，仅具可迁移解码机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

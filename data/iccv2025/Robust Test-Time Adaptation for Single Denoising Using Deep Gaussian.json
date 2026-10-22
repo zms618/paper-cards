@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Robust Test-Time Adaptation for Single Denoising Using Deep Gaussian.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Robust Test-Time Adaptation for Single Denoising Using Deep Gaussian.pdf",
+ "title": "Robust Test-Time Adaptation for Single Denoising Using Deep Gaussian",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "自相似性像素库增强高斯去噪器跨噪声鲁棒性",
+ "innovations": [
+  "提出深度去噪先验概念，证明高斯去噪器可通过少量迭代适应其他噪声类型",
+  "基于图像自相似性构建像素库，生成高质量伪实例进行测试时自适应",
+  "像素级随机采样策略增强模型鲁棒性，显著减少过拟合"
+ ],
+ "method_framework": "预训练高斯去噪模型，利用图像自相似性构建像素库，通过像素级随机采样生成伪实例，采用Noise2Noise框架进行测试时自适应微调",
+ "experiment_framework": "在Kodak24、McMaster18和Kvasir数据集上评估，对比DnCNN、NB2NB、BM3D、DIP、Self2Self、ZS-N2N和MPI等方法，使用PSNR指标",
+ "takeaways": [
+  "利用图像自相似性构建训练数据可有效提升去噪性能",
+  "预训练模型作为先验知识可显著加速收敛并提升跨分布泛化能力",
+  "像素级随机采样策略比传统下采样方法更能抵抗过拟合"
+ ],
+ "weaknesses": [
+  "方法依赖图像自相似性假设，在缺乏自相似性的图像上可能效果不佳",
+  "计算复杂度较高，像素库构建过程可能增加推理时间",
+  "仅评估了合成噪声和有限的真实世界噪声，泛化能力需进一步验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "测试时自适应提升去噪鲁棒性，符合可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

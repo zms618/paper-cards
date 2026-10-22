@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Adaptive Action Chunking at Inference-time for Vision-Language-Action Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Adaptive Action Chunking at Inference-time for Vision-Language-Action Models.pdf",
+ "title": "Adaptive Action Chunking at Inference-time for Vision-Language-Action Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "动作熵自适应分块提升VLA模型性能，但计算开销大且泛化有限",
+ "innovations": [
+  "利用动作熵作为线索动态确定分块大小",
+  "无需额外训练或架构修改的推理时自适应策略",
+  "在高熵情况下执行小分块提高响应性，低熵情况下执行大分块增强一致性"
+ ],
+ "method_framework": "通过计算不同分块大小的平均动作熵的最大微分点，自适应确定最优分块大小，平衡模型响应性和一致性。",
+ "experiment_framework": "在RoboCasa和LIBERO模拟基准以及3个真实世界任务上评估，与不同固定分块大小的GR00T基线对比，使用成功率作为指标。",
+ "takeaways": [
+  "动作熵可作为预测不确定性的有效指标",
+  "自适应分块策略能显著提升复杂任务性能",
+  "方法可扩展到不同VLA模型架构"
+ ],
+ "weaknesses": [
+  "计算动作熵需要额外采样，增加推理时间",
+  "在极端扰动场景下性能提升有限",
+  "方法主要针对扩散模型架构的VLA模型"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "VLA模型推理优化，与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

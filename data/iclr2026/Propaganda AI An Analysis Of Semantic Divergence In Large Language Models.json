@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Propaganda AI An Analysis Of Semantic Divergence In Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Propaganda AI An Analysis Of Semantic Divergence In Large Language Models.pdf",
+ "title": "Propaganda AI: An Analysis of Semantic Divergence in Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "形式化LLM语义偏移现象，提出RAVEN黑盒审计方法检测宣传式偏差。",
+ "innovations": [
+  "形式化概念条件语义偏移(concept-conditioned semantic divergence)现象，指出其逃避token级审计的盲区",
+  "提出RAVEN黑盒审计框架，结合释义样本的语义熵和跨模型分歧来标记异常",
+  "通过受控LoRA微调实验证明小偏差语料即可植入概念条件立场，且无需稀有token触发"
+ ],
+ "method_framework": "RAVEN用释义控制的提示探针模型，通过双向蕴含聚类估计语义熵（低熵=异常统一响应），再测量跨模型分歧（与同行冲突=模型特定异常）。两者结合形成可疑度评分。",
+ "experiment_framework": "审计5个LLM家族在12个敏感话题上的表现（每模型360个提示），通过双向蕴含聚类分析。辅以受控LoRA微调植入实验验证可行性。",
+ "takeaways": [
+  "大模型存在概念条件语义偏移，在9/12个话题上发现模型特定的重复偏移",
+  "概念级审计是token级防御的重要补充，可检测无稀有触发词的隐蔽偏差",
+  "小偏差语料微调即可植入立场，对训练数据供应链安全有警示意义"
+ ],
+ "weaknesses": [
+  "语义熵的计算依赖释义生成和蕴含判断，引入额外噪声",
+  "跨模型分歧作为判据的阈值设定缺乏理论指导",
+  "12个敏感话题的覆盖范围有限，可能存在选择偏差"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "检测模型偏差与可靠性主线相关，但未触及医学影像或多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

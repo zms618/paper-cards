@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/QuRe_Query-Relevant Retrieval through Hard Negative Sampling in Composed Retrieval.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/QuRe_Query-Relevant Retrieval through Hard Negative Sampling in Composed Retrieval.pdf",
+ "title": "QuRe: Query-Relevant Retrieval through Hard Negative Sampling in Composed Retrieval",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "基于相关性陡降的困难负采样提升组合检索，但泛化性有限",
+ "innovations": [
+  "基于相关性分数陡降的困难负样本采样策略",
+  "奖励模型目标优化减少假负例",
+  "创建HP-FashionIQ数据集评估人类偏好"
+ ],
+ "method_framework": "QURE使用BLIP-2作为基础模型，通过相关性分数排序图像，选择目标图像后两个陡降之间的图像作为困难负样本，使用KL散度损失训练模型偏好目标图像而非困难负样本",
+ "experiment_framework": "FashionIQ、CIRR和HP-FashionIQ数据集，与CLIP4CIR、Bi-BLIP4CIR、CoVR-BLIP和SPRC等方法对比，使用Recall@k和偏好率指标",
+ "takeaways": [
+  "困难负样本采样策略能有效提升检索质量",
+  "人类偏好评估数据集对CIR任务至关重要",
+  "奖励模型目标比传统对比学习更适合CIR任务"
+ ],
+ "weaknesses": [
+  "方法依赖于相关性分数排序，可能受模型初始性能影响",
+  "困难负样本采样策略的计算开销较大",
+  "仅在时尚领域数据集上验证，泛化性有待进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

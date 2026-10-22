@@ -1,0 +1,41 @@
+{
+ "title": "The First Impression Problem: Internal Bias Triggers Overthinking in Reasoning Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "诊断推理模型过度思考源于未显式输出的初始偏见，但缺乏直接证据与有效解决方案",
+ "innovations": [
+  "识别出内部偏见(internal bias)：模型遇到问题先形成一个未显式输出的直觉猜测，并论证它是过度思考的关键触发",
+  "两组反事实干预建立因果：模型得出初步判断后移除输入问题可显著减少冗余推理；人为注入偏见会相应改变过度思考程度",
+  "可解释性实验显示对输入问题的过度注意力是内部偏见影响后续推理轨迹的机制；并评测多种缓解过度思考方法，发现内部偏见在各方法下仍持续"
+ ],
+ "method_framework": "在多模型多推理任务上测量内部偏见与过度思考的关联；通过在模型形成初步判断后移除/保留输入问题、人为注入不同初始猜测做反事实干预；用注意力分析定位内部偏见的作用通路，最后测试现有减思考方法能否消除该机制。",
+ "experiment_framework": "多个 o1/R1 类推理模型、多类复杂推理任务；指标为冗余推理步数/思考长度；干预包括移除输入问题、注入偏见；注意力可视化做机制解释；对比多种已知减 overthinking 方法的效果。",
+ "takeaways": [
+  "过度思考的一个核心驱动是模型自己的第一印象（内部偏见）与后续推理冲突后的反复纠结",
+  "在模型形成初步判断后切断输入，能跨任务减少冗余计算，佐证因果",
+  "现有减思考方法并未消除内部偏见这一根源，提示需要针对第一印象本身的干预"
+ ],
+ "weaknesses": [
+  "‘内部偏见’是未显式输出的隐变量，主要靠行为反事实与注意力推断，缺乏直接读出该初始猜测表征的探针证据，机制仍偏间接",
+  "缓解方法一节只展示‘各种方法都压不住内部偏见’，却未提出真正有效、可落地的干预方案，停留在诊断",
+  "relevance 给 6.5：属推理过程行为与效率分析，靠近过程奖励/推理可靠性主线；但落地域是通用文本推理、非医学影像或多模态大模型，且未做不确定性/幻觉量化，故不到 7.5+"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/The First Impression Problem Internal Bias Triggers Overthinking In Reasoning Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The First Impression Problem Internal Bias Triggers Overthinking In Reasoning Models.pdf",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "推理过程分析未触及可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

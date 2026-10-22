@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/MD2E_Modeling Depth-to-Edge Cues for Monocular Metric Depth Estimation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/MD2E_Modeling Depth-to-Edge Cues for Monocular Metric Depth Estimation.pdf",
+ "title": "MD2E Modeling Depth-to-Edge Cues for Monocular Metric Depth Estimation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "边缘监督深度估计，尺度校准与边界正则化",
+ "innovations": [
+  "深度到边缘转换生成边缘监督",
+  "谱分位数估计器(SQE)提取边缘频谱特征作为尺度代理",
+  "边缘预测作为深度边界正则化"
+ ],
+ "method_framework": "MD2E将深度标注转换为边缘监督，预测边缘图并通过SQE计算边缘分数tpred校准深度尺度，同时用边缘预测正则化深度边界",
+ "experiment_framework": "在NYUv2、KITTI等6个数据集上进行零样本测试，并在NYUv2和KITTI上进行微调测试，与Metric3D v2等SOTA方法比较",
+ "takeaways": [
+  "深度到边缘转换避免了高频纹理噪声",
+  "谱分位数估计器能有效捕捉相机焦距变化",
+  "边缘预测作为正则化可提升深度边界锐度"
+ ],
+ "weaknesses": [
+  "仅使用Virtual KITTI和Hypersim进行边缘监督，可能限制边缘多样性",
+  "深度到边缘转换可能丢失部分深度信息"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "深度估计方法，与可靠性主线部分相关但无落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

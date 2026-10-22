@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/2ndMatch_Finetuning Pruned Diffusion Models via Second-Order Jacobian Matching.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/2ndMatch_Finetuning Pruned Diffusion Models via Second-Order Jacobian Matching.pdf",
+ "title": "2ndMatch: Finetuning Pruned Diffusion Models via Second-Order Jacobian Matching",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "用随机投影匹配二阶雅可比，提升剪枝扩散模型质量但证据不足",
+ "innovations": [
+  "论证一阶 Jacobian 匹配在扩散模型里等价于输出级蒸馏：在 x′=x+ζ, ζ∼N(0,σ²I) 下展开 ||s(x′)−s_D(x′)||²=||s(x)−s_D(x)||²+σ²||J−J_D||²_F+O(σ⁴)（式8），显式匹配一阶雅可比只是多付前向反传代价",
+  "用随机方向 v∼N(0,I) 把 d×d 的 J⊤J 投影成标量二次型（‖Ĵv‖²−‖J_D v̂‖²）²（式9），靠 JVP 计算不显式构造雅可比，把「扰动沿去噪轨迹如何传播」变成可微损失 L_2nd-Jac",
+  "三段式目标 L_total=λ_NP L_NP+λ_KD L_KD+λ_Jac L_2nd-Jac：先用教师软标签稳住低容量学生早期训练，再用二阶项约束时间敏感度，且与剪枝方式与骨干架构解耦"
+ ],
+ "method_framework": "剪枝学生与可访问的稠密教师同批前向，学生侧用 JVP 估 Ĵv 与教师的 J_D v̂ 做随机方向二阶匹配，与噪声预测损失、输出级蒸馏损失加权联合训练。",
+ "experiment_framework": "CIFAR-10、CelebA、LSUN-Church/Bedroom、ImageNet、MSCOCO；DDPM/LDM-4/SDM1.4/U-ViT 骨干，对比 Diff-Pruning、DeepCache、BK-SDM、SparseDM，指标 FID/rFID/sFID/CLIP/Prec-Rec。",
+ "takeaways": [
+  "加什么比理论包装更关键：表4 显示 NP→+KD→+1st JM→+2ndM 在 CIFAR-10 上是 5.29→5.05→5.14→4.58，中间加一阶 Jacobian（5.14）反而比只加 KD（5.05）更差，直接实证了作者关于一阶冗余的分析",
+  "FTLE 度量能当过程级监控：CIFAR-10 上 0.413→0.408，逼近 dense 的 0.405，比聚合的 FID 更能直接反映敏感度是否对齐",
+  "大尺度文生图收益边际递减：Base/Small/Tiny 三档 FID 只从 15.76→13.84、16.98→16.17、17.12→16.68，Tiny 的 CLIP 分反而从 0.2653 降到 0.2636"
+ ],
+ "weaknesses": [
+  "核心 claim 缺隔离式实验：表4 只给 FID 与 FTLE 两个聚合数，没有把扰动放大率随去噪步数演化画出或按步区间切分，无法排除 FID 改善主要来自 KD 项",
+  "表1-3 全部是单次 FID/CLIP，无种子标准差；50k 样本下 1~2 个点的差异（如 Tiny 档 17.12→16.68）无从判显著",
+  "DeepCache 在 LSUN-Bedroom 的 FID 9.49 略优于本文 9.68，作者以「参数近两倍多且需缓存显存」带过，比较基准并不完全等价；Precision/Recall 之外也未做覆盖性检验",
+  "正文在表4 之后即截断，缺随机方向个数、λ_Jac 取值与 JVP 额外计算开销的消融"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "扩散模型剪枝技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

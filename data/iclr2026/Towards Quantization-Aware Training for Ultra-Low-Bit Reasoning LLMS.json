@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Quantization-Aware Training for Ultra-Low-Bit Reasoning LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Quantization-Aware Training for Ultra-Low-Bit Reasoning LLMS.pdf",
+ "title": "Towards Quantization-Aware Training for Ultra-Low-Bit Reasoning LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "两阶段QAT缓解量化对推理能力的损害，但依赖教师模型且迁移性存疑。",
+ "innovations": [
+  "系统研究量化对不同数据域的影响，发现量化对预训练知识与后训练推理能力的损害机制不同",
+  "提出两阶段QAT：先用混合域校准数据量化以跨域保留基础能力，再用教师引导的奖励校正损失微调以恢复推理能力",
+  "2-bit Qwen3-8B较PTQ基线平均提升50.45%，较BitNet-2B4T数学推理高约2%且训练token少于1B"
+ ],
+ "method_framework": "针对后训练引入的复杂知识结构导致既有QAT在推理基准上严重退化的问题：第一阶段用混合域校准数据量化，避免单域校准顾此失彼；第二阶段用教师模型引导的奖励校正损失微调，专门修复被量化破坏的推理路径。",
+ "experiment_framework": "在6项任务(含推理与预训练能力)上比较混合域vs单域校准；在5个推理基准上评测2-bit Qwen3-8B，对比PTQ基线与超低比特专用模型BitNet-2B4T；报告数学推理精度与训练token效率。",
+ "takeaways": [
+  "量化对预训练知识与后训练推理能力的影响不同，需分阶段处理",
+  "混合域校准比单域校准平均最高提升2.74%",
+  "两阶段QAT在2-bit下大幅超越PTQ，并以更少token追平/超越专用超低比特模型"
+ ],
+ "weaknesses": [
+  "教师引导奖励校正损失依赖强教师模型，部署时的额外成本未讨论",
+  "仅在Qwen3-8B等有限规模验证，更大/更小模型上的迁移性证据不足",
+  "属模型压缩/推理效率方向，与可靠性主线及医学影像、多模态推理落地域关联弱"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "模型压缩方向，与可靠性主线及落地域关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

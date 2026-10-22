@@ -1,0 +1,41 @@
+{
+ "title": "PathChat-SegR1: Reasoning Segmentation in Pathology via SO-GRPO",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.5,
+  "overall": 6.8
+ },
+ "one_line": "病理图像零样本分割染色不变蒸馏+SO-GRPO时机控制",
+ "innovations": [
+  "染色不变自蒸馏训练病理专用视觉编码器，增强对染色差异的鲁棒性与病理知识。",
+  "提出分割优化GRPO(SO-GRPO)：专为推理分割设计的RL方法，学习依据累积推理上下文判断何时触发分割输出。",
+  "构建118,667个病理图像-掩码-查询-推理链三元组的病理专用推理分割benchmark(含公开与私有病理图像)。"
+ ],
+ "method_framework": "先以染色不变自蒸馏得到鲁棒病理视觉编码器；再用LLM做文本查询驱动的推理分割；用SO-GRPO做RL，奖励引导模型在收集到足够语义上下文后才输出分割mask(避免过早/过晚触发)；在大规模病理推理链数据上训练，实现对域外形态/新病理的零样本泛化。",
+ "experiment_framework": "在自建病理推理分割benchmark(118,667三元组)上训练；零样本评测于含域外形态/新病理的病理图像；对比SAM类与现有推理分割模型；指标为mIoU/Dice；报告零样本较SOTA分割模型提升61%。",
+ "takeaways": [
+  "病理专用+染色不变的视觉表示是推理分割在病理域泛化的前提。",
+  "SO-GRPO让模型学会‘何时推理充分再输出分割’，显著改善零样本病理分割。",
+  "文本查询驱动的推理分割可对训练分布外的罕见病理/形态零样本泛化。"
+ ],
+ "weaknesses": [
+  "私有病理图像数据占比与标注流程、跨中心/跨扫描仪泛化的外部验证不足。",
+  "SO-GRPO奖励设计依赖mask匹配信号，对边界模糊的早期浸润等疑难病例的敏感度需临床评估。",
+  "全文仅14页，完整消融(如染色蒸馏/GRPO各自贡献)与临床读片对比的细节在正文中较紧凑。"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/PATHCHAT-SEGR1_Reasoning Segmentation In Pathology via SO-GRPO.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PATHCHAT-SEGR1_Reasoning Segmentation In Pathology via SO-GRPO.pdf",
+ "raw_overall": 7.43,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "病理图像零样本分割与染色不变蒸馏+SO-GRPO时机控制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

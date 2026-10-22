@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/LaVR Scene Latent Conditioned Generative Video Trajectory Re-Rendering using Large.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/LaVR Scene Latent Conditioned Generative Video Trajectory Re-Rendering using Large.pdf",
+ "title": "LaVR Scene Latent Conditioned Generative Video Trajectory Re-Rendering using Large",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "用LRM隐状态增强视频重渲染，但泛化性和计算成本存疑",
+ "innovations": [
+  "利用LRM隐式状态作为几何条件而非显式重建",
+  "轻量适配器整合LRM与视频VAE特征",
+  "软几何条件避免深度估计误差传播"
+ ],
+ "method_framework": "基于CUT3R提取的4D场景隐状态，通过轻量适配器与视频VAE特征融合，结合相机姿态条件，指导视频扩散模型生成新视角视频",
+ "experiment_framework": "MultiCamVideo数据集训练，Pexels和DL3DV测试，与Gen3C、TrajectoryCrafter、ReCamMaster对比，评估PSNR、LPIPS、CLIP、VBench一致性指标",
+ "takeaways": [
+  "隐式几何条件比显式点云更鲁棒",
+  "轻量适配器有效整合多源特征",
+  "扩散模型可利用隐式条件校正局部不一致"
+ ],
+ "weaknesses": [
+  "对透明移动物体处理效果不佳",
+  "CUT3R条件增加计算成本",
+  "仅使用合成数据训练可能限制泛化性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频重渲染与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

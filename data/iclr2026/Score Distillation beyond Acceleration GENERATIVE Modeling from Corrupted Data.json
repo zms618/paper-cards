@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Score Distillation beyond Acceleration GENERATIVE Modeling from Corrupted Data.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Score Distillation beyond Acceleration GENERATIVE Modeling from Corrupted Data.pdf",
+ "title": "Score Distillation beyond Acceleration: Generative Modeling from Corrupted Data (RSD)",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "两阶段蒸馏框架从退化数据生成样本，但训练成本高且临床价值未验证。",
+ "innovations": [
+  "把score distillation从单纯加速扩展为从退化数据做生成建模：统一处理恒等/非可逆退化算子（模糊、掩码、下采样、傅里叶欠采样）。",
+  "先在观测上预训练退化感知扩散teacher，再蒸馏为高效一步生成器，使其样本统计上更接近干净分布pX。",
+  "在多线圈MRI等无干净图场景下仍降FID，一步采样提速至30×且少于teacher训练迭代即超越teacher。"
+ ],
+ "method_framework": "假设仅得退化观测y=A(x)+σ ε（A可为恒等/模糊/掩码/欠采样等非可逆算子）。RSD两阶段：先训退化感知扩散teacher，再用蒸馏把它压成一步生成器；利用蒸馏提升生成质量而非仅提速，使其逼近干净分布pX。",
+ "experiment_framework": "噪声生成(CIFAR-10/FFHQ/CELEBA-HQ/AFHQ-V2)、图像恢复(去模糊/补全/超分/加噪混合)、多线圈MRI；对比退化感知扩散teacher；指标FID与采样速度；报告FID下降、最高30×加速。",
+ "takeaways": [
+  "score distillation不仅加速，还能在无干净图条件下从退化观测学到更接近干净分布的生成器。",
+  "统一框架覆盖从去噪到MRI傅里叶欠采样等多种退化，且一步生成器质量反超多步teacher。"
+ ],
+ "weaknesses": [
+  "两阶段需先训扩散teacher，训练总成本仍高。",
+  "医学仅做多线圈MRI重建，未报告下游诊断/临床指标，临床价值未验证。",
+  "对未知/复合退化的泛化与算子A严格已知的假设需更多讨论。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "医学影像落地但临床价值未验证，方法设计有启发性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/DMOSpeech_Direct Metric Optimization via Distilled Diffusion Model in Zero-Shot Speech Synthesis.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DMOSpeech_Direct Metric Optimization via Distilled Diffusion Model in Zero-Shot Speech Synthesis.pdf",
+ "title": "DMOSpeech: Direct Metric Optimization via Distilled Diffusion Model in Zero-Shot Speech Synthesis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "蒸馏扩散模型实现4步采样语音合成，但多语言验证缺失",
+ "innovations": [
+  "首次实现语音合成中可微分指标的端到端优化",
+  "将采样步数从128减少到4同时提升性能",
+  "引入多模态对抗训练增强条件生成质量"
+ ],
+ "method_framework": "DMOSpeech结合分布匹配蒸馏(DMD2)和多模态对抗训练，实现4步采样扩散模型，通过CTC和说话人验证损失直接优化语音质量和说话人相似度",
+ "experiment_framework": "LibriLight数据集(57k小时)，MOS-N/Q/SMOS-V/S主观评估，WER和SIM客观指标，与NaturalSpeech 3、StyleTTS-ZS等基线比较",
+ "takeaways": [
+  "分布匹配蒸馏在强条件生成中可减少多样性同时提高质量",
+  "梯度路径的端到端连接是优化感知指标的关键",
+  "多步蒸馏模拟可提升单步模型质量"
+ ],
+ "weaknesses": [
+  "仅评估了英语语音合成，未测试多语言能力",
+  "训练计算资源需求高，需要24个A100 GPU"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

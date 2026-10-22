@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Tea-Adapter Teacher Adapter for Efficient Conditional Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Tea-Adapter Teacher Adapter for Efficient Conditional Generation.pdf",
+ "title": "Tea-Adapter Teacher Adapter for Efficient Conditional Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "反向蒸馏加条件专家混合的视频生成适配器",
+ "innovations": [
+  "反向蒸馏方法实现小模型到大模型的知识转移",
+  "条件专家混合(MCE)层支持多条件动态路由",
+  "特征传播模块确保跨帧条件一致性"
+ ],
+ "method_framework": "冻结预训练大模型和小模型，训练Tea-Adapter实现跨尺度知识转移，MCE层处理多条件，特征传播模块确保时序一致性",
+ "experiment_framework": "Koala-36M数据集，Wan2.1/CogVideoX模型，LPIPS/SSIM/CLIP/FVD指标，与DiT-ControlNet/Ctrl-Adapter等基线对比",
+ "takeaways": [
+  "小模型到大模型的知识转移可大幅降低训练成本",
+  "条件间内在关系可支持零样本泛化到新条件"
+ ],
+ "weaknesses": [
+  "仅在小规模数据集(10K视频)上验证，缺乏大规模数据集表现",
+  "未充分探讨模型在不同分辨率和时长视频上的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视频生成与可靠性主线无交点，仅条件专家混合有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

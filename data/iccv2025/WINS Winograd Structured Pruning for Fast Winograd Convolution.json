@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/WINS Winograd Structured Pruning for Fast Winograd Convolution.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/WINS Winograd Structured Pruning for Fast Winograd Convolution.pdf",
+ "title": "WINS Winograd Structured Pruning for Fast Winograd Convolution",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "针对Winograd卷积的结构化剪枝，有限加速比与局限明显",
+ "innovations": [
+  "针对Winograd卷积的GPU特性设计结构化剪枝单元",
+  "WINS-B平衡各子GEMM工作负载",
+  "WINS-AB自适应选择WINS或WINS-B策略"
+ ],
+ "method_framework": "WINS在Winograd变换后的BGEMM操作中进行向量级剪枝，结合ℓ2范数计算剪枝阈值，保持结构化稀疏性以优化GPU并行计算。",
+ "experiment_framework": "在ImageNet、CIFAR-10等数据集上评估，与FP、WWP等方法比较精度、剪枝比和推理速度，使用ResNet、VGG等模型。",
+ "takeaways": [
+  "GPU-aware的剪枝单元大小设计对性能至关重要",
+  "自适应策略在保持精度的同时最大化加速效果"
+ ],
+ "weaknesses": [
+  "仅针对3×3卷积优化，1×1卷积仍需其他方法",
+  "WINS-AB的自动选择算法参数(α,β)需要经验调优"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "模型压缩技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

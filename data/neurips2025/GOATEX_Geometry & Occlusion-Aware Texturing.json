@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/GOATEX_Geometry & Occlusion-Aware Texturing.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/GOATEX_Geometry & Occlusion-Aware Texturing.pdf",
+ "title": "GOATEX: Geometry & Occlusion-Aware Texturing",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "首个处理3D网格内部遮挡纹理的扩散模型，但计算复杂度高",
+ "innovations": [
+  "首个解决3D网格遮挡内部表面纹理生成的任务",
+  "基于光线投射的分层几何分解方法",
+  "双阶段可见性控制策略和UV空间软融合技术"
+ ],
+ "method_framework": "通过光线投射确定网格面片的相对深度，将网格分层处理，结合残片面聚类和法线翻转技术逐步揭示内部几何，最后使用预训练扩散模型生成各层纹理并通过加权UV融合无缝合并。",
+ "experiment_framework": "使用226个高质量网格数据集，对比TEXTure、SyncMVD、Paint3D和TEXGen基线方法，采用人类偏好测试和GPT评估指标。",
+ "takeaways": [
+  "残片面聚类和法线翻转技术对保持结构完整性至关重要",
+  "基于可见性置信度的UV软融合能有效减少伪影"
+ ],
+ "weaknesses": [
+  "GPT评估与人类偏好存在差异，可能更倾向于平滑表面而非完整内部",
+  "方法计算复杂度较高，最大击中级别设为4"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

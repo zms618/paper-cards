@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Does Generation Require Memorization Creative Diffusion Models using Ambient Diffusion.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Does Generation Require Memorization Creative Diffusion Models using Ambient Diffusion.pdf",
+ "title": "Does Generation Require Memorization? Creative Diffusion Models using Ambient Diffusion",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "理论证明扩散模型记忆仅需高频细节，提出大噪声训练降记忆不降画质。",
+ "innovations": [
+  "从理论上证明扩散模型对训练集的记忆仅在低噪声尺度(生成高频细节)的去噪问题中是必要的",
+  "基于该洞见提出简洁有原则的训练方法：在大噪声尺度上用含噪数据(ambient)训练扩散模型",
+  "在文本条件与无条件、多种数据可用度设置下，证明该方法可显著降低记忆而不损失图像质量"
+ ],
+ "method_framework": "先从扩散目标的最优解出发分析记忆发生的噪声尺度，证明记忆主要服务于低噪声尺度下重建高频细节；据此在训练时仅(或主要)在大噪声尺度上注入更强的环境噪声/用含噪数据训练，使模型无需精确记忆像素级训练样本即可完成生成，从而在保持保真度的同时降低逐样本记忆。",
+ "experiment_framework": "在文本条件与无条件图像生成模型上，对比标准扩散与ambient diffusion训练，以图像质量(FID等)与记忆/复现指标(如近邻重现率、 Carlini式记忆度量)的权衡为指标，覆盖小数据到大数据多种设置。",
+ "takeaways": [
+  "扩散模型并不必然需要记忆训练集才能高质量生成，记忆与保真度可解耦",
+  "在大噪声尺度用含噪数据训练是降低记忆而不掉画质的简单有效手段",
+  "text-conditioning会加剧记忆，但该方法在文本条件模型上同样有效"
+ ],
+ "weaknesses": [
+  "对高频细节重建质量的影响在极端小数据下仍需更多验证",
+  "记忆度量主要基于近邻重现，对版权/成员推断等具体威胁模型的覆盖有限",
+  "前9页内未给出与差分隐私等强隐私基线的系统对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.58,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

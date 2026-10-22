@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Stop Walking in Circles Bailing Out Early in Projected Gradient.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Stop Walking in Circles Bailing Out Early in Projected Gradient.pdf",
+ "title": "Stop Walking in Circles Bailing Out Early in Projected Gradient",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "PGD循环检测加速攻击，但CIFAR100效果有限且未分析步长影响",
+ "innovations": [
+  "利用PGD固定步长在L∞球边界形成循环的特性",
+  "设计高效的哈希机制检测循环",
+  "实现与标准PGD完全相同的鲁棒性评估结果"
+ ],
+ "method_framework": "PGD with Cycle Detection (PGDCD)通过检测迭代过程中扰动的重复出现来提前终止，保证结果与完整PGD相同",
+ "experiment_framework": "在RobustBench上的CIFAR10/100和ImageNet数据集测试12个鲁棒模型，比较PGD与PGDCD的迭代次数和计算时间",
+ "takeaways": [
+  "循环检测可减少高达91%的迭代次数",
+  "在高维数据集上效果更显著",
+  "哈希机制实现高效循环检测"
+ ],
+ "weaknesses": [
+  "在CIFAR100上效果有限",
+  "哈希计算可能引入额外开销",
+  "未探索不同步长对循环检测的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "PGD循环检测属于鲁棒性优化方法，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

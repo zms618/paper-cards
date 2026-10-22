@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VLM-GUIDED_Adaptive Negative Prompting for Creative Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VLM-GUIDED_Adaptive Negative Prompting for Creative Generation.pdf",
+ "title": "VLM-Guided Adaptive Negative Prompting for Creative Generation",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4.0,
+  "overall": 4.8
+ },
+ "one_line": "推理时VLM引导负提示提升文生图创意性，但缺乏人类评估",
+ "innovations": [
+  "提出无需训练、推理时的VLM引导自适应负提示方法，用VLM分析扩散中间输出并自适应地将生成从常规视觉概念推开",
+  "相较依赖特征插值或嵌入优化/微调的现有创意方法，计算开销可忽略且可无缝接入现有扩散流水线",
+  "突破现有方法只生成单物体的限制，扩展到生成连贯的创意物体集合并在复杂组合提示下保持创意性"
+ ],
+ "method_framework": "在扩散模型采样过程中，用视觉语言模型(VLM)周期性分析中间生成结果，识别其落入的常规视觉概念并据此自适应构造/更新负提示，将采样轨迹从常见模式推开，从而在保持物体有效(validity)的同时提升新颖性(novelty)，全过程免训练且仅在推理时介入。",
+ "experiment_framework": "以CLIP嵌入空间中的统计度量同时评估新颖性与有效性；对比依赖特征插值、嵌入优化与微调的现有创意生成方法；报告在单物体、多物体集合与复杂组合提示场景下的创意新颖性增益及计算开销。",
+ "takeaways": [
+  "在CLIP嵌入空间的统计指标上创意新颖性一致提升，且物体有效性保持良好",
+  "推理时自适应负提示在极低额外开销下即可激发新颖输出",
+  "方法可扩展到多物体集合与复杂组合场景，实用性较强"
+ ],
+ "weaknesses": [
+  "属于创意生成方向，与可靠性/可信AI及医学影像、多模态推理主线无关，relevance偏低",
+  "创意性仅用CLIP嵌入空间的统计指标近似，缺乏人类主观评测对真实创意价值的验证",
+  "VLM引导的有效性高度依赖所选用VLM的判定质量，前9页未见对引导失败/误推的失败案例分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "创意生成与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

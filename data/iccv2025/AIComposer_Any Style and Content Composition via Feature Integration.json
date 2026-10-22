@@ -1,0 +1,40 @@
+{
+ "key": "AIComposer: Any Style and Content Image Composition via Feature Integration",
+ "conf": "iccv2025",
+ "path": "AIComposer_Any Style and Content Composition via Feature Integration.pdf",
+ "title": "AIComposer: Any Style and Content Image Composition via Feature Integration",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "CLIP特征空间MLP融合+单分支反演，跨域合成但实验证据不足",
+ "innovations": [
+  "先用 LDA 投影实验（Wikiart/Caltech-256 各 20 类）验证 CLIP 图像特征里内容与风格确实成簇可分，据此把跨域合成转成线性操作：3 层 MLP 拟合 (f_c, f_s)→f_l，推理时取残差 f_latent=(f_c+f_s)−F(f_c,f_s) 作注入特征，即使 MLP 泛化失败也能靠 CLIP 的加法性退回可靠特征。",
+  "放弃双分支反演：把前景背景先在像素空间按 mask 拼、再用 AdaIN 把 z_fg 的均值方差对齐到 z_bg 得到 z_blend，只反演这一个混合隐变量，并用 DPM-Solver++ 只走 10 步而非 20 步从噪声重建，从而不必改 self-attention、也少一次反演分支。",
+  "用膨胀前景掩 Mdilated 做一个加性 softmax 偏置 M 修正 cross-attention（A=Softmax(QK/√d+M)V，Zout=Z+A_integrate+A_text），只在掩区注入特征，并用 λ=0.1 的 AdaIN 调色调、全步数用反演隐变量替换掩外区域保背景。"
+ ],
+ "method_framework": "像素 mask 拼接 + AdaIN 得 z_blend，DPM-Solver++ 只 10 步反演；IP-Adapter 抽 f_fg/f_bg，3 层 MLP 按 f_c+f_s−f_l 残差融合得 f_integrate，在去噪前 5 步经 mask 偏置 cross-attention 与 AdaIN 注入，掩外区域始终用反演隐变量保背景。",
+ "experiment_framework": "在 TF-ICON 基线基准（332 例，含 95 跨域）与自建扩展基准（367 背景/89 前景）上，对比 BLD、Paint-by-Example、AnyDoor、TF-ICON，指标 LPIPS/CSD/PSNR/CLIP-T，并给出去提示版 Ours-NP。",
+ "takeaways": [
+  "LPIPS 相对 SOTA 提升 30.5%、CSD 提升 18.1% 主要来自把风格对齐放在扩散先验内隐式完成，而不是先做风格迁移再合成的两段式。",
+  "去掉文本提示（Ours-NP）仍优于同期方法，说明风格与内容分离若发生在 CLIP 语义空间而非语言描述空间，对不可言说的风格（pixel art、sci-fi）更鲁棒。"
+ ],
+ "weaknesses": [
+  "可见正文在 Table 1 的 TF-ICON 行 PSNR（截断于 15）处结束，Table 2 扩展基准结果与 λ、步数、MLP 有无、单分支 vs 双分支的逐项消融全部缺失，正文的 SOTA 结论缺少完整数据支撑。",
+  "指标全是参考相关量：LPIPS 是与「前景直接粘贴」的混合图比、PSNR 只统计背景掩外区域，二者都绕开了前景身份保持这一核心诉求，未见 CLIP-I/DINO 特征检索或人类偏好投票，也没有 FID 一类的多样性指标。",
+  "MLP 只用 ECSSD/MSRA-B 的 401+318 张内容图与 Style30k/InstantStyle-Plus 的 91 张风格图训练，未见对 pixel art、sci-fi 等测试风格的域外鲁棒性评估与多 seed 方差；「首个免文本提示跨域合成」的 claim 也未与同样可去提示的同期方法做同源对照。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "图像合成技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

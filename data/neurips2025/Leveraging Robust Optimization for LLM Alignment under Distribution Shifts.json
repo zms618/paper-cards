@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Leveraging Robust Optimization for LLM Alignment under Distribution Shifts.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Leveraging Robust Optimization for LLM Alignment under Distribution Shifts.pdf",
+ "title": "Leveraging Robust Optimization for LLM Alignment under Distribution Shifts",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "DoRA用分类器校准缓解LLM对齐中的分布偏移",
+ "innovations": [
+  "提出混合响应偏移(Mixture Response Shift)形式化定义",
+  "设计分布感知分类器校准机制",
+  "将校准项与KL散度分布鲁棒优化结合"
+ ],
+ "method_framework": "DoRA框架首先训练分布分类器为样本分配校准值，然后将其整合到鲁棒优化目标中，最小化与人类偏好最相关数据区域的损失，缓解训练分布与目标分布不匹配问题。",
+ "experiment_framework": "在HH-RLHF、Summarization和UltraFeedback数据集上测试，与DPO、R-DPO、EXO、SimPO等基线比较，使用Win Rate和Lose Rate作为指标",
+ "takeaways": [
+  "分布感知校准机制可有效提升模型鲁棒性",
+  "模块化设计使DoRA可适配多种对齐目标",
+  "λ参数控制鲁棒性与灵活性的平衡"
+ ],
+ "weaknesses": [
+  "依赖预训练分类器的准确性",
+  "在UltraFeedback上表现下降，可能与数据分布假设不符",
+  "未充分探索不同类型分布偏移的适应性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

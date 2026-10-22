@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Robust Adaptive Multi-Step Predictive Shield.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Robust Adaptive Multi-Step Predictive Shield.pdf",
+ "title": "Robust Adaptive Multi-Step Predictive Shielding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "线性动态表示支撑的多步CBF，高维安全RL框架。",
+ "innovations": [
+  "提出鲁棒多步 CBF 公式，突破现有符号屏蔽因状态空间分区/局部模型拼凑而只能用于低维系统的局限。",
+  "用单一学到的线性动态表示(原始空间线性回归或高维特征空间算子)替代局部模型拼块，使正式屏蔽可扩展到高维。",
+  "多步前瞻同时考虑模型误差与控制延迟，实现最小侵入、实时的安全干预。"
+ ],
+ "method_framework": "先学习环境动态的线性表示；在此线性结构上构造鲁棒多步 CBF，前瞻多步预测并在发现可能越界时做最小侵入的控制干预；多步 formulation 显式纳入模型不确定性与控制延迟，使安全保证在高维非线性系统下仍可计算、实时执行。",
+ "experiment_framework": "在复杂高维控制环境中评测；与现有 safe RL/屏蔽方法对比安全违规率与任务性能；报告训练全程(含早期)的安全性，RAMPS 显著降低违规同时保持高任务表现。",
+ "takeaways": [
+  "形式化屏蔽此前受维度灾难限制在低维系统，RAMPS 借线性动态表示与多步 CBF 实现高维可扩展。",
+  "多步前瞻+显式建模模型误差/延迟，比单步近视屏蔽更可靠。",
+  "RAMPS 在不牺牲任务性能的前提下显著降低安全违规。"
+ ],
+ "weaknesses": [
+  "核心依赖动态可由线性表示近似，对强非线性/多模态动态系统该假设的有效性边界未充分刻画。",
+  "实验环境复杂度与真实自动驾驶/机器人差距未充分讨论，理论保证对学习表示误差的敏感度有限。",
+  "属安全控制/RL 方向，与医学影像/多模态推理落地域无直接交集。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "高维安全RL框架，可靠性主线明确但无医学/多模态落地",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

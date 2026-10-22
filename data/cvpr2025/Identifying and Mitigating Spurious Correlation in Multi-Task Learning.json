@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Identifying and Mitigating Spurious Correlation in Multi-Task Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Identifying and Mitigating Spurious Correlation in Multi-Task Learning.pdf",
+ "title": "Identifying and Mitigating Spurious Correlation in Multi-Task Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 6.8
+ },
+ "one_line": "基于相关系数差异识别虚假相关，对抗训练减轻多任务学习偏差",
+ "innovations": [
+  "基于相关系数差异的任务间虚假相关识别方法",
+  "类别重采样策略增强虚假相关检测",
+  "去偏见对抗训练框架减轻任务间虚假相关"
+ ],
+ "method_framework": "通过计算原始数据和类别重采样数据间的相关系数差异识别虚假相关任务，然后针对每个任务，将其识别出的虚假任务作为对抗目标，通过最小化主任务损失同时最大化虚假任务损失进行微调",
+ "experiment_framework": "在Multi-MNIST、CelebA、Taskonomy等六个基准数据集上评估，与STL、SubSel、MT-CRL等基线方法比较，使用准确率、交叉熵损失和平均IoU作为指标",
+ "takeaways": [
+  "相关系数差异可有效识别任务间虚假相关",
+  "类别重采样策略能增强虚假相关检测的鲁棒性",
+  "对抗训练框架能有效减轻任务间虚假相关的影响"
+ ],
+ "weaknesses": [
+  "方法依赖于预训练编码器，可能受初始模型质量影响",
+  "重采样参数ξ的选择可能影响结果",
+  "未探讨在更多样化任务组合上的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "虚假相关识别与去偏见对抗训练直接服务于可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

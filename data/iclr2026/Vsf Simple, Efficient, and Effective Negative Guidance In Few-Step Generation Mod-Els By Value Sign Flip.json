@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Vsf Simple, Efficient, and Effective Negative Guidance In Few-Step Generation Mod-Els By Value Sign Flip.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Vsf Simple, Efficient, and Effective Negative Guidance In Few-Step Generation Mod-Els By Value Sign Flip.pdf",
+ "title": "VSF: Simple, Efficient, and Effective Negative Guidance in Few-Step Generation Models by Value Sign Flip",
+ "scores": {
+  "novelty": 5,
+  "depth": 4.5,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 4.8
+ },
+ "one_line": "简单注意力值翻转实现负向引导，但理论解释不足且验证有限。",
+ "innovations": [
+  "提出VSF：翻转负提示在注意力中的值符号，动态抑制不期望内容，无需额外前向传播",
+  "与MMDiT架构（SD3.5 Turbo、Flux Schnell）和交叉注意力模型（Wan）都兼容",
+  "构建NegGenBench挑战数据集，包含复杂提示对，系统评估负向引导效果"
+ ],
+ "method_framework": "在少步扩散/流匹配模型的注意力计算中，将负提示对应的注意力值取反。这使得模型在关注负提示内容时，不是强化而是抑制该内容，从而实现负向引导。相比CFG需要额外前向传播，VSF仅在注意力值操作，计算开销极小。",
+ "experiment_framework": "在NegGenBench上评估负提示遵循度。对比基线包括CFG、NASA、NAG等负向引导方法。测试在SD3.5 Turbo、Flux Schnell、Wan等多个模型架构上的效果。指标为负向得分、图像质量和正向提示遵循度。",
+ "takeaways": [
+  "在少步生成模型中，VSF的负向引导效果显著优于CFG、NASA、NAG等现有方法",
+  "值符号翻转是一种极其简单但高效的负向引导实现，计算开销可忽略",
+  "少步蒸馏模型的负向引导一直是短板，VSF有效弥补了这一缺陷"
+ ],
+ "weaknesses": [
+  "方法基于注意力值的符号翻转，其理论解释力不足——为什么翻转符号就能引导，缺乏深入分析",
+  "仅在图像和视频生成模型上验证，其他生成任务（如文本）的适用性未知",
+  "NegGenBench为新构建数据集，其难度和代表性需社区进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "负向引导技术不属可靠性主线，仅属生成模型辅助功能",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

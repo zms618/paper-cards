@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Generalized-Smooth Bilevel Optimization with Nonconvex Lower-Level.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Generalized-Smooth Bilevel Optimization with Nonconvex Lower-Level.pdf",
+ "title": "Generalized-Smooth Bilevel Optimization with Nonconvex Lower-Level",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "非凸双层优化单环梯度法，理论贡献为主，实证有限",
+ "innovations": [
+  "将广义光滑双层优化从(强)凸下层推广到下层非凸(弱凸)情形，且上下层均为广义光滑",
+  "提出单环、无Hessian/Jacobian的惩罚归一化梯度法PNGBiO，避免双环迭代与逆Hessian计算",
+  "提出随机版本S-PNGBiO，证明确定性O(T^-1/4)、随机O(T^-1/61)的平稳点收敛速率"
+ ],
+ "method_framework": "针对上层广义光滑非凸、下层广义光滑弱凸的双层优化问题，设计单环迭代：用惩罚项处理下层约束、归一化梯度更新，无需计算二阶导数或求逆，也无需内层双环求解。给出确定性与随机两种版本的收敛性分析，目标是找到上层广义光滑问题的近似平稳解。",
+ "experiment_framework": "在超参数学习与元学习任务上做对比实验，验证PNGBiO/S-PNGBiO相对现有双层优化算法在目标值与收敛速度上的效率。",
+ "takeaways": [
+  "单环无二阶信息的PNGBiO可在上下层均广义光滑且下层非凸时获得理论收敛保证",
+  "随机版本S-PNGBiO在随机双层问题上仍保持较快收敛速率",
+  "超参数学习与元学习实验表明所提方法效率优于既有近似梯度方法"
+ ],
+ "weaknesses": [
+  "纯优化理论，与可靠性/鲁棒性主线及医学影像、多模态大模型推理落地域无直接关联",
+  "收敛速率O(T^-1/61)较慢，且依赖广义光滑等较强假设",
+  "前9页内实验规模与基线对比表有限，实证说服力一般"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

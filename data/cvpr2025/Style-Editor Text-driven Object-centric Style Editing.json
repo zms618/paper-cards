@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Style-Editor Text-driven Object-centric Style Editing.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Style-Editor Text-driven Object-centric Style Editing.pdf",
+ "title": "Style-Editor Text-driven Object-centric Style Editing",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "常规风格编辑+文本匹配，组合损失提升对象级转换",
+ "innovations": [
+  "Text-Matched Patch Selection (TMPS)模块通过CLIP实现文本匹配的图像块选择",
+  "Patch-wise Co-Directional (PCD)损失结合方向损失和分布一致性损失",
+  "Adaptive Background Preservation (ABP)损失保持背景原始风格和结构"
+ ],
+ "method_framework": "StyleNet网络结合TMPS和PRS模块，使用CLIP编码器，通过PCD损失和ABP损失实现对象级风格编辑",
+ "experiment_framework": "MSCOCO 2017数据集，16张图像配GT分割掩码，10种风格文本描述，使用SimF、ConF、L1B等指标评估前景和背景质量",
+ "takeaways": [
+  "文本匹配的图像块选择方法可应用于其他文本引导的图像编辑任务",
+  "方向损失与分布一致性损失的组合能有效保持对象语义信息"
+ ],
+ "weaknesses": [
+  "方法依赖于CLIP模型的零样本分类能力，可能受限于CLIP的文本理解能力",
+  "实验仅使用标准数据集，缺乏在真实医学影像或多模态场景的验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "文本引导风格编辑，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/2.5 Years in Class A Multimodal Textbook for Vision-Language Pretraining.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/2.5 Years in Class A Multimodal Textbook for Vision-Language Pretraining.pdf",
+ "title": "2.5 Years in Class: A Multimodal Textbook for Vision-Language Pretraining",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4,
+  "relevance": 4.5,
+  "overall": 5.0
+ },
+ "one_line": "自建教学视频数据集，但实验缺失且过滤机制不透明",
+ "innovations": [
+  "用 LLM 生成 Subject→Course→Sub-course→Knowledge Point 四层知识树（6 学科、55 课程、3915 知识点）作检索词批量拉 YouTube 视频，按视频 ID 去重并经 LLM 审阅标题/描述/评论过滤后从 159,565 条收到 75,000 条",
+  "视频→教材的 video/clip/keyframe 三级粗到细提取与过滤：whisper-large-v3 转写后先用 Qwen2-72B-Instruct 重写 ASR 降 PPL，用 ASR 时间戳把长片切为 10–20s 短片并用 clip caption 与 ASR 的 gte-Qwen2-7B 相似度滤掉只有讲话人的无视觉片段，SSIM 迭代比较相邻帧抽关键帧，InternVL2-40B 抽公式符号 OCR 再去重",
+  "提出 InSI-SIM 指标量化同一交错样本内多图的 CLIP 语义与 SSIM 结构相似度（L=4..8 子集），作为数据集质量的核心证据（本文 0.686 vs OBELICS 0.345，且随图数增加保持稳定而对手下降约 10%）"
+ ],
+ "method_framework": "LLM 知识树检索教学视频并元数据级过滤 → ASR(whisper-large-v3)+LLM 重写 → 时间戳分短片 → 视觉知识过滤 → SSIM 抽关键帧 + 公式符号 OCR → 按时间顺序交错成 {frame,ocr,asr} 语料",
+ "experiment_framework": "LLaVA-1.5-7B 持续预训练对比 MMC4/OBELICS，Idefics2-8B 另设两套预训练设定；指标 InSI-SIM 与 ScienceQA、MathVista 等知识推理基准（正文截断于 5.1 实验设置处，主表与消融缺失）",
+ "takeaways": [
+  "把「图文相关性 / 图像序列连贯性」这类主观数据质量变成可算指标 InSI-SIM，并在 L=4..8 多子图景上报告稳定性而非单点，是数据论文立论的稳妥做法",
+  "口语化 ASR 先经 LLM 重写（提流畅度不改语义）再入语料，比直接用原始转写更利于 VLM 预训练"
+ ],
+ "weaknesses": [
+  "正文在 5.1 实验设置处截断，ScienceQA/MathVista 的主对比数值、Idefics2 两套预训练设置的消融、100 视频人工评估（Sec.8.4）全部缺失，无法判断提升来自语料质量还是单纯数据量与长文本 token 量",
+  "数据集完全自建（YouTube 教学视频 + 自定三级过滤），与 OBELICS/MMC4 的采集与清洗协议不同，Tab.1 的比较只能说明分布差异，不能直接归因于语料优势",
+  "过滤链条的关键环节（LLM 评 ASR 的相关性/知识密度/转写质量、InternVL2 关键帧打分）都依赖闭源大模型的主观打分，阈值与打分分布未公开，可复现性与过滤成本均未交代"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "多模态教学数据集构建，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

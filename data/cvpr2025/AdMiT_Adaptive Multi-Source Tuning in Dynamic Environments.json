@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/AdMiT_Adaptive Multi-Source Tuning in Dynamic Environments.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AdMiT_Adaptive Multi-Source Tuning in Dynamic Environments.pdf",
+ "title": "AdMiT: Adaptive Multi-Source Tuning in Dynamic Environments",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 7.0,
+  "overall": 6.0
+ },
+ "one_line": "KME权重求解器组合已知件，主增益微小且依赖SAM微调。",
+ "innovations": [
+  "在共享特征提取器（ImageNet 预训练 DenseNet201）空间里为每路源数据估经验 KME μ̂(S_j)，假设 D_T≈Σw_j D_{S_j} 后把目标分布对齐化为 RKHS 中的最小二乘 min_w‖μ̂(T)-Σ_j w_j μ̂(S_j)‖_H，解出的 w_j 直接当作模块相关性得分，不需要路由网络或额外超参搜索",
+  "用源模块生成的少量合成数据 z_m (Z≪|S_j|) 代替原始源数据近似 KME，同时解决隐私与计算量两个问题；并把 top-M 权重重新归一化后做模块参数加权融合 θ(t)=Σ_j w̄_j θ_j，得到可零样本直接用的初始化",
+  "给出 Theorem 3.1 的有偏经验 MMD 上界（∝√(K/m)+√(K/n)+√(K(m+n)log(1/δ)/2mn)）与 Theorem 3.2 的零样本适应损失界 L≤ε+O(√(1/m)+√(1/n))，把「源样本量-目标 batch 大小-适应可靠性」三者显式联系起来"
+ ],
+ "method_framework": "预训练阶段对每个源域独立更新 PET 参数 θ_j 并用合成数据算源 KME；部署阶段对当前无标签目标 batch 算经验 KME，解 RKHS 最小二乘得混合权重 ŵ，取 top-M 归一后线性融合成 θ(t)，最后用 sharpness-aware 伪标签熵最小化（max_{‖ε‖≤ρ} L(θ+ε)）微调该模块。",
+ "experiment_framework": "Digit-Five、CIFAR-100C、ImageNet-C 的静态与动态漂移设定；适配目标为 14 个源域中留出 1 个损坏域；基线含 TENT、SAR、BeCoTTA（best/worst）、π-tuning、SESoM、CONTRAST、model soup；指标分类精度，另测 batch size=256→1 的鲁棒性。",
+ "takeaways": [
+  "「分布匹配→模块选择→参数加权融合」的三级结构把多源 TTA 的代价从「每批一次全模型前向+路由训练」降到一次 KME 分解，这个思路可以照搬到任何多专家/多lora 库在无标签目标域上的选择。",
+  "用合成数据近似源 KME 同时解决隐私与 O(N²) 核计算量，并把该近似的保真度写成定理，是「不去改原始数据也能做分布对齐」的一个干净范例。",
+  "Table 1 同时报 Best/Worst 两种 averaging 口径的 TTA 基线，避免只看最好那次的正面对比，这种双口径评测值得保留。"
+ ],
+ "weaknesses": [
+  "核心组件都是已知件：KME/MMD 分布匹配（引 [15,16,36]）、model soup 式模块加权平均、TENT/SAR 的伪标签熵最小化、SAM 的sharpness-aware 梯度近似；所谓「多源 PET 自适应」的增量主要在换一个权重求解器，且 KME 分解要求目标分布真能写成源分布的线性组合（Eq.4 的假设）在长程漂移下并不成立。",
+  "主增益很小：ImageNet-C 上 AdMiT 63.8 对 CONTRAST 63.5、AdMiT-Plain 63.5，差距在 0.3% 量级且随 batch 下降同时变窄；AdMiT-ZeroShot 比最高的多源基线低 2-4 个点，说明贡献主要来自后面的 SAM 微调而非 KME 选择本身，但正文把 KME 选择作为主打贡献。",
+  "正文在动态漂移实验介绍处截断，缺少动态设定下的完整表格、混合权重 w_j 的选中率统计（Fig.3 所示）与相应消融、以及多种子方差；Theorem 3.2 的界里 ε 与 L(·)∈H_k 的假设在正文未验证即直接使用。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "多源自适应调优与可靠性主线交织，设计模式可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

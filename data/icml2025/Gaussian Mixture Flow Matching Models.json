@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Gaussian Mixture Flow Matching Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Gaussian Mixture Flow Matching Models.pdf",
+ "title": "Gaussian Mixture Flow Matching Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.75
+ },
+ "one_line": "GMFlow用高斯混合提升少步采样，但计算复杂度高且泛化性未验证",
+ "innovations": [
+  "预测动态高斯混合参数而非单一高斯均值",
+  "GM-SDE/ODE解析求解器减少离散化误差",
+  "概率引导方案避免过饱和问题"
+ ],
+ "method_framework": "将扩散模型和流匹配模型统一为高斯混合去噪分布，通过KL散度损失训练，并引入解析求解器和概率引导机制",
+ "experiment_framework": "2D棋盘分布可视化与ImageNet 256×256生成评估，对比多种SDE/ODE求解器，使用Precision、FID等指标",
+ "takeaways": [
+  "高斯混合模型能更好捕捉多模态分布",
+  "解析求解器显著减少少步采样误差",
+  "概率引导比传统CFG更稳定"
+ ],
+ "weaknesses": [
+  "计算复杂度随混合组件K增加",
+  "像素级独立处理可能损失空间相关性",
+  "未探索不同数据域的泛化性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

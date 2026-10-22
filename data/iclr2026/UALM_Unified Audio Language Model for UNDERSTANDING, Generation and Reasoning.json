@@ -1,0 +1,41 @@
+{
+ "title": "UALM: Unified Audio Language Model for Understanding, Generation and Reasoning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "单一音频模型统一理解生成推理，但数据成本高且依赖复杂技巧。",
+ "innovations": [
+  "指出现有音频语言建模把理解与文生音频作为分离任务(理解用 AR-LM、生成用扩散)，音频推理基本未探索。",
+  "提出 UALM-Gen，用 decoder-only 语言模型直接预测音频 token，质量可比 SOTA 扩散模型；并总结成功经验(数据需多一个数量级、引入 CFG、合适 codec+延迟模式、自适应+DPO)。",
+  "提出 UALM-Reason，在中间思考步同时使用文本与音频的跨模态生成式推理，助力复杂生成任务，为音频领域首例。"
+ ],
+ "method_framework": "用单个 decoder-only 语言模型经合理的数据混合、训练配方与推理技术，同时处理音频理解/文生音频/文本推理；关键技巧含 CFG 训练采样、通用 codec 与延迟模式编码、自适应后接 DPO 提升生成质量；UALM-Reason 以交错灵活的理解-生成思维链进行跨模态推理。",
+ "experiment_framework": "在音频理解、文生音频质量、文本推理上与专用 SOTA 模型对比，报告客观指标与主观评价，并验证 UALM-Reason 跨模态生成式推理的有效性。",
+ "takeaways": [
+  "单一语言模型经正确配方可同时做好音频理解与生成，质量匹敌专用扩散/理解模型。",
+  "成功的 AR 文生音频需要量级更多数据+扩散式 CFG+合适 codec。",
+  "音频领域可实现跨模态生成式推理(UALM-Reason)，用文本+音频交错思考完成复杂任务。"
+ ],
+ "weaknesses": [
+  "AR 文生音频需比扩散多一个数量级数据，训练与数据成本高。",
+  "生成质量虽匹敌扩散，但依赖 DPO/CFG 等技巧，推理开销与调参复杂度不小。",
+  "聚焦音频模态，与医学影像/视觉多模态推理及不确定性主线不同；完整各基准客观指标表未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/UALM_Unified Audio Language Model for UNDERSTANDING, Generation and Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/UALM_Unified Audio Language Model for UNDERSTANDING, Generation and Reasoning.pdf",
+ "raw_overall": 6.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "音频模型与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

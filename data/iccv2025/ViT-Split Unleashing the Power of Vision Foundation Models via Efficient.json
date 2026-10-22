@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/ViT-Split Unleashing the Power of Vision Foundation Models via Efficient.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/ViT-Split Unleashing the Power of Vision Foundation Models via Efficient.pdf",
+ "title": "ViT-Split Unleashing the Power of Vision Foundation Models via Efficient",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.1
+ },
+ "one_line": "ViT-Split拆分视觉模型为特征提取器与任务适配器，提升效率。",
+ "innovations": [
+  "将VFM层分为特征提取器和任务适配器两部分",
+  "引入任务头和先验头两个轻量级头",
+  "避免早期层梯度反向传播，提高训练效率"
+ ],
+ "method_framework": "ViT-Split包含三个可训练组件：任务头（复制VFM最后几层）、先验头（从冻结VFM提取多尺度特征）和融合网络，结合任务特定特征和先验特征。",
+ "experiment_framework": "在ADE20K、CityScapes等数据集上进行语义分割、目标检测等任务实验，与ViT-Adapter、ViT-CoMer等方法比较mIoU等指标。",
+ "takeaways": [
+  "利用VFM固有分层特性可减少训练参数",
+  "轻量级线性头结合多尺度先验特征可达到高性能",
+  "避免早期层梯度传播可显著提高训练效率"
+ ],
+ "weaknesses": [
+  "方法主要针对DINOv2模型，其他VFM的适用性未充分验证",
+  "先验头和融合网络的设计较为简单，可能限制了性能上限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "效率优化方法，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

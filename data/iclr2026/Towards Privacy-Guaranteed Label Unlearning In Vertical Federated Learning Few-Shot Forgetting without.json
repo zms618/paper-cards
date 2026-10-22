@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Privacy-Guaranteed Label Unlearning In Vertical Federated Learning Few-Shot Forgetting without.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Privacy-Guaranteed Label Unlearning In Vertical Federated Learning Few-Shot Forgetting without.pdf",
+ "title": "Towards Privacy-Guaranteed Label Unlearning in Vertical Federated Learning: Few-Shot Forgetting without Disclosure",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.5
+ },
+ "one_line": "VFL标签遗忘方法，用表征层mixup生成合成嵌入实现少量样本遗忘。",
+ "innovations": [
+  "首次针对VFL中标签(既是必要输入又是敏感信息)的遗忘问题设计方法，区别于已有仅处理被动方特征撤离的垂直遗忘",
+  "在表征层复用manifold mixup为待遗忘与保留样本生成合成嵌入，为梯度遗忘与恢复提供更丰富信号",
+  "梯度标签遗忘+恢复阶段优化两步走，在有效移除标签信息的同时保持计算效率，且仅需少量公开数据"
+ ],
+ "method_framework": "VFL中被动方持特征、主动方持标签。先用manifold mixup在嵌入层为待遗忘/保留样本生成合成嵌入以增强信号；再做基于梯度的标签遗忘，把对应标签信息从主被动双方模型中移除；最后用恢复阶段优化精化剩余嵌入以恢复保留数据性能，全程不暴露原始数据。",
+ "experiment_framework": "在MNIST/CIFAR-10/CIFAR-100/ModelNet/Brain Tumor MRI/COVID-19 Radiography/Yahoo Answers多数据集验证；指标为遗忘彻底性(攻击测试)与保留数据上的效用保持、可扩展性；对比垂直联邦遗忘基线。",
+ "takeaways": [
+  "VFL标签遗忘是被忽视但关键的需求(如删除HIV阳性标签等敏感医疗/信用信息)",
+  "manifold mixup在表征层生成合成嵌入可同时服务于遗忘与恢复，提升效率",
+  "方法在含医学影像在内的多数据集上实现效用保持的高效遗忘"
+ ],
+ "weaknesses": [
+  "隐私保证主要靠不披露原始数据，缺乏对合成嵌入/梯度是否泄漏标签的严格攻击界证明",
+  "恢复阶段仍需少量公开数据，公开数据分布与目标域差异时的稳健性未充分讨论",
+  "医学影像仅作为评测数据集之一，未深入临床可靠性分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "VFL标签遗忘方法，触及隐私鲁棒主线与医学影像落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

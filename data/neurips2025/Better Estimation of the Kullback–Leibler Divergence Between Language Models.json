@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Better Estimation of the Kullback–Leibler Divergence Between Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Better Estimation of the Kullback–Leibler Divergence Between Language Models.pdf",
+ "title": "Better Estimation of the Kullback–Leibler Divergence Between Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "RB-KL估计器降低方差，但实验局限且未对比最新方法",
+ "innovations": [
+  "Rao-Blackwellized KL估计器，保证无偏且方差低于标准MC估计器",
+  "推导了KL梯度的Rao-Blackwellized估计器",
+  "在RLHF训练中使用RB估计器提高稳定性和Pareto前沿表现"
+ ],
+ "method_framework": "通过Rao-Blackwellization技术，对语言模型KL散度的蒙特卡洛估计进行方差优化，在保持无偏性的同时降低估计方差，并保证非负性。",
+ "experiment_framework": "在IMDB情感控制任务上比较MC、CV和RB估计器，使用GPT-2模型，评估估计器的偏差、方差和一致性，以及在RLHF训练中的表现。",
+ "takeaways": [
+  "Rao-Blackwellization可有效降低KL估计方差，提升训练稳定性",
+  "控制变量法(CV)在α=1时表现不佳，甚至出现偏差",
+  "RB估计器在RLHF训练中能产生更多位于Pareto前沿的模型"
+ ],
+ "weaknesses": [
+  "实验仅在一个任务(情感控制)上进行，缺乏更广泛的验证",
+  "未探讨计算复杂度随模型规模增长的变化",
+  "未与其他最新KL估计方法进行对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

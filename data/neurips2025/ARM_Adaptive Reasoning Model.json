@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/ARM_Adaptive Reasoning Model.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/ARM_Adaptive Reasoning Model.pdf",
+ "title": "ARM: Adaptive Reasoning Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "ARM通过Ada-GRPO实现推理格式自适应选择，提升效率但机制深度不足",
+ "innovations": [
+  "ARM模型支持四种推理格式自适应选择",
+  "Ada-GRPO算法解决传统GRPO的格式崩溃问题",
+  "三种推理模式(自适应/指令引导/共识引导)满足不同场景需求"
+ ],
+ "method_framework": "两阶段训练框架：SFT阶段学习四种推理格式，Ada-GRPO阶段通过格式多样性奖励机制实现自适应选择",
+ "experiment_framework": "数据集：AQuA-Rat(SFT)、CSQA/GSM8K/MATH(RL)；基线：Qwen2.5-SFT/GRPO；指标：准确率与token消耗",
+ "takeaways": [
+  "格式多样性奖励机制可有效防止模型过度依赖单一推理格式",
+  "推理模式设计需平衡效率与性能，不同任务难度需不同策略"
+ ],
+ "weaknesses": [
+  "共识引导模式在困难任务上仍消耗大量token",
+  "未充分探讨模型规模对自适应选择能力的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

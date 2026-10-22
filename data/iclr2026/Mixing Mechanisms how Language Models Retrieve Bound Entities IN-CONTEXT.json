@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mixing Mechanisms how Language Models Retrieve Bound Entities IN-CONTEXT.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mixing Mechanisms how Language Models Retrieve Bound Entities IN-CONTEXT.pdf",
+ "title": "Mixing Mechanisms: How Language Models Retrieve Bound Entities In-Context",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "LM混合三种检索机制解释实体绑定，但受控任务与主线相关性弱",
+ "innovations": [
+  "发现位置检索机制在绑定实体增多时中位置变得嘈杂不可靠",
+  "揭示LM补充词法机制(用配对实体检索)与自反机制(直接指针)补偿",
+  "整合三机制的因果模型估计下一token分布达95%一致并泛化到长开放文本"
+ ],
+ "method_framework": "在9个模型、10个绑定任务上做受控干预实验，分离位置/词法/自反三条检索通路；用因果激活修补模型混合三机制，复现并预测next-token分布，验证长上下文下的机制混合规律。",
+ "experiment_framework": "9个模型×10个绑定任务，评测各机制在实体数增多时的可靠性，因果模型与真实next-token分布一致性达95%；并在更长、穿插实体组的开放文本上做泛化测试。",
+ "takeaways": [
+  "LM的实体检索并非单一位置机制，而是随复杂度混合多种机制",
+  "中位置检索噪声是长上下文绑定失效的关键来源",
+  "三机制因果模型可定量解释模型行为"
+ ],
+ "weaknesses": [
+  "relevance偏离主线(纯机制可解释性，非医疗影像/多模态推理落地)",
+  "绑定任务为合成受控范式，与真实推理任务的映射尚远",
+  "因果模型95%一致的剩余5%误差来源未充分归因"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "机制可解释性研究，无医疗影像/多模态落地",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

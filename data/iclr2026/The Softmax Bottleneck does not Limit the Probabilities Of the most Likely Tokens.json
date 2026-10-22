@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/The Softmax Bottleneck does not Limit the Probabilities Of the most Likely Tokens.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The Softmax Bottleneck does not Limit the Probabilities Of the most Likely Tokens.pdf",
+ "title": "The Softmax Bottleneck does not Limit the Probabilities of the Most Likely Tokens",
+ "scores": {
+  "novelty": 4,
+  "depth": 5,
+  "evidence": 5,
+  "relevance": 3.0,
+  "overall": 4.2
+ },
+ "one_line": "理论质疑softmax瓶颈限制，但与主线研究无关且实际意义存疑。",
+ "innovations": [
+  "从top-m token概率准确性的角度重新分析softmax瓶颈，挑战此前认为softmax瓶颈严重限制LLM表达能力的观点",
+  "理论证明即使随机初始化的输出投影矩阵也能为相当大的m值准确指定top-m个token的概率",
+  "推导任意训练后的输出投影矩阵能指定的最大概率数量界限"
+ ],
+ "method_framework": "从理论上分析低维嵌入到高维logits的线性映射能力。关注模型准确生成top-m个最可能token概率的能力，而非整个概率分布的精确表达。推导理论界限并在随机和训练后的矩阵上实证验证。",
+ "experiment_framework": "理论推导为主，辅以实证验证。在随机初始化矩阵和训练后的矩阵上测试top-m概率准确性。对比不同嵌入维度和词汇表大小的影响。",
+ "takeaways": [
+  "Softmax瓶颈对最可能token的概率表达限制可能不像此前认为的那么严重",
+  "即使随机初始化的投影矩阵也能较好地指定top-m个token的概率",
+  "Transformer的表达能力限制可能更多在于其他方面而非softmax瓶颈"
+ ],
+ "weaknesses": [
+  "与主线（医学影像/多模态大模型推理可靠性）完全无关，属于Transformer理论分析",
+  "仅关注top-m概率准确性，完整分布的表达问题仍存在",
+  "理论界限的实际意义与LLM实际性能的关联讨论不够"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.0,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 3,
+ "relevance_reason": "纯Transformer理论分析，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

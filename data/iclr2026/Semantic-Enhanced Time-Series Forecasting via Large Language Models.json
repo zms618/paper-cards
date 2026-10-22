@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Semantic-Enhanced Time-Series Forecasting via Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Semantic-Enhanced Time-Series Forecasting via Large Language Models.pdf",
+ "title": "Semantic-Enhanced Time-Series Forecasting via Large Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "常规LLM时序改进，语义注入+注意力插件，SOTA待验证",
+ "innovations": [
+  "指出已有LLM时序方法只做token级模态对齐、未弥合语言知识结构与时序模式的内在模态鸿沟，提出把时序固有周期性与异常特性嵌入语义空间以增强token嵌入可解释性。",
+  "在自注意力内嵌入插件模块（Time-Adapter）同时建模长期与短期依赖，弥补Transformer式LLM对短期异常建模弱的缺陷。",
+  "冻结LLM并降低token序列维度，大幅降低计算开销。"
+ ],
+ "method_framework": "先将时间序列映射为TS embedding，再把从序列中挖掘的周期性/异常等语义特征注入语义空间增强token表示；同时在自注意力层内插入插件模块联合建模长程与短期依赖；全程冻结LLM主干、压缩token维度以控成本。",
+ "experiment_framework": "在多个公开时序预测基准上对比SOTA的LLM-based与Transformer方法（如Time-LLM、LLM4TS、iTransformer等），指标为预测误差（MSE/MAE类）；论文报告达到SOTA。",
+ "takeaways": [
+  "将时序的周期/异常语义特征注入语义空间，比单纯token级对齐更能激活冻结LLM的时序分析能力。",
+  "在自注意力内补建模短期依赖，可缓解LLM对短期异常建模不足。"
+ ],
+ "weaknesses": [
+  "属LLM用于时序预测这一热门方向的增量改进，新颖性中等，方法部件（语义注入+注意力插件）均较常规。",
+  "前9页未见具体数值表，'达到SOTA'的幅度与统计显著性需后续实验确认。",
+  "聚焦预测精度，未涉及鲁棒性/可信/不确定性等主线议题，与可靠性主线相关性弱。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "时序预测与可靠性主线弱相关，无鲁棒性/不确定性等议题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

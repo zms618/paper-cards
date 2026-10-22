@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Compositional Generalization via Forced Rendering of Disentangled Latents.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Compositional Generalization via Forced Rendering of Disentangled Latents.pdf",
+ "title": "Compositional Generalization via Forced Rendering of Disentangled Latents",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.75
+ },
+ "one_line": "2D高斯任务证明强制解耦渲染实现组合泛化，但泛化性存疑。",
+ "innovations": [
+  "在完全解耦的(x,y)输入任务上证明标准生成架构仍会在深层重新纠缠潜变量",
+  "揭示失败机制为通过数据叠加的记忆策略而非真正的特征组合",
+  "提出通过架构修改(低秩正则/规整训练数据)强制解耦潜变量渲染到像素空间，实现高效OOD组合"
+ ],
+ "method_framework": "在受控2D高斯bump生成任务上，输入已完全解耦，但标准生成模型在部分数据训练后仍在OOD区域失败。分析学习到的核和流形几何，发现深层将解耦的潜变量重新纠缠，采用记忆策略。通过低秩正则或规整训练数据强制解耦潜变量直接渲染到全维像素空间，模型可高效组合未见因子。",
+ "experiment_framework": "受控2D高斯bump生成任务；分析学习核和流形几何；比较标准架构与强制渲染架构在OOD区域的表现。",
+ "takeaways": [
+  "仅解耦瓶颈层不足以保证深层组合结构，流形扭曲会重新纠缠因子",
+  "强制渲染解耦潜变量到输出空间是组合泛化的关键",
+  "标准生成模型的失败是记忆而非组合"
+ ],
+ "weaknesses": [
+  "实验在受控2D toy任务，真实高维场景的泛化性未验证",
+  "强制渲染的架构修改在复杂生成模型上的可行性未探索",
+  "与可靠性/医学影像/多模态推理主线相关性一般"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

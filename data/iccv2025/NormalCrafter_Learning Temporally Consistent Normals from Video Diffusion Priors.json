@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/NormalCrafter_Learning Temporally Consistent Normals from Video Diffusion Priors.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/NormalCrafter_Learning Temporally Consistent Normals from Video Diffusion Priors.pdf",
+ "title": "NormalCrafter Learning Temporally Consistent Normals from Video Diffusion Priors",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "结合视频扩散先验与语义正则化的法线估计方法",
+ "innovations": [
+  "利用视频扩散模型(VDMs)的时序先验进行法线估计",
+  "语义特征正则化(SFR)解决扩散特征过平滑问题",
+  "两阶段训练协议平衡长时序上下文与高空间精度"
+ ],
+ "method_framework": "基于SVD模型构建NormalCrafter，通过语义特征正则化对齐扩散特征与DINOv2语义特征，采用两阶段训练策略先在潜在空间学习长时序上下文，再在像素空间优化空间精度。",
+ "experiment_framework": "在NYUv2、iBims、ScanNet和Sintel四个基准数据集上评估，与DSINE、GeoWizard、GenPercept等6种基线方法比较，使用角度误差和阈值内像素比例作为指标。",
+ "takeaways": [
+  "语义特征正则化可有效提升几何细节保留",
+  "两阶段训练策略能平衡长序列处理与高精度需求",
+  "扩散模型在时序一致性任务上的潜力"
+ ],
+ "weaknesses": [
+  "依赖预训练视频扩散模型，计算资源需求高",
+  "仅在合成数据上训练，真实场景泛化能力未充分验证",
+  "两阶段训练增加了实现复杂度"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "视频扩散模型用于法线估计，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

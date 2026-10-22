@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Curse of High Dimensionality Issue in Transformer for Long-context Modeling.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Curse of High Dimensionality Issue in Transformer for Long-context Modeling.pdf",
+ "title": "Curse of High Dimensionality Issue in Transformer for Long-context Modeling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "将序列建模转为监督学习分析冗余，动态分组注意力降计算成本",
+ "innovations": [
+  "将自回归序列建模重写为监督学习形式(预测y|C(y))，使相关/不相关token可分离，为冗余分析提供理论框架",
+  "理论证明注意力权重稀疏性：仅少数token对目标表示有显著贡献，其余为冗余",
+  "提出动态分组注意力(DGA)：动态识别低贡献token并聚合成组，保留重要token独立交互，降低计算量"
+ ],
+ "method_framework": "DGA在标准注意力前增加分组步骤：(1)根据查询token与各键的注意力权重，识别低贡献token；(2)将低贡献token聚合成组，组内表示取平均；(3)重要token保持独立，与聚合后的组一起参与注意力计算；(4)为自回归约束下无法被分组覆盖的token补充互补键值。分组编码从线性编码理论推导，证明对随机噪声更鲁棒。",
+ "experiment_framework": "在多个长上下文任务上评测(长文档QA、摘要、passkey retrieval等)；基线包括标准注意力、StreamingLLM、MInference、LongLoRA等；指标为任务性能和计算/FLOPs成本；消融分析分组比例和动态策略。",
+ "takeaways": [
+  "长上下文中注意力权重高度稀疏，大部分token对预测贡献极小",
+  "动态分组聚合在保持关键token交互的同时显著降低计算冗余",
+  "分组编码从理论上比逐token处理对随机噪声更鲁棒"
+ ],
+ "weaknesses": [
+  "分组决策基于注意力权重估计，需要前向一次才能确定分组，增加了实现复杂度",
+  "仅在推理效率角度分析，未涉及训练阶段的长上下文扩展",
+  "对需要全局细粒度交互的任务(如复杂推理)，聚合可能丢失关键信息"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

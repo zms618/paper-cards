@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/FVGen_Accelerating Novel-View Synthesis with Adversarial Video Diffusion Distillation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/FVGen_Accelerating Novel-View Synthesis with Adversarial Video Diffusion Distillation.pdf",
+ "title": "FVGen: Accelerating Novel-View Synthesis with Adversarial Video Diffusion Distillation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "视频扩散蒸馏加速新视角合成，依赖教师模型且计算成本高。",
+ "innovations": [
+  "使用GAN初始化学生模型，利用教师模型作为判别器",
+  "提出软化反向KL散度解决DMD训练不稳定和模式崩溃问题",
+  "在多视图视频数据集上实现有效的视频扩散模型蒸馏"
+ ],
+ "method_framework": "FVGen框架首先通过GAN目标初始化学生模型，然后使用软化反向KL散度进行分布匹配蒸馏，将多步教师模型蒸馏为4步学生模型，保持生成质量的同时大幅加速。",
+ "experiment_framework": "在DL3DV-10K数据集上训练，在MipNeRF360和Tanks-and-Temples上评估，与ViewCrafter、MVSplat360等基线比较，使用PSNR、SSIM、LPIPS和FID指标。",
+ "takeaways": [
+  "GAN初始化可有效解决直接DMD训练的不稳定性问题",
+  "软化反向KL散度能缓解模式崩溃，保留教师模型的知识分布"
+ ],
+ "weaknesses": [
+  "方法依赖于预训练的教师模型ViewCrafter",
+  "训练过程需要大量计算资源（8个H100 GPU）",
+  "仅在特定数据集上验证，泛化能力有待进一步验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "新视角合成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

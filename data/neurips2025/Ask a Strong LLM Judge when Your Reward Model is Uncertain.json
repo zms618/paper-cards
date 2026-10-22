@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Ask a Strong LLM Judge when Your Reward Model is Uncertain.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Ask a Strong LLM Judge when Your Reward Model is Uncertain.pdf",
+ "title": "Ask a Strong LLM Judge when Your Reward Model is Uncertain",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "基于SNGP的不确定性路由，结合RM与LLM法官提升RLHF",
+ "innovations": [
+  "将优势估计表述为成对偏好分类，实现不确定性量化",
+  "使用SNGP方法量化奖励模型的不确定性",
+  "设计不确定性路由策略，智能选择何时调用LLM法官"
+ ],
+ "method_framework": "训练带SNGP的成对偏好模型(PM)，通过不确定性阈值路由决策，不确定样本发送给LLM法官，确定样本由PM快速处理，结合两者优势估计用于下游RLHF。",
+ "experiment_framework": "在RewardBench和RM-Bench评估偏好预测准确性，在Arena-Hard、AlpacaEval和MT-Bench评估下游对齐性能，与随机路由和全量LLM法官对比。",
+ "takeaways": [
+  "不确定性量化可有效识别OOD样本，指导路由决策",
+  "成对偏好模型比点状奖励模型更适合不确定性量化"
+ ],
+ "weaknesses": [
+  "仅考虑了成对偏好模型，未探索点状奖励模型的不确定性量化",
+  "实验主要在文本领域进行，未验证在多模态场景的适用性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

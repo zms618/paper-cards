@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Stay-Positive A Case for Ignoring Real Features in Fake Detection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Stay-Positive A Case for Ignoring Real Features in Fake Detection.pdf",
+ "title": "Stay-Positive: A Case for Ignoring Real Image Features in Fake Detection",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "主张检测器只关注生成伪影，忽略真实特征，提升后处理鲁棒性。",
+ "innovations": [
+  "提出“假当且仅当含生成器引入的伪影”这一判据，主张检测器应聚焦生成伪影而非真实特征",
+  "设计 Stay-Positive 算法约束检测器只学习生成伪影、丢弃与真实数据相关的伪模式",
+  "发现只关注假伪影的检测器对后处理更鲁棒，且更能检测被 inpaint 的真实图像"
+ ],
+ "method_framework": "以“假当且仅当含生成伪影”为前提，设计训练机制抑制检测器把压缩/重采样等真实图像伪影误联到“真”类，使其决策只基于生成模型引入的痕迹；通过这种去偏训练切断 WEBP 压缩等虚假相关。",
+ "experiment_framework": "在已知生成器家族（潜扩散）的假图检测上评测；对比 Corvi 2023、Ojha 2023 等检测器，报告后处理（WEBP 压缩等）下的检测精度与跨生成器泛化，并单独评估对 inpaint 真实图的检出。",
+ "takeaways": [
+  "检测器把真实图像的压缩伪影误当“真”类线索，是后处理下失效的主因",
+  "只学生成伪影、忽略真实特征，可同时提升后处理鲁棒性与 inpaint 检出",
+  "反虚假相关训练比单纯堆真实负例更有效"
+ ],
+ "weaknesses": [
+  "与主线（医学影像/多模态推理）无关，属图像取证/生成检测",
+  "“只看生成伪影”的前提在生成器伪影被后处理完全抹除时可能失效",
+  "主要在已知生成器家族设定下验证，跨未知生成器的泛化需更多证据"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

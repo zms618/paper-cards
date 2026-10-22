@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/PIAD_Pose and Illumination agnostic Anomaly Detection.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/PIAD_Pose and Illumination agnostic Anomaly Detection.pdf",
+ "title": "PIAD Pose and Illumination agnostic Anomaly Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "扩展PAD问题，用3DGS实现姿态光照无关异常检测",
+ "innovations": [
+  "引入PIAD问题，扩展了PAD问题",
+  "使用3D高斯溅射表示并添加反射率预测能力",
+  "设计新数据集包含多种材质和光照条件",
+  "结合反射率和颜色域进行姿态优化和异常检测"
+ ],
+ "method_framework": "训练3DGS表示物体，通过反射率匹配初始化姿态，优化姿态后合成参考图像，比较查询与参考图像进行异常检测",
+ "experiment_framework": "在MAD、合成和真实数据集上评估，与OmniposeAD和SplatPose比较，使用像素和图像级AUROC指标",
+ "takeaways": [
+  "反射率表示对光照变化具有鲁棒性",
+  "结合多尺度特征比较提高异常检测准确性",
+  "MAE过滤加速姿态初始化"
+ ],
+ "weaknesses": [
+  "仅评估了工业产品，未扩展到医学影像",
+  "计算效率虽优于NeRF方法但仍需优化"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "姿态光照无关异常检测，工业应用非医学落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

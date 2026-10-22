@@ -1,0 +1,37 @@
+{
+ "title": "The Impact of On-Policy Parallelized Data Collection on Deep Reinforcement Learning Networks",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "系统分析PPO并行环境数与rollout长度影响，发现前者更优但外部效度有限",
+ "innovations": [
+  "在固定数据预算下严格隔离 Nenvs 与 NRO 两个数据扩缩放维度，将其分别刻画为数据多样性与偏差-方差权衡来源",
+  "把并行数据收集与网络可塑性(plasticity)、优化稳定性(weight norm、gradient kurtosis)显式关联，而非仅报告最终回报",
+  "给出可操作结论：扩大并行环境数比增加 rollout 长度更能带来稳定训练与最终性能提升"
+ ],
+ "method_framework": "基于 CleanRL 实现的 PPO(及 PQN)，在 Nenvs×NRO=batch size 的固定预算下，系统性改变并行环境数与 rollout 长度，观察最终回报、样本效率、权重范数、梯度峰度与表示可塑性等指标，建立数据收集结构与优化稳定性的联系。",
+ "experiment_framework": "采用 CleanRL 默认超参；评测于 ALE 的 Atari-10(被验证可代表全集)，训练 1 亿环境步；按 Agarwal 等的协议跑 5 个随机种子，报告人类归一化 IQM 及 95% 分层 bootstrap 置信区间，并考察网络架构与超参敏感性。",
+ "takeaways": [
+  "更大的数据集规模在多种设置下可提升最终性能，但数据的结构(并行度)比单纯体量更关键",
+  "扩大并行环境数使训练动态更稳定(权重范数与梯度峰度下降)，在固定预算下优于拉长 rollout",
+  "为如何在并行化下最大化数据效率提供了可遵循的配置指引"
+ ],
+ "weaknesses": [
+  "实证主要集中在 Atari-10，跨到连续控制/真实物理任务的外部效度证据有限",
+  "属于受控的实证分析而非新算法，结论依赖默认超参与 CleanRL 实现，迁移性需额外验证",
+  "前9页未充分展开对网络架构与超参敏感性的量化结果，关键消融细节在后文"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/The Impact of On-Policy Parallelized Data Collection on Deep Reinforcement Learning Networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/The Impact of On-Policy Parallelized Data Collection on Deep Reinforcement Learning Networks.pdf",
+ "raw_overall": 5.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

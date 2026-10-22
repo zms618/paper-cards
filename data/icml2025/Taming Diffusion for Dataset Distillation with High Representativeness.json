@@ -1,0 +1,38 @@
+{
+ "title": "Taming Diffusion for Dataset Distillation with High Representativeness",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4,
+  "overall": 4.8
+ },
+ "one_line": "分析扩散蒸馏问题，用DDIM反演提升代表性，但证据不足且与主线无关。",
+ "innovations": [
+  "系统指出现有扩散基数据集蒸馏的三个问题：分布匹配不准、随机噪声导致分布偏移、独立采样",
+  "用DDIM反演把全数据集潜变量从低正态潜域映射到蒸馏域",
+  "提出D3HR框架生成高代表性蒸馏数据集"
+ ],
+ "method_framework": "分析扩散蒸馏中随机噪声使潜变量偏离真实分布；用DDIM反演把全数据集图像映射回潜空间；在该潜空间中优化蒸馏样本使其分布匹配全数据集；再解码为蒸馏图像。",
+ "experiment_framework": "在标准数据集蒸馏基准（CIFAR-10/100等）上对比现有扩散蒸馏与匹配蒸馏方法，指标为在蒸馏数据上训练的模型精度（前9页未列全数值）。",
+ "takeaways": [
+  "扩散蒸馏中随机噪声是分布偏移的重要来源",
+  "DDIM反演可把真实数据潜变量对齐到蒸馏潜空间",
+  "高代表性蒸馏数据在高压缩率下更能保持性能"
+ ],
+ "weaknesses": [
+  "前9页未给出具体蒸馏精度数值",
+  "DDIM反演增加计算开销",
+  "大规模ImageNet级蒸馏可扩展性未验证",
+  "域为数据集压缩，与主线无关"
+ ],
+ "confidence": "low",
+ "key": "icml2025/Taming Diffusion for Dataset Distillation with High Representativeness.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Taming Diffusion for Dataset Distillation with High Representativeness.pdf",
+ "raw_overall": 5.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/PIPA_Preference Alignment as Prior-Informed Statistical Estimation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/PIPA_Preference Alignment as Prior-Informed Statistical Estimation.pdf",
+ "title": "PIPA: Preference Alignment as Prior-Informed Statistical Estimation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "将偏好对齐转化为先验约束的似然估计，数学推理提升有限。",
+ "innovations": [
+  "将偏好对齐统一为先验信息约束的最大似然估计问题",
+  "提出PIPA-M和PIPA-N两种变体，分别对边际分布和负条件分布施加先验约束",
+  "自然支持配对/非配对数据和答案/步骤级标注，无需额外训练成本"
+ ],
+ "method_framework": "将偏好对齐问题转化为在先验约束下最大化似然估计，通过贝叶斯定理将约束优化转化为无约束问题，使用两个可学习网络参数化目标模型和价值模型。",
+ "experiment_framework": "在GSM8K和MATH数学推理基准上评估，与DPO、KTO等方法对比，使用Deepseek-Math和Qwen2.5-Math模型，测试配对/非配对和答案/步骤级四种设置。",
+ "takeaways": [
+  "统一框架视角下理解现有方法(DPO和KTO作为特例)",
+  "价值模型p(ct|x,y<t)提供细粒度信用分配，可用于推理时搜索",
+  "方法设计简洁，无需额外计算成本"
+ ],
+ "weaknesses": [
+  "仅在数学推理任务上验证，缺乏更广泛任务的评估",
+  "PIPA-M和PIPA-N性能不稳定，依赖于特定模型和数据分布",
+  "未充分探讨方法在更复杂多步骤推理中的鲁棒性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

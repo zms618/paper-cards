@@ -1,0 +1,36 @@
+{
+ "title": "Neural Event-Triggered Control with Optimal Scheduling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "神经事件触发控制框架，理论保证稳定但应用场景有限。",
+ "innovations": [
+  "面向资源受限数字平台，学习事件触发控制器(ETC)以最小化触发次数、最大化事件间隔。",
+  "提出两个实用算法：直接模拟事件触发动力学的路径积分算法，与基于事件间隔下界新理论结果的蒙特卡洛算法。",
+  "给出解析表达式的投影算子，无需解优化即严格赋予Neural ETC稳定性与调度最优性。"
+ ],
+ "method_framework": "在Lyapunov类证书函数控制器基础上引入事件触发机制：仅在测量违反触发条件时更新控制信号；通过路径积分/MC算法学习触发策略，并以解析投影保证闭环稳定与最小触发，降低通信频次。",
+ "experiment_framework": "在Lorenz等多个代表性物理/工程系统上评测；对比连续更新的神经Lyapunov控制(NLC)；指标为触发次数、最小事件间隔、控制轨迹稳定精度；展示Neural ETC仅6次触发即可稳定而NLC需1999次。",
+ "takeaways": [
+  "事件触发可在保证稳定证明的同时把通信资源降低数个量级。",
+  "解析投影免去优化求解，使最优调度可快速实现。"
+ ],
+ "weaknesses": [
+  "稳定性依赖Lyapunov证书假设，对高度非线性系统的可扩展性存疑。",
+  "验证限于物理/工程 benchmark，真实大规模无线控制系统的部署未证实。",
+  "落地为控制理论，与可靠性主线（医学影像/多模态大模型推理）关联弱，relevance中等偏低。"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Neural Event-Triggered Control with Optimal Scheduling.pdf",
+ "path": "icml2025/Neural Event-Triggered Control with Optimal Scheduling.pdf",
+ "conf": "icml2025",
+ "raw_overall": 6.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

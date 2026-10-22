@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Rethinking Causal Ranking A Balanced Perspective on Uplift Model Evaluation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Rethinking Causal Ranking A Balanced Perspective on Uplift Model Evaluation.pdf",
+ "title": "Rethinking Causal Ranking: A Balanced Perspective on Uplift Model Evaluation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "指出传统uplift曲线缺陷，提出PUC指标平衡因果排序",
+ "innovations": [
+  "识别出传统 uplift 曲线与 Qini 曲线对二元负结果类(sleeping dog 等)赋权失衡、可能让有偏模型得分高于无偏模型的根本缺陷。",
+  "基于主分层(principal strata)分析给出 persuasion/sleeping dog 各类的平衡优先级。",
+  "提出原理化提升曲线 PUC，对正负方向 uplift 赋予相等曲线值，实现正确的因果排序。"
+ ],
+ "method_framework": "用主分层把个体分为可说服(τx>0)、睡狗(τx<0)等，并按结果正负细分为 PTR/PN/CN 等四类；分析传统曲线因赋权不均导致的错误排序，PUC 通过给正负方向 uplift 相等优先级来构建平衡的累积增益曲线，从而得到与真实 uplift 一致的排序。",
+ "experiment_framework": "在 uplift 建模基准数据上对比 PUC 与传统 uplift/Qini 曲线，检验对有偏 vs 无偏模型的区分能力；以模型选择正确性/排序一致性为评价，验证 PUC 能否避免误选有偏模型。",
+ "takeaways": [
+  "传统 uplift/Qini 曲线存在系统性赋权失衡，会错误地偏好有偏模型。",
+  "PUC 通过平衡正负方向 uplift 优先级，恢复了正确的因果排序。",
+  "公平的评估指标对营销/挽留等场景下的 uplift 模型选择至关重要。"
+ ],
+ "weaknesses": [
+  "聚焦评估指标层面，不直接提升 uplift 预测本身，增益取决于后续模型选择。",
+  "主分层的真实反事实结果不可观测，各类的可识别性假设较强。",
+  "前9页未见大规模真实业务数据上的系统对比，证据广度有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

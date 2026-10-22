@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/A Flag Decomposition for Hierarchical Datasets.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Flag Decomposition for Hierarchical Datasets.pdf",
+ "title": "A Flag Decomposition for Hierarchical Datasets",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 5.0,
+  "overall": 5.8
+ },
+ "one_line": "层级保持矩阵分解FD=QRP^T，但基线弱且关键理论未验证。",
+ "innovations": [
+  "提出层级保持的矩阵分解 D = QRP^T：Q=[Q1|…|Qk]∈St(nk,n) 是 flag 的 Stiefel 坐标，R 为块上三角，P 为按列层级重排的置换矩阵；相比 QR 允许 D 秩亏（rank(D)<p），相比 SVD 能同时恢复各级嵌套子空间（SVD 只恢复外层平面、QR 恢复的子空间会漏掉后加入的列）。",
+  "给出存在性、构造与唯一性的完整刻画：Prop 1 用逐层零空间投影 [Qi]=[Π^⊥_{Q_{i-1}}···Π^⊥_{Q_1} Bi] 递归构造并给出投影性质；Prop 3 证明 D 存在 FD 当且仅当 A1⊂…⊂Ak 是其列层级；Prop 4 证明仅有分块旋转歧义且该歧义不改变优化目标值。",
+  "Flag-BMGS 算法与鲁棒版 RFD：把块修正 Gram-Schmidt 推广为逐层投影后取基，并把 flag 恢复写成 min Σ_i Σ_{j∈Bi} ‖Π^⊥_{X_i}···Π^⊥_{X_1} d̃_j‖^q_r；r=q=2 时闭式解为 Π^⊥ 投影后矩阵的截断 SVD，q=1 时用 IRLS-SVD 迭代求解以抵抗离群列。"
+ ],
+ "method_framework": "给定列层级 A1⊂…⊂Ak，先按层级构造置换 P 得 B=DP^T；再对 i=1..k 逐层：把 Bi 投影到前 i−1 层子空间的零空间 Π^⊥_{Q_{i-1}}···Π^⊥_{Q_1}Bi，用 SVD（鲁棒版用 IRLS-SVD，q=1）取其前 mi 个左奇异向量作为 Qi，最后按式(11)(12)组装块上三角 R 与置换 P，重建 D̂=QRP^T。",
+ "experiment_framework": "合成数据（flag 类型 (2,4;10)、10×40 矩阵，加性噪声三种分布与离群列两种污染，按 SNR 扫描）+ AVIRIS 高光谱 KSC(512×614×176) 与 Indian Pines(145×145×200) 去噪/聚类 + 三个 few-shot 分类数据集；基线仅 SVD、QR、IRLS-SVD、均值与子空间原型；指标 chordal 距离、LRSE、SNR。",
+ "takeaways": [
+  "「把结构先验写成约束嵌入分解」的做法可迁移：层级嵌套用逐层零空间投影 Π^⊥ 表达，使分解结果天然满足 [DAi]=[X1..Xi]，比先降维再后处理更干净。",
+  "鲁棒化只需把目标范数从 L2 换成 L1（q=1）并用 IRLS 迭代求解，就在离群列污染下显著改善子空间恢复——低成本换鲁棒性的套路可直接复用。",
+  "用流形上的 chordal 距离度量「一组嵌套子空间」并接 MDS/kNN，是把结构化对象当整体样本点处理的通用表示学习套路。"
+ ],
+ "weaknesses": [
+  "基线极弱：全文只与 SVD、QR、IRLS-SVD 比较，并明确声明不与现代任务专用算法比较，因此高光谱去噪与聚类的提升无法说明相对真实 SOTA 是否仍有价值。",
+  "关键理论空白被作者自己承认：Flag-BMGS 的数值稳定性分析、IRLS-SVD 的收敛性证明、flag 类型（signature）的自动选择全部留作 future work，而 flag 类型是算法输入，文中只用 nk<rank(D̃) 的启发式。",
+  "主要结论建立在合成数据上，真实数据仅两个高光谱影像与 few-shot 分类；正文 9 页截断，5.5 节在三个数据集上的 few-shot 结果完全不可见，无法核验精度提升幅度与方差。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "矩阵分解方法与可靠性主线无实质交点，仅高光谱应用有微弱关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

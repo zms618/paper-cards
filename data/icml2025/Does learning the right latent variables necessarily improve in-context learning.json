@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Does learning the right latent variables necessarily improve in-context learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Does learning the right latent variables necessarily improve in-context learning.pdf",
+ "title": "Does learning the right latent variables necessarily improve in-context learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.0
+ },
+ "one_line": "瓶颈偏置Transformer显式推断潜在变量，但未改善OOD泛化。",
+ "innovations": [
+  "用最小修改(瓶颈层)偏置Transformer去显式推断任务潜在变量、抑制统计捷径，构造受控对照",
+  "跨多种ICL任务系统比较瓶颈Transformer与标准Transformer的OOD表现，得到与直觉及近期工作相反的结论",
+  "发现瓶颈虽能从上下文提取潜在变量，但下游处理无法有效利用它们做稳健预测"
+ ],
+ "method_framework": "对数据可分解为任务潜在变量(如线性系数)的ICL任务，在Transformer中加入瓶颈结构迫使中间表征对齐潜在变量、压制注意力捷径；与标准Transformer在相同ICL任务上对比OOD泛化，并分析瓶颈是否真的学到潜在变量及其利用情况。",
+ "experiment_framework": "在多种可分解的ICL任务(线性回归等)上做分布内/OOD评测，对比瓶颈偏置模型与标准Transformer的泛化差距，辅以表征探针分析是否学到并使用潜在变量。",
+ "takeaways": [
+  "偏置模型去学正确的潜在变量一般并不带来更好的OOD泛化",
+  "瓶颈能提取潜在变量，但下游层难以将其转化为稳健预测",
+  "Transformer的ICL成功可能更多来自注意力启发式而非显式潜在推断"
+ ],
+ "weaknesses": [
+  "结论基于受控合成ICL任务，向真实大规模语言ICL的可迁移性未充分验证",
+  "瓶颈设计是唯一干预方式，其他偏置方式是否同样结论需更多对照",
+  "负面结果的解释(下游为何不利用潜在变量)机制性根因在前9页尚未完全厘清"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

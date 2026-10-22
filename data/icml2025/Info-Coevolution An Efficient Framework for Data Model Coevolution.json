@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Info-Coevolution An Efficient Framework for Data Model Coevolution.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Info-Coevolution An Efficient Framework for Data Model Coevolution.pdf",
+ "title": "Info-Coevolution: An Efficient Framework for Data Model Coevolution",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "选择性标注框架降本32%，但依赖模型质量且与可靠性主线无关。",
+ "innovations": [
+  "针对‘新样本是否需要标注/学习’这一根本问题做在线选择性标注，避免保留全部数据的低效。",
+  "相对主动学习，不引入额外流水线复杂度与标注偏差，实现无偏协同进化。",
+  "可自动给出节省比例而无需人工调参，配合半监督学习可进一步把标注率降到 50%。"
+ ],
+ "method_framework": "用任务专用模型/开源模型实时判断新到的在线或网络样本的信息量，仅选择性标注并整合入数据集；模型随数据更新、数据随模型需求再选择，形成闭环协同进化；可接检索式开源无标签数据增强。",
+ "experiment_framework": "在 ImageNet-1K 等真实数据集上评测；基线为全量标注训练与主动学习；指标为标注/训练成本与最终精度，报告成本-精度权衡。",
+ "takeaways": [
+  "在线选择性标注可在 ImageNet 规模任务上减少约 1/3 标注与训练成本且不损性能。",
+  "节省比例可自动确定，半监督可再将标注率降至约一半。"
+ ],
+ "weaknesses": [
+  "选择性标注依赖任务相关模型质量，冷启动/新任务上初始判断不准的问题未充分讨论。",
+  "‘无偏’声明需在不同标注偏置场景下更严格地验证。",
+  "属数据效率/主动学习，与可靠性主线（医学影像、多模态推理）无直接关联。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

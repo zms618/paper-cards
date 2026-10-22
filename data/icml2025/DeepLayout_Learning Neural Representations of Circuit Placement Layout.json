@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DeepLayout_Learning Neural Representations of Circuit Placement Layout.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DeepLayout_Learning Neural Representations of Circuit Placement Layout.pdf",
+ "title": "DeepLayout: Learning Neural Representations of Circuit Placement Layout",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "电路布局表示学习，混合GNN与Transformer，但与AI主线弱相关",
+ "innovations": [
+  "首个面向后端布局（post-placement）的通用电路表示学习框架，区别于前端逻辑（AIG）表示学习",
+  "提出异构图+空间注意力的混合编码器（cell/node异构GNN + spatial transformer），同时建模拓扑连接与几何分布",
+  "设计面向布局的尺寸自适应掩码策略与可计算的RPA路由中间特征重建目标，降低标注成本"
+ ],
+ "method_framework": "将布局后电路建模为含cell与net两类节点的异构图，编码器用异质GNN抓拓扑、spatial transformer抓几何；预训练采用基于grid单元的尺寸自适应掩码，并以cell属性+坐标+易算的RPA路由特征为重建目标；下游通过灵活解码器支持拥塞、线长、DRC等多层次任务。",
+ "experiment_framework": "在工业级大规模布局数据集上预训练，下游评测拥塞预测（congestion）与布线后线长估计（post-routing wirelength）两个benchmark，与专用SOTA方法对比。",
+ "takeaways": [
+  "DeepLayout在两个布局质量评估benchmark上超过为单任务定制的SOTA专用方法",
+  "自监督预训练学到的内在电路特征可迁移到多种下游布局评估任务",
+  "RPA路由中间特征作为重建目标有助于缓解特定布线算法带来的偏置"
+ ],
+ "weaknesses": [
+  "与可靠性/鲁棒性/可信AI主线相关性弱，属EDA物理设计专用任务",
+  "前9页未给出完整数值表，增益幅度与统计显著性需看正文实验章节",
+  "框架依赖工业私有数据集，外部可复现性存疑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Drug-TTA_Test-Time Adaptation for Drug Virtual Screening via Multi-task Meta-Auxiliary Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Drug-TTA_Test-Time Adaptation for Drug Virtual Screening via Multi-task Meta-Auxiliary Learning.pdf",
+ "title": "Drug-TTA: Test-Time Adaptation for Drug Virtual Screening via Multi-task Meta-Auxiliary Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "Drug-TTA引入TTA到药物筛选，用元学习辅助任务提升难例泛化，但推理开销大。",
+ "innovations": [
+  "将测试时自适应(TTA)引入药物虚拟筛选，针对对比学习方法负样本构造过简、难例泛化差的问题",
+  "通过元学习把自监督辅助任务同时纳入训练与推理，使模型对每个测试实例自适应",
+  "设计多尺度特征辅助损失平衡模块(ALBM)平衡多辅助任务以提升效率"
+ ],
+ "method_framework": "在对比学习虚拟筛选基础上，训练阶段用元学习习得如何借助自监督辅助任务快速适应；推理阶段对每个测试口袋-分子实例，用大量无需标注的自监督辅助任务在线自适应模型，辅以多尺度ALBM平衡各辅助任务权重，从而提升难例/分布外分子的筛选性能。",
+ "experiment_framework": "在药物虚拟筛选基准上做跨分布/难例分子检索评测，指标为Enrichment Factor/AUC等；与对比学习、经典对接及其他TTA方法对比，消融验证辅助任务与ALBM。",
+ "takeaways": [
+  "测试时逐样本自自适应能改善虚拟筛选对难结合模式的泛化",
+  "自监督辅助任务无需标签即可在推理时提供适配信号",
+  "多尺度辅助损失平衡对多任务协同有效"
+ ],
+ "weaknesses": [
+  "落地域为药物发现而非医学影像/多模态大模型，主线相关性中等",
+  "测试时逐实例自适应带来额外推理开销，十亿级库筛选的吞吐可行性存疑",
+  "前9页未见对不同蛋白家族跨域泛化的系统性评测"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

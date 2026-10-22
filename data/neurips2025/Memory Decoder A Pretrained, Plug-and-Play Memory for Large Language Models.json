@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Memory Decoder A Pretrained, Plug-and-Play Memory for Large Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Memory Decoder A Pretrained, Plug-and-Play Memory for Large Language Models.pdf",
+ "title": "Memory Decoder: A Pretrained, Plug-and-Play Memory for Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "参数化解码器替代检索器，提升LLM领域适应效率",
+ "innovations": [
+  "将非参数检索器压缩为小型参数化解码器",
+  "分布对齐预训练方法替代传统检索",
+  "跨模型即插即用架构无需修改原模型参数"
+ ],
+ "method_framework": "预训练阶段通过分布对齐损失和语言建模目标训练小型transformer解码器，使其模仿非参数检索器行为；推理阶段与基础LLM并行处理，通过插值融合输出分布",
+ "experiment_framework": "在WikiText-103、生物医学/金融/法律三个领域数据集上评估，对比DAPT、LoRA、kNN-LM、In-Context RAG等方法，使用困惑度和下游任务指标",
+ "takeaways": [
+  "分布对齐预训练可有效压缩非参数检索知识",
+  "小型参数化记忆可替代大型检索存储",
+  "即插即用设计实现跨模型高效知识迁移"
+ ],
+ "weaknesses": [
+  "未充分验证极端长文本场景下的性能",
+  "跨词汇迁移在法律领域表现相对较弱",
+  "未探索记忆组件的动态更新机制"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

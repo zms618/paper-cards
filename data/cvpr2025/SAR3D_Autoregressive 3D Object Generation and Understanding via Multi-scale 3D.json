@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/SAR3D_Autoregressive 3D Object Generation and Understanding via Multi-scale 3D.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/SAR3D_Autoregressive 3D Object Generation and Understanding via Multi-scale 3D.pdf",
+ "title": "SAR3D Autoregressive 3D Object Generation and Understanding via Multi-scale 3D",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "多尺度VQVAE加速3D生成，但鲁棒性与泛化验证不足",
+ "innovations": [
+  "多尺度3D VQVAE tokenization",
+  "next-scale预测加速3D生成",
+  "VQVAE token与LLM结合实现3D理解"
+ ],
+ "method_framework": "多尺度3D VQVAE编码3D对象为层次化token，自回归模型预测下一尺度，实现快速生成；截断token微调LLM实现3D理解",
+ "experiment_framework": "G-Objaverse数据集，与Splatter-Image、OpenLRM、LGM、LN3Diff等方法对比，使用FID、KID、MUSIQ、COV、MMD等指标",
+ "takeaways": [
+  "多尺度token设计显著提升生成速度",
+  "3D token与LLM结合实现高效理解",
+  "截断token用于理解减少计算开销"
+ ],
+ "weaknesses": [
+  "未充分讨论模型鲁棒性和泛化能力",
+  "未探索不确定性估计",
+  "医学影像应用未涉及"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "3D生成与可靠性主线无交点，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

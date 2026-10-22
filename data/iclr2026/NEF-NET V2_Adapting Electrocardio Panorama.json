@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/NEF-NET V2_Adapting Electrocardio Panorama.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/NEF-NET V2_Adapting Electrocardio Panorama.pdf",
+ "title": "NEF-Net V2: Adapting Electrocardio Panorama in the Wild",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "心电全景视角变换架构，支持跨设备泛化与电极校准，但临床验证不足。",
+ "innovations": [
+  "设计直接视角变换的新架构，支持任意长度信号合成与任意目标视角的心电全景",
+  "提出离线预训练+设备校准微调+在线(on-the-fly)患者专属校准的三段工作流，应对设备差异与电极放置偏差",
+  "构建Panobench基准：4470条记录、每位受试者48视角，覆盖心电活动的完整空间变异，用于严格评测全景合成"
+ ],
+ "method_framework": "在心电全景任务上把标准导联信号变换为任意虚拟视角信号：新架构直接做视角变换(而非先重建场再观测)，天然支持长序列与任意视角；训练分三段——离线预训练学通用心电场，设备校准微调吸收设备特有伪影，在线校准步根据当前患者少量实际电极位置偏差做适配，补偿操作者放置误差。",
+ "experiment_framework": "自建Panobench(4470记录/48视角)；对比Nef-Net及基线；在真实设备、长时信号、电极放置偏差设置下评测；指标PSNR等重建质量；报告真实场景相对Nef-Net约6dB提升；开源代码。",
+ "takeaways": [
+  "直接视角变换架构+三段校准工作流使心电全景从理想假设走向设备差异与放置偏差的真实场景",
+  "跨设备泛化与在线患者校准是真实部署的关键，带来约6dB PSNR增益",
+  "Panobench为心电全景合成提供了首个覆盖完整空间变异的评测基准"
+ ],
+ "weaknesses": [
+  "评测以PSNR等重建保真度为主，重建信号对Brugada等关键诊断模式的临床增益未做下游验证",
+  "在线校准仍需患者少量实际电极数据，零校准极端放置偏差下的鲁棒性未刻画",
+  "前9页未报告重建不确定性/置信区间，临床高风险判读所需的可信度刻画不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "心电跨设备泛化与校准工作流，可靠性主线落地医学影像",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

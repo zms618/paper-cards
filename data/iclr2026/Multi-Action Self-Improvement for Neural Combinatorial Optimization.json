@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Multi-Action Self-Improvement for Neural Combinatorial Optimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Multi-Action Self-Improvement for Neural Combinatorial Optimization.pdf",
+ "title": "Multi-Action Self-Improvement for Neural Combinatorial Optimization",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "MACSIM将自改进扩展到多智能体组合优化，利用对称性提升效率",
+ "innovations": [
+  "提出MACSIM多动作自改进方法，在每个决策步联合预测所有智能体的任务分配",
+  "采用集合预测损失，显式利用智能体置换对称性，从多个等价专家轨迹中学习",
+  "并行生成多智能体动作，大幅加速自改进循环中的求解生成阶段"
+ ],
+ "method_framework": "在自改进框架基础上，模型架构改为每步联合预测完整的智能体-任务分配；使用集合预测损失(permuta-tion-invariant surrogate loss)对多组等价专家分配进行监督；通过自回归采样算法并行生成多智能体动作，避免冲突。",
+ "experiment_framework": "在路由和调度两类组合优化问题上评估，对比标准自改进方法，从解质量和生成延迟两个维度衡量性能。",
+ "takeaways": [
+  "多动作联合预测能更好地学习多智能体协调行为，提升解质量",
+  "集合预测损失有效利用置换对称性，提高样本效率",
+  "并行动作生成显著减少了解求解的生成延迟"
+ ],
+ "weaknesses": [
+  "仅在路由和调度问题上验证，其他多智能体CO问题的适用性未探索",
+  "集合预测损失的匹配机制(匈牙利匹配等)增加了训练复杂度",
+  "联合动作空间随智能体数指数增长的问题未充分讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.55,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "组合优化方法与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/LOC2_Interpretable Cross-View Localization via Depth-Lifted Local Feature Matching.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/LOC2_Interpretable Cross-View Localization via Depth-Lifted Local Feature Matching.pdf",
+ "title": "LOC2: Interpretable CROSS-VIEW Localization via DEPTH-LIFTED Local Feature Matching",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "深度提升特征匹配实现跨视图定位，但方向预测不足",
+ "innovations": [
+  "直接学习地面-航空图像平面对应关系，避免BEV变换信息损失",
+  "结合单目深度预测和尺度感知Procrustes对齐实现端到端训练",
+  "提供高度可解释的定位结果，包括对应质量可视化和布局对齐"
+ ],
+ "method_framework": "双分支特征提取器匹配地面与航空图像局部特征，使用单目深度将匹配点提升到BEV空间，通过尺度感知Procrustes对齐估计相机姿态，整个流程可微分且仅需弱监督",
+ "experiment_framework": "KITTI和VIGOR数据集，比较全局描述符和几何变换方法，评估已知/未知方向下的定位精度，测试不同深度预测器的鲁棒性",
+ "takeaways": [
+  "局部特征匹配质量与定位精度强相关，可用于异常值检测",
+  "方法对深度预测尺度变化具有强鲁棒性，适合实际部署"
+ ],
+ "weaknesses": [
+  "方向预测精度不如最先进方法，无法充分利用道路方向先验",
+  "在KITTI同区域测试中±10°噪声下定位误差高于FG2"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "跨视图定位与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

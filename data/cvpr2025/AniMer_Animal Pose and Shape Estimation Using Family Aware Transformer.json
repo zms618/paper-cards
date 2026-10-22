@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/AniMer_Animal Pose and Shape Estimation Using Family Aware Transformer.pdf",
+ "conf": "cvpr2025",
+ "path": "C:\\Users\\James\\Desktop\\study\\paper\\项目记忆\\论文卡片\\精读卡片库\\cvpr2025\\AniMer_Animal Pose and Shape Estimation Using Family Aware Transformer.json",
+ "title": "AniMer: Animal Pose and Shape Estimation Using Family Aware Transformer",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "SMAL参数回归+家族损失，合成数据提升动物姿态估计，但OOD评估不完整",
+ "innovations": [
+  "直接回归 SMAL 参数（形状 θ/姿态 β/视图）而非先估 2D 关键点再逐顶点拟合约束：ViT 提特征后由 SMAL Transformer 解码器一次解码出参数，绕开不可微的迭代 fitting，AniMer-a/b 为两阶段与残差变体对照。",
+  "家族感知对比损失 Lcon 作用在 class token 特征上，把同一家族（如猫科）样本拉近、跨家族推远，专门处理动物姿态数据长尾与族间混淆；表 4 单独消融该损失。",
+  "自建合成训练集 CtrlAni3D：ControlNet 生成图像 + 渲染的 SMAL mask/depth 作监督 + ChatGPT 文本描述 + SAM2 过滤低质样本，得 9711 张并聚合 41.3k 图，与真实 Animal3D、OOD 的 Animal Kingdom 混合训练。"
+ ],
+ "method_framework": "ViT 视觉编码 → SMAL Transformer 解码器直出参数；家族 class token 对比损失约束特征族内聚族间散；合成集 CtrlAni3D 补真实数据分布。",
+ "experiment_framework": "Animal3D、CtrlAni3D、Animal Kingdom（OOD）；对比 HMR/WLDO/HMR2.0 及 AniMer-a/b；指标 AUC、PCK@HTH、PCK@0.1/0.15、PA-MPJPE、PA-MPVPE。",
+ "takeaways": [
+  "合成+真实混合后 Animal3D 的 AUC 从 WLDO 的 78.2 提到 88.9、P@H 从 68.7 到 89.5，说明 SMAL 参数化回归比「2D 关键点 + 优化拟合」的管线更能吃到数据规模。",
+  "在 OOD 的 Animal Kingdom 上 AniMer 的 P@0.1/P@0.15 为 34.9/54.7，显著高于 HMR2.0 的 22.7/40.2 —— 换测试集后排名会翻转，表 1 的「最佳」结论高度依赖测试集选择。"
+ ],
+ "weaknesses": [
+  "主对照 HMR2.0/HMR/WLDO 多是通用或人体模型的改造，不是同任务的强专用基线；且表 1 在 Animal Kingdom 只报 2D 指标（AUC/P@H/P@0.1/P@0.15），PAJ/PAV 缺失，AniMer 在 OOD 集上的 3D 精度（形状与关节误差）结论没有支撑。",
+  "AniMer-b 相对 AniMer-a 全面下降（Animal3D AUC 75.2→60.6、PAJ 115.5→147.9、PAV 128.7→157.6），说明变体设计的收益几乎全部来自数据规模而非架构选择，论文未解释该退化机制。",
+  "CtrlAni3D 完全自建（ControlNet 生成图像 + ChatGPT 文本 + 渲染监督），与 CG 合成数据的对照只在「是否有渲染监督」上做区分，生成噪声与文本噪声这两个混淆因素未被隔离，跨真实域的可比性存疑。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "动物姿态估计与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

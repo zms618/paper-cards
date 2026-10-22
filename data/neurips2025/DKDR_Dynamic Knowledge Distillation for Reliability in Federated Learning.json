@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/DKDR_Dynamic Knowledge Distillation for Reliability in Federated Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/DKDR_Dynamic Knowledge Distillation for Reliability in Federated Learning.pdf",
+ "title": "DKDR: Dynamic Knowledge Distillation for Reliability in Federated Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "动态知识蒸馏提升联邦学习可靠性，但计算开销大且依赖领域区分度",
+ "innovations": [
+  "动态知识蒸馏机制，根据知识差异自适应调整前向和反向KLD权重",
+  "知识解耦方法识别领域专家，提供可靠的知识来源",
+  "理论分析前向和反向KLD的不同行为特性"
+ ],
+ "method_framework": "DKDR包含两个核心组件：动态知识蒸馏(DKD)根据主导知识组件(DKCs)和辅助知识组件(AKCs)之间的知识差异动态调整前向和反向KLD权重；知识解耦(KDP)通过SVD过滤和聚类识别领域专家，客户端从这些专家获取可靠知识。",
+ "experiment_framework": "在Cifar-10/100和Office31/Home数据集上评估，与FedAvg、FedProx、FedNTD等SOTA方法比较，使用准确率作为主要指标。",
+ "takeaways": [
+  "前向KLD适合拟合主导区域，反向KLD适合拟合低概率区域",
+  "知识解耦能有效提取领域特定信号，识别领域专家",
+  "动态权重机制能显著减少多域场景下的蒸馏偏差"
+ ],
+ "weaknesses": [
+  "动态权重机制涉及SVD和聚类技术，增加了计算开销，可能在资源有限的客户端上显著延长训练时间",
+  "DKDR假设领域足够区分以准确识别专家，如果领域重叠显著，这一假设可能失效"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

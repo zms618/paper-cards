@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/DROID-SLAM in the Wild.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/DROID-SLAM in the Wild.pdf",
+ "title": "DROID-SLAM in the Wild",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.6
+ },
+ "one_line": "扩展DROID-SLAM加入不确定性感知，提升动态场景鲁棒性",
+ "innovations": [
+  "不确定性感知束调整(UBA)模块",
+  "基于DINO特征相似性的动态不确定性估计",
+  "交替优化策略分离位姿-深度与不确定性更新",
+  "引入Metric3D深度正则化提升高动态场景鲁棒性"
+ ],
+ "method_framework": "基于DROID-SLAM扩展，引入不确定性感知束调整模块，通过多视图DINO特征相似性估计像素级不确定性，交替优化位姿、深度和不确定性，实现动态环境鲁棒SLAM",
+ "experiment_framework": "在Bonn RGB-D、TUM RGB-D、DyCheck及自建DROID-W数据集上评估，与经典SLAM、动态SLAM及NeRF/GSLAM方法比较，使用ATE指标评估轨迹精度",
+ "takeaways": [
+  "多视图特征一致性比重投影残差更稳定地估计动态不确定性",
+  "交替优化策略有效分离位姿-深度与不确定性更新",
+  "深度正则化显著提升高动态场景性能"
+ ],
+ "weaknesses": [
+  "在haru序列上因动态区域抑制导致性能下降",
+  "依赖预训练深度估计器Metric3D",
+  "未充分分析计算复杂度与内存消耗"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "动态SLAM与可靠性主线部分交织，不确定性感知有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

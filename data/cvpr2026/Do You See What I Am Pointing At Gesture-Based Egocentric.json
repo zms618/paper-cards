@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Do You See What I Am Pointing At Gesture-Based Egocentric.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Do You See What I Am Pointing At Gesture-Based Egocentric.pdf",
+ "title": "Do You See What I Am Pointing At Gesture-Based Egocentric",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "手势意图标记提升第一人称视频问答性能，但依赖外部模型",
+ "innovations": [
+  "EGOPOINTVQA数据集：首个专注于手势指向的第一人称视频问答数据集",
+  "Hand Intent Tokens (HINT)：将3D手部关键点编码为手势意图标记",
+  "帧-关键点交错输入：将手势标记与视觉标记交错输入模型，提供显式空间上下文"
+ ],
+ "method_framework": "HINT模型通过双流处理视频：标准视觉流和手势意图流。使用现成的3D手部重建模型提取手部关键点，通过轻量级适配器转换为手势意图标记，并与视觉标记交错输入MLLM。",
+ "experiment_framework": "在EGOPOINTVQA测试集（300个真实世界视频，672个问答对）评估15个基线模型，包括专有模型和开源MLLMs。使用多选题准确率作为指标，比较不同模型规模和任务类别性能。",
+ "takeaways": [
+  "手势标记提供显式空间上下文，显著提升指示性问答性能",
+  "轻量级适配器引入最小计算开销，仅增加约10%推理时间"
+ ],
+ "weaknesses": [
+  "依赖现成的3D手部重建模型，可能引入误差",
+  "数据集主要使用合成数据，真实世界泛化能力需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "手势意图标记提升第一人称视频问答性能，但依赖外部模型",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "title": "The Pensieve Paradigm: Stateful Language Models Mastering their Own Context",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "StateLM通过记忆工具让LLM主动管理上下文，但创新有限且缺乏与成熟框架对比。",
+ "innovations": [
+  "提出有状态基础模型范式：不再依赖人工写死的外部 Context Engineering 脚本，而是让模型自身通过内部推理循环主动调用记忆工具",
+  "设计一整套可学习的记忆工具：上下文裁剪(context pruning)、文档索引(document indexing)、记笔记(note-taking)，并训练模型动态组合以管理自己的上下文窗口",
+  "在多种模型规模上训练验证，得到锯齿状(sawtooth)上下文使用曲线而非单调堆积，突破固定窗口的架构限制"
+ ],
+ "method_framework": "把记忆工具集（裁剪、索引、笔记）封装成可由模型调用的动作，模型在内部循环里边推理边决定何时写库、何时检索、何时裁剪，从而在固定窗口内长期维护外部状态；端到端训练模型学会主动编排这些工具。",
+ "experiment_framework": "跨多种模型规模评测：长文档 QA、聊天记忆任务（相比标准 LLM 绝对准确率提升 10%-20%）、深度研究任务 BrowseComp-Plus（StateLM 达约 52%，标准 LLM 仅约 5%）；基线为同规模标准 LLM。",
+ "takeaways": [
+  "把记忆管理权从人工脚本交还给模型本身，在长文档 QA、聊天记忆、深度研究上各规模均稳定优于标准 LLM",
+  "BrowseComp-Plus 上 52% vs 5% 的巨大差距说明主动状态管理对长程/多跳研究任务是决定性的",
+  "锯齿状上下文使用模式证明模型学会了主动遗忘与压缩，而非被动塞满窗口"
+ ],
+ "weaknesses": [
+  "记忆工具（裁剪/索引/笔记）与已有 agentic memory、RAG 工具调用高度重叠，新意主要在范式表述与端到端训练，缺与成熟 RAG/agent 框架（如带检索的 LangGraph 类）的直接对比",
+  "核心收益在 BrowseComp 这类开放深度研究任务上被放大，但未分析错误来源：是检索失误还是推理失误，也未报告成本/延迟与工具调用失败率",
+  "relevance 给 6 而非更高：主题是 LLM 智能体的上下文/记忆工程，虽涉及长程推理，但未把幻觉、不确定性、可靠性作为研究对象，按防污染规则不因其 agentic reasoning 措辞抬分"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/The Pensieve Paradigm Stateful Language Models Mastering their Own Context.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The Pensieve Paradigm Stateful Language Models Mastering their Own Context.pdf",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "LLM记忆管理工具，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

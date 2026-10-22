@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Semantic Alignment for Pose-Invariant Identity Preserving Diffusion.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Semantic Alignment for Pose-Invariant Identity Preserving Diffusion.pdf",
+ "title": "Semantic Alignment for Pose-Invariant Identity Preserving Diffusion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "SeAl通过语义对齐解决扩散模型身份保持问题，但计算开销大且极端姿态验证不足。",
+ "innovations": [
+  "AnchorAlign预对齐空间差异",
+  "Reference-guided Appearance Infusion通过语义匹配注入身份",
+  "Delta-Bridge利用引导增量解决文本-外观冲突"
+ ],
+ "method_framework": "SeAl整合三个模块：AnchorAlign预对齐空间差异，Reference-guided Appearance Infusion通过缓存U-Net特征注入身份，Delta-Bridge基于文本-外观差异应用提示引导校正。",
+ "experiment_framework": "数据集：256张图像(81人，133动物，21名人)；基线：训练方法(T2I-Adapter+IP-Adapter等)和无训练方法(Ctrl-X, DRF)；指标：CLIP分数、DINO-I、DreamSim-str、HPSv2和ImageReward。",
+ "takeaways": [
+  "通过语义匹配而非重想象保持身份细节",
+  "预对齐步骤对解决空间差异至关重要"
+ ],
+ "weaknesses": [
+  "计算开销较大(34.83秒vs基线12-25秒)",
+  "未充分验证在极端姿态变化下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "身份保持与扩散模型结合，但未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

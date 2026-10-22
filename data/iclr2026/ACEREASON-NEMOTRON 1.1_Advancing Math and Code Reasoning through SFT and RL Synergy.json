@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/ACEREASON-NEMOTRON 1.1_Advancing Math and Code Reasoning through SFT and RL Synergy.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/ACEREASON-NEMOTRON 1.1_Advancing Math and Code Reasoning through SFT and RL Synergy.pdf",
+ "title": "ACEREASON-NEMOTRON 1.1: Advancing Math and Code Reasoning through SFT and RL Synergy",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "常规SFT+RL组合，扩展数据与调整温度，缺乏机制分析",
+ "innovations": [
+  "SFT数据规模扩展策略：增加提示数量与响应数量",
+  "RL训练温度调整规则：温度调整熵保持在0.3左右",
+  "长响应处理策略：不同token预算下采用不同过滤方法",
+  "阶段式RL训练方法在更强SFT模型上的有效性验证"
+ ],
+ "method_framework": "基于Qwen2.5-Math-7B进行数学与代码SFT，然后采用阶段式RL训练：数学-only(8K→16K→24K→32K)和代码-only(24K→32K)，使用GRPO算法和严格on-policy训练。",
+ "experiment_framework": "数学任务：AIME24/25, Math500, HMMT2025 Feb, BRUMO2025；代码任务：EvalPlus, LiveCodeBench v5/v6；与SFT蒸馏模型和RL基线模型对比，使用pass@1@n评估。",
+ "takeaways": [
+  "SFT数据扩展中增加提示数量比增加响应数量更有效",
+  "RL训练中温度调整熵保持在0.3左右可平衡探索与利用",
+  "长响应处理策略应根据token预算调整：短预算使用过滤，长预算可使用负奖励"
+ ],
+ "weaknesses": [
+  "未深入分析SFT与RL协同的内在机制",
+  "实验主要基于特定模型架构，泛化性存疑",
+  "缺乏对推理过程可靠性的验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "仅扩展SFT+RL组合，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

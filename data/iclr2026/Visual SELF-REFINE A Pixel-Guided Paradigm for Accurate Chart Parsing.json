@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Visual SELF-REFINE A Pixel-Guided Paradigm for Accurate Chart Parsing.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Visual SELF-REFINE A Pixel-Guided Paradigm for Accurate Chart Parsing.pdf",
+ "title": "Visual Self-Refine: A Pixel-Guided Paradigm for Accurate Chart Parsing",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "像素级自校正范式增加图表解析准确率，但计算开销大且泛化性未验证",
+ "innovations": [
+  "提出Visual Self-Refine(VSR)范式：针对视觉感知密集型任务，通过生成像素级定位输出并可视化反馈给模型自身，实现视觉层面的自我校正，区别于传统文本级自校正",
+  "实例化ChartVSR模型，将图表解析分解为Refine Stage（迭代视觉反馈验证数据点像素定位）和Decode Stage（基于验证后的定位锚点解析结构化数据）两阶段",
+  "构建ChartP-Bench高难度图表解析基准，解决现有基准过于简单的问题"
+ ],
+ "method_framework": "VSR范式受人类用手指作为视觉锚点读图表的启发。模型首先输出所有数据点的像素级定位坐标，将这些坐标可视化（如在图上画点/标记），然后将带标记的图像反馈给模型自身，让它直观检查自己的定位是否准确并修正。迭代这个过程直到定位准确。最终在验证过的像素定位锚点基础上，解码出结构化图表数据。",
+ "experiment_framework": "任务：图表解析（Chart Parsing）。数据集：ChartP-Bench（新构建的高难度基准）+ 现有图表解析基准。基线：端到端LVLM图表解析方法、文本级自校正方法。指标：数据提取准确率、数据点遗漏率、定位准确率。",
+ "takeaways": [
+  "文本级自校正对视觉感知密集型任务效果有限，视觉反馈（像素级定位可视化）能更有效帮助模型发现和修正感知错误",
+  "两阶段分解（先精确定位再解码数据）比端到端直接输出结构化数据更准确，尤其在视觉密集复杂图表上",
+  "VSR范式具有通用性，可推广到其他视觉感知密集型任务"
+ ],
+ "weaknesses": [
+  "迭代视觉反馈增加了推理轮次和计算开销，实时性受限",
+  "方法在图表解析这一特定任务上验证，推广到其他视觉任务的通用性证据尚不足",
+  "像素级定位的可视化方式较为简单，更复杂的视觉反馈形式是否更有效未探索"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "图表解析属于视觉任务，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

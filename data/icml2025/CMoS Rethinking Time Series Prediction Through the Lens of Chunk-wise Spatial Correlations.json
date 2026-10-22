@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/CMoS Rethinking Time Series Prediction Through the Lens of Chunk-wise Spatial Correlations.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CMoS Rethinking Time Series Prediction Through the Lens of Chunk-wise Spatial Correlations.pdf",
+ "title": "CMoS: Rethinking Time Series Prediction Through the Lens of Chunk-wise Spatial Correlations",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "轻量时序模型通过分块空间相关替代形状嵌入，但与可靠性主线无关",
+ "innovations": [
+  "揭示时序数据具有平移等变性：分块形状虽变，只要相对位置一致，chunk间空间相关保持稳定",
+  "直接建模分块间相对位置关系而非具体形状模式，更鲁棒可解释",
+  "Correlation Mixing以极少参数捕捉多样空间相关；可选周期性注入加速收敛",
+  "仅DLinear约1%参数即在多基准超越SOTA，权重具强可解释性"
+ ],
+ "method_framework": "将滑窗序列切分为分块，用Correlation Mixing直接建模分块间(相对位置)空间相关矩阵，替代学习形状嵌入/注意力；可选注入周期性先验加速收敛；输出未来步预测，权重即可解释的分块相关结构。",
+ "experiment_framework": "在多个主流时序预测基准(如ETT/Weather/Exchange等)上与DLinear及近年轻量/Transformer模型比较，报告MSE/MAE，并分析参数效率与学到的相关权重可解释性。",
+ "takeaways": [
+  "分块间相对位置关系是比具体形状更稳健的预测信号",
+  "极小参数即可捕捉这种平移等变结构，时序预测本质可能很简单",
+  "学到的相关权重可反演应用场景的时间结构规律"
+ ],
+ "weaknesses": [
+  "主线为时间序列预测，与可靠性主线及医学影像、多模态推理落地域无关",
+  "平移等变性假设对强非平稳/突变序列的适用性需更多验证",
+  "Correlation Mixing的分块粒度等超参对结果敏感，系统分析有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.43,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Sibai A Few-Shot Meta-Classifier for Poisoning Detection in Federated Learning.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Sibai A Few-Shot Meta-Classifier for Poisoning Detection in Federated Learning.pdf",
+ "title": "Sibai A Few-Shot Meta-Classifier for Poisoning Detection in Federated Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "孪生网络元分类器检测联邦学习中毒攻击，但计算开销大且极端场景误报",
+ "innovations": [
+  "首个将元分类器应用于基于检测和过滤的联邦学习中毒防御",
+  "使用孪生网络比较本地模型与全局模型",
+  "创新的逐层降维管道结合PCA和工程特征"
+ ],
+ "method_framework": "Sibai采用双阶段设计：离线训练阶段使用阴影模型集训练孪生网络元分类器；在线推理阶段评估本地模型并过滤可疑模型，通过降维、孪生网络、距离函数和决策网络四组件实现。",
+ "experiment_framework": "在CIFAR-10数据集上评估，对比8种防御方法，测试5种中毒攻击，包括i.i.d.和非i.i.d.场景，使用F1分数、中毒准确率和模型准确度差异作为指标。",
+ "takeaways": [
+  "动态学习检测标准比预定义指标更能抵抗自适应攻击",
+  "结合PCA和工程特征的特征提取方法能有效提高检测准确性"
+ ],
+ "weaknesses": [
+  "需要大量阴影模型进行训练，计算开销较大",
+  "在极端非i.i.d.场景下可能出现误报"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "联邦学习中毒检测属于可靠性主线，且方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

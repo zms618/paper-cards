@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scalable In-Context Q-LEARNING.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scalable In-Context Q-LEARNING.pdf",
+ "title": "Scalable In-Context Q-Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "多头transformer结合世界模型做上下文Q-learning，但与主线关联弱且扩展性证据不足。",
+ "innovations": [
+  "设计基于提示的多头transformer，用分离的头同时预测最优策略与上下文价值函数，将价值学习引入ICRL而非仅行为克隆。",
+  "预训练通用世界模型捕捉任务相关信息，构造紧凑提示以实现快速精确的上下文推断，替代冗长冗余的原始transition提示。",
+  "训练时通过拟合Q函数上expectile的状态价值做迭代策略改进，并用优势加权回归把上下文价值蒸馏为策略抽取，在次优数据上尤其有效。"
+ ],
+ "method_framework": "在大规模transition数据集上监督预训练多头transformer(策略头+价值头)与世界模型；测试时用世界模型生成紧凑任务提示，模型在上下文内做Q-learning式的迭代策略改进，从次优轨迹中提取最优策略。",
+ "experiment_framework": "在一系列离散与连续控制环境上，对比算法蒸馏(AD)与决策预训练transformer(DPT)等ICRL基线；重点检验从次优数据学习与跨任务泛化能力。",
+ "takeaways": [
+  "把价值函数/动态规划引入上下文RL，可超越行为克隆，从次优数据中恢复更优策略。",
+  "世界模型构造的紧凑提示比原始transition提示更能精确编码任务信息，提升上下文推断精度。"
+ ],
+ "weaknesses": [
+  "属上下文强化学习方向，与可靠性×医学影像/多模态推理主线无关联。",
+  "依赖预训练世界模型质量与多头监督数据规模，在长时域/高维真实决策任务上的扩展性证据仍有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.18,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "上下文RL方法与可靠性主线无直接关联，但价值学习设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

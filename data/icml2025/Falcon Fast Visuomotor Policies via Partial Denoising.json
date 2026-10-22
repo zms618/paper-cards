@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Falcon Fast Visuomotor Policies via Partial Denoising.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Falcon Fast Visuomotor Policies via Partial Denoising.pdf",
+ "title": "Falcon: Fast Visuomotor Policies via Partial Denoising",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "部分去噪加速扩散策略，提升2-7倍速度但内存效率有限",
+ "innovations": [
+  "利用视觉运动任务中的顺序依赖性进行部分去噪",
+  "训练自由即插即用加速模块",
+  "阈值机制选择历史部分去噪动作作为起点"
+ ],
+ "method_framework": "Falcon利用历史预测动作作为参考，通过阈值机制选择合适的部分去噪动作作为起点，结合当前观测信息减少采样步骤，同时保持多模态表达能力。",
+ "experiment_framework": "在48个模拟环境和2个真实机器人任务上评估，使用RoboMimic等基准，比较成功率和NFE指标，验证2-7倍加速效果。",
+ "takeaways": [
+  "部分去噪策略可有效加速扩散策略而不牺牲性能",
+  "即插即用设计使其能与现有加速技术无缝集成"
+ ],
+ "weaknesses": [
+  "在复杂任务中加速效果不如简单任务显著",
+  "需要存储历史部分去噪动作，内存效率有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Oppo Accelerating PPO-BASED RLHF via Pipeline Overlap.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Oppo Accelerating PPO-BASED RLHF via Pipeline Overlap.pdf",
+ "title": "Oppo: Accelerating PPO-BASED RLHF via Pipeline Overlap",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "OPPO通过流水线重叠加速RLHF，但扩展性与硬件分析不足",
+ "innovations": [
+  "Intra-step overlap：流式传输上游模型输出，使生成和评分阶段重叠",
+  "Inter-step overlap：自适应过度提交提示，将长响应生成推迟到未来步骤",
+  "动态控制重叠程度，平衡效率与收敛性"
+ ],
+ "method_framework": "OPPO框架通过两种互补技术解决PPO训练效率问题：1)步内重叠，将生成输出分块流式传输到下游模型；2)步间重叠，选择性过度提交提示并保留未完成工作。通过轻量级包装器与现有PPO实现集成。",
+ "experiment_framework": "在Stack-Exchange-Paired、GSM8K和OpenCoder-SFT数据集上评估，使用Qwen2.5-7B/3B模型，与TRL基线比较训练速度、GPU利用率和收敛质量。",
+ "takeaways": [
+  "流水线重叠技术可有效解决多模型依赖导致的GPU空闲问题",
+  "动态调整重叠参数可在效率和收敛性间取得平衡"
+ ],
+ "weaknesses": [
+  "未探讨在更大规模模型上的扩展性",
+  "未分析不同硬件配置下的性能差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "RLHF加速技术属于可靠性主线边缘，无落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

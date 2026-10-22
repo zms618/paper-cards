@@ -1,0 +1,41 @@
+{
+ "title": "Taming Polysemanticity in LLMs: Theory-Grounded Feature Recovery via Sparse Autoencoders",
+ "one_line": "提出bias adaptation的SAE算法，理论上保证单义特征恢复，但扩展性待验证",
+ "innovations": [
+  "通过受控实验发现神经元共振(neuron resonance)现象：当神经元激活频率与特征在数据中的出现频率匹配时，神经元可靠地学到单义特征",
+  "提出基于bias adaptation的SAE训练算法，自适应调整偏置以保证合适的激活稀疏度，在其提出的统计模型下可证明地恢复全部单义特征",
+  "发展出改进的实证变体Group Bias Adaptation(GBA)，在高达2B参数LLM上优于TopK/gated/L1等基准"
+ ],
+ "method_framework": "从神经元激活频率角度重思SAE训练。核心是bias adaptation：自适应调整网络偏置参数使神经元激活频率匹配特征出现频率，从而实现神经元共振。理论版在给定统计模型下证明可恢复全部单义特征；实证GBA对特征分组做偏置自适应，缓解超参敏感与不稳定。",
+ "experiment_framework": "在最高2B参数LLM上评测；对比L1正则、TopK、gated SAE等；指标为特征恢复质量/稀疏度稳定性；受控实验验证神经元共振现象；报告跨随机种子一致性。",
+ "takeaways": [
+  "神经元能否成功恢复特征取决于其激活频率是否匹配特征在数据中的出现频率",
+  "bias adaptation从理论上保证可恢复全部单义特征，弥补了既有SAE缺乏恢复保证的根本缺口",
+  "GBA缓解了L1的超参敏感与TopK的跨种子不一致问题"
+ ],
+ "weaknesses": [
+  "理论恢复保证建立在特定统计模型假设上，真实LLM激活是否满足该假设仍有差距",
+  "实证仅到2B参数，向更大规模模型的可扩展性证据有限",
+  "特征频率估计本身需要统计采样，对稀有/长尾特征的恢复能力待验证"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Taming Polysemanticity In LLMS Theory-Grounded Feature Recovery via Sparse Au.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Taming Polysemanticity In LLMS Theory-Grounded Feature Recovery via Sparse Au.pdf",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.9
+ },
+ "raw_overall": 7.23,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "LLM可靠性主线中的特征恢复方法，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

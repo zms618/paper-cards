@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Smoothed Differentiation Efficiently Mitigates Shattered Gradients in Explanations.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Smoothed Differentiation Efficiently Mitigates Shattered Gradients in Explanations.pdf",
+ "title": "Smoothed Differentiation Efficiently Mitigates Shattered Gradients in Explanations",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "SmoothDiff通过雅可比分解加速梯度平滑，但存在计算局限和理论简化。",
+ "innovations": [
+  "基于自动微分的雅可比矩阵分解方法",
+  "向量-期望雅可比乘积(VEJP)实现",
+  "针对非线性激活函数的高效期望雅可比估计"
+ ],
+ "method_framework": "SmoothDiff将神经网络雅可比矩阵分解为各层期望雅可比的乘积，通过VEJP计算，仅需少量样本和单次反向传播实现高精度梯度平滑。",
+ "experiment_framework": "在ImageNet数据集上与SmoothGrad对比，使用SSIM和像素翻转(SRG)指标评估，VGG19模型，NVIDIA A100 GPU。",
+ "takeaways": [
+  "雅可比矩阵分解可显著提升样本效率",
+  "VEJP实现可扩展到多种网络架构",
+  "多类别解释计算效率提升两个数量级"
+ ],
+ "weaknesses": [
+  "注意力层的高效VEJP尚未实现",
+  "忽略了雅可比矩阵间的协方差项",
+  "仅限于固定模型 regime 的可解释性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

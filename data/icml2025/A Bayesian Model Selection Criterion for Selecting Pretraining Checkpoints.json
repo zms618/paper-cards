@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/A Bayesian Model Selection Criterion for Selecting Pretraining Checkpoints.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/A Bayesian Model Selection Criterion for Selecting Pretraining Checkpoints.pdf",
+ "title": "A Bayesian Model Selection Criterion for Selecting Pretraining Checkpoints",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.4
+ },
+ "one_line": "贝叶斯自由能代理检查点适配性，但理论与实验验证不足。",
+ "innovations": [
+  "定义下游自由能：以检查点附近有利参数的浓度（限制在局部邻域的负对数边际似然）量化检查点的下游可适配性。",
+  "在分布偏移条件下证明下游自由能可被预训练自由能控制（Proposition 5.1），从而无需下游数据即可在预训练期做模型选择。",
+  "给出基于局部高斯先验的预训练WBIC可实现估计，并通过实验验证其与全量微调/少样本迁移精度的相关性强于其他预训练指标。"
+ ],
+ "method_framework": "把检查点可适配性写成参数空间局部邻域内良好权重的浓度（负对数边际似然）；再用局部化Widely Applicable BIC（围绕检查点的局部后验加权训练损失）作为预训练自由能的渐近无偏估计，用大学习率/小批量/高动量等已知机制隐式正则化它。",
+ "experiment_framework": "在 CIFAR-FS（源自CIFAR-100，64类元训练）上预训练 ResNet-18/SGD，扫描学习率、批量、动量；指标为全量微调迁移精度与平均5-shot迁移精度；以Pearson相关系数与神经坍塌、几何复杂度等指标对比；mini-ImageNet+VGG作补充。",
+ "takeaways": [
+  "更低的预训练WBIC（自由能）一致地对应更好的全量微调与少样本迁移精度，且在学习率/批量/动量三个杠杆上均成立。",
+  "预训练训练损失常收敛到相近值，难以区分微调行为，而预训练WBIC仍有区分力。",
+  "相比神经坍塌、几何复杂度等指标，预训练自由能与下游适配性的相关性更强。"
+ ],
+ "weaknesses": [
+  "理论代理界（Proposition 5.1）依赖较强的分布偏移假设，实际预训练-下游差异未必满足。",
+  "实验规模偏小，仅 ResNet-18/VGG 在 CIFAR-FS、mini-ImageNet 上做相关性分析，未在大规模基础模型/LLM上验证。",
+  "以相关性研究为主，未直接展示用该准则选点带来的端到端下游精度提升或与现有早停/选点策略的对比。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "贝叶斯模型选择与可靠性主线相关，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

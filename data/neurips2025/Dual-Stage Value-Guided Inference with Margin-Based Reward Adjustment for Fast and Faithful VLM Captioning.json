@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Dual-Stage Value-Guided Inference with Margin-Based Reward Adjustment for Fast and Faithful VLM Captioning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Dual-Stage Value-Guided Inference with Margin-Based Reward Adjustment for Fast and Faithful VLM Captioning.pdf",
+ "title": "Dual-Stage Value-Guided Inference with Margin-Based Reward Adjustment for Fast and Faithful VLM Captioning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "双阶段推理加速VLM字幕生成，边缘奖励调整抑制幻觉",
+ "innovations": [
+  "双阶段推理框架：先粗选再针对性细化",
+  "基于边缘的奖励调整机制：惩罚低置信度输出",
+  "跨模型泛化能力：在未见模型上有效引导解码"
+ ],
+ "method_framework": "ViMaR采用时序差分学习训练价值模型，结合边缘奖励调整，通过两阶段推理：第一阶段生成多样候选并选择最高价值字幕，第二阶段仅对视觉接地弱的部分进行细化，减少计算开销。",
+ "experiment_framework": "COCO数据集，对比Greedy、BoN、CLIP-PRM、VisVM基线，使用CHAIR、MMHal评估幻觉，人类评估和GPT-4o偏好测试，以及8个多模态基准测试自训练效果。",
+ "takeaways": [
+  "两阶段推理显著提升效率(4×加速)同时减少幻觉",
+  "边缘奖励调整有效抑制低置信度输出",
+  "高质量生成数据可用于自训练提升模型性能"
+ ],
+ "weaknesses": [
+  "仅评估图像描述任务，未扩展到其他VLM任务",
+  "边缘阈值τ的调参可能影响泛化性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

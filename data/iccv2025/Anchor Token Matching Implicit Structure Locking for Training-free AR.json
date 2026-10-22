@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Anchor Token Matching Implicit Structure Locking for Training-free AR.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Anchor Token Matching Implicit Structure Locking for Training-free AR.pdf",
+ "title": "Anchor Token Matching Implicit Structure Locking for Training-free AR",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "锚令牌匹配实现自回归图像编辑的结构锁定，但泛化性有限",
+ "innovations": [
+  "锚令牌匹配(ATM)协议实现隐式结构锁定",
+  "动态窗口机制适应不同生成阶段的结构约束",
+  "自适应约束放松(AdaCR)平衡结构蓝图与生成自主性"
+ ],
+ "method_framework": "ISLock通过在自回归解码过程中匹配原始和编辑序列的隐藏表示，实现隐式结构对齐，同时保持生成自主性，无需显式注意力操作或微调。",
+ "experiment_framework": "在PIE-Bench数据集上评估，比较5种编辑类型，使用结构距离、背景保真度(PSNR/LPIPS/MSE/SSIM)和CLIP分数作为指标。",
+ "takeaways": [
+  "自回归模型中早期令牌对全局结构影响更大",
+  "直接注入注意力图会导致语义冲突",
+  "动态约束窗口可平衡结构一致性与编辑灵活性"
+ ],
+ "weaknesses": [
+  "仅适用于自回归生成的图像，无法直接编辑真实图像",
+  "实验主要在LlamaGen上进行，泛化性有待验证",
+  "未充分探索不同编辑任务的参数敏感性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "图像编辑方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

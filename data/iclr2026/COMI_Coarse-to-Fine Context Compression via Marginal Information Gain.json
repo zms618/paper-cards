@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/COMI_Coarse-to-Fine Context Compression via Marginal Information Gain.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/COMI_Coarse-to-Fine Context Compression via Marginal Information Gain.pdf",
+ "title": "COMI: COARSE-TO-FINE Context Compression via Marginal Information Gain",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "粗细两级压缩框架，用MIG指标平衡相关性与冗余",
+ "innovations": [
+  "提出边际信息增益(MIG)指标，联合建模任务相关性和语义冗余",
+  "粗粒度组重分配策略，动态调整不同区域的压缩率",
+  "细粒度标记合并机制，基于MIG加权融合消除组内冗余"
+ ],
+ "method_framework": "COMI采用粗到细的压缩策略：首先将上下文分组，计算组间MIG动态分配压缩率；然后在组内计算标记MIG，进行加权合并，保留高相关性低冗余信息",
+ "experiment_framework": "在QA(NaturalQuestions,2WikiMQA等)和摘要(MultiNews)任务上评估，使用LLaMA-2-7B和Qwen2-7B作为骨干，比较多种基线方法，使用EM和F1指标",
+ "takeaways": [
+  "MIG指标有效平衡相关性和冗余，在高压缩率下保持性能",
+  "粗粒度和细粒度的两级压缩机制能更有效地保留关键信息"
+ ],
+ "weaknesses": [
+  "方法依赖于预训练模型编码器，可能限制在特定模型上的泛化能力",
+  "计算MIG需要额外的计算开销，虽然压缩阶段增加了时间但整体效率仍有提升"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "压缩方法与可靠性主线无直接交点，仅具知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

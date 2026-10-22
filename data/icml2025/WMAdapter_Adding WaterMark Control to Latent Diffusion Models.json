@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/WMAdapter_Adding WaterMark Control to Latent Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/WMAdapter_Adding WaterMark Control to Latent Diffusion Models.pdf",
+ "title": "WMAdapter: Adding WaterMark Control to Latent Diffusion Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "WMAdapter：上下文适配器实现扩散模型水印控制",
+ "innovations": [
+  "上下文适配器结构，根据图像内容生成自适应水印嵌入",
+  "混合微调策略，保持扩散组件完整性的同时抑制伪影",
+  "非侵入式水印插件，保持原始扩散管道完整性"
+ ],
+ "method_framework": "WMAdapter作为插件附加到VAE解码器，通过上下文适配器结合图像特征和水印位生成特征残差，采用两阶段训练：大规模训练和小数据微调。",
+ "experiment_framework": "在COCO数据集上评估，与SSL、StegaStamp、HiDDeN、RoSteALS、WOUAF和Stable Signature等方法比较，使用PSNR、FID、位准确率和追踪准确率等指标。",
+ "takeaways": [
+  "上下文感知的水印嵌入可提高隐蔽性和鲁棒性",
+  "混合微调策略能有效保持图像质量同时抑制伪影"
+ ],
+ "weaknesses": [
+  "在白盒对抗攻击下水印容易被破坏",
+  "查询式攻击虽然成功但会导致图像质量显著下降"
+ ],
+ "confidence": "high",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

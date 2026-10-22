@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Scaling Embedding Layers in Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Scaling Embedding Layers in Language Models.pdf",
+ "title": "Scaling Embedding Layers in Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.75
+ },
+ "one_line": "SCONE解耦n-gram嵌入与词汇表，训练时学习推理时预计算",
+ "innovations": [
+  "解耦f-gram数量与词汇表大小",
+  "训练时使用f-gram模型学习嵌入，推理时预计算并卸载",
+  "两种新的扩展策略：增加f-gram数量和扩展f-gram模型规模"
+ ],
+ "method_framework": "SCONE引入f-gram模型学习n-gram嵌入，训练时使用模型计算，推理时预计算为查找表并卸载到主存，保持推理时加速器资源固定",
+ "experiment_framework": "GPT-2规模模型和OLMo大规模预训练，评估困惑度和下游任务准确率，比较不同f-gram数量和模型规模的影响",
+ "takeaways": [
+  "利用训练计算而不增加推理资源消耗的新范式",
+  "f-gram模型规模扩展可有效提升性能"
+ ],
+ "weaknesses": [
+  "训练时引入额外计算开销",
+  "f-gram嵌入存储在NVMe时仍有轻微延迟",
+  "未探讨极端长序列的处理"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Stackelberg Self-Annotation_A Robust Approach to Data-Efficient LLM Alignment.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Stackelberg Self-Annotation_A Robust Approach to Data-Efficient LLM Alignment.pdf",
+ "title": "Stackelberg Self-Annotation: A Robust Approach to Data-Efficient LLM Alignment",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 8,
+  "overall": 7.1
+ },
+ "one_line": "Stackelberg博弈框架实现LLM对齐，但计算复杂度高且调参敏感",
+ "innovations": [
+  "将偏好对齐建模为Stackelberg博弈",
+  "分布鲁棒重加权机制对抗自标注噪声",
+  "仅需1/30标准人类标注数据达到强性能"
+ ],
+ "method_framework": "SGPO框架将偏好对齐建模为策略(领导者)与最差偏好分布(跟随者)的Stackelberg博弈，SSAPO算法结合少量种子标签与迭代自标注，通过Wasserstein球内分布鲁棒重加权确保训练稳定性。",
+ "experiment_framework": "UltraFeedback数据集(2K种子+58K自标注)，AlpacaEval 2.0和MT-Bench评估，对比DPO、Iter DPO和SPA基线。",
+ "takeaways": [
+  "Stackelberg博弈提供形式化鲁棒性保证",
+  "分布鲁棒重加权可有效对抗自标注噪声",
+  "少量高质量种子数据可大幅减少对人类标注的依赖"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，特别是大规模数据分组处理",
+  "Wasserstein半径ϵ和分段线性近似K值需要仔细调优"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

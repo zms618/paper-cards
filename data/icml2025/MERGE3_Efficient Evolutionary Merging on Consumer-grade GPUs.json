@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MERGE3_Efficient Evolutionary Merging on Consumer-grade GPUs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MERGE3_Efficient Evolutionary Merging on Consumer-grade GPUs.pdf",
+ "title": "MERGE3: Efficient Evolutionary Merging on Consumer-grade GPUs",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.25
+ },
+ "one_line": "消费级GPU上的LLM合并效率优化，IRT估计降低计算成本50倍。",
+ "innovations": [
+  "提出三阶段效率优化框架：提取精简评估数据集、用IRT估计模型能力、基于IRT性能估计器进化合并权重",
+  "将适应度计算成本降低50倍，同时保留大部分原始性能，使进化式合并在单张消费级GPU上可行",
+  "实现了SOTA的多语言和跨语言模型合并，用极低计算开销实现跨语言知识迁移"
+ ],
+ "method_framework": "MERGE3框架包含三个核心组件：(1)E-提取精简数据集——从完整评估数据集中提取代表性子集；(2)E-IRT模型能力估计——使用项目反应理论估计各子模型在不同任务上的能力；(3)E-进化合并——基于IRT性能估计器作为适应度函数，通过进化算法搜索最优合并权重。整个过程在单张NVIDIA 4090 GPU上24小时内完成。",
+ "experiment_framework": "在多语言场景下验证：合并英语数学模型与意大利语、德语、荷兰语模型；基准包括Japanese GSM8K、ARC推理测试；对比Task Arithmetic、TIES-DARE等标准合并方法；在单张4090 GPU上运行；评估跨语言知识迁移效果。",
+ "takeaways": [
+  "MERGE3将适应度评估FLOPs降低50倍，在Japanese GSM8K上与完整数据集进化的模型性能相当",
+  "合并数学模型与多语言模型，在各语言上比标准合并基线高10-20%准确率",
+  "合并意/英/德/荷四语言模型，在ARC推理基准上比单独微调模型高19%"
+ ],
+ "weaknesses": [
+  "与主线研究方向（可靠性×医学影像/多模态大模型推理）关联较弱，属于模型合并效率优化",
+  "IRT估计的准确性依赖于题目质量和模型能力分布假设，在分布偏移场景下可能失效",
+  "仅在7B规模模型上验证，更大规模模型上的扩展性未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.78,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

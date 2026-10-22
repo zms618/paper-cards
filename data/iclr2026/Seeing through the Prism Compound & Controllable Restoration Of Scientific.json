@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Seeing through the Prism Compound & Controllable Restoration Of Scientific.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Seeing through the Prism Compound & Controllable Restoration Of Scientific.pdf",
+ "title": "Seeing through the Prism: Compound & Controllable Restoration of Scientific Images (PRISM)",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "条件扩散模型处理复合退化，支持prompt选择性恢复科学图像。",
+ "innovations": [
+  "指出现有恢复方法逐种退化串行处理导致级联伪影/过校正/抹除信号，提出复合退化同时恢复。",
+  "复合感知监督+加权对比解耦目标，在潜空间对齐各原语退化及其混合，形成组合几何。",
+  "支持自然语言prompt驱动的选择性恢复，可零样本处理训练未见过的退化混合，并提升下游科学精度。"
+ ],
+ "method_framework": "PRISM是prompted条件扩散模型：用复合感知监督训练模型同时建模多种退化的叠加；加权对比解耦目标使各退化原语及其混合在潜空间构成可控几何；专家可用自然语言prompt选择性去除某类失真而保留其余信号。",
+ "experiment_framework": "跨显微镜、野生动物监测、遥感、城市天气数据集；对比SOTA恢复基线；含训练未见的零样本退化混合；指标为恢复质量及下游科学任务准确率；证明选择性恢复优于黑箱恢复。",
+ "takeaways": [
+  "科学图像常受复合退化影响，同时建模+解耦比串行单退化恢复更能保留关键信号。",
+  "prompt可控的选择性恢复可提升下游科学精度，避免过度恢复引入的伪结构。"
+ ],
+ "weaknesses": [
+  "落地域为科学/环境图像恢复，非医学影像/多模态大模型推理主线，相关性中等。",
+  "依赖合成退化混合做监督，真实退化混合与合成间的域差需更多验证。",
+  "条件扩散推理成本较高，实时科学采集场景的部署可行性需讨论。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "科学图像恢复与可靠性主线有交点，但非医学/多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

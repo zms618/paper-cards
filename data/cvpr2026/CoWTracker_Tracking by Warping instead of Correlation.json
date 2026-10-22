@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/CoWTracker_Tracking by Warping instead of Correlation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/CoWTracker_Tracking by Warping instead of Correlation.pdf",
+ "title": "CoWTracker Tracking by Warping instead of Correlation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "扭曲替代相关实现点跟踪与光流统一，但计算效率问题未解",
+ "innovations": [
+  "基于扭曲的匹配机制替代传统相关计算",
+  "空间-时间注意力交替的Transformer架构",
+  "点跟踪与光流任务的统一框架"
+ ],
+ "method_framework": "使用特征提取器获取视频特征，通过DPT上采样提高分辨率，采用扭曲操作将目标帧特征对齐到查询帧，结合空间-时间Transformer进行全局推理，迭代优化位移场。",
+ "experiment_framework": "TAP-Vid(DAVIS/Kinetics/RGB-Stacking/RoboTAP)和光流(Sintel/KITTI/Spring)基准测试，比较AJ、ωavg、OA和EPE等指标。",
+ "takeaways": [
+  "扭曲机制在高分辨率下保持效率，提升细粒度跟踪能力",
+  "无需显式相关计算的设计增强了遮挡处理能力",
+  "同一模型在点跟踪和光流任务间实现零样本迁移"
+ ],
+ "weaknesses": [
+  "迭代优化过程增加了计算复杂度",
+  "未充分讨论模型在不同分辨率下的计算效率",
+  "缺乏对极端长序列跟踪的评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "点跟踪方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

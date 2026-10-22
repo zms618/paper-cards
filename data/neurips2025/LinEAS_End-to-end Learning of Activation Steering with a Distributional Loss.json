@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/LinEAS_End-to-end Learning of Activation Steering with a Distributional Loss.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/LinEAS_End-to-end Learning of Activation Steering with a Distributional Loss.pdf",
+ "title": "LinEAS: End-to-end Learning of Activation Steering with a Distributional Loss",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.7
+ },
+ "one_line": "端到端激活引导方法，用分布损失和稀疏正则化实现跨层控制",
+ "innovations": [
+  "端到端学习跨层激活映射，考虑层间因果关系",
+  "基于最优输运理论的分布对齐损失函数",
+  "稀疏正则化实现自动神经元选择，减少干预100倍"
+ ],
+ "method_framework": "在冻结预训练模型中插入L个可学习的仿射变换映射，通过全局分布损失联合优化所有层的参数，实现源分布到目标分布的转换",
+ "experiment_framework": "毒性缓解：Jigsaw数据集，32个有毒/无毒句子，RTP/TET数据集评估；文本到图像：DMD2数据集，概念删除/诱导任务",
+ "takeaways": [
+  "全局优化比独立层优化更鲁棒，泛化性更好",
+  "稀疏正则化可在保持控制效果的同时显著提升模型效用"
+ ],
+ "weaknesses": [
+  "计算开销比基线方法大（500s vs 30-37s）",
+  "仅展示了文本和图像两种模态，泛化到其他模态需验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

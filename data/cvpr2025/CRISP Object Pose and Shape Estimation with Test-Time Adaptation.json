@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/CRISP Object Pose and Shape Estimation with Test-Time Adaptation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/CRISP Object Pose and Shape Estimation with Test-Time Adaptation.pdf",
+ "title": "CRISP Object Pose and Shape Estimation with Test-Time Adaptation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.6
+ },
+ "one_line": "类别无关姿态估计，测试时自适应提升跨域泛化。",
+ "innovations": [
+  "类别无关的物体姿态与形状估计管道CRISP",
+  "基于优化的姿态与形状校正器，解决域差距问题",
+  "自训练管道CRISP-ST实现测试时自适应"
+ ],
+ "method_framework": "CRISP结合ViT骨干网络、DPT和FiLM条件，估计6D姿态和形状；优化校正器使用双块坐标下降和主动形状模型；自训练采用校正-认证方法生成伪标签。",
+ "experiment_framework": "在YCBV、SPE3R和NOCS数据集评估，使用ADD-S和eshape指标，比较CRISP-Syn、CRISP-Real和自训练版本。",
+ "takeaways": [
+  "主动形状模型将形状校正简化为约束线性最小二乘问题",
+  "可观察正确性证书过滤高质量样本用于自训练",
+  "多视图校正器提升形状估计性能"
+ ],
+ "weaknesses": [
+  "形状解码器在凸包外表现不佳",
+  "自训练需要存储伪标签缓冲区",
+  "计算复杂度较高，实时性受限"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "姿态估计与可靠性主线无实质交点，仅跨域泛化有弱关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

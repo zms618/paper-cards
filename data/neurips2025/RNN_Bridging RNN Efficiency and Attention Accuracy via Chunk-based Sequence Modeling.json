@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/RNN_Bridging RNN Efficiency and Attention Accuracy via Chunk-based Sequence Modeling.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/RNN_Bridging RNN Efficiency and Attention Accuracy via Chunk-based Sequence Modeling.pdf",
+ "title": "Bridging RNN Efficiency and Attention Accuracy via Chunk-based Sequence Modeling",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "分块序列建模结合RNN与注意力，长序列效率提升有限。",
+ "innovations": [
+  "分块序列建模设计，结合RNN局部建模和注意力全局交互",
+  "混合架构设计，将RAT与局部注意力交织使用",
+  "高效实现方案，解决分块设计中的因果掩码问题"
+ ],
+ "method_framework": "RAT将输入序列分为块，块内使用RNN建模局部依赖，块间使用注意力建模长距离交互，通过调整块大小在RNN和注意力之间插值。",
+ "experiment_framework": "1.3B参数模型在FineWeb-Edu上预训练，评估短/长上下文任务、监督微调，包括7个常识推理、11个长上下文任务、4个SFT目标和9个检索任务。",
+ "takeaways": [
+  "分块设计平衡了计算效率和长距离建模能力",
+  "混合架构结合RAT和局部注意力实现最佳性能和效率"
+ ],
+ "weaknesses": [
+  "在短上下文任务上表现不如纯注意力模型",
+  "代码完成任务上表现不佳，需要混合架构改进"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

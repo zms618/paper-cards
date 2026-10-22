@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Text-to-LoRA Instant Transformer Adaption.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Text-to-LoRA Instant Transformer Adaption.pdf",
+ "title": "Text-to-LoRA: Instant Transformer Adaption",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "文本生成LoRA的超网络，参数效率与性能权衡有限",
+ "innovations": [
+  "基于文本描述生成LoRA适配器的超网络架构",
+  "三种不同参数效率的T2L变体设计",
+  "通过重建和SFT两种训练方式实现LoRA压缩与零样本生成"
+ ],
+ "method_framework": "T2L是一个超网络，接收任务描述嵌入和模块/层嵌入，生成低秩矩阵A和B，构成LoRA适配器。支持三种架构(L/M/S)以平衡参数效率和性能。",
+ "experiment_framework": "在SNI数据集的479个任务上训练，评估10个基准任务。基线包括任务特定LoRA、多任务LoRA和Arrow Routing。指标包括准确率和代码任务通过率。",
+ "takeaways": [
+  "超网络可有效压缩数百个LoRA适配器并保持性能",
+  "文本描述作为任务嵌入使T2L能零样本生成新任务适配器",
+  "SFT训练比重建训练更适合零样本泛化"
+ ],
+ "weaknesses": [
+  "重建训练的T2L无法泛化到未见任务",
+  "任务描述质量对性能影响显著",
+  "小规模架构(S)在大量任务上性能受限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

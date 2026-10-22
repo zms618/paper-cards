@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/DP-SGD_Private Training Large-scale Models with Efficient DP-SGD.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/DP-SGD_Private Training Large-scale Models with Efficient DP-SGD.pdf",
+ "title": "Private Training Large-scale Models with Efficient DP-SGD",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "FlashDP优化DP-SGD内存计算效率，但仅限预训练场景",
+ "innovations": [
+  "单任务融合梯度计算减少50%内存传输",
+  "块状归约算法优化GPU I/O",
+  "自适应内核实现块同步"
+ ],
+ "method_framework": "FlashDP通过块状归约架构(HRA)将DP-SGD的四个阶段合并为单一GPU内核，减少内存访问和计算冗余",
+ "experiment_framework": "Llama-13B模型在四A100系统上测试，比较吞吐量、内存使用和精度",
+ "takeaways": [
+  "GPU I/O优化对DP训练效率至关重要",
+  "块状处理可平衡内存限制与计算效率"
+ ],
+ "weaknesses": [
+  "仅关注预训练阶段，未探索微调场景",
+  "自适应内核实现可能引入额外开销"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

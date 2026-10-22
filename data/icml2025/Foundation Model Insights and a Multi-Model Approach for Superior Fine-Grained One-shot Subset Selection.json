@@ -1,0 +1,37 @@
+{
+ "title": "Foundation Model Insights and a Multi-Model Approach for Superior Fine-Grained One-shot Subset Selection",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "多FM特征排序与伪标签融合选样，细粒度数据SOTA但计算成本高",
+ "innovations": [
+  "实证发现FM作为IE在细粒度数据集上 consistently 优于传统target-pretrained IE，但在带噪声标签的粗粒度数据集上优势消失",
+  "提出RAM(RAnking Mean)：对多FM特征按类中心距离排序后取均值，融合多个FM的类内/类间分布",
+  "提出APL(Accuracy of Pseudo-class Labels)：按伪类标签是否与GT一致给样本打分，与RAM联合选样"
+ ],
+ "method_framework": "用多个FM(CLIP/DINOv2/SigLIP/EVA-CLIP)提取特征；对每个FM特征计算到各类中心的欧氏距离并排序得排序均值RAM；同时按最近类中心分配伪标签并与GT比对得APL；按α,β加权融合两分数选class-balanced子集。",
+ "experiment_framework": "在Oxford-IIIT Pet/Food-101/CUB-200-2011三个细粒度数据集上评测；采样率1%-70%；用DeepCore库复现MIN/GC/Craig等基线；报告mean accuracy±标准差；并对α,β、FM数量、单FM vs多FM做消融。",
+ "takeaways": [
+  "RAM-APL在Pet/Food-101/CUB上相对Random平均提升3.74%/4.44%/6.40%，超过次优GC(1.52%/3.04%/2.78%)",
+  "消融显示RAM本身已优于单FM(MIN)，加入APL进一步提升1%和50%采样率下的表现",
+  "使用更多FM(D/C/S/E)比单FM在1%采样率下从5.9%提升到约6.5%"
+ ],
+ "weaknesses": [
+  "仅在3个细粒度图像分类数据集上验证，作者自己承认在粗粒度/噪声标签数据集上FM优势消失，方法普适性受限",
+  "需要多FM推理提取特征，计算成本显著高于单FM与传统IE，论文未量化端到端成本",
+  "属于coreset selection经验性改进，与可靠性/可信AI主线关联弱；α=0.2,β=1为经验值，跨数据集泛化未讨论"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Foundation Model Insights and a Multi-Model Approach for Superior Fine-Grained One-shot Subset Selection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Foundation Model Insights and a Multi-Model Approach for Superior Fine-Grained One-shot Subset Selection.pdf",
+ "raw_overall": 5.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

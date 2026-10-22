@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Energy-Based Flow Matching for Generating 3D Molecular Structure.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Energy-Based Flow Matching for Generating 3D Molecular Structure.pdf",
+ "title": "Energy-Based Flow Matching for Generating 3D Molecular Structure",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6.1
+ },
+ "one_line": "能量基流匹配重构分子生成，采样与精修兼顾但效率权衡不足",
+ "innovations": [
+  "提出能量基流匹配：标准CFM只压低轨迹样本xt的能量，本文额外用网络自己生成的对比样本ˆx1定义能量E(ˆx1)=||G(ˆx1)-x1||^2来塑造损失地形，把离流形点映射回流形点。",
+  "推导出幂等流映射fθ(x)=fθ(fθ(x))：能量下界为0保证梯度流收敛到能量极小点（平衡构型集），使网络同时充当neural sampler与refiner，类比扩散的predictor-corrector与AlphaFold结构精修。",
+  "设计predictor-refiner采样器与self-conditioning式训练（50%时间做CFM、50%做幂等精修目标，detach后迭代K次），仅引入一个超参Kmax，与现有流匹配正交。"
+ ],
+ "method_framework": "采用x1参数化的条件流匹配（预测目标数据点而非向量场）。在标准CFM损失之外，增加幂等/精修损失LR=E||fθ(ˆx1.detach())-x1||^2，其中ˆx1由当前流模型动态采样；训练时随机以概率0.5走CFM或走精修分支，推理时每步先预测再精修一次（双NFE），把采样轨迹逐步推向能量零点。",
+ "experiment_framework": "任务：单/多配体对接与蛋白骨架生成；数据集PDBBind v2020（序列相似度/时间两种划分）、Binding MOAD、SCOPe、PDB；基线HarmonicFlow、DiffDock产品空间扩散、FrameFlow、FoldFlow/SFM/OT、RFdiffusion、GAFL；对接指标RMSD<%<2/%<5与中位数，蛋白指标designability/diversity/novelty/helix/strand含量与生成时间；保持相同计算预算对比。",
+ "takeaways": [
+  "单配体对接上IDFlow在序列相似度划分distance pocket的%<2达35.6（HarmonicFlow 30.1），时间划分radius pocket达34.7（28.3），同推理预算下提升约5.5-6.4%。",
+  "多配体对接%<5达83.1（HarmonicFlow 75.0、EigenFold扩散73.5）；蛋白骨架生成designability达0.927(200NFE)，接近靠更强架构的FoldFlow2且不塌缩为仅螺旋。",
+  "消融显示Kmax=1即显著提升、更大Kmax边际收益递减；测试时精修步数在1次时最优，过多反而因ODE离散误差下降。"
+ ],
+ "weaknesses": [
+  "作者自承训练成本上升（多次前向传播），且额外精修增大ODE采样离散误差；Kmax>2后收益递减，方法的效率-精度权衡不够优雅。",
+  "能量函数只是重构误差这一简单实例，未真正引入生物物理能量（Amber等）或把EBM用作打分函数，作者列为未来工作，故化学合理性保证有限。",
+  "属生成式分子结构建模，与可靠性主线（鲁棒/泛化/可信AI/不确定性/幻觉抑制）仅在'多构象aleatoric uncertainty'上擦边，落地域非医学影像或多模态大模型推理。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

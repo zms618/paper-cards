@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/R-WOM_Retrieval-Augmented World Model for Computer-Use Agents.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/R-WOM_Retrieval-Augmented World Model for Computer-Use Agents.pdf",
+ "title": "R-WoM: Retrieval-Augmented World Model for Computer-Use Agents",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "检索增强LLM世界模型缓解长程规划幻觉，但证据有限。",
+ "innovations": [
+  "用三类任务（下一状态识别、全流程规划对齐、里程碑转移识别）系统probe LLM世界模型的未来状态预测与奖励估计两大核心能力",
+  "发现LLM能捕捉即时下一状态与有意义状态转移，但在全流程长程规划上性能快速退化",
+  "提出R-WoM，通过从外部教程检索事实性、时效性知识来接地LLM仿真，缓解静态参数知识导致的幻觉"
+ ],
+ "method_framework": "将LLM作为computer-use agent的世界模型，先以探针实验刻画其未来状态预测与奖励估计能力；再在仿真时检索外部教程知识接地LLM想象的轨迹与动作结果，减少看似连贯但不可执行的步骤。",
+ "experiment_framework": "在OSWorld与WebArena子集上评测；与基线世界模型对比相对提升；重点考察长程仿真子集的增益。",
+ "takeaways": [
+  "LLM在即时下一状态与状态转移上表现尚可，但全流程规划可靠性随长程快速下降",
+  "R-WoM在OSWorld/WebArena子集上相对基线取得最高23.4%与16.3%的提升，长程仿真优势更明显",
+  "外部教程检索接地可有效抑制LLM世界模型的幻觉与错误累积"
+ ],
+ "weaknesses": [
+  "评测仅在OSWorld/WebArena子集上，绝对任务成功率与完整长程任务的证据有限",
+  "依赖外部教程库质量与检索相关性，检索失败时的鲁棒性与失败模式未充分分析",
+  "未系统消融检索模块、接地策略对最终agent成功率的各自贡献"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "知识面补全价值，与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

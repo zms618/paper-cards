@@ -1,0 +1,41 @@
+{
+ "title": "Reducing Class-Wise Performance Disparity via Margin Regularization",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "自适应margin缩小类间差距，但理论估计不稳定且实验数据不完整。",
+ "innovations": [
+  "推导出margin-based、类敏感的泛化界，揭示per-class特征变异性如何贡献到该类误差，为'难类需更大margin'提供理论依据。",
+  "提出MR2：按类特征散布比例优化per-class logit margin，并正则化过大的表示margin以增强类内紧致性。",
+  "在7个数据集(含ImageNet)与MAE/MoCov2/CLIP等多后端上，提升难类性能且不牺牲易类，与再加权/DRO等需权衡的方法不同。"
+ ],
+ "method_framework": "在类平衡数据下，先由类特征方差范数识别难类(散布大者)；logit margin按该类特征散布自适应增大以收紧泛化界；再加惩罚项抑制过大表示margin、促进类内紧致；二者联合动态调整，同时改善整体与最差类精度。",
+ "experiment_framework": "7个数据集(含ImageNet)；架构ResNet/ViT；后端MAE、MoCov2、CLIP；设置端到端微调与linear probing；对比再加权、margin-based长尾方法、DRO；指标为整体精度、难/易类精度及类间差距。",
+ "takeaways": [
+  "即使类平衡训练，模型仍有严重类间精度差距(ImageNet上最优类100%、最差16%)。",
+  "难类的特征散布更大，这是其泛化误差更大的机制原因，可指导margin设计。",
+  "按特征散布自适应margin能在不牺牲易类的前提下缩小类间差距。"
+ ],
+ "weaknesses": [
+  "落地域为自然图像分类的公平性/最差类性能，非医学影像或多模态推理主线。",
+  "理论界以类特征方差为关键量，其估计随批次变化会引入训练不稳定。",
+  "节选前9页未见7数据集的完整数值表，相对DRO/再加权的具体提升幅度在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Reducing Class-Wise Performance Disparity via Margin Regularization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reducing Class-Wise Performance Disparity via Margin Regularization.pdf",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "类平衡分类公平性，非医学或多模态主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

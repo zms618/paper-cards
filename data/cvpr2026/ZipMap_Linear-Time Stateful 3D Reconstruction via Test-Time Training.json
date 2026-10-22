@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/ZipMap_Linear-Time Stateful 3D Reconstruction via Test-Time Training.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ZipMap_Linear-Time Stateful 3D Reconstruction via Test-Time Training.pdf",
+ "title": "ZipMap: Linear-Time Stateful 3D Reconstruction via Test-Time Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "线性TTT压缩场景状态，前馈重建快20倍但精度验证不足",
+ "innovations": [
+  "首个把TTT层(LaCT)用于前馈3D重建：用'快权重'MLP在单次前向把全部图像压缩成紧凑隐场景状态，替代全局自注意力，复杂度从二次降到线性且保持双向一致性",
+  "状态即场景：隐状态同时是像素对齐几何/外观的可查询隐式表示(给定新视角相机即实时出彩色点图)，并自然扩展为顺序流式重建(长视频增量)",
+  "效率实证：700+帧<10秒(75FPS，单H100)，较VGGT/π3快20×以上，同时ATE/重建精度不降反升(精度持平或超越二次复杂度方法)"
+ ],
+ "method_framework": "N张图像→窗口注意力特征→大块TTT层(MLP快权重在线梯度更新)压缩全局上下文→输出相机位姿/深度/点云；同一状态支持任意新视角query；流式模式对增量帧续更新状态。",
+ "experiment_framework": "大规模重建数据集(多视角/长序列)对比VGGT/π3(二次)与CUT3R/Point3R/TTT3R(线性但质量降)：ATE/深度/点云精度+运行时间缩放曲线(至750帧)+实时场景查询与流式重建演示。",
+ "takeaways": [
+  "'状态化替代全局注意力'：把'一次看到全部'换成'压成状态'，线性复杂度+双向性可兼得，是长序列前馈模型的通用解法(TTT/状态空间)",
+  "'副产品=可查询场景表示'：重建模型的中间状态直接变成隐式场景表示，'状态即产品'的设计让一个模型同时是重建器与查询器",
+  "'精度与速度要同时报'：作者强调'匹配或超越二次方法质量'而非仅快，为效率型论文设定'不能牺牲质量'的验收标准"
+ ],
+ "weaknesses": [
+  "依赖LaCT/TTT超参(块大小/学习率/梯度更新次数)未见敏感性消融；'匹配或超越VGGT'的精度对比集中在ATE/深度，appearance/novel view质量对比不足",
+  "流式模式的状态漂移(error accumulation)与重访旧帧的修正能力未量化；unposed输入的最坏情形(大基线/少重叠)鲁棒性未测",
+  "训练数据规模/多样性未交代(是否含野外大场景)；20×加速含A100/H100配置差异，内存峰值随帧数的线性增长曲线未给"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D重建与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

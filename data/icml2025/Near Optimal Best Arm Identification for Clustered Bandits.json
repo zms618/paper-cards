@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Near Optimal Best Arm Identification for Clustered Bandits.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Near Optimal Best Arm Identification for Clustered Bandits.pdf",
+ "title": "Near Optimal Best Arm Identification for Clustered Bandits",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "聚类赌博机两种顺序算法，仅限常数聚类数最优证明",
+ "innovations": [
+  "提出Cl-BAI（先聚类后最优臂识别）与BAI-Cl（先最优臂识别后聚类）两种算法框架",
+  "基于逐次消除（successive elimination）框架，同时优化样本复杂度与通信开销",
+  "当聚类数M为常数时，证明BAI-Cl的变体达到极小极大最优样本复杂度"
+ ],
+ "method_framework": "在联邦多臂赌博机框架下，N个智能体分为M个先验未知的聚类；Cl-BAI先基于智能体交互数据聚类，再为每个聚类识别最优臂；BAI-Cl反向操作，先识别各智能体最优臂再据此聚类。两者均采用逐次消除策略以提升计算效率。",
+ "experiment_framework": "在合成数据与真实数据（MovieLens、Yelp）上验证；对比指标为样本复杂度与通信效率；展示M远小于N时算法的优势。",
+ "takeaways": [
+  "聚类结构可显著降低多智能体赌博机的样本与通信成本，尤其在M远小于N时",
+  "两种算法顺序（先聚类后BAI vs 先BAI后聚类）各有适用场景，M较小时BAI-Cl更优",
+  "逐次消除框架在分布式聚类赌博机中兼具计算效率与精度保证"
+ ],
+ "weaknesses": [
+  "仅当M为常数时证明极小极大最优，M随N增长时的复杂度行为未充分分析",
+  "聚类数M需要预先知道或估计，实际中M未知时的处理未讨论",
+  "通信模型假设中心化架构，去中心化点对点通信场景未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

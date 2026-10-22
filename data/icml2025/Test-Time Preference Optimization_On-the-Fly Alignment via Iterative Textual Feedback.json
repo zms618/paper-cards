@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Test-Time Preference Optimization_On-the-Fly Alignment via Iterative Textual Feedback.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Test-Time Preference Optimization_On-the-Fly Alignment via Iterative Textual Feedback.pdf",
+ "title": "Test-Time Preference Optimization: On-the-Fly Alignment via Iterative Textual Feedback",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "测试时文本反馈对齐LLM，依赖外部奖励模型计算开销大",
+ "innovations": [
+  "将数值奖励信号转换为文本反馈的测试时对齐框架",
+  "无需更新模型参数的在线学习范式",
+  "结合并行采样和顺序修订的混合优化策略"
+ ],
+ "method_framework": "TPO框架包含四个关键组件：变量定义(响应)、损失计算(文本批评)、梯度计算(改进建议)和变量优化(更新响应)，通过迭代过程实现测试时对齐。",
+ "experiment_framework": "数据集：AlpacaEval 2, Arena-Hard, HH-RLHF, BeaverTails, XSTest, MATH-500；基线：Llama-3.1-70B-DPO, Llama-3.1-70B-Instruct；指标：LC, WR, 准确率, 平均奖励",
+ "takeaways": [
+  "文本反馈机制比纯数值奖励更有效",
+  "少量TPO迭代即可超越训练时对齐方法",
+  "测试时计算可通过宽度和深度灵活扩展"
+ ],
+ "weaknesses": [
+  "依赖外部奖励模型作为人类偏好代理",
+  "计算开销随迭代次数增加",
+  "未探讨不同规模模型的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

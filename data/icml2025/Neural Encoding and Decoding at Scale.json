@@ -1,0 +1,36 @@
+{
+ "title": "Neural Encoding and Decoding at Scale",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "elevance": 4.0,
+  "evidence": 6.0,
+  "overall": 5.3
+ },
+ "one_line": "掩码多模态预训练在神经数据上的应用，跨范式迁移未验证。",
+ "innovations": [
+  "指出现有大规模神经建模只做编码或只做解码，无法刻画神经-行为双向关系。",
+  "提出多任务掩码策略，交替进行神经/行为/模态内/跨模态掩码，统一编码与解码。",
+  "预训练后涌现出无需显式训练即可高度预测记录脑区的性质，迈向脑基础模型。"
+ ],
+ "method_framework": "基于Transformer做掩码多模态建模：在神经活动与行为信号间交替掩码，通过masked prediction同时学会由行为预测神经活动(编码)与由神经活动预测行为(解码)；跨模态掩码实现双向翻译。",
+ "experiment_framework": "在IBL repeated-site数据集(83只小鼠同视觉决策任务的Neuropixels记录)上评测；对比POYO+、NDT2及单模态方法；指标为编码/解码关键变量(触须运动、转轮速度、选择、block先验)的预测精度；73只动物预训练+10只held-out微调。",
+ "takeaways": [
+  "多任务掩码可统一编码与解码，超越单任务大规模模型。",
+  "规模化多动物预训练带来涌现的脑区可解释表征。"
+ ],
+ "weaknesses": [
+  "本质是掩码多模态预训练在神经数据上的迁移，架构新颖性中等。",
+  "基于trial-aligned同任务数据，跨不同行为范式的迁移未验证。",
+  "落地为神经科学/脑机接口，与可靠性主线（医学影像/多模态大模型推理）无直接关联，relevance低。"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Neural Encoding and Decoding at Scale.pdf",
+ "path": "icml2025/Neural Encoding and Decoding at Scale.pdf",
+ "conf": "icml2025",
+ "raw_overall": 6.11,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

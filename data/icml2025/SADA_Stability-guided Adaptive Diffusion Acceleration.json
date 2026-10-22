@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/SADA_Stability-guided Adaptive Diffusion Acceleration.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SADA_Stability-guided Adaptive Diffusion Acceleration.pdf",
+ "title": "SADA: Stability-guided Adaptive Diffusion Acceleration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "ODE稳定性引导的自适应扩散加速，1.8倍速度提升",
+ "innovations": [
+  "提出基于ODE轨迹稳定性的统一加速准则",
+  "结合ODE求解器梯度的双近似方案",
+  "动态分配步级和token级稀疏性"
+ ],
+ "method_framework": "通过ODE轨迹的二阶差分构建稳定性准则，动态选择步级或token级稀疏模式，结合Adams-Moulton和Lagrange插值进行近似",
+ "experiment_framework": "在SD-2、SDXL和Flux模型上测试，使用EDM和DPM++求解器，对比DeepCache和AdaptiveDiffusion基线，评估LPIPS、FID和加速比",
+ "takeaways": [
+  "稳定性准则可有效指导稀疏分配决策",
+  "结合ODE求解器梯度的近似方案显著降低误差",
+  "方法具有跨模型和跨模态的泛化能力"
+ ],
+ "weaknesses": [
+  "理论分析主要基于ODE连续形式，实际离散实现可能有偏差",
+  "token级稀疏策略的内存缓存机制可能增加实现复杂度"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

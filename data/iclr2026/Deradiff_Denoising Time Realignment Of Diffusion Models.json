@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Deradiff_Denoising Time Realignment Of Diffusion Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Deradiff_Denoising Time Realignment Of Diffusion Models.pdf",
+ "title": "Deradiff: Denoising Time Realignment Of Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "扩散模型去噪时重对齐，闭式解实现推理时正则化控制",
+ "innovations": [
+  "将解码时重对齐从语言模型扩展到扩散模型",
+  "推导出几何混合分布的闭式解",
+  "引入单参数λ实现推理时正则化强度控制"
+ ],
+ "method_framework": "通过几何混合参考模型和对齐模型的分布，推导出每步去噪的闭式高斯更新公式，实现无需再训练的正则化强度调制",
+ "experiment_framework": "SDXL/SD1.5模型，PickScore/HPS v2/CLIP指标，对比不同β值下DeRaDiff与从头训练模型的性能差异",
+ "takeaways": [
+  "闭式解实现高效重对齐",
+  "λ∈[0,1]时性能最佳",
+  "可修复奖励黑客问题"
+ ],
+ "weaknesses": [
+  "λ>1时性能下降",
+  "数值近似误差可能导致视觉差异",
+  "仅适用于特定扩散模型范式"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "扩散模型重对齐方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

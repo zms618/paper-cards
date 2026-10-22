@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/On the Role of Temporal Granularity in the Robustness of.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/On the Role of Temporal Granularity in the Robustness of.pdf",
+ "title": "On the Role of Temporal Granularity in the Robustness of",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "分析SNN时间粒度鲁棒性，提出攻击与正则方法但计算成本高",
+ "innovations": [
+  "提出时间粒度攻击(TG-Attack)，针对单个时间步梯度进行扰动",
+  "理论推导时间敏感性(TS)和TSV，量化SNN在时间粒度上的鲁棒性",
+  "设计时间粒度正则化(TG-Reg)，约束TSV提升整体鲁棒性"
+ ],
+ "method_framework": "基于SNN时间特性，提出TG-Attack针对单个时间步梯度进行攻击，理论推导时间敏感性矩阵(TSM)和时间敏感性值(TSV)，并设计TG-Reg正则化项约束TSV提升鲁棒性。",
+ "experiment_framework": "在CIFAR-10/100、Tiny-ImageNet和DVS-CIFAR10数据集上，使用VGG、ResNet等网络结构，对比FGSM、PGD等攻击方法下的准确率变化。",
+ "takeaways": [
+  "时间粒度分析揭示了SNN在不同时间步的鲁棒性差异",
+  "TSV可作为评估SNN鲁棒性的有效指标，无需生成对抗样本",
+  "TG-Reg正则化方法显著提升SNN对抗鲁棒性"
+ ],
+ "weaknesses": [
+  "计算Hessian矩阵开销较大，虽优化但仍增加训练成本",
+  "实验主要在标准数据集上进行，缺乏在医学影像等特定领域的验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "SNN时间粒度鲁棒性分析，属于可靠性主线但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

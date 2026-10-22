@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Path Gradients after Flow Matching.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Path Gradients after Flow Matching.pdf",
+ "title": "Path Gradients after Flow Matching",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "混合Flow Matching与Path Gradients提升分子采样效率，但计算成本高",
+ "innovations": [
+  "Flow Matching预训练与Path Gradients微调的混合训练方法",
+  "在已知目标能量条件下使用Path Gradients微调CNF",
+  "使用增强伴随方法优化Path Gradients计算效率"
+ ],
+ "method_framework": "先用Flow Matching快速训练CNF近似目标分布，再用Path Gradients在目标样本上微调优化前向KL散度，保持相同计算预算",
+ "experiment_framework": "LJ13/LJ55粒子系统、Ala二肽数据集，对比OT FM与Path Gradients微调的ESS和NLL指标",
+ "takeaways": [
+  "混合方法在相同计算预算下可显著提升采样效率",
+  "Path Gradients微调保留Flow Matching学习的流结构"
+ ],
+ "weaknesses": [
+  "Path Gradients计算成本远高于Flow Matching",
+  "在目标分布拟合较差时Path Gradients效果有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

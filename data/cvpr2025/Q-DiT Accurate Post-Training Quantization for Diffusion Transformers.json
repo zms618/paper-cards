@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Q-DiT Accurate Post-Training Quantization for Diffusion Transformers.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Q-DiT Accurate Post-Training Quantization for Diffusion Transformers.pdf",
+ "title": "Q-DiT Accurate Post-Training Quantization for Diffusion Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "Q-DiT通过自动粒度分配和动态激活量化提升DiT量化精度",
+ "innovations": [
+  "自动量化粒度分配算法优化不同层的分组大小",
+  "样本级动态激活量化适应不同时间步和样本的激活变化",
+  "结合进化搜索与FID/FVD指标直接优化量化效果"
+ ],
+ "method_framework": "Q-DiT结合细粒度组量化和样本级动态激活量化，通过进化算法优化各层分组大小，并在推理时动态计算激活量化参数",
+ "experiment_framework": "ImageNet(256×256/512×512)图像生成和VBench视频生成，对比PTQ4DM、RepQ-ViT等基线，使用FID、sFID、IS和VBench指标",
+ "takeaways": [
+  "组量化大小选择存在非单调性，需针对每层优化",
+  "动态激活量化可有效处理时间步分布变化",
+  "进化搜索直接以生成质量指标指导量化参数优化"
+ ],
+ "weaknesses": [
+  "动态量化增加推理时计算开销",
+  "进化搜索过程计算成本较高",
+  "未探索更低位宽(如W4A4)的量化效果"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型量化技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Statistical Hypothesis Testing for Auditing Robustness in Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Statistical Hypothesis Testing for Auditing Robustness in Language Models.pdf",
+ "title": "Statistical Hypothesis Testing for Auditing Robustness in Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 6.9
+ },
+ "one_line": "将LLM扰动分析重构为频率派假设检验，提供可解释p值与效应量。",
+ "innovations": [
+  "提出 distribution-based perturbation analysis，将 LLM 扰动分析重构为频率派假设检验问题",
+  "在低维语义相似空间用 MC 采样构造经验零分布与备择分布，无需限制性分布假设即可做推断",
+  "框架模型无关、支持任意黑盒 LLM 的任意输入扰动、给出可解释 p 值、多扰动下控制错误率并提供标量效应量"
+ ],
+ "method_framework": "对同一输入在有/无干预下各采样多次输出，投影到低维语义相似空间；以无干预样本经验分布为零分布、有干预样本为备择分布，构造检验统计量，判断观测到的输出变化是否超出随机采样波动（温度/top-k）可解释范围，输出 p 值与效应量。",
+ "experiment_framework": "多个案例研究展示框架用法：量化输入扰动/模型变体/prompt 修改对输出的影响，做漏洞识别、偏见发现与合规审计；对比逐输出比较/全分布比较的不可行做法。",
+ "takeaways": [
+  "LLM 输出天然随机，单样本比较无法区分真实干预效应与采样波动",
+  "语义空间经验分布检验可给出可解释 p 值，把鲁棒性审计变为可证伪的统计检验",
+  "多扰动下的错误率控制使大规模系统化审计可行"
+ ],
+ "weaknesses": [
+  "依赖低维语义嵌入的选择，嵌入不同可能改变检验结论",
+  "MC 采样多次输出带来审计计算成本",
+  "效应量与 p 值对温度/采样参数敏感，报告规范需统一"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

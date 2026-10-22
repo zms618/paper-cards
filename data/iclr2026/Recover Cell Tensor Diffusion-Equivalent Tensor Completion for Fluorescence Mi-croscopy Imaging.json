@@ -1,0 +1,41 @@
+{
+ "title": "Recover Cell Tensor: Diffusion-Equivalent Tensor Completion for Fluorescence Microscopy Imaging",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "将荧光显微成像建模为张量补全，用扩散模型重建细胞结构。",
+ "innovations": [
+  "从新视角将FM成像表述为张量补全(而非已知退化的逆问题)，契合其非线性退化与不完全观测本质。",
+  "推导精确3D细胞张量补全的理论下界，验证在稀疏各向异性采样下准确恢复3D细胞体积的可行性。",
+  "把低秩张量恢复等价改写为条件score-based生成过程，用结构一致性先验引导生成轨迹到去噪、几何一致的重建。"
+ ],
+ "method_framework": "将等距Z轴扫描视为对3D细胞张量的均匀随机欠采样；用低秩张量补全建模非线性/不完全退化；将求解重写为条件扩散(score-based)，并在生成轨迹中注入结构一致性先验，使其收敛到既去噪又保持细胞几何的重建，无需高质量参考体积。",
+ "experiment_framework": "基准：SR-CACO-2与三个真实in vivo细胞数据集；对比Bicubic、DBPN、NeuroClear、CycleGAN类(Cycle+HAT/IPG)等逆问题/无监督方法；指标为信噪比(SNR)与结构保真度。",
+ "takeaways": [
+  "假设已知稳定退化的逆问题方法在FM非线性、不完全、高噪条件下易产生不稳定/幻觉式重建。",
+  "张量补全视角+其扩散等价形式能在无配对高/低质参考下实现3D细胞恢复。",
+  "结构一致性先验对引导生成轨迹、避免几何失真起到关键作用。"
+ ],
+ "weaknesses": [
+  "等距Z轴采样、低秩假设对实际非规则采样与高复杂细胞结构的适用性在节选页中未充分验证。",
+  "节选前9页未见SR-CACO-2及三数据集的完整SNR/结构保真数值表，SOTA结论的定量证据在所选范围内不完整。",
+  "理论下界针对理想张量补全模型，与实际生成式求解之间的gap未严格刻画。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Recover Cell Tensor Diffusion-Equivalent Tensor Completion for Fluorescence Mi-croscopy Imaging.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Recover Cell Tensor Diffusion-Equivalent Tensor Completion for Fluorescence Mi-croscopy Imaging.pdf",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "荧光显微成像与可靠性方法交点，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

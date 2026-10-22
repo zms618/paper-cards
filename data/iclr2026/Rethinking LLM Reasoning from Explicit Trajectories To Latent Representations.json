@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Rethinking LLM Reasoning from Explicit Trajectories To Latent Representations.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rethinking LLM Reasoning from Explicit Trajectories To Latent Representations.pdf",
+ "title": "Rethinking LLM Reasoning: From Explicit Trajectories to Latent Representations",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "质疑完整推理轨迹必要性，提出隐式推理但牺牲可解释性。",
+ "innovations": [
+  "实证LLM可仅凭片段化推理路径、无需完整逐token序列就生成正确答案，质疑完整推理轨迹的必要性。",
+  "提出LRT：用隐式紧凑可学习表示替代昂贵的推理步骤自回归生成。",
+  "用轻量模块单次前向完成推理，把显式推理转为潜在推理，在数学与OOD基准上超过高效推理方法乃至Qwen3混合推理。"
+ ],
+ "method_framework": "通过后训练让LLM在隐空间中维护紧凑的推理表示，推理时不再逐token生成CoT，而是由轻量模块单次前向从隐表示直接解码最终答案，从而消除长推理链的解码开销。",
+ "experiment_framework": "在数学推理与分布外(OOD)基准上评测；对比相关高效推理方法与Qwen3混合推理框架；指标为准确率与推理成本/解码长度。",
+ "takeaways": [
+  "LLM推理不必依赖完整显式文本轨迹，潜在表示足以支撑准确答案。",
+  "潜在推理在大幅降低解码开销的同时可达到甚至超过显式CoT/SOTA混合推理。"
+ ],
+ "weaknesses": [
+  "隐式推理不可读、不可审查，与可信AI对推理可解释/可验证的要求相悖。",
+  "主要在数学推理验证，对需多步外部工具使用的复杂agent任务适用性未展示。",
+  "前9页给出优于Qwen3的结论，具体基准数值表与隐表示质量分析在后续页。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "牺牲可解释性与可信AI要求，仅数学验证无工具使用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

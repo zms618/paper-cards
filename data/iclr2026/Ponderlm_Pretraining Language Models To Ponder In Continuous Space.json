@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Ponderlm_Pretraining Language Models To Ponder In Continuous Space.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Ponderlm_Pretraining Language Models To Ponder In Continuous Space.pdf",
+ "title": "PonderLM: Pretraining Language Models to Ponder in Continuous Space",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "连续空间思索嵌入提升预训练效率，但推理成本高且缺乏复杂推理对比",
+ "innovations": [
+  "在连续嵌入空间做'思索'：不采样真实token，而以预测分布对词表嵌入加权求和得到 pondering embedding 残差回喂",
+  "该思索过程可自监督学习，无需人工标注或额外奖励",
+  "方法架构无关，在 GPT-2/Pythia/LLaMA 上验证，PonderPythia-2.8B 超过 Pythia-6.9B、1B 可匹敌10倍数据训练的 TinyLlama"
+ ],
+ "method_framework": "给定输入token嵌入，基础LM输出词表分布，据此对全部token嵌入加权求和得到连续 pondering embedding，残差加到输入嵌入后再次前向；在单token预测内重复k步迭代精化分布，最终前向给出预测。整个过程随预训练自监督优化。",
+ "experiment_framework": "在 GPT-2、Pythia、LLaMA 三种开源架构上预训练并在9个下游基准评测；绘制参数/数据/FLOPs缩放曲线，对比官方 Pythia 套件与 TinyLlama。",
+ "takeaways": [
+  "连续空间思索可在更少参数(63%)与更少训练token(59%)下达到更大基线模型性能",
+  "相同FLOPs预算下 PonderPythia 一致取得更低预训练损失",
+  "思索式迭代精化是提升样本/参数效率的通用、架构无关手段"
+ ],
+ "weaknesses": [
+  "每token多次前向增加推理算力，是'参数省但推理增'，实际部署性价比需权衡",
+  "主线为test-time compute/预训练效率，与鲁棒性、医学影像等主线关联弱",
+  "前9页未见在复杂推理(数学/代码)上相对o1/R1类显式推理链方法的直接对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.18,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "预训练效率提升与可靠性主线关联弱，无落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

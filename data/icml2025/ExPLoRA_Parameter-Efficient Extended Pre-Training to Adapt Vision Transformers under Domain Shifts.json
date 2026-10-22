@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/ExPLoRA_Parameter-Efficient Extended Pre-Training to Adapt Vision Transformers under Domain Shifts.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ExPLoRA_Parameter-Efficient Extended Pre-Training to Adapt Vision Transformers under Domain Shifts.pdf",
+ "title": "ExPLoRA: Parameter-Efficient Extended Pre-Training to Adapt Vision Transformers under Domain Shifts",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "选择性解冻ViT块+LoRA，在卫星图像上参数高效预训练",
+ "innovations": [
+  "选择性解冻1-2个ViT块并用LoRA调整其余层",
+  "在目标域上继续无监督预训练",
+  "仅使用<10%参数实现优于全预训练的性能"
+ ],
+ "method_framework": "初始化预训练ViT权重，解冻部分块并用LoRA调整其余层，在目标域上继续无监督预训练，最后用LoRA微调",
+ "experiment_framework": "fMoW-RGB/Sentinel数据集，对比全预训练、LoRA、AdaLoRA等基线，指标为top-1准确率和线性探测准确率",
+ "takeaways": [
+  "选择性解冻关键块比全解冻更高效",
+  "LoRA仅应用于Q,V矩阵比应用于所有矩阵更有效",
+  "ExPLoRA可作为其他PEFT方法的初始化"
+ ],
+ "weaknesses": [
+  "仅验证了卫星图像等少数领域",
+  "多光谱图像需要额外处理位置编码和补丁嵌入",
+  "未探讨模型在不同域间迁移的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

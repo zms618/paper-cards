@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Watermarking Diffusion Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Watermarking Diffusion Language Models.pdf",
+ "title": "Watermarking Diffusion Language Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.0,
+  "overall": 6.1
+ },
+ "one_line": "DLM水印方案解决顺序生成难题，但实验局限多语言与攻击场景。",
+ "innovations": [
+  "提出首个扩散语言模型（DLM）水印方案，突破了传统ARLM水印依赖已生成token哈希的根本限制",
+  "在部分上下文未知时，通过对上下文取期望来应用水印，并优先提升那些作为其他token上下文时能增强水印强度的token",
+  "保持水印检测器与ARLM水印兼容，实现DLM与ARLM水印检测的统一"
+ ],
+ "method_framework": "针对DLM任意顺序去噪的特性，(1)对尚未完全确定的上下文token取期望计算水印种子，而非依赖完整前文；(2)在采样时优先选择那些能增强后续token水印强度的token，从而系统性积累水印信号。检测器保持与传统ARLM水印相同的统计检验逻辑。",
+ "experiment_framework": "在多个扩散语言模型上评估水印效果。指标包括真阳性率（TPR）、假阳性率（FPR）、生成质量影响（困惑度等）、抗文本编辑/ paraphrase鲁棒性。对比基线为传统ARLM水印直接应用于DLM的效果。",
+ "takeaways": [
+  "传统ARLM水印不能直接迁移到DLM——由于任意顺序生成，绝大多数token缺乏完整前文上下文，导致水印极弱",
+  "期望上下文水印+上下文增强token优先选择的组合方案，可在DLM上实现接近ARLM水印的检测性能",
+  "DLM水印的真阳性率>99%，对生成质量的影响可忽略"
+ ],
+ "weaknesses": [
+  "仅在英文文本DLM上验证，多语言场景下的水印鲁棒性未知",
+  "水印方案对不同去噪调度策略（如块扩散、波前扩散）的兼容性未系统测试",
+  "主动攻击（如人工改写后去除水印）下的安全性未充分评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "水印技术属于纯工程工作，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

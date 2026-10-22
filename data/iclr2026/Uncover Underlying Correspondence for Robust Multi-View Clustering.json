@@ -1,0 +1,41 @@
+{
+ "title": "Uncover Underlying Correspondence for Robust Multi-View Clustering",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "EM框架建模噪声对应，提升多视图聚类鲁棒性",
+ "innovations": [
+  "区分两类有害噪声对应：类别级错配(同类样本被误当负样本)与样本级错配(可对齐错配/无可配对的不可对齐样本)，指出既往重加权/重对齐方法都忽略这两点。",
+  "提出 CorreGen 生成式框架，将噪声对应学习表述为对潜在跨视图对应的最大似然估计，而非判别式对比损失。",
+  "用 EM 求解：E 步以 GMM 引导的边缘分布推断软对应并自适应降权噪声/不可对齐样本，M 步最大化期望对数似然更新嵌入网络。"
+ ],
+ "method_framework": "摒弃保留原始配对的对比范式，转而显式推断跨视图潜在对应矩阵；E 步估计软对应分布(捕捉类间关系、用 GMM 边缘给噪声/孤儿样本低权重)，M 步更新嵌入网络使对应似然最大化，从而在脏配对数据上学到共享嵌入并聚类。",
+ "experiment_framework": "在合成噪声数据与多个真实噪声多视图数据集上，与成对重加权、成对重对齐两类鲁棒对比 MVC 基线对比，指标为聚类常用 NMI/ACC 等，报告不同噪声比例下的稳健性。",
+ "takeaways": [
+  "类别级语义与不可对齐样本是既有鲁棒 MVC 被忽视的两类关键噪声，导致次优聚类。",
+  "将噪声对应视为可推断的潜在变量并用 EM 生成式建模，显著优于保留/重分配配对的判别式方法。",
+  "软对应+GMM 降权能在不对原始配对做硬修正的情况下自适应滤噪。"
+ ],
+ "weaknesses": [
+  "EM 迭代与 GMM 引入额外计算与超参(组件数/收敛阈值)，读到的是框架，计算开销与调参敏感性未读完。",
+  "仅在多视图聚类这一传统无监督任务验证，未涉及多模态大模型等目标落地域，跨域可迁移性不明。",
+  "鲁棒性提升的量化幅度与统计显著性、对噪声比例阈值的依赖需看完整实验表，当前仅摘要级证据。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Uncover Underlying Correspondence for Robust Multi-View Clustering.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Uncover Underlying Correspondence for Robust Multi-View Clustering.pdf",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "鲁棒多视图聚类方法，解决噪声对应问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/f-SOFTARGMAX_Beyond Softmax and Entropy Convergence Rates Of Policy Gradients with f-SOFTARGMAX Parameterization & Coupled.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/f-SOFTARGMAX_Beyond Softmax and Entropy Convergence Rates Of Policy Gradients with f-SOFTARGMAX Parameterization & Coupled.pdf",
+ "title": "Beyond Softmax and Entropy: Convergence Rates of Policy Gradients with f-Softargmax Parameterization and Coupled Regularization",
+ "scores": {
+  "novelty": 7,
+  "depth": 7.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "理论贡献有限，实证薄弱，外推性存疑",
+ "innovations": [
+  "提出以广义f-softargmax族替代softmax作为策略参数化，改善病态优化地形",
+  "主张将该参数化与由同一f散度诱导的正则化耦合，使正则目标满足Polyak-Lojasiewicz不等式",
+  "首次建立有限MDP下随机策略梯度无任何预处理的显式非渐近last-iterate收敛保证，并推导未正则问题样本复杂度界，Tsallis散度下为多项式复杂度(对比softmax的指数复杂度)"
+ ],
+ "method_framework": "策略参数化由softmax推广为广义f-softargmax；正则项取同一f散度(如Tsallis-α)，与参数化耦合改善地形；利用PL不等式结构对随机策略梯度(f-PG)做非渐近收敛分析，并推导样本复杂度。",
+ "experiment_framework": "以有限MDP为理论分析对象，通过单状态两动作MDP的正则价值地形图直观对比softmax+熵与Tsallis-softargmax+Tsallis正则的地形平坦度；主要证据为收敛率与样本复杂度的理论界，实验性验证有限。",
+ "takeaways": [
+  "softmax参数化可致指数级慢收敛，f-softargmax(尤其Tsallis)耦合同散度正则可将样本复杂度降至多项式",
+  "耦合正则使目标满足PL不等式，是获得无预处理last-iterate收敛保证的关键结构",
+  "预处理虽可缓解softmax病态但计算昂贵，替代参数化是更省的路径"
+ ],
+ "weaknesses": [
+  "结论主要限于有限MDP与表格策略设置，向大规模函数逼近/连续控制的外推未建立",
+  "实证证据在提取页内薄弱，收敛率改善缺乏大规模RL实验支撑",
+  "f散度族与超参(温度λ、α)如何选取以平衡收敛与探索，缺乏系统指导"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "强化学习优化理论，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

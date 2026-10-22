@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Position LLMs Need a Bayesian Meta-Reasoning Framework for More Robust and Generalizable Reasoning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Position LLMs Need a Bayesian Meta-Reasoning Framework for More Robust and Generalizable Reasoning.pdf",
+ "title": "Position: LLMs Need a Bayesian Meta-Reasoning Framework for More Robust and Generalizable Reasoning",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 3,
+  "relevance": 7,
+  "overall": 5.4
+ },
+ "one_line": "立场论文提出贝叶斯元推理框架，但无实证支持与具体实现方案。",
+ "innovations": [
+  "诊断现有推理范式的局限：next-token 预测依赖语言频率，RLHF/奖励模型依赖任务特定标注，自生成反馈不可靠，均难跨任务泛化",
+  "提出贝叶斯元推理框架，把推理建模为自适应过程，整合自我觉察、监控、评估、调控与元反思，使模型能在新问题上重组基础推理技能",
+  "主张从学会解题转向学会如何解题（learning-to-reason / meta-reasoning），以提升鲁棒性、抗扰动与跨任务泛化"
+ ],
+ "method_framework": "以双过程理论与元认知推理为灵感，指出现有 LLM 被训练逐个求解任务而非学习求解方法；据此设计贝叶斯元推理循环：自我觉察当前推理状态、监控过程、评估中间结果、调控策略、并做元反思以沉淀可迁移的推理模式。用贝叶斯方式对推理不确定性与策略选择做更新，从而在面对未见任务时重组技能而非依赖任务特定奖励。",
+ "experiment_framework": "立场论文，无完整新系统实验；以回顾现有 LLM 推理方法（next-token、RLHF、过程/结果奖励、自生成反馈、迭代精炼）的失败模式为主，给出未来研究方向并附参考资源库。",
+ "takeaways": [
+  "逐题求解+任务特定奖励的范式在鲁棒性、抗扰动与跨任务泛化上存在根本局限",
+  "自生成反馈往往不可靠，且逐样本反馈无法捕捉多案例共享模式",
+  "元推理（监控-评估-调控-反思）的贝叶斯框架是提升推理泛化的有前景方向"
+ ],
+ "weaknesses": [
+  "立场论文仅提出框架构想，未给出可训练的具体模型或在推理基准上的实证增益，框架各组件如何与现有 LLM 架构结合尚不清晰",
+  "贝叶斯更新与元反思的计算成本、与自回归解码的兼容性未讨论",
+  "24页篇幅，框架细节与对现有方法的系统对照在后续页，9页内以问题诊断为主"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

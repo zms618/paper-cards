@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Sequence Modeling Alignment between Tokenizer and Autoregressive Model.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Sequence Modeling Alignment between Tokenizer and Autoregressive Model.pdf",
+ "title": "Towards Sequence Modeling Alignment between Tokenizer and Autoregressive Model",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "改造tokenizer使token序列具前向依赖，提升自回归图像生成质量。",
+ "innovations": [
+  "换思路：不改模型去适配双向图像序列，而是改造tokenizer使token序列自带前向依赖，对齐decoder-only自回归范式",
+  "用因果解码器约束双向编码器，迫使编码器产出既语义丰富又具前向依赖的token序列",
+  "引入prefix token并采用两阶段tokenizer训练提升重建质量；177M即达ImageNet-256 gFID 1.44，662M达gFID 1.28超扩散SOTA且采样快10倍"
+ ],
+ "method_framework": "AliTok由双向编码器加因果解码器构成：以因果解码器重建作为约束，使编码器输出的token序列具有前向依赖(后一token仅依赖前文)，消除传统视觉tokenizer中表征对未来token的双向依赖。配合prefix token与两阶段训练兼顾重建保真与可预测性，再接标准decoder-only自回归模型。",
+ "experiment_framework": "类条件图像生成，主指标gFID与IS；在ImageNet-256/512上评测；对比LlamaGen等raster-scan自回归、masked AR、next-scale预测及扩散模型；匹配参数量与算力做公平tokenizer对比，报告采样速度。",
+ "takeaways": [
+  "视觉tokenizer的双向依赖与单向自回归模型存在根本错配，是AR图像生成的主要瓶颈之一",
+  "让token序列自带前向依赖后，标准decoder-only模型即可在ImageNet上取得接近/超越扩散的生成质量",
+  "该范式保持传统自回归简单性，有利于多模态统一"
+ ],
+ "weaknesses": [
+  "仅在ImageNet类条件生成上验证，开放域/高分辨率真实图像生成证据不足",
+  "因果解码器约束与prefix token带来额外训练复杂度，两阶段训练的工程成本未充分讨论",
+  "属图像生成/tokenizer方向，与可靠性主线及医学影像、多模态推理落地域关联弱"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.43,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "图像生成/tokenizer方向，与可靠性主线及落地域关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

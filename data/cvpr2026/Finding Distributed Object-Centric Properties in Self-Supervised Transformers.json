@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Finding Distributed Object-Centric Properties in Self-Supervised Transformers.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Finding Distributed Object-Centric Properties in Self-Supervised Transformers.pdf",
+ "title": "Finding Distributed Object-Centric Properties in Self-Supervised Transformers",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "分析Transformer注意力分布，无训练提升目标发现与MLLM可靠性",
+ "innovations": [
+  "发现目标中心信息分布在查询、键、值三个注意力组件中",
+  "揭示目标中心信息分布在网络各层而非仅最后一层",
+  "提出无需训练的Object-DINO方法自动识别目标中心注意力头"
+ ],
+ "method_framework": "通过计算patch级相似性矩阵(Aq, Ak, Av)并集成，对所有层注意力头进行聚类，选择包含最多最后一层头的簇作为目标中心注意力头集合",
+ "experiment_framework": "在VOC07/12和COCO20K上评估无监督目标发现(CorLoc指标)，在POPE、CHAIR和MME上评估MLLM幻觉缓解",
+ "takeaways": [
+  "注意力组件的互补性可增强目标定位",
+  "分布式注意力头选择比仅使用最后一层更有效",
+  "无需训练的方法可提升模型可靠性"
+ ],
+ "weaknesses": [
+  "方法依赖于预训练模型，可能受限于原始模型的质量",
+  "聚类选择策略可能在不同数据集上表现不一致"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "MLLM幻觉缓解与可靠性主线有交点但方法依赖预训练模型",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

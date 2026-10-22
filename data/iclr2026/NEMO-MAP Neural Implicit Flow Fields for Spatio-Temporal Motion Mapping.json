@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/NEMO-MAP Neural Implicit Flow Fields for Spatio-Temporal Motion Mapping.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/NEMO-MAP Neural Implicit Flow Fields for Spatio-Temporal Motion Mapping.pdf",
+ "title": "NEMO-MAP: Neural Implicit Flow Fields for Spatio-Temporal Motion Mapping",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "隐式神经函数映射坐标到高斯混合模型参数，用于行人运动建模。",
+ "innovations": [
+  "提出基于隐式神经函数的连续时空MoD，直接把坐标映射为Semi-Wrapped GMM参数",
+  "去除离散空间采样与非均匀采样区的补值需求，实现空间与时间上的平滑泛化",
+  "在稀疏区域给出更平滑的速度分布，同时计算高效，并提升下游轨迹预测"
+ ],
+ "method_framework": "用一个隐式神经网络(坐标→分布参数)表示环境中时空位置的人运动模式：输入时空坐标，输出Semi-Wrapped GMM的混合权重、均值、协方差等参数。由于是连续函数，无需把环境栅格化，稀疏观测区可通过网络平滑外推；训练在真实行人追踪轨迹上拟合，推理即查询任意时空点的运动分布。",
+ "experiment_framework": "在两个公开真实行人追踪数据集上验证；对比离散栅格MoD等基线；指标为运动表示精度、稀疏区速度分布平滑度、计算效率与下游轨迹预测任务性能；开源代码。",
+ "takeaways": [
+  "隐式连续MoD避免离散化，在稀疏区域泛化更平滑",
+  "坐标→Semi-Wrapped GMM的映射可统一表达方向(包裹角)与速度",
+  "该表示提升机器人导航中对人运动模式的建模与轨迹预测"
+ ],
+ "weaknesses": [
+  "主线是机器人导航/动态地图，与LLM/多模态可靠性、验证器、幻觉抑制等落地主线无关",
+  "仅在两个公开行人数据集验证，大规模/多场景泛化与在线更新效率未充分刻画",
+  "下游轨迹预测增益相对强基线的幅度与不确定性估计未报告"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.78,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "机器人导航动态地图，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

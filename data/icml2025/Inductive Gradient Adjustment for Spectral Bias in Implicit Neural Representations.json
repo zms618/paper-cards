@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Inductive Gradient Adjustment for Spectral Bias in Implicit Neural Representations.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Inductive Gradient Adjustment for Spectral Bias in Implicit Neural Representations.pdf",
+ "title": "Inductive Gradient Adjustment for Spectral Bias in Implicit Neural Representations",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.75
+ },
+ "one_line": "理论分析eNTK矩阵，提出归纳梯度调整改善INR频谱偏差。",
+ "innovations": [
+  "从理论上把 eNTK 矩阵确立为连接 MLP 频谱偏差与训练动力学的桥梁，解释既有训练调整方法为何有效。",
+  "提出 IGA：通过对 eNTK 梯度变换矩阵做归纳推广，有目的地缓解频谱偏差。",
+  "在多种 INR 架构与任务上一致提升纹理细节与边缘锐度，提供可选调频谱偏差程度的工具。"
+ ],
+ "method_framework": "用 MLP 的线性动力学模型分析训练过程中各频率分量的学习速度，eNTK 矩阵刻画这种频率相关的梯度放大；IGA 通过归纳地推广该梯度变换矩阵，按目标任务需要主动调制高频分量的学习速率。",
+ "experiment_framework": "在多种 INR 任务（信号表示、3D 形状、新视角合成等）与不同 INR 架构上评测；基线为傅里叶重参数、批归一化等既有训练调整方法；指标为重建精度与高频细节恢复。",
+ "takeaways": [
+  "eNTK 矩阵是解释和控制 INR 频谱偏差的有效工具。",
+  "有目的的归纳梯度调整可在不增加推理复杂度的前提下稳定提升 INR 的高频重建。"
+ ],
+ "weaknesses": [
+  "IGA 的变换矩阵设计仍需针对任务选择参数，缺乏完全自动化。",
+  "主要在 INR/信号表示内部对比，与最新 SOTA 编解码式方法的系统对比不足。",
+  "属表示学习/优化分析，与可靠性主线（医学影像、多模态推理）无直接关联。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

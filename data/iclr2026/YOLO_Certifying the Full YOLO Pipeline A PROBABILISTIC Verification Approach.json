@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/YOLO_Certifying the Full YOLO Pipeline A PROBABILISTIC Verification Approach.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/YOLO_Certifying the Full YOLO Pipeline A PROBABILISTIC Verification Approach.pdf",
+ "title": "Certifying the Full YOLO Pipeline: A Probabilistic Verification Approach",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "概率验证完整YOLO管线，但认证局限且未校准真实漏检率",
+ "innovations": [
+  "面向物体消失(OD)威胁，对完整YOLO管线(含不可微的NMS)做鲁棒性认证，而非仅认证骨干网络",
+  "三步框架：在扰动分布下估计输出范围、在范围内形式化验证NMS过程、迭代细化以降低过近似",
+  "在达到可比概率保证的同时提供更紧的IoU下界，且所需样本数显著少于现有方法",
+  "框架可扩展到实际规模YOLO模型"
+ ],
+ "method_framework": "(1)在给定输入扰动分布下估计检测头输出的可达范围；(2)在该输出范围内形式化分析NMS，判断物体是否会被抑制消失；(3)迭代细化区间以压缩过近似；三者结合给出物体不消失的概率保证与IoU下界。",
+ "experiment_framework": "在实际YOLO模型上评测对OD威胁的鲁棒认证；基线为已有神经网络概率验证方法；指标为IoU下界紧致度、所需样本数与验证时间；报告更紧IoU下界且样本数显著更少。",
+ "takeaways": [
+  "物体消失威胁可在完整检测管线(含NMS)层面被概率认证，而不仅是分类置信度",
+  "迭代细化输出范围可有效降低过近似，给出更紧的IoU下界",
+  "概率验证可在更少样本下达到既有保证，利于在安全关键检测系统中落地"
+ ],
+ "weaknesses": [
+  "认证强度依赖输入扰动分布假设，对未知/对抗性扰动的覆盖未讨论",
+  "IoU下界虽更紧但仍为保守近似，与真实漏检率的差距缺乏校准分析",
+  "仅针对OD这一威胁模型，对误检/定位偏移等其他失效模式未纳入认证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "完整管线级鲁棒认证，符合可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

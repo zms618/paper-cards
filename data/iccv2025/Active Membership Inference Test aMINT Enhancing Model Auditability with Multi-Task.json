@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Active Membership Inference Test aMINT Enhancing Model Auditability with Multi-Task.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Active Membership Inference Test aMINT Enhancing Model Auditability with Multi-Task.pdf",
+ "title": "Active Membership Inference Test aMINT Enhancing Model Auditability with Multi-Task",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.4
+ },
+ "one_line": "Active MINT多任务框架提升数据检测准确率，但实际部署验证不足",
+ "innovations": [
+  "提出Active MINT多任务学习框架，同时训练审计模型和MINT模型",
+  "设计共享层结构优化审计任务和MINT任务的平衡",
+  "引入中间激活图作为辅助审计数据(AAD)提升检测性能"
+ ],
+ "method_framework": "Active MINT采用双模型并行训练：审计模型执行主要任务，MINT模型检测输入是否为训练数据。通过共享层和专用层结构，结合多任务损失函数优化两个目标。",
+ "experiment_framework": "在MNIST、CIFAR-10、GTSRB和Tiny ImageNet数据集上测试MobileNet、ResNet、ViT等架构，比较Entry/Middle/Output三种激活提取设置，评估MINT准确率和审计任务准确率。",
+ "takeaways": [
+  "共享层位置影响审计任务与MINT任务的性能权衡",
+  "Entry设置在保持审计任务性能方面表现最佳",
+  "多任务损失函数的权重平衡对模型性能至关重要"
+ ],
+ "weaknesses": [
+  "未充分讨论模型部署的实际挑战和验证机制",
+  "实验中仅使用50%训练数据可能影响结果的实际意义",
+  "未探索不同数据集规模对方法泛化能力的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "成员推断与审计可靠性主线交点，多任务框架设计有防守力",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

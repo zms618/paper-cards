@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/AnySat_One Earth Observation Model for Many Resolutions Scales and.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AnySat_One Earth Observation Model for Many Resolutions Scales and.pdf",
+ "title": "AnySat: One Earth Observation Model for Many Resolutions, Scales, and Modalities",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "固定子patch编码+多模态JEPA，让单一模型吃下0.2-250m多分辨率遥感数据",
+ "innovations": [
+  "Scale-adaptive patch encoder：先把Δm×Δm的patch切成固定大小子patch（VHR δm=1、时序 δm=10），子patch经模态专属MLP投影到E维并加GSD位置编码，再由共享transformer聚合成单向量，于是patch大小只改变token数、不影响嵌入维度，同一权重吃下所有分辨率（>75%参数跨模态共享）",
+  "把JEPA搬到多模态EO：学生网（patch encoder+combiner+3层predictor）对5个随机矩形区域做patch dropping、逐patch随机mask部分模态（保证每patch至少留一模态）、并随机丢50%时序；teacher为EMA学生、无mask无drop；L2 JEPA损失预测被drop patch的teacher表示，另加改写的InfoNCE推同一patch跨模态一致",
+  "跨数据集训练协议（随机选dataset→随机选patch size→采样B_d tile）+ 未见传感器扩展：训练时为每个传感器学一个缺失标量，新传感器随机初始化新projector并随其余参数微调"
+ ],
+ "method_framework": "多模态瓦片切成共享空间的P×P patch→固定尺度子patch经模态MLP投影+GSD编码后由共享transformer聚合→对比损失做跨模态一致、dropping/masking后由predictor重建被drop patch的teacher嵌入（EMA）→下游classification头或子patch级dense头。",
+ "experiment_framework": "GeoPlex(5数据集/11传感器/0.2–250m)+6个外部数据集，9个下游任务×三类协议（from scratch/fine-tune/linear probing），与OmniSat/DOFA/CROMA等比较；正文在§4.1中途截断。",
+ "takeaways": [
+  "用固定子patch大小把'输入分辨率'与'token数'解耦，是让单一权重跨分辨率工作的关键技巧，输入完全不需rescale，小目标区域也不被空洞下采样",
+  "跨数据集随机采样协议（选数据集→选patch size→采样瓦片）让一个模型边训边吃异构源，比先拼单一大语料更灵活，且天然规避重新切分数据的工程量",
+  "把空间patch dropping + 模态/时序masker + EMA teacher 组合起来，直接省掉每个传感器各配一套解码器的开销，是遥感多模态自监督里最省参数的路径"
+ ],
+ "weaknesses": [
+  "PASTIS是5-fold CV、没有train/test划分，作者把整个数据集（无标签）放进GeoPlex做预训练，随后又在PASTIS-HD上fine-tune与linear probe报数，训练语料与评测集重叠的风险全文未显式讨论或做泄漏对照",
+  "对比的ScaleMAE/SatMAE/CROMA等大多受限于RGB或单日期输入，AnySat吃全模态；'SOTA'是在各自能吃下的配置下比，输入配置差异隐含在领先幅度里，可比性需要读者自行折算",
+  "新传感器适配只在'随机初始化projector+微调'层面成立，且作者自述差异过大时probing都不能用（配置迁移边界被自己承认受限）；未见传感器/未见patch尺寸的评测只有定性承诺",
+  "正文在§4.1末尾截断：预训练步数、EMA衰减、patch size采样分布、对比损失温度τ与JEPA/对比两项的配比全部不可见；Fig.5只画每数据集前四名且核心对比表缺失，9项SOTA无法复核；也无多种子方差"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多分辨率遥感模型，与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

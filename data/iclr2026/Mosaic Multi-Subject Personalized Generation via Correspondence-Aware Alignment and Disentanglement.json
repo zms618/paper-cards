@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mosaic Multi-Subject Personalized Generation via Correspondence-Aware Alignment and Disentanglement.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mosaic Multi-Subject Personalized Generation via Correspondence-Aware Alignment and Disentanglement.pdf",
+ "title": "MOSAIC: Multi-Subject Personalized Generation via Correspondence-Aware Alignment and Disentanglement",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "语义对应注意力与多参考解耦损失提升多主体生成一致性",
+ "innovations": [
+  "提出语义对应注意力损失，强制精确的点对点语义对齐，确保每个参考主体到目标区域的高一致性",
+  "提出多参考解耦损失，将不同主体推入正交注意力子空间，防止特征干扰",
+  "构建SemAlign-MS数据集，提供多参考主体与目标图像之间的细粒度语义对应标注"
+ ],
+ "method_framework": "以表示优化为中心，在扩散模型的交叉注意力层同时施加两个监督目标：(1)对齐目标：基于语义对应标注，用交叉熵监督注意力分布，确保参考区域精确映射到目标对应位置；(2)解耦目标：通过对称KL正则最大化主体间注意力散度，促进正交注意力模式，减少跨主体特征干扰。",
+ "experiment_framework": "在多个多主体个性化生成基准上评估，对比MS-Diffusion、SSR-Encoder、DreamO等方法，从主体身份一致性、属性泄漏等维度衡量，重点验证4+主体场景下的性能保持能力。",
+ "takeaways": [
+  "显式语义对应建模是解决多主体生成中身份混合和属性泄漏的关键",
+  "正交注意力子空间有效防止多参考主体间的特征干扰",
+  "MOSAIC在4+参考主体场景下仍保持高保真度，现有方法通常在3个以上即显著退化"
+ ],
+ "weaknesses": [
+  "依赖密集语义对应标注(SemAlign-MS)，标注成本较高",
+  "解耦损失的正交性约束强度缺乏自适应调节机制",
+  "仅在图像生成上验证，视频/3D多主体生成的适用性未探索"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多主体生成与可靠性主线无实质交点，仅为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

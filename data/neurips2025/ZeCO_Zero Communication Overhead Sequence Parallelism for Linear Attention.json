@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/ZeCO_Zero Communication Overhead Sequence Parallelism for Linear Attention.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/ZeCO_Zero Communication Overhead Sequence Parallelism for Linear Attention.pdf",
+ "title": "ZeCO: Zero Communication Overhead Sequence Parallelism for Linear Attention",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "ZeCO通过All-Scan通信原语优化序列并行，但适用范围有限。",
+ "innovations": [
+  "All-Scan通信原语实现最小通信量",
+  "通信与计算重叠的资源调度策略",
+  "理论证明ZeCO的最优性和最小额外开销"
+ ],
+ "method_framework": "ZeCO重新设计序列并行通信算法，通过流水线接收-扫描-发送模式实现理论最小通信量，并优化通信-计算调度以最大化资源利用率。",
+ "experiment_framework": "在256台H100 GPU上测试，比较All-Scan与现有通信原语的延迟，评估ZeCO在算法和模型级别的扩展性，使用1B-GLA模型进行验证。",
+ "takeaways": [
+  "通信原语设计对分布式训练效率的关键影响",
+  "理论分析与实证验证相结合的方法论"
+ ],
+ "weaknesses": [
+  "仅在线性注意力模型上验证，适用范围有限",
+  "实验主要关注性能指标，缺乏对实际应用场景的深入分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

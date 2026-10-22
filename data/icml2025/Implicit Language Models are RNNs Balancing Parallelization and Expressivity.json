@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Implicit Language Models are RNNs Balancing Parallelization and Expressivity.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Implicit Language Models are RNNs Balancing Parallelization and Expressivity.pdf",
+ "title": "Implicit Language Models are RNNs: Balancing Parallelization and Expressivity",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6
+ },
+ "one_line": "隐式SSM理论等价RNN，1层匹配16层Mamba2，但计算开销和多语言验证不足",
+ "innovations": [
+  "提出隐式SSM，通过迭代变换直到收敛到不动点",
+  "理论证明隐式SSM实现RNN的非线性状态转移",
+  "发现近似不动点收敛即足够，设计可扩展训练课程",
+  "实现隐式Mamba2，仅1层即匹配16层Mamba2的长度外推性能"
+ ],
+ "method_framework": "将SSM的状态转移迭代到收敛不动点，理论上等价于RNN的非线性状态转移。训练时无需完全收敛，近似迭代即可，从而实现并行训练。通过训练课程逐步增加迭代次数，平衡训练效率和模型表达力。",
+ "experiment_framework": "在语言建模基准上验证：长度外推（S5）、下游任务（LAMBADA、HellaSwag、ARC-C）。对比Mamba2、Llama3等模型。",
+ "takeaways": [
+  "隐式SSM在理论上等价于RNN，但可并行训练",
+  "近似不动点收敛即足够，无需精确求解",
+  "隐式Mamba2仅1层即可匹配16层的长度外推性能"
+ ],
+ "weaknesses": [
+  "与可靠性/验证器/幻觉抑制等主线方向关联较弱",
+  "测试时迭代的计算开销未充分分析",
+  "仅在英文语言模型上验证，多语言/多模态适用性未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

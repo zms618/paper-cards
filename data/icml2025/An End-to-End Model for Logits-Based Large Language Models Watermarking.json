@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/An End-to-End Model for Logits-Based Large Language Models Watermarking.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/An End-to-End Model for Logits-Based Large Language Models Watermarking.pdf",
+ "title": "An End-to-End Model for Logits-Based Large Language Models Watermarking",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "端到端LLM水印，编解码联合优化提升鲁棒性，但攻击覆盖有限",
+ "innovations": [
+  "指出现有 logits/采样水印因编码器与解码器分别训练，无法在鲁棒性与文本质量间取得最优权衡",
+  "提出端到端联合优化轻量编/解码器，同时增强检测鲁棒性并保持下游任务性能",
+  "针对管线中不可微操作，引入 online-prompting 技术用在线 LLM 作可微 surrogate，实现端到端训练"
+ ],
+ "method_framework": "在生成时由轻量编码器网络对 logits 施加上下文相关扰动以嵌入水印，解码器/检测网络判定 green-token 比例；二者端到端联合训练。对文本改写、语义损失等不可微环节，用 on-the-fly LLM 作为可微代理绕过不可微问题，使整条管线可反传。",
+ "experiment_framework": "在多个开源 LLM 上，面对改写 (paraphrasing) 等文本修改攻击，对比 KGW、KGW-R、SWEET、UPV、SIR、TSW 等水印方法的检测鲁棒性，同时以困惑度与下游任务保持率评估文本质量。",
+ "takeaways": [
+  "端到端联合优化编/解码器优于分离训练，在鲁棒性与质量间取得更好权衡",
+  "改写攻击下比无失真方法鲁棒性高 37–39%、平均高 17.2%，且文本质量与无失真方法相当",
+  "online-prompting 可有效处理水印管线中的不可微环节"
+ ],
+ "weaknesses": [
+  "落地域为通用 LLM 内容溯源，非指定的医学影像或多模态大模型推理，relevance 受限",
+  "鲁棒性提升主要在改写类攻击上验证，对摘要/翻译/拼写扰动等更强变换的抗毁性未充分覆盖",
+  "online-prompting 用在线 LLM 作可微代理带来额外推理成本与近似误差"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "LLM水印技术属于内容安全，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

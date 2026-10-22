@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/VecAttention_Vector-wise Sparse Attention for Accelerating Long Context Inference.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/VecAttention_Vector-wise Sparse Attention for Accelerating Long Context Inference.pdf",
+ "title": "VecAttention Vector-wise Sparse Attention for Accelerating Long Context Inference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "向量级稀疏注意力加速视频推理，但泛化性存疑",
+ "innovations": [
+  "垂直向量级稀疏模式发现",
+  "TilingSelect与minS过滤融合机制",
+  "动态编程的每头过滤比例预测"
+ ],
+ "method_framework": "VecAttention采用两阶段框架：1)基于TilingSelect和minS过滤的重要向量选择；2)仅对选定向量进行稀疏注意力计算，最小化HBM访问并保持高算吞吐。",
+ "experiment_framework": "在视频理解(VideoMME, LongVideoBench, VCRBench)和生成(VBench)任务上评估，对比FlexPrefill、XAttention等基线，使用PSNR、SSIM、LPIPS等指标。",
+ "takeaways": [
+  "细粒度垂直向量稀疏模式比粗粒度线/块模式更接近理想稀疏模式",
+  "系统-算法联合优化可显著降低内存访问开销",
+  "动态调整每头过滤比例可优化整体性能"
+ ],
+ "weaknesses": [
+  "方法主要针对视频领域，泛化到其他模态的验证不足",
+  "向量大小Pq等超参数可能需要针对不同任务进行调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频推理加速与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

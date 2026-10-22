@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Fewer Weights, more Problems A Practical Attack On LLM Pruning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Fewer Weights, more Problems A Practical Attack On LLM Pruning.pdf",
+ "title": "Fewer Weights, more Problems: A Practical Attack On LLM Pruning",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "揭示LLM剪枝安全漏洞，但攻击依赖已知剪枝方法",
+ "innovations": [
+  "提出首个剪枝激活攻击，使模型在剪枝后才展现恶意行为",
+  "利用剪枝分数预估计和选择性参数注入/修复的三步攻击方法",
+  "针对多种剪枝算法(Magnitude/Wanda/SparseGPT)的通用攻击框架"
+ ],
+ "method_framework": "通过预估计剪枝分数，向不易被剪枝的参数注入恶意行为，再用易被剪枝的参数修复模型，使攻击在剪枝后激活",
+ "experiment_framework": "5个模型×3种攻击场景×3种剪枝算法，评估攻击成功率(ASR)和模型效用",
+ "takeaways": [
+  "剪枝可作为LLM安全漏洞的实用触发器",
+  "模型压缩技术需考虑安全性，开发安全剪枝方法",
+  "模型共享平台需加强安全审计"
+ ],
+ "weaknesses": [
+  "攻击依赖于对剪枝算法的了解，可能不适用于未知剪枝方法",
+  "修复参数比例(αrep)对不同攻击场景效果差异较大",
+  "未探讨更复杂的剪枝组合策略的防御能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM安全漏洞与可靠性主线交点，但攻击方法依赖已知剪枝技术",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

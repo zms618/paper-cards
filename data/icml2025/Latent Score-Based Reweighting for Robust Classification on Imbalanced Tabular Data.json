@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Latent Score-Based Reweighting for Robust Classification on Imbalanced Tabular Data.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Latent Score-Based Reweighting for Robust Classification on Imbalanced Tabular Data.pdf",
+ "title": "Latent Score-Based Reweighting for Robust Classification on Imbalanced Tabular Data",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "用分数模型估计联合分布，通过近邻相似度重加权平衡数据分布。",
+ "innovations": [
+  "用 score-based 模型捕捉联合分布 P(X,Y)，而非只关注条件分布 P(Y|X)",
+  "通过样本与近邻分数向量的相似度估计局部密度，识别欠表示区域并重加权",
+  "无需群体标签即可直接缓解数据固有不平衡，比基于边界的误分类上加权方法更全局"
+ ],
+ "method_framework": "训练 score-based 模型建模 P(X,Y)；对每个样本用其与近邻分数向量的相似度估计密度，低密度区域样本被上加权，使训练分布更均匀，从而降低对非因果特征(如人口属性)虚假关联的依赖。",
+ "experiment_framework": "在多个表格数据集上、分布偏移设定下对比 group-DRO、边界重加权等方法，报告不平衡子集与整体的分类性能。",
+ "takeaways": [
+  "只上加权边界附近误分类样本无法全局平衡分布，应直接平衡 P(X)",
+  "分数向量相似度可作为无监督密度估计，识别欠表示区域",
+  "无需群体标签即可缓解虚假关联带来的鲁棒性下降"
+ ],
+ "weaknesses": [
+  "应用域为表格数据鲁棒分类，未落地到医学影像/多模态大模型",
+  "score-based 模型在表格数据上训练与密度估计精度影响重加权质量",
+  "前9页未见与最新 group-DRO/无偏方法在严格 OOD 基准上的系统对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

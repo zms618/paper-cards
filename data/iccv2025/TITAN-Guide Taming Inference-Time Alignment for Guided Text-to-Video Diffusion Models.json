@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/TITAN-Guide Taming Inference-Time Alignment for Guided Text-to-Video Diffusion Models.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/TITAN-Guide Taming Inference-Time Alignment for Guided Text-to-Video Diffusion Models.pdf",
+ "title": "TITAN-Guide Taming Inference-Time Alignment for Guided Text-to-Video Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "前向梯度优化扩散模型降低内存，但分辨率和长度分析不足",
+ "innovations": [
+  "前向梯度下降替代反向传播解决内存问题",
+  "三种梯度猜测策略(随机/基于分数/采样梯度)",
+  "迭代采样到t=0而非估计清洁数据提升早期迭代信号质量"
+ ],
+ "method_framework": "TITAN-Guide通过前向梯度下降优化扩散潜变量，避免反向传播的高内存消耗，支持更高分辨率视频生成，并探索多种梯度猜测策略提升控制精度。",
+ "experiment_framework": "使用VGG-Sound和TFG-1000数据集，对比DOODL、TFG、MPGD和FreeDoM等方法，评估FVD、KVD、IB-AV、IB-TV、AV-Align等指标。",
+ "takeaways": [
+  "前向梯度可显著降低内存消耗(仅20.6GB vs 基线40-67GB)",
+  "采样梯度猜测策略在多模态对齐任务中表现最佳"
+ ],
+ "weaknesses": [
+  "仅评估了256×256和256×384分辨率，未测试更高分辨率",
+  "未充分分析不同视频长度下的性能"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "文本到视频生成与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

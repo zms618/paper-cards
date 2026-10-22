@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/SLiM One-shot Quantization and Sparsitywith Low-rank Approximation for LLM Weight Compression.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SLiM One-shot Quantization and Sparsitywith Low-rank Approximation for LLM Weight Compression.pdf",
+ "title": "SLIM: One-shot Quantization and Sparsity with Low-rank Approximation for LLM Weight Compression",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.75
+ },
+ "one_line": "三组件串联的LLM压缩框架，增量性较强，泛化性验证不足",
+ "innovations": [
+  "提出SLIM一次性压缩框架，统一整合量化、稀疏与低秩近似，免重训即可保持精度",
+  "以概率化方式(SLIM-Quant)建模量化过程从而支持均匀量化；在量化权重上施加2:4半结构化稀疏",
+  "设计具可逆、可加性的新显著性函数，可数学解析地直接算出低秩适配器值以补偿量化+稀疏的聚合误差"
+ ],
+ "method_framework": "先对权重做概率化建模的均匀量化(SLIM-Quant)，再叠加2:4半结构化稀疏；量化与稀疏共同引入聚合误差后，用一个具有可逆与可加特性的显著性函数，将总误差闭式分解并解析地求出低秩适配器参数加到压缩权重上，从而无需梯度重训即可补偿误差；可选PEFT配方进一步微调提升精度。",
+ "experiment_framework": "在LLaMA-2-7B/13B等上做4-bit+2:4压缩；对比SparseGPT、Wanda、MaskLLM等一次性压缩方法；指标为下游zero-shot精度(报告+5.66%@7B)、层内加速(RTX3060上4.3x、A100上3.8x)与端到端显存(降至0.23x)。",
+ "takeaways": [
+  "量化+稀疏+低秩补偿可在一次性、免重训下协同，比单一压缩更保精度",
+  "解析式低秩适配器能闭式补偿聚合压缩误差，避免昂贵联合优化",
+  "2:4半结构化稀疏+4bit在真实GPU上带来显著层内加速与显存下降"
+ ],
+ "weaknesses": [
+  "压缩流程为三组件串联工程整合，新颖性主要在概率量化与解析显著性函数，方法增量性较强",
+  "仅在LLaMA-2系列验证，对更新模型族(Qwen/Mistral)与更低位宽(<4bit)的泛化在前9页未展示",
+  "低秩适配器仍引入少量额外参数/计算，其在极致压缩率下的收益拐点与硬件实测吞吐在前9页有限；与AI可靠性主线无直接关联"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

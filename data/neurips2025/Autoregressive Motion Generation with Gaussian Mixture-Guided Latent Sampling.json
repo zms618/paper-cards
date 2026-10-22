@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Autoregressive Motion Generation with Gaussian Mixture-Guided Latent Sampling.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Autoregressive Motion Generation with Gaussian Mixture-Guided Latent Sampling.pdf",
+ "title": "Autoregressive Motion Generation with Gaussian Mixture-Guided Latent Sampling",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "GMMotion结合GMM与自回归模型，提升运动生成质量但创新有限。",
+ "innovations": [
+  "使用可学习的高斯混合模型表示运动序列的多模态分布",
+  "引入自回归因果Transformer学习连续表示的分布",
+  "设计单步高斯混合采样和自回归生成架构，实现高质量运动合成"
+ ],
+ "method_framework": "GMMotion包含GM-VAE和自回归模型两部分，GM-VAE使用因果卷积保持时间一致性，自回归模型通过文本编码器、因果Transformer、潜在采样模块和PostNet生成运动。",
+ "experiment_framework": "在KITML和HumanML3D数据集上评估，使用FID、匹配分数、R-Precision等指标，与VQ和扩散模型基线对比。",
+ "takeaways": [
+  "高斯混合模型能有效捕捉运动数据的多模态分布",
+  "连续表示避免了离散化误差，简化训练和推理过程",
+  "头预填充和可学习旋转位置编码增强模型可扩展性"
+ ],
+ "weaknesses": [
+  "未充分讨论模型在更长序列上的性能",
+  "高斯混合模型组件数量选择对性能影响较大",
+  "未提供与最新扩散模型在推理速度上的详细比较"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

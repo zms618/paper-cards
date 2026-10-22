@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Polynomial, Trigonometric, and Tropical.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Polynomial, Trigonometric, and Tropical.pdf",
+ "title": "Polynomial, Trigonometric, and Tropical Activations",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "正交激活函数的方差守恒初始化，使深度网络无需ReLU也能稳定训练。",
+ "innovations": [
+  "利用正交基使二阶矩积分有闭式解，提出正交可学习激活的方差守恒初始化(前向/反向增益匹配)",
+  "实证多项式激活在 ImageNet1k 与 OpenWebText 上可训练，证明深度多项式网络即多元多项式映射",
+  "设计 Hermite/Fourier/Tropical 激活并给出高效并行核；用 Hermite 插值在函数与导数上逼近 ReLU/SiLU，便于微调迁移"
+ ],
+ "method_framework": "在L2正交基上展开可学习激活，借助正交性闭式计算激活及其导数的二阶矩，按 He 式方差守恒原则初始化权重，使各层信号与梯度方差保持单位化，从而避免多项式激活的爆炸/消失；tropical 激活解释为可学习函数的离散凸共轭。",
+ "experiment_framework": "在 ImageNet1k 上训练 ConvNeXt、在 OpenWebText 上训练 GPT-2 做next-token预测，对比 ReLU/SiLU 等经典激活的训练稳定性与精度；并用 Hermite 插值将预训练经典激活替换为正交激活做微调迁移。",
+ "takeaways": [
+  "合适初始化下多项式激活可在大规模深度网络稳定收敛，无需额外裁剪或归一化",
+  "正交基的闭式二阶矩是方差守恒初始化可行的关键",
+  "Hermite 插值可在函数与导数上同时逼近经典激活，便于预训练模型无缝替换微调"
+ ],
+ "weaknesses": [
+  "主线为激活函数/网络结构理论，与可靠性/医学影像/多模态推理主线关联弱",
+  "多项式激活的数值稳定性(tropical/高阶)在有限精度下仍需专门核，工程代价前9页未充分量化",
+  "前9页未见在超出ImageNet/OpenWebText的更大规模训练上的效率与精度结论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "激活函数初始化理论，与可靠性主线弱关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Recon-STRUCTION_UFO-4D Unposed Feedforward 4D Recon-STRUCTION from Two.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Recon-STRUCTION_UFO-4D Unposed Feedforward 4D Recon-STRUCTION from Two.pdf",
+ "title": "UFO-4D: Unposed Feedforward 4D Reconstruction from Two Images",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "前馈动态3D高斯重建，自监督耦合几何与运动损失。",
+ "innovations": [
+  "提出统一前馈模型UFO-4D，从两张无位姿图像单次前向预测canonical空间中的动态3D高斯泼溅(D-3DGS)，联合估计3D几何、3D运动与相对相机位姿。",
+  "对单一动态高斯表示做可微渲染，得到不依赖稀疏标注的自监督光度损失；各模态共享同一组高斯基元，使外观/深度/运动损失紧耦合并相互正则化，缓解稠密4D标注稀缺。",
+  "显式4D表示支持在新视角与新时间上对图像、深度、运动进行高保真时空插值。"
+ ],
+ "method_framework": "输入一对未标定图像，模型单次前向输出canonical空间的动态3D高斯泼溅与相对相机位姿；训练时对该显式表示做可微渲染，以自监督图像合成损失耦合外观、深度与运动，因几何与运动来自同一组高斯基元，各监督信号互相补偿缺陷。",
+ "experiment_framework": "在Stereo4D、KITTI等几何/运动基准上以端点误差(EPE)评测，与DUSt3R、MonST3R、DynaDUSt3R等前馈方法对比，报告联合几何、运动、位姿精度，并展示时空插值质量。",
+ "takeaways": [
+  "统一前馈4D表示使几何与运动损失紧耦合，相比任务碎片化的前馈方法在Stereo4D与KITTI上EPE最多降低约3倍。",
+  "可微渲染的自监督光度损失可有效缓解稠密4D训练数据稀缺与合成到真实的域差问题。"
+ ],
+ "weaknesses": [
+  "前9页主要为引言与方法概览，未见完整消融表与各基准数值明细，证据强度判断受限。",
+  "仅从一对图像建模动态场景，对大视差、长时动态与严重遮挡的泛化能力未在正文充分论证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "纯3D重建技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

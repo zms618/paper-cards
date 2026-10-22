@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Efficient Knowledge Transfer in Federated Recommendation for Joint Venture Ecosystem.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Efficient Knowledge Transfer in Federated Recommendation for Joint Venture Ecosystem.pdf",
+ "title": "Efficient Knowledge Transfer in Federated Recommendation for Joint Venture Ecosystem",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "联邦推荐中提取评分偏好，但信息损失与计算成本高",
+ "innovations": [
+  "针对合资企业生态系统的联邦推荐场景",
+  "通过模型逆技术提取隐私友好的用户评分偏好",
+  "桥接函数对齐本地和全局评分偏好"
+ ],
+ "method_framework": "FR-JVE框架：联邦训练前将本地数据转换为新格式，使用模型逆技术提取冻结用户梯度下的评分偏好，训练阶段仅更新和传递物品嵌入，使用桥接函数对齐评分偏好，推理阶段通过匹配相似用户提升预测",
+ "experiment_framework": "数据集：MovieLens-100K/1M, LastFM-2K, QB-article；基线：FedMF, FedNCF, PFedRec, FedRAP, FedCDR等；指标：MAE, RMSE, HR@K, NDCG@K",
+ "takeaways": [
+  "模型逆技术可提取隐私友好的用户偏好表示",
+  "桥接函数能有效对齐不同客户端的评分偏好",
+  "评分偏好作为协作过滤信号优于直接共享用户嵌入"
+ ],
+ "weaknesses": [
+  "评分偏好提取过程可能损失部分用户信息",
+  "桥接函数的训练增加了计算复杂度",
+  "实验仅限于评分预测和top-K推荐任务"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

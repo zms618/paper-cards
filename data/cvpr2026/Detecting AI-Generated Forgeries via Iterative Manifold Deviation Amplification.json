@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Detecting AI-Generated Forgeries via Iterative Manifold Deviation Amplification.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Detecting AI-Generated Forgeries via Iterative Manifold Deviation Amplification.pdf",
+ "title": "Detecting AI-Generated Forgeries via Iterative Manifold Deviation Amplification",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "双阶段闭环框架放大真实图像流形偏差检测AI伪造",
+ "innovations": [
+  "真实驱动检测范式：从学习伪造模式转向建模真实图像流形",
+  "闭环放大框架：双阶段架构通过任务自适应提示注入形成反馈循环",
+  "强大的泛化能力：在扩散模型和传统篡改数据集上均达到SOTA"
+ ],
+ "method_framework": "IFA-Net采用双阶段闭环框架，第一阶段使用冻结MAE进行无条件重建暴露初始流形差异，第二阶段通过任务自适应先验注入(TAPI)模块将粗略预测转换为结构化提示，引导MAE解码器在可疑区域放大重建失败",
+ "experiment_framework": "在7个公共基准(GIT和TT)上评估，包括OpenSDID、GIT10K、CocoGlide等扩散模型数据集和IMD、NIST16、CASIA等传统篡改数据集，使用IoU和F1-score作为指标",
+ "takeaways": [
+  "利用冻结的MAE作为通用真实先验，避免过拟合特定伪造模式",
+  "双流分割网络(DSSN)融合原始图像和残差图，同时捕获高层语义和低级伪影线索"
+ ],
+ "weaknesses": [
+  "依赖预训练MAE的质量，可能受限于预训练数据分布",
+  "计算开销较大，需要双阶段处理和额外的提示编码器"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "伪造检测属于可靠性主线，双阶段框架有可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

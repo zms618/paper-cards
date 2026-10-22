@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Visiontrim_Unified Vision Token Compression for Training-Free MLLM Acceleration.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Visiontrim_Unified Vision Token Compression for Training-Free MLLM Acceleration.pdf",
+ "title": "VisionTrim: Unified Vision Token Compression for Training-Free MLLM Acceleration",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "免训练视觉token压缩，全局-局部选择与文本引导合并",
+ "innovations": [
+  "提出统一的免训练视觉token压缩框架VisionTrim，整合视觉编码阶段和LLM解码阶段的压缩",
+  "设计DVTS模块：从全局-局部视角保留关键视觉token，避免单一视角导致的信息丢失",
+  "设计TGVC模块：利用文本查询引导上下文感知的视觉token合并，确保与文本对齐的视觉信息不被误删"
+ ],
+ "method_framework": "VisionTrim包含两个免训练、可插拔模块：(1) Dominant Vision Token Selection(DVTS)——在视觉编码器后，从全局和局部两个视角筛选关键视觉token，去除冗余背景token；(2) Text-Guided Vision Complement(TGVC)——在LLM解码阶段，根据文本查询的注意力分布引导视觉token合并，保留与当前问题相关的视觉信息。两阶段协同，实现统一的视觉token压缩。",
+ "experiment_framework": "任务：图像多模态理解 + 视频多模态理解。基线：FasterVLM、VisionZip、FastV、SparseVLM等现有token压缩方法。指标：准确率保持率、token压缩比、推理加速比。覆盖多种MLLM基座模型和基准测试。",
+ "takeaways": [
+  "统一视觉编码和解码两阶段的压缩比单阶段压缩效果更好，能在更高压缩比下保持性能",
+  "文本引导的token选择比纯视觉重要性选择更准确，能避免误删与问题相关的视觉token",
+  "免训练设计使得方法可直接应用于现有MLLM，无需重新训练，部署友好"
+ ],
+ "weaknesses": [
+  "两阶段压缩虽提升了压缩比，但增加了推理时的预处理和动态计算开销",
+  "方法在高分辨率和视频场景下收益更大，但在低分辨率短序列场景下加速比有限",
+  "文本引导依赖注意力分布的准确性，在复杂多轮对话中引导信号可能不稳定"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "免训练压缩方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

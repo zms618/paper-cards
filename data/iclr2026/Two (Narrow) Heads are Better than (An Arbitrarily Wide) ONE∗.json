@@ -1,0 +1,41 @@
+{
+ "title": "Two (Narrow) Heads are Better than (An Arbitrarily Wide) One",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 6.0
+ },
+ "one_line": "理论证明单头无法处理图环，双头即可，但与主线LLM可靠性关联弱。",
+ "innovations": [
+  "提出端点选择问题(ESP)作为分析注意力表达力的简洁可扩展任务。",
+  "证明无条件不可能性：1头1层纯注意力变换器在任何含环有向图上无法解 ESP(即使维度/精度无界)，但可零误差解所有 DAG。",
+  "证明2头1层纯注意力变换器即可在常嵌入维+对数精度下解任意图；并把 ESP 结果推广到 2-hop induction head，揭示最优误差与 MAS 大小相关故不可逼近。"
+ ],
+ "method_framework": "在简化变换器(纯注意力、1层、少头)上分析表达边界：把 ESP 归约/变换后证明单头在含环图上被结构性阻断，双头则多出的头可处理环结构；通过把最优误差关联到最大无环子图(MAS)建立 NP 困难/不可逼近联系。",
+ "experiment_framework": "用梯度优化实验验证理论：DAG 上单头可靠收敛、任意图上双头收敛，而单头在含环图上难以达到最优解。",
+ "takeaways": [
+  "注意力头数是表达力的硬边界：单头无法处理环，双头即可。",
+  "该不可能性独立于宽度与精度，比以往依赖维度/精度界的下界更强。",
+  "双头常维即可解任意图，说明窄而多头比任意宽单头更有表达力。"
+ ],
+ "weaknesses": [
+  "结论限于纯注意力、1层、ESP 这一简化设定，到完整带 FFN 深层 LLM 的对应关系是类比而非证明。",
+  "实证仅为小型验证实验，未与完整架构对照。",
+  "属表达力理论，与可靠性/医学影像/多模态推理主线无关；完整证明与推广在附录未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Two (Narrow) Heads are Better than (An Arbitrarily Wide) ONE∗.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Two (Narrow) Heads are Better than (An Arbitrarily Wide) ONE∗.pdf",
+ "raw_overall": 6.55,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "注意力表达力理论，与LLM可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

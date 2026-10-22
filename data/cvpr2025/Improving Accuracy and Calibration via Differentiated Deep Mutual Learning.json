@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Improving Accuracy and Calibration via Differentiated Deep Mutual Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Improving Accuracy and Calibration via Differentiated Deep Mutual Learning.pdf",
+ "title": "Improving Accuracy and Calibration via Differentiated Deep Mutual Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "差异化互学习提升准确率与校准，但创新有限且实验不充分",
+ "innovations": [
+  "Differentiated Training Strategy (DTS)使用不同学习率策略保持模型多样性",
+  "Diversity-Preserving Learning Objective (DPLO)移除辅助模型的交叉熵损失避免过拟合",
+  "理论分析证明DML是深度集成的一种隐式形式"
+ ],
+ "method_framework": "Diff-DML基于深度互学习(DML)框架，引入两种策略保持预测多样性：主模型使用传统学习率衰减，辅助模型使用固定学习率；辅助模型仅使用KL散度损失而非交叉熵损失",
+ "experiment_framework": "在CIFAR-10/100和Tiny-ImageNet数据集上评估，使用ResNet34/50作为主模型，ResNet18作为辅助模型，比较准确率、ECE和cw-ECE指标",
+ "takeaways": [
+  "模型多样性对集成校准性能至关重要",
+  "轻量级互学习方法可达到接近深度集成的校准效果",
+  "训练时校准方法可避免准确率与校准性能之间的权衡"
+ ],
+ "weaknesses": [
+  "仅在一个GPU上评估，未考虑大规模分布式训练场景",
+  "未探索在医学影像等特定领域的应用效果"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "校准方法扎实但未触及医学影像等落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

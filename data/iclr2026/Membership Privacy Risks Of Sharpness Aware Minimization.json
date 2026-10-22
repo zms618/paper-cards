@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Membership Privacy Risks Of Sharpness Aware Minimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Membership Privacy Risks Of Sharpness Aware Minimization.pdf",
+ "title": "Membership Privacy Risks of Sharpness Aware Minimization",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.5,
+  "overall": 7.1
+ },
+ "one_line": "SAM提升泛化但增加成员隐私泄露，挑战平坦极小值=更隐私的直觉",
+ "innovations": [
+  "首次系统证明以锐度正则化、泛化更好的 SAM 相比 SGD 一致地放大成员泄露，挑战'平坦极小值=更隐私'的直觉",
+  "通过记忆化分数与影响分数分析揭示 SAM 更擅长捕捉非典型子模式、对未见样本预测置信度方差更低，从而放大成员信号",
+  "在完美插值线性情形下建模 SAM，理论证明锐度正则化降低方差，从而保证置信度与似然比攻击的 MIA 优势更高"
+ ],
+ "method_framework": "在 CIFAR-100/10、Purchase-100、Texas-100、EyePacs 上分别用 SGD 与 SAM 训练，施加最近邻、置信度、熵、修改熵等直接阈值 MIA；结合记忆化/影响分数的经验归因，并在线性插值 regime 下推导方差-MIA 优势的理论关系。",
+ "experiment_framework": "数据集：CIFAR-100、CIFAR-10、Purchase-100、Texas-100、EyePacs；基线：SGD；攻击：NN、Confidence、Entropy、M-entropy 阈值 MIA；指标：攻击准确率与测试准确率对照（Table 1/2）。",
+ "takeaways": [
+  "SAM 虽测试误差更低，但在多个数据集与攻击方法上攻击准确率一致高于 SGD，泛化收益伴随隐私代价",
+  "SAM 依赖非典型子模式带来更高记忆化，SGD 依赖多数特征，二者在非典型子群上的泛化差异对应隐私泄露差异",
+  "在线性 regime 下锐度正则化降低预测方差，从理论上保证了更高的 MIA 优势"
+ ],
+ "weaknesses": [
+  "理论仅在完美插值线性 regime 成立，对深度网络非线性情形的解释力有限",
+  "攻击以直接阈值/置信度类为主，未充分评估更强的训练时攻击或主动成员推断方法",
+  "未提出可落地的隐私缓解机制，仅揭示权衡，实用指导有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "成员隐私泄露与可靠性主线硬交点，方法设计有防守力",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

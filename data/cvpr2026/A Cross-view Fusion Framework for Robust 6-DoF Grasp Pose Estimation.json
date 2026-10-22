@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/A Cross-view Fusion Framework for Robust 6-DoF Grasp Pose Estimation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Cross-view Fusion Framework for Robust 6-DoF Grasp Pose Estimation.pdf",
+ "title": "A Cross-view Fusion Framework for Robust 6-DoF Grasp Pose Estimation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 7.5,
+  "overall": 6.1
+ },
+ "one_line": "跨视图融合框架提升抓取估计，但模块拼装且消融不足",
+ "innovations": [
+  "自监督跨视图匹配损失：把「同一 3D 位置」的点对定义为 match，用 Lcon=(1/N_mat)Σ‖f_mat^1−f_mat^2‖² 做空间一致性；把「同一物体上接近方向显著不同」的点对定义为 non-match，用 hinge Ldis=(1/N_non)Σmax(0,M−‖f_non^1−f_non^2‖)²，其中 M=1−cos(θ) 随两视图接近方向夹角自适应，专门破解同物体同标签下特征趋同的问题",
+  "基于相似度的跨视图配准：相似度 S_ij=−‖p_i^{v1}−p_j^{v2}‖²+λ_feat⟨f_i^{v1}/‖·‖,f_j^{v2}/‖·‖⟩ 同时看坐标与特征，取超过阈值的最优配对后对其坐标与特征取平均，用配准思想同时抵消深度传感器噪声与机器人运动带来的位姿误差累积",
+  "圆柱坐标注册把 p=(x,y,z) 转成 (θ,r,d)=atan2(z,y),√(y²+z²),x，正好与抓取参数（面内旋转、夹爪宽度、接近深度）一一对应，并显式强调点云的旋转对称性；之后交替堆 local self-attention 与 seed cross-attention（借鉴 VGGT 多帧 Transformer）做单视图内与跨视图的双向交互"
+ ],
+ "method_framework": "单视图点云经 ResUNet14 提特征→预测可抓点与接近方向并 FPS 采样种子→按相似度把辅助视角的点与特征对齐、配对取平均得到鲁棒表示→统一注册进圆柱坐标加位置编码→交替局部自注意力与种子交叉注意力将跨视图上下文注入种子特征→MLP 预测旋转-深度对的抓取分与夹爪宽度。",
+ "experiment_framework": "GraspNet-1Billion 测试集上分 Seen/Similar/Novel 三档，RealSense 与 Kinect 两种相机各报 AP/AP0.8/AP0.4；对比 GG-CNN、GPD、PointNetGPD、GraspNet、TransGrasp、TSB、GSNet、EconomicGrasp、ZeroGrasp；另给场景级与物体级抓取可视化与 AP_μ 曲线。",
+ "takeaways": [
+  "「同一物体、抓取方向不同」这个 non-match 定义，是让对比学习在抓取任务上比通用实例对比更有效的关键：监督信号本身对同物体可抓点无区分度，需要几何语义层面的负样本",
+  "把抓取参数直接对应到圆柱坐标 (θ,r,d)、让网络不再从欧氏坐标里「反推」旋转与深度，是低成本却直击任务结构的表示设计",
+  "后融合（先各自单视图推理、只对种子邻域做跨视图配准）相比先重建完整场景再抓取，省掉了任务无关的多视图重建耗时，只多观察一次辅助视角"
+ ],
+ "weaknesses": [
+  "表 1 中「Ours (2 views)」即最终全部结果，正文前 9 页在实验设置段截断，自监督两项损失（Lcon/Ldis）、相似度对齐 λ_feat、圆柱 K 邻域、注意力层数的消融全部缺失，无法判断各模块的真实贡献——Novel 档仅 27.27 对 ZeroGrasp 26.46 的微弱领先尤其需要消融确认",
+  "方法主体由「对比学习+点云配准+圆柱坐标变换+交替注意力」四个成熟模块拼装而成，且 ResUNet14 主干、种子/方向预测头直接沿用 GSNet，novelty 集中在两条对比损失与配准步骤上，未见对 VGN/GeneGN 这类前融合重建管线在同等观察次数下的公平对比",
+  "全部指标为单次运行且无标准差；真实机器人部署只在图 4 做定性展示，实时性、辅助视角带来的额外机械臂运动耗时、以及跨视图位姿（依赖标定或运动学）在未知场景下的失效情况均未在正文给出"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "抓取估计与可靠性主线交点，但模块拼装且消融不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

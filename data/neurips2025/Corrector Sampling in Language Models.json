@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Corrector Sampling in Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Corrector Sampling in Language Models.pdf",
+ "title": "Corrector Sampling in Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "RPT采样迭代替换token减少错误累积，但计算成本高且收益有限。",
+ "innovations": [
+  "引入Resample-Previous-Tokens (RPT)采样方法",
+  "开发轻量级训练算法，集成到自回归训练循环中",
+  "证明RPT在推理和编码任务上优于标准NTP采样"
+ ],
+ "method_framework": "RPT通过迭代重访固定大小的先前生成token窗口，结合NTP和PTP条件概率，允许在生成过程中进行局部token替换，减少错误累积。",
+ "experiment_framework": "在8B参数模型上微调100B token，在HumanEval+、MBPP、GSM8K等推理和编码基准上评估，与标准NTP采样对比。",
+ "takeaways": [
+  "PTP条件概率比NTP具有更低误差",
+  "RPT方法可轻松集成到现有自回归模型中",
+  "轻量级微调即可获得显著性能提升"
+ ],
+ "weaknesses": [
+  "RPT增加了计算复杂度",
+  "窗口大小w=3时未观察到明显收益",
+  "实验主要在推理和编码任务上，缺乏其他任务验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

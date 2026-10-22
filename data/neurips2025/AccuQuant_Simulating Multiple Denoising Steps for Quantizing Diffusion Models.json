@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/AccuQuant_Simulating Multiple Denoising Steps for Quantizing Diffusion Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/AccuQuant_Simulating Multiple Denoising Steps for Quantizing Diffusion Models.pdf",
+ "title": "AccuQuant: Simulating Multiple Denoising Steps for Quantizing Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "多步去噪校准扩散模型量化，梯度降内存，误差累积缓解有限",
+ "innovations": [
+  "多步去噪过程模拟的量化校准方法",
+  "梯度近似技术将内存复杂度从O(n)降至O(1)",
+  "新的目标函数减少量化误差累积"
+ ],
+ "method_framework": "将去噪步骤分组，通过最小化全精度和量化模型在多步去噪后的输出差异来校准量化参数，考虑了误差累积效应。",
+ "experiment_framework": "在CIFAR-10、LSUN、ImageNet和MS-COCO数据集上评估，使用IS、FID、sFID、FID2FP32等指标，与Q-Diffusion、TFMQ-DM等基线比较。",
+ "takeaways": [
+  "扩散模型量化误差随去噪步骤累积是关键问题",
+  "多步联合校准比单步独立校准更有效",
+  "梯度近似技术使方法可扩展到大规模模型"
+ ],
+ "weaknesses": [
+  "方法在不同扩散模型上的分组策略需要调整",
+  "梯度近似可能影响极端低比特情况下的性能",
+  "未充分分析计算开销增加"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

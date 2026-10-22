@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/BHViT_Binarized Hybrid Vision Transformer.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/BHViT_Binarized Hybrid Vision Transformer.pdf",
+ "title": "BHViT Binarized Hybrid Vision Transformer",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "二值化混合ViT架构，解决二值化性能下降问题",
+ "innovations": [
+  "多尺度分组扩张卷积(MSGDC)模块减少计算量",
+  "量化分解(QD)注意力矩阵二值化方法",
+  "基于移位操作的二值MLP模块",
+  "针对Adam优化器振荡问题的正则化损失"
+ ],
+ "method_framework": "提出BHViT混合架构，前两阶段使用MSGDC减少token数量，后两阶段使用MSMHA模块，结合量化分解注意力矩阵和移位MLP模块，并引入正则化损失解决优化问题",
+ "experiment_framework": "在ImageNet-1K、CIFAR-10、ADE20K和RS-LVF数据集上评估，与多种二值化CNN和ViT方法比较，使用Top-1准确率、mIOU等指标",
+ "takeaways": [
+  "多尺度特征融合可有效解决二值ViT中的冗余计算问题",
+  "窗口注意力机制结合全局信息交互可降低计算成本",
+  "二值层间的残差连接有助于缓解梯度消失问题"
+ ],
+ "weaknesses": [
+  "方法组件较多，增加了实现复杂度",
+  "仅关注模型二值化，未探讨其他压缩方法如剪枝"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "模型压缩技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

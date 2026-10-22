@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SPICE_Submodular Penalized INFORMATION–CONFLICT Selection for Efficient Large Language Model Training.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SPICE_Submodular Penalized INFORMATION–CONFLICT Selection for Efficient Large Language Model Training.pdf",
+ "title": "SPICE: Submodular Penalized Information-Conflict Selection for Efficient Large Language Model Training",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "梯度冲突分析+子模惩罚，10%数据匹配全量微调，但计算开销与领域验证不足",
+ "innovations": [
+  "识别缓解梯度冲突是减缓边际信息增益衰减、避免信息损失的关键因素",
+  "提出ε-分解，将对理想子模性的偏离量化为冲突统计量的函数，得到随冲突减小而收紧的数据依赖近似因子",
+  "提出冲突感知选择器SPICE，最大化信息同时惩罚梯度不对齐，支持早停与代理模型提效"
+ ],
+ "method_framework": "以Fisher信息矩阵对数行列式为信息效用做子模最大化；通过ε-分解分析梯度冲突如何使边际信息增益衰减变慢；据此在选择目标中对梯度不对齐施加惩罚，在基数预算下选高信息低冲突子集，并用代理模型与早停降本。",
+ "experiment_framework": "在8个基准上用LLaMA2-7B与Qwen2-7B评测；SPICE仅用10%数据即匹配或超过含全量微调在内的6种方法。",
+ "takeaways": [
+  "梯度冲突是信息式数据选择中信息增益衰减的关键",
+  "冲突感知惩罚使选出子集比原标准含更高对数行列式信息",
+  "10%数据即可达到/超过全量微调，显著降低训练成本"
+ ],
+ "weaknesses": [
+  "属高效训练/数据选择方向，与主线（可靠性验证器/医学影像/多模态推理）关联弱",
+  "依赖梯度/Fisher信息计算，在超大模型上的计算开销未充分讨论",
+  "8个基准多为通用NLP，对高 stakes/医学数据选择的有效性未验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "高效训练方法，与可靠性主线关联弱但数据选择机制有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

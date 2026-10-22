@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Decoder-Hybrid-Decoder Architecture for Efficient Reasoning with Long Generation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Decoder-Hybrid-Decoder Architecture for Efficient Reasoning with Long Generation.pdf",
+ "title": "Decoder-Hybrid-Decoder Architecture for Efficient Reasoning with Long Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "GMU与SambaY混合架构提升长文本生成效率，但创新性有限",
+ "innovations": [
+  "Gated Memory Unit (GMU)实现层间高效内存共享",
+  "Decoder-Hybrid-Decoder架构SambaY结合SSM与注意力机制",
+  "µP++超参数扩展方案兼顾深度与宽度扩展",
+  "Phi4-mini-Flash-Reasoning实现10倍解码吞吐提升"
+ ],
+ "method_framework": "SambaY架构使用Samba作为自解码器，在交叉解码器中用GMU替代半数交叉注意力层，保持线性预填充复杂度，消除显式位置编码需求",
+ "experiment_framework": "SlimPajama数据集扩展实验(1B-3.4B参数)，Phonebook和RULER长上下文检索基准，Math500/AIME24/25/GPQA Diamond推理任务评估",
+ "takeaways": [
+  "GMU机制有效降低计算复杂度同时保持性能",
+  "小滑动窗口注意力(256)在长上下文任务中表现优异",
+  "混合架构在有限数据 regime 下展现出更好的可扩展性"
+ ],
+ "weaknesses": [
+  "仅开源训练代码，未开源模型权重",
+  "大规模预训练过程中遇到稳定性问题，需要额外技术缓解",
+  "未与最新Transformer变体进行直接比较"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

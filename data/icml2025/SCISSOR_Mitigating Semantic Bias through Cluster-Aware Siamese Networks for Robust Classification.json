@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/SCISSOR_Mitigating Semantic Bias through Cluster-Aware Siamese Networks for Robust Classification.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SCISSOR_Mitigating Semantic Bias through Cluster-Aware Siamese Networks for Robust Classification.pdf",
+ "title": "SCISSOR: Mitigating Semantic Bias through Cluster-Aware Siamese Networks for Robust Classification",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "用聚类重映射嵌入空间缓解语义偏差，提升OOD鲁棒性",
+ "innovations": [
+  "首次指出嵌入空间中样本语义分布的不均衡（而非仅表面特征）会诱发伪语义相关、形成捷径学习，并给出理论与实证论证。",
+  "提出无需数据增广/改写的即插即用去偏模块：先用MCL聚类定位标签失衡簇，再构造对比数据训练孪生网络重映射语义空间以打散捷径簇。",
+  "去偏模块插在预训练模型输出处与分类头联合微调，时间复杂度与基线相当，跨6个模型4个基准验证。"
+ ],
+ "method_framework": "将预训练嵌入后的样本用马尔可夫聚类(MCL)识别标签分布失衡的潜在簇；基于原始标签与样本分布信息构造对比（孪生）数据训练去偏模块，重映射嵌入空间以打散可被当作捷径的簇；模块接在预训练模型输出后与分类头联合训练，引导模型聚焦鲁棒特征。",
+ "experiment_framework": "4个基准：CV侧Not-MNIST手写字母、Chest-XRay胸片二分类；NLP侧Yelp情感、GYAFC风格迁移；6个模型(BERT/RoBERTa/LLaMA3.2/ViT/Swin/DINOv2)；用跨验证把失衡簇作训练优化目标、平衡簇作OOD测试；对比RAZOR、LC、IRM；指标为准确率与F1。",
+ "takeaways": [
+  "语义嵌入分布失衡本身可成为捷径，显式打散这些潜在簇能显著提升OOD性能。",
+  "在GYAFC/Yelp/Chest-XRay/Not-MNIST上F1分别提升约+5.3/+7.3/+7.7/+1.0个点，轻量模型(ViT约9.5%、BERT约11.9%)收益更明显。"
+ ],
+ "weaknesses": [
+  "所谓捷径是作者用跨验证自构的失衡簇，缺乏公认的对抗/鲁棒标准数据集，外部效度存疑。",
+  "依赖MCL聚类质量与Hopkins统计，聚类超参与簇标签均衡假设的敏感性消融未在可见页内展开。",
+  "仅验证二分类/风格等有限任务，未检验多模态大模型或大规模开放场景。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

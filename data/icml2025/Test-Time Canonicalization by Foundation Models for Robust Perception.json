@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Test-Time Canonicalization by Foundation Models for Robust Perception.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Test-Time Canonicalization by Foundation Models for Robust Perception.pdf",
+ "title": "Test-Time Canonicalization by Foundation Models for Robust Perception",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "测试时用基础模型选最优视角，提升鲁棒感知但推理成本高",
+ "innovations": [
+  "把不变性问题重新表述为测试时优化问题：不训练、不改架构，而是在推理时搜索最canonical的输入视图",
+  "用基础模型（CLIP/SAM）的似然作为能量函数对候选变换图像排序，实现Vary-Rank两步框架",
+  "用贝叶斯优化加速变换搜索，并展示在CLIP识别与SAM分割两类下游任务上的即插即用效果"
+ ],
+ "method_framework": "给定一张分布偏移输入，先枚举/采样一组变换（视角、旋转、光照、颜色等）；再用冻结的基础模型（CLIP或SAM）对每个候选变换计算能量（似然/先验匹配度），选能量最高者作为规范化输入；最后把规范化图送入下游模型。全程不更新任何模型参数，可用贝叶斯优化减少候选数量。",
+ "experiment_framework": "在Objaverse-LVIS（按视角难度排序）、CO3D视频帧、ImageNet-1K旋转增广、CIFAR100颜色/对比度偏移上评测CLIP零样本识别与SAM分割。难点视角准确率从12%升至约62%（+50%相对提升），颜色偏移+9.9%、对比度+4.1%，CO3D困难帧+43.8%。对比Augerino、InstaAug、LC、PRLC等学习规范化方法。",
+ "takeaways": [
+  "基础模型先验本身即可作为测试时canonicalization的能量函数，无需针对具体变换训练规范化器",
+  "对最难视角的识别准确率提升约5倍（12%→62%），说明互联网预训练模型里已蕴含typical-view先验",
+  "不重训、不改架构即可同时改善CLIP分类与SAM分割，泛化到多种变换类型"
+ ],
+ "weaknesses": [
+  "推理成本高：N个变换×能量计算×下游推理，文中自承需System-1/2加速，未给出实际延迟数字",
+  "需预先知道变换族并手动选择，不能自动发现未知变换；对无group结构的复杂真实变换依赖手工设计",
+  "增益主要在OOD困难视角，在ID数据上可能无收益甚至下降，鲁棒-精度权衡未充分报告",
+  "域为机器人/具身视觉感知，与医学影像或多模态大模型推理主线仅在鲁棒性维度相关"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Wave Learning Unified & Versatile Audio-Visual Embeddings with Multimodal LLM.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Wave Learning Unified & Versatile Audio-Visual Embeddings with Multimodal LLM.pdf",
+ "title": "WAVE: Learning Unified & Versatile Audio-Visual Embeddings with Multimodal LLM",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "基于MLLM的统一音视频嵌入，支持跨模态检索和提示感知嵌入",
+ "innovations": [
+  "首个基于多模态大模型的统一音视频嵌入空间，同时支持文本、音频、视频和同步音视频输入",
+  "提出分层特征融合策略和多模态多任务联合训练方法，实现任意模态间的跨模态检索",
+  "利用MLLM的指令遵循能力，生成提示感知嵌入——根据用户指令编码任务相关语义"
+ ],
+ "method_framework": "基于MLLM架构，采用分层特征融合策略将音频和视频特征融入语言模型的表征空间。通过多模态多任务联合训练（跨模态对比学习+多模态问答），构建统一的嵌入空间。支持任意模态到任意模态的检索，以及根据提示生成任务定制嵌入。",
+ "experiment_framework": "在MMEB-v2视频基准上达到SOTA。评估音频检索、视频到音频检索、多模态问答等任务。对比基线包括CLIP-style分离编码器和现有MLLM嵌入方法。",
+ "takeaways": [
+  "MLLM作为统一嵌入 backbone 比分离编码器更能实现跨模态语义对齐",
+  "提示感知嵌入使检索系统可根据用户意图动态调整表征，大幅提升多模态问答效果",
+  "联合多模态多任务训练比单任务对比学习效果更好"
+ ],
+ "weaknesses": [
+  "仅评估检索和问答等标准任务，下游应用（如推荐、分类）的适配性未充分验证",
+  "同步音视频输入的融合策略相对简单，复杂时空对齐场景的效果未知",
+  "MLLM backbone 的计算成本较高，实时嵌入部署的效率未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态大模型嵌入方法，与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

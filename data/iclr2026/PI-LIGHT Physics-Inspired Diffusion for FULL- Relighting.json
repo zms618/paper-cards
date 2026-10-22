@@ -1,0 +1,41 @@
+{
+ "title": "PI-Light: Physics-Inspired Diffusion for Full-Image Relighting",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "物理启发扩散做全图重打光，但依赖高成本数据集且与可靠性主线关联弱。",
+ "innovations": [
+  "批次感知注意力：提升一组图像间内在属性(反照率/法线)预测的一致性。",
+  "物理引导神经渲染模块：强制光传输满足物理合理性。",
+  "物理启发损失把训练动态正则到物理有意义的损失面，提升真实图像编辑泛化；并构建受控光照采集的多样化物体/场景数据集。"
+ ],
+ "method_framework": "两阶段：先用扩散模型做图像内在分解(法线/材质/反照率)与着色预测；再物理引导神经渲染做正向重打光。批次内注意力保持多图一致，物理损失约束光传输，微调预训练扩散模型实现全图任意光照控制。",
+ "experiment_framework": "在自建受控光照数据集上微调；评价逆向渲染(法线/材质估计)与正向重打光(镜面高光/漫反射)；对比现有重打光方法；指标含真实场景泛化(合成到真实gap)与下游打光可控性。",
+ "takeaways": [
+  "物理引导的扩散在全图重打光上比纯数据驱动先验更具物理合理性。",
+  "批次感知注意力改善多图内在分解一致性。",
+  "在多种材质上合成镜面与漫反射，真实场景泛化优于先前方法。"
+ ],
+ "weaknesses": [
+  "依赖受控光照采集数据集，采集成本高、场景多样性受限于设备。",
+  "重打光任务与可靠性/可信AI主线无直接关联，落地价值偏图形学。",
+  "两阶段流程误差累积(分解错误传导到渲染)的边界在正文前9页未充分量化。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PI-LIGHT Physics-Inspired Diffusion for FULL- Relighting.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PI-LIGHT Physics-Inspired Diffusion for FULL- Relighting.pdf",
+ "raw_overall": 5.85,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "物理引导重打光方法，与可靠性主线关联弱但方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/A Physics-Informed Machine Learning Framework for Safe and Optimal Control of Autonomous Systems.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/A Physics-Informed Machine Learning Framework for Safe and Optimal Control of Autonomous Systems.pdf",
+ "title": "A Physics-Informed Machine Learning Framework for Safe and Optimal Control of Autonomous Systems",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "PINN近似HJB方程，声称解决安全控制但高维扩展性存疑",
+ "innovations": [
+  "将安全与性能协同优化建模为状态约束最优控制问题，证明其值函数满足HJB方程",
+  "提出新的物理信息机器学习框架来高效近似HJB方程的解，兼顾形式化安全保证和学习方法的性能",
+  "桥接约束强化学习（性能强但安全保证弱）和形式化可达性分析（安全强但保守）之间的gap"
+ ],
+ "method_framework": "将安全要求建模为状态约束，性能目标建模为代价函数，构成状态约束最优控制问题。证明该问题的值函数满足带状态约束的HJB偏微分方程。用物理信息神经网络（PINN）近似HJB方程的解，同时满足PDE残差和边界条件，实现安全约束下的最优控制。",
+ "experiment_framework": "在多个自主控制任务上验证（具体系统前9页未完全列出），对比约束RL、CBF、HJ可达性分析等基线。评估指标包括安全保证、性能指标（如代价/效率）。",
+ "takeaways": [
+  "物理信息ML可以有效近似HJB方程，实现安全与性能的协同优化",
+  "相比纯形式化方法，PINN方法减少了控制器的保守性；相比纯学习方法，提供了更强的安全保证",
+  "该框架为安全关键自主系统的控制设计提供了新的范式"
+ ],
+ "weaknesses": [
+  "HJB方程的维数灾难问题未根本解决，高维系统的可扩展性存疑",
+  "PINN近似的精度和收敛性缺乏严格的理论保证",
+  "实验验证的系统规模较小，真实高维自主系统的适用性未验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "控制理论方法，未触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

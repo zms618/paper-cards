@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Controllable Data Generation with Hierarchical Neural Representations.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Controllable Data Generation with Hierarchical Neural Representations.pdf",
+ "title": "Controllable Data Generation with Hierarchical Neural Representations",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.9
+ },
+ "one_line": "分层INR参数空间实现解耦可控生成，但模态验证有限。",
+ "innovations": [
+  "发现INR参数空间天然具有层级结构，不同层对应不同层级的数据语义",
+  "提出CHINR框架，用分层潜在向量显式建模INR参数的条件依赖关系",
+  "构建Layers-of-Experts(LoE)网络，每层调制不同语义，实现解耦可控生成"
+ ],
+ "method_framework": "两阶段框架：(1)第一阶段构建Layers-of-Experts网络，INR的每一层由一个独立的专家网络和对应的唯一潜在向量调制，使得不同层捕获不同层级的语义；(2)第二阶段学习分层潜在向量的分布，通过自回归或层级生成方式采样新的潜在组合，生成具有可控语义的新INR。核心思想是将扁平的INR参数分布扩展为层级结构化分布。",
+ "experiment_framework": "在多种数据模态上验证（图像等）；对比扁平潜在空间的INR生成方法；指标包括生成质量、语义解耦程度、可控性；展示不同层潜在向量对应的语义解释。",
+ "takeaways": [
+  "INR参数空间存在天然层级结构，不同层编码不同抽象层次的语义",
+  "分层潜在空间比扁平潜在空间能更好地解耦数据语义，提升可控生成能力",
+  "Layers-of-Experts架构有效实现了层与语义的对应关系"
+ ],
+ "weaknesses": [
+  "主要在图像数据上验证，音频、3D等其他模态的效果未充分展示",
+  "层级深度和每层语义对应关系缺乏理论指导，可能需要人工设计",
+  "与主流扩散模型等生成方法的生成质量对比不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.75,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

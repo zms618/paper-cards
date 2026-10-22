@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/A Reductions Approach to Risk-Sensitive Reinforcement Learning with Optimized Certainty Equivalents.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/A Reductions Approach to Risk-Sensitive Reinforcement Learning with Optimized Certainty Equivalents.pdf",
+ "title": "A Reductions Approach to Risk-Sensitive Reinforcement Learning with Optimized Certainty Equivalents",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.4
+ },
+ "one_line": "将风险敏感RL归约为增强MDP，但计算开销大且实验有限。",
+ "innovations": [
+  "提出归约框架将OCE（优化确定性等价）类风险敏感RL转化为增强MDP中的风险中性RL问题，可复用现有风险中性RL算法",
+  "提出两种元算法：基于乐观主义的算法和基于策略梯度的算法，分别建立了新的OCE理论界",
+  "为外生块MDP提供了首个风险敏感界，并在离散奖励假设下建立了策略梯度算法的单调改进和全局收敛保证"
+ ],
+ "method_framework": "将OCE风险度量的优化问题转化为增强MDP（augmented MDP）中的风险中性RL问题。增强状态包含一个辅助变量b（确定性等价基准），使得原OCE优化目标等价于增强MDP中的期望回报最大化。基于此归约，分别设计乐观算法和策略梯度算法，并利用风险中性RL的已有理论结果推导风险敏感界。",
+ "experiment_framework": "在多个RL环境上实证验证两种算法的有效性，对比CVaR RL、标准RL等基线。具体环境和指标在前9页未完全展示。",
+ "takeaways": [
+  "OCE类风险度量可以通过增强MDP归约为风险中性RL问题，从而复用丰富的风险中性RL算法和理论",
+  "基于乐观的算法推广了此前CVaR RL的结果，并首次给出外生块MDP的风险敏感界",
+  "策略梯度算法在离散奖励假设下具有单调改进和全局收敛保证"
+ ],
+ "weaknesses": [
+  "归约方法需要扩展状态空间，增加了MDP的维度，实际计算开销增大",
+  "全局收敛保证仅在离散奖励假设下成立，连续奖励场景的理论保证缺失",
+  "实验验证的环境规模和复杂度有限，未涉及高维现实任务"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "风险敏感RL与可靠性主线交织，但计算开销大且实验有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

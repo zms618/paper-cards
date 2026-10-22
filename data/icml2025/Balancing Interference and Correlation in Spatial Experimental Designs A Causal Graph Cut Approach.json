@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Balancing Interference and Correlation in Spatial Experimental Designs A Causal Graph Cut Approach.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Balancing Interference and Correlation in Spatial Experimental Designs A Causal Graph Cut Approach.pdf",
+ "title": "Balancing Interference and Correlation in Spatial Experimental Designs: A Causal Graph Cut Approach",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "因果图切分算法平衡空间干扰与相关性，但假设限制且实验不足。",
+ "innovations": [
+  "首次将图切分算法引入空间实验设计问题，将MSE优化转化为谱聚类可解的二次型问题",
+  "理论证明干扰效应与相关性对最优设计方向相反：干扰大应聚同类处理，相关性强应分散处理",
+  "提出基于邻域干扰假设的DR估计量MSE分解定理，并推导可高效优化的代理函数"
+ ],
+ "method_framework": "在邻域干扰假设下，将集群随机化设计的ATE估计量MSE分解为设计感知项(DA)、集群内协方差项(SC)和干扰项(I1/I2)。基于定理推导代理目标函数，权重ωii'=R·Wii'·Σ+ii'-Σii'，既惩罚跨集群边界的干扰溢出(I1)，又奖励集群间协方差差异(SC)。通过Laplacian矩阵的Fiedler向量求解图切分，并用迭代方式估计协方差矩阵Σ。",
+ "experiment_framework": "合成环境在4种城市空间形态(Square/Circle/Fan/Rectangle)和3种协方差结构(constant/truncated constant/exponential)下测试，对比GD/ID/SC/TNET/CC及Oracle版本OCGC。另在城市级网约车调度模拟器上验证。指标为ATE估计量的MSE。",
+ "takeaways": [
+  "CGC在合成实验中MSE显著低于CC/TNET/SC，相比全局设计和个体设计分别提升54%和72%",
+  "在网约车模拟器上，CGC的ATE估计MSE比基准方法小3.5倍",
+  "CGC性能接近Oracle版本OCGC，说明迭代估计协方差的框架有效"
+ ],
+ "weaknesses": [
+  "仅在邻域干扰假设下推导，更一般的干扰结构下方法适用性未验证",
+  "I2项被近似忽略为高阶小量，但在密集连接网络中该近似可能不成立",
+  "实验仅用合成数据和网约车模拟器，缺乏真实A/B测试部署结果"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.18,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "因果推断方法扎实但未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

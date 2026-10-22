@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SAES_Can SAES Reveal and Mitigate Racial Biases Of LLMS In HEALTHCARE.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SAES_Can SAES Reveal and Mitigate Racial Biases Of LLMS In HEALTHCARE.pdf",
+ "title": "Can SAEs Reveal and Mitigate Racial Biases of LLMs in Healthcare?",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.3
+ },
+ "one_line": "SAE揭示临床LLM种族偏见，但缓解效果在复杂任务中不可靠。",
+ "innovations": [
+  "较早将 SAE 应用于临床文本，识别出与黑人个体相关、却同时被'监禁''可卡因使用'等污名概念激活的 latent。",
+  "通过对该 latent 做 steering 建立因果：使患者'更黑'会提高模型预测其'好斗(belligerent)'的风险。",
+  "发现在仅操纵种族的受控实验中，模型生成的思维链(CoT)并不把种族列为评估因素，即 CoT 不忠实。"
+ ],
+ "method_framework": "在 gemma-2 上用黑人/白人患者出院总结训练线性探针于 SAE 激活，找出对种族最具预测力的 latent；用该 latent 做激活/消融(steering)来观测并尝试缓解种族与污名概念的关联；同时对照检查 CoT 是否披露种族因素。",
+ "experiment_framework": "真实出院总结数据；任务含两档：简单 vignette 生成(为疾病抽样病例)与基于临床笔记的风险预测等复杂任务；指标为种族在输出/风险上的分布差异；消融种族 latent 观察偏差变化，并与 CoT 解释对照。",
+ "takeaways": [
+  "SAE 可揭示临床 LLM 对种族与污名化概念的隐式关联，并能通过 steering 做因果验证。",
+  "CoT 在这类设定下并不披露种族因素，不应被信任为偏差解释。",
+  "消融种族 latent 在简单任务能减少过度代表，但在真实复杂临床风险预测中缓解效果不可靠。"
+ ],
+ "weaknesses": [
+  "结论混合且在复杂任务上方法失效，作者未给出在真实临床任务中可靠缓解偏差的可行方案。",
+  "仅在 gemma-2 系列与出院总结上验证，跨模型/跨临床场景的可迁移性未知。",
+  "识别依赖单一最高系数 latent，遗漏多条 latent 共同编码种族的可能，归因可能不完整。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "可靠性主线(偏见缓解)×落地域(医疗LLM)，但复杂任务缓解效果不可靠",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

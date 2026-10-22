@@ -1,0 +1,37 @@
+{
+ "title": "Flexible and Efficient Grammar-Constrained Decoding",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "改进GCD算法解决tokenizer与parser不对齐问题，提升生成速度。",
+ "innovations": [
+  "针对subword tokenizer与CFG终端不对齐问题，设计预编译lexer+在线automaton的两级架构",
+  "将在线token masking开销从>1秒/token降到可接受范围",
+  "支持灵活的CFG扩展(嵌套语法、左递归等)"
+ ],
+ "method_framework": "预处理阶段用lexer识别终端；推理时在终端上运行automaton维护合法前缀集；对每个LLM词表token，检查其延展是否仍可构成合法前缀，mask掉不合法token；通过高效的token-to-terminal映射降低在线开销。",
+ "experiment_framework": "在代码生成与结构化JSON输出任务上对比现有GCD算法(GUIDANCE/outlines等)；报告合法输出率、生成速度(tokens/s)、内存占用；在多个LLM上验证。",
+ "takeaways": [
+  "相比现有GCD方法，新算法在保证100%语法合法输出的同时显著提升生成速度",
+  "两级(lexer+automaton)架构兼顾灵活性与效率",
+  "支持复杂CFG包括左递归与嵌套结构"
+ ],
+ "weaknesses": [
+  "属于推理效率工具，与可靠性/可信AI主线关联弱",
+  "预编译阶段对大型CFG的构建时间未充分分析",
+  "在极长输出(如完整程序)上的端到端延迟未给出"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Flexible and Efficient Grammar-Constrained Decoding.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Flexible and Efficient Grammar-Constrained Decoding.pdf",
+ "raw_overall": 5.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

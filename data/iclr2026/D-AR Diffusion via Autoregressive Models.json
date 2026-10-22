@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/D-AR Diffusion via Autoregressive Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/D-AR Diffusion via Autoregressive Models.pdf",
+ "title": "D-AR: Diffusion via Autoregressive Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "将扩散过程转为自回归，但tokenizer参数大且缺乏领域验证",
+ "innovations": [
+  "顺序扩散tokenizer设计",
+  "保持标准next-token预测",
+  "支持流式解码和零样本控制",
+  "无需修改自回归机制"
+ ],
+ "method_framework": "通过顺序扩散tokenizer将图像转换为离散token序列，利用标准自回归模型生成，同时通过条件控制实现扩散过程。",
+ "experiment_framework": "ImageNet 256×256类条件生成，FID/IS/精度/召回率指标，与DiT、MaskGIT、MAR等方法对比。",
+ "takeaways": [
+  "扩散过程可转化为自回归序列",
+  "流式解码支持实时预览",
+  "零样本布局控制能力"
+ ],
+ "weaknesses": [
+  "tokenizer参数量较大(300M)",
+  "未展示在医学影像等特定领域应用",
+  "未充分讨论鲁棒性和泛化能力"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散转自回归方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

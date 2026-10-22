@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/3D-Gaussian_POp-GS Next Best View in 3D-Gaussian Splatting with P-Optimality.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3D-Gaussian_POp-GS Next Best View in 3D-Gaussian Splatting with P-Optimality.pdf",
+ "title": "POp-GS: Next Best View in 3D-Gaussian Splatting with P-Optimality",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 4.5,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "将经典最优实验设计理论引入3D-GS视角选择，但实验证据不足",
+ "innovations": [
+  "从最大似然+高斯牛顿推导3D-GS参数协方差Σ=(J^T J)^{-1}，把next-best-view形式化为argmin_i U_p(Σ_i)，从而把经典最优实验设计文献接入3D-GS",
+  "系统比较p取1/-1/0/±1对应的T/A/D/E四类optimality，发现D(协方差超椭球体积)与T(平均方差)显著优于FisherRF的tr((J_i^T J_i)H_-^{-1})",
+  "提出块对角Hessian近似（每块=单个椭球的参数）以刻画同一椭球内参数相关性，并对每通道而非每像素求偏导以避开α^n导致的奇异"
+ ],
+ "method_framework": "先由训练图集的逐像素梯度近似Hessian H=J^TJ，新增候选视角时H_i=H_-+J_i^T J_i；因参数量百万级不可存，用对角或块对角近似；再对Σ_i=H_i^{-1}施加P-optimality泛函U_p=(1/l·tr(Σ^p))^{1/p}排序选视角，批量选择用迭代增删更新Hessian。",
+ "experiment_framework": "Mip-NeRF360(9场景)与Blender(8场景)；基线FisherRF、均匀采样及自实现A/D/E/T-Opt；PSNR/SSIM/LPIPS；单次/批量(迭代、keyframe)视角选择",
+ "takeaways": [
+  "把成熟但被忽视的经典理论（最优实验设计）搬到新表示上并做系统性横向比较，比硬凑新模块更能产生可解释的选型结论",
+  "仅需位姿不需图像内容即可预估信息增益，这种'零样本评估采集价值'的思路可迁移到主动标注/主动学习的数据选择"
+ ],
+ "weaknesses": [
+  "基线偏弱且非同类可比性存疑：只比FisherRF与均匀采样，剔除了ActiveNeRF；A/E/T/D-Opt均为作者自实现，公平性依赖其实现质量",
+  "无任何方差/多种子/显著性检验，Mip-NeRF360上D-Opt(Simple)的17.95与均匀采样17.29差距未做统计检验；且均匀采样在该设定下本就接近最优，提升幅度含协议成分",
+  "A-Opt(15.55)与E-Opt(15.33)反而大幅低于均匀采样，论文只报告不解释，失败案例的机制分析缺失",
+  "正文在Table 5(批量视角选择)处截断，4.3节'信息增益与渲染质量相关性'实验、参数级消融表与块对角的额外计算开销定量分析均无法核验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3DGS视角选择，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

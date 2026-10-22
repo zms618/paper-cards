@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Measuring Uncertainty Calibration.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Measuring Uncertainty Calibration.pdf",
+ "title": "Measuring Uncertainty Calibration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "为二分类校准误差提供分布无关上界，但推广性与实证不足",
+ "innovations": [
+  "在'校准函数有界变差'这一弱结构假设下，用全变分去噪给出首个分布无关、非渐近的校准误差上界",
+  "提出对任意分类器的轻量改造，使其校准误差可被高效上界认证，且不显著影响分类性能、无需限制性假设",
+  "给出可在真实数据上低开销运行的实践校准误差测量流程建议"
+ ],
+ "method_framework": "将校准误差估计转化为对校准函数 η 的有界变差约束下的非参数推断；用全变分去噪从有限样本构造 η 的上包络，从而得到 L1 校准误差的分布无关置信上界；并设计分类器后处理改造以激活该认证。",
+ "experiment_framework": "对象：二分类器 L1 校准误差估计；理论：非渐近、分布无关上界；实证：真实数据集上低开销流程，对比分桶法与零校准假设检验。",
+ "takeaways": [
+  "分桶法校准估计依赖桶方案且不可靠，有界变差+全变分去噪可给出稳定的有限样本上界",
+  "校准误差测量不必依赖渐近大样本或零误差假设，弱结构假设下即可认证",
+  "分类器可被轻量改造以支持可认证的校准上界，而几乎不损失分类精度"
+ ],
+ "weaknesses": [
+  "聚焦二分类与 L1 误差，多分类/其他损失下的可推广性未展开",
+  "有界变差是结构假设，对高度振荡的现代神经网络校准函数是否成立需实证",
+  "与医学影像/多模态推理等具体落地域无直接结合，仅给测量工具"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "校准误差测量工具，但未直接结合医学影像或多模态推理落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

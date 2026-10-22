@@ -1,0 +1,41 @@
+{
+ "title": "PARD: Accelerating LLM Inference with Low-Cost Parallel Draft Model Adaptation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "投机解码工程改进，单draft模型跨家族复用，并行预测多token。",
+ "innovations": [
+  "target-independent：单个draft模型可服务一整个目标模型家族的多个变体，无需为每个变体单独训draft head。",
+  "并行token预测：draft阶段单次前向预测多个未来token，加速投机解码。",
+  "基于前缀KV状态完整性的条件drop-token(COD)机制，低成本把自回归draft适配为并行draft，训练效率较masked预测提升3倍。"
+ ],
+ "method_framework": "draft-then-verify投机解码：draft模型在单次前向中并行预测多个未来token序列；用COD按前缀KV完整性决定drop部分token以对齐并行/AR训练；一个draft模型跨一族目标模型复用，再由目标模型验证接受/拒绝。",
+ "experiment_framework": "在vLLM推理框架上；LLaMA3.1-8B等；对比EAGLE-3等投机解码；指标为加速比与吞吐(tok/s)；报告最高3.67×加速、264.88 tok/s、较EAGLE-3快1.15×，训练效率提升3×。",
+ "takeaways": [
+  "target-independent draft可大幅降低为每个目标模型单独适配draft的成本。",
+  "并行多token预测+COD适配在保证接受率下显著提速。",
+  "PARD在vLLM上达到3.67×加速且优于EAGLE-3。"
+ ],
+ "weaknesses": [
+  "属推理加速工程，与可靠性/可信AI主线无直接关联。",
+  "target-independent跨家族复用的接受率/加速比随目标模型差异增大而下降的边界需更多评测。",
+  "主要在8B级模型验证，超大模型与长上下文下的KV与显存开销未充分量化。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PARD_Accelerating Inference Low-Cost Parallel Draft Model Adaptation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PARD_Accelerating Inference Low-Cost Parallel Draft Model Adaptation.pdf",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "推理加速工程，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

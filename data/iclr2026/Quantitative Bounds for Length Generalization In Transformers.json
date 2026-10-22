@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Quantitative Bounds for Length Generalization In Transformers.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Quantitative Bounds for Length Generalization In Transformers.pdf",
+ "title": "Quantitative Bounds for Length Generalization in Transformers",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "理论给出Transformer长度泛化下界，但实验验证有限",
+ "innovations": [
+  "在Huang et al.(2025)渐近结论基础上，首次给出长度泛化发生所需最小训练长度N的定量界",
+  "系统区分多种设定：ℓ∞误差控制vs平均误差控制、无限精度softmax vs有限精度(退化为argmax)注意力、单层vs两层",
+  "证明统一判据：当Transformer在更长序列上的内部行为可被训练所见短序列行为'模拟'时即发生长度泛化"
+ ],
+ "method_framework": "沿用limit transformer形式化，证明两个在长度≤N近似一致的limit transformer在任意长度上近似一致的充分条件；将外推能力归约为长序列行为可被短序列行为模拟，并据此估计所需训练数据长度。",
+ "experiment_framework": "理论推导为主，配合在testbed任务上的经验验证以校准界的定性预测。",
+ "takeaways": [
+  "所需训练长度存在可量化的下界，任务越复杂所需富训练数据越多",
+  "有限精度(近似argmax)注意力下长度泛化条件更严，与实证观察一致",
+  "'可模拟性'是Transformer序列外推的统一机制性解释"
+ ],
+ "weaknesses": [
+  "理论偏渐近与testbed任务，对真实LLM长文本外推的直接指导有限",
+  "经验验证仅用于校准定性结论，缺大规模真实任务上的定量吻合",
+  "落地域（医学影像/多模态）未涉及，泛化主题外的可靠性维度未覆盖"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "纯理论工作，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

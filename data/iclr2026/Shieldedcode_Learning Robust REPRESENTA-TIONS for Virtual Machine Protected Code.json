@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Shieldedcode_Learning Robust REPRESENTA-TIONS for Virtual Machine Protected Code.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Shieldedcode_Learning Robust REPRESENTA-TIONS for Virtual Machine Protected Code.pdf",
+ "title": "ShieldedCode: Learning Robust Representations for Virtual Machine Protected Code",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "首个protection-aware框架学习VMP代码表示，但攻防有效性验证不足",
+ "innovations": [
+  "首个protection-aware框架学习VMP保护代码的鲁棒表示，把LLM用于软件保护这一未充分探索方向",
+  "构建大规模源码-规范化VM实现配对数据集，并在指令内/前置/指令间三级做层级依赖建模",
+  "联合优化语言建模与功能感知+保护感知对比目标，兼顾语义等价与保护强度；并提出保护效能优化任务对不同VM变体排序"
+ ],
+ "method_framework": "先用配对源码-VM数据做两级(持续预训练+微调)流程，层级依赖建模捕捉指令间结构；对比学习拉近功能等价的受保护代码、推远保护强度不同者；再用保护效能任务量化并排序不同VM变体的抗逆向能力。",
+ "experiment_framework": "在L0等VM代码生成上测Pass@1(对比GPT-4o)，在二进制相似检测上测Recall@1(对比jTrans等SOTA)；跨不同保护层级评测鲁棒性。",
+ "takeaways": [
+  "L0 VM代码生成Pass@1达26.95%，高于GPT-4o的22.58%",
+  "二进制相似检测Recall@1较jTrans等SOTA提升10%",
+  "跨多种保护层级鲁棒性显著改善，开辟学习式软件防御方向"
+ ],
+ "weaknesses": [
+  "属软件安全/代码保护，与可靠性、医学影像、多模态推理主线无关",
+  "保护强度/抗逆向的真实攻防有效性未在真实攻击下验证，指标偏代理",
+  "依赖自构的源码-VM配对数据，数据规模与覆盖的VM变体有限；Pass@1绝对值仍低"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "软件安全与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/NeAR Coupled Neural Asset-Renderer Stack.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/NeAR Coupled Neural Asset-Renderer Stack.pdf",
+ "title": "NeAR Coupled Neural Asset-Renderer Stack",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "耦合神经资产-渲染器栈实现单图像重照明的3D生成",
+ "innovations": [
+  "耦合神经资产-渲染器栈设计",
+  "光照归一化SLAT表示(LH-SLAT)",
+  "光照感知神经3D高斯渲染器"
+ ],
+ "method_framework": "NeAR采用两阶段框架：首先通过修正流模型和LoRA适应将输入图像转换为光照归一化的SLAT表示，然后使用光照感知神经解码器生成可重照明的3D高斯点云，支持实时渲染和新视角合成。",
+ "experiment_framework": "在四个任务上评估：G缓冲前向渲染、随机光照重建、未知光照重照明和新视角重照明，使用ADT、DTC、Objaverse和Glossy Synthetic数据集，指标包括PSNR、SSIM和LPIPS。",
+ "takeaways": [
+  "光照归一化表示作为资产和渲染器之间的鲁棒'契约'",
+  "耦合设计优于解耦范式，避免烘焙光照和材料模糊问题",
+  "实时性能与高质量渲染的平衡"
+ ],
+ "weaknesses": [
+  "复杂透明效果处理仍有挑战",
+  "方法依赖几何先验(如网格输入)",
+  "实验主要在合成数据上进行，真实场景泛化能力需进一步验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3D渲染技术，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

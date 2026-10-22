@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/VGGT_HeSS Head Sensitivity Score for Sparsity Redistribution in VGGT.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/VGGT_HeSS Head Sensitivity Score for Sparsity Redistribution in VGGT.pdf",
+ "title": "HeSS Head Sensitivity Score for Sparsity Redistribution in VGGT",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "HeSS量化头敏感度，实现VGGT自适应稀疏化，提升高稀疏度性能",
+ "innovations": [
+  "Head Sensitivity Score (HeSS)量化注意力头对稀疏化的敏感度",
+  "HeSS-Guided Sparsification根据敏感度差异化分配注意力预算",
+  "结合相机位姿误差和点云误差的双目标敏感度评估"
+ ],
+ "method_framework": "两阶段流程：校准阶段计算HeSS（基于FIM近似Hessian），推理阶段根据HeSS重新分配注意力预算，迭代式预算裁剪确保可行性",
+ "experiment_framework": "CO3Dv2和DTU数据集，对比SparseVGGT和ViT剪枝方法，评估相机位姿(AUC@30, ATE)和MVS(Chamfer Distance)性能",
+ "takeaways": [
+  "注意力头对稀疏化敏感度异质化，需差异化处理",
+  "FIM可有效近似Hessian评估参数敏感性",
+  "预算重分配机制对性能保持至关重要"
+ ],
+ "weaknesses": [
+  "HeSS计算依赖校准集，可能影响泛化性",
+  "方法仅针对VGGT架构，通用性受限",
+  "未分析不同场景类型下的敏感度差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅关注VGGT稀疏化，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/MEGA Memory-Efficient 4D Gaussian Splatting for Dynamic Scenes.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/MEGA Memory-Efficient 4D Gaussian Splatting for Dynamic Scenes.pdf",
+ "title": "MEGA Memory-Efficient 4D Gaussian Splatting for Dynamic Scenes",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "DC-AC颜色与熵约束变形场压缩4D高斯，但推理效率未根本提升",
+ "innovations": [
+  "DC-AC颜色表示替代球谐函数，减少8倍存储",
+  "熵约束高斯变形场扩大作用范围并减少高斯数量",
+  "结合半精度存储和zip压缩实现190倍压缩"
+ ],
+ "method_framework": "将颜色分解为DC分量和共享的AC预测器，引入时间-视点感知的变形预测器，通过熵约束损失优化高斯数量，最后使用FP16和zip压缩存储",
+ "experiment_framework": "Technicolor和Neural 3D Video数据集，对比4DGS等基线，使用PSNR、DSSIM、LPIPS和FPS评估",
+ "takeaways": [
+  "DC-AC分解可有效减少颜色表示的存储开销",
+  "熵约束变形场能提高高斯利用率并减少总数"
+ ],
+ "weaknesses": [
+  "方法依赖训练时的优化过程，推理时仍需计算变形预测器",
+  "未讨论在极端动态场景下的表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "4D高斯压缩属于图形学渲染，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

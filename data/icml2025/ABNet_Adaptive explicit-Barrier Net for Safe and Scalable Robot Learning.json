@@ -1,0 +1,41 @@
+{
+ "title": "ABNet: Adaptive explicit-Barrier Net for Safe and Scalable Robot Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "ABNet将屏障函数闭式嵌入模型，通过多头结构实现安全可扩展，但缺乏真实硬件验证",
+ "innovations": [
+  "让屏障(barrier)显式出现在闭式安全保证模型中，区别于以往不可扩展、难训练、对噪声敏感的安全学习方法",
+  "提出多头结构：每个头从不同观测特征学习安全控制策略、关注观测的特定部分，从而增量式扩展到更大安全模型而无需直接构建巨型模型",
+  "在模型合并/混合多个安全关键模型的同时保留安全，并仍可给出形式化安全证明"
+ ],
+ "method_framework": "以控制屏障函数/前向不变集刻画安全(bad never happens)。ABNet 将屏障约束写成闭式项并入网络输出，使策略在满足屏障条件下动作；多头专家分别处理不同特征，合并时仍维持安全集前向不变，从而可扩展且输出稳定、抗噪。",
+ "experiment_framework": "在机器人控制任务上，对比既有安全学习方法(及一般 mixture-of-experts 合并方法)，考察训练效率、噪声输入下输出稳定性、复杂任务性能与是否保留形式化安全保证。",
+ "takeaways": [
+  "显式闭式屏障可在保证可证明安全的同时改善可扩展性与可训练性",
+  "多头按特征分工有助于在不大幅增加模型规模的前提下处理复杂任务",
+  "合并多个安全关键模型时仍可保留安全，而非仅追求控制性能"
+ ],
+ "weaknesses": [
+  "前 9 页未见在真实硬件长程任务上的安全性实证与违例统计",
+  "屏障约束的可行性/保守性可能牺牲性能，权衡未充分量化",
+  "与现代强化学习+shielding 方法的对比不完整"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/ABNet_Adaptive explicit-Barrier Net for Safe and Scalable Robot Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ABNet_Adaptive explicit-Barrier Net for Safe and Scalable Robot Learning.pdf",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "机器人操作与可靠性主线无实质交点，仅方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Eliciting Language Model Behaviors with Investigator Agents.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Eliciting Language Model Behaviors with Investigator Agents.pdf",
+ "title": "Eliciting Language Model Behaviors with Investigator Agents",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "摊销贝叶斯后验建模行为诱发，Frank-Wolfe防策略坍缩，但验证器鲁棒性存疑。",
+ "innovations": [
+  "将行为诱发形式化为摊销后验推断：investigator pθ(x|y)逼近目标模型后验p_m(x|y)，目标函数R+β1H-?KL同时兼顾诱发奖励、多样性(熵)与流畅度(KL到prior)。",
+  "提出Frank-Wolfe迭代DPO：每轮用前几轮聚合模型惩罚已发现的策略(如repeat after me)，从而迭代探索新策略(续写/前缀摘要/表格)，解决纯DPO的mode collapse。",
+  "提出两阶段rubric诱发：先从rubric(R,a)推断满足的响应y、再从y推断prompt x，把开放式rubric行为(幻觉/心理异常)降为字符串诱发问题。"
+ ],
+ "method_framework": "三段式：(1)SFT——用前向问题(prompt→response)采数据，反向训练pθ从response预测prompt；(2)DPO——on-policy采两个prompt对，按log p_m(y|x)大小构造winner/loser偏好对；(3)Frank-Wolfe——q(i)=DPO(reward=log p_m(y|x)-λlog p(i-1)_θ(x|y))，再p(i)=(1-η)p(i-1)+ηq(i)聚合，惩罚旧策略鼓励新策略。rubric版把奖励换成verifier p_v(a|R,y)。",
+ "experiment_framework": "目标/调查模型Llama-3.1-8B；任务预训练字符串(4096)/Harmful Strings(574)/Harmful Behaviors(50)/幻觉TruthfulQA(3600 rubrics)/DSM-5异常行为(3804)；基线GCG/Adaptive Attacks/SFT/DPO；指标best-of-25 ASR、verifier score、熵(多样性)、迁移到Llama-3.3-70B/GPT-4o/Claude3.5；含SFT数据集(WildChat vs UltraChat)、DPO轮数、模型规模消融。",
+ "takeaways": [
+  "AdvBench Harmful Strings ASR 98.8%、Harmful Behaviors 100%(Llama-3.1-8B)，远超GCG(57%/56%)，且攻击prompt为自然语言、短(≤128 token)。",
+  "攻击迁移到Llama-3.3-70B-Turbo仍75.8%/98%，对闭源GPT-4o/Claude3.5较弱(10-28%)；幻觉诱发85%、聚合75样本后93%，异常行为81%。",
+  "FW-full同时获得高诱发分与高熵(2.079 vs DPO 0.299)，说明迭代Frank-Wolfe成功discover多样策略而不mode collapse。"
+ ],
+ "weaknesses": [
+  "作者自承用LM作verifier存在reward hacking/误判(GPT-4 grader有假阳性)，鲁棒验证器缺失；部分高ASR可能来自评判偏置。",
+  "仅单轮(single-turn)诱发，作者规划的多轮/工具调用investigator未实现；迁移到闭源模型成功率骤降，泛化有限。",
+  "攻击型工作存在滥用风险；虽用于安全红队，但未配套防御方案，且SFT用WildChat可能含人工攻击数据助益(UltraChat消融虽仍高)。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

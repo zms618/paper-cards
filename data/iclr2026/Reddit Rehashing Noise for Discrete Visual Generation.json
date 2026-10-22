@@ -1,0 +1,41 @@
+{
+ "title": "ReDDiT: Rehashing Noise for Discrete Visual Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "多索引噪声改进离散扩散，但落地域与主线无关，证据不足。",
+ "innovations": [
+  "指出离散扩散落后于连续扩散的根因是单mask吸收态缺乏Gaussian噪声的词汇丰富度与潜空间多样性，而非单纯量化。",
+  "提出多索引随机corruption的rehashing噪声，丰富训练中潜变量遍历的路径；并推导principled的rehash采样器，保证高多样性、低差异。",
+  "结合带表示对齐(RepA)的改进ELBO提升训练效率，gFID从6.18降到1.61，追平连续对等模型。"
+ ],
+ "method_framework": "在corruption阶段把token随机映射为多个codebook索引而非单一[mask]，定义新的吸收态/转移；生成时用rehash采样器按离散扩散理论反演这些随机吸收路径，替代MVTM里靠Gumbel-max、逐步调参的confidence remask，从而获得稳定、低差异的多样采样。",
+ "experiment_framework": "图像生成基准；对比masked visual token model(MVTM)基线及连续扩散对等模型；指标gFID与采样多样性/稳定性；报告gFID 6.18→1.61且与连续模型相当。",
+ "takeaways": [
+  "单[mask]吸收态的粗糙信号是离散扩散表达力受限的关键。",
+  "多索引随机噪声+理论采样器可减少对人工调参随机性(Gumbel-max)的依赖。",
+  "rehash噪声使离散扩散在质量上可追平连续对等模型。"
+ ],
+ "weaknesses": [
+  "落地域为视觉生成扩散模型，与可靠性×医学影像/多模态推理主线无关。",
+  "多索引吸收态扩大了状态空间，训练/采样开销与大词表codebook的可扩展性在节选页中未充分量化。",
+  "节选前9页未见具体数据集与逐方法gFID表，'追平连续模型'的范围在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Reddit Rehashing Noise for Discrete Visual Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reddit Rehashing Noise for Discrete Visual Generation.pdf",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "离散扩散改进与可靠性主线无关，仅视觉生成领域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

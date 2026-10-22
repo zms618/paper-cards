@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/TF-SSD A Strong Pipeline via Synergic Mask Filter for Training-free.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/TF-SSD A Strong Pipeline via Synergic Mask Filter for Training-free.pdf",
+ "title": "TF-SSD A Strong Pipeline via Synergic Mask Filter for Training-free",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "训练自由CoSOD，SAM与DINO协同掩码过滤",
+ "innovations": [
+  "SAM与DINO协同框架",
+  "质量掩码生成器(QMG)",
+  "图像内显著性过滤器(ISF)",
+  "图像间原型选择器(IPS)"
+ ],
+ "method_framework": "利用SAM生成原始掩码提案，通过QMG过滤低质量掩码，使用DINO注意力图进行ISF筛选，最后通过IPS选择跨图像语义一致的掩码作为最终预测。",
+ "experiment_framework": "在CoCA、CoSal2015和CoSOD3k数据集上评估，与监督、无监督和训练自由方法比较，使用F-measure、S-measure、MAE和Emax指标。",
+ "takeaways": [
+  "利用预训练模型组合实现训练自由检测",
+  "渐进式掩码过滤策略有效提升性能",
+  "跨图像原型选择增强语义一致性"
+ ],
+ "weaknesses": [
+  "依赖两个大型预训练模型计算开销大",
+  "参数设置较多可能影响泛化能力",
+  "未充分讨论方法在极端情况下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "训练自由CoSOD，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

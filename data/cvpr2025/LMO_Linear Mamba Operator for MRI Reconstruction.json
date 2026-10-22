@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/LMO_Linear Mamba Operator for MRI Reconstruction.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/LMO_Linear Mamba Operator for MRI Reconstruction.pdf",
+ "title": "LMO Linear Mamba Operator for MRI Reconstruction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "LMO结合扫描与卷积积分实现MRI重建，但多线圈实验不完整",
+ "innovations": [
+  "提出扫描积分(SI)和卷积积分(CI)两种积分形式",
+  "设计线性Mamba算子(LMO)实现带限函数空间映射",
+  "实现连续-离散等价性(CDE)保证高泛化能力"
+ ],
+ "method_framework": "LMO通过提升、频率投影和核积分层处理输入函数，核积分结合扫描积分(全局)和卷积积分(局部)，在带限函数空间学习映射，确保O(n)复杂度下的高效全局特征提取。",
+ "experiment_framework": "在IXI和fastMRI单线圈数据集及多线圈数据集上评估，与HQS-Net、H-DSLR、PGIUN等6种SOTA方法比较，使用PSNR、SSIM指标，测试不同加速率和采样模式下的性能。",
+ "takeaways": [
+  "函数空间映射而非实例映射提供高泛化基础",
+  "扫描与卷积积分结合实现全局与局部特征平衡",
+  "连续-离散等价性设计确保模型在带限函数空间的一致性"
+ ],
+ "weaknesses": [
+  "多线圈实验结果不完整",
+  "未充分讨论模型在不同MRI类型上的泛化能力",
+  "计算复杂度分析仅限于理论推导，缺乏实际运行时间对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像重建与可靠性方法结合，可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Silence is Golden Leveraging Adversarial Examples to Nullify Audio Control.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Silence is Golden Leveraging Adversarial Examples to Nullify Audio Control.pdf",
+ "title": "Silence is Golden Leveraging Adversarial Examples to Nullify Audio Control",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "两阶段方法抵抗净化攻击并消除音频控制，但图像质量下降明显",
+ "innovations": [
+  "提出nullifying loss消除音频控制",
+  "设计anti-purification策略抵抗净化攻击",
+  "建立针对LDM对话头生成的主动防御基准"
+ ],
+ "method_framework": "Silencer采用两阶段方法：首先使用nullifying loss生成对抗样本，使肖像在对话头生成中保持'沉默'；其次通过优化反转的潜在特征生成抗净化的鲁棒扰动",
+ "experiment_framework": "在CelebA-HQ和TalkingHead-1KH数据集上评估，与AdvDM、PhotoGuard、Mist和SDS等方法比较，使用V-PSNR/SSIM、FID、Sync和M-LMD等指标",
+ "takeaways": [
+  "nullifying loss无需真实视频帧即可消除音频控制",
+  "面部掩码优化在保持身份信息的同时增强抗净化能力"
+ ],
+ "weaknesses": [
+  "第二阶段优化导致图像质量显著下降",
+  "方法仅针对特定对话头模型，泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "音频控制防御属于隐私鲁棒，但图像质量下降明显",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

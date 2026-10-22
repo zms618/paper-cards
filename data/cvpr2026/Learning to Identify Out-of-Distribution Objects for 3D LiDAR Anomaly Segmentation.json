@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Learning to Identify Out-of-Distribution Objects for 3D LiDAR Anomaly Segmentation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Learning to Identify Out-of-Distribution Objects for 3D LiDAR Anomaly Segmentation.pdf",
+ "title": "Learning to Identify Out-of-Distribution Objects for 3D LiDAR Anomaly Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "双头架构在特征空间建模内部分布，实现3D LiDAR异常分割。",
+ "innovations": [
+  "特征空间直接建模内部分布进行异常检测",
+  "构建混合真实-合成3D LiDAR异常分割数据集",
+  "结合语义和对比头进行联合异常分割"
+ ],
+ "method_framework": "LIDO采用双头架构：语义头构建置信度原型并优化分割，对比头学习内部分布并应用objectosphere损失，推理时融合两个头的异常分数。",
+ "experiment_framework": "在STU和三个新构建的混合数据集(nuScenes-OoD/SemanticPOSS-OoD/SemanticKITTI-OoD)上评估，使用AUROC/FPR@95/AP指标，与多种基线比较。",
+ "takeaways": [
+  "特征空间分布建模可有效处理3D LiDAR异常分割",
+  "混合真实-合成数据集能解决域差距问题",
+  "置信度原型和对比学习结合提升异常检测性能"
+ ],
+ "weaknesses": [
+  "方法在低分辨率数据集上性能受限",
+  "对比头在多物体场景中表现不如单物体场景",
+  "未充分分析不同LiDAR分辨率的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "OOD检测与3D LiDAR异常分割的可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

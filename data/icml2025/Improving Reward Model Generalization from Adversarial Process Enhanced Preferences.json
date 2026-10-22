@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Improving Reward Model Generalization from Adversarial Process Enhanced Preferences.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Improving Reward Model Generalization from Adversarial Process Enhanced Preferences.pdf",
+ "title": "Improving Reward Model Generalization from Adversarial Process Enhanced Preferences",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.75
+ },
+ "one_line": "APEC通过对抗过程策略对扩大偏好覆盖，提升奖励模型泛化。",
+ "innovations": [
+  "指出现有从次优演示自动生成偏好的方法覆盖不足，限制奖励模型精度与泛化",
+  "提出APEC：从对抗模仿学习全过程选取迭代序号差异显著的策略对，以保证偏好关系并扩大覆盖",
+  "理论证明所选策略对可证保持偏好关系，实验在向量与像素控制任务上奖励模型更贴近真值"
+ ],
+ "method_framework": "在对抗模仿学习（AIL）训练过程中保存不同迭代的策略；按迭代序号显著差异成对选取策略，由其轨迹构造偏好对；用这些覆盖更广的偏好数据训练Bradley-Terry奖励模型，再用于策略优化。",
+ "experiment_framework": "在基于向量与基于像素的连续控制任务上，与现有自动偏好生成方法对比；指标为偏好覆盖度、奖励模型与真值奖励的对齐程度及最终策略性能。",
+ "takeaways": [
+  "按迭代差异选取策略对可显著提升偏好数据覆盖度",
+  "训练出的奖励模型更贴近真值奖励，从而带来更优策略性能",
+  "理论保证所选偏好对关系成立，避免了噪声偏好标签问题"
+ ],
+ "weaknesses": [
+  "实验限于控制任务，对LLM推理/RLHF中的过程奖励建模迁移性未验证",
+  "依赖AIL过程可保存多迭代策略，对单次离线演示场景不适用",
+  "迭代差异阈值对覆盖与标签质量的权衡缺乏自适应方法"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

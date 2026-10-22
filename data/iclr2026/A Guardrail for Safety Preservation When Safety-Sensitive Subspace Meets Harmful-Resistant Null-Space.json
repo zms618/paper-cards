@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Guardrail for Safety Preservation When Safety-Sensitive Subspace Meets Harmful-Resistant Null-Space.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Guardrail for Safety Preservation When Safety-Sensitive Subspace Meets Harmful-Resistant Null-Space.pdf",
+ "title": "A GUARDRAIL FOR SAFETY PRESERVATION: WHEN SAFETY-SENSITIVE SUBSPACE MEETS HARMFUL-RESISTANT NULL-SPACE",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.8
+ },
+ "one_line": "安全子空间冻结与有害零空间投影的微调护栏，提升任务准确率同时降低危害率",
+ "innovations": [
+  "用安全触发提示激活协方差 C=XXᵗ 作右预条件对 WC 做 SVD，按奇异值大小把权重拆成安全相关（大奇异值分量冻结）与安全无关（最小 r 个分量初始化适配器）两部分",
+  "适配器初始化为 BA=Σ_{i=R-r+1}^{R} σ_i u_i v̂_iᵗ，即剥离安全分量后的预训练权重本身，相比 LoRA 零初始化带任务知识又不触碰安全结构",
+  "对 C 特征分解取零特征值对应特征向量构造 P=Q̂Q̂ᵗ，把适配器更新投影到有害输入 X 的零空间，并用 W′=W−BAP 补偿，使 (W′+B*A*P)X = W′X 对有害输入严格成立"
+ ],
+ "method_framework": "以安全触发提示激活协方差 C=XXᵗ 右预条件化 SVD(WC)，大奇异值分量冻结保安全、最小 r 个分量初始化低秩适配器 BA；再以 P=Q̂Q̂ᵗ 把适配器更新投到有害输入 X 的零空间，并用 W′=W−BAP 补偿，前向为 W′+BAP。",
+ "experiment_framework": "Llama-2-7B-Chat 等 5 个对齐 LLM，SST-2/AGNEWS/GSM8K/DialogSummary 四任务加 GSM8K 跨模型评测；对比 LoRA 与 8 个安全微调基线；指标有害率 HS↓（审核分类器）与任务准确率 FA↑，另测不安全样本比 p∈{0.05,0.1,0.15,0.2}。",
+ "takeaways": [
+  "把「安全性」拆成可冻结的权重子空间与可投影的更新约束，比数据增强或正则惩罚更能显式消除安全与效用的训练冲突",
+  "用激活协方差做右预条件的 SVD，可把任务能力从权重里剥离出来作为 LoRA 初始化，几乎零成本换来更好的优化起点",
+  "安全保持类方法必须同时报危害率与任务准确率并给出两者权衡，只报一个指标无法判断方法是否只是牺牲一方"
+ ],
+ "weaknesses": [
+  "安全子空间与零空间投影器完全由 AdvBench/RealToxicityPrompts 各 520 条有害提示构造，测试 HS 用的是另一批未见提示，两个分布不一致时的退化情况缺少专门实验",
+  "正文在 Table 3 后截断，未见秩 r=128、参与优化的层数 L、零空间特征阈值等超参消融，也未见多随机种子的方差，1.20% 对 4.40% 的差距是否稳定无法确认",
+  "只报危害率 HS 与任务准确率 FA 两个聚合指标，未测拒答率、正常安全提问的过度拒答率，无法判断零空间投影是否损害了合法安全的响应质量"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "安全护栏方法明确触及可靠性主线，设计模式可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Memory-Efficient Hierarchical Algorithm for Large-Scale Optimal Transport Problems.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Memory-Efficient Hierarchical Algorithm for Large-Scale Optimal Transport Problems.pdf",
+ "title": "A MEMORY-EFFICIENT HIERARCHICAL ALGORITHM FOR LARGE-SCALE OPTIMAL TRANSPORT PROBLEMS",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "层级OT求解器降内存，但理论假设强且实验不充分",
+ "innovations": [
+  "把多尺度层级（图像递归合并 2×2 取质心、点云用 kd/2d-tree）与 active-support 交替细化结合：粗级解 prolongate 为细级热启动，每层在 updateActive 与受限 LP 间交替，把显存压到 O(n)",
+  "updateActive 两处改造——把支撑扩到整层历史支撑而非仅当前耦合支撑，并用 TopK 从 pricing 集 {(si,dj): fi+gj>cij} 取 β|S| 个对偶违反最大的对做校正，换来与规模无关的 |Nk|≤C|S| 支撑上界",
+  "用 Pock–Chambolle 重标定得 ‖B̃‖₂=1，从而在 PDHG 上可用常数步长、省掉每步范数估计；配合 factorization-free 的 cuPDLPx，使主导运算只剩矩阵向量乘以适配 GPU 并行"
+ ],
+ "method_framework": "自粗到细构造 (L+1) 级 OT 层级，粗级解 prolongate 作为细级热启动；每层交替执行 updateActive（shielding 扩展邻域映射加 TopK 对偶违反校正）与在支撑 N 上的受限 LP（PDHG/cuPDLPx），收敛后回传最细级。",
+ "experiment_framework": "DOTmark 图像（r=64…1024，n=r²）与 ModelNet10 点云（n 至 2^19）；对比 HOT、ShortCut、M3S、HiRef、Sinkhorn；指标运行时间、峰值显存/内存、相对 gap（Gurobi 参考解）、可行性误差；含多尺度与求解器、对偶校正消融。",
+ "takeaways": [
+  "多尺度热启动叠 active-set 交替，是把 m×n 级 OT 降到近线性内存与时间的通用范式，可迁移到其他带几何结构的线性规划",
+  "用对偶违反的 TopK 选对扩充 active support 比固定阈值稳健，且能维持支撑稀疏度，避免支撑集随迭代爆炸",
+  "统一以高精度参考解（Gurobi barrier）报告 gap 与 feasibility 双指标，可避免各方法内部停机准则不同导致的时间-精度不可比"
+ ],
+ "weaknesses": [
+  "Theorem 1 的五个假设中第 4、5 条（均匀 Lipschitz 与耦合稳定性 ∥map_k(s)−map_0(s)∥≤R0）作者自认偏强、仅由多尺度热启动「直觉上」成立，且证明在未见到的附录，O(1) 界对一般几何是否成立无法核实",
+  "所有实验只给单次运行时间与峰值内存，无随机种子与方差；最大规模上 ShortCut、HOT、Sinkhorn 以 TO/OOM 计为缺测，与「高分辨率本就不可解」混在一起，8.92× 加速有多少来自实现与 GPU 后端差异无法判断",
+  "正文引用了 Table 5（dual-violation 校正消融）与 Table 6（常数步长对比）但内容未呈现；验证只在 DOTmark 与 ModelNet10 两个域，未见医学成像、非网格高度稀疏分布等更困难场景"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "优化算法与可靠性主线无直接交点，仅属可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/3D Gaussian Splatting with Self-Constrained Priors for High Fidelity Surface.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/3D Gaussian Splatting with Self-Constrained Priors for High Fidelity Surface.pdf",
+ "title": "3D Gaussian Splatting with Self-Constrained Priors for High Fidelity Surface Reconstruction",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 3.0,
+  "overall": 4.5
+ },
+ "one_line": "3DGS加自约束TSDF先验提升表面精度，但实验证据不足",
+ "innovations": [
+  "从当前高斯渲染出的深度图融合成 TSDF 距离场 f_t，在零等值面附近划定截断带宽 [-1,1]，用三线性插值出的符号距离 s_j=f_t(mu_j) 直接对高斯施加三类几何感知约束：带外的直接剔除、带内的按 |s_j| 分组优化不透明度（L_SCP 令面上趋 1、离面趋 0，权重 eps_j=1/(1+|s_j|)^2）",
+  "把高斯投影写成位置更新而非梯度项：用有限差分在网格场求 ∇f_t(mu_j)（eps=1e-4），按 mu_j ← mu_j − s_j·∇f_t(mu_j) 在每次加密后直接把高斯推到面上，从而避免与迭代优化耦合导致不稳定",
+  "周期性用最新更准的渲染深度刷新先验并逐步收缩截断阈值 sigma_t（1→0.5→0.25），构成 coarse-to-fine 调度；约束在每轮迭代施加不透明度项、每轮加密后先投影再剔除离群高斯"
+ ],
+ "method_framework": "3DGS 渲染深度 d'_i=S(g,z,p_i) 与 RGB；融合成 TSDF 距离场 f_t，在其零等值面邻域定义带宽内/外子集 N_on={|s_j|<=delta_t}、N_off；设计 L_SCP 不透明度约束与 mu←mu−s∇f 投影，对带外高斯剔除；总损失 L=L_RGB+0.01L_Depth+0.1L_NS+0.1L_NM+0.01L_SCP，并随迭代收缩带宽。",
+ "experiment_framework": "NeRF-Synthetic(CDL1/PSNR)、DTU(CD，15 个场景)、Tanks&Temples(F1)、Mip-NeRF 360(PSNR/SSIM/LPIPS 内外景)；对比 NeS、Neuralangelo、PGSR、2DGS、GS-Pull、GS-UDF、GOF、SuGaR、QGS 等 20 余法；消融仅在同一张 DTU 表内做 5 组开关。",
+ "takeaways": [
+  "「自约束先验」思路可迁移：不需要外部预训练先验或 GT 深度时，可用模型自身渲染结果做距离场再回约束参数，避免外部分支带来的对齐与泛化问题",
+  "把位置投影写成硬更新而非可微梯度惩罚，是稳定显式中表示优化的一个可复用技巧",
+  "带宽/截断阈值随训练渐进收缩（而非固定）是低成本的收敛加速手段"
+ ],
+ "weaknesses": [
+  "消融表只在 DTU 单一数据集上做，且 5 组变体的 CD 从 0.50 到 0.56 变化极小（多数仅 0.01–0.02），统计量上难以区分各组件是否真有贡献，也未报告任何标准差或多次随机种子",
+  "主实验只给均值指标（CD/F1/PSNR），没有方差、显著性检验，且 NeRF-Synthetic 表仅列 8 个方法，QGS 等 konkurrent 方法用同一套 TSDF-Fusion 抽面设置，抽取协议一致性未做隔离说明",
+  "方法本质是 GS-Pull/GS-UDF/GOF/PGSR 路线的模块叠加（距离场约束+投影+不透明度正则+法向一致+跨视图 homography），论文缺少对「为什么非得自约束先验而非外部深度/法向先验」的对照实验论证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3D重建与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

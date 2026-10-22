@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/DISTIL Data-Free Inversion of Suspicious Trojan Inputs via Latent Diffusion.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/DISTIL Data-Free Inversion of Suspicious Trojan Inputs via Latent Diffusion.pdf",
+ "title": "DISTIL Data-Free Inversion of Suspicious Trojan Inputs via Latent Diffusion",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "扩散模型逆向触发器，提升检测但计算复杂度高",
+ "innovations": [
+  "将触发器逆向优化从像素空间转移到扩散模型的潜在空间",
+  "引入均匀噪声作为正则化项防止收敛到对抗性扰动",
+  "无需训练数据即可重建可解释的触发器模式",
+  "扩展到目标检测任务的木马扫描"
+ ],
+ "method_framework": "利用预训练的引导扩散模型，通过目标分类器梯度指导逆向过程，在每一步注入均匀噪声作为正则化，生成与模型内部恶意行为相关的触发器模式。",
+ "experiment_framework": "在BackdoorBench和TrojAI数据集上评估，对比多种基线方法，包括分类器木马检测、目标类别预测和模型缓解任务。",
+ "takeaways": [
+  "扩散模型潜在空间约束可有效避免对抗性伪影",
+  "均匀噪声注入作为正则化能提高触发器模式的鲁棒性和可转移性"
+ ],
+ "weaknesses": [
+  "计算复杂度随类别数量增加而增加",
+  "对于标签映射策略如all-to-all攻击的目标类别预测能力有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "木马检测与模型可靠性直接相关，方法设计有创新性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

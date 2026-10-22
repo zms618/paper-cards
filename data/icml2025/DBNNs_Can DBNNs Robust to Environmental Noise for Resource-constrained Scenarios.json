@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DBNNs_Can DBNNs Robust to Environmental Noise for Resource-constrained Scenarios.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DBNNs_Can DBNNs Robust to Environmental Noise for Resource-constrained Scenarios.pdf",
+ "title": "Can DBNNs Robust to Environmental Noise for Resource-constrained Scenarios?",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "理论分析DBNN噪声脆弱性，提出L1,∞约束提升边缘设备鲁棒性",
+ "innovations": [
+  "理论上揭示DBNN环境噪声脆弱性来源于二值权重和缩放因子，推导了闭式噪声扰动上界",
+  "提出L1,∞-norm约束训练方法，比SOTA谱范数方法(LCR)的上界更紧且无额外训练开销",
+  "可视化分析环境噪声对DBNN特征图的边缘区域干扰模式"
+ ],
+ "method_framework": "首先从理论上推导DBNN在环境噪声(L∞扰动)下的输出偏差上界，发现缩放因子和二值权重的乘积决定了鲁棒性边界。然后在训练损失中加入L1,∞-norm正则项，约束权重矩阵的最大行和，从而收紧扰动上界。该约束仅涉及矩阵行列最大值计算，无需近似矩阵，不增加额外训练开销。",
+ "experiment_framework": "在CIFAR-100、Brain tumor MRI、生物电信号等5个分类任务上评测；基线为标准训练、LCR谱范数约束；测试不同噪声强度下的准确率； backbone包括ResNet18/34的二值化版本(DoReFa、BiReaL、ReAct、IRNet)；指标为噪声下准确率提升幅度。",
+ "takeaways": [
+  "DBNN的环境噪声鲁棒性显著低于全精度模型，主要因为二值化压缩了特征表示空间",
+  "L1,∞-norm约束在CIFAR-100上最大提升4.8%，在Brain tumor MRI上提升5.4%",
+  "环境噪声主要干扰特征图的边缘区域，约束训练后边缘扰动显著减小"
+ ],
+ "weaknesses": [
+  "理论分析基于L∞扰动假设，实际环境噪声(如运动伪影、设备热噪声)的分布更复杂，与L∞球的对应关系不明确",
+  "仅在ResNet架构上验证，对Transformer或其他现代架构的适用性未涉及",
+  "与全精度模型的鲁棒性差距仍然较大，方法只部分弥补而非解决问题"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

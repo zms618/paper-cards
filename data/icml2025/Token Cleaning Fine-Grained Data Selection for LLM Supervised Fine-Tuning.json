@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Token Cleaning Fine-Grained Data Selection for LLM Supervised Fine-Tuning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Token Cleaning Fine-Grained Data Selection for LLM Supervised Fine-Tuning.pdf",
+ "title": "Token Cleaning: Fine-Grained Data Selection for LLM Supervised Fine-Tuning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "Token级SFT数据清洗，计算开销高且与可靠性主线关联弱",
+ "innovations": [
+  "指出现有SFT数据清洗方法仅过滤整样本，忽略了样本内部token质量的差异",
+  "提出token级别的细粒度数据选择/清洗方法，在高质量样本中也去除低质量token模式"
+ ],
+ "method_framework": "在SFT数据预处理时，不仅过滤整个样本，还在token级别识别并移除低质量token模式。基于预训练后不同token的学习进度和信号强度差异，动态选择对SFT最有价值的token进行训练。",
+ "experiment_framework": "在多个SFT基准上验证，对比整样本过滤的数据清洗方法，评估最终模型性能。",
+ "takeaways": [
+  "SFT样本内部token质量差异显著，token级清洗优于样本级过滤",
+  "精细数据选择可在不增加数据量的情况下提升SFT效果"
+ ],
+ "weaknesses": [
+  "与可靠性主线关联较弱，属于数据质量方向",
+  "token级清洗的计算开销和工程复杂度",
+  "清洗过度可能损失有用信息"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.83,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

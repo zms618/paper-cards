@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Yonosplat_You only Need One Model for Feedforward 3D Gaussian Splatting.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Yonosplat_You only Need One Model for Feedforward 3D Gaussian Splatting.pdf",
+ "title": "Yonosplat: You only Need One Model for Feedforward 3D Gaussian Splatting",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "前馈3D高斯重建，混合训练解耦相机参数，但依赖视图覆盖与高端硬件",
+ "innovations": [
+  "单一模型统一处理有/无位姿、有/无标定输入，每视图预测局部高斯与相机位姿再聚合为全局表示",
+  "混合训练策略：先用GT位姿聚合局部高斯，逐步过渡到预测位姿与GT混合，缓解高斯与相机参数的纠缠并消除曝光偏差",
+  "提出成对相机距离归一化解决尺度歧义，并把内参嵌入网络，甚至可预测内参以支持无标定输入"
+ ],
+ "method_framework": "前馈网络对每张输入视图预测局部3D高斯与相机位姿/内参；训练先以GT位姿聚合、渐进混入预测位姿以稳定联合学习；推理时用预测或提供的位姿把局部高斯聚合为全局3DGS表示并渲染新视图/深度。",
+ "experiment_framework": "在标准3D重建基准上分别在pose-free与pose-dependent设置下评测；基线为其他前馈3DGS/新视图合成方法；指标为渲染PSNR/SSIM与位姿精度；报告100视图(280x518)在GH200上2.69秒重建，两种设置均SOTA。",
+ "takeaways": [
+  "一个前馈模型即可覆盖有/无位姿、有/无标定的通用多视图3DGS重建，省去场景专用优化",
+  "混合训练(GT位姿渐进过渡到预测位姿)是稳定高斯-相机联合学习的关键",
+  "成对相机距离归一化+内参嵌入有效解决尺度歧义，使无标定输入可行"
+ ],
+ "weaknesses": [
+  "前馈重建质量仍受输入视图数与覆盖度制约，对遮挡严重/稀疏视图的退化未充分刻画",
+  "2.69秒绑定GH200高端GPU，在普通GPU上的吞吐可移植性未报告",
+  "尺度归一化依赖成对相机距离假设，对纯旋转/退化相机运动的处理在提取页未展开"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D重建与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

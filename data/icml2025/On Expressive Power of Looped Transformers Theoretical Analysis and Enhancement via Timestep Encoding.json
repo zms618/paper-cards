@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/On Expressive Power of Looped Transformers Theoretical Analysis and Enhancement via Timestep Encoding.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/On Expressive Power of Looped Transformers Theoretical Analysis and Enhancement via Timestep Encoding.pdf",
+ "title": "On Expressive Power of Looped Transformers: Theoretical Analysis and Enhancement via Timestep Encoding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "理论分析循环Transformer表达局限，提出时间步编码增强方案。",
+ "innovations": [
+  "定义序列到序列函数的模连续性，建立循环Transformer的近似速率理论",
+  "揭示循环架构特有的表达力局限，指出需为每个循环引入条件化于时间步的缩放参数",
+  "提出时间步编码增强方案，实验验证增加循环数提升性能，且时间步编码带来进一步增益"
+ ],
+ "method_framework": "把固定层数、输出递归回灌输入的循环Transformer视为对序列函数的迭代逼近；用目标函数模连续性给出近似误差随循环数的衰减率，定位循环权重共享导致的表达瓶颈，并用按时间步条件化的缩放参数解耦。",
+ "experiment_framework": "理论给出近似速率；在推理任务上验证循环数与性能关系，并对比有无时间步编码的增益；代码开源。",
+ "takeaways": [
+  "循环Transformer的表达力受权重共享限制，近似速率由目标函数模连续性决定",
+  "增加循环数可近似等价加深，从而提升推理任务表现",
+  "按时间步条件化的缩放参数/时间步编码能突破循环架构的表达瓶颈"
+ ],
+ "weaknesses": [
+  "近似速率在理想连续函数假设下推导，与真实离散token训练的对应关系有限",
+  "实验规模偏中小，未在大模型/长链推理基准上验证时间步编码增益",
+  "时间步编码引入额外参数，其与深度展开/通用计算能力的理论关系未深入"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

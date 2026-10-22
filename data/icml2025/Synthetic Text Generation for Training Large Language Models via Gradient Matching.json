@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Synthetic Text Generation for Training Large Language Models via Gradient Matching.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Synthetic Text Generation for Training Large Language Models via Gradient Matching.pdf",
+ "title": "Synthetic Text Generation for Training Large Language Models via Gradient Matching",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "ADMM优化嵌入生成合成文本，理论保证收敛但隐私保护存疑。",
+ "innovations": [
+  "首个对合成文本生成给出收敛、性能与隐私三重保证的理论严谨方法，区别于依赖 GPT-4 提示工程的启发式做法。",
+  "用 ADMM 迭代优化合成样本嵌入，使其梯度匹配真实训练/验证数据的噪声梯度（gradient matching）。",
+  "把优化后的嵌入映射为低困惑度的可读 token 序列，绕过离散文本空间难以直接优化的问题。"
+ ],
+ "method_framework": "目标是生成少量合成文本即可让 LLM 微调后接近在真实数据上微调的解。做法：在嵌入空间用 ADMM 交替优化——固定解码器时优化合成嵌入使其梯度场逼近真实数据的（噪声）梯度，固定嵌入时用低困惑度解码把嵌入映射回可读 token；理论上保证在合成数据上训练的模型收敛到真实解的一个邻域，且因不直接暴露原始样本而保护隐私。",
+ "experiment_framework": "在多个文本分类任务上评测；对比 LLM 生成/扩散/VAE 等合成文本方法；指标为用合成数据微调后 LLM 的分类性能、训练效率与隐私保持。",
+ "takeaways": [
+  "梯度匹配的合成文本可在理论上保证微调模型收敛到真实数据解附近。",
+  "无需查询 GPT-4 或复杂多智能体流水线即可生成有效合成文本。",
+  "合成过程保护了真实训练样本隐私。"
+ ],
+ "weaknesses": [
+  "落地为分类任务/隐私数据合成，与医学影像/多模态推理主线弱相关。",
+  "实验多在分类任务，在生成式指令微调等更贴近 LLM 真实用法的场景有效性未充分验证。",
+  "梯度匹配需可访问目标数据梯度，与'保护隐私、不能看原始数据'的设定存在张力，实际威胁模型边界不清。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TEXT2GRAD_Reinforcement Learning from Natural Language Feedback.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TEXT2GRAD_Reinforcement Learning from Natural Language Feedback.pdf",
+ "title": "TEXT2GRAD: Reinforcement Learning from Natural Language Feedback",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "将文本反馈转化为span级梯度，实现细粒度策略调整",
+ "innovations": [
+  "将自然语言反馈从仅作解释性说明提升为可操作的训练信号，实现span级梯度回传",
+  "设计反馈-标注流水线，将人工/程序化批评与对应token span对齐，构建高质量训练数据",
+  "细粒度奖励模型同时预测span级奖励和生成解释性批评文本，实现奖励与解释的联合建模"
+ ],
+ "method_framework": "TEXT2GRAD分三步：1）反馈标注流水线：将人类或程序化批评与答案中的相关token span对齐；2）细粒度奖励模型：在生成答案时预测每个span的奖励值，同时生成解释性批评；3）span级策略优化器：将对齐后的文本反馈转化为可微奖励信号，对模型策略进行梯度更新，直接修正出错的部分而非全局调整。",
+ "experiment_framework": "在摘要生成、代码生成和问答三个任务上评估；基线包括标量奖励RL（如PPO/RLHF）和仅提示反思方法；指标包括任务指标（ROUGE、代码正确率等）和解释性质量。",
+ "takeaways": [
+  "自然语言反馈可以转化为细粒度梯度信号，实现比标量奖励更精确的策略调整",
+  "span级对齐使模型能够定位并修正具体出错的部分，而非整体微调",
+  "联合奖励预测和批评生成的模型在任务性能和可解释性上均优于单一标量奖励方法"
+ ],
+ "weaknesses": [
+  "反馈-标注流水线需要人工对齐或高质量对齐模型，冷启动成本较高",
+  "span级奖励模型的训练数据依赖已有对齐标注，数据规模和多样性可能受限",
+  "实验主要在英文任务上验证，多语言反馈的解析和对齐效果未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "文本反馈转化为梯度信号，属于可靠性主线方法设计研习轴",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

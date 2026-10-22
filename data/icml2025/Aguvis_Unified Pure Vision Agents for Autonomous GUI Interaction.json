@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Aguvis_Unified Pure Vision Agents for Autonomous GUI Interaction.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Aguvis_Unified Pure Vision Agents for Autonomous GUI Interaction.pdf",
+ "title": "AGUVIS: Unified Pure Vision Agents for Autonomous GUI Interaction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "纯视觉GUI智能体，跨平台动作空间，两阶段训练",
+ "innovations": [
+  "纯视觉GUI智能体：不依赖HTML/accessibility tree等文本表示，直接基于屏幕截图进行界面理解和交互，突破文本表示长度限制",
+  "统一跨平台动作空间：将Web、桌面、移动端的GUI交互标准化为统一动作格式，实现跨环境迁移学习",
+  "两阶段训练pipeline：第一阶段训练GUI grounding（视觉定位），第二阶段训练规划与推理（inner monologue结构化思维链），分离感知与决策提升可训练性"
+ ],
+ "method_framework": "AGUVIS是纯视觉GUI智能体，输入为屏幕截图+自然语言指令。构建大规模AGUVIS DATA COLLECTION数据集（含多模态grounding和推理标注）。训练分两阶段：(1) Grounding阶段训练模型将指令定位到屏幕元素坐标；(2) Planning阶段通过inner monologue（结构化内心独白）进行任务规划和动作生成。动作空间统一为跨平台格式。",
+ "experiment_framework": "数据集：自建AGUVIS DATA COLLECTION大规模GUI交互数据集。基线：现有GUI agent方法（如基于HTML的、依赖闭源模型的）。基准：离线GUI grounding benchmark + 在线真实GUI任务benchmark（Web/移动/桌面）。指标：任务完成率、grounding准确率等。",
+ "takeaways": [
+  "纯视觉方案可摆脱对平台特定文本表示的依赖，实现更好的跨平台泛化",
+  "分离grounding和planning的两阶段训练显著提升GUI agent的可训练性和性能",
+  "首个不依赖闭源模型的全自主视觉GUI agent，开源了全部数据、模型和训练方案"
+ ],
+ "weaknesses": [
+  "纯视觉方案对高分辨率屏幕的处理仍需缩放/切块，小元素的精确点击可能受限",
+  "在线评估仅在特定benchmark环境，真实复杂GUI场景的鲁棒性（如动态加载、弹窗干扰）未充分验证",
+  "两阶段训练流程复杂，数据构建成本高，复现门槛不低"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "GUI交互与可靠性主线无实质交点，属常规智能体工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

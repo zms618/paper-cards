@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/SpikeVideoFormer_An Efficient Spike-Driven Video Transformer with Hamming Attention and O(T) Complexity.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SpikeVideoFormer_An Efficient Spike-Driven Video Transformer with Hamming Attention and O(T) Complexity.pdf",
+ "title": "SpikeVideoFormer: An Efficient Spike-Driven Video Transformer with Hamming Attention and O(T) Complexity",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "脉冲驱动汉明注意力实现O(T)视频Transformer，但SNN内部对比缺乏理论保证",
+ "innovations": [
+  "设计spike-driven Hamming Attention(SDHA)，给出从传统实值注意力到脉冲驱动注意力的理论引导适配",
+  "在SDHA基础上系统分析多种脉冲驱动时空注意力设计，选出兼顾性能与O(T)线性时间复杂度的最优方案",
+  "把SNN视频Transformer从单帧图像任务扩展到分类/人体姿态跟踪/语义分割等多类下游视频任务并达SNN域SOTA"
+ ],
+ "method_framework": "以纯脉冲(0/1 spike)传播构建视频Transformer：用汉明相似度替代浮点点积注意力得到SDHA，使时间维复杂度从平方降到线性O(T)；沿时间步脉冲传播做时空建模，全程用加法替代乘除以保能效。",
+ "experiment_framework": "在视频分类、人体姿态跟踪、语义分割等下游视频任务上对比已有SNN视频方法，指标为精度与能效/复杂度；声称在SNN方法中达SOTA。",
+ "takeaways": [
+  "用汉明相似度替代点积，可把注意力适配到二值脉冲域并将时间复杂度降到线性，是SNN做长视频的可行路径",
+  "SNN天然的神经元级时间编码使其在视频任务上比纯空间建模更具能效优势"
+ ],
+ "weaknesses": [
+  "对比基线主要在SNN内部，与同精度ANN视频Transformer的绝对性能/能效差距未充分讨论，落地价值有限",
+  "‘最优时空注意力方案’为搜索/比较得出，选择准则缺乏可推广的理论保证",
+  "O(T)仅指时间维，空间token数与多步仿真带来的总计算/存储开销未量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

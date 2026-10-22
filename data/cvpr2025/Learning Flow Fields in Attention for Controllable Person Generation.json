@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Learning Flow Fields in Attention for Controllable Person Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Learning Flow Fields in Attention for Controllable Person Generation.pdf",
+ "title": "Learning Flow Fields in Attention for Controllable Person Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "注意力流场学习减少人物生成细节失真，但泛化性有限",
+ "innovations": [
+  "提出Leffa损失函数，通过注意力流场学习指导目标查询关注正确的参考键区域",
+  "无需额外参数或推理成本，显著减少细粒度细节失真",
+  "模型无关的损失函数，可泛化到其他扩散模型"
+ ],
+ "method_framework": "基于扩散模型构建双UNet架构，通过空间连接自注意力层结合源图像和参考图像特征，引入注意力流场正则化损失指导目标查询关注正确区域",
+ "experiment_framework": "在VITON-HD和DressCode数据集上进行虚拟试穿实验，在DeepFashion上进行姿态转换实验，使用FID、KID、SSIM和LPIPS作为评估指标",
+ "takeaways": [
+  "注意力机制在细粒度细节保持中的关键作用",
+  "通过流场学习可以有效地指导注意力分布而不增加计算复杂度"
+ ],
+ "weaknesses": [
+  "方法仅在特定注意力层和时间步上有效，需要仔细选择超参数",
+  "未充分探讨方法在不同分辨率和复杂场景下的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "人物生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

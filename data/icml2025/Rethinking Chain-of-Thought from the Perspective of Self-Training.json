@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Rethinking Chain-of-Thought from the Perspective of Self-Training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Rethinking Chain-of-Thought from the Perspective of Self-Training.pdf",
+ "title": "Rethinking Chain-of-Thought from the Perspective of Self-Training",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "将CoT类比为自训练，设计提示与迭代模块缓解过度推理问题。",
+ "innovations": [
+  "提出 CoT 与自训练共享同一核心目标——迭代利用模型生成信息逐步降低预测不确定性的新视角。",
+  "设计任务专属提示模块优化初始推理过程。",
+  "设计自适应推理迭代模块，动态精炼推理过程，针对性解决既有 CoT 过度推理与相邻迭代高度相似的问题。"
+ ],
+ "method_framework": "将 CoT 视为迭代式自训练：先以任务专属提示模块优化首轮推理；再在自适应推理迭代模块中，依据不确定性/重复度动态决定是否继续迭代，避免无效的过度推理与相邻迭代近似重复，逐步收敛到低不确定性答案。",
+ "experiment_framework": "在多个推理基准上对比零样本/少样本 CoT 及迭代 CoT 方法；以推理准确率与计算效率(迭代次数/算力开销)为指标，验证在性能与效率上的双重优势。",
+ "takeaways": [
+  "CoT 本质可理解为对模型生成推理过程的迭代式自训练，核心是降低预测不确定性。",
+  "自适应迭代能在不损失准确率的前提下显著减少过度推理带来的冗余计算。",
+  "缓解相邻迭代高相似问题有助于推理质量提升。"
+ ],
+ "weaknesses": [
+  "将 CoT 类比自训练多为概念层面，二者形式化等价性的理论论证较浅。",
+  "自适应迭代的停止/相似性判据依赖启发式阈值，跨任务的稳健性未充分验证。",
+  "仍依赖冻结 LLM 的提示与迭代编排，未触及模型内部推理能力的根本提升。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

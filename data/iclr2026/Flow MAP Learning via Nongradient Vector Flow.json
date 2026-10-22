@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Flow MAP Learning via Nongradient Vector Flow.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Flow MAP Learning via Nongradient Vector Flow.pdf",
+ "title": "Flow MAP Learning via Nongradient Vector Flow",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "SGFlow通过非梯度向量流学习流映射，避免逆模型和迭代微分",
+ "innovations": [
+  "引入SGFlow方法，避免显式逆模型约束和昂贵迭代微分",
+  "设计非保守动力学优化，使真实流映射成为唯一平稳点",
+  "通过JVP计算避免显式雅可比矩阵，节省内存"
+ ],
+ "method_framework": "SGFlow参数化流映射fθ(t,u,x)=x+(u-t)˜fθ(t,u,x)，设计损失函数Lsg，结合时间导数和雅可比向量积，使真实流映射成为唯一平稳点",
+ "experiment_framework": "CIFAR-10数据集，对比Flow Matching、MeanFlow、Lagrange、Euler、Progressive等方法，使用FID指标评估生成质量",
+ "takeaways": [
+  "JVP计算可高效避免显式雅可比矩阵，平衡内存使用与优化效果",
+  "非保守动力学优化可避免传统方法中的逆模型计算问题"
+ ],
+ "weaknesses": [
+  "未在医学影像等特定领域验证方法有效性",
+  "未探索针对流映射优化的专用架构"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "流映射方法与可靠性主线无实质交点，仅属常规优化技术",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

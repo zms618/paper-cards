@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/La RoSA Enhancing LLM Efficiency via Layerwise Rotated Sparse Activation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/La RoSA Enhancing LLM Efficiency via Layerwise Rotated Sparse Activation.pdf",
+ "title": "La RoSA: Enhancing LLM Efficiency via Layerwise Rotated Sparse Activation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 5.9
+ },
+ "one_line": "免训练激活稀疏化方法，通过旋转+剪枝实现LLM推理加速，但精度损失明显",
+ "innovations": [
+  "提出逐层旋转稀疏激活方法，先对激活进行正交旋转再进行幅度剪枝，避免传统幅度剪枝导致的稀疏度波动和加速不稳定",
+  "免训练设计，无需恢复训练即可直接应用于预训练LLM",
+  "将旋转矩阵吸收到权重矩阵中，实现端到端的稀疏矩阵乘法加速"
+ ],
+ "method_framework": "LaRoSA对LLM每一层的激活先进行正交旋转，使激活幅度分布更均匀稳定，再基于幅度阈值进行剪枝得到稀疏激活。旋转矩阵Q可吸收到权重矩阵W中（Y = S(XQ) @ (QW)），从而实现稀疏矩阵乘法的实际加速。整个过程无需额外训练。",
+ "experiment_framework": "在多个主流LLM模型上评估推理加速比和PPL变化，与现有的激活稀疏化方法对比，验证免训练设计下的性能与效率平衡。",
+ "takeaways": [
+  "正交旋转可以使激活幅度分布更均匀，从而实现更稳定的稀疏剪枝",
+  "免训练设计降低了激活稀疏化的实际部署门槛",
+  "旋转矩阵可吸收到权重中，实现真实的推理加速而非理论稀疏度"
+ ],
+ "weaknesses": [
+  "PPL有一定上升（5.47→5.87），精度损失不可忽略",
+  "前9页未展示完整的不同模型规模和batch size下的加速比数据",
+  "与结构化剪枝、量化等其他推理加速方法的兼容性未讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

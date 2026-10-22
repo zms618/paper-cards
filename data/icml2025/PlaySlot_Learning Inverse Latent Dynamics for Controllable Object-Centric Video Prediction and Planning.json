@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/PlaySlot_Learning Inverse Latent Dynamics for Controllable Object-Centric Video Prediction and Planning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/PlaySlot_Learning Inverse Latent Dynamics for Controllable Object-Centric Video Prediction and Planning.pdf",
+ "title": "PlaySlot: Learning Inverse Latent Dynamics for Controllable Object-Centric Video Prediction and Planning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "无标注视频中反演隐式动作，实现物体中心预测与规划",
+ "innovations": [
+  "提出InvDyn模块，从相邻帧物体槽(SAVi slots)反演隐式动作嵌入，使世界模型可在无动作标注的视频上训练",
+  "采用离散动作原型+连续可变性的混合隐式动作参数化（向量量化VQ），兼顾可控性与表达力",
+  "条件物体中心预测器cOCVP以过去槽和隐式动作自回归预测未来物体状态，支持多模态未来生成与规划"
+ ],
+ "method_framework": "先用SAVi把每帧解析为物体槽；再用InvDyn（Transformer或共享MLP）由相邻两帧槽分布之差推断高斯隐式动作，并以VQ信息瓶颈正则；最后由Transformer预测器cOCVP条件于历史槽与隐式动作自回归预测未来槽，经空间广播解码器渲染回图像。训练分三阶段且完全无动作标注。",
+ "experiment_framework": "在ButtonPress(MetaWorld)、BlockPush、GridShapes、Sketchy真实机器人四个环境评测；基线为SlotFormer、OCVP-Seq、SVG-LP、CADDY；指标PSNR/SSIM/LPIPS，6帧条件预测8帧并评估15步；另评估从视频演示中样本高效学习机器人行为。",
+ "takeaways": [
+  "在BlockPush与GridShapes上PSNR/SSIM/LPIPS优于确定性物体中心模型与随机视频预测基线",
+  "在真实Sketchy数据上与CADDY、SVG相近，提升幅度有限",
+  "反演的隐式动作可用于从无标注演示样本高效学习机器人策略"
+ ],
+ "weaknesses": [
+  "真实Sketchy数据集上相对基线提升微弱，物体中心模型的优势未充分体现",
+  "仍依赖合成/仿真环境验证动作可解释性，隐式动作的语义可控性缺乏人工对齐评测",
+  "前9页内消融与规划定量结果细节有限，泛化到更复杂真实场景的证据不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

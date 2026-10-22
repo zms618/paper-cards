@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Beyond Low-rank Decomposition A Shortcut Approach for Efficient On-Device Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Beyond Low-rank Decomposition A Shortcut Approach for Efficient On-Device Learning.pdf",
+ "title": "Beyond Low-rank Decomposition: A Shortcut Approach for Efficient On-Device Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 5.9
+ },
+ "one_line": "ASI方法通过激活插值替代低秩分解，降低端侧训练内存占用。",
+ "innovations": [
+  "提出Activation Shortcut with Interpolation (ASI)方法，作为低秩分解的替代方案解决反向传播中的激活内存瓶颈",
+  "实现最高120.09倍的激活内存压缩，同时整体训练FLOPs减少最高1.86倍",
+  "通过秩选择机制自适应确定每层所需的压缩程度"
+ ],
+ "method_framework": "ASI在前向传播时对激活图进行低秩近似插值，反向传播时利用近似结果而非存储完整激活图，从而大幅降低内存占用；通过自动秩选择机制平衡压缩率和精度损失。",
+ "experiment_framework": "传统基准数据集（CIFAR等）；基线：vanilla训练、低秩分解方法；指标：激活内存占用、训练FLOPs、分类精度；验证压缩-精度权衡。",
+ "takeaways": [
+  "捷径插值方法比传统低秩分解在内存压缩和计算效率上更优",
+  "端侧学习的内存瓶颈可通过巧妙的反向传播近似策略有效解决",
+  "自适应秩选择在不同层之间平衡压缩率和模型精度"
+ ],
+ "weaknesses": [
+  "仅在传统视觉分类基准上验证，未在大模型或复杂任务上测试",
+  "精度损失的具体量化在不同模型规模下的表现未充分分析",
+  "与其他内存优化技术（如梯度检查点）的组合效果未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

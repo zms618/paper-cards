@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Concept-Based Unsupervised Domain Adaptation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Concept-Based Unsupervised Domain Adaptation.pdf",
+ "title": "Concept-Based Unsupervised Domain Adaptation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "扩展CBM到UDA，放松概念对齐提升泛化，但缺乏理论指导和跨域验证",
+ "innovations": [
+  "首次将CBM扩展到无监督域适应设定，处理源/目标域概念分布偏移",
+  "提出放松对齐(relaxed alignment)而非严格对齐GT概念分布，在目标域达到90%精度",
+  "保持概念可解释性的同时提升域适应性能"
+ ],
+ "method_framework": "传统CBM假设训练/测试同分布，域偏移下概念预测退化。本文在UDA设定下，源域有概念标签，目标域无标签。方法学习概念嵌入的域不变表示，采用放松对齐策略：不强行对齐到源域GT概念分布，而是允许目标域概念分布有合理偏移，同时保持概念预测与最终预测的一致。",
+ "experiment_framework": "在标准UDA benchmark上实验；与DANN等域适应方法和基线CBM比较；指标为目标域分类精度和概念预测精度。",
+ "takeaways": [
+  "严格对齐GT概念分布(70%)不如放松对齐(90%)，目标域概念分布本应偏移",
+  "在保持概念可解释性的同时提升目标域泛化",
+  "概念嵌入的域不变学习缓解了域偏移对概念预测的影响"
+ ],
+ "weaknesses": [
+  "依赖源域概念标签质量，目标域仍无概念监督",
+  "放松对齐的策略选择缺乏理论指导",
+  "实验主要在标准UDA图像分类，医学影像等领域未验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

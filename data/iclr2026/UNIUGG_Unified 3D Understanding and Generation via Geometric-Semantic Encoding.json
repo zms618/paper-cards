@@ -1,0 +1,41 @@
+{
+ "title": "UniUGG: Unified 3D Understanding and Generation via Geometric-Semantic Encoding",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "将2D统一框架扩展到3D，但成本高且可靠性验证不足",
+ "innovations": [
+  "首次把统一理解-生成架构从 2D 图像扩展到 3D 模态，同时支持空间 VQA 与 3D 场景生成/想象。",
+  "提出基于潜扩散模型的空间解码器，由 LLM 解码出的查询特征生成高质量 3D 表示，可基于参考图与任意视角变换生成场景。",
+  "提出几何-语义联合预训练策略，让视觉编码器同时捕捉语义与几何线索，增强空间理解与生成。"
+ ],
+ "method_framework": "以 LLM 统一理解文本句子与 3D 表示输入；LLM 产出可学习查询并回归到潜扩散空间，由空间解码器生成 3D 表示；视觉编码器经几何-语义联合预训练同时编码语义与几何，支撑空间 VQA 与参考图+视角变换的 3D 生成。",
+ "experiment_framework": "在空间理解(空间 VQA, 含高度/位置/朝向/多属性)与 3D 生成基准上，与 GPT-4o、LLaVA 系列等对比，报告视觉表示、空间理解与 3D 生成质量。",
+ "takeaways": [
+  "统一 2D 理解-生成已有进展，但 3D 模态的统一框架此前基本空白。",
+  "仅靠大量空间数据微调 LLM 做空间理解效果有限，需更好的几何-语义视觉表示。",
+  "几何-语义联合编码 + 扩散空间解码器可在同一模型内同时做好空间理解与 3D 生成。"
+ ],
+ "weaknesses": [
+  "体量大且依赖 3D 数据与多模态联合训练，训练成本与数据构成不透明。",
+  "空间理解以 VQA 准确率衡量，未涉及可靠性/不确定性/幻觉抑制等可信目标。",
+  "属能力型统一模型，与可靠性主线弱相关；未涉及医学影像；完整消融与各 3D 生成指标表未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/UNIUGG_Unified 3D Understanding and Generation via Geometric-Semantic Encoding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/UNIUGG_Unified 3D Understanding and Generation via Geometric-Semantic Encoding.pdf",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "3D统一框架与可靠性主线弱相关，无医学影像落地",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

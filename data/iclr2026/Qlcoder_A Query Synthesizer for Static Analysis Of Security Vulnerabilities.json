@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Qlcoder_A Query Synthesizer for Static Analysis Of Security Vulnerabilities.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Qlcoder_A Query Synthesizer for Static Analysis Of Security Vulnerabilities.pdf",
+ "title": "QLCoder: A Query Synthesizer for Static Analysis of Security Vulnerabilities",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "QLCoder将LLM嵌入带执行反馈的CodeQL查询合成循环，提升漏洞检测准确率。",
+ "innovations": [
+  "将LLM置于带执行反馈的查询合成循环中，自动从CVE元数据生成CodeQL查询",
+  "设计自定义MCP接口，结构化对接Language Server(语法引导)与RAG数据库(查询/文档语义检索)以约束推理",
+  "实现对'在漏洞版检出、在补丁版不检出'的正确性闭环验证"
+ ],
+ "method_framework": "以Claude Code智能体为骨架，输入CVE元数据；在合成循环中由LSP提供语法纠错、RAG提供相似查询与文档，并用实际执行(在buggy/patched版本上运行CodeQL)反馈迭代，直到查询满足检出条件。",
+ "experiment_framework": "在111个Java项目的176个CVE上评测；指标为'在漏洞版检出且补丁版不检出'的CVE比例与F1；对比纯Claude Code、IRIS与通用CodeQL查询套件。",
+ "takeaways": [
+  "QLCoder对53.4%的CVE合成出正确查询，远超纯Claude Code的10%，F1达0.7",
+  "其专用合成查询F1(0.7)远高于IRIS(0.048)与CodeQL通用套件(0.073)",
+  "执行反馈+结构化MCP引导是让LLM产出合法可用安全查询的关键"
+ ],
+ "weaknesses": [
+  "属软件安全/程序分析方向，与可靠性主线(医学影像/多模态推理)无直接关联",
+  "正确性仅53.4%，近半CVE仍无法合成可用查询，失败模式与可扩展性未充分剖析",
+  "依赖Claude Code与特定CodeQL/Java生态，跨语言与跨分析引擎的迁移性未验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "软件安全与可靠性主线无直接关联，但方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Variational Supervised Contrastive Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Variational Supervised Contrastive Learning.pdf",
+ "title": "Variational Supervised Contrastive Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "变分框架重构对比学习，提升分类但计算开销增加。",
+ "innovations": [
+  "将监督对比学习重新表述为变分推断，通过ELBO优化嵌入分布",
+  "置信度自适应温度缩放策略，动态调整样本难度",
+  "基于类中心的高效计算，将计算复杂度从二次降至线性"
+ ],
+ "method_framework": "VarCon将类标签视为潜在变量，最大化后验加权的证据下界(ELBO)，结合KL散度和负对数似然项，通过置信度自适应温度控制类内紧凑度。",
+ "experiment_framework": "在CIFAR-10/100、ImageNet-100和ImageNet-1K上评估，使用ResNet-50/101/200和ViT-Base架构，比较分类准确率、小样本学习和跨域泛化性能。",
+ "takeaways": [
+  "变分推断为对比学习提供概率基础，同时保留几何归纳偏置",
+  "置信度自适应温度机制提高了模型对困难样本的学习能力",
+  "减少了对大规模批次和复杂增强策略的依赖"
+ ],
+ "weaknesses": [
+  "方法引入了额外的计算开销，需要优化辅助分布",
+  "实验主要集中在图像分类领域，缺乏对多模态大模型推理的验证",
+  "未充分探讨模型的不确定性估计能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

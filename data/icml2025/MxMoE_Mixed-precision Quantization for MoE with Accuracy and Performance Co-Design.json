@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MxMoE_Mixed-precision Quantization for MoE with Accuracy and Performance Co-Design.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MxMoE_Mixed-precision Quantization for MoE with Accuracy and Performance Co-Design.pdf",
+ "title": "MxMoE: Mixed-precision Quantization for MoE with Accuracy and Performance Co-Design",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "MoE混合精度量化，算法-系统协同设计提升性能",
+ "innovations": [
+  "线性块级别的混合精度量化策略",
+  "基于参数敏感度和专家激活频率的硬件感知比特分配",
+  "自动生成优化的混合精度Group-GEMM内核"
+ ],
+ "method_framework": "MxMoE框架包含硬件感知的比特分配算法和混合精度GEMM编排，通过优化参数敏感度、专家激活模式和硬件资源的多维设计空间，实现精度与性能的协同优化。",
+ "experiment_framework": "在DeepSeek、Qwen1.5-MoE、Qwen2-MoE和Mixtral-8×7B模型上评估，使用Arc-Challenge等7个数据集，与GPTQ和QuaRot基线比较准确性和推理速度。",
+ "takeaways": [
+  "线性块级别的混合精度比专家级别更有效",
+  "专家激活频率的异构性可被利用来优化计算性能",
+  "算法-系统协同设计对MoE量化至关重要"
+ ],
+ "weaknesses": [
+  "仅考虑了线性块的量化敏感性，未分析其他组件",
+  "实验主要在特定硬件平台上进行，泛化性有待验证",
+  "ILP优化问题的计算复杂度可能随模型规模增加"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

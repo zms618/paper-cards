@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Understanding and Improving Continuous Adversarial Training for LLMS via In-Context Learning Theory.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Understanding and Improving Continuous Adversarial Training for LLMS via In-Context Learning Theory.pdf",
+ "title": "Understanding and Improving Continuous Adversarial Training for LLMs via In-Context Learning Theory",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "基于ICL理论分析CAT，提出奇异值正则改善鲁棒-效用权衡",
+ "innovations": [
+  "首次基于ICL理论对LLM连续对抗训练(CAT)做理论分析，回答'嵌入空间扰动为何能防御token空间越狱'这一机制问题",
+  "在线性transformer的ICL线性回归任务上证明鲁棒泛化界与嵌入空间扰动半径负相关，解释CAT有效性",
+  "揭示对抗训练LLM的鲁棒性与嵌入矩阵奇异值密切相关，据此在CAT目标中引入依赖嵌入矩阵奇异值的额外正则，改善鲁棒-效用权衡"
+ ],
+ "method_framework": "对抗训练(AT)是防越狱有效防御但贵；CAT在连续embedding空间用PGD搜对抗样本更快，但机制不明(嵌入向量序列 vs token索引序列差异巨大)。本文在ICL理论下分析：线性transformer在嵌入空间对抗样本上做ICL线性回归，证明鲁棒泛化界随嵌入空间扰动半径增大而改善(负相关)，解释CAT为何能防御token空间越狱；并发现鲁棒性与嵌入矩阵奇异值相关，据此加奇异值正则。",
+ "experiment_framework": "理论：线性transformer ICL线性回归上推鲁棒泛化界；实证：在真实LLM上对比加奇异值正则前后的CAT，指标为越狱鲁棒性与效用的权衡(jailbreak robustness-utility tradeoff)。",
+ "takeaways": [
+  "嵌入空间扰动可通过鲁棒泛化界解释对token空间越狱的防御作用",
+  "对抗训练LLM的鲁棒性与嵌入矩阵奇异值结构密切相关",
+  "基于奇异值的正则可在真实LLM上改善越狱鲁棒-效用权衡"
+ ],
+ "weaknesses": [
+  "落地为文本LLM越狱防御，鲁棒性主线相关但落地域非医学影像/多模态推理",
+  "鲁棒界在线性transformer/ICL线性回归这一简化模型上证明，到真实非线性LLM的外推距离较大",
+  "正则依赖嵌入矩阵奇异值，在大模型上的计算/维护代价与对效用的副作用幅度正文前9页未充分量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM越狱防御属可靠性主线，但落地域非医学影像/多模态推理",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

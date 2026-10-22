@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Position The Future of Bayesian Prediction Is Prior-Fitted.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Position The Future of Bayesian Prediction Is Prior-Fitted.pdf",
+ "title": "Position: The Future of Bayesian Prediction Is Prior-Fitted",
+ "scores": {
+  "novelty": 4,
+  "depth": 5,
+  "evidence": 3,
+  "relevance": 6,
+  "overall": 4.5
+ },
+ "one_line": "立场论文：PFN是贝叶斯未来，但先验编码与计算成本存疑",
+ "innovations": [
+  "主张PFN与其它摊销推断方法是贝叶斯推断的未来，尤其适合数据稀缺问题",
+  "核心洞见：在随机生成的人工数据集上训练神经网络，可得到捕获数据集生成分布所定义先验的贝叶斯模型",
+  "论证在预训练算力快速增长而真实新数据近乎停滞的时代，PFN可把预训练算力高效迁移到低数据场景"
+ ],
+ "method_framework": "PFN的机制：用海量随机人工数据集预训练一个网络qθ，使其学会给定训练集D直接预测测试点后验q(y|x,D)；因为人工数据由某先验生成，预训练即把该先验“烧入”网络，推理时无需再做MCMC等昂贵贝叶斯推断，实现摊销；论文综述其从小型贝叶斯任务向复杂域/大数据扩展的历程并展望未来。",
+ "experiment_framework": "为立场/综述论文：梳理PFN原始架构(Müller et al. 2022)及其向更复杂域、更大数据集扩展的进展，论证其在低数据场景的价值，不报告新方法实验。",
+ "takeaways": [
+  "在随机人工数据上训练即可让网络捕获对应先验，实现摊销贝叶斯推断",
+  "PFN把预训练算力高效分配到低数据/数据稀缺场景",
+  "摊销推断(PFN类方法)是贝叶斯推断应对数据稀缺的有前途方向"
+ ],
+ "weaknesses": [
+  "为立场/综述论文，先验能否通过人工数据生成分布准确编码真实域先验仍是开放问题",
+  "预训练PFN所需的海量人工数据计算成本与其声称的高效性之间存在张力",
+  "对PFN在大模型级、高维多模态任务上的适用性论证仍偏愿景"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

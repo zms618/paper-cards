@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Remasking Discrete Diffusion Models with Inference-Time Scaling.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Remasking Discrete Diffusion Models with Inference-Time Scaling.pdf",
+ "title": "Remasking Discrete Diffusion Models with Inference-Time Scaling",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 6,
+  "overall": 6.5
+ },
+ "one_line": "重掩码扩散模型提升离散扩散采样质量与可控性",
+ "innovations": [
+  "引入重掩码扩散模型(ReMDM)解决离散扩散模型的迭代修正问题",
+  "设计多种重掩码策略(最大上限、重缩放、置信度基础)和开启/关闭机制",
+  "证明ReMDM比前向-后向和离散流匹配等校正器采样器更通用",
+  "实现推理时计算扩展，在有限计算预算下保持质量"
+ ],
+ "method_framework": "ReMDM通过修改离散扩散的后验分布，允许在生成过程中重新掩码已解码的token，实现迭代修正。方法基于概率模型推导，可视为祖先采样，并兼容预训练的掩码扩散模型。",
+ "experiment_framework": "文本生成(OpenWebText, MAUVE)、图像生成(ImageNet, FID/IS)、分子设计(QM9, 环数/新颖性)、下游任务(Countdown/TruthfulQA, ROUGE)",
+ "takeaways": [
+  "重掩码机制显著提升离散扩散模型的样本质量和可控性",
+  "置信度基础的重掩码策略在条件生成任务中表现优异",
+  "ReMDM可作为即插即用采样器应用于预训练模型无需重新训练"
+ ],
+ "weaknesses": [
+  "非马尔可夫过程增加了理论复杂性",
+  "计算开销比标准掩码扩散模型大",
+  "文本生成中生成困惑度与质量相关性不高"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

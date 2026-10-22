@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/FlowR_Flowing from Sparse to Dense 3D Reconstructions.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/FlowR_Flowing from Sparse to Dense 3D Reconstructions.pdf",
+ "title": "FlowR Flowing from Sparse to Dense 3D Reconstructions",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "流匹配连接稀疏与密集重建，但计算开销大且极端稀疏性能未验证",
+ "innovations": [
+  "流匹配模型直接连接稀疏重建与密集重建的渲染结果",
+  "多视图流匹配模型确保生成视图间一致性",
+  "构建大规模3.6M图像对数据集"
+ ],
+ "method_framework": "结合3D高斯溅射与流匹配，先进行初始重建，再通过流匹配模型生成高质量额外视图，最后改进3D重建结果。",
+ "experiment_framework": "在DL3DV140、ScanNet++和Nerfbusters三个NVS基准上评估，使用PSNR、SSIM和LPIPS指标，与InstantSplat、ViewCrafter和GANeRF等方法比较。",
+ "takeaways": [
+  "流匹配从渲染到真实图像的映射比噪声到数据的生成过程更有效",
+  "多视图一致性对高质量3D重建至关重要",
+  "初始重建质量对最终结果有显著影响"
+ ],
+ "weaknesses": [
+  "方法依赖大量计算资源(64个H100 GPU)",
+  "未充分讨论方法在极端稀疏视图下的表现",
+  "流匹配模型可能引入VAE压缩伪影"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D重建与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

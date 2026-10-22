@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Navigating the Latent Space Dynamics Of Neural Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Navigating the Latent Space Dynamics Of Neural Models.pdf",
+ "title": "Navigating the Latent Space Dynamics of Neural Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "自编码器编迭代映射定义隐向量场，用于分析泛化与OOD检测。",
+ "innovations": [
+  "提出自编码器隐式定义隐向量场：迭代编码-解码映射即在隐流形上得到一个无额外训练的动力系统",
+  "观察到标准训练引入的归纳偏置使吸引子在向量场中涌现，且吸引子对齐数据高密度区",
+  "用向量场统一实现：分析训练全程泛化/记忆状态、从参数吸引子无输入提取先验知识、依据轨迹识别OOD样本"
+ ],
+ "method_framework": "对任意自编码器，把隐向量z0反复送入编码-解码映射z_{t+1}=E(D(z_t))，得到隐空间轨迹；该迭代在隐流形上定义一个向量场。分析该向量场的不动点/吸引子分布：吸引子位置反映数据先验，轨迹收敛速度/路径反映样本是否落在数据流形上；沿训练追踪向量场形态变化以区分泛化与记忆阶段。",
+ "experiment_framework": "在MNIST等低维bottleneck AE上演示向量场与吸引子；在视觉基础模型上验证方法可迁移；下游用途包括训练全程泛化/记忆分析、无输入先验提取、OOD检测，与现有OOD检测方法对比轨迹判据。",
+ "takeaways": [
+  "自编码器无需额外训练即隐含一个动力系统，吸引子是数据先验的几何表达",
+  "向量场形态可在训练全程区分泛化与记忆状态",
+  "OOD样本在向量场中的轨迹与ID样本可分，提供了一种无监督OOD判据"
+ ],
+ "weaknesses": [
+  "向量场由迭代编解码定义，仅适用于带显式编解码结构的自编码器类，原生Transformer/LLM不直接适用",
+  "高维隐空间中向量场的可视化与吸引子定位代价大，可扩展性存疑",
+  "OOD检测虽与可信AI相关，但仅在视觉基础模型验证，未涉及医学影像或多模态推理等高风险落地域"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "OOD检测与泛化分析属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

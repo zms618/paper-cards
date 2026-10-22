@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Robust Spatio-Temporal Centralized Interaction for OOD Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Robust Spatio-Temporal Centralized Interaction for OOD Learning.pdf",
+ "title": "Robust Spatio-Temporal Centralized Interaction for OOD Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "集中式消息机制提升时空图OOD泛化，但放弃结构信息且与主线无关。",
+ "innovations": [
+  "提出集中式消息机制，用上下文感知单元做粗粒度时空特征交互，阻断传统节点间消息传递对时空漂移的敏感。",
+  "设计消息扰动机制，扰动消息过程迫使模型从变体环境中提取可泛化上下文特征。",
+  "定制时空分布鲁棒优化(DRO)，让模型暴露于挑战性环境以进一步增强泛化。"
+ ],
+ "method_framework": "针对STGNN节点间消息传递在OOD下脆弱的问题，改用集中式消息机制：上下文感知单元与节点做粗粒度时空交互并屏蔽节点间消息；同时对消息加扰动生成变体环境，迫使学可泛化特征；再用时空DRO在 worst-case 环境上训练。",
+ "experiment_framework": "6个时空图数据集(LargeST等)，对比14个STGNN基线；评测OOD泛化与归纳学习性能；报告相对提升。",
+ "takeaways": [
+  "STOP较14个基线在6数据集上泛化性能最高提升17.01%、归纳学习最高提升18.44%。",
+  "集中式消息+扰动+DRO三者协同可有效缓解节点间消息机制对时空漂移的敏感。"
+ ],
+ "weaknesses": [
+  "与主线的医学影像、多模态大模型推理不直接相关，属城市计算时空预测。",
+  "集中式交互放弃了节点间显式结构信息，对强结构依赖图的适用性存疑。",
+  "DRO与扰动引入额外训练开销，超参与worst-case构造在可见页内未充分消融。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

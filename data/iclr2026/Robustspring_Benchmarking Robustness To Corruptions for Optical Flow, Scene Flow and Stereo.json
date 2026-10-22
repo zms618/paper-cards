@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Robustspring_Benchmarking Robustness To Corruptions for Optical Flow, Scene Flow and Stereo.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Robustspring_Benchmarking Robustness To Corruptions for Optical Flow, Scene Flow and Stereo.pdf",
+ "title": "RobustSpring: Benchmarking Robustness to Image Corruptions for Optical Flow, Scene Flow and Stereo",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 6.5
+ },
+ "one_line": "构建图像腐蚀基准，评估光流/场景流/立体视觉鲁棒性",
+ "innovations": [
+  "首个面向光流/场景流/立体视觉的图像腐蚀鲁棒性综合基准，把鲁棒性作为一等评价维度。",
+  "将 20 种腐蚀在时间、立体、深度维度上一致地施加(而非逐帧独立)，保持物理一致性。",
+  "提出新的腐蚀鲁棒性指标，与 Spring 精度基准集成，实现精度+鲁棒性双轴评估。"
+ ],
+ "method_framework": "以高分辨率 Spring 立体视频为底，系统施加五类腐蚀(模糊、色彩变化、噪声、质量退化、天气)，每种腐蚀在时间/立体/深度上保持一致；用新增鲁棒性指标量化各模型在腐蚀下相对干净数据的性能衰减，并与原始精度基准联合双轴评价。",
+ "experiment_framework": "构建 2 万张腐蚀图像；评测一组精选初始模型在光流、场景流、立体(含深度)任务上的鲁棒性；按腐蚀类型分析差异，并实验验证 RobustSpring 上的评测能指示真实世界鲁棒性。",
+ "takeaways": [
+  "现有光流/立体模型在腐蚀下鲁棒性差异巨大，且随腐蚀类型显著变化。",
+  "把时间/立体/深度一致性纳入腐蚀生成为稠密对应任务提供了更真实的鲁棒性评测。",
+  "双轴(精度+鲁棒性)评估能识别既准又稳的模型，引导面向真实部署的视觉对应研究。"
+ ],
+ "weaknesses": [
+  "腐蚀集中在图像层面，未包含传感器级退化、动态遮挡/对抗扰动等更难的失效模式。",
+  "底数据为合成渲染 Spring，到真实驾驶/手术等场景的域差虽被声称验证但规模有限。",
+  "属基准/评测贡献，未提出新的鲁棒化方法，模型层面改进仍待后续工作。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "构建视觉对应任务鲁棒性基准，明确触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Quant Experts Token-aware Adaptive Error Reconstruction with Mixture of Experts.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Quant Experts Token-aware Adaptive Error Reconstruction with Mixture of Experts.pdf",
+ "title": "Quant Experts Token-aware Adaptive Error Reconstruction with Mixture of Experts",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "混合专家模型提升视觉语言模型量化精度，但路由机制需手动调整",
+ "innovations": [
+  "重要通道的token无关与token依赖分组",
+  "共享专家处理全局量化误差",
+  "路由专家处理局部token相关误差",
+  "轻量级路由器动态选择专家"
+ ],
+ "method_framework": "将重要通道分为token无关和token依赖两组，共享专家处理全局误差，路由专家处理局部误差，通过轻量级路由器动态选择最佳专家组合",
+ "experiment_framework": "Qwen2VL和InternVL2系列模型，W4A6/W4A8/W3A16量化设置，OCRBench、TextVQA、DocVQA等多模态任务",
+ "takeaways": [
+  "重要通道在不同token间动态变化",
+  "全局与局部误差需要差异化补偿策略",
+  "混合专家框架可有效处理token级动态特性"
+ ],
+ "weaknesses": [
+  "路由专家数量Nr需手动调整",
+  "计算复杂度随模型规模增加",
+  "仅针对PTQ场景，未考虑量化感知训练"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态量化方法，与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

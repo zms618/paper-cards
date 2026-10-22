@@ -1,0 +1,41 @@
+{
+ "title": "FRABench and UFEval: Unified Fine-Grained Evaluation with Task and Aspect Generalization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "构建统一多模态评测器，但依赖GPT标注与人工设计taxonomy",
+ "innovations": [
+  "指出现有 MLLM-as-a-Judge 评测器受限于特定任务与特定评价方面，难以适应未见方面与新任务。",
+  "提出 UFEval，首个覆盖 NLG/图像理解/图像生成/图文交错生成四类任务、兼具任务与方面泛化的统一细粒度评测器。",
+  "构建 FRABench：112 个分层方面的方面树，60.4k 成对样本、325k 标签(人工+GPT-4o)，解决统一评测器训练数据缺口。"
+ ],
+ "method_framework": "先调研四类任务建 112 个分层方面的方面树，据此用人工+GPT-4o 标注构造 FRABench；在其上训练统一评测器，使其在特定方面上学习后可泛化到未见方面，并通过联合评估多视觉任务/方面获得协同。",
+ "experiment_framework": "在四类任务 28 个子任务上评测 UFEval，与 AUTO-J/X-Eval/Prometheus2/ImageReward 等对比，报告与人工判断的一致性，并做方面泛化与跨任务协同消融。",
+ "takeaways": [
+  "评价方面天然相互关联，学特定方面可迁移到未见方面。",
+  "联合学习多视觉任务与方面能产生协同增益，优于单任务单方面评测器。",
+  "统一评测器在四任务上均与人工判断高度一致，缓解 MLLM 开放式输出评测瓶颈。"
+ ],
+ "weaknesses": [
+  "325k 标签大量由 GPT-4o 生成，评测器质量受教师模型偏差影响。",
+  "112 方面的分层 taxonomy 权重/聚合依赖人工设计，主观成分较高。",
+  "作为评测器不直接提升被评模型的可靠性；完整 28 子任务一致性表与泛化消融未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/UFEVAL_Frabench and UFEVAL Unified Fine-Grained Evaluation with Task and Aspect Generaliza.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/UFEVAL_Frabench and UFEVAL Unified Fine-Grained Evaluation with Task and Aspect Generaliza.pdf",
+ "raw_overall": 7.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "评测器设计有方法论价值，但非可靠性主线直接贡献",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

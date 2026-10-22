@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Improving Diversity in Language Models When Temperature Fails, Change the Loss.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Improving Diversity in Language Models When Temperature Fails, Change the Loss.pdf",
+ "title": "Improving Diversity in Language Models: When Temperature Fails, Change the Loss",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "揭示温度调节局限，提出P&R框架下损失函数改进LM精度-覆盖权衡",
+ "innovations": [
+  "揭示降低温度提升精度、增大温度却无法提升覆盖的现象及其条件",
+  "证明模型要可被温度调节，必须在训练时即朝向覆盖方向优化",
+  "基于P&R框架重思LM损失，取得优于NLL+温度缩放的精度-覆盖权衡"
+ ],
+ "method_framework": "在Precision-Recall框架下把LM生成质量分解为精度（生成合理）与覆盖（覆盖参考分布）；分析温度缩放仅在模型已具备覆盖倾向时有效，进而设计显式平衡两者的损失。",
+ "experiment_framework": "在语言建模任务上对比NLL+温度缩放与所提P&R导向损失；指标为Precision/Recall及生成质量多样性。",
+ "takeaways": [
+  "温度只是后处理旋钮，无法补偿训练时欠优化的覆盖能力",
+  "要获得高覆盖，必须在训练损失中显式考虑Recall",
+  "从损失层面入手比单纯调温度能取得更好的质量-多样性权衡"
+ ],
+ "weaknesses": [
+  "分析基于简化情形，对大规模LLM的直接外推需验证",
+  "P&R指标本身对参考分布依赖较强，度量偏差可能影响结论",
+  "所提损失的具体实现与计算开销在正文中占比有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.85,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

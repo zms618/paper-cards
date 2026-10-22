@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Accurate KV Cache Eviction via Anchor Direction Projection for Efficient LLM Inference.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Accurate KV Cache Eviction via Anchor Direction Projection for Efficient LLM Inference.pdf",
+ "title": "Accurate KV Cache Eviction via Anchor Direction Projection for Efficient LLM Inference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 8.0,
+  "overall": 6.9
+ },
+ "one_line": "锚方向投影KV缓存淘汰，提升LLM推理效率",
+ "innovations": [
+  "引入锚方向投影机制衡量token重要性",
+  "将KV缓存淘汰问题转化为稀疏优化问题",
+  "设计基于投影的评分函数替代简单注意力权重"
+ ],
+ "method_framework": "AnDPro通过将输出向量方向作为锚方向，计算token值状态在该方向上的投影作为评分，指导更准确的token选择，实现高效的KV缓存管理。",
+ "experiment_framework": "LongBench 16个数据集，Mistral-7B和Llama-3.1模型，对比H2O、SnapKV、Ada-KV等基线，评估不同缓存预算下的性能",
+ "takeaways": [
+  "空间关系对token重要性评估至关重要",
+  "投影方法比单纯注意力权重更能保留语义信息",
+  "合并token为块可提升性能"
+ ],
+ "weaknesses": [
+  "理论分析较复杂，实现可能增加计算开销",
+  "仅关注token级优化，未考虑模型级和系统级优化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

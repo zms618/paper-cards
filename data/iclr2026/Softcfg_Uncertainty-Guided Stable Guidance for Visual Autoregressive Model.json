@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Softcfg_Uncertainty-Guided Stable Guidance for Visual Autoregressive Model.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Softcfg_Uncertainty-Guided Stable Guidance for Visual Autoregressive Model.pdf",
+ "title": "SoftCFG: Uncertainty-Guided Stable Guidance for Visual Autoregressive Model",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "改进CFG的视觉自回归模型，不确定性加权引导减少伪影",
+ "innovations": [
+  "指出AR模型中标准CFG随解码推进会出现conditional-unconditional gap快速消失(guidance diminishing)与强条件扭曲视觉连贯性(over-guidance)两大问题",
+  "提出SoftCFG：让每个生成token按其确定性(不确定性倒数)加权贡献引导，使引导信号跨步持续并缓解文本引导与视觉上下文冲突",
+  "引入Step Normalization约束SoftCFG累积扰动的上界以稳定长序列；方法training-free、model-agnostic"
+ ],
+ "method_framework": "把标准CFG对单一class token的置换扰动，改为在整个序列上按模型不确定性自适应分配扰动幅度：已生成内容越确定的token贡献越强引导，越不确定则越弱，从而在保持引导信号持续的同时避免过度引导；步归一化限制累积扰动。",
+ "experiment_framework": "在ImageNet 256x256上以FID为指标，对比baseline采样、标准CFG与SoftCFG，跨RAR-XL、Alitok-B/L/XL及LuminaGPT-8B等多个AR模型评测；报告FID与人造伪影减少。",
+ "takeaways": [
+  "SoftCFG在多个AR模型上一致改善FID，取得ImageNet-256上AR类SOTA(如某设置FID 2.45/2.06 vs CFG更高)",
+  "不确定性加权有效减少CFG导致的不合理伪影(物体坍缩、多余部件/手等)",
+  "训练无关、模型无关，可无缝接入现有AR采样流水线"
+ ],
+ "weaknesses": [
+  "落地域是图像生成而非医学影像/多模态推理，虽用'不确定性'但非不确定性估计/校准研究，主线相关度中等",
+  "不确定性直接取自模型自身预测熵，缺乏对该不确定性是否可靠的校准验证",
+  "仅在ImageNet类别条件与少量文本生成例子展示，大规模文本到图像基准与人评规模有限；前9页未见完整消融表"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "图像生成应用，不确定性方法未校准，非医学/多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

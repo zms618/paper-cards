@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Mitigating over-exploration in latent space optimization using LES.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Mitigating over-exploration in latent space optimization using LES.pdf",
+ "title": "Mitigating over-exploration in latent space optimization using LES",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.4
+ },
+ "one_line": "LES缓解LSO过度探索，但依赖VAE质量且计算开销大",
+ "innovations": [
+  "提出Latent Exploration Score(LES)量化LSO中的过度探索程度",
+  "设计LES引导的优化策略，抑制生成不切实际的解",
+  "在多个黑盒离散优化任务上提升解的质量和可行性"
+ ],
+ "method_framework": "潜在空间优化(LSO)利用VAE潜在空间的连续优化求解黑盒离散问题，但容易过度探索——生成落在VAE潜在空间域外的不切实际解。本文提出LES(Latent Exploration Score)：(1)量化当前解在VAE潜在空间中的可信度；(2)在优化过程中用LES惩罚过度探索的方向；(3)引导优化器在有效区域内搜索。",
+ "experiment_framework": "在多个黑盒离散优化任务上评估(如符号回归/组合优化)。基线包括标准LSO。指标为解的质量和可行解比例。",
+ "takeaways": [
+  "过度探索是LSO的常见问题，需要显式约束",
+  "LES可有效量化和抑制过度探索，提升解的可行性",
+  "VAE潜在空间的域外检测是LSO成功的关键"
+ ],
+ "weaknesses": [
+  "依赖VAE的潜在空间质量，VAE差时LES效果有限",
+  "仅在小规模离散优化任务上验证，大规模问题适用性未知",
+  "LES的计算需要额外的前向传播，增加优化开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.43,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

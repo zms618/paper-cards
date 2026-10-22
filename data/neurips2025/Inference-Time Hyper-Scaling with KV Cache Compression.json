@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Inference-Time Hyper-Scaling with KV Cache Compression.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Inference-Time Hyper-Scaling with KV Cache Compression.pdf",
+ "title": "Inference-Time Hyper-Scaling with KV Cache Compression",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "DMS方法通过延迟KV淘汰实现推理时压缩，提升效率但泛化性存疑",
+ "innovations": [
+  "动态稀疏化(DMS)方法，仅需1K训练步骤实现8倍压缩",
+  "延迟执行淘汰决策，避免过早丢弃有用上下文",
+  "结合训练稀疏化和无启发式方法的优点，实现高效推理时超缩放"
+ ],
+ "method_framework": "DMS通过预测二值淘汰决策αt，结合滑动窗口延迟执行，在保持推理质量的同时大幅压缩KV缓存，无需添加额外参数。",
+ "experiment_framework": "在AIME24、MATH-500、GPQA和LiveCodeBench等推理数据集上评估，比较KV缓存读取次数、峰值内存占用和吞吐量等指标。",
+ "takeaways": [
+  "延迟淘汰策略显著提升模型性能稳定性",
+  "推理时超缩放结合KV压缩可有效提升大模型推理效率与准确性"
+ ],
+ "weaknesses": [
+  "实验主要集中在推理任务，对其他任务类型的泛化性有待验证",
+  "滑动窗口大小w的选择可能影响性能，但文中未充分探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

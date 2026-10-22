@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Synchronizing Task Behavior Aligning Multiple Tasks during Test-Time Training.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Synchronizing Task Behavior Aligning Multiple Tasks during Test-Time Training.pdf",
+ "title": "Synchronizing Task Behavior Aligning Multiple Tasks during Test-Time Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "共享编码器加TBS模块同步多任务测试时训练",
+ "innovations": [
+  "任务行为同步器(TBS)模块",
+  "基于掩码自编码器的任务关系建模",
+  "跨域任务关系保持假设",
+  "伪标签预测损失函数"
+ ],
+ "method_framework": "共享编码器+任务特定投影+任务行为同步器(TBS)，训练时使用多任务监督，测试时通过TBS输出与主任务输出的伪标签对齐实现同步适应",
+ "experiment_framework": "NYUD-v2、PASCAL-Context、Taskonomy多任务数据集，对比TENT、TIPI、TTT等基线，使用△TTT指标评估整体性能提升",
+ "takeaways": [
+  "任务关系可作为跨域适应的关键信息",
+  "同步性指标与多任务性能提升正相关",
+  "掩码机制增强任务关系的泛化能力"
+ ],
+ "weaknesses": [
+  "网络参数增加24.1%，计算开销较大",
+  "任务关系保持假设在某些极端域偏移场景可能不成立"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多任务同步方法与可靠性主线有交点但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

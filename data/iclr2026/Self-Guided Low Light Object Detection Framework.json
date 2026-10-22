@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Self-Guided Low Light Object Detection Framework.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Self-Guided Low Light Object Detection Framework.pdf",
+ "title": "Self-Guided Low Light Object Detection Framework (SGLDet)",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "训练时自监督引导特征，推理零开销的低光检测改进",
+ "innovations": [
+  "设计可分离的辅助流水线（图像增强模块+去噪模块+傅里叶域融合块），仅在训练时改善检测器骨干特征，推理时无额外参数与耗时。",
+  "提出self-guided机制：仅用输入低光图自身估计监督目标图来改善特征表示，无需额外标注。",
+  "在DARK FACE/ExDark达SOTA，并在nuImages上尤其当源-目标域差大时优于域自适应方法。"
+ ],
+ "method_framework": "基线检测器训练时并联一条可分离辅助分支：对低光输入做增强与去噪，经傅里叶域融合块引导骨干特征；推理时该辅助分支被丢弃，因此不增推理开销；用输入图自监督估计监督目标，规避增强为观感服务而非检测服务的问题。",
+ "experiment_framework": "基准DARK FACE、ExDark（低光检测）、nuImages（跨域/夜间驾驶）；对比低光增强预处理、专用低光检测器与域自适应方法；指标mAP；强调推理零额外计算成本。",
+ "takeaways": [
+  "训练时自引导的增强/去噪辅助分支可在不增推理开销下提升低光检测鲁棒性。",
+  "当源-目标域差距大时，该方法优于显式域自适应方法，更贴近真实夜间驾驶场景。"
+ ],
+ "weaknesses": [
+  "属低光检测的工程改进，'self-guided'辅助训练范式新颖性中等。",
+  "落地域为自动驾驶感知，非医学影像/多模态大模型推理主线，相关性有限。",
+  "前9页未给出具体mAP数值，增益幅度需后续表格确认。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "低光检测工程改进，非可靠性主线落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Sample more To Think less Group Filtered Policy Optimization for Concise Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sample more To Think less Group Filtered Policy Optimization for Concise Reasoning.pdf",
+ "title": "Sample more To Think less: Group Filtered Policy Optimization for Concise Reasoning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "GFPO通过采样过滤压缩推理长度，但与主线研究关联弱且创新有限。",
+ "innovations": [
+  "提出GFPO：增大每组采样数G，按目标属性(长度/token效率)排序只学top-k，其余样本优势置零，作为隐式奖励塑形引导策略走向简洁。",
+  "诊断RLVR冗长是独立失败模式(同题中更长回答更可能错)，指出token级归一化反而放大正确长回答奖励、助长冗长。",
+  "在Phi-4-reasoning上较GRPO减少46-85%长度膨胀且保精度，优于Dr.GRPO，跨模型规模/家族泛化；并提出Adaptive Difficulty GFPO把更多探索分给难题。"
+ ],
+ "method_framework": "每组采样G条回答，按长度/token效率指标拒绝采样选top-k子集，仅在子集内做GRPO优势归一化与clipped更新，其余样本不参与学习；自适应难度版对难题分配更多探索预算。",
+ "experiment_framework": "在Phi-4-reasoning上于AIME24/25、GPQA、Omni-MATH、LiveCodeBench等STEM/编码基准，对比GRPO、Dr.GRPO/DAPO，报告准确率、响应长度、端到端延迟与训练开销。",
+ "takeaways": [
+  "训练时多采样、只学简洁高效子集，可在几乎不掉精度下把GRPO的长度膨胀压缩最多85%，端到端延迟降约30%。",
+  "冗长并非难度必然产物，而是可通过组过滤显式抑制的失败模式。"
+ ],
+ "weaknesses": [
+  "属LLM推理效率/长度控制方向，与医学影像主线无关，与多模态推理仅间接相关。",
+  "过滤指标(长度/token效率)可能误伤需要长链才能解出的难题，自适应难度阈值的鲁棒性仍依赖调参。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "LLM推理效率控制，与多模态推理间接相关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

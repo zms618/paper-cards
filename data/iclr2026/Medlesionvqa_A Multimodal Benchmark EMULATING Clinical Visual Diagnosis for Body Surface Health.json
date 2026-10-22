@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Medlesionvqa_A Multimodal Benchmark EMULATING Clinical Visual Diagnosis for Body Surface Health.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Medlesionvqa_A Multimodal Benchmark EMULATING Clinical Visual Diagnosis for Body Surface Health.pdf",
+ "title": "MedLesionVQA: A Multimodal Benchmark Emulating Clinical Visual Diagnosis for Body Surface Health",
+ "scores": {
+  "novelty": 7,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "构建体表诊断基准，显示MLLM与医生差距，但评测形式有限制",
+ "innovations": [
+  "首个显式模拟医生逐步视觉诊断流程（病灶识别-部位识别-推理-诊断）的体表健康 MLLM 大规模基准",
+  "构建 12K 未公开泄露的院内图像与 19K 专家核验问答，细粒度标注 94 类病灶、110 身体部位、96 种疾病",
+  "以 20 年以上资深医生与一线医生作为人类参照，系统评估 20+ SOTA MLLM"
+ ],
+ "method_framework": "从 1 万+真实就诊场景采样图像，由资深医生构造对应临床工作流的多级选择题（病灶/属性/部位识别→空间理解→诊断与治疗建议），再以多选题形式评测 MLLM，并与初级医生(61.4%)、资深专家(73.2%)对比。",
+ "experiment_framework": "数据集：12K 院内图像/19K QA（94 病灶、110 部位、96 疾病）；基线：20+ SOTA 开源与商用 MLLM 及人类医生；指标：多选题准确率，最佳模型 56.2%。",
+ "takeaways": [
+  "最佳 MLLM 仅 56.2%，显著低于初级医生 61.4% 与资深专家 73.2%，临床视觉推理仍有明显鸿沟",
+  "现有基准多为公开源数据或单一疾病分类，难以反映真实逐步诊断工作流，本基准填补该缺口",
+  "未公开泄露的院内图像与专家标注是保证临床真实性与防数据污染的关键"
+ ],
+ "weaknesses": [
+  "以多选题形式评测，可能高估模型开放式诊断与治疗建议的真实能力",
+  "体表场景集中于皮肤等可见部位，未覆盖影像科等内部器官，泛化性待验证",
+  "仅报告总体准确率，对错误类型（识别错误 vs 推理错误）的细粒度分解有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "医学影像与多模态大模型推理的可靠性评测基准",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

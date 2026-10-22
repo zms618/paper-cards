@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/3D Gaussian Splatting from Unposed Spike Stream.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/3D Gaussian Splatting from Unposed Spike Stream.pdf",
+ "title": "3D Gaussian splatting From Unposed Spike Streams",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "脉冲建模为二项分布监督，关键帧解耦优化3DGS与轨迹，重建提速3倍",
+ "innovations": [
+  "把随机初电压V_x~U[0,φ]纳入脉冲模型，证明单帧脉冲s(x,y,k)~B(1,p)、M个相邻像素求和近似B(n,p)，据此定义NBDS信号Ŝ∈[0,1]^{H×W}(期望≈光强、方差≈p(1−p)/n)作稳定监督，替代不稳定的二进制帧",
+  "为补NBDS的纹理模糊，场景损失同时加长时程脉冲累加重建L_acc(I_acc=φ/N·ΣS(P_i))与短时细节的L_nbds按λ_acc/λ_nbds加权，并用帧间差分L_sub=(Ĉ_k−Ĉ_{k−n})−(Ŝ_k−Ŝ_{k−n})消掉渲染误差自身带来的监督偏置",
+  "关键帧筛选分两路解耦误差来源：L_nbds高于均值δ倍的进F_key、L_sub高于均值的进F_pose，两者交集F_scene才用于场景优化，据此交替做500步位姿优化与1000步场景优化(消融中去掉keyframing可从45.3分钟降到9.0分钟)"
+ ],
+ "method_framework": "单帧脉冲→二项分布NBDS作监督；稀疏脉冲间隔(t1−t2=φ/I)经MVS初始化3DGS并用李代数插值出粗轨迹；按L_nbds/L_sub超均值δ倍选位姿/场景关键帧，交替优化位姿与场景，渲染结果与NBDS做平均池对齐。",
+ "experiment_framework": "Tanks&Temples、Deblur-NeRF、USP-Gaussian与自采8场景(Spike M1K40-H4-Gen3)；比CF-3DGS、ht3DGS、Instantsplat、SpikeGS、Spike-nerf、USP-Gaussian、SpikeRecon+；指标PSNR/SSIM/LPIPS、ATE/RPE、深度δ/AbsRel、NIQE。",
+ "takeaways": [
+  "把二进制脉冲流看成带随机初相的伯努利采样再空间聚合到二项分布，是给不稳定单帧脉冲造稳定监督的通用套路，可迁移到事件/脉冲下游任务",
+  "用帧间差分L_sub把『渲染误差』与『真值噪声』分开，配合关键帧取交集，缓解了无位姿联合优化里位姿与场景互相安抚的老问题"
+ ],
+ "weaknesses": [
+  "NBDS的二项近似假设邻域像素p近似相同(p(x)≈p(x+δ))且M个像素独立，在强纹理梯度与运动处该假设不成立，正文只把证明放在附录C，高速运动下的失效边界没有讨论",
+  "位姿真值来自帧插值模拟高速加脉冲仿真，是自建的合成流程；深度评估用DepthAnythingV2伪深度当GT，绝对精度不可控，Tab.3的数值不能当几何真值看",
+  "仍有1分钟MVS初始化环节，并非严格端到端；正文在4.3消融表后截断，λ_acc/λ_nbds、n=32、M=16、δ=1.0无敏感性实验，真实集只给无参考NIQE/IL-NIQE，缺真值面的评估与多种子方差"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3D重建技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

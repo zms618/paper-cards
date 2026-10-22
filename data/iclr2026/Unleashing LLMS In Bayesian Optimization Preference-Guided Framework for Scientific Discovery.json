@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unleashing LLMS In Bayesian Optimization Preference-Guided Framework for Scientific Discovery.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unleashing LLMS In Bayesian Optimization Preference-Guided Framework for Scientific Discovery.pdf",
+ "title": "Unleashing LLMs in Bayesian Optimization: Preference-Guided Framework for Scientific Discovery",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "将LLM偏好作为GP均值平移嵌入BO循环，理论保证但迁移性未验证",
+ "innovations": [
+  "提出首个将LLM偏好在每轮迭代持续嵌入BO循环的框架，区别于以往仅做warm-start初始化或候选点生成后被采集函数覆盖的做法",
+  "核心机制region-lifted preference：LLM输出点/区域+置信度，经指数提升精确等价为GP先验的均值平移(协方差不变)，并按后验方差归一化λ使指导强度自适应校准",
+  "理论证明最坏情况不显著差于标准BO、偏好对齐时收敛显著加快；并在Fe-Cr电池电解液湿实验中6轮达到90%最优值而基线需>10轮"
+ ],
+ "method_framework": "标准BO用GP(μ,k)建模目标。LGBO把LLM作为专家先验：每轮迭代后查询LLM，其结构化输出为point模式或region模式(超矩形+置信度c)。偏好泛函ρ(f)=exp(λ a⊤ F_G)在区域网格上指数提升，Proposition证明该提升恰好等于GP均值加一项λΣ k(x,xg)ag而协方差不变，从而保持高斯结构可直接并入标准BO管线；λ按c/√(a⊤Σ_GG a)标定成c个标准差尺度。",
+ "experiment_framework": "在物理/化学/生物/材料多领域dry benchmarks上对比标准BO与已有LLM-augmented基线(warm-start、候选点生成型)；核心真实实验为Fe-Cr电池电解液配方湿实验室优化，指标为达到最优观测值90%所需迭代轮数。",
+ "takeaways": [
+  "把LLM指导从一次性初始化升级为每轮持续嵌入surrogate均值，可在冷启动和高维问题上显著加速收敛",
+  "区域提升偏好保持GP高斯结构与协方差不变，数学上 tractable 且对误导性指导的代价有界",
+  "湿实验中6轮即达90%最优值，标准BO与现有LLM增强基线需10轮以上"
+ ],
+ "weaknesses": [
+  "与本主线(多模态推理/医学影像/可靠性)关联弱，属AI4Science优化方向，方法对非科学优化任务的迁移性未验证",
+  "LLM每轮查询带来额外推理成本与延迟，文中未系统报告wall-clock/API开销与实验吞吐的权衡",
+  "区域提升偏好依赖LLM对'区域'的粗粒度语义判断，对高维/连续无显式物理含义的空间如何定义区域仍不清晰"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "科学优化方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

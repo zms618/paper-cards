@@ -1,0 +1,43 @@
+{
+ "key": "cvpr2025/Acquire and then Adapt Squeezing out Text-to- Model for.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Acquire and then Adapt Squeezing out Text-to- Model for.pdf",
+ "title": "Acquire and then Adapt: Squeezing out Text-to-Image Model for Image Restoration",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4,
+  "relevance": 4.0,
+  "overall": 4.8
+ },
+ "one_line": "用Flux生成数据+小适配器驱动大模型做图像恢复，效果存疑。",
+ "innovations": [
+  "FluxGen数据管线：空prompt+随机高斯噪声喂Flux，利用T2I的prompt-drop机制直接从生成先验出图，再用CLIP-IQA/MANIQA/MUSIQ三个no-reference IQA取top 95%过滤失败样本，最后用[75]的合成退化造配对数据，全程不用LLM、不引外部数据，35万张、14 GPU-day。",
+  "FluxIR适配器：只复制Flux的第一个MM-DiT块（含零初始化的MLP M_i）作控制分支，加可学习T5/CLIP embedding偏移 p_c=p+θ_p、y_c=y+θ_y 补偿文本流，再为57个MM-DiT块各配一个SE层（降维r×c再升维c×r，excitation零初始化）把图像/文本控制特征f_z、f_p广播到全部块，总_train_仅0.4B。",
+  "训练策略：时间步改成从U(-ε,1+ε)采样再clamp到[0,1]（ε=0.05），使t=0与t=1各以ε/(1+2ε)概率被采到，专门修住生成式恢复起点在纯噪声处的失控；损失用 L=||v_p-v_gt||²+α·||V_d(z₀+t·v_p)-V_d(z₀+t·v_gt)||₁。"
+ ],
+ "method_framework": "FluxGen(=空prompt Flux 生成→IQA 选图→退化配对) 造数据；FluxIR(=单MM-DiT块提取z_lq控制特征→SE层广播到57个Flux块) 驱动冻结的12B Flux；训练用clamp式时间步采样+MSE+像素空间L1损失。",
+ "experiment_framework": "合成DIV2K-Val与真实RealSR/DrealSR/RealLQ250四个测试集；对比BSRGAN、Real-ESRGAN、SwinIR、DASR、StableSR、DiffBIR、ResShift、SinSR、SeeSR、SUPIR、DreamClear；指标PSNR/SSIM/LPIPS+MANIQA/CLIPIQA/MUSIQ。",
+ "takeaways": [
+  "「大T2I的空条件生成本身就是免费高质量数据池」这条路径绕开了版权/隐私/人工标注三重成本，比调LLM/prompt工程更省。",
+  "用一小组SE（rank=32，仅22.8M参数）把单一块的控制信号广播到全部57个block，是把ControlNet类适配器压缩一个数量级的实用做法。",
+  "时间步采样从[0,1]外扩再clamp，是为了让纯噪声起点进训练集；凡是「起点状态必须可控」的生成式任务都该检查这个端点。"
+ ],
+ "weaknesses": [
+  "Tab.1里本方法在全部四个数据集上PSNR/SSIM/LPIPS都落后：DIV2K-Val PSNR 19.38 vs Real-ESRGAN 21.61、RealSR 20.72 vs 24.64，论文只靠no-reference指标赢；而no-reference IQA本身对生成式恢复天然偏袒（生成图更「好看」），「superior scores」的可比性存疑。",
+  "SE层消融只扫了rank（16/32/64/128/full），没有「去掉SE、保留单个MM-DiT块控制」的对照，因此无法把收益干净地归因给SE广播而非块数少带来的算力优势；Tab.2里Full(1076M参数)甚至比r=32在每个指标上都略好一点，SE的必要性论证很弱。",
+  "GT全部来自Flux合成分布，却在RealSR/DrealSR的真实退化上评；合成退化与真实退化（RealSR是真实低质相机图像）的域差未被讨论。",
+  "正文在第9页的4.3消融中段被截断，timestep sampler与L_P两项训练策略的消融表格数字不可见，两个training strategy的各自贡献无法复核。",
+  "「14 GPU-day / 3.5天×4卡」的成本口径是自建的（与SUPIR/DreamClear按GPU时租金折算），与对手成本不完全同口径，93.5%的降幅含设定差异成分。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "图像恢复与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

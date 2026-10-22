@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Efficiently Access Diffusion Fisher Within the Outer Product Span Space.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficiently Access Diffusion Fisher Within the Outer Product Span Space.pdf",
+ "title": "Efficiently Access Diffusion Fisher: Within the Outer Product Span Space",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6
+ },
+ "one_line": "扩散Fisher外积分解加速似然评估与引导采样，但理论局限与训练开销明显。",
+ "innovations": [
+  "解析推导扩散Fisher=加权外积和(Dirac初始分布下Prop.1，有限二阶矩一般情形Prop.3)，揭示DF恒落在score/初始数据外积张成空间，且不需梯度、只依赖初始数据与噪声schedule。",
+  "DF-TM：用标量网络学习加权范数项，把trace评估从O(d^2)VJP降到O(d)单次前向，给出近似误差界(Prop.7)。",
+  "DF-EA：用端点样本x0与y-prediction ybar替代外积求和，把F^T λ简化为λ、x0、ybar的标量组合(免梯度)，给出Hilbert-Schmidt误差界(Prop.8)；并据此外积形式给出PF-ODE映射最优传输判据(Cor.1)并首次做数值OT验证。"
+ ],
+ "method_framework": "扩散前向qt|0=N(αt x0, σt²I)，DF Ft=-∇²log qt。在q0=Σδ(y_i)/N下链式求偏导得Ft=(1/σt²)I-(αt²/σt⁴)[Σwi yi yi^T-(Σwi yi)(Σwi yi)^T]，其中wi=exp(-|xt-αtyi|²/2σt²)。Σwi yi由y-prediction网络估计。trace=线性组合，用tθ网络学Σwi||yi||²。matvec伴随ODE中把Σwi yi yi^T用端点x0x0^T近似。",
+ "experiment_framework": "toy：2-D棋盘VE schedule测trace相对误差；商用级：SD-1.5/SD-2base在LAION2B上训DF-TM(8×V100,150K步)，COCO 10k prompts评NLL与CLIP score权衡；伴随引导5个目标分(SAC/AVA aesthetic、Pick-Score、CLIP loss、Face ID loss)对比VJP；OT数值验证4种noise schedule(VE/VP/sub-VP/EDM)×3类初始数据(单高斯/仿射/非仿射)。",
+ "takeaways": [
+  "DF-TM在棋盘数据trace误差3-6% vs VJP在t→0高达71%；SD-1.5上trace评估从VJP的2195秒降到0.073秒(3万倍)。",
+  "伴随引导DF-EA在5个目标分上 consistently 优于VJP且耗时更短(SAC aesthetic 6.38 vs VJP 6.18，时间285s vs 402s)。",
+  "数值OT验证：单高斯/仿射初始数据下PF-ODE映射在4种noise schedule下均为OT(非对称率0%)，非仿射三点初始则否(13-27%)，首次实证'仿射初始才OT'的猜想。"
+ ],
+ "weaknesses": [
+  "外积形式严格成立于q0为Dirac和/有限二阶矩，一般情形为积分近似；DF-EA用端点x0x0^T替代整个外积和，仅t→0时主导成立，远离t=0误差增大。",
+  "DF-TM需额外训练标量网络(LAION 8×V100 150K步)，并非完全training-free；OT验证仅2维toy数据，高维结论外推有限。",
+  "属扩散模型二阶信息/生成模型理论，与可靠性主线（鲁棒/泛化/可信AI/不确定性/幻觉抑制在医学影像或多模态大模型推理）无直接关系。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

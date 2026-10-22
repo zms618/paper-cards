@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/BSLoRA_Enhancing the Parameter Efficiency of LoRA with Intra-Layer and Inter-Layer Sharing.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/BSLoRA_Enhancing the Parameter Efficiency of LoRA with Intra-Layer and Inter-Layer Sharing.pdf",
+ "title": "BSLoRA: Enhancing the Parameter Efficiency of LoRA with Intra-Layer and Inter-Layer Sharing",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "BSLoRA通过层内层间参数共享减少LoRA参数量，但验证有限。",
+ "innovations": [
+  "提出Bi-Share机制，同时实现层内(intra-LoRA)和层间(inter-LoRA)参数共享，兼顾局部和全局信息",
+  "设计三种共享参数形状变换方法：Slice Share(SS)、Gate Transformation(GT)、Kronecker Extension(KE)，适配不同层维度差异",
+  "矩阵秩理论分析表明分解大LoRA矩阵为子LoRA不增加总秩，为参数共享提供理论依据"
+ ],
+ "method_framework": "BSLoRA将标准LoRA的ΔW=BA分解为多个子LoRA组合。层内共享在同一层内不同注意力头/投影矩阵间共享参数；层间共享在不同Transformer层间共享低秩矩阵。三种变换方法处理共享矩阵与各层维度的形状不匹配问题：SS直接切片分割，GT通过门控变换映射，KE用Kronecker积扩展维度。",
+ "experiment_framework": "在Llama 1-7B/3-8B/1-13B上测试，使用Alpaca数据集微调。任务包括常识推理(PIQA/HSI/WinoGrande/ARC-E/ARC-C/OpenBookQA)和MMLU(0-shot/5-shot)。基线包括LoRA/VeR/VB-LoRA/ShareLoRA/Tied-LoRA。",
+ "takeaways": [
+  "BSLoRA(SS)在Llama 1-7B MMLU 5-shot上达38.98%，比标准LoRA高1.83%，参数量仅为其50%",
+  "Kronecker Extension方法参数效率最高，仅0.05%参数即达到接近SS方法的性能",
+  "双重共享比单一共享（仅层间或仅层内）效果更好，说明局部与全局信息互补"
+ ],
+ "weaknesses": [
+  "仅在Llama系列模型上验证，未测试其他架构(Mistral/Qwen等)",
+  "微调数据仅用Alpaca指令数据，未评估在领域适应或多轮对话场景的效果",
+  "三种变换方法的选择缺乏自动机制，需人工根据模型结构选择"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

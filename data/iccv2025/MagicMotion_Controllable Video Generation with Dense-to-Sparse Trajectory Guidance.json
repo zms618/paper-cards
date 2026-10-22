@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/MagicMotion_Controllable Video Generation with Dense-to-Sparse Trajectory Guidance.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/MagicMotion_Controllable Video Generation with Dense-to-Sparse Trajectory Guidance.pdf",
+ "title": "MagicMotion Controllable Video Generation with Dense-to-Sparse Trajectory Guidance",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "DiT架构加三级轨迹控制，生成视频但缺乏长期一致性",
+ "innovations": [
+  "密集到稀疏的三级轨迹控制策略",
+  "潜在分割损失增强精细形状感知",
+  "MagicData数据集与MagicBench基准"
+ ],
+ "method_framework": "基于DiT架构，通过Trajectory ControlNet注入轨迹信息，采用渐进式训练策略，从mask到box再到sparse box逐步学习",
+ "experiment_framework": "MagicBench(600视频)和DAVIS数据集，评估FID、FVD、Mask IoU和Box IoU指标，按控制对象数量分组",
+ "takeaways": [
+  "渐进式训练策略能有效提升稀疏条件下的性能",
+  "潜在分割损失在保持计算效率的同时增强精细形状感知"
+ ],
+ "weaknesses": [
+  "仅支持单阶段视频生成，缺乏长期一致性",
+  "数据集主要基于Pexels，可能缺乏特定领域多样性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "视频生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

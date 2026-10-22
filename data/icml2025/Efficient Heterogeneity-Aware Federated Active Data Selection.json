@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Efficient Heterogeneity-Aware Federated Active Data Selection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficient Heterogeneity-Aware Federated Active Data Selection.pdf",
+ "title": "Efficient Heterogeneity-Aware Federated Active Data Selection",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "联邦主动学习数据选择方法，单轮完成但适用性有限。",
+ "innovations": [
+  "提出FALE方法，基于FedSVD估计无标注数据的效用，通过leverage score采样在服务器端全局选择最有信息量的数据点",
+  "设计安全的联邦回归模型学习框架，利用所选数据的掩码特征和标签进行监督",
+  "给出FALE查询复杂度的理论分析，证明其达到常数因子近似和相对误差近似"
+ ],
+ "method_framework": "各客户端基于FedSVD上传数据的谱信息而非原始数据；服务器聚合后计算leverage score，据此对全局无标注数据进行重要性采样；选中的数据点索引返回对应客户端进行本地标注；服务器利用掩码特征和标签训练全局回归模型；整个过程单轮完成，无需初始标注集。",
+ "experiment_framework": "在11个基准数据集上评估，在non-IID客户端设置下与现有联邦主动学习方法对比，指标为达到目标精度所需的标注查询数/通信轮次。",
+ "takeaways": [
+  "FALE在non-IID联邦设置下显著减少标注查询数，优于现有FAL方法",
+  "基于leverage score的全局数据选择可在隐私保护下有效估计数据效用",
+  "单轮选择+无需初始标注集大幅降低了通信开销"
+ ],
+ "weaknesses": [
+  "属于联邦主动学习方向，与医学影像/多模态大模型推理等落地域无直接关联",
+  "方法主要针对回归任务，分类任务的适用性需进一步验证",
+  "前9页仅看到框架概述，FedSVD的具体实现和leverage score计算细节未充分展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.43,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

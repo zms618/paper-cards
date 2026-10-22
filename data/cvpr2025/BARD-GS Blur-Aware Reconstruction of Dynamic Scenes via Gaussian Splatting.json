@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/BARD-GS Blur-Aware Reconstruction of Dynamic Scenes via Gaussian Splatting.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/BARD-GS Blur-Aware Reconstruction of Dynamic Scenes via Gaussian Splatting.pdf",
+ "title": "BARD-GS Blur-Aware Reconstruction of Dynamic Scenes via Gaussian Splatting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "解耦运动模糊的动态场景重建，但依赖SfM且训练复杂",
+ "innovations": [
+  "将运动模糊解耦为相机运动模糊和物体运动模糊并分别建模",
+  "两阶段重建方法：相机运动去模糊和物体运动去模糊",
+  "构建真实世界动态场景运动模糊数据集"
+ ],
+ "method_framework": "基于3D高斯溅射，通过虚拟相机轨迹建模相机运动模糊，利用时间条件变形场建模物体运动模糊，实现动态场景的清晰重建",
+ "experiment_framework": "合成数据集(Dycheck/HyperNeRF)和真实世界数据集，与DyBluRF、D3DGS、4DGS等方法对比，使用PSNR、SSIM、LPIPS、LV和MUSIQ指标",
+ "takeaways": [
+  "显式解耦不同来源的模糊可以提高动态区域重建质量",
+  "3D轨迹损失有助于模型学习快速物体运动",
+  "真实世界模糊数据集对评估方法有效性至关重要"
+ ],
+ "weaknesses": [
+  "方法依赖初始SfM相机姿态估计质量",
+  "训练过程复杂，分阶段优化增加了实现难度",
+  "对高速运动物体的处理仍有局限性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "动态场景重建与可靠性主线无交点，属纯视觉重建工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

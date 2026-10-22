@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/BinauralFlow_A Causal and Streamable Approach for High-Quality Binaural Speech Synthesis with Flow Matching Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/BinauralFlow_A Causal and Streamable Approach for High-Quality Binaural Speech Synthesis with Flow Matching Models.pdf",
+ "title": "BinauralFlow: A Causal and Streamable Approach for High-Quality Binaural Speech Synthesis with Flow Matching Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "因果流匹配双耳语音合成，参数大且感知验证不足",
+ "innovations": [
+  "将双耳渲染视为生成问题而非回归问题",
+  "因果U-Net架构支持流式推理",
+  "连续推理管道提高渲染连续性和速度"
+ ],
+ "method_framework": "条件流匹配模型结合因果U-Net，通过STFT转换到时频空间，利用流匹配从噪声生成双耳音频，并设计因果卷积确保时间因果性。",
+ "experiment_framework": "自建10小时高质量双耳数据集，与SoundSpaces、2.5D Visual Sound、WaveNet、WarpNet、BinauralGrad和SGMSE对比，使用波形L2误差、幅度L2误差和相位角误差评估。",
+ "takeaways": [
+  "流匹配模型在保持高质量的同时减少推理步骤",
+  "因果架构设计对实时音频处理至关重要",
+  "早期跳过策略可有效减少计算量而不影响质量"
+ ],
+ "weaknesses": [
+  "模型参数较大(314.5MB)",
+  "仅评估了语音合成场景，未测试其他音频类型",
+  "感知研究样本量可能不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

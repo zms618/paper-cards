@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Meta-Reinforcement Learning with Adaptation from Human Feedback via Preference-Order-Preserving Task Embedding.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Meta-Reinforcement Learning with Adaptation from Human Feedback via Preference-Order-Preserving Task Embedding.pdf",
+ "title": "Meta-Reinforcement Learning with Adaptation from Human Feedback via Preference-Order-Preserving Task Embedding",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.0
+ },
+ "one_line": "POEM框架通过偏好顺序保持的任务嵌入实现元RL中人类反馈少样本自适应。",
+ "innovations": [
+  "提出偏好顺序保持的任务嵌入空间，使任务嵌入能反映不同任务间的偏好排序关系",
+  "元训练阶段学习任务编码器和解码器，实现从人类偏好查询到任务特定策略的快速适配",
+  "提供适配过程收敛到任务最优策略的理论保证"
+ ],
+ "method_framework": "元训练阶段：学习任务编码器将任务映射到偏好顺序保持的嵌入空间，学习解码器将嵌入映射为任务特定策略。适配阶段：面对新任务，通过少量人类偏好查询推断任务嵌入，再由解码器生成对应策略。偏好顺序保持的嵌入空间确保不同任务的偏好关系在嵌入空间中被正确编码。",
+ "experiment_framework": "在多个元RL基准环境上评测，与标准RLHF、元RL基线对比。指标为少样本适配后的任务性能、样本效率。验证不同偏好查询数量下的适配效果。",
+ "takeaways": [
+  "偏好顺序保持的任务嵌入可实现高效的人类反馈少样本适配",
+  "元学习范式显著降低了RLHF的数据需求",
+  "理论收敛保证为方法的可靠性提供了基础"
+ ],
+ "weaknesses": [
+  "仅在仿真环境验证，真实机器人或LLM场景的适用性待验证",
+  "偏好查询仍需人类标注，完全自动化的适配未实现",
+  "任务分布的假设较强，分布外任务的适配效果未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

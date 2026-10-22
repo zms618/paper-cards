@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Language Models over Canonical Byte-Pair Encodings.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Language Models over Canonical Byte-Pair Encodings.pdf",
+ "title": "Language Models over Canonical Byte-Pair Encodings",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "揭示BPE LM对不可见非规范串分配概率，提出两种规范化方法提升似然。",
+ "innovations": [
+  "指出现有BPE LM对指数多个非规范token串分配非零概率这一被忽视的错误",
+  "提出按条件(测试时推理、免重训)与按构造(架构参数化、需训练)两类规范化方法",
+  "证明规范化方法只会改善对真实token分布的拟合；并给出比既有工作更简单的增量BPE规范性测试"
+ ],
+ "method_framework": "BPE的规范token串集D是训练数据中唯一出现的编码；按条件法在推理时约束生成只产生规范串，按构造法在参数化架构中直接保证规范输出，把概率质量从非规范串收回给规范串。",
+ "experiment_framework": "在多个模型与语料上对比规范化前后的held-out似然，报告困惑度/似然提升，并给出增量规范性测试的实现。",
+ "takeaways": [
+  "非规范编码的概率错配是可避免的、会浪费概率质量的错误",
+  "两种规范化方式都可改善似然，按条件法免重训即可",
+  "规范化测试可无需自动机理论即可实现"
+ ],
+ "weaknesses": [
+  "属分词/LM似然改进，与鲁棒性/可信AI/多模态主线关联弱",
+  "按构造法需重新训练/微调，前9页未充分比较两种方法的性价比",
+  "对生成质量/事实性的端到端影响展示有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

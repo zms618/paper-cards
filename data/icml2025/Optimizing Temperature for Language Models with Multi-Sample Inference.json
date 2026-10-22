@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Optimizing Temperature for Language Models with Multi-Sample Inference.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Optimizing Temperature for Language Models with Multi-Sample Inference.pdf",
+ "title": "Optimizing Temperature for Language Models with Multi-Sample Inference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "基于熵拐点的无标签温度优化方法，提升多样本聚合性能",
+ "innovations": [
+  "熵拐点(EntP)作为温度选择指标",
+  "无需验证数据的自动温度优化算法TURN",
+  "模型训练-任务相似性与最优温度的负相关性发现",
+  "随机过程模型解释熵拐点现象"
+ ],
+ "method_framework": "TURN算法通过计算不同温度下的token级熵，识别熵曲线的对数从凹到凸的拐点(EntP)，结合聚合方法调整因子预测最优温度，平衡样本质量与多样性。",
+ "experiment_framework": "在MATH数学推理和MBPP代码生成数据集上评估，涵盖多种模型(通用/领域特定/微调)和聚合策略(多数投票/Best-of-N)，对比网格搜索最优温度与固定温度基线。",
+ "takeaways": [
+  "熵拐点是样本质量下降的有效指标",
+  "模型与任务相似度越高，最优温度越高",
+  "少量样本即可准确预测最优温度"
+ ],
+ "weaknesses": [
+  "未探索不同任务类型的温度选择差异",
+  "熵计算仅考虑top-K tokens可能影响准确性",
+  "未在真实世界应用场景验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

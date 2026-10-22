@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/AdaMMS_Model Merging for Heterogeneous Multimodal Large Language Models with.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AdaMMS_Model Merging for Heterogeneous Multimodal Large Language Models with.pdf",
+ "title": "AdaMMS: Model Merging for Heterogeneous Multimodal Large Language Models with Unsupervised Coefficient Optimization",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 5.0,
+  "evidence": 4.5,
+  "relevance": 6.0,
+  "overall": 5.3
+ },
+ "one_line": "人工映射+线性插值+无监督α选择，异构MLLM融合的有限尝试",
+ "innovations": [
+  "针对同基座不同结构修改（如 CogVLM 复制 Q/K/V 权重、mPLUG-Owl2 复制 K/V 与 LayerNorm）定义参数映射 f：共享权重直连，M1 的重复多模态参数映射到 M2 中其原始对应权重，其余映射到 φ 后不做融合，从而把融合变为 θ_out^i = (1-α)θ_1^i + α f(θ_1^i)",
+  "无监督系数搜索：把「模型性能」换成「生成一致性」，取候选 α 的左右邻候选回答的精确不匹配计数 D_i = DiffCnt(G_i,G_{i-1}) + DiffCnt(G_i,G_{i+1})，选 D 最小的 α（Algorithm 1），只用 100 条无标签输入即可，省掉验证集的分布偏移",
+  "给出该指标成立的条件推导：在任务性能景观对 α 凸的假设下，最优点处 H(Θ*)⪰0，二阶泰勒展开说明最优点邻域内性能对参数扰动不变——即用「回答变化最小」近似「性能最高」",
+  "把搜索范围限制到 α∈[0,0.6]（因 α≥0.7 会崩语言能力）、粒度 0.1，并把上述搜索在小样本子集上执行而不损失效果"
+ ],
+ "method_framework": "三步：Mapping（按结构定义 f 使两模型落到同一参数空间）→ Merging（Task Arithmetic 式任务向量 + 线性插值 θ_out=(1-α)θ_1+αθ_2）→ Searching（用候选 α 生成回答，比较相邻生成的 DiffCnt，取差异最小者作为 α*，只训不标数据）。",
+ "experiment_framework": "两对 7B 异构 MLLM：LLaVA-OneVision-7B→Qwen2-VL-7B、LLaVA-v1.5-7B→CogVLM-Chat-7B；评测 MMMU/MME/SeedBench/OCRBench/TextVQA/OKVQA/GQA/VizWiz；基线 Task Arithmetic、Ties-Merging、DARE-Linear/Ties、MetaGPT（均在相同 mapping 下进行）；用 LMMs-Eval/VLMEvalKit。",
+ "takeaways": [
+  "「用无标签生成一致性当性能代理来选超参」是一个干净的自监督选择准则，且能用 100 条样本奏效——这类「不碰标签就能选系数」的设计对隐私/标注稀缺场景可直接复用。",
+  "所有基线都在同一套 mapping 下跑（论文明确说明这一点），把「能不能融合」和「怎么融合」两个变量解耦，这种公平性处理值得保留。",
+  "把凸性假设 + 二阶泰勒用于解释「稳定即最优」，虽是启发式，但为无监督选择提供了可写进论文的依据框架。"
+ ],
+ "weaknesses": [
+  "Merging 本身是 Task Arithmetic 的线性插值，Mapping 是人工结构对齐规则（CogVLM vs mPLUG-Owl2 这种复制差异靠人工指定 φ），没有自动寻参或量化评估映射质量的方法；无监督准则依赖「性能景观在 α 上凸」这一强假设，在 Table 1 中 Ties-Merging 的 MME 掉 13 分、OCRBench 掉 5 分这类非凸情形下该准则失效，作者只在均值 SUM 上宣称更优。",
+  "只处理「同基座、结构改动不同」这一层异构（论文 2.2 节主动放弃跨基座），声称「first model merging for heterogeneous MLLMs」的范围被自行收窄；映射规则对未见过的结构改动需要人工重新定义，可扩展性未验证。",
+  "Table 2 中 CogVLM 这一对上 AdaMMS 的 MMMUval 34.90 反而略低于 CogVLM 原模型 34.80 之外的多数合并基线，VizWiz 依旧 -8.42，部分任务不如 Task Arithmetic；所有表均为单次评分、无方差，也没有 α 选择正确率（选出的 α* 与真实最优 α* 的差距）这一直接度量；正文在 Table 3（EM-/Emb- 对比）中途截断，α 细粒度与子集大小的消融未完整给出。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "多模态模型融合方法，与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

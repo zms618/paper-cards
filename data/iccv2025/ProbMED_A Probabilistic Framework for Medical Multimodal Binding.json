@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/ProbMED_A Probabilistic Framework for Medical Multimodal Binding.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/ProbMED_A Probabilistic Framework for Medical Multimodal Binding.pdf",
+ "title": "ProbMED A Probabilistic Framework for Medical Multimodal Binding",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "概率对比学习解决医学多模态绑定，但实验覆盖不足",
+ "innovations": [
+  "概率对比学习建模嵌入分布而非确定性估计",
+  "合成实例采样损失增强模态内绑定",
+  "Hellinger距离作为概率相似度函数",
+  "不确定性提示过滤和分布采样提升少样本学习"
+ ],
+ "method_framework": "PROBMED使用四个专用模态编码器，通过概率对比学习将CXR、ECG、ECHO和文本对齐到统一概率嵌入空间，结合InfoNCE损失和Hellinger距离，并引入合成实例采样损失增强模态内绑定。",
+ "experiment_framework": "在13个医学数据集上评估，包括MIMIC-CXR、MIMIC-ECG、MIMIC-ECHO等，对比基线包括MedCLIP、CXR-CLIP、PCME++等，指标包括跨模态检索、零样本和少样本分类的AUROC和Recall@K。",
+ "takeaways": [
+  "概率建模能更好地捕捉医学数据中的多对多关系和不确定性",
+  "多模态整合可提高疾病预后预测的准确性",
+  "合成样本生成可缓解医学数据稀缺问题"
+ ],
+ "weaknesses": [
+  "仅训练了CXR-ECG非文本模态对，其他非文本模态对样本不足",
+  "计算复杂度可能高于确定性模型",
+  "未充分探讨模型在不同噪声水平下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "医学多模态绑定与可靠性主线交织，概率建模解决不确定性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

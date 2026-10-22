@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Pfeife_Automatic Pipeline Parallelism for PyTorch.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Pfeife_Automatic Pipeline Parallelism for PyTorch.pdf",
+ "title": "Pfeife: Automatic Pipeline Parallelism for PyTorch",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "PyTorch流水线并行工具，支持非顺序模型但优化耗时较长",
+ "innovations": [
+  "同步/异步流水线并行规范语言",
+  "从千操作数据流图自动寻找最优流水线调度算法",
+  "发现非均衡调度与预取通常是最优解",
+  "与PyTorch集成的全自动流水线并行工具"
+ ],
+ "method_framework": "基于PyTorch TorchDynamo捕获数据流图，通过编译时分析自动分割图并生成最优流水线调度，支持操作级细粒度并行",
+ "experiment_framework": "TorchBench 49个模型测试，8x A100/3090 GPU对比，评估内存使用、运行时间和预估准确性",
+ "takeaways": [
+  "基于关键路径分析的通用成本模型",
+  "图分割与调度联合优化算法",
+  "支持非顺序模型如Stable Diffusion的流水线并行"
+ ],
+ "weaknesses": [
+  "仅支持PyTorch生态",
+  "优化过程在大模型上仍需数分钟",
+  "未讨论与数据并行/张量并行的混合使用"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

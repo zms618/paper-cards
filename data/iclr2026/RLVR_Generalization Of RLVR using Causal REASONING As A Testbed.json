@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/RLVR_Generalization Of RLVR using Causal REASONING As A Testbed.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RLVR_Generalization Of RLVR using Causal REASONING As A Testbed.pdf",
+ "title": "Generalization of RLVR using Causal Reasoning as a Testbed",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.3
+ },
+ "one_line": "因果图测试床评估RLVR泛化，发现其效果依赖模型规模与初始能力",
+ "innovations": [
+  "构建因果图与查询数据集，沿因果梯三水平(associational/interventional/counterfactual)与相关子图规模两轴刻画难度，作为研究RLVR泛化的受控测试床。",
+  "细粒度比较RLVR与SFT在层内/跨层泛化上的差异，发现RLVR仅在特定模型规模与训练查询水平组合下泛化更强。",
+  "揭示RLVR的有效性取决于模型初始推理能力：初始能力足够时，RLVR改进边缘化策略并减少中间概率计算错误。"
+ ],
+ "method_framework": "在因果图概率推断任务上用RLVR或SFT微调Qwen-2.5(3B-32B)，变化训练查询水平与模型规模，沿因果梯水平与子图复杂度测层内/跨层泛化，归因RLVR对中间概率计算子技能的改进。",
+ "experiment_framework": "在自建因果图查询数据集上对比RLVR与SFT，控制模型规模(3B-32B)与训练查询水平，报告不同因果水平/子图复杂度下的准确率与错误类型分析。",
+ "takeaways": [
+  "RLVR相对SFT的泛化优势并非无条件，而依赖模型规模与训练查询水平的特定组合。",
+  "RLVR仅在模型具备足够初始推理能力时才显著提升因果子技能，尤其在复杂查询上。"
+ ],
+ "weaknesses": [
+  "受控合成因果图测试床，结论向真实开放域推理的迁移性未验证。",
+  "前9页只见实验设计与主结论，未见3B-32B各规模/各因果水平的完整泛化数值表。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "因果推理泛化研究，触及可靠性主线与模型规模依赖性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

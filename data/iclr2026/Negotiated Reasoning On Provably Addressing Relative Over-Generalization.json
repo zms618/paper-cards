@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Negotiated Reasoning On Provably Addressing Relative Over-Generalization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Negotiated Reasoning On Provably Addressing Relative Over-Generalization.pdf",
+ "title": "Negotiated Reasoning: On Provably Addressing Relative Over-Generalization",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 6.0
+ },
+ "one_line": "理论证明MARL中一致推理可避免相对过泛化，提出SVNR算法。",
+ "innovations": [
+  "首次给出RO的理论刻画：证明在一定条件下MARL方法满足一致推理要求即可避免相对过泛化",
+  "提出协商推理(nogotiated reasoning)框架，建立推理能力与RO之间的理论联系",
+  "用Stein变分梯度下降推导可证RO-free的协商策略(SVNR)，并用神经网络参数化实现摊销学习以提高计算效率"
+ ],
+ "method_framework": "在完全合作MARL中把智能体建模为对他者行为做推理协商；在最大熵策略迭代框架下，用Stein变分梯度下降求得一个协商策略，使策略更新不会因过拟合他者探索行为而退化为次优合作；该协商策略再用神经网络参数化做摊销，避免每步重新求解变分问题。",
+ "experiment_framework": "在多个RO挑战性环境(如Particle Gather等)上做数值实验；与SOTA的信用分配类与推理类MARL方法对比；报告收敛奖励、是否陷入次优均衡与计算效率；强调可证RO-free性质的实证验证。",
+ "takeaways": [
+  "RO可通过一致推理条件在理论上避免，而非仅靠启发式信用分配缓解",
+  "SVNR在RO挑战环境上优于现有SOTA且摊销后计算高效",
+  "把认知科学中的过泛化现象与MARL病理打通，给出可证不次优合作的路径"
+ ],
+ "weaknesses": [
+  "主线是多智能体合作RL理论，与LLM/多模态可靠性、验证器、幻觉抑制等落地主线关联弱",
+  "实验多为Particle等小规模粒子环境，大规模/真实机器人或博弈场景下的可扩展性未验证",
+  "一致推理条件在何种程度上可被神经网络摊销策略严格满足，理论与近似实现之间的gap需讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "MARL理论工作，与可靠性主线关联弱且无落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

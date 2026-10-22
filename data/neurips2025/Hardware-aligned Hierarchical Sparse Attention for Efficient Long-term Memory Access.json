@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Hardware-aligned Hierarchical Sparse Attention for Efficient Long-term Memory Access.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Hardware-aligned Hierarchical Sparse Attention for Efficient Long-term Memory Access.pdf",
+ "title": "Hardware-aligned Hierarchical Sparse Attention for Efficient Long-term Memory Access",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.3
+ },
+ "one_line": "HSA机制实现RNN长程访问，RAMba在64M上下文达完美检索",
+ "innovations": [
+  "分层稀疏注意力(HSA)机制",
+  "硬件对齐的内核设计",
+  "内存重置机制提升长度泛化能力"
+ ],
+ "method_framework": "RAMba结合Mamba与HSA，将输入分块，通过两阶段注意力机制实现token-to-chunk相关性学习，并采用硬件对齐算法实现高效并行计算",
+ "experiment_framework": "在PG19、ArXiv-math、Code等数据集评估长程语言建模，在passkey retrieval和LongBench V2等任务评估下游性能，对比Transformer、Mamba-2及变体",
+ "takeaways": [
+  "内存重置机制有效提升长度泛化能力",
+  "chunk级信息编码对长程检索至关重要",
+  "硬件对齐设计显著提升计算效率"
+ ],
+ "weaknesses": [
+  "chunk编码器增加5.4%参数量",
+  "内存重置可能影响短上下文性能",
+  "未开源生成任务评估结果"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

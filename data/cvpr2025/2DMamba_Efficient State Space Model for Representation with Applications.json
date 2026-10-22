@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/2DMamba_Efficient State Space Model for Representation with Applications.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/2DMamba_Efficient State Space Model for Representation with Applications.pdf",
+ "title": "2DMamba: Efficient State Space Model for Image Representation with Applications on Giga-Pixel Whole Slide Image Classification",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "二维Mamba扫描+硬件优化，WSI分类提升有限且证据不足",
+ "innovations": [
+  "把 Mamba 的选择性扫描从一维序列推广到二维：逐行扫描得到 h^hor_{i,j}=Ā_{i,j}h^hor_{i,j-1}+B̄_{i,j}x_{i,j}，再以 h^hor 为输入逐列扫描，展开后隐状态为 Σ_{i'≤i}Σ_{j'≤j} Ā^{(i-i'+j-j')}B̄x_{i',j'}，衰减阶数由一维序列距离变为曼哈顿距离，从而避免WSI展平后远端遗忘",
+  "提出 SegmentedBlockScan 硬件感知算子：按二维网格而非行列切块载入SRAM，在tile内对 N 个状态维就地归约，把朴素二维扫描的访存复杂度从 O(NHW) 压回 O(HW)；同时打破 CUB BlockScan 要求 H、W 均为32倍数的限制，14×14 特征图每行填充元素由18个降至2个",
+  "用可学习的 non-tissue token 占位非组织patch，使缺失区域仍保持 H×W 矩形拓扑后再进入 2D 扫描，从而保留WSI的二维邻接关系"
+ ],
+ "method_framework": "WSI切patch后用预训练病理编码器嵌入成 H×W 特征图（非组织区填可学习token），堆叠U层2DMamba block：block沿用Mamba结构但把1D selective scan换成逐行+逐列的2D selective scan（C聚合N个状态维），最后注意力聚合器输出slide特征。",
+ "experiment_framework": "10个公开WSI数据集（5分类+5生存，器官含乳腺/前列腺/肺/肾/胃/子宫），对比8种MIL（ABMIL/DSMIL/CLAM/DTFD/TransMIL/S4-MIL/MambaMIL/SRMambaMIL），指标Acc/F1/AUC与C-index，附算子FLOPs/吞吐/显存表。",
+ "takeaways": [
+  "把「一维序列距离 vs 二维曼哈顿距离」写成隐状态衰减阶数的闭式差别（文中 Fig.1 与式8），是可迁移的论证模板：任何把二维数据展平的序列模型都能用同类推导量化空间失真",
+  "算子级贡献（访存复杂度 O(NL)→O(L)、去padding）被当作与方法并列的独立卖点，并单独设表测吞吐/显存；这种「机制+系统」双证据写法值得借鉴"
+ ],
+ "weaknesses": [
+  "Table 1 明确写了跑5个随机种子却只报均值、无标准差，无法确定 2.48% AUC 提升是否高于种子间波动，也无显著性检验",
+  "「surpasses all current SOTA methods」与表内数据不一致：BRACS 上 AUC 0.8964 低于 CLAM 0.9016；DHMC 上 AUC 0.9468 明显低于 ABMIL/CLAM/TransMIL 的 0.957-0.973，AUC 提升并非普适",
+  "正文在 Table 3（算子效率）之后被截断，缺失 ADE20K/ImageNet 结果、组件消融与更多分析，主表之外的证据无法核验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "WSI分类属于落地域，但可靠性主线证据不足且提升有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

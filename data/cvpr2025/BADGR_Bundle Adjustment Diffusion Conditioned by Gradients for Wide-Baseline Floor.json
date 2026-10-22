@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/BADGR_Bundle Adjustment Diffusion Conditioned by Gradients for Wide-Baseline Floor.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/BADGR_Bundle Adjustment Diffusion Conditioned by Gradients for Wide-Baseline Floor.pdf",
+ "title": "BADGR Bundle Adjustment Diffusion Conditioned by Gradients for Wide-Baseline Floor",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "扩散模型结合束调整重建地板平面，但依赖预定义信息限制泛化",
+ "innovations": [
+  "梯度条件扩散模型用于束调整",
+  "联合优化相机姿态和地板平面布局",
+  "角度约束布局表示与方向正则器"
+ ],
+ "method_framework": "BADGR采用条件去噪扩散模型，结合平面束调整层，通过列几何编码器将密集调整信息压缩为嵌入，使用Transformer去噪器预测相机和墙壁位置，实现从粗到精的重建。",
+ "experiment_framework": "FloorPlan-60K数据集训练，ZInD评估；RPLAN数据集加噪测试；相机姿态和地板平面布局精度指标",
+ "takeaways": [
+  "扩散模型与非线性优化结合的新范式",
+  "角度约束布局表示简化优化问题",
+  "列级几何编码有效压缩密集调整信息"
+ ],
+ "weaknesses": [
+  "依赖预定义的墙壁连接信息",
+  "假设墙壁角度固定，限制复杂场景应用",
+  "需要初始列到墙壁的分配"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "重建地板平面与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

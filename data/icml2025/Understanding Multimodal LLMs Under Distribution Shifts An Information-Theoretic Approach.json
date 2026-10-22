@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Understanding Multimodal LLMs Under Distribution Shifts An Information-Theoretic Approach.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Understanding Multimodal LLMs Under Distribution Shifts An Information-Theoretic Approach.pdf",
+ "title": "Understanding Multimodal LLMs Under Distribution Shifts: An Information-Theoretic Approach",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "信息论框架量化MLLM分布漂移风险，EMI与性能趋势一致但普适性存疑",
+ "innovations": [
+  "提出首个理论框架，刻画MLLM在分布漂移下的最大风险",
+  "引入Effective Mutual Information(EMI)作为量化输入查询与模型回答相关性的 principled 度量",
+  "在跨61个漂移场景的数据集上实证验证理论洞见"
+ ],
+ "method_framework": "从信息论视角将MLLM分解为视觉编码器+LLM+对齐模块；定义EMI量化输入query与回答的相关性，用它刻画分布漂移(视觉域/文本/组合漂移)下MLLM的最大风险上界，解释漂移程度增大为何导致性能单调下降。",
+ "experiment_framework": "在覆盖61种漂移场景的开放域数据集上评测LLaVA v1.5与LLaVA-NeXT，测ID/OOD性能随漂移程度变化，验证EMI与性能退化的一致性趋势。",
+ "takeaways": [
+  "MLLM失败模式可追溯到分布漂移，漂移程度越大性能越单调下降",
+  "EMI能量化query-回答相关性并预测漂移下风险",
+  "该框架为MLLM安全可靠部署提供形式化风险刻画"
+ ],
+ "weaknesses": [
+  "EMI估计在实际MLLM上的可计算性与噪声未充分讨论",
+  "主要在LLaVA系列验证，对其他MLLM架构普适性未证",
+  "框架刻画最大风险上界，未给出直接提升鲁棒性的方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

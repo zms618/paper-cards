@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Realistic Test-Time Adaptation of Vision-Language Models.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Realistic Test-Time Adaptation of Vision-Language Models.pdf",
+ "title": "Realistic Test-Time Adaptation of Vision-Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 8.0,
+  "overall": 6.9
+ },
+ "one_line": "StatA方法通过统计锚点正则化提升VLM在真实测试场景的适应性",
+ "innovations": [
+  "提出两种真实测试时间适应评估框架：可变有效类数量和非独立同分布批次",
+  "设计StatA方法，引入统计锚点正则化项保持文本编码器知识",
+  "在多种真实场景下验证现有方法的局限性，展示StatA的鲁棒性"
+ ],
+ "method_framework": "StatA方法基于最大似然估计，引入统计锚点作为正则化项，通过KL散度惩罚视觉特征统计参数与文本锚点分布的偏差，结合Laplacian正则化和文本监督，实现无需超参数调整的适应性。",
+ "experiment_framework": "在ImageNet、SUN397等11个数据集上评估，对比CLIP基线和多种TTA方法，测试不同有效类数量(1-100)和非独立同分布批次场景。",
+ "takeaways": [
+  "统计锚点正则化项在低数据量下能有效保持模型初始零样本鲁棒性",
+  "现有TTA方法在真实场景下性能下降明显，StatA在多种场景下保持稳定提升"
+ ],
+ "weaknesses": [
+  "方法主要针对视觉分类任务，未扩展到其他VLM应用",
+  "统计锚点计算依赖零样本预测质量，可能受文本提示设计影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "StatA方法通过统计锚点正则化提升VLM在真实测试场景的适应性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

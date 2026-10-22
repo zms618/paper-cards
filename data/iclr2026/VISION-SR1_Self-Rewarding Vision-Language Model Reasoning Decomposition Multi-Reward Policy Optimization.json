@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VISION-SR1_Self-Rewarding Vision-Language Model Reasoning Decomposition Multi-Reward Policy Optimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VISION-SR1_Self-Rewarding Vision-Language Model Reasoning Decomposition Multi-Reward Policy Optimization.pdf",
+ "title": "Vision-SR1: Self-Rewarding Vision-Language Model via Reasoning Decomposition and Multi-Reward Policy Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "自奖励RL分解VLM推理，自评视觉描述抑制幻觉，但存在自评偏差风险",
+ "innovations": [
+  "提出无需外部视觉监督的三阶段自奖励RL方法，将VLM推理分解为视觉推理与语言推理两部分",
+  "要求模型先生成不回看原图即可独立支撑作答的自包含视觉描述，再用同一VLM仅基于该视觉描述做语言推理来验证自包含性，从而计算视觉奖励",
+  "提出解耦的奖励-优势框架，视觉奖励与语言推理奖励各自独立计算优势、对数概率与KL散度，避免异质奖励信号纠缠"
+ ],
+ "method_framework": "Vision-SR1先引导模型生成不回看原图即可独立作答的自包含视觉描述；再用同一VLM仅基于该视觉描述做语言推理来验证视觉描述是否自包含，据此算视觉奖励；语言正确性算语言奖励；最终在解耦奖励-优势框架下对视觉与语言两路分别计算优势/对数概率/KL，联合多奖励损失做策略优化。",
+ "experiment_framework": "在多类视觉语言任务上评测，对比依赖外部视觉奖励模型的方法与纯答案匹配的后训练；指标含视觉推理准确率、视觉幻觉程度与语言捷径依赖度；报告视觉推理提升、幻觉抑制与无额外GPU开销。",
+ "takeaways": [
+  "自奖励机制在不引入外部视觉奖励模型的前提下同时提升视觉推理、抑制视觉幻觉并减少语言捷径",
+  "解耦奖励-优势使异质奖励信号更细粒度，训练更稳定",
+  "相较需额外GPU托管外部奖励模型的方法，Vision-SR1不增加标准训练之外的GPU开销"
+ ],
+ "weaknesses": [
+  "视觉奖励依赖同一VLM自评自包含性，存在自评偏差与奖励黑客风险，前9页未见对奖励被钻空子的实证分析",
+  "自包含视觉描述的验证本质是循环论证，奖励信号质量受限于模型自身能力",
+  "前9页未见在医学影像等高风险域的幻觉抑制评测，跨域迁移性未知"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "自奖励RL抑制幻觉，方法设计可迁移到可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

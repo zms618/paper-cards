@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Dreamon_Diffusion Language Models for Code Infilling beyond Fixed-Size Canvas.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Dreamon_Diffusion Language Models for Code Infilling beyond Fixed-Size Canvas.pdf",
+ "title": "Dreamon: Diffusion Language Models for Code Infilling beyond FIXED-SIZE Canvas",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "通过特殊状态实现扩散模型动态长度代码补全，但泛化性和效率提升有限。",
+ "innovations": [
+  "引入[expand]和[delete]两种特殊状态实现动态长度控制",
+  "无需架构修改的轻量级训练方法",
+  "删除广播机制提高推理效率"
+ ],
+ "method_framework": "通过数据增强构建包含特殊状态的序列，在扩散过程中预测这些状态实现序列扩展或收缩，结合损失平衡机制确保训练稳定性。",
+ "experiment_framework": "在HumanEval-Infilling和SantaCoder-FIM上评估，与自回归模型和扩散模型基线比较，使用pass@1和exact match指标。",
+ "takeaways": [
+  "特殊状态机制可有效解决扩散模型的固定长度限制",
+  "损失平衡和广播机制对性能和效率至关重要"
+ ],
+ "weaknesses": [
+  "仅针对代码补全任务验证，泛化性未知",
+  "最大长度限制可能影响长代码生成",
+  "计算效率提升主要来自删除广播而非扩散过程本身"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "代码补全任务与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

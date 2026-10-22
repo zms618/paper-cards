@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/RAD Region-Aware Diffusion Models for Inpainting.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/RAD Region-Aware Diffusion Models for Inpainting.pdf",
+ "title": "RAD Region-Aware Diffusion Models for Inpainting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "修改扩散模型实现区域异步生成，提升图像修复速度",
+ "innovations": [
+  "空间变噪声调度实现异步区域生成",
+  "基于Perlin噪声的伪真实噪声调度生成",
+  "空间噪声嵌入技术提供丰富空间信息"
+ ],
+ "method_framework": "RAD通过为每个像素分配不同噪声调度，实现区域异步生成，仅需修改全连接层为1×1卷积，结合LoRA微调减少训练负担。",
+ "experiment_framework": "FFHQ/LSUN Bedroom/ImageNet数据集，对比LaMA、RePaint等基线，使用FID和LPIPS指标评估",
+ "takeaways": [
+  "简单修改扩散模型框架可显著提升特定任务性能",
+  "空间变噪声调度是解决图像修复问题的关键"
+ ],
+ "weaknesses": [
+  "需要针对新框架重新训练",
+  "噪声调度设计可能限制某些复杂修复场景"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "图像修复任务与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

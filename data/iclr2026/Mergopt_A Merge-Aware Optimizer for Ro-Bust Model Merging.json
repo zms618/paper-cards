@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mergopt_A Merge-Aware Optimizer for Ro-Bust Model Merging.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mergopt_A Merge-Aware Optimizer for Ro-Bust Model Merging.pdf",
+ "title": "MergOPT: A Merge-Aware Optimizer for Robust Model Merging",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "将模型合并建模为分布鲁棒优化，提出MergOPT优化器提升合并鲁棒性。",
+ "innovations": [
+  "把模型 merging 表述为权重空间的分布鲁棒优化，将其他专家参数视为对抗 merge-offset",
+  "提出merge-aware优化器MergOPT，在微调权重更新中注入merge-induced参数偏移",
+  "推导merge-guided权重偏移可行区域，使模型在后续merging下损失景观更稳"
+ ],
+ "method_framework": "将待合并专家参数视为对抗merge-offset，微调时针对最坏合并情形做DRO；据此分析参数更新分布与merging超参影响，推导出merge-guided权重偏移可行区域并注入优化步。",
+ "experiment_framework": "在4个LLM与1个视觉模型上评测，合并7个专家、4种merging策略；指标为merge后下游性能；较标准微调平均相对增益3.5%、最高9.5%。",
+ "takeaways": [
+  "微调阶段就考虑merging可显著降低merge后性能退化",
+  "DRO视角把merge当最坏情形对抗偏移",
+  "merge-aware优化器跨merging策略一致提升"
+ ],
+ "weaknesses": [
+  "relevance偏离主线，属模型合并而非可靠性或医疗影像",
+  "增益平均3.5%，七个专家合并的实验设置可能乐观",
+  "DRO的最坏情形假设与真实专家相关性的匹配未分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.55,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "模型合并方法与可靠性主线有可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

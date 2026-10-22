@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Effortless, Simulation-Efficient Bayesian Inference using Tabular Foundation Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Effortless, Simulation-Efficient Bayesian Inference using Tabular Foundation Models.pdf",
+ "title": "Effortless, Simulation-Efficient Bayesian Inference using Tabular Foundation Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "用预训练表格模型实现免训练贝叶斯推断，但高维性能受限",
+ "innovations": [
+  "将TabPFN作为预训练条件密度估计器用于SBI",
+  "提出NPE-PFN方法消除训练需求",
+  "开发过滤方案处理大模拟预算",
+  "设计比率密度评估加速截断顺序推理"
+ ],
+ "method_framework": "NPE-PFN将TabPFN作为自回归条件密度估计器，通过自回归方式估计高维后验分布，结合过滤方案处理大模拟预算，并扩展到截断顺序推理场景。",
+ "experiment_framework": "SBI基准任务(10个任务)、模型错误鲁棒性测试、Hodgkin-Huxley神经元模型和Pyloric网络模型，使用C2ST指标评估后验质量，比较模拟效率和推理时间。",
+ "takeaways": [
+  "基础模型可显著减少SBI中的模拟需求",
+  "过滤方案可扩展基础模型处理大模拟预算",
+  "比率密度评估加速截断顺序推理"
+ ],
+ "weaknesses": [
+  "推理速度随参数维度增加而显著下降",
+  "在高维数据中需要独立预训练嵌入网络",
+  "在104模拟预算下可能略微过度自信"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

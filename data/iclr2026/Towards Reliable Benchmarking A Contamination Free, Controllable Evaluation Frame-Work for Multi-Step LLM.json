@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Reliable Benchmarking A Contamination Free, Controllable Evaluation Frame-Work for Multi-Step LLM.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Reliable Benchmarking A Contamination Free, Controllable Evaluation Frame-Work for Multi-Step LLM.pdf",
+ "title": "Towards Reliable Benchmarking: A Contamination-Free, Controllable Evaluation Framework for Multi-Step LLM Function Calling",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.4
+ },
+ "one_line": "合成DAG任务评测工具调用，揭示状态跟踪缺陷，缓解策略有效但外推性有限",
+ "innovations": [
+  "将工具用建模为在隐藏函数依赖DAG上推断正确调用序列以计算目标值，任务由程序合成、天然无污染且难度可控",
+  "可精确控制图规模、依赖深度、干扰函数(尤其类型兼容的连接干扰项)等难度维度",
+  "发现强模型常语法正确但跨步传播错误/过期参数值，揭示脆弱的状态跟踪；并提出每步显式重述先前变量值的轻量缓解(GPT-5成功率62.5%→81.3%)"
+ ],
+ "method_framework": "把多步函数调用抽象为隐藏函数依赖DAG上的遍历：模型需推断正确的函数调用序列以求出目标值。通过合成方式生成任务，避免预训练/测试时泄漏，并可调图大小、依赖深度与干扰函数类型来控制难度。基于评测发现状态跟踪缺陷，提出每步重述变量值的缓解。",
+ "experiment_framework": "评测多个推理优化与通用模型(含GPT-5)；指标为端到端成功率；操纵依赖深度、函数规模、干扰函数类型观察性能变化；对比API-Bank/BFCLv4/ToolBench等；验证重述变量值缓解策略的跨模型增益。",
+ "takeaways": [
+  "推理优化模型在多步工具用上持续优于通用模型，GPT-5显著领先",
+  "性能随依赖深度增加急剧下降，类型兼容的连接干扰函数尤其难处理",
+  "强模型的瓶颈是跨步状态跟踪(传播错误/过期参数)，轻量地每步重述变量值即可大幅提升成功率"
+ ],
+ "weaknesses": [
+  "合成DAG任务与真实世界开放API的语义复杂度存在差距，外推性有限",
+  "重述变量值缓解增加上下文占用，对长horizon任务的成本-收益未充分量化",
+  "属工具调用评测，与医学影像落地域无直接关联"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "工具调用可靠性方法，状态跟踪缺陷揭示具主线价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

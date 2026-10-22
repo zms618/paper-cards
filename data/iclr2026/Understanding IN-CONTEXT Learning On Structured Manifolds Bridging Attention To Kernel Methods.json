@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Understanding IN-CONTEXT Learning On Structured Manifolds Bridging Attention To Kernel Methods.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Understanding IN-CONTEXT Learning On Structured Manifolds Bridging Attention To Kernel Methods.pdf",
+ "title": "Understanding In-Context Learning on Structured Manifolds: Bridging Attention to Kernel Methods",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 6.0
+ },
+ "one_line": "流形上ICL理论：注意力等价核预测，泛化率随内蕴维指数缩放",
+ "innovations": [
+  "首次把ICL理论拓展到结构化几何数据(流形上的Hölder函数回归)，此前ICL理论多限于线性模型/欧氏数据",
+  "建立注意力机制与核方法的新颖连接：transformer经与prompt的交互对新query做核预测，实证学到的query-prompt分数与Gaussian核高度相关",
+  "推导出泛化误差随prompt长度与训练任务数的缩放，并证当训练任务足够多时transformer达到流形上Hölder函数的minimax回归率，随prompt长度指数缩放、指数由流形内蕴维数(非环境维)决定"
+ ],
+ "method_framework": "ICL在NLP/视觉成功但对结构化几何数据的理论理解空白。本文研究流形上Hölder函数回归的ICL：证明注意力经与prompt交互等价于在新query上做基于核的预测(经验上query-prompt分数≈Gaussian核)。据此推泛化误差界：随prompt长度与训练任务数缩放；任务足够多时达到minimax回归率，且指数由流形内蕴维数而非环境空间维决定。",
+ "experiment_framework": "理论推导流形Hölder回归的泛化界/minimax率；数值实验验证学到的query-prompt注意力分数与Gaussian核高度相关；考察误差随prompt长度、训练任务数、流形内蕴维数的缩放。",
+ "takeaways": [
+  "transformer的注意力ICL在结构化数据上等价于一种核预测机制",
+  "ICL回归率随流形内蕴维数(而非高维环境维)缩放，揭示几何在ICL中的作用",
+  "训练任务数与prompt长度共同决定ICL的泛化误差，任务充足时达minimax最优"
+ ],
+ "weaknesses": [
+  "属ICL理论/数学分析方向，与本主线(可靠性×多模态推理/医学影像)无直接关联",
+  "结论在简化的流形Hölder回归设定下成立，到真实语言/视觉ICL的距离较远",
+  "核连接的实证验证较初步，minimax率对一般(非Hölder)函数类的推广未展开"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "ICL理论分析，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

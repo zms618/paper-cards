@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Retrieval-Augmented Perception_High-Resolution Perception Meets Visual RAG.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Retrieval-Augmented Perception_High-Resolution Perception Meets Visual RAG.pdf",
+ "title": "Retrieval-Augmented Perception: High-Resolution Image Perception Meets Visual RAG",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "视觉RAG框架检索关键图像区域提升MLLM高分辨率理解，免训练但空间重建有限。",
+ "innovations": [
+  "首次探索用视觉RAG解决多模态大模型(MLLM)的高分辨率(HR)图像感知挑战",
+  "提出Retrieval-Augmented Perception(RAP)：免训练框架，检索关键图像crop区域并通过布局重建保留空间信息",
+  "RAP在多个HR基准上显著提升各尺寸MLLM的性能，0.5B小模型也能受益"
+ ],
+ "method_framework": "将高分辨率图像裁剪为多个子区域(crops)。根据query检索最相关的K个图像crop，然后通过布局重建将这些crop的空间信息拼回。MLLM只需要处理检索到的关键区域+全局图像，而非完整高分辨率图像。整个过程无需训练MLLM。",
+ "experiment_framework": "在HR-Bench等高分辨率图像理解基准上测试。对比多种MLLM(LLaVA-v1.5-7B/13B、InternVL-v1.5-26B等)。指标为HR图像问答准确率。消融研究检索策略和K值的影响。",
+ "takeaways": [
+  "视觉RAG可以有效提升MLLM对高分辨率图像的感知能力，免训练即可应用于现有模型",
+  "检索关键图像crop比直接缩放完整HR图像更能保留细节信息",
+  "小模型(0.5B)通过RAP也能获得显著提升，说明信息瓶颈而非模型容量是HR感知的主要瓶颈"
+ ],
+ "weaknesses": [
+  "检索质量依赖query-crop匹配，对开放性query的检索效果未充分讨论",
+  "布局重建的空间精度有限，对需要精确空间定位的任务可能不足",
+  "仅在图像问答任务验证，未覆盖图像 dense captioning 或检测等其他HR任务"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

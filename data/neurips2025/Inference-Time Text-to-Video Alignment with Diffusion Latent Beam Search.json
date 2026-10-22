@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Inference-Time Text-to-Video Alignment with Diffusion Latent Beam Search.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Inference-Time Text-to-Video Alignment with Diffusion Latent Beam Search.pdf",
+ "title": "Inference-Time Text-to-Video Alignment with Diffusion Latent Beam Search",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 7,
+  "overall": 6.8
+ },
+ "one_line": "扩散潜束搜索与前瞻估计器提升文本视频对齐，但计算复杂度高",
+ "innovations": [
+  "扩散潜束搜索(DLBS)算法",
+  "前瞻估计器(LA)减少奖励评估噪声",
+  "基于VLM反馈的奖励校准方法"
+ ],
+ "method_framework": "在反向扩散过程中进行束搜索，每步采样K个候选潜在表示，选择B个最佳束，结合前瞻估计器减少奖励评估噪声，提高生成质量。",
+ "experiment_framework": "数据集：DEVIL(high/medium/static)、MSRVTT；基线：贪婪搜索(GS)、best-of-N(BoN)；指标：Gemini/GPT校准奖励、VLM评分、人类评估",
+ "takeaways": [
+  "推理时计算资源应优先分配给前瞻估计器和搜索预算而非增加去噪步数",
+  "多指标加权组合的校准奖励能更好地与人类/VLM偏好对齐"
+ ],
+ "weaknesses": [
+  "计算复杂度随束数量和搜索预算增加",
+  "校准奖励权重依赖于特定数据集和VLM模型"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/An Ellipsoid Algorithm for Online Convex Optimization.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/An Ellipsoid Algorithm for Online Convex Optimization.pdf",
+ "title": "An Ellipsoid Algorithm for Online Convex Optimization",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 3,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "纯理论椭球法改进OCO regret界，无实验验证",
+ "innovations": [
+  "将OCO归约为在一系列动态更新椭球上的在线优化（受经典椭球法启发），把regret从Õ(κ√T)改进为对κ仅对数依赖",
+  "每轮仅需Õ(1)次分离oracle调用，与现有分离式方法相当，无需把K变换到各向同性位置的昂贵预处理",
+  "结合在线-批转换得到随机凸优化收敛率，并借助二阶项在梯度噪声为零时把率简化为Õ(d²/T)"
+ ],
+ "method_framework": "维护随回合动态更新的椭球E_t（含中心c_t与Hessian型矩阵H_t），保证K⊆E_t；在每个E_t上运行类ONS的在线步，并用二分搜索实现的PoE子程序近似广义投影（O(d^ω log(TR/r))），把分离oracle信息用于收缩/更新椭球，最终由主regret定理给出对κ对数依赖的上界。",
+ "experiment_framework": "论文为纯理论工作，前9页（正文主体）只给出regret定理与随机优化收敛率推导，未包含数值实验、数据集或基线对比；证据来自定理4.1的形式化上界及其与已有Õ(κ√T)结果的渐近对比。",
+ "takeaways": [
+  "新算法regret为Õ(GR√(dT)log(κT)+d²log(κT))，消除了此前分离式OCO对非球率κ的线性依赖",
+  "即使不具备精确广义投影oracle，也可用二分搜索PoE子程序近似，每轮成本为Õ((C_sep(K)+d^ω)log(TR/r))",
+  "通过在线-批转换可得到随机凸优化收敛率，梯度噪声为零时简化为Õ(d²/T)"
+ ],
+ "weaknesses": [
+  "完全没有实证实验，理论改进是否带来实际运行优势（如病态高维集合）缺乏数值支撑",
+  "界中仍含d²项与对数因子，对极高维或κ极大集合的实际常数未讨论",
+  "属于纯约束优化理论，与可靠性/验证器/医学影像/多模态推理主线几乎无关"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.88,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

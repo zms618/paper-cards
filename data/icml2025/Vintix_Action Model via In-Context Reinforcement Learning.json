@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Vintix_Action Model via In-Context Reinforcement Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Vintix_Action Model via In-Context Reinforcement Learning.pdf",
+ "title": "Vintix: Action Model via In-Context Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "ICRL扩展到跨领域动作模型，算法蒸馏替代专家蒸馏，但仿真验证局限大。",
+ "innovations": [
+  "首次展示ICRL在跨领域（4个不同机器人/控制领域）的可扩展性，而非仅玩具任务",
+  "证明算法蒸馏（Algorithm Distillation）框架能有效训练通用动作模型，与专家蒸馏方法竞争",
+  "验证了多轮ICRL（many-shot ICRL）的在线自校正能力，模型在推理时能通过试错自我改进"
+ ],
+ "method_framework": "基于TinyLLaMA架构构建300M参数的下一动作预测模型。输入为多片段子序列：将之前的动作、奖励和当前观测打包为单个token，压缩上下文窗口。使用算法蒸馏框架训练：模型同时学习模仿演示和从奖励信号中优化。推理时通过ICRL在上下文中快速适应新任务，实现在线自校正。",
+ "experiment_framework": "在4个领域（MuJoCo、Meta-World、Bi-DexHands、Industrial Benchmark）共87个任务上验证；与基于专家蒸馏的动作模型对比；测试零样本和多轮ICRL后的性能提升；测量不同shot数对自校正效果的影响。",
+ "takeaways": [
+  "ICRL不再局限于玩具任务，可扩展到真实跨领域机器人控制场景",
+  "算法蒸馏提供了不依赖专家演示的通用动作模型训练范式",
+  "多轮ICRL的在线自校正能力接近演示者水平，展现了通用智能体的潜力"
+ ],
+ "weaknesses": [
+  "仅在仿真环境验证，真实机器人的迁移效果未测试",
+  "300M参数规模相对较小，更大模型的ICRL能力是否增强未验证",
+  "推理时的在线试错成本较高，实时性要求高的场景可能不适用"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

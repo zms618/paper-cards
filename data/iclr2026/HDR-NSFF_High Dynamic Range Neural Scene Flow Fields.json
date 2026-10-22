@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/HDR-NSFF_High Dynamic Range Neural Scene Flow Fields.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/HDR-NSFF_High Dynamic Range Neural Scene Flow Fields.pdf",
+ "title": "HDR-NSFF: High Dynamic Range Neural Scene Flow Fields",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "结合神经场景流与色调映射，实现HDR动态场景重建",
+ "innovations": [
+  "从2D像素融合转向4D时空建模",
+  "基于DINOv2的曝光不变运动估计",
+  "生成先验作为正则化补偿单目观测限制"
+ ],
+ "method_framework": "结合神经场景流场与可学习色调映射模块，通过语义特征实现曝光不变的运动估计，并利用生成先验增强单目观测信息",
+ "experiment_framework": "HDR-GoPro数据集(9个同步相机，3种曝光)，对比NSFF、4DGS、HDR-HexPlane等方法，使用PSNR、SSIM、LPIPS指标",
+ "takeaways": [
+  "语义特征在极端曝光变化下保持一致性",
+  "生成先验可有效补偿饱和区域信息",
+  "4D建模比2D方法更能保持时空一致性"
+ ],
+ "weaknesses": [
+  "依赖预训练模型(DINOv2、SAM2)作为组件",
+  "计算复杂度较高，训练时间长",
+  "未充分讨论方法在极端运动情况下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "场景重建与可靠性主线无交点，属纯视觉渲染工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

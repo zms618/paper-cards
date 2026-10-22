@@ -1,0 +1,41 @@
+{
+ "title": "Sci2Pol: Evaluating and Fine-Tuning LLMs on Scientific-to-Policy Brief Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "构建科学转政策基准，提出LLM裁判指标，但语料小且与主线无关",
+ "innovations": [
+  "按五阶段分类(自动补全/理解/摘要/生成/验证)构建18任务的政策简报生成基准",
+  "指出BERTScore/ROUGE无法衡量简报质量，提出对齐专家判断的LLM-as-judge指标",
+  "从560万政策记录关联出14万候选对，经LLM筛选与专家样例打磨得639对微调语料"
+ ],
+ "method_framework": "以模拟人类写作过程的五阶段 taxonomy 组织评测；构建论文-政策文档对语料并经LLM裁判过滤、专家样例in-context打磨，微调LLaMA-3.1-8B/Gemma-12B/27B。",
+ "experiment_framework": "评测13个开源/商业LLM；微调后Gemma-27B超过GPT-4o与DeepSeek-V3(671B)；报告在Sci2Pol-Bench各阶段一致提升。",
+ "takeaways": [
+  "自动指标无法衡量政策简报质量，需专家对齐的LLM裁判",
+  "小规模高质量语料微调即可让27B模型超越超大闭源模型",
+  "科学到政策的转化是LLM的重要且被忽视的应用"
+ ],
+ "weaknesses": [
+  "为政策文本生成任务，与可靠性/医学影像/多模态推理主线无关",
+  "LLM裁判指标本身的主观性与偏倚未充分核验",
+  "仅639对微调语料，规模较小"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/SCI2POL_Evaluating and Fine-Tuning LLMS On Scientific-to-Policy Brief Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SCI2POL_Evaluating and Fine-Tuning LLMS On Scientific-to-Policy Brief Generation.pdf",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "政策文本生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

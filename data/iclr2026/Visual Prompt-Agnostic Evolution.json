@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Visual Prompt-Agnostic Evolution.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Visual Prompt-Agnostic Evolution.pdf",
+ "title": "Visual Prompt-Agnostic Evolution",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "频域与动力学视角改进VPT，解决跨层失配问题，提升1-3%性能。",
+ "innovations": [
+  "揭示VPT训练中浅层提示早停滞、深层提示高方差振荡的跨层失配现象，并从频域角度分析其根源",
+  "提出任务感知的提示初始化：发现并传播骨干网络固有的频域捷径模式，使提示在任务方向上初始化",
+  "引入共享Koopman算子约束跨层提示演化的一致性，并基于Lyapunov稳定性理论设计正则项抑制误差放大"
+ ],
+ "method_framework": "PAE方法包含三个核心组件：(1)频域任务感知初始化——分析骨干网络识别时利用的频域捷径模式，将提示初始化到任务相关方向；(2)共享Koopman算子——用全局线性变换统一约束各层提示的演化轨迹，替代原先各层独立无协调的更新；(3)Lyapunov稳定性正则项——约束演化过程中的误差放大，提升训练稳定性。PAE是prompt-agnostic的，可无缝嵌入多种VPT变体，不修改骨干网络，不改变推理时计算。",
+ "experiment_framework": "数据集：25个下游数据集，覆盖图像分类、分割等多任务。基线：VPT、E2VPT、VFPT、SA2VP等多种VPT变体。指标：准确率、收敛速度（epoch数）。效果：平均1.41倍加速收敛，25个数据集上提升1-3%。",
+ "takeaways": [
+  "VPT训练不稳定的根源在于跨层提示演化的失配：浅层停滞、深层振荡",
+  "频域任务感知初始化能让提示从一开始就处于更优的任务方向上，加速收敛",
+  "共享Koopman算子+Lyapunov正则化有效稳定了跨层提示演化，同时提升最终性能"
+ ],
+ "weaknesses": [
+  "方法主要在ViT骨干上验证，对其他架构（如CNN、Mamba）的适用性未探索",
+  "Koopman算子和频域分析增加了方法复杂度，实际工程实现门槛较高",
+  "提升幅度（1-3%）在小数据集上较明显，但在大规模基准上的边际收益未充分展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.78,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "改进VPT训练稳定性，与可靠性主线部分交织但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

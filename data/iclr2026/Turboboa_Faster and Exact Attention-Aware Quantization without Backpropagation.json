@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Turboboa_Faster and Exact Attention-Aware Quantization without Backpropagation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Turboboa_Faster and Exact Attention-Aware Quantization without Backpropagation.pdf",
+ "title": "TURBOBOA: Faster and Exact Attention-Aware Quantization without Backpropagation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "TurboBOA加速BOA量化，但算法创新有限，仅验证LLM场景。",
+ "innovations": [
+  "多输出通道联合量化与闭式误差补偿规则，消除BOA的串行瓶颈，实现3倍以上加速",
+  "引入前序量化层传播误差的校正机制，缓解跨层深度的误差累积",
+  "自适应量化网格计算与坐标下降细化，保持迭代更新中的权重对齐"
+ ],
+ "method_framework": "TurboBOA在BOA（注意力感知的层间依赖量化）基础上，将原本逐输出通道串行的量化过程改为多通道联合量化，通过闭式解同时补偿多通道间的量化误差；同时补偿前序层传播的累积误差，并自适应调整量化网格以匹配迭代更新后的权重。",
+ "experiment_framework": "在LLaMA等主流大模型上进行权重量化和权激活量化实验，与GPTQ、BOA、SmoothQuant/QuaRot等基线对比，使用WikiText-2、C4等数据集的困惑度指标，验证加速比和精度。",
+ "takeaways": [
+  "多通道联合量化可在保持BOA精度优势的同时实现3倍以上加速",
+  "结合离群值抑制技术后，TurboBOA在权重量化和权激活量化上均达到SOTA",
+  "前序层误差校正显著缓解了低比特量化下的精度退化"
+ ],
+ "weaknesses": [
+  "核心贡献是对BOA的工程加速优化，算法层面的概念创新有限",
+  "仅验证了LLM量化场景，未探讨在多模态或视觉模型上的适用性",
+  "自适应网格计算的额外开销未在文中详细量化分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅优化LLM量化算法，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/3D-Mem_3D Scene Memory for Embodied Exploration and Reasoning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3D-Mem_3D Scene Memory for Embodied Exploration and Reasoning.pdf",
+ "title": "3D-Mem: 3D Scene Memory for Embodied Exploration and Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "多视角快照记忆框架，但实验不完整且评估方法有偏差",
+ "innovations": [
+  "把场景记忆定义为共视物体簇的快照图像集合：层次化共视聚类每次取最大未分配物体簇，选包含该簇且物体数最多的帧（同数时取检测置信度和最高者），无可行帧时按物体2D水平位置K-Means二分，最终把物体集划分为互不相交的快照，使单张图同时承载物体级细节与背景空间关系",
+  "把 frontier 扩展为 Frontier Snapshot（未探索区域r、可导航点p、朝向该区的图像Iobs），与 Memory Snapshot 同为原始图像，可直接喂给 VLM，使 agent 在「基于已知作答」与「去未探索区补信息」之间决策",
+  "增量式记忆更新 St=(St−1\\Sprev)∪Cluster(Oinput,It)：每步只对与当前自视角观测相交的历史快照及新检测物体重聚类，并用 Preﬁltering 让 VLM 按问题输出 top-K 相关物体类别、滤掉不含这些类别的快照，抑制记忆膨胀带来的噪声与算力开销"
+ ],
+ "method_framework": "RGB-D 流经 ConceptGraph 式分割匹配得物体集与帧候选，共视聚类选出最小覆盖帧集作为记忆快照；探索中增量更新，并用占据图维护前沿快照；推理时 VLM 先按问题 prefilter 快照，再在探索与作答间决策",
+ "experiment_framework": "A-EQA（HM3D，184/557题）、情节记忆EQA、GOAT-Bench；基线含 Explore-EQA、ConceptGraph+前沿快照、Multi-Frame、盲LLM；指标为 GPT-4 打分的 LLM-Match 与 LLM-Match SPL",
+ "takeaways": [
+  "用「图像即记忆单元」替代场景图/点云，把 3D 空间理解转嫁给 VLM 的强视觉能力，绕开 3D 基础模型训练数据不足这一瓶颈",
+  "CG w/ Frontier Snapshots 这一改造基线把「记忆格式」单独隔离出来比较，其余设定保持一致，是干净的 claim 隔离式实验设计",
+  "增量重聚类只处理与当前观测相交的 Sprev 而非全局重建，是长程记忆可扩展性的低成本方案"
+ ],
+ "weaknesses": [
+  "A-EQA 主实验只在 184 题子集上做，而多个 OpenEQA 基线报的是全 557 题，跨子集对比削弱公平性；正文未给任何方差或显著性检验",
+  "共视聚类的打分函数取「含物体最多帧、同数时取检测置信度和」，无可行帧时按 2D 水平位置 K-Means 二分，全为启发式，正文未论证该划分优于覆盖率最优或随机划分",
+  "核心指标 LLM-Match 由 GPT-4 打分（1-5），而被测主体也是 GPT-4o，属同类模型做裁判，存在评审偏好偏差；消融全在附录且本文截断，无法核验 preﬁltering 的 K、max dist 等超参敏感性",
+  "正文在 4.1 节分析中段截断，缺失情节记忆 EQA、GOAT-Bench 的实验结果与所有消融表"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": " embodied探索与3D记忆，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

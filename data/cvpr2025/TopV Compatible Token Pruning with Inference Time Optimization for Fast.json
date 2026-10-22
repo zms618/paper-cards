@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/TopV Compatible Token Pruning with Inference Time Optimization for Fast.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/TopV Compatible Token Pruning with Inference Time Optimization for Fast.pdf",
+ "title": "TopV Compatible Token Pruning with Inference Time Optimization for Fast",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "视觉标记剪枝优化，兼容FlashAttention，提升多模态推理效率。",
+ "innovations": [
+  "基于优化问题的标记重要性评估方法",
+  "视觉感知成本函数整合特征相似性、空间距离和中心距离",
+  "一次剪枝策略兼容FlashAttention和KV缓存",
+  "标记恢复策略防止视觉信息坍塌"
+ ],
+ "method_framework": "将视觉标记剪枝表述为优化问题，利用Sinkhorn算法求解贡献矩阵，结合视觉感知成本函数评估标记重要性，在prefilling阶段进行剪枝并恢复部分标记。",
+ "experiment_framework": "在LLaVA和InternVL2模型上测试，涵盖AI2D、SQA、MMMU、MMBench、POPE、Nocaps、OCRBench和OK-VQA任务，比较性能、内存使用和吞吐量。",
+ "takeaways": [
+  "优化问题框架比启发式方法更准确评估标记重要性",
+  "视觉感知成本函数有效捕捉视觉标记的空间和特征关系",
+  "一次剪枝策略显著减少KV缓存大小和内存使用"
+ ],
+ "weaknesses": [
+  "仅针对视觉标记剪枝，未处理文本标记",
+  "标记恢复策略可能引入额外计算开销",
+  "不同模型需要调整超参数"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态推理效率优化，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "title": "Part-X-MLLM: Part-Aware 3D Multimodal Large Language Model",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "部件感知3D MLLM统一任务为程序，但鲁棒性与泛化证据不足。",
+ "innovations": [
+  "把多种3D任务统一表述为结构化可执行语法下的程序，单一自回归token序列编码部件级框、语义描述与编辑命令。",
+  "解耦符号规划与几何合成：语言前端统一控制任意兼容几何引擎做部件级生成/编辑。",
+  "预训练双编码器架构分离结构与语义，并在大规模部件为中心数据集上指令微调。"
+ ],
+ "method_framework": "输入RGB点云+自然语言prompt；双编码器分别编码3D结构与语义；LLM自回归生成结构化程序(部件框+描述+编辑命令)；该程序作为接口驱动下游几何模块做部件级生成与编辑，语言前端与几何引擎解耦。",
+ "experiment_framework": "在自建大规模部件为中心数据集上指令微调；评测grounded问答、组合生成、局部编辑三类任务；对比现有3D MLLM；指标为定位精度/编辑一致性/生成质量；报告统一界面下SOTA。",
+ "takeaways": [
+  "结构化可执行语法可把多样3D任务统一到单一语言接口。",
+  "解耦符号规划与几何合成使任意几何引擎可被语言前端驱动。",
+  "部件感知3D MLLM在grounded QA、组合生成与局部编辑上均达SOTA。"
+ ],
+ "weaknesses": [
+  "3D生成/编辑方向，与可靠性×医学影像主线关联弱。",
+  "结构化语法需严格格式，生成非法程序的鲁棒性与恢复机制未充分讨论。",
+  "依赖大规模部件标注3D数据，对真实扫描/噪声点云的泛化证据有限。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PART-X-MLLM_Part-Aware Multimodal Large Language Model.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PART-X-MLLM_Part-Aware Multimodal Large Language Model.pdf",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "部件级3D任务统一，但与可靠性主线关联弱且泛化证据不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/SWAN_SGD with Normalization and Whitening Enables Stateless LLM Training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SWAN_SGD with Normalization and Whitening Enables Stateless LLM Training.pdf",
+ "title": "SWAN: SGD with Normalization and Whitening Enables Stateless LLM Training",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 8,
+  "overall": 6.5
+ },
+ "one_line": "梯度归一化+白化替代Adam，省显存但未大规模验证。",
+ "innovations": [
+  "提出SWAN：将两个已知算子(GradNorm行标准化、GradWhitening梯度正交化)以无状态方式串接预处理瞬时梯度，替代Adam的一阶/二阶矩EMA",
+  "在transformer理论模型上论证GradNorm稳定梯度分布随机性、GradWhitening抵消损失曲面局部曲率，二者协同使无状态训练可行",
+  "给出首个LLM无状态训练实证：在省约50%总显存、100%优化器状态的前提下，于LLaMA训练基准上用一半token达到相同困惑度(2x token加速)"
+ ],
+ "method_framework": "不维护任何优化器状态。每步对原始随机梯度矩阵先做行级标准化(GradNorm)稳定梯度分布，再对标准化后梯度做正交化/白化(GradWhitening)近似抵消局部曲率，最后直接用预处理后梯度做SGD更新；无需warmup、无需逐参调优即收敛。",
+ "experiment_framework": "在Zhao et al.的内存高效LLaMA预训练基准上，对350M与1.3B规模分别对比Adam，指标为评估困惑度、达到相同困惑度所需token数；报告端到端显存占用与优化器状态显存；覆盖多个LLM尺度并测试对病态问题与超参的鲁棒性。",
+ "takeaways": [
+  "纯无状态SGD经梯度归一化+白化预处理后可复现甚至超越Adam的LLM预训练表现",
+  "相比Adam端到端显存约降50%、优化器状态降约100%，分布式训练可扩展性显著提升",
+  "SWAN无需学习率warmup即可稳定收敛，降低了预训练调参负担"
+ ],
+ "weaknesses": [
+  "仅在350M/1.3B等中小规模LLaMA基准验证，未在7B以上乃至百亿规模大规模预训练上给出证据",
+  "GradWhitening需对梯度矩阵做正交化运算，每步额外计算开销与内存-算力权衡在正文前9页未充分量化",
+  "与AdEMAMix、CAME等近期低状态优化器的系统对比有限，泛化到非transformer架构的结论未展开"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

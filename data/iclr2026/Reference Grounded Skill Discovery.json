@@ -1,0 +1,41 @@
+{
+ "title": "Reference Grounded Skill Discovery",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "对比预训练构建技能流形，解决高DoF智能体无监督技能发现维度灾难。",
+ "innovations": [
+  "在探索前用参考轨迹做对比预训练，把每个参考行为聚成超球上一个方向，构造语义有意义的技能流形约束高维探索。",
+  "在此 grounding 潜空间上同时模仿参考技能并发现其语义相关的多样变体，而非无结构随机运动。",
+  "给出所提奖励作为合法模仿信号的理论证明，并分析为何互信息类方法能与该思路结合而Wasserstein依赖类方法不能。"
+ ],
+ "method_framework": "两阶段：先在参考轨迹上做对比学习，把动作嵌入单位超球、每类参考对应一个方向(类比LLM预训练建立探索空间)；再在此预结构化潜空间上用类DIAYN目标，使技能既能复现参考行为又能发现语义相关新行为，下游按用户风格指令组合技能。",
+ "experiment_framework": "SMPL人形智能体(359维观测、69维动作)；基线为METRA等纯无监督技能发现及模仿学习方法；评估对走/跑/出拳/侧移等技能的复现与变体发现，以及下游locomotion中按风格指令保持风格的能力。",
+ "takeaways": [
+  "高DoF无监督技能发现失败的根因是探索空间指数膨胀而语义有意义流形很小，需先验地构造有意义潜空间。",
+  "参考数据grounding能把随机高维运动约束为结构化、可解释的技能。",
+  "互信息类目标与参考grounding兼容，Wasserstein依赖类目标难以同样扩展。"
+ ],
+ "weaknesses": [
+  "落地域为人形机器人技能学习，与可靠性×医学影像/多模态推理主线无关。",
+  "依赖参考动作数据的覆盖度，参考未涵盖的行为难以被发现为相关变体。",
+  "节选前9页未见下游locomotion任务的完整定量表(风格保持成功率)，证据在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Reference Grounded Skill Discovery.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reference Grounded Skill Discovery.pdf",
+ "raw_overall": 5.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "人形机器人技能学习，与可靠性主线无交点但方法有可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

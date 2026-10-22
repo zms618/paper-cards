@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Geometric Generative Modeling with Noise-Conditioned Graph Networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Geometric Generative Modeling with Noise-Conditioned Graph Networks.pdf",
+ "title": "Geometric Generative Modeling with Noise-Conditioned Graph Networks",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "动态图网络根据噪声调整消息传递，但实现复杂且缺乏对比。",
+ "innovations": [
+  "提出NCGN类：GNN架构根据生成过程中的噪声水平动态修改",
+  "理论和实证发现：噪声越高→需要越远邻居信息→可用越低分辨率表示",
+  "实现Dynamic Message Passing(DMP)，同时自适应消息传递范围和分辨率"
+ ],
+ "method_framework": "在扩散/流模型生成过程中，噪声水平从高到低变化。DMP在高噪声时使用远距离全局邻居和低分辨率粗粒度表示；在低噪声时使用近距离邻居和高分辨率细节。网络架构(而非仅输入)随噪声水平动态调整。",
+ "experiment_framework": "在3D点云生成、时空转录组、图像生成多个域评估；对比噪声无关GNN架构；指标为生成质量(FID等)；报告DMP在各域一致优于基线。",
+ "takeaways": [
+  "生成过程的不同噪声阶段需要不同的感受野和分辨率",
+  "架构级(而非仅输入级)的噪声条件化带来显著质量提升",
+  "粗到细的多尺度生成策略可统一到消息传递框架中"
+ ],
+ "weaknesses": [
+  "动态架构增加了实现复杂度和工程成本",
+  "范围和分辨率的调度需要手工设计",
+  "前9页内未看到与多尺度扩散模型的对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

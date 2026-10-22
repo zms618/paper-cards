@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Sae As A Crystal Ball Interpretable Features Predict Cross-Domain Transferability Of LLMS without Training.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sae As A Crystal Ball Interpretable Features Predict Cross-Domain Transferability Of LLMS without Training.pdf",
+ "title": "SAE as a Crystal Ball: Interpretable Features Predict Cross-Domain Transferability of LLMs without Training",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "SAE特征漂移预测LLM跨域迁移性，但RL验证不足且缺乏决策阈值。",
+ "innovations": [
+  "提出基于SAE的迁移性分数STS，无需训练即可预测后训练的跨域迁移性",
+  "通过识别SAE表示中发生漂移的维度并与下游域相关性建模，将可解释特征用于迁移性预判",
+  "以SFT为例验证STS，并初步将其扩展到强化学习场景"
+ ],
+ "method_framework": "用稀疏自编码器将模型表示解耦为可解释特征；后训练后识别发生漂移的SAE维度，计算这些漂移维度与各下游域的相关性，据此估计跨域迁移性，从而在不实际微调的情况下预判后训练策略对不同域的影响。",
+ "experiment_framework": "在多个模型与多个下游域上评测STS，以与真实性能变化的Pearson相关系数为主要指标（报告>0.7）；并初步扩展到RL场景验证。",
+ "takeaways": [
+  "SAE可解释特征可在微调前可靠预测SFT的跨域迁移性（与真实性能变化Pearson>0.7）",
+  "后训练引入的模型漂移可被SAE维度漂移所表征并量化",
+  "STS可作为指导后训练策略的可解释工具"
+ ],
+ "weaknesses": [
+  "RL方向仅为初步尝试，验证尚不充分",
+  "Pearson相关性高但未给出对迁移方向/幅度的可操作决策阈值",
+  "依赖SAE质量，不同SAE训练设置下分数稳定性未充分消融"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "可解释特征预测迁移性，但RL验证不足且缺乏决策阈值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

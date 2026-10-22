@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Accelerating Diffusion Transformer via Gradient-Optimized Cache.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Accelerating Diffusion Transformer via Gradient-Optimized Cache.pdf",
+ "title": "Accelerating Diffusion Transformer via Gradient-Optimized Cache",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "梯度缓存机制加速扩散模型，但参数敏感且增加计算开销",
+ "innovations": [
+  "梯度缓存机制，通过梯度传播补偿缓存误差",
+  "拐点感知优化，识别关键拐点防止梯度方向冲突",
+  "梯度优化决策策略，根据模型统计信息确定何时应用梯度优化"
+ ],
+ "method_framework": "GOC框架包含三个核心组件：梯度缓存(GC)利用最近两步特征计算梯度并补偿到缓存特征；模型信息提取与统计通过分析特征变化识别逆梯度块；梯度优化决策(GOD)结合步位置和逆梯度块数量确定是否应用GC。",
+ "experiment_framework": "在ImageNet和MS-COCO数据集上评估，使用DiT和Pixart模型，比较IS、FID、sFID等指标，与FORA和L2C等基线方法对比，验证GC和GOD的有效性。",
+ "takeaways": [
+  "梯度补偿机制可有效减少缓存误差",
+  "结合步位置和模型统计信息的决策策略能避免梯度方向冲突",
+  "方法可应用于多种现有缓存策略提升性能"
+ ],
+ "weaknesses": [
+  "梯度缓存参数η需要精细调整",
+  "方法在后期采样步骤中仍可能引入误差",
+  "模型统计信息收集过程增加了额外计算开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "加速扩散模型技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

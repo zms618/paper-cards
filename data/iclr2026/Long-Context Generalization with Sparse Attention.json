@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Long-Context Generalization with Sparse Attention.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Long-Context Generalization with Sparse Attention.pdf",
+ "title": "LONG-CONTEXT Generalization with Sparse Attention",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "ASEntmax通过自适应稀疏注意力提升长序列外推，但泛化性和计算效率存疑。",
+ "innovations": [
+  "提出ASEntmax方法，引入可学习温度参数控制注意力稀疏性",
+  "理论证明α-entmax的非分散特性和表示保持能力",
+  "设计NAPE位置编码策略，结合ALiBi和NoPE优势",
+  "在合成任务和语言建模中实现1000×长度外推"
+ ],
+ "method_framework": "将softmax替换为α-entmax，引入自适应缩放机制ASEntmax，通过可学习参数β和γ控制注意力分布稀疏度，结合NAPE位置编码策略，实现长上下文建模。",
+ "experiment_framework": "合成任务(MQMTAR、Reverse、Copy、Sort)和语言建模(DCLM-Edu数据集)，对比softmax、SSMax、固定α-entmax等基线，使用精确匹配准确率和困惑度作为指标。",
+ "takeaways": [
+  "稀疏注意力机制可有效解决长序列下的注意力分散问题",
+  "自适应温度控制对极端长度序列外推至关重要",
+  "不同注意力头需要不同的稀疏模式"
+ ],
+ "weaknesses": [
+  "Sort任务上表现不佳，表明全局排序任务仍是挑战",
+  "仅评估了语言模型，未在多模态或医学影像等特定领域验证",
+  "计算复杂度可能随序列长度增加而上升"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "长序列外推方法与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

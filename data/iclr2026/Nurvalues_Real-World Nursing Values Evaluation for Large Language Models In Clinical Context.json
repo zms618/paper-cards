@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Nurvalues_Real-World Nursing Values Evaluation for Large Language Models In Clinical Context.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Nurvalues_Real-World Nursing Values Evaluation for Large Language Models In Clinical Context.pdf",
+ "title": "NurValues: Real-World Nursing Values Evaluation for Large Language Models in Clinical Context",
+ "scores": {
+  "novelty": 7,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "构建护理价值观基准，发现通用LLM优于医疗LLM，公正维度最难判定。",
+ "innovations": [
+  "首个护理价值观对齐基准，从ANA/NMC/NCHK/CNA/ICN等伦理准则系统提炼利他、人格尊严、诚信、公正、专业主义五个核心维度。",
+  "Easy级基于三所不同等级医院为期五个月的实地研究采集2200个符合/违反价值观实例，并用反事实改写平衡伦理极性。",
+  "Hard级将真实冲突案例转为含情境线索与误导信号（劝说/陷阱/欺骗）的对话，提升对抗复杂度、贴近护患冲突的主观性。"
+ ],
+ "method_framework": "定义五个护理价值维度，构建两级任务：Easy级为2200个价值观对齐/违反的离散实例（专家核验+反事实），Hard级为2200个嵌入上下文线索与微妙误导信号的对话实例；让LLM判定实例是否符合护理价值观，以Ma-F1为指标，并考察ICL策略的影响。",
+ "experiment_framework": "在23个SoTA LLM（通用与医疗专用）上评测；Easy级DeepSeek-V3最高（Ma-F1 94.55），Hard级Claude 3.5 Sonnet领先（89.43）；发现通用LLM一致优于医疗LLM、公正(Justice)是最难维度、ICL显著提升表现。",
+ "takeaways": [
+  "通用LLM在护理伦理对齐上反而优于专门的医疗LLM，说明医疗后训练未必改善伦理判断。",
+  "公正(Justice)是各模型普遍最难判定的价值维度。",
+  "上下文学习(ICL)能显著改善模型在护理价值观任务上的表现。"
+ ],
+ "weaknesses": [
+  "Hard级由Easy案例改写生成而非全部来自真实原始对话，真实临床敏感数据的可获得性限制了覆盖广度。",
+  "价值观判定本质主观，专家标注一致性（kappa等）与价值观维度间的交叉混淆未充分报告。",
+  "仅做分类式对齐评测，未结合真实护患沟通端到端部署与安全后果验证。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.43,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "护理价值观评估与医疗可靠性主线实质交织，方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

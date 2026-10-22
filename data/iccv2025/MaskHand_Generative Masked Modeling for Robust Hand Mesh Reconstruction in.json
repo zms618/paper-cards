@@ -1,0 +1,43 @@
+{
+ "key": "iccv2025/MaskHand_Generative Masked Modeling for Robust Hand Mesh Reconstruction in.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/MaskHand_Generative Masked Modeling for Robust Hand Mesh Reconstruction in.pdf",
+ "title": "MaskHand Generative Masked Modeling for Robust Hand Mesh Reconstruction in",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "生成式掩码建模提升手部重建，但计算复杂且依赖预检测器",
+ "innovations": [
+  "首次将生成式掩码建模应用于手部网格重建",
+  "上下文引导的掩码Transformer融合多线索",
+  "置信度引导的迭代采样策略",
+  "VQ-MANO离散化表示手部姿态",
+  "微分掩码建模学习2D-3D概率分布"
+ ],
+ "method_framework": "VQ-MANO将连续姿态离散化为token，上下文引导掩码Transformer学习token条件分布，训练阶段通过掩码建模学习概率分布，推理阶段通过置信度引导迭代采样重建网格",
+ "experiment_framework": "在HO3Dv3、FreiHAND、DexYCB和HInt数据集上评估，使用PA-MPJPE、PA-MPVPE、F@5/F@15、AUCJ/AUCV、PCK等指标，进行零样本和监督学习实验",
+ "takeaways": [
+  "生成式方法能有效处理2D-3D映射的不确定性",
+  "置信度引导的迭代采样策略提升遮挡场景性能",
+  "多尺度特征融合和图结构建模增强解剖一致性"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，推理时间较长",
+  "依赖预训练的2D姿态检测器",
+  "未充分讨论模型在不同光照条件下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "手部重建属于落地域，但可靠性主线交织不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

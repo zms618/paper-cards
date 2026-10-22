@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Adaptive Capacity Autoregressive Visual Tracking.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Adaptive Capacity Autoregressive Visual Tracking.pdf",
+ "title": "Adaptive Capacity Autoregressive Visual Tracking",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "自回归跟踪器加双模式切换，扩散模型预测轨迹稳定性",
+ "innovations": [
+  "系统级自回归范式，从'预测什么'扩展到'如何预测'",
+  "基于扩散模型的轨迹估计器预测未来稳定性",
+  "双模式推理系统，动态调整计算容量"
+ ],
+ "method_framework": "ARTrack-AC结合准确模式(高容量)、高效模式(低容量)和难度感知控制器，通过扩散模型预测未来轨迹稳定性，动态切换推理模式并保持自回归一致性。",
+ "experiment_framework": "在LaSOT、TrackingNet、GOT-10k和LaSOText数据集上评估，与ARTrackOT、FARTrack等基线比较，使用AUC、PNorm、P等指标，测试准确性与速度权衡。",
+ "takeaways": [
+  "基于扩散收敛行为的稳定性信号作为难度估计，无需额外监督",
+  "轨迹预测器作为先验而非最终输出，保持时间一致性",
+  "自适应容量推理范式可扩展到不同跟踪器"
+ ],
+ "weaknesses": [
+  "扩散模型训练时间较长(约15小时)",
+  "10帧并行设置在低帧率数据集上性能下降明显",
+  "依赖轨迹预测的裁剪策略在极端情况下可能失效"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "视觉跟踪与可靠性主线无实质交点，仅方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

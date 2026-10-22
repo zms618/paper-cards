@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DSP_Dynamic Sequence Parallelism for Multi-Dimensional Transformers.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DSP_Dynamic Sequence Parallelism for Multi-Dimensional Transformers.pdf",
+ "title": "DSP: Dynamic Sequence Parallelism for Multi-Dimensional Transformers",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "系统优化工作，动态切换并行维度提升吞吐，但与AI可靠性主线无关",
+ "innovations": [
+  "提出DSP：作为嵌入序列并行（Megatron-LM/Ring-Attention/Ulysses等沿单维切分）的新替代抽象",
+  "按计算阶段动态切换并行维度（如时空注意力中temporal vs spatial），配合高效resharding策略",
+  "完全解耦于模块逻辑，对模块几乎无修改即可启用，API易用"
+ ],
+ "method_framework": "在多维Transformer计算图中，根据当前注意力是沿temporal还是spatial维度，动态把序列张量分片切换到对应并行维度；阶段间用all-to-all resharding；通信模式简化。",
+ "experiment_framework": "在视频生成/时空注意力等多维Transformer上对比Megatron-LM、Ring-Attention、DeepSpeed-Ulysses等，报告端到端吞吐与通信量。",
+ "takeaways": [
+  "DSP端到端吞吐比SOTA序列并行提升32.2%到10x",
+  "通信量相比嵌入序列并行至少降低50%（摘要另称75%）",
+  "动态维度切换比固定单维切分更适配多维Transformer的计算结构"
+ ],
+ "weaknesses": [
+  "属系统/并行训练优化，与可靠性/可信AI主线无关",
+  "前9页未给出完整数值表，具体模型配置与通信量对比需看实验章节",
+  "动态resharding引入额外all-to-all，在某些通信拓扑下收益可能下降"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

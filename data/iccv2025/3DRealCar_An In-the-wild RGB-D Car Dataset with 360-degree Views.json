@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/3DRealCar_An In-the-wild RGB-D Car Dataset with 360-degree Views.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/3DRealCar_An In-the-wild RGB-D Car Dataset with 360-degree Views.pdf",
+ "title": "3DRealCar: An In-the-wild RGB-D Car Dataset with 360-degree Views",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.0
+ },
+ "one_line": "大规模真车RGB-D数据集，但实验不完整且方法创新有限。",
+ "innovations": [
+  "2500 辆车用 iPhone14+ARKit 环绕扫描三圈采集，每车平均 200 帧 1920×1440 RGB-D 视角与真实尺度点云，覆盖 108 个品牌、6 种车型、20+ 颜色，并按 standard / reflective / dark 三种表面光照状态组织",
+  "预处理流水线：GroundingDINO 以 \"car\" 文本提示取框 + SAM 掩膜投影回 3D 剔除背景点云，Colmap 重估位姿与内参（ARKit 自估位姿不准），PCA 主轴对齐车辆长轴并改用包围盒尺寸换算真实尺度、同步缩放相机平移",
+  "为每辆车提供 13 类车身部件解析图（车窗/门窗/轮/车牌等）加品牌、型号、颜色标注，统一支撑 2D 解析、NVS、点云补全、单图 3D 生成与 corner-case 仿真等 10+ 任务"
+ ],
+ "method_framework": "手机 ARKit 环绕扫描采 RGB-D 与点云；GroundingDINO+SAM 去背景点云，Colmap 重估位姿，PCA 主轴对齐 x 轴、包围盒尺度还原真实尺寸；3DGS 重建生成可用模型；另附 13 类部件解析图与品牌/型号/颜色标注。",
+ "experiment_framework": "2D：重建车合成进 NuScenes 做 corner-case 检测（YOLOv5/8、CO-DETR、YOLOv12，CODA 测试集 mAP@0.5）与车部件解析（SegFormer/DDRNet/VMamba/InternImage，mIoU/mAcc）；3D：Instant-NGP、3DGS、GaussianShader、2DGS 等测 PSNR/SSIM/LPIPS。",
+ "takeaways": [
+  "用重建资产合成到真实背景做长尾场景数据增强：仿真数据从 500 增到 5000 时 YOLOv8s 在 CODA 上 mAP@0.5 由 0.371 升到 0.435、CO-DETR 由 0.465 升到 0.582，配方可直接复用",
+  "「先渲后训」：把 3DGS 重建渲染图当训练集去微调 Zero123-XL / Stable-Zero123，比直接喂真实照片更易让扩散先验适配真车分布",
+  "车漆高光与暗光是 3D 重建的现成失败点，可当作困难子集压测任意新视角合成方法"
+ ],
+ "weaknesses": [
+  "正文第 5.4 节中途截断，Table 4/5/6（神经场 NVS、扩散 NVS、单图 3D 生成的定量结果）全部缺失，标准光 PSNR 超 27dB 但反光/暗光具体掉多少点只有定性描述，无数字可核验",
+  "PCA 主轴只能对齐到「平行于 x 轴」却无法保证车头方向，失败案例需人工介入调朝向，2500 辆的人工修整量与耗时未统计，复现成本高且过程不可完全复现",
+  "corner-case 检测用重建车贴回 NuScenes 背景合成，与 CODA 真实事故图存在材质/光照/遮挡域差；mAP 上涨难以区分是增强有效还是合成背景同源，缺真实事故数据对照组，且全文指标无种子方差、只测 CODA 的 car 单类，口径与通用 CODA benchmark 不完全可比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "纯数据集工作，无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

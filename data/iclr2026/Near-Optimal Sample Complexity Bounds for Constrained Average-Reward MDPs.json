@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Near-Optimal Sample Complexity Bounds for Constrained Average-Reward MDPs.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Near-Optimal Sample Complexity Bounds for Constrained Average-Reward MDPs.pdf",
+ "title": "Near-Optimal Sample Complexity Bounds for Constrained Average-Reward MDPs",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 6.0
+ },
+ "one_line": "CAMDP理论最优界，但与主流可靠性研究脱节",
+ "innovations": [
+  "给出CAMDP在生成模型下首个样本复杂度上界：放松可行~O(SA(B+H)/ε²)，严格可行~O(SA(B+H)/(ε²ζ²))",
+  "建立严格可行情形的匹配下界~Ω(SA(B+H)/(ε²ζ²))，证明极小极大最优，其中ζ为Slater常数",
+  "区分放松可行(允许小约束违例)与严格可行(输出满足约束)两设置，刻画可行性紧度对样本代价的影响"
+ ],
+ "method_framework": "在生成模型下学一个模型基算法：先估计转移与奖励/代价，再求解带长期平均约束的策略；通过Slater常数ζ、偏差函数跨度H、瞬态时间界B刻画可行区域大小与混合速度，分别在允许小违例和必须严格满足约束两情形下推样本复杂度，并构造硬实例给下界。",
+ "experiment_framework": "纯理论论文，无实验；证据为样本复杂度上界证明、严格可行情形的匹配下界证明，与已有AMDP/CMDP结果在SA、H、B、ζ、ε依赖上做渐近对比。",
+ "takeaways": [
+  "CAMDP样本复杂度首次达极小极大最优，关闭了约束平均奖励MDP的理论gap",
+  "严格可行比放松可行多付出1/ζ²代价，量化了可行性紧度对样本的影响",
+  "B(瞬态时间)与H(跨度)共同进入复杂度，揭示平均奖励与折扣奖励的本质差异"
+ ],
+ "weaknesses": [
+  "纯RL理论，与LLM/多模态可靠性、验证器、幻觉抑制等落地主线几乎无关",
+  "无任何实证，生成模型假设在真实在线交互场景不成立",
+  "Slater常数ζ在实际问题中往往很小且难估计，严格可行上界可能松散"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯RL理论，与可靠性主线和落地域无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

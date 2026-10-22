@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Revisit Visual Prompt Tuning The Expressive-Ness Of Prompt Experts.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Revisit Visual Prompt Tuning The Expressive-Ness Of Prompt Experts.pdf",
+ "title": "Revisit Visual Prompt Tuning: The Expressiveness of Prompt Experts",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "将VPT重新解释为MoE结构，提出数据自适应prompt experts，在分类任务上超越全量微调。",
+ "innovations": [
+  "基于注意力头等价于多个MoE模型的视角，把VPT解释为向MoE中引入新的prompt experts，据此诊断现有prompt static、表达力受限的缺陷。",
+  "提出VAPT：让prompt experts随输入数据自适应，在保持参数高效的同时增强函数表达力。",
+  "理论上分析VAPT达到最优样本效率，并在VTAB-1K、FGVC上以更少可训练参数超越VPT甚至全量微调。"
+ ],
+ "method_framework": "在预训练视觉Transformer中插入可学习prompt，但把静态prompt token改为由输入特征动态生成（数据自适应）的prompt experts，从而随样本调整；保持仅微调少量prompt参数的参数高效特性。",
+ "experiment_framework": "在VTAB-1K与FGVC细分视觉分类基准上评测；对比全量微调基线、VPT及其他PEFT方法；报告准确率（VTAB-1K超全量微调7.34%、FGVC超1.04%）与额外参数量。",
+ "takeaways": [
+  "静态visual prompt表达力受限，使其数据自适应可在更少参数下显著提升下游性能。",
+  "VPT的MoE视角能指导prompt设计，VAPT兼具理论样本效率最优性与实证优势。"
+ ],
+ "weaknesses": [
+  "与可靠性/医学影像/多模态推理主线无关，属视觉参数高效微调。",
+  "VAPT主要在分类基准上验证，检测/分割/生成等密集任务的迁移未充分展示。",
+  "理论最优样本效率结论的假设条件较强，与实际大模型预训练分布的契合度需谨慎看待。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "参数高效微调方法，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

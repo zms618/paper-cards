@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Thinking with Drafts Speculative Temporal Reasoning for Efficient Long Video.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Thinking with Drafts Speculative Temporal Reasoning for Efficient Long Video.pdf",
+ "title": "Thinking with Drafts Speculative Temporal Reasoning for Efficient Long Video",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "双模型框架提升长视频效率，但复杂度与泛化性存疑",
+ "innovations": [
+  "双模型协同框架：轻量级draft模型负责帧选择，强大target模型负责时间推理",
+  "SpecTemp-80K数据集：同步双级注释支持双模型训练",
+  "迭代推测-验证机制：模拟人类大脑协作方式提升效率"
+ ],
+ "method_framework": "SpecTemp采用双模型设计：draft MLLM(3B)负责密集感知和帧选择，target MLLM(7B)负责时间推理和验证，通过迭代过程优化注意力分配",
+ "experiment_framework": "在8个视频理解基准测试(短视频和长视频)评估，包括TempCompass、MVBench、LongVideoBench等，比较准确率和推理延迟",
+ "takeaways": [
+  "模型解耦可显著提升效率：将感知与推理分离可减少90%冗余视觉token",
+  "奖励设计需针对不同模型特性：target模型关注答案正确性和时间定位，draft模型关注信息增益和多样性"
+ ],
+ "weaknesses": [
+  "双模型架构增加了系统复杂度和部署难度",
+  "迭代次数和帧选择策略可能因视频类型不同而需要调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "长视频效率提升与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

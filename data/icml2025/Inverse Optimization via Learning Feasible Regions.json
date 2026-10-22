@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Inverse Optimization via Learning Feasible Regions.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Inverse Optimization via Learning Feasible Regions.pdf",
+ "title": "Inverse Optimization via Learning Feasible Regions",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "将逆优化学习从目标函数扩展到约束函数，但与ML主线关联弱。",
+ "innovations": [
+  "把逆优化学习对象从主流的目标函数扩展到约束函数 gθ，天然刻画输入-决策对中的不连续行为。",
+  "提出两种与 IO 数据相容的训练损失，并给出对应假设类在受限情形下的凸规划/MILP 重构。",
+  "设计带平滑技术的块坐标下降算法求解一般非凸训练问题。"
+ ],
+ "method_framework": "以前向参数优化问题作为假设类，从观测的(输入s,决策x)对反推约束边界 gθ(x,s)≤0；损失衡量观测决策在 gθ 下的可行性/最优性偏差；对受限假设类将训练问题重构为凸/MILP，一般情形用平滑 BCD 求解。",
+ "experiment_framework": "合成实验 + 两个电力系统应用；基线为仅学目标函数的逆优化 SOTA；指标为对未见输入-决策对的拟合/预测精度，以及与 SOTA 的对比。",
+ "takeaways": [
+  "学习可行域而非仅目标函数，能捕捉目标-only 方法无法表达的不连续决策行为。",
+  "受限假设类可重构为凸/MILP，使约束学习在计算上可行。"
+ ],
+ "weaknesses": [
+  "放松‘线性目标已知’假设后的可辨识性与扩展性讨论有限。",
+  "实证主要在电力系统等 OR 场景，与 ML 主流任务连接较弱。",
+  "与可靠性主线（鲁棒/可信AI、医学影像、多模态推理）无直接关联。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Adapting Text-to- Generation with Feature Difference Instruction for Generic.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Adapting Text-to- Generation with Feature Difference Instruction for Generic.pdf",
+ "title": "Adapting Text-to-Image Generation with Feature Difference Instruction for Generic Image Restoration",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 4.9
+ },
+ "one_line": "FDI适配器堆叠SD做图像复原，但缺乏机制验证与公平对比",
+ "innovations": [
+  "FDI（Feature Difference Instruction）：F=Q-Former(Encoder(S_noisy))−Q-Former(Encoder(S_clean))，用配对干净/退化图的表征相减得退化向量，规避 DA-CLIP 类方法把退化直接编码进 image embedding 导致的 content-degradation 纠缠，且该差值可被 LLM 反解释成文字描述。",
+  "多尺度 FDI adapter：先以多阶段图像特征 A^i_S (K,V) 对 FDI（Q）做 cross-attention 得到 ĤF^i_S 抑制遮挡区噪声；再用 SEBlock 通道权重 Ã^i_S = D^i_S·σ(W_2 ReLU(W_1 GAP(ĤF^i_S))) 与 U-Net 编码层 E^i_S 同尺度相加注入；解码层用 AdaIN 的 γ(·)/β(·)（两层卷积）调制特征，整套适配器可插拔、只训适配器不动 SD。",
+  "DDIM inversion 把退化图反投影到 latent z_T（Eq.3）而非对退化图额外编码来传内容，再在去噪前段（三轮注入、50 step）加入 FDI 指令；可选多标签 MLP 分类器做混合退化的 composite（多分支 FDI 加权求和）与 progressive 顺序去退化。"
+ ],
+ "method_framework": "BLIP-2 对（退化, 干净）图对取 Q-Former 表征相减得 FDI F → 训练期(可选)用测试集对应训练集的均值 FDI → 接多尺度 cross-attention 与 SEBlock 得通道权重，加到 SD-V2.1 去噪 U-Net 编码层、AdaIN 调解码层 → 测试期用 DDIM inversion 得 z_T 起噪；混合退化时先用多标签分类器选分支组合。",
+ "experiment_framework": "10 类退化任务（去雨/去雨滴/去雾/除雪/低光/去噪/运动/散焦/阴影/JPEG），训练/测试分别取 Rain100、RESIDE-6K、Snow100K、RainDrop、LOL-v1、CBSD68(σ=50)、GoPro、DPDD、SRD、LIVE1 等公开集；指标 PSNR/SSIM/FID/LPIPS；基线含 MPRNet、MAXIM、PromptIR、DA-CLIP、DiffIR 等。",
+ "takeaways": [
+  "用 reference 图对的表征差（而非待复原图的 embedding）作为条件，可以在不破坏 content embedding 的前提下注入退化信息，这是相对 DA-CLIP 最值得搬的机制。",
+  "跨注意力细化 + SEBlock 通道权重 + AdaIN 三级注入（编码层加、解码层调制）是对 T2I-Adapter 式注入做低层视觉任务的最小改动配方。",
+  "多标签 MLP 分类器 + 多分支 adapter 加权求和，是免训练做 all-in-one / 混合退化的低成本路径（composite / progressive 两种编排）。"
+ ],
+ "weaknesses": [
+  "主体是模块堆叠：SEBlock、AdaIN、cross-attention、T2I-Adapter 式逐尺度相加全是既有组件，唯一新意的'BLIP-2 表征中退化与内容线性可分'只有'to some extent'的经验断言，正文没有任何量化验证（无线性探针、无解缠指标、无解耦消融），也没证明 FDI 比直接对退化图取 CLIP embedding 好多少的隔离式实验。",
+  "代价与公平性存疑：每个退化任务单独训一个 45M 的 FDI adapter、约 8 小时（4×A100，50 epoch），10 个任务 10 组参数；而所有对比的 all-in-one 基线（PromptIR、DA-CLIP 等）是单一模型。与 DA-CLIP 同条件直接比时提升很小（运动模糊 PSNR 30.88→32.58 主要来自 SD 生成先验；去噪 28.55→29.17），且 FBCNN 在 JPEG 任务上报 LPIPS 的 0.997 显然为排版错误，指标可信度需复核。",
+  "测试期 FDI 取'对应训练集的整个训练集平均'，即把退化统计烘焙成固定条件；这既引入数据集耦合（换数据集 FDI 分布即变），也让'泛化到混合/未知退化'的声明缺乏对应实验支撑；正文无多种子方差，第 4.1 节后截断,adapter 各组件的消融表不可见；混合退化的 composite/progressive 只出现在图 6，正文在 'remains superior performance when input images' 处截断，没有定量表。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "图像修复任务与可靠性主线无实质交点，仅为技术堆叠",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

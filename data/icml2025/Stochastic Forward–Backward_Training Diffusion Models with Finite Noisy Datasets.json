@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Stochastic Forward–Backward_Training Diffusion Models with Finite Noisy Datasets.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Stochastic Forward–Backward_Training Diffusion Models with Finite Noisy Datasets.pdf",
+ "title": "Stochastic Forward–Backward Deconvolution: Training Diffusion Models with Finite Noisy Datasets",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "SFBD结合少量干净数据预训练解决扩散模型在有限噪声数据上的训练难题",
+ "innovations": [
+  "将扩散模型训练与密度解卷积理论结合，证明纯噪声数据训练的收敛率问题",
+  "提出Stochastic Forward-Backward Deconvolution (SFBD)方法，结合少量干净数据预训练",
+  "提供理论保证证明SFBD能学习真实数据分布"
+ ],
+ "method_framework": "SFBD方法结合少量干净数据预训练和迭代优化：先用少量干净数据预训练去噪器，然后交替进行反向采样（使用当前最佳估计的分数函数）和去噪器更新，逐步逼近真实数据分布。",
+ "experiment_framework": "在CIFAR-10和CelebA数据集上评估，使用高斯噪声 corrupted 数据，比较FID指标，与DDPM、DDIM、EDM、TweedieDiff等基线方法对比。",
+ "takeaways": [
+  "少量干净数据预训练对扩散模型在噪声数据上训练至关重要",
+  "SFBD方法在有限噪声数据上表现优于现有方法，理论保证收敛性"
+ ],
+ "weaknesses": [
+  "理论分析主要在一维情况下，高维情况下的收敛性证明不足",
+  "实验部分未充分探索不同噪声水平对性能的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

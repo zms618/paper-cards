@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/3D-Aware Multi-Task Learning with Cross-View Correlations for Dense Scene Understanding.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/3D-Aware Multi-Task Learning with Cross-View Correlations for Dense Scene Understanding.pdf",
+ "title": "3D-Aware Multi-Task Learning with Cross-View Correlations for Dense Scene Understanding",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "伪多视图代价体注入多任务网络，单视图复制策略存疑",
+ "innovations": [
+  "把多视图立体里的代价体搬到多任务学习做几何一致性：跨视模块 CvM 并行于 MTL 编码器，先由浅层 spatial-aware encoder（类 ResNet，1/8 分辨率出 128 维）提几何偏置特征，再经 6 层多视角 Swin 自/跨注意力交换信息，最后按 L=128 个逆深度候选把邻视图特征 warp 到参考视图做点积匹配，得到任务共享的 C_i ∈R^{H×W×L}",
+  "显式论证「不能直接用 MTL 特征去做跨视匹配」：跨视模块与单目 MTL 通路解耦并行，否则单目任务特征与跨视匹配互相干扰、训练更难且难迁移到其他 MTL 模型（文中指向 Tab.5 的对照）",
+  "架构无关 + 单视图可推理：CvM 输出与代价体直接 concat 到 MTL 特征形成 F̃=concat(f,F_i,C_i) 再送轻量任务头；推理时把单图复制一份当作「邻视图」，且训练单视图数据时也用同一复制策略，因此部署不需要相机参数、不用改原 MTL 架构"
+ ],
+ "method_framework": "参照图 I_i 与邻视图 I_j 分别过 MTL 编码器 f 与 spatial-aware 编码器 s；s 的输出经多视角 Swin（窗内自/跨注意力，跨多尺度重复）得 F_i；按内在矩阵与相对位姿把邻视图特征 warp 到参考视图各深度候选上，C_i^(d)=1/(V-1)·Σ_j (F_i·F̂_{j→i}^{(d)})/√K 构造代价体；loss 为各任务损失在 V 个视图上求和，优化 f、h_t 与 g=e∘m∘s。",
+ "experiment_framework": "NYUv2（795 训练/654 测试四任务：40 类分割/深度/法向/边界）+NYUv2 视频帧（COLMAP 估位姿）+PASCAL-Context（4998/5105，五任务）；以 SAK、RADIO、DINOv3 为 MTL 骨干，ViT-L；指标 mIoU/RMSE/mErr/odsF/maxF 与 ΔMTL；另有 3DMTL 复现对照与 CvM 消融（Tab.5）。",
+ "takeaways": [
+  "「并行旁路 + 显式几何表示（代价体）concat 回共享特征」是把 3D 信号塞进多任务/通用骨干的通用插桩范式，且不影响原架构推理接口",
+  "单视图部署时把输入复制成伪双视图喂给跨视模块的技巧，可作为无多视数据场景的兜底（但需警惕伪相关）",
+  "用 ΔMTL（相对单任务学习的平均增益）统一衡量多任务收益，比单看几个任务指标更能说明共享特征是否变好"
+ ],
+ "weaknesses": [
+  "单视图训练/推理靠把同一张图复制成「邻视图」来构造代价体，此时 warp 匹配的是完全相同的特征，几何监督本质上退化为自匹配；作者只以一句「假设能避免捕获虚假相关」带过，并明确承认该处留待未来工作，缺少用真实弱双视数据（如人工扰动视角）的对照",
+  "3DMTL 官方代码不可用，作者用 DINOv3 骨干自行复现来对照，其「+1.02 分割、+1.54 边界、RMSE 0.3952→0.3836」的增益建立在复现实现上，与原文设定的可比性存疑，且 PASCAL-Context 结果与对应消融在正文都被截断，无法核实完整性",
+  "论文反复强调「引入多视视频帧本身就有增益（如 SAK 深度 0.4313→0.4093）」，但正文可见范围内只有 Tab.1 的主表与 Tab.5 的间接引用，代价体、多视角 Transformer、spatial-aware encoder 三者的拆解消融未在可读取部分给出，无法判断增益主要来自 CvM 还是仅来自多视数据"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "3D几何处理与可靠性主线无关，仅多任务学习有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

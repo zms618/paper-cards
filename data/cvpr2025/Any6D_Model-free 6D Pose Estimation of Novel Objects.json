@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Any6D_Model-free 6D Pose Estimation of Novel Objects.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Any6D_Model-free 6D Pose Estimation of Novel Objects.pdf",
+ "title": "Any6D: Model-free 6D Pose Estimation of Novel Objects",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "免模型6D位姿估计：锚图重建+尺度位姿联合优化+两级渲染比较",
+ "innovations": [
+  "粗对齐：InstantMesh只给出归一化到[-1,1]的ON，用有朝向包围盒（而非点云均值或AABB，二者在遮挡+离群点下会歪）对齐坐标轴，再采样多个旋转角算IA与ON旋转包围盒的IoU取最优，得到粗尺度s与初始形状OM'",
+  "把尺度估计塞进FoundationPose的pose refine里：除SO(3)采样外额外在各轴[s0,s1]=[0.6,1.4]采样size，渲染后与query比对选最优，再'定size→缩放形状→轴对齐→再pose refine'交替迭代，最后用T_A→Q=(T_O→A)^{-1}·T_O→Q解相对位姿",
+  "两级render-and-compare：先pose ranking网络比较渲染图与裁剪观测得到每假设的embedding，再对所有假设embedding做自注意力取全局上下文出最终分，替代单点打分"
+ ],
+ "method_framework": "锚图过InstantMesh得归一化形状ON→带朝向包围盒的旋转IoU搜索估粗尺度与位姿→在FoundationPose的refine里联合采样(size,R)并交替细化→渲染与query比对选最优假设→解相对位姿T_A→Q。",
+ "experiment_framework": "HO3D/YCBINEOAT/Toyota-Light/REAL275/LM-O五数据集，ADD、ADD-S、AR(0.1d)与VSD/MSSD/MSPD；对照Oryon/LoFTR/Gedi/Obj.Mat；正文在§4.4中途截断。",
+ "takeaways": [
+  "用有朝向包围盒对齐后再旋转IoU搜索中心/尺度，比点云均值或AABB在partial viewpoint下稳健，是小改动但直接解决中心估计痛点",
+  "把'物体尺寸'当成与旋转并列的采样维度注入pose假设生成，是同时解耦2D-3D对齐与尺度歧义的关键；FoundationPose的refine模块直接复用而不重训，代价低"
+ ],
+ "weaknesses": [
+  "对比基线Oryon/LoFTR/Gedi/Obj.Mat全是单图部分匹配方法，缺一个同'单图+image-to-3D'的强对照（GigaPose只在LM-O同设置下比，且RGB输入还需初始位姿），基线偏弱且不同类，提升幅度参考价值有限",
+  "粗对齐靠旋转角网格搜索包围盒IoU，采样粒度/角度数未交代，本质是启发式网格；'axis alignment'步骤更是只有一句描述、没有公式或对照实验",
+  "HO3D/YCBINEOAT/Toyota-Light/REAL275一律用GT分割mask；各数据集只取2K/749个图对；无任何多种子方差，也无'去掉size联合估计'或'去掉粗对齐'的消融；正文在§4.4末截断，缺推理耗时与组件消融表",
+  "LM-O上即便同设置，GigaPose的VSD类指标优势也未逐项对齐（ours VSD 17.6 vs GigaPose 7.6 但只报四指标），跨方法可比性存疑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "单图位姿估计与可靠性主线无实质交点，仅工程价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

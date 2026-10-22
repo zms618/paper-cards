@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Sparseeval_Efficient Evaluation Of Large Lan-Guage Models By Sparse Optimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sparseeval_Efficient Evaluation Of Large Lan-Guage Models By Sparse Optimization.pdf",
+ "title": "SparseEval: Efficient Evaluation of Large Language Models by Sparse Optimization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "利用性能矩阵稀疏性优化锚点选择，降低LLM评测成本",
+ "innovations": [
+  "指出模型-样本性能矩阵具稀疏性，代表性样本可作锚点，把高效基准测试形式化为稀疏优化问题",
+  "首次用梯度下降优化锚点权重，并用迭代精炼策略选择锚点",
+  "用MLP的表示能力处理稀疏优化，提出锚点重要性分数与候选重要性分数做任务感知精炼"
+ ],
+ "method_framework": "把完整性能矩阵近似为少量锚点样本的加权组合：先用锚点重要性分数与候选重要性分数筛选代表性样本作锚点，再用梯度下降+MLP优化锚点权重，迭代精炼锚点集合；最终用这些锚点上的得分加权估计全量基准性能。",
+ "experiment_framework": "在多种基准上评测估计误差与Kendall's tau排序相关性；对比既有高效评测方法，报告低估计误差与高排序相关，具强鲁棒性与实用性。",
+ "takeaways": [
+  "模型-样本性能矩阵的稀疏性使得少量代表性锚点即可近似全量评测",
+  "梯度下降优化锚点权重+迭代选锚比启发式选点更准",
+  "该方法在真实场景下以极低推理成本保持高排序相关性"
+ ],
+ "weaknesses": [
+  "锚点代表性依赖被估计模型集合的分布，对集合外新模型的外推误差需验证",
+  "估计误差与保留锚点数的权衡曲线未充分刻画",
+  "在能力分布快速变化的前沿模型上，锚点是否需周期性重选未讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM评测效率提升，非可靠性主线核心问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

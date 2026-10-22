@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/BSemiFL_Semi-supervised Federated Learning via a Bayesian Approach.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/BSemiFL_Semi-supervised Federated Learning via a Bayesian Approach.pdf",
+ "title": "BSemiFL: Semi-supervised Federated Learning via a Bayesian Approach",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "贝叶斯加权集成局部/全局模型伪标签，提升半监督联邦学习性能。",
+ "innovations": [
+  "理论证明局部模型对本地数据再标注精度高于全局模型，而全局模型可引入其他客户端的额外知识逐步提升",
+  "提出基于贝叶斯推理的加权集成方法，以模型对样本的后验概率为权重组合全局和局部模型的伪标签",
+  "证明贝叶斯加权集成的损失小于简单平均（定理6.2），且集成损失不超过两个模型的最大损失（定理6.1）"
+ ],
+ "method_framework": "每个客户端m对本地样本xmi，分别计算全局模型fˆp和局部模型fˆpm对该样本的预测概率。归一化后得到权重αmi=fˆp(xmi)/(fˆp(xmi)+fˆpm(xmi))，加权组合伪标签ŷmi=αmi·fˆp(xmi)+(1-αmi)·fˆpm(xmi)。构建高置信度数据集后进行本地训练，再上传服务器聚合。",
+ "experiment_framework": "在SVHN/CIFAR-10/CIFAR-100上测试，采用Non-IID数据分片设置(M=100客户端, S=2/4/8每分片类别数)。基线包括SemiFL/FedMatch/FedU/FedEMA/Orchestra。报告测试准确率。",
+ "takeaways": [
+  "BSemiFL在CIFAR-100 (100,2)设置上相比SemiFL提升达9.8%",
+  "贝叶斯加权集成的最优置信度阈值为0.8，低于全局-only方法的0.95，说明可纳入更多高置信样本",
+  "局部模型在本地数据上的再标注优势与全局模型的跨客户端知识互补"
+ ],
+ "weaknesses": [
+  "仅在图像分类任务上验证，未探索NLP或医疗等实际FL场景",
+  "理论证明的条件假设（后验概率大小与正确标签预测一致）在分布偏移极端时可能不成立",
+  "需要额外传输全局模型的类别概率分布向量，通信开销分析不够详细"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

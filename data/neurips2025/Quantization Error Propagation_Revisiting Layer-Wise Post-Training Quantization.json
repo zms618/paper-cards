@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Quantization Error Propagation_Revisiting Layer-Wise Post-Training Quantization.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Quantization Error Propagation_Revisiting Layer-Wise Post-Training Quantization.pdf",
+ "title": "Quantization Error Propagation: Revisiting Layer-Wise Post-Training Quantization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "QEP修正权重补偿量化误差，提升低比特LLM性能",
+ "innovations": [
+  "量化误差传播机制",
+  "可调节的传播强度控制",
+  "与现有PTQ方法的正交增强"
+ ],
+ "method_framework": "QEP通过修正权重补偿累积量化误差，引入可调参数αl控制传播强度，保持计算效率的同时显著提升低比特量化性能。",
+ "experiment_framework": "WikiText2/PTB/C4数据集上的困惑度，ARC/PiQA/StoryCloze零样本任务，Llama-2/3和Mistral模型(7B-70B)，INT2/INT3/INT4量化",
+ "takeaways": [
+  "量化误差累积是层级PTQ的关键瓶颈",
+  "可调节传播机制平衡过拟合与计算开销",
+  "QEP与现有PTQ方法正交可集成"
+ ],
+ "weaknesses": [
+  "MLP层设置αl=0可能限制性能",
+  "未探索自适应αl策略",
+  "仅评估权重量化未考虑激活量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

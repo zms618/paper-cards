@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Transolver++ An Accurate Neural Solver for PDEs on Million-Scale Geometries.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Transolver++ An Accurate Neural Solver for PDEs on Million-Scale Geometries.pdf",
+ "title": "Transolver++: An Accurate Neural Solver for PDEs on Million-Scale Geometries",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 5.8
+ },
+ "one_line": "工程扩展神经PDE求解器至百万点，但机理创新有限",
+ "innovations": [
+  "首次把单GPU输入容量提升到百万级网格点，突破此前神经求解器仅数万点的局限，贴近工业仿真需求",
+  "在Transolver基础上加配高度优化的并行框架与局部自适应机制，从海量网格点中高效捕获逼真物理状态",
+  "可通过增加GPU以线性复杂度持续扩展输入规模，实验取得约13%的相对提升"
+ ],
+ "method_framework": "在Transolver(学习物理状态)之上，用局部自适应机制聚焦关键网格区域，配合高度并行化实现百万点输入；保持线性复杂度，多GPU扩展。",
+ "experiment_framework": "工业级复杂几何PDE仿真(如汽车/飞行器气动)；对比此前神经PDE求解器与数值方法；指标为求解精度、单GPU可处理点数、多GPU线性扩展效率。",
+ "takeaways": [
+  "神经PDE求解器落地工业的主要瓶颈是网格规模，局部自适应+高度并行可将其推到百万点",
+  "线性复杂度+多GPU扩展使百万级几何求解在工程上可行"
+ ],
+ "weaknesses": [
+  "核心贡献偏工程扩展(并行/自适应)，相较Transolver的机理新意有限；'13%提升'的对照与消融描述需在正文细看",
+  "强依赖预收集仿真数据训练，零样本/跨几何泛化能力未充分论证；对复杂非线性/多物理场的泛化证据有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

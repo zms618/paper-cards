@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Ppllava_Varied Video Sequence UNDERSTANDING with Prompt Guidance.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Ppllava_Varied Video Sequence UNDERSTANDING with Prompt Guidance.pdf",
+ "title": "PPLLaVA: Varied Video Sequence Understanding with Prompt Guidance",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "基于CLIP对齐的视觉token压缩，提升视频理解效率但可靠性存疑",
+ "innovations": [
+  "基于CLIP的视觉-提示对齐模块，按用户指令定位感兴趣的时空区域",
+  "提示引导池化：将指令-视觉相关性图作为3D卷积核对视觉序列做自适应压缩到任意分辨率/步长",
+  "clip上下文扩展模块(非对称位置编码扩展)以处理视觉对话中的长而复杂提示"
+ ],
+ "method_framework": "先用 CLIP 做细粒度视觉-提示对齐得到相关性图，再以该相关性图为卷积式池化核压缩视觉 token 至目标尺寸，保留指令相关语义；配合文本位置编码扩展支持长提示与多轮对话。作为即插即用模块接入 LLaVA-Next、LLaVA-Video、InternVL3 等不同基座。",
+ "experiment_framework": "在 NextQA、EgoSchema、ActivityNet、VCG Bench、MVBench、LongVideoBench、Video-MME 等多基准评测视频QA/描述/多选，覆盖秒级到小时级视频；对比 LLaVA-Video 等基线并测 token 压缩率与吞吐。",
+ "takeaways": [
+  "PPLLaVA 在至多18倍(>90%)token 压缩下于多个视频理解基准取得 SOTA",
+  "仅用基线1/4 token 数即超过 LLaVA-Video；token 对齐时优势更明显(1000/2000 token 分别高6.86%/4.4%)",
+  "方法可跨 LLaVA-Next/Video、InternVL3 等不同基座一致提升，泛化性好"
+ ],
+ "weaknesses": [
+  "主线为视频多模态模型的 token 压缩/效率，而非鲁棒性或推理可靠性",
+  "指令相关性依赖 CLIP 对齐，对细粒度/多问题混合场景的对齐误差分析不足",
+  "前9页未见对幻觉率/事实一致性等可靠性维度的评测"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "仅提升视频理解效率，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

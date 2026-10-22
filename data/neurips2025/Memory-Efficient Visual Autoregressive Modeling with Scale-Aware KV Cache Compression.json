@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Memory-Efficient Visual Autoregressive Modeling with Scale-Aware KV Cache Compression.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Memory-Efficient Visual Autoregressive Modeling with Scale-Aware KV Cache Compression.pdf",
+ "title": "Memory-Efficient Visual Autoregressive Modeling with Scale-Aware KV Cache Compression",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "ScaleKV通过层分类和缓存压缩减少内存，但架构依赖性限制泛化性。",
+ "innovations": [
+  "基于层功能的分类器（drafters和refiners）",
+  "尺度感知的缓存预算分配策略",
+  "注意力选择性指数(ASI)用于层识别"
+ ],
+ "method_framework": "ScaleKV将transformer层分为drafters和refiners，通过ASI识别各层功能，实现尺度感知的差异化缓存管理，显著减少内存使用。",
+ "experiment_framework": "在MS-COCO、GenEval和DPG数据集上评估，对比Sliding Window、StreamingLLM、SnapKV和PyramidKV基线，使用FID、LPIPS、PSNR和GenEval/DPG指标。",
+ "takeaways": [
+  "层功能分类可有效优化内存使用",
+  "注意力模式分析对视觉自回归模型至关重要",
+  "小样本校准即可确定层分类"
+ ],
+ "weaknesses": [
+  "依赖特定模型架构（Infinity）",
+  "未探索不同分辨率下的扩展性",
+  "未分析计算复杂度降低的具体数值"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/A Large Recurrent Action Model xLSTM Enables Fast Inference for Robotics Tasks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/A Large Recurrent Action Model xLSTM Enables Fast Inference for Robotics Tasks.pdf",
+ "title": "A Large Recurrent Action Model: xLSTM Enables Fast Inference for Robotics Tasks",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "用xLSTM替代Transformer构建循环动作模型，在432任务上实现更快推理与长度外推。",
+ "innovations": [
+  "系统研究xLSTM、Mamba等现代循环架构用于大型动作模型(LAM)的适配性",
+  "提出以xLSTM为核心的LRAM，具备线性时间推理复杂度与自然的序列长度外推能力",
+  "在432个任务上证明循环动作模型可同时获得Transformer级性能与快推理"
+ ],
+ "method_framework": "将离线大规模数据集上行为克隆+因果序列建模的大型动作模型，从Transformer骨干替换为xLSTM循环骨干；训练时利用现代循环架构的并行化优势，推理时按循环状态递推实现O(1)/线性时间步进，从而支持机器人实时控制并外推到更长序列。",
+ "experiment_framework": "在来自6个领域的432个机器人任务上评测；以任务成功率和推理速度为指标，与Transformer式大型动作模型对比；覆盖多任务/多本体设置并检验序列长度外推能力。",
+ "takeaways": [
+  "xLSTM骨干的LRAM在性能上可比肩Transformer，同时推理更快、适合实时机器人",
+  "线性时间推理与长度外推使其在长时序机器人任务上具优势",
+  "现代循环架构是Transformer大型动作模型的可行高效替代"
+ ],
+ "weaknesses": [
+  "虽在432任务上评测，但多为仿真/已有基准，真实物理机器人闭环证据有限",
+  "xLSTM相较Mamba等其他线性架构的优势缺乏充分消融",
+  "动作模型的泛化与长程依赖能力仍依赖大规模离线数据，样本效率未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "动作模型非可靠性主线，仅具工程价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

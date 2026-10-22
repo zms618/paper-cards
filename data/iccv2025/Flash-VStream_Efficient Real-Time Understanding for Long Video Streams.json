@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Flash-VStream_Efficient Real-Time Understanding for Long Video Streams.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Flash-VStream_Efficient Real-Time Understanding for Long Video Streams.pdf",
+ "title": "Flash-VStream Efficient Real-Time Understanding for Long Video Streams",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "双进程框架与Flash Memory实现长视频实时理解，但采样率限制明显",
+ "innovations": [
+  "双进程框架分离视频处理和问答",
+  "Flash Memory包含上下文摘要记忆(CSM)和细节增强记忆(DAM)",
+  "自适应多模态RoPE(AM-RoPE)支持灵活位置嵌入"
+ ],
+ "method_framework": "Flash-VStream采用双进程框架，帧处理器持续编码新帧并更新Flash Memory，问题处理器异步响应查询，通过固定大小的Flash Memory桥接两个进程，确保高效处理长视频流。",
+ "experiment_framework": "在EgoSchema、MLVU、LVBench、MVBench和Video-MME五个基准测试上进行零样本多选题实验，比较响应延迟和准确率，并进行消融研究验证Flash Memory有效性。",
+ "takeaways": [
+  "基于信息密度分布的帧选择策略",
+  "CSM和DAM的平衡分配策略(约1:2)",
+  "多进程框架实现实时响应"
+ ],
+ "weaknesses": [
+  "依赖1fps的帧采样率可能丢失高频信息",
+  "特征银行可能面临内存溢出问题"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "长视频处理技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

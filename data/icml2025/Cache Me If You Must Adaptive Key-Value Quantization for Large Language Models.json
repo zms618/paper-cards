@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Cache Me If You Must Adaptive Key-Value Quantization for Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Cache Me If You Must Adaptive Key-Value Quantization for Large Language Models.pdf",
+ "title": "Cache Me If You Must: Adaptive Key-Value Quantization for Large Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.8
+ },
+ "one_line": "跨层K/V依赖预测+残差量化，实现LLM缓存近无损压缩",
+ "innovations": [
+  "利用不同层间Key与Value的内在依赖，用紧凑适配器预测可跨层预测的K/V信息",
+  "仅对无法被预测的残差信息做高压缩量化，实现自适应KV缓存压缩",
+  "在Llama 3.2上实现2-2.5bit/value近无损，perplexity与LongBench相对误差<1%",
+  "方法为one-shot、单校准集即可，简单高效可部署"
+ ],
+ "method_framework": "AQUA-KV先训练紧凑适配器捕捉跨层K/V依赖以预测可预测的缓存内容，再对预测残差(不可预测信息)做低位量化；校准一次即可部署，在压缩率与精度间取得近无损权衡。",
+ "experiment_framework": "在Llama 3.x/3.2等SOTA LLM上，于LongBench 14个英文任务评估，与KVQuant(2.33bit)、AQUA-KV、BF16基线及其他KV压缩方法(量化/剪枝/合并)对比，报告bit/value、perplexity相对误差、LongBench均分。",
+ "takeaways": [
+  "跨层K/V依赖使大量缓存信息可被预测，只需压缩残差即可大幅降比特",
+  "在2-2.5bit/value可做到近无损推理，显著优于同bit位基线",
+  "one-shot单校准设计降低了部署门槛"
+ ],
+ "weaknesses": [
+  "主线为LLM推理显存压缩/效率，与可靠性、医学影像或多模态推理主线关联弱",
+  "适配器引入额外参数与校准成本，超长上下文外的扩展性未充分论证",
+  "主要在Llama系列验证，对异构架构/多模态模型的通用性证据有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

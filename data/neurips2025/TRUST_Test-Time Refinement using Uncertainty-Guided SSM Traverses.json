@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/TRUST_Test-Time Refinement using Uncertainty-Guided SSM Traverses.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/TRUST_Test-Time Refinement using Uncertainty-Guided SSM Traverses.pdf",
+ "title": "TRUST: Test-Time Refinement using Uncertainty-Guided SSM Traverses",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.7
+ },
+ "one_line": "SSM遍历置换与不确定性引导的测试时自适应方法",
+ "innovations": [
+  "首个针对Mamba视觉模型的测试时自适应方法",
+  "利用SSM内部遍历机制生成多种因果视角",
+  "基于预测熵选择最优遍历路径的加权平均策略"
+ ],
+ "method_framework": "通过重排序SS2D模块的四个方向扫描生成多种遍历置换，计算预测熵选择低熵路径，更新Mamba特定参数并加权平均，实现鲁棒自适应。",
+ "experiment_framework": "在CIFAR10-C/100-C、ImageNet-C、ImageNet-S/V2/R、PACS七个基准测试，对比Tent、SHOT等基线方法，使用Top-1准确率评估。",
+ "takeaways": [
+  "利用模型内部结构生成多样性而非外部数据增强",
+  "遍历顺序变化可打破域特定工件的一致影响模式",
+  "加权平均策略收敛到更平坦的损失区域提升泛化"
+ ],
+ "weaknesses": [
+  "仅适应Mamba特定参数，未充分利用整个模型",
+  "计算开销随遍历置换数量增加",
+  "未探索不同K值对性能的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

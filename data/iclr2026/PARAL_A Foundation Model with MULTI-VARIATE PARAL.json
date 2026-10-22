@@ -1,0 +1,41 @@
+{
+ "title": "A Foundation Model with Multi-Variate Parallel Attention to Generate Neuronal Activity",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "解耦注意力构建iEEG生成模型，数据集大但临床验证不足。",
+ "innovations": [
+  "多变量并行注意力(MVPA)：把自注意力解耦为内容、时间、空间三路，支持可变通道数/配置的时序建模。",
+  "构建生成式iEEG基础模型MVPFormer，跨被试预测iEEG信号演化，实现强跨被试泛化。",
+  "发布SWEC iEEG数据集(近1万小时、异质临床来源)，为迄今最大公开iEEG数据集。"
+ ],
+ "method_framework": "MVPA把标准自注意力拆为内容注意力、时间注意力、空间(通道)注意力三路并行解耦，从而能灵活处理通道数/配置随被试变化的多变量iEEG；MVPFormer以该机制为骨干做生成式预训练(预测信号演化)，再下游微调做癫痫检测/神经解码。",
+ "experiment_framework": "在SWEC/MAYO/FNUSA三数据集做癫痫检测、在Brain TreeBank四任务(volume/pitch/onset/speech)做神经解码；对比SOTA Transformer基线；另在标准时序预测/分类任务验证；指标为AUC/准确率；报告临床任务达专家级并SOTA。",
+ "takeaways": [
+  "内容-时间-空间解耦的MVPA能灵活建模通道配置异质的临床iEEG，跨被试泛化强。",
+  "MVPFormer在癫痫检测与神经解码多任务上超过SOTA Transformer。",
+  "开源iEEG基础模型+SWEC大数据集推动临床神经信号研究。"
+ ],
+ "weaknesses": [
+  "iEEG为侵入式记录，数据来自特定临床中心，跨设备/跨人群的外部泛化仍需验证。",
+  "‘生成神经元活动’作为预训练目标对下游临床任务的因果贡献消融在正文前9页较简略。",
+  "临床落地尚缺与真实临床工作流结合的前瞻性验证。"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/PARAL_A Foundation Model with MULTI-VARIATE PARAL.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PARAL_A Foundation Model with MULTI-VARIATE PARAL.pdf",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "iEEG生成模型与医学影像落地域交点，跨被试泛化有可靠性价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

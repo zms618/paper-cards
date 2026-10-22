@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Sample Reward Soups Query-Efficient Multi-Reward Guidance for TEXT-TO- Diffusion Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sample Reward Soups Query-Efficient Multi-Reward Guidance for TEXT-TO- Diffusion Models.pdf",
+ "title": "Sample Reward Soups: Query-Efficient Multi-Reward Guidance for Text-to-Image Diffusion Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "SRSoup通过梯度插值和早期奖励共享降低多奖励对齐查询量",
+ "innovations": [
+  "提出首个面向多奖励函数的推理时soup策略SRSoup，在整个偏好空间做Pareto最优采样。",
+  "每步用各奖励对应的引导搜索梯度独立 steer 再线性插值搜索梯度，避免权重组合的指数级查询。",
+  "利用早期去噪阶段各去噪分布相近、样本奖励可共享的特性，在不牺牲性能下显著减少早期阶段的奖励查询次数。"
+ ],
+ "method_framework": "去噪每步：对每个奖励函数分别做reward-guided search梯度引导各自的去噪分布，再将这些搜索梯度线性插值得到综合引导；早期阶段因分布接近而共享样本奖励以省查询，后期再分别采样。",
+ "experiment_framework": "在多种奖励函数(美学、可压缩性、PickScore等)组合上对齐T2I扩散模型，对比WeightedSum等方法，报告超体积(HV)与所需奖励查询数(效率)。",
+ "takeaways": [
+  "推理时soup+搜索梯度插值能在不微调、不过度优化的前提下实现多奖励Pareto对齐。",
+  "早期去噪阶段样本奖励共享可将多奖励对齐的查询开销降1.8-2.7倍。"
+ ],
+ "weaknesses": [
+  "属文生图对齐/推理引导方向，与可靠性×医学影像/多模态推理主线关联弱。",
+  "依赖奖励函数在去噪步可提供引导梯度，对纯黑盒、不可微奖励或分布差异大的场景，共享样本奖励的近似可能引入偏差。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "多奖励对齐方法与可靠性主线关联弱，但设计模式有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

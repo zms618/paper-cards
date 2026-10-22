@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/DARC_Dual Adjustment Reasoning with Counterfactuals for Trustworthy Chest X-ray.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/DARC_Dual Adjustment Reasoning with Counterfactuals for Trustworthy Chest X-ray.pdf",
+ "title": "DARC Dual Adjustment Reasoning with Counterfactuals for Trustworthy Chest X-ray",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 6.5,
+  "evidence": 6.0,
+  "relevance": 8.5,
+  "overall": 7.2
+ },
+ "one_line": "双流因果推理框架解决胸部X光虚假关联，但依赖预训练模型增加误差",
+ "innovations": [
+  "构建CheXconf数据集，首次提供像素级非病理性视觉混杂因素标注",
+  "提出双流因果推理架构，同时处理病理性共现和非病理性混杂因素",
+  "设计反事实推理机制，解耦病理性共现导致的视觉耦合"
+ ],
+ "method_framework": "DARC框架包含全局流(后门调整)和局部流(反事实推理)，通过因果融合模块整合两种调整后的特征，实现从关联到因果的推理转变。",
+ "experiment_framework": "在ChestX-ray14和CheXpert数据集上评估，使用AUC为主要指标，与多种基线方法比较，并验证模型的可解释性和鲁棒性。",
+ "takeaways": [
+  "因果推理框架可有效解决医学影像中的虚假关联问题",
+  "构建专门的标注数据集是精确建模混杂因素的关键",
+  "多目标损失函数设计平衡了分类性能与因果一致性"
+ ],
+ "weaknesses": [
+  "方法依赖预训练的解剖标志检测模型，可能引入额外误差",
+  "反事实推理的线性近似假设在复杂病理情况下可能不够精确",
+  "计算开销较基线模型有所增加"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "双流因果推理解决医学影像虚假关联，可靠性主线与落地域硬交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

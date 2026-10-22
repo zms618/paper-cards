@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/RollingQ_Reviving the Cooperation Dynamics in Multimodal Transformer.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/RollingQ_Reviving the Cooperation Dynamics in Multimodal Transformer.pdf",
+ "title": "RollingQ: Reviving the Cooperation Dynamics in Multimodal Transformer",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.75
+ },
+ "one_line": "RollingQ通过旋转query打断模态偏好自增强循环，恢复多模态动态融合。",
+ "innovations": [
+  "通过精心设计的实验发现：常用自注意力模型的动态适应性会随训练退化，模型不顾数据特性而偏好单一模态。",
+  "揭示该偏置形成自增强循环，逐渐放大所偏好模态、拉大跨模态注意力key分布差距并使注意力失去动态性。",
+  "提出简单有效的Rolling Query：旋转query以打断自增强循环、缓解key分布差距，恢复注意力动态分配。"
+ ],
+ "method_framework": "诊断出多模态融合中存在模态偏置的自增强正反馈；RollingQ在注意力计算时旋转(轮换)query，使被偏好模态不再持续独占注意力，从而打破正反馈、缩小跨模态key分布差距，让模型重新按输入特性动态权衡各模态。",
+ "experiment_framework": "在多种多模态场景(视听学习、情感等多模态任务)上评测；对比静态/动态融合及主流多模态Transformer；报告下游任务精度与注意力分配分析。",
+ "takeaways": [
+  "RollingQ在多个多模态场景上验证有效，恢复了被削弱的模态协作与动态融合能力。",
+  "模态偏置的自增强循环是动态融合失效的重要机理。"
+ ],
+ "weaknesses": [
+  "与主线的医学影像、多模态大模型推理不直接相关，属通用多模态融合。",
+  "旋转query的具体策略(旋转幅度/轮次)超参选择未见系统消融。",
+  "主要在视听/情感等小-中型多模态任务验证，未见大规模MLLM对话场景。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

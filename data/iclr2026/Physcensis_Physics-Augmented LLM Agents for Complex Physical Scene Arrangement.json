@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Physcensis_Physics-Augmented LLM Agents for Complex Physical Scene Arrangement.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Physcensis_Physics-Augmented LLM Agents for Complex Physical Scene Arrangement.pdf",
+ "title": "PhyScensis: Physics-Augmented LLM Agents for Complex Physical Scene Arrangement",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "LLM+物理引擎闭环生成复杂3D场景，但成本与下游验证不足。",
+ "innovations": [
+  "提出LLM智能体+物理引擎的闭环框架，生成兼顾接触/支撑/平衡/容纳等物理关系的高复杂度场景。",
+  "用概率编程刻画稳定性，辅以启发式联合调节稳定性与空间关系，保留对细粒度文本与数值参数的可控性。",
+  "面向机器人操作数据生成，统一流水线输出桌面/货架/装箱等复杂物理场景。"
+ ],
+ "method_framework": "LLM智能体根据文本指令迭代提出资产及其空间与物理谓词；带物理引擎的求解器把谓词落地为3D场景并做稳定性/碰撞校验；求解器反馈回智能体以修正、丰富配置；概率编程控制稳定性、启发式调节空间关系，形成agent-solver-refine循环。",
+ "experiment_framework": "在桌面布置、货架整理、装箱等复杂场景上评测；与既有3D布局生成方法对比场景复杂度、视觉质量与物理准确性；结果在三维度均优于先验工作。",
+ "takeaways": [
+  "LLM智能体与物理引擎闭环可显著提升生成场景的物理合理性与复杂度。",
+  "概率编程+启发式在保持文本可控的同时保证了场景稳定。",
+  "可用于规模化生成机器人操作仿真训练数据。"
+ ],
+ "weaknesses": [
+  "依赖物理引擎闭环迭代，生成高复杂度场景的时间/调用成本未充分量化。",
+  "评价以物理准确性与视觉质量为主，下游机器人任务成功率提升的直接证据有限。",
+  "资产库与物理属性建模依赖已有3D资产，开放词汇/新物体泛化未深入。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "物理场景生成与可靠性主线无实质交点，仅机器人操作数据生成有弱关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

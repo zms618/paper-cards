@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Adv-CPG_A Customized Portrait Generation Framework with Facial Adversarial Attacks.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Adv-CPG_A Customized Portrait Generation Framework with Facial Adversarial Attacks.pdf",
+ "title": "Adv-CPG: A Customized Portrait Generation Framework with Facial Adversarial Attacks",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "定制人像生成中嵌入双层身份加密与梯度扰动，骗过人脸识别系统",
+ "innovations": [
+  "把'盗用身份'改写成隐私保护任务：En1 把靶身份特征 C_id=α·CLIP(I_t)+β·Σ_i FR_i(I_t)（CLIP 模糊语义 + 白盒 FR 身份嵌入）直接注入 identity-dependent cross-attention（仿 PuLID/InstantID），使生成画像视觉上仍像本人、但 FR 特征空间对齐到靶身份。",
+  "En2 在每个去噪步取当前重建图 D(z̃_0) 与靶身份算 ID 梯度 g_t=λ_s∇_{z̃_0}F(D(z̃_0),I_t)，再更新 z_{t-1}:=z_{t-1}+σ_t g_t，实现第二层'逐步身份加密增强'（仿 FreeTuner/Adv-Diffusion 的 post-hoc 引导）。",
+  "MMIC 用 LLaVA1.5 以 'Describe this person's facial features, including face, ears, eyes, nose, and mouth' 生成细粒度人脸描述，拼到原始 prompt 后再过 CLIP text encoder 得增强文本特征 C_t，并配合 delayed primacy 在指定步数后替换初始文本特征，协调细粒度保真与场景提示。"
+ ],
+ "method_framework": "训练只优化 En1 的 ID projector（SDXL 全冻结）：L_CPG=E||ε-ε_θ(z_t,t,C_id,C_i,C_t)||；推理三模块同时介入，分'渐进加密阶段'与'细粒度定制阶段'两段，后段用 MMIC 的文本/图像特征并行注入解耦 cross-attention。",
+ "experiment_framework": "训练用 FGID（含 30k CelebA、42.5k SFHQ）；测试 FFHQ/CelebA-HQ（人脸识别）+ LFW（人脸确认）；4 个开源 FR（IR152/IRSE50/FaceNet/MobileFace）+ Face++/Aliyun；对比 5 个 noise-based、7 个 makeup-based、5 个语义不变方法；ASR、Rank-N-Targeted、FID/PSNR/SSIM。",
+ "takeaways": [
+  "把对抗扰动嵌入扩散的去噪迭代而非像素空间，是同时拿到'自然隐蔽'与'身份空间迁移'这两件事的关键做法。",
+  "评测矩阵（4 开源 FR + 2 商业 API × 验证/识别双任务 + FID/PSNR/SSIM）值得直接抄进人脸隐私方向的工作。",
+  "用多模态大模型生成结构化细粒度人脸描述再注入文本编码器，比单纯用 IP-Adapter 注入图像特征更容易控制局部五官。"
+ ],
+ "weaknesses": [
+  "ASR 表中有多处负提升（FaceNet 63.84↓1.1、IRSE50 88.72↓0.9、Rank-5 56.4↓0.8），所谓 SOTA 是靠多数项堆出来的平均优势，并非稳定全面最优；且全部为单 run 无方差。",
+  "攻击生成依赖白盒 FR 模型算身份梯度，黑盒可迁移性只在 4 个目标模型 + 2 个商业 API 上测；Tab.2 中 Clean 行在 MobileFace 上仅 1.06-8.96，说明 FAR@0.01 阈值对结论影响极大，文中只给单一阈值而无阈值曲线/ROC。",
+  "训练只优化 En1 的 ID projector，En2 与 MMIC 实质是 IP-Adapter/PuLID 式身份注入 + Adv-Diffusion 式逐步 ID 梯度 + LLaVA 描述的组合，缺 En1/En2 单层消融、缺 λ_s 与 α/β 的敏感性分析（正文在 4.2 中途截断）。",
+  "FID 26.08 与 DiffProtect 26.41、DiffAM 26.10 基本持平却未说明质量差异来源，且 FID 与定制人像这类生成任务的相关性本身存疑。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "人脸对抗攻击与可靠性主线无关，仅隐私保护机制有微弱迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

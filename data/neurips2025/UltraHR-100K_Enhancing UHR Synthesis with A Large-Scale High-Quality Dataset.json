@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/UltraHR-100K_Enhancing UHR Synthesis with A Large-Scale High-Quality Dataset.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/UltraHR-100K_Enhancing UHR Synthesis with A Large-Scale High-Quality Dataset.pdf",
+ "title": "UltraHR-100K: Enhancing UHR Image Synthesis with A Large-Scale High-Quality Dataset",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "构建10万UHR数据集，提出两种后训练技巧提升细节生成",
+ "innovations": [
+  "发布UltraHR-100K：10万张超3K分辨率、带丰富caption、按细节丰富度/内容复杂度/美学质量严格筛选的UHR T2I数据集",
+  "提出Detail-Oriented Timestep Sampling(DOTS)，聚焦对细节关键的去噪步进行学习",
+  "提出Soft-Weighting Frequency Regularization(SWFR)，用DFT软约束频率分量以鼓励高频细节保留，并配套UltraHR-eval4K评测基准"
+ ],
+ "method_framework": "在预训练T2I扩散模型上做后训练：DOTS把采样注意力集中到细节关键的去噪时间步；SWFR在频域对高低频分量做软加权约束以保高频细节；配合UHR数据微调，缓解直接放大到超高分辨率时的平滑与结构伪影。",
+ "experiment_framework": "在自建UltraHR-eval4K基准上评测；与training-free及training-based的UHR T2I方法对比；报告细粒度细节质量与整体保真度(如FID/美学/CLIP等)指标，显著优于现有方法；数据集规模对比Aesthetic-4K(约10K)。",
+ "takeaways": [
+  "大规模高质量UHR数据是UHR T2I高保真生成的基础，此前开源数据仅约10K且筛选不严",
+  "针对细节关键步的时间步采样与频域软正则可在不改变架构的前提下提升高频细节",
+  "数据集与eval4K基准共同支撑了UHR文生图的后续研究"
+ ],
+ "weaknesses": [
+  "数据集来自网络抓取，版权、caption质量与真实分布代表性未充分审计",
+  "DOTS与SWFR均为增量式后训练技巧，单独的机理与消融增益相对有限",
+  "仅在自建eval4K上评测，缺乏与通用高分辨率生成指标及用户主观评测的强外部对照"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

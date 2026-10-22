@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/X-Hacking The Threat of Misguided AutoML.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/X-Hacking The Threat of Misguided AutoML.pdf",
+ "title": "X-Hacking: The Threat of Misguided AutoML",
+ "scores": {
+  "novelty": 7,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.3
+ },
+ "one_line": "警示AutoML可被用于操纵XAI结果，但防御机制不足",
+ "innovations": [
+  "首次形式化'X-Hacking'：针对SHAP等XAI指标的p-hacking，利用模型多样性在保持可接受精度的同时挑选出 desired explanation 的模型",
+  "将解释与精度之间的权衡建模为多目标优化问题，把攻击面扩展到含预处理/特征工程/模型类/超参的完整分析pipeline",
+  "用贝叶斯优化加速搜索，并发现数据集对X-hacking的脆弱性可由特征间信息冗余度预测"
+ ],
+ "method_framework": "在OpenML-CC18基准上以现成XAI/AutoML软件做cherry-picking：在性能相近的Rashomon('可辩护')模型集中，以特征重要性(如mean|SHAP|)为目标用随机采样与贝叶斯优化搜索能给出期望解释的模型；把'找 desired explanation'与'保持精度'作为竞争多目标。",
+ "experiment_framework": "23个OpenML-CC18分类数据集；对比随机采样与贝叶斯优化搜索confirmatory Rashomon集的速度；分析哪些特征对X-hacking鲁棒；指标为达成目标解释所需搜索次数/加速比。",
+ "takeaways": [
+  "对易受攻击的特征，贝叶斯优化比随机采样平均快3倍即可找到 desired explanation 的模型",
+  "数据集越存在信息冗余，越容易被X-Hacking；特征冗余度可作为脆弱性的先行指标",
+  "结合AutoML，'通过省略来撒谎'门槛极低，XAI的可信度与可复现性面临系统性威胁"
+ ],
+ "weaknesses": [
+  "属警示/方法论类论文，提出的检测与防范方法较初步，缺乏可落地、经实测的防御机制",
+  "实证集中在表格分类数据集(OpenML-CC18)，对深度模型/视觉/多模态场景的X-hacking可行性未验证",
+  "'可辩护精度'阈值与Rashomon集定义较主观，攻击效果对阈值敏感，结论的稳健性需更多情景检验"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

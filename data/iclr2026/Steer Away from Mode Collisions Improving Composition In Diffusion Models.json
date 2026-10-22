@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Steer Away from Mode Collisions Improving Composition In Diffusion Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Steer Away from Mode Collisions Improving Composition In Diffusion Models.pdf",
+ "title": "Steer Away from Mode Collisions: Improving Composition in Diffusion Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "采样级校正缓解扩散模型多概念提示中的模式碰撞问题",
+ "innovations": [
+  "将多概念提示失配归因于联合提示分布与单概念分布模式过度重叠导致的模式碰撞，并据此提出'推向纯联合模式'的采样引导思路",
+  "设计即插即用、无需调参的概念对比校正器CO3，与标准无分类器引导互补",
+  "刻画现有多概念引导中会放大失衡的不稳定权重区间，并让采样自适应地保持在有利区域"
+ ],
+ "method_framework": "在采样时检测联合提示行为与各单概念行为重叠过强的区域，施加校正引导把生成推向所有概念可平衡共存的纯联合模式；同时分析引导权重的稳定/有利区间，使采样自适应保持其中，全程不改模型参数。",
+ "experiment_framework": "在多概念提示集上评测，对比标准采样与既有组合式引导方法；以概念覆盖率、概念平衡性与鲁棒性为指标，报告遗漏/扭曲概念更少、语义对齐更稳健的结果。",
+ "takeaways": [
+  "轻量的采样级校正引导即可显著缓解现代扩散系统中脆弱的语义对齐行为",
+  "多概念引导存在会放大失衡的不稳定权重区间，采样需自适应保持在有利区域",
+  "无需重训即可改善'一只猫和一只狗'这类提示中概念缺失/重叠的失败"
+ ],
+ "weaknesses": [
+  "核心仍是采样引导类改进，机制上与既有组合引导方法差异有限，novelty偏渐进",
+  "缺少与近年强组合一致性方法(如组合扩散/注意力重加权)在统一基准上的量化对比细节",
+  "对更复杂多概念(三个以上对象、属性-关系)提示的可扩展性与极限未充分展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "采样级校正缓解扩散模型多概念提示中的模式碰撞问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

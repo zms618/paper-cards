@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mixture Of Mini Experts Overcoming the Lin-Ear Layer Bottleneck In Multiple Instance Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mixture Of Mini Experts Overcoming the Lin-Ear Layer Bottleneck In Multiple Instance Learning.pdf",
+ "title": "Mixture of Mini Experts: Overcoming the Linear Layer Bottleneck in Multiple Instance Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "用MoE替代MIL线性层，提升病理分类性能但未解决可靠性问题",
+ "innovations": [
+  "揭示MIL中通用特征到任务特征的线性层是被忽视的性能瓶颈",
+  "假设按patch表型做低秩变换能得到更强表示，与任意聚合方法协同",
+  "提出参数高效的多头Mixture-of-Experts模块MAMMOTH，几乎不增参数即可嵌入任意MIL模型"
+ ],
+ "method_framework": "在patch特征编码后、聚合前插入多头MoE：用小专家对每个patch按其组织表型做低秩任务相关变换，替代单一固定线性层；参数高效，可叠加到任何已有MIL骨架(特征提取与聚合不变)。",
+ "experiment_framework": "横跨8种MIL方法、19个病理分类任务、152种配置评测；指标为slide级分类AUC/准确率；MAMMOTH在130/152配置上提升，平均+3.8%，甚至让max/mean池化超过标准线性层的复杂聚合。",
+ "takeaways": [
+  "任务相关变换层对病理MIL性能的影响大于聚合方法选择",
+  "按patch表型的低秩MoE变换与现有任意MIL方法协同增益",
+  "即插即用且几乎不增参数，工程价值高"
+ ],
+ "weaknesses": [
+  "虽属医学影像主线，但提升来自表示工程而非可靠性/不确定性建模",
+  "专家数与低秩秩选择缺乏临床外部验证与跨中心泛化分析",
+  "仅在分类任务验证，对预后/生存回归等下游任务未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "医学影像分类提升但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

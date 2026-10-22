@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/MixPrompt_Efficient Mixed Prompting for Multimodal Semantic Segmentation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/MixPrompt_Efficient Mixed Prompting for Multimodal Semantic Segmentation.pdf",
+ "title": "MixPrompt: Efficient Mixed Prompting for Multimodal Semantic Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "冻结RGB主干，轻量提示融合多模态，参数减半性能提升有限。",
+ "innovations": [
+  "利用预训练RGB模型早期层初始化辅助模态提示",
+  "多子空间对齐与混合策略",
+  "轻量级提示模块设计，保持RGB主干冻结"
+ ],
+ "method_framework": "MixPrompt框架使用预训练RGB模型作为主干，通过轻量级提示模块提取和融合辅助模态信息。在多个子空间中对齐RGB和辅助特征，使用混合矩阵进行子空间间信息交换，实现高效多模态融合。",
+ "experiment_framework": "在NYU Depth V2、SUN-RGBD、MFNet和DELIVER数据集上评估，使用mIoU指标，与双分支基线和提示方法对比，参数量和计算效率分析。",
+ "takeaways": [
+  "预训练模型早期层可跨模态迁移用于初始化",
+  "低秩子空间对齐与混合策略能有效提升多模态融合效率",
+  "冻结主干仅更新提示模块和分割头可实现参数高效"
+ ],
+ "weaknesses": [
+  "仅评估了有限数量的辅助模态组合",
+  "未充分探讨不同场景下的鲁棒性分析",
+  "混合矩阵M的设计原理分析不够深入"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

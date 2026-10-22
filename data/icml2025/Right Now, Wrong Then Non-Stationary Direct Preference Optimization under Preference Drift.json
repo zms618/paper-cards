@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Right Now, Wrong Then Non-Stationary Direct Preference Optimization under Preference Drift.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Right Now, Wrong Then Non-Stationary Direct Preference Optimization under Preference Drift.pdf",
+ "title": "Right Now, Wrong Then: Non-Stationary Direct Preference Optimization under Preference Drift",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "NS-DPO用指数加权解决人工模拟的偏好漂移，理论有界但实际适应性存疑。",
+ "innovations": [
+  "首次将非稳态偏好优化引入DPO框架，用动态Bradley-Terry模型建模时变奖励函数",
+  "提出NS-DPO算法，仅引入一个折扣参数γ对训练数据指数加权，聚焦于时间相关数据点，计算开销几乎为零",
+  "在偏好漂移性质未知的一般设定下给出估计误差和遗憾的理论上界"
+ ],
+ "method_framework": "将标准DPO的Bradley-Terry偏好模型推广为时间依赖的动态BT模型。在DPO损失中引入折扣因子γ，对每个训练样本按其时间戳t赋予权重γ^{T-t}，指数衰减旧数据的影响。γ可由总漂移量B_T推导得到，无需知道具体哪些偏好发生了变化。",
+ "experiment_framework": "在UltraFeedback-RM等数据集上模拟偏好漂移场景：设置不同漂移比例ρ_diff(0.7-1.0)和变化点t_cp。奖励模型从PAIRRM切换到ARMORM模拟偏好翻转。基线为标准DPO。在Llama-2-7b-chat上微调，指标为奖励准确率(reward accuracy)。",
+ "takeaways": [
+  "当偏好漂移比例ρ_diff=1.0时，标准DPO完全失效(奖励准确率接近50%)，而NS-DPO保持在50%以上",
+  "变化点越晚发生(旧数据占比越大)，NS-DPO相对标准DPO的优势越明显",
+  "在稳态(无漂移)场景下NS-DPO性能不牺牲，折扣参数在γ≈1时退化为标准DPO"
+ ],
+ "weaknesses": [
+  "偏好漂移是人工模拟的(通过切换奖励模型)，未在真实随时间收集的偏好数据集上验证",
+  "折扣参数γ依赖总漂移量B_T的估计，实际中B_T未知需手动调节，自适应方法未给出",
+  "实验仅在Llama-2-7b上验证，未测试更大模型或其他架构，且无人工评估(Human Eval)"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SWE-RM Execution-Free Feedback for Soft-Ware Engineering Agents.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SWE-RM Execution-Free Feedback for Soft-Ware Engineering Agents.pdf",
+ "title": "SWE-RM: Execution-Free Feedback for Software Engineering Agents",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "发现验证器TTS性能不直接迁移RL，训练MoE奖励模型免执行反馈",
+ "innovations": [
+  "发现TTS性能相近的两个验证器在RL中结果迥异，指出轨迹选择能力不直接迁移到RL",
+  "识别出分类准确率与校准度是RL训练的关键，并系统研究数据规模/策略混合/数据源构成如何影响鲁棒奖励模型",
+  "提出MoE架构的SWE-RM（30B总参、3B激活），免执行即可提供细粒度反馈"
+ ],
+ "method_framework": "围绕免执行奖励模型做受控实验，分析训练数据规模、策略混合与数据源构成对分类准确率与校准度的影响；据此训练MoE结构的SWE-RM，使其在测试时缩放(TTS)与强化学习(RL)两种反馈场景下都鲁棒有效。",
+ "experiment_framework": "在SWE-Bench Verified上评测；TTS下Qwen3-Coder-Flash从51.6%提升到62.0%、Qwen3-Coder-Max从67.0%到74.6%（开源SOTA）；RL下比执行式基线resolve rate提升3个百分点。",
+ "takeaways": [
+  "验证器能否用于RL不仅取决于TTS表现，更取决于分类准确率与校准度",
+  "免执行奖励模型可替代单元测试提供更细粒度信号，同时提升TTS与RL",
+  "MoE稀疏激活设计在保持奖励能力的同时控制了推理开销"
+ ],
+ "weaknesses": [
+  "落地域为软件工程，未在医学/多模态推理等目标域验证奖励模型可迁移性",
+  "免执行反馈缺乏单元测试式的硬信号，对真实可运行性的覆盖仍存疑",
+  "受控实验多在自家Qwen3-Coder系模型上开展，跨模型族泛化性需外部验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "软件工程验证器设计模式可迁移至可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "title": "Representing Local Protein Environments with Machine Learning Force Fields",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "重用MLFF嵌入表示蛋白环境，零样本迁移NMR预测但主线相关性弱",
+ "innovations": [
+  "首次将MLFF(原用于能量/力回归)的0/1/2阶隐层嵌入重用作蛋白质局部环境的通用表示。",
+  "提出canonical局部环境构造：以焦点残基为中心、5Å(Hausdorff)半径内所有原子，把逐原子嵌入映射为可跨残基/蛋白比较的描述子。",
+  "案例研究构建物理信息、不确定性感知的化学位移预测器，在生物分子NMR谱学上达到SOTA精度。"
+ ],
+ "method_framework": "在DFT能量数据上预训练MLFF(AIMNet/MACE/OrbNet等)；对每个焦点残基提取其5Å邻域原子的隐层嵌入，聚合为canonical环境描述子；该表示无需额外训练即可做无监督聚类，并可迁移到下游属性预测(如化学位移)。",
+ "experiment_framework": "在1048条非冗余链、165K+局部环境上基准多种SOTA MLFF；分析其隐空间是否无监督区分二级结构/氨基酸身份/质子化状态；下游案例为NMR化学位移预测，与ESM等序列表示及既有方法对比；报告零样本泛化与迁移能力。",
+ "takeaways": [
+  "MLFF嵌入在无监督聚类中即自发分离出二级结构基元与氨基酸身份，说明其编码了物理层面的结构与化学信息。",
+  "逐原子、基于量子数据训练的表示能跨未见蛋白/折叠迁移，对稀有化学与分布外构象有零样本泛化。",
+  "MLFF可视为结构生物学的通用基础表示器，而非只用于能量/力预测。"
+ ],
+ "weaknesses": [
+  "与主线(可靠性×医学影像/多模态推理)关联弱，属计算化学/结构生物，落地域不匹配。",
+  "5Å canonical邻域与原子聚合方式较启发式，对表示的敏感性/消融在节选页中不充分。",
+  "节选前9页未见化学位移预测的完整量化表与不确定性校准评估，SOTA结论的证据在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Representing Local Protein Environments with.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Representing Local Protein Environments with.pdf",
+ "raw_overall": 6.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "计算化学/结构生物，与可靠性主线及落地域无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

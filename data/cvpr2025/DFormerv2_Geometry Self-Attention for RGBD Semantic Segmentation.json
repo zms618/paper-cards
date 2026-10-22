@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/DFormerv2_Geometry Self-Attention for RGBD Semantic Segmentation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/DFormerv2_Geometry Self-Attention for RGBD Semantic Segmentation.pdf",
+ "title": "DFormerv2 Geometry Self-Attention for RGBD Semantic Segmentation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "利用深度图引导自注意力，提升RGBD分割效率",
+ "innovations": [
+  "首次将深度信息与空间信息结合作为几何先验应用于神经网络",
+  "提出几何自注意力机制(GSA)，将深度图作为先验引导注意力权重分配",
+  "设计轻量级RGBD编码器DFormerv2，无需额外处理深度图的编码层"
+ ],
+ "method_framework": "DFormerv2采用编码器-解码器架构，通过几何自注意力块构建编码器，利用深度图生成几何先验，引导注意力机制，实现RGB与深度信息的高效融合",
+ "experiment_framework": "在NYU DepthV2、SUNRGBD和Deliver三个RGBD语义分割基准数据集上进行评估，使用mIoU作为主要指标，与17种最新方法进行比较",
+ "takeaways": [
+  "将深度信息作为几何先验而非输入特征，可显著减少计算成本同时提升性能",
+  "几何先验的融合方式对性能有重要影响，简单的加权求和已能带来显著提升"
+ ],
+ "weaknesses": [
+  "方法依赖深度图的准确性，深度估计误差可能影响性能",
+  "未探讨在极端光照条件下的鲁棒性表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "RGBD分割属于落地域但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

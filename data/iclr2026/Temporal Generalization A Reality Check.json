@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Temporal Generalization A Reality Check.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Temporal Generalization A Reality Check.pdf",
+ "title": "Temporal Generalization: A Reality Check",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "负面结果：参数插值/外推均无法超越直接使用最新模型",
+ "innovations": [
+  "首次在大规模、无未来数据访问设定下统一评测参数插值（模型合并、参数缩放）与参数外推（Taylor展开等）两大类方法",
+  "覆盖语言建模、新闻摘要、标签预测、论文分类、卫星土地分类、年鉴性别预测等6类时序任务，模型规模70M-770M",
+  "给出核心负面结论：除对最新参数做下采样外，所有插值/外推方法均不能可靠提升时间泛化，常反而退化"
+ ],
+ "method_framework": "将仅依赖历史checkpoint序列估计未来参数的方法分为两类：参数插值（凸组合历史参数，如模型合并、近期参数缩放）与参数外推（在凸包之外沿参数轨迹Taylor展开预测未来参数）。在流式设定下估计未来参数theta_{t+delta}并在未来数据上评测。",
+ "experiment_framework": "数据集含演进新闻语料语言建模、新闻摘要/标签、学术论文分类、多年卫星影像土地利用分类、数十年年鉴照片性别预测；基线包括模型合并(TIES/DARE等)、Time Vectors、Taylor外推；指标为困惑度/准确率/F1等，对比最新模型参数作为baseline。",
+ "takeaways": [
+  "无未来数据且缺乏对数据生成过程演化的强假设时，未来分布可任意偏离历史，参数预测本质上不可行",
+  "唯一一致避免退化的方法是对近期模型参数做下采样（缓解对未见未来数据的过度自信）",
+  "既有外推方法（RNN参数预测、自编码压缩）因复杂度随参数量线性增长且需密集时序样本，在大模型上不实用"
+ ],
+ "weaknesses": [
+  "作为负面结果论文，未提出能真正突破时间泛化的新方法，仅论证现有路线失效",
+  "参数轨迹非线性不可辨识性的讨论偏理论直觉，未给出量化刻画何种条件下外推何时可行",
+  "部分外推基线的超参选择不透明问题被指出但本文评测仍可能受同样困扰，消融细节需依赖附录"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "时序泛化与可靠性主线弱相关，无可靠落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

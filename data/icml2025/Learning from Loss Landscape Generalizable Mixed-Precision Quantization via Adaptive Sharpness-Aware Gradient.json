@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning from Loss Landscape Generalizable Mixed-Precision Quantization via Adaptive Sharpness-Aware Gradient.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning from Loss Landscape Generalizable Mixed-Precision Quantization via Adaptive Sharpness-Aware Gradient.pdf",
+ "title": "Learning from Loss Landscape: Generalizable Mixed-Precision Quantization via Adaptive Sharpness-Aware Gradient Aligning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "小代理集锐度感知量化搜索，泛化性机制证据不足",
+ "innovations": [
+  "提出在小代理数据集上搜索量化策略再泛化到大规模数据集的范式，大幅降低MPQ搜索成本",
+  "引入锐度感知最小化（sharpness-aware minimization）增强量化策略的泛化性",
+  "通过自适应锐度度量从损失景观角度解释为何小数据集上搜到的量化策略可迁移"
+ ],
+ "method_framework": "核心观察：量化策略的泛化性与损失景观的锐度相关。方法：(1)在极小代理数据集（如CIFAR10）上搜索每层位宽配置；(2)用锐度感知梯度对齐搜索目标，使搜到的策略对数据分布偏移鲁棒；(3)将搜到的量化策略直接应用于在大规模数据集上训练的模型，仅需调整权重无需重新搜索。",
+ "experiment_framework": "模型：ResNet18、ResNet50、MobileNet-V2；代理数据集CIFAR10，目标大规模数据集（如ImageNet）；对比基线包括HAQ等传统MPQ搜索方法；指标为模型准确率和压缩率（位宽）。",
+ "takeaways": [
+  "从损失景观锐度角度设计的量化策略搜索，可以在极小代理集上泛化到大规模数据集",
+  "锐度感知优化能提升量化策略的跨数据集泛化能力",
+  "仅用0.5%的数据量搜索即可获得与全量数据搜索相当的MPQ策略"
+ ],
+ "weaknesses": [
+  "与大模型/可靠性/多模态主线关联度低",
+  "仅在CNN架构（ResNet/MobileNet）上验证，在Transformer/LLM量化中的适用性未知",
+  "代理数据集与目标数据集分布差异过大时泛化性如何未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.38,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

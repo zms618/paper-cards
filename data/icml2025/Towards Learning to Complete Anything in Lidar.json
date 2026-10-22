@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Towards Learning to Complete Anything in Lidar.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Towards Learning to Complete Anything in Lidar.pdf",
+ "title": "Towards Learning to Complete Anything in Lidar",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "用视觉模型生成伪标签，蒸馏零样本LiDAR补全模型",
+ "innovations": [
+  "提出首个零样本LiDAR全景场景补全方法，突破既有方法仅限封闭词表(约20类)的限制",
+  "构建伪标注引擎：用图像/视频分割基础模型在多模态序列中分割跟踪物体，提升到LiDAR空间并跨时间聚合得到3D形状先验",
+  "仅用单帧LiDAR输入即可零样本定位、重建并识别开放词表物体，支持SSC/PSC/非模态3D检测的提示式切换"
+ ],
+ "method_framework": "既有LiDAR补全方法只能在已标注的约20类内工作。CAL先用SAM类图像分割与视频分割基础模型在多模态序列中定位并跟踪任意物体(masklet)，用标定好的多模态传感器与自车位姿把各masklet提升到LiDAR空间、跨时间积分得到3D形状估计作为伪标签；尽管只挖到部分形状补全，蒸馏后的仅LiDAR模型学会推断完整形状与语义，测试时单帧即可零样本补全并按提示词表识别。",
+ "experiment_framework": "在标准基准上提示式评测语义场景补全(SSC)、全景场景补全(PSC)与(非模态)3D目标检测；与封闭词表LiDAR补全方法对比，验证开放词表识别与零样本补全能力。",
+ "takeaways": [
+  "视觉基础模型可从未标注LiDAR序列挖出3D形状先验，绕开封闭词表标注",
+  "部分噪声伪标签蒸馏后，仅LiDAR模型能推断完整形状",
+  "单帧LiDAR+提示词表即可统一补全、定位与开放词表识别"
+ ],
+ "weaknesses": [
+  "主线相关性弱：属LiDAR 3D场景补全/自动驾驶感知，与可靠性乘医学影像/多模态推理主线无直接联系",
+  "形状先验挖掘依赖标定多模态序列与准确跟踪，身份切换/配准误差会污染伪标签",
+  "测试时仅单帧LiDAR，对动态/未见极端类别的补全可靠性需后续页"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

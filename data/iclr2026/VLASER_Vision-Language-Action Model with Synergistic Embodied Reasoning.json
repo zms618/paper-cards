@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VLASER_Vision-Language-Action Model with Synergistic Embodied Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VLASER_Vision-Language-Action Model with Synergistic Embodied Reasoning.pdf",
+ "title": "VLASER: Vision-Language-Action Model with Synergistic Embodied Reasoning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "VLA模型整合推理与控制，依赖自建数据，泛化证据不足。",
+ "innovations": [
+  "构建Vlaser具身VLA基础模型，直接弥合上游VLM推理与下游VLA策略学习之间的鸿沟，将高层推理与低层控制整合到统一框架",
+  "构建高质量Vlaser-6M数据集支撑具身推理与控制训练",
+  "系统研究不同VLM初始化对监督式VLA微调的影响，给出缓解互联网预训练数据与具身策略数据间域偏移的洞见"
+ ],
+ "method_framework": "Vlaser以一个基础VLM为底座，同时承担空间推理/定位/规划等高层具身推理任务与低层机器人动作输出；通过Vlaser-6M高质量具身数据训练，并基于对不同VLM初始化的系统消融，选择能缓解互联网预训练与具身策略数据域偏移的初始化，再监督微调出VLA策略。",
+ "experiment_framework": "在空间推理、具身定位、具身QA、任务规划等具身推理基准上评测；机器人控制在WidowX与Google Robot两个真机基准上评测；对比主流VLM/VLA基线，报告成功率指标，WidowX达SOTA、Google Robot具竞争力。",
+ "takeaways": [
+  "Vlaser在空间推理、具身定位、具身QA、任务规划等多个具身推理基准上取得SOTA",
+  "在WidowX基准上达到SOTA、Google Robot上具竞争力，验证推理-控制协同有效",
+  "系统分析表明特定VLM初始化/数据流对缓解预训练-具身域偏移至关重要"
+ ],
+ "weaknesses": [
+  "属于具身机器人控制方向，并非聚焦可靠性/不确定性/幻觉抑制，也不涉及医学影像，与主线为弱相关",
+  "成功高度依赖自建的Vlaser-6M数据规模与质量，数据构建细节与去偏在前9页披露有限",
+  "前9页未给出长程任务、仿真到真实迁移的鲁棒性评测，泛化到未见场景的证据不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "具身控制与可靠性主线弱相关，无医学影像落地",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

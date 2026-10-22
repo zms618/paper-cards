@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/StochasticSplats_Stochastic Rasterization for Sorting-Free 3D Gaussian Splatting.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/StochasticSplats_Stochastic Rasterization for Sorting-Free 3D Gaussian Splatting.pdf",
+ "title": "StochasticSplats Stochastic Rasterization for Sorting-Free 3D Gaussian Splatting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 6.0
+ },
+ "one_line": "随机光栅化加速3D高斯泼溅，但高采样率仍存噪声",
+ "innovations": [
+  "将随机透明度引入3D高斯泼溅，消除排序需求",
+  "提出新的蒙特卡洛梯度估计器支持训练",
+  "设计简化的最大密度表面近似方法消除poping伪影",
+  "实现完全体积化混合处理重叠高斯"
+ ],
+ "method_framework": "结合3D高斯泼溅与随机光栅化，使用蒙特卡洛估计器替代传统alpha混合，通过采样数量控制质量与速度权衡",
+ "experiment_framework": "MipNerf360数据集评估渲染质量，RTX 3090/4090/T1000测量渲染时间，对比3DGS和StopThePop基线",
+ "takeaways": [
+  "随机光栅化可显著提升3DGS渲染速度(1-4倍)",
+  "采样数量提供质量与速度的灵活权衡",
+  "OpenGL实现提高跨平台兼容性"
+ ],
+ "weaknesses": [
+  "高采样率时接近传统方法质量但仍存在噪声",
+  "梯度估计器可能对某些损失函数存在偏差",
+  "完全体积化混合计算开销较大"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D高斯泼溅渲染优化，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

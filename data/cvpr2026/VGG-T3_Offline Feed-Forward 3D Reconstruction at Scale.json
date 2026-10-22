@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/VGG-T3_Offline Feed-Forward 3D Reconstruction at Scale.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/VGG-T3_Offline Feed-Forward 3D Reconstruction at Scale.pdf",
+ "title": "VGG-T3 Offline Feed-Forward 3D Reconstruction at Scale",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "压缩VGGT的KV空间为MLP，降低3D重建复杂度但扩展性有限",
+ "innovations": [
+  "将VGGT的KV空间压缩为固定大小MLP",
+  "引入ShortConv2D增强非线性空间混合",
+  "实现可查询的重建与视觉定位统一框架"
+ ],
+ "method_framework": "基于VGGT架构，用测试时训练替换全局注意力层，将二次方复杂度降至线性，支持大规模场景重建",
+ "experiment_framework": "在NRGBD、7scenes、DTU、ETH3D等数据集上评估点图估计、视频深度和相机位姿估计，与VGGT、FastVGGT、SparseVGGT和TTT3R对比",
+ "takeaways": [
+  "测试时训练可压缩场景表示实现线性复杂度",
+  "分布式推理支持大规模图像集处理",
+  "MLP参数冻结后可用于视觉定位"
+ ],
+ "weaknesses": [
+  "从20图像扩展到1000图像时误差增加5倍",
+  "仅在某些数据集上优于二次方基线",
+  "测试时训练步骤增加可能影响实时性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D重建技术，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

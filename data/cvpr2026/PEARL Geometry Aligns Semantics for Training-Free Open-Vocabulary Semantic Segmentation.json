@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/PEARL Geometry Aligns Semantics for Training-Free Open-Vocabulary Semantic Segmentation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/PEARL Geometry Aligns Semantics for Training-Free Open-Vocabulary Semantic Segmentation.pdf",
+ "title": "PEARL Geometry Aligns Semantics for Training-Free Open-Vocabulary Semantic Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "几何对齐与文本传播实现开集分割，但创新有限",
+ "innovations": [
+  "Procrustes对齐在自注意力块中旋转键空间",
+  "文本感知的拉普拉斯传播利用文本关系指导像素传播",
+  "align-then-propagate的两步推理框架"
+ ],
+ "method_framework": "PEARL采用两步推理：首先在自注意力块中通过正交Procrustes对齐将键空间旋转到查询子空间，然后通过文本感知的拉普拉斯传播在紧凑网格上细化像素级logits，结合文本关系和图像边界信息。",
+ "experiment_framework": "在8个标准基准数据集上评估，包括Pascal VOC、Pascal Context、COCO-Object/Stuff和Cityscapes，使用mIoU和pAcc指标，与多种训练方法和无需训练方法对比。",
+ "takeaways": [
+  "几何对齐可解决特征空间不匹配问题",
+  "文本关系可作为结构先验指导像素传播",
+  "简洁的两步框架可显著提升性能"
+ ],
+ "weaknesses": [
+  "仅评估单尺度性能，未测试多尺度效果",
+  "未探索不同文本提示策略的影响",
+  "计算效率虽高但仍需额外迭代步骤"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "开集分割与文本关系指导像素传播，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

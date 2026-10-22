@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/NON-I.I.D_Towards A Theoretical Understanding Of In-Context Learning Stability and NON-I.I.D Gen.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/NON-I.I.D_Towards A Theoretical Understanding Of In-Context Learning Stability and NON-I.I.D Gen.pdf",
+ "title": "Towards a Theoretical Understanding of In-Context Learning: Stability and Non-I.I.D Generalisation",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "理论分析ICL稳定性与分布对齐，但假设与实际差距大，实证有限。",
+ "innovations": [
+  "为用小批量梯度下降训练的非线性Transformer建立稳定性界，揭示优化配置如何与损失景观平滑度交互以保证ICL稳定",
+  "引入分布级差异度量，强调ICL提示分布与训练数据分布对齐对有效泛化的重要性",
+  "导出带渐近收敛保证的ICL泛化误差界，揭示逐token预测误差随时间累积、预测长度不加约束会导致泛化崩溃"
+ ],
+ "method_framework": "把ICL泛化拆为算法稳定性与分布差异两因子：先用小批量GD训练Transformer的算法稳定性分析(依赖损失平滑度与步长)给出稳定性界；再定义提示分布与训练分布间的差异度量；两者结合得到ICL泛化误差界，并刻画长预测下误差累积与崩溃条件。",
+ "experiment_framework": "以理论推导为主，辅以实证验证；在Transformer ICL设置上验证稳定性界、分布对齐效应与预测长度累积/崩溃现象，报告泛化误差随提示分布差异与长度的变化。",
+ "takeaways": [
+  "非i.i.d下ICL泛化由算法稳定性与提示-训练分布对齐共同决定",
+  "逐token预测误差沿序列累积，预测长度失控会引发泛化崩溃",
+  "优化配置(步长/批大小)通过损失景观平滑度影响ICL稳定性"
+ ],
+ "weaknesses": [
+  "理论假设(平滑损失、小批量GD)与真实大规模预训练的差距较大，界的紧致度存疑",
+  "实证规模有限，未在现代大模型ICL基准上系统验证崩溃阈值",
+  "给出的是误差界/诊断，未提出改进ICL稳定性的具体算法"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "理论分析ICL稳定性与分布对齐，但假设与实际差距大，实证有限。",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

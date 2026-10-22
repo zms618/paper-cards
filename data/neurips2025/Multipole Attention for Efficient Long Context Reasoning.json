@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Multipole Attention for Efficient Long Context Reasoning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Multipole Attention for Efficient Long Context Reasoning.pdf",
+ "title": "Multipole Attention for Efficient Long Context Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "多极注意力加速长上下文，但聚类开销与极端稀疏验证不足",
+ "innovations": [
+  "多极近似注意力机制",
+  "快速在线聚类算法",
+  "分层多极注意力优化",
+  "系统级Triton内核实现"
+ ],
+ "method_framework": "基于语义相似性聚类键向量，使用聚类中心识别重要token并近似计算注意力，结合分层优化和快速在线更新策略",
+ "experiment_framework": "LongBenchV2和GSM-Infinite数据集，Qwen3-8B和DeepSeek-R1-Distil-Qwen-14B模型，对比Squeezed Attention和QUEST基线",
+ "takeaways": [
+  "语义聚类比位置聚类更适合长上下文推理",
+  "保留完整KV缓存同时近似计算可提高效率",
+  "分层多极方法可平衡精度与计算开销"
+ ],
+ "weaknesses": [
+  "聚类计算开销随上下文长度增长",
+  "未充分验证极端稀疏设置下的性能",
+  "依赖特定位置编码策略"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

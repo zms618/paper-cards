@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Compositional Flows for 3D Molecule and Synthesis Pathway Co-design.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Compositional Flows for 3D Molecule and Synthesis Pathway Co-design.pdf",
+ "title": "Compositional Flows for 3D Molecule and Synthesis Pathway Co-design",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "扩展flow matching做分子组合生成，SOTA但应用领域受限",
+ "innovations": [
+  "将组合状态转移表述为flow matching插值的直接扩展",
+  "结合GFlowNet理论基础实现奖励引导的组合结构采样",
+  "3DSynthFlow在LIT-PCBA和CrossDocked2020上同时达到SOTA结合亲和力和可合成性"
+ ],
+ "method_framework": "标准flow matching一次生成所有维度，无法建模顺序合成步骤。CGFlow将组合状态转移(反应步骤)与连续状态(3D构象)统一为flow matching插值过程。每个合成步骤是离散组合动作，步骤内的连续构象变化用flow matching建模。结合GFlowNet实现奖励引导采样。3DSynthFlow用此框架联合设计分子3D结合姿态和合成路径。",
+ "experiment_framework": "在LIT-PCBA(15个靶点)和CrossDocked2020基准上实验；与TacoGFN、RxnFlow等2D合成基线比较；指标为Vina Dock结合亲和力、AiZynth可合成率、采样效率。",
+ "takeaways": [
+  "CGFlow首次同时在Vina Dock(-9.42)和AiZynth成功率(36.1%)上达到SOTA",
+  "3D相互作用建模对跨靶点鲁棒性能至关重要",
+  "采样效率比2D合成基线提升4.2倍"
+ ],
+ "weaknesses": [
+  "药物设计应用，与可靠性/医学影像/多模态推理主线相关性较低",
+  "pose预测模型的表达力仍有限",
+  "湿实验验证缺失，仅计算基准"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

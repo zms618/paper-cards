@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/IRGS_Inter-Reflective Gaussian Splatting with 2D Gaussian Ray Tracing.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/IRGS_Inter-Reflective Gaussian Splatting with 2D Gaussian Ray Tracing.pdf",
+ "title": "IRGS Inter-Reflective Gaussian Splatting with 2D Gaussian Ray Tracing",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 6.1
+ },
+ "one_line": "IRGS将完整渲染方程引入高斯溅射，提升互反射建模但计算复杂",
+ "innovations": [
+  "2D高斯射线追踪技术，在预训练模型上直接进行射线追踪",
+  "完整的渲染方程集成到高斯溅射框架中，无需简化",
+  "高效的优化方案处理渲染方程评估的计算需求",
+  "新的间接辐射查询策略用于场景重照明"
+ ],
+ "method_framework": "IRGS采用两阶段方法：首先预训练2D高斯溅射模型，然后应用完整渲染方程，通过2D高斯射线追踪实时计算入射光的可见性和间接辐射",
+ "experiment_framework": "在Synthetic4Relight、TensoIR和Stanford-ORB数据集上进行评估，使用PSNR、SSIM、LPIPS等指标评估新视角合成、材质和重照明效果",
+ "takeaways": [
+  "2D高斯射线追踪比3D高斯射线追踪质量损失更小",
+  "完整渲染方程的应用显著提高了互反射建模的准确性",
+  "分层采样和重要性采样策略提高了渲染方程评估的效率"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，需要优化的蒙特卡洛采样",
+  "仅适用于介电材质，对复杂材质建模有限",
+  "重照明阶段使用split-sum近似可能影响间接辐射的准确性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "图形学渲染技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

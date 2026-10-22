@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Task Vector Quantization for Memory-Efficient Model Merging.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Task Vector Quantization for Memory-Efficient Model Merging.pdf",
+ "title": "Task Vector Quantization for Memory-Efficient Model Merging",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "任务向量量化降低模型合并内存，但2位精度显著下降",
+ "innovations": [
+  "任务向量量化(TVQ)利用其窄权重范围实现低精度量化",
+  "残差任务向量量化(RTVQ)分解任务向量为基向量和偏移向量",
+  "量化误差校正方法减少累积误差"
+ ],
+ "method_framework": "通过量化任务向量而非完整模型参数来减少内存使用，RTVQ进一步分解为共享基向量和任务特定偏移向量，实现超低比特精度量化",
+ "experiment_framework": "图像分类(8/14/20任务)、密集预测(NYUv2)和NLP任务(GLUE)，比较TVQ/RTVQ与全精度和微调检查点量化的性能",
+ "takeaways": [
+  "任务向量比完整模型权重范围窄一个数量级，适合低精度量化",
+  "RTVQ在极低比特(2-3位)下仍能保持稳定性能",
+  "量化可减少过拟合并提高泛化能力"
+ ],
+ "weaknesses": [
+  "2位TVQ性能显著下降",
+  "方法主要针对模型合并场景，不适用于其他压缩场景",
+  "密集预测任务评估相对有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "模型合并技术不直接关联可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

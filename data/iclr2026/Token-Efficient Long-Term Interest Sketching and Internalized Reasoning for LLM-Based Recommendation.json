@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Token-Efficient Long-Term Interest Sketching and Internalized Reasoning for LLM-Based Recommendation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Token-Efficient Long-Term Interest Sketching and Internalized Reasoning for LLM-Based Recommendation.pdf",
+ "title": "Token-Efficient Long-Term Interest Sketching and Internalized Reasoning for LLM-Based Recommendation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "SIREN压缩兴趣草图并内化推理，提升LLM推荐效率但应用场景有限",
+ "innovations": [
+  "提出长期兴趣草图（interest sketch）方法，将用户历史编码聚类为语义主题，压缩为紧凑的喜/恶主题列表，保留长期偏好同时抑制噪声",
+  "提出内化推理策略：先用规则奖励RL训练LLM显式推理，再通过隐层对齐将CoT内化到模型参数，推理时直接输出评分",
+  "两阶段训练范式解决推荐场景中无ground-truth CoT的问题，实现接近CoT质量的直接推理"
+ ],
+ "method_framework": "SIREN框架包含两个核心模块：(1)兴趣草图模块：对物品描述编码并聚类发现语义主题，将每个用户历史压缩为短列表的喜欢/不喜欢主题；(2)内化推理模块：第一阶段用规则奖励RL训练LLM进行显式评分推理，第二阶段通过隐层对齐将CoT推理能力内化到参数中，推理时直接生成评分而无需生成rationale tokens。",
+ "experiment_framework": "在多个推荐数据集上评估评分预测任务。基线包括原始历史prompting、直接回答（AO）、CoT方法及现有LLM推荐方法。指标包括RMSE、MAE等预测精度指标，以及输入token数和推理延迟效率指标。",
+ "takeaways": [
+  "兴趣草图压缩可减少48.7%输入token，同时保留长期偏好信息，优于直接截断",
+  "内化推理实现了接近CoT质量的直接输出，推理延迟降低100倍以上",
+  "规则奖励RL训练+隐层对齐的两阶段范式可在无标注CoT的场景下蒸馏推理能力"
+ ],
+ "weaknesses": [
+  "应用场景为推荐系统评分预测，与主线（医学影像/多模态大模型推理可靠性）关联中等偏弱",
+  "兴趣草图依赖物品描述聚类，在物品语义信息稀疏的冷启动场景效果未充分验证",
+  "内化推理的质量保持程度（与显式CoT的差距）分析不够深入"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "推荐系统效率提升，与主线关联中等偏弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

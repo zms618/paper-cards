@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Learned Preﬁx Caching for Efﬁcient LLM Inference.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Learned Preﬁx Caching for Efﬁcient LLM Inference.pdf",
+ "title": "Learned Preﬁx Caching for Efﬁcient LLM Inference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 8.0,
+  "overall": 6.9
+ },
+ "one_line": "学习型前缀缓存优化LLM推理，提升缓存命中率但依赖历史数据",
+ "innovations": [
+  "首个学习型前缀缓存替换策略",
+  "基于对话内容分析预测延续概率",
+  "处理多对话共享KV块的max-pooling机制"
+ ],
+ "method_framework": "LPC框架包含预测器和替换算法，预测器通过文本嵌入和MLP分类器预测对话延续概率，替换算法基于概率和时间衰减进行KV块管理",
+ "experiment_framework": "在LMSys、ShareGPT和Chatbot-Arena三个真实对话数据集上评估，对比LRU基线，使用缓存命中率、吞吐量和TTFT作为指标",
+ "takeaways": [
+  "轻量级预测器设计（仅MLP层训练）",
+  "概率衰减函数处理时间因素",
+  "可扩展至多个LLM实例"
+ ],
+ "weaknesses": [
+  "依赖历史数据训练，可能面临OOD问题",
+  "共享KV块的max-pooling策略可能增加计算复杂度"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

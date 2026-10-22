@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/BiLoRA_Almost-Orthogonal Parameter Spaces for Continual Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/BiLoRA_Almost-Orthogonal Parameter Spaces for Continual Learning.pdf",
+ "title": "BiLoRA Almost-Orthogonal Parameter Spaces for Continual Learning",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "双线性LoRA通过正交基扩展参数空间，降低任务干扰。",
+ "innovations": [
+  "双线性参数空间扩展，将参数空间从d维扩展到d²维",
+  "基于傅里叶变换的固定正交基实现，避免复杂优化过程",
+  "理论证明任务间干扰概率从O(k/d)²降低到O(k/d²)²"
+ ],
+ "method_framework": "BiLoRA通过双线性重构∆Wt=UBtVT，利用固定正交基(如DFT)实现任务分离，支持完美正交和几乎正交两种策略，大幅提升任务容量。",
+ "experiment_framework": "在ImageNet-R、CIFAR-100和DomainNet数据集上评估，与L2P、DualPrompt、CODA-P等基线比较，使用最终准确率和平均准确率作为指标。",
+ "takeaways": [
+  "频率域稀疏表示可有效实现任务分离",
+  "双线性扩展显著降低任务间碰撞概率",
+  "固定正交基避免早期任务对关键参数空间的垄断"
+ ],
+ "weaknesses": [
+  "方法依赖于傅里叶变换，可能限制某些特定任务的适应性",
+  "理论分析中的常数c未明确给出，影响实际应用指导"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "持续学习可靠性方法，但未直接触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

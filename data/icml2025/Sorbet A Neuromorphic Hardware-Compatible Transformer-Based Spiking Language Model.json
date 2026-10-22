@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Sorbet A Neuromorphic Hardware-Compatible Transformer-Based Spiking Language Model.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Sorbet A Neuromorphic Hardware-Compatible Transformer-Based Spiking Language Model.pdf",
+ "title": "Sorbet: A Neuromorphic Hardware-Compatible Transformer-Based Spiking Language Model",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "用位移算子替代softmax/LayerNorm，使Transformer能在神经形态硬件上运行",
+ "innovations": [
+  "针对SNN Transformer中softmax与LayerNorm难在神经形态硬件实现的问题，提出shifting-based的PTsoftmax",
+  "提出Bit Shifting PowerNorm(BSPN)替代能量密集的LayerNorm，二者均硬件友好",
+  "结合知识蒸馏与模型量化得到高度压缩的二值权重模型，在保持竞争力性能下实现27.16x节能"
+ ],
+ "method_framework": "把Transformer语言模型整体脉冲化：用基于位移的PTsoftmax近似标准softmax、用位移运算的BSPN替代LayerNorm，使核心算子可在无乘加的神经形态硬件上运行；再用蒸馏从ANN教师+权重量化到二值，得到可边缘部署的脉冲SLM。",
+ "experiment_framework": "在语言建模/小模型基准上评测，对比BERT等ANN基线，指标为困惑度/精度与能耗；声称比BERT省电27.16x且性能有竞争力。",
+ "takeaways": [
+  "把softmax与LayerNorm改造成位移/位运算版本，是让Transformer真正落到神经形态硬件的关键",
+  "蒸馏+二值量化+脉冲化三者结合，可在边缘隐私场景下用极低能耗运行小语言模型"
+ ],
+ "weaknesses": [
+  "PTsoftmax/BSPN对标准算子的近似误差如何随深度累积、在长文本/复杂任务上的精度损失前9页未充分分析",
+  "27.16x节能多基于神经形态硬件仿真/理论，缺乏真实芯片上的实测能耗",
+  "性能‘有竞争力’是相对BERT级小模型，与现代SLM蒸馏基线(如DistilBERT/TinyLLM)的并表前9页未见"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

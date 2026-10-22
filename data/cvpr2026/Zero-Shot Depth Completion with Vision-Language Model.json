@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Zero-Shot Depth Completion with Vision-Language Model.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Zero-Shot Depth Completion with Vision-Language Model.pdf",
+ "title": "Zero-Shot Depth Completion with Vision Language Model",
+ "scores": {
+  "novelty": 7,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.4
+ },
+ "one_line": "VLM深度补全：稀疏深度token化+文本提示，零样本+17.3%",
+ "innovations": [
+  "任务视角转向：首个VLM深度补全框架，把'在哪补/在哪保留'变成显式文本指令而非隐式网络嵌入——对照人类对补全任务的直觉，重新定义问题输入形态",
+  "稀疏深度注入三件套：①稀疏深度与RGB同方式token化+零初始化卷积块融合(不改VLM架构、保留绝对尺度消解单目尺度/相机歧义)；②稀疏深度导出的二值mask转文本提示；③文本监督仅用稀疏深度生成标签(无需GT)",
+  "零样本泛化实证：仅需语义先验+跨模态表达，7个零样本基准(多样传感器/稀疏度/场景)最高+17.3%优于最强基线(BPNet/Marigold-DC等)"
+ ],
+ "method_framework": "RGB+稀疏深度→零初始化卷积融合→VLM视觉token化；稀疏mask→二值文本提示('0缺失/1有效')；稀疏深度生成文本标签做监督微调；推理时无GT，输出稠密深度。",
+ "experiment_framework": "7个零样本深度补全基准(跨传感器/稀疏度/室内外场景)；对比BPNet/OGNI-DC/G2-MonoDepth/OMNI-DC/Marigold-DC等SOTA；报告零样本指标提升(至+17.3%)与不同稀疏度下的对比。",
+ "takeaways": [
+  "'把先验显式化'：'哪里该预测哪里该保留'用mask文本提示显式告诉模型，比让网络自己悟更稳——几何先验转文本提示的接口思路可迁移到其他补全/修复任务",
+  "'无GT的文本监督'：用稀疏深度自身生成训练标签绕开稠密GT稀缺，'用输入造标签'的自监督范式可复用",
+  "'不改架构的注入'：零初始化卷积块+同质token化把外部信号渐进注入预训练VLM，保留原架构与预训练权重的通用做法"
+ ],
+ "weaknesses": [
+  "VLM文本监督的精度天花板(离散文本标签vs连续深度)未见上界分析；不同稀疏度表现差异(图1)未给逐级数值与失败模式",
+  "零初始化卷积块与token化对VLM原始视觉语义的干扰未做架构消融(只报总体+17.3%)；文本提示粒度(单条整图指令vs区域指令)未比较",
+  "推断速度/参数量开销(大VLM后端)相对专用CNN方法未报告，实用性存疑；'仅稀疏深度造标签'在极端稀疏(如10点)下的监督信号强度未测"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "VLM深度补全：零样本泛化+文本提示显式化几何先验",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

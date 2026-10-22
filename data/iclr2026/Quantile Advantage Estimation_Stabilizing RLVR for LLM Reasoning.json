@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Quantile Advantage Estimation_Stabilizing RLVR for LLM Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Quantile Advantage Estimation_Stabilizing RLVR for LLM Reasoning.pdf",
+ "title": "Quantile Advantage Estimation: Stabilizing RLVR for LLM Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "用分位数基线替代均值基线稳定RLVR训练，数学推理任务有增益",
+ "innovations": [
+  "指出均值基线在奖励离群下会不当惩罚负优势样本，是RLVR熵崩溃与熵爆炸振荡的共同根因",
+  "提出QAE用组内K分位数作基线：难题上强化稀有成功、易题上针对剩余失败，形成响应级双区制门控",
+  "在一阶softmax更新下证明双侧熵安全，给出单步熵变化上下界以同时抑制爆炸与崩溃"
+ ],
+ "method_framework": "将GRPO/DAPO的优势计算中均值基线替换为组内K分位数基线、保留std归一化；K控制优势稀疏度（约80%响应优势为0），从而在难题强化成功、易题针对失败，并由分位数截断自然约束熵变化幅度。",
+ "experiment_framework": "以Qwen3-8B-Base等为骨干；在AIME'24/'25、AMC'23上报告pass@1；对比DAPO/GRPO的熵-性能动态与credit assignment稀疏度。",
+ "takeaways": [
+  "QAE以极小改动稳定熵轨迹，并在AIME'24/'25、AMC'23上取得持续pass@1增益",
+  "基线设计（而非token级启发式）才是扩展RLVR的主要机制",
+  "约80%响应获得零优势，实现稀疏化信用分配"
+ ],
+ "weaknesses": [
+  "属RLVR训练稳定化方向，落地域为数学竞赛推理，非医学影像/多模态主线",
+  "K分位数需调，其对不同奖励分布/任务的敏感度与默认取值鲁棒性未充分",
+  "理论界基于一阶softmax近似，与实际含clip/多步更新的差距需更多实证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "RLVR训练稳定化触及可靠性主线，但落地域非医学影像/多模态",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

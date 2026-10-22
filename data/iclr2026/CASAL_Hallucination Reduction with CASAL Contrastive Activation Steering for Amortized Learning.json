@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/CASAL_Hallucination Reduction with CASAL Contrastive Activation Steering for Amortized Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/CASAL_Hallucination Reduction with CASAL Contrastive Activation Steering for Amortized Learning.pdf",
+ "title": "Hallucination Reduction with CASAL: Contrastive Activation Steering for Amortized Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "参数化激活引导减少LLM幻觉，但机制验证不足。",
+ "innovations": [
+  "将激活引导过程转化为可学习的参数化子网络",
+  "仅使用表示级目标函数作为主要优化目标",
+  "在单一transformer层进行轻量级更新",
+  "支持稠密和MoE架构的通用框架"
+ ],
+ "method_framework": "CASAL通过知识边界探查、构建对比引导向量、训练单层网络三阶段，将激活引导过程嵌入模型权重，实现训练时一次性优化。",
+ "experiment_framework": "在TriviaQA、PopQA、EntityQA等QA数据集评估，与SFT、DPO、GRPO等基线比较，使用幻觉率、拒绝率、准确率等指标。",
+ "takeaways": [
+  "局部表示损失可有效分离已知和未知知识的激活表示",
+  "轻量级单层更新显著提高计算和数据效率",
+  "知识边界具有跨数据集和模态的泛化能力"
+ ],
+ "weaknesses": [
+  "知识探查阶段依赖采样和阈值设定，可能引入偏差",
+  "仅在一个transformer层进行更新可能限制模型整体知识边界的优化",
+  "未充分探索不同层选择对性能的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "幻觉抑制属于可靠性主线，且方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/No Pixel Left Behind A Detail-Preserving Architecture for Robust High-Resolution AI-Generated Detection.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/No Pixel Left Behind A Detail-Preserving Architecture for Robust High-Resolution AI-Generated Detection.pdf",
+ "title": "No Pixel Left Behind: A Detail-Preserving Architecture for Robust High-Resolution AI-Generated Image Detection",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.3
+ },
+ "one_line": "全覆盖图块处理提升高分辨率AI图像检测，但效率与泛化存疑。",
+ "innovations": [
+  "提出全覆盖原生分辨率图块处理避免resize/crop导致的高频痕迹丢失与信息遗漏，做到no pixel left behind。",
+  "设计特征聚合模块(FAM)融合多局部图块特征与全局视图，并加入token级伪造定位(TFL)与JPEG质量因子估计(QFE)两个辅助任务提升鲁棒性。",
+  "构建HiRes-50K基准：50,568张、最高64百万像素、对齐尺寸与JPEG压缩分布的高分辨率检测数据集。"
+ ],
+ "method_framework": "将整幅高分辨率图切为全覆盖原生分辨率图块，分别提取特征；FAM把局部图块特征与下采样全局视图聚合融合；TFL做细粒度空间敏感定位局部篡改区域；QFE显式解耦生成痕迹与压缩噪声，联合训练以抵抗局部伪造与JPEG压缩。",
+ "experiment_framework": "在Chameleon与自建HiRes-50K上评测AI生成图像检测；HiDA-Net在Chameleon上准确率提升13%以上、在HiRes-50K上提升8%以上，声称SOTA。",
+ "takeaways": [
+  "对高分辨率图直接resize/crop会丢失或模糊关键高频伪造痕迹，全覆盖图块处理显著提升检测。",
+  "伪造定位与压缩估计辅助任务能有效解耦生成痕迹与压缩噪声，提升泛化鲁棒性。",
+  "现有检测多在低分辨率合成数据上训练评测，与真实高分辨率场景存在分布错配。"
+ ],
+ "weaknesses": [
+  "全分辨率图块处理带来显著显存与计算开销，推理效率未充分量化。",
+  "基准与测试仍以已知生成器分布为主，对未来新型生成/编辑模型的跨域泛化未充分验证。",
+  "QFE依赖保留的原始JPEG痕迹，对无压缩/多次重压缩极端情形的鲁棒性分析不足。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "高分辨率AI图像检测与可靠性主线交点，但泛化验证不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

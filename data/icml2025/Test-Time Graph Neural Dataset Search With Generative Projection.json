@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Test-Time Graph Neural Dataset Search With Generative Projection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Test-Time Graph Neural Dataset Search With Generative Projection.pdf",
+ "title": "Test-Time Graph Neural Dataset Search With Generative Projection",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.6
+ },
+ "one_line": "测试时图数据集搜索，双条件扩散投影，多数数据集提升微弱",
+ "innovations": [
+  "提出test-time graph neural dataset search这一新研究范式：不微调模型、也不逐图变换，而是学习参数化的测试图数据集分布",
+  "设计PGNDS框架：双条件扩散（GNN表征+标签作为引导）做生成式投影，把测试图分布映射回训练分布",
+  "动态搜索从扩散反向过程中挑选最具表达力的测试图，并与原图做集成推理"
+ ],
+ "method_framework": "已训练GNN固定不变；先用其在训练图上的表征与标签作为双条件，引导score-based扩散在测试图上做反向去噪，把偏移的测试图投影回训练分布；再在整个反向轨迹上动态搜索最具表达力的样本组成新测试图集；最后对原图与适配图做集成推理。含两条命题论证混合伪分布的失配与引导项的约束作用。",
+ "experiment_framework": "图分类用OGBG-BBBP/BACE/ClinTox与Enzymes（ROC-AUC↑）；图回归用QM9(A/B/C/alpha)与FreeSolv（RMSE↓）。基线ERM、EERM、TENT、DropEdge、FeatMask、GTRANS。PGNDS在BACE上提升明显（0.8873 vs 次优0.8338），其余数据集提升幅度较小（BBBP约+0.3pt，FreeSolv RMSE约+0.006）。",
+ "takeaways": [
+  "把测试时适配从改模型/改单图提升到改数据集分布层面，是一个新颖的data-centric视角",
+  "在分布偏移最严重的BACE上PGNDS相对基线提升约5个ROC-AUC点，验证了投影回训练分布的思路",
+  "固定已训练GNN不微调，适合部署后无法在线更新大模型的场景"
+ ],
+ "weaknesses": [
+  "实验仅覆盖分子/蛋白质图分类与回归，未在节点级任务或更大规模图上验证，泛化性证据有限",
+  "多数数据集提升幅度很小（BBBP +0.3pt、ClinTox +0.6pt），实际收益是否显著取决于BACE单一异常点",
+  "扩散生成+动态搜索的推理计算开销未在文中量化，部署成本不透明",
+  "与主线可靠性×医学影像/多模态大模型推理关联弱，仅属图域TTA方法"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

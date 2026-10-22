@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/CodeGEMM_A Codebook-Centric Approach to Efficient GEMM in Quantized LLMs.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/CodeGEMM_A Codebook-Centric Approach to Efficient GEMM in Quantized LLMs.pdf",
+ "title": "CodeGEMM: A Codebook-Centric Approach to Efficient GEMM in Quantized LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "预计算部分和替代反量化，提升低比特LLM矩阵乘法效率",
+ "innovations": [
+  "预计算部分和(Psumbook)替代传统反量化",
+  "统一内核支持多种码本超参数配置",
+  "显著降低计算复杂度和内存占用"
+ ],
+ "method_framework": "CodeGEMM预计算码本与输入向量的内积结果存储在轻量级Psumbook中，推理时直接通过码索引获取部分和，消除逐元素查找和反量化步骤",
+ "experiment_framework": "Llama-3模型(8B/70B)，2-bit配置，对比cuBLAS、LUTGEMM、QuIP#、QTIP、AQLM等基线，测量延迟、内存占用、准确性和能效",
+ "takeaways": [
+  "预计算内积结果可显著降低计算复杂度",
+  "码本超参数配置对内存-延迟-精度权衡至关重要"
+ ],
+ "weaknesses": [
+  "仅评估了矩阵乘法内核，未展示端到端性能",
+  "未充分分析不同模型架构的通用性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

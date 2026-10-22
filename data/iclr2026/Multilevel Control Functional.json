@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Multilevel Control Functional.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Multilevel Control Functional.pdf",
+ "title": "Multilevel Control Functional",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "结合Stein控制与多层蒙特卡洛，低维场景加速积分收敛",
+ "innovations": [
+  "提出多层控制泛函(MLCF)，首次将非参数Stein控制变量与多层蒙特卡洛框架结合",
+  "理论证明在被积函数与密度光滑且维数不高时，MLCF享有更快的收敛速率",
+  "将MLCF扩展到变分推断场景，在贝叶斯神经网络上验证了改进效果"
+ ],
+ "method_framework": "结合Stein变分梯度推导的非参数控制变量与多保真蒙特卡洛方法，在每个多层级上分别构造控制泛函来降低该层级估计量的方差，从而整体加速蒙特卡洛积分的收敛。",
+ "experiment_framework": "在微分方程贝叶斯推断(生态模型)和贝叶斯神经网络变分推断两个场景下评估，对比标准MC、多层MC和传统控制泛函方法的方差与收敛速度。",
+ "takeaways": [
+  "MLCF在光滑低维场景下比传统MLMC和单层级控制泛函收敛更快",
+  "结合多层结构与控制变量可同时降低各层级估计的方差",
+  "方法可扩展到变分推断中的高维积分估计"
+ ],
+ "weaknesses": [
+  "收敛优势仅在低维场景下成立，高维时控制变量的构造难度和效果未充分验证",
+  "实验规模较小，仅在生态模型和小型BNN上验证，缺乏大规模实际应用案例",
+  "非参数控制泛函的拟合精度受基函数/神经网络容量影响，实际工程实现细节不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "蒙特卡洛积分加速方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

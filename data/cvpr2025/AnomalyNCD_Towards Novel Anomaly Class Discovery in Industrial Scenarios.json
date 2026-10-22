@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/AnomalyNCD_Towards Novel Anomaly Class Discovery in Industrial Scenarios.pdf",
+ "conf": "cvpr2025",
+ "path": "C:\\Users\\James\\Desktop\\study\\paper\\项目记忆\\论文卡片\\精读卡片库\\cvpr2025\\AnomalyNCD_Towards Novel Anomaly Class Discovery in Industrial Scenarios.json",
+ "title": "AnomalyNCD: Towards Novel Anomaly Class Discovery in Industrial Scenarios",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 7.0,
+  "overall": 6.0
+ },
+ "one_line": "阈值扫描选主异常区+mask引导DINO注意力，但超参依赖外部监督",
+ "innovations": [
+  "MEBin：在 [smin,smax] 内均匀取 T 个阈值二值化并做腐蚀，用「分割后区域数的众数 δ̄i + 最长连续阈值区间且区间长度 > τ」选出主异常区，取该区间最小阈值做最终分割，再按最小外接方框裁出 anomaly-centered sub-image，把无监督类发现拆解成逐区域分类。",
+  "Mask-Guided Representation Learning：DINO ViT-B/8 最后 9 层给 CLS token 的注意力图加一个 mask vector M（>0.5 处记 0、否则 −∞）实现 mask-guided attention，并用 anomaly score 校正伪标签权重 w=max(0.5−s,0)。",
+  "Region Merging：按各 sub-image 的异常区域面积做 softmax 权重加权其预测，聚合得到图像级异常类别。"
+ ],
+ "method_framework": "阈值扫描+腐蚀+区域数众数选主异常区 → MEBin 裁出 anomaly-centered sub-image → DINO 末层 mask-guided CLS 注意力提特征 → 伪标签权重 w=max(0.5−s,0) → 面积加权区域合并出类。",
+ "experiment_framework": "MVTec AD 与 MTD；Dl 用 AeBAD-S 产生 anomaly score；对比 PatchCore/RD++/EfficientAD/PNI/CPR/MuSc 等 NCD 方法；指标 NMI、ARI、F1。",
+ "takeaways": [
+  "二值化阈值不再手挑：用「区域数众数 + 最长连续阈值区间」自动选主异常区，让伪标签生成摆脱对单个固定阈值的调参，这是 NCD 无监督流程里最容易被数据分布带偏的一步。",
+  "MVTec AD 上 +8.8% NMI、+9.5% ARI、+12.8% F1（MTD 上 +5.7/+10.8），且所有方法仅以无标注图输入，说明增益来自表征与伪标签质量而非额外监督。"
+ ],
+ "weaknesses": [
+  "MEBin 的众数 δ̄i、区间长度阈值 τ、T 个均匀阈值本质是两个离散超参的网格搜索结果（表 3 只对比了 Otsu 与不同 ε），跨数据集是否可复用未验证；且「区域数众数」假设异常区块数量在各阈值下稳定，多异常/小异常场景会直接失效。",
+  "Dl 用 AeBAD-S（一个需要正常类标签训练的有监督 AD 器）产生 anomaly score，等于给自称「只用无标注图」的自设定流程引入了外部监督源，该监督强度在消融中未被剥离。",
+  "NMI/ARI 对聚类结构敏感、F1 依赖 sub-image 划分，正文却未见多种子/方差；表 1/2 中 MVTec 与 MTD 上排名不一致（在 MTD 上同一套组合落到第二），而最终表末又给出各自的 +X% 提升，稳定性存疑。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "工业异常检测属于可靠性主线，但方法依赖外部监督",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

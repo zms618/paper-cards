@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Parallel Sampling from Masked Diffusion Models via Conditional Independence Testing.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Parallel Sampling from Masked Diffusion Models via Conditional Independence Testing.pdf",
+ "title": "Parallel Sampling from Masked Diffusion Models via Conditional Independence Testing",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "PUNT通过条件独立测试调和并行采样冲突，提升文本生成效率。",
+ "innovations": [
+  "形式化掩码扩散并行采样的两大冲突要求：并行更新token须条件独立，且应优先高置信预测。",
+  "提出PUNT：用近似条件独立测试识别token依赖，从冲突组剔除低置信token，构造同时满足独立性与置信度的unmask索引集。",
+  "无需训练、模型无关；观察到涌现的分层生成(先段落结构后局部精修)，呈类规划过程。"
+ ],
+ "method_framework": "每轮对候选高置信token做近似条件独立性检验：若若干token彼此依赖(同属冲突组)，则只保留其中最高置信者、剔除其余；从而选出可并行unmask且相互条件独立的索引集；多轮迭代直至全部生成，实现准确率-算力更优的并行采样。",
+ "experiment_framework": "在掩码扩散文本生成模型上评测；对比training-free并行采样基线及逐token顺序生成；指标为准确率与算力；IFEval上较基线(含顺序生成)最高+16%，长序列收益更大；并验证对超参数不敏感。",
+ "takeaways": [
+  "条件独立测试可有效调和并行采样中独立性与高置信优先的矛盾。",
+  "PUNT在准确率-算力权衡上优于强training-free基线，长序列尤甚。",
+  "方法自发形成先全局后局部的分层/类规划生成策略。"
+ ],
+ "weaknesses": [
+  "近似条件独立测试的计算开销随token数增长，超长序列成本未充分量化。",
+  "仅在掩码扩散文本模型上验证，图像/多模态扩散的迁移未涉及。",
+  "类规划涌现是观察性结论，缺乏对其机制的因果消融。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "文本生成效率提升，未触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

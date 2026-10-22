@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Understanding Vs. Generation Navigating OPTIMIZATION Dilemma In Multimodal Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Understanding Vs. Generation Navigating OPTIMIZATION Dilemma In Multimodal Models.pdf",
+ "title": "Understanding vs. Generation: Navigating Optimization Dilemma in Multimodal Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "诊断多模态模型理解-生成两难，提出R3框架在生成循环中嵌入理解。",
+ "innovations": [
+  "指出理解-生成两难的主因是训练目标冲突：生成(最大化似然)无需理解即可优化，与所需鲁棒理解竞争模型容量",
+  "提出R3(Reason-Reflect-Refine)框架，把单步生成重构为多步generate-understand-regenerate，让理解从被动评测变为生成的主动组件",
+  "在生成过程中显式利用模型理解能力，同时取得更强生成结果与改进的、与生成过程相关的理解能力"
+ ],
+ "method_framework": "统一多模态模型要同时理解与生成视觉信息，但二者难同时提升：高保真生成模型(扩散)弱于计数/空间理解，VQA/密集caption模型生成弱。本文认为根因在目标冲突——生成目标无需理解即可优化，容量被生成独占。R3把生成从单步映射改为多步：Reason(分析用户意图出初稿)→Reflect(反思初稿是否满足请求)→Refine(按反思精修)，使理解主动参与生成。",
+ "experiment_framework": "在统一多模态模型上对比R3与单步生成及理解/生成分容量架构；指标为生成质量与理解任务(VQA/计数/空间推理等)性能；报告生成更强且与生成相关的理解也提升。",
+ "takeaways": [
+  "理解-生成两难主要来自目标冲突而非架构容量不足",
+  "把理解显式嵌入生成循环(R3多步)可同时改善生成与理解",
+  "生成应主动纳入对语义的理解，而非与理解竞争容量"
+ ],
+ "weaknesses": [
+  "属多模态统一理解-生成方向，与本主线(可靠性×多模态推理/医学影像)关联中等偏弱",
+  "多步推理-反思-精修增加推理成本，正文前9页未量化其时延/算力开销",
+  "理解提升'与生成过程相关'，对通用理解能力(如纯VQA)是否普适增益未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "多模态理解-生成框架，与可靠性主线中等关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

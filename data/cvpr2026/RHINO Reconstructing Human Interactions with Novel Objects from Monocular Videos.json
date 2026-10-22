@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/RHINO Reconstructing Human Interactions with Novel Objects from Monocular Videos.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/RHINO Reconstructing Human Interactions with Novel Objects from Monocular Videos.pdf",
+ "title": "RHINO Reconstructing Human Interactions with Novel Objects from Monocular Videos",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "RHINO从单目视频重建人-物交互，但依赖多个预训练模型且实验有限",
+ "innovations": [
+  "使用3D感知基础模型估计物体运动并解耦相机运动",
+  "基于神经SDF的组成神经场框架，同时编码形状和接触信息",
+  "两阶段交替优化框架，通过可微分接触先验改善物理合理性"
+ ],
+ "method_framework": "三阶段框架：1)利用3D感知基础模型初始化场景、物体和人体；2)将各组件对齐到世界坐标系；3)使用组成神经SDFs联合优化并添加接触约束",
+ "experiment_framework": "BenchRHINO数据集(7个序列，手持相机+4D真值)，与HSR、HOLD、InterTrack比较，使用Chamfer距离、Hausdorff距离、F1分数和PSNR等指标",
+ "takeaways": [
+  "神经SDFs可同时编码几何和接触信息",
+  "3D感知基础模型可提高低纹理区域的特征匹配鲁棒性",
+  "两阶段优化可避免接触损失对物体形状的破坏"
+ ],
+ "weaknesses": [
+  "依赖SAM2进行前景/背景分割，可能影响分割质量",
+  "接触检测依赖InteractVLM模型，可能存在假阳性",
+  "实验仅限于7个序列，泛化能力有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "人-物重建与可靠性主线无实质交点，仅具知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

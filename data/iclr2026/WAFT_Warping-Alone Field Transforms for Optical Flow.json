@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/WAFT_Warping-Alone Field Transforms for Optical Flow.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/WAFT_Warping-Alone Field Transforms for Optical Flow.pdf",
+ "title": "WAFT: Warping-Alone Field Transforms for Optical Flow",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "去除cost volume的warping架构，提升精度与速度，但泛化与理论分析不足。",
+ "innovations": [
+  "提出WAFT架构：完全去除cost volume，仅用warping进行光流估计，挑战了领域传统认知",
+  "高分辨率warping替代低分辨率cost volume，既提升精度又降低内存成本",
+  "在Spring、Sintel、KITTI三个基准上均排名第一，KITTI零样本泛化最佳，速度比同类方法快1.3-4.1倍"
+ ],
+ "method_framework": "类似RAFT的迭代更新架构，但将cost volume替换为高分辨率warping操作。对每个像素，直接用当前光流估计warping第二帧特征，而非在邻域内计算所有像素对的相似度。这种设计避免了cost volume的二次方内存开销，同时保持甚至提升了精度。",
+ "experiment_framework": "在Spring、Sintel、KITTI等主流光流基准上评估。对比基线包括RAFT、FlowFormer++、CCMR+等SOTA方法。指标包括端点误差（EPE）和推理速度。",
+ "takeaways": [
+  "Cost volume并非高精度光流估计的必要条件——简单的warping操作配合迭代更新即可达到SOTA",
+  "去除cost volume后，模型可以使用更高分辨率的特征，从而更好地处理精细运动",
+  "简化的架构反而提升了效率和泛化能力"
+ ],
+ "weaknesses": [
+  "仅在标准光流基准上验证，极端大位移或遮挡严重场景的鲁棒性未充分测试",
+  "去除cost volume后，匹配模糊区域的能力是否下降未详细分析",
+  "与最新的基于Transformer的方法相比，架构细节的理论分析较少"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "光流估计与可靠性主线无实质交集，属常规计算机视觉任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

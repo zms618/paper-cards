@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/IDER_Idempotent Experience Replay for RELI-ABLE Continual Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/IDER_Idempotent Experience Replay for RELI-ABLE Continual Learning.pdf",
+ "title": "IDER: Idempotent Experience Replay for RELI-ABLE Continual Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "幂等经验回放提升持续学习可靠性，但依赖回放机制且缺乏分布差异分析",
+ "innovations": [
+  "引入幂等性原理到持续学习领域",
+  "设计幂等蒸馏损失减轻近期任务偏差",
+  "修改架构实现幂等性而不增加参数"
+ ],
+ "method_framework": "IDER包含两个模块：标准幂等模块训练当前模型对当前数据幂等；幂等蒸馏模块确保当前模型与前一任务模型检查点之间的幂等性，通过冻结前一模型避免错误放大。",
+ "experiment_framework": "在CIFAR-10、CIFAR-100和Tiny-ImageNet数据集上评估，使用最终平均准确率(FAA)、最终遗忘(FF)和期望校准误差(ECE)作为指标，并与多种基线方法比较。",
+ "takeaways": [
+  "幂等性原理可有效提升持续学习模型的预测可靠性",
+  "方法设计简洁且可即插即用到现有持续学习方法中",
+  "在更具挑战性的广义类增量学习场景中表现优异"
+ ],
+ "weaknesses": [
+  "方法依赖于经验回放机制，可能不适用于无回放场景",
+  "未充分探讨不同任务间数据分布差异对幂等性的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "持续学习可靠性提升，幂等设计模式可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

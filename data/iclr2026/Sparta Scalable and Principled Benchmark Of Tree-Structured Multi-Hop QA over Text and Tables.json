@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Sparta Scalable and Principled Benchmark Of Tree-Structured Multi-Hop QA over Text and Tables.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sparta Scalable and Principled Benchmark Of Tree-Structured Multi-Hop QA over Text and Tables.pdf",
+ "title": "SPARTA: Scalable and Principled Benchmark of Tree-Structured Multi-Hop QA over Text and Tables",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "自动构建树状多跳表-文QA基准，暴露SOTA模型跨模态推理短板。",
+ "innovations": [
+  "端到端自动构建大规模表-文QA基准，仅需HybridQA四分之一标注时间与轻量人工校验",
+  "用从非结构化段落抽取的原子事实丰富源表构建参考事实库，合成嵌套谓词数随跳数可控的嵌套查询",
+  "提出溯源精化(改写返回非空结果的合法查询)与真实结构约束(限定查询图后序遍历)两项技术保证SQL可执行且问句自然"
+ ],
+ "method_framework": "先把源表用从段落抽取的原子事实(grounding table)丰富成参考事实库；再合成嵌套查询使嵌套谓词数对应目标跳数；用溯源精化修正可执行性、用真实结构约束限制生成在查询图后序遍历上，产出高保真QA对，覆盖聚合/分组/深多跳。",
+ "experiment_framework": "在SPARTA上评测在HybridQA(>70 F1)/OTT-QA(>50 F1)上的SOTA模型；报告这些模型在SPARTA上暴跌超30 F1，暴露跨模态深度推理的根本弱点。",
+ "takeaways": [
+  "现有表-文QA基准小而浅(≤2跳、少聚合)，掩盖了模型深度推理短板",
+  "自动构建+溯源精化+真实结构约束可低成本产出高保真深多跳基准",
+  "SOTA模型在深多跳表-文推理上F1骤降30+，说明跨模态推理仍很弱"
+ ],
+ "weaknesses": [
+  "题目由模板化查询图生成，语言多样性/真实世界歧义可能不及人工题",
+  "可执行SQL约束可能偏向结构化可表达问题，对开放性自然语言表-文问题覆盖有限",
+  "基准难度随跳数激增，未来模型提升后是否仍具区分度需持续维护"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "表-文QA基准构建，非可靠性主线但方法扎实可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

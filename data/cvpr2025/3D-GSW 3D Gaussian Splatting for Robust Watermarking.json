@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/3D-GSW 3D Gaussian Splatting for Robust Watermarking.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3D-GSW 3D Gaussian Splatting for Robust Watermarking.pdf",
+ "title": "3D-GSW: 3D Gaussian Splatting for Robust Watermarking",
+ "scores": {
+  "novelty": 4.5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 3.0,
+  "overall": 4.3
+ },
+ "one_line": "3DGS水印迁移，FGD剪裁+梯度掩码，实验不充分",
+ "innovations": [
+  "FGD两阶段：先用辅助损失对颜色参数的梯度V_π(式6-7)度量每个高斯对渲染质量的贡献并剔除低贡献者，再对渲染图分块做DFT、用二次掩码Q加权算高频强度E，把Top-K%高频块中的高斯切分为更小的以补回质量",
+  "梯度掩码z∝1/e^{|θ|^β}并归一化，按参数幅度反向缩放梯度(位置µ除外)，使微调嵌入消息时尽量不动预训练3D-GS参数",
+  "把DWT的LL2子带送冻结的HiDDeN解码器提取消息，同时只用{LH,HL,HH}高频子带构造L_w损失，约束水印图与原图的高频结构一致"
+ ],
+ "method_framework": "先对预训练3D-GS做FGD(按渲染贡献剔除高斯+按分块DFT高频强度切分)，再由参数幅度构造梯度掩码；微调时渲染图做DWT，LL2子带送冻结HiDDeN解码器算消息BCE损失，高频子带算L_w；联合L1与LPIPS损失优化。",
+ "experiment_framework": "Blender/LLFF/Mip-NeRF360共25景；对比StegaNeRF+3DGS、WateRF+3DGS与去FGD版本；32/48/64比特下测bit accuracy与PSNR/SSIM/LPIPS，并测7种图像失真与3种模型攻击下的鲁棒性。",
+ "takeaways": [
+  "'先剪掉无效高斯再嵌入'把鲁棒性与实时性放在同一处解决：冗余高斯既拖慢渲染又是弱嵌入载体，这个定位比单纯加损失更有效",
+  "梯度掩码按参数幅度指数衰减并显式排除位置参数µ，是'微调时保护预训练模型'可直接复用的小技巧",
+  "把DWT的LL送解码器、高频子带送质量损失，在同一变换上同时服务鲁棒性与不可见性，分工清晰"
+ ],
+ "weaknesses": [
+  "本质是NeRF水印(WateRF/StegaNeRF/HiDDeN)向3DGS的迁移加两个3DGS侧trick(FGD、梯度掩码)；且两个基线都需作者改造(StegaNeRF加三层线性层、参数置1e-4)才能跑，公平性存疑",
+  "报了五个随机种子但所有表只给均值，无标准差/显著性；Combined攻击下90.84 vs 84.67这类差距是否稳定无法判断",
+  "消融只到'去FGD'一档，Table 4前三行是双组件组合而非单组件逐一消融，梯度掩码与小波损失的独立贡献不清；K=1%、β=4、V_π阈值1e-8等阈值均无敏感性分析",
+  "未与面向3DGS的GS-hider比较，只比NeRF系方法；也未报告嵌入耗时与实时渲染FPS实测，正文在图6处截断"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "3DGS水印工程，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

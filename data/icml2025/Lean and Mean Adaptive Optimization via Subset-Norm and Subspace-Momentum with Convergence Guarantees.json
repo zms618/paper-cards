@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Lean and Mean Adaptive Optimization via Subset-Norm and Subspace-Momentum with Convergence Guarantees.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Lean and Mean Adaptive Optimization via Subset-Norm and Subspace-Momentum with Convergence Guarantees.pdf",
+ "title": "Lean and Mean Adaptive Optimization via Subset-Norm and Subspace-Momentum with Convergence Guarantees",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 5,
+  "overall": 6
+ },
+ "one_line": "两种省显存优化技术，在LLaMA预训练中省80%显存并达到Adam性能",
+ "innovations": [
+  "Subset-Norm(SN) 通过步长共享统一 AdaGrad-Norm 与 AdaGrad-Coordinate，显存 O(d)→O(√d)，并在坐标子高斯噪声下给出高概率收敛且维数依赖更优",
+  "Subspace-Momentum(SM) 在选定低维子空间做动量、在正交补做 SGD，压缩动量状态显存并证明高概率收敛",
+  "两者结合(AdamSNSM)在几乎不调超参下用 6.8B token 达到 Adam 13.1B token 的困惑度，显存省 80%+"
+ ],
+ "method_framework": "SN 对坐标分组共享自适应步长以缩减二阶矩状态；SM 将动量投影到低维子空间、正交补用普通 SGD 更新；两者可插入通用自适应优化器模板，兼顾省显存与收敛保证。",
+ "experiment_framework": "在 LLaMA 1B 预训练(13.1B token)与多种微调上对比 Adam/GaLore/AdamSN，报告验证困惑度、优化器显存占用(Adam 4.99GB vs 本方法 0.84GB)与达到目标困惑度所需 token。",
+ "takeaways": [
+  "优化器显存可在不牺牲性能的前提下大幅压缩，SN+SM 优于 GaLore 等低秩方案",
+  "子高斯噪声下 SN 的维数依赖改善，理论与实证一致",
+  "省显存与更快收敛可同时实现，而非以性能换内存"
+ ],
+ "weaknesses": [
+  "应用域为 LLM 训练效率，与鲁棒性/可信AI/多模态推理主线关联弱",
+  "子空间维度/子集划分引入新超参，前9页对其敏感性分析有限",
+  "高概率收敛为非凸光滑假设下的结果，对大规模预训练的实际紧性未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

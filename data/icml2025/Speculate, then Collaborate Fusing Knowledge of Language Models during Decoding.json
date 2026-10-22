@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Speculate, then Collaborate Fusing Knowledge of Language Models during Decoding.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Speculate, then Collaborate Fusing Knowledge of Language Models during Decoding.pdf",
+ "title": "Speculate, then Collaborate: Fusing Knowledge of Language Models during Decoding",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.8
+ },
+ "one_line": "投机解码改多模型融合，规则决策树唤起assistant修正草稿。",
+ "innovations": [
+  "提出Collaborative Speculative Decoding(CoSD)，在投机解码框架内实现测试时多LLM知识融合，无需额外训练",
+  "用draft模型生成初始序列，再以易学习的规则或决策树决定何时调用assistant模型修正草稿",
+  "在提升知识融合的同时改善推理效率、可跨域跨模型迁移，并具备更好可解释性"
+ ],
+ "method_framework": "测试时融合：主draft模型先投机式生成草稿token；一个轻量、可由小样本学得的规则/决策树在解码过程中判断何时唤起擅长该领域的assistant模型对草稿做修正/替换，复用投机解码的接受-验证机制保持效率。",
+ "experiment_framework": "多个基准上对比已有测试时融合方法(动态路由、token-wise/character-wise融合)，指标为准确率与推理效率；声称准确率最高提升10%。",
+ "takeaways": [
+  "把‘何时调用哪个专家’建模成解码中途的轻量可学习决策，能兼顾知识融合质量与投机解码的效率",
+  "规则/决策树形式的唤起策略比黑箱router更可解释，且跨域跨模型可迁移"
+ ],
+ "weaknesses": [
+  "依赖存在一个强且接受草稿的验证模型，多专家间接受率/匹配的理论保证缺失",
+  "‘最多10%’提升随模型对互补性强弱波动，对能力高度重叠的模型对增益有限",
+  "前9页未见详细效率-准确率权衡曲线，融合带来的额外调用开销与加速比未量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

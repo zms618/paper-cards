@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MTSTRec_Multimodal Time-Aligned Shared Token Recommender.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MTSTRec_Multimodal Time-Aligned Shared Token Recommender.pdf",
+ "title": "MTSTRec: Multimodal Time-Aligned Shared Token Recommender",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "常规多模态推荐器，添加时间对齐token和LLM提示",
+ "innovations": [
+  "时间对齐共享token(TST)融合模块",
+  "多模态特征提取器(文本、风格、提示文本)",
+  "中间融合策略保持模态特定特征同时实现跨模态交互"
+ ],
+ "method_framework": "MTSTRec包含特征提取器和多模态Transformer。特征提取器处理产品ID、图像、文本和价格，生成模态特定嵌入。多模态Transformer使用TST模块在每个时间步对齐不同模态特征，实现高效跨模态融合。",
+ "experiment_framework": "在三个电商数据集(Food、House-Hold、H&M)上评估，使用NDCG@k、HR@k、MRR@k指标，与SASRec、BERT4Rec等基线比较，包括单模态和多模态方法。",
+ "takeaways": [
+  "时间对齐的共享token设计有效融合多模态信息",
+  "LLM提示文本增强特征提取提升推荐性能",
+  "中间融合策略优于早期和晚期融合"
+ ],
+ "weaknesses": [
+  "未充分讨论模型计算复杂度和效率",
+  "缺乏对模型鲁棒性和泛化能力的深入分析",
+  "未探索不同模态权重分配的影响"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

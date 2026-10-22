@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Quartet Diffusions Structure-Aware Point Cloud Generation through Part Symmetry Guidance.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Quartet Diffusions Structure-Aware Point Cloud Generation through Part Symmetry Guidance.pdf",
+ "title": "Quartet of Diffusions: Structure-Aware Point Cloud Generation through Part and Symmetry Guidance",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 3.5,
+  "overall": 5.0
+ },
+ "one_line": "四扩散模型协同生成点云，对称与部件先验集成但效率与标注依赖存疑",
+ "innovations": [
+  "用四个协同扩散模型分别学习全局形状latent、对称分布、语义部件分布与部件空间装配分布",
+  "在生成全过程中同时集成并强制对称与部件先验，保证对称、部件放置连贯与高质量多样性",
+  "通过中央全局latent强化装配部件间的结构一致性，并支持对单个部件的细粒度可控编辑"
+ ],
+ "method_framework": "将形状生成解耦为可解释组件：全局形状latent扩散、对称扩散、部件扩散与装配扩散协同；先验分别采样后由全局latent组装，形成可控、对称、结构连贯的点云。",
+ "experiment_framework": "在点云生成基准上评测；对比整体式/仅部件合成方法的生成质量、多样性与对称保持；报告SOTA。",
+ "takeaways": [
+  "在高质量与多样性点云生成上取得SOTA，同时保证对称性",
+  "部件先验是识别并强制局域对称的前提，二者协同优于单独使用",
+  "解耦生成流程支持对单个部件的定向操控而保持整体结构一致"
+ ],
+ "weaknesses": [
+  "属3D生成方向，与可靠性、验证器、医学影像或多模态推理主线无直接关联",
+  "四模型级联带来采样成本与误差累积，前9页未见效率与失败模式分析",
+  "对称/部件标注依赖、以及与最新3D生成基线的对比消融需看后续页"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.13,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "3D点云生成与可靠性主线无直接关联，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

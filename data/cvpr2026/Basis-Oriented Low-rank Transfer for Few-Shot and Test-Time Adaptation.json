@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Basis-Oriented Low-rank Transfer for Few-Shot and Test-Time Adaptation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Basis-Oriented Low-rank Transfer for Few-Shot and Test-Time Adaptation.pdf",
+ "title": "Basis-Oriented Low-rank Transfer for Few-Shot and Test-Time Adaptation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "基于正交谱基的参数高效迁移学习，但源任务依赖性强",
+ "innovations": [
+  "基于多任务奇异方向构建正交谱基",
+  "无需元训练的强初始化方法",
+  "参数高效的谱系数自适应"
+ ],
+ "method_framework": "BOLT分两阶段：离线阶段从多个源任务提取奇异方向并正交化形成共享基；在线阶段冻结基，仅训练少量对角系数实现任务自适应。",
+ "experiment_framework": "在少样本分类、OOD鲁棒性和测试时适应三个轨道上评估，使用ViT-B/32、ViT-B/16和ViT-L/14三种CLIP主干，对比零样本CLIP、线性探针、LoRA等基线方法。",
+ "takeaways": [
+  "正交化任务向量可减少干扰并提高泛化性",
+  "谱系数池化提供无需训练的强初始化"
+ ],
+ "weaknesses": [
+  "依赖源任务质量，源任务与目标任务差异大时性能可能下降",
+  "仅保留前12个奇异方向可能丢失部分重要信息"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "参数高效迁移方法触及可靠性主线，但源任务依赖性限制落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

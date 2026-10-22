@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Sublinear Spectral Clustering Oracle with Little Memory.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sublinear Spectral Clustering Oracle with Little Memory.pdf",
+ "title": "Sublinear Spectral Clustering Oracle with Little Memory",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "突破谱聚类神谕内存下界，建立S·T=Õ(n)权衡，但仅限合成图验证。",
+ "innovations": [
+  "首次突破亚线性谱聚类神谕的Ω(√n)内存下界，实现O(n^{0.01})等极小内存下仍可亚线性时间回答聚类成员查询",
+  "建立内存-时间权衡前沿：S·T=Õ(n)（对数电导间隙的可聚类图），并证明该权衡在自然方法类下近优",
+  "在合成网络上验证了不同内存配置下的聚类查询准确率与时间开销的权衡关系"
+ ],
+ "method_framework": "基于 planted partition 模型和谱聚类理论，通过分层采样和随机游走技术在极小内存下构建紧凑数据结构。核心思路：用少量种子节点的局部聚类信息近似全局谱嵌入，通过多次局部扩散和一致性投票推断任意节点的聚类归属。内存S和查询时间T之间通过采样种子数量和扩散步数进行调节。",
+ "experiment_framework": "在合成网络（planted partition模型）上验证：(1)不同内存预算下的聚类查询准确率；(2)查询时间与内存的权衡曲线；(3)与理论预测的S·T=Õ(n)的吻合度。",
+ "takeaways": [
+  "谱聚类神谕的内存需求可以从√n大幅降低到近线性以下，代价是查询时间相应增加",
+  "内存-时间权衡S·T=Õ(n)是此类局部聚类查询的基本下界（对数因子内），揭示了问题的信息论本质",
+  "该结果对超大规模图的流式分析和内存受限场景（如GPU/TPU片上内存）有实际意义"
+ ],
+ "weaknesses": [
+  "仅在合成planted partition图上验证，真实网络（社交网络、生物网络）的效果未验证",
+  "算法假设了较强的可聚类性条件（对数电导间隙），在社区结构模糊的图上可能失效",
+  "前9页未展示完整的实验细节和超参数敏感性分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "图算法与可靠性主线无交点，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

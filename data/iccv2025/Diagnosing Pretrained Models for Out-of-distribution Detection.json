@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Diagnosing Pretrained Models for Out-of-distribution Detection.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Diagnosing Pretrained Models for Out-of-distribution Detection.pdf",
+ "title": "Diagnosing Pretrained Models for Out-of-distribution Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 8.0,
+  "overall": 6.9
+ },
+ "one_line": "分析训练配方对OOD检测影响并提出修复方法",
+ "innovations": [
+  "系统诊断torchvision训练配方对OOD检测的影响",
+  "提出AugDelete后修复方法",
+  "提出AugRevise训练时改进方法"
+ ],
+ "method_framework": "通过分析torchvision v1/v2模型差异，识别标签平滑和mixup是导致OOD性能下降的主要原因，提出AugDelete(微调最后一层)和AugRevise(修改训练配方)两种解决方案。",
+ "experiment_framework": "ImageNet-1K/200数据集，对比ResNet、Swin-T等模型，使用MLS、KNN等评分函数，评估ID准确率和OOD AUROC",
+ "takeaways": [
+  "标签相关增强技术对OOD检测有负面影响",
+  "简单微调最后一层可有效修复预训练模型",
+  "虚拟分离损失可增强ID与混合样本的可分性"
+ ],
+ "weaknesses": [
+  "未探索医学影像等特定领域的应用",
+  "AugRevise需要额外训练成本"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "OOD检测与可靠性主线明确交点，方法设计具迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

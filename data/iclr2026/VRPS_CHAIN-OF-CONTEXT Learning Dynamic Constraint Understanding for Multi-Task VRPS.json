@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VRPS_CHAIN-OF-CONTEXT Learning Dynamic Constraint Understanding for Multi-Task VRPS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VRPS_CHAIN-OF-CONTEXT Learning Dynamic Constraint Understanding for Multi-Task VRPS.pdf",
+ "title": "Chain-of-Context Learning: Dynamic Constraint Understanding for Multi-Task VRPs",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "链式上下文学习提升VRP求解器状态估计，但与主线研究关联弱",
+ "innovations": [
+  "提出相关性引导的上下文重构模块(RGCR)，按约束与当前节点嵌入的相似度自适应强调不同约束，纠正静态节点嵌入与动态上下文错配",
+  "提出轨迹共享的节点重嵌入模块(TSNR)，用共享节点嵌入作查询、多轨迹上下文作键值做多头注意力，避免逐轨迹重复重嵌入的计算开销",
+  "在环境中逐步更新节点嵌入并作为下一步查询，建模解码过程中节点重要性的时序演化依赖"
+ ],
+ "method_framework": "CCL在统一RL框架的多任务VRP解码过程中，每一步先由RGCR组合各约束的特定属性(如剩余容量、当前时间)并按与节点的相关性加权重构步级上下文，再由TSNR以多头注意力聚合所有轨迹上下文来更新节点嵌入，将更新后的节点状态反馈到下一步解码，从而更准确地刻画MDP状态。",
+ "experiment_framework": "在六种核心约束(B/O/L/TW/MB/MD)组合出的48个VRP变体上评测，含16个同分布(ID)任务与32个含未见约束的跨分布(OOD)任务；对比主流神经多任务VRP求解器等SOTA基线，以路由总成本/代价为指标，报告在全部ID任务与多数OOD任务上最优。",
+ "takeaways": [
+  "逐步建模约束上下文与节点状态能显著改善多任务VRP的状态估计，在全部16个同分布任务上取得最优",
+  "在含未见约束的32个OOD任务中多数占优，说明动态上下文机制对新约束组合有一定泛化能力",
+  "轨迹共享注意力避免了逐轨迹重嵌入，在提升性能的同时控制了计算开销"
+ ],
+ "weaknesses": [
+  "属于组合优化求解器方向，与可靠性/可信AI及医学影像、多模态大模型推理主线基本无关，relevance偏低",
+  "前9页未给出与启发式求解器(LKH/HGS)在求解质量-时间权衡上的系统对比，实际落地性证据不足",
+  "消融主要论证两模块各自贡献，缺乏对约束相关性加权阈值、轨迹数等关键超参的敏感性分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.65,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "组合优化求解器与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/TGDPO_Harnessing Token-Level Reward Guidance for Enhancing Direct Preference Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/TGDPO_Harnessing Token-Level Reward Guidance for Enhancing Direct Preference Optimization.pdf",
+ "title": "TGDPO: Harnessing Token-Level Reward Guidance for Enhancing Direct Preference Optimization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "将PPO分解为token级优化，引入稠密奖励引导DPO，提升对齐性能。",
+ "innovations": [
+  "将序列级 PPO 分解为一系列 token 级近端策略优化子问题，使 token 级稠密奖励可用于 DPO 这一原本的序列级 bandit 框架。",
+  "闭式推导出最优 token 级策略及对应 token 级奖励，并结合 Bradley-Terry 模型建立带 token 级奖励引导的可计算 DPO 损失。",
+  "基于诱导出的 DPO 奖励设计实用的奖励引导，使不同 token 依各自奖励程度不同地偏离参考策略。"
+ ],
+ "method_framework": "PPO 中把序列奖励只挂在最后一个 token 会导致奖励稀疏、训练不稳。本文先在 token 级分解 PPO，得到闭式的 token 级最优策略与奖励；再把该 token 级奖励作为引导项引入 DPO 的损失构造，使每个 token 按其奖励密度决定偏离参考模型的程度，从而在不另训奖励模型的 DPO 框架内注入稠密过程奖励信号。",
+ "experiment_framework": "在主流对齐基准上对比 DPO 及其变体；指标为 MT-Bench、AlpacaEval 2、Arena-Hard 上的胜率。",
+ "takeaways": [
+  "相对 DPO 胜率提升显著：MT-Bench +7.5、AlpacaEval 2 +6.2、Arena-Hard +4.3。",
+  "token 级稠密奖励信号能有效缓解 DPO 的稀疏反馈问题。",
+  "不同 token 差异化偏离参考策略带来更细粒度的对齐。"
+ ],
+ "weaknesses": [
+  "token 级奖励引导的有效性仍依赖一个稠密奖励信号来源，方法本身未解决奖励模型的误差/博弈问题。",
+  "实验集中在通用对话对齐基准，未涉及医学/多模态等专业域的可靠性评估。",
+  "token 级 PPO 分解的闭式推导基于对问题的简化假设，长序列/复杂推理任务下的近似误差未充分消融。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,43 @@
+{
+ "key": "cvpr2025/Accurate Differential Operators for Hybrid Neural Fields.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Accurate Differential Operators for Hybrid Neural Fields.pdf",
+ "title": "Accurate Differential Operators for Hybrid Neural Fields",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "诊断混合神经场导数噪声问题，用局部多项式拟合替代autodiff。",
+ "innovations": [
+  "诊断层面：定位混合神经场（Instant NGP类）导数脏的根源是高分辨率特征网格带来高频分量，而求导对 sin(2πνx) 是 2πν 倍放大，因此即使高频噪声幅度很小也会污染一阶/二阶算子。",
+  "Post-hoc算子：在q周围按N(q,σ)采样k个点查询场值，对 y≈gᵀx+b 做无约束凸二次规划（闭式解）拟合局部一次多项式取ĝ为梯度；二阶用 y≈xᵀHx+pᵀx+q 且H只取下三角参数化保证对称，拉普拉斯取迹(H)。",
+  "微调版：L_ft=||F_Θ(x₀)-M(x₀)||²+||∇F_Θ(x₀)-∇̂M(x₀)||²，用多项式拟合梯度（论文发现连有限差分这种更粗的估计也够）做监督，同时用L_con保住原场零等值面（CD/F-Score基本不变）。"
+ ],
+ "method_framework": "对已训练混合神经场F_Θ：post-hoc即在每点邻域闭式拟合局部多项式取其导数；fine-tune即以该导数做梯度目标微调场权重，使autodiff本身产出干净导数，可作为从零训练的辅助正则（warm-start s步后再用Eq.2训n-s步）。",
+ "experiment_framework": "FamousShape数据集上的SDF，三种混合架构（Instant NGP / Dense Grid / Tri-plane）；基线为autodiff、有限差分FD、SFD、SFD256、GAD（MonteCarlo高斯导数等价）；指标为法向L2/角度误差/AA@1/AA@2与曲率RRE，下游做镜面+朗伯渲染。",
+ "takeaways": [
+  "「先光滑再求导」的通用范式可从图像/网格迁移到任意连续神经场，且多项式拟合天然支持任意查询点，比 marching cubes 全局提取网格便宜得多（尤其仿真每步都要取梯度）。",
+  "把比对目标从「GT导数」换成「拟合器给出的导数」做正则（Sobolev式梯度对齐），是 lets-you-avoid-having-gt-derivatives 的最小改动思路。",
+  "用CD/F-Score的微小变化来自证零水平集没被破坏，可作为「改了导数但没改形状」的廉价验证。"
+ ],
+ "weaknesses": [
+  "算子本身与文献中的移动最小二乘(MLS)/局部多项式拟合同源，论文自己在Related Work里也承认只是换应用到「已有神经场插值」；真正的新东西是问题诊断+微调，post-hoc算子的方法学增量有限（5.5分档）。",
+  "σ与k靠网格/telescopic搜索选（正文明说「no single value of σ works for both shapes」），「k越大越好」只是方差经验结论，缺少使σ可移植的原理性准则。",
+  "表1/表2全为均值无方差；曲率GT来自提供的mesh离散曲率，与局部多项式拟合尺度耦合，可能系统性低估/高估不同σ下的误差。",
+  "正文在第9页的5.1渲染小节被截断，碰撞仿真与PDE求解两个下游应用的量化结果完全不可见，claim「substantially reduce artifacts」缺少可复核的仿真/PDE数字。",
+  "比较对象GAD在法向上与本文基本持平（2.99 vs 2.80 / 3.24 vs 3.31），标题强调的「4×」其实主要相对的是FD基线。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "混合神经场导数计算方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

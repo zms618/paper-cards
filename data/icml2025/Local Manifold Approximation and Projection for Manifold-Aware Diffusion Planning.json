@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Local Manifold Approximation and Projection for Manifold-Aware Diffusion Planning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Local Manifold Approximation and Projection for Manifold-Aware Diffusion Planning.pdf",
+ "title": "Local Manifold Approximation and Projection for Manifold-Aware Diffusion Planning",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.7
+ },
+ "one_line": "LoMAP通过局部投影缓解扩散规划流形偏离，但计算开销大且依赖数据质量。",
+ "innovations": [
+  "推导了引导误差的下界，量化了流形偏离问题",
+  "提出训练自由的LoMAP模块，通过局部低秩投影保持轨迹可行性",
+  "在分层扩散规划中集成LoMAP，显著提升AntMaze等复杂任务性能"
+ ],
+ "method_framework": "LoMAP在扩散规划的每一步后，对去噪后的轨迹样本找到k个最近邻，前向扩散这些邻居，通过PCA构建局部低维子空间，然后将当前样本投影到该子空间，防止流形偏离。",
+ "experiment_framework": "在Maze2D、MuJoCo和AntMaze等离线RL基准上评估，与IQL、CQL、Diffuser、RGG等方法比较成功率、归一化回报和轨迹可行性指标。",
+ "takeaways": [
+  "流形偏离是扩散规划在安全关键应用中的主要挑战",
+  "LoMAP作为即插即用模块可显著提升现有扩散规划器的可靠性",
+  "局部流形近似是解决高维空间中轨迹可行性的有效方法"
+ ],
+ "weaknesses": [
+  "依赖离线数据集的质量和覆盖范围",
+  "在高维状态空间中寻找最近邻的计算开销可能较大",
+  "未探讨不同引导尺度ω对LoMAP效果的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

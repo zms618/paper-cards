@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Quadratic Upper Bound for Boosting Robustness.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Quadratic Upper Bound for Boosting Robustness.pdf",
+ "title": "Quadratic Upper Bound for Boosting Robustness",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "基于交叉熵凸性的二次上界损失，改进快速对抗训练的鲁棒性",
+ "innovations": [
+  "基于交叉熵损失对logits的凸性，推导AT损失的二次上界QUB，把鲁棒精度项与标准精度项组合成一个可微损失",
+  "将QUB作为即插即用损失叠加到现有FAT方法上，无需更强的内循环最大化(多步攻击)即可提升鲁棒性、几乎不增训练时间",
+  "用多种度量论证鲁棒性提升源于QUB使损失面关于扰动更平滑，从而缓解单步FAT的灾难性过拟合"
+ ],
+ "method_framework": "由交叉熵对logits凸这一性质，将AT损失改写为一个二次上界QUB(可视为鲁棒项+标准项组合)；训练时用QUB替代原AT损失，叠加在现有单步FAT方法上，以更平滑的扰动损失面换取对未见攻击的鲁棒性。",
+ "experiment_framework": "在图像分类上(CIFAR类)将QUB叠加于多种已有FAT方法评估；对比原FAT与标准PGD-AT；指标为白盒/黑箱鲁棒精度、标准精度与训练开销，并用损失面平滑度等度量做机理分析。",
+ "takeaways": [
+  "通过一个从凸性导出的二次上界损失，单步快速对抗训练也能显著提升对未见攻击的鲁棒性而几乎不增加训练成本",
+  "鲁棒性提升可归因于损失面关于扰动的平滑化，为缓解灾难性过拟合提供了损失设计视角而非更强内循环"
+ ],
+ "weaknesses": [
+  "本质是对现有FAT方法的单个损失改造，方法新颖性属增量型，未提出新的攻击/模型结构",
+  "实验域为常规图像分类(CIFAR)，未涉及医学影像或多模态推理等目标落地域的鲁棒性验证",
+  "前9页未见对自适应攻击/更强扰动预算下的鲁棒性边界测试，QUB上界在大扰动区间是否仍紧需完整实验确认"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

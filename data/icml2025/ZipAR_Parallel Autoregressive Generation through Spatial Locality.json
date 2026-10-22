@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/ZipAR_Parallel Autoregressive Generation through Spatial Locality.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ZipAR_Parallel Autoregressive Generation through Spatial Locality.pdf",
+ "title": "ZipAR: Parallel Autoregressive Generation through Spatial Locality",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "空间并行解码框架，提升视觉生成效率但需手动调参",
+ "innovations": [
+  "空间感知的并行解码策略，利用图像空间局部性实现跨行并行生成",
+  "自适应窗口大小分配方案，动态调整局部窗口大小优化解码效率",
+  "无需重新训练的即插即用框架，显著减少前向传递次数"
+ ],
+ "method_framework": "基于图像空间局部性，定义局部窗口大小，当一行生成的token超过窗口大小时，并行开始下一行的解码。采用自适应窗口大小分配方案，结合拒绝采样技术，确保每个token在充分上下文信息下生成。",
+ "experiment_framework": "在ImageNet、COCO等数据集上评估，使用LlamaGen、Lumina-mGPT、Emu3-Gen等模型，采用FID、VQAScore、HPSv2、CLIP Score等指标衡量生成质量和效率。",
+ "takeaways": [
+  "利用视觉内容的空间局部性可以显著提升自回归生成效率",
+  "自适应窗口大小分配方案比固定窗口大小能更好地平衡生成质量和效率"
+ ],
+ "weaknesses": [
+  "窗口大小选择仍需手动调整，可能影响不同场景下的性能",
+  "对于某些特殊结构的图像，空间局部性假设可能不完全成立"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Training High Performance Spiking Neural Network by Temporal Model Calibration.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Training High Performance Spiking Neural Network by Temporal Model Calibration.pdf",
+ "title": "Training High Performance Spiking Neural Network by Temporal Model Calibration",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.3
+ },
+ "one_line": "TMC重标定logit梯度提升SNN精度，但主线相关性弱且证据不足",
+ "innovations": [
+  "将SNN梯度分解为时间隐层梯度与时间logit梯度，指出现有方法时间logit梯度多样性有限、造成时间失准",
+  "提出Temporal Model Calibration（TMC），作为跨时间步的logit梯度重标定机制以提升时间logit梯度多样性",
+  "在ImageNet、DVS-CIFAR10、N-Caltech101上取得SOTA精度"
+ ],
+ "method_framework": "基于速率编码与BPTT+替代梯度的直接训练框架，观察到时间隐层梯度已有时间异质性但时间logit梯度（损失对各时间步logit的误差）缺乏多样性。TMC在时间维度对logit梯度进行重标定/重新缩放，使不同时间步输出更具差异，从而聚合多样输出做决策时提升时间异质性与精度。",
+ "experiment_framework": "在ImageNet、DVS-CIFAR10、N-Caltech101等图像与神经形态时序数据集上，与主流直接训练SNN方法对比精度；验证TMC对时间logit梯度多样性与时间校准的提升，报告达到SOTA。",
+ "takeaways": [
+  "时间异质性不仅可由神经元动态/网络结构引入，也可通过梯度视角（时间logit梯度重标定）增强",
+  "TMC作为轻量的跨时间步logit梯度重标定即可在多个基准上提升SNN精度至SOTA",
+  "提升时间logit梯度多样性有助于缓解SNN的时间失准"
+ ],
+ "weaknesses": [
+  "主线相关性弱：属脉冲神经网络/神经形态计算，与可靠性乘医学影像/多模态推理主线无直接联系",
+  "前9页主要为动机与方法，完整消融与对比表在后续页，量化增益细节有限",
+  "TMC重标定系数的设定/自适应方式及对能耗-精度权衡的讨论需结合后续页"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

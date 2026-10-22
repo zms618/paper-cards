@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Joint Out-of-Distribution Filtering and Data Discovery Active Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Joint Out-of-Distribution Filtering and Data Discovery Active Learning.pdf",
+ "title": "Joint Out-of-Distribution Filtering and Data Discovery Active Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "Joda联合OOD过滤与数据发现，但需预热且计算复杂度高。",
+ "innovations": [
+  "提出Open-Set Discovery Active Learning(OSDAL)新场景",
+  "Joda方法无需辅助模型即可同时处理OOD过滤和类别发现",
+  "结合分类损失和异常暴露损失构建特征空间，分离已知和OOD数据"
+ ],
+ "method_framework": "Joda包含训练、过滤和选择三阶段：训练阶段结合分类损失和异常暴露损失；过滤阶段使用能量分数和ROC分析确定阈值；选择阶段基于SISOMe指标和类别平衡因子选择样本。",
+ "experiment_framework": "在CIFAR-10/100和TinyImageNet数据集上评估，使用随机噪声、MNIST、Places365和ImageNetC-800作为OOD数据，比较准确率、类别发现和选择精度指标。",
+ "takeaways": [
+  "无需辅助模型的简洁设计提高实用性",
+  "能量分数与特征空间分离相结合的方法有效处理OOD和类别发现",
+  "类别平衡因子解决新类别引入时的类别不平衡问题"
+ ],
+ "weaknesses": [
+  "初始周期需要预热才能达到最佳性能",
+  "在复杂场景下(如Places365)性能可能下降",
+  "计算复杂度随类别和样本数量增加而提高"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "OOD过滤与主动学习结合，明确触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Linear Contextual Bandits With Interference.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Linear Contextual Bandits With Interference.pdf",
+ "title": "Linear Contextual Bandits With Interference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "将因果干扰引入线性bandit，但实验不足且假设局限",
+ "innovations": [
+  "首次系统地将因果推断中的干扰（interference）概念引入线性上下文bandit设定，建立多单元间奖励相互影响的建模框架",
+  "提出一系列显式量化干扰效应的bandit算法，在奖励模型中包含其他单元的动作作为协变量",
+  "建立干扰感知bandit的后悔界分析，量化干扰效应对在线学习样本效率的影响"
+ ],
+ "method_framework": "标准上下文bandit假设个体奖励仅取决于自身动作（SUTVA），本文放松这一假设：在同一轮中存在多个单元，每个单元的奖励不仅取决于自身动作，还受其他单元动作的干扰影响。论文在奖励函数中显式建模干扰项（如其他单元动作的线性组合），设计相应的探索-利用算法，并推导后悔界。",
+ "experiment_framework": "理论分析为主：后悔界推导；辅以合成实验和 COVID政策/广告市场等真实场景的模拟验证。",
+ "takeaways": [
+  "忽略干扰效应会导致上下文bandit的奖励模型偏差，进而影响决策质量",
+  "显式建模干扰项可以提升多单元在线决策（如疫情防控、广告竞价）的性能",
+  "因果推断与在线学习的结合为实际多主体决策问题提供了新工具"
+ ],
+ "weaknesses": [
+  "干扰效应的建模假设是线性的，真实场景中的干扰可能是复杂非线性的",
+  "多单元bandit的维度随单元数增长，大规模场景下的可扩展性存疑",
+  "前9页内实验部分不够详细，实际应用效果需看完整论文"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

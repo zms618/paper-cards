@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Type-R Automatically Retouching Typos for Text-to- Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Type-R Automatically Retouching Typos for Text-to- Generation.pdf",
+ "title": "Type-R Automatically Retouching Typos for Text-to- Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "后处理修正文本生成错误，依赖多模型组合，OCR和编辑模型存在局限性",
+ "innovations": [
+  "基于最优传输的错误检测机制",
+  "结合VLM的布局重生成",
+  "迭代式文本编辑纠正拼写错误"
+ ],
+ "method_framework": "Type-R采用四阶段流程：错误检测(文本识别与最优传输匹配)、文本擦除(使用inpainting模型)、布局重生成(使用GPT-4o规划位置)、拼写纠正(使用文本编辑模型迭代修正)。",
+ "experiment_framework": "在MARIO-Eval基准上评估，结合GPT评分、OCR准确率、FID和CLIP指标，与TextDiffuser等基线比较，并进行了用户研究和消融实验。",
+ "takeaways": [
+  "后处理方法可独立于底层文本生成模型提升文本准确性",
+  "多模型组合策略能有效平衡文本准确性与视觉质量",
+  "迭代式文本编辑可逐步提高OCR准确率"
+ ],
+ "weaknesses": [
+  "依赖多个外部模型的性能，OCR模型有时无法正确解析所有文本",
+  "文本编辑模型可能生成不稳定轮廓和像素亮度下降",
+  "方法按空格分解文本，对连字符等特殊情况处理不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "文本生成后处理，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

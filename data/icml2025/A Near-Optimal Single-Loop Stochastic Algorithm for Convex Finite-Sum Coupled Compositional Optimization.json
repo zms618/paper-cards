@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/A Near-Optimal Single-Loop Stochastic Algorithm for Convex Finite-Sum Coupled Compositional Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/A Near-Optimal Single-Loop Stochastic Algorithm for Convex Finite-Sum Coupled Compositional Optimization.pdf",
+ "title": "A Near-Optimal Single-Loop Stochastic Algorithm for Convex Finite-Sum Coupled Compositional Optimization",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "单环算法求解凸有限和耦合组合优化，理论近最优但实验验证有限",
+ "innovations": [
+  "针对cFCCO结构（内部函数凸、外部函数凸且单调非减）设计单环原始-对偶块坐标随机算法ALEXR，避免嵌套内循环",
+  "在光滑/非光滑、凸/强凸多种情形下给出收敛速率，改进已有光滑cFCCO结果并扩展到GDRO对偶等非光滑问题",
+  "推导一阶随机算法的复杂度下界，证明ALEXR在该问题类内近最优"
+ ],
+ "method_framework": "利用外部函数fi的凸共轭将cFCCO重写为min-max形式；对对偶变量采用块坐标随机镜像上升并引入外推，对原始变量采用随机近端梯度下降，二者单环交替更新，从而摆脱依赖问题常数的内层循环。",
+ "experiment_framework": "在组分布鲁棒优化GDRO（Adult表格83组、CelebA图像160组二分类）和受限TPR的pAUC最大化上评估；基线含BSGD、SOX、MSVR等FCCO算法及OOA、SGD-UW等GDRO专用算法；以迭代成本下的目标子最优性为指标。",
+ "takeaways": [
+  "ALEXR在光滑cFCCO上取得比已有方法更优的迭代复杂度，并能处理非光滑情形",
+  "复杂度下界表明ALEXR在一阶随机算法类内接近最优",
+  "在Adult与CelebA的GDRO实验中ALEXR相对基线收敛更快"
+ ],
+ "weaknesses": [
+  "实验规模偏小，仅Adult、CelebA两个数据集，缺乏大规模深度模型任务验证",
+  "仅适用于外部函数fi单调非减的凸情形，凹外部函数（如对数）仍为开放问题",
+  "理论依赖光滑/Lipschitz等较强假设，与实际深度网络的契合度未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "优化算法理论贡献，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

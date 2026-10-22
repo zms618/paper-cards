@@ -1,0 +1,37 @@
+{
+ "title": "NeuronTune: Towards Self-Guided Spurious Bias Mitigation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "潜空间探针抑制有偏维度缓解伪偏差，但精度-鲁棒权衡未充分量化",
+ "innovations": [
+  "从样本级(group label/重加权)转向模型内部：直接干预潜空间中受伪偏差影响的神经元维度。",
+  "通过高激活与错误预测强关联来识别有偏维度，无需显式区分伪属性与核心属性(二者纠缠难解)。",
+  "理论上证明该干预使模型更接近无偏模型，且跨架构、跨模态有效。"
+ ],
+ "method_framework": "先在已训练模型的潜嵌入空间探针，定位伪属性主要导致预测错误的维度(有偏维度)；不强行分离伪/核心特征，而是直接抑制这些有偏维度对最终logits的贡献，从而迫使模型学习鲁棒决策规则；全程post-hoc、无需外部伪相关标注。",
+ "experiment_framework": "在多种架构与数据模态上评测伪偏差缓解效果；对比依赖group label的方法与样本重加权方法，报告Waterbirds等基准上的worst-group/总体准确率与偏差缓解程度。",
+ "takeaways": [
+  "直接干预内部神经元比样本级方法更精准地作用于伪偏差机制。",
+  "无需伪相关标注即可自引导缓解伪偏差，实用性更强。",
+  "抑制有偏维度能使模型趋向无偏决策边界。"
+ ],
+ "weaknesses": [
+  "有偏维度识别依赖“高激活关联错误预测”这一启发式，对高度纠缠特征的区分能力仍有限。",
+  "post-hoc抑制可能牺牲部分正常精度，精度-鲁棒权衡前9页未充分量化。",
+  "验证以视觉伪相关基准为主，在大模型/多模态推理场景的迁移需进一步确认。"
+ ],
+ "confidence": "high",
+ "key": "icml2025/NeuronTune_Towards Self-Guided Spurious Bias Mitigation.pdf",
+ "path": "icml2025/NeuronTune_Towards Self-Guided Spurious Bias Mitigation.pdf",
+ "conf": "icml2025",
+ "raw_overall": 6.86,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

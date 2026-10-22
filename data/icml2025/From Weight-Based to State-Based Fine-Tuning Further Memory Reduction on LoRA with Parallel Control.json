@@ -1,0 +1,37 @@
+{
+ "title": "From Weight-Based to State-Based Fine-Tuning: Further Memory Reduction on LoRA with Parallel Control",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "LoRA变体，通过状态扰动降显存，但创新性与理论支撑不足。",
+ "innovations": [
+  "指出非线性微调规则已不能把更新解释为权重的低秩修改，质疑LoRA'低秩权重更新'的核心解释",
+  "提出state-based微调框架，直接在计算图中对前向状态加参数化扰动，LoRA成为其特例",
+  "跨整个残差块控制状态，可避免存储大中间状态，进一步降显存且减计算、保性能"
+ ],
+ "method_framework": "把微调对象从权重矩阵W的增量转向前向激活状态：在计算图中注入参数化扰动并跨残差块控制状态；并行控制路径作用于状态而非权重，从而避免为反向传播存储大中间激活，LoRA被统一为该框架的一个特例。",
+ "experiment_framework": "在NLP/CV主流微调任务上，与全量微调、LoRA及近期state-based方法对比，指标含可训练参数量、显存占用、训练时间与下游性能。",
+ "takeaways": [
+  "非线性微调已偏离'权重低秩修改'图景，状态视角更贴合实际",
+  "控制状态而非权重可避免存储大中间激活，进一步压显存",
+  "在更省显存的同时保持甚至提升训练效率与性能"
+ ],
+ "weaknesses": [
+  "本质是LoRA类PEFT的又一变体，增量新颖性有限",
+  "状态扰动的可解释性与最优作用位置缺乏理论刻画",
+  "聚焦训练效率，与可靠性/医学影像/多模态推理主线无关"
+ ],
+ "confidence": "high",
+ "key": "icml2025/From Weight-Based to State-Based Fine-Tuning Further Memory Reduction on LoRA with Parallel Control.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/From Weight-Based to State-Based Fine-Tuning Further Memory Reduction on LoRA with Parallel Control.pdf",
+ "raw_overall": 5.65,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

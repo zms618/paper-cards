@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Unsafe2Safe_Controllable Anonymization for Downstream Utility.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Unsafe2Safe_Controllable Anonymization for Downstream Utility.pdf",
+ "title": "Unsafe2Safe Controllable Anonymization for Downstream Utility",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.4
+ },
+ "one_line": "双提示扩散匿名化，保护隐私但依赖多模态模型准确性存疑",
+ "innovations": [
+  "双文本提示（公共描述+编辑指令）的匿名化框架",
+  "Safe Cross Attention模块保护非敏感区域",
+  "统一的匿名化评估框架（质量/欺骗/隐私/效用）"
+ ],
+ "method_framework": "两阶段流程：VLM检测隐私风险并生成私有/公共描述，LLM生成编辑指令，扩散编辑器基于双提示生成隐私安全图像。",
+ "experiment_framework": "MS-COCO/Caltech101/MIT Indoor67/OK-VQA数据集，对比DeepPrivacy2/FaceAnon基线，评估CLIP/SSIM/LPIPS/隐私指标/下游任务性能。",
+ "takeaways": [
+  "多模态推理可识别开放域图像中的隐私风险",
+  "双文本提示机制平衡隐私保护与语义保留",
+  "统一评估框架全面衡量匿名化质量"
+ ],
+ "weaknesses": [
+  "依赖VLM/LLM的隐私检测可能存在偏差",
+  "未充分讨论计算资源需求与扩展性",
+  "对非人脸隐私元素的处理效果验证不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "隐私保护与多模态模型可靠性交点，但依赖模型准确性存疑",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

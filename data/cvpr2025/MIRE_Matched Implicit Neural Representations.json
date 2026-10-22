@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/MIRE_Matched Implicit Neural Representations.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/MIRE_Matched Implicit Neural Representations.pdf",
+ "title": "MIRE Matched Implicit Neural Representations",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "MIRE用字典学习为INR逐层匹配激活函数，提升表示能力。",
+ "innovations": [
+  "为INR每层动态匹配最佳激活函数",
+  "构建包含7种激活原子的字典",
+  "消除传统INR对激活参数网格搜索的依赖",
+  "提出匹配追踪算法选择激活序列"
+ ],
+ "method_framework": "MIRE通过迭代方式为INR每层选择最佳激活函数：初始化单层MLP，测试字典中所有激活函数，固定最优后添加下一层，重复直至所有层完成匹配。",
+ "experiment_framework": "在图像表示、修复、3D形状表示、新视角合成等任务上评估，使用Kodak、Stanford 3D等数据集，对比WIRE、SIREN等基线，采用PSNR、SSIM、IoU等指标。",
+ "takeaways": [
+  "激活函数匹配信号特性可显著提升INR性能",
+  "动态选择激活序列比固定激活函数更有效",
+  "随机初始化激活参数仍能获得良好性能"
+ ],
+ "weaknesses": [
+  "逐层训练可能增加计算开销",
+  "未探讨更深网络层的激活匹配策略",
+  "缺乏对计算效率的详细分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "仅是INR表示方法改进，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

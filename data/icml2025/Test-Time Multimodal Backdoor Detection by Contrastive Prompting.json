@@ -1,0 +1,37 @@
+{
+ "title": "Test-Time Multimodal Backdoor Detection by Contrastive Prompting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "黑盒CLIP后门检测，利用提示不敏感特性，但鲁棒性与泛化性存疑",
+ "innovations": [
+  "首次把 CLIP 后门防御搬到推理阶段，计算高效且不依赖预训练/微调阶段的大量参数更新",
+  "适用于黑盒设定，无需访问训练数据或更新模型参数",
+  "实证发现后门图像的视觉表征对(对比性)提示变化不敏感，并据此设计对比提示检测信号"
+ ],
+ "method_framework": "利用后门 CLIP 的异常特性——带触发图像的视觉表征无论提示如何都偏向目标类文本表征、对提示变化不敏感；在推理时构造一对对比提示，观察图像表征相对提示的响应差异是否异常平坦，从而在黑盒下判别该样本是否触发后门。",
+ "experiment_framework": "在被投毒的 CLIP 上评测；对比现有需预训练/微调阶段、高计算成本的后门防御；指标为后门检测率/误报率，并验证黑盒与推理阶段的适用性。",
+ "takeaways": [
+  "CLIP 后门防御可在推理阶段、黑盒、不更新参数的情况下完成",
+  "后门图像视觉表征对提示变化不敏感是可利用的检测信号",
+  "对比提示提供了一条计算高效的测试时后门检测路径"
+ ],
+ "weaknesses": [
+  "检测信号基于'对提示不敏感'，对自适应攻击(模仿正常提示敏感性)的鲁棒性前9页未验证",
+  "主要针对 CLIP 类对比模型，对生成式多模态大模型的迁移待考",
+  "误报率在干净分布边界样本上的表现证据偏有限"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Test-Time Multimodal Backdoor Detection by Contrastive Prompting.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Test-Time Multimodal Backdoor Detection by Contrastive Prompting.pdf",
+ "raw_overall": 7.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Pisces Cryptography-based Private Retrieval-Augmented Generation with Dual-Path Retrieval.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Pisces Cryptography-based Private Retrieval-Augmented Generation with Dual-Path Retrieval.pdf",
+ "title": "Pisces: Cryptography-based Private Retrieval-Augmented Generation with Dual-Path Retrieval",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.4
+ },
+ "one_line": "密码学双路RAG框架，保护查询与文档但端到端效果未验证",
+ "innovations": [
+  "提出首个实用的基于密码学、同时保护用户查询与知识库文档隐私的双路(语义+词法)RAG框架Pisces。",
+  "语义检索路用novel遗忘过滤器(oblivious filter)私密筛选候选集做coarse-to-fine，再用SimHash汉明距离近似余弦相似度以降低计算通信开销。",
+  "词法路实现多实例标签PSI协议，单次执行即计算BM25所需词频，避免反复调用标签PSI；可与隐私保护LLM推理框架端到端整合。"
+ ],
+ "method_framework": "将RAG拆为语义(embedding)与词法(BM25)两路私密检索：语义路先用遗忘过滤器私密选出候选文档缩小规模，再以SimHash将余弦相似度转为汉明距离做安全计算；词法路用多实例标签PSI一次性得到各文档词频以安全计算BM25；两路结果合并后可送入隐私保护LLM推理完成生成。",
+ "experiment_framework": "数据集ClapNQ、SQuAD、HotpotQA；以明文检索为基线对比Top-5/Top-10命中率与耗时；语义检索准确率78-90%、词法86-98%，整体与明文基线差距在1.87%以内，并报告各路径运行时间。",
+ "takeaways": [
+  "密码学可在几乎不损失检索精度(差距<1.87%)的前提下同时保护查询与文档隐私。",
+  "遗忘过滤器+SimHash近似显著降低了语义路安全余弦计算的开销。",
+  "多实例标签PSI单次算词频，避免了BM25路反复PSI调用的成本叠加。"
+ ],
+ "weaknesses": [
+  "语义路用SimHash近似余弦引入信息损失，长文本/细粒度语义下精度下降更明显。",
+  "词法路在大规模语料上耗时仍较高(如HotpotQA全集训练集达百余秒)，实用吞吐受限。",
+  "评测只对比明文检索命中率，未端到端评测隐私保护下最终生成答案质量与幻觉抑制效果。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "隐私鲁棒RAG，但端到端效果未验证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

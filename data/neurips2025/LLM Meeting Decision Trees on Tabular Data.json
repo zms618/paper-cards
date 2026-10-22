@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/LLM Meeting Decision Trees on Tabular Data.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/LLM Meeting Decision Trees on Tabular Data.pdf",
+ "title": "LLM Meeting Decision Trees on Tabular Data",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.75
+ },
+ "one_line": "LLM优化决策树规则，表格数据预测性能提升有限",
+ "innovations": [
+  "避免表格数据序列化，直接使用决策树规则作为LLM输入",
+  "利用LLM生成改进规则，提高同节点样本统计相似性",
+  "基于改进规则构建梯度网络，实现决策树预测误差校正"
+ ],
+ "method_framework": "DeLTa框架结合随机森林和LLM：首先训练多个决策树专家并提取规则集，利用LLM生成改进规则r*，然后构建梯度网络预测误差校正向量，最终校正原始决策树预测。",
+ "experiment_framework": "在多个表格数据集(Blood, Credit, Car等)上评估，与XGBoost、FT-Transformer等基线比较，分类和回归任务指标。",
+ "takeaways": [
+  "决策树规则作为LLM输入可有效避免表格数据序列化问题",
+  "基于改进规则的梯度校正方法能有效提升预测性能"
+ ],
+ "weaknesses": [
+  "依赖决策树作为基础模型，可能限制在特定任务上的表现",
+  "LLM生成规则的质量可能受提示设计影响较大"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

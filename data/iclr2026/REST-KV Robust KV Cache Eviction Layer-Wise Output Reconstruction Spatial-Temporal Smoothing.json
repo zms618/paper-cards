@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/REST-KV Robust KV Cache Eviction Layer-Wise Output Reconstruction Spatial-Temporal Smoothing.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/REST-KV Robust KV Cache Eviction Layer-Wise Output Reconstruction Spatial-Temporal Smoothing.pdf",
+ "title": "ReST-KV: Robust KV Cache Eviction with Layer-wise Output Reconstruction and Spatial-Temporal Smoothing",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 4.0,
+  "overall": 5.7
+ },
+ "one_line": "将KV驱逐建模为重建优化问题，结合时空平滑提升长上下文效率。",
+ "innovations": [
+  "将KV缓存驱逐重新建模为逐层输出重建优化问题，通过测量删除每个KV对导致的重建损失作为重要性指标，隐式捕捉注意力重分布效应",
+  "设计时空平滑机制：指数滑动平均建模时间动态+自适应窗口空间平滑，增强KV选择的鲁棒性",
+  "在LongBench/RULER/Needle-in-a-Haystack/InfiniteBench上一致超越SOTA，128k上下文下解码延迟降低10.61倍"
+ ],
+ "method_framework": "ReST-KV将KV驱逐视为固定内存约束下最小化各层注意力输出差异的优化问题。对每个KV对，测量删除后该层输出的重建损失，损失越大则该KV对越重要。同时用指数滑动平均平滑时间维度的KV重要性变化，用自适应窗口捕捉空间模式，避免单步估计的噪声。",
+ "experiment_framework": "在LongBench/RULER/Needle-in-a-Haystack/InfiniteBench等长上下文基准评测；对比StreamingLLM/FastGen等KV驱逐方法；报告不同缓存预算下的准确率；测量解码延迟和TTFT加速；多轮对话场景鲁棒性测试。",
+ "takeaways": [
+  "KV驱逐应考虑删除后的注意力重分布效应，而非仅基于原始注意力权重",
+  "逐层输出重建损失是比原始注意力权重更准确的KV重要性指标",
+  "时空平滑可显著增强KV选择在低缓存预算下的鲁棒性"
+ ],
+ "weaknesses": [
+  "与可靠性/多模态推理/医学影像主线完全无关，属于推理效率优化领域",
+  "逐层重建损失的计算开销在实际部署中的具体影响未充分量化",
+  "前9页未见与最新基于学习的KV驱逐方法的对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "KV缓存优化与可靠性主线无关，属推理效率领域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

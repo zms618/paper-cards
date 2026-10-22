@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Ob-JECT_Beyond Visual Reconstruction Quality Ob-JECT Perception-Aware 3D Gaussian Splatting for Autonomous Driving.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Ob-JECT_Beyond Visual Reconstruction Quality Ob-JECT Perception-Aware 3D Gaussian Splatting for Autonomous Driving.pdf",
+ "title": "Beyond Visual Reconstruction Quality: Object Perception-Aware 3D Gaussian Splatting for Autonomous Driving",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "质疑3DGS视觉相似假设，提出感知对齐与物体区域质量损失",
+ "innovations": [
+  "挑战'高视觉相似即等价 ADS 行为'的隐含假设，实证表明高相似度重建常使感知模块输出漂移",
+  "提出 perception-aligned loss：训练中直接利用重建图与真值图的感知输出差异作为监督",
+  "提出 object zone quality loss：对感知模型在真值图上标出的物体位置加强训练，因物体仅占画面小部分却主导 ADS 行为"
+ ],
+ "method_framework": "以感知模块(ADS 入口)为中心：视觉相似损失不足，因为物体(NPC)只占小区域却主导行为。perception-aligned loss 直接最小化重建图与真值图经感知模型后的输出差异；object zone quality loss 在物体检测框区域上加权强化，二者互补维持感知一致性。",
+ "experiment_framework": "在自动驾驶场景重建上对比标准 3DGS；以感知模块输出(检测框等)与真值输入的一致性为核心指标，而非仅 PSNR/SSIM/LPIPS。",
+ "takeaways": [
+  "对 ADS 而言，重建目标应是感知输出一致，而非全局像素相似",
+  "物体区域虽小却主导 ADS 行为，需显式加权强化",
+  "感知对齐+物体区域质量两损失共同提升重建场景的感知一致性"
+ ],
+ "weaknesses": [
+  "依赖一个固定的感知模型作为监督，感知模型本身误差会被继承",
+  "仅评测感知输出一致，未端到端验证下游规划/决策行为是否真一致",
+  "域为自动驾驶，非医学影像/多模态推理主线，相关性中等偏低"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "自动驾驶场景非主线，但感知对齐设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

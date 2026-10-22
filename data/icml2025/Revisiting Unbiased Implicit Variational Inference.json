@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Revisiting Unbiased Implicit Variational Inference.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Revisiting Unbiased Implicit Variational Inference.pdf",
+ "title": "Revisiting Unbiased Implicit Variational Inference",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "用重要性采样替代UIVI的MCMC循环，在低维基准上达到SOTA",
+ "innovations": [
+  "重新评估被认为不精确且计算昂贵的UIVI方法，证明其内MCMC循环可有效替换为重要性采样",
+  "提出通过最小化期望前向KL散度来稳定学习最优提议分布，无偏估计梯度",
+  "改进后的UIVI在SIVI基准上达到SOTA或持平性能，解决了原始UIVI的计算瓶颈"
+ ],
+ "method_framework": "在半隐式变分推断(SIVI)框架下，用重要性采样替代UIVI原始的内MCMC循环来估计隐式分布的对数密度梯度。学习一个mass-covering的提议分布τ(ε|z)，通过最小化期望前向KL散度实现无偏训练。",
+ "experiment_framework": "在标准SIVI基准任务上测试。对比现有SIVI方法(如PVI、adversarial VI等)。指标为证据下界(ELBO)或对数似然。硬件为A5000 GPU。",
+ "takeaways": [
+  "UIVI的MCMC循环瓶颈可通过重要性采样有效解决，无需MCMC也能获得无偏梯度估计",
+  "学习mass-covering提议分布是稳定训练的关键，比对抗训练更稳定",
+  "改进后的UIVI在多个基准上与SIVI SOTA方法性能持平或更优"
+ ],
+ "weaknesses": [
+  "仅在经典SIVI基准(低维合成数据)上验证，未在贝叶斯神经网络等大规模场景测试",
+  "重要性采样的方差随维度增加而增大，高维场景的有效性未充分讨论",
+  "相比简单重提旧方法，技术创新增量有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.68,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

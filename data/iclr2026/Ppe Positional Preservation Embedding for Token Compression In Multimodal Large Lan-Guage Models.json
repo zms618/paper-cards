@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Ppe Positional Preservation Embedding for Token Compression In Multimodal Large Lan-Guage Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Ppe Positional Preservation Embedding for Token Compression In Multimodal Large Lan-Guage Models.pdf",
+ "title": "PPE: Positional Preservation Embedding for Token Compression in Multimodal Large Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "位置ID拆分编码提升多模态token压缩，但缺乏理论分析",
+ "innovations": [
+  "指出现有 token 合并方法破坏空间布局与时序连续性这一关键缺陷",
+  "PPE：将被合并 token 的多个3D位置ID在 token 维度解耦编码，使单个压缩token承载多个原始位置",
+  "PPE 与合并算法解耦，天然支持跨 transformer 层的级联渐进压缩，可无额外计算成本嵌入现有方法"
+ ],
+ "method_framework": "为每个视觉 token 分配2D/3D位置ID；合并相似 token 时不丢弃而将其成员位置ID拆分注入压缩 token 的不同维度，使 MLLM 在高压缩率下仍可访问场景布局；配合级联压缩在多层渐进合并，避免过早坍缩浅层语义。",
+ "experiment_framework": "在 MMBench(通用视觉)、TextVQA(版面/文字)、VideoMME(时序)等基准上，对比 ChatUniVi、PACT 等 token 压缩方法，微调后报告精度与压缩率(达90% token 削减)。",
+ "takeaways": [
+  "PPE 在多种视觉-语言基准上较现有压缩方法一致提升2%~5%",
+  "保持位置线索对高效且准确的 MLLM 推理至关重要",
+  "PPE 无参数、即插即用，可在不调整合并算法的前提下叠加获得增益"
+ ],
+ "weaknesses": [
+  "主线为多模态 token 压缩效率优化，非鲁棒性/幻觉抑制等可靠性方向",
+  "位置ID拆分编码在超高压缩率下的信息承载上限缺乏理论分析",
+  "前9页未见对计数/时序定位等极布局敏感任务的细分消融"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态token压缩效率优化，非可靠性主线方向",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/PTNET_A Proposal-Centric Transformer Net-Work for 3D Object Detection.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PTNET_A Proposal-Centric Transformer Net-Work for 3D Object Detection.pdf",
+ "title": "PTNet: A Proposal-Centric Transformer Network for 3D Object Detection",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "双流对齐+协作精修提升3D检测，但计算开销大且泛化有限。",
+ "innovations": [
+  "提出Hierarchical Attentive Feature Alignment(HAFA)：双流提取粗粒度多尺度voxel特征与细粒度坐标点特征，增强提案几何表达。",
+  "提出Collaborative Proposal Refinement Module(CPRM)：生成混合object query，用3D参数引导的可变形注意力在相邻提案间聚合空间与类别信息。",
+  "解决独立精修忽略周围上下文、相邻提案互补细节丢失的问题。"
+ ],
+ "method_framework": "两阶段LiDAR 3D检测器；HAFA双流并行编码voxel级与点级特征并对齐，弥补点云稀疏/分布不均造成的提案几何退化；CPRM在所有提案间用3D参数引导可变形注意力做上下文交互，使相邻提案互相补充，再精修框。",
+ "experiment_framework": "在自动驾驶LiDAR 3D检测基准(如nuScenes等)上评测；对比主流两阶段3D检测器；指标为mAP/NDS等；报告对稀疏点云与小物体的改善。",
+ "takeaways": [
+  "双流多粒度特征对齐可缓解点云稀疏导致的提案质量下降。",
+  "提案间上下文交互(而非独立精修)能聚合相邻互补信息。",
+  "3D参数引导可变形注意力有效融合空间位置与类别线索。"
+ ],
+ "weaknesses": [
+  "双流+协作精修增加了两阶段检测的计算开销。",
+  "主要面向车载LiDAR，室内/稀疏激光等其他点云场景泛化未验证。",
+  "改进为工程组合式，概念新颖度中等。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D检测与可靠性主线无实质交点，仅工程组合式改进",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DCBM_Data-Efficient Visual Concept Bottleneck Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DCBM_Data-Efficient Visual Concept Bottleneck Models.pdf",
+ "title": "DCBM: Data-Efficient Visual Concept Bottleneck Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "利用基础模型提取视觉区域构建高效概念瓶颈模型",
+ "innovations": [
+  "提出用SAM、GroundingDino等基础模型从图像中自动提取区域作为视觉概念，无需大规模数据或文本描述",
+  "仅需每类50张图像即可生成概念库，比数据驱动CBM减少96%-99%的概念生成所需样本",
+  "多粒度概念提取：同一图像可生成部件级和实例级多个概念，适合细粒度分类任务"
+ ],
+ "method_framework": "DCBM四步：(1)用分割/检测基础模型处理少量训练图像，裁剪得到区域提案；(2)对区域提案的CLIP嵌入进行k-means聚类，去冗余得到概念中心；(3)训练线性CBM层，从图像CLIP嵌入预测概念激活，再线性组合得到分类；(4)用CLIP文本编码器为聚类概念命名。概念完全是数据集特定的视觉概念，不依赖LLM生成的文本概念。",
+ "experiment_framework": "在ImageNet、CUB(细粒度鸟类)、Places365上评测；对比DCLIP、LF-CBM、DN-CBM等概念生成方法；评估OOD泛化、概念定位(Grid Pointing Game)、Grad-CAM归因可视化；测试不同分割模型(SAM1/2、GroundingDino、MaskRCNN、DETR)的影响。",
+ "takeaways": [
+  "视觉域提取的概念比文本域生成的概念更忠实，避免图文对齐偏差",
+  "仅用50张图/类生成概念即可达到与全量数据方法相当的分类精度",
+  "DCBM在OOD设置下保持可解释性，概念可通过Grad-CAM定位到测试图像区域"
+ ],
+ "weaknesses": [
+  "依赖CLIP嵌入空间，对CLIP不擅长的领域(如医学影像、专业科学图像)适配性未验证",
+  "概念命名依赖CLIP图文对齐，聚类得到的视觉概念可能无法被文本准确描述",
+  "k-means聚类的k值选择和概念数量对性能影响的消融分析不够系统"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

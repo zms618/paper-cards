@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Enabling Your Forensic Detector Know how Well it Performs On Distorted Samples.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Enabling Your Forensic Detector Know how Well it Performs On Distorted Samples.pdf",
+ "title": "Enabling Your Forensic Detector Know how Well it Performs On Distorted Samples",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 8.0,
+  "overall": 6.9
+ },
+ "one_line": "DACOM利用FR-IQA监督训练法证检测器置信度评估模型",
+ "innovations": [
+  "定义失真感知置信度(DAC)指标",
+  "利用FR-IQA作为监督信号训练无参考置信度模型",
+  "融合法证特征、无参考质量描述子和失真类型线索",
+  "实现选择性拒绝和多检测器路由"
+ ],
+ "method_framework": "DACOM采用两阶段流程：阶段A利用FR-IQA构建失真严重度轴并分配检测可靠性标签；阶段B训练融合检测器特征、NR-IQA描述子和失真类型编码器的回归模型，输出样本级置信度分数。",
+ "experiment_framework": "在8种训练失真和10种未见失真上评估6种AI生成图像检测器，使用准确率、平均精度和相关性指标，与FR-IQA、NR-IQA和logit校准方法对比。",
+ "takeaways": [
+  "FR-IQA与检测性能呈强相关，可作为置信度建模基础",
+  "失真类型是评估法证性能的关键因素",
+  "多检测器路由可显著提升整体检测性能"
+ ],
+ "weaknesses": [
+  "依赖FR-IQA作为监督信号，可能限制模型泛化能力",
+  "未探索模型架构简化可能性",
+  "未分析计算效率对实际部署的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "法证检测器置信度评估与可靠性主线直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

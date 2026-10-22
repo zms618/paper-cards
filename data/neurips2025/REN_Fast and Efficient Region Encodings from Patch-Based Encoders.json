@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/REN_Fast and Efficient Region Encodings from Patch-Based Encoders.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/REN_Fast and Efficient Region Encodings from Patch-Based Encoders.pdf",
+ "title": "REN: Fast and Efficient Region Encodings from Patch-Based Encoders",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 5.75
+ },
+ "one_line": "REN通过轻量交叉注意力提升区域编码效率，但依赖SAM且泛化验证不足。",
+ "innovations": [
+  "消除显式分割步骤，直接从patch特征生成区域标记",
+  "结合对比学习和特征相似性双重训练目标",
+  "支持预训练REN扩展到其他编码器而无需专门训练"
+ ],
+ "method_framework": "REN使用点提示作为查询，patch特征作为键/值，通过交叉注意力块生成区域标记，结合对比学习和特征相似性损失进行训练。",
+ "experiment_framework": "在Ego4D VQ2D、语义分割、视觉检索等任务评估，与SAM方法和原始编码器比较，使用stAP、mAP等指标。",
+ "takeaways": [
+  "轻量级模块可显著提升区域表示效率",
+  "对比学习目标能捕获细粒度对象特征",
+  "区域表示可扩展到不同编码器"
+ ],
+ "weaknesses": [
+  "依赖SAM进行训练，可能引入其局限性",
+  "点提示策略和标记聚合可能影响边界精度",
+  "未充分探索不同场景下的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

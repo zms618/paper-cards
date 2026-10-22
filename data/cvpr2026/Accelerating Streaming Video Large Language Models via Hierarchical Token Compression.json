@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Accelerating Streaming Video Large Language Models via Hierarchical Token Compression.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Accelerating Streaming Video Large Language Models via Hierarchical Token Compression.pdf",
+ "title": "Accelerating Streaming Video Large Language Models via Hierarchical Token Compression",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "分层令牌压缩加速流式视频LLM，但内存优化与长视频性能不足",
+ "innovations": [
+  "STC-Cacher利用时间冗余缓存特征减少ViT计算",
+  "STC-Pruner使用双锚点策略压缩LLM输入令牌",
+  "流式场景下因果式压缩框架设计"
+ ],
+ "method_framework": "STC框架包含STC-Cacher和STC-Pruner两个模块，前者通过缓存和重用静态特征减少ViT计算，后者通过时空双锚点策略压缩令牌序列，实现端到端加速。",
+ "experiment_framework": "在OVO-Bench、StreamingBench、EgoSchema等5个基准上测试，与ReKV、Dispider等4种基线模型对比，评估ViT编码延迟和LLM预填充延迟",
+ "takeaways": [
+  "流式视频理解中时间冗余分析为压缩提供依据",
+  "双锚点策略在未知查询情况下有效保留重要信息",
+  "模块化设计使方法可即插即用到现有模型"
+ ],
+ "weaknesses": [
+  "仅关注计算效率，未讨论内存优化",
+  "在长视频理解任务上性能略有下降"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅关注计算效率，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

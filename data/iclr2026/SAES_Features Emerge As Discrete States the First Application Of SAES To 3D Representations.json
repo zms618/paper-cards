@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SAES_Features Emerge As Discrete States the First Application Of SAES To 3D Representations.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SAES_Features Emerge As Discrete States the First Application Of SAES To 3D Representations.pdf",
+ "title": "Features Emerge as Discrete States: The First Application of SAEs to 3D Representations",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "首次将SAE应用于3D表征，发现离散状态空间但缺乏普适验证。",
+ "innovations": [
+  "首次把 SAE 特征分解从文本域拓展到 3D 表征域，建立 3D 特征可解释性管线。",
+  "关键发现：3D 重建 VAE 的特征激活并非连续而是近似离散状态空间，由类相变(phase-like transition)驱动。",
+  "用该状态空间框架解释三种反直觉现象：对位置编码特征的偏好、特征消融与重建损失的 sigmoid 关系、相变点的双峰分布。"
+ ],
+ "method_framework": "对 Dora-VAE 编码 5.3 万个 Objaverse 点云物体得到的 latent vectors 训练 SAE 做特征分解，将每个 latent 表示为特征向量的线性组合；通过特征消融/添加与相变分析，把特征组织理解为离散状态空间，并用叠加干扰在特征间的重分配来解释重要性差异。",
+ "experiment_framework": "分析性研究：数据集为 Objaverse 的 5.3 万个 3D 物体，基模型为 SOTA 3D 重建 VAE(Dora-VAE)；方法为 SAE 字典学习 + 特征消融实验 + 相变点统计，无下游精度基准，以现象解释与统计分布为证据。",
+ "takeaways": [
+  "3D VAE 的特征呈现离散状态空间而非连续表征，相变是其组织方式。",
+  "特征消融对重建损失的影响呈 sigmoid 关系，且相变点呈双峰分布。",
+  "模型会把叠加干扰重分配以优先保证高重要性特征。"
+ ],
+ "weaknesses": [
+  "属描述/解释性研究，缺乏可量化下游任务或干预性验证，结论主要基于单一 Dora-VAE。",
+  "仅在 Objaverse 一个数据集与一个 VAE 上验证，状态空间结论的普适性未知。",
+  "与视觉可靠性/医学影像/多模态推理主线关联弱，属机制可解释性方向。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.0,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3D特征可解释性研究，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

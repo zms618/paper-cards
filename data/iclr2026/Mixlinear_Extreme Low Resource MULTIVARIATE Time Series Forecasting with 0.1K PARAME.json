@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mixlinear_Extreme Low Resource MULTIVARIATE Time Series Forecasting with 0.1K PARAME.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mixlinear_Extreme Low Resource MULTIVARIATE Time Series Forecasting with 0.1K PARAME.pdf",
+ "title": "MixLinear: Extreme Low Resource Multivariate Time Series Forecasting with 0.1K Parameters",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "极简线性模型压缩参数，时频互补建模长期时序预测",
+ "innovations": [
+  "时域用线性变换分离段内与段间相关性以捕获局部模式",
+  "频域用可学习秩约束滤波器将全局趋势压入超低维频率潜空间",
+  "将单层线性模型参数复杂度从O(n^2)降到O(n)，0.1K参数保持精度"
+ ],
+ "method_framework": "利用时序结构稀疏性互补：局部高频变化在时域分段线性变换中高效建模；全局低频趋势/季节在频域经低秩可学习滤波器压缩；两者协同构成极简线性网络。",
+ "experiment_framework": "在多个长期时序预测基准上评测，对比Transformer类与大参数模型；指标为MSE/MAE；以显著更少参数(0.1K)取得可比精度，适合算力受限边缘设备。",
+ "takeaways": [
+  "参数爆炸并非性能必然代价，结构高效表示可大幅压缩",
+  "时频互补建模能用极简线性网络逼近复杂模型",
+  "0.1K参数使长期预测可部署于嵌入式/传感设备"
+ ],
+ "weaknesses": [
+  "relevance偏离主线(时序预测，非可靠性/医疗影像/多模态推理)",
+  "低秩滤波器秩与分段长度等结构先验依赖数据平稳性假设",
+  "对突变/非平稳真实工业序列的稳健性未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "时序预测非主线，但结构高效设计具迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

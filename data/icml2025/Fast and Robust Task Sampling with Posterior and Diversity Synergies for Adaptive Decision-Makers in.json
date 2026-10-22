@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Fast and Robust Task Sampling with Posterior and Diversity Synergies for Adaptive Decision-Makers in.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Fast and Robust Task Sampling with Posterior and Diversity Synergies for Adaptive Decision-Makers in.pdf",
+ "title": "Fast and Robust: Task Sampling with Posterior and Diversity Synergies for Adaptive Decision-Makers in Randomized Environments",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "将任务采样建模为MDP，结合风险预测与多样性提升元RL鲁棒性。",
+ "innovations": [
+  "将鲁棒主动任务采样优化流程形式化为MDP，给出理论与实践洞察",
+  "提出PDTS(Posterior and Diversity Synergized Task Sampling)方法，同时利用后验风险预测和任务多样性信息进行采样",
+  "证明后验与多样性的协同效应比单一准则更高效，减少昂贵的策略评估次数"
+ ],
+ "method_framework": "在域随机化/元RL训练中，需要在大量环境任务中选择哪些任务进行策略评估以提升鲁棒性。PDTS维护一个风险预测模型(后验)来估计每个任务的适应风险，同时维护任务池的多样性度量。采样时综合两个准则：优先选择预测风险高的任务(困难任务)，同时保持任务分布的多样性(避免采样相似任务)。将整个采样-评估-更新循环建模为MDP，分析最优策略结构。",
+ "experiment_framework": "在多个元RL/域随机化基准环境上验证。对比随机采样、纯风险采样、纯多样性采样等基线。评估鲁棒适应性能(CVaR等风险指标)和样本效率(所需任务评估次数)。",
+ "takeaways": [
+  "PDTS比纯风险采样和纯多样性采样都更高效，协同效应显著",
+  "主动任务采样能大幅减少达到相同鲁棒性水平所需的策略评估次数",
+  "风险预测模型的后验不确定性可用于探索-利用权衡"
+ ],
+ "weaknesses": [
+  "方法依赖风险预测模型的准确性，模型误设时的性能退化未充分分析",
+  "仅在仿真环境验证，真实机器人系统的迁移效果未知",
+  "任务池的维度和大小对采样效率的影响缺乏系统研究"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

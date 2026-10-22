@@ -1,0 +1,41 @@
+{
+ "title": "UME-R1: Exploring Reasoning-Driven Generative Multimodal Embeddings",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "生成式多模态嵌入：SFT+RL训练，推理链提升嵌入质量但增加计算成本",
+ "innovations": [
+  "首次探索推理驱动的生成式多模态嵌入，让嵌入模型像 LRM 一样先生成中间推理与摘要再产出嵌入。",
+  "两阶段训练：冷启动 SFT(对 query-target 对增广中间推理与摘要，对比损失作用于摘要后嵌入 token、AR 损失作用于推理 token)，再用 RL 增强推理并优化生成式嵌入质量。",
+  "得到四点洞见：生成式嵌入超越判别式嵌入、二者互补(oracle 远超任一)、RL 可扩展优化、推理时重复采样提升 pass@k。"
+ ],
+ "method_framework": "SFT 阶段让模型先生成推理链与摘要，再在摘要后输出嵌入 token，同时保留判别式嵌入能力；随后 RL(GRPO 类)优化生成式嵌入质量；推理时可按需输出判别式或生成式嵌入，并重复采样以覆盖更多下游任务(pass@k)。",
+ "experiment_framework": "在 MMEB-V2 基准 78 个任务(视频/图像/可视文档)上，与判别式多模态嵌入模型对比，报告嵌入质量指标，并分析判别/生成嵌入互补性与 pass@k。",
+ "takeaways": [
+  "现有 MLLM 嵌入模型本质判别式，无法受益于推理驱动的生成范式。",
+  "推理驱动的生成式嵌入借助 MLLM 生成式推理能力可显著超过判别式嵌入，且二者互补。",
+  "RL 是优化生成式嵌入的可扩展范式，推理时重复采样还能扩大下游任务覆盖。"
+ ],
+ "weaknesses": [
+  "生成式嵌入需先输出推理与摘要，推理时计算成本与延迟高于直接判别式嵌入。",
+  "生成式嵌入质量对推理链/摘要构造与 RL 奖励设计敏感，可复现性依赖这些细节。",
+  "聚焦嵌入表示质量，未涉及可靠性/不确定性/幻觉抑制主线；完整 78 任务分项与 RL 消融未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/UME-R1_Exploring Reasoning-Driven Gener-ATIVE Multimodal Embeddings.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/UME-R1_Exploring Reasoning-Driven Gener-ATIVE Multimodal Embeddings.pdf",
+ "raw_overall": 6.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态嵌入方法，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

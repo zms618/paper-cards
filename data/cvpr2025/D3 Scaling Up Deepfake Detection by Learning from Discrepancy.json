@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/D3 Scaling Up Deepfake Detection by Learning from Discrepancy.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/D3 Scaling Up Deepfake Detection by Learning from Discrepancy.pdf",
+ "title": "D3 Scaling Up Deepfake Detection by Learning from Discrepancy",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "双路径差异学习提升深度伪造检测泛化，但依赖特定失真操作",
+ "innovations": [
+  "提出从单生成器到多生成器的训练范式转变",
+  "引入图像失真作为差异信号的双路径架构",
+  "通过自注意力机制提取跨生成器的通用伪影特征"
+ ],
+ "method_framework": "D3框架使用原始图像和其块打乱版本输入预训练CLIP模型，通过自注意力层学习两种特征间的关联，最后用线性分类器判断真伪。",
+ "experiment_framework": "在UFD和GenImage合并数据集上，从1到8个生成器逐步扩展训练，评估8个ID和12个OOD生成器的性能，使用准确率和平均精度作为指标。",
+ "takeaways": [
+  "多生成器训练范式能提升检测器的泛化能力",
+  "引入图像失真作为差异信号有助于学习更通用的伪影特征"
+ ],
+ "weaknesses": [
+  "方法依赖于特定的图像失真操作(块打乱)，可能限制其泛化到其他类型的失真",
+  "未充分探讨不同失真操作对性能的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "深度伪造检测属于可靠性主线，多生成器训练提升泛化能力",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

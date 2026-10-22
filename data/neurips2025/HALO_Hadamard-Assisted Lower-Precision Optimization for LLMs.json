@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/HALO_Hadamard-Assisted Lower-Precision Optimization for LLMs.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/HALO_Hadamard-Assisted Lower-Precision Optimization for LLMs.pdf",
+ "title": "HALO: Hadamard-Assisted Lower-Precision Optimization for LLMs",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "Hadamard变换辅助低精度优化，LLM微调效率提升有限",
+ "innovations": [
+  "左右侧Hadamard变换策略解决前向和反向传播中的异常值",
+  "HQ-FSDP实现低精度通信减少开销",
+  "HALO-1和HALO-2两级设计适应不同精度需求"
+ ],
+ "method_framework": "通过分析量化误差敏感性，在前向和反向传播中 strategically 插入Hadamard变换，结合高效核实现和FSDP集成，实现全低精度矩阵乘法",
+ "experiment_framework": "LLAMA3-8B和Qwen模型在ViGGO、GSM8k和SQL数据集上测试，对比SwitchBack和JetFire/DeepSeek基线",
+ "takeaways": [
+  "Hadamard变换可有效缓解量化训练中的异常值问题",
+  "低精度通信可显著减少分布式训练开销"
+ ],
+ "weaknesses": [
+  "方法实现复杂度高，需要额外计算资源",
+  "未充分验证在更大模型规模上的扩展性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

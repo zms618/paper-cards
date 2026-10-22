@@ -1,0 +1,41 @@
+{
+ "title": "Reducing Contextual Stochastic Bilevel Optimization via Structured Function Approximation",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "结构化近似将CSBO归约为SBO，理论贡献为主，实验证据不足。",
+ "innovations": [
+  "提出归约框架：将下层解参数化为W(x)·Φ[N](ξ)，使下层仅依赖x、保留强凸性，把CSBO转成可用联合样本求解的SBO。",
+  "证明归约保持超梯度精度并给出ε-平稳解，样本复杂度达O(ε^-3)，与SBO最优率(差对数因子)匹配。",
+  "给出基函数的充分判据，并指出Chebyshev多项式是满足该判据的高效具体选择；无需不切实际的条件采样oracle。"
+ ],
+ "method_framework": "用上下文无关系数矩阵W(x)与一组基函数Φ[N](ξ)的线性组合近似下层解；由于对W线性且基固定，下层强凸性被保留，问题退化为仅依赖x的标准SBO；仅需(ξ,η)联合样本即可估计期望，回避对条件分布Pη|ξ的采样需求。",
+ "experiment_framework": "在逆优化与超参数优化任务上验证；对比需条件oracle的CSBO基线；指标为收敛性、样本效率与内存占用；理论上对比Guo et al.(mε^-3)与Hu et al.(ε~^-4)的复杂度与oracle假设。",
+ "takeaways": [
+  "CSBO的昂贵来自每个context都要解一次下层问题，结构化近似可将其解耦。",
+  "在温和条件下CSBO可达到与SBO相当的O(ε^-3)复杂度。",
+  "仅用联合样本、免条件采样oracle，使方法适用于离线数据/隐私约束场景。"
+ ],
+ "weaknesses": [
+  "落地域为双层优化理论，与可靠性×医学影像/多模态推理主线无关。",
+  "强依赖基函数能良好近似y*(x,ξ)，高维context下基的选择与维数灾难未充分讨论。",
+  "节选前9页未见逆优化/超参任务的完整收敛曲线与相对基线数值，经验证据在所选范围内偏理论。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Reducing Contextual Stochastic Bilevel Optimization via Structured Function Approximation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reducing Contextual Stochastic Bilevel Optimization via Structured Function Approximation.pdf",
+ "raw_overall": 5.73,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "双层优化理论，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

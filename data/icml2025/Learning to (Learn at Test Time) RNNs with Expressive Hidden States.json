@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning to (Learn at Test Time) RNNs with Expressive Hidden States.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning to (Learn at Test Time) RNNs with Expressive Hidden States.pdf",
+ "title": "Learning to (Learn at Test Time): RNNs with Expressive Hidden States",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 8,
+  "overall": 7
+ },
+ "one_line": "将RNN隐状态设计为测试时可学习的模型，提升长上下文表达能力。",
+ "innovations": [
+  "核心洞见：现有RNN长上下文能力差的根源不是递推形式，而是隐状态表达能力不足——将隐状态本身设计为一个MLP/线性模型",
+  "提出TTT层：隐状态的更新规则就是在当前token上做一步梯度下降（自监督学习），使模型在测试时也能学习",
+  "两种实例化：TTT-Linear（隐状态是线性模型）和TTT-MLP（隐状态是两层MLP），在长上下文任务上接近甚至超越Transformer"
+ ],
+ "method_framework": "标准RNN：h_t = f(h_{t-1}, x_t)，h_t是固定维度向量。TTT：将隐状态视为一个小模型的参数W_t；每来一个新token x_t，先以W_{t-1}预测x_t的某些特征（自监督目标），计算损失后做一步梯度下降得到W_t；然后用W_t做下游预测。这样隐状态W_t既是记忆又是可训练的模型，测试时也在不断学习。外层参数θ（如输入输出投影）通过反向传播整个TTT过程学习。",
+ "experiment_framework": "对比Transformer和Mamba（现代SOTA RNN）；基准包括Pile、Books等语言建模数据集；评估不同上下文长度（2k/8k/32k）下的困惑度和缩放趋势；验证线性复杂度优势在长上下文下的实际收益。",
+ "takeaways": [
+  "RNN长上下文性能瓶颈在于隐状态表达能力，而非递推机制本身",
+  "将隐状态升级为可学习模型（测试时训练）后，线性复杂度模型可以达到接近Transformer的长上下文性能",
+  "TTT层兼具RNN的线性复杂度和Transformer的上下文表达能力，是长序列建模的有前途方向"
+ ],
+ "weaknesses": [
+  "TTT-MLP的隐状态参数量较大，实际内存开销相比标准RNN显著增加",
+  "测试时梯度更新的计算开销在极长序列下的累积效应未充分量化",
+  "主要在语言建模上验证，在多模态或代码生成等更复杂任务上的效果有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.13,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

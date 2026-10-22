@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/NADARAYA-Watson_Understanding the Mixture-of-Experts with NADARAYA-Watson Kernel.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/NADARAYA-Watson_Understanding the Mixture-of-Experts with NADARAYA-Watson Kernel.pdf",
+ "title": "Understanding the Mixture-of-Experts with Nadaraya-Watson Kernel",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "NW回归视角下MoE重解释，提出零成本FFN路由KERN，性能提升有限",
+ "innovations": [
+  "揭示MoE与Nadaraya-Watson回归数学同构，且FFN与MoE均可视为NW回归的特例(核对应输出层输入神经元)",
+  "质疑softmax把路由权重投到概率单纯形的必要性，提出FFN式路由KERN",
+  "KERN泛化sigmoid与softmax路由，基于FFN实现经验推荐ReLU激活+l2归一化"
+ ],
+ "method_framework": "从NW回归视角重写MoE聚合：专家输出即核加权平均，路由即核函数。据此把路由器实现为一个FFN(含ReLU与l2归一化)，使其同时涵盖sigmoid路由与softmax路由；该FFN式路由零额外成本地替换原softmax路由，保持MoE前向结构。",
+ "experiment_framework": "在MoE层与完整LLM训练上验证；对比softmax路由与sigmoid路由；指标为困惑度/下游任务精度与路由稀疏性；消融ReLU/l2归一化的作用。",
+ "takeaways": [
+  "softmax路由并非原则性最优选择，MoE本质上可由NW回归视角统一理解",
+  "FFN式KERN路由零额外成本即可泛化现有sigmoid/softmax路由",
+  "ReLU+l2归一化的KERN在MoE/LLM上有效性得到验证"
+ ],
+ "weaknesses": [
+  "主线是MoE路由架构/可解释性，与鲁棒性、可信验证、幻觉抑制等可靠性落地主线无关",
+  "NW同构是重解释，性能增益相对强基线的幅度需看原文，多为持平或小胜",
+  "路由改变对专家负载均衡/训练不稳定的影响未充分刻画"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.13,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "MoE路由架构与可靠性主线无关，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

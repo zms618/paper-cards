@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Multi-Agent Guided Policy Optimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Multi-Agent Guided Policy Optimization.pdf",
+ "title": "Multi-Agent Guided Policy Optimization",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "CTDE框架改进，自回归策略对齐缓解指数爆炸问题",
+ "innovations": [
+  "提出多智能体引导策略优化(MAGPO)框架，将中心化引导与去中心化执行深度整合",
+  "采用自回归联合策略实现可扩展的协调探索，缓解联合动作空间指数爆炸问题",
+  "显式对齐中心化引导策略与去中心化策略，减少模仿差距并保证单调策略改进"
+ ],
+ "method_framework": "在CTDE范式下训练一个自回归中心化引导策略(guider)，基于全局信息顺序生成联合动作用于协调探索；同时训练去中心化学习者策略，并在训练过程中显式对齐引导策略与学习者策略，确保中心化学到的协调策略可被去中心化策略实现。",
+ "experiment_framework": "在6个不同环境的43个任务上评估，对比多种强CTDE基线方法和完全中心化方法，使用平均回报等指标衡量性能。",
+ "takeaways": [
+  "MAGPO在43个任务上一致优于强CTDE基线，甚至匹敌或超过完全中心化方法",
+  "自回归联合策略有效缓解了多智能体联合动作空间的可扩展性问题",
+  "中心化-去中心化策略对齐显著减少了模仿差距，提升了实际部署性能"
+ ],
+ "weaknesses": [
+  "自回归动作生成的顺序性可能影响决策效率，实时性要求高的场景适用性存疑",
+  "仅在合作型MARL环境验证，竞争/混合场景下的效果未探索",
+  "引导策略与学习者策略的对齐机制增加了训练复杂度和调参成本"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "多智能体协作方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

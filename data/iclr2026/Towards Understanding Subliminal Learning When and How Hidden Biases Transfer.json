@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Understanding Subliminal Learning When and How Hidden Biases Transfer.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Understanding Subliminal Learning When and How Hidden Biases Transfer.pdf",
+ "title": "Towards Understanding Subliminal Learning: When and How Hidden Biases Transfer",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "揭示蒸馏中偏置迁移由少量分歧token驱动，但局限在受控场景",
+ "innovations": [
+  "提出并验证分歧token(divergence tokens)概念：不同偏置教师仅在稀疏token上预测不同，遮蔽这些token即基本消除隐藏偏置迁移",
+  "反驳两种既有解释：证明subliminal learning既不需要(全局)token纠缠也不需要logit泄漏，贪心采样下仍可发生",
+  "机理上发现早期层至关重要，仅微调单个早期层即可复现偏置迁移；并指出该现象脆弱、轻微改写提示即可抑制"
+ ],
+ "method_framework": "在贪心采样下对比不同偏置教师(猫偏置/猫头鹰偏置)的补全，定位二者出现分歧的稀疏token位置即分歧token。通过仅在分歧token上计损失/遮蔽分歧token的对照实验，验证其为偏置迁移载体；再逐层微调定位关键层，并用提示改写测试脆弱性。",
+ "experiment_framework": "受控蒸馏实验：在与偏置无关的数据(数字列表)上做硬蒸馏；对比含/不含纠缠token、贪心vs随机采样；遮蔽分歧token的消融；逐层微调归因；提示改写扰动测试。",
+ "takeaways": [
+  "硬蒸馏下的隐藏偏置迁移由极少量分歧token承载，遮蔽它们基本可阻断迁移",
+  "token纠缠与logit泄漏并非subliminal learning的必要条件",
+  "偏置迁移集中于早期层且对提示改写脆弱，意味着可针对性阻断"
+ ],
+ "weaknesses": [
+  "结论基于受控的toy化偏置场景(喜欢猫/猫头鹰)，真实模型复杂偏置与安全行为下是否同样由分歧token主导尚待验证",
+  "缓解仅停留在'遮蔽分歧token/改写提示'，未给出可扩展的工程化抑制方案",
+  "属蒸馏机理可解释性，与医学影像、多模态推理落地域无直接关联"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "蒸馏偏置迁移机理扎实，但未触及可靠性主线与落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

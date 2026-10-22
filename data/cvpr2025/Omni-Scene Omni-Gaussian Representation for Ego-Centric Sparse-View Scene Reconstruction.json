@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Omni-Scene Omni-Gaussian Representation for Ego-Centric Sparse-View Scene Reconstruction.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Omni-Scene Omni-Gaussian Representation for Ego-Centric Sparse-View Scene Reconstruction.pdf",
+ "title": "Omni-Scene Omni-Gaussian Representation for Ego-Centric Sparse-View Scene Reconstruction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "双分支高斯表示法解决自中心稀疏视图重建，但体积大小受限",
+ "innovations": [
+  "Omni-Gaussian表示法结合像素与体积基高斯优势",
+  "Volume Builder与Pixel Decorator双分支设计",
+  "Projection-Based Feature Fusion与Depth-Guided Training协作机制"
+ ],
+ "method_framework": "双分支架构：Volume Builder通过Triplane Transformer将2D特征提升至3D体积空间预测体素锚定高斯；Pixel Decorator利用Multi-View U-Net提取跨视图特征预测像素基高斯；通过特征融合与训练分解实现互补协作。",
+ "experiment_framework": "nuScenes自中心任务(6视图输入，12视图目标)与RealEstate10K场景中心任务；对比pixelSplat、MVSplat等基线；指标包括PSNR、SSIM、LPIPS和PCC。",
+ "takeaways": [
+  "多表示法互补可有效解决遮挡与截断问题",
+  "深度引导的训练分解能明确不同表示法的空间属性"
+ ],
+ "weaknesses": [
+  "体积大小固定限制了远距离场景重建",
+  "计算复杂度随体积分辨率增加而显著提高"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "稀疏视图重建与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

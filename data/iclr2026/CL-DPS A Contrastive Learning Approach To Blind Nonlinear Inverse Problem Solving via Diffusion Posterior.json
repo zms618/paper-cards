@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/CL-DPS A Contrastive Learning Approach To Blind Nonlinear Inverse Problem Solving via Diffusion Posterior.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/CL-DPS A Contrastive Learning Approach To Blind Nonlinear Inverse Problem Solving via Diffusion Posterior.pdf",
+ "title": "CL-DPS: A Contrastive Learning Approach To Blind Nonlinear Inverse Problem Solving via Diffusion Posterior Sampling",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "对比学习辅助扩散采样解决盲逆问题，但计算成本高且泛化性有限。",
+ "innovations": [
+  "MoCo风格对比学习训练辅助编码器估计似然",
+  "重叠块推理策略保留细节信息",
+  "颜色一致性头保持色彩统计",
+  "无需估计或反转前向算子的引导方法"
+ ],
+ "method_framework": "训练阶段：使用随机化测量算子的MoCo对比目标训练辅助编码器；推理阶段：将辅助编码器的梯度作为引导项注入反向扩散轨迹，结合重叠块推理和颜色一致性头进行后验采样。",
+ "experiment_framework": "数据集：FFHQ、AFHQ、ImageNet；基线：BlindDPS、FastEM、GibbsDDRM等；指标：PSNR、FID、LPIPS",
+ "takeaways": [
+  "对比学习可作为似然估计的有效替代",
+  "重叠块推理能保留更多细节信息",
+  "轻量级辅助训练可扩展扩散模型到盲非线性问题"
+ ],
+ "weaknesses": [
+  "计算成本较高，特别是分母感知变体",
+  "仅评估了图像去模糊任务，泛化性需进一步验证",
+  "颜色一致性头仅用于训练，推理时被丢弃"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "盲逆问题解决与可靠性主线无直接交点，仅对比学习设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

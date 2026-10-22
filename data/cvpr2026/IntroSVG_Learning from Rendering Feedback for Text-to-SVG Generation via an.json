@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/IntroSVG_Learning from Rendering Feedback for Text-to-SVG Generation via an.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/IntroSVG_Learning from Rendering Feedback for Text-to-SVG Generation via an.pdf",
+ "title": "IntroSVG Learning from Rendering Feedback for Text-to-SVG Generation via an",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "统一VLM自评迭代优化SVG生成，依赖外部专家数据",
+ "innovations": [
+  "统一VLM担任生成器和批评者双重角色",
+  "将早期失败转化为高质量错误纠正训练数据",
+  "引入视觉反馈的迭代优化循环"
+ ],
+ "method_framework": "基于统一VLM的两阶段训练：SFT阶段培养生成和批评能力，DPO阶段优化生成策略，推理时执行生成-自评-修正的迭代循环。",
+ "experiment_framework": "整合LLM4SVG、OmniSVG和SVGen数据集，标准化后约20万样本；对比领域特定模型和通用大模型；评估RSR、FID、CLIPScore等指标。",
+ "takeaways": [
+  "数据标准化对SVG生成质量至关重要",
+  "错误样本转化为训练数据可提升模型鲁棒性",
+  "迭代优化机制显著提升生成质量"
+ ],
+ "weaknesses": [
+  "依赖外部专家模型(GPT-4o)构建偏好数据",
+  "迭代优化可能增加推理时间",
+  "未充分探讨模型在不同复杂度任务上的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "SVG生成与可靠性主线无实质交点，仅数据标准化有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

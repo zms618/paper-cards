@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Preference Adaptive and Sequential Text-to- Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Preference Adaptive and Sequential Text-to- Generation.pdf",
+ "title": "Preference Adaptive and Sequential Text-to-Image Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "用RL与LMM实现多轮交互式文生图，降低提示不确定性",
+ "innovations": [
+  "构建并开源人工标注的序列偏好数据集与模拟用户-评分者交互，支持多轮T2I研究",
+  "用EM策略从非序列大规模数据与序列偏好中联合建模用户偏好与用户选择，并识别不同用户偏好类型",
+  "基于多模态大模型(LMM)与价值型RL，向用户自适应地推荐多样的提示扩展候选slate"
+ ],
+ "method_framework": "把交互式T2I建模为序贯决策问题：先用EM从序列偏好与大规模非序列开源数据中估计用户偏好/选择模型并区分偏好类型；再以LMM理解图文、用价值型RL学习每轮该向用户提供哪组提示扩展，通过多轮迭代逐步收敛到用户真实意图、降低提示欠指定带来的不确定性。",
+ "experiment_framework": "以人工评分者(human raters)评测多轮交互生成质量；基线为单轮T2I与其他提示扩展方法；指标为用户偏好胜率/满意度；并开源序列评分数据集与模拟交互。",
+ "takeaways": [
+  "多轮交互式提示扩展比单轮T2I更能捕捉用户复杂/抽象意图，人工评测显著优于基线",
+  "EM能联合利用序列偏好与大规模非序列数据估计用户偏好并区分偏好类型",
+  "价值型RL推荐多样性slate有助于在探索用户意图与收敛之间取得平衡"
+ ],
+ "weaknesses": [
+  "依赖人工评分者评测，成本高且评分者间一致性可能影响结论稳健性",
+  "模拟用户-评分者交互与真实用户行为的差距可能使RL策略在真实场景迁移打折",
+  "每轮依赖LMM评分，端到端延迟与扩展候选数量的权衡未充分量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

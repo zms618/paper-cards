@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Reassessing Layer Pruning In LLMS new IN-SIGHTS and Methods.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reassessing Layer Pruning In LLMS new IN-SIGHTS and Methods.pdf",
+ "title": "Reassessing Layer Pruning in LLMs: New Insights and Methods",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "系统基准发现LLM层剪枝中简单逆序剪枝优于复杂指标",
+ "innovations": [
+  "系统基准7种层选择指标、3个开源LLM、6种微调方法、8个数据集，得出反直觉结论：逆序剪枝（直接剪最后若干层）优于多数复杂层选择指标。",
+  "指出LoRA并非剪枝后微调的最佳选择；冻结其余层、只微调最后剩余层与lm头的局部层微调精度更高且更省时。",
+  "基于梯度流的分析框架，解释Pre-LN Transformer中深层梯度弱化如何降低深层贡献，从理论上说明为何剪末层+微调末几层有效。"
+ ],
+ "method_framework": "不追求新的复杂剪枝算子，而是先基准各层选择指标与微调方法，再据梯度流分析得出实践指南：剪末尾若干层，仅微调lm头与剩余最后三层。",
+ "experiment_framework": "在Llama-3.1-8B-It、Llama-3-8B、Llama-3-70B上对比7种层选择指标与6种微调方法，覆盖8个常见数据集，报告剪枝后精度恢复并对比SOTA剪枝方法。",
+ "takeaways": [
+  "简单逆序剪枝+局部层微调在Llama-3.1-8B-It上比SOTA剪枝方法高5.62%-17.27%，Llama-3-8B高2.36%-19.45%，Llama-3-70B高4.34%-9.59%。",
+  "复杂层选择指标与LoRA在剪枝后恢复上并不如预期，实践中应优先尝试极简的末层剪枝与末几层微调。"
+ ],
+ "weaknesses": [
+  "属模型压缩/效率方向，与可靠性主线（鲁棒/可信/验证器）关联较弱。",
+  "结论主要在Llama系列Pre-LN架构上得出，对其他架构（Post-LN、MoE、非Llama）的可迁移性未充分验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "模型压缩工作，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

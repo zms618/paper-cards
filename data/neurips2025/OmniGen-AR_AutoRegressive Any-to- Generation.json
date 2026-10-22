@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/OmniGen-AR_AutoRegressive Any-to- Generation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/OmniGen-AR_AutoRegressive Any-to- Generation.pdf",
+ "title": "OmniGen-AR: AutoRegressive Any-to- Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "自回归多模态生成框架，DCA机制防信息泄漏但精细控制不足",
+ "innovations": [
+  "统一自回归框架支持任意到图像生成",
+  "解耦因果注意力(DCA)防止条件信息泄漏",
+  "共享视觉tokenizer处理多种视觉条件"
+ ],
+ "method_framework": "通过共享视觉tokenizer和文本tokenizer将多模态输入离散化，使用自回归transformer建模多模态token间依赖关系，引入DCA分离条件与内容注意力路径。",
+ "experiment_framework": "在6个代表性视觉生成任务上评估，包括文本到图像、文本到视频、帧预测、图像编辑、深度和分割条件生成，使用GenEval、VBench等基准指标。",
+ "takeaways": [
+  "解耦因果注意力作为训练时正则化器可有效防止信息泄漏",
+  "统一框架下多任务训练可提升模型泛化能力"
+ ],
+ "weaknesses": [
+  "在精细空间指令遵循能力上仍有不足",
+  "稀疏控制信号下生成质量不稳定"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

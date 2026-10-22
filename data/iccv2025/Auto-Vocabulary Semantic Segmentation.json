@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Auto-Vocabulary Semantic Segmentation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Auto-Vocabulary Semantic Segmentation.pdf",
+ "title": "Auto-Vocabulary Semantic Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "AutoSeg通过BLIP聚类生成图像特定词汇，实现开放词汇分割。",
+ "innovations": [
+  "BBoost方法通过BLIP嵌入的语义聚类生成图像特定词汇",
+  "AutoSeg框架实现自动识别和分割开放类别",
+  "LAVE评估器解决自动生成类别的评估问题"
+ ],
+ "method_framework": "AutoSeg结合BBoost语义聚类和X-Decoder分割器，通过BLIP嵌入的聚类、对齐和去噪生成名词，作为自引导输入到分割器。",
+ "experiment_framework": "在PASCAL VOC、Context、ADE20K和Cityscapes数据集上评估，使用cmIoU和mIoU指标，与基线方法对比。",
+ "takeaways": [
+  "利用预训练VLM的局部嵌入进行语义聚类可生成有意义的类别",
+  "开放词汇评估需要考虑语义关系而非简单匹配",
+  "多分辨率特征融合可提高聚类质量"
+ ],
+ "weaknesses": [
+  "方法依赖BLIP和X-Decoder等预训练模型，计算资源需求高",
+  "评估方法LAVE依赖于LLM的准确性，可能引入额外偏差"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "开放词汇分割与可靠性主线无实质交点，仅具知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

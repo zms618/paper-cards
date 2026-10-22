@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Visiomath_Benchmarking -BASED Mathematical Reasoning In LMMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Visiomath_Benchmarking -BASED Mathematical Reasoning In LMMS.pdf",
+ "title": "VisioMath: Benchmarking Figure-Based Mathematical Reasoning in LMMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "构建视觉相似图形数学推理基准，揭示LMM图文错位缺陷",
+ "innovations": [
+  "提出VisioMath基准：1800道K-12数学题，所有候选答案均为视觉上高度相似的图形，聚焦细粒度比较推理能力",
+  "发现LMM随图像间相似度增加准确率持续下降，主导失败模式是图文错位——模型依赖浅层位置启发式而非文本线索接地推理",
+  "探索三种对齐导向策略（免训练+微调），均取得显著准确率提升，为改进指明方向"
+ ],
+ "method_framework": "VisioMath基准包含1800道高质量K-12数学问题，特点是所有候选答案都是视觉相似的图形选项，要求模型进行细粒度的图形比较推理。评测覆盖闭源和开源SOTA LMM，按图像间相似度梯度分析性能变化。进一步分析失败模式，识别出图文错位（image-text misalignment）为主导问题，并测试三类对齐策略的改进效果。",
+ "experiment_framework": "数据集：VisioMath（1800道K-12数学题，图形选项高度相似）。基线：多种闭源和开源SOTA LMM。指标：准确率（按图像相似度分层）。分析：失败模式归因（图文错位vs视觉区分困难）。改进策略：三种对齐导向方法对比。",
+ "takeaways": [
+  "当前LMM在需要区分视觉相似图形的数学推理任务上表现不佳，且随相似度增加准确率持续下降",
+  "主要失败原因是图文错位：模型没有将文本推理接地到具体图形，而是依赖位置启发式等浅层线索",
+  "对齐导向策略能有效缓解图文错位问题，提升细粒度图形推理性能"
+ ],
+ "weaknesses": [
+  "仅覆盖K-12数学几何类题目，更广泛的图形推理场景（如工程图、科学图表）未覆盖",
+  "三种改进策略仅做了初步探索，未深入系统比较不同方法的优劣和适用场景",
+  "图形相似度的度量方式较为间接，缺乏更精细的难度分级"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "数学推理基准构建，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

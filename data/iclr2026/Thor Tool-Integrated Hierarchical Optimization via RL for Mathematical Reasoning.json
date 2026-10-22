@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Thor Tool-Integrated Hierarchical Optimization via RL for Mathematical Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Thor Tool-Integrated Hierarchical Optimization via RL for Mathematical Reasoning.pdf",
+ "title": "THOR: Tool-Integrated Hierarchical Optimization via RL for Mathematical Reasoning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "THOR通过分层RL和自纠错提升数学推理，但与主线关联有限",
+ "innovations": [
+  "提出TIRGen多agent流水线构建高质量工具集成推理路径数据集，与策略对齐且跨模型泛化",
+  "提出分层RL策略，联合优化回合级解题成功率和步骤级代码生成质量，洞察到中间工具调用成功是最终答案正确的强预测因子",
+  "推理时引入自纠错机制，利用即时工具反馈动态修正错误推理路径"
+ ],
+ "method_framework": "THOR包含三部分：(1)TIRGen多agent流水线生成工具集成推理数据；(2)分层RL训练，同时优化回合级（最终答案正确）和步骤级（工具调用成功）奖励；(3)推理时自纠错，根据工具返回的错误信息动态修正后续推理路径。",
+ "experiment_framework": "在多个数学推理基准（GSM8K、MATH等）和代码基准上评估。基线包括现有工具集成方法和纯推理方法。模型规模从7B到更大。指标为准确率。",
+ "takeaways": [
+  "中间工具调用的成功是最终答案正确性的强预测因子，可作为步骤级奖励信号",
+  "分层RL优化（回合级+步骤级）比仅优化最终答案更有效",
+  "TIRGen生成的数据具有跨模型泛化性，对推理和非推理模型都有效"
+ ],
+ "weaknesses": [
+  "与主线（医学影像/多模态大模型推理）关联中等，主要是纯文本数学推理",
+  "工具调用依赖外部计算环境，实际部署的复杂度和成本未充分讨论",
+  "自纠错机制在工具返回信息模糊时的有效性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "数学推理工具优化与可靠性主线关联有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Compelling ReLU Networks to Exhibit Exponentially Many Linear Regions at Initialization and During Training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Compelling ReLU Networks to Exhibit Exponentially Many Linear Regions at Initialization and During Training.pdf",
+ "title": "Compelling ReLU Networks to Exhibit Exponentially Many Linear Regions at Initialization and During Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6.25
+ },
+ "one_line": "参数化约束使ReLU网络初始化即具指数级线性区域，提升凸函数逼近精度。",
+ "innovations": [
+  "指出随机初始化下ReLU线性区域数与深度无关(Hanin&Rolnick)且梯度下降难以新建区域，导致网络不必要地过大",
+  "设计约束权重的新参数化，使深度d网络初始化时恰好产生2^d个线性区域，并在训练过程中维持这些区域",
+  "展示该构造可数量级更精确地逼近一维凸函数，并初步推广到多维与非凸函数以替代传统全连接层"
+ ],
+ "method_framework": "通过对权重施加结构性约束(参数化)，在初始化时即把网络置于一个线性区域数随深度指数(2^d)增长的子流形上，使梯度下降在训练中保持这些区域；从而把表达力先验地编码进网络而非依赖随机初始化。",
+ "experiment_framework": "以一维凸函数逼近为主，对比随机初始化网络的逼近精度(报告数量级提升)；并给出向多维、非凸函数及替换传统dense层的初步扩展验证。",
+ "takeaways": [
+  "线性区域数不是参数空间中梯度下降可直接优化的局部性质，需靠参数化显式构造",
+  "指数线性区域可在初始化即获得并在训练中保持，无需把网络堆得过大",
+  "该参数化在一维凸函数上带来数量级精度提升"
+ ],
+ "weaknesses": [
+  "多维与非凸函数仅为初步扩展，构造的一般性与可证保证不足",
+  "实验集中在低维函数逼近，未在现代深度架构/大规模benchmark上验证可扩展性",
+  "约束参数化可能限制网络表达自由度，对复杂任务的代价未充分讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.98,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

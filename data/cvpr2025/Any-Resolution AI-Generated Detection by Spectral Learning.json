@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Any-Resolution AI-Generated Detection by Spectral Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Any-Resolution AI-Generated Detection by Spectral Learning.pdf",
+ "title": "Any-Resolution AI-Generated Image Detection by Spectral Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "自监督谱重建建模真实分布，SRS相似度检测AI生成图",
+ "innovations": [
+  "只喂真实图做自监督的频率重建pretext：以圆心半径r=16的圆形频域掩码把DFT谱切成低/高频两路输入ViT，用频域距离Lrec重建被遮掉的分量，得到一个'真实图像谱分布模型'G（训练后丢弃解码头H，权重全程冻结）",
+  "谱重建相似度SRS：把原图/低通/高通三者在G的N=12个block的特征经投影算子映射到R^{L×D}后两两取余弦相似度，得ω^ol、ω^oh、ω^lh三个L维向量，各取均值+标准差拼成6N维zλ，生成图因重建不上而相似度显著偏低",
+  "谱上下文注意力SCA：把任意分辨率图切成K个h=w=224的patch各自算谱向量zS_k，用一个可学习query q对W_K投影做softmax加权（复杂度O(K)），使多兆像素图无需resize/降采样即可保留全部高频线索"
+ ],
+ "method_framework": "冻结ViT-B/16频率重建模型G建模真实谱分布；算原图/低通/高通三方SRS与谱上下文向量SCV拼成zS；再用SCA跨patch加权聚合成图像级谱向量，三层MLP sigmoid分类。",
+ "experiment_framework": "13个生成器×5类真实图源，12个检测器对照（各取checkpoint最好结果），AUC主表+backbone消融；正文在扰动鲁棒性段截断。",
+ "takeaways": [
+  "把伪造检测重构成'真实图像谱分布模型的OOD检测'，绕开逐生成器学伪artifact的泛化困境，可平移到任何'Normal分布+异常偏离'的证伪/核查场景",
+  "SCA用K个patch的单query加权而非全局自注意力，复杂度O(K)且不吃分辨率，说明高分辨率下的细微线索可以在类注意力池化里保留住",
+  "训练时固定K_training=4个随机增强view、推理时用真实patch数，避免了resize/crop引入的输入偏置；这个训/推patch数不一致的写法很值得抄"
+ ],
+ "weaknesses": [
+  "每个对比方法都'报25个checkpoint里最好的结果'，是best-case挑选而非均值；5.5%的平均提升里含这一选择偏差，未见多次运行的方差",
+  "G冻结在Xie等[72]的频率重建ViT上，全部检测能力集中在SRS/SCV/SCA三个后接模块，缺少'G是否真的学到了谱不变量'的直接探针实验（如用真值频率图比较重建误差）",
+  "正文在JPEG/WebP等五类扰动的鲁棒性实验开头截断，核心卖点'robustness against common online perturbations'的完整结果、组件消融与方差表均不可见"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "OOD检测范式可迁移至可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

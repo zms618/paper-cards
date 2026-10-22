@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/VITED_Video Temporal Evidence Distillation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/VITED_Video Temporal Evidence Distillation.pdf",
+ "title": "VITED Video Temporal Evidence Distillation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "证据链蒸馏提升视频QA时序推理，但依赖基础VLM且计算成本高",
+ "innovations": [
+  "证据链生成框架，从现有VideoQA数据集自动构建推理链",
+  "时序感知的视频语言模型，能生成时序定位的证据链",
+  "证据搜索算法，从证据池中找到最优证据序列"
+ ],
+ "method_framework": "VITED采用两阶段训练：第一阶段进行标准视频指令微调，第二阶段引入证据蒸馏，使模型能同时生成证据链和答案，实现跨视频段的推理。",
+ "experiment_framework": "在6个VideoQA基准测试(CinePile, PerceptionTest, NExT-QA, STAR, MVBench, NExT-GQA)上评估，使用MCQ准确率作为指标，并与多种基线模型比较。",
+ "takeaways": [
+  "证据链蒸馏方法显著提升视频问答性能，特别是在需要多步推理的任务上",
+  "时序证据链提供可解释的推理过程，增强模型可信度"
+ ],
+ "weaknesses": [
+  "证据质量依赖于基础VLM的描述能力，可能存在幻觉问题",
+  "证据生成过程计算成本较高，需要多次LLM调用"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频QA时序推理，与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

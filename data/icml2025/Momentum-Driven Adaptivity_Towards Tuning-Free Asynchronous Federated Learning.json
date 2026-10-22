@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Momentum-Driven Adaptivity_Towards Tuning-Free Asynchronous Federated Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Momentum-Driven Adaptivity_Towards Tuning-Free Asynchronous Federated Learning.pdf",
+ "title": "Momentum-Driven Adaptivity: Towards Tuning-Free Asynchronous Federated Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 6.5,
+  "overall": 5.75
+ },
+ "one_line": "动量自适应步长实现异步FL免调参，但实验验证有限",
+ "innovations": [
+  "提出动量驱动的自适应步长机制，实现异步联邦学习的免调参(tuning-free)训练",
+  "消除了现有AFL方法对有界数据异构性(bounded data heterogeneity)的强假设",
+  "实现关于本地步长K的线性加速比，突破现有方法的限制"
+ ],
+ "method_framework": "MasFL在服务器端采用动量驱动的自适应优化器处理异步客户端更新。核心思想：利用历史动量信息自动调整步长，无需预先知道平滑度参数L和数据异构程度。客户端异步上传模型更新，服务器端通过动量累积和自适应缩放处理陈旧更新(stale updates)。理论上证明收敛性且不依赖有界梯度/有界异构假设。",
+ "experiment_framework": "在图像分类任务上评估：CIFAR-10(ResNet-18)和FMNIST(CNN)。基线为两种SOTA异步FL方法：CA2FL和FADAS。模拟系统异构和数据异构场景，测试不同本地步长K和异步延迟下的收敛性能。指标为测试准确率和收敛速度。",
+ "takeaways": [
+  "动量驱动的自适应步长可有效实现异步FL的免调参训练，无需预知系统参数",
+  "消除有界数据异构假设后，方法在异构性更强的场景下仍能收敛",
+  "线性加速比意味着增加本地计算量可有效提升训练效率"
+ ],
+ "weaknesses": [
+  "仅在CIFAR-10/FMNIST两个简单图像数据集上验证，未在大规模或非IID极端场景下充分测试",
+  "动量机制引入了额外的服务器端状态，通信/计算开销增加的量化分析不足",
+  "与同步FL方法的对比缺失，异步相对于同步的实际优势未充分论证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

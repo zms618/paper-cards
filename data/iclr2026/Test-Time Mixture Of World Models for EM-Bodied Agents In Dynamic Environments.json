@@ -1,0 +1,41 @@
+{
+ "title": "Test-Time Mixture of World Models for Embodied Agents in Dynamic Environments",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "测试时路由的MoE世界模型，组合已有组件提升具身智能体适应性",
+ "innovations": [
+  "把 MoE 推广为测试时可路由的世界模型混合(TMoW)：与部署后路由固定的传统 MoE 不同，测试时更新路由以重组既有模型并整合新模型",
+  "多粒度基于原型的路由：在对象级到场景级相似性上自适应混合不同世界模型",
+  "测试时精炼（推理时把未见域特征对齐到原型）+ 蒸馏式混合增广（用少样本数据从既有原型高效构造新模型），支持零样本适应与少样本扩展"
+ ],
+ "method_framework": "将多个世界模型视为专家，用原型(对象/场景级)作为路由依据；测试时根据当前观测与原型的相似性动态加权混合世界模型；对未见域在线对齐特征原型，并用少样本蒸馏既有原型快速造出适配新域的混合模型。",
+ "experiment_framework": "VirtualHome、ALFWorld、RLBench 具身智能体基准；零样本适应与少样本扩展两种设定；指标为任务成功率；对比传统固定路由 MoE 与上下文学习等基线。",
+ "takeaways": [
+  "把路由在测试时打开更新，比部署后冻结路由更能适应动态/未见环境",
+  "多粒度原型路由能在对象到场景多层级上选择合适的世界模型组合",
+  "蒸馏式混合增广让少样本即可快速适配新域，免去全量重训"
+ ],
+ "weaknesses": [
+  "方法是 MoE 思想在具身世界模型上的再组织，核心组件(原型路由、蒸馏增广)均有先例，新意主要在测试时路由这一组合",
+  "原型库的构建与存储开销、新模型蒸馏的质量对少样本数量敏感，未充分消融；三个基准均为仿真器，真实世界 gap 未涉及",
+  "relevance 给 5.5：涉及测试时对未见域适应/泛化，但落地域是具身机器人仿真、非医学影像或多模态大模型推理任务，与可靠性主线不直接对应，按规则不因其 adaptation 措辞抬分"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Test-Time Mixture Of World Models for EM-Bodied Agents In Dynamic Environments.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Test-Time Mixture Of World Models for EM-Bodied Agents In Dynamic Environments.pdf",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "具身机器人仿真非医学或多模态推理落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

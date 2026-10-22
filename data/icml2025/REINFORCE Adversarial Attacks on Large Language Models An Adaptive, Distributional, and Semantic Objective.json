@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/REINFORCE Adversarial Attacks on Large Language Models An Adaptive, Distributional, and Semantic Objective.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/REINFORCE Adversarial Attacks on Large Language Models An Adaptive, Distributional, and Semantic Objective.pdf",
+ "title": "REINFORCE Adversarial Attacks on Large Language Models: An Adaptive, Distributional, and Semantic Objective",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "REINFORCE优化对抗攻击目标，提升LLM有害响应成功率",
+ "innovations": [
+  "提出自适应、分布式、语义化的对抗攻击目标函数",
+  "基于REINFORCE策略梯度形式推导通用目标",
+  "设计混合采样策略提高样本效率",
+  "将目标函数集成到GCG和PGD攻击中"
+ ],
+ "method_framework": "将LLM视为马尔可夫决策过程，通过REINFORCE算法优化对抗输入，最大化有害响应概率，使用四种采样策略(yseed, yrandom, ygreedy, yharmful)估计期望奖励",
+ "experiment_framework": "HarmBench标准行为数据集，对比GCG和PGD基线，使用Llama 2 13B评估攻击成功率(ASR@512)，测试Llama 2/3、Gemma、Vicuna模型及电路断路器防御",
+ "takeaways": [
+  "基于语义的优化目标比传统固定肯定响应更有效",
+  "混合采样策略可提高攻击效率",
+  "目标函数的适应性使攻击更难防御"
+ ],
+ "weaknesses": [
+  "奖励函数计算成本较高",
+  "在Llama 2 7B上PGD改进有限",
+  "依赖外部评估模型判断有害性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

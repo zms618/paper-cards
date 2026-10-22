@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/ACAttack_Adaptive Cross Attacking RGB-T Tracker via Multi-Modal Response Decoupling.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ACAttack_Adaptive Cross Attacking RGB-T Tracker via Multi-Modal Response Decoupling.pdf",
+ "title": "ACAttack: Adaptive Cross Attacking RGB-T Tracker via Multi-Modal Response Decoupling",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.4
+ },
+ "one_line": "多模态跟踪对抗攻击，但贡献度量敏感、实验不充分。",
+ "innovations": [
+  "定义模态响应贡献 c_m = 1/dis(R(m,m), R(vi,ir))（单模态输入响应图与双模态输入响应图的欧氏距离倒数）并经 softmax 归一，用 |c_vi − c_ir| 与阈值 ζ 判定当前该打哪个模态，交替迭代地「弱化对跟踪器贡献大的那一路」，从而绕开 RGB-T 跟踪器的模态均衡与多模态耦合抵抗",
+  "模态均衡干扰损失 L_mi = −∥R(vi_adv,vi_adv) − R(ir_adv,ir_adv)∥²：在两模态贡献相近时把两个单模态对抗样本的响应图拉远，专打跟踪器的 balance 机制；配合时空联合损失 L_st = ∥Σ_{i=1..5} Bbox_pred(w,h) − r_i·Bbox_gt(w,h)∥² 用逐帧递增的伪 GT（放大系数 1.90→2.10）逐步劣化目标感知",
+  "形状共享叠加策略：可见模态打纹理、红外模态打形状（红外难改纹理），两路对抗 patch 共享同一形状掩膜，物理世界里按 aerogel/纸片分别打印贴在人体上，消除可见贴片遮挡红外对抗形状表征、红外贴片阻碍可见纹理渲染的互相干扰"
+ ],
+ "method_framework": "两阶段粗到细：stage1 用 PGD 以 L_att = −∥Cp(Bbox_pred)−Cp(Bbox_gt)∥² 生成 k 个粗对抗样本（阈值 ξ=9，迭代上限 M_stage1=180）；stage2 由 G_shape^Adv / G_tex^Adv 生成 p_ir、p_vi，按贡献判别式选择优化目标，模态平衡时只优化共享形状，配合 L_mi 与 L_st（ζ=0.02）。",
+ "experiment_framework": "RGBT234 (234 对/约 234K 帧) 与 LasHeR (1224 对/730K 帧) 两个 RGB-T 数据集，指标 PR、SR（越低表示攻击越成功）；受攻击跟踪器 ViPT、BAT、SDSTrack；对比攻击者为随机噪声与专为 RGB 设计的 MTD；另做物理域 DJI Mavic 3T 双光谱实拍部署。",
+ "takeaways": [
+  "攻击多模态模型时，先用「单模态响应 vs 双模态响应」的距离反推各模态贡献，再按贡献动态选攻击目标，比固定权重同时扰动两路有效得多，这个度量也可以反过来用于评估多模态融合是否真的互补",
+  "L_st 用逐帧放大的伪 GT 做时序累积劣化，比单帧中心偏移的攻击更稳，能造成长时间连续漂移（Fig.9 的 IoU 曲线可验证）",
+  "物理世界部署时按模态选攻击载体（红外打形状、可见打纹理）并共享形状掩膜，是被忽略但决定攻击能否落地的关键工程细节"
+ ],
+ "weaknesses": [
+  "模态贡献 c_m 用「响应图欧氏距离的倒数」定义，对响应图的分辨率/归一化极其敏感，而正文只给 ζ=0.02、ξ=9 两个阈值，未做阈值敏感性实验，也未说明该贡献度与真实模态重要性的相关性如何验证",
+  "对比攻击者只有 MTD（一个为 RGB 设计的单模态攻击）加上 random noise 基线，缺少另一个多模态攻击基线；MTD 在 RGB 上有效本就可预期对 RGB-T 稍弱，PR 0.835→0.621 这类提升有多少来自 rgb-t 特化设计、多少来自更强的 PGD 迭代量（M_stage1=180）无法隔离",
+  "所有曲线都是单一 run 的 PR/SR plot，无多次随机种子方差、无显著性；正文截断在 4.4 物理域实验中途（缺物理域的具体 PR/SR 数值、缺 patch 打印尺寸与攻击成功率），消融表整体缺失——AB 步、贡献判别式、L_mi/L_st 各自贡献均无对照"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "多模态跟踪攻击，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Auditing Prompt Caching in Language Model APIs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Auditing Prompt Caching in Language Model APIs.pdf",
+ "title": "Auditing Prompt Caching in Language Model APIs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "时序分析检测LLM API缓存共享，揭示隐私风险",
+ "innovations": [
+  "提出统计审计方法检测API提示缓存",
+  "发现7个API提供商存在全局缓存共享",
+  "通过前缀缓存推断OpenAI嵌入模型架构"
+ ],
+ "method_framework": "构建缓存命中与未命中响应时间分布，使用Kolmogorov-Smirnov统计检验检测差异，确定缓存共享级别",
+ "experiment_framework": "17个API提供商，250个样本，显著性水平10^-8，测试不同缓存共享级别",
+ "takeaways": [
+  "时序分析可检测API缓存机制",
+  "全局缓存共享导致严重隐私泄露",
+  "缓存行为可泄露模型架构信息"
+ ],
+ "weaknesses": [
+  "未测试缓存内容大小影响",
+  "未探索缓存过期机制",
+  "仅关注时序攻击未考虑其他攻击向量"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "隐私风险属于可靠性主线，但API缓存审计与落地域无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

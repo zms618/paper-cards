@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/DPAR_Dynamic Patchification for Efficient Autoregressive Visual Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/DPAR_Dynamic Patchification for Efficient Autoregressive Visual Generation.pdf",
+ "title": "DPAR Dynamic Patchification for Efficient Autoregressive Visual Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "动态分片减少token数，但架构浅且仅ImageNet验证",
+ "innovations": [
+  "基于熵引导的动态图像分片方法",
+  "保留2D空间结构的同时减少token数量",
+  "训练得到的表示对patch边界具有鲁棒性"
+ ],
+ "method_framework": "DPAR包含熵模型、patch编码器、patch变换器和patch解码器，通过next-token预测熵动态聚合低信息区域token为patch，减少计算量",
+ "experiment_framework": "ImageNet-256/384类条件生成基准，与LlamaGen对比，使用FID、IS、precision/recall指标",
+ "takeaways": [
+  "熵作为信息内容的有效度量可用于动态token聚合",
+  "浅层编码器-解码器架构可将计算资源集中在patch变换器上",
+  "动态patch训练可提高表示对patch边界的鲁棒性"
+ ],
+ "weaknesses": [
+  "仅评估了ImageNet数据集，缺乏多模态任务验证",
+  "patch编码器和解码器架构较浅，可能限制了表达能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "视觉生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

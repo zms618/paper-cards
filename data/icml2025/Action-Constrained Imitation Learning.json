@@ -1,0 +1,41 @@
+{
+ "title": "Action-Constrained Imitation Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "动作约束模仿学习：用DTW+MPC生成替代数据集解决占用测度失配",
+ "innovations": [
+  "定义新问题 Action-Constrained Imitation Learning(ACIL)：模仿者动作空间受限于专家，存在不可避免的占用测度失配",
+  "提出 DTWIL：将专家轨迹对齐重述为规划问题，用模型预测控制(MPC)按动态时间规整(DTW)距离生成轨迹相似但遵守动作约束的替代演示数据集",
+  "用替代数据集替代原始专家演示进行模仿学习，在多个机器人控制任务上提升性能"
+ ],
+ "method_framework": "核心是消除动作约束导致的专家-模仿者占用测度失配。DTWIL 不直接模仿专家动作，而是以 MPC 求解规划问题，生成与专家轨迹在 DTW 距离上对齐、同时落在模仿者可行动作集合内的替代轨迹，再在替代数据上做行为克隆。",
+ "experiment_framework": "在多个机器人控制任务上，将基于 DTWIL 替代数据集训练的策略与各基线模仿学习方法(含 ACIL 下的朴素行为克隆等)比较，以任务成功率/累积回报为指标；并验证动作约束下相对原始演示直接模仿的提升。",
+ "takeaways": [
+  "动作空间失配会使直接模仿专家演示性能下降，需显式处理占用测度失配",
+  "用 DTW 距离+MPC 生成受约束替代轨迹是有效且实用的缓解手段",
+  "从 DTWIL 数据学习可在多机器人控制任务上稳定优于基线模仿方法"
+ ],
+ "weaknesses": [
+  "MPC 依赖可用的环境动力学模型，模型误差对替代轨迹质量的影响未充分分析",
+  "前 9 页未见与 ACRL/在线纠偏类方法的系统对比",
+  "DTW 对齐对长时程、高维状态轨迹的可扩展性缺乏讨论"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Action-Constrained Imitation Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Action-Constrained Imitation Learning.pdf",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "机器人操作与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

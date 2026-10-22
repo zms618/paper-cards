@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/HyCal_A Training-Free Prototype Calibration Method for Cross-Discipline Few-Shot Class-Incremental.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/HyCal_A Training-Free Prototype Calibration Method for Cross-Discipline Few-Shot Class-Incremental.pdf",
+ "title": "HyCal A Training-Free Prototype Calibration Method for Cross-Discipline Few-Shot Class-Incremental",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 6.7
+ },
+ "one_line": "训练-free原型校准，融合余弦与马氏距离缓解跨领域引力",
+ "innovations": [
+  "提出Domain Gravity概念解释异构领域不平衡导致的表示偏移",
+  "设计HYCAL方法结合余弦相似度和马氏距离进行原型校准",
+  "定义XD-VSCIL基准反映真实世界跨领域少样本增量学习挑战",
+  "提出CDE指标全面评估模型在XD-VSCIL设置下的性能"
+ ],
+ "method_framework": "HYCAL在冻结的CLIP嵌入上操作，结合余弦相似度（捕获全局方向结构）和马alanobis距离（编码领域特定协方差和熵差异），通过动态求和进行原型校准，无需额外参数或微调",
+ "experiment_framework": "使用8个异构领域数据集（Aircraft, ArtBench, DTD, EuroSAT, Galaxy, MNIST, Organ, Flower）评估，在三种不平衡设置（高规模领域不平衡、类别平衡领域、跨尺度不平衡）下与Primal-RAIL, FeCAM, RanPAC, KLDA等方法比较",
+ "takeaways": [
+  "余弦相似度和马氏距离捕获互补的几何特性，方向对齐和协感知幅度",
+  "领域不平衡导致原型偏移和性能下降，特别是在数据丰富或视觉连贯领域",
+  "训练-free方法在保持效率的同时能有效缓解领域引力问题"
+ ],
+ "weaknesses": [
+  "方法依赖预训练CLIP模型，可能继承其领域偏见",
+  "实验主要在视觉领域进行，未扩展到其他模态",
+  "马氏距离计算在高维空间可能面临计算效率问题"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "跨领域少样本增量学习校准方法，直击可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

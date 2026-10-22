@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/NEP_Autoregressive Editing via Next Editing Token Prediction.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/NEP_Autoregressive Editing via Next Editing Token Prediction.pdf",
+ "title": "NEP: Autoregressive Editing via Next Editing Token Prediction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "自回归编辑标记预测，两阶段训练，ERC机制提升效率",
+ "innovations": [
+  "将图像编辑重新定义为下一个编辑标记预测问题",
+  "提出RLlamaGen模型支持任意顺序生成",
+  "设计编辑区域条件(ERC)机制",
+  "实现测试时缩放(TTS)策略"
+ ],
+ "method_framework": "NEP采用两阶段训练策略：首先预训练RLlamaGen模型支持任意顺序图像生成，然后微调优化编辑性能。通过编辑区域条件(ERC)机制，仅重新生成需要编辑的图像区域，避免对非编辑区域的不必要修改。",
+ "experiment_framework": "在MagicBrush和Emu Edit编辑基准上评估，使用L1、L2、CLIP-I、DINO等指标。与扩散模型和现有编辑方法比较，并在零样本编辑和文本生成任务上进行消融研究。",
+ "takeaways": [
+  "仅重新生成编辑区域可提高效率并避免学习偏差",
+  "任意顺序生成机制支持灵活的局部编辑",
+  "测试时缩放策略可迭代提升生成质量"
+ ],
+ "weaknesses": [
+  "计算资源需求较高，内存占用较大",
+  "编辑区域标记的准确性对性能有显著影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

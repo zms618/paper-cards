@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/CARE_Decoding-Time Safety Alignment via Rollback and Introspection Intervention.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/CARE_Decoding-Time Safety Alignment via Rollback and Introspection Intervention.pdf",
+ "title": "CARE: Decoding-Time Safety Alignment via Rollback and Introspection Intervention",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "解码时安全对齐框架，用守卫模型监测、token回滚和内省干预纠正不安全输出",
+ "innovations": [
+  "用轻量guard模型在解码时实时监测，实现对不安全内容的精准、仅在必要处干预，避免对比解码对全部查询无差别干预而损伤良性回答",
+  "引入token缓冲回滚机制：将对用户不可见的缓冲token回退到更早安全点再纠正，在不破坏用户体验的前提下阻止有害内容外露",
+  "提出内省式干预策略，让模型对先前输出生成自反思批评并纳入上下文，引导后续解码自我纠正"
+ ],
+ "method_framework": "生成时维护一个用户不可见的token缓冲流；guard模型对缓冲内容实时做安全检测，一旦判定不安全即回滚到之前的安全token序列并触发内省，让模型对已生成内容自我批评并把反思写回上下文，再继续解码，从而在流式输出中及早、精准地纠正不安全走向。",
+ "experiment_framework": "在主流LLM上评测有害/越狱查询与良性查询，以有害响应率、回答质量与用户体验干扰程度为指标，对比对比解码等解码时干预与训练时对齐方法；报告在保持高质量的同时降低有害响应率且尽量不打扰正常输出。",
+ "takeaways": [
+  "解码时安全对齐的关键是精准干预而非无差别抑制：guard模型+回滚能把有害内容拦在用户可见之前",
+  "让模型对自己输出做内省式自我批评并回填上下文，是一种轻量有效的运行时自我纠正",
+  "CARE在安全性-质量-效率三角上优于对比解码等现有解码时干预"
+ ],
+ "weaknesses": [
+  "依赖一个额外guard模型的判别准确率，guard漏报/误报会直接传导为不安全输出或过度拦截，前9页未见对guard自身鲁棒性的系统分析",
+  "回滚+内省会增加解码延迟，流式场景下的端到端时延与并发开销缺乏量化",
+  "前9页未见对长程多轮诱导、隐式越狱攻击下失效模式的评测，安全-质量权衡曲线的边界不清"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

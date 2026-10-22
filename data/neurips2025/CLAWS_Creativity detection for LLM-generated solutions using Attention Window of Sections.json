@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/CLAWS_Creativity detection for LLM-generated solutions using Attention Window of Sections.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/CLAWS_Creativity detection for LLM-generated solutions using Attention Window of Sections.pdf",
+ "title": "CLAWS:Creativity detection for LLM-generated solutions using Attention Window of Sections",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "CLAWS通过注意力窗口分类LLM数学解，但依赖模型内部权重和评估器主观性",
+ "innovations": [
+  "提出基于注意力窗口的CLAWS方法，将提示分为五个部分并量化注意力分布",
+  "首次实现数学解决方案的三分类（典型/创造性/幻觉）而不依赖人工评估",
+  "设计了全面的评估协议，包含五种评估策略和四种指标"
+ ],
+ "method_framework": "CLAWS将输入提示分为指导(G)、问题(P)、参考解(S)、指令(I)和响应(R)五个部分，计算各部分的平均注意力权重并归一化，作为检测特征",
+ "experiment_framework": "使用5个7-8B数学RL模型，在4,545个数学问题上评估，对比5种基线方法，采用F1w、F1m、AUROC和APm四种指标",
+ "takeaways": [
+  "注意力分析可有效检测LLM生成内容的创造性",
+  "不同类型的解决方案表现出不同的注意力模式",
+  "无需额外计算即可提取注意力特征"
+ ],
+ "weaknesses": [
+  "仅限于数学推理任务，未探索其他领域",
+  "依赖模型内部注意力权重，可能不适用于黑盒模型",
+  "评估依赖于LLM评估器，可能存在主观性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

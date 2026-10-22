@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/CARE What Fails Contrastive Anchored-REflection for Verifiable Multimodal Reasoning.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/CARE What Fails Contrastive Anchored-REflection for Verifiable Multimodal Reasoning.pdf",
+ "title": "CARE What Fails Contrastive Anchored-REflection for Verifiable Multimodal Reasoning",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "锚定对比与反思重采样提升多模态推理，但验证器依赖限制泛化。",
+ "innovations": [
+  "锚定对比目标：将最佳样本作为锚点，在硬负样本子组内进行z标准化，实现失败感知的信用分配",
+  "反思引导重采样：在成功组中，对选定的硬负样本进行单次结构化自我修复，将接近失败的样本转化为可用正样本",
+  "全负样本救援机制：当所有样本都失败时，引入零和伪对比防止梯度消失"
+ ],
+ "method_framework": "CARE结合锚定对比目标和反思引导重采样(RGR)，前者通过在最佳样本和语义相近的硬负样本子组内进行标准化对比学习，后者通过插入修复提示对代表性失败进行单次重采样，将错误转化为改进。",
+ "experiment_framework": "在MathVista、MathVerse、MATH-Vision和MMMU-Pro等六个可验证视觉推理基准上评估，与GRPO、DAPO和GSPO等基线比较，使用相同的解码超参数和优化预算。",
+ "takeaways": [
+  "失败中心训练策略能有效提升多模态推理模型的准确性和训练稳定性",
+  "负样本选择策略对对比学习效果至关重要，语义相近的硬负样本比随机负样本更有效"
+ ],
+ "weaknesses": [
+  "方法依赖程序化验证器，可能无法处理需要复杂评估的任务",
+  "反思引导重采样仅在成功组中激活，可能限制了其在全负样本场景的应用"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态推理验证与可靠性主线交点，失败感知训练有防守价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

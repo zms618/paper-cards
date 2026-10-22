@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Scheduling Your LLM Reinforcement LEARNING with Reasoning Trees.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scheduling Your LLM Reinforcement LEARNING with Reasoning Trees.pdf",
+ "title": "Scheduling Your LLM Reinforcement Learning with Reasoning Trees (Re-Schedule)",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "基于推理树结构设计课程调度，提升RLVR数学推理效率与精度。",
+ "innovations": [
+  "把RLVR优化看作对查询'推理树'的动态节点编辑；指出现有数据调度用path级/最终准确率指标，忽视推理树结构。",
+  "提出Reasoning Score(r-score)，依据查询推理树结构度量学习难度。",
+  "Re-Schedule课程从结构简单(高r-score)到复杂(低r-score)排课，在6个数学推理基准上平均准确率提升、最高+3.2%。"
+ ],
+ "method_framework": "把每题可能解路径建模为推理树（节点=推理步、路径=解轨迹）。r-score从树结构（分支/节点复杂度）估计学习难度；Re-Schedule按r-score由高到低（易→难）构造课程，指导RLVR(GRPO)训练。",
+ "experiment_framework": "六个数学推理基准；对比现有path-based/准确率难度的数据调度策略；指标平均准确率；报告最高提升3.2%，验证树结构理解作为调度基础。",
+ "takeaways": [
+  "推理树的结构信息比最终解准确率更能反映查询的学习难度。",
+  "按r-score由易到难排课可提升RLVR的数据效率与推理精度。"
+ ],
+ "weaknesses": [
+  "r-score需构造推理树/采样多条解路径，计算成本不低。",
+  "增益~3.2%属中等幅度，且仅在数学推理验证。",
+  "r-score定义对采样数量/温度的敏感性前9页未充分消融。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅数学推理RL调度，未触及可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

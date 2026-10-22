@@ -1,0 +1,41 @@
+{
+ "title": "ADHMR: Aligning Diffusion-based Human Mesh Recovery via Direct Preference Optimization",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "DPO微调扩散HMR，但打分器偏差风险高，证据不足",
+ "innovations": [
+  "将偏好优化(DPO)引入扩散式人体网格恢复，用奖励/偏好信号对齐概率生成模型",
+  "训练 HMR-Scorer，能在无 3D 标注的野外图像上评估网格预测质量",
+  "用 HMR-Scorer 自动构造赢/输网格偏好数据集，再 DPO 微调基座模型，缓解概率方法与 2D 观测错位、野外鲁棒性弱的问题"
+ ],
+ "method_framework": "先训一个预测质量打分器 HMR-Scorer(无需 3D 标注即可对野外图像的候选网格打分)；对每张图采样一对网格由 scorer 判定胜负，构成偏好数据集；再用 DPO 微调扩散 HMR 基座，使其生成更贴合 2D 观测、更合理的网格。",
+ "experiment_framework": "在野外(in-the-wild)人体网格恢复基准上，对比 ScoreHypo 等既有概率方法，评估与 2D 观测的对齐误差、深度/遮挡歧义下的合理性与野外鲁棒性。",
+ "takeaways": [
+  "概率式 HMR 生成多样预测但常与 2D 观测错位，可用偏好优化对齐",
+  "无需 3D 标注的打分器可自动构造偏好数据，降低对齐成本",
+  "DPO 微调可在保持多解性的同时提升预测与观测的一致性和野外鲁棒性"
+ ],
+ "weaknesses": [
+  "HMR-Scorer 自身偏差会作为偏好信号被 DPO 放大，存在自我强化风险",
+  "前 9 页未见与基于测试时选择(如 ScoreHypo)路线的正交组合对比",
+  "12 页短文，关键量化表在前 9 页之外，评分基于摘要与引言"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/ADHMR_Aligning Diffusion-based Human Mesh Recovery via Direct Preference Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ADHMR_Aligning Diffusion-based Human Mesh Recovery via Direct Preference Optimization.pdf",
+ "raw_overall": 6.13,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "人体网格恢复与可靠性主线无实质交点，仅为方法迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

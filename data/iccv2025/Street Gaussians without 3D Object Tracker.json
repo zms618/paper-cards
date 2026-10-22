@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Street Gaussians without 3D Object Tracker.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Street Gaussians without 3D Object Tracker.pdf",
+ "title": "Street Gaussians without 3D Object Tracker",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "用2D跟踪替代3D跟踪提升街景重建鲁棒性",
+ "innovations": [
+  "基于2D基础模型的三维物体跟踪模块",
+  "在隐式特征空间中学习点运动以纠正跟踪错误",
+  "利用HexPlane表示实现动态物体建模"
+ ],
+ "method_framework": "结合2D跟踪与LiDAR数据分割物体点云，在规范空间中增量重建物体模型，利用HexPlane特征空间学习点运动，实现跟踪错误纠正和漏检恢复。",
+ "experiment_framework": "Waymo-NOTR和KITTI数据集，与3DGS、StreetGaussian、S3Gaussian等方法比较，使用PSNR、SSIM、LPIPS等指标评估渲染质量。",
+ "takeaways": [
+  "2D基础模型在街景重建中具有更好的泛化能力",
+  "隐式特征空间学习可提高动态物体建模的鲁棒性"
+ ],
+ "weaknesses": [
+  "方法依赖LiDAR点云数据，纯视觉场景可能受限",
+  "运动学习仅在训练前40%迭代中使用，可能限制长期运动建模能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "街景重建与可靠性主线无实质交点，仅2D跟踪有可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

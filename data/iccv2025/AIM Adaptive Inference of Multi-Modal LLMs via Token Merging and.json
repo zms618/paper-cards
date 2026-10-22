@@ -1,0 +1,40 @@
+{
+ "key": "AIM: Adaptive Inference of Multi-Modal LLMs via Token Merging and Pruning",
+ "conf": "iccv2025",
+ "path": "AIM Adaptive Inference of Multi-Modal LLMs via Token Merging and.pdf",
+ "title": "AIM: Adaptive Inference of Multi-Modal LLMs via Token Merging and Pruning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "视觉token合并与LLM内剪枝实现多模态自适应推理，但实验证据不足。",
+ "innovations": [
+  "进 LLM 前的 token merging：把相邻视觉 token 分成 A/B 两集，为 A 中每个 token 在 B 里找余弦相似度最高者配对再取嵌入平均（单轮最多减半、迭代多轮到目标留存率）；只对帧内合并、不做跨帧， empirically 证明跨帧合并会破坏时序顺序。",
+  "进 LLM 内的 PageRank 重要性剪枝：用 softmax 归一化注意力权重 A^l 作邻接矩阵，迭代 s_i^l=1/(N_l+M_l)·Σ_j A^l_{i,j}s_j^l 算 token 得分，只剪视觉 token、文本 token 全保留，并加分段线性留存率调度 r_l=1(l<l1)、1−k(l−l1)(l1≤l≤l2)、0(l>l2)，用 l1/l2 两个参数线性调节剪枝进度。",
+  "把 merging 留存率与 (l1,l2) 一起当作可拨动的旋钮实现自适应推断：同一模型可在 40 倍 FLOPs 降幅区间内取点，从而在固定算力预算下换更多采样帧，LLaVA-OV-7B 在同等 FLOPs 下把帧数从 32 提到 192，MLVU 反超 +4.6。"
+ ],
+ "method_framework": "视觉编码器输出 v0 后按嵌入余弦相似迭代 A/B 配对平均合并到留存率（视频帧内合并），与文本 token 拼接进 LLM；每层以 softmax 注意力为邻接做 PageRank 得 s_i^l，仅按分段调度 r_l 剪视觉 token（文本不动），调留存率与 l1/l2 控算力。",
+ "experiment_framework": "视频基线 LLaVA-OV-7B（VideoMME/MLVU/EgoSchema/MVBench/NextQA/PerceptionTest）+ 图像 LLaVA-1.5-7B（7 基准），对比 FastV/VTW/PDrop/Prumerge，报 FLOPs 与 prefill time，附 merging 留存率与调度消融；正文在 Table 5 处截断。",
+ "takeaways": [
+  "全量视觉 token 只需 25% 即可维持 VideoMME 原分（58.2→58.0），降 retention 到 12.5% 仍 56.6，说明视频 token 冗余度极高；文本 token 与早期层 token 不能动，而后期层可剪掉大部分视觉 token。",
+  "同等算力下「省 token」可以换成「多帧」：用 99.27 TB（接近基线 99.63 TB）跑 192 帧，MLVU 从 64.7 提到 69.3，说明效率优化在长视频上能直接转成理解增益。"
+ ],
+ "weaknesses": [
+  "可见正文在 Table 5 第 5 组（l1=21,l2=22）处截断，Table 6（是否剪文本 token 的对比）以及 4.4 计算开销、4.5 自适应推断两节的表格全部缺失，跨帧合并、文本剪枝等关键消融无法核验，正文的消融覆盖声明超出已展示内容。",
+  "所有结果只报单个数，未见多种子均值与方差；FLOPs 与 prefill time 由 LLM-Viewer 估算且假设固定 100（图像 40）个文本 token，decode 阶段开销、KV cache 显存、长视频（192 帧）真实显存峰值与端到端时延/功耗均未测，效率结论基于估算指标。",
+  "merging 留存率与 l1/l2 按模型各设一组（视频 25%/14/22、图像 12.5%/13/21），未见跨模型迁移或基准敏感性扫描；TextVQA 上作者自陈明显掉点（53.8 vs 基线 58.2）只给猜想未给补救；全部实验只评估 accuracy-效率，未涉及长视频幻觉、细粒度感知等可靠性维度。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态效率优化与可靠性主线无实质交织，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

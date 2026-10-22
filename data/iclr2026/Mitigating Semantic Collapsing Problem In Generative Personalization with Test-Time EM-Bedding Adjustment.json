@@ -1,0 +1,37 @@
+{
+ "key": "iclr2026/Mitigating Semantic Collapsing Problem In Generative Personalization with Test-Time EM-Bedding Adjustment.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mitigating Semantic Collapsing Problem In Generative Personalization with Test-Time EM-Bedding Adjustment.pdf",
+ "title": "Mitigating Semantic Collapsing Problem in Generative Personalization with Test-Time Embedding Adjustment",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "elevance": 4.0,
+  "evidence": 6.0,
+  "overall": 5.3
+ },
+ "one_line": "解决个性化嵌入漂移的启发式调整，缺乏理论支撑与主线相关性",
+ "innovations": [
+  "识别生成式个性化的语义坍缩问题：V*偏离原文本义并压倒多概念prompt中其他概念",
+  "将根因归结为无约束优化使V*在嵌入空间方向与幅值任意漂移",
+  "提出免训练推理期方法TEA，直接调整预训练嵌入的幅值与方向缓解坍缩"
+ ],
+ "method_framework": "在推理时对学到的个性化嵌入V*做幅值与方向校正(免训练)，约束其在嵌入空间不过度漂移、不压制prompt中其他概念词，从而保留多概念组合的语义丰富度。",
+ "experiment_framework": "跨Textual Inversion/DreamBooth及变体、Stable Diffusion/Flux架构评测；指标为文本-图像对齐；TEA一致提升对齐，并能抵消Anti-DreamBooth的反个性化效应、恢复被保护概念。",
+ "takeaways": [
+  "个性化嵌入的无约束漂移是语义坍缩根因",
+  "测试时幅值/方向调整即可免训练缓解该问题",
+  "方法跨多种个性化方法与架构通用"
+ ],
+ "weaknesses": [
+  "relevance偏离主线(T2I个性化对齐，非可靠性/医疗影像)",
+  "幅值/方向调整的具体准则缺乏理论推导，靠启发式",
+  "定量指标偏主观对齐，缺大规模用户研究"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MXFP4_Oscillation-Reduced MXFP4 Training for Vision Transformers.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MXFP4_Oscillation-Reduced MXFP4 Training for Vision Transformers.pdf",
+ "title": "Oscillation-Reduced MXFP4 Training for Vision Transformers",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "TetraJet通过双量化策略减少MXFP4训练振荡，提升ViT精度",
+ "innovations": [
+  "截断无关缩放方法",
+  "EMA量化器(Q-EMA)",
+  "自适应斜坡优化器(Q-Ramping)"
+ ],
+ "method_framework": "TetraJet采用MXFP4格式进行前向和反向传播量化，通过双量化策略解决非方形量化组问题，并引入截断无关缩放和随机舍入保持梯度无偏",
+ "experiment_framework": "在ImageNet1K上对DeiT和Swin Transformer进行90周期预训练，比较与全精度、INT4和Microscaling方法的精度差异",
+ "takeaways": [
+  "振荡是低精度训练的主要问题来源",
+  "量化器影响分析可指导优化方向",
+  "EMA和自适应更新频率可有效减少振荡"
+ ],
+ "weaknesses": [
+  "方法主要针对Vision Transformers，通用性存疑",
+  "Q-Ramping增加了计算复杂度",
+  "未在医学影像等特定领域验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

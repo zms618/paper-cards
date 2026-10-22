@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Sparse Spectral Training and Inference on Euclidean and Hyperbolic Neural Networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Sparse Spectral Training and Inference on Euclidean and Hyperbolic Neural Networks.pdf",
+ "title": "Sparse Spectral Training and Inference on Euclidean and Hyperbolic Neural Networks",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "SVD分解权重加权采样更新，降显存但计算开销与随机性未充分分析",
+ "innovations": [
+  "针对LoRA受低秩结构限制、ReLoRA等遇鞍点问题，提出面向预训练的Sparse Spectral Training(SST)",
+  "更新所有奇异值，并按奇异值幅值做加权多项采样、选择性更新奇异向量，兼顾表达力与显存",
+  "用SVD初始化并周期性重初始化低秩参数，降低相对全秩训练的失真；方法同时适用于欧氏与双曲神经网络"
+ ],
+ "method_framework": "把权重矩阵做SVD(W=UΣV^T)：训练时完整更新奇异值Σ，而对左右奇异向量U,V按其对应奇异值大小加权做多项采样，每步只稀疏更新被采中的少量奇异向量方向；周期性以SVD重初始化低秩参数以缓解鞍点/失真。",
+ "experiment_framework": "在欧氏与双曲神经网络、多类任务上评测，对比LoRA/ReLoRA/COLA/PLoRA等低秩方法，指标为显存占用、训练收敛与最终精度。",
+ "takeaways": [
+  "按奇异值幅值采样选择性更新奇异向量、同时保留全奇异值更新，可在低显存下逼近全秩训练表达力",
+  "SVD周期性重初始化能缓解低秩训练的鞍点与失真问题，且该谱视角可迁移到双曲网络"
+ ],
+ "weaknesses": [
+  "周期性SVD分解在大权重上计算开销不小，是否真正省端到端训练时间前9页未量化",
+  "多项采样引入随机性，采样率/温度等超参对收敛稳定性的敏感性分析不充分",
+  "定位在PEFT/预训练显存优化，与可靠性/可信AI主线无关，且对比多为低秩方法内部"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.93,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

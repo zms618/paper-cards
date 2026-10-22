@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Anatomical Consistency and Adaptive Prior-informed Transformation for Multi-contrast MR.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Anatomical Consistency and Adaptive Prior-informed Transformation for Multi-contrast MR.pdf",
+ "title": "Anatomical Consistency and Adaptive Prior-informed Transformation for Multi-contrast MR Image Synthesis via Diffusion Model",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 7.5,
+  "overall": 6.0
+ },
+ "one_line": "解剖一致性损失+先验码本引导扩散模型做多对比度MR生成",
+ "innovations": [
+  "用冻结 BiomedCLIP 视觉编码器抽各对比度解剖特征，经互信息融合模块（self-attention+FFN）得 z_all_s，再以解剖一致性对比损失（z_all_s 对随机 C-1 子集 z_sub_s 为正、跨受试者为负、可学习温度）把同一病人多对比度解剖对齐成统一表示",
+  "先验码本：用 4 组 Bézier 曲线参数变换各对比度生成增广图，以 VLM 特征相似度做索引映射并配对比度专属强度缩放因子 σ_tar,trn，推理时为缺失对比度提供解剖一致的结构先验起点而非纯噪声",
+  "两阶段推理：Stage1 从中间步 M 起，以 x̂_0^{(t)}←x̂_0^{(t)}-α·∇_{x_t}||A(x̂_0^{(t)})-y||² 的数据一致性梯度（A 只取已知对比区域）修正；Stage2 收尾做 N 次迭代 unrolling，用 x̂_0^{(t,n+1)}←x̂_0^{(t,n)}(1-w_n)+x̂_0^{(t,n+1)}w_n 加权平均细化解剖细节"
+ ],
+ "method_framework": "BiomedCLIP 抽各对比度特征→互信息融合得 z_all_s，配解剖对比损失预训练；z_all_s 经 cross-attention 注入 UNet 条件扩散模型做多对比度合成；先验码本（Bézier 变换+相似度索引+强度缩放）与两阶段 unrolling 推理提供结构先验与细节细化。",
+ "experiment_framework": "BraTS 2021（T1-w/T1Gd/T2-w/FLAIR）与 ADNI（T1-w/T2-w/PD）两个公开多对比度脑 MRI 数据集，对比 MM-GAN/HiNET/ResViT/ADM/SynDiff/M2DN 六法，指标 PSNR/SSIM。",
+ "takeaways": [
+  "把多模态生成与对比学习对齐（同病人全对比 vs 子集对比为正对）来保解剖一致，比单纯加更多 conditioning 更稳",
+  "生成式重建收尾做迭代 unrolling + 加权平均，是廉价去随机抖动、补局部细节的手段",
+  "先验码本用可微前的离线相似度检索给生成起点，可省掉大量采样步数"
+ ],
+ "weaknesses": [
+  "提升主要来自超参挑选而非新机制：M=500 比 400 在 BraTS T1Gd 高 0.35dB、M=400 比 1000 高 2.8dB，而 M/S/α/w_n/N 是逐档网格搜出的最优组合，基线用的是默认 1000 步/50 采样，公平性存疑",
+  "表 4 显示 N=100 时 BraTS T1Gd PSNR 由 N=50 的 24.54 降到 23.75、SSIM 也同步下降，迭代更多反而更差，论文仍选 N=50 报数，消融表与最终配置自相矛盾",
+  "只用 PSNR/SSIM 两个像素级指标，生成的肿瘤区与 AD 皮层畸变是否诊断可用没有下游任务（分割/病灶检测）验证；评测把 3D 体裁成 2D 256×256 切片，丢掉层间解剖连续性",
+  "全部指标单点无方差；正文截断于表 5 中间，缺用户研究、推理耗时与失败案例讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "医学影像生成与解剖一致性可靠性方法交点，可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

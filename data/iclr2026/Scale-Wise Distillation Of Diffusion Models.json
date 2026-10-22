@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scale-Wise Distillation Of Diffusion Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scale-Wise Distillation Of Diffusion Models.pdf",
+ "title": "Scale-Wise Distillation of Diffusion Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "通过渐进分辨率蒸馏加速扩散模型，但与可靠性主线关联弱。",
+ "innovations": [
+  "对VAE隐空间做频谱分析并扩展到视频域，证实扩散过程中时空隐分辨率隐含逐步升高，为在低分辨率上做中间步提供依据。",
+  "提出SwD框架：把任意预训练扩散模型转为单模型，在各生成步渐进提升空间/时间分辨率，与现有分布匹配蒸馏无缝结合，逼近两次全分辨率步的采样速度。",
+  "提出基于MMD的patch级蒸馏目标(在预训练DM特征空间最小化MMD)，显著改善现有蒸馏收敛，且孤立使用也具竞争力、无需额外可训练模型。"
+ ],
+ "method_framework": "利用频谱自回归视角，在中间高噪声步用低(空间/时间)分辨率生成、最后再升到全分辨率；将该渐进尺度生成与分布匹配蒸馏算法结合；并用MMD-patch目标约束学生分布逼近教师，加速收敛。",
+ "experiment_framework": "应用于SOTA文生图/视频扩散模型，在同算力下与替代加速方法比自动指标(FID等)与人偏好；对比教师模型与若干少步蒸馏方法。",
+ "takeaways": [
+  "沿'模型尺度/分辨率'轴而非单纯减少步数挖掘效率，可在同算力下显著优于现有少步蒸馏。",
+  "MMD-patch蒸馏目标是一个简单且强的基线，能稳定改善分布匹配蒸馏的收敛。"
+ ],
+ "weaknesses": [
+  "属扩散模型加速方向，与可靠性×医学影像/多模态推理主线关联弱。",
+  "渐进分辨率生成在极细纹理/文本渲染上的保真损失、以及对不同VAE/架构的通用性需更多验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "扩散模型加速与可靠性主线关联弱，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

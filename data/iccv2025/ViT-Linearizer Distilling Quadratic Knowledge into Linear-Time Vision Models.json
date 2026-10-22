@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/ViT-Linearizer Distilling Quadratic Knowledge into Linear-Time Vision Models.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/ViT-Linearizer Distilling Quadratic Knowledge into Linear-Time Vision Models.pdf",
+ "title": "ViT-Linearizer Distilling Quadratic Knowledge into Linear-Time Vision Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "ViT知识蒸馏到线性模型，激活匹配与掩码预测提升效率。",
+ "innovations": [
+  "激活匹配机制，对齐ViT和Mamba模型的token级依赖",
+  "掩码预测策略，要求学生模型预测未见token的表示",
+  "跨架构蒸馏框架，有效转移ViT的二次知识到线性模型"
+ ],
+ "method_framework": "ViT-Linearizer结合激活匹配和掩码预测，通过ℓ2损失对齐中间层激活图，并使用掩码重建目标，将ViT的二次知识蒸馏到线性时间Mamba模型。",
+ "experiment_framework": "ImageNet分类、ADE20K和Cityscapes语义分割，对比ViT基线和Mamba模型，测量准确率、内存和吞吐量。",
+ "takeaways": [
+  "激活匹配能有效改善循环视觉模型的表示能力",
+  "掩码预测策略可增强模型鲁棒性，提供推理能力"
+ ],
+ "weaknesses": [
+  "仅评估中等规模视觉任务，未探索超细粒度patchification",
+  "依赖强大的教师模型(如CLIP)，可能限制在资源有限场景的应用"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "知识蒸馏方法可迁移，但未直接触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

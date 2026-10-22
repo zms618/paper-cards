@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/RxnCaption_Reformulating Reaction Diagram Parsing as Visual Prompt Guided Captioning.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/RxnCaption_Reformulating Reaction Diagram Parsing as Visual Prompt Guided Captioning.pdf",
+ "title": "RxnCaption Reformulating Reaction Diagram Parsing as Visual Prompt Guided Captioning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "将反应图解析转为视觉提示描述，依赖外部检测器",
+ "innovations": [
+  "BBox and Index as Visual Prompt (BIVP)策略",
+  "U-RxnDiagram-15k大规模真实数据集",
+  "MolYOLO高精度分子检测器",
+  "RxnCaption-VL模型"
+ ],
+ "method_framework": "将传统坐标预测驱动的解析过程转化为图像描述问题，通过预绘制分子边界框和索引，使LVLM专注于反应解析而非坐标预测",
+ "experiment_framework": "RxnScribe-test和U-RxnDiagram-15k-test数据集，对比BROS和BIVP策略，使用HybridMatch和SoftMatch指标",
+ "takeaways": [
+  "视觉提示策略可绕过LVLM坐标预测弱点",
+  "真实数据比合成数据更能提升模型泛化能力",
+  "高质量分子检测器对BIVP策略至关重要"
+ ],
+ "weaknesses": [
+  "依赖外部分子检测器MolYOLO的准确性",
+  "未充分讨论模型在极端复杂反应图上的表现",
+  "未探索不同LVLM架构对BIVP策略的敏感性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "反应图解析属于医学影像处理，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Fast and Interpretable Protein Substructure Alignment via Optimal Transport.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Fast and Interpretable Protein Substructure Alignment via Optimal Transport.pdf",
+ "title": "Fast and Interpretable Protein Substructure Alignment via Optimal Transport",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "将蛋白质结构对齐表述为最优传输问题，但依赖特定表示模型",
+ "innovations": [
+  "将蛋白质局部结构对齐重新表述为正则化最优传输问题",
+  "设计可学习的几何成本矩阵实现残基级对齐",
+  "引入PLASMA-PF无需训练的变体提供实用替代方案"
+ ],
+ "method_framework": "PLASMA包含传输规划器和计划评估器两部分，使用可学习的成本矩阵和可微Sinkhorn迭代计算残基级对齐矩阵，并通过置信度权重调整得到最终相似性分数。",
+ "experiment_framework": "在VenusX基准数据集上评估，包含激活位点、结合位点和基序三类功能亚结构，使用ROC-AUC、PR-AUC、F1-MAX和LMS指标，与TM-ALIGN、FOLDSEEK等基线方法比较。",
+ "takeaways": [
+  "最优传输框架能有效捕捉局部结构相似性，不受全局结构差异影响",
+  "置信度权重机制提高了对齐结果的可解释性和可靠性"
+ ],
+ "weaknesses": [
+  "对结构表示模型的依赖性较强，不同模型性能差异较大",
+  "PLASMA-PF在未见过的亚结构上性能显著下降"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "蛋白质结构对齐方法有可靠性价值但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

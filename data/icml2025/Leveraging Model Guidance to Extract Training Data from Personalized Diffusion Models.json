@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Leveraging Model Guidance to Extract Training Data from Personalized Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Leveraging Model Guidance to Extract Training Data from Personalized Diffusion Models.pdf",
+ "title": "Leveraging Model Guidance to Extract Training Data from Personalized Diffusion Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "通过外推分数函数从微调扩散模型中提取约20%训练数据，揭示数据泄露风险。",
+ "innovations": [
+  "首次将微调扩散模型的分布变化参数化为预训练分布与微调数据分布之间的插值，并提出外推分数函数（model guidance）引导去噪过程走向微调数据高密度区域",
+  "提出FineXtract完整框架：基于模型引导生成大量候选图像后，用聚类算法筛选最可能匹配训练集的图像",
+  "在WikiArt、DreamBooth及HuggingFace真实在线checkpoints上验证，多数场景可提取约20%微调数据"
+ ],
+ "method_framework": "将微调DM的噪声预测近似为预训练DM与微调数据分布对应噪声预测的线性插值；通过外推该插值系数（大于1），使引导信号偏向微调数据分布的高密度区域；在该引导下生成图像后，利用聚类识别与训练集最相似的图像集合。同时适用于无条件和条件DM（条件情况下利用caption信息近似条件分布的插值）。",
+ "experiment_framework": "数据集包括WikiArt、DreamBooth及HuggingFace真实公开微调checkpoints；基线对比Carlini et al.(2023)的图算法提取方法；指标为Average Similarity (AS)和Recall@K，衡量提取图像与真实训练集的匹配程度；覆盖多种DM结构和微调方法（DreamBooth、LoRA等）。",
+ "takeaways": [
+  "在线分享的个性化微调扩散模型确实存在显著数据泄露风险，约20%微调数据可被有效提取",
+  "模型引导外推方法比直接生成更能精准定位训练数据分布的高密度区域",
+  "该方法可作为版权侵权取证的技术手段"
+ ],
+ "weaknesses": [
+  "提取率仅约20%，对小样本微调（如DreamBooth仅3-5张图）的精确恢复能力未充分量化",
+  "依赖攻击者同时获取预训练模型和微调模型两个checkpoint，实际威胁模型假设偏强",
+  "未系统分析不同微调方法（Full FT vs LoRA vs Textual Inversion）下泄露程度的差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

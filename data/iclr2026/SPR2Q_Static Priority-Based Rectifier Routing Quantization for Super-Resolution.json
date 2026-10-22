@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SPR2Q_Static Priority-Based Rectifier Routing Quantization for Super-Resolution.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SPR2Q_Static Priority-Based Rectifier Routing Quantization for Super-Resolution.pdf",
+ "title": "SPR2Q: Static Priority-Based Rectifier Routing Quantization for Image Super-Resolution",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "常规量化方法，微调补偿与静态路由提升低比特超分性能",
+ "innovations": [
+  "构建低秩整流器组嵌入微调过程，整合各整流器学到的权重增量以增强主干",
+  "提出静态整流器优先级路由：离线评估各整流器能力生成固定路由表",
+  "量化时按整流器优先级更新权重，增强容量且不引入推理额外开销"
+ ],
+ "method_framework": "在量化前向模型注入补偿信息：将低秩整流器组嵌入微调，整合各整流器权重增量增强主干；再用静态优先级路由离线评估整流器能力生成固定路由表，量化时按优先级更新权重以最小化极端低比特下的信息损失。",
+ "experiment_framework": "在五个超分基准上对比量化SOTA；Set5(x2)在4bit与2bit下分别提升PSNR 0.55dB与1.31dB。",
+ "takeaways": [
+  "量化前注入低秩整流器补偿可缓解极端低比特下的信息损失",
+  "静态优先级路由在不增推理开销下提升量化后容量",
+  "在2bit/4bit下显著优于现有超分量化方法"
+ ],
+ "weaknesses": [
+  "属模型压缩/量化方向，与主线（LLM可靠性/医学影像/多模态推理）无关联",
+  "整流器组增加微调期训练成本，与纯PTQ的定位存在张力",
+  "13页篇幅，与更激进低位宽（1bit）及大模型上的可扩展性未验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "模型压缩量化工作，与可靠性主线无关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

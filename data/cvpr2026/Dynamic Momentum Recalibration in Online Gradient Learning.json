@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Dynamic Momentum Recalibration in Online Gradient Learning.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Dynamic Momentum Recalibration in Online Gradient Learning.pdf",
+ "title": "Dynamic Momentum Recalibration in Online Gradient Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "SGDF优化器通过动态动量重校准平衡梯度偏差与方差，提升训练效率与泛化能力。",
+ "innovations": [
+  "基于信号处理视角分析梯度更新的偏差-方差权衡",
+  "提出SGDF优化器，结合最优线性滤波原理实现动态梯度估计",
+  "将SGDF扩展到其他优化框架如Adam，展示其通用性"
+ ],
+ "method_framework": "SGDF通过计算时变增益Kt，动态平衡历史梯度估计bmt和当前梯度gt，实现最优梯度估计，最小化均方误差。",
+ "experiment_framework": "CIFAR/ImageNet图像分类、PASCAL VOC目标检测、ViT微调，对比SGD、Adam等主流优化器，使用准确率和mAP指标。",
+ "takeaways": [
+  "梯度估计中的偏差-方差权衡是优化器设计的关键问题",
+  "动态调整增益机制可有效平衡噪声抑制与信号保留"
+ ],
+ "weaknesses": [
+  "理论分析中假设梯度服从高斯分布，实际场景可能不成立",
+  "实验主要在标准视觉任务上进行，缺乏对医学影像等特定领域的验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "优化器设计模式有迁移价值，但未触及可靠性主线与落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Prediction Models That Learn to Avoid Missing Values.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Prediction Models That Learn to Avoid Missing Values.pdf",
+ "title": "Prediction Models That Learn to Avoid Missing Values",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "缺失规避框架：为树模型与线性模型设计正则项降低对缺失特征依赖",
+ "innovations": [
+  "提出缺失规避(missingness-avoiding)通用框架，训练模型在测试时极少需要缺失/插补特征",
+  "为决策树、树集成与稀疏线性模型分别设计分类器专属的正则项，嵌入其学习目标",
+  "树模型利用上下文缺失性(contextual missingness)，基于已观测上下文降低对缺失值的依赖，兼顾精度与可解释性"
+ ],
+ "method_framework": "不依赖插补或缺失指示变量(二者分别引入偏差或增加复杂度并损害可解释性)；在各类模型的训练目标中显式加入对依赖缺失特征的惩罚(正则参数α)，引导模型选择在上下文里更易被观测到的特征做决策，从而在保持精度的同时避免在测试时命中缺失分支。",
+ "experiment_framework": "在含缺失特征的数据集(含成人认知障碍诊断等医疗场景)上评测；对比常规模型、插补法与缺失指示法；指标包括AUC与对缺失特征的依赖度ρ，验证MA模型在可比精度下显著降低对缺失值的依赖。",
+ "takeaways": [
+  "MA树能在与常规决策树可比的AUC下，避免依赖常缺失的MRI/海马体积等特征",
+  "通过正则引导模型选用上下文里更易观测的特征，比插补更少引入偏差",
+  "该框架对树、树集成与稀疏线性模型通用，且不牺牲可解释性"
+ ],
+ "weaknesses": [
+  "正则强度α需人工权衡精度与缺失规避，缺乏自动选择准则",
+  "在特征整体缺失率极高或缺失与标签强相关(MNAR)时能否保持精度未充分分析",
+  "实证规模相对有限，对高维表格/医疗多中心外推的鲁棒性需更多验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

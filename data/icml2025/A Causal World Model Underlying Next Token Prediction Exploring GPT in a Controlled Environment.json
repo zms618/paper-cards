@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/A Causal World Model Underlying Next Token Prediction Exploring GPT in a Controlled Environment.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/A Causal World Model Underlying Next Token Prediction Exploring GPT in a Controlled Environment.pdf",
+ "title": "A Causal World Model Underlying Next Token Prediction: Exploring GPT in a Controlled Environment",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "为GPT注意力提供因果解释，在游戏中验证零样本因果结构学习。",
+ "innovations": [
+  "给出GPT掩码自注意力的因果解释，指出架构不阻止token间条件独立(CI)关系的学习",
+  "提出由CI关系在一定假设下直接蕴含的因果世界模型",
+  "提出推理时对输入序列做零样本因果结构学习，并定义相应置信度分数"
+ ],
+ "method_framework": "GPT架构不限制token间的CI关系；在适当假设下，由注意力学到的依赖关系可导出因果结构；按Occam razor，紧凑的因果世界模型比表层统计模型更可能被预训练学到；据此把GPT注意力因果化解释，并在推理时抽取编码的因果结构，配合置信度分数判断结构可靠性。",
+ "experiment_framework": "在Othello与Chess策略游戏的受控环境中用真实对局预训练GPT；在分布外的随机合法走法合成序列上测试；以是否生成合法下一步、是否在注意力中编码因果结构及置信度为指标。",
+ "takeaways": [
+  "GPT在OOD序列上能为因果结构被高置信编码的情形生成合法走法",
+  "当GPT生成非法走法时，往往也未能捕获因果结构",
+  "next-token预训练可能隐式学到紧凑的因果世界模型而非仅表层统计"
+ ],
+ "weaknesses": [
+  "因果解释与CI关系成立依赖较强假设",
+  "仅在Othello/Chess受控环境验证，对真实自然语言的迁移存疑",
+  "零样本因果结构学习的置信度分数在复杂序列上的可靠性未充分评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "因果世界模型与可靠性主线交织，但仅在游戏环境验证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

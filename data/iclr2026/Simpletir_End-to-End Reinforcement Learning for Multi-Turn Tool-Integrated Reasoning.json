@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Simpletir_End-to-End Reinforcement Learning for Multi-Turn Tool-Integrated Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Simpletir_End-to-End Reinforcement Learning for Multi-Turn Tool-Integrated Reasoning.pdf",
+ "title": "SimpleTIR: End-to-End Reinforcement Learning for Multi-Turn Tool-Integrated Reasoning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "过滤void turn轨迹稳定RL训练，提升数学推理准确率。",
+ "innovations": [
+  "定位多轮TIR的RL训练不稳定/性能崩溃主因：外部工具反馈引发分布漂移，生成极低概率token，跨轮累积致错误与灾难性梯度范数爆炸",
+  "发现'void turn'(既无代码块也无最终答案)是病态生成的先行信号",
+  "提出即插即用的SimpleTIR：策略更新时识别并过滤含void turn的轨迹，阻断有害大梯度，稳定学习动态"
+ ],
+ "method_framework": "在零RL/纯结果奖励的多轮TIR训练中，每轮模型生成代码并执行、把工具输出喂回；SimpleTIR在更新前检测轨迹是否出现void turn并剔除，避免这些轨迹产生的极端梯度污染，从而无需SFT即可稳定训练并涌现自我纠错/交叉验证等推理模式。",
+ "experiment_framework": "从Qwen2.5-7B基模出发，在AIME24/AIME25等数学推理基准上，对比无TIR基线(DAPO)与朴素多轮TIR训练；报告准确率与梯度范数曲线。",
+ "takeaways": [
+  "SimpleTIR把AIME24从纯文本基线22.1提升到50.5，达SOTA",
+  "过滤void turn轨迹即可稳定梯度、几乎无尖峰，而朴素多轮训练梯度爆炸且反不如无TIR基线",
+  "摆脱SFT约束后模型自发涌现自我纠错、交叉验证等多样推理模式"
+ ],
+ "weaknesses": [
+  "落地为数学推理+工具调用，未涉及医学影像/多模态视觉，主线相关度中高",
+  "void turn是启发式信号，其与真正有害轨迹的一一对应、漏判/误判代价未充分量化",
+  "'+22.1→50.5'高度依赖具体基模与工具(Python解释器)，对其他工具(搜索)与更大模型的迁移未在前9页完整论证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "工具调用稳定性方法，但未触及医学影像/多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

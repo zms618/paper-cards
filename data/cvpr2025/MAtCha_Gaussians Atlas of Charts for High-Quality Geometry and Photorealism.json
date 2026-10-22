@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/MAtCha_Gaussians Atlas of Charts for High-Quality Geometry and Photorealism.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/MAtCha_Gaussians Atlas of Charts for High-Quality Geometry and Photorealism.pdf",
+ "title": "MAtCha Gaussians Atlas of Charts for High-Quality Geometry and Photorealism",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "图表集与高斯渲染结合，解决稀疏视图重建的深度模糊问题",
+ "innovations": [
+  "将场景几何建模为2D图像平面上的图表集(Atlas of Charts)",
+  "结合单目深度估计与可微分高斯渲染",
+  "轻量级神经变形模型解决深度尺度模糊问题",
+  "结构损失保持高频表面细节"
+ ],
+ "method_framework": "初始化图表使用单目深度估计，通过神经变形模型对齐SfM点，最后用2D高斯渲染细化表面，实现从稀疏RGB图像快速重建高质量网格",
+ "experiment_framework": "DTU数据集(3视图)和Tanks&Temples数据集，与Spurfies、MVSplat等方法比较，使用Chamfer Distance和F-Score指标",
+ "takeaways": [
+  "图表表示法结合2D高斯渲染可有效保留高频几何细节",
+  "轻量级变形模型解决单目深度尺度模糊问题",
+  "置信度图处理SfM点异常值提高鲁棒性"
+ ],
+ "weaknesses": [
+  "依赖MASt3R-SfM提供相机姿态估计",
+  "图像裁剪导致某些场景重建不完整",
+  "未充分讨论方法在极端稀疏视图下的泛化能力"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "稀疏视图重建与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

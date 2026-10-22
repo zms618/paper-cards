@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/WATCH_Adaptive Monitoring for AI Deployments via Weighted-Conformal Martingales.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/WATCH_Adaptive Monitoring for AI Deployments via Weighted-Conformal Martingales.pdf",
+ "title": "WATCH: Adaptive Monitoring for AI Deployments via Weighted-Conformal Martingales",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "加权共形鞅监控AI部署，适应偏移并诊断类型，但理论验证不足。",
+ "innovations": [
+  "提出共形测试鞅的加权推广（WCTM），为任意数据分布变化的在线监控提供理论基础，同时控制误报率",
+  "设计在线适应机制，对温和的协变量偏移自动调整权重，避免不必要的警报",
+  "实现偏移根因诊断：区分概念偏移（条件标签分布变化）和极端协变量偏移（超出支持域），指导不同的恢复策略"
+ ],
+ "method_framework": "基于任意时间有效推断（anytime-valid inference）框架，将共形p值通过加权对数似然比转换为测试鞅。权重在线更新以适应温和的协变量偏移。当鞅值超过阈值时触发警报。结合CUSUM和Shiryaev-Roberts变点检测指标提升检测速度。通过比较预测信息性和预测安全性的变化模式，诊断偏移类型。",
+ "experiment_framework": "在真实世界数据集上验证，包括医疗场景（脓毒症预测、MEPS医疗支出调查）；与现有监控基线对比误报率和检测延迟；测试不同类型偏移（温和协变量偏移、概念偏移、极端偏移）下的诊断准确性。",
+ "takeaways": [
+  "AI部署后的持续监控需要同时适应良性偏移、快速检测有害偏移、并诊断根因，三者缺一不可",
+  "加权共形鞅框架能在控制误报率的前提下，同时实现在线适应和快速检测",
+  "偏移类型的诊断（概念偏移vs极端偏移）直接指导不同的恢复策略，比单纯报警更有实用价值"
+ ],
+ "weaknesses": [
+  "仅在表格/医疗数据上验证，图像或文本模态的监控适用性未测试",
+  "权重更新的自适应方法较为经验化，理论收敛性未充分证明",
+  "与最新的LLM监控方法（如基于概率的漂移检测）未对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

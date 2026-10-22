@@ -1,0 +1,37 @@
+{
+ "title": "No Soundness in the Real World: On the Challenges of the Verification of Deployed Neural Networks",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.25
+ },
+ "one_line": "揭示形式化验证与实际部署间的鸿沟，证明SOTA验证器在真实环境中失效。",
+ "innovations": [
+  "形式化证明：对区间分析及其变种等理论可靠验证方法，理论可靠不蕴含对部署网络的实际可靠。",
+  "揭示部署环境（浮点运算顺序/精度、软硬件随机性）使部署网络可与理论模型任意不同，可植入环境触发后门。",
+  "构造部署特定攻击误导验证器，实证所有被测可靠验证器在后门网络部署上均无法正确界定输出。"
+ ],
+ "method_framework": "区分理论模型验证与部署网络验证两个问题：攻击者利用浮点结合律运算顺序与精度等环境特征，使后门仅在特定部署E3触发；构造恶意网络使其在理论模型上属性成立、却在真实部署中翻转类别；证明这一实现鸿沟(implementation gap)可被利用而绕过可靠验证器。",
+ "experiment_framework": "实证评测多种知名可靠验证方法（区间分析及其变种、bound propagation等）；通过构造检测并利用部署环境特征（运算顺序、精度）的对抗/后门网络，检验验证器能否界住真实部署输出；报告所有被测验证器对部署特定攻击均脆弱。",
+ "takeaways": [
+  "脱离部署环境的形式化验证无法保证真实部署网络的安全。",
+  "浮点非确定性使后门可向验证器隐藏有害行为。",
+  "实际可靠比理论可靠在计算上显著更难。"
+ ],
+ "weaknesses": [
+  "被测验证器集合与部署环境覆盖范围有限，能否推广到所有实现需进一步确认。",
+  "提出问题深刻但未给出解决实际可靠的完整方案，更多是警示性/批判性结论。",
+  "攻击需要攻击者掌握部署环境信息，威胁模型前提在部分场景下较强。"
+ ],
+ "confidence": "high",
+ "key": "icml2025/No Soundness in the Real World On the Challenges of the Verification of Deployed Neural Networks.pdf",
+ "path": "icml2025/No Soundness in the Real World On the Challenges of the Verification of Deployed Neural Networks.pdf",
+ "conf": "icml2025",
+ "raw_overall": 7.35,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

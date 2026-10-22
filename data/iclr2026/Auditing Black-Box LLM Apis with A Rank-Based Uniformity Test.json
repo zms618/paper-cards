@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Auditing Black-Box LLM Apis with A Rank-Based Uniformity Test.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Auditing Black-Box LLM Apis with A Rank-Based Uniformity Test.pdf",
+ "title": "Auditing BLACK-BOX LLM Apis with A RANK-BASED Uniformity Test",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "基于排名一致性的黑盒LLM审计方法，检测多种替换场景但有限制",
+ "innovations": [
+  "基于排名一致性的非对称双样本测试方法",
+  "仅需单次API查询的高效审计机制",
+  "针对多种攻击场景(量化、越狱、SFT、完全替换)的鲁棒检测"
+ ],
+ "method_framework": "RUT方法通过计算目标API响应在参考模型分布中的排名百分位数，利用Cramér-von Mises检验检测偏离均匀分布的异常，实现模型行为一致性验证。",
+ "experiment_framework": "WildChat数据集，对比MMD和KS基线，统计功效AUC作为主要指标，评估量化、越狱、SFT和完全模型替换场景下的检测性能。",
+ "takeaways": [
+  "log-rank评分函数在区分不同模型分布时表现最佳",
+  "方法对早期微调阶段的分布变化敏感",
+  "在有限查询预算下保持高检测统计功效"
+ ],
+ "weaknesses": [
+  "对8位量化模型的检测能力有限",
+  "依赖本地参考模型的完全访问权限",
+  "未探索解码参数不匹配场景的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "黑盒LLM审计方法直接关联可靠性主线，检测模型替换场景",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

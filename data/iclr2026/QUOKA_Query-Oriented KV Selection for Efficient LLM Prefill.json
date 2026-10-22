@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/QUOKA_Query-Oriented KV Selection for Efficient LLM Prefill.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/QUOKA_Query-Oriented KV Selection for Efficient LLM Prefill.pdf",
+ "title": "QUOKA: Query-Oriented KV Selection for Efficient LLM Prefill",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "基于query与mean相似度的免训练KV选择，加速LLM prefill但可靠性关联弱",
+ "innovations": [
+  "发现与mean query余弦相似度低的query会与更多key交互、且对最终注意力logit贡献最大",
+  "据此先保留少量代表query、再为其挑选最对齐的key，近似prefill全注意力",
+  "免训练、硬件无关，适配chunked prefill，不依赖定制kernel"
+ ],
+ "method_framework": "在prefill阶段先计算各query相对mean query的余弦相似度，优先保留低相似度(高贡献)的代表query集合；再针对这些query子选最对齐的key做注意力，其余KV跳过，从而以更少KV近似全注意力。",
+ "experiment_framework": "在Needle-In-A-Haystack、LongBench、RULER、Math500上评测；报告time-to-first-token、GPU/CPU注意力加速比与每步KV用量。",
+ "takeaways": [
+  "TTFT降低3×、GPU注意力加速5×、Intel Xeon CPU上近7×，每注意力少用88%KV而精度接近基线",
+  "query贡献度的结构观察可指导免训练稀疏注意力",
+  "chunked prefill下query-dependent KV选择优于pattern-based稀疏模式"
+ ],
+ "weaknesses": [
+  "属推理加速/稀疏注意力效率方向，与可靠性、不确定性、验证器主线关联弱",
+  "仅在长上下文/检索类基准验证，对密集推理与小模型的精度影响未充分",
+  "代表query比例为超参，其跨任务鲁棒性与失败case分析不充分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "推理加速与可靠性主线关联弱，无落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

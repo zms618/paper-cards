@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Videozoomer_Reinforcement-Learned Tempo-Ral Focusing for Long Video Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Videozoomer_Reinforcement-Learned Tempo-Ral Focusing for Long Video Reasoning.pdf",
+ "title": "VideoZoomer: Reinforcement-Learned Temporal Focusing for Long Video Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "智能体式时间缩放工具调用，提升长视频推理效率",
+ "innovations": [
+  "提出VideoZoomer智能体框架，赋予MLLM在推理过程中动态调用时间缩放(temporal zoom)工具的能力，从粗帧率概览开始自主选择时刻获取高帧率片段",
+  "采用两阶段训练：先在蒸馏的示范轨迹和反思轨迹上SFT冷启动，再用强化学习优化智能体策略",
+  "多轮交互式证据收集机制，可在发现初始选择不足时主动修正，克服静态预选择无法纠错的局限"
+ ],
+ "method_framework": "VideoZoomer从低帧率概览开始推理，当需要细粒度证据时主动调用temporal zoom工具，在自选的时间点获取高帧率片段。整个过程多轮交互进行，逐步从粗到细收集证据。训练分两阶段：(1) SFT阶段——在人工设计的蒸馏示范轨迹和反思轨迹数据上冷启动，学习何时调用工具；(2) RL阶段——进一步优化智能体策略，涌现出多样复杂的推理模式。",
+ "experiment_framework": "任务：长视频理解与推理。基线：均匀帧采样、静态帧选择方法、开源SOTA模型、闭源专有系统。指标：长视频推理基准准确率、帧效率。7B模型在多个长视频基准上超越开源模型，匹敌专有系统，同时帧预算更高效。",
+ "takeaways": [
+  "动态时间聚焦比均匀采样或静态预选择更高效，能在更少帧预算下达到更高准确率",
+  "两阶段训练（SFT+RL）能使模型涌现出复杂的多步推理和工具调用策略",
+  "交互式纠错能力是长视频推理的关键——初始选择错误可通过后续zoom调用修正"
+ ],
+ "weaknesses": [
+  "多轮工具调用增加了推理延迟和交互复杂度，实时性受限",
+  "temporal zoom工具的粒度设计（时间窗口大小、帧率）对性能影响较大，最优配置依赖任务",
+  "蒸馏示范轨迹数据的质量和多样性限制了冷启动效果"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "长视频推理效率提升，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Scale Your Instructions Enhance the Instruction-Following Fidelity of Unified.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Scale Your Instructions Enhance the Instruction-Following Fidelity of Unified.pdf",
+ "title": "Scale Your Instructions Enhance the Instruction-Following Fidelity of Unified",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "通过注意力缩放解决统一模型指令忽视问题，但通用性有限",
+ "innovations": [
+  "发现统一图像生成模型中子指令被忽视的问题",
+  "通过交叉注意力图分析揭示指令被忽视的机制",
+  "提出无需额外训练或测试时优化的自适应性注意力缩放方法"
+ ],
+ "method_framework": "SaaS方法通过分析关键步骤的交叉注意力图，提取子指令掩码并计算缩放因子，在去噪过程中动态调整注意力激活值，增强指令遵循保真度。",
+ "experiment_framework": "在EMU-Edit和PIE-Bench数据集上进行单指令和多指令编辑实验，在MultiGen-20M和ADE20K上进行深度图和分割图生成实验，使用CLIP-I、DINO-v2、CLIP-T和PickScore指标评估。",
+ "takeaways": [
+  "通过交叉注意力图分析可识别关键步骤和层",
+  "利用相邻时间步交叉注意力图一致性进行推理时优化",
+  "掩码提取和缩放因子计算可有效解决指令忽视问题"
+ ],
+ "weaknesses": [
+  "方法仅针对统一图像生成模型设计，通用性有限",
+  "缩放因子计算依赖于阈值设置，可能影响结果稳定性",
+  "实验主要在512×512分辨率上进行，高分辨率效果未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅解决图像生成模型指令忽视问题，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

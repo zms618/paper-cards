@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Not Search, but Scan Benchmarking MLLMS On Scan-Oriented Academic Paper Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Not Search, but Scan Benchmarking MLLMS On Scan-Oriented Academic Paper Reasoning.pdf",
+ "title": "Not Search, but Scan: Benchmarking MLLMs on Scan-Oriented Academic Paper Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "扫描式论文推理基准揭示MLLM全文核查缺陷，RAG无效。",
+ "innovations": [
+  "提出扫描式(scan-oriented)任务设定，区别于以预定义目标和相关性检索为中心的搜索式范式，要求通读并交叉核查全文以发现一致性问题。",
+  "构建覆盖9类错误、13个自然科学领域、715篇论文、1800道精标注问题的数据集，并提供证据定位与推理轨迹的细粒度标注。",
+  "提出过程感知评测框架，同时评估证据定位与推理步骤的过程质量与最终结果。"
+ ],
+ "method_framework": "让MLLM以图像化整篇论文为输入，像研究者一样扫描全文，跨章节/跨图表交叉核查，判定是否存在并定位9类一致性错误（如前后矛盾、图表-文字不符等）；配合证据定位标注与推理轨迹，统一评测协议同时衡量过程与结果。",
+ "experiment_framework": "评测15个MLLM、24种输入配置与8种RAG框架；发现所有模型在扫描式任务上表现有限，且RAG方法均无显著提升，揭示当前MLLM在全文级可靠推理上的系统性不足；数据/代码/基准开源。",
+ "takeaways": [
+  "现有以检索为中心的范式难以支撑研究者式的全文理解、推理与核查，扫描式任务暴露了MLLM的系统性缺陷。",
+  "RAG在扫描式论文一致性核查上几乎不带来提升，说明问题在全局交叉推理而非局部检索。",
+  "证据定位加推理轨迹的过程感知评测能更细粒度刻画MLLM在各类错误上的能力短板。"
+ ],
+ "weaknesses": [
+  "错误类别与一致性问题的构造依赖人工标注，标注主观性与覆盖偏差未充分量化。",
+  "仅覆盖自然科学领域与图像化论文输入，跨学科、预印本质量参差及长文档截断的影响未充分分析。",
+  "发现RAG无效但未给出有效的改进方法，更多是揭示挑战而非解决路径。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "论文可靠性主线与落地域的交点，暴露MLLM全文核查缺陷",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Rényi Neural Processes.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Rényi Neural Processes.pdf",
+ "title": "Renyi Neural Processes",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.75
+ },
+ "one_line": "用Renyi散度替代KL散度缓解神经过程先验误设，提升预测不确定性估计。",
+ "innovations": [
+  "指出vanilla NP中先验/后验模型的参数耦合本质上是先验误设，会导致后验方差有偏、预测变差。",
+  "提出用Renyi散度替代标准KL散度做NP的后验更新，从鲁棒散度视角缓解先验误设，无需改架构或参数共享方式。",
+  "在回归与图像修复等真实任务上 consistently 取得优于SOTA NP的对数似然。"
+ ],
+ "method_framework": "保持NP原有参数化，仅在目标函数中以Renyi散度替代KL散度；Renyi散度对误设先验更鲁棒，能在后验更新时减弱错误先验的影响，从而在有噪声上下文集、域偏移等先验误设场景下得到更准的后验方差与预测分布。",
+ "experiment_framework": "在多个回归基准与图像修复任务上评测；指标主要为对数似然(log-likelihood)；对比SOTA NP变体(含放松参数共享的方法)；在有噪声上下文等设定下检验鲁棒性。",
+ "takeaways": [
+  "RNP在多个回归与图像修复基准上 consistently 取得比SOTA NP更好的对数似然。",
+  "参数耦合引起的先验误设可通过换用鲁棒散度(Renyi)缓解，无需改动NP架构。"
+ ],
+ "weaknesses": [
+  "与主线的医学影像、多模态大模型推理不直接相关，属通用概率模型。",
+  "Renyi散度引入的额外超参(alpha)选择及其对后验的偏差-方差权衡未见系统讨论。",
+  "完整基准列表与消融多在后文/附录，正文9页内未见全量数值表。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

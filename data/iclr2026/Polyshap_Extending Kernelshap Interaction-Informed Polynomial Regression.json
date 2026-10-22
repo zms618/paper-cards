@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Polyshap_Extending Kernelshap Interaction-Informed Polynomial Regression.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Polyshap_Extending Kernelshap Interaction-Informed Polynomial Regression.pdf",
+ "title": "PolySHAP: Extending KernelSHAP with Interaction-Informed Polynomial Regression",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "将KernelSHAP扩展为多项式近似，证明对偶采样等价于二阶PolySHAP",
+ "innovations": [
+  "用k次多项式近似博弈ν以建模特征高阶交互，给出 O(dd') 时间恢复近似博弈的Shapley值",
+  "证明 PolySHAP 估计一致：样本量趋于2^d时精确恢复Shapley值(对比树近似需额外回归调整)",
+  "证明对偶采样输出的Shapley近似恰等于二阶PolySHAP而无需拟合二次多项式，首次为该通用启发式提供强理论依据"
+ ],
+ "method_framework": "与 KernelSHAP 同构：采样随机特征子集求博弈值ν(S)，但用更高次多项式(在二值特征1[i∈S]上)拟合而非线性；对拟合出的多项式近似博弈计算其Shapley值作为估计。高阶项显式编码特征交互，从而减小线性近似偏差。",
+ "experiment_framework": "在多个XAI基准数据集上对比 KernelSHAP(含/不含对偶采样)与回归MSR等估计器，报告Shapley值估计精度；并通过数值实验验证对偶采样与二阶PolySHAP的等价性。",
+ "takeaways": [
+  "更高阶多项式近似在多种数据上给出更准确的Shapley值估计",
+  "对偶采样之所以普遍有效，是因为它隐式实现了二阶交互建模",
+  "PolySHAP 无需额外调整即一致收敛到真实Shapley值"
+ ],
+ "weaknesses": [
+  "多项式项数 O(d^k) 随次数/特征数膨胀，高维场景样本预算可行性前9页未充分量化",
+  "主线为可解释AI/归因方法，与医学影像、多模态推理等落地域结合弱",
+  "前9页未见对深度模型真实预测归因的大规模实证，多为合成/标准基准"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "可解释AI方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

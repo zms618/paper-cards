@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Temperature-Annealed Boltzmann Generators.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Temperature-Annealed Boltzmann Generators.pdf",
+ "title": "Temperature-Annealed Boltzmann Generators",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "高温退火缓解BG模式崩塌，但参数敏感且域外相关性低。",
+ "innovations": [
+  "证明在高温下用反向KL训练归一化流不会mode collapse，因为高温分布更平滑",
+  "提出基于重加权的训练目标，把高温训练好的流逐步退火到目标低温Boltzmann分布",
+  "在三个复杂度递增的分子系统上验证相比原始Boltzmann Generator更完整地覆盖构型空间"
+ ],
+ "method_framework": "训练一个归一化流作为重要采样器；先在高温T_high下用反向KL训练，此时Boltzmann分布平坦、无多模态尖峰，不易mode collapse；再引入重加权目标按T_high→T_target逐步退火，把流分布重新加权到目标温度的Boltzmann分布；最终流可直接采样平衡构型。",
+ "experiment_framework": "在三个分子体系（小肽/分子团簇等，前9页未列全名）上对比原始Boltzmann Generator与MD参考，指标为采样效率、自由能面恢复、构型覆盖度。",
+ "takeaways": [
+  "高温反向KL训练可避免mode collapse，因为高温分布本身模态间势垒被抹平",
+  "重加权退火是把高温流迁移到目标温度的有效路径",
+  "归一化流在分子采样上的主要失败模式（mode collapse）可通过课程式温度策略缓解"
+ ],
+ "weaknesses": [
+  "温度退火课程的步数与每步重加权超参敏感，未给出自动选择方法",
+  "高维大分子体系的可扩展性未验证",
+  "与增强采样MD/扩散模型采样器的对比不充分",
+  "域为计算化学采样，与主线完全无关"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

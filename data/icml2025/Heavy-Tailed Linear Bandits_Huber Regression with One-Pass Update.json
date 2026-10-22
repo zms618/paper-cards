@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Heavy-Tailed Linear Bandits_Huber Regression with One-Pass Update.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Heavy-Tailed Linear Bandits_Huber Regression with One-Pass Update.pdf",
+ "title": "Heavy-Tailed Linear Bandits: Huber Regression with One-Pass Update",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 6.0,
+  "overall": 5.6
+ },
+ "one_line": "one-pass Huber回归降计算，但理论与实验支撑不足",
+ "innovations": [
+  "将自适应Huber回归用于重尾bandit并避免存全量历史",
+  "提出one-pass更新算法，每轮无需遍历全部历史数据",
+  "放松已有truncation/MOM方法对特定噪声或bandit结构的依赖"
+ ],
+ "method_framework": "对重尾噪声线性bandit，用在线镜像下降实现自适应Huber回归的one-pass更新，逐轮在线更新参数，规避以往soft truncation需存全量数据并全量遍历的开销。",
+ "experiment_framework": "理论推导重尾噪声下的遗憾界，对比需全量遍历的Huber方法与truncation/MOM基线，以遗憾与计算复杂度为指标。",
+ "takeaways": [
+  "重尾bandit可用one-pass Huber回归在保持鲁棒的同时降计算",
+  "one-pass更新显著降低每轮时间/内存开销"
+ ],
+ "weaknesses": [
+  "理论遗憾界的常数与阶未实证对比",
+  "仅线性bandit设定，非线性/广义模型未涉及",
+  "Huber阈值的自适应策略敏感性未充分分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.83,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

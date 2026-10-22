@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/OXTAL_An All-Atom Diffusion Model for Organic Crystal Structure Prediction.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/OXTAL_An All-Atom Diffusion Model for Organic Crystal Structure Prediction.pdf",
+ "title": "OXTAL: An All-Atom Diffusion Model for Organic Crystal Structure Prediction",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "全原子扩散模型预测晶体结构，但泛化性验证不足",
+ "innovations": [
+  "全原子扩散模型直接学习构象与周期堆积的条件联合分布，而非分阶段预测",
+  "放弃显式等变架构强加晶体对称归纳偏置，改用数据增强实现可扩展",
+  "提出结晶启发的晶格无关 S4(Stoichiometric Stochastic Shell Sampling) 训练，捕获长程相互作用且规避显式晶格参数化"
+ ],
+ "method_framework": "给定 2D 化学图，扩散模型同时生成分子内构象与分子间周期堆积；以数据增强替代显式等变架构；S4 在化学计量约束下随机采样壳层位置做训练，使模型在无晶格参数化下学到长程堆积相互作用。",
+ "experiment_framework": "在 60 万实验验证晶体(含刚性/柔性分子、共晶、溶剂合物)上训练；指标为实验结构恢复的 conformer RMSD1<0.5 Å、packing similarity rate>80%；对比此前 ab initio ML CSP 方法与传统量子化学方法。",
+ "takeaways": [
+  "全原子扩散+晶格无关训练可在可扩展架构下同时建模构象与堆积",
+  "OXTAL 比此前 ML CSP 方法优数个量级，又比量子化学方法便宜数个量级",
+  "模型同时捕捉结晶的热力学与动力学规律"
+ ],
+ "weaknesses": [
+  "属计算化学/材料科学，与可信推理/医学影像主线无关",
+  "数据为实验晶体分布，对新颖/未合成分子的泛化未充分验证",
+  "前 9 页内未报告与最新 SOTA CSP 方法在相同测试划分上的严格对照细节"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "计算化学材料科学，与可信推理/医学影像主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

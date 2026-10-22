@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Constrained Entropic Unlearning A Primal-Dual Framework for Large Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Constrained Entropic Unlearning A Primal-Dual Framework for Large Language Models.pdf",
+ "title": "Constrained Entropic Unlearning: A Primal-Dual Framework for Large Language Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 8,
+  "overall": 7.1
+ },
+ "one_line": "约束优化框架实现LLM遗忘，但实验深度不足",
+ "innovations": [
+  "将LLM遗忘重构为约束优化问题",
+  "提出logit-margin平坦化损失替代熵最大化",
+  "设计可扩展的对偶算法处理遗忘-保留权衡"
+ ],
+ "method_framework": "将LLM遗忘形式化为约束优化问题，使用logit-margin平坦化损失驱动遗忘集输出均匀化，通过硬约束保留保留集性能，采用对偶算法高效求解。",
+ "experiment_framework": "TOFU和MUSE基准测试，多种LLaMA和Gemma模型，对比GradDiff、DPO、NPO等基线，使用模型效用和遗忘成功率等指标评估。",
+ "takeaways": [
+  "约束优化框架提供更清晰的遗忘-保留权衡控制",
+  "logit-margin平坦化损失比熵最大化更稳定高效",
+  "对偶算法无需额外计算开销即可处理大规模模型"
+ ],
+ "weaknesses": [
+  "在Fluency指标上表现略逊",
+  "对大型模型(7B/8B)的遗忘效果可能不如小型模型显著",
+  "未探索不同遗忘集大小的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

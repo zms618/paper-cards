@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Addressing Concept Mislabeling in Concept Bottleneck Models Through Preference Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Addressing Concept Mislabeling in Concept Bottleneck Models Through Preference Optimization.pdf",
+ "title": "Addressing Concept Mislabeling in Concept Bottleneck Models Through Preference Optimization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "将DPO适配到CBM，提升标签噪声鲁棒性，但多场景验证不足",
+ "innovations": [
+  "提出CPO目标函数，通过在线从策略采样负概念集与经验标签对比，实现概念后验分布的直接建模",
+  "从梯度分析角度证明CPO的梯度范数下界为BCE梯度，噪声下CPO梯度更接近无噪声梯度",
+  "证明CPO优化等价于学习概念的后验分布π*(c|x)，而非经验标签的似然，从而提供更好的不确定度估计"
+ ],
+ "method_framework": "在标准CBM联合训练框架下，将BCE概念预测损失替换为CPO损失。CPO从当前策略πθ(c|x)采样负概念集c'，假设经验标签c优于采样标签c'（c≻c'），通过DPO式的对数Sigmoid目标优化。该目标等价于在KL约束下最大化概念后验的对数似然，使模型直接逼近真实概念后验而非经验标签分布。",
+ "experiment_framework": "在CUB-200-2011（200类/112概念）、AwA2（50类/85属性）、CelebA（256类/6概念）三个数据集上验证。基线包括CBM-BCE、CEM-BCE、ProbCBM（顺序/联合）、CoopCBM。指标为任务准确率和概念AUC。额外测试：标签注入噪声下的鲁棒性、测试时概念干预效果、不确定度估计质量。",
+ "takeaways": [
+  "CPO在无噪声设置下已优于BCE（CUB任务准确率从75.3%提升至80.0%），在噪声设置下优势更大",
+  "基于CPO概念后验的不确定度排序能引导更有效的测试时干预，前几个不确定概念的纠正即可显著提升准确率",
+  "CPO的β超参数无需调优（统一设为1），简化了训练流程"
+ ],
+ "weaknesses": [
+  "仅验证图像分类任务，未探索文本或多模态场景下的CBM鲁棒性",
+  "理论分析假设均匀先验和二值概念，对多值概念或非均匀先验的扩展未讨论",
+  "CelebA上概念AUC反而下降（0.873→0.857），说明CPO在概念不完整场景下可能有损概念预测质量"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "标签噪声鲁棒性属于可靠性主线，但多模态验证不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

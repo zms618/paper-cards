@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Improving the Straight-Through Estimator with Zeroth-Order Information.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Improving the Straight-Through Estimator with Zeroth-Order Information.pdf",
+ "title": "Improving the Straight-Through Estimator with Zeroth-Order Information",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "混合STE与零阶梯度提升量化训练，但计算开销与应用场景受限",
+ "innovations": [
+  "FOGZO算法结合STE与n-SPSA优势",
+  "理论推导STE隐式平滑参数",
+  "动态混合比例β控制STE偏差影响"
+ ],
+ "method_framework": "FOGZO通过混合STE梯度与零阶扰动，利用STE作为有偏估计源减少n-SPSA计算量，同时抑制STE错误梯度方向",
+ "experiment_framework": "MNIST 2层MLP、DeiT/ResNet/LLaMA模型，1-2位量化，比较STE/n-SPSA/FOGZO在相同迭代次数下的精度与计算效率",
+ "takeaways": [
+  "STE作为有偏估计源可显著降低零阶方法计算量",
+  "动态调整混合比例β可平衡STE偏差与零阶梯度方差"
+ ],
+ "weaknesses": [
+  "FOGZO仍需额外2次前向传播计算",
+  "仅针对量化感知训练，应用场景有限",
+  "超参数βmin需要仔细调优"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

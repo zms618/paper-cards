@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Generative Multimodal Pretraining with Discrete Diffusion Timestep Tokens.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Generative Multimodal Pretraining with Discrete Diffusion Timestep Tokens.pdf",
+ "title": "Generative Multimodal Pretraining with Discrete Diffusion Timestep Tokens",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "离散扩散时间步token实现多模态统一，但实验覆盖有限",
+ "innovations": [
+  "提出离散扩散时间步(DDT)token，具有递归结构",
+  "设计DDT-LLaMA统一框架，同时支持视觉理解与生成",
+  "仅使用ImageNet训练的tokenizer超越大规模数据训练的基线模型"
+ ],
+ "method_framework": "通过扩散模型前向过程学习递归视觉token，编码器生成连续特征，量化器离散化，扩散模型解码器重建图像，实现视觉语言的统一表示。",
+ "experiment_framework": "在GenEval、T2I CompBench、DrawBench、EVR、MA5K、MagicBrush等多个基准测试上评估，与扩散模型专家和MLLM通用模型对比。",
+ "takeaways": [
+  "递归视觉token设计提升多模态理解与生成能力",
+  "扩散时间步token能有效解耦视觉属性，支持渐进式图像重建"
+ ],
+ "weaknesses": [
+  "仅使用256x256 ImageNet训练，限制高分辨率图像生成质量",
+  "在'TwoObj'任务上表现不佳，训练数据中此类提示较少"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态生成与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Advancing Text-to-3D Generation with Linearized Lookahead Variational Score Distillation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Advancing Text-to-3D Generation with Linearized Lookahead Variational Score Distillation.pdf",
+ "title": "Advancing Text-to-3D Generation with Linearized Lookahead Variational Score Distillation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "调整LoRA优化顺序并线性化VSD，提升文本到3D生成质量",
+ "innovations": [
+  "识别VSD中LoRA与3D分布不匹配问题",
+  "提出前瞻VSD(L-VSD)优化顺序",
+  "设计线性化变分评分蒸馏(L2-VSD)解决过拟合"
+ ],
+ "method_framework": "通过调整LoRA与3D模型优化顺序，使评分模型前瞻当前3D状态，并仅保留一阶线性项进行梯度修正，避免高阶噪声干扰。",
+ "experiment_framework": "在threestudio框架下对比SDS、VSD、ESD、HiFA等方法，使用高分辨率(256)和低分辨率(64)渲染评估生成质量。",
+ "takeaways": [
+  "优化顺序对VSD性能有显著影响",
+  "线性化修正可有效避免过拟合同时保持生成质量"
+ ],
+ "weaknesses": [
+  "L-VSD容易导致过饱和和几何崩溃",
+  "L2-VSD在复杂场景上可能仍有局限性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "文本到3D生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

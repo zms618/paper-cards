@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TP-SPIKFORMER_Token PRUNED Spiking Transformer.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TP-SPIKFORMER_Token PRUNED Spiking Transformer.pdf",
+ "title": "TP-Spikformer: Token Pruned Spiking Transformer",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 5.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "启发式token剪枝方法，时空准则评估重要性，块级早停减少计算",
+ "innovations": [
+  "提出时空信息保留准则IRToP，从空间（与邻域差异大的token更独特）和时间（相邻时间步变化大的token信息更丰富）两个维度评估token重要性",
+  "设计信息保留剪枝架构IR-Arc，对低信息量token采用块级早停而非直接丢弃，减少存储和计算开销",
+  "方法训练友好（zero fine-tuning即可），在Spikformer/QKFormer/SDT-V1/V3多种架构和分类/检测/分割/跟踪多任务上验证了通用性"
+ ],
+ "method_framework": "TP-Spikformer首先用启发式时空准则IRToP对每个token打分：空间上比较token与邻域的差异，时间上衡量相邻时间步的变化幅度。高分token保留完整前向计算，低分token在到达阈值后执行块级早停（不再参与后续块的计算），从而逐层减少token数量。整个过程无需重新训练或微调。",
+ "experiment_framework": "在ImageNet分类、COCO目标检测、ADE20K语义分割、事件相机目标追踪等任务上验证；基线包括Spikformer、QKFormer、SDT-V1、SDT-V3等多种脉冲Transformer架构；指标包括准确率/mAP/mIoU、参数量、突触运算量和内存占用。",
+ "takeaways": [
+  "Token剪枝可在训练无额外成本的前提下显著降低脉冲Transformer的计算和存储开销",
+  "时空联合的信息保留准则比单纯空间或时间准则更能识别关键token",
+  "块级早停策略比直接丢弃token保留了更多信息，精度下降更小"
+ ],
+ "weaknesses": [
+  "方法本质是启发式规则，缺乏理论推导保证剪枝后信息保留的最优性",
+  "与现代密集预测/大模型场景的适配性未充分讨论，仅在视觉任务上验证",
+  "剪枝比例与精度损失的权衡缺乏系统化分析，不同架构下的最优剪枝策略可能差异较大"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "脉冲Transformer计算优化，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

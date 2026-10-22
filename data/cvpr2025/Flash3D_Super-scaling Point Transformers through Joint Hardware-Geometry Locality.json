@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Flash3D_Super-scaling Point Transformers through Joint Hardware-Geometry Locality.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Flash3D_Super-scaling Point Transformers through Joint Hardware-Geometry Locality.pdf",
+ "title": "Flash3D Super-scaling Point Transformers through Joint Hardware-Geometry Locality",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 6.0
+ },
+ "one_line": "硬件-几何局部性优化点云Transformer效率，但鲁棒性分析不足",
+ "innovations": [
+  "基于完美空间哈希(PSH)的局部性机制",
+  "与GPU瓦片结构对齐的Bucket-and-Swin注意力机制",
+  "零开销区域 shifting与FlashAttention-2融合"
+ ],
+ "method_framework": "Flash3D通过PSH将点云映射到紧凑连续内存数组，实现几何与内存局部性统一，结合Bucket-and-Swin注意力机制，避免全局重排开销",
+ "experiment_framework": "ScanNet和nuScenes数据集上的语义分割任务，对比PTv3基线，评估mIoU、延迟、内存使用和硬件利用率",
+ "takeaways": [
+  "硬件感知的架构设计对点云Transformer至关重要",
+  "PSH机制显著提升内存访问效率",
+  "桶级操作可替代全局重排"
+ ],
+ "weaknesses": [
+  "仅关注效率提升，未深入分析模型鲁棒性",
+  "哈希函数设计依赖手动定义而非学习"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "纯效率优化工作，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

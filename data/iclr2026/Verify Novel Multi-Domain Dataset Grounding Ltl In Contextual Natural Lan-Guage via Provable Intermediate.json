@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Verify Novel Multi-Domain Dataset Grounding Ltl In Contextual Natural Lan-Guage via Provable Intermediate.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Verify Novel Multi-Domain Dataset Grounding Ltl In Contextual Natural Lan-Guage via Provable Intermediate.pdf",
+ "title": "VERIFY: A Novel Multi-Domain Dataset Grounding LTL in Contextual Natural Language via Provable Intermediate Logic",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "VERIFY数据集：用中间语言桥接LTL与自然语言，规模大但深度不足",
+ "innovations": [
+  "提出VERIFY数据集：首个大规模（20万+三元组）跨13个领域的LTL-自然语言对齐数据集，填补现有数据集规模小、领域窄的空白",
+  "设计中间技术语言(ITL)作为形式逻辑与自然语言之间的桥接层，基于可证明完备的形式语法",
+  "构建高保真生成流水线：LTL枚举+模型检验验证→ITL映射→LLM上下文翻译，辅以人工专家验证1万样本，语义正确率>97%"
+ ],
+ "method_framework": "VERIFY数据集构建流水线：(1)枚举生成LTL公式并通过模型检验验证正确性；(2)用可证明完备的形式语法将LTL映射到中间技术语言(ITL)——结构化、人可读的表示；(3)通过LLM将ITL翻译为13个领域的上下文丰富自然语言描述。每个样本为三元组：LTL公式 + ITL表示 + 领域NL描述。质量保证包括1万样本人工验证和自动语义一致性检查。",
+ "experiment_framework": "数据集：VERIFY（20万+三元组，13个领域）。基线：T5、Llama 3等标准模型。任务：LTL→NL翻译、NL→LTL翻译、跨域泛化。指标：翻译准确率、语义一致性。",
+ "takeaways": [
+  "现有LTL-NL对齐数据集规模小（2-5k）、领域窄，VERIFY显著扩展了规模和领域多样性",
+  "中间技术语言(ITL)作为桥接层能有效提升形式逻辑与自然语言间翻译的准确性",
+  "标准模型在跨域LTL-NL对齐任务上仍有较大挑战"
+ ],
+ "weaknesses": [
+  "自然语言描述由LLM生成，即使经过验证也可能存在细微的语义偏差",
+  "13个领域的具体覆盖深度和代表性未充分说明",
+  "仅验证了标准模型基线，未探索更先进推理模型的表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "形式逻辑与自然语言桥接，与可靠性主线无实质交集",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

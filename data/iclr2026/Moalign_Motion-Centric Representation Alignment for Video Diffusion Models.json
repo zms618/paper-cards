@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Moalign_Motion-Centric Representation Alignment for Video Diffusion Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Moalign_Motion-Centric Representation Alignment for Video Diffusion Models.pdf",
+ "title": "MoAlign: Motion-Centric Representation Alignment for Video Diffusion Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "解耦运动子空间对齐扩散模型，提升视频物理合理性但偏离主线",
+ "innovations": [
+  "从纠缠外观与动态的视频编码器中解耦出运动子空间",
+  "以预测真值光流作为子空间优化目标，确保其捕获真实运动动态",
+  "将扩散模型潜在特征对齐到该运动子空间，使生成模型内化运动知识"
+ ],
+ "method_framework": "先用预训练视频编码器学习一个以光流预测为监督的解耦运动子空间；再将文生视频扩散DiT的中间特征对齐到该子空间，在不改动文本条件的前提下注入物理运动先验。",
+ "experiment_framework": "在SOTA视频扩散模型上评测，数据集VideoPhy、VideoPhy2、VBench、VBench-2.0并做用户研究；指标为物理常识/运动合理性与文本一致性；结果改善物理合理性且保持prompt遵循。",
+ "takeaways": [
+  "解耦出的运动子空间比直接对齐纠缠编码器特征更能注入真实运动",
+  "光流监督是让子空间聚焦动态而非外观的关键",
+  "该对齐在提升物理合理性的同时不牺牲文本对齐度"
+ ],
+ "weaknesses": [
+  "relevance偏离主线(视频生成物理合理性，非可靠性/医疗影像)",
+  "依赖外部光流真值与预训练视频编码器，增加训练管线复杂度",
+  "对复杂非刚体/流体运动的物理合理性提升未充分量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "视频生成物理合理性，偏离可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

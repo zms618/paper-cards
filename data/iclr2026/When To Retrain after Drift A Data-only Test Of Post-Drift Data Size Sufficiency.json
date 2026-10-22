@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/When To Retrain after Drift A Data-only Test Of Post-Drift Data Size Sufficiency.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/When To Retrain after Drift A Data-only Test Of Post-Drift Data Size Sufficiency.pdf",
+ "title": "When to Retrain after Drift: A Data-only Test of Post-Drift Data Size Sufficiency",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.5
+ },
+ "one_line": "CALIPER：漂移后数据充分性纯数据检验，但理论支撑不足",
+ "innovations": [
+  "针对少有人问的何时重训/漂移后多少数据才够的问题，提出检测器与模型都无关的纯数据检验CALIPER",
+  "利用动力系统流的状态依赖：在漂移后窗口上单遍加权局部回归，把单步代理误差作为局部性参数θ的函数追踪",
+  "当有效样本量门槛满足且代理误差随θ单调非增时，判定数据量已足以重训；附理论分析且每步时间/内存低",
+  "弥合漂移检测与数据充分自适应之间的缺口"
+ ],
+ "method_framework": "漂移检测器触发后，在新数据窗口上单遍做加权局部回归；以局部性参数θ扫描并记录单步代理误差；当有效样本量门槛满足且误差随θ单调非增，即认为数据已充分，此时触发重训；否则继续累积数据。",
+ "experiment_framework": "在4个异构域、3种学习器族、2种漂移检测器上评测；基线为最佳固定重训窗口与增量更新；指标为重训后预测精度与开销；报告CALIPER达到/超过最佳固定窗口且开销可忽略，常优于增量更新。",
+ "takeaways": [
+  "漂移后盲目立刻重训或固定窗口都次优，应等数据充分信号出现再重训",
+  "纯数据、检测器/模型无关的充分性判据可直接叠加在现有漂移检测流程上",
+  "单遍局部回归使该检验在流式场景下计算/内存代价很低"
+ ],
+ "weaknesses": [
+  "单调非增趋势的判定需在θ网格上扫描，网格分辨率选择对判定时点的影响未充分消融",
+  "主要在时间序列/流式预测验证，对图像/LLM等非平稳域的迁移未证",
+  "代理误差与真实重训后精度之间的对应关系仍为启发式，缺乏严格因果保证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "漂移检测与数据充分自适应的可靠性方法，落地域扎实",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

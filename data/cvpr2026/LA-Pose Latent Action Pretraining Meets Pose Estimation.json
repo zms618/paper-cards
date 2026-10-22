@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/LA-Pose Latent Action Pretraining Meets Pose Estimation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/LA-Pose Latent Action Pretraining Meets Pose Estimation.pdf",
+ "title": "LA-Pose Latent Action Pretraining Meets Pose Estimation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "自监督动作预训练用于姿态估计，但创新有限且实验深度不足",
+ "innovations": [
+  "将潜在动作表示重新用于相机姿态估计",
+  "两阶段框架结合大规模自监督预训练与轻量监督微调",
+  "仅需少量标注数据即可达到SOTA性能"
+ ],
+ "method_framework": "基于Genie架构的两阶段框架：第一阶段通过逆-前向动力学模型从大规模驾驶视频中学习自监督潜在动作表示；第二阶段在少量3D标注数据上微调轻量姿态估计头",
+ "experiment_framework": "Waymo和PandaSet数据集，与Rig3R、VGGT和MapAnything对比，使用AUC@5、ATE-S和ATE-M指标",
+ "takeaways": [
+  "自监督预训练可有效减少对3D标注数据的依赖",
+  "冻结预训练骨干网络可提高零样本泛化能力",
+  "紧凑的潜在动作表示(50维)比高维表示更适合姿态估计任务"
+ ],
+ "weaknesses": [
+  "在反向运动等罕见场景下性能下降",
+  "未充分探索不同压缩率对性能的影响",
+  "计算效率虽优于基线但训练成本仍较高"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "姿态估计与动作预训练结合，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

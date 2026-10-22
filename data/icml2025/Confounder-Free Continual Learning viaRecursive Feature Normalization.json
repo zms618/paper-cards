@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Confounder-Free Continual Learning viaRecursive Feature Normalization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Confounder-Free Continual Learning viaRecursive Feature Normalization.pdf",
+ "title": "Confounder-Free Continual Learning via Recursive Feature Normalization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "递归归一化层消除特征混杂，提升医学影像持续学习公平性。",
+ "innovations": [
+  "提出递归元数据归一化(R-MDN)层，可插入任意深度架构(含ViT)的任意阶段",
+  "用递归最小二乘(RLS)在线维护特征对混杂因素的回归模型，适应分布漂移",
+  "在持续学习中减少由混杂因素随时间变化引起的灾难性遗忘"
+ ],
+ "method_framework": "R-MDN层在中间特征上执行统计回归：维护一个内部状态表示特征均值对混杂元数据(年龄、性别、采集协议等)的依赖关系。通过递归最小二乘算法在线更新该回归模型，逐步将特征对混杂因素的依赖归一化掉。与传统MDN不同，R-MDN逐样本操作，可在持续学习中适应不断变化的数据分布。",
+ "experiment_framework": "在医学影像数据集(脑MRI、皮肤镜图像等)上实验；在静态学习和持续学习两种设定下评估；与BR-Net、MDN、P-MDN、RegBN等基线比较；指标为总体精度和跨人口群体的公平性。",
+ "takeaways": [
+  "R-MDN在静态和持续学习中都促进跨人口群体的公平预测",
+  "RLS在线更新使R-MDN能适应混杂因素分布随时间的变化",
+  "R-MDN减少了由混杂因素漂移引起的灾难性遗忘"
+ ],
+ "weaknesses": [
+  "依赖已知混杂元数据，隐式混杂因素无法处理",
+  "实验主要在医学影像，其他领域(视频/音频)仅为未来方向",
+  "递归最小二乘的收敛性理论保证有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

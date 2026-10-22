@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/NICE Data Selection for Instruction Tuning in LLMs with Non-differentiable Evaluation Metric.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/NICE Data Selection for Instruction Tuning in LLMs with Non-differentiable Evaluation Metric.pdf",
+ "title": "NICE: Data Selection for Instruction Tuning in LLMs with Non-differentiable Evaluation Metric",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "基于策略梯度优化不可微指标的数据选择方法，计算开销大且稳定性存疑。",
+ "innovations": [
+  "提出NICE方法：基于不可微评估指标（如代码通过率、LLM-judge评分）的影响估计，弥补了NTP损失作为代理指标的偏差",
+  "利用策略梯度估计训练数据对非可微指标的影响，实现直接面向目标指标的数据选择",
+  "支持无标签场景下的数据选择：当评估指标不需要标签（如奖励模型打分）时，NICE仍可工作"
+ ],
+ "method_framework": "将数据选择视为策略问题：每个训练样本是否被选入是一个二元决策；通过策略梯度估计每个样本对目标评估指标的影响，选择影响最大的子集；与基于梯度的影响函数不同，NICE直接优化不可微的黑箱指标。",
+ "experiment_framework": "在多种指令微调任务（代码生成、对话、推理等）上验证；对比NTP损失基数据选择方法、随机选择；指标为目标任务的评估分数；验证子集效果是否超过全量训练。",
+ "takeaways": [
+  "直接面向目标指标的数据选择比NTP损失代理更有效，选择的子集常超过全量数据效果",
+  "策略梯度可用于估计不可微指标下的数据影响，拓展了影响函数的应用范围",
+  "无标签场景下的数据选择能力降低了对人工标注的依赖"
+ ],
+ "weaknesses": [
+  "策略梯度估计的方差可能较大，数据选择的稳定性待验证",
+  "计算开销：每个样本的影响估计需要多次前向/反向传播，大规模数据集下成本高",
+  "奖励模型本身的偏差会传导到数据选择过程中"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

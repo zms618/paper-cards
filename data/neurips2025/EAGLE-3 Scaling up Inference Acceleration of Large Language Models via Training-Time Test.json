@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/EAGLE-3 Scaling up Inference Acceleration of Large Language Models via Training-Time Test.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/EAGLE-3 Scaling up Inference Acceleration of Large Language Models via Training-Time Test.pdf",
+ "title": "EAGLE-3: Scaling up Inference Acceleration of Large Language Models via Training-Time Test",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "训练时测试架构实现LLM推理加速，但通用性和计算成本存疑",
+ "innovations": [
+  "训练时测试架构，移除特征预测约束",
+  "多层级特征融合替代单一顶层特征",
+  "发现LLM推理加速的新扩展定律"
+ ],
+ "method_framework": "EAGLE-3采用直接token预测而非特征预测，通过融合低、中、高层级特征，并在训练过程中模拟多步生成，使草稿模型能够充分利用扩展的训练数据。",
+ "experiment_framework": "在5个任务(MT-bench, HumanEval, GSM8K, Alpaca, CNN/Daily Mail)上评估，使用Vicuna 13B、LLaMA-Instruct 3.1 8B等模型，比较速度比和平均接受长度。",
+ "takeaways": [
+  "移除不必要的约束可增强模型表达能力",
+  "多层级特征融合比单一顶层特征提供更丰富的语义信息",
+  "训练时测试技术能有效解决误差累积问题"
+ ],
+ "weaknesses": [
+  "仅适用于特定架构的LLM，通用性有限",
+  "训练过程复杂，需要额外计算资源",
+  "未探讨模型规模对方法效果的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Rectifying Conformity Scores for Better Conditional Coverage.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Rectifying Conformity Scores for Better Conditional Coverage.pdf",
+ "title": "Rectifying Conformity Scores for Better Conditional Coverage",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "可训练变换校正共形分数，改善条件覆盖但非精确有效",
+ "innovations": [
+  "提出对共形分数做可训练的校正变换，变换依赖条件分位数估计，使目标覆盖水平下的分位数独立于协变量",
+  "给出刻画分位数估计精度对近似条件有效性影响的理论界，区别于仅给边际覆盖的经典界",
+  "在多输出问题上优于标准共形分位数回归，提升自适应置信集质量"
+ ],
+ "method_framework": "在 split conformal 框架内，构造新的共形分数：用一个可训练模型估计共形分数在测试协变量处的条件分位数，并据此对归一化非一致性分数做校正变换；该变换保证边际覆盖仍精确（可交换性下），同时让分位数随局部数据结构自适应，从而逼近条件覆盖。",
+ "experiment_framework": "在多个回归/多输出数据集上评测；对比标准 split conformal、分组条件共形、加权局部化及既有分数变换方法；指标为边际覆盖是否精确、条件覆盖误差与预测集大小；报告 RCP 更贴合局部结构且条件覆盖更优。",
+ "takeaways": [
+  "共形分数的可训练校正可在不牺牲边际覆盖的前提下改善条件覆盖",
+  "条件分位数估计精度可被显式纳入理论界",
+  "多输出/自适应置信集场景下校正变换优于标准共形分位数回归"
+ ],
+ "weaknesses": [
+  "仍属近似条件覆盖，不追求且不声称精确条件有效性（理论已知不可行）",
+  "条件分位数估计在高维下的精度与计算开销仍是瓶颈",
+  "前 9 页未见与最新分布偏移/协变量移动下共形方法的对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

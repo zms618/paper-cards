@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Snaphard Contrast Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Snaphard Contrast Learning.pdf",
+ "title": "SnaPhard Contrast Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.0,
+  "overall": 4.8
+ },
+ "one_line": "理论分析对比学习采样，优先难样本权重提升下游任务性能",
+ "innovations": [
+  "从最优性条件角度给出对比学习的理论分析，解释对比对采样为何影响性能",
+  "提出SnaPhard Contrast Learning(SPACL)：构造对比对与计算损失时不等同对待所有样本，而是优先难正/难负样本",
+  "用系统消融验证各组件与理论结论的一致性"
+ ],
+ "method_framework": "先推导对比损失在何种采样下达到最优条件，据此在minibatch内对anchor区分难正样本(易被误判为负)与难负样本(易被误判为正)，在损失中对这些难样本赋予更大权重，从而强化模型区分细微差异的能力。",
+ "experiment_framework": "跨三个下游任务(含图像/文本相关)与SOTA对比，并做难正/难负组件消融；前9页主要为引言与相关工作，具体数据集与数值尚未出现。",
+ "takeaways": [
+  "优先难正/难负样本的SPACL在三个下游任务上一致优于或媲美SOTA",
+  "理论最优性条件可指导对比对采样设计",
+  "消融表明难正与难负两组件均有效"
+ ],
+ "weaknesses": [
+  "属对比学习方法改进，与可靠性、医学影像、多模态推理主线无关",
+  "难样本挖掘在对比学习中已有较多先例，创新增量性较强",
+  "前9页未见具体数据集、基线与量化指标，'outperforms SOTA'缺乏数字支撑；理论最优性条件到实现的对应关系较简略"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "对比学习改进，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

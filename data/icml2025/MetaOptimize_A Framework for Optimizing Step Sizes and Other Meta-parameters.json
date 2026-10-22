@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MetaOptimize_A Framework for Optimizing Step Sizes and Other Meta-parameters.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MetaOptimize_A Framework for Optimizing Step Sizes and Other Meta-parameters.pdf",
+ "title": "MetaOptimize: A Framework for Optimizing Step Sizes and Other Meta-parameters",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "元参数优化框架，动态调整步长以最小化折扣遗憾。",
+ "innovations": [
+  "提出通用的元参数优化框架，可包裹任意一阶优化算法，在线调整步长等元参数",
+  "以折扣未来损失的和定义遗憾目标，显式考虑步长对未来损失的长期影响",
+  "提出低复杂度变体，在保持性能的同时降低计算开销，支持逐层块级步长调整"
+ ],
+ "method_framework": "将元参数（如步长）优化建模为最小化折扣未来损失和的遗憾问题。元参数根据当前梯度信息动态更新，而非预先设定固定调度。框架可包裹任意一阶优化器，支持全局和块级（逐层/逐神经元）的步长调整。低复杂度变体通过近似计算降低额外开销。",
+ "experiment_framework": "在多种机器学习任务上评测，与手工设计的学习率调度（warmup+decay等）和标准自适应方法（Adam等）对比。指标为训练损失和最终任务性能。验证不同优化算法上的通用性。",
+ "takeaways": [
+  "动态步长调整可达到甚至超过手工调度的性能，无需预先调参",
+  "考虑长期影响的折扣遗憾目标是步长自适应的有效优化准则",
+  "框架的通用性使其可直接嵌入现有训练流程"
+ ],
+ "weaknesses": [
+  "引入额外的元参数（折扣因子等），增加了调参复杂度",
+  "仅在一阶方法上验证，高阶优化器的兼容性未涉及",
+  "与最新的学习率自动搜索方法（如Lion等）对比不够充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

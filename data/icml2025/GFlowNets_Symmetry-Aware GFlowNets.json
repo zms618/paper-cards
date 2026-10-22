@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/GFlowNets_Symmetry-Aware GFlowNets.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/GFlowNets_Symmetry-Aware GFlowNets.pdf",
+ "title": "Symmetry-Aware GFlowNets",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "对称性缩放修正GFlowNets奖励函数，解决分子生成等价动作问题",
+ "innovations": [
+  "提出对称性感知的GFlowNets(SA-GFN)方法",
+  "通过奖励缩放而非显式状态转移计算解决等价动作问题",
+  "为节点级和片段级生成方案提供理论修正公式"
+ ],
+ "method_framework": "通过计算图的自动同构群大小|Aut(G)|，在奖励函数中引入对称性修正，使GFlowNets能够准确建模和采样目标分布，无需在每个转移步骤进行计算密集的图同构测试。",
+ "experiment_framework": "在分子生成任务上验证，使用ZINC250k等数据集，对比基线方法，评估采样分布与目标分布的匹配度、样本多样性及高奖励样本生成能力。",
+ "takeaways": [
+  "对称性修正是解决GFlowNets中系统偏差的关键",
+  "奖励缩放方法计算效率高，仅需在轨迹结束时计算一次|Aut(G)|",
+  "方法适用于多种GFlowNet目标函数，包括轨迹平衡和详细平衡"
+ ],
+ "weaknesses": [
+  "依赖GNN的置换等变性假设，可能存在表达能力限制",
+  "自动同构群计算在大型图上可能仍有计算负担",
+  "主要在分子生成任务验证，泛化到其他图生成任务需进一步验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

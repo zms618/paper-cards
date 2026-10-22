@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Large Self-Supervised Models Bridge the Gap in Domain Adaptive Object.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Large Self-Supervised Models Bridge the Gap in Domain Adaptive Object.pdf",
+ "title": "Large Self-Supervised Models Bridge the Gap in Domain Adaptive Object",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "冻结DINO生成伪标签，特征对齐缓解域适应梯度不匹配",
+ "innovations": [
+  "使用冻结的DINOv2作为独立标签生成器，替代传统Mean Teacher",
+  "利用DINO特征空间作为域对齐的代理目标，解耦特征对齐与伪标签质量",
+  "在目标域使用伪标签前先进行特征对齐，减少不同域监督训练的梯度不匹配问题"
+ ],
+ "method_framework": "DINO Teacher包含两个组件：1)在冻结的DINOv2上训练检测头生成更准确的伪标签；2)将学生模型的patch特征与DINO特征对齐，使源域和目标域表示更接近。",
+ "experiment_framework": "数据集：Cityscapes→Foggy Cityscapes/BDD100k/ACDC；基线：Mean Teacher、Adaptive Teacher等；指标：mAP@50",
+ "takeaways": [
+  "大模型预训练特征在域自适应任务中具有更好的泛化能力",
+  "解耦标签生成与模型训练可以提高伪标签质量",
+  "早期特征对齐可以减少不同域监督训练的梯度不匹配"
+ ],
+ "weaknesses": [
+  "使用两个不同大小的DINO模型(ViT-G用于标签生成，ViT-B用于特征对齐)增加了复杂性",
+  "未充分探讨不同域差距大小下方法的鲁棒性",
+  "计算开销较大，特别是使用大尺寸DINO模型时"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "域适应方法解决OOD泛化问题，符合可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

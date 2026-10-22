@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Three Cars Approaching within 100m Enhancing Distant Geometry by Tri-Axis.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Three Cars Approaching within 100m Enhancing Distant Geometry by Tri-Axis.pdf",
+ "title": "Three Cars Approaching within 100m Enhancing Distant Geometry by Tri-Axis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "三轴扫描模块提升远距离几何重建，但依赖深度估计且计算复杂",
+ "innovations": [
+  "三轴扫描模块利用轴向掩码自注意力增强远距离体素特征",
+  "扫描损失函数通过累积平均logits传播上下文信息到远距离体素",
+  "系统分析了相机SSC中的距离依赖完成不平衡问题"
+ ],
+ "method_framework": "ScanSSC结合视图变换、三轴扫描模块和语义预测，通过深度、宽度和高度三个轴向的掩码自注意力机制，利用近距离场景上下文增强远距离几何重建",
+ "experiment_framework": "SemanticKITTI和SSCBench-KITTI-360基准测试，与VoxFormer、CGFormer等方法比较IoU和mIoU指标，并分析各轴向性能分布",
+ "takeaways": [
+  "轴向掩码自注意力可有效解决远距离场景几何重建问题",
+  "累积平均logits的损失设计能将上下文信息传播到远距离区域"
+ ],
+ "weaknesses": [
+  "方法依赖精确的深度估计，远距离区域仍存在性能下降",
+  "三轴扫描模块计算复杂度较高，可能影响实时性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "远距离几何重建与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

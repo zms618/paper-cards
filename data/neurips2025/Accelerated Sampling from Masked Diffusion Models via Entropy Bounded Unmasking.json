@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Accelerated Sampling from Masked Diffusion Models via Entropy Bounded Unmasking.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Accelerated Sampling from Masked Diffusion Models via Entropy Bounded Unmasking.pdf",
+ "title": "Accelerated Sampling from Masked Diffusion Models via Entropy Bounded Unmasking",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "熵界定采样器加速掩码扩散模型，但任务依赖性强且小任务优势有限",
+ "innovations": [
+  "熵界定(EB)采样器动态决定每步解掩token数量",
+  "理论分析模型误差与联合依赖误差",
+  "无需重新训练即可集成到现有掩码扩散模型"
+ ],
+ "method_framework": "EB-Sampler通过误差代理排序候选token，并使用熵阈值约束联合依赖误差，自适应决定每步解掩的token数量",
+ "experiment_framework": "在HumanEval、MBPP、GSM8K、MATH等代码与数学推理基准，以及迷宫导航和数独任务上评估，与Top-k采样器对比",
+ "takeaways": [
+  "误差代理(熵/置信度/边界)可用于指导解掩顺序",
+  "联合依赖误差是限制多token解掩性能的关键因素",
+  "generate_until逻辑可优化MDM效率评估"
+ ],
+ "weaknesses": [
+  "效率提升依赖于任务特定的generate_until逻辑实现",
+  "小规模任务(如迷宫导航)上EB-Sampler优势不明显",
+  "未探索不同模型规模下的性能表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

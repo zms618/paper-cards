@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Search Arena Analyzing Search-Augmented LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Search Arena Analyzing Search-Augmented LLMS.pdf",
+ "title": "Search Arena: Analyzing Search-Augmented LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "构建搜索增强LLM偏好数据集，揭示引用数量与实际可信度的落差。",
+ "innovations": [
+  "现有数据集局限于静态单轮事实核查，构建跨意图/语言、含完整系统trace的多轮搜索增强LLM偏好数据集。",
+  "发现用户偏好受引用数量影响、即使所引内容并不支撑论断——揭示感知可信度与实际可信度的落差。",
+  "跨arena分析：通用聊天中开搜索不损害甚至提升性能；但纯靠参数知识在搜索密集场景性能显著下降。"
+ ],
+ "method_framework": "众包采集用户与搜索增强LLM的多轮配对交互并收集人类偏好投票；据此分析用户偏好与引用数/来源类型/设置的关系，交叉测试搜索增强模型在通用环境与纯LLM在搜索密集环境的表现。",
+ "experiment_framework": "Search Arena含24000+配对多轮交互、约12000偏好投票、完整系统trace；对比SimpleQA/BrowseComp等静态事实核查集；做跨arena分析（搜索增强LLM vs 传统LLM互换环境）；开源数据集。",
+ "takeaways": [
+  "用户会被引用数量误导（引用不支撑论断仍偏好），感知可信度≠实际可信度。",
+  "搜索能力在非搜索场景不损害性能，但纯参数知识在搜索密集场景显著不足。"
+ ],
+ "weaknesses": [
+  "以数据集+实证分析为主，未提出新模型/方法。",
+  "众包偏好的主观一致性与标注质量需更多信度分析。",
+  "多轮交互的因果性结论（引用数→偏好）受混淆变量影响，前9页未充分控制。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "数据集构建揭示可信度认知偏差，与可靠性主线部分交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

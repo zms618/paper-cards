@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/DiffFNO_Diffusion Fourier Neural Operator.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/DiffFNO_Diffusion Fourier Neural Operator.pdf",
+ "title": "DiffFNO Diffusion Fourier Neural Operator",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "加权FNO与扩散模型结合实现超分辨率，但创新与证据不足",
+ "innovations": [
+  "加权傅里叶神经算子(WFNO)通过模式再平衡增强高频细节重建",
+  "门控融合机制(GFM)自适应结合频域和空域特征",
+  "自适应时间步长(ATS)ODE加速扩散过程推理"
+ ],
+ "method_framework": "DiffFNO采用CNN编码器提取特征，WFNO和AttnNO通过GFM融合特征，最后使用ATS ODE求解器完成反向扩散过程，实现任意尺度超分辨率。",
+ "experiment_framework": "DIV2K训练，Set5/Set14/BSD100/Urban100测试，×2-×12尺度评估，PSNR/SSIM指标，与Meta-SR/LIIF/LTE/SRNO等SOTA方法比较。",
+ "takeaways": [
+  "模式再平衡机制有效解决传统FNO高频信息丢失问题",
+  "门控融合机制平衡全局和局部特征提取",
+  "自适应时间步长策略在保证质量的同时加速推理"
+ ],
+ "weaknesses": [
+  "未充分讨论模型在医学影像等特定领域的应用潜力",
+  "未提供模型在不同噪声水平下的鲁棒性分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "超分辨率任务与可靠性主线无直接交点，仅方法设计有参考价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

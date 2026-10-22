@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Plug, Play, and Fortify A Low-Cost Module for Robust Multimodal Understanding Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Plug, Play, and Fortify A Low-Cost Module for Robust Multimodal Understanding Models.pdf",
+ "title": "Plug, Play, and Fortify: A Low-Cost Module for Robust Multimodal Image Understanding Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 6.5
+ },
+ "one_line": "频域模态偏好度量与即插即用模块缓解多模态缺模态脆弱性",
+ "innovations": [
+  "揭示多模态模型缺模态脆弱性源于隐式模态偏好导致的不平衡学习，并提出在频域辨识/量化模态主导关系",
+  "Frequency Ratio Metric(FRM)：用特征频域占比度量模态偏好，发现高FRM模态主导训练",
+  "MWAM：按与FRM反比的权重在mini-batch内动态再分配各分支贡献，可叠加到CNN/ViT等骨干并增强现有缺模态方法"
+ ],
+ "method_framework": "分析表明模型决策主要依赖低频信息，不同模态的纹理/结构差异在频谱上留下特征；计算各模态特征的频域比值 FRM 量化其偏好；MWAM 据此以反比权重在梯度/损失空间再平衡各模态分支，使被忽视模态得到更充分优化，从而在推理缺模态时更鲁棒。",
+ "experiment_framework": "在 CASIA-SURF 等多模态(RGB/Depth/IR)数据集与分割/检测/分类等任务、CNN与ViT骨干上，对比缺模态(性能崩溃率PCR)下的表现，并与RFNet等现有缺模态方法及梯度平衡方法对比。",
+ "takeaways": [
+  "缺失 Depth 模态造成最严重崩溃(甚至低于单模态)，缺失 RGB 影响最小，说明存在强模态偏好",
+  "FRM 与模态主导性强相关，频域是辨识模态偏好的更稳健依据",
+  "MWAM 即插即用地在多种任务与模态组合上一致提升鲁棒性"
+ ],
+ "weaknesses": [
+  "FRM 的频域划分阈值与物理可解释性前9页未给出严格定义",
+  "落地域为RGB/深度/红外图像理解，未涉及医学影像等具体高风险域",
+  "前9页未见在真实传感器故障的长时序场景下的鲁棒性验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "即插即用模块解决多模态缺模态脆弱性，明确触及可靠性主线与落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

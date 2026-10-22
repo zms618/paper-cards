@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/SBGD_Improving Graph Diffusion Generative Model via Stochastic Block Diffusion.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SBGD_Improving Graph Diffusion Generative Model via Stochastic Block Diffusion.pdf",
+ "title": "SBGD: Improving Graph Diffusion Generative Model via Stochastic Block Diffusion",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "SBGD将图扩散投影到块空间降内存，但与主线无关且技术细节不足。",
+ "innovations": [
+  "将图扩散生成(refine)到随机块图空间，引入社区/块结构先验，把全图存储的内存复杂度显著降低(最高约6倍)。",
+  "块表征捕捉图的基本结构，使模型能外推生成训练时未见尺寸的图，改善size generalization。",
+  "示范了生成模型模块化原则：把复杂生成任务分解为更可管理的块级组件。"
+ ],
+ "method_framework": "先把输入图按随机块模型(SBM)聚成块、得到块图(block graph)，再在块图空间而非全图上做扩散/去噪，注入真实图的块结构先验；生成后再还原到节点级图，从而在训练与推理时无需把整图存入显存。",
+ "experiment_framework": "对比多个SOTA去噪分数图生成模型，在真实图与合成图数据集上评测；测图生成质量指标与显存占用，并做尺寸外推(生成训练未见过大小的图)实验；硬件为单卡V100 32GB，技术细节放附录。",
+ "takeaways": [
+  "SBGD在几乎所有生成指标上保持可比或更优，同时显存最高节省约6倍，是测试平台上唯一能成功处理大图的方法。",
+  "块空间扩散带来更好的尺寸泛化，可外推到训练未见的图规模。"
+ ],
+ "weaknesses": [
+  "与主线(可信AI/医学影像/多模态大模型推理)基本无关，属图生成方法学。",
+  "块划分依赖聚类/块数选择，对社区结构不明显的图(如分子)块先验是否成立缺乏讨论。",
+  "关键技术细节与完整数值表多在附录，正文9页内未给出逐数据集对比明细。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

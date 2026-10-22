@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Canonical Rank Adaptation An Efficient Fine-Tuning Strategy for Vision Transformers.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Canonical Rank Adaptation An Efficient Fine-Tuning Strategy for Vision Transformers.pdf",
+ "title": "Canonical Rank Adaptation: An Efficient Fine-Tuning Strategy for Vision Transformers",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.75
+ },
+ "one_line": "张量分解ViT微调，参数效率提升但任务局限",
+ "innovations": [
+  "将ViT分解为MHA和FFN两个独立张量",
+  "使用CPD格式进行低秩更新",
+  "在保持参数效率的同时提升模型表达能力"
+ ],
+ "method_framework": "将ViT的MHA和FFN层分别张量化，使用CPD分解进行低秩更新，减少可训练参数同时保留高维特征关系。",
+ "experiment_framework": "VTAB-1k(19个数据集)和FGVC(5个数据集)分类任务，与LoRA、FacT等PEFT方法比较Top-1准确率和参数量。",
+ "takeaways": [
+  "张量分解方法在参数效率与性能间取得平衡",
+  "针对MHA的高维特性设计专门的张量表示"
+ ],
+ "weaknesses": [
+  "仅关注分类任务，未验证在其他视觉任务上的表现",
+  "未充分探讨方法在不同规模ViT上的扩展性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

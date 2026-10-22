@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/A Unified Interpretation of Training-Time Out-of-Distribution Detection.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Unified Interpretation of Training-Time Out-of-Distribution Detection.pdf",
+ "title": "A Unified Interpretation of Training-Time Out-of-Distribution Detection",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 7.5,
+  "overall": 6.0
+ },
+ "one_line": "用交互理论统一解释OOD方法，但实验证据不足且缺乏统计显著性",
+ "innovations": [
+  "以 Harsanyi 分红把 DNN 输出分解为输入变量子集的 AND 型交互效应 I(S|x)，据此量化各阶相对交互强度 R(m)，统一解释 LogitNorm/T2FNorm/CSI/DAL 为何都提升 OOD 检测",
+  "由定理 2 推出随机掩盖子集间输出差 ∆v(m1,m2) 只等于 [0,m2n] 阶交互的加权和（权重随阶数分段常值），据此设计 L_inter 惩罚特定阶交互，以 L = Lce − λ·L_inter 精确控制模型编码的交互阶数",
+  "用交互分布与 ID 的相似度解释 near-OOD 比 far-OOD 更难：near-OOD 的交互分布更接近 ID，且训练期 OOD 方法恰能压低这一相似度"
+ ],
+ "method_framework": "以 v(x)=真类对数几率定义输出，用 Harsanyi 分红 I(S|x) 度量输入变量子集 S 的交互效应；对比增强模型与交叉熵基线的各阶相对交互强度差 ΔR(m)；再用惩罚特定阶的 L_inter 造出高/低阶模型做 OOD 对比。",
+ "experiment_framework": "CIFAR-10/100 作 ID，SVHN、Textures、Tiny-ImageNet 作 OOD；ResNet-18/34 与 WideResNet-40-2；指标 AUROC、FPR95，并统计各阶相对交互强度 R(m)。",
+ "takeaways": [
+  "把训练期 OOD 方法的有效性归因到「高阶交互更强」这一统一量，可作为诊断任意新 OOD 损失的解释工具",
+  "L_inter 的构造（用输出差把等阶交互按常数权重聚合后喂 softmax 做交叉熵）可推广到其他可解释性度量中过滤无关阶数"
+ ],
+ "weaknesses": [
+  "正文止于结果表标题处，高阶/低阶模型的 AUROC 与 FPR95 具体数值不可见，「高阶交互起主导作用」的因果结论只有 Fig.4 的 R(m) 曲线支撑",
+  "交互需对掩盖子集做前向，n 只能取很小的降采样值（正文称细节见补充材料），高阶交互统计仅在降采样输入上成立，未给出取值敏感性",
+  "Fig.2/3 的 ΔR(m) 幅度多在 0.01–0.05 量级且正负交叠（如 ResNet-18 上 Textures 与 Tiny-ImageNet 符号相反），却据此立论，缺统计显著性检验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "OOD检测与可靠性主线明确交点，交互理论框架具可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

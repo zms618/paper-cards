@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Scaling Collapse Reveals Universal Dynamics in Compute-Optimally Trained Neural Networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Scaling Collapse Reveals Universal Dynamics in Compute-Optimally Trained Neural Networks.pdf",
+ "title": "Scaling Collapse Reveals Universal Dynamics in Compute-Optimally Trained Neural Networks",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6.1
+ },
+ "one_line": "计算最优训练下模型损失曲线的普适坍缩现象，但外推性与实用性有限。",
+ "innovations": [
+  "发现并命名'缩放坍缩/超级坍缩(supercollapse)'现象：计算最优模型的整条损失曲线经归一化后坍缩为单一普适曲线，跨模型差异低于单条曲线的种子噪声底",
+  "将坍缩与神经缩放律的幂律结构联系起来，并提出一个简单的SGD噪声动力学模型，定量预测不同学习率调度下的损失曲线并解释supercollapse成因",
+  "提供实用的缩放诊断：偏离坍缩可指示学习率/数据缩放配置是否次优"
+ ],
+ "method_framework": "对一系列'缩放梯(scaling ladder)'模型，在按计算最优分配同时放大宽度/深度与训练时长后，将训练算力与损失各自归一化到训练结束时为1，观察归一化损失曲线是否重合；再用幂律缩放律性质推导坍缩发生条件，并用一个SGD噪声动力学的极简模型解释学习率衰减抑制方差、放大坍缩的机制。",
+ "experiment_framework": "任务为Transformer next-token prediction：CIFAR-5M（约6M生成图像）与Lichess国际象棋对局；宽度缩放为主、附录验证深度缩放；跨学习率调度、数据集、架构；以不同随机种子下损失曲线的噪声底作为紧度判据。",
+ "takeaways": [
+  "计算最优联合缩放极限存在明确定义，整条损失曲线具有远超'最终损失幂律'的精度普适形状",
+  "学习率衰减使坍缩紧到跨尺度差异低于种子噪声底（supercollapse），并在超参次优缩放时被打破",
+  "supercollapse可作为判断缩放配置是否良好的精确实用指示器"
+ ],
+ "weaknesses": [
+  "证据集中于宽度缩放与next-token预测类任务，对更大规模、更复杂架构（如MoE、大规模语言建模真实语料）的外推仍待验证",
+  "SGD噪声模型虽有效但较为简化，对非幂律形状的普适曲线缺乏解析闭式刻画",
+  "与可靠性/可信AI主线无关，对实际训练鲁棒性或落地域的直接指导有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Label Smoothing Improves Machine Unlearn.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Label Smoothing Improves Machine Unlearn.pdf",
+ "title": "Label Smoothing Improves Machine Unlearn",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.4
+ },
+ "one_line": "标签平滑结合梯度上升提升机器遗忘，但理论假设较强",
+ "innovations": [
+  "提出UGradSL方法，将标签平滑与梯度上升结合用于机器遗忘",
+  "理论分析负标签平滑如何提升遗忘性能",
+  "自适应性标签平滑参数选择机制",
+  "建立标签平滑与局部差分隐私的理论联系"
+ ],
+ "method_framework": "UGradSL通过在遗忘数据上应用负标签平滑，结合梯度上升和梯度下降的混合梯度方法，实现高效且有效的机器遗忘，同时保持模型在剩余数据和测试数据上的性能。",
+ "experiment_framework": "在CIFAR-10/100、ImageNet、Tiny-ImageNet等多个数据集上评估，对比Retrain、FT、GA等基线方法，使用UA、MIAScore、RA、TA和RTE等指标。",
+ "takeaways": [
+  "标签平滑可作为即插即用模块提升梯度基遗忘方法性能",
+  "混合梯度设计在遗忘与保留知识间取得良好平衡",
+  "自适应性参数选择可根据数据特征动态调整遗忘强度"
+ ],
+ "weaknesses": [
+  "理论分析中假设条件较强，实际应用中可能不完全成立",
+  "计算复杂度虽低于完全重训练，但仍比标准梯度上升方法高",
+  "在大型数据集上的扩展性未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "机器遗忘属于可靠性主线，且方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Fixing the Double Penalty in Data-Driven Weather Forecasting Through a Modified Spherical Harmonic Loss.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Fixing the Double Penalty in Data-Driven Weather Forecasting Through a Modified Spherical Harmonic Loss.pdf",
+ "title": "Fixing the Double Penalty in Data-Driven Weather Forecasting Through a Modified Spherical Harmonic Loss Function",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "球谐损失修正缓解MSE双重惩罚，提升预报分辨率但跨架构验证不足",
+ "innovations": [
+  "将球谐域损失拆分为去相关(decorrelation)部分与谱振幅误差部分,避免MSE把相位/幅度错误双重计罚的double penalty",
+  "提出无参数、即插即用的损失修正,可直接用于微调现有确定性天气预报模型",
+  "在不改变架构的前提下显著恢复有效分辨率与小尺度结构"
+ ],
+ "method_framework": "GraphCast等确定性AI预报模型用MSE训练,因double penalty平滑掉小尺度、低估局地极端事件。作者在球谐(spectral)域改造损失:把由场去相关(相位偏移)带来的惩罚与由谱振幅误差带来的惩罚分离,前者不应对振幅估计过度惩罚,从而缓解过度平滑。将其作为微调损失应用于已训练的GraphCast。",
+ "experiment_framework": "在ERA5再分析数据上微调GraphCast(13层、1/4度网格);对照为原始MSE训练的GraphCast;指标含有效分辨率(由1250km提升到160km)、集合离散度、热带气旋强度与地表风极值预测。",
+ "takeaways": [
+  "新损失使确定性预报更尖锐,有效分辨率从约1250km提升到160km",
+  "改善了集合离散度(ensemble spread)以及热带气旋强度、地表风极端的预测",
+  "损失修正是无参数即插即用的,无需改动GraphCast架构"
+ ],
+ "weaknesses": [
+  "仅微调而非从头训练,改进局限于单模型(GraphCast),跨架构通用性未充分验证",
+  "主线为气候/气象预报,与可靠性×医学影像、多模态大模型推理主线无关",
+  "对double penalty的修复停留在损失层面,缺乏与生成式/集合预报路线的系统性对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

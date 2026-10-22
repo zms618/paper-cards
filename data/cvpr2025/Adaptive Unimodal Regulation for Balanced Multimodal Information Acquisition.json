@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Adaptive Unimodal Regulation for Balanced Multimodal Information Acquisition.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Adaptive Unimodal Regulation for Balanced Multimodal Information Acquisition.pdf",
+ "title": "Adaptive Unimodal Regulation for Balanced Multimodal Information Acquisition",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 7.0,
+  "overall": 5.9
+ },
+ "one_line": "用Fisher矩阵迹诊断多模态信息失衡，在黄金窗口压制强模态学习速率",
+ "innovations": [
+  "用 Fisher 矩阵迹 Tr(F_m)=E||g_{φ_m}||² 作为各模态'信息获取量'的度量，在 CREMA-D 上证实多模态训练早期存在信息获取峰值（prime learning window），强模态（音频）在该窗口压制弱模态（视频），且延长时间无法补偿（Tab.1：50 epoch 35.14 → 100 epoch 仅 35.36）。",
+  "在 prime learning window 内对强模态施加正则项 P^t_{m,b}=α/2||w^t_m-w^{t-1}_m||²≈αη²/2·Σ_k||g^k||²（利用跨 batch 梯度近似正交的假设，Fig.4 余弦相似度佐证）来直接压制其 Tr(F)，给弱模态留出获取信息的余量。",
+  "α=exp(β·tanh(Δ_m)) 由模态间性能差 Δ_m 自适应驱动、只调控强于自己的模态；用 (Tr^{t-1}-Tr^{t-2})/Tr^{t-1}>K 判定窗口结束。"
+ ],
+ "method_framework": "每 batch 算各模态性能分 s_m 与性能差 Δ_m、算 Tr(F) 相对变化率判 prime window；若两者同时满足，则对强模态加 α/2||Δw||² 正则（与 Tr(F) 成正比）压制其信息获取，弱模态不被干预。",
+ "experiment_framework": "CREMA-D、Kinetics Sounds（ResNet-18）、CMU-MOSI（Transformer）；对比 Joint training、OGM、Greedy、PMR、AGM、G-Blending、MMPareto（含/不含 unimodal loss 两表）；指标 Accuracy、audio/video 单模精度、Macro F1、Tr(F) 曲线、t-SNE。",
+ "takeaways": [
+  "Tr(FIM) 是可直接复用在线、可解释的'信息获取量'诊断指标，能在任意多模态/多分支结构里量化哪一路在被饿死。",
+  "Table 4 的'只在黄金窗口干预 vs 全程 vs 非窗口'对比（PLW 71.90 / WTP 69.03 / Other 67.22）是很好的窗口定位式消融，可借鉴到任何 early-training 干预类方法。",
+  "把'抑制强者的过早收敛'而非'增强弱者'作为杠杆，比常见的梯度平衡（OGM 类）更直接，且实现只有一个正则项。"
+ ],
+ "weaknesses": [
+  "所有表均为单 run 精度（71.90 / 75.71 / 62.31 等），无标准差、无多种子、无显著性检验；Tr(F) 曲线与 Fig.4 的余弦相似度也只画一轮。",
+  "跨 batch 梯度近似正交的假设只在 Fig.4 用平均余弦相似度（正 0.04 / 负 -0.04） anecdotal 佐证，无形式化边界；在 batch 变大或梯度强指向性的 setting 下该近似是否成立未测，β、K 的敏感性表也在截断的尾部。",
+  "Tab.3 里加 unimodal loss 后 MMPareto 的视频精度已达 58.92，与 InfoReg* 的 61.22 差距很小，InfoReg 的优势很可能主要来自与 unimodal loss 的组合，而非调节项本身；正文未拆开'InfoReg* 中 InfoReg 单独贡献多少'。",
+  "把 Tr(F) 的变化率阈值 K 当作窗口开关，但窗口边界是硬跳变（>K 瞬间开关），会带来梯度正则的不连续，文中未讨论。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "多模态信息平衡属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

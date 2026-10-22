@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Emotional Face-to-Speech.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Emotional Face-to-Speech.pdf",
+ "title": "Emotional Face-to-Speech",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6.1
+ },
+ "one_line": "新任务eF2S结合RVQ码本与扩散模型，从人脸解耦身份情绪生成语音。",
+ "innovations": [
+  "提出eF2S新任务：从表情人脸同时解耦出说话人身份cid与情绪cemo（均来自人脸），在无任何语音提示下生成既保身份又带表情韵律的语音，区别于传统只取身份的F2S。",
+  "首个RVQ-based离散扩散(DiT)语音生成框架：MM-DiT用AdaLN注入身份/情绪全局条件、cross-attention对齐文本，12个线性头预测各RVQ层concrete score。",
+  "提出coarse-to-fine课程学习（按RVQ层低频到高频每3轮逐步引入高层token）与增强无分类器引导EPFG（从EBM视角联合全局条件与各局部条件解耦）。"
+ ],
+ "method_framework": "先用RVQ码本把语音压成12层离散token；前向扩散把token替换为[MASK]，反向用concrete score网络去噪。人脸条件器用ArcFace+FaceNet拼身份、Poster2出情绪标签嵌入，经cosine+L1+L2对齐GE2E语音身份嵌入；文本用SpeechT5+IPA音素。EPFG把联合条件得分与各条件得分相乘以解耦多条件；课程学习先低层token后高层。",
+ "experiment_framework": "数据RAVDESS/MEAD/MELD-FAIR+LRS3子集(31.33小时/26767句/953人/7情绪)；基线分声学引导(EmoSpeech/FastSpeech2/V2C-Net/HPM/StyleDubber)与视觉引导(Face-TTS)；指标EmoSim/SpkSim/RMSE(F0)/MCD/WER+50人MOS(nat/id/emo)；消融去各条件/课程/对齐/EPFG及采样步数RTF。",
+ "takeaways": [
+  "视觉引导DEmoFace的EmoSim 0.6965/SpkSim 0.6679，比Face-TTS分别提升17.35%/47.11%，MCD降18.96%，且仅用Face-TTS约1/10数据。",
+  "MOSnat 3.17/MOSid 3.20/MOSemo 3.26全面优于EmoSpeech(2.30/2.93/2.78)与Face-TTS(2.28/2.67/2.75)；视觉引导版甚至超过多数声学引导方法。",
+  "消融显示去cid SpkSim掉26%、去cemo伤EmoSim/RMSE、去身份对齐SpkSim掉9%、去EPFG WER升至40%；RTF=0.49(batch1)近实时。"
+ ],
+ "weaknesses": [
+  "作者自承受数据集visual-voice偏差限制，倾向生成'平均化'语音、无法精确还原真实嗓音，且数据规模小(31小时)影响发音准确性。",
+  "评测EmoSim/SpkSim依赖外部预训练embedding余弦相似度，WER仍约20%（高于GT的10.82%），可懂度未解决；50人主观实验规模有限。",
+  "属多模态语音合成/生成方向，与可靠性主线（鲁棒/泛化/可信AI/不确定性量化在医学影像或多模态大模型推理）无直接关系。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

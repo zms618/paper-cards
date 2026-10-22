@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Sketchevo_Leveraging Drawing Dynamics for Enhanced Synthesis.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sketchevo_Leveraging Drawing Dynamics for Enhanced Synthesis.pdf",
+ "title": "SketchEvo: Leveraging Drawing Dynamics for Enhanced Image Synthesis",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 3.0,
+  "overall": 4.4
+ },
+ "one_line": "静态草图转动态序列，提升生成审美但缺乏定量证据",
+ "innovations": [
+  "把草图的动态演化序列(从初笔到完成)作为偏好信息源，而非仅用最终草图这一静态约束",
+  "利用不同完成阶段的草图构造有意义发散的样本，解决文本+草图双约束下噪声扰动无法产生足够差异样本、偏好对齐信号弱的问题",
+  "提出序列引导的rollback机制，在推理时把学到的偏好用于平衡文本语义与结构引导"
+ ],
+ "method_framework": "训练时用不同完成度的草图生成偏好不同但结构受控的样本对，做审美偏好对齐(类DPO)；推理时在扩散采样中按草图序列做引导回滚，在忠实草图与审美之间权衡，使其能泛化到不完整/抽象草图。",
+ "experiment_framework": "在Sketchy等草图-文本生成数据集上，与ControlNet类及DPO/D3PO等偏好对齐基线对比审美质量与草图保真度；前9页未见完整数值表。",
+ "takeaways": [
+  "利用绘图过程动态可让生成在保持草图保真的同时提升审美质量",
+  "不同完成阶段草图可作为有效发散样本，克服双约束下偏好对齐信号不足",
+  "方法可泛化到绘图中途的不完整/抽象草图"
+ ],
+ "weaknesses": [
+  "属草图引导图像生成，与可靠性、医学影像、多模态推理主线无关",
+  "依赖草图序列数据(不同完成度)，数据采集/构造成本与可用性是额外前提",
+  "'improved aesthetic quality'主观且前9页缺定量指标与人评规模说明；与最新可控生成基线的对比强度不明"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 3,
+ "relevance_reason": "草图引导图像生成与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

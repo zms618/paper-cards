@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Pedagogically-Inspired Data Synthesis for Language Model Knowledge Distillation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Pedagogically-Inspired Data Synthesis for Language Model Knowledge Distillation.pdf",
+ "title": "Pedagogically-Inspired Data Synthesis for Language Model Knowledge Distillation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "教学启发的三段式蒸馏框架，参数效率高但成本与消融不足。",
+ "innovations": [
+  "将教育学原则引入蒸馏：提出知识识别(Identifier)-组织(Organizer)-适配(Adapter)三段流水线。",
+  "融合Bloom掌握学习与Vygotsky最近发展区：学生先在前置知识达标再进阶，新知识以可控渐增难度引入。",
+  "系统识别学生知识缺陷、按渐进课程组织知识传递并适配到学生认知容量，在复杂推理上提升显著(MATH+19.2%、HumanEval+22.3%)。"
+ ],
+ "method_framework": "Identifier阶段诊断学生相对教师的知识薄弱点；Organizer按掌握学习与ZPD构造渐进课程难度的合成数据；Adapter将知识表征适配到学生容量；三阶段迭代形成动态蒸馏过程，学生在前序前置知识达标后再进入更难内容。",
+ "experiment_framework": "学生模型用LLaMA-3.1/3.2与Qwen2.5；评测DollyEval、MATH、HumanEval等；对比基线蒸馏方法与SoTA；学生用不到1/10参数保留94.7%教师性能，MATH/HumanEval分别提升19.2%/22.3%。",
+ "takeaways": [
+  "教学式渐进课程比一次性合成数据蒸馏更有效，尤其复杂推理任务。",
+  "先掌握前置知识再进阶的课程设计显著提升小模型推理能力。",
+  "<1/10参数即可保留94.7%教师性能。"
+ ],
+ "weaknesses": [
+  "三段流水线引入额外的教师调用/诊断开销，蒸馏总成本未充分量化。",
+  "知识缺陷识别依赖教师作为参照，教师本身误差会被同步迁移。",
+  "教育学概念到算法的映射较为启发式，各阶段增益的独立消融在摘要层面不够细。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.55,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "教育学启发蒸馏与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DS-VLM_Diffusion Supervision Vision Language Model.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DS-VLM_Diffusion Supervision Vision Language Model.pdf",
+ "title": "DS-VLM: Diffusion Supervision Vision Language Model",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "扩散监督VLM，训练时重建图像，推理零开销，但可靠性提升有限。",
+ "innovations": [
+  "提出即插即用的DS-VLM训练框架：在训练时引入扩散模型对视觉编码器与connector输出做像素级重建监督",
+  "建立pixel space到视觉特征的短路径梯度通道，缓解纯文本监督梯度传播中信息损失与语义稀疏问题",
+  "同时保留文本对齐的高层语义，扩散重建仅作训练辅助，推理时不增加任何组件/参数"
+ ],
+ "method_framework": "在标准VLM（视觉编码器+connector+LLM）训练时，额外接一个条件扩散模型，以视觉encoder与connector的输出为条件重建原图；扩散损失与语言建模损失联合反传；推理时丢弃扩散分支。",
+ "experiment_framework": "在多种视觉编码器与不同规模LLM上验证，对比BLIP-2/Cumo/MG-LLaVA等，报告VQA/图像理解benchmark。",
+ "takeaways": [
+  "像素级扩散重建监督显著改善视觉编码器与connector的特征质量",
+  "短路径梯度通道缓解了长chain文本监督的信息损失",
+  "推理时无额外开销，可即插即用到现有VLM"
+ ],
+ "weaknesses": [
+  "与可靠性主线仅中等相关（多模态视觉理解），未直接针对幻觉/校准",
+  "前9页未给出完整数值表，各VQA基准增益需看实验章节",
+  "训练时引入扩散模型增加训练成本，重建损失权重需调参"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

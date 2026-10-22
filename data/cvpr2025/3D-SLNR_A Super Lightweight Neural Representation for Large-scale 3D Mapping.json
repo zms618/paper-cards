@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/3D-SLNR_A Super Lightweight Neural Representation for Large-scale 3D Mapping.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3D-SLNR_A Super Lightweight Neural Representation for Large-scale 3D Mapping.pdf",
+ "title": "3D-SLNR: A Super Lightweight Neural Representation for Large-scale 3D Mapping",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "带限局部SDF与共享MLP的超轻量建图，但实验与鲁棒性分析不足",
+ "innovations": [
+  "把全局 SDF 定义为锚定在支持点上的一组带限局部 SDF：每个局部 SDF 由位置 x、旋转 r、缩放 s 三个可学习几何量调制，共享同一个无潜特征的小 MLP 作为可学习基函数，参数量从「特征维度×点数」压到「共享 θ + 每点 9 维几何量」",
+  "借鉴 3DGS 光栅化的并行检索思路设计 CUDA 局部 SDF 检测算法：把局部 SDF 简化为由 {x,r,s} 与半径 m 确定的有向包围盒，按当前观测范围选候选，建规则网格索引并为候选按相交体素 ID 签名排序，再在体素内并行检测，使无序表示支持训练期实时更新",
+  "用 prune-and-expand 替代 3DGS 式致密化：按 |sdf|>d_th 剔除噪声/离面支持点，并在法向正交平面 e 上按 |∇_x e|>2e-4 定位欠拟合区，se<0.8sv 时沿 ∇_x e 克隆、否则分裂为两个更小局部 SDF，使点预算向欠拟合区迁移且总内存下降"
+ ],
+ "method_framework": "表面附近建空间哈希网格并体素降采样得支持点，PCA 估法向后初始化为局部平面基 SDF；用并行网格索引检测采样点所属局部 SDF，转局部坐标后由共享小 MLP 出值并按 exp(−||p_l||²) 加权平均；以 TSDF+Eikonal 损失训练，每 200 轮剪枝扩张",
+ "experiment_framework": "室内 Matterport3D 5 场景，室外 Newer College(Quad/Math Institute)、自采街景、KITTI-360；对比 VDB-Fusion、SPSR、NKSR、SHINE-Mapping、PIN-SLAM；指标 Acc/Comp/Prec/Recall/F-score 与内存 MC(MB)",
+ "takeaways": [
+  "「近似被变换的对象而非变换本身」这一思路在本工作中以带限局部 SDF 的形式落地，与 3DGUT 用 sigma 点近似高斯是同一类建模原则，可跨任务复用",
+  "把内存占用 MC 作为与 F-score 并列的主指标报告，并在街景实验里把对手内存调到与己方相当再比质量，是较克制的效率-质量权衡评测方式",
+  "初始化时用 PCA 法向把每个局部 SDF 的 z 轴对齐表面法向、并把基 SDF 初始化为隐式平面，使优化从合理先验出发而非随机"
+ ],
+ "weaknesses": [
+  "室外含一个自采街景数据集，非公开基准，跨方法可比性与数据选择偏倚存疑；KITTI-360 只给可视化与内存数字，正文未给量化表",
+  "剪枝扩张的三个阈值 d_th、x_th(2e-4)、s_th(0.8sv) 与损失权重 λ=0.02 均为经验设定，正文未做敏感性分析；消融表在本文截断处中断，仅能看到几何参数逐项加入的部分结果",
+  "所有指标为多场景均值，未报方差/显著性；运行时间表只测单次迭代的模块耗时（10 万采样点），未与端到端建图总时长或收敛所需迭代数对照",
+  "论文反复用 robust 形容对动态物体与法向噪声的表现，但该「鲁棒性」是重建噪声层面的工程表现，并非可靠性主线意义上的模型鲁棒性，不构成主线相关性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3D建图技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

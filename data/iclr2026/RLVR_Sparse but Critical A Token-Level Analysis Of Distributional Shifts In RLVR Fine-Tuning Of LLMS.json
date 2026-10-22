@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/RLVR_Sparse but Critical A Token-Level Analysis Of Distributional Shifts In RLVR Fine-Tuning Of LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RLVR_Sparse but Critical A Token-Level Analysis Of Distributional Shifts In RLVR Fine-Tuning Of LLMS.pdf",
+ "title": "RLVR: Sparse but Critical: A Token-Level Analysis of Distributional Shifts in RLVR Fine-Tuning of LLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "稀疏token级分析RLVR分布偏移，交叉采样验证关键决策点",
+ "innovations": [
+  "刻画RLVR在token级的分布偏移结构：相对基座模型，仅小部分token分布出现显著散度，结合熵、位置集中度与概率质量重分配分析。",
+  "用正向/反向交叉采样干预：向基座生成插入少量RL采样token即可逐步恢复RL增益，反向注入少量基座token则使RL性能崩回基座，隔离出稀疏关键决策token。",
+  "探索散度加权的优势信号作为诊断性干预，发现可超过基线。"
+ ],
+ "method_framework": "对比base与RL模型在相同上下文上的next-token分布，量化散度/熵/位置集中；通过交叉采样选择性互换base与RL的token选择，测定哪些token级偏移真正驱动推理增益；并尝试散度加权优势信号。",
+ "experiment_framework": "在推理/数学基准上对多种RLVR方法(如GRPO)做token级分布分析与交叉采样干预，报告性能恢复/崩塌曲线及散度加权优势的效果。",
+ "takeaways": [
+  "RLVR主要是稀疏而有针对性的精修：绝大多数token分布不变，少数高散度位置承载不成比例的功能重要性。",
+  "仅替换少量关键token即可决定RL推理增益的有无，说明RLVR改的是关键决策点而非整体风格。"
+ ],
+ "weaknesses": [
+  "属机制分析/实证研究，结论依赖特定RLVR方法与基准，跨架构/规模的普适性需更多验证。",
+  "前9页只见分析框架与发现概述，未见交叉采样干预的完整量化曲线与散度加权优势的消融表。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "稀疏token级分析RLVR分布偏移，触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

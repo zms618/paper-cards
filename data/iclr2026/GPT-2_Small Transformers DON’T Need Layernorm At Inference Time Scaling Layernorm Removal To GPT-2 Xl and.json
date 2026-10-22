@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/GPT-2_Small Transformers DON’T Need Layernorm At Inference Time Scaling Layernorm Removal To GPT-2 Xl and.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/GPT-2_Small Transformers DON’T Need Layernorm At Inference Time Scaling Layernorm Removal To GPT-2 Xl and.pdf",
+ "title": "Small Transformers DON’T Need Layernorm At Inference Time: Scaling Layernorm Removal To GPT-2 Xl and Implications for Mechanistic Interpretability",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "移除GPT-2层归一化，微调后性能保持但可解释性提升有限",
+ "innovations": [
+  "提出层归一化移除策略并扩展到GPT-2 XL",
+  "设计FakeLN块和辅助损失函数稳定训练",
+  "验证移除层归一化对模型可解释性的影响"
+ ],
+ "method_framework": "用FakeLN替换层归一化，通过顺序移除和微调稳定训练，使用辅助损失保持激活一致性",
+ "experiment_framework": "GPT-2 Small/Medium/Large/XL模型，OpenWebText微调，交叉熵损失评估，可解释性技术对比",
+ "takeaways": [
+  "层归一化在推理时非必需，移除后性能损失微小",
+  "层归一化移除使直接logit attribution精确计算成为可能"
+ ],
+ "weaknesses": [
+  "层归一化移除后模型过度自信，校准误差增加",
+  "归因patching准确度未显著改善，表明其他非线性因素影响更大"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "模型架构优化，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

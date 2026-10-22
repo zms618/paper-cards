@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/FlowDC_Flow-Based Decoupling-Decay for Complex Editing.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/FlowDC_Flow-Based Decoupling-Decay for Complex Editing.pdf",
+ "title": "FlowDC Flow-Based Decoupling-Decay for Complex Editing",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "基于流匹配的解耦-衰减方法实现复杂图像编辑",
+ "innovations": [
+  "渐进式语义正交化(PSO)将复杂编辑解耦为多个子编辑轨迹",
+  "速度正交衰减(VOD)保留子空间分量并衰减正交分量以保持源一致性",
+  "构建Complex-PIE-Bench基准评估复杂编辑性能"
+ ],
+ "method_framework": "基于流匹配模型，通过LLM解耦复杂提示为中间提示，生成并行编辑轨迹，构建正交基，然后对速度进行正交分解和选择性衰减，重建精确编辑速度",
+ "experiment_framework": "在Complex-PIE-Bench和PIE-Bench++上评估，使用CLIP-T(语义对齐)、CLIP-I、DINO和LPIPS(源一致性)作为指标，与FlowEdit、RF-Edit、Multi-Turn等方法对比",
+ "takeaways": [
+  "复杂编辑可通过解耦为多个子编辑并叠加实现",
+  "速度场中与编辑位移正交的分量损害源结构保持，应予以衰减",
+  "正交化技术可有效隔离不同编辑目标的语义贡献"
+ ],
+ "weaknesses": [
+  "方法依赖LLM进行提示解耦，增加了额外计算开销",
+  "正交化过程仅在早期阶段进行，可能影响后期编辑精度",
+  "未充分探讨方法在不同复杂度编辑任务上的扩展性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "图像编辑技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

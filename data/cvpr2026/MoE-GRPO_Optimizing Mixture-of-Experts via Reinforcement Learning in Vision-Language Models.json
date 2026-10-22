@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/MoE-GRPO_Optimizing Mixture-of-Experts via Reinforcement Learning in Vision-Language Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/MoE-GRPO_Optimizing Mixture-of-Experts via Reinforcement Learning in Vision-Language Models.pdf",
+ "title": "MoE-GRPO Optimizing Mixture-of-Experts via Reinforcement Learning in Vision-Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "用RL优化MoE路由，提升多模态性能但机制分析不足。",
+ "innovations": [
+  "将专家选择建模为序列决策问题并使用GRPO优化",
+  "引入模态感知路由指导机制提升训练稳定性",
+  "联合优化Token-GRPO和Gate-GRPO双重目标"
+ ],
+ "method_framework": "将MoE专家选择视为序列决策问题，使用GRPO框架优化路由策略，结合模态感知指导机制，通过多轮采样和奖励反馈学习最优专家组合。",
+ "experiment_framework": "在InternVL3.5-1B和CLIP-MoE上评估，对比Det-FT、Stoch-FT-Multi和Stoch-FT-Noise基线，使用多模态图像/视频基准测试和跨数据集/域泛化实验。",
+ "takeaways": [
+  "RL直接优化专家路由策略比简单引入随机性更有效",
+  "模态感知指导机制可提升训练效率与稳定性",
+  "联合优化token生成和专家路由能获得最佳性能"
+ ],
+ "weaknesses": [
+  "仅使用准确率作为奖励函数可能限制模型性能",
+  "计算开销较大，需要多轮rollout和GPU资源",
+  "未充分分析专家选择的具体决策机制"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态性能提升但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

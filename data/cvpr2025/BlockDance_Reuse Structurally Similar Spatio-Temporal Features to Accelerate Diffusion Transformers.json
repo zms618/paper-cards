@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/BlockDance_Reuse Structurally Similar Spatio-Temporal Features to Accelerate Diffusion Transformers.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/BlockDance_Reuse Structurally Similar Spatio-Temporal Features to Accelerate Diffusion Transformers.pdf",
+ "title": "BlockDance Reuse Structurally Similar Spatio-Temporal Features to Accelerate Diffusion Transformers",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "训练-free特征重用加速扩散模型，但内存开销大且需手动调整",
+ "innovations": [
+  "识别并重用结构相似时空(STSS)特征",
+  "训练-free的BlockDance加速方法",
+  "基于强化学习的BlockDance-Ada自适应决策网络"
+ ],
+ "method_framework": "将去噪过程分为缓存步骤和重用步骤，在结构稳定后缓存浅层和中层块特征，在后续步骤中重用这些特征以减少冗余计算",
+ "experiment_framework": "在ImageNet、COCO和MSR-VTT数据集上测试DiT-XL/2、PixArt-α和Open-Sora模型，使用FID、IS、CLIP、PickScore和SSIM指标评估",
+ "takeaways": [
+  "特征相似性主要存在于浅层和中层块，这些块关注低级结构",
+  "自适应决策网络可根据内容复杂度动态调整重用策略"
+ ],
+ "weaknesses": [
+  "缓存特征需要额外内存(最大72MB)",
+  "对不同模型需要调整缓存步骤比例和块索引"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "加速方法与可靠性主线无关，仅工程优化价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

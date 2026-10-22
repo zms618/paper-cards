@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Curriculum Learning for Biological Sequence Prediction The Case of De Novo Peptide Sequencing.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Curriculum Learning for Biological Sequence Prediction The Case of De Novo Peptide Sequencing.pdf",
+ "title": "Curriculum Learning for Biological Sequence Prediction: The Case of De Novo Peptide Sequencing",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "课程学习缓解NAT肽段测序CTC训练不稳定，但计算开销大且通用性存疑",
+ "innovations": [
+  "首次将课程学习应用于NAT肽段测序，通过CTC输出路径采样估计蛋白质序列生成难度，动态调整学习目标",
+  "提出自精炼推理模块：利用学习到的NAT token嵌入进行迭代细化，逐步提升序列精度",
+  "课程学习显著降低CTC训练的不稳定性，训练失败率减少90%以上"
+ ],
+ "method_framework": "模型为编码器-解码器Transformer：谱图编码器将MS/MS谱图编码为嵌入；非自回归解码器同时预测所有位置的氨基酸。训练时增加课程学习模块：从模型当前CTC输出中采样多条路径，按路径与真实序列的匹配度计算难度，先学简单路径再学复杂路径。推理时增加自精炼模块：将初步预测作为条件输入，迭代细化token嵌入。",
+ "experiment_framework": "在9物种基准(9-species-V1/V2)上评测；基线包括DeepNovo、Casanovo、PrimeNovo、InstaNovo等；指标为氨基酸精度、肽段精度、全序列精度；消融分析课程学习和自精炼的贡献。",
+ "takeaways": [
+  "NAT肽段测序的CTC训练极易不稳定，课程学习从根本上缓解了这个问题",
+  "自精炼迭代推理在细粒度氨基酸区分上显著提升精度",
+  "在多个物种和指标上均达到SOTA"
+ ],
+ "weaknesses": [
+  "课程学习依赖CTC路径采样，增加了训练时的计算开销",
+  "难度估计完全基于模型自身输出，早期训练时估计可能不准确",
+  "仅在肽段测序任务上验证，对其他生物序列任务的通用性未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

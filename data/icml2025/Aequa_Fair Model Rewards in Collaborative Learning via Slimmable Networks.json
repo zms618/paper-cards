@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Aequa_Fair Model Rewards in Collaborative Learning via Slimmable Networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Aequa_Fair Model Rewards in Collaborative Learning via Slimmable Networks.pdf",
+ "title": "Aequa: Fair Model Rewards in Collaborative Learning via Slimmable Networks",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "可瘦身网络实现协作学习公平奖励，但贡献评估与泛化性存疑",
+ "innovations": [
+  "将slimmable networks引入协作学习公平性问题：模型宽度可优雅降级，使得不同贡献的参与者可获得不同大小的最终模型",
+  "提出训练后公平分配算法：基于参与者贡献分配模型宽度，使各方获得的模型性能与其贡献相称",
+  "扩展到训练时模型奖励分配：在训练过程中动态调整各参与者的模型宽度，提供理论收敛保证"
+ ],
+ "method_framework": "协作学习中训练一个slimmable全局模型（支持任意宽度的子网）。训练后，根据各参与者的贡献度（如Shapley值近似）分配不同的模型宽度：贡献大的获得更宽、性能更好的子网作为奖励。理论上分析了该方法的收敛性。还扩展到训练时动态分配宽度的方案。",
+ "experiment_framework": "数据集：多个标准图像分类数据集（如CIFAR等）。架构：多种神经网络架构。基线：传统协作学习（统一模型）、其他公平分配方法。指标：全局模型性能、各参与者获得模型的性能与贡献的相关性、公平性度量。",
+ "takeaways": [
+  "Slimmable networks可作为协作学习中公平奖励分配的实用工具，无需额外训练多个模型",
+  "贡献与模型性能的相关性可通过宽度分配机制实现，激励高质量数据贡献",
+  "训练时动态宽度分配比训练后静态分配更灵活，同时保持收敛保证"
+ ],
+ "weaknesses": [
+  "贡献评估仍依赖近似方法（Shapley值计算昂贵），实际部署的开销未充分讨论",
+  "仅在图像分类任务验证，在LLM训练或异构数据场景的适用性未知",
+  "slimmable network本身的精度损失（小宽度子网性能下降）作为奖励代价的公平性讨论不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "协作学习公平性方法，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

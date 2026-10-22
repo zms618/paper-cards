@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Understanding the Shape Of REPRESENTATIONS In Protein Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Understanding the Shape Of REPRESENTATIONS In Protein Language Models.pdf",
+ "title": "Towards Understanding the Shape of Representations in Protein Language Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "观测性分析PLM表征形状，无实验验证结论",
+ "innovations": [
+  "将蛋白结构与表征统一到SRV形状空间，用Fréchet半径与有效维度刻画ESM2不同规模模型跨层表征空间的几何演化",
+  "引入图过滤作为工具，度量模型在不同上下文长度下编码蛋白结构特征的程度",
+  "发现PLM偏好编码残基间的即时/局部关系、在大上下文下退化，且最结构忠实的编码出现在接近最后一层之前"
+ ],
+ "method_framework": "把蛋白序列与PLM隐表征都映射为可度量的形状：用SRV表征得到形状度量空间以比较蛋白/表征两两关系，用图过滤构造拓扑度量刻画结构信息编码。沿ESM2各层、各模型规模逐层分析Fréchet半径、有效维度与上下文长度的关系。",
+ "experiment_framework": "在SCOPe数据集上选取不同类型蛋白，对比不同规模ESM2模型逐层的SRV形状空间Fréchet半径/有效维度曲线，并用图过滤分析不同上下文长度下的结构编码保真度。属观测性分析，未做下游折叠任务干预实验。",
+ "takeaways": [
+  "SRV形状空间的Fréchet半径与有效维度随模型层数呈非线性变化，且与模型规模相关",
+  "PLM优先编码残基间的即时与局部关系，随上下文增大编码开始退化",
+  "最结构忠实的编码出现在接近最后一层之前，提示在这些层之上训练折叠模型可能提升折叠性能"
+ ],
+ "weaknesses": [
+  "纯观测性分析，核心结论（在某层之上训练折叠模型更好）未通过实际折叠实验验证",
+  "数据集仅SCOPe一类，泛化到其他蛋白分布与PLM架构的证据不足",
+  "属蛋白语言模型可解释性方向，与可靠性/可信AI及医学影像/多模态推理主线关联弱"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.88,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "蛋白语言模型可解释性，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

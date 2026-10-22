@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/The Midas Touch for Metric Depth.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/The Midas Touch for Metric Depth.pdf",
+ "title": "The Midas Touch for Metric Depth",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "稀疏种子优化深度转换，轻量模块但依赖基础模型质量",
+ "innovations": [
+  "基于稀疏图优化的分段尺度恢复策略",
+  "不连续感知测地成本的像素级细化策略",
+  "轻量级即插即用模块，无需微调基础模型"
+ ],
+ "method_framework": "MTD采用粗到细的范式，首先通过稀疏图优化进行分段尺度恢复，然后利用不连续感知测地成本进行像素级细化，将相对深度转换为精确的度量深度",
+ "experiment_framework": "在nuScenes、DDAD、KITTI等多个室内外数据集上进行零样本评估，使用RMSE、MAE、AbsRel等指标，并与Marigold-DC等SOTA方法比较",
+ "takeaways": [
+  "稀疏3D种子足以实现高精度度量深度恢复",
+  "数学可解释的非参数方法在保持泛化能力的同时提供高效解决方案",
+  "轻量级设计支持实时边缘设备部署"
+ ],
+ "weaknesses": [
+  "方法依赖于深度基础模型的质量",
+  "在极端稀疏的3D种子条件下性能可能下降",
+  "计算效率虽高但仍受前端深度模型限制"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "轻量模块设计有迁移价值，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

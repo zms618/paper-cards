@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scalable Multilingual Multimodal Machine Translation with Speech-Text Fusion.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scalable Multilingual Multimodal Machine Translation with Speech-Text Fusion.pdf",
+ "title": "Scalable Multilingual Multimodal Machine Translation with Speech-Text Fusion",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "语音引导MLLM翻译，TTS合成+自进化机制提升多语覆盖。",
+ "innovations": [
+  "提出语音引导机器翻译(SMT)框架：将语音与文本融合输入MLLM，利用韵律线索消歧，替代稀缺的图文对实现可扩展多语覆盖。",
+  "引入自进化机制：用TTS合成语音，MLLM对合成语音样本分类并以正样本迭代自优化，降低对低资源真实语音数据的依赖。",
+  "在Multi30K多模态翻译基准取得新SOTA，FLORES-200上108个翻译方向平均SOTA；CoVoST-2消融表明合成与真实语音差异对翻译质量影响可忽略。"
+ ],
+ "method_framework": "用零样本多语TTS为源文本合成语音，将语音与文本融合输入MLLM做翻译；自进化流程中MLLM筛选高质量合成语音正样本并迭代自训练，逐步扩展语言覆盖。",
+ "experiment_framework": "在Multi30K多模态翻译、FLORES-200通用翻译(108方向)、CoVoST-2上评测；与图像引导MMT及纯文本MT基线对比，报告BLEU/分；做合成vs真实语音消融。",
+ "takeaways": [
+  "语音模态比图像模态更易随现有语音数据扩展多语覆盖，且韵律信息可辅助消歧提升翻译。",
+  "合成语音与真实语音的差异对翻译质量影响可忽略，使语音引导MT可低成本规模化。"
+ ],
+ "weaknesses": [
+  "属多模态机器翻译方向，与可靠性×医学影像主线仅在多模态侧面相关，不涉及可信/幻觉问题。",
+  "质量依赖TTS合成质量，对噪声/口音重的真实语音、以及韵律线索缺失的书面语场景收益未充分验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "多模态翻译与可靠性主线仅在多模态侧面相关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/RORem_Training a Robust Object Remover with Human-in-the-Loop.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/RORem_Training a Robust Object Remover with Human-in-the-Loop.pdf",
+ "title": "RORem Training a Robust Object Remover with Human-in-the-Loop",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "半监督人机协作提升物体移除，但人工参与度高且分析不足。",
+ "innovations": [
+  "人机协作半监督学习策略构建高质量物体移除数据集",
+  "训练判别器自动化高质量数据选择过程",
+  "引入LoRA层和蒸馏技术提高推理效率"
+ ],
+ "method_framework": "基于SDXL的三阶段训练框架：初始化阶段使用开源数据集训练初始模型，人机标注阶段利用人类反馈筛选高质量样本，自动化标注阶段训练判别器自动筛选数据，最终蒸馏出高效模型。",
+ "experiment_framework": "使用OpenImage测试集(512×512和1024×1024各500对)，对比Lama、SDXL-INP等基线方法，采用PSNR、DINO、CLIP等指标及用户研究评估成功率。",
+ "takeaways": [
+  "人机协作数据构建策略可有效提升模型鲁棒性",
+  "判别器可近似人类偏好用于自动化数据筛选",
+  "蒸馏技术显著提升推理效率同时保持性能"
+ ],
+ "weaknesses": [
+  "人机标注过程仍需大量人工参与",
+  "未详细分析不同类别物体的移除难度差异",
+  "高分辨率数据集规模较小(1200对)"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "物体移除与可靠性主线无实质交点，仅数据构建策略有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

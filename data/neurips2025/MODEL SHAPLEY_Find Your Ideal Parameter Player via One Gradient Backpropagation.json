@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/MODEL SHAPLEY_Find Your Ideal Parameter Player via One Gradient Backpropagation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/MODEL SHAPLEY_Find Your Ideal Parameter Player via One Gradient Backpropagation.pdf",
+ "title": "MODEL SHAPLEY: Find Your Ideal Parameter Player via One Gradient Backpropagation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "单次梯度计算参数Shapley值，块状近似可能丢失跨层交互",
+ "innovations": [
+  "将Shapley值从数据/特征层扩展到参数层，捕捉参数间的协同效应",
+  "提出闭式近似解，仅需单次前向-反向传播计算参数级Shapley值",
+  "设计基于Fisher信息的块状正则化策略，降低计算复杂度"
+ ],
+ "method_framework": "将每个参数视为博弈中的玩家，通过路径积分近似损失变化，推导出参数Shapley值的闭式表达式，包含个体重要性和协同交互两部分，并通过块状Fisher矩阵近似降低计算复杂度。",
+ "experiment_framework": "在CIFAR-100、ImageNet、GSM8K和MMLU数据集上评估，与随机掩码、梯度、梯度迹等方法对比，在推理、训练和压缩三种场景下测试参数重要性量化的有效性。",
+ "takeaways": [
+  "参数协同效应在大型模型中至关重要，传统方法忽略了这一点",
+  "基于Shapley值的参数重要性可指导知识注入、模型压缩和可解释性分析"
+ ],
+ "weaknesses": [
+  "块状Fisher矩阵近似可能丢失跨层参数间的交互信息",
+  "实验主要关注模型性能，对鲁棒性和泛化能力的验证不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

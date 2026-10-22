@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/StreetCrafter_Street View Synthesis with Controllable Video Diffusion Models.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/StreetCrafter_Street View Synthesis with Controllable Video Diffusion Models.pdf",
+ "title": "StreetCrafter Street View Synthesis with Controllable Video Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "LiDAR条件视频扩散模型实现街景合成，但泛化与速度受限",
+ "innovations": [
+  "利用LiDAR点云渲染作为像素级条件实现精确相机控制",
+  "将扩散模型先验蒸馏到动态3D高斯表示实现实时渲染",
+  "支持场景编辑操作无需每场景优化"
+ ],
+ "method_framework": "StreetCrafter结合LiDAR条件与视频扩散模型，通过点云渲染提供像素级控制，并蒸馏到3D高斯表示实现实时渲染。",
+ "experiment_framework": "Waymo和PandaSet数据集，与3DGS、Street Gaussians等方法比较，使用PSNR、LPIPS、FID等指标评估视图合成质量。",
+ "takeaways": [
+  "LiDAR条件提供精确几何控制增强视图合成",
+  "扩散模型先验可提升3D表示的泛化能力",
+  "像素级条件支持场景编辑操作"
+ ],
+ "weaknesses": [
+  "渲染速度较慢(0.2fps)",
+  "仅使用单车道训练数据限制泛化能力",
+  "未充分讨论模型在极端天气条件下的表现"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "街景合成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

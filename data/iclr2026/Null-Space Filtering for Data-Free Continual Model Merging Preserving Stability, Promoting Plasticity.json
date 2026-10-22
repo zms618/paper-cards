@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Null-Space Filtering for Data-Free Continual Model Merging Preserving Stability, Promoting Plasticity.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Null-Space Filtering for Data-Free Continual Model Merging Preserving Stability, Promoting Plasticity.pdf",
+ "title": "Null-Space Filtering for Data-Free Continual Model Merging: Preserving Stability, Promoting Plasticity",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "零空间过滤与LoRA适配器实现无数据模型合并，提升稳定性与可塑性。",
+ "innovations": [
+  "揭示任务向量近似与数据表示子空间对齐这一几何性质，作为稳定性/可塑性的结构代理。",
+  "设计零空间投影器过滤新任务向量中与先验重叠的成分，在参数空间直接保证不干扰旧任务。",
+  "引入轻量LoRA适配器，用基于投影的代理损失在保留与先验一致性的同时注入新任务方向，更新以逐层线性方式融回骨干、无额外推理开销。"
+ ],
+ "method_framework": "在无任务数据下逐步合并模型：把新任务向量经零空间投影器过滤掉与已合并模型表示子空间重叠的部分以保旧任务稳定；再训练一个LoRA适配器，用投影代理损失在与先验一致的约束下沿新任务独有方向注入互补信号以保可塑性；最后将投影器、任务向量、适配器逐层线性融回骨干，无需额外参数或推理成本。",
+ "experiment_framework": "在视觉与NLP持续学习基准上评测，以平均精度与遗忘度为指标，与OPCM、WUDI-Merging等投影类合并方法对比；相较二者平均精度提升4%-7%、遗忘更小，并缩小到单独微调的差距、降低计算开销；代码开源。",
+ "takeaways": [
+  "把数据层面的稳定性/可塑性 desiderata 显式映射到参数空间零空间，可缓解无数据持续合并中的干扰。",
+  "任务向量与表示子空间近似对齐的几何性质，为正交/投影式合并提供了理论依据。",
+  "过滤-适应联合流程能在不增加推理开销的同时兼顾旧任务保持与新任务适应。"
+ ],
+ "weaknesses": [
+  "子空间对齐为近似假设，在任务高度相关/分布漂移时的失效边界未充分刻画。",
+  "需要访问任务模型与已合并模型，对模型权重隐私与异构结构的现实部署假设较强。",
+  "仅与2025年少数投影式合并方法对比，与正则化/回放式持续学习主流方法的统一比较不足。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "无数据模型合并提升稳定性，可靠性主线明确",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

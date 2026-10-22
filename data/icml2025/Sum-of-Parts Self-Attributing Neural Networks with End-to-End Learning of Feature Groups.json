@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Sum-of-Parts Self-Attributing Neural Networks with End-to-End Learning of Feature Groups.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Sum-of-Parts Self-Attributing Neural Networks with End-to-End Learning of Feature Groups.pdf",
+ "title": "Sum-of-Parts: Self-Attributing Neural Networks with End-to-End Learning of Feature Groups",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "理论证明特征组SANN零优势，无监督框架性能平平，可解释性验证不足。",
+ "innovations": [
+  "从理论上证明逐特征 SANN 的误差存在下界（性能-可解释性权衡的根源），而基于特征组的 SANN 可达零误差。",
+  "提出 Sum-of-Parts（SOP）框架，把任意预训练可微模型改造为基于特征组的自归因网络，且特征组无需组标签、端到端自动学习。",
+  "聚合多个特征组预测为 y=Σc_i·y_i，在保持 SOTA 性能的同时给出组级可解释归因。"
+ ],
+ "method_framework": "冻结预训练骨干 h；用组生成器 Γ 无监督地把输入 x 划分为若干特征组 g_i⊙x，对每组得到组预测 y_i；再用组选择器 θ 学习各组权重 c_i，最终预测为各组输出的加权和。由于预测严格是'部分之和'，每个组对最终预测的贡献 c_i·y_i 可被直接归因；端到端联合训练 Γ 与 θ。",
+ "experiment_framework": "在视觉与语言任务上评测 SANN 性能；用定量与语义指标验证特征组可解释性；并在模型调试与宇宙学科学发现场景验证解释的实用性。",
+ "takeaways": [
+  "在视觉与语言任务上达到 SANN 类方法的 SOTA 性能。",
+  "所学到的特征组在多种定量/语义指标下可解释。",
+  "解释已用于模型调试与宇宙学科学发现，体现实用价值。"
+ ],
+ "weaknesses": [
+  "属可解释性方法，落地域为视觉/语言/宇宙学，未涉及医学影像或多模态推理主线。",
+  "组数等超参与'部分之和'线性聚合的表达瓶颈限制了对强交互特征的建模。",
+  "组级可解释性是否真正对应语义单元仍依赖人工/语义指标，缺乏因果级验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.48,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

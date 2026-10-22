@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/SecEmb_Sparsity-Aware Secure Federated Learning of On-Device Recommender System with Large Embedding.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SecEmb_Sparsity-Aware Secure Federated Learning of On-Device Recommender System with Large Embedding.pdf",
+ "title": "SecEmb: Sparsity-Aware Secure Federated Learning of On-Device Recommender System with Large Embedding",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "稀疏感知安全联邦推荐协议，平衡负载与隐私但计算开销大。",
+ "innovations": [
+  "针对联邦推荐中大embedding全量传输的带宽负担，利用embedding更新的稀疏性优化负载。",
+  "解决现有稀疏感知联邦协议'牺牲隐私换效率'的问题，在稀疏更新下仍保护被评物品索引。",
+  "提出无损(lossless)的安全协议SecEmb，使服务器既学不到物品索引也学不到个体更新。"
+ ],
+ "method_framework": "联邦推荐系统中，设备本地仅有少量被交互物品，embedding更新天然稀疏。SecEmb设计加密协议：在利用稀疏性大幅减少上传载荷的同时，通过密码学手段(如安全聚合/混淆)隐藏'哪些embedding位置被更新'(即被评物品索引)以及个体梯度更新，保证半诚实服务器无法反推用户行为，且不损失模型收敛精度。",
+ "experiment_framework": "在标准推荐数据集上评测联邦训练；对比朴素FedRec、现有稀疏感知协议及其它安全聚合协议，指标为推荐精度(AUC/Recall)、通信负载与隐私泄露程度，做安全开销与压缩比的权衡消融。",
+ "takeaways": [
+  "稀疏性压缩与物品索引隐私保护可兼得，无需在效率与隐私间取舍。",
+  "SecEmb在不损失精度的前提下显著降低端侧上传开销并保护用户行为隐私。"
+ ],
+ "weaknesses": [
+  "密码学协议带来额外计算/通信开销，在超大embedding下的端侧可行性需量化。",
+  "安全模型限于半诚实服务器，对恶意服务器/投毒的鲁棒性未覆盖。",
+  "与可靠性/鲁棒推理主线关系较弱，属隐私联邦学习方向。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

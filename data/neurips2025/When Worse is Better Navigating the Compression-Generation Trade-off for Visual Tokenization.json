@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/When Worse is Better Navigating the Compression-Generation Trade-off for Visual Tokenization.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/When Worse is Better Navigating the Compression-Generation Trade-off for Visual Tokenization.pdf",
+ "title": "When Worse is Better: Navigating the Compression-Generation Trade-off for Visual Tokenization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "探索视觉token化压缩-生成权衡，提出因果正则化方法提升效率",
+ "innovations": [
+  "研究压缩-生成权衡与模型规模的关系",
+  "提出因果正则化tokenization(CRT)方法",
+  "实现2-3倍计算效率提升并匹配SOTA性能"
+ ],
+ "method_framework": "两阶段训练框架：阶段1使用VQGAN压缩图像为离散token，阶段2使用自回归模型学习token分布。CRT通过引入小型因果transformer优化token的因果依赖关系，使token更易于被阶段2模型建模。",
+ "experiment_framework": "ImageNet和LSUN数据集，比较不同token数量、码本大小对生成性能的影响，使用FID、IS等指标评估，在多个数量级计算预算下验证方法有效性。",
+ "takeaways": [
+  "压缩程度应与生成模型容量相匹配",
+  "因果正则化可显著提升token的生成效率",
+  "计算最优性与验证损失和生成性能FID的Pareto前沿一致"
+ ],
+ "weaknesses": [
+  "主要关注离散token化，未探讨连续表示",
+  "因果正则化可能限制模型捕捉某些复杂依赖关系",
+  "实验主要集中在ImageNet和LSUN，泛化性需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

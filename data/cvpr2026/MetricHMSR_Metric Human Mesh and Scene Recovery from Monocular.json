@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/MetricHMSR_Metric Human Mesh and Scene Recovery from Monocular.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/MetricHMSR_Metric Human Mesh and Scene Recovery from Monocular.pdf",
+ "title": "MetricHMSR Metric Human Mesh and Scene Recovery from Monocular",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "边界射线图与混合模型实现单目度量人体场景重建",
+ "innovations": [
+  "边界射线图提供显式度量线索",
+  "人类专家混合模型实现局部姿态与全局位置的特征解耦",
+  "人体引导的度量深度细化模块"
+ ],
+ "method_framework": "MetricHMSR包含MetricHMR和人体引导的度量深度细化模块。MetricHMR使用边界射线图编码度量线索，并通过HumanMoE（包含Patch MoE和Global MoE）实现特征解耦，最终预测SMPL参数和全局位置。",
+ "experiment_framework": "在BEDLAM、AIC、COCO、MPII和3DPW数据集上训练，在EMDB-2、RICH和3DPW上评估，使用PVE、MPJPE、PA-MPJPE、WA-MPJPE、W-MPJPE、RTE和ERVE等指标。",
+ "takeaways": [
+  "边界射线图有效编码相机内参和边界框信息",
+  "专家混合模型实现特征解耦",
+  "人体引导的深度细化提升场景重建一致性"
+ ],
+ "weaknesses": [
+  "依赖相机内参估计，当内参未知时性能可能下降",
+  "模型复杂度较高，计算资源需求大"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "单目重建与可靠性主线无实质交点，仅属常规计算机视觉任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

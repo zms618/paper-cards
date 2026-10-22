@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Teaching Physical Awareness to LLMs through Sounds.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Teaching Physical Awareness to LLMs through Sounds.pdf",
+ "title": "Teaching Physical Awareness to LLMs through Sounds",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "ACORN用物理仿真音频数据训练LLM，实现基础物理感知能力",
+ "innovations": [
+  "提出通过声音教LLM物理感知的新方向，覆盖多普勒效应、多径效应、视线检测等基本物理现象",
+  "构建物理仿真器把真实声源与可控物理信道结合，解决音频-物理配对数据稀缺问题",
+  "设计同时利用幅度与相位信息的音频编码器，接入SOTA LLM实现被动/主动声学感知"
+ ],
+ "method_framework": "用物理仿真器把真实录音源通过不同声学信道（多普勒、反射、遮挡、混响）合成带物理标签的音频；构建AQA-PHY问答数据集；训练一个融合幅度谱与相位信息的音频编码器，通过投影层连接到冻结LLM；任务包括视线检测、多普勒估计、声源方向判断等。",
+ "experiment_framework": "在仿真与真实世界任务上评测（视线检测、多普勒效应估计、空间关系判断），对比纯LLM基线与视觉/文本多模态模型；指标为问答准确率与物理量估计误差（前9页未列全数值）。",
+ "takeaways": [
+  "LLM可通过音频获得物理感知，而不仅是文本/视觉理解",
+  "相位信息对声学空间推理（多径、方向）是必要的，仅用幅度谱不够",
+  "物理仿真器是解决音频-物理配对数据稀缺的可行路径"
+ ],
+ "weaknesses": [
+  "仿真到真实的域差未充分评估，真实场景下的鲁棒性证据有限",
+  "任务覆盖仅少数物理现象，对更复杂声学场景（多人说话、混响）的泛化未知",
+  "前9页未给出具体准确率与对比基线数值",
+  "域为音频-LLM物理推理，与医学影像主线不同但同属多模态大模型推理方向"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/AlphaFold_Inverse problems with experiment-guided AlphaFold.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/AlphaFold_Inverse problems with experiment-guided AlphaFold.pdf",
+ "title": "Inverse problems with experiment-guided AlphaFold",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.7
+ },
+ "one_line": "AF3扩散引导生成实验拟合构象系综，但计算成本与适用性受限",
+ "innovations": [
+  "把 AF3 从单构象预测器重新用作序列条件结构先验，将系综建模形式化为给定实验测量的后验推断",
+  "在 AF3 扩散每步计算「单成员似然 + 系综平均似然」（如计算电子密度 Fc、平均原子间距）的梯度作引导分数",
+  "扩散末用分子力场弛豫+类正交匹配追踪 (OMP) 剪枝提升似然，得到物理合理且实验一致的系综"
+ ],
+ "method_framework": "以 AF3 扩散为先验采样器；每步生成一批构象，对每个成员与系综平均分别计算与实验可观测量（晶体电子密度、NMR NOE/化学位移）的似然，将对数似然梯度注入扩散引导；末端力场弛豫+OMP 剪枝保留最贴合实验的构象，得到构象系综。",
+ "experiment_framework": "在晶体学密度、NMR 等真实实验数据上验证通用性：从晶体密度中发现此前未建模的构象异质性，生成 NMR 系综比现状快数量级，并与 PDB 已提交结构、AF3 单结构对比拟合优度。",
+ "takeaways": [
+  "AF3 可作为强先验，通过实验引导求解结构逆问题",
+  "该框架能恢复被单构象目标边缘化的构象异质性",
+  "生成系综优于 AF3 单结构、有时比 PDB 已提交结构更贴合实验"
+ ],
+ "weaknesses": [
+  "主线为结构生物信息学/逆问题，与可靠性×医学影像/多模态大模型推理主线无关",
+  "引导依赖可微的实验似然，对难以建模似然的实验模态（如部分 cryo-EM）适用性受限",
+  "前9页未系统报告计算成本随系综大小/分辨率的扩展与失败模式"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.55,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "结构生物信息学逆问题，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

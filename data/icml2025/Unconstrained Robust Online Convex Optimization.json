@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Unconstrained Robust Online Convex Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Unconstrained Robust Online Convex Optimization.pdf",
+ "title": "Unconstrained Robust Online Convex Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "无约束OCO理论贡献，抗任意损坏regret界，实证验证有限",
+ "innovations": [
+  "首次在无约束W=R^d同时获得comparator-adaptive界与对抗损坏鲁棒性：已知G时regret为∥u∥G(√T+k)，k为损坏总量(损坏轮数)",
+  "指出有界域算法在无约束下即使极小损坏也会产生极高regret，并给出G未知时额外加性惩罚√(∥u∥²+G²)k的算法",
+  "界在k=O(√T)前不劣于无损坏的最优结果，即容忍近√T轮任意损坏而不退化"
+ ],
+ "method_framework": "在线凸优化框架，每轮观测被损坏的梯度˜g_t而非真梯度g_t；设计comparator-adaptive/parameter-free算法(如 Coin Betting 族的鲁棒变体)，把损坏总量k显式计入regret，无需域直径D。",
+ "experiment_framework": "理论为主，给出regret上界证明；辅以小型合成实验验证损坏梯度下的regret行为，与Zinkevich、Coin Betting/parameter-free等经典OCO算法对比。",
+ "takeaways": [
+  "无约束鲁棒OCO可同时做到comparator-adaptive与抗任意损坏，regret形如∥u∥G(√T+k)，把损坏量k作为显式加项",
+  "无界域与有界域在抗损坏上性质迥异：有界域方法不能直接搬到R^d，否则微小损坏即爆炸"
+ ],
+ "weaknesses": [
+  "纯理论/算法贡献，实证仅小型合成验证，未对接真实鲁棒训练或分布式/LLM场景",
+  "损坏度量k为'损坏轮数'假设较强(损坏值有界)，对无界/持续漂移的真实损坏覆盖有限；G未知时的加性惩罚较粗"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scalable Chain Of Thoughts via Elastic Rea.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scalable Chain Of Thoughts via Elastic Rea.pdf",
+ "title": "Scalable Chain of Thoughts via Elastic Reasoning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "两阶段预算分配与截断训练，提升预算受限下的推理鲁棒性。",
+ "innovations": [
+  "提出分离预算(separate budgeting)：把总token预算c拆为thinking段t与solution段s，thinking耗尽即强制</think>转入solution，优先保证答案段完整，优于S1式整体截断。",
+  "提出预算受限rollout训练：融入GRPO，教模型在思考被提前截断时仍产出高质量答案，泛化到未见过的推理预算而无需再训练。",
+  "在严格预算约束下于数学(AIME/MATH500)与编程(LiveCodeBench/Codeforces)基准稳健有效，训练成本显著低于基线，且无约束下推理更简洁。"
+ ],
+ "method_framework": "推理时把预算显式分为thinking与solution两段，thinking达t后强制转入solution；训练时用预算受限rollout随机截断思考段，以GRPO奖励完整solution，使模型学会在部分CoT下自适应推理。",
+ "experiment_framework": "在AIME、MATH500、LiveCodeBench、Codeforces上对比S1/L1等长度控制方法与vanilla budget forcing；扫描不同推理预算，报告准确率与训练成本，并检验无约束下的简洁性。",
+ "takeaways": [
+  "solution段完整性对预算受限下的可靠性至关重要，分阶段预算优于整体截断。",
+  "预算受限rollout训练让模型在思考被截断时也能稳健推理，并零样本泛化到新预算。"
+ ],
+ "weaknesses": [
+  "属LLM推理长度/预算控制方向，与医学影像主线无关，与多模态推理仅间接相关。",
+  "两阶段边界(何时切thinking)的自动判定、以及在需要长链才能解出的难题上强行截断的失败模式分析仍不充分。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "预算控制提升推理鲁棒性，属可靠性主线但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

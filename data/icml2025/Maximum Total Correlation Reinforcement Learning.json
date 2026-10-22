@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Maximum Total Correlation Reinforcement Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Maximum Total Correlation Reinforcement Learning.pdf",
+ "title": "Maximum Total Correlation Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "在RL中加入总相关正则项，提升DMC任务鲁棒性但未验证真实场景",
+ "innovations": [
+  "提出MTC-RL问题框架，在标准RL目标中加入最大化轨迹内总相关的额外正则项，从信息论角度鼓励可压缩、可预测的开环式行为",
+  "推导总相关的变分下界近似，基于SAC实现统一优化策略与状态编码器的实用算法，并引入自适应系数调节机制（将系数视为约束优化的拉格朗日乘子）",
+  "在DeepMind Control的8个连续控制任务上验证：MTC不仅提升原始任务性能，还在观测/动作/动力学扰动下展现出比SAC、RPC、LZ-SAC更强的零样本鲁棒性"
+ ],
+ "method_framework": "在标准RL（最大化期望累积奖励）基础上，引入轨迹(z1,a1,z2,a2,...)的总相关C(z1;z2;...;a1;a2;...)作为额外最大化目标。总相关衡量联合分布与边缘分布乘积的KL散度，越大表示轨迹各时间步之间统计依赖越强、越可联合压缩。作者推导变分下界（用动作预测模型q(a_t|z_{1:t},a_{1:t-1})和状态转移模型q(z_{t+1}|z_{1:t},a_{1:t})近似），将其融入SAC的软Q目标中，并通过对偶优化自动调节正则系数α。",
+ "experiment_framework": "在DeepMind Control Suite (DMC)的8个连续控制任务（Hopper Stand, Finger Spin, Cheetah Run, Walker Run, Quadruped Walk等）上评估。基线包括SAC、RPC、LZ-SAC、SPAC。指标：原始任务渐近性能、对观测高斯噪声(σ=0.02~0.1)的鲁棒性、对动作噪声和动力学扰动的鲁棒性、轨迹周期性/可压缩性分析。含消融实验验证各组件贡献。",
+ "takeaways": [
+  "最大化轨迹内总相关这一信息论归纳偏置，能自然诱导出周期性、可压缩的策略行为，同时提升原始任务性能和对噪声/动力学变化的鲁棒性",
+  "相比仅约束状态表示一致性的RPC或仅约束动作一致性的LZ-SAC，MTC对整条轨迹（状态+动作）的联合一致性约束效果更全面",
+  "简单性归纳偏置（open-loop倾向）是提升RL策略鲁棒性的有效且任务无关的途径，无需依赖域随机化"
+ ],
+ "weaknesses": [
+  "实验仅在仿真DMC环境验证，未涉及真实机器人或sim-to-real迁移，鲁棒性的实际工程价值待验证",
+  "总相关下界引入了额外的状态转移模型和动作预测模型，增加了训练复杂度和计算开销，但未与更轻量的鲁棒RL方法（如域随机化、对抗训练）做直接对比",
+  "自适应系数机制依赖设定目标边界Ip，该超参数的选取原则和敏感性分析在正文中未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

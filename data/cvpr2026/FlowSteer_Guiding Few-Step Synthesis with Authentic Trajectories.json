@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/FlowSteer_Guiding Few-Step Synthesis with Authentic Trajectories.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/FlowSteer_Guiding Few-Step Synthesis with Authentic Trajectories.pdf",
+ "title": "FlowSteer Guiding Few-Step Synthesis with Authentic Trajectories",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "FlowSteer通过轨迹对齐和对抗蒸馏改进少步图像合成",
+ "innovations": [
+  "在线轨迹对齐(OTA)解决PeRFlow的轨迹不匹配问题",
+  "在ODE轨迹上应用对抗蒸馏提升学生模型性能",
+  "发现并修复FlowMatchEulerDiscreteScheduler的缺陷"
+ ],
+ "method_framework": "FlowSteer结合在线轨迹对齐、对抗蒸馏和改进调度器，通过使用教师模型的真实轨迹而非人工插值点，解决训练-推理分布不匹配问题，并应用对抗损失使学生轨迹更贴近教师轨迹。",
+ "experiment_framework": "基于SD3-Medium和SD3.5-Large模型，在COCO 10k和GenEval数据集上评估，使用PickScore、HPSv2、CLIP Score等指标，与PeRFlow、PCM、Hyper-SD等方法对比。",
+ "takeaways": [
+  "轨迹对齐是解决少步合成中训练-推理不匹配的关键",
+  "对抗蒸馏可直接应用于ODE轨迹提升学生模型性能",
+  "调度器设计对少步生成质量有显著影响"
+ ],
+ "weaknesses": [
+  "OTA方法增加了计算开销",
+  "仅关注图像生成任务，未探索其他应用场景",
+  "实验主要在SD3模型上进行，泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "图像生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

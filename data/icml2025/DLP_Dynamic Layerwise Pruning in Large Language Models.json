@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DLP_Dynamic Layerwise Pruning in Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DLP_Dynamic Layerwise Pruning in Large Language Models.pdf",
+ "title": "DLP: Dynamic Layerwise Pruning in Large Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "基于中位数的层重要性评估，提升LLM高稀疏度性能",
+ "innovations": [
+  "基于权重和输入激活信息自适应确定各层相对重要性",
+  "使用中位数而非预定义值评估层不重要性",
+  "设计α超参数调整层间稀疏度分配"
+ ],
+ "method_framework": "DLP通过计算各层权重和输入激活值的中位数确定层不重要性，转换为相对重要性，根据重要性分配稀疏率，重要层保留更多参数",
+ "experiment_framework": "在WikiText、PTB、C4数据集上评估LLaMA1/2/3、Vicuna、Mistral等模型，使用困惑度和零样本准确率指标，与Magnitude、SparseGPT、Wanda、OWL等方法对比",
+ "takeaways": [
+  "使用中位数评估层重要性比均值、最大值等方法更鲁棒",
+  "早期层通常比深层更重要，应分配更低稀疏度",
+  "方法可与其他剪枝技术和量化、PEFT等压缩方法结合"
+ ],
+ "weaknesses": [
+  "方法依赖于输入激活信息，增加了计算复杂度",
+  "α超参数需要调整，可能影响不同模型的性能",
+  "未充分探讨方法在不同任务类型上的泛化能力"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Tensor-Parallelism with Partially Synchronized Activations.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Tensor-Parallelism with Partially Synchronized Activations.pdf",
+ "title": "Tensor-Parallelism with Partially Synchronized Activations",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.9
+ },
+ "one_line": "CAAT-Net通过部分通道同步减少通信50%，但与可靠性主线关联弱",
+ "innovations": [
+  "部分通道减少操作替代全all-reduce",
+  "通信感知架构设计",
+  "前向-后向不匹配解决方案"
+ ],
+ "method_framework": "CAAT-Net引入部分通道减少操作，仅同步隐藏维度中部分通道，保留私有通道，减少通信量同时保持模型参数和计算量不变",
+ "experiment_framework": "7B Llama2模型在160B tokens上训练，130M和1.1B模型验证，零样本评估LAMBADA等基准",
+ "takeaways": [
+  "部分同步可减少通信50%而不损失精度",
+  "前向-后向实现调整和32位梯度累积确保数值稳定性"
+ ],
+ "weaknesses": [
+  "方法主要针对计算效率，与可靠性主线关联较弱",
+  "实验主要在特定硬件上验证，泛化性待考察"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

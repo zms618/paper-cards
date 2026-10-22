@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Neural SUM-OF-SQUARES Certifying the Non-Negativity Of Polynomials with Transformers.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Neural SUM-OF-SQUARES Certifying the Non-Negativity Of Polynomials with Transformers.pdf",
+ "title": "Neural Sum-of-Squares: Certifying the Non-Negativity of Polynomials with Transformers",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "Transformer加速SOS认证，但数据成本高且最坏情形退化为基线。",
+ "innovations": [
+  "提出首个学习增强的SOS认证算法，用Transformer预测紧凑单项式基以缩小SDP规模。",
+  "通过反向采样高效生成超1亿个SOS多项式与(近)最小基配对训练数据。",
+  "设计系统性回退/修复机制：预测基不全时迭代补全单项式，保持与传统方法相同的正确性保证，并给出最坏情形理论界。"
+ ],
+ "method_framework": "将多项式token化输入Transformer，输出预测的单项式基B；用B构造SDP求解SOS分解；若预测基不完整无法得到有效分解，则迭代向B中加入候选单项式，直到找到有效分解或穷举所有候选（判定无SOS分解）；理论上即使预测全错，最坏计算代价也仅比标准基线差一个常数因子。",
+ "experiment_framework": "在200+基准数据集上对比SOTA SDP求解器；取得超100倍加速，并能求解其他方法失败的实例；提供代码。",
+ "takeaways": [
+  "学习增强可显著加速NP难的多项式非负性SOS认证，同时不牺牲正确性。",
+  "Transformer能识别传统规则方法遗漏的稀疏单项式结构，得到更紧凑的基。",
+  "带回退的预测-验证范式使ML预测可安全嵌入有严格正确性要求的优化流水线。"
+ ],
+ "weaknesses": [
+  "需要1亿级反向采样合成数据，训练与数据生成成本较高。",
+  "预测错误时的回退仍需迭代穷举，最坏情形退化为基线，极端实例的稳定性未充分展示。",
+  "主要在多项式SOS认证基准验证，对控制/机器人等下游非凸优化问题的端到端收益未量化。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "多项式非负性认证与可靠性主线有理论交点但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

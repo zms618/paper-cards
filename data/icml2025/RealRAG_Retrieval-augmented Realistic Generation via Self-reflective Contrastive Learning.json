@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/RealRAG_Retrieval-augmented Realistic Generation via Self-reflective Contrastive Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/RealRAG_Retrieval-augmented Realistic Generation via Self-reflective Contrastive Learning.pdf",
+ "title": "RealRAG: Retrieval-augmented Realistic Image Generation via Self-reflective Contrastive Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "检索增强文生图，自反思对比学习补足知识缺口",
+ "innovations": [
+  "首次将检索增强生成引入真实物体图像生成：检索真实世界图像弥补生成模型固定参数带来的知识缺口",
+  "训练反思检索器时把生成器自身知识注入自反思负样本，确保检索到的增强图正好补偿模型缺失知识",
+  "RealRAG 模块化，可即插即用地适配各类 SOTA 文生图模型"
+ ],
+ "method_framework": "以文生图模型的先验为基础，训练一个对比检索器从真实图像库中检索与 prompt 相关的参考图；通过自反思对比学习构造负样本（把生成器易混淆/扭曲的结果作为难负例），使检索结果精准补足模型对细粒度/未见对象的缺失视觉知识；检索到的参考图作为条件注入生成过程。",
+ "experiment_framework": "在多个 SOTA 文生图模型（如 Stable Diffusion 系、Flux）上即插即用评测；针对细粒度/未见新对象（如 Tesla Cybertruck）对比无检索与既有检索增强方法；指标为对象外观真实性/相似度、失真程度与图文对齐度。",
+ "takeaways": [
+  "检索真实世界图像可有效克服文生模型参数固定导致的新对象幻觉",
+  "把生成器知识注入对比负样本能让检索精准对准知识缺口",
+  "模块化设计使 RAG 思路可推广到任意文生图骨干"
+ ],
+ "weaknesses": [
+  "主线为图像生成而非 LLM 推理/医学影像，与核心可靠性主线相关度中等",
+  "依赖高质量真实图像库，库覆盖不到的对象仍会失真",
+  "检索-生成对齐的开销与对已有训练样本重复的风险未充分量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

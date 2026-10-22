@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/EvFocus_Learning to Reconstruct Sharp from Out-of-Focus Event Streams.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/EvFocus_Learning to Reconstruct Sharp from Out-of-Focus Event Streams.pdf",
+ "title": "EvFocus: Learning to Reconstruct Sharp Images from Out-of-Focus Event Streams",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4,
+  "overall": 5.25
+ },
+ "one_line": "首个事件相机离焦重建工作，但仿真域差与边界分析不足。",
+ "innovations": [
+  "首次针对事件相机的离焦模糊进行清晰图像重建",
+  "建立事件离焦相机物理模型并构建仿真器生成真实离焦事件流用于鲁棒训练测试",
+  "设计含时间信息编码器、模糊感知双分支解码器与重建-再离焦模块的EvFocus架构"
+ ],
+ "method_framework": "先建模离焦镜头下事件流的退化并仿真生成配对(离焦事件流-清晰图)数据；EvFocus用时间编码器提取事件时序信息，模糊感知双分支解码器分离清晰/模糊成分，再经重建与再离焦模块闭环校正离焦模糊。",
+ "experiment_framework": "在自建仿真数据集与真实数据集上对比ET-Net、SPADE-E2VID等事件重建方法；指标为重建图像的PSNR/SSIM等；展示离焦事件流到接近对焦结果的重建效果。",
+ "takeaways": [
+  "现有对焦算法难以直接用于稀疏事件数据，EvFocus是首个系统应对事件相机离焦的工作",
+  "仿真器与真实数据上EvFocus均优于既有事件重建方法",
+  "重建-再离焦闭环模块有效校正了离焦模糊"
+ ],
+ "weaknesses": [
+  "依赖自建仿真器，仿真与真实事件离焦之间的域差影响未充分量化",
+  "缺少对不同离焦程度/运动组合的边界分析",
+  "与主线(可靠性/医学影像/多模态大模型推理)无关，属低层事件视觉"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.33,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

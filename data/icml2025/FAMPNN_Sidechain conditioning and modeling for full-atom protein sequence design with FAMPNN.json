@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/FAMPNN_Sidechain conditioning and modeling for full-atom protein sequence design with FAMPNN.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FAMPNN_Sidechain conditioning and modeling for full-atom protein sequence design with FAMPNN.pdf",
+ "title": "Sidechain conditioning and modeling for full-atom protein sequence design with FAMPNN",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "联合建模侧链与序列提升设计精度，但适用场景受限且缺乏实验验证",
+ "innovations": [
+  "首次在逆折叠/序列设计中对每个残基同时建模离散氨基酸身份与连续侧链坐标分布，用交叉熵+扩散损失联合学习",
+  "提出轻量迭代采样方法，从序列-侧链联合分布中交替采样，提升设计序列的自洽性",
+  "给出侧链 packing 的自误差估计 pSCE，并证明全原子上下文可迁移到零样本实验亲和力/稳定性预测"
+ ],
+ "method_framework": "基于 MPNN 图编码主链结构，对每个残基头部分别输出离散氨基酸类别分布（交叉熵）与连续侧链坐标分布（扩散模型），训练时联合优化；推理时迭代地在给定部分序列/部分侧链上下文下交替采样序列与侧链构象。",
+ "experiment_framework": "在 CATH 4.2 测试集与 CASP 靶点上评估序列恢复准确率与侧链堆积 RMSD；对比 ProteinMPNN/LigandMPNN 等基线；用 SKEMPIv2 等 fitness 数据集以 Spearman ρ 评估零样本突变效应预测，并做训练/条件/架构消融。",
+ "takeaways": [
+  "联合建模侧链构象同时提升了序列恢复率并取得 SOTA 侧链 packing RMSD，二者是协同而非权衡关系",
+  "在蛋白-蛋白界面等侧链相互作用关键区域，提供侧链上下文比仅提供序列上下文更能提升设计准确性",
+  "全原子上下文能改进零样本蛋白 fitness 预测（尤其 SKEMPIv2），但对抗体-抗原结合预测无收益（受输入结构误差影响）"
+ ],
+ "weaknesses": [
+  "仅针对固定主链设计，需已知主链结构；不能同时设计主链，适用场景受限",
+  "抗体-抗原结合预测未受益，作者归因于输入结构不准，说明方法对结构噪声的鲁棒性存疑",
+  "与 LigandMPNN 等强基线的优势幅度在正文展示有限，缺少独立湿实验合成验证闭环"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

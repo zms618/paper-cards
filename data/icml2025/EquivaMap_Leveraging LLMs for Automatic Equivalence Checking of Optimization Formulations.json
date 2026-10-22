@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/EquivaMap_Leveraging LLMs for Automatic Equivalence Checking of Optimization Formulations.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/EquivaMap_Leveraging LLMs for Automatic Equivalence Checking of Optimization Formulations.pdf",
+ "title": "EquivaMap: Leveraging LLMs for Automatic Equivalence Checking of Optimization Formulations",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "LLM+形式化判据自动验证优化公式等价，但扩展性与完备性存疑",
+ "innovations": [
+  "受Karp归约启发提出Quasi-Karp等价这一形式化判据",
+  "用LLM自动发现两优化公式决策变量间的映射",
+  "设验证阶段确保映射后的解保持可行性与最优性而无需额外求解器调用",
+  "构建首个等价优化公式开源数据集EquivaFormulation"
+ ],
+ "method_framework": "EquivaMap 先由LLM搜索两优化公式决策变量间的映射，再以Quasi-Karp等价判据形式化判定；验证阶段核验映射解在原问题上保持可行与最优，从而把LLM的猜测收敛为可证明的等价结论。",
+ "experiment_framework": "在自建EquivaFormulation数据集上评测自动等价检查准确率；对比简单启发式方法；验证阶段的误判率与无需额外求解器的开销。",
+ "takeaways": [
+  "简单启发式无法可靠检验优化公式等价，LLM加形式化判据可行",
+  "Quasi-Karp判据为优化公式等价提供了可计算定义",
+  "验证阶段使LLM发现的映射可信，避免错误等价"
+ ],
+ "weaknesses": [
+  "依赖LLM搜索映射，对大规模/结构复杂公式的可扩展性待验证",
+  "验证阶段的完备性边界(哪些等价无法被映射捕获)未充分刻画",
+  "主要在合成/公开公式集验证，对工业级优化问题覆盖有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

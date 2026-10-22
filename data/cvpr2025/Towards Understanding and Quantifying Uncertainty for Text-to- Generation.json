@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Towards Understanding and Quantifying Uncertainty for Text-to- Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Towards Understanding and Quantifying Uncertainty for Text-to- Generation.pdf",
+ "title": "Towards Understanding and Quantifying Uncertainty for Text-to- Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "PUNC用LVLM量化图像生成不确定性，但计算开销大且依赖模型能力。",
+ "innovations": [
+  "首次针对文本到图像生成模型的不确定性量化",
+  "提出PUNC方法利用LVLM在语义空间评估不确定性",
+  "实现 aleatoric 和 epistemic 不确定性分离"
+ ],
+ "method_framework": "PUNC通过LVLM生成图像描述，与原始提示计算文本相似度，利用精确率和召回率分离两种不确定性，绕过图像空间比较的局限性。",
+ "experiment_framework": "在SDv1.5、SDXS、SDXL和PixArt-Σ模型上测试，对比DDPM-OOD、LMD和2XDM基线方法，使用多种文本相似度指标。",
+ "takeaways": [
+  "利用LVLM进行语义级不确定性评估的有效性",
+  "精确率和召回率可分离不同类型的不确定性"
+ ],
+ "weaknesses": [
+  "计算开销较大，需要多次生成和LVLM推理",
+  "依赖LVLM的文本理解能力，可能引入新的不确定性来源"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "不确定性量化主线与图像生成落地域交点，LVLM方法有设计价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/A Mixed Diet Makes DINO An Omnivorous Vision Encoder.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Mixed Diet Makes DINO An Omnivorous Vision Encoder.pdf",
+ "title": "A Mixed Diet Makes DINO An Omnivorous Vision Encoder",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "参数高效适配器+数据混入让DINO跨模态，但实验严谨性存疑",
+ "innovations": [
+  "把「开箱编码器跨模态不对齐」变成可测现象：同景 RGB 与其 depth 图的 patchwise cosine（0.26）几乎等于两张无关图（0.24），以此界定真正要修的缺陷而非泛泛谈统一编码器",
+  "参数高效改造：冻结骨干前 L=8 个 block（教师头也冻结），只微调后 4 个 block 作适配器 g，并在 L_total=L_align+ϖanchor L_anchor（式4，ϖanchor=10）中加入余弦锚定 L_anchor=Σ_m(1−sim(h_m,h̄_m))（式3）显式抑制表示塌缩",
+  "两条数据侧 trick：用 RGB 的 64 分位量化调色板给 depth/seg 上色，做成「硬正例」堵死低层色彩直方图 shortcut；再逐样本随机把 RGB 混入 depth/seg（ω∈[0,0.5]），把 Depth↔RGB↔Seg 撑成连续模态谱并顺带给 InfoNCE 补负例"
+ ],
+ "method_framework": "冻结 DINOv2 前 8 个 ViT block（及教师头 ḡ）仅微调后 4 个 block 作适配器 g；RGB/depth/seg 先按 RGB 量化调色板上色、再随机混入至多 50% 的 RGB；用对称 InfoNCE 拉同场景跨模态、用余弦 anchor 把学生绑回教师，joint 训练。",
+ "experiment_framework": "6 数据集混合训；检索评 MOVi/ScanNet/TartanAir（R@1/R@5/mAP/MedR）；下游 NYUv2/NAVI 深度、ADE20k/Cityscapes/VOC 分割、ImageNet/iNat/SOP/GLDv2/RP2K/Food2k 线性或 DPT 探针；另做 ViT-L/14 缩放与 PACE 零样本跨模态迁移，全部报点估计。",
+ "takeaways": [
+  "表1 的 MedR 最能说明问题：DINOv2 在 ScanNet 上 MedR=401.8（N=3072，近乎随机），Omnivorous 压到 2.0；而合成集 MOVi/TartanAir 本来就有 15.5%/46.6% 的底子，说明真机域差才是难点",
+  "表5 是整篇最硬的证据：深度头只在 NYUv2 的 RGB 上训，直接改喂 segmentation 图，DINOv2 的 RMSE 崩到 1.536（≈随机猜测），Omnivorous 仍有 0.532；连两模型都没见过的 NOCS 也赢（1.075 vs 1.996）",
+  "表2 的 DPT 一栏几乎全平（NYUv2 rmse 0.297 vs 0.297、Cityscapes 0.737 vs 0.732），说明对齐收益主要落在弱探针上、强解码器下适配器没带来额外几何信息——换评估口径会让「对齐有用」的结论翻转"
+ ],
+ "weaknesses": [
+  "表3 里 ImageNet 线性探测 80.4→83.8 是全篇最大涨幅，但正文明说「sweep 五个学习率、每行取最好的一个」；基线同样享受该选择却未报五取值，涨点里含多少学习率挑选成分无从核对，且所有表都是点估计无方差",
+  "表4 显示细粒度数据集明确退步（iNat 78.53→77.49、GLDv2 51.90→50.13），作者归因于训练混合含大量合成多目标数据，但正文没有做「去掉合成数据训练混合」的消融，归因停留在猜测",
+  "InfoNCE 的负例只来自 batch 内不同场景（并用 mask 屏蔽了图内 dense token），而 depth/seg 输入本身已混入至多 50% 的 RGB，三模态在像素层面高度相似，负例多样性远弱于 CMC，正文却未与 CMC 或未做负例数消融对照",
+  "正文在 4.4 节后截断，4.5 的整节消融读不到：ωmax=0.5、ϖanchor=10、冻结层数 L=8 三个关键超参的选择依据与敏感性全部缺失"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "跨模态对齐与可靠性主线无实质交织，仅为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

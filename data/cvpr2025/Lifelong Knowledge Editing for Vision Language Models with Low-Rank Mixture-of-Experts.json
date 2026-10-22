@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Lifelong Knowledge Editing for Vision Language Models with Low-Rank Mixture-of-Experts.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Lifelong Knowledge Editing for Vision Language Models with Low-Rank Mixture-of-Experts.pdf",
+ "title": "Lifelong Knowledge Editing for Vision Language Models with Low-Rank Mixture-of-Experts",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "低秩专家混合实现VLM终身编辑，但存储与层限制问题明显",
+ "innovations": [
+  "低秩专家生成器为每个编辑实例独立产生专家",
+  "硬过滤机制利用视觉语义知识排除无关专家",
+  "基于文本语义相关性的软路由机制实现多专家融合"
+ ],
+ "method_framework": "LiveEdit框架包含专家生成器、硬过滤和软路由机制，通过视觉和文本语义双重路由选择相关专家，实现终身编辑而不损害模型原有知识。",
+ "experiment_framework": "在E-VQA、E-IC和VLKEB数据集上评估，使用BLIP2、LLaVA和MiniGPT-4作为骨干模型，对比FT-L、FT-M、MEND等基线方法。",
+ "takeaways": [
+  "专家混合架构可有效解决终身编辑中的知识冲突问题",
+  "双阶段路由策略(硬过滤+软路由)能平衡视觉和文本相关性"
+ ],
+ "weaknesses": [
+  "专家存储随编辑次数线性增长，可能带来存储问题",
+  "仅在高贡献层插入编辑器，可能限制编辑效果"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "VLM编辑与可靠性主线无实质交织，仅为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

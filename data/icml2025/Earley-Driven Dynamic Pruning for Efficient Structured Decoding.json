@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Earley-Driven Dynamic Pruning for Efficient Structured Decoding.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Earley-Driven Dynamic Pruning for Efficient Structured Decoding.pdf",
+ "title": "Earley-Driven Dynamic Pruning for Efficient Structured Decoding",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "Earley解析动态剪枝提升约束解码效率，但创新有限且证据不足",
+ "innovations": [
+  "提出Earley驱动的动态剪枝方法，利用Earley解析器的状态高效剪枝无效token，而非逐token检查整个词表",
+  "在保证LLM输出严格符合文法约束的同时，显著降低约束解码的计算开销"
+ ],
+ "method_framework": "将上下文无关文法输入Earley解析器；在每个解码步骤，利用Earley解析器的当前状态集动态剪枝无效token，生成只允许合法token的logits mask；通过增量更新解析状态避免重复计算。",
+ "experiment_framework": "在函数调用、JSON生成、DSL生成等结构化输出任务上评估，对比现有约束解码引擎（如Outlines、Grammar constrained decoding），指标为解码速度和输出合规率。",
+ "takeaways": [
+  "Earley驱动的动态剪枝比逐token检查整个词表更高效",
+  "约束解码在保证LLM输出格式可靠性方面至关重要，效率是其规模化应用的瓶颈"
+ ],
+ "weaknesses": [
+  "属于高效约束解码方向，虽涉及输出可靠性但并非核心的鲁棒性/不确定性研究",
+  "Earley解析器本身的状态空间在复杂文法下可能膨胀",
+  "前9页仅看到动机和方法概述，具体剪枝算法和速度提升数据未充分展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.78,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/BlurDM_A Blur Diffusion Model for Deblurring.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/BlurDM_A Blur Diffusion Model for Deblurring.pdf",
+ "title": "BlurDM: A Blur Diffusion Model for Deblurring",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "双扩散过程建模模糊，提升去模糊性能但增加计算开销。",
+ "innovations": [
+  "双噪声和模糊扩散过程",
+  "双重去噪和去模糊公式",
+  "隐空间模糊扩散模型作为先验生成网络"
+ ],
+ "method_framework": "BlurDM采用双扩散策略，前向过程同时添加噪声和模糊，反向过程同时去除噪声和模糊，在隐空间中作为先验生成网络增强现有去模糊模型。",
+ "experiment_framework": "在GoPro、HIDE、RealBlur-J和RealBlur-R四个基准数据集上测试，与MIMO-UNet、Stripformer、FFTformer和LoFormer四种去模糊模型比较，使用PSNR、SSIM和LPIPS指标。",
+ "takeaways": [
+  "将模糊形成物理过程融入扩散模型可提升去模糊性能",
+  "双重估计器(噪声和模糊残差)比单一估计器更有效"
+ ],
+ "weaknesses": [
+  "需要额外的训练阶段和计算开销",
+  "模糊残差估计依赖于隐空间表示，可能损失部分细节"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

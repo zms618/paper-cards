@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/TTFT_Speculative Prefill Turbocharging TTFT with Lightweight and Training-Free Token Importance Estimation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/TTFT_Speculative Prefill Turbocharging TTFT with Lightweight and Training-Free Token Importance Estimation.pdf",
+ "title": "Speculative Prefill: Turbocharging TTFT with Lightweight and Training-Free Token Importance Estimation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "轻量模型推测重要token加速LLM预填充，但信息密集型查询效果有限",
+ "innovations": [
+  "基于轻量模型推测重要token的预填充框架",
+  "使用前向注意力分数和look-ahead机制减少位置偏差",
+  "chunk选择和池化策略去噪注意力分数",
+  "非连续位置ID恢复机制"
+ ],
+ "method_framework": "SPECPREFILL使用轻量模型推测重要token，仅保留这些token及其位置信息送入主模型处理，减少计算量，无需微调即可显著提升TTFT性能。",
+ "experiment_framework": "在LongBench和RULER数据集上评估，与RAG-LLAMA、LLMLingua和MInference等基线比较，测量不同token保留率下的任务性能和TTFT加速比。",
+ "takeaways": [
+  "轻量模型推测重要token可有效加速LLM预填充阶段",
+  "不同类型查询的压缩效果差异显著，信息密集型查询压缩效果有限",
+  "方法可与推测解码无缝集成形成完整的小模型辅助推理范式"
+ ],
+ "weaknesses": [
+  "对信息密集型查询压缩效果有限",
+  "固定token保留率策略不够灵活",
+  "未探索自适应token保留策略"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

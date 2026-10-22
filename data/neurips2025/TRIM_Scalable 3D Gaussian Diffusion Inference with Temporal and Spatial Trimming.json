@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/TRIM_Scalable 3D Gaussian Diffusion Inference with Temporal and Spatial Trimming.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/TRIM_Scalable 3D Gaussian Diffusion Inference with Temporal and Spatial Trimming.pdf",
+ "title": "TRIM: Scalable 3D Gaussian Diffusion Inference with Temporal and Spatial Trimming",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "TRIM通过时空修剪加速3D高斯扩散，但改进有限且依赖离线数据",
+ "innovations": [
+  "轨迹选择器实现早期轨迹修剪",
+  "实例掩码去噪减少背景冗余计算",
+  "渐进式掩码扩展调度器确保平滑过渡"
+ ],
+ "method_framework": "TRIM框架包含三个阶段：轨迹减少、实例掩码去噪和去噪后校正，通过轻量选择器识别高质量轨迹，并利用参考注意力机制检测实例区域",
+ "experiment_framework": "在T3Bench和GSO数据集上评估，使用CLIP相似度、CLIP R精度、ImageReward、PSNR、SSIM和LPIPS指标，与DiffSplat等基线比较",
+ "takeaways": [
+  "轨迹多样性比增加去噪步数更有效",
+  "训练无关的实例掩码机制可集成到现有模型",
+  "渐进式掩码扩展可减少伪影"
+ ],
+ "weaknesses": [
+  "图像到3D任务中改进相对较小",
+  "选择器训练依赖离线数据合成",
+  "背景校正可能引入新伪影"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/2DGS-Supervised_GS-ASM 2DGS-Supervised Active Stereo Matching.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/2DGS-Supervised_GS-ASM 2DGS-Supervised Active Stereo Matching.pdf",
+ "title": "GS-ASM: 2DGS-Supervised Active Stereo Matching",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.4
+ },
+ "one_line": "零发射IR图训2DGS生成视差标签，解决有源立体匹配真实场景监督难题",
+ "innovations": [
+  "用发射功率为零（e=0）的真实多视角 IR 图训练 2DGS（绕开二值投影图案破坏体积渲染假设的问题），再由渲染深度按 d(x)=b·f/z(x)（式5）提取视差代理标签，并用渲染出的新颖视扩充真实有源立体样本",
+  "按式7 用局部窗归一化加阈值 δ+c 把多档发射强度下的 IR 图二值化成投影图案 K(u,v)，只在二值图案上建重投影损失（式8），把无纹理区的监督信号从纹理一致性换成图案形貌一致性",
+  "混合域动态权重：µ(t)、λ(t) 按各自上一轮总 loss 的相对变化反向更新（式11，α=0.1，clamp 到 [1e-3,10]），在噪声较大的代理监督与不稳定的自监督之间自适应配权（式10）"
+ ],
+ "method_framework": "零发射帧训 2DGS 出深度与视差代理标签，新颖视按针孔模型投影光斑模板扩充数据；网络端联训二值图案重投影损失与视差平滑 L1，两路损失用动态权重平衡。",
+ "experiment_framework": "手持 RealSense D435 采集的 10 万+ 真实场景 + Blender 合成集（各 2 万/3 千）；PSMNet/RAFT/StereoNet 三个骨干，指标 EPE 与 1/3/5px 准确率。",
+ "takeaways": [
+  "「零发射功率帧训 2DGS、带图案帧渲染代理标签」这条时间线切分能同时拿到几何真值与真实外观，比整段 Blender 仿真更直接压小 sim2real 差距（图6 里 ActiveZero 在真实场景反而不如 D435 直出）",
+  "二值图案而非灰度做自监督项是无纹理区立体最省事的替代监督：物体纹理与环境光被阈值二值化直接抹掉，只留下投影图案本身"
+ ],
+ "weaknesses": [
+  "自适应权重只写「按 loss 相对变化反比更新」（式11），无收敛性与梯度分析，α=0.1、初值 µ=0.01/λ=2、clamp 区间都是网格级经验超参；表3 消融只有三行且单一 RAFT 跑一次，无方差",
+  "主表全部在 Blender 合成测试集上，真实场景只有定性图；而合成集里 D435 输出被当作监督标签训练模型，又把同一传感器拉来当评测对手，评测口径自证循环",
+  "代理标签自评「与 D435 误差在 1 像素内」（图3），但 D435 正是被比较的评测对象，形成自证；且未见代理标签噪声注入下模型鲁棒性的隔离实验",
+  "第 4.4 节在讨论 2DGS 各强度档重建效果后被截断，缺不同 IR 强度、多帧多场景下的量化方差"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "立体匹配技术不属可靠性主线，但方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

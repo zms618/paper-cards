@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Visionreasoner_Unified Reasoning-Integrated Visual Perception via Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Visionreasoner_Unified Reasoning-Integrated Visual Perception via Reinforcement Learning.pdf",
+ "title": "VisionReasoner: Unified Reasoning-Integrated Visual Perception via Reinforcement Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "统一RL框架整合多视觉任务，奖励机制设计合理但任务覆盖有限。",
+ "innovations": [
+  "提出统一视觉感知框架，将检测、分割、计数三类任务统一为多物体认知问题，通过共享架构解决",
+  "设计统一奖励机制：格式奖励（思考奖励+防重复奖励）+ 准确率奖励（多物体IoU奖励+L1定位奖励），适配多任务RL训练",
+  "实现高效匹配流水线，结合批量计算和匈牙利算法解决RL中预测-真值最优匹配问题，提升训练效率"
+ ],
+ "method_framework": "VisionReasoner基于Qwen2.5VL，通过RL统一训练多种视觉感知任务。奖励设计包含两部分：格式奖励（structured thinking reward促进结构化推理，non-repeat reward防止冗余推理模式）和准确率奖励（multi-object IoU reward + L1 localization reward强化多物体认知）。训练时需要预测与真值的最优匹配，通过批量计算+匈牙利算法高效实现。模型先输出结构化推理过程，再给出最终感知输出。",
+ "experiment_framework": "任务：10个视觉感知任务，覆盖检测（COCO）、分割（ReasonSeg）、计数（CountBench）三大领域。基线：Qwen2.5VL基座模型。指标：各任务精度。结果：COCO检测相对提升29.1%，ReasonSeg分割提升22.1%，CountBench计数提升13.2%。另含人工评估推理过程忠实度。",
+ "takeaways": [
+  "检测、分割、计数三类视觉感知任务共享多物体认知结构，可通过统一RL框架联合训练",
+  "统一奖励机制（格式+准确率）能有效引导模型同时学习推理结构和精确感知定位",
+  "即使无标注推理数据，RL训练出的推理过程在人工评估中也表现出忠实可靠的特点"
+ ],
+ "weaknesses": [
+  "仅覆盖检测/分割/计数三类任务，更复杂的开放世界视觉任务是否能统一适配未验证",
+  "RL训练需要大量奖励计算和匹配开销，训练成本较高",
+  "统一模型在单任务上是否能与专用模型媲美仍需更多对比实验"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视觉感知任务统一框架，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

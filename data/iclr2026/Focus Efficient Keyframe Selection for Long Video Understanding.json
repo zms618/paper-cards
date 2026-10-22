@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Focus Efficient Keyframe Selection for Long Video Understanding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Focus Efficient Keyframe Selection for Long Video Understanding.pdf",
+ "title": "Focus: Efficient Keyframe Selection for Long Video Understanding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "将关键帧选择形式化为多臂赌博机问题，理论保证但忽略时间依赖",
+ "innovations": [
+  "将关键帧选择形式化为组合纯探索多臂赌博机问题",
+  "提出两阶段探索-利用框架，理论保证收敛",
+  "无需预过滤即可处理极长视频，仅处理1.6%帧"
+ ],
+ "method_framework": "将视频分割为片段作为赌博机臂，使用经验均值和Bernstein置信半径选择高价值区域，然后在选定区域内选择最相关帧。",
+ "experiment_framework": "LongVideoBench和Video-MME基准测试，对比均匀采样、Top-K和AKS方法，使用LLaVA-Video-7B等4种MLLM评估。",
+ "takeaways": [
+  "利用视频时间局部性减少计算量",
+  "乐观置信上界选择平衡探索与利用",
+  "两阶段框架提高并行效率"
+ ],
+ "weaknesses": [
+  "假设帧级相关性独立同分布，忽略片段间时间依赖",
+  "在Video-MME上提升较小(1.8%)，可能因查询类型不同"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "关键帧选择方法与可靠性主线无直接交点，仅属视频处理常规优化",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

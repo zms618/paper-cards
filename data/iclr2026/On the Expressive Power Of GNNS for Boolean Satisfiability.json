@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/On the Expressive Power Of GNNS for Boolean Satisfiability.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/On the Expressive Power Of GNNS for Boolean Satisfiability.pdf",
+ "title": "On the Expressive Power of GNNs for Boolean Satisfiability",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "证明GNN在SAT问题上存在WL表达力上限，但工业实用性证据不足",
+ "innovations": [
+  "构造 O(n) 变量的 3-SAT 实例对，在 n-WL 下不可区分却一可满足一不可满足（Theorem 5.3），类比 Cai-Fürer-Immerman 构造",
+  "证明高阶 WL 不可区分性会传导到顺序赋值求解器：即便 Ω(n) 次赋值后残差公式仍可能对 WL 强架构不可判定",
+  "分析正则、随机、平面等重要 SAT 实例族的表达力需求，并在 G4SAT 随机集与 SAT Competition 工业集上量化"
+ ],
+ "method_framework": "将布尔公式表为 literal-clause 二部图(LCG/LCN)，以 WL 测试刻画 GNN 表达力；构造 WL-等价但可满足性相反的公式对证明不可能性；再分析顺序变量赋值过程中残差公式的 WL 等价性保持，导出对 NeuroSAT/QuerySAT 类求解器的实用限制。",
+ "experiment_framework": "理论为主，辅以 G4SAT 随机实例与国际 SAT Competition 工业实例的实验；比较随机 vs 工业实例在 WL 表达力需求上的差异，工业实例往往需要更高表达力才能预测满足指派。",
+ "takeaways": [
+  "GNN 求解 SAT 存在结构性表达力上限：完整 WL 层级也不能保证区分 sat/unsat",
+  "随机实例大多可被 GNN 区分，但带强社区结构的工业实例常需要超出常规 GNN 的表达力",
+  "这一限制与训练数据/优化无关，是由公式图的 WL 等价性决定的"
+ ],
+ "weaknesses": [
+  "纯理论加小规模基准，对工业大规模 SAT 的实际可扩展性证据有限",
+  "偏离可靠性/医学影像/多模态推理主线，相关性低",
+  "前 9 页内未讨论如何用超越 WL 的结构（如位置编码、全局读出）缓解该限制的可行路径"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "理论工作与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Thermalizer_Stable autoregressive neural emulation of spatiotemporal chaos.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Thermalizer_Stable autoregressive neural emulation of spatiotemporal chaos.pdf",
+ "title": "Thermalizer: Stable autoregressive neural emulation of spatiotemporal chaos",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.7
+ },
+ "one_line": "扩散模型估计不变测度分数，热化机制延长混沌系统预测稳定性。",
+ "innovations": [
+  "提出利用扩散模型学习时空混沌系统不变测度的隐式分数估计",
+  "提出热化(thermalization)机制：在自回归滚动推理过程中实时施加去噪，将稳定预测时间跨度延长两个数量级",
+  "为扩散模型在神经仿真领域开辟了新应用方向——稳定长时自回归预测"
+ ],
+ "method_framework": "对于时间平稳系统，其长期动力学收敛到某个不变测度。训练扩散模型来估计该不变测度的分数函数。在自回归模拟器滚动预测时，每步预测后用学到的分数函数对状态进行实时去噪(热化)，将偏离分布的状态拉回不变流形附近，从而抑制误差累积和轨迹发散。",
+ "experiment_framework": "在具有湍流和混沌行为的复杂时空系统上验证，对比基线为标准自回归模拟器。评估指标为稳定预测时间跨度和轨迹精度。",
+ "takeaways": [
+  "扩散模型可用于学习动力系统不变测度的分数，为稳定自回归预测提供信号",
+  "实时热化机制将混沌系统的稳定预测时间跨度提升约100倍",
+  "分数引导的去噪可有效抑制自回归滚动中的误差累积和分布漂移"
+ ],
+ "weaknesses": [
+  "仅适用于时间平稳(存在不变测度)的系统，对非平稳系统不适用",
+  "去噪强度的选择缺乏自适应准则，固定参数可能影响短期预测精度",
+  "与其他稳定化方法(如多步训练、噪声注入)的系统对比不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Steering When Necessary Flexible Steering Large Language Models with Backtracking.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Steering When Necessary Flexible Steering Large Language Models with Backtracking.pdf",
+ "title": "Steering When Necessary: Flexible Steering Large Language Models with Backtracking",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "动态回溯引导LLM，提升真实性与多任务性能",
+ "innovations": [
+  "动态确定干预必要性和强度的灵活激活引导",
+  "回溯机制纠正偏离行为并重新生成",
+  "基于探针的注意力头选择和引导向量构建"
+ ],
+ "method_framework": "通过探针识别与期望行为相关的注意力头，构建分类器和引导向量；在生成过程中跟踪内部状态，动态确定干预强度；当检测到偏离时回溯若干token并应用引导向量重新生成",
+ "experiment_framework": "TruthfulQA数据集(真实性与信息量)和六个多选数据集(COPA/StoryCloze/NLI/MMLU/SST2/Winogrande)，使用True*Info和MC准确率作为指标",
+ "takeaways": [
+  "基于生成内容的动态干预比固定干预更有效",
+  "回溯机制能有效纠正已偏离的生成",
+  "探针方法可跨模型和任务泛化"
+ ],
+ "weaknesses": [
+  "回步数和阈值等超参数需要仔细调整",
+  "信息量指标随干预强度增加而下降",
+  "未探索在更复杂任务上的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

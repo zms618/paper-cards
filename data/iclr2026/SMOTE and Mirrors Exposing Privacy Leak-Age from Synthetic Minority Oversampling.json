@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SMOTE and Mirrors Exposing Privacy Leak-Age from Synthetic Minority Oversampling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SMOTE and Mirrors Exposing Privacy Leak-Age from Synthetic Minority Oversampling.pdf",
+ "title": "SMOTE and Mirrors: Exposing Privacy Leakage from Synthetic Minority Oversampling",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "揭示SMOTE隐私泄露漏洞，但攻击方法局限且缺乏防御方案。",
+ "innovations": [
+  "指出现有朴素区分与距离最近记录指标完全无法检测SMOTE的隐私泄露",
+  "利用SMOTE几何性质构建DistinSMOTE，在增强数据集中完美区分真实与合成记录",
+  "构建ReconSMOTE，在真实不平衡比下以精确率近1、召回近1重建真实少数类记录，并给出理论保证"
+ ],
+ "method_framework": "先证明MIA可在SMOTE上高精度实例化而现有指标漏检；再利用SMOTE在近邻间线性插值的几何性质，分别设计区分攻击(DistinSMOTE)与重建攻击(ReconSMOTE)，并给出两类攻击的理论隐私泄露保证。",
+ "experiment_framework": "在8个标准不平衡数据集上评测DistinSMOTE/ReconSMOTE；报告区分准确率与重建精确率/召回率；覆盖稀有疾病诊断、欺诈检测等隐私敏感场景。",
+ "takeaways": [
+  "SMOTE本质上是非私密的，且不成比例地暴露少数类记录",
+  "现有隐私评估指标对SMOTE泄露完全漏检",
+  "应重新审视SMOTE在隐私敏感应用中的使用及其作为生成模型隐私基线的地位"
+ ],
+ "weaknesses": [
+  "攻击利用线性插值几何性质，对加入非线性/噪声的现代SMOTE变体有效性未充分覆盖",
+  "落地以表格不平衡数据为主，与医学影像/多模态推理主线距离较远",
+  "提出的是攻击分析，未给出可部署的防御方案"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "隐私泄露分析扎实，但与医学影像/多模态主线距离远",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

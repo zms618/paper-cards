@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Second Mitigating Perceptual Hallucination in Vision-Language Models via Selective and Contrastive Decoding.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Second Mitigating Perceptual Hallucination in Vision-Language Models via Selective and Contrastive Decoding.pdf",
+ "title": "SECOND: Mitigating Perceptual Hallucination in Vision-Language Models via Selective and Contrastive Decoding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "elevance": 7.0,
+  "evidence": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "多尺度对比解码抑制VLM物体幻觉，但计算开销大且依赖假设",
+ "innovations": [
+  "提出选择性patch选择策略，物体相关地累积多尺度视觉信息，而非像现有VLM那样均匀纳入各尺度patch。",
+  "提出跨多尺度的对比解码(contrastive decoding)，迭代对比不同尺度视觉信息以抑制幻觉。",
+  "给出理论分析并在广泛幻觉基准上超越现有方法，揭示多尺度对比应用在VLM中的潜力。"
+ ],
+ "method_framework": "解码时的幻觉抑制方法。与现有VLM均匀融合固定两尺度patch不同，SECOND按物体中心方式渐进选择与问题/物体相关的多尺度patch，再对不同尺度得到的logits做对比解码——以高保真细节尺度为'专家'、粗糙尺度为'基线'做对比，惩罚缺乏视觉支撑的token，从而抑制与图像不符的物体幻觉。",
+ "experiment_framework": "在主流VLM(如LLaVA-NeXT)上即插即用，评测多个物体幻觉/感知幻觉基准(如POPE、HallusionBench等)与VQA准确率；对比常规融合、其他幻觉缓解/对比解码方法，指标为幻觉率与准确率，做patch选择策略、对比尺度组合与多尺度数的消融。",
+ "takeaways": [
+  "以物体为中心地选择并跨尺度对比视觉信息，可显著降低VLM物体感知幻觉。",
+  "多尺度信息的优先级排序与对比优于均匀融合，是被忽视的有效设计维度。"
+ ],
+ "weaknesses": [
+  "推理需多尺度前向与对比，解码计算开销上升。",
+  "依赖'高保真尺度更可信'的假设，对小物体/细粒度场景的对比有效性需更多验证。",
+  "仅作用于解码侧，对模型本身视觉编码缺陷的覆盖有限。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

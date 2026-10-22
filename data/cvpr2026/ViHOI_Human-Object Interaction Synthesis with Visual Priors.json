@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/ViHOI_Human-Object Interaction Synthesis with Visual Priors.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ViHOI_Human-Object Interaction Synthesis with Visual Priors.pdf",
+ "title": "ViHOI Human-Object Interaction Synthesis with Visual Priors",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "VLM先验增强扩散模型生成HOI，但依赖合成参考图像",
+ "innovations": [
+  "VLM分层提取视觉和文本先验",
+  "Q-Former适配器压缩高维特征",
+  "训练和推理阶段不同的参考图像生成策略"
+ ],
+ "method_framework": "ViHOI框架包含VLM先验提取器和视觉感知HOI生成器，通过分层提取视觉和文本先验，使用Q-Former适配器压缩特征，指导扩散模型生成高质量人体-物体交互动作。",
+ "experiment_framework": "FullBodyManipulation和BEHAVE数据集，基线包括MDM、CHOIS、ROG和SemGeoMo，评估指标包括MPJPE、接触精度、FID、R-precision等。",
+ "takeaways": [
+  "视觉先验能有效提升交互动作的真实性和物理合理性",
+  "分层提取不同模态先验的策略有效",
+  "方法可作为即插即用模块提升现有模型性能"
+ ],
+ "weaknesses": [
+  "依赖文本到图像生成模型合成参考图像，可能引入风格不一致问题",
+  "仅评估了三个关键帧，可能无法完全捕捉交互的动态过程"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "生成式HOI与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

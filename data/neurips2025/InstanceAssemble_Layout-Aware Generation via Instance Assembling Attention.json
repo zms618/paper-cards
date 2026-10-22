@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/InstanceAssemble_Layout-Aware Generation via Instance Assembling Attention.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/InstanceAssemble_Layout-Aware Generation via Instance Assembling Attention.pdf",
+ "title": "InstanceAssemble: Layout-Aware Generation via Instance Assembling Attention",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "轻量级实例组装注意力实现布局感知生成，但密集布局效率低",
+ "innovations": [
+  "实例组装注意力机制(Assemble-Attn)",
+  "级联式Assemble-MMDiT架构",
+  "布局接地分数(LGS)评估指标",
+  "DenseLayout密集布局数据集"
+ ],
+ "method_framework": "通过布局编码器处理实例条件，使用级联式Assemble-MMDiT结构，先处理全局提示与图像，再通过独立注意力机制处理每个实例与对应图像区域，最后加权特征组装。",
+ "experiment_framework": "在LayoutSAM-Eval、DenseLayout和COCO-Layout数据集上评估，使用LGS、CropVQA等指标，与InstanceDiff、MIGC等基线比较。",
+ "takeaways": [
+  "轻量LoRA适配(仅增加0.84-3.46%参数)",
+  "级联设计平衡全局质量与布局精度",
+  "多模态实例内容控制提升生成质量"
+ ],
+ "weaknesses": [
+  "在COCO-Layout上mIoU略低于InstanceDiff",
+  "仅在前30%去噪步骤应用布局控制",
+  "密集布局下推理时间仍增加248%"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

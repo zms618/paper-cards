@@ -1,0 +1,37 @@
+{
+ "title": "The Canary's Echo: Auditing Privacy Risks of LLM-Generated Synthetic Text",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "仅用合成文本设计MIA，揭示隐私泄漏与现有审计不足",
+ "innovations": [
+  "设定新威胁模型：攻击者仅能访问合成数据(无模型/无 logits)，据此设计针对微调训练数据的 MIA",
+  "实证表明合成文本确实泄漏了训练样本信息，可能造成虚假的隐私安全感",
+  "发现面向基于模型 MIA 设计的 OOD canary 在仅发布合成数据时审计效力不足，揭示审计方法与发布场景不匹配问题"
+ ],
+ "method_framework": "把审计对象设为'只发布合成数据'的现实管线；构造仅基于合成数据即可运行的成员推断攻击，反推微调所用训练样本是否被记忆/泄漏；对比传统 OOD canary 审计在该场景下的表现，重新校准隐私审计的有效性。",
+ "experiment_framework": "在 LLM 合成文本生成管线上评测；威胁模型限定攻击者仅持有合成数据；用所提 MIA 的攻击成功率/优势度量训练数据泄漏程度；并对比 OOD canary 审计在该场景的不足。",
+ "takeaways": [
+  "仅拿到合成文本也能推断训练样本成员关系，合成数据存在实质隐私泄漏",
+  "忽略合成数据信息流的细微之处会带来虚假的隐私安全感",
+  "为基于模型 MIA 设计的 canary 并不适合'仅发布合成数据'这一审计场景"
+ ],
+ "weaknesses": [
+  "属隐私审计/攻击分析，与医学影像、多模态大模型推理主线关联较弱",
+  "攻击在更大模型/更真实合成管线下的可扩展性证据前9页有限",
+  "主要揭示风险与现有审计不足，未给出可落地的隐私保护合成方案"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/The Canary’s Echo Auditing Privacy Risks of LLM-Generated Synthetic Text.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/The Canary’s Echo Auditing Privacy Risks of LLM-Generated Synthetic Text.pdf",
+ "raw_overall": 6.75,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

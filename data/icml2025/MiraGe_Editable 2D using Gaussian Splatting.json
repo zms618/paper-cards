@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MiraGe_Editable 2D using Gaussian Splatting.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MiraGe_Editable 2D using Gaussian Splatting.pdf",
+ "title": "MiraGe: Editable 2D Images using Gaussian Splatting",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "将2D图像转为3D高斯平面，支持编辑但质量提升有限",
+ "innovations": [
+  "提出将2D图像感知为3D空间中的平面物体，用3D高斯溅射方法编码2D图像",
+  "采用平面控制高斯（flat-controlled Gaussians）实现精确的2D图像编辑",
+  "高斯表示可与物理引擎结合，实现基于物理的2D图像动态修改"
+ ],
+ "method_framework": "将2D图像表示为3D空间中一组平面参数化高斯的集合（三角形汤）。通过镜像反射的方式在3D空间中感知2D图像，使得图像的局部区域可以像3D物体一样进行变换和编辑。该表示支持实时操作3D高斯点云，并可无缝集成物理引擎实现动态交互。",
+ "experiment_framework": "在多个标准图像数据集上与GaussianImage等基线对比重建质量（PSNR、SSIM）。同时展示图像编辑能力（局部变形、物理模拟），通过定性结果验证编辑效果的自然度。",
+ "takeaways": [
+  "将2D图像提升到3D空间建模可同时提升重建质量和可编辑性",
+  "平面高斯表示支持直觉化的3D式图像编辑操作",
+  "与物理引擎的结合为动态图像编辑开辟了新方向"
+ ],
+ "weaknesses": [
+  "相比纯2D高斯表示，3D建模引入了额外参数和计算开销",
+  "编辑操作需要用户手动指定高斯区域，缺乏自动化的物体分割",
+  "重建质量的定量提升幅度有限，主要贡献在可编辑性而非质量"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

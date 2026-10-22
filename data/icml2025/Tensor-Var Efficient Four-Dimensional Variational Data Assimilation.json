@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Tensor-Var Efficient Four-Dimensional Variational Data Assimilation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Tensor-Var Efficient Four-Dimensional Variational Data Assimilation.pdf",
+ "title": "Tensor-Var: Efficient Four-Dimensional Variational Data Assimilation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "用核嵌入将非线性4D-Var转为凸优化，但高维核矩阵与实证不足",
+ "innovations": [
+  "将核条件均值嵌入引入4D-Var，把非线性动力学与观测算子线性化到再生核希尔伯特空间",
+  "在学习特征空间中把原本非凸的4D-Var代价转为凸优化，给出原空间与特征空间同化结果一致的理论保证",
+  "用神经网络学习深度特征以应对大规模问题，兼顾核方法的可解释性与DL的表达力"
+ ],
+ "method_framework": "把非线性动力模型F与观测算子H通过CME映射到特征空间，在特征空间中它们成为线性算子；从而4D-Var的非凸代价函数在特征空间变为凸二次问题，可用高效张量计算求解；深度特征由神经网络学习，扩展到高维气象/海洋状态。",
+ "experiment_framework": "在数值天气/海洋数据同化仿真与真实观测上对比传统4D-Var与纯DL同化方法，指标为分析误差/预报技能（前9页未列全具体数值），报告计算效率与精度提升。",
+ "takeaways": [
+  "核CME可在不牺牲理论保证的前提下把非线性4D-Var凸化",
+  "特征空间凸优化比在原空间做非凸迭代求解更稳更快",
+  "DL深度特征与核方法结合是大规模DA的可行路径"
+ ],
+ "weaknesses": [
+  "核矩阵规模在高维状态下仍可能爆炸，深度特征如何保持CME的线性化一致性缺少实证",
+  "前9页未给出具体算例维度、时间步数与对比数值，证据强度不足",
+  "假设观测映射可被CME良好近似，强非线性/混沌系统下的近似误差未量化",
+  "域为地球物理数据同化，与可靠性/医学影像/多模态大模型推理主线无关"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.55,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

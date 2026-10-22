@@ -1,0 +1,41 @@
+{
+ "title": "AEQA-NAT: Adaptive End-to-end Quantization Alignment Training Framework for Non-autoregressive Machine Translation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "解决NAT训练-推理间隙，语义对齐追平AT且加速17×",
+ "innovations": [
+  "指出 MLM 式 NAT 的核心瓶颈是训练-推理间隙：训练时采样目标词作条件，推理时无法获得",
+  "提出语义一致空间来自适应对齐 NAT 训练，消除对目标信息的依赖",
+  "提出自适应端到端量化对齐训练框架，在无需退火采样率的前提下弥合训练-推理间隙"
+ ],
+ "method_framework": "训练中不再依赖采样目标词作条件，而是引入语义一致空间/量化对齐，使模型在训练阶段学到的条件依赖在推理无目标词时仍成立；从而避免把采样率退火到 0 导致的性能下降，端到端联合训练对齐训练与推理行为。",
+ "experiment_framework": "在主流机器翻译基准上对比多数既有全 NAT 模型与自回归 Transformer(AT)，报告 BLEU 等翻译质量与推理加速比；结果为质量追平 AT、推理效率约 17×。",
+ "takeaways": [
+  "训练-推理间隙是 NAT 未能发挥潜力的关键，而非简单采样率退火可解",
+  "语义一致空间可在不依赖目标信息的情况下对齐训练与推理",
+  "AEQA-NAT 在质量追平 AT 的同时获得约一个数量级的推理加速"
+ ],
+ "weaknesses": [
+  "前 9 页未见与近期强 NAT/半自回归模型的系统对比",
+  "语义一致空间的引入是否带来额外训练开销未量化",
+  "仅在翻译任务验证，向其他 NAT 生成任务的可迁移性未知"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/AEQA-NAT_Adaptive End-to-end Quantization Alignment Training Framework for Non-autoregressive Machine Translation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/AEQA-NAT_Adaptive End-to-end Quantization Alignment Training Framework for Non-autoregressive Machine Translation.pdf",
+ "raw_overall": 5.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "翻译加速与可靠性主线无关，仅属常规NAT方法改进",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

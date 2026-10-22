@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Rethinking the Temperature for Federated Heterogeneous Distillation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Rethinking the Temperature for Federated Heterogeneous Distillation.pdf",
+ "title": "Rethinking the Temperature for Federated Heterogeneous Distillation",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.4
+ },
+ "one_line": "为联邦异构蒸馏引入多层弹性温度，增加超参调优负担",
+ "innovations": [
+  "指出现有联邦异构蒸馏(FHD)中固定温度校准是次优的，不同层和不同客户端需要不同温度",
+  "提出多层弹性温度(Multi-level Elastic Temperature)，动态调整不同层和不同客户端的蒸馏强度",
+  "在4个基准上验证ReT-FHD优于集中式和分布式基线"
+ ],
+ "method_framework": "传统FedKD用固定温度T软化logits进行蒸馏。ReT-FHD认为：(1)不同网络层的logits分布不同，需要不同温度；(2)不同客户端的数据异构性不同，需要不同温度。因此为每层和每个客户端动态学习/调整温度参数，实现弹性蒸馏。",
+ "experiment_framework": "在4个联邦学习基准数据集上验证。对比集中式训练和分布式学习基线。指标为所有客户端的平均准确率和标准差。",
+ "takeaways": [
+  "固定温度在联邦异构蒸馏中是次优的，不同层和客户端需要差异化温度",
+  "多层弹性温度可以更好地平衡不同客户端的知识蒸馏强度",
+  "ReT-FHD在统计异构和架构异构场景下都优于现有FedKD方法"
+ ],
+ "weaknesses": [
+  "温度参数增加了额外的超参数调节开销",
+  "仅在视觉分类任务上验证，未覆盖NLP或其他模态的联邦学习",
+  "温度自适应的理论依据较薄弱"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

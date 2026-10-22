@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/More than What was Chosen LLM-Based Explainable Recommendation beyond Noisy User Preferences.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/More than What was Chosen LLM-Based Explainable Recommendation beyond Noisy User Preferences.pdf",
+ "title": "More than What was Chosen: LLM-Based Explainable Recommendation beyond Noisy User Preferences",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "用LLM补充偏好解释，但机制创新有限且依赖主观判断",
+ "innovations": [
+  "提出连贯偏好(CP)概念，认为与用户历史行为逻辑因果一致的物品更能反映真实意图",
+  "提出冲突感知直接偏好优化(C-APO)框架，联合优化RP和CP并自适应调和二者一致与冲突",
+  "构建统一排序方法，结合选择信号与逻辑一致性信号，动态调整各信号影响权重"
+ ],
+ "method_framework": "为每个用户构建三元组(已选物品、高CP一致性拒绝物品、低CP一致性拒绝物品)；建立RP排序(已选>拒绝)和CP排序(按逻辑一致性)；在DPO训练中根据RP与CP是否一致动态调整各自权重，冲突时降低RP权重、一致时增强二者共识。",
+ "experiment_framework": "在Amazon Review数据集上评估，对比约20个SOTA基线模型，从推荐性能(NDCG等)和解释质量两个维度衡量；线上部署验证CTR提升效果。",
+ "takeaways": [
+  "约30%的用户选择物品无法从历史行为逻辑上解释，RP假设存在固有噪声",
+  "CP补充RP能更好捕捉用户真实意图，生成更具说服力的推荐理由",
+  "C-APO在部署中实现1.65倍CTR相对提升，验证了实际效用"
+ ],
+ "weaknesses": [
+  "CP一致性评分依赖LLM判断，存在主观偏差和成本问题",
+  "仅在电商推荐场景验证，其他推荐领域(内容推荐、音乐推荐)的适用性未探索",
+  "冲突/一致的动态权重调整机制较为启发式，缺乏理论最优性保证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "推荐系统可靠性方法，但未触及医学影像或多模态大模型落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

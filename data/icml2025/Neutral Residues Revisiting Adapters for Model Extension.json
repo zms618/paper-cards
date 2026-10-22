@@ -1,0 +1,37 @@
+{
+ "title": "Neutral Residues: Revisiting Adapters for Model Extension",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6
+ },
+ "one_line": "改进适配器残差中性以缓解语言扩展中的灾难性遗忘。",
+ "innovations": [
+  "指出finetuning/LoRA不形式化增加容量，本质上受限于学新域与忘原域的折中。",
+  "提出neutral residues：改造适配器使新残差块在原域输出近零，兼顾加容量与保护原能力。",
+  "系统联合考虑训练数据、防遗忘损失与架构三因素，识别出缓解遗忘的关键因子。"
+ ],
+ "method_framework": "在冻结原backbone基础上加前馈残差块(adapter)扩充容量；通过数据/架构/训练联合设计，使新增残差块在原语言上近似中性(输出近零)，从而把新能力与原能力在残差流上解耦，减少对原域的干扰。",
+ "experiment_framework": "以Gemma LLM从英语扩展到丹麦语/匈牙利语/斯洛伐克语；指标含训练困惑度与下游QA；对比finetuning、LoRA、vanilla adapters，按新语言学习vs英语保留的权衡曲线（Fig1）评估。",
+ "takeaways": [
+  "形式化增加容量(adapter)比LoRA/微调更适合扩展新域。",
+  "让新残差块在原域中性输出是缓解灾难性遗忘的有效手段。",
+  "neutral residues在学新语言与保英语的权衡上显著优于现有方法。"
+ ],
+ "weaknesses": [
+  "为适配器类方法的改进，核心是让残差中性，方法新颖性中等。",
+  "评估集中于语言扩展(困惑度+QA)，对多任务/多模态泛化的外推有限。",
+  "落地为持续学习/多语言扩展，与医学影像/多模态大模型推理主线关联中等。"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Neutral Residues Revisiting Adapters for Model Extension.pdf",
+ "path": "icml2025/Neutral Residues Revisiting Adapters for Model Extension.pdf",
+ "conf": "icml2025",
+ "raw_overall": 6.41,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Variance-Reduced Forward-Reflected-Backward Splitting Methods for Nonmonotone Generalized Equations.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Variance-Reduced Forward-Reflected-Backward Splitting Methods for Nonmonotone Generalized Equations.pdf",
+ "title": "Variance-Reduced Forward-Reflected-Backward Splitting Methods for Nonmonotone Generalized Equations",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 6.5,
+  "overall": 5.8
+ },
+ "one_line": "将FRB分裂与SVRG/SAGA结合求解非单调广义方程，理论为主。",
+ "innovations": [
+  "将前向-反射-后向(FRB)分裂与一类无偏方差约化估计量结合，用于求解非单调广义方程",
+  "构造两个新的随机估计量，分别受SVRG与SAGA启发，与现有minimax/变分不等式方法所用估计量显著不同",
+  "在合适参数选择下给出严格的复杂度/收敛理论保证"
+ ],
+ "method_framework": "面向非单调、非光滑、大规模的广义方程(含minimax特例)；将FRB分裂与SVRG/SAGA式方差约化估计结合，用方差约化控制随机估计的方差，从而在非单调条件下仍保证收敛到广义方程解，适用于GAN、对抗训练、鲁棒学习等minimax问题。",
+ "experiment_framework": "在有限和广义方程实例上验证；以相对残差范数||Gxk||/||Gx0||随迭代/样本复杂度下降为指标；对比标准FRB与其他随机分裂方法；参数选择与数据细节在补充文档给出。",
+ "takeaways": [
+  "方差约化可有效扩展到非单调广义方程的FRB分裂",
+  "SVRG/SAGA式估计量在minimax/广义方程场景下带来理论可证的加速",
+  "该框架为GAN/对抗训练等非单调minimax问题提供了有收敛保证的随机求解器"
+ ],
+ "weaknesses": [
+  "实证以相对残差等优化指标为主，缺少在GAN/对抗训练等真实下游任务上的端到端效果",
+  "前9页内主实验细节多在补充文档，正文证据强度受限",
+  "方差约化方法对batch b等参数敏感，实用调参成本未充分讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/ATP Adaptive Threshold Pruning for Efficient Data Encoding in Quantum.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ATP Adaptive Threshold Pruning for Efficient Data Encoding in Quantum.pdf",
+ "title": "ATP: Adaptive Threshold Pruning for Efficient Data Encoding in Quantum Neural Networks",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 4,
+  "relevance": 4.5,
+  "overall": 4.8
+ },
+ "one_line": "简单阈值剪枝量子输入，双层优化选参，实验不充分",
+ "innovations": [
+  "剪枝规则极简：只有当类别 0 与类别 1 在位置 (i,j) 的训练平均强度 x̄_0(i,j)、x̄_1(i,j) 同时低于阈值 τ 时才把该像素置零（Eq.6），即只保留对二分类有区分度的网格位置，直接削减角度编码 RX(π·x_ij) 的输入冗余。",
+  "把 τ 的选择形式化为双层优化：内层按 τ 过滤后训练 QNN，外层在 [0,τ_max] 内用 L-BFGS-B 最小化 -Acc_test(X_τ)（Eq.7-9），越界更新投影回可行域（4.3 节），逆 Hessian 由有限历史 {s_i,y_i} 递归近似 H_{k+1}=V_k^T H_k V_k+ρ_k s_k s_k^T（Eq.12）。",
+  "把阈值自适应与抗噪/抗评估绑定评测：报告 3%/5%/10% 去极化噪声与 FGSM(ε=0.3) 下的准确率，观察低纠缠熵编码（ATP、SQE）相比 Angle/Amplitude 在扰动下掉点更少（正文称约 3-8 点 vs 4-17 点）。"
+ ],
+ "method_framework": "依两类训练平均强度是否同时低于 τ 决定像素置零（Eq.6），外层 L-BFGS-B 在 [0,τ_max] 上最小化 −Acc 求 τ*；剪后数据经角度编码 RX(π·x_ij) 或振幅编码入三层 QNN（数据比特 + 读出比特，XX/ZZ 纠缠）并统计纠缠熵。",
+ "experiment_framework": "MNIST / FashionMNIST / CIFAR / PneumoniaMNIST 上的二分类类对；三层 QNN（角度/振幅编码）；基线 Angle、Amplitude、PCA、SQE；指标为准确率与纠缠熵，另测 3/5/10% 去极化噪声与 FGSM(ε=0.3)。",
+ "takeaways": [
+  "在量子编码之前做输入侧过滤（而非电路侧剪枝）是更省力的降纠缠手段，可与任意编码方式（角度/振幅）叠加。",
+  "“内层训练、外层选参”的双层框架加上投影约束，可迁移到其他编码超参的资源-精度自动权衡。",
+  "用纠缠熵作为量化资源开销指标、并与噪声/对抗扰动一起评测，是量子机器学习论文里较完整的开销-鲁棒性评估口径。"
+ ],
+ "weaknesses": [
+  "外层目标直接取测试集准确率 τ*=argmax_τ Acc_test(X_τ)（Eq.7），尽管 Algorithm 1 与 4.3 节声称每层在验证集 X_val 上评估，正文未给出测试集调参的具体数值与验证集结果，实质上是以测试集选超参。",
+  "Eq.10 把准确率对 τ 的导数写成 Σ_{i,j} ∂f/∂x_τ(i,j)·∂x_τ(i,j)/∂τ，既未说明这个离散准确率梯度如何穿过 RX 旋转门与量子测量反传，也没有给出步长、τ_max、L-BFGS 记忆长度 m 的敏感性分析或收敛性讨论。",
+  "“ATP 始终最优”的说法与表格数据不符：MNIST(2,8) 上 PCA 86.0 高于 ATP 83.0，而 CIFAR(0,1) 上 ATP 亦仅 74.2；且全表精度多为一位整数（96.0/99.0）、无多种子方差与显著性检验；振幅编码与剪枝的消融被推给补充材料，正文不可见。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "量子神经网络剪枝，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

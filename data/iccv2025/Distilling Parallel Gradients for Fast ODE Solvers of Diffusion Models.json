@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Distilling Parallel Gradients for Fast ODE Solvers of Diffusion Models.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Distilling Parallel Gradients for Fast ODE Solvers of Diffusion Models.pdf",
+ "title": "Distilling Parallel Gradients for Fast ODE Solvers of Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.6
+ },
+ "one_line": "并行梯度蒸馏加速扩散采样，提升质量但增加实现复杂度",
+ "innovations": [
+  "集成并行方向(EPD)求解器，通过多个并行梯度评估减少截断误差",
+  "EPD-Plugin插件可增强现有ODE采样器",
+  "利用向量值中值定理理论支持，优化简单加权和的梯度组合"
+ ],
+ "method_framework": "EPD-Solver在每个ODE步骤中引入K个可学习的中间时间点，通过并行计算梯度并使用simplex加权组合来近似积分，减少截断误差同时保持低延迟。",
+ "experiment_framework": "在CIFAR-10、FFHQ、ImageNet和LSUN Bedroom等数据集上评估，与DDIM、EDM、DPM-Solver等基线比较FID指标，测试不同K值对质量和延迟的影响。",
+ "takeaways": [
+  "并行梯度计算可在不增加延迟的情况下显著提升采样质量",
+  "少量可学习参数(6-45)使方法训练高效，仅需3-30分钟",
+  "K=2时已能获得大部分质量提升，增加K值收益递减"
+ ],
+ "weaknesses": [
+  "方法主要针对图像生成任务，泛化到其他领域如医学影像尚未验证",
+  "虽然参数量少，但需要额外的蒸馏训练过程，增加了实现复杂度"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型采样加速与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

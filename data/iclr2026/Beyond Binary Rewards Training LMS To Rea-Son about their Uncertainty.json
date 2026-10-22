@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Beyond Binary Rewards Training LMS To Rea-Son about their Uncertainty.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Beyond Binary Rewards Training LMS To Rea-Son about their Uncertainty.pdf",
+ "title": "Beyond Binary Rewards: Training LMS To REA-SON about their Uncertainty",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "修改RL奖励函数提升语言模型校准，但计算开销大且OOD性能下降",
+ "innovations": [
+  "RLCR方法：结合正确性和Brier分数的奖励函数",
+  "证明该奖励函数能同时激励准确性和校准",
+  "利用语言化置信度进行测试时缩放",
+  "不确定性推理链提高模型一致性"
+ ],
+ "method_framework": "RLCR通过修改强化学习奖励函数，将二进制正确性奖励与Brier校准奖励结合，训练模型同时输出答案和置信度，实现准确性和校准的联合优化。",
+ "experiment_framework": "在HotPotQA和Big-Math数据集上评估，使用准确率、AUROC、Brier分数和ECE作为指标，比较基线模型、RLVR和多种置信度分类器方法。",
+ "takeaways": [
+  "校准奖励函数不损害准确性，同时显著提升校准性能",
+  "不确定性推理链可提高模型预测一致性",
+  "置信度可用于测试时加权多数投票提升性能"
+ ],
+ "weaknesses": [
+  "SFT+RLCR变体在OOD上准确率下降，可能灾难性遗忘",
+  "置信度集成带来的校准提升相对有限",
+  "方法计算开销增加，需要生成推理链和置信度"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "校准奖励函数与不确定性推理链直接提升可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

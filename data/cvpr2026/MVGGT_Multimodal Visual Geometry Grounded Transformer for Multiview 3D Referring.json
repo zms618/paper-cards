@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/MVGGT_Multimodal Visual Geometry Grounded Transformer for Multiview 3D Referring.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/MVGGT_Multimodal Visual Geometry Grounded Transformer for Multiview 3D Referring.pdf",
+ "title": "MVGGT Multimodal Visual Geometry Grounded Transformer for Multiview 3D Referring",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "双分支架构解决多视图稀疏RGB的3D指代表分割",
+ "innovations": [
+  "提出MV-3DRES新任务，对齐真实世界感知条件",
+  "双分支架构统一几何推理与跨模态感知",
+  "PVSO优化策略解决稀疏3D监督下的前景梯度稀释问题",
+  "构建MVRefer基准测试"
+ ],
+ "method_framework": "MVGGT采用双分支设计：冻结的重建分支提供几何结构，可训练的多模态分支通过跨视图、跨模态注意力将语言线索注入稀疏视图视觉特征，实现端到端的3D重建和指代表分割。",
+ "experiment_framework": "在MVRefer基准上评估，包含Hard/Easy/Unique/Multiple子集，使用mIoUglobal、mIoUview、mIoUpos、mIoUneg等指标，与two-stage和2D-Lift基线比较。",
+ "takeaways": [
+  "PVSO通过视图级监督解决稀疏3D信号下的梯度稀释问题",
+  "双分支架构中晚期融合语言与几何特征效果最佳"
+ ],
+ "weaknesses": [
+  "仅使用8个稀疏视图，可能无法处理更极端的稀疏情况",
+  "多模态分支深度增加可能导致性能下降，表明模型容量与优化难度之间的平衡"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "多视图3D分割与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

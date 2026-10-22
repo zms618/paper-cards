@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Multimodal Prompt Optimization_why not Leverage Multiple Modalities for MLLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Multimodal Prompt Optimization_why not Leverage Multiple Modalities for MLLMS.pdf",
+ "title": "Multimodal Prompt Optimization: Why Not Leverage Multiple Modalities for MLLMs",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "将文本提示优化扩展至多模态，但与可靠性主线关联弱",
+ "innovations": [
+  "提出多模态提示优化新问题，把提示空间从纯文本扩展到文本与非文本(图像/视频/分子)提示对",
+  "提出MPO框架，通过保对齐更新联合优化多模态提示",
+  "用基于贝叶斯的候选选择策略，把早期评测作为先验指导后续候选提示选择"
+ ],
+ "method_framework": "现有自动提示优化(APO)只优化文本提示，未利用MLLM的多模态输入。MPO把提示定义为文本+非文本(如图像/视频/分子)提示对；用保对齐更新在优化过程中保持模态间对齐的同时改进提示；再用贝叶斯优化式选择，把历史评测结果当先验，指导下一批候选提示的选择，减少无效搜索。",
+ "experiment_framework": "跨图像、视频乃至分子等多种模态验证；对比纯文本APO方法；指标为下游任务性能；报告MPO在多模态提示优化上优于文本-only方法。",
+ "takeaways": [
+  "MLLM提示优化不应局限于文本，非文本提示(图像/视频/分子)也是可优化的输入",
+  "保对齐更新+贝叶斯候选选择可有效联合优化多模态提示",
+  "MPO在多种模态上超过纯文本提示优化方法"
+ ],
+ "weaknesses": [
+  "主线是提示工程/优化方法，与鲁棒性、可信验证、幻觉抑制等可靠性落地主线关联弱",
+  "非文本提示(如图像patch)的可搜索空间表示与编辑操作设计较强依赖模态",
+  "贝叶斯选择的评测成本与搜索效率在大规模提示空间下未充分刻画"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "多模态提示优化有方法迁移价值，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

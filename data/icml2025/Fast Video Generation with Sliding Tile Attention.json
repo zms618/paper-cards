@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Fast Video Generation with Sliding Tile Attention.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Fast Video Generation with Sliding Tile Attention.pdf",
+ "title": "Fast Video Generation with Sliding Tile Attention",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "基于注意力局部性观察的瓦片级滑动窗口加速，提升视频生成效率。",
+ "innovations": [
+  "提出滑动瓦片注意力(STA)，以tile为单位而非token为单位进行滑动窗口注意力计算，实现硬件高效的稀疏注意力",
+  "通过内核级优化实现首个高效的2D/3D滑动窗口注意力实现，MFU达到58.79%",
+  "在HunyuanVideo上将注意力延迟降低2.8-17倍(vs FA2)，端到端推理延迟显著减少，视频生成质量几乎无损失"
+ ],
+ "method_framework": "观察到预训练视频DiT模型的注意力分数主要集中在局部3D窗口内。STA将特征图划分为tiles，每个tile只与相邻的tiles做注意力计算。与传统token-wise滑动窗口不同，STA是tile-wise的，配合硬件感知的窗口设计，使得稀疏度能真正转化为wall-clock加速。内核优化包括：分块内存访问、寄存器复用、避免padding开销。支持2D(图像)和3D(视频)注意力。",
+ "experiment_framework": "在HunyuanVideo(领先视频DiT模型)上验证。对比基线：FlashAttention-2、FlashAttention-3。评估指标：(1)注意力延迟加速比；(2)MFU(model FLOPs utilization)；(3)端到端生成延迟；(4)生成视频质量(FVD等)。测试不同分辨率和时长的视频。",
+ "takeaways": [
+  "视频扩散模型的注意力具有强烈的局部性，全局注意力大部分计算是冗余的",
+  "STA是首个将滑动窗口稀疏度真正转化为硬件加速的实现，此前方法FLOP减少但wall-clock无加速",
+  "STA与缓存、一致性蒸馏等正交技术可叠加使用"
+ ],
+ "weaknesses": [
+  "方法依赖预训练模型已具备注意力局部性，从头训练时是否能学到这种结构未知",
+  "长程依赖(如跨镜头的语义一致性)在滑动窗口下可能丢失，复杂场景的生成质量下降未充分讨论",
+  "仅在HunyuanVideo一个模型上验证，对其他架构(CogVideoX, OpenAI Sora类)的通用性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

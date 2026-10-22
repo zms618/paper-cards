@@ -1,0 +1,41 @@
+{
+ "title": "PIRN: Prototypical-Based Intra-Modal Reconstruction with Normality Communication for Multimodal Anomaly Detection",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.2
+ },
+ "one_line": "原型约束重建+平衡分配+门控更新，用于RGB+3D少样本异常检测。",
+ "innovations": [
+  "平衡原型分配(BPA)：用平衡最优传输保证原型均匀利用、防止码本坍塌。",
+  "自适应原型精修(APR)：推理时门控更新原型，动态纳入未见正常变化，避免把正常变体误判为异常。",
+  "多模态正常通信(MNC)：门控交叉注意力在模态间交换高层正常线索，相互辅助重建。"
+ ],
+ "method_framework": "用紧凑可学习原型集(而非稠密特征对齐或大容量记忆库)捕捉多样正常模式并约束特征重建；BPA保证原型均衡使用；APR在推理阶段门控扩展对未见正常变体的知识；MNC通过门控交叉注意力让RGB与3D模态互相提供正常线索辅助重建，重建误差即异常分。",
+ "experiment_framework": "在MVTec 3D-AD、Eyecandies、Real-IAD三个工业多模态异常检测benchmark上评测；重点在少样本(每类极少正常样本)设定；对比跨模态对齐(CFM/LSFA)与记忆库类方法；指标为image/pixel级AUROC/PRO。",
+ "takeaways": [
+  "紧凑原型+模态内重建在少样本下比稠密跨模态对齐与记忆库更稳健。",
+  "推理时自适应原型精修能把未见正常变体纳入正常分布，显著降低误报。",
+  "跨模态正常通信让RGB与3D互相补全，提升对单模态不可见缺陷的检出。"
+ ],
+ "weaknesses": [
+  "仍限定RGB+3D工业缺陷检测，与医学影像或通用多模态推理的关联弱。",
+  "推理时在线更新原型引入额外计算与潜在的错误累积(把异常误纳入原型)风险。",
+  "三个创新模块的独立消融在正文前9页内数字不够完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PIRN_Prototypical-Based Intra-Modal Recon-STRUCTION with Normality Communication for Multimodal Anomaly Detection.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PIRN_Prototypical-Based Intra-Modal Recon-STRUCTION with Normality Communication for Multimodal Anomaly Detection.pdf",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "多模态异常检测与可靠性主线交点，工业缺陷检测应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

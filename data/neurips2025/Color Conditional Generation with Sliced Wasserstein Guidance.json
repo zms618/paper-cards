@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Color Conditional Generation with Sliced Wasserstein Guidance.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Color Conditional Generation with Sliced Wasserstein Guidance.pdf",
+ "title": "Color Conditional Generation with Sliced Wasserstein Guidance",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "可微SW距离融入扩散模型实现颜色条件生成",
+ "innovations": [
+  "首次将可微分的Sliced Wasserstein距离融入扩散模型条件生成",
+  "仅控制颜色分布而不转移其他风格特征",
+  "与ControlNet等控制方法兼容实现多条件控制"
+ ],
+ "method_framework": "通过修改扩散模型的采样过程，引入生成图像与参考调色板之间的可微分Sliced 1-Wasserstein距离，优化控制向量u以匹配颜色分布",
+ "experiment_framework": "ContraStyles数据集(1000提示)和Unsplash Lite(1000参考图像)，使用Wasserstein-2距离衡量颜色相似度，CLIP-IQA和CLIP-T评估内容质量",
+ "takeaways": [
+  "使用Sliced Wasserstein距离可有效分离颜色控制与其他风格特征",
+  "仅使用SW距离比添加均值和协方差项效果更好"
+ ],
+ "weaknesses": [
+  "对文本提示中的颜色信息敏感，特别是与选定风格参考矛盾时",
+  "与现有基于注意力的风格化方法结合可能导致颜色指导冲突",
+  "当前实现需要通过U-net进行微分"
+ ],
+ "confidence": "high",
+ "raw_overall": 7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

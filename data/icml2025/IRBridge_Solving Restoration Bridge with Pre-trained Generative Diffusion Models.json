@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/IRBridge_Solving Restoration Bridge with Pre-trained Generative Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/IRBridge_Solving Restoration Bridge with Pre-trained Generative Diffusion Models.pdf",
+ "title": "IRBridge: Solving Image Restoration Bridge with Pre-trained Generative Diffusion Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "用扩散桥接方程迁移预训练先验，但缺乏医学影像落地和完整实验验证。",
+ "innovations": [
+  "提出过渡方程桥接具有相同端点分布的两个扩散过程",
+  "消除修复桥模型需从头训练的需求，直接利用预训练生成先验",
+  "解决标准生成模型从纯噪声开始而修复任务从低质量图像开始的状态分布不匹配问题"
+ ],
+ "method_framework": "标准生成扩散从纯噪声到清晰图像，而修复桥从退化图像到清晰图像。IRBridge通过推导过渡方程，在两个扩散过程之间建立连接，使得预训练生成模型的先验知识可以直接迁移到修复任务中，无需为每种退化类型单独训练桥模型。",
+ "experiment_framework": "在多种图像修复任务上验证，对比从头训练桥模型的方法。指标为图像质量和细节恢复能力。",
+ "takeaways": [
+  "预训练生成先验可通过桥接方程迁移到图像修复任务",
+  "无需为每种退化类型单独训练修复模型",
+  "两个扩散过程的端点分布匹配是桥接的关键"
+ ],
+ "weaknesses": [
+  "与医学影像修复等具体落地域关联较弱",
+  "前9页内未见完整修复任务和基线对比结果",
+  "过渡方程的推导是否适用于所有退化类型未讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.83,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

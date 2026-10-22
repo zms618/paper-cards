@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Scaling Test-Time Robustness of Vision-Language Models via Self-Critical Inference Framework.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Scaling Test-Time Robustness of Vision-Language Models via Self-Critical Inference Framework.pdf",
+ "title": "Scaling Test-Time Robustness of Vision-Language Models via Self-Critical Inference Framework",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "自批判推理框架缓解LVLM偏见与敏感，但计算开销大且参数设置无理论指导",
+ "innovations": [
+  "自批判推理(SCI)框架统一处理文本和视觉反事实推理",
+  "动态鲁棒性基准(DRBench)针对特定模型评估鲁棒性",
+  "通过增加反事实推理轮数提升模型鲁棒性的新策略"
+ ],
+ "method_framework": "SCI框架结合文本反事实(TC)和视觉反事实(VC)组件，通过多轮推理聚合logits，同时缓解语言偏见和敏感性问题，支持可扩展的推理轮数(SCI3/5/7)。",
+ "experiment_framework": "在6个LVLM数据集构建DRBench，评估B(偏见)、S(敏感)和BS子集，对比TIE、VCD、M3ID等方法，使用top-1准确率指标。",
+ "takeaways": [
+  "反事实推理轮数增加可显著提升模型鲁棒性",
+  "模型特定鲁棒性评估比固定基准更能反映真实可靠性",
+  "统一框架可同时解决多种鲁棒性问题"
+ ],
+ "weaknesses": [
+  "反事实样本构建方法可能引入额外偏差",
+  "计算开销随推理轮数增加而显著提升",
+  "温度参数τ1和τ2的设置缺乏理论指导"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "LVLM偏见缓解与敏感性问题处理，直接对接可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Physics-informed Temporal Alignment for Auto-regressive PDE Foundation Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Physics-informed Temporal Alignment for Auto-regressive PDE Foundation Models.pdf",
+ "title": "Physics-informed Temporal Alignment for Auto-regressive PDE Foundation Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "自监督PITA缓解PDE模型捷径问题，但证据不足且与主线关联弱",
+ "innovations": [
+  "指出自回归PDE基础模型的捷径问题导致长程动力学OOD性能退化至接近随机初始化",
+  "提出PITA自监督框架，借逆问题求解思想将物理约束融入自监督信号",
+  "时间对齐仅从观测数据推导、不依赖已知物理先验，因而对OOD数据具备强泛化"
+ ],
+ "method_framework": "自回归预测会因捷径问题累积误差、长程OOD接近随机初始化；PITA受逆问题求解启发，在同一PDE轨迹上把不同时间步发现的物理动力学做对齐，并将物理信息约束注入自监督损失；对齐关系纯由观测数据导出、不依赖已知方程先验，从而缓解捷径与误差累积。",
+ "experiment_framework": "在多种时间相关PDE数据上评测；以现有PDE基础模型为backbone做增强；指标为长程预测精度与OOD/外推鲁棒性；与基线自回归训练及其他正则化方法对比，报告精度与鲁棒性显著提升。",
+ "takeaways": [
+  "PITA显著提升现有PDE基础模型在长程、OOD时间相关数据上的精度与鲁棒性",
+  "不依赖已知物理先验即可从观测学到对齐约束，泛化到未知方程",
+  "缓解了自回归预训练在下游长程任务上接近随机初始化的退化"
+ ],
+ "weaknesses": [
+  "前9页未见完整量化表，具体PDE类型/相对基线提升幅度不完整",
+  "对齐约束的物理可解释性与对复杂湍流等强非线性PDE的适用性存疑",
+  "属科学机器学习，与主线落地域(医学影像/多模态LLM推理)不直接相关"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

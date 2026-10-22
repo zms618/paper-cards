@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/ResQ_Mixed-Precision Quantization of Large Language Models with Low-Rank Residuals.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ResQ_Mixed-Precision Quantization of Large Language Models with Low-Rank Residuals.pdf",
+ "title": "ResQ: Mixed-Precision Quantization of Large Language Models with Low-Rank Residuals",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "PCA低秩子空间混合量化，精度与速度权衡，但与主线无关。",
+ "innovations": [
+  "用 PCA 识别激活方差最高的低秩子空间(约隐藏维的 1/8)，在该子空间保留 8-bit 高精度系数、其余量化到 4-bit。",
+  "在各子空间内施加不变随机旋转进一步抑制离群值。",
+  "给出该混合精度量化方案在最小化量化误差意义下可证明最优的结论。"
+ ],
+ "method_framework": "对激活做 PCA 分解：能量集中在少数主成分(低秩残差子空间)，对该子空间系数保留高精度(8-bit)，对剩余低能量分量量化到 4-bit；同时在量化前施加与量化误差不变的随机旋转打散离群值，使混合精度分配在理论上最优地降低整体量化误差。",
+ "experiment_framework": "在 Llama 与 Qwen2.5 系列上对比 GPTQ/AWQ/KIVI/SpinQuant 等均匀与混合精度 PTQ 方法；指标含 Wikitext 困惑度(较次优 SpinQuant 低至 33%)、下游基准精度与相对 16-bit 的推理加速(最高约 5×)。",
+ "takeaways": [
+  "激活量化误差主要来自少数高方差主成分，对其保留高精度即可大幅降误差。",
+  "ResQ 在多种基准上优于近期均匀/混合精度 PTQ。",
+  "子空间内不变随机旋转与低秩残差保留结合可兼顾 4-bit 压缩与精度/加速。"
+ ],
+ "weaknesses": [
+  "PCA 子空间需在校准数据上估计，对分布外/不同任务的稳健性依赖校准集代表性。",
+  "保留 1/8 维高精度带来额外的存储/计算与实现复杂度，混合精度的硬件支持是落地前提。",
+  "属模型压缩/效率方向，与可靠性、医学影像、多模态推理主线无直接关联。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

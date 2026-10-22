@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Position AI Evaluation Should Learn from How We Test Humans.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Position AI Evaluation Should Learn from How We Test Humans.pdf",
+ "title": "Position: AI Evaluation Should Learn from How We Test Humans",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 6.5,
+  "overall": 5.5
+ },
+ "one_line": "立场论文：将心理测量学引入AI评估，但缺乏实证与细节",
+ "innovations": [
+  "提出AI评估范式转移：从静态gold-standard测试集平均打分，转向借鉴心理测量学的自适应测试(adaptive testing)",
+  "主张估计benchmark中每个题目的特性(难度/区分度)，据此为不同能力模型裁剪题目，获得更稳健的能力估计并揭示其潜在特质",
+  "系统分析心理测量学用于AI评估的可行性、前景与理由，指出传统范式在评估成本、数据污染、题目误差影响可靠性上的局限"
+ ],
+ "method_framework": "本文为评估方法论立场论文，不提出新模型。以传统benchmark范式(对照图1：固定测试集→逐题0/1→平均→排行榜)为靶子，引入源自20世纪人类测评的心理测量学理论：用项目反应理论(IRT)刻画题目特性，做自适应选题以高效估计模型潜在能力，替代大而固定的测试集。",
+ "experiment_framework": "无新定量实验。论证基于对BIG-bench、Open LLM Leaderboard、HELM等现有大规模评测规模/成本的剖析与心理测量学方法的迁移分析，属范式倡导。",
+ "takeaways": [
+  "静态固定测试+平均分范式受评估成本高、数据污染、低质/错误题目影响，可靠性与效率都在下降",
+  "自适应测试只给模型适合其能力的题目，能用更少题目得到稳健能力估计，并暴露模型潜在特质",
+  "心理测量学这一成熟理论可迁移解决当前AI评估的顽疾"
+ ],
+ "weaknesses": [
+  "心理测量学假设(题目可标定难度、能力单维潜在特质)在开放式生成任务上是否成立未充分论证",
+  "如何检测/修正数据污染题目、如何为开放式生成题定义IRT参数，落地细节缺失",
+  "以论证与可行性分析为主，未在真实leaderboard上演示自适应评估在成本-可靠性上的实测收益"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/4DP-QA_Scalable QA for 4D Perception in Vision Language Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/4DP-QA_Scalable QA for 4D Perception in Vision Language Models.pdf",
+ "title": "4DP-QA: Scalable QA for 4D Perception in Vision Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "4D感知QA数据集构建，点跟踪分离相机与物体运动",
+ "innovations": [
+  "提出 true-motion point tracking：用固定参考时刻 tq 的外参 T[tq] 成像 3D 点轨（M2D=Π(K,T[tq],X(t))），与随动相机成像的视觉点轨 P2D=Π(K,T[t],X(t)) 形成对照，使物体真实运动与相机运动在图像空间可解纠缠",
+  "设计可扩展 QA 生成管线：先把 SHIFT/Virtual KITTI2/Aria Digital Twin/HOT3D/Kubric 五源数据统一为含深度、6D 位姿、实例分割的 4D 格式，再用模板+Gemini-2.5-Pro 改写出 13 类问题（相机运动/物体运动/3D 空间/点跟踪），并用启发式阈值过滤「相机静止」或「物体运动幅度」等不适合片段",
+  "针对自回归外推的 shortcut 做隔离式设计：把跟踪轨迹帧序随机打乱、在 query 中标明目标帧号、坐标归一化到 [0,1] 并保留三位小数，迫使模型按帧索引逐步预测而非靠位置顺序蒙"
+ ],
+ "method_framework": "统一五源数据的 4D 格式→模板采样并令 LLM 生成多样表述→按问题需求启发式筛选满足运动特征的资产与参考系（相机/物体/屏幕/重力对齐）→连续几何量映射为离散标签或直接作为连续值填入答案→多轮人工校验后生成 40 万训练 QA 与 2.2K 基准。",
+ "experiment_framework": "在 4DP-QA-Bench（317K 留出帧、多选与 Y/N）与外部 VLM4D 上评测；基线含 GPT-4o、Gemini 系列、Qwen-VL、LLaVA-OneVision、NVILA，并对 Qwen2.5-VL-3B/7B、NVILA-Lite-8B 做 1 epoch/3.1K iter 微调；指标为精确匹配准确率。",
+ "takeaways": [
+  "「相机静止/物体有足够运动量」这类前置启发式过滤，比单纯堆数据更能决定 QA 数据集的可用性，可作为任何基于几何自动生成数据的通用前处理",
+  "把密集点跟踪改成 VLM 可输出的 QA（带遮挡标志的归一化坐标 + 随机帧序 + 显式帧号查询），是在不动 VLM 架构前提下注入低层感知能力的廉价路径",
+  "在外部基准 VLM4D 上也同步涨点（NVILA-Lite-8B 42.8→60.5）说明数据中的相对尺度与多参考系设计确实带来了可迁移的 4D 推理而非数据集过拟合"
+ ],
+ "weaknesses": [
+  "所有主表只给单次数值、无多种子标准差或显著性检验，13 类任务里 Qwen2.5-VL-3B 微调后普遍跳到 80 分以上而基线仅 40 上下，差距过大反而提示测试集与训练源的分布重合（SHIFT/Kubric 等同一数据源的留出部分）可能被低估",
+  "评测口径是精确字符串匹配的单点准确率，多选与 Y/N 类问题天然有 25%/50% 的随机基线，而表 2 中 Rotation、Direction 等逐类分数在微调前后波动极大（如 NVILA-Lite-8B 的 Rotation 16.8→76.1），未见分类型误差分布或混淆分析，无法判断是推理提升还是答案模板被记住",
+  "正文前 9 页在第 5.1 节中途截断，关于点跟踪任务消融、几何编码器 L4P 消融、以及补充材料中的 QA 质量与 bias 分析均未读到，data-centric 论文最关键的数据质量剔除实验缺乏正文证据"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "4D感知QA构建，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

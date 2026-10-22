@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Efficient Online Reinforcement Learning for Diffusion Policy.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficient Online Reinforcement Learning for Diffusion Policy.pdf",
+ "title": "Efficient Online Reinforcement Learning for Diffusion Policy",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "重加权得分匹配使扩散策略适应在线RL，但实验局限且与主线无关。",
+ "innovations": [
+  "提出重加权得分匹配（RSM）框架，通过对去噪得分匹配损失重加权，在保持最优解和低计算成本的同时，消除了在线RL中无法从最优策略采样的障碍",
+  "基于RSM推导了两种常用策略优化问题（策略镜像下降和最大熵策略）的可解损失函数，分别得到DPMD和SDAC算法",
+  "在MuJoCo基准上全面对比，DPMD在Humanoid和Ant任务上比SAC提升超过120%"
+ ],
+ "method_framework": "将扩散模型的去噪得分匹配损失推广为重加权形式，权重由价值函数/优势函数决定；前向扩散过程仍用于构建训练目标，但不需要从目标策略（最优策略）采样，而是通过重加权使得最小化RSM损失等价于在当前策略分布上优化价值函数；DPMD对应proximity-based策略优化，SDAC对应最大熵actor-critic框架。",
+ "experiment_framework": "在MuJoCo连续控制基准任务（Humanoid、Ant等）上与近期在线RL扩散策略方法及SAC等主流RL算法对比，指标为 episodic return；进行了消融实验验证重加权项的作用。",
+ "takeaways": [
+  "RSM框架使得扩散策略可以高效地进行在线RL训练，避免了通过扩散过程反传策略梯度的高开销和不稳定性",
+  "DPMD在多个MuJoCo任务上显著优于现有在线扩散RL方法和传统SAC",
+  "重加权损失保持了去噪得分匹配的最优解和计算效率，是扩散策略在线训练的可行路径"
+ ],
+ "weaknesses": [
+  "论文属于在线RL与扩散策略方向，与鲁棒性/可信AI/医学影像/多模态推理等主线无关",
+  "实验仅在MuJoCo仿真环境验证，在真实机器人或更复杂决策任务上的效果未展示",
+  "RSM的重加权依赖价值函数估计，价值函数的偏差可能传播到策略优化中"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

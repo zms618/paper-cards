@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Math Blind Failures In Diagram UNDERSTANDING Undermine Reasoning In MLLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Math Blind Failures In Diagram UNDERSTANDING Undermine Reasoning In MLLMS.pdf",
+ "title": "Math Blind: Failures in Diagram Understanding Undermine Reasoning in MLLMs",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "诊断MLLM数学图表感知缺陷，提出图结构表征训练，但推理增益有限。",
+ "innovations": [
+  "构建将感知与推理解耦的诊断测试套件，定位 MLLM 在形状分类/计数/关系识别/细粒度定位上近乎为零的感知缺陷",
+  "揭示弱图表感知导致'盲信文本(blind faith in text)'——模型依赖文本捷径而非视觉理解（即 Math Blind）",
+  "提出以基元及其相互关系构成的图结构表征训练 MLLM，7B/32B 模型定位任务 +79%，并在 4 个公开基准上免 CoT 数据带来 3-4% 推理增益"
+ ],
+ "method_framework": "先用诊断套件分离感知与推理，量化模型在纯感知任务上的失败；再假设'图表=基元关系图'，用该结构表征训练 MLLM，使其捕获几何/符号结构，验证感知提升能否迁移到推理。",
+ "experiment_framework": "模型：7B 与 32B MLLM；诊断：形状分类/计数/关系识别/定位；训练：图结构表征；评测：4 个公开数学视觉推理基准；指标：定位精度与跨套件推理准确率。",
+ "takeaways": [
+  "现有数学视觉基准混淆了感知与推理，性能差主要源于底层图表感知缺陷而非推理能力",
+  "感知薄弱使模型退化为依赖文本捷径，产生看似合理实则错误的视觉推理",
+  "低层感知提升可忠实地向上迁移到高层推理，无需额外 CoT 数据即可增益"
+ ],
+ "weaknesses": [
+  "图结构表征需结构化标注，标注成本与自动化程度限制规模化",
+  "推理增益(3-4%)相对感知增益(79%)较小，感知到推理的迁移上限尚待验证",
+  "聚焦数学图表，对自然图像与一般 OCR 场景的外推性未充分论证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "数学图表感知缺陷与可靠性主线直接交织，提升模型推理可靠性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

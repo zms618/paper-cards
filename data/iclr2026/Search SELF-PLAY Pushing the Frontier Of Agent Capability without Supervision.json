@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Search SELF-PLAY Pushing the Frontier Of Agent Capability without Supervision.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Search SELF-PLAY Pushing the Frontier Of Agent Capability without Supervision.pdf",
+ "title": "Search Self-Play: Pushing the Frontier of Agent Capability without Supervision (SSP)",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "自博弈训练搜索LLM，但真值验证与泛化分析不足。",
+ "innovations": [
+  "针对RLVR依赖人工任务query与真值、难扩展到agent场景的问题，探索深度搜索智能体的自博弈训练。",
+  "学习LLM同时作任务提议者（生成带明确定值、难度递增的深度搜索query）与解题者。",
+  "用提议者自身搜索轨迹结果作外部知识、经RAG验证query可被正确回答以保证真值准确；双方竞争+合作协同进化。"
+ ],
+ "method_framework": "SSP博弈中，proposer生成多轮搜索query并采集搜索结果，用RAG检验该query在给定文档下可正确回答（以自动获得真值）；solver尝试解答生成的搜索query；两者在无人工监督下共进化，从scratch或持续RL均可。",
+ "experiment_framework": "PopQA、TriviaQA、HotpotQA、NaturalQuestions、2WikiMultiHop等搜索QA基准；对比有监督RLVR基线；指标为准确率；报告from-scratch与持续RL下无监督地一致提升搜索智能体性能。",
+ "takeaways": [
+  "自博弈+RAG自动验证真值可摆脱对人工query/答案的依赖，扩展agent RLVR。",
+  "出题者与解题者在竞争合作中共进化，可无监督提升深度搜索agent能力。"
+ ],
+ "weaknesses": [
+  "真值正确性依赖proposer自身搜索轨迹的完备性，RAG验证的假阳性风险未充分分析。",
+  "自博弈生成任务的多样性/分布偏移可能限制泛化。",
+  "前9页主要展示多基准柱状对比，错误案例与失败模式分析有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "自博弈训练搜索LLM，但真值验证与泛化分析不足。",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

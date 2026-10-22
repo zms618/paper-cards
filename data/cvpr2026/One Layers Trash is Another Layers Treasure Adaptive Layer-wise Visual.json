@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/One Layers Trash is Another Layers Treasure Adaptive Layer-wise Visual.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/One Layers Trash is Another Layers Treasure Adaptive Layer-wise Visual.pdf",
+ "title": "One Layers Trash is Another Layers Treasure Adaptive Layer-wise Visual",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "层级token选择提升LVLM效率，但创新与证据不足",
+ "innovations": [
+  "层级动态token选择而非静态剪枝",
+  "基于低秩近似的轻量级token选择器",
+  "重要性一致性约束优化",
+  "无需重新训练的即插即用框架"
+ ],
+ "method_framework": "ALVTS框架在每层计算视觉token重要性分数，动态选择重要token参与计算，低重要性token跳过当前层，处理后重新合并，实现自适应压缩。",
+ "experiment_framework": "在LLaVA-1.5、LLaVA-NeXT和Qwen2.5-VL上评估，使用8个多模态基准测试，对比FastV、VTW、PDrop和DART方法。",
+ "takeaways": [
+  "层级动态选择机制显著优于静态剪枝",
+  "低秩近似有效模拟全注意力机制",
+  "方法在不同架构和分辨率上具有良好泛化性"
+ ],
+ "weaknesses": [
+  "未探讨不同图像类型的适应性",
+  "token选择器的计算开销未充分分析",
+  "缺乏对极端压缩比下的鲁棒性测试"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态效率提升，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

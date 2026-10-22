@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/CUE Concept-Aware Multi-Label Expansion to Mitigate Concept Confusion in Long-Tailed.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/CUE Concept-Aware Multi-Label Expansion to Mitigate Concept Confusion in Long-Tailed.pdf",
+ "title": "CUE Concept-Aware Multi-Label Expansion to Mitigate Concept Confusion in Long-Tailed",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.1
+ },
+ "one_line": "CUE用多标签扩展缓解长尾概念混淆，依赖外部模型增加开销",
+ "innovations": [
+  "识别并分析基础模型在长尾数据微调中的概念混淆问题",
+  "提出VLM和LLM结合的多标签扩展方法CUE",
+  "设计可插拔的框架支持多种微调策略"
+ ],
+ "method_framework": "CUE结合VLM实例级视觉线索和LLM类级语义线索，通过加权二元Logit调整(BLA)辅助损失与基线Logit调整(LA)损失联合优化，保留类间关系",
+ "experiment_framework": "在ImageNet-LT、Places365-LT、iNaturalist2018和CIFAR100-LT四个长尾基准测试，与LiVT、LPT、LIFT等SOTA方法对比，评估Many/Medium/Few-shot分类准确率",
+ "takeaways": [
+  "多标签监督可缓解单标签互斥性导致的类间关系破坏",
+  "视觉和语义线索互补提升模型在尾类上的表现",
+  "方法具有良好通用性，可适配多种微调策略"
+ ],
+ "weaknesses": [
+  "依赖CLIP和LLM外部模型，增加计算开销",
+  "LLM提示设计复杂，需要批处理和后处理过滤",
+  "未深入分析不同类别间语义关系的强度对效果的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多标签扩展缓解概念混淆，与可靠性主线部分交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

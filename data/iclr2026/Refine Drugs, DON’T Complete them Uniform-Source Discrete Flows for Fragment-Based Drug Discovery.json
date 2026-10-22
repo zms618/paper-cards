@@ -1,0 +1,41 @@
+{
+ "title": "Refine Drugs, Don't Complete Them: Uniform-Source Discrete Flows for Fragment-Based Drug Discovery",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "离散流精化碎片SMILES，但实验证据不足且与主线无关。",
+ "innovations": [
+  "提出面向碎片SMILES的离散流生成，训练损失在每个去噪步对所有序列位置计预测，区别于masked模型只计masked位置。",
+  "将生成范式从补全改为精化，解耦采样步数与序列长度，支持分子各位置协同更新。",
+  "提出结合遗传算法与适配离散流的Proximal Property Optimization微调的混合优化方案，在PMO基准top-10 AUC上达SOTA、lead optimization docking分数更高。"
+ ],
+ "method_framework": "采用连续时间离散流框架，从token均匀源出发学习到数据分布的概率路径；每步对全序列位置同时精化而非逐token补全；性质/先导优化时用GA搜索空间并对离散流做近端性质优化微调，兼顾fragment约束保留与性质提升。",
+ "experiment_framework": "de novo生成用质量-多样性Pareto前沿；fragment-constrained生成对比SAFE-GPT、GenMol等；性质/先导优化在PMO基准(以top-10 AUC衡量)与docking分数上评测；部分对比依赖GenMol论文报告数值(未直接复跑)。",
+ "takeaways": [
+  "每步全位置精化比masked式补全更适合无序的分子结构，且采样步数不再受序列长度限制。",
+  "离散流+近端性质优化与GA结合能在碎片约束下同时优化多目标。",
+  "在PMO上达到新SOTA，覆盖从hit finding到先导优化的生成需求。"
+ ],
+ "weaknesses": [
+  "落地域为分子生成/药物发现，与可靠性×医学影像/多模态推理主线无关。",
+  "关键基线GenMol因许可未直接复跑而依赖其论文数值，对比公平性受限。",
+  "节选前9页未见PMO各任务的完整top-10 AUC表，SOTA结论的逐任务证据在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Refine Drugs, DON’T Complete them Uniform-Source Discrete Flows for Fragment-Based Drug Discovery.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Refine Drugs, DON’T Complete them Uniform-Source Discrete Flows for Fragment-Based Drug Discovery.pdf",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "药物发现与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

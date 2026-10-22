@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Collapsing Taylor Mode Automatic Differentiation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Collapsing Taylor Mode Automatic Differentiation.pdf",
+ "title": "Collapsing Taylor Mode Automatic Differentiation",
+ "scores": {
+  "novelty": 6.0,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "优化Taylor模式AD计算图，加速PDE算子但实现有限",
+ "innovations": [
+  "提出'collapsing'技术优化Taylor模式AD",
+  "将前向拉普拉斯算子作为特例统一框架",
+  "扩展到一般线性PDE算子和随机化Taylor模式"
+ ],
+ "method_framework": "利用Taylor模式中最高阶系数传播的线性特性，将多个方向的系数求和操作提前到计算图传播过程中，减少需要传播的向量数量",
+ "experiment_framework": "在PyTorch上实现，比较标准Taylor模式、collapsed Taylor模式和嵌套一阶AD在拉普拉斯、加权拉普拉斯和双调和算子上的运行时间和内存使用",
+ "takeaways": [
+  "利用线性性优化计算图可显著提高效率",
+  "简单图重写可被编译器自动实现而不增加用户复杂度",
+  "方法适用于多种PDE算子"
+ ],
+ "weaknesses": [
+  "PyTorch实现仅支持少量基本操作",
+  "未完全优化实现(如不使用原地操作)",
+  "高阶混合偏导数的插值方案复杂"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

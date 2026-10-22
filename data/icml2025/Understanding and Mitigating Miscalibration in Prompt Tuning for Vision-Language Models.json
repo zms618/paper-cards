@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Understanding and Mitigating Miscalibration in Prompt Tuning for Vision-Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Understanding and Mitigating Miscalibration in Prompt Tuning for Vision-Language Models.pdf",
+ "title": "Understanding and Mitigating Miscalibration in Prompt Tuning for Vision-Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "揭示提示调优校准权衡，提出DOR方法，但验证有限。",
+ "innovations": [
+  "揭示CoOp等提示调优用交叉熵增大文本标签散度导致新类过自信，KgCoOp等正则法又因精度提升致基类欠自信",
+  "刻画提示调优在基类与新类校准间的此消彼长trade-off",
+  "提出Dynamic Outlier Regularization(DOR)，采样大词表离群样本防止文本散度增大，同时校准基类与新类"
+ ],
+ "method_framework": "先诊断交叉熵使文本标签散度增大->新类过自信、正则法保置信但基类欠自信的机理；DOR在微调中动态从大词表采样离群类做正则，抑制文本标签散度上升，从而在不牺牲精度下保持基类与新类的置信度校准。",
+ "experiment_framework": "在多个CLIP微调基准上评测CoOp/KgCoOp等基线与DOR，指标为ECE校准误差与基类/新类准确率，报告校准稳定性。",
+ "takeaways": [
+  "提示调优CLIP存在基类/新类校准trade-off，单靠交叉熵或正则都无法兼顾",
+  "文本标签散度增大是新类过自信的根因",
+  "DOR同时改善基类与新类校准，提升整体校准稳定性"
+ ],
+ "weaknesses": [
+  "DOR依赖大词表离群采样，离群分布设计对结果的敏感性未充分消融",
+  "主要在CLIP+图像分类基准验证，对多模态大模型(LLaVA类)校准未覆盖",
+  "与医学影像的直接结合仅停留在举例，未做临床级校准验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

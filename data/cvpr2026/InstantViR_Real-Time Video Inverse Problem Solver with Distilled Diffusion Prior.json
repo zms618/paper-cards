@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/InstantViR_Real-Time Video Inverse Problem Solver with Distilled Diffusion Prior.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/InstantViR_Real-Time Video Inverse Problem Solver with Distilled Diffusion Prior.pdf",
+ "title": "InstantViR Real-Time Video Inverse Problem Solver with Distilled Diffusion Prior",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "蒸馏扩散先验实现实时视频逆问题，但泛化与分辨率分析不足",
+ "innovations": [
+  "无配对数据的变分蒸馏框架",
+  "因果自回归求解器架构",
+  "教师空间正则化LeanVAE集成"
+ ],
+ "method_framework": "将双向视频扩散模型(教师)蒸馏为因果自回归学生模型，直接映射退化视频到恢复版本，单步前向推理，无需迭代优化",
+ "experiment_framework": "Open-Sora-v1.1训练，REDS30测试，对比DPS/SVI/VISION-XL等基线，指标包括PSNR/SSIM/LPIPS/FVD/FPS",
+ "takeaways": [
+  "无配对数据训练的扩散蒸馏方法",
+  "教师空间正则化解决潜在分布偏移",
+  "因果块级注意力实现低延迟流式处理"
+ ],
+ "weaknesses": [
+  "仅使用6,000个视频片段训练，可能限制泛化能力",
+  "未详细讨论模型在不同分辨率下的性能表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视频逆问题解决与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

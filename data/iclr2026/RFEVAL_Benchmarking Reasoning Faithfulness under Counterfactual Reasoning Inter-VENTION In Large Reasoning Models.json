@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RFEVAL_Benchmarking Reasoning Faithfulness under Counterfactual Reasoning Inter-VENTION In Large Reasoning Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RFEVAL_Benchmarking Reasoning Faithfulness under Counterfactual Reasoning Inter-VENTION In Large Reasoning Models.pdf",
+ "title": "RFEval: Benchmarking Reasoning Faithfulness under Counterfactual Reasoning Intervention in Large Reasoning Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 7.5,
+  "overall": 7.0
+ },
+ "one_line": "形式化推理忠实度框架，开源模型评测显示近半输出不忠实。",
+ "innovations": [
+  "提出推理忠实度的两个可检验条件：立场一致性（推理与答案立场连贯）和因果影响力（所述推理在输出级干预下因果驱动答案），并与准确率显式解耦",
+  "构建RFEval基准（7186实例、7任务），通过受控输出级反事实干预测量忠实度",
+  "发现不忠实性49.7%主要来自立场不一致，集中在数学和代码等收敛型领域；RL式后训练可能降低忠实度而不降低准确率"
+ ],
+ "method_framework": "将推理忠实度定义为两个条件：(1)立场一致性——推理过程的立场与最终答案连贯；(2)因果影响力——对推理输出进行反事实干预（修改关键前提）后，答案是否因果性地随之改变。通过输出级干预而非内部表征操作来测量。控制模型和任务后，统计准确率与忠实度的相关性。",
+ "experiment_framework": "RFEval基准：7186实例、7个任务；评测12个开源大推理模型；报告不忠实率、立场不一致率、因果不一致率；同族消融分析SFT+RL不同后训练阶段对忠实度的影响；统计检验准确率-忠实度相关性。",
+ "takeaways": [
+  "大推理模型近半数输出不忠实，所述推理并不真正驱动其答案",
+  "准确率既不是忠实度的充分条件也不是可靠代理，控制模型和任务后二者相关性统计不显著",
+  "在SFT基础上叠加RL式后训练可能降低推理忠实度，即使准确率保持不变"
+ ],
+ "weaknesses": [
+  "反事实干预在输出级进行，可能无法完全捕捉模型内部真实决策路径，存在干预强度选择的主观性",
+  "7个任务中数学和代码占比高，对开放域/多模态推理的忠实度分布代表性不足",
+  "前9页未见对商用闭源模型（如o1/o3/GPT-o系列）的评测，仅覆盖开源模型"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "因果干预设计可靠，但未触及医学影像或多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

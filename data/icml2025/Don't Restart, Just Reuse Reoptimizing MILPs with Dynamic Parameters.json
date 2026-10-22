@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Don't Restart, Just Reuse Reoptimizing MILPs with Dynamic Parameters.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Don't Restart, Just Reuse Reoptimizing MILPs with Dynamic Parameters.pdf",
+ "title": "Don't Restart, Just Reuse Reoptimizing MILPs with Dynamic Parameters",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 3,
+  "overall": 5.25
+ },
+ "one_line": "两阶段MILP重优化框架，用历史信息预测解空间并固定变量加速求解",
+ "innovations": [
+  "针对动态参数变化的MILP实例复用历史求解信息，避免每次从头求解",
+  "用历史求解过程信息预测修改后MILP可能含高质量解的高置信解空间",
+  "在预测区间内固定部分变量，并用Thompson Sampling(基于Beta分布)自适应决定固定哪些变量"
+ ],
+ "method_framework": "两阶段重优化：第一阶段从历史相似MILP求解轨迹学习，预测新实例中各变量的高置信取值区间；第二阶段在该区间内固定部分变量以缩小搜索空间，用Thompson Sampling按Beta分布在线更新哪些变量值得固定，从而快速逼近高质量可行解。",
+ "experiment_framework": "在9个重优化数据集上对比从头求解、既有一般MILP重优化方法，指标为求解时间、解质量(MIP gap)与可行解获得速度。",
+ "takeaways": [
+  "复用历史求解信息可显著加速动态参数MILP的重优化",
+  "预测高置信解空间+固定变量能有效缩小搜索空间",
+  "Thompson采样式选择固定变量比静态策略更优"
+ ],
+ "weaknesses": [
+  "与主线（可靠性/可信AI/医学影像/多模态大模型推理）完全无关，属运筹/组合优化",
+  "预测解空间的模型质量强依赖历史实例分布，剧烈变化场景外推存疑",
+  "固定变量可能过早剪枝掉真正最优解，最优性保证被牺牲"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.43,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

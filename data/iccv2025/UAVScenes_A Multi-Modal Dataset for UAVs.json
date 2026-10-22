@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/UAVScenes_A Multi-Modal Dataset for UAVs.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/UAVScenes_A Multi-Modal Dataset for UAVs.pdf",
+ "title": "UAVScenes A Multi-Modal Dataset for UAVs",
+ "scores": {
+  "novelty": 4,
+  "depth": 5,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 4.7
+ },
+ "one_line": "首个带语义标注的UAV多模态数据集，但标注质量和覆盖有限",
+ "innovations": [
+  "首个提供帧级图像和LiDAR点云语义标注的UAV数据集",
+  "支持6-DoF位姿和重建3D地图",
+  "覆盖6种UAV感知任务的基准测试"
+ ],
+ "method_framework": "基于MARS-LVIG数据集，添加语义标注和6-DoF位姿，通过Terra SfM重建3D地图，投影图像标注到LiDAR点云",
+ "experiment_framework": "数据集/基线/指标：图像/LiDAR语义分割(mIoU)、地点识别(Recall@K)、深度估计、6-DoF定位、NVS",
+ "takeaways": [
+  "多模态融合在UAV感知中表现优于单模态",
+  "Transformer架构在图像分割任务中优于CNN",
+  "BEV投影在UAV视角地点识别中效果不佳"
+ ],
+ "weaknesses": [
+  "仅支持开源Livox-Avia LiDAR，未包含DJI-L1加密数据",
+  "LiDAR点云标注中某些类别(如pool)IoU为0",
+  "NVS在建筑物和重复森林场景中仍有改进空间"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "UAV感知任务与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

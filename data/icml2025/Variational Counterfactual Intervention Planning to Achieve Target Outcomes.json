@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Variational Counterfactual Intervention Planning to Achieve Target Outcomes.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Variational Counterfactual Intervention Planning to Achieve Target Outcomes.pdf",
+ "title": "Variational Counterfactual Intervention Planning to Achieve Target Outcomes",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "变分反事实规划解决个体目标达成，但依赖强假设且临床验证不足",
+ "innovations": [
+  "提出反事实目标达成(counterfactual target achievement)这一新的序贯决策问题：为个体(而非群体)找到引导系统到达指定目标结局的干预序列",
+  "提出VCIP，直接建模达成目标结局的条件似然并用变分推断求解，避免直接反事实估计的误差累积",
+  "利用g-formula弥合干预分布与观测分布的对数似然差距，使可从观测数据可靠训练"
+ ],
+ "method_framework": "将问题重述为对达成目标结局的条件似然建模；用变分推断近似该后验；借助g-formula把干预下的目标似然转化为观测数据上可计算的形式，从而在仅有观测数据时可靠训练规划器，缓解反事实不可观测导致的复合误差。",
+ "experiment_framework": "在合成数据集与真实世界数据集上评测；对比现有反事实估计方法(如CRN)与动态治疗方案(DTR)类方法；任务为糖尿病管理等个性化医疗场景；指标为目标达成准确率。",
+ "takeaways": [
+  "个体级目标达成与群体疗效最大化是不同目标，需要专门的规划方法",
+  "直接做反事实估计会因反事实不可观测而误差累积，改建模目标达成条件似然更稳",
+  "g-formula使纯观测数据下的反事实干预规划成为可能，且目标达成准确率显著优于现有方法"
+ ],
+ "weaknesses": [
+  "可识别性依赖序贯可忽略性等无未测混杂假设，现实医疗数据常被违反",
+  "真实数据集规模与目标定义较简，临床实用性证据有限",
+  "变分推断的近似误差如何影响干预序列选择缺乏专门诊断"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

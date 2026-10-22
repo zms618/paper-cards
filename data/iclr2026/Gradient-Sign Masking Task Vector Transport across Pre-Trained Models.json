@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Gradient-Sign Masking Task Vector Transport across Pre-Trained Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Gradient-Sign Masking Task Vector Transport across Pre-Trained Models.pdf",
+ "title": "GRADIENT-SIGN Masking Task Vector Transport across PRE-TRAINED Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "梯度符号掩码过滤任务向量，实现跨模型知识迁移",
+ "innovations": [
+  "梯度符号掩码机制过滤源任务向量中的有害方向",
+  "理论证明一阶损失下降保证",
+  "少量样本下的抗梯度符号估计方法"
+ ],
+ "method_framework": "GradFix通过目标模型的梯度符号掩码过滤源任务向量，保留与目标损失景观对齐的参数更新方向，实现无需微调的任务知识迁移。",
+ "experiment_framework": "视觉(Clip ViT)和语言(T5)跨模型迁移实验，对比零样本、全微调、任务向量加法等方法，使用少量样本评估梯度符号估计效果。",
+ "takeaways": [
+  "梯度符号作为局部下降方向的鲁棒代理",
+  "掩码-合并顺序对多任务合并性能有显著影响",
+  "方法在低数据量下表现稳定"
+ ],
+ "weaknesses": [
+  "仅考虑一阶近似，高阶优化特性未充分利用",
+  "梯度符号估计在极度小样本下可能不稳定",
+  "未探索不同架构间的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "跨模型知识迁移方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

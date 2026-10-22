@@ -1,0 +1,41 @@
+{
+ "title": "Reconstruct Anything Model: A Lightweight General Model for Computational Imaging",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "轻量通用模型RAM用Krylov子空间注入物理知识，零样本求解多类成像逆问题。",
+ "innovations": [
+  "提出非迭代、轻量通用架构：在DRUNet各尺度用Krylov子空间模块(功率迭代A⊤A与测量y)注入采集物理，避免unrolled的逐问题训练。",
+  "单一backbone同时训练覆盖去模糊、MRI、CT、inpainting、超分，支持灰度/复数/彩色任意通道与任意尺寸。",
+  "支持在少量真实测量、无ground-truth参考下以自监督方式微调适配未见逆问题/数据集。"
+ ],
+ "method_framework": "以DRUNet为backbone，在每个尺度将特征解码到图像域、经Krylov子空间模块(利用缩放测量算子A⊤A的功率迭代)注入前向算子与测量y信息、再重新编码；仅输出头随通道数变化；一次训练多逆问题，推理非迭代；对新问题用自监督(数据一致性损失)少量微调。",
+ "experiment_framework": "覆盖医学成像(MRI、CT)、显微与低光子成像；对比PnP/扩散类迭代方法与unrolled专用网络；指标为零样本重建质量(PSNR/SSIM等)及自监督微调后的增益；报告在训练分布内/近问题上达SOTA零样本。",
+ "takeaways": [
+  "无需unrolled也能在前向网络中有效注入采集物理，单一模型即可通解多类成像逆问题。",
+  "通用性使模型可跨灰度/复数/彩色与多种逆问题迁移，显著降低逐问题重训成本。",
+  "无参考的自监督微调可让通用模型适配分布外真实测量。"
+ ],
+ "weaknesses": [
+  "为非迭代一次前向，对高度病态/强非线性逆问题的上限可能不及PnP/扩散方法。",
+  "依赖已知前向算子A(非盲设定)，对未知/复杂物理模型的适用性有限。",
+  "节选前9页未见跨逆问题的完整零样本数值表，'SOTA零样本'的逐项证据在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Reconstruct Anything Model.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reconstruct Anything Model.pdf",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "医学成像逆问题求解，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

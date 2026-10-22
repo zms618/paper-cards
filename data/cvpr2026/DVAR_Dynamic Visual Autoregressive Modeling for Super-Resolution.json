@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/DVAR_Dynamic Visual Autoregressive Modeling for Super-Resolution.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/DVAR_Dynamic Visual Autoregressive Modeling for Super-Resolution.pdf",
+ "title": "DVAR Dynamic Visual Autoregressive Modeling for Super-Resolution",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "动态缩放与采样调度解决VAR超分限制，但泛化与理论不足",
+ "innovations": [
+  "动态缩放动态：学习统一的相对缩放规则而非固定尺寸",
+  "动态采样调度器：利用视觉token的几何邻近性模拟预测误差",
+  "LQ衍生的动态起始token：替代固定1×1起始点"
+ ],
+ "method_framework": "DVAR框架包含两个核心组件：1)基于LQ输入的动态起始token和规范缩放动态，实现尺寸灵活性；2)动态采样调度器，通过EMA维护预测误差统计模型，缓解训练-推理差异。",
+ "experiment_framework": "在DIV2K-Val、RealSR和DRealSR数据集上评估，与GAN、扩散模型和自回归模型比较，使用PSNR、SSIM、LPIPS、DISTS、FID和MANIQA等指标。",
+ "takeaways": [
+  "利用任务特性差异（生成vs修复）改进自回归模型设计",
+  "利用视觉token的几何邻近性高效模拟预测误差"
+ ],
+ "weaknesses": [
+  "仅关注图像超分辨率任务，泛化性未验证",
+  "动态采样调度器的理论分析不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "超分任务与可靠性主线无交点，仅属常规扎实工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

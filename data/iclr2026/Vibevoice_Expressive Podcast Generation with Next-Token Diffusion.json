@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Vibevoice_Expressive Podcast Generation with Next-Token Diffusion.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Vibevoice_Expressive Podcast Generation with Next-Token Diffusion.pdf",
+ "title": "VibeVoice: Expressive Podcast Generation with Next-Token Diffusion",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "超低帧率分词器+扩散框架，实现长时多说话人播客生成",
+ "innovations": [
+  "提出7.5fps超低帧率连续语音分词器，在保持音频保真度的同时大幅提升长序列计算效率",
+  "构建伪转录和话轮转换标注流水线，从大规模播客数据自动生成训练数据",
+  "采用next-token扩散框架，支持最长90分钟、最多4个说话人的长对话语音生成，自然捕捉话轮转换和副语言线索"
+ ],
+ "method_framework": "VibeVoice采用超低帧率(7.5fps)连续语音分词器将语音压缩为离散token序列，大幅降低长序列建模的计算开销。配合自动构建的伪转录+话轮标注训练数据，使用next-token扩散框架训练多说话人对话生成模型。模型可零样本合成新说话人声音，端到端生成长时多说话人对话，自然包含呼吸、咂嘴等非词汇线索。",
+ "experiment_framework": "任务：长时多说话人播客/对话语音生成。基线：传统TTS拼接方法、MoonCast等现有播客生成系统。指标：语音自然度、说话人一致性、话轮转换自然度、副语言线索还原度。支持最长90分钟、4说话人零样本生成。",
+ "takeaways": [
+  "超低帧率分词器是实现长时语音生成的关键，在保真度和效率间取得良好平衡",
+  "next-token扩散框架能有效建模多说话人对话的时序动态和话轮转换",
+  "端到端生成比逐句拼接更自然，能捕捉对话间的韵律互动和副语言线索"
+ ],
+ "weaknesses": [
+  "自动标注的伪转录和话轮标签存在噪声，可能影响训练质量",
+  "4说话人上限对更大型多人对话场景仍有局限",
+  "长时生成的说话人一致性随时间推移是否稳定未充分定量验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "纯语音生成技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Seeing Far and Clearly Mitigating Hallucinations in MLLMs with Attention.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Seeing Far and Clearly Mitigating Hallucinations in MLLMs with Attention.pdf",
+ "title": "Seeing Far and Clearly Mitigating Hallucinations in MLLMs with Attention",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "优化注意力掩码减轻MLLM幻觉，但机制分析不足",
+ "innovations": [
+  "将幻觉分为初始幻觉和雪球幻觉两类",
+  "提出注意力寄存器结构捕获异常token注意力",
+  "设计位置感知编码方法改善长距离依赖"
+ ],
+ "method_framework": "FarSight通过优化因果掩码中的上三角矩阵作为注意力寄存器，动态分配注意力捕获被异常token分散的注意力，并引入渐进式衰减掩码率编码绝对位置信息。",
+ "experiment_framework": "在LLaVA-1.5等6个MLLM上评估，使用MMBench、POPE、CHAIR等图像基准和MSRVTT-QA等视频基准，测量幻觉率和准确率。",
+ "takeaways": [
+  "注意力崩溃和位置信息衰减是导致幻觉的关键因素",
+  "训练-free的解码策略可有效减轻幻觉而不增加计算成本"
+ ],
+ "weaknesses": [
+  "未详细分析不同模态token间的交互机制",
+  "对视频序列的改进效果不如图像任务明显"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "幻觉抑制属于可靠性主线，且针对多模态大模型推理落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

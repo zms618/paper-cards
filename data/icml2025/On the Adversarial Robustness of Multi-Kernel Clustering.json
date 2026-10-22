@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/On the Adversarial Robustness of Multi-Kernel Clustering.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/On the Adversarial Robustness of Multi-Kernel Clustering.pdf",
+ "title": "On the Adversarial Robustness of Multi-Kernel Clustering",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "RL框架评估多核聚类对抗鲁棒性，但防御不足且理论粗糙",
+ "innovations": [
+  "首次在黑盒设定下评估多核聚类(MKC)的对抗鲁棒性，提出基于RL的攻击框架AdvMKC",
+  "用近端策略优化(PPO)结合优势函数解决聚类结果在对抗优化过程中的不稳定性",
+  "引入生成器-聚类器框架：生成器产生对抗扰动、聚类器近似MKC行为，显著降低计算开销；并给出扰动对MKC影响的理论洞见"
+ ],
+ "method_framework": "以PPO智能体在不可察觉扰动预算内搜索扰动，用优势函数稳定无监督聚类目标下的优化；训练一个近似MKC行为的聚类器作为替身，使攻击可黑盒迁移地施加到7类传统/4类鲁棒MKC方法上。",
+ "experiment_framework": "在7个数据集、11种MKC方法(7传统+4鲁棒)上评估AdvMKC的有效性、鲁棒性与可迁移性，以聚类指标下降幅度衡量攻击强度。",
+ "takeaways": [
+  "多核聚类在故意对抗扰动下很脆弱，现有针对高斯噪声的鲁棒MKC对精心设计攻击仍不足",
+  "PPO+优势函数可稳定无监督目标下的对抗优化，生成器-聚类器替身大幅降低黑盒攻击成本",
+  "攻击在不同MKC方法间可迁移，说明脆弱性源于核相似性矩阵结构而非单一算法"
+ ],
+ "weaknesses": [
+  "攻击为评估性框架，配套的防御/鲁棒化方法未充分提出",
+  "理论洞见偏定性，扰动幅度与聚类性能下降的定量关系界较粗",
+  "在疾病诊断/高光谱等落地场景仅作应用列举，未做领域专用鲁棒性防护验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

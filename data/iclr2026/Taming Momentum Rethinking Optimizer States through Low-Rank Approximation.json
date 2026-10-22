@@ -1,0 +1,41 @@
+{
+ "title": "Taming Momentum: Rethinking Optimizer States through Low-Rank Approximation",
+ "one_line": "将优化器动量等价为线性回归，提出低秩压缩方法，但扩展性与理论验证不足",
+ "innovations": [
+  "建立动量EMA与在线线性回归的数学等价，从优化视角重新理解一阶/二阶动量",
+  "据此提出LoRA-Pre：在在线线性学习器内将完整动量矩阵分解到紧凑低秩子空间，压缩优化器显存",
+  "预训练Llama 60M-1B各规模均最佳，仅用1/8秩即可媲美/超越基线；微调较LoRA提升3.14(Llama-3.1-8B)/6.17(Llama-2-7B)分"
+ ],
+ "method_framework": "把Adam/Muon中动量的指数滑动平均(EMA)重新表述为在线梯度流下的线性回归器训练。在该等价下，将动量矩阵分解为低秩子空间（两个小矩阵乘积），仅维护低秩优化器状态，从而在保持优化性能的同时大幅降低显存，并避免投影梯度法中子空间无法即时更新导致的误差累积。",
+ "experiment_framework": "预训练Llama架构60M至1B；对比Adam/Muon及投影梯度类低秩优化器；微调对比LoRA等高效微调基线；指标为预训练loss/下游精度与微调任务准确率；报告秩效率（1/8秩即相当）。",
+ "takeaways": [
+  "EMA动量可等价为在线线性回归，这一视角指导了低秩优化器设计",
+  "仅用1/8秩即可达到甚至超过全秩动量优化器的性能",
+  "同一低秩优化思路在预训练与微调两种范式下均有效"
+ ],
+ "weaknesses": [
+  "预训练验证最大仅到1B参数，向70B级大模型的扩展性证据缺失",
+  "低秩秩的选择仍需调，秩-性能曲线与理论秩上界未充分刻画",
+  "核心是优化器状态压缩，与主流一阶/二阶动量理论的一致性分析较新，需独立复现"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Taming Momentum Rethinking Optimizer States through Low-Rank Approximation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Taming Momentum Rethinking Optimizer States through Low-Rank Approximation.pdf",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "优化器压缩与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Convergence Analysis of Policy Gradient Methods with Dynamic Stochasticity.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Convergence Analysis of Policy Gradient Methods with Dynamic Stochasticity.pdf",
+ "title": "Convergence Analysis of Policy Gradient Methods with Dynamic Stochasticity",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 3,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "为动态随机PG方法提供理论分析，但缺乏实验验证和实际应用连接。",
+ "innovations": [
+  "提出PES（Phase-based Exploration Schedule）方法：分阶段降低随机性，每阶段内用固定随机性运行PG子程序，实现收敛到最优确定性策略",
+  "分析SL-PG（联合学习随机性和策略参数）的收敛性，证明其也能收敛到最优随机超策略但需要更强假设",
+  "在梯度支配假设下推导last-iterate收敛速率：PES为O(ε^-5)，SL-PG为O(ε^-3)"
+ ],
+ "method_framework": "研究策略梯度方法中动态随机性的收敛理论：(1)PES方法将训练分为多个阶段，每阶段固定随机性水平运行PG子程序，按确定性调度逐渐降低随机性，最终收敛到确定性最优策略；(2)SL-PG方法将随机性作为可学习参数与策略参数联合优化；(3)在梯度支配假设下分别推导两种方法的last-iterate收敛速率。",
+ "experiment_framework": "纯理论论文，无实验验证。贡献为收敛性证明和样本复杂度分析。",
+ "takeaways": [
+  "实际中常用的退火策略探索（动态降低随机性）有理论保证：PES实现O(ε^-5)样本复杂度收敛到确定性最优策略",
+  "SL-PG联合学习随机性虽然收敛速率更快O(ε^-3)，但需要比PES更强的假设",
+  "向确定性策略收敛的PG方法理论基础被补全，此前仅固定随机性下的收敛性已知"
+ ],
+ "weaknesses": [
+  "纯理论论文，无数值实验验证收敛速率和方法实际效果",
+  "梯度支配假设在实际深度RL中是否容易满足未讨论",
+  "与SAC、TD3等实际常用的带探索噪声衰减算法的联系和对比不够充分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.85,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

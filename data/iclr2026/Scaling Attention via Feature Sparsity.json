@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scaling Attention via Feature Sparsity.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scaling Attention via Feature Sparsity.pdf",
+ "title": "Scaling Attention via Feature Sparsity",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "特征稀疏注意力降低计算复杂度，但与可靠性主线关联弱",
+ "innovations": [
+  "提出沿特征(而非序列)维度做稀疏化的正交思路：SFA将query/key编码为k-稀疏码，只在被激活坐标的重叠上算注意力，保持高维表达力。",
+  "设计IO感知内核FlashSFA，扩展FlashAttention直接在稀疏重叠上运算并在线softmax，不物化稠密n×n分数矩阵且保持精确。",
+  "证明特征稀疏与token级稀疏/paging正交可叠加；在GPT-2与Qwen3预训练上匹配稠密基线，速度提升最高2.5×、FLOPs与KV-cache近降50%。"
+ ],
+ "method_framework": "每个token的Q/K只激活少数坐标形成k-稀疏码；注意力分数仅由两边支持集的重叠部分计算，存储O(nk)非零；FlashSFA内核据此在线计算softmax并避免稠密矩阵物化，从而降低每次交互成本。",
+ "experiment_framework": "在GPT-2与Qwen3预训练上对比稠密注意力与short-embedding基线，报告困惑度/下游准确率、速度、FLOPs、KV-cache；用大海捞针等合成长上下文基准检验不同长度下的检索精度保持。",
+ "takeaways": [
+  "特征级稀疏是与序列稀疏正交、被低估的高效注意力轴，能在几乎不掉质量下减半FLOPs与KV-cache。",
+  "相比直接缩短embedding维数，SFA在困惑度与速度上取得显著更优权衡，并在超长上下文保持检索精度。"
+ ],
+ "weaknesses": [
+  "属高效架构/长上下文方向，与可靠性×医学影像/多模态推理主线关联弱。",
+  "k-稀疏码的学习与路由依赖具体实现，稀疏模式如何稳定训练、跨不同模型规模迁移的鲁棒性仍需更多验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "高效架构设计，与可靠性主线关联弱但方法有价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Adaptive Localization of Knowledge Negation for Continual LLM Unlearning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adaptive Localization of Knowledge Negation for Continual LLM Unlearning.pdf",
+ "title": "Adaptive Localization of Knowledge Negation for Continual LLM Unlearning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "针对LLM持续遗忘的级联退化，提出三组件方法但遗忘质量仅达基本线",
+ "innovations": [
+  "形式化并实验验证了持续遗忘中的级联退化现象：前序遗忘任务会削弱后续待遗忘数据的模型记忆，导致过遗忘和效用加速衰减",
+  "提出ALKN三组件方法：熵软标签（ESL）降低梯度幅度、动态梯度掩码（DGS）任务间参数隔离、自适应参数调制（APM）调节已激活参数的学习率",
+  "从逻辑回归玩具模型理论证明了持续遗忘比独立遗忘产生更大的参数偏移，量化了级联效应"
+ ],
+ "method_framework": "基于任务向量框架进行持续遗忘。每轮任务：(1)用熵软标签y=σ^s(π*_{θ_{t-1}}-1)替代one-hot标签进行微调，降低对部分遗忘数据的过度梯度；(2)动态学习掩码向量m_t，阈值二值化后屏蔽梯度，掩码同时鼓励与历史任务参数集M的低重叠和保留集效用损失最小；(3)对历史已激活参数施加降低的学习率，防止重遗忘。最终θ_t = θ_{t-1} - λ(θ_{t_ft} - θ_{t-1})。",
+ "experiment_framework": "在3个基准数据集上验证：TOFU（隐私保护，5个作者任务）、TRAVIS（通用知识，4个BBC新闻子集）、WHP（哈利波特原著文本，3本书任务）。模型为Llama-2-7B和Phi-1.5。基线包括GA、NPO、DPO、Task Vectors、EUL、WAGLE、SKU、SO-NPO等。指标：F-Rouge/FQ（遗忘质量）、R-Rouge/T-Rouge（效用保留）、MIA（成员推理攻击）。",
+ "takeaways": [
+  "ALKN在5轮持续遗忘后仍保持0.45+的模型效用，而多数基线（NPO+RT、GA+RT等）效用降至0.2以下",
+  "动态梯度掩码有效实现任务间参数隔离，消融实验显示DGS组件贡献最大",
+  "级联退化是持续遗忘的核心挑战：独立遗忘与持续遗忘的效用差距随任务数增加而扩大"
+ ],
+ "weaknesses": [
+  "仅在7B及以下参数模型上验证，更大规模模型的可扩展性未验证",
+  "动态掩码的可学习参数m_t增加了训练复杂度和超参数调节需求",
+  "遗忘质量指标F-Rouge约0.33，仅达到基本合格线，尚未实现完全遗忘"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "LLM持续遗忘的级联退化问题与可靠性主线直接相关，方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

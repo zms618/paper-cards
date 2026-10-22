@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Psdnorm_Temporal Normalization for Deep Learning In Sleep Staging.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Psdnorm_Temporal Normalization for Deep Learning In Sleep Staging.pdf",
+ "title": "PSDNorm: Temporal Normalization for Deep Learning in Sleep Staging",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "针对EEG信号分布漂移，提出时间维归一化方法，跨库SOTA但泛化性存疑",
+ "innovations": [
+  "指出BatchNorm/LayerNorm/InstanceNorm沿时间维归一化时忽略了信号向量系数间的依赖与自相关",
+  "提出PSDNorm：用Monge映射与时间上下文对信号特征图做时间维归一化",
+  "面向EEG生理信号的跨库(受试者/机构/设备)分布漂移，而非通用归一化"
+ ],
+ "method_framework": "沿时间维归一化时，用Monge最优传输映射对齐特征分布，并引入时间上下文建模相邻时间步自相关；替代朴素的逐时间实例归一化，使U-Net/Transformer在跨库测试时分布更稳。",
+ "experiment_framework": "基于U-Net与Transformer骨干；10个数据集、1万受试者训练；在留出未见数据集上评测跨库性能，并测数据稀缺下的鲁棒性。",
+ "takeaways": [
+  "PSDNorm在10库、1万受试者上，于留出未见数据集取得SOTA",
+  "相对现有归一化层对数据稀缺更鲁棒",
+  "显式建模时间自相关的归一化可有效缓解生理信号跨域分布漂移"
+ ],
+ "weaknesses": [
+  "Monge映射引入的计算开销与在线推理(新受试者)适配需更多分析",
+  "主要验证睡眠分期这一单一临床任务，跨其他EEG/医学信号任务的泛化未触及",
+  "归一化带来的精度增益相对强基线的幅度、以及对极端噪声/伪迹的鲁棒性消融需后续页"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像EEG信号分布漂移的可靠性解决方案",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

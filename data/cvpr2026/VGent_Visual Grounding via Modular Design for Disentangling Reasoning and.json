@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/VGent_Visual Grounding via Modular Design for Disentangling Reasoning and.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/VGent_Visual Grounding via Modular Design for Disentangling Reasoning and.pdf",
+ "title": "VGent Visual Grounding via Modular Design for Disentangling Reasoning and",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "模块化设计解耦推理与预测，但依赖外部检测器且计算开销大。",
+ "innovations": [
+  "模块化编码器-解码器架构分离高级推理与低级预测",
+  "QuadThinker强化多目标推理能力",
+  "mask-aware标签解决检测-分割歧义",
+  "全局目标识别提升提案选择"
+ ],
+ "method_framework": "VGent采用冻结MLLM作为编码器提供推理能力，解码器利用检测器提案作为查询，通过交叉注意力选择目标，避免自回归解码的效率问题。",
+ "experiment_framework": "在ORES多目标基准上测试，使用F1、gIoU和cIoU指标；在RefCOCO等单目标数据集上评估准确性，与RAS13B和Qwen3-VL-30B等强基线比较。",
+ "takeaways": [
+  "模块化设计可充分利用不同组件优势",
+  "mask-aware标签能有效解决检测与分割任务间的差异",
+  "全局目标识别机制提升提案选择准确性"
+ ],
+ "weaknesses": [
+  "依赖外部检测器可能引入额外误差",
+  "QuadThinker训练过程计算开销较大",
+  "未充分探讨模型在不同分辨率图像上的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "模块化设计有可靠性价值，但依赖外部检测器降低落地性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

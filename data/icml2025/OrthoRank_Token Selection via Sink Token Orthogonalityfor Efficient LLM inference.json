@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/OrthoRank_Token Selection via Sink Token Orthogonalityfor Efficient LLM inference.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/OrthoRank_Token Selection via Sink Token Orthogonalityfor Efficient LLM inference.pdf",
+ "title": "OrthoRank: Token Selection via Sink Token Orthogonality for Efficient LLM inference",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "基于sink token正交性的LLM动态token选择方法，优于层剪枝但适用性有限。",
+ "innovations": [
+  "揭示sink token在隐藏状态空间的特性：sink token归一化隐藏状态几乎不变，其他token逐层向sink token靠拢",
+  "提出基于sink token正交性的token重要性度量：与sink token越正交的token越重要",
+  "无需额外训练的动态token选择方法，可直接应用于预训练模型"
+ ],
+ "method_framework": "分析各层隐藏状态中sink token与其他token的余弦相似度；定义token重要性为其向sink token移动的速度(即与sink token正交的程度)；每步计算后跳过与sink token高度相似的低重要token，仅对重要token继续计算。",
+ "experiment_framework": "任务：语言建模(困惑度)、零样本分类、LongBench长文本。基线：层剪枝、early exit、mixture of depth。指标：困惑度、准确率、吞吐量。",
+ "takeaways": [
+  "sink token在隐藏空间中是稳定的吸引子，其他token逐层向其靠拢",
+  "正交性度量可无需训练地识别重要token，优于静态层剪枝",
+  "在相同稀疏度下，OrthoRank困惑度更低、零样本准确率更高"
+ ],
+ "weaknesses": [
+  "sink token的识别方式(通常是第一个token)在所有模型中是否一致未充分验证",
+  "仅在decoder-only架构验证，encoder-decoder模型适用性未知",
+  "与现有投机解码等加速方法的兼容性未考察"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

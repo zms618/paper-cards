@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/A4A_Adapter for Adapter Transfer via All-for-All Mapping for Cross-Architecture.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A4A_Adapter for Adapter Transfer via All-for-All Mapping for Cross-Architecture.pdf",
+ "title": "A4A: Adapter for Adapter Transfer via All-for-All Mapping for Cross-Architecture Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.3
+ },
+ "one_line": "耦合空间投影与BLIP-2桥接实现适配器跨架构迁移",
+ "innovations": [
+  "以“适配器与基座模型是一个耦合整体、逐层映射会破坏整体一致性”为诊断，提出 all-for-all：把 PTA 全部 l 层注意力特征聚合成序列后统一投影，而非逐层对齐",
+  "Coupling Space Projection 用所有层维度的最小公倍数 d_scm 作为统一空间维度（自称兼顾效率与容量，佐证在补充材料 7.3），一次性消除层间尺度差异",
+  "Upgraded Space Mapping 借鉴 BLIP-2：随机初始化可学习 K̄,V̄，经 LayerNorm 后以 [K,K̄] 为 key/value 做 R 次注意力+FFN 迭代，再由 Align 线性层对齐到升级模型各层维度 d̄_i，以 Z̄=Attn(q,k,v)+λAttn(q,k̄,v̄) 注入"
+ ],
+ "method_framework": "基座与升级模型全部冻结；先用 PTA 的 condition encoder 和注意力层抽出 k_i,v_i 投到耦合空间，再用可学习升级特征与参考特征做注意力桥接，最后按层对齐注入。训练仅用升级模型的 LDM 去噪损失。",
+ "experiment_framework": "CelebAMask-HQ + OpenImages；SD1.5 为基座，SDXL(U-Net) 与 PixArt-α(DiT) 为升级模型；IP-Adapter 作 PTA；ID 定制用 IDA(InsightFace)，物体定制用 CLIP-score，横轴为样本数 SC。",
+ "takeaways": [
+  "“LCM 统一维度 + 可学习查询特征做跨架构桥接”是模型间参数/特征迁移的可复用范式",
+  "用样本数 SC 而非 GPU 小时度量训练成本，规避硬件不可比问题，可比性处理值得借鉴"
+ ],
+ "weaknesses": [
+  "任务（adapter transfer）已由 X-Adapter/Ctrl-Adapter 定义，本文是模块层面的改进，且 Upgraded Space Mapping 几乎是 BLIP-2 Q-Former 的直接搬运",
+  "未与 Ctrl-Adapter 比较；与 X-Adapter 的比较用的是其公开 checkpoint 而非同条件复现，公平性存疑",
+  "验证仅 100 张 CelebAMask-HQ 图像 + BLIP-2 生成 caption，无用户研究，而个性化生成质量本应以主观评测为准；结果以曲线而非数值表呈现，无方差",
+  "λ、R、d_scm 等关键超参无消融可见（d_scm 的对比放补充材料），且提升主要体现为“用更少样本追平 PTA-UM”，绝对质量未见超越"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "适配器迁移方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/A Training-Free Style-Personalization via SVD-Based Feature Decomposition.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Training-Free Style-Personalization via SVD-Based Feature Decomposition.pdf",
+ "title": "A Training-Free Style-Personalization via SVD-Based Feature Decomposition",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.0,
+  "relevance": 4.5,
+  "overall": 5.0
+ },
+ "one_line": "冻结模型中用SVD分解特征换风格，但实验不足且内容泄漏风险高",
+ "innovations": [
+  "步级干预分析定位关键步：在 Infinity 12 步生成的每一步只替换一次提示文本，用 CLIP 相似度衡量该步对内容/风格的影响，发现第 2 步(对应 F3)对两者影响最大；再对 F3 做 SVD，把除最大奇异值外的项全置零重构 F_svd、残差 F_res=F3-F_svd 对比，证明仅替换主奇异分量主要改变颜色类风格相似而几乎不改物体相似",
+  "主特征混合 PFB（式5-6）：对 F3=UΣV^T 按谱序做指数重加权 W=diag(exp^{-0·α},exp^{-1·α},...) 得 Φ(F)，再令 F̂3^gen=Φ(F3^sty)+(F3^gen-Φ(F3^gen))，只换掉被 Φ 放大/保留的主分量、保留生成路原有结构，从而在换风格的同时压住参考图内容泄漏",
+  "结构注意力修正 SAC（式7）：在 s∈{3,...,S} 的细粒度阶段把生成路的自注意力 Q、K 直接替换为内容路的 Q^con、K^con，只留自身 V，用内容流的空间结构先验稳定 PFB 注入后的几何一致性"
+ ],
+ "method_framework": "双流共用同一提示「<content> in <style>」：内容流走 Infinity 原始推理不改动产出 {F_s^con}，生成流产出 {F_s^gen}；s=3 时以 PFB 混合参考图经图像编码器得到的 F3^sty 主分量替换生成路主分量；s≥3 起用 SAC 将生成路自注意的 Q/K 换成内容路的 Q/K，V 保持自身；全部参数冻结不训练。",
+ "experiment_framework": "预训练 Infinity-2B 冻结、单张 A6000；沿用 FineStyle 协议，Parti 过滤子集 190 条提示 × 10 类代表风格；对比 StyleDrop/StyleAligned/IP-Adapter/DreamStyler/DB-LoRA/B-LoRA/CSGO/StyleAR；指标 Stxt、Simg、S_harmonic 与单图推理耗时。",
+ "takeaways": [
+  "「逐步只替换一次提示 + CLIP 相似度」的 claim 隔离式分析，是把黑箱生成过程里「哪一步管什么」讲清楚的最省事套路，可复用到任何多尺度/多步 AR 或扩散生成过程",
+  "双流（一条不动提供结构先验、一条被调制）配合只替换自注意力 Q/K 留自身 V，是零训练条件下做结构保真的通用改法，比全特征替换更稳",
+  "对量化特征做谱域指数重加权而非全量替换，能在「强风格信号」与「参考图内容泄漏」之间取连续折中，α 就是唯一的连续旋钮，便于人工调节风格强度"
+ ],
+ "weaknesses": [
+  "正文在 6.3 节中途截断，PFB/SAC 两个模块的消融、α 衰减率取值、注入步 s=3 与 S_fine 集合的选取依据、SVD 秩 r 全部缺失，关键选择无法从正文核验；所有数值为单跑、无种子方差",
+  "Tab.1 中调和均值 0.437 虽最高，但风格保真 Simg=0.630 反而低于 IP-Adapter(0.763)、StyleAligned(0.716) 和 StyleAR(0.701)，优势主要来自提示保真 Stxt 更高；论文承认高 Simg 可能来自内容泄漏或 mode collapse，却没有给出内容泄漏/结构一致性的独立定量指标，仅靠 Fig.5 定性图佐证",
+  "步级分析只用 CLIP 相似度，且 100 组提示对实质是「同一物体换 10 种预设颜色」，把风格操作化成了颜色，据此外推「F3 的第一主成分主要承载风格」这一结论在真实艺术风格（笔触、构图、色调搭配）上是否成立未被验证",
+  "唯一实验协议来自 FineStyle 的 190 提示 ×10 风格合成子集，无真实用户风格库、无人工偏好评测，也没有跨风格类别（如从水彩换到油画）的迁移测试，外面 5 行定性图不足以支撑更强主张"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "风格迁移方法与可靠性主线无关，仅工程实现价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

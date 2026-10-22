@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Cross-Species Neural Foundation Model for End-to-End Speech Decoding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Cross-Species Neural Foundation Model for End-to-End Speech Decoding.pdf",
+ "title": "A CROSS-SPECIES NEURAL FOUNDATION MODEL FOR END-TO-END SPEECH DECODING",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "跨物种预训练神经编码器接音频LLM，端到端解码皮层活动成句子",
+ "innovations": [
+  "把跨任务、跨物种（约 98h 人类 + 269h 猴 Utah 阵列）自监督预训练的 Transformer 神经编码器直接接音频 LLM，构成首个可端到端微分优化的言语 BCI 框架 BIT",
+  "编码器先做时间 patch 掩码重建（MSE）自监督预训练，再用 CTC 微调到音素级以获得拼音位信息；端到端阶段不再把音素 logits 喂给 LLM，只作为把音位信息注入表征的中间目标",
+  "用模态对齐器把 mean-pooled 神经嵌入与文本嵌入投影到共享潜空间做对比学习（同句同试为正、batch 内其余为负）与自回归交叉熵联合优化；神经活动被当作「一种音频模态」经多模态 projector 映射进音频 LLM 声学空间，仅用 LoRA 调注意力与 FFN"
+ ],
+ "method_framework": "20ms 分箱的阈值化峰计数与峰带功率打成时间 patch，Transformer（RoPE + 双向掩码）做掩码重建自监督预训练（MSE），再 CTC 微调出音素表征；随后经浅 MLP 与对比对齐映射到音频/文本 LLM 潜空间，LoRA 微调自回归生成句子。",
+ "experiment_framework": "Brain-to-Text ’24/’25 竞题（受试 T12、T15）加 Kunz 内在言语集；级联（5-gram LM）与端到端两条路线内分别比 RNN/BIT-TFS/BIT-Human/BIT-All/BIT-Cross-Task-Only，指标 WER，半数通过竞题评测。",
+ "takeaways": [
+  "SSL 预训练在低标签的内隐言语上收益远大于尝试言语（WER 降 39–45%），自监督无标签跨受试数据比同受试跨任务有监督预训练带来更大迁移增益",
+  "把神经活动当作第二种「音频模态」用多模态 projector 对齐，比只做文本嵌入投影更能吃到音频 LLM 的声学先验，小尺寸音频 LLM 已足够",
+  "在级联与端到端两条路线内分别比同类基线（而非跨路线比绝对 WER），是与公开竞题排名的公平对齐方式，值得在 BCI 评测里沿用"
+ ],
+ "weaknesses": [
+  "表中最优 WER（’24 的 5.10%、’25 的 1.76%）都是加了 Ensemble 的结果，单点模型 WER 为 15.67%/11.06%，而集成被当作独立加分项、没有单独拆解，基线实际面对的是不同设定",
+  "只覆盖 T12、T15 两名受试，且预训练数据含与测试同受试的人类数据（BIT-Human）；所有 WER 只报均值、无句子级方差或置信区间，Figure 2C 的点散只给相对提升值而无统计检验",
+  "超参搜索用「随机采样 30 组初始化、取验证集最优配置」，等于在同一验证集上做 30 次选择，存在选择偏差且会掩盖消融差异；正文还在 §5.1 中途截断，损失权重、LoRA rank、音频 vs 文本 LLM 的系统对比与可解释分析均不可见"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "跨物种BCI与可靠性主线无实质交点，仅为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

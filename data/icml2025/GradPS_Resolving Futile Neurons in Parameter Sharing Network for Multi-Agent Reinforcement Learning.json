@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/GradPS_Resolving Futile Neurons in Parameter Sharing Network for Multi-Agent Reinforcement Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/GradPS_Resolving Futile Neurons in Parameter Sharing Network for Multi-Agent Reinforcement Learning.pdf",
+ "title": "GradPS: Resolving Futile Neurons in Parameter Sharing Network for Multi-Agent Reinforcement Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.4
+ },
+ "one_line": "通过克隆无效神经元缓解MARL梯度冲突，但分组机制缺乏理论支撑",
+ "innovations": [
+  "发现参数共享网络中存在无效神经元(futile neurons)，其更新被多智能体梯度冲突抵消",
+  "提出GradPS：为每个无效神经元动态创建多个克隆，将低梯度冲突的智能体分组共享同一克隆",
+  "同组智能体共享梯度保持样本效率，不同组独立更新克隆鼓励行为多样性"
+ ],
+ "method_framework": "在合作MARL参数共享框架下，检测智能体间梯度冲突导致更新被抵消的神经元。对无效神经元创建多个克隆版本，按梯度冲突程度对智能体聚类分组，每组智能体在专属克隆上独立更新。非无效神经元仍全局共享。",
+ "experiment_framework": "在多个合作MARL基准环境上实验，对比CTDE、参数共享、独立学习等方法；指标为团队回报和策略多样性；报告GradPS取得有竞争力的性能和更好的多样性。",
+ "takeaways": [
+  "参数共享中的梯度冲突是导致策略同质化和学习效率低的关键原因",
+  "动态神经元克隆可在不牺牲样本效率的前提下实现策略多样性",
+  "梯度冲突程度可作为智能体分组的有效依据"
+ ],
+ "weaknesses": [
+  "克隆神经元的数量和分组方式需手工设定或启发式确定",
+  "前9页内未看到梯度冲突度量的理论分析",
+  "大规模智能体场景下的克隆数量膨胀问题未充分讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.43,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

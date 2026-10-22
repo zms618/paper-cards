@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Organize the Web Constructing Domains Enhances Pre-Training Data Curation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Organize the Web Constructing Domains Enhances Pre-Training Data Curation.pdf",
+ "title": "Organize the Web: Constructing Domains Enhances Pre-Training Data Curation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "二维分类法+蒸馏标注器，领域混合优化预训练数据",
+ "innovations": [
+  "提出主题+格式二维领域分类法，将无结构网页语料组织为24个可解释类别",
+  "将Llama-3.1-405B-Instruct的标注蒸馏到140M高效分类器，实现大规模自动标注",
+  "揭示质量过滤方法会隐式改变领域混合，而显式领域混合可进一步提升性能"
+ ],
+ "method_framework": "设计主题(24类学科)和格式(学术写作/代码/论坛等)两套分类法；用大LLM标注少量样本，蒸馏训练140M分类器；用分类器标注全量预训练语料；研究不同领域混合比例对下游任务的影响。",
+ "experiment_framework": "数据：CommonCrawl清洗后语料。基线：FineWeb等质量过滤方法、k-means聚类。指标：下游任务性能、领域组成分析。模型：标准预训练规模。",
+ "takeaways": [
+  "无结构网页语料可通过主题+格式二维分类法变得可解释、可系统调控",
+  "领域混合是质量过滤之外的独立增益维度，可叠加提升",
+  "现有质量过滤方法隐式改变了领域组成，理解这一变化有助于设计更好的过滤策略"
+ ],
+ "weaknesses": [
+  "分类法仅24类，粒度较粗，细粒度主题/格式的调控能力有限",
+  "蒸馏分类器的错误率对下游结论的影响未充分量化",
+  "仅在英文CommonCrawl验证，多语言语料的领域构建未考察"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

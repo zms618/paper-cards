@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Understanding and Improving Hyperbolic Deep Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Understanding and Improving Hyperbolic Deep Reinforcement Learning.pdf",
+ "title": "Understanding and Improving Hyperbolic Deep Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 5.1
+ },
+ "one_line": "诊断双曲RL优化失稳，提出三组件改进但缺乏通用任务验证",
+ "innovations": [
+  "通过分析Poincaré Ball与Hyperboloid模型核心运算的梯度，指出大范数嵌入使基于梯度的训练失稳、导致PPO信任域违反",
+  "HYPER++含三组件：有界范数且避免clip维数灾难的特征正则、稳定critic训练的类别价值损失、更易优化的双曲层形式",
+  "在ProcGen上稳定学习、优于既往双曲agent且wall-clock降约30%；在Atari-5(Double DQN)上大幅超越欧氏与双曲基线"
+ ],
+ "method_framework": "决策过程产生树状指数分支的层级数据，欧氏体积多项式增长造成几何失配，双曲几何指数体积增长可低失真嵌入层级关系；但双曲深度RL优化失稳。本文分析Poincaré/Hyperboloid核心运算梯度，发现大范数嵌入破坏梯度训练并违反PPO信任域。据此HYPER++：(1)特征正则保证有界范数又避免clip的维数灾难；(2)类别价值损失稳定critic；(3)更易优化的双曲层形式。",
+ "experiment_framework": "在ProcGen(对比欧氏agent/既往双曲agent Hyper+S-RYM)与Atari-5(Double DQN)上评估；指标为mean test reward与wall-clock时间；报告稳定学习、超越基线且省时约30%。",
+ "takeaways": [
+  "双曲深度RL失稳主要来自大范数嵌入引发的梯度/信任域问题，而非双曲几何本身",
+  "有界范数正则+类别价值损失+友好双曲层可让双曲RL稳定且更高效",
+  "双曲几何对层级决策结构(如ProcGen)确有表达优势，关键在优化稳定性"
+ ],
+ "weaknesses": [
+  "属RL/双曲几何方向，与本主线(可靠性×多模态推理/医学影像)无直接关联",
+  "优势主要在层级树状benchmark(ProcGen/Atari)，对通用连续控制/真实任务的收益未验证",
+  "有界范数正则如何在保持层级表达力与避免clip维数灾难间权衡，正文前9页未给出严格量化边界"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "RL优化方法与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

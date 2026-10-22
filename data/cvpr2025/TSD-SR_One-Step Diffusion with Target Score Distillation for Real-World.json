@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/TSD-SR_One-Step Diffusion with Target Score Distillation for Real-World.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/TSD-SR_One-Step Diffusion with Target Score Distillation for Real-World.pdf",
+ "title": "TSD-SR One-Step Diffusion with Target Score Distillation for Real-World",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "目标分数蒸馏结合分布采样实现一步超分，但性能与鲁棒性存疑",
+ "innovations": [
+  "目标分数蒸馏(TSD)解决VSD梯度方向不可靠问题",
+  "分布感知采样模块(DASM)增强细节恢复能力",
+  "结合VSD和TSM的混合优化策略"
+ ],
+ "method_framework": "TSD-SR结合教师模型和LoRA模型，通过目标分数匹配(TSM)损失和变分分数蒸馏(VSD)损失训练学生模型，实现一步扩散图像超分辨率。",
+ "experiment_framework": "在DIV2K-Val、RealSR和DRealSR数据集上评估，与SinSR、AddSR、OSEDiff等单步方法以及StableSR、DiffBIR等多步方法比较，使用PSNR、SSIM、LPIPS等指标。",
+ "takeaways": [
+  "目标分数蒸馏可有效解决低质量样本的梯度方向偏差问题",
+  "分布感知采样模块能优化早期时间步的梯度累积，提升细节恢复"
+ ],
+ "weaknesses": [
+  "PSNR和SSIM指标低于部分多步方法",
+  "未充分讨论模型在极端退化情况下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "超分任务与可靠性主线无实质交点，仅属常规图像处理",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

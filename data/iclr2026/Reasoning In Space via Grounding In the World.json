@@ -1,0 +1,35 @@
+{
+ "key": "iclr2026/Reasoning In Space via Grounding In the World.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reasoning In Space via Grounding In the World.pdf",
+ "title": "Reasoning in Space via Grounding in the World",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "elevance": 5.5,
+  "evidence": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "双路池化构建统一3D表示，自回归定位与推理，但鲁棒性验证不足",
+ "innovations": [
+  "提出简单有效的双路池化机制，将几何特征与语义、位置线索紧对齐，构建统一的image-patch式3D表示，不增加输入token数即可同时承载语义与几何信息。",
+  "GS-Reasoner是首个无需外部3D检测器/解码器、完全自回归完成3D视觉定位的3D-LLM，性能可比肩SOTA。",
+  "构建Grounded Chain-of-Thought(GCoT)数据集，同时含3D包围框标注与把定位作为解题核心步骤的逐步推理路径。"
+ ],
+ "method_framework": "通过双路池化把点云几何特征与LLM语义/位置线索对齐到统一的image-patch 3D表示上；在此表示上让模型自回归输出定位框与空间推理，并用GCoT数据把定位嵌入推理链，使定位反过来促进空间推理。",
+ "experiment_framework": "在3D视觉定位与空间推理基准(含VSI-Bench等相对/绝对空间推理)上对比依赖外部模块的3D-LLM，报告定位精度与空间推理SOTA。",
+ "takeaways": [
+  "统一的3D表示可让3D-LLM摆脱对外部检测器的依赖，端到端自回归完成定位与空间推理。",
+  "把定位作为推理链的核心步骤(GCoT)能同时提升定位与空间推理两项能力。"
+ ],
+ "weaknesses": [
+  "属具身/机器人空间推理方向，与可靠性主线的医学影像落地域关联较弱。",
+  "前9页未见完整基准数值表，统一表示对稀疏点云、大场景与遮挡的鲁棒性未充分论证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

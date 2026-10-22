@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Smooth Interpolation for Improved Discrete Graph Generative Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Smooth Interpolation for Improved Discrete Graph Generative Models.pdf",
+ "title": "Smooth Interpolation for Improved Discrete Graph Generative Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "GraphBFN用连续计数平滑分解图拓扑，提升生成效率但可靠性存疑",
+ "innovations": [
+  "提出Graph Bayesian Flow Networks(GraphBFN)，强调拓扑信息动态的生成范式",
+  "用分类分布采样无限次得到的连续计数作为潜变量，实现拓扑信息的平滑分解，区别于离散扩散",
+  "开发先进采样策略与新的时间调度技术，克服实践障碍并提升性能与训练/采样效率"
+ ],
+ "method_framework": "把图的离散节点/边属性背后的拓扑连续性用图谱刻画；以分类分布的连续计数(无限采样极限)为潜变量设计贝叶斯流生成过程，使拓扑信息沿生成轨迹平滑演化，配合改进的采样器与时间调度在离散图上做生成。",
+ "experiment_framework": "在通用图生成与分子图生成任务上，对比DiGress、GruM等离散扩散方法，指标为图生成质量指标与训练/采样效率；称一致达到更优或有竞争力性能且效率更高。",
+ "takeaways": [
+  "把图拓扑的连续性(谱/计数)显式融入生成过程，可让离散图生成轨迹更平滑、采样更高效",
+  "贝叶斯流网络的连续计数潜变量是离散图生成中替代离散扩散的有力范式"
+ ],
+ "weaknesses": [
+  "‘连续计数=无限采样’的理论便利与实际有限采样实现之间的近似误差前9页未量化",
+  "主要提升在生成质量与效率，与可靠性/可信AI主线无关；分子生成的有效性/合法性指标(如药物可合成性)未深入",
+  "时间调度与采样策略带来额外实现复杂度，对超参的敏感性分析不充分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

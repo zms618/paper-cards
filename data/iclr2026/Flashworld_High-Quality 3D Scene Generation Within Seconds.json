@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Flashworld_High-Quality 3D Scene Generation Within Seconds.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Flashworld_High-Quality 3D Scene Generation Within Seconds.pdf",
+ "title": "Flashworld: HIGH-QUALITY 3D Scene GENERA-TION Within Seconds",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "双模式扩散模型加速3D生成，但3D一致性和泛化能力有限",
+ "innovations": [
+  "双模式预训练策略，同时支持MV-oriented和3D-oriented生成模式",
+  "跨模式后训练蒸馏，将高质量MV-oriented模式知识迁移到3D一致性模式",
+  "利用大规模单视图图像和文本提示增强模型泛化能力"
+ ],
+ "method_framework": "基于视频扩散模型构建双模式多视图扩散模型，通过3DGS解码器生成3D高斯表示，再采用跨模式蒸馏加速推理并提升视觉质量。",
+ "experiment_framework": "在T3Bench、DL3DV、WorldScore等数据集上评估，对比CAT3D、Bolt3D、Wonderland等基线，使用CLIP IQA+、CLIP Aesthetic、Q-Align等指标。",
+ "takeaways": [
+  "双模式训练框架可有效平衡视觉质量和3D一致性",
+  "跨模式蒸馏是加速3D生成同时保持质量的有效策略"
+ ],
+ "weaknesses": [
+  "3D一致性和内容对齐指标相对较低，主要依赖RGB监督而非深度指导",
+  "未充分讨论模型在不同场景类型上的泛化能力差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

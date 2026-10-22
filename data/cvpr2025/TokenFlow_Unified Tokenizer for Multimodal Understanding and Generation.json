@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/TokenFlow_Unified Tokenizer for Multimodal Understanding and Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/TokenFlow_Unified Tokenizer for Multimodal Understanding and Generation.pdf",
+ "title": "TokenFlow Unified Tokenizer for Multimodal Understanding and Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "双码本tokenizer提升多模态性能，但复杂度与泛化存疑",
+ "innovations": [
+  "双码本架构解耦语义与像素级特征学习",
+  "共享索引机制保持跨级相关性",
+  "多步采样策略提升图像生成一致性"
+ ],
+ "method_framework": "TokenFlow采用双编码器架构与对应专用码本，语义编码器从CLIP风格教师模型学习，像素编码器捕获详细视觉信息，通过加权距离最小化进行量化，实现语义与像素特征的联合表示学习。",
+ "experiment_framework": "数据集：LAION/COYO-700M训练，ImageNet评估；基线：VQGAN、Janus、VILA-U等；指标：多模态理解(SEEDBench/MMVet等)、图像重建(rFID/PSNR/SSIM)、图像生成(GenEval/DPG-Bench)。",
+ "takeaways": [
+  "双码本设计可同时满足理解与生成需求",
+  "共享索引机制实现跨级特征关联",
+  "多步采样策略解决图像一致性问题"
+ ],
+ "weaknesses": [
+  "方法复杂度较高，需要维护两个编码器和码本",
+  "实验主要在标准数据集上进行，真实场景泛化能力有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态理解生成工具，非可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

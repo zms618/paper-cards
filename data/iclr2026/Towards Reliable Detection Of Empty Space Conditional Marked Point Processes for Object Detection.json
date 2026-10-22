@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Reliable Detection Of Empty Space Conditional Marked Point Processes for Object Detection.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Reliable Detection Of Empty Space Conditional Marked Point Processes for Object Detection.pdf",
+ "title": "Towards Reliable Detection of Empty Space: Conditional Marked Point Processes for Object Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "将检测建模为点过程，提供空区域概率估计，但证据不足",
+ "innovations": [
+  "指出现有检测器只校准已检出物体的objectness，却无法量化未检测区域是否真为空(如可行驶性)，在自动驾驶中构成安全风险",
+  "将边界框数据建模为标记点过程(中心点为点事件，mark为框尺寸与类别)，建立空间统计的概率基础",
+  "似然(likelihood-based)训练提供良定义的置信估计，能对区域是否可行驶(无物体)给出概率，而非仅对检出框打分"
+ ],
+ "method_framework": "用条件标记Poisson点过程刻画图像中目标中心的空间发生强度，mark编码框的空间延展与类别。基于点过程似然训练网络，使模型输出既包含检出目标，也包含整图强度场，从而可对空区域是否真无物体给出概率判断，替代启发式anchor/FPN损失。",
+ "experiment_framework": "以校准评估(calibration, 置信度是否匹配实际正确率)为主，并报告检测性能；与常用启发式检测器对比其objectness校准与空区域可行驶性概率估计。属安全关键(自动驾驶)场景动机。",
+ "takeaways": [
+  "检测器的可靠性缺口在于'空区域不确定性'被完全忽略，可能漏检障碍物",
+  "点过程似然训练能给出有概率基础的置信度，而非启发式分数",
+  "该框架可同时校准已检出物体与空区域可行驶性，提升安全关键场景的可靠性"
+ ],
+ "weaknesses": [
+  "正文前9页未见完整主表，相对强基线的mAP与校准提升幅度需看后文确认",
+  "似然训练相比成熟anchor-free检测器在纯性能上可能有折损，文中对效率/精度权衡讨论有限",
+  "落地域为自动驾驶而非医学影像，但可靠性/不确定性/校准属主线"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.33,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "自动驾驶可靠性主线，解决空区域不确定性校准问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

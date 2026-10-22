@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Proximal Diffusion Neural Sampler.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Proximal Diffusion Neural Sampler.pdf",
+ "title": "Proximal Diffusion Neural Sampler (PDNS)",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.7
+ },
+ "one_line": "近端点方法分解神经采样为子问题，缓解多模态势垒模式坍塌",
+ "innovations": [
+  "在路径测度空间用近端点方法求解神经采样的随机最优控制问题",
+  "将学习过程分解为一系列更简单的子问题，逐步构造逼近目标分布的路径，促进跨模态充分探索",
+  "以近端加权去噪交叉熵(WDCE)目标实例化每个近端步，实现高效可落地"
+ ],
+ "method_framework": "把从参考分布到未归一化目标的输运视为路径测度上的SOC；用近端点迭代逐步精化路径分布，每步用WDCE目标训练去噪网络；分阶段逼近缓解多模态势垒导致的模式坍塌。",
+ "experiment_framework": "连续与离散采样任务；含分子动力学与统计物理等多模态带势垒的困难场景；对比神经采样/MCMC方法的采样质量与跨模态覆盖。",
+ "takeaways": [
+  "近端点式分阶段逼近可在多模态带势垒目标上缓解模式坍塌",
+  "WDCE目标使近端步骤可高效训练",
+  "PDNS在连续与离散采样任务上展现有效性与鲁棒性"
+ ],
+ "weaknesses": [
+  "属采样/最优控制理论方向，与可靠性、验证器、医学影像或多模态推理主线无直接关联",
+  "分阶段近端迭代引入多步训练成本，与单步扩散采样的效率权衡需看后续页",
+  "主要在物理/统计分布上验证，向高维真实数据生成的可扩展性未充分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "属采样理论方向，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

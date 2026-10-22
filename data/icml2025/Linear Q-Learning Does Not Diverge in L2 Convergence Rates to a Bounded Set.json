@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Linear Q-Learning Does Not Diverge in L2 Convergence Rates to a Bounded Set.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Linear Q-Learning Does Not Diverge in L2 Convergence Rates to a Bounded Set.pdf",
+ "title": "Linear Q-Learning Does Not Diverge in L2: Convergence Rates to a Bounded Set",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 6
+ },
+ "one_line": "线性Q-learning在L2意义下收敛到有界集，但实际性能保证有限。",
+ "innovations": [
+  "建立线性Q-learning的首个L2收敛速率结果，将Meyn(2024)的几乎必然有界性结果推进到量化收敛速率",
+  "不修改原始线性Q-learning算法，不假设Bellman完备性，不假设行为策略近似最优，仅需自适应温度epsilon-softmax行为策略",
+  "关键技术贡献：利用随机过程的一般结果（漂移准则）分析线性Q-learning的L2稳定性"
+ ],
+ "method_framework": "论文分析线性函数近似Q-learning的迭代权重w_t的收敛性。核心问题是：权重是否会发散到无穷？Meyn(2024)证明在自适应温度epsilon-softmax行为策略下几乎必然有界。本文进一步给出L2收敛速率：E[||w_t||^2]以O(1/sqrt(t))的速率收敛到某个有界集内。分析不修改算法本身，不假设Bellman完备性或行为策略质量。",
+ "experiment_framework": "纯理论论文：L2收敛速率证明；辅以小规模数值实验验证收敛性。",
+ "takeaways": [
+  "线性Q-learning在自适应温度epsilon-softmax下不仅几乎必然有界，而且L2意义下有量化收敛速率",
+  "收敛速率O(1/sqrt(t))表明线性Q-learning的权重估计方差随时间以标准随机速率衰减",
+  "Bellman完备性等强假设对于线性Q-learning的稳定性分析并非必要"
+ ],
+ "weaknesses": [
+  "纯理论分析，缺乏大规模RL任务的实证验证",
+  "收敛速率是到有界集的速率，而非到最优Q函数的速率，实际学习性能保证有限",
+  "仅分析线性函数近似，深度神经网络近似下的收敛性仍未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

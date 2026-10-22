@@ -1,0 +1,36 @@
+{
+ "title": "Neural Guided Diffusion Bridges",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.25
+ },
+ "one_line": "神经校正扩散桥，组合现有方法，高维稳定性存疑",
+ "innovations": [
+  "指出现有引导提议依赖MCMC/SMC、score匹配在稀有事件与次椭圆扩散下失效。",
+  "提出神经引导扩散桥：在Schauer引导提议上加一个可学习神经网络参数化的校正漂移项。",
+  "引入由网络部分指定的灵活变分族近似桥路径测度，训练后可高效独立采样。"
+ ],
+ "method_framework": "以已有引导提议构造条件过程，再用变分目标学习一个神经网络参数化的附加漂移校正项，逼近真实桥的Doob h-transform条件动力学；训练完成后直接数值积分采样，无需MCMC/score匹配，规避σσ⊤求逆问题。",
+ "experiment_framework": "在多种扩散规格与条件场景下评测，特别针对稀有事件与多模态分布；对比MCMC(pCN)/SMC与score-matching方法，报告采样独立性、计算代价与对强非线性/次椭圆扩散的鲁棒性。",
+ "takeaways": [
+  "神经校正漂移可免去MCMC/score匹配直接采样扩散桥。",
+  "对稀有事件与多模态分布，该方法比score学习类方法更鲁棒。"
+ ],
+ "weaknesses": [
+  "作者自述是现有引导提议+变分思想的组合，原创性中等。",
+  "高维扩散下网络校正漂移的训练稳定性与收敛前9页未充分验证。",
+  "落地为随机过程/生成建模，与可靠性主线（医学影像/多模态大模型推理）无直接关联，relevance低。"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Neural Guided Diffusion Bridges.pdf",
+ "path": "icml2025/Neural Guided Diffusion Bridges.pdf",
+ "conf": "icml2025",
+ "raw_overall": 6.13,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Generalizing from Simple to Hard Visual Reasoning Can We Mitigate Modality Imbalance in VLMs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Generalizing from Simple to Hard Visual Reasoning Can We Mitigate Modality Imbalance in VLMs.pdf",
+ "title": "Generalizing from Simple to Hard Visual Reasoning: Can We Mitigate Modality Imbalance in VLMs?",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "合成任务量化VLM模态不平衡，图像转文本促进简单到困难泛化。",
+ "innovations": [
+  "提出Table Readout、Grid Navigation、Visual Analogy三个合成任务，各有SIMPLE/HARD两版，系统量化VLM视觉推理的模态不平衡",
+  "发现显式image-to-text转换是促进S2H泛化的关键(利用文本推理能力迁移)",
+  "识别梯度对齐指标可预测哪些训练策略能更好地促进S2H泛化"
+ ],
+ "method_framework": "每个任务设计等价的纯文本版本，通过对比VLM和纯LLM在相同任务上的表现来量化模态不平衡。然后研究不同训练策略(直接图像训练、先转文本再推理、CoT等)对S2H泛化的影响。通过梯度对齐分析理解为什么某些策略有效。",
+ "experiment_framework": "在合成框架上系统评估前沿VLM；对比多种训练策略；指标为SIMPLE→HARD泛化的准确率提升；机制研究分析梯度对齐和CoT作用。",
+ "takeaways": [
+  "VLM在多步视觉推理上确实存在模态不平衡(不如纯文本推理)",
+  "显式将图像转换为文本表示可有效迁移LLM的推理能力",
+  "梯度对齐是预测S2H泛化能力的有用指标"
+ ],
+ "weaknesses": [
+  "合成任务与真实视觉推理任务有差距",
+  "图像转文本的精度瓶颈可能限制最终性能",
+  "前9页内未看到在真实VQA基准上的验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

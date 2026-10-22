@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Diversified Flow Matching with Translation Identifiability.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Diversified Flow Matching with Translation Identifiability.pdf",
+ "title": "Diversified Flow Matching with Translation Identifiability",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.9
+ },
+ "one_line": "将DDM从GAN迁移到流匹配，解决翻译可辨识性问题",
+ "innovations": [
+  "提出多样化流匹配(DFM)，首个基于ODE/流匹配框架且保证翻译可辨识性的方法",
+  "针对FM学速度场而非翻译函数本身的难题，设计定制的双层优化训练损失、非线性插值与结构重表述",
+  "相比DDM的GAN实现，提供稳定可训练且给出运输轨迹(利于单细胞演化/路径规划等应用)的实现"
+ ],
+ "method_framework": "无配对域翻译(UDT)存在内容错配问题——完美分布运输可由无穷多翻译函数实现；DDM通过同时运输多个条件源分布对使翻译函数可辨识。本文把这一思想移植到流匹配：因FM学的是速度场而非翻译函数本身，需用双层优化损失、非线性插值与结构重表述来强制统一翻译函数，从而得到ODE轨迹并保证可辨识性。",
+ "experiment_framework": "在合成与真实数据集上验证DFM，对比基于GAN的DDM等，指标含翻译内容对齐度/可辨识性与生成质量，并展示运输轨迹在相关应用中的可用性。",
+ "takeaways": [
+  "无配对域翻译的内容错配源于翻译函数不可辨识，可通过多样化条件分布运输解决",
+  "DFM在ODE/流匹配框架下首次实现可辨识性，训练比GAN更稳定",
+  "流匹配提供的运输轨迹对单细胞演化、路径规划等下游应用有用"
+ ],
+ "weaknesses": [
+  "双层优化训练较复杂、计算开销大",
+  "真实数据集上的翻译质量与GAN基线相比的优势未十分突出",
+  "仅在中小规模数据验证，大规模图像生成场景未覆盖"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

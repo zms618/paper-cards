@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Accelerating Block Coordinate Descent for LLM Finetuning via Landscape Expansion.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Accelerating Block Coordinate Descent for LLM Finetuning via Landscape Expansion.pdf",
+ "title": "Accelerating Block Coordinate Descent for LLM Finetuning via Landscape Expansion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "BREAD通过轻量级景观扩展优化BCD，降低LLM微调内存需求。",
+ "innovations": [
+  "识别BCD在LLM中的两个关键局限性：无效利用中间梯度和冻结块导致的次优景观",
+  "提出BREAD框架，结合BCD与低成本景观扩展技术",
+  "设计两种内存高效的景观扩展实现：低秩扩展和SGD扩展"
+ ],
+ "method_framework": "BREAD将模型参数分为多个块，每次优化一个活动块的同时，通过轻量级技术（如低秩矩阵或SGD）更新非活动块，利用已计算的中间梯度，几乎不增加内存成本。",
+ "experiment_framework": "在Llama 3.1-8B/70B模型上测试，使用MathInstruct和Alpaca-GPT4数据集，对比Adam、LoRA、Galore和BAdam，评估内存消耗、训练时间和数学/指令任务性能。",
+ "takeaways": [
+  "利用已计算的中间梯度进行非活动块的轻量级更新可有效提升BCD效率",
+  "低秩扩展技术（如LoRA）是景观扩展的有效实现方式，几乎不增加内存成本"
+ ],
+ "weaknesses": [
+  "BREAD的训练时间略高于BAdam，尽管内存效率相似",
+  "未充分探讨不同块划分策略对性能的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

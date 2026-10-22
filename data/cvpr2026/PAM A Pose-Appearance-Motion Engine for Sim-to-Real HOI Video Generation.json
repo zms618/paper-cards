@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/PAM A Pose-Appearance-Motion Engine for Sim-to-Real HOI Video Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/PAM A Pose-Appearance-Motion Engine for Sim-to-Real HOI Video Generation.pdf",
+ "title": "PAM A Pose-Appearance-Motion Engine for Sim-to-Real HOI Video Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 5.5,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "拼模块式HOI生成，依赖预训练模型，泛化与效率存疑",
+ "innovations": [
+  "最小条件生成：仅需初始和目标姿态及物体几何",
+  "解耦生成架构：分离姿态、外观和运动合成",
+  "多模态条件融合：深度、分割和关键点联合控制"
+ ],
+ "method_framework": "三阶段生成框架：1)姿态生成阶段使用GraspXL生成中间姿态序列；2)外观生成阶段使用Flux生成初始帧；3)运动生成阶段使用CogVideo-X生成完整视频序列",
+ "experiment_framework": "DexYCB和OAKINK2数据集，对比CosHand、InterDyn和ManiVideo，使用FVD、MF、LPIPS、SSIM、PSNR和MPJPE指标",
+ "takeaways": [
+  "多模态条件融合提升生成质量和姿态准确性",
+  "合成数据可有效增强下游手部姿态估计任务性能"
+ ],
+ "weaknesses": [
+  "依赖预训练模型(GraspXL、Flux、CogVideoX)的泛化能力",
+  "未充分讨论计算效率和实时性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "HOI生成与可靠性主线无实质交点，仅为多模态生成应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

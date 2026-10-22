@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Varestorer_One-Step VAR Distillation for Real-World Super-Resolution.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Varestorer_One-Step VAR Distillation for Real-World Super-Resolution.pdf",
+ "title": "VARestorer: One-Step VAR Distillation for Real-World Super-Resolution",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "VAR模型蒸馏为单步ISR，金字塔条件+跨尺度注意力提升效率",
+ "innovations": [
+  "提出VARestorer：将预训练文生图VAR模型蒸馏为单步ISR模型，通过分布匹配消除迭代精化需求，减少误差累积",
+  "设计金字塔图像条件+跨尺度注意力，实现双向尺度交互，充分利用低质输入信息",
+  "仅微调1.2%参数（参数高效适配器），保持原VAR模型表达力的同时大幅提升效率"
+ ],
+ "method_framework": "将预训练文生图VAR模型适配到真实世界超分辨率任务。核心问题是VAR的下一级预测机制受因果注意力限制，无法充分利用全局低质上下文。解决方案：(1)通过分布匹配蒸馏将多步迭代预测压缩为单步生成；(2)引入金字塔图像条件和跨尺度注意力，让不同尺度间双向交互，避免后期LQ token被忽略。仅训练少量适配器参数。",
+ "experiment_framework": "任务：真实世界图像超分辨率(Real-ISR)。数据集：DIV2K等。基线：扩散类ISR方法、GAN类ISR方法、原生VAR推理。指标：MUSIQ、CLIPIQA、推理速度。结果：DIV2K上72.32 MUSIQ + 0.7669 CLIPIQA，推理加速10倍。",
+ "takeaways": [
+  "单步蒸馏能有效消除VAR迭代预测中的误差累积问题",
+  "金字塔条件+跨尺度注意力解决了因果注意力下全局上下文利用不充分的问题",
+  "参数高效适配方式使得大模型蒸馏到下游任务的成本很低"
+ ],
+ "weaknesses": [
+  "蒸馏依赖预训练VAR模型的质量，基座模型限制了上限",
+  "仅微调1.2%参数，对特定退化类型的适配能力可能有限",
+  "单步生成的多样性不如多步迭代方法，可能丢失部分纹理细节"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "超分辨率任务与可靠性主线无实质交点，属常规图像处理工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

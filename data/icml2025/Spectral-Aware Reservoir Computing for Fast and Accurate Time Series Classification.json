@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Spectral-Aware Reservoir Computing for Fast and Accurate Time Series Classification.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Spectral-Aware Reservoir Computing for Fast and Accurate Time Series Classification.pdf",
+ "title": "Spectral-Aware Reservoir Computing for Fast and Accurate Time Series Classification",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "频谱分解+多分支储备池建模周期模式，但噪声鲁棒性与扩展性存疑",
+ "innovations": [
+  "针对传统储备池计算仅靠相邻状态递推、难建模长时依赖的缺陷，引入频谱视角",
+  "先提取显著频率以显式/隐式揭示周期模式(天气日/季节周期、ECG节律等)",
+  "为每个显著频率构建Frequency-informed Reservoir Network(FreqRes)，融合序列与周期动态并多频合成"
+ ],
+ "method_framework": "时序分类的储备池框架：对输入序列做频谱分析提取若干显著频率，每个频率分支用一个频域感知的储备池网络FreqRes捕获该频段下的序列+周期动态，最后跨频融合动态特征送入线性读出分类。",
+ "experiment_framework": "在公开时序分类数据集上对比CNN/RNN/储备池及近年TSC方法，指标为分类准确率；声称达SOTA且保持高效率。",
+ "takeaways": [
+  "显式提取显著频率再分频建储备池，能以低代价补上RC缺失的长时/多尺度周期建模能力",
+  "频域分解+分支建模是兼顾效率与时序分类精度的有效路线"
+ ],
+ "weaknesses": [
+  "显著频率提取方式(FFT/峰值检测)对噪声与非平稳序列的鲁棒性前9页未分析",
+  "每频率一个FreqRes带来的分支数随频率数增长，对宽频/无明显周期序列的可扩展性存疑",
+  "‘SOTA’主要在传统TSC公开库，与时序基础模型/大模型零样本基线的对比缺失"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

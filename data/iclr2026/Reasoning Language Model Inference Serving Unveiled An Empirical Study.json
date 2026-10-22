@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Reasoning Language Model Inference Serving Unveiled An Empirical Study.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reasoning Language Model Inference Serving Unveiled An Empirical Study.pdf",
+ "title": "Reasoning Language Model Inference Serving Unveiled: An Empirical Study",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "实证研究RLLM服务行为，发现与传统LLM差异及优化技术适用性。",
+ "innovations": [
+  "建立RLLM服务评估框架ASU与基准套件ASU-Perf，首次系统对比RLLM与传统LLM的服务行为差异。",
+  "揭示RLLM四大服务特征：显著且波动的KV Cache占用、困难请求导致的长尾(straggler)、随问题难度自适应的运行时间、以及领域偏好(数学推理强/知识任务持平)。",
+  "检验既有推理优化对RLLM的适用性：权重量化、KV Cache量化、投机解码可在精度小损失下提升效率；而前缀缓存在小RLLM某些场景反而降低服务性能。"
+ ],
+ "method_framework": "先用ASU-Perf在不同规模LLM/RLLM上做pilot研究定位服务行为差异，再逐项检验权重量化/KV量化/投机解码/前缀缓存等优化技术对RLLM吞吐/时延/精度的影响，最后用Gamma分布建模的真实负载验证结论。",
+ "experiment_framework": "跨不同规模RLLM与LLM、多个数据集，以ASU-Perf基准测量吞吐、时延、KV占用与精度，并在Gamma分布真实负载下复现主要结论。",
+ "takeaways": [
+  "RLLM的长CoT使其服务行为与传统LLM显著不同，直接套用为传统LLM设计的vLLM/LMDeploy/TensorRT-LLM优化可能次优。",
+  "权重/KV量化与投机解码适合RLLM部署，前缀缓存在小RLLM上需谨慎使用。"
+ ],
+ "weaknesses": [
+  "属推理系统/部署方向，与可靠性主线（鲁棒/可信/医学影像）关联弱。",
+  "结论基于特定开源RLLM与vLLM类引擎，对闭源大模型与更新引擎版本的可迁移性未充分覆盖。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "推理系统部署与可靠性主线关联弱，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

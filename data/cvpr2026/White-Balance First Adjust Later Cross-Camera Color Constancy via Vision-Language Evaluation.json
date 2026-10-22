@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/White-Balance First Adjust Later Cross-Camera Color Constancy via Vision-Language Evaluation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/White-Balance First Adjust Later Cross-Camera Color Constancy via Vision-Language Evaluation.pdf",
+ "title": "White-Balance First Adjust Later Cross-Camera Color Constancy via Vision-Language Evaluation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "VLM引导迭代白平衡，跨相机颜色恒常性改进有限",
+ "innovations": [
+  "将颜色恒常性重构为VLM引导的迭代反馈过程",
+  "使用LoRA微调的VLM评估伪sRGB图像中的残留色偏",
+  "通过语义反馈而非直接RGB回归实现跨相机鲁棒性"
+ ],
+ "method_framework": "VLM-CC框架：初始白平衡后转换为伪sRGB，VLM提取颜色先验并预测残留色偏，在色度空间中迭代更新光照估计直至收敛。",
+ "experiment_framework": "数据集：Gehler-Shi、NUS-8、Intel-TAU、Cube+；基线：CCMNet、C5等；指标：平均角误差、中位数、三角均值等。",
+ "takeaways": [
+  "VLM可提供有价值的语义颜色先验用于视觉任务",
+  "迭代反馈机制比单步估计更能处理复杂场景",
+  "伪sRGB转换减少域偏移提高VLM性能"
+ ],
+ "weaknesses": [
+  "迭代计算开销较大",
+  "依赖相机颜色校正矩阵",
+  "VLM预测可能受图像内容质量影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "颜色恒常性非可靠性主线，VLM应用属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

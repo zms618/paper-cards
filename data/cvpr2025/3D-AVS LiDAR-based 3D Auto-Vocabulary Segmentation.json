@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/3D-AVS LiDAR-based 3D Auto-Vocabulary Segmentation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3D-AVS LiDAR-based 3D Auto-Vocabulary Segmentation.pdf",
+ "title": "3D-AVS: LiDAR-based 3D Auto-Vocabulary Segmentation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "运行时生成词表做LiDAR分割，但核心实验缺失且方法创新不足",
+ "innovations": [
+  "把open-vocabulary改为auto-vocabulary：词表不预定义，由图像captioner(xGen-MM)或点云captioner在推理时逐场景生成，再经Caption2Tag(spaCy名词/专名抽取+词形还原+WordNet校验)过滤为tag集合",
+  "提出SMAP：点云做相对位置编码后按二值mask分组，组内GAP得query、MHA聚合，输出可控数量的区域特征；训练时用'图像可见点'mask对齐CLIP全局特征，推理时改用无需相机内参的柱面扇区/方形柱体几何分区",
+  "提出TPSS：用冻结CLIP文本编码器与对齐点云编码器，取每点对所有候选标签的最大相似度再取均值，实现无标注、且容忍同义词/上下位关系的开放词表质量评估"
+ ],
+ "method_framework": "点云与图像分别送入point captioner(SMAP+CLIP解码)和image captioner生成描述，Caption2Tag解析为名词tag；tag经CLIP文本编码器得嵌入，点特征与像素特征各自算相似度后取max再argmax分配标签；词表生成与分割解耦，可直接换任意open-vocabulary分割器。",
+ "experiment_framework": "nuScenes与ScanNet200；对比人工定义词表(16/20类)及OpenScene手工扩展的43子类；用TPSS语义相似度与经LLM映射(LAVE)后的分割指标两路评估。",
+ "takeaways": [
+  "把'词表生成'与'分割'解耦，使新词表能直接插到任何现成open-vocabulary分割器上，方法可随上游VLM进步自动受益",
+  "TPSS用'点-文本嵌入相似度均值'绕开无GT的开放词表评测，并明确要求跨方法比较时编码器必须固定——这个'评测协议必须锁编码器'的约束值得在同类无参照评测中沿用",
+  "训练用图像可见性mask作监督、推理用纯几何分区mask，是处理'训练有模态、推理无模态'的实用套路"
+ ],
+ "weaknesses": [
+  "正文在第4节Table 1表头处截断，主实验结果、与OpenScene等的分割精度对比、SMAP与词表生成的消融全部不可见，只能依据方法与评测设计打分",
+  "推理侧分区是柱面扇区/方形柱体的手工几何划分，扇区数T直接决定caption数量与粒度，正文未见T的敏感性分析；SMAP相对普通masked attention pooling的增益缺少隔离实验",
+  "TPSS依赖CLIP空间，词表由CLIP系模型生成又用CLIP相似度评估，存在自证风险；LLM映射(LAVE)继承自AutoSeg，把细分词表压回固定类会丢弃精确语义，作者自己指出该缺陷却仍用它做分割指标",
+  "与并行的PoVo(Meng et al.)只在related work一句带过且无实验对比，'3D AVS首次探索'的份量被削弱"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "LiDAR分割与可靠性主线无关，仅工程价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

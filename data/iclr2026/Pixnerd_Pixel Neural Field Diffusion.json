@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Pixnerd_Pixel Neural Field Diffusion.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Pixnerd_Pixel Neural Field Diffusion.pdf",
+ "title": "PixNerd: Pixel Neural Field Diffusion",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "像素空间大patch扩散模型，用神经场头替代线性投影。",
+ "innovations": [
+  "在原始像素空间采用大patch DiT，保持与潜空间模型相当的token数与算力",
+  "用patch-wise自适应神经场头替换线性投影：由DiT最后隐藏特征预测神经场MLP权重，按局部坐标+噪声像素预测速度",
+  "单阶段端到端，避免VAE两阶段误差累积与解码伪影，也免级联管线"
+ ],
+ "method_framework": "沿用扩散Transformer设计，但直接在像素空间以大patch建模；对patch内每个像素将其局部坐标与噪声像素值编码为输入，由隐藏特征预测权重的神经场MLP输出该像素的扩散速度，从而在大patch配置下学习精细细节，无需VAE或多尺度级联。",
+ "experiment_framework": "在 ImageNet 256/512 类条件生成上报告 FID/sFID；扩展到文本到图像，在 GenEval 与 DPG 上评测，并对比潜扩散与既有像素扩散模型的延迟与算力。",
+ "takeaways": [
+  "PixNerd-XL/16 在 ImageNet 256 取得1.93 FID 与更优的4.50 sFID，延迟较既有像素扩散近8倍降低",
+  "神经场头有效缓解了大patch像素扩散学习细节困难的问题",
+  "单阶段设计在画质与效率间取得平衡"
+ ],
+ "weaknesses": [
+  "主线为图像生成架构，与可靠性、医学影像、多模态推理主线关联弱",
+  "像素空间模型在高分辨率/超大规模上的扩展性前9页未见充分验证",
+  "GenEval 0.73 等文本到图像指标相对顶级商用系统仍有差距"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯图像生成架构，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Orchestrationbench_LLM-Driven Agentic Planning and Tool Use In Multi-Domain Scenarios.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Orchestrationbench_LLM-Driven Agentic Planning and Tool Use In Multi-Domain Scenarios.pdf",
+ "title": "OrchestrationBench: LLM-Driven Agentic Planning and Tool Use in Multi-Domain Scenarios",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "双语基准解耦评估LLM规划与工具执行能力，跨17领域测试。",
+ "innovations": [
+  "提出OrchestrationBench：首个将规划评估与工具执行评估显式解耦的LLM agent基准",
+  "覆盖17个领域近100个真实虚拟工具，支持串行/并行规划和业务约束合规测试",
+  "双语（英文/韩文）人工标注构建，确保文化适应性和无模型偏差的真实性评估"
+ ],
+ "method_framework": "OrchestrationBench将评估分为两个维度：(1)工作流规划——将用户请求分解为DAG（有向无环图）形式的工作流，编码任务依赖、执行状态和agent分配；(2)约束感知工具执行——评估工具选择、参数提取、验证和拒绝处理。主LLM将任务分解为工作流，分配给子LLM执行工具调用，结果聚合。",
+ "experiment_framework": "测试多个SOTA LLM（GPT-4o、Claude、Gemini等），在17个领域近100个工具上评估。指标包括工作流构建准确率和工具执行正确率。发现函数调用性能相对一致，但规划能力差异显著。",
+ "takeaways": [
+  "现有LLM的函数调用性能相对一致，但工作流规划能力在不同模型间差异巨大",
+  "将规划与工具执行解耦评估是必要的，因为两者反映不同能力维度",
+  "双语人工标注确保了基准的真实性和文化适应性"
+ ],
+ "weaknesses": [
+  "虚拟工具环境与真实生产环境的复杂度仍有差距，实际部署性能可能进一步下降",
+  "韩文场景为主，对中文等其他语言的通用性未验证",
+  "DAG形式的工作流建模可能无法覆盖所有真实业务流程的动态性"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "工具执行评估与可靠性主线无实质交织，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

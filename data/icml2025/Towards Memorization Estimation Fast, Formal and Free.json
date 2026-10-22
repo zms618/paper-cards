@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Towards Memorization Estimation Fast, Formal and Free.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Towards Memorization Estimation Fast, Formal and Free.pdf",
+ "title": "Towards Memorization Estimation: Fast, Formal and Free",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.25
+ },
+ "one_line": "CSL作为记忆化代理，理论连接但实验有限，与主线相关性中等",
+ "innovations": [
+  "提出Cumulative Sample Loss(CSL)作为记忆化新代理，理论上低CSL给出基于稳定性记忆化与学习时间的非平凡界",
+  "证明CSL与稳定性记忆化度量之间高余弦相似，把记忆化与样本损失/学习动力学正式连接",
+  "CSL比稳定性方法便宜四个数量级且训练时零额外开销，在误标注样本与重复样本检测上达SOTA"
+ ],
+ "method_framework": "基于稳定性的记忆化度量（删去样本后输出概率的变化）理论严谨但计算极贵；现有代理(学习时间、对抗距离、置信度、损失曲率)多无法刻画记忆化的双峰性。本文定义CSL为一样本在整个训练过程中损失的累积；从学习动力学出发推导低CSL对稳定性记忆化程度与学习时间的界，解释CSL为何与稳定性度量高度一致，且只需训练日志、零额外前向。",
+ "experiment_framework": "在图像分类等任务上，对比CSL与稳定性记忆化、学习时间等代理；评估CSL与稳定性度量的余弦相似，并在误标注样本识别与重复样本检测任务上对比SOTA。",
+ "takeaways": [
+  "样本损失的训练全程累积(CSL)可作为记忆化的廉价且形式化的代理",
+  "CSL与稳定性记忆化高度一致却便宜四个数量级、训练时零开销",
+  "CSL可有效识别误标注与重复样本，服务噪声学习与隐私分析"
+ ],
+ "weaknesses": [
+  "主线相关性中等偏下：属记忆化度量理论，与医学影像/多模态推理主线相邻但非同一落地域",
+  "CSL与稳定性度量的等价性在非凸/大模型长训练下的界松紧需后续页",
+  "前9页主要为理论框架，完整检测实验在后续页"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

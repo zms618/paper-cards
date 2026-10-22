@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Prompt-based Depth Pruning of Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Prompt-based Depth Pruning of Large Language Models.pdf",
+ "title": "Prompt-based Depth Pruning of Large Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "任务依赖的transformer块重要性发现，动态剪枝方法在有限任务上优于静态剪枝。",
+ "innovations": [
+  "实证发现transformer块重要性高度任务依赖：某任务中关键的块在另一任务中可无精度损失地移除",
+  "提出PuDDing(Prompt-routed Dynamic Depth Pruning)：训练轻量路由器根据输入prompt从候选省略集中选择最优剪枝方案",
+  "候选省略集通过数据驱动方式构建，无需硬件特定支持即可加速端侧推理"
+ ],
+ "method_framework": "PuDDing首先通过数据驱动方式构建一组候选块省略集，然后训练轻量路由器接收输入prompt，预测哪个省略集对当前query最优。推理时根据路由器选择动态跳过指定transformer块，实现任务自适应的深度剪枝。",
+ "experiment_framework": "在常识推理基准上验证，对比静态深度剪枝基线。指标为推理加速比和任务准确率。PuDDing在保持或提升任务性能的同时实现有效加速。",
+ "takeaways": [
+  "transformer块的重要性不是静态的，而是高度依赖于具体任务/输入",
+  "动态prompt路由的深度剪枝比静态剪枝在多任务场景下表现更好",
+  "轻量路由器的额外开销远小于动态块跳过带来的计算节省"
+ ],
+ "weaknesses": [
+  "路由器本身引入额外推理开销，前9页内未充分分析路由延迟与加速的权衡",
+  "仅在常识推理基准验证，未在代码生成、数学推理等更广泛任务上测试",
+  "候选省略集构建的数据驱动方式细节在前9页内不够完整"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

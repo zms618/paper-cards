@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Incentivize without Bonus_Provably Efficient Model-based Online Multi-agent RL for Markov Games.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Incentivize without Bonus_Provably Efficient Model-based Online Multi-agent RL for Markov Games.pdf",
+ "title": "Incentivize without Bonus: Provably Efficient Model-based Online Multi-agent RL for Markov Games",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.0,
+  "relevance": 6.0,
+  "overall": 5.3
+ },
+ "one_line": "理论推导的MARL算法，无实验验证，非线性扩展性存疑",
+ "innovations": [
+  "提出无需不确定性量化bonus的探索机制：将经验模型参数估计偏向固定其他玩家策略时具有更高集体最优响应值的方向",
+  "算法对函数近似形式不敏感，允许所有玩家同时且解耦的策略更新，无需复杂协调",
+  "在线线性函数近似下为双人零和Markov博弈NE与多人一般和CCE建立近最优regret界"
+ ],
+ "method_framework": "基于模型的MARL算法VMG：在更新模型参数时，不依赖UCB bonus，而是将经验估计向提升所有玩家集体best-response值的方向偏置，从而驱使策略偏离当前均衡以探索；玩家策略可同步解耦更新。",
+ "experiment_framework": "理论分析为主，在线线性函数近似设定下推导双人零和Markov博弈NE与多人一般和Markov博弈CCE的regret上界，并与需精细不确定性量化的对应方法对比。",
+ "takeaways": [
+  "无需构造复杂bonus的探索机制即可在MARL中获得近最优样本效率，规避了函数近似下不确定性集难以构造的问题",
+  "解耦同步策略更新使算法可扩展到多玩家场景，无需玩家间协调",
+  "regret界与带精细不确定性量化的方法近乎匹配，证明偏置模型估计是bonus-free探索的有效替代"
+ ],
+ "weaknesses": [
+  "理论仅在线性函数近似下成立，对深度网络等非线性近似的可扩展性未保证",
+  "纯理论推导缺乏数值实验验证算法在标准MARL基准上的实际表现",
+  "集体best-response偏置的计算在多玩家大规模状态空间下的可行性与开销未充分讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

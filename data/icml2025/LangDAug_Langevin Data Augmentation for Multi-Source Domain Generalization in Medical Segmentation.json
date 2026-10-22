@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/LangDAug_Langevin Data Augmentation for Multi-Source Domain Generalization in Medical Segmentation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/LangDAug_Langevin Data Augmentation for Multi-Source Domain Generalization in Medical Segmentation.pdf",
+ "title": "LangDAug: Langevin Data Augmentation for Multi-Source Domain Generalization in Medical Image Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "基于Langevin动力学的EBM数据增强，提升医学图像域泛化性能",
+ "innovations": [
+  "将Langevin动力学引入多源域泛化数据增强，通过对比散度训练的EBM在源域间遍历生成中间样本",
+  "理论分析证明LangDAug具有正则化效应，对GLMs将Rademacher复杂度上界约束为数据流形的内在维度",
+  "在眼底分割和2D MRI前列腺分割基准上超越SOTA域泛化方法，并能有效补充现有域随机化方法"
+ ],
+ "method_framework": "LangDAug基于能量模型(EBM)，通过对比散度在多个源域上训练EBM，再利用Langevin动力学在源域能量景观之间采样，生成跨域中间样本作为数据增强。理论上推导了该方法对Rademacher复杂度的上界约束。",
+ "experiment_framework": "在眼底图像分割和2D MRI前列腺分割两个医学图像分割基准上进行多源域泛化实验，与主流DG方法（域随机化、表示学习类方法）对比，采用Dice等分割指标评估目标域性能。",
+ "takeaways": [
+  "基于Langevin动力学的跨域样本生成能有效提升医学图像分割的域泛化性能",
+  "理论上证明了该方法对模型复杂度的正则化效应，为DG提供了泛化误差上界依据",
+  "LangDAug可与现有域随机化方法互补，进一步提升域泛化效果"
+ ],
+ "weaknesses": [
+  "仅在2D医学分割任务上验证，未在3D分割或更多模态上验证通用性",
+  "EBM训练和Langevin采样的计算开销未充分讨论，实际部署效率存疑",
+  "理论上界仅针对GLMs推导，对深度网络的适用性缺乏严格证明"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.2,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

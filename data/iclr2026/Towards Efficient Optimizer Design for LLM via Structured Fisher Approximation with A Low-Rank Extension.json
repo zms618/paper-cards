@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Efficient Optimizer Design for LLM via Structured Fisher Approximation with A Low-Rank Extension.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Efficient Optimizer Design for LLM via Structured Fisher Approximation with A Low-Rank Extension.pdf",
+ "title": "Towards Efficient Optimizer Design for LLM via Structured Fisher Approximation with a Low-Rank Extension",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "统一视角下设计低内存优化器，但大模型验证不足",
+ "innovations": [
+  "统一视角：证明Adam/Shampoo/梯度归一化/白化等可重写为特定结构假设下的结构化FIM近似",
+  "设计准则一：选择平衡通用性与效率的结构假设，导出SGD级内存的RACS(Row and Column Scaled SGD)",
+  "设计准则二：用低秩扩展框架增强一般结构优化器的内存效率，导出Alice(自适应低维子空间估计)，较Adam快2倍以上收敛"
+ ],
+ "method_framework": "以结构化FIM近似为透镜系统设计低内存、快收敛优化器：不同结构假设对应不同已知优化器；对需一般结构但内存昂贵的情形，用低秩扩展框架压缩状态。据此分别导出RACS(平衡结构)与Alice(低秩子空间)。",
+ "experiment_framework": "在LLaMA预训练(至1B参数)上验证；对比Adam及多种省内存优化基线；指标为收敛速度(达同loss所需步数)与内存占用；报告Alice>2x快于Adam、RACS在1B上以SGD级内存取得强性能。",
+ "takeaways": [
+  "许多SOTA优化器可统一理解为结构化FIM近似，为系统化设计提供原则",
+  "恰当地选择结构假设可在通用性与内存间取得平衡(RACS)",
+  "低秩扩展能让一般结构优化器显著省内存(Alice 2x快于Adam)"
+ ],
+ "weaknesses": [
+  "预训练仅验证到1B参数，向前沿更大模型外推的收敛/内存收益未验证",
+  "FIM近似为对角/块结构假设，对高度病态损失曲面的适应能力有限",
+  "属优化器/训练效率方向，与可靠性主线及医学影像、多模态推理落地域无关"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.18,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "优化器设计不触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

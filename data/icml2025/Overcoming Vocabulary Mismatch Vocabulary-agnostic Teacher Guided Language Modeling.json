@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Overcoming Vocabulary Mismatch Vocabulary-agnostic Teacher Guided Language Modeling.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Overcoming Vocabulary Mismatch Vocabulary-agnostic Teacher Guided Language Modeling.pdf",
+ "title": "Overcoming Vocabulary Mismatch: Vocabulary-agnostic Teacher Guided Language Modeling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "解决词表不匹配的token级对齐与教师引导损失方法",
+ "innovations": [
+  "提出token级词法对齐(Token-level Lexical Alignment)，建立学生token到教师token的一对多映射，解决不同分词方案导致的序列错位",
+  "提出教师引导损失(Teacher Guided Loss)，利用对齐后的教师token loss而非logit分布来指导学生，规避logit分布发散问题",
+  "验证了词表无关蒸馏的可行性：即使词表重叠仅6%，更强教师仍能持续提升学生性能"
+ ],
+ "method_framework": "先对同一文本用教师和学生分词器分别tokenize，通过字符级对齐建立学生token到教师token的一对多映射；训练时学生前向传播后，将学生每个token位置的loss与映射到的对应教师token的loss组合，形成教师引导损失联合优化。",
+ "experiment_framework": "学生：TinyLlama 1.1B。教师：Mistral-7B、DeepSeek-7B、Qwen2.5-Math-7B(词表重叠6.32%-75.58%)。任务：数学推理继续预训练。基线：朴素继续预训练、logit分布映射。指标：数学评估套件准确率。",
+ "takeaways": [
+  "词表不匹配是跨词表师生蒸馏的核心障碍，传统假设同词表的方法在词表重叠仅6%时几乎失效",
+  "token级词法对齐+教师loss引导使Qwen2.5-Math教师在6%重叠下仍带来46%提升，超过logit映射基线33%",
+  "方法可推广：教师越强，学生受益越大，无需统一词表或定制教师"
+ ],
+ "weaknesses": [
+  "仅在1B学生+7B教师规模验证，更大规模(7B学生/70B教师)是否同样有效未知",
+  "词法对齐依赖字符级匹配，对跨语言或字形差异大的语言对可能效果下降",
+  "仅在数学域验证，通用语言建模和多模态任务的适配性未考察"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

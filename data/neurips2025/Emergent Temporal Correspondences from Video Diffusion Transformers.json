@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Emergent Temporal Correspondences from Video Diffusion Transformers.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Emergent Temporal Correspondences from Video Diffusion Transformers.pdf",
+ "title": "Emergent Temporal Correspondences from Video Diffusion Transformers",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "分析DiTs时间对应框架，但闭源模型缺失限制结论普适性",
+ "innovations": [
+  "首个定量分析视频DiTs内部时间对应关系的框架DiffTrack",
+  "提出新颖的评估指标系统分析时间匹配准确性和置信度",
+  "发现特定层级的查询-键匹配在时间对应中的关键作用",
+  "开发无需额外训练的运动增强视频生成方法CAG"
+ ],
+ "method_framework": "DiffTrack通过构建提示生成的视频数据集和伪真实跟踪标注，分析3D注意力机制中不同表示、层和去噪步长对时间对应关系的影响，提取最优特征描述符用于零样本点跟踪。",
+ "experiment_framework": "在TAP-Vid数据集(Kinetics/DAVIS)上与视觉基础模型和自监督视频模型比较点跟踪精度，使用PCK指标评估；在生成视频上评估时间一致性改进。",
+ "takeaways": [
+  "通过分析DiTs内部机制提取时间对应信息的方法可迁移到其他任务",
+  "特定层级的查询-键匹配比中间特征更适合时间对应任务",
+  "交叉帧注意力在去噪过程中逐渐增强，最终阶段略有下降"
+ ],
+ "weaknesses": [
+  "仅分析了开源模型(CogVideoX, HunyuanVideo)，未涵盖闭源模型如Sora",
+  "3D VAE的时间压缩可能导致运动细节丢失",
+  "长序列视频处理需要特殊处理以保持全局时间对应"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

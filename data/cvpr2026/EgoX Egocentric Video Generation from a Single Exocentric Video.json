@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/EgoX Egocentric Video Generation from a Single Exocentric Video.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/EgoX Egocentric Video Generation from a Single Exocentric Video.pdf",
+ "title": "EgoX Egocentric Video Generation from a Single Exocentric Video",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "几何引导自注意力从第三人称生成第一人称视频，但深度估计依赖限制鲁棒性。",
+ "innovations": [
+  "几何引导自注意力机制",
+  "统一条件策略结合内外视角先验",
+  "轻量级LoRA适应大型视频扩散模型"
+ ],
+ "method_framework": "通过点云渲染生成第一人称先验视频，结合第三人称视频潜变量，在扩散模型中通过宽度和通道级联进行条件生成，并引入几何引导自注意力确保空间一致性。",
+ "experiment_framework": "在Ego-Exo4D数据集上评估，对比Exo2Ego-V等基线，使用PSNR、SSIM、LPIPS、CLIP-I、FVD等指标，并在未见场景上测试泛化能力。",
+ "takeaways": [
+  "几何引导注意力机制可提升跨视角一致性",
+  "轻量级适应大型预训练模型可有效保留时空知识"
+ ],
+ "weaknesses": [
+  "依赖单目深度估计可能引入误差",
+  "未充分讨论模型在极端视角变化下的鲁棒性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成与可靠性主线无关，仅几何引导机制有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

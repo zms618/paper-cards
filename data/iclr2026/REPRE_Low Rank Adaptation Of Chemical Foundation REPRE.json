@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/REPRE_Low Rank Adaptation Of Chemical Foundation REPRE.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/REPRE_Low Rank Adaptation Of Chemical Foundation REPRE.pdf",
+ "title": "Low Rank Adaptation of Chemical Foundation Models Generates Effective Odorant Representations",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "证明化学基础模型需LoRA微调才能超越经典描述符，但数据规模限制普遍性。",
+ "innovations": [
+  "定量证明化学基础模型的自监督表示与经典物理化学描述符存在大量信息重叠，在气味-受体结合任务上无显著优势",
+  "提出LORAX模型：用LoRA低秩适配微调化学基础模型，结合cross-attention生成嗅觉专用表示",
+  "证明LORAX微调后的特征空间与嗅觉神经表征更对齐，从而在预测任务上超越现有方法"
+ ],
+ "method_framework": "首先用CCA和正交Procrustes分析对比多种化学基础模型表示与物理化学描述符的信息重叠度。然后提出LORAX：对化学基础模型施加LoRA低秩适配，用cross-attention融合气味和受体表示，在气味-受体亲和力预测任务上微调，生成与嗅觉神经响应更对齐的特征空间。",
+ "experiment_framework": "气味-受体结合预测任务；对比多种化学基础模型表示vs经典物理化学描述符；用CCA/Procrustes分析表示重叠度；LORAX vs 现有GNN/对接方法；神经响应对齐性分析。",
+ "takeaways": [
+  "化学基础模型的自监督特征需在下游任务上微调才能优于手工设计特征，直接使用无显著优势",
+  "LoRA微调可有效将通用化学表示适配为嗅觉专用表示",
+  "微调后表示与神经响应的对齐性提升是预测性能提升的原因"
+ ],
+ "weaknesses": [
+  "与可靠性/多模态推理/医学影像主线完全无关，属于嗅觉神经科学+化学信息学交叉领域",
+  "数据集规模和气味-受体配对数量在前9页未详细说明，可能限制了结论的普遍性",
+  "LoRA微调需要标注的气味-受体结合数据，在数据稀缺的嗅觉领域实用性受限"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.33,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "与可靠性主线无关，属嗅觉神经科学+化学信息学交叉领域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

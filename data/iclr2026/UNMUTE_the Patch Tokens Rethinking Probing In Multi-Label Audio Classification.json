@@ -1,0 +1,41 @@
+{
+ "title": "Unmute the Patch Tokens: Rethinking Probing in Multi-Label Audio Classification",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "指出音频SSL全局池化瓶颈，提出二值原型探针提升探测性能。",
+ "innovations": [
+  "定位音频 SSL 探测弱的根因：全局池化/cls-token 丢弃了离散局部事件信息，是预训练目标(全局)与下游任务(局部)不匹配所致。",
+  "在 13 个数据集、6 个频谱编码器的综合基准上系统刻画该全局池化瓶颈。",
+  "提出轻量的二值化原型探针(protobin)：学习原型做逐类信息聚合，恢复局部事件信息，超过线性与注意力探测。"
+ ],
+ "method_framework": "不把 token 图全局池化成单向量，而是学习逐类原型并做二值化信息聚合，让离散局部事件的 token 信息不被主流声音淹没，从而在冻结骨干上用轻量探针评估嵌入质量。",
+ "experiment_framework": "在 13 个音频数据集与 6 个基于频谱图的 SSL 编码器上，对比线性探测、注意力池化探测与微调，以多标签分类指标(mAP)衡量，论证探测法可作为微调的高效替代评估范式。",
+ "takeaways": [
+  "音频 SSL 探测弱主要是池化方法瓶颈，而非嵌入本身质量差；cls-token 在 MIM 预训练模型上注意力过度弥散。",
+  "二值原型探针能解开纠缠的 token 嵌入、恢复局部事件，显著优于线性/注意力探测。",
+  "探测可作为评估音频 SSL 的竞争性高效范式，挑战了在 AudioSet 上默认必须微调的做法。"
+ ],
+ "weaknesses": [
+  "方法局限于冻结模型探测这一评估范式，不改进预训练本身，实际部署仍多需微调。",
+  "原型学习引入额外可训练参数，相对纯线性探针的简单性与效率优势需量化。",
+  "仅在音频多标签分类验证，与主线(可靠性/医学影像/多模态推理)无关；完整 13×6 结果矩阵与消融未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/UNMUTE_the Patch Tokens Rethinking Probing In Multi-Label Audio Classification.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/UNMUTE_the Patch Tokens Rethinking Probing In Multi-Label Audio Classification.pdf",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "音频分类与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

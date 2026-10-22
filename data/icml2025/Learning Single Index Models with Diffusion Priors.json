@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning Single Index Models with Diffusion Priors.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning Single Index Models with Diffusion Priors.pdf",
+ "title": "Learning Single Index Models with Diffusion Priors",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "扩散先验用于单指数模型信号恢复，但分布依赖性强且适用性有限。",
+ "innovations": [
+  "将扩散模型先验扩展到半参数单指数模型(SIM)，处理未知/不连续非线性链接函数的信号恢复问题",
+  "提出高效重建方法，仅需一轮无条件采样和扩散模型的部分逆变换，显著减少神经函数评估次数",
+  "在适当条件下建立了方法有效性的理论分析，给出恢复精度保证"
+ ],
+ "method_framework": "将信号恢复建模为单指数模型y=f(Ax*)，其中f为未知非线性链接函数；利用预训练扩散模型作为信号x*的生成先验；通过一轮无条件采样生成候选信号，再结合观测y和测量矩阵A进行(部分)逆变换筛选/校正，实现无需迭代优化的高效重建。",
+ "experiment_framework": "在多个图像数据集上测试不同非线性测量模型(如1-bit压缩感知、符号函数等)；对比现有扩散先验信号恢复方法和传统压缩感知方法；指标为重建PSNR/SSIM和神经函数评估次数。",
+ "takeaways": [
+  "扩散模型先验可有效处理未知非线性链接函数下的信号恢复，突破线性测量模型的限制",
+  "单轮采样+部分逆变换的设计大幅降低了计算成本，优于迭代式扩散重建方法",
+  "理论分析表明在适当条件下方法可实现稳定恢复，实验验证了理论预期"
+ ],
+ "weaknesses": [
+  "依赖预训练扩散模型与目标信号分布的匹配性，分布偏移时性能下降",
+  "仅在图像信号上验证，对其他类型高维信号(如文本、时序)的适用性未知",
+  "可识别性约束||x*||=1限制了恢复信号的绝对尺度，实际应用中需额外标定"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

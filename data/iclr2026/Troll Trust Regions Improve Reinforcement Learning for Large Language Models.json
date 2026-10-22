@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Troll Trust Regions Improve Reinforcement Learning for Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Troll Trust Regions Improve Reinforcement Learning for Large Language Models.pdf",
+ "title": "TROLL: Trust Regions Improve Reinforcement Learning for Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "用信任域投影替代PPO裁剪，提升LLM RL训练稳定性",
+ "innovations": [
+  "将PPO的裁剪目标替换为新颖的离散可微信任域投影，提供token级KL约束，替代原始的粗糙裁剪近似",
+  "在模型最重要的稀疏token logits子集上执行投影，平衡计算成本与投影效果",
+  "作为PPO裁剪的直接替代方案，不改变模型推理行为，可无缝接入现有RLHF训练流程"
+ ],
+ "method_framework": "TROLL将RL策略更新形式化为凸优化问题：对每个token，将新策略的输出分布投影到旧策略周围的KL信任域内。该投影仅在最重要的稀疏token logits子集上执行以控制计算开销，确保新旧策略差异不超过给定边界，防止策略更新发散或崩溃。",
+ "experiment_framework": "在数学推理和代码生成任务上，跨多个模型家族和多种优势估计方法（PPO、GRPO等），对比TROLL与PPO式裁剪的训练速度、稳定性和最终成功率。",
+ "takeaways": [
+  "基于信任域投影的token级KL约束比PPO裁剪更稳定、收敛更快",
+  "稀疏logits子集投影在保持效果的同时大幅降低了计算开销",
+  "TROLL与优势估计方法无关，可作为通用模块接入现有RL后训练流程"
+ ],
+ "weaknesses": [
+  "仅在数学推理和代码生成任务上验证，未探讨在对话/通用对齐场景下的效果",
+  "信任域KL边界超参数的敏感性分析不够充分",
+  "投影操作的实际计算开销与PPO裁剪的对比缺乏详细的效率分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "强化学习稳定性提升与LLM训练可靠性直接相关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

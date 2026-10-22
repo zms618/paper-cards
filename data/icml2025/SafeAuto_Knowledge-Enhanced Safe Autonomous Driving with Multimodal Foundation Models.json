@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/SafeAuto_Knowledge-Enhanced Safe Autonomous Driving with Multimodal Foundation Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SafeAuto_Knowledge-Enhanced Safe Autonomous Driving with Multimodal Foundation Models.pdf",
+ "title": "SafeAuto: Knowledge-Enhanced Safe Autonomous Driving with Multimodal Foundation Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.0
+ },
+ "one_line": "结合结构化与非结构化知识改进MLLM自动驾驶控制信号预测",
+ "innovations": [
+  "把非结构化知识与结构化知识同时注入MLLM以增强自动驾驶安全",
+  "提出Position-Dependent Cross-Entropy(PDCE)损失，改善低层控制信号(速度/转角)以数值表示时的预测",
+  "在MLLM框架内统一连接高层决策推理与低层控制信号预测"
+ ],
+ "method_framework": "传统AD高层决策与低层控制分模块、割裂且不安全。SafeAuto用MLLM统一感知与推理：一方面注入结构化(规则)与非结构化(文本)安全知识，另一方面用PDCE损失处理控制信号(连续数值)在离散token化下的预测问题，使高层动作直接引导低层控制。",
+ "experiment_framework": "在自动驾驶基准(含场景生成/驾驶回放)上与现有MLLM驾驶方法对比；指标为高层决策合理性与低层控制信号预测精度/安全性。",
+ "takeaways": [
+  "结构化+非结构化知识联合注入可提升MLLM驾驶的安全决策",
+  "PDCE损失改善控制信号以token表示时的预测精度",
+  "统一高层推理与低层控制可减少割裂导致的次优/不安全行为"
+ ],
+ "weaknesses": [
+  "安全知识嵌入的精确性与对长尾危险场景的覆盖仍有限",
+  "PDCE损失针对token化控制值，向真车部署的延迟/实时性未充分验证",
+  "属自动驾驶多模态，与医学影像落地域不同，但多模态大模型+安全与主线相关"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

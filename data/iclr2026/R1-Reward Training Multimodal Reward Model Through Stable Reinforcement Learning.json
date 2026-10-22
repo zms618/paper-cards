@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/R1-Reward Training Multimodal Reward Model Through Stable Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/R1-Reward Training Multimodal Reward Model Through Stable Reinforcement Learning.pdf",
+ "title": "R1-Reward: Training Multimodal Reward Model Through Stable Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "将RL用于多模态奖励模型，改进Reinforce++算法提升稳定性",
+ "innovations": [
+  "首次将RL用于训练多模态奖励模型，引入长程推理能力到奖励建模中",
+  "提出StableReinforce算法，改进训练损失、优势估计策略和奖励设计，解决直接应用Reinforce++导致的训练不稳定/崩溃问题",
+  "收集200K多源偏好数据训练R1-Reward，推理时通过多数投票进一步提升性能"
+ ],
+ "method_framework": "将奖励建模重新形式化为规则基RL任务。StableReinforce在Reinforce++基础上改进：(1)优化训练损失以稳定收敛；(2)改进优势估计策略；(3)优化奖励设计防止长度坍缩。训练后的奖励模型具备长程推理能力，可作为MLLM的奖励信号、数据过滤和测试时扩展的评估器。",
+ "experiment_framework": "在VL Reward-Bench和Multimodal Reward Bench上评测；对比GPT-4o、Claude-3.7、MM-RLHF-Reward等基线；分析StableReinforce vs Reinforce++的训练稳定性；测试Voting@5/15推理扩展效果；200K偏好数据集。",
+ "takeaways": [
+  "RL可有效提升多模态奖励模型的性能，引入长程推理能力到奖励建模",
+  "直接应用现有RL算法（如Reinforce++）到奖励建模会导致训练不稳定，需改进损失/优势/奖励设计",
+  "R1-Reward推理时可通过多数投票进一步提升，展示测试时扩展潜力"
+ ],
+ "weaknesses": [
+  "StableReinforce的具体技术改进细节在前9页未完全展开，需后续页面确认",
+  "200K偏好数据的构建流程和标注质量未详细说明",
+  "奖励模型的偏差和鲁棒性（如对抗样本）分析不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态奖励模型与可靠性主线部分相关，但未明确触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

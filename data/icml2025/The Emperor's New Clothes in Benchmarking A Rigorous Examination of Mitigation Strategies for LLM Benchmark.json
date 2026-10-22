@@ -1,0 +1,37 @@
+{
+ "title": "The Emperor's New Clothes in Benchmarking? A Rigorous Examination of Mitigation Strategies for LLM Benchmark Data Contamination",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "诊断现有BDC缓解策略不足，提出新指标但未解决根本问题",
+ "innovations": [
+  "设计系统化、受控的评测流程来评估 BDC 缓解策略，克服以往仅看聚合准确率的局限",
+  "提出两个新指标——fidelity(保持原测试意图)与 contamination resistance(抗污染能力)——做细粒度评估",
+  "严格检验表明现有缓解策略(改题、基于原题生成新题等)在真实抗污染上效果不足，'皇帝的新衣'"
+ ],
+ "method_framework": "构造受控流水线：先固定模型与污染注入方式，再分别施加各类 BDC 缓解策略(修改原题、据原题生成新题等)；用 fidelity 衡量改后题目是否仍测原能力、用 contamination resistance 衡量改后题目是否仍被记忆/泄漏影响，从而拆解准确率下降等粗指标掩盖的问题。",
+ "experiment_framework": "在多个 LLM 与基准上，受控注入基准污染并施加多种缓解策略；对比 accuracy drop、accuracy matching 等旧指标与所提 fidelity/contamination resistance；系统评定各策略在保真度与抗污染两维上的表现。",
+ "takeaways": [
+  "现有 BDC 缓解策略在抗污染能力上普遍不足，容易给出虚假的可信评估",
+  "仅看聚合准确率会掩盖改题后测不准原能力(fidelity 下降)与仍被污染(抗性不足)的问题",
+  "fidelity 与 contamination resistance 是更细粒度、更可靠的缓解策略评估维度"
+ ],
+ "weaknesses": [
+  "主要是诊断/评测工作，未给出一个真正解决 BDC 的新基准构造方案",
+  "受控注入污染与真实 web 泄漏污染之间仍有差距",
+  "两个新指标的计算依赖可控污染设定，在无法获知真实污染时的可用性受限"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/The Emperor's New Clothes in Benchmarking A Rigorous Examination of Mitigation Strategies for LLM Benchmark.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/The Emperor's New Clothes in Benchmarking A Rigorous Examination of Mitigation Strategies for LLM Benchmark.pdf",
+ "raw_overall": 7.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Making Hard Problems Easier with Custom Data Distributionsand Loss Regularization A Case Study in Modular.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Making Hard Problems Easier with Custom Data Distributionsand Loss Regularization A Case Study in Modular.pdf",
+ "title": "Making Hard Problems Easier with Custom Data Distributions and Loss Regularization: A Case Study in Modular Arithmetic",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.3
+ },
+ "one_line": "定制数据分布与损失函数提升模算术ML攻击规模，但通用性有限",
+ "innovations": [
+  "设计定制训练数据分布，使模型更容易学习模算术求和的问题结构",
+  "设计更符合模算术问题结构的损失正则化，帮助模型突破规模化瓶颈",
+  "将LWE密码学ML攻击的可扩展规模从先前工作提升到N=128个非零元素（mod q up to 974269）"
+ ],
+ "method_framework": "LWE密码系统的ML攻击本质是训练模型学习模算术运算（A·s mod q = b）。先前工作发现模型难以规模化到更多非零元素。本文从两个角度改进：(1)定制训练数据分布——按问题难度/结构设计数据采样，而非均匀随机；(2)设计更好的损失函数——体现模算术的代数结构而非标准交叉熵/MSE。",
+ "experiment_framework": "模算术求和任务（N个元素mod q求和），以及LWE密码分析攻击场景。对比标准数据分布 vs 定制分布、标准损失 vs 定制损失。指标：预测准确率、可恢复的LWE秘密规模N。q up to 974269。",
+ "takeaways": [
+  "定制数据分布和问题结构感知的损失函数，可显著提升ML模型学习模算术的能力",
+  "ML对LWE的攻击能力受限于模算术学习的规模化难度，本文缓解了这一瓶颈",
+  "数据分布和损失函数的设计应紧密匹配问题的代数结构"
+ ],
+ "weaknesses": [
+  "仅在模算术/LWE这一特定问题上验证，方法的通用性未讨论",
+  "N=128距离实际密码参数仍有差距，实用攻击价值有限",
+  "与主线（鲁棒性/可信AI/医学影像/多模态推理）无直接关联，属于密码分析方向"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

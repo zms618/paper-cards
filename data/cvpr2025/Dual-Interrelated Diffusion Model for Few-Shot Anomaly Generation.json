@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Dual-Interrelated Diffusion Model for Few-Shot Anomaly Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Dual-Interrelated Diffusion Model for Few-Shot Anomaly Generation.pdf",
+ "title": "Dual-Interrelated Diffusion Model for Few-Shot Anomaly Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "双扩散模型生成异常图像，但泛化性和掩码依赖限制明显",
+ "innovations": [
+  "双相关扩散模型同时生成整体图像和异常部分",
+  "背景补偿模块保持背景准确性和物体形状",
+  "嵌套提示策略实现物体与异常属性的分离"
+ ],
+ "method_framework": "基于预训练扩散模型，引入两个LoRA扩展为双相关扩散模型，通过自注意力交互模块共享信息，并设计背景补偿模块注入背景特征",
+ "experiment_framework": "MVTec数据集，与DFMGAN、AnomalyDiffusion等方法对比，使用IS、IC-LPIPS评估生成质量，AUROC、AP评估下游任务性能",
+ "takeaways": [
+  "双分支结构实现图像与异常部分的协同生成",
+  "背景补偿模块有效减少生成图像中的模糊和失真"
+ ],
+ "weaknesses": [
+  "仅针对工业异常检测场景，泛化性有限",
+  "需要额外的分割算法获取高质量掩码",
+  "某些类别在少样本情况下仍存在生成问题"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "工业异常检测场景，泛化性和掩码依赖限制明显",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/PointAlign_Feature-Level Alignment Regularization for 3D Vision-Language Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/PointAlign_Feature-Level Alignment Regularization for 3D Vision-Language Models.pdf",
+ "title": "PointAlign Feature-Level Alignment Regularization for 3D Vision-Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "点云特征对齐正则化提升3D视觉语言模型几何信息保留",
+ "innovations": [
+  "中间层点云标记与Q-Former输出的显式对齐",
+  "轻量级对齐投影器设计",
+  "两阶段训练策略保持预训练知识"
+ ],
+ "method_framework": "基于MiniGPT-3D的两阶段训练：第一阶段预训练，第二阶段冻结预训练模块，仅训练LLM的LoRA和对齐投影器，通过余弦相似度损失约束中间层点云标记与Q-Former输出的一致性",
+ "experiment_framework": "ModelNet40和Objaverse数据集上的3D分类和描述生成任务，对比5个3D模型和5个2D模型，使用Qwen2-72B-Instruct评估生成质量",
+ "takeaways": [
+  "中间层特征对齐可有效保留几何信息",
+  "轻量级投影器设计可显著提升性能",
+  "余弦相似度比L1/L2更适合特征对齐"
+ ],
+ "weaknesses": [
+  "仅在一个LLM架构(Phi-2)上验证",
+  "对齐投影器的设计选择缺乏理论分析",
+  "未探索不同点云编码器的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "3D视觉语言模型几何信息保留与可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

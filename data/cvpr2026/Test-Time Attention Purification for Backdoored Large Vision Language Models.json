@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Test-Time Attention Purification for Backdoored Large Vision Language Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Test-Time Attention Purification for Backdoored Large Vision Language Models.pdf",
+ "title": "Test-Time Attention Purification for Backdoored Large Vision Language Models",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 8.5,
+  "overall": 7.5
+ },
+ "one_line": "CleanSight通过注意力净化防御LVLM后门攻击，但TrojVLM防御弱且需干净数据",
+ "innovations": [
+  "发现LVLM后门攻击通过注意力窃取而非低级视觉模式工作",
+  "提出首个测试时注意力净化防御框架CleanSight",
+  "利用跨模态融合层的视觉-文本注意力比率检测 poisoned 输入"
+ ],
+ "method_framework": "CleanSight通过测量选定跨模态融合层中头特定的视觉-文本注意力比率，使用白化ℓ2距离与干净参考分布比较检测 poisoned 输入，然后选择性修剪异常高注意力的视觉标记以净化输入。",
+ "experiment_framework": "在VQAv2、OKVQA、MSCOCO和Flickr8k数据集上评估，对比BadNet、Blended、ISSBA等6种攻击方法和5种基线防御方法，使用ASR、CU和PU作为评估指标。",
+ "takeaways": [
+  "注意力空间操作比像素级操作更有效防御LVLM后门攻击",
+  "跨模态融合层是检测注意力窃取的关键位置",
+  "选择性修剪高注意力视觉标记可有效抑制后门激活同时保持模型效用"
+ ],
+ "weaknesses": [
+  "对TrojVLM攻击的防御效果相对较弱(ASR=3.14-4.74%)",
+  "需要干净验证集构建参考分布，在实际部署中可能存在挑战"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "LVLM后门防御直接关联可靠性主线，且方法设计有可迁移的注意力操作模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

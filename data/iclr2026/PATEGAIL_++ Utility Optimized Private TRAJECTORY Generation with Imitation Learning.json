@@ -1,0 +1,41 @@
+{
+ "title": "PATEGAIL++: Utility Optimized Private Trajectory Generation with Imitation Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "PATEGAIL++动态加噪提升轨迹效用，但方法创新性有限。",
+ "innovations": [
+  "敏感感知噪声注入模块：按样本级敏感度动态调节加噪量，替代均匀加噪。",
+  "在强DP保证下显著提升轨迹保真度、下游任务性能与可扩展性。",
+  "将框架适配到本地差分隐私(LDP)设定，无需可信服务器即可做个体级保护。"
+ ],
+ "method_framework": "以PATE(教师聚合)+GAIL(模仿学习)生成合成轨迹；新增敏感感知模块估计每条样本的敏感度并据此动态注入DP噪声；在中心DP与LDP两种设定下训练生成器，权衡隐私预算与轨迹效用。",
+ "experiment_framework": "在真实人类移动轨迹数据集上评测；对比PATE-GAN/PATEGAIL等DP生成基线；指标为轨迹保真度、下游任务效用与隐私预算(ε)曲线；报告隐私-效用权衡更优。",
+ "takeaways": [
+  "按样本敏感度动态加噪比均匀加噪在同等隐私预算下效用更高。",
+  "模仿学习+PATE可在强DP下生成较真实的移动轨迹。",
+  "扩展到LDP后可在无可信服务器下做个体级轨迹保护。"
+ ],
+ "weaknesses": [
+  "为PATEGAIL的增量改进，方法新颖性偏工程。",
+  "敏感感知模块依赖敏感度估计，估计误差与隐私会计的严格性需仔细论证。",
+  "仅在移动轨迹域验证，对其他序列/表格数据的迁移性未展示。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PATEGAIL_++ Utility Optimized Private TRAJECTORY Generation with Imitation Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PATEGAIL_++ Utility Optimized Private TRAJECTORY Generation with Imitation Learning.pdf",
+ "raw_overall": 5.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "隐私鲁棒主线+轨迹落地域，但方法创新性有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

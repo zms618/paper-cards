@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Bwcache_Accelerating Video Diffusion Transformers through Block-Wise Caching.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Bwcache_Accelerating Video Diffusion Transformers through Block-Wise Caching.pdf",
+ "title": "Bwcache: Accelerating Video Diffusion Transformers through BLOCK-WISE Caching",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "块级缓存加速视频扩散模型，但特征振荡限制加速潜力",
+ "innovations": [
+  "分析DiT块特征变化的U形模式",
+  "基于相似性指示器的块级缓存机制",
+  "周期性缓存更新防止潜在漂移"
+ ],
+ "method_framework": "BWCache通过缓存DiT块特征并在扩散时间步间重用，使用相对L1距离作为相似性指示器，当特征变化低于阈值时触发缓存重用，并在最终阶段强制重新计算以确保质量。",
+ "experiment_framework": "在Open-Sora、Open-Sora-Plan、Latte等多个视频扩散模型上评估，使用VBench、LPIPS、SSIM、PSNR指标，比较与PAB、TeaCache等基线的速度和质量。",
+ "takeaways": [
+  "块级特征分析揭示扩散过程中的计算冗余",
+  "训练-free的缓存方法可直接应用于预训练模型",
+  "相似性指示器动态平衡速度与质量"
+ ],
+ "weaknesses": [
+  "早期阶段特征振荡可能导致加速潜力受限",
+  "需要为不同模型调整相似性阈值",
+  "未探讨在极端动态场景下的表现"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成加速与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

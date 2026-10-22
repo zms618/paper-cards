@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/d1 Scaling Reasoning in Diffusion Large Language Models via Reinforcement Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/d1 Scaling Reasoning in Diffusion Large Language Models via Reinforcement Learning.pdf",
+ "title": "d1: Scaling Reasoning in Diffusion Large Language Models via Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "将GRPO适配扩散模型，提升数学推理能力但领域受限",
+ "innovations": [
+  "diffu-GRPO：首个针对掩码扩散大语言模型的策略梯度算法",
+  "高效的单步对数概率估计方法",
+  "随机提示掩码作为策略优化的正则化技术"
+ ],
+ "method_framework": "d1采用两阶段框架：首先在高质量推理轨迹上进行监督微调(SFT)，然后引入diffu-GRPO算法进行强化学习训练，解决扩散模型中难以计算序列概率的问题。",
+ "experiment_framework": "在GSM8K、MATH500、Countdown和Sudoku等数学和规划任务上评估，与基线LLaDA、仅SFT和仅diffu-GRPO方法比较，使用准确率作为主要指标。",
+ "takeaways": [
+  "随机提示掩码作为正则化技术可提高训练效率",
+  "SFT和RL的组合使用产生协同效应，显著提升推理性能"
+ ],
+ "weaknesses": [
+  "仅在数学和规划任务上验证，未在更广泛的领域测试",
+  "计算成本仍然较高，特别是在线生成阶段"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

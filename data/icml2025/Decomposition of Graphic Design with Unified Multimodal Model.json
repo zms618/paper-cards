@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Decomposition of Graphic Design with Unified Multimodal Model.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Decomposition of Graphic Design with Unified Multimodal Model.pdf",
+ "title": "Decomposition of Graphic Design with Unified Multimodal Model",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "多模态模型分解海报为图层，但与AI可靠性主线弱相关",
+ "innovations": [
+  "提出LDGD新视觉任务：将合成图形设计分解为带有序号的RGB-A图层与结构化元数据（位置/尺寸/文字颜色等）",
+  "构建DeaM统一多模态模型：conjoined视觉编码器+大语言模型+condition-aware RGB-A解码器",
+  "两阶段pipeline：先生成图层元数据（空间坐标+量化编码），再用条件解码器重建像素级图层，支持文本/点提示的交互式分解"
+ ],
+ "method_framework": "视觉编码器跨语义层级融合图像特征；LLM处理视觉token与指令输出各图层元数据；条件RGB-A解码器以元数据为条件逐图层生成RGB+alpha；重叠遮挡区域通过分层重建实现高保真还原。",
+ "experiment_framework": "在自建/公开图形设计数据集上评测图层分解与图像重建质量，对比单用途分割/生成模型，并支持交互式分解。",
+ "takeaways": [
+  "统一多模态模型可同时完成元数据预测与遮挡区域图层重建，超越单用途分割模型",
+  "结构化图层表示支持精确图像编辑、素材归档与复用",
+  "文本/点提示的交互式分解降低了复杂海报的拆解成本"
+ ],
+ "weaknesses": [
+  "与可靠性/可信AI主线弱相关，属内容生成任务",
+  "前9页未给出完整数值表，重建PSNR/SSIM等指标需看实验章节",
+  "数据集构建依赖商业海报素材，外部复现性受限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

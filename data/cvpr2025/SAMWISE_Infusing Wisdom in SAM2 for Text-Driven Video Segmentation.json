@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/SAMWISE_Infusing Wisdom in SAM2 for Text-Driven Video Segmentation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/SAMWISE_Infusing Wisdom in SAM2 for Text-Driven Video Segmentation.pdf",
+ "title": "SAMWISE Infusing Wisdom in SAM2 for Text-Driven Video Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "轻量适配器增强SAM2文本理解与时序建模，实现流式视频分割。",
+ "innovations": [
+  "跨模态时序适配器(CMT)实现视觉-文本双向交互",
+  "条件记忆编码器(CME)解决SAM2的跟踪偏差问题",
+  "无需微调SAM2权重即可实现文本驱动的视频分割"
+ ],
+ "method_framework": "基于冻结的SAM2模型，引入CMT适配器在特征提取阶段注入时序信息和多模态线索，并通过CME模块动态调整跟踪焦点，实现流式处理下的全局上下文保留。",
+ "experiment_framework": "在MeViS、Ref-Youtube-VOS和Ref-DAVIS三个基准数据集上评估，使用J&F、J和F作为指标，与包括大型VLM在内的多种SOTA方法进行比较。",
+ "takeaways": [
+  "轻量级适配器设计可有效扩展基础模型能力",
+  "跟踪偏差现象的发现与解决对视频分割任务至关重要",
+  "流式处理与全局上下文保留的平衡是视频分割的关键挑战"
+ ],
+ "weaknesses": [
+  "仅添加了4.2M参数，但未充分分析计算效率提升",
+  "未在极端长视频序列上验证方法的鲁棒性",
+  "CME模块的决策阈值(0.5)可能需要针对不同场景调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "轻量适配器解决视频分割跟踪偏差，方法模式可迁移到可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

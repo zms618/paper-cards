@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Ψ-Sampler Initial Particle Sampling for SMC-Based Inference-Time Reward Alignment in Score Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Ψ-Sampler Initial Particle Sampling for SMC-Based Inference-Time Reward Alignment in Score Models.pdf",
+ "title": "Ψ-Sampler: Initial Particle Sampling for SMC-Based Inference-Time Reward Alignment in Score Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 6.1
+ },
+ "one_line": "pCNL采样初始粒子提升SMC奖励对齐，但统计与消融不足",
+ "innovations": [
+  "指出SMC类推理时对齐方法的共同缺口：粒子从高斯先验初始化，而扩散系数g²(t)随t→0衰减使奖励信号后期失效，因此把计算预算投向奖励感知后验的初始采样",
+  "首次将无限维MCMC中的pCNL（Crank-Nicolson半隐式+Langevin+MH校正，接受率不随维度退化）引入生成模型，实现6.5万维潜在空间（FLUX）的可行后验采样",
+  "在固定NFE预算下系统对比Top-K-of-N/ULA/MALA/pCNL四种初始粒子策略与单粒子/先验SMC基线，验证后验初始化的收益"
+ ],
+ "method_framework": "以SOC视角导出奖励感知最优初始分布p*_1∝p_1·exp(r(x0|1)/α)，用pCNL对其做MCMC采样（burn-in+thinning，固定步长0.5），所得粒子作为SMC去噪过程的初始粒子，沿用TDS式加权/重采样完成推理时对齐。",
+ "experiment_framework": "FLUX/SANA-Sprint三任务：layout-to-image(mIoU)、数量感知(L1/Acc)、美学偏好(美学分)；基线DPS、FreeDoM、TDS、DAS、Top-K-of-N、ULA、MALA；含held-out奖励与NFE分配消融。",
+ "takeaways": [
+  "'初始化比后期探索更关键'的论证模板：用扩散系数衰减与中间分布连通性下降说明奖励信号后期失效，为分配预算给初始采样提供可复用的机理理由",
+  "跨领域借算法（无限维MCMC→生成模型）时给出维度稳健性的理论依据（pCN保先验、接受率不随d退化），而非只报实验效果",
+  "固定NFE下对初始采样策略做横向对比，是评估'探索-利用预算分配'的干净实验设计"
+ ],
+ "weaknesses": [
+  "表1所有数值未见多种子/方差/显著性检验，0.417→0.467等核心差距的统计稳健性未验证",
+  "pCNL闭式解依赖高斯先验的线性漂移（仅t=1适用），对非高斯先验或更深蒸馏模型的适用边界未讨论",
+  "MH校正与大步长（0.5 vs 基线0.05）对增益的各自贡献未做分离消融，正文仅引用附录G一笔带过"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

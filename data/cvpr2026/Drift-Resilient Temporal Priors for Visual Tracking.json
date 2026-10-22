@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Drift-Resilient Temporal Priors for Visual Tracking.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Drift-Resilient Temporal Priors for Visual Tracking.pdf",
+ "title": "Drift-Resilient Temporal Priors for Visual Tracking",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "时序校准模块抑制跟踪漂移，但计算开销大且更新策略未优化",
+ "innovations": [
+  "时序可靠性校准器(TRC)动态评估历史帧可靠性",
+  "时序引导合成器(TGS)生成动态先验token",
+  "即插即用模块可集成多种跟踪架构"
+ ],
+ "method_framework": "基于LoRATv2扩展，结合TRC和TGS模块，通过可靠性加权历史帧并生成动态先验token引导跟踪器",
+ "experiment_framework": "LaSOT/VastTrack/GOT-10k/TrackingNet等7个基准测试，与SPMTrack/LoRAT等SOTA方法对比",
+ "takeaways": [
+  "可靠性加权机制可有效抑制跟踪漂移",
+  "轻量级即插即用模块可提升多种跟踪架构性能"
+ ],
+ "weaknesses": [
+  "计算开销增加，FPS降低",
+  "仅在前向传播中利用历史信息，未优化更新策略"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "时序校准属于可靠性主线，但未触及落地域且计算开销大",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

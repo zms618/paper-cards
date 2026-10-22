@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Ringleader ASGD_the First Asynchronous with Optimal Time Complexity Data Heterogeneity.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Ringleader ASGD_the First Asynchronous with Optimal Time Complexity Data Heterogeneity.pdf",
+ "title": "Ringleader ASGD: The First Asynchronous SGD with Optimal Time Complexity under Data Heterogeneity",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 3,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "纯理论异步SGD，声称最优复杂度但缺实验验证",
+ "innovations": [
+  "提出Ringleader ASGD，首个在数据异构（非IID）且worker计算时间任意甚至时变的条件下，对平滑非凸问题达到并行一阶随机方法理论下界时间复杂度的异步SGD。",
+  "引入新的平滑型假设（常数L满足Lf≤L≤Lmax），在无需worker数据分布相似假设下将现有方法复杂度中的平滑常数从Lmax收紧到L。",
+  "证明该算法同时具备无同步、无空闲worker、无丢弃计算三项性质，关闭了异步优化理论中数据异构+计算异构并存时的最优性缺口。"
+ ],
+ "method_framework": "worker以各自计算时间τi异步贡献随机梯度，算法通过异步更新与对陈旧梯度的谨慎处理，使收敛时间复杂度为(L∆/ε)·τn+τavg·σ²/(nε)，仅在平滑常数上与Tyurin&Richtarik(2024)推导的理论下界(Lf)差一个常数因子。",
+ "experiment_framework": "本文为纯理论工作，前9页正文无数据集/基线/指标层面的实证实验；证据来自时间复杂度对比表（Naive minibatch SGD、IA2SGD、Malenia SGD与下界）及一系列定理证明。",
+ "takeaways": [
+  "在数据异构与计算异构并存的联邦学习场景下，异步SGD可以同时做到无同步、无空闲、无浪费且时间复杂度最优。",
+  "通过更精细的平滑性假设可将时间复杂度中的平滑常数从Lmax降至L，从而逼近理论下界。"
+ ],
+ "weaknesses": [
+  "前9页正文未包含任何数值或仿真实验，理论上的最优性优势缺乏实证运行验证。",
+  "最优性仅在L=O(Lf)（新平滑常数不超Lf一个常数倍）时成立，当worker平滑常数差异巨大时该条件未必满足。",
+  "仅分析平滑非凸下的稳态ε收敛，未触及稀疏、非光滑或有限和等更贴近深度学习实践的设定。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "异步SGD理论优化，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

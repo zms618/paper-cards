@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scaling Behavior Of Discrete Diffusion Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scaling Behavior Of Discrete Diffusion Language Models.pdf",
+ "title": "Scaling Behavior of Discrete Diffusion Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "研究DLM缩放规律，但与主线关联弱且证据有限。",
+ "innovations": [
+  "首次系统刻画DLM的scaling law，发现其缩放行为显著依赖噪声类型，与ALM大不相同。",
+  "揭示在compute-bound下各噪声类型收敛到相近损失，但uniform扩散比masked需要更多参数、更少数据，适合data-bound场景。",
+  "将uniform扩散模型扩展到10B参数、1e22 FLOPs(公开已知最大uniform扩散模型)，证实预测的scaling规律，表明DLM在规模化下可与ALM竞争。"
+ ],
+ "method_framework": "在masked到uniform扩散间平滑插值噪声类型，系统扫batch size与学习率等关键超参，用isoFLOP方法拟合损失关于算力、参数、数据的幂律，外推到更大规模并训练验证。",
+ "experiment_framework": "小中规模扫描拟合scaling law，再将uniform扩散模型扩至3B/10B、最高1e22 FLOPs验证外推；与ALM(DeepSeek/Chinchilla/Llama3等)在bits-per-byte与iso-FLOP效率上对比。",
+ "takeaways": [
+  "DLM的最优参数/数据配比取决于噪声类型，uniform扩散在数据受限时更具潜力。",
+  "scaling law可良好外推到10B，DLM在大规模compute-bound下可接近ALM竞争力。"
+ ],
+ "weaknesses": [
+  "属生成模型scaling方向，与可靠性×医学影像/多模态推理主线关联弱。",
+  "其bpb为条件/无条件似然混合，与ALM不可直接对比；结论主要在预训练损失层面，下游生成/推理质量证据有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.38,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "生成模型缩放规律，与可靠性主线关联弱且证据有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Time-o1 Time-Series Forecasting Needs Transformed Label Alignment.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Time-o1 Time-Series Forecasting Needs Transformed Label Alignment.pdf",
+ "title": "Time-o1: Time-Series Forecasting Needs Transformed Label Alignment",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "SVD变换标签对齐缓解时间序列自相关偏差，但计算效率存疑",
+ "innovations": [
+  "提出时间序列预测中的标签自相关偏差和任务数量过多两个关键问题",
+  "设计基于SVD的变换标签对齐方法消除自相关并区分显著成分",
+  "提出模型无关的Time-o1损失函数，可灵活应用于多种预测模型"
+ ],
+ "method_framework": "Time-o1通过SVD将标签序列变换为去相关且按重要性排序的成分，仅对最显著成分进行对齐，结合原始TMSE损失，有效减少自相关偏差并简化优化。",
+ "experiment_framework": "在ETT、ECL、Traffic等多个数据集上与10种基线模型比较，使用MSE和MAE指标，并在不同预测长度(T=96,192,336,720)上评估。",
+ "takeaways": [
+  "损失函数设计对时间序列预测性能有重大影响，可与架构改进相媲美",
+  "通过变换标签空间可解决自相关偏差问题，提高长期预测性能"
+ ],
+ "weaknesses": [
+  "方法依赖于SVD计算，可能在大规模数据上计算效率不高",
+  "超参数α和γ需要调整，可能影响在不同场景下的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

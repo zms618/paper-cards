@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Fewer Denoising Steps or Cheaper Per-Step Inference Towards Compute-Optimal Diffusion.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Fewer Denoising Steps or Cheaper Per-Step Inference Towards Compute-Optimal Diffusion.pdf",
+ "title": "Fewer Denoising Steps or Cheaper Per-Step Inference Towards Compute-Optimal Diffusion",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "混合分辨率与缓存优化扩散模型计算效率，但创新有限",
+ "innovations": [
+  "首次研究减少去噪步数与降低单步推理成本的权衡问题",
+  "混合分辨率去噪方案，早期步骤使用低分辨率增强低频分量",
+  "混合模块缓存策略，结合DeepCache和交叉注意力缓存优化计算效率"
+ ],
+ "method_framework": "PostDiff框架在输入层采用混合分辨率去噪，早期步骤使用低分辨率；在模块层采用混合缓存策略，重用U-Net跳跃连接和交叉注意力特征图，实现训练后加速。",
+ "experiment_framework": "在MS-COCO数据集上评估SD V1.5、LCM、SDXL和PixArt-α模型，使用FID、Clip Score和FLOPs作为指标，与减少去噪步数和其他训练后压缩方法对比。",
+ "takeaways": [
+  "保持高去噪步数并降低单步推理成本比减少去噪步数更有效",
+  "早期去噪步骤主要关注低频信息，适合降低分辨率计算",
+  "混合策略同时优化输入和模块级冗余可获得最佳效率-质量权衡"
+ ],
+ "weaknesses": [
+  "方法依赖特定超参数设置，可能需要针对不同模型调整",
+  "极端效率场景下（减少>60% FLOPs），减少去噪步数可能更有效",
+  "未探索更复杂的分辨率调度策略"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "计算效率优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

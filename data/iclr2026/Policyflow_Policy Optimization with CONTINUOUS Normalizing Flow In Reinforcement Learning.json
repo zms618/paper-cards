@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Policyflow_Policy Optimization with CONTINUOUS Normalizing Flow In Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Policyflow_Policy Optimization with CONTINUOUS Normalizing Flow In Reinforcement Learning.pdf",
+ "title": "PolicyFlow: Policy Optimization with Continuous Normalizing Flow in Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "用CNF速度场近似重要性比，结合布朗正则的on-policy策略RL算法。",
+ "innovations": [
+  "用简单插值路径上连续归一化流速度场的变化近似重要性比，避免昂贵的路径级反向传播与全轨迹似然",
+  "提出 Brownian Regularizer：受布朗运动启发的隐式策略熵正则，单调促熵、防模式坍塌而不显式计算熵",
+  "在保持PPO式clipped目标稳定性的同时支持高表达多模态动作分布，避免FPO的非对称估计偏差与DPPO的离流形问题"
+ ],
+ "method_framework": "将策略参数化为连续归一化流；不沿完整flow轨迹算似然，而在插值路径上评估速度场差异近似重要性比以构造PPO式clipped目标；叠加布朗正则鼓励动作熵单调增长、维持行为多样性，从而稳定地在线优化高表达流策略。",
+ "experiment_framework": "在 MultiGoal、PointMaze、IsaacLab、MuJoCo Playground 等环境上对比高斯策略PPO及 FPO、DPPO 等流/扩散策略基线，报告回报与多模态动作分布建模能力(MultiGoal)。",
+ "takeaways": [
+  "PolicyFlow 在多环境取得与高斯PPO及流基线相当或更优的性能",
+  "MultiGoal 上可捕捉更丰富的多模态动作分布",
+  "速度场近似重要性比使高表达流策略的在线训练在算力与稳定性上可行"
+ ],
+ "weaknesses": [
+  "主线为机器人控制RL/策略表达，与可靠性、医学影像、多模态推理主线关联弱",
+  "速度场近似重要性比的近似误差界前9页未给出理论刻画",
+  "前9页未见在高维真实机器人/长时序任务上的大规模验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "策略优化方法与可靠性主线关联弱，无可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

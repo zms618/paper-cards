@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Nonlinear transformers can perform inference-time feature learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Nonlinear transformers can perform inference-time feature learning.pdf",
+ "title": "Nonlinear transformers can perform inference-time feature learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.75
+ },
+ "one_line": "理论证明单层softmax transformer能在推理时学习任务特征，但假设限制强",
+ "innovations": [
+  "首次给出非线性transformer做推理时特征学习的端到端优化+统计保证：一步梯度下降把注意力矩阵Γ练成≈E[ββ^T]，MLP用ridge拟合链接函数σ*",
+  "关键机制：softmax中ey_i/ρ对标签做非线性指数变换，把σ*的信息指数ie(σ*)降到生成指数ge(σ*)(多项式链≤2)，使推理复杂度不再随ie爆炸",
+  "去掉Oko2024要求的r≪√d低维假设，结论对任意1≤r≤d成立；并证明注意力输出g≈Ca+Cb⟨x,β⟩^ge，直接读出β方向"
+ ],
+ "method_framework": "单指标模型x~N(0,I_d),β均匀取自r维子空间单位球,y_i=σ*(⟨β,x_i⟩)+噪声；学生模型单层transformer(E=(X;y),softmax注意力带温度ρ+掩码最后行,ReLU MLP)；两阶段预训练：Stage I对注意力矩阵Γ做一步ℓ2正则平方损失GD(≈E[ββ^T])，Stage II固定v/b做ridge回归拟合输出权a；推理时g=Σey_i/ρ ex_i^TΓx/ρ/Σey_i/ρ...读出⟨β,x⟩。",
+ "experiment_framework": "理论主定理(概率0.99,预训练Tpt~r²d^{ie+2}∨r^{3ge/2},推理Ntest~r^{3ge/2})；合成实验：6层GPT-2学He3(⟨β,x⟩)单指标任务，对比从零训练的RBF核岭回归；指标ICL泛化误差vs context length(d=4/8/12/16)、log-log下达阈值所需N_test对d的斜率。",
+ "takeaways": [
+  "理论上推理样本复杂度r^{ge(σ*)}≤r^{ie(σ*)}≤r^{deg(σ*)}，优于核方法且突破CSQ下界d^{ie/2∨1}",
+  "合成实验中RBF核误差随d=4→16急剧恶化(下界d³)，而预训练GPT-2维度缩放温和",
+  "样本复杂度探测实测N_test∝d^{1.13-1.16}，远低于He3对应的CSQ下界d^{1.5}与核下界d³，验证softmax非线性带来的统计收益"
+ ],
+ "weaknesses": [
+  "落点为ICL单指标模型的可计算性理论，与主任务的医学影像/多模态大模型推理可靠性(鲁棒/不确定性/幻觉)不直接相关；不研究可信AI",
+  "假设链接函数σ*跨任务固定且为多项式、高斯各向同性数据、单层transformer+特定结构化参数化，离真实LLM的分布与深度差距大",
+  "预训练复杂度仍为d^{ie(σ*)}，作者自陈需超出一步GD才能降到d^{ge}；实证仅合成单指标+GPT-2小模型，未在真实ICL任务验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

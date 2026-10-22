@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Auditing f-Differential Privacy in One Run.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Auditing f-Differential Privacy in One Run.pdf",
+ "title": "Auditing f-Differential Privacy in One Run",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.7
+ },
+ "one_line": "单次运行f-DP审计，利用样本随机性获得更紧隐私下界",
+ "innovations": [
+  "给出只需单次(训练)运行的高效f-DP审计流程，无需多次运行目标ML算法",
+  "提出新的分析以得到更紧的经验隐私估计(经验下界)",
+  "同时覆盖理想设置与无法控制训练管线的黑盒审计设置"
+ ],
+ "method_framework": "黑盒地观测机制输出，利用输入数据集样本的随机性注入canary样本，构造对手猜测坐标的正确期望数(c)，以此检验是否满足某隐私假设；在单次训练运行内完成审计并输出经验隐私下界。",
+ "experiment_framework": "以Steinke et al.(2023)为主基线，在相同设置下对比；含简单高斯机制(变标准差/ canary数)、DP-SGD成员推断(ε=8,δ=1e-5,batch 4096,K=16,2500步)、以及CIFAR-10上SoTA黑盒成员推断攻击RMIA(WideResNet-28)。",
+ "takeaways": [
+  "在高斯机制与DP-SGD上都能得到比Steinke et al.更紧的经验隐私下界",
+  "单次训练运行即可完成审计，计算效率高",
+  "对RMIA等SoTA成员推断攻击也能做隐私审计"
+ ],
+ "weaknesses": [
+  "与医学影像/多模态推理主线无直接关联，属隐私审计方向",
+  "实证多为理想化/受控设置，对大规模真实DP训练管线的适用性有限",
+  "仅报经验下界紧致度，审计本身的误判率/置信保证需更系统刻画"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "隐私审计方法扎实，但未触及医学影像或多模态推理主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

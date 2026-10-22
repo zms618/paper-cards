@@ -1,0 +1,44 @@
+{
+ "key": "cvpr2025/A Dataset for Semantic Segmentation in the Presence of Unknowns.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Dataset for Semantic Segmentation in the Presence of Unknowns.pdf",
+ "title": "A Dataset for Semantic Segmentation in the Presence of Unknowns",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 5.5,
+  "evidence": 5.0,
+  "relevance": 7.5,
+  "overall": 6.2
+ },
+ "one_line": "ISSU数据集提供已知与异常联合标注，支持可控开集评测但训练价值未验证。",
+ "innovations": [
+  "首个同时给出 19 个 closed-set 类别与 anomaly 类别标注的真实道路数据集（ISSU-Train 3436、Test-Static 980、Test-Temporal 1140 标注帧外加 21118 未标注视频帧），使 K+1 开集评估与闭集评估可在同一测试集上联合进行，而 SMIYC/RoadAnomaly 等只有 known vs anomaly 的二值标注。",
+  "可控变量评测设计：把异常按面积量化为 TooSmall/Small/Large/VeryLarge 四档并给出空间分布热力图，配合与训练集同分布的 Static 测试集和换用消费级行车记录仪采集的 Temporal 测试集，使异常尺寸、光照/天气、传感器质量三类干扰因素可被分别隔离。",
+  "四种评测协议与安全导向操作点指标：Road Obstacle（仅路面像素）、Road Anomaly（全部非 void 像素）、Open-set（oIoU，把异常检测器的 FP/FN 计入识别指标）、Closed-set；除 AP 外取 FPR@TPR95 与 TPR@FPR5 两个互补操作点及组件级 F1。"
+ ],
+ "method_framework": "无方法模块，数据构建即核心：在印度道路图像上做三类标注（19 已知类 / anomaly / void），异常限定在路面 ROI（路面上或 2 米内）且排除频繁出现的未知物（如三轮车、横幅，标为 void）；7 名标注员训练至 Cityscapes 标注 95% 准确率后标注 2 个月；据此支持 in-domain、cross-domain、cross-sensor temporal 三类设置下的四类协议评测。",
+ "experiment_framework": "基线取自 SMIYC 榜单 SOTA：像素级 JSR-Net/DaCUP/PixOOD，掩码级 RbA/EAM/Pebal/UNO/M2A（区分是否使用 OOD 辅助数据）；设置含 in-domain 与 cross-domain（Cityscapes 训练）× Static 与 Temporal；指标 AP、FPR@TPR95、TPR@FPR5、组件级 F1、IoU 与 oIoU。",
+ "takeaways": [
+  "「把干扰因素做成可控变量」的基准设计可直接迁移：先固定训练/测试同分布做 in-domain，再用跨中心或跨传感器测试集做 cross-domain，从而把「方法不行」与「分布漂移」区分开——这正是可靠性研究最需要的评测协议。",
+  "用两个固定操作点（FPR@TPR95、TPR@FPR5）而非单一 AP/AUROC 报告异常检测，能暴露安全关键场景的真实可用区间：本文 in-domain 下 FPRT<5% 的方法换到 temporal 后普遍恶化到 90% 以上。",
+  "oIoU 这类把检测器错误计入识别指标的联合指标，比分别报闭集 mIoU 与异常 AP 更能反映开集部署的真实代价（本文 IoU 与 oIoU 差距达数十个点），值得借鉴到任何已知+未知并存的评测。",
+  "主动把「频繁出现的未知物」标为 void 而非 anomaly，是对「什么算异常」给出可操作定义的范例，避免标注口径随标注者漂移。"
+ ],
+ "weaknesses": [
+  "纯数据集论文且核心用途之一未被验证：ISSU-Train 只含已知类，但正文没有展示「在 ISSU-Train 上训练相比 Cityscapes 训练能提升异常分割」这一闭环实验，数据集对训练侧的价值缺乏支撑。",
+  "作为主要卖点的「可控评估光照与天气影响」其结果全部推到补充材料，正文只给出异常尺寸消融（图 5），claim 与可见实验不匹配。",
+  "cross-sensor temporal 设置把传感器质量差异、视频时序、图像退化三个因素混在一起，无法判断性能崩塌主要来自哪一个；文中也承认该设置主要面向 future work（test-time adaptation）。",
+  "所有基线均为确定性评测、无方差或显著性检验；且各方法的异常分数阈值自行确定，FPR/TPR 的跨方法可比性依赖各自分数校准质量，而论文未做校准评估。",
+  "测试集偏小（980/1140 帧，异常像素占比仅 2.18%/1.20%），按尺寸切四档后每档样本有限，图 5 中的组间差异缺乏置信区间支撑。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "开集语义分割数据集支持可靠性评测，但训练价值未验证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

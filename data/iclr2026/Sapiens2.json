@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Sapiens2.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sapiens2.pdf",
+ "title": "Sapiens2",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "高分辨率transformer结合重建与对比目标，在10亿人像上预训练",
+ "innovations": [
+  "将掩码图像重建(MIM)与自蒸馏对比目标结合的统一预训练目标，同时兼顾低层稠密预测细节与高层语义(零/少标签)，缓解纯MIM或纯对比学习的偏颇。",
+  "在10亿张经多级筛选的高质量人像上预训练，并将任务标注量提升约10倍(每任务~1M标签)，扩展到pointmap、albedo等新任务。",
+  "4K模型采用窗口注意力推理更长空间上下文、以2K输出分辨率预训练；较一代在姿态+4mAP、部位分割+24.3mIoU、法线角误差降45.6%。"
+ ],
+ "method_framework": "统一预训练：掩码重建锚定像素空间、对比目标组织语义，避免强增广导致的表示漂移；用窗口注意力支持高分辨率；后训练在大规模任务标注上做姿态/分割/法线/pointmap/albedo等稠密预测。",
+ "experiment_framework": "0.4B-5B多档模型、原生1K(分层4K)；在姿态估计、身体部位分割、表面法线、pointmap、albedo等以人为中心任务上与一代Sapiens及基线对比，报告mAP/mIoU/角误差。",
+ "takeaways": [
+  "重建+自蒸馏对比的统一目标比单一MIM或对比更适合宽范围以人为中心的稠密预测与零/少样本迁移。",
+  "数据(10亿人像)+标注(10x)与高分辨率窗口注意力共同带来显著SOTA提升与更细粒度分割。"
+ ],
+ "weaknesses": [
+  "属以人为中心的视觉基础模型方向，与可靠性×医学影像/多模态推理主线关联弱。",
+  "工程与数据规模化贡献为主，方法新意偏增量；预训练数据筛选标准与偏见(多样性/伦理)分析有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.03,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "以人为中心的视觉基础模型，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

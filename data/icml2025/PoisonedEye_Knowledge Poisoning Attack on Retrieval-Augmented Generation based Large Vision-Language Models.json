@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/PoisonedEye_Knowledge Poisoning Attack on Retrieval-Augmented Generation based Large Vision-Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/PoisonedEye_Knowledge Poisoning Attack on Retrieval-Augmented Generation based Large Vision-Language Models.pdf",
+ "title": "PoisonedEye: Knowledge Poisoning Attack on Retrieval-Augmented Generation based Large Vision-Language Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "首个VLRAG知识投毒攻击，单样本可操纵回复，但防御缺失且攻击边界模糊",
+ "innovations": [
+  "首个面向VLRAG(视觉-语言检索增强生成)系统的知识投毒攻击，填补此前投毒攻击只覆盖纯文本RAG、未触及图文双模态的空白",
+  "证明仅注入单个投毒图文对即可操纵VLRAG对目标查询的回复，依据检索与生成两个关键性质构造并求解投毒样本",
+  "提出class-query targeted poisoning——把投毒效果从单个目标查询扩展到一整类目标查询，泛化性更强"
+ ],
+ "method_framework": "本文为安全攻击论文。背景：VLRAG从图文多模态知识库动态检索以缓解LVLM幻觉与知识过时，但这引入新攻击面。方法：从文本RAG投毒(PoisonedRAG)出发先建基线PoisonedEye-B(仅改误导文本上下文、不动图像)，再按VLRAG检索阶段与生成阶段必须满足的两条性质建模投毒样本，求解决定图文内容，使目标查询命中该样本并被误导。",
+ "experiment_framework": "在多个查询数据集、多种retriever、多个LVLM上广泛评测；基线为此前文本RAG投毒与backdoor方法；指标为投毒成功率(targeted attack下诱导目标回复的比例)，跨配置均显示高效。",
+ "takeaways": [
+  "VLRAG对外部多模态知识库的依赖使其极易被单个投毒样本攻破，图文双模态同时可被污染",
+  "利用检索性质+生成性质可反解出有效投毒图文对，攻击门槛低(仅需注入一条)",
+  "class-query攻击说明威胁不止单点，可覆盖整类查询，防御需重新设计"
+ ],
+ "weaknesses": [
+  "属攻击方论文，未提出/验证对应防御机制，对VLRAG鲁棒性建设的直接落地有限",
+  "投毒样本'可被注入知识库'这一前提假设攻击者具备写权限，对只读/审核严格库的现实威胁需打折",
+  "跨不同retriever/LVLM的成功率方差与失效条件未做系统消融，攻击边界刻画不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

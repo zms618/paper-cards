@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Sampling-Efficient Test-Time Scaling_Self-Estimating the Best-of-N Sampling in Early Decoding.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Sampling-Efficient Test-Time Scaling_Self-Estimating the Best-of-N Sampling in Early Decoding.pdf",
+ "title": "Sampling-Efficient Test-Time Scaling: Self-Estimating the Best-of-N Sampling in Early Decoding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "早期一致性预测截断的BoN解码，节省计算但架构依赖性强",
+ "innovations": [
+  "早期一致性预测最终一致性的理论证明",
+  "基于CoE特征的内部一致性度量",
+  "自截断BoN解码算法",
+  "缓冲窗口机制增强估计稳定性"
+ ],
+ "method_framework": "ST-BoN在早期解码时间点c识别不一致样本，使用CoE特征计算样本间一致性，在缓冲窗口τ内多次估计，选择最频繁的最佳样本进行截断生成",
+ "experiment_framework": "在MATH、TheoremQA等6个数据集上评估，对比Full-BoN(有无奖励模型)，使用准确率、Rouge-L、人类评分等指标，分析计算成本与性能权衡",
+ "takeaways": [
+  "早期一致性可有效预测最终结果",
+  "内部状态比文本更适合早期样本评估",
+  "自截断机制显著降低内存和延迟"
+ ],
+ "weaknesses": [
+  "依赖特定模型架构和隐藏状态",
+  "早期估计时间c在不同任务上表现不一",
+  "未探索极端长序列场景"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

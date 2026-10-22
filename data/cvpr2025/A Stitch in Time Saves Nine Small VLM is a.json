@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/A Stitch in Time Saves Nine Small VLM is a.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Stitch in Time Saves Nine Small VLM is a.pdf",
+ "title": "A Stitch in Time Saves Nine: Small VLM is a Precise Guidance for Accelerating Large VLMs",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 7.5,
+  "overall": 6.1
+ },
+ "one_line": "小VLM注意力剪大模型token，早退机制缺乏充分验证",
+ "innovations": [
+  "SGP：小VLM（InternVL-2B）预填充只取prompt→visual token的注意力块、解码阶段累加生成token→visual token注意力，跨所有head/layer求和得A=A_P+A_D，用小模型的全局注意力图给大模型的visual token排序，在LML浅层（2nd层）只留top R%",
+  "SEE早退：决策分S=½(S_confidence+S_consistency)，S_consistency=Π_i P(x_i^G|LMS'(x_I,x_T,x_{<i}^G))用裁剪后小模型再前向一次的生成概率，且可并行非自回归计算（删95% token后<10%推理开销），超阈值直接跳过26B/40B/76B",
+  "把'oracle全层注意力'这条不可得的gold通道变成廉价代理并量化其逼近程度：9%保留比下26B全层oracle 94.44%、2B全层92.64%、单层FastV仅48.37%（表2），随聚合层数单调改善"
+ ],
+ "method_framework": "小VLM前向两次（全量+裁剪后）得A与S→按阈值早退→不早退则在大VLM的浅层按A排序丢弃低分visual token继续解码。",
+ "experiment_framework": "InternVL-2B引导26B/40B/76B，另测Qwen-VL、LLaVA-OV；11个基准含TextVQA/ChartQA/DocVQA/GQA、RefCOCO系列、SEED/MMBench/MM-Vet/MME；对比ToMe、FastV，报token ratio与score ratio。",
+ "takeaways": [
+  "用弱代理模型的全局注意力替代强模型的局部注意力做token重要性，2B全层几乎追平26B oracle（差1.8% score ratio）",
+  "早退判据里加'裁剪后一致性分数'：同一模型全量与裁剪两次前向的自洽度当置信度，比长度归一化概率更抗小模型乱答"
+ ],
+ "weaknesses": [
+  "正文在4.4消融段截断：早退阈值S的敏感性、11个基准上早退比例的联合效果、与'oracle全层+SEE'这一更强上限的对比均不可见",
+  "表1显示SGP在64%保留比下与FastV几乎持平（score ratio 100.14% vs 99.84%），所谓大margin只在9%极端保留比下出现，而91%裁剪率是性能已塌到43.84/26.20的极端点；表格未报方差",
+  "小VLM与大VLM须同architecture suite（同一vision encoder输出相同token数）才能共享token索引，Qwen-VL/LLaVA-OV只说'可无缝接入'却无结果表；且S_confidence与S_consistency简单平均、阈值手设未做校准；S_confidence与S_consistency简单平均、阈值手设，二者量纲与标定不同却未做校准（温度/纵向归一化），早退比例完全由阈值决定"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "小VLM加速大模型方法触及可靠性主线，早退机制有创新但验证不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Autoregressive Visual Decoding from Eeg Signals.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Autoregressive Visual Decoding from Eeg Signals.pdf",
+ "title": "Autoregressive Visual Decoding from Eeg Signals",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "基于LaBraM的自回归EEG解码，参数减90%但验证有限",
+ "innovations": [
+  "基于预训练LaBraM模型的EEG编码与对比学习对齐",
+  "多尺度自回归生成框架实现从粗到细的视觉重建",
+  "参数量减少90%的同时提升重建质量"
+ ],
+ "method_framework": "两阶段框架：1)使用预训练LaBraM模型通过对比学习对齐EEG和图像表示；2)采用多尺度VQ-VAE和自回归transformer实现从粗到细的图像生成",
+ "experiment_framework": "THINGS-EEG和EEG-ImageNet数据集，对比EEGNetV4、EEGConformer、NICE、ATM等方法，使用Top-1/5检索准确率和PixCorr、SSIM等重建指标",
+ "takeaways": [
+  "预训练模型在EEG特征提取中的重要性",
+  "自回归框架在减少计算复杂度的同时保持重建质量",
+  "多尺度预测策略与人类视觉感知的层次性一致"
+ ],
+ "weaknesses": [
+  "仅在一个主要数据集上进行了验证",
+  "未充分讨论模型在不同EEG采集设备上的泛化能力",
+  "中间输出的可视化分析较为初步"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "EEG解码与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

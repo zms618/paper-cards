@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/FedBiP_Heterogeneous One-Shot Federated Learning with Personalized Latent Diffusion Models.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/FedBiP_Heterogeneous One-Shot Federated Learning with Personalized Latent Diffusion Models.pdf",
+ "title": "FedBiP Heterogeneous One-Shot Federated Learning with Personalized Latent Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "双层次个性化LDM解决异构联邦学习，但创新有限且证据不足。",
+ "innovations": [
+  "双层次个性化方法（实例级和概念级）",
+  "在保持隐私的同时解决特征空间异构性",
+  "无需微调LDM权重仅优化文本引导",
+  "在医学影像等特殊领域有效应用"
+ ],
+ "method_framework": "FedBiP在客户端执行双层次个性化：实例级通过VAE编码和噪声注入生成个性化潜在表示；概念级优化领域和类别概念向量。服务器整合这些向量指导预训练LDM生成合成数据，用于训练分类模型。",
+ "experiment_framework": "在三个OSFL基准（DomainNet、PACS、OfficeHome）和医学（DermaMNIST）、卫星（UCM）图像数据集上评估，比较FedAvg、Central、FedD3、DENSE、FedDEO、FGL等方法，使用分类准确率作为指标。",
+ "takeaways": [
+  "双层次个性化有效解决特征分布偏移问题",
+  "轻量级版本FedBiP-S在生成少量数据时即可超越复杂方法",
+  "概念向量优化对特殊领域生成至关重要"
+ ],
+ "weaknesses": [
+  "在与预训练数据重叠的领域（如DomainNet的Real域）性能提升有限",
+  "概念向量优化可能限制生成多样性",
+  "未充分探讨计算效率与生成质量的权衡"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "双层次个性化LDM解决异构联邦学习，但创新有限且证据不足。",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/PURA_Parameter Update-Recovery Test-Time Adaption for RGB-T Tracking.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/PURA_Parameter Update-Recovery Test-Time Adaption for RGB-T Tracking.pdf",
+ "title": "PURA Parameter Update-Recovery Test-Time Adaption for RGB-T Tracking",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "参数分解恢复机制提升RGB-T跟踪域适应性，但创新有限",
+ "innovations": [
+  "基于参数分解的快速更新-恢复机制",
+  "自适应动量缩放策略",
+  "无需梯度的BN层统计参数更新"
+ ],
+ "method_framework": "PURA框架包含快速参数更新和参数分解恢复两部分，通过测试样本统计信息更新BN层参数，利用SVD分解参数轨迹识别主更新方向并恢复关键参数，同时提供动量反馈确保稳定更新。",
+ "experiment_framework": "在GTOT、RGBT210和RGBT234三个数据集上评估，使用MPR/MSR和PR/SR指标，与多种SOTA跟踪器和TTA方法比较，并分析不同属性下的性能。",
+ "takeaways": [
+  "参数分解恢复机制可有效缓解长期跟踪中的误差累积",
+  "仅更新BN层统计参数可在保持效率的同时提升模型适应性"
+ ],
+ "weaknesses": [
+  "参数恢复间隔K固定可能不够灵活",
+  "仅针对BN层参数更新，未考虑其他层"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "RGB-T跟踪属于落地域但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

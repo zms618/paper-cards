@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/A Faster Path to Continual Learning.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Faster Path to Continual Learning.pdf",
+ "title": "A Faster Path to Continual Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "梯度分解近似加速持续学习，但理论支撑不足",
+ "innovations": [
+  "从代理模型梯度 g0 中抽出方向无关分量 g_vf=g_f−⟨g_f,g_0⟩g_0/‖g_0‖²（式7），并用图3b 的跨步 L2 距离证明 g_vf 比 g、g_0、g_vs 变化更慢，据此用 g_f≈g_0+β‖g_0‖g_vf/‖g_vf‖ 替代更新，省掉 g_1 的额外反向",
+  "阶段式 turbo 步长调度 k_t=k_0+10·t/N：借图4a/b 揭示的 sharpness 与 flatness 梯度随任务推进而趋于稳定的趋势，给靠后的任务更大跳步间隔",
+  "借图4c/d 中 ‖g_0‖² 接近正态的 Q–Q 观察，用 EMA 在线估计其均值与标准差（式8），仅在 ‖g_0‖²>μ_f,j+σ_f,j 时才触发平坦性正则（式9），把 C-Flat 与 SGD 按需混合"
+ ],
+ "method_framework": "在 C-Flat 的 L+R0+λR1 目标上，将一阶平坦梯度分解为平行 g0 的分量与方向无关的 g_vf，缓存 g_vf 连续复用 k−1 步作替代更新；再用线性 turbo 步长与 EMA 自适应触发决定何时真正执行完整 C-Flat 步。",
+ "experiment_framework": "CIFAR100/CUB200/ImageNet-R/ObjectNet，B-mInc-n 分割、类序种子 1993；ViT-B/16-IN1K（另有 ResNet-18/34 从零）；基线 iCaRL/MEMO/L2P/Ranpac/EASE 及其 +C-Flat(+Turbo)；指标 Avg/Last/Img-s，单卡 RTX 3090。",
+ "takeaways": [
+  "表1 的 Img/s 百分比列值得细看：C-Flat 把吞吐砍到基线的 26.9%–34.1%，这是预训练模型上做 flatness 的真实代价，Turbo 只把它救回 59%–68%，并未消除该开销",
+  "从零训练（表2）的收益比 PTM 更大：MEMO+Turbo 在 ResNet-18 上 last 提升 3.05%、ResNet-34 上 2.28%，iCaRL 分别 1.61%/1.08%，说明缺少预训练平坦先验时 turbo 更划算",
+  "表3 有反直觉信息：SAM 与 LookSAM 相对朴素优化器无明显增益，而 C-Flat 系列提升显著，说明 ViT 预训练骨干上真正起作用的是一阶 flatness 而非零阶 sharpness，而本方法恰恰只 Mock 了后者"
+ ],
+ "weaknesses": [
+  "核心提速依赖启发式近似 g_f≈g_0+β‖g_0‖g_vf/‖g_vf‖，正文只说收敛分析在附录 A.9，前 9 页看不到任何引理、假设或替代步的误差界，连续 k−1 步复用缓存方向为何不累积漂移无从判断",
+  "g_vf「变化更慢」这一全篇支柱只由图3a 直方图与图3b 的 L2 距离曲线定性支撑，没有相关系数、没有跨任务的统计检验，也未分数据集/骨干报告；该稳定性实际是事后观察而非理论刻画",
+  "摘要称「比 C-Flat 快 1.0×–1.25×」，表1 的 Img/s 却是 iCaRL 19.72→45.89、MEMO 46.11→91.91（约 2.0–2.3 倍），两个口径明显不一致且正文未解释；Img/s 还只给单次数值、无方差",
+  "自适应触发直接沿用 AE-SAM 的 EMA 阈值套路，正文未把触发率与最终 Avg/Last 挂钩，无法判断被跳过的那部分迭代是省了代价还是丢了精度；而 turbo 步长 k0、调度器线性项、触发开关三项消融全在附录 A.7，正文读不到"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "持续学习加速方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Adaptive Rectangular Convolution for Remote Sensing Pansharpening.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Adaptive Rectangular Convolution for Remote Sensing Pansharpening.pdf",
+ "title": "Adaptive Rectangular Convolution for Remote Sensing Pansharpening",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.0,
+  "relevance": 4.5,
+  "overall": 5.0
+ },
+ "one_line": "参数稀疏的矩形自适应卷积，但实验统计不显著且主叙事与消融矛盾",
+ "innovations": [
+  "把核高 h、宽 w 当作两个 learnable 标量场 y_i=Sigmoid 后经仿射 a_i·y_i+b_i 限幅，再用 Z0⊙G（尺度矩阵逐点乘标准网格）生成矩形采样图 R，参数只随 h,w 线性增长而不像可变形卷积那样随核尺寸平方增长。",
+  "按核高宽的全场均值经 floor 与 ϕ(x)=x-[x even] 映射成奇数采样点数 k_h=ϕ(⌊ȳ_1/n⌋)、k_w=ϕ(⌊ȳ_2/m⌋)，使采样密度本身随特征图内容变化，实现 5×3 这类非方形核。",
+  "对展开后的采样图做仿射变换（两子网预测 M,B，输出 y=SK⊗S⊙M⊕B）补回空间适应性。"
+ ],
+ "method_framework": "ARConv 四步：学核高宽 → 全场均值取整选采样点数 k_h×k_w → meshgrid 生成采样图并用双线性插值取值 → 与核卷积后接仿射变换；ARNet 就是把 U-Net ResBlock 的标准卷积换成 ARConv。",
+ "experiment_framework": "WV3 / QB / GF2 三个遥感数据集（Wald 协议构造）；降分辨率指标 SAM/ERGAS/Q8、全分辨率指标 Ds/Dλ/HQNR；对比 14 类方法含 LAGConv、CANNet；消融 w/o HWA/NSPA/AT + 核高宽热力图。",
+ "takeaways": [
+  "用'两个标量场控制感受野 + 采样点稀疏化'替代可变形卷积的全偏移矩阵，是把形变卷积的参数量和优化难度压下来的可行路径。",
+  "把学到的中间量（核高宽热力图）可视化验证其与真实目标尺寸的相关性，用证据支撑模块动机，比只报主表更有说服力。",
+  "换模块而非换框架（U-Net + ResBlock 直接替换）的低成本集成方式，便于后续迁移到其它低层视觉任务。"
+ ],
+ "weaknesses": [
+  "测试集只有 20 张降分辨率 + 20 张全分辨率样本（Table 1-3 caption），且为单 run 无种子；QB 上 ERGAS 3.633 vs CANNet 3.652、SAM 4.430 vs 4.507 这类差距远小于报出的标准差（±0.81/±0.83），统计上不可分辨。",
+  "训练流程本身是启发式且自认有隐患：前 100 epoch 作为'探索期'后从 16 个 batch 里随机挑一组卷积核组合固定下来，等于把超参选择写进训练脚本，收敛性无保证也无对照；ϕ 中的 n、m 无敏感性分析。",
+  "消融（Table 4）显示去掉高宽自适应只掉 0.04 SAM、去掉采样点自适应只掉 0.014 SAM（均在 ±0.59 的波动范围内），主要增益来自仿射变换（去掉掉 0.135 SAM），说明'自适应核形状'这个卖点本身贡献极小，论文的主叙事与消融结果不一致。",
+  "正文在 Table 5 标题处截断，不同核高宽的性能表、参数量/耗时对比、结论缺失，无法判断 ARConv 相对可变形卷积的真实效率收益。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "遥感图像增强与可靠性主线无实质交点，仅属常规视觉任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

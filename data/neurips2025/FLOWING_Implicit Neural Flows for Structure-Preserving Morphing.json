@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/FLOWING_Implicit Neural Flows for Structure-Preserving Morphing.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/FLOWING_Implicit Neural Flows for Structure-Preserving Morphing.pdf",
+ "title": "FLOWING : Implicit Neural Flows for Structure-Preserving Morphing",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.75
+ },
+ "one_line": "神经流框架实现结构保持的图像与3D形变，但依赖地标对应。",
+ "innovations": [
+  "将形变重构为微分向量流，自然保证连续性、可逆性和时间一致性",
+  "结合神经ODE和神经共轭流架构，实现结构保持的形变",
+  "创新的3D高斯溅射形变方法，结合流动对齐与线性混合"
+ ],
+ "method_framework": "FLOWING将形变问题重构为构建插值流，利用神经ODE和神经共轭流架构，通过薄板能量正则化确保形变质量，实现快速训练和结构保持的形变。",
+ "experiment_framework": "在FRLL、MegaDepth和NeRSemble数据集上评估，对比ifmorph和OpenCV基线，使用MSE、LPIPS和FID指标，测试2D图像和3D高斯溅射形变。",
+ "takeaways": [
+  "流动架构设计确保形变属性，减少正则化需求",
+  "前向微分方案加速薄板损失计算23倍",
+  "与生成模型结合提升形变保真度和语义一致性"
+ ],
+ "weaknesses": [
+  "NCF训练时间随地标数量增加而增长",
+  "NODE推理速度较慢，尤其在高分辨率下",
+  "方法依赖于稀疏地标对应，可能限制无监督应用"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

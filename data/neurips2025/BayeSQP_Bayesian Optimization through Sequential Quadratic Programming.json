@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/BayeSQP_Bayesian Optimization through Sequential Quadratic Programming.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/BayeSQP_Bayesian Optimization through Sequential Quadratic Programming.pdf",
+ "title": "BayeSQP: Bayesian Optimization through Sequential Quadratic Programming",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.75
+ },
+ "one_line": "将SQP与贝叶斯优化结合，高维黑盒优化方法",
+ "innovations": [
+  "将SQP结构与贝叶斯优化概念融合",
+  "利用二阶高斯过程联合建模函数值、梯度和Hessian",
+  "不确定性感知的子问题设计为二阶锥规划",
+  "通过约束Thompson采样进行线搜索"
+ ],
+ "method_framework": "BayeSQP使用二阶高斯过程代理模型构建不确定性感知的子问题(B-SUB)，通过求解二阶锥规划获得搜索方向，再使用约束Thompson采样进行线搜索，实现高维黑盒优化。",
+ "experiment_framework": "在within-model问题上对比logEI、TuRBO、SAASBO和MPD基线，评估无约束和约束场景下的性能，维度从4到96不等。",
+ "takeaways": [
+  "不确定性感知的子问题设计提高了优化鲁棒性",
+  "局部搜索策略在高维问题上表现优异",
+  "约束处理机制确保可行性"
+ ],
+ "weaknesses": [
+  "计算复杂度随维度增加而显著提高",
+  "Hessian计算在高维场景下可能成为瓶颈",
+  "参数δf和δc的选择对性能有影响"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.375,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

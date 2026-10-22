@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/ODG_Occupancy Prediction Using Dual Gaussians.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/ODG_Occupancy Prediction Using Dual Gaussians.pdf",
+ "title": "ODG: Occupancy Prediction Using Dual Gaussians",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "双高斯查询提升占用预测，但动态物体处理不完善",
+ "innovations": [
+  "双高斯查询设计分别建模静态和动态场景",
+  "分层粗到细的高斯预测机制",
+  "多阶段渲染监督提升空间一致性"
+ ],
+ "method_framework": "采用双高斯查询分别建模静态和动态场景，通过分层Transformer进行粗到细的高斯预测，并利用3D高斯溅射实现多阶段渲染监督",
+ "experiment_framework": "Occ3D-nuScenes和Occ3D-Waymo数据集，mIoU和RayIoU指标，与SparseOcc、OPUS、GaussRender等方法对比",
+ "takeaways": [
+  "双查询设计显著提升动态物体预测性能",
+  "分层机制允许使用更多高斯提高模型容量",
+  "渲染监督增强空间一致性"
+ ],
+ "weaknesses": [
+  "动态高斯查询的box预测未采用分层机制",
+  "仅使用20% Waymo数据进行训练可能影响泛化性",
+  "推理速度在大型模型上有所下降"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

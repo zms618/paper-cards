@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/3DGEER_3D Gaussian Rendering Made Exact and Efficient for Generic Cameras.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/3DGEER_3D Gaussian Rendering Made Exact and Efficient for Generic Cameras.pdf",
+ "title": "3DGEER: 3D GAUSSIAN RENDERING MADE EXACT AND EFFICIENT FOR GENERIC CAMERAS",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 5.2
+ },
+ "one_line": "闭式透射率与PBF关联提升3DGS效率，但收益混淆且泛化存疑",
+ "innovations": [
+  "把各向异性高斯通过 x̃ = RS·μ̃（吸收雅可比到密度测度）映射到各同性规范系，使透射率积分闭式：T(o,d) = σ·exp(−½ D²_{μ,Σ}(o,d))，其中 D² = ||o_u × d_u||²/||d_u||² 是光线到高斯中心在规范空间的垂距平方；该式正是先前工作的 maximum response 启发式，本文从第一性原理解出它与投影精确性的联系，并据此推导数值稳定的反向梯度链，不再需事后过滤退化高斯",
+  "粒子包围视锥 PBF：不把高斯投影成屏幕空间二次曲线（EWA/UT 的一阶或采样近似），而用四个切平面围出紧贴 λ 标准差等高面的角向视锥，切触条件 (λ²,λ²,λ²,−1)⊙gᵀ_u·g_u = 0 化为可闭式求解的二次方程 T22c² − 2T02c + T00 = 0（T_ij = λ²Σ^c_ij − μ^c_i μ^c_j），把相机子视锥 CSF 与 PBF 的关联完全放进 3D 规范系，且不依赖屏幕空间约束",
+  "双极等距投影 BEAP：按 (θ,φ) 两角向坐标均匀采射线再线性映射回 w×h 图像空间，使图像 tile 与其对应 CSF 共用同一组 θ/φ 参数化，PBF 关联得以批量并行；相较针孔/等距投影在 3D 空间覆盖更均匀，降低周边过采样"
+ ],
+ "method_framework": "光线行进式体积渲染：逐像素射线按 BEAP 均匀采样 → 用 PBF 与 CSF 切平面二次方程判定贡献高斯 → 用闭式 T(o,d)=σexp(−½D²) 累乘透射率并积分颜色；反向把 (s,q,μ,σ) 经规范变换回传梯度。全 Fov 结果统一反投影回图像空间比较，30k 迭代。",
+ "experiment_framework": "鱼眼：ZipNeRF 全场景、ScanNet++ 5 个、Aria 2 个；针孔：ZipNeRF、MipNeRF360；基线 3DGS、FisheyeGS、EVER、3DGUT、3DGRT；指标 PSNR/SSIM/LPIPS/FPS/高斯数，另做分区（中心/周边）、跨相机（FE→PH、PH→FE）与把高斯堆到 3.6–5M 的对照、训练期透射率替换消融。",
+ "takeaways": [
+  "把关联阶段与渲染阶段分开设计（PBF 保证关联精确、闭式积分保证渲染精确）是绕开 EWA 近似与 BVH 开销的干净路径，其它体积渲染任务可复用",
+  "λ=3 标准差等高面切平面代替圆锥近似，使每 tile 平均只关联约 475 个高斯（比 EWA/UT 少 3–5 倍），效率优势真正来源而非更快 kernel",
+  "反投影回全 Fov 统一评估加中心/周边分区，能避免宽视场方法只在中轴好看的评测偏差"
+ ],
+ "weaknesses": [
+  "收益来源被混淆且统计缺位：表 5 的透射率替换消融显示换成 splat 透射率后高斯数反涨到 1396k/920k（ours 591.8k）而感知差距仍在，说明闭式积分的收益有一部分来自更少的高斯而非纯几何精确性，论文把两者并进同一结论讨论；Table 3 上 ZipNeRF PH→FE 的 23.39 vs 19.43、SSIM 0.846 vs 0.835 也接近噪声，缺多种子方差或显著性",
+  "两个关键超参无消融：PBF 用 λ=3 标准差等高面做紧包（正文只说 typically set to 3），未见 λ 对关联召回（漏掉边缘高斯）与效率的影响；BEAP 的 FoVx/FoVy 是线性缩放加中心平移，大 FoV 畸变没测，跨相机外推（180° 对角训练 → 180° 圆形测试）时 (θ,φ) 参数化如何外推也无交代，属 generalize to wider FoV 的 claim 缺机制解释",
+  "正文在 4.3 节运行时分析中截断（PBF tile 关联统计之后未完），语义/下游对比与 Aria 上的完整表及消融缺失，confidence 仅 medium；relevance 低：3DGS 渲染/重建的质量与效率，按量规属完全无关（渲染中的几何一致性不等于不确定性估计），与可靠性主线的鲁棒性/幻觉/验证器无交集"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "3DGS渲染效率提升与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

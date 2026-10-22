@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unified Biomolecular Trajectory Generation via Pretrained Variational Bridge.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unified Biomolecular Trajectory Generation via Pretrained Variational Bridge.pdf",
+ "title": "Unified Biomolecular Trajectory Generation via Pretrained Variational Bridge",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "变分桥统一单结构与轨迹数据，但零样本泛化与罕见事件验证不足",
+ "innovations": [
+  "提出PVB：encoder-decoder式变分桥，将初始结构映射到噪声隐空间再经augmented bridge matching输运到阶段特定目标",
+  "统一在单结构数据与配对轨迹数据上训练，使跨域结构知识在各训练阶段被一致复用，缓解轨迹数据分子多样性有限的问题",
+  "对蛋白-配体复合物引入基于adjoint matching的RL优化，加速向holo态推进，支持对接构象的高效后优化"
+ ],
+ "method_framework": "MD模拟物理准确但步长~1fs代价极高；深度生成模型学粗时间步条件转移密度µ(x_{t+τ}|x_t)以高效生成轨迹，但跨系统泛化差、受轨迹多样性限制。PVB用encoder-decoder变分桥：把初始结构编码进噪声隐空间，通过augmented bridge matching把它桥接到阶段特定目标分布；该形式统一了单结构(无配对)与配对轨迹两类训练信号。对蛋白-配体，再用adjoint matching做RL优化加速到holo(结合)态。",
+ "experiment_framework": "在蛋白质与蛋白-配体复合物上评估，指标为是否忠实复现MD的热力学(自由能)与动力学(解离速率)可观测量；报告PVB给出稳定高效的生成动力学并优于已有粗粒化轨迹生成方法。",
+ "takeaways": [
+  "变分桥可统一单结构与配对轨迹数据训练，缓解轨迹数据多样性不足",
+  "PVB能复现MD的热力学与动力学可观测量，同时比全原子MD高效得多",
+  "adjoint matching的RL可加速蛋白-配体向holo态推进，用于对接构象后优化"
+ ],
+ "weaknesses": [
+  "属生物分子模拟/AI4Science方向，与本主线(可靠性×多模态推理/医学影像分析)无直接关联",
+  "生成轨迹的动力学可观测量(速率常数)在大体系/罕见跃迁事件上的精度未充分验证",
+  "统一训练虽缓解多样性问题，但对训练分布外新分子体系的零样本泛化正文前9页未给出系统证据"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "生物分子模拟与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/A Token-level Text Foundation Model for Document Understanding.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Token-level Text Foundation Model for Document Understanding.pdf",
+ "title": "A Token-level Text Image Foundation Model for Document Understanding",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "Token级图文对齐模型，但损失简单且标注质量存疑",
+ "innovations": [
+  "首个 token 粒度图文数据集 TokenIT：2000 万图 + 18 亿 BPE token–像素掩码对，每个 BPE 子词一对一映射为掩码图上的唯一像素值，JSON 中记录 token、文本序号与掩码值",
+  "TokenFD 走极简 image-as-text 对齐：两层反卷积上采样后，token 级视觉特征由 token 掩码内特征 mean pooling 得到，直接用一个 token 嵌入层（替掉 CLIP 式文本编码器）配合 L1、余弦、sigmoid 三重损失对齐",
+  "TokenVL 的 LLM 引导 token 对齐：在 LLM 第 k 层隐态按 BPE 索引取语言特征、在子图重组后的特征图上按 token 掩码做 mean pooling 取视觉特征，完成 token 级显式空间对齐；SFT 阶段关掉该分支省算力"
+ ],
+ "method_framework": "ViT 提特征→反卷积与线性层升维；对每个 BPE token 掩码做双线性插值后 mean pooling 得 token 级视觉特征，与 token 嵌入输出做 L1/余弦/双关损失对齐；TokenVL 再以可学习 <text> 特殊 token 做窗口摘要并做 LLM 层内 token 对齐。",
+ "experiment_framework": "文本分割 TotalText/HierText（零样本+线性探测）对比 CLIP-L/SAM-H/InternViT2.5；TokenVL-2B/8B 在 DocVQA、ChartQA、OCRBench 等十个文档 VQA 上比以 CLIP/DINO/SAM 为编码器。",
+ "takeaways": [
+  "token 粒度监督（每个 BPE 子词一条像素掩码）比图像级或像素级监督更贴稠密文本理解，线性探测下平均精度 42.21→48.77",
+  "跨模态对齐不必依赖文本编码器，单个 token 嵌入层加掩码 mean pooling 即可复用同一特征空间，接入 LLM 成本极低",
+  "SFT 阶段应关掉 token 对齐分支：推理类问题的答案未必出现在图中，保留只会徒增计算"
+ ],
+ "weaknesses": [
+  "对齐目标过轻：只用 mean pooling 加 L_dis(L1)/L_sim(余弦)/L_sig 三项，负样本仅在当前 batch 内随机配对，无难负样本挖掘或在线字典，18 亿对的监督信号被极简损失大量浪费",
+  "TokenIT 的 token mask 由自动 OCR/分割产线生成后又「渲染回图像人工重标」，但正文未报告掩码准确率与人工复核的抽样比例，18 亿对的标注质量无法独立复核",
+  "正文在 §5 实现细节处截断：TokenFD 预训练的卡时与算力开销、TokenVL 十个 VQA 基准的完整主表与消融均未给出；且只报 323M 参数，未与 InternViT2.5 等同分辨率、同算力预算下公平横比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "文档理解与图文对齐，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/AdaDARE-gamma_Balancing Stability and Plasticity in Multi-modal LLMs through Efficient.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AdaDARE-gamma_Balancing Stability and Plasticity in Multi-modal LLMs through Efficient.pdf",
+ "title": "AdaDARE-γ: Balancing Stability and Plasticity in Multi-modal LLMs through Efficient Adaptation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 7.0,
+  "overall": 6.0
+ },
+ "one_line": "DARE增量：伯努利丢弃+Hessian加权+γ缩放，双指标评测但理论创新有限",
+ "innovations": [
+  "把 DARE 的全局统一丢弃率 p 换成逐参数概率矩阵 P_ℓ（掩码 M∼Bernoulli(P_ℓ)），并按目标稀疏度约束 Σ_i p_i/n ≥ p 求期望损失的极小，得到闭式最优解 p*_i = max(0, 1 - n(1-p) p H_ii δ_i² / Σ_j q_j H_jj δ_j²)，用 Hessian 对角元衡量该维参数的敏感度",
+  "引入 γ 缩放 Θ_fusion = Θ_pre + γ·ΔΘ̂ 直接控制「注入多少新任务信息」，并给出 Theorem 2：在 E‖Θ_fusion-Θ_pre‖_1 < η 下 γ ≤ η/Σ_i|δ_i|，把稳定-可塑权衡变成一个可约束的量",
+  "用 Avg（预训练任务与目标任务均值）与 H-score（两者调和均值）双指标同时评测稳定性与可塑性，避免只看目标任务精度造成的 Selector bias；并验证该方法可作为插件叠加在 LoRA 微调之上仍然减遗忘"
+ ],
+ "method_framework": "得到 SFT 后的 delta 参数 ΔΘ=Θ_sft-Θ_pre；逐参数按 Hessian 对角加权的最优概率 P_ℓ 伯努利丢弃并按 1/(1-P_ℓ) 重标定以保期望不变；再以 Θ_pre + γ·ΔΘ̂ 融合，γ 在 [0.4,0.8] 网格上按验证集调、受 Theorem 2 上界约束。",
+ "experiment_framework": "InstructBLIP（Q-Former 188M）在 Flickr30k/GQA 上微调，评测 COCO/NoCaps(in,near,out)/OKVQA/AOKVQA/VQAv2；LLaVA-1.5（2.5B）在 Flickr30k/OKVQA 上微调，评测 VQAv2/GQA/VizWiz/SQA/TextVQA/POPE/MM-Bench/MM-Bench-CN；基线 Fine-tune、Model-Tailor、DARE。",
+ "takeaways": [
+  "「逐参数丢弃率 = 参数敏感度（Hessian 对角）× 变化量² 的归一化加权」这个闭式解，把原本靠网格搜索的稀疏度变成有解析依据的选择，可直接用在任何 delta 参数稀疏化场景（LoRA 合并、模型融合）。",
+  "用 H-score 而非仅目标任务精度做主指标，是这个方向里比较少见的严谨评测习惯；配合 Avg 双指标能让「遗忘下降了多少/目标任务涨了多少」可复核。",
+  "Theorem 2 给出 γ 上界后，实践上不直接设 η 而是用验证集选 γ，等于「理论给约束、实践给值」的分工，写工程型论文时很实用。"
+ ],
+ "weaknesses": [
+  "方法是在 DARE + Model-Tailor + Task Arithmetic 上的增量：丢弃+重标定来自 DARE，保预训练能力的两阶段思路来自 Model-Tailor，γ 只是任务算术里的缩放系数，理论部分（Theorem 1 的闭式、Theorem 2 的界）是对已有损失的二阶近似重推，没有新的任务层面定义。",
+  "Lemma 里的 Hessian 对角元需要额外算一阶/二阶梯度代价，正文只主张「比 Model-Tailor 的分层 Hessian 逆便宜」，但未给出 H 的实际获取方式与计算开销对比；且 Theorem 2 的 L1 参数距离约束（Eq.5）与真实预训练性能退化 ε_pre 之间没有实证桥接，作者在 4.6 节自己也承认不显式设 η。",
+  "Table 1/Table 2 报告的都是单次平均，无多种子方差；LLaVA-1.5 那两栏里 Fine-tune 用的是「只训 32 层中的 12 层」这一受限设定（作者自己在 Note 里说明），与 PEFT 基线不同类，公平性存疑；正文在 5.2.3 消融段中途截断，缺少 γ 曲线、Hessian 版 vs 随机版丢弃率的分离消融与统计检验。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "多模态LLM稳定性-可塑性权衡，符合可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

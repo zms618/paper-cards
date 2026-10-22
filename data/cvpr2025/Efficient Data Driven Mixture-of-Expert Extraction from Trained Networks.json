@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Efficient Data Driven Mixture-of-Expert Extraction from Trained Networks.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Efficient Data Driven Mixture-of-Expert Extraction from Trained Networks.pdf",
+ "title": "Efficient Data Driven Mixture-of-Expert Extraction from Trained Networks",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "从ViTs提取专家子网络，但早期层专业化不足",
+ "innovations": [
+  "数据驱动的专家提取方法",
+  "使用HDBSCAN自动确定专家数量",
+  "基于方差选择关键神经元构建专家"
+ ],
+ "method_framework": "通过两阶段方法从预训练模型中提取专家：首先使用HDBSCAN聚类隐藏激活模式，然后基于方差提取关键神经元形成专家子网络，推理时通过输入与专家均值的相似度进行路由",
+ "experiment_framework": "ImageNet-1k数据集，DeiT-Tiny/Small/Base模型，与MoEﬁcation基线比较，评估Top-1准确率、MACs和参数量",
+ "takeaways": [
+  "数据驱动方法自动确定专家配置",
+  "平衡的路由机制减少负载均衡需求",
+  "深层网络表现出更强的专业化特征"
+ ],
+ "weaknesses": [
+  "早期层未形成明显专家结构",
+  "假设聚类为球形可能限制表达能力",
+  "仅评估了视觉任务，泛化性待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "模型压缩技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

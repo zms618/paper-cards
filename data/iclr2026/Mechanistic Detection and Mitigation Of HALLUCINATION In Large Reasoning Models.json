@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mechanistic Detection and Mitigation Of HALLUCINATION In Large Reasoning Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mechanistic Detection and Mitigation Of HALLUCINATION In Large Reasoning Models.pdf",
+ "title": "Mechanistic Detection and Mitigation of Hallucination in Large Reasoning Models",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 8.5,
+  "overall": 7.5
+ },
+ "one_line": "基于末层logits散度的推理分数检测与步级奖励缓解幻觉",
+ "innovations": [
+  "提出 Reasoning Score：通过将 LRM 末层投影到词表空间所得 logits 的散度度量推理深度，区分浅层模式匹配与真实深度推理",
+  "在 ReTruthQA 上识别两类推理幻觉模式：推理深度早期波动、回溯到错误前序步骤，据此构建 SOTA 的 RHD 检测框架",
+  "提出 GRPO-R，用基于势函数的整形注入步级深度推理奖励，并给出更强的泛化保证，降低幻觉率"
+ ],
+ "method_framework": "用末层-词表投影 logits 散度定义推理深度分数，定位幻觉发生的内部机制；据此训练检测模型 RHD 识别推理幻觉；缓解侧在 GRPO 上引入步级深度推理奖励（势函数整形）以鼓励真实深度推理而非浅层匹配。",
+ "experiment_framework": "数据集：自建 ReTruthQA 等多领域；检测：跨域 SOTA 对比；缓解：GRPO-R 与基线 RL 在推理质量与幻觉率上对比；含理论泛化分析。",
+ "takeaways": [
+  "推理幻觉内嵌于逻辑自洽的轨迹中，需从内部表征（末层 logits 散度）而非表面文本检测",
+  "早期推理深度波动与错误回溯是两类可解释的幻觉诱因，RHD 据此达多域 SOTA",
+  "步级深度推理奖励（势整形）可在 RL 训练中提升推理质量并降低幻觉率"
+ ],
+ "weaknesses": [
+  "Reasoning Score 依赖末层到词表的线性投影假设，对 Latent CoT 等隐式推理的覆盖有限",
+  "检测框架在多领域 SOTA，但与事实性外部知识核验的正交增益未充分剥离",
+  "GRPO-R 的步级奖励标注成本与在更长 CoT 上的可扩展性待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "幻觉检测与缓解直接锚定可靠性主线，且方法设计具可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

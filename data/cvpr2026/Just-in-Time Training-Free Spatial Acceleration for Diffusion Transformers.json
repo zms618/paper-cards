@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Just-in-Time Training-Free Spatial Acceleration for Diffusion Transformers.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Just-in-Time Training-Free Spatial Acceleration for Diffusion Transformers.pdf",
+ "title": "Just-in-Time Training-Free Spatial Acceleration for Diffusion Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "空间近似ODE和微流实现扩散模型加速，但复杂性与泛化性存疑",
+ "innovations": [
+  "空间近似生成ODE(SAG-ODE)仅计算稀疏锚点token",
+  "确定性微流(DMF)确保阶段间无缝过渡",
+  "重要性引导的token激活策略动态分配计算资源"
+ ],
+ "method_framework": "JiT框架包含SAG-ODE和DMF两个核心组件，通过动态选择锚点token并使用增强lifter算子近似完整速度场，在阶段过渡时使用DMF确保新激活token的统计正确性",
+ "experiment_framework": "在FLUX.1-dev模型上评估，对比RALU、Bottleneck等基线，使用CLIP-IQA、ImageReward等指标，加速比达4-7倍",
+ "takeaways": [
+  "利用生成过程的空间冗余性进行动态加速",
+  "无需重新训练即可实现显著加速",
+  "重要性引导的token选择策略提高计算效率"
+ ],
+ "weaknesses": [
+  "方法实现较为复杂，涉及多个组件协同",
+  "仅评估了图像生成任务，未扩展到视频等更复杂场景",
+  "加速比与质量之间的权衡关系未充分分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型加速与可靠性主线无实质交点，仅属常规优化工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

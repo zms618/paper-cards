@@ -1,0 +1,41 @@
+{
+ "title": "The Open Proof Corpus: A Large-Scale Study of LLM-Generated Mathematical Proofs",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "构建5000+人工评估的数学证明数据集，实证分析LLM证明质量与答案正确性关系",
+ "innovations": [
+  "发布 Open Proof Corpus(OPC)：首个大规模人工评审的、面向 USAMO/IMO 等顶级竞赛题的 LLM 解答数据集，超过 5000 条人工评估证明",
+  "用该数据集系统回答三个开放问题：自然语言证明与形式化证明的差距有多大、最终答案答对是否等价于证明正确、best-of-n 选择如何影响证明质量",
+  "在 OPC 上微调一个 8B 模型，使其在证明正确性评估上追平 GEMINI-2.5-PRO、接近 GPT-5，展示数据集下游效用"
+ ],
+ "method_framework": "人工评审由数学专家对 SOTA LLM 生成的竞赛题证明做正确性分级，构建大规模高质量人工标注语料；围绕语料做实证分析（答案正确 vs 证明正确的错位、自然语言vs形式化、best-of-n 缩放曲线），并以 8B 微调验证数据可用于训练证明评估/生成。",
+ "experiment_framework": "OPC 覆盖 USAMO/IMO 等竞赛题、5000+ 人工评估证明；对比多个 SOTA LLM 的证明正确性与最终答案准确率、分析 best-of-n 缩放；下游用 8B 模型微调后与 GEMINI-2.5-PRO、GPT-5 在证明正确性上对比。",
+ "takeaways": [
+  "最终答案准确率与完整证明正确性并不一致：答案对了证明仍可能错，说明只看 AIME/HMMT 这类答案基准会高估推理能力",
+  "OPC 这类人工证明语料可显著提升小模型的证明正确性判断能力，8B 微调后即可逼近顶级商用模型",
+  "best-of-n 选择对证明质量的提升规律被量化，为采样预算分配提供依据"
+ ],
+ "weaknesses": [
+  "核心贡献是数据集 + 实证测量，方法本身无新模型/新算法；三个开放问题的答案多为描述性统计，因果机制（为何答案对而证明错）分析较浅",
+  "人工评审虽专家化但规模仅 5000、且集中于竞赛数学，对一般教材/科研证明的可迁移性未验证；评审一致性（inter-annotator agreement）虽有报告但未深入讨论分歧样本",
+  "relevance 给 7：主题是数学证明正确性评估与 best-of-n 选择，靠近推理验证器/过程可靠性主线，但属文本数学推理、非医学影像或多模态，且未直接做不确定性估计或幻觉抑制，故不给到 8+"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/The Open Proof Corpus A Large-Scale Study Of LLM-Generated Mathematical Proofs.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The Open Proof Corpus A Large-Scale Study Of LLM-Generated Mathematical Proofs.pdf",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "文本数学推理验证器，非医学或多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

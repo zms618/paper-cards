@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/DRAG_Data Reconstruction Attack using Guided Diffusion.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DRAG_Data Reconstruction Attack using Guided Diffusion.pdf",
+ "title": "DRAG: Data Reconstruction Attack using Guided Diffusion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "elevance": 8.0,
+  "evidence": 6.0,
+  "overall": 6.9
+ },
+ "one_line": "扩散模型辅助的数据重建攻击，揭示分割模型隐私风险",
+ "innovations": [
+  "利用预训练潜在扩散模型作为图像先验知识",
+  "提出DRAG和DRAG++两种攻击方法",
+  "在视觉基础模型上实现高质量数据重建",
+  "评估了现有防御措施的有效性"
+ ],
+ "method_framework": "DRAG利用预训练扩散模型作为图像先验，通过优化过程将中间表示重建为原始图像；DRAG++结合逆网络提供初始估计，再通过扩散去噪过程进行优化，提高重建质量。",
+ "experiment_framework": "数据集：MSCOCO、FFHQ、ImageNet-1K；基线：rMLE、LM、GLASS；指标：MS-SSIM、LPIPS、DINO相似度",
+ "takeaways": [
+  "扩散模型作为先验知识能有效提升数据重建质量",
+  "视觉基础模型在分割推理中存在严重隐私风险",
+  "现有防御措施难以有效抵抗高级攻击"
+ ],
+ "weaknesses": [
+  "假设白盒访问客户端模型，实际场景可能受限",
+  "未考虑计算资源消耗对攻击可行性的影响",
+  "实验主要在自然图像数据集上进行，泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

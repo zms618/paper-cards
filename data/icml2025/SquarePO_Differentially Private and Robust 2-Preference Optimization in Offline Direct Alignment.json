@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/SquarePO_Differentially Private and Robust 2-Preference Optimization in Offline Direct Alignment.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SquarePO_Differentially Private and Robust 2-Preference Optimization in Offline Direct Alignment.pdf",
+ "title": "SquareχPO: Differentially Private and Robust χ2-Preference Optimization in Offline Direct Alignment",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 4.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "平方损失替换log-loss，提供DP与鲁棒离线对齐理论保证",
+ "innovations": [
+  "对χPO做一行改动：把标准log-loss替换为概率上的新平方损失，借助该损失内在性质推进DP与鲁棒离线对齐的SOTA",
+  "在局部标签隐私模型下，成为首个在一般函数近似下仍能基于单策略concentrability达到最优速率的算法，并给出提示/响应与标签中央隐私模型的首个结果",
+  "对Huber标签污染成为一般函数近似下首个有意义理论保证的对齐方法，并揭示隐私与污染可同时处理且二者施加顺序有别(分离现象)"
+ ],
+ "method_framework": "在离线直接对齐(DPO/χPO族)中，用概率空间上的平方损失替代log-loss，利用其有界/有良好敏感度与稳健性的内在性质，在单策略concentrability弱条件下推导差分隐私(局部标签+中央提示/响应/标签)与Huber标签污染鲁棒的样本复杂度界。",
+ "experiment_framework": "以理论分析为主，推导DP与鲁棒离线对齐的速率界并讨论隐私与污染同时施加的顺序效应；前9页未呈现完整数值实验表。",
+ "takeaways": [
+  "把log-loss换成概率平方损失这一极小改动，可同时改善差分隐私与标签污染鲁棒性的样本复杂度，是损失形态选择影响隐私/鲁棒权衡的范例",
+  "隐私与标签污染并非可交换：施加顺序影响最终保证，对齐系统设计需显式考虑二者耦合"
+ ],
+ "weaknesses": [
+  "纯理论保证，前9页内缺乏在真实LLM对齐(如Llama/Pythia)上的实证，界的紧致性与可实现性未验证",
+  "平方损失虽改善可证性质，但可能在实际偏好拟合上逊于log-loss，文中未给出困惑度/胜率等实测对比",
+  "Huber污染与DP同时处理的分离结论依赖具体假设，对非Huber型投毒攻击的外推性未讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

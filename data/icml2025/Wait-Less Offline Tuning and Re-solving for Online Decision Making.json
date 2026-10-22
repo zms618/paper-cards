@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Wait-Less Offline Tuning and Re-solving for Online Decision Making.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Wait-Less Offline Tuning and Re-solving for Online Decision Making.pdf",
+ "title": "Wait-Less Offline Tuning and Re-solving for Online Decision Making",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "并行OLP框架结合周期性重解与一阶方法，平衡遗憾与计算效率。",
+ "innovations": [
+  "提出并行多阶段框架：将在线学习和决策分离为两个并行进程，通过反馈循环交互",
+  "实现O(log(T/f) + sqrt(f))的遗憾界，平衡了LP-based方法的低遗憾和一阶方法的高效率",
+  "实验证明比一阶方法遗憾降低10倍以上，比LP-based方法运行时间快100倍以上"
+ ],
+ "method_framework": "将OLP问题拆分为两个并行进程：1）后台周期性（频率f）重解完整LP子问题，更新对偶价格；2）在线决策时使用最新对偶价格，同时在两次LP重解之间运行一阶方法平滑资源消耗。这种\"等待更少\"的设计避免了每个时间步都求解LP的计算开销，同时通过一阶方法维持价格的实时更新。",
+ "experiment_framework": "在多种在线LP场景下验证；与纯LP-based方法和纯一阶方法系统对比；评估不同重解频率f下的遗憾和运行时间权衡；在大规模资源分配问题上测试可扩展性。",
+ "takeaways": [
+  "LP-based方法和一阶方法可以通过并行架构互补，同时获得低遗憾和高效率",
+  "重解频率f是调节遗憾-计算效率权衡的关键超参数",
+  "该方法在时间敏感的大规模在线决策场景中具有实用价值"
+ ],
+ "weaknesses": [
+  "假设输入数据i.i.d.，非平稳或对抗性到达场景的适用性未讨论",
+  "遗憾界中的参数依赖较多，实际调参较为复杂",
+  "仅在理论OLP框架内验证，真实工业场景（如在线广告）的落地效果未展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

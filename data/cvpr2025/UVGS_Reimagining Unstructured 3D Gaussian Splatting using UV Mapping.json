@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/UVGS_Reimagining Unstructured 3D Gaussian Splatting using UV Mapping.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/UVGS_Reimagining Unstructured 3D Gaussian Splatting using UV Mapping.pdf",
+ "title": "UVGS Reimagining Unstructured 3D Gaussian Splatting using UV Mapping",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 5.1
+ },
+ "one_line": "UV映射将3D高斯转为结构化表示，但计算开销高且泛化验证不足",
+ "innovations": [
+  "球形映射将无序3D高斯转换为结构化UV表示",
+  "多分支网络将14通道UVGS压缩为3通道Super UVGS",
+  "零样本兼容预训练2D模型实现3D生成"
+ ],
+ "method_framework": "通过球形映射将3D高斯溅射转换为14通道UV图像，使用多分支CNN压缩为3通道Super UVGS，实现与2D模型的兼容",
+ "experiment_framework": "Objaverse数据集(40K对象)，PSNR/LPIPS评估重建质量，FID/KID评估生成质量，与DiffTF/Get3D/GaussianCube等基线比较",
+ "takeaways": [
+  "结构化表示解决3D高斯排列不变性问题",
+  "多分支网络处理异构属性分布",
+  "零样本迁移预训练2D模型能力"
+ ],
+ "weaknesses": [
+  "多球层处理复杂对象增加计算开销",
+  "仅评估静态场景，未考虑动态内容",
+  "未充分分析不同类别对象的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D重建与主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

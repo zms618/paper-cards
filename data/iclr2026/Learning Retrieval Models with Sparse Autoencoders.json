@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Learning Retrieval Models with Sparse Autoencoders.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Learning Retrieval Models with Sparse Autoencoders.pdf",
+ "title": "Learning Retrieval Models with Sparse Autoencoders",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "SPLARE用SAE替代传统词汇空间，多语言检索性能提升有限",
+ "innovations": [
+  "将稀疏自编码器引入检索模型，创建潜在词汇空间",
+  "提出SPLARE方法，在多语言和跨领域场景中超越传统词汇基线",
+  "开发支持100+语言的SPLARE-7B模型，在MMTEB上达到最先进性能"
+ ],
+ "method_framework": "SPLARE通过在LLM中间层插入预训练SAE，将输入序列映射到稀疏潜在特征空间，采用类似SPLADE的池化机制生成序列级表示，使用蒸馏方法训练模型",
+ "experiment_framework": "在MS MARCO数据集上训练，评估MTEB/MMTEB多语言和领域特定子集，与SPLADE-Llama基线对比，使用Top-K池化控制稀疏度",
+ "takeaways": [
+  "SAE的潜在特征空间比传统词汇空间更适合多语言检索",
+  "在模型约2/3深度处插入SAE可获得最佳性能与效率平衡",
+  "Top-K池化策略显著提高了检索效率-有效性权衡"
+ ],
+ "weaknesses": [
+  "在代码检索等高度领域特定任务上表现不如SPLADE",
+  "依赖预训练SAE的质量，可能受限于SAE的训练数据",
+  "未充分探索不同SAE架构对性能的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "检索模型改进与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

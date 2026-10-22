@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Retain and Adapt Auto-Balanced Model Edit-for Open-Vocabulary Object Detection under Domain Shifts.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Retain and Adapt Auto-Balanced Model Edit-for Open-Vocabulary Object Detection under Domain Shifts.pdf",
+ "title": "Retain and Adapt: Auto-Balanced Model Editing for Open-Vocabulary Object Detection under Domain Shifts",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "模型编辑引入OVOD应对域偏移，KV存储平衡新旧知识。",
+ "innovations": [
+  "指出模型编辑天然适合OVOD的域偏移适配：高效注入新知识同时保留原有能力。",
+  "提出ABME：存储与任务数量无关的紧凑key-value表示。",
+  "利用存储的KV矩阵自动平衡新旧知识，支持顺序无关的任务插入/移除，无需额外重训。"
+ ],
+ "method_framework": "把新域知识以紧凑KV表示存入OVOD模型；推理/适配时据KV矩阵自动调节新知识与旧知识的权重，使模型在不遗忘原类别的前提下适应新域，且任务可任意增删。",
+ "experiment_framework": "在域偏移下的开放词表目标检测benchmark上评测；对比面向OVOD的持续学习方法；指标为保持原性能与适配OOD任务的权衡，并验证跨模型/任务规模的通用性。",
+ "takeaways": [
+  "模型编辑比传统持续学习更适合OVOD的域偏移适配，能免重训地增删任务。",
+  "紧凑KV表示+自动平衡可在保留预训练能力的同时适配多样OOD任务。"
+ ],
+ "weaknesses": [
+  "主要在视觉检测域偏移，与医学影像/多模态推理等主线落地域仍有距离。",
+  "KV编辑依赖表示空间可分，面对高度纠缠的域漂移可能平衡失效。",
+  "前9页为方法动机，具体mAP对比表与各域消融在后续页。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "模型编辑适配OVOD域偏移，符合可靠性主线但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

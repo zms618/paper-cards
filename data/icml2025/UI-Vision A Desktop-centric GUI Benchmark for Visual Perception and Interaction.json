@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/UI-Vision A Desktop-centric GUI Benchmark for Visual Perception and Interaction.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/UI-Vision A Desktop-centric GUI Benchmark for Visual Perception and Interaction.pdf",
+ "title": "UI-Vision: A Desktop-centric GUI Benchmark for Visual Perception and Interaction",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "构建桌面GUI基准，评估现有agent在细粒度交互上的表现",
+ "innovations": [
+  "首个许可宽松(permissive)、面向真实桌面环境的离线细粒度computer-use基准，解决桌面场景数据采集难与许可受限问题",
+  "提供密集高质量人工演示标注：83个软件应用的包围框、UI标签与动作轨迹(点击/拖拽/键盘)",
+  "设计从细到粗三档任务——Element Grounding、Layout Grounding、Action Prediction——与明确指标，暴露现有SOTA agent在桌面环境的关键局限"
+ ],
+ "method_framework": "给定任务指令+当前截图+历史交互，agent须预测下一步动作(坐标/动作类型)；三档任务分别测UI元素定位、布局理解与完整动作轨迹预测，采用离线标注严格评分。",
+ "experiment_framework": "83个桌面应用、真实人工演示；评估多个VLM/computer-use SOTA agent；指标为element/layout grounding准确率与动作预测成功率/轨迹完成度。",
+ "takeaways": [
+  "现有computer-use agent在专业桌面软件(如FreeCAD)上动作预测仍很弱，细粒度元素定位是主要瓶颈",
+  "离线+许可宽松的桌面基准补齐了此前偏重在线/移动GUI的评测空白"
+ ],
+ "weaknesses": [
+  "为基准/评测贡献，不提出新agent方法；任务以坐标动作为主，对错误恢复/不确定性处理未单独评测",
+  "桌面软件版权/许可虽宽松，但应用多样性与跨OS覆盖、长程任务长度有限；SOTA在其上的失败是否可泛化到生产桌面环境仍待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

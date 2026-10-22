@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Stable Offline Value Function Learning with Bisimulation-based Representations.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Stable Offline Value Function Learning with Bisimulation-based Representations.pdf",
+ "title": "Stable Offline Value Function Learning with Bisimulation-based Representations",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.8
+ },
+ "one_line": "核方法塑造bisimulation表征稳定离线值函数学习，但扩展性与主线相关性弱",
+ "innovations": [
+  "首次明确回答 bisimulation 类方法能否稳定离线值函数学习（结论是肯定的）",
+  "提出 KROPE：用核函数塑造状态-动作表征",
+  "理论证明 KROPE 学到稳定表征、收敛到不动点，且实证值误差低于基线"
+ ],
+ "method_framework": "针对致命三元组导致 TD 发散的问题，显式学习状态-动作表征：用核把即时奖励相近、且在目标策略下后继状态-动作相近的对映射到相近表征（π-bisimulation 思想），使值函数逼近空间更平滑，从而在自举/离策略/函数逼近下仍稳定收敛。",
+ "experiment_framework": "在离线策略评估基准上评测 KROPE；对比原生表征与其他 bisimulation/表征学习基线，报告值函数误差与是否发散，验证稳定性与精度。",
+ "takeaways": [
+  "显式按 bisimulation 塑造表征能从根本上稳定离线值函数学习",
+  "核方法可把“奖励+后继相似”编码进表征，缓解致命三元组发散",
+  "稳定表征不仅防发散，还带来更低值估计误差"
+ ],
+ "weaknesses": [
+  "与主线（视觉鲁棒性/可信AI/医学影像/多模态推理）无关，属离线 RL",
+  "核方法在大规模高维状态下的可扩展性受限",
+  "主要在小规模离线策略评估验证，未扩展到大批量 offline RL 任务"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MIB_A Mechanistic Interpretability Benchmark.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MIB_A Mechanistic Interpretability Benchmark.pdf",
+ "title": "MIB: A Mechanistic Interpretability Benchmark",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.75
+ },
+ "one_line": "双赛道机制可解释性基准，但仅在小模型和简单任务验证",
+ "innovations": [
+  "提出双赛道机制可解释性基准：电路定位赛道评估模型组件级定位方法，因果变量定位赛道评估特征级对齐方法",
+  "基于因果抽象框架设计标准化评估指标（CPR、CMD、IIA），支持可复现的方法对比",
+  "公开排行榜和标准化数据集，接受外部提交，推动可解释性领域的持续评估"
+ ],
+ "method_framework": "MIB包含两个赛道：(1)电路定位赛道——评估归因补丁、信息流动路径等方法定位模型中对任务最重要的组件和连接的能力，使用CPR（曲线下精度）和CMD（因果最小化距离）等指标；(2)因果变量定位赛道——评估SAE、DAS等特征化方法将隐藏向量对齐到高层因果模型变量的能力，使用交换干预准确率（IIA）作为忠实度指标。基准涵盖4个任务和5个模型。",
+ "experiment_framework": "在4个任务（包括IOI等）和5个不同规模的语言模型上评估；电路定位赛道对比EAP-IG、UGS等归因方法；因果变量定位赛道对比DAS、SAE、神经元基线等5种特征化方法；使用反事实数据集进行交换干预测试；报告CMD、AUROC、CPR等指标。",
+ "takeaways": [
+  "电路定位赛道中，EAP-IG-inputs配合反事实消融方法表现最佳",
+  "因果变量定位赛道中，监督式DAS方法表现最好，而SAE特征并不比原始神经元（未特征化隐藏向量）更好",
+  "MIB基准使不同可解释性方法之间的有意义对比成为可能，增强了对领域真实进展的信心"
+ ],
+ "weaknesses": [
+  "仅在合成任务和小规模模型上验证，在大规模真实场景LLM上的适用性未验证",
+  "因果变量定位赛道中SAE表现不佳可能反映的是当前SAE训练方法的局限，而非SAE范式本身的问题",
+  "基准任务（如IOI）相对简单，与真实复杂NLP任务的差距可能导致评估结论的外推性有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

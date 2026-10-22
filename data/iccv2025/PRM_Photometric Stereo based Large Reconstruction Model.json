@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/PRM_Photometric Stereo based Large Reconstruction Model.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/PRM_Photometric Stereo based Large Reconstruction Model.pdf",
+ "title": "PRM Photometric Stereo based Large Reconstruction Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "光度立体学重建模型，通过材质光照变化提升细节，但泛化能力存疑",
+ "innovations": [
+  "引入变化材质和光照的训练策略增强光度线索",
+  "使用可微分PBR和网格表示支持多监督",
+  "实时渲染方法split-sum近似提高训练效率"
+ ],
+ "method_framework": "PRM采用两阶段优化，第一阶段使用triplane和体积渲染，第二阶段使用FlexiCubes网格表示，结合可微分PBR进行多监督优化",
+ "experiment_framework": "在Objaverse训练，GSO和OmniObject3D评估，使用CD、FS、PSNR、SSIM、LPIPS指标，对比TripoSR、CRM、LGM、InstantMesh等方法",
+ "takeaways": [
+  "变化材质和光照提供丰富光度线索提升细节重建",
+  "可微分PBR和网格表示支持多监督和镜面反射建模"
+ ],
+ "weaknesses": [
+  "训练时间较长(7天+3天)",
+  "仅使用合成数据训练，真实场景泛化能力未充分验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.8,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "3D重建与可靠性主线无关，仅常规扎实",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

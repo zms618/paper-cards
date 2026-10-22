@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Advancing Multiple Instance Learning with Continual Learning for Whole Slide.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Advancing Multiple Instance Learning with Continual Learning for Whole Slide.pdf",
+ "title": "Advancing Multiple Instance Learning with Continual Learning for Whole Slide Imaging",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 7.5,
+  "overall": 6.4
+ },
+ "one_line": "解耦实验定位MIL遗忘在注意力层，设计AKD+PMP缓解，但论证不严谨",
+ "innovations": [
+  "用解耦实验定位遗忘位置：把不同 task session 学得的注意力网络 θ_t 与分类器 ϕ_t 交叉重组后在 Task1 测，发现换回旧注意力 θ_1 精度几乎不降、换回旧分类器 ϕ_1 仍大幅下降（CLAM：0.8621/0.8793/0.8448 对角 vs 0.1552/0.0517 非对角），说明遗忘集中在 attention 层，与常规分类 CL 结论相反。",
+  "从梯度范数解释机制：分类层 ∥∂L/∂ϕ_j∥²=y²σ²(-yf_φ)z_j² 被 z_j=Σ_i a_i H_ij ≤ max_i H_ij 界住故更新缓慢，注意力层 ∥∂L/∂a_i∥²=y²σ²(-yf_φ)(ϕ^T h_i)² 随 ∥ϕ∥ 无界增长，因此任务切换时 attention 快速漂移（Fig.2 梯度分布实证）。",
+  "AKD 对记忆池样本强制注意力分数排序一致（KL of f_{θ^{t-1}}(H)∥f_θ(H)，TransMIL 下可扩展到 Q/K/V 三元组）；PMP 用 MaxMinRand（K/2 随机 + K/4 最高 + K/4 最低注意力 patch）把整张 WSI 蒸馏成 pseudo-bag 入池，配 reservoir sampling，把回放存储从整切片降到百余 patch。"
+ ],
+ "method_framework": "顺序任务流：当前任务数据正常更新；从记忆池回放旧任务样本时，Loss=L_CE+αL_attn+βL_logits（后两项只对缓冲样本生效），每步后再把蒸馏后的样本写回 reservoir 池。",
+ "experiment_framework": "Camelyon16、TCGA-LUNG、TCGA-RCC（Camelyon-TCGA 三任务）+ 皮肤癌数据集（每任务两类，真类增量）；基线 CLAM/TransMIL；对比 ER、DER++、LwF、MICIL，含 JT（上界）与 FT（下界）；内存 5/10/30 整切片三档；指标测试精度（正文在 5.1 评测段截断）。",
+ "takeaways": [
+  "'先解耦替换定位遗忘发生在哪个子模块，再针对该模块设计损失'这条研究路径，对任何结构化模型（MIL、多分支、图网络）都可复用。",
+  "把整张 WSI 蒸馏成含最高/最低/随机三类 patch 的 pseudo-bag 再回放，是千亿像素级数据做 replay 类 CL 的实用降本手段。",
+  "把 joint training 明确设成上界、fine-tuning 设成下界，并给出多档内存下的曲线，让'内存-精度'权衡可直接读，这种评测粒度值得借鉴。"
+ ],
+ "weaknesses": [
+  "梯度有界性论证依赖 z_j≤max_i H_ij，但该界只在同图内、H 固定时成立；任务切换时 H 的分布剧变，'分类层更新慢 ⟹ 分类层不易忘'的因果链其实未被证明（仅 Fig.2 的梯度分布形态作旁证），且全篇是 informal 推导，无收敛/界形式的定理。",
+  "Camelyon-TCGA 按数据集来源切任务（Camelyon16→LUNG→RCC），本质是域增量而非严格类增量，与皮肤癌那组（每任务两个新类别）设定不同；两类实验的准确率不可直接比较，正文未说明提升有多少来自域漂移而非类增量，存在设定差异混入提升成分的可能。",
+  "全部为单 run：解耦表（Tab.1）、梯度分布（Fig.2）、主结果均无种子方差与显著性；PMP 的 K、reservoir 容量、α/β 的消融只在 5.4 提到 MaxMinRand 变体，正文在 5.1 评测段截断，超参敏感性无法复核。",
+  "AKD 直接对注意力分数做 KL，但注意力是 softmax 归一化量，不同任务间 patch 数 N 变化会改变分母，跨任务比较注意力分布本身有口径问题，文中未处理。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像MIL遗忘问题定位与缓解，符合可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

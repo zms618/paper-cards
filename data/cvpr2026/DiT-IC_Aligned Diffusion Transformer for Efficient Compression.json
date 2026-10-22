@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/DiT-IC_Aligned Diffusion Transformer for Efficient Compression.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/DiT-IC_Aligned Diffusion Transformer for Efficient Compression.pdf",
+ "title": "DiT-IC Aligned Diffusion Transformer for Efficient Compression",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "三种对齐机制将DiT适配为单步图像压缩器，但创新有限。",
+ "innovations": [
+  "方差引导的重建流，将迭代去噪 collapses 为单步自适应变换",
+  "自蒸馏对齐机制，使去噪输出与编码器表示一致",
+  "潜在条件引导，用轻量级潜在条件替代文本提示"
+ ],
+ "method_framework": "DiT-IC采用扩散Transformer架构，在32倍降采样潜在空间中操作，通过方差引导重建流、自蒸馏对齐和潜在条件引导三种机制，将预训练文本到图像DiT适配为高效的单步重建模型。",
+ "experiment_framework": "在CLIC 2020、DIV2K和Kodak数据集上评估，与VAE和扩散基线比较，使用PSNR、MS-SSIM、LPIPS和DISTS指标，测量速率-失真-感知权衡和解码延迟。",
+ "takeaways": [
+  "扩散模型可以在深度压缩潜在空间中高效操作",
+  "三种对齐机制有效弥合了生成与重建目标之间的差距",
+  "LoRA适配器使预训练模型高效适配压缩任务"
+ ],
+ "weaknesses": [
+  "在极低比特率下(<0.01 bpp)，潜在条件可能缺乏足够的语义信息",
+  "对抗性目标略微降低了定量指标，尽管提高了感知质量"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "图像压缩技术不在可靠性主线，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

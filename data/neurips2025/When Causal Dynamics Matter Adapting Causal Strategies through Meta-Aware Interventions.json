@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/When Causal Dynamics Matter Adapting Causal Strategies through Meta-Aware Interventions.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/When Causal Dynamics Matter Adapting Causal Strategies through Meta-Aware Interventions.pdf",
+ "title": "When Causal Dynamics Matter: Adapting Causal Strategies through Meta-Aware Interventions",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 5.5,
+  "evidence": 4.0,
+  "relevance": 6.0,
+  "overall": 5.5
+ },
+ "one_line": "提出元因果分析框架，但缺乏真实数据验证与充分实验对比",
+ "innovations": [
+  "提出Direct MCM(直接在SCM内部显式建模元因果动力学的一类MCM)与首个Meta-Causal Analysis(MCA)框架：把'干预改变因果结构'从静态ATE的盲区里显式建模",
+  "线性化元因果动力学算法(LMCD)：从样本推进系统、用识别函数I把状态映射为MCS，估计MCS间转移概率矩阵P(及连续时间速率矩阵Q)，并定义sMCATE=PB−PA定量比较策略",
+  "形式化元因果稳定性准则(严格式4/松弛式5)与元因果可预测性假设，明确'干预永久改变动力学'的判定条件；两个高影响域示例(流感用药/司法决策)演示静态ATE误导与元因果策略纠偏"
+ ],
+ "method_framework": "SCM基础上定义MCS类型矩阵T(边类型含0=无)；Direct MCM(机制质变)；LMCD：推进xi,t+1=F(xi)∪PU→I(xi)识别MCS对→统计转移概率P→可选Q=e^P−I；sMCATE=策略B−A的转移概率差。",
+ "experiment_framework": "无基准对比，两个expository仿真：流感用药(1000次重复，ATE A=−2.61±0.34 vs B=−1.26±0.78°C，LMCD显示A 99.39%滞留用药态)；司法决策(疲劳导致决策偏差，元感知智能体重排案件时间表do(S=f*)规避边激活)。",
+ "takeaways": [
+  "'静态ATE会骗人'：短期更优(药物A降烧更强)但长期制造依赖(99.39%滞留用药态)，用状态转移矩阵而非平均效应评价策略，对医疗/政策干预评估通用",
+  "'自我干预策略'的建模：智能体把自己的调度函数当干预目标(do(S:=f*))来规避机制激活，把'改变策略'也纳入因果干预的形式化框架",
+  "'边激活判定'的工程化：用结构方程梯度非零判定边是否存在，把元因果类型识别做成可计算步骤"
+ ],
+ "weaknesses": [
+  "验证只有两个自构仿真示例(参数任意选定'for clarity')，无真实数据、无与DTR/纵向统计/现有MCA方法的定量对比；sMCATE定义留白('abstain from deciding')未定论",
+  "LMCD假设元因果可预测性+一阶线性化(无二阶/时间偏移效应)，连续时间Q=e^P−I为粗略近似，误差界未分析；识别函数用梯度阈值，阈值的敏感性未讨论",
+  "司法示例的'元感知智能体'是手工设定的行动者(人先验知道该重排日程)，并非算法学出的自适应策略；理论贡献与工程落地的gap明显"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

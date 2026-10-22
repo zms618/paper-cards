@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/EntitySAM_Segment Everything in Video.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/EntitySAM_Segment Everything in Video.pdf",
+ "title": "EntitySAM Segment Everything in Video",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "扩展SAM2实现视频实体分割，但效率与性能有限。",
+ "innovations": [
+  "引入基于查询的实体发现和关联机制",
+  "设计实体解码器实现实体间通信",
+  "添加语义编码器增强SAM2的语义感知能力"
+ ],
+ "method_framework": "基于SAM2扩展，冻结预训练编码器，添加双视觉编码器、自动提示生成器和实体解码器，实现无需显式提示的实体分割与跟踪。",
+ "experiment_framework": "在COCO数据集上训练，在VIPEntitySeg、VIPSeg、VSPW、Youtube-VIS等数据集上进行零样本评估，使用VEQ、STQEN等指标。",
+ "takeaways": [
+  "类无关训练方法可提升零样本泛化能力",
+  "实体间通信机制能有效解决掩码重叠问题",
+  "多模态模型后分类可替代传统开放词汇分割训练"
+ ],
+ "weaknesses": [
+  "训练效率较低，处理50个实体已接近极限",
+  "类特定评估依赖额外的GPT-4o分类步骤",
+  "与专门优化的跟踪方法相比，STQEN指标仍有差距"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频实体分割与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

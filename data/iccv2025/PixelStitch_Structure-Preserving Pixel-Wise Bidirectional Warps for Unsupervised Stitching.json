@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/PixelStitch_Structure-Preserving Pixel-Wise Bidirectional Warps for Unsupervised Stitching.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/PixelStitch_Structure-Preserving Pixel-Wise Bidirectional Warps for Unsupervised Stitching.pdf",
+ "title": "PixelStitch Structure-Preserving Pixel-Wise Bidirectional Warps for Unsupervised Stitching",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "双向变形框架实现无监督拼接，结构保持但复杂度高",
+ "innovations": [
+  "全局双向对齐与像素级双向变形的两阶段框架",
+  "单应性分解算法均匀分布投影失真",
+  "投影加权自然系数(PN-Coef)保持非重叠区域结构"
+ ],
+ "method_framework": "PixelStitch采用两阶段框架：首先通过单应性分解确定中间平面并进行全局双向对齐；然后预测双向光流场，结合投影加权自然系数进行像素级变形，实现大视差对齐和结构保持。",
+ "experiment_framework": "在UDIS-D数据集上训练，测试于UDIS-D和多个传统数据集，使用mSSIM作为指标，与APAP、ELA、LPC、GES-GSP、UDIS++、PixelAlign等方法对比。",
+ "takeaways": [
+  "双向变形可有效分担变形负担，提高性能上限",
+  "投影加权自然系数可有效保持非重叠区域结构完整性",
+  "内容选择掩码引导部分到整体的扩散有助于稳定收敛"
+ ],
+ "weaknesses": [
+  "方法复杂度较高，包含多个组件",
+  "未充分讨论计算效率问题",
+  "在极端视差场景下的表现未充分验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "图像拼接技术不在可靠性主线，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/QURL_Rubrics As Judge for Open-Ended Question Answering.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/QURL_Rubrics As Judge for Open-Ended Question Answering.pdf",
+ "title": "QuRL: Rubrics as Judge for Open-Ended Question Answering",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "用自动挖掘的评分细则作为QA奖励信号，规避LLM评判缺陷",
+ "innovations": [
+  "提出生成case-wise rubrics的schema：问题专属、基于内容、风格敏感，同时评估事实可靠性与写作质量",
+  "从易获取的在线来源自动为每个问题挖掘rubrics，作为可解释、可判别的奖励信号",
+  "用rubric作奖励配合GRPO做开放式QA的强化学习，规避LLM-as-Judge的reward hacking与高成本"
+ ],
+ "method_framework": "先按schema为问题生成/挖掘问题专属rubrics；评测时按rubric逐项核对答案的事实正确性与写作风格，汇总为奖励；用GRPO在该奖励下优化策略，引导模型走对生成路径。",
+ "experiment_framework": "在三个开放式QA基准上评测；以SFT为基线；报告相对提升，并与人工反馈/LLM-as-Judge范式对比可解释性与判别力。",
+ "takeaways": [
+  "QuRL相对SFT基线在三基准累计取得+17.0分",
+  "rubric作为评判器比人工反馈/LLM-as-Judge成本更低且更具判别力与可解释性",
+  "问题专属rubrics可作为开放式任务的可靠奖励信号，缓解无gold answer的RLVR难题"
+ ],
+ "weaknesses": [
+  "rubrics依赖在线来源质量与挖掘准确性，错误/偏倚rubric会注入奖励噪声，鲁棒性未充分分析",
+  "评测与奖励均来自rubric，存在自我对齐/奖励hacking的循环风险，前9页未见与更强评判器的对照",
+  "落地域为开放式文本QA，医学影像/多模态等主线落地域未覆盖"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "文本QA非主线落地域，rubric设计有可靠性价值但未触及医学/多模态",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

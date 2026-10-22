@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Explanatory Instructions Towards Unified Vision Tasks Understanding and Zero-shot Generalization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Explanatory Instructions Towards Unified Vision Tasks Understanding and Zero-shot Generalization.pdf",
+ "title": "Explanatory Instructions: Towards Unified Vision Tasks Understanding and Zero-shot Generalization",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "用语言描述替代术语化任务名，训练VLM实现零样本视觉任务泛化",
+ "innovations": [
+  "提出假设：CV采用离散术语化任务定义（如‘图像分割’）是阻碍零样本任务泛化的关键，模型并未真正理解任务",
+  "提出解释性指令(Explanatory Instructions)：用详细语言描述从输入图像到输出的变换，直观定义CV任务目标",
+  "构建1200万‘图像输入→解释性指令→输出’三元组数据集DECVT，训练自回归VLM实现指令级零样本与未见任务泛化"
+ ],
+ "method_framework": "基于预训练的自回归多模态生成模型(Lumina-mGPT-7B)，以图像+解释性指令为输入、输出图像或任务结果；把传统离散任务(分割/深度/法向/修复/编辑)统一成语言描述的变换指令，在DECVT上微调。",
+ "experiment_framework": "7B AR-VLM，64块A100、约5400 GPU小时；设置为未见指令零样本与未见任务零样本（从训练中剔除图像修复/深度估计等任务）；评测含语义分割、法向估计、深度估计、图像编辑等。",
+ "takeaways": [
+  "解释性指令使模型获得指令级零样本能力，并对未见过的CV任务展现较强零样本泛化",
+  "将传统离散视觉任务统一为语言变换指令后，模型可同时做分割/深度/法向/修复/编辑",
+  "图像生成阶段建议把top-k从文本的5增大到2048"
+ ],
+ "weaknesses": [
+  "1200万三元组的构建成本高，解释性指令的质量与覆盖度依赖人工/模型生成",
+  "零样本结论多为定性/示例展示，定量对比传统专用模型的系统性基准不足",
+  "448×448分辨率与7B规模，更复杂开放编辑的可控性与保真是主要瓶颈"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.73,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/ResearchTown_Simulator of Human Research Community.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ResearchTown_Simulator of Human Research Community.pdf",
+ "title": "ResearchTown: Simulator of Human Research Community",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.25
+ },
+ "one_line": "将科研社区建模为图，用TextGNN模拟读写审稿，但评测与主线关联弱。",
+ "innovations": [
+  "把科研社区建模为 agent-data 图：研究者与论文分别为 agent 型/数据型节点，按合作关系连边。",
+  "提出 TextGNN，把论文阅读、写作、审稿等科研活动统一为该图上的消息传递过程。",
+  "提出 ResearchBench，用节点遮蔽预测任务、基于相似度做可扩展且客观的社区仿真质量评估。"
+ ],
+ "method_framework": "构建研究者-论文二部图，研究者节点协作、引用与评审论文；TextGNN 在该图上以文本化的消息传递统一实现读论文、写论文、写审稿等活动；通过迭代式图上传播模拟科研协作与头脑风暴，并以 ResearchBench 的节点遮蔽(遮蔽论文/研究者节点预测其内容)来客观度量仿真真实度。",
+ "experiment_framework": "在真实科研数据上构建图并运行多智能体仿真；用 ResearchBench 节点遮蔽-相似度预测做客观评估，并定性考察论文写作、审稿写作等协作活动的真实度，报告仿真能否复现协作科研过程与保持社区结构。",
+ "takeaways": [
+  "ResearchTown 可较真实地模拟含论文写作、审稿写作的协作科研活动。",
+  "以图+消息传递统一各类科研活动是可行的仿真抽象。",
+  "节点遮蔽预测为社区仿真提供了可扩展、客观的评测方式。"
+ ],
+ "weaknesses": [
+  "基于相似度的节点遮蔽评测与‘真正的科研创造力/新思想发现’之间仍有较大鸿沟。",
+  "多智能体仿真成本高，对图规模与 LLM 调用的可扩展性与稳定性未充分论证。",
+  "属社会/科研过程仿真，与可靠性、医学影像、多模态推理落地主线关联较弱。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

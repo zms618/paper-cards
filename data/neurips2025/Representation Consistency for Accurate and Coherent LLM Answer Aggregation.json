@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Representation Consistency for Accurate and Coherent LLM Answer Aggregation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Representation Consistency for Accurate and Coherent LLM Answer Aggregation.pdf",
+ "title": "Representation Consistency for Accurate and Coherent LLM Answer Aggregation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "利用LLM内部激活一致性提升答案聚合，但机制证据不足",
+ "innovations": [
+  "提出表示一致性(RC)方法，利用LLM内部激活进行答案聚合",
+  "结合原始激活和稀疏自编码器(SAE)两种实现方式",
+  "验证内部激活一致性比外部嵌入更能反映答案正确性"
+ ],
+ "method_framework": "RC方法通过计算相同答案对应的LLM内部激活的相似性，结合答案频率进行加权评分，选择最优答案。RC-D使用原始激活，RC-S使用SAE稀疏化后的激活。",
+ "experiment_framework": "在4个开源LLMs和4个推理数据集上测试，对比SC、NE和RC-E基线，使用准确率和推理一致性作为指标。",
+ "takeaways": [
+  "LLM内部激活一致性可作为答案质量的可靠指标",
+  "SAE稀疏化后的激活与人类感知的推理一致性高度吻合",
+  "RC方法在多种模型和数据集上均能提升准确率"
+ ],
+ "weaknesses": [
+  "方法需要缓存模型激活，增加内存开销",
+  "超参数λ和模型层需要针对不同模型和数据集调优",
+  "在部分情况下RC方法提升不明显"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

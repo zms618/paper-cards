@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/XAttention_Block Sparse Attention with Antidiagonal Scoring.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/XAttention_Block Sparse Attention with Antidiagonal Scoring.pdf",
+ "title": "XAttention: Block Sparse Attention with Antidiagonal Scoring",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "反对角线代理的块稀疏注意力，加速13.5倍但需调参且与主线弱相关",
+ "innovations": [
+  "核心洞见：注意力矩阵反对角线(左下到右上)上的数值之和可作为块重要性的高效代理，避免昂贵的逐块重要性测量",
+  "基于该代理构建即插即用的块稀疏注意力框架XAttention，可精确剪枝非关键注意力块",
+  "沿反对角线按步长S重排Q/K后近似算注意力分数再定块掩码，兼顾稀疏度与近似精度"
+ ],
+ "method_framework": "将Q、K沿反对角线以步长S重排(K[i::S])，在重排后的张量上做一次近似softmax注意力得到Aapprox，用阈值tau从中找出重要块并拼成块掩码Mb，最终只在重要块上计算真实注意力；框架即插即用，无需重训。",
+ "experiment_framework": "跨三域评测：语言用Llama-3.1-8B-Instruct在RULER与LongBench；视频理解用VideoMME；视频生成用VBench；与全注意力及强稀疏基线对比准确率，并测注意力计算加速比。",
+ "takeaways": [
+  "在RULER/LongBench/VideoMME/VBench上精度与全注意力相当，同时注意力计算最高加速13.5倍",
+  "反对角线求和作为块重要性代理在高精度定位关键块的同时，测量成本远低于逐块打分",
+  "框架即插即用、无需重训，可直接接入现有长上下文多模态模型部署"
+ ],
+ "weaknesses": [
+  "属推理效率/系统优化工作，与鲁棒性、可信AI主线关系较弱，relevance有限",
+  "块重要性代理依赖启发式阈值tau，不同任务/模型的最优稀疏度需逐案调节，泛化性论证偏经验",
+  "仅在pre-filling阶段加速注意力，对解码阶段KV-cache开销与端到端延迟的真实收益需结合系统实测解读"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

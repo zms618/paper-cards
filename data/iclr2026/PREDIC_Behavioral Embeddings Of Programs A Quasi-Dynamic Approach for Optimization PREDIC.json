@@ -1,0 +1,41 @@
+{
+ "title": "Behavioral Embeddings of Programs: A Quasi-Dynamic Approach for Optimization Prediction",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.6
+ },
+ "one_line": "准动态程序行为谱与乘积量化嵌入，优化预测提升有限。",
+ "innovations": [
+  "提出Program Behavior Spectrum：用多样化优化序列探测程序IR并量化静态特征变化，在静态/动态表示之间取得折中（quasi-dynamic）。",
+  "将乘积量化（Product Quantization）用于把连续反应向量离散化为可组合子词码（8段×256码本），保留细粒度结构信息。",
+  "设计PQ-BERT，以多任务Masked LM目标同时预测M个子空间的子词ID，学习优化行为的上下文语法。"
+ ],
+ "method_framework": "先用不同优化pass序列探测IR得到56维反应向量，构成行为谱；再用乘积量化把每段反应向量拆成8个子向量分别K-Means量化为组合码；最后用多任务Transformer（M个输出头）做掩码预训练，取编码器输出作为下游任务嵌入。",
+ "experiment_framework": "在22万+LLVM IR文件上自监督预训练；下游用CompilerGym数据集做Best Pass Prediction与-Oz Benefit Prediction两类任务，与静态特征(Autophase)及IR2Vec等基线比较；报告在blas-v0、github-v0等curated/uncurated数据集上的结果。",
+ "takeaways": [
+  "准动态行为谱相比纯静态表示能提供程序对优化敏感程度的额外信息，下游优化预测超过强基线。",
+  "乘积量化的可组合离散编码在紧凑码本下保留了反应向量的细粒度结构。",
+  "多任务MLM预训练让模型学到不同反应子空间之间的共现关联。"
+ ],
+ "weaknesses": [
+  "探测阶段仍需运行多组优化序列，虽称quasi-dynamic但未量化其相对纯动态profiling的实际开销收益。",
+  "下游数据集规模偏小（blas仅百余样本），跨硬件/跨编译器泛化证据不足。",
+  "与最新图神经网络程序表示基线对比是否充分、提升幅度多大，正文前9页内未给出清晰数字。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PREDIC_Behavioral Embeddings Of Programs A Quasi-Dynamic Approach for Optimization PREDIC.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PREDIC_Behavioral Embeddings Of Programs A Quasi-Dynamic Approach for Optimization PREDIC.pdf",
+ "raw_overall": 6.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "程序优化预测与可靠性主线无实质交集",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

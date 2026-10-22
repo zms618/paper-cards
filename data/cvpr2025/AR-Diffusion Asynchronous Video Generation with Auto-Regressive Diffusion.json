@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/AR-Diffusion Asynchronous Video Generation with Auto-Regressive Diffusion.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AR-Diffusion Asynchronous Video Generation with Auto-Regressive Diffusion.pdf",
+ "title": "AR-Diffusion: Asynchronous Video Generation with Auto-Regressive Diffusion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "非递减时步约束与DP调度器统一同步与自回归视频生成",
+ "innovations": [
+  "非递减时步约束t_1≤t_2≤…≤t_F：保留自回归式‘前帧更清晰、后帧更噪’的时序语义，把合法时步组合数从独立采样的O(1e48)（同步为1e3）压到O(1e32)，在灵活性与训练稳定性之间取折中",
+  "FoPP调度器：带序约束下‘组合空间均匀’与‘逐帧时刻均匀’互相冲突（首帧取T时整条组合必为全T、概率高达1/1000），用DP递推d_{i,j}=d_{i,j−1}+d_{i−1,j}统计每个时刻的.visit路径数，反推出条件采样概率再逐帧取样，两重均匀同时成立",
+  "AD调度器把相邻帧时步差s作为可变量（t_i=t_{i−1}+s，首帧或前帧已干净时步进一步），s=0即同步扩散、s=T即自回归，同一套推理覆盖两种范式，并对时步未变化的帧隐变量做mask跳过"
+ ],
+ "method_framework": "TiTok式AR-VAE（去向量量化、解码器改时间因果注意力）把视频压成L=32、D=4的连续潜token；DiT backbone以时间因果注意力吃各帧不同时刻t_i的噪声token做x0预测，推理走‘预测→按当前组合重新加噪→再预测’的循环，时步组合由FoPP（训练）与AD（推理）调度。",
+ "experiment_framework": "FaceForensics、Sky-Timelapse、Taichi-HD、UCF-101四数据集，256²、8×A800-40G，基线含PVDM/Diffusion Forcing/FVDM及GAN类，指标FID-img、FID-vid、FVD16、FVD128；完整对照表、Table 2的s定量与消融在正文中缺失。",
+ "takeaways": [
+  "给逐帧噪声时刻加非递减约束是异步扩散最省力的稳定性抓手：既保留自回归的时序语义，又不必像独立采样那样在几乎不可达的组合空间里空转",
+  "带序约束下两种‘均匀’会互相冲突，用DP反推条件visit概率再逐帧采样可以同时满足，这类‘按可达路径数反解采样分布’的手法可复用到任何带 combinatorial 约束的调度设计",
+  "把同步扩散(s=0)与自回归(s=T)归约为一个可调时步差s，并用mask跳过时步未变的帧，等于用一个推理调度器打通两种范式，调s即调内容相似度"
+ ],
+ "weaknesses": [
+  "正文止于4.2节开头，Table 1的完整对照数值、Table 2中时步差s的定量表、各组件消融（非递减约束/FoPP/AD/时间因果注意力各自贡献）与用户研究全部缺失，第四节后段无从核验；正文只给出FaceForensics 71.9/265.7、Sky-Timelapse 40.8、Taichi-HD 66.3/376.3、UCF-101 186.6/572.3等孤立结论数",
+  "‘异步扩散训练不稳定’的论证止于搜索空间从1e48降到1e32的计数（推到附录），既无损失曲线、收敛步数或梯度方差等可核验证据，也未把非递减约束与独立采样在同等算力下做对照；式(5)对t_{i−1}=0与t_{i−1}>0分叉处理，s的敏感性只在正文提了一句最优s带来14.6/5.4的FVD改善",
+  "指标面偏窄：只用FID-img/FID-vid/FVD（含FVD16/FVD128），缺CLIPSIM一类文本一致性与显式时序一致性/运动流畅度指标，也未报生成效率（单帧耗时、显存、相对DiT的训练步数开销）；四组数据集均为同分布常规集，无多种子方差与OOD/长视频评估"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "视频生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

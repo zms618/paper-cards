@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/A Non-isotropic Time Series Diffusion Model with Moving Average Transitions.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/A Non-isotropic Time Series Diffusion Model with Moving Average Transitions.pdf",
+ "title": "A Non-isotropic Time Series Diffusion Model with Moving Average Transitions",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "移动平均核改进扩散模型，但多变量扩展不足，对比不充分。",
+ "innovations": [
+  "发现标准各向同性扩散直接应用于时间序列会导致梯度矛盾，原因是低频信息在扩散过程中快速衰减",
+  "提出MA-TSD，利用移动平均（自然的低频滤波器）作为前向转移过程，实现非各向同性的时间序列扩散",
+  "证明MA-TSD的反向过程可以像DDIM一样加速，并可视为时间序列超分辨率任务"
+ ],
+ "method_framework": "标准DDPM对每个时间步和频率分量同等对待，但时间序列中低频分量更重要。MA-TSD使用移动平均作为前向转移核，使高频分量更快地被噪声化，而保留更多低频信息。反向过程可以加速采样，并且天然支持时间序列超分辨率。",
+ "experiment_framework": "在多个时间序列数据集上验证，任务包括时间序列预测和时间序列超分辨率。对比标准DDPM、DDIM、传统时间序列预测方法等基线。具体数据集在前9页未完全列出。",
+ "takeaways": [
+  "标准各向同性扩散不适合时间序列，因为低频信息快速衰减导致梯度矛盾",
+  "移动平均作为前向转移可以更好地保留低频信息，提升时间序列扩散模型性能",
+  "MA-TSD反向过程可加速采样，并且天然支持时间序列超分辨率"
+ ],
+ "weaknesses": [
+  "仅考虑单变量时间序列场景，多变量时间序列的扩展未详细讨论",
+  "移动平均窗口大小等超参数的选择策略未充分讨论",
+  "与最新时间序列基础模型（如TimeGPT、Lag-Llama）的对比不充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "时间序列扩散模型，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

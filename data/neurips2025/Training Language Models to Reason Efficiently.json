@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Training Language Models to Reason Efficiently.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Training Language Models to Reason Efficiently.pdf",
+ "title": "Training Language Models to Reason Efficiently",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "通过RL调整长度惩罚系数，在数学问题上提升推理效率",
+ "innovations": [
+  "引入可调节的长度惩罚系数α控制推理效率与准确性的权衡",
+  "使用在线强化学习而非离线方法优化推理效率",
+  "在问题难度自适应地调整推理长度"
+ ],
+ "method_framework": "修改强化学习目标函数，结合正确性和响应长度，通过sigmoid函数归一化长度并引入可调参数α，使用PPO算法和RLOO优势估计器进行优化",
+ "experiment_framework": "在DeepSeek-R1-Distill-Qwen-1.5B和7B模型上测试，使用MATH、GSM8K、AIME等数据集，与生成截断、拒绝采样+微调、DPO等方法对比",
+ "takeaways": [
+  "通过简单修改强化学习目标函数即可实现推理效率提升",
+  "模型在简单问题上能实现更大的推理长度减少",
+  "方法仅需少量RL步骤即可有效训练"
+ ],
+ "weaknesses": [
+  "仅针对数学问题验证，未在更广泛领域测试",
+  "未分析不同类型问题的推理效率差异",
+  "方法依赖于现有推理模型，无法从零开始训练"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

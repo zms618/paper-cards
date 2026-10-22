@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/OnlineHMR_Video-based Online World-Grounded Human Mesh Recovery.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/OnlineHMR_Video-based Online World-Grounded Human Mesh Recovery.pdf",
+ "title": "OnlineHMR Video-based Online World-Grounded Human Mesh Recovery",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "在线人体网格恢复，结合SLAM与滑动窗口，但FPS与多场景验证不足",
+ "innovations": [
+  "滑动窗口学习策略实现在线推理",
+  "人类中心增量SLAM提供世界坐标对齐",
+  "KV缓存设计实现恒定时间处理",
+  "EMA校正抑制轨迹抖动"
+ ],
+ "method_framework": "双分支架构：相机坐标HMR分支使用滑动窗口学习和速度正则化；人类中心SLAM分支使用软掩码和EMA校正，结合度量深度估计实现世界坐标对齐。",
+ "experiment_framework": "数据集：3DPW、EMDB-1/2；指标：相机坐标(MPJPE/PA-MPJPE/PVE/Accel)和世界坐标(W-MPJPE/WA-MPJPE/RTE/ERVE)；基线：WHAM、TRAM、Human3R等",
+ "takeaways": [
+  "滑动窗口设计平衡在线约束与时间一致性",
+  "软掩码和EMA校正有效处理动态区域和轨迹抖动"
+ ],
+ "weaknesses": [
+  "世界坐标尺度转换引入误差",
+  "FPS低于部分在线方法",
+  "多个体场景验证有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "在线人体网格恢复，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

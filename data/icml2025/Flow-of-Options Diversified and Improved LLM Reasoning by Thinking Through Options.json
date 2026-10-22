@@ -1,0 +1,37 @@
+{
+ "title": "Flow-of-Options: Diversified and Improved LLM Reasoning by Thinking Through Options",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.0
+ },
+ "one_line": "将LLM推理扩展为选项网络，结合案例推理降低ML任务求解成本",
+ "innovations": [
+  "将LLM推理从链式/树式扩展为选项网络：Planner生成步骤序列，Option Generator为每步生成多个选项，形成DAG",
+  "用beam搜索在FoO上walk并执行代码反馈reward，动态更新选项价值",
+  "引入Case-Based Reasoning(CBR)：按任务embedding余弦相似度检索历史FoO，Deployment阶段直接复用，单任务成本< $1"
+ ],
+ "method_framework": "User输入任务→Planner(LLM)生成n步计划→Option Generator为每步生成k个选项构FoO网络F；Development阶段T轮迭代、每轮j个walk、每walk由Executor转代码执行并reward；按reward更新选项值；Deployment阶段对相似任务检索历史FoO，k=0不探索、b=1直接取best walk。",
+ "experiment_framework": "16个数据科学任务(分类/回归/预测)；TDC ADME-Tox药物性质任务；对比DS-Agent/AutoGen/Zero-shot/SELA/Data Interpreter/DeepMol/AutoGluon；GPT-4o为基座LLM；3次独立运行；报告各任务指标、平均rank、成本与时间。",
+ "takeaways": [
+  "DS任务平均rank 1.44(最优1.0)，相对baselines提升38.2%-69.2%；TDC ADME-Tox平均rank 1.47",
+  "Development平均成本$0.62、Deployment $0.03，总成本<$1/task",
+  "FoO在15/16 DS任务上产出高性能解决方案，仅AR任务失败"
+ ],
+ "weaknesses": [
+  "依赖GPT-4o闭源API，复现性与成本敏感场景的可移植性受限",
+  "任务多样性集中在表格ML与药物性质，未在更复杂的agent任务(如web browsing)上验证",
+  "FoO网络规模随选项数指数增长，论文用启发式剪枝(n=2-3 steps)控制，但剪枝对最优解的影响未做系统消融"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Flow-of-Options Diversified and Improved LLM Reasoning by Thinking Through Options.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Flow-of-Options Diversified and Improved LLM Reasoning by Thinking Through Options.pdf",
+ "raw_overall": 5.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

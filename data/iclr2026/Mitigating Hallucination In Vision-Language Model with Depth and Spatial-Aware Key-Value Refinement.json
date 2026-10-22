@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mitigating Hallucination In Vision-Language Model with Depth and Spatial-Aware Key-Value Refinement.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mitigating Hallucination In Vision-Language Model with Depth and Spatial-Aware Key-Value Refinement.pdf",
+ "title": "Mitigating Hallucination in Vision-Language Model with Depth and Spatial-Aware Key-Value Refinement",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "基于KV相干性改进VLM幻觉，但依赖外部深度估计且长视频验证不足",
+ "innovations": [
+  "发现成功grounding对应邻接视觉token相干对齐，幻觉对应key向量各向同性散射模糊物体边界",
+  "将KV相干性识别为幻觉的核心表征根源",
+  "提出轻量免训练的深度与空间感知KV缓存精炼DSCR，无需微调即可引导注意力到相关区域"
+ ],
+ "method_framework": "在Transformer KV缓存中引入深度线索与2D空间邻近性：把同一物体内的视觉向量聚在一起、不同表面的向量分开，增强跨模态注意力对相关区域的聚焦，从而抑制语言先验压倒视觉输入导致的幻觉。",
+ "experiment_framework": "在MME、POPE、RePOPE、CHAIR及新提出的深度敏感基准评测；指标为幻觉率/准确率；DSCR一致降幻觉，最高带来41.6%准确率提升，模型无关。",
+ "takeaways": [
+  "KV相干性是VLM幻觉的关键表征因素",
+  "深度与空间先验可在免训练情况下精炼KV缓存",
+  "模型无关的缓存级改造成本低、可推广"
+ ],
+ "weaknesses": [
+  "依赖外部深度估计线索，深度不准时增益可能下降",
+  "41.6%为最高增益而非全场景均值，需看平均幅度",
+  "对长视频/密集小目标场景的幻觉抑制未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "VLM幻觉抑制直接关联可靠性主线，方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

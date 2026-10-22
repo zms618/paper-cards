@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/LT-Soups Bridging Head and Tail Classes via Subsampled Model Soups.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/LT-Soups Bridging Head and Tail Classes via Subsampled Model Soups.pdf",
+ "title": "LT-Soups: Bridging Head and Tail Classes via Subsampled Model Soups",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6.5,
+  "relevance": 7,
+  "overall": 6.3
+ },
+ "one_line": "双轴框架下模型平均提升长尾分类，但计算开销大且尾部性能有限",
+ "innovations": [
+  "引入头尾比率(η)与不平衡比率(ρ)双轴框架表征长尾分布",
+  "提出两阶段LT-Soups框架，通过子采样模型平均减少头部偏差",
+  "分类器重训练恢复头部类别信息而不损害尾部性能"
+ ],
+ "method_framework": "第一阶段在具有不同不平衡比率的子集上训练多个模型并平均权重，第二阶段在完整数据集上仅微调分类器头，结合了全微调的适应性和模型平均的鲁棒性。",
+ "experiment_framework": "在CIFAR100-LT、ImageNet-LT、Places-LT、NIH-CXR-LT和iNaturalist 2018五个基准数据集上评估，比较整体、多样本、中等样本和少样本准确率。",
+ "takeaways": [
+  "双轴框架(ρ和η)能更全面表征长尾分布特性",
+  "模型平均与子采样结合可有效平衡头部和尾部类别性能"
+ ],
+ "weaknesses": [
+  "方法需要训练多个模型，计算开销较大",
+  "在极度不平衡的数据集上尾部类别性能仍有提升空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

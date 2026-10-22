@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Denoising as Path Planning Training-Free Acceleration of Diffusion Models with.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Denoising as Path Planning Training-Free Acceleration of Diffusion Models with.pdf",
+ "title": "Denoising as Path Planning Training-Free Acceleration of Diffusion Models with",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "将扩散采样建模为路径规划，选择关键点加速但忽略层间信息。",
+ "innovations": [
+  "将扩散采样加速建模为全局路径规划问题",
+  "提出路径感知代价张量(PACT)量化路径依赖误差",
+  "动态规划选择最优关键时间点序列"
+ ],
+ "method_framework": "DPCache通过小样本校准构建路径感知代价张量，利用动态规划选择全局最优的关键时间点序列，在推理时仅在这些关键点计算，其余时间点通过缓存特征预测。",
+ "experiment_framework": "在DiT、FLUX和HunyuanVideo上评估，使用DrawBench、VBench和ImageNet数据集，比较ImageReward、CLIP Score、VBench、PSNR、SSIM和LPIPS等指标。",
+ "takeaways": [
+  "全局路径规划比固定或局部自适应策略更有效",
+  "路径感知代价张量能准确捕捉时间点间的依赖关系",
+  "方法设计简洁且与预测方法解耦"
+ ],
+ "weaknesses": [
+  "仅使用最后一层特征构建代价张量可能忽略层间信息",
+  "动态规划的时间复杂度为O(KT²)，对于极大T可能受限",
+  "校准阶段需要完整运行一次模型"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型加速与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

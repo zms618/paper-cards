@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Yume1.5_A Text-Controlled Interactive World Generation Model.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Yume1.5_A Text-Controlled Interactive World Generation Model.pdf",
+ "title": "Yume1.5: A Text-Controlled Interactive World Generation Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "TSCM压缩+Self-Forcing加速，文本事件控制但评测不全面",
+ "innovations": [
+  "联合时间-空间-通道建模(TSCM)：历史帧沿时间-空间维压缩输入DiT+通道压缩特征走并行线性DiT，替换自注意力实现无限上下文且推断时间随块数近似恒定",
+  "Self-Forcing×TSCM训练范式：用TSCM替代KV cache的Self-Forcing变体，4步采样消解误差累积，长视频第6块aesthetic 0.523 vs 基线0.442",
+  "文本控制事件生成：混合数据集(真实+Sekai-HQ+合成+Event)+架构设计，以最少数据代价获得'幽灵出现'类事件编辑能力，弥补MatrixGame/Yume只有键盘控制的缺口"
+ ],
+ "method_framework": "Wan2.2-5B预训练→基础训练(704×1280/10k步)→Self-Forcing+TSCM训练(600步)；采样4步；TSCM压缩历史帧(T-S维进DiT、通道维进线性DiT)；真实/合成/事件三类数据混合与重标注。",
+ "experiment_framework": "Yume-Bench六指标(IF/SC/BC/MS/AQ/IQ)；对比Wan-2.1-I2V-14B/Wan-2.2-5B/MatrixGame/Yume；IF 0.836全场最高；12fps@540p单A100实测；消融TSCM(IF 0.836 vs 0.767)与Self-Forcing长视频稳定性(第4-6块)。",
+ "takeaways": [
+  "'上下文压缩是无限长视频的钥匙'：把历史压进紧凑状态(线性注意力/TSCM)比全量回看更稳更快，与LLM状态化思路同源",
+  "'4步采样+自蒸馏的工程配方'：蒸馏与Self-Forcing组合让扩散模型以4步出片，实时交互类产品可直接照搬该训练管线",
+  "'混合数据补能力缺口'：把事件数据单独成集训练文本控制，说明能力缺口常常是数据缺口而非架构缺口"
+ ],
+ "weaknesses": [
+  "对比基线含模型规模混差(Wan-2.1-14B vs 5B)与采样步数不对称(Yume1.5 4步 vs 其他50步)，IF大幅领先(0.836 vs 0.657)难以归因单一因素",
+  "除IF外其余5指标与Yume接近甚至略低(AQ 0.506 vs 0.518)，'显著提升'仅体现在指令跟随；长视频稳定性只在aesthetic/image quality两条曲线报告，无SC/BC/MS曲线",
+  "文本事件生成仅有定性示例，无事件编辑的定量评测(成功率和保真度)；12fps@540p未报不同分辨率/设备下的可扩展性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "文本控制世界生成，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

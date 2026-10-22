@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VIDEOCHAT-FLASH_Hierarchical Compression for Long-Context Video Modeling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VIDEOCHAT-FLASH_Hierarchical Compression for Long-Context Video Modeling.pdf",
+ "title": "VideoChat-Flash: Hierarchical Compression for Long-Context Video Modeling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "分层压缩与长视频训练方案，提升效率但可靠性证据不足",
+ "innovations": [
+  "提出分层视频token压缩方法HiCo，利用长视频视觉冗余从片段级到视频级分层压缩，压缩比约1/50且几乎无性能损失",
+  "提出多阶段由短到长(short-to-long)的学习方案与大规模真实长视频数据集LongVid",
+  "构建多跳大海捞针(Multi-Hop Needle-In-A-Video-Haystack)长视频评测基准"
+ ],
+ "method_framework": "HiCo利用长视频的视觉冗余，分层地将片段级token聚合压缩为视频级表示，显著削减超长视频上下文的计算量而保留关键细节；配合多阶段由短到长的课程式训练与LongVid真实长视频数据，使MLLM逐步适应小时级长视频。",
+ "experiment_framework": "在主流长、短视频理解基准及多跳NIAH探针上评测；2B与7B两个规模；对比开源与闭源视频MLLM；指标含准确率；报告超1万帧NIAH 99.1%(开源首个)与主流基准领先。",
+ "takeaways": [
+  "VideoChat-Flash在开源模型中首个在超1万帧的NIAH上达99.1%准确率",
+  "在2B与7B规模上于主流长、短视频基准均取得领先",
+  "分层压缩在大幅降低长视频计算量的同时保留关键细节，支撑小时级视频理解"
+ ],
+ "weaknesses": [
+  "属于多模态长视频理解效率方向，并非聚焦鲁棒性/幻觉/不确定性，也不涉及医学影像，与主线弱相关",
+  "1/50的极端压缩依赖视觉冗余假设，对细节密集或低冗余视频(如医学影像)可能丢失关键信息，前9页未验证",
+  "长视频优势主要在合成NIAH探针任务验证，真实复杂长视频推理的可靠性证据有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "效率优化方向，与可靠性主线弱相关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

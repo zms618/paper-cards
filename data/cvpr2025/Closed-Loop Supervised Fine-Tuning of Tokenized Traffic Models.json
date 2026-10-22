@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Closed-Loop Supervised Fine-Tuning of Tokenized Traffic Models.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Closed-Loop Supervised Fine-Tuning of Tokenized Traffic Models.pdf",
+ "title": "Closed-Loop Supervised Fine-Tuning of Tokenized Traffic Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "CAT-K闭环微调解决交通模拟协变量偏移，小模型超越大模型",
+ "innovations": [
+  "CAT-K rollouts策略，在top-K最可能动作中选择最接近GT的",
+  "无需强化学习或生成对抗的闭环监督微调方法",
+  "小模型(7M)超越大模型(102M)的性能突破"
+ ],
+ "method_framework": "两阶段训练：先行为克隆预训练，再用CAT-K rollouts进行闭环微调。在每个时间步，从模型预测的top-K最可能动作中选择使状态最接近GT的动作，保持训练监督信号的有效性。",
+ "experiment_framework": "Waymo Open Motion Dataset数据集，WOSAC排行榜评估，RMM(现实感元指标)和minADE作为主要指标，对比SMART等基线模型。",
+ "takeaways": [
+  "结合模型预测与GT的采样策略能有效解决协变量偏移",
+  "简单方法在复杂任务上可能取得显著效果",
+  "闭环训练对多模态策略的重要性"
+ ],
+ "weaknesses": [
+  "方法依赖于预训练模型的质量",
+  "K值的选择可能影响性能",
+  "仅适用于确定性动态系统"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "交通模拟与可靠性主线无实质交点，仅闭环训练机制可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

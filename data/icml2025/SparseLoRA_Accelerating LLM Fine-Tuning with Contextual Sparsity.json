@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/SparseLoRA_Accelerating LLM Fine-Tuning with Contextual Sparsity.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SparseLoRA_Accelerating LLM Fine-Tuning with Contextual Sparsity.pdf",
+ "title": "SparseLoRA: Accelerating LLM Fine-Tuning with Contextual Sparsity",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "将通道稀疏性应用于LoRA，减少计算量但未探索注意力机制",
+ "innovations": [
+  "提出首个将上下文稀疏性应用于LLM微调的方法",
+  "设计轻量级、训练免费的SVD稀疏估计器",
+  "系统分析并解决了层、标记和训练步骤的敏感性"
+ ],
+ "method_framework": "SparseLoRA应用动态通道稀疏性到LoRA主分支，同时保持LoRA分支密集。通过SVD分解预训练权重构建稀疏估计器，动态选择权重子集进行损失和梯度计算。",
+ "experiment_framework": "在常识推理(CSR170K)、算术推理(Math10K)、指令跟随和代码生成任务上评估，与LoRA、QLoRA和DoRA比较，测量计算量、速度和准确率。",
+ "takeaways": [
+  "层敏感性分析显示深层层更易稀疏化",
+  "上下文-输出感知稀疏策略保留输出密集计算",
+  "渐进式稀疏微调平衡效率与质量"
+ ],
+ "weaknesses": [
+  "仅应用于线性层，未探索注意力机制稀疏化",
+  "未分析不同模型架构的泛化能力",
+  "实验主要在特定任务上进行，缺乏更广泛的验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

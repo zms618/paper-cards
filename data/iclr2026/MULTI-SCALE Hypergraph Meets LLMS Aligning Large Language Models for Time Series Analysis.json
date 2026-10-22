@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/MULTI-SCALE Hypergraph Meets LLMS Aligning Large Language Models for Time Series Analysis.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/MULTI-SCALE Hypergraph Meets LLMS Aligning Large Language Models for Time Series Analysis.pdf",
+ "title": "Multi-Scale Hypergraph Meets LLMs: Aligning Large Language Models for Time Series Analysis",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 7,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "多尺度超图对齐LLM，提升时序分析性能但机制解释不足",
+ "innovations": [
+  "设计超边(hyperedging)机制，以可学习超边从多尺度时间特征中提取组-wise交互信息，增强时间序列语义空间并降低噪声干扰",
+  "提出跨模态对齐(CMA)模块，在多个尺度上基于多头交叉注意力对齐超边特征与文本原型，突破单尺度对齐局限",
+  "设计混合提示(MoP)机制，融合可学习提示、数据相关提示和能力增强提示三类提示，激活LLM对多尺度时序模式的推理能力"
+ ],
+ "method_framework": "MSH-LLM面向冻结LLM的时序分析：首先通过层次化聚合提取多尺度时间特征，通过线性映射生成多尺度文本原型；然后用可学习超边构建稀疏关联矩阵，将节点平均为超边特征以增强语义；接着用多头交叉注意力在每个尺度上对齐超边特征与文本原型；最后拼接三类提示（可学习/数据相关/能力增强）送入冻结LLM，经线性输出层和反归一化得到预测。",
+ "experiment_framework": "在27个真实数据集上评估5类任务：长期预测(7个数据集ETT/Weather/Traffic/Electricity)、短期预测(M4)、时间序列分类(10个UEA多变量数据集)、少样本学习(5%/10%训练数据)、零样本跨数据集迁移(M3/M4)。对比19个基线（含Time-LLM/AutoTimes/S2IP-LLM/FPT等LLM4TS方法及iTransformer/PatchTST等专用模型）。",
+ "takeaways": [
+  "MSH-LLM在所有长期预测数据集上达到SOTA，MSE较LLM4TS方法平均降低4.10%",
+  "多尺度超边对齐显著提升少样本和零样本场景性能，5%训练数据下MSE较Time-LLM降低10.47%",
+  "三类提示各自均有贡献，移除全部MoP时性能下降最大，验证混合提示机制的有效性"
+ ],
+ "weaknesses": [
+  "能力增强提示（含'情感操纵'等设计）较为启发式，缺乏对其为何有效的机制性解释",
+  "超边数量、尺度数等超参数较多，选择策略和对不同数据集的敏感性未充分讨论",
+  "仅在预测/分类等标准任务验证，未探索时序异常检测、因果推断等更复杂的时序分析任务"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "时序分析工具，可靠性主线间接支持",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

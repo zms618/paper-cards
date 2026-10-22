@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Soft Quality-Diversity Optimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Soft Quality-Diversity Optimization.pdf",
+ "title": "Soft Quality-Diversity Optimization",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 3.0,
+  "overall": 4.7
+ },
+ "one_line": "Soft QD框架规避高维离散化，但缺乏充分实验验证与主线相关性",
+ "innovations": [
+  "把质量多样性(QD)问题重新表述为无需对行为空间做离散分箱的Soft QD，规避高维行为空间下离散化失效的维数灾难",
+  "证明该表述的单调性等良好性质，并将其极限行为与广泛使用的QD Score指标关联",
+  "据此导出新颖的可微QD算法SQUAD(Soft QD Using Approximated Diversity)，使QD可直接用梯度方法优化"
+ ],
+ "method_framework": "传统QD把行为空间切成cell、每cell存最优解；Soft QD用可微的软多样性度量替代硬分箱，使目标函数整体可微，从而可用基于梯度的优化器搜索多样且高质量的解集，无需维护大规模离散archive。",
+ "experiment_framework": "在QD标准基准上与当前SOTA QD方法对比QD Score/覆盖与质量指标，并测试向更高维行为空间扩展时的可扩展性。",
+ "takeaways": [
+  "Soft QD表述具有单调性等理想性质，其极限与QD Score一致",
+  "SQUAD在标准基准上与SOTA方法具竞争力",
+  "免离散化设计使其在高维行为空间比分箱方法扩展性更好"
+ ],
+ "weaknesses": [
+  "属进化/优化方法，与可靠性、医学影像、多模态推理主线无关",
+  "前9页未见具体基准、数据集与量化数值，'competitive/better scalability'缺乏数字支撑",
+  "可微软多样性引入新的近似与超参，其近似误差对多样性质量的影响未充分分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.55,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 3,
+ "relevance_reason": "进化优化方法与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

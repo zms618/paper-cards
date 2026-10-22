@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Swingarena_Adversarial Programming Arena for Long-Context Github Issue Solving.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Swingarena_Adversarial Programming Arena for Long-Context Github Issue Solving.pdf",
+ "title": "SwingArena: Adversarial Programming Arena for Long-Context GitHub Issue Solving",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "对抗式编程评估框架，模拟GitHub工作流测试长上下文代码生成",
+ "innovations": [
+  "提出对抗式编程评估范式：LLM作为提交者生成补丁，作为审查者创建测试用例并通过CI管道验证",
+  "设计检索增强代码生成（RACG）模块，从大型代码库中检索相关代码片段处理长上下文挑战",
+  "支持C++、Python、Rust、Go多种编程语言，覆盖真实GitHub工作流"
+ ],
+ "method_framework": "SwingArena将LLM配对为提交者和审查者：提交者根据GitHub issue生成代码补丁，审查者创建测试用例并通过CI管道验证补丁正确性。这种对抗式交互模拟了真实的代码审查和持续集成流程。RACG模块从大型代码库中检索相关代码片段，为长上下文代码生成提供必要的上下文信息。",
+ "experiment_framework": "从2300个真实GitHub issue中精选400+高质量issue；评估多个LLM的补丁生成和验证能力；分析不同模型在补丁生成和验证两个角色上的行为差异。",
+ "takeaways": [
+  "对抗式提交者-审查者交互能暴露传统静态基准忽略的模型局限性",
+  "不同模型在补丁生成和验证两个角色上表现出不同的行为倾向",
+  "CI驱动的评估方式更贴近真实软件开发工作流"
+ ],
+ "weaknesses": [
+  "对抗式评估的计算成本较高，需要两个LLM同时参与",
+  "审查者创建的测试用例质量可能不一致，影响评估可靠性",
+  "实验主要在开源GitHub项目上验证，企业内部代码库的适用性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.85,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "代码生成评估与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

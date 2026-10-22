@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/ReDi_Rectified Discrete Flow.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/ReDi_Rectified Discrete Flow.pdf",
+ "title": "ReDi: Rectified Discrete Flow",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 7,
+  "overall": 6.8
+ },
+ "one_line": "修正离散流耦合减少因子化误差，提升少步生成效率",
+ "innovations": [
+  "引入条件总相关性(TC)量化离散流因子化误差",
+  "提出耦合修正方法ReDi减少因子化误差",
+  "理论证明ReDi迭代单调降低TC"
+ ],
+ "method_framework": "ReDi通过迭代训练DFMs并修正源-目标分布耦合，减少因子化误差，实现高效少步生成，支持单步模型训练。",
+ "experiment_framework": "ImageNet(256x256图像)和OpenWebText文本数据集，与SDTT、Di4C等基线比较，使用FID、IS、困惑度等指标。",
+ "takeaways": [
+  "耦合修正可有效减少离散流因子化误差",
+  "ReDi可与其他蒸馏方法结合提升性能",
+  "TC是分析离散流少步生成误差的有效指标"
+ ],
+ "weaknesses": [
+  "文本生成中边际近似误差可能累积",
+  "高基数数据(如文本)中效果提升有限",
+  "需要多次迭代达到最佳性能"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

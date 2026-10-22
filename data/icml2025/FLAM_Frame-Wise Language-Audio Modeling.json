@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/FLAM_Frame-Wise Language-Audio Modeling.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FLAM_Frame-Wise Language-Audio Modeling.pdf",
+ "title": "FLAM: Frame-Wise Language-Audio Modeling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "帧级音频-语言对齐模型，解决开放词汇SED定位问题",
+ "innovations": [
+  "实现开放式词汇的帧级音频-语言对齐，突破传统SED仅支持固定类别限制",
+  "提出内存高效的校准帧级对比目标，结合logit调整解决虚假相关问题(如事件依赖和标签共现)",
+  "在无需帧级标注的情况下学习到帧级对齐能力"
+ ],
+ "method_framework": "现有音频-语言模型(如CLAP)仅学习实例级全局对齐，无法定位事件发生的具体时间。FLAM：将音频切分为帧，每个帧与文本进行对比学习对齐。关键技术：(1)内存高效的帧级对比目标，避免所有帧与所有文本的O(N²)计算；(2)logit调整校正训练集中事件共现带来的虚假相关性；(3)校准机制确保帧级相似度分数可解释。训练仍使用全局音频-文本对，但通过架构设计自然涌现帧级对齐能力。",
+ "experiment_framework": "在多个音频基准上验证：(1)开放式词汇声音事件检测；(2)零样本分类；(3)音频-文本检索。对比基线：CLAP等实例级ALM、传统SED模型。评估指标：帧级定位精度、mAP、检索召回率。",
+ "takeaways": [
+  "FLAM实现了开放式词汇的帧级声音事件检测，无需帧级标注训练",
+  "logit调整有效缓解了事件共现带来的虚假对齐",
+  "帧级对齐不仅提升检测精度，还产生更可解释的全局和局部表示"
+ ],
+ "weaknesses": [
+  "帧级时间精度受限于音频帧的粒度，亚秒级事件定位能力未知",
+  "仅在英文文本上验证，多语言场景的适用性未知",
+  "与视频-语言模型结合实现音视频联合定位的扩展未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

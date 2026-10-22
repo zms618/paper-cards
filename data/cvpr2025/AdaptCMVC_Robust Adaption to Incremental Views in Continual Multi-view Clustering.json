@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/AdaptCMVC_Robust Adaption to Incremental Views in Continual Multi-view Clustering.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AdaptCMVC_Robust Adaption to Incremental Views in Continual Multi-view Clustering.pdf",
+ "title": "AdaptCMVC: Robust Adaption to Incremental Views in Continual Multi-view Clustering",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 5.0,
+  "evidence": 5.0,
+  "relevance": 6.0,
+  "overall": 5.4
+ },
+ "one_line": "拼模块方法，实验不一致且缺乏深度分析",
+ "innovations": [
+  "噪声鲁棒一致性损失把学生-教师的 KL 按样本到上一视角类原型的距离二次加权：L_c(z)=-(1/l(i,b_i^{v-1})²)·Σ_d p(z_id)log p(z'_id)，l=‖z_i - h_i B^{v-1}‖₂，从而离原型远的（疑似噪声/离群）样本对梯度贡献被压到近零",
+  "教师用指数移动平均 ψ'_t=αψ'_{t-1}+(1-α)ψ_t 更新，且对教师输入用扩充样本，使教师特征兼具新视角信息与历史痕迹，避免自训练误差逐session累积",
+  "结构对齐模块不用旧视角数据也能存知识：以余弦相似度矩阵 S^{v-1}_{ij}=1[h_ik=h_jk]（初始）为记忆，每轮用 S^{v-1}_t=βS^{v-1}_{t-1}+(1-β)C^v_t 更新，并用 MSE 约束当前表征的相似度矩阵 C^v 与记忆一致，等价于在表空间上做跨视角结构正则"
+ ],
+ "method_framework": "首视角训一个带随机像素遮蔽的 VAE 作 base；后续 session 用同一 base 初始化学生，教师由 EMA 维护，对学生施加「加权一致性损失（按到上一视角类原型距离）+ 结构对齐 MSE（相似度矩阵记忆）+ VAE 重建 ELBO」，不访问任何旧视角数据。",
+ "experiment_framework": "E-MNIST、E-FMNIST、Office-31、COIL-100、COIL-20、PatchedMNIST；9 条基线含单视聚类（Joint-VAE、β-VAE）、深度多视聚类（MFLVC、CONAN、EAMC、GCFAgg、Multi-VAE）与 CMVC 现行 SOTA（CMVC、CAC）；指标 ACC/NMI，10 次运行均值±方差。",
+ "takeaways": [
+  "「按样本到类原型距离加权自训练损失」是一个廉价而有效的噪声抑制手段，可独立抽出来用于任何无标签渐进式学习场景，不一定绑在聚类上。",
+  "用相似度矩阵（而非特征或数据）作为跨 session 的长期记忆来抗遗忘，存储量为 O(n²) 的标量而非原始数据，在隐私受限的跨中心增量数据场景下是可落地的折中。",
+  "报告 10 次运行的 ±方差（多数基线也带），且如实给出 COIL-20 上落后 CAC 4.18 的结果，评测习惯是合规的，值得作为表格模板。"
+ ],
+ "weaknesses": [
+  "三个组件（EMA 教师自训练、原型距离加权、相似度矩阵 MSE 对齐）分别来自 SSL / 自训练加权 / 关系蒸馏的常规做法，论文把它们拼在一个统一 loss 里，没有推导三者为何互补；1/l² 的二次加权形式、EMA 的 α、相似度记忆的 β 全是超参且无选取依据，正文只把权重有效性证明丢到补充材料。",
+  "Table 1/Table 2 显示提升并不一致：E-MNIST +9.8、Office-31 +6.61、COIL-100 +20.71 尚可，但 COIL-20 上 ACC 64.32 反而比 CAC 的 68.50 低 4.18、NMI 低 7.9，PatchedMNIST 才是主要 pull 来源；所谓「相对最佳 CMVC 基线」的绿色提升在 COIL-20 上直接不成立，且大部分绝对值提升可能来自用了 Conv-VAE 骨干（浅层基线换用同骨干），而非 CMVC 机制本身。",
+  "实验全部是人工构造视角（MNIST 原图+边缘、COIL 三视角、Office 加 ColorJitter），「view discrepancy」实际是亮度/边缘等风格差异，远小于文中设想的医学 MRI/CT/X 光那种跨模态分布差；正文在 Table 2 说明处截断，缺 α/β 消融、无标签监督下「原型 B^{v-1} 由 K-means 得到」这一自举步骤错误传播的分析，也无多种子之外的显著性检验。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "增量聚类方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

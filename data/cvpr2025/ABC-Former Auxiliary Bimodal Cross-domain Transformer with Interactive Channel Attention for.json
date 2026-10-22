@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/ABC-Former Auxiliary Bimodal Cross-domain Transformer with Interactive Channel Attention for.json",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ABC-Former Auxiliary Bimodal Cross-domain Transformer with Interactive Channel Attention for.pdf",
+ "title": "ABC-Former: Auxiliary Bimodal Cross-domain Transformer with Interactive Channel Attention for White Balance",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 4.9
+ },
+ "one_line": "PDFformer+ICA做白平衡，但创新有限且实验不充分。",
+ "innovations": [
+  "把 sRGB 与 CIELab 各自的颜色直方图转成 256-bin 的 PDF 作为第二/第三模态，先各自过一个 U 形 1D Transformer（PDFformer）重建校正后的直方图，再把「全局色温」以软目标形式送回主模型，而不是直接让主模型从图像去猜色偏",
+  "交互通道注意力 ICA：把主模型 sRGBformer 每层通道做全局平均池化后过 conv+sigmoid 得到 W_T，与辅助模型通过 Channel Attention 得到的 W_sRGB、W_Lab 按可学习标量 λ_sRGB_i、λ_Lab_i 相加得到 W_total_i 做通道重标定，实现跨模态知识以通道权重形式注入",
+  "总损失把两个辅助模型的直方图 L2 重建损失与 sRGBformer 的 L1 像素重建损失直接相加（L_total = L_sRGB_pdf + L_Lab_pdf + L_rec），三个模型端到端同时训练"
+ ],
+ "method_framework": "两个 PDFformer（输入 sRGB PDF / CIELab PDF，U 形 1D Transformer，block = LN→Channel Attention→残差 + GELU-MLP）+ 一个 sRGBformer（U 形图像 Transformer），每层用 ICA 注入由 W_total 得到的通道权重；输出残差连接后过 softmax / 3×3 卷积。",
+ "experiment_framework": "Rendered WB 数据集 Split1/Set2 与 Rendered Cube+，指标 MSE / MAE / ΔE2000（各报 mean、Q1、Q2、Q3）与 Bhattacharyya 系数；对比 KNN、Deep-WB、Mixed-WB、WBFlow、SWBNet 五个方法。",
+ "takeaways": [
+  "按模型大小对齐再做消融（把 sRGBformer bottleneck 通道加倍、单层辅助模型时均匀加通道）的做法值得照搬，能避免「辅助模型加多了当然更好」的假增益",
+  " histogram 作为强先验的低层视觉条件（全局色彩分布）可以不用额外标注，直接从图像算出来当辅助模态，成本极低",
+  "表 3 显示 L2 直方图解空间损失优于 KL 与 Wasserstein（60.60 vs 72.67 / 70.22 MSE），KL 的 zero-bin 问题是真实坑，做分布回归时优先考虑 L2/JS 散度"
+ ],
+ "weaknesses": [
+  "ICA 的核心只是「全局平均池化 + conv + sigmoid 得到通道权重」加上两个可学习标量系数相加，本质是 SE 模块 + 两个超参数，所谓 cross-modal re-parameterization 迁移自 M2PT 的框架成分，没有提出新的注意力数学形式",
+  "辅助模型的监督是 GT 直方图（由 GT 白平衡图像算得），等于用「GT 的全局色分布」当先验注入主模型，这本身就含有 GT 信息泄露的成分，而主模型只做像素 L1——两类监督的信息不对称未被量化剥离",
+  "消融只覆盖模态组合与损失函数两项，未对 λ 的初始化/数量、直方图 bin 数 L=256、U 形深度做敏感性分析；且正文在 4.4 节处截断（缺 λ 取值分析结论），所有数据集上只给单一 run 的数值，无方差/显著性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "白平衡任务与可靠性主线无实质交点，仅属常规视觉处理",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Compositional Visual Planning via Inference-Time Diffusion Scaling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Compositional Visual Planning via Inference-Time Diffusion Scaling.pdf",
+ "title": "Compositional Visual Planning via INFERENCE-TIME Diffusion Scaling",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "组合扩散缩放实现视觉规划，但依赖预训练模型且计算成本高",
+ "innovations": [
+  "在Tweedie估计而非噪声状态上强制边界一致性",
+  "同步与异步消息传递的组合机制",
+  "训练-free的扩散球面引导方法"
+ ],
+ "method_framework": "将长时程规划建模为重叠视频片段的链式因子图，通过在Tweedie估计上进行消息传递实现全局一致性，无需额外训练",
+ "experiment_framework": "基于ManiSkill的机器人操作规划基准，包含18个分布内和82个分布外任务，使用VBench++评估视频质量和任务成功率",
+ "takeaways": [
+  "在干净数据空间(Tweedie估计)上应用组合启发式方法比在噪声状态上更稳定",
+  "同步与异步消息传递的组合提高了收敛速度和稳定性",
+  "扩散球面平衡了对齐与多样性"
+ ],
+ "weaknesses": [
+  "方法依赖于预训练的短时程扩散模型，可能受限于模型质量",
+  "计算复杂度随规划长度增加而增加",
+  "实验主要在模拟环境中进行，真实世界泛化能力有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视觉规划与可靠性主线无直接交点，仅方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

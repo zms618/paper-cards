@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scaling Knowledge Editing In LLMS To 100,000 Facts with Neural KV Database.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scaling Knowledge Editing In LLMS To 100,000 Facts with Neural KV Database.pdf",
+ "title": "Scaling Knowledge Editing in LLMs to 100,000 Facts with Neural KV Database",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "将L&E方法统一为KV检索，扩展编辑容量至10万条，但评测局限且与主线关联弱。",
+ "innovations": [
+  "提出将MEMIT/D4S/AlphaEdit等L&E方法统一解读为KV数据库检索：更新后的参数是各编辑事实残差矩阵的加权平均，且推理时权重近one-hot(命中编辑事实)或零(无关内容)。",
+  "据此提出NeuralDB：把编辑事实显式表示为神经KV数据库并配非线性门控检索模块，替换原线性最小二乘更新，消除编辑副作用、抑制已编辑事实遗忘。",
+  "将知识编辑容量从以往数百条扩展到1万条(ZsRE/CounterFact)并进一步到10万条，同时保持MMLU/SciQ等六项通用任务性能。"
+ ],
+ "method_framework": "把每条新事实的残差存入KV数据库，用某隐藏状态作为query检索对应残差；引入非线性门控检索模块替代线性加权，使编辑事实被精确命中、无关输入返回零残差，从而在大规模批量编辑时保持正交、不干扰通用知识。",
+ "experiment_framework": "在ZsRE、CounterFact上编辑1万条事实，覆盖GPT2-XL、GPT-J(6B)、Llama-3(8B)；报告编辑成功(efficacy/generalization/specificity)与六项通用任务(MMLU、SciQ、CommonsenseQA、ARC-C、Lambada、WSC273)；并验证扩展到10万条事实。",
+ "takeaways": [
+  "线性L&E方法在大规模编辑下容量受限源于线性系统容量不足与采样子集代表性不够；神经KV+非线性门控可突破。",
+  "NeuralDB在1万条编辑下各项编辑指标最优且通用能力不下降，并可扩展到10万条(50倍于以往)。"
+ ],
+ "weaknesses": [
+  "评测仍集中在ZsRE/CounterFact这类事实三元组编辑，对开放域长文本/多步知识编辑的覆盖有限。",
+  "与医学影像/多模态主线关联弱；KV数据库随编辑事实数增长的存储与检索开销未充分量化。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.65,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "LLM知识编辑方法创新，但与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

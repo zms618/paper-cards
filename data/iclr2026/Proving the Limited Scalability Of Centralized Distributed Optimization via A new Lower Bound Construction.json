@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Proving the Limited Scalability Of Centralized Distributed Optimization via A new Lower Bound Construction.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Proving the Limited Scalability Of Centralized Distributed Optimization via A new Lower Bound Construction.pdf",
+ "title": "Proving the Limited Scalability of Centralized Distributed Optimization via A new Lower Bound Construction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 4.0,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "理论证明分布式优化在双向通信下的可扩展性存在根本下界限制",
+ "innovations": [
+  "构建了新的最差情况函数，将分布式优化可扩展性分析归约到随机和的集中度问题",
+  "证明了当服务器到 worker 通信时间 tau_s 不可忽略时，无偏稀疏化压缩器无法同时使方差项和通信项随 worker 数 n 多项式级下降",
+  "给出了同分布(i.i.d.)假设下的紧下界，揭示了分布式优化的基本可扩展性瓶颈"
+ ],
+ "method_framework": "在经典联邦学习集中式优化框架下，考虑 L-光滑非凸函数、随机梯度方差 sigma^2、worker 计算时间 h、双向通信时间 tau_s/tau_w，通过构造新的最差情况函数并将分析归约为随机和集中度问题，证明无偏稀疏化压缩方法的运行时间下界。",
+ "experiment_framework": "纯理论论文，无实验部分。通过数学证明给出下界，对比已有 SGD 分布式版本和稀疏化压缩方法的运行时间上界。",
+ "takeaways": [
+  "即使在同分布假设下，考虑服务器到 worker 的通信成本后，分布式优化的可扩展性存在根本限制",
+  "无偏稀疏化压缩器无法同时优化方差依赖项和服务器侧通信项随 n 的缩放",
+  "tau_s 约等于 tau_w 时，运行时间下界为 Omega(min(h sigma^2 LDelta/(n eps^2) + tau_s d LDelta/eps, ...))"
+ ],
+ "weaknesses": [
+  "纯理论分析，无任何实证或实验验证，无法确认实际场景中下界的紧性",
+  "仅考虑无偏稀疏化压缩器，未涉及有偏压缩或其他通信效率方法",
+  "与可靠性/鲁棒性主线关联较弱，工程实践指导意义有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "分布式优化理论分析，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Context Compression for LLMs via Contextual Semantic Anchors.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Context Compression for LLMs via Contextual Semantic Anchors.pdf",
+ "title": "AUTOENCODING-FREE Context Compression for LLMS via Contextual Semantic Anchors",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "SAC通过锚代币选择实现LLM压缩，但计算效率和应用范围有限",
+ "innovations": [
+  "语义锚点压缩(SAC)架构，无需自编码预训练",
+  "锚嵌入机制标记压缩载体",
+  "双向注意力修改增强上下文建模"
+ ],
+ "method_framework": "SAC直接从原始上下文中选择锚代币，通过锚嵌入标记并利用双向注意力聚合上下文信息到KV表示中，替代传统自编码任务训练压缩代币",
+ "experiment_framework": "MRQA问答数据集(域内/域外)，Llama-3.2-1B/3B/8B模型，对比ICAE、500xCompressor、EPL等基线，使用F1和EM指标",
+ "takeaways": [
+  "锚嵌入和双向注意力是SAC的关键组件",
+  "无需自编码训练的设计避免了重建目标与下游任务目标的错位",
+  "SAC兼容各种代币选择策略"
+ ],
+ "weaknesses": [
+  "未明确讨论压缩方法的计算效率",
+  "未探索在医学影像或多模态大模型推理中的应用",
+  "锚代币选择策略的优化空间有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.875,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "LLM压缩技术，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

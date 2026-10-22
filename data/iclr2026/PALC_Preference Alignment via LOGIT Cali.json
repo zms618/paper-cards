@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/PALC_Preference Alignment via LOGIT Cali.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PALC_Preference Alignment via LOGIT Cali.pdf",
+ "title": "PALC: Preference Alignment via LOGIT Cali",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "词汇空间校准实现参数高效偏好对齐，但性能与完全训练方法仍有差距。",
+ "innovations": [
+  "词汇空间干预策略，避免隐藏状态叠加问题",
+  "瓶颈架构生成位置相关校准向量",
+  "单缩放因子实现运行时对齐强度调整"
+ ],
+ "method_framework": "PALC使用瓶颈架构处理基础模型隐藏状态，生成词汇空间校准向量，通过简单缩放调整原始对数概率，实现参数高效的测试时对齐。",
+ "experiment_framework": "HH-RLHF数据集，与DPO、ARGS、GenARM、CAA、BiPO、RE-Control等基线比较，使用GPT-5评估五个维度：帮助性、无害性、相关性、准确性和洞察力。",
+ "takeaways": [
+  "低维偏好结构验证了瓶颈架构的有效性",
+  "词汇空间干预避免了隐藏状态操作中的级联效应"
+ ],
+ "weaknesses": [
+  "与完全训练方法如DPO相比性能仍有差距",
+  "极端瓶颈维度(B=4096)会导致性能灾难性下降"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "校准方法有可靠性价值，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

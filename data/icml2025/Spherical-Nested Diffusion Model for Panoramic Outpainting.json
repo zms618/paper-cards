@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Spherical-Nested Diffusion Model for Panoramic Outpainting.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Spherical-Nested Diffusion Model for Panoramic Outpainting.pdf",
+ "title": "Spherical-Nested Diffusion Model for Panoramic Image Outpainting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "球面噪声与可变形卷积嵌入扩散模型，提升全景生成质量",
+ "innovations": [
+  "首次在扩散模型设计层面(而非软正则)强制引入球面本性，使全景格式在学习过程中被内在保证",
+  "在扩散过程中使用spherical noise刻画结构先验，应对等距柱状投影(ERP)带来的球面畸变",
+  "提出spherical deformable convolution(SDC)模块内在学习全景知识，并有效集成进预训练扩散模型"
+ ],
+ "method_framework": "面向全景图像outpainting的扩散模型：在扩散前向过程注入球面噪声作为结构先验，配合球面可变形卷积SDC在特征建模中显式考虑球面几何，把球面本性以micro方式嵌入网络与噪声过程，而非事后软正则。",
+ "experiment_framework": "全景outpainting任务上对比PanoDiffusion等已有方法，指标以FID为主；声称FID较SOTA的PanoDiffusion降低超50%。",
+ "takeaways": [
+  "把数据的几何本性(球面)从软正则提升为扩散噪声先验与卷积设计的内在约束，能显著改善全景生成质量",
+  "球面噪声+球面可变形卷积的组合可作为球面视觉生成的通用设计范式"
+ ],
+ "weaknesses": [
+  "FID降50%虽显著，但对比面较窄(主要对标PanoDiffusion)，缺少与文本到全景新方法的并表",
+  "球面噪声与SDC增加了几何约束的实现复杂度，对非全景生成任务的可迁移性未讨论",
+  "前9页未见用户研究/下游应用(AR/VR沉浸感)的主观评价，质量提升多停留在FID指标"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

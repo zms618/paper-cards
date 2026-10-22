@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/ANNEXE Unified Analyzing Answering and Pixel Grounding for Egocentric Interaction.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ANNEXE Unified Analyzing Answering and Pixel Grounding for Egocentric Interaction.pdf",
+ "title": "ANNEXE: Unified Analyzing, Answering, and Pixel Grounding for Egocentric Interaction",
+ "scores": {
+  "novelty": 5,
+  "depth": 4.5,
+  "evidence": 3,
+  "relevance": 4.5,
+  "overall": 4.3
+ },
+ "one_line": "拼凑三任务基准，MLLM+门控mask，无实验验证",
+ "innovations": [
+  "提出Ego-IRG新任务：给定第一人称图+查询，统一完成analyzing（交互描述RD）、answering（需分割对象的答案RA）、pixel grounding（细粒度掩码RM），把原本分别处理的RIS/EHOI/EgoVQA三任务合成一条查询驱动的流水线",
+  "构建Ego-IRGBench：在HOI4D上重标注20,504–20,681张RGB-D第一人称图，配1.6M query-answer-mask三元组与交互描述、深度图，并显式区分单目标/多目标/无目标三类查询",
+  "ANNEXE架构：冻结图像/提示编码器+可训练Mini-GPT4v2做文本生成；mask侧用可训练分类头Fc预测mask indicator Rc∈{0,1}作为是否存在的门控（无目标时直接不输出mask），并把深度估计（复用Depth Anything V2解码器）作为辅助分支、ground image encoder输出特征参与像素定位解码"
+ ],
+ "method_framework": "冻结图像/提示编码器提特征，可训练MLLM（Mini-GPT4v2）吃「隐藏分析指令Ta+查询T+图像特征」联合生成描述与答案；mask分支用分类头出Rc门控，深度感知特征与查询特征下采样相加后送定位解码器，总损失为5路加权（CE+BCE+smooth L1）。",
+ "experiment_framework": "Ego-IRGBench（HOI4D派生的20k级RGB-D图、1.6M查询、含深度图与掩码）；表1仅做数据集属性对比（SAM-1B/GraD/RefCOCO/RefCOCO+/G-Ref/VISOR/EPIC-KITCHENS/HOI4D/Ego4D/EgoHOS/VISOR-NVOS）；第4节实验全部缺失。",
+ "takeaways": [
+  "把‘无目标查询’显式做进基准并用mask indicator二分类门控最终掩码，等价于让 referring segmentation 具备拒答/abstain 能力，这套设计可直接搬到任何指代分割基准",
+  "以depth为辅助任务（ground image encoder+depth decoder）区分前景的手/操作物与背景，利用的是第一人称操作物体必在前景这一物理先验，比堆注意力更省参数也更可解释",
+  "给无显式提示的分析子任务插一条hidden analyzing instruction再喂进MLLM，缓解了‘描述任务无query导致生成置信度不足’的问题"
+ ],
+ "weaknesses": [
+  "正文止于3.3节数据集构建流水线的开头，第4节及之后的全部实验（与GLaMM/LISA/HOI-ref等 grounding 方法的对比、分割mIoU与描述指标的数值、五路损失λ消融）完全缺失，ANNEXE相对基线的增益幅度无从核验",
+  "1.6M query-answer pairs 建立在HOI4D重标注之上且由半自动流水线产出，机器预标注+人工校对的配比、无目标查询的占比、标注者间一致性（Kappa/ICC）均未报告，标签噪声对1.6M规模数据集的可比性影响未评估",
+  "方法层无新机制：文本侧只是冻结编码器后微调Mini-GPT4v2，mask侧是查询特征与depth感知特征下采样相加过解码器，深度分支直接复用Depth Anything V2的decoder当辅助头，正文既未说明与LISA/GLaMM这类MLLM分割范式在结构上的本质差异，也未给深度分支的增量消融"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.0,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "多任务基准构建，无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

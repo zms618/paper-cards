@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Generate Analyze and Refine Training-Free Sound Source Localization via MLLM.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Generate Analyze and Refine Training-Free Sound Source Localization via MLLM.pdf",
+ "title": "Generate Analyze and Refine Training-Free Sound Source Localization via MLLM",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "三阶段MLLM框架实现无需训练的声源定位，但泛化能力有限",
+ "innovations": [
+  "生成-分析-精炼三阶段元推理框架",
+  "开放集角色标记和锚点投票机制",
+  "自适应门控机制防止不必要的调整"
+ ],
+ "method_framework": "利用MLLM的内在推理能力，通过三阶段处理：生成初始边界框和音频分类，分析通过角色标记和锚点投票评估视听一致性，精炼应用自适应门控和几何操作调整定位",
+ "experiment_framework": "在VGGSound和MUSIC数据集上评估，与视觉模型和MLLM基线比较，使用CAP、CIoU、AUC等指标",
+ "takeaways": [
+  "多阶段推理框架提升视听一致性评估",
+  "自适应门控机制提高效率和稳定性",
+  "开放集角色标记提供可解释的推理过程"
+ ],
+ "weaknesses": [
+  "推理时间较长（每样本约4秒）",
+  "依赖特定MLLM模型（Qwen2.5-Omni-7B）",
+  "未充分探索不同场景下的泛化能力"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态推理框架但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MM-RLHF_The Next Step Forward in Multimodal LLM Alignment.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MM-RLHF_The Next Step Forward in Multimodal LLM Alignment.pdf",
+ "title": "MM-RLHF: The Next Step Forward in Multimodal LLM Alignment",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "构建多模态偏好数据集，提升MLLM对齐，但数据规模与维度完备性存疑",
+ "innovations": [
+  "构建12万条人工标注的多模态偏好对比数据集，覆盖真实性、安全性、 helpfulness等多维对齐需求，而非仅关注幻觉",
+  "细粒度标注：每条偏好对标注具体的对齐维度（幻觉、安全性、有用性、细节准确性等）",
+  "基于该数据集训练的对齐MLLM在多个基准上全面优于现有方法"
+ ],
+ "method_framework": "现有MLLM对齐仅关注窄域（如幻觉缓解），缺乏全面的偏好数据。MM-RLHF：(1)收集覆盖多种多模态任务和对齐维度的问答对；(2)人工标注偏好（chosen vs rejected）并标注具体失败维度；(3)用DPO/RLHF训练全面对齐的MLLM。",
+ "experiment_framework": "12万条人工标注偏好对。训练后在多个MLLM对齐基准（幻觉、安全性、有用性、视觉细节准确性）上评估。基线：现有MLLM对齐方法。消融验证各维度贡献。",
+ "takeaways": [
+  "MLLM对齐不能仅关注幻觉，需覆盖真实性、安全性、有用性等多个维度",
+  "大规模细粒度人工偏好数据是MLLM全面对齐的关键",
+  "现有MLLM大多仅经过SFT，缺乏RLHF阶段，对齐不足"
+ ],
+ "weaknesses": [
+  "12万条数据虽规模大但与LLM RLHF数据相比仍较小",
+  "人工标注的偏好维度划分是否完备未讨论",
+  "数据采集的图像-文本多样性可能有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

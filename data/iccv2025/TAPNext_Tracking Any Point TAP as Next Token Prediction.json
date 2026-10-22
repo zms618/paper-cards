@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/TAPNext_Tracking Any Point TAP as Next Token Prediction.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/TAPNext_Tracking Any Point TAP as Next Token Prediction.pdf",
+ "title": "TAPNext Tracking Any Point TAP as Next Token Prediction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "将点跟踪转为序列解码，简单架构消除偏置，但验证不足",
+ "innovations": [
+  "将TAP任务转化为序列掩码解码问题",
+  "使用SSM和ViT的简单架构消除跟踪特定归纳偏置",
+  "坐标分类参数化实现多模态预测",
+  "BootsTAPNext实现sim-to-real迁移"
+ ],
+ "method_framework": "将视频和查询点编码为联合token，通过SSM进行时序处理，ViT进行空间处理，最后通过坐标头和可见性头输出预测",
+ "experiment_framework": "TAP-Vid基准(DAVIS和Kinetics)，对比在线/离线跟踪器，使用AJ、δavg、OA指标",
+ "takeaways": [
+  "简单架构可消除特定领域归纳偏置",
+  "坐标分类参数化优于直接回归",
+  "自监督训练对sim-to-real迁移至关重要"
+ ],
+ "weaknesses": [
+  "仅评估了256×256分辨率",
+  "未详细分析计算复杂度与性能权衡",
+  "未在真实机器人场景验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "点跟踪方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Sparse-View Localization via Online Neural 3D Regression.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Sparse-View Localization via Online Neural 3D Regression.pdf",
+ "title": "Sparse-View Localization via Online Neural 3D Regression",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "在线MLP回归稀疏视图定位，依赖单目深度先验。",
+ "innovations": [
+  "针对星形拓扑数据的无结构定位框架",
+  "基于在线几何监督的查询特定神经网络学习",
+  "结合单目深度先验提高极端稀疏条件下的鲁棒性"
+ ],
+ "method_framework": "ON3R为每个查询-数据库元组在线训练紧凑MLP，将2D查询关键点回归为3D世界坐标，通过重投影残差和单目深度先验进行监督，然后使用P3P-RANSAC估计绝对姿态并进行轻量级束调整优化。",
+ "experiment_framework": "在MegaDepth、Cambridge Landmarks和稀疏化Aachen Day-Night数据集上评估，使用旋转/平移误差和召回率作为指标，与传递匹配、运动平均、VGGT、Reloc3r和ACE等方法对比。",
+ "takeaways": [
+  "在线训练的查询特定网络在极端稀疏条件下表现优异",
+  "结合重投影残差和单目深度先验可提高深度估计的鲁棒性",
+  "无需预构建3D地图的无结构方法在存储和维护方面具有优势"
+ ],
+ "weaknesses": [
+  "依赖单目深度估计器的准确性",
+  "在完全无重叠的数据库图像情况下可能表现下降",
+  "计算开销相对传统方法较高"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "稀疏视图定位与可靠性主线无直接交点，仅具常规定位价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

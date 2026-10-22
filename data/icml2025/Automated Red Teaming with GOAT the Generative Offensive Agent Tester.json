@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Automated Red Teaming with GOAT the Generative Offensive Agent Tester.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Automated Red Teaming with GOAT the Generative Offensive Agent Tester.pdf",
+ "title": "Automated Red Teaming with GOAT: the Generative Offensive Agent Tester",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "多轮对话式越狱红队系统，在单一基准上表现优异",
+ "innovations": [
+  "提出模拟多轮对话式越狱的agentic红队框架，而非搜索单一通用对抗提示",
+  "把7种攻击技术嵌入attacker LLM的system prompt做上下文学习，无需对攻击者模型再训练即可组合分层攻击",
+  "要求攻击者每轮输出observation/thought/strategy/response四组件，实现Chain-of-Attack-Thought推理"
+ ],
+ "method_framework": "attacker LLM与target LLM配对多轮对话；attacker收到完整对话历史与目标，按观察-思考-策略-回复四步推理选择并组合7类攻击（输出起始token操纵、安全响应干扰、虚构场景等），循环至最大轮数以诱导target输出违规内容。",
+ "experiment_framework": "在JailbreakBench数据集上评测，目标模型含Llama 3.1 8B/70B与GPT-4o；指标为ASR@k（k轮内攻击成功率）；报告对小模型ASR@10达96%、对Llama 3.1 70B达91%、对GPT-4o达94%。",
+ "takeaways": [
+  "多轮对话式攻击比单提示越狱更贴近真实用户行为且成功率高",
+  "attacker仅靠system prompt内嵌攻击定义即可组合分层攻击，扩展性好",
+  "GOAT在SOTA开源与闭源模型上均保持高攻击成功率"
+ ],
+ "weaknesses": [
+  "证据仅在JailbreakBench单一基准上，缺乏对其他越狱/安全基准的覆盖",
+  "与手动红队的成本-效果权衡、可复现性细节披露有限",
+  "聚焦LLM对话安全，与医学影像/多模态推理等落地域无直接关联"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM安全防御属可靠性主线，但未触及医学影像或多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

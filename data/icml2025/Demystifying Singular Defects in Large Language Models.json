@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Demystifying Singular Defects in Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Demystifying Singular Defects in Large Language Models.pdf",
+ "title": "Demystifying Singular Defects in Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "将ViT奇异缺陷框架移植到LLM，解释高范数token机理并改进量化。",
+ "innovations": [
+  "提出适用于 LLM 的奇异缺陷分析框架，指出层内奇异方向可预测 token 范数的突变式爆发。",
+  "用层矩阵的负特征值解释高范数 token 的突然衰减，并区分初始 token 与非初始 token 的计算通路差异。",
+  "指出高范数 token 由对应模块线性近似矩阵的右主奇异向量触发，并据此改进量化方案、设计 LLM 签名。"
+ ],
+ "method_framework": "把每个 transformer 层局部线性近似为矩阵，将高范数隐藏状态与该矩阵的奇异向量/特征值关联：沿右主奇异方向的 token 被放大形成高范数，负特征值导致后续层衰减；据此区分初始（CLS/分隔）token 与普通 token 的不同通路，解释其在 LLM 中的突变/衰减现象。",
+ "experiment_framework": "在多种近期 LLM 上做理论与实证验证；量化高范数 token 出现位置、层间范数演变与奇异方向的对应关系；落地应用为改进量化方案与构造 LLM 签名，给出对比结果。",
+ "takeaways": [
+  "LLM 高范数 token 可用层线性近似的右主奇异方向预测，且呈突变式出现、随后衰减。",
+  "初始 token 与非初始 token 产生高范数的计算通路不同。",
+  "基于该机理可改进量化（抑制高范数导致的失真）并生成可辨识模型身份的签名。"
+ ],
+ "weaknesses": [
+  "线性近似框架为局部刻画，对深层/非线性效应较强的层解释力有限。",
+  "应用以量化改进与签名为主，尚未连接到幻觉/推理可靠性等核心可信问题。",
+  "虽属 LLM 机理分析，但与多模态大模型推理/医学影像落地主线并非直接同一域，relevance 中等。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

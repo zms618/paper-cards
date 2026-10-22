@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Splat Feature Solver.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Splat Feature Solver.pdf",
+ "title": "Splat Feature Solver",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "将3D特征提升建模为闭式稀疏线性逆问题，理论保证强但应用局限明显",
+ "innovations": [
+  "将特征提升统一表述为核与特征描述子无关的稀疏线性逆问题，可闭式高效求解",
+  "在凸损失下给出提升特征全局最优误差的可证上界",
+  "提出Tikhonov Guidance(软对角占优稳值)与Post-Lifting Aggregation(特征聚类滤噪)两种互补正则应对多视图不一致"
+ ],
+ "method_framework": "把2D图像特征(DINO/CLIP等)到3D splat基元的分配写成稀疏线性逆问题：以投影/可见性矩阵为观测算子，闭式求解得到每个3D基元的提升特征；用Tikhonov正则保证数值稳定，用提升后特征聚类聚合过滤多视图噪声，从而在分钟级内得到一致提升特征。",
+ "experiment_framework": "在开放词表3D分割基准上评测，对比基于训练、基于分组、基于前馈启发式的提升基线；报告达到SOTA，且只需数分钟即可生成提升特征。",
+ "takeaways": [
+  "特征提升可被精确建模为稀疏线性逆问题并闭式求解，无需迭代训练",
+  "凸损失下存在可证的全局最优误差上界，理论保证较强",
+  "Tikhonov稳定+聚类去噪能有效抑制多视图不一致带来的噪声"
+ ],
+ "weaknesses": [
+  "闭式求解的质量依赖投影/可见性矩阵精度，相机标定或几何重建误差会直接进入逆问题",
+  "对动态/非刚性场景与遮挡严重视角的适配性未充分讨论",
+  "评测集中在开放词表3D分割，对其他下游(检测/重建)通用性证据有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "特征提升方法与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

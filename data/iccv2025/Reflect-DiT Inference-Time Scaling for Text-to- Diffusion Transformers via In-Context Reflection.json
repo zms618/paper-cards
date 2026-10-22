@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Reflect-DiT Inference-Time Scaling for Text-to- Diffusion Transformers via In-Context Reflection.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Reflect-DiT Inference-Time Scaling for Text-to- Diffusion Transformers via In-Context Reflection.pdf",
+ "title": "Reflect-DiT Inference-Time Scaling for Text-to- Diffusion Transformers via In-Context Reflection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "用VLM反馈替代采样提升DiT推理效率，但依赖外部模型",
+ "innovations": [
+  "引入上下文反思机制替代传统best-of-N采样",
+  "使用VLM提供自然语言反馈指导迭代改进",
+  "设计轻量级上下文Transformer处理多模态反馈"
+ ],
+ "method_framework": "结合VLM反馈判断器和DiT生成器，通过验证-反思循环迭代改进图像生成，使用固定上下文长度限制和随机采样机制保持效率",
+ "experiment_framework": "GenEval基准测试，SANA-1.0-1.6B作为基础模型，比较best-of-N采样和微调方法，使用GenEval指标和人类评估",
+ "takeaways": [
+  "上下文反思机制显著提升复杂约束下的生成质量",
+  "少量样本即可达到大规模模型效果，计算效率高"
+ ],
+ "weaknesses": [
+  "依赖VLM反馈质量，可能引入新错误",
+  "上下文长度限制可能影响长期依赖问题"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "VLM反馈提升DiT效率，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

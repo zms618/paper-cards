@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/TRACE Back from the Future A Probabilistic Reasoning Approach to Controllable Language Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/TRACE Back from the Future A Probabilistic Reasoning Approach to Controllable Language Generation.pdf",
+ "title": "TRACE Back from the Future: A Probabilistic Reasoning Approach to Controllable Language Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "蒸馏HMM计算未来序列属性概率，重加权实现可控生成。",
+ "innovations": [
+  "把可控生成转化为对未来序列期望属性概率（EAP）的精确推断问题，而非采样近似或逐属性后训练。",
+  "从预训练 LM 蒸馏出一个 HMM 来建模未来文本分布，配合小属性分类器，在 HMM 预测的未来上 tractably（可精确枚举）计算 EAP。",
+  "用 EAP 重加权自回归 LM 的下一 token 概率以获得全局合规的续写，免为每个新属性做昂贵后训练。"
+ ],
+ "method_framework": "自回归 LM 缺乏前瞻、难以控制依赖全文的全局属性。TRACE 蒸馏出 HMM 表示 LM 的未来分布 p_hmm(x>t|x≤t)，再用小分类器给出属性概率 p(s|x≤t,x>t)，在 HMM 的未来上精确计算 EAP=Σ p(s|·)p_hmm(·)；最终按 p_trace ∝ p_lm·EAP 重加权解码，使生成兼顾流畅与全局属性约束。",
+ "experiment_framework": "在去毒（detoxification）基准上评测，与需后训练/采样近似的可控生成方法对比；指标为去毒成功率、困惑度/流畅度、解码开销，并测低资源个性化（76 个个性化 LM，秒级构建）与组合属性扩展。",
+ "takeaways": [
+  "仅 20% 解码开销即取得 SOTA 去毒效果。",
+  "可在数秒内构建 76 个低资源个性化 LM，无需逐属性微调。",
+  "能无缝扩展到组合属性，适合稀有/低数据属性。"
+ ],
+ "weaknesses": [
+  "HMM 蒸馏对真实 LM 未来分布的近似精度随上下文变长可能退化，精确 EAP 的'精确'是对 HMM 而言而非对真实 LM。",
+  "去毒等评测主要在英文公开基准，对多语/医学等落地域未验证。",
+  "组合属性下 EAP 的可 tractably 计算依赖 HMM 结构与分类器规模，复杂属性时的可扩展性在前9页缺乏量化分析。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

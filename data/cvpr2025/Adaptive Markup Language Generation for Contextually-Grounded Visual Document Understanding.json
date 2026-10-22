@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Adaptive Markup Language Generation for Contextually-Grounded Visual Document Understanding.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Adaptive Markup Language Generation for Contextually-Grounded Visual Document Understanding.pdf",
+ "title": "Adaptive Markup Language Generation for Contextually-Grounded Visual Document Understanding",
+ "scores": {
+  "novelty": 5,
+  "depth": 5,
+  "evidence": 4.5,
+  "relevance": 6.0,
+  "overall": 5.2
+ },
+ "one_line": "用文档源码做中间表征，两轮对话生成缓解幻觉",
+ "innovations": [
+  "DocMark-Pile（3.8M 图文对）把'文档图 ↔ 其 markup 源码'当作监督：六种语言（纯文本/ Markdown/ LaTeX/ HTML/ JSON/ TikZ）覆盖自然场景文字、arXiv 论文、表格、网页、图表、公式与几何图形，用特殊 token <md>/<json> 等标语言类型，把版面与结构信息显式交给 LLM 侧而非只靠视觉 token。",
+  "DocMark-Instruct（624k）做两轮自适应生成：第一轮 Q1='针对问题 <Question> 从图中抽取相关上下文'，回答 A1='<type><Context></type>'（由模型自己判断用哪种 markup、抽出哪些片段），第二轮再据图与 Context 出 <Answer>，把感知与推理解耦成类 CoT 的中间理据。",
+  "数据清洗/筛选的工程性设计：LaTeX→Markdown 转换过滤编译失败项；TikZ 用 [2] 的模型转写后重新编译、以重渲染图作训练图并剔除编译失败样本；网页(html_brief)只保留标题/正文等关键元素以去噪；公式与图表用 Matplotlib 随机字体/颜色渲染并做仿射变换+高斯噪声增强。"
+ ],
+ "method_framework": "先在 DocMark-Pile 上做多任务 markup 转换预训练（图→对应 markup，带 <md>/<json>/<tikz> 等语言 token），再在 DocMark-Instruct 上以两轮对话微调：模型先自定 markup 类型并输出 <type><Context></type> 作中间上下文，再输出最终 <Answer>；下游任务复用该自适应生成管线。",
+ "experiment_framework": "视觉文档理解基准（文档解析、信息抽取、文档 VQA），跨多种模型规模；对比现有 SOTA MLLM（UReader、Monkey、DocOwl1.5、LLaVA-Next、InternVL、DocPedia、CogAgent 等）；另评 markup 解析与下游推理两类能力。",
+ "takeaways": [
+  "把'document ↔ source markup'当监督，可以绕开'只有 Q-A 短答案'的指令数据空洞，给 MLLM 提供显式的版面/结构上下文（Fig.1 里 InternVL2-2B 答错、DocMark-2B 先输出表格再答对）。",
+  "让模型自选 markup 类型（<type>）并作为中间理据，是把 CoT 搬到文档理解的一种低成本改写：感知（抽上下文）与推理（答）分两轮，便于错误定位。",
+  "TikZ/LaTeX 必须回编译+重渲染再训练、网页数据要先摘要去噪，是合成文档数据最容易踩的坑，作者的处理可直接复用。"
+ ],
+ "weaknesses": [
+  "'自适应'只体现在让模型自己输出 <type>，但正文没有定义类型选择空间、没有类型分配的错误分析，也缺少'固定前缀输出 Markdown'这一最直接对照的消融——也就是说自适应选择相对固定语法的增量未被隔离验证，贡献主要落在数据量与两轮 SFT 上。",
+  "方法层面无新公式/新模块：整体是'多任务 SFT + 两轮对话式 CoT'的常规配方，主体贡献是数据（3.8M+624k）；且大量子任务数据来自他人合成集（WebSight、DaTikZ v1/v2、以 Mathpix 生成的标注），标注正确率与最终可靠性未经核对（TikZ 转换作者自己承认 may not always be accurate）；两轮生成会成倍拉长输出序列与推理时间（先输出整段 markup 再输出答案），文中未做开销-收益平衡分析。",
+  "评测证据在正文里不可见：全文在 3.2.1 节末尾（'thereby enhancing its abil- ity to generate accurate and context'）截断，零样本/推理结果主表、与 SOTA 的分项对比、两轮生成 vs 单轮直答的消融、推理时延与 token 开销都没有出现在给定正文；也未见多种子方差，'substantially outperform' 的量级无法复核。"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "文档理解与可靠性主线无实质交点，仅数据构建有工程价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

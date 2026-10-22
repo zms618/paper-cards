@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Prosafeprune_Projected Safety Pruning for Mitigating Over-Refusal In LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Prosafeprune_Projected Safety Pruning for Mitigating Over-Refusal In LLMS.pdf",
+ "title": "ProSafePrune: Projected Safety Pruning for Mitigating Over-Refusal in LLMs",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "通过参数空间剪枝解决LLM过度拒绝问题，但泛化性和长期安全存疑。",
+ "innovations": [
+  "首次揭示过度拒绝(over-refusal)源于模型内部表示空间的认知偏差——过度有害编码(over-harmful encoding)",
+  "提出ProSafePrune子空间投影低秩参数剪枝框架，移除最具判别层中对应有害成分的低秩方向",
+  "在保持真正有害请求拒绝能力的同时显著降低误拒率，甚至略微提升通用任务性能"
+ ],
+ "method_framework": "首先分析隐藏状态中安全属性的编码方式，发现伪有害指令同时投影到有害和无害子空间。过度安全微调导致有害投影被不成比例地放大。ProSafePrune将伪有害特征投影到子空间，在最具判别力的层中剪枝掉对应有害成分的低秩方向。",
+ "experiment_framework": "在多个不同规模LLM上验证，指标包括误拒率(false rejection rate)、真正有害请求拒绝率、通用任务性能。对比训练式和无训练式基线方法。",
+ "takeaways": [
+  "过度拒绝不是对齐流程的bug，而是模型表示空间中的固有认知偏差",
+  "参数空间剪枝比prompt级或推理时干预更根本地解决过度拒绝",
+  "平衡安全与效用的关键在于精准定位并消除过度有害编码"
+ ],
+ "weaknesses": [
+  "最具判别层的选择方法和剪枝比例可能需要针对不同模型调优",
+  "实验主要在中文模型(讯飞)上验证，跨语言/跨模型族泛化性待验证",
+  "长期安全影响未知——剪枝是否可能在极端情况下削弱真正的安全防护"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM过度拒绝解决与可靠性主线直接交点，方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

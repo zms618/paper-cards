@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Beyond Random Automatic Inner-loop Optimization in Dataset Distillation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Beyond Random Automatic Inner-loop Optimization in Dataset Distillation.pdf",
+ "title": "Beyond Random: Automatic Inner-loop Optimization in Dataset Distillation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "动态截断与自适应窗口优化数据蒸馏内循环，提升效率有限",
+ "innovations": [
+  "动态截断位置机制根据梯度概率选择不同训练阶段的截断点",
+  "自适应窗口大小基于梯度变化幅度调整窗口大小",
+  "低秩Hessian近似降低计算复杂度",
+  "分块语义保留策略提升高分辨率数据蒸馏性能"
+ ],
+ "method_framework": "AT-BPTT框架包含动态截断位置、自适应窗口大小和低秩Hessian近似三个核心组件，通过梯度行为自动调整截断策略，优化内循环训练效率。",
+ "experiment_framework": "在CIFAR-10/100、Tiny-ImageNet和ImageNet-1K数据集上与RaT-BPTT等基线方法比较，使用准确率作为主要指标，评估计算效率和内存消耗。",
+ "takeaways": [
+  "基于梯度变化的动态截断策略比随机截断更有效",
+  "不同训练阶段需要不同的截断窗口大小",
+  "低秩近似可显著降低Hessian计算复杂度"
+ ],
+ "weaknesses": [
+  "分块语义保留策略在高分辨率数据上效果提升有限",
+  "阶段转换阈值设置可能影响稳定性",
+  "方法在更大规模数据集上的扩展性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

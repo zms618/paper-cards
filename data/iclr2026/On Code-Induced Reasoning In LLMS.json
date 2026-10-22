@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/On Code-Induced Reasoning In LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/On Code-Induced Reasoning In LLMS.pdf",
+ "title": "On Code-Induced Reasoning in LLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "代码结构比语义更关键，但扰动方法未深入算法层面",
+ "innovations": [
+  "构建跨 10 种编程语言的并行指令数据集，并引入规则式与生成式受控扰动，选择性破坏代码的结构与语义属性",
+  "发现 LLM 对结构扰动比对语义扰动更敏感，尤其在数学与代码任务上",
+  "证明伪代码、流程图等合适抽象可与代码等效，甚至误导性但保留表层规律的'损坏代码'仍具竞争力；Python 利于自然语言推理，Java/Rust 等低层语言利于数学"
+ ],
+ "method_framework": "构造自然语言与代码的并行指令数据并扩展为多语言变体；用白噪声删除/注释打乱等规则变换与 GPT-4o-mini 改写为伪代码/流程图等生成变换，分别扰动结构与语义；在各变体上微调 5 族 8 规模模型，测自然语言/数学/代码任务，隔离各代码属性对推理的因果贡献。",
+ "experiment_framework": "3331 次实验；5 个模型族、8 个规模、10 种编程语言；扰动覆盖结构（空白符删除等）与语义（注释/重写）；评测自然语言与常识、数学、代码理解与生成任务。",
+ "takeaways": [
+  "代码提升推理主要靠表层结构规律而非精确语义，结构完整性比语义正确性更关键",
+  "不必拘泥原始语法：用更少 token 编码同样信息的伪代码/流程图可等效甚至更优",
+  "语言的语法风格本身会差异化地塑造任务收益（Python↔NL，Java/Rust↔math）"
+ ],
+ "weaknesses": [
+  "受控扰动多为表层改写，对深层算法/控制流结构的因果分离仍有限",
+  "结论基于指令微调(后训练)阶段，对预训练阶段代码作用的外推需谨慎",
+  "属 LLM 推理数据设计而非可信推理/医学影像，相关性中等偏低"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "代码结构对推理影响研究，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

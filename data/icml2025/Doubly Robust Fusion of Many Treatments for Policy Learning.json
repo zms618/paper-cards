@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Doubly Robust Fusion of Many Treatments for Policy Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Doubly Robust Fusion of Many Treatments for Policy Learning.pdf",
+ "title": "Doubly Robust Fusion of Many Treatments for Policy Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "校准加权融合多处理组，双重稳健恢复结构但假设强",
+ "innovations": [
+  "针对多处理组数据稀疏、协变量分布失衡，提出校准加权处理融合流程平衡各组协变量",
+  "用带惩罚的工作模型融合相似处理，在校准模型或结果模型任一正确设定下均能恢复潜在处理组结构(双重稳健)",
+  "融合后的处理空间可无缝套用SOTA的ITR/策略学习方法并灵活选用协变量子集，兼顾稳健性与公平性"
+ ],
+ "method_framework": "在个性化治疗(ITR)设定下，先以校准权重平衡多处理组间协变量分布，再用带惩罚工作模型将相似处理融合为更少的组；该融合在校准模型或结果模型任一正确时双重稳健地恢复潜在处理结构；在融合空间上再做最优策略学习。",
+ "experiment_framework": "在合成数据(含已知处理组结构)与真实医疗数据集上评估恢复处理组结构的准确性与策略价值，与既有多处理组ITR方法对比，考察失衡/稀疏情形。",
+ "takeaways": [
+  "多处理组稀疏下先融合相似处理再学策略更稳健",
+  "校准加权+惩罚融合提供双重稳健的结构恢复保证",
+  "融合空间可直接复用成熟ITR方法并支持公平性约束"
+ ],
+ "weaknesses": [
+  "落地域为因果/策略学习而非医学影像或多模态大模型，主线相关性中等",
+  "融合可能抹平真实存在的异质处理效应，惩罚项选择敏感",
+  "双重稳健要求两个模型之一正确，高维弱信息场景下此假设未必成立"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

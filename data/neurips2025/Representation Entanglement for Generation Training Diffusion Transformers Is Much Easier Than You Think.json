@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Representation Entanglement for Generation Training Diffusion Transformers Is Much Easier Than You Think.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Representation Entanglement for Generation Training Diffusion Transformers Is Much Easier Than You Think.pdf",
+ "title": "Representation Entanglement for Generation: Training Diffusion Transformers Is Much Easier Than You Think",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "REG纠缠低级潜质与高级标记，小幅提升扩散模型训练效率。",
+ "innovations": [
+  "提出REG方法，在训练过程中将低级图像潜质与预训练基础模型的高级类别标记纠缠",
+  "在推理过程中同时重建图像潜质和对应的全局语义，使语义知识主动指导生成过程",
+  "仅需添加一个标记，计算开销极小（<0.5% FLOPs和延迟）"
+ ],
+ "method_framework": "REG通过同步噪声注入将低级图像潜质与预训练基础模型的类别标记纠缠，形成输入SiT块的联合表示，并在特定层对齐隐藏状态特征与参考表示，实现语义指导的图像生成。",
+ "experiment_framework": "ImageNet 256×256数据集，与SiT和REPA基线比较，使用FID、sFID、IS等指标评估生成质量，并分析训练收敛速度和计算开销。",
+ "takeaways": [
+  "高层次的判别性信息（类别标记）显著提升生成质量",
+  "纠缠方法对性能改进至关重要，全局判别信息有效正则化生成潜空间"
+ ],
+ "weaknesses": [
+  "仅评估了ImageNet数据集，缺乏在其他领域或任务上的泛化验证",
+  "未深入分析REG在不同分辨率或更复杂生成任务上的表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

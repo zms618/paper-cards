@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MGD3_Mode-Guided Dataset Distillation using Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MGD3_Mode-Guided Dataset Distillation using Diffusion Models.pdf",
+ "title": "MGD3: Mode-Guided Dataset Distillation using Diffusion Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.8
+ },
+ "one_line": "三阶段扩散蒸馏提升多样性，但与主线关联弱且可复现性存疑",
+ "innovations": [
+  "提出三阶段模式引导框架：模式发现识别不同数据模式、模式引导增强类内多样性、停止引导缓解合成伪影",
+  "无需用蒸馏损失微调预训练扩散模型，直接在采样阶段引导，降低了计算成本",
+  "在多个ImageNet子集和完整ImageNet-1K上均超越SOTA数据集蒸馏方法"
+ ],
+ "method_framework": "MGD3利用预训练扩散模型进行数据集蒸馏，无需额外微调。三阶段流程：(1)模式发现——识别原始数据集中的不同数据模式；(2)模式引导——在扩散采样过程中加入模式引导信号，增强类内样本多样性；(3)停止引导——在合适时间步停止引导，减少合成样本中的伪影。引导信号强度可调，用于平衡多样性和图像质量。",
+ "experiment_framework": "在ImageNette、ImageIDC、ImageNet-100和ImageNet-1K数据集上评估；使用ResNet-10作为评估模型；对比DM、MinMaxDiff、LDM、D4M、DiT等SOTA数据集蒸馏方法；采用硬标签评估协议；报告不同每类样本数（IPC=10/20/50）下的分类准确率。",
+ "takeaways": [
+  "MGD3在ImageNette上较SOTA提升4.4%，ImageNet-1K上提升1.6%",
+  "基于DiT的MGD3在ImageNette IPC=10时达到66.4%准确率，较基线DiT提升7.3%",
+  "模式引导有效提升了合成数据的类内多样性，停止引导有效缓解了扩散伪影"
+ ],
+ "weaknesses": [
+  "与主线研究方向（可靠性×医学影像/多模态大模型推理）关联较弱，属于数据集蒸馏领域",
+  "模式发现步骤的具体实现细节在正文中描述不够充分，可复现性存疑",
+  "仅在图像分类数据集上验证，未扩展到其他模态或任务类型"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

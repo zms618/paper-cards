@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DVI_A Derivative-based Vision Network for Inr.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DVI_A Derivative-based Vision Network for Inr.pdf",
+ "title": "DVI: A Derivative-based Vision Network for INR",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "DVI融合INR导数特征与raster网络，多任务提升有限",
+ "innovations": [
+  "提出DVI：从INR的高阶导数图中提取结构特征，避免raster转换过程丢失INR结构信息",
+  "将导数特征无缝融合进已有的SOTA raster视觉网络，兼顾INR结构信息与成熟视觉架构",
+  "系统消融不同导数计算技术与导数阶数对性能的影响"
+ ],
+ "method_framework": "对INR的坐标-值映射求导得到一阶/高阶导数图（编码边缘、曲率、结构变化）；将导数图作为额外通道与raster图像一起送入现成raster视觉网络；端到端训练。",
+ "experiment_framework": "在3种数据模态（图像/3D体积/视频）上5个视觉任务评测，对比纯INR-based方法与raster-based方法。",
+ "takeaways": [
+  "INR的高阶导数图携带raster转换会丢失的关键结构信息",
+  "DVI在多种模态任务上同时优于纯INR与raster-based路线",
+  "导数计算技术与导数阶数是可调的关键超参"
+ ],
+ "weaknesses": [
+  "属INR视觉理解，与可靠性主线弱相关",
+  "前9页未给出完整数值表，各任务具体增益需看实验章节",
+  "高阶导数计算增加推理开销，复杂度未充分量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.78,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

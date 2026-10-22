@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/DLoFT_Gradient-Decoupled Fine-Tuning for Generalizable Long Chain-of-Thought Reasoning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/DLoFT_Gradient-Decoupled Fine-Tuning for Generalizable Long Chain-of-Thought Reasoning.pdf",
+ "title": "DLoFT: Gradient-Decoupled Fine-Tuning for Generalizable Long Chain-of-Thought Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "梯度解耦微调提升长链推理泛化，但计算开销大且依赖特定结构",
+ "innovations": [
+  "梯度解耦机制分离范式与内容梯度",
+  "利用LongCoT两阶段结构实现解耦",
+  "仅使用范式相关梯度更新模型参数"
+ ],
+ "method_framework": "通过投影和正交化将完整梯度解耦为范式相关和内容相关两部分，仅保留范式相关梯度更新模型，避免过拟合问题特定知识。",
+ "experiment_framework": "在17个领域20个基准测试上评估，包括数学、代码、医学等，对比SFT和DLoFT性能，使用准确率和LongCoT行为比例作为指标。",
+ "takeaways": [
+  "梯度解耦可有效提升模型泛化能力",
+  "LongCoT两阶段结构为解耦提供天然条件",
+  "DLoFT可作为RL冷启动阶段替代SFT"
+ ],
+ "weaknesses": [
+  "计算开销增加，需计算两次梯度",
+  "依赖LongCoT两阶段结构，可能不适用于其他推理范式",
+  "未探索不同领域数据混合训练的效果"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

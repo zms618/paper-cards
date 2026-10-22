@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Bigram Subnetworks_Mapping to Next Tokens in Transformer Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Bigram Subnetworks_Mapping to Next Tokens in Transformer Language Models.pdf",
+ "title": "Bigram Subnetworks: Mapping to Next Tokens in Transformer Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "稀疏化方法发现Transformer中0.2%参数即可实现二元预测",
+ "innovations": [
+  "识别出语言模型中仅需约10M参数即可实现二元预测的子网络",
+  "发现二元子网络主要集中在第一MLP层",
+  "证明二元子网络在模型训练过程中持续存在并重现残差流特性"
+ ],
+ "method_framework": "使用连续稀疏化方法在冻结的模型参数上优化掩码，找到能够重现二元预测的最小子网络",
+ "experiment_framework": "在Pythia和GPT-2模型(最大1B参数)上训练二元子网络，评估其与真实二元预测的相关性及对模型性能的影响",
+ "takeaways": [
+  "语言模型的核心功能可由极小参数子网络实现",
+  "第一层MLP在从当前token到next token转换中起关键作用"
+ ],
+ "weaknesses": [
+  "未深入探讨二元子网络与更复杂语言模型电路的关系",
+  "对二元子网络如何随模型规模扩展的分析有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

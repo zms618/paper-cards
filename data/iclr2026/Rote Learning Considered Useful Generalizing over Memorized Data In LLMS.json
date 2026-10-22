@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Rote Learning Considered Useful Generalizing over Memorized Data In LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rote Learning Considered Useful Generalizing over Memorized Data In LLMS.pdf",
+ "title": "Rote Learning Considered Useful: Generalizing over Memorized Data in LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "用无意义token记忆事实，再微调实现LLM对死记数据的泛化。",
+ "innovations": [
+  "挑战传统观点，证明在精心设计的流程下 LLM 可以对死记(rote memorized)数据实现泛化。",
+  "提出两阶段 memorize-then-generalize 框架：阶段一用合成的无语义 key token 记忆事实三元组，阶段二用语义化提示微调。",
+  "发现第二阶段仅凭'一条记忆事实+一条语义提示'即可泛化，并观察到 key token 与语义提示间出现结构化、语义对齐的潜在表征。"
+ ],
+ "method_framework": "阶段一：用无意义占位 token [X] 连接 subject–relation–object，让模型逐字记忆关联；阶段二：在少量语义化自然语言提示上微调，使模型把记忆到的关联重解释为可泛化知识；通过分析中间层潜在表征，观察 key token 与语义提示在表示空间中对齐。",
+ "experiment_framework": "在 8 个 LLM 上实验；泛化方向包括其他关联、其他提示句式、其他语言；用潜在表示对齐与复述/改写提示下的正确率衡量泛化；报告记忆-泛化转换的机制证据与知识注入效率。",
+ "takeaways": [
+  "死记硬背并非必然损害泛化，关键在于后续是否有把记忆重解释为语义化知识的阶段。",
+  "仅凭单条记忆事实配单条语义提示即可触发对其他关联/句式/语言的泛化。",
+  "该机制既可用于高效知识注入，也带来记忆数据被恶意复用/重定向的风险。"
+ ],
+ "weaknesses": [
+  "事实均为合成的人名关系三元组，与真实大规模知识注入场景的差距未充分弥合。",
+  "结论依赖特定无意义 key token 设计，换更自然的预训练式记忆方式是否仍成立未知。",
+  "作者自陈存在记忆数据被恶意复用的安全风险，但未给出相应缓解方案。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM可靠性中的记忆-泛化机制，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

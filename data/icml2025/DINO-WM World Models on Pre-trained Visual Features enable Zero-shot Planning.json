@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DINO-WM World Models on Pre-trained Visual Features enable Zero-shot Planning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DINO-WM World Models on Pre-trained Visual Features enable Zero-shot Planning.pdf",
+ "title": "DINO-WM: World Models on Pre-trained Visual Features enable Zero-shot Planning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "冻结DINO特征构建世界模型，实现零样本规划",
+ "innovations": [
+  "首次将DINOv2预训练patch特征作为世界模型的观测空间，解耦表征学习与动力学建模，无需任务特定的数据覆盖",
+  "提出帧级自回归预测的ViT转移模型，在patch特征空间预测未来状态，避免像素空间重建的计算开销",
+  "纯离线训练+测试时MPC规划范式，无需专家演示、奖励模型或逆模型即可实现零样本目标导向行为"
+ ],
+ "method_framework": "DINO-WM由三部分组成：(1)观测模型：冻结的DINOv2编码器将RGB图像编码为patch嵌入zt；(2)转移模型：修改版ViT(去tokenization层)，以因果注意力逐帧自回归预测未来patch嵌入zt+1；(3)可选解码器用于可视化。测试时给定目标观测og，通过MPC优化动作序列a0:T-1，最小化预测终点嵌入与目标嵌入的距离。",
+ "experiment_framework": "在6个环境套件评测：迷宫导航、滑动物体操作、机械臂控制、可变形物体操作等；基线包括IRIS、DreamerV3、专家演示方法；指标为任务成功率和LPIPS视觉重建质量；最困难任务上成功率较前SOTA提升45%，LPIPS提升56%。",
+ "takeaways": [
+  "预训练视觉特征作为世界模型观测空间显著优于端到端学习的隐空间，降低了对离线数据覆盖度的要求",
+  "帧级预测比token级预测更好地捕捉全局时空结构",
+  "纯离线训练的世界模型+测试时优化可在多种任务族上实现零样本泛化，无需在线交互或任务奖励"
+ ],
+ "weaknesses": [
+  "依赖DINOv2这一特定预训练模型，对其他预训练视觉表征(R3M、MVP等)的对比分析不足",
+  "仅在仿真环境验证，真实机器人上的零样本规划效果未涉及",
+  "MPC规划的计算效率和长时序规划的误差累积问题未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

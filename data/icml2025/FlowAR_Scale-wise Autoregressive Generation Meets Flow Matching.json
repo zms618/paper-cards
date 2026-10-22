@@ -1,0 +1,37 @@
+{
+ "title": "FlowAR: Scale-wise Autoregressive Generation Meets Flow Matching",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "FlowAR简化VAR结构，用flow matching替代离散自回归生成连续latent",
+ "innovations": [
+  "简化VAR的复杂多尺度结构为每scale翻倍，去掉对多尺度残差VQ tokenizer的强耦合",
+  "将next-scale prediction从离散自回归改为连续flow matching：AR Transformer生成条件语义s_hat_i，flow matching模块从噪声采样到该scale latent s_i",
+  "证明FlowAR兼容DC-AE/SD-VAE/MAR-VAE等多种现成连续VAE，模块化替换tokenizer"
+ ],
+ "method_framework": "AR Transformer按类别条件逐级生成s_hat_1, s_hat_2, ..., s_hat_n(每级2x上采样)；每级flow matching模块以s_hat_i为条件(通过Spatial-adaLN)，从F0~N(0,I)沿直线插值F_t=t s_i+(1-t)F0训练速度场V_t=s_i-F0；推理时从噪声沿速度场积分到s_i，逐级上采样并AR生成下一级；最终VAE decoder解码图像。",
+ "experiment_framework": "ImageNet-256与ImageNet-512 class-conditional生成；对比BigGAN/MaskGiT/VQGAN/DiT-XL/VAR-d30/d36；报告FID/IS/Precision/Recall；消融tokenizer兼容性(DC-AE/SD-VAE/MAR-VAE)、per-token vs per-scale、diffusion vs flow matching、语义注入方式。",
+ "takeaways": [
+  "ImageNet-256上FlowAR-H(1.9B)FID 1.65，超过VAR-d30(1.97)；FlowAR-L(589M)FID 1.90 vs VAR-d30 1.97",
+  "ImageNet-512上FlowAR-L(590M)FID 2.43，比VAR-d36(2.3B)FID 2.63更好且参数仅25.6%",
+  "flow matching比diffusion在per-scale设置下FID更低(3.61 vs 6.85 on MAR-VAE)"
+ ],
+ "weaknesses": [
+  "仅class-conditional ImageNet评测，未扩展到text-to-image或高分辨率",
+  "相对VAR的FID增益约0.1-0.3，幅度有限；创新主要是把离散AR换成连续flow的工程组合",
+  "属于图像生成模型，与可靠性/可信AI主线关联弱"
+ ],
+ "confidence": "high",
+ "key": "icml2025/FlowAR_Scale-wise Autoregressive Generation Meets Flow Matching.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FlowAR_Scale-wise Autoregressive Generation Meets Flow Matching.pdf",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

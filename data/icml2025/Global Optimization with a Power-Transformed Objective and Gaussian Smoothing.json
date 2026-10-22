@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Global Optimization with a Power-Transformed Objective and Gaussian Smoothing.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Global Optimization with a Power-Transformed Objective and Gaussian Smoothing.pdf",
+ "title": "Global Optimization with a Power-Transformed Objective and Gaussian Smoothing",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "幂变换+高斯平滑两步法优化，理论复杂度有提升但实验验证不足",
+ "innovations": [
+  "对目标函数做指数幂-N变换f^N，将全局最大点附近的地形变尖锐以增强区分度",
+  "对幂变换后的函数做高斯平滑，用随机梯度近似优化，保证收敛到全局最优δ邻域",
+  "非光滑情形迭代复杂度O(d⁴ε⁻²)，Lipschitz光滑情形降至O(d²ε⁻²)，显著快于标准同伦方法"
+ ],
+ "method_framework": "第一步对f做幂变换f_N=f^N，使全局最大点相对于局部极大值更突出；第二步对f_N做高斯卷积平滑，消除不可微点后用随机近似方法优化。通过增大N可任意逼近全局最优。",
+ "experiment_framework": "在多个非凸全局优化测试函数上实验，对比其他基于平滑的全局优化算法；报告大多数实验中找到更优解。",
+ "takeaways": [
+  "幂变换可放大全局最优与局部最优的差异，配合高斯平滑实现全局搜索",
+  "光滑性假设下迭代复杂度从O(d⁴)降至O(d²)，实用性大幅提升",
+  "无需梯度信息即可处理非光滑目标函数"
+ ],
+ "weaknesses": [
+  "幂变换N需要足够大，N的选择缺乏自适应策略",
+  "实验仅在小规模测试函数上验证，高维ML目标未涉及",
+  "高斯平滑带宽的选择对收敛精度影响大"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

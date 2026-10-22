@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/WorldSense_Evaluating Real-World Omnimodal Understanding for Multimodal LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/WorldSense_Evaluating Real-World Omnimodal Understanding for Multimodal LLMS.pdf",
+ "title": "WorldSense: Evaluating Real-World Omnimodal Understanding for Multimodal LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "构建音视频耦合基准，评测多模态LLM真实场景理解能力",
+ "innovations": [
+  "首个同时涵盖视觉、音频、文本输入的多模态视频理解基准，区别于只看图/文的基准",
+  "任务设计强调音视频强耦合，要求模型利用全模态协同感知而非单模态侥幸作答",
+  "规模与多样性：1662段音视频同步视频，8大域67子类，26类任务3172道多选QA，80名专家多轮校正标注"
+ ],
+ "method_framework": "构建音视频同步的真实世界视频集并按域/子类组织；任务要求联合视觉+音频+文本推理(仅靠单模态无法答对)；以多选QA评测SOTA多模态LLM，并按域/任务分析其失败模式。",
+ "experiment_framework": "评测多个SOTA多模态大模型；指标为多选QA准确率；报告最佳模型仅65.1%准确率，说明真实世界全模态理解仍有很大挑战；按域/任务剖析模型局限。",
+ "takeaways": [
+  "现有多模态LLM在需音视频协同的真实场景理解上仍困难(最佳仅65.1%)",
+  "强制音视频耦合的任务可暴露模型只依赖视觉文本而忽视音频的问题",
+  "高质量专家标注+细粒度域分类可定位具体薄弱子任务"
+ ],
+ "weaknesses": [
+  "多选题形式可能存在选项偏差/猜测收益，未报告置信度校准",
+  "最佳65.1%看似低，但未分离音频冗余(去掉音频后准确率下降多少)来量化音频的真实贡献",
+  "仅视频+音频+文本，未纳入触摸/深度等更全模态，且3172题相对任务广度仍偏小"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态评测基准，与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

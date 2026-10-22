@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/SPARROW Learning Spatial Precision and Temporal Referential Consistency in Pixel-Grounded.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SPARROW Learning Spatial Precision and Temporal Referential Consistency in Pixel-Grounded.pdf",
+ "title": "SPARROW Learning Spatial Precision and Temporal Referential Consistency in Pixel-Grounded",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "双提示与跟踪特征提升视频MLLM时空一致性，但计算开销大",
+ "innovations": [
+  "目标特定跟踪特征(TSF)注入时序对齐的参照线索",
+  "双提示设计([BOX]和[SEG])融合几何先验与语义接地",
+  "构建大规模视频参照理解数据集(30,646视频,45,231问答对)"
+ ],
+ "method_framework": "SPARROW结合空间和时序视觉编码器，通过V→L适配器连接LLM，再通过L→V适配器映射[BOX]和[SEG]提示，使用SAM2进行像素级分割，TSF提供时序一致性监督",
+ "experiment_framework": "在MeViS、Ref-YTVOS、Ref-DAVIS17(RVOS)、VidSTG(视觉接地)和VideoGCG(视频对话生成)六个基准测试上评估，集成到UniPixel、GLUS和VideoGLaMM三个视频MLLM",
+ "takeaways": [
+  "双提示设计([BOX]和[SEG])可显著提升初始帧分割精度",
+  "TSF机制在不依赖外部跟踪器的情况下提供时序一致性",
+  "模块化设计可无缝集成到现有视频MLLM中"
+ ],
+ "weaknesses": [
+  "TSF在推理时可选但会增加计算复杂度",
+  "双提示设计增加了模型参数量",
+  "实验主要在公开数据集上进行，缺乏真实医学影像应用验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视频MLLM时空一致性设计，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

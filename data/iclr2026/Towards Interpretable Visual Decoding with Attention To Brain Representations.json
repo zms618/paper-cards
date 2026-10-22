@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Interpretable Visual Decoding with Attention To Brain Representations.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Interpretable Visual Decoding with Attention To Brain Representations.pdf",
+ "title": "Towards Interpretable Visual Decoding with Attention to Brain Representations",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.7
+ },
+ "one_line": "端到端脑条件化扩散模型，重建质量相当但泛化证据不足",
+ "innovations": [
+  "端到端地直接用脑活动条件化潜扩散模型，绕过CLIP/DINO等中间特征空间，消除信息瓶颈与对齐依赖",
+  "提出Image-Brain BI-directional可解释性框架(IBBI)，分析扩散去噪各步的跨注意力模式，揭示不同皮层区对生成轨迹的影响",
+  "在公开fMRI数据集上取得与两阶段方法相当的重建质量，同时提供更高透明度"
+ ],
+ "method_framework": "摒弃'脑信号→中间嵌入→生成器'的两阶段管线，让潜扩散模型直接以脑表征为条件。通过在去噪各步分析生成器对脑表征不同区域的跨注意力权重，反向解读各脑区如何影响重建图像，实现图像空间与脑空间的双向可解释探测。",
+ "experiment_framework": "在公开fMRI数据集上做视觉重建，与先映射CLIP/DINO再生成的两阶段方法对比重建质量；用IBBI分析跨注意力权重并按ROI聚合，验证各脑区对生成轨迹的贡献。",
+ "takeaways": [
+  "直接以脑表征条件化扩散模型可达到与两阶段方法相当的重建质量",
+  "去除中间特征空间后，可更透明地观察不同脑区如何驱动重建",
+  "跨注意力模式可作为神经解码中脑区贡献的可解释探针"
+ ],
+ "weaknesses": [
+  "重建质量仅'相当'于既有两阶段方法，端到端直接条件化是否真的消除了信息瓶颈优势需更多消融",
+  "fMRI数据量小、信噪比低，跨被试泛化证据有限",
+  "属NeuroAI/神经解码方向，与可靠性主线及医学影像诊断、多模态推理落地域关联弱"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "神经解码与可靠性主线弱关联，无医学诊断价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

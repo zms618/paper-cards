@@ -1,0 +1,37 @@
+{
+ "title": "Flow of Reasoning: Training LLMs for Divergent Reasoning with Minimal Examples",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "将LLM推理建模为DAG上的GFlowNet flow，用log-variance损失实现少样本训练",
+ "innovations": [
+  "将多步推理形式化为DAG结构上的GFlowNet flow，使前向策略P_F按reward R(s_n) ∝ Z(s_0)P_F(τ)采样",
+  "采用log-variance损失LV(τ)=(Φ(τ)-EΦ)^2替代难学的log Z，Φ(τ)=log R+Σlog P_B-Σlog P_F",
+  "结合on-policy tempering、off-policy replay buffer与local search做高效探索，在少样本(15例/步)下训练"
+ ],
+ "method_framework": "将推理状态s_t视为DAG节点，前向策略P_F(s_t|s_{t-1},g)由LLM给出，反向策略P_B由预训练LLM的log-likelihood导出；terminal reward R=w·I(success)+λΣ(-1/log P_LLM(a_t|s_{t-1},g))；最小化batch内Φ(τ)的方差以满足flow matching；训练时混合on-policy与off-policy轨迹。",
+ "experiment_framework": "BlocksWorld(2/4/6步)与Game of 24；基座Llama-3-8B；基线CoT/ToT/GoT/XoT/RAP/OpenAI-O1-mini/O1-preview/SFT/SFT+PPO/SFT+GFN-CoT；指标Acc(n次采样至少一次正确)、Diversity(语义不同正确解数)、Creativity(独有的正确解比例)、Runtime。",
+ "takeaways": [
+  "BlocksWorld 6步上FOR达78.44% Acc、Diversity 1.33、Creativity 9.52%，优于SFT/PPO/GFN-CoT，接近O1-mini(93.93%)且推理速度快30倍",
+  "Game of 24上FOR Acc 48% vs SFT 29%、Creativity 29.15%，而O1-mini达94%但无多样性",
+  "仅用15个训练示例/步数即超过多数prompting与SFT基线"
+ ],
+ "weaknesses": [
+  "Game of 24上FOR Acc(48%)显著低于OpenAI-O1-mini(94%)，说明在单路径精度上仍落后于大规模RL模型",
+  "reward设计依赖LLM log-likelihood做intermediate reward，在长链推理中累积偏差未分析",
+  "仅在BlocksWorld与Game of 24两个规则化任务验证，数学/代码等开放推理任务的多样性增益未展示"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Flow of Reasoning Training LLMs for Divergent Reasoning with Minimal Examples.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Flow of Reasoning Training LLMs for Divergent Reasoning with Minimal Examples.pdf",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

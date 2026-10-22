@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Concept-Guided Fine-Tuning Steering ViTs away from Spurious Correlations to Improve.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Concept-Guided Fine-Tuning Steering ViTs away from Spurious Correlations to Improve.pdf",
+ "title": "Concept-Guided Fine-Tuning Steering ViTs away from Spurious Correlations to Improve",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "LLM概念引导ViT微调，减少虚假相关性，提升OOD鲁棒性",
+ "innovations": [
+  "LLM生成概念集，VLM生成空间掩码",
+  "双目标对齐损失：概念区域增强+背景区域抑制",
+  "仅需少量样本和半类数据的高效微调框架"
+ ],
+ "method_framework": "CFT三阶段框架：LLM提取类相关概念→GroundedSAM生成概念掩码→AttnLRP计算相关性图，通过概念对齐和分类一致性损失微调模型",
+ "experiment_framework": "五个OOD数据集(IN-A, ObjectNet, IN-R, IN-Sketch, SI-Score)和三个ViT模型，对比GradMask、RRR、RRDA基线",
+ "takeaways": [
+  "概念级监督比传统前景-背景分割更有效",
+  "少量样本和半类数据即可显著提升模型鲁棒性",
+  "方法适用于多种ViT架构"
+ ],
+ "weaknesses": [
+  "在艺术和抽象表示数据集上提升有限",
+  "对LLM和VLM的依赖可能引入额外误差",
+  "未探索不同概念验证策略的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "OOD鲁棒性+虚假相关性抑制，可靠性主线明确落地",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

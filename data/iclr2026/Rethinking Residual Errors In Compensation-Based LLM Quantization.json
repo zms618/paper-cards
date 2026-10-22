@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Rethinking Residual Errors In Compensation-Based LLM Quantization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rethinking Residual Errors In Compensation-Based LLM Quantization.pdf",
+ "title": "Rethinking Residual Errors in Compensation-Based LLM Quantization",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "修正LLM量化校准目标，降低困惑度但未提升可靠性。",
+ "innovations": [
+  "诊断现有补偿式量化(GPTQ/GPTAQ)在校准时对齐的是补偿后权重输出而非原始全精度输出，属次优校准目标。",
+  "重定义目标：每步精确对齐量化模型输出与原始全精度模型输出。",
+  "揭示残差误差不仅来自前层输出差异，还来自量化权重与全精度权重本身的差异，据此改进补偿框架。"
+ ],
+ "method_framework": "在逐层weight-compensation量化中，把校准目标从对齐'当前补偿权重产生的输出'改为对齐'原始FP模型的真实输出'，并在残差计算中同时计入前层输出误差与量化-全精度权重差异，迭代更新补偿量。",
+ "experiment_framework": "在Llama2/Llama3 1B至70B规模上；报告WikiText-2与C4困惑度，并测6个下游zero-shot任务；对比GPTQ/GPTAQ等补偿式量化基线。",
+ "takeaways": [
+  "补偿式量化的校准目标应对齐原始全精度输出，而非补偿后权重输出，否则会累积次优误差。",
+  "残差误差来源应同时包含前层输出漂移与权重量化差异，两者都修正可降低量化困惑度。"
+ ],
+ "weaknesses": [
+  "与可靠性/鲁棒/幻觉抑制主线无关，属模型压缩/推理效率。",
+  "改进主要体现在困惑度，对量化模型在长推理/幻觉等可靠性维度的影响未评估。",
+  "前9页给出实验设定，具体perplexity数值表与位宽消融在后续页，正文定量证据有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "模型压缩工作，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

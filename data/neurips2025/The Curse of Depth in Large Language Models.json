@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/The Curse of Depth in Large Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/The Curse of Depth in Large Language Models.pdf",
+ "title": "The Curse of Depth in Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "LayerNorm Scaling缓解深度诅咒，但实验覆盖有限",
+ "innovations": [
+  "提出深度诅咒(CoD)概念解释LLMs深层层低效问题",
+  "理论分析Pre-LN导致输出方差指数增长",
+  "提出LayerNorm Scaling方法控制方差增长"
+ ],
+ "method_framework": "LayerNorm Scaling通过将层归一化输出乘以1/√l因子，控制Pre-LN中输出方差随深度的指数增长，使深层层更有效参与训练",
+ "experiment_framework": "在LLaMA(130M-7B)和OLMo模型上评估，使用困惑度、下游任务性能和层剪枝实验，对比Pre-LN、Post-LN、DeepNorm和Mix-LN",
+ "takeaways": [
+  "简单有效的方差控制方法可显著提升大模型性能",
+  "深层层相似性分析是评估模型效率的重要指标"
+ ],
+ "weaknesses": [
+  "未探索不同架构(如MoE)上的效果",
+  "缺乏对计算开销的详细分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.3,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

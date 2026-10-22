@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Measuring Variable Importance in Heterogeneous Treatment Effects with Confidence.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Measuring Variable Importance in Heterogeneous Treatment Effects with Confidence.pdf",
+ "title": "Measuring Variable Importance in Heterogeneous Treatment Effects with Confidence",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 5.9
+ },
+ "one_line": "PermuCATE算法降低CATE变量评估方差，但计算开销大且未验证高维数据。",
+ "innovations": [
+  "提出PermuCATE算法，将条件置换重要性（CPI）方法应用于异质处理效应（CATE）估计的变量重要性评估",
+  "理论分析有限样本性质，证明PermuCATE比LOCO方法方差更低",
+  "在生物医学数据常见的小样本场景下提升统计功效，支持高维相关变量的重要性评估"
+ ],
+ "method_framework": "将条件置换重要性方法扩展到CATE估计场景。对每个变量，在控制其他变量的条件下置换该变量，测量CATE预测的变化量作为重要性得分。与LOCO（移除单个协变量后重新训练）相比，PermuCATE基于置换而非重训练，因此方差更低、计算更高效。提供统计显著性的置信区间估计。",
+ "experiment_framework": "在模拟数据集和真实健康数据集上评测，与LOCO方法对比。指标为变量重要性估计的方差、统计功效、对相关变量的区分能力。验证高维场景（数百个相关变量）下的效果。",
+ "takeaways": [
+  "PermuCATE在CATE变量重要性评估上方差显著低于LOCO方法",
+  "条件置换方式有效处理变量间相关性，避免人为夸大重要性",
+  "更高的统计功效对生物医学小样本因果推断尤为重要"
+ ],
+ "weaknesses": [
+  "置换检验的计算开销随变量数增加而线性增长",
+  "仅在tabular数据上验证，高维图像/文本数据的适用性未涉及",
+  "变量重要性的因果解释依赖于可忽略性假设，实际应用中难以验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Universal Cross-Tokenizer Distillation via Approximate Likelihood Matching.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Universal Cross-Tokenizer Distillation via Approximate Likelihood Matching.pdf",
+ "title": "Universal Cross-Tokenizer Distillation via Approximate Likelihood Matching",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "跨分词器蒸馏方法ALM，性能提升有限但计算开销大",
+ "innovations": [
+  "近似似然匹配(ALM)方法实现跨分词器蒸馏",
+  "结果块去偏技术解决分词偏差问题",
+  "隐藏状态跨分词器蒸馏增强信号传递",
+  "GradMag梯度归一化方法有效组合多个损失函数"
+ ],
+ "method_framework": "ALM方法通过识别对齐的token块，最小化它们之间的似然差异，使用二值化f-散度近似计算块似然差异，并可选地结合隐藏状态对齐和去偏技术。",
+ "experiment_framework": "数据集：Tulu3指令微调数据集；评估基准：PiQA、ARC-Challenge、BoolQ、MMLU、AGIEval和IFEval；基线：SFT、DSKD、MinED",
+ "takeaways": [
+  "跨分词器自蒸馏可有效实现模型迁移和集成",
+  "结果块去偏技术显著提升跨分词器蒸馏性能",
+  "GradMag方法有效平衡多个损失函数的梯度贡献"
+ ],
+ "weaknesses": [
+  "字节级迁移仍与原始模型存在性能差距",
+  "方法计算复杂度较高，需要额外的对齐计算",
+  "隐藏状态对齐需要额外的投影函数训练"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

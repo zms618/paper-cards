@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Training-Free Text-Guided Color Editing with Multi-Modal Diffusion Transformer.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Training-Free Text-Guided Color Editing with Multi-Modal Diffusion Transformer.pdf",
+ "title": "Training-Free Text-Guided Color Editing with Multi-Modal Diffusion Transformer",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "操纵MM-DiT注意力图实现训练-free颜色编辑，一致性优于商业模型。",
+ "innovations": [
+  "通过针对性操纵注意力图和value token，在MM-DiT中解耦结构和颜色，实现精确颜色编辑",
+  "实现词级属性强度控制，仅修改prompt指定区域而保持无关区域不变",
+  "方法可泛化到视频模型（CogVideoX）和指令编辑模型（Step1X-Edit, FLUX.1 Kontext）"
+ ],
+ "method_framework": "ColorCtrl利用MM-DiT的注意力机制进行颜色编辑。通过操纵注意力图识别编辑区域，通过修改value token调整颜色属性（反照率、光源色、环境光），同时保持结构和材质不变。词级控制允许精确指定编辑强度和目标区域。",
+ "experiment_framework": "在SD3和FLUX.1-dev上评估图像颜色编辑质量和一致性，对比训练-free方法和商业模型（FLUX.1 Kontext Max, GPT-4o Image Generation）；扩展到CogVideoX视频模型测试时序一致性。",
+ "takeaways": [
+  "MM-DiT的注意力机制可用于解耦结构和颜色，实现精确的训练-free颜色编辑",
+  "ColorCtrl在一致性上超越FLUX.1 Kontext Max和GPT-4o Image Generation等商业模型",
+  "方法具有广泛的模型通用性，可迁移到视频和指令编辑模型"
+ ],
+ "weaknesses": [
+  "仅针对颜色编辑，其他属性编辑（形状、纹理）的适用性未探讨",
+  "注意力图操纵的可解释性分析不够深入",
+  "在复杂光照和反射场景下的物理一致性仍可能不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态编辑技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

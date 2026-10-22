@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Single Architecture for Representing Invariance under any Space Group.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Single Architecture for Representing Invariance under any Space Group.pdf",
+ "title": "A SINGLE ARCHITECTURE FOR REPRESENTING INVARIANCE UNDER ANY SPACE GROUP",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "共享Transformer+预计算路由矩阵，实现230空间群精确不变性",
+ "innovations": [
+  "解析导出群作用对傅里叶系数的相位约束 F(ω)=e^{2πiωᵀAᵀt}F(Aω)（Proposition 3.1），并证明相位一致轨道上的加权和构成 L² 内所有 G-不变函数的完备基（Theorem 3.2）",
+  "把约束转成倒易格上的有向图（节点为频率、边权为相位因子），删去自环权≠1 的节点后取连通分量即得基函数系数，给出对 230 个空间群通用的构造算法（Algorithm 1）",
+  "用基图邻接矩阵作群条件路由矩阵 M_G，编码 e^G=M_G v(x) 后下游 Transformer 权重全空间群共享，只换 M_G 就获得该群的精确不变性，让数据稀疏的群也能复用参数"
+ ],
+ "method_framework": "由群作用相位约束在倒易格上建约束图，删去自环权≠1 的节点后，各连通分量（相位一致轨道）对应一条 G-不变基函数，系数为参考点到目标点的边权乘积；网络前半段把标准傅里叶编码 v(x) 左乘预计算邻接矩阵 M_G 得 e^G(x)，后半段是权重共享的 encoder-only Transformer。",
+ "experiment_framework": "Materials Project（152,149 条总能量/带隙、11,997 条体积/剪切模量），基线 CGCNN/ALIGNN/Matformer 及同构 Transformer 换正弦位置编码；另在 230 个空间群各 10 万条合成样本上做轨道距离回归，并测未见空间群的零样本迁移。",
+ "takeaways": [
+  "把「为每种对称造一个架构」换成「共享骨干 + 换一张预计算路由矩阵」，是缓解 230 个空间群数据极稀疏（平均每群不到 1000 例）的实用路径",
+  "输入特征一旦精确 G-不变，自注意力与 MLP 自动保持 G-不变，无需给 Transformer 加任何等变约束，可直接复用现成编码器",
+  "合成轨道距离回归（MAE 0.102 Å vs 平均轨道距离 2.724 Å）为位置编码是否学到轨道空间几何提供了无需材料数据的低成本受控检验"
+ ],
+ "weaknesses": [
+  "第 9 页正文止于 Section 5.2，与 CGCNN/ALIGNN/Matformer 的材料性质预测对比数值完全不可见，唯一可见的定量结果只有合成轨道距离回归的 0.102 Å；而「competitive performance」这一核心声明正建立在这张被截断的表上",
+  "对称适配基只在截断的最大频率半径内构造（Algorithm 1 step 5），正文没有报告该截断对不变性与精度的影响，也没说明不同空间群连通分量数不同时 M_G 与标准傅里叶特征维 R 如何对齐",
+  "零样本只在「训练未见过的空间群」这一维度验证，且 bulk/shear modulus 仅 11,997 条（比总能量/带隙的 152,149 条少一个数量级），单一数据源、无随机种子方差说明，泛化声明的覆盖与统计强度不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "对称性处理方法与可靠性主线无直接交点，但设计模式有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

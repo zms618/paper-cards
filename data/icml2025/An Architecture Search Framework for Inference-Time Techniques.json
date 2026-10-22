@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/An Architecture Search Framework for Inference-Time Techniques.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/An Architecture Search Framework for Inference-Time Techniques.pdf",
+ "title": "An Architecture Search Framework for Inference-Time Techniques",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "ARCHON 用贝叶斯搜索推理时技术组合，超越主流模型15.1%",
+ "innovations": [
+  "系统刻画各类推理时技术（重复采样、集成、批评、验证、排序、融合）在不同任务上的效用与相互作用",
+  "提出模块化自动搜索框架 ARCHON：在给定推理预算下自动选择/组合 LLM 与推理时技术，逼近精度-最大 token 预算的 Pareto 前沿",
+  "发现「生成集成+批评/验证+融合」可超过任一单候选 oracle，且随推理层数扩展持续增益"
+ ],
+ "method_framework": "把推理时系统表示为由 Generator/Ranker/Fuser/Verifier/Unit test/Evaluator 等模块构成的可搜索架构；输入目标基准、推理预算、可用 LLM 与技术集合，用贝叶斯优化在巨大设计空间中构造并评估候选配置，返回针对基准优化（或通用）的架构。",
+ "experiment_framework": "在指令遵循、推理、编码三类任务上对比 ARCHON 与 Mixture-of-Agents、LLM-Blender、ADAS、AFlow 及 o1/GPT-4o/Claude 3.5 Sonnet 等前沿模型，报告精度随推理预算扩展的曲线与平均提升 15.1%。",
+ "takeaways": [
+  "不同任务受益的推理时技术不同，需按任务自动选择与组合",
+  "自动搜索发现的技术组合优于任何手工架构与前沿单模型",
+  "性能随推理预算与层数扩展可预测地提升"
+ ],
+ "weaknesses": [
+  "落地域为通用 LLM 推理系统，非指定的医学影像，仅 LLM 推理一侧贴合主线",
+  "搜索目标与基准强相关，跨任务/跨领域的泛化架构迁移能力有限",
+  "依赖多个前沿 LLM 调用，推理成本高，边际收益随预算递减"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "LLM推理技术组合，非医学影像落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

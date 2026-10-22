@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Robust Adversarial Attacks against Unknown Disturbances via Inverse Gradient Sample.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Robust Adversarial Attacks against Unknown Disturbances via Inverse Gradient Sample.pdf",
+ "title": "Robust Adversarial Attacks against Unknown Disturbances via Inverse Gradient Sample",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.2
+ },
+ "one_line": "IGSA：两步迭代框架提升对抗样本对未知扰动的鲁棒性",
+ "innovations": [
+  "针对现有对抗样本对哪怕轻微扰动都脆弱的问题，提出对未知扰动鲁棒的攻击 IGSA。",
+  "设计逆梯度采样：在对抗样本邻域内搜索最具破坏性的方向。",
+  "提出扰动引导精修：沿识别出的破坏性扰动做梯度下降更新对抗样本，并理论说明其通过提高对抗样本落在数据分布内的概率增强鲁棒性。"
+ ],
+ "method_framework": "迭代两步：(1)从先验采样扰动并映射到指定扰动分布，代表多样真实扰动；(2)逆梯度采样找最具破坏性方向，再沿该扰动方向精修对抗样本使其在采样扰动下仍保持攻击有效性；反复迭代得到对未见扰动也稳健的对抗样本。",
+ "experiment_framework": "在白盒与黑盒攻击场景评测；多种扰动类型(旋转/透视/JPEG/缩放/模糊/对比度等)区分已见/未见；对比 SOTA 攻击，报告对未知扰动的攻击成功率，并额外攻击对抗训练防御模型评估迁移与稳健性。",
+ "takeaways": [
+  "现有对抗样本对真实扰动极其脆弱，限制了其实用威胁。",
+  "逆梯度采样+扰动引导精修可显著提升对抗样本对未见扰动的保持力。",
+  "IGSA 在对抗训练防御模型上也表现更强，是更具威胁的红队基线。"
+ ],
+ "weaknesses": [
+  "攻击类工作，其价值在于暴露脆弱性而非提供防御；对何种扰动族采样的先验选择直接决定效果。",
+  "扰动类型枚举有限，对传感器级/复合/对抗性扰动的覆盖与自适应攻击者场景未充分展开。",
+  "理论解释较浅，鲁棒性提升与数据分布内概率关系的严格性有限。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "对抗样本鲁棒性属于可靠性主线，且方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

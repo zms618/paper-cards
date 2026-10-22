@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Diffusion-based Event Generation for High-Quality Deblurring.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Diffusion-based Event Generation for High-Quality Deblurring.pdf",
+ "title": "Diffusion-based Event Generation for High-Quality Deblurring",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.6
+ },
+ "one_line": "扩散模型生成事件引导去模糊，参数量大且未测试真实数据",
+ "innovations": [
+  "使用扩散模型生成事件引导而非直接使用事件",
+  "设计运动先验特征生成扩散模型(MPG-Diff)",
+  "提出双注意力通道融合块(DACFB)融合运动信息与图像特征"
+ ],
+ "method_framework": "EGDeblurring包含运动先验生成扩散模型(MPG-Diff)和回归去模糊网络(RDNet)，采用三阶段训练策略，推理时仅需模糊图像输入",
+ "experiment_framework": "在GoPro和REBlur数据集上评估，与多种图像去模糊和事件去模糊方法比较，使用SSIM和PSNR指标",
+ "takeaways": [
+  "扩散模型可有效生成运动先验信息",
+  "多模态特征融合对去模糊任务至关重要",
+  "三阶段训练策略能有效协调不同模块"
+ ],
+ "weaknesses": [
+  "模型参数量较大(80.3M)",
+  "扩散模型推理需要多步迭代",
+  "仅评估了合成事件数据，未测试真实事件相机数据"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "去模糊任务与可靠性主线无实质交点，仅属常规图像处理",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

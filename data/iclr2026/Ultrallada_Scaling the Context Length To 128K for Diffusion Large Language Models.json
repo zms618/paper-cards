@@ -1,0 +1,41 @@
+{
+ "title": "UltraLLADA: Scaling the Context Length to 128K for Diffusion Large Language Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "改造RoPE与掩码策略，将扩散LLM上下文扩展至128K。",
+ "innovations": [
+  "首次系统研究扩散式 LLM 的长上下文扩展问题，指出其与自回归 LLM 不同的长输入行为(困惑度外推更稳定)。",
+  "提出对标准 RoPE 扩展的简单改造，使其适配扩散过程固有的概率建模，从而稳定扩到更长上下文。",
+  "系统对比后训练中不同掩码策略对优化稳定性与长程召回的影响，据此得到 128K 上下文的 UltraLLADA。"
+ ],
+ "method_framework": "不从零重训，对已训练扩散 LLM 做后训练长上下文扩展；关键是改造 RoPE 位置编码扩展方式以匹配扩散式双向/概率建模，并配合合适的训练掩码策略，在不破坏原能力下外推到 128K token。",
+ "experiment_framework": "在长上下文语言建模与长程召回(long-range recall/needle-in-haystack)等任务上，与免训练的位置外推基线对比，报告不同上下文长度下的困惑度与召回，并对比掩码策略影响。",
+ "takeaways": [
+  "扩散 LLM 的长上下文行为与自回归不同，位置扩展必须适配其概率建模否则不稳定。",
+  "特殊 RoPE 位置扩展是扩散 LLM 扩上下文的关键杠杆，配合恰当掩码可免从零训练达到 128K。",
+  "后训练路线即可在长上下文任务上显著超过免训练基线。"
+ ],
+ "weaknesses": [
+  "属案例研究/工程经验总结，方法多为 RoPE 与掩码的实用改造，理论贡献有限。",
+  "仅基于 LLADA 这一扩散 LLM，结论能否推广到其他扩散/混合架构未验证。",
+  "与可靠性/医学影像/多模态推理主线无关；完整长上下文基准与和自回归 LLM 的系统对比表未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Ultrallada_Scaling the Context Length To 128K for Diffusion Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Ultrallada_Scaling the Context Length To 128K for Diffusion Large Language Models.pdf",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "扩散模型长上下文扩展与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

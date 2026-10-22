@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Dynamic Configuration for Cutting Plane Separators via Reinforcement Learning on Incremental Graph.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Dynamic Configuration for Cutting Plane Separators via Reinforcement Learning on Incremental Graph.pdf",
+ "title": "Dynamic Configuration for Cutting Plane Separators via Reinforcement Learning on Incremental Graph",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "RL动态配置切割平面提升MILP求解效率，但泛化性和计算开销存疑",
+ "innovations": [
+  "将切割平面配置建模为强化学习任务",
+  "增量三元图表示动态变化的MILP实例",
+  "解码器Transformer与块位置编码的决策机制",
+  "同时决定何时停止切割和激活哪些分离器"
+ ],
+ "method_framework": "使用GCN编码增量子图为token块，通过解码器Transformer自回归预测每轮的最大分离轮数和分离器激活状态，采用PPO算法训练决策网络。",
+ "experiment_framework": "在9个MILP基准数据集(3个简单、2个中等、4个困难)上评估，与4个人类设计规则和3个学习方法对比，使用求解时间和原始对偶间隙积分作为指标。",
+ "takeaways": [
+  "增量图表示可有效捕捉MILP问题的动态变化",
+  "块位置编码确保了token级排列等变性",
+  "多轮动态配置比静态配置更有效"
+ ],
+ "weaknesses": [
+  "仅在 SCIP 求解器上验证，泛化性有限",
+  "未充分探索不同规模问题的鲁棒性",
+  "计算开销较大，可能不适合实时应用"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

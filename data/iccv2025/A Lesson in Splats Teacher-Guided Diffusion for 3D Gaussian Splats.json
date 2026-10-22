@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/A Lesson in Splats Teacher-Guided Diffusion for 3D Gaussian Splats.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Lesson in Splats Teacher-Guided Diffusion for 3D Gaussian Splats.pdf",
+ "title": "A Lesson in Splats: Teacher-Guided Diffusion for 3D Gaussian Splats Generation with 2D Supervision",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "用确定性模型作噪声老师生成3DGS扩散，但师生容量差与关键假设缺乏验证",
+ "innovations": [
+  "把确定性前馈重建模型 T_φ(x) 的输出当「噪声老师」，在 s_t=√α_t·s_0^teacher+√(1-α_t)·ε（式1）下取 t≥t^*，使其产生的 3D 噪声样本与未知的真值前向加噪分布对齐，从而无需 3D ground truth 也能训 3D 去噪器",
+  "多步去噪展开训练（式4）：从 t>t^* 起顺序复合 D_θ 直到 t=0，与推理路径同构，让梯度穿过低噪声步以恢复细节；显存吃紧时先用式7 的单步 bootstrap（3D 与 2D 双监督）把模型带到老师水平再进 stage II",
+  "循环一致性正则（式8）：把去噪结果渲到目标视角后二次驱动一个 splat 预测、再渲回源视角，bootstrapping 阶段只需多一次前向，消融中单独加它带来 +1.1 PSNR"
+ ],
+ "method_framework": "前馈模型当噪声老师产出 s_t(式1)；stage1 单步去噪+3D/2D 双损失 bootstrap；stage2 用 DDIM 10 步多步去噪展开、渲染损失监督到 t=0，并加循环一致性(式8)；梯度回传 U-Net 去噪 3DGS。",
+ "experiment_framework": "ShapeNet-SRN(单视图 Cars/Chairs) 与 RealEstate10K(3 档帧数)；老师为 Splatter Image(Large/Medium)、Flash3D；对比 SRN/CodeNeRF/ViewsetDiff/PixelNeRF/NeRFDiff 等；指标 PSNR/SSIM/LPIPS，附显存与模型体积。",
+ "takeaways": [
+  "扩散训练的 noising 源与监督源可以解耦：噪声来自前馈确定性模型、监督来自渲染出的 2D 图，这条通路解决了 3D 真值稀缺下训 3D 扩散的老问题",
+  "只在 t>t^* 的大噪声区采样会让去噪器学不到细节，训练时把去噪过程像推理那样展开（DDIM 10 步）并回传梯度，是把 3D 生成清晰度做上去的关键工程点",
+  "「主视角条件 + 第二视角做 guidance」依赖扩散的非确定性，确定性前馈模型做不到；表5 显示再加 GS 优化与图像引导还能再叠 0.2 PSNR"
+ ],
+ "weaknesses": [
+  "扩散模型用的是比老师更小的 U-Net（Medium vs Splatter Image Large），表1/表2 的提升里有一部分来自师生容量差这一设置本身，正文只以显存受限解释，缺同等规模 U-Net 训到同等收敛的对照实验，归因不干净",
+  "指标全为单值、无方差与显著性；且表4 中 (b.4)「stage II 只用渲染损失」得 24.49 PSNR，明显高于 (b.3)「stage II 加去噪损失」的 23.13，说明多步去噪这条主线的收益并不单调，正文未解释也未重新论证该组件是否必要",
+  "t^* 的选取（老师噪声何时与真值前向加噪分布重合）是全文唯一的关键假设，却只用一句类 SDEdit 动机带过，既无 t^* 敏感性曲线也无其与老师质量的关联分析；RealEstate10k 用的 Flash3D 老师本就弱于 Splatter Image，跨老师的迁移性只在主表中间接体现"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "3D生成技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unlocking Long-Horizon Agentic Search with Large-Scale End-to-End RL.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unlocking Long-Horizon Agentic Search with Large-Scale End-to-End RL.pdf",
+ "title": "Unlocking Long-Horizon Agentic Search with Large-Scale End-to-End RL",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "纯RL训练单模型搜索智能体，两阶段数据合成与长程RL在基准接近商业系统",
+ "innovations": [
+  "开发ASearcher，纯靠强化学习训练的单模型搜索智能体，完全不使用商业API做数据或工具",
+  "设计两阶段智能体流程合成高质量QA对作为RL训练数据",
+  "进行大规模长程RL，允许每轮rollout最多128个动作以充分探索，涌现不确定性分析与冲突验证等复杂推理"
+ ],
+ "method_framework": "ASearcher基于RL训练的QwQ-32B，不蒸馏商业模型、不调用商业工具；先用两阶段智能体流程合成高质量QA对作RL数据，再做大规模长程端到端RL(每轮最多128动作)，训练中涌现出不确定性分析、冲突验证、反思等复杂搜索行为。",
+ "experiment_framework": "在GAIA、xBench、Frames等知识密集搜索基准上评测；对比依赖商业大模型的开源/商业搜索智能体；报告仅基础工具即GAIA 58.1/xBench 51.1/Frames 74.5，叠加摘要工具与16路并行rollout后升至71.8/75.0/83.4并超过OpenAI DeepResearch与Kimi-Researcher。",
+ "takeaways": [
+  "基于QwQ-32B纯RL训练的ASearcher仅用基础搜索工具即达GAIA 58.1、xBench 51.1、Frames 74.5，接近商业搜索智能体",
+  "RL后工具调用从平均1.67增至20+，涌现反思与引用外部信息等复杂搜索行为",
+  "叠加摘要工具与16路并行rollout的测试时扩展后分数升至71.8/75.0/83.4，超过OpenAI DeepResearch与Kimi-Researcher"
+ ],
+ "weaknesses": [
+  "属于搜索智能体/RL方向，虽含不确定性分析与冲突验证但为纯文本，未涉及多模态或医学影像，与主线为中相关",
+  "两阶段QA合成流程的成本与质量依赖强基座(QwQ-32B)，小模型上的可复现性前9页未验证",
+  "可验证奖励依赖GAIA等有标准答案的任务，开放式研究型搜索的迁移性前9页未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "纯RL搜索智能体，不确定性分析未触及医学或多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

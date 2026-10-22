@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/FlexVAR_Flexible Visual Autoregressive Modeling without Residual Prediction.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/FlexVAR_Flexible Visual Autoregressive Modeling without Residual Prediction.pdf",
+ "title": "FlexVAR: Flexible Visual Autoregressive Modeling without Residual Prediction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "FlexVAR改残差预测为真实值预测，提升生成灵活性但重建质量受限",
+ "innovations": [
+  "去除残差预测范式，直接预测真实值",
+  "可扩展VQVAE tokenizer支持多尺度重建",
+  "可扩展2D位置嵌入实现灵活分辨率/步数生成"
+ ],
+ "method_framework": "FlexVAR采用可扩展VQVAE tokenizer将图像编码为多尺度特征，通过自回归Transformer直接预测各尺度的真实值而非残差，结合可扩展位置嵌入实现灵活的图像生成。",
+ "experiment_framework": "ImageNet 256×256和512×512基准测试，与GAN、扩散模型、随机扫描、光栅扫描和缩放扫描自回归模型比较，使用FID、IS、精度和召回率作为指标。",
+ "takeaways": [
+  "直接预测真实值而非残差可提高语义连贯性和生成灵活性",
+  "可扩展位置嵌入和步数采样增强模型对各种分辨率和步数的适应性"
+ ],
+ "weaknesses": [
+  "VAE重建质量低于VAR-VAE，可能影响生成质量上限",
+  "Mamba架构未体现速度优势，计算效率提升有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

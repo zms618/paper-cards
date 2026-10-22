@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Tuning LLM Judge Design Decisions for 1 1000 of the Cost.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Tuning LLM Judge Design Decisions for 1 1000 of the Cost.pdf",
+ "title": "Tuning LLM Judge Design Decisions for 1/1000 of the Cost",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "系统调优LLM judge超参，降低成本1/1000但依赖人工评分基准",
+ "innovations": [
+  "指出现有LLM judge研究同时改动judge模型、提示、评分类型与指令集，混淆因素多、无法做apples-to-apples对比",
+  "系统拆解并调优judge超参：judge模型、提示、温度等推理参数、偏好解析机制；先分析scaling(放大judge模型/指令数)的真实作用",
+  "用多目标多保真(MOMF)方法在精度-成本间搜索，把评估judge的成本降至约1/1000，找到的judge在精度与成本效率上均超现有benchmark，且用开源权重"
+ ],
+ "method_framework": "以与人工评分(Chatbot Arena)的Spearman相关为目标、成本为约束，用多目标多保真贝叶斯优化在judge超参空间搜索；先低保真快速筛选再高保真验证。",
+ "experiment_framework": "AlpacaEval/Arena-Hard等基准；系统对比judge模型规模、指令数、提示模板、温度、解析方式；指标为与人工评分的相关性、单judge评估成本，并强调开源可复现。",
+ "takeaways": [
+  "单纯放大judge模型或指令数不足以得到好judge；提示/解析等设计决策同样关键且更便宜",
+  "多保真搜索可用极低成本定位到开源、高精度的judge配置，降低LLM评估门槛"
+ ],
+ "weaknesses": [
+  "目标是与现有人工评分的相关性，而人工评分本身含噪声与风格偏差，高相关不等于judge无偏",
+  "搜索空间与结论基于特定benchmark族，跨语言/跨任务类型的可迁移性未充分验证；'1/1000成本'依赖保真近似的准确性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

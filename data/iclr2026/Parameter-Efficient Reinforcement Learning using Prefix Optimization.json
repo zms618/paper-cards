@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Parameter-Efficient Reinforcement Learning using Prefix Optimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Parameter-Efficient Reinforcement Learning using Prefix Optimization.pdf",
+ "title": "Parameter-Efficient Reinforcement Learning using Prefix Optimization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "前缀优化揭示RLVR增益部分来自起点策略，算力效率高但适用性有限。",
+ "innovations": [
+  "提出只优化解的前k个token、其余由参考模型生成的受控实验，揭示RLVR增益部分来自上偏好的解题策略/格式而非全程推理。",
+  "提出两种前缀优化：Prefix Clustering(聚类前缀选最优)与Prefix-RL(轻量adapter用RL优化前缀)。",
+  "证明仅调前k token即可显著提升数学准确率，且增益对前缀长度与随机种子稳健，算力仅为标准RL的零头。"
+ ],
+ "method_framework": "冻结参考模型主体，只对每个解的前k个token做优化；Prefix Clustering对候选前缀聚类并选高准确率前缀；Prefix-RL训练一个轻量adapter用可验证奖励优化前缀；后续内容由参考模型自回归生成，从而隔离'起点策略选择'对最终精度的贡献。",
+ "experiment_framework": "在多个数学推理基准与多个基座模型上评测；对比完整RLVR；指标为数学准确率；报告不同k(如32)与随机种子下的稳健性及相对标准RL的算力开销。",
+ "takeaways": [
+  "RLVR的增益有相当部分来自上偏好的解题起点/策略，而非全过程推理增强。",
+  "轻量前缀优化即可用极小算力取得大部分RL提升，是高效替代。",
+  "结论对前缀长度和随机种子稳健。"
+ ],
+ "weaknesses": [
+  "只优化前k token、其余由参考模型生成，可能高估了前缀单独的贡献(参考模型已强)。",
+  "主要在数学推理上验证，对开放生成/工具使用等任务的适用性未明。",
+  "方法更多是诊断性/高效近似，并未提升RL天花板。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "RL效率提升与可靠性主线无实质交点，属常规优化工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

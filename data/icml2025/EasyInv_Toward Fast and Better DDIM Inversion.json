@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/EasyInv_Toward Fast and Better DDIM Inversion.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/EasyInv_Toward Fast and Better DDIM Inversion.pdf",
+ "title": "EasyInv: Toward Fast and Better DDIM Inversion",
+ "scores": {
+  "novelty": 4,
+  "depth": 5,
+  "evidence": 5,
+  "relevance": 3,
+  "overall": 4.25
+ },
+ "one_line": "简单聚合隐状态替代DDIM迭代，提升反演速度但缺乏理论支撑",
+ "innovations": [
+  "提出优先利用初始隐状态的反演策略，避免传统迭代优化的低效问题",
+  "系统地聚合前一时间步与当前时间步的隐状态，增强初始隐状态的影响并减轻噪声影响"
+ ],
+ "method_framework": "在DDIM反演过程中，不再逐步精修噪声项，而是以初始隐状态为核心，通过前后时间步隐状态的聚合来近似反演噪声；减少了反演所需的迭代次数同时保持精度。",
+ "experiment_framework": "在文本引导图像编辑任务上评估，对比vanilla DDIM、ReNoise、Fixed-Point等反演方法，指标为重建精度和编辑灵活性。",
+ "takeaways": [
+  "EasyInv在速度和反演质量上均达到或超过现有迭代方法",
+  "初始隐状态包含了丰富的原始图像信息，优先利用它比逐步精修噪声更高效"
+ ],
+ "weaknesses": [
+  "属于扩散模型反演/图像编辑方向，与鲁棒性/医学影像/多模态推理主线无关",
+  "方法的理论分析较浅，更多是经验性的隐状态聚合策略",
+  "前9页仅看到方法概述，具体聚合公式和实验对比细节未充分展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.63,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

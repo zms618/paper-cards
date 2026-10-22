@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Supervised Contrastive Learning from Weakly-Labeled Audio Segments for Musical Version Matching.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Supervised Contrastive Learning from Weakly-Labeled Audio Segments for Musical Version Matching.pdf",
+ "title": "Supervised Contrastive Learning from Weakly-Labeled Audio Segments for Musical Version Matching",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "弱标签音频片段对比学习，改进损失函数提升版本匹配性能。",
+ "innovations": [
+  "面向 segment 级（如 20 秒片段）版本匹配，提出基于成对片段距离归约的弱标注学习方式，从 track 级弱标签中得到片段级监督。",
+  "在解耦、超参与几何考量基础上改造现有对比损失（监督对比变体），优于三元组/分类等既有损失。",
+  "同时刷新 track 级标准评测 SOTA，并在 segment 级评测取得突破。"
+ ],
+ "method_framework": "音乐版本间存在配器/音色/调性/旋律/节奏大幅变化，只保留'同曲'本质。本文：(1) 弱标签传播——通过片段间成对距离归约，把 track 级'同曲'标签下传到片段级；(2) 损失改造——在解耦正负样本、几何度量与超参设计下改造监督对比损失，使片段表征既捕捉跨版本共享本质又区分不同曲目。",
+ "experiment_framework": "在标准音乐版本匹配基准上，对比分类/三元组及近期对比方法；指标为 track 级与 segment 级匹配精度（检索/准确率）。",
+ "takeaways": [
+  "track 级评测达到 SOTA。",
+  "segment 级评测取得突破性性能，满足多数真实应用所需的片段级匹配。",
+  "所提弱标签利用与损失改造思路可能推广到音频以外领域。"
+ ],
+ "weaknesses": [
+  "属于音乐信息检索，与医学影像/多模态推理主线无关。",
+  "弱标签归约依赖'同曲 track 内片段互正'假设，对结构差异大的版本可能引入噪声配对。",
+  "对音乐生成模型版权/记忆检测这一动机应用，缺乏端到端下游验证。"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.68,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

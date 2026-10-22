@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/SCFlow2_Plug-and-Play Object Pose Refiner with Shape-Constraint Scene Flow.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/SCFlow2_Plug-and-Play Object Pose Refiner with Shape-Constraint Scene Flow.pdf",
+ "title": "SCFlow2 Plug-and-Play Object Pose Refiner with Shape-Constraint Scene Flow",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "场景流即插即用姿态优化器，提升新物体精度但依赖初始姿态",
+ "innovations": [
+  "将深度信息作为正则化引入迭代优化过程",
+  "引入3D场景流表示作为中间表征",
+  "结合物体形状先验和刚性运动嵌入",
+  "即插即用框架无需重训练"
+ ],
+ "method_framework": "SCFlow2通过RGBD编码器提取特征，构建4D相关体，使用GRU预测3D场景流，结合物体形状先验进行姿态回归，实现端到端的姿态优化。",
+ "experiment_framework": "在Objaverse、GSO和ShapeNet上训练，在BOP数据集上评估，使用AR指标，与MegaPose、FoundPose等SOTA方法对比",
+ "takeaways": [
+  "即插即用设计可提升多种基线方法性能",
+  "3D场景流表示比2D光流更有效捕捉3D运动",
+  "形状约束可减少搜索空间提高效率"
+ ],
+ "weaknesses": [
+  "在极端遮挡或光照条件下可能恶化初始结果",
+  "对初始姿态有一定依赖性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "即插即用姿态优化器，提升新物体精度但依赖初始姿态",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Sample-Efficient and Scalable Exploration In Continuous-Time RL.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sample-Efficient and Scalable Exploration In Continuous-Time RL.pdf",
+ "title": "Sample-Efficient and Scalable Exploration in Continuous-Time RL",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.7
+ },
+ "one_line": "COMBRL用不确定性加权和平衡探索，但与主线无关且理论假设受限。",
+ "innovations": [
+  "提出连续时间乐观MBRL算法COMBRL：用单个标量权衡外部奖励与认知不确定性(内在奖励)，支持奖励驱动与无监督(纯探索)两种设定，避免以往方法昂贵的联合优化。",
+  "理论保证：奖励驱动下取得次线性遗憾，无监督RL下给出依赖测量策略的样本复杂度界。",
+  "在多个深度连续时间RL基准上比 prior 方法更可扩展、更样本高效，并能泛化到未见下游任务。"
+ ],
+ "method_framework": "用概率模型(GP/BNN)学习未知ODE并估计认知不确定性；策略通过最大化奖励+认知不确定性加权和实现'面对不确定性保持乐观'，同时决定何时观测/控制；无监督设定退化为主动学习中的不确定性采样。",
+ "experiment_framework": "在标准与无监督连续时间深度RL任务上，对比纯利用型与联合优化乐观的连续时间方法，报告回报、样本效率与可扩展性，并检验对未见下游任务的泛化。",
+ "takeaways": [
+  "用认知不确定性作为内在奖励可在连续时间下以可扩展方式平衡利用与探索，优于需联合优化的乐观方法。",
+  "连续时间RL的遗憾/样本复杂度显式依赖测量(观测)策略。"
+ ],
+ "weaknesses": [
+  "属连续时间控制/RL方向，与可靠性×医学影像/多模态推理主线无直接关联。",
+  "理论基于概率模型假设，在高维真实系统中GP/BNN不确定性估计的精度与可扩展性仍是瓶颈。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.18,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "连续时间RL探索机制，无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

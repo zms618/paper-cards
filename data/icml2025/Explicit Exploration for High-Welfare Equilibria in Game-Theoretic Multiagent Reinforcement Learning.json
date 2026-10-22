@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Explicit Exploration for High-Welfare Equilibria in Game-Theoretic Multiagent Reinforcement Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Explicit Exploration for High-Welfare Equilibria in Game-Theoretic Multiagent Reinforcement Learning.pdf",
+ "title": "Explicit Exploration for High-Welfare Equilibria in Game-Theoretic Multiagent Reinforcement Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "在PSRO中模仿高福利行为引导均衡，但扩展性与早期策略处理存疑。",
+ "innovations": [
+  "针对PSRO在多均衡博弈中的均衡选择问题，提出Ex2PSRO显式偏向高福利解",
+  "每轮构造一个模仿高福利行为的探索策略，并把新响应正则化为与该探索策略相似，无需额外仿真开销",
+  "证明Ex2PSRO可与其他PSRO变体组合，并系统分析探索策略选择与算法性能的关系"
+ ],
+ "method_framework": "在PSRO的经验博弈迭代中，从已枚举策略中选出高福利行为作为探索策略，新响应在训练时既对当前解求best-response又正则化靠近该探索策略，从而把策略生成引向高福利均衡区域。",
+ "experiment_framework": "两个基准：序贯讨价还价博弈与社会困境博弈；对比 vanilla PSRO；评估均衡福利与可组合性（与其他PSRO变体叠加）；指标为收敛均衡的社会福利。",
+ "takeaways": [
+  "Ex2PSRO 在两个基准上无需额外仿真开销即倾向找到比 vanilla PSRO 更高福利的均衡",
+  "该显式探索可与其他PSRO变体组合，不冲突",
+  "探索策略的选择方式直接决定均衡选择结果与收敛速度"
+ ],
+ "weaknesses": [
+  "仅在两个小规模博弈基准上验证，复杂大规模博弈中的扩展性未知",
+  "‘高福利’需预先从已枚举策略中识别，对早期策略池稀疏时如何构造探索策略未充分讨论",
+  "福利偏向可能损害个体理性/收敛稳定性的权衡分析有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.33,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

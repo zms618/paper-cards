@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Reasoning As Representation Rethinking Visual Reinforcement Learning In Quality Assessment.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reasoning As Representation Rethinking Visual Reinforcement Learning In Quality Assessment.pdf",
+ "title": "Reasoning as Representation: Rethinking Visual Reinforcement Learning in Image Quality Assessment",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "将RL训练的MLLM-IQA表示压缩为轻量对齐器，消除推理依赖。",
+ "innovations": [
+  "机制发现：经RL(GRPO)训练的MLLM在打分时几乎不再依赖冗长视觉token，而依赖简洁紧凑的质量推理文本token；正是这种把冗余视觉表示转为跨域对齐文本表示的转换带来了跨数据集泛化。",
+  "提出RALI，用对比学习直接把图像对齐到RL学到的、可泛化的文本表示，消除对逐步推理过程的依赖。",
+  "RALI在推理时甚至无需加载LLM，以不到原模型5%的参数量与推理时间，取得与推理式IQA模型相当的泛化打分性能。"
+ ],
+ "method_framework": "先通过归因实验证明RL-IQA的泛化来自推理生成的紧凑文本表示；再用对比学习训练一个轻量对齐器，直接把图像映射到该可泛化文本表示空间，从而把'推理'蒸馏为一次性表示对齐，推理阶段不再需要LLM与链式推理。",
+ "experiment_framework": "在多个跨域图像质量数据集上以PLCC/SRCC评测泛化，对比Q-Align/DepictQA/Q-Insight等SFT与推理式IQA，报告精度、参数量与推理时延。",
+ "takeaways": [
+  "推理式IQA的泛化能力本质来自其生成的紧凑跨域文本表示，而非逐步推理过程本身。",
+  "把图像直接对比对齐到该表示，可用极小模型复现跨域泛化，彻底避免推理式打分的高时延与显存开销。"
+ ],
+ "weaknesses": [
+  "对比学习依赖RL教师模型预先生成的文本表示，蒸馏上限受教师与数据集覆盖度制约。",
+  "前9页只见机制分析与动机，未见RALI完整消融与跨数据集PLCC/SRCC明细，证据强度判断受限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "RL训练的MLLM-IQA表示压缩为轻量对齐器，消除推理依赖。",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

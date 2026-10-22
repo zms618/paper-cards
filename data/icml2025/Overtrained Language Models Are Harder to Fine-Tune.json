@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Overtrained Language Models Are Harder to Fine-Tune.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Overtrained Language Models Are Harder to Fine-Tune.pdf",
+ "title": "Overtrained Language Models Are Harder to Fine-Tune",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "发现预训练过度导致微调性能下降，但理论解释有限。",
+ "innovations": [
+  "提出并命名灾难性过训练(catastrophic overtraining)现象：延长预训练反而降低后训练后的最终性能",
+  "揭示机制为渐进敏感性(progressive sensitivity)——预训练越长，等幅度参数修改导致的能力遗忘越大",
+  "在线性迁移学习设定下给出理论分析，精确刻画了过训练与敏感性的出现条件"
+ ],
+ "method_framework": "在三个开源模型(OLMo-1B、OLMo-2-7B、LLM360-Amber-7B)的不同预训练中间检查点上做指令微调(Anthropic-HH、TULU)和多模态微调(LLaVA)，对比ID任务与OOD基准性能；通过控制实验分离预训练增益与微调遗忘的博弈；在线性模型设定下做理论推导。",
+ "experiment_framework": "数据集：Anthropic-HH、TULU指令微调，LLaVA视觉指令微调。基线：同模型不同预训练token数的中间检查点。指标：AlpacaEval(ID)，ARC-Easy/Challenge、PIQA、HellaSwag、Winogrande等10个OOD基准，3次独立微调取均值。",
+ "takeaways": [
+  "预训练并非越多越好：OLMo-1B在3T token后微调比2.3T差2-3%，说明存在过训练拐点",
+  "过训练的本质是渐进敏感性——更长预训练使参数对微调修改更敏感，遗忘超过预训练增益",
+  "微调中的正则化可推迟过训练出现，但代价是下游性能受限，存在内在权衡"
+ ],
+ "weaknesses": [
+  "仅在开源小模型(1B-7B)上验证，大模型(70B+)是否同样存在过训练拐点尚不确定",
+  "理论分析局限于线性迁移学习设定，对深层Transformer的解释力有限",
+  "未系统探索如何主动检测拐点或设计抗过训练的预训练策略，偏现象描述"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

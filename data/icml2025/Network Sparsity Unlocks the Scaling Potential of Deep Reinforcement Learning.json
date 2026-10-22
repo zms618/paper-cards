@@ -1,0 +1,36 @@
+{
+ "title": "Network Sparsity Unlocks the Scaling Potential of Deep Reinforcement Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "一次性随机剪枝解锁DRL缩放，但缺乏理论指导且与可靠性主线无关。",
+ "innovations": [
+  "指出即便SOTA的SimBa架构继续放大仍会性能退化，而静态稀疏性本身可解锁进一步缩放。",
+  "方法极简：训练前一次性随机删掉预设比例权重，无需周期reset或改优化动态。",
+  "分析表明稀疏网络同时获得更高参数效率与更强抗可塑性损失/梯度干扰能力，并推广到视觉RL与流式RL。"
+ ],
+ "method_framework": "在初始化阶段做one-shot随机剪枝得到静态稀疏网络，再用标准RL算法训练；稀疏拓扑约束参数增长、缓解capacity/plasticity loss与梯度干扰，从而在放大模型尺寸(宽/深)时保持性能上升而非退化。",
+ "experiment_framework": "在DMC最难任务上用SAC/DDPG/SimBa评测稠密vs稀疏网络的缩放曲线；展示>17M参数后稠密网络性能下降而稀疏网络继续提升；并扩展到视觉RL与流式RL验证一致性。",
+ "takeaways": [
+  "DRL缩放难主要是优化病理，静态稀疏是极简且有效的解药。",
+  "无需复杂干预，one-shot随机剪枝即可解锁缩放。"
+ ],
+ "weaknesses": [
+  "为经验性发现，稀疏比例/拓扑的最优选择缺乏严格理论指导。",
+  "一次性随机剪枝在更大规模/更多任务上的一致收益仍需扩展验证。",
+  "落地为深度强化学习，与可靠性主线（医学影像/多模态大模型推理）无关联，relevance低。"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Network Sparsity Unlocks the Scaling Potential of Deep Reinforcement Learning.pdf",
+ "path": "icml2025/Network Sparsity Unlocks the Scaling Potential of Deep Reinforcement Learning.pdf",
+ "conf": "icml2025",
+ "raw_overall": 6.23,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

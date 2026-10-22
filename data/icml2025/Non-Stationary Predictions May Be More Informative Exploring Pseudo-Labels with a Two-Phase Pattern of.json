@@ -1,0 +1,37 @@
+{
+ "title": "Non-Stationary Predictions May Be More Informative: Exploring Pseudo-Labels with a Two-Phase Pattern of Training Dynamics",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "挖掘非平稳两阶段标签作为伪标注 booster，提升1.7-1.9%",
+ "innovations": [
+  "识别出一类被置信度与平稳性指标忽略的预测标签——两阶段标签（早期预测A类、后期切换B类），论证其对决策边界的信息增益更高。",
+  "设计 2-phasic 度量，从空间与时间维度数学刻画两阶段标签的训练动态模式。",
+  "为两阶段伪标注定制损失函数，使模型既能学习正确相关、又能消除错误相关。"
+ ],
+ "method_framework": "在半监督伪标注框架下，不局限于高置信/高平稳的Type-I标签，转而挖掘Type-II中非平稳但信息增益高的子集（两阶段标签）。用2-phasic度量刻画其时空模式筛选样本，再通过定制损失把两阶段标签并入训练集，同时抑制错误伪标签带来的噪声。",
+ "experiment_framework": "在8个基准数据集（4个图像+4个图数据集）上验证，作为现有伪标注方法的插件式booster；报告平均分类准确率提升（图像+1.73%、图+1.92%），并通过与置信度选样的重叠分析展示两阶段标签的独立性与信息增益。",
+ "takeaways": [
+  "非平稳预测未必是噪声，正确识别后可提供比常规标签更高的伪标注信息增益。",
+  "2-phasic度量可作为通用booster叠加在现有伪标注方法上，带来稳定的准确率提升。",
+  "大量高质量伪标签被纯置信度指标遗漏。"
+ ],
+ "weaknesses": [
+  "提升幅度为1.7%~1.9%量级，增益偏温和，属于插件式改进而非范式革新。",
+  "两阶段标签依赖完整训练动态轨迹，需要记录每epoch预测，额外训练/存储开销未充分讨论。",
+  "落地域为通用图像/图分类，与医学影像、多模态大模型推理主线距离较远，relevance受限。"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Non-Stationary Predictions May Be More Informative Exploring Pseudo-Labels with a Two-Phase Pattern of.pdf",
+ "path": "icml2025/Non-Stationary Predictions May Be More Informative Exploring Pseudo-Labels with a Two-Phase Pattern of.pdf",
+ "conf": "icml2025",
+ "raw_overall": 6.49,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

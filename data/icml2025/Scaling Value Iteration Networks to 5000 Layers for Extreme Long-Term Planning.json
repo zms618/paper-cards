@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Scaling Value Iteration Networks to 5000 Layers for Extreme Long-Term Planning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Scaling Value Iteration Networks to 5000 Layers for Extreme Long-Term Planning.pdf",
+ "title": "Scaling Value Iteration Networks to 5000 Layers for Extreme Long-Term Planning",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6
+ },
+ "one_line": "动态转移核+highway损失扩展VIN至5000层，解决长程规划梯度消失问题。",
+ "innovations": [
+  "诊断VIN长程规划失败源于隐MDP表示力不足与规划模块深度不够。",
+  "用动态转移核(dynamic transition kernel)增强隐MDP，显著提升表示能力。",
+  "提出自适应highway损失构造跳跃连接改善梯度流，使VIN可扩展到5000层，解100×100迷宫等需上千步规划的任务。"
+ ],
+ "method_framework": "VIN在隐MDP上做可微价值迭代。传统VIN隐MDP表示力弱、层数浅，无法长程规划。本文：(1)给隐MDP加动态转移核以更准地建模状态转移；(2)借鉴highway网络，在价值迭代层间引入可学习跳跃连接并设计自适应highway损失，缓解5000层深堆叠下的梯度消失，使规划模块可极深堆叠，等效做数千步的迭代规划。",
+ "experiment_framework": "在2D/3D迷宫导航(含100×100大迷宫)等长程规划任务上评测；对比原始VIN、Dreamer/其它规划RL方法，指标为在更大/更难迷宫上的成功率与泛化，做动态转移核、highway损失与层数(到5000)的消融。",
+ "takeaways": [
+  "增强隐MDP表示力+缓解深堆叠梯度消失，是把VIN推向超长程规划的关键。",
+  "5000层VIN可处理需上千规划步的大迷宫，展现端到端可微规划的长程扩展潜力。"
+ ],
+ "weaknesses": [
+  "5000层堆叠带来显著的计算/显存开销，实时性受限。",
+  "评测集中在迷宫导航类结构化环境，向真实高维决策任务的迁移未知。",
+  "与可靠性/可信AI主线关系较弱，属规划/RL方向。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

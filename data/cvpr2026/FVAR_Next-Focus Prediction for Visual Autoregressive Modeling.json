@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/FVAR_Next-Focus Prediction for Visual Autoregressive Modeling.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/FVAR_Next-Focus Prediction for Visual Autoregressive Modeling.pdf",
+ "title": "FVAR Next-Focus Prediction for Visual Autoregressive Modeling",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "聚焦预测替代下采样减少混叠，但ImageNet外泛化未知",
+ "innovations": [
+  "从next-scale预测转向next-focus预测范式",
+  "基于物理一致散焦核的渐进式重聚焦金字塔构建",
+  "高频残差学习与专用教师网络的知识蒸馏"
+ ],
+ "method_framework": "FVAR构建渐进式重聚焦金字塔，使用双路径标记化策略，结合高频残差教师网络，通过Alias-Gate交叉注意力融合结构信息和残差信号，实现零推理开销的部署兼容性",
+ "experiment_framework": "ImageNet数据集上评估，对比VAR、M-VAR等基线，使用FID、IS、Precision/Recall指标，并在256×256、512×512、1024×1024分辨率下测试",
+ "takeaways": [
+  "光学物理原理可指导视觉自回归模型设计",
+  "教师-学生知识蒸馏可增强模型能力而不增加部署复杂度",
+  "渐进式聚焦比传统下采样能更好地保留高频信息"
+ ],
+ "weaknesses": [
+  "仅评估ImageNet数据集，缺乏医学影像等领域的验证",
+  "教师网络训练增加了计算复杂度，虽然推理时无开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视觉自回归模型设计，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

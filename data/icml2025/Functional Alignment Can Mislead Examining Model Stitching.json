@@ -1,0 +1,37 @@
+{
+ "title": "Functional Alignment Can Mislead: Examining Model Stitching",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "批判功能对齐度量，缝合实验证明表征相似性度量不可靠。",
+ "innovations": [
+  "用一系列对照实验证明功能对齐并不蕴含信息相似：偏差迥异的判别模型可被缝合",
+  "证明在不同数据模态、不同任务上训练的模型(乃至聚类随机噪声表征)都能缝合进MNIST/ImageNet模型",
+  "进一步在自编码器上展示编码器/解码器分训于不同任务时也能找到对齐，质疑现有表征相似性度量的解释"
+ ],
+ "method_framework": "以model stitching为主要工具：将一个模型的中间表征经线性/可学习映射接入另一模型后续层，检验能否端到端工作；通过构造模态、任务、语义截然不同却仍可缝合的对照案例，论证功能相似性度量不能捕捉语义/信息相似。",
+ "experiment_framework": "在MNIST、ImageNet、鸟鸣、风格化ImageNet、聚类噪声等多任务/多模态设定下做缝合实验，检验缝合成功率，剖析偏差、模态、任务差异对缝合的影响。",
+ "takeaways": [
+  "功能可对齐不代表表征捕获了相同信息，现有model stitching等度量可能严重误导",
+  "缝合成功对输入语义不敏感，甚至可缝合噪声表征，说明它度量的是几何/操作可对接性而非内容相似",
+  "社区需要能真正刻画信息相似而非功能相似的表征比对方法"
+ ],
+ "weaknesses": [
+  "偏批判性/警示性研究，未提出替代的新度量，建设性方案有限",
+  "实验多在小规模视觉任务(MNIST/ImageNet)，对大模型/语言领域结论外推需谨慎",
+  "与医学影像/多模态推理落地主线关联弱，relevance中等"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Functional Alignment Can Mislead Examining Model Stitching.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Functional Alignment Can Mislead Examining Model Stitching.pdf",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

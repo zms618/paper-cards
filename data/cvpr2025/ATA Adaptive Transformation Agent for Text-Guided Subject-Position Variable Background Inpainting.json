@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/ATA Adaptive Transformation Agent for Text-Guided Subject-Position Variable Background Inpainting.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ATA Adaptive Transformation Agent for Text-Guided Subject-Position Variable Background Inpainting.pdf",
+ "title": "ATA: Adaptive Transformation Agent for Text-Guided Subject-Position Variable Background Inpainting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "文本引导背景补全任务中，通过逆序特征位移实现主体位置自适应",
+ "innovations": [
+  "提出 Text-Guided Subject-Position Variable Background Inpainting 新任务：在给定主体图、背景 mask 与背景文本时不再硬性锁定主体的原始位置，而是由模型自行判定与生成背景协调的位置与尺度，解决“主体固定在中心却被补全成泥地、与文本描述的水瀑布矛盾”的典型失败。",
+  "Reverse Displacement Transform：多个 DiT-based PosAgent 块逆序排列，第 i 块输出的位移参数 (γ_i,λ_i)=M_i(ψ_i) 用于变换第 N+1-i 层特征（最深层配 (γ_1,λ_1)、最浅层配 (γ_N,λ_N)），即 SFT(C_I^{N+1-i};γ_i,λ_i)=γ_i⊙C_I^{N+1-i}+λ_i，先从语义最丰富的最深层做空间变换再向浅层过渡，缓解 Separate/Sequential 结构下的主体形变。",
+  "可学习 Position Switch Embedding（E_v/E_o 两状态）+ 1:1 混合训练：D_v 由“把主体居中并等比例放大到 95% 最大尺度、GT 仍用原图位置”构造，与固定的 D_o 混合，使同一模型端到端同时支持位置可变与位置固定两种补全。"
+ ],
+ "method_framework": "Swin-T 从（去背景主体 + mask + 深度图）提多尺度特征；逆序 PosAgent 依文本特征、位置开关与时间步预测 (γ,λ)，按 γ_i⊙C_I^{N+1−i}+λ_i 做 SFT 位移；解耦交叉注意力（α·SelfAttn+β·CrossAttn）注入 Hunyuan-DiT 后去噪，主体位置再以 Florence-2 检测框对齐做裁贴。",
+ "experiment_framework": "自建 79K 高质量图（产品/车/人/动物，BiRefNet 分割、ZoeDepth 深度、Hunyuan-Vision 标注）；基线为 9 个外挂布局器的文本引导补全法；指标 FID、BiRefNet、VQA、FlorenceV2 多主体率、GPT-4o 位置合理性及用户研究。",
+ "takeaways": [
+  "把主体位移做成特征层的仿射变换（SFT 的 γ 缩放 + λ 平移，参数由独立小骨干预测）而非像素层裁剪贴回，可避免主题形变并保留原始纹理。",
+  "“位置开关嵌入 + 两类样本混合训练”让单个模型同时支持可变/固定两种行为，比训练两个模型更省，是可迁移的任务级控制写法。",
+  "在开源底模上把“可控性”做成可切换的任务维度（任务重定义），比单纯提 FID 更能打开应用场景。"
+ ],
+ "weaknesses": [
+  "所有基线（LayerDiffusion/PowerPaint/BrushNet/ControlNet/GLIGEN 等）本身只能做位置固定补全，Sec 5.2 承认需外挂布局生成模块才能比，Tab.1 的差距混合了“布局器”与“补全模型”两部分贡献，可比性存疑。",
+  "Tab.1 中 ATA 的 Text-alignment（VQA 0.883）反而低于 SD3-ControlNet（0.908），而 Extention Ratio 7.92%、Multi-subject 4.73% 又远低于其他方法，这些“越低越好”的指标口径正文未解释，读者无法判断该行到底好还是坏。",
+  "主体位置合理性这一核心 claim 完全依赖 GPT-4o 打分（ATA 92.8）与用户研究，而 Sec 5.2 在正文被截断，用户研究的样本量、显著性与偏好顺序控制均未交代，RDT 与 Separate/Sequential 三结构的对照数据也不可见。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "文本引导背景补全任务，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

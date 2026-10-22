@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/CLEAR_Conv-Like Linearization Revs Pre-Trained Diffusion Transformers Up.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/CLEAR_Conv-Like Linearization Revs Pre-Trained Diffusion Transformers Up.pdf",
+ "title": "CLEAR: Conv-Like Linearization Revs Pre-Trained Diffusion Transformers Up",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "局部窗口线性化DiT，加速6.3倍但实际收益有限",
+ "innovations": [
+  "识别出线性化预训练DiT的四个关键因素：局部性、公式一致性、高秩注意图和特征完整性",
+  "提出卷积式局部注意力策略CLEAR，实现线性复杂度",
+  "开发多GPU并行推理范式，减少通信开销"
+ ],
+ "method_framework": "CLEAR将图像查询限制在局部圆形窗口内，同时保持文本查询的全局性，通过知识蒸馏训练仅更新注意力层参数，实现预训练DiT的高效线性化。",
+ "experiment_framework": "在COCO2014数据集上评估，与原始FLUX.1-dev和多种高效注意力方法比较，使用CLIP、IS、FID、LPIPS等指标，测试超分辨率生成和跨模型泛化能力。",
+ "takeaways": [
+  "局部性是预训练DiT的关键特性，远程特征扰动对质量影响较小",
+  "使用自生成样本进行微调比真实数据集更有效",
+  "多GPU并行推理可通过文本查询的块级平均近似实现"
+ ],
+ "weaknesses": [
+  "实际加速未完全达到理论FLOPS减少的程度",
+  "仅关注文本到图像生成任务，未探索其他应用场景",
+  "训练时间仍需约1天，效率有提升空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

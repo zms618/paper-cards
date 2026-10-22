@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Residual Decoding Mitigating Hallucinations in Large Vision-Language Models via History-Aware.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Residual Decoding Mitigating Hallucinations in Large Vision-Language Models via History-Aware.pdf",
+ "title": "Residual Decoding Mitigating Hallucinations in Large Vision-Language Models via History-Aware",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "训练-free残差解码缓解LVLM语言先验幻觉，依赖历史窗口设置",
+ "innovations": [
+  "发现LVLM中幻觉的本质是解码阶段错误token概率超过真实token",
+  "提出基于JSD分析历史token分布的残差解码方法",
+  "设计语义锚定阶段和表达发散阶段的置信度加权聚合机制"
+ ],
+ "method_framework": "通过JSD分析历史token分布，识别语义锚定阶段，聚合历史logit形成残差指导，与当前logit融合进行解码",
+ "experiment_framework": "POPE/HallusionBench/CHAIR等11个基准测试，对比VCD/ICD/DoLa等8种SOTA方法，评估准确率/F1等指标",
+ "takeaways": [
+  "利用模型内部隐式推理机制解决幻觉问题",
+  "基于JSD的U形分布分析可有效识别稳定语义阶段",
+  "训练-free方法在保持效率的同时显著提升性能"
+ ],
+ "weaknesses": [
+  "方法依赖历史窗口大小设置，可能影响泛化性",
+  "仅关注语言先验导致的幻觉，未考虑其他类型的幻觉原因"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "幻觉抑制属于可靠性主线，但仅解决语言先验幻觉类型",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

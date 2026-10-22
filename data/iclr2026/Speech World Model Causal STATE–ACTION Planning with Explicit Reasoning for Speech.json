@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Speech World Model Causal STATE–ACTION Planning with Explicit Reasoning for Speech.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Speech World Model Causal STATE–ACTION Planning with Explicit Reasoning for Speech.pdf",
+ "title": "Speech World Model: Causal State-Action Planning with Explicit Reasoning for Speech",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "模块化语音模型因果分解，但证据不足且优势不明",
+ "innovations": [
+  "提出首个基于图的模块化语音模型，把语音理解分解为四个模块经因果图通信，建立认知状态搜索空间",
+  "以世界模型视角在隐状态上学前向动力学，受后验轨迹引导由指令LLM产出因果分析",
+  "在部分监督下支持反事实干预与可解释性，而非把语音理解当黑箱级联"
+ ],
+ "method_framework": "把语音编码器/文本编码器输出接入一个因果图，将语音理解分解为四个模块在隐状态上做前向动力学预测，形成认知状态搜索空间；在该空间中沿后验轨迹搜索，由指令微调LLM基于轨迹产出简洁因果分析与面向用户的回答，支持反事实干预与模块透明决策。",
+ "experiment_framework": "与Qwen2-Audio/Voxtral/ChatGPT等黑箱语音模型做定性对比，展示在语境推断/意图分析上的显式因果推理；强调可解释与反事实能力，模型与数据将开源。",
+ "takeaways": [
+  "黑箱语音级联模型内容理解尚可但对语音状态/动作的显式推理弱，尤其在稀疏监督下",
+  "模块化因果图+世界模型前向动力学可产出可反事实干预的显式推理",
+  "该框架提升了语音理解的可解释性与部分监督下的推理透明度"
+ ],
+ "weaknesses": [
+  "评测以定性案例为主，缺少标准化benchmark上的定量精度对比，证据强度偏弱",
+  "四模块分解与因果图需要结构化监督，标注成本与可扩展性未充分量化",
+  "模块化级联的误差会在图上传播，端到端精度相对强黑箱模型的优势不明"
+ ],
+ "confidence": "low",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "语音因果分解方法有可靠性价值，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

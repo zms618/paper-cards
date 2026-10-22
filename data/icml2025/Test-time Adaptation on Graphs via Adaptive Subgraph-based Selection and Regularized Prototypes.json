@@ -1,0 +1,37 @@
+{
+ "title": "Test-time Adaptation on Graphs via Adaptive Subgraph-based Selection and Regularized Prototypes",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "图TTA方法：自适应子图选择+原型正则化，缓解域偏移",
+ "innovations": [
+  "聚焦图这种非欧数据的测试时适应(TTA)这一稀缺方向，弥补现有 TTA 只面向欧氏数据的空白",
+  "提出自适应子图选择机制，选取对测试域适应更有价值的子图结构",
+  "结合正则化原型，在无标签测试图上稳定地对齐表示、缓解 GNN 域偏移退化"
+ ],
+ "method_framework": "在仅用测试图数据、无训练数据的 TTA 设定下，先自适应挑选信息量高/偏移一致的子图；再基于这些子图构建正则化的类原型，用原型对齐约束 GNN 表示，使消息传递在测试域偏移下仍稳定，避免直接用伪标签带来的误差累积。",
+ "experiment_framework": "在多个图数据集的测试时域偏移设定下评测；对比无源适应/图域泛化基线；指标为域偏移下的节点/图分类精度，验证子图选择与正则化原型的增益。",
+ "takeaways": [
+  "GNN 在测试时域偏移下会严重退化，图 TTA 是被忽视但重要的问题",
+  "自适应子图选择能聚焦于对适应最有价值的图结构",
+  "正则化原型可在无标签测试图上提供稳定的对齐信号"
+ ],
+ "weaknesses": [
+  "属图结构数据 TTA，与医学影像、多模态大模型推理主线距离较远",
+  "子图选择与原型正则化在大图上的计算开销前9页未充分分析",
+  "对节点级/大图流式场景的可扩展性证据有限"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Test-time Adaptation on Graphs via Adaptive Subgraph-based Selection and Regularized Prototypes.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Test-time Adaptation on Graphs via Adaptive Subgraph-based Selection and Regularized Prototypes.pdf",
+ "raw_overall": 6.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

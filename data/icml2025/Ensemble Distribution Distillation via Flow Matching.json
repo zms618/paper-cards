@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Ensemble Distribution Distillation via Flow Matching.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Ensemble Distribution Distillation via Flow Matching.pdf",
+ "title": "Ensemble Distribution Distillation via Flow Matching",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "流匹配迁移集成分布，但开销与推广性存疑。",
+ "innovations": [
+  "用流匹配(flow matching)显式建模并迁移集成教师的整体预测分布而非仅平均logit",
+  "聚焦于把集成多样性有效蒸馏到学生",
+  "系统研究不同教师多样化策略(mixup/RA/aux)下学生吸收多样性的能力"
+ ],
+ "method_framework": "EnDD 把集成教师的预测分布视为目标分布，训练一个学生用流匹配去拟合该分布，从而既保持低成本又复现集成的不确定性与多样性，而非仅蒸馏集成的平均输出。",
+ "experiment_framework": "在分类任务上对比既有集成分布蒸馏方法(FED、EDFM等)；指标为负对数似然NLL；系统扫描教师多样性水平观察学生蒸馏效果与学到的多样性。",
+ "takeaways": [
+  "流匹配能比传统方法更好地把集成教师的多样性迁移到单个学生",
+  "学生的NLL随教师多样性提升而改善，说明其真正吸收了集成行为",
+  "低成本单学生可逼近集成教师的不确定估计"
+ ],
+ "weaknesses": [
+  "流匹配采样带来额外推理开销，与单学生低成本初衷存在张力",
+  "主要在图像分类验证，对回归/检测等任务的不确定性蒸馏推广待验证",
+  "教师多样性上限与学生容量瓶颈的权衡未充分刻画"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

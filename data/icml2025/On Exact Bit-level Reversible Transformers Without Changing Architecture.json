@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/On Exact Bit-level Reversible Transformers Without Changing Architecture.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/On Exact Bit-level Reversible Transformers Without Changing Architecture.pdf",
+ "title": "On Exact Bit-level Reversible Transformers Without Changing Architecture",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "将Transformer块视为ODE积分，实现架构不变的精确比特级可逆训练。",
+ "innovations": [
+  "提出BDIA-transformer，在不改变标准Transformer推理架构的前提下实现精确比特级可逆，缓解反向传播显存墙",
+  "把扩散反演的双向积分近似(BDIA)引入Transformer，将每个块视为ODE的Euler积分",
+  "训练中令γ对每样本每块随机取{0.5,-0.5}，等价于训练一组由二元随机变量参数化的ODE求解器集成，起到正则化作用并提升验证精度"
+ ],
+ "method_framework": "把Transformer前向块写成ODE的Euler离散化，用BDIA使前向可被精确逆解；激活量化+前向存储轻量侧信息补偿二元量化损失，从而反向时无需存中间激活即可逐位重构；推理时取E(γ)=0，使架构退化为仅多了激活量化的标准Transformer。",
+ "experiment_framework": "在自然语言生成、图像分类、机器翻译三类任务上对比BDIA-transformer与常规Transformer的验证精度及显存/计算开销。",
+ "takeaways": [
+  "可逆Transformer可做到推理架构与标准Transformer一致，同时大幅省显存",
+  "γ随机取值在训练时引入ODE求解器集成效应，正则化并提升验证精度",
+  "激活量化加轻量侧信息足以补偿量化损失，实现精确比特级可逆"
+ ],
+ "weaknesses": [
+  "以重算换显存，反向额外计算量在超大模型上的吞吐收益未充分量化",
+  "激活量化与比特级可逆对低精度推理/极端量化的误差累积未深入分析",
+  "实验多为中小规模任务，未在当代LLM规模上验证显存墙缓解效果"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

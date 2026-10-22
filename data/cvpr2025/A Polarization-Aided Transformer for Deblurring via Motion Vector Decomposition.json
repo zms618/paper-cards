@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/A Polarization-Aided Transformer for Deblurring via Motion Vector Decomposition.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Polarization-Aided Transformer for Deblurring via Motion Vector Decomposition.pdf",
+ "title": "A Polarization-Aided Transformer for Image Deblurring via Motion Vector Decomposition",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "极坐标双分支分解运动模糊，提升微弱且消融不完整",
+ "innovations": [
+  "MDM 用两条可变形卷积分支：Cartesian offset 分支抓平移（Δt=Conv3×3(XD)），arctan(Dy/Dx) 生成的极坐标 offset 分支抓旋转（Fr=DConv(X,Conv3×3(Dr))）",
+  "RSAS 的径向条带窗口（角度向 Mφ=M×M、距离向 Mr=1）在极坐标下做窗口自注意力",
+  "ARPE 把位置偏置拆为距离偏置 Br 与角度偏置 Bφ，用 aΔsin(Δ)+bΔcos(Δ) 参数化相对距离与相对角度"
+ ],
+ "method_framework": "MDM 双分支可变形卷积编码平移/旋转特征→3 级编码器 FFN→解码器 RSAS（径向条带注意力+角度相对位置编码+方位 patch 合并）→卷积输出残差得清晰图",
+ "experiment_framework": "GoPro/HIDE/RealBlur/RSBlur/REDS-val-300/RWBI 六数据集，与 14 个去模糊方法比 PSNR/SSIM，RWBI 用无参考 NIQE，附参数量对比",
+ "takeaways": [
+  "用坐标系变换（直角→极坐标）对齐物理量（旋转运动）的归纳偏置，比加深/加宽网络更省参数",
+  "取消极坐标方法常见的重采样与整形操作以保留去模糊所需细节，这一取舍可迁移到其他极坐标视觉设计"
+ ],
+ "weaknesses": [
+  "相对最强基线 FFTformer 的提升仅 0.05–0.11 dB（GoPro 34.26 vs 34.21、HIDE 31.84 vs 31.74、REDS 29.25 vs 29.14），幅度接近噪声量级",
+  "未提供多次运行的方差或显著性检验；正文 9 页内消融章节被截断，MDM/RSAS/ARPE 各自贡献无法核实",
+  "旋转子集为自建（从已有数据集抽取构造），缺少第三方旋转模糊基准对照，该 claim 的说服力受限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "图像去模糊与可靠性主线无实质交点，仅常规视觉任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

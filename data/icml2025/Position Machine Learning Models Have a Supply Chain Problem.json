@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Position Machine Learning Models Have a Supply Chain Problem.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Position Machine Learning Models Have a Supply Chain Problem.pdf",
+ "title": "Position: Machine Learning Models Have a Supply Chain Problem",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4,
+  "relevance": 7,
+  "overall": 5.5
+ },
+ "one_line": "将软件供应链安全方案迁移至ML，但缺乏实现与验证。",
+ "innovations": [
+  "把开放模型 hub（Hugging Face 等）类比传统软件供应链，识别已被真实利用的攻击：上传恶意模型、用脆弱框架/受限或投毒数据训练、仿冒知名组织模型",
+  "论证模型卡等声明不可验证（发布者可撒谎），缺乏对训练数据、预处理、硬件的可证明性",
+  "借鉴 DigiNotar→证书透明、SolarWinds→Sigstore 的历史经验，提出用 Sigstore 为开放 ML 模型签名并在透明日志中证明数据集属性"
+ ],
+ "method_framework": "以传统软件工程供应链的透明化方案（Certificate Transparency、Sigstore）为参照，分析 ML 开放生态的对应风险；主张让模型发布者对模型签名、把签名元数据存入只追加透明日志，并为其所使用的数据集提供可验证属性证明，从而抵御恶意替换、投毒与仿冒。",
+ "experiment_framework": "立场论文，无新系统实现；证据为已发生的真实攻击案例（恶意模型、目标提示误导、仿冒）与 US/EU 拟议监管对透明性的需求分析。",
+ "takeaways": [
+  "模型卡等书面声明不可验证，是开放模型供应链的核心信任缺口",
+  "软件供应链的透明日志+签名范式可直接迁移到 ML 模型",
+  "可验证的数据集属性证明是缓解投毒与合规风险的关键"
+ ],
+ "weaknesses": [
+  "立场论文仅提出迁移 Sigstore 的方向，未给出在模型 hub 上的原型实现或对签名/证明开销的实测",
+  "对数据集属性如何密码学可验证（而非仅声明）的具体机制着墨有限",
+  "缺乏对模型 hub 平台采纳成本与攻击者绕过方式的系统评估"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Sliderquant_Accurate Post-Training Quantization for LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sliderquant_Accurate Post-Training Quantization for LLMS.pdf",
+ "title": "SliderQuant: Accurate Post-Training Quantization for LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "滑动窗口量化缓解LLM首末层敏感度，但与可靠性主线无关",
+ "innovations": [
+  "实证揭示顺序PTQ把各层等同对待非最优：浅/深层比中层对量化更敏感，且首个/末个敏感层误差显著最大",
+  "提出inter-layer sliding quantization，为浅/中/深层设计三类滑动窗口以匹配不同量化敏感度",
+  "提出intra-layer sliding quantization，用增量策略逐窗口量化，配合少量可学参数跨层降低量化误差"
+ ],
+ "method_framework": "不再把网络切成等大不重叠块统一量化，而是按层敏感度用滑动窗口覆盖各层：层间滑动针对浅/中/深不同敏感度设计窗口，层内对每个窗口用增量式量化逐步求解，从而在低比特下把首末层的大误差分摊抑制掉。",
+ "experiment_framework": "覆盖Llama/Llama2/Llama3/Qwen2.5、DeepSeek-R1蒸馏模型与大MoE；任务含基础语言生成、zero-shot常识推理、数学与代码；权重量化与权激活量化、多位宽设置，对比GPTQ/SmoothQuant/OmniQuant/CBQ及旋转变换类最新PTQ。",
+ "takeaways": [
+  "SliderQuant在多种LLM族与多位宽下优于现有PTQ(含旋转变换方法)",
+  "首/末层敏感度最高这一经验规律可指导分层量化设计",
+  "方法只需少量可学参数即显著降低跨层量化误差"
+ ],
+ "weaknesses": [
+  "落地为LLM压缩/量化，与可靠性、医学影像、多模态推理主线无关",
+  "虽'少量可学参数'，仍引入可训练分量与校准流程，相对纯无参数PTQ更复杂",
+  "收益主要在压缩精度指标，未讨论量化后模型在鲁棒性/校准/幻觉上的影响；对超大规模MoE的实测开销细节有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.85,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "LLM量化压缩与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

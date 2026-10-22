@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Random-Projection Ensemble Dimension.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Random-Projection Ensemble Dimension.pdf",
+ "title": "Random-Projection Ensemble Dimension Reduction",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "随机投影集成降维，计算开销大且与可靠性主线关联弱。",
+ "innovations": [
+  "提出随机投影集成降维框架RPEDR：用多组独立随机投影，每组按经验回归表现选最优投影，与既有充分降维(SDR)方法路线不同。",
+  "用SVD聚合所选投影，奇异值量化各投影方向相对重要性并据此自动选择降维维数。",
+  "理论证明期望估计误差随投影组数增加而下降，并系统给出投影分布与投影数等调参默认建议。"
+ ],
+ "method_framework": "把高维预测X随机投影到多个低维子空间，每次投影后拟合基回归并按经验表现选最好投影；对所选投影做SVD聚合，由奇异值大小确定保留维数，构成线性充分降维子空间估计。",
+ "experiment_framework": "在模拟数据与真实高维回归数据上对比SOTA充分降维方法，报告预测/估计误差，并消融投影分布、投影组数等关键选择。",
+ "takeaways": [
+  "多组随机投影中按经验表现选优再SVD聚合，可在高维回归中稳定匹配或超过既有SDR方法。",
+  "期望估计误差随投影组数增加而下降，为随机投影集成提供了理论保证。"
+ ],
+ "weaknesses": [
+  "属统计降维/充分降维方法方向，与可靠性主线（鲁棒/可信/医学影像）关联弱。",
+  "需为每组拟合基回归并采样大量随机投影，计算开销随投影组数增长，高维极大p下的可扩展性未充分讨论。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.83,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "统计降维方法，与可靠性主线关联弱但可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

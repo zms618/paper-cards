@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DiffAdvMAP_Flexible Diffusion-Based Framework for Generating Natural Unrestricted Adversarial Examples.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DiffAdvMAP_Flexible Diffusion-Based Framework for Generating Natural Unrestricted Adversarial Examples.pdf",
+ "title": "DiffAdvMAP: Flexible Diffusion-Based Framework for Generating Natural Unrestricted Adversarial Examples",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.75
+ },
+ "one_line": "扩散模型生成对抗样本，加入约束提升自然度与攻击力",
+ "innovations": [
+  "将 UAE 生成表述为从后验分布采样，并用扩散模型的真实数据先验近似该后验以提升自然度。",
+  "引入对抗约束保证攻击有效性，引入重构约束提升框架灵活性以适配不同攻击条件。",
+  "统一了以往针对特定攻击条件设计的扩散 UAE 方法，使其更通用。"
+ ],
+ "method_framework": "以扩散模型作为真实数据先验，通过 MAP/后验近似采样生成 UAE；在采样过程中加入对抗约束（使其被目标模型误分类）与重构约束（贴近原始自然图像分布），从而在自然度与攻击力之间取得平衡并可配置到不同攻击场景。",
+ "experiment_framework": "在 ImageNet 上评测，与基于 GAN/扩散的 UAE 攻击及传统扰动攻击对比；指标包括攻击成功率与生成自然度（如人眼/分类器判别），并测试不同攻击场景的适配性。",
+ "takeaways": [
+  "后验采样+真实数据先验可在不固定范数预算下生成更自然的无限制对抗样本。",
+  "对抗约束与重构约束的配合同时保证攻击力与自然度。",
+  "框架比以往绑定特定攻击条件的扩散 UAE 方法更灵活通用。"
+ ],
+ "weaknesses": [
+  "属攻击生成而非防御，未系统评估对鲁训练/检测器的实际影响。",
+  "依赖扩散模型先验，在 ImageNet 之外及大规模多模型上的可迁移性与成本交代有限。",
+  "虽与对抗鲁棒性相邻，但非医学影像/多模态大模型可信推理主线，relevance 中等。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

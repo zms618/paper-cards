@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/NIMO_A Nonlinear Interpretable Model.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/NIMO_A Nonlinear Interpretable Model.pdf",
+ "title": "NIMO: A Nonlinear Interpretable Model",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "线性回归叠加NN非线性效应，参数消去优化，但强交互与高风险域验证不足",
+ "innovations": [
+  "在简单线性回归基底上叠加由神经网络给出的灵活且可解释的非线性特征效应，兼得内蕴可解释性与NN表达力",
+  "提出基于参数消去(parameter elimination)的优化方法，高效联合优化NN参数与线性系数",
+  "依赖自适应岭回归自然引入稀疏性，得到忠实且可理解的特征效应"
+ ],
+ "method_framework": "模型以线性回归为主干，每个特征效应可由一个小NN非线性地建模；整体仍是加性可分解形式故内蕴可解释。优化上用参数消去把NN参数与线性系数解耦交替求解，再用自适应岭回归(自适应惩罚)诱导稀疏，去掉无关特征效应。",
+ "experiment_framework": "在多个表格/标准数据集上验证；对比线性模型、GAM类与黑箱NN及post-hoc解释(SHAP/LIME)；指标为预测精度与特征效应的忠实度/可理解度；消融稀疏与参数消去。",
+ "takeaways": [
+  "NIMO在保持良好预测性能的同时给出忠实、可理解的特征效应，避免post-hoc解释的保真度无保证问题",
+  "参数消去使NN参数与线性系数可高效联合优化，自适应岭自然给出稀疏",
+  "内蕴可解释路线可同时满足高风险域对透明性与精度的双重需求"
+ ],
+ "weaknesses": [
+  "加性可分解结构对强交互效应的建模能力受限，复杂视觉/语言任务未覆盖",
+  "与已有GAM/加性模型方法的边界与增益在文中对比不够充分",
+  "虽提及医疗等高风险域，但未在真实医学影像/临床决策任务上验证可解释性的实际可信度"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "可解释性方法但未在医学影像落地，高风险域验证不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

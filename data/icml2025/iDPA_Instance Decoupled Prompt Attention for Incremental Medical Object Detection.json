@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/iDPA_Instance Decoupled Prompt Attention for Incremental Medical Object Detection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/iDPA_Instance Decoupled Prompt Attention for Incremental Medical Object Detection.pdf",
+ "title": "iDPA: Instance Decoupled Prompt Attention for Incremental Medical Object Detection",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "解耦prompt注意力缓解医学增量检测耦合问题，但证据不足",
+ "innovations": [
+  "实例级Prompt生成(IPG)：从图像解耦出细粒度实例级知识，生成聚焦密集预测的prompt",
+  "解耦Prompt注意力(DPA)：将原始prompt注意力按前景/背景、文本/视觉token解耦",
+  "缓解医学域与自然域概念鸿沟下的增量检测遗忘与耦合干扰"
+ ],
+ "method_framework": "在基于prompt的增量目标检测框架上，(1)IPG从图像中抽取实例级细粒度知识生成针对密集预测的prompt；(2)DPA把原本紧耦合的prompt注意力解耦为文本-视觉双向分支，分离前景/背景信息与prompt-图文token耦合，以适配医学域的概念鸿沟并缓解增量学习遗忘。",
+ "experiment_framework": "在医学目标检测增量任务上评测；基于视觉语言目标检测(VLOD)/预训练大模型；报告新类增量下的mAP与旧类遗忘，对比既有prompt-based持续学习方法。",
+ "takeaways": [
+  "实例级prompt生成提升了密集医学检测的定位与识别",
+  "解耦prompt注意力有效缓解医学域下前景-背景与prompt-token耦合问题",
+  "iDPA在增量医学检测上改善了新旧类的权衡"
+ ],
+ "weaknesses": [
+  "收益幅度与基线强度需完整增量检测实验表确认，前9页未见具体mAP数字",
+  "仅医学检测，对诊断分类/分割等其他医学任务的迁移未验证",
+  "解耦设计引入额外模块复杂度，计算开销与推理速度前9页未报告"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/ST-WEBAGENTBENCH_A Benchmark for EVALUATING Safety and Trustworthiness In Web Agents.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/ST-WEBAGENTBENCH_A Benchmark for EVALUATING Safety and Trustworthiness In Web Agents.pdf",
+ "title": "ST-WebAgentBench: A Benchmark for Evaluating Safety and Trustworthiness in Web Agents",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "构建Web智能体安全评测基准，揭示完成率与安全合规率巨大差距。",
+ "innovations": [
+  "提出Completion Under Policy(CuP)指标，仅奖励同时满足全部适用策略的完成",
+  "提出Risk Ratio量化各维度的安全违规，并设Modality Challenge分离纯视觉与纯DOM信息检索",
+  "6个正交维度（如用户同意、鲁棒性）+3难度层级的可配置可扩展评测框架"
+ ],
+ "method_framework": "每个任务携带一条或多条安全策略（共3057条），从6个正交维度评分；用CuP衡量在遵守全部策略前提下的完成率，用Risk Ratio量化各维度违规；Modality Challenge分离视觉-only与DOM-only信息检索对失败的贡献。",
+ "experiment_framework": "375个任务、3难度层级，评测三个开源SOTA Web智能体；报告CuP与名义完成率对比及Risk Ratio。",
+ "takeaways": [
+  "三个SOTA智能体平均CuP不足名义完成率的2/3，安全差距显著",
+  "仅看任务完成率会严重高估Web智能体的可信赖度",
+  "Modality Challenge可定位失败来自视觉还是DOM感知"
+ ],
+ "weaknesses": [
+  "落地域为Web智能体，未覆盖医学/多模态推理等关键落地域",
+  "策略为人工编写的简洁规则，可能无法穷尽真实企业合规场景",
+  "43页中各维度策略间的相关性与标注一致性未在前9页充分展开"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "Web智能体安全评测，未覆盖医学/多模态推理落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

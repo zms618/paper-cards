@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Omni-Angle Assault_An Invisible and Powerful Physical Adversarial Attack on Face Recognition.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Omni-Angle Assault_An Invisible and Powerful Physical Adversarial Attack on Face Recognition.pdf",
+ "title": "Omni-Angle Assault: An Invisible and Powerful Physical Adversarial Attack on Face Recognition",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6.25
+ },
+ "one_line": "UV帽用不可见紫外光攻击人脸识别，近距离有效但防御未验证",
+ "innovations": [
+  "首次用不可见紫外光(UV<400nm)作为物理攻击载体：比红外能量更高、肉眼不可见且不直射眼睛，克服IR能量弱、眼镜式IR无法多角度、直射伤眼等痛点",
+  "半球曲面UV建模：把帽面近似为半球，按光源在曲面上的位置由cosθ修正光强，解决平面模型无法描述弯曲帽面不同位置光强衰减的问题",
+  "VIDIM视频插值仿真+actor-critic强化学习：在数字域对距离/功率/波长/位置做黑盒参数搜索，设计5项奖励(位置惩罚/定向/非定向冒充/躲避/DoS)联合优化多发射器"
+ ],
+ "method_framework": "先按I∝pλ²/(4πnd²)物理公式，用VIDIM扩散插值模型从少量实拍UV帧生成不同距离/功率/波长下的UV图像；再将帽面建模为半球，由发射方向与Z轴夹角θ的cosθ修正任意点F处等效功率并叠加UV图；最后actor-critic在黑盒下搜索ϕ=[d,p,λ,(x,y)]，奖励函数组合躲避/冒充/DoS目标得到最优部署参数。",
+ "experiment_framework": "真实物理实验：硬件为针织帽内嵌365/395/415nm UV发射器+可调电源+iPhone13相机+测光表；数据集LFW与CelebA；目标模型ArcFace/FaceNet/CosFace/MobileFace；基线MaxUV与2DUV；指标ASR(0.01 FAR阈值)；消融波长/电压/发射器数，鲁棒性测角度/距离/环境光。",
+ "takeaways": [
+  "UVHat躲避攻击ASR最高(FaceNet达100%)，DoS最高89%，远优于MaxUV(多<41%)与2DUV(<13%)，证明曲面建模+RL优化的关键作用",
+  "角度鲁棒：正面0°最高，偏角45°时躲避攻击仅降14%、DoS降6%，优于眼镜式IR攻击",
+  "波长越短能量越强ASR越高(近距离FR场景UV优于IR)；距离>45cm或环境光>6000lux时ASR明显下降，是主要失效边界"
+ ],
+ "weaknesses": [
+  "有效性依赖近距离(FR典型场景)与低环境光，作者自陈极端光照/远距离失效；未在商用活体检测/反欺骗防御(如动作活体、深度相机)下测试",
+  "防御讨论较浅：仅列举UV滤光片/图像检测/对抗训练三类并各给一句反驳，未实测任何一种防御对UVHat的实际拦截效果",
+  "落点为FR安全而非主任务指定的医学影像/多模态大模型推理；志愿者仅5人、室内受控环境，跨人种/跨真实门禁部署的泛化证据不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

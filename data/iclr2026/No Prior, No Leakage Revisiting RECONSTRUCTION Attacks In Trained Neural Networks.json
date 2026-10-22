@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/No Prior, No Leakage Revisiting RECONSTRUCTION Attacks In Trained Neural Networks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/No Prior, No Leakage Revisiting RECONSTRUCTION Attacks In Trained Neural Networks.pdf",
+ "title": "No Prior, No Leakage: Revisiting Reconstruction Attacks in Trained Neural Networks",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 6.8
+ },
+ "one_line": "证明无先验时重建攻击不唯一，调和隐私与强泛化需求。",
+ "innovations": [
+  "证明Haim等(2022)重建攻击在无数据先验时不唯一：存在无穷多替代训练集可任意远离真实训练集，使重建根本不可靠。",
+  "通过合并两个实例为一个、或拆分一个实例为两个的构造性技术（引理/定理）刻画替代解的存在。",
+  "发现训练更充分、更满足隐式偏差条件的网络反而更难被重建，调和了隐私与强泛化需求之间的张力。"
+ ],
+ "method_framework": "从模型参数反推训练样本这一优化问题出发，分析其解的非唯一性；在训练数据张满域与仅近似落在线性子空间等不同假设下，用合并/拆分构造生成不可区分的替代训练集；并考虑攻击者对隐式偏差解邻近程度仅有有限知识的更现实设定。",
+ "experiment_framework": "在合成数据与CIFAR上把攻击者先验建模为对数据域边界的了解（通过攻击初始化注入）；随攻击者先验减弱，攻击有效性下降，验证无先验则无泄漏的理论结论。",
+ "takeaways": [
+  "重建攻击的有效性高度依赖攻击者的领域先验，缺乏先验时解不唯一、重建不可靠。",
+  "更充分训练（更强隐式偏差）并不必然带来更大隐私泄漏，反而更抗重建。",
+  "该理论细化了训练集泄漏在何种条件下才可能发生，为缓解重建攻击提供依据。"
+ ],
+ "weaknesses": [
+  "主要针对基于隐式偏差/边距最大化的特定重建攻击，对记忆式（如exact memorization过拟合小数据）泄漏的适用性有限。",
+  "结论在较理想化的线性子空间假设下推导，对真实高维图像数据的精确程度需谨慎外推。",
+  "理论否定了无先验重建，但未给出针对有强先验攻击者的具体缓解方案。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "隐私鲁棒与泛化张力，成员推断攻击可靠性研究",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/A Real-world Display Inverse Rendering Dataset.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Real-world Display Inverse Rendering Dataset.pdf",
+ "title": "A Real-world Display Inverse Rendering Dataset",
+ "scores": {
+  "novelty": 7,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "小规模显示逆渲染数据集，标定背光但评测不全面",
+ "innovations": [
+  "首个显示-相机（LCD + 双目偏振相机）真实逆渲染数据集：144 个 16×9 超像素 OLAT 图案、双视图、偏振分离的漫反射/镜面图，配 EinScan 结构光扫描的真值深度/法线/掩码",
+  "建立显示背光与非线性标定模型 L_i = s(P_i+B_i)^γ，用已知几何反射球体的 OLAT 图反解空间变化背光 B_i 与映射指数 γ，消除近场背光对逆渲染的污染",
+  "给出任意图案的合成式 I(P)=clip(Σ_i I_i s(P_i+B_i)^γ + ε)，利用非相干光输运线性性凭 OLAT 图外推任意重光照，并可按需注入可调高斯噪声"
+ ],
+ "method_framework": "标定 LCD 背光 B_i、非线性 γ 与双目内外参；OLAT 采集 16 物体双视图，Stokes 分解分离漫/镜面；baseline 用解析光度立体初始化法线、RAFT 求深度，再在 PyTorch 中可微渲染优化基 BRDF 权重，150 秒收敛。",
+ "experiment_framework": "16 个物体 × 144 OLAT；评估 Woodham/PS-FCN/PS-Transformer/SRSH/UniPS/SDM-UniPS 与 SRSH/DPIR/IIR；指标法线 MAE、重光照 PSNR/SSIM。",
+ "takeaways": [
+  "近场显示光照必须显式建模：baseline 不建模光照衰减时 PSNR 从 39.78 掉到 37.43",
+  "144 张 OLAT 对法线重建已足够，编码成 M=2 的复用图案仍能保持接近精度，可大幅压缩采集时间",
+  "偏振 Stokes 分离漫/镜面后可用更少图案获得更准法线，但该收益在不同光度立体方法上并不一致"
+ ],
+ "weaknesses": [
+  "数据规模偏小：仅 16 个物体、9 类材质、单一 50cm 摆位，且训练/测试是 144 张 OLAT 按 5:1 切分而非物体级切分，无法支持学习式逆渲染的训练评测",
+  "baseline 本质是解析光度立体 + 基 BRDF 的迭代优化，逆渲染只对比了 4 个方法，其中 DPIR/IIR 本身不建模近场显示光照，与 baseline 的公平性存疑",
+  "全部表格只报单值、无多次运行方差；真值几何来自单台 EinScan（0.05mm 容差），正文未量化扫描-图像配准误差对法线 MAE 的贡献"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "显示逆渲染与可靠性主线无交点，仅数据收集价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

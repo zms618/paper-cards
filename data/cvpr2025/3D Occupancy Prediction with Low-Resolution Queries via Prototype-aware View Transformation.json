@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/3D Occupancy Prediction with Low-Resolution Queries via Prototype-aware View Transformation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3D Occupancy Prediction with Low-Resolution Queries via Prototype-aware View Transformation.pdf",
+ "title": "3D Occupancy Prediction with Low-Resolution Queries via Prototype-aware View Transformation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "组合现有方法做3D占用预测，实验不充分且效率收益存疑",
+ "innovations": [
+  "用迭代聚类得到2D原型特征P_img，再以cosine相似度亲和矩阵A做Aggregate-Dispatch（式1a/1b）把原型映射到3D体素查询，补偿降分辨率带来的空间细节损失",
+  "用deformable attention显著图G与亲和矩阵A逐元素相乘作空间桥接，把无空间信息的体素原型特征回投到2D网格，并以伪mask质心为锚做对比学习L_cls提升原型区分度",
+  "对体素查询做特征级(dropout/高斯噪声)与空间级(transpose/flip)增广生成P个视角，再用GRAND式sharpen平均分布的L2一致性正则L_cons约束多视角解码一致"
+ ],
+ "method_framework": "FPN特征经迭代聚类得2D原型，用相似度亲和矩阵聚合-分发注入低分辨率体素查询，再经deformable attention做2D→3D变换；解码时对体素查询做特征/空间增广生成多视角，以sharpen平均分布的L2一致性正则约束；四损失L_occ+L_Lov+L_cls+L_cons联合优化。",
+ "experiment_framework": "Occ3D-nuScenes与SemanticKITTI；Base/Small/Tiny三档查询分辨率；对比CTF-Occ、TPVFormer、SurroundOcc、OccFormer、BEVFormer、PanoOcc；指标mIoU/IoU及推理时延、FLOPs、参数量。",
+ "takeaways": [
+  "把'降分辨率导致信息损失'拆成编码侧(原型注入)与解码侧(多视角一致性)两个正交补丁，这种按瓶颈定位拆分的写法可迁移到其它效率-精度权衡问题",
+  "在同一方法上按Base/Small/Tiny分档做计算-精度对照，比只报单点SOTA更能说明效率收益的真实来源",
+  "中间表示缺少GT监督时，用聚类/VFM生成伪mask质心作锚点做对比学习，是可复用的'给中间表示补监督'套路"
+ ],
+ "weaknesses": [
+  "核心部件高度借用：迭代聚类取自Slot Attention系[1,4,13,52]，Aggregate-Dispatch取自[23,31]，一致性正则直接套用GRAND[5]，本文主要是组合与场景迁移，novelty有限",
+  "正文在4.3定性分析处截断，消融实验与损失权重(λ1-4、温度ε_cls/ε_cons、增广数P)的设置依据均不可见，无法核验各组件独立贡献",
+  "无方差与显著性检验，所有主表只报单次均值；SemanticKITTI上Symphonies-B+ProtoOcc仅+0.27 IoU/+0.45 mIoU，却以'克服87.5%空间存储缺陷'作强claim，且正文自己也承认VoxFormer的IoU并未反超，claim与表格存在张力",
+  "效率对比只与DFA3D一个视角变换方法比，且未报告整模型端到端时延，'75%分辨率削减'的收益主要来自查询尺寸本身而非方法"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3D占用预测与可靠性主线无交点，仅效率优化机制可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

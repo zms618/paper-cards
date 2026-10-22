@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Muse Model-Agnostic Tabular Watermark-Ing via Multi-Sample Selection.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Muse Model-Agnostic Tabular Watermark-Ing via Multi-Sample Selection.pdf",
+ "title": "MUSE: Model-Agnostic Tabular Watermarking via Multi-Sample Selection",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "表格水印新范式：多样本选择替代DDIM可逆性，保真度提升但算力开销大",
+ "innovations": [
+  "提出多样本选择水印范式：生成多个候选样本再按专用评分函数选其一嵌水印，绕开表格扩散模型可逆性差的问题",
+  "模型无关：兼容任意支持重复采样的表格生成模型；灵活权衡生成质量/可检测性/鲁棒性",
+  "理论分析给出水印强度的原则化校准，最小化对原始数据分布的扭曲"
+ ],
+ "method_framework": "现有表格水印依赖DDIM可逆性，但表格扩散可逆性差导致性能下降。MUSE利用表格生成采样快的特点：对同一条件生成多个候选样本，用一个专门设计的评分函数选出最符合水印信号的样本作为最终输出；水印强度可由理论校准，在保证检测率的同时把对数据分布的失真压到最低。",
+ "experiment_framework": "在4个表格数据集上验证；对比基于DDIM可逆性的水印方法；指标为保真度失真率、检测率(TPR@FPR)、对后处理/攻击的鲁棒性；报告失真降84-88%且1.0 TPR@0.1%FPR。",
+ "takeaways": [
+  "多样本选择把水印问题从可逆性依赖转化为采样-选择问题，天然模型无关",
+  "校准后的水印强度可在检测率与分布保真性间取得更好折中",
+  "MUSE在保真度与检测率上同时显著优于现有表格水印方法"
+ ],
+ "weaknesses": [
+  "主线是合成表格数据溯源/水印，与多模态推理、医学影像可靠性主线关联中等",
+  "多样本生成再选择带来N倍采样算力开销，大规模合成成本上升",
+  "对强攻击(样本清洗/聚合)下的鲁棒性仅在有限后处理设置下验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "表格水印属于数据溯源，与可靠性主线关联中等",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

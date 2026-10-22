@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Uncertainty-Aware Knowledge Distillation for Multimodal Large Language Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Uncertainty-Aware Knowledge Distillation for Multimodal Large Language Models.pdf",
+ "title": "Uncertainty-Aware Knowledge Distillation for Multimodal Large Language Models",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 7.2
+ },
+ "one_line": "贝叶斯蒸馏框架引入不确定性权重，但计算开销大且泛化验证不足。",
+ "innovations": [
+  "将知识蒸馏重新表述为基于教师引导的吉布斯先验的贝叶斯推断问题",
+  "通过拉普拉斯近似推导出不确定性感知的权重机制，支持任务级和实例级自适应平衡",
+  "提出Cosine-Probs作为最优能量函数，在概率空间中实现方向对齐而非绝对尺度对齐"
+ ],
+ "method_framework": "Beta-KD框架将教师监督视为学生激活的吉布斯先验，通过MAP估计推导出包含不确定性感知精度项的蒸馏目标，使用轻量级网络预测不确定性权重，实现自适应损失平衡。",
+ "experiment_framework": "在ScienceQA和6个多模态基准上评估，使用MobileVLM-7B作为教师，MobileVLM-1.7B作为学生，比较不同能量函数、手动调参与不确定性权重的效果。",
+ "takeaways": [
+  "贝叶斯视角为知识蒸馏提供了统一框架，不确定性权重能有效平衡多目标学习",
+  "实例级自适应权重优于任务级权重，能更好地捕捉数据异质性和噪声",
+  "概率空间中的方向匹配（如Cosine-Probs）比KL散度更适合多模态大模型蒸馏"
+ ],
+ "weaknesses": [
+  "方法计算开销增加，需要额外训练不确定性预测网络",
+  "实验主要在视觉问答任务上进行，在更广泛的多模态任务上的泛化能力有待验证",
+  "未深入分析不同模态（视觉vs文本）的不确定性特性差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "不确定性权重机制与可靠性主线交织，但泛化验证不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

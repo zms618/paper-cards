@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Instruction-Following Pruning for Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Instruction-Following Pruning for Large Language Models.pdf",
+ "title": "Instruction-Following Pruning for Large Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.875
+ },
+ "one_line": "输入相关掩码剪枝LLM，但仅限FFN层且多轮对话处理不足",
+ "innovations": [
+  "输入相关的动态剪枝掩码",
+  "稀疏预测器与LLM联合优化",
+  "任务级参数共享机制"
+ ],
+ "method_framework": "引入稀疏预测器生成输入相关掩码，通过SoftTopK算子实现可微剪枝，联合优化预测器和LLM",
+ "experiment_framework": "6B/9B/12B模型剪枝至3B参数，对比DENSE-3B、PRUNING+DISTILL和DENSE-9B，评估数学、编程、指令跟随等任务",
+ "takeaways": [
+  "动态参数选择可显著提升小模型性能",
+  "任务相似性导致高度同质的剪枝模式",
+  "参数缓存机制减少解码开销"
+ ],
+ "weaknesses": [
+  "仅评估FFN层剪枝，未扩展到注意力头",
+  "多轮对话中仅使用首轮消息作为输入",
+  "部分任务上性能提升有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

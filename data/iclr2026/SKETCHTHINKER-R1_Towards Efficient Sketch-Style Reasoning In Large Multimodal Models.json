@@ -1,0 +1,41 @@
+{
+ "title": "SketchThinker-R1: Towards Efficient Sketch-Style Reasoning in Large Multimodal Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "蒸馏草图推理压缩多模态模型token，但依赖改写质量且验证有限。",
+ "innovations": [
+  "提出Sketch-Mode冷启动：将长推理轨迹改写为草图式并微调基础多模态模型",
+  "训练SketchJudge奖励模型，显式评估思维过程并对草图式推理给更高分",
+  "在SketchJudge监督下做草图思维RL，泛化草图式推理能力，实现超64%token削减"
+ ],
+ "method_framework": "三阶段：①长推理蒸馏为简洁草图式轨迹并SFT冷启动；②训练过程级奖励模型SketchJudge评估思维质量、偏好关键步骤式推理；③以SketchJudge为奖励做RL，在保持答案正确前提下压缩冗长思维链。",
+ "experiment_framework": "在4个多模态推理基准上评测，对比冗长推理基线；指标为最终答案准确率与推理token成本；报告token成本下降超64%且精度不降；定性分析草图式推理更聚焦关键线索。",
+ "takeaways": [
+  "多模态模型可被激励出类人草图式推理，大幅降低token与时延而不掉点",
+  "过长思维链会累积小错、引入误导信息，适当精简反而提升正确性",
+  "过程级奖励模型(SketchJudge)是引导推理风格压缩的关键监督信号"
+ ],
+ "weaknesses": [
+  "依赖将长推理改写为草图式的数据构建，改写质量上限影响效果",
+  "仅在4个基准验证，极端难例上过度压缩是否会丢关键步骤未充分讨论",
+  "前9页未给出各基准的具体精度/节省数值表格"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/SKETCHTHINKER-R1_Towards Efficient Sketch-Style Reasoning In Large Multimodal Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SKETCHTHINKER-R1_Towards Efficient Sketch-Style Reasoning In Large Multimodal Models.pdf",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态推理压缩与可靠性主线部分交织，但验证有限且依赖改写质量",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

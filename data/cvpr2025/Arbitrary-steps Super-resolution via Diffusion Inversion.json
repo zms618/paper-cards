@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Arbitrary-steps Super-resolution via Diffusion Inversion.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Arbitrary-steps Super-resolution via Diffusion Inversion.pdf",
+ "title": "Arbitrary-step Image Super-resolution via Diffusion Inversion",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "简化扩散反推为单步噪声预测，效率提升但精度未达SOTA",
+ "innovations": [
+  "Partial noise Prediction（PnP）：不在每一步优化噪声，而是从 LR 图直接构造起始态 xκM = √ᾱκM·y0 + √(1−ᾱκM)·fw(y0, κM)，只用一个网络预测「起始步那一张噪声」，把反转噪声集从 T=1000 降到 M≤5；起始步限制在 κ≤250（SD 的 SNR>1.44）以保证高保真，这是效率（Ours-1 仅 117ms vs StableSR-50 3459ms）的来源",
+  "显式论证并丢弃中间步的噪声预测：作者指出中间态 xκi (i<M) 因起始步 SNR 高、backbone 本身是零均值高斯去噪器，额外预测噪声无增益，故中间步用 zτi∼N(0,I)（τi>1）或 0，最终噪声集退化为单张 {zκM}（Alg.1）——这是「简单即深度」的取舍，也直接给出 1–5 步任意采样的自由度",
+  "同一个 fw 用 time embedding 同时训练 S={250,200,150,100} 四个起始步：推理时任选起始步 + 现成跳步采样器（linspace/trailing）决定总步数，起始步成为「保真–真实性」的唯一旋钮；Table 1 显示 ImageNet-Test 上 {100} 单步 PSNR 24.66/SSIM 0.6891 是全表最高，而 {250,200,150,100,50} 五步只有 22.70/0.6412"
+ ],
+ "method_framework": "固定 SD-Turbo UNet，训练 VQGAN 式噪声预测器 fw；起始态 xτS 由 y0 与 fw 合成，其后跳步反向采样；损失 L2 加 LPIPS 加 hinge GAN",
+ "experiment_framework": "乘 4 超分；ImageNet-Test(3000)/RealSR/RealSet80；对照 9 法；7 个指标",
+ "takeaways": [
+  "「只预测起点噪声、其余步用随机噪声」把 diffusion inversion 从每步优化的昂贵过程变成一次前馈，可平移到任何基于扩散先验的逆问题（去噪、去模糊、复原）求解器设计",
+  "把 SNR 阈值（κ≤250，SNR>1.44）作为显式超参写进训练，让 diffusion prior 的「保真 vs 真实」权衡由起始步一个旋钮连续调节，是比网格调 guidance scale 更干净的调法"
+ ],
+ "weaknesses": [
+  "参考指标上并非 SOTA：Table 2 中 InvSR-1 的 PSNR 24.14 / SSIM 0.6789（ImageNet-Test）明显低于 ResShift-4 的 27.33/0.7530、BSRGAN 27.05/0.7453、SeeSR-50 26.69/0.7422、LDM-50 27.19；RealSR 上同样落后 BSRGAN(26.51) 与 LDM(26.75)；「superior or comparable」实际是靠 NIQE/PI/MUSIQ 等非参考指标撑起，PSNR 档的 claim 表述过宽",
+  "步数比较的设定差异未消除：与 ResShift/SinSR/OSEDiff 比时采用它们官方步数（4/1/1），而 Table 1 自身又显示同法在 {100} 单步 PSNR 24.66 高于五步 22.70，与正文「主退化是模糊时多步更可取」的质化叙事相冲突；正文在 4.2 分析中段截断，缺起始步/跳步策略的选择指南与步数敏感性曲线",
+  "训练数据为 LSDIR + FFHQ 2 万张人脸、退化按 RealESRGAN 管線合成，对真实世界的未知降质（压缩伪影、运动模糊、多阶段退化）没有跨降质类型评测；所有数值为单跑均值，无标准差/多种子；表 1 的 LPIPS/NIQE 在不同步数间有 0.03 级波动但未做显著性说明"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "图像超分与可靠性主线无关，仅可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

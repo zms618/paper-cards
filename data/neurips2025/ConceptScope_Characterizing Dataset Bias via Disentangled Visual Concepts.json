@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/ConceptScope_Characterizing Dataset Bias via Disentangled Visual Concepts.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/ConceptScope_Characterizing Dataset Bias via Disentangled Visual Concepts.pdf",
+ "title": "ConceptScope: Characterizing Dataset Bias via Disentangled Visual Concepts",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "稀疏自编码器解耦视觉概念，分析数据集偏差",
+ "innovations": [
+  "使用稀疏自编码器自动发现和量化可解释的视觉概念",
+  "将概念分类为目标、上下文和偏差类型，实现数据集的系统表征",
+  "通过概念激活的空间归因实现可靠的分割掩码生成"
+ ],
+ "method_framework": "ConceptScope包含两个阶段：首先在视觉基础模型表示上训练稀疏自编码器构建可解释概念字典；然后基于概念与类别的语义相关性和统计相关性将概念分类为目标、上下文和偏差类型。",
+ "experiment_framework": "在六个标注数据集(Caltech101, DTD, Waterbird, CelebA, RAF-DB, Stanford40)上评估概念预测性能，在ADE20K上评估分割掩码质量，并在多个真实数据集上验证偏差检测能力。",
+ "takeaways": [
+  "稀疏自编码器能有效提取多样化的视觉概念，性能优于基于VLM字幕的方法",
+  "概念激活与人类可解释的视觉概念存在强相关性，可用于可靠的空间定位",
+  "概念分布分析可揭示数据集中未标注的偏差，为模型鲁棒性评估提供新视角"
+ ],
+ "weaknesses": [
+  "概念解释依赖于GPT-4o生成描述，可能存在主观性",
+  "对小物体的分割定位精度有限，受限于16×16的粗糙分辨率",
+  "未充分探讨概念分类在不同规模数据集上的可扩展性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

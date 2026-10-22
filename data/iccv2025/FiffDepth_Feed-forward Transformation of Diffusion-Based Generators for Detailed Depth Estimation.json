@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/FiffDepth_Feed-forward Transformation of Diffusion-Based Generators for Detailed Depth Estimation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/FiffDepth_Feed-forward Transformation of Diffusion-Based Generators for Detailed Depth Estimation.pdf",
+ "title": "FiffDepth Feed-forward Transformation of Diffusion-Based Generators for Detailed Depth Estimation",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "扩散模型转FFN做深度估计，细节保留但泛化边界未探明",
+ "innovations": [
+  "保持扩散轨迹的前馈转换方法",
+  "可学习滤波器蒸馏技术",
+  "结合生成模型细节保持与FFN模型鲁棒性的混合架构"
+ ],
+ "method_framework": "基于Stable Diffusion构建前馈深度估计器，通过保持扩散轨迹和混合潜在表示保留生成特征，同时利用DINOv2的伪标签增强泛化能力，实现高效且细节丰富的深度预测。",
+ "experiment_framework": "在NYUv2、KITTI、ETH3D等数据集上评估，与14种零样本方法比较，使用AbsRel、δ1等指标，并在边界预测和推理速度上进行额外测试。",
+ "takeaways": [
+  "扩散模型轨迹保持技术可提升细节预测能力",
+  "结合FFN模型的伪标签可有效提升泛化能力"
+ ],
+ "weaknesses": [
+  "依赖预训练扩散模型，可能受限于原始模型能力",
+  "仅使用少量真实数据训练，可能存在未探索的泛化边界"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "深度估计属于落地域但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

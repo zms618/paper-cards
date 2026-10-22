@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/TCFG_Truncated Classifier-Free Guidance for Efficient and Scalable Text-to- Acceleration.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/TCFG_Truncated Classifier-Free Guidance for Efficient and Scalable Text-to- Acceleration.pdf",
+ "title": "TCFG Truncated Classifier-Free Guidance for Efficient and Scalable Text-to- Acceleration",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "TCFG通过动态调制CFG系数和截断计算加速扩散模型生成",
+ "innovations": [
+  "将CFG重新解释为梯度下降优化器",
+  "引入学习率衰减和预热策略加速语义收敛",
+  "基于瓶颈特征检测语义收敛点实现截断"
+ ],
+ "method_framework": "TCFG将去噪过程分为三个阶段：预热阶段(λ=1)、衰减CFG阶段(λ动态衰减)和截断阶段(λ=0)，通过瓶颈特征距离变化检测语义收敛点",
+ "experiment_framework": "在SD 1.5/2、DreamBooth、ScaleCrafter和ControlNet上评估，使用MS-COCO、Pick-a-Pic和HPD v2数据集，比较NFE、延迟、FID、KID、MUSIQ、CLIPScore等指标",
+ "takeaways": [
+  "将CFG视为梯度下降优化器的新视角",
+  "使用瓶颈特征而非输出特征检测语义收敛",
+  "动态调整引导系数可加速语义建立"
+ ],
+ "weaknesses": [
+  "截断时间点估计可能对复杂语义不够鲁棒",
+  "方法主要关注文本到图像生成，对其他扩散模型任务适用性验证有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "文本生成加速与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

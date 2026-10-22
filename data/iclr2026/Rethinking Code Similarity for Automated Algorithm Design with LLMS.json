@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Rethinking Code Similarity for Automated Algorithm Design with LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rethinking Code Similarity for Automated Algorithm Design with LLMS.pdf",
+ "title": "Rethinking Code Similarity for Automated Algorithm Design with LLMs",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "用执行轨迹对齐度量算法相似性，区分LLM生成代码的真创新与表面改写。",
+ "innovations": [
+  "指出现有代码相似度只看表面语法或输出等价，无法捕捉底层算法逻辑相似性。",
+  "提出BehaveSim：以执行时产生的中间解序列（PSTraj）作为问题求解行为表征。",
+  "用动态时间规整(DTW)对齐PSTraj来量化算法相似度，可区分句法/输出相似但逻辑迥异的算法。"
+ ],
+ "method_framework": "在若干测试输入上执行候选代码，记录逐步中间解形成PSTraj；用DTW对齐两条轨迹得到行为距离，以此作为算法逻辑相似度，用于去重/筛选LLM-AAD生成的候选实现。",
+ "experiment_framework": "展示两类应用（增强LLM-AAD等）；在算法设计场景中区分真实算法创新与表面改写；对比基于语法/输出等价的传统代码相似度指标。",
+ "takeaways": [
+  "算法逻辑相似性应通过执行行为（中间解轨迹）而非代码文本或最终输出来度量。",
+  "DTW对齐PSTraj能更准确识别LLM-AAD生成代码中的真正算法创新与冗余改写。"
+ ],
+ "weaknesses": [
+  "依赖测试输入覆盖度，测试用例不足时PSTraj无法暴露逻辑差异。",
+  "为每个候选执行并记录中间解带来额外运行开销，大规模算法库可扩展性待验证。",
+  "与可靠性/医学影像/多模态推理主线无关，属LLM自动算法设计。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.13,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "与可靠性主线无关，属LLM自动算法设计",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

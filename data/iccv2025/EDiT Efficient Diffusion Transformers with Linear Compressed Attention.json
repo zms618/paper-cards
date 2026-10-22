@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/EDiT Efficient Diffusion Transformers with Linear Compressed Attention.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/EDiT Efficient Diffusion Transformers with Linear Compressed Attention.pdf",
+ "title": "EDiT Efficient Diffusion Transformers with Linear Compressed Attention",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "线性压缩注意力加速扩散Transformer，但多模态交互仍有瓶颈",
+ "innovations": [
+  "ConvFusion查询处理与空间压缩器结合的线性压缩注意力",
+  "多模态输入的混合注意力机制",
+  "在保持图像质量的同时实现2.2倍加速"
+ ],
+ "method_framework": "EDiT通过ConvFusion处理查询，空间压缩器处理键值，结合线性注意力；MM-EDiT在此基础上引入混合注意力机制，图像间使用线性注意力，文本交互使用标准点积注意力",
+ "experiment_framework": "基于PixArt-Σ和SD 3.5-Medium进行蒸馏，使用YE-POP和PixArtEval30K数据集，评估CLIP相似度和FID指标",
+ "takeaways": [
+  "卷积操作在查询处理中能有效整合局部信息",
+  "混合注意力机制在多模态扩散模型中表现优异",
+  "空间压缩技术显著提升高分辨率图像生成效率"
+ ],
+ "weaknesses": [
+  "混合注意力中文本-图像交互计算开销仍较大",
+  "在移动设备上MM-EDiT的加速效果不如纯线性方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态扩散模型加速，与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

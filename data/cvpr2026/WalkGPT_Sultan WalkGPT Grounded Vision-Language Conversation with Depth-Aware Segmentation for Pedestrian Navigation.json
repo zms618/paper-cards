@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/WalkGPT_Sultan WalkGPT Grounded Vision-Language Conversation with Depth-Aware Segmentation for Pedestrian Navigation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/WalkGPT_Sultan WalkGPT Grounded Vision-Language Conversation with Depth-Aware Segmentation for Pedestrian Navigation.pdf",
+ "title": "Sultan WalkGPT Grounded Vision-Language Conversation with Depth-Aware Segmentation for Pedestrian Navigation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "WalkGPT结合分割与深度信息实现行人导航对话",
+ "innovations": [
+  "多尺度查询投影器(MSQP)聚合多尺度视觉特征",
+  "校准文本投影器(CTP)实现语言到分割的映射",
+  "区域对齐损失增强文本与视觉区域对应关系"
+ ],
+ "method_framework": "WalkGPT统一架构整合视觉编码器与语言模型，通过MSQP和CTP模块实现像素级定位与深度推理，生成包含分割掩码和深度信息的导航对话。",
+ "experiment_framework": "PAVE数据集(41k行人视角图像)，与基线模型比较分割和对话生成性能，使用IoU和BLEU等指标评估。",
+ "takeaways": [
+  "结构化输出标记(<SEG>,<distance>)实现多任务统一",
+  "区域对齐损失增强跨模态对应关系",
+  "无需用户提供的视觉线索实现深度感知"
+ ],
+ "weaknesses": [
+  "依赖预训练SAM模型，计算开销大",
+  "深度估计仅通过语言描述间接学习，精度有限",
+  "数据集规模相对较小，可能限制泛化能力"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "行人导航对话与可靠性主线在落地域有实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

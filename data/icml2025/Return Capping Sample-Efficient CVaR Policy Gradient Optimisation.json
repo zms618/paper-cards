@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Return Capping Sample-Efficient CVaR Policy Gradient Optimisation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Return Capping Sample-Efficient CVaR Policy Gradient Optimisation.pdf",
+ "title": "Return Capping: Sample-Efficient CVaR Policy Gradient Optimisation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "Return Capping方法通过截断而非丢弃高回报轨迹提升CVaR样本效率",
+ "innovations": [
+  "指出现有CVaR策略梯度方法丢弃大量轨迹(尤其是高回报轨迹)导致样本效率低下",
+  "提出Return Capping重构：不丢弃轨迹，而是将超额回报截断(cap)，所有轨迹都用于训练",
+  "证明在适当设置截断值时，Return Capping与原CVaR优化问题等价"
+ ],
+ "method_framework": "标准CVaR-PG只保留最差α%轨迹用于梯度估计。Return Capping将所有轨迹都保留，但将超过阈值的回报截断为该阈值。这样所有轨迹都对梯度有贡献，且截断后的回报分布与原CVaR目标等价。",
+ "experiment_framework": "在风险敏感RL基准上测试，包括自动驾驶导航环境等。对比标准CVaR-PG基线。指标为CVaR值和样本效率。",
+ "takeaways": [
+  "Return Capping显著提升CVaR策略梯度的样本效率，尤其在低α(极端尾部风险)设置下",
+  "不丢弃高回报轨迹使策略能从最优表现中学习，避免了标准方法的信息浪费",
+  "截断值的选择对等价性至关重要"
+ ],
+ "weaknesses": [
+  "截断值需要预先知道或动态估计，自适应截断方法未充分讨论",
+  "仅在少数RL环境验证，未覆盖复杂连续控制任务",
+  "与最新的分布鲁棒RL方法对比不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

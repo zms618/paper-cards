@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Teaching Transformers Causal Reasoning Through Axiomatic Training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Teaching Transformers Causal Reasoning Through Axiomatic Training.pdf",
+ "title": "Teaching Transformers Causal Reasoning Through Axiomatic Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "公理训练Transformer学因果，但泛化范围与模型规模受限",
+ "innovations": [
+  "提出公理式训练范式：把因果公理作为训练目标，而非归纳偏置硬编码到模型结构",
+  "在从零训练的67M Transformer上验证从线性链+噪声演示可泛化到长链、逆序链、分支图",
+  "区分了从数据值学习因果与从公理符号演示学习因果两条路径，后者更接近推理能力本身"
+ ],
+ "method_framework": "为每条因果公理（传递性：A→B,B→C⇒A→C；d-分离）生成大量符号化演示样本（节点、边、查询、答案）；用这些演示从零训练一个67M Transformer做序列到序列预测；训练后在未见过的更复杂图结构（长链、逆序、分支）上测试零样本/分布外泛化。",
+ "experiment_framework": "从67M模型从零训练以避免数据污染；在传递性与d-分离两个任务上，测试集包含更长链、逆序链、分支图等训练分布外结构；指标为因果问答准确率（前9页未列全数值）。",
+ "takeaways": [
+  "Transformer可以从公理符号演示中学到因果推理规则，而非仅靠数据值统计",
+  "在线性链+噪声上训练可泛化到逆序与分支图，说明学到的是规则而非表面模式",
+  "公理式训练是提升LLM因果推理的一条可解释路径，区别于RLHF/SFT后的隐性推理"
+ ],
+ "weaknesses": [
+  "仅在两个公理上验证，可迁移到更多因果规则（后门调整、do-calculus）未知",
+  "67M小模型从零训练，在大模型/多模态设置下是否同样有效未验证",
+  "符号演示与真实自然语言因果问答之间的差距未弥合",
+  "前9页未给出具体准确率数值与分布外泛化幅度"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RAIN-MERGING A Gradient-Free Method To En-Hance Instruction Following In Large Reasoning Models with.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RAIN-MERGING A Gradient-Free Method To En-Hance Instruction Following In Large Reasoning Models with.pdf",
+ "title": "RAIN-Merging: A Gradient-Free Method to Enhance Instruction Following in Large Reasoning Models with Preserved Thinking Format",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "无梯度合并方法保留推理格式，增强指令遵循但依赖特定模型特性",
+ "innovations": [
+  "发现LRM和ITM的任务向量主子空间在关键模块上近乎正交，表明合并干扰极小",
+  "将ITM任务向量投影到thinking特殊token前向特征的零空间，保留LRM结构化推理机制",
+  "用指令注意力估计模块级缩放，放大指令相关组件同时抑制泄漏"
+ ],
+ "method_framework": "RAIN-Merging分两阶段：(1)用小推理校准集，将ITM任务向量投影到thinking token前向特征的零空间，保持LRM推理表示不变；(2)用小指令校准集，估计指令相关span上的注意力输出，推导模块特定缩放系数，放大指令遵循能力。合并后模型同时具备长链推理和格式遵循能力。",
+ "experiment_framework": "在4个指令遵循基准和9个推理/通用能力基准（数学/代码/STEM/创意写作）上评测；跨模型规模和架构验证；对比朴素任务向量合并等方法；分析agent场景性能。",
+ "takeaways": [
+  "LRM和ITM任务向量正交性使得无梯度合并成为增强指令遵循的轻量路径",
+  "零空间投影可有效保护thinking格式不被ITM的答案-only分布破坏",
+  "指令注意力引导的模块缩放可在保持推理质量的同时最大化指令遵循提升"
+ ],
+ "weaknesses": [
+  "依赖预训练LRM和ITM的任务向量正交性，在其他模型对上的普适性未充分验证",
+  "需要两个小校准集（推理+指令），数据需求虽小但仍需标注",
+  "与医学影像/多模态推理主线关联较弱，属于LLM模型合并技术"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "LLM模型合并技术，与医学影像/多模态推理主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

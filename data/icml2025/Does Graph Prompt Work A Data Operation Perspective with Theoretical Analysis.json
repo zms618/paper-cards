@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Does Graph Prompt Work A Data Operation Perspective with Theoretical Analysis.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Does Graph Prompt Work A Data Operation Perspective with Theoretical Analysis.pdf",
+ "title": "Does Graph Prompt Work? A Data Operation Perspective with Theoretical Analysis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6.25
+ },
+ "one_line": "图提示作为图变换算子逼近器的理论分析，误差界较松且缺乏大模型验证",
+ "innovations": [
+  "首次给出图提示可逼近图变换算子的形式化保证定理，将上游预训练与下游任务关联起来",
+  "推导图提示做数据操作的误差上界，从单图推广到批量图，并分析误差分布",
+  "将理论从线性图聚合(GCN)扩展到非线性图聚合(GAT)"
+ ],
+ "method_framework": "把图提示视为对输入图施加数据操作(增删节点/边、改特征、去子图)的算子逼近器：用形式化定理刻画可学提示子图/附加token逼近图变换算子的能力；再推导该逼近误差的上界，先在单图情形建立，再扩展到批量图训练，并讨论误差分布；最后将分析由线性聚合(GCN)推广到非线性注意力聚合(GAT)。",
+ "experiment_framework": "在图预训练-提示范式下做实证，验证理论给出的误差界与数据操作逼近能力，覆盖GCN/GAT等聚合方式，报告提示对下游任务的效果与理论预言的一致性。",
+ "takeaways": [
+  "图提示之所以有效，本质在于其能模拟增删节点/边、改特征等图数据操作",
+  "可从算子逼近角度给出图提示误差的可证上界，且结论同时适用于线性与非线性GNN",
+  "理论结果对推荐、生物网络、图迁移等下游应用给出可解释的有效性保证"
+ ],
+ "weaknesses": [
+  "误差界较松，对实际提示设计的指导意义有限",
+  "理论多基于GCN/GAT等基础聚合，对现代大图预训练模型的可迁移性未验证",
+  "与提示设计超参(提示规模/位置)的定量关系交代不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/GPTQ_The Geometry Of LLM Quantization GPTQ As BABAI'S Nearest Plane Algorithm.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/GPTQ_The Geometry Of LLM Quantization GPTQ As BABAI'S Nearest Plane Algorithm.pdf",
+ "title": "GPTQ: The Geometry of LLM Quantization - GPTQ as Babai's Nearest Plane Algorithm",
+ "scores": {
+  "novelty": 7,
+  "depth": 7.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.4
+ },
+ "one_line": "证明GPTQ等价于Babai算法，设计HPTQ度量提升LLM量化性能。",
+ "innovations": [
+  "严格证明GPTQ(从后向前执行)与Babai最近平面算法在数学上完全等价，基于Hessian矩阵定义的格",
+  "推导GPTQ的误差上界：无权重裁剪假设下继承Babai算法的误差保证",
+  "利用误差界设计后训练量化度量HPTQ，结合SSQR方法提升量化性能"
+ ],
+ "method_framework": "将LLM线性层的权重量化建模为Hessian矩阵定义的格上的最近向量问题。证明GPTQ从后向前执行时等价于Babai最近平面算法。由此推导误差上界，并基于该界设计HPTQ量化度量。",
+ "experiment_framework": "在Qwen3-8B等模型上验证；对比RTN、原始GPTQ、SSQR方法；1~5%异常值设置；评估困惑度；HPTQ结合Huffman编码。",
+ "takeaways": [
+  "GPTQ的误差传播步骤获得了清晰的几何解释",
+  "无裁剪假设下GPTQ继承Babai算法的误差上界",
+  "HPTQ度量在低比特量化下保持更低困惑度"
+ ],
+ "weaknesses": [
+  "误差上界假设无权重裁剪，实际量化中通常有裁剪，界的紧性下降",
+  "前9页内实验结果展示不完整，更多结果在附录",
+  "格基约化改进量化的方向未充分展开"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "LLM量化技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

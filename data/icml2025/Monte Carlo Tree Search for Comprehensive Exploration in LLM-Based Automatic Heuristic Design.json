@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Monte Carlo Tree Search for Comprehensive Exploration in LLM-Based Automatic Heuristic Design.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Monte Carlo Tree Search for Comprehensive Exploration in LLM-Based Automatic Heuristic Design.pdf",
+ "title": "Monte Carlo Tree Search for Comprehensive Exploration in LLM-Based Automatic Heuristic Design",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.6
+ },
+ "one_line": "将MCTS引入LLM启发式设计，计算开销大且框架验证有限。",
+ "innovations": [
+  "首次将MCTS应用于LLM自动启发式设计(AHD)，用树搜索替代种群进化，实现更全面的启发式空间探索",
+  "MCTS允许开发低性能但具有不同特征的启发式函数，从而跳出局部最优，发现更多样化的启发式策略",
+  "在TSP/CVRP/MKP/BPP/KP等多个组合优化问题上优于EoH、ReEvo、HSEvo等LLM-AHD方法"
+ ],
+ "method_framework": "MCTS-AHD将启发式设计过程建模为MCTS搜索：树的每个节点代表一个启发式函数，节点深度对应启发式函数的复杂度/层级。(1)选择：用UCT类策略在树中选择节点扩展；(2)扩展：LLM根据当前节点的启发式函数生成新的变体/改进；(3)模拟：在ACO框架下评估新启发式的性能；(4)备份：将结果沿树向上传播。与基于种群的方法不同，MCTS可以系统性地探索不同特征的启发式函数。",
+ "experiment_framework": "在多个NP-hard组合优化问题上评估：TSP(50节点)、CVRP、MKP、离线BPP、KP(100物品)。使用GPT-4o-mini作为LLM。基线包括：手动启发式(Greedy/Nearest-greedy)、LLM-AHD方法(EoH/ReEvo/HSEvo/FunSearch)、NCO方法(POMO)。指标为目标值(如TSP路径长度)和相对最优解的偏差。",
+ "takeaways": [
+  "MCTS的树形探索比种群进化更能全面覆盖启发式函数空间，减少局部最优风险",
+  "即使是低性能的启发式函数也可能包含有价值的特征，MCTS允许探索这些分支",
+  "在多种组合优化问题上，MCTS-AHD设计的启发式优于手动设计和其他LLM-AHD方法"
+ ],
+ "weaknesses": [
+  "MCTS树搜索的计算开销可能大于种群方法，特别是LLM调用次数增加",
+  "仅在ACO框架下验证启发式设计，未验证其他优化框架(如遗传算法)的适用性",
+  "启发式函数的树结构表示是否合理、树深度与启发式复杂度的对应关系未深入讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.18,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

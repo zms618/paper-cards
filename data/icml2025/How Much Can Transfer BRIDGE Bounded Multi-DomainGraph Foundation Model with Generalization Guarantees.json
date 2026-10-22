@@ -1,0 +1,37 @@
+{
+ "title": "How Much Can Transfer? BRIDGE: Bounded Multi-Domain Graph Foundation Model with Generalization Guarantees",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.25
+ },
+ "one_line": "BRIDGE图模型用对齐与MoE做迁移，理论界宽泛且与主线无关",
+ "innovations": [
+  "面向图基础模型'预训练-再提示'范式缺乏理论的问题，给出迁移量的泛化保证",
+  "预训练用域不变对齐器对齐多域图特征，学习判别性源知识",
+  "提出轻量MoE网络通过自监督选择性知识组装促进下游提示，并推导可优化泛化界确定最大可迁移知识"
+ ],
+ "method_framework": "BRIDGE先在多域图上预训练，用域不变对齐器拉近不同域特征以获得可迁移的判别知识；下游用轻量MoE按需选择性组装源域知识做提示。理论上推导泛化界，量化源域到目标域可迁移知识的上界。",
+ "experiment_framework": "在多域图基准上预训练后做下游图任务提示/微调，对比已有图基础模型，指标为跨域下游性能，并验证理论泛化界对实际迁移量的刻画。",
+ "takeaways": [
+  "图基础模型的可迁移知识量可被泛化界量化与优化",
+  "域不变对齐+轻量MoE选择性组装是多域图迁移的有效范式",
+  "理论界为'能迁移多少'提供了可操作的指导"
+ ],
+ "weaknesses": [
+  "泛化界可能较宽松，与实际迁移增益的定量贴合度未充分验证",
+  "域不变对齐可能损失域特有信息，对分布差异极大的跨域任务表现未证",
+  "与主线索（可信多模态推理/医学影像）无关，属图基础模型"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/How Much Can Transfer BRIDGE Bounded Multi-DomainGraph Foundation Model with Generalization Guarantees.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/How Much Can Transfer BRIDGE Bounded Multi-DomainGraph Foundation Model with Generalization Guarantees.pdf",
+ "raw_overall": 6.23,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

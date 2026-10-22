@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/MULTI-LCB Extending Livecodebench To Multiple Programming Languages.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/MULTI-LCB Extending Livecodebench To Multiple Programming Languages.pdf",
+ "title": "Multi-LCB: Extending LiveCodeBench to Multiple Programming Languages",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "将现有代码评估集扩展到多语言，揭示Python过拟合现象。",
+ "innovations": [
+  "提出自动转换管线，将LeetCode函数式任务统一转换为语言无关的STDIN/STDOUT格式，避免为每种语言重写测试用例",
+  "将LCB扩展到12种编程语言（C++/C#/Python/Java/Rust/Go/TS/JS/Ruby/PHP/Kotlin/Scala），保持原始污染控制和持续更新机制",
+  "评估24个LLM，揭示Python过拟合、语言特定污染和跨语言性能差异等关键发现"
+ ],
+ "method_framework": "Multi-LCB加载LCB代码生成数据集，保留所有题目和发布日期元数据。对LeetCode函数式任务，自动解析示例和测试用例并转换为STDIN/STDOUT格式（标量/一维/二维数组统一处理）。每个任务为每种语言构建零样本提示（系统消息指定目标语言专家角色+问题描述+代码块占位符）。生成代码在隔离沙箱中编译执行，通过所有隐藏测试用例记为正确，报告Pass@1（10次运行平均）。",
+ "experiment_framework": "评估24个公开LLM（7B-685B参数，含指令微调与推理增强变体），12种编程语言，数据集版本v6（2025年2-5月发布的题目，确保post-cutoff）。温度0.2、核采样top-p=0.95，每个题目10次运行取Pass@1。对比原始LCB Python结果验证复现性，分析月度性能趋势识别污染信号。",
+ "takeaways": [
+  "Python性能不是跨语言能力的可靠代理：多个Python强模型在其他语言上大幅下降，OpenReasoning-Nemotron-32B Python 64.4%但其他语言平均仅22.7%",
+  "存在明显的Python过拟合：几乎所有模型Python Pass@1高于跨语言平均，Scala consistently最差",
+  "月度趋势显示旧题目存在残留污染，post-cutoff题目性能系统性更低，验证了发布日期过滤的有效性"
+ ],
+ "weaknesses": [
+  "仅评估竞赛编程题目，未覆盖真实软件工程场景（API集成、调试、协作开发）",
+  "STDIN/STDOUT格式可能导致部分模型因格式遵循问题而非算法能力不足而失败",
+  "未评估GPT-4/Claude/Gemini等专有模型，无法代表当前最先进水平的跨语言代码能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "代码评估与可靠性主线无实质交点，仅工具扩展价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Adaptive Parameter Selection for Tuning Vision-Language Models.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Adaptive Parameter Selection for Tuning Vision-Language Models.pdf",
+ "title": "Adaptive Parameter Selection for Tuning Vision-Language Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.3
+ },
+ "one_line": "基于AdamW动量的零开销参数选择，但实验证据不足且方法创新有限",
+ "innovations": [
+  "直接从 AdamW 更新规则 θ_i=(θ_{i-1}-αλθ_{i-1})-α/(√v̂_i+ε)·m̂_i 导出重要性分数 v′_i=Avg(1/√v̂_i)，即有效学习率本身，无需插入 gate/mask 或额外可学习模块即可对 CLIP 双编码器的子层参数（Q/K/V 的 W 与 B、LN 的 B 等）排序。",
+  "在子层粒度做 top-K 选择并冻结其余全部参数（含文本/图像编码器投影层），使训练参数量与推理结构都与原 CLIP 完全一致，零推理开销。",
+  "用 PromptSRC 的自一致性损失（冻结 CLIP 抽 Ĝ/W̃，L1 约束特征一致 + logits 的 KL 一致）抑制选择性微调带来的过拟合。"
+ ],
+ "method_framework": "两阶段：先 1 epoch 微调 CLIP 的 Transformer 以稳态取出 AdamW 二阶动量 v̂；再按子层 v′ 排序取 top-K 解冻微调（20/30 epoch），目标 L=L_ce+λ1L_SCL-image+λ2L_SCL-text+λ3L_SCL-logits。",
+ "experiment_framework": "11 个分类基准（Caltech101/DTD/EuroSAT/FGVC Aircraft/Flowers102/Food101/ImageNet/OxfordPets/StanfordCars/SUN397/UCF101）+ OOD 集 ImageNet-Sketch、ImageNetV2；few-shot、base-to-novel、OOD 三类设定；top-1 与 HM。",
+ "takeaways": [
+  "用优化器内建的二阶自适应量当可迁移的重要性指标，能在不增加任何模块参数的前提下完成「该调哪层」的决策，比额外训练门控更省。",
+  "把 OOD（ImageNet→Sketch/V2）作为 PEFT 的独立评测设定而非附带结果，是比较难得的评测协议复用点。",
+  "ViT-B/16 + 严格沿用 CoOp/PromptSRC 的 base/novel 划分与 16-shot 约定，保证与基线可比的做法值得照抄。"
+ ],
+ "weaknesses": [
+  "正文在 Table 3（ImageNet base）中途截断：base-to-novel 完整表、OOD 表、K 与第一阶段 epoch 的消融、结论全部缺失，无法核验核心超参是否有敏感性实验。",
+  "全文为单 run 准确率，无标准差、无多种子、无显著性检验；图 3 给出 11 数据集曲线但正文只列 ImageNet 数值表，多数数据集的 1-2% 提升无法复核来源。",
+  "重要性分数取自训练 1 epoch 的 AdamW 状态，本质是把优化器瞬时动态当可迁移重要性，在 warmup 不足或梯度噪声大的 setting 下是否稳定未验证；与 BitFit/BSR/SPT 的关系只停留在 Related Work 口述，无直接对照。",
+  "选择发生在'先全量微调取 v̂、再选择性微调'，两阶段之间数据分布与步数会互相污染，但正文未做'跳过第一阶段、用预训练模型初始 v̂'的对照，无法确认第一阶段真的必要。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "参数选择方法与可靠性主线无实质交点，仅属常规优化技术",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

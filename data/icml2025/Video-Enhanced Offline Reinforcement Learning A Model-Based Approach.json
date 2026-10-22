@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Video-Enhanced Offline Reinforcement Learning A Model-Based Approach.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Video-Enhanced Offline Reinforcement Learning A Model-Based Approach.pdf",
+ "title": "Video-Enhanced Offline Reinforcement Learning: A Model-Based Approach",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.0
+ },
+ "one_line": "利用无标签视频构建世界模型缓解离线RL分布偏移，但跨域迁移机制不明确",
+ "innovations": [
+  "提出利用海量无标签互联网视频(缺动作/奖励标注、分布有偏移)来扩充智能体对人类行为与真实物理世界的理解，突破固定离线数据集的范围限制",
+  "构建交互式世界模型并引入基于模型的行为引导，将自然视频中的常识控制策略与物理动力学迁移到目标域内的RL智能体",
+  "在视觉控制三类任务上取得显著增益(部分场景超过100%)"
+ ],
+ "method_framework": "以无标签在线视频为辅助源，训练可交互的世界模型；通过基于模型的行为引导把视频中隐含的演示策略与物理动力学常识迁移到目标离线数据集，弥补固定数据集不完整导致的分布偏移与价值高估偏差，从而优化策略。",
+ "experiment_framework": "覆盖三类视觉控制任务：Meta-World机器人操作(BridgeData-V2视频源)、CARLA自动驾驶(NuScenes源视频→CARLA目标)、MineDojo开放世界游戏；基线CQL、DreamerV2、APV、VIP、LOMPO、VPT；指标为平均episode return，3个随机种子报告均值与标准差。",
+ "takeaways": [
+  "无标签互联网视频可作为世界模型/行为先验的廉价来源，有效缓解离线RL的分布偏移与价值高估",
+  "基于模型的行为引导能跨域迁移控制常识，在机器人操作、自动驾驶、游戏上一致提升",
+  "视频虽次优且无标注，仍对当前视觉控制任务有正向迁移价值"
+ ],
+ "weaknesses": [
+  "依赖视频与目标域在视觉/物理上的可迁移性，跨差异过大的域时收益未保证",
+  "无动作标签的视频如何对齐到目标动作空间，假设与误差来源讨论较简",
+  "增益报告为相对episode return，缺少对价值估计偏差本身被抑制程度的直接诊断"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Algorithms with Calibrated Machine Learning Predictions.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Algorithms with Calibrated Machine Learning Predictions.pdf",
+ "title": "Algorithms with Calibrated Machine Learning Predictions",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "校准预测在经典在线算法中优于conformal，但适用场景有限",
+ "innovations": [
+  "首次系统研究校准预测在algorithms-with-predictions框架中的作用，弥合ML不确定性估计与在线算法设计之间的gap",
+  "证明在高方差场景下，校准预测提供的信息比conformal prediction更有价值——conformal区间可能过宽而失去信息量",
+  "为ski rental和在线job scheduling设计了prediction-dependent性能的近最优算法，给出理论保证并在真实数据上验证"
+ ],
+ "method_framework": "将ML预测器的校准概率作为输入设计在线算法。与现有方法假设全局可靠性参数不同，校准预测提供per-prediction的置信度。算法根据每个预测的校准置信度动态调整对预测的依赖程度：高置信度则遵循预测，低置信度则回退到鲁棒策略。",
+ "experiment_framework": "两个案例研究：(1) Ski rental问题——理论分析+真实数据实验；(2) 在线job scheduling——在真实世界调度数据上评估。基线：现有algorithms-with-predictions方法（如Lykouris-Vassilvitskii、Purohit等）、conformal prediction方法。指标：竞争比、性能随预测准确率的变化曲线。",
+ "takeaways": [
+  "校准是连接ML不确定性估计与在线算法设计的实用桥梁，无需手动调全局可靠性参数",
+  "在高方差预测场景下，校准预测优于conformal prediction，因为后者的区间可能过宽而失去指导价值",
+  "校准预测可实现prediction-dependent的近最优性能，而非仅在极端（全对/全错）之间切换"
+ ],
+ "weaknesses": [
+  "仅在两个经典online problem（ski rental、scheduling）上验证，其他学习增强算法场景的适用性未知",
+  "依赖预测器本身是校准的，但现代LLM/深度模型的校准通常很差，需要额外校准步骤带来的误差传导未充分讨论",
+  "实验部分的真实数据规模和baseline对比的充分性未在前9页完整呈现"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "校准预测连接ML不确定性与在线算法设计，符合可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/AIGV-Assessor_Benchmarking and Evaluating the Perceptual Quality of Text-to-Video Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AIGV-Assessor_Benchmarking and Evaluating the Perceptual Quality of Text-to-Video Generation.pdf",
+ "title": "AIGV-Assessor: Benchmarking and Evaluating the Perceptual Quality of Text-to-Video Generation with LMM",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.2
+ },
+ "one_line": "标准LMM架构评估T2V视频质量，数据集大但机制创新有限",
+ "innovations": [
+  "AIGVQA-DB：15 个 T2V 模型 × 1,048 prompt 生成 36,576 视频，同时采集 MOS 与 3 万对两两比较共 37 万评分，覆盖静态质量/时域平滑/动态度/文本-视频对应四维",
+  "把质量回归重构为 LMM 的问答任务：先生成'bad-poor-fair-good-excellent'文字等级，再用 LLM 末层隐状态接回归头输出数值分，兼顾可解释性与精度",
+  "双编码器设计：InternViT 提空间特征、SlowFast 提时域特征，分别投影进语言空间后由 InternLM2-Chat-8B 统一推理"
+ ],
+ "method_framework": "视频帧分别过冻结的 2D InternViT 与 3D SlowFast，两个 projector 映射到语言空间；与质量维度问题、prompt 一起送入 InternLM2-Chat-8B，输出文字质量等级，并用末层隐状态回归出四维分数；再在配对比较上微调以支持视频对比较。",
+ "experiment_framework": "AIGVQA-DB(36,576 视频/122,304 MOS)；对比 NIQE/BRISQUE/DOVER/Q-Align 等 20+ 指标与 Video-LLaVA 等 LMM；SRCC/PLCC/KRCC/PairAcc。",
+ "takeaways": [
+  "MOS 之外补配对比较，能捕捉绝对打分丢失的细微偏好差异——对'评价器'类数据集是可复用的标注协议",
+  "先用文字等级再做数值回归的两段式输出，是让 LMM 输出连续量时兼顾标定与可解释性的实用技巧"
+ ],
+ "weaknesses": [
+  "方法本身是标准 LLaVA 式结构（双编码器+投影器+LLM），新增只在文字等级描述与回归头，机制增量有限",
+  "主表在自己建的库上训练并评测，跨库泛化实验在正文第 9 页处截断未给完整数值；无多种子方差或显著性检验",
+  "本文自提的四维体系中最关键的文本-视频对应维度绝对水平仍低（SRCC 0.609），说明 LMM 对'生成内容与指令是否对得上'的判断能力仍是短板"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "评估T2V质量，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

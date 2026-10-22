@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Q-RAG Long Context Multi-Step Retrieval via Value-Based Embedder Training.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Q-RAG Long Context Multi-Step Retrieval via Value-Based Embedder Training.pdf",
+ "title": "Q-RAG: Long Context Multi-Step Retrieval via Value-Based Embedder Training",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "用RL微调嵌入模型做多步检索，在长文本QA上SOTA但落地域有限。",
+ "innovations": [
+  "把多步检索视为搜索式推理，提出用RL训练嵌入模型而非微调小LLM来执行多步检索",
+  "基于价值(value-based)的嵌入训练，提供资源高效的多步检索替代方案",
+  "使多步检索可扩展到无需大模型介入的大规模长上下文场景"
+ ],
+ "method_framework": "以嵌入模型为可训练检索智能体，用RL/价值方法学习在上下文上多步跳转检索相关片段；相比微调小LLM做agent更省资源，检索到的片段再喂给LLM回答。",
+ "experiment_framework": "开放域问答；长上下文基准BabiLong与RULER，上下文最长10M token；对比单步检索与既有多步检索方法。",
+ "takeaways": [
+  "Q-RAG在BabiLong、RULER上取得SOTA，上下文可达10M token",
+  "微调嵌入模型做RL多步检索比微调小LLM更资源高效",
+  "多步检索可改善复杂问题的长上下文问答，间接抑制注意力稀释与幻觉"
+ ],
+ "weaknesses": [
+  "落地域为开放域文本QA，医学影像/多模态主线落地域未覆盖",
+  "价值方法RL训练嵌入的奖励设计与稳定性、收敛性消融在前9页不充分",
+  "多步检索的误差累积与失败路径分析、相对更强RAG agent的成本对比需后续页"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "多步检索方法扎实但未触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

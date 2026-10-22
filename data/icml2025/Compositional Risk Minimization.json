@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Compositional Risk Minimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Compositional Risk Minimization.pdf",
+ "title": "Compositional Risk Minimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "简单CRM替代ERM提升组合泛化，但属性独立假设限制真实场景",
+ "innovations": [
+  "形式化判别式任务中的组合偏移问题(某些属性组合训练时完全缺失)",
+  "用加性能量分布(每个能量项对应一个属性)推导简单的CRM替代ERM",
+  "理论证明CRM外推到已见属性组合的特殊仿射包，优于GroupDRO/IRM等"
+ ],
+ "method_framework": "多属性判别任务中，训练仅见部分属性组合，测试见新组合。CRM先训练加性能量分类器预测多属性，再调整分类器处理组合偏移。基于加性能量分布理论，CRM自然外推到已见组合的仿射包，而ERM对未见组合外推无保证。",
+ "experiment_framework": "在多属性benchmark数据集上实验；与GroupDRO、IRM、logit adjustment等亚群偏移方法比较；指标为OOD组合泛化精度。",
+ "takeaways": [
+  "CRM在组合偏移上显著优于ERM和现有鲁棒方法",
+  "加性能量分布提供了组合泛化的理论保证(仿射包外推)",
+  "CRM是ERM的简单替代，理论适用于判别和生成两方面"
+ ],
+ "weaknesses": [
+  "加性能量假设(属性独立贡献)在属性强相关时可能不成立",
+  "实验主要在合成/标准多属性数据集，真实场景验证有限",
+  "生成式对应方法仅为未来方向，本文只做判别式"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

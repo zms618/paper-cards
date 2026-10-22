@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Shuffling the Data, Stretching the Step-Size Sharper Bias In Constant Step-Size SGD.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Shuffling the Data, Stretching the Step-Size Sharper Bias In Constant Step-Size SGD.pdf",
+ "title": "Shuffling the Data, Stretching the Step-Size: Sharper Bias in Constant Step-Size SGD",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 4.5,
+  "relevance": 3.0,
+  "overall": 5.1
+ },
+ "one_line": "优化理论工作，组合洗牌与外推达三阶偏差，但实验证据不足且与主线无关",
+ "innovations": [
+  "首次给出结构化非单调变分不等式(VIP)下随机洗牌与Richardson-Romberg外推协同的理论保证",
+  "证明二者组合不仅保持洗牌带来的MSE精度提升，还在外推去偏上取得三阶(cubic)细化",
+  "分析分两步：用连续态马尔可夫链工具对洗牌离散噪声做平滑并建立LLN/CLT，再用谱张量技术证明外推在洗牌引入的有偏梯度oracle下仍去偏"
+ ],
+ "method_framework": "常步长随机梯度在finite-sum min-max/VIP上只收敛到常数邻域；本文把随机重排(锐化解估计MSE)与跨迭代的Richardson-Romberg外推(二阶降偏)组合，理论证明二者正交叠加后偏差达三阶精度，并刻画其渐近分布。",
+ "experiment_framework": "在min-max/VIP类问题上验证理论，对比纯洗牌、纯外推与二者组合的解估计误差；前9页主要为理论与引言，具体数值未出现。",
+ "takeaways": [
+  "随机洗牌与外推可正交叠加，组合后偏差三阶细化，严格优于单用",
+  "为非单调VIP下的这两种实用启发式提供了首个严格协同理论",
+  "实验上组合方法一致带来显著加速"
+ ],
+ "weaknesses": [
+  "属优化理论(VIP/min-max)，与可靠性、医学影像、多模态推理主线无关",
+  "理论假设(有界算子、非单调结构等)较强，向一般深度训练的迁移为启发性",
+  "前9页未见具体实验设置与加速倍数，'substantial speedups'缺乏量化证据"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 3,
+ "relevance_reason": "优化理论工作，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

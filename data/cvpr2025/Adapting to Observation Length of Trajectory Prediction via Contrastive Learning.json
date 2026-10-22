@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Adapting to Observation Length of Trajectory Prediction via Contrastive Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Adapting to Observation Length of Trajectory Prediction via Contrastive Learning.pdf",
+ "title": "Adapting to Observation Length of Trajectory Prediction via Contrastive Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 4,
+  "relevance": 5.5,
+  "overall": 5.1
+ },
+ "one_line": "常规对比学习平移至轨迹长度适应，缺乏理论支撑与充分验证",
+ "innovations": [
+  "长度位移增强：从 [1, t_o−2] 随机抽 t_unobs 帧，用首帧填充前 t_unobs 帧得到截断轨迹（Eq.1），同一轨迹再叠 random rotation/scaling，三方构成正样本集 Φ，batch 内其余 3(B−1) 个增强作负样本，配温度 τ=0.07 的非对称 InfoNCE 损失（Eq.2），迫使编码器对遮挡长度不变。",
+  "非线性投影层把编码特征映射到对比空间（单 FC+ReLU 得 z），消融表 5 显示'无投影'在完整观测下最优、而可观测长度增大后 MLP/self-attention 优于无投影，即投影是长度位移场景下的必要组件而非装饰。",
+  "RNLS 网络：输入改为 [px, py, cosθ, t]（含运动角余弦与层归一化后的时间序号），两阶段 GRU（先跑完观测帧再自回归生成 12 帧，且第一次 GRU 的输出 E^{i}_{t,new} 不参与下一轮、只传隐态），social attention 以邻居 flatten 后的 K/V 对目标 Q，总损失 L=L_pred+ωL_cl（ω=0.1），预测损失用 winner-takes-all。"
+ ],
+ "method_framework": "训练期对每条轨迹做随机长度遮盖+旋转+缩放三种增强 → 基模型（Trajectron++/PCC-SNet/SGCN/SocialVAE 或自建 RNLS）编码器出特征 → 单 FC 投影后算 InfoNCE 对比损失（仅训练期，不增加推理开销）→ 与原有预测 L2 损失加权求和端到端训练；RNLS 侧另有 social cross-attention 与两阶段 GRU 解码。",
+ "experiment_framework": "ETH-UCY（leave-one-out）、SDD、NBA；指标 ADE/FDE，评估用 best-of-20 抽样取最优；长度位移对比对象为 IT（直接用短观测训练）、DTO、MOE、BCDiff 四种长度自适应方法，在四个基模型上套用 CLLS。",
+ "takeaways": [
+  "把'观测长度'当作数据增强维度（遮盖+首帧填充）做对比学习，可以在零推理开销的前提下让同一模型适配任意观测长度——表 2 显示 t_unobs 从 1 到 6 时 RNLS&CLLS 在 ETH-UCY 仅从 0.20 缓慢升到 0.22，稳定性很好。",
+  "对比损失中的'同一样本多增强互为正'在时序任务上要小心同批次内相似轨迹造成的假负样本，SocialVAE 的社交关系建模被作者当作缓解手段（表 1 中 SocialVAE 上 CLLS 提升 0.24/0.38）。",
+  "非对称的 projector 选择应随可观测长度切换（无投影 vs MLP），说明对比空间的设计参量不能被单一固定配置覆盖。"
+ ],
+ "weaknesses": [
+  "核心是 SimCLR 套路向'长度维'的平移：正样本来自同一条轨迹的不同遮盖、负样本来自 batch，方法没有改变对比学习的范式，也没有理论刻画'长度不变'何时成立；作者在 PCC-SNet 上失败并归因于 memory bank 与缺少社交建模，实际暴露的是难负样本问题未解决，只是事后补了 RNLS 的 social attention 作为补丁。",
+  "SOTA 声明里混着 RNLS 的贡献且缺对照：表 3（8 帧完整观测）中 RNLS&CLLS 在 ETH-UCY AVG 为 0.20/0.32，而 EqMotion/LED/LMTraj-SUP 为 0.21/0.35、0.21/0.33、0.22/0.32，领先幅度在 0.01 量级；同时全文没有'RNLS 与普通 GRU/LSTM 基线'的对照，无法判断提升主要来自 CLLS 还是来自一个更贴长度设定的轻量 RNN；长度适应性也只在 2 帧观测这一档被充分验证，NBA 只报 Rebounding/Scoring 两类且未与同为长度自适应的 BCDiff 交叉比较。",
+  "评估流程本身会放大误差：所有数字都来自 best-of-20（20 次采样取 ADE/FDE 最低者），这属于对模型最有利的挑选，却在表 1/2/3 中只报点值、无方差无显著性，跨方法 0.01 的差异不可判定；正文在 4.5 节'CLLS Hyperparameter Analysis'处截断,表 5/6/7（projector 类型、三种增强的消融、ω 与 τ 的扫描）在可见正文里没有给出。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "轨迹预测长度适应与可靠性主线无实质交点，仅为常规对比学习应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

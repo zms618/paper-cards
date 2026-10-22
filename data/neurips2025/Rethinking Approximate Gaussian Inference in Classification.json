@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Rethinking Approximate Gaussian Inference in Classification.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Rethinking Approximate Gaussian Inference in Classification.pdf",
+ "title": "Rethinking Approximate Gaussian Inference in Classification",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "用normCDF/sigmoid替代softmax实现高斯推断闭式预测",
+ "innovations": [
+  "将probit近似推广到多类分类",
+  "提出闭式预测公式替代MC采样",
+  "设计Dirichlet分布近似高斯前向传播",
+  "利用BCE损失改善训练动态"
+ ],
+ "method_framework": "构建高斯推断通用形式框架，替换softmax为normCDF/sigmoid，通过闭式积分和矩匹配实现预测和分布近似",
+ "experiment_framework": "ImageNet/CIFAR-10/100数据集，对比Laplace/HET/SNGP方法，评估NLL/ECE/OOD检测等指标",
+ "takeaways": [
+  "闭式预测与MC采样性能相当但效率更高",
+  "Dirichlet分布近似提供更好的不确定性量化",
+  "BCE损失可改善训练动态和模型性能"
+ ],
+ "weaknesses": [
+  "理论分析主要针对sigmoid情况",
+  "计算优势依赖于对角协方差近似",
+  "未探索不同任务域的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

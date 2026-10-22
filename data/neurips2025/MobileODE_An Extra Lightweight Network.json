@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/MobileODE_An Extra Lightweight Network.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/MobileODE_An Extra Lightweight Network.pdf",
+ "title": "MobileODE: An Extra Lightweight Network",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.75
+ },
+ "one_line": "用ODE模块替换卷积，减少参数但缺乏深度验证",
+ "innovations": [
+  "提出Direct Differentiation Euler (DDE)算法，引入可学习时间增量",
+  "设计Channelwise ODE Solver (COS)模块替代传统点卷积",
+  "构建MobileODE网络，参数减少69.2-71.0%"
+ ],
+ "method_framework": "基于深度可分离卷积，用COS模块替代点卷积，通过DDE算法实现通道间非线性映射，利用nmODEs的全局吸引器特性增强特征表示",
+ "experiment_framework": "在CIFAR-10/100、ImageNet-R、Tiny ImageNet进行图像分类；在PASCAL VOC2012、ADE20K进行语义分割；在BUSI、FFE进行目标检测",
+ "takeaways": [
+  "可学习时间增量能自适应调整时间分辨率",
+  "COS模块将通道交互计算复杂度从二次降至线性",
+  "MobileODE与ViT结合可进一步提升性能"
+ ],
+ "weaknesses": [
+  "未充分验证模型在医学影像等特定领域的鲁棒性",
+  "缺乏对模型推理速度和能耗的详细分析",
+  "未探讨模型在不同噪声水平下的泛化能力"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

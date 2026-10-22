@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MERIT_Maximum-normalized Element-wise Ratio for Language Model Large-batch Training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MERIT_Maximum-normalized Element-wise Ratio for Language Model Large-batch Training.pdf",
+ "title": "MERIT: Maximum-normalized Element-wise Ratio for Language Model Large-batch Training",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.25
+ },
+ "one_line": "改进AdamW信任比率计算，解决大批次训练注意力层信息瓶颈。",
+ "innovations": [
+  "分析发现大批次训练中注意力层信息瓶颈源于最大注意力logit的急剧增加，导致AdamW性能下降",
+  "提出基于最大归一化逐元素比率的信任比率（MERIT），比LAMB的L2范数信任比率更直接影响query/key权重的最大值",
+  "逐元素信任比率考虑了权重行/列内部的关系，避免了LAMB按权重整体计算信任比率的误差"
+ ],
+ "method_framework": "MERIT优化器在AdamW基础上改进信任比率计算方式：传统LAMB使用L2范数的权重整体信任比率，MERIT采用最大归一化的逐元素比率——对权重矩阵每行/列内的元素计算与最大值的比率，从而更精细地控制每个权重元素的更新幅度。这种设计直接针对注意力层中query/key权重最大值导致的信息瓶颈问题。",
+ "experiment_framework": "在OpenWebText数据集上从头训练GPT-2模型；三种模型规模：125M、355M、770M；对比AdamW、LAMB、Lion、Sophia-G等优化器；使用余弦学习率调度；在H100 GPU上训练；评估指标包括验证集困惑度、LAMBADA、WikiText、SuperGLUE。",
+ "takeaways": [
+  "MERIT在大批次语言模型训练中显著优于AdamW和LAMB，尤其是在大模型规模下优势更明显",
+  "逐元素信任比率比L2范数整体信任比率更有效，能更好地控制注意力层的更新幅度",
+  "MERIT在LAMBADA和SuperGLUE下游任务上也取得了更好的性能"
+ ],
+ "weaknesses": [
+  "与主线研究方向（可靠性×医学影像/多模态大模型推理）关联较弱，属于优化器研究",
+  "仅在GPT-2架构上验证，未验证在其他架构（如LLaMA、Mistral）上的效果",
+  "逐元素信任比率增加了计算开销，论文未详细报告wall-clock时间对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.88,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

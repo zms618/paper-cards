@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/OSDFace_One-Step Diffusion Model for Face Restoration.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/OSDFace_One-Step Diffusion Model for Face Restoration.pdf",
+ "title": "OSDFace One-Step Diffusion Model for Face Restoration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "一步扩散人脸修复，VRE保持身份，但泛化性有限",
+ "innovations": [
+  "视觉表示嵌入器(VRE)从低质量图像捕获丰富先验信息",
+  "结合面部身份损失和GAN损失实现真实人脸对齐",
+  "首次将一步扩散模型应用于人脸修复任务"
+ ],
+ "method_framework": "两阶段训练：第一阶段训练VRE建立低质量与高质量视觉表示关联；第二阶段结合预训练VAE和UNet，通过LoRA微调，利用VRE生成的视觉提示指导一步扩散过程",
+ "experiment_framework": "CelebA-Test合成数据集和Wider-Test/LFW-Test/WebPhoto-Test真实数据集，对比非扩散、多步扩散和一步扩散方法，使用LPIPS/DISTS/MUSIQ/NIQE/FID等指标",
+ "takeaways": [
+  "VRE通过特征关联损失有效对齐低质量与高质量表示",
+  "多损失组合(身份损失、感知损失、GAN损失)提升生成质量"
+ ],
+ "weaknesses": [
+  "仅关注人脸修复任务，泛化性有限",
+  "未充分讨论模型在不同种族、年龄人脸上的表现差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "纯人脸修复任务，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

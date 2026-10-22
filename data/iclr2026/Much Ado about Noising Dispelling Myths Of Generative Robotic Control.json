@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Much Ado about Noising Dispelling Myths Of Generative Robotic Control.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Much Ado about Noising Dispelling Myths Of Generative Robotic Control.pdf",
+ "title": "Much Ado about Noising: Dispelling the Myths of Generative Robotic Control",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 7.5,
+  "relevance": 6.5,
+  "overall": 6.8
+ },
+ "one_line": "通过系统消融揭示生成式控制成功源于迭代计算而非分布拟合",
+ "innovations": [
+  "通过28个基准的系统消融，驳斥了生成式控制策略(GCP)成功源于多模态捕获或高表达性的主流认知",
+  "识别出GCP优势的真正来源：监督式迭代计算+适当随机性注入，而非分布拟合",
+  "提出极简迭代策略(MIP)，仅用两步回归即匹配流-based GCP性能， often超过蒸馏shortcut模型"
+ ],
+ "method_framework": "对28个行为克隆基准(涵盖状态/像素/点云/语言输入、多种架构、单任务与多任务)进行系统消融，逐一检验多模态捕获、表达性、表征学习、训练稳定性等假说；最终分离出随机注入(C2)和监督迭代计算(C3)两个关键因素，并构建极简MIP策略验证。",
+ "experiment_framework": "在28个常见行为克隆基准上评估，对比GMM、ACT、BET、Flow、自回归、回归等多种策略类型，涵盖原始模型和预训练模型(如π0)，从成功率等维度衡量。",
+ "takeaways": [
+  "GCP的分布拟合成分远没有普遍认为的那么重要，迭代计算+监督才是关键",
+  "极简两步迭代策略(MIP)即可匹配流-based GCP的性能",
+  "研究指向新的设计空间：应专注于控制性能而非分布拟合"
+ ],
+ "weaknesses": [
+  "主要聚焦流-based GCP，对扩散和自回归生成模型的普适性需进一步验证",
+  "仅在行为克隆设置下研究，强化学习等其他训练范式下的结论可能不同",
+  "MIP的两步迭代上限是否足够复杂任务仍存疑，长程任务可能需要更多迭代步"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "生成控制方法论研究，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

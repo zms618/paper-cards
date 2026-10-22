@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/ALIGN-SAM Seeking Flatter Minima for Better Cross-Subset Alignment.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/ALIGN-SAM Seeking Flatter Minima for Better Cross-Subset Alignment.pdf",
+ "title": "ALIGN-SAM: Seeking Flatter MINIMA for Better CROSS-SUBSET Alignment",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.2
+ },
+ "one_line": "双批次优化提升泛化，但计算开销大且参数敏感",
+ "innovations": [
+  "将泛化问题重新定义为同一数据分布不同子集间的对齐问题",
+  "提出Align-SAM方法，同时优化主批次和辅助批次",
+  "理论证明梯度对齐与平坦最小值的关系"
+ ],
+ "method_framework": "Align-SAM使用两个独立采样的批次Bt和Bt，通过梯度对齐优化，使模型在主批次上寻找平坦最小值的同时保持辅助批次上的低损失。",
+ "experiment_framework": "ImageNet、Food101、CIFAR数据集从头训练和迁移学习，对比SGD、SAM、ASAM等方法，使用Top-1/Top-5准确率评估。",
+ "takeaways": [
+  "双批次优化策略可有效提升模型泛化能力",
+  "梯度对齐是提升模型鲁棒性的有效机制"
+ ],
+ "weaknesses": [
+  "计算开销增加，需要额外的前向和反向传播",
+  "辅助批次大小设置对性能影响较大，需要仔细调参"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "双批次优化提升泛化，属于可靠性主线方法设计研习轴",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/In-Context Denoising with One-Layer Transformers Connections between Attention and Associative Memory.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/In-Context Denoising with One-Layer Transformers Connections between Attention and Associative Memory.pdf",
+ "title": "In-Context Denoising with One-Layer Transformers: Connections between Attention and Associative Memory Retrieval",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.5,
+  "evidence": 5.0,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "单层注意力在受限去噪上等价于DAM一步梯度下降，但适用范围有限。",
+ "innovations": [
+  "提出in-context去噪任务作为研究注意力-联想记忆连接的新测试床",
+  "证明在受限去噪问题下单层Transformer可达到贝叶斯最优，注意力层对prompt执行一次上下文感知DAM能量景观的梯度下降",
+  "指出该一步更新优于精确检索上下文token或伪局部极小，给出DAM网络超越标准检索范式的具体例证"
+ ],
+ "method_framework": "在贝叶斯生成模型下把上下文token视为存储的联想记忆、查询token为含噪初态；证明训练后的单层softmax注意力对该prompt执行DAM能量函数的一步梯度下降，从而在受限去噪族上实现最优推断。",
+ "experiment_framework": "构造受限去噪合成问题，训练单层Transformer并对比其输出与贝叶斯最优、上下文token精确检索、DAM梯度下降迭代的解；可视化注意力权重与能量景观更新。",
+ "takeaways": [
+  "单层注意力在in-context去噪上可一步达到贝叶斯最优，机制是DAM能量景观的单步梯度下降",
+  "一步注意力更新比直接检索上下文记忆更优，说明DAM超越了纯粹的最近邻检索",
+  "巩固了Ramsauer等最初建立的注意力-联想记忆联系，并将其推广到去噪推断"
+ ],
+ "weaknesses": [
+  "最优性结论限于特定受限去噪生成模型，对一般ICL任务的适用范围较窄",
+  "实验以合成低维数据为主，未在真实数据集或深层网络上验证",
+  "与同主题Hopfield-ICL工作（如前序多篇）在结论上有重叠，增量新颖性有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

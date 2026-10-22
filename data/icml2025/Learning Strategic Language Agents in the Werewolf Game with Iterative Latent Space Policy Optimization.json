@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning Strategic Language Agents in the Werewolf Game with Iterative Latent Space Policy Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning Strategic Language Agents in the Werewolf Game with Iterative Latent Space Policy Optimization.pdf",
+ "title": "Learning Strategic Language Agents in the Werewolf Game with Iterative Latent Space Policy Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "将语言映射到隐策略空间，用CFR优化策略再DPO对齐LLM，提升狼人杀智能体推理。",
+ "innovations": [
+  "提出将组合级语言空间抽象为有限隐策略空间的思路，使博弈论方法(CFR)可应用于自由语言博弈",
+  "设计迭代框架：隐空间CFR策略优化 → DPO微调LLM对齐策略 → 重新抽象扩展策略空间，逐步增强战略推理和语言表达",
+  "在狼人杀这一不完全信息自由语言博弈中验证，超越现有LLM智能体基线"
+ ],
+ "method_framework": "LSPO分三步迭代：(1)将历史发言聚类映射到有限隐策略动作空间，构建抽象扩展式博弈；(2)在隐空间上运行CFR(反事实遗憾最小化)计算纳什均衡策略；(3)用CFR策略生成偏好数据，通过DPO微调LLM使其输出对齐学习到的策略；重复迭代逐步扩展策略空间。",
+ "experiment_framework": "在狼人杀游戏环境中评估，对比现有LLM智能体基线(如直接prompt、ReAct等)；指标为胜率、发言质量、战略推理能力；进行多轮迭代实验观察策略空间扩展和性能提升。",
+ "takeaways": [
+  "语言空间虽组合巨大，但底层策略空间相对紧凑，抽象后可用成熟博弈论方法优化",
+  "CFR+DPO的迭代闭环能同时提升战略推理和语言表达能力，优于单次微调",
+  "隐策略空间随迭代逐步扩展，智能体从简单策略进化到复杂欺骗/推理策略"
+ ],
+ "weaknesses": [
+  "仅在狼人杀单一游戏环境验证，泛化到其他自由语言博弈的能力未知",
+  "隐策略空间的聚类/抽象依赖人工设计，缺乏自动发现机制",
+  "CFR在大规模隐空间上的计算效率未充分讨论，扩展性存疑"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

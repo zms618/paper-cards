@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Extreme Rotation Estimation in the Wild.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Extreme Rotation Estimation in the Wild.pdf",
+ "title": "Extreme Rotation Estimation in the Wild",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "Transformer+渐进学习解决野外旋转估计，数据集有限且依赖预训练特征",
+ "innovations": [
+  "构建ExtremeLandmarkPairs数据集，包含真实野外图像对",
+  "提出渐进式学习方案，从全景图像逐步适应真实野外数据",
+  "结合关键点匹配掩码和分割图作为辅助通道的Transformer模型"
+ ],
+ "method_framework": "基于LoFTR特征提取，结合关键点匹配掩码和分割图作为辅助通道，通过Transformer模块处理图像特征和欧拉角嵌入，最后通过MLP预测欧拉角概率分布。",
+ "experiment_framework": "在sELP(单相机设置)和wELP(野外设置)测试集上评估，使用中值测地误差(MGE)和相对旋转准确率(RRA)作为指标，与多种基线方法对比。",
+ "takeaways": [
+  "渐进式学习策略能有效提升模型在真实野外数据上的表现",
+  "辅助通道(关键点匹配掩码和分割图)对处理非重叠图像对至关重要"
+ ],
+ "weaknesses": [
+  "数据集中非重叠图像对数量有限(约36K)",
+  "模型依赖于预训练的LoFTR特征提取器，可能限制泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "旋转估计与可靠性主线无交点，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

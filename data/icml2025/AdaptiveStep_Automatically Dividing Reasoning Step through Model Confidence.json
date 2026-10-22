@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/AdaptiveStep_Automatically Dividing Reasoning Step through Model Confidence.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/AdaptiveStep_Automatically Dividing Reasoning Step through Model Confidence.pdf",
+ "title": "AdaptiveStep: Automatically Dividing Reasoning Step through Model Confidence",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "自适应置信度分割推理步骤，降低PRM训练成本",
+ "innovations": [
+  "基于模型置信度的自适应推理步骤分割",
+  "无需人工标注的自动步骤划分",
+  "Token级价值引导解码(TVD)"
+ ],
+ "method_framework": "通过模型预测下一个token的置信度确定阈值，自动将推理过程划分为高信息量的步骤，基于rollout方法训练PRM，实现更精确的奖励模型。",
+ "experiment_framework": "数学推理(GSM8k/MATH500)和代码生成(LeetCodeDataset/LiveCodeBench)任务，使用BoN和TVD评估，与Math-Shepherd、ER-PRM等基线比较。",
+ "takeaways": [
+  "基于置信度的步骤划分能捕捉关键决策点",
+  "PRM训练数据构建成本降低30%以上",
+  "TVD方法显著提升推理性能"
+ ],
+ "weaknesses": [
+  "单一模型生成的训练数据限制了跨模型迁移能力",
+  "在MATH500上表现不如使用测试集数据的基线",
+  "代码PRM在简单数学任务上表现不佳"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "降低PRM训练成本，但未触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

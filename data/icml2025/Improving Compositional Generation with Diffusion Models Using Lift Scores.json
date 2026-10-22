@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Improving Compositional Generation with Diffusion Models Using Lift Scores.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Improving Compositional Generation with Diffusion Models Using Lift Scores.pdf",
+ "title": "Improving Compositional Generation with Diffusion Models Using Lift Scores",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "免训练重采样准则提升扩散模型组合生成，但缺乏理论深度和主线相关性",
+ "innovations": [
+  "将提升分数概念引入扩散模型组合生成，提出免训练的拒绝采样准则CompLift",
+  "系统探索了CompLift的设计空间，包括噪声采样策略、时间步选择和缓存优化",
+  "将方法扩展到文本到图像生成，验证了在复杂提示词下的组合对齐改进"
+ ],
+ "method_framework": "利用扩散模型自身的去噪预测来近似提升分数：若生成样本真正满足某条件，则在给定该条件时模型去噪效果应优于无条件去噪。将复杂提示词分解为多个子条件，分别评估提升分数后组合判断是否接受样本，无需额外训练或外部模块。",
+ "experiment_framework": "在2D合成数据（乘积/混合/否定组合）、CLEVR位置任务和文本到图像合成三组实验中验证。基线包括Composable Diffusion等组合生成方法，指标为条件对齐准确率。",
+ "takeaways": [
+  "提升分数可有效用作扩散模型组合生成的拒绝采样准则",
+  "免训练方法在不修改底层模型的情况下显著改善条件对齐",
+  "通过缓存和时间步选择优化可降低推理计算开销"
+ ],
+ "weaknesses": [
+  "与主线（医学影像/多模态大模型推理/可靠性验证器）关联较弱，属于通用图像生成方向",
+  "提升分数的近似精度与真实条件似然的差距未做严格理论分析",
+  "文本到图像实验的定量指标和基线对比不够充分（前9页内未见完整表格）"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

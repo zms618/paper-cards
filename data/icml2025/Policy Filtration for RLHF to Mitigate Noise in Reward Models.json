@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Policy Filtration for RLHF to Mitigate Noise in Reward Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Policy Filtration for RLHF to Mitigate Noise in Reward Models.pdf",
+ "title": "Policy Filtration for RLHF to Mitigate Noise in Reward Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "基于奖励模型可靠性差异的样本过滤方法提升RLHF性能",
+ "innovations": [
+  "实证发现奖励模型并非处处不可靠，而是在高奖励区域更可靠、低奖励区域噪声大，可靠性随所给奖励分布变化",
+  "提出PF-PPO(Policy Filtration for PPO)：在策略学习中过滤掉奖励可能不可靠的样本，提升奖励信号信噪比",
+  "用过滤样本上reward与真实得分的决定系数R²作为指标来选择合适的过滤策略(R²高说明过滤后reward更能指示真实表现)"
+ ],
+ "method_framework": "本文为RLHF算法论文。聚焦'在不准确奖励模型下如何学好策略'(而非去学更准的RM)。先用HumanEval探针实验发现RM可靠性在不同奖励区间不一致→据此设计样本过滤规则，只保留RM可靠区域的样本做PPO策略更新→以R²在多种候选过滤策略中择优，避免主观拍脑袋。",
+ "experiment_framework": "代码生成：HumanEval(+7.9%)、MBPP(+0.7%)、自建更难的LeetCode Contest(+10.0%)上达7B模型SOTA；数学推理：Ape210K与CMATH、多种奖励模型下均有提升；基线为标准PPO/RLHF；指标为pass@等任务正确率。",
+ "takeaways": [
+  "奖励模型的误差不是均匀的，高奖励区间通常更可靠，可据此选择性信任",
+  "在策略学习中过滤不可靠奖励样本，能以零额外模型成本显著提升下游性能",
+  "用R²客观指导过滤策略选择，比固定阈值更稳健"
+ ],
+ "weaknesses": [
+  "'高奖励区更可靠'主要在代码/数学任务观察到，在开放对话/主观偏好任务上是否成立未验证",
+  "过滤样本会减少有效训练数据，文章对过滤比例与性能/样本效率权衡的消融可更系统",
+  "R²需真实得分(correctness)作为代理来选策略，纯偏好场景下如何计算R²不清晰"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

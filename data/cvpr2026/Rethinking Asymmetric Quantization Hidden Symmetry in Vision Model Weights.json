@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Rethinking Asymmetric Quantization Hidden Symmetry in Vision Model Weights.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Rethinking Asymmetric Quantization Hidden Symmetry in Vision Model Weights.pdf",
+ "title": "Rethinking Asymmetric Quantization Hidden Symmetry in Vision Model Weights",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "DASQ利用权重对称性分解提升量化效率，但适用性有限",
+ "innovations": [
+  "发现视觉模型权重中隐藏的对称性",
+  "提出密集与稀疏加性量化(DASQ)框架",
+  "设计并行密集与稀疏矩阵乘法硬件架构"
+ ],
+ "method_framework": "将权重矩阵分解为密集核心和稀疏异常两部分，分别应用对称量化，消除零点开销并减少未使用的量化级别",
+ "experiment_framework": "ImageNet分类、COCO检测分割任务，ResNet/ViT等模型，对比AsymQ/SymQ基线，评估精度/BOPs/FPGA功耗",
+ "takeaways": [
+  "权重分布去除异常值后呈现近对称性",
+  "密集-稀疏分解可同时提升精度和硬件效率"
+ ],
+ "weaknesses": [
+  "深度可分离卷积层不适用DASQ分解",
+  "稀疏矩阵计算单元效率低于密集矩阵"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "量化方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

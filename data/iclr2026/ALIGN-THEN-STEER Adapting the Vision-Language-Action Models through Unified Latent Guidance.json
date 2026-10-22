@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/ALIGN-THEN-STEER Adapting the Vision-Language-Action Models through Unified Latent Guidance.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/ALIGN-THEN-STEER Adapting the Vision-Language-Action Models through Unified Latent Guidance.pdf",
+ "title": "ALIGN-THEN-STEER: Adapting the VISION-LANGUAGE-ACTION Models through Unified Latent Guidance",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "通过潜在空间对齐和分类器引导实现机器人跨平台任务适应",
+ "innovations": [
+  "利用反向KL散度的模式寻求特性构建统一潜在动作空间",
+  "设计基于统一潜在空间的分类器引导机制",
+  "提出即插即用的ATE框架，无需修改原始VLA架构"
+ ],
+ "method_framework": "ATE框架包含两个阶段：首先通过两个VAE构建统一潜在动作空间，桥接预训练和适应阶段的动作分布差距；其次在统一潜在空间中设计分类器引导机制，指导扩散或流模型生成过程向目标分布靠拢。",
+ "experiment_framework": "在RoboTwin和ManiSkill3模拟环境以及RealMan双臂机器人上进行实验，比较ATE与直接微调基线方法在跨平台和跨任务场景下的成功率差异。",
+ "takeaways": [
+  "利用反向KL散度的模式寻求特性可有效解决跨平台动作分布不匹配问题",
+  "轻量级引导机制可在不增加计算负担的情况下显著提升适应效率"
+ ],
+ "weaknesses": [
+  "依赖预训练动作标签数据，在无标签场景下可能受限",
+  "仅验证了扩散和流模型，对其他架构的泛化能力需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "机器人操作与可靠性主线无实质交点，仅方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

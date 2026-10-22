@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/ConsNoTrainLoRA_Data-driven Weight Initialization of Low-rank Adapters using Constraints.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/ConsNoTrainLoRA_Data-driven Weight Initialization of Low-rank Adapters using Constraints.pdf",
+ "title": "ConsNoTrainLoRA Data-driven Weight Initialization of Low-rank Adapters using Constraints",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "约束驱动的LoRA初始化，提升收敛但计算开销略增",
+ "innovations": [
+  "提出三种约束模式(CNTLoRA-X/S/Sh)初始化LoRA权重",
+  "引入可变适配器结构(VAS)实现不同层级的自适应秩分配",
+  "将LoRA初始化形式化为域偏移问题，利用预训练和微调激活关系"
+ ],
+ "method_framework": "通过约束源域和目标域激活关系，推导出LoRA权重的闭式解，分解为up和down矩阵，支持可变秩分配",
+ "experiment_framework": "Dreambooth图像生成(DINO/CLIP指标)、VTAB-1K图像分类、Amazon产品描述和myVLM图像理解任务，与EVA、CORDA、LoRA-GA等方法对比",
+ "takeaways": [
+  "约束初始化方法能显著提升LoRA收敛速度和最终性能",
+  "可变秩分配策略能在保持性能的同时提高效率"
+ ],
+ "weaknesses": [
+  "初始化计算时间略高于传统方法",
+  "未充分探讨方法在不同规模模型上的扩展性",
+  "域偏移假设在某些场景下可能过于简化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅是LoRA效率优化，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

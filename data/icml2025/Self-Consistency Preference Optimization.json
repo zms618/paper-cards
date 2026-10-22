@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Self-Consistency Preference Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Self-Consistency Preference Optimization.pdf",
+ "title": "Self-Consistency Preference Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "将推理时自一致性转为训练偏好信号，数学推理有效但算力开销大",
+ "innovations": [
+  "首次把自一致性从推理时方法改造为训练时偏好优化目标(SCPO)，无需金标准答案/人工标注。",
+  "用多次采样的一致性(而非自评估对错或外部奖励模型)构造偏好对，绕开LLM难以自评对错的问题。",
+  "在GSM8K/MATH上大幅优于常规奖励模型训练，并缩小与有金标监督训练的差距；与标准方法结合进一步提升。"
+ ],
+ "method_framework": "无监督自对齐方法。对每个新问题多次采样多条推理路径，以多数一致答案为chosen、不一致/少数答案为rejected构造偏好对，用DPO式损失迭代训练模型偏好一致答案；因自一致性不依赖知道标准答案，规避了自评估与外部RM在OOD上的失效问题。",
+ "experiment_framework": "在数学推理任务GSM8K与MATH上评测；对比自奖励自训练、外部奖励模型DPO、有金标监督训练等，报告解题准确率，并消融采样数、迭代轮次、与标准SFT/DPO的结合，测试对未见/OOD问题的泛化。",
+ "takeaways": [
+  "自一致性可作为无需金标的可靠偏好信号，显著改善复杂推理任务。",
+  "SCPO缩小了无标注自训练与有金标监督训练之间的差距。",
+  "与标准偏好优化结合可叠加收益。"
+ ],
+ "weaknesses": [
+  "自一致性依赖'多数即正确'，对答案分布偏斜或难题易系统性误判。",
+  "需多次采样，训练时偏好对构造的算力开销较大。",
+  "主要在数学推理验证，对开放式/多模态推理的迁移未验证。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

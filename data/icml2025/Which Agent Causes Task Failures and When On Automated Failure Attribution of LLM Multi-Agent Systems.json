@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Which Agent Causes Task Failures and When On Automated Failure Attribution of LLM Multi-Agent Systems.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Which Agent Causes Task Failures and When On Automated Failure Attribution of LLM Multi-Agent Systems.pdf",
+ "title": "Which Agent Causes Task Failures and When On Automated Failure Attribution of LLM Multi-Agent Systems",
+ "scores": {
+  "novelty": 7,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.3
+ },
+ "one_line": "提出LLM多智能体失败归因问题，但方法实用性与跨系统迁移性不足",
+ "innovations": [
+  "新开研究方向：LLM多智能体系统的自动化失败归因(识别出错智能体与决定性错误步骤)",
+  "构建Who&When数据集：127个LLM多智能体系统的失败日志，配细粒度标注，把失败关联到具体智能体与关键错误步",
+  "在该数据集上开发并评测三类自动归因方法，系统总结各自优劣，给出诚实的能力上限刻画"
+ ],
+ "method_framework": "把失败归因拆为两个子问题——'哪个智能体负责'(Which)与'哪一步出错'(When)；基于多智能体系统的运行日志与通信轨迹，用多种自动方法(含强推理模型直接归因、基于日志/轨迹的启发式等)定位责任智能体与决定性错误步，再与人工细粒度标注对比。",
+ "experiment_framework": "Who&When数据集：127个多智能体系统、细粒度标注；评测三类自动归因方法；指标为责任智能体识别准确率与错误步骤定位准确率；并测试OpenAI o1、DeepSeek R1等SOTA推理模型直接归因的表现。",
+ "takeaways": [
+  "最好方法识别责任智能体仅53.5%，定位错误步骤仅14.2%，部分方法甚至低于随机",
+  "即便是o1、DeepSeek R1等强推理模型，在自动失败归因上也达不到实用水平",
+  "结果凸显该任务的高难度与进一步研究的必要性，为多智能体系统调试提供了基准"
+ ],
+ "weaknesses": [
+  "属诊断/基准性工作，虽提出问题与数据，但未给出能达到实用水平的归因方法",
+  "失败归因高度依赖具体多智能体框架/日志格式，跨系统的可迁移性需进一步验证",
+  "14.2%的步骤定位准确率说明标注与任务定义本身可能存在模糊边界，归因的'金标准'稳定性存疑"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/TreeLoRA_Efficient Continual Learning via Layer-Wise LoRAs Guided by a Hierarchical Gradient-Similarity Tree.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/TreeLoRA_Efficient Continual Learning via Layer-Wise LoRAs Guided by a Hierarchical Gradient-Similarity Tree.pdf",
+ "title": "TreeLoRA: Efficient Continual Learning via Layer-Wise LoRAs Guided by a Hierarchical Gradient-Similarity Tree",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "TreeLoRA用梯度树引导LoRA分层复用，bandit降计算，但可靠性未充分验证",
+ "innovations": [
+  "构建层级梯度相似度树来组织/引导逐层LoRA适配器，按任务间梯度相似度分配适配结构",
+  "为降低任务相似度估计的计算负担，用bandit技术(下界置信UCB)高效探索任务结构",
+  "采用稀疏梯度更新便于参数优化，更适配大预训练模型；并给出理论分析，在ViT与LLM上验证有效性与效率"
+ ],
+ "method_framework": "在预训练模型上按层挂LoRA；以梯度相似度构建层级树刻画任务关系，用UCB bandit在线选择复用/新建适配器；配合稀疏梯度更新减少每次任务的计算。",
+ "experiment_framework": "视觉Transformer(ViT)与LLM的持续学习基准；对比正则化/回放/架构类CL方法及普通LoRA；指标为平均精度、遗忘程度与训练/存储效率。",
+ "takeaways": [
+  "任务间梯度相似度可指导LoRA的层级复用，比一刀切全量适配更省参数又防遗忘",
+  "用bandit UCB在线探索任务树结构，避免穷举式相似度估计的高昂开销"
+ ],
+ "weaknesses": [
+  "梯度相似度作为任务关系代理在分布剧烈漂移时是否仍可靠未充分验证；树结构随任务流增长的维护成本未量化",
+  "实证在标准CL基准，未对接真实流式长任务；稀疏更新与LoRA结合的增益来源缺充分消融"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Unisolver_PDE-Conditional Transformers Towards Universal Neural PDE Solvers.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Unisolver_PDE-Conditional Transformers Towards Universal Neural PDE Solvers.pdf",
+ "title": "Unisolver: PDE-Conditional Transformers Towards Universal Neural PDE Solvers",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "PDE条件化Transformer，跨方程求解但泛化有限且与主线关联弱",
+ "innovations": [
+  "理论分析PDE求解过程，定义完整PDE组件集合(方程符号、边界条件等)并分为domain-wise与point-wise两类",
+  "将深度PDE条件注入Transformer，使单一模型可跨多样PDE训练并零样本推广到未见PDE",
+  "不依赖单纯堆数据/参数，而是从PDE数学结构出发设计条件化机制"
+ ],
+ "method_framework": "Unisolver将PDE完整组件编码为深度条件，分别投影domain-wise条件(整体方程类别)与point-wise条件(逐点系数/边界)，联合多样PDE数据训练一个统一映射G:(X,M,CPDE)->Y，推理时按给定PDE条件快速求解未见实例。",
+ "experiment_framework": "在4个基准共12个数据集上评测(含FNO-NS扩展、PDEformer大规模基准等)，对比6个先进基线(FNO、PDEformer等)，指标为relative L2，并做分布内测试与零样本(未见粘度/力项/边界类型)泛化。",
+ "takeaways": [
+  "PDE条件化使单一Transformer可跨多种PDE族求解，而非局限于单一方程",
+  "在12个分布内测试集与零样本PDE推广上均取得最优relative L2",
+  "显式建模完整PDE组件比单纯扩大数据/参数更能提升跨PDE泛化"
+ ],
+ "weaknesses": [
+  "面向科学计算/PDE代理模型，与主线(可靠性/医学影像/多模态推理)无直接关联",
+  "零样本推广仍限于训练时见过的PDE组件类别组合，真正任意PDE的通用性未证",
+  "与经典数值方法相比在高精度/刚性问题上的误差优势未充分量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

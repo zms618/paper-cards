@@ -1,0 +1,41 @@
+{
+ "title": "UniCon: Unified Framework for Efficient Contrastive Alignment via Kernels",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "核化对比对齐框架，闭式解替代随机梯度，提速但应用受限。",
+ "innovations": [
+  "引入对比相似度权重矩阵 S(gamma)，在线性与非线性编码器、一对一与多对多对齐下都给出闭式全局解，可证明地替代 minibatch 反传。",
+  "从再生核希尔伯特空间(RKHS)视角统一线性/非线性对比对齐，揭示对比学习与谱方法的等价联系。",
+  "把对比对齐从随机梯度慢训练中解放，线性情形一次谱分解得最优编码器，非线性情形经隐表示推理快速对齐，并推广到多对多。"
+ ],
+ "method_framework": "将对比对齐目标重写为基于相似度权重矩阵 S(gamma) 的优化；在线性编码器下做一次谱分解闭式解出最优投影矩阵；在非线性下经核函数映射到 RKHS 做隐表示推理式对齐，避免长 stochastic 反传，统一一对一与多对多设定。",
+ "experiment_framework": "在合成数据、单模态(CIFAR-10)、多模态(Flickr30k/MSCOCO)与零样本图文检索上，与标准对比学习训练对比，报告对齐/检索性能与训练效率(提速倍数)。",
+ "takeaways": [
+  "最小化对比损失在线性情形等价于谱更新，可一次闭式求解而非长随机优化。",
+  "RKHS 视角统一了线性/非线性对比对齐，并把它与谱方法联系起来。",
+  "UniCon 在保持通用性与强性能的同时大幅提速(最高约 461×)。"
+ ],
+ "weaknesses": [
+  "闭式解依赖结构化权重矩阵与核的选择，在大规模高维深度编码器上的核矩阵计算/存储成本未充分讨论。",
+  "效率优势主要在线性/核情形体现，对端到端训练大规模深度网络的实际落地仍有限制。",
+  "与可靠性/医学影像/多模态推理主线无关；完整 461× 提速的实验条件与各任务结果表未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/UNICON_Unified Framework for Efficient CONTRASTIVE Alignment via Kernels.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/UNICON_Unified Framework for Efficient CONTRASTIVE Alignment via Kernels.pdf",
+ "raw_overall": 6.68,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "对比学习效率提升，但未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

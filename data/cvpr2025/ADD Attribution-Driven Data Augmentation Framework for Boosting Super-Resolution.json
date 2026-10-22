@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/ADD Attribution-Driven Data Augmentation Framework for Boosting Super-Resolution.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ADD Attribution-Driven Data Augmentation Framework for Boosting Super-Resolution.pdf",
+ "title": "ADD: Attribution-Driven Data Augmentation Framework for Boosting Image Super-Resolution",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "基于CAM的显著性掩膜做超分数据增广，但增益微小且机制验证不足",
+ "innovations": [
+  "全局特征检测 GD(I) = ∥Sobel_xy(I)∥² 替代 LAM 的逐像素梯度检测：在超分网络上先算 GD(F(I)) 再对 GD 做积分路径归因，从机制上消除 LAM「无关梯度累积 + 平坦区饱和」的问题，使归因图只聚焦边缘纹理而非背景",
+  "校准路径积分梯度 CPIG：基线取的高频被滤掉的模糊版本 I' = ω(σ)⊗I，路径取 γ(a) = ω(σ−aσ)⊗I；每步沿 [a−d, a+d] 限幅（amin/amax）做校准，并用 L_MF = ∥M_f⊙(γ(a)−γ(amax))∥₁ 与当前/目标损失差 L_CU−L_TG 算出校准因子 δ 控制步长，只更新梯度幅值低于分位阈值 T_f 的像素，最后对 k 步校准梯度求和得显著性图",
+  "ADD/ADD+ 增广：按 top-p 比例取最大显著性像素得二值掩膜 M，做 λ 混合（LR/HR 同掩膜混合两对图）与 s× 上/下采样强度增强；ADD+ 再加「同掩膜跨图硬粘贴」，并给出设计准则——边界需连续（细粒度分块反而掉点）、且要用多样化增广图而非单张"
+ ],
+ "method_framework": "对已训好的 SR 网络 F 求 CAM（GD + CPIG + 限幅校准）：得 LR 图上的显著性图 I^s_LR 与裁剪掩膜 M → 用 M 在 LR-HR 图像对间做混合/上采样/粘贴生成新训练样本，与颜色、通道等传统增广以概率 p 组合送入原训练流程（网络结构不变）。",
+ "experiment_framework": "DIV2K + RealSR 训练，RCAN/EDSR/SwinIR 三个主干；测试 Set5/Set14/BSD100/Urban100/Manga109 与 RealSR 测试集；指标 PSNR；对照 CutMix、CutMixup、CutBlur 等 vanilla 增广；另做 Insertion/Deletion 归因曲线与扩散指数 DI 分析。",
+ "takeaways": [
+  "「直接解释目标网络本身（而非另训归因模型）来给低层任务造数据」是低成本路线：不用额外标注，只用 SR 网络的梯度就能得到可用性很强的显著性图",
+  "表 1 的系统性结论很实用：patch 越细（5×5→7×7）PSNR 越差（DIV2K 从 29.14 掉到 28.92），说明低层增广必须保持边界连续，粗粒度 + 多张多样化增广图才有效",
+  "归因图质量可用 Insertion/Deletion 曲线定量比较，CAM 优于 LAM 的说法有对应曲线支撑，比只放可视化图有说服力"
+ ],
+ "weaknesses": [
+  "显著性图从「已训练 SR 网络」里取，等于拿一个已经在 DIV2K 上训好的模型的梯度去指导新数据的构造，但 CAM 与后续训练的具体耦合关系（用哪个 checkpoint、显著性图取 LR 还是 HR、p 取多少）在正文里是流程化的，缺乏「换强/弱网络做归因器」的对照，归因器偏差未被剥离",
+  "增益幅度很小（RCAN DIV2K ×4 上 +0.14dB、SwinIR ×2 上 +0.05dB，Cross-dataset 上最大 0.28dB），而分区表 1 里 Patch7×7、Non2Sa、Sa2Sa 等变体甚至为负；这么小的差值在单 run PSNR（未报方差）下基本落在噪声带内，显著性无法判断",
+  "CPIG 的限幅窗口 d、路径步数 k、分位阈值 p_f、σ 等超参只出现在公式里，没有敏感性消融；正文截断在 4.4 节表格中途（缺 Sa2Cor 之后的方案完整数值与结论），hyperparameter T_f/p 的取值来源未交代"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "超分数据增广与可靠性主线无实质交点，仅属常规图像处理",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

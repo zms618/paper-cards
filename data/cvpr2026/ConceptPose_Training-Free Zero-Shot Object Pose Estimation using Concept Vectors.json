@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/ConceptPose_Training-Free Zero-Shot Object Pose Estimation using Concept Vectors.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ConceptPose_Training-Free Zero-Shot Object Pose Estimation using Concept Vectors.pdf",
+ "title": "ConceptPose Training-Free Zero-Shot Object Pose Estimation using Concept Vectors",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 5.5,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "概念向量实现零样本姿态估计，但机制深度不足",
+ "innovations": [
+  "引入概念向量作为物体描述的通用方法",
+  "利用VLM的显著性图生成3D概念地图",
+  "通过语义概念向量建立3D-3D对应关系",
+  "完全无需训练和模型特定的零样本姿态估计"
+ ],
+ "method_framework": "通过LLM生成概念，利用VLM生成显著性图，将2D显著性图投影到3D形成概念激活向量，通过KL散度建立对应关系，使用RANSAC估计相对姿态。",
+ "experiment_framework": "在REAL275、Toyota-Light、YCB-Video和LINEMOD数据集上评估，使用ADD(-S)和BOP AR作为指标，与SIFT、ObjectMatch、Oryon、Horyon等方法对比。",
+ "takeaways": [
+  "语言驱动的语义推理可以超越学习的几何特征用于姿态估计",
+  "概念向量方法对提示设计具有鲁棒性",
+  "无需训练即可处理新物体和场景"
+ ],
+ "weaknesses": [
+  "在严重遮挡场景下性能略有下降",
+  "概念数量选择需要权衡性能和计算资源"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "零样本姿态估计与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

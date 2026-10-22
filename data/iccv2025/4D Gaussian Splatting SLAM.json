@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/4D Gaussian Splatting SLAM.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/4D Gaussian Splatting SLAM.pdf",
+ "title": "4D Gaussian Splatting SLAM",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "动态高斯分离+光流监督，但实验不足且参数未充分验证",
+ "innovations": [
+  "给每个高斯增设 dy 属性区分动静：用预训练 YoLov9（检测失效时融合光流）生成逐像素运动掩码，把落在掩码上的像素对应的高斯初始化为动态集 Gdy、其余为静态集 Gst；跟踪阶段只渲染静态高斯的光度与深度来解算位姿，动态物体完全不参与位姿优化",
+  "抄 SC-GS 的稀疏控制点思路但换成首帧运动区域直接初始化（省去长周期预训练），每个控制点由一个 MLP Ψ 输出时变 6-DoF 变换 (R^t,T^t)，动态高斯经 KNN 找 K 个邻接控制点、用高斯 RBF 取权重后按 LBS 插值出 scale/rotation/位置形变",
+  "首个在 4DGS-SLAM 中渲染光流图：将动态高斯在相邻关键帧间迁移后投影成 2D 坐标差 dx，用与渲染颜色/深度同样的 alpha-blending 渲出前/后向光流图 F(p)，再在掩码区与 RAFT 估计的光流算 L1 构成 Lflow 监督项"
+ ],
+ "method_framework": "输入 RGB-D 流与运动掩码，首帧按掩码分出 Gst/Gdy 并初始化控制点；跟踪仅渲染静态高斯，以 L1(C)+L1(D) 优化位姿与曝光，滑窗选关键帧（掩膜变化大或每 5 帧强制插帧）；4D 映射两阶段共优化位姿+形变网络+高斯参数，叠加 Lflow、ARAP 与各向同性正则 Liso，末段 1500 次全局颜色精修。",
+ "experiment_framework": "TUM RGB-D（fr3/sitting、fr3/walking）与 BONN RGB-D 动态数据集共 15 段；基线含 SplaTAM、Gaussian-SLAM、MonoGS、动态高斯 SC-GS 与 NeRF-SLAM 的 RoDyn-SLAM；指标 ATE(cm)、PSNR、SSIM、LPIPS；单机 RTX 3090 Ti 单卡。",
+ "takeaways": [
+  "跟踪阶段彻底剔除动态高斯、只用静态结构定位，是动态场景下最省事的位姿鲁棒做法：TUM 上 ATE 均值从 SplaTAM 的 62.2cm 降到 1.8cm",
+  "光流图可由高斯自身位移渲染而来当可微监督量，无需显式对应匹配即可与任意预训练光流模型（此处 RAFT）对齐做弱监督",
+  "关键帧选取必须把动态变化纳入：掩膜差异大时即使位姿位移很小也要插帧，否则静态假设在动态场景里失效"
+ ],
+ "weaknesses": [
+  "BONN 的 “p no box” 三段序列需要人工预先指定初始化帧才能建动态高斯与控制点，正文仅一句 “we pre-specify the initial frame”，未给出自动选帧规则，评测存在人工介入与设置泄漏",
+  "消融极薄：表 5 只有光流损失与动静分离两个二元开关且仅在 sync、sync2 两段上做；图 4 的关键帧配比（前 3 帧 + 2 全局 + 5 重叠）是穷举挑出的单点配置，W1=1e-4、W2=10、λ=0.9、λflow=3、σ=0.01 全部直接钉死，无敏感性分析",
+  "所有指标均为单次运行、无标准差；表 5 排版错乱使「去掉哪个组件」与数值的对应无法从正文核对；SC-GS 基线被额外赠予 GT 轨迹与本文方法重建的 3D 模型用于训练且抽稀到每 5 帧一张，这一fairness 处理未在正文说明"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "动态SLAM与可靠性主线无关，仅工程实现价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

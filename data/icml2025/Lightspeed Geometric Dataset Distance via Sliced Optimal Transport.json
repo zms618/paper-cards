@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Lightspeed Geometric Dataset Distance via Sliced Optimal Transport.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Lightspeed Geometric Dataset Distance via Sliced Optimal Transport.pdf",
+ "title": "Lightspeed Geometric Dataset Distance via Sliced Optimal Transport",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "将高维数据集投影为一维分布，实现快速但可能损失精细结构的数据集距离度量。",
+ "innovations": [
+  "提出Moment Transform Projection（MTP）：将标签-特征对映射为实数，把高维数据集比较降维为一维分布比较",
+  "s-OTDD无需训练探针模型、对类别数量变化鲁棒、可处理不相交标签集，是model-agnostic和embedding-agnostic的",
+  "利用一维最优传输的闭式解，实现近线性时间复杂度的数据集距离计算，远快于现有方法"
+ ],
+ "method_framework": "s-OTDD流程：(1) MTP投影：对每个数据点(x, y)，用矩变换将其映射为一个标量（基于特征分布的矩统计）；(2) 投影后每个数据集变成一维分布；(3) 数据集距离定义为两个一维分布之间的Wasserstein距离的期望（对随机投影参数取平均）。利用一维OT的闭式解，计算复杂度近线性。",
+ "experiment_framework": "在多个数据集比较任务上评测：包括连续学习中的数据集相似性、合成数据质量评估、联邦学习中的异构性度量等；对比现有OTDD和学习曲线法等基线；指标为距离的判别力和计算时间。",
+ "takeaways": [
+  "s-OTDD在近线性时间内实现了有竞争力的数据集距离度量，比需要训练探针模型的方法快几个数量级",
+  "MTP投影将标签信息融入特征矩统计，使得距离度量对类别数变化和不相交标签集具有鲁棒性",
+  "该度量可用于持续学习数据集排序、合成数据质量评估、联邦异构性检测等多种场景"
+ ],
+ "weaknesses": [
+  "MTP投影将高维信息压缩为一维，可能损失数据集间的精细结构差异",
+  "投影参数的随机性引入了估计方差，需要多次采样平均才能稳定",
+  "仅在标准数据集上验证，超大规模真实工业数据集上的可扩展性需进一步确认"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.43,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

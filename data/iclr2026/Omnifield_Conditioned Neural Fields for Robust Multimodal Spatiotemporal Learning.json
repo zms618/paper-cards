@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Omnifield_Conditioned Neural Fields for Robust Multimodal Spatiotemporal Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Omnifield_Conditioned Neural Fields for Robust Multimodal Spatiotemporal Learning.pdf",
+ "title": "OmniField: Conditioned Neural Fields for Robust Multimodal Spatiotemporal Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "条件神经场融合多模态时空数据，但域外推与真实噪声验证不足。",
+ "innovations": [
+  "连续性感知神经场以当前可用模态为条件，可在训练与测试时自适应任意模态子集，解决模态覆盖随时空变化的问题",
+  "多模态串扰块(multimodal crosstalk)+迭代跨模态精修，在解码器前对齐信号，免网格化/kriging 等代理预处理",
+  "统一支持重建、插值、预测、跨模态预测四类任务，且对 QA/QC 噪声鲁棒"
+ ],
+ "method_framework": "把稀疏、不规则、带噪的多模态时空测量建模为条件神经场；先用多模态串扰块在解码器前对齐跨模态信号，再迭代精修跨模态上下文；以可用模态子集为条件，避免网格化带来的平滑偏差与不确定性坍缩，对传感器噪声保持鲁棒。",
+ "experiment_framework": "在气候/空气污染等多模态时空数据上评测；对比 8 个强多模态时空基线；任务含重建、插值、预测、跨模态预测；并在重度模拟传感器噪声下测鲁棒性。",
+ "takeaways": [
+  "以可用模态为条件的神经场可避免固定观测算子假设带来的似然误设",
+  "免代理预处理消除了网格化的平滑偏差与不确定性坍缩",
+  "迭代跨模态精修使模型在重度测量损坏下性能仍接近干净输入"
+ ],
+ "weaknesses": [
+  "域为气候/传感器数据，非医学影像，多模态鲁棒主线但落地域不匹配",
+  "对'可用模态子集'的条件化依赖训练时见到足够多样的子集组合，未见子集外推分析",
+  "前 9 页内鲁棒性多为模拟噪声，真实设备漂移的定量验证不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "多模态鲁棒方法设计，但落地域非医学影像",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

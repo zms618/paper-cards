@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/A Unified Resilient and Explainable Adversarial Patch Detector.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Unified Resilient and Explainable Adversarial Patch Detector.pdf",
+ "title": "A Unified, Resilient, and Explainable Adversarial Patch Detector",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 7.0,
+  "overall": 5.8
+ },
+ "one_line": "组合现有方法做对抗补丁检测，实验设计不充分",
+ "innovations": [
+  "Patch Decorrelation Loss：把 Barlow Twins 的互相关对角化从图像级下放到 patch 级，对 (B×H×W, D) 的 patch 特征算 D_cr=(1/(B·H·W))[x']^T[x'']，惩罚 L_PD=Σ_i(d_ii-I_ii)^2/D + λΣ_{i≠j}(d_ij)^2/D，λ=5e-3 抑制“所有 patch 激活同一原型”的平凡解",
+  "两阶段 TrivialAugment：先做剪切/旋转/平移等空间变换，再做灰度等颜色变换，比 RGB/YCbCr 更能稳定原型分配",
+  "非负权重稀疏线性层把原型存在分数 p∈[0,1]^D 映射为类证据，使决策可全局（原型-类权重）与局部（图像中激活位置）双路解释"
+ ],
+ "method_framework": "冻结式自监督预训练：用 L_PD + softmax 对齐损失 L_A + tanh 多样性损失 L_T 学原型；第二阶段加负对数似然 L_C，联合优化 λ_PD L_PD+λ_A L_A+λ_T L_T+λ_C L_C，输出未归一化分数直接作检测分。",
+ "experiment_framework": "自建 COCO/ImageNet 补丁集（10 种物理补丁 × 高斯/脉冲/散粒噪声）；ResNet50/MobileNetV2/ViT/ConvNeXt 四主干；leave-one-patch-out 与跨数据集（COCO→ImageNet）零样本协议；10 折 CV。",
+ "takeaways": [
+  "把去相关约束下放到 patch 级，是让原型类方法不再塌缩到单一原型的可复用技巧",
+  "“未见补丁 + 未见噪声 + 未见数据集”三级泛化矩阵 + leave-one-patch-out，是安全类检测器值得照抄的评测设计"
+ ],
+ "weaknesses": [
+  "核心组件（原型自监督、对齐/ tanh 损失、非负稀疏线性层）均来自既有工作 [26,41]，本文新增仅 patch 级去相关，属组合式改进",
+  "仅与 [43]、[31] 两个先前工作比较，未对比 SAC/NutNet/Jujutsu 等补丁检测防御，基线偏弱",
+  "实验固定 seed=1，主表只报均值，标准差一律“见补充材料”，无多种子方差亦无显著性检验",
+  "主干间差异极大（MobileNet 加噪后跌 19.88%、Patch-3 上仅 64.88%），论文却只推荐 ViT+Patch-4，泛化性 claim 依赖选优"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "对抗补丁检测属于可靠性主线，方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

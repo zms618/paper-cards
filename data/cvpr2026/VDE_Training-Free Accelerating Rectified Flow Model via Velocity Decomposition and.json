@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/VDE_Training-Free Accelerating Rectified Flow Model via Velocity Decomposition and.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/VDE_Training-Free Accelerating Rectified Flow Model via Velocity Decomposition and.pdf",
+ "title": "VDE Training-Free Accelerating Rectified Flow Model via Velocity Decomposition and",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "速度分解与估计加速流模型，但锚点选择与预热长度需调优",
+ "innovations": [
+  "将速度分解为平行与正交分量，利用其时间可预测性",
+  "从缓存重用范式转向动态估计范式，解决缓存-输入不匹配问题",
+  "周期性锚定模型状态防止误差累积"
+ ],
+ "method_framework": "VDE将模型速度分解为平行和正交分量，利用系数的局部线性和正交方向的稳定性进行估计，在锚定点执行完整前向传播，其他步骤通过线性外推和方向重用估计速度",
+ "experiment_framework": "在Flux、Qwen-Image和Wan2.1上评估，使用SSIM、PSNR、LPIPS和CLIP等指标，与TeaCache、EasyCache等基线比较",
+ "takeaways": [
+  "速度分解为平行和正交分量的思路可应用于其他生成模型",
+  "动态估计比静态缓存更能保持生成质量"
+ ],
+ "weaknesses": [
+  "需要确定预热阶段长度，可能因模型而异",
+  "锚点间隔的选择需要在速度和质量间权衡"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "加速流模型方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

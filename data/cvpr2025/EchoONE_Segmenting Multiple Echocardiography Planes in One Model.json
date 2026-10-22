@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/EchoONE_Segmenting Multiple Echocardiography Planes in One Model.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/EchoONE_Segmenting Multiple Echocardiography Planes in One Model.pdf",
+ "title": "EchoONE Segmenting Multiple Echocardiography Planes in One Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "基于SAM的超声心动图多平面分割，添加PC-Mask和LFFA模块",
+ "innovations": [
+  "首个解决超声心动图多平面分割(MPS)问题的统一模型",
+  "基于先验可组合掩码学习(PC-Mask)的语义感知密集提示生成",
+  "局部特征融合与适应(LFFA)模块用于SAM适配"
+ ],
+ "method_framework": "EchoONE基于SAM架构，结合PC-Mask模块生成语义感知密集提示，并通过CNN分支和LFFA模块实现特征融合与适应，实现多平面统一分割。",
+ "experiment_framework": "使用CAMUS等3个公共数据集和4个私有数据集进行内部验证，HMC QU和EchoNet-Dynamic进行外部验证，比较mDice、mIoU和HD95指标。",
+ "takeaways": [
+  "PC-Mask模块利用先验结构信息生成高质量密集提示，无需知道输入平面信息",
+  "LFFA模块有效融合局部特征，加速模型收敛并提升分割性能"
+ ],
+ "weaknesses": [
+  "依赖预训练ResNet34进行平面分类，可能引入额外误差",
+  "未充分讨论模型在极端低质量图像上的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像分割，可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

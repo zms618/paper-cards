@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Strategic Planning A Top-Down Approach to Option Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Strategic Planning A Top-Down Approach to Option Generation.pdf",
+ "title": "Strategic Planning: A Top-Down Approach to Option Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 4.0,
+  "overall": 5.1
+ },
+ "one_line": "LLM引导的自上而下RL框架，降低稀疏奖励样本复杂度",
+ "innovations": [
+  "形式化 Strategy Problem，把策略生成建模为在“具体性”与“价值”间权衡的策略分布寻优",
+  "提出 Strategist 智能体：用 LLM 把领域知识合成为结构化高层表征，自上而下分解子目标",
+  "以人类式战略规划引导探索，缓解传统 bottom-up RL 在稀疏奖励/有限探索预算下的困难"
+ ],
+ "method_framework": "先由 LLM 将给定领域（医疗/商业等）的人类专家知识合成为结构化高层策略表征，再迭代地把高层目标自上而下分解为越来越具体的子目标与 option，逐步落地为可执行策略，从而减少试错探索、引导探索方向。",
+ "experiment_framework": "在多个需要高层规划的决策/RL 环境上评测 Strategist 相对 bottom-up RL 与层级 RL/环境塑形基线的样本效率与最终表现；（具体基准与数值表超出前 9 页）。",
+ "takeaways": [
+  "用 LLM 注入人类领域知识做自上而下规划，可显著降低稀疏奖励任务的样本复杂度",
+  "高层 option 不应纯数据驱动发现，可由结构化领域知识引导生成",
+  "策略生成应显式权衡具体性与价值，而非直接追求最具体动作"
+ ],
+ "weaknesses": [
+  "与主线（鲁棒性/可信AI/医学影像诊断/多模态推理）关联弱，属 RL 规划方法",
+  "依赖 LLM 生成的高层策略质量，错误策略可能误导探索，缺乏对错误高层建议的鲁棒修正",
+  "前 9 页内完整实验表与提升幅度缺失，实证证据强度无法充分核验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

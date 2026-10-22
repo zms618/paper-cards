@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/SketchFaceGS_Real-Time Sketch-Driven Face Editing and Generation with Gaussian Splatting.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SketchFaceGS_Real-Time Sketch-Driven Face Editing and Generation with Gaussian Splatting.pdf",
+ "title": "SketchFaceGS Real-Time Sketch-Driven Face Editing and Generation with Gaussian Splatting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "草图驱动3D人脸编辑，依赖预训练先验，泛化性存疑",
+ "innovations": [
+  "首个统一端到端无优化框架实现草图驱动的3D高斯人头生成与编辑",
+  "粗到细的Transformer架构桥接抽象草图与3D先验",
+  "UV Mask Fusion实现实时、连续、自由视角编辑"
+ ],
+ "method_framework": "采用粗到细架构，粗阶段通过并行Transformer分支从草图和参考图像提取几何和外观特征，融合生成粗UV图；细阶段利用预训练3D-GAN增强高频细节；编辑阶段通过UV Mask Fusion和逐层特征融合实现精确修改。",
+ "experiment_framework": "生成测试集：100张艺术家手绘草图；编辑测试集：100个编辑示例；与SketchFaceNeRF、S3D、MagicQuill等方法比较，使用FID、KID、PSNR、SSIM等指标评估。",
+ "takeaways": [
+  "粗到细架构有效解决稀疏草图到密集3D表示的歧义问题",
+  "UV Mask Fusion和逐层特征融合策略避免误差累积并保持未编辑区域完整性"
+ ],
+ "weaknesses": [
+  "方法依赖预训练的GGHead生成先验",
+  "未提及对极端轮廓编辑的鲁棒性评估",
+  "仅针对人脸领域，泛化性有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "纯人脸编辑应用，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

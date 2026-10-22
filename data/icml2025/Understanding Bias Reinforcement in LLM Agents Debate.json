@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Understanding Bias Reinforcement in LLM Agents Debate.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Understanding Bias Reinforcement in LLM Agents Debate.pdf",
+ "title": "Understanding Bias Reinforcement in LLM Agents Debate",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "揭示MAD偏差强化，用组合博弈基准与提示框架缓解",
+ "innovations": [
+  "形式化'强一致性(strong consistency)'与'偏差强化(bias reinforcement)'概念，用GPT-4o/Gemini实证MAD会放大既有偏差、收敛到一致但次优的推理模式",
+  "提出MetaNIM Arena：基于公平组合博弈(NIM/Fibonacci/Kayles/Chomp/Corner Queen)的对抗策略决策基准，借Sprague-Grundy定理给每个状态可证最优动作，实现无偏评估",
+  "提出DReaMAD框架：(1)精炼LLM策略先验知识提升推理质量，(2)系统化改提示在单模型内促成多元视角，从而降低偏差、提升决策准确率与推理多样性"
+ ],
+ "method_framework": "以状态DAG+Grundy数定义每个局面的可证最优走法；在模型强一致状态上用两个同模型agent多轮辩论，对比辩论前后动作分布与最优动作比例；DReaMAD通过提示工程重写策略先验并强制视角多样化。",
+ "experiment_framework": "MetaNIM Arena多个组合博弈；对比GPT-4o、GPT-4o-mini、Gemini-1.5-pro/flash；基线为Standard、self-consistency、self-refinement、MAD；指标为胜率、最优动作比例、动作分布一致性(偏差强化程度)与推理多样性。",
+ "takeaways": [
+  "同模型多智能体辩论因缺乏视角多样性会强化偏差：辩论后强一致动作频率上升，无论其对错，最优动作比例反而下降",
+  "用可证最优解(Sprague-Grundy)做锚的博弈基准能无偏地暴露LLM策略推理缺陷；提示层面的视角多样化比单纯堆agent更能抑制偏差强化"
+ ],
+ "weaknesses": [
+  "DReaMAD本质是提示工程改进，无训练，增益幅度与对更强模型/真实复杂任务的可迁移性未充分验证",
+  "评估局限于理想化组合博弈(动作空间离散、有解析最优解)，与开放域自然语言决策差距大；'偏差'定义为对Grundy最优走法的偏离，未涵盖语言幻觉/事实性等更广义偏差"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

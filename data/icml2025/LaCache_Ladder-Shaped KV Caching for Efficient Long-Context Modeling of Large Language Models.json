@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/LaCache_Ladder-Shaped KV Caching for Efficient Long-Context Modeling of Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/LaCache_Ladder-Shaped KV Caching for Efficient Long-Context Modeling of Large Language Models.pdf",
+ "title": "LaCache: Ladder-Shaped KV Caching for Efficient Long-Context Modeling of Large Language Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 5.8
+ },
+ "one_line": "免训练KV缓存优化，阶梯跨层存储与迭代压缩缓解长上下文OOM",
+ "innovations": [
+  "提出阶梯形KV缓存模式，不仅在层内顺序存储KV对，还跨层从浅到深存储，在固定预算下扩展长依赖捕获范围",
+  "设计迭代压缩机制，逐步压缩旧缓存为新token释放空间，实现固定缓存大小下的连续生成",
+  "免训练方法，同时解决长上下文能力和连续生成OOM两大挑战，在多个长上下文任务上优于现有KV缓存策略"
+ ],
+ "method_framework": "LaCache是免训练的KV缓存优化方法，包含两个核心组件：(1)阶梯形KV缓存模式，将KV对不仅在层内从左到右存储，还跨层从浅到深存储，以在固定存储预算下扩展长依赖捕获跨度；(2)迭代压缩机制，基于token距离逐步压缩旧缓存，为新token释放空间，实现固定缓存大小下的连续生成。",
+ "experiment_framework": "在多个长上下文语言模型基准任务上评估，与StreamingLLM、Quest、H2O等主流KV缓存策略对比，评估长上下文准确率和内存效率。",
+ "takeaways": [
+  "跨层阶梯式KV缓存模式能在固定存储预算下有效扩展长依赖捕获范围",
+  "迭代压缩机制可实现固定缓存大小下的连续生成而不OOM",
+  "LaCache在长上下文准确率和内存效率之间取得更好平衡"
+ ],
+ "weaknesses": [
+  "前9页未展示完整实验结果表格和不同缓存预算下的性能曲线",
+  "方法本质是KV缓存策略优化，对模型长上下文能力的提升幅度有限",
+  "未与最新的原生长上下文模型（如Llama 3.2 128k）端到端对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

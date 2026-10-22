@@ -1,0 +1,41 @@
+{
+ "title": "Unbiased Gradient Estimation for Event Binning via Functional Backpropagation",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.7
+ },
+ "one_line": "通过泛函反传播解决事件分箱不连续梯度问题，但推广性与开销未充分验证。",
+ "innovations": [
+  "指出事件分箱函数不连续导致反传出现不可计算的 Dirac 脉冲、梯度被截断，而平滑分箱/直通估计等替代法又引入梯度偏差。",
+  "利用分部积分把目标提升为泛函，在反传中得到分箱函数导数的积分形式并自然出现余切(cotangent)函数。",
+  "由采样到的余切向量重构余切函数，计算出与光滑/非光滑目标的长程有限差分可证明匹配的弱导数，实现前向输出不变的无偏梯度估计。"
+ ],
+ "method_framework": "前向照常做事件 warp 与不连续分箱得到 IWE；反传时不近似不连续点，而是把分箱目标提升为泛函，用分部积分将导数化为积分形式，从采样余切向量重构余切函数以合成弱导数，从而回传给 warp 参数无偏梯度。",
+ "experiment_framework": "在基于优化的自运动估计、自监督光流、SLAM 三类任务上，与平滑分箱/直通估计等有偏梯度法对比，报告 RMS 误差/EPE 与收敛速度。",
+ "takeaways": [
+  "不连续分箱会在反传产生 Dirac 脉冲，使梯度截断或有偏，限制原始事件直接学习。",
+  "弱导数逐点不可算但其积分可算，用分部积分+余切重构可在保持前向不变下恢复无偏梯度。",
+  "方法带来自运动估计 RMS -3.2%、收敛 1.57×、光流 EPE -9.4%、SLAM RMS -5.1% 的广泛收益。"
+ ],
+ "weaknesses": [
+  "余切函数重构依赖采样与重建精度，重构误差与额外计算开销未充分量化。",
+  "方法针对事件分箱这一不连续算子，推广到一般脉冲神经元 surrogate gradient 的普适性为展望。",
+  "仅在事件视觉任务验证，与主线(可靠性/医学影像/多模态推理)无关；完整理论证明与收敛性分析未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Unbiased Gradient Estimation for Event Bin-Ning via Functional Backpropagation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unbiased Gradient Estimation for Event Bin-Ning via Functional Backpropagation.pdf",
+ "raw_overall": 6.55,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "事件视觉优化方法，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

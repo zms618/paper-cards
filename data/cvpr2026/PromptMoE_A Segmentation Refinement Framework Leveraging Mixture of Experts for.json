@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/PromptMoE_A Segmentation Refinement Framework Leveraging Mixture of Experts for.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/PromptMoE_A Segmentation Refinement Framework Leveraging Mixture of Experts for.pdf",
+ "title": "PromptMoE A Segmentation Refinement Framework Leveraging Mixture of Experts for",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "PromptMoE用MoE框架做分割refinement，但泛化性和专家关系建模不足。",
+ "innovations": [
+  "Image-Informed Prompting (IIP)框架结合多种视觉知识线索",
+  "Dynamic Expert Selector (DES)动态选择相关专家避免信号稀释",
+  "Prompt-Placement Explorer (PPE)平衡覆盖范围和高置信度放置"
+ ],
+ "method_framework": "PromptMoE采用三阶段流程：IIP生成专家分数图，DES选择最优专家子集并融合，PPE探索融合指导图放置高置信度点提示，结合SAM进行最终分割。",
+ "experiment_framework": "在5个基准数据集(BIG, VOC, DAVIS585, ECSSD, MSRA-B)上评估，与CascadePSP, SegRefiner, SAMRefiner等SOTA方法比较，使用IoU/BIoU指标。",
+ "takeaways": [
+  "专家混合模型可有效解决分割refinement中的语义模糊问题",
+  "动态专家选择机制显著减少计算量同时提升性能"
+ ],
+ "weaknesses": [
+  "仅在VOC数据集上训练DES，可能限制跨域泛化能力",
+  "专家选择机制仅考虑成对交互，未建模更高阶专家关系"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "分割refinement方法，泛化性和专家关系建模不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

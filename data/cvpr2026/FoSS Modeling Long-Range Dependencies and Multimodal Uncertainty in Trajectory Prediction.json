@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/FoSS Modeling Long-Range Dependencies and Multimodal Uncertainty in Trajectory Prediction.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/FoSS Modeling Long-Range Dependencies and Multimodal Uncertainty in Trajectory Prediction.pdf",
+ "title": "FoSS Modeling Long-Range Dependencies and Multimodal Uncertainty in Trajectory Prediction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "双分支轨迹预测模型，频域-时域融合提升精度但复杂度高",
+ "innovations": [
+  "频域-时域双分支框架",
+  "HelixSort渐进螺旋重排序模块",
+  "Coarse2Fine-SSM和SpecEvolve-SSM选择性状态空间模块"
+ ],
+ "method_framework": "双分支架构：频域分支通过DFT分解轨迹为振幅和相位分量，经HelixSort重排序后由两个SSM子模块处理；时域分支使用选择性SSM捕获长程依赖，通过交叉注意力融合特征，最终生成多模态轨迹预测。",
+ "experiment_framework": "在Argoverse 1和Argoverse 2数据集评估，使用minADE、minFDE、MR等指标，与DenseTNT、SceneTransformer等SOTA方法对比，验证模型性能与效率优势。",
+ "takeaways": [
+  "频域分解能有效分离全局趋势与局部动态",
+  "选择性SSM在保持线性复杂度的同时提升长程依赖建模能力",
+  "双分支架构可互补时域与频域信息"
+ ],
+ "weaknesses": [
+  "模型复杂度较高，实现与部署难度大",
+  "未充分讨论模型在不同场景下的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "轨迹预测中的不确定性建模与可靠性主线相关，但未深入落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

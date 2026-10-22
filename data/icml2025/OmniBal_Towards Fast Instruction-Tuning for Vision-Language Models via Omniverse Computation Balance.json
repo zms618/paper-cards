@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/OmniBal_Towards Fast Instruction-Tuning for Vision-Language Models via Omniverse Computation Balance.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/OmniBal_Towards Fast Instruction-Tuning for Vision-Language Models via Omniverse Computation Balance.pdf",
+ "title": "OmniBal: Towards Fast Instruction-Tuning for Vision-Language Models via Omniverse Computation Balance",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 5,
+  "overall": 6
+ },
+ "one_line": "分布式训练系统优化，解决VLM训练负载均衡问题，实现1.8倍加速",
+ "innovations": [
+  "首次刻画并定义VLM指令微调的'计算失衡问题'：从Inter-Stage/Intra-Stage两维度、数据/模型/记忆三层面量化ViT与LLM异质性带来的前向时间与显存方差",
+  "数据侧Balanced Dynamic Mini-Batch(ISF迭代采样过滤)把不同图文样本聚成大小均衡组，Pad Ratio降到约0、跨设备Dist Ratio大幅下降",
+  "模型侧搜索式Balanced Model Partition(以fwd时间方差+通信量为指标选最优流水线切分)与记忆侧自适应re-computation按每层实际显存需求分别配置"
+ ],
+ "method_framework": "三模块协同：先用ISF按图像数/文本长度阈值把样本动态分组使输入规模稳定(为后续均衡打基础)；再profiling每层前向时间与激活，以贪心锚点±抖动生成切分候选，按VAR(fwd time)+SUM(comm)排序选Top-K实测取最优；最后基于稳定后的负载逐层估计显存节省Mt/Mv，自适应决定每层是否重计算，避免一刀切的激进重计算浪费。",
+ "experiment_framework": "基于InternVL-Chat-1.5(InternViT-6B+InternLM2-20B/34B)，1.2M样本；后端DeepSpeed ZeRO-3与Megatron-DeepSpeed；主指标GPU Days与下游MMB-EN/CN、ChartQA、AI2D、MMVet、MME；逐组件消融(数据/模型/记忆平衡)及跨数据集(EVA-CLIP/Llama3/Yi-34B/Qwen1.5-110B)、H100/A100、512卡的泛化实验。",
+ "takeaways": [
+  "Megatron后端下6+20B从61.8降到21.3 GPU days(1.83×)，6+34B从75.4降到30.5(1.80×)，同时下游基准基本持平",
+  "三模块缺一不可：数据平衡61.8→51.9，加模型平衡→29.0，加记忆平衡→21.3",
+  "直接上3D并行因异质性反而变慢(38.9→61.8)，均衡后3D并行才优于DeepSpeed，说明负载均衡是高效VLM训练前提"
+ ],
+ "weaknesses": [
+  "本质是分布式训练系统优化，与主任务主线(鲁棒性/可信AI/不确定性/幻觉抑制)无关，仅属VLM训练效率工程",
+  "加速比依赖profiling与启发式搜索的实现质量，最优切分锚点±3的经验范围、Qv/Qt阈值靠数据集统计拍定，缺乏对异构新硬件的自动自适应保证",
+  "下游收益仅验证'不掉点'而非提升模型能力，工程价值大但无方法论上的泛化洞见；512卡/H100等大规模结论放在附录，正文证据集中于单一InternVL栈"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Reward-Guided Prompt Evolving in Reinforcement Learning for LLMs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Reward-Guided Prompt Evolving in Reinforcement Learning for LLMs.pdf",
+ "title": "Reward-Guided Prompt Evolving in Reinforcement Learning for LLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "自博弈prompt演化提升LLM RL性能，但训练开销大且依赖奖励模型",
+ "innovations": [
+  "首次提出在RL训练过程中自适应演化prompt集合，打破静态预定义prompt集的范式",
+  "将LLM训练建模为非对称自博弈：creator(π_X)负责生成/选择有用prompt，solver(π_Y|X)负责生成回复，两者通过reward信号驱动",
+  "发现reward advantage是识别有用prompt的有效信号，creator最大化高advantage prompt的采样概率"
+ ],
+ "method_framework": "将LLM RL训练视为creator-solver双人博弈。solver用标准RL目标(DPO/RLOO等)优化回复质量。creator是另一个策略模型，根据当前solver在各prompt上的reward advantage，动态调整prompt采样分布(优先采样高advantage prompt)并生成新prompt。creator和solver交替更新，形成自博弈课程学习。",
+ "experiment_framework": "在Gemma-2-9b-it上用DPO和RLOO两种RL方法验证。基准包括MT-Bench、Arena-Hard、AlpacaEval。对比静态prompt集基线。消融研究分析不同prompt演化策略的影响。",
+ "takeaways": [
+  "eva将Gemma-2-9b-it在Arena-Hard的胜率从51.6%提升到60.1%(DPO)和62.4%(RLOO)，超越Claude-3-Opus，接近Gemini-1.5-Pro",
+  "自适应prompt演化能诱导有意义的学习课程：从简单prompt逐步过渡到困难prompt",
+  "reward advantage作为prompt选择信号比均匀采样或固定调度显著更有效"
+ ],
+ "weaknesses": [
+  "需要维护两个策略模型(creator+solver)，训练开销约翻倍",
+  "creator策略本身需要reward model来评估prompt质量，依赖reward model的准确性",
+  "仅在对话/指令遵循任务上验证，未在数学推理、代码生成等其他RL场景测试"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

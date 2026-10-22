@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Adaptive Sensitivity Analysis for Robust Augmentation against Natural Corruptions in Segmentation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adaptive Sensitivity Analysis for Robust Augmentation against Natural Corruptions in Segmentation.pdf",
+ "title": "Adaptive Sensitivity Analysis for Robust Augmentation against Natural Corruptions in Image Segmentation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "自适应灵敏度分析引导增强采样，提升分割模型对自然腐败鲁棒性。",
+ "innovations": [
+  "提出在线自适应灵敏度分析算法，比此前AdvSteer方法快10倍、存储少200倍，可在训练过程中动态更新",
+  "使用KID（Kernel Inception Distance）作为图像退化度量，结合模型精度变化定义灵敏度，定位模型最敏感的增强强度区间",
+  "基于BetaBinomial分布的增强采样策略，对性能下降最显著的增强强度赋予更高采样权重"
+ ],
+ "method_framework": "训练过程中周期性执行灵敏度分析：对每种增强类型计算不同强度下的模型精度MA和KID退化距离，定义灵敏度=ΔMA/ΔKID。识别高灵敏度增强强度后，以BetaBinomial分布为采样概率，偏差地采样模型最敏感的增强强度进行训练。整个流程在线执行，无需离线数据生成。",
+ "experiment_framework": "在6个分割数据集上验证：ADE20K、VOC2012、POTSDAM（航拍）、A2I2Haze（UGV）、Cityscapes（驾驶）、Synapse（医学）。真实腐败测试：ACDC（雾/雨/雪/夜）、IDD。基线包括TrivialAugment、IDBH、AugMix、AutoAugment、RandAugment、VIPAug。指标为mIoU、aAcc、mAcc。额外测试数据效率曲线和SAM预训练微调。",
+ "takeaways": [
+  "ACDC雪天场景相对次优方法提升6.20% mIoU，雨天提升3.85%，三个天气场景中优于所有基线",
+  "医学分割Synapse数据集上ImageNet-C腐败测试提升显著（mIoU 53.475 vs 基线）",
+  "数据效率优势明显：小样本（1000-2000）时性能远超其他增强方法，最高达200倍数据效率"
+ ],
+ "weaknesses": [
+  "夜间场景下aAcc表现不如AugMix，说明低光照腐败的处理仍有不足",
+  "AdvSteer合成腐败基准上Cityscapes和Synapse表现较差，对高强度组合腐败的鲁棒性有限",
+  "灵敏度分析基于KID度量，对图像退化的感知可能与人类视觉系统不完全一致"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "鲁棒性主线与医学影像落地域交点，灵敏度分析设计模式可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

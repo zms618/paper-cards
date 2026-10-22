@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/LONG-CONTEXT Attention Benchmark From Kernel Efficiency To Distributed Con-Text Parallelism.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/LONG-CONTEXT Attention Benchmark From Kernel Efficiency To Distributed Con-Text Parallelism.pdf",
+ "title": "LONG-CONTEXT Attention Benchmark: from Kernel Efficiency To Distributed CON-TEXT Parallelism",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "长上下文注意力基准测试，性能评估为主，可靠性分析缺失。",
+ "innovations": [
+  "统一的长上下文注意力评估框架",
+  "14种注意力掩码模式的系统分析",
+  "96 GPU集群上的超长上下文(768K)评估"
+ ],
+ "method_framework": "LongCA-bench整合7种密集和5种稀疏注意力内核，以及5种分布式注意力机制，通过统一数据准备和输入表示接口实现公平比较。",
+ "experiment_framework": "H100/A100 GPU上评估，序列长度1K-768K，测量TFLOPs/s和内存使用，支持12种静态和2种动态掩码模式。",
+ "takeaways": [
+  "掩码模式对效率有显著影响，异构掩码支持有限",
+  "稀疏注意力中VSA性能最佳但灵活性不足，FlashInfer在大块尺寸下表现更好"
+ ],
+ "weaknesses": [
+  "未支持所有掩码类型的分布式评估",
+  "FlexAttention因OOM问题被排除，影响全面性",
+  "主要关注性能而非可靠性或不确定性"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "长上下文注意力基准测试，性能评估为主，可靠性分析缺失",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

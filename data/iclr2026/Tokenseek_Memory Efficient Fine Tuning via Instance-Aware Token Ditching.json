@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Tokenseek_Memory Efficient Fine Tuning via Instance-Aware Token Ditching.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tokenseek_Memory Efficient Fine Tuning via Instance-Aware Token Ditching.pdf",
+ "title": "TokenSeek: Memory Efficient Fine Tuning via Instance-Aware Token Ditching",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "自适应token舍弃省显存，但长上下文影响未量化，与主线无关",
+ "innovations": [
+  "指出现有激活优化对所有样本采用统一僵化策略，数据无关导致低效不稳定",
+  "提出实例感知的token seeking/ditching：按每个样本自适应识别并舍弃冗余token以省激活显存",
+  "作为通用插件适配多种Transformer模型，且其可解释token seeking过程揭示有效性来源"
+ ],
+ "method_framework": "针对激活占训练显存主导的瓶颈，TokenSeek对每个样本动态seek出重要token、舍弃冗余token，从而只对必要token保存激活；作为即插即用插件与LoHa/QLoRA等结合，减少激活显存同时保持/提升微调性能。",
+ "experiment_framework": "在多种Transformer模型上评测(Llama3.2 1B等)；对比TokenTune(随机)等激活优化方法与LoHa/QLoRA基线；指标为微调性能与显存占用；报告Llama3.2 1B上2.8GB(14.8%原内存)的显存节省。",
+ "takeaways": [
+  "激活是微调显存的主要瓶颈，按样本自适应舍弃冗余token比统一策略更高效稳定",
+  "TokenSeek作为通用插件可与LoHa/QLoRA结合，大幅省显存而性能不降",
+  "其可解释token seeking为token高效微调提供了洞见"
+ ],
+ "weaknesses": [
+  "token舍弃可能损失长上下文/多步推理所需的关键信息，对长文档任务的影响未充分讨论",
+  "实例感知seek的计算开销在大batch下是否抵消显存收益未量化",
+  "属内存高效微调方向，与可靠性主线及医学影像、多模态推理落地域无关"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "内存优化与可靠性主线无关，无医学/多模态落地",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

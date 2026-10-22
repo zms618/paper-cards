@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Beyond Matryoshka Revisiting Sparse Coding for Adaptive Representation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Beyond Matryoshka Revisiting Sparse Coding for Adaptive Representation.pdf",
+ "title": "Beyond Matryoshka: Revisiting Sparse Coding for Adaptive Representation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "稀疏编码替代Matryoshka，提升检索效率但理论分析不足",
+ "innovations": [
+  "提出Contrastive Sparse Representation (CSR)，将预训练稠密嵌入稀疏化以实现自适应推理成本，无需全模型重训练",
+  "结合轻量自编码和任务感知对比目标，在不同稀疏度水平下保持语义质量",
+  "在图像、文本、多模态基准上全面超越MRL，同时大幅减少训练时间和检索延迟"
+ ],
+ "method_framework": "CSR基于预训练嵌入学习稀疏表示：通过自编码目标重建原始嵌入，结合对比学习目标保持语义判别性；推理时可根据需要选择不同稀疏度级别，利用GPU稀疏矩阵乘法加速检索。",
+ "experiment_framework": "图像/文本/多模态检索基准；基线：MRL、int8量化、全量表示；指标：1-NN检索准确率、检索延迟、训练GPU时间；对比不同稀疏度下的精度-效率权衡。",
+ "takeaways": [
+  "稀疏编码是实现自适应表示学习的有效范式，比MRL在精度和效率上都更优",
+  "CSR无需全模型重训练，可直接在预训练嵌入上微调，大幅降低适配成本",
+  "稀疏表示在GPU上可利用稀疏矩阵乘法实现真正的检索加速"
+ ],
+ "weaknesses": [
+  "稀疏字典学习增加了额外的模型参数和存储开销",
+  "仅在检索任务上验证，未探索分类、生成等其他下游任务",
+  "稀疏度与精度的理论权衡分析不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

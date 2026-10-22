@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Mask-Adapter The Devil is in the Masks for Open-Vocabulary Segmentation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Mask-Adapter The Devil is in the Masks for Open-Vocabulary Segmentation.pdf",
+ "title": "Mask-Adapter The Devil is in the Masks for Open-Vocabulary Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "Mask-Adapter通过语义激活图改进掩码-CLIP对齐，但创新有限",
+ "innovations": [
+  "引入Mask-Adapter模块提取语义激活图，解决掩码与CLIP对齐问题",
+  "提出掩码一致性损失增强模型鲁棒性",
+  "设计IoU匹配器替代匈牙利匹配器减少过拟合"
+ ],
+ "method_framework": "Mask-Adapter将掩码和CLIP特征融合，通过ConvNeXt块生成语义激活图，基于此聚合掩码嵌入，与文本嵌入匹配实现分类。",
+ "experiment_framework": "在ADE20K、Pascal-Context等数据集上评估，与FC-CLIP、MAFTP等基线比较，使用mIoU指标，并在真实掩码上进行分类准确率测试。",
+ "takeaways": [
+  "语义激活图能有效捕捉上下文信息，提升掩码表示质量",
+  "两阶段训练策略(真实掩码预热+混合掩码训练)增强模型鲁棒性"
+ ],
+ "weaknesses": [
+  "方法依赖于预训练的CLIP模型，可能存在领域迁移问题",
+  "计算复杂度相比传统掩码 pooling有所增加"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "掩码一致性损失增强鲁棒性，符合可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

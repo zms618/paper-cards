@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Jailbreaking Vision-Language Models via Dissonance-Guided Suffix Optimization and -Phrase Injection.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Jailbreaking Vision-Language Models via Dissonance-Guided Suffix Optimization and -Phrase Injection.pdf",
+ "title": "Jailbreaking Vision-Language Models via Dissonance-Guided Suffix Optimization and -Phrase Injection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "利用模型不协调优化文本后缀与图像短语注入实现VLM越狱",
+ "innovations": [
+  "利用对齐模型与非对齐模型间的预测不协调识别被安全机制抑制的token",
+  "结合文本后缀优化与图像短语注入的双模态攻击框架",
+  "当文本优化停滞时，通过嵌入优化短语到图像中突破局部最优"
+ ],
+ "method_framework": "DGSIP框架交替使用两个模块：1)基于预测不协调的文本后缀优化，利用目标模型与引导模型间的差异识别被抑制的token；2)图像短语注入，当文本优化停滞时，将引导模型生成的短语嵌入图像并优化其渲染参数",
+ "experiment_framework": "在AdvBench、MM-SafetyBench和HADES三个安全基准上测试，对比GCG、VAJM、UMK和FigStep等基线方法，评估白盒和黑盒攻击成功率(ASR)",
+ "takeaways": [
+  "利用模型间预测不协调可更有效识别被安全机制抑制的token",
+  "结合多模态优化可突破纯文本优化的局部最优限制",
+  "图像中嵌入优化短语可增强攻击的跨模型迁移性"
+ ],
+ "weaknesses": [
+  "在Government Decision等中性话题上攻击成功率较低",
+  "方法依赖额外的非对齐引导模型，增加了实现复杂度"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "VLM越狱直接关联可靠性主线中的幻觉抑制与安全验证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

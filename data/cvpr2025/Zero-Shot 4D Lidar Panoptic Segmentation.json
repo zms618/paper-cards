@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Zero-Shot 4D Lidar Panoptic Segmentation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Zero-Shot 4D Lidar Panoptic Segmentation.pdf",
+ "title": "Zero-Shot 4D Lidar Panoptic Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "伪标签引擎+Transformer实现零样本4D激光雷达分割，但标定依赖严重",
+ "innovations": [
+  "首个零样本4D激光雷达全景分割方法",
+  "多模态传感器构建伪标签引擎",
+  "跨窗口关联实现长时物体跟踪"
+ ],
+ "method_framework": "SAL-4D包含伪标签引擎和模型两部分：伪标签引擎通过视频分割、提升到激光雷达空间和跨窗口关联生成时序一致的伪标签；模型基于Transformer解码器处理4D点云序列，预测分割掩码和CLIP特征",
+ "experiment_framework": "在SemanticKITTI和Panoptic nuScenes数据集评估，使用LSTQ作为核心指标，包含空间关联(Sassoc)和语义识别(Scls)两个子指标",
+ "takeaways": [
+  "时序一致性显著提升零样本识别能力",
+  "多模态伪标签可解决激光雷达标注稀缺问题",
+  "跨窗口关联处理物体进出场景"
+ ],
+ "weaknesses": [
+  "伪标签仅覆盖相机视锥区域内的点云",
+  "未区分物体类和背景类",
+  "依赖相机-激光雷达标定精度"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "激光雷达分割与可靠性主线无交点，仅多模态伪标签有可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

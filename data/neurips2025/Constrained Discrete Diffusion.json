@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Constrained Discrete Diffusion.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Constrained Discrete Diffusion.pdf",
+ "title": "Constrained Discrete Diffusion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "约束离散扩散模型通过投影算子实现零约束违反序列生成",
+ "innovations": [
+  "将可微分约束优化集成到离散扩散过程中",
+  "使用KL散度投影算子确保序列级约束满足",
+  "基于增广拉格朗日方法的约束优化框架"
+ ],
+ "method_framework": "CDD在离散扩散采样过程中嵌入投影算子，通过最小化KL散度保持模型分布同时满足约束，使用Gumbel-Softmax处理非可微操作，增广拉格朗日方法解决约束优化问题。",
+ "experiment_framework": "毒性文本生成、分子设计、指令跟随任务，对比GPT-2、Llama、MDLM等基线，评估约束违反率、困惑度、连贯性和新颖性。",
+ "takeaways": [
+  "投影算子设计确保零约束违反同时保持生成质量",
+  "增广拉格朗日方法有效处理复杂约束",
+  "训练-free方法无需模型重训练或后处理"
+ ],
+ "weaknesses": [
+  "理论分析假设约束集β-正则性，实际应用中可能不满足",
+  "计算复杂度高于标准扩散采样",
+  "未探讨大规模模型上的扩展性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

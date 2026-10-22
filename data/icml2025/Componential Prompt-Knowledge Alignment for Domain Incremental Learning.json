@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Componential Prompt-Knowledge Alignment for Domain Incremental Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Componential Prompt-Knowledge Alignment for Domain Incremental Learning.pdf",
+ "title": "Componential Prompt-Knowledge Alignment for Domain Incremental Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.75
+ },
+ "one_line": "改进prompt对齐缓解DIL遗忘，但创新有限且实验不足。",
+ "innovations": [
+  "指出现有prompt-based DIL方法忽略跨域prompt间的组件级结构对齐，导致新旧域知识利用不充分",
+  "提出按查询相似度对新旧prompt加权融合的机制，旧prompt权重随相似度差异比例衰减",
+  "引入基于交叉熵的prompt知识对齐损失，维持跨域prompt的组件结构一致性"
+ ],
+ "method_framework": "KA-Prompt在预训练ViT上维护多域prompt集；依据当前查询与新/旧prompt的相似度计算权重，按归一化公式融合为聚合prompt，再送入ViT；并用prompt知识对齐损失约束跨域prompt组件结构对齐，平衡可塑性-稳定性。",
+ "experiment_framework": "在DomainNet(345类6风格域)、ImageNet-R(200类15域)、ImageNet-C、ImageNet-Mix四个多域基准上，按图像数递减排序模拟难DIL场景，对比C-Prompt、CaSSLe等prompt-based方法，以域增量分类准确率评估。",
+ "takeaways": [
+  "跨域prompt的组件结构对齐能有效缓解灾难性遗忘并提升新域适应",
+  "按查询相似度动态加权融合新旧prompt比固定prompt集更能利用历史知识",
+  "在图像数不平衡的难DIL场景下提升尤为明显"
+ ],
+ "weaknesses": [
+  "prompt-based DIL赛道拥挤，本文创新点为对已有prompt对齐思路的增量改进，理论贡献有限",
+  "方法依赖预训练ViT与人工设计的相似度加权，超参敏感性与计算开销未充分讨论",
+  "正文仅展示4个图像分类基准，未验证在跨模态或更大规模流式场景的可扩展性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

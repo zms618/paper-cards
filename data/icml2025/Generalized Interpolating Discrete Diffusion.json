@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Generalized Interpolating Discrete Diffusion.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Generalized Interpolating Discrete Diffusion.pdf",
+ "title": "Generalized Interpolating Discrete Diffusion",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6
+ },
+ "one_line": "推广masked diffusion为混合加噪，提升扩散语言模型样本质量与自我纠错能力。",
+ "innovations": [
+  "推广masked diffusion，导出一族通用插值离散扩散(GIDD)，在加噪过程设计上更灵活",
+  "提出新的扩散ELBO，在计算量匹配下取得扩散语言建模的SOTA",
+  "结合masking与均匀噪声的混合加噪，使模型能识别并修正自身错误，样本质量(Gemma2 9B评判PPL)最高提升55%"
+ ],
+ "method_framework": "将离散扩散的前向加噪从纯mask推广为mask与uniform noise插值的一般形式，并据此推导新的ELBO训练目标。由于插值过程允许把差token替换为更好token，模型在采样迭代中具备自我纠错能力，弥补自回归模型无法修正已生成token的缺陷。",
+ "experiment_framework": "在语言建模基准上做计算量匹配的对比，对比mask-only与mask+uniform noise等加噪方案；以生成式PPL(由Gemma 2 9B评判)、自纠错token数等指标评估样本质量提升，并验证不同插值调度的影响。",
+ "takeaways": [
+  "插值离散扩散在相同计算量下达到扩散语言模型SOTA",
+  "混合masking+均匀噪声的加噪显著提升样本质量并解锁自我纠错",
+  "离散扩散可弥补自回归模型不可修正已生成token的固有缺陷"
+ ],
+ "weaknesses": [
+  "仍局限于离散/语言模态，未扩展到医学影像等落地域",
+  "样本质量评判依赖Gemma2 9B打分，存在评判模型偏差",
+  "前9页内与现代自回归LLM的端到端质量对比及推理效率权衡展开有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

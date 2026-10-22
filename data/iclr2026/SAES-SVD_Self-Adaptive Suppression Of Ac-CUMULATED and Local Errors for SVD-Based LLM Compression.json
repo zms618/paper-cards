@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SAES-SVD_Self-Adaptive Suppression Of Ac-CUMULATED and Local Errors for SVD-Based LLM Compression.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SAES-SVD_Self-Adaptive Suppression Of Ac-CUMULATED and Local Errors for SVD-Based LLM Compression.pdf",
+ "title": "SAES-SVD: Self-Adaptive Suppression of Accumulated and Local Errors for SVD-Based LLM Compression",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "SAES-SVD通过联合优化层内重建与跨层误差补偿减少LLM压缩精度损失。",
+ "innovations": [
+  "指出现有逐层低秩压缩忽略重建误差跨层传播累积，提出联合优化层内重建与层间误差补偿的框架。",
+  "提出累积误差感知层压缩(CEALC)：以二阶激活统计推导闭式低秩解，显式对齐每层输出与全精度对应结果以补偿累积误差。",
+  "提出自适应协同误差抑制(ACES)：自动调节权重系数，在固定秩下最大化压缩输出与压缩目标的 Frobenius 范数比，高效利用秩预算。"
+ ],
+ "method_framework": "低秩压缩目标=局部重建误差 + 加权累积误差补偿；基于二阶激活统计给出闭式解，使每层输出对齐全精度参考以抵消上游偏差；权重系数通过最大化压缩输出范数/目标范数比自适应确定，无需微调或混合秩策略。",
+ "experiment_framework": "跨多种 LLM 架构与任务评测；报告 WikiText2 困惑度(不同压缩率)、7 个 zero-shot 基准平均精度；0.2 压缩率下 LLaMA-7B 现有方法平均精度掉点 >0.05，SAES-SVD 仅 0.02；与 ASVD、SVD-LLM、AdaSVD 对比并含权重系数消融。",
+ "takeaways": [
+  "显式补偿跨层累积误差可在不微调、不混合秩的前提下稳定改善压缩后性能。",
+  "闭式解基于二阶激活统计即可对齐层输出，实现简单且硬件无关。",
+  "自适应权重比固定权重更能在固定秩预算下保留有效能量。"
+ ],
+ "weaknesses": [
+  "仅做后训练低秩压缩、不微调，报告集中在常规基准，极端压缩率/长上下文/推理任务上的退化未充分刻画。",
+  "二阶激活统计的采集成本与在线部署适用性未讨论。",
+  "属模型压缩效率方向，与视觉可靠性/医学影像/多模态推理主线关联弱。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "模型压缩效率与可靠性主线关联弱，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

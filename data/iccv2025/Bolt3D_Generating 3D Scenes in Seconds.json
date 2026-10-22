@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/Bolt3D_Generating 3D Scenes in Seconds.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Bolt3D_Generating 3D Scenes in Seconds.pdf",
+ "title": "Bolt3D Generating 3D Scenes in Seconds",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 3.5,
+  "overall": 5.5
+ },
+ "one_line": "潜在扩散模型加速3D生成，但质量与鲁棒性存疑",
+ "innovations": [
+  "多视图潜在扩散模型生成3D场景",
+  "几何变分自编码器处理3D几何数据",
+  "Splatter Images表示3D场景",
+  "无需优化的前馈3D生成"
+ ],
+ "method_framework": "结合潜在扩散模型生成多视图图像和点图，通过几何VAE编码解码，再通过Gaussian head预测3D高斯参数，形成完整3D场景表示",
+ "experiment_framework": "在RE10K、CO3D、DL3DV等数据集上与Flash3D、DepthSplat、LatentSplat等方法比较，使用PSNR、SSIM、LPIPS、FID等指标",
+ "takeaways": [
+  "利用扩散模型处理3D重建中的歧义性问题",
+  "几何VAE对高质量3D生成至关重要",
+  "前馈方法可大幅降低3D生成计算成本"
+ ],
+ "weaknesses": [
+  "与优化方法相比质量仍有差距",
+  "几何VAE训练依赖大规模多视图数据",
+  "未充分讨论模型在极端场景下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

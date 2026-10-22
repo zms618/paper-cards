@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Autonomy-of-Experts Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Autonomy-of-Experts Models.pdf",
+ "title": "Autonomy-of-Experts Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "移除MoE路由器，专家自评估范数选择输入，提升效率与负载均衡。",
+ "innovations": [
+  "提出Autonomy-of-Experts(AoE)范式，移除外部路由器，专家基于自身内部激活范数自主决定是否处理输入",
+  "用低秩权重分解(d_low)预计算激活范数，减少专家自评估的计算开销",
+  "发现AoE无需辅助负载均衡损失即可实现比传统MoE更均衡的专家负载分布"
+ ],
+ "method_framework": "每个专家模块先通过低秩矩阵W_low计算输入的中间激活，用激活范数作为专家自评估分数。所有专家按激活范数排序，仅Top-K专家执行完整前向传播（W_up和W_down），其余专家提前终止。与传统MoE的路由器分离决策不同，AoE中专家的执行能力与选择信号一体化。",
+ "experiment_framework": "预训练700M到4B参数的decoder-only LLM，在10个任务上评测：ARC-easy/PIQA/SIQA/Winogrande/HellaSwag(zero-shot)和MNLI/MRPC/QNLI/QQP/SST-2(3-shot)。基线为传统MoE配置，对比不同d_low和辅助损失设置。",
+ "takeaways": [
+  "AoE在8个任务上的平均准确率优于传统MoE，且无需辅助负载均衡损失",
+  "AoE的专家负载分布更均衡（更高Ent_load），选择更自信（更低Ent_conf）",
+  "低秩分解维度d_low是关键超参数，需在效率和性能间权衡"
+ ],
+ "weaknesses": [
+  "仅在700M-4B规模验证，未测试更大规模(数十B)模型的扩展性",
+  "激活范数作为专家能力指标的合理性缺乏理论分析",
+  "与最新MoE方法(DeepSeek-MoE, Qwen-MoE等)未对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "MoE架构改进，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

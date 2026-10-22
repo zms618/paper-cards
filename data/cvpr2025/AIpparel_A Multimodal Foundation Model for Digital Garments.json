@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/AIpparel_A Multimodal Foundation Model for Digital Garments.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AIpparel_A Multimodal Foundation Model for Digital Garments.pdf",
+ "title": "AIpparel: A Multimodal Foundation Model for Digital Garments",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "缝纫版型 tokenization 压缩 LMM 服装生成，但评测与消融不足",
+ "innovations": [
+  "绘图命令式缝纫版型 tokenization：用 <SoG>/<EoG>/<SoP>/<EoP> 与边类型(<L>/<Q>/<B>/<A>)、缝合标签 token 把版型编码成约 250 token（最长 838），比 DressCode 的 3 万 token 少两个数量级",
+  "连续参数不走量化：用小回归头从边类型 token 的前一隐状态回归端点/控制点与面板 3D 变换(R7)，同时把这些量作为 positional embedding 加回 token，避免量化误差且省上下文",
+  "GCD-MM 数据集：为 12 万程序化版型补文本描述（规则短句 + GPT-4o 生成，降低幻觉）与语言指令编辑对，支撑 text/image/图文/编辑四类多模态任务"
+ ],
+ "method_framework": "在 GCD-MM 上微调 LLaVA-1.5-7B：视觉编码器与投影层冻结，版型按绘图命令 token 化，连续坐标由回归头输出并回灌为位置嵌入；训练目标为离散 token 交叉熵 + 端点与变换的 L2 联合损失。",
+ "experiment_framework": "GCD-MM(12 万，90/5/5)与 SewFactory；对比 SewFormer(-FT) 与 DressCode；指标 Panel L2、#Panel/#Edge/#Stitch Acc、Rot/Transl L2。",
+ "takeaways": [
+  "把结构化几何当成'绘图命令序列'而非定长向量来 token 化，是让 LMM 吃下 CAD/版型/矢量图这类模态的通用做法，压缩比本身就是可行性前提",
+  "离散结构用 token、连续坐标用回归头 + 位置嵌入回灌的混合表示，比全量化方案更省上下文也更精确"
+ ],
+ "weaknesses": [
+  "多模态评测仅 100 个样本（每类 20），统计功效很弱，Accuracy 59.0 vs 10.3 的差距缺乏置信区间支撑",
+  "基线 SewFormer/DressCode 是单模态方法，必须借 GPT-4o/DALL·E 把多模态输入翻译进各自输入域才能比较，属非同类基线，公平性存疑",
+  "GCD-MM 是程序化生成数据，缺少真实服装扫描；'simulation-ready'只用重建误差衡量，未报告穿模、布料物理参数等下游可用性指标",
+  "未做'只换 tokenizer'与'只换 LMM 骨干'的消融对照，收益归因不清；且未报告推理时延与 token 预算相同条件下的公平对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "服装生成与可靠性主线无实质交点，仅多模态方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

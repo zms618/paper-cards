@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Bridging Protein Sequences and Microscopy with Unified Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Bridging Protein Sequences and Microscopy with Unified Diffusion Models.pdf",
+ "title": "Bridging Protein Sequences and Microscopy Images with Unified Diffusion Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.9
+ },
+ "one_line": "统一扩散模型连接蛋白序列与显微图像，但实验对比有限。",
+ "innovations": [
+  "提出统一扩散框架CELL-Diff，同时整合连续(图像)与离散(序列)扩散，实现蛋白序列→显微图像与图像→序列的双向转换。",
+  "结合参考细胞形态图与蛋白序列条件，生成高保真蛋白定位图像。",
+  "在HPA上预训练、OpenCell上微调，FID等指标大幅超越最近方法CELL-E2。"
+ ],
+ "method_framework": "先训练VAE把显微图像压缩到4×64×64潜空间；冻结VAE后训练潜扩散模型，用双向Transformer拼接图像与蛋白嵌入，联合连续图像扩散与离散序列扩散损失(λ=1)；200步cosine噪声、DDIM 100步采样，最大序列长度2048。",
+ "experiment_framework": "数据集Human Protein Atlas(HPA)预训练、OpenCell微调；基线为最相关方法CELL-E2；指标MSFR(nm,越低越好)、IoU(定位重合)、FID-T(阈值图)、FID-O(原图)。HPA上FID-O从CELL-E2的166.4降到51.1，MSFR从1824nm降到641nm；OpenCell上FID-O从245.8降到68.9。",
+ "takeaways": [
+  "统一扩散在蛋白图像生成上显著优于既有CELL-E2，FID-O提升约3倍、定位误差MSFR下降约2/3。",
+  "引入更多参考细胞形态通道(Nucl/ER/MT)可进一步提升IoU与FID。",
+  "序列↔图像双向建模为研究亚细胞蛋白定位与互作提供了实用工具。"
+ ],
+ "weaknesses": [
+  "对比基线仅CELL-E2一个，缺乏与其他生成式/判别式蛋白定位方法的横向比较。",
+  "图像→序列反向生成的质量在前9页内缺乏定量指标，主要展示正向图像生成。",
+  "属细胞生物学显微图像生成，与临床医学影像、多模态大模型推理主线仅部分相关。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Sparse Causal Discovery with Generative Intervention for Unsupervised Graph Domain Adaptation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Sparse Causal Discovery with Generative Intervention for Unsupervised Graph Domain Adaptation.pdf",
+ "title": "Sparse Causal Discovery with Generative Intervention for Unsupervised Graph Domain Adaptation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "稀疏因果图解耦与生成干预做图域自适应，但因果验证不足",
+ "innovations": [
+  "指出UGDA中因果-伪特征纠缠与全局对齐失效是性能瓶颈",
+  "用互信息瓶颈约束构建稀疏因果图，经变分推断解耦稀疏稳定因果特征并压缩域相关伪相关",
+  "设计生成式干预机制，通过跨域特征重组在保持因果特征稳定的同时打破残余局部伪相关耦合"
+ ],
+ "method_framework": "无监督图域自适应：先用互信息瓶颈学得稀疏因果结构，分离出跨域稳定的因果特征与域特异伪特征；再用生成模型做跨域特征重组(相当于对伪特征做干预式重采样)，迫使分类器只依赖因果特征，从而稳定迁移到无标签目标域。",
+ "experiment_framework": "在无监督图域自适应(UGDA)标准图分类基准上，对比主流域适应/GNN方法，指标为目标域分类精度；针对OOD分布迁移设定。",
+ "takeaways": [
+  "把因果特征解耦+生成式干预结合，比单纯全局分布对齐更能抑制伪相关带来的域漂移",
+  "稀疏因果图结构作为归纳偏置，可提升跨域图表示迁移的稳定性"
+ ],
+ "weaknesses": [
+  "稀疏因果图结构的可辨识性依赖互信息瓶颈等启发式约束，缺乏对所发现因果方向正确性的验证",
+  "生成式干预(跨域重组)可能引入分布失真，其与真实干预的等价性前9页未严格论证",
+  "在图领域OOD为主，未延伸到多模态/医学等主线落地域，与可信AI主线的直接关联有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

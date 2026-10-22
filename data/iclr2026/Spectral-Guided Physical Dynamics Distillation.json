@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Spectral-Guided Physical Dynamics Distillation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Spectral-Guided Physical Dynamics Distillation.pdf",
+ "title": "Spectral-Guided Physical Dynamics Distillation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "谱引导蒸馏未来轨迹特权信息，提升长程轨迹预测",
+ "innovations": [
+  "用谱引导增强在统一时空表示中自适应优先关键频率分量，处理纠缠的多尺度(低频/高频)动力学",
+  "把未来轨迹作为特权信息在训练时蒸馏，学生仅靠初始状态逼近教师表示",
+  "学生在推理时无特权信息仍能产出有效动力学表示，支撑长程轨迹预测"
+ ],
+ "method_framework": "训练时教师编码器可访问未来轨迹作为特权信息，生成综合动力学表示；学生编码器仅用初始状态去逼近该表示；在统一时空表示中加入谱引导模块，自适应加权低频/高频关键分量以建模多尺度动力学；推理时仅用学生。",
+ "experiment_framework": "在分子、蛋白质、人体运动数据集上评测长程轨迹预测精度与稳定性，对比既有物理动力学模型；报告更准确稳定的长期预测，能捕捉真实系统的复杂时空结构。",
+ "takeaways": [
+  "未来轨迹作为特权信息蒸馏可弥补学生仅见初始状态的信息缺口",
+  "谱域自适应加权能更好建模纠缠的多尺度动力学",
+  "该蒸馏使学生长程轨迹预测比既往物理动力学模型更稳更准"
+ ],
+ "weaknesses": [
+  "训练依赖未来轨迹特权信息，获取成本随系统规模上升",
+  "长程预测的误差累积在极长时程下是否发散未充分压力测试",
+  "谱引导模块的频率权重自适应规则与超参敏感性分析较浅"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "物理动力学建模与轨迹预测属于可靠性主线，但未明确触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

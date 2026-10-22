@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/SlideChat_A Large Vision-Language Assistant for Whole-Slide Pathology Understanding.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/SlideChat_A Large Vision-Language Assistant for Whole-Slide Pathology Understanding.pdf",
+ "title": "SlideChat A Large Vision-Language Assistant for Whole-Slide Pathology Understanding",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "SlideChat：病理图像理解助手，构建数据集与基准，但架构复杂且数据偏差",
+ "innovations": [
+  "首个能理解千兆像素全幻灯片图像的视觉语言助手",
+  "构建了SlideInstruction最大病理图像指令数据集",
+  "提出SlideBench多模态基准评估系统",
+  "使用稀疏注意力机制捕获全局和局部病理特征"
+ ],
+ "method_framework": "将WSI分割为224×224补丁，通过补丁级编码器提取局部特征，使用LongNet作为幻灯片级编码器捕获全局模式，通过多模态投影器与LLM对齐。",
+ "experiment_framework": "SlideBench-Caption(734对)、SlideBench-VQA(TCGA,7827对)、SlideBench-VQA(BCNB,7274对)，对比GPT-4o、LLaVA-Med等模型。",
+ "takeaways": [
+  "稀疏注意力机制有效处理千兆像素图像",
+  "两阶段训练策略有效对齐视觉和语言特征",
+  "大规模高质量数据集对医学多模态模型至关重要"
+ ],
+ "weaknesses": [
+  "模型架构复杂，计算资源需求高",
+  "仅基于TCGA数据构建，可能存在数据偏差",
+  "未充分讨论模型在临床实际部署中的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "医学影像落地域扎实，但可靠性主线未触及",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

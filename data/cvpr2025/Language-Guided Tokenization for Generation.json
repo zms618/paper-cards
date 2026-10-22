@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Language-Guided Tokenization for Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Language-Guided Tokenization for Generation.pdf",
+ "title": "Language-Guided Tokenization for Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "Text-conditioned tokenization for faster image generation with quality trade-offs",
+ "innovations": [
+  "First to condition tokenization on detailed text captions",
+  "Text tokens provide high-level semantic guidance, freeing token space for fine-grained details",
+  "Achieves 93.5× speedup with 32 tokens while outperforming original DiT"
+ ],
+ "method_framework": "TexTok uses frozen T5 text encoder to extract embeddings, injected into ViT tokenizer/detokenizer alongside image patches and learnable tokens, enabling semantic-guided compression.",
+ "experiment_framework": "ImageNet 256/512 benchmarks, rFID/gFID/CLIP metrics, comparison with Baseline (w/o text) and SOTA methods like DiT, MAGVIT, MaskGIT.",
+ "takeaways": [
+  "Text conditioning significantly improves reconstruction quality especially at low token counts",
+  "Method is orthogonal to existing techniques, can be combined with advanced generators"
+ ],
+ "weaknesses": [
+  "Relies on external text captions, may not generalize to caption-free scenarios",
+  "Computational overhead of text encoding not fully quantified"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "图像生成加速与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

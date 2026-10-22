@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Online Decision Making with Generative Action Sets.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Online Decision Making with Generative Action Sets.pdf",
+ "title": "Online Decision Making with Generative Action Sets",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.6
+ },
+ "one_line": "双乐观算法平衡在线学习中的利用-探索-创造，但实证局限医疗QA。",
+ "innovations": [
+  "提出生成式动作集在线学习问题：agent可随时付费生成新动作，动作永久可用",
+  "提出双乐观算法：LCB用于动作选择（利用），UCB用于动作生成（创造）",
+  "首个扩展动作空间在线学习的次线性遗憾界证明"
+ ],
+ "method_framework": "agent每步面临双重决策：选哪个动作执行（利用/探索）vs 是否付费生成新动作（创造）。双乐观算法对动作选择用LCB（悲观估计，鼓励利用已知好动作），对动作生成用UCB（乐观估计，鼓励探索新动作生成）。平衡exploitation-exploration-creation三角trade-off。",
+ "experiment_framework": "在医疗问答数据集上实证评估，对比基线策略。理论证明最优遗憾界O(T^{d/(d+2)} + d√(T log T))。",
+ "takeaways": [
+  "生成式动作集在线学习可达到次线性遗憾",
+  "双乐观策略（LCB选+UCB生成）有效平衡利用-探索-创造三角",
+  "医疗QA数据集上展现良好的生成质量trade-off"
+ ],
+ "weaknesses": [
+  "实证仅在医疗QA上验证，其他领域的适用性未展示",
+  "动作生成的一次性成本假设过于简化",
+  "遗憾界中的维度d依赖性可能在高维动作空间下表现不佳"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "医疗QA在线决策与可靠性主线交织，但实证局限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

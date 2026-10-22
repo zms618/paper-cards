@@ -1,0 +1,41 @@
+{
+ "title": "Peak-Return Greedy Slicing: Subtrajectory Selection for Transformer-Based Offline RL",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "基于MMD的贪心轨迹切分提升Transformer离线RL，但与可靠性主线关联弱。",
+ "innovations": [
+  "用基于MMD的回报估计器刻画状态动作对的未来回报分布，得到乐观回报估计。",
+  "峰值回报贪心切分：显式在时间步切分轨迹并强调高质量子轨迹，而非仅按最终回报学完整轨迹。",
+  "推理时引入自适应历史截断机制，使推理过程与子轨迹训练分布对齐。"
+ ],
+ "method_framework": "先离线估计每个状态动作的未来回报分布(MMD)，得到乐观回报；再据此贪心切分原轨迹为若干高回报子轨迹作为训练样本；Transformer在子轨迹上做序列建模；推理时自适应截断历史以匹配子轨迹训练设定。",
+ "experiment_framework": "在多个离线RL benchmark(D4RL类)上评测；在现有Transformer离线RL算法基础上叠加PRGS；对比完整轨迹训练基线；指标为归一化回报；报告显著提升对子轨迹的利用与重组能力。",
+ "takeaways": [
+  "按时间步切分并强调高回报子轨迹，比仅用完整轨迹更能挖掘优质经验。",
+  "乐观回报估计引导贪心切分，帮助Transformer重组有价值子轨迹。",
+  "自适应历史截断消除训练(子轨迹)-推理(完整轨迹)的分布错配。"
+ ],
+ "weaknesses": [
+  "离线RL主题，与可靠性/可信AI主线关联弱。",
+  "MMD回报估计器本身的误差会传导到切分决策，误差传播未充分分析。",
+  "切分阈值/贪心规则的超参敏感性与最优切分长度的消融在正文前9页不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PEAK-RETURN Greedy Slicing Subtrajectory Selection for Transformer-Based Offline RL.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PEAK-RETURN Greedy Slicing Subtrajectory Selection for Transformer-Based Offline RL.pdf",
+ "raw_overall": 5.85,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "离线RL方法有可迁移机制，但与可靠性主线关联弱。",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

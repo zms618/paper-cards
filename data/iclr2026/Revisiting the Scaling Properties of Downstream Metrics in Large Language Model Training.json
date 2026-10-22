@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Revisiting the Scaling Properties of Downstream Metrics in Large Language Model Training.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Revisiting the Scaling Properties of Downstream Metrics in Large Language Model Training.pdf",
+ "title": "Revisiting the Scaling Properties of Downstream Metrics in Large Language Model Training",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "提出直接幂律预测下游性能，但与可靠性主线关联弱且外推验证有限。",
+ "innovations": [
+  "挑战下游性能不可靠预测的观点：在固定token/参数比下，log准确率对训练预算呈可准确拟合的简单幂律。",
+  "提出跨token/参数比预测准确率的函数形式，并计入重复采样下的推理算力。",
+  "证明直接法比先前两阶段流程（loss→下游）外推更好，后者易误差复合；公开全部预训练loss与下游结果以助复现。"
+ ],
+ "method_framework": "直接对log准确率关于训练预算（参数量/token）拟合幂律，而非先拟合预训练loss再经经验映射推下游；扩展函数以覆盖不同token/参数比，并把重复采样带来的推理算力计入准确率预测。",
+ "experiment_framework": "训练至多17B参数、至多350B token，两种数据混合（C4与现代混合）；在12个流行LLM基准上评估，验证直接幂律的外推能力并对比两阶段法。",
+ "takeaways": [
+  "下游benchmark性能可直接随预训练预算按幂律可预测地缩放，不必依赖proxy loss的两阶段映射。",
+  "直接拟合下游指标外推更稳，避免两阶段的误差累积。"
+ ],
+ "weaknesses": [
+  "与可靠性/鲁棒/幻觉抑制主线关联弱，主要是缩放测量学。",
+  "结论限于固定token/参数比与所测12个benchmark，分布外任务外推未充分检验。",
+  "前9页为框架与设定，具体拟合优度与外推曲线在后续页，正文定量证据密度有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "缩放测量学，与可靠性主线关联弱且外推验证有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

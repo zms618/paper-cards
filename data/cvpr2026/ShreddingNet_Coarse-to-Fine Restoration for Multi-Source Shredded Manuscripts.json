@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/ShreddingNet_Coarse-to-Fine Restoration for Multi-Source Shredded Manuscripts.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ShreddingNet_Coarse-to-Fine Restoration for Multi-Source Shredded Manuscripts.pdf",
+ "title": "ShreddingNet Coarse-to-Fine Restoration for Multi-Source Shredded Manuscripts",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "双阶段碎纸修复框架，线性复杂度但依赖合成数据",
+ "innovations": [
+  "多源碎纸片修复的双阶段粗到细框架",
+  "轮廓-纹理双模态特征提取与融合",
+  "基于候选对的线性复杂度碎片聚类",
+  "跨片段特征交互的细粒度匹配"
+ ],
+ "method_framework": "粗匹配阶段提取轮廓-纹理双模态特征并融合，选择Top-K候选对进行碎片聚类；细粒度阶段通过跨片段特征交互评估候选对，过滤错误匹配并估计变换矩阵；最后通过最佳优先算法进行全局组装。",
+ "experiment_framework": "在art 2192和pex 2000数据集上评估，包含正常和退化场景，与JigsawNet、PairingNet等方法对比，使用精确度、召回率和F1分数作为指标。",
+ "takeaways": [
+  "粗匹配阶段利用错误匹配很少跨源边界的洞见实现高精度聚类",
+  "通过限制Top-K候选将模型调用复杂度降至线性",
+  "跨片段特征交互有效提升匹配精度"
+ ],
+ "weaknesses": [
+  "依赖合成数据集，真实世界大规模验证有限",
+  "对严重退化的边缘碎片召回率下降明显",
+  "方法在处理高分辨率图像时计算开销较大"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "碎纸修复属于常规图像处理，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

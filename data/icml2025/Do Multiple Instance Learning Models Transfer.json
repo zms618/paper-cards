@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Do Multiple Instance Learning Models Transfer.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Do Multiple Instance Learning Models Transfer.pdf",
+ "title": "Do Multiple Instance Learning Models Transfer?",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "系统评测MIL架构迁移性，发现病理模型跨器官预训练仍优于从零训练",
+ "innovations": [
+  "首次系统刻画计算病理中MIL聚合器的可迁移性，覆盖11种MIL架构与21个预训练任务",
+  "发现预训练MIL即便在与目标任务不同器官上训练，也一致优于从零训练",
+  "证明泛癌(pancancer)预训练可实现跨器官跨任务强泛化，且以远少于slide基础模型的预训练数据超过后者；并开源FEATHER(PC-108预训练ABMIL)与MIL-Lab资源"
+ ],
+ "method_framework": "固定病理patch编码器，系统变化MIL聚合器架构与预训练任务/器官，在形态学与分子亚型预测下游任务上评测迁移效果：对比随机初始化与预训练初始化、单器官与泛癌预训练、不同预训练数据规模，量化AUROC/加权kappa/平衡准确率，得出MIL聚合器可迁移性的规律。",
+ "experiment_framework": "11种MIL架构(ABMIL/DFTD/DSMIL/TransMIL/CLAM/ILRA/RRTD等)×21个预训练任务，下游含形态学与分子亚型预测、跨器官迁移；指标为AUROC(二分类)、加权kappa(分级)、平衡准确率(多分类)，并与slide基础模型及随机初始化对比。",
+ "takeaways": [
+  "MIL聚合器是可迁移的，预训练初始化即使跨器官也稳定优于从零训练",
+  "泛癌大规模预训练带来最佳跨器官跨任务泛化，且数据效率高于slide基础模型",
+  "迁移学习可显著缓解计算病理中小样本弱监督数据集的训练困难"
+ ],
+ "weaknesses": [
+  "结论集中在病理WSI-MIL范式，对其他弱监督多实例场景的外推有限",
+  "patch编码器被固定，编码器迁移与聚合器迁移的耦合贡献未完全解耦",
+  "跨器官泛化的失败模式(罕见癌种/染色分布漂移)刻画较粗"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.63,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

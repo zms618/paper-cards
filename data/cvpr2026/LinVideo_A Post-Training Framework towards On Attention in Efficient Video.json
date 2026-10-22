@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/LinVideo_A Post-Training Framework towards On Attention in Efficient Video.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/LinVideo_A Post-Training Framework towards On Attention in Efficient Video.pdf",
+ "title": "LinVideo A Post-Training Framework towards On Attention in Efficient Video",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "选择性替换注意力层实现视频生成加速，但未完全解决效率问题",
+ "innovations": [
+  "选择性转移方法自动选择可替换层",
+  "任意时间分布匹配(ADM)目标函数",
+  "数据免费后训练框架无需原始数据集"
+ ],
+ "method_framework": "通过混合注意力机制和可学习参数r，结合约束损失和正则化，渐进式替换二次注意力为线性注意力",
+ "experiment_framework": "Wan 1.3B/14B模型，VBench 8个维度评估，与FlashAttention2、SVG、XAttn等基线比较",
+ "takeaways": [
+  "层选择对性能影响显著，浅层替换更易恢复性能",
+  "ADM目标函数有效保持模型性能",
+  "4步蒸馏模型进一步加速15.9-20.9倍"
+ ],
+ "weaknesses": [
+  "仅替换部分层而非全部，仍有优化空间",
+  "蒸馏后质量略有下降",
+  "依赖特定模型架构(Wan)"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成加速与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

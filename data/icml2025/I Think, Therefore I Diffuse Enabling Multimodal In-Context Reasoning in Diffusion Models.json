@@ -1,0 +1,37 @@
+{
+ "title": "I Think, Therefore I Diffuse: Enabling Multimodal In-Context Reasoning in Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "代理对齐VLM到LLM解码器，迁移推理能力到扩散模型",
+ "innovations": [
+  "提出以VLM训练为代理任务的对齐范式：将VLM与encoder-decoder LLM的解码器对齐，从而把推理能力迁移进扩散模型，绕开推理数据集稀缺的瓶颈",
+  "观察到LLM解码器与扩散解码器共享输入特征空间，据此重新设计对齐目标而非传统像素级重建微调",
+  "在CoBSAT基准上将多模态上下文推理生成准确率从19.2%提升到46.3%，仅需4×A100训练5小时"
+ ],
+ "method_framework": "ThinkDiff是一种对齐范式：不直接微调扩散解码器，而是把VLM与一个encoder-decoder LLM的解码器对齐，借助视觉-语言训练作为代理任务建立理解/推理/组合能力；利用LLM解码器与扩散解码器共享特征空间的观察，使获得的推理能力可迁移到文生图生成，实现交错图文的逻辑推理生成与多图多文本组合。",
+ "experiment_framework": "在自建CoBSAT多模态上下文推理生成基准上评测准确率，并测试多图多文本组合生成的逻辑一致性；对比已有多模态扩散微调方法，报告训练效率（4×A100仅5小时）。",
+ "takeaways": [
+  "扩散模型可通过代理对齐任务获得类似IQ测试的视觉类比推理能力（flying monkey+cat→flying zebra）",
+  "以VLM训练为代理可避开稀缺的推理数据集，低成本赋予扩散模型上下文推理能力",
+  "方法同时支持多图多文本的逻辑组合生成"
+ ],
+ "weaknesses": [
+  "CoBSAT为自建基准，外部验证与人工评估规模、以及与更强推理模型的对比仍有限",
+  "推理能力来自VLM代理任务的迁移，其推理深度与正确性边界（尤其复杂多步）未充分刻画",
+  "前9页未见对生成图像事实一致性/幻觉的系统量化，逻辑正确但细节可能失真"
+ ],
+ "confidence": "high",
+ "key": "icml2025/I Think, Therefore I Diffuse Enabling Multimodal In-Context Reasoning in Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/I Think, Therefore I Diffuse Enabling Multimodal In-Context Reasoning in Diffusion Models.pdf",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

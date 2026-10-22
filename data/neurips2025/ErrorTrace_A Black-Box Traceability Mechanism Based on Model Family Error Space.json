@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/ErrorTrace_A Black-Box Traceability Mechanism Based on Model Family Error Space.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/ErrorTrace_A Black-Box Traceability Mechanism Based on Model Family Error Space.pdf",
+ "title": "ErrorTrace: A Black-Box Traceability Mechanism Based on Model Family Error Space",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "ErrorTrace：基于错误空间的黑盒模型追溯，小规模家族识别弱",
+ "innovations": [
+  "基于错误模式而非参数或查询的模型家族可追溯方法",
+  "模型家族错误空间的构建与图分析",
+  "错误唯一性与跨家族差异性的双重计算机制"
+ ],
+ "method_framework": "ErrorTrace通过三步实现模型可追溯：1)计算数据点的错误唯一性，结合家族内权重和跨家族差异；2)基于图论构建错误空间，使用BFS连接高唯一性点；3)通过收缩过程中的平均误差变化率推断嫌疑模型家族。",
+ "experiment_framework": "在5个基准数据集上测试27个模型(3B-141B)，对比LLMmap、TRAP和ProFLingo，使用准确率、余弦距离和模型家族差异(MFD)作为指标，评估已知/未知模型集和真实场景(微调/剪枝/合并)下的性能。",
+ "takeaways": [
+  "错误模式比正确输出更能揭示模型家族特性",
+  "基于图论的错误空间构建优于传统聚类方法",
+  "错误唯一性计算需考虑模型性能权重"
+ ],
+ "weaknesses": [
+  "小规模家族(如Gemma)的识别准确率较低",
+  "对极端规模分布不均匀的模型(如Mixtral)识别困难",
+  "依赖大量查询数据构建错误空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MindCustomer_Multi-Context Generation Blended with Brain Signal.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MindCustomer_Multi-Context Generation Blended with Brain Signal.pdf",
+ "title": "MindCustomer: Multi-Context Image Generation Blended with Brain Signal",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "脑信号融入图像生成，但成本高且可控性有限。",
+ "innovations": [
+  "首次探索脑信号与多上下文图像生成的融合，实现脑控图像生成的基础框架",
+  "设计Image-Brain Translator（IBT）进行神经数据增广，实现稳定的跨被试脑嵌入",
+  "提出无掩码的跨模态信息融合管线，在扩散模型中解决多上下文语义冲突问题"
+ ],
+ "method_framework": "以扩散模型为基础生成框架。首先通过Image-Brain Translator将图像翻译为脑信号表示，实现神经数据增广和跨被试对齐。然后通过无掩码跨模态融合管线，将图像上下文和脑信号上下文的语义无缝融合到扩散模型中，解决多上下文间的语义冲突。IBT还用于弥合跨模态差异。",
+ "experiment_framework": "在fMRI数据集上评测，支持双上下文和三上下文生成（图像+脑信号+可选文本）。验证跨被试生成能力和新被试少样本泛化。指标包括生成图像质量（FID等）、上下文保持度。",
+ "takeaways": [
+  "脑信号可作为图像生成的有效上下文，直接反映用户视觉意图",
+  "Image-Brain Translator是解决跨被试脑信号差异的关键组件",
+  "无掩码融合管线可有效保留多上下文的各自语义而不相互干扰"
+ ],
+ "weaknesses": [
+  "脑信号采集成本高，实际应用场景受限",
+  "生成图像的语义可控性仍有限，复杂指令遵循能力不足",
+  "仅在fMRI数据上验证，其他脑信号模态（如EEG）未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

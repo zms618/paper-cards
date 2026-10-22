@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Zero-Sacrifice Persistent-Robustness Adversarial Defense for Pre-Trained Encoders.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Zero-Sacrifice Persistent-Robustness Adversarial Defense for Pre-Trained Encoders.pdf",
+ "title": "Zero-Sacrifice Persistent-Robustness Adversarial Defense for Pre-Trained Encoders",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.5
+ },
+ "one_line": "双分支ZePAD实现单次微调跨任务鲁棒，但参数开销大且精度提升存疑",
+ "innovations": [
+  "提出更严格防御目标：仅单次调优即可防御多种下游任务的DAEs并保持干净性能，摆脱任务特定对抗微调",
+  "双分支结构：多模式对抗增强分支(MPAE)用两个对抗微调编码器强化抗对抗性，干净记忆保持分支(BMP)在本地数据上训练保住干净性能",
+  "发现通过评估分支置信度可直接检测DAEs，而训练中并未引入任何对抗样本识别任务；丰富特征多样性实现持久鲁棒性"
+ ],
+ "method_framework": "ZePAD由MPAE-Branch(两个对抗微调编码器增强抗对抗性)与BMP-Branch(本地数据训练保持干净记忆)双分支组成；推理时结合两分支，分支置信度差异还可隐式检出DAEs；目标是一次微调跨下游任务鲁棒且干净精度不降反升。",
+ "experiment_framework": "在11种SSL预训练方法、6个数据集上验证；威胁模型为下游无关对抗样本(DAEs)；基线为任务特定对抗微调等已有防御；指标为干净精度与对抗鲁棒精度，报告干净精度最高+29.20%、对抗鲁棒性+73.86%。",
+ "takeaways": [
+  "任务特定对抗微调会导致泛化差/灾难性遗忘/掉干净精度，双分支解耦可实现零牺牲",
+  "特征多样性(双对抗微调编码器)是单次微调即可跨任务持久鲁棒的关键",
+  "分支置信度差异可零成本附带DAE检测，无需专门检测监督"
+ ],
+ "weaknesses": [
+  "双分支+两个对抗微调编码器带来约2倍参数/推理开销，零牺牲仅指精度而非算力",
+  "干净精度+29.20%的大幅提升令人起疑，需确认是否基线设置偏弱或特定小样本场景",
+  "BMP分支依赖本地数据，其规模与分布对干净保持的影响在提取页未充分消融"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "双分支架构解决预训练编码器跨任务鲁棒性，直击可靠性主线痛点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Multi-View Graph Clustering via Node-Guided Contrastive Encoding.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Multi-View Graph Clustering via Node-Guided Contrastive Encoding.pdf",
+ "title": "Multi-View Graph Clustering via Node-Guided Contrastive Encoding",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.4
+ },
+ "one_line": "节点引导对比编码平衡图聚类信息，但创新有限且实验不完整。",
+ "innovations": [
+  "提出节点引导对比编码（NGCE）：用节点特征引导嵌入生成，平衡自节点与邻域信息的权重",
+  "增强与GNN滤波器的兼容性，有效整合同配（homophilic）与异配（heterophilic）信息",
+  "跨视图对比学习得到强化，在6个同配/异配多视图基准上取得鲁棒性能"
+ ],
+ "method_framework": "在多视图图聚类中，每个视图是一个图结构；NGCE使用节点特征作为引导信号，控制GNN层中自节点信息与邻域聚合信息的比例；对比学习损失在视图间对齐聚类友好的表示；同时适配同配（邻居相似）与异配（邻居不相似）图结构。",
+ "experiment_framework": "在6个同配与异配多视图图聚类基准数据集上验证；对比COMPLETER、MVGRL等方法；指标为聚类准确率（ACC）、归一化互信息（NMI）。",
+ "takeaways": [
+  "GNN对比学习中自节点信息与邻域信息的平衡是关键，过度强调任一方都会导致性能下降",
+  "节点引导机制可同时提升同配图与异配图上的聚类效果",
+  "多视图图聚类需要考虑不同视图的图结构差异（同配vs异配）"
+ ],
+ "weaknesses": [
+  "仅在小型图数据集上验证，大规模图（如社交网络）的可扩展性未讨论",
+  "节点引导的权重需要手动调节，缺乏自适应机制",
+  "前9页内实验细节展示不完整"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

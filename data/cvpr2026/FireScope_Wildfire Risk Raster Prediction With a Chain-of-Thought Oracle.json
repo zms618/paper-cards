@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/FireScope_Wildfire Risk Raster Prediction With a Chain-of-Thought Oracle.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/FireScope_Wildfire Risk Raster Prediction With a Chain-of-Thought Oracle.pdf",
+ "title": "FireScope Wildfire Risk Raster Prediction With a Chain-of-Thought Oracle",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "跨大陆野火预测框架，CoT推理提升泛化但计算成本高",
+ "innovations": [
+  "FireScope-Bench跨大陆野火风险预测基准数据集",
+  "CoT Oracle与视觉解码器的两阶段推理框架",
+  "GRPO强化学习训练语言模型进行风险推理"
+ ],
+ "method_framework": "两阶段推理框架：先用GRPO训练VLM作为Oracle进行CoT推理，生成标量风险估计；再用FiLM机制条件化轻量级视觉编码器-解码器生成细粒度风险栅格",
+ "experiment_framework": "美国训练/欧洲测试的跨大陆评估，使用Sentinel-2影像和气候数据，指标包括MSE/MAE/SSIM/Brier/ROC AUC/ECE/IoU",
+ "takeaways": [
+  "语言推理可提升视觉生成模型的泛化能力",
+  "两阶段框架平衡了推理能力与空间精度",
+  "CoT解释对专家决策有参考价值"
+ ],
+ "weaknesses": [
+  "仅使用单一标量条件限制了解码器的信息流",
+  "未详细分析不同气候区域的泛化差异",
+  "计算资源需求较高"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "跨大陆野火预测与可靠性主线交织，CoT推理提升泛化能力",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Scaling Inference-Time Search with Vision Value Model for Improved Visual.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Scaling Inference-Time Search with Vision Value Model for Improved Visual.pdf",
+ "title": "Scaling Inference-Time Search with Vision Value Model for Improved Visual",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "VisVM用价值模型引导VLM搜索，减少幻觉但计算成本高",
+ "innovations": [
+  "引入Vision Value Model(VisVM)提供长期视觉价值信号",
+  "使用时序差分(TD)学习训练模型评估长期效果",
+  "利用CLIP文本-图像相似度作为奖励信号实现全面视觉基础"
+ ],
+ "method_framework": "将VLM文本生成建模为马尔可夫决策过程，VisVM评估当前句子的长期价值，引导推理时搜索选择高质量响应",
+ "experiment_framework": "COCO数据集，对比Greedy、Best-of-N、CLIP-PRM和MCTS基线，使用GPT-4o评估和人类评估，CHAIRs/MMHal指标评估幻觉",
+ "takeaways": [
+  "推理时搜索可有效提升VLM响应质量",
+  "使用高质量SFT数据进行自训练可显著提升VLM性能"
+ ],
+ "weaknesses": [
+  "计算成本仍高于贪心解码",
+  "未探索不同规模模型的扩展性",
+  "对复杂视觉场景的泛化能力未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "VisVM通过价值模型减少VLM幻觉，属于可靠性主线方法",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

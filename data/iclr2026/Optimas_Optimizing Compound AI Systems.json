@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Optimas_Optimizing Compound AI Systems.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Optimas_Optimizing Compound AI Systems.pdf",
+ "title": "OPTIMAS: Optimizing Compound AI Systems with Globally Aligned Local Rewards",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "复合AI系统局部奖励全局对齐框架，提升11.92%但开销与鲁棒性存疑",
+ "innovations": [
+  "提出全局对齐局部奖励（LRF）框架：每个组件的局部奖励与全局系统性能对齐，解决复合系统不可微优化难题",
+  "迭代式自适应LRF更新：在优化各组件局部奖励的同时持续调整LRF以维持局部-全局对齐",
+  "统一框架支持多种配置类型（提示词、超参数、模型参数），可使用各组件指定的优化方法"
+ ],
+ "method_framework": "OPTIMAS为复合系统中每个组件维护一个局部奖励函数(LRF)，满足局部-全局对齐性质（局部奖励与全局系统性能正相关）。每轮迭代：(1)自适应调整各LRF以维持对齐性；(2)各组件独立优化自身配置以最大化局部奖励。由于LRF与全局性能对齐，局部优化自然带来全局提升。支持提示词优化、超参数调优、模型参数微调等多种配置类型。",
+ "experiment_framework": "在5个真实复合AI系统上评估，对比强基线方法。平均提升11.92%。系统涵盖LLM+工具调用、检索增强生成、路由系统等多种架构。",
+ "takeaways": [
+  "全局对齐的局部奖励可有效解耦复合AI系统的优化问题",
+  "OPTIMAS在5个真实系统上平均提升11.92%，优于强基线",
+  "框架通用性强，支持异构配置类型和任意优化器"
+ ],
+ "weaknesses": [
+  "LRF的维护需要额外的全局评估成本，实际部署开销未详细分析",
+  "局部-全局对齐性质在实践中可能被破坏，论文对对齐失效的鲁棒性讨论不足",
+  "实验系统数量有限（5个），对更复杂的大规模系统的可扩展性未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "复合系统优化方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

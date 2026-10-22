@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/AnyDressing_Customizable Multi-Garment Virtual Dressing via Latent Diffusion Models.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AnyDressing_Customizable Multi-Garment Virtual Dressing via Latent Diffusion Models.pdf",
+ "title": "AnyDressing: Customizable Multi-Garment Virtual Dressing via Latent Diffusion Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "共享U-Net+每衣LoRA自注意力并行，加注意力定位正则做多件服饰虚拟穿搭",
+ "innovations": [
+  "Garment-Specific Feature Extractor：共享U-Net骨架、每件衣服只在自己的self-attention上挂可训练LoRA矩阵(ΔWq,ΔWk,ΔWv)并行提取特征再concat，删掉cross-attention以减冗余，新增一件衣服只加一套LoRA、可扩到任意件数，避免复制整套ReferenceNet",
+  "Instance-Level Garment Localization：把Dressing-Attention各层cross-attention的softmax图P沿层求和得注意力图A，与参考衣服分割mask做L2正则L_loc=1/N Σ||A_k−M_k||，逼每件衣服的注意力只落自己区域（即抑制向背景的溢出），纯训练期、零推理开销",
+  "Garment-Enhanced Texture Learning：在t≤η的低噪声步用单步反解x̂0=(z_t−√(1−α_t)ε_θ)/√α_t，对衣服区域加DISTS感知损失+Canny边缘图加权的高频L2损失，弥补普通MSE对细纹/文字的平等对待"
+ ],
+ "method_framework": "GarmentsNet用共享U-Net+'每衣一LoRA自注意力'并行抽N件衣服特征→DressingNet用冻结自注意+可训cross-attention的DA注入特征，并用注意力图对分割mask的L2做定位正则→低噪声步加DISTS+Canny边缘纹理损失。",
+ "experiment_framework": "Dresscode(26,114)+私有集(37,065) triplet训练；单件300件与Dressing-Pair(25下×10上=250)评测CLIP-T/I/AS、DINO及OpenPose对齐的CLIP-I*/DINO*；正文在§5.3中途截断。",
+ "takeaways": [
+  "用注意力图对分割mask做正则来约束条件注入的作用范围（IGL），训练期有效、推理期免费，可以平移到任何'多参考条件注入生成'的任务",
+  "'共享骨架+每实例LoRA'替代复制编码器，是把参数随条件数增长压成线性、同时天然隔离多条件混淆的标准做法"
+ ],
+ "weaknesses": [
+  "训练triplet里37,065条来自未公开的私有采集集（公开仅26,114），所谓'同等基线同分辨率公平比较'事实上有一半数据不可复现，多件/单件SOTA的可比性存疑",
+  "多件评测时基线的唯一处理方式是'把多件衣服沿空间维拼接当单件输入'，等于给基线套了它不擅长的输入格式；而单件设置上CLIP-T与IP-Adapter持平（0.289 vs 0.288）、仅CLIP-I/DINO小幅上升，说明主要收益是纹理保持而非提示词一致性，claim 边界不清",
+  "GTL自己承认单步反解z0会带噪，只用t≤η截断点兜底，η与λ1/λ2没有任何消融；用户研究4项打分无置信区间、无参与人数；全程无多种子方差",
+  "正文在§5.3中途截断，缺完整定量表、缺LoRA rank/GFE并行度的消融与失败案例（复杂姿态+多件）的定性分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "虚拟穿搭与可靠性主线无关，仅工程实现价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

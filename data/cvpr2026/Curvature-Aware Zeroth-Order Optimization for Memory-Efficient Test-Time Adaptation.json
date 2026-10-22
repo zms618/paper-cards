@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Curvature-Aware Zeroth-Order Optimization for Memory-Efficient Test-Time Adaptation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Curvature-Aware Zeroth-Order Optimization for Memory-Efficient Test-Time Adaptation.pdf",
+ "title": "Curvature-Aware Zeroth-Order Optimization for Memory-Efficient Test-Time Adaptation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "曲率感知零阶优化提升TTA内存效率，但忽略非对角曲率信息",
+ "innovations": [
+  "揭示TTA过程中Hessian矩阵的低秩结构",
+  "提出曲率感知的零阶优化方法CAZO",
+  "设计滑动平均对角Hessian估计实现高效采样"
+ ],
+ "method_framework": "冻结预训练权重，通过前向传播估计梯度，利用滑动平均对角Hessian构造协方差矩阵进行各向异性扰动采样，优化轻量适配器参数",
+ "experiment_framework": "ImageNet-C/R/V2/Sketch数据集，对比BP和非BP方法，分类精度指标，内存效率评估",
+ "takeaways": [
+  "利用损失景观曲率信息可显著提升零阶优化效率",
+  "轻量适配器与曲率感知采样结合可实现高效测试时自适应"
+ ],
+ "weaknesses": [
+  "仅关注对角Hessian近似，可能忽略非对角曲率信息",
+  "收敛分析基于理想假设，实际应用中可能面临更多挑战"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "零阶优化方法提升TTA效率，但未直接解决可靠性主线问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

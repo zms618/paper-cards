@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Predicting mutational effects on protein binding from folding energy.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Predicting mutational effects on protein binding from folding energy.pdf",
+ "title": "Predicting mutational effects on protein binding from folding energy",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "基于热力学恒等式和ProteinMPNN的蛋白质结合突变预测方法",
+ "innovations": [
+  "将结合能量参数化为折叠能量差",
+  "利用预训练逆折叠模型作为零样本折叠能量预测器",
+  "结合折叠和结合能量数据的迁移学习策略"
+ ],
+ "method_framework": "STAB-DDG基于ProteinMPNN，通过热力学恒等式将结合能量表示为折叠能量差，先在折叠能量数据上微调，再在有限的结合能量数据上进一步优化",
+ "experiment_framework": "SKEMPIv2.0数据集(345个复合物)，与FoldX、Flex ddG等10种基线方法比较，使用per interface Spearman指标",
+ "takeaways": [
+  "热力学恒等式可减少数据需求",
+  "方差减少技术显著提升零样本性能",
+  "迁移学习策略有效利用折叠数据提升结合预测"
+ ],
+ "weaknesses": [
+  "依赖ProteinMPNN的预训练质量",
+  "未测试在全新蛋白质结构上的泛化能力",
+  "计算效率虽高但仍需集成预测"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

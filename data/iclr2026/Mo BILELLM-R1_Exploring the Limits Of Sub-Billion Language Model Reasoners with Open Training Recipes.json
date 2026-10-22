@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mo BILELLM-R1_Exploring the Limits Of Sub-Billion Language Model Reasoners with Open Training Recipes.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mo BILELLM-R1_Exploring the Limits Of Sub-Billion Language Model Reasoners with Open Training Recipes.pdf",
+ "title": "MobileLLM-R1: Exploring the Limits of Sub-Billion Language Model Reasoners with Open Training Recipes",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "开源配方训练小模型达推理上限，但方法创新有限且偏离可靠性主线。",
+ "innovations": [
+  "挑战推理需超大规模语料(>10T token)的假设，证明约2T高质量数据足以涌现推理",
+  "设计指标筛选并重采样开源数据，用4.2T token预训练后接成熟后训练流程",
+  "完整开源模型、代码、数据源与混合比例的MobileLLM-R1系列"
+ ],
+ "method_framework": "按自研有益性指标筛选并开放重采样开源数据，用约2T核心语料重采样至4.2T token做预训练，再接标准SFT+RL后训练，得到140M/360M/950M亚十亿推理模型系列。",
+ "experiment_framework": "在AIME、HumanEval等推理基准评测，对比OLMo-2、SmolLM-2、Qwen3-0.6B、Gemma-3等；MobileLLM-R1-950M AIME达15.5(OLMo-2-1.48B仅0.6)，以Qwen3 11.7%的token量追平或超过Qwen3-0.6B。",
+ "takeaways": [
+  "推理涌现并非必须超万亿token，高质量数据筛选与重采样更关键",
+  "亚十亿参数经配方化训练即可达到与更大专有模型相当的推理",
+  "开源完整配方复现了小模型推理能力上限"
+ ],
+ "weaknesses": [
+  "relevance偏离主线(小模型数据缩放，非可靠性/医疗影像)",
+  "贡献偏工程配方，方法创新主要在数据筛选指标而非新算法",
+  "仅在数学/代码推理验证，对开放域推理与可靠性未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "数据缩放配方工程，偏离可靠性主线且无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

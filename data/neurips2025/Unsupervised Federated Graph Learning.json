@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Unsupervised Federated Graph Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Unsupervised Federated Graph Learning.pdf",
+ "title": "Unsupervised Federated Graph Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "FedPAM通过锚点对齐和张量分解解决联邦图学习异质性",
+ "innovations": [
+  "可学习的锚点定义全局表示空间，通过融合Gromov-Wasserstein最优传输实现跨客户端表示空间对齐",
+  "将本地模型参数堆叠为三阶张量，在低秩张量空间中自适应学习全局模型参数",
+  "结合对比学习和锚点投影，缓解数据异质性导致的偏差训练"
+ ],
+ "method_framework": "FedPAM包含两个模块：RSA模块通过可学习锚点和FGW-OT对齐不同客户端的表示空间；AGPL模块将本地模型参数堆叠为三阶张量，通过低秩张量分解捕获客户端间的高阶相关性，自适应融合全局模型参数。",
+ "experiment_framework": "在8个图数据集上评估，包括Cora、CiteSeer等，采用线性 probing评估，使用ACC和Fscore作为指标，与多种联邦学习基线方法比较。",
+ "takeaways": [
+  "无监督联邦图学习中表示空间对齐的重要性",
+  "低秩张量优化在自适应融合全局模型参数中的有效性",
+  "锚点作为全局空间投影器的作用"
+ ],
+ "weaknesses": [
+  "方法复杂度较高，引入了额外的锚点和张量优化计算",
+  "在异构图上的性能提升不如同构图明显",
+  "未充分探讨不同通信频率对方法性能的影响"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

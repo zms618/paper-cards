@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/NoRD A Data-Efficient Vision-Language-Action Model that Drives without Reasoning.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/NoRD A Data-Efficient Vision-Language-Action Model that Drives without Reasoning.pdf",
+ "title": "NoRD A Data-Efficient Vision-Language-Action Model that Drives without Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "NORD移除推理标注，用Dr. GRPO解决难度偏差，但数据规模和鲁棒性验证不足",
+ "innovations": [
+  "识别并解决VLA训练中的难度偏差问题",
+  "提出NORD架构，完全移除推理标注需求",
+  "将Dr. GRPO算法首次应用于自动驾驶领域"
+ ],
+ "method_framework": "基于Qwen-2.5VL-3B-Instruct构建，采用两阶段训练：有限数据监督微调后接Dr. GRPO强化学习微调，直接预测轨迹token而非推理token",
+ "experiment_framework": "在NAVSIM和WaymoE2E基准测试上评估，使用PDM和RFS指标，与AutoVLA等基线比较，展示数据效率与性能权衡",
+ "takeaways": [
+  "难度偏差是弱SFT策略优化的关键障碍",
+  "Dr. GRPO能有效解决高方差样本的学习问题",
+  "推理标注对高性能并非必需"
+ ],
+ "weaknesses": [
+  "仅在小规模数据集上验证，大规模部署效果未知",
+  "未分析模型在不同天气/光照条件下的鲁棒性",
+  "推理过程不可解释"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "VLA模型但未触及可靠性主线，仅数据效率有落地价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

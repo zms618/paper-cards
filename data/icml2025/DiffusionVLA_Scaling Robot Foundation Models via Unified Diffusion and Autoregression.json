@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/DiffusionVLA_Scaling Robot Foundation Models via Unified Diffusion and Autoregression.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DiffusionVLA_Scaling Robot Foundation Models via Unified Diffusion and Autoregression.pdf",
+ "title": "DiffusionVLA: Scaling Robot Foundation Models via Unified Diffusion and Autoregression",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "拼接自回归与扩散模型，提升VLA推理速度与泛化性",
+ "innovations": [
+  "统一自回归与扩散：用LLM自回归生成推理token、用扩散模型生成动作token，兼顾语言推理与连续动作建模",
+  "设计推理注入模块，使动作生成条件于显式reasoning token，提升可解释性与上下文推理能力",
+  "2B模型可达82Hz推理(远快于OpenVLA-7B的5Hz)，并在视觉变化/新背景/视角迁移/零样本抓取等泛化场景验证"
+ ],
+ "method_framework": "以互联网规模视觉-语言数据后训练一个VLA：视觉编码后由LLM自回归产出reasoning tokens，再由条件于推理token的扩散模型生成连续动作tokens；自回归负责符号化推理与语言交互，扩散负责高频、多模态连续动作分布建模，二者在统一架构内拼接。",
+ "experiment_framework": "在机器人操作任务上，与OpenVLA等VLA基线比较成功率与推理频率；评估对视觉变化、干扰物、新背景、视角迁移、零样本bin picking与新本体的泛化。",
+ "takeaways": [
+  "自回归推理+扩散动作的统一可兼得VLA的推理可解释性与高频连续动作生成(82Hz)",
+  "显式reasoning token注入改善了上下文推理与多种视觉分布下的泛化"
+ ],
+ "weaknesses": [
+  "面向机器人操作，与可靠性/验证器/医学影像等主线落地域不直接重叠",
+  "扩散动作头+自回归推理的训练/推理协同成本与误差传播未充分分析",
+  "仅依据前9页阅读，完整机器人成功率表与消融未完全覆盖"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.43,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

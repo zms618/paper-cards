@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/When Language Models Lose their Mind the Consequences Of Brain Misalignment.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/When Language Models Lose their Mind the Consequences Of Brain Misalignment.pdf",
+ "title": "When Language Models Lose their Mind: The Consequences of Brain Misalignment",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "对抗微调移除脑对齐，损害LLM语言能力，因果性证据有限",
+ "innovations": [
+  "提出脑失配模型（Brain Misaligned Model），使用梯度反转层对抗性移除模型表征中的脑预测能力，同时维持语言建模性能",
+  "设计三条件对照框架（失配/保持/增强），分离脑对齐本身的因果效应与微调、对抗训练等混淆因素",
+  "在200+下游语言任务上系统评估，涵盖句法、语义、语篇、推理、形态学等多个子领域"
+ ],
+ "method_framework": "基于预训练语言模型（BERT/GPT2/Llama），通过双目标微调同时优化语言建模损失和脑对齐损失。脑失配模型引入梯度反转层，使模型表征对fMRI脑活动预测能力最差；脑保持模型使用置换后的fMRI图像作为对照；脑增强模型移除梯度反转层以提升脑对齐。使用LoRA进行参数高效微调。",
+ "experiment_framework": "在两个公开fMRI数据集（Wehbe等Harry Potter数据集、Deniz等Moth Radio Hour数据集）上训练模型，随后在200+下游语言任务（BLiMP、GLUE、SuperGLUE、Holmes等基准）上评估。涵盖句法、语义、语篇、推理、形态学等子领域。使用Wilcoxon符号秩检验统计显著性。",
+ "takeaways": [
+  "脑失配显著损害LLM的下游语言表现，证明脑对齐对维持语言能力具有因果必要性，而非仅仅是副现象",
+  "语义和句法任务受脑失配影响最大，说明脑对齐与核心语言处理机制密切相关",
+  "反向验证：用脑记录数据微调（脑增强模型）可在各语言子领域均带来提升，尤其在语义和句法上"
+ ],
+ "weaknesses": [
+  "仅在BERT-base、GPT2-small和Llama-1B三个较小模型上验证，大模型（7B+）中脑对齐的因果效应是否一致尚不明确",
+  "fMRI数据集规模有限（8+6名被试），且仅覆盖英语文本理解场景，跨模态、跨语言的泛化性未知",
+  "脑失配训练使用的fMRI数据与评估任务分布不完全匹配，可能引入分布偏移混淆"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "脑对齐因果性研究，触及可靠性主线但未深入落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

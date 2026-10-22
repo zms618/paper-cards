@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/When Will It Fail Anomaly to Prompt for Forecasting Future Anomalies in Time Series.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/When Will It Fail Anomaly to Prompt for Forecasting Future Anomalies in Time Series.pdf",
+ "title": "When Will It Fail Anomaly to Prompt for Forecasting Future Anomalies in Time Series",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "提出时序异常预测任务，但方法创新有限且实验证据不足。",
+ "innovations": [
+  "明确界定'异常预测'(AP)这一被忽视任务：预测未来异常发生的具体时点，区别于即时异常检测与常规预测",
+  "提出A2P框架，由异常感知预测(AAF)与合成异常提示(SAP)两部分组成，学习异常间关系以预测未来异常时点",
+  "设计可学习的异常提示池(APP)，用信号自适应提示模拟多样异常模式，提升未来异常检测鲁棒性"
+ ],
+ "method_framework": "AAF让预测模型学会异常之间的时序关系从而能外推未来异常时点；SAP引入可学习的异常提示池，用信号自适应方式合成多样异常模式作为提示，增强模型对未来异常的鲁棒感知；二者配合完成'何时会失败'的预测。",
+ "experiment_framework": "在多个真实世界时序数据集上评测AP任务；对比仅做即时异常检测/常规预测的既有方法；指标为对未来异常时点的预测精度；强调在工业系统/生物医学等预警场景的实用价值。",
+ "takeaways": [
+  "现有时序方法多只做即时异常检测，难以精确预测未来异常时点，A2P填补了这一空白",
+  "可学习异常提示池通过模拟多样异常模式，显著提升了未来异常预测的鲁棒性",
+  "在多个真实数据集上A2P优于SOTA，能提前预警异常，利于医疗与工业维护决策"
+ ],
+ "weaknesses": [
+  "AP任务的标签(未来异常时点)在真实数据中稀缺，合成异常提示可能与真实异常分布有偏差",
+  "异常预测误差的累积效应(预测窗越长越难)未充分讨论，长程预警能力存疑",
+  "虽提及生物医学应用，但实验多为通用/工业时序，医学数据验证不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

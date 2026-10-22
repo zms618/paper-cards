@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Blood Flow Speed Estimation with Optical Coherence Tomography Angiography.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Blood Flow Speed Estimation with Optical Coherence Tomography Angiography.pdf",
+ "title": "Blood Flow Speed Estimation with Optical Coherence Tomography Angiography",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "OCTA-Flow用伪标签和CRF估计血流，但泛化性和误差传递存疑",
+ "innovations": [
+  "使用ODT数据作为伪标签解决血流速度估计的地面真值缺失问题",
+  "自适应窗口融合模块捕获不同尺度血管与血流速度的关系",
+  "条件随机场解码器促进血流估计的平滑性并减轻ODT伪影"
+ ],
+ "method_framework": "基于编码器-解码器架构，使用Swin Transformer作为主干网络，结合自适应窗口融合模块和条件随机场解码器，从OCTA图像直接估计血流速度",
+ "experiment_framework": "使用小鼠大脑皮层的OCTA-ODT配对数据集，包含麻醉和清醒状态两种数据，采用五折交叉验证，使用相对绝对误差和均方根误差作为评估指标",
+ "takeaways": [
+  "伪标签策略可用于解决医学图像中地面真值缺失的问题",
+  "多尺度特征融合和条件随机场可有效提高医学图像估计任务的准确性和一致性"
+ ],
+ "weaknesses": [
+  "依赖ODT数据作为伪标签，可能存在误差传递",
+  "实验仅在小鼠大脑皮层数据上进行，泛化能力有待验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像可靠性主线，伪标签策略解决真值缺失问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

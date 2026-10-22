@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/4D Primitive-Mache Glueing Primitives for Persistent 4D Scene Reconstruction.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/4D Primitive-Mache Glueing Primitives for Persistent 4D Scene Reconstruction.pdf",
+ "title": "4D Primitive-Mˆach´e: Glueing Primitives for Persistent 4D Scene Reconstruction",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "单目视频切刚体图元后跨时段胶合，重建完整4D场景",
+ "innovations": [
+  "把 SuperPrimitive 的静态图元表示扩展为动态：每个 3D 图元只用一个 SE(3) 姿态（相对该对象最后被观测片段的系）描述自身全部运动，把全时域 dense mapping 问题压缩成每图元一个刚体位姿的估计",
+  "后端用稠密 2D 流把相邻关键帧的点图/掩码配准，构造 E=Σ ρ(w_ij·‖T_j⁻¹T_i X_i − X̂_j‖)，对全部动态对象联合求雅可比对数增量做 Gauss-Newton 迭代重加权最小二乘，从而把各时刻观测粘成一体",
+  "提出时序重映射 T^{p→q}=[T(S_q)]⁻¹T(S_p) 与物体持久性：对象消失后按 OBB 扩张 1.1 倍的接触关系与速度马氏距离（log(V⁻¹W)）找父对象做传递式运动外推，使抽屉合上后内部物体仍被重建"
+ ],
+ "method_framework": "前馈模型 π3 出各观测时刻点图，SAMv2 传播首帧分割掩码并主动采样补新对象分割出非重叠图元，稠密点追踪给相邻关键帧对应关系；后端按初始对应残差冻结静态对象以固定单目下相机运动与物体运动的 gauge 自由度，对剩余对象联合优化图元 SE(3)，最后用 T^{p→q} 把所有观测重映射回任意时间戳得到完整 4D 重建。",
+ "experiment_framework": "HO3D（4 台标定深度相机中的单路为主相机，其余作真值）与四台同步 Azure Kinect 自采 Multi-Object 数据集；基线 π3 last view、π3、St4Track、POMATO、TraceAnything；所有观测 warp 到末帧后与 GT 比，指标 1cm 阈值下 accuracy/recall/F-score，长序列按 150 帧分块取平均。",
+ "takeaways": [
+  "对象持久性这类能力（遮挡物体仍被重建）难以直接量化，用 OBB 接触 + 速度马氏距离做传递式运动分组，是给刚体图元补上物体身份的低成本设计",
+  "单目动态重建的 gauge 自由度必须靠显式的静态/动态判别打破，把残差阈值作为唯一约束既省参数又顺带产出运动分割",
+  "把评估口径定义成仅动态部分、统一 warp 到末帧、用 F-score 同时看 precision 与 recall，避免静态背景灌水导致完整性指标失效，是可直接照搬的评测协议"
+ ],
+ "weaknesses": [
+  "自采 Multi-Object 数据集的真值（pseudo-GT）是用与被测前端同源的前馈模型 π3 在四个同步视角上重建得到的，表 2 中本方法与 St4Track/POMATO 共享同一套系统性误差，'显著优于'并非建立在独立真值上",
+  "全篇无任何消融：静态/动态冻结的初始残差阈值、OBB 扩张系数 α=1.1、速度马氏距离阈值 στ/σψ、Huber 权重、150 帧分块长度全是设定即报；尤其是用单一残差阈值区分动静态来消解 gauge 自由度，误判会把真实运动物体钉死在静态假设上，正文未给出误判率",
+  "指标口径偏窄：只报 1cm 阈值下的 accuracy/recall/F-score 且为分块均值，无方差、无阈值曲线，Spin1（0.6359）与 MultiObj1（0.8226）差距近 0.2 却只以均值 0.7948 呈现；物体持久性（抽屉闭合序列）仅有定性图与补充视频，'首个单目系统实现该能力'缺少可度量的对照实验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "4D场景重建与可靠性主线无交点，属纯图形学渲染",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

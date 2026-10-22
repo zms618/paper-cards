@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Traversal Verification for Speculative Tree Decoding.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Traversal Verification for Speculative Tree Decoding.pdf",
+ "title": "Traversal Verification for Speculative Tree Decoding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "树解码验证优化，提升接受长度但计算开销未充分解决",
+ "innovations": [
+  "叶到根遍历验证机制",
+  "序列级概率而非单token概率",
+  "保留被过早丢弃的有效子序列",
+  "理论证明无损性"
+ ],
+ "method_framework": "提出Traversal Verification算法，从叶节点开始自底向上验证，考虑序列级概率分布，保留可能被过早丢弃的有效子序列，提高drafted tokens利用率",
+ "experiment_framework": "在Spec-Bench数据集上测试，包含6个任务，使用Llama3和Llama2模型组合，比较接受长度和吞吐量",
+ "takeaways": [
+  "序列级概率考虑优于单token验证",
+  "树结构越大深度越深，Traversal Verification优势越明显",
+  "温度越高，方法优势越明显"
+ ],
+ "weaknesses": [
+  "自底向上验证可能引入额外计算开销",
+  "实际吞吐量提升略低于接受长度提升",
+  "未讨论在极大规模树结构上的计算效率"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

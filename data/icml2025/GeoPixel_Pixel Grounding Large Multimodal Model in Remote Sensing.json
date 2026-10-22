@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/GeoPixel_Pixel Grounding Large Multimodal Model in Remote Sensing.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/GeoPixel_Pixel Grounding Large Multimodal Model in Remote Sensing.pdf",
+ "title": "GeoPixel: Pixel Grounding Large Multimodal Model in Remote Sensing",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "扩展LMM支持4K遥感图像对话式像素级定位，半自动数据构建",
+ "innovations": [
+  "首个端到端高分辨率(4K)遥感LMM，支持对话中像素级mask生成",
+  "半自动构建GeoPixelD数据集：利用set-of-marks prompting和遥感空间先验控制数据生成",
+  "在单目标和多目标分割任务上超越现有自然图像LMM"
+ ],
+ "method_framework": "基于LMM架构扩展：输入高分辨率遥感图像，在对话生成中交错输出像素级mask。通过在LMM中集成解码头实现grounded conversation generation(GCG)。训练数据通过半自动pipeline生成：用set-of-marks prompting + 空间先验确保遥感域的标注质量。",
+ "experiment_framework": "在多个遥感图像grounding/分割基准上评估；对比通用LMM和专用RS模型；指标为单目标/多目标分割精度；消融验证各组件贡献；报告GeoPixel显著优于现有方法。",
+ "takeaways": [
+  "遥感域的俯视视角、尺度变化、小物体需要专门设计的LMM",
+  "半自动数据pipeline可有效弥补RS域grounded标注数据的缺失",
+  "高分辨率(4K)支持对遥感图像的精细分析至关重要"
+ ],
+ "weaknesses": [
+  "依赖半自动数据pipeline，标注质量上限受pipeline限制",
+  "4K推理的计算开销很大",
+  "前9页内未看到与最新VLM(如GPT-4V)在RS任务上的对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

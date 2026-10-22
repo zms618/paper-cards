@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Dual-Granularity Memory for Efficient Video Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Dual-Granularity Memory for Efficient Video Generation.pdf",
+ "title": "Dual-Granularity Memory for Efficient Video Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "双粒度内存机制提升视频生成效率，但一致性仍不足",
+ "innovations": [
+  "上下文内存机制解决块隔离问题",
+  "潜在上下文作为内存(LCaM)实现跨段一致性",
+  "双粒度框架结合全局锚点和局部连续性"
+ ],
+ "method_framework": "将GSPN扩展为GSTPN，结合上下文内存(可学习的汇流列和边界缓冲器)和LCaM(基于潜在相似性的检索与跨注意力融合)实现高效视频生成。",
+ "experiment_framework": "基于WanVideo-1.3B蒸馏，VBench评估7个质量指标，单H100 GPU延迟测试，与6种高效注意力方法对比。",
+ "takeaways": [
+  "多方向扫描捕捉时空依赖互补信息",
+  "内容检索在潜在空间实现高效跨段一致性",
+  "轻量级内存机制(0.1%参数开销)显著提升质量"
+ ],
+ "weaknesses": [
+  "整体一致性(OC)略低于全注意力基线",
+  "视觉奖励(VR)表明人类偏好对齐不足",
+  "LCaM与GSTPN处理范式异构性影响全局一致性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成效率提升，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

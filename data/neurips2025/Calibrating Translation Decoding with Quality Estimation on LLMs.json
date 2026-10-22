@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Calibrating Translation Decoding with Quality Estimation on LLMs.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Calibrating Translation Decoding with Quality Estimation on LLMs.pdf",
+ "title": "Calibrating Translation Decoding with Quality Estimation on LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.2
+ },
+ "one_line": "优化似然-质量相关性校准翻译解码，提升MAP效率",
+ "innovations": [
+  "直接优化似然-质量Pearson相关性",
+  "统一质量优化与质量估计目标",
+  "仅需2K样本实现显著提升",
+  "校准后似然可作为质量强代理"
+ ],
+ "method_framework": "训练时采样多个假设，计算似然与质量分数，定义负Pearson相关为损失，结合SFT正则项，通过梯度优化提升校准",
+ "experiment_framework": "WMT22/WMT24数据集，对比Tower/ALMA基线，使用CometKiwi-XL/XCOMET等指标，评估翻译质量与质量估计能力",
+ "takeaways": [
+  "Pearson相关目标统一质量优化与估计",
+  "校准提升MAP解码效率，替代高延迟采样方法",
+  "模型规模对质量估计能力提升有限"
+ ],
+ "weaknesses": [
+  "依赖外部质量评估指标",
+  "仅评估了离线场景，未考虑在线部署",
+  "未深入分析不同语言方向的校准差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

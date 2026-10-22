@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Plausible Token Amplification for Improving Accuracy of Differentially Private In-Context Learning Based on.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Plausible Token Amplification for Improving Accuracy of Differentially Private In-Context Learning Based on.pdf",
+ "title": "Plausible Token Amplification for Improving Accuracy of Differentially Private In-Context Learning Based on Implicit Bayesian Inference",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "基于隐式贝叶斯推断的PTA方法提升DP-ICL精度，但适用面有限",
+ "innovations": [
+  "把DP-ICL纳入隐式贝叶斯推断框架，给出定理解释加噪如何损害LLM对真实概念的推断能力",
+  "为Tang等(2024)经验性限制词表空间的做法提供理论依据",
+  "提出PTA修改next-token概率分布，放大能显著表征真实概念的token，提升DP合成演示质量"
+ ],
+ "method_framework": "在向原始演示提示的LLM所给next-token概率上加方差可调噪声以满足DP；PTA通过对log-likelihood比的放大并施加base probability与Top-p约束，突出与真实概念强相关的token，从而生成更能引导LLM推断正确概念的合成演示。",
+ "experiment_framework": "在合成分类任务GINC(Xie 2022)与三个真实文本分类任务AGNews、DBPedia等上评测4-shot DP-ICL精度；基线为Tang et al.(2024)方法及其变体(B1/BA2)；跨5个随机种子取平均，并做ε=1/8与各模块消融。",
+ "takeaways": [
+  "PTA在四个数据集上的4-shot DP-ICL精度均优于原始DP-ICL基线",
+  "理论分析与实验一致地表明限制/放大词表中可信token可恢复加噪造成的精度损失",
+  "不同ε隐私预算下PTA稳定优于基线"
+ ],
+ "weaknesses": [
+  "仅在文本分类任务验证，未涉及生成/推理类任务，适用面有限",
+  "依赖公开信息做词表约束，公开信息质量直接影响效果却缺乏系统分析",
+  "前9页内未见与更近期DP-ICL方法(Wu/Hong)的正面对比，增益幅度描述不充分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

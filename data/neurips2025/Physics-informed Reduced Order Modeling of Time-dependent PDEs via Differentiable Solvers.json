@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers.pdf",
+ "title": "Physics-informed Reduced Order Modeling of Time-dependent PDEs via Differentiable Solvers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "可微分求解器增强的物理信息降阶模型，提升PDE求解泛化",
+ "innovations": [
+  "将可微分PDE求解器集成到训练过程中，确保潜在空间与真实物理动力学的一致性",
+  "提出Φ-ROM框架，解决了传统数据驱动ROM在泛化和长期预测方面的局限性",
+  "展示了在稀疏和不规则观测数据下训练并恢复完整场的能力"
+ ],
+ "method_framework": "Φ-ROM结合了条件INR解码器和潜在动力学网络，通过重建损失和物理信息动力学损失联合训练，利用可微分求解器直接塑造潜在空间动力学",
+ "experiment_framework": "在5个不同PDE问题(1D Burgers'、2D扩散、2D KdV、2D N-S、2D LBM)上评估，比较了与DINo、PINN-ROM和CROM方法的性能",
+ "takeaways": [
+  "将数值求解器纳入训练过程可显著提升模型泛化能力和长期预测稳定性",
+  "超降维技术可有效计算动力学损失，降低计算成本",
+  "方法对底层数值方法和离散化方案具有鲁棒性"
+ ],
+ "weaknesses": [
+  "在KdV问题上，当只有2%网格点观测时，性能显著下降",
+  "对于参数外推(如LBM中的高雷诺数)，虽然优于基线但仍有较大误差",
+  "方法依赖于可微分求解器的实现，可能限制某些传统求解器的应用"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

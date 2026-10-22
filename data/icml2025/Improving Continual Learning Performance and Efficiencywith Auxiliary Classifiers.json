@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Improving Continual Learning Performance and Efficiencywith Auxiliary Classifiers.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Improving Continual Learning Performance and Efficiencywith Auxiliary Classifiers.pdf",
+ "title": "Improving Continual Learning Performance and Efficiency with Auxiliary Classifiers",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "辅助分类器提升CL精度与效率，但训练成本与泛化性存疑",
+ "innovations": [
+  "实证发现continual learning中网络中间层表示比最终表示更不易遗忘",
+  "提出在中间层集成辅助分类器（AC），可一致提升多种CL方法的精度（平均10%相对增益）",
+  "利用AC实现动态早停推理，在不损失精度下将平均推理成本降低10-60%"
+ ],
+ "method_framework": "在网络若干中间层挂载辅助分类器；训练时AC与主分类器联合优化以利用不易遗忘的中间表示；推理时按AC置信度动态决定是否提前返回，从而在保证精度下跳过后续层。",
+ "experiment_framework": "在CIFAR100x10与ImageNet100x10 continual learning基准上，将AC集成到ANCL/DER++/LODE/SSIL等方法；指标为各任务精度与推理计算成本。",
+ "takeaways": [
+  "中间层表示抗遗忘的特性可被用来同时提升精度与效率",
+  "AC集成到多种CL方法带来平均10%相对精度增益",
+  "AC增强模型在50-80%计算预算即可匹配标准网络性能"
+ ],
+ "weaknesses": [
+  "辅助分类器增加训练显存与计算开销，未充分量化训练成本",
+  "动态早停的阈值策略对不同任务的鲁棒性缺乏自适应机制",
+  "实验限于图像分类continual learning，对语言/流式CL的迁移未验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

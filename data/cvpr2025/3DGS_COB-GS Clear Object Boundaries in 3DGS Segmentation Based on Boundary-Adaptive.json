@@ -1,0 +1,43 @@
+{
+ "key": "cvpr2025/3DGS_COB-GS Clear Object Boundaries in 3DGS Segmentation Based on Boundary-Adaptive.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3DGS_COB-GS Clear Object Boundaries in 3DGS Segmentation Based on Boundary-Adaptive.pdf",
+ "title": "COB-GS: Clear Object Boundaries in 3DGS Segmentation Based on Boundary-Adaptive Gaussian Splitting",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "梯度定位边界高斯并自适应切分，提升3DGS分割边界清晰度",
+ "innovations": [
+  "推导出 dL_mask/dm_i 的符号由像素级 GT 决定（M=1 时为 −α_i T_i，M=0 时为 +α_i T_i），据此定义 mask_sig = |N⁺−N⁻|/(N⁺+N⁻+ε)；跨视角平均低于阈值 δ 的高斯被判为语义模糊边界集 {G_i}_B，比 SAGD/FlashSplat 的逐高斯前向投票更高效",
+  "对 {G_i}_B 中较大高斯以原高斯为概率密度采样初始位置、一分为二并缩小尺度，实现沿物体边缘的自适应切分；随后冻结 mask 标签优化 L_rgb 恢复几何与纹理，两阶段交替，避免直接删除边界高斯导致的画质塌陷",
+  "显式区分「高斯体积造成的边界模糊」与「预训练掩码错误造成的边界模糊」：末期单独提取 mask_sig 低且尺度 s 小的微小边界高斯做精炼，只提升分割清晰度而几乎不影响渲染 PSNR",
+  "两阶段 SAM2 掩码生成：粗阶段用低文本置信度的 Grounding-DINO 框提示跑全序列，细阶段对掩码中断的子序列用高置信度框重新提示，缓解长序列目标不连续"
+ ],
+ "method_framework": "给每个高斯加连续 mask 标签 m_i∈(0,1)，经 alpha 合成出 2D 渲染掩码并以 L_mask 监督；反向时统计梯度符号一致性 mask_sig 定位模糊边界高斯并切分；再冻结 mask 优化 L_rgb 恢复纹理，两阶段交替，多物体按序单物体处理",
+ "experiment_framework": "以 NVOS（8 场景，参考视角标注 + SAM2 传播）做定量，LLFF/MIP-360/T&T/LERF 做定性；对比 SA3D、SAGA、SAGD、OmniSeg3D、FlashSplat；指标为 mIoU/mAcc 与 CLIP-IQA 无参考评分",
+ "takeaways": [
+  "把「梯度符号一致性」当作模糊性/不可靠样本探测器是可迁移的思路：任何用伪标签监督的任务都能用正负监督信号的抵消程度定位不可靠样本",
+  "显式区分两种误差来源（表示容量不足 vs. 监督噪声）并分阶段处置，比用一套启发式同时糊掉两类问题更干净，也更容易做消融归因",
+  "消融表把 M.O 单独列出来（PSNR 22.61 vs Vanilla 23.06），直白暴露单做切分必然掉画质，这种不藏短板的呈现方式值得学习"
+ ],
+ "weaknesses": [
+  "NVOS 上 mIoU 仅比 FlashSplat 高 0.3（92.1 vs 91.8）、mAcc 持平（98.6），在无方差/显著性检验下该增益难以排除噪声；NVOS 仅 8 个场景，样本量偏小",
+  "视觉质量用 CLIP-IQA 对三个自撰 prompt（clear/unclear boundary 等）打分作为定量证据，本质是把主观评价交给 CLIP，可靠性弱于标准 IQA 指标或用户研究",
+  "δ、λ、微小高斯的尺度阈值等超参未见敏感性分析；正文消融只覆盖 M.O/T.O 组合，未单独消融 mask_sig 相对朴素投票机制的增益，也未报告切分带来的高斯数量与耗时开销",
+  "摘要中的 robustness 指的是对 SAM 掩码错误的容忍，属标签噪声鲁棒性，与可信AI主线相邻但不同，且本文未做任何噪声率可控的量化鲁棒性实验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3DGS分割边界优化，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

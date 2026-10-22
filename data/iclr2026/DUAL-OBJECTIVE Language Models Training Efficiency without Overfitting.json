@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/DUAL-OBJECTIVE Language Models Training Efficiency without Overfitting.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/DUAL-OBJECTIVE Language Models Training Efficiency without Overfitting.pdf",
+ "title": "DUAL-OBJECTIVE Language Models: Training Efficiency without Overfitting",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "双目标语言模型通过平衡自回归与掩码扩散提升训练效率",
+ "innovations": [
+  "结合自回归和掩码扩散训练目标的双目标方法",
+  "通过掩码下一词预测(MNTP)统一两种模式",
+  "系统研究数据重复与目标比例关系并提供实用建议"
+ ],
+ "method_framework": "使用单一Transformer架构同时优化自回归损失LAR和掩码扩散损失LMD，通过超参数α控制平衡，无需修改架构",
+ "experiment_framework": "在32B tokens上训练470M参数模型，评估9个零-shot任务，测试不同数据重复次数(1-256×)和α值(0-1)组合",
+ "takeaways": [
+  "双目标方法在常规数据设置下可提升双向性能",
+  "数据受限时需平衡自回归目标约16次重复",
+  "双目标训练可自然诱导前缀语言建模能力"
+ ],
+ "weaknesses": [
+  "未探索更大规模模型(>1B)的泛化性",
+  "未分析计算开销增加对训练效率的实际影响",
+  "未与其他混合方法(如Prefix LM)直接比较"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "语言模型训练效率与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

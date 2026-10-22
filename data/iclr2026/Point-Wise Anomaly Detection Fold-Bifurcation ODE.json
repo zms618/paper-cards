@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Point-Wise Anomaly Detection Fold-Bifurcation ODE.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Point-Wise Anomaly Detection Fold-Bifurcation ODE.pdf",
+ "title": "Point-Wise Anomaly Detection via Fold-Bifurcation ODE",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "将异常检测建模为折叠分叉ODE，从预测模型提取应力信号无需额外训练。",
+ "innovations": [
+  "首个用折叠分叉动力学做点级异常检测的框架，统一刻画突发尖峰与渐累积漂移",
+  "从预测模型提取敏感性-不确定性应力信号 S(t)，经ODE dz/dt=αS-βz²-γz 积分成风险状态",
+  "可直接在已训练预测模型上实例化、无参数无额外训练，仅用正常数据校准阈值"
+ ],
+ "method_framework": "把异常建模为应力向临界点(tipping point)的累积：从现成预测模型取敏感性与不确定性作为应力信号，代入折叠分叉ODE积分得风险状态 z(t)；当 z(t) 越过仅在正常数据上校准的阈值即判异常，从而在严格点级协议下精确定位。",
+ "experiment_framework": "在40个基准上对比34个SOTA异常检测基线，强调严格点级(而非窗口级)评测；报告点级 F1/AUCP 等，并分析对突发与渐变两类异常的适配。",
+ "takeaways": [
+  "窗口级指标会掩盖错误，严格点级评测下多数预测/距离方法性能大幅下降",
+  "FOLD 在点级评测下表现尤其突出，统一了突发与渐变异常的检测视角",
+  "应力累积-临界点建模提供了可解释、免训练的异常检测途径"
+ ],
+ "weaknesses": [
+  "落地域为工业/金融时间序列，与医学影像、多模态推理主线不完全重合",
+  "阈值仅用正常数据校准，对标注正常数据中潜在污染的敏感性前9页未充分分析",
+  "前9页未见对ODE参数(α/β/γ)选择方式与跨数据集迁移的系统消融"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "点级异常检测与可靠性主线交织，方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "title": "References Improve LLM Alignment in Non-Verifiable Domains",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "参考输出作为软验证器提升LLM-judge准确率，实现接近微调RM的对齐效果。",
+ "innovations": [
+  "设计参考引导的评测协议：用前沿模型参考提升弱LLM-judge准确率，强judger也可被人写参考增强。",
+  "证明参考引导的自改进优于SFT蒸馏与无参考基线，可比肩微调奖励模型训练。",
+  "在Llama-3-8B/Qwen2.5-7B上取得AlpacaEval 73.1%/70.0%、Arena-Hard 58.7%/74.1%的成绩。"
+ ],
+ "method_framework": "先用高质量参考(前沿模型或人写)增强LLM-judge的成对偏好判断准确率；再以参考引导的judge作为奖励信号驱动被对齐模型自改进(类DPO更新)，从而在无外部人类/AI直接监督下获得接近RLHF/微调RM的对齐效果。",
+ "experiment_framework": "评测不同强弱LLM-judge在有/无参考下的偏好判断准确率；对齐调优对比SFT蒸馏、无参考自改进与微调RM；基准AlpacaEval、Arena-Hard；模型Llama-3-8B-Instruct、Qwen2.5-7B。",
+ "takeaways": [
+  "高质量参考可作为非可验证域的'软验证器'，显著缩小RLVR与RLHF/RLAIF的差距。",
+  "参考引导不仅提升评判准确率，还能转化为有效的对齐训练信号。",
+  "弱judger从前沿参考获益大，强judger则更受益于人写参考。"
+ ],
+ "weaknesses": [
+  "依赖前沿模型参考的质量，参考本身的偏差会被judge与自改进放大。",
+  "落地域为通用LLM对齐/评判，非医学影像或多模态推理主线。",
+  "节选前9页未见各judger在有/无参考下的完整准确率表，参考引导增益幅度在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/References Improve LLM Alignment In Non-Verifiable Domains.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/References Improve LLM Alignment In Non-Verifiable Domains.pdf",
+ "raw_overall": 6.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM对齐方法有可靠性价值，但未触及医学或多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Tilelang_Bridge Programmability and Performance In Modern Neural Kernels.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tilelang_Bridge Programmability and Performance In Modern Neural Kernels.pdf",
+ "title": "TileLang: Bridge Programmability and Performance in Modern Neural Kernels",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 3.0,
+  "overall": 5.4
+ },
+ "one_line": "瓦片编程系统TileLang通过FTG实现GPU算子3倍加速，代码量减85%",
+ "innovations": [
+  "提出瓦片级可编程系统，提供内存放置、数据移动、并行调度的显式原语",
+  "设计统一融合瓦片数据流图(FTG)，结合瓦片推荐（硬件感知默认值）和瓦片推理（约束传播自动补全）",
+  "在NVIDIA H100和AMD GPU上实现1.08-10.58倍加速，同时代码量减少85.5%"
+ ],
+ "method_framework": "TileLang是瓦片级编程系统，开发者用Python表达算法，系统通过FTG统一管理瓦片级数据流。瓦片推荐提供硬件感知的默认配置，瓦片推理通过约束传播自动完成细节。支持显式内存放置和数据移动控制。",
+ "experiment_framework": "在NVIDIA H100和AMD GPU上评估多种AI算子（注意力、MLA、GQA等）。基线为Triton和手动CUDA实现。指标为运行时加速比和代码复杂度。",
+ "takeaways": [
+  "瓦片级显式控制能有效弥合可编程性与高性能的差距",
+  "TileLang在保持简洁Python表达的同时，实现了接近手动优化的性能",
+  "瓦片推荐+瓦片推理的组合降低了高性能kernel开发门槛"
+ ],
+ "weaknesses": [
+  "与主线（医学影像/多模态大模型推理可靠性）完全无关，属于系统/编译器领域",
+  "主要针对GPU硬件，其他硬件加速器的支持未讨论",
+  "新系统的生态成熟度和社区采纳度仍是未知数"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "系统/编译器工作，与可靠性主线完全无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

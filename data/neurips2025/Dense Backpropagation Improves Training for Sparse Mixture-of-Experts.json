@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Dense Backpropagation Improves Training for Sparse Mixture-of-Experts.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Dense Backpropagation Improves Training for Sparse Mixture-of-Experts.pdf",
+ "title": "Dense Backpropagation Improves Training for Sparse Mixture-of-Experts",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.0,
+  "overall": 5.7
+ },
+ "one_line": "用EMA作为默认输出改进MoE训练，但创新有限且缺乏领域验证",
+ "innovations": [
+  "Default MoE方法使用指数移动平均作为默认输出",
+  "在保持稀疏计算的同时提供密集梯度更新",
+  "无需显著计算开销即可提升路由器性能"
+ ],
+ "method_framework": "Default MoE通过为未激活专家提供指数移动平均作为默认输出，使路由器能接收所有专家的梯度信号，同时保持稀疏计算模式。",
+ "experiment_framework": "在FineWeb和FineWeb-Edu数据集上训练1.96B参数模型，比较不同稀疏配置下的困惑度和基准测试性能。",
+ "takeaways": [
+  "使用EMA作为默认输出可有效改善路由器学习",
+  "方法在不同模型大小和稀疏配置下均有效",
+  "学习率可设置更高而不影响训练稳定性"
+ ],
+ "weaknesses": [
+  "未在医学影像或多模态大模型推理领域验证",
+  "EMA参数β在不同配置下需要调整",
+  "与全局辅助损失减少方法的交互未充分探讨"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

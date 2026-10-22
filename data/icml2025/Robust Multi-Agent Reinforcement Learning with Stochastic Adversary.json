@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Robust Multi-Agent Reinforcement Learning with Stochastic Adversary.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Robust Multi-Agent Reinforcement Learning with Stochastic Adversary.pdf",
+ "title": "Robust Multi-Agent Reinforcement Learning with Stochastic Adversary",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "在线联合训练随机对手提升MARL鲁棒性，但训练开销大且迁移性未验证。",
+ "innovations": [
+  "提出与主智能体(protagonist)在线联合训练的随机对手，融入主策略先验而非过拟合固定扰动。",
+  "随机导演(SDor)通过最小化主智能体团队回报同时最大化策略熵做策略扰动；STor按SDor指导生成观测对抗扰动。",
+  "证明SDor软策略按因子化最大熵MARL收敛到全局最优即最优对手，并提出SDor-STor损失量化策略扰动差异。"
+ ],
+ "method_framework": "对抗训练中同时训练一个随机对手：SDor在策略层面扰动(最小化团队回报+最大化熵)，STor在观测层面按SDor指导生成对抗扰动；主智能体与对手在线交替优化，使训练得到的策略对观测扰动更鲁棒，避免过拟合到单一确定性扰动。",
+ "experiment_framework": "在星际争霸II(StarCraft II)任务上评测；对比现有对抗训练MARL方法；在观测扰动下报告胜率与鲁棒性。",
+ "takeaways": [
+  "在线联合训练的随机对手比固定/确定性扰动更能提升MARL对观测扰动的鲁棒性。",
+  "SDor软策略被证明收敛到因子化最大熵意义下的最优对手。"
+ ],
+ "weaknesses": [
+  "与主线的医学影像、多模态大模型推理不直接相关，属鲁棒MARL。",
+  "额外对手网络带来显著训练开销，扩展性未在大规模MARL验证。",
+  "主要在StarCraft II验证，真实自动驾驶/推荐场景迁移性未证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

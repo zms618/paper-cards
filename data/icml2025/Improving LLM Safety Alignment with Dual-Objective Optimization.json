@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Improving LLM Safety Alignment with Dual-Objective Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Improving LLM Safety Alignment with Dual-Objective Optimization.pdf",
+ "title": "Improving LLM Safety Alignment with Dual-Objective Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "解耦DPO为双目标优化，提升越狱防御但超参与权衡未充分解决",
+ "innovations": [
+  "通过梯度分析指出DPO在拒绝学习上的两大缺陷：只压制有害回复而非主动强化拒绝、且难以泛化到OOD攻击",
+  "提出DOOR双目标：(1)鲁棒拒绝训练（即使出现部分有害生成也鼓励拒绝），(2)有害知识定向遗忘",
+  "引入基于奖励的拒绝token级加权，进一步增强对对抗利用的鲁棒性"
+ ],
+ "method_framework": "将偏好优化拆为两个互补目标：一方面在出现部分有害输出时仍强制模型拒绝（鲁棒拒绝），另一方面定向降低有害知识的生成倾向；并对关键拒绝token做加权，使模型在prefilling/suffix/多轮攻击下都能拒绝。",
+ "experiment_framework": "在分布内与分布外场景下，对prefilling、suffix、多轮等多种越狱攻击评估拒绝率；对比DPO等现有安全对齐方法。",
+ "takeaways": [
+  "DOOR显著提升LLM面对prefilling、suffix、多轮等越狱攻击的鲁棒性，覆盖ID与OOD",
+  "对越狱攻击的鲁棒性与训练中token分布漂移及拒绝/有害token的内部表示相关",
+  "token级加权可进一步强化关键拒绝信号"
+ ],
+ "weaknesses": [
+  "双目标与token加权引入额外超参，平衡两者的经验调参成本较高",
+  "评估主要针对已知越狱攻击族，对未来自适应攻击的长期鲁棒性难保证",
+  "过度拒绝可能损害正常（非有害）询问的有用性，帮助-安全权衡未充分量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

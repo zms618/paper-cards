@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Maximizing Intermediate Checkpoint Value in LLM Pretraining with Bayesian Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Maximizing Intermediate Checkpoint Value in LLM Pretraining with Bayesian Optimization.pdf",
+ "title": "Maximizing Intermediate Checkpoint Value in LLM Pretraining with Bayesian Optimization",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 5.9
+ },
+ "one_line": "贝叶斯优化LLM预训练相邻checkpoint合并权重，小幅提升性能",
+ "innovations": [
+  "提出在预训练中途对相邻checkpoint进行贝叶斯优化合并，而非训练结束后合并，将中间checkpoint的损失景观甜点转化为性能提升",
+  "在多个模型规模（Pythia 70M到Baichuan2-7B）和数据集上验证，合并相邻checkpoint可在不继续训练的情况下获得0.59%~2.68%的提升",
+  "展示了合并权重在C-Eval上优化后在MMLU/GSM8K等跨语言跨任务数据上的泛化稳定性，OOD性能差异指标最小（0.87）"
+ ],
+ "method_framework": "在预训练过程中，对相邻两个中间checkpoint Theta_{t-1}和Theta_t进行线性插值合并：Theta_merged = lambda*Theta_{t-1} + (1-lambda)*Theta_t。使用贝叶斯优化（基于高斯过程代理模型+采集函数）在held-out数据集上搜索最优合并权重lambda。优化后的合并checkpoint可替代原始checkpoint继续训练，或直接作为更好的中间模型使用。",
+ "experiment_framework": "使用Baichuan2-7B、DeepSeek-7B、Pythia（70M~6.9B）预训练checkpoint。基准：C-Eval、CMMLU、MMLU、GSM8K。基线：Uniform Soup、Greedy Soup、Fisher Weighted Averaging、RegMean。评估维度：域内性能提升、跨架构泛化、跨语言/跨任务OOD稳定性。",
+ "takeaways": [
+  "预训练相邻checkpoint之间存在可利用的合并甜点，用BO优化合并权重比均匀合并/贪心合并有显著提升",
+  "BO优化的合并权重展现出良好的跨域泛化性：在C-Eval上优化的权重在MMLU、GSM8K上依然稳定",
+  "该方法以极小额外计算成本（仅BO搜索+参数插值）获得性能增益，对降低预训练成本有实际价值"
+ ],
+ "weaknesses": [
+  "性能提升幅度较小（0.59%~2.68%），且依赖held-out数据集来优化权重，未讨论无held-out数据时的替代方案",
+  "仅验证了相邻两个checkpoint的线性合并，未探索多checkpoint非线性合并或更复杂的合并策略",
+  "实验模型规模最大仅7B参数，在更大模型（如70B）上的效果和BO搜索开销未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

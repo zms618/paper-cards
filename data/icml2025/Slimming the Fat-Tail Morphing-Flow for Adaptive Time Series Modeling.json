@@ -1,0 +1,35 @@
+{
+ "title": "Slimming the Fat-Tail: Morphing-Flow for Adaptive Time Series Modeling",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "用可逆样条变换+测试时微调处理厚尾时序，但理论贡献有限",
+ "innovations": [
+  "指出平稳化(差分/去趋势)反而放大尖峰厚尾(kurtosis)现象，并用Cauchy vs Gaussian收敛对比实验说明厚尾噪声导致优化发散",
+  "Flow组件：逐通道单调样条变换(分段多项式)降低峰度且保持可逆可微，避免Box-Cox静态参数与clipping的不可微问题",
+  "Morph组件：轻量测试时自适应层，迭代调整Flow参数以应对实例级分布漂移；即插即用可嵌入现有架构"
+ ],
+ "method_framework": "Flow用单调样条学习通道专属映射将厚尾输入压回类高斯有效激活域；Morph在测试时迭代微调样条参数抵消实例级漂移。全可逆架构支持端到端训练无需辅助损失，极值经逆变换可还原。",
+ "experiment_framework": "8个时序数据集(Electricity/ETTh2/Exchange等)；线性backbone及patch-Mamba两种；对比SOTA时序模型；指标为预测误差(MSE/MAE)；报告在厚尾数据集Exchange上错误降低21.7%，Mamba版平均超对手6.3%。",
+ "takeaways": [
+  "平稳化会放大厚尾，需显式的可微归一化(flow)把输入限制在网络有效激活空间，可迁移到金融/电网等极值敏感场景",
+  "测试时微调归一化参数(Morph)是对抗实例级分布漂移的轻量有效手段"
+ ],
+ "weaknesses": [
+  "样条变换与测试时自适应均为工程模块，理论新颖性有限，缺乏对收敛/泛化的严格保证",
+  "relevance偏离可靠性主线(非可信AI/幻觉抑制)，属通用时序建模；优势在厚尾数据集，常规数据集提升不突出"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Slimming the Fat-Tail Morphing-Flow for Adaptive Time Series Modeling.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Slimming the Fat-Tail Morphing-Flow for Adaptive Time Series Modeling.pdf",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/ShiftwiseConv_Small Convolutional Kernel with Large Kernel Effect.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ShiftwiseConv_Small Convolutional Kernel with Large Kernel Effect.pdf",
+ "title": "ShiftwiseConv Small Convolutional Kernel with Large Kernel Effect",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "3×3卷积通过shift操作模拟大卷积效果，参数减少但性能提升有限",
+ "innovations": [
+  "将大卷积核效果解耦为特征提取和特征融合两个组件",
+  "提出Shiftwise操作实现多路径长距离稀疏依赖关系",
+  "用3×3卷积替代大卷积核保持性能同时减少参数"
+ ],
+ "method_framework": "ShiftwiseConv结合标准3×3卷积和连接中心模块，利用分组卷积和重参数化提取基础信息，通过shift算法模拟大卷积效果",
+ "experiment_framework": "ImageNet分类、ADE20K语义分割、COCO目标检测/分割、nuScenes单目3D目标检测，与SLaK、UniRepLKNet等对比",
+ "takeaways": [
+  "大卷积核的关键因素可解耦为特征提取粒度和多路径特征融合",
+  "小卷积通过适当设计可替代大卷积核效果",
+  "深度优先的网络设计比宽度优先更有效"
+ ],
+ "weaknesses": [
+  "实验主要在标准视觉任务上，缺乏对医学影像等特定领域的验证",
+  "方法设计相对复杂，包含多个组件和超参数"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "卷积核优化与可靠性主线无交点，属常规视觉方法",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

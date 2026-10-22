@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/3DGS_CaT-GS Efficient 3DGS Rendering for Large-Scale Scenes with Inter-frame Caching.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/3DGS_CaT-GS Efficient 3DGS Rendering for Large-Scale Scenes with Inter-frame Caching.pdf",
+ "title": "CaT-GS: Efficient 3DGS Rendering for Large-Scale Scenes with Inter-frame Caching and Tile Scheduling",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 5.4
+ },
+ "one_line": "投机缓存与调度加速3DGS渲染，但质量-速度权衡与实验完整性不足",
+ "innovations": [
+  "用运动预测把连续帧相机位姿变化换算为高斯像点位移 (Δu,Δv)，以扫掠轨迹代替单帧包围盒做细粒度 tile 相交判定，一批帧共用一份可见高斯列表",
+  "关键帧/子帧双管线：仅逐帧重算 SH 与协方差特征，视锥剔除与深度排序结果按 hash 索引与列表缓存复用，子帧直接跳过前两阶段",
+  "将 alpha 混合改写为分段可交换形式 C=Σ_i (Σ_j c_j ω_j T_j) R_i，按深度序切分为 k 个子任务并在 CUDA kernel 中做负载感知切块，缓解 tile 负载不均导致的 SM 空转"
+ ],
+ "method_framework": "先按短时近似匀速假设预测相机运动，扩展高斯投影轨迹并按椭圆+两条公切线判定其扫过的所有 tile，得到覆盖整批帧的渲染列表；再按深度阈值 d=0.4 与位移量限制动态收缩投机窗口 W；随后缓存视锥索引与排序列表供子帧复用；最后对超均载 2 倍 tile 做 k 路切分并行光栅化。",
+ "experiment_framework": "RTX 5090 + Ryzen 9 9950X；Tanks&Temples、MipNeRF360、Deep Blending 及自采 UAV 城市场景，每模型 10 条 2000 帧 SIBR 交互轨迹 @120FPS/1080p；基线 3DGS、ADR-GS、Flash-GS；指标 FPS 与 PSNR/SSIM。",
+ "takeaways": [
+  "把渲染性能剖析分成预处理/排序/光栅三段并指出前两段在连续视角下同样冗余，是渲染加速类论文可复用的问题切分方式",
+  "投机式预处理必须配运动自适应回退（超出 tile 尺寸即缩短窗口/整帧跳过），否则快速运动下会引入大量无用高斯拖累质量",
+  "分段混合 reformulation 说明：只有把有次序的 alpha 合成拆成可独立求偏量的切片，才谈得上跨 SM 任务调度"
+ ],
+ "weaknesses": [
+  "排序缓存直接复用上一帧的 tile 内高斯列表，多渲染的冗余高斯只靠细粒度相交和窗口长度约束，正文缺少随窗口 W 增大的质量-速度权衡曲线来量化这一退化",
+  "全部 FPS/PSNR 只报均值，10 条轨迹之间无标准差或显著性检验，且未说明轨迹速度分布是否均衡，无法判断 10× 加速在慢速/快速运动下的稳定区间",
+  "自采 UAV 数据集宣称未来开源，目前无法复现；且性能对比使用同一批已训练好的 3DGS 模型，未报告训练代价与显存开销，工程落地成本被隐藏"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3DGS渲染加速与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

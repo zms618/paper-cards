@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Querystream_Advancing Streaming Video Understanding with Query-Aware Pruning and Proactive Response.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Querystream_Advancing Streaming Video Understanding with Query-Aware Pruning and Proactive Response.pdf",
+ "title": "QueryStream: Advancing Streaming Video Understanding with Query-Aware Pruning and Proactive Response",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "轻量剪枝框架提升流式视频效率，但与可靠性主线关联弱",
+ "innovations": [
+  "指出既有方法混淆视觉动态与语义相关，提出query感知差分剪枝QDP：联合评估token对query的语义相关性与对平滑历史的时序新颖性来过滤token流",
+  "提出相关性触发主动响应RTAR双门控机制：仅在高query相关且信息密度显著时调度响应，避免误时响应",
+  "作为免训练轻量模块，其剪枝可泛化到离线长视频，充当上下文去噪模块"
+ ],
+ "method_framework": "在线处理连续视频流：QDP按token与query语义相关度及相对动态历史的时序新颖度剪枝；RTAR以高相关性+高信息密度双门控决定何时主动生成响应，实现意图驱动的高效在线视频理解。",
+ "experiment_framework": "基准StreamingBench与OVO-Bench；对比流式/全token基线；报告中等剪枝与>70%剪枝下的精度-效率权衡，并验证其作为离线长视频上下文去噪模块的增益。",
+ "takeaways": [
+  "在StreamingBench、OVO-Bench上取得SOTA，剪枝超70%视觉token仍匹配全-token基线",
+  "视频流相对用户意图存在大量语义冗余，query感知过滤可同时省算力与改善响应时机",
+  "该剪枝机制可作为离线长视频理解的上下文去噪模块迁移使用"
+ ],
+ "weaknesses": [
+  "属效率/响应调度方向，与可靠性、不确定性、幻觉抑制主线关联较弱",
+  "语义相关性与时序新颖性的门控阈值/动态平滑依赖启发式，跨场景超参鲁棒性未充分消融",
+  "评测基准与全token基线对比在前9页，绝对精度数字与延迟收益需看后续页"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "效率优化与视频理解，可靠性主线关联弱但方法有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

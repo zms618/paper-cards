@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/S2D_Selective Spectral Decay for Quantization-Friendly Conditioning of Neural Activations.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/S2D_Selective Spectral Decay for Quantization-Friendly Conditioning of Neural Activations.pdf",
+ "title": "S2D Selective Spectral Decay for Quantization-Friendly Conditioning of Neural Activations",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "选择性正则化权重矩阵最大奇异值提升量化鲁棒性",
+ "innovations": [
+  "建立权重矩阵主导奇异值与激活异常值的直接联系",
+  "提出主成分主导比(PCDRk)作为诊断指标",
+  "选择性谱衰减(S2D)正则化方法仅针对最大奇异值",
+  "S2D可直接应用于预训练模型无需从头训练"
+ ],
+ "method_framework": "S2D通过奇异值分解识别权重矩阵中导致异常值的主导奇异值，选择性正则化这些最大奇异值，同时保留较小奇异值，从而改善权重矩阵的条件数，使模型对量化更加鲁棒。",
+ "experiment_framework": "在ImageNet上评估S2D对PTQ(ERQ/PTQ4ViT/RepQViT)和QAT的影响，使用W4A4等低比特设置，测量准确率和激活异常值指标。",
+ "takeaways": [
+  "激活异常值严重程度随预训练规模增加而加剧",
+  "S2D可作为预处理步骤与现有量化方法互补",
+  "PCDRk可作为诊断模型量化友好度的有效指标"
+ ],
+ "weaknesses": [
+  "S2D需要计算SVD，虽然通过缓存和间隔更新优化，但仍有一定计算开销",
+  "实验主要集中在视觉语言模型，对其他模型类型的泛化性需要进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "量化鲁棒性属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

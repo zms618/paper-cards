@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Region-Wise Correspondence Prediction between Manga Line Art.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Region-Wise Correspondence Prediction between Manga Line Art.pdf",
+ "title": "Region-Wise Correspondence Prediction between Manga Line Art",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "Transformer预测漫画线稿区域对应，召回率低且泛化存疑。",
+ "innovations": [
+  "首次研究原始漫画线稿图像的区域对应预测",
+  "基于Transformer的框架学习补丁级相似性并生成区域级对应关系",
+  "开发自动标注流程构建区域级对应基准数据集"
+ ],
+ "method_framework": "使用Vision Transformer提取特征，通过Multiplex Transformer建模图像内结构和跨图像关系，计算补丁相似性矩阵，再通过边缘感知聚类和区域匹配生成区域级对应关系。",
+ "experiment_framework": "在ATD-12K和GenAI数据集上评估，使用AP、F1分数、精确率、召回率和Top-K准确率作为指标，并与基于规则分割的基线方法进行比较。",
+ "takeaways": [
+  "Transformer架构能有效捕捉线稿图像中的区域级语义结构",
+  "边缘感知的聚类方法能生成符合线稿结构的区域边界",
+  "自动标注流程可为类似任务提供训练数据"
+ ],
+ "weaknesses": [
+  "区域召回率较低(30-35%)，难以匹配小碎片区域或分割不一致的大区域",
+  "方法在高度抽象的线稿中区域匹配仍有挑战",
+  "实验主要在特定风格的漫画数据集上进行，泛化能力有待验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "漫画线稿对应预测与可靠性主线无交点，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

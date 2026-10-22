@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Beyond Communication Overhead A Multilevel Monte Carlo Approach for Mitigating Compression Bias in.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Beyond Communication Overhead A Multilevel Monte Carlo Approach for Mitigating Compression Bias in.pdf",
+ "title": "Beyond Communication Overhead: A Multilevel Monte Carlo Approach for Mitigating Compression Bias in Distributed Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "MLMC压缩方案将Top-k等有偏方法转为无偏估计，但计算复杂度高且扩展性未验证。",
+ "innovations": [
+  "提出MLMC压缩方案，将有偏压缩器（如Top-k）转化为统计无偏估计，兼具有偏方法的经验性能和无偏方法的理论保证",
+  "将MLMC应用于Top-k和bit-wise压缩器，得到增强变体",
+  "推导自适应版本进一步提升性能"
+ ],
+ "method_framework": "基于多级蒙特卡洛框架，通过不同精度层级的有偏压缩器组合，构造无偏梯度估计；利用方差缩减技术平衡各层级采样数，在保持通信效率的同时消除压缩偏差。",
+ "experiment_framework": "分布式深度学习任务；基线：无偏压缩（Rand-k、QSGD）、有偏压缩（Top-k）、误差反馈方法；指标：收敛速度、最终精度、通信效率。",
+ "takeaways": [
+  "有偏压缩器（Top-k）虽然经验性能好但引入偏差，MLMC方法可在保持其效率的同时恢复无偏性",
+  "多级蒙特卡洛框架可通用地应用于多种压缩器，弥合有偏/无偏方法的理论-实践差距",
+  "自适应版本可根据梯度特性动态调整各层级采样分配"
+ ],
+ "weaknesses": [
+  "多级采样增加了计算复杂度和实现复杂度",
+  "理论收敛分析假设较多，实际分布式系统中的异步/straggler效应未考虑",
+  "在极大规模分布式训练中的可扩展性未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

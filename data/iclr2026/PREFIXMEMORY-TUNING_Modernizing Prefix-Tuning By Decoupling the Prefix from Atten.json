@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/PREFIXMEMORY-TUNING_Modernizing Prefix-Tuning By Decoupling the Prefix from Atten.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PREFIXMEMORY-TUNING_Modernizing Prefix-Tuning By Decoupling the Prefix from Atten.pdf",
+ "title": "PrefixMemory-Tuning: Modernizing Prefix-Tuning by Decoupling the Prefix from Attention",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "诊断Prefix-Tuning失效根因，解耦prefix与注意力恢复竞争力。",
+ "innovations": [
+  "实证诊断Prefix-Tuning在现代LLM上失效的根因：注意力头内输入prompt与参数化prefix存在贡献权衡。",
+  "提出PrefixMemory-Tuning：将prefix模块移出注意力头本身，解耦prefix与注意力。",
+  "增强prefix表达力后，在多基准上持续优于既有Prefix-Tuning，并在若干通用基准上与现代PEFT具竞争力。"
+ ],
+ "method_framework": "分析标准prefix作为注意力K/V前缀与真实输入prompt在同一注意力头内竞争贡献、相互抵消；新架构把可学习prefix移出注意力头，作为独立记忆分支注入并增强其表达力，使prefix不再与prompt在注意力中直接权衡，从而恢复prefix方法的适配能力。",
+ "experiment_framework": "在多样化下游/通用基准上评测；对比原始Prefix-Tuning及其变体与现代PEFT(LoRA等)；指标为下游任务精度与可训练参数量；PrefixMemory-Tuning一致优于prefix类方法并逼近现代PEFT。",
+ "takeaways": [
+  "Prefix-Tuning在现代LLM上弱，根因是注意力头内的贡献权衡。",
+  "把prefix移出注意力头解耦后可恢复其竞争力。",
+  "Prefix路线经此改造仍可成为有竞争力的PEFT方向。"
+ ],
+ "weaknesses": [
+  "仅在若干基准上与现代PEFT'具竞争力'，未全面超越LoRA。",
+  "移出注意力头后的具体注入机制与参数量开销在摘要层面描述较粗。",
+  "根因诊断主要为经验性，缺乏严格理论解释。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "PEFT方法与可靠性主线无直接交点，属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

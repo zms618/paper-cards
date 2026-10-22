@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Boosting Multi-Domain Fine-Tuning of Large Language Modelsthrough Evolving Interactions between Samples.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Boosting Multi-Domain Fine-Tuning of Large Language Modelsthrough Evolving Interactions between Samples.pdf",
+ "title": "Boosting Multi-Domain Fine-Tuning of Large Language Modelsthrough Evolving Interactions between Samples",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "动态交互建模提升多领域微调，但计算开销大且机制分析不足",
+ "innovations": [
+  "发现样本间交互随训练动态演化而非固定不变",
+  "提出基于梯度交互的样本选择策略",
+  "设计EVIC框架实现动态课程学习"
+ ],
+ "method_framework": "通过Adam梯度建模样本间交互关系，构建交互矩阵，迭代选择对整体数据集有积极影响的样本进行训练，动态调整训练课程。",
+ "experiment_framework": "在CodeAlpaca、GSM8K-RFT和Alpaca-GPT4数据集上，使用Mistral-7B、Llama-3.1-8B和Qwen2.5-14B模型，与MTL、DSL、DMT和MoS基线比较，在HumanEval、GSM8K和AlpacaEval 2.0上评估。",
+ "takeaways": [
+  "样本级管理比领域级管理更有效",
+  "动态交互建模可显著提升训练效率",
+  "梯度交互可作为样本选择的有效信号"
+ ],
+ "weaknesses": [
+  "计算开销较大，需要多次计算梯度交互",
+  "未深入分析交互演化的内在机制",
+  "对极端不平衡数据集的鲁棒性未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

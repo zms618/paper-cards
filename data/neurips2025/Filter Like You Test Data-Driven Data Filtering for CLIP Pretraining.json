@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Filter Like You Test Data-Driven Data Filtering for CLIP Pretraining.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Filter Like You Test Data-Driven Data Filtering for CLIP Pretraining.pdf",
+ "title": "Filter Like You Test: Data-Driven Data Filtering for CLIP Pretraining",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "利用下游梯度信号筛选CLIP预训练数据，提升性能但泛化受限。",
+ "innovations": [
+  "Filter Like You Test (FLYT)算法，利用下游任务梯度信号评估数据质量",
+  "Mixing-FLYT (M-FLYT)整合多种评分方法，优化数据选择",
+  "Soft Cap Sampling (SCS)策略，防止高评分数据过度重复"
+ ],
+ "method_framework": "FLYT训练评分模型，通过加权CLIP损失更新参考模型，再利用下游任务梯度反向传播优化评分模型，最终生成数据权重。",
+ "experiment_framework": "DataComp中等规模基准测试，119M候选数据集，ViT-B/32 CLIP模型，38个下游任务评估指标。",
+ "takeaways": [
+  "利用下游任务梯度信号指导预训练数据筛选的有效性",
+  "多评分方法线性组合优于简单聚合，可扩展性强"
+ ],
+ "weaknesses": [
+  "仅使用ImageNet训练集作为下游数据，可能限制泛化能力",
+  "计算成本较高，需要额外训练评分模型"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

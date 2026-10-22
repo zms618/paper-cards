@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/LIGHT-X Generative 4D Video Rendering with Camera and Illumination Control.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/LIGHT-X Generative 4D Video Rendering with Camera and Illumination Control.pdf",
+ "title": "LIGHT-X: Generative 4D Video Rendering with Camera and Illumination Control",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "Light-X解耦相机与光照控制，但依赖深度估计且极端光照鲁棒性未验证",
+ "innovations": [
+  "相机-光照解耦设计，通过动态点云和重渲染帧提供细粒度线索",
+  "Light-Syn数据合成管道，解决多视角多光照配对数据稀缺问题",
+  "引入Light-DiT层实现全局光照一致性"
+ ],
+ "method_framework": "基于视频扩散模型，通过解耦几何/运动与光照信号，结合动态点云投影和重渲染帧，实现相机轨迹与光照的联合控制。",
+ "experiment_framework": "使用200个高质量视频评估，对比TC+IC-Light、LAV+TC等基线，采用FID、美学评分、CLIP相似度等指标。",
+ "takeaways": [
+  "解耦相机与光照控制可有效提升生成质量",
+  "退化数据合成策略可解决特定领域数据稀缺问题"
+ ],
+ "weaknesses": [
+  "依赖深度估计和点云重建，可能引入误差",
+  "未充分讨论模型在极端光照条件下的鲁棒性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成与可靠性主线无关，仅解耦设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

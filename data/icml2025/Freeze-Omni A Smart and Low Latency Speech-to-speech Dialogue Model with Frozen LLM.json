@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Freeze-Omni A Smart and Low Latency Speech-to-speech Dialogue Model with Frozen LLM.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Freeze-Omni A Smart and Low Latency Speech-to-speech Dialogue Model with Frozen LLM.pdf",
+ "title": "Freeze-Omni: A Smart and Low Latency Speech-to-speech Dialogue Model with Frozen LLM",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.4
+ },
+ "one_line": "冻结LLM+语音适配器实现低延迟对话，但创新有限且评测不全面。",
+ "innovations": [
+  "全程冻结backbone LLM(Qwen2-7B-Instruct)，仅训练adapter/NAR/AR解码器，避免语音小数据微调导致的灾难性遗忘",
+  "提出NAR prefix speech decoder利用LLM隐状态直接预测语音token，缩短首包延迟并提升语音质量",
+  "基于chunk-level状态预测的多任务VAD分类头实现双工对话(打断/接话)能力"
+ ],
+ "method_framework": "语音输入侧：3阶段训练编码器+adapter将语音chunk映射到LLM嵌入空间；语音输出侧：先训单codebook codec，再训NAR+AR解码器，最后用LLM隐状态前缀NAR解码器与多轮QA数据联合训练；双工能力通过在LLM隐状态加分类头预测0/1/2状态(聆听/思考/说话)。",
+ "experiment_framework": "输入理解在aishell-1/test-net/test-meeting(CER)与LibriSpeech dev/test-clean-other(WER)测ASR；语音输出CER对比top-k消融；口语问答在LlaMA-Questions/Web Questions/TriviaQA对比SpeechGPT/Spectron/Moshi/GLM-4-Voice；并给出端到端延迟分位数统计。",
+ "takeaways": [
+  "Web Questions/LlaMA Q./TriviaQA上Freeze-Omni达44.73/72/53.88%，接近文本backbone Qwen2-7B(45.13/77.67/63.93)，优于Moshi与GLM-4-Voice",
+  "统计端到端平均延迟745ms，P90=1020ms，含网络约1.2s，可支撑实时语音对话",
+  "冻结LLM使其口语QA表现接近文本backbone，验证冻结策略在数据受限场景下保留智能的有效性"
+ ],
+ "weaknesses": [
+  "仅在单说话人场景验证语音输出，codec为单codebook，多说话人/情感/韵律建模未涉及",
+  "口语QA评测仅用greedy zero-shot，与GLM-4-Voice等基线的prompt/解码设置不完全对齐，公平性存疑",
+  "创新点多为Mini-Omni2/LLaMA-Omni等已有架构的工程组合，理论贡献有限；论文正文仅10页，方法细节深度不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

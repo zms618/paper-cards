@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/A Bregman Proximal Viewpoint on Neural Operators.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/A Bregman Proximal Viewpoint on Neural Operators.pdf",
+ "title": "A Bregman Proximal Viewpoint on Neural Operators",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "用Bregman邻近算子重构神经算子，理论有缺口，实验规模有限。",
+ "innovations": [
+  "提出把算子层建模为函数空间上 Bregman 正则化优化问题的解，将激活算子统一解释为从对偶到原空间的 Bregman 邻近算子。",
+  "该框架可恢复经典神经算子，并导出含逆激活算子 σ^{-1} 的新变体 Bregman 神经算子，证明其与标准神经算子具有相同表达能力。",
+  "给出 sigmoid 型激活下 Bregman 神经算子的通用逼近定理，并在 PDE 基准上验证 BFNO 随深度加深训练更稳定。"
+ ],
+ "method_framework": "在 Banach 函数空间中把第 t 层更新写成正则化泛函的极小化，正则项的 Legendre 函数经 Fenchel 共轭定义 Bregman 散度与邻近算子；由此将线性算子置于激活函数之外（vt+1=σ(σ^{-1}(vt)+Kt vt)），作为一种区别于残差连接的缓解梯度消失方式。",
+ "experiment_framework": "在 PDE 基准（1D Advection、1D Burgers、2D Navier-Stokes ν=1e-3/1e-4、2D Darcy、1D NS ν=1e-8）上以 ℓ2 测试相对误差为指标，对比 FNO、ResFNO、F-FNO 与本文 BFNO，层数 T∈{4,8,16,32} 交叉验证。",
+ "takeaways": [
+  "BFNO 在中高复杂度数据集（1D Burgers、2D NS ν=1e-4）上一致优于或可比基线，且随深度加深性能更稳定，而 FNO/ResFNO 较早饱和。",
+  "BFNO 学到的权重呈围绕 0 的 Laplace 型尖峰分布，暗示隐式正则化并缓解梯度消失/爆炸。",
+  "BFNO 在低、中频带重构上优于 FNO，但高频收益在复杂算例上边际。"
+ ],
+ "weaknesses": [
+  "通用逼近定理仅对 sigmoid 型激活成立，而实际使用 ReLU 类激活，理论与实践存在明显缺口。",
+  "实验规模有限，仅 PDE 小基准，未与 DeepONet/GNOT 等更强算子或大尺度任务对比。",
+  "高频带在复杂算例上改进边际，2D Darcy 上因任务差异反而不如带额外 MLP 的 F-FNO。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "理论重构神经算子，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

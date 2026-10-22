@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/UniGist_Towards General and Hardware-aligned Sequence-level Long Context Compression.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/UniGist_Towards General and Hardware-aligned Sequence-level Long Context Compression.pdf",
+ "title": "UniGist: Towards General and Hardware-aligned Sequence-level Long Context Compression",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "统一稀疏gist布局和硬件对齐实现长上下文压缩",
+ "innovations": [
+  "统一稀疏gist布局替代分块训练",
+  "gist shift trick实现GPU友好的块处理",
+  "灵活推理支持实时内存节省"
+ ],
+ "method_framework": "通过引入attention sink前缀和均匀分布的gist tokens构建统一稀疏注意力模式，结合位置编码对齐保持原始token距离，实现无分块训练的高效长上下文压缩。",
+ "experiment_framework": "HELMET基准测试(RAG/总结/合成回忆等)，对比全注意力、流式压缩和基于gist的方法，使用Llama3.1-8B和3.2-3B模型评估。",
+ "takeaways": [
+  "统一注意力模式可有效解决分块训练的跨chunk依赖问题",
+  "硬件对齐的内核设计显著提升训练吞吐量"
+ ],
+ "weaknesses": [
+  "仅评估了语言模型，未扩展到多模态场景",
+  "压缩比固定为4，缺乏对不同压缩比的系统分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

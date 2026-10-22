@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/3D Scene Prompting for Scene-Consistent Camera-Controllable Video Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/3D Scene Prompting for Scene-Consistent Camera-Controllable Video Generation.pdf",
+ "title": "3D SCENE PROMPTING FOR SCENE-CONSISTENT CAMERA-CONTROLLABLE VIDEO GENERATION",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 5.0,
+  "evidence": 4.5,
+  "relevance": 4.0,
+  "overall": 4.7
+ },
+ "one_line": "SLAM+掩码模块拼接的3D提示，相机可控视频生成",
+ "innovations": [
+  "把视频邻接从纯时间轴扩展为时空双轴：条件集合 Vin~ = {Temporal(w)} ∪ {Spatial(τ)}，其中 Spatial(τ) 按与目标位姿 C 的视场重叠度从整段输入检索最相近的 τ 帧，使相机重访同一视点时可引用几百帧前的几何，而无需把全部 L 帧塞进 O(L²) 注意力",
+  "为使空间条件只提供静态结构、不把过时动态（第 50 帧的行人）带进第 200 帧，提出三阶段动态掩码：SEA-RAFT 光流减去相机运动诱导的 warp 光流并以阈值判动像素 M^pixel_i = 1[||Flow_optical − Flow_warp||_1 > τ]；再用 CoTracker3 把所有帧采样点回溯到 t=0 聚合运动证据；最后提示 SAM2 得物体级掩码 M^obj_i，静态点云取 P_static = ⊔_i P_i ⊙ (1 − M^obj_i)",
+  "把 P_static 按目标位姿投影成 Spatial(t) = Π(K·Ct·P_static^(n))（ⁿ 为与 Ct 视场最相关的 n 个输入帧点集）作为 3D 场景提示，复用 CogVideoX-I2V 已有的图像条件通道做通道拼接 Z_cond = E[Concat(Temporal(w), Spatial(τ))]，DiT 骨架与 3D VAE 完全不动"
+ ],
+ "method_framework": "任意长视频 → 动态 SLAM 估位姿与点云 → 三阶段动态 masking 得静态点云 → 按用户轨迹投影成空间帧 → 与末 w=9 帧拼接后过冻结 3D VAE 进 DiT 生成未来 T 帧；全量微调 4K iter / bs8 / 4×H100 / 48h，lr 1e−5。",
+ "experiment_framework": "DynPose-100K（1000 条动态视频）+ RealEstate10K（1000 条静态）；场景一致性用重访轨迹上的 PSNR/SSIM/LPIPS（DynPose 上掩码只评静态区）+ MEt3R；相机可控性用 mRotErr/mTransErr/mCamMC；基线为 DFoT 与 CameraCtrl/MotionCtrl/FloVD/AC3D。",
+ "takeaways": [
+  "把静态与动态用不同条件通道显式分开（静态走 3D 记忆、动态走末帧），比统一引用历史帧更贴合真实长视频语义",
+  "重访同一视点再比对生成帧与输入帧的指标协议，是评测空间一致性可直接复用的做法",
+  "w=9、n=7 等超参是给定值而非搜索得来，若直接借鉴建议重做法向一致性阈值调优"
+ ],
+ "weaknesses": [
+  "主体是流水线工程且基线不公平：动态掩码三阶段本质是 SEA-RAFT/CoTracker3/SAM2 三个现成模块的级联，无阈值 τ 与回溯策略的消融与自适应方案；场景一致性只与 DFoT 一个近似基线比，StarGen、ReCamMaster、TrajectoryCrafter 被正文归为不同设定而未进同一张表，相机可控性表里各基线又用各自原论文协议（I2V 给图像+相机参数、T2V 只给相机参数），协议不统一会把提升部分归因于设定差异",
+  "计算高效的 claim 缺乏支撑：只训 4K step，全部指标为单次数值无方差/显著性，未对不同输入长度 L、不同检索帧数 τ 给出效率-一致性权衡曲线；正文在第 4.3 节中途截断（相机可控性评测协议段未完），Table 2 之后的结果分析、视频质量评测与消融缺失，confidence 仅 medium",
+  "relevance 低：video 生成与视场几何一致性中的 consistency 是渲染/几何术语，按防污染规则不等于可信 AI 的鲁棒性，医学影像与多模态推理落地域均不触及"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.9,
+ "tier": "C",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "视频生成与几何一致性，不触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

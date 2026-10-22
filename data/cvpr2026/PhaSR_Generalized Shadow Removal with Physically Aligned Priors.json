@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/PhaSR_Generalized Shadow Removal with Physically Aligned Priors.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/PhaSR_Generalized Shadow Removal with Physically Aligned Priors.pdf",
+ "title": "PhaSR Generalized Shadow Removal with Physically Aligned Priors",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "物理对齐先验实现阴影去除，但复杂度与泛化性存疑",
+ "innovations": [
+  "物理对齐归一化(PAN)进行无模型光照预处理",
+  "几何-语义校正注意力(GSRA)实现跨模态先验对齐",
+  "双级对齐框架从单光源阴影去除扩展到多源环境光照"
+ ],
+ "method_framework": "PhaSR通过双级对齐实现阴影去除：PAN进行灰度世界归一化、对数域Retinex分解和动态范围重组；GSRA结合深度几何特征和DINO-v2语义特征，通过差分注意力对齐解决模态冲突。",
+ "experiment_framework": "在ISTD、ISTD+、INS、WSRD+和Ambient6K数据集上评估，使用PSNR/SSIM指标，与DenseSR、OmniSR等SOTA方法比较，特别关注多源环境光照场景。",
+ "takeaways": [
+  "物理对齐先验可有效解决阴影与材质混淆问题",
+  "跨模态差分注意力可平衡几何精度与语义稳定性"
+ ],
+ "weaknesses": [
+  "方法复杂度较高，计算效率可能受限",
+  "对极端光照条件下的表现未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "阴影去除属于图像处理，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

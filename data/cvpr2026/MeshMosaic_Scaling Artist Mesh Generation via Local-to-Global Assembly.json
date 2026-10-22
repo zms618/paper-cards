@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/MeshMosaic_Scaling Artist Mesh Generation via Local-to-Global Assembly.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/MeshMosaic_Scaling Artist Mesh Generation via Local-to-Global Assembly.pdf",
+ "title": "MeshMosaic Scaling Artist Mesh Generation via Local-to-Global Assembly",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "局部到全局网格组装框架，依赖外部分割工具",
+ "innovations": [
+  "局部到全局的自回归框架解决长序列瓶颈",
+  "边界感知的局部量化与语义分割指导",
+  "共享边界条件确保跨块对齐和全局一致性"
+ ],
+ "method_framework": "将网格分割为语义块，自回归生成每个块，利用共享边界条件促进相邻区域间的连贯性、对称性和无缝连接，通过局部量化提高分辨率和细节保留。",
+ "experiment_framework": "ShapeNet/Thingi10K/Objaverse数据集，与MeshAnythingV2/BPT/TreeMeshGPT/DeepMesh对比，使用HD/CD/NC/F1/ECD/EF1指标和用户研究。",
+ "takeaways": [
+  "局部量化策略可显著提高网格生成细节保留",
+  "边界条件设计对确保网格连贯性至关重要",
+  "小模型规模也能实现高质量高分辨率网格生成"
+ ],
+ "weaknesses": [
+  "依赖外部语义分割工具PartField",
+  "训练时使用随机分割而非语义分割可能影响一致性",
+  "边界三角形复制可能导致接缝处轻微不连续"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "网格生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

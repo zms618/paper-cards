@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/On Teacher Hacking in Language Model Distillation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/On Teacher Hacking in Language Model Distillation.pdf",
+ "title": "On Teacher Hacking in Language Model Distillation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "揭示蒸馏中的教师黑客现象，提出在线数据生成缓解方案",
+ "innovations": [
+  "类比RLHF中的奖励黑客，识别知识蒸馏中的‘教师黑客’：学生过拟合不完美教师而非逼近真实分布",
+  "设计oracle LM(真实分布)→教师(从oracle蒸馏)→学生(从教师蒸馏)的受控实验设置，能量化蒸馏质量并暴露教师黑客",
+  "发现固定离线数据集会发生教师黑客，可由优化过程偏离多项式收敛律检测；在线数据生成可缓解，并识别数据多样性是防黑客关键因素"
+ ],
+ "method_framework": "用oracle提供真实分布作为标尺，先蒸馏教师再蒸馏学生，对比学生对教师与对oracle的拟合偏差；以训练损失是否偏离预期多项式收敛律作为教师黑客的可观测信号，比较离线固定数据与在线生成数据。",
+ "experiment_framework": "受控oracle-教师-学生实验，测不同数据生成方式(离线固定vs在线)下学生对oracle分布的还原质量，以收敛律偏离与最终分布差距为指标。",
+ "takeaways": [
+  "知识蒸馏中存在Goodhart式的教师黑客：学生会过拟合教师的缺陷，损失真实目标",
+  "教师黑客可在训练早期通过优化偏离多项式收敛律被检测",
+  "在线数据生成、尤其数据多样性，是抑制教师黑客的关键"
+ ],
+ "weaknesses": [
+  "结论基于受控oracle设置，真实大规模蒸馏(无oracle标尺)下如何检测与缓解教师黑客需另行设计",
+  "‘偏离收敛律’作为检测信号的阈值与误报率未系统标定",
+  "在线数据生成增加推理/采样成本，成本-收益权衡未充分量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

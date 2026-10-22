@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Re-ttention Ultra Sparse Visual Generation via Attention Statistical Reshape.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Re-ttention Ultra Sparse Visual Generation via Attention Statistical Reshape.pdf",
+ "title": "Re-ttention: Ultra Sparse Visual Generation via Attention Statistical Reshape",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 6,
+  "overall": 6.5
+ },
+ "one_line": "通过缓存softmax分母实现超稀疏视觉生成，增加初始计算开销",
+ "innovations": [
+  "识别softmax分母在稀疏注意力中的关键作用",
+  "利用去噪步骤间的冗余性恢复注意力分布",
+  "提出残差缓存机制解决概率分布归一化问题"
+ ],
+ "method_framework": "Re-ttention通过缓存和重用去噪步骤间的softmax分母比例，对稀疏注意力输出进行统计重塑，并结合残差缓存保持概率分布的归一性，实现超高稀疏度(96.9%)下的高质量视觉生成。",
+ "experiment_framework": "在CogVideoX、PixArt和Hunyuan-DiT等T2V/T2I模型上评估，使用VBench、GenEval、HPSv2等指标，与SVG、MInference、DiTFastAttn等方法对比",
+ "takeaways": [
+  "识别并解决稀疏注意力中的分布偏移问题",
+  "利用扩散模型去噪过程的时序冗余性进行统计重用"
+ ],
+ "weaknesses": [
+  "方法依赖于扩散模型的去噪过程特性，可能不适用于其他架构",
+  "需要缓存前几步的完整注意力计算，增加初始计算开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

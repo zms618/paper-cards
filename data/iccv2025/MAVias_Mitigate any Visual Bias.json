@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/MAVias_Mitigate any Visual Bias.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/MAVias_Mitigate any Visual Bias.pdf",
+ "title": "MAVias Mitigate any Visual Bias",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "基础模型辅助开放集偏见识别，计算开销大且过度依赖背景",
+ "innovations": [
+  "开放集偏见识别框架，无需预定义偏见标签",
+  "利用基础模型提取视觉特征并通过LLM筛选无关特征",
+  "创新的偏见缓解方法，通过投影层和logit组合减少偏见影响"
+ ],
+ "method_framework": "MAVias首先通过图像 tagging 模型提取视觉特征，利用LLM筛选与目标类无关的潜在偏见特征，将其转换为视觉语言嵌入，并通过投影层与主模型结合训练，实现偏见不变表示。",
+ "experiment_framework": "在CelebA、Waterbirds、UrbanCars和ImageNet9数据集上评估，使用最差组准确率和平均准确率作为指标，与多种现有偏见缓解方法对比。",
+ "takeaways": [
+  "利用基础模型进行开放集偏见识别的创新思路",
+  "通过logit组合机制减少偏见影响的训练策略"
+ ],
+ "weaknesses": [
+  "计算开销较大，需要多个模型协同工作",
+  "在ONLY-FG测试集上表现不如原始模型，可能过度依赖背景信息"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "开放集偏见识别与缓解，但计算开销大且过度依赖背景",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

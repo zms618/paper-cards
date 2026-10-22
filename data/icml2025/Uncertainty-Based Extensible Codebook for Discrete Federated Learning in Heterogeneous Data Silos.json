@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Uncertainty-Based Extensible Codebook for Discrete Federated Learning in Heterogeneous Data Silos.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Uncertainty-Based Extensible Codebook for Discrete Federated Learning in Heterogeneous Data Silos.pdf",
+ "title": "Uncertainty-Based Extensible Codebook for Discrete Federated Learning in Heterogeneous Data Silos",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "基于不确定性的可扩展离散码本，提升异构联邦学习精度与校准",
+ "innovations": [
+  "观察到联邦模型在分布迥异的新数据孤岛上前向不确定性显著升高，以此作为是否扩展离散化字典(codebook)的触发信号",
+  "提出迭代式UEFL框架：将隐特征映射到可训练离散向量，逐孤岛评估不确定性，仅对高不确定性孤岛扩展码本，显式刻画孤岛分布多样性",
+  "在保持极小计算开销下，跨多数据集比SOTA提升精度3%-22.1%、降低不确定性38.83%-96.24%"
+ ],
+ "method_framework": "先编码/离散化各孤岛隐特征到共享可训练码本；全局聚合后度量每个孤岛的预测不确定性；对高不确定性孤岛动态扩码本新增离散向量以容纳其分布，反复迭代直至收敛。",
+ "experiment_framework": "多个异构联邦数据集(非独立同分布数据孤岛)；对比普通FL、离散表征类FL方法等SOTA；指标为各孤岛平均准确率、全局准确率与预测不确定性均值，报告精度提升与不确定性降低幅度。",
+ "takeaways": [
+  "联邦聚合后全局模型在分布漂移孤岛上不确定性飙升，该信号可作为自适应扩展离散码本、吸收异构性的有效触发",
+  "把异构分布差异显式编码进可扩展码本，比硬塞进共享全局模型更能兼顾精度与不确定性校准"
+ ],
+ "weaknesses": [
+  "'不确定性'用预测熵等度量，扩码本阈值与扩展规模的选取缺乏理论指导，易在极端异构下码本膨胀",
+  "离散化码本方法主要适配分类/表示学习型任务，未验证于生成或大模型场景；3-22%的提升区间跨度大，部分数据集增益来源的消融不充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

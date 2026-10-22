@@ -1,0 +1,37 @@
+{
+ "key": "iclr2026/Unified Vision-Language-Action Model.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unified Vision-Language-Action Model.pdf",
+ "title": "Unified Vision-Language-Action Model",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "elevance": 4.5,
+  "evidence": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "统一token建模多模态，但落地域非主线且实验深度不足",
+ "innovations": [
+  "提出native多模态VLA：区别于以往VLA依赖额外视觉编码器提特征、只输出动作，UniVLA把vision/language/action都作为离散token统一自回归建模",
+  "统一架构同时支持text监督感知grounding、vision监督世界模型、action监督策略学习，并能产出多模态输出(交错视频等)",
+  "统一token设计使模型可有效利用大规模多模态数据(尤其视频)做可扩展、可泛化的学习"
+ ],
+ "method_framework": "以往VLA多用VLM的通用理解能力生成动作信号，忽视视觉观测中的时间与因果结构。UniVLA把视觉、语言、动作信号都离散化为token，在统一自回归框架内原生建模；后训练任务统一为三类：text supervision下的perception grounding、vision supervision下的world model、action supervision下的policy learning，从而在单架构内利用大规模视频数据。",
+ "experiment_framework": "在CALVIN、LIBERO、SimplerEnv-Bridge等机器人操作benchmark上对比现有VLA方法；指标为任务成功率；报告在三者上均达新SOTA，显著超越已有方法。",
+ "takeaways": [
+  "把视觉/语言/动作统一为离散token自回归建模，可在单架构内同时承担感知、世界模型与策略",
+  "统一token化使大规模视频多模态数据可被有效利用，提升可扩展性与泛化",
+  "多模态输出能力使VLA不止输出动作，还能做感知grounding与视频预测"
+ ],
+ "weaknesses": [
+  "落地域为机器人操作VLA，虽属多模态但非本主线(可靠性×多模态推理/医学影像)",
+  "动作离散化(离散token)对连续精细控制的精度损失、与连续动作头方法的权衡未充分量化",
+  "统一后训练三任务间是否仍存在优化冲突、以及真机(非仿真)迁移正文前9页未展开"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

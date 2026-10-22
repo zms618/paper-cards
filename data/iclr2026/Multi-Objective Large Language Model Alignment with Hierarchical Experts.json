@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Multi-Objective Large Language Model Alignment with Hierarchical Experts.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Multi-Objective Large Language Model Alignment with Hierarchical Experts.pdf",
+ "title": "Multi-Objective Large Language Model Alignment with Hierarchical Experts",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "分层专家组合单目标模型，实现多目标对齐，但依赖预训练模型。",
+ "innovations": [
+  "提出分层混合专家(HoE)框架，将多目标对齐分解为单偏好子问题，每个由专门专家处理",
+  "通过任务向量SVD从现成单目标模型中提取LoRA专家，无需额外训练",
+  "设计偏好路由机制，根据用户指定权重动态组合专家，实现任意偏好配置下的对齐"
+ ],
+ "method_framework": "三层结构：(1)LoRA专家：通过task-SVD从单目标对齐模型中提取各目标的低秩适配模块；(2)多目标LoRA专家：无训练地合并多个单目标LoRA专家，生成任意偏好组合的适配模块；(3)路由专家：轻量训练的路由器，根据用户偏好动态选择和组合专家，遍历帕累托前沿。",
+ "experiment_framework": "在8个基准上评估16个目标、200种不同偏好配置，对比15个近期基线方法，从帕累托前沿质量、参数效率、训练成本等维度衡量。",
+ "takeaways": [
+  "HoE实现了接近最优的帕累托前沿，在参数大小、训练成本和性能间取得良好平衡",
+  "无需训练主模型，仅需轻量路由器即可实现多目标对齐的灵活适配",
+  "分层专家设计可在单个模型中覆盖广泛的偏好空间"
+ ],
+ "weaknesses": [
+  "依赖已有的单目标对齐模型集合，需要预先准备多种对齐方向的模型",
+  "专家数量随目标数指数增长时的组合复杂度未充分讨论",
+  "仅在公开基准上验证，实际用户多样化偏好场景下的效果未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多目标对齐方法，未直接触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

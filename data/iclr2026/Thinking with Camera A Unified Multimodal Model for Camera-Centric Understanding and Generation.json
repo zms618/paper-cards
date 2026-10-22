@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Thinking with Camera A Unified Multimodal Model for Camera-Centric Understanding and Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Thinking with Camera A Unified Multimodal Model for Camera-Centric Understanding and Generation.pdf",
+ "title": "Thinking with Camera: A Unified Multimodal Model for Camera-Centric Understanding and Generation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.3
+ },
+ "one_line": "统一多模态模型实现相机参数估计与生成，但与主线关联弱且效率未充分验证",
+ "innovations": [
+  "提出统一多模态模型，同时支持相机参数估计（理解）和可控相机视角生成",
+  "引入思考模式（thinking mode）进行空间分布推理，再估计相机参数（roll/pitch/FoV）",
+  "实现文本描述+相机参数条件下的可控图像生成，生成突出视觉线索的可视化结果"
+ ],
+ "method_framework": "统一多模态模型支持两种任务：(1)理解任务：输入图像，模型进入思考模式分析空间分布，推理相机参数；(2)生成任务：输入场景描述和相机参数，生成对应视角的可视化图像。思考模式让模型先进行空间推理再输出结果。",
+ "experiment_framework": "在多个相机参数估计基准上评估（与UVP、GeoCalib等对比），同时评估可控图像生成质量。指标包括相机参数估计误差和图像生成质量。",
+ "takeaways": [
+  "思考模式能显著提升相机参数估计的准确性，模型先推理空间关系再输出参数",
+  "统一模型可同时处理相机理解和生成任务，且相互促进",
+  "在多个相机相关基准上达到SOTA性能"
+ ],
+ "weaknesses": [
+  "与主线（医学影像/多模态大模型推理可靠性）关联较弱，专注于相机参数估计和生成",
+  "思考模式增加推理延迟，实际应用效率未充分讨论",
+  "仅在自然场景图像上验证，医学影像等特殊领域的适用性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "相机参数估计与生成，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

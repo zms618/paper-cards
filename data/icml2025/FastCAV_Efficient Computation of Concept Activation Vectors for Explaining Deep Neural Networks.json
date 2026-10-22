@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/FastCAV_Efficient Computation of Concept Activation Vectors for Explaining Deep Neural Networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FastCAV_Efficient Computation of Concept Activation Vectors for Explaining Deep Neural Networks.pdf",
+ "title": "FastCAV: Efficient Computation of Concept Activation Vectors for Explaining Deep Neural Networks",
+ "scores": {
+  "novelty": 4,
+  "depth": 5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 5.5
+ },
+ "one_line": "用均值差替代SVM加速CAV计算，技术改进有限，适用性验证不足",
+ "innovations": [
+  "提出FastCAV方法，将CAV计算从SVM替换为概念集与随机集激活均值差的方向，平均加速46.4倍(最高63.6倍)",
+  "给出FastCAV与SVM-CAV等价性的理论条件，在激活分布满足高斯性假设时两者方向一致",
+  "利用高效性实现训练过程中的概念追踪，展示模型学习纹理概念的动态过程"
+ ],
+ "method_framework": "传统CAV通过在概念图像与随机图像的激活上训练线性SVM得到概念方向。FastCAV直接计算概念集激活均值与随机集激活均值的差向量作为CAV方向，无需训练SVM。通过理论分析证明在激活向量各分量独立且等方差的高斯假设下，均值差方向与SVM权重方向等价。统计显著性测试仍保留原有的t检验框架。",
+ "experiment_framework": "在ResNet50、Inception-v3、ViT-B/16、ConvNeXt-XXLarge、ViT-H/14-CLIP、EVA-G/14、EVA-02-L/14、RegNetY共8个架构上验证。任务包括：(1)计算速度对比；(2)CAV方向相似度(与SVM-CAV的cosine相似度)；(3)样本量敏感性分析；(4)训练过程中概念追踪(ResNet50 on ImageNet)。",
+ "takeaways": [
+  "FastCAV与SVM-CAV在多数架构上产生高度相似的概念方向(cosine相似度>0.9)，同时计算速度提升一个数量级",
+  "样本量对CAV稳定性有显著影响，需要足够多的概念图像和随机集才能得到可靠的概念方向",
+  "FastCAV使得在大规模模型训练过程中实时追踪概念演化成为可能"
+ ],
+ "weaknesses": [
+  "方法本质是用均值差替代SVM，技术新颖性有限，更多是工程效率改进",
+  "等价性依赖高斯分布假设，真实深度网络激活往往偏离该假设，方向偏差在哪些场景下较大未充分分析",
+  "仅在ImageNet分类模型上验证，对检测、分割、多模态等其他架构的适用性未测试"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.98,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

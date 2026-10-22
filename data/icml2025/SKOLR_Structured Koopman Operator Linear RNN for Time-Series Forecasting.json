@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/SKOLR_Structured Koopman Operator Linear RNN for Time-Series Forecasting.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SKOLR_Structured Koopman Operator Linear RNN for Time-Series Forecasting.pdf",
+ "title": "SKOLR: Structured Koopman Operator Linear RNN for Time-Series Forecasting",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.75
+ },
+ "one_line": "将Koopman算子与线性RNN等价，但扩维敏感性与非线性边界未充分验证",
+ "innovations": [
+  "建立Koopman算子近似与线性RNN之间的显式等价：以延迟观测构成的扩展状态使结构化Koopman算子与线性RNN更新一一对应",
+  "SKOLR将输入信号的可学习谱分解与MLP测量函数结合，通过高度并行的线性RNN堆叠实现结构化Koopman算子",
+  "在多个时序预测与动力系统基准上取得优异性能，兼具线性递推的计算效率"
+ ],
+ "method_framework": "Koopman理论把非线性动力学映射为测量函数空间中的线性算子，但算子无穷维；本文用延迟观测扩维状态，证明一个结构化Koopman算子恰好等价于线性RNN的递推更新。据此SKOLR以MLP作为可学习测量函数、对输入做可学习谱分解，再用高度并行的线性RNN堆叠实现该结构化算子，从而在保持线性递推高效性的同时获得Koopman理论的可解释动力建模能力。",
+ "experiment_framework": "在多种时序预测公开基准与动力系统数据集上评测；对比DMD及其变体、线性RNN类架构(如S4/LRU)等；指标为预测误差，验证Koopman理论启发的结构化设计的性能与效率。",
+ "takeaways": [
+  "Koopman算子近似与线性RNN可通过延迟扩维状态严格等价，为二者提供统一视角",
+  "可学习谱分解+MLP测量函数装进并行线性RNN，兼得效率与性能",
+  "Koopman理论启发的结构化设计在时序预测上表现优异"
+ ],
+ "weaknesses": [
+  "延迟观测扩维虽建立等价，但扩维长度(Kernel窗口)的选择敏感性与存储开销在前9页未充分消融",
+  "等价性在线性RNN/线性Koopman下成立，对强非线性、长程依赖的实际收益依赖MLP测量函数容量，边界条件讨论有限",
+  "属时序建模/动力系统理论方向，与AI可靠性主线关联弱；部分提升为相对线性RNN基线"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

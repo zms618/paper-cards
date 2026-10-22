@@ -1,0 +1,37 @@
+{
+ "title": "How Effective Can Dropout Be in Multiple Instance Learning?",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "反直觉丢弃top-k示例提升MIL性能，但方法局限与实验不足",
+ "innovations": [
+  "首次系统研究dropout在MIL(尤其病理全切片图像WSI)中的效果",
+  "关键发现：丢弃包内top-k最重要示例反而提升性能与泛化，且在噪声攻击下更鲁棒",
+  "提出MIL-Dropout：系统决定丢弃哪些示例，使优化收敛到更平坦极小值、梯度方向误差更低"
+ ],
+ "method_framework": "MIL两阶段(先提特征再聚合)受骨干噪声嵌入与弱监督困扰。本文发现按重要度丢弃top-k示例可避免早期跟随错误梯度、收敛到平坦极小值从而泛化更好。MIL-Dropout据此系统化地在训练中决定丢弃示例子集。",
+ "experiment_framework": "在5个MIL基准数据集与2个病理WSI数据集上评测，对比ABMIL等基线加/不加MIL-Dropout，指标为分类精度与噪声攻击下的鲁棒性，并从损失景观(平坦/尖锐极小)分析。",
+ "takeaways": [
+  "在MIL中丢弃最'重要'的示例反而是有益的正则化，与直觉相反",
+  "MIL-Dropout使模型收敛到平坦极小值，泛化与抗噪声攻击更强",
+  "该正则化对病理WSI等弱监督医学图像任务特别有价值"
+ ],
+ "weaknesses": [
+  "'top-k重要'的度量依赖注意力聚合权重，对非注意力式MIL的适用性未说明",
+  "丢弃top-k的k值需调参，前9页未见对超参敏感性的充分消融",
+  "两阶段冻结骨干的设定限制了端到端收益，与端到端MIL的对比未充分"
+ ],
+ "confidence": "high",
+ "key": "icml2025/How Effective Can Dropout Be in Multiple Instance Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/How Effective Can Dropout Be in Multiple Instance Learning.pdf",
+ "raw_overall": 6.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

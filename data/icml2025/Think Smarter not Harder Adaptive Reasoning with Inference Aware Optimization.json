@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Think Smarter not Harder Adaptive Reasoning with Inference Aware Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Think Smarter not Harder Adaptive Reasoning with Inference Aware Optimization.pdf",
+ "title": "Think Smarter not Harder: Adaptive Reasoning with Inference Aware Optimization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "将推理预算约束形式化为效用最大化问题，实现LLM自适应推理分配。",
+ "innovations": [
+  "将自适应推理形式化为推理预算约束下的效用最大化问题，提出IBPO(推理预算约束策略优化)算法",
+  "训练模型理解查询难度并将推理预算优先分配给难题，避免简单问题过度思考",
+  "在相同推理预算下达到自一致性方法约2倍的性能提升"
+ ],
+ "method_framework": "将推理过程建模为在固定计算预算约束下的效用最大化问题。通过微调让模型学会评估问题难度，并自适应决定推理链长度。IBPO算法在策略优化目标中显式加入推理预算约束，使模型在简单问题上短思考、复杂问题上长思考，实现计算资源的最优分配。",
+ "experiment_framework": "在MATH500基准上评估，基线为LLaMA3.1 8B Instruct和自一致性方法。对比不同推理预算下的性能，验证自适应分配效率。评估指标为准确率和推理token数。",
+ "takeaways": [
+  "模型可学会根据问题难度自适应分配推理预算，简单问题少思考、复杂问题多思考",
+  "在2.16x和4.32x推理预算下分别取得4.14%和5.74%绝对提升，约为同预算自一致性方法的2倍",
+  "自适应推理可同时解决长推理模型在简单问题上过度计算的效率问题和在难题上推理不足的质量问题"
+ ],
+ "weaknesses": [
+  "仅在数学推理任务(MATH500)上验证，自适应推理在其他类型任务的效果未知",
+  "推理预算的度量单位(token数)与实际计算量的对应关系较粗糙",
+  "难度评估的准确性分析不足，模型可能误判问题难度导致预算分配失误"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

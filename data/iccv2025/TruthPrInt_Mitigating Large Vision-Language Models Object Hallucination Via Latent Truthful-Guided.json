@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/TruthPrInt_Mitigating Large Vision-Language Models Object Hallucination Via Latent Truthful-Guided.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/TruthPrInt_Mitigating Large Vision-Language Models Object Hallucination Via Latent Truthful-Guided.pdf",
+ "title": "TruthPrInt Mitigating Large Vision-Language Models Object Hallucination Via Latent Truthful-Guided",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "利用LVLM内部状态检测幻觉，通过回溯干预和子空间对齐缓解目标幻觉",
+ "innovations": [
+  "发现LVLM内部状态是高特异性的幻觉指标",
+  "提出通用幻觉子空间对齐方法ComnHallu",
+  "设计两阶段TruthPrInt框架进行真实引导解码干预"
+ ],
+ "method_framework": "TruthPrInt通过检测内部状态识别幻觉，定位触发词并回溯到早期起点进行预干预，结合ComnHallu对齐不同LVLM的幻觉子空间，实现跨模型和跨数据域的幻觉检测与缓解。",
+ "experiment_framework": "在COCO CHAIR、POPE等基准上测试，对比Greedy、Beam Search、VCD等8种基线方法，评估CHAIRS/CHAIRI/BLEU等指标，并在不同LVLM间进行迁移性测试。",
+ "takeaways": [
+  "内部状态作为高特异性幻觉指标的价值",
+  "子空间对齐方法提升跨模型/数据域的检测能力",
+  "回溯到早期起点进行干预的有效策略"
+ ],
+ "weaknesses": [
+  "方法计算开销较大，需要多次回溯和干预",
+  "对幻觉触发词的定位可能不够精确，依赖模型置信度"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "幻觉抑制与LVLM可靠性主线交点，跨模型迁移设计有防守力",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

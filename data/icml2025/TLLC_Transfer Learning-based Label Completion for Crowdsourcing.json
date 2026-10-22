@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/TLLC_Transfer Learning-based Label Completion for Crowdsourcing.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/TLLC_Transfer Learning-based Label Completion for Crowdsourcing.pdf",
+ "title": "TLLC: Transfer Learning-based Label Completion for Crowdsourcing",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "迁移学习补全众包标签，但依赖先验且计算开销大",
+ "innovations": [
+  "将高置信实例整体作为源域预训练孪生网络，为工人建模提供充足的标注知识。",
+  "把预训练网络迁移到由单个工人标注实例构成的目标域，使工人建模能捕捉每个工人的独特标注特性。",
+  "利用迁移后学到的新嵌入来补全每个工人的缺失标签，缓解稀疏矩阵下工人建模不足的瓶颈。"
+ ],
+ "method_framework": "流程分三步：(1) 从全体众购数据中识别高置信实例作为源域，预训练孪生网络以学习实例/工人表征；(2) 针对每个工人，用其标注的少量实例微调迁移网络，注入该工人特有噪声模式；(3) 用迁移网络得到的嵌入预测并补全该工人在稀疏矩阵中的缺失标签，为下游标签聚合提供更稠密、更干净的矩阵。",
+ "experiment_framework": "在多个广泛使用的真实众购数据集上评测；对比既有标签补全/聚合方法；指标为标签补全精度及下游聚合后的真实标签推断准确率。",
+ "takeaways": [
+  "迁移学习有效解决了工人标注实例过少导致工人建模不充分的问题。",
+  "补全后的更稠密标签矩阵显著提升下游标签聚合效果。",
+  "在多个真实数据集上验证了有效性。"
+ ],
+ "weaknesses": [
+  "聚焦众购标签聚合这一窄域，与医学影像/多模态推理主线关联弱。",
+  "高置信实例的识别依赖现有弱聚合先验，在极端稀疏/高噪声下可能循环依赖、放大错误。",
+  "为每个工人单独迁移网络的成本随工人数量增长，大规模众购平台的可扩展性与计算开销未充分讨论。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

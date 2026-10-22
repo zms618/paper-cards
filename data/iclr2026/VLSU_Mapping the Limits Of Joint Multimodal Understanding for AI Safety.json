@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VLSU_Mapping the Limits Of Joint Multimodal Understanding for AI Safety.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VLSU_Mapping the Limits Of Joint Multimodal Understanding for AI Safety.pdf",
+ "title": "VLSU: Mapping the Limits of Joint Multimodal Understanding for AI Safety",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 5.5,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "VLSU揭示VLM图文联合安全理解性能骤降，但评测为主无改进方案",
+ "innovations": [
+  "提出区分清晰不安全内容与边界案例的细粒度严重度分级，系统刻画过度拦截与拒答不足的权衡",
+  "构建覆盖15类危害、17种安全模式、8187个样本的大规模图文联合安全基准，采用真实图片与人标注的多阶段流水线",
+  "用组合分析揭示：单模态信号正确时仍有34%的图文联合安全分类错误，证明组合推理能力缺失"
+ ],
+ "method_framework": "VLSU先以多阶段流水线结合真实世界图片与人标注构建带严重度标签的基准，再对模型在单模态信号、图文联合推理、边界案例上的安全判定做分层评估；通过指令框架实验量化过度拦截与拒答率之间的此消彼长。",
+ "experiment_framework": "在8187样本、15类危害、17种安全模式上评测17个SOTA VLM；指标为安全分类准确率、过度拦截率、拒答率；报告单模态90%+准确率在联合推理时降至20-55%，并给出Gemini-1.5等模型在指令框架下拦截率从62.4%降至10.4%但拒答率从90.8%降至53.9%的权衡。",
+ "takeaways": [
+  "现有VLM在需要图文联合推理判定安全时性能骤降至20-55%，存在系统性联合理解失败",
+  "34%的联合安全分类错误发生在各单模态均判定正确时，说明缺乏组合式安全推理能力",
+  "指令框架可大幅降低边界内容过度拦截，但以牺牲对真正不安全内容的拒答为代价，二者难以兼得"
+ ],
+ "weaknesses": [
+  "基准由单一方标注构建，标注者主观性与跨标注者一致性(Kappa)在前9页未见充分报告",
+  "仅做评测与现象揭示，未提出提升联合安全理解的方法或对齐改进机制",
+  "危害类别与安全模式定义偏内容审核视角，对医学影像等具体落地域的迁移性未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态安全评测触及可靠性主线，但无改进方案",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

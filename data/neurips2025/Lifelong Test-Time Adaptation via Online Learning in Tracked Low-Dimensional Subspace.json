@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Lifelong Test-Time Adaptation via Online Learning in Tracked Low-Dimensional Subspace.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Lifelong Test-Time Adaptation via Online Learning in Tracked Low-Dimensional Subspace.pdf",
+ "title": "Lifelong Test-Time Adaptation via Online Learning in Tracked Low-Dimensional Subspace",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "通过梯度子空间跟踪抑制熵欺骗，实现终身测试时自适应",
+ "innovations": [
+  "识别熵欺骗样本(ED)是导致退化的根本原因",
+  "发现ET样本梯度形成低维结构而ED样本梯度分散",
+  "提出LCoTTA方法在线跟踪梯度子空间进行自适应"
+ ],
+ "method_framework": "LCoTTA方法通过PCA提取ET样本梯度形成的主子空间，将梯度投影到该子空间进行参数更新，有效抑制ED样本的影响，实现长期持续自适应。",
+ "experiment_framework": "ImageNetC数据集上50个循环的持续自适应实验，对比AdaContrast、TENT、CoTTA等SOTA方法，使用ResNet-50和ViT-B/16模型。",
+ "takeaways": [
+  "利用梯度低维结构区分ET和ED样本",
+  "仅更新归一化层参数降低计算开销",
+  "结合熵过滤策略进一步提升性能"
+ ],
+ "weaknesses": [
+  "仅更新归一化层可能限制模型表达能力",
+  "理论分析基于特定假设，实际场景可能更复杂"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

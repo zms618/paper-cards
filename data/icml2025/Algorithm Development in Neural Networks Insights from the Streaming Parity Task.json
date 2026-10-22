@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Algorithm Development in Neural Networks Insights from the Streaming Parity Task.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Algorithm Development in Neural Networks Insights from the Streaming Parity Task.pdf",
+ "title": "Algorithm Development in Neural Networks: Insights from the Streaming Parity Task",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "RNN在奇偶任务上演示相变，但泛化性存疑",
+ "innovations": [
+  "发现RNN在流奇偶校验任务上存在向完美无限泛化(perfect infinite generalization)的相变现象",
+  "提出隐式表征合并(implicit representational merger)效应，可解释为网络构建了一个重现任务的有限自动机",
+  "建立表征动力学的有效理论，定量描述算法发展的动态过程"
+ ],
+ "method_framework": "以流奇偶校验(streaming parity)任务为模型系统：RNN在短序列上训练，但可泛化到任意长序列。通过有效理论分析表征空间的动力学演化，追踪隐层表示如何从随机初始化收敛到对应有限自动机的状态表示。核心发现是表征合并效应——不同输入模式的隐表示逐渐合并为对应自动机状态的少数几个簇。",
+ "experiment_framework": "纯理论+小规模实验论文。任务：streaming parity（序列二分类，奇偶校验）。模型：简单RNN。实验验证：短序列训练→长序列泛化测试（序列长度达10000）。分析工具：表征动力学有效理论、隐层表示聚类分析。",
+ "takeaways": [
+  "RNN在足够有限训练经验后可发生相变，实现对任意长序列的完美泛化，即学习到了真正的算法",
+  "表征合并是算法学习的关键机制：隐表示从分散逐渐合并为有限自动机的状态数",
+  "有效理论可定量预测学习动力学，为理解神经网络如何发展出算法提供了可操作框架"
+ ],
+ "weaknesses": [
+  "仅在streaming parity这一个极简任务上验证，结论对更复杂任务（如语言建模）的适用性未知",
+  "依赖简化的RNN架构和假设（如独立神经元分析），现代复杂架构(Transformer)是否存在类似机制未验证",
+  "相变的具体触发条件（需要多少训练数据/多少参数）仅在特定参数范围内分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "奇偶校验任务与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

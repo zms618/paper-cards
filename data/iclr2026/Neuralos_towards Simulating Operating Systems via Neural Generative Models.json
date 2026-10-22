@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Neuralos_towards Simulating Operating Systems via Neural Generative Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Neuralos_towards Simulating Operating Systems via Neural Generative Models.pdf",
+ "title": "NeuralOS: Towards Simulating Operating Systems via Neural Generative Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "RNN+扩散模型模拟OS界面，合成数据可扩展应用但缺乏量化验证。",
+ "innovations": [
+  "提出用RNN状态跟踪器加扩散渲染器端到端模拟操作系统GUI，直接对用户输入反应式地预测屏幕帧。",
+  "采用两级LSTM结构：下层编码用户输入并用注意力融合上一帧视觉信息，上层处理注意力表征并反馈。",
+  "证明合成训练数据可让模型学会模拟从未安装的应用（如Doom），提示纯从合成演示学习UI的路径。"
+ ],
+ "method_framework": "每步由下层LSTM编码光标位置/点击/键盘事件，并用注意力融合上一帧视觉信息；上层LSTM进一步处理并反馈维护状态；将RNN输出作为渲染器上下文，配合光标位置图，由扩散UNet渲染器生成下一帧GUI画面。",
+ "experiment_framework": "在Ubuntu XFCE录屏数据集（含随机交互与AI智能体产生的真实交互）上训练；评估GUI序列渲染真实性、鼠标交互捕捉与应用启动等状态转移预测（具体量化指标在所提取页之后）；提供代码/预训练模型/交互demo。",
+ "takeaways": [
+  "生成模型可直接反应式地模拟操作系统GUI的视觉与状态转移。",
+  "合成演示一旦被蒸馏进生成模型，即可成为可用界面，包括模拟未安装应用。",
+  "RNN状态跟踪加扩散渲染是交互式视觉环境模拟的有效组合。"
+ ],
+ "weaknesses": [
+  "所提取页缺乏客观的渲染质量/状态预测量化指标，多为定性展示。",
+  "仅在Ubuntu XFCE单一桌面环境小规模录屏上训练，对复杂真实工作流的长时一致性未验证。",
+  "状态转移的精确可控性与误差累积未系统分析，离可可靠使用的OS仿真仍远。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "纯系统工作，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

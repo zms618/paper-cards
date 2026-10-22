@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Not All Parameters Matter Masking Diffusion Models for Enhancing Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Not All Parameters Matter Masking Diffusion Models for Enhancing Generation.pdf",
+ "title": "Not All Parameters Matter Masking Diffusion Models for Enhancing Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "通过掩码选择扩散模型参数，提升生成质量但增加计算开销",
+ "innovations": [
+  "发现扩散模型不同阶段使用相同参数的局限性",
+  "提出MaskUNet框架实现时间步和样本相关的参数选择",
+  "设计训练和训练-free两种掩码优化策略"
+ ],
+ "method_framework": "MaskUNet引入可学习掩码选择U-Net有效参数，通过MLP生成时间步和样本相关的二值掩码，增强生成能力同时保持预训练模型泛化性",
+ "experiment_framework": "COCO数据集评估FID和CLIP指标，下游任务包括图像定制、关系反转和文本生成视频，基线包括SD1.5/2.0、LoRA、Full Fine-tune等",
+ "takeaways": [
+  "参数选择比参数更新更有效",
+  "掩码机制可提升多种下游任务性能",
+  "训练-free方法通过奖励模型优化掩码"
+ ],
+ "weaknesses": [
+  "掩码生成器增加额外计算开销",
+  "未充分分析不同时间步掩码的差异性",
+  "对模型参数减少的具体效果未量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "参数选择方法与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/SageAttention2_Efficient Attention with Thorough Outlier Smoothing and Per-thread INT4 Quantization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SageAttention2_Efficient Attention with Thorough Outlier Smoothing and Per-thread INT4 Quantization.pdf",
+ "title": "SageAttention2: Efficient Attention with Thorough Outlier Smoothing and Per-thread INT4 Quantization",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "硬件特定注意力算子优化，INT4/FP8量化加速3x，依赖Hopper架构。",
+ "innovations": [
+  "按硬件友好的线程级粒度把Q,K量化到INT4、eP,V量化到FP8，用更快的4-bit MatMul加速注意力",
+  "提出Q的平滑方法以提升INT4 QK^T精度",
+  "为ePV设计两级累加策略以提升FP8 ePV精度"
+ ],
+ "method_framework": "线性层量化已成熟但注意力量化难。SageAttention2将Q,K以线程级粒度量化为INT4以利用快速4-bit MatMul，eP(softmax输出概率)与V量化为FP8；再用outlier平滑补偿Q的异常值、用两级累加补偿ePV的精度损失，兼顾速度与精度。",
+ "experiment_framework": "在Hopper GPU上与FlashAttention2/3、xformers、SageAttention对比；指标为OPS/速度与下游精度保持；报告OPS超FA2约3x、超xformers约4.5x，速度匹配FA3(fp8)且精度更高。",
+ "takeaways": [
+  "线程级INT4量化Q,K可在保持精度下大幅加速注意力",
+  "outlier平滑+两级累加是弥补低比特量化精度损失的关键",
+  "SageAttention2在Hopper上达到FA3(fp8)速度且精度更高"
+ ],
+ "weaknesses": [
+  "属系统/算子优化，收益强依赖Hopper等特定硬件架构",
+  "精度保持主要在主流模型/任务验证，对极端长上下文或量化敏感任务的鲁棒性未充分评估",
+  "目标是推理效率而非可靠性，与医学影像、多模态推理主线无直接关联"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/LightGTS_A Lightweight General Time Series Forecasting Model.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/LightGTS_A Lightweight General Time Series Forecasting Model.pdf",
+ "title": "LightGTS: A Lightweight General Time Series Forecasting Model",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.4
+ },
+ "one_line": "轻量级TS模型挑战大参数范式，但证据不足。",
+ "innovations": [
+  "挑战了时间序列基础模型必须大参数量+大规模预训练的范式，证明轻量级通用模型也能达到有竞争力的性能",
+  "设计轻量化架构，在保持跨数据集泛化能力的同时将参数量压缩到现有FM的几分之一",
+  "在多个时间序列预测基准上，LightGTS以小得多的参数量达到与700M级FM相当的MSE"
+ ],
+ "method_framework": "LightGTS是一个轻量级通用时间序列预测模型，采用精简的Transformer架构和高效的tokenization策略。通过精心设计的架构选择（如简化注意力机制、优化embedding层），在保持跨数据集泛化能力的同时大幅减少参数量。在大规模多源时间序列数据上预训练，零样本迁移到下游数据集。",
+ "experiment_framework": "在多个时间序列预测基准上评测，对比Timer(311M)、Chronos(700M)、MOIRAI等FM；指标为MSE/MAE和参数量；验证零样本和微调两种设定下的性能。",
+ "takeaways": [
+  "时间序列FM的参数量效率有很大提升空间，LightGTS以更少参数达到了相当性能",
+  "架构精简而非简单剪枝，说明通用TS预测不一定需要超大模型",
+  "轻量级FM更适合边缘部署和实时预测场景"
+ ],
+ "weaknesses": [
+  "在极长序列或极端分布偏移场景下，小模型的泛化极限可能不如大模型",
+  "主要对比公开FM基线，与商业闭源TS模型的对比未包含",
+  "前9页未看到完整的架构细节和消融实验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.03,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

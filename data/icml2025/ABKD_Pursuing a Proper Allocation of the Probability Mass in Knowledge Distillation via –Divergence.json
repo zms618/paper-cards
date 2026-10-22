@@ -1,0 +1,41 @@
+{
+ "title": "ABKD: Pursuing a Proper Allocation of the Probability Mass in Knowledge Distillation via α-β-Divergence",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "分析KD中两种模式集中效应，提出α-β散度平衡概率分配",
+ "innovations": [
+  "识别 KD 的核心难点是两种相互纠缠的模式集中效应：Hardness-Concentration(聚焦误差大的模式)与 Confidence-Concentration(聚焦学生高置信的模式)",
+  "通过分析梯度更新中概率如何被重分配，揭示 FKLD/RKLD 中两种效应被极端化(要么过弱要么过强)",
+  "提出 α-β 散度形式的 ABKD，可调地平衡两种集中效应，实现概率质量的恰当分配"
+ ],
+ "method_framework": "把蒸馏散度从 FKLD/RKLD 推广到 α-β 散度族；通过 α、β 两个参数分别调节对'教师高难度模式'与'学生高置信模式'的聚焦程度，在梯度更新中显式控制概率质量在两类模式间的分配，避免单一 KL 方向带来的过度集中。",
+ "experiment_framework": "在图像分类与文本生成等任务上，对比 FKLD/RKLD 及其他蒸馏损失，以学生模型精度/困惑度为指标，验证 α-β 散度在不同规模学生上的收益及参数敏感性。",
+ "takeaways": [
+  "FKLD 与 RKLD 对两种模式集中效应的控制走向两个极端，导致学生难以恰当分配概率质量",
+  "α-β 散度可调地平衡难度与置信集中，在多任务上改进蒸馏效果",
+  "对梯度更新中概率重分配的分析为设计蒸馏损失提供了可解释的视角"
+ ],
+ "weaknesses": [
+  "α、β 两个超参的选取依赖任务，缺乏自适应确定方法",
+  "前 9 页未见与近期现代蒸馏(如特征级/对比蒸馏)方法的对比",
+  "46 页长文，关键消融与跨规模结果在后半部分，评分基于摘要与引言"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/ABKD_Pursuing a Proper Allocation of the Probability Mass in Knowledge Distillation via –Divergence.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ABKD_Pursuing a Proper Allocation of the Probability Mass in Knowledge Distillation via –Divergence.pdf",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "知识蒸馏方法改进，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

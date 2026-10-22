@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/ViCTr_Vital Consistency Transfer for Pathology Aware Synthesis.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/ViCTr_Vital Consistency Transfer for Pathology Aware Synthesis.pdf",
+ "title": "ViCTr Vital Consistency Transfer for Pathology Aware Synthesis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "两阶段病理感知医学图像合成，修正流与Tweedie结合提升采样效率",
+ "innovations": [
+  "两阶段训练框架，先预训练后微调",
+  "将Tweedie公式融入修正流轨迹实现单步采样",
+  "首次实现腹部MRI病理分级合成"
+ ],
+ "method_framework": "ViCTr采用两阶段框架：第一阶段在ATLAS-8k上预训练，使用EWC保留解剖结构；第二阶段用LoRA模块对抗微调实现病理严重度控制，结合修正流与Tweedie公式实现单步高质量采样。",
+ "experiment_framework": "在BTCV(CT)、AMOS(MRI)和CirrMRI600+(肝硬化)数据集评估，使用FID/MFID指标衡量生成质量，并通过nnUNet等模型评估分割性能提升。",
+ "takeaways": [
+  "两阶段训练策略有效保留解剖结构同时增强病理建模",
+  "Tweedie修正与修正流结合显著提升采样效率"
+ ],
+ "weaknesses": [
+  "仅针对腹部影像，未验证其他身体部位",
+  "未充分讨论模型在不同医院设备间的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "病理感知医学图像合成，可靠性主线与医学落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

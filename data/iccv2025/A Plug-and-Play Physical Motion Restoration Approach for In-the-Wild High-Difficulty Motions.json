@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/A Plug-and-Play Physical Motion Restoration Approach for In-the-Wild High-Difficulty Motions.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Plug-and-Play Physical Motion Restoration Approach for In-the-Wild High-Difficulty Motions.pdf",
+ "title": "A Plug-and-Play Physical Motion Restoration Approach for In-the-Wild High-Difficulty Motions",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "掩码校正与先验注入的物理动作修复，但实验证据不足",
+ "innovations": [
+  "MCM 先用 3D 投影与 2D 检测间的 OKS 分数、以及 SMPL 网格点落在分割掩码内的比例双重检出 flawed motion 帧，再以 SAM 掩码经 ViT 提取的特征加运动上下文为条件做扩散 in-betweening，重生成并替换缺陷段。",
+  "PTM 预训时冻结运动预测先验并以残差形式设目标角度 p^d_t = p^r_t + a_t，适配阶段只更新控制器、prior 保持冻结，从而加速适应并缓解灾难性遗忘、把高难度动作所需步数降到 2000-4000。",
+  "适配用忽略根绝对位移的相对重建奖励 r^g_t、由关节均值距离与高度/接触项构成的相对终止条件 F_t，并加入掩码引导奖励 r^m_t = CLIP(m_t, v_t) + IoU(m_t, v_t) 提升与视频的一致性。"
+ ],
+ "method_framework": "以视频动捕参考动作为输入：MCM 检出缺陷帧后用掩码条件扩散补齐，并以 PTM 仿真成功的结果数据微调 MCM；PTM 冻结预测先验、在线用 PPO+AMP 更新控制器做运动模仿，辅以掩码引导奖励与终止条件。",
+ "experiment_framework": "AMASS、Human3.6M、AIST++、Motion-X kungfu 训练；在 AIST++ 测试集、EMDB、kungfu 及自建 206 段野外高难度集上评测；指标含 MPJPE/PVE/Accel、WA-MPJPE100/RTE 与 SP/GP/Float/FS。",
+ "takeaways": [
+  "高难度动作下物理模仿的失效主要来自短时 flawed motion 修复失败，而非控制器动力学建模本身的上限，先修参考动作比堆强化学习更划算。",
+  "2D 掩码在模糊帧与极端姿态下比关键点稳定得多，作者把掩码同时用于缺陷帧检测、生成条件与适配奖励，构成一条贯穿两模块的一致视觉引导。",
+  "世界坐标下的自穿透、穿地、浮空、脚滑指标比相机坐标 MPJPE 更能反映真实泛化，自建 206 段野外集正是为了回避 3D 标注不可得时的评测盲区。"
+ ],
+ "weaknesses": [
+  "正文在 §4.2 开头即被截断（第 9 页边界），Table 1 完整数值、后续消融与超参敏感性、推理耗时对比均不可见，无法验证 MCM 与 PTM 各成分的实际贡献量。",
+  "缺陷帧检测依赖 OKS 阈值与掩码覆盖率阈值的手工设定，正文未给出阈值选取依据，也缺少误检漏检的定量分析，真实视频中漏修会直接导致物理模仿崩溃。",
+  "即插即用的泛化宣称只由 TRAM、GVHMR、PhysPT 三个基线支撑，未报告接入不同动捕算法时的退化边界与失败案例；且预训需单卡 A100 跑 2-3 天、推理 2000-4000 步，代价披露不充分。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "物理动作修复与可靠性主线无实质交点，仅属常规视觉任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

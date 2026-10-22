@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/AFL A Single-Round Analytic Approach for Federated Learning with Pre-trained.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AFL A Single-Round Analytic Approach for Federated Learning with Pre-trained.pdf",
+ "title": "AFL: A Single-Round Analytic Approach for Federated Learning with Pre-trained Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.4
+ },
+ "one_line": "闭式解与绝对聚合律实现一轮联邦训练，但适用边界有限",
+ "innovations": [
+  "局部阶段把预训练骨干冻结、把客户端头部分类化成最小二乘Ŵ_k=X_k^†Y_k一步闭式求解，只跑一epoch，不做反向传播与多epoch更新，消除梯度消失/爆炸与本地收敛问题",
+  "聚合阶段由Moore-Penrose逆的分块恒等式（Lemma 1）导出绝对聚合律（Theorem 1）：Ŵ=W̄_uŴ_u+W̄_vŴ_v（W̄含(C_u+C_v)^{-1}项），两个独立训练的客户端解可无近似地合成联合训练解，从而只需一次聚合，且聚合顺序随机亦可，得到数据划分不变性",
+  "客户端数大导致N_k<y_e使X_k不满列秩时，本地解改为正则中间量Ŵ_k^r=(X_k^TX_k+gamma I)^{-1}X_k^TY_k，聚合后按Theorem 2的逆映射Ŵ=(C_agg)^{-1}C_agg^r·Ŵ^r恢复，gamma的影响在聚合完成后被剔除"
+ ],
+ "method_framework": "客户端用同一冻结预训练骨干抽嵌入X_k、组one-hot标签矩阵Y_k，闭式解出头权重并回传(Ŵ_k^r, C_k^r=X_k^TX_k+gamma I)；服务端逐对按Σnk C_k累进聚合一次，最后用逆映射还原联合权重。",
+ "experiment_framework": "CIFAR-10/100、Tiny-ImageNet，ResNet-18 ImageNet预训练且骨干冻结，100客户端，LDA(α=0.1/0.05)与Sharding(s=4/2/10)非IID划分，基线FedAvg/FedProx/MOON/FedGen/FedDyn/FedNTD/FedDisco，报告best top-1与3次均值±标准差。",
+ "takeaways": [
+  "把'联邦聚合的等价性'从多轮迭代逼近改成一步闭式可逆运算，给出feedback-free、通信一次的FL新分支，对大客户端数的通信瓶颈有直接价值",
+  "数据划分不变性（客户端数与划分方式无关）是一个干净的理论性质，可迁移到任何需要'局部闭式解可合并'的分布式估计/校准场景",
+  "正则中间量（RI）让不等量、小样本客户端也能参与，且gamma可训练后剔除，提供了处理病态条件的通用技巧"
+ ],
+ "weaknesses": [
+  "本质是把持续学习里的解析学习（gradient-free AL）迁移到联邦训练再加一个正则项，强依赖'预训练骨干冻结+只训练线性头'这一设定；一旦下游头无法化为线性回归，AA律失效，正文未讨论该适用边界与失败条件",
+  "实验只报训练过程中出现的最高top-1（best epoch），虽跑3次且给了标准差，但best-epoch选择自带乐观偏差；且在CIFAR-100 s=10病态划分上FedDyn 57.55 对 AFL 58.56、α=0.01时FedDyn 36.12 而多数梯度方法跌到33左右，AFL并未对'极端非IID'给出超越性结果，只是不受划分影响",
+  "等价性只在(各客户端X_k满列秩且为线性回归式)下成立且std恒为0（无随机性），也正因如此它不提供FedAvg式的鲁棒聚合或隐私额外保护；验证止步于CIFAR/Tiny-ImageNet+ResNet18，声称的千级客户端实验与训练时间消融在正文截断之后"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "联邦学习通信效率提升，与可靠性主线有间接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Restricted Global-Aware Graph Filters Bridging GNNs and Transformer for Node Classification.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Restricted Global-Aware Graph Filters Bridging GNNs and Transformer for Node Classification.pdf",
+ "title": "Restricted Global-Aware Graph Filters Bridging GNNs and Transformer for Node Classification",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "将Transformer重构为全局图滤波器提升GNN泛化",
+ "innovations": [
+  "将Transformer重新解释为具有带通特性的全局感知图滤波器",
+  "提出全局到局部的G2Former架构，解决Transformer与GNN结合的'惰性'问题",
+  "设计多通道滤波约束，有效抑制测试误差振荡"
+ ],
+ "method_framework": "G2Former将Transformer扩展为带通全局感知图滤波器，通过多通道生成引导噪声增强节点特征，再由下游GNN进行局部编码，保持线性复杂度。",
+ "experiment_framework": "17个数据集（8个同质图、6个异质图、3个大图），对比8种SOTA图变换器和3种经典GNN，使用准确率和ROC-AUC作为指标。",
+ "takeaways": [
+  "图变换器的主要价值在于作为正则化组件提升GNN泛化能力而非提高性能上限",
+  "多通道滤波约束能有效抑制测试误差振荡",
+  "全局到局部的架构设计优于传统的级联方式"
+ ],
+ "weaknesses": [
+  "方法依赖于特定的图信号处理理论，可能难以推广到非图结构数据",
+  "通道初始化策略的选择对性能有显著影响，缺乏自适应机制",
+  "实验部分未充分探讨方法在不同规模图上的扩展性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

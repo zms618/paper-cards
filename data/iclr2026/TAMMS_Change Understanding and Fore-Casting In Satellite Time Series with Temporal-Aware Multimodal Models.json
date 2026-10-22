@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TAMMS_Change Understanding and Fore-Casting In Satellite Time Series with Temporal-Aware Multimodal Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TAMMS_Change Understanding and Fore-Casting In Satellite Time Series with Temporal-Aware Multimodal Models.pdf",
+ "title": "TAMMs: Change Understanding and Forecasting in Satellite Image Time Series with Temporal-Aware Multimodal Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 7.0,
+  "overall": 6.0
+ },
+ "one_line": "冻结MLLM+扩散模型联合卫星时序变化描述与预报，双向增益有限",
+ "innovations": [
+  "首次在单一MLLM-扩散架构中统一时间变化描述（TCD）和未来卫星图像预报（FSIF）两个原本分离的任务",
+  "设计时间适应模块（TAM），增强冻结MLLM对长时序动态的理解能力",
+  "提出语义融合控制注入（SFCI）机制，将变化理解转化为细粒度生成控制，使理解直接提升预报一致性"
+ ],
+ "method_framework": "TAMMs基于冻结的MLLM和扩散生成模型。时间适应模块插入MLLM中，使其能理解长时序卫星图像的变化动态。MLLM对历史变化的语义理解通过语义融合控制注入机制传递给扩散模型，作为生成未来图像的条件信号。这样TCD任务的理解能力直接提升FSIF任务的生成一致性。",
+ "experiment_framework": "在卫星图像时间序列数据集上评估TCD和FSIF两个任务；基线包括专门的TCD方法和专门的FSIF方法；指标包括变化描述的CIDEr/BLEU等和图像预报的PSNR/SSIM等。",
+ "takeaways": [
+  "统一框架使变化理解和图像预报相互增益，优于各自独立的专用模型",
+  "时间适应模块能有效唤醒冻结MLLM的长时序推理能力",
+  "语义驱动的生成控制比纯视觉条件的预报在时间一致性上更好"
+ ],
+ "weaknesses": [
+  "时间适应模块的参数效率和可扩展性在更长时序上未充分验证",
+  "实验主要在卫星遥感数据上验证，其他多模态时序领域的适用性未知",
+  "扩散生成的计算开销较大，实时预报场景的可行性需权衡"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "卫星时序变化理解与预报，可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

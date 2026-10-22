@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/A Simple yet Effective Layout Token in Large Language Models.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Simple yet Effective Layout Token in Large Language Models.pdf",
+ "title": "A Simple yet Effective Layout Token in Large Language Models for Document Understanding",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.2
+ },
+ "one_line": "将bbox压缩为单个layout token并与文本共享位置ID的文档理解方法",
+ "innovations": [
+  "每段文本用一个可学向量t作query、bbox四维坐标经FB投影后的embedding作KV的单层注意力f_G=CrossAttn(f_p,f_v)，把Box压成恰好1个layout token（表1：其它layout-as-token格式需18~27个额外位置ID）",
+  "位置编码复用文本位置ID：段内layout token取该段首文本token的位置ID，P=[0,1,...,T-1,0]（式3），不占额外位置预算（T-Ratio 100%），同时避免插入layout token拉长段间位置距离",
+  "NTLP预训练目标：对交错序列每个位置统一做next-token预测，layout token的hidden state过一个box head映射到[x1,y1,x2,y2]并用MSE监督、文本token用CE（式5），逼出文本与布局的互相可预测"
+ ],
+ "method_framework": "OCR出文本段与bbox→layout tokenizer（可学query+注意力）压成单token→与文本token交错、共享首位置ID→冻结LLM+LoRA微调→文本head出CE、box head出MSE。",
+ "experiment_framework": "单页：DocVQA、SIBR、FUNSD、CORD（ANLS）；多页：MP-DocVQA、DUDE；基线含LayoutLLM/LayTextLLM/DocLLM及QwenVL/InternVL2/TextMonkey等MLLM，7B/8B两个backbone。",
+ "takeaways": [
+  "把外部结构信息（bbox）压成1个token并与文本共享位置ID，FLOPs 9.32 vs 其它格式28+，是以极低开销把结构化先验塞进LLM输入侧的方案",
+  "next-token预测里给结构token也加MSE监督（交错双向重建），比只在文本token上算CE更能逼出layout/text对齐"
+ ],
+ "weaknesses": [
+  "正文4.4.1之后截断：表5之后的消融（layout tokenizer结构、NTLP权重、位置共享方案的对照、2k/4k/16k长文本效率）不可见",
+  "T-Ratio是作者自造的粗略指标，用它论证'额外位置ID挤压文本学习容量'缺直接实验对照：⋆组只换了输入格式，未分离出'位置共享'这一唯一变量的独立贡献",
+  "NTLP的MSE只重建bbox绝对像素坐标（未说明是否随OCR分辨率/页面尺寸归一化），跨数据集layout监督有量纲漂移风险；且LLM全程冻结只训LoRA（7B/8B），layout收益可能来自LoRA新增容量而非layout token设计；LLM全程冻结只训LoRA（7B/8B），layout收益可能来自LoRA新增容量而非layout token设计；且表3里InternVL2-8B SIBR仅68.39而本文92.20，与输入模态（纯文本+框 vs 高分辨率图）不可比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "文档理解方法与可靠性主线无实质交点，仅为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

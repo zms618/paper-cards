@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/DR.LLM_Dynamic Layer Routing In LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/DR.LLM_Dynamic Layer Routing In LLMS.pdf",
+ "title": "DR.LLM: Dynamic Layer Routing In LLMS",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "轻量层路由器提升LLM效率，但样本有限且长序列稳定性存疑",
+ "innovations": [
+  "为冻结LLM添加轻量级每层路由器",
+  "基于MCTS的显式监督训练",
+  "窗口池化与焦点损失设计",
+  "无需推理时搜索的动态路由"
+ ],
+ "method_framework": "为冻结LLM添加轻量级MLP路由器，决定跳过、执行或重复层，通过MCTS生成训练数据，使用窗口池化处理长序列，焦点损失处理类别不平衡",
+ "experiment_framework": "ARC和DART数据集，6种LLaMA和Qwen模型，准确率与平均执行层数指标，对比多种基线方法",
+ "takeaways": [
+  "显式监督路由可同时提升效率与准确性",
+  "轻量级路由器可泛化到域外任务",
+  "MCTS可生成高质量训练数据而无需修改基础模型"
+ ],
+ "weaknesses": [
+  "仅使用4k训练样本，可能限制路由策略的多样性",
+  "路由器在长序列上的稳定性仍有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "轻量路由器提升LLM效率，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

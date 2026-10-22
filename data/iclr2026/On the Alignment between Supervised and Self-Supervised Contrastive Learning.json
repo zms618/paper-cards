@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/On the Alignment between Supervised and Self-Supervised Contrastive Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/On the Alignment between Supervised and Self-Supervised Contrastive Learning.pdf",
+ "title": "On the Alignment between Supervised and Self-Supervised Contrastive Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "理论证明CL与NSCL表征对齐但参数指数失配，依赖强假设",
+ "innovations": [
+  "把 CL-NSCL 的对齐从损失层面推进到表征层面，证明二者相似矩阵在现实条件下保持接近",
+  "给出 CKA、RSA 等对齐指标的高概率保证，并刻画对齐如何随类别数、温度、batch size 变化",
+  "证明参数空间耦合本质不稳定：CL 与 NSCL 权重分歧随训练时间指数增长，尽管表征仍对齐"
+ ],
+ "method_framework": "在相同初始化/batch/增广（共享随机性）下对比 CL 与 NSCL；用高概率界分析二者诱导表征的相似矩阵，证明表征对齐；同时分析权重轨迹，证明参数空间分歧指数增长；导出对齐随类别数↑、温度↑而增强的规律。",
+ "experiment_framework": "理论推导为主，辅以经验验证：在不同规模与温度下测 CL-NSCL 的 CKA/RSA 对齐，验证其随规模/温度增强，并比较 NSCL 与其他监督目标对 CL 的追踪紧密度。",
+ "takeaways": [
+  "CL 与 NSCL 损失相近不只是目标近似，其表征在训练全程也保持对齐",
+  "表征对齐但参数不一致是常态：权重可指数发散而功能表征仍相似",
+  "NSCL 可作为连接自监督与监督学习的有原则桥梁"
+ ],
+ "weaknesses": [
+  "对齐保证依赖共享随机性（同初始化/batch/增广），实际自监督与监督预训练不满足该强条件",
+  "理论界可能较松，正文未报告界的紧度",
+  "偏离可靠性/医学影像/多模态推理主线，相关性低"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "理论分析监督与自监督对比学习对齐，偏离可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

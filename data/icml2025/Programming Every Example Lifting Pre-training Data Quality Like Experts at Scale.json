@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Programming Every Example Lifting Pre-training Data Quality Like Experts at Scale.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Programming Every Example Lifting Pre-training Data Quality Like Experts at Scale.pdf",
+ "title": "Programming Every Example: Lifting Pre-training Data Quality Like Experts at Scale",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "PROX用小模型编程式精炼数据，提升预训练效率但计算成本高",
+ "innovations": [
+  "提出将预训练数据精炼视为编程任务的PROX框架：小模型为每个样本生成细粒度操作（如字符串归一化）并执行",
+  "证明仅0.3B参数的小模型即可具备强大的数据精炼能力，无需大模型",
+  "在持续预训练中，PROX精炼数据使7B模型在数学领域仅用10B tokens即获得20%提升"
+ ],
+ "method_framework": "PROX将数据精炼转化为编程任务：给定一个原始数据样本，小语言模型生成针对该样本的细粒度操作程序（如字符串规范化、格式修正等），然后执行该程序精炼数据。逐样本处理而非文档级过滤，实现sample-wise的精细化数据清洗。",
+ "experiment_framework": "在10个基准上验证，覆盖模型规模（up to 1.7B）和预训练语料（C4, RedPajama-V2, FineWeb, FineWeb-Edu, DCLM）。对比启发式过滤、PPL评分、LLM过滤等基线。持续预训练在数学领域验证效率提升。",
+ "takeaways": [
+  "小模型也能高效完成数据精炼，将数据清洗从规则工程提升为编程自动化",
+  "逐样本细粒度精炼比文档级过滤更能提升预训练数据质量",
+  "PROX在持续预训练中大幅提升样本效率，10B tokens达到通常需200B tokens的效果"
+ ],
+ "weaknesses": [
+  "逐样本生成操作程序的计算成本可能高于简单过滤规则",
+  "前9页内未分析PROX生成错误操作对数据质量的负面影响",
+  "仅验证到1.7B预训练模型，更大规模模型上的效果未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

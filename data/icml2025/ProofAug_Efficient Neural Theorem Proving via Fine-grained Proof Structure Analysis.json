@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/ProofAug_Efficient Neural Theorem Proving via Fine-grained Proof Structure Analysis.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ProofAug_Efficient Neural Theorem Proving via Fine-grained Proof Structure Analysis.pdf",
+ "title": "ProofAug: Efficient Neural Theorem Proving via Fine-grained Proof Structure Analysis",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "ProofAug通过细粒度证明分析减少LLM查询，提升定理证明效率。",
+ "innovations": [
+  "提出细粒度证明结构分析方法，从LLM生成的证明提案中提取最大兼容半证明(MCSP)，在多个粒度级别集成自动化工具",
+  "设计即插即用的ProofAug模块，可与任意树搜索算法集成，构建高效递归证明(ERP)模块",
+  "在Isabelle和Lean 4上分别验证，Isabelle达66%累积通过率（仅2100查询），Lean 4将pass@1从44.3%提升到50.4%"
+ ],
+ "method_framework": "ProofAug对LLM生成的完整证明提案进行细粒度结构分析，找到可通过ITP检查的最大兼容半证明(MCSP)，然后从未完成的子目标出发，在不同粒度（战术级、引理级、整级）调用自动化工具（内置战术、ATP、启发式）递归填补证明缺口。作为即插即用模块与树搜索算法结合，形成递归证明增强。",
+ "experiment_framework": "在miniF2F基准上验证，使用deepseek-math-7b-base模型和Isabelle证明助手，以及Lean 4版本。基线包括Subgoal-XL（先前SOTA，56.1%/16384查询）。指标为累积通过率和pass@1。ProofAug用2100查询达66%，Lean 4上将Kima-Prover-1.5B的pass@1从44.3%提升到50.4%。",
+ "takeaways": [
+  "细粒度证明结构分析能有效识别证明提案中可通过检查的部分，避免整案失败",
+  "多粒度自动化工具集成比单一粒度更高效，大幅减少所需模型查询数",
+  "ProofAug作为即插即用模块可通用地提升不同证明助手和模型的性能"
+ ],
+ "weaknesses": [
+  "依赖LLM先生成完整证明提案，若提案结构偏差大则MCSP提取效果有限",
+  "仅在miniF2F这一基准验证，未在更大规模的定理库上测试",
+  "混合提示策略的具体细节在前9页内描述不够完整"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

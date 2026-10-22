@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Universal Multi-Domain Translation via Diffusion Routers.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Universal Multi-Domain Translation via Diffusion Routers.pdf",
+ "title": "Universal Multi-Domain Translation via Diffusion Routers",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.0,
+  "overall": 5.8
+ },
+ "one_line": "扩散路由器解决多域翻译，但与主线关联弱且误差传播未量化",
+ "innovations": [
+  "提出UMDT问题设定：K个域间任意两两翻译只需K-1个含中心(枢纽)域的配对数据集，规避全对齐tuple随域数爆炸的难题",
+  "提出Diffusion Router：用单个噪声预测网络同时建模所有central↔non-central翻译，以源/目标域标签条件引导去噪路径，无需为每个映射训单独模型",
+  "提出可扩展学习策略(对间接映射与参数化直接映射间KL散度的变分上界优化)与轻量Tweedie精炼采样，支持直接非中心域映射并降低采样成本"
+ ],
+ "method_framework": "MDT现有两范式：全对齐tuple(随域数不可行)或共享中心域(仅支持central↔non-central)。DR用单一εθ，同时以源域与目标域标签为条件，像网络路由器按'源/目的地址'选择翻译路径。先经中心域做间接非中心翻译；再用变分界最小化间接映射与参数化直接映射间的KL，归结为对齐两个条件噪声预测(分别以源非中心样本与配对中心样本为条件)，类似扩散训练目标；Tweedie精炼以极少步数近似条件采样降低开销。",
+ "experiment_framework": "在3个大规模UMDT基准上评估间接与直接翻译，对比需全对齐tuple或仅central↔non-central的MDT方法；指标为翻译质量与采样成本；报告间接/直接翻译均达SOTA、采样成本更低，并解锁sketch↔segmentation等新任务。",
+ "takeaways": [
+  "单一条件噪声预测器经域标签路由即可扩展到任意多域翻译，无需为每对域训独立模型",
+  "变分界策略使直接非中心映射可从中心域对齐中学习，无需额外跨非中心配对数据",
+  "Tweedie精炼以少步采样大幅降低开销，使可扩展训练/推理成为可能"
+ ],
+ "weaknesses": [
+  "属生成式多域翻译(图像/文本/音频跨域)，与本主线(可靠性×多模态推理/医学影像)关联弱",
+  "路由经中心域引入两段误差累积，远域间接翻译的误差传播未充分量化",
+  "域标签作为条件的可扩展性随域数增多如何退化、以及域定义边界模糊时的行为需更多分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "多域翻译与可靠性主线弱相关，但方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

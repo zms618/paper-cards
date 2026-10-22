@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/A Unified Framework for Generalization Error Analysis of Learning with Arbitrary Discrete Weak Features.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/A Unified Framework for Generalization Error Analysis of Learning with Arbitrary Discrete Weak Features.pdf",
+ "title": "A Unified Framework for Generalization Error Analysis of Learning with Arbitrary Discrete Weak Features",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "弱特征学习理论框架，仅限离散特征，实验有限。",
+ "innovations": [
+  "提出弱特征学习（WFL）统一框架，统一处理任意类型离散弱特征（缺失、误观测、模糊等）",
+  "提出LAC-dWFL算法联合学习弱特征估计模型和下游预测模型",
+  "推导有限样本下泛化误差界，揭示弱特征估计误差与下游预测误差的定量依赖关系和一致性条件"
+ ],
+ "method_framework": "将弱特征（WF）建模为真实特征的有噪观测，定义WFL问题：同时学习WF估计器g和预测器f。提出LAC-dWFL（Learning Algorithm for Consistent dWFL）三步算法：先估计g，再基于g学习f。利用拉德马赫复杂度推导泛化误差分解，将f的预测误差与g的估计误差显式关联。",
+ "experiment_framework": "在4个UCI数据集（Adult、Bank、Kick、Census-Income）上验证。通过人工注入不同程度的WF估计误差（10%-90%），观察预测误差随样本量n的变化趋势，与理论界对比。",
+ "takeaways": [
+  "弱特征估计误差越小，下游预测模型的收敛速度越快，理论界与实验趋势一致",
+  "统一框架可以涵盖impute-then-regress、互补特征学习等已有方法作为特例",
+  "理论界未考虑特征重要性权重，这是后续改进方向"
+ ],
+ "weaknesses": [
+  "仅处理离散弱特征，连续弱特征不在框架内",
+  "实验仅在表格数据集上验证，未涉及深度神经网络等现代模型",
+  "理论界较为宽松，与实际误差存在明显差距"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.73,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "泛化误差分析理论，未触及可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

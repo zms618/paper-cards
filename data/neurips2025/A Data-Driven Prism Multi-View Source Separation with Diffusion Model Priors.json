@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/A Data-Driven Prism Multi-View Source Separation with Diffusion Model Priors.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/A Data-Driven Prism Multi-View Source Separation with Diffusion Model Priors.pdf",
+ "title": "A Data-Driven Prism: Multi-View Source Separation with Diffusion Model Priors",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "扩散模型先验用于多视图源分离，但线性假设限制与计算成本高",
+ "innovations": [
+  "将扩散模型先验扩展到多视图源分离（MVSS）问题，无需显式源分布假设，仅依赖多视图线性混合的可辨识性",
+  "方法适用于不完整、含噪、异分辨率数据，且不需要对比样本，即使每个源都出现在所有观测中也能工作",
+  "为每个源学习独立的扩散模型，支持后验采样和概率密度评估，在对比MVSS问题上达到SOTA"
+ ],
+ "method_framework": "基于期望最大化（EM）框架，将扩散模型作为各源的先验。E步利用扩散模型的联合后验采样推断各源分布；M步更新混合矩阵参数。利用多视图特性——不同观测集合包含未知源的不同线性变换——来打破源之间的简并性。",
+ "experiment_framework": "在合成问题和真实星系观测数据上验证。覆盖天体物理（星系去混叠）、神经科学（神经元信号分离）、地震学等领域。基线包括ICA、NMF、模板拟合及其他深度学习源分离方法。",
+ "takeaways": [
+  "扩散模型可作为通用先验解决多视图源分离问题，无需显式源分布假设",
+  "多视图线性混合的可辨识性是方法成功的关键，即使数据不完整、含噪也能工作",
+  "为每个源学习独立扩散模型的设计，同时获得了后验采样和概率评估能力"
+ ],
+ "weaknesses": [
+  "方法假设混合过程是线性的，实际科学数据中非线性混合场景未覆盖",
+  "计算成本较高——每个源需要训练一个独立扩散模型，源数量多时扩展性受限",
+  "仅在天体物理等少数科学领域验证，在更广泛的信号处理任务上的通用性未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

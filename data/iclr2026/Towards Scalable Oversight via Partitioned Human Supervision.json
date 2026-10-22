@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Scalable Oversight via Partitioned Human Supervision.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Scalable Oversight via Partitioned Human Supervision.pdf",
+ "title": "Towards Scalable Oversight via Partitioned Human Supervision",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.2
+ },
+ "one_line": "用互补标签估计准确率并训练自改进智能体，缓解超人类任务监督瓶颈。",
+ "innovations": [
+  "把分区人类监督(互补标签：仅能指出错误选项而非正确答案)作为一等监督原语，构造top-1准确率的无偏估计量",
+  "推导需要多少互补标签才能匹配普通标签的方差，并提出两个融合稀缺普通标签与丰富互补标签的混合估计量",
+  "给出纯互补与混合估计量的有限样本偏差保证，并实证用弱信号训练可自我改进的智能体AI系统"
+ ],
+ "method_framework": "在多选题评测设定下，普通真值标签稀缺但由分区专长自然产生大量互补标签(该选项一定错)。基于互补标签推导top-1准确率无偏估计，并量化其方差；再设计混合估计融合稀缺普通标签以降方差；理论给出有限样本偏差界；进一步把弱信号用于训练。",
+ "experiment_framework": "实证在无真值情况下评测大模型输出；对比纯互补估计、混合估计与普通标签估计的方差；报告达到同等精度所需标签数；并在智能体AI自我改进训练中验证弱信号可用。",
+ "takeaways": [
+  "即使专家只能给出'某选项错'的互补标签，也可无偏估计系统准确率，无需真值",
+  "分区专长产生的互补标签虽弱，但丰富且可量化其方差代价",
+  "这种弱信号不仅能评测，还能训练可自改进的智能体系统，缓解超人类任务的监督瓶颈"
+ ],
+ "weaknesses": [
+  "核心框架建立在多选题设定上，开放式生成任务上如何施加互补标签尚未充分展开",
+  "互补标签依赖专家判断'某选项一定错'，在边界/模糊题上的噪声与错误率影响未量化",
+  "正文前9页未见完整实验表，LLM评测与自改进训练的具体增益幅度需看后文确认"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.55,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "缓解超人类任务监督瓶颈，与可靠性主线直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

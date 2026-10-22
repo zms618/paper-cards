@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/360deg_ORBIT Benchmarking SfM in the Wild with 360deg Video.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/360deg_ORBIT Benchmarking SfM in the Wild with 360deg Video.pdf",
+ "title": "ORBIT: Benchmarking SfM in the Wild with 360deg Video",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "用360视频重投影构造SfM评测集，暴露SOTA至少20%失败",
+ "innovations": [
+  "把全景当作可验证的真值源：将等距柱状视频重投到 120° FOV 的四个立方面（剔除上下极），做共享光心与固定相对朝向的 rig 约束 SfM（ORB-SLAM2 初始化 + SIFT 跨面 BA），再从中裁透视片段当测试集——真值用全景视角、测试用受限 FOV 视点，两者视点不同",
+  "用零样本单目 metric depth（DepthPro）对重投影 3D 点求像素深度比的中位数做帧级尺度，并要求「帧级尺度标准差 < 均值」才保留该片段，解决 SfM gauge 模糊导致 ATE 不可比的问题",
+  "交叉验证加双口径统计：在 [90,180,270]° 三个视点独立跑 ORB-SLAM2，用 Umeyama 对齐后按 ATE/RPE 判定是否支持 360° 真值；同时为每片段设 ATE 阈值统计失败率（表1 最后一列）"
+ ],
+ "method_framework": "网采 360 度视频 → 立方面重投影 → rig 约束 SfM 估真值轨迹 → 用 DepthPro 定 metric 尺度 → 交叉验证筛片段 → 按基线在该视点复现不了真值来选难例 → 裁成带真值的透视评测片段。",
+ "experiment_framework": "100 段来自 80 个 360 度视频的片段（150~1000 帧，30fps）；评测 COLMAP、MegaSaM、VGGT 等，指标 ATE、RPEt、RPEr 与失败率。",
+ "takeaways": [
+  "全景到透视的「再投影」构造把真值获取从「在场景里布 GPS/IMU/深度仪」变成上网就能找到，可扩展为动态场景 SfM 数据集的通用做法",
+  "最有信息量的不是谁排第一，而是每个方法至少 20% 片段失败且失败片段几乎不重叠——失败不相关性比单一指标排名更能指路",
+  "GT 保真度可离线量化：在带 LiDAR 真值的 360Loc 上 ATE 0.07±0.04m、RPE-R 0.13±0.07，比基线失败案例（常 >4m）低两个数量级，说明 benchmark 分辨力足够"
+ ],
+ "weaknesses": [
+  "真值链本身有一次自证：真值来自作者自研的 360° rig SfM，而评测对象恰是 MegaSaM/VGGT/COLMAP；虽用 360Loc 与合成 360 做了保真度校验，但 DepthPro 定尺度一段本身带零样本单目深度误差，会直接进 ATE 分母",
+  "测试集存在策略性筛选偏差：片段是按「基线方法在该透视裁剪上复现不了 360° 真值」主动挑的，保证难度的同时让集合不再是随机在野分布，绝对 ATE 数字不能直接与 RealEstate10k/ETH3D 上横向比",
+  "正文在 4.4 节方法对比开头（表1 之前）即截断，看不到各方法绝对 ATE/RPE 数值与失败率列，摘要里「至少 20% 片段失败」的结论无法在正文复核",
+  "drop 帧用前一帧姿态补齐、且人眼判稳定化视频是否 drifts 是主观判据，这两处都会低估 COLMAP 类方法真实失败代价"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "SfM评测与可靠性主线无交点，仅具工具价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

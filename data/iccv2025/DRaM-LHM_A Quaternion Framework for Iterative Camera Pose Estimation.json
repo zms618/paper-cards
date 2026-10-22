@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/DRaM-LHM_A Quaternion Framework for Iterative Camera Pose Estimation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/DRaM-LHM_A Quaternion Framework for Iterative Camera Pose Estimation.pdf",
+ "title": "DRaM-LHM A Quaternion Framework for Iterative Camera Pose Estimation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "四元数伴随矩阵改进PnP初始化，提升位姿估计鲁棒性",
+ "innovations": [
+  "将四元数伴随矩阵引入PnP问题",
+  "DRaM框架提供更准确的正交投影初始化",
+  "结合Bar-Itzhack校正提升数值稳定性"
+ ],
+ "method_framework": "DRaM-LHM两阶段方法：首先通过四元数伴随矩阵参数化解决正交投影问题，提供鲁棒初始化，然后使用LHM的物体空间共线性误差最小化进行迭代优化",
+ "experiment_framework": "合成数据(8个点，高斯噪声σ=1-15)和真实数据(EuRoC MAV)，与EPnP、DLS、LHM、SQPnP等基线比较旋转误差θ和平移误差et",
+ "takeaways": [
+  "四元数伴随矩阵参数化降低多项式次数提高优化效率",
+  "DRaM初始化在高噪声条件下表现优异",
+  "两阶段方法平衡了精度和效率"
+ ],
+ "weaknesses": [
+  "方法在点数较少时(N≤6)性能下降",
+  "未充分讨论计算复杂度与实际应用场景的权衡",
+  "对退化场景(如共面点)的鲁棒性分析不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "相机位姿估计属于传统计算机视觉，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Coupling the Generator with Teacher for Effective Data-Free Knowledge Distillation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Coupling the Generator with Teacher for Effective Data-Free Knowledge Distillation.pdf",
+ "title": "Coupling the Generator with Teacher for Effective Data-Free Knowledge Distillation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "CPNet耦合生成器与教师模型，实现无数据知识蒸馏的图像生成",
+ "innovations": [
+  "将生成器设计为教师模型的逆变换，形成自编码器结构",
+  "通过特征级对抗训练提升生成图像多样性",
+  "利用BatchNorm层统计信息实现深度耦合"
+ ],
+ "method_framework": "CPNet将教师模型分割为多个块，每个块对应一个子生成器，形成逆变换结构，结合特征分布对齐和对抗训练提升生成质量",
+ "experiment_framework": "在CIFAR10/100和TinyImageNet数据集上评估，使用ResNet、WideResNet和VGG作为教师-学生模型对，比较top-1准确率和生成速度",
+ "takeaways": [
+  "将生成器与教师模型深度耦合可更有效利用教师知识",
+  "特征级约束比logit级约束更能提升生成图像多样性",
+  "利用BatchNorm层统计信息作为中间约束有效"
+ ],
+ "weaknesses": [
+  "方法依赖于BatchNorm层，对不使用BN的网络可能效果不佳",
+  "生成器需要周期性重新初始化，增加了训练复杂度"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "无数据知识蒸馏与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

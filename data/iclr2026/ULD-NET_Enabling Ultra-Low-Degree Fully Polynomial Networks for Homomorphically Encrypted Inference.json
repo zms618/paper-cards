@@ -1,0 +1,41 @@
+{
+ "title": "ULD-Net: Enabling Ultra-Low-Degree Fully Polynomial Networks for Homomorphically Encrypted Inference",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5.0,
+  "overall": 6.0
+ },
+ "one_line": "ULD-Net：低次多项式网络训练，提升同态加密推理效率",
+ "innovations": [
+  "指出现有全多项式网络靠事后用高次/级联多项式替换非线性算子，推高同态加密(HE)成本且训练数值脆弱难扩展。",
+  "提出多项式专用归一化 PolyNorm，并按多项式层几何选择归一化轴，使激活在深多项式堆叠中保持良好条件数范围。",
+  "配合多项式激活、线性注意力等多项式感知算子替换，无需高次近似即稳定训练，首次把全多项式模型扩到 ViT/ImageNet 规模。"
+ ],
+ "method_framework": "不事后近似非线性，而直接训练每层都是低次多项式的网络：用 PolyNorm+正确归一化轴把激活范围约束在良态区间，配合多项式激活/线性注意力替换 ReLU/Softmax，使深堆叠低次多项式仍稳定优化，从而降低密文乘法与乘法深度。",
+ "experiment_framework": "在 ResNet/VanillaNet/ViT 等骨干与 ImageNet 等数据集上，与全/半多项式 SOTA 对比，报告 top-1 精度与 HE 推理延迟。",
+ "takeaways": [
+  "高次/级联多项式虽稳定但使 HE 延迟暴涨，是精度-成本的主要瓶颈。",
+  "PolyNorm+归一化轴原则可在低次下稳定训练深多项式网络。",
+  "ULD-Net 让 ViT-S/B 在 ImageNet 达 76.7/75.2 top-1，精度接近原模型且 HE 延迟更优，取得更好精度-延迟帕累托前沿。"
+ ],
+ "weaknesses": [
+  "超低次多项式逼近能力有限，在更大模型/更难任务上相对原模型的精度差距需更多验证。",
+  "HE 加速以网络结构全面多项式化为代价，部署灵活性受限。",
+  "属隐私保护推理系统，与不确定性/幻觉抑制/医学影像主线不同；完整各骨干与 HE 延迟基准表未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/ULD-NET_Enabling Ultra-Low-Degree Fully Polynomial Networks for Homomorphically Encrypted Inference.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/ULD-NET_Enabling Ultra-Low-Degree Fully Polynomial Networks for Homomorphically Encrypted Inference.pdf",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "隐私保护推理系统，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

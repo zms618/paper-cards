@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Instant3dit_Multiview Inpainting for Fast Editing of 3D Objects.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Instant3dit_Multiview Inpainting for Fast Editing of 3D Objects.pdf",
+ "title": "Instant3dit Multiview Inpainting for Fast Editing of 3D Objects",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "多视角修复实现3D编辑，但依赖合成数据且重建误差未解决",
+ "innovations": [
+  "将3D编辑转化为多视角图像修复问题",
+  "设计3D一致的多视角掩码策略",
+  "无需优化的快速3D编辑方法"
+ ],
+ "method_framework": "通过多视角渲染将3D对象转换为图像网格，使用微调的扩散模型进行多视角一致修复，最后通过现成3D重建器恢复3D表示",
+ "experiment_framework": "Objaverse数据集，SDXL/Instant3D等基线，CLIP相似度、多视角一致性(SSIM/LPIPS/DreamSim)、FID指标",
+ "takeaways": [
+  "3D一致的多视角掩码设计对性能至关重要",
+  "微调预训练图像修复模型比从头训练更有效"
+ ],
+ "weaknesses": [
+  "仅依赖合成数据，缺乏真实场景验证",
+  "重建过程可能引入额外误差"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3D编辑与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

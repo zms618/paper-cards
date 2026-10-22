@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Beyond Expectations Quantile-Guided Alignment for Risk-Calibrated Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Beyond Expectations Quantile-Guided Alignment for Risk-Calibrated Language Models.pdf",
+ "title": "Beyond Expectations: Quantile-Guided Alignment for Risk-Calibrated Language Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 8,
+  "overall": 7
+ },
+ "one_line": "分位数约束对齐框架控制尾部风险，但大模型验证不足",
+ "innovations": [
+  "量化引导对齐(QA)框架，允许用户指定任意分位数的改进",
+  "将分位数约束转化为指示器奖励函数，形成凸优化问题",
+  "连续分位数对齐理论，提供无限维约束的解决方案",
+  "与标准RLHF兼容的实现，可直接集成现有工具链"
+ ],
+ "method_framework": "QA框架通过KL正则化最小化与参考模型的分布差异，同时满足用户定义的分位数约束。优化问题转化为对偶形式，使用蒙特卡洛近似求解，最终得到指数重加权分布。",
+ "experiment_framework": "对话任务(Anthropic Harmless)和代码生成任务(HumanEval+自定义提示)，评估有害性/帮助性/简单性/安全性指标，对比基线模型和MORL方法，测量多样性/连贯性/困惑度。",
+ "takeaways": [
+  "分位数约束可有效控制模型输出的尾部风险而不牺牲整体性能",
+  "指示器奖励函数将分布约束转化为可优化的凸问题",
+  "连续分位数对齐提供理论框架指导无限维约束"
+ ],
+ "weaknesses": [
+  "实验仅限于较小模型(OPT-1.3B, CODEGEN-350M)，未在大模型上验证",
+  "分位数阈值设置可能需要领域知识，自动化调整机制不完善",
+  "计算复杂度随约束数量线性增长，大规模应用可能受限"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

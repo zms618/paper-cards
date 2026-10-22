@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/STRUC-TURED_Breaking the SFT Plateau Multimodal STRUC-TURED Reinforcement Learning for Chart-to-Code Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/STRUC-TURED_Breaking the SFT Plateau Multimodal STRUC-TURED Reinforcement Learning for Chart-to-Code Generation.pdf",
+ "title": "Breaking the SFT Plateau: Multimodal Structured Reinforcement Learning for Chart-to-Code Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "构建大规模图表-代码语料，多粒度奖励与课程RL打破SFT平台期",
+ "innovations": [
+  "构建迄今最大规模300万图表-代码对训练语料（来自arXiv真实表格），替代此前合成数据集",
+  "提出多粒度奖励：文本层规则奖励校验细粒度代码细节，视觉层模型奖励评估渲染代码与真值图表的结构相似度",
+  "两阶段课程训练：先文本奖励优化，再引入视觉信号进一步增强"
+ ],
+ "method_framework": "通过大规模实验揭示SFT数据增长收益递减的平台期；提出MSRL，融合文本规则奖励与视觉结构相似性奖励的多粒度奖励系统，并采用先文本后视觉的两阶段课程RL训练多模态模型生成结构化代码。",
+ "experiment_framework": "在ChartMimic与ReachQA基准评测，高层指标分别提升6.2%与9.9%；对比现有图表域方法并对标先进闭源模型。",
+ "takeaways": [
+  "单纯增大SFT数据收益递减，需配合针对性RL才能打破平台期",
+  "文本规则+视觉结构的多粒度奖励比单一奖励更有效约束结构化输出",
+  "先文本后视觉的课程策略利于稳定训练"
+ ],
+ "weaknesses": [
+  "视觉奖励依赖渲染比对，对渲染管线敏感，错误可能被奖励放大",
+  "300万语料来自arXiv表格，分布偏学术图表，泛化到商业图表存疑",
+  "与医学影像落地域距离较远，奖励设计是否迁移未验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "图表代码生成与可靠性主线无实质交点，仅为多模态应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

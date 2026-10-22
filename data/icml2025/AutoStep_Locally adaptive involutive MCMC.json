@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/AutoStep_Locally adaptive involutive MCMC.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/AutoStep_Locally adaptive involutive MCMC.pdf",
+ "title": "AutoStep: Locally adaptive involutive MCMC",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.8
+ },
+ "one_line": "自适应步长对合MCMC，理论保证但缺乏真实任务验证",
+ "innovations": [
+  "提出对MCMC提议做局部自适应步长选择以应对多尺度目标，避免全局单一最优步长不存在的问题",
+  "在温和条件下证明AutoStep MCMC保持π不变性、不可约性与非周期性",
+  "给出期望能量跳跃距离与单步代价的理论界"
+ ],
+ "method_framework": "把常见MCMC核写成带步长参数的确定性对合提议；每步根据目标分布局部几何调整步长，在维持细致平衡/π不变的同时提升对多尺度后验的探索效率，并有能量跳跃与代价的界。",
+ "experiment_framework": "在一系列具有挑战性的多尺度目标分布上评测；指标为单位代价的有效样本量(ESS/unit cost)；与自适应MCMC、差异最小化、局部自适应核等SOTA方法对比，考察鲁棒性与有效性。",
+ "takeaways": [
+  "局部自适应步长可在多尺度目标上避免全局步长不适用的困境",
+  "AutoStep在保持严格不变性理论保证的同时ESS/成本可与SOTA竞争",
+  "理论界刻画了能量跳跃与单步代价的权衡"
+ ],
+ "weaknesses": [
+  "与可靠性×医学影像/多模态推理主线无直接关联，属贝叶斯计算方向",
+  "实证仅在合成/挑战分布上展示ESS，未在大规模真实贝叶斯模型任务上落地对比",
+  "局部自适应引入的额外计算代价与调参开销需更充分量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.43,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "贝叶斯计算方法，无可靠性主线直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

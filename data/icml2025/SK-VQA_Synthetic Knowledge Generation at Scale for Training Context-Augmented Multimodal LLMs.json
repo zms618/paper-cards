@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/SK-VQA_Synthetic Knowledge Generation at Scale for Training Context-Augmented Multimodal LLMs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SK-VQA_Synthetic Knowledge Generation at Scale for Training Context-Augmented Multimodal LLMs.pdf",
+ "title": "SK-VQA: Synthetic Knowledge Generation at Scale for Training Context-Augmented Multimodal LLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "合成大规模上下文绑定VQA数据，训练MLLM做多模态RAG减少幻觉",
+ "innovations": [
+  "提出SK-VQA：超200万条合成多模态问答对，每条都绑定含判定答案所需信息的上下文文档",
+  "相比既往数据集含11倍以上唯一问题、领域更宽、图像来源更广",
+  "人评确认问答质量与上下文相关性；训练后模型在context-aware VQA与多模态RAG两种设定下泛化均提升"
+ ],
+ "method_framework": "针对MLLM未为上下文增强生成设计、易幻觉的问题，大规模自动合成(图像+上下文文档+依赖该文档才能答出的多组QA)三元组；用该数据训练MLLM学会把回答同时条件化于多模态输入与检索到的文档上，从而在多模态RAG中以检索到的事实 grounding 回答、抑制凭空臆造。",
+ "experiment_framework": "构建200万+合成QA对数据集(公开于HuggingFace)；人评验证质量与上下文相关；一方面作具挑战性的KB-VQA基准，另一方面训练MLLM后在context-aware VQA与多模态RAG设定下测泛化，对比未用该数据训练的MLLM。",
+ "takeaways": [
+  "上下文文档与答案强绑定的合成数据，能教会MLLM做检索增强、以事实grounding回答",
+  "SK-VQA同时是高难度KB-VQA基准与有效的多模态RAG训练资源",
+  "用其训练的模型在多模态RAG与上下文感知VQA上泛化更好、幻觉更少"
+ ],
+ "weaknesses": [
+  "为合成数据，上下文文档与问题均自动生成，可能存在模板化/信息冗余，真实噪声检索下的鲁棒性前9页未充分测试",
+  "缓解幻觉的证据多在合成KB-VQA设定，对真实开放域多模态问答、对抗性错误检索的容错能力有限",
+  "数据合成pipeline依赖强教师模型，其偏见会被继承放大；与人工标注KB-VQA的分布差距讨论不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

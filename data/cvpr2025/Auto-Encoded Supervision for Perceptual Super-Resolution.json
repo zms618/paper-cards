@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Auto-Encoded Supervision for Perceptual Super-Resolution.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Auto-Encoded Supervision for Perceptual Super-Resolution.pdf",
+ "title": "Auto-Encoded Supervision for Perceptual Super-Resolution",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "自编码监督分解损失因子，提升超分辨率保真度",
+ "innovations": [
+  "将像素级损失分解为保真度偏差和感知方差两个因子",
+  "设计LAESOP损失函数仅惩罚保真度偏差",
+  "利用自编码器创建仅包含保真度偏差的特征空间"
+ ],
+ "method_framework": "预训练自编码器去除感知方差，在自编码空间计算Lp损失替代原始像素空间损失，实现保真度提升而不牺牲感知质量",
+ "experiment_framework": "在Set14、Manga109等数据集上与ESRGAN、SPSR、LDL等方法比较，使用PSNR、SSIM、LPIPS、DISTS等指标",
+ "takeaways": [
+  "损失函数分解的思想可应用于其他感知质量任务",
+  "简单修改现有框架即可集成该方法"
+ ],
+ "weaknesses": [
+  "自编码器架构设计较为简单",
+  "未探索不同退化类型下的泛化能力",
+  "未分析计算开销增加情况"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "超分辨率任务与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

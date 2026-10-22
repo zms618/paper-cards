@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Stable Mean Flow Lyapunov-Inspired One-Step Flow Matching.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Stable Mean Flow Lyapunov-Inspired One-Step Flow Matching.pdf",
+ "title": "Stable Mean Flow Lyapunov-Inspired One-Step Flow Matching",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "Lyapunov正则化单步流匹配，提升生成质量但泛化性有限",
+ "innovations": [
+  "引入Lyapunov启发的稳定性正则化器，确保单步传输映射的局部非扩张性",
+  "建立特征唯一性和轨迹漂移边界，提供误差增长的理论上界",
+  "设计简单铰链式稳定性损失，防止局部拉伸"
+ ],
+ "method_framework": "在Mean Flow基础上添加Lyapunov稳定性正则化，通过非扩张条件(NE)确保轨迹唯一性和JVP稳定性，使用hinge-squared惩罚函数实现软约束。",
+ "experiment_framework": "CIFAR-10和ImageNet数据集，与Mean Flow等基线比较，使用FID指标评估生成质量，分析训练动态和早期收敛行为。",
+ "takeaways": [
+  "稳定性正则化可在不牺牲单步效率的情况下提升生成质量",
+  "局部非扩张条件能有效控制JVP数值不稳定问题",
+  "早期训练阶段稳定性约束能更快形成清晰结构"
+ ],
+ "weaknesses": [
+  "超参数(δ和μ)选择敏感，有效范围较窄",
+  "仅在CIFAR-10和ImageNet上验证，缺乏更广泛的泛化性测试",
+  "多步生成优势不明显"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "生成质量提升但泛化有限，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

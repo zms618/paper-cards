@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/GenieBlue_Integrating both Linguistic and Multimodal Capabilities for Large Language.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/GenieBlue_Integrating both Linguistic and Multimodal Capabilities for Large Language.pdf",
+ "title": "GenieBlue Integrating both Linguistic and Multimodal Capabilities for Large Language",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "冻结LLM参数+选择性训练Transformer块，移动端多模态语言模型。",
+ "innovations": [
+  "冻结原始LLM参数保持语言能力",
+  "选择性复制Transformer块并添加LoRA模块",
+  "非共享基础部署策略避免MoE架构"
+ ],
+ "method_framework": "GenieBlue冻结原始LLM参数，复制特定Transformer块进行全参数训练，其余块添加LoRA模块。推理时，LLM使用原始模型，MLLM替换训练后的块并添加LoRA参数。",
+ "experiment_framework": "使用MATH、AlignBench、MT-Bench评估语言能力，AI2D、ChartQA等评估多模态能力，对比全微调、LoRA和CogVLM方法。",
+ "takeaways": [
+  "选择性训练Transformer块可有效保持语言能力",
+  "非共享基础部署策略适合移动设备NPU限制"
+ ],
+ "weaknesses": [
+  "仅评估了特定数据集，缺乏更广泛的泛化性验证",
+  "未详细讨论模型大小和推理速度的权衡"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "多模态语言模型部署，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Cautious Weight Decay.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Cautious Weight Decay.pdf",
+ "title": "Cautious Weight Decay",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "条件性权重衰减优化器，简单修改但缺乏深度理论支撑",
+ "innovations": [
+  "选择性权重衰减机制",
+  "保持原始目标函数的无偏优化",
+  "在平稳流形上的滑动模式动力学"
+ ],
+ "method_framework": "CWD通过在参数更新方向与参数符号一致时才应用权重衰减，实现了一行代码实现的优化器无关改进，理论上证明其收敛到原始目标函数的平稳点。",
+ "experiment_framework": "在语言模型(OLMo, Gemma)和ImageNet分类任务上测试，对比ADAMW、LION和MUON优化器，使用验证损失和零样本准确率作为指标。",
+ "takeaways": [
+  "选择性应用权重衰减比标准权重 decay 更有效",
+  "方法简单且无需额外调参",
+  "在大规模模型上持续有效"
+ ],
+ "weaknesses": [
+  "理论分析主要针对连续时间情况",
+  "离散时间收敛性证明有限",
+  "未探索不同任务类型的泛化性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "优化方法无可靠性主线交点，仅常规扎实",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

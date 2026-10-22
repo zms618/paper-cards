@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Cowpox_Towards the Immunity of VLM-based Multi-Agent Systems.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Cowpox_Towards the Immunity of VLM-based Multi-Agent Systems.pdf",
+ "title": "Cowpox: Towards the Immunity of VLM-based Multi-Agent Systems",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "边缘部署治愈样本生成器防御VLM多智能体系统传染性攻击",
+ "innovations": [
+  "首次提出VLM多智能体系统的免疫机制，针对传染性越狱攻击(AgentSmith)提供分布式防御",
+  "提出新的传染病动力学模型分析攻击传播和防御效果，理论证明治愈样本可使感染率趋于零",
+  "仅需在少量边缘智能体部署防御，无需修改其他智能体，适合大规模分布式系统"
+ ],
+ "method_framework": "Cowpox两模块：(1)输出分析模块：用LLM检查员检测可疑输出，识别病毒样本；(2)治愈生成模块：基于病毒样本生成良性治愈样本，使治愈样本在RAG检索中的得分略高于病毒样本。治愈样本随聊天传播到其他智能体，使其在遇到病毒时优先检索治愈样本而非病毒，从而免疫。将病毒的正反馈传播转化为负反馈。",
+ "experiment_framework": "在多智能体VLM系统上评测；基线为无防御、单智能体防御；指标为感染率随轮次变化、防御成功率；测试自适应攻击和不同部署比例的效果；理论分析收敛条件。",
+ "takeaways": [
+  "Cowpox将病毒传播的正反馈循环转化为负反馈，使感染率随轮次收敛到零",
+  "仅需少量边缘智能体部署防御即可保护整个系统，无需修改所有智能体",
+  "治愈样本的RAG得分略高于病毒是关键设计——既抑制病毒检索又促进治愈传播"
+ ],
+ "weaknesses": [
+  "依赖LLM作为检查员，检查员自身可能被对抗样本绕过",
+  "仅针对AgentSmith这一种特定攻击，对其他传染性攻击的通用性未验证",
+  "治愈样本的生成需要访问病毒样本内容，攻击隐蔽时可能延迟发现"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

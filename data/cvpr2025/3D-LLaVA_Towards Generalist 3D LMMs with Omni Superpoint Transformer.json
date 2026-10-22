@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/3D-LLaVA_Towards Generalist 3D LMMs with Omni Superpoint Transformer.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3D-LLaVA_Towards Generalist 3D LMMs with Omni Superpoint Transformer.pdf",
+ "title": "3D-LLaVA: Towards Generalist 3D LMMs with Omni Superpoint Transformer",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.0
+ },
+ "one_line": "整合现有模块的3D多模态模型，缺乏创新设计与充分验证",
+ "innovations": [
+  "提出用一个versatile visual connector(OST)替代LL3DA式独立提示编码器与额外分割头：点/框/掩码提示经无参数visual sampler(三点最近邻插值或框内平均池化)取特征后与superpoint特征一起喂入OST，用masked attention(superpoint→prompt置-∞)阻断反向信息流，使提示只采样不污染场景特征",
+  "OST去掉常规分割Transformer的cross-attention，令superpoint特征同时作query与key/value，以保持输出embedding与提升后的2D特征逐superpoint对应，从而使2D→3D蒸馏可行",
+  "LLM输出[SEG] token后取其前一token隐状态经W_S投影作为分割query，送入冻结的OST由mask head生成核并与superpoint特征点乘出掩码；该query无坐标故距离偏置项置零"
+ ],
+ "method_framework": "点云体素化后过Sparse 3D U-Net，按自底向上聚类做superpoint池化压缩到数百至数千token；OST(无cross-attention，含距离自适应self-attention Attn=Softmax(QK^T/√C-σD)V)接mask/cls/align三头；按objectness取top-K(=100)送投影层入LLM；预训练用L_Cls+L_Mask+L_KD(对LLaVA-1.5的CLIP-ViT-L多视角特征做2D→3D蒸馏)，指令微调用L_text+0.1·L_mask，仅训投影层、SEG投影与LoRA。",
+ "experiment_framework": "ScanNet(1201训/312验)+ScanNet200掩码做预训练，295K混合指令微调；评测ScanRefer/Multi3DRefer(mIoU)、ScanQA(C/B-4/M/R)、SQA3D(EM/EM-R)、Scan2Cap(C@0.5等)；对比specialist/finetuned 3D LMM/3D LMM三类",
+ "takeaways": [
+  "'一个共享模块承担多种角色'的架构简化视角值得借鉴：把任务特定头合并进connector，既降部署复杂度也天然形成参数复用",
+  "masked attention阻断query→特征的反向信息流的做法，是保证新增query不破坏已对齐表示的一种轻量且通用的技巧"
+ ],
+ "weaknesses": [
+  "核心是模块整合而非新问题：superpoint、距离自适应self-attention、2D→3D蒸馏(沿用OpenScene)、[SEG]机制(沿用LISA系2D做法)均为既有组件，'versatile connector'更像工程整合视角",
+  "关键设计选择缺原理支撑与消融：top-K=100、mask损失系数0.1、σ距离偏置的取值均无敏感性分析；声称'线性提示编码器难优化'只有定性论断，Fig.4三种范式的量化对比表在正文截断处之前未给出数字",
+  "无可信度度量：全部结果均为单种子均值，无方差/置信区间/显著性检验；SQA3D上EM 54.5仅比Chat-Scene 54.6低，却称SOTA，结论对设定差异敏感",
+  "公平性存疑：表内混排specialist、每数据集finetune的3D LMM与统一训练3D LMM三类；且对比的Chat-Scene/Scene-LLM使用多视角图像(PC+I)，本文仅点云，模态不同却直接并列",
+  "正文在4.3节末'...can correspond to one, many, or even zero objects'处截断，Multi3DRefer零目标情形的分析与全部消融表缺失"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3D多模态模型与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

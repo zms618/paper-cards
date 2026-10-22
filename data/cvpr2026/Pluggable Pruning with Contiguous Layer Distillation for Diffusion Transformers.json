@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Pluggable Pruning with Contiguous Layer Distillation for Diffusion Transformers.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Pluggable Pruning with Contiguous Layer Distillation for Diffusion Transformers.pdf",
+ "title": "Pluggable Pruning with Contiguous Layer Distillation for Diffusion Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "PPCL通过连续层剪枝和双轴压缩压缩DiT，但依赖特定架构且计算开销大。",
+ "innovations": [
+  "线性探测结合CKA分析识别冗余层区间",
+  "非顺序层间蒸馏避免误差传播",
+  "深度和宽度双轴压缩框架",
+  "即插即用式动态推理配置"
+ ],
+ "method_framework": "PPCL包含冗余区间检测、深度剪枝和宽度剪枝三阶段。通过线性探测建模层可替代性，利用CKA相似性分析识别连续冗余层，再通过非顺序蒸馏和线性投影实现双轴压缩。",
+ "experiment_framework": "在FLUX.1和Qwen-Image模型上评估，使用DPG、GenEval、LongText-Bench等指标，比较参数量、内存占用和推理延迟。",
+ "takeaways": [
+  "连续层冗余性优于非连续层剪枝",
+  "线性探测可有效识别层间可替代性",
+  "非顺序蒸馏避免误差累积"
+ ],
+ "weaknesses": [
+  "方法依赖特定架构MMDiT",
+  "未充分探讨不同压缩比例下的泛化能力",
+  "计算开销较大（需训练线性探测）"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "模型压缩技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

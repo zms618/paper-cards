@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Distribution-aware Fairness Learning in Medical Segmentation From A Control-Theoretic Perspective.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Distribution-aware Fairness Learning in Medical Segmentation From A Control-Theoretic Perspective.pdf",
+ "title": "Distribution-aware Fairness Learning in Medical Image Segmentation From A Control-Theoretic Perspective",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "控制理论视角的dMoE模型提升医学分割公平性，但属性依赖与理论保证有限。",
+ "innovations": [
+  "从最优控制理论视角建模医学分割中的公平性问题，提出分布感知混合专家(dMoE)",
+  "用属性反馈闭环控制各专家自适应适配不同人群/病情的异构分布，改善亚组间公平性",
+  "将dMoE嵌入多种网络架构，并在多个医学分割数据集上验证其通用性"
+ ],
+ "method_framework": "把医学分割中因年龄/性别/种族/病情严重度造成的数据不平衡建模为分布偏移；借鉴最优控制，dMoE以属性(人群/病情)为反馈信号，动态调节各专家对不同分布的贡献，使模型在各亚组上性能均衡(类似闭环系统从初始差的公平状态收敛到改善状态)，而非整体平均最优。",
+ "experiment_framework": "在前列腺癌、放疗靶区、眼底镜、Harvard-FairSeg、HAM10000皮肤病变等多个医学分割数据集上，跨T分期/种族/年龄等亚组，以亚组Dice及公平性(组间差距)为指标，对比标准训练并嵌入多种网络架构验证。",
+ "takeaways": [
+  "医学数据采集的人口学/临床不平衡会导致分割模型在弱势亚组上性能下降",
+  "控制论式的属性反馈闭环可让MoE自适应适配异构分布，提升亚组公平性",
+  "dMoE可即插即用地嵌入多种分割网络，跨多个医学数据集一致改善公平性"
+ ],
+ "weaknesses": [
+  "依赖可用的人口学/临床属性作为反馈信号，属性缺失场景如何处理未讨论",
+  "控制论类比与真实动态系统参数的对应较直观，严格理论保证有限",
+  "在极端小样本亚组上的公平性-精度权衡曲线未充分刻画"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

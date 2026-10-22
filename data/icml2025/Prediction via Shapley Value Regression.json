@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Prediction via Shapley Value Regression.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Prediction via Shapley Value Regression.pdf",
+ "title": "Prediction via Shapley Value Regression",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "ViaSHAP直接学习Shapley值预测，但实验局限且计算成本高",
+ "innovations": [
+  "将Shapley值计算集成到模型训练中，直接用于预测",
+  "基于Kolmogorov-Arnold表示定理实现ViaSHAP",
+  "通过双目标损失函数同时优化预测准确性和Shapley值准确性"
+ ],
+ "method_framework": "ViaSHAP学习函数直接计算Shapley值并求和得到预测，无需后验计算，基于通用近似定理和Kolmogorov-Arnold表示定理实现",
+ "experiment_framework": "25个公开数据集，比较KANVia、KANVia^ρ、MLPVia、MLPVia^θ与XGBoost、随机森林、TabNet的预测性能和Shapley值准确性",
+ "takeaways": [
+  "将解释性方法集成到模型训练中可同时提高预测性能和解释性",
+  "KAN网络在保持Shapley值准确性的同时提供了良好的预测性能"
+ ],
+ "weaknesses": [
+  "实验仅限于表格数据和CIFAR-10，未在更复杂的医学影像等场景验证",
+  "计算复杂度较高，每个样本需要采样32个联盟"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

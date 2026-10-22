@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Guidance Watermarking for Diffusion Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Guidance Watermarking for Diffusion Models.pdf",
+ "title": "Guidance Watermarking for Diffusion Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "梯度引导扩散水印，计算开销大，鲁棒性提升有限",
+ "innovations": [
+  "首次在扩散过程中通过引导嵌入水印",
+  "无需重新训练扩散模型即可继承水印检测器的鲁棒性",
+  "通过图像增强提高对抗新攻击的能力",
+  "在频谱上均匀分布水印能量"
+ ],
+ "method_framework": "利用现成水印解码器的梯度引导扩散过程，通过PCGrad算法聚合不同增强变换的梯度，控制水印强度而不显著影响图像质量",
+ "experiment_framework": "在Stable Diffusion、Flux和Sana模型上测试，对比Stable Signature和VideoSeal水印方法，使用FID、CLIP、PSNR、LPIPS评估质量，RCU和PFA评估鲁棒性",
+ "takeaways": [
+  "梯度引导框架可转换任何后处理水印为生成内嵌入",
+  "PCGrad聚合增强梯度提升鲁棒性",
+  "频谱均匀分布提高抗低通滤波能力"
+ ],
+ "weaknesses": [
+  "计算开销大，需T(T+1)/2步扩散和梯度传播",
+  "梯度裁剪参数需仔细调校",
+  "未测试更多种类的攻击方式"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "水印技术属于隐私鲁棒范畴，但计算开销大且鲁棒性提升有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/AC3D_Analyzing and Improving 3D Camera Control in Video Diffusion.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AC3D_Analyzing and Improving 3D Camera Control in Video Diffusion.pdf",
+ "title": "AC3D: Analyzing and Improving 3D Camera Control in Video Diffusion Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "三项实证分析指导视频DiT相机条件注入，但理论支撑不足",
+ "innovations": [
+  "运动频谱分析发现相机运动是低频信号且极早定型：200 条生成视频的光流运动谱体积显示相机运动能量集中在低频，且到 t=0.9（去噪前 10%）低频成分已填满 84%，据此把训练噪声采样与推理时的相机条件注入都截断到 rectified flow 的 [0.6,1] 区间（location=0.8、scale=0.075 的截断正态）",
+  "对 11.5B VDiT 做线性探针（RealEstate10k 1000 条视频、8 个噪声层、32 个 DiT block 上训练 ridge 回归预测 49 帧的 pitch/yaw/roll 与平移），发现视频 DiT 内部暗含相机位姿估计能力、在第 #13–21 层解耦程度最高，由此只把相机条件注入前 8 个 block，可训练参数降到 1/4、训练快 15% 而视觉质量提升 10%",
+  "针对 RealEstate10k 几乎全是静态场景导致「相机条件一激活就把场景动态压掉」的分布偏置，腾出 20K 条「动态场景 + 固定相机」的视频（相机位姿天然已知故条件分支保持激活）混合训练，用来显式地把视角条件与场景运动解耦",
+  "把文本与相机的 classifier-free guidance 拆成独立权重 w_y、w_c，并在相机 DiT-XS 分支去掉上下文 cross-attention（避免文本/分辨率 embedding 干扰相机表征）"
+ ],
+ "method_framework": "冻结 11.5B VDiT 主干，在 Plücker 射线编码（全卷积投影成相机 token）后接 128 维 DiT-XS 轻量块，逐 block 相加注入 + video→camera 的 cross-attention 反馈；训练仅在 256² 进行，推理在 [0.6,1] 区间施加相机条件、双 CFG 生成。",
+ "experiment_framework": "在 RE10K 与 MSR-VTT 上测 FID/FVD/CLIP score 与 ParticleSfM 重建的旋转、归一化平移误差；基线 MotionCtrl、CameraCtrl、VD3D（U-Net 系）以及重实现在自家 VDiT 上的 VD3D+DiT 与开源 CogVideoX；另有 5 项偏好的人工用户实验。",
+ "takeaways": [
+  "「先分析基座模型内部表示在哪一层、哪个时间步承载了目标条件，再决定条件注入的位置与范围」这套 first-principles 流程，比继续堆条件模块更能同时拿下质量与效率，是可复制的方法论",
+  "把噪声时间步与条件注入时段对齐到低频段（截断噪声采样）反而提升画质与相机跟随，说明「默认 logit-normal 全时段采样」在这个任务上是次优的，这类 schedule 级别的改动性价比极高",
+  "数据侧补「动态内容 + 固定相机」的互补集来抵消主数据集偏置，比去修相机估计器更省事，且不引入新标注"
+ ],
+ "weaknesses": [
+  "三项「分析」都是经验性的统计验证（200 条视频的手工分类 + 光流频谱 + ridge 探针），没有给出为什么低频段截止到 [0.6,1] 或为什么恰好是前 8 个 block 的理论界；8/32 这一选择与探针峰值 13–21 之间存在未解释的错配",
+  "主基线「VD3D+DiT」是作者自己在 11.5B VDiT 上重实现的，与 MotionCtrl/CameraCtrl（U-Net 4B 系）并非同一基座，18% fidelity / 25% camera steering 的提升里含有「换了个更强基座」的成分，跨架构对比的可比性存疑",
+  "正文截断在 4.2 节主结果表格中途，未看到主对照表、截断区间 [0.6,1] 与 8-block 注入的消融数值，也未见到多种子方差；用户研究只有单一热度图的 5 项偏好百分比，无统计检验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成相机控制，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

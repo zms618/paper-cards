@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Sparse Autoencoders for Hypothesis Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Sparse Autoencoders for Hypothesis Generation.pdf",
+ "title": "Sparse Autoencoders for Hypothesis Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.25
+ },
+ "one_line": "SAE提取特征+LLM解释，算力省但假设质量存疑",
+ "innovations": [
+  "提出通用的文本-目标变量可解释关系假设生成方法HypothSAEs",
+  "用SAE在文本嵌入上学可解释特征，替代直接向LLM喂正反例的做法，绕开上下文窗口/推理限制",
+  "只对预测目标的稀疏特征做LLM自然语言解释，把可解释特征筛选与语言化解耦"
+ ],
+ "method_framework": "三步：(1)在文本嵌入(如标题嵌入)上训练稀疏自编码器，得到描述数据分布的可解释稀疏特征；(2)用统计检验选出能预测目标变量(如点击量)的特征；(3)对每个选中特征用LLM生成自然语言解释(如‘提及惊讶/震惊’)，作为关于目标变量的假设。",
+ "experiment_framework": "合成数据集上对照参考假设(指标F1，至少+0.06)；真实数据集(国会演讲党派差异、标题点击等)上对比LLM直接假设法，指标为显著发现数(约2倍)与计算量(省1-2个数量级)。",
+ "takeaways": [
+  "先SAE提可解释特征、再LLM语言化，比让LLM直接从少量正反例假设更省算力且召回更多真假设",
+  "稀疏自编码器可作为把大规模文本嵌入转成可检验假设的可扩展中间层"
+ ],
+ "weaknesses": [
+  "假设质量受限于SAE特征是否真可解释，LLM对特征的自然语言化可能引入看似合理但错误的解释",
+  "‘约2倍显著发现’含统计显著多重比较下的假阳性风险，未充分报告假阳性控制",
+  "偏社科/科学发现方法论，与可靠性/鲁棒/医学影像主线关联弱，真实数据集外部效度需人工核验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.18,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

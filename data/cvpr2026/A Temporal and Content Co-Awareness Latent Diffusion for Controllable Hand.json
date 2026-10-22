@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/A Temporal and Content Co-Awareness Latent Diffusion for Controllable Hand.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Temporal and Content Co-Awareness Latent Diffusion for Controllable Hand.pdf",
+ "title": "A Temporal and Content Co-Awareness Latent Diffusion for Controllable Hand Image Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "动态调制姿态与外观耦合，但实验不完整且缺乏下游验证",
+ "innovations": [
+  "时间分段注入实验揭示两条被忽视的规律：早段强姿态-外观耦合（缺姿态会同时破坏结构约束与外观一致性），以及条件复杂度显著影响去噪（复杂姿态后期仍强依赖几何约束、简单姿态已不敏感），据此把「固定强度注入」改造为随状态变化的动态调制",
+  "TCCA 用三组可学习查询 (Qp,Qa,Qc) 把噪声潜、 flattened f4 姿态特征、外观特征投影到统一空间，再由 timestep embedding 作 [CLS] 经 transformer 聚合，MLP 预测姿态基础权重 αp^base（外观取 1-αp^base）加两路残差修正 αp^res（通道级）/αa^res（token 级），分别以加性注入和 cross-attention 送入 UNet",
+  "PIAE 用 CLIP patch 级特征构造同一 ID 多姿态的 ISAS 矩阵 M，做 SVD 取前 r 个主方向 P_proj，把 ep 投影到其正交补 ep'=ep-ep^T P_proj 以剔除姿态分量，再拼 [CLS] 与空间注意力聚合得兼顾全局一致与局部纹理的外观表征"
+ ],
+ "method_framework": "PoseNet 提分层姿态特征 Fp=[f1..f4] 加在 UNet 各下采样块末端；PIAE 用 CLIP patch 特征经 SVD 正交分解去姿态分量得 Fa，经 cross-attention 注入每块；TCCA 用三查询统一空间交互后预测通道/token 级自适应调制系数 αp、αa 动态缩放两路特征。",
+ "experiment_framework": "FoundHand-10M 子集（InterHand2.6M 为主、DART/RenderIH/ReInterHand 合成集）、ARCTIC 手物交互；基线 GestureGAN/CosHand/CFLD/FoundHand；指标 FID/LPIPS/SSIM/PSNR 与 HaMer 估计的 PCK@0.05-0.15、MPE。",
+ "takeaways": [
+  "「控制强度应是时变函数而非常数」这一诊断可推广到所有条件生成（人体、人脸、手物交互），尤其是多条件（结构+纹理）共存时的耦合问题",
+  "用 SVD 主方向的正交补投影做姿态/外观硬性解耦，比对抗损失或梯度反转更轻、且可解释（直接删掉变化主方向），适合表征 entanglement 明显的跨模态条件解耦",
+  "通道级与 token 级残差修正分开做粒度感知加权（结构走通道、纹理走 token），是低成本把「一个标量强度」升级为「条件感知强度」的做法"
+ ],
+ "weaknesses": [
+  "正文在 4.5 消融节开头被截断，只剩 Tab.4 表格而无文字分析；SVD 秩 r、两组 MLP 的具体结构、CFG 丢弃率 η=10% 等超参不可核验，且所有数值均为单跑、无种子方差或显著性",
+  "Tab.1 对比不严格：作者自述训练数据只是 FoundHand 训练集的真子集，FoundHand 直接沿用官方整量 checkpoint，其余方法（含 Ours）在同一子集训练，两类方法非同条件；Tab.3 中 Ours(w/o TCCA) 的 LPIPS(0.4632) 反而差于 FoundHand(0.4504)，指标方向不一致、正文未讨论",
+  "Tab.4 只把 TCCA 拆成 FH/CT/CA/TA 四消融并缺固定权重曲线、常数增益、时间分段手工权重等替代调度方案的对照，也没有单独验证 αres 残差项是否必要；Fig.2 的时间分段研究仅给可视化与 LPIPS/PCK 曲线，未量化得出「早段耦合」的结论",
+  "评测仅限 FID/LPIPS/SSIM/PSNR 与 PCK/MPE，未做下游任务（手物交互、AR/VR 应用）或极端姿态/遮挡的 OOD 评测，「复杂遮挡下几何不塌」的 claim 完全依赖 Fig.4/Fig.6 的定性图"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "可控手部生成与可靠性主线无实质交点，仅为条件生成技术改进",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

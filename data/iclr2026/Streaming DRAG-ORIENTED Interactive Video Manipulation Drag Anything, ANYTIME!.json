@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Streaming DRAG-ORIENTED Interactive Video Manipulation Drag Anything, ANYTIME!.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Streaming DRAG-ORIENTED Interactive Video Manipulation Drag Anything, ANYTIME!.pdf",
+ "title": "Streaming Drag-Oriented Interactive Video Manipulation: Drag Anything, Anytime!",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "DragStream为视频扩散模型添加无训练拖拽交互，但适用性和精度有限。",
+ "innovations": [
+  "定义REVEL新任务：统一拖拽式视频编辑和动画，支持平移、变形、旋转等多种拖拽效果，实现流式随时交互",
+  "提出自适应分布自校正策略：利用相邻帧统计信息约束拖拽扰动导致的隐空间分布漂移，防止拖拽过程中断",
+  "提出空间频率选择性优化机制：选择性传播视觉线索，充分利用上下文信息同时抑制其干扰，生成更自然的结果"
+ ],
+ "method_framework": "DragStream是无训练方法，可无缝集成到现有自回归视频扩散模型中。两个核心组件：(1)自适应分布自校正：在每帧拖拽后，用相邻帧的隐空间统计量校正当前帧的隐嵌入，累积的拖拽扰动导致分布漂移时自动校正；(2)空间频率选择性优化：在频域选择性传播上下文视觉线索，高频细节保留编辑效果，低频信息抑制上下文干扰。",
+ "experiment_framework": "在自回归视频扩散模型上验证REVEL任务，对比DragVideo、SG-I2V等基线。评估拖拽编辑的视觉质量、时序一致性和交互流畅度。",
+ "takeaways": [
+  "拖拽操作在隐空间中的累积扰动会导致分布漂移并中断生成过程，自校正是解决该问题的关键",
+  "空间频率选择性优化能有效平衡上下文利用和编辑效果保持，避免上下文帧干扰拖拽意图",
+  "无训练方法可以即插即用地为现有自回归视频扩散模型添加流式拖拽交互能力"
+ ],
+ "weaknesses": [
+  "仅在自回归视频扩散模型上验证，对其他视频生成架构（如扩散Transformer）的适用性未证明",
+  "拖拽交互的精度和稳定性在复杂运动场景下可能不足",
+  "前9页未展示完整的定量对比表格，视觉质量提升幅度不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.48,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频编辑与可靠性主线无交点，属纯交互方法",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

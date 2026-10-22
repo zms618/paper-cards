@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/SCENT_Robust Spatiotemporal Learning for Continuous Scientific Data via Scalable Conditioned Neural Fields.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SCENT_Robust Spatiotemporal Learning for Continuous Scientific Data via Scalable Conditioned Neural Fields.pdf",
+ "title": "SCENT: Robust Spatiotemporal Learning for Continuous Scientific Data via Scalable Conditioned Neural Fields",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "SCENT：条件神经场统一科学时空任务，但与主线AI关联弱。",
+ "innovations": [
+  "在单一架构内统一插值、重建与长时预测三种时空任务，通过Time Warp Processor在连续时间坐标上做重建或预测。",
+  "引入可学习查询(query)替代隐变量优化/元学习来提升泛化，并以query-wise交叉注意力加稀疏注意力实现数据与模型规模的可扩展。",
+  "提出新型unrolling策略缓解长时预测中误差累积。"
+ ],
+ "method_framework": "采用Transformer-based encoder-processor-decoder骨干；编码器对不规则传感器坐标/取值编码，带上下文的稀疏注意力(CEN)让每个token随机子采样关注S个邻居以编码全局上下文；可学习查询通过交叉注意力汇总表征；TWP在连续时间区间上做重建(delta=0)或预测(delta>0)，支持非整数时间步采样与联合重建预测。",
+ "experiment_framework": "数据集含三组不同粘度的Navier-Stokes基准及AirDelhi(PM2.5移动传感器)等真实科学数据；基线含规则网格法FNO、OFormer，神经场法DINO/CORAL/AROMA；指标MSE、Rel-MSE、RMSE；单卡H100训练、最大变体8卡分布式，含缩放性实验与消融。",
+ "takeaways": [
+  "统一架构在插值/重建/预测多任务上达到或超越FNO、CORAL、AROMA等SOTA，且随数据与参数量可扩展。",
+  "稀疏注意力与可学习查询避免了隐变量逐样本优化的开销，长时unrolling降低了误差累积。"
+ ],
+ "weaknesses": [
+  "与主线(可信AI/医学影像/多模态大模型推理)关系弱，属科学计算神经场范畴。",
+  "关键数据集细节与超参多置于附录，正文9页内未给出完整数值对比表。",
+  "在高维真实传感器噪声下的鲁棒性主要靠仿真与单一PM2.5数据集支撑，外部验证有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

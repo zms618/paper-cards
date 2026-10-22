@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Generative Gaussian Splatting Generating 3D Scenes with Video Diffusion Priors.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Generative Gaussian Splatting Generating 3D Scenes with Video Diffusion Priors.pdf",
+ "title": "Generative Gaussian Splatting Generating 3D Scenes with Video Diffusion Priors",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "视频扩散先验与3D高斯溅射结合，解决3D一致性问题",
+ "innovations": [
+  "将3D表示与预训练视频扩散模型直接集成",
+  "设计从生成特征图直接预测解码3D表示的自定义解码器",
+  "引入特征空间3D表示解决扩散模型中的3D一致性问题"
+ ],
+ "method_framework": "GGS通过姿势条件扩散模型生成特征场，使用3D高斯 primitives参数化，然后渲染为特征图并解码为多视图图像或直接上采样为3D辐射场。",
+ "experiment_framework": "在RealEstate10K和ScanNet++数据集上评估，与PNVS、MultiDiff、CameraCtrl、ViewCrafter等基线比较，使用PSNR、LPIPS、FID、FVD、TSED等指标。",
+ "takeaways": [
+  "特征空间3D表示可有效解决扩散模型中的3D一致性问题",
+  "深度监督可显著提升3D一致性"
+ ],
+ "weaknesses": [
+  "方法依赖预训练视频扩散模型，可能限制泛化能力",
+  "计算资源需求高，训练时间长"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D重建与视频生成，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/EAGLES_Towards Effective, Efficient, and Economical Federated Graph Learning via Unified Sparsification.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/EAGLES_Towards Effective, Efficient, and Economical Federated Graph Learning via Unified Sparsification.pdf",
+ "title": "EAGLES: Towards Effective, Efficient, and Economical Federated Graph Learning via Unified Sparsification",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "elevance": 4.0,
+  "evidence": 6.0,
+  "overall": 5.4
+ },
+ "one_line": "联邦GNN双域稀疏化框架，降算力通信但与主线关联弱",
+ "innovations": [
+  "客户端共识的参数稀疏化生成不同稀疏度的无偏子网络，免迭代调稀疏度并缓解性能下降",
+  "图结构域双专家：图稀疏专家做多准则节点级稀疏，图协同专家融合上下文节点信息生成最优稀疏子图",
+  "提出利用节点上下文的距离度量衡量客户端结构相似度促进知识共享，并以和谐稀疏化原则平衡性能与轻量"
+ ],
+ "method_framework": "统一稀疏化联邦图学习：客户端就参数重要性达成共识以无偏地抽取子网络；同时在图结构侧用多准则节点稀疏+上下文协同双专家得到稀疏子图；辅以基于上下文的客户端相似度度量与和谐原则，同时压缩训练FLOPs与通信量。",
+ "experiment_framework": "在多个联邦图学习数据集(含ogbn-proteins)上做节点/图任务，指标为精度、训练FLOPs下降、通信开销下降；与模型剪枝、图稀疏化等联邦GNN基线对比。",
+ "takeaways": [
+  "参数稀疏与图结构稀疏统一优化可同时降算力与通信而不大幅掉点",
+  "客户端共识比逐客户端独立剪枝更能应对数据异构",
+  "在ogbn-proteins上FLOPs降82%、通信降80%仍保持竞争力"
+ ],
+ "weaknesses": [
+  "与主线（可靠性/可信AI/医学影像/多模态大模型推理）关联弱，属联邦GNN效率方向",
+  "客户端共识与双专家设计引入额外协调开销，实际省算力是否成立需看完整计时",
+  "非独立同分布(NIID)极端异构下的收敛性与稀疏无偏性理论保证在前9页未见"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

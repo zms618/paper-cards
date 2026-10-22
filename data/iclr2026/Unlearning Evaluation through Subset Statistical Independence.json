@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unlearning Evaluation through Subset Statistical Independence.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unlearning Evaluation through Subset Statistical Independence.pdf",
+ "title": "Unlearning Evaluation through Subset Statistical Independence",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "将遗忘评估从样本级转向子集级统计依赖检测，无需重训或辅助模型。",
+ "innovations": [
+  "提出从sample-wise MIA转向subset-level评估：利用'共同梯度更新/共适应使训练参与样本在表征间产生样本间依赖'这一动机，检验子集整体是否残留训练信号",
+  "设计split-half dependence test：把待忘子集对半切分，用HSIC计算两半激活间的统计独立性，无需重训、无需shadow model、无需标签",
+  "证明该信号在重训模型上可区分in-training与out-of-training子集，并能在现有评估失效时清晰区分不同遗忘算法的有效性"
+ ],
+ "method_framework": "现有遗忘评估要么需重训参考模型对比、要么需MIA(依赖置信度/loss/辅助分类器，且需训练配置与标签)，在post-hoc场景不可行。SDE把候选待忘子集S平分为两半，取模型在两半上的内部表征，用HSIC(核独立性准则，适合高维)度量两半激活的统计依赖。训练参与因共享梯度造成样本间依赖，故in-training子集两半依赖显著，out-of-training子集则近似独立，据此判定遗忘是否成功。",
+ "experiment_framework": "在SVHN、CIFAR-10、CIFAR-100、Tiny-ImageNet上用AllCNN与ResNet-18，每设置5个随机种子重训模型做受控实验；考察核带宽σ、待忘比例R∈{5%,10%,20%}、子集大小、内部层鲁棒性、训练阶段鲁棒性；并与分布型度量及主流遗忘基线对比，附录另含扩散生成模型案例研究。",
+ "takeaways": [
+  "子集级HSIC依赖性检验可在无需重训/辅助分类器下可靠区分in-training与out-of-training子集",
+  "当逐样本置信度/loss信号在遗忘后变弱时，子集间依赖性仍是可检测的群体信号",
+  "该方法可统一评估不同遗忘算法的有效性，作为独立的standalone评估流程嵌入遗忘工作流"
+ ],
+ "weaknesses": [
+  "主线落地域为图像分类器遗忘评估，非多模态推理/医学影像，与主线相关性中等",
+  "结论依赖'训练参与诱发样本间依赖'这一经验假设，对大模型/生成式模型的普适性仅有附录案例，正文未充分刻画失效条件",
+  "HSIC核带宽σ等选择对检测力影响大，文中虽做敏感性分析但缺乏自动定带宽的闭式方案"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "成员推断方法可迁移至可靠性主线，设计模式有防守力",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

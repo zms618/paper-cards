@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Deep Unsupervised Hashing via External Guidance.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Deep Unsupervised Hashing via External Guidance.pdf",
+ "title": "Deep Unsupervised Hashing via External Guidance",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "常规外部知识引入无监督哈希，CLIP+WordNet组合提升有限",
+ "innovations": [
+  "提出DUH-EG：将外部文本语义知识引入无监督哈希，突破仅靠内部视觉结构的性能上限",
+  "通过最小化冗余从外部文本库挑选代表性名词，再用CLIP匹配图片以提取判别性外部特征",
+  "设计双向对比学习机制，最大化内部空间与外部空间哈希码的一致性"
+ ],
+ "method_framework": "先用冗余最小化挑选外部名词集，用CLIP计算图片-名词匹配概率得到外部特征；再用双向对比学习拉近图片内哈希码与外部空间对应表示，使离散表示同时利用内在视觉结构与外部语义。",
+ "experiment_framework": "在4个图像检索benchmark上与SOTA无监督/监督哈希方法对比，指标为mAP。",
+ "takeaways": [
+  "引入外部文本语义引导显著优于仅靠内部视觉结构的无监督哈希方法",
+  "双向对比学习能让内部哈希码同时捕捉外在语义与内在视觉结构",
+  "外部知识引导是无监督离散表示学习的有效提升路径"
+ ],
+ "weaknesses": [
+  "依赖CLIP与WordNet外部知识库，属常规的外部知识引入，新颖性中等",
+  "与可靠性/可信AI主线相关性弱",
+  "前9页未给出完整mAP数值表，增益幅度需看实验章节"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.93,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

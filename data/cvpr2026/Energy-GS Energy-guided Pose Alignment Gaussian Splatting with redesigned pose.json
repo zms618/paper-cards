@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Energy-GS Energy-guided Pose Alignment Gaussian Splatting with redesigned pose.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Energy-GS Energy-guided Pose Alignment Gaussian Splatting with redesigned pose.pdf",
+ "title": "Energy-GS Energy-guided Pose Alignment Gaussian Splatting with redesigned pose",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "改进3DGS姿态优化，但创新有限且计算开销大",
+ "innovations": [
+  "重新设计高斯原语梯度流，确保姿态梯度稳定",
+  "引入图像能量引导的渐进对齐策略，实现粗到细的优化",
+  "仅使用RGB图像实现3DGS与相机姿态的联合优化，无需额外约束"
+ ],
+ "method_framework": "Energy-GS固定高斯原语位置，重新设计梯度流，并引入图像能量分解策略，通过控制能量级别实现渐进式场景重建和姿态优化。",
+ "experiment_framework": "在合成和Mip-NeRF 360数据集上评估，与BARF、SC-NeRF、CF-GS、3R-GS和原始3DGS对比，使用PSNR、SSIM、LPIPS评估渲染质量，旋转角度和ATE评估姿态精度。",
+ "takeaways": [
+  "固定高斯原语位置可稳定姿态梯度",
+  "图像能量分解策略可有效避免局部最优",
+  "渐进式优化策略对弱纹理场景特别有效"
+ ],
+ "weaknesses": [
+  "方法在训练早期需要固定高斯原语位置，限制了场景重建的灵活性",
+  "能量控制策略的计算开销较大",
+  "在极端噪声场景下的鲁棒性未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3DGS姿态优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

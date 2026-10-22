@@ -1,0 +1,41 @@
+{
+ "title": "Rectified Decoupled Dataset Distillation: A Closer Look for Fair and Comprehensive Evaluation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "批判性重评解耦蒸馏，揭示27.3%差距实为6.7%，提出标准化评测协议。",
+ "innovations": [
+  "揭示解耦蒸馏post-eval阶段(随机增广、epoch-wise软标签、batch size、lr decay等)不一致是性能差距主因。",
+  "在ImageNet-1K等上统一重评SRe2L/CDA/G-VBSM/EDC等多种方法，把表观27.3%差距rectify到约6.7%。",
+  "提出覆盖目标数据集/压缩比/跨架构泛化三维的标准化评测协议，并指出替代初始化等易被误用的不公平技巧。"
+ ],
+ "method_framework": "固定一套统一的post-eval设置，对optimization/selection/generation三类解耦蒸馏方法复现并在相同协议下重测；系统扫描batch size、lr decay等后评测参数的影响；区分核心蒸馏机制带来的增益与辅助增强(增广/软标签)带来的虚假增益。",
+ "experiment_framework": "ImageNet-1K、ResNet-18、IPC=10设置；复现并对比SRe2L、CDA、G-VBSM、DWA、EDC、Minimax、D4M、RDED等；维度含压缩比、目标数据集、跨架构；指标为测试精度及训练耗时。",
+ "takeaways": [
+  "解耦蒸馏领域大量性能排名被不一致后评测设置混淆，统一设置后方法间差距大幅缩小。",
+  "报告增益须区分是蒸馏机制本身还是post-eval辅助技巧。",
+  "标准化、可复现协议是该领域继续进步的前提。"
+ ],
+ "weaknesses": [
+  "落地域为图像分类的数据集蒸馏压缩，与可靠性×医学影像/多模态推理主线关联弱。",
+  "作为批判性重评，自身方法创新有限，主要贡献在评测协议。",
+  "节选前9页未见三维(压缩比/跨架构)的完整rectified数值表，结论的全面证据在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Rectified Decoupled Dataset Distillation A Closer Look for Fair and Comprehensive Eval.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rectified Decoupled Dataset Distillation A Closer Look for Fair and Comprehensive Eval.pdf",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "数据集蒸馏与可靠性主线关联弱，但评测协议设计有方法论价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

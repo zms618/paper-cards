@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/3DTopia-XL_Scaling High-quality 3D Asset Generation via Primitive Diffusion.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3DTopia-XL_Scaling High-quality 3D Asset Generation via Primitive Diffusion.pdf",
+ "title": "3DTopia-XL: Scaling High-quality 3D Asset Generation via Primitive Diffusion",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 3.0,
+  "overall": 4.5
+ },
+ "one_line": "新表示+标准扩散模型组合，缺乏生成质量定量证据",
+ "innovations": [
+  "提出 PrimX 表示：在网格表面做均匀采样+FPS 得 N 个基元位置 t_k，每个基元是一个 a^3 体素，载荷 X_k∈R^{a×a×a×6} 同时编码 SDF、RGB、材质(金属度/粗糙度)，整体写成 N×D 张量；用 ŵ_k=max(0,1-||(x-t_k)/s_k||_∞) 归一化加权混合得到平滑场",
+  "拟合采用「初始化+轻量微调」：位置/尺度由最近邻 L2 距离初始化、SDF 由 BVH ray marching 查询、颜色材质由重心坐标插值 UV 采样，再用 λ_SDF=10→λ=1 的两阶段 L1 回归各 1k 步微调，1.5 分钟即可从 GLB 张量化",
+  "生成框架做职责分离：3D 卷积 patch VAE（下采样率 48）只对每个基元载荷做局部压缩成 N×d 潜 token，全局相关性交给 28 层 DiT（v-prediction + CFG），基元的置换等变性使其无需位置编码；再用 Marching Cubes 提零等值面、1024² UV 空间采样并膨胀修复，导出带 PBR 的 GLB"
+ ],
+ "method_framework": "先把带纹理网格快速张量化为 PrimX(N×D 张量，含位置/尺度/SDF+RGB+材质载荷)；再用 patch VAE 把每个基元压缩为潜 token；最后用 28 层 DiT 在潜空间做条件扩散去噪，输出经零等值面提取与 UV 采样打包成 PBR GLB 资产。",
+ "experiment_framework": "表示评测：30 个 GLB、固定 1.05M 参数预算下比 MLP/MLP+PE/Triplane/Dense Voxels/Sparse Points，报拟合耗时、CD、SDF/RGB/Mat 的 PSNR（50 万表面点）；生成评测：image-to-3D 与 text-to-3D 对比 LGM、InstantMesh、Real3D、CRM、ShapE、LN3Diff 等。",
+ "takeaways": [
+  "「参数高效 / 可快速张量化 / 可微渲染」三条设计原则，可作为评估任何新 3D 表示的检查清单",
+  "固定参数预算（1.05M）下同时比较拟合误差与拟合耗时，比各按默认配置对比更能隔离表示本身的能力",
+  "局部 patch 独立压缩、把全局语义相关性交给扩散模型，是「压缩与生成职责分离」的可复用设计"
+ ],
+ "weaknesses": [
+  "本质是「新表示 + 标准 VAE/DiT」组合：PrimX 的加权体素混合与 mosaic-SDF 思路相近，潜扩散部分为既有范式，问题层面未提出新问题",
+  "生成质量的定量证据在可见正文里缺失：只有表示拟合表，image-to-3D/text-to-3D 停留在视觉对比，未见 FID/CLIP-score/用户研究等量化指标与评测集规模",
+  "无方差与显著性检验；训练数据规模与算力预算只字未提，标题中的 Scaling 缺少可核对的支撑",
+  "表示对比基线是通用表示（MLP/Triplane/Dense Voxels/Sparse Points）而非 3D 生成领域最新的表示方案，对比强度有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "纯3D生成表示工作，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

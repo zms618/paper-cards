@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Propagation of Chaos for Mean-Field Langevin Dynamics and its Application to Model Ensemble.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Propagation of Chaos for Mean-Field Langevin Dynamics and its Application to Model Ensemble.pdf",
+ "title": "Propagation of Chaos for Mean-Field Langevin Dynamics and its Application to Model Ensemble",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 4.5,
+  "relevance": 6,
+  "overall": 5.8
+ },
+ "one_line": "改进MFLD混沌传播理论，但实验验证有限且假设存疑。",
+ "innovations": [
+  "在均匀方向LSI条件下改进MFLD的PoC结果，将粒子近似误差从O(αλ/N)改进为O(1/N)，消除了对LSI常数α的指数依赖",
+  "将目标间隙的PoC结果转化为逐点和均匀模型近似误差界，消除了先前界中对LSI常数的依赖",
+  "提出基于PoC的并行MFNN集成方法减少近似误差，并将其扩展到合并语言模型的LoRA参数"
+ ],
+ "method_framework": "在均匀方向对数Sobolev不等式(LSI)假设下，通过精炼defective LSI推导改进的混沌传播(PoC)界。粒子近似误差从依赖LSI常数α的O(αλ/N)降为O(1/N)，优化误差为exp(-Θ(λαt))。进一步将目标间隙界转化为逐点和均匀模型函数近似误差界，据此提出并行训练多个MFNN后合并的集成策略，并推广到LoRA参数合并。",
+ "experiment_framework": "合成数据集验证PoC理论和集成方法；在语言模型上合并多个LoRA参数观察预测性能改善。前9页内主要为理论推导，实验部分在后续页面。",
+ "takeaways": [
+  "通过引入均匀方向LSI，可以消除MFLD粒子近似误差对LSI常数α的指数依赖，将所需粒子数从指数级降为线性",
+  "PoC理论可用于指导并行MFNN集成以减少模型近似误差",
+  "将理论框架推广到LoRA合并，实证观察到合并多个LoRA参数可改善预测性能"
+ ],
+ "weaknesses": [
+  "实验验证极为有限，仅在合成数据集和LoRA合并上做初步验证，缺乏大规模真实基准对比",
+  "均匀方向LSI假设的验证条件在前9页内未充分讨论，实际神经网络是否满足该假设存疑",
+  "LoRA合并应用仅为定性观察，缺乏与现有LoRA合并方法（如TIES、DARE）的系统对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

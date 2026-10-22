@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/OmniSAM_Omnidirectional Segment Anything Model for UDA in Panoramic Semantic.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/OmniSAM_Omnidirectional Segment Anything Model for UDA in Panoramic Semantic.pdf",
+ "title": "OmniSAM Omnidirectional Segment Anything Model for UDA in Panoramic Semantic",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "SAM2扩展到全景分割，FoV原型适应和动态伪标签解决域适应。",
+ "innovations": [
+  "首次将SAM2应用于全景语义分割任务",
+  "FoV原型适应模块(FPA)实现跨域特征对齐",
+  "动态伪标签更新机制减少错误标签影响"
+ ],
+ "method_framework": "将全景图像分割为重叠序列，利用SAM2的内存机制提取跨块对应关系，结合LoRA微调图像编码器和自定义语义解码器，通过FoV原型适应模块实现跨域特征对齐。",
+ "experiment_framework": "在SPin8-to-SPan8、CS13-to-DP13和SP13-to-DP13三个场景评估，使用mIoU指标，与Trans4PASS+-S等基线方法比较。",
+ "takeaways": [
+  "滑动窗口处理全景图像序列的方法可借鉴",
+  "动态伪标签更新机制可有效减少错误标签影响",
+  "FoV原型适应模块能有效处理全景图像的畸变问题"
+ ],
+ "weaknesses": [
+  "模型参数量较大(Large版本209.2M)，可能限制实时应用",
+  "仅评估了特定场景下的性能，泛化能力有待进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "全景分割与域适应，可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

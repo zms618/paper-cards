@@ -1,0 +1,41 @@
+{
+ "title": "Sat3DGen: Comprehensive Street-Level 3D Scene Generation from Single Satellite Image",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "几何约束卫星图转街景3D，精度提升但应用有限",
+ "innovations": [
+  "指出现有街景生成在几何(高视点差/稀疏不一致监督)上失败的根因",
+  "提出几何优先方法：在feed-forward框架中融入新几何约束与透视视角训练策略",
+  "构建VIGOR-OOD+高分辨率DSM新基准，并验证语义图到3D、多视角视频生成、大规模网格化等下游"
+ ],
+ "method_framework": "在单卫星图到街景3D的feed-forward范式中以几何为中心：加几何约束与透视视角训练，显式抑制主要几何误差来源，兼顾几何与纹理。",
+ "experiment_framework": "在自建VIGOR-OOD+DSM基准上几何RMSE 6.76m->5.20m、FID约40->19(优于Sat2Density++)；无需额外图像质量模块；演示多类下游应用。",
+ "takeaways": [
+  "几何-上色模型与proxy模型各有偏废，几何优先可同时提升精度与真实感",
+  "透视视角训练与几何约束是抑制卫星-街景点差的关键",
+  "高质量3D资产可支撑多视角视频与大规模网格化"
+ ],
+ "weaknesses": [
+  "为遥感/3D生成，与医学影像或多模态推理可靠性主线无关",
+  "仅用单卫星图，超高大视角差与遮挡下的几何精度仍有限",
+  "前9页未见与最新街景3D方法的全面对比"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/SAT3DGEN_Comprehensive Street-Level 3D Scene Generation from Single Satellite.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SAT3DGEN_Comprehensive Street-Level 3D Scene Generation from Single Satellite.pdf",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯3D生成与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

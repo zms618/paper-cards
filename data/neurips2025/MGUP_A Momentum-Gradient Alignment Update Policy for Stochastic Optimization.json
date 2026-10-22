@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/MGUP_A Momentum-Gradient Alignment Update Policy for Stochastic Optimization.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/MGUP_A Momentum-Gradient Alignment Update Policy for Stochastic Optimization.pdf",
+ "title": "MGUP: A Momentum-Gradient Alignment Update Policy for Stochastic Optimization",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "动量-梯度对齐的参数选择策略，理论保证有限，泛化性待验证。",
+ "innovations": [
+  "提出MGUP机制，为动量优化器提供细粒度参数选择",
+  "为MGUP-AdamW提供随机优化环境下的理论收敛保证",
+  "设计差异化更新策略，平衡训练效率与稳定性"
+ ],
+ "method_framework": "MGUP通过计算动量与梯度元素乘积，对前K个参数应用放大步长(α·ηt)，其余参数应用缩小步长(γ·ηt)，实现选择性更新。",
+ "experiment_framework": "在MAE预训练、LLM预训练和下游微调任务上评估，包括ViT-27M、LLaMA2-71M、Qwen2.5-150M、RoBERTa-base和GLUE基准。",
+ "takeaways": [
+  "动量-梯度对齐可作为有效参数选择依据",
+  "非零小步长对保证收敛至关重要",
+  "MGUP可作为即插即用模块集成到多种优化器"
+ ],
+ "weaknesses": [
+  "理论分析假设较强(如全局Lipschitz连续性)",
+  "未充分探索不同模型架构上的泛化能力",
+  "超参数τ和γ的选择对性能影响较大"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

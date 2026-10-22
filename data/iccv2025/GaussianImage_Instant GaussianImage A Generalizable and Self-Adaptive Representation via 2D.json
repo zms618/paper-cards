@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/GaussianImage_Instant GaussianImage A Generalizable and Self-Adaptive Representation via 2D.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/GaussianImage_Instant GaussianImage A Generalizable and Self-Adaptive Representation via 2D.pdf",
+ "title": "Instant GaussianImage A Generalizable and Self-Adaptive Representation via 2D",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "高斯表示初始化与自适应数量调整，常规数据集上小幅提升训练效率",
+ "innovations": [
+  "网络初始化替代随机初始化高斯表示",
+  "Floyd-Steinberg抖动算法自适应确定高斯数量",
+  "基于Delaunay三角剖分的椭圆拟合特征提取"
+ ],
+ "method_framework": "使用ConvNeXt UNet提取图像特征，预测位置概率图并通过Floyd-Steinberg抖动算法离散化，结合Delaunay三角剖分和椭圆拟合提取几何特征，最后通过MLP预测高斯属性",
+ "experiment_framework": "DIV2K和Kodak数据集，与GI等基线比较PSNR和MS-SSIM指标，评估训练时间和渲染质量",
+ "takeaways": [
+  "网络初始化可显著加速高斯表示训练",
+  "自适应高斯数量可根据图像信息熵优化表示效率",
+  "椭圆拟合和三角剖分可有效提取几何特征"
+ ],
+ "weaknesses": [
+  "方法复杂度较高，组件较多",
+  "在低分辨率数据集上优势不明显",
+  "未充分验证在医学影像等特定领域的泛化能力"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "高斯表示优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

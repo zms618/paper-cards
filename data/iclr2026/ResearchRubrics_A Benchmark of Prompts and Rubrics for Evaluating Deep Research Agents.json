@@ -1,0 +1,41 @@
+{
+ "title": "ResearchRubrics: A Benchmark of Prompts and Rubrics for Evaluating Deep Research Agents",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "构建评测基准而非方法创新，DR系统合规率不足68%。",
+ "innovations": [
+  "提出ResearchRubrics基准：2800+小时人工、2500+专家书写的细粒度rubrics，配对真实、跨领域prompt评估开放式深研回答。",
+  "提出沿概念广度、逻辑嵌套、探索深度三轴的任务复杂度分类框架。",
+  "设计基于人与基于模型的评测协议，用rubric合规率评估DR智能体，并实测Gemini/OpenAI DR等领先系统。"
+ ],
+ "method_framework": "将开放式深研任务拆解为可逐条核对的细粒度rubric(覆盖事实 grounding、推理、表达)，定义三轴复杂度分类；分别用人工与LLM judge做三元合规判定，统计每条rubric的达成率作为系统表现指标。",
+ "experiment_framework": "数据集：自建2500+专家rubrics、领域多样prompt；被测对象：Gemini Deep Research、OpenAI Deep Research等SOTA系统；指标：rubric平均合规率。报告领先系统合规率均低于68%，主要缺陷为遗漏隐式上下文与对检索信息推理不足。",
+ "takeaways": [
+  "即使领先DR系统在专家rubrics上平均合规率也不足68%，开放式深度研究能力仍远未成熟。",
+  "主要失败模式是遗漏隐式上下文以及对检索到的信息缺乏充分推理，而非单纯事实错误。",
+  "细粒度rubric式评测能比传统短答案QA基准更灵敏地暴露长文多源合成中的缺陷。"
+ ],
+ "weaknesses": [
+  "本质是评测基准而非方法创新，对DR系统本身无改进，贡献落在数据/协议层面。",
+  "LLM judge的三元判定本身可能有判定偏差，合规率指标的可靠性依赖judge质量，文中对judge与人工一致性的规模验证在节选页中有限。",
+  "节选前9页即进入样例rubric细节，未看到完整的跨域统计与复杂度框架的量化分析，覆盖广度论证不充分。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/ResearchRubrics_A Benchmark of Prompts and Rubrics for Evaluating Deep Research Agents.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/ResearchRubrics_A Benchmark of Prompts and Rubrics for Evaluating Deep Research Agents.pdf",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "评测基准非方法创新，DR系统合规率不足68%",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

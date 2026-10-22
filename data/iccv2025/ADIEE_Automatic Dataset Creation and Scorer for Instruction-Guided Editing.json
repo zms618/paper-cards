@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/ADIEE_Automatic Dataset Creation and Scorer for Instruction-Guided Editing.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/ADIEE_Automatic Dataset Creation and Scorer for Instruction-Guided Editing.pdf",
+ "title": "ADIEE: Automatic Dataset Creation and Scorer for Instruction-Guided Image Editing Evaluation",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.2
+ },
+ "one_line": "人工阈值构建编辑评分器，同源数据泄漏风险高，证据不足。",
+ "innovations": [
+  "指出指令式编辑训练集天然就是评测集：GT 图即高分样本，把输入图当输出即零分样本；用「输入图锚点 + CLIP-D 负值判 0、CLIP-I/DINO-I 低于数据集 5% 分位阈值 τ 判 0、τ_CLIP-D<0.2 判 0.5」的方式筛确定负样本，而不直接用 CLIP/DINO 绝对值当分数。",
+  "在多轮编辑序列 S=[I0,p1,...,Il] 上给出闭式打分 f=(k−j1)/(j2−j1)：以 I_j1 为输入、P_j1→j2 为指令，第 k 帧按「已完成指令数/总指令数」线性定分，超编辑区间统一记 0.5，一次生成十万级带分样本。",
+  "沿用 LISA 式做法给 LLaVA-NeXT-8B 扩词表加 [SCORE] 特殊 token，其 embedding 经 MLP 解码为最终 0–10 分（LoRA rank 8、30 epoch）；训得后可作奖励函数 L_reward=10−s 反哺 MagicBrush，也可作为 “quality=[SCORE]” 条件文本微调编辑模型。"
+ ],
+ "method_framework": "从编辑数据集的 GT/输入双结构与多轮序列造带分样本：CLIP-D 负值或低于 5% 分位阈值判 0、部分成功判 0.5，多轮按 (k-j1)/(j2-j1) 线性打分；再给 LLaVA-Next-8B 扩 [SCORE] token 由 MLP 解码成分数。",
+ "experiment_framework": "ImagenHub、GenAI-Bench、AURORA-Bench 三基准；对比十余种开源/闭源 VLM 与 CLIP/DINO 类指标，点评估用 Spearman 相关、对评估用成对准确率。",
+ "takeaways": [
+  "「训练数据即评测数据」：编辑数据集里 GT 图与输入图的对立结构可零成本造标签，把输入图当失败锚点是最省力的负样本来源。",
+  "打标只借 CLIP/DINO 的相对趋势去卡阈值筛负样本，而非让打分器吃它们的绝对值，是绕开大模型细粒度感知缺陷的实用做法。",
+  "让 judge 只吐一个可微分的数值 token（LISA 式 [SCORE]）比让它生成自然语言再解析分数更稳，也便于直接接进奖励微调。"
+ ],
+ "weaknesses": [
+  "整套打分规则是人工阈值：τ_CLIP-D=0.2 直接借自 IP2P，5% 分位、过编辑固定 0.5 均无原理支撑，正文缺阈值敏感性实验。",
+  "训练数据由 MagicBrush 与 SEED-Data-Edit 生成，而评测的 AURORA-Bench 又是从 MagicBrush 微调而来，同源于同一编辑分布，正文未给跨数据集的域外切分来排除泄漏。",
+  "所有相关性与成对准确率均为单次结果、无多 seed 方差；用户实验仅 56 人 × 50 对且有 26.33% 平票，且 Table 1 与 Table 5 的 AURORA 点评估数值（0.4734/0.4744）不一致。",
+  "正文在用户实验段落截断，消融只剩 Table 5 的「去 [SCORE] token」一项，数据生成两个分支各自贡献的消融缺失。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "指令式编辑评估工具，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

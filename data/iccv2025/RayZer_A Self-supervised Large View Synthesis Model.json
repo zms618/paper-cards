@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/RayZer_A Self-supervised Large View Synthesis Model.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/RayZer_A Self-supervised Large View Synthesis Model.pdf",
+ "title": "RayZer A Self-supervised Large View Synthesis Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "纯transformer自监督视角合成，级联预测相机与场景表示。",
+ "innovations": [
+  "纯transformer架构设计，仅使用射线结构作为3D先验",
+  "自监督框架通过分离相机和场景表示实现3D感知自编码",
+  "级联预测相机参数和场景表示，相互正则化"
+ ],
+ "method_framework": "RayZer采用级联预测：先估计相机参数并转换为Plücker射线图，再结合图像和射线图预测场景表示，最后渲染新视图。训练时使用自预测相机进行光度监督，无需3D标注。",
+ "experiment_framework": "在DL3DV、RealEstate和Objaverse三个数据集上评估，与GS-LRM、LVSM等监督方法比较PSNR、SSIM和LPIPS指标。",
+ "takeaways": [
+  "自监督方法可突破对3D标注的依赖",
+  "级联预测相机和场景表示能有效相互正则化",
+  "纯transformer架构结合射线表示可作为3D视觉的有效范式"
+ ],
+ "weaknesses": [
+  "在Objaverse上性能略低于使用完美标注的监督方法",
+  "未充分讨论模型在不同噪声水平下的鲁棒性",
+  "计算复杂度较高，训练资源需求大"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "纯视角合成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

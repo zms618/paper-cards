@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/What Has a Foundation Model Found Using Inductive Bias to Probe for World Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/What Has a Foundation Model Found Using Inductive Bias to Probe for World Models.pdf",
+ "title": "What Has a Foundation Model Found? Using Inductive Bias to Probe for World Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "归纳偏置探针评估基础模型是否学到真实世界模型而非任务启发式",
+ "innovations": [
+  "提出归纳偏置探针（inductive bias probe）框架，通过比较基础模型与oracle的外推可预测性来量化模型是否学到了世界模型",
+  "定义了外推可预测性指标，形式化刻画模型在小样本一致数据集上的泛化能力",
+  "在轨道力学、格点问题、Othello游戏等多个已知世界模型的领域中验证，发现基础模型普遍未能学到底层物理规律"
+ ],
+ "method_framework": "给定一个基础模型和一个已知世界模型（如牛顿力学），构造与该世界模型一致的合成数据集。将基础模型在小样本数据集上微调，然后在held-out输入上测试其外推预测能力。将模型的外推可预测性与理论oracle（即真正使用世界模型的函数）对比，绘制校准曲线。如果模型的归纳偏置朝向世界模型，其曲线应接近45度线。",
+ "experiment_framework": "在三个领域验证：1）轨道力学（行星轨迹预测）；2）格点问题（统计物理）；3）Othello游戏（规则驱动）。使用不同规模的基础模型，在合成数据上微调并测试外推能力。对比指标为外推可预测性曲线与45度线的偏离程度。",
+ "takeaways": [
+  "基础模型在序列预测任务上表现优异，但并未真正学到底层世界模型的归纳偏置",
+  "模型在微调后表现为依赖任务特定的启发式规则，这些规则无法泛化到新的物理场景",
+  "归纳偏置探针提供了一种量化评估模型\"理解深度\"的可操作方法"
+ ],
+ "weaknesses": [
+  "仅在合成的、已知世界模型的领域验证，在真实复杂领域（如自然语言）的适用性尚未验证",
+  "oracle函数类G的选择对结果影响很大，不同的G可能得出不同结论",
+  "实验使用的基础模型规模和类型有限，未探索更大规模模型是否会出现世界模型涌现"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

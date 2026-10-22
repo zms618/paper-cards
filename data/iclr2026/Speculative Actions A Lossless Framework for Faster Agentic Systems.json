@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Speculative Actions A Lossless Framework for Faster Agentic Systems.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Speculative Actions A Lossless Framework for Faster Agentic Systems.pdf",
+ "title": "Speculative Actions: A Lossless Framework for Faster Agentic Systems",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "将处理器推测执行思想引入agent动作级，但加速比依赖高可预测性",
+ "innovations": [
+  "把推测执行/推测解码思想从token级推广到agent环境动作级，用快模型预测未来动作并行试探",
+  "命中才提交的无损保证框架，并给出操作系统场景下的有损扩展",
+  "形式化推测广度与时延节省的代价-时延权衡，支持有原则地调参与选择性开分支"
+ ],
+ "method_framework": "用更快的模型预测agent未来若干步动作，并行执行这些推测动作；当慢模型/环境反馈与预测一致时提交，不一致则回退重规划；通过代价-时延模型权衡推测广度，控制多分支推测的成本爆炸。",
+ "experiment_framework": "在游戏、电商、网页搜索环境评测，另在操作系统场景研究有损扩展；报告最高55%的下一步动作预测准确率并转化为显著时延降低，附代价-时延分析。",
+ "takeaways": [
+  "agent环境动作级延迟可由推测动作并行试探显著压缩，且可做到结果无损",
+  "预测命中率直接决定加速比，55%命中率已带来可观时延节省",
+  "推测广度需按代价-时延模型权衡，否则多分支成本会吞掉加速收益"
+ ],
+ "weaknesses": [
+  "加速比高度依赖下一步动作可预测性，在分支高度不确定/探索性任务上命中率骤降",
+  "并行执行推测动作在有副作用的环境(真实交易/写操作)中风险高，安全回滚机制讨论有限",
+  "快模型本身的额外调用成本在真实API计费下的净收益需更严格核算"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "agent加速技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

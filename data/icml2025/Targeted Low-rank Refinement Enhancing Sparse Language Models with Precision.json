@@ -1,0 +1,38 @@
+{
+ "title": "Targeted Low-rank Refinement: Enhancing Sparse Language Models with Precision",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "低秩近似修正剪枝损失，但计算开销大且缺乏完整实验支持。",
+ "innovations": [
+  "把剪枝损失建模为稠密-稀疏权重之差，用低秩近似捕捉该差异",
+  "迭代地用低秩调整精炼稀疏权重矩阵，恢复高稀疏率下丢失的信息",
+  "方法可作为 magnitude pruning 后的即插即用步骤"
+ ],
+ "method_framework": "先做 magnitude pruning 得到稀疏权重；计算稠密矩阵与稀疏矩阵之差 E；对 E 做低秩近似 E≈AB；把低秩修正加回稀疏权重；迭代重复该过程逐步精炼。",
+ "experiment_framework": "在标准LLM剪枝基准上对比magnitude pruning与其他剪枝方法，指标为困惑度/下游任务精度，覆盖不同稀疏率（前9页未列全数值）。",
+ "takeaways": [
+  "剪枝损失主要由低秩结构承载，可用低秩修正高效恢复",
+  "迭代低秩精炼比一次性修正更稳",
+  "高稀疏率下该方法显著缩小稠密-稀疏差距"
+ ],
+ "weaknesses": [
+  "低秩修正增加存储与计算，需在压缩率上权衡",
+  "秩选择敏感，自动选秩方法未给出",
+  "前9页未给出具体困惑度数值",
+  "域为LLM压缩，与主线无关"
+ ],
+ "confidence": "low",
+ "key": "icml2025/Targeted Low-rank Refinement Enhancing Sparse Language Models with Precision.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Targeted Low-rank Refinement Enhancing Sparse Language Models with Precision.pdf",
+ "raw_overall": 5.43,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

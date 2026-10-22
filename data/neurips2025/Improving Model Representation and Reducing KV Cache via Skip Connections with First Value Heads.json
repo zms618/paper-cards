@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Improving Model Representation and Reducing KV Cache via Skip Connections with First Value Heads.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Improving Model Representation and Reducing KV Cache via Skip Connections with First Value Heads.pdf",
+ "title": "Improving Model Representation and Reducing KV Cache via Skip Connections with First Value Heads",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "Value头跳跃连接减少KV缓存，微调提升表示，兼容现有方法",
+ "innovations": [
+  "首层Value头跳跃连接机制",
+  "理论分析证明其加速隐式mesa-优化",
+  "与现有KV缓存高效方法兼容",
+  "仅需10-15%额外计算量的微调方案"
+ ],
+ "method_framework": "SkipV1Former从第二层开始，将一半的Value头替换为第一层对应的Value头，同时保留另一半本地计算，减少约25%的KV缓存和参数量。",
+ "experiment_framework": "在GPT-2和LLaMA模型上评估，验证困惑度降低和KV缓存减少，结合GQA和MLA进一步优化，测量推理内存和速度。",
+ "takeaways": [
+  "首层Value保留原始信息，通过跳跃连接恢复压缩损失",
+  "方法设计简洁且与现有技术兼容",
+  "微调方案高效实用"
+ ],
+ "weaknesses": [
+  "仅关注Value头的重用，未探索Key头的优化",
+  "理论分析基于简化模型，实际Transformer的复杂性未被完全考虑"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

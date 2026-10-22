@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Mamba as a Bridge Where Vision Foundation Models Meet Vision.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Mamba as a Bridge Where Vision Foundation Models Meet Vision.pdf",
+ "title": "Mamba as a Bridge Where Vision Foundation Models Meet Vision",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "Mamba适配器连接VFM与VLM，提升域泛化语义分割",
+ "innovations": [
+  "Mamba-based co-adapter MVFuser联合微调VFM和VLM",
+  "混合注意力-Mamba模块MTEnhancer增强文本嵌入",
+  "保持线性计算复杂度的长序列建模"
+ ],
+ "method_framework": "MFuser框架包含MVFuser和MTEnhancer两个核心组件，通过Mamba高效融合VFM和VLM特征，保持原始模型参数冻结，仅训练适配器和解码器",
+ "experiment_framework": "在合成到真实(G→{C,B,M})和真实到真实(C→{B,M})场景下评估，使用DINOv2作为VFM，CLIP/EVA02-CLIP/SIGLIP作为VLM，mIoU作为指标",
+ "takeaways": [
+  "Mamba适配器有效处理长序列特征融合",
+  "文本嵌入与视觉特征的跨模态一致性对域泛化至关重要",
+  "参数高效的联合微调优于全模型微调"
+ ],
+ "weaknesses": [
+  "仅评估了语义分割任务，泛化性有待验证",
+  "计算效率分析仅限于参数量和FLOPs，实际推理时间未报告"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "域泛化语义分割与可靠性主线有交点但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

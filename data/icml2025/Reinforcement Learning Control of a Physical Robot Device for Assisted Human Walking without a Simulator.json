@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Reinforcement Learning Control of a Physical Robot Device for Assisted Human Walking without a Simulator.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Reinforcement Learning Control of a Physical Robot Device for Assisted Human Walking without a Simulator.pdf",
+ "title": "Reinforcement Learning Control of a Physical Robot Device for Assisted Human Walking without a Simulator",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "离线模仿+在线RL控制真机外骨骼，但样本少且缺乏形式化证明",
+ "innovations": [
+  "提出数据中心的 offline-to-online 方案 AIP：先用无机器人辅助的真人行走示范做行为克隆得到初始策略，再以在线 actor-critic 对个体用户做个性化适配",
+  "在缺乏人-软外骨骼交互动力学模型与仿真器的条件下，仅用有限真机数据直接在线学习，规避 sim-to-real 建模",
+  "给出在线学习收敛性、动态稳定性、人因安全与解最优性的定性保证，并在 5 名受试者上全部成功验证"
+ ],
+ "method_framework": "离线阶段通过模仿人类专家行走示范（穿戴软充气管状服、无辅助）学习初始策略；在线阶段以该策略初始化 actor-critic，针对新用户在真机上做低算力实时自适应，目标是最优个性化助力，同时以定性约束保证收敛、稳定与人身安全。",
+ "experiment_framework": "在真实软充气 exosuit 设备上对 5 名健康受试者进行真人行走实验；对比指标为人体行走代价/能耗降低与助力跟随效果；未使用仿真器，报告所有受试者结果而非选择性呈现；与 PPO/SAC 等依赖大量仿真的方法做方法层面对比。",
+ "takeaways": [
+  "离线模仿初始化可让无模型软外骨骼的在线个性化快速收敛并安全适配个体",
+  "真机有限数据直接在线学习可替代昂贵且不可靠的人-软服交互仿真",
+  "在线 RL 控制物理设备解决真实行走辅助问题具备可行性"
+ ],
+ "weaknesses": [
+  "主线偏离可靠性/医学影像/多模态推理，仅机器人辅助行走这一落地域相关度低",
+  "样本仅 5 名健康受试者，缺乏患者、跨地形与长期穿戴的量化统计显著性",
+  "关键动力学/稳定性保证为定性陈述，前 9 页未见形式化收敛证明与误差棒统计"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.13,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

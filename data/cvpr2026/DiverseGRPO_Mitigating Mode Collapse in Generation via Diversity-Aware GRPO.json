@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/DiverseGRPO_Mitigating Mode Collapse in Generation via Diversity-Aware GRPO.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/DiverseGRPO_Mitigating Mode Collapse in Generation via Diversity-Aware GRPO.pdf",
+ "title": "DiverseGRPO Mitigating Mode Collapse in Generation via Diversity-Aware GRPO",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "分布奖励+结构正则化缓解GRPO模式崩溃，但计算开销大",
+ "innovations": [
+  "分布创造力奖励机制，基于语义分组分配探索奖励",
+  "结构感知正则化，针对扩散动力学调整早期阶段约束强度",
+  "在保持质量的同时显著提升语义多样性"
+ ],
+ "method_framework": "DiverseGRPO结合两种策略：1)基于语义聚类的分布创造力奖励，为少数簇分配更高奖励；2)结构感知正则化，在去噪早期阶段施加更强约束，后期放松以优化奖励",
+ "experiment_framework": "在SD3.5-M和Flux.1-dev模型上，使用PickScore和HPSv3奖励函数，评估DreamSim、FID、BeyondFID等多样性和质量指标",
+ "takeaways": [
+  "奖励设计应考虑分布级多样性而非单样本质量",
+  "扩散模型早期去噪阶段对多样性保持至关重要",
+  "正则化策略应与生成动力学特性相匹配"
+ ],
+ "weaknesses": [
+  "计算开销增加，需要额外的聚类和距离计算",
+  "依赖预训练的DreamSim模型计算感知距离",
+  "未探索不同聚类数量对结果的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "生成模型可靠性方法，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

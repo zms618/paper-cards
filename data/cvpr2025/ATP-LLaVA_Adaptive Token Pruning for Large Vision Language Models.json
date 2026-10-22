@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/ATP-LLaVA_Adaptive Token Pruning for Large Vision Language Models.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ATP-LLaVA_Adaptive Token Pruning for Large Vision Language Models.pdf",
+ "title": "ATP-LLaVA: Adaptive Token Pruning for Large Vision Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "自适应视觉token剪枝，平均砍75%仅掉1.9%性能，但实验对比不严格",
+ "innovations": [
+  "实例 × 层双重自适应的可学习阈值：用 MLP 双头由自模态度量 S_self=1/L_v Σ_m A_logits^i(v_n,v_m) 与跨模态度量 S_cross=1/L_t Σ_m A^i(v_n,t_m) 预测冗余阈值 θ_r 与空间阈值 θ_s（Eq.8），替代此前的固定剪枝比例；配软掩码 σ((S−θ)·T) 并把掩码乘在 attention softmax 的指数上（仅训练期），使硬剪枝端到端可微。",
+  "Spatial Augmented Pruning 双视角合并：冗余分（模内 + 跨模取均值）与空间分 S_spatial=1−R_s·λ_sample（λ_sample=3，采样率越高分越高）分别产出掩码后取 max 合并；剪完后保留 token 的原始 2D rotary 位置编码而非重排成 0,1,2,... 连续编号，避免空间结构被打散。",
+  "预算约束训练目标：L_ATP=Σ_{i_k} Sum(Mask_{i_k})/576 · i_k 让惩罚随层深递增（体现深层的边际收益递减），再加 ||N̄ − N_target|| 约束 batch 平均 token 数，与 SFT 目标合成 L=L_ntp+λ_ATP L_ATP+λ_target L_target（λ_target=0.2、λ_ATP∈[0.01,0.1]）。"
+ ],
+ "method_framework": "在 LLaMA 层间插 ATP 模块，用上层注意力对数算模内/跨模冗余分与按采样率的空间分，MLP 双头学出 θ_r、θ_s，软掩码（训练期注入 softmax）剔除 token 并保留原 2D RoPE；预算损失与 ||N̄−N_target|| 联合做 SFT 微调。",
+ "experiment_framework": "LLaVA-1.5（Vicuna-7B + CLIP-ViT-L），665k SFT 训 1 epoch；7 基准 GQA/MMB/MME/POPE/SEED/SQAI/VQAv2；基线 PruMerge+、FastV、SparseVLM 与同预算固定比例策略；指标为准确率及相对上界的保留率。",
+ "takeaways": [
+  "把‘剪多少’变成可学习量（而非超参）+ 预算惩罚项，是压缩类工作里最省事且可迁移的写法，任何 token/通道裁剪都能套。",
+  "软掩码 + 在 softmax 指数上乘掩码的可微技巧，绕开了按实例动态裁剪长度无法 batch 并行的工程死结。",
+  "裁剪后保留原始 2D 位置编码（而非重排连续位置）是保住视觉空间结构的低成本细节，值得直接在像素级压缩任务里照搬。"
+ ],
+ "weaknesses": [
+  "Tab.1 的基线都按固定 token 预算（144/192/128）部署，而 ATP-LLaVA 的 144*、88* 是每样本每层自适应不预设的，平均对齐后实际 FLOPs/KV-cache 节省并不严格可比，Eq.15-16 的加速比理论分析也只在固定 L 下成立。",
+  "Tab.4/Tab.5 消融中去掉 RP 后 MMB 仅从 66.0 降到 65.3、去掉 SP 降到 64.3、单独去掉位置编码降到 65.2，全部在 1 分以内却无任何多种子方差或显著性检验；且正文在 4.3 节“Pruning Strategy”处被截断，与固定比例策略的正面对照结论不可见。",
+  "LLM 与视觉编码器全程冻结、只训练 ATP 模块（Tab.3 显示 Frozen 63.1 vs Trainable 66.0），所谓‘保持 98.1% 视觉能力’是在已训好的 LLaVA-1.5 上的保持率，并未证明该自适应裁剪机制能端到端联合训练；λ_ATP∈[0.01,0.1] 与 N_target 的取值曲线也不在正文。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "自适应token剪枝方法可迁移到压缩主线，但实验对比不严格",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

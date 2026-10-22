@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/LangTime_A Language-Guided Unified Model for Time Series Forecasting with Proximal Policy Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/LangTime_A Language-Guided Unified Model for Time Series Forecasting with Proximal Policy Optimization.pdf",
+ "title": "LangTime: A Language-Guided Unified Model for Time Series Forecasting with Proximal Policy Optimization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "LLM+强化学习时序预测，提示词设计新颖但计算成本高",
+ "innovations": [
+  "构建时序理解提示词(TCPs)，包含数据集级和通道级指令，将时间序列压缩为单token以促进LLM理解与对齐时序数据",
+  "提出TimePPO强化学习微调算法，利用面向时序的多维奖励函数和基于重复的值估计策略，缓解自回归预测中的误差累积问题",
+  "实现跨域预训练+RL微调的统一时序预测框架，在多个领域数据集上取得SOTA跨域预测性能"
+ ],
+ "method_framework": "LangTime以预训练LLM为基础，通过时序理解提示词(TCPs)将时序数据压缩为单token并融入数据集级/通道级指令实现跨域适配；再用TimePPO进行强化学习微调，多维奖励函数针对时序预测设计，重复值估计策略降低自回归预测的误差累积。",
+ "experiment_framework": "在多个时间序列数据集（气候、电力、天气等）上进行跨域预测实验，与主流LLM-based时序预测方法及传统时序模型对比，采用MSE/MAE等标准指标评估。",
+ "takeaways": [
+  "语言引导的提示词设计能有效帮助LLM对齐时间序列数据，提升跨域泛化能力",
+  "TimePPO微调可显著提升自回归时序预测的稳定性和准确率",
+  "统一模型在多个领域数据集上均达到或接近SOTA性能"
+ ],
+ "weaknesses": [
+  "方法依赖LLM backbone，计算成本较高，未充分讨论推理效率",
+  "跨域泛化提升幅度在部分数据集上有限，缺乏与非LLM基线的公平对比",
+  "前9页未展示完整消融实验，TimePPO各组件的贡献分解不够清晰"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

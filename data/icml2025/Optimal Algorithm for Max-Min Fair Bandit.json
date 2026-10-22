@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Optimal Algorithm for Max-Min Fair Bandit.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Optimal Algorithm for Max-Min Fair Bandit.pdf",
+ "title": "Optimal Algorithm for Max-Min Fair Bandit",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 6
+ },
+ "one_line": "改进max-min公平MP-MAB遗憾界，但理论与主线关联弱",
+ "innovations": [
+  "将既有 max-min 公平 MP-MAB 遗憾上界从 O(exp(1/Δ)+K³logTloglogT) 改进为 O((N²+K)logT/Δ)",
+  "提出去中心化公平消除算法 DFE，显式处理异构奖励与碰撞",
+  "给出 Ω(max{N²,K}logT/Δ) 遗憾下界，证明算法在 T,N,K,Δ 意义下最优"
+ ],
+ "method_framework": "在 N 玩家竞争 K 臂、异构奖励且同臂碰撞得零奖励的设定下，以最大化最低奖励玩家收益（max-min 公平）为目标。DFE 通过去中心化的臂消除与公平分配，谨慎处理异构性与碰撞，控制每个玩家的探索，把遗憾收敛到与 gap Δ 线性相关的量级。",
+ "experiment_framework": "以多玩家异构 MAB 为实验对象，与既有 max-min 公平算法对比累计/单玩家遗憾随轮次 T 的变化；辅以数值实验验证理论上界关于 T、N、K、Δ 的标度行为。",
+ "takeaways": [
+  "DFE 取得了关于 T,N,K,Δ 最优（上下界匹配）的 max-min 公平遗憾界",
+  "去中心化设计可同时兼顾异构奖励与碰撞，且不牺牲公平性"
+ ],
+ "weaknesses": [
+  "与可靠性/可信AI/医学影像/多模态推理主线无关，属纯老虎机理论",
+  "理论依赖最小 gap Δ 的强假设，在 gap 极小或为零时的实际行为未充分讨论",
+  "数值实验规模与真实无线通信场景的对应较弱，主要是合成仿真"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

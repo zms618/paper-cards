@@ -1,0 +1,37 @@
+{
+ "title": "I2MoE: Interpretable Multimodal Interaction-aware Mixture-of-Experts",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "PID理论落地MoE，预设交互类型，弱监督损失不明，未验证大模型",
+ "innovations": [
+  "将PID信息论框架落地为端到端MoE：用不同交互专家分别建模uniqueness、synergy、redundancy等多模态交互类型",
+  "引入弱监督交互损失以数据驱动方式学习多模态交互，弥补PID仅有理论、缺乏深度学习集成的空白",
+  "部署重加权模型为每个交互专家输出分配重要度分数，提供样本级与数据集级双层可解释性，且可即插即用到不同融合骨干"
+ ],
+ "method_framework": "I2MoE是端到端MoE框架：不同交互专家对应PID中的各类模态交互，配合弱监督交互损失学习；再由重加权模型对各专家输出打重要度分数聚合。专家重要度即作为局部（样本）与全局（数据集）解释。框架可与现有融合技术组合。",
+ "experiment_framework": "在5个真实多模态数据集（含医学与通用场景）上评测，对比vanilla模态融合方法及已有交互建模方法，指标为准确率等任务性能（最高提升5.5%）及可解释性质量。",
+ "takeaways": [
+  "显式建模多模态交互类型（独特/协同/冗余）可一致提升融合性能，最高+5.5%准确率",
+  "交互专家的重加权分数能同时提供样本级与数据集级解释，揭示模态间如何相互作用",
+  "框架灵活，可作为即插即模块嵌入不同现有融合骨干"
+ ],
+ "weaknesses": [
+  "交互专家数量与PID四类型的对应关系带较强预设，对超过两模态的推广缺乏清晰刻画",
+  "弱监督交互损失的监督信号来源与标注成本未充分说明，可能影响交互类型分离的纯度",
+  "前9页未见在高维多模态大模型（如MLLM）上的验证，仅适用于分类等传统多模态任务"
+ ],
+ "confidence": "high",
+ "key": "icml2025/I2MoE_Interpretable Multimodal Interaction-aware Mixture-of-Experts.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/I2MoE_Interpretable Multimodal Interaction-aware Mixture-of-Experts.pdf",
+ "raw_overall": 6.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

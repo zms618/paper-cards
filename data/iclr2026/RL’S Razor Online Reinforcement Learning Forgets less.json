@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/RL’S Razor Online Reinforcement Learning Forgets less.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RL’S Razor Online Reinforcement Learning Forgets less.pdf",
+ "title": "RL's Razor: Why Online Reinforcement Learning Forgets Less",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "RL在新任务性能相同时比SFT保留旧知识更好，因KL散度更低。",
+ "innovations": [
+  "实证发现：新任务性能相当时，SFT常以抹除旧知识为代价获得新能力，而on-policy RL更好保留旧技能。",
+  "指出遗忘程度由微调后策略与基座策略在新任务上的KL散度(分布偏移)决定。",
+  "揭示on-policy RL隐式偏向在所有能解决新任务的策略中KL最接近基座的解，并给出理论论证；命名为RL's Razor。"
+ ],
+ "method_framework": "对比SFT与on-policy RL在新任务微调后的新老任务性能，以KL散度量化分布偏移；从on-policy更新的性质出发论证其为何趋向KL最小解，从而减少对基座分布的偏移与遗忘。",
+ "experiment_framework": "在大语言模型与机器人基础模型上，控制新任务性能相同时对比SFT与RL的旧任务保留，报告KL散度与遗忘程度，并给出on-policy更新KL变化更小的理论分析。",
+ "takeaways": [
+  "解决新任务的策略众多时，RL隐式选择与基座KL最近的那个，因而遗忘更少。",
+  "要持续学习少遗忘，应优先用on-policy RL而非SFT微调新任务。"
+ ],
+ "weaknesses": [
+  "KL最小偏向主要在on-policy设定下成立，对off-policy/大规模RLHF的迁移边界未充分讨论。",
+  "前9页只见主结论与示意，未见LLM/机器人完整保留率对比表与理论定理的完整推导。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "持续学习机制研究，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

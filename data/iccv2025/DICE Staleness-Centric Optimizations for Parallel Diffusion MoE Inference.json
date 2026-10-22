@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/DICE Staleness-Centric Optimizations for Parallel Diffusion MoE Inference.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/DICE Staleness-Centric Optimizations for Parallel Diffusion MoE Inference.pdf",
+ "title": "DICE Staleness-Centric Optimizations for Parallel Diffusion MoE Inference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "DICE三层次优化MoE扩散模型推理过时激活问题",
+ "innovations": [
+  "交织并行ism减少步级过时",
+  "选择性同步保护敏感层",
+  "条件通信基于token重要性调整通信频率"
+ ],
+ "method_framework": "DICE框架在步级、层级和token级三层次优化过时激活问题：交织并行减少步级延迟，选择性同步保护深层MoE层，条件通信基于路由分数动态调整通信频率。",
+ "experiment_framework": "在ImageNet 256×256数据集上评估DiT-MoE-XL/G模型，使用FID、sFID、IS等指标，与DistriFusion、专家并行等基线比较。",
+ "takeaways": [
+  "过时激活分析可指导优化策略",
+  "基于路由分数的token重要性评估有效",
+  "分层同步可平衡质量与效率"
+ ],
+ "weaknesses": [
+  "未探索更多步数配置",
+  "未分析不同计算架构上的性能",
+  "条件通信策略可能增加实现复杂度"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "MoE推理优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

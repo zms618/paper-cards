@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Pinco Position-induced Consistent Adapter for Diffusion Transformer in Foreground-conditioned Inpainting.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Pinco Position-induced Consistent Adapter for Diffusion Transformer in Foreground-conditioned Inpainting.pdf",
+ "title": "Pinco Position-induced Consistent Adapter for Diffusion Transformer in Foreground-conditioned Inpainting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "即插即用适配器实现前景条件修复，但泛化性和数据依赖受限",
+ "innovations": [
+  "自一致适配器将前景特征注入自注意力层",
+  "解耦图像特征提取分别提取语义和空间特征",
+  "共享位置嵌入锚点确保前景区域注意力集中"
+ ],
+ "method_framework": "Pinco作为即插即用适配器，包含解耦特征提取器、共享位置嵌入锚点和自一致适配器三个模块，集成到DiT模型中实现前景条件修复",
+ "experiment_framework": "使用88K图像数据集，在Hunyuan-DiT和FLUX.1上评估，采用8项指标比较前景一致性、文本对齐和图像质量",
+ "takeaways": [
+  "自注意力层注入前景特征可有效避免文本与前景冲突",
+  "解耦特征提取可同时保留语义和形状信息"
+ ],
+ "weaknesses": [
+  "仅在前景条件修复任务上验证，泛化性未充分证明",
+  "训练数据依赖高质量前景分割和深度图"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "前景条件修复属于落地域但可靠性主线不明确",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Mitigating Reward Over-optimization in Direct Alignment Algorithms with Importance Sampling.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Mitigating Reward Over-optimization in Direct Alignment Algorithms with Importance Sampling.pdf",
+ "title": "Mitigating Reward Over-optimization in Direct Alignment Algorithms with Importance Sampling",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "重要性采样缓解直接对齐算法的奖励过度优化问题",
+ "innovations": [
+  "提出IS-DAAs方法，通过重要性采样解决DAAs的过度优化问题",
+  "通过截断重要性权重解决高方差问题",
+  "证明IS-DAAs能有效模拟KL正则化效果"
+ ],
+ "method_framework": "IS-DAAs通过在DPO目标函数中引入重要性权重，使离线数据能模拟在线策略的效果，同时通过截断机制控制方差，实现更有效的KL正则化。",
+ "experiment_framework": "在TL;DR摘要任务和指令跟随任务上评估，使用Llama-3.2-3B模型，对比DPO、RPO、χ-PO等基线方法，以胜率和KL散度为主要指标。",
+ "takeaways": [
+  "重要性采样可作为隐式早停机制，避免过度优化",
+  "截断比率ϵ的选择需权衡偏差和方差",
+  "IS-DAAs在低正则化强度下表现尤为突出"
+ ],
+ "weaknesses": [
+  "方法依赖于参考策略和当前策略支撑集相同的假设",
+  "截断比率ϵ的选择可能影响性能",
+  "未探索不同规模模型的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

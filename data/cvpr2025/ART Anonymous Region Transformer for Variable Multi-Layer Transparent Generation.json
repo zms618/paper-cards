@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/ART Anonymous Region Transformer for Variable Multi-Layer Transparent Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ART Anonymous Region Transformer for Variable Multi-Layer Transparent Generation.pdf",
+ "title": "ART: Anonymous Region Transformer for Variable Multi-Layer Transparent Image Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "匿名区域布局+3D RoPE加速多层透明图像生成，但实验证据不足",
+ "innovations": [
+  "匿名区域布局：只给一组不带语义标注的矩形框 L={xc,yc,H,W}，让模型通过全局 prompt 下的 text-visual token 交互自行判定每层内容，省去逐区域重新标注；正文实证补加区域级 prompt 反而削弱层间一致性。",
+  "逐层区域裁剪 + layout 条件 3D RoPE：把 query/key 沿通道切成 x/y/layer 三段（qn={qx,qy,ql}），位置索引 pn={px,py,pl} 按 Re[q_c (k_c)* e^{i(p_c^n-p_c^m)θ}] 旋转（Eq.6），仅对同匿名区域的 visual token 计算注意力，据称比全注意力快 12 倍、层冲突更少。",
+  "可变分辨率多层透明自编码器：把 alpha 按 (0.5α+0.5)·RGB 转成灰底后编码，不同长度的前景 token 与参考图/背景 token 拼接，单个 ViT（Linearout 768→256，reshape 为 8×8×4 RGBA patch）一次前向解码出全部 RGBA 层。"
+ ],
+ "method_framework": "自编码器把 alpha 混入 RGB 灰底后编码为变长 token，单 ViT 一次性解码 RGBA 各层；ART 在 FLUX MMDiT 上 LoRA 微调，用 x/y/layer 三分量 3D RoPE 编码层位并仅对同匿名区域 token 去噪；LLM 规划器产出匿名框。",
+ "experiment_framework": "设计域 800K 训练/5K 验证的 MLTD + COCO 系 PHOTO-MULTI-LAYER-BENCH；基线 LayerDiffuse、COLE；指标 FID/PSNR/SSIM 与 30 人主观胜率（美观、prompt、排版、层间协调）。",
+ "takeaways": [
+  "在布局控制上把'区域内容'交给模型推断而非人工标注，对需要数十个图层的平面设计场景显著降低标注成本，可复用其接口设计。",
+  "多层 latent 用拼接 + 单次 ViT 解码（而非逐层独立编解码）是处理变长层数/变分辨率的干净做法。",
+  "用 LLM 微调预测匿名框作为布局规划器，可作为无需人工框标注的通用 layout-to-generation 前端。"
+ ],
+ "weaknesses": [
+  "系统级对比完全依赖 30 名参与者的两两主观胜率（Fig.3），未报置信区间或显著性检验，也未控制偏好顺序效应，77.2% vs 9.73% 这类差距是否稳定无法判定。",
+  "正文在 4.2 消融节首段被截断，'匿名区域布局是否已足够'的核心对照（语义布局 vs 匿名布局）无实现细节与 FID/PSNR/SSIM 数值，该 claim 无法核验。",
+  "FID_merged/PSNR_RGB/PSNR_alpha 仅在消融中出现且正文缺数值表，且这些指标只衡量重建保真度，50+ 层场景的层间冲突、alpha 边缘质量、遮挡区缺失无客观评测支撑。"
+ ],
+ "confidence": "low",
+ "raw_overall": 4.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "透明图像生成与可靠性主线无关，仅工程价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

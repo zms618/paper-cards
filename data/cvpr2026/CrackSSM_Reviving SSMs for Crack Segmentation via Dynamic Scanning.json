@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/CrackSSM_Reviving SSMs for Crack Segmentation via Dynamic Scanning.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/CrackSSM_Reviving SSMs for Crack Segmentation via Dynamic Scanning.pdf",
+ "title": "CrackSSM Reviving SSMs for Crack Segmentation via Dynamic Scanning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "动态扫描与小波解码提升裂缝分割，但计算开销大且复杂背景敏感",
+ "innovations": [
+  "自适应令牌重排序策略，根据裂缝方向响应强度重新排序序列",
+  "小波引导解码机制，利用高频成分指导特征细化",
+  "全局重优化模块，抑制噪声并增强边缘感知融合"
+ ],
+ "method_framework": "CrackSSM包含三阶段：编码阶段提取多尺度特征，特征增强阶段通过动态路径扫描Mamba模块(DPSM)重排序令牌，解码阶段结合小波门控模块(WGM)和全局重优化模块(GRO)恢复细节",
+ "experiment_framework": "在Crack500、TUT和DeepCrack三个基准数据集上评估，使用ODS、OIS、P、R、F1和mIoU指标，与SCSegamba等SOTA方法比较",
+ "takeaways": [
+  "基于内容感知的序列重排序可增强SSM对不规则结构的建模能力",
+  "小波变换提供的高频先验可有效指导细节恢复和噪声抑制"
+ ],
+ "weaknesses": [
+  "方向特征提取可能对复杂背景中的裂缝敏感度不足",
+  "小波解码模块的计算开销可能影响实时性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "裂缝分割属于落地域但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

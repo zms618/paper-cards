@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Residual Matrix Transformers Scaling the Size of the Residual Stream.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Residual Matrix Transformers Scaling the Size of the Residual Stream.pdf",
+ "title": "Residual Matrix Transformers: Scaling the Size of the Residual Stream",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 5,
+  "overall": 6
+ },
+ "one_line": "用外积记忆矩阵解耦残差流与模型尺寸，提升效率但缺乏大规模验证。",
+ "innovations": [
+  "用外积记忆矩阵(outer product memory)替换残差流，改变残差流中存取信息的机制。",
+  "残差流尺寸可独立于算力与模型尺寸扩展，从而在不增大模型/算力的前提下提升性能。",
+  "理论分析了 RMT 的残差流更高效扩展与更优的方差传播性质。"
+ ],
+ "method_framework": "把残差流(视为存储/访问特征的记忆总线)实现为外积记忆矩阵：用矩阵形式存取与更新特征，使残差流维度可单独放大而不按比例增加每层计算与参数；通过理论推导比较其与标准 Transformer 的缩放效率与方差传播。",
+ "experiment_framework": "在语言建模与下游评测上对比 RMT 与标准 Transformer；报告同等损失所需 FLOPS(少 58%)、参数(少 25%)、训练 token(少 41%)，以及残差流尺寸-性能/FLOPS/模型尺寸的缩放曲线，并测下游任务表现。",
+ "takeaways": [
+  "RMT 以外积记忆矩阵解耦了残差流尺寸与算力/模型尺寸的绑定。",
+  "达到同等损失时 RMT 显著更省算力、参数与训练数据。",
+  "RMT 在下游评测上优于同档 Transformer。"
+ ],
+ "weaknesses": [
+  "外积记忆的存储/读取机制在超大规模预训练下的工程可行性与稳定性证据仍偏小规模。",
+  "理论分析基于简化假设，与现代 LLM(含归一化/注意力变体)的吻合度需更多实证。",
+  "属架构效率改进，与可靠性/可信AI/多模态推理主线无直接关联。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

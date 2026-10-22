@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Reward-Augmented Data Enhances Direct Preference Alignment of LLMs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Reward-Augmented Data Enhances Direct Preference Alignment of LLMs.pdf",
+ "title": "Reward-Augmented Data Enhances Direct Preference Alignment of LLMs",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "用judge reward增强DPO数据，缓解过拟合但依赖外部评分器",
+ "innovations": [
+  "指出DPO仅关注chosen/rejected的相对偏好而忽略绝对reward分数，导致过拟合和对高质量rejected响应的不必要遗忘",
+  "提出reward-conditioned策略，将reward分数作为条件输入，使模型学习区分不同质量等级的响应",
+  "通过reward-augmented数据增强DPO训练，在多个基准和模型上一致提升性能"
+ ],
+ "method_framework": "在DPO偏好数据中引入judge model给出的绝对reward分数。训练reward-conditioned策略π(y|x,r)，其中r是reward分数。损失函数不仅优化chosen和rejected之间的相对排序，还利用绝对reward信息引导模型学习高质量响应的特征，避免盲目偏好低质量chosen响应。",
+ "experiment_framework": "在多个指令跟随基准和不同LLM架构上验证。对比标准DPO基线。指标包括MT-Bench、AlpacaEval等指令跟随准确率。消融研究分析reward conditioning的作用。",
+ "takeaways": [
+  "DPO仅最大化相对reward gap会导致过拟合，尤其在chosen和rejected质量都很高时浪费了rejected中的信息",
+  "引入绝对reward分数作为条件信息能显著提升DPO的对齐效果",
+  "reward-conditioned策略能泛化到训练集中稀疏出现的最优响应"
+ ],
+ "weaknesses": [
+  "依赖judge model的reward分数质量，若judge model本身有偏则增强效果受限",
+  "reward conditioning需要额外的reward预测头或条件输入，增加了模型复杂度",
+  "实验主要在指令跟随任务上验证，未覆盖数学推理等需要精确正确性的场景"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Geometric Hyena Networks for Large-scale Equivariant Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Geometric Hyena Networks for Large-scale Equivariant Learning.pdf",
+ "title": "Geometric Hyena Networks for Large-scale Equivariant Learning",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "将Hyena引入等变学习，牺牲部分灵活性换取效率提升",
+ "innovations": [
+  "首个将state-space/long-conv架构引入等变几何学习，兼顾全局上下文和等变性",
+  "亚二次复杂度O(n log n)而非等变自注意力的O(n²)",
+  "在30k token规模上比等变Transformer快20倍、同预算下上下文长72倍"
+ ],
+ "method_framework": "受Hyena/状态空间模型启发，设计等变长卷积算子：将几何信息(距离、方向)编码到长卷积的核函数中，使模型在捕获全局感受野的同时保持旋转平移等变性。避免了自注意力的O(n²)复杂度。",
+ "experiment_framework": "在全原子RNA性质预测和蛋白质分子动力学上评估；对比等变Transformer、等变消息传递等模型；指标为预测精度、内存和计算开销；报告Geometric Hyena精度更优且效率大幅提升。",
+ "takeaways": [
+  "长卷积/状态空间架构可扩展到等变几何学习，解决自注意力的全局-效率权衡",
+  "等变性与全局上下文不再矛盾，亚二次复杂度即可实现",
+  "大规模生物分子模拟(30k原子)成为可行"
+ ],
+ "weaknesses": [
+  "等变长卷积的归纳偏置可能不如自注意力灵活",
+  "仅在RNA和蛋白质数据验证，其他几何域适用性待确认",
+  "前9页内未看到与最新等变注意力方法(如Equiformer)的详细对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

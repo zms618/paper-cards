@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Harp Hallucination Detection via REASONING Subspace Projection.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Harp Hallucination Detection via REASONING Subspace Projection.pdf",
+ "title": "Harp: Hallucination Detection via REASON-ING Subspace Projection",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "通过子空间分解投影检测LLM幻觉，依赖特定层结构",
+ "innovations": [
+  "将LLM隐藏状态空间分解为语义和推理子空间的直接和",
+  "利用Unembedding层SVD分解区分语义和推理子空间",
+  "通过推理子空间投影构建紧凑特征实现高效幻觉检测"
+ ],
+ "method_framework": "HARP框架将LLM隐藏状态空间分解为语义和推理子空间，通过Unembedding层SVD分解获取子空间基向量，将隐藏状态投影到推理子空间作为检测特征，实现高效准确的幻觉检测。",
+ "experiment_framework": "在NQ Open、TruthfulQA、TriviaQA和TyDiQA-GP四个QA数据集上评估，使用Qwen-2.5-7B-Instruct和LLaMA-3.1-8B模型，AUROC为主要指标，与多种基线方法对比。",
+ "takeaways": [
+  "利用模型内部结构分解语义和推理信息的方法可提升检测性能",
+  "子空间投影能有效降低维度并过滤噪声，提高鲁棒性"
+ ],
+ "weaknesses": [
+  "方法依赖于Unembedding层的特性，可能不适用于所有架构",
+  "推理子空间维度选择对性能有显著影响，需要额外调优"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "幻觉检测属于可靠性主线，且方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

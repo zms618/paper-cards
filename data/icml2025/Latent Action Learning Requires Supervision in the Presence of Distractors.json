@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Latent Action Learning Requires Supervision in the Presence of Distractors.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Latent Action Learning Requires Supervision in the Presence of Distractors.pdf",
+ "title": "Latent Action Learning Requires Supervision in the Presence of Distractors",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 5.0,
+  "evidence": 6.0,
+  "relevance": 4.0,
+  "overall": 5.1
+ },
+ "one_line": "干扰下LAPO失效，LAOM简单改进需2.5%监督提升4.2倍性能",
+ "innovations": [
+  "首次系统研究干扰对潜动作学习的影响，证明无干扰假设下成功的LAPO在含干扰时失效",
+  "提出 LAOM 简单改进将潜动作质量(线性探针)提升8倍",
+  "证明仅需2.5%真值动作标签在潜动作学习阶段监督，即可平均提升下游4.2倍性能"
+ ],
+ "method_framework": "在DCS动态背景/换色/抖动相机下评测LAM；提出LAOM改进；关键发现是在LAM预训练阶段就引入少量真值动作监督，而非仅在最后解码阶段，才能抵抗动作相关干扰。",
+ "experiment_framework": "在 Distracting Control Suite 四个环境、三种随机种子上对比 LAPO/BC/IDM，用线性探针测潜动作质量、归一化回报测下游；2.5%标签恢复约一半全监督BC性能。",
+ "takeaways": [
+  "真实web视频中的动作相关干扰会让无监督潜动作学习学到与真实动作无关的潜变量",
+  "监督应前置到潜动作模型训练阶段，而非仅在解码阶段",
+  "极少真值标签(2.5%)即可大幅挽救干扰下的潜动作学习"
+ ],
+ "weaknesses": [
+  "应用域为具身智能/机器人预训练，与鲁棒性/多模态大模型主线无关",
+  "LAOM本身改进较简单，核心贡献是实证发现与监督前置结论",
+  "仅在DCS仿真验证，真实web视频的干扰分布更复杂"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

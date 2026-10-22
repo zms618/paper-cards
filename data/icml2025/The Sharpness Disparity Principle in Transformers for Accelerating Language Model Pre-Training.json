@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/The Sharpness Disparity Principle in Transformers for Accelerating Language Model Pre-Training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/The Sharpness Disparity Principle in Transformers for Accelerating Language Model Pre-Training.pdf",
+ "title": "The Sharpness Disparity Principle in Transformers for Accelerating Language Model Pre-Training",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "发现Transformer模块锐度差异，提出逐块学习率策略实现2倍加速。",
+ "innovations": [
+  "揭示Transformer不同构建块(注意力/FFN/Norm等)间存在显著的锐度差异，且该差异在训练早期出现并持续",
+  "提出逐块学习率(Blockwise LR)策略，根据各块锐度定制学习率",
+  "集成到AdamW后实现近2倍预训练加速，在GPT-2和LLaMA多规模上验证"
+ ],
+ "method_framework": "观察到Transformer不同模块的损失曲面锐度不同：锐度高的模块需要更小学习率，锐度低的模块可以承受更大学习率。基于此提出Blockwise LR策略，为每个模块单独设置最优学习率，集成到AdamW等优化器中。",
+ "experiment_framework": "在GPT-2和LLaMA架构上验证，模型规模0.12B-2B，数据集OpenWebText/MiniPile/C4。对比基线为标准AdamW和Adam-mini。评估指标为终端损失和收敛速度。",
+ "takeaways": [
+  "Transformer各模块间存在显著的锐度差异，且在训练早期就出现",
+  "逐块定制学习率可显著加速预训练，近2倍提速",
+  "Blockwise LR可集成到多种优化器(AdamW/Adam-mini)中通用提升"
+ ],
+ "weaknesses": [
+  "各块最优学习率的确定需要额外调参或扫描",
+  "锐度度量的计算开销未充分讨论",
+  "在更大规模模型(>7B)上的扩展性未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

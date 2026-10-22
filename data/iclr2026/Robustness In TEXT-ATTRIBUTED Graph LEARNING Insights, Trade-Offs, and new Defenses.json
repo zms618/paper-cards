@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Robustness In TEXT-ATTRIBUTED Graph LEARNING Insights, Trade-Offs, and new Defenses.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Robustness In TEXT-ATTRIBUTED Graph LEARNING Insights, Trade-Offs, and new Defenses.pdf",
+ "title": "Robustness in Text-Attributed Graph Learning: Insights, Trade-Offs, and New Defenses",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "评测框架揭示文本-结构权衡，提出SFT-auto均衡防御，但机制与泛化性不足。",
+ "innovations": [
+  "构建统一鲁棒性评测框架，覆盖经典 GNN、鲁棒 GNN(RGNN)与 GraphLLM，在 10 个跨四领域数据集上系统施加文本/结构/混合扰动。",
+  "在投毒(poisoning)与逃逸(evasion)两种场景下对比，揭示三点发现：文本与结构鲁棒性存在固有权衡、GNN/RGNN 表现强烈依赖文本编码器与攻击类型、GraphLLM 对训练数据腐蚀格外脆弱。",
+  "提出 SFT-auto 新框架，在单一模型内同时获得对文本攻击与结构攻击的均衡、更优鲁棒性。"
+ ],
+ "method_framework": "统一评测管线：统一文本/结构/混合扰动算子，分别在训练阶段(投毒)与推理阶段(逃逸)施加；比较三类模型族的精度与鲁棒性；针对发现的文本-结构权衡，用 SFT-auto 通过监督微调使模型同时增强对两类扰动的抵御，打破此消彼长。",
+ "experiment_framework": "10 个数据集、四个领域(社交/引用/推荐/金融类)；评测经典 GNN、RGNN、GraphLLM；在多种文本基/结构基/混合攻击与投毒/逃逸设定下报告准确率与鲁棒精度；并与 SFT-auto 防御对比。",
+ "takeaways": [
+  "TAG 模型在文本鲁棒性与结构鲁棒性间存在此消彼长的固有权衡。",
+  "GNN/RGNN 的鲁棒性高度依赖所用文本编码器与具体攻击类型，不能一概而论。",
+  "GraphLLM 对训练数据投毒尤其脆弱，而 SFT-auto 可在单模型内均衡抵御文本与结构攻击。"
+ ],
+ "weaknesses": [
+  "攻击算子与数据集虽多，但真实金融/社交场景的自适应攻击(针对 GraphLLM 的语义级投毒)覆盖有限。",
+  "SFT-auto 的机制细节在摘要层面较简略，其对未见攻击类型的泛化与干净精度代价未充分说明。",
+  "属图学习安全方向，与医学影像/多模态推理落地域无直接交集，但鲁棒性主线契合度高。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "图学习鲁棒性主线扎实，但无医学/多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

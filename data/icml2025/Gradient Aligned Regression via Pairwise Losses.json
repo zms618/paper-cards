@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Gradient Aligned Regression via Pairwise Losses.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Gradient Aligned Regression via Pairwise Losses.pdf",
+ "title": "Gradient Aligned Regression via Pairwise Losses",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "梯度对齐回归方法，通过两两损失提升回归一致性，但缺乏鲁棒性验证",
+ "innovations": [
+  "提出标签空间中的两两损失(幅度对齐+方向对齐)，直接优化预测的梯度一致性而非仅单点拟合",
+  "将两两损失的二次复杂度降为线性复杂度，与MSE/MAE同速",
+  "建立理论联系：优化两两标签差异等价于学习ground truth函数的梯度"
+ ],
+ "method_framework": "在常规回归损失L_c基础上增加两个两两标签差异损失：幅度对齐损失约束预测差与标签差的比例一致，方向对齐损失约束正负号一致。通过代数变换将O(N²)两两计算降为O(N)线性操作。总损失=L_c+λ_mag·L_mag+λ_dir·L_dir。",
+ "experiment_framework": "2个合成数据集+8个真实世界回归任务(6个基准数据集)，对比8个竞争基线(含MSE/MAE/Huber及 latent空间对比学习方法)；指标为回归精度和运行时间；消融验证各组件贡献。",
+ "takeaways": [
+  "两两标签差异损失改善了回归的秩保持性和误差一致性",
+  "线性复杂度变换使GAR与常规损失同速，不增加训练成本",
+  "梯度对齐视角为回归损失设计提供了新的理论理解"
+ ],
+ "weaknesses": [
+  "仅在干净数据假设下验证，噪声/异常值/分布偏移场景未涉及",
+  "两两损失的额外超参(λ_mag, λ_dir)调节增加了调参负担",
+  "前9页内未看到与深度网络大规模回归任务的结合验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

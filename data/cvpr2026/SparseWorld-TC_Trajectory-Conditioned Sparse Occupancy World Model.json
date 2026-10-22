@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/SparseWorld-TC_Trajectory-Conditioned Sparse Occupancy World Model.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SparseWorld-TC_Trajectory-Conditioned Sparse Occupancy World Model.pdf",
+ "title": "SparseWorld-TC Trajectory-Conditioned Sparse Occupancy World Model",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "稀疏占用模型提升长期预测，但计算复杂且依赖准确轨迹",
+ "innovations": [
+  "纯注意力架构替代VAE和BEV表示",
+  "稀疏占用表示直接从原始图像特征预测",
+  "轨迹条件框架实现精确场景演化引导",
+  "随机集合训练策略提升泛化能力"
+ ],
+ "method_framework": "采用稀疏锚点表示3D场景，通过可变形注意力融合历史图像特征，结合轨迹嵌入，通过堆叠的帧级和时序注意力模块迭代优化预测结果",
+ "experiment_framework": "nuScenes数据集，几何IoU和语义mIoU指标，与多种基线方法比较，包括短期(1-3s)和长期(8s)预测",
+ "takeaways": [
+  "稀疏表示可避免离散化限制和BEV几何约束",
+  "轨迹条件设计增强预测的时序一致性",
+  "随机集合训练提升模型对不同预测时长的适应能力"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，Large版本仅达3.58 FPS",
+  "依赖准确的轨迹输入，预测轨迹时性能下降",
+  "未充分讨论模型在极端场景下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "世界模型与可靠性主线交织不足，主要为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

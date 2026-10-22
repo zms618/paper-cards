@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning from others' mistakes Finetuning machine translation models with span-level error annotations.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning from others' mistakes Finetuning machine translation models with span-level error annotations.pdf",
+ "title": "Learning from others' mistakes: Finetuning machine translation models with span-level error annotations",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "利用MQM span级错误标注直接微调翻译模型，优于SFT和DPO",
+ "innovations": [
+  "首次将span级错误标注（MQM格式：错误位置+类型+严重程度）直接用于翻译模型微调，而非仅训练奖励模型",
+  "TWA算法灵活学习span内应惩罚什么：不仅惩罚错误span，还利用整体序列轨迹信息做上下文敏感的惩罚",
+  "在英德和中英翻译任务上，TWA优于同等数据量下的质量过滤SFT和DPO基线"
+ ],
+ "method_framework": "利用WMT MQM数据集——其中每条翻译都有span级错误标注（哪里错了、什么类型、多严重）。TWA微调算法：(1)对标注为错误的span施加 targeted 惩罚损失；(2)同时学习在span内部应具体惩罚什么（而非一刀切）；(3)结合整体序列轨迹决定惩罚强度。直接将细粒度错误反馈注入模型参数更新，而非训练单独的奖励模型。",
+ "experiment_framework": "翻译方向：English-German、Chinese-English；数据：WMT MQM span级错误标注数据；基线包括：质量过滤SFT、DPO（从相同数据构造偏好对）；指标为BLEU/COMET等翻译质量指标。",
+ "takeaways": [
+  "span级错误标注比序列级标注提供更丰富的训练信号，直接微调模型比训练奖励模型更高效",
+  "TWA在同等数据量下优于DPO，说明细粒度反馈优于粗粒度偏好对",
+  "MQM数据等已有的人工标注资源可以直接用于模型微调，无需额外构造偏好对"
+ ],
+ "weaknesses": [
+  "仅在机器翻译任务上验证，在开放生成/对话等更复杂场景下span级标注的获取成本更高",
+  "错误标注的类别体系（MQM的错误分类）是否适用于其他领域未讨论",
+  "TWA与RLHF/PPO等在线优化方法的对比缺失"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

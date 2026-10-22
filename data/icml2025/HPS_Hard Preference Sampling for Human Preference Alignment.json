@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/HPS_Hard Preference Sampling for Human Preference Alignment.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/HPS_Hard Preference Sampling for Human Preference Alignment.pdf",
+ "title": "HPS: Hard Preference Sampling for Human Preference Alignment",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "难偏好采样提升安全对齐，但理论假设局限且副作用未量化。",
+ "innovations": [
+  "提出Hard Preference Sampling损失，优先强化最被偏好响应并拒斥所有不被偏好/有害响应，尤其强调与被偏好响应近似的hard dispreferred样本",
+  "用单样本蒙特卡洛采样策略降低Plackett-Luce类方法的高计算开销",
+  "理论上证明相对既有PL方法提升样本效率，并最大化被偏好与不被偏好响应间的奖励间隔"
+ ],
+ "method_framework": "在PL/BT排序模型推导的对齐损失基础上，显式加大对难区分（hard）不被偏好响应的拒斥权重，拉大reward margin；以单样本MC近似避免多响应全排序的昂贵计算，使对齐在保持BLEU/奖励质量的同时减少有害内容生成。",
+ "experiment_framework": "在HH-RLHF与PKU-Safety安全对齐数据集上评测；与DPO/IPO/SPPO及PL/BT类方法比较；指标为BLEU、奖励分数、奖励间隔(margin)与有害内容生成率；含样本效率与理论结论的验证。",
+ "takeaways": [
+  "对难负样本加大拒斥可显著扩大奖励间隔，从而更有效抑制有害内容生成",
+  "单样本MC近似在保持对齐质量的同时大幅降低PL类方法计算成本",
+  "在BLEU/奖励可比的前提下，安全拒斥能力优于基线"
+ ],
+ "weaknesses": [
+  "仅在HH-RLHF/PKU-Safety等小规模安全偏好集验证，未覆盖医学影像或多模态推理落地域",
+  "强调拒斥可能带来过度对齐/回复保守化，正文未充分量化其对有用性的副作用",
+  "理论保证基于PL/BT假设，对真实LLM奖励模型失配（reward hacking）场景未讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

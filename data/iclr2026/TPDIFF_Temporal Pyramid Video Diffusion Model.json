@@ -1,0 +1,41 @@
+{
+ "title": "TPDiff: Temporal Pyramid Video Diffusion Model",
+ "one_line": "利用扩散熵减特性分阶段提升帧率，降低视频扩散计算成本",
+ "innovations": [
+  "指出扩散反向过程具熵减本性，结合视频帧间冗余，高熵早期阶段无需维持全帧率",
+  "提出TPDiff：把扩散分为多阶段，沿过程逐步提升帧率，仅最后阶段用全帧率",
+  "提出stage-wise diffusion训练框架：在对齐数据与噪声下求解分区概率流ODE，适用于多种扩散形式并进一步提效"
+ ],
+ "method_framework": "扩散反向过程从高熵随机噪声逐步去噪到清晰视频。TPDiff在早期高熵阶段用低帧率（利用帧间冗余），随去噪推进逐步提升帧率，仅最后低熵阶段用全帧率，避免全程全帧率的冗余计算。训练上分阶段求解分区的概率流ODE，在对齐数据/噪声下训练多阶段模型。",
+ "experiment_framework": "在多个视频扩散形式(flow matching等)上验证通用性；对比cascaded、SimDA、pyramid flow等效率方法；指标为训练成本与推理速度及生成质量；报告训练成本降50%、推理效率提1.5x。",
+ "takeaways": [
+  "扩散早期高熵阶段帧间冗余大，低帧率即可，无需全程全帧率",
+  "分阶段逐步提帧可在几乎不降质量下显著降训练/推理成本",
+  "stage-wise diffusion训练框架适用于多种扩散形式"
+ ],
+ "weaknesses": [
+  "低帧率阶段可能损失细微时序动态，对高速运动/高频细节视频的质量影响需更多验证",
+  "阶段划分与帧率调度的最优策略未充分刻画，依赖经验",
+  "与空间金字塔(pyramid flow)的正交组合增益未系统探索"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/TPDIFF_Temporal Pyramid Video Diffusion Model.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TPDIFF_Temporal Pyramid Video Diffusion Model.pdf",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "raw_overall": 5.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视频生成效率提升，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

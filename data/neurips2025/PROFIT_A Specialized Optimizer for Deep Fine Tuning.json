@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/PROFIT_A Specialized Optimizer for Deep Fine Tuning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/PROFIT_A Specialized Optimizer for Deep Fine Tuning.pdf",
+ "title": "PROFIT: A Specialized Optimizer for Deep Fine Tuning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "梯度正交化优化器缓解微调遗忘，但应用受限且理论验证不足",
+ "innovations": [
+  "专门针对已收敛模型微调的优化器设计",
+  "时间梯度正交化过程平衡新旧任务",
+  "无需额外参数或数据存储的遗忘缓解方法"
+ ],
+ "method_framework": "PROFIT通过参考步骤计算位移向量，正交化新批次梯度，恢复原始状态后沿正交方向更新，实现时间多任务学习视角下的微调",
+ "experiment_framework": "2D回归问题、CIFAR10/100图像分类、VTAB-1K多任务基准测试，对比SGD/Adam等标准优化器",
+ "takeaways": [
+  "梯度正交化可有效平衡新旧任务性能",
+  "优化器设计可成为微调性能提升的关键因素",
+  "方法简单且易于集成到现有训练流程"
+ ],
+ "weaknesses": [
+  "要求预训练和微调数据分布相似，限制了应用场景",
+  "内存开销增加约25%，需要优化实现",
+  "理论分析主要基于理想假设，实际复杂场景验证不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

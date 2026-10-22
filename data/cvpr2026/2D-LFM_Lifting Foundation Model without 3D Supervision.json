@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/2D-LFM_Lifting Foundation Model without 3D Supervision.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/2D-LFM_Lifting Foundation Model without 3D Supervision.pdf",
+ "title": "2D-LFM: Lifting Foundation Model without 3D Supervision",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "理论解释2D关键点3D抬升的置换等变问题，每层位置编码解决身份不可辨识",
+ "innovations": [
+  "给出 Proposition 1：在变换器置换等变、且数据与 2D 损失均对关键点索引置换不变时，任一置换 Π 都存在同损失解 f_θ̃(ΠX)=Π f_θ*(X)，即 token 身份不可辨识，从理论上解释为何 2D-only 抬升必须靠 3D 标签重建身份",
+  "把位置编码从「输入层加一次」改为在 Q_l/K_l/V_l 每层都注入（式3），用持续的位置信号对抗注意力混合造成的位置冲刷；并给出解析版 RFF 编码：用 ω_k=σ·erf^{-1}(2k/D) 确定性覆盖高斯谱密度而非蒙特卡洛采样，在 N∈[10,25] 的关键点规模下比 ViT 频率表分辨力更细",
+  "多类别共享同一套 transformer 权重，仅用可学习类别嵌入 e_c 与掩码 M_c 区分类别并对无效关键点只算 2D 重投影损失（式4），使低数据类（drosophilia 仅 80 样本）直接借用高数据类的形状先验"
+ ],
+ "method_framework": "关键点投影经投影层加类别嵌入入网，每层把解析 RFF/图拉普拉斯位置编码注入 Q/K/V 打破置换对称，输出线性头后接 Procrustes 最小化 2D 重投影损失。",
+ "experiment_framework": "Pascal3D+、Human3.6M、Animal3D、ARCTIC 组成的 45+ 类长尾数据集；对比 C3DPO/PAUL/3D-LFM/SimpleBaseline3D/VGGT/DUSt3R，指标 Procrustes 后 MPJPE。",
+ "takeaways": [
+  "注入位置比注入内容更重要：图拉普拉斯 PE（9.3mm）与常规 RFF（11.2mm）在每层注入下几乎收敛，而 ViT 式只在输入注入直接崩到 92.3mm，设计优先级应为注入频率 > PE 类型",
+  "只追 Procrustes 对齐后的 2D 重投影（式1）就能逼出非刚性形状，对稀疏关键点场景，显式几何推理比稠密外观深度更适合物体级结构还原"
+ ],
+ "weaknesses": [
+  "内部数字自相矛盾：表2 与 4.2 节写 bottle 从 100mm 降到 7.2mm（约 92.8% 提升），摘要和图3 却写 96.5%；表1 的 +Per-layer Fourier 行 Human3.6M 是 30.9，而 4.3.1 节正文写每层注入的结果是 33.1，两处对不上",
+  "Proposition 1 只有 Sketch（任意置换解同损失），既没处理掩码类别嵌入可能部分恢复身份的情形，也没证明每层的注入为何能规避该不可辨识性，只有实验佐证",
+  "指标口径不对等：VGGT/DUSt3R 行标 * 表示用模型预测深度反投影 2D 关键点（5×5 中值），属于间接二次依赖深度模型；且场景级方法对遮挡点做了掩码，本文的可见性口径未说明",
+  "只报 3 seeds 且标准差大于 1mm 才给，图1 的 >100mm 与 8.1mm 对比是单张示意，统计强度弱"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D重建方法与可靠性主线无直接交点，但设计模式有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

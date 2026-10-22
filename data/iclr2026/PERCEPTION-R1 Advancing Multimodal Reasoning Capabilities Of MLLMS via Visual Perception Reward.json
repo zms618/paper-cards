@@ -1,0 +1,41 @@
+{
+ "title": "Perception-R1: Advancing Multimodal Reasoning Capabilities of MLLMs via Visual Perception Reward",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "用视觉感知奖励解决MLLM推理前提缺失，小数据提升多模态性能。",
+ "innovations": [
+  "通过McNemar检验实证现有RLVR方法未能有效增强MLLM的多模态感知能力，从而限制推理提升。",
+  "提出视觉感知奖励：从多模态问题的CoT轨迹中收集文本视觉标注作为参考，显式激励模型准确感知视觉内容。",
+  "RLVR训练中用裁判LLM评估视觉标注与模型响应的一致性并据此分配感知奖励，同时激励感知与推理。"
+ ],
+ "method_framework": "先从多模态问题的CoT轨迹抽取出对图像内容的文本视觉描述作为视觉参考；在RLVR(如GRPO类)训练时，除可验证答案奖励外，额外引入视觉感知奖励：裁判LLM对比模型响应与视觉标注的一致性并打分；二者共同作为奖励信号优化策略模型。",
+ "experiment_framework": "在Qwen2.5-VL-7B等MLLM上做RLVR微调；评测多个多模态数学与通用推理benchmark(MathVista/GeoQA等)；对比纯答案RLVR基线；报告仅用1,442条训练数据即在所有基准上取得更优且鲁棒的性能。",
+ "takeaways": [
+  "现有RLVR只奖励最终答案，忽视视觉感知这一推理前提，导致感知与推理脱节。",
+  "显式视觉感知奖励能同时提升感知与推理，小数据(1442条)即可见效。",
+  "在多模态数学与通用推理基准上全面优于纯答案RLVR。"
+ ],
+ "weaknesses": [
+  "视觉标注依赖从CoT轨迹抽取，标注质量与覆盖(只覆盖训练数据涉及的视觉元素)上限明显。",
+  "奖励依赖裁判LLM一致性判断，存在裁判偏差与额外推理成本。",
+  "仅在7B级开源模型验证，对更大模型及开放域(非数学几何)视觉任务的迁移性需更多证据。"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/PERCEPTION-R1 Advancing Multimodal Reasoning Capabilities Of MLLMS via Visual Perception Reward.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PERCEPTION-R1 Advancing Multimodal Reasoning Capabilities Of MLLMS via Visual Perception Reward.pdf",
+ "raw_overall": 7.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态推理奖励设计，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

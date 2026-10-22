@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DPO Meets PPO_Reinforced Token Optimization for RLHF.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DPO Meets PPO_Reinforced Token Optimization for RLHF.pdf",
+ "title": "DPO Meets PPO: Reinforced Token Optimization for RLHF",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "将RLHF从bandit转为MDP建模，用DPO提供token奖励再PPO优化",
+ "innovations": [
+  "指出传统RLHF被建模为bandit（整句为动作、句级稀疏reward）与PPO本质不匹配，是开源PPF效果次优的关键原因",
+  "将RLHF建模为MDP以捕捉token级信息，提出RTO算法学习token-wise reward并做策略优化",
+  "创新性地将DPO（原从稀疏句级reward导出）用作token响应质量的刻画，无缝接入后续PPO训练；理论证明近最优、样本高效"
+ ],
+ "method_framework": "用DPO从偏好数据中学到token级reward函数；在PPO训练中以该token-wise reward替代句级稀疏reward；策略在MDP框架下用PPO式clipped目标优化。",
+ "experiment_framework": "在LLM对齐上对比PPO、DPO、其他直接偏好学习方法；指标AlpacaEval 2、Arena-Hard等。",
+ "takeaways": [
+  "RTO在AlpacaEval 2上比PPO高7.5分，Arena-Hard高4.1分",
+  "DPO可作为token-wise reward的来源，与PPO互补而非替代",
+  "句级bandit建模是开源PPO次优的重要原因"
+ ],
+ "weaknesses": [
+  "属RLHF对齐，与可靠性/可信AI主线弱相关（未直接评估幻觉/校准）",
+  "token-wise reward学习仍依赖偏好数据，对 reward hacking 未讨论",
+  "前9页未给出完整数值表，完整消融与其他benchmark需看正文"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.75,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

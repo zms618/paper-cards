@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/REtrieve_RARE Learn to RAnk and REtrieve for Monocular 3D Object.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/REtrieve_RARE Learn to RAnk and REtrieve for Monocular 3D Object.pdf",
+ "title": "RARE Learn to RAnk and REtrieve for Monocular 3D Object",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "将3D检测转化为排序问题，提升单目目标检测置信度",
+ "innovations": [
+  "将置信度估计转化为排序问题，学习相对质量而非绝对值",
+  "为每个对象构建查询集预测多种可能的3D配置，通过检索选择最佳预测",
+  "结合点级和配对排序损失，提高置信度估计的鲁棒性"
+ ],
+ "method_framework": "RARE框架整合学习排序与检索，通过检测Transformer架构端到端训练，为每个对象生成多个3D候选框并基于置信度排序选择最佳预测",
+ "experiment_framework": "在KITTI和nuScenes数据集评估，使用AP3D|40和APBEV|40指标，与多种单目和LiDAR增强方法比较",
+ "takeaways": [
+  "相对排序比绝对置信值更稳定可靠",
+  "多假设查询集能有效解决单目3D检测的多模态本质",
+  "点级和配对排序损失的联合优化提供全局校准和局部排序一致性"
+ ],
+ "weaknesses": [
+  "查询集大小K是超参数，可能影响性能",
+  "未明确讨论计算复杂度增加对实际部署的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "单目3D检测与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

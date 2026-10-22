@@ -1,0 +1,37 @@
+{
+ "title": "G-Designer: Architecting Multi-agent Communication Topologies via Graph Neural Networks",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.75
+ },
+ "one_line": "VGAE建模多智能体通信拓扑，任务自适应但监督成本高，鲁棒性验证不足。",
+ "innovations": [
+  "把多智能体通信拓扑设计建模为图生成问题，用VGAE联合编码智能体节点与任务专属虚拟节点，自动解码任务适配拓扑",
+  "实现任务自适应：按任务难度定制通信协议，HumanEval上最高减少95.33%通信token",
+  "拓扑设计自带对抗鲁棒性，抵御智能体对抗攻击时准确率仅降0.3%"
+ ],
+ "method_framework": "将多智能体系统视为多智能体网络，引入一个任务专属虚拟节点，用变分图自编码器同时编码各智能体节点与该虚拟节点，解码出与任务难度适配的高性能通信拓扑，替代手工chain/tree/star等固定拓扑。",
+ "experiment_framework": "在六个基准上评估，MMLU准确率84.50%、HumanEval pass@1 89.90%，与Chain/Tree/DyLAN/GPTSwarm等拓扑方法对比，指标含准确率、token开销与对抗攻击下的鲁棒性。",
+ "takeaways": [
+  "拓扑应随任务自适应，而非套用固定手工结构，可同时提效并大幅省token",
+  "图生成视角(VGAE+任务虚拟节点)是自动设计多智能体通信结构的有效范式",
+  "学习到的稀疏拓扑在对抗智能体攻击下依然稳定"
+ ],
+ "weaknesses": [
+  "VGAE训练需额外的拓扑-性能监督信号，构建成本与冷启动流程未充分讨论",
+  "鲁棒性仅以0.3%准确率下降自报，攻击设定与威胁模型较窄",
+  "与医学影像/多模态推理落地主线关联弱，relevance中等"
+ ],
+ "confidence": "high",
+ "key": "icml2025/G-Designer Architecting Multi-agent Communication Topologies via Graph Neural Networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/G-Designer Architecting Multi-agent Communication Topologies via Graph Neural Networks.pdf",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/A Good Teacher Adapts Their Knowledge for Distillation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Good Teacher Adapts Their Knowledge for Distillation.pdf",
+ "title": "A Good Teacher Adapts Their Knowledge for Distillation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "拆解KD损失归因容量差，微调老师适应学生分布",
+ "innovations": [
+  "把 KD 的 KL 展开后按类聚合，恒等分解为 µ_t[K]·log φ(z_s/τ)[K] 的均值（class-wise similarity）与 cov(φ(z_t/τ)[K], log φ(z_s/τ)[K]) 两项（式5），从数学上区分标签平滑效应与样本难度分布效应",
+  "claim 隔离式实验（式6/7）：分别只用 class-wise similarity 或只用 intra-class distribution 项训练学生，证明前者随老师规模变化几乎不动、后者在老师变大时明显掉点，把 capacity gap 归因锁定在类内分布失配",
+  "冻结已训好的小学生、用 L_cls+βL_KD 反向微调老师（Algorithm 1），让老师的类内分布向小学生的预测分布对齐，交叉协方差从 <0.4 抬升，避免训练中型老师的额外开销"
+ ],
+ "method_framework": "先用无 KD 的标准设置训好学生；冻结该学生，用 L_cls+βL_KD(学生‖老师) 微调老师若干轮使类内分布对齐小学生；再冻结老师，用 vanilla KD 从头重训学生。",
+ "experiment_framework": "CIFAR-100(多个 T/S 比 1.8-340)、Oxford-IIIT Pet、ImageNet；老师 ResNet110×4/32×4/VGG13/ResNet50/101，学生 ResNet8-18 等；对比 KD/DKD/TAKD/DGKD/CTKD/MLKD/STD 等十余法；报告 top-1 与 ±标准差，另给 RTE 耗时。",
+ "takeaways": [
+  "拆损失项逐项单独训练来证伪/证实归因（图2 蓝线不动、橙线掉点），比堆消融表更能坐实 claim，是可直接复用的论证范式",
+  "「高老师精度≠好蒸馏」：微调后的 ResNet32×4 top-1 反而低于原版却让学生更好，评价 teacher 应看分布对齐程度（cross-covariance）而非分类准确率",
+  "式5 的分解可当诊断工具：先算老师-学生的类内协方差，若已很高而学生仍差，问题就不在容量失配而该换方向"
+ ],
+ "weaknesses": [
+  "老师微调轮数只给「10 到 30 之间」，β、τ=4、lr=0.005 全凭经验；图3 的微调轮数-精度曲线只画了 ResNet20 一个学生，该趋势未在其他学生-老师对上复现",
+  "方法依赖一个已训好的学生（Algorithm 1 需 pretrained student），而这个学生本身要按无 KD 设置完整单独训练一遍，AID 的真实总成本是学生预训练+老师微调+学生重训三轮，RTE 表虽显示比 TAKD 省时但未按同等总预算做对等比较",
+  "核心归因（类内分布失配致 capacity gap）主要由图2 一个 ResNet20 学生的老师尺寸序列支撑；ImageNet 与 Oxford Pet 表中 T/S 仅 2.2-3.8 倍属常规 gap，极端 gap 下的归因在第二个数据集上无佐证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "知识蒸馏方法设计，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

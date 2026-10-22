@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Adaptive Non-Uniform Timestep Sampling for Accelerating Diffusion Model Training.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Adaptive Non-Uniform Timestep Sampling for Accelerating Diffusion Model Training.pdf",
+ "title": "Adaptive Non-uniform Timestep Sampling for Accelerating Diffusion Model Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "似然比梯度学习timestep采样器，但实验证据不足且基线不全。",
+ "innovations": [
+  "先用 timestep 独立参数化 LVLB 得 L_t=c_t||ε-ε_{θ_t}||²，指出均匀采样的瓶颈是随机梯度方差跨 timestep 剧烈不均（三种 schedule 下相差约百倍），并引 SGD 收敛定理说明收敛迭代数正比于该方差，从而解释 P2/Min-SNR 等非均匀加权启发式为何有效；同时用 Fig.4 证明子问题强耦合（未采样 timestep 损失抬升大于已采样下降）。",
+  "不按梯度方差比例采样，而是用似然比梯度在线学习 t~Beta(a,b) 的参数化采样器 π_φ，目标为最大化一次梯度更新前后的 LVLB 下降量 Δ_k^t = (1/T)Σ_τ [L_τ(θ_k)-L_τ(θ_k-γ∇L_t)]，并加熵正则避免过早收敛。",
+  "为绕开 Δ 的真 look-ahead 不可算，Algorithm 2 用单张 x_0 计算 T 个 δ_{k,τ} 入队列，再用 off-the-shelf 特征选 |S|=3 个 timestep 近似 Δ̂_k^t，且每 f_S 步才更新一次 φ。"
+ ],
+ "method_framework": "在线联合训练：每步先按 π_φ 采 t→更新 θ；每 f_S 步用队列+特征选择估 Δ̂_k^t，按 φ←φ+γ·Δ̂_k^t·∇_φ log π_φ 更新采样器，熵正则防早收敛；推理时不引入任何开销。",
+ "experiment_framework": "CIFAR-10/DDPM(linear/cosine/quadratic)、CelebA-HQ 256/LDM、ImageNet 256/U-ViT+Min-SNR；指标 FID，报各训练时长下的最低 FID；基线 P2/Min-SNR/Log-normal/SpeeD。",
+ "takeaways": [
+  "把'每步对目标下降量的期望'当作采样/调度目标，可迁移到任何带时间步或分支的随机优化：重要性不来自先验分布，而来自对当前优化路径的自适应估计。",
+  "诊断先行：先量化子问题梯度方差差异并验证子问题耦合，再决定策略，避免把'方差比例采样'当作最优（正文 Tab.4 证明其效果差）。",
+  "|S|=3 的小子集 + 稀疏更新即可逼近全量 Δ，这类「小样本代理 + 稀疏更新」的降本手法可直接复用。"
+ ],
+ "weaknesses": [
+  "正文在 Table 4 中途截断：Tab.4 内容、Fig.7（|S| 敏感性）、Sec.6.3 尾部分析、结论与附录的计算开销均缺失，消融是否完整无法核验。",
+  "全部为单 run 的最优 FID，无标准差、无多种子、无显著性检验；Tab.1-3 报的是'各训练时长内达到的最低 FID'，天然偏向后期收敛值而非同等算力下的均值。",
+  "Δ̂ 只用一张随机 x_0 估计、且用上一次 θ 更新作参考（非真 look-ahead），近似误差无界估计；Theorem 1 是引用 Garrigos & Gower 的 Informal 版本，本文无自身收敛/界证明。",
+  "基线只覆盖同类采样/加权启发式，未与 L2O 类方法比较；CelebA-HQ 100 epoch 时 Ours(10.94) 仍略逊 P2(10.69)，早期收益并不占优，全靠后期反超，说明学习式方法的 wall-clock 优势在长程不稳定。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "扩散模型训练加速与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

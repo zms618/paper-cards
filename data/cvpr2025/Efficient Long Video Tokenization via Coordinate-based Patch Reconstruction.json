@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Efficient Long Video Tokenization via Coordinate-based Patch Reconstruction.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Efficient Long Video Tokenization via Coordinate-based Patch Reconstruction.pdf",
+ "title": "Efficient Long Video Tokenization via Coordinate-based Patch Reconstruction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "坐标采样三平面重建视频，减少token但动态细节不足",
+ "innovations": [
+  "基于坐标的补丁重建方法",
+  "三平面表示分解视频内容与运动",
+  "随机采样坐标训练避免全帧重建"
+ ],
+ "method_framework": "CoordTok将视频编码为三平面表示，学习从随机采样(x,y,t)坐标到对应补丁的映射，通过双线性插值获取坐标表示，使用transformer解码器重建部分视频",
+ "experiment_framework": "UCF-101数据集，对比PVDM-AE、TATS-AE等基线，使用PSNR、LPIPS、SSIM、rFVD评估重建质量，FVD评估生成质量",
+ "takeaways": [
+  "坐标采样训练可大幅减少token数量",
+  "三平面表示有效分离内容与运动信息",
+  "高效tokenization促进长视频生成"
+ ],
+ "weaknesses": [
+  "对动态视频的重建质量下降明显",
+  "高频细节重建能力较弱",
+  "采样策略对性能影响较大"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "视频tokenization技术不直接关联可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

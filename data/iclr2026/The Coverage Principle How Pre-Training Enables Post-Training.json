@@ -1,0 +1,41 @@
+{
+ "title": "The Coverage Principle: How Pre-training Enables Post-training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.6
+ },
+ "one_line": "覆盖原则：预训练概率质量决定后训练成功，但理论假设理想化",
+ "innovations": [
+  "提出覆盖(coverage)概念：预训练模型在高质量响应上分配的概率质量，并证明它是后训练与 Best-of-N 等 test-time 方法成功的充要条件",
+  "揭示覆盖原则机制：最大似然(next-token 预测)会隐式优化出好的覆盖，且覆盖比交叉熵泛化更快、避免对序列长度等问题相关参数的虚假依赖",
+  "给出三类可证明有益的算法干预以提升覆盖：checkpoint/模型选择、梯度归一化方案、test-time 解码策略"
+ ],
+ "method_framework": "把预训练→后训练的关系建模为：预训练只需在高质量响应上保留足够概率质量(覆盖)，后训练/Best-of-N 才能把这部分质量‘打捞’出来；从泛化理论分析覆盖为何比交叉熵 loss 更稳健地预测下游；据此推导提升覆盖的可操作干预。",
+ "experiment_framework": "以理论推导为主（覆盖充要条件、覆盖vs交叉熵泛化速率）；辅以对三类干预（checkpoint 选择、梯度归一化、解码策略）的可证明收益与实证验证，指标为下游任务性能/Best-of-N 成功率。",
+ "takeaways": [
+  "预训练交叉熵 loss 低≠后训练后下游强，真正决定后训练成败的是覆盖（高质量响应的概率质量）",
+  "覆盖比交叉熵更能预测下游性能，且泛化更快、不随序列长度等因素虚假波动",
+  "选 checkpoint、归一化梯度、改解码都能有针对性地提升覆盖，进而提升 Best-of-N/后训练效果"
+ ],
+ "weaknesses": [
+  "理论建立在‘存在一组可识别的高质量响应’这一理想化设定上，‘高质量响应’的定义与可判定性在真实开放任务中是隐含假设，落地时需近似",
+  "三类干预的实证验证在论文前 9 页多为理论/小实验，缺大规模、多任务上与现代 RL post-training 流水线对接的量化对比",
+  "relevance 给 7：核心是 Best-of-N/test-time scaling 成功条件与下游性能可预测性，正落在验证器/选择可靠性主线；但落地域是通用 LLM、非医学影像或多模态大模型推理任务，故不到 8+"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/The Coverage Principle How Pre-Training Enables Post-Training.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The Coverage Principle How Pre-Training Enables Post-Training.pdf",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "验证器/选择可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/From Sequential To Parallel REFORMULATING Dynamic Programming As GPU Kernels for Large-Scale Stochastic.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/From Sequential To Parallel REFORMULATING Dynamic Programming As GPU Kernels for Large-Scale Stochastic.pdf",
+ "title": "From Sequential To Parallel: REFORMULAT-ING Dynamic Programming As GPU Kernels for LARGE-SCALE Stochastic Combinatorial OPTI",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "GPU并行化DP框架加速随机组合优化，但通用性受限",
+ "innovations": [
+  "多维度GPU并行化框架(场景×DP层×选项)",
+  "min-plus矩阵形式实现高效批处理",
+  "硬件感知的GPU内核设计",
+  "支持10^6场景规模"
+ ],
+ "method_framework": "将动态规划转化为min-plus矩阵运算，利用GPU实现场景、状态转移和决策选项的多维并行，通过warp/block级归约实现高效Bellman更新",
+ "experiment_framework": "CVRPSD和DSIRP两个基准问题，对比单线程/多线程CPU基线，评估场景规模对决策质量影响和计算效率",
+ "takeaways": [
+  "GPU并行化可带来1-5个数量级加速",
+  "大规模场景集显著提升随机规划决策质量",
+  "内存使用随场景线性增长，支持大规模问题"
+ ],
+ "weaknesses": [
+  "仅针对特定DP结构优化，通用性受限",
+  "未充分讨论不同硬件配置下的性能差异",
+  "实验集中在两个特定应用场景"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.3,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "GPU并行化DP框架，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

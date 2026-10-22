@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Consistency Posterior Sampling for Diverse Synthesis.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Consistency Posterior Sampling for Diverse Synthesis.pdf",
+ "title": "Consistency Posterior Sampling for Diverse Synthesis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "噪声空间Langevin采样提升生成效率，但视觉质量与计算瓶颈存疑",
+ "innovations": [
+  "在预训练生成模型的噪声空间中执行Langevin动力学进行后验采样",
+  "提供理论保证，证明模型后验与真实后验之间的TV距离界限",
+  "利用确定性映射(如一致性模型)实现渐进式多样化重建，无需重复完整去噪过程"
+ ],
+ "method_framework": "通过预训练生成模型提供的噪声空间到数据空间的确定性映射，在噪声空间中执行Langevin动力学进行后验采样，避免重复完整采样链，显著降低计算开销。",
+ "experiment_framework": "在LSUN-Bedroom(256×256)和ImageNet(64×64)数据集上测试线性(掩码修复、超分辨率、去模糊)和非线性(神经网络去模糊、相位恢复、HDR重建)逆问题，使用PSNR、SSIM、LPIPS、FID和多样性指标评估。",
+ "takeaways": [
+  "噪声空间采样方法可显著提高后验采样效率",
+  "确定性映射(如一致性模型)在保持质量的同时减少计算需求",
+  "理论分析揭示了后验采样的内在难度条件数"
+ ],
+ "weaknesses": [
+  "某些后验样本的视觉质量较低",
+  "对生成模型先验分布的近似误差敏感",
+  "梯度计算仍需通过模型映射，可能成为计算瓶颈"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "生成模型后验采样，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

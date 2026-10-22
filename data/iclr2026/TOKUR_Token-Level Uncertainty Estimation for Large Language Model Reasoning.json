@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TOKUR_Token-Level Uncertainty Estimation for Large Language Model Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TOKUR_Token-Level Uncertainty Estimation for Large Language Model Reasoning.pdf",
+ "title": "TokUR: Token-level Uncertainty Estimation for Large Language Model Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 6.8
+ },
+ "one_line": "低秩扰动的token级不确定性分解，数学推理应用有效但计算开销大",
+ "innovations": [
+  "提出训练无关的token级不确定性估计方法，通过低秩随机权重扰动生成预测分布，无需重训即可实现贝叶斯模型平均",
+  "在token级别将总不确定性分解为偶然不确定性（数据固有随机性）和认知不确定性（模型参数不确定性），具有理论一致性",
+  "展示三种实用应用：错误推理路径检测、多候选高质量解选择、不确定性引导的测试时缩放生成"
+ ],
+ "method_framework": "TokUR在注意力层引入低秩随机权重扰动，生成多个模型变体进行贝叶斯模型平均（BMA），从而得到每个token的预测分布。基于该分布计算预测熵，并分解为偶然不确定性和认知不确定性。token级不确定性聚合后用于评估整个推理响应的可信度。整个过程无需训练，仅在推理时施加扰动。",
+ "experiment_framework": "在多个难度梯度的数学推理数据集（如GSM8K、MATH等）上评估；基线包括logprob置信度、语义熵、MC-dropout等不确定性估计方法；指标包括不确定性与答案正确性的相关性、错误路径检测AUROC、候选解选择准确率、结合测试时缩放后的最终准确率提升。",
+ "takeaways": [
+  "认知不确定性（epistemic uncertainty）能有效识别错误推理路径，优于传统logprob置信度指标",
+  "token级不确定性聚合可用于从多个候选解中选择高质量方案，提升推理准确率",
+  "不确定性信号可作为隐式奖励引导测试时生成，进一步提升模型推理表现"
+ ],
+ "weaknesses": [
+  "低秩权重扰动需要多次前向传播，计算开销随扰动样本数线性增长",
+  "实验主要在数学推理任务上验证，开放域生成和多模态推理的适用性未充分探讨",
+  "不确定性分解的理论推导基于贝叶斯假设，但实际权重扰动是否真正近似后验分布仍需更多实证支持"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "token级不确定性估计直接服务于可靠性主线，数学推理为落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

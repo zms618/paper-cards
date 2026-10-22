@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Segment Anything Even Occluded.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Segment Anything Even Occluded.pdf",
+ "title": "Segment Anything Even Occluded",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "SAMEO微调SAM解码器实现零样本遮挡分割，但性能受限前端检测器",
+ "innovations": [
+  "将SAM模型适配为amodal mask解码器",
+  "创建Amodal-LVIS大规模合成数据集",
+  "双标注机制防止模型偏差"
+ ],
+ "method_framework": "SAMEO框架保留EfficientSAM的轻量级编码器和提示编码器，仅微调mask解码器，结合Dice损失、Focal损失和IoU估计损失，支持modal和amodal提示输入",
+ "experiment_framework": "在COCOA-cls、D2SA和MUVA数据集上评估，与AISFormer等基线比较，使用AP和AR指标，展示零样本性能",
+ "takeaways": [
+  "模块化设计使模型能灵活集成各种前端检测器",
+  "大规模高质量数据集对amodal分割任务至关重要"
+ ],
+ "weaknesses": [
+  "仅微调mask解码器可能限制了模型整体性能",
+  "依赖前端检测器的边界框质量"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "遮挡分割与医学影像可靠性无直接交点，仅具知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

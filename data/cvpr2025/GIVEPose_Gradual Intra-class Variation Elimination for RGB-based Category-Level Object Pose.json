@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/GIVEPose_Gradual Intra-class Variation Elimination for RGB-based Category-Level Object Pose.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/GIVEPose_Gradual Intra-class Variation Elimination for RGB-based Category-Level Object Pose.pdf",
+ "title": "GIVEPose Gradual Intra-class Variation Elimination for RGB-based Category-Level Object Pose",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "GIVEPose通过IVFC地图和DCAE模块缓解RGB姿态估计的类内变异问题",
+ "innovations": [
+  "提出IVFC地图解决NOCS地图的类内变异问题",
+  "设计DCAE模块实现渐进式类内变异消除",
+  "结合NOCS和IVFC地图互补优势提升姿态估计"
+ ],
+ "method_framework": "基于可变形卷积自编码器(DCAE)的框架，先预测NOCS地图，再通过编码器-解码器结构转换为IVFC地图，最终估计物体姿态",
+ "experiment_framework": "在CAMERA25、REAL275和Wild6D数据集上评估，使用NIoU和n°md等指标，与MSOS、OLD-Net、DMSR和LaPose等方法比较",
+ "takeaways": [
+  "类内变异是RGB物体姿态估计的关键挑战",
+  "中间表示的选择对最终性能有重要影响",
+  "渐进式信息消除策略可有效提升模型性能"
+ ],
+ "weaknesses": [
+  "依赖预训练的物体检测器",
+  "需要类别共识模型生成IVFC地图",
+  "仅评估了有限类别的物体"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "姿态估计非可靠性主线，无可靠设计模式可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

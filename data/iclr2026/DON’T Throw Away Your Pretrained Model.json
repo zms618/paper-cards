@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/DON’T Throw Away Your Pretrained Model.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/DON’T Throw Away Your Pretrained Model.pdf",
+ "title": "DON’T Throw Away Your Pretrained Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "模型协作与切换生成，但计算开销大且未充分验证规模效应",
+ "innovations": [
+  "SWITCH GENERATION动态切换模型生成文本片段",
+  "训练小型switcher LM决定何时使用哪个模型",
+  "利用模型训练管道中的不同检查点协作互补",
+  "将协作模式蒸馏回单一模型提高效率"
+ ],
+ "method_framework": "提出Query-Trace-Candidate问题，训练switcher LM根据查询、历史轨迹和候选模型选择最适合的模型生成下一个文本片段，使用top-p采样平衡效用与探索。",
+ "experiment_framework": "18个数据集(知识、推理、指令跟随等)，8种协作基线(API、文本、logit、权重级)，评估准确率、F1匹配等指标。",
+ "takeaways": [
+  "模型协作优于单独使用任一模型，预训练模型在协作中发挥'钻石'作用",
+  "switcher LM能泛化到未见模型和任务",
+  "协作模式可蒸馏回单一模型降低推理成本"
+ ],
+ "weaknesses": [
+  "依赖多个模型同时运行增加计算开销",
+  "switcher LM训练需要大量采样和评估",
+  "未充分探讨不同模型规模下的性能表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "模型协作方法与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

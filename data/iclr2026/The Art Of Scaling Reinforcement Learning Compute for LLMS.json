@@ -1,0 +1,41 @@
+{
+ "title": "The Art of Scaling Reinforcement Learning Compute for LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 7,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "大规模LLM RL缩放研究，提出可预测外推的ScaleRL配方",
+ "innovations": [
+  "首个大规模系统研究，建立分析与预测 LLM RL 缩放的原则性框架，填补 RL 缺少预训练那样可预测缩放方法的空白",
+  "用 sigmoidal 算力-性能曲线拟合 RL 训练，区分设计选择对渐近性能(asymptote)与算力效率的不同作用",
+  "提出最佳实践配方 ScaleRL，并实证其可从小规模运行外推预测到 10 万 GPU 小时（8B dense 与 17Bx16 MoE），使 RL 训练像预训练一样可预测"
+ ],
+ "method_framework": "在 iid 验证集 pass rate(mean@16)上拟合 sigmoidal 算力-性能曲线；系统消融 loss 聚合、归一化、课程学习、off-policy 算法等设计选择对渐近性能与算力效率的影响；据此整合出稳定可缩放的 ScaleRL 配方并做外推验证。",
+ "experiment_framework": "40 万+ GPU 小时，覆盖 8B dense 与 17Bx16 MoE；对比多种 RL 配方与设计选择；指标为渐近 pass rate、算力效率、外推预测准确度、下游 AIME-24 等泛化；对照 ProRL 等已有配方。",
+ "takeaways": [
+  "不同 RL 配方的渐近性能差异显著，并非都收敛到同一上限",
+  "loss 聚合/归一化/课程/off-policy 主要调节算力效率而非渐近上限",
+  "稳定可缩放的 RL 配方遵循可预测轨迹，可从小规模外推到大算力运行"
+ ],
+ "weaknesses": [
+  "缩放曲线拟合与外推的有效性高度依赖 sigmoid 假设与所选验证集(iid pass rate)，对其它奖励形状/任务分布的外推稳健性未充分验证",
+  "大量结论是消融性经验规律，对‘为何某些配方渐近更高’给的是现象描述而非机制解释；跨模型族(仅 dense+一种 MoE)的普适性待验证",
+  "relevance 给 6：属 RL 训练配方与缩放方法论，靠近推理模型训练，但主线是可靠性(验证/不确定性/幻觉)×落地域(医学影像/多模态推理)，本文为通用 RL scaling、不做可靠性/不确定性量化，按规则不抬分"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/The Art Of Scaling Reinforcement Learning Compute for LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The Art Of Scaling Reinforcement Learning Compute for LLMS.pdf",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "通用RL缩放方法论，未触及可靠性主线与落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

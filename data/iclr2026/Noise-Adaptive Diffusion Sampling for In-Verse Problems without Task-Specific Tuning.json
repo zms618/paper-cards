@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Noise-Adaptive Diffusion Sampling for In-Verse Problems without Task-Specific Tuning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Noise-Adaptive Diffusion Sampling for In-Verse Problems without Task-Specific Tuning.pdf",
+ "title": "Noise-Adaptive Diffusion Sampling for Inverse Problems without Task-Specific Tuning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "HMC噪声空间采样+噪声边缘化，提升逆问题鲁棒性但计算开销大",
+ "innovations": [
+  "将反向扩散视为初始噪声到干净图像的确定性映射，把推断整体移入初始噪声空间做HMC后验采样，避免局部最优并保持提议落在学习数据流形上。",
+  "对测量噪声鲁棒性给出理论分析，并通过σy退火调度促进早期探索、防止局部模态坍缩。",
+  "提出噪声自适应变体NA-NHMC：对噪声方差取无信息先验并边缘化，得到参数无关的似然项，自动适配未知噪声类型与水平。"
+ ],
+ "method_framework": "以扩散模型为先验p(x)，在初始噪声空间z上运行HMC采样后验p(z|y)，再经反向扩散确定性映射得到重建x；似然项通过对噪声方差边缘化实现噪声自适应；用σy退火调度在病态问题（如相位恢复）中促进探索。",
+ "experiment_framework": "在4个线性与3个非线性逆问题（含医学成像等）上评测，以重建质量指标对比近期SOTA；NA-NHMC在多数指标上更优，尤其在非线性与高噪声问题上，且对不同超参与初始化鲁棒、无需任务特定调参；代码开源。",
+ "takeaways": [
+  "在噪声空间而非图像空间做后验采样，可同时缓解局部最优与流形不可行问题。",
+  "边缘化噪声方差能使方法在未知噪声类型/水平下无需逐任务调参即鲁棒重建。",
+  "退火调度对严重病态逆问题的探索与防坍缩有明显帮助。"
+ ],
+ "weaknesses": [
+  "HMC在高维噪声空间采样计算开销大，相对MAP类快速方法的效率差距未充分量化。",
+  "理论鲁棒性保证基于较理想化假设，对强非线性前向算子与真实医学成像噪声的验证有限。",
+  "对比方法多为高斯噪声调参设定，对更复杂真实退化（模糊+噪声+下采样混合）的鲁棒性未充分展示。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "逆问题鲁棒性方法，可迁移到医学成像可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

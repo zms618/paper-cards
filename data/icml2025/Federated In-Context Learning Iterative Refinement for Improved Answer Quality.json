@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Federated In-Context Learning Iterative Refinement for Improved Answer Quality.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Federated In-Context Learning Iterative Refinement for Improved Answer Quality.pdf",
+ "title": "Federated In-Context Learning: Iterative Refinement for Improved Answer Quality",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.75
+ },
+ "one_line": "联邦上下文迭代精炼提升QA答案质量，但通信成本高且依赖基础LM",
+ "innovations": [
+  "提出联邦上下文学习(Fed-ICL):不传模型参数,仅通过在客户端间迭代精炼共享上下文提升ICL效果",
+  "客户端用服务器全局上下文重标注本地数据并本地精炼上下文,服务器聚合各客户端上下文更新全局上下文",
+  "为该迭代精炼过程建立收敛的理论保证"
+ ],
+ "method_framework": "ICL效果依赖高质量示例,但隐私/标注成本/分布差异使示例稀缺。Fed-ICL中服务器维护全局上下文C;客户端用C重标注本地数据Di并本地精炼上下文;服务器聚合各客户端更新后的上下文得到新C;多轮迭代实现异构数据上的协同ICL,全程不传模型参数。",
+ "experiment_framework": "在多个QA任务上验证;基线为本地ICL/需传模型参数的联邦方法;指标为答案质量/QA准确率,跨异构客户端数据划分;含收敛性实验。",
+ "takeaways": [
+  "联邦迭代精炼上下文可在不传参数下提升ICL答案质量",
+  "全局上下文-本地重标注的闭环能利用各客户端异构数据",
+  "迭代过程具有理论收敛保证"
+ ],
+ "weaknesses": [
+  "上下文迭代精炼仍需多轮通信,通信轮次成本需权衡",
+  "主线为文本QA的联邦ICL,与医学影像、多模态视觉推理主线仅部分相关",
+  "重标注依赖基础LM质量,误差会沿迭代累积"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

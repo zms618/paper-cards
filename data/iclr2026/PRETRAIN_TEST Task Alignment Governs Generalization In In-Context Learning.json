@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/PRETRAIN_TEST Task Alignment Governs Generalization In In-Context Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PRETRAIN_TEST Task Alignment Governs Generalization In In-Context Learning.pdf",
+ "title": "Pretrain-Test Task Alignment Governs Generalization in In-Context Learning",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 8,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.6
+ },
+ "one_line": "线性ICL模型推导泛化误差，提出对齐度量预测非线性Transformer性能。",
+ "innovations": [
+  "在任意预训练-测试任务协方差失配下，高维推导ICL泛化误差的精确表达式。",
+  "提出新的对齐度量，量化预训练任务分布对测试时推理有用的信息量。",
+  "揭示ICL中专精-泛化权衡：增大预训练任务多样性既可能提升也可能损害测试性能，取决于任务对齐度。"
+ ],
+ "method_framework": "以线性注意力做线性回归的可解模型为对象，把预训练与测试任务分布用协方差矩阵刻画，在二者失配下解析求解ICL泛化误差；据此构造对齐度量；再在非线性Transformer上验证该度量对ICL性能的预测力。",
+ "experiment_framework": "理论推导为主，在可解模型上给出精确泛化误差；在非线性Transformer上做受控实验，改变预训练-测试任务对齐度，验证对齐度量预测ICL性能及专精-泛化权衡。",
+ "takeaways": [
+  "预训练-测试任务对齐是ICL泛化的关键决定因素。",
+  "增大预训练任务多样性并非总是有益，取决于对齐度。",
+  "对齐度量在可解模型与真实非线性Transformer上都预测ICL性能。"
+ ],
+ "weaknesses": [
+  "理论基于线性回归/线性注意力可解模型，深度非线性情形为近似外推。",
+  "对齐度量需任务协方差，真实NLP任务中难以直接估计。",
+  "对语言级ICL(非线性回归任务)的定量预测力验证有限。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.13,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "ICL泛化误差推导与可靠性主线直接相关，方法设计具可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

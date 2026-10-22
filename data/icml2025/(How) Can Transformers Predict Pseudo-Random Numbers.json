@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/(How) Can Transformers Predict Pseudo-Random Numbers.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/(How) Can Transformers Predict Pseudo-Random Numbers.pdf",
+ "title": "(How) Can Transformers Predict Pseudo-Random Numbers?",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.7
+ },
+ "one_line": "Transformer学习伪随机数生成器算法，但外部效度有限。",
+ "innovations": [
+  "证明在足够容量与训练数据多样性下，GPT式自回归Transformer可对未见(a,c)乃至未见模m的LCG序列做上下文预测，m可达2^32。",
+  "揭示模型涌现出的算法结构：按素因子分解专门化的注意力头、剩余数系(RNS)表示与逐位(base-b)分解，而非黑箱记忆。",
+  "用注意力PCA、embedding主成分与注意力头剪枝做因果验证，定位每个头在估计模/数字中的独特作用，并观察到类grokking现象。"
+ ],
+ "method_framework": "在两种设置下训练GPT式自回归Transformer：FM(固定模m、变(a,c))与UM(未见模m_test)；通过分析embedding层与注意力模式，拆解模型如何把模m按素因子分解、用base-b逐位表示、并由专门化注意力头完成同余递推x_{t+1}=a x_t+c mod m。",
+ "experiment_framework": "合成LCG序列数据集，GPT-style Transformer(AdamW, dmodel/nheads可调，上下文长度约1023)；从m=2048小规模到m=2^32规模化；指标为预测下一数的测试精度；用头剪枝、PCA等机制分析验证素因子专门化与RNS表示。",
+ "takeaways": [
+  "Transformer能学习看似随机的LCG序列并泛化到未见参数，模越大越难但精度随模次线性/亚线性提升。",
+  "模m为2的幂时模型按二进制逐位分解；合数模时模型自发按素因子分解出专门化注意力头（剩余数系）。",
+  "素数模更难学，因为无法分解；头剪枝实验证实了各头对特定素因子/数字的因果专门化。"
+ ],
+ "weaknesses": [
+  "完全在合成LCG任务上验证，与真实伪随机/密码学生成器的复杂性差距大，外部效度有限。",
+  "所需模型容量与训练数据多样性随模增长，规模化到密码学安全长度时代价未充分量化。",
+  "机制解释多为事后观察与剪枝相关，对模型为何自发选择RNS分解缺乏规范性预测。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "纯算法研究，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

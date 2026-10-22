@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Who Speaks for the Trigger Dynamic Expert Routing in Backdoored Mixture-of-Experts Transformers.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Who Speaks for the Trigger Dynamic Expert Routing in Backdoored Mixture-of-Experts Transformers.pdf",
+ "title": "Who Speaks for the Trigger? Dynamic Expert Routing in Backdoored Mixture-of-Experts Transformers",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 6.5,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "利用MoE专家路由偏好实现隐蔽后门攻击",
+ "innovations": [
+  "首次揭示MoE架构的专家路由偏好漏洞",
+  "任务耦合动态触发器优化与敏感专家追踪机制",
+  "Top-S专家约束路由实现精确隐蔽的模型操纵"
+ ],
+ "method_framework": "BadSwitch结合任务耦合触发器构建与敏感专家选择，通过预训练识别Top-S敏感专家，再在微调阶段将触发样本路由限制在这些专家内",
+ "experiment_framework": "在Switch Transformer、QwenMoE和DeepSeekMoE三种架构上评估，使用SST-2、AGNews、C4和ELI4数据集，对比DPA和WPA基线",
+ "takeaways": [
+  "专家路由偏好是MoE模型的新攻击面",
+  "敏感专家识别与触发器联合优化可提高攻击隐蔽性",
+  "Top-S专家约束路由机制有效平衡攻击成功率与模型性能"
+ ],
+ "weaknesses": [
+  "生成任务中困惑度(PPL)较高",
+  "某些模型架构下性能不稳定",
+  "仅评估了文本级防御，未测试更复杂的防御机制"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Bi-Level Optimization for Self-Supervised AI-Generated Face Detection.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Bi-Level Optimization for Self-Supervised AI-Generated Face Detection.pdf",
+ "title": "Bi-Level Optimization for Self-Supervised AI-Generated Face Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "双层次优化自监督方法提升AI生成人脸检测，依赖EXIF元数据",
+ "innovations": [
+  "双层次优化框架，动态调整预训练任务权重",
+  "结合EXIF元数据和面部操作检测的代理任务",
+  "仅使用真实人脸照片训练，无需合成数据"
+ ],
+ "method_framework": "内循环：多任务预训练（EXIF分类/排序+面部操作检测）；外循环：优化任务权重以增强粗粒度操作检测；检测阶段：冻结编码器，使用GMM异常检测或轻量分类器",
+ "experiment_framework": "9个生成模型数据集，CelebA-HQ/FFHQ测试，准确率/AUC/AP指标，跨数据集评估",
+ "takeaways": [
+  "双层次优化能有效对齐预训练任务与下游检测目标",
+  "EXIF元数据中的曝光设置提供重要区分信号",
+  "方法简洁高效，参数量仅为FatFormer的13%"
+ ],
+ "weaknesses": [
+  "依赖EXIF元数据，可能不适用于无元数据图像",
+  "对JPEG压缩等图像处理鲁棒性有待验证",
+  "任务权重初始化可能影响最终结果"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "人脸检测非可靠性主线，EXIF元数据依赖限制落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

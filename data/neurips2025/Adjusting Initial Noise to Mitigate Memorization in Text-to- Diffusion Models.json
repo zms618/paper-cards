@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Adjusting Initial Noise to Mitigate Memorization in Text-to- Diffusion Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Adjusting Initial Noise to Mitigate Memorization in Text-to- Diffusion Models.pdf",
+ "title": "Adjusting Initial Noise to Mitigate Memorization in Text-to- Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "调整初始噪声减少扩散模型记忆化，但计算开销大且需超参数调整。",
+ "innovations": [
+  "发现初始噪声样本对记忆盆地逃逸时间的关键影响",
+  "提出批量级和样本级两种初始噪声调整策略",
+  "通过最小化条件噪声预测幅度促进早期逃逸"
+ ],
+ "method_framework": "基于条件噪声预测幅度||˜ϵθ(xT, T, y)||2作为记忆盆地边界代理，通过锐度度量调整初始噪声样本，促进早期逃逸。",
+ "experiment_framework": "使用Stable Diffusion v1.4/v2.0，500/219个记忆提示，SSCD评估记忆化，CLIP评估文本对齐，与5种基线方法比较。",
+ "takeaways": [
+  "初始噪声选择对记忆化有显著影响，可作为新的干预点",
+  "条件噪声预测幅度可作为记忆盆地边界的有效代理指标"
+ ],
+ "weaknesses": [
+  "批量级方法需要针对不同提示和初始样本调整超参数",
+  "计算开销较大，特别是样本级方法需要多次反向传播"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

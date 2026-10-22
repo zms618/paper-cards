@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/One2Any_One-Reference 6D Pose Estimation for Any Object.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/One2Any_One-Reference 6D Pose Estimation for Any Object.pdf",
+ "title": "One2Any One-Reference 6D Pose Estimation for Any Object",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "单参考RGB-D实现任意物体6D位姿，但依赖深度输入且计算成本高",
+ "innovations": [
+  "引入Reference Object Coordinate (ROC)表示",
+  "设计Reference Object Pose Embedding (ROPE)编码",
+  "基于潜在扩散模型的位姿解码框架",
+  "单参考视图下的强泛化能力"
+ ],
+ "method_framework": "编码-解码框架：参考图像通过ROE编码为ROPE，查询图像与ROPE通过U-Net解码器预测ROC图，再通过Kabsch-Umeyama算法计算相对位姿。",
+ "experiment_framework": "数据集：FoundationPose(40K+物体)、OO3D-9D；基线：Oryon、NOPE、FoundationPose等；指标：AR ADD-0.1d、ADD-S AUC等",
+ "takeaways": [
+  "ROC表示简化了相对位姿估计",
+  "ROPE编码有效捕获物体形状、纹理和朝向先验",
+  "交叉注意力机制有效整合查询特征与参考嵌入"
+ ],
+ "weaknesses": [
+  "依赖深度和掩模输入",
+  "训练计算成本高(2周)",
+  "未充分评估极端遮挡情况"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "位姿估计非可靠性主线，无可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/GAF_Gaussian Avatar Reconstruction from Monocular Videos via Multi-view Diffusion.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/GAF_Gaussian Avatar Reconstruction from Monocular Videos via Multi-view Diffusion.pdf",
+ "title": "GAF Gaussian Avatar Reconstruction from Monocular Videos via Multi-view Diffusion",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "多视角扩散模型提升单目3D头像重建，但计算开销大且依赖初始跟踪",
+ "innovations": [
+  "多视角头部扩散模型填补未观测区域",
+  "法线图引导的精确视角控制",
+  "迭代去噪图像作为伪监督避免过饱和"
+ ],
+ "method_framework": "结合FLAME跟踪与多视角扩散模型，通过VAE特征保持身份一致性，使用潜在上采样器增强细节，优化高斯溅射表示",
+ "experiment_framework": "NeRSemble数据集(16视角)与单目视频数据集，对比PanoHead、INSTA、FlashAvatar等基线，使用LPIPS、PSNR、SSIM指标",
+ "takeaways": [
+  "扩散模型作为先验约束可有效解决单目重建中的未观测区域问题",
+  "法线图提供像素级对齐的归纳偏置，优于传统相机位姿嵌入"
+ ],
+ "weaknesses": [
+  "计算开销大(12小时训练)",
+  "仅限于头部重建，未扩展到全身",
+  "依赖FLAME跟踪的初始质量"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D头像重建与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

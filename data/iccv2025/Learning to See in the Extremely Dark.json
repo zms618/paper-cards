@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Learning to See in the Extremely Dark.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Learning to See in the Extremely Dark.pdf",
+ "title": "Learning to See in the Extremely Dark",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "构建极暗数据集，用扩散模型做RAW增强，但配对数据限制应用",
+ "innovations": [
+  "SIED数据集：首个针对极暗环境(0.0001-0.1 lux)的配对数据集",
+  "paired-to-paired数据合成管道",
+  "基于扩散模型的RAW图像增强框架",
+  "自适应光照校正模块(AICM)"
+ ],
+ "method_framework": "双阶段训练策略：第一阶段训练RAW/RGB编码器解码器及AICM模块；第二阶段训练扩散模型，结合内容扩散损失和颜色一致性损失进行优化。",
+ "experiment_framework": "SIED数据集(三个精确照度范围)和SID数据集，PSNR/SSIM/LPIPS指标，与单阶段和多阶段方法对比",
+ "takeaways": [
+  "paired-to-paired数据合成策略提高数据真实性",
+  "AICM模块避免扩散过程中的曝光偏差",
+  "颜色一致性损失确保颜色映射准确"
+ ],
+ "weaknesses": [
+  "依赖配对数据，实际应用场景受限",
+  "扩散模型计算复杂度高，推理速度慢"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "图像增强技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

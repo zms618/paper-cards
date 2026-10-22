@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Off-Policy Evaluation Under Nonignorable Missing Data.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Off-Policy Evaluation Under Nonignorable Missing Data.pdf",
+ "title": "Off-Policy Evaluation Under Nonignorable Missing Data",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 6,
+  "overall": 6.8
+ },
+ "one_line": "首个MNAR下OPE偏差分析，提出IPW估计量但真实数据验证受限",
+ "innovations": [
+  "首次在MDP框架下刻画缺失数据机制：把缺失η作为因果图中独立节点，证明传统完全病例(CC)估计在MAR下一致、在MNAR下有偏(Theorem 4.5)",
+  "提出IPW值估计量：在估计方程中加入1/(1-λ)逆倾向加权，用shadow variable Zt作为非响应工具变量解决MNAR下不可辨识问题，支持参数与半参数两套倾向估计",
+  "证明双向渐近性(n→∞或T→∞均可)与渐近正态性，构造双侧置信区间量化值估计不确定性，并给出到FQE/MIS等OPE方法的扩展"
+ ],
+ "method_framework": "在无限折扣MDP上用linear sieve逼近Q≈ΦL(s)β；把缺失指示ηt+1与dropout倾向λ(St,At,Rt+1,St+1;ψ)纳入Bellman估计方程，IPW估计量βˆ=(Σ η/(1-λ)ξξT-γU)^{-1}(Σ η/(1-λ)ξR)；ψ由GMM估计方程E[(ηt+1/(1-λ)-1)h(·)]=0估计，h用shadow变量；值估计Vˆ(G)=(∫UπdG)Tβˆ，渐近方差给CI。",
+ "experiment_framework": "模拟(2维状态/二元动作,250次重复,对比CC与IPW-P/SP,指标Bias/MSE/经验覆盖概率ECP)；真实数据MIMIC-III v1.4脓毒症(14维状态/3动作,评行为策略与DQN/Dueling-DQN/BCQ)，因真实dropout机制未知，另用4490条完整轨迹+人工MNAR dropout模型做pseudo-real验证。",
+ "takeaways": [
+  "MNAR下CC估计严重低估(n=1000时bias -0.614,ECP仅0.82)，IPW-P/SP把bias降到约0.003-0.023且ECP贴近名义95%",
+  "真实脓毒症数据上IPW给出比CC更高的值估计(如BCQ 5.002→5.115)，符合早期出院者本身体征更好的直觉",
+  "合成脓毒症验证：CC在MNAR下系统性低估(如DQN 2.160→1.437)，IPW(2.227)回到接近完整数据基准2.160"
+ ],
+ "weaknesses": [
+  "真实MIMIC数据的dropout机制未知、无法验证，pseudo-real验证依赖人工设定的dropout hazard，外部效度有限；作者自陈需医学专家进一步验证",
+  "MNAR可辨识强依赖shadow variable的存在与选择(需⊥缺失但相关结局)，实践中shadow变量难找且难论证，方法可操作性受限",
+  "与主任务主线的精确落点(医学影像/多模态大模型推理)不完全吻合，属医疗决策OPE统计理论；sieve逼近限制状态维度不能太高，未在高维医疗特征上验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

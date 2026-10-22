@@ -1,0 +1,41 @@
+{
+ "title": "Rejuvenating Cross-Entropy Loss in Knowledge Distillation for Recommender Systems",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "理论分析推荐KD中CE失效原因，提出拆分+采样近似闭包的RCE-KD方法。",
+ "innovations": [
+  "将CE与NDCG的联系推广到推荐KD的真实(部分物品)场景：定义partial NDCG并证明CE最小化在闭包假设下最大化其下界。",
+  "指出闭包假设与'蒸馏教师top物品排名'的目标相矛盾(教师top常被学生排低)，并实证两类top物品差距巨大，解释了vanilla CE为何表现差。",
+  "提出RCE-KD：把教师top物品按是否被学生高分为两子集，对违反条件的子集用师生协同采样近似闭包，再自适应融合两子集损失。"
+ ],
+ "method_framework": "先理论推导partial NDCG与CE的关系及所需闭包假设；再将教师top物品拆为学生也高排的子集与其余子集；前者直接在学生top物品上用CE蒸馏，后者从学生top物品采样构造近似满足闭包的物品集；两子集损失按子集大小自适应加权融合。",
+ "experiment_framework": "数据集：Gowalla、Yelp等3个公开推荐数据集；设置：同构(MF→MF, LGCN→LGCN, HSTU→HSTU)与异构KD；基线含CD(pointwise)、UnKD(pairwise)、RRD/HetComp(listwise)及vanilla CE；指标NDCG@20。",
+ "takeaways": [
+  "vanilla CE在推荐KD上差并非CE本身无效，而是物品子集不满足闭包假设导致无法绑定NDCG。",
+  "教师top与学生top物品严重错位，是部分物品KD下CE失效的根因。",
+  "拆分+采样近似闭包可低成本地恢复CE与NDCG的联系，同时保持训练效率。"
+ ],
+ "weaknesses": [
+  "与主线(可靠性×医学影像/多模态推理)无关，属推荐系统蒸馏，relevance低。",
+  "闭包假设在真实场景只能近似满足，采样策略引入的偏差对NDCG界的影响在节选页中未严格量化。",
+  "节选前9页未见三个数据集的完整数值表与超参敏感性，'优越性'的证据在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Rejuvenating Cross-Entropy Loss In Knowl-Edge Distillation for Recommender Systems.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rejuvenating Cross-Entropy Loss In Knowl-Edge Distillation for Recommender Systems.pdf",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "推荐系统蒸馏与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/LV-MAE Learning Long Video Representations through Masked-Embedding Autoencoders.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/LV-MAE Learning Long Video Representations through Masked-Embedding Autoencoders.pdf",
+ "title": "LV-MAE Learning Long Video Representations through Masked-Embedding Autoencoders",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "将MAE应用于视频嵌入序列，解耦长短时依赖，但评估深度不足",
+ "innovations": [
+  "将掩码自编码器应用于嵌入序列而非图像块",
+  "解耦短时和长时依赖处理",
+  "利用现有多模态编码器提取短片段表示",
+  "语义掩码策略增强长视频理解"
+ ],
+ "method_framework": "LV-MAE首先将长视频分割为短片段，利用现有多模态编码器提取低级嵌入，然后训练掩码嵌入自编码器学习跨片段的高级表示，采用非对称编码器-解码器架构和MSE损失函数。",
+ "experiment_framework": "在LVU、COIN和Break三个长视频基准上评估，使用Top-1准确率和MSE作为指标，与VideoBERT、ViS4mer、VideoMamba等方法比较。",
+ "takeaways": [
+  "利用现有多模态编码器提取短片段表示可大幅减少计算量",
+  "掩码嵌入自编码器能有效学习长视频中的高级语义上下文",
+  "语义掩码策略比随机掩码在某些任务上表现更好"
+ ],
+ "weaknesses": [
+  "仅使用简单的注意力探测或线性探测进行下游任务评估",
+  "对长视频分割长度的选择缺乏深入分析",
+  "可视化方法依赖于外部文本描述，可能引入额外偏差"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频嵌入序列处理，但评估深度不足，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Scaling Laws for Differentially Private Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Scaling Laws for Differentially Private Language Models.pdf",
+ "title": "Scaling Laws for Differentially Private Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "DP-LLM缩放律研究，揭示隐私预算与性能权衡关系。",
+ "innovations": [
+  "首次系统建立DP-LLM的缩放律，弥补DP训练动力学不被理解的空白。",
+  "刻画DP训练(加噪/裁剪/隐私预算)与标准预训练在损失随规模变化上的本质差异。",
+  "为在给定隐私预算ε下权衡模型规模、数据量与性能提供可预测的指导。"
+ ],
+ "method_framework": "直接在敏感用户数据上训练LLM有记忆/泄露风险，需差分隐私。但DP-SGD的噪声与梯度裁剪显著改变训练动力学，标准LLM缩放律不再适用。本文系统扫描DP训练下的模型规模、数据量与隐私预算ε，拟合损失关于这些变量的缩放关系，分离DP噪声对scaling的影响，推导给定ε下的最优配置。",
+ "experiment_framework": "在受控的DP训练设定下，扫描模型规模、训练token数与隐私预算ε；指标为验证损失/下游任务与隐私代价，拟合DP缩放律并与标准(非DP)缩放律对比，验证给定ε下性能预测的准确性。",
+ "takeaways": [
+  "DP训练下LLM的性能可由含隐私预算的缩放律预测，但其动力学与标准预训练不同。",
+  "在固定隐私预算下，模型规模与数据量存在可预测的最优权衡。"
+ ],
+ "weaknesses": [
+  "DP缩放律的常数依赖隐私机制(噪声乘子/裁剪)与数据分布，迁移需重拟合。",
+  "DP在大模型上的精度损失仍显著，缩放律不改变这一本征代价。",
+  "聚焦隐私(DP)维度，与幻觉抑制/多模态推理主线为可信AI下的不同分支。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Multi-view Reconstruction via SfM-guided Monocular Depth Estimation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Multi-view Reconstruction via SfM-guided Monocular Depth Estimation.pdf",
+ "title": "Multi-view Reconstruction via SfM-guided Monocular Depth Estimation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "SfM引导扩散模型做深度估计，多视图重建泛化一般",
+ "innovations": [
+  "SfM点云作为显式中间表示引导扩散模型",
+  "利用预训练Stable Diffusion模型进行微调",
+  "稀疏深度图KNN插值与距离图辅助"
+ ],
+ "method_framework": "基于条件扩散模型，将SfM点云投影为稀疏深度图，通过KNN插值和距离图作为条件，预测单视图深度图，最后进行TSDF融合",
+ "experiment_framework": "在DTU、ScanNet、Replica、Waymo和UrbanScene3D数据集上评估，使用Chamfer距离、F-score和RMSE作为指标",
+ "takeaways": [
+  "利用预训练2D基础模型提升泛化能力",
+  "SfM点云作为多视图信息的有效表示"
+ ],
+ "weaknesses": [
+  "仅使用少量合成数据训练，真实场景泛化能力仍需验证",
+  "深度图融合后仍需RANSAC对齐，表明一致性仍有提升空间"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "多视图重建技术，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

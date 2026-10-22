@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/GeoDiff4D_Geometry-Aware Diffusion for 4D Head Avatar Reconstruction.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/GeoDiff4D_Geometry-Aware Diffusion for 4D Head Avatar Reconstruction.pdf",
+ "title": "GeoDiff4D Geometry-Aware Diffusion for 4D Head Avatar Reconstruction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "几何感知扩散模型重建4D头像，但依赖合成数据且计算开销大。",
+ "innovations": [
+  "联合生成肖像图像和表面法线，增强3D几何感知",
+  "姿态无关表情编码器与跨视角配对训练策略",
+  "利用生成图像、法线和表情潜变量联合优化3D高斯泼溅"
+ ],
+ "method_framework": "通过姿态无关表情编码器提取表情表示，联合扩散模型生成肖像帧和表面法线，最后利用生成内容优化3D高斯泼溅实现4D重建。",
+ "experiment_framework": "在NeRSemblev2数据集上进行自重演和跨重演实验，对比PSNR、SSIM、LPIPS、CSIM、JOD等指标，评估视觉质量、表情保真度和跨身份泛化能力。",
+ "takeaways": [
+  "联合表示学习（RGB+法线）可显著提升3D一致性",
+  "跨视角配对训练策略对保持几何一致性至关重要",
+  "表面法线正则化可减少渲染伪影并提高几何保真度"
+ ],
+ "weaknesses": [
+  "依赖合成数据集提供精确法线标注，可能限制真实场景应用",
+  "计算复杂度较高，训练时间长（3-4天）",
+  "未充分讨论模型在极端表情和姿态下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "4D重建技术不在可靠性主线，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

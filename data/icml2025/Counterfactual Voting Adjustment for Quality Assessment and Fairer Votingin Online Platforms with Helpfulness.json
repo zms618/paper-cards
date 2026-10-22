@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Counterfactual Voting Adjustment for Quality Assessment and Fairer Votingin Online Platforms with Helpfulness.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Counterfactual Voting Adjustment for Quality Assessment and Fairer Votingin Online Platforms with Helpfulness.pdf",
+ "title": "Counterfactual Voting Adjustment for Quality Assessment and Fairer Voting in Online Platforms with Helpfulness Evaluation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "因果框架修正在线投票双偏差，但验证基准和泛化性存疑。",
+ "innovations": [
+  "首次同时修正在线投票中的位置偏差和从众(羊群)偏差，现有方法仅处理其一",
+  "基于投票轨迹的因果推断框架，回答两个反事实问题：如果内容在不同位置会怎样？如果初始票数均衡会怎样？",
+  "社区嵌入揭示120个StackExchange社区的行为偏差差异，实现跨社区比较分析"
+ ],
+ "method_framework": "CVA将每条投票记录视为上下文中的一个事件：位置(内容显示排名)和 prior votes(之前累计票数)共同影响当前投票决定。模型对投票轨迹建模，估计每个投票在去除位置和从众影响后的'真实质量信号'。通过反事实调整：将位置反事实设为均匀、将 prior votes 反事实设为均衡，重新聚合得到去偏质量分。",
+ "experiment_framework": "三层验证：(1)初步实验验证偏差修正效果；(2)半合成数据集(模拟真实社区统计)验证恢复预定义质量的准确性；(3)真实StackExchange数据，用GPT-4o作为评判基准比较CVA重排与系统排名、无因果重排的对齐度。",
+ "takeaways": [
+  "CVA重排与GPT-4o质量评估的对齐度显著优于系统排名和无因果模型重排",
+  "位置偏差和从众偏差相互放大形成级联效应，早期受欢迎内容持续获得不公平优势",
+  "不同社区的偏差程度差异显著(如编程社区从众偏差较高，学术社区位置偏差较高)"
+ ],
+ "weaknesses": [
+  "因果模型依赖可观测变量，未观测混淆变量(如内容作者声望)可能影响估计",
+  "用GPT-4o作为'真实质量'基准本身存在偏差，验证的可靠性有限",
+  "仅在StackExchange文本社区验证，对视频/图片等其他内容形式的适用性未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

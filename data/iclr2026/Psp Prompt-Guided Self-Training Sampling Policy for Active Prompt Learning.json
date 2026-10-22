@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Psp Prompt-Guided Self-Training Sampling Policy for Active Prompt Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Psp Prompt-Guided Self-Training Sampling Policy for Active Prompt Learning.pdf",
+ "title": "PSP: Prompt-Guided Self-Training Sampling Policy for Active Prompt Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "Prompt引导的采样策略，RL训练成本高，与可靠性主线关联弱。",
+ "innovations": [
+  "把可学习prompt纳入采样策略，端到端选择最利于prompt模板优化的样本",
+  "提出向量化SAC采样策略(VSSP)：基于所学prompt与图像特征构造真实-伪标签混合奖励，向量化critic估计每样本Q值",
+  "提出不确定性增强自训练(UST)：用上一轮CLIP按平均预测的不确定性/置信度生成可靠伪标签，利用未选样本"
+ ],
+ "method_framework": "以SAC训练采样智能体：critic用混合奖励估计每样本价值，actor端到端优化以挑选信息量大且利于prompt学习的样本；同时对未选样本按不确定性生成伪标签做自训练，深化对整体数据的理解。",
+ "experiment_framework": "在多个真实下游数据集上评测主动提示学习；对比既有APL方法在标注效率与精度上的表现。",
+ "takeaways": [
+  "prompt引导的采样比被动启发式更能挑选利于prompt模板适配的样本",
+  "不确定性/置信度过滤的伪标签可有效利用未选样本的互补信息",
+  "端到端SAC采样策略优于传统主动学习启发式"
+ ],
+ "weaknesses": [
+  "属VLM主动学习/提示学习方向，与可靠性主线(医学影像/多模态推理验证)关联弱",
+  "SAC训练采样策略引入RL训练成本，收敛稳定性与超参敏感未充分分析",
+  "伪标签质量依赖上一轮CLIP，自训练误差累积风险未充分量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "主动学习框架有不确定性利用，但未触及医学影像或多模态推理可靠性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

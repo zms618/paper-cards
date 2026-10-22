@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Fix False Transparency by Noise Guided Splatting.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Fix False Transparency by Noise Guided Splatting.pdf",
+ "title": "Fix False Transparency by Noise Guided Splatting",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "噪声高斯注入缓解3D重建虚假透明度，但内存消耗高且场景泛化有限",
+ "innovations": [
+  "首次识别并量化3D高斯飞溅中的虚假透明度问题",
+  "噪声引导飞溅(NGS)方法通过注入内部噪声高斯强制表面不透明",
+  "表面不透明度评分(SOS)指标和噪声填充数据集用于评估虚假透明度"
+ ],
+ "method_framework": "NGS通过在物体体积内注入高不透明度的噪声高斯，创建前后表面间的有效遮挡屏障，防止优化过程将后表面整合到前表面渲染中，同时保持与标准3DGS的兼容性。",
+ "experiment_framework": "在DTU、OmniObject3D和自建Stone数据集上评估，使用PSNR、SSIM、LPIPS和提出的SOS指标，与3DGS、GOF和StopThePop等基线方法比较。",
+ "takeaways": [
+  "噪声高斯作为诊断工具可评估任何飞溅渲染方法的虚假透明度",
+  "多尺度噪声注入策略在内存效率和几何特征覆盖间取得平衡",
+  "光照一致性对虚假透明度减少效果有重要影响"
+ ],
+ "weaknesses": [
+  "在光照条件不一致的数据集上(如DTU和OmniObject3D)效果相对有限",
+  "噪声高斯增加了约50%的内存消耗",
+  "方法主要针对物体中心重建，场景级重建的适用性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

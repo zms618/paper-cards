@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/ReinboT_Amplifying Robot Visual-Language Manipulation with Reinforcement Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ReinboT_Amplifying Robot Visual-Language Manipulation with Reinforcement Learning.pdf",
+ "title": "ReinboT: Amplifying Robot Visual-Language Manipulation with Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "将ReturnToGo作为新模态，用稠密奖励预测从混合质量示教中学习机器人操作策略。",
+ "innovations": [
+  "自动把长时程操作轨迹切分为仅含单子目标的片段，并据此设计广泛适用的稠密奖励（兼顾跟踪目标、能耗、平稳行为）",
+  "把 ReturnToGo 作为新模态加入语言-图像-动作联合分布，用 expectile 回归建模最大回报序列，以监督范式实现 RL 最大化回报目标",
+  "在 VLA 中显式建模数据质量分布，缓解模仿学习难以区分混合质量示教的问题"
+ ],
+ "method_framework": "先对长轨迹按子目标自动分段并构造稠密奖励；再以语言指令、图像状态、本体感知、动作与 ReturnToGo 为多模态输入做联合建模，用 expectile 回归预测条件最大回报，使策略面向最大化未来收益生成动作，从而在混合质量数据上学得鲁棒决策。",
+ "experiment_framework": "在 CALVIN 混合质量数据集上评测并取得 SOTA；在真实世界任务中验证少样本学习与分布外泛化；对比模仿学习类 VLA 与已有 VLA+RL 尝试，指标为长时程任务成功率与泛化表现。",
+ "takeaways": [
+  "把 ReturnToGo 作为模态并做稠密回报预测可让 VLA 有效利用混合质量示教",
+  "自动子目标分段+稠密奖励使 RL 思想可广泛迁移到多种操作任务",
+  "ReinboT 在少样本与分布外设置下均展现更强鲁棒性"
+ ],
+ "weaknesses": [
+  "主线偏离可靠性/医学影像/多模态推理，属具身操作方向",
+  "稠密奖励依赖人工设计原则，跨机器人形态/任务的可迁移性证据有限",
+  "前 9 页未见与纯离线 RL 基线在同数据量下的样本效率对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/FeatSharp_Your Vision Model Features, Sharper.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FeatSharp_Your Vision Model Features, Sharper.pdf",
+ "title": "FeatSharp: Your Vision Model Features, Sharper",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "组合JBU与瓦片注意力，提升特征上采样质量但创新有限",
+ "innovations": [
+  "提出Tile-Guided Attentional Refinement模块，结合JBU上采样特征与图像瓦片特征，通过局部注意力融合得到更精细的高分辨率特征图",
+  "引入可学习的去偏置缓冲区(de-biasing buffer)消除视觉编码器的固定位置伪影",
+  "证明FeatSharp的计算复杂度优于直接运行高分辨率模型，瓦片数x时O(x²) vs 直接高分辨率O(x⁴)"
+ ],
+ "method_framework": "以FeatUp的联合双边上采样(JBU)为基础，将低分辨率特征图先上采样至目标分辨率。同时将图像切分为瓦片输入相同编码器得到瓦片特征。使用单个局部注意力+SwiGLU Transformer块，将JBU上采样缓冲与瓦片特征拼接后输入进行精炼。残差连接保证不劣于双线性上采样。另加可学习位置偏置缓冲g，去除ViT特征中的固定位置噪声。训练使用多视图一致性MSE损失。",
+ "experiment_framework": "在7个视觉基础模型(DFN CLIP, DINOv2-L, PaliGemma, RADIOv2.5-L, SAM-H, SigLIP, ViT)上验证。任务包括：(1)多视图一致性fidelity度量；(2)语义分割线性探针；(3)COCO 2017目标检测(Detectron2 + ViTDet + DINO)。基线对比Bilinear、SAPA、ReSFU、FeatUp-JBU。另验证作为RADIO蒸馏教师的效果。",
+ "takeaways": [
+  "FeatSharp在所有测试模型上均优于FeatUp-JBU和双线性上采样，多视图一致性fidelity显著提升",
+  "语义分割任务上RADIOv2.5-L配合2×上采样+2×输入达到53.13 mIoU，比原SOTA提升+1.66 mIoU",
+  "目标检测COCO AP上FeatSharp 2×上采样在RADIO和SigLIP2上均大幅优于基线(+3.4~+3.9 AP)"
+ ],
+ "weaknesses": [
+  "方法核心是FeatUp JBU与VLM瓦片切分两个已有思路的工程组合，技术新颖性有限",
+  "需要多次编码器前向传播构建瓦片特征，实际部署时的计算开销仍高于纯单次推理上采样方法",
+  "仅验证了2×和4×上采样因子，对更大倍数(8×/16×)的效果和退化情况未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Superficial Safety Alignment Hypothesis.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Superficial Safety Alignment Hypothesis.pdf",
+ "title": "Superficial Safety Alignment Hypothesis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "表面安全对齐假说：安全仅需少量神经元级关键组件建立护栏",
+ "innovations": [
+  "提出SSAH假说：将安全对齐从通用对齐中分离，指出其本质是教会模型选择正确推理方向（服从或拒绝请求），可视为隐式二元分类任务",
+  "识别出四类属性关键组件：安全关键单元(SCU)、效用关键单元(UCU)、复杂单元(CU)、冗余单元(RU)，揭示安全的原子功能单元在神经元层级",
+  "提出两种缓解方案：冻结SCU以保持微调后安全性，以及将预训练冗余单元重定向为「对齐预算」以降低对齐税"
+ ],
+ "method_framework": "基于表面对齐假说(SAH)扩展出专门针对安全的SSAH框架。通过探针实验（比较对齐/未对齐模型在不同查询下的隐藏状态余弦距离）验证安全对齐是否改变推理方向。进一步利用剪枝方法分析模型组件，将其按属性分为SCU/UCU/CU/RU四类，分别探索冻结关键单元和重利用冗余单元两种策略。",
+ "experiment_framework": "在AdvBench数据集上对Llama2-7B、Llama3-8B、Llama3.1-8B三个模型进行探针实验，测量干净查询/恶意查询+良性token/恶意查询+恶意token三种条件下的隐藏状态余弦距离，跨Transformer层分析推理方向差异。结合剪枝方法识别不同属性的组件单元。",
+ "takeaways": [
+  "安全对齐的核心作用是教会模型在每个token生成步骤选择正确的推理方向（服从或拒绝），而非学习新知识",
+  "仅冻结少量安全关键神经元即可在下游微调中保持安全性能，显著缓解微调攻击导致的安全崩坏",
+  "预训练模型中存在大量冗余单元，将其重定向用于安全对齐可在不损失效用的前提下降低对齐税"
+ ],
+ "weaknesses": [
+  "实验仅在Llama系列三个模型上验证，跨模型架构的普适性未充分证明",
+  "探针实验通过隐藏状态距离间接推断推理方向，缺乏对内部机制的直接因果验证",
+  "前9页未展示完整的消融实验和定量安全/效用评估表格，部分结论的量化支撑不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "安全对齐与可靠性主线交点，可迁移的神经元级关键组件设计",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

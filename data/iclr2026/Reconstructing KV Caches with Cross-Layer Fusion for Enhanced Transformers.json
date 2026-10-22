@@ -1,0 +1,41 @@
+{
+ "title": "Reconstructing KV Caches with Cross-Layer Fusion for Enhanced Transformers",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "跨层KV融合降低显存，但与可靠性主线无关且实验不完整。",
+ "innovations": [
+  "发现跨层KV共享的非对称原则：顶层value最适合由底层重建，顶层key则兼需底层与中层信息。",
+  "提出FusedKV：对top层KV在post-RoPE key上做维度加权融合，直接保留相对位置信息而无需重算RoPE。",
+  "提出更省I/O的FusedKV-Lite：顶层KV直接由底层value与中层key派生；在332M–4B模型上省50%缓存且验证perplexity低于标准解码器。"
+ ],
+ "method_framework": "分析顶层KV的信息流动得出非对称来源分布；top层不再独立存储KV，而是对bottom层与middle层的缓存做维度可学习加权融合重建；融合作用于post-RoPE key以保留位置信息；Lite版用固定来源(底层value+中层key)进一步省I/O。",
+ "experiment_framework": "332M到4B参数LLM预训练/验证；对比GQA/MQA/MLA、YOCO、CLA等跨层/层内共享方法；指标为缓存显存、prefill时延、验证perplexity与收敛速度。",
+ "takeaways": [
+  "跨层KV共享此前弱于层内(GQA)，根因是未区分key与value的不同来源偏好。",
+  "post-RoPE上直接融合可免重算旋转位置编码，兼顾位置信息与效率。",
+  "FusedKV在减半缓存的同时甚至能达到更低的perplexity。"
+ ],
+ "weaknesses": [
+  "落地域为LLM推理/架构效率，与可靠性×医学影像/多模态推理主线无关。",
+  "非对称来源规律基于特定层数模型的信息流分析，对更深模型的适用性未充分验证。",
+  "节选前9页未见332M–4B各规模的完整perplexity/显存对照表，结论在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Reconstructing KV Caches with Cross-Layer Fusion for Enhanced Transformers.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reconstructing KV Caches with Cross-Layer Fusion for Enhanced Transformers.pdf",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "LLM架构效率与可靠性主线无关且实验不完整",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

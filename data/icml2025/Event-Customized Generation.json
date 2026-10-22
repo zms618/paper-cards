@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Event-Customized Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Event-Customized Generation.pdf",
+ "title": "Event-Customized Image Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "免训练方法从单图复现复杂事件并替换实体，缺乏量化指标与主线相关性",
+ "innovations": [
+  "定义事件定制生成新任务：从单张参考图捕获场景中实体间全部动作/姿态/关系/交互",
+  "免训练方法FreeEvent，无需额外微调",
+  "在扩散去噪流程外增设实体切换路径(交叉注意力引导与调节)等额外路径实现实体替换"
+ ],
+ "method_framework": "FreeEvent 在通用扩散去噪过程旁引入额外路径：实体切换路径通过交叉注意力引导与调节把目标实体嵌入原事件结构，从而在保持复杂事件布局/关系的同时替换参考实体，全程免训练。",
+ "experiment_framework": "与主体定制、动作交互定制方法在事件复现与实体替换场景上定性定量对比；展示多实体、多动作复杂事件的生成效果，评测实体关联准确性与事件一致性。",
+ "takeaways": [
+  "把定制生成从单主体/双实体基础动作扩展到多实体复杂事件层面",
+  "免训练设计使事件定制无需额外数据与微调即可复用现成扩散模型",
+  "实体切换路径能在保持原事件结构的同时替换目标实体"
+ ],
+ "weaknesses": [
+  "新任务缺乏公认的量化指标与基准，评价偏主观定性",
+  "仅单张参考图，复杂事件中的细节关系保真度未充分量化",
+  "与主线(可靠性/医学影像/多模态大模型推理)无关，属生成式视觉定制"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

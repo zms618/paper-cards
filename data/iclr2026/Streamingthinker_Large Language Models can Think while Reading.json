@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Streamingthinker_Large Language Models can Think while Reading.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Streamingthinker_Large Language Models can Think while Reading.pdf",
+ "title": "StreamingThinker: Large Language Models can Think while Reading",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "流式思考范式降低LLM推理延迟，但深度受限且迁移性存疑。",
+ "innovations": [
+  "提出流式思考(Streaming Thinking)新范式：受人类边读边思考启发，LLM按输入顺序逐步展开推理，读完后再调整深度，替代传统批量思考范式",
+  "设计流式推理单元+质量控制：通过流式注意力掩码和位置编码强制保持顺序推理，确保流式CoT生成的正确性",
+  "提出并行KV缓存机制：将输入编码与推理生成解耦，实现真正的并发流式推理，同时保持两者对齐"
+ ],
+ "method_framework": "StreamingThinker包含三个核心组件：(1)流式CoT生成：带质量控制的流式推理单元，按输入顺序逐步生成思考链；(2)流式约束训练：通过流式注意力掩码和位置编码，强制推理顺序与输入顺序一致；(3)流式并行推理：解耦的KV缓存并行处理输入编码和推理生成，实现真正的边读边想。输入读完后可进一步调整推理深度。",
+ "experiment_framework": "在Qwen3模型家族上验证，覆盖数学推理、逻辑推理和基于上下文的QA推理任务。对比批量思考范式，评估：(1)推理准确率是否保持；(2)推理启动前token等待量减少；(3)端到端时间延迟降低。",
+ "takeaways": [
+  "流式思考范式在保持与批量思考相当推理性能的同时，将推理启动前等待减少80%，端到端延迟降低60%以上",
+  "边读边思考使推理步骤与相关上下文更接近，缓解长输入下早期信息注意力稀释问题，降低幻觉风险",
+  "并行KV缓存解耦机制是实现真正流式推理的关键，解决了输入编码与推理生成的对齐问题"
+ ],
+ "weaknesses": [
+  "流式推理单元的质量控制机制可能在复杂推理任务中限制思考深度，性能损失幅度需更多实验验证",
+  "仅在Qwen3系列模型上验证，对其他推理模型（如DeepSeek-R1、o1）的迁移性未证明",
+  "前9页未展示完整的多任务定量对比表格，具体准确率和延迟数值不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "流式思考范式提升LLM推理效率，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

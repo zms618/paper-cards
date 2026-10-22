@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Predicting LLM Output Length via Entropy-Guided Representations.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Predicting LLM Output Length via Entropy-Guided Representations.pdf",
+ "title": "Predicting LLM Output Length via Entropy-Guided Representations",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "轻量长度预测框架，减少padding浪费但与主线关联弱",
+ "innovations": [
+  "Entropy-Guided Token Pooling(EGTP)：用在线激活与 token 熵做高准确率、近零成本的静态长度预测",
+  "Progressive Length Prediction(PLP)：在每步解码动态估计剩余长度，应对随机'一对多'采样(尤其RL训练)场景",
+  "构建并发布 ForeLen 基准，涵盖长序列、思维链与RL数据，较现有LMSYS更长尾"
+ ],
+ "method_framework": "不额外训练辅助模型，直接复用主LLM内部激活：EGTP 依据 token 熵对隐藏状态做池化得到静态长度估计；PLP 在自回归解码过程中逐步更新剩余长度分布估计，从而为长度感知调度提供动态信号，减少短序列 padding 导致的木桶效应。",
+ "experiment_framework": "在 ForeLen 上对比 DistilBERT/OPT 等辅助预测器基线，报告长度预测 MAE；与长度感知调度器集成后端到端吞吐增益；覆盖在线服务与 GRPO 类在线RL采样两类场景。",
+ "takeaways": [
+  "EGTP 在 ForeLen 上取得 SOTA，MAE 较最优基线降低29.16%",
+  "复用主模型隐状态避免了独立辅助预测器的部署与算力开销",
+  "动态 PLP 可处理静态提示预测失效的随机一对一生成场景"
+ ],
+ "weaknesses": [
+  "主线为推理服务效率优化，与可靠性/医学影像/多模态推理主线关联弱",
+  "长度预测仅作调度信号，对模型质量/正确性无直接贡献",
+  "前9页未见跨多种开源/闭源主模型的泛化与误差对吞吐的敏感性分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.68,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "轻量长度预测框架，减少padding浪费但与主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

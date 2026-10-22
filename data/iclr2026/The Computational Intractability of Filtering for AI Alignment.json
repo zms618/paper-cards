@@ -1,0 +1,41 @@
+{
+ "title": "Computational Intractability of Filtering for AI Alignment",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "理论证明外部过滤器无法解决AI对齐计算难题",
+ "innovations": [
+  "证明存在一类 LLM，对其不存在高效输入提示过滤器：可轻易构造出对高效过滤器计算上与良性提示不可区分、却诱发有害行为的对抗提示",
+  "在一个自然设定下证明输出过滤(output filtering)是计算不可行的",
+  "据此得出结论：安全无法通过模型内部（架构与权重）之外的外部过滤器实现，仅靠对 LLM 的黑盒访问不足以保证安全"
+ ],
+ "method_framework": "把对齐安全建模为输入过滤与输出过滤两个干预点；在过滤器与 LLM 计算能力不对称的假设下，用计算复杂性/不可区分性归约证明：存在无法被高效过滤区分的对抗提示，以及输出过滤在自然情形下的不可判定/不可行，从而界定黑盒外部过滤的能力边界。",
+ "experiment_framework": "纯理论（计算复杂性）工作：以存在性构造与不可区分性归约证明输入过滤无高效解、输出过滤不可行；不依赖数据集/基准，重点在能力不可能性结果的严格建立。",
+ "takeaways": [
+  "仅靠在输入侧加过滤器挡有害提示在计算上不可行——对抗提示可与良性提示不可区分",
+  "输出过滤在自然设定下同样不可行",
+  "黑盒外部过滤无法保证对齐安全，安全必须内建到模型架构/权重本身"
+ ],
+ "weaknesses": [
+  "不可能性结果依赖‘计算不对称’与‘高效过滤器’等理想化复杂性假设，现实中过滤器可借助大模型自身或人审，结论是渐近式而非对具体系统的判定",
+  "只给出外部过滤为何失败，未提出内建安全的可构造方案，是负面结果；理论到工程实践的可操作性偏弱",
+  "relevance 给 6.5：属对齐/安全与对抗提示鲁棒性，靠近可靠性(鲁棒性)主线；但落地域非医学影像或多模态大模型推理任务，且为纯安全理论、不做不确定性/幻觉量化，故不到 7.5+"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/The Computational Intractability of Filtering for AI Alignment.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The Computational Intractability of Filtering for AI Alignment.pdf",
+ "raw_overall": 6.43,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "AI对齐安全理论属可靠性主线，但缺乏落地域应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

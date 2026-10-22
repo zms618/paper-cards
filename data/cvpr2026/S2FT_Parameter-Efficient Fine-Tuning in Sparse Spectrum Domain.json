@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/S2FT_Parameter-Efficient Fine-Tuning in Sparse Spectrum Domain.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/S2FT_Parameter-Efficient Fine-Tuning in Sparse Spectrum Domain.pdf",
+ "title": "S2FT Parameter-Efficient Fine-Tuning in Sparse Spectrum Domain",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "稀疏谱域PEFT方法，行列重排策略降低计算开销",
+ "innovations": [
+  "发现权重变化谱非稀疏而是功率均匀分布",
+  "提出可逆变换将权重变化映射到稀疏谱域",
+  "基于最近邻搜索的行列重排策略实现稀疏谱变换"
+ ],
+ "method_framework": "S2FT先预估计权重变化，通过行列重排寻找可逆变换，将权重变化映射到稀疏谱域，再在稀疏谱域进行参数高效微调",
+ "experiment_framework": "VTAB-1k、FGVC图像分类，文本生成，GLUE自然语言理解，Alpaca指令微调，与LoRA、FourierFT等基线对比",
+ "takeaways": [
+  "权重变化谱的非稀疏特性限制了传统傅里叶PEFT方法",
+  "行列重排策略可有效实现稀疏谱变换",
+  "基于功率谱的采样策略优于传统低频偏置采样"
+ ],
+ "weaknesses": [
+  "预估计权重变化的计算开销",
+  "行列重排策略可能无法适用于所有网络结构",
+  "实验未充分验证方法在不同规模模型上的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "参数高效微调方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

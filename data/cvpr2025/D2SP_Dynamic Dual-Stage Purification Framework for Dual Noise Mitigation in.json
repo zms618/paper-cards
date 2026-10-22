@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/D2SP_Dynamic Dual-Stage Purification Framework for Dual Noise Mitigation in.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/D2SP_Dynamic Dual-Stage Purification Framework for Dual Noise Mitigation in.pdf",
+ "title": "D2SP Dynamic Dual-Stage Purification Framework for Dual Noise Mitigation in",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "双阶段净化框架处理DFER数据噪声，但计算开销大且缺乏噪声比例分析",
+ "innovations": [
+  "区分DFER数据中的两种噪声类型：低质量和错误标注",
+  "双阶段净化框架：CGP和FGC分别处理两种噪声",
+  "动态净化过程，每epoch重新评估数据质量"
+ ],
+ "method_framework": "D2SP框架包含两个阶段：CGP通过权重计算和阈值剪枝去除低质量样本；FGC通过预测标签和分数稳定性检测并纠正错误标注样本。整个过程在每个epoch动态更新，形成闭环净化。",
+ "experiment_framework": "在FERV39k、DFEW和MAFW三个DFER数据集上测试，使用ResNet_LSTM、VGG_LSTM、Former-DFER和ViT_LSTM六种基线方法，以WAR和UAR为评估指标。",
+ "takeaways": [
+  "噪声类型细分与针对性处理策略",
+  "动态净化机制确保持续优化数据质量",
+  "权重计算模块可应用于其他噪声敏感任务"
+ ],
+ "weaknesses": [
+  "框架计算开销较大，需额外训练权重计算模块",
+  "未提供不同噪声比例下的性能分析",
+  "动态净化过程可能导致训练不稳定"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "数据净化方法与可靠性主线相关但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

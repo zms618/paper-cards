@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mvcustom_Multi-View Customized Diffusion via Geometric Latent Rendering and COMPLE.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mvcustom_Multi-View Customized Diffusion via Geometric Latent Rendering and COMPLE.pdf",
+ "title": "MVCustom: Multi-View Customized Diffusion via Geometric Latent Rendering and Completion",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "多视角定制任务，几何潜空间渲染与补全解决视角一致性问题",
+ "innovations": [
+  "提出多视角定制新任务，统一多视角相机位姿控制与基于提示的物体定制这两个此前割裂的方向",
+  "用几何潜空间渲染在潜空间显式建模相机位姿与物体几何，保证视角对齐",
+  "提出潜空间补全(COMPLE)策略处理定制数据稀缺下的跨视角一致性"
+ ],
+ "method_framework": "给定物体的多视角参考图与对应相机位姿、以及文本提示与目标相机位姿，生成既保持该物体外观一致、又在新视角/新环境下几何一致的图。方法在潜空间做几何渲染以对齐相机位姿，并通过潜空间补全补偿定制训练数据稀缺导致的视角间不一致。",
+ "experiment_framework": "在多视角生成与定制结合的设定上对比已有多视角模型与定制模型的扩展版；指标为视角对齐精度、跨视角一致性、外观保持度与文本对齐；含定性与定量对比及消融。",
+ "takeaways": [
+  "多视角生成与定制此前互不支持几何一致的统一，MVCustom首次联合",
+  "潜空间几何渲染+补全可在定制数据稀缺下维持跨视角一致性",
+  "视角对齐与外观一致性均显著优于把现有方法简单拼接"
+ ],
+ "weaknesses": [
+  "主线是3D/多视角生成与定制，与LLM/多模态可靠性、验证器、幻觉抑制等落地主线无关",
+  "依赖参考多视角图与相机位姿输入，仅单图定制场景未覆盖",
+  "新任务缺乏大规模公开基准，定量评测规模与多样性有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.03,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "多视角定制任务与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

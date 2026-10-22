@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Neural Distribution Prior for LiDAR Out-of-Distribution Detection.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Neural Distribution Prior for LiDAR Out-of-Distribution Detection.pdf",
+ "title": "Neural Distribution Prior for LiDAR Out-of-Distribution Detection",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "基于分布建模的LiDAR OOD检测，增加复杂度但提升有限",
+ "innovations": [
+  "神经分布先验(NDP)模块建模预测分布结构并自适应重加权OOD分数",
+  "Perlin噪声的OOD合成策略从输入扫描生成多样化辅助OOD样本",
+  "软异常暴露(SOE)训练策略利用合成OOD样本和不可靠空区域"
+ ],
+ "method_framework": "基于Mask4Former-3D框架，NDP模块将logit投影到潜在嵌入空间并与可学习的先验矩阵进行交叉注意力，生成重加权项调整静态OOD分数",
+ "experiment_framework": "SemanticKITTI和STU基准测试，点级AUROC/FPR@95/AP和物体级RecallQ/SQ/RQ/UQ/PQ指标",
+ "takeaways": [
+  "处理类别不平衡时，动态建模预测分布比固定评分函数更有效",
+  "合成多样化OOD样本可避免对外部数据集的依赖并提高泛化能力"
+ ],
+ "weaknesses": [
+  "Perlin噪声生成的OOD样本可能无法完全覆盖真实世界的异常情况",
+  "NDP模块增加了模型复杂度和计算开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LiDAR OOD检测明确触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

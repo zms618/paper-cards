@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/LORA-MIXER_Coordinate Modular LORA Experts through Serial Attention Routing.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/LORA-MIXER_Coordinate Modular LORA Experts through Serial Attention Routing.pdf",
+ "title": "LORA-MIXER: Coordinate Modular LORA EX-PERTS through Serial Attention Routing",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "LoRA专家路由到注意力层，参数减半但NLP任务性能提升",
+ "innovations": [
+  "将LoRA专家应用于注意力模块的核心投影矩阵而非FFN块",
+  "提出路由专业化平衡损失(RSL)实现负载平衡与输入感知专业化",
+  "支持即插即用预训练LoRA模块的混合训练策略"
+ ],
+ "method_framework": "LoRA-Mixer将任务特定的LoRA专家路由到注意力模块的输入/输出线性层，通过RSL损失联合实现全局负载平衡和输入感知专业化，支持联合优化和即插即用两种模式。",
+ "experiment_framework": "在15个基准数据集(MedQA, GSM8K, HumanEval, GLUE等)上评估，与MoLE, MixLoRA, LoraHub等基线比较，使用ACC和Pass@1指标。",
+ "takeaways": [
+  "RSL损失通过熵正则化实现负载平衡与专业化的平衡",
+  "LoRA-Mixer在参数量仅为基线48%的情况下实现性能提升",
+  "跨模型迁移验证了路由机制的鲁棒性和可转移性"
+ ],
+ "weaknesses": [
+  "实验主要关注NLP任务，对医学影像等视觉领域验证不足",
+  "RSL损失的超参数选择可能需要针对不同任务进行调整",
+  "未充分探讨模型规模扩展时的计算效率问题"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "NLP参数优化，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Streaming Diffusion Model for Fast Infrared and Visible Video Fusion.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Streaming Diffusion Model for Fast Infrared and Visible Video Fusion.pdf",
+ "title": "Streaming Diffusion Model for Fast Infrared and Visible Video Fusion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "流式扩散模型实现红外可见视频融合，但单步采样限制生成能力",
+ "innovations": [
+  "流式扩散模型框架实现单步采样",
+  "光流引导的跨帧特征传播机制",
+  "时间一致性损失函数抑制闪烁和伪影"
+ ],
+ "method_framework": "双阶段设计：第一阶段训练跨模态编码器-解码器，第二阶段冻结骨干网络并引入流式扩散模型，通过光流对齐和传播跨帧特征，确保时空一致性",
+ "experiment_framework": "在HDO、VTMOT、NOT-156和M3SVD四个数据集上评估，使用SCD、VIF和mSSIM指标，并与7种图像融合方法和2种视频融合方法比较",
+ "takeaways": [
+  "流式框架有效降低计算延迟",
+  "光流引导的特征传播机制提升时空一致性",
+  "时间一致性损失函数有效抑制闪烁和运动伪影"
+ ],
+ "weaknesses": [
+  "依赖光流估计的准确性",
+  "仅使用单步扩散可能损失部分生成能力",
+  "内存更新机制可能导致长期依赖问题"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "视频融合属于多模态处理，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Flowcast_Advancing Precipitation Nowcasting with Conditional Flow Matching.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Flowcast_Advancing Precipitation Nowcasting with Conditional Flow Matching.pdf",
+ "title": "Flowcast: Advancing Precipitation Nowcasting with Conditional Flow Matching",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "条件流匹配应用于降水预报，精度效率平衡但泛化不足",
+ "innovations": [
+  "首次将条件流匹配(CFM)应用于降水临近预报的全概率生成模型",
+  "在压缩潜在空间中实现噪声到数据的直接映射",
+  "独立条件流匹配(I-CFM)在高维数据上的稳定应用"
+ ],
+ "method_framework": "FlowCast结合VAE压缩和基于Earthformer-UNet的CFM框架，通过学习时间依赖向量场实现快速采样，仅需10步ODE求解即可生成高质量预报。",
+ "experiment_framework": "在SEVIR和ARSO两个雷达数据集上评估，与U-Net、Earthformer等确定性基线及PreDiff、CasCast等概率基线比较，使用CRPS、CSI等指标。",
+ "takeaways": [
+  "CFM在保持高精度的同时显著提高采样效率",
+  "线性ODE先验更适合时序连续的气象数据建模",
+  "潜在空间压缩可有效降低高维数据处理成本"
+ ],
+ "weaknesses": [
+  "仅限于雷达降水预报，泛化性有待验证",
+  "计算资源需求较高(4个H100训练7天)",
+  "未充分探讨模型在不同气候区域的适应性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "气象预报非可靠性主线，方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

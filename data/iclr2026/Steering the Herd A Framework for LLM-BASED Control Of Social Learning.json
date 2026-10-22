@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Steering the Herd A Framework for LLM-BASED Control Of Social Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Steering the Herd A Framework for LLM-BASED Control Of Social Learning.pdf",
+ "title": "Steering the Herd: A Framework for LLM-Based Control of Social Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "LLM中介通过信号精度控制社会学习，理论分析但实验验证不足",
+ "innovations": [
+  "提出受控序贯社会学习模型：信息中介规划者（如LLM）控制每个智能体的信息精度，同时智能体从先行者决策中观察学习",
+  "证明值函数凸性，刻画利他规划者和有偏规划者的最优策略，揭示最优策略在不同信念区间呈现不同模式（最大投入/不投入/递增递减投入）",
+  "发现有偏规划者在某些信念区间会故意混淆智能体信号；即使在信息对等、不撒谎、不筛选、完全可观测的严格透明约束下，信息中介仍可显著改变社会福利"
+ ],
+ "method_framework": "将社会学习建模为序贯决策过程：智能体按序做决策，每个智能体收到算法中介的私人信号+观察先行者决策。规划者（LLM）选择每步信号的精度水平（成本），智能体做贝叶斯更新并选择行动。动态规划求解最优策略：利他规划者最大化社会总福利，有偏规划者诱导特定行动最大化自身收益。",
+ "experiment_framework": "理论分析+LLM仿真验证：在仿真中让LLM同时扮演规划者和智能体角色。观察LLM规划者是否展现出理论预测的策略模式。对比理论预测与实际LLM行为的吻合度。",
+ "takeaways": [
+  "即使在严格透明约束（不撒谎、不筛选、信息对等）下，LLM作为信息中介仍可通过调节信号精度来操纵社会学习方向",
+  "有偏规划者的最优策略包括故意混淆信号，这意味着透明度约束本身不足以防止信息操纵",
+  "LLM规划者在仿真中展现出涌现的策略性行为，大致符合理论预测但存在偏差，反映了非贝叶斯推理的影响"
+ ],
+ "weaknesses": [
+  "理论模型假设智能体是贝叶斯理性的，实际人类用户和LLM智能体都偏离完美贝叶斯推理",
+  "仿真规模较小，大规模社交网络中LLM中介的实际影响力未验证",
+  "前9页未展示完整的LLM仿真定量对比结果，LLM策略与理论预测的偏差程度不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "社会学习理论模型与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

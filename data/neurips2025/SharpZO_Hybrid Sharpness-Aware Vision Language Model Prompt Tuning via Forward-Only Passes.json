@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/SharpZO_Hybrid Sharpness-Aware Vision Language Model Prompt Tuning via Forward-Only Passes.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/SharpZO_Hybrid Sharpness-Aware Vision Language Model Prompt Tuning via Forward-Only Passes.pdf",
+ "title": "SharpZO: Hybrid Sharpness-Aware Vision Language Model Prompt Tuning via Forward-Only Passes",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "锐度感知的两阶段ZO优化提升VL微调，但计算开销大且效率验证不足",
+ "innovations": [
+  "锐度感知CMA-ES全局探索与平滑损失景观",
+  "基于Z分数的稀疏ZO优化技术",
+  "两阶段混合优化框架"
+ ],
+ "method_framework": "SharpZO采用两阶段优化：第一阶段使用锐度感知CMA-ES进行全局探索和平滑损失景观；第二阶段采用稀疏ZO-SGD进行细粒度局部搜索，仅依赖前向传播",
+ "experiment_framework": "在CLIP模型(RN50和ViT-B/16)上评估11个下游任务，与BBT、BlackVIP、ZIP等零阶方法对比，使用准确率和时间到测试准确率指标",
+ "takeaways": [
+  "锐度感知初始化可有效降低ZO梯度估计方差",
+  "Z-pruning技术能适应高方差ZO环境",
+  "两阶段框架平衡全局探索与局部优化"
+ ],
+ "weaknesses": [
+  "第一阶段CMA-ES计算开销较大",
+  "Z-pruning需要额外梯度估计",
+  "方法在极端资源受限环境中的效率未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

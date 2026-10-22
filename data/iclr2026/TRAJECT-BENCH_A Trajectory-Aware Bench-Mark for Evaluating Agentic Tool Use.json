@@ -1,0 +1,41 @@
+{
+ "title": "TRAJECT-Bench: A Trajectory-Aware Benchmark for Evaluating Agentic Tool Use",
+ "one_line": "构建轨迹感知工具评测基准，揭示LLM工具使用短板。",
+ "innovations": [
+  "指出现有工具使用评测只看最终答案、忽视工具使用轨迹（是否选对工具、参数、顺序）",
+  "构建TRAJECT-Bench：配对高保真可执行工具与生产式API任务，合成宽度(并行调用)与深度(依赖链)各异的轨迹",
+  "除最终准确率外报告轨迹级诊断（工具选择/参数正确性、依赖与顺序满足），揭示相似工具混淆、参数盲选等失败模式"
+ ],
+ "method_framework": "用高保真可执行工具构建贴近生产API的任务，合成不同广度（并行调用）与深度（相互依赖链）的工具调用轨迹。评测不仅看最终答案，还细粒度检查工具选择是否正确、参数是否正确、调用依赖与顺序是否满足，从而定位LLM工具使用的具体短板。",
+ "experiment_framework": "在多个LLM上评测工具使用；指标含最终准确率及轨迹级诊断（工具选择/参数/顺序）；分析随工具多样性与轨迹长度的缩放行为，揭示从短到中长轨迹过渡的瓶颈。",
+ "takeaways": [
+  "工具使用能力应按轨迹过程评估，而非仅看最终答案",
+  "相似工具混淆与参数盲选是常见失败模式",
+  "从短轨迹到中长轨迹的过渡是当前LLM工具使用的主要瓶颈"
+ ],
+ "weaknesses": [
+  "核心是评测基准，未提出新的工具使用方法",
+  "轨迹多为合成，与真实生产agent的长尾工具分布仍有差距",
+  "轨迹级诊断依赖可执行API的确定性判分，对开放式/模糊工具调用覆盖有限"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/TRAJECT-BENCH_A Trajectory-Aware Bench-Mark for Evaluating Agentic Tool Use.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TRAJECT-BENCH_A Trajectory-Aware Bench-Mark for Evaluating Agentic Tool Use.pdf",
+ "scores": {
+  "novelty": 5,
+  "depth": 5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.5
+ },
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "工具使用评测基准，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

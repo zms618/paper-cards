@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Revisiting Node Affinity Prediction In Temporal Graphs.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Revisiting Node Affinity Prediction In Temporal Graphs.pdf",
+ "title": "Revisiting Node Affinity Prediction in Temporal Graphs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "证明启发式是SSM特例，提出NAVIS模型，但与主线无关且可扩展性存疑。",
+ "innovations": [
+  "从理论上证明Persistent Forecast/Moving Average等简单启发式是线性状态空间模型(SSM)的特例，据此诊断TGNN在节点亲和预测上失败的原因。",
+  "提出NAVIS：引入虚拟全局状态以捕捉被逐节点历史忽略的共享全局时序动态。",
+  "为节点亲和预测设计专用损失函数，解决NAVIS训练困难的问题，在TGB上超越包括启发式在内的SOTA。"
+ ],
+ "method_framework": "把节点亲和预测建模为SSM，在TGNN之上维护一个虚拟全局状态来恢复共享隐空间；配合为亲和预测定制的损失替代通用链路损失，使全局时序动态与逐节点演化被联合建模。",
+ "experiment_framework": "在TGB时序图基准上评测；基线含动态链路预测SOTA模型与Persistent Forecast/Moving Average等启发式；用受控合成实验验证全局状态的作用；指标为预测误差。",
+ "takeaways": [
+  "现有TGNN在节点亲和预测上不如简单启发式，根源是缺乏对共享全局时序动态的建模。",
+  "用SSM视角统一启发式与神经模型，加入虚拟全局状态+专用损失可同时超越二者。"
+ ],
+ "weaknesses": [
+  "与可靠性/医学/多模态推理主线无关，属时序图学习。",
+  "虚拟全局状态与专用损失增加了训练复杂度，可扩展性到超大规模图未充分验证。",
+  "前9页主要为诊断与动机，完整TGB对比表与超参敏感性在附录。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "时序图学习，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scaling Up, Speeding Up A Benchmark Of Speculative Decoding for Efficient LLM Test-Time Scaling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scaling Up, Speeding Up A Benchmark Of Speculative Decoding for Efficient LLM Test-Time Scaling.pdf",
+ "title": "Scaling Up, Speeding Up: A Benchmark of Speculative Decoding for Efficient LLM Test-Time Scaling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "投机解码基准测试，N-gram方法在重复推理上高效加速。",
+ "innovations": [
+  "提出首个面向LLM测试时扩展的投机解码评测基准SpecTTS-Bench，在统一实验协议下公平对比model-based、training-based、N-gram-based三类投机解码方法。",
+  "刻画了测试时扩展场景特有的turn内与turn间冗余(重复推理路径)，指出这正是投机解码(尤其检索/N-gram类)能发挥作用的独特条件。",
+  "实证发现简单N-gram方法在重复型推理上加速突出，提出将其与model/training-based方法结合，同时兼顾重复与多样推理路径。"
+ ],
+ "method_framework": "在Best-of-N采样与多轮思考两类主流测试时扩展范式上，为三类投机解码(基于模型、基于训练、基于N-gram)设计一致协议，统一度量接受率/加速比与输出质量，分析冗余结构对加速效果的影响。",
+ "experiment_framework": "在代表性推理任务与多种LLM上，对比三类投机解码方法的无损加速比与质量保持；以N-gram检索类方法与model-based方法的组合作为最终推荐方向。",
+ "takeaways": [
+  "测试时扩展产生的重复推理轨迹让N-gram投机解码能获得显著且无损的加速。",
+  "单一方法难以同时处理重复与多样推理路径，N-gram与model/training-based结合更优。"
+ ],
+ "weaknesses": [
+  "属系统/推理加速方向，与可靠性×医学影像主线关联间接，并非解决可信性或幻觉抑制。",
+  "主要结论依赖重复模式假设，在低重复、高多样性的开放生成任务上加速收益可能大幅下降。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "推理加速系统，与可靠性主线关联间接",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

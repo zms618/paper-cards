@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Reduction-based Pseudo-label Generation for Instance-dependent Partial Label Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Reduction-based Pseudo-label Generation for Instance-dependent Partial Label Learning.pdf",
+ "title": "Reduction-based Pseudo-label Generation for Instance-dependent Partial Label Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "多分支伪标签生成解决部分标签学习，计算开销大且依赖扰动定义",
+ "innovations": [
+  "引入约简伪标签概念，通过多分支辅助模型在标签子空间中生成更可靠的伪标签",
+  "定义并理论证明了扰动错误标签的概念，建立了与贝叶斯最优分类器的一致性边界",
+  "设计元学习框架动态融合各分支输出，为受干扰样本提供更准确的监督信号"
+ ],
+ "method_framework": "RPLG方法构建多分支辅助模型，每个分支在排除特定标签的子空间中训练，通过元学习器加权聚合各分支输出生成约简伪标签，与基本伪标签结合训练主预测模型。",
+ "experiment_framework": "在FMNIST、KMNIST、CIFAR等基准数据集和Lost、BirdSong等真实数据集上评估，与DIRK、SDCT等12种方法对比分类精度，并进行消融实验和敏感性分析。",
+ "takeaways": [
+  "通过在标签子空间中训练模型可有效避免错误标签干扰，提高伪标签质量",
+  "元学习框架能有效动态融合各分支信息，为不同样本选择最合适的伪标签来源"
+ ],
+ "weaknesses": [
+  "多分支模型增加了计算复杂度和训练时间",
+  "方法依赖于扰动错误标签的准确定义，在实际应用中可能难以精确确定"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

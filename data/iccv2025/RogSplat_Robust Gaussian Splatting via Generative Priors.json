@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/RogSplat_Robust Gaussian Splatting via Generative Priors.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/RogSplat_Robust Gaussian Splatting via Generative Priors.pdf",
+ "title": "RogSplat Robust Gaussian Splatting via Generative Priors",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "融合特征检测与生成修复的鲁棒高斯溅射方法",
+ "innovations": [
+  "融合DINOv2和DIFT特征检测异常区域",
+  "基于修正流的RF-Refiner自适应修复遮挡区域",
+  "相似度驱动的区域自适应去噪策略"
+ ],
+ "method_framework": "通过融合DINOv2和DIFT特征计算渲染图像与真实图像的余弦相似度图，识别遮挡区域，然后使用RF-Refiner基于相似度图自适应地修复这些区域，同时保持可见区域的完整性",
+ "experiment_framework": "在RobustNeRF和NeRF-on-the-go数据集上评估，与RobustNeRF、NeRF on-the-go、3DGS、Mip-Splatting、GS-W、WildGS和SpotLessSplats等方法比较，使用PSNR、SSIM和LPIPS指标",
+ "takeaways": [
+  "多特征融合策略能有效检测异常区域",
+  "基于修正流的生成模型可自适应修复遮挡区域而不破坏一致性"
+ ],
+ "weaknesses": [
+  "方法依赖预训练的扩散模型，计算开销较大",
+  "在极端遮挡场景下仍有改进空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "鲁棒性方法但未触及医学影像或多模态大模型落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

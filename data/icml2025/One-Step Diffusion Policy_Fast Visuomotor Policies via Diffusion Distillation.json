@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/One-Step Diffusion Policy_Fast Visuomotor Policies via Diffusion Distillation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/One-Step Diffusion Policy_Fast Visuomotor Policies via Diffusion Distillation.pdf",
+ "title": "One-Step Diffusion Policy: Fast Visuomotor Policies via Diffusion Distillation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.8
+ },
+ "one_line": "蒸馏扩散策略为单步生成器提速，但泛化性与主线相关性有限",
+ "innovations": [
+  "将多步扩散策略蒸馏为单步动作生成器，大幅加速机器人控制推理",
+  "沿整条扩散链最小化 KL 散度，使单步生成器对齐原策略分布",
+  "仅需 2%-10% 额外预训练成本即收敛，在保持 SOTA 成功率的同时提速一个数量级"
+ ],
+ "method_framework": "扩散策略沿反向去噪链多步采样，推理慢。OneDP 训练一个单步动作生成器，约束其输出分布与原多步扩散策略沿扩散链各时刻的分布对齐(沿链 KL 最小化)，从而单步采样即逼近原策略；配合极少量额外预训练即可收敛。",
+ "experiment_framework": "在 6 个仿真任务与 4 个自研 Franka 真机任务上评测，对比成功率与推理频率：OneDP 在保持/达到 SOTA 成功率的同时将动作预测频率从 1.5Hz 提升到 62Hz。",
+ "takeaways": [
+  "扩散策略可蒸馏为单步生成器而不显著损失成功率，提速一个数量级",
+  "沿扩散链 KL 对齐是单步蒸馏保持分布的关键，且额外成本低"
+ ],
+ "weaknesses": [
+  "与可靠性/医学影像/多模态推理主线无关，属机器人模仿学习加速",
+  "蒸馏依赖预训练扩散策略，端到端从零训练不适用",
+  "真机任务为自研 4 个，泛化到更广泛动态场景的证据有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

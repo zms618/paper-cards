@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/15 Roll the dice & look before you leap Going beyond the creative limits of next-token prediction.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/15 Roll the dice & look before you leap Going beyond the creative limits of next-token prediction.pdf",
+ "title": "Roll the dice & look before you leap: Going beyond the creative limits of next-token prediction",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "小模型实验证明多token方法比next-token预测更具创造性，但外部效度不足。",
+ "innovations": [
+  "构建一组最小可控算法任务（如权重内知识图的sibling discovery），干净地量化当今语言模型的创造性极限。",
+  "从经验与概念上论证next-token学习是短视的：要求隐含开放式随机规划的创造任务上，多token方法（teacherless训练、扩散模型）更擅长多样性与原创性。",
+  "提出在不损害连贯性的前提下激发随机性的方式（seed-conditioning/结构化注入），而非单纯温度采样。"
+ ],
+ "method_framework": "把需要创造性跳跃的真实任务抽象为两类：(a)在抽象知识图中发现新连接（类比/文字游戏），(b)构造新模式（出数学题/设计蛋白）；在这些任务上对比NTP、teacherless微调、扩散模型(SEDD)以及不同解码（温度/seed-conditioning）对多样性、原创性与正确性的影响。",
+ "experiment_framework": "以GPT-2(86M)、同规模扩散模型SEDD(90M)及Gemma v1(2B)为模型；在自建权重内图发现任务与XSUM摘要上评测；指标涵盖输出多样性、原创性与正确性，温度扫描{0,0.5,1,2}。",
+ "takeaways": [
+  "在需要开放式规划的创造任务上，teacherless训练与扩散模型显著优于next-token模型的多样性/原创性。",
+  "仅靠温度采样难以在激发随机性的同时保持连贯；seed-conditioning等结构化注入能兼顾二者。",
+  "NTP的短视是其创造极限的根因，多token目标更适合开放式科学发现式生成。"
+ ],
+ "weaknesses": [
+  "所用模型规模小（GPT-2 86M/SEDD 90M，Gemma 2B），结论在前沿大模型上是否成立未充分验证。",
+  "依赖高度抽象的合成算法任务，与真实开放式创造（科研、蛋白设计）之间仍有差距，外部效度受限。",
+  "正文前9页内任务定义与指标细节多在附录，核心定量结果表的完整消融在正文中较难追溯。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "创意生成与可靠性主线无直接交点，但方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

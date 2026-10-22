@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/A More Word-like Tokenization for MLLMs.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A More Word-like Tokenization for MLLMs.pdf",
+ "title": "A More Word-like Image Tokenization for MLLMs",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 6.0,
+  "overall": 5.6
+ },
+ "one_line": "动态聚类 patch 生成可调粒度 token，但实验设计有缺陷且证据不足",
+ "innovations": [
+  "先用相似度阈值 θ 把 patch 建成邻域图，再按「选度最大的节点、移除其邻居后重复」的贪心（Algorithm 1）自适应定簇数：简单图簇少、复杂图簇多，且孤立 patch 自成簇不丢细节，token 预算随语义复杂度走",
+  "贪心后加 cluster refinement：每个 patch 重分配给余弦相似度最高的质心（式1），把「邻居多者优先」改成「最近质心优先」，修正贪心错配以实现 token 间解耦",
+  "以质心为 Q、簇内 patch 为 K/V 加 cluster-restricted mask（式3）把聚合锁在簇内，位置嵌入 P_i 只注入 V 分支（式4）保空间线索又不扰动 attention 分数；θ 可推理时无训练调节，直接换精度-成本折中"
+ ],
+ "method_framework": "冻结视觉编码器取 patch 特征 → 按余弦相似度阈值 θ 建邻域图贪心选质心以定动态簇数 → 每 patch 重分配给最近质心做精炼 → 以质心为 query 在簇内做受限交叉注意力（位置嵌只加 V）聚成一个 token → 按空间坐标重排送 LLM。",
+ "experiment_framework": "LLaVA-1.5 7B/13B 替换投影器；8 基准 MMBench/VQAv2/GQA/MME/MM-Vet/TextVQA/SQA-IMG/POPE；基线含 ToME/FastV/PruMerge/VisionZip/VisPruner/ATP-LLaVA/TokenPacker 与 Resampler/C-Abstractor/Pixel-Shuffle；θ∈{0.3,0.4,0.5,0.62,0.65,0.75} 对应 13.5–136.5 token。",
+ "takeaways": [
+  "表1 最有价值的是收益随预算收紧而放大：θ=0.5（35.7 token）MMB 65.0 明显压过同预算 TokenPacker 的 62.8，θ=0.3（13.5 token）仍 64.2，说明「控制语义粒度」比「空间压缩」更抗预算挤压",
+  "训练-free 的 token 削减法在 32 档集体崩盘（ToME MMB 31.6、FastV 37.8、VQAv2 掉到 43.4–46.8），而 DiVT 与 TokenPacker 仍在 60+，这条断层可作为硬选型依据",
+  "表2 的投影器谱系对比很干净：从 MLP/平均池化/Resampler/C-Abstractor/Pixel-Shuffle 到 TokenPacker，DiVT 在 VQAv2 77.7、GQA 61.6 最高，但 MM-Vet 30.6 反而输 TokenPacker 31.7——换投影器并非处处赢"
+ ],
+ "weaknesses": [
+  "表1/表2 全是点估计、无种子方差；且 θ 是在 {0.5,0.65,0.75} 上 cross-validated 后才固定成报告档位，等于在同批评测集上做过超参选择，而基线用固定 64/128/32 token 预算、从未经选择，两者对比并不对称",
+  "DiVT 的 token 数是测试集上平均出来的（表1 脚注 †），样本间 token 数不同意味着与固定预算方法的 prefill/KV cache 成本不完全可比；文中强调 θ 推理时可调，却未给真实延迟与显存实测，成本主张只有 token 数没有 wall-clock",
+  "「每个 token 对应一个语义概念」这一核心 claim 只有图5 的注意力热图定性支撑，没有 token 与分割 mask/物体框的量化对齐指标；Algorithm 1 的贪心在相似度图上只是近似，同一语义被拆成多簇的情形正文无分析也没有对应错误案例统计",
+  "表2 里 DiVT 在 MM-Vet 30.6、POPE 86.2 都略低于 TokenPacker 的 31.7/86.3，作者用「remain competitive」带过；全文主表只覆盖 5 个基准，OCR 细粒度（TextVQA）与定位类评测只在设置里点名、报告不全"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "多模态大模型token优化，与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

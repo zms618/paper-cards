@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Retrieval-of-Thought.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Retrieval-of-Thought.pdf",
+ "title": "Retrieval-of-Thought: Efficient Reasoning via Reusing Thoughts",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "检索复用历史推理节点提效，但未解决可靠性问题",
+ "innovations": [
+  "把历史推理步骤组织为带顺序边与语义边的thought graph，支持快速检索与灵活重组。",
+  "推理时检索query相关节点并用reward-guided traversal组装出问题专属模板引导生成，减少重复探索。",
+  "以很小的prompt增长换取大幅效率提升：输出token最多-40%、推理延迟-82%、成本-59%且精度不降。"
+ ],
+ "method_framework": "离线把已完成推理轨迹切分为可组合thought节点，建顺序/语义两类边；在线对新问题检索相关节点，按奖励分数在图上遍历拼出一个动态推理模板作为提示，引导模型少走重复探索路径。",
+ "experiment_framework": "在AIME、AMC等数学推理基准、多模型上评测；对比CoT与若干检索基线；同时测精度、输出token数、延迟与显存开销。",
+ "takeaways": [
+  "大推理模型的长推理轨迹存在大量可复用模式，检索复用thought能在不掉精度下显著降本提速。",
+  "动态模板组装（而非固定few-shot）比静态检索基线更能适配新问题。"
+ ],
+ "weaknesses": [
+  "收益主要在推理效率，未涉及幻觉抑制或可靠性提升；复用错误thought可能被放大。",
+  "依赖高质量历史推理库，冷启动与跨领域迁移时thought图覆盖不足的问题未充分讨论。",
+  "前9页给出AIME/AMC结果，更宽推理任务（代码/科学）与thought图规模扩展性的消融在后续页。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "效率提升但未解决可靠性问题，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

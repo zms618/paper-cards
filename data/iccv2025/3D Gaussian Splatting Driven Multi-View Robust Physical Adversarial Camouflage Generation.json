@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/3D Gaussian Splatting Driven Multi-View Robust Physical Adversarial Camouflage Generation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/3D Gaussian Splatting Driven Multi-View Robust Physical Adversarial Camouflage Generation.pdf",
+ "title": "3D Gaussian Splatting Driven Multi-View Robust Physical Adversarial Camouflage Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "3DGS可微渲染生成跨视角物理对抗伪装，但创新有限且实验不充分",
+ "innovations": [
+  "把 3DGS 当可微渲染器做物理攻击：少图即可重建目标与背景，只优化球谐系数 ⟨k⟩ 不动几何，迭代完把优化后的 Gaussians 转成可贴的 camouflage mesh，绕开先前方法须预先拿到 mesh 与 CARLA 虚拟环境",
+  "针对两类视角不一致分别下药：复用 SuGaR 正则把 Gaussians 吸附到物体表面并压低不透明度以消除 mutual-occlusion；攻击迭代只取球谐零阶项 ⟨k⟩0，避免高阶 SH 让同一高斯不同部位颜色迥异、视角一变就 self-occlusion",
+  "min-max 优化：每个视角先用 I-FGSM 在背景加点级噪声 σ（‖σ‖∞≤ε，能正确检出即早停）最大化检测损失，再优化伪装最小化损失（Eq.9）；并设逐视角迭代上限跳过易攻击视角，避免过拟合到单一视角"
+ ],
+ "method_framework": "3DGS 少图重建 → 多视角（距离/俯仰/方位）渲染 + SAM 抠目标 mask 合成待检图 → 只优化零阶球谐 ⟨k⟩0 对抗 Faster R-CNN 检测损失 → EoT 变换 + NPS 可打印性 + K-means 主色正则 + L2 约束防偏；min-max 先扰背景再优伪装",
+ "experiment_framework": "CARLA 数字域（2 天气×4 距离×5 俯仰×360°环绕=1440 图）与实机域（GOLF Sportsvan 1:1 + 1:24 车模无人机拍摄）；白箱攻 Faster R-CNN 后迁移评估 YOLO-v5/Mask R-CNN/D-DETR；指标 AP@0.5（正文截断于 5.2）",
+ "takeaways": [
+  "把视角不一致的两个具体成因分开处理（互相遮挡→表面正则，自遮挡→只用零阶球谐），比笼统做数据增广更对症，可迁移到任何多视角渲染的对抗生成",
+  "min-max 里「先让背景最难被攻击、再优化目标」的对抗设定本质是特征筛选步骤（滤掉只依赖特定背景的伪特征），思路可用于其它鲁棒性训练"
+ ],
+ "weaknesses": [
+  "Table 3 消融自相矛盾：只加 Cons 的组合平均 AP 27.32 明显差于基线 71.86 一栏对应的量级，而加 Min-Max 后反而升到 30.50（AP 越低表示攻击越成功），min-max 组合（22.87）又比仅 Cons 更弱，作者未解释这个反向结果",
+  "数字域实验全在 CARLA 仿真背景 + 1:1 实车贴纸上完成，物理域仅定性；19 个 setting 全是单次数值，无方差、无多种子，跨距离/天气的结论缺乏显著性支撑",
+  "核心技巧（SuGaR 正则、EoT、NPS、K-means 主色约束、零阶球谐）几乎都是各物理攻击与 3D 重建论文的既有组件拼装，真正新的只有「用 3DGS 替 NeRF 渲染」与背景 min-max，攻击目标函数本身没有新形式"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "物理对抗伪装与可靠性主线无实质交点，仅多视角处理有可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

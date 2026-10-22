@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Poison as Cure Visual Noise for Mitigating Object Hallucinations in LVMs.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Poison as Cure Visual Noise for Mitigating Object Hallucinations in LVMs.pdf",
+ "title": "Poison as Cure: Visual Noise for Mitigating Object Hallucinations in LVMs",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "对抗性噪声注入减轻LVM物体幻觉，但依赖CLIP且领域验证不足",
+ "innovations": [
+  "将对抗性扰动重新定义为'治愈'而非'毒药'，用于减轻LVMs中的物体幻觉",
+  "提出零梯度优化方法生成有益的视觉噪声",
+  "设计三种对抗策略：对齐响应与视觉内容、引入不确定性、最小化表示相似性"
+ ],
+ "method_framework": "VAP通过优化三个对抗性策略生成视觉噪声：1)对齐有提示和无提示下的响应以保持图像一致性语义；2)通过失真输入引入不确定性以暴露幻觉偏差；3)最小化原始和失真视图之间的表示相似性以抑制参数先验。",
+ "experiment_framework": "在8个SOTA LVMs上评估，使用POPE(文本轴)、BEAF(视觉/文本轴)和CHAIR(开放生成)三个基准测试，测量准确率、F1分数和幻觉指标。",
+ "takeaways": [
+  "数据中心方法(视觉扰动)可有效解决模型中心方法(微调/解码策略)的局限性",
+  "对抗性优化可用于生成有益的视觉噪声，而非仅用于攻击模型"
+ ],
+ "weaknesses": [
+  "方法依赖于CLIP文本编码器作为代理模型，可能限制其在某些场景的适用性",
+  "仅展示了在MS-COCO数据集上的结果，缺乏在其他领域(如医学影像)的验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

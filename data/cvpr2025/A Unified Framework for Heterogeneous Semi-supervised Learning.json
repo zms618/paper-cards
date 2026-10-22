@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/A Unified Framework for Heterogeneous Semi-supervised Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Unified Framework for Heterogeneous Semi-supervised Learning.pdf",
+ "title": "A Unified Framework for Heterogeneous Semi-supervised Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "组合式方法解决异质半监督，超参无分析，消融结果缺失",
+ "innovations": [
+  "把 C 类标签空间扩展为 2C：拼接 concat(y_l, 0_C)，让“域 + 类别”的联合判别由一个分类器隐式完成，免去独立域分类器并天然处理 p_L(y)≠p_U(y)、p_L(x|y)≠p_U(x|y)",
+  "WMA 伪标签 ŷ^t=βŷ^{t-1}+(1-β)h(f(x_u)) 配合置信阈值 ε 的指示函数筛选，抑制跨域强 domain gap 下的伪标签振荡",
+  "跨域原型对比对齐 L_pa：以类内均值特征为原型，对 (p_k, p_{C+k}) 做双向 InfoNCE，温度 τ 下拉近对应语义类、推远非对应类；再用渐进 mixup λ~ψ(t)·Beta(α,α), ψ(t)=0.5+t/2T 逐步把插值重心从标注域移向未标注域"
+ ],
+ "method_framework": "先在标注域预训练 C 类模型产出初始伪标签并初始化 2C 分类器；再联合优化 L_cl（标注集 CE）、L_pl（WMA 伪标签 CE）、L_pa（跨域原型对比）、L_Mixup（跨域插值样本 MSE）。",
+ "experiment_framework": "Office-31/Office-Home/VisDA/ISIC-2019；ResNet-50/101；对比 Supervised、FlexMatch/FixMatch/SimMatch、CDAN+Sup/MCC+Sup、BiAdapt；3 次运行均值±标准差。",
+ "takeaways": [
+  "“把域身份编码进扩展标签空间”是一个极简且可迁移的技巧，可替代显式域判别器",
+  "跨域评测协议（未标注域与标注域同时进测试集）比传统 UDA 更贴近医学多中心场景；ISIC 的 BCN/HAM 双中心正是天然异质源"
+ ],
+ "weaknesses": [
+  "方法由移动平均伪标签、原型对比、mixup 三个既有模块组合而成，问题设定新但机制贡献偏组合式",
+  "关键超参（λ_pl=1, λ_pa=1e-2, β=0.8, τ=0.5, ε=0.5）全部直接给定，无敏感性分析或原理推导",
+  "正文 9 页截断，组件消融表与 VisDA/ISIC 的分数据集结果不可见，无法判断三个组件各自的边际贡献",
+  "UDA 基线需作者自行加装监督分类器和域分类器才能比较，公平性依赖于该改造的实现质量"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "异质半监督方法扎实但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

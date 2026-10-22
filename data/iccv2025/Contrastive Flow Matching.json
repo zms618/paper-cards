@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Contrastive Flow Matching.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Contrastive Flow Matching.pdf",
+ "title": "Contrastive Flow Matching",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "对比流匹配添加正则化项增强条件生成类区分性，但参数敏感且与CFG冲突。",
+ "innovations": [
+  "引入对比目标函数增强条件流匹配的类区分性",
+  "无需额外计算开销即可实现分类器自由引导的效果",
+  "与REPA等现有方法兼容，进一步提升生成性能"
+ ],
+ "method_framework": "在标准流匹配目标函数基础上添加对比正则化项，鼓励不同条件样本的流向量相互分离，防止多条件坍缩到单一平均轨迹。",
+ "experiment_framework": "ImageNet-1k(256×256/512×512)和CC3M数据集，SiT和MMDiT架构，FID、IS、sFID、精度和召回率指标。",
+ "takeaways": [
+  "对比流匹配可显著提升生成质量，FID降低最高达8.9点",
+  "方法与REPA等现有技术兼容，可进一步提升性能",
+  "训练速度提升最高9倍，采样步数减少5倍"
+ ],
+ "weaknesses": [
+  "对比参数ρ的选择对性能影响较大，需要仔细调优",
+  "与CFG结合时可能存在信号冲突，需要特殊处理"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.375,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "条件生成方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

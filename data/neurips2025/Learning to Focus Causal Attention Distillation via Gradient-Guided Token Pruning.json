@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Learning to Focus Causal Attention Distillation via Gradient-Guided Token Pruning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Learning to Focus Causal Attention Distillation via Gradient-Guided Token Pruning.pdf",
+ "title": "Learning to Focus: Causal Attention Distillation via Gradient-Guided Token Pruning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "梯度引导令牌剪枝提升LLM推理可靠性，但依赖教师模型且计算开销大",
+ "innovations": [
+  "基于梯度比较的混淆令牌检测方法",
+  "因果注意蒸馏框架",
+  "指令和响应级别的双阶段剪枝策略"
+ ],
+ "method_framework": "LeaF框架采用两阶段方法：首先通过教师-学生梯度比较识别混淆令牌，然后通过混合蒸馏损失（标准蒸馏+反事实蒸馏）对学生模型进行训练，使其关注真正关键的信息。",
+ "experiment_framework": "在数学推理(GSM8K/MATH-500/OlympiadBench)、代码生成(HumanEval+/LeetCode/LivecodeBench)和多跳问答(HotpotQA/2WikiMultiHopQA/Musique)任务上评估，使用LLaMA和Qwen模型作为基线。",
+ "takeaways": [
+  "梯度比较方法能有效识别混淆令牌",
+  "响应级别剪枝比仅指令级别剪枝效果更好",
+  "因果框架解释了LLM中的虚假相关性问题"
+ ],
+ "weaknesses": [
+  "方法依赖于强大的教师模型",
+  "阈值选择对性能有显著影响",
+  "计算开销较大需要额外训练"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

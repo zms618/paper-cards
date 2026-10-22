@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/A Unified Theoretical Analysis of Private and Robust Offline Alignment from RLHF to DPO.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/A Unified Theoretical Analysis of Private and Robust Offline Alignment from RLHF to DPO.pdf",
+ "title": "A Unified Theoretical Analysis of Private and Robust Offline Alignment: from RLHF to DPO",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 8.0,
+  "overall": 6.7
+ },
+ "one_line": "理论分析RLHF与DPO在隐私+鲁棒性下的性能，但实验验证不足。",
+ "innovations": [
+  "提出统一分析框架，通过将离线对齐问题归约为逻辑回归参数估计，同时覆盖RLHF和DPO两种范式",
+  "证明LDP-then-Corruption（LTC）比Corruption-then-LDP（CTL）更难，揭示隐私与鲁棒性交互顺序的关键影响",
+  "将DPO在标签损坏下的收敛率从O(1/n^{1/4})改进到O(1/√n)，达到无噪声标准率"
+ ],
+ "method_framework": "基于Bradley-Terry偏好模型，在线性奖励假设下将RLHF和DPO的离线对齐问题归约为逻辑回归参数估计。考虑三种隐私-损坏交互场景：CTL（先损坏后隐私）、LTC（先隐私后损坏）、CLC（隐私损坏交替）。利用鲁棒逻辑回归和本地差分隐私（LDP）的已有结果推导次优性界。",
+ "experiment_framework": "纯理论分析为主，线性模型假设。附录中提到在GPT2-large上验证了LTC vs CTL的分离结论。正文前9页无完整实验表格。",
+ "takeaways": [
+  "隐私保护和标签损坏的交互顺序对离线对齐性能有显著影响：先隐私后损坏（LTC）比先损坏后隐私（CTL）更难",
+  "在鲁棒DPO下可以达到O(1/√n)的收敛率，与无噪声标准率匹配，优于此前的O(1/n^{1/4})结果",
+  "RLHF和DPO在隐私-鲁棒性场景下的理论行为可以通过统一的逻辑回归归约来分析"
+ ],
+ "weaknesses": [
+  "所有理论结果基于线性奖励假设，对深度神经网络奖励模型的适用性未知",
+  "正文前9页无完整实验验证，仅在附录GPT2-large上做了定性验证",
+  "LDP的隐私预算参数ε对收敛率的具体依赖形式讨论不够直观"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "隐私鲁棒性主线与离线对齐方法交点，理论框架有防守力",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

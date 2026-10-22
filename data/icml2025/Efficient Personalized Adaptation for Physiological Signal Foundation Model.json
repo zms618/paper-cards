@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Efficient Personalized Adaptation for Physiological Signal Foundation Model.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficient Personalized Adaptation for Physiological Signal Foundation Model.pdf",
+ "title": "Efficient Personalized Adaptation for Physiological Signal Foundation Model",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "用DiT生成LoRA权重实现生理信号模型个性化，但跨任务泛化与隐私保护有限。",
+ "innovations": [
+  "把'权重生成'(weight generation)首次用于生理信号基础模型个性化：DiT以shapelet为条件直接生成LoRA权重∆W=BA，落地时免训练，保护患者隐私(GDPR)。",
+  "shapelet条件桥接时间序列与模型权重：因生理信号无CLIP式text-time对齐，用OSD离线shapelet发现的判别子序列作为DiT条件，比整段序列/文本prompt更省且更准。",
+  "anchored classifier loss(Lac)：用simplex ETF原型锚定类中心，针对医疗数据类不平衡/长度异质性去偏，配合CE损失(受Neural Collapse启发)提升小类(如N1睡眠期)F1。"
+ ],
+ "method_framework": "三阶段：(1)数据准备——公开生理信号按子任务微调UTTSD的GPT2-6层TSFM(LoRA rank=4)，存{(∆Wk, tk)}映射；损失L=Lce+Lac(Lac把类原型拉向ETF、类间最大化角)。(2)生成器训练——DiT(GPT2-12层)把∆W flatten按层切块(576/token)，以任务shapelet为条件c，标准扩散前向加噪、反向预测去噪权重，目标min||∆Wk-Gφ(S(tk),∆W_k_noised)||²。(3)本地推理——医院用本地数据OSD提shapelet→DiT生成∆W'→与冻结W0合并W0+∆W'即个性化模型。",
+ "experiment_framework": "4任务：Sleep-EDF睡眠分期(5类)/DREAMER情绪(valence/arousal/dominance)/MIT-BIH心律失常/FoG冻结步态；基线通用时序(Informer/FEDformer/TimesNet/PatchTST等)+TSFM(OneFitsAll/Time-LLM/MOMENT)+各任务专用(SleepFM/SleepDG/DeepArr/OMHGL等)；指标Acc/MF1/κ/F1/AUC；消融Lac/shapelet/LoRA生成/rank/训练样本数/条件类型/显存时间。",
+ "takeaways": [
+  "睡眠分期Acc 86.39%(超MOMENT 81.90/SleepFM 81.65)，N1难点类F1 66.71(超次优61.24)；FoG检测89.94%(超DeepArr 86.55)；心律失常89.94%。",
+  "本地个性化仅DiT推理占3GB显存、免微调(对比本地训练TSFM的87.15%需训练成本)；服务端DiT训练约20GB。",
+  "消融：去Lac降2-5%、去生成LoRA降2-4%、rank=4最优(r=8/16无增益)；shapelet条件优于整段序列/文本prompt。"
+ ],
+ "weaknesses": [
+  "心律失常任务Acc 81.32%反而低于DeepArr 86.55/MOMENT 83.25——并非所有任务都最优；'免训练'仅指本地，服务端仍需收集大量公开子任务并训DiT。",
+  "shapelet为OSD离线提取，多通道异质信号下shapelet代表性有限；生成LoRA的泛化依赖公开子任务覆盖未见任务，跨院分布漂移未验证。",
+  "落地域为医疗生理信号(EEG/ECG)而非医学影像，隐私保护为工程便利而非形式化DP；与可靠性主线(鲁棒/泛化/不确定性/幻觉抑制)仅在'医疗+隐私可信'层面相关，故relevance给6.5。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

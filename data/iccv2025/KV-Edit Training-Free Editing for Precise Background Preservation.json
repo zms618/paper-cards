@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/KV-Edit Training-Free Editing for Precise Background Preservation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/KV-Edit Training-Free Editing for Precise Background Preservation.pdf",
+ "title": "KV-Edit Training-Free Editing for Precise Background Preservation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "利用DiTs KV缓存实现背景保留的无训练图像编辑方法",
+ "innovations": [
+  "利用DiTs的KV缓存机制实现背景token保留",
+  "注意力解耦技术分离前景和背景处理",
+  "无反转方法优化内存复杂度至O(1)"
+ ],
+ "method_framework": "通过mask分离前景和背景，反转过程中缓存背景KV值，生成过程中仅处理前景并拼接缓存背景KV，确保背景一致性。",
+ "experiment_framework": "在PIE-Bench数据集上评估，对比6种基线方法，使用HPS、PSNR、CLIP等7项指标评估图像质量、背景保持和文本对齐。",
+ "takeaways": [
+  "KV缓存机制可有效解决图像编辑中的背景一致性问题",
+  "注意力解耦为前景生成提供更精确控制"
+ ],
+ "weaknesses": [
+  "内存消耗大，需存储所有时间步的KV值",
+  "大mask情况下可能导致生成内容不连续"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "图像编辑技术，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Safe Continuous-Time Multi-Agent Reinforcement Learning via Epigraph Form.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Safe Continuous-Time Multi-Agent Reinforcement Learning via Epigraph Form.pdf",
+ "title": "Safe Continuous-Time Multi-Agent Reinforcement Learning via Epigraph Form",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "用epigraph重构和PINN解决连续时间多智能体安全约束RL问题",
+ "innovations": [
+  "提出连续时间约束MDP（CT-CMDP）形式化，弥补现有CT-MARL难以处理碰撞等安全约束的空白",
+  "用epigraph重构将含不连续安全约束的问题转化为便于求解的连续时间形式",
+  "提出基于物理信息神经网络（PINN）的actor-critic方法，实现连续时间下稳定高效优化"
+ ],
+ "method_framework": "将离散MDP通过epigraph-based重构转化为CT-CMDP，规避安全约束引入的不连续使HJB学习困难的问题；再用基于PINN的actor-critic在连续时间下求解，获得更平滑的值函数近似与更稳定训练。",
+ "experiment_framework": "在连续时间安全多粒子环境（MPE）与安全多智能体MuJoCo基准上评测，对比安全MARL基线，指标为值函数平滑度、训练稳定性与最终回报。",
+ "takeaways": [
+  "epigraph重构可有效处理连续时间下含不连续安全约束的MARL问题",
+  "PINN-based actor-critic带来更平滑的值近似与更稳定的训练",
+  "在连续时间安全多智能体基准上优于安全MARL基线"
+ ],
+ "weaknesses": [
+  "仅在MPE与MuJoCo仿真基准验证，未涉及真实物理系统",
+  "PINN训练的计算开销与扩展性（大规模/高维智能体）未充分评估",
+  "与主线（LLM可靠性/医学影像/多模态推理）无直接关联，落地域为仿真控制"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "连续时间安全约束RL方法扎实，但未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

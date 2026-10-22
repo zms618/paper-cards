@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Token-Based Audio Inpainting via Discrete Diffusion.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Token-Based Audio Inpainting via Discrete Diffusion.pdf",
+ "title": "Token-Based Audio Inpainting via Discrete Diffusion",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 5.0
+ },
+ "one_line": "离散扩散应用于音频token修复，长间隙效果提升但领域局限明显",
+ "innovations": [
+  "首次将离散扩散模型应用于token化音乐表示进行音频inpainting，解决连续扩散在长间隙下性能下降的问题",
+  "提出基于导数的正则化损失，强制时间动态平滑性",
+  "提出基于跨度的吸收转移机制，在扩散过程中提供结构化噪声破坏"
+ ],
+ "method_framework": "使用预训练音频tokenizer将音乐信号编码为离散token序列，然后在离散token空间上运行离散扩散模型进行inpainting。训练时加入两种技术：(1)导数正则化损失确保时间平滑性；(2)跨度吸收转移作为结构化破坏过程。推理时从缺失区域的token开始迭代去噪，恢复完整token序列后解码回音频。",
+ "experiment_framework": "在MusicNet和MAESTRO两个音乐数据集上评估，测试不同间隙长度（最大750ms）。基线包括波形级扩散（DiffWave）、谱图扩散（MAID, CQT-Diff+）和VAE方法。指标包括音频质量客观指标和长间隙恢复能力评估。",
+ "takeaways": [
+  "离散扩散在token化音乐表示上能实现比连续扩散更好的长间隙音频修复效果",
+  "导数正则化损失和跨度吸收转移两种训练策略有效提升了恢复的语义连贯性",
+  "在150ms以上的间隙上 consistently 优于强基线"
+ ],
+ "weaknesses": [
+  "与主线（医学影像/多模态大模型推理可靠性）完全无关，属于音频处理领域",
+  "仅在音乐音频上验证，语音等其他音频类型的适用性未验证",
+  "间隙最大仅750ms，更长间隙的效果未测试"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯音频处理，与可靠性主线和落地域无交集",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

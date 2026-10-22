@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/When A Robot IS more Capable than A Human Learning from Constrained Demonstrators.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/When A Robot IS more Capable than A Human Learning from Constrained Demonstrators.pdf",
+ "title": "When a Robot is More Capable than a Human: Learning from Constrained Demonstrators",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "受限演示学习让机器人超越人类操作员界面限制，但应用场景有限。",
+ "innovations": [
+  "提出受限演示学习（LfCD）问题：专家因控制界面限制只能展示低效但目标正确的轨迹，区别于传统的次优演示学习",
+  "提出LfCD-GRIP方法：仅从状态推断目标接近度奖励，结合置信度估计和时间插值将奖励传播到演示未覆盖的新状态",
+  "实现真实机械臂任务完成时间比行为克隆快10倍（12秒 vs 100秒）"
+ ],
+ "method_framework": "三步框架：(1)从专家演示轨迹沿时间反向衰减训练目标接近度奖励，解耦奖励与专家受限动作；(2)训练置信度估计器识别专家分布内的可靠奖励；(3)在agent自身探索轨迹上，以专家状态为锚点进行时间插值，将任务进度奖励推广到新状态，进而用RL优化策略。",
+ "experiment_framework": "在离散/连续控制任务（导航和操作域）以及真实WidowX机械臂pick-and-place任务上评估。基线包括行为克隆、GAIL、以及次优演示学习方法。指标为任务完成时间和样本效率。",
+ "takeaways": [
+  "当专家受界面限制只能展示分段低效轨迹时，传统模仿学习会继承这种低效，而LfCD-GRIP可发现更优策略",
+  "仅用状态信息推断目标接近度奖励，再通过插值推广，足以让agent超越演示约束",
+  "真实机器人验证：10倍于行为克隆的效率提升证明了方法的实用价值"
+ ],
+ "weaknesses": [
+  "方法依赖目标状态的明确定义和可检测性，对于无明显目标状态的复杂任务难以直接应用",
+  "仅在简单pick-and-place和导航任务上验证，复杂接触丰富操作中奖励插值是否仍有效未知",
+  "置信度估计器的训练依赖专家演示分布，演示覆盖极少状态时插值可靠性下降"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "机器人操作与可靠性主线无实质交点，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

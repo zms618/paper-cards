@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Position All Current Generative Fidelity and Diversity Metrics are Flawed.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Position All Current Generative Fidelity and Diversity Metrics are Flawed.pdf",
+ "title": "Position: All Current Generative Fidelity and Diversity Metrics are Flawed",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "批判现有合成数据指标缺陷，但未提出替代方案",
+ "innovations": [
+  "提出合成数据指标应满足的六条desiderata(理想性质清单)作为评判基准",
+  "设计一套sanity check——精心构造的简单实验，用于检测特定且已知的生成模型失效模式",
+  "用统一框架系统评测主流fidelity/diversity指标，证明此前各'修复型'指标仍落入他人报告的失效或引入新问题，得出'当前指标全部有缺陷'的结论并给出使用指南"
+ ],
+ "method_framework": "本文以'指标可靠性'为研究对象而非生成模型本身。方法是：先确立六条desiderata→把文献中报告过的每类失效模式蒸馏成可复现的sanity check→在这些受控简单实验上跑各指标(FID、density/coverage、α-precision/β-recall、TV/KL等)→观察其是否误判，据此归纳指标缺陷并给出实用使用建议。",
+ "experiment_framework": "无真实生成模型大benchmark；实验对象是指标本身：用精心设计的受控(sanity)实验去探针各指标对已知失效模式的反应，对照desiderata判定通过/失败；覆盖fidelity与diversity两大指标族。",
+ "takeaways": [
+  "现有指标只能区分好坏生成器，无法诊断'为何差/如何改进'，且对异常值不鲁棒、上下界含义不清",
+  "此前针对单一问题提出的'修复'指标并未消除其他失效模式，甚至引入新缺陷",
+  "合成数据的实际应用被指标不可靠严重掣肘，社区应优先投入指标研发而非更多模型"
+ ],
+ "weaknesses": [
+  "sanity check虽受控清晰，但与真实高维数据上的指标行为之间仍有落差，'全部有缺陷'的强结论依赖人工构造实验的代表性",
+  "批判彻底却未提出一个满足全部desiderata的新指标作为正面替代，建设性偏弱",
+  "六条desiderata之间可能存在内在冲突，文章未讨论如何在不可兼得时取舍"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

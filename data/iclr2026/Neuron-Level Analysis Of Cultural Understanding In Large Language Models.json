@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Neuron-Level Analysis Of Cultural Understanding In Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Neuron-Level Analysis Of Cultural Understanding In Large Language Models.pdf",
+ "title": "Neuron-Level Analysis of Cultural Understanding in Large Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "梯度识别文化神经元，抑制实验验证其局部化作用，但方法迁移性有限。",
+ "innovations": [
+  "提出基于梯度打分加额外过滤的方法，精确识别驱动LLM文化理解的神经元。",
+  "区分文化通用神经元（跨文化均贡献）与文化特定神经元（绑定单一文化），发现二者合计不足1%且集中在浅中层MLP。",
+  "发现文化特定神经元不仅支持目标文化知识、也支持相关文化；并揭示在含大量文化通用神经元的模块上做NLU训练会削弱文化理解。"
+ ],
+ "method_framework": "在多个文化基准上用梯度归因打分神经元，经过滤精炼得到文化相关神经元集合；区分通用/特定；通过抑制这些神经元观察文化基准与通用NLU基准的性能变化来验证其因果作用；分析文化特定神经元对相关文化的迁移与训练对其的影响。",
+ "experiment_framework": "在多个文化基准（BLEnD、CulturalBench、NormAd等）与通用NLU基准上评测；抑制文化相关神经元使文化基准性能下降最多约30%，而通用NLU基本不受影响；代码开源。",
+ "takeaways": [
+  "LLM的文化理解由极少数（<1%）集中在浅中层MLP的神经元承载。",
+  "抑制文化神经元显著损害文化理解而几乎不影响通用NLU，说明文化知识在神经元层面相对局部化。",
+  "在文化相关模块上做通用NLU微调可能侵蚀文化理解，为训练工程提供警示。"
+ ],
+ "weaknesses": [
+  "神经元识别依赖梯度归因与特定文化基准，方法对其他文化/任务的迁移性未充分验证。",
+  "文化基准本身覆盖的文化与语言不均，结论可能偏向高资源文化。",
+  "主要为相关性/抑制验证，未对文化神经元的内部计算机制做更深的因果建模。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "文化理解与可靠性主线无直接交点，方法迁移性有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

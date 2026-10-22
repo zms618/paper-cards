@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/FlashLips_100-FPS Mask-Free Latent Lip-Sync using Reconstruction Instead of Diffusion.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/FlashLips_100-FPS Mask-Free Latent Lip-Sync using Reconstruction Instead of Diffusion.pdf",
+ "title": "FlashLips 100-FPS Mask-Free Latent Lip-Sync using Reconstruction Instead of Diffusion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "重建替代扩散的100-FPS唇形同步，但身份保持和鲁棒性有限",
+ "innovations": [
+  "确定性单步重建编辑器替代GAN/扩散",
+  "无掩码自精炼方法",
+  "解耦的音频到唇形姿态预测",
+  "模块化两阶段设计"
+ ],
+ "method_framework": "两阶段框架：阶段1为VAE潜空间重建编辑器，仅用重建损失训练；阶段2为音频到唇形姿态的transformer，使用flow-matching目标。通过自监督生成伪对去除推理时的显式掩码。",
+ "experiment_framework": "在HDTF、CelebV-HQ和CelebV-Text数据集上评估，对比DiffDub、Diff2Lip等基线，使用LipScore、FID、FVD、HyperIQA、ID等多指标评估唇音同步、视觉质量和身份保持。",
+ "takeaways": [
+  "重建损失足以实现高质量唇形同步",
+  "解耦控制空间可提高训练稳定性和泛化能力",
+  "自监督伪对生成可避免外部分割需求"
+ ],
+ "weaknesses": [
+  "唇形编码器设计复杂，需要蒸馏优化推理",
+  "跨音频场景下身份保持略低于LatentSync",
+  "未充分讨论模型在不同头部姿态下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "唇形同步技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

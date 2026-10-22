@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unleashing Guidance Without Classifiers for Human-Object Interaction Animation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unleashing Guidance Without Classifiers for Human-Object Interaction Animation.pdf",
+ "title": "Unleashing Guidance Without Classifiers for Human-Object Interaction Animation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 5.1
+ },
+ "one_line": "LIGHT框架通过异步去噪节奏实现contact-aware生成，但缺乏理论分析与完整实验报告。",
+ "innovations": [
+  "提出'去噪节奏诱导引导'：把HOI表征拆成人体/物体等模态分量并各自赋不同噪声水平与异步去噪schedule，干净分量经交叉注意力引导噪分量，等价于一种soft CFG",
+  "设计staged schedule(一分量保持更干净近似条件轨迹)与uniform schedule(弱条件/更噪条件即无条件)两条路径，二者之差产生引导效应，lag→0退化为联合去噪、lag→∞近似CFG的条件dropout",
+  "用合成物体几何多样性增广训练，使接触语义对几何变化不变，数据驱动地学到接触感知而无需手工接触先验/逆运动学/物理仿真"
+ ],
+ "method_framework": "基于diffusion forcing，把HOI生成表征分解为人体与物体等模态分量，对各分量分配个体化噪声水平与异步去噪时间表。构造两条路径：(I)staged schedule把一个模态(如人体)保持更干净而另一模态按规定噪声走，近似条件轨迹；(II)uniform schedule对所有模态用规定噪声，把'无条件'实现为更噪条件，构成soft CFG。两路对比产生类CFG的引导，且该引导天然contact-aware；辅以宽谱合成物体几何增广增强接触语义的几何不变性。",
+ "experiment_framework": "在最全面的InterAct数据集上评估，对比HOI-Diff(辅助affordance模块)、CG-HOI(多任务接触预测)、InterDiff(运动学修正)等依赖外部先验的方法；指标含接触保真度、HOI生成真实度与对未见物体/任务的泛化，并与传统CFG及文本hard dropout做消融对比。",
+ "takeaways": [
+  "去噪节奏诱导引导比传统CFG更有效复刻接触先验的收益，且在接触保真与真实度上更高",
+  "文本hard dropout改善全局分布对齐，而LIGHT的soft引导主要调整底层接触细节，二者作用互补",
+  "数据驱动引导可摆脱手工接触规则/逆运动学/物理仿真，同时提升对未见物体与任务的泛化"
+ ],
+ "weaknesses": [
+  "属图形/动画生成方向，与本主线(可靠性/多模态推理/医学影像)无直接关联",
+  "异步schedule的lag等超参如何最优设定、与CFG scale的对应关系缺乏统一理论刻画",
+  "正文前9页内未见完整定量指标表与统计显著性报告，接触保真提升幅度需查附录确认"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "图形动画生成与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

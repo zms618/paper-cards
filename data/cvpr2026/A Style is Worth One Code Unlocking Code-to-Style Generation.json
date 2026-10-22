@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/A Style is Worth One Code Unlocking Code-to-Style Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Style is Worth One Code Unlocking Code-to-Style Generation.pdf",
+ "title": "A Style is Worth One Code: Unlocking Code-to-Style Image Generation with Discrete Style Space",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "离散风格码本+自回归生成器，但评测不可靠且消融不充分",
+ "innovations": [
+  "定义 code-to-style 新任务：仅用一个数字 code 同时充当风格创建入口与复现标识符，绕开参考图提示词/风格 LoRA 三者不可兼得的三角困境（一致性/创意性/可复现性）",
+  "用对比损失 + 重建损失 + VQ 损失（式1-4）训离散风格码本：把同风格不同内容的 ViT 特征拉到同一分布、异风格推开，并用重建_loss 约束量化向量贴近原始 ViT 特征以防码本坍缩；推理时风格嵌入替换 VLM 图像特征、经 DiT 的 textual branch 注入而非视觉分支拼接",
+  "训练纯无条件自回归风格生成器（Qwen2-0.5B from scratch）对码本 index 做 next-token 预测，使任意数字码可采样出 novel index 序列；并针对码本长尾提出频率抑制 s(i)=exp(-k(f(i)-tau))，压制高频 index 以避免退化成无风格的照片级结果"
+ ],
+ "method_framework": "三阶段：①对同风格图像对训 ViT 码本（对比+重建+VQ）；②用量化后的风格嵌入替代 VLM 图像特征、与文本提示一起作 DiT 文本分支条件做 rectified flow matching 训练（文编码器冻结）；③用图像对应 index 序列训自回归风格生成器，推理时 code 固定随机种子并采首个 index 自回归补全 N=196 个 index，查码本解码为风格嵌入驱动 T2I。",
+ "experiment_framework": "code-to-style：随机 500 个 code、每 code 4 张共 2000 图，对比闭源 Midjourney；image-conditioned：500 组提示词-参考图对，对比 StyleStudio/CSGO/USO/Flux-Kontext/InstantStyleXL；指标 CSD(一致性/Diversity)、CLIP-T、QualityCLIP 美学分。",
+ "takeaways": [
+  "风格走 textual branch（把风格嵌入当文本 token 注入）比走 visual branch 沿 token 维拼接更能保住语义，Fig.5 的剪纸圆形轮廓/水晶人偶对比是可直接借鉴的判据",
+  "「码本 index 使用频率长尾 → 高频 index 即无意义占位符 → 推理时对 logits 做指数抑制」这条链路对任何离散码本条件生成（含离散视觉 token 条件化）都通用",
+  "离散风格索引天然可组合， exchanging 子集即可做风格插值（0.8/0.2、0.5/0.5、0.2/0.8），把「风格」变成可线性权重的离散变量，这个可组合性是可复用的设计红利"
+ ],
+ "weaknesses": [
+  "code-to-style 唯一可比基线 Midjourney 是闭源产品，评测图像由作者从官网手工采集，协议不可复现且无法保证与自家采样/解码设置一致；且全部数值为单次结果、无种子方差，Tab.1 中多样性 CoTyle(0.7764) 低于 Midjourney(0.8088)，作者仅归因于「训练数据广度不足」而无验证实验",
+  "消融表 2 中去掉负样本后美学分 0.7174≈完整体 0.7178、CLIP-T 0.3260 反而更高，只有一致性从 0.5791 掉到 0.4890，说明对比负样本的作用被限制在单一指标上，并不支撑「对比损失整体提升性能」的定性叙述；α、β、γ、τ、k 等系数取值与敏感性分析正文全缺",
+  "高频 index 抑制本质是 VQ 码本坍缩/长尾分布的症状性修补（与式3重建损失本应解决的坍缩同源），根因未处理；验证仅靠 Fig.7 两张示意图，且 S(i) 的阈值 τ 与系数 k 只给公式不给可调范围与网格实验",
+  "评测只覆盖 CSD/CLIP-T/美学分三类代理指标，没有人工偏好/风格分类准确率等定量主指标，也没有「同一 code 换 prompt 是否稳定锁风格」的隔离式实验，一致性 0.6007 高分是否真正代表人眼风格一致存疑"
+ ],
+ "confidence": "high",
+ "raw_overall": 4.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "风格生成与可靠性主线无关，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

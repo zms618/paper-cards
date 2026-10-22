@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/V-DPM_4D Video Reconstruction with Dynamic Point Maps.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/V-DPM_4D Video Reconstruction with Dynamic Point Maps.pdf",
+ "title": "V-DPM 4D Video Reconstruction with Dynamic Point Maps",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "扩展动态点图实现4D重建，但泛化性和姿态估计有限。",
+ "innovations": [
+  "多视图动态点图(DPM)扩展",
+  "时间条件解码器实现时间不变性",
+  "基于预训练静态模型VGGT的高效动态场景适应"
+ ],
+ "method_framework": "V-DPM采用两阶段设计：首先预测时间变化的点图，然后通过时间条件解码器生成时间不变点图，实现4D场景重建。",
+ "experiment_framework": "在PointOdyssey、Kubric-F/G、Waymo等数据集上评估，与DPM、St4RTrack等基线比较EPE误差和深度估计精度。",
+ "takeaways": [
+  "预训练静态模型可高效适应动态场景",
+  "时间条件解码器设计简洁有效",
+  "点图表示在动态场景重建中表现优异"
+ ],
+ "weaknesses": [
+  "仅使用合成数据训练，泛化能力待验证",
+  "相机姿态估计精度落后于π3等最新方法",
+  "长序列处理依赖滑动窗口优化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "动态场景重建与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

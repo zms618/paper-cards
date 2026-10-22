@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Nonlinearly Preconditioned Gradient Methods under Generalized Smoothness.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Nonlinearly Preconditioned Gradient Methods under Generalized Smoothness.pdf",
+ "title": "Nonlinearly Preconditioned Gradient Methods under Generalized Smoothness",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.75
+ },
+ "one_line": "推广各向异性光滑性并统一梯度方法，但实验与主线相关性弱",
+ "innovations": [
+  "把anisotropic smoothness推广为双常数(L,L̄)且允许参考函数ϕ定义域非全，给出f满足该光滑性的充要二阶条件(λmax(H∇²f)<LL̄)，技术上绕开最优输运NNCC等强假设",
+  "用同一迭代(2)以不同核h恢复GD/梯度裁剪/Adagrad/Adam(β1=β2=0)及Gorbunov等(L0,L1)-光滑算法，从MM/Φ-凸视角统一裁剪类方法",
+  "证明前向算子T为全局同胚、给出f*−L⁻¹(L̄⋆ϕ*)Bregman强凸联系，在isotropic/2-subhomogeneous下首次得到次优间隙O(1/K)率，回答Maddison留下的问题"
+ ],
+ "method_framework": "选核h生成参考函数ϕ(isotropic:ϕ=h∘∥·∥;anisotropic:ϕ=Σh(x_i))，迭代为x_{k+1}=x_k−γ∇ϕ*(λ∇f(x_k))；∇ϕ*即sigmoid形预条件子(arcsinh/tanh/sgn/log等)；由(L,L̄)-各向异性光滑的下降不等式(4)做MM上界极小化，凸性借envelope表示f(x)=inf_y{...}转Bregman强凸，配合2-subhomogeneity证次线性率。",
+ "experiment_framework": "三个演示：最小化f=¼∥x∥⁴(R^500)对比cosh/exp/−|x|−ln三种预条件；非凸phase retrieval(n=100,m=3000)对比vanilla GD/裁剪/Chen2023及各向同性/异性版本(100随机实例)；4层FC MNIST(m=600全梯度)对比裁剪；指标f_k−f*/∥∇f_k∥随迭代下降。",
+ "takeaways": [
+  "phase retrieval上各向同性预条件版本在该调参下跨100实例平均优于梯度裁剪，且调参鲁棒",
+  "对∥x∥⁴这类超出Lipschitz光滑的函数，cosh/exp/−|x|−ln三种预条件均稳定下降，而标准GD不收敛",
+  "二阶条件可直接计算：各向异性情形[∇²ϕ*]⁻¹为对角阵1/h*''，各向同性有显式谱公式，便于实际校验"
+ ],
+ "weaknesses": [
+  "落点为连续优化理论，与主任务的医学影像/多模态大模型推理可靠性完全无关；不涉及鲁棒性/不确定性/幻觉",
+  "实证仅toy/phase retrieval/600样本MNIST玩具，作者自陈未来才做动量与随机设定；无大规模训练对比，工程价值未验证",
+  "收敛率依赖D0=level set上界、初始梯度范数等量，作者承认需averaging才能消去；随机/复合非光滑情形未覆盖，离现代SGD训练实践有距离"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.98,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

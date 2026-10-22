@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/ASDSV_Multimodal Generation Made Efficient with Approximate Speculative Diffusion and Speculative Verification.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/ASDSV_Multimodal Generation Made Efficient with Approximate Speculative Diffusion and Speculative Verification.pdf",
+ "title": "ASDSV: Multimodal Generation Made Efficient with Approximate Speculative Diffusion and Speculative Verification",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "推测扩散验证加速多模态生成，但阈值与草稿模型优化不足",
+ "innovations": [
+  "近似推测验证技术，仅检查首尾状态",
+  "多阶段推测策略，动态调整推测步数",
+  "批处理流水线优化"
+ ],
+ "method_framework": "利用轻量级草稿模型生成K步，目标模型仅验证首尾状态，通过时间相关性减少验证开销，并采用多阶段策略平衡速度与质量",
+ "experiment_framework": "Flux.1-dev图像生成和Wan2.1视频生成，对比TeaCache和Sparse VideoGen，使用FID、VBench、LPIPS等指标评估质量与效率",
+ "takeaways": [
+  "利用模型输出时间相关性设计高效验证机制",
+  "多阶段策略根据去噪阶段特性动态调整推测步数"
+ ],
+ "weaknesses": [
+  "验证阈值δ的选择对性能影响较大",
+  "草稿模型的选择与优化未充分探索",
+  "在特定硬件上加速效果未达理论最优"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

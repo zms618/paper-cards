@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/SingRef6D_Monocular Novel Object Pose Estimation with a Single RGB Reference.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/SingRef6D_Monocular Novel Object Pose Estimation with a Single RGB Reference.pdf",
+ "title": "SingRef6D: Monocular Novel Object Pose Estimation with a Single RGB Reference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "单RGB参考图像的6D姿态估计，通过深度感知匹配提升鲁棒性",
+ "innovations": [
+  "基于token-scaler的深度预测微调机制",
+  "深度感知匹配模块",
+  "仅需单张RGB参考图像的最小化设置"
+ ],
+ "method_framework": "结合深度预测和深度感知匹配的两阶段框架：首先通过token-scaler微调Depth-Anything v2提升深度预测准确性，然后扩展LoFTR进行RGB-深度特征融合匹配，最后通过点云注册求解6D姿态",
+ "experiment_framework": "在REAL275、ClearPose和Toyota-Light数据集上评估，与SIFT、Oryon等基线比较，使用AR、VSD、MSSD、MSPD和ADD指标",
+ "takeaways": [
+  "token-scaler机制能有效提升深度预测在挑战性表面的表现",
+  "深度信息与RGB特征融合可显著提升匹配鲁棒性"
+ ],
+ "weaknesses": [
+  "深度预测模块仍需微调数据",
+  "在极端透明物体上性能仍有提升空间",
+  "计算效率未充分分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

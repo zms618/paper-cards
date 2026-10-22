@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Rethinking Prompt Design for Inference-time Scaling in Text-to-Visual Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Rethinking Prompt Design for Inference-time Scaling in Text-to-Visual Generation.pdf",
+ "title": "Rethinking Prompt Design for Inference-time Scaling in Text-to-Visual Generation",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "PRIS框架通过提示修订提升文本到视觉生成对齐，但计算开销大且特定领域效果有限。",
+ "innovations": [
+  "提出PRIS框架，将提示设计纳入推理时扩展过程",
+  "引入元素级事实校正(EFC)验证器，提供细粒度文本-视觉对齐评估",
+  "通过识别跨样本的常见失败模式，自适应修订提示以改善生成质量"
+ ],
+ "method_framework": "PRIS框架包括四个步骤：1)生成初始样本并使用EFC验证；2)选择表现最佳的top-k样本；3)识别常见失败模式并修订提示；4)使用修订提示和最佳种子重新生成。",
+ "experiment_framework": "在GenAI-Bench(T2I)和VBench2.0(T2V)上评估，与Best-of-N和标准提示扩展对比，使用VQA-Score、DA-Score和VBench多维度指标。",
+ "takeaways": [
+  "将提示视为推理时扩展的关键维度，而不仅仅是固定条件",
+  "利用部分正确样本中的失败模式作为反馈信号，而非简单丢弃",
+  "细粒度元素级验证比整体评分更能揭示对齐问题"
+ ],
+ "weaknesses": [
+  "EFC验证器依赖于多模态大语言模型，可能存在计算开销",
+  "在热力学等特定类别上性能略有下降，可能是因为奖励模型过度拟合精确数值而非物理合理性",
+  "方法需要额外的计算资源用于提示修订和重新生成"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "文本到视觉生成提示修订，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

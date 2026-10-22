@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/On the Benefits Of Weight Normalization for Overparameterized Matrix Sensing.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/On the Benefits Of Weight Normalization for Overparameterized Matrix Sensing.pdf",
+ "title": "On the Benefits of Weight Normalization for Overparameterized Matrix Sensing",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "理论证明WN在矩阵感知中线性收敛，但缺乏实验验证且应用场景有限。",
+ "innovations": [
+  "首次刻画 WN 如何利用过参数化在矩阵感知中加速收敛：证明 WN+RGD 达线性收敛，绕过已有 GD 的次线性下界",
+  "证明迭代复杂度与样本复杂度都随过参数化程度 (r-r_A) 多项式改善",
+  "将方向/幅度解耦的权重归一化思想推广到矩阵变量，建立精确恢复(误差趋零)的收敛率上界"
+ ],
+ "method_framework": "针对恢复低秩 PSD 矩阵 A=YY^T 的非凸矩阵感知问题，将权重归一化推广到矩阵变量，在流形上用黎曼梯度下降优化方向与幅度；推导有限样本下线性收敛率 exp(-O((r-r_A)^4 / (κ^4 m^2 r^2 r_A) · t))，并分析过参数化 r>r_A 如何降低迭代与样本复杂度。",
+ "experiment_framework": "纯理论论文；以低秩 PSD 矩阵线性测量恢复为测试床，对比 GD 上界/下界与 RGD 的收敛率与是否精确恢复，表格给出各算法在过参数化下的速率与样本复杂度。",
+ "takeaways": [
+  "WN 不只是稳定训练，在矩阵感知中可把次线性收敛提升为线性收敛，带来指数加速",
+  "更高的过参数化程度反而降低迭代与样本复杂度，与常见直觉相反",
+  "无需预知真实秩 r_A 即可精确恢复"
+ ],
+ "weaknesses": [
+  "结论限于矩阵感知这一非凸玩具问题，向深层网络/大模型的迁移性未知",
+  "纯理论，无数值实验验证收敛率常数与预测是否吻合",
+  "偏离可靠性/医学影像/多模态推理主线，相关性低"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.03,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "矩阵感知理论工作，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

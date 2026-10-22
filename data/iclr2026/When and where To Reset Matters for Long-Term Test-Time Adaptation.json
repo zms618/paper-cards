@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/When and where To Reset Matters for Long-Term Test-Time Adaptation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/When and where To Reset Matters for Long-Term Test-Time Adaptation.pdf",
+ "title": "When and Where to Reset Matters for Long-Term Test-Time Adaptation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "ASR动态选择性重置缓解TTA崩溃，但风险估计与参数选择存局限",
+ "innovations": [
+  "指出周期性重置与实际崩溃风险脱钩、且全量重置会丢失长期积累的有益知识这一缺陷",
+  "提出自适应选择性重置(ASR)：动态决定何时重置以及重置哪些参数(where)，而非固定周期全量重置",
+  "重要性感知正则器，恢复重置所丢失的关键知识",
+  "在线自适应调整方案，增强在困难域偏移下的适应能力"
+ ],
+ "method_framework": "在持续TTA流中实时估计崩溃风险以决定何时触发重置；选择性地只重置风险相关的参数子集(where)；用重要性正则保护/恢复过去积累的有益知识；并在困难域偏移时在线调节自适应强度，避免误差累积导致只预测少数类。",
+ "experiment_framework": "在长期TTA基准上评测；基线为周期性全量重置等现有TTA方法；指标为长时流上的分类精度与抗崩溃能力；强调在困难条件(强/持续域偏移)下的有效性。",
+ "takeaways": [
+  "长期TTA中固定周期全量重置次优，应按实时崩溃风险动态触发并选择性重置",
+  "选择性重置+重要性正则可在清除累积错误的同时保留有益积累知识",
+  "在线自适应强度调节是应对困难域偏移的必要补充"
+ ],
+ "weaknesses": [
+  "崩溃风险估计本身依赖无标签数据上的统计量，在快速/未知偏移下可能滞后",
+  "选择性重置哪些参数需逐案例设定，通用性的重要性判据需更多验证",
+  "主要在分类长期TTA基准验证，向检测/分割/多模态等任务的迁移未证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "TTA崩溃风险缓解与鲁棒性主线直接相关，方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

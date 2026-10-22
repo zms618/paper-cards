@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/VERA_Variational Inference Framework for Jailbreaking Large Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/VERA_Variational Inference Framework for Jailbreaking Large Language Models.pdf",
+ "title": "VERA: Variational Inference Framework for Jailbreaking Large Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "变分推断框架训练小型LLM生成越狱prompt，攻击效率提升但防御缺失",
+ "innovations": [
+  "首次将黑盒越狱prompt生成建模为变分推断问题，训练小型攻击者LLM近似目标LLM的对抗prompt后验分布",
+  "训练完成后攻击者可无需重新优化即为任意目标查询生成多样化流畅越狱prompt",
+  "克服了遗传算法依赖人工prompt池和逐个优化的局限，提供对模型脆弱性的概率化刻画"
+ ],
+ "method_framework": "将越狱prompt生成视为变分推断：攻击者LLM作为推断网络q_φ(z|x)，学习生成能使目标LLM产生有害输出的prompt z。目标LLM的安全违反作为似然。训练完成后攻击者可直接采样生成越狱prompt，无需梯度或遗传算法迭代。",
+ "experiment_framework": "在多个目标LLM上评测攻击成功率。对比遗传算法等黑盒越狱方法。指标：攻击成功率、prompt流畅度、多样性。",
+ "takeaways": [
+  "变分推断为黑盒越狱提供了 principled 优化目标，比遗传算法更高效",
+  "训练一次攻击者即可泛化到多个目标查询，无需逐个优化",
+  "概率化视角可更好地刻画LLM安全脆弱性的整体分布"
+ ],
+ "weaknesses": [
+  "攻击论文，未提出防御方案",
+  "需要与目标LLM大量交互来训练攻击者，实际黑盒场景下成本可能较高",
+  "前9页未展示完整的攻击成功率对比表"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

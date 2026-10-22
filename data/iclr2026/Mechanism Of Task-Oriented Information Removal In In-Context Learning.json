@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mechanism Of Task-Oriented Information Removal In In-Context Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mechanism Of Task-Oriented Information Removal In In-Context Learning.pdf",
+ "title": "Mechanism of Task-Oriented Information Removal in In-Context Learning",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "声称ICL是信息移除而非归纳，但机制与主流解释关系未厘清",
+ "innovations": [
+  "提出 ICL 的任务导向信息移除视角，区别于归纳头'复制标签'解释，认为 ICL 是移除查询中纠缠的冗余任务信息",
+  "用低秩滤波器选择性移除隐藏态信息即可将 LLM 引向目标任务，复现零样本下的非选择性表征现象",
+  "识别出执行移除操作的'去噪注意力头(Denoising Heads)'，阻断后 ICL 准确率显著下降，尤在正确标签未出现的示范中"
+ ],
+ "method_framework": "通过在隐藏态子空间用低秩滤波器移除特定任务信息来因果操纵模型；设计度量量化隐藏态中被移除的信息；定位执行移除的注意力头并做阻断消融，检验其对 ICL（尤其未见标签场景）的贡献。",
+ "experiment_framework": "模型：现代 LLM；方法：低秩信息移除、隐藏态信息度量、去噪头阻断消融；场景：零样本/少样本及正确标签未出现的未见标签情形；指标：ICL 准确率变化。",
+ "takeaways": [
+  "零样本时查询被编码为含所有任务信息的非选择性表征，导致近乎随机输出",
+  "少样本 ICL 通过移除纠缠表征中的冗余任务信息来聚焦目标任务，是其关键机制之一",
+  "去噪头的因果阻断证明信息移除机制在未见标签场景下仍支撑 ICL 准确率"
+ ],
+ "weaknesses": [
+  "低秩滤波器与任务子空间的可分性假设较强，跨任务/跨模型的通用性需更多验证",
+  "信息移除视角与归纳头复制机制的互补/主次关系尚未定量剥离",
+  "与医学影像/多模态推理等落地主线关联弱，87 页中大量篇幅为机制细节"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "ICL机制研究，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

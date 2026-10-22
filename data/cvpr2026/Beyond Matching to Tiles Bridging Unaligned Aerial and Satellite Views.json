@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Beyond Matching to Tiles Bridging Unaligned Aerial and Satellite Views.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Beyond Matching to Tiles Bridging Unaligned Aerial and Satellite Views.pdf",
+ "title": "Beyond Matching to Tiles Bridging Unaligned Aerial and Satellite Views",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "基于卫星瓦片与无人机视图的联合回归导航方法",
+ "innovations": [
+  "超越传统匹配到瓦片(M2T)范式的位置和航向联合回归方法",
+  "全局-局部统一特征(GLUF)提取模块",
+  "相对坐标编码器(RCE)和跨注意力机制(CA)融合模块",
+  "Bearing-UAV-90K多城市基准数据集"
+ ],
+ "method_framework": "基于四个相邻卫星瓦片特征和无人机视图特征，通过GLUF提取全局-局部特征，RCE编码相对坐标，CA捕获跨视图对应关系，PSG计算相似度加权引导坐标，最后通过双回归头联合预测位置和航向。",
+ "experiment_framework": "在Bearing-UAV-90K数据集上评估，对比Uni-1652、SUES-200、DenseUAV和GTA-UAV等基线，使用Recall@K、LSR/HSR、MLE/MHE等指标，并测试天气增强和城市多样性的影响。",
+ "takeaways": [
+  "跨视图特征融合和相对位置编码能有效处理视图不对齐问题",
+  "多任务回归(位置+航向)比传统检索方法更适合无人机导航",
+  "天气增强和城市多样性对模型泛化能力有显著影响"
+ ],
+ "weaknesses": [
+  "方法依赖四个相邻卫星瓦片，在极端稀疏场景可能受限",
+  "航向估计在无人机视图下误差较大(MHE 12.90°)，可能影响长距离导航",
+  "未充分讨论计算复杂度和实时性对实际部署的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视图对齐导航与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/(U)NFV (UN)SUPERVISED Neural Finite Volume Methods for Solving Hyperbolic PDEs.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/(U)NFV (UN)SUPERVISED Neural Finite Volume Methods for Solving Hyperbolic PDEs.pdf",
+ "title": "(U)NFV: (UN)SUPERVISED NEURAL FINITE VOLUME METHODS FOR SOLVING HYPERBOLIC PDES",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "CNN回归数值通量替代手工通量，FV结构保证守恒",
+ "innovations": [
+  "把 FV 方法抽象为 FV^a_b 类：数值通量 F^n_{i+1/2} 由网络 N 对一个 a×b 时空模板 U^n_{i+1/2}(a,b)（a 个空间单元 × b 个历史时间步）直接回归，从而让手工无法设计的 NFV^11_10（11 格 × 11 时步）这种大模板可训练；更新式仍是 u^{n+1}_i = u^n_i − Δt/Δx(F_{i+1/2} − F_{i−1/2})，质量守恒由结构本身保证而非后加惩罚",
+  "无监督变体 UNFV 用弱形式残差损失 L_w = E_{φ∈Φ,u0∼R}[(Σ_{n,i}(Δt)^{-1}(\\hat u^n_i − \\hat u^{n−1}_i)∫_{I_i}φ + f(\\hat u^n_i)[φ]_{x_{i-1/2}}^{x_{i+1/2}})^2]，测试函数取 250 个随机采样的 50 阶紧支撑多项式；一维标量情形下分部积分把空间导数消掉，训练时无需对原变量求任何空间导数",
+  "有监督 NFV 用 MSE 在 Riemann 初值解上训练，且可学到不满足守恒律的真实场数据（高速公路实测交通流），此时只强制质量守恒而无需求解方程形式"
+ ],
+ "method_framework": "局部 2D CNN 回归数值通量：第一层空间核大小 a、b 个时间切片输入通道，后接 5 层 1×1 卷积（15 通道），参数量 1105+16(ab+1)；推理期无优化，每步一次前向 + FV 更新，成本随时间步线性增长。",
+ "experiment_framework": "7 个一阶守恒律（6 种 LWR 速度函数 + 无粘 Burgers）与 1000 个分段常数初值；基线含 Godunov/Lax-Friedrichs/Engquist-Osher/ENO/WENO/DG；指标为 L2 误差（含标准差）+ 逐对胜率图 + 网格收敛曲线。",
+ "takeaways": [
+  "把手工格式的模板设计难题转成监督或弱形式回归，用几千参数的小 CNN 拿到接近 DG 的精度而实现复杂度仍像一阶 FV，是可迁移的训练范式",
+  "监督与无监督共用同一 flux 网络只换损失函数，使同一架构直接落到无方程实测数据上，省去参数重调",
+  "评测协议值得借鉴：同一条 PDE 上跑多个流函数变体、用 Lax-Hopf 在细网格算精确解做真值、并用逐对胜率矩阵而非只看均值来比较方法"
+ ],
+ "weaknesses": [
+  "无收敛性证明且消融不完整：论文自承认弱形式损失只是最小化残差、不保证收敛到熵解，仅以多次实验经验上收敛支撑 UNFV 的 claim；消融也只对比了 NFV^1_2 与 NFV^5_4 两行，缺网络深度/激活、模板 a 与 b 的独立拆解，以及 UNFV 测试函数个数与阶数（250 个 50 阶）的敏感性实验",
+  "评估维度单一：只报 L2 误差与逐对胜率，缺长时间自回归下累积误差随步数的稳定性、以及与实际 DG 的时间显存等价对比；基线虽强（Godunov/Lax-Friedrichs/Engquist-Osher/ENO/WENO/DG）但只覆盖 7 个一阶守恒律与 1000 个分段常数初值，NFV 解中的 minor oscillation 未在长时域上验证是否放大",
+  "正文在第 5.4 节末尾截断，第 6 节真实高速公路场数据结果与第 7 节结论全部缺失（hence medium）；relevance 低：研究的是数值 PDE 求解精度，不涉及鲁棒性/泛化/不确定性主线，但弱形式残差训练与守恒约束注入的写法可平移到可靠性场景，故入 4.0 这一档的上沿"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "数值PDE求解精度不涉及可靠性主线，但训练范式可平移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

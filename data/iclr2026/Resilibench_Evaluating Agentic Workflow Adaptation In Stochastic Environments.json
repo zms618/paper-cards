@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Resilibench_Evaluating Agentic Workflow Adaptation In Stochastic Environments.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Resilibench_Evaluating Agentic Workflow Adaptation In Stochastic Environments.pdf",
+ "title": "ResiliBench: Evaluating Agentic Workflow Adaptation in Stochastic Environments",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 7,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "首个将不确定性作为核心的agent工作流鲁棒性基准，但方法创新有限。",
+ "innovations": [
+  "把不确定性从'附带出现'提升为系统研究核心：建模指令质量波动与工具执行不确定性下的LLM工作流执行。",
+  "用参数化错误模型模拟真实API失败模式，概率化刻画工具行为。",
+  "提供MDP导出的、最大化期望成功率的工作流作为参考，并受控扰动指令质量评估模型鲁棒性。"
+ ],
+ "method_framework": "从30个API的工具库自动构建5040个任务；用参数化概率错误模型注入工具失败；以MDP求解期望成功率最大的工作流prompt；再对指令质量做受控扰动，系统评测不同LLM与prompt策略在随机环境下的适应能力。",
+ "experiment_framework": "多个广泛使用的LLM；在概率化工具失败与变化指令质量下评测；MDP-最优工作流prompt平均成功率62.1%、CoT prompt 50.8%、有缺陷工作流prompt 54.3%；并用真实API实验印证模拟结论。",
+ "takeaways": [
+  "现有LLM agent在工具失败与指令质量波动下成功率普遍不高，鲁棒性仍是瓶颈。",
+  "MDP最优工作流prompt显著优于朴素CoT，说明结构化、随机环境感知的规划对agent可靠性至关重要。"
+ ],
+ "weaknesses": [
+  "错误模型为参数化模拟，与真实生产API失败分布的吻合度有限。",
+  "主要是benchmark与评测，新方法/算法创新有限。",
+  "成功率口径以任务完成为主，对agent错误的后果严重性/安全维度未细分。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "agent工作流鲁棒性基准，触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

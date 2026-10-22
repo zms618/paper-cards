@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Se-LECTION_NOT-A-BANDIT Provably No-Regret Drafter Se-LECTION In Speculative Decoding for LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Se-LECTION_NOT-A-BANDIT Provably No-Regret Drafter Se-LECTION In Speculative Decoding for LLMS.pdf",
+ "title": "Not-A-Bandit: Provably No-Regret Drafter Selection in Speculative Decoding for LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.7
+ },
+ "one_line": "利用投机解码副产品做草稿选择，但与主线研究关联弱。",
+ "innovations": [
+  "针对多草稿模型在线选择问题，提出反直觉发现：无需探索；可利用投机解码结构对所有草稿模型（不仅选中者）算反馈而不额外调用目标模型。",
+  "将问题从多臂bandit转为全信息在线学习，给出可证no-regret算法（按接受概率或期望接受长度竞争事后最优草稿）。",
+  "通用适配单草稿/多草稿/draft-tree，并给出系统高效版降开销；在开源LLM上超过EAGLE3与BanditSpec。"
+ ],
+ "method_framework": "投机解码用小草稿模型预测、目标模型并行验证。本文利用验证过程副产品，在不额外调用目标模型的前提下同时获得所有候选草稿的接受反馈（全信息），据此做no-regret在线选择，省去bandit式探索。",
+ "experiment_framework": "开源LLM与多样数据集；对比EAGLE3、BanditSpec；指标为投机解码加速比/接受长度；尤其在有领域专家草稿、需长推理链的场景展示增益。",
+ "takeaways": [
+  "投机解码的验证过程可免费提供全草稿反馈，使草稿选择无需探索。",
+  "全信息在线学习随草稿数N增大指数优于bandit方法。"
+ ],
+ "weaknesses": [
+  "属LLM推理加速/系统方向，与可靠性/医学影像/多模态推理主线无关。",
+  "全信息反馈的计算实现依赖特定投机解码结构，与最新draft-tree的兼容性需说明。",
+  "前9页主要讲算法动机，端到端加速比数值需后续表格确认。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "LLM推理加速系统，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

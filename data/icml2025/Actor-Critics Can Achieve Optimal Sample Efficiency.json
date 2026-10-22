@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Actor-Critics Can Achieve Optimal Sample Efficiency.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Actor-Critics Can Achieve Optimal Sample Efficiency.pdf",
+ "title": "Actor-Critics Can Achieve Optimal Sample Efficiency",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 5,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "理论证明actor-critic可达最优样本复杂度，但实验验证不足",
+ "innovations": [
+  "证明了actor-critic在一般函数逼近+策略探索必要条件下可达到O(dH⁵log|A|/ε²)样本复杂度，解决了领域公开问题",
+  "提出NORA算法：融合乐观探索、离线critic估计（目标最优Q*）、稀有切换策略重置三大组件",
+  "扩展到Hybrid RL设置：证明离线数据初始化critic可提升样本效率，同时给出非乐观但可证明高效的actor-critic算法"
+ ],
+ "method_framework": "两阶段：(1)DOUHUA算法（简单情况）——在策略类覆盖数不随critic更新爆炸的条件下，基于GOLF算法改进，获得√(H⁴Tlog|A|)遗憾；(2)NORA算法（困难情况）——引入稀有切换策略重置（rare-switching policy resets），每O(dHlogT)步重置策略并重新估计critic目标Q*，控制策略类覆盖数增长，最终达到√(dH⁴Tlog|F|)+√(dH⁵Tlog|A|)遗憾。",
+ "experiment_framework": "理论分析为主，辅以数值实验验证。对比GOLF、DOUFUA等基线。指标：累计遗憾、样本复杂度。",
+ "takeaways": [
+  "Actor-critic算法确实可以在一般函数逼近下达到O(1/ε²)的最优样本复杂度，前提是使用稀有切换策略重置控制策略类增长",
+  "策略类覆盖数随critic更新线性增长是导致早期方法遗憾界 vacuous 的根本原因",
+  "Hybrid RL中离线数据可替代乐观探索实现样本效率提升"
+ ],
+ "weaknesses": [
+  "实验验证较弱，主要是理论证明，缺乏大规模benchmark实验",
+  "稀有切换策略重置的实际实现细节和计算开销未充分讨论",
+  "假设Bellman eluder dimension d不随T超对数增长，对复杂函数类的适用性存疑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.38,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "强化学习样本效率理论，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

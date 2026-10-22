@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/TKG-DM_Training-free Chroma Key Content Generation Diffusion Model.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/TKG-DM_Training-free Chroma Key Content Generation Diffusion Model.pdf",
+ "title": "TKG-DM Training-free Chroma Key Content Generation Diffusion Model",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "训练自由色键生成，通过噪声偏移实现前景背景分离",
+ "innovations": [
+  "初始噪声通道均值偏移技术",
+  "高斯掩码选择初始噪声策略",
+  "无需微调即可精确控制前景背景分离"
+ ],
+ "method_framework": "通过通道均值偏移生成初始彩色噪声，结合高斯掩码混合原始噪声与彩色噪声，输入Stable Diffusion生成色键图像，实现前景背景独立控制。",
+ "experiment_framework": "MAGICK数据集(3000图像)，FID、m-FID、CLIP-S/I指标，对比SD1.5/SDXL/DeepFloyd及微调模型LayerDiffuse",
+ "takeaways": [
+  "初始噪声颜色控制机制可扩展到其他生成任务",
+  "高斯掩码提供灵活的前景位置大小控制"
+ ],
+ "weaknesses": [
+  "前景尺寸过小时生成失败",
+  "文本提示缺乏对象信息时无法生成前景"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "纯视觉生成技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Sparsing Law_Towards Large Language Modelswith Greater Activation Sparsity.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Sparsing Law_Towards Large Language Modelswith Greater Activation Sparsity.pdf",
+ "title": "Sparsing Law: Towards Large Language Models with Greater Activation Sparsity",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "提出激活稀疏度量CETT-PPL-1%，发现稀疏度与训练的幂律关系，但缺乏边界验证和实际加速测试",
+ "innovations": [
+  "提出可泛化且不伤性能的激活稀疏度量CETT-PPL-1%，比既有阈值式度量更准确刻画弱贡献神经元",
+  "定量揭示架构与训练过程对激活稀疏的影响，发现稀疏度随训练收敛的幂律关系",
+  "基于上述规律指导设计更高激活稀疏、更高效的LLM"
+ ],
+ "method_framework": "系统研究LLM前馈网络的激活稀疏：先用CETT-PPL-1%(截断到使PPL上升1%的激活阈值所对应的稀疏比例)作为度量，再改变模型架构与训练设置，量化各因素对稀疏度的作用，归纳出幂律式‘sparsing law’并用于指导更稀疏高效的训练。",
+ "experiment_framework": "在多种LLM规模/架构上做受控消融，度量CETT-PPL-1%随训练步数与超参的变化，验证幂律关系，并对比按规律训练的稀疏LLM在效率与PPL上的折中。",
+ "takeaways": [
+  "激活稀疏度应在‘不显著损害PPL’前提下度量，CETT-PPL-1%类性能友好指标比硬阈值更可靠",
+  "稀疏度随训练呈可预测的幂律收敛，说明稀疏是可主动诱导/规划的训练目标而非偶然现象",
+  "按规律主动增大激活稀疏可在有限性能损失下换取推理加速"
+ ],
+ "weaknesses": [
+  "度量基于PPL上升1%这一任意阈值，对不同任务/语料的标定敏感性前9页未充分讨论",
+  "幂律关系在多大规模/架构范围内成立未给出边界，外推到超大模型存疑",
+  "更高稀疏带来的实际端到端加速需配合稀疏推理引擎，文中缺乏真实GPU上的吞吐实测"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

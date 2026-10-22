@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Revisiting Bi-Linear State Transitions in Recurrent Neural Networks.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Revisiting Bi-Linear State Transitions in Recurrent Neural Networks.pdf",
+ "title": "Revisiting Bi-Linear State Transitions in Recurrent Neural Networks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "双线性RNN状态转换机制在合成任务上展现层次结构优势。",
+ "innovations": [
+  "纯双线性（非仿射）状态转换实现状态跟踪",
+  "双线性模型形成自然层次结构对应不同复杂度状态跟踪任务",
+  "冻结随机权重的双线性RNN仅需2个样本即可学习奇偶校验"
+ ],
+ "method_framework": "提出双线性状态转换模型ht = Wixt⊤ht−1，去除加性项实现尺度不变性，通过因子化和块对角化减少参数量，建立从完全双线性到实对角线的模型层次结构。",
+ "experiment_framework": "在模加法、随机状态机和模运算任务上评估，训练序列长度2-10，测试长度500，对比LSTM、Mamba和Transformer等基线模型。",
+ "takeaways": [
+  "去除加性项的双线性转换对状态任务至关重要",
+  "块对角结构可平衡参数效率与表达能力",
+  "双线性模型在状态跟踪任务上优于现有线性RNN"
+ ],
+ "weaknesses": [
+  "双线性模型参数量随输入维度和隐藏维度乘积增长",
+  "未充分探索模型在实际大规模语言模型中的应用",
+  "实验主要在合成任务上进行，缺乏真实场景验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

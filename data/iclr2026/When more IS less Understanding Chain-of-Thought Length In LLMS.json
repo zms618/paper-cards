@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/When more IS less Understanding Chain-of-Thought Length In LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/When more IS less Understanding Chain-of-Thought Length In LLMS.pdf",
+ "title": "When more is less: Understanding Chain-of-Thought Length in LLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "揭示CoT长度与准确率倒U关系，但误差累积模型过于简化",
+ "innovations": [
+  "实证+理论证明CoT越长并非越好：准确率随CoT长度呈倒U形，过长反而下降",
+  "揭示最优CoT长度的缩放规律：随任务难度增加、随模型能力下降，与当前复用同一CoT数据的做法不匹配",
+  "提出误差累积分析，刻画推理误差跨步传播，解析地推导上述缩放规律",
+  "证明RL可动态校准CoT长度缩小差距；用最优长度CoT训练+推理时长度感知过滤带来实质提升"
+ ],
+ "method_framework": "通过受控实验操纵CoT长度测准确率曲线；用误差累积(每步误差向后传播累积)建模长链为何降低准确率；据此推导最优长度与任务难度/模型能力的关系，并给出RL动态校准与长度感知过滤的实践方案。",
+ "experiment_framework": "在真实LLM与理论模型上做受控实验；指标为不同CoT长度下的任务准确率；对照SFT固定CoT与RL自适应CoT；报告最优长度训练+长度感知过滤的性能提升。",
+ "takeaways": [
+  "CoT长度存在最优值，过长导致误差累积而降低准确率(即过度思考)",
+  "最优长度应随任务难度/模型能力自适应，而非跨模型跨任务复用同一CoT",
+  "RL相较SFT的一个优势在于能动态校准CoT长度"
+ ],
+ "weaknesses": [
+  "误差累积模型假设每步误差同分布传播，对结构化/可纠错长链(含自校验)的刻画偏粗",
+  "最优长度的标定需已知任务难度与模型能力，实际部署中如何在线估计未充分展开",
+  "长度感知过滤在推理时可能误杀必要长链，误杀率分析不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "LLM推理可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

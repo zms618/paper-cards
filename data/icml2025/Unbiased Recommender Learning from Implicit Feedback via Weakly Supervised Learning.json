@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Unbiased Recommender Learning from Implicit Feedback via Weakly Supervised Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Unbiased Recommender Learning from Implicit Feedback via Weakly Supervised Learning.pdf",
+ "title": "Unbiased Recommender Learning from Implicit Feedback via Weakly Supervised Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "PU弱监督框架解决推荐负采样偏差，PPT估计类先验但效率与泛化存疑",
+ "innovations": [
+  "提出model-agnostic框架WeaklyRec：将隐式反馈推荐当作正样本-未标注(PU)弱监督学习问题，取消把未标注当负样本的负采样，消除误分潜在正样本的偏差",
+  "指出无偏性依赖类先验的准确估计，提出Progressive Proximal Transport(PPT)：通过最小化正样本与未标注样本间的近端传输代价来估计类先验",
+  "在三个真实数据集上验证推荐质量提升，代码开源"
+ ],
+ "method_framework": "把隐式反馈视为正/未标注数据，用PU学习范式训练排序/分类器；PPT以最优传输的近端形式逐步逼近并估计正类在总体中的先验比例π，代入PU无偏风险估计完成训练。",
+ "experiment_framework": "三个真实推荐数据集；对比负采样、IPS/纠偏类推荐方法与PU基线；指标为Recall/NDCG等Top-K推荐质量，并考察类先验估计准确性对结果的影响。",
+ "takeaways": [
+  "隐式反馈推荐的未标注数据中混有潜在正样本，负采样会引入偏差；改走PU弱监督路线可避免该误分",
+  "无偏PU方法的效果上限由类先验估计决定，近端传输式的先验估计比固定/经验先验更稳"
+ ],
+ "weaknesses": [
+  "仅三个数据集验证，缺乏工业级大规模与在线A/B证据；model-agnostic的代价是需为不同推荐骨干重新适配PU风险项",
+  "近端传输的计算复杂度随样本量增长，大规模推荐下效率未充分讨论；类先验估计的误差敏感性缺乏系统消融"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Does One-shot Give the Best Shot Mitigating Model Inconsistency in One-shot Federated Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Does One-shot Give the Best Shot Mitigating Model Inconsistency in One-shot Federated Learning.pdf",
+ "title": "Does One-shot Give the Best Shot? Mitigating Model Inconsistency in One-shot Federated Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "提出FAFI框架缓解单轮联邦学习的模型不一致问题，提升10.86%准确率。",
+ "innovations": [
+  "首次从经验与理论两方面揭示单轮联邦学习(OFL)中劣化本地模型导致退化全局模型的'garbage in-garbage out'不一致陷阱，表现为特征表示与样本预测发散",
+  "客户端采用无监督特征对齐与类别级原型学习，使各客户端在表示本地样本时保持一致",
+  "服务端提出信息感知的特征融合与原型聚合用于全局推理，缓解服务器端聚合方法的局限"
+ ],
+ "method_framework": "FAFI框架分客户端与服务器两侧。客户端在长期本地训练阶段引入无监督特征对齐和类别-wise原型学习，使不同客户端的本地特征空间与类别原型对齐，缓解单轮本地模型间的表示发散；服务器端不做迭代训练，而是基于上传模型做信息感知的特征融合与原型聚合，直接用于全局推理，避免在劣化本地模型上强行聚合。",
+ "experiment_framework": "在三个数据集上与11个OFL基线（优化类、蒸馏类、生成类、选择集成类）对比，以分类准确率为指标，报告相对11个基线提升+10.86%准确率，并给出与多轮FL的差距分析及消融。",
+ "takeaways": [
+  "OFL的性能瓶颈主要在客户端本地模型质量而非服务器聚合算法，仅改进服务器端无法突破",
+  "通过客户端特征对齐与原型一致性训练可显著提升单轮联邦聚合后的全局模型",
+  "在三个数据集上较11个OFL基线平均提升约10.86%准确率"
+ ],
+ "weaknesses": [
+  "方法依赖类别原型/无监督对齐假设，在极端标签倾斜或类别数极大场景下的稳定性未充分验证",
+  "仅与OFL基线对比，未充分讨论与多轮FL收敛代价的实际权衡",
+  "前9页内理论分析与消融细节有限，跨客户端数据异质性的边界条件交代不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

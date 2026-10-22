@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/ParallelComp_Parallel Long-Context Compressor for Length Extrapolation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ParallelComp_Parallel Long-Context Compressor for Length Extrapolation.pdf",
+ "title": "ParallelComp: Parallel Long-Context Compressor for Length Extrapolation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "并行KV压缩外推128K上下文，但可靠性弱且缺乏误差分析",
+ "innovations": [
+  "设计并行KV-cache驱逐机制，把输入分块并行处理以突破显存瓶颈",
+  "系统理论+实证分析并行注意力下的attention sink、recency bias、middle bias三种偏差模式",
+  "据此设计针对性的KV驱逐策略，在性能几乎无损下实现prefill 23.5x加速"
+ ],
+ "method_framework": "将超长输入切成若干块做并行注意力；基于对并行注意力偏差模式的分析，动态驱逐冗余块与无关token、压缩KV cache；免训练地把8K训练的8B模型外推到128K上下文。",
+ "experiment_framework": "在单张A100 80GB上，8B模型8K→128K；对比长上下文外推基线及Claude-2、Kimi-Chat、GPT-4；指标为超长上下文任务性能、分块吞吐与prefill加速比。",
+ "takeaways": [
+  "免训练即可将8B模型外推到128K并达GPT-4约91%性能，超过Claude-2/Kimi-Chat",
+  "并行注意力下三类偏差有独特模式，可被KV驱逐针对性缓解",
+  "1.76x分块吞吐与23.5x prefill加速，性能损失可忽略"
+ ],
+ "weaknesses": [
+  "与可靠性/多模态推理主线关联弱",
+  "免训练外推在精确检索类任务上仍可能掉点，前9页未见充分压力测试",
+  "并行驱逐依赖启发式冗余判据，缺乏对误驱逐关键token的误差界分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scalable Energy-Based Models via Adversarial Training Unifying Discrimination and Gen.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scalable Energy-Based Models via Adversarial Training Unifying Discrimination and Gen.pdf",
+ "title": "Scalable Energy-Based Models via Adversarial Training: Unifying Discrimination and Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "用对抗训练替代SGLD稳定JEM，在ImageNet上实现判别与生成SOTA。",
+ "innovations": [
+  "用AT式能量学习替代SGLD：以BCE损失区分真实数据与PGD生成的对比样本来优化能量函数，解决JEM训练不稳定/样本质量差的问题。",
+  "对判别分量做对抗训练提升对抗鲁棒性，同时隐式提供稳定EBM训练所需的梯度正则。",
+  "两阶段训练策略解决归一化相关不稳定并可复用预训练鲁棒分类器；首个扩展到高分辨率的EBM混合模型，单模型同时达判别与生成SOTA。"
+ ],
+ "method_framework": "在JEM架构上双重使用对抗训练：判别头用标准AT提升对抗鲁棒性；能量项用BCE区分真样本与PGD扰动对比样本做生成式能量学习；两阶段训练以稳定归一化并接入预训练鲁棒分类器。",
+ "experiment_framework": "在CIFAR-10/100与ImageNet 256×256上，同时报告分类准确率/对抗鲁棒性与生成质量(FID等)；对比diffusion(ADM-G/LDM-4-G)与自回归(VAR-d16)生成模型，并展示反事实解释与组合生成。",
+ "takeaways": [
+  "对抗训练可同时服务判别鲁棒性与稳定能量模型训练，替代SGLD实现可扩展的统一判别-生成建模。",
+  "单模型在ImageNet 256上同时取得SOTA判别鲁棒性与高保真生成，并支持忠实反事实解释。"
+ ],
+ "weaknesses": [
+  "为通用图像分类/生成的鲁棒性研究，非医学影像或多模态推理，与主线仅在'对抗鲁棒'概念上间接相关。",
+  "双重AT训练开销大，反事实解释的忠实性评估与人因验证、以及在更大规模的可扩展性证据有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.68,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "对抗鲁棒性间接相关主线，非医学或多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

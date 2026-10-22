@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Dai_FastEventDGS_Deformable_Gaussian_Splatting_for_Fast_Dynamic_Scenes_from_a_CVPR_2026_paper.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/FastEventDGS_Deformable Gaussian Splatting for Fast Dynamic Scenes from a.pdf",
+ "title": "FastEventDGS: Deformable Gaussian Splatting for Fast Dynamic Scenes from a Single Event Camera",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.4
+ },
+ "one_line": "单事件相机动态重建，组件堆叠缺真实定量验证",
+ "innovations": [
+  "首个仅凭单目事件流训练可变形高斯做4D动态重建的框架，免除RGB帧/Lidar辅助传感器及其标定，简化硬件设定",
+  "局部patch事件运动损失：令高斯2D投影在短时段内不偏离邻近事件边缘的时间积分，显式运动监督抑制形变MLP对训练视角的过拟合",
+  "双事件生成模型：ESI全局光度约束+小间隔线性化事件流损失（把光流分解为相机流+高斯流，用渲染梯度预测亮度增量）；Refine阶段引入VGGT深度SiLog校正与非事件区/空间梯度正则"
+ ],
+ "method_framework": "B样条拟合连续相机轨迹以在任意时刻查询位姿；可变形3DGS渲染相邻两帧取对数差匹配事件积分(ESI)；光流=相机流+高斯流构造线性事件流损失；patch级事件边缘运动约束； warm-up后加运动损失，末段加VGGT深度与两项正则。",
+ "experiment_framework": "自建BlenderDynamicEvent(合成4场景)+Gen4Dynamic(真实，仅定性)；对比Event3GS/EvDNeRF/E2VID-DGS/Frame-DGS；合成集PSNR/SSIM/LPIPS，PSNR领先约5-8dB；无直接可比的事件-only DGS基线。",
+ "takeaways": [
+  "从传感器物理导出监督信号：事件只在亮度变化处触发，故非事件区可用'亮度不应超阈'做正则——这种由数据生成模型反推约束的思路可推广到其他稀缺模态",
+  "开新任务时的基线拼盘策略：无直接可比方法时，用静态事件GS/事件NeRF/两阶段E2VID+DGS/模糊RGB-DGS四种相邻设定凑出对照面，并明确声明可比性局限"
+ ],
+ "weaknesses": [
+  "真实数据集无任何定量结果（以无可靠GT为由仅定性），核心卖点是高速动态场景却缺数值证据；节选未见消融表与运行时间对比，'Fast'命名无实锤",
+  "方法为既有组件堆叠（B样条轨迹、ESI、流监督、VGGT、正则项），单点技术贡献有限；基准全部自建，提升幅度含任务设定差异成分，外部效度有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "动态重建与可靠性主线无实质交点，仅事件相机应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

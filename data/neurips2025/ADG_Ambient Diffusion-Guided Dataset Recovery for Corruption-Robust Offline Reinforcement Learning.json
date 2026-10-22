@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/ADG_Ambient Diffusion-Guided Dataset Recovery for Corruption-Robust Offline Reinforcement Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/ADG_Ambient Diffusion-Guided Dataset Recovery for Corruption-Robust Offline Reinforcement Learning.pdf",
+ "title": "ADG: Ambient Diffusion-Guided Dataset Recovery for Corruption-Robust Offline Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "扩散模型修复离线RL数据，提升鲁棒性但计算开销大",
+ "innovations": [
+  "环境扩散概率模型(Ambient DDPM)处理部分 corrupted 数据",
+  "利用噪声预测特性区分干净和损坏数据",
+  "三阶段数据恢复框架，可集成到任何离线RL算法"
+ ],
+ "method_framework": "提出ADG方法，包含三个阶段：1)训练环境DDPM检测器；2)用干净数据训练标准DDPM去噪器；3)用去噪器恢复损坏数据，形成高质量数据集",
+ "experiment_framework": "在MuJoCo、Kitchen和Adroit基准上测试，对比CQL、IQL、RIQL、DT和RDT等算法，评估随机和对抗性数据 corruption 下的性能",
+ "takeaways": [
+  "扩散模型可有效处理部分 corrupted 数据，无需外部监督",
+  "方法设计简洁，可无缝集成到现有离线RL算法",
+  "在有限数据集上表现尤为突出"
+ ],
+ "weaknesses": [
+  "理论分析依赖于特定假设，实际应用可能有偏差",
+  "计算开销较大，需要训练两个扩散模型",
+  "对 corruption 类型的泛化能力需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

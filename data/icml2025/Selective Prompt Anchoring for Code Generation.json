@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Selective Prompt Anchoring for Code Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Selective Prompt Anchoring for Code Generation.pdf",
+ "title": "Selective Prompt Anchoring for Code Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6.5,
+  "relevance": 7,
+  "overall": 6.3
+ },
+ "one_line": "针对代码LLM注意力稀释现象，提出选择性提示锚定方法提升长代码生成质量。",
+ "innovations": [
+  "通过分析五个代码LLM揭示'注意力稀释'现象：生成代码token越多，对用户提示的关注越低，导致偏离意图与错误。",
+  "提出受心理学锚定效应启发的SPA，模型无关地放大用户提示(锚定文本)的上下文影响，引导模型持续关注用户意图。",
+  "在六个基座LLM、六个基准上Pass@1最高提升12.9%，各设置下均优于SOTA提示/解码方法。"
+ ],
+ "method_framework": "模型无关的推理时注意力引导方法。先定位用户提示中起锚定作用的关键文本片段(anchored text)，在生成过程中选择性放大这些锚定片段对后续token的上下文影响(注意力权重)，对抗随序列变长而对原始prompt关注度衰减的问题，使长代码生成不偏离用户意图。",
+ "experiment_framework": "六个代码基座LLM×六个代码生成基准(如HumanEval/MBPP类)评测；对比RAG、CoT、自规划调试及SOTA提示/解码方法，指标为Pass@1；做锚定片段选择策略、放大强度与生成长度的消融，并随生成token数分析准确率下降曲线。",
+ "takeaways": [
+  "对用户提示的注意力随生成长度稀释是代码LLM出错的重要原因。",
+  "选择性放大提示锚定片段可在不微调模型的情况下显著提升长代码生成正确性。"
+ ],
+ "weaknesses": [
+  "锚定片段的自动选择质量直接决定效果，选择错误时可能适得其反。",
+  "放大注意力的机制依赖可访问/干预注意力权重，对不暴露内部注意力的闭源模型不适用。",
+  "主要在标准代码基准验证，对复杂真实仓库级代码的迁移证据有限。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

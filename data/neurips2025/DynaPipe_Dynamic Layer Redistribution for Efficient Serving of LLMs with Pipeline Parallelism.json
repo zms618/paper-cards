@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/DynaPipe_Dynamic Layer Redistribution for Efficient Serving of LLMs with Pipeline Parallelism.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/DynaPipe_Dynamic Layer Redistribution for Efficient Serving of LLMs with Pipeline Parallelism.pdf",
+ "title": "DynaPipe: Dynamic Layer Redistribution for Efficient Serving of LLMs with Pipeline Parallelism",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "动态层重分配减少LLM流水线气泡，提升推理效率",
+ "innovations": [
+  "识别采样操作导致的流水线气泡问题",
+  "动态层重分配方案平衡计算负载",
+  "异步KV缓存迁移协调器实现无阻塞层重分配"
+ ],
+ "method_framework": "DynaPipe包含执行时间预测器、气泡感知调度器和迁移协调器三部分，动态调整层分配以平衡前向计算和采样负载。",
+ "experiment_framework": "基于gLLM实现，在ShareGPT和Azure-Conv数据集上测试Qwen2.5-14B和32B模型，与vLLM、gLLM和SGLang对比，评估E2EL和SLO达标率。",
+ "takeaways": [
+  "动态负载平衡对解决LLM推理瓶颈至关重要",
+  "异步迁移机制可避免流水线停顿",
+  "采样开销是影响流水线效率的关键因素"
+ ],
+ "weaknesses": [
+  "仅关注流水线并行，未与其他并行策略结合",
+  "实验主要在特定硬件环境进行，泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

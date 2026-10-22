@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mobilerl_Online Agentic Reinforcement Learning for Mobile GUI Agents.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mobilerl_Online Agentic Reinforcement Learning for Mobile GUI Agents.pdf",
+ "title": "MobileRL: Online Agentic Reinforcement Learning for Mobile GUI Agents",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "MobileRL：移动GUI智能体的在线RL框架，改进GRPO算法提升任务成功率。",
+ "innovations": [
+  "提出难度自适应GRPO(AdaGRPO)：难度自适应正样本回放与失败课程过滤，使模型适配不同任务难度",
+  "最短路径奖励调整策略，针对多轮智能体任务按任务长度重塑奖励",
+  "将框架应用于Qwen2.5-VL-7B与GLM-4.1V-9B两个开源模型并开源"
+ ],
+ "method_framework": "在GRPO基础上设计AdaGRPO：通过对轨迹按难度分组做正样本回放、过滤失败课程样本稳定RL训练；用最短路径长度对多轮任务奖励做长度归一化重塑，缓解长任务奖励稀疏问题，提升样本效率。",
+ "experiment_framework": "在AndroidWorld与AndroidLab两个移动GUI智能体基准上评测，对比GPT-4o、UI-TARS、Droid、AutoGLM等；指标为任务成功率；MobileRL-9B在AndroidWorld达80.2%、AndroidLab达53.6%，均为SOTA。",
+ "takeaways": [
+  "难度自适应回放与失败课程过滤能稳定移动GUI智能体的在线RL训练",
+  "按任务长度的最短路径奖励重塑可提升多轮智能体任务样本效率",
+  "在线RL在开源VL模型上即可显著超过SFT与离线模仿学习"
+ ],
+ "weaknesses": [
+  "relevance偏离主线(非可靠性/医疗影像)，属GUI智能体RL工程",
+  "算法多为GRPO的启发式改造，缺乏对难度估计方式的严格理论分析",
+  "成功率提升依赖大规模环境交互采样，成本与可复现性未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.68,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "GUI智能体RL工程，偏离可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

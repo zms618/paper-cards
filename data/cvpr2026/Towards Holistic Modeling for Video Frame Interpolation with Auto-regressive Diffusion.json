@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Towards Holistic Modeling for Video Frame Interpolation with Auto-regressive Diffusion.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Towards Holistic Modeling for Video Frame Interpolation with Auto-regressive Diffusion.pdf",
+ "title": "Towards Holistic Modeling for Video Frame Interpolation with Auto-regressive Diffusion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "自回归扩散视频插值，计算复杂度高，应用验证有限",
+ "innovations": [
+  "局部扩散强制(LDF-VFI)视频中心范式",
+  "跳跃连接采样策略缓解误差累积",
+  "稀疏局部注意力与瓦片VAE编码实现高分辨率扩展"
+ ],
+ "method_framework": "基于自回归扩散transformer，将视频分为时间块，每个块内同时生成所有帧，块间通过跳跃连接采样保持长程一致性，结合稀疏注意力和瓦片VAE实现高分辨率处理。",
+ "experiment_framework": "SNU-FILM-entire和X4K-entire基准测试，对比RIFE、AMT、EMA-VFI、BiM-VFI和EDEN等方法，使用LPIPS、FVD、VFIPS和FloLPIPS指标评估。",
+ "takeaways": [
+  "视频中心范式优于传统帧中心方法",
+  "跳跃连接策略有效缓解自回归生成中的误差累积问题"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，需要多GPU处理4K视频",
+  "仅评估了插值任务，未探索其他视频生成应用"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "视频插值与可靠性主线无交点，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

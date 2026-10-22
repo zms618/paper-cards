@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/PaTH Attention_Position Encoding via Accumulating Householder Transformations.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/PaTH Attention_Position Encoding via Accumulating Householder Transformations.pdf",
+ "title": "PaTH Attention: Position Encoding via Accumulating Householder Transformations",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.7
+ },
+ "one_line": "Householder变换位置编码，理论NC1但计算开销大，小模型验证",
+ "innovations": [
+  "引入数据依赖的Householder变换作为位置编码",
+  "提出UT变换高效计算Householder矩阵乘积",
+  "设计FlashAttention风格的块状算法实现高效训练",
+  "证明PaTH可将Transformer扩展至NC1复杂度类"
+ ],
+ "method_framework": "PaTH使用数据依赖的Householder-like矩阵Ht=I-βtwtwTt作为位置编码，通过累积乘积构建动态位置关系，结合FlashAttention实现高效计算。",
+ "experiment_framework": "合成任务(FFLM、A5字问题、MQRAR-N)和语言模型(WikiText、LAMBADA、长上下文任务)，与RoPE、FoX、SBA等基线对比。",
+ "takeaways": [
+  "数据依赖的位置编码可显著提升序列建模能力",
+  "UT变换和块状算法使复杂计算可行",
+  "结合遗忘机制(PaTH-FoX)可进一步提升长上下文性能"
+ ],
+ "weaknesses": [
+  "计算复杂度高于标准注意力，虽优化但仍有一定开销",
+  "仅在小规模模型(760M)上验证，未在更大模型上测试",
+  "理论证明与实际性能间存在差距"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

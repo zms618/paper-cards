@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Greater Leverage Scaling Laws for Efficient MOE Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Greater Leverage Scaling Laws for Efficient MOE Language Models.pdf",
+ "title": "Towards Greater Leverage: Scaling Laws for Efficient MoE Language Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "定义EL度量MoE算力优势，拟合缩放律，小模型验证。",
+ "innovations": [
+  "定义Efficiency Leverage(EL)：达到相同loss时稠密模型所需算力与MoE算力之比，作为MoE架构比较的统一基准",
+  "大规模实证(300+模型至28B)发现EL主要由专家激活比与总算力驱动(均呈幂律)，专家粒度为非线性调制且存在最优区间",
+  "整合为统一缩放律；并训练MoE-mini(0.85B激活)在1T token上匹配6.1B稠密模型，省7倍算力，验证缩放律准确性"
+ ],
+ "method_framework": "针对MoE总参/激活参都不能单独代表容量的问题，定义EL为MoE相对稠密等效模型的算力杠杆比。三阶段方法：建立公平训练条件→系统改变专家激活比/粒度/算力拟合幂律→汇总成可由配置预测EL的统一缩放律。",
+ "experiment_framework": "训练300+模型(最大28B)拟合EL与专家激活比、粒度、算力的关系；再用统一缩放律预测并训练MoE-mini(0.85B激活)对照6.1B稠密模型，同1T高质量token下比较loss/性能与算力消耗。",
+ "takeaways": [
+  "EL可作为预测MoE有效容量的可靠度量，激活比与算力呈幂律",
+  "专家粒度存在最优区间，过小或过大都降低效率杠杆",
+  "缩放律被独立训练的MoE-mini验证：0.85B激活即匹配6.1B稠密，省7倍算力"
+ ],
+ "weaknesses": [
+  "缩放律基于特定token质量与训练设定，换数据分布/课程时是否仍成立未充分验证",
+  "仅在≤28B规模拟合，向前沿超大模型外推的不确定性未量化",
+  "属MoE效率/缩放律方向，与可靠性主线及医学影像、多模态推理落地域无关"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "MoE效率优化与可靠性主线及落地域无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

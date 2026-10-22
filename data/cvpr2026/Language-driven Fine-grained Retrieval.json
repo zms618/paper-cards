@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Language-driven Fine-grained Retrieval.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Language-driven Fine-grained Retrieval.pdf",
+ "title": "Language-driven Fine-grained Retrieval",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.6
+ },
+ "one_line": "LLM生成属性监督提升检索，但计算开销大且泛化存疑",
+ "innovations": [
+  "将类别名从one-hot标签扩展为语义丰富的监督信号",
+  "通过LLM生成细粒度描述，VLM投影到视觉对齐空间",
+  "构建全局属性词汇表，实现跨类别属性共享与噪声过滤",
+  "分布级对齐方法保持实例特定特征的同时建立语言一致性外观建模"
+ ],
+ "method_framework": "LaFG框架将类别名作为语义锚点，LLM生成属性描述，VLM编码为视觉对齐嵌入，聚类形成全局属性词汇，选择类别相关属性聚合为语言原型，通过分布对齐监督检索模型学习细节可比性。",
+ "experiment_framework": "在CUB-200-2011、Stanford Cars和SOP数据集上评估，使用Recall@K指标，与多种先进方法对比，并进行消融实验验证各组件贡献。",
+ "takeaways": [
+  "利用LLM生成细粒度描述可提供更丰富的监督信号",
+  "跨类别属性聚类可解决LLM描述不完整和噪声问题",
+  "分布级对齐比直接嵌入对齐更有效保持实例特定特征"
+ ],
+ "weaknesses": [
+  "依赖LLM和VLM的计算开销较大",
+  "属性词汇构建过程可能丢失部分类别特定信息",
+  "方法在极端细粒度任务上的泛化能力有待进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "细粒度检索与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

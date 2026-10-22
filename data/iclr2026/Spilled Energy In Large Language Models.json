@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Spilled Energy In Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Spilled Energy In Large Language Models.pdf",
+ "title": "Spilled Energy in Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "将softmax重解释为能量模型，提出免训练指标定位幻觉，但因果机制不明确",
+ "innovations": [
+  "将最终softmax分类器重解释为能量基模型，把序列到序列概率链分解为推理时多个相互作用的EBM",
+  "提出完全免训练的溢出能量指标，刻画相邻生成步之间理论上应匹配却出现的能量值差异",
+  "提出单步即可测的边缘能量指标，二者均可直接从输出logits得到，无需训练探针分类器或做激活消融"
+ ],
+ "method_framework": "把每步softmax视为EBM，其负对数似然即能量；理论上相邻生成步的能量应相互匹配，实际解码中出现的能量不匹配即为'溢出'。直接从logits计算两指标：跨步能量差(溢出能量)与单步边缘能量，用以定位具体答案token并检测幻觉，全程无训练开销。",
+ "experiment_framework": "在9个基准上评测，覆盖LLaMA/Mistral/Gemma等SOTA LLM及Qwen3合成代数任务；以幻觉检测AUC/定位精度为指标，对比logit置信度等免训练基线与需探针的方法；预训练与指令微调变体均验证，报告跨任务泛化与竞争力的检测性能。",
+ "takeaways": [
+  "解码中的'能量溢出'与事实错误、偏见、失败在经验上相关，可作为幻觉信号",
+  "从logits直接算的能量指标无需训练探针/激活消融即可定位具体答案token",
+  "该方法跨LLM家族、跨预训练/指令微调变体稳定有效，零训练开销"
+ ],
+ "weaknesses": [
+  "EBM重解释虽自洽，但能量溢出与错误之间的因果机制缺乏更严格的理论推导",
+  "在长链推理/多步数学上错误定位的精度随序列变长可能衰减，未充分分析",
+  "与强训练型验证器/过程奖励模型相比的检测增益量级需更清晰的对比基线"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "能量模型解释幻觉检测，与可靠性主线部分交织但因果机制不明确",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

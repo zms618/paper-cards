@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/PolarQuant_Leveraging Polar Transformation for Key Cache Quantization and Decoding Acceleration.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/PolarQuant_Leveraging Polar Transformation for Key Cache Quantization and Decoding Acceleration.pdf",
+ "title": "PolarQuant: Leveraging Polar Transformation for Key Cache Quantization and Decoding Acceleration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "极坐标变换KV缓存量化，加速解码但未处理value缓存",
+ "innovations": [
+  "极坐标变换处理key缓存异常值",
+  "非对称量化半径和角度",
+  "查询-键乘法转为表查找加速解码"
+ ],
+ "method_framework": "将key向量转换为极坐标，半径和角度分别量化，避免RoPE重新计算，实现查询-键乘法表查找加速",
+ "experiment_framework": "LongBench、5-shot CoT GSM8K、DeepSeek-R1推理模型，对比KIVI、ZipCache等方法，评估性能和吞吐量",
+ "takeaways": [
+  "极坐标变换缓解通道异常值问题",
+  "非对称量化策略提高效率",
+  "表查找方法显著加速解码"
+ ],
+ "weaknesses": [
+  "仅关注key缓存量化，未处理value缓存",
+  "极坐标转换可能引入额外计算开销",
+  "实验主要在特定模型上进行"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

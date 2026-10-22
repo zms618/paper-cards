@@ -1,0 +1,37 @@
+{
+ "key": "iclr2026/Odebrain_Continuous-Time Eeg Graph for Modeling Dynamic Brain Networks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Odebrain_Continuous-Time Eeg Graph for Modeling Dynamic Brain Networks.pdf",
+ "title": "ODEBrain: Continuous-Time EEG Graph for Modeling Dynamic Brain Networks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "elevance": 5.5,
+  "evidence": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "ODEBrain用Neural ODE建模EEG连续动态，提升预测鲁棒性但临床价值有限",
+ "innovations": [
+  "指出现有时间图网络把 EEG 离散成固定步长，与脑网络的连续本质冲突，导致累积误差、无法捕捉瞬时非线性",
+  "将时空频(spatio-temporal-frequency)特征整合为谱图节点，再用 Neural ODE 建模连续隐动态",
+  "使隐表示能在任意时间点刻画复杂脑状态的随机变化，显著提升 EEG 动态预测的鲁棒性与泛化"
+ ],
+ "method_framework": "把多通道 EEG 表示为图，节点融合空间、时间、频域特征；用 GNN 捕获空间依赖、构造适合 ODE 初始化的隐状态；再用 Neural ODE 对隐状态做连续时间积分演化，避免 RNN 固定步长离散化的累积误差，支持任意时刻预测。",
+ "experiment_framework": "在 EEG 动态预测任务上对比时间图网络/RNN 类方法；报告预测精度，并测鲁棒性与泛化能力。",
+ "takeaways": [
+  "连续时间 ODE 建模比离散 RNN 更适合刻画脑网络的连续、不规则动态",
+  "时空频多特征融合为 ODE 提供更好的节点初始化",
+  "ODEBrain 在 EEG 预测上精度、鲁棒性、泛化均优于离散基线"
+ ],
+ "weaknesses": [
+  "价值在于预测脑动态而非临床诊断/biomarker 验证，临床落地证据不足",
+  "Neural ODE 的连续积分增加计算成本，正文未报告效率",
+  "属医学信号建模但非可靠性×医学影像主线，相关性中等偏低"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

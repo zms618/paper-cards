@@ -1,0 +1,41 @@
+{
+ "title": "UniCA: Unified Covariate Adaptation for Time Series Foundation Model",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "常规方法适配异质协变量，依赖预训练TSFM，未充分验证鲁棒性。",
+ "innovations": [
+  "指出现有 TSFM 主要面向实值序列，难以利用类别变量与图像/文本等任务相关的异质协变量。",
+  "提出协变量同质化(homogenization)：把异质协变量转为高层同质序列表示。",
+  "提出统一注意力融合机制，在保留 TSFM 原泛化能力的同时融入额外协变量，统一适配同质与异质协变量。"
+ ],
+ "method_framework": "先将各类异质协变量(类别ID/日历特征/多模态图像文本)编码并同化为与目标序列同构的高层序列表示；再以统一注意力融合机制把协变量表示与 TSFM 的目标序列表示融合，从而在微调适配阶段注入协变量而不破坏大规模预训练得到的时序泛化。",
+ "experiment_framework": "在多个单模态与多模态协变量感知预测基准上，与无协变量 TSFM、专用协变量模型对比，报告预测精度，验证对同质/异质协变量的通用性。",
+ "takeaways": [
+  "多数 TSFM 只能利用与目标同构的同质协变量，难以接入类别/多模态异质协变量。",
+  "协变量同质化+统一注意力融合可在不损 TSFM 泛化的前提下注入任务相关协变量。",
+  "该适配框架在真实预测场景下优于专用协变量模型与无协变量 TSFM。"
+ ],
+ "weaknesses": [
+  "异质协变量(尤其多模态图像/文本)需额外编码器，适配成本与数据对齐负担不小。",
+  "方法依赖预训练 TSFM 的冻结表示，对协变量与目标关系高度错位场景的稳健性未充分分析。",
+  "属时间序列预测适配，与可靠性/医学影像/多模态推理主线无关；完整多模态基准结果表未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/UNICA_Unified Covariate Adaptation for Time Series Foundation Model.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/UNICA_Unified Covariate Adaptation for Time Series Foundation Model.pdf",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "时序预测适配，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

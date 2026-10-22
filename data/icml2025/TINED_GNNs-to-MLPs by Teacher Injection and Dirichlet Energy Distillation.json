@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/TINED_GNNs-to-MLPs by Teacher Injection and Dirichlet Energy Distillation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/TINED_GNNs-to-MLPs by Teacher Injection and Dirichlet Energy Distillation.pdf",
+ "title": "TINED: GNNs-to-MLPs by Teacher Injection and Dirichlet Energy Distillation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "GNN逐层蒸馏为MLP，参数注入+Dirichlet能量传递图特性",
+ "innovations": [
+  "按层剖析 GNN 的特征变换（FT）与图传播（GP）两种操作，指出 FT 在计算上等价于 MLP 的全连接层。",
+  "Teacher Injection：把教师 GNN 的 FT 参数直接迁移到学生 MLP 的 FC 层并微调，而非仅蒸馏软标签。",
+  "用 Dirichlet 能量定义 DE 比值度量 GP（激进平滑）与 FT（保守平滑）的对立效应，并提出 Dirichlet 能量蒸馏将该特性逐层传递；同时给出 GP 近似的理论界。"
+ ],
+ "method_framework": "学生 MLP 的 FC 层按顺序复刻 GNN 的 FT→GP 序列。FT 层直接由教师对应层参数初始化（教师注入）+微调；GP 层因无图结构无法直接复制，改用 Dirichlet 能量蒸馏约束学生复现教师的平滑程度，从而在推理期彻底摆脱多跳邻居消息传递，实现 MLP 快速推理。",
+ "experiment_framework": "在节点分类基准图数据集上，以 GLNN、NOSMOG 等 GNN→MLP 蒸馏方法为基线；指标为节点分类精度与推理延迟/扩展性。",
+ "takeaways": [
+  "逐层蒸馏比把师生当整体、只蒸馏输出软标签更能保留 GNN 的层内知识。",
+  "Teacher Injection 提供了良好的参数初始化起点。",
+  "Dirichlet 能量蒸馏有效传递了图传播的平滑特性。"
+ ],
+ "weaknesses": [
+  "属于图模型压缩/推理加速方向，与医学影像/多模态推理主线无关，relevance 受限。",
+  "免图推理的 MLP 在分布外/图结构漂移场景下精度损失未充分评估。",
+  "GP 近似的理论界在前9页所示范围内较为理想化，对深层 GNN 与异配图的紧致性缺乏实证对照。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Variational Deep Learning via Implicit Regularization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Variational Deep Learning via Implicit Regularization.pdf",
+ "title": "Variational Deep Learning via Implicit Regularization",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.6
+ },
+ "one_line": "移除KL正则项，依赖SGD隐式偏置实现变分推断",
+ "innovations": [
+  "提出仅靠SGD隐式偏置正则化变分神经网络的方法——去掉显式KL散度正则项，仅最大化期望对数似然",
+  "在过参数化线性模型上严格证明SGD的隐式偏置等价于带2-Wasserstein正则项的广义变分推断",
+  "证明参数化选择的重要性——正确初始化和参数化下，去掉KL项不会导致不确定性坍缩"
+ ],
+ "method_framework": "传统变分贝叶斯需要显式KL正则项防止不确定性坍缩，但这引入了先验选择和额外计算开销。本文提出：在变分神经网络中去掉KL正则项，仅靠SGD的隐式偏置来提供正则化。理论上证明，在过参数化线性模型中，(S)GD的隐式偏置等价于广义变分推断，其中2-Wasserstein距离隐式地惩罚偏离先验的程度。关键是正确的参数化和初始化设计。",
+ "experiment_framework": "理论：过参数化线性模型的严格证明。实证：多层MLP等深度模型的in-distribution和out-of-distribution性能。基线：标准NN、mean-field VI(KL正则)、广义VI(W2正则)。指标：预测性能、不确定性估计质量。",
+ "takeaways": [
+  "SGD的隐式偏置本身就能提供变分正则化效果，不需要显式KL项",
+  "正确的参数化设计是关键——它决定了隐式正则化的形式和效果",
+  "该方法计算开销小，不需要额外超参数调优，in-distribution和OOD性能都良好"
+ ],
+ "weaknesses": [
+  "理论保证主要基于过参数化线性模型，深度非线性网络的严格理论仍缺乏",
+  "参数化设计的最佳实践仍需更多经验指导",
+  "与最先进贝叶斯方法的系统对比可能不够充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "变分推断方法创新，但未触及可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

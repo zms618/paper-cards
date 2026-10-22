@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Towards the Efficient Inference by Incorporating Automated Computational Phenotypes under Covariate Shift.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Towards the Efficient Inference by Incorporating Automated Computational Phenotypes under Covariate Shift.pdf",
+ "title": "Towards the Efficient Inference by Incorporating Automated Computational Phenotypes under Covariate Shift",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "协变量漂移下用ACP构建双重稳健估计，效率增益主要来自无标注数据",
+ "innovations": [
+  "在协变量漂移半监督框架下，为无标注与合并总体的一般目标参数构建双重稳健(doubly robust)、半参有效估计量",
+  "严谨分析并入ACP带来的效率增益，识别出真正驱动增益的是无标注数据上的ACP而非标注数据上的ACP",
+  "在合成实验与多个真实EHR数据集（如UF儿童青少年糖尿病研究）上验证实际优势"
+ ],
+ "method_framework": "金标准表型仅经昂贵人工病历回顾在少数分层抽样个体上获得，而ACP（基于决策树/ML从EHR自动计算的表型）覆盖全部个体。分层抽样造成标注与EHR总体间协变量漂移。本文把ACP并入经典半监督推断，构造双重稳健估计量：对标注数据用金标准、对无标注数据用ACP作为代理，通过样本翻转/倾向加权实现半参有效，并区分标注与无标注ACP对效率的不同贡献。",
+ "experiment_framework": "半监督+协变量漂移设定；综合合成实验与多个真实EHR数据集（UF糖尿病队列等），对比有/无ACP并入、标注/无标注ACP的估计效率与偏差，指标为估计方差/置信区间宽度与覆盖率。",
+ "takeaways": [
+  "不能不加区分地用ACP替代金标准，否则因ACP训练目标(MSE)与下游推断目标不一致而引入偏差",
+  "在协变量漂移下构造双重稳健半参有效估计，可同时获得ACP的样本规模与金标准的有效性",
+  "效率增益主要来自无标注数据上的ACP，而非标注数据上的ACP"
+ ],
+ "weaknesses": [
+  "双重稳健依赖倾向/结果模型正确设定其一，实际EHR中模型误设时的表现需后续页",
+  "前9页主要为动机与框架，完整理论效率界与真实数据结果表在后续页",
+  "仅针对协变量漂移这一半监督迁移假设，标签漂移/选择偏差等其他机制未覆盖"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

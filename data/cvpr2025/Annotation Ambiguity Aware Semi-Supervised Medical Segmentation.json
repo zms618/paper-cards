@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Annotation Ambiguity Aware Semi-Supervised Medical Segmentation.pdf",
+ "conf": "cvpr2025",
+ "path": "C:\\Users\\James\\Desktop\\study\\paper\\项目记忆\\论文卡片\\精读卡片库\\cvpr2025\\Annotation Ambiguity Aware Semi-Supervised Medical Segmentation.json",
+ "title": "Annotation Ambiguity Aware Semi-Supervised Medical Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "利用标注歧义生成伪标签，但实验对比与统计严谨性不足",
+ "innovations": [
+  "DPG：对 backbone/decoder 最终层权重做随机 pruning，生成两个变体解码器 φ/ξ，再结合先验分布采样潜码生成多套伪标签并做集成，把「标注歧义」显式建模为解码器假设集合之间的不一致。",
+  "SSLDL：区分先验与后验分布并用 KL 做 prior/posterior 对齐；关键选择是无标注数据使用 Laplace 先验而非 Gaussian 先验，直接避免对伪标签过度自信。",
+  "CDS：跨解码器监督——一个解码器输出的伪标签去监督另一个，让两个被随机剪枝出来的变体在同一标注歧义下互为监督源。"
+ ],
+ "method_framework": "随机剪枝解码器得 φ/ξ + 潜码先验采样 → 多伪标签集与集成 → prior/posterior 分布 KL 对齐（无标数据用 Laplace 先验）→ 跨解码器互监督 CDS。",
+ "experiment_framework": "LIDC-IDRI（12 位放射科医生标注，4 折）与 ISIC 2018（3 位专家）；5%/10% 标注 + 剩余无标注；指标 GED、Dicesoft、Dicemax、Dicematch。",
+ "takeaways": [
+  "把多医生标注不一致本身当监督信号（而非当噪声滤掉），在 5%/10% 标注设定下把 Dicesoft 提到 0.3358 并超过所有弱基线：医学标注的组间方差是可利用资源而非纯噪声。",
+  "无标注数据改用 Laplace 而非 Gaussian 先验是决定性的小改动，直接对应「伪标签置信度不应被高估」的校准诉求，且 Dicesoft 与 Dicemax/Dicematch 三个指标一致支持该结论。"
+ ],
+ "weaknesses": [
+  "表内最强对照 Baseline I/II/III 是论文按模块逐个去掉自己改造出来的，不是已发表方法；Prob. U-Net/CM-Global/CM-Pixel 等在 5% 设定下的 Dicesoft（约 0.34–0.39）与 ours 的 0.3358 差距靠 GED 主排序掩盖，主表分档给了过宽的结论。",
+  "随机剪枝率、先验分布形状、潜码采样数等超参未做敏感性分析；而 ours 与最强公开对照的 Dicesoft 差距最大只有 0.02 上下，落在多折波动范围内，正文却未报任何方差。",
+  "GED/Dicematch 自成一套指标，可比性依赖双方使用同一组阈值 τ 与软标注定义；ISIC 只有 3 位专家时 GED 的期望项 E[d(A,A′)] 估计量过小、指标方差会被放大，正文未处理该小样本统计问题。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学标注歧义建模与校准，可靠性主线落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

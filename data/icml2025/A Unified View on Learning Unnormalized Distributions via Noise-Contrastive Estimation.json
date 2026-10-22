@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/A Unified View on Learning Unnormalized Distributions via Noise-Contrastive Estimation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/A Unified View on Learning Unnormalized Distributions via Noise-Contrastive Estimation.pdf",
+ "title": "A Unified View on Learning Unnormalized Distributions via Noise-Contrastive Estimation",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 4,
+  "relevance": 5.0,
+  "overall": 6.0
+ },
+ "one_line": "理论统一非归一化分布估计，但缺乏实验验证与深度学习连接",
+ "innovations": [
+  "提出α-CentNCE统一框架，将MLE、MC-MLE、GlobalGISO、伪似然、ISO等多种非归一化分布估计方法统一为特例",
+  "证明f-CondNCE在小噪声 regime下并不收敛到score matching估计器（与原论文声称相反），其方差在噪声消失时发散",
+  "为有界指数族分布建立了NCE估计量的有限样本收敛保证，据作者称是此类估计的首批有限样本结果"
+ ],
+ "method_framework": "基于f散度定义f-NCE目标函数，通过质心化（centered）扩展为α-CentNCE。利用Bregman散度性质分析不同f函数对应的估计器，建立与MLE、伪似然、交互筛选目标等的联系。在指数族正则性假设下推导有限样本收敛率。",
+ "experiment_framework": "纯理论论文，正文前9页无数值实验。主要通过理论推导和证明给出收敛保证，实验可能在附录中。",
+ "takeaways": [
+  "不同社区独立提出的多种非归一化分布估计方法可以在NCE框架下统一理解",
+  "f-CondNCE在小噪声下的行为与原声称的score matching等价性不同，实际方差会发散",
+  "指数族下的NCE类估计器可以获得O(1/√n)级别的有限样本收敛率"
+ ],
+ "weaknesses": [
+  "正文无任何数值实验验证理论结果的实际表现",
+  "理论假设较多（有界指数族、正则性条件等），对深度能量模型的适用性不明",
+  "与当前深度学习主流的score-based生成模型联系的讨论较浅"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "理论统一非归一化分布估计，但缺乏实验验证与深度学习连接",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

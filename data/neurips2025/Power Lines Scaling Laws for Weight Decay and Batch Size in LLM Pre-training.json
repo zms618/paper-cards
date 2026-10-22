@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Power Lines Scaling Laws for Weight Decay and Batch Size in LLM Pre-training.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Power Lines Scaling Laws for Weight Decay and Batch Size in LLM Pre-training.pdf",
+ "title": "Power Lines: Scaling Laws for Weight Decay and Batch Size in LLM Pre-training",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "LLM预训练中权重衰减和批量大小的幂律缩放规律研究",
+ "innovations": [
+  "发现AdamW时间尺度τ与token/参数比(TPP)的幂律关系",
+  "证明最优批大小Bopt和临界批大小Bcrit与数据量D的幂律关系",
+  "提出权重衰减λ随批大小B线性缩放的规律"
+ ],
+ "method_framework": "基于µP训练多种规模的GPT2模型，系统研究权重衰减λ、批大小B、模型大小N和数据量D之间的关系，拟合幂律缩放公式。",
+ "experiment_framework": "使用SlimPajama数据集，训练111M-3.3B模型，TPP范围20-1280，通过λ和η的网格搜索确定最优超参数。",
+ "takeaways": [
+  "调整权重衰减λ而非学习率η来适应批大小变化",
+  "Bopt∝D^0.4和Bcrit∝D^0.5的幂律关系可预测大规模训练",
+  "小模型过训练可提供更快训练步骤和更大并行度"
+ ],
+ "weaknesses": [
+  "仅研究了AdamW优化器，结论可能不适用于其他优化器",
+  "实验主要基于GPT2架构，对其他模型架构的泛化性未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Nearly Space-Optimal Graph and Hypergraph Sparsification In Insertion-only Data Streams.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Nearly Space-Optimal Graph and Hypergraph Sparsification In Insertion-only Data Streams.pdf",
+ "title": "Nearly Space-Optimal Graph and Hypergraph Sparsification in Insertion-only Data Streams",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 4,
+  "relevance": 3.0,
+  "overall": 5.4
+ },
+ "one_line": "理论图/超图稀疏化流式算法，空间复杂度接近最优但无实证验证",
+ "innovations": [
+  "超图稀疏化流式算法达到(1+ε)近似，空间O(rn/ε² log²n log r·poly(log log m))比特，匹配已知离线采样复杂度至poly(log log m)因子",
+  "图稀疏化流式(1+ε)近似空间改进为O(n/ε² log n·poly(log log n))比特，去掉此前的log n因子",
+  "顺带给出空间高效的min-cut近似流式算法、(1+ε)超图稀疏化的在线/滑窗算法，以及对抗鲁棒超图稀疏化算法"
+ ],
+ "method_framework": "在插入式数据流中逐个接收超边流，目标输出一个保持每向量能量(割/Spectral)到(1+ε)乘性误差的稀疏子超图。通过流式采样与方差敏感的边权重估计，把离线 spectral sparsification 的采样论证迁移到有限内存设置；并把在线算法推广到滑窗模型，另设计对抗鲁棒版本防止输入顺序被 adversary 操纵。",
+ "experiment_framework": "纯理论算法论文，无机器学习实验；以空间复杂度比特界、近似保证(1+ε)、与离线/已知流式结果的渐近对比为主要证据；覆盖插入式数据流、滑窗、对抗鲁棒三种模型。",
+ "takeaways": [
+  "插入式数据流超图稀疏化的空间代价可压到接近离线采样复杂度，关闭了此前流式与离线之间的差距",
+  "图稀疏化流式空间复杂度去掉了多余log n因子，达近最优",
+  "同一框架可推广到min-cut、滑窗与对抗鲁棒设置，显示方法的普适性"
+ ],
+ "weaknesses": [
+  "纯算法理论论文，与LLM/多模态可靠性、验证器、幻觉抑制等落地主线几乎无关",
+  "无任何实证/系统实现评估，常数与poly(log log m)因子的实际代价未知",
+  "结论依赖(1+ε)渐近保证，对非最坏分布真实图数据的实用增益未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 3,
+ "relevance_reason": "纯图论算法理论，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

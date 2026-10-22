@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Potemkin Understanding in Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Potemkin Understanding in Large Language Models.pdf",
+ "title": "Potemkin Understanding in Large Language Models",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 6.5,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "揭示LLM在benchmark上的高分可能是虚假理解，提出量化方法并发现普遍存在。",
+ "innovations": [
+  "提出形式化框架：benchmark(如AP考试)对LLM有效，当且仅当LLM误解概念的方式与人类相似，否则高分只是波将金式理解",
+  "给出两种量化波将金现象的流程：一个跨三领域的专门设计benchmark，一个给出波将金发生率下界的通用流程",
+  "实证发现波将金现象在模型、任务、领域间普遍存在，且反映概念表征的深层内部不一致而非单纯答错"
+ ],
+ "method_framework": "核心论证：用于测人的benchmark要迁移到测LLM，需LLM的错误模式与人类同构；否则LLM可能给出与任何人类解释都不相容的“正确答案”，形成理解幻觉。据此设计专门测试(如先让LLM解释ABAB押韵规则、再让它按规则填空，检验其能否应用自己的解释)，并用通用流程估计波将金发生率下界。",
+ "experiment_framework": "在多个主流LLM、多类任务与三个领域上评测；用专门benchmark与通用下界流程两种方式量化波将金现象；指标为波将金发生率，并分析其是否对应内部概念表征不一致。",
+ "takeaways": [
+  "LLM在benchmark上的成功常是波将金式的：能口头解释概念却无法一致地应用",
+  "波将金现象跨模型、任务、领域普遍存在，不能仅凭benchmark分数推断真实理解",
+  "这些失败反映概念表征的内部不一致，而非偶然答错"
+ ],
+ "weaknesses": [
+  "“误解方式与人类相似”的判定依赖人类标注，主观性与标注一致性需更多报告",
+  "通用流程给出的是下界，真实发生率可能更高但难以精确估计",
+  "主要刻画现象与度量，对如何修复内部不一致(如训练/对齐改进)给出的方案有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

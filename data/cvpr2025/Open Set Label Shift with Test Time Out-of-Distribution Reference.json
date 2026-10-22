@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Open Set Label Shift with Test Time Out-of-Distribution Reference.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Open Set Label Shift with Test Time Out-of-Distribution Reference.pdf",
+ "title": "Open Set Label Shift with Test Time Out-of-Distribution Reference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "测试时OOD参考的开集标签偏移估计，依赖额外数据且敏感",
+ "innovations": [
+  "利用测试时OOD参考数据集估计开集标签偏移",
+  "EM算法估计目标ID标签分布和ID数据比",
+  "针对不完美OOD分类器的目标ID数据比校正模型"
+ ],
+ "method_framework": "三阶段框架：1)源域ID数据比估计 2)EM算法估计目标ID标签分布 3)针对不完美OOD分类器的目标ID数据比校正",
+ "experiment_framework": "CIFAR10/100和ImageNet-200数据集，多种OOD数据集，Dirichlet和有序长尾标签偏移，评估标签偏移估计误差",
+ "takeaways": [
+  "利用现有OOD检测方法无需重新训练",
+  "理论保证采样误差上界",
+  "伪OOD样本的灵活使用"
+ ],
+ "weaknesses": [
+  "依赖测试时OOD参考数据集",
+  "对OOD分类器性能敏感",
+  "未探索实际应用场景"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "开集标签偏移估计直接关联OOD检测与可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

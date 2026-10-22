@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/NegRefine_Refining Negative Label-Based Zero-Shot OOD Detection.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/NegRefine_Refining Negative Label-Based Zero-Shot OOD Detection.pdf",
+ "title": "NegRefine Refining Negative Label-Based Zero-Shot OOD Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "用LLM过滤负标签和多匹配评分提升零样本OOD检测",
+ "innovations": [
+  "负标签过滤机制排除专有名词和子类别标签",
+  "多匹配感知评分函数处理图像匹配多个标签的情况",
+  "结合CLIP的全局嵌入与文本描述改进OOD检测"
+ ],
+ "method_framework": "NegRefine框架包含两个核心组件：1)使用LLM过滤负标签集中的专有名词和子类别标签；2)引入多匹配评分函数，通过拼接正负标签文本并比较相似度差异来调整最终得分",
+ "experiment_framework": "在ImageNet-1K基准上评估，使用iNaturalist、OpenImage-O、Clean和NINCO作为OOD数据集，比较AUROC和FPR95指标",
+ "takeaways": [
+  "利用LLM进行语义过滤可有效提升负标签质量",
+  "多标签匹配问题可通过组合文本描述和相似度比较来解决",
+  "方法设计简洁且与现有框架兼容性好"
+ ],
+ "weaknesses": [
+  "依赖LLM进行负标签过滤，增加了计算复杂度",
+  "多匹配评分函数需要额外的k²次相似度计算",
+  "未探索不同规模CLIP模型的性能差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "零样本OOD检测属于可靠性主线，且方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

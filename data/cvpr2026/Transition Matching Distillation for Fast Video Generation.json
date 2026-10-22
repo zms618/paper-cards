@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Transition Matching Distillation for Fast Video Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Transition Matching Distillation for Fast Video Generation.pdf",
+ "title": "Transition Matching Distillation for Fast Video Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "解耦架构与两阶段训练的视频扩散模型蒸馏方法",
+ "innovations": [
+  "Transition Matching Distillation框架",
+  "解耦架构设计(主骨干+流头部)",
+  "两阶段训练策略(过渡匹配预训练+分布匹配蒸馏)"
+ ],
+ "method_framework": "将教师模型分解为主骨干(提取语义特征)和轻量流头部(多步细粒度更新)，通过过渡匹配预训练初始化流头部，再使用改进的DMD2-v进行分布匹配蒸馏。",
+ "experiment_framework": "在VBench和用户偏好研究中评估TMD，蒸馏Wan2.1 1.3B和14B模型，比较视觉质量和提示遵循度，使用有效函数评估(NFE)作为效率指标。",
+ "takeaways": [
+  "解耦架构平衡了语义保持和细节生成",
+  "流头部rollout训练避免了训练-推理不匹配",
+  "改进的DMD2-v更适合视频生成任务"
+ ],
+ "weaknesses": [
+  "仅评估了文本到视频生成任务",
+  "未充分分析计算效率与生成质量的详细权衡",
+  "对大规模视频生成的泛化能力有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成任务与可靠性主线无交点，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

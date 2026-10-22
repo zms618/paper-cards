@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Wimfris_Window MAMBA Fusion and Parameter Efficient Tuning for Referring Segmentation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Wimfris_Window MAMBA Fusion and Parameter Efficient Tuning for Referring Segmentation.pdf",
+ "title": "Wimfris: Window Mamba Fusion and Parameter Efficient Tuning for Referring Image Segmentation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 7.0,
+  "overall": 6.0
+ },
+ "one_line": "常规Mamba融合与PET组合，在RIS上取得SOTA但缺乏深度分析",
+ "innovations": [
+  "指出现有RIS的PET多只做逐层特征对齐，忽视中间融合neck这一瓶颈，提出强大neck架构",
+  "提出层级Mamba融合(HMF)块：先聚合多尺度特征，再用窗口Mamba融合器(WMF)做中间融合；非重叠窗口划分缓解SSM固有信息衰减并保持局部-全局交互",
+  "配套PET：Mamba文本适配器(MTA)强化文本先验、多尺度对齐器(MSA)做精确视文融合、可学习emphasis参数做自适应stage加权"
+ ],
+ "method_framework": "在冻结的视文骨干上，HMF块先聚合多尺度特征，再由WMF以非重叠窗口内Mamba建模局部-全局上下文做中间融合；PET部分用MTA注入鲁棒文本先验、MSA融合视文、可学习权重自适应加权各stage，实现低参数微调。",
+ "experiment_framework": "在全部公开RIS基准上评测；基线为其他RIS的PET方法；指标为mIoU等分割精度；报告在所有公开RIS基准上取得新SOTA。",
+ "takeaways": [
+  "中间融合neck是RIS的PET被忽视的瓶颈，专门设计可显著提升",
+  "非重叠窗口划分是缓解长序列SSM信息衰减、同时保留局部-全局交互的有效手段",
+  "MTA+MSA+可学习stage加权的组合在低参数下即可视文融合充分"
+ ],
+ "weaknesses": [
+  "Mamba窗口划分带来工程复杂度，其相对窗口注意力的效率优势缺乏明确的速度/显存对比",
+  "新SOTA幅度在提取页未见具体数值，仅声称全部基准最优",
+  "面向通用自然图像RIS，未涉及医学影像等对精度/鲁棒性要求更高的域"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "RIS的PET瓶颈解决与Mamba融合设计，可迁移到可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

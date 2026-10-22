@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/3D Convex Splatting Radiance Field Rendering with 3D Smooth Convexes.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3D Convex Splatting Radiance Field Rendering with 3D Smooth Convexes.pdf",
+ "title": "3D Convex Splatting: Radiance Field Rendering with 3D Smooth Convexes",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "用凸体替换高斯做辐射场渲染，但核心组件借用且实验不充分",
+ "innovations": [
+  "把 CvxNet 的平滑凸体（LogSumExp 近似的符号距离 φ(p)=log Σ_j exp(δL_j(p)) 配 Sigmoid(-σφ(p)) 指示函数）用作可微渲染基元，δ 控制顶点软硬、σ 控制辐射场过渡，从基元层面解决高斯难表达硬边与密实平面的问题",
+  "不显式构建三维凸包，而是把 K 个三维点透视投影到二维后用 Graham Scan 求投影点集凸包并对每条边定义带符号距离；透视效应通过将 δ、σ 按相机距离 d 缩放来补偿"
+ ],
+ "method_framework": "SfM 稀疏点云初始化，每个凸体为一组K个三维点的凸包（Fibonacci球初始化）；渲染时投影到2D求凸包→指示函数→α混合，全部写进自研CUDA tile-based rasterizer；优化上用 σ 的loss挑选欠/过重建区域并把凸体分裂成K个小凸体并提高σ，剔除低opacity与大体积基元。",
+ "experiment_framework": "Mip-NeRF360、Tanks&Temples、Deep Blending；基线3DGS/GES/2DGS/ZipNeRF/Mip-NeRF360/Instant-NGP；指标PSNR/SSIM/LPIPS+训练时间/FPS/显存，并做室内外场景拆分。",
+ "takeaways": [
+  "「换基元」而非「换损失」是一条干净的技术路线：先用 toy 实验（拟合椅子、4/8个基元对比）与 sphere packing 论证旧基元的结构性缺陷再谈新基元，这种缺陷先行的问题论证值得借鉴",
+  "以 sharpness σ 的loss而非位置梯度作为自适应加密判据，说明 densification 的触发信号必须匹配所用基元的可微语义，可直接迁移到其他非高斯基元"
+ ],
+ "weaknesses": [
+  "核心组件基本是借用：平滑凸体公式来自 CvxNet、tile rasterizer 结构来自 3DGS、损失组合（L1+D-SSIM+Lm, λ=0.2）来自既有工作、学习率指数衰减来自 Plenoxels，自研部分主要是二维投影取凸包与加密策略",
+  "室内外拆分暴露短板：Mip-NeRF360 室外场景上 3DCS 三项指标全部低于 3DGS（PSNR 24.07 vs 24.64、SSIM 0.700 vs 0.731、LPIPS 0.238 vs 0.234），正文却只以「outdoor 场景优势减弱」带过，与摘要的普适性claim存在张力",
+  "K=6、β=0.0005、densification 阈值等设计选择只给经验值，无敏感性实验，多个超参说明被推到补充材料",
+  "无多次运行方差/显著性检验；按正文结构应有独立消融章节，但给出的正文在 4.3 节末尾被截断，无法核验消融配置与结论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "纯图形学渲染，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

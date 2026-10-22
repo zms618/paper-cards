@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/LaneDiffusion_Improving Centerline Graph Learning via Prior Injected BEV Feature.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/LaneDiffusion_Improving Centerline Graph Learning via Prior Injected BEV Feature.pdf",
+ "title": "LaneDiffusion Improving Centerline Graph Learning via Prior Injected BEV Feature",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "BEV特征扩散模型注入车道先验，提升车道线图学习",
+ "innovations": [
+  "在BEV特征级别而非直接生成矢量车道线，引入扩散模型",
+  "设计车道先验注入模块(LPIM)和车道先验扩散模块(LPDM)",
+  "采用从原始BEV特征而非高斯噪声开始的反向扩散过程提高效率"
+ ],
+ "method_framework": "LaneDiffusion包含两个关键模块：LPIM将车道先验注入BEV特征作为扩散目标，LPDM通过扩散过程建模先验注入的BEV特征，最终通过解码器生成高质量车道线图。",
+ "experiment_framework": "在nuScenes和Argoverse2数据集上评估，使用点级指标(GEO F1, TOPO F1等)和段级指标(IoU, mAPcf等)，与CGNet等SOTA方法对比。",
+ "takeaways": [
+  "在BEV特征级别应用扩散模型可有效处理遮挡和模糊视觉线索",
+  "模块化设计使LaneDiffusion可作为BEV架构的灵活插件"
+ ],
+ "weaknesses": [
+  "依赖外部先验信息构建扩散目标，推理阶段不使用但增加了训练复杂度",
+  "扩散过程仍需多次采样，推理效率有待提高"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "BEV车道线学习与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

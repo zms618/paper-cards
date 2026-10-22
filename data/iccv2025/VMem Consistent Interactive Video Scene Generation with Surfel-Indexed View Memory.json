@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/VMem Consistent Interactive Video Scene Generation with Surfel-Indexed View Memory.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/VMem Consistent Interactive Video Scene Generation with Surfel-Indexed View Memory.pdf",
+ "title": "VMem Consistent Interactive Video Scene Generation with Surfel-Indexed View Memory",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "基于几何索引的视图记忆模块，提升视频场景一致性但依赖外部估计器",
+ "innovations": [
+  "Surfel-Indexed View Memory (VMem)几何索引机制",
+  "动态相关视图检索而非仅依赖最近视图",
+  "在保持一致性的同时显著降低计算复杂度"
+ ],
+ "method_framework": "通过表面元素索引存储历史视图，生成新视图时检索最相关的历史视图作为条件，结合相机参数输入到生成器中，实现长期一致的场景生成。",
+ "experiment_framework": "在RealEstate10K和Tanks-and-Temples数据集上评估，使用LPIPS、PSNR、SSIM、FID等指标，并设计循环轨迹协议测试重访场景的一致性。",
+ "takeaways": [
+  "几何索引机制可有效解决长期一致性问题",
+  "动态视图检索比固定上下文窗口更高效",
+  "方法可扩展到其他图像集生成器"
+ ],
+ "weaknesses": [
+  "依赖外部点图估计器的准确性",
+  "在极端遮挡场景下可能表现不佳",
+  "内存管理策略可能导致某些区域被过度采样"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成与可靠性主线无关，仅几何索引机制有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

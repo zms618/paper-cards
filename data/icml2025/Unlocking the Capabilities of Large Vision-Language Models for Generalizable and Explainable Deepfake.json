@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Unlocking the Capabilities of Large Vision-Language Models for Generalizable and Explainable Deepfake.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Unlocking the Capabilities of Large Vision-Language Models for Generalizable and Explainable Deepfake.pdf",
+ "title": "Unlocking the Capabilities of Large Vision-Language Models for Generalizable and Explainable Deepfake Detection",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 7,
+  "overall": 5.9
+ },
+ "one_line": "LVLM对齐框架提升deepfake检测泛化性，但组件贡献与可解释性验证不足",
+ "innovations": [
+  "指出现有LVLM因知识与取证模式错位而难以直接用于deepfake检测",
+  "提出KFD：计算图像特征与真实/伪造图像描述嵌入之间的相关性，以对齐取证信号",
+  "提出FPL(伪造提示学习器)配合LLM，支持多轮对话式解释；在多个benchmark上泛化性能超SOTA"
+ ],
+ "method_framework": "三部分框架：KFD计算图像特征与真实/伪造描述嵌入的相关性以提取取证线索；FPL学习适配的提示词，引导LVLM理解\"色彩不一致/视觉伪影\"等专业术语；再由LLM做多轮对话式检测与解释，弥合通用多模态知识与细粒度取证模式的错位。",
+ "experiment_framework": "在FF++、CDF2、DFD、DFDCP、DFDC、DF40多个deepfake检测基准上评测；对比SOTA检测方法；指标为跨数据集泛化性能，并展示多轮对话解释能力。",
+ "takeaways": [
+  "LVLM的通用多模态知识可经对齐后用于deepfake检测，并带来强跨数据集泛化",
+  "显式的取证模式对齐(KFD/FPL)比直接微调更有效，还能给出可解释对话",
+  "泛化性与可解释性可在同一LVLM框架内兼得"
+ ],
+ "weaknesses": [
+  "框架组件较多，训练/推理复杂度与各组件贡献未充分消融",
+  "可解释对话是否真正反映检测依据，还是事后合理化，缺少人工核验",
+  "面对未知/零日伪造方法的泛化边界未专门压力测试"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

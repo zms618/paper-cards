@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Massive Memorization with Hundreds of Tril-lions of Parameters for Sequential Trans-ducer Generative.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Massive Memorization with Hundreds of Tril-lions of Parameters for Sequential Trans-ducer Generative.pdf",
+ "title": "Massive Memorization with Hundreds of Trillions of Parameters for Sequential Transducer Generative Recommenders",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "两阶段注意力+摘要缓存，使推荐可扩展到百万级历史但信息损失存疑",
+ "innovations": [
+  "提出两阶段虚拟序列目标注意力：先把超长用户历史摘要为数百 token，再让候选 item 只对摘要 token 做注意力",
+  "将摘要 token 嵌入缓存到存储系统作为序列特征，使下游训练/推理成本与历史长度解耦",
+  "支持终身用户历史(最长百万 item)，并在工业级推荐平台部署、服务十亿级用户，离线与在线指标均提升"
+ ],
+ "method_framework": "把传统从候选 item 到全量历史 item 的目标注意力分解为：(1) 历史摘要模块产出固定长度摘要 token；(2) 候选 item 仅对摘要做注意力。摘要离线缓存复用，下游模型只计算轻量第二阶段。",
+ "experiment_framework": "场景：工业级生成式推荐(HSTU 类序列建模)；对比：全序列建模与目标采样(SIM/TWIN)；指标：离线指标、在线 A/B(CTR/留存等)，已部署服务十亿用户。",
+ "takeaways": [
+  "两阶段注意力+摘要缓存可把序列长度扩展到百万级而下游训练推理成本近似固定",
+  "终身历史的大规模记忆化在工业推荐中带来离线与在线收益",
+  "摘要-候选解耦是在 QPS/GPU 成本约束下利用超长历史的可行工程范式"
+ ],
+ "weaknesses": [
+  "摘要为数百 token，对长尾/近期稀疏行为的信息损失缺乏定量分析",
+  "方法高度依赖工业缓存基础设施，公开可复现性有限",
+  "与医学影像/多模态推理可靠性主线无关，属推荐系统工程"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.0,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "推荐系统工程，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

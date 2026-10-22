@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Solving General-Utility Markov Decision Processes In the Single-Trial Regime with Online Planning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Solving General-Utility Markov Decision Processes In the Single-Trial Regime with Online Planning.pdf",
+ "title": "Solving General-Utility Markov Decision Processes in the Single-Trial Regime with Online Planning",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 4.5,
+  "relevance": 3.0,
+  "overall": 5.1
+ },
+ "one_line": "理论解决单次试验GUMDP，但实验证据不足且与主线无关",
+ "innovations": [
+  "首次针对单次试验(single-trial)regime下的无限时域折扣GUMDP给出求解方法",
+  "给出该regime下策略优化的基础结论：何种策略类足以最优、将原问题等价为某MDP、并分析策略优化的计算难度",
+  "将在线规划(具体为MCTS)用于求解该问题，缓解此前扩展MDP状态随horizon组合爆炸的不可扩展问题"
+ ],
+ "method_framework": "GUMDP允许目标为状态-动作占用频率的非线性函数；单次试验下目标取决于单条轨迹的经验占用。作者先刻画充分最优的策略类并将问题归约为等价MDP，再用蒙特卡洛树搜索在线规划，避免维护完整历史导致的组合爆炸。",
+ "experiment_framework": "在多个GUMDP实例上与相关基线(无限试验算法、扩展MDP动态规划等)对比；前9页主要为引言，具体环境、基线与定量提升数值尚未在提取范围内出现。",
+ "takeaways": [
+  "单次试验regime下的GUMDP策略优化是一类比无限试验更难的问题",
+  "等价MDP归约加MCTS在线规划可在可扩展的前提下求解该问题",
+  "所提方法在实验中优于相关基线"
+ ],
+ "weaknesses": [
+  "属RL/MDP基础理论，与可靠性、医学影像、多模态推理主线无关",
+  "面向小型/理论实例，MCTS在线规划的样本复杂度与可扩展性未在提取范围内充分论证",
+  "前9页未见具体实验数值与消融，'superior performance'缺乏量化证据支撑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.55,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 3,
+ "relevance_reason": "RL/MDP基础理论，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/GEM Generating LiDAR World Model via Deformable Mamba.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/GEM Generating LiDAR World Model via Deformable Mamba.pdf",
+ "title": "GEM Generating LiDAR World Model via Deformable Mamba",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "可变形Mamba实现LiDAR动态静态解耦，但计算复杂度高且缺乏极端天气验证",
+ "innovations": [
+  "LiDAR场景tokenizer保留物理结构",
+  "动态静态解耦的三路径可变形Mamba",
+  "支持自主滚动和可控生成的LiDAR世界模型"
+ ],
+ "method_framework": "通过LiDAR场景tokenizer将点云转换为紧凑表示，使用动态静态分离器解耦特征，三路径可变形Mamba进行选择性扫描和自适应门控融合，最后通过潜在扩散范式生成未来帧",
+ "experiment_framework": "nuScenes和KITTI Odometry数据集，对比4D-Occ等基线，使用CD、L1、AbsRel等指标评估预测精度，FRID、FSVD等评估生成真实性",
+ "takeaways": [
+  "利用激光扫描与Mamba机制的相似性设计专用tokenizer",
+  "无监督动态静态分离提升场景理解",
+  "可变形扫描路径增强时空建模"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，需要多阶段训练",
+  "未充分讨论模型在极端天气条件下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LiDAR世界模型与可靠性主线无实质交织，仅为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

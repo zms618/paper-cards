@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Towards Understanding Fine-Tuning Mechanisms of LLMs via Circuit Analysis.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Towards Understanding Fine-Tuning Mechanisms of LLMs via Circuit Analysis.pdf",
+ "title": "Towards Understanding Fine-Tuning Mechanisms of LLMs via Circuit Analysis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.75
+ },
+ "one_line": "电路分析发现微调重接边而非新增节点，据此设计LoRA变体提升2.46%",
+ "innovations": [
+  "设计微调前表现差、微调后显著提升的数学任务集，更贴近实用微调场景，纠正既往只看预训练已擅长任务的偏差",
+  "发现微调前后电路节点高度相似但边发生显著变化，与既往‘微调仅新增组件’的结论相悖",
+  "提出circuit-aware LoRA：按电路中边的变化程度为各层分配秩，在相近参数量下较标准LoRA平均提升2.46%"
+ ],
+ "method_framework": "用EAP-IG（边归因修补+积分梯度）在预训练与微调模型各检查点识别高忠实度电路，并引入鲁棒性度量评估识别稳定性。对比电路节点相似度与边的变化，刻画微调如何重接计算图；进而把‘边变化大的层’分配更高LoRA秩，实现电路感知的参数高效微调；还探索子任务电路组合如何增强组合任务微调。",
+ "experiment_framework": "在自构数学任务（预训练低精度、微调后大幅提升）上，用EAP-IG识别不同检查点电路；对比电路感知LoRA与标准LoRA（相近参数量）的精度，并分析子任务电路组合对组合任务的影响。",
+ "takeaways": [
+  "实用微调（从差到好）会显著重接已有电路的边，而非仅新增注意力头",
+  "按电路边变化分配LoRA秩可在不增参的前提下提升微调效果",
+  "电路动态与任务复杂度、微调方法存在相互作用"
+ ],
+ "weaknesses": [
+  "主线相关性中等偏下：属LLM微调机制可解释性，与医学影像/多模态推理主线相邻但非同一落地域",
+  "电路识别依赖EAP-IG在小模型/数学任务上，规模放大到70B级通用模型的结论未验证",
+  "2.46%提升在自构数学任务上，跨领域微调的一致性需更多验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

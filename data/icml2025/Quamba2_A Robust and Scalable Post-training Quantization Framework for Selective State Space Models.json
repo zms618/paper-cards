@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Quamba2_A Robust and Scalable Post-training Quantization Framework for Selective State Space Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Quamba2_A Robust and Scalable Post-training Quantization Framework for Selective State Space Models.pdf",
+ "title": "Quamba2: A Robust and Scalable Post-training Quantization Framework for Selective State Space Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "SSM量化框架，混合精度策略提升效率但W4A8精度损失大",
+ "innovations": [
+  "基于通道持久性和状态持久性的排序聚类方法",
+  "针对输入相关参数B和C的按状态组量化",
+  "混合精度量化策略提升鲁棒性",
+  "离线权重重排和Hadamard矩阵融合"
+ ],
+ "method_framework": "基于SSM通道保持和激活持久性，提出离线聚类感知权重重排方法，结合按状态组量化，实现W8A8/W4A8/W4A16多种配置",
+ "experiment_framework": "在Mamba1/Mamba2模型上评估，使用LAMBADA等6个零样本任务和MMLU多任务数据集，比较MambaQuant和Quamba基线",
+ "takeaways": [
+  "通道持久性和状态持久性是SSM量化的关键特性",
+  "混合精度策略可平衡性能与效率",
+  "头到尾量化实现边缘设备部署"
+ ],
+ "weaknesses": [
+  "W4A8在MMLU上表现下降明显(-5.8%)",
+  "未提供W4A8在Nano 8G上的准确率数据",
+  "混合精度搜索策略细节不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

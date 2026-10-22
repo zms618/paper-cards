@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/COG Confidence-aware Optimal Geometric Correspondence for Unsupervised Single-reference Novel Object.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/COG Confidence-aware Optimal Geometric Correspondence for Unsupervised Single-reference Novel Object.pdf",
+ "title": "COG Confidence-aware Optimal Geometric Correspondence for Unsupervised Single-reference Novel Object",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.6
+ },
+ "one_line": "COG用置信约束最优传输做无监督单参考姿态估计",
+ "innovations": [
+  "将置信度作为最优传输的边际约束",
+  "端到端的置信度和姿态联合学习框架",
+  "结合几何和语义一致性的伪置信度标签生成"
+ ],
+ "method_framework": "COG采用粗到细的几何Transformer架构，将对应关系估计为置信感知的最优传输问题，使用Sinkhorn算法求解软对应关系，并通过加权SVD估计姿态。",
+ "experiment_framework": "在Google Scanned Objects和ShapeNet上训练，在BOP数据集(TUD-L, LM-O, YCB-V)上评估，使用mAP(VSD, MSSD, MSPD)和IoU作为指标。",
+ "takeaways": [
+  "置信度作为最优传输边际的设计能有效抑制非重叠区域",
+  "结合几何和语义一致性的伪置信度标签适用于无监督训练"
+ ],
+ "weaknesses": [
+  "在复杂场景和严重遮挡下性能仍有提升空间",
+  "依赖预训练的DINO特征进行语义去噪"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.6,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "姿态估计与可靠性主线无实质交点，仅为几何方法",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

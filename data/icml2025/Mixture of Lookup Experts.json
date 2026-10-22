@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Mixture of Lookup Experts.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Mixture of Lookup Experts.pdf",
+ "title": "Mixture of Lookup Experts",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "将MoE专家转为LUT降低内存，但存储增长限制应用",
+ "innovations": [
+  "将专家从FFN重新参数化为查找表(LUT)",
+  "使用embedding层输出作为专家输入以支持LUT转换",
+  "激活所有专家而非子集以保持性能"
+ ],
+ "method_framework": "训练阶段使用类似MoE的结构但激活所有专家；推理阶段将专家转换为LUT，通过输入ID直接检索结果，避免计算和频繁参数加载",
+ "experiment_framework": "在160M、410M和1B参数规模上评估，使用ARC-C、ARC-E等基准测试，比较MoLE与MoE和密集模型的性能和效率",
+ "takeaways": [
+  "专家输入从中间特征改为embedding token是可行的设计选择",
+  "完全激活专家可带来性能提升而不增加计算开销",
+  "LUT量化可进一步减少存储需求"
+ ],
+ "weaknesses": [
+  "LUT大小随词汇量和专家数量线性增长，可能带来存储挑战",
+  "专家无法访问上下文信息可能限制模型能力",
+  "仅适用于特定架构的MoE模型"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

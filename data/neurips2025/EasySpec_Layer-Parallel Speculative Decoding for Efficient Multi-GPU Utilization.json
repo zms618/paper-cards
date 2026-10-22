@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/EasySpec_Layer-Parallel Speculative Decoding for Efficient Multi-GPU Utilization.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/EasySpec_Layer-Parallel Speculative Decoding for Efficient Multi-GPU Utilization.pdf",
+ "title": "EasySpec: Layer-Parallel Speculative Decoding for Efficient Multi-GPU Utilization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "层并行推测解码提升多GPU利用率，但MLP层并行化导致性能下降",
+ "innovations": [
+  "层并行模糊推测策略",
+  "奖励校准机制防止误差累积",
+  "无需训练即插即用方法"
+ ],
+ "method_framework": "通过打破层间数据依赖实现层级并行，结合奖励校准保证KV缓存精确性，在保持原始模型分布的同时提升多GPU利用率。",
+ "experiment_framework": "在Llama-3和Qwen2系列模型上测试，使用MMLU、HE、MATH等数据集，比较TP、+SD、+tree等基线方法，测量吞吐量和接受率。",
+ "takeaways": [
+  "层并行策略可有效提升多GPU利用率",
+  "奖励校准机制以最小额外开销防止长期误差累积"
+ ],
+ "weaknesses": [
+  "MLP层并行化会导致显著性能下降",
+  "层并行大小N需要针对不同模型进行调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

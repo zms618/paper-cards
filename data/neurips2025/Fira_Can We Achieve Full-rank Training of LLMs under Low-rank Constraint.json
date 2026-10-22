@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Fira_Can We Achieve Full-rank Training of LLMs under Low-rank Constraint.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Fira_Can We Achieve Full-rank Training of LLMs under Low-rank Constraint.pdf",
+ "title": "Fira: Can We Achieve Full-rank Training of LLMs under Low-rank Constraint?",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "Fira通过范数缩放和限制器实现低秩约束下的全秩训练",
+ "innovations": [
+  "基于范数的缩放方法，利用低秩优化器的缩放效应实现全秩训练",
+  "范数增长限制器，平滑梯度防止训练损失尖峰",
+  "首个在低秩约束下实现全秩训练的LLMs训练框架"
+ ],
+ "method_framework": "Fira框架包含两个核心组件：基于范数的缩放方法利用低秩优化器的缩放效应替代全秩优化器，范数增长限制器通过限制梯度范数增长率平滑梯度，实现低内存消耗下的全秩训练。",
+ "experiment_framework": "在C4数据集上预训练不同规模LLaMA模型(60M-7B)，与LoRA、GaLore等基线比较验证有效性；在常识推理任务上进行微调实验。",
+ "takeaways": [
+  "低秩与全秩训练的缩放因子具有高度相似性，可被有效利用",
+  "梯度投影矩阵切换可能导致训练不稳定，需要特殊处理",
+  "范数增长限制器比传统梯度裁剪更有效处理训练尖峰"
+ ],
+ "weaknesses": [
+  "范数增长限制器的超参数γ选择缺乏理论指导",
+  "方法在极低秩情况下(r<<d_model)的性能下降明显",
+  "未充分探讨方法在不同优化器上的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

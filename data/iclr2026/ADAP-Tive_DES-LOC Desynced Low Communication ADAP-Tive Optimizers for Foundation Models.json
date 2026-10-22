@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/ADAP-Tive_DES-LOC Desynced Low Communication ADAP-Tive Optimizers for Foundation Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/ADAP-Tive_DES-LOC Desynced Low Communication ADAP-Tive Optimizers for Foundation Models.pdf",
+ "title": "DES-LOC: Desynced Low Communication ADAP-TIVE Optimizers for Foundation Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "解耦参数与动量同步频率，降低大模型训练通信开销",
+ "innovations": [
+  "为参数和动量设置独立同步频率",
+  "理论证明动量同步频率影响步长稳定性",
+  "支持故障恢复的分布式优化器"
+ ],
+ "method_framework": "DES-LOC算法为模型参数和优化器状态设置不同同步周期，减少通信开销同时保持收敛性，支持SGDM和Adam优化器。",
+ "experiment_framework": "在135M-1.7B GPT模型上测试，使用SmolLM2数据集，比较DDP、Local Adam和启发式方法，评估困惑度和通信效率。",
+ "takeaways": [
+  "参数同步频率比动量同步更重要",
+  "高β动量状态可降低同步频率",
+  "Nesterov外优化器可进一步提升性能"
+ ],
+ "weaknesses": [
+  "理论分析主要针对非凸和弱凸情况",
+  "实验主要在语言模型上进行，泛化性待验证",
+  "对超参数选择依赖较大"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "分布式优化器设计，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

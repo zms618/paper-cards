@@ -1,0 +1,41 @@
+{
+ "title": "TangleScore: Tangle-Guided Purge and Imprint for Unstructured Knowledge Editing",
+ "one_line": "TangleScore量化知识编辑难度，PIPE自适应调节编辑强度。",
+ "innovations": [
+  "提出TangleScore度量：综合模型对旧知识与目标知识响应的差异及语义相似度，量化待编辑知识与模型既有知识的纠缠/编辑难度，且与编辑方法无关",
+  "发现TangleScore与编辑泛化性能强相关，可识别模型记住编辑却无法泛化到复述/相关提问的困难样本",
+  "提出PIPE编辑框架：按TangleScore自适应调节purge(清除旧知识)与imprint(写入新知识)强度，使编辑力度匹配样本难度"
+ ],
+ "method_framework": "先用TangleScore（仅由基座模型与知识实例决定）度量每条待编辑知识的纠缠难度；编辑时purge阶段按TangleScore施加不同清除率以覆盖模型对旧知识的深层依赖，再imprint写入新知识。编辑强度随实例难度自适应，避免对易编辑样本过扰、对难编辑样本覆盖不足。",
+ "experiment_framework": "在4个不同规模LLM、2个非结构化知识编辑数据集上评测；对比既有知识编辑方法；指标为编辑后accuracy与generalization（复述/相关提问泛化）；并在结构化编辑、批量编辑与顺序编辑下验证鲁棒性。",
+ "takeaways": [
+  "既有方法精度-泛化失衡并非随机，而与待编辑知识和模型的纠缠程度系统性相关",
+  "按TangleScore自适应调节purge/impint强度，泛化性能较此前方法提升6.49%",
+  "PIPE在结构化编辑及批量/顺序编辑下均保持有效性与鲁棒性"
+ ],
+ "weaknesses": [
+  "TangleScore依赖模型对旧/目标知识的响应与语义相似度估计，其计算本身需前向推理且阈值需调",
+  "非结构化编辑数据集规模与真实长尾知识的代表性有限，极难编辑样本的上限仍未突破",
+  "purge/imprint机制建立在特定patch编辑框架上，与其他编辑范式的正交组合增益需进一步验证"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Tanglescore_Tangle-Guided Purge and Imprint for Unstructured Knowledge Editing.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tanglescore_Tangle-Guided Purge and Imprint for Unstructured Knowledge Editing.pdf",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "知识编辑与模型可靠性主线交点，自适应调节机制具方法论价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

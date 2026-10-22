@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Fast Inference with Kronecker-Sparse Matrices.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Fast Inference with Kronecker-Sparse Matrices.pdf",
+ "title": "Fast Inference with Kronecker-Sparse Matrices",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 7,
+  "relevance": 6,
+  "overall": 6
+ },
+ "one_line": "优化KS矩阵乘法GPU内核，减少内存传输开销",
+ "innovations": [
+  "融合输出静止GPU内核，消除两次全局内存传递",
+  "基于h(b,c)=b+c/bc的启发式预测方法性能",
+  "大规模KS矩阵乘法基准测试",
+  "PyTorch兼容的KSLinear层实现"
+ ],
+ "method_framework": "提出新的输出静止平铺方案，将三个GPU内核（置换、GEMM、逆置换）融合为单个内核，消除两次全局内存传递，减少内存流量三倍。",
+ "experiment_framework": "600种KS模式，矩阵大小跨越6个数量级，支持FP32和FP16格式，在Nvidia A100和V100上评估时间和能耗。",
+ "takeaways": [
+  "内存传输是KS矩阵乘法的主要瓶颈，可通过融合内核优化",
+  "启发式h(b,c)可有效预测KS模式性能，指导模式选择"
+ ],
+ "weaknesses": [
+  "仅关注推理阶段，未涉及训练优化",
+  "主要针对特定内存布局优化，batch-size-first布局下性能提升有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Online Pre-Training for Offline-to-Online Reinforcement Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Online Pre-Training for Offline-to-Online Reinforcement Learning.pdf",
+ "title": "Online Pre-Training for Offline-to-Online Reinforcement Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "插入在线预训练解决离线RL价值估计不准问题，D4RL提升30%",
+ "innovations": [
+  "诊断离线预训练智能体在线微调失效的根因是分布偏移下的价值估计不准",
+  "提出新增'在线预训练'学习阶段，单独训练一个面向在线微调的新价值函数",
+  "在 TD3 与 SPOT 上实现 OPT，D4RL(MuJoCo/Antmaze/Adroit) 平均提升约 30%"
+ ],
+ "method_framework": "离线预训练学到的价值函数在分布偏移下严重失准，拖垮在线微调。OPT 在正式在线微调前加入一个在线预训练阶段：让智能体先在少量在线交互中学出一个更贴合在线状态分布的新价值函数，再用它支撑后续在线微调，避免用失准的离线价值函数引导更新。",
+ "experiment_framework": "在 D4RL 的 MuJoCo、Antmaze、Adroit 等环境上，分别以 TD3+BC、SPOT 为离线预训练骨干，对比直接在线微调、从头训练与引入 OPT 的最终回报；报告跨环境平均提升约 30%。",
+ "takeaways": [
+  "离线价值函数失准是 offline-to-online 在线微调退化的关键原因",
+  "插入在线预训练、重学在线价值函数可稳定放大离线预训练的收益，平均提升约 30%"
+ ],
+ "weaknesses": [
+  "与医学影像/多模态推理主线无关，属离线-在线 RL 方法工程",
+  "+30% 是跨环境平均，部分环境提升幅度与方差在已读部分披露有限",
+  "在线预训练仍需额外在线交互成本，省交互的初衷被部分抵消"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

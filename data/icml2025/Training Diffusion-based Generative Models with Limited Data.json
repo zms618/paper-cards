@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Training Diffusion-based Generative Models with Limited Data.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Training Diffusion-based Generative Models with Limited Data.pdf",
+ "title": "Training Diffusion-based Generative Models with Limited Data",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.75
+ },
+ "one_line": "压缩模型与混合增广提升少数据扩散生成，但理论深度与主线相关性不足",
+ "innovations": [
+  "给出理论洞见：所有训练样本的总去噪分数匹配误差由去噪函数假设空间与训练样本数两因素决定",
+  "提出压缩模型（编码器/解码器取自不同预训练VAE）以约束/降低去噪器假设空间复杂度",
+  "提出固定概率混合增广策略MAFP，在压缩假设空间中提供比现有数据增广更有信息量的引导"
+ ],
+ "method_framework": "基于理论分析，少数据时在现有去噪器假设空间内难以最小化总DSM误差。LD-Diffusion双管齐下：(1)压缩模型——用来自不同预训练VAE的编码器与解码器把图像映射到压缩潜空间，降低去噪器假设空间复杂度（区别于仅为加速的常规VAE压缩）；(2)MAFP——以固定概率混合多种增广，在压缩空间内等效扩充训练样本并提供更有信息量的引导。",
+ "experiment_framework": "在FFHQ少数据子集（FFHQ-100/1K/2K）等数据集上，以FID为指标对比EDM及其他少数据扩散方法；报告FFHQ-100 FID从50.73降至28.51、FFHQ-1K降至17.76等大幅改进。",
+ "takeaways": [
+  "少数据下扩散模型瓶颈同时来自假设空间过复杂与样本不足，需两者同时治理",
+  "压缩潜空间降低去噪器假设空间复杂度是少数据生成的有效方向",
+  "MAFP混合增广在压缩空间内比常规增广提供更有信息量的样本"
+ ],
+ "weaknesses": [
+  "主线相关性弱：属少数据生成模型，与可靠性乘医学影像/多模态推理主线无直接联系",
+  "理论洞见对两因素的刻画较定性，假设空间复杂度与DSM误差的定量界在正文较简略",
+  "压缩模型依赖现成预训练VAE，跨域（如医学影像）少数据场景的适用性未验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

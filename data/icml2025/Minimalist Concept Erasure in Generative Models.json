@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Minimalist Concept Erasure in Generative Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Minimalist Concept Erasure in Generative Models.pdf",
+ "title": "Minimalist Concept Erasure in Generative Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "极简概念擦除目标，基于输出分布距离优化，计算开销大且未验证复杂概念",
+ "innovations": [
+  "提出极简概念擦除目标函数，仅基于最终生成输出的分布距离进行优化，避免过度修改",
+  "推导可微的端到端损失，利用生成全流程的反向传播实现概念擦除",
+  "引入神经元掩码（neuron masking）作为微调的替代方案，增强擦除鲁棒性"
+ ],
+ "method_framework": "将概念擦除建模为最小化目标概念生成分布与不可识别分布之间的距离。通过端到端反向传播贯穿所有生成步骤，推导出可优化的损失函数。同时结合神经元掩码技术，通过屏蔽与目标概念相关的神经元来实现擦除，作为微调的替代或补充。",
+ "experiment_framework": "在FLUX（12B参数）和SD3.5等SOTA流匹配模型上评测。擦除多种概念：NSFW内容、艺术风格（梵高）、物体（枪）、IP角色（绿巨人）。指标包括擦除成功率、整体生成质量保持度、鲁棒性。",
+ "takeaways": [
+  "极简擦除目标可在有效移除概念的同时保持模型整体生成性能",
+  "神经元掩码与微调结合可提升擦除的鲁棒性",
+  "方法在12B参数的大规模生成模型上依然有效"
+ ],
+ "weaknesses": [
+  "端到端反向传播需要多次生成步骤的梯度，计算开销较大",
+  "擦除效果依赖于概念的可分性，对高度纠缠的概念擦除效果未验证",
+  "仅在图像生成模型上验证，文本生成模型的概念擦除未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

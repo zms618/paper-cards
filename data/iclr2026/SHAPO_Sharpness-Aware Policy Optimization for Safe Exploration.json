@@ -1,0 +1,41 @@
+{
+ "title": "SHAPO: Sharpness-Aware Policy Optimization for Safe Exploration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "将SAM引入策略更新，以参数敏感度为不确定性代理做悲观化探索。",
+ "innovations": [
+  "将锐度感知(SAM)思想引入策略更新：在扰动参数处评估梯度，使策略更新对认知不确定性悲观",
+  "解析证明该调整隐式重加权策略梯度，放大罕见不安全动作影响、抑制已安全动作贡献",
+  "相对critic侧集成/dropout，给出优化就绪的演员侧不确定性处理，偏向欠探索区的保守行为"
+ ],
+ "method_framework": "把安全探索视为认知不确定性问题：以策略对参数扰动的敏感度作为高不确定区代理；在扰动参数上算梯度做锐度感知策略更新，隐含地对罕见不安全动作加权重，推动策略在欠探索区域保守。",
+ "experiment_framework": "在多个连续控制任务上评测安全与任务回报，对比既有安全RL基线；报告在安全-性能Pareto前沿上一致改进、显著扩展前沿。",
+ "takeaways": [
+  "演员侧参数锐度可作为无需显式后验的认知不确定性实用代理",
+  "悲观化的扰动梯度更新能在提升安全的同时不牺牲任务性能",
+  "critic侧不确定性不能替代演员侧优化风险厌恶"
+ ],
+ "weaknesses": [
+  "仅连续控制实验，安全约束为软惩罚而非硬安全保证",
+  "扰动尺度等超参与计算开销(双倍梯度)的权衡讨论有限",
+  "前9页未见与最新安全RL基线的逐项数值表"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/SHAPO_Sharpness-Aware Policy Optimization for Safe Exploration.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SHAPO_Sharpness-Aware Policy Optimization for Safe Exploration.pdf",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "策略优化中的不确定性代理与安全探索，可靠性主线明确",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

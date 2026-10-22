@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/4D Visual Pre-training for Robot Learning.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/4D Visual Pre-training for Robot Learning.pdf",
+ "title": "4D Visual Pre-training for Robot Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 5.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 4.9
+ },
+ "one_line": "用扩散模型预测下一帧点云，但实验不充分且通用性存疑",
+ "innovations": [
+  "把 3D 视觉预训练重构为「下一帧点云预测」：用标准 3D 编码器（PointNet++ / Point Transformer / DP3 Encoder）把上一帧点云 o_{t-1} 压成潜表示 z∈R^{N×Cv}，条件引导点体素扩散模型从高斯噪声去噪生成当前帧点云 o_t，绕开点云稀缺、无法直接从网络爬取 3D 数据的瓶颈",
+  "条件注入采用通道拼接而非交叉注意力：把 z 拼到加噪点云上使输入由 N×3 变 N×(Cv+3)，ε_θ: R^{N×(Cv+3)}→R^{N×3} 仍回归预测噪声，DDPM 的 L2 噪声损失形式不变，因此可以整除式替换进任意点云编码器而不改训练管线",
+  "直接在真实机器人轨迹（观测-动作对的连续帧序列）上做无监督预训练，预训练编码器可直接替换 DP3 / RISE 的视觉塔做端到端微调，也可作为点云视觉塔嵌入 VLA 模型 RDT-1B，支持域内数据与跨域 RoboMind 数据两种来源"
+ ],
+ "method_framework": "从演示轨迹取相邻帧对 (o_{t-1},o_t)，编码器把 o_{t-1} 压成潜 z；点体素扩散以 [o_T, z] 为输入逐步去噪生成 o_t，训练为预测噪声与真实噪声的 L2 回归；预训练后编码器直接替换 DP3 / RISE / RDT-1B 的视觉塔并与策略骨干联合微调。",
+ "experiment_framework": "仿真 Adroit 与 MetaWorld（3 个种子、每 200 epoch 评 20 episode 取最高 5 次平均）；真实 UR5+夹爪、UR5+LeapHand 灵巧手、AgileX 双臂、TianGong 人形共 12 任务，每任务 20 次试次；基线含 PointMAE、STRL、C2P 及 2D 的 R3M、MVP、MAE 与 ACT、Diffusion Policy，另测 RDT-1B。",
+ "takeaways": [
+  "用历史帧潜变量条件化 diffusion 去生成下一帧点云，是一套可插拔的通用 3D 预训练目标：同一 z 接口可直接套 PointNet++ / Point Transformer / DP3 Encoder 三种编码器",
+  "该目标对数据规模不敏感——域内小批量自监督即涨 16.9%，换跨域大数据 RoboMind 涨 24.7%，比依赖互联网 2D 预训练（R3M/MVP 动辄 3 亿样本）更划算",
+  "直接在机器人自身演示轨迹上做预训练，比套用通用 2D 表征在 3D 操控上更有效（表 1 平均 16.4/20 vs MVP 15.5/20），且无需额外 3D 数据采集"
+ ],
+ "weaknesses": [
+  "正文在第 5.4 节后截断，5.5 节「预训练 VLA 是否具备更强空间理解（任务迁移与长程任务）」的定量结果与结论完全缺失，RDT-1B 上 FVP 的收益仅有表 2 五个任务，且 WipePlate 仅 5/20 vs 4/20、PutBox 9/20 与 2D 输入持平，样本量过小难以支撑「显著改进」的表述",
+  "真实世界实验只报 20 次试次的成功次数、无标准差与显著性检验，表 1 中 DP3+FVP 平均 16.4/20 相对 MVP 的 15.5/20 差距很小（Assembly 13 vs 11、ArtiManip 16 vs 14）却平行于 SOTA 结论；仿真虽有 3 seeds 的 mean/std，但「平均最高 5 次成功率」这一口径会放大偶发成功、人为压低方差",
+  "「通用预训练」claim 与实现不符：正文写明每个下游任务用自己的演示数据各自预训练一个视觉编码器（Each task demonstrations are used to pre-train its own visual encoder），所谓 plug-in 通用表示只在跨域 RoboMind 那一档成立；且条件化方式（通道拼接 z）、历史帧数、扩散步数、点云分辨率等设计无任何消融"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "机器人操作与可靠性主线无关，仅工程价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

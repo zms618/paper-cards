@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Positional Encoding Field.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Positional Encoding Field.pdf",
+ "title": "Positional Encoding Field",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "扩展DiT位置编码为3D场，实现单图新视角合成与空间编辑。",
+ "innovations": [
+  "揭示 DiT 仅凭扰动位置编码即可重组图像内容，说明空间相干性主要由PE而非token间依赖决定",
+  "将2D RoPE扩展为3D深度感知位置编码场，使DiT在体空间中跨视角推理",
+  "设计分层子patch位置编码，实现亚patch粒度的细粒度空间控制"
+ ],
+ "method_framework": "从单图新视角合成出发，把DiT的位置编码从2D图像平面推广到结构化3D场：引入深度感知编码支持体素跨视角推理，并分层细分token到子patch级别捕捉不同粒度空间信息，使DiT成为几何感知的生成框架；操控PE-Field即可在全局与局部结构化地控制图像内容。",
+ "experiment_framework": "在单图新视角合成(NVS)基准上对比基于NeRF/3DGS/扩散的单图NVS方法，报告视角一致性与保真；并展示到可控空间图像编辑的泛化。",
+ "takeaways": [
+  "DiT 的空间组织主要由位置编码支配，扰动PE即可结构化重排内容",
+  "3D深度感知位置编码场使DiT直接在几何空间推理，取得单图NVS SOTA",
+  "该机制自然泛化为可操控PE实现的空间图像编辑"
+ ],
+ "weaknesses": [
+  "主线为3D视觉生成/新视角合成，与可靠性/医学影像/多模态推理主线关联弱",
+  "深度感知依赖单目深度先验，误差累积对视角一致性的影响前9页未充分量化",
+  "前9页未见对大视角变化/无纹理区域等困难NVS样本的系统评测"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "3D视觉生成与可靠性主线关联弱，无可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

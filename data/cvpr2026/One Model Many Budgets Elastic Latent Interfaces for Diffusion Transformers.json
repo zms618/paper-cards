@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/One Model Many Budgets Elastic Latent Interfaces for Diffusion Transformers.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/One Model Many Budgets Elastic Latent Interfaces for Diffusion Transformers.pdf",
+ "title": "One Model Many Budgets Elastic Latent Interfaces for Diffusion Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "ELIT通过弹性接口实现扩散模型计算自适应分配，提升效率与质量。",
+ "innovations": [
+  "引入可变长度潜在接口作为计算分配机制",
+  "轻量级Read/Write交叉注意力层实现信息流动",
+  "训练时随机丢弃尾部潜在 tokens 实现重要性排序"
+ ],
+ "method_framework": "ELIT在DiT架构中添加潜在接口和Read/Write层，通过分组交叉注意力实现计算非均匀分配，训练时随机丢弃尾部潜在 tokens 使其重要性排序，推理时可动态调整潜在 token 数量控制计算量。",
+ "experiment_framework": "ImageNet-1K(256/512px)和Kinetics-700数据集，对比DiT、U-ViT、HDiT基线，使用FID、FDD、IS/FVD指标评估生成质量，分析计算-质量权衡关系。",
+ "takeaways": [
+  "计算非均匀分配可显著提升生成模型效率",
+  "多预算训练策略使单一模型支持多种计算资源场景",
+  "弹性接口自然支持自引导等采样技术"
+ ],
+ "weaknesses": [
+  "参数量略有增加(约3%)",
+  "分组策略可能限制细粒度计算分配",
+  "未探索不同图像域的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "计算效率优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

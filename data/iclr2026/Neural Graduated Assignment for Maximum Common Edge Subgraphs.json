@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Neural Graduated Assignment for Maximum Common Edge Subgraphs.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Neural Graduated Assignment for Maximum Common Edge Subgraphs.pdf",
+ "title": "Neural Graduated Assignment for Maximum Common Edge Subgraphs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "无监督神经指派优化求解MCES，理论分析温度机制但实验验证不足。",
+ "innovations": [
+  "提出神经graduated assignment(NGA)，堆叠可微指派优化与神经组件，用可学习温度对匹配过程做高维参数化。",
+  "全无监督/免训练数据：不需要MCES本身的大小或标签信息即可得到高效近似。",
+  "首次对动态、参数化温度的行为做理论分析，刻画其收敛、探索-利用权衡与逃离局部最优的机制。"
+ ],
+ "method_framework": "将MCES的指派矩阵参数化为可微分配，通过graduated assignment的温度调度（由神经组件可学习）逐步从平滑松弛逼近离散匹配；可学习温度在退火中平衡探索与利用，帮助逃离局部最优并收敛；输出显式的MCES结构。",
+ "experiment_framework": "在MCES计算、图相似度估计与图检索任务上对比max-clique转化/分支界定(McSplit/RASCAL)与GNN搜索方法(GLSearch)；报告在大实例上显著缩短计算时间、提升可扩展性与精度（具体数值表在所提取页之后）。",
+ "takeaways": [
+  "可微指派加可学习温度可在多项式时间内高效近似MCES，避免穷举搜索。",
+  "免训练数据的神经方法在大图上兼顾精度与可扩展性。",
+  "NGA可迁移到图相似度计算与图检索，具可解释输出（显式匹配结构）。"
+ ],
+ "weaknesses": [
+  "所提取页未给出具体运行时间/MCES大小数值，相对McSplit/RASCAL的提升缺乏可核验量化。",
+  "为近似方法，在追求精确最优MCES时无最优性保证，误差界未给出。",
+  "主要在化学/分子图与合成图验证，对大规模真实网络（社交/流量图）的鲁棒性未充分展示。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "图匹配算法与可靠性主线无实质交点，属常规扎实工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

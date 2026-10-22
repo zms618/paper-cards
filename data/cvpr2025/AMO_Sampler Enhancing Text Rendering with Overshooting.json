@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/AMO_Sampler Enhancing Text Rendering with Overshooting.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AMO_Sampler Enhancing Text Rendering with Overshooting.pdf",
+ "title": "AMO Sampler: Enhancing Text Rendering with Overshooting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "过冲采样器+注意力调制，但实验设计缺陷严重削弱可信度",
+ "innovations": [
+  "Overshooting sampler：把Euler步改造成先推进到过冲时刻o=s+cε的Ẑo=Z̃t+(1+c)εv(Z̃t,t)，再用边际匹配解出a=s/o、b=√((1-s)²-s²(1-o)²/o²)加噪回退到s，保证边缘分布不变；极限下等价于Euler+Langevin的SDE",
+  "用Fokker-Planck从RF的∇logρt=(t·v(x,t)-x)/(1-t)推出取σ²_t=2(1-t)c/t即严格恢复过冲SDE，把‘过冲补偿’解释为修正连续Euler步累积误差的Langevin校正而非纯启发式噪声",
+  "注意力调制：以跨注意力softmax在h×w图像patch上的归一化得分作mask m，令o_{h,w}=s+cε·m_{h,w}逐元素过冲，文本相关区域过冲强、背景区域过冲弱，抵消大c时的过平滑伪影且推理零额外开销"
+ ],
+ "method_framework": "对rectified flow模型，每步先按注意力mask逐patch过冲ODE到o=s+cε·m，再按边际匹配系数a=s/o、b=√(...)注入高斯噪声回到s；等价于在Euler步外加一步Langevin动力学修正边缘分布，无需训练。",
+ "experiment_framework": "SD3-medium/Flux-dev/AuraFlow@1024²、A40，数据为DrawTextCreative+ChineseDrawText+TMDBEval500共893提示，指标OCR-A/F、CLIP、FID与100提示人工纠正率，20/50/100步；末节与微调法对比被截断。",
+ "takeaways": [
+  "把随机采样构造为‘过冲一步ODE→按边际匹配解析补偿噪声’，可严格导出等价于在Euler步上加一步Langevin动力学，这套RF→SDE→Fokker-Planck推导可直接套到任何rectified flow采样器",
+  "用一层跨注意力mask把过冲强度做成patch级权重（文本区多过冲、背景少过冲），一个超参同时化解‘大c提文本’与‘大c过平滑’的矛盾，训练免费、推理不增算力",
+  "a、b由分布匹配闭式解出而非手设尺度，属‘极小改动+严格推导’范式，比堆模块更能拿到稳定增益"
+ ],
+ "weaknesses": [
+  "全部实验只用同一个随机种子（图4注明same random seed），主表与消融均无标准差或多次重复，人工评估仅覆盖100条提示且无评判者一致性，32.3%/35.9%的文案无法判断显著性",
+  "消融表自相矛盾：去掉注意力调制的(X,X,7)在OCR-F上0.503反而高于完整(X,X,X)的0.494，FID仅差0.5，A组件的必要性仅在图6羽毛/烟雾的定性可视化里体现，缺少可量化指标支撑",
+  "实验在5.3节与微调类方法（GlyphControl、TextDiffuser）的对比处截断；且AuraFlow上人工纠正率仅1.0%→3.0%、OCR-A 0.075→0.082、CLIP几乎不变，提升微弱却被并入整体‘显著提升’表述"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "文本渲染技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

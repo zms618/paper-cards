@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Edge-SD-SR Low Latency and Parameter Efficient On-device Super-Resolution with Stable.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Edge-SD-SR Low Latency and Parameter Efficient On-device Super-Resolution with Stable.pdf",
+ "title": "Edge-SD-SR Low Latency and Parameter Efficient On-device Super-Resolution with Stable",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "轻量级超分模型，双向条件机制提升性能但泛化验证不足",
+ "innovations": [
+  "双向条件机制，在去噪和加噪过程中都利用低分辨率输入",
+  "联合训练UNet和轻量级编码器，解耦高低分辨率图像编码",
+  "结合尺度蒸馏训练单步模型，适配轻量解码器"
+ ],
+ "method_framework": "Edge-SD-SR采用轻量级UNet(158M参数)、编码器(14M参数)和解码器，总参数约169M，复杂度142 GFLOPs，通过双向条件机制和联合训练策略实现高效超分辨率",
+ "experiment_framework": "DIV2K/DIV8K/Flickr2K/OST/FFHQ训练集，DIV2K/RealSR/DRealSR/DPED-iphone测试集，对比LDM/StableSR/Yonos-SR/ResShift基线，使用LPIPS等指标",
+ "takeaways": [
+  "双向条件机制显著提升轻量模型性能",
+  "解耦高低分辨率编码器可有效减少参数量",
+  "联合训练策略可适配轻量架构"
+ ],
+ "weaknesses": [
+  "仅评估了4倍超分辨率任务，未测试其他放大倍数",
+  "未充分验证模型在真实世界图像上的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "轻量超分模型，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

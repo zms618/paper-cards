@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/SALS_Sparse Attention in Latent Space for KV cache Compression.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/SALS_Sparse Attention in Latent Space for KV cache Compression.pdf",
+ "title": "SALS: Sparse Attention in Latent Space for KV cache Compression",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "潜在空间稀疏注意力压缩KV缓存，提升长上下文LLM效率。",
+ "innovations": [
+  "发现RoPE增加键向量方差导致更高秩，阻碍低秩压缩",
+  "提出在潜在空间进行稀疏注意力计算，避免全量KV缓存重构",
+  "多头联合投影矩阵设计，比单头投影捕获更多能量"
+ ],
+ "method_framework": "SALS框架包含三阶段：1)多头KV缓存通过低秩投影压缩到潜在空间；2)在潜在空间计算近似注意力分数并选择关键token；3)仅重构选中的token并应用RoPE进行精确注意力计算。",
+ "experiment_framework": "在LLaMA2-7B-chat和Mistral-7B上评估，使用GSM8K、CoQA和LongBench数据集，与Palu、KIVI、Double Sparse等方法对比准确性和内存访问效率。",
+ "takeaways": [
+  "潜在空间表示能有效保留关键语义特征，支持高效稀疏选择",
+  "融合token选择、重构和RoPE旋转的单核实现可显著减少内存流量"
+ ],
+ "weaknesses": [
+  "在前几层和最后几层的重叠分数较低，可能影响性能",
+  "仅对键向量进行低秩压缩，值向量仍使用量化，可能存在进一步优化空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

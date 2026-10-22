@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Conformal Prediction with Cellwise Outliers A Detect-then-Impute Approach.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Conformal Prediction with Cellwise Outliers A Detect-then-Impute Approach.pdf",
+ "title": "Conformal Prediction with Cellwise Outliers: A Detect-then-Impute Approach",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "检测-插补CP框架解决单元格异常，但依赖检测性能且覆盖率更宽松",
+ "innovations": [
+  "提出detect-then-impute CP框架，对测试特征先做异常检测再插补被污染单元格",
+  "将相同检测和插补过程自适应应用于校准集，重建交换性以保证覆盖率",
+  "开发PDI-CP和JDI-CP两种实用算法，JDI-CP达到有限样本1-2α覆盖率保证"
+ ],
+ "method_framework": "当测试特征某些单元格被污染(cellwise outliers)时，标准CP的交换性假设被破坏。本文先对测试特征用检测程序(如DDC)识别异常单元格，再用插补方法(如均值插补)填充。关键是将同样的检测-插补流程也应用于校准集，使校准后的特征与处理后的测试特征交换。JDI-CP使用联合检测插补，达到1-2α有限样本覆盖率。",
+ "experiment_framework": "在合成数据和真实数据(风方向、核黄素基因表达)上实验；与oracle基线和不处理异常的CP比较；指标为经验覆盖率和预测区间宽度。",
+ "takeaways": [
+  "JDI-CP在存在单元格异常时保持有限样本1-2α覆盖率",
+  "检测-插补后处理的校准集与测试集重建交换性",
+  "在核黄素基因表达等真实含异常数据集上鲁棒覆盖"
+ ],
+ "weaknesses": [
+  "依赖检测程序的性能，漏检异常单元格仍会破坏覆盖率",
+  "插补方法的简单选择(均值插补)可能引入偏差",
+  "1-2α覆盖率比标准1-α更宽松，保守性增加"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

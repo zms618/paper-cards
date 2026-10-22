@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Overcoming Joint Intractability with Lossless Hierarchical Speculative Decoding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Overcoming Joint Intractability with Lossless Hierarchical Speculative Decoding.pdf",
+ "title": "Overcoming Joint Intractability with Lossless Hierarchical Speculative Decoding",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "层级重采样策略解决联合不可解问题，但开销与泛化性存疑",
+ "innovations": [
+  "提出分层投机解码HSD：通过层级化分支重采样策略平衡可访问分支上的过剩与不足概率质量，实现可证明无损的序列级验证",
+  "解决了联合不可解问题：现有blockwise verification未达理论最优，HSD在保持分布保真的同时最大化期望接受token数",
+  "方法通用性强，可即插即用地集成到EAGLE-3等现有投机解码框架，带来>12%性能提升"
+ ],
+ "method_framework": "HSD从后往前扫描draft token序列，在第一个拒绝位置执行单次重采样，重采样分布来自预先构建的重采样层级树。该层级树将不同分支的概率质量按层级组织，使得在任意中间位置拒绝时，都能从对应层级中采样出符合目标分布的token，无需计算全路径联合概率。理论上证明了该重采样策略严格恢复目标模型的输出分布（lossless）。",
+ "experiment_framework": "在多个模型家族（Qwen、Llama等）和多种基准（通用对话、代码、数学推理）上测试，与EAGLE-3、Medusa、blockwise verification等对比。指标为接受率、端到端加速比。集成到EAGLE-3后达到SOTA解码效率。",
+ "takeaways": [
+  "HSD集成到EAGLE-3后带来超过12%的性能增益，同时严格保持目标模型分布",
+  "分层重采样策略在不同模型家族和任务上一致提升接受率",
+  "方法可解释性强、通用性好，可无缝接入现有投机解码框架"
+ ],
+ "weaknesses": [
+  "重采样层级树需要额外存储和计算开销，论文未详细分析其与接受率提升的 trade-off",
+  "实验主要在Qwen和Llama系列上验证，对其他模型架构（如Mamba/SSM）的兼容性未验证",
+  "未分析长文本生成场景下层级树深度增长带来的实际延迟影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "解码效率优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

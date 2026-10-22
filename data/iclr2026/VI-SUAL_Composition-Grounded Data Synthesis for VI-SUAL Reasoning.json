@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VI-SUAL_Composition-Grounded Data Synthesis for VI-SUAL Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VI-SUAL_Composition-Grounded Data Synthesis for VI-SUAL Reasoning.pdf",
+ "title": "Composition-Grounded Data Synthesis for Visual Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "COGS合成视觉推理数据，提升MLLM组合推理，但依赖因子定义与渲染质量",
+ "innovations": [
+  "提出COGS数据高效框架，从少量种子问题出发为MLLM合成大规模视觉推理QA对",
+  "将每个种子问题分解为原始感知因子与推理因子，再与新图像系统重组，生成带子问题与中间答案的样本",
+  "支持因子级过程奖励的强化学习，并通过混合不同种子数据的因子实现跨数据集迁移"
+ ],
+ "method_framework": "针对图表、渲染文档、网页等标注稀缺的人工图像域，COGS先把每个种子问题分解为原始感知因子与推理因子，再用这些因子在新图像上系统重组，自动生成带子问题与中间答案的合成QA对；这些中间答案天然构成因子级过程奖励信号，用于RL训练MLLM做可分解的视觉推理。",
+ "experiment_framework": "在图表推理基准上评测，对比仅用种子数据或常规合成数据的基线；指标为未见问题准确率，尤重推理密集与组合式问题；并验证跨数据集迁移与向网页域的扩展。",
+ "takeaways": [
+  "在图表推理上对未见问题性能大幅提升，收益在推理密集与组合式问题上最大",
+  "因子级混合训练带来更好的跨数据集迁移，说明COGS诱导的是可泛化能力而非数据集过拟合",
+  "框架可从图表扩展到网页等其他人工图像域"
+ ],
+ "weaknesses": [
+  "聚焦图表/文档/网页等人工图像域的推理，未涉及医学影像，与主线为中相关",
+  "合成数据由因子重组而来，答案正确性依赖底层渲染引擎与因子逻辑，前9页未见合成样本噪声率量化",
+  "因子级过程奖励的因子定义需要领域先验，对标注困难域的可扩展性边界前9页讨论有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "人工图像域推理，未触及医学影像可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

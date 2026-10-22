@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Investigating Non-Transitivity in LLM-as-a-Judge.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Investigating Non-Transitivity in LLM-as-a-Judge.pdf",
+ "title": "Investigating Non-Transitivity in LLM-as-a-Judge",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6.5,
+  "relevance": 7,
+  "overall": 6.3
+ },
+ "one_line": "揭示LLM评判非传递偏好，提出更可靠的低成本排名方法。",
+ "innovations": [
+  "在 AlpacaEval 框架内实证量化 LLM 评判者的非传递偏好及其对模型排名的影响，证明固定基线排名对基线选择敏感。",
+  "提出用 round-robin 锦标赛结合 Bradley-Terry 偏好模型生成排名，与 Chatbot Arena 的 Spearman/Kendall 相关由 95.0%→96.4%、82.1%→86.3%。",
+  "提出 SWIM（Swiss-Wise Iterative Matchmaking）动态配对赛制，在保留 round-robin 收益的同时显著降低成对比较的计算成本。"
+ ],
+ "method_framework": "构建多模型两两胜率矩阵，检验其传递性；识别因非传递导致的排名循环；用 Bradley-Terry 模型从全量两两比较中恢复可加性能力分；用 SWIM 动态配对减少所需对局数。",
+ "experiment_framework": "在 AlpacaEval 上对约 11-20 个开源/闭源模型做成对比较；基线为固定基线对齐式胜率；指标为与 Chatbot Arena 人类排名的 Spearman/Kendall 相关；对比 round-robin+BT 与 SWIM 的排名一致性与对局成本。",
+ "takeaways": [
+  "LLM 评判者存在非传递偏好，固定基线式排名不可靠、随基线改变而翻转。",
+  "round-robin 加 Bradley-Terry 能产出与人类（Chatbot Arena）更一致的排名；SWIM 以更低成本接近该收益。"
+ ],
+ "weaknesses": [
+  "主要在 AlpacaEval/对话偏好场景验证，对其他开放式任务（如代码、推理）的外推性未充分展示。",
+  "BT/SWIM 仍依赖同一个 LLM 评判者，未解决评判者本身系统性偏差的问题。",
+  "与医学影像等主线落地域无直接关联，可靠性维度集中在评测排名而非生成结果本身。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

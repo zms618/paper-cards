@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Don’t Let It Fade Preserving Edits in Diffusion Language Models via Token Timestep Allocation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Don’t Let It Fade Preserving Edits in Diffusion Language Models via Token Timestep Allocation.pdf",
+ "title": "Don’t Let It Fade: Preserving Edits in Diffusion Language Models via Token Timestep Allocation",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "Token时间步分配缓解扩散模型更新遗忘，但计算开销大且稳定性待验证",
+ "innovations": [
+  "识别并形式化了扩散语言模型中的更新遗忘问题",
+  "提出Token Timestep Allocation (TTA-DIFFUSION)框架实现软语义token排序",
+  "设计了基于分类器梯度的自适应时间步分配策略",
+  "结合渐进式步数减少方法实现高效生成"
+ ],
+ "method_framework": "TTA-DIFFUSION为每个token分配独立的时间步，通过固定策略或基于分类器梯度的自适应策略控制token的更新强度，关键token早期冻结，不确定token持续优化，在推理时实现语义引导的token排序。",
+ "experiment_framework": "在去毒和情感控制任务上评估，使用RealToxicityPrompts和IMDB数据集，比较毒性、困惑度、准确性和多样性指标，并与多种自回归和扩散基线对比。",
+ "takeaways": [
+  "token级时间步分配可有效缓解更新遗忘问题",
+  "自适应策略比固定策略更能减少波动和关键token变化",
+  "方法可扩展到连续和离散扩散模型以及多种任务"
+ ],
+ "weaknesses": [
+  "渐进式步数减少的稳定性在极低时间步下仍有挑战",
+  "自适应策略的计算开销随序列长度增加",
+  "未充分探索不同任务间的最佳超参数配置"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

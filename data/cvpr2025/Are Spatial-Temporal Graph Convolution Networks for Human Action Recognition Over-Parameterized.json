@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Are Spatial-Temporal Graph Convolution Networks for Human Action Recognition Over-Parameterized.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Are Spatial-Temporal Graph Convolution Networks for Human Action Recognition Over-Parameterized.pdf",
+ "title": "Are Spatial-Temporal Graph Convolution Networks for Human Action Recognition Over-Parameterized?",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "ST-GCN过参数化证据不足，稀疏方法提升有限且缺乏严谨验证",
+ "innovations": [
+  "把「ST-GCN 过参数化」从观察变成实验证据：在 ST-GCN 与 CTR-GCN 上从预训练稠密网络剪掉 80% 参数仍不掉点，并先用 Fig.1 给出动机——四个 backbone 在 NTU-RGB+D 四个 benchmark 上的 top-1 差都 <2% 且与模型规模无关",
+  "反 LTH 的两阶段稀疏生成器：把 mask 固定为随机预选（Ms/Mt，S(·) 取 m 中第 S 小元素为阈值二值化），改为训练权重本身；warm-up 期全参数训练并加 group lasso 信息压缩惩罚 Lc=Σ_{i=1}^{n}‖W*i‖2（W* = W⊙(1−M)，对十个 ST-GCN 层各自的残差块求 2-范数和），把被 mask 权重的信息压进保留结构，fine-tune 期只优化 M=1 的权重；直接解决原始 LTH「依赖初始化权重」与「高稀疏率崩塌」两个缺点（Fig.5：不加热身在稀疏度>0.8 时 AA-GCN/CTR-GCN/DG-STGCN 直接崩）",
+  "多级稀疏组装：同一 backbone 在 0.6/0.8/0.95/0.99 四档稀疏度各训一个子网后汇总预测（沿用多流融合 [42] 的框架），只用 66% 参数就比稠密整体提升 >1% top-1，并用 violin plot 显示 max-prob 分布更集中于 1、低置信（max prob<0.5）样本数显著下降"
+ ],
+ "method_framework": "稀疏层为二值化掩码乘 θ 的 S-GCN 与乘 ω 的 T-GCN；两阶段训练，warm-up 全参并加 group lasso 信息压缩惩罚，fine-tune 只训掩码内权重",
+ "experiment_framework": "NTU60 与 NTU120 四档、Kinetics-400、FineGYM；4 backbone 乘 4 稀疏度；指标 top-1",
+ "takeaways": [
+  "「固定 mask、训练权重 + warm-up 期用 group lasso 把废弃权重的信息压缩进保留结构」绕开了彩票假设对初始化的强依赖，可迁移到 GCN/Transformer 的子网络提取",
+  "用同一 backbone 的不同稀疏度子网做集成，是「不涨参数涨精度」的廉价 ensemble 思路"
+ ],
+ "weaknesses": [
+  "提升幅度小且与稀疏性无必然因果：>1% 的增益本质是四个子网的预测融合（多流 ensemble 的既有套路），而表中大量格子只是 ±0.0~0.6 的噪声级波动（如 ST-GCN 60-view 的 0.6 档 +0.3、0.95 档 −0.4），结论里又同时说「slight or no degradation」，claim 两头摇摆；稀疏度optimizer 参数（0.6 起）本身也是拍定的",
+  "无方差/多种子/显著性：Table 1 与全部曲线都只给单次运行的 top-1；NTU120-Xset 上 0.99 稀疏度 CTR-GCN 掉 4.4–5.1%、DG-STGCN 60-view 掉 5.0%，这类大落差与 +0.3 的正向落差在单次跑动下无法区分于随机波动",
+  "对比与消融都不完整：4.5 节只把 DG-STGCN(S*) 塞进 [42] 的多模态融合框架里比，没有与同样做稀疏/组装的其它方法直接比参数-精度曲线；warm-up 的 group lasso 权重 λ=1 全文固定，只有「有/无 penalty」的二元消融（NTU120-Xset 差 >10%），惩罚强度的中间档位完全没测。加上正文在 4.5 中途截断（Kinetics-400、FineGYM 与多模态融合结果缺失），「over-parameterization」这个 headline claim 只靠「剪掉 80% 不掉点」一图支撑，没有与数据量、训练轮次、数据增广这些替代解释做对照"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "稀疏方法设计有迁移价值，但与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

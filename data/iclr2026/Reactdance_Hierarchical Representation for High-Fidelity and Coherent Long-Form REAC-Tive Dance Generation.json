@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Reactdance_Hierarchical Representation for High-Fidelity and Coherent Long-Form REAC-Tive Dance Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reactdance_Hierarchical Representation for High-Fidelity and Coherent Long-Form REAC-Tive Dance Generation.pdf",
+ "title": "ReactDance: Hierarchical Representation for High-Fidelity and Coherent Long-Form Reactive Dance Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "分层扩散框架解耦姿态与动态，非自回归加速长舞蹈生成。",
+ "innovations": [
+  "提出分层有限标量量化(HFSQ)多尺度运动表示，把粗身体姿态与高频动态解耦，通过分层引导机制对两者独立精细控制。",
+  "提出分块局部上下文(BLC)非自回归采样策略：将序列分块并行合成，用周期因果掩码与位置编码保证块间连贯，替代逐帧慢生成。",
+  "用稠密滑窗训练为表示注入局部时序上下文，缓解短clip训练与长序列推理间的误差累积与时序漂移。"
+ ],
+ "method_framework": "在分层潜空间上做扩散：HFSQ把运动编码为粗姿态+高频动态的多尺度码，分层引导细化；BLC将长序列分块并行去噪，配合周期因果掩码与滑窗训练保持跨块时序连贯，条件为领舞动作与音乐。",
+ "experiment_framework": "在反应式舞蹈生成基准上对比Duolando等SOTA，报告运动质量、长期连贯性与采样效率(帧数/时延)，测试2000+帧长序列生成。",
+ "takeaways": [
+  "分层解耦粗姿态与高频动态可同时提升空间交互细节与可控性。",
+  "非自回归分块并行采样可在保持长时连贯的同时大幅提速，2000+帧在2秒内生成。"
+ ],
+ "weaknesses": [
+  "属舞蹈/人体动作生成方向，与可靠性主线（鲁棒/可信/医学影像）关联弱。",
+  "前9页未见完整定量对比表，对音乐-动作对齐与双人物理碰撞的精细度缺乏消融。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "舞蹈生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

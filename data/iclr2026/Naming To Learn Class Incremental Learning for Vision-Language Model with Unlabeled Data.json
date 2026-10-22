@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Naming To Learn Class Incremental Learning for Vision-Language Model with Unlabeled Data.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Naming To Learn Class Incremental Learning for Vision-Language Model with Unlabeled Data.pdf",
+ "title": "Naming to Learn: Class Incremental Learning for Vision-Language Model with Unlabeled Data",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "用递归MSE精炼伪标签，双层权重调整缓解无标签CIL遗忘",
+ "innovations": [
+  "提出更现实的无标签CIL设定：新类只有无标签数据与类名集合，而非全标注数据",
+  "用MSE回归目标以递归方式求解，并对图像特征降维后用分类器迭代更新伪标签以精炼噪声",
+  "设计类内下调低置信伪标签、类间补偿伪标签类别不均衡的双层权重调整，递归求解等价于联合训练从而缓解遗忘"
+ ],
+ "method_framework": "先用CLIP为无标签新类数据生成初始伪标签；N2L把分类头学习建模为MSE回归，递归求解避免灾难性遗忘。对提取的图像特征做降维，在低维特征上训练分类器并迭代回代修正伪标签；再用类内(低置信降权)与类间(补偿不均衡)双层策略调整样本权重，整体可递归求解，理论上等价于用全部无标签数据做联合训练。",
+ "experiment_framework": "在多个CIL标准数据集上验证(基于CLIP/ViT骨干)；对比无标签CIL与全监督CIL的SOTA方法；指标为增量任务平均准确率、遗忘度量；消融伪标签精炼与双层权重调整各组件。",
+ "takeaways": [
+  "无标签CIL中伪标签噪声会加剧遗忘，递归MSE+迭代精炼可显著缓解",
+  "双层权重调整同时处理低置信样本与类别不均衡，是性能增益关键",
+  "递归增量学习在理论上可达联合训练效果，实证超过现有SOTA"
+ ],
+ "weaknesses": [
+  "依赖CLIP等预训练VLM先验，伪标签初始质量受VLM零样本能力上限约束",
+  "类名集合需已知，开放词汇/未命名新类场景未覆盖",
+  "主线是持续学习/防遗忘，虽与鲁棒性相关但未触及验证器、不确定性量化、幻觉抑制等核心可靠性手段"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "防遗忘机制与可靠性主线相关但未触及核心可靠性手段",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

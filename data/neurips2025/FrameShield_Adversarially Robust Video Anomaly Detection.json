@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/FrameShield_Adversarially Robust Video Anomaly Detection.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/FrameShield_Adversarially Robust Video Anomaly Detection.pdf",
+ "title": "FrameShield: Adversarially Robust Video Anomaly Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "时空扭曲生成伪标签，提升视频异常检测对抗鲁棒性",
+ "innovations": [
+  "时空区域扭曲(SRD)方法生成精确帧级伪异常标签",
+  "针对MIL框架的弱点设计帧级对抗训练",
+  "结合真实异常分布与合成异常的混合训练策略"
+ ],
+ "method_framework": "两阶段训练：第一阶段使用PromptMIL生成伪标签；第二阶段结合SRD生成的精确标注伪异常与真实异常分布进行对抗训练，提升模型鲁棒性",
+ "experiment_framework": "在UCSD Ped2、Shanghai、TAD、UCF Crime、MSAD等数据集上评估，使用PGD-1000、AutoAttack、A3等攻击方法，以AUROC为主要指标",
+ "takeaways": [
+  "时空区域扭曲可有效生成精确标注的伪异常样本",
+  "帧级对抗训练显著提升模型在对抗攻击下的性能",
+  "混合真实与合成异常数据可缓解伪标签噪声问题"
+ ],
+ "weaknesses": [
+  "SRD方法依赖于Grad-CAM的目标检测效果",
+  "在异常片段检测(AUCA)上的性能提升相对有限",
+  "方法计算复杂度较高，训练成本增加"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

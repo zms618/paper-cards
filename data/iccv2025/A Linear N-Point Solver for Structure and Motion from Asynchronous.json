@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/A Linear N-Point Solver for Structure and Motion from Asynchronous.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Linear N-Point Solver for Structure and Motion from Asynchronous.pdf",
+ "title": "A Linear N-Point Solver for Structure and Motion from Asynchronous Tracks",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 5.0,
+  "overall": 5.8
+ },
+ "one_line": "恒速假设下异步点轨迹线性求解，但缺乏真实对比与误差分析",
+ "innovations": [
+  "在恒线速度模型 R(t)≈exp(ωt×)、p(t)≈v·t′ 下，把点-时间关联式 f′_ij×(P_i − v·t′_ij)=0（式3-4）展开为对 3D 点与速度都线性的块稀疏系统（式6），首次给出对任意时刻异步采样点轨迹成立的单阶段线性 N 点求解器",
+  "用 Schur complement（式8）先消掉全部未知点、只对 3 维速度方向做 SVD，并利用 M_A 的 3×3 块对角结构把复杂度压到 O(M)，再由式9 回代各点，避免对 3M+3 维系统直接 SVD",
+  "给出完整可观测性刻画：秩(F_i)=3 要求每条轨迹至少 2 次观测、秩(B)≥2 保证 SVD 成功；推导出 N≥⌈3M/2⌉+1 的观测下界（式11-12）并标出 M=1/2/3 对应 3/4/6 点最小解配置"
+ ],
+ "method_framework": "用 IMU 角速度 ω 得 f′_ij=exp([ωt′]×)f_ij；恒速假设下把 f′_ij×(P_i−v t′)=0 展开成对 P_i 与 v 线性的块稀疏系统(式6)；Schur complement 消点只解 3 维 v，再回代，正深度定符号，外挂 RANSAC。",
+ "experiment_framework": "仿真：640×480 虚拟相机、每场景重复 1000 次、像素/时间抖动/角速度三噪声扫描，三档观测密度；最小解 63µs 单帧；真实/卷帘/事件相机结果在 §4.2 截断；指标为无量纲速度方向角误差(式14)。",
+ "takeaways": [
+  "关联关系在参考帧泰勒展开一次就能同时解结构和运动，且和 5 点/8 点法同源——把线特征版本 [11] 换成点特征后自由度计数可精确导出最小解个数",
+  "消元顺序很关键：先 Schur 补消掉 3M 个未知点只对 3×3 的 B 做 SVD，比对整个系统 SVD 快得多，且 M_A 块对角让求逆是 O(M)",
+  "单目无尺度导致速度只有方向可观测，SVD 天然给出 ±v 两个解，用「恢复点深度必须为正」（式10）判符号，并直接当作 RANSAC 的假设合法性检查"
+ ],
+ "weaknesses": [
+  "可见正文里没有任何与已有异步求解器的定量对比（Saurer et al. [40]、Gao 等线特征求解器 [10,11]、Peng/Xu 三视图法 [37,46]、Zhao 等 [47]）；§4.2 真实数据（全局快门/卷帘/事件相机）的对手基线、指标与表格全在 §4.1.1 之后的截断处",
+  "角速度 ω 被假设由 IMU 或上游估计给定（式4、Alg.1），仿真里虽单独扫描到 30 deg/s 旋转扰动，但真实实验中 ω 的标定漂移如何经 R(t)≈exp(ωt×) 传导到 v 与 P 的误差没有分解实验，这是整套推导唯一的输入假设却缺乏误差传播分析",
+  "最小解分析（式11-12）只给计数与秩条件，没覆盖恒速模型在真实运动下的失效（急停、加减速），引言仅一句 key-frame selection 带过；仿真还把速度固定为 ∥v∥=1m/s、点在 2m 外、0.2s 滑窗，尺度范围与视差量级被人为收窄"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "结构运动估计与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/An Analysis for Reasoning Bias of Language Models with Small Initialization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/An Analysis for Reasoning Bias of Language Models with Small Initialization.pdf",
+ "title": "An Analysis for Reasoning Bias of Language Models with Small Initialization",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "小初始化使LLM偏向组合推理，大初始化偏向记忆，但理论深度不足。",
+ "innovations": [
+  "揭示初始化规模带来的推理偏置：小初始化偏向推理/组合规则，大初始化偏向记忆",
+  "设计锚函数 (anchor function) 合成任务在可控复杂度下分离推理与记忆偏置",
+  "定位 embedding 空间与自注意力机制为塑造该偏置的关键组件，并从训练动力学/神经元凝聚角度给出理论框架"
+ ],
+ "method_framework": "在单一 next-token 预测中混合不同推理复杂度的数据（PrOntoQA 带思维链 vs TinyStories 低复杂度故事），观察不同初始化规模下两类损失下降速度差异；用锚函数合成任务控制推理复杂度，结合训练初期动力学与神经元凝聚现象解释小初始化为何先学组合规则。",
+ "experiment_framework": "以 GPT-2 规模模型在 PrOntoQA+TinyStories 混合集上训练，比较不同初始化尺度的损失曲线；用锚函数合成任务做受控验证，并在真实语言任务上验证理论洞见，消融 embedding/self-attention 组件作用。",
+ "takeaways": [
+  "小初始化促使模型用最低复杂度拟合、优先学到组合式推理规则",
+  "embedding 空间与自注意力是推理偏置形成的关键",
+  "初始化策略为训练阶段引导推理能力提供了新的调节杠杆"
+ ],
+ "weaknesses": [
+  "主要在小模型 (GPT-2/TinyStories 规模) 验证，规模化到现代大 LLM 的可迁移性需验证",
+  "理论解释多为定性/训练动力学层面，缺少对「偏置临界点」的定量预测",
+  "前9页真实语言任务的验证规模有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM推理偏置研究，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

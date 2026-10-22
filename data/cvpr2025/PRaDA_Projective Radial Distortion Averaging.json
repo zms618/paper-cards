@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/PRaDA_Projective Radial Distortion Averaging.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/PRaDA_Projective Radial Distortion Averaging.pdf",
+ "title": "PRaDA Projective Radial Distortion Averaging",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "投影空间畸变平均方法，解耦3D重建但依赖特征匹配质量",
+ "innovations": [
+  "将畸变校准与3D重建解耦，在投影空间中操作",
+  "提出畸变平均技术融合不一致的成对估计",
+  "不依赖3D点或相机姿态估计的全流程"
+ ],
+ "method_framework": "基于投影几何，通过图像对估计畸变参数，然后进行畸变平均，最后全局优化，无需3D重建",
+ "experiment_framework": "ETH3D、KITTI-360、ScanNet++、WoodScape数据集，与COLMAP、GLOMAP、DroidCalib等对比，使用重投影误差和焦距调整重投影误差评估",
+ "takeaways": [
+  "投影空间可封装除畸变外的所有相机参数",
+  "成对估计与平均技术可处理不一致的畸变估计",
+  "Sampson误差优化可避免显式3D点估计"
+ ],
+ "weaknesses": [
+  "方法依赖于特征匹配质量，在低重叠区域可能表现不佳",
+  "未充分讨论计算复杂度与内存需求"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "投影畸变校准属于传统计算机视觉，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/DYNAMIC-DLLM_Dynamic Cache-Budget Adaptive Parallel Decoding for Training-Free Acceleration Of Diffusion LLM.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/DYNAMIC-DLLM_Dynamic Cache-Budget Adaptive Parallel Decoding for Training-Free Acceleration Of Diffusion LLM.pdf",
+ "title": "DYNAMIC-DLLM: Dynamic CACHE-BUDGET Adaptive Parallel Decoding for TRAINING-FREE Acceleration Of Diffusion LLM",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "动态缓存与自适应解码加速扩散模型，但超参数依赖与扩展性存疑",
+ "innovations": [
+  "动态缓存更新(DCU)根据层间token特性自适应分配缓存预算",
+  "自适应并行解码(APD)动态调整解码阈值平衡质量与效率",
+  "强制更新窗口机制防止关键token陷入'泥潭'"
+ ],
+ "method_framework": "Dynamic-dLLM框架包含DCU和APD两个组件，DCU基于层间token相似性动态分配缓存预算，APD根据预测分布的集中度和时间不稳定性调整解码阈值",
+ "experiment_framework": "在LLaDA-8B-Instruct、LLaDA-1.5和Dream-v0-7B-Instruct模型上测试，使用MMLU、ARC-C、GSM8k、GPQA和HumanEval基准，评估准确性和吞吐量(TPS)",
+ "takeaways": [
+  "利用层输入与中间特征的高相关性作为缓存更新的代理指标",
+  "结合预测分布集中度和时间不稳定性实现动态阈值调整",
+  "强制更新窗口确保关键token不被忽视"
+ ],
+ "weaknesses": [
+  "方法依赖于特定超参数(Blayer和Bwindow)的选择",
+  "未充分探讨方法在不同规模模型上的扩展性",
+  "对计算资源节省的量化分析不够深入"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "加速技术无可靠性主线交点，仅属常规优化",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

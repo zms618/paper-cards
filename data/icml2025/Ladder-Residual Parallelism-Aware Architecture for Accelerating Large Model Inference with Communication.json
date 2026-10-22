@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Ladder-Residual Parallelism-Aware Architecture for Accelerating Large Model Inference with Communication.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Ladder-Residual Parallelism-Aware Architecture for Accelerating Large Model Inference with Communication.pdf",
+ "title": "Ladder-Residual: Parallelism-Aware Architecture for Accelerating Large Model Inference with Communication Overlapping",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 5.9
+ },
+ "one_line": "残差连接改造实现通信计算重叠，加速张量并行推理。",
+ "innovations": [
+  "提出Ladder Residual架构修改，将标准残差连接重新设计以实现通信与计算的解耦重叠",
+  "将该架构应用于张量并行场景，使AllReduce通信延迟可被后续计算隐藏",
+  "在70B参数Transformer上实现8卡29%端到端推理加速，并验证了1.2B/3.5B模型从零训练的性能无损"
+ ],
+ "method_framework": "Ladder Residual对标准残差块进行改造，将残差路径拆分为阶梯式结构，使得张量并行中的AllReduce通信可以与后续层的计算重叠进行。该架构可应用于所有基于残差连接的模型，重点针对张量并行场景的通信瓶颈。",
+ "experiment_framework": "在70B参数Transformer模型上进行8卡张量并行推理实验，测量端到端延迟加速比；同时从零训练1.2B和3.5B Ladder Residual Transformer，与标准dense transformer对比性能；还验证了Llama-3.1 8B模型部分转换的精度损失。",
+ "takeaways": [
+  "架构层面的改造可以与系统优化互补，有效隐藏张量并行的通信延迟",
+  "70B模型8卡推理实现29%端到端加速，且训练性能与标准transformer相当",
+  "可将现有Llama模型部分层转换为Ladder Residual结构，精度损失极小"
+ ],
+ "weaknesses": [
+  "仅针对张量并行优化，未讨论流水线并行或数据并行场景的效果",
+  "架构改造需要修改模型结构，对已有预训练模型的兼容性有限",
+  "前9页未展示详细的通信-计算重叠分析和不同batch size下的扩展性数据"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Censor Dependent Variational Inference.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Censor Dependent Variational Inference.pdf",
+ "title": "Censor Dependent Variational Inference",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 6,
+  "overall": 6.5
+ },
+ "one_line": "证明生存分析中变分分布依赖删失机制，提出CDVI及CD-CVAE实现",
+ "innovations": [
+  "揭示并证明：在生存数据删失机制下，完美紧边界对数似然的最优变分分布本身依赖删失过程",
+  "提出删失依赖变分推断(CDVI)，针对潜变量生存模型按删失结构设计变分分布",
+  "给出V结构变分自编码器CD-CVAE以可扩展实现CDVI，并将相关VI理论与训练技术推广到生存分析"
+ ],
+ "method_framework": "针对潜变量生存模型(LVSM)用变分推断近似不可解似然的问题，作者指出常规VI把删失仅当作似然项会使变分族与删失机制错配。CDVI让变分后验的构造显式依赖删失指示/删失分布，从而正确紧边界真实对数似然；CD-CVAE以V结构编码器/解码器将删失依赖项纳入重参数化，实现大规模可训练。",
+ "experiment_framework": "在多个生存分析公开数据集(医疗/保险等时序到事件数据)上，与CoxPH、AFT、DeepSurvival、DeepSurv及现有LVSM基线对比，用c-index、时间依赖AUC、个体生存曲线估计等指标评估，报告个体time-to-event分布估计的改善。",
+ "takeaways": [
+  "删失不只是似然的一部分，它决定了最优变分后验的形式；忽略删失依赖会系统性损害生存分布建模",
+  "按删失机制设计变分分布(CDVI)可显著改善个体生存分布的估计精度",
+  "V结构CD-CVAE使该理论改进在大规模数据上可扩展落地"
+ ],
+ "weaknesses": [
+  "落点为生存分析/健康医疗，非医学影像，也未涉及多模态大模型推理",
+  "删失机制通常假设已知/可建模，对随机删失与信息删失混杂的真实临床数据的稳健性讨论有限",
+  "前9页以理论分析与方法动机为主，完整数据集、基线与消融需结合全文(共25页)判断"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

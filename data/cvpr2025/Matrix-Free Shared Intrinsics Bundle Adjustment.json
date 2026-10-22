@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Matrix-Free Shared Intrinsics Bundle Adjustment.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Matrix-Free Shared Intrinsics Bundle Adjustment.pdf",
+ "title": "Matrix-Free Shared Intrinsics Bundle Adjustment",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "矩阵无方法加速束调整，但多相机场景性能受限",
+ "innovations": [
+  "矩阵无计算方法避免存储Hpl和Hlp矩阵",
+  "针对单精度计算的不稳定性提出解决方案",
+  "优化的数据结构和排序策略提高缓存利用率"
+ ],
+ "method_framework": "提出适合共享内束调整的系统表示方法，利用矩阵无计算加速核心矩阵向量乘积，结合优化的并行化和数据排序策略。",
+ "experiment_framework": "在T&T、Aachen、EuRoC、KITTI和LaMAR数据集上对比Ceres，测量运行时间和内存消耗，评估固定和动态内束配置下的性能。",
+ "takeaways": [
+  "矩阵无方法在内存受限场景下显著提升性能",
+  "单精度计算中的数值稳定性问题可通过坐标变换和自适应缩放解决"
+ ],
+ "weaknesses": [
+  "多相机场景下Hcl矩阵的密集表示导致性能下降",
+  "未扩展矩阵无方法到Hcl矩阵"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "仅优化传统SLAM算法，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

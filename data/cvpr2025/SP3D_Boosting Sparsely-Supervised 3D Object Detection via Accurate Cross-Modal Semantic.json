@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/SP3D_Boosting Sparsely-Supervised 3D Object Detection via Accurate Cross-Modal Semantic.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/SP3D_Boosting Sparsely-Supervised 3D Object Detection via Accurate Cross-Modal Semantic.pdf",
+ "title": "SP3D Boosting Sparsely-Supervised 3D Object Detection via Accurate Cross-Modal Semantic",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "跨模态提示+动态伪标签提升稀疏3D检测，但依赖LMM准确性",
+ "innovations": [
+  "CPST模块通过边界约束中心簇选择生成准确跨模态语义提示",
+  "DCPG模块基于种子点多尺度邻域几何形状动态生成伪标签",
+  "DS评分利用无监督先验评估伪标签质量"
+ ],
+ "method_framework": "两阶段训练策略：第一阶段使用LMM生成的语义提示通过CPST、DCPG和DS评分生成高质量伪标签训练初始检测器；第二阶段用稀疏准确标签微调检测器",
+ "experiment_framework": "KITTI和Waymo数据集，与CoIn等基线比较，评估不同标注率下的3D AP性能，包括零样本设置",
+ "takeaways": [
+  "利用大模型语义提示可显著提升稀疏监督检测性能",
+  "边界约束和动态聚类可有效解决跨模态语义转移中的噪声问题"
+ ],
+ "weaknesses": [
+  "在极低标注率下，某些类别的性能提升有限",
+  "方法依赖LMM的准确性，可能受模型限制影响"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D检测与可靠性主线无实质交点，仅跨模态方法有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/FG-CLIP Fine-Grained Visual and Textual Alignment.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FG-CLIP Fine-Grained Visual and Textual Alignment.pdf",
+ "title": "FG-CLIP: Fine-Grained Visual and Textual Alignment",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 5.8
+ },
+ "one_line": "数据增强版CLIP，三管齐下提升细粒度理解",
+ "innovations": [
+  "利用大多模态模型生成16亿长描述-图像对，捕捉全局语义细节，突破短caption限制",
+  "构建FineHARD数据集：1200万图像+4000万区域级边界框+详细描述，实现精确区域对齐",
+  "引入1000万困难细粒度负样本，提升模型区分相似概念的能力"
+ ],
+ "method_framework": "CLIP主要用短caption训练，缺乏细粒度细节。FG-CLIP三管齐下：(1)用GPT-4V等LMM为图像生成长描述，作为训练文本，包含更多细粒度语义；(2)构建区域级对齐数据集，将文本描述与图像中的具体区域边界框对应；(3)挖掘困难负样本(相似但不同的概念对)，增强对比学习的判别力。在标准对比学习框架下，结合这三类数据训练。",
+ "experiment_framework": "在多个下游任务上验证：(1)图文检索；(2)零样本分类；(3)细粒度检索；(4)区域级定位。对比基线：OpenAI CLIP、EVA-CLIP、SigLIP等。评估指标：Recall@K、Accuracy、mAP。同时发布FineHARD数据集作为基准。",
+ "takeaways": [
+  "长描述+区域级标注+困难负样本三管齐下，显著提升CLIP的细粒度理解能力",
+  "FG-CLIP在多个细粒度基准上达到SOTA",
+  "FineHARD数据集为后续多模态研究提供了有价值的基准资源"
+ ],
+ "weaknesses": [
+  "方法本质是数据驱动的改进，模型架构本身未做创新",
+  "长描述由LMM生成，可能继承LMM的偏差和幻觉",
+  "区域级对齐的标注成本高，数据规模化的可持续性存疑"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

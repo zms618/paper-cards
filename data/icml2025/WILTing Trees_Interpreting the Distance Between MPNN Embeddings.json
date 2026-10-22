@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/WILTing Trees_Interpreting the Distance Between MPNN Embeddings.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/WILTing Trees_Interpreting the Distance Between MPNN Embeddings.pdf",
+ "title": "WILTing Trees: Interpreting the Distance Between MPNN Embeddings",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.25
+ },
+ "one_line": "将MPNN嵌入距离解释为WL标记树上的最优传输，识别关键子图。",
+ "innovations": [
+  "证明训练后的MPNN距离与任务相关的功能距离对齐，且这种对齐程度与预测性能高度相关",
+  "提出WILT距离：将MPNN嵌入距离蒸馏为WL标记树上的最优传输距离，可线性时间计算",
+  "WILT距离泛化了两种经典图核，通过边权重可识别哪些子图对MPNN距离影响最大"
+ ],
+ "method_framework": "MPNN嵌入本质上是WL子图颜色多重集的聚合。因此MPNN间的距离可重新解释为WL颜色多重集间的伪度量。在WL标记树上定义边权重，用最优传输计算两个多重集之间的距离。通过蒸馏MPNN距离来学习这些边权重，边权重大的WL子图即为影响MPNN嵌入距离的关键子图。",
+ "experiment_framework": "在Mutagenicity、ENZYMES、Lipophilicity等图分类/回归数据集上验证；分析48个不同训练状态的MPNN；计算ALIk对齐指标与预测性能的Spearman相关系数；定性分析WILT边权重对应的子图是否为领域已知的重要子结构。",
+ "takeaways": [
+  "MPNN训练过程中隐式地学习了与任务功能距离对齐的嵌入度量，这是其高性能的关键",
+  "MPNN的嵌入距离主要由少数功能重要的WL子图决定，而非整个图结构",
+  "WILT距离可作为MPNN嵌入的可解释代理，同时保持表达能力"
+ ],
+ "weaknesses": [
+  "仅在中小规模图数据集上验证，大规模图（如社交网络）的适用性未测试",
+  "最优传输的计算虽然在树上是线性的，但蒸馏学习过程本身的效率未充分讨论",
+  "与最新的GNN可解释性方法（如GNNExplainer等）的系统对比不充分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

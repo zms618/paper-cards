@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Layer-wise Quantization for Quantized Optimistic Dual Averaging.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Layer-wise Quantization for Quantized Optimistic Dual Averaging.pdf",
+ "title": "Layer-wise Quantization for Quantized Optimistic Dual Averaging",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.25
+ },
+ "one_line": "分层量化框架加速WGAN训练，但应用域有限且缺乏广泛验证",
+ "innovations": [
+  "建立通用分层(自适应)无偏量化框架，给出紧方差与码长界，适配训练过程中层间异质性",
+  "提出 QODA 算法，在分布式 VI 中结合分层量化与自适应学习率，取得单调 VI 的有竞争力收敛速率",
+  "理论证明分层量化不同于分块量化，并在12+ GPU 上训练 WGAN 实现较 Q-GenX/未压缩基线最高150%提速"
+ ],
+ "method_framework": "按网络层表示能力与统计异质性分别设计无偏量化器与码长；在分布式 VI（如 GAN 的 minimax 均衡）求解中用乐观双平均+分层压缩，逐层自适应学习率降低通信瓶颈。",
+ "experiment_framework": "在 12+ GPU 上训练 Wasserstein GAN，对比 Q-GenX 与未压缩基线，报告端到端训练时间与收敛速度（最高150%加速）。",
+ "takeaways": [
+  "层间统计异质性应被量化方案显式利用，而非全局统一压缩",
+  "分层量化在分布式 VI/GAN 训练中兼顾通信节省与收敛保证",
+  "紧方差/码长界为逐层码率分配提供理论依据"
+ ],
+ "weaknesses": [
+  "应用域为分布式优化/GAN训练，与鲁棒性/多模态大模型主线无关",
+  "实证仅 WGAN 一类任务，对 transformer 预训练等未验证",
+  "逐层量化引入额外调度复杂度，码长界的实际紧致性有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.43,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

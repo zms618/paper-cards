@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/A Polynomial Chaos Framework for Causal Discovery in Nonlinear Uncertain.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Polynomial Chaos Framework for Causal Discovery in Nonlinear Uncertain.pdf",
+ "title": "A Polynomial Chaos Framework for Causal Discovery in Nonlinear Uncertain Systems",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 7.5,
+  "overall": 6.2
+ },
+ "one_line": "PCE展开噪声+残差指纹判父子，但理论假设脆弱且实验不充分",
+ "innovations": [
+  "把噪声项写成 PCE 有限阶展开 ϵ_j=Σ_k c_jk Ψ_jk(ζ_j)（式2）嵌进结构方程（式3），让任意非高斯分布变成正交基系数；据此给 Theorem 2.3：在 chaos 系数稀疏（Assumption 2.2，且 S_i≠S_j）下 DAG 唯一可识别，把 LiNGAM 的线性非高斯识别推广到非线性 + 任意噪声",
+  "signature contamination test 判父节点：对每个候选父 i 用多项式回归取残差 R_{j|i}、再对残差做 PCE，用 I(j,i)=‖P_{S_j}(c̃_{R_{j|i}})‖²/‖P_{S_j}(c̃_j)‖²−ρ(c̃_{R_{j|i}},c̃_i)（式7）量化「去掉 i 后 X_j 的 chaos 指纹是否被清干净」，按此递归找 sink 剪枝",
+  "PCE 表示贯穿全链路：用 Galerkin 投影（式13）把噪声不确定度传播到全局，得到方差分解（式14/15）与第一/总阶 Sobol 指数（式16/17）与边强度 γ_ij（式18），再对 Sobol 做 B=150 自举置信区间（式19）"
+ ],
+ "method_framework": "按噪声分布选 Hermite/Legendre 等正交基，用有限阶 chaos 展开替代任意非高斯噪声并写入结构方程；对每个候选父做残差 PCE，以指纹被污染程度判父子、递归找 sink 建 DAG；再把 chaos 系数传播到全局做 Sobol 敏感度与边强度，自举给区间。",
+ "experiment_framework": "6 个自合成分数据集（DS1 菱形 DAG 含 Uniform/Exp/截尾 Cauchy/Beta，DS2 乘性项，DS3 分段饱和，DS4 异方差，DS5 稀疏 7 节点 Weibull，DS6 工业传感器含漂移离群）；基线 NOTEARS/DirectLiNGAM/ICA-LiNGAM/CAM；指标 F1/Precision/Recall/SHD，N=1000–1500。",
+ "takeaways": [
+  "表2 的 SHD 比 F1 更能说明量级：PCE-LiNGAM 3.7±3.1 对 ICA-LiNGAM 8.3±3.5、NOTEARS 6.8±4.5，而 DirectLiNGAM 13.2 与 CAM 13.7 已接近乱猜边的量级",
+  "图3 的方向不对称矩阵是本方法最干净的证据：DS1 四条真边 A_ij 全为正（+0.084/+0.044/+0.039/+0.017），X1→X3 仅 +0.017 最弱，正好对上 X3 用了被截断的 Cauchy 噪声——把「噪声重」与「判别弱」联起来了",
+  "3.3 的 bootstrap（B=150）是全篇少有的真方差来源：X1→X2 一阶 Sobol 0.642±0.038 极稳，X1→X3 一阶 0.100±0.086 而总阶 0.654±0.500 极不稳，作者据此只把 Sobol 当「边稳定性诊断」用，这个自省比 recovery 数字更值得学"
+ ],
+ "weaknesses": [
+  "Theorem 2.3 的证明正文只有一段直觉（「正交性与独立性保证……」），没有完整推导也无一一致性/收敛结果；而支撑它的 Assumption 2.2 要求任意两变量的主导 chaos 系数集 S_i≠S_j（等价于噪声形状两两不同），在低阶 P 下极易不成立，正文却没有对 P 与 τ_s 的敏感性分析",
+  "六个数据集 DS1–DS6 全部是作者自按已知 DAG 合成的（最大 d=7、N≤1500），没有任何真实工业数据；表2 的 ± 号来自 6 个数据集之间的离散度而非重采样种子方差，0.756 对 0.502 的领先无法排除是 DS1、DS5 两档极端值拉出来的",
+  "基线只有 4 个，缺 GES/FGES/GOLEM/DAG-GNN 等主流 score-based 与非线性因果发现方法，可比面偏窄；算法1 里 sink 排序（∥sig[j]−sig[i]∥unique）与父集阈值 I(j,i)>τ_i 两个关键开关，正文对 τ_s、τ_i 都没有任何消融",
+  "Algorithm 1 第 24–27 行「jointly fit + verify joint independence + remove redundant parents」既无数学刻画也无对应实验（如误加父节点后的修复率），是全文唯一悬空的子过程；3.3 又自陈 Sobol/γ 只是 surrogate 上的方差归属而非真实因果效应，却仍拿它下结论（图4 解释）"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "因果去混杂方法设计，可迁移到可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

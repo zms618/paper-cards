@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Adaptive Distraction Probing LLM Contextual Robustness with Automated Tree Search.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Adaptive Distraction Probing LLM Contextual Robustness with Automated Tree Search.pdf",
+ "title": "Adaptive Distraction: Probing LLM Contextual Robustness with Automated Tree Search",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "树搜索生成干扰，降低LLM在无关上下文中的性能。",
+ "innovations": [
+  "基于树搜索的自适应干扰生成框架",
+  "错误引导的扰动生成策略",
+  "分类器过滤难以扰动的样本以提高效率"
+ ],
+ "method_framework": "通过分类器筛选易受干扰的问题，使用树搜索探索语义有效的干扰，每个节点通过代理模型生成候选扰动，并通过模拟评估其有效性，结合语义验证和长度控制确保质量。",
+ "experiment_framework": "在MMLU、CommonsenseQA、OpenbookQA和TruthfulQA四个基准上测试七种主流LLM，比较与ICA、SPD和DyVal2基线方法，评估准确度下降幅度。",
+ "takeaways": [
+  "模型自身生成的干扰对其自身效果更差",
+  "跨模型干扰效果表明当前LLM普遍存在上下文鲁棒性问题",
+  "微调方法比提示优化更能提高模型在干扰下的鲁棒性"
+ ],
+ "weaknesses": [
+  "计算成本较高，需要多次模型调用",
+  "未探索不同类型任务的干扰敏感性差异的根本原因",
+  "对长上下文场景的干扰效果未充分评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

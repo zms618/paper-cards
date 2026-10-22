@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/VIKING_Deep variational inference with stochastic projections.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/VIKING_Deep variational inference with stochastic projections.pdf",
+ "title": "VIKING: Deep variational inference with stochastic projections",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "参数空间分解的贝叶斯变分推断，计算复杂且校准不足",
+ "innovations": [
+  "将参数空间分解为核空间和像空间，反映过参数化结构",
+  "设计简单但有效的变分分布，仅用两个超参数",
+  "提出随机交替投影算法解决大规模模型计算挑战",
+  "通过ELBO优化同时优化模型参数和变分参数"
+ ],
+ "method_framework": "将参数空间分解为Fisher-Rao度量的核空间(训练数据不变)和像空间(其他区域)，构建简单但完全相关的变分分布，通过随机交替投影算法高效采样和优化ELBO。",
+ "experiment_framework": "在MNIST、Fashion MNIST、SVHN、CIFAR-10和Imagenette上评估，与MAP、IVON、SWAG、Laplace等基线比较准确率、NLL、ECE、MCE和OOD检测性能。",
+ "takeaways": [
+  "过参数化模型的贝叶斯推断需考虑参数空间的几何结构",
+  "简单但结构化的变分分布可能优于复杂的均值场近似",
+  "随机交替投影算法是处理大规模模型的有效方法"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，需要解决大规模线性系统",
+  "在大型模型(如ResNet34)上的校准性能不如IVON",
+  "仅使用两个超参数可能过于简化"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

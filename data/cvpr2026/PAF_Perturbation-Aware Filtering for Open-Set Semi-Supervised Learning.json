@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/PAF_Perturbation-Aware Filtering for Open-Set Semi-Supervised Learning.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/PAF_Perturbation-Aware Filtering for Open-Set Semi-Supervised Learning.pdf",
+ "title": "PAF Perturbation-Aware Filtering for Open-Set Semi-Supervised Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.1
+ },
+ "one_line": "扰动感知过滤提升开放集半监督性能，但计算开销大且理论假设存疑",
+ "innovations": [
+  "提出扰动感知过滤(PAF)方法，利用表示不稳定性区分ID/OOD样本",
+  "设计两阶段训练框架，结合表示一致性正则化和自监督语义结构化",
+  "从Lipschitz-边界角度理论分析ID/OOD样本对扰动的敏感性差异"
+ ],
+ "method_framework": "两阶段框架：第一阶段通过表示一致性正则化和自监督旋转任务增强模型鲁棒性；第二阶段利用PAF动态过滤OOD样本，结合不稳定性加权伪标签机制训练模型。",
+ "experiment_framework": "在MNIST、CIFAR-10/100、TinyImageNet等数据集上评估，使用分类精度和AUC作为指标，对比多种SOTA方法，包括内部和外部OOD场景。",
+ "takeaways": [
+  "表示不稳定性比置信度变化更能有效区分ID/OOD样本",
+  "两阶段训练框架能有效结合有限标注数据和大量未标注数据",
+  "不稳定性加权伪标签机制能提升模型对可靠样本的利用效率"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，需要多次扰动和表示计算",
+  "理论分析假设logit函数满足β-Lipschitz条件，实际应用中可能不完全成立"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "OOD检测与半监督结合，可靠性主线明确落地",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

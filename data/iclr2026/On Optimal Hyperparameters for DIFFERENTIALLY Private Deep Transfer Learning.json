@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/On Optimal Hyperparameters for DIFFERENTIALLY Private Deep Transfer Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/On Optimal Hyperparameters for DIFFERENTIALLY Private Deep Transfer Learning.pdf",
+ "title": "On Optimal Hyperparameters for Differentially Private Deep Transfer Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "揭示DP迁移学习中裁剪界C的理论与实证矛盾，但解释机制不够深入",
+ "innovations": [
+  "发现最优裁剪界 C 的理论与实证矛盾：理论要求强隐私下减小 C，但实证显示强隐私下较大 C 反而更好，根源是梯度分布随隐私预算改变",
+  "证明固定 epoch 预算下现有 batch size 启发式失效，累积 DP 噪声更能解释小/大 batch 何者更优",
+  "指出跨任务固定单一 (C,B) 的常见做法在松紧隐私间、算力丰歉间显著掉点，并以梯度重加权视角解释"
+ ],
+ "method_framework": "在 DP-SGD/DP-Adam 迁移学习中，固定 epoch 预算下系统扫描裁剪界 C 与 batch size B；把裁剪视为梯度重加权、把 batch 选择归因于累积 DP 噪声；按学习问题难度（隐私预算 ε、数据/算力、迁移复杂度、骨干能力）分档分析最优 (C,B) 如何漂移。",
+ "experiment_framework": "在 SUN397 等数据集、ViT-Base/Tiny 骨干、多档 ε（8 到 0.25）下，5 个种子、8 epochs 扫 C×B×学习率热图；固定网格调学习率，报告 macro accuracy 并比较 easy/medium/hard 三档难度。",
+ "takeaways": [
+  "强隐私下应选比理论建议更大的裁剪界，因为梯度分布已改变",
+  "不存在跨隐私级别与算力都最优的单一 (C,B)，需按学习问题难度分别调",
+  "固定超参尤其伤害困难样本及其主导的类别"
+ ],
+ "weaknesses": [
+  "结论主要基于 ViT+SUN397 视觉迁移，向 NLP/其他骨干的外推性待验证",
+  "解释偏经验性（梯度重加权/累积噪声），未给出可直接计算最优 C,B 的闭式准则",
+  "属隐私可信AI但落地非医学影像/多模态，相关性中等"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "隐私鲁棒主线+迁移学习落地域，解决DP超参优化痛点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

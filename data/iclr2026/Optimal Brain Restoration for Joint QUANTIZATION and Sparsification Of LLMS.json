@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Optimal Brain Restoration for Joint QUANTIZATION and Sparsification Of LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Optimal Brain Restoration for Joint QUANTIZATION and Sparsification Of LLMS.pdf",
+ "title": "Optimal Brain Restoration for Joint Quantization and Sparsification of LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "OBR框架联合量化与稀疏化，通过误差补偿解决冲突，但实验覆盖有限。",
+ "innovations": [
+  "提出联合量化+稀疏化的统一框架OBR，解决量化偏好紧凑范围vs剪枝偏好高方差的内在冲突",
+  "基于二阶Hessian目标，通过代理近似和分组误差补偿推导闭式解，实现无训练压缩",
+  "在Llama2-7B上实现W4A4KV4量化+50%稀疏度仅1.4困惑度退化，4.72x加速和6.4x内存缩减"
+ ],
+ "method_framework": "OBR从二阶Hessian最优剪枝目标出发，同时考虑量化误差和稀疏化误差。通过代理近似将原始问题转化为可处理形式，再通过分组误差补偿得到闭式解。核心思想是在剪枝和量化之间做误差补偿：量化引入的误差可以通过稀疏化调整来抵消，反之亦然。",
+ "experiment_framework": "在Llama2-7B等模型上测试W4A4KV4量化+不同稀疏度的组合。对比单独量化、单独剪枝、联合压缩的基线方法。指标为困惑度、加速比和内存占用。",
+ "takeaways": [
+  "联合量化与稀疏化可突破单一压缩技术的极限，在激进压缩率下保持性能",
+  "OBR无训练即可实现优异的联合压缩效果，无需微调",
+  "分组误差补偿是解决量化-剪枝冲突的关键"
+ ],
+ "weaknesses": [
+  "实验主要在Llama2系列上验证，对更新的模型架构（如MoE）的适用性未展示",
+  "非结构化稀疏度在实际硬件上难以实现真正加速，2:4结构化稀疏的效果未详细分析",
+  "与更先进的量化方法（如量化感知训练）的对比不够充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM压缩技术不直接关联可靠性主线，但方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

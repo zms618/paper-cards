@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RERANKER-GUIDED_Beyond Sequential Reranking RERANKER-GUIDED Search Improves Reasoning Intensive Retrieval.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RERANKER-GUIDED_Beyond Sequential Reranking RERANKER-GUIDED Search Improves Reasoning Intensive Retrieval.pdf",
+ "title": "Beyond Sequential Reranking: Reranker-Guided Search Improves Reasoning-Intensive Retrieval",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "重排器引导的图搜索提升检索效率，但依赖嵌入质量且与可靠性主线无关",
+ "innovations": [
+  "提出RGS方法，在文档嵌入的近邻图上进行重排器引导的贪心搜索，迭代扩展高分文档的邻域以发现初始top-k之外的相关文档",
+  "提出Reranker@k评测设定，评估固定重排器预算下不同文档选择策略的检索效率",
+  "在BRIGHT/FollowIR/M-BEIR三个基准上，100篇重排预算下NDCG@10分别提升3.5/2.9/5.1分"
+ ],
+ "method_framework": "RGS先在嵌入空间检索少量种子文档并通过LLM重排器评分。然后根据聚类假设（相似文档与同一查询的相关性相似），从重排器高分文档出发扩展其近邻图邻域，再重排扩展出的候选。迭代重复扩展-重排直到达到重排预算，跳过与低分文档相似的邻域以节省预算。",
+ "experiment_framework": "在BRIGHT（推理密集）、FollowIR（指令遵循）、M-BEIR（多模态）三个基准上评测；固定重排器预算100篇；对比标准顺序top-k重排；分析不同预算下的性能和嵌入模型鲁棒性。",
+ "takeaways": [
+  "在固定重排器预算下，策略性选择重排文档（而非顺序扫描top-k）可显著提升检索准确率",
+  "重排器引导的图搜索可发现初始嵌入排名数千之外的相关文档",
+  "高重排器预算下，最终检索精度更多取决于重排器与标签的对齐而非嵌入模型容量"
+ ],
+ "weaknesses": [
+  "依赖文档嵌入空间的聚类假设，对嵌入质量差的场景效果可能不稳定",
+  "图搜索的图构建和导航开销在大规模语料上的实际部署成本未充分量化",
+  "与可靠性/医学影像主线无关，属于检索效率优化"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "检索效率优化，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

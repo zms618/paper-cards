@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/PANDAS_Improving Many-shot Jailbreaking via Positive Affirmation, Negative Demonstration, and Adaptive Sampling.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/PANDAS_Improving Many-shot Jailbreaking via Positive Affirmation, Negative Demonstration, and Adaptive Sampling.pdf",
+ "title": "PANDAS: Improving Many-shot Jailbreaking via Positive Affirmation, Negative Demonstration, and Adaptive Sampling",
+ "scores": {
+  "novelty": 4,
+  "depth": 5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 4.5
+ },
+ "one_line": "攻击LLM安全边界的技巧组合，缺乏防御视角与落地价值",
+ "innovations": [
+  "在对话前缀插入正向肯定语强化‘模型已顺从’的错觉",
+  "引入负向示范作为对比样例",
+  "按靶题主题自适应采样不安全问答，替代原来的均匀随机采样"
+ ],
+ "method_framework": "在恶意目标提示前拼接大量伪造对话以伪装模型已遵守有害指令；PANDAS在此基础上(1)在每条后插入正向肯定短语，(2)加入负向示范，(3)按目标恶意主题自适应而非均匀地从池中采样对话，从而更高效地绕过安全对齐。",
+ "experiment_framework": "在多个前沿LLM上评测many-shot越狱成功率；对比均匀采样的baseline MSJ；指标为不同主题/长度下的攻击成功率。",
+ "takeaways": [
+  "正向肯定、负向示范与主题自适应采样可显著提升越狱效率",
+  "均匀采样在与靶题相关的主题上浪费了示范配额",
+  "研究攻击面有助于改进LLM安全对齐"
+ ],
+ "weaknesses": [
+  "属攻击方法，双重用途，需配套防御讨论",
+  "与医学影像等落地域关联弱",
+  "前9页未见对已部署对齐防御(如拒答微调、系统提示加固)的系统评测"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

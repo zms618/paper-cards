@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Towards Robust Influence Functions with Flat Validation Minima.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Towards Robust Influence Functions with Flat Validation Minima.pdf",
+ "title": "Towards Robust Influence Functions with Flat Validation Minima",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.25
+ },
+ "one_line": "重新定位IF失效根因为验证风险锐度，提出平坦极小化新估计形式。",
+ "innovations": [
+  "定位IF失效根因：既往聚焦参数变化估计，本文证明问题出在损失变化估计，尤其验证风险的锐度",
+  "建立IF估计误差、验证集风险及其锐度之间的理论联系，论证平坦验证极小值对准确IF的必要性",
+  "提出专为平坦验证极小值设计的新型影响函数估计形式"
+ ],
+ "method_framework": "IF用参数变化做代理、估计删去单条训练样本后验证风险的变化，从而识别高影响/噪声样本。本文发现无论一阶(Pruthi)还是二阶(Koh&Liang)近似，误差主要来自验证风险面的锐度：在尖锐极小处，一阶/二阶对风险变化的近似偏差大；在平坦极小处偏差小。据此推导出IF估计误差与验证风险锐度的关系，并设计适配平坦极小的估计形式。",
+ "experiment_framework": "在多个任务上对比传统IF(一阶/二阶)与本文平坦极小IF，在含噪/标注错误数据上评估影响估计可靠性（识别噪声样本、与LOO的相关性），验证方法优越性。",
+ "takeaways": [
+  "IF在噪声数据上不可靠的根因是验证风险面过锐，而非参数估计不准",
+  "平坦验证极小值能显著缩小IF的估计间隙",
+  "面向平坦极小值重写IF估计，可提升噪声样本识别的鲁棒性"
+ ],
+ "weaknesses": [
+  "主线相关性中等偏下：属影响函数/数据清洗，与医学影像/多模态推理主线相邻但非同一落地域",
+  "如何显式获得‘平坦验证极小值’（训练期手段）需更多工程与理论支撑",
+  "前9页主要为问题诊断，完整任务实验与对比在后续页"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

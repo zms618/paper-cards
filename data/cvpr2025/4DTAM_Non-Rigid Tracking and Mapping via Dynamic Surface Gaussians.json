@@ -1,0 +1,44 @@
+{
+ "key": "cvpr2025/4DTAM_Non-Rigid Tracking and Mapping via Dynamic Surface Gaussians.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/4DTAM_Non-Rigid Tracking and Mapping via Dynamic Surface Gaussians.pdf",
+ "title": "4DTAM: Non-Rigid Tracking and Mapping via Dynamic Surface Gaussians",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "可微渲染与2D高斯面元的4D SLAM，但真实场景验证不足",
+ "innovations": [
+  "为 2DGS 推导相机位姿的解析 Jacobian：由 ∂M_T/∂τ=(∂M_T/∂W)(∂W/∂T_CW)(∂T_CW/∂τ) 链式给出 se(3) 最小雅可比，法线项用 ∂n_c/∂τ=[I, -n_c^×]，实现为 CUDA kernel，使 surface splatting 能直接做位姿优化",
+  "法线初始化与监督：用反投影深度点的有限差分 t_w=(∇_x p_d × ∇_y p_d)/|·| 初始化 2DGS 法向并缓存为 N_sensor，用 L_n=Σ(1-n_i^T N_sensor,i) 监督，替代 2DGS 每步对渲染深度做差分的昂贵做法",
+  "非刚体建模与正则：用 MLP warp field (δx,δr,δs)=f_θ(γ_1(x),γ_2(t)) 输出规范空间偏移，除 ARAP 外另加法向刚体损失 L_ARAP^n=w_ij||(t_w)^T_{i,t1}(t_w)_{j,t1}-(t_w)^T_{i,t2}(t_w)_{j,t2}||_1，约束跨时刻局部表面刚性；跟踪时相对于最近关键帧 t_kf 的形变高斯估计位姿",
+  "构建 Sim4D 合成数据集与评测协议：从 Objaverse/Sketchfab 取 50 个 CC-BY 动画网格置于随机背景立方体中，渲染 240-540 帧的 RGB/真值深度/法线/前景 mask 与相机内外参，测试视角设在训练弧之外"
+ ],
+ "method_framework": "跟踪模块以最近关键帧形变后的高斯为参考，最小化光度 L_p 与深度 L_g 误差估计位姿；映射模块在滑动窗口内联合优化位姿、规范 2DGS 与 warp field，加传感器法线监督、L_iso、ARAP 与法向 ARAP 正则；最后可做 <1 分钟的全局优化。",
+ "experiment_framework": "非刚性 SLAM 在自建 Sim4D 的 8 个序列上对比 SurfelWarp，报 ATE RMSE、L1 深度误差、PSNR/SSIM/LPIPS；静态 SLAM 消融在 Replica 与 TUM RGB-D 上对比 MonoGS；离线重建消融在 DeepDeform/KillingFusion/iPhone 上对比 Morpheus。",
+ "takeaways": [
+  "为 surface splatting 推导位姿解析雅可比并写成 CUDA kernel，可直接复用到其它基于 2DGS 的位姿估计与重建任务",
+  "「把 MonoGS 的表示换成 2DGS、其余系统配置完全不变」是干净的 claim 隔离设计，能把表示贡献从系统差异中剥离出来",
+  "用传感器深度的有限差分一次性算好法向并缓存为监督信号，避免每步重算，是精度与开销兼顾的工程取舍",
+  "为缺乏真值协议的 4D-SLAM 补一个可程序化生成（含渲染脚本）的合成基准与协议，是推动该子领域从定性演示走向定量比较的关键一步"
+ ],
+ "weaknesses": [
+  "唯一的非刚性 SLAM 基线是 SurfelWarp（正文承认其为唯一有公开代码者），基线面窄；且 SurfelWarp 需前景 mask，其指标只在「有效重建像素」上统计，公平性存疑",
+  "核心定量结果全部在自建合成数据集 Sim4D（8 序列）上，真实场景仅自采数据的定性展示（Fig.6），无真实数据的 ATE/几何定量指标",
+  "无多种子方差；位姿估计约 1.5 fps，离实时运行仍有距离",
+  "消融表在正文中被截断（4.4 节仅见表头），L_n、L_ARAP、L_ARAP^n 各项的单独贡献无法核对；Sim4D 为合成数据，合成到真实的域差距未被量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "非刚性SLAM与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

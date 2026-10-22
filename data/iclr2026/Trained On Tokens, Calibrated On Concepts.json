@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Trained On Tokens, Calibrated On Concepts.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Trained On Tokens, Calibrated On Concepts.pdf",
+ "title": "Trained on Tokens, Calibrated on Concepts: The Emergence of Semantic Calibration in LLMs",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.2
+ },
+ "one_line": "基础LLM涌现语义校准，但指令微调和CoT破坏这一特性",
+ "innovations": [
+  "提出B-calibration概念：由等价类选择参数化的校准概念，正式定义语义校准",
+  "建立语义校准涌现的理论机制：利用校准与局部损失最优性的联系，解释为何基础LLM具备语义校准",
+  "提出可检验预测：当LLM能在生成前轻松预测自身在语义答案类上的分布时，即具备语义校准；并通过实验验证三个推论"
+ ],
+ "method_framework": "引入B-calibration作为语义校准的形式化框架。理论上利用校准与局部损失最优性的联系，证明基础LLM在下一token预测训练下为何会涌现语义校准——当模型能在生成前预测自身在语义答案类上的分布时。基于此理论提出三个可检验推论：(1)基础LLM在QA任务上语义校准，(2)指令微调系统破坏校准，(3)CoT推理破坏校准。",
+ "experiment_framework": "在多种开放域问答任务上，用基于采样的语义校准度量（如语义熵）评估基础LLM、指令微调模型、CoT模型的校准度，验证三个理论推论。",
+ "takeaways": [
+  "基础LLM虽仅训练下一token预测，却能涌现出有意义的语义校准——能评估自身答案含义的置信度",
+  "指令微调系统性地破坏了基础LLM的语义校准",
+  "Chain-of-Thought推理破坏校准，因为模型在完成生成前无法预测自己的最终答案"
+ ],
+ "weaknesses": [
+  "语义校准依赖采样-based度量，采样数量和温度等参数对估计的影响未充分分析",
+  "主要在英文QA任务上验证，其他语言和任务类型的校准情况未探讨",
+  "仅指出指令微调和CoT破坏校准，未提出修复校准的方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.05,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "校准主线与LLM落地域交点，但未触及医学影像或多模态",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

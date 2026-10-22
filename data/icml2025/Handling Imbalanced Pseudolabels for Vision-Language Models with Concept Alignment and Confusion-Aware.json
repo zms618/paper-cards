@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Handling Imbalanced Pseudolabels for Vision-Language Models with Concept Alignment and Confusion-Aware.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Handling Imbalanced Pseudolabels for Vision-Language Models with Concept Alignment and Confusion-Aware.pdf",
+ "title": "Handling Imbalanced Pseudolabels for Vision-Language Models with Concept Alignment and Confusion-Aware Calibrated Margin",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.8
+ },
+ "one_line": "诊断VLM伪标签失衡成因，提出概念对齐与校准边界框架",
+ "innovations": [
+  "从成因上把VLM伪标签失衡拆解为concept mismatch（类名与视觉概念语义鸿沟）与concept confusion（难分样本在错误簇聚集）两类因素",
+  "提出concept alignment机制增强欠表现类别的特征-文本对齐",
+  "提出confusion-aware calibrated margin，按混淆结构为不同类别校准决策边界，促进各类别预测均衡"
+ ],
+ "method_framework": "先对CLIP提取的图像特征做聚类分析定位低精度类别的簇分布，识别概念错配与混淆；再用概念对齐拉近欠表现类别图文嵌入，并依据混淆关系为类别设计校准后的间隔（margin）损失，抑制多数类对少数类决策边界的挤压，从而在自监督/无监督/TRZSL三种范式下提升伪标签精度与类别均衡。",
+ "experiment_framework": "在Flowers102、RESISC45、DTD等六个跨领域图像分类数据集上，按SSL、UL、TRZSL三种学习范式评测；基线为zero-shot CLIP、FPL、GRIP、CPL等伪标签方法；指标为测试集准确率（TRZSL用seen/unseen调和均值），三种种子平均；报告相对SoTA提升6.29%，含消融与分析。",
+ "takeaways": [
+  "VLM伪标签失衡并非单纯数量偏置，而由语义层面的概念错配与特征层面的概念混淆共同造成",
+  "针对成因的对齐与校准间隔比单纯强制各类伪标签数量均衡更有效",
+  "方法在三种学习范式、六个数据集上稳定优于FPL/GRIP/CPL等近期方法"
+ ],
+ "weaknesses": [
+  "本质是图像分类伪标签再平衡，与可靠性主线（不确定性/过程奖励/幻觉抑制）关联较弱，relevance受限",
+  "改进主要体现在准确率与均衡的联合，缺少对伪标签置信度校准、错误传播链的定量分析",
+  "前9页仅见部分主表，跨数据集绝对增益幅度、计算开销与对不同VLM骨干的泛化未在正文充分展开"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

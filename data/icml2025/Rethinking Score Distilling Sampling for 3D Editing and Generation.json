@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Rethinking Score Distilling Sampling for 3D Editing and Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Rethinking Score Distilling Sampling for 3D Editing and Generation.pdf",
+ "title": "Rethinking Score Distilling Sampling for 3D Editing and Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "重构SDS梯度项统一3D生成与编辑，但创新与证据有限。",
+ "innovations": [
+  "揭示 SDS 及其编辑变体(DDS/PDS)在生成与编辑背后具有统一的梯度项，把生成与编辑统一到同一框架。",
+  "提出 UDS：先用近似清晰隐变量 x0 作为重建项，再与 classifier-free guidance 结合提供梯度项，兼顾身份保持与细节。",
+  "通过解耦重建项与引导项，系统分析了 DDS 在 3D 场景失败的原因（缺乏身份识别、难以保留原场景信息）。"
+ ],
+ "method_framework": "基于 NeRF/3DGS 的文本到3D优化中，将各 SDS 变体的梯度拆为重建项与引导项；UDS 以近似的清晰隐变量 x0 作为重建项，叠加 CFG 梯度项，从而在同一目标下既支持从零生成新3D资产，又支持对已有3D资产的文本编辑。",
+ "experiment_framework": "文本到3D生成与3D编辑任务，基线含 SDS、DDS、PDS、Consistent3D/CSD、LucidDreamer/ISM 等；在 NeRF 与 3D Gaussian Splatting 上对比，以视觉细节丰富度、身份/场景保持与训练时间为评价维度（含定性图与对比实验）。",
+ "takeaways": [
+  "生成与编辑在 SDS 梯度层面可统一，UDS 用单一方法同时在两类任务上超过专用基线。",
+  "DDS 在 3D 上失败的根源是梯度项缺少身份识别、难以保留原场景信息。",
+  "UDS 可在较短训练时间内生成/编辑出照片级、细节更丰富的3D结果。"
+ ],
+ "weaknesses": [
+  "前9页未见具体量化指标表，主要依赖定性视觉对比，定量证据强度有限。",
+  "仍依赖2D扩散先验与预训练模型，本质是梯度项重整，相对既有 SDS 变体的实质创新幅度有限。",
+  "在不同视角一致性、几何正确性等3D核心质量维度缺乏系统性的第三方评测。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

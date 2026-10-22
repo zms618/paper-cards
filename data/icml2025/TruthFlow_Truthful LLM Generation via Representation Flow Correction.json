@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/TruthFlow_Truthful LLM Generation via Representation Flow Correction.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/TruthFlow_Truthful LLM Generation via Representation Flow Correction.pdf",
+ "title": "TruthFlow: Truthful LLM Generation via Representation Flow Correction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "Flow匹配学习query特异表征校正，提升LLM生成真实性",
+ "innovations": [
+  "指出现有表征干预方法对所有query施加同一个通用校正向量，难以应对多样化query；改用flow matching做query特异的真实表征校正",
+  "训练flow模型学习从幻觉表征到真实表征的过渡(纠正向量)，推理时由flow模型为当前query动态生成校正向量注入",
+  "在TruthfulQA上显著提升多个先进LLM开放式生成真实性，且训练好的flow模型可迁移到未见的幻觉基准"
+ ],
+ "method_framework": "构造幻觉/真实表征对，用flow matching学一条从幻觉态到真实态的连续迁移路径；推理时按当前query条件生成校正向量加到隐藏表征上，引导生成趋向真实，不改LLM权重。",
+ "experiment_framework": "TruthfulQA开放式生成任务，评测Llama-3-8B-Instruct等多个先进LLM；对比通用表征干预、基线方法；指标为真实性准确率，并测对其他未见幻觉基准的迁移。",
+ "takeaways": [
+  "真实性校正应随query而异，通用单一校正向量是此前方法效果有限的根因",
+  "flow matching可把'幻觉→真实'学成可条件采样的迁移路径，实现免训练、可迁移的幻觉抑制"
+ ],
+ "weaknesses": [
+  "依赖成对的幻觉/真实表征数据构造监督对，构造质量与覆盖决定校正上限；开放式任务上的评估仍偏TruthfulQA类问答",
+  "注入校正向量可能影响流畅度/有用性的权衡，真实性-有用性帕累托分析不足；对事实性强依赖外部知识的错误(而非推理错误)覆盖有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

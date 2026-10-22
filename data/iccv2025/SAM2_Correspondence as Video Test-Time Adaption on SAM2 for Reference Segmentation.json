@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/SAM2_Correspondence as Video Test-Time Adaption on SAM2 for Reference Segmentation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/SAM2_Correspondence as Video Test-Time Adaption on SAM2 for Reference Segmentation.pdf",
+ "title": "Correspondence as Video Test-Time Adaption on SAM2 for Reference Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "伪视频转换SAM2做参考分割，但DeepGlobe表现欠佳",
+ "innovations": [
+  "将参考-目标图像对应关系表示为伪视频序列",
+  "基于扩散模型的语义转换模块(DBST)",
+  "测试时几何对齐模块(TTGA)"
+ ],
+ "method_framework": "CAV-SAM包含两个核心模块：DBST利用扩散模型生成参考-目标图像间的语义转换序列，TTGA通过测试时轻量微调实现几何对齐，使SAM2能处理参考分割任务。",
+ "experiment_framework": "在FSS-1000、DeepGlobe、ISIC2018和Chest X-ray四个CD-FSS基准数据集上进行评估，与多种元学习方法对比，使用mIoU作为指标。",
+ "takeaways": [
+  "将离散图像对转化为连续伪视频的创新思路",
+  "轻量级测试时适应方法避免元训练开销"
+ ],
+ "weaknesses": [
+  "在DeepGlobe数据集上表现不佳",
+  "未充分讨论计算复杂度与实时性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "测试时适应方法有可靠性价值，但未触及医学影像主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

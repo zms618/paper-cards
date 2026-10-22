@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Cluster-Wise Spatio-Temporal Masking for Efficient Video-Language Pretraining.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Cluster-Wise Spatio-Temporal Masking for Efficient Video-Language Pretraining.pdf",
+ "title": "Cluster-Wise Spatio-Temporal Masking for Efficient Video-Language Pretraining",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "聚类掩码提升视频预训练，但依赖教师模型增加开销",
+ "innovations": [
+  "基于帧内聚类的时空掩码策略",
+  "基于时间密度的聚类级掩码机制",
+  "视频文本相关性重建目标"
+ ],
+ "method_framework": "ClusterSTM采用帧内聚类将视觉标记分为多个语义独立簇，保留每个簇中时间密度最高的标记，确保保留的标记既全面捕获整体视觉内容又具有强时间相关性，同时引入视频文本相关性重建目标对齐多模态语义。",
+ "experiment_framework": "在MSRVTT、DiDeMo、ActivityNet等数据集上评估视频文本检索、视频问答和视频字幕任务，与UMT、STM等基线对比，使用Recall@1、准确率和CIDEr等指标。",
+ "takeaways": [
+  "聚类级掩码可有效缓解高掩码率下的视觉信息损失",
+  "时间密度引导的标记选择可减轻时间信息泄漏",
+  "视频文本相关性重建目标优于传统视觉重建"
+ ],
+ "weaknesses": [
+  "依赖预训练教师模型生成掩码和相关性矩阵",
+  "计算时间密度可能增加训练开销",
+  "未充分探讨不同场景下的掩码策略适应性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频预训练方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

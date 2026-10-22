@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/GoIRL_Graph-Oriented Inverse Reinforcement Learning for Multimodal Trajectory Prediction.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/GoIRL_Graph-Oriented Inverse Reinforcement Learning for Multimodal Trajectory Prediction.pdf",
+ "title": "GoIRL: Graph-Oriented Inverse Reinforcement Learning for Multimodal Trajectory Prediction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "将IRL引入轨迹预测，图特征适配与分层采样提升多模态预测性能。",
+ "innovations": [
+  "将轨迹预测建模为IRL问题：从示范数据推断奖励分布，采样策略生成多种合理未来轨迹",
+  "设计特征适配器将车道图特征聚合到网格空间，实现图结构与最大熵IRL的无缝集成",
+  "分层参数化轨迹生成器带精修模块和概率融合策略，兼顾精度和置信度"
+ ],
+ "method_framework": "用特征适配器将车道图拓扑和上下文信息转换为网格表示。基于最大熵IRL推断奖励函数，从采样的策略(计划)生成多个候选轨迹。分层轨迹生成器以采样计划为条件，通过精修模块提升精度，概率融合策略整合多轨迹的预测置信度。",
+ "experiment_framework": "在大规模Argoverse和nuScenes运动预测基准上评估，对比监督学习SOTA方法；指标为minADE、minFDE、miss rate等；报告GoIRL达到SOTA且泛化能力优于监督模型。",
+ "takeaways": [
+  "IRL框架可自然处理轨迹预测的多模态不确定性，无需显式锚点设计",
+  "车道图到网格的特征桥接使图结构先验可融入IRL范式",
+  "概率融合策略有效提升多轨迹预测的置信度估计"
+ ],
+ "weaknesses": [
+  "IRL推理的计算开销可能大于监督方法",
+  "仅在自动驾驶场景验证，其他多模态预测任务适用性未知",
+  "奖励函数的可解释性未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.9,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

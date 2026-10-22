@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Sim-LLM Optimizing LLM Inference at the Edge through Inter-Task KV Reuse.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Sim-LLM Optimizing LLM Inference at the Edge through Inter-Task KV Reuse.pdf",
+ "title": "Sim-LLM: Optimizing LLM Inference at the Edge through Inter-Task KV Reuse",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "边缘LLM推理的KV缓存重用机制，结合LSH与任务相似性",
+ "innovations": [
+  "基于任务相似性的KV缓存重用",
+  "LSH映射与原型学习结合的任务识别",
+  "跨边缘服务器的KV共享机制"
+ ],
+ "method_framework": "Sim-LLM通过缓存相似任务的关键层KV，利用余弦相似度(阈值0.8)识别任务相似性，结合LSH加速匹配，实现KV缓存重用，减少内存消耗并提升吞吐量。",
+ "experiment_framework": "在A40/A100 GPU上评估TinyLlama、Llama2和InternLM2模型，使用OpenCompass和lm-eval-harness框架，对比H2O、StreamingLLM等基线方法，测量吞吐量、内存消耗和困惑度。",
+ "takeaways": [
+  "任务相似性在边缘计算环境中普遍存在，可用于优化KV缓存",
+  "仅缓存顶层KV可显著减少内存开销同时保持模型性能"
+ ],
+ "weaknesses": [
+  "未详细讨论通信开销对边缘设备的影响",
+  "未分析不同任务类型下的相似性阈值敏感性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/SpikF_Spiking Fourier Network for Efficient Long-term Prediction.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SpikF_Spiking Fourier Network for Efficient Long-term Prediction.pdf",
+ "title": "SpikF: Spiking Fourier Network for Efficient Long-term Prediction",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 6.5,
+  "overall": 5.8
+ },
+ "one_line": "SpikF用分块编码和频域选择替代注意力，在长时序预测上仅获有限提升。",
+ "innovations": [
+  "指出SNN长期预测两大瓶颈：现有编码难编码长时序信息、脉冲自注意力缺位置编码导致性能下降",
+  "提出attention-free框架SpikF，以分块(patch)方式编码输入序列",
+  "引入频域选择机制利用时序数据的序列特性，规避脉冲自注意力的位置编码缺失问题"
+ ],
+ "method_framework": "面向长期时序预测的纯脉冲网络：把输入序列切成patch编码，在频域做频率成分选择以捕获时序依赖，全程无自注意力，依靠事件驱动脉冲传播降低能耗与复杂度。",
+ "experiment_framework": "在8个长期预测标准数据集上评测，与Transformer类时序预测方法对比，指标为MSE/MAE；声称平均误差降低1.9%。",
+ "takeaways": [
+  "无注意力的频域选择可在SNN中长期预测中替代脉冲自注意力，绕开位置编码缺失问题",
+  "SNN的能效优势可延伸到长时序预测这一此前未充分探索的任务"
+ ],
+ "weaknesses": [
+  "平均仅1.9%的误差下降，相对强时序基线(Fourierformer/iTransformer等)增益有限",
+  "频域选择机制如何与脉冲传播兼容、是否损失高频细节，前9页未见深入分析",
+  "能效收益多为理论/仿真推算，缺乏真实神经形态硬件上的实测能耗对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

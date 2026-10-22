@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/A3GS_Arbitrary Artistic Style into Arbitrary 3D Gaussian Splatting.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A3GS_Arbitrary Artistic Style into Arbitrary 3D Gaussian Splatting.pdf",
+ "title": "A3GS: Arbitrary Artistic Style into Arbitrary 3D Gaussian Splatting",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 3.0,
+  "overall": 4.5
+ },
+ "one_line": "GCN编码+AdaIN注入实现3DGS零样本风格迁移，但实验证据不足",
+ "innovations": [
+  "把 3D 高斯原语按空间近邻建图，用可学习核形状的 3D-GCN 卷积加通道 max pooling 分层下采样，把局部高斯簇编码成结构性特征 F_c，再由解码器上采样还原各原语颜色",
+  "冻结自编码器后在潜空间做风格注入：MLP 映射 φ 把 F_c 对齐到图像特征空间，与 VGG 抽出的风格特征 F_s 做 AdaIN 对齐均值方差，再用 ψ 映射回 3D 空间，实现零样本跨场景风格迁移",
+  "用 Objaverse 多视图渲染加 TriplaneGaussian 单图生成造出 4 万个合成 3DGS 物体作训练集，并以两阶段（先纯色重建、再加风格损失）训练；推理按局部簇分批，单批 1500 万原语"
+ ],
+ "method_framework": "高斯原语按近邻建图，用可学习核形状的 3D-GCN 加通道 max pooling 下采样编码为局部簇特征；冻结后以 MLP 映射把图像 VGG 风格特征与其做 AdaIN 对齐注回，解码器逐层扩散风格并还原色彩。",
+ "experiment_framework": "4 万合成 3DGS 物体加 WikiArt 9 万风格图训练；对比 StyleRF、StyleSplat、StyleGaussian；指标为多视角 LPIPS/RMSE、用户研究与 TNT 上单场景风格迁移耗时。",
+ "takeaways": [
+  "先训纯颜色的 GCN 自编码器、再冻编码器只训 AdaIN 风格注入的两阶段策略，可让新风格变成零训练的前向推理",
+  "用生成式合成 3DGS 训练集绕开真实重建开销，是可复用的数据构造思路"
+ ],
+ "weaknesses": [
+  "定量只有短程/长程 LPIPS 与 RMSE 四个一致性分数，缺风格相似度、内容保真度与几何偏差等直接指标，且 Table 1 各法差距仅 0.002–0.003 量级，判别力不足",
+  "训练集 4 万个 3DGS 物体全由 Objaverse 单图生成模型合成，正文未交代评测所用真实场景集的构成与来源，合成训练到真实测试的分布差未被检验",
+  "消融只在 Fig.5/6 做定性对比（换 MLP/simple-GCN、开关 AdaIN 与背景掩码），采样率 r、邻域核大小 M、下采样率、风格损失权重 λ 等超参无任何定量消融"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "纯3DGS风格迁移，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

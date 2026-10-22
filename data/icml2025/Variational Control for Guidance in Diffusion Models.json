@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Variational Control for Guidance in Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Variational Control for Guidance in Diffusion Models.pdf",
+ "title": "Variational Control for Guidance in Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "将扩散引导建模为变分控制问题，提出DTM统一框架，但优化开销与通用性存疑。",
+ "innovations": [
+  "将扩散引导建模为受控马尔可夫过程，把控制信号视为变分参数，用变分推断优化以满足终端约束同时贴近原生轨迹分布",
+  "提出DTM框架，统一一大类引导方法并催生新的实例，不依赖额外模型训练、不局限于像素或潜空间扩散",
+  "在多个线性、非线性与盲逆问题上取得SOTA结果"
+ ],
+ "method_framework": "把训练好的扩散模型视为可操纵的随机系统；将引导(如分类器引导、逆问题求解)表述为终端代价约束下的最优控制问题；用Control-as-Inference视角把控制当作变分参数做变分推断，使生成样本满足终端约束又不偏离无条件样本流形。",
+ "experiment_framework": "聚焦逆问题与风格引导；用Stable Diffusion 1.4与预训练CLIP作特征提取；数据含WikiArt图像与PartiPrompt提示(随机生成1k对)；在线性/非线性/盲逆问题上对比现有引导方法；指标为重建/对齐质量。",
+ "takeaways": [
+  "扩散引导可统一在变分最优控制框架下理解",
+  "DTM无需重训即可引导预训练模型求解多种逆问题",
+  "控制即推断的视角为引导方法提供了新的可实例化空间"
+ ],
+ "weaknesses": [
+  "变分控制的优化开销与采样步数权衡未充分量化",
+  "评测以逆问题/风格引导为主，对开放文本到图像对齐的证据有限",
+  "终端代价设计依赖具体任务，通用性的边界条件讨论较少"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

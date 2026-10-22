@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/A Framework for Double-Blind Federated Adaptation of Foundation Models.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Framework for Double-Blind Federated Adaptation of Foundation Models.pdf",
+ "title": "A Framework for Double-Blind Federated Adaptation of Foundation Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 4.5,
+  "relevance": 7.0,
+  "overall": 6.4
+ },
+ "one_line": "用FHE与拆分学习实现双盲联邦适配，精度接近但通信代价高昂",
+ "innovations": [
+  "把 Transformer 块的三个非线性改造成 CKKS 可同态运算：GELU 用二次式 0.125x²+0.25x+0.5、Softmax 用指数泰勒截断后归一化、除法用 Goldschmidt 迭代，并给出截断误差界",
+  "设计逐块加解密的同态推理协议：每个 attention block 后由客户端解密再加密回传，绕开 FM 深度超出 CKKS 乘法深度需频繁 bootstrap 的问题，使服务端只见密文、客户端只持私钥",
+  "为挡住客户端用明文中间表示做模型抽取，服务端对每批乘随机置换矩阵 Π_ℓ 并额外下发 Π^{-1}_{ℓ-1}Π_ℓ 使并行 adapter（式8）仍可算，再叠加不采相邻层的随机块采样 SBS"
+ ],
+ "method_framework": "服务端用辅助集蒸馏出多项式化学生网；客户端用 CKKS 加密数据，服务器逐 block 同态推理并回传密文损失，客户端明文更新并行 adapter 与分类头，MPC 聚合回传；推理重复同协议，护模型隐私。",
+ "experiment_framework": "ViT-B(ImageNet-1K) 为 FM；CIFAR-10/100、SVHN 与 Fed-ISIC2019；中心化加联邦 K=5 的 Dirichlet(α=100/1/0.01) 划分；对比全微调/LoRA/adapter/线性探测；指标为分类准确率。",
+ "takeaways": [
+  "「双盲」（数据不可见 + 模型不可见）的 FM 适配可以拆成两阶段：服务端拿无关辅助数据蒸馏出多项式化学生网，客户端只留并行 adapter 与分类头，全程无跨 FM 的反向传播",
+  "逐块解密-再加密是把大模型塞进 CKKS 乘法深度的现实折中，代价是每轮每块都要在客户端与服务器间往返交换密文中间特征，工程上要先算清这块开销",
+  "并行 adapter h_ℓ=g_ℓ(b_ℓ+h_{ℓ-1})+h_{ℓ-1} 而非 LoRA，是因为它只依赖同一样本的各层输出，服务端才能对整批样本做随机排列而不破坏可算性"
+ ],
+ "weaknesses": [
+  "两个隐私增强机制（样本级置换、随机块采样 SBS）在主表只以末行「+SBS」形式多出约 0.001-0.005 准确率，正文在 §5.2 截断，既无模型抽取攻击的实证评估，也无这两者的隐私-精度消融",
+  "只报单跑准确率、无方差与多种子；K=5 与三档 Dirichlet 各只跑一次划分，α=0.01 极端异构下 BlindFed 仅比线性探测高约 0.11-0.13（CIFAR-100）到 0.36（SVHN），未重复划分说明该差距是噪声还是真实贡献",
+  "摘要自承 high communication cost 与 high computational complexity，但通信量、LSP 端加密推理时延、多项式阶数 d 与 CKKS 参数的精度-成本权衡在可见正文里完全缺失，框架可复现性存疑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "联邦学习适配可靠性主线，但通信代价高昂且隐私机制实证不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

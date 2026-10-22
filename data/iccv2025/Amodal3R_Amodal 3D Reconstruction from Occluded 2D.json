@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/Amodal3R_Amodal 3D Reconstruction from Occluded 2D.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Amodal3R_Amodal 3D Reconstruction from Occluded 2D.pdf",
+ "title": "Amodal3R Amodal 3D Reconstruction from Occluded 2D",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "单阶段3D重建替代两阶段，但仅合成数据训练且未评估极端遮挡",
+ "innovations": [
+  "mask-weighted cross-attention机制",
+  "occlusion-aware attention层",
+  "单阶段3D重建范式替代传统两阶段方法",
+  "3D一致遮挡模拟方法"
+ ],
+ "method_framework": "基于预训练3D生成器，引入可见性掩码加权交叉注意力和遮挡感知注意力层，直接在3D潜在空间中重建完整几何和外观",
+ "experiment_framework": "数据集：GSO/Toys4K/Replica；基线：pix2gestalt+TRELLIS/GaussianAnything/LaRa；指标：FID/KID/CLIP/P-FID/COV/MMD",
+ "takeaways": [
+  "单阶段3D重建优于两阶段方法",
+  "多视图输入需按可见性优先排序",
+  "遮挡感知注意力层对几何重建至关重要"
+ ],
+ "weaknesses": [
+  "仅依赖合成数据训练",
+  "未讨论计算效率",
+  "未评估在极端遮挡情况下的表现"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D重建与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

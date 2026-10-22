@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Trustjudge_Inconsistencies Of LLM-AS-A-JUDGE and how To Alleviate them.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Trustjudge_Inconsistencies Of LLM-AS-A-JUDGE and how To Alleviate them.pdf",
+ "title": "TrustJudge: Inconsistencies of LLM-as-a-Judge and How to Alleviate Them",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.1
+ },
+ "one_line": "揭示LLM评判不一致问题并提出概率化缓解框架TrustJudge",
+ "innovations": [
+  "首次形式化定义并系统分析LLM-as-a-judge中的两类不一致：分数-比较不一致和成对传递性不一致（循环偏好与等价矛盾）",
+  "提出分布敏感评分法，从离散评分概率中计算连续期望，保留信息熵以实现更精确评分",
+  "提出似然感知聚合法，利用双向偏好概率或困惑度解决传递性违反问题"
+ ],
+ "method_framework": "TrustJudge是一个概率化的LLM评估框架。首先将离散评分转化为概率分布并计算连续期望（分布敏感评分），解决分数-比较不一致；然后在成对比较中使用双向偏好概率或困惑度进行聚合，解决传递性不一致。整个框架无需额外训练或人工标注。",
+ "experiment_framework": "使用Llama-3.1-70B-Instruct作为评判模型，在自建数据集上评估两类不一致率的降低幅度，同时保持评估准确率；跨多种模型架构和规模验证一致性改进。",
+ "takeaways": [
+  "LLM-as-a-judge存在两类根本性不一致：分数-比较不一致（23.32%）和成对传递性不一致（15.22%）",
+  "TrustJudge将两类不一致分别降低8.43%和10.82%，同时保持更高评估准确率",
+  "离散评分系统的信息损失和模糊平局判断是不一致的根源，概率化建模可有效缓解"
+ ],
+ "weaknesses": [
+  "仅使用Llama-3.1-70B作为评判模型进行主实验，跨评判模型的泛化性验证不够充分",
+  "分布敏感评分依赖softmax温度参数，温度选择对结果的影响未深入分析",
+  "似然感知聚合使用困惑度的做法在非生成式评判场景下的适用性存疑"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.55,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "LLM评估可靠性问题与校准方法，符合主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Active Reward Modeling Adaptive Preference Labeling for Large Language Model Alignment.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Active Reward Modeling Adaptive Preference Labeling for Large Language Model Alignment.pdf",
+ "title": "Active Reward Modeling: Adaptive Preference Labeling for Large Language Model Alignment",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "将实验设计理论引入奖励建模，提升标注效率但理论假设受限",
+ "innovations": [
+  "将Bradley-Terry奖励模型与逻辑回归关联，证明线性奖励假设下Fisher信息矩阵可作为选择准则",
+  "提出D-最优选择策略：最大化Fisher信息矩阵行列式，同时平衡表示空间探索和奖励差异适中的比较",
+  "引入梯度近似方法解决组合优化问题：将0-1稀疏向量松弛为连续权重，通过一阶泰勒展开高效选择候选对"
+ ],
+ "method_framework": "主动学习循环：每轮(1)从池采样候选prompt-response对；(2)用评分规则（D-最优、maxdiff、entropy、coreset、BatchBALD等）选择最有信息的c对；(3)人工标注偏好；(4)用新标注数据重训练奖励模型。核心方法D-最优：最大化|Σ w_i (Φ_i1-Φ_i2)(Φ_i1-Φ_i2)^T p_i(1-p_i)|行列式，平衡嵌入空间多样性和比较结果信息量。",
+ "experiment_framework": "2D可视化示例+多个LLM奖励建模数据集。基线：随机采样、entropy采样、maxdiff、coreset、det(X^TX)、BatchBALD。指标：1-Spearman相关、Best-of-N奖励。对比不同模型架构（线性MLP、深度奖励模型）。",
+ "takeaways": [
+  "D-最优策略在2D示例和真实LLM奖励建模任务上均优于随机、entropy、maxdiff等基线",
+  "理想比较应同时满足：嵌入差异大（探索表示空间）和偏好概率接近0.5（比较有信息量）",
+  "梯度近似方法在保持选择质量的同时大幅降低计算开销"
+ ],
+ "weaknesses": [
+  "理论分析基于线性奖励假设，深度非线性奖励模型的理论保证较弱",
+  "需要最后一层嵌入特征，对不同架构的奖励模型通用性需验证",
+  "仅在奖励建模阶段验证，下游RLHF的端到端效果未充分展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "奖励建模方法设计有启发性，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

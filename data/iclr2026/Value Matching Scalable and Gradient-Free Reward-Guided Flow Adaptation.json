@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Value Matching Scalable and Gradient-Free Reward-Guided Flow Adaptation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Value Matching Scalable and Gradient-Free Reward-Guided Flow Adaptation.pdf",
+ "title": "Value Matching: Scalable and Gradient-Free Reward-Guided Flow Adaptation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "值匹配算法解耦奖励适应与模型复杂度，降低内存占用但增加计算开销",
+ "innovations": [
+  "提出Value Matching(VM)：在线学习值函数的算法，将奖励适应与基座模型复杂度解耦——值网络大小可自由调节，内存需求可控",
+  "支持不可微分的黑盒奖励函数，适用于药物发现等依赖昂贵模拟器的场景",
+  "在线(on-policy)操作能力使其能超越训练数据分布发现高奖励区域，同时比分类器引导(CG)更稳定、样本效率更高"
+ ],
+ "method_framework": "VM在最优控制框架下学习值函数，而非直接更新基座模型权重。核心思想：将奖励引导问题建模为最优控制问题，学习一个值函数来估计每个状态的未来期望奖励。推理时用值函数梯度引导采样过程。值网络的复杂度可自由调节，因此内存开销与基座模型大小无关。在线训练方式使其能主动探索数据分布外的高奖励区域。",
+ "experiment_framework": "任务：图像生成 + 分子设计。基线：Classifier Guidance(CG)、RL/SOC微调方法(CT-PPO等)。指标：奖励得分、内存使用、样本效率。结果：性能与微调方法相当，但内存占用不到5%；比CG更稳定、样本效率更高。",
+ "takeaways": [
+  "值函数学习方式能将奖励适应的内存开销与基座模型大小解耦，大幅降低资源需求",
+  "在线训练使模型能探索训练分布之外的高奖励区域，优于离线方法",
+  "支持黑盒不可微奖励，扩展了奖励引导生成的适用范围"
+ ],
+ "weaknesses": [
+  "值网络的引入增加了推理时的额外计算",
+  "值函数估计的准确性受采样分布影响，早期训练可能不稳定",
+  "与最先进微调方法的性能差距虽小但仍然存在"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "奖励引导生成与可靠性主线无实质交点，仅具方法借鉴价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

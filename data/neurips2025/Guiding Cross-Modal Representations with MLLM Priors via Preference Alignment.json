@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Guiding Cross-Modal Representations with MLLM Priors via Preference Alignment.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Guiding Cross-Modal Representations with MLLM Priors via Preference Alignment.pdf",
+ "title": "Guiding Cross-Modal Representations with MLLM Priors via Preference Alignment",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "用MLLM偏好对齐跨模态表示，但依赖特定模型且计算开销大",
+ "innovations": [
+  "提出基于Wasserstein距离的统一模态差距度量",
+  "设计MAPLE框架利用MLLM先验构建偏好数据",
+  "将DPO适配为嵌入学习的相对偏好对齐(RPA)损失"
+ ],
+ "method_framework": "MAPLE框架包含偏好数据构建和偏好对齐两部分：离线阶段生成候选集，在线阶段利用MLLM计算对齐分数构建偏好；通过RPA损失将MLLM的偏好信号转移到嵌入空间，结合对比损失正则化。",
+ "experiment_framework": "在COCO、Flickr30K等通用检索和Winoground、NaturalBench等细粒度检索任务上评估，使用Recall@1等指标，对比CLIP和MLLM基线模型。",
+ "takeaways": [
+  "利用现成MLLM的内在模态对齐能力指导嵌入学习",
+  "列表级偏好对齐比成对更有效",
+  "扩展负样本池可提升对比学习效果"
+ ],
+ "weaknesses": [
+  "依赖特定MLLM作为奖励模型，可能限制泛化性",
+  "方法计算开销较大，需要离线候选生成和在线MLLM评分"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

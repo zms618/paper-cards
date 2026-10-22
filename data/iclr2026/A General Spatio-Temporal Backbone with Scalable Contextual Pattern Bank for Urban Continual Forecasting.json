@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A General Spatio-Temporal Backbone with Scalable Contextual Pattern Bank for Urban Continual Forecasting.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A General Spatio-Temporal Backbone with Scalable Contextual Pattern Bank for Urban Continual Forecasting.pdf",
+ "title": "A GENERAL SPATIO-TEMPORAL BACKBONE WITH SCALABLE CONTEXTUAL PATTERN BANK FOR URBAN CONTINUAL FORECASTING",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.2
+ },
+ "one_line": "频域骨干加模式库的时空预测，模块拼接式增量，消融缺失",
+ "innovations": [
+  "FreNet 用可学习频域嵌入 Fτ 做 Hf=IFFT(FFT(H)⊙F)，抑制高频噪声、保留周期与趋势分量以对抗跨阶段分布漂移",
+  "DLGA 双流线性图注意力把模式库 Pτ(2) 作为额外 key 并入随机特征映射线性注意力，复杂度 O(N²)→O(N) 且注入历史知识",
+  "可扩展上下文模式库：τ>1 冻结骨干，仅对 P'τ=Pτ-1∥ΔPτ 扩展出的新参数微调，经门控 H'τ=Pτ(1)·hθ(Hτ·(1+Pτ(0))) 注入骨干"
+ ],
+ "method_framework": "骨干以 FreNet 频域模块提取周期趋势等稳定分量，DLGA 双流线性图注意力建模动态空间相关，末端 FreNet 还原维度后预测；τ>1 冻结骨干，仅扩展微调模式库，以门控与注意力作 prompt 注入。",
+ "experiment_framework": "PEMS-Stream/CA-Stream/AIR-Stream 三数据集；8 基线含 GWNet、STID、iTransformer、TrafficStream、STKEC、PECPM、STRAP、EAC；指标 MAE/RMSE/MAPE，预测 12 步报 3/6/12 步结果与 ± 方差，另设 10% 少样本表。",
+ "takeaways": [
+  "冻结骨干、仅扩展少量可训练模式参数的参数扩展式增量，是无历史数据回放开销下的低成本抗遗忘方案，可直接嫁接到既有流式骨干",
+  "FFT 加可学习频域加权作为时序预处理对分布漂移更稳健，实现极简，可直接替换 RNN/TCN 时序模块",
+  "持续学习类论文应报 ± 方差、分预测步长结果并单列少样本设置，本文表格规范度可借鉴"
+ ],
+ "weaknesses": [
+  "正文在 Table 2 后截断，未见 FreNet、DLGA、模式库三类组件的消融表，无法确认门控与双流 key 是否真实贡献",
+  "基线适配策略不一致：GWNet/STID 每阶段从零重训、iTransformer 用上一阶段权重在线微调，公平性存疑且未说明参数量/耗时对比",
+  "增量阶段如何构造（节点扩张幅度、分布偏移强度、新节点是否真实）全部置于未读到的附录，正文无法判断实验难度是否被低估"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.0,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "时空预测与持续学习，无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

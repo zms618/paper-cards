@@ -1,0 +1,43 @@
+{
+ "key": "cvpr2025/A General Adaptive Dual-level Weighting Mechanism for Remote Sensing Pansharpening.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A General Adaptive Dual-level Weighting Mechanism for Remote Sensing Pansharpening.pdf",
+ "title": "A General Adaptive Dual-level Weighting Mechanism for Remote Sensing Pansharpening",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "协方差加权模块提升遥感锐化，但提升小且与注意力机制本质相似。",
+ "innovations": [
+  "CACW（相关感知协方差加权）：把特征 reshape 为 R^{HW×C}（IFW）或空间平均池化为 R^{C×N}（CFW）后计算协方差 C=1/(m−1)(X−X̄)^T(X−X̄)，再按 C̃_ij=C_ij/(‖X̄_i‖‖X̄_j‖) 归一为相关矩阵以消除绝对量级影响，最后用 MLP 非线性映射为权重 γ=g(C̃)，替代 PCA 的特征值分解做数据驱动的重要性分配。",
+  "双层加权：IFW 在层内为每个通道生成 α_i∈R^{C×1} 并按 F̃_i=F_i⊙α_i 逐通道缩放，抑制深层冗余通道（可视化显示浅层权重集中 0.141–0.155、深层离散到 0.004–0.055）；CFW 用 softmax(β) 对 N 个中间特征加权求和 F̂=Σ_k F̃_k⊙softmax(β)，动态平衡深浅层贡献。",
+  "即插即用集成：不改动原网络结构，直接插入顺序特征提取块之间；对 U-Net 类复杂网络可在每个同尺度语义段各挂一个独立 ADWM；参数增量极小（FusionNet 78.6K→85.5K、LGPNet 27.0K→33.4K、U2Net 757.5K→781.4K）。"
+ ],
+ "method_framework": "在骨干的中间特征序列上叠加两级 CACW 加权：IFW 按层内通道间协方差生成通道权重并逐通道缩放；CFW 先空间平均池化得到各层表示，按层间协方差生成层权重，softmax 归一化后对加权特征求和，输出再送解码器。",
+ "experiment_framework": "WV3 / QB / GF2 三卫星数据集，按 Wald 协议构建 reduced-resolution（PSNR/SAM/ERGAS/Q4/Q8）与 full-resolution（Dλ/Ds/HQNR）各 20 样本；基线含 MTF-GLP-FS、BDSD-PC、TV、PNN、PanNet、DiCNN、FusionNet、LAGNet、LGPNet、PanMamba；另做三种骨干的通用性实验。",
+ "takeaways": [
+  "用二阶统计（协方差/相关矩阵）而非一阶池化统计量作为加权模块的输入，是可迁移的通用思路：相关矩阵显式编码通道间冗余，本文在更少参数下优于 Pool 与 Attention 两种权重生成方式。",
+  "双层（层内通道 × 跨层特征）分级加权比单层更有效且二者互补（LAGNet 38.592 → 单 IFW 39.028、单 CFW 38.923、双 39.170），提示「先局部去冗余、再全局配权」的串联顺序是有效的。",
+  "通用性验证的写法值得借鉴：不只自家模型刷点，还把模块插入 FusionNet/LGPNet/U2Net 三个不同骨干并同时给出参数增量、FLOPs-性能曲线与 HQNR 空间分布图，把代价说清楚。",
+  "用协方差矩阵特征值的 scree plot 平滑度作为「冗余下降」的可视化旁证，为机制性 claim 提供了可量化的证据，比只报指标更有说服力。"
+ ],
+ "weaknesses": [
+  "「与注意力本质不同」的论断站不住：归一化协方差经 MLP 生成通道权重本质上是二阶通道注意力；表 3 与 Attention 的对比仅差 0.3 dB 且未控制参数量一致（Attention 42.5K vs CACW 26.2K），无法支撑机制更优的结论。",
+  "每个数据集仅 20 个测试样本，全文无多种子方差或显著性检验，0.158–0.598 dB 的 PSNR 提升在 20 样本上难以判断是否稳定；图 10 关于中间层维度 d 过大导致过拟合的结论同样来自单次实验。",
+  "提升幅度整体偏小：WV3 上相对次优仅 +0.158 dB，SAM 2.913 与 PanMamba 持平；且主表最优结果实为「ADWM 插入 LAGNet」，与未加模块的 LAGNet 直接对比才公平，跨方法比较中混杂了骨干差异。",
+  "复杂度分析显示代价由 O(C²·H·W) 主导、随空间分辨率增长，但全文未在实际高分辨率数据上报告推理时延与显存开销，实用性 claim 缺少对应实验。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "遥感锐化与可靠性主线无关，仅为常规图像处理任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

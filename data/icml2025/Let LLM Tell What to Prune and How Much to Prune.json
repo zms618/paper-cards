@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Let LLM Tell What to Prune and How Much to Prune.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Let LLM Tell What to Prune and How Much to Prune.pdf",
+ "title": "Let LLM Tell What to Prune and How Much to Prune",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "分层结构化剪枝策略，按交互与熵分配剪枝比例，无需微调。",
+ "innovations": [
+  "提出分层多结构剪枝框架，同时针对transformer block、注意力层、MLP层等多个结构单元进行剪枝，打破以往仅剪单一结构单元的局限",
+  "提出基于block间交互度量的动态配额分配方法，根据每个block在LLM中的功能重要性分配不同剪枝比例，而非统一预设比例",
+  "在block内部基于熵度量进一步分配注意力与MLP子结构的剪枝负载，实现细粒度的剪枝决策"
+ ],
+ "method_framework": "第一阶段：通过测量LLM内部各block之间的复杂交互来评估每个block的重要性，据此分配各block的剪枝比例（what to prune at block level）；第二阶段：在每个block内部，基于熵准则进一步将剪枝负载分配到注意力和MLP等子结构单元（how much to prune at sub-block level）。整个过程无需任何微调或重训练，即插即用。",
+ "experiment_framework": "在多个LLM变体（如LLaMA系列）和标准基准上验证；对比SLEB、SliceGPT等主流结构化剪枝方法；指标包括困惑度（PPL）和推理吞吐量；覆盖不同稀疏率下的性能-效率权衡曲线。",
+ "takeaways": [
+  "不同结构单元在推理速度贡献和功能重要性上存在显著差异，统一剪枝比例会导致性能-效率失衡",
+  "分层动态配额分配比单一结构剪枝或均匀比例剪枝能更好地平衡困惑度与推理速度",
+  "无需微调的一次性结构化剪枝在高稀疏率下仍可保持较好性能"
+ ],
+ "weaknesses": [
+  "仅验证了LLaMA系列模型，未覆盖Decoder-Encoder或其他架构的LLM",
+  "block间交互度量的计算需要额外的前向/后向hook收集统计量，剪枝阶段本身仍有一定开销",
+  "未与近期量化+剪枝联合压缩方法对比，实际部署场景下的综合压缩率未充分展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

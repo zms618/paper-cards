@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Video A Training-Free Approach to Long Video Understanding via Continuous-Time Memory Consolidation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Video A Training-Free Approach to Long Video Understanding via Continuous-Time Memory Consolidation.pdf",
+ "title": "∞-VIDEO: A Training-Free Approach to Long Video Understanding via Continuous-Time Memory Consolidation",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "免训练视频LLM扩展，但机制证据不足且开销未量化",
+ "innovations": [
+  "受生物记忆巩固启发，提出连续时间长期记忆(LTM)机制，使视频Q-former能处理无界长视频上下文而无需再训练",
+  "通过连续注意力动态地给最相关视频片段分配更高时间粒度，形成随时间演化的粘性记忆(sticky memories)",
+  "免训练、可即插即用地增强现有Video-LLM(Video-LLaMA、VideoChat2)的长视频问答表现"
+ ],
+ "method_framework": "在视频Q-former上叠加连续时间长期记忆巩固：按chunk处理视频，用连续注意力对重要事件形成粘性记忆并随时间整合，动态地对最相关片段分配更高时间粒度，从而在不增加训练的前提下避免稀疏帧子采样造成的信息丢失。",
+ "experiment_framework": "以Video-LLaMA与VideoChat2为基座，在长视频问答任务上对比均匀子采样基线；展示2小时电影等超长视频上的细节问答能力；指标为视频QA准确率。",
+ "takeaways": [
+  "连续时间记忆巩固可让现成Video-LLM免训练地理解任意长视频",
+  "动态注意力分配加粘性记忆比均匀稀疏子采样更能保留关键细节",
+  "推理期扩展计算的记忆路线可作为缩放参数之外的可扩展长视频理解方案"
+ ],
+ "weaknesses": [
+  "前9页内未见完整基准清单与数值主表，证据强度受限，置信度下调",
+  "记忆机制带来的推理计算开销与显存增长未充分量化",
+  "粘性记忆粒度由何自动决定、如何避免早期细节被冲刷，缺乏定量消融"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.13,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

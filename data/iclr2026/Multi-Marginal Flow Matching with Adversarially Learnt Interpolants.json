@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Multi-Marginal Flow Matching with Adversarially Learnt Interpolants.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Multi-Marginal Flow Matching with Adversarially Learnt Interpolants.pdf",
+ "title": "Multi-Marginal Flow Matching with Adversarially Learnt Interpolants",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "对抗学习插值解决多边缘流匹配，但创新有限且实验不充分。",
+ "innovations": [
+  "提出对抗学习插值(ALI)方法，用GAN式损失拟合神经参数化插值曲线匹配中间边缘分布",
+  "证明在温和假设下插值曲线的唯一性，且对噪声数据更鲁棒",
+  "将ALI与条件流匹配(CFM)结合，实现多时间点观测下的动态系统轨迹推断"
+ ],
+ "method_framework": "用GAN式对抗损失训练神经插值网络，使其生成的轨迹在各时间点的边缘分布与观测快照分布匹配；再通过条件流匹配对学习到的插值进行边缘化，得到底层动态系统的向量场。",
+ "experiment_framework": "在合成2D分布、空间转录组学肿瘤坐标推断、细胞追踪和单细胞RNA-seq轨迹推断四个场景评估，对比OT-CFM、OT-MMFM、OT-MFM等多边缘流匹配基线。",
+ "takeaways": [
+  "对抗学习插值比分段线性/样条插值更平滑，且能更好处理噪声观测数据",
+  "ALI-CFM在空间转录组学和细胞追踪任务上显著优于现有基线",
+  "方法可扩展到高维单细胞轨迹推断场景，性能与基线相当"
+ ],
+ "weaknesses": [
+  "对抗训练的稳定性问题未充分讨论，GAN式目标的收敛性保证有限",
+  "仅在生物医学时序数据上验证，其他物理/工程领域的适用性未探索",
+  "需要已知中间时间点的观测分布，对连续时间过程的适配性有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "生物医学轨迹推断与可靠性方法结合，但实验不充分",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

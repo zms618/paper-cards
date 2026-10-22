@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Detecting Data Contamination In LLMS via IN-CONTEXT Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Detecting Data Contamination In LLMS via IN-CONTEXT Learning.pdf",
+ "title": "Detecting Data Contamination In LLMS via IN-CONTEXT Learning",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 7.5,
+  "overall": 7.0
+ },
+ "one_line": "利用上下文学习置信度差异检测LLM数据污染，无需训练数据访问。",
+ "innovations": [
+  "利用上下文学习对模型置信度的影响差异检测污染",
+  "无需训练数据访问的自动化污染检测方法",
+  "捕获直接记忆和相关分布污染的双重能力"
+ ],
+ "method_framework": "CoDeC通过比较有无上下文时模型对目标样本的置信度差异来检测污染。污染数据会因记忆模式被干扰而降低置信度，而未见数据则通过上下文提升置信度。",
+ "experiment_framework": "在Pythia、GPT-Neo、RWKV-4、OLMo、Nemotron等模型上测试，使用训练集和未见数据集，与Vanilla Loss、Min-K%、Zlib Ratio基线对比，计算AUC指标。",
+ "takeaways": [
+  "上下文学习与微调在污染检测中表现出相似动态",
+  "污染转移现象表明模型对相关数据集的敏感性",
+  "CoDeC分数跨模型一致性高，提供可靠污染指标"
+ ],
+ "weaknesses": [
+  "可能受对抗性数据集影响，如高度重复或无关源混合的数据",
+  "未探索样本级别的严格成员推断能力",
+  "对未训练模型或无关数据混合的分数解释性有待提高"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "无需训练数据访问的污染检测方法，触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

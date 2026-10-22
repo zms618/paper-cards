@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/3DSRBench_A Comprehensive 3D Spatial Reasoning Benchmark.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/3DSRBench_A Comprehensive 3D Spatial Reasoning Benchmark.pdf",
+ "title": "3DSRBench: A Comprehensive 3D Spatial Reasoning Benchmark",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "首个自然图像3D空间推理基准，但实验证据不足",
+ "innovations": [
+  "首个在 MS-COCO 自然图像上人工标注的 3D 空间推理基准：12 个问题子类型归入 height / location / orientation / multi-object 四大类，实体覆盖刚体、人、动物及车标、广告牌箭头等隐式概念，绕开此前基于 Omni3D 规则生成只能覆盖少量刚性类别的限制",
+  "提出 FlipEval：对图像水平翻转生成互补配对的 VQA，涉及 left/right 的关系答案随之反转、其余保持，以此剔除「司机常坐左」「多数人右手持工具」等真实世界先验与随机猜测的影响，与 CircularEval 的多轮选项重排（须全轮次答对才计分）共同构成去偏评测协议",
+  "用 HSSD 可控渲染让同一 3D 场景产出 common（零 roll、小 pitch、人眼高度）与 uncommon（大 roll/pitch、贴地或高空）两套 6D 相机位姿配对题，把「相机 6D 视角鲁棒性」变成可量化评测维度"
+ ],
+ "method_framework": "在 COCO 图上人工标注 4 类 12 子型 3D 空间推理题；用规则改写问题（如「谁更高」→「谁更低」）与 FlipEval 水平翻转做测试时增强；判分走 exact match + gpt-4 辅助抽取选项标签，配合 CircularEval 循环打乱选项顺序，须全部轮次正确才计对。",
+ "experiment_framework": "3DSRBench-real（COCO，翻转后 5250 题）与 synthetic-common/uncommon（HSSD 渲染，翻转后 1692 题）；基线含 Random(20.9) / Random++(45.8) / Human(95.7)；评测 14+ 开源与闭源 LMM（SpatialRGPT、SpatialReasoner、InternVL2.5、Qwen2.5-VL、GPT-4o 等）并做视觉编码器与 LLM 规模消融。",
+ "takeaways": [
+  "评估空间 / 方位类推理必须同时上 CircularEval（选项重排）与互补配对（镜像翻转）两套去偏手段，否则真实世界先验会把模型分数灌高——Random++ 相对 Random 已能从 20.9 涨到 45.8",
+  "相机 6D 外参（roll/pitch）是被忽视的要害变量：同一场景换成 uncommon 视角后 GPT-4o 由对转错而人一眼可判，说明纯 2D 预训练的相机先验脆弱",
+  "视觉编码器混用 DINOv2 才明显涨 orientation / multi-object（CLIP 基线 31.8→CLIP+DINOv2 33.6），单靠 CLIP 不够，可直接指导 3D-aware 编码器选型"
+ ],
+ "weaknesses": [
+  "全文只报单次评测准确率，无种子方差或置信区间；表 3 的视觉编码器消融全部基于同一个 LLaVA-v1.5-7B / vicuna-7B 配置，SAM 组整体掉到 21.5 而 CLIP+DINOv2 组 33.6，这类数位数点差距是否超出单次运行噪声无法判断",
+  "正文在第 4.3 节之前截断，synthetic-common 与 synthetic-uncommon 两组的准确率和退化幅度、以及 4.4 节 GPT-4o / Gemini 2.0 失败案例的定量分析全部缺失，「视角鲁棒性退化」这一核心结论在正文只有定性描述",
+  "测试集由 2100 条人工标注经规则改写与翻转增强到 5250 题，自动改写可能引入歧义或错误标注，但正文未报告任何改写题的人工校验比例与纠错率；Human 基线 95.7% 由未参与标注者给出，其判分口径与模型侧 LLM 抽取选项的口径并不完全一致"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D空间推理基准与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

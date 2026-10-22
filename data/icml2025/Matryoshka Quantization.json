@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Matryoshka Quantization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Matryoshka Quantization.pdf",
+ "title": "Matryoshka Quantization",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 5,
+  "overall": 6
+ },
+ "one_line": "嵌套整数量化训练单模型服务多精度，int2提升4-7%",
+ "innovations": [
+  "提出Matryoshka Quantization（MatQuant）：利用整数多精度嵌套结构（int8的高有效位即int4/int2），联合优化多精度损失，单个模型即可服务不同位宽",
+  "设计co-training和co-distillation机制：同时训练int8/int4/int2三个精度的子模型，用高精度子模型蒸馏低精度子模型，使int2精度模型比标准int2量化提升4%（OmniQuant基）到7%（QAT基）",
+  "引入outlier extra-bit方案：用额外1bit表示outlier，实现2.05-bit有效精度，进一步提升6%性能"
+ ],
+ "method_framework": "核心观察：整数量化中int8权重的高有效位（MSB）天然构成int4/int2表示。MatQuant在训练时同时维护多个精度级别的表示（共享MSB），并对每个精度级别计算联合损失。co-training阶段同时优化所有精度；co-distillation阶段用高精度模型（int8）的logits蒸馏低精度模型（int4/int2）。推理时可根据部署需求直接从同一个模型中切片出对应位宽的子模型。",
+ "experiment_framework": "在多个LLM（如Llama系列）上评估。基线：OmniQuant、标准QAT。指标：int8/int4/int2各精度下的困惑度/下游任务准确率。对比单一精度量化 vs MatQuant多精度联合训练的效果。含消融实验验证co-training和co-distillation各自贡献。",
+ "takeaways": [
+  "整数类型的MSB嵌套结构是多精度量化的天然归纳偏置，利用它可训练单个模型服务多个位宽需求",
+  "联合优化多精度损失+高精度蒸馏低精度，能显著改善极低精度（int2）下的模型质量",
+  "额外1bit处理outlier（2.05-bit有效精度）是提升极低精度量化性价比的有效手段"
+ ],
+ "weaknesses": [
+  "训练时需同时维护多个精度级别的损失和梯度，训练开销相比单精度量化显著增加",
+  "仅在LLM权重量化上验证，未扩展到激活量化或CNN/ViT等其他架构",
+  "与主线（鲁棒性/可信AI）无直接关联，属于模型压缩效率方向"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

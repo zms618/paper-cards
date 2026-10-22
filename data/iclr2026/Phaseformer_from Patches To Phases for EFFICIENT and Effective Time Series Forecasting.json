@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Phaseformer_from Patches To Phases for EFFICIENT and Effective Time Series Forecasting.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Phaseformer_from Patches To Phases for EFFICIENT and Effective Time Series Forecasting.pdf",
+ "title": "PhaseFormer: From Patches to Phases for Efficient and Effective Time Series Forecasting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "相位视角压缩参数，但周期假设限制普适性",
+ "innovations": [
+  "首次用真实数据证据解释patch级处理为何本质低效，提出相位视角建模周期性。",
+  "用紧凑相位嵌入做相位级预测，替代patch token以大幅压缩参数。",
+  "轻量路由机制实现高效跨相位交互，约1k参数即达SoTA，尤其在大规模复杂数据集上领先。"
+ ],
+ "method_framework": "将周期序列按相位对齐到周期内位置，得到紧凑的相位嵌入而非逐patch token；在相位嵌入上做相位级预测；跨相位依赖用轻量路由机制交互，避免全量注意力，从而在极小参数量下保持预测能力。",
+ "experiment_framework": "在多个标准时序预测基准(含大规模复杂数据集)上评测；对比近年patch-based深度时序模型及线性基线；指标MSE/MAE，约1k参数下达到或超过SoTA，并报告参数/效率对比。",
+ "takeaways": [
+  "相位视角比patch更紧凑，用约1k参数即可匹敌甚至超越大模型。",
+  "在大规模复杂数据集上效率相当的模型常乏力，PhaseFormer仍保持优势。",
+  "为'高效且有效'的时序预测提供了新的归纳偏置方向。"
+ ],
+ "weaknesses": [
+  "相位建模依赖周期检测/对齐，对非周期或多频混合序列的适配未充分讨论。",
+  "约1k参数能力上限有限，极端长程/强非线性场景的外推风险未明。",
+  "与最新大时序基础模型(TimesFM等)的系统对比在摘要层面不完整。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "时序预测方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

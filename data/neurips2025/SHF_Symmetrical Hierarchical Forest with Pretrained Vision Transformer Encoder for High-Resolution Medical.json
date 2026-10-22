@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/SHF_Symmetrical Hierarchical Forest with Pretrained Vision Transformer Encoder for High-Resolution Medical.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/SHF_Symmetrical Hierarchical Forest with Pretrained Vision Transformer Encoder for High-Resolution Medical.pdf",
+ "title": "SHF: Symmetrical Hierarchical Forest with Pretrained Vision Transformer Encoder for High-Resolution Medical Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "SHF用对称分层森林提升医学分割，但创新有限且依赖边缘检测质量",
+ "innovations": [
+  "对称分层森林(SHF)自适应补丁策略",
+  "消除传统卷积解码器的反向去补丁机制",
+  "可适配任何ViT模型的轻量级预处理/后处理方案"
+ ],
+ "method_framework": "SHF结合高斯模糊和Canny边缘检测构建四叉树/八叉树结构，对输入图像和掩码进行对称分层补丁编码，通过ViT编码器处理后，再使用相同的树结构进行反向去补丁重建掩码",
+ "experiment_framework": "PAIP病理图像(512²-64K²)、BTCV和KiTS 3D医学数据集，对比SAM、UNETR、TransUNet等基线，使用Dice评分和训练速度作为指标",
+ "takeaways": [
+  "分层补丁策略可显著减少序列长度和计算复杂度",
+  "对称处理图像和掩码可保持信息密度并简化模型设计"
+ ],
+ "weaknesses": [
+  "依赖边缘检测的质量，可能受图像预处理影响",
+  "树结构构建可能增加额外的预处理时间"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Verifybench_Benchmarking Reference-Based Reward Systems for Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Verifybench_Benchmarking Reference-Based Reward Systems for Large Language Models.pdf",
+ "title": "VerifyBench: Benchmarking Reference-Based Reward Systems for Large Language Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "首个参考式奖励系统基准，揭示验证器在困难样本上的显著差距。",
+ "innovations": [
+  "提出VerifyBench及困难变体VerifyBench-Hard：首个专门评测reference-based reward系统的基准，区别于现有pairwise偏好比较基准",
+  "聚焦单样本对错判定（与参考答案对齐），而非两个回答的偏好排序，填补推理模型RL训练中验证系统评测的空白",
+  "系统评估当前主流模型验证器在多种推理任务和错误类别上的表现模式，提供改进方向洞察"
+ ],
+ "method_framework": "VerifyBench评测参考式奖励系统（即给定问题+参考答案+模型回答，判定回答对错）的准确性。数据经过精细收集和人工标注确保高质量。包含标准版和困难版(VerifyBench-Hard)。覆盖多种推理任务类型和错误类别。评测对象包括规则验证器和基于模型的验证器。",
+ "experiment_framework": "基准：VerifyBench + VerifyBench-Hard（人工标注）。评测对象：多种现有reference-based reward系统（规则式、模型式）。指标：对错判定准确率。分析：跨推理任务的性能模式、错误类别分布、困难样本失败原因。",
+ "takeaways": [
+  "现有奖励基准关注pairwise偏好比较，无法评估推理模型RL训练中关键的参考式验证能力",
+  "更大的模型验证器在标准样本上表现不错，但在困难样本(VerifyBench-Hard)上所有系统都有很大改进空间",
+  "不同推理任务和错误类型的验证难度差异显著，需要针对性改进"
+ ],
+ "weaknesses": [
+  "基准规模和任务覆盖面可能有限，更广泛的推理类型未完全覆盖",
+  "对错判定的二分类框架较简化，部分复杂推理的正确性可能不是非黑即白",
+  "验证器在困难样本上失败的根因分析较为初步"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "填补验证系统评测空白，但未触及可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

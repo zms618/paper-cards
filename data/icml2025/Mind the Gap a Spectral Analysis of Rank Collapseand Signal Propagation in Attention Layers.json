@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Mind the Gap a Spectral Analysis of Rank Collapseand Signal Propagation in Attention Layers.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Mind the Gap a Spectral Analysis of Rank Collapseand Signal Propagation in Attention Layers.pdf",
+ "title": "Mind the Gap: a Spectral Analysis of Rank Collapse and Signal Propagation in Attention Layers",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "随机矩阵理论揭示softmax注意力层宽度秩崩塌现象及谱间隙根源",
+ "innovations": [
+  "发现softmax注意力层独有的宽度秩崩塌现象：随上下文长度增加，所有token表示趋于一致",
+  "用随机矩阵理论证明注意力矩阵前两个奇异值之间的谱间隙是宽度秩崩塌的根本原因",
+  "提出移除离群特征值的简单实用方案缓解宽度秩崩塌，并解释了现有经验方法的理论本质"
+ ],
+ "method_framework": "在随机初始化条件下，用随机矩阵理论分析注意力矩阵的谱特性。发现随上下文长度增加，注意力矩阵的最大奇异值与次大奇异值之间出现显著谱间隙，导致有效秩下降（宽度秩崩塌）。这一现象进一步加剧深度方向的秩崩塌和梯度消失/爆炸。基于此洞察，提出移除离群特征值的缓解方法。",
+ "experiment_framework": "理论分析为主，辅以数值实验验证谱间隙现象和缓解方法的有效性。在不同上下文长度下测量注意力矩阵的奇异值分布和信号传播特性。",
+ "takeaways": [
+  "宽度秩崩塌是softmax注意力独有的问题，随上下文长度增加而加剧",
+  "谱间隙是连接宽度秩崩塌与深度秩崩塌、梯度问题的关键机制",
+  "移除离群特征值可有效缓解宽度秩崩塌，为现有经验方法提供理论解释"
+ ],
+ "weaknesses": [
+  "分析基于随机初始化，训练过程中的谱演化未涉及",
+  "移除离群特征值的具体实现方式和计算开销未详细讨论",
+  "仅分析自注意力，交叉注意力和其他注意力变体未覆盖"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

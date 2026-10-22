@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Efficient Fine-Tuning of Large Models via Nested Low-Rank Adaptation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Efficient Fine-Tuning of Large Models via Nested Low-Rank Adaptation.pdf",
+ "title": "Efficient Fine-Tuning of Large Models via Nested Low-Rank Adaptation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "嵌套LoRA结构加激活感知初始化，提升微调效率但泛化分析不足。",
+ "innovations": [
+  "嵌套LoRA结构设计",
+  "激活感知SVD(AwSVD)初始化方法",
+  "冻结外层LoRA权重策略"
+ ],
+ "method_framework": "NoRA采用嵌套LoRA结构，外层使用AwSVD初始化并冻结，内层使用高斯分布初始化，实现参数高效且性能优越的微调。",
+ "experiment_framework": "在视觉少样本任务、视觉指令微调和主题驱动生成任务上评估，使用ViT-B/16、LLaVA-1.5-7B和Mistral-7B等模型，对比多种LoRA变体。",
+ "takeaways": [
+  "激活信息可指导SVD初始化减少分解误差",
+  "串行结构优于并行结构，wa位置优于wb位置",
+  "冻结外层LoRA可减少参数同时保持性能"
+ ],
+ "weaknesses": [
+  "未充分讨论计算开销增加",
+  "缺乏对模型泛化能力的深入分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "参数高效微调方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

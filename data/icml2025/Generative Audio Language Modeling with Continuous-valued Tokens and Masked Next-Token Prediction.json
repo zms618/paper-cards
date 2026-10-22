@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Generative Audio Language Modeling with Continuous-valued Tokens and Masked Next-Token Prediction.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Generative Audio Language Modeling with Continuous-valued Tokens and Masked Next-Token Prediction.pdf",
+ "title": "Generative Audio Language Modeling with Continuous-valued Tokens and Masked Next-Token Prediction",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "因果LM+扩散建模连续音频token，参数更少但评估有限。",
+ "innovations": [
+  "首次用因果LM直接建模连续音频token分布，无需离散化",
+  "token-wise diffusion在每个token位置建模连续分布，避免离散tokenization的信息损失",
+  "提出masked next-token预测任务融入因果LM框架，FAD比AudioGen Base改善41%"
+ ],
+ "method_framework": "将音频编码为连续token序列。因果Transformer解码器在每个位置用小型扩散模型预测下一个连续token的分布。训练时除标准自回归损失外，增加masked next-token预测任务(随机mask部分token并预测)，提升模型表示能力。",
+ "experiment_framework": "在AudioCaps数据集上评估；对比AudioGen(离散token)和SOTA扩散模型；指标为FAD和KL散度；报告以193M Base参数达到AudioGen 285M的质量，FAD/KL分别改善20%/40%。",
+ "takeaways": [
+  "连续token化避免了音频离散化的信息损失",
+  "因果LM+局部扩散可高效建模连续音频分布",
+  "masked预测任务显著提升音频LM的生成质量"
+ ],
+ "weaknesses": [
+  "每个位置的扩散模型增加了推理延迟",
+  "仅在AudioCaps评估，其他音频任务适用性未知",
+  "前9页内未看到与全序列扩散模型的对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

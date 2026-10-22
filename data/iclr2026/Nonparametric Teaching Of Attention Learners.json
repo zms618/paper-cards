@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Nonparametric Teaching Of Attention Learners.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Nonparametric Teaching Of Attention Learners.pdf",
+ "title": "Nonparametric Teaching of Attention Learners",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "将注意力训练重新诠释为非参数教学，通过示例选择加速收敛。",
+ "innovations": [
+  "提出Attention Neural Teaching(AtteNT)范式，从非参数教学视角重新理解注意力学习器的训练。",
+  "解析注意力在基于参数梯度下降中的作用，证明参数更新驱动的注意力网络演化与非参数教学中函数梯度下降一致。",
+  "证明由参数梯度下降涌现的动态ANTK收敛到函数梯度下降的重要性自适应正则核，从而可用非参数教学的贪心算法做示例选择加速训练。"
+ ],
+ "method_framework": "把密集的序列-属性对视为隐式映射，由AtteNT教师挑选子集以加速注意力学习器收敛；将参数空间梯度下降重述为非参数教学中的函数梯度下降，借助重要性自适应正则核与贪心教学算法选择示例，在不牺牲精度的前提下缩短训练。",
+ "experiment_framework": "在NLP与CV任务上评测：LLM微调时间降低13.01%，ViT从头训练时间降低20.58%；跨微调与从头训练两种设定，精度保持甚至提升。",
+ "takeaways": [
+  "注意力学习器训练可与非参数教学统一看待，为训练效率改进提供了理论新视角。",
+  "示例选择式教学能在不损失精度的前提下显著加速LLM微调与ViT训练。",
+  "重要性自适应正则核为理解注意力动态提供了函数空间解释。"
+ ],
+ "weaknesses": [
+  "训练加速幅度（13%-21%）中等，示例选择本身的开销未纳入端到端成本核算。",
+  "理论一致性分析基于较强假设（如线性化/核近似），与大规模真实Transformer训练的差距未充分讨论。",
+  "评测任务规模与模型规模描述有限，跨更长训练、更大模型的可扩展性证据不足。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "注意力训练加速与可靠性主线交织，提供可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

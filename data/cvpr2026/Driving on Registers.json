@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Driving on Registers.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Driving on Registers.pdf",
+ "title": "Driving on Registers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "ViT压缩摄像头特征生成轨迹，但传感器单一且极端场景不足",
+ "innovations": [
+  "相机感知的register token压缩",
+  "解耦的轨迹生成与评分模块",
+  "行为条件化驾驶策略"
+ ],
+ "method_framework": "基于ViT的三模块架构：感知编码器压缩多摄像头特征为紧凑场景表示，两个轻量级解码器分别生成和评分候选轨迹，支持行为条件化选择。",
+ "experiment_framework": "NAVSIM-v1/v2和HUGSIM基准测试，与多种SOTA方法比较，评估PDMS、EPDMS等指标，并进行消融研究。",
+ "takeaways": [
+  "register token压缩显著减少计算量同时保持性能",
+  "解耦的评分模块实现行为条件化驾驶",
+  "LoRA微调有效利用预训练ViT"
+ ],
+ "weaknesses": [
+  "仅使用摄像头输入，未融合LiDAR等其他传感器",
+  "在极端场景下性能仍有提升空间",
+  "评分模块的泛化能力需要进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "驾驶感知与可靠性主线无实质交点，仅传感器单一",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

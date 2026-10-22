@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/DirectTriGS_Triplane-based Gaussian Splatting Field Representation for 3D Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/DirectTriGS_Triplane-based Gaussian Splatting Field Representation for 3D Generation.pdf",
+ "title": "DirectTriGS Triplane-based Gaussian Splatting Field Representation for 3D Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "三平面高斯飞溅场表示结合两阶段扩散模型实现3D生成",
+ "innovations": [
+  "三平面表示将离散高斯点云转换为连续场",
+  "全可微TriRenderer桥接GS场与渲染",
+  "两阶段潜在扩散模型生成几何和外观"
+ ],
+ "method_framework": "将3D对象编码为三平面，通过TriRenderer解码为高斯点云，使用VAE压缩后通过两阶段扩散模型生成，可选SDS后处理",
+ "experiment_framework": "OmniObject3D和Objaverse数据集，与Shap-E、Direct3D、GaussianCube等对比，使用CLIP分数和用户研究评估",
+ "takeaways": [
+  "三平面表示有效处理高斯点云的复杂结构",
+  "几何和外观的解耦编码提升生成质量",
+  "轻量级三平面表示提高生成效率"
+ ],
+ "weaknesses": [
+  "三平面扩散直接生成存在几何噪声问题",
+  "高斯属性生成对非欧几里得数据(如四元数)处理困难",
+  "实验主要在物体级3D生成，缺乏场景级验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D生成与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

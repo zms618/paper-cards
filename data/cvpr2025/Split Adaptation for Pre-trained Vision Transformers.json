@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Split Adaptation for Pre-trained Vision Transformers.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Split Adaptation for Pre-trained Vision Transformers.pdf",
+ "title": "Split Adaptation for Pre-trained Vision Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "分割量化ViT实现隐私保护适配，但计算开销大且依赖客户端资源",
+ "innovations": [
+  "创新点1: 提出Split Adaptation方法，结合模型分割和量化技术保护模型和数据隐私",
+  "创新点2: 设计双级噪声注入机制防御数据重构攻击",
+  "创新点3: 引入基于Hilbert变换的OOD增强和patch检索增强解决小样本过拟合问题"
+ ],
+ "method_framework": "将预训练ViT分割为前端和后端，前端量化后发送给客户端，客户端添加噪声并提取数据表示，通过patch检索增强后上传至服务器，后端进行OOD量化感知微调",
+ "experiment_framework": "在ImageNet(服务器)和CIFAR-100/Places365/DomainNet-Cl(客户端)数据集上评估，与线性探测、分割学习、离站点调优等方法对比，使用准确率作为指标",
+ "takeaways": [
+  "可借鉴点1: Hilbert变换数据增强技术可有效提升跨分布泛化能力",
+  "可借鉴点2: 双级噪声注入机制在保护数据隐私的同时保持模型性能"
+ ],
+ "weaknesses": [
+  "缺点1: 方法依赖于客户端计算能力，可能不适合资源受限设备",
+  "缺点2: 量化过程可能引入额外计算开销，影响整体效率"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "隐私保护适配与可靠性主线部分交织，但计算开销大且依赖客户端资源",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/A Self-Conditioned Representation Guided Diffusion Model for Realistic Text-to-LiDAR Scene.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Self-Conditioned Representation Guided Diffusion Model for Realistic Text-to-LiDAR Scene.pdf",
+ "title": "A Self-Conditioned Representation Guided Diffusion Model for Realistic Text-to-LiDAR Scene Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "自条件表示+方向编码的扩散模型，但实验证据不足且创新有限",
+ "innovations": [
+  "自条件表示引导 SCRG：Guidance Network 以式(3)复现真实坐标 x0 得到多尺度重建特征，再用余弦相似度式(4)把去噪网 DN 的中间噪声特征对齐到该重建特征，为 DN 提供软性几何细节监督；GN 仅在前 100K step 参与反传、推理时剥离，故不增加推理开销",
+  "方向位置编码 DPE：为 range map 每个像素定义水平方位角 theta 与垂直俯仰角 phi，做 K 阶 Fourier 展开后乘可学习门控 alpha 叠加到特征上，缓解球投影被卷积当作矩形图处理导致的街道弯折/断裂方向混淆",
+  "构建 T2nuScenes 基准与 TBR 可控性指标：用 3D box 先验自动生成物体级/场景级可组合描述（34149 帧 nuScenes 重标注），并以检测器检测生成点云得到的 3D box 与文本语义的匹配率衡量可控性"
+ ],
+ "method_framework": "把 LiDAR 球投影为 range map（深度+强度双通道）做条件 DDPM（v-prediction+CFG）：CLIP 冻结文本编码经 cross-attention 送入 U-Net 去噪网 DN；训练时并行一个同构 Guidance Network GN 由噪声特征复原 x0 并对齐 DN 特征提供表示正则；另加 DPE 角度编码；推理只跑 DN。",
+ "experiment_framework": "nuScenes(32 beam/34149)、KITTI-360(64 beam/76165)； unconditional 基线含 LiDARVAE/GAN/ProjectedGAN/LiDARGen/LiDM/R2DM/Text2LiDAR；指标 FSVD、FPVD、JSD、MMD；文本可控性用 TBR（检测器 box 与文本匹配率）。",
+ "takeaways": [
+  "用「辅助网络产出重建特征 → 与主网络中间特征做相似度对齐」的无预训练表示正则来补小数据生成模型的先验，是低资源模态（点云/点云传感器数据）可直接复用的轻量套路",
+  "为生成结果设计「检测器产出 box 再与文本比对」的可控性指标（TBR），把主观生成质量落到可量化的下游可执行判据上，值得迁移到其他模态的文本可控生成",
+  "球投影数据上的位置编码若只用常规 xy 位置编码会丢失方位角，需要显式编码水平/垂直视角角度，对 range view / 全景表征任务有直接价值"
+ ],
+ "weaknesses": [
+  "正文止于第 5.3 节、表格被截断：Tab.4/5（文本生成主表）与 Tab.8（SCRG 消融）均未在正文出现，λ 的 epoch 调度、Fourier 阶数 K、门控 α 等关键超参全部推给补充材料，方法可验证性不足",
+  "指标全部是分布距离类（FSVD/FPVD/JSD/MMD），没有下游 3D 检测/分割任务的实收益实验，「生成更详细有利于下游识别」的 claim 缺对应证据；且主表只报单次数值、无随机种子方差，结构复杂度相近的方法间 2-3 个点差距是否显著无法判断",
+  "自条件引导的思想直接来自表示引导类方法 [23,62]，本文只换了作用对象（range map 特征）与对齐目标，属于机制迁移而非新机制；DPE 消融同样只在补充材料中，无法确认去掉方向编码后性能下降多少"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "文本到LiDAR生成与可靠性主线无交点，无可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

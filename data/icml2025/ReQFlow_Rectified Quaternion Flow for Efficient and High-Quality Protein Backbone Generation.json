@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/ReQFlow_Rectified Quaternion Flow for Efficient and High-Quality Protein Backbone Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ReQFlow_Rectified Quaternion Flow for Efficient and High-Quality Protein Backbone Generation.pdf",
+ "title": "ReQFlow: Rectified Quaternion Flow for Efficient and High-Quality Protein Backbone Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "elevance": 4.5,
+  "evidence": 6.0,
+  "overall": 5.5
+ },
+ "one_line": "四元数流匹配加速蛋白骨架生成，质量持平SOTA但未超越",
+ "innovations": [
+  "以单位四元数表示残基 3D 旋转，在 SO(3) 上用指数形式球面线性插值(SLERP)构造四元数流，数值稳定可学习",
+  "在训好的 QFlow 基础上用自生成噪声-骨架对做校正流，加速推理并提升可设计性",
+  "在生成长度 300 的骨架时，质量持平 RFDiffusion/Genie2 而推理快 37×/63×"
+ ],
+ "method_framework": "对每个残基分别从随机噪声生成局部平移与 3D 旋转；旋转用单位四元数表示，旋转流在 SO(3) 上以 SLERP 连接；先以 QFlow 匹配策略训练保证数值稳定，再用校正流技术基于模型自配对数据重训，使采样步数大幅减少。",
+ "experiment_framework": "在 de novo 蛋白骨架生成任务上评测；对比 RFDiffusion、Genie2 等扩散/流方法；指标为可设计性(designability)等生成质量与采样步数/推理时间；报告质量持平而推理时间显著下降。",
+ "takeaways": [
+  "四元数+SLERP 可在旋转流形上稳定地构造流匹配",
+  "校正流能在不降质量的前提下把蛋白骨架生成加速数十倍",
+  "效率与质量可兼得，利于大规模蛋白设计应用"
+ ],
+ "weaknesses": [
+  "主线偏离可靠性/医学影像/多模态推理，属蛋白设计",
+  "仅生成骨架，侧链与功能约束的对接未涉及",
+  "可设计性仅持平而非超越 SOTA，长链蛋白的稳定性需进一步验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

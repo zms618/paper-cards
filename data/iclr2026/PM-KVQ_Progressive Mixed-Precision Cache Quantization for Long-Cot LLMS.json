@@ -1,0 +1,41 @@
+{
+ "title": "PM-KVQ: Progressive Mixed-Precision Cache Quantization for Long-CoT LLMs",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "渐进式KV量化+块级混合精度+位置插值，提升长CoT推理性能与吞吐。",
+ "innovations": [
+  "渐进式量化策略：随解码逐步降低KV Cache位宽，减少逐步量化带来的累积误差。",
+  "块级显存分配：为更敏感的Transformer块分配更高位宽，做混合精度。",
+  "带位置插值的校准策略：用短校准数据经位置插值近似长上下文分布，解决RoPE下短上下文校准偏差，零额外开销延长校准长度。"
+ ],
+ "method_framework": "针对长CoT KV Cache两大痛点：累积误差(逐步逐块直接量化)与短上下文校准偏差(RoPE使Key通道分布随长度变化)。先逐block渐进降bit并按敏感度做块级混合精度；再用位置插值把短校准数据映射到长上下文分布做校准统计。",
+ "experiment_framework": "在7B–70B长CoT推理模型(o1/R1类)上评测；同显存预算下对比GPTQ/AWQ类KV量化SOTA；指标为推理benchmark准确率(最高+8%)与吞吐(相对16-bit达2.73–5.18×)；覆盖不同上下文长度。",
+ "takeaways": [
+  "渐进式+块级混合精度有效抑制长CoT下KV量化的累积误差。",
+  "位置插值校准无需额外长数据即可近似长上下文Key通道分布，挽回短校准导致的掉点。",
+  "同等显存下PM-KVQ推理benchmark性能超SOTA量化基线且吞吐提升数倍。"
+ ],
+ "weaknesses": [
+  "属系统/量化工程优化，方法新颖性在于工程组合而非原理突破。",
+  "敏感度判断与块级位宽分配依赖校准数据，对未见超长长度(>训练校准)的外推稳健性未充分验证。",
+  "主要报告准确率与吞吐，对极端长上下文(128K+)下的累积误差长尾行为分析有限。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PM-KVQ_Progressive Mixed-Precision Cache Quantization for Long-Cot LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PM-KVQ_Progressive Mixed-Precision Cache Quantization for Long-Cot LLMS.pdf",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "系统优化工作，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

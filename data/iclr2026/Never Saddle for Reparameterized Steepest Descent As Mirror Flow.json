@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Never Saddle for Reparameterized Steepest Descent As Mirror Flow.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Never Saddle for Reparameterized Steepest Descent As Mirror Flow.pdf",
+ "title": "Never Saddle for Reparameterized Steepest Descent as Mirror Flow",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "简化模型下证明Adam几何优势，外推至复杂系统存疑",
+ "innovations": [
+  "将最速下降（含与Adam密切相关的sign descent）统一为最速镜像流框架，在Banach空间下分析优化几何对学习动态/隐式偏置/稀疏性的支配。",
+  "以对角线性网络与深度对角重参数化（注意力KQ动态的简化代理）为对象，推导刻画镜像流的平衡方程与随深度变化的度量指数。",
+  "给出Adam/AdamW优于SGD的两个机制解释：陡下降利于鞍点逃逸与稀疏特征学习；解耦权重衰减通过新的平衡方程稳定特征学习而不陷入阻碍鞍点逃逸的高指数区。"
+ ],
+ "method_framework": "在不同L^q几何(q=2为梯度流GF，q=1为SignGF接近Adam)下分析重参数化最速下降；通过镜像流平衡方程刻画度量指数随深度与重参数化的变化；对比GF需要不切实际大学习率才能逃离鞍点，而陡下降(小q)自然促进鞍点逃逸与稀疏特征学习；分析AdamW解耦权重衰减对应的平衡方程。",
+ "experiment_framework": "在线性回归与可分二分类上验证真值恢复与预测的鞍点逃逸行为；并在标准视觉任务与LLM适配微调上做实验，印证Adam-like陡流更快逃离鞍点、获得稳定特征学习的普遍性结论。",
+ "takeaways": [
+  "优化器选择不仅影响收敛速度，还通过几何决定隐式偏置、稀疏性与鞍点逃逸。",
+  "Adam类陡下降在微调常见学习率下即可逃离鞍点，而SGD需不切实际的大学习率。",
+  "解耦权重衰减稳定特征学习，是AdamW优于SGD微调的另一机制。"
+ ],
+ "weaknesses": [
+  "理论基于对角线性网络与深度对角重参数化等简化代理，与真实Transformer/CNN的差距需谨慎外推。",
+  "对鞍点逃逸与特征学习的刻画依赖可分/线性等理想化设定。",
+  "未覆盖学习率调度、动量、归一化等现代优化细节对结论的影响。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "优化器理论分析，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

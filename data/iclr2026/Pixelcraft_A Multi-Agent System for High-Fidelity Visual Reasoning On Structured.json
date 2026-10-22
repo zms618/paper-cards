@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Pixelcraft_A Multi-Agent System for High-Fidelity Visual Reasoning On Structured.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Pixelcraft_A Multi-Agent System for High-Fidelity Visual Reasoning On Structured.pdf",
+ "title": "PixelCraft: A Multi-Agent System for High-Fidelity Visual Reasoning on Structured Images",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "多智能体系统结合grounding模型与CV工具提升结构化图像推理精度",
+ "innovations": [
+  "构建 dispatcher/planner/reasoner/critics/视觉工具代理的多智能体架构，面向结构化图像高保真处理",
+  "微调 grounding 模型与传统CV算法(裁剪/掩码等)在工具代理中集成，弥补MLLM低保真图像处理缺陷",
+  "图像记忆支持planner回溯早期视觉步骤、探索替代推理分支，突破线性追加历史图像的刚性模式"
+ ],
+ "method_framework": "Dispatcher 分发任务，Planner 规划并在工具选择-智能体讨论-自我批评三阶段动态推进；视觉工具代理结合 grounding 模型像素级定位与传统CV(子图裁剪、按图例掩码数据等)生成高保真中间视觉线索；图像记忆允许回溯与分支探索，Critics 自我纠错以阻断感知误差级联。",
+ "experiment_framework": "在 ChartQAPro、CharXiv 等图表基准与几何推理基准上，作为后处理增强叠加在多个先进MLLM上，对比 CoT/Visual CoT 等中间线索方法，报告准确率。",
+ "takeaways": [
+  "结构化图像中感知误差(读错柱高)会级联为错误结论，高保真中间视觉线索可有效纠偏",
+  " grounding模型+传统CV工具的组合提供了低代码依赖的高保真图像处理",
+  "图像记忆与多智能体讨论/自我批评使推理轨迹可动态调整，提升复杂图表推理"
+ ],
+ "weaknesses": [
+  "系统级多智能体+多工具调用带来显著推理开销与延迟",
+  "grounding模型与CV工具的错误会被纳入流程，工具选择可靠性前9页未见系统分析",
+  "前9页未见在医学影像等结构化/高风险视觉推理域的迁移验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "结构化图像推理与可靠性主线部分交织，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Stacey Promoting Stochastic Steepest Descent via Accelerated lp-Smooth Nonconvex Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Stacey Promoting Stochastic Steepest Descent via Accelerated lp-Smooth Nonconvex Optimization.pdf",
+ "title": "STACEY: Promoting Stochastic Steepest Descent via Accelerated lp-Smooth Nonconvex Optimization",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6
+ },
+ "one_line": "提出加速ℓp最速下降算法，在图像分类与LLM预训练上优于SGD/AdamW/Lion",
+ "innovations": [
+  "提出加速 ℓp 最速下降算法 STACEY，填补 SGD(ℓ2)/signSGD(ℓ∞) 之外任意 ℓp 非欧结构优化的空白",
+  "用插值原始-对偶迭代序列实现加速，给出 ℓp-smooth 非凸优化的新型理论保证",
+  "在图像分类与 LLM 预训练上验证更快收敛与更高精度，并系统分析不同 p 的影响"
+ ],
+ "method_framework": "在 ℓp 光滑性假设下定义 ℓp 意义下的最速下降方向与稳定点；STACEY 通过原始迭代与对偶迭代的插值组合来加速非凸 ℓp 光滑优化，使更新方向与超参数自适应到特定 p 的几何结构，p 可调以匹配损失曲面形状。",
+ "experiment_framework": "在图像分类与 LLM 预训练任务上对比 SGD、AdamW、Lion；报告收敛速度与最终精度，并跨模型/数据集扫描不同 p 值，验证非欧几里得方法相对标准 ℓ2 方法的优势。",
+ "takeaways": [
+  "现代深度目标的几何结构介于 ℓ2 与 ℓ∞ 之间，合适的 ℓp 最速下降比固定范数优化器更好",
+  "原始-对偶插值可加速 ℓp 非凸优化",
+  "p 的选择对性能敏感，需按任务调"
+ ],
+ "weaknesses": [
+  "与主线（鲁棒性/可信AI/医学影像/多模态推理）无关，属优化器",
+  "p 的最优值依赖任务/损失曲面，缺乏自动选择准则",
+  "相对 AdamW 等强自适应基线的提升在更大规模 LLM 上的稳定性需更多验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

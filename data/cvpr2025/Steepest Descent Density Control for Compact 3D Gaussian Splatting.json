@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Steepest Descent Density Control for Compact 3D Gaussian Splatting.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Steepest Descent Density Control for Compact 3D Gaussian Splatting.pdf",
+ "title": "Steepest Descent Density Control for Compact 3D Gaussian Splatting",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 6.3
+ },
+ "one_line": "分裂矩阵理论指导3D高斯点密度控制，减少50%点数",
+ "innovations": [
+  "引入分裂矩阵理论框架分析3DGS密度控制",
+  "证明分裂是逃离鞍点的关键机制",
+  "提出最陡密度控制(SDC)策略，确定最优分裂方向和透明度调整"
+ ],
+ "method_framework": "基于优化理论分析3DGS密度控制，引入分裂矩阵S(i)(✓)表征分裂特性，证明当λmin(S(i)(✓))<0时分裂可减少损失，提出将高斯点沿分裂矩阵最小特征值方向分裂并调整透明度的SDC策略。",
+ "experiment_framework": "在Mip-NeRF 360、Tanks & Temples和Deep Blending数据集上比较SteepGS与原始ADC、3DGS-MCMC和Revising-GS，评估点数减少和渲染质量指标。",
+ "takeaways": [
+  "利用分裂矩阵的半正定性作为分裂条件可有效减少冗余点",
+  "沿最小特征值方向分裂并调整透明度可实现最陡下降",
+  "点级Hessian信息可用于识别鞍点而不需计算完整Hessian"
+ ],
+ "weaknesses": [
+  "仅考虑位置参数的分裂矩阵计算，未充分利用所有参数信息",
+  "实验部分未充分展示在资源受限设备上的部署优势",
+  "理论分析基于二阶近似，高阶项影响未充分探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D高斯压缩技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

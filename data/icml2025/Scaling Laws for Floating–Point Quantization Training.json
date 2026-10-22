@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Scaling Laws for Floating–Point Quantization Training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Scaling Laws for Floating–Point Quantization Training.pdf",
+ "title": "Scaling Laws for Floating-Point Quantization Training",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "扩展整数量化缩放律至FP量化，但迁移性与下游预测不足。",
+ "innovations": [
+  "把缩放律从整数量化扩展到生产中更常用的浮点(FP)量化训练。",
+  "系统分离量化目标、指数位、尾数位与缩放因子计算粒度对训练损失的影响。",
+  "给出可拟合FP量化场景下LLM损失的缩放律，指导低精度训练配置选择。"
+ ],
+ "method_framework": "低精度训练降本但此前缩放律只覆盖整数量化，无法拟合FP量化下的损失。本文将FP量化的设计要素(量化目标数据类型、指数位宽、尾数位宽、缩放因子的计算粒度)作为新的尺度变量，与模型规模/数据量一起扫描，拟合训练损失关于这些变量的函数，得到可预测FP量化训练性能的缩放律。",
+ "experiment_framework": "在不同模型规模与token量下，扫描FP量化格式(指数/尾数位)、量化目标与缩放粒度；指标为训练/验证损失及下游，拟合并验证FP量化缩放律，对比整数量化缩放律的拟合优度。",
+ "takeaways": [
+  "FP量化训练的损失可由含指数位/尾数位等要素的缩放律准确预测。",
+  "指数位、尾数位与缩放粒度对训练稳定性与精度有独立且可量化的影响。"
+ ],
+ "weaknesses": [
+  "缩放律需按FP格式现场拟合，跨硬件/框架的可迁移性未充分验证。",
+  "主要关注预训练损失，对量化后下游任务质量的预测较弱。",
+  "属训练效率/量化方向，与可靠性/可信AI主线关系较弱。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

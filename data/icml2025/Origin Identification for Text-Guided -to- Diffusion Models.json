@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Origin Identification for Text-Guided -to- Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Origin Identification for Text-Guided -to- Diffusion Models.pdf",
+ "title": "Origin Identification for Text-Guided Image-to-Image Diffusion Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.0
+ },
+ "one_line": "提出ID2任务与线性变换方法，跨模型源识别提升31.6% mAP",
+ "innovations": [
+  "提出ID2新任务：给定经图到图扩散模型修改后的图像，识别其原始输入图像",
+  "构建OriPID跨模型数据集，覆盖多种扩散模型(SD/SDXL/SD3/Kandinsky/Kolors等)",
+  "证明VAE嵌入空间存在最小化生成图与源图距离的线性变换，且该变换可跨模型泛化"
+ ],
+ "method_framework": "在预训练VAE嵌入空间中，推导并学习一个线性变换矩阵，使生成图像的嵌入映射到其源图像嵌入附近；该线性变换在训练模型上学得后可直接迁移到未见过的扩散模型，实现跨模型源识别。",
+ "experiment_framework": "任务：跨扩散模型的源图像检索(ID2)。基线：相似度方法、通用特征嵌入模型。指标：mAP。数据集：OriPID，覆盖多种扩散模型和prompt类型。",
+ "takeaways": [
+  "直接用视觉相似度做源识别在跨模型场景下失败，因不同扩散模型生成图像视觉差异大",
+  "VAE嵌入空间的线性变换可捕获生成过程的不变结构，实现跨模型泛化",
+  "方法较相似度方法提升31.6% mAP，可用于版权追踪和内容溯源"
+ ],
+ "weaknesses": [
+  "线性变换假设较强，对大幅修改(如完全换风格)的源识别精度可能下降",
+  "仅在已知扩散模型族验证，未知模型或GAN生成的图到图修改未考察",
+  "对对抗性修改(主动规避溯源)的鲁棒性未测试"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

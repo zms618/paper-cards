@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Rejecting Hallucinated State Targets during Planning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Rejecting Hallucinated State Targets during Planning.pdf",
+ "title": "Rejecting Hallucinated State Targets during Planning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "外挂目标评估器拒绝规划中的幻觉目标，依赖有噪声的可行性标签。",
+ "innovations": [
+  "系统刻画规划中生成器会幻觉出哪些不可行目标(infeasible/hallucinated targets)。",
+  "提出学习目标可行性评估器，接受可行目标、拒绝幻觉目标。",
+  "为保证评估器本身稳健、不妄想，组合了离线策略兼容学习规则、分布式(distributional)架构与基于后见重标记(hindsight relabeling)的数据增广。"
+ ],
+ "method_framework": "在目标辅助规划(TAP)智能体外挂一个目标评估器：生成器提出候选目标嵌入后，评估器判断其是否可达/可行；评估器仅通过观察智能体与环境的交互及生成器产出的目标来学习(无需改动智能体或生成器)，用离策略兼容目标、分布式回归与 hindsight relabeling 增广训练可达性指标，从而稳健识别并剔除幻觉目标。",
+ "experiment_framework": "在受控的基于模型的规划/RL 环境上，对比有/无目标评估器时的不可行目标比例、妄想行为与任务成功率；分析不同类型幻觉目标被拒绝的效果，并验证评估器可即插即用到多种 TAP 方法。",
+ "takeaways": [
+  "生成模型在规划中会系统性幻觉不可达目标，导致妄想行为与安全风险。",
+  "外挂式目标可行性评估器可在不改动原智能体的前提下有效拒绝幻觉目标。",
+  "离策略兼容+分布式架构+hindsight 增广是让评估器自身不妄想的关键设计。"
+ ],
+ "weaknesses": [
+  "评估器依赖可达性/可行性标签的构造(来自交互与 hindsight)，在稀疏奖励/长horizon 下噪声较大。",
+  "‘可行’定义受环境动力学建模精度限制，仍可能误拒真目标或漏拒难幻觉目标。",
+  "证据多在受控环境，向真实复杂规划/LLM 智能体场景的迁移未充分验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

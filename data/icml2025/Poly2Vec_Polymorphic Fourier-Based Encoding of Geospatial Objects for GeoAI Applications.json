@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Poly2Vec_Polymorphic Fourier-Based Encoding of Geospatial Objects for GeoAI Applications.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Poly2Vec_Polymorphic Fourier-Based Encoding of Geospatial Objects for GeoAI Applications.pdf",
+ "title": "Poly2Vec: Polymorphic Fourier-Based Encoding of Geospatial Objects for GeoAI Applications",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "傅里叶编码统一地理对象，保空间关系但扩展性存疑",
+ "innovations": [
+  "提出polymorphic的傅里叶编码，统一表示点/折线/多边形等不同几何对象，克服现有编码只针对单一对象类型的局限",
+  "设计可学习融合模块，按任务与几何自适应整合傅里叶变换的幅度与相位，保留拓扑、方向、距离三类关键空间关系",
+  "在五类任务上验证：既证明其在保持空间关系上优于对象专属基线，又证明将其接入SOTA GeoAI工作流可改善人口预测与土地利用推断"
+ ],
+ "method_framework": "本文为表征/编码方法论文。针对现有GeoAI编码(栅格化图像、文本属性)丢失对象全局相对位置、方向等空间关系且不可跨类型泛化的问题：用傅里叶变换将坐标空间对象映射到频域，统一处理点/折线/多边形；再用可学习融合模块按任务权衡幅度(形状/能量)与相位(位置/对齐)，得到保空间关系的向量表示。",
+ "experiment_framework": "两类共五个任务：第一类评测编码是否保持拓扑/方向/距离三种空间关系，对比对象专属基线；第二类将Poly2Vec接入SOTA GeoAI工作流，评测人口预测与土地利用推断两个流行任务的增益。",
+ "takeaways": [
+  "把地理对象转图像/文本会丢弃全局相对位置与对齐信息，傅里叶频域编码可同时保留幅度与相位信息",
+  "统一的多形态编码使一个表示能同时服务点/折线/多边形，无需为每种对象单独设计编码器",
+  "将Poly2Vec嵌入现有GeoAI流水线可带来下游任务的实际增益"
+ ],
+ "weaknesses": [
+  "傅里叶表示对大规模/高分辨率几何对象的截断精度与计算开销权衡未充分分析",
+  "五类任务多为中等规模验证，在超大规模真实地理数据上的可扩展性与鲁棒性证据有限",
+  "与'直接用NeRF式/坐标MLP编码'等替代方案的对比未明确，方法定位边界不够清晰"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

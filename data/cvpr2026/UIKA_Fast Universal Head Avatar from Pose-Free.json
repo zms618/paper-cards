@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/UIKA_Fast Universal Head Avatar from Pose-Free.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/UIKA_Fast Universal Head Avatar from Pose-Free.pdf",
+ "title": "UIKA Fast Universal Head Avatar from Pose-Free",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "UV引导的头部头像重建，依赖FLAME模板，双注意力机制处理多视图输入",
+ "innovations": [
+  "UV引导的头部建模策略",
+  "UV和屏幕空间双注意力机制",
+  "自适应性融合策略",
+  "大规模多视图合成数据集构建"
+ ],
+ "method_framework": "通过面部对应估计器预测UV坐标，将输入图像从屏幕空间投影到共享UV空间，利用UV和屏幕空间双注意力机制处理可学习UV令牌，解码为高斯属性并实现实时动画渲染。",
+ "experiment_framework": "在VFHQ和NeRSemble-v2数据集上评估，对比LAM、GAGAvatar等基线，使用PSNR、SSIM、LPIPS、CSIM、AED、APD、AKD等指标进行单视图和多视图设置下的自重演和跨重实验。",
+ "takeaways": [
+  "UV空间投影有效处理不同视角和表情的对应关系",
+  "双注意力机制结合局部细节和全局结构信息",
+  "自适应性融合策略平衡全局外观和局部细节"
+ ],
+ "weaknesses": [
+  "依赖FLAME模板初始化位置",
+  "未明确讨论模型在极端表情下的鲁棒性",
+  "合成数据集可能缺乏真实场景的复杂光照变化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "头部重建与可靠性主线无实质交点，仅多视图处理有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

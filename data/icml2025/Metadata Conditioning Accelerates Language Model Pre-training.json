@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Metadata Conditioning Accelerates Language Model Pre-training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Metadata Conditioning Accelerates Language Model Pre-training.pdf",
+ "title": "Metadata Conditioning Accelerates Language Model Pre-training",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "元数据条件化与冷却期加速预训练，但依赖URL且冷却期缺乏理论指导",
+ "innovations": [
+  "元数据条件化与冷却期(MeCo)训练范式",
+  "条件推理实现模型行为控制",
+  "无需额外计算开销提升数据效率33%"
+ ],
+ "method_framework": "两阶段训练：前90% prepend元数据(如URL)到文档，后10%标准预训练作为冷却期，确保模型在无元数据时仍能有效工作",
+ "experiment_framework": "DCLM/RefinedWeb/C4数据集，600M-8B模型规模，10个下游任务评估，5-shot学习",
+ "takeaways": [
+  "元数据主要作用是按来源分组文档，无需语义信息",
+  "冷却期设计确保模型在无元数据时仍有效",
+  "条件推理可显著提升模型可控性"
+ ],
+ "weaknesses": [
+  "元数据依赖预训练数据中的URL信息",
+  "冷却期长度选择缺乏理论指导",
+  "模型生成元数据方法计算成本过高"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

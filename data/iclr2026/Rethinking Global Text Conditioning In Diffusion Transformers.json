@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Rethinking Global Text Conditioning In Diffusion Transformers.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rethinking Global Text Conditioning In Diffusion Transformers.pdf",
+ "title": "Rethinking Global Text Conditioning in Diffusion Transformers",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "重新解读DiT池化嵌入为训练无关的调制引导，跨任务提升可控生成。",
+ "innovations": [
+  "分析表明常规用法下池化文本嵌入对性能贡献很小，仅靠attention通常已足够传递prompt信息。",
+  "揭示池化嵌入换个视角可作为guidance，引导生成朝更理想属性可控偏移。",
+  "提出training-free、实现简单、运行开销可忽略的modulation guidance，可移植到多种扩散模型，跨T2I/T2V/图像编辑提升。"
+ ],
+ "method_framework": "不训练模型，而是在推理时利用池化文本嵌入的调制通道施加可控偏移（modulation guidance），相当于在modulation路径上做条件引导，使生成沿 desired property 方向移动。",
+ "experiment_framework": "在文生图、文生视频、图像编辑等多任务上评测；应用于多种扩散模型；对比丢弃modulation仅attention的做法；报告生成质量与可控性提升，且无需额外调参即可跨任务泛化。",
+ "takeaways": [
+  "DiT中池化文本嵌入做常规调制条件作用有限，但作为推理期guidance可释放可观价值。",
+  "modulation guidance是training-free即插即用的可控生成手段，跨模型跨任务通用。"
+ ],
+ "weaknesses": [
+  "与可靠性/医学影像/多模态推理主线无关，属生成模型条件机制分析。",
+  "guidance强度等超参仍需逐任务设定，'无额外调参泛化'的声明需更多基准支撑。",
+  "前9页为分析与示例，系统定量对比表与用户研究在后续页。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "生成模型条件机制分析，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

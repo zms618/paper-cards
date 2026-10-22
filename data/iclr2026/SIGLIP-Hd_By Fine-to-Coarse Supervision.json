@@ -1,0 +1,41 @@
+{
+ "title": "SigLIP-HD: by Fine-to-Coarse Supervision",
+ "scores": {
+  "novelty": 4,
+  "depth": 5,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 4.7
+ },
+ "one_line": "SigLIP2上细到粗监督提升视觉token质量，但创新有限",
+ "innovations": [
+  "提出极简fine-to-coarse监督：强制中分辨率图像的粗特征逼近其高分辨率版本的细粒度特征",
+  "在不增大输入、不增加前向次数的前提下，于相同推理预算产出更精细视觉token",
+  "基于SigLIP2构建，在多个MLLM基准尤其OCR类任务上稳定提升"
+ ],
+ "method_framework": "让同一图像的中分辨率粗表征去对齐其高分辨率细粒度表征(蒸馏式监督)，从而在标准分辨率下激发更精细感知能力；推理时仍用标准分辨率，无额外计算与后处理开销。",
+ "experiment_framework": "基于SigLIP2视觉编码器；在大量MLLM基准上评测，对比直接上采样/多编码器融合等路线；重点报告OCR相关任务提升，且推理预算与基线相同。",
+ "takeaways": [
+  "不增大输入也能通过细到粗监督获得更精细的视觉感知",
+  "相比多次前向或多编码器融合，该设计在同预算下更稳且无负收益",
+  "改进视觉token对OCR等细粒度任务收益最明显"
+ ],
+ "weaknesses": [
+  "方法极简、新颖性有限，属表示蒸馏式 trick",
+  "前9页未见与原生高分辨率编码路线的全面量化对比",
+  "属于视觉表示质量而非可靠性/不确定性主线"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/SIGLIP-Hd_By Fine-to-Coarse Supervision.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SIGLIP-Hd_By Fine-to-Coarse Supervision.pdf",
+ "raw_overall": 5.98,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "仅提升视觉token质量，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

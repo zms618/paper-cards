@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Riemannian High-Order Pooling for Brain Foundation Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Riemannian High-Order Pooling for Brain Foundation Models.pdf",
+ "title": "Riemannian High-Order Pooling for Brain Foundation Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "黎曼二阶统计注入EEG模型分类头，提升精度与效率。",
+ "innovations": [
+  "提出RHOP，将每个token映射为联合编码一阶均值与二阶统计的商高斯（quotient Gaussian），得到尺度不变描述子。",
+  "在SPD流形上估计黎曼高斯，把Frechet均值与协方差嵌入SPD描述子，再与class token融合做分类，显式利用被现有模型忽略的时空二阶结构。",
+  "模块backbone无关，可即插即用地接入BIOT、LaBraM等现代EEG基础模型，在全参微调、线性探测等设定下均提升精度与效率。"
+ ],
+ "method_framework": "对每个token序列去除逐时间尺度后构造相关矩阵，编码为商高斯嵌入；跨token在SPD流形上估计黎曼高斯得到Frechet均值/协方差并归一化为向量，与原class token拼接送入分类器。",
+ "experiment_framework": "在多个公开EEG解码基准上评测；接入BIOT、LaBraM等EEG基础模型；对比仅用单class token的基线分类头；覆盖全参微调、线性探测等设定，报告精度与计算效率。",
+ "takeaways": [
+  "EEG解码中二阶时空统计信息重要，现有只靠单class token的分类头浪费了这些信息。",
+  "把黎曼SPD统计作为即插即用模块注入分类头，可在不换骨干的前提下同时提升精度与效率。"
+ ],
+ "weaknesses": [
+  "增益仅体现在分类精度/效率，未涉及鲁棒性、不确定性或跨被试泛化等可靠性维度。",
+  "SPD流形操作引入额外计算与几何假设，对高维长序列的可扩展性需进一步验证。",
+  "前9页主要为方法推导，具体基准对比表与消融在后续页，正文证据有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "EEG解码与可靠性方法交点，但未触及鲁棒性/不确定性等主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

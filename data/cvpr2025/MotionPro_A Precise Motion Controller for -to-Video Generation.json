@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/MotionPro_A Precise Motion Controller for -to-Video Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/MotionPro_A Precise Motion Controller for -to-Video Generation.pdf",
+ "title": "MotionPro A Precise Motion Controller for -to-Video Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "MotionPro用区域轨迹和掩码控制视频运动，但依赖外部模型且灵活性有限",
+ "innovations": [
+  "区域级轨迹采样替代高斯滤波轨迹",
+  "运动掩码区分物体与相机运动",
+  "自适应特征调制与LoRA集成",
+  "构建MC-Bench评估基准"
+ ],
+ "method_framework": "基于SVD架构，通过区域轨迹和运动掩码生成运动控制信号，经运动编码器提取特征，对视频潜在特征进行自适应调制，同时用LoRA微调注意力模块",
+ "experiment_framework": "WebVid-10M和自建MC-Bench数据集，对比DragNUWA、MOFA-Video等方法，使用FVD、FID、帧一致性和平均距离指标",
+ "takeaways": [
+  "区域级轨迹采样保留精细运动细节",
+  "运动掩码与轨迹协同解决物体/相机运动歧义"
+ ],
+ "weaknesses": [
+  "依赖外部光流跟踪模型DOT",
+  "仅关注运动控制可能牺牲视频质量",
+  "区域大小k固定可能限制灵活性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成控制与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

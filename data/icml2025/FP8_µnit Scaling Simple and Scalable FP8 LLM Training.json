@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/FP8_µnit Scaling Simple and Scalable FP8 LLM Training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FP8_µnit Scaling Simple and Scalable FP8 LLM Training.pdf",
+ "title": "FP8 µnit Scaling: Simple and Scalable FP8 LLM Training",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "基于单元方差的静态缩放方法实现FP8 LLM训练，但架构限制明显。",
+ "innovations": [
+  "提出µS方法，基于Unit Scaling保持权重、激活和梯度的单元方差，使FP8训练无需动态缩放因子",
+  "实现简单的超参数跨模型宽度迁移，无需为不同模型大小重新调参",
+  "在1B-13B模型上验证，FP8训练质量与BF16相当，且比其他FP8方法更稳定"
+ ],
+ "method_framework": "µS基于第一性原理分析Transformer各操作的数值范围。通过静态缩放常数和特殊初始化，使网络中所有张量(权重、激活、梯度)保持单元方差。单元方差的张量在FP8格式下有足够的动态范围和精度表示。无需动态计算缩放因子，也无需为FP8训练调整超参数。",
+ "experiment_framework": "在1B/3B/7B/13B参数规模的LLM上验证。对比基线：标准模型(SP)的BF16和FP8训练、Transparent Embedding(TE)等其他FP8方法。评估指标：训练损失、下游任务准确率、收敛稳定性。测试不同模型大小的可扩展性。",
+ "takeaways": [
+  "µS实现了无需动态缩放的简单FP8训练，大幅降低工程复杂度",
+  "其他FP8方法在13B规模下出现loss spike和收敛失败，µS保持稳定",
+  "超参数可直接跨模型宽度迁移，无需重新调优"
+ ],
+ "weaknesses": [
+  "方法基于Unit Scaling架构改造，对已有标准Transformer模型的适配需要修改网络结构",
+  "仅在 dense decoder-only 架构上验证，对MoE、编码器-解码器等其他架构的适用性未知",
+  "FP8的精度优势在更大模型(70B+)下是否保持未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

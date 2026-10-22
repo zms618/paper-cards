@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Multistep Quasimetric Learning for Scalable Goal-Conditioned Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Multistep Quasimetric Learning for Scalable Goal-Conditioned Reinforcement Learning.pdf",
+ "title": "Multistep Quasimetric Learning for Scalable Goal-Conditioned Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "多步准度量学习结合TD与MC，在机器人操作实现端到端轨迹拼接",
+ "innovations": [
+  "首次把多步蒙特卡洛回报用于准度量距离学习，兼顾TD局部更新的最优性保证与MC全局更新的性能",
+  "基于未来状态采样路点(waypoints)的准度量架构支持长horizon的距离估计与stitching",
+  "首个在Bridge真实机器人操作域、从未标注离线视觉观测数据集做端到端多步stitching的离线GCRL方法"
+ ],
+ "method_framework": "目标条件RL的核心是估计两观测间的时间距离。MQE用多步MC回报拟合一个准度量d(s,g)；准度量满足三角不等式d(s0,g)≤d(s0,sw)+d(sw,sg)，因而可从未来状态采样中间路点做stitching。该距离可用于离线目标条件策略：沿估计的短路径拼接子轨迹到达长horizon目标，且多步回报带来比单步TD更准的距离。",
+ "experiment_framework": "在长horizon(至4000步)仿真任务与视觉观测上对比现有离线GCRL；在Bridge真实机器人操作域做stitching；指标为长horizon成功率与horizon泛化；报告优于现有方法并实现多步stitching。",
+ "takeaways": [
+  "多步MC回报可与准度量距离学习结合，同时获得TD的最优性与MC的性能",
+  "准度量三角不等式使长horizon任务可分解为路点stitching",
+  "MQE是首个在真实视觉机器人操作上做端到端多步stitching的离线GCRL"
+ ],
+ "weaknesses": [
+  "主线是目标条件RL/机器人操作，与LLM/多模态可靠性、验证器、幻觉抑制等落地主线无关",
+  "多步回报引入偏差-方差权衡，长n的选择需调节",
+  "真实机器人结果限于Bridge单一设置，跨任务泛化证据有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "机器人操作与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

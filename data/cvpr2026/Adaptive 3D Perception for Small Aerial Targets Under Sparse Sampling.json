@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Adaptive 3D Perception for Small Aerial Targets Under Sparse Sampling.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Adaptive 3D Perception for Small Aerial Targets Under Sparse Sampling.pdf",
+ "title": "Adaptive 3D Perception for Small Aerial Targets Under Sparse Sampling",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.9
+ },
+ "one_line": "RL自适应3D感知提升小目标检测，但依赖假设跟踪器",
+ "innovations": [
+  "统一自适应LiDAR-SATs感知框架",
+  "稀疏感知的RL状态构建",
+  "特权训练、无标签推理",
+  "跨场景LiDAR-only验证"
+ ],
+ "method_framework": "A3PRL框架通过时散特征(TDS)和速度变化(VC)线索生成候选，结合自适应评分和接受控制，使用5D RL策略动态调整体素分辨率、检测敏感度和关联门限，形成闭环自适应感知系统。",
+ "experiment_framework": "在MMAUD数据集上训练V1，测试未见过的V2/V3，比较RMSE指标，评估日/夜条件下性能，与LiDAR-only和多模态基线对比。",
+ "takeaways": [
+  "时散特征(TDS)有效编码稀疏点云时空分布",
+  "无标签统计量(ρt,ξt)提供有效反馈",
+  "多参数联合优化优于单参数调整"
+ ],
+ "weaknesses": [
+  "依赖单一假设跟踪器，多目标场景可能受限",
+  "特权训练依赖真实轨迹，实际部署可能受限"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "小目标检测与可靠性主线部分交织，但跟踪器依赖限制落地性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

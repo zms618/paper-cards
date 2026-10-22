@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Agent-as-a-Judge Evaluate Agents with Agents.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Agent-as-a-Judge Evaluate Agents with Agents.pdf",
+ "title": "Agent-as-a-Judge: Evaluate Agents with Agents",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "Agent评估Agent，提供中间反馈，代码生成任务验证可靠性",
+ "innovations": [
+  "将LLM-as-a-Judge扩展为Agent-as-a-Judge：不仅看最终结果，还对agent的完整思维-行动轨迹提供逐步中间反馈，解决现有评估只看终局的问题",
+  "提出DevAI基准：55个真实AI代码生成任务，含365条层级化解需求标注，专为agentic evaluator设计",
+  "在代码生成任务上验证：Agent-as-a-Judge显著优于LLM-as-a-Judge，可靠性达到人类评估基线水平"
+ ],
+ "method_framework": "Agent-as-a-Judge是一个评估框架：用一个具备agentic能力的系统（能多步推理、执行工具、检查中间产物）来评估另一个agent系统。评估过程不仅看最终输出是否正确，还逐步审查被评估agent的推理轨迹、动作选择、中间产物质量。在代码生成场景中，judge agent会检查需求满足度、代码质量、过程合理性等多个维度。",
+ "experiment_framework": "基准：DevAI（55个真实代码生成任务，365条层级化需求标注）。被评估对象：3个顶级代码生成agentic系统。评估方法对比：Agent-as-a-Judge vs LLM-as-a-Judge vs 人类评估基线。指标：与人类评估的一致性/相关性。",
+ "takeaways": [
+  "Agent-as-a-Judge比LLM-as-a-Judge更可靠，因为它能利用agentic能力检查完整过程而非仅看最终结果",
+  "过程级评估比终局评估更能精准定位agent系统的问题所在",
+  "DevAI基准填补了长程、多需求真实代码任务的评估空白"
+ ],
+ "weaknesses": [
+  "仅在代码生成一个领域验证，其他agent任务（如GUI操作、网页浏览）的适用性未验证",
+  "Agent-as-a-Judge本身的计算成本高（需要运行完整agent做评估），大规模评估的可行性存疑",
+  "55个任务规模偏小，DevAI基准的统计显著性可能不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "代码生成任务评估，触及可靠性主线但未深入落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Expert Race A Flexible Routing Strategy for Scaling Diffusion Transformer with Mixture of Experts.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Expert Race A Flexible Routing Strategy for Scaling Diffusion Transformer with Mixture of Experts.pdf",
+ "title": "Expert Race: A Flexible Routing Strategy for Scaling Diffusion Transformer with Mixture of Experts",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "Expert Race路由策略提升MoE扩散Transformer效率，但验证有限。",
+ "innovations": [
+  "提出Expert Race路由：让token与专家双向竞争并选择top候选，模型动态地把专家分配给关键token",
+  "提出逐层正则化(shallow layer regularization)解决浅层学习困难",
+  "提出路由相似度损失防止模式崩溃，保证专家利用率，在更少激活参数下超过稠密模型"
+ ],
+ "method_framework": "在DiT中引入MoE，Expert Race路由让token与专家互相竞争选top；浅层加正则化稳定训练，路由相似度损失约束不同专家路由分布避免坍缩；动态分配专家到关键token。",
+ "experiment_framework": "ImageNet 256×256生成；对比同激活参数下的Dense DiT(B/M/L/XL)与moe-4in32；指标为FID-50K与激活参数量；展示从0.1B到2.7B的scaling曲线。",
+ "takeaways": [
+  "Race-DiT 在显著更少激活参数下取得比同规模Dense DiT更优的FID",
+  "Expert Race 路由使专家集中到关键token，专家利用率更高",
+  "逐层正则与路由相似度损失分别缓解浅层欠训练与模式崩溃"
+ ],
+ "weaknesses": [
+  "仅在ImageNet类条件生成上验证，未涉及文生视频/高分辨率等更难任务",
+  "MoE的总参数量与显存开销未在效率曲线上充分权衡",
+  "路由竞争机制相对现有top-k/switch路由的增益幅度需更多消融佐证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.43,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

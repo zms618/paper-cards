@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Density Ratio Estimation with Conditional Probability Paths.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Density Ratio Estimation with Conditional Probability Paths.pdf",
+ "title": "Density Ratio Estimation with Conditional Probability Paths",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "条件高斯假设下重构密度比估计，理论有保证但应用验证不足。",
+ "innovations": [
+  "将密度比估计视为沿概率路径积分时间分数，借鉴生成模型的概率路径视角。",
+  "引入条件变量并经恰当选择使条件密度为高斯、时间分数解析可解，得到闭式学习目标。",
+  "给出所估计密度比的误差理论保证，并在高维难任务上更快且精度有竞争力。"
+ ],
+ "method_framework": "在两个待比密度之间构造概率路径；不再直接对不重叠密度做二分类（高方差），而是条件于终点样本，使条件过程近似高斯，其条件时间分数可解析/易学；通过估计并沿路径积分该时间分数得到密度比。",
+ "experiment_framework": "在高维、密度重叠少的挑战性任务上，对比分类式与既有概率路径式密度比估计；指标含估计精度与学习速度；配合理论误差界分析。",
+ "takeaways": [
+  "条件于终点使时间分数解析可处理，显著降低学习难度、加快收敛。",
+  "相比直接二分类估计器，在密度重叠少时方差更小、高维更实用。",
+  "方法给出密度比误差的可证明保证。"
+ ],
+ "weaknesses": [
+  "闭式条件高斯分解依赖所选路径/条件变量的合理性，复杂路径下是否仍近似高斯未充分讨论。",
+  "实验多为合成/中等难度密度比任务，未在下游（如重要性采样、MI 估计）端到端验证收益。",
+  "属密度估计理论方法，与可信推理主线（鲁棒性/泛化/不确定性×医学影像/多模态）关联弱。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

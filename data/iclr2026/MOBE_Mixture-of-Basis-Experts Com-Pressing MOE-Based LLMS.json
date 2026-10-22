@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/MOBE_Mixture-of-Basis-Experts Com-Pressing MOE-Based LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/MOBE_Mixture-of-Basis-Experts Com-Pressing MOE-Based LLMS.pdf",
+ "title": "MOBE: MIXTURE-OF-BASIS-EXPERTS COM-PRESSING MOE-BASED LLMS",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "MoBE分解专家矩阵为特定与共享部分，压缩MoE模型参数",
+ "innovations": [
+  "Mixture-of-Basis-Experts架构，将专家矩阵分解为专家特定矩阵和共享基矩阵",
+  "Z-score归一化技术提高基矩阵学习稳定性",
+  "激活函数选择策略，避免ReLU导致的稀疏性问题"
+ ],
+ "method_framework": "MoBE将专家up/gate矩阵分解为W=AB，其中A为专家特定矩阵，B被重新参数化为共享基矩阵的线性组合，通过最小化重构误差学习分解参数",
+ "experiment_framework": "在Ling-Lite-Chat、DeepSeek-V3-0324等6个MoE模型上评估，与D2-MoE、MoLAE对比，使用15个基准测试指标",
+ "takeaways": [
+  "基矩阵共享机制有效降低参数量同时保持模型性能",
+  "专家特定矩阵与共享基矩阵的分离设计保留了专家专业知识"
+ ],
+ "weaknesses": [
+  "未对down矩阵进行压缩，可能限制进一步压缩空间",
+  "MoBE†减少激活专家数可能影响模型表达能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "模型压缩技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

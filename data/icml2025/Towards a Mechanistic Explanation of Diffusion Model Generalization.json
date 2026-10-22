@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Towards a Mechanistic Explanation of Diffusion Model Generalization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Towards a Mechanistic Explanation of Diffusion Model Generalization.pdf",
+ "title": "Towards a Mechanistic Explanation of Diffusion Model Generalization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "扩散模型泛化机制解释：跨架构共享局部归纳偏置，patch组合去噪复现网络行为。",
+ "innovations": [
+  "通过对比预训练扩散模型与其理论最优经验去噪器，识别出跨架构(NCSN++/DiT/DDPM++)的共享局部归纳偏置",
+  "提出假设：网络去噪器经局部化去噪操作实现泛化，因这些操作在大部分训练分布上良好近似训练目标",
+  "引入聚合局部经验去噪器的新去噪算法（patch集后验组合去噪器），在正反扩散过程中复现网络行为，MSE低于既有方法"
+ ],
+ "method_framework": "扩散模型每步存在一个可表为训练集加权平均的最优经验去噪器；直接用它会精确复制训练数据而无泛化，泛化来自网络相对该最优去噪器的重复近似误差在采样中累积。本文分析这些近似误差，发现不同架构去噪器在幅度与形态上犯相似错误，且梯度分析显示局部归纳偏置；据此用无训练的局部patch经验去噪组合（PSPC-Flex）近似网络去噪。",
+ "experiment_framework": "在CIFAR-10等图像扩散模型上，把最优经验去噪器、多种网络去噪器与本文patch组合去噪器的输出做视觉与MSE对比；跨前向/反向过程验证与网络输出的一致性，报告MSE低于先前方法。",
+ "takeaways": [
+  "扩散模型的泛化可由跨架构共享的局部去噪归纳偏置机制解释",
+  "无训练的局部经验去噪组合即可复现网络去噪行为，说明网络很大程度在做patch级去噪与合成",
+  "偏离最优去噪器的近似误差在采样中累积，是生成多样性的来源"
+ ],
+ "weaknesses": [
+  "主线相关性弱：属扩散模型机制可解释性，与可靠性乘医学影像/多模态推理主线无直接联系",
+  "证据主要在CIFAR-10等小图，高分辨率/文本/视频扩散的局部偏置是否成立未验证",
+  "patch组合去噪是对网络行为的事后拟合，尚不能预测训练动力学或改进采样"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

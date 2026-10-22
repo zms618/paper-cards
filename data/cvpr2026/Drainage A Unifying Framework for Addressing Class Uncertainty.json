@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Drainage A Unifying Framework for Addressing Class Uncertainty.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Drainage A Unifying Framework for Addressing Class Uncertainty.pdf",
+ "title": "Drainage A Unifying Framework for Addressing Class Uncertainty",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "添加排水节点处理分类不确定性，理论证明但超参数依赖性强",
+ "innovations": [
+  "引入排水节点作为不确定性输出",
+  "设计排水损失函数实现概率重分配",
+  "理论证明排水损失的单调性和凸性",
+  "扩展到开放集识别应用"
+ ],
+ "method_framework": "在分类网络输出层添加排水节点，通过排水损失函数将不确定样本的概率重定向到该节点，保持端到端可训练性",
+ "experiment_framework": "CIFAR-10/100、WebVision、ILSVRC12、Clothing1M数据集，对比CE、GCE、SCE、APL、AFL、ANL等基线，评估不同噪声类型下的准确率",
+ "takeaways": [
+  "排水节点能有效处理标签噪声和样本不确定性",
+  "方法在高噪声场景下优势明显，尤其在大类别空间",
+  "理论分析提供了损失函数性质的严格证明"
+ ],
+ "weaknesses": [
+  "超参数α和β需要针对不同数据集调整",
+  "未充分探讨排水节点与现有不确定性量化方法的对比",
+  "开放集识别应用部分未完整展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "分类不确定性处理与可靠性主线明确交点，高噪声场景设计有防守力",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

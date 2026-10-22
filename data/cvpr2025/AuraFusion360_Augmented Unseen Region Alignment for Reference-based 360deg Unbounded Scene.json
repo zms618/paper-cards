@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/AuraFusion360_Augmented Unseen Region Alignment for Reference-based 360deg Unbounded Scene.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AuraFusion360_Augmented Unseen Region Alignment for Reference-based 360deg Unbounded Scene.pdf",
+ "title": "AuraFusion360 Augmented Unseen Region Alignment for Reference-based 360deg Unbounded Scene",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "高斯溅射结合深度掩码的360°场景修复，零样本对齐但依赖SAM2",
+ "innovations": [
+  "深度感知的未见区域掩码生成",
+  "自适应引导深度扩散(AGDD)实现零样本深度对齐",
+  "基于SDEdit的多视角一致性细节增强"
+ ],
+ "method_framework": "采用对象掩码高斯溅射表示，通过三阶段流程：深度感知未见掩码生成、参考视图高斯初始化、SDEdit细节增强，实现360°场景修复",
+ "experiment_framework": "在360-USID数据集(7个场景，180-200训练视图，30测试视图)上评估，对比SPIn-NeRF、GScream等方法，使用LPIPS和PSNR指标",
+ "takeaways": [
+  "深度扭曲技术用于准确未见区域检测",
+  "DDIM反演结合SDEdit保持多视角一致性",
+  "自适应深度对齐解决尺度模糊问题"
+ ],
+ "weaknesses": [
+  "依赖SAM2进行初始掩码生成",
+  "计算复杂度较高，推理时间约1分钟",
+  "未见区域初始化可能受参考视图质量影响"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "360°场景修复与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

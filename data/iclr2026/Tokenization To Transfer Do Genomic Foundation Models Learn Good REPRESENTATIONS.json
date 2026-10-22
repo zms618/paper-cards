@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Tokenization To Transfer Do Genomic Foundation Models Learn Good REPRESENTATIONS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tokenization To Transfer Do Genomic Foundation Models Learn Good REPRESENTATIONS.pdf",
+ "title": "Tokenization To Transfer: Do Genomic Foundation Models Learn Good Representations?",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6.5,
+  "relevance": 5.0,
+  "overall": 5.8
+ },
+ "one_line": "评估基因组预训练收益，发现tokenizer制约效果，随机基线出人意料强。",
+ "innovations": [
+  "首次系统对比7个基因组基础模型与随机初始化版本在52个多样化基因组任务上的性能差异",
+  "揭示character-token模型常匹配或超过更大的预训练k-mer/BPE模型，而subword模型才真正受益于预训练",
+  "发现当前GFM对临床相关遗传突变的嵌入和对数似然比敏感性有限，未能有效捕获变异信息"
+ ],
+ "method_framework": "选取7个代表性基因组基础模型（含Mistral、DNABERT-2、Caduceus等），在52个基因组任务上进行微调、特征提取和变异分析三种设置的评估。每个模型同时测试随机初始化版本作为基线，量化预训练带来的真实增益。对比不同tokenizer（character、k-mer、BPE/subword）对预训练收益的影响。",
+ "experiment_framework": "涵盖NT Benchmark、GUE Benchmark、Genomics Benchmark等多个基因组基准，共52个任务。评估方式包括微调、特征提取和基因组变异分析。基线为同架构随机初始化模型。指标涵盖分类准确率、AUROC等。",
+ "takeaways": [
+  "随机初始化的基因组模型提供了出人意料的强基线，预训练的实际收益可能被高估",
+  "tokenizer选择是决定预训练有效性的关键因素：character级tokenizer几乎不需要预训练，subword级才从中受益",
+  "当前GFM未能有效捕获临床相关遗传突变的信息，需要更生物感知的tokenization和变异感知目标"
+ ],
+ "weaknesses": [
+  "与主线（多模态大模型推理/医学影像可靠性）关联较弱，属于基因组学领域的基础模型评估",
+  "仅评估了7个模型，可能未覆盖所有重要的GFM架构",
+  "变异分析部分的临床相关性评估指标设计可能不够全面"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "基因组基础模型评估，与医学影像可靠性关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

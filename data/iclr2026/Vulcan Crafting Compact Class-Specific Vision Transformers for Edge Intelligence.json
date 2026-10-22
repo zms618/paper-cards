@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Vulcan Crafting Compact Class-Specific Vision Transformers for Edge Intelligence.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Vulcan Crafting Compact Class-Specific Vision Transformers for Edge Intelligence.pdf",
+ "title": "Vulcan: Crafting Compact Class-Specific Vision Transformers for Edge Intelligence",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "ViT知识解耦与冗余引入剪枝，提升边缘特定类别性能",
+ "innovations": [
+  "揭示ViT内部知识解耦：FFN神经元编码类别特定知识，MHA模块捕获类别无关模式",
+  "提出train-then-prune范式：先故意引入冗余（FFN神经元坍缩到类别特定神经元、MHA强制低秩），再剪枝，避免直接剪枝的不可逆知识损失",
+  "压缩后的边缘ViT仅20%-40%大小，在特定类别上准确率反而提升最高15.12%，超越原模型"
+ ],
+ "method_framework": "两步法：(1)训练阶段——将FFN神经元坍缩到具有最高类别特定激活的神经元上，同时在MHA权重上强制低秩，故意引入结构化冗余；(2)剪枝阶段——基于训练后的冗余结构，按资源预算剪枝FFN神经元和MHA头，得到紧凑的类别专用模型。",
+ "experiment_framework": "在5个基础ViT、3种视觉任务、4个数据集上评估。对比基线包括SOTA结构化剪枝方法。指标为类别特定准确率、模型大小和计算量。",
+ "takeaways": [
+  "ViT的知识存在天然的模块化解耦：FFN负责类别特定内容，MHA负责通用注意力模式",
+  "先训练引入冗余再剪枝的策略，比直接剪枝能保留更多类别特定知识",
+  "类别专用模型可以在更小的体积下超越全类模型——因为去除了无关类别的冗余知识"
+ ],
+ "weaknesses": [
+  "需要知道目标类别集，对于需要动态多类别部署的场景不适用",
+  "知识解耦的发现主要基于观察性分析，因果性验证不足",
+  "仅在分类和检测任务上验证，分割等密集预测任务的适用性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "边缘压缩技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

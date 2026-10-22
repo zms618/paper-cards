@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Selection, Reflection and SELF-REFINEMENT Revisit Reasoning Tasks via A Causal Lens.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Selection, Reflection and SELF-REFINEMENT Revisit Reasoning Tasks via A Causal Lens.pdf",
+ "title": "Selection, Reflection and Self-Refinement: Revisit Reasoning Tasks via a Causal Lens (SR2)",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "因果视角下将推理建模为选择机制，通过潜变量反馈提升小模型推理能力。",
+ "innovations": [
+  "以因果视角刻画推理：把高层逻辑概念视为对观测的选择算子，揭示两点——即使答案由观测完全确定，潜空间复杂度仍超观测空间；对应逻辑思维的潜变量稠密且强依赖。",
+  "提出SR2框架：把估计的潜变量作为反馈注入选择机制，促进潜表示间稠密依赖的学习。",
+  "三模块：反思式表示学习、依赖自精炼、周期性中间对齐；在Sudoku/Maze上以8×更少参数取得超10%提升。"
+ ],
+ "method_framework": "将推理建模为选择机制（逻辑概念在观测上选择正确答案）。SR2通过反思式表示学习估计潜逻辑变量，将其反馈回选择算子以学习潜变量间稠密依赖，并周期性中间对齐；本质是在潜空间做自精炼而非单纯扩大模型。",
+ "experiment_framework": "在Sudoku、Maze等结构化推理任务上评测，对比近期先进方法；指标为推理准确率；报告以8×更少参数取得超10%提升。",
+ "takeaways": [
+  "推理难在潜空间复杂度超过观测空间且潜变量稠密强依赖，仅靠扩大模型不解决根本困难。",
+  "把估计潜变量反馈进选择机制、做反思与自精炼，可在小参数量下显著提升推理准确率。"
+ ],
+ "weaknesses": [
+  "验证集中在Sudoku/Maze等合成任务，未在真实LLM推理基准(GSM8K/MATH)上验证，外推性存疑。",
+  "因果表述偏概念框架，潜变量估计的具体实现与可辨识性仍需更多论证。",
+  "前9页未见与最强推理模型的系统对比，'8×更少参数'的基线口径需后续确认。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "因果推理框架与可靠性主线交织，方法设计具迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

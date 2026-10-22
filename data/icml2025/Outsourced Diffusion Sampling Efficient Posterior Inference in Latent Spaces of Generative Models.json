@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Outsourced Diffusion Sampling Efficient Posterior Inference in Latent Spaces of Generative Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Outsourced Diffusion Sampling Efficient Posterior Inference in Latent Spaces of Generative Models.pdf",
+ "title": "Outsourced Diffusion Sampling: Efficient Posterior Inference in Latent Spaces of Generative Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "噪声空间扩散采样实现生成模型后验推断，计算成本高且依赖训练质量",
+ "innovations": [
+  "提出在生成模型的噪声空间(而非数据空间)做后验推断的通用框架，对GAN/VAE/流/扩散模型统一适用",
+  "用RL算法训练扩散采样器使其输出z经f_theta(z)后服从数据空间后验分布",
+  "理论分析噪声空间后验比数据空间更平滑，更适合摊销推断"
+ ],
+ "method_framework": "将生成模型视为x=f_theta(z)的确定性变换；后验p(x|y)∝p(x)r(x,y)在数据空间难解，但映射到噪声空间p(z|y)∝p(z)r(f_theta(z),y)通常更平滑；训练一个扩散模型在噪声空间采样z，使f_theta(z)服从目标后验。",
+ "experiment_framework": "任务：条件图像生成、RLHF、蛋白质结构生成。基线：MCMC、近似引导、变分推断。先验模型：预训练GAN、(H)VAE、流模型、扩散模型。",
+ "takeaways": [
+  "噪声空间后验通常比数据空间更平滑，是摊销后验推断的更优目标空间",
+  "方法可在无条件GAN上实现条件生成，无需修改GAN本身",
+  "扩散采样器经RL训练后可在多种模型族和约束下高效采样后验"
+ ],
+ "weaknesses": [
+  "需训练额外的扩散采样器，计算成本不低",
+  "对不可逆生成模型(GAN/VAE)，f_theta不可逆，后验正确性依赖扩散采样器训练质量",
+  "仅在图像/蛋白质生成验证，文本等离散生成模型的适用性未考察"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Perceptual-GS_Scene-adaptive Perceptual Densification for Gaussian Splatting.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Perceptual-GS_Scene-adaptive Perceptual Densification for Gaussian Splatting.pdf",
+ "title": "Perceptual-GS: Scene-adaptive Perceptual Densification for Gaussian Splatting",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "感知约束高斯分配，提升3D重建质量与效率",
+ "innovations": [
+  "提出感知感知表示，在约束高斯数量的同时建模人眼视觉敏感度",
+  "设计感知灵敏度自适应分布，给视觉关键区域分配更细的高斯粒度",
+  "提升大尺度场景(BungeeNeRF)下的重建质量、效率与鲁棒性"
+ ],
+ "method_framework": "3DGS靠平均位置梯度做自适应密度控制，但难以高效分配高斯(过少致模糊、过多致冗余)；本文借鉴人类感知，引入感知感知表示建模视觉敏感度并约束高斯数量，据此做感知灵敏度自适应densification——把更细的高斯粒度分配到人眼敏感的视觉关键区域，从而在更少高斯下获得更好重建。",
+ "experiment_framework": "在多个新视角合成数据集评测，含面向大尺度场景的BungeeNeRF；指标为重建质量(PSNR/SSIM/LPIPS)、效率(高斯数量)与鲁棒性；与多种3DGS densification改进方法对比。",
+ "takeaways": [
+  "按视觉感知灵敏度分配高斯粒度可同时提升质量与效率",
+  "大尺度场景下Perceptual-GS取得质量-效率-鲁棒的SOTA权衡",
+  "人眼先验有助于缓解3DGS的高斯冗余/模糊问题"
+ ],
+ "weaknesses": [
+  "前9页未见完整数值表，相对SOTA的具体PSNR/LPIPS增益不清晰",
+  "感知模型的引入带来额外训练/计算开销未量化",
+  "属3D渲染/新视角合成，与主线(可靠性/医学影像/多模态LLM推理)不直接相关"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.65,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

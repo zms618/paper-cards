@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Multi-agent Architecture Search via Agentic Supernet.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Multi-agent Architecture Search via Agentic Supernet.pdf",
+ "title": "Multi-agent Architecture Search via Agentic Supernet",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "动态采样智能体架构的超网，性能提升但训练成本高",
+ "innovations": [
+  "提出智能体超网（agentic supernet）概念：将多智能体架构视为概率分布，而非固定单一架构",
+  "MaAS框架根据查询内容动态采样最优的智能体系统配置，实现查询相关的资源分配",
+  "在6个基准上达到SOTA，推理成本仅为现有方法的6-45%，性能反超0.54-16.89%"
+ ],
+ "method_framework": "预定义智能体组件库（不同角色、工具、通信模式）；超网学习各组件的组合概率分布；面对新查询时，根据查询特征采样一个子图（特定的智能体系统架构）执行；训练时通过路径级蒸馏优化超网中各路径的质量。",
+ "experiment_framework": "在6个多智能体基准上验证（覆盖推理、代码、导航等任务）；对比AutoGen、MetaGPT、GPTSwarm等手工/自动设计的多智能体系统；指标为任务准确率与推理成本（LLM调用次数、token消耗）；测试跨数据集与跨LLM骨干的迁移性。",
+ "takeaways": [
+  "固定的多智能体架构是次优的：简单查询不需要复杂的多智能体协作，动态架构可节省大量成本",
+  "超网范式可自动学习何时需要多智能体、需要几个智能体、如何通信",
+  "MaAS的跨数据集与跨骨干迁移性好，说明学到的架构原则具有通用性"
+ ],
+ "weaknesses": [
+  "超网训练需要大量查询-架构-结果数据，冷启动成本高",
+  "采样过程引入随机性，相同查询可能得到不同架构",
+  "仅在LLM-based智能体上验证，其他类型智能体（如RL智能体）的适用性未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

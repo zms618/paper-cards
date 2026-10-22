@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Multimodality As Supervision Self-Supervised Specialization To the Test Environment via Multimodality.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Multimodality As Supervision Self-Supervised Specialization To the Test Environment via Multimodality.pdf",
+ "title": "Multimodality as Supervision: Self-Supervised Specialization to the Test Environment via Multimodality",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "用多模态信号做测试空间自监督预训练，胜过通用基线但适用场景有限",
+ "innovations": [
+  "提出测试空间训练(TST)：在与评测同一空间的无标注数据上自监督预训练，作为通用互联网预训练的替代",
+  "把部署环境中天然多模态信号(深度/运动/法线/触觉)当作监督，用跨模态学习(从一种传感器预测另一种)做自监督",
+  "在受控specialization设定下证明TST+跨模态学习胜过大规模互联网通用预训练基线"
+ ],
+ "method_framework": "通用预训练假设互联网大数据总有益；本文质疑：当部署环境(测试空间)有自己的多模态传感时，用这些多模态信号做跨模态预测(如RGB→深度/法线)作为自监督任务，直接在测试空间无标注数据上预训练，可学到更贴合该环境的表示。构造受控specialization设定(训练与评测同空间)系统对比TST与通用预训练。",
+ "experiment_framework": "在受控specialization设定(同空间预训练与评测)下；对比互联网规模通用预训练(如DINOv2/CLIP等)；指标为下游任务性能；跨多种传感器模态验证跨模态自监督任务的效果。",
+ "takeaways": [
+  "部署环境的天然多模态信号是免费监督源，可用于测试空间自监督specialization",
+  "在特定部署空间，小数据TST可胜过海量互联网通用预训练",
+  "跨模态预测是有效的自监督代理任务"
+ ],
+ "weaknesses": [
+  "需要部署环境自带多模态传感器，纯RGB场景不适用",
+  "同空间训练-评测的受控设定与真实分布偏移场景有差距",
+  "主线是视觉表示预训练/域specialization，与LLM推理、医学影像可靠性等具体落地主线关联中等"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "多模态监督与测试空间自监督对部署环境可靠性有直接价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

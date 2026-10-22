@@ -1,0 +1,41 @@
+{
+ "title": "Temporally Detailed Hypergraph Neural ODEs for Disease Progression Modeling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "超图神经ODE建模糖尿病进展，预测精度提升但临床落地性存疑",
+ "innovations": [
+  "把疾病进展建模在临床公认的进展轨迹上，用时间细化超图(temporally detailed hypergraph)表示并发症间依赖",
+  "引入可学习的 TD-超图拉普拉斯，同时刻画同一条进展轨迹内部与跨轨迹之间并发症标记的相互依赖",
+  "用神经 ODE 学习连续时间进展动态，应对不规则采样临床事件与患者异质性（不同进展速率/路径）"
+ ],
+ "method_framework": "以纵向 EHR 中每次就诊的风险因子特征与并发症标记为节点，按临床进展轨迹构建时间细化超图；用可学习超图拉普拉斯聚合并发症间依赖，再以神经 ODE 刻画连续时间上状态如何演化，从而在不规则时间点上预测未来并发症进展。",
+ "experiment_framework": "两个真实世界临床数据集；任务为 2 型糖尿病及相关心血管疾病的进展预测；对比多种机制式与数据驱动基线；指标为进展建模/预测精度。",
+ "takeaways": [
+  "用超图显式建模跨进展轨迹的并发症相互依赖，比普通图更贴合真实病程",
+  "神经 ODE 能从不规则采样 EHR 中学出连续时间进展动态，适应患者异质速率",
+  "TD-HNODE 在糖尿病及心血管并发症进展预测上优于多类基线"
+ ],
+ "weaknesses": [
+  "把‘临床公认进展轨迹’作为先验结构，对缺乏公认轨迹的疾病迁移性受限；超图边的构建是否依赖人工医学知识未充分讨论",
+  "属预测模型，未对预测不确定性或校准做评估，临床落地所需的置信度/错误告知缺失；两数据集规模与外部验证有限",
+  "relevance 给 6：落地域属临床/EHR 疾病进展（靠近医学方向），但本文是进展预测而非可靠性/不确定性/验证器研究，不具备主线的可靠性半，按规则不因 medical 措辞抬分；亦非医学影像或多模态大模型推理"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Temporally Detailed Hypergraph Neural ODES for Disease Progression Modeling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Temporally Detailed Hypergraph Neural ODES for Disease Progression Modeling.pdf",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "疾病进展预测非可靠性主线，无不确定性评估",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

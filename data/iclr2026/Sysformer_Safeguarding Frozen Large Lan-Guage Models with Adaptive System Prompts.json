@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Sysformer_Safeguarding Frozen Large Lan-Guage Models with Adaptive System Prompts.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sysformer_Safeguarding Frozen Large Lan-Guage Models with Adaptive System Prompts.pdf",
+ "title": "Sysformer: Safeguarding Frozen Large Language Models with Adaptive System Prompts",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.3
+ },
+ "one_line": "冻结LLM嵌入空间中训练小型Transformer生成自适应系统提示",
+ "innovations": [
+  "提出在嵌入空间中动态调整系统提示的思路，替代传统固定系统提示的范式",
+  "使用Transformer模型根据用户输入自适应更新系统提示嵌入，在冻结LLM参数的同时实现安全增强",
+  "在5个不同家族的LLM上验证，对越狱攻击的鲁棒性提升最高达100%"
+ ],
+ "method_framework": "Sysformer是一个小型Transformer模型，在LLM的输入嵌入空间中操作。它接收用户提示的嵌入表示，输出调整后的系统提示嵌入。训练时，Sysformer学习使有害提示被拒绝、安全提示被正常响应的映射。LLM本身完全冻结，所有安全增强都通过修改系统提示的嵌入实现。",
+ "experiment_framework": "在5个不同家族的LLM和2个安全基准上评估；基线包括传统安全微调、固定系统提示等；指标为有害提示拒绝率、安全提示合规率，以及对越狱攻击的鲁棒性提升。",
+ "takeaways": [
+  "自适应系统提示在嵌入空间中可有效增强LLM安全性，无需微调模型参数",
+  "该方法在提升有害内容拒绝率的同时不损害安全提示的合规性",
+  "学习得到的自适应提示对复杂越狱攻击也具有较好的泛化防御能力"
+ ],
+ "weaknesses": [
+  "Sysformer需要针对每个LLM单独训练，跨模型迁移的通用性有限",
+  "嵌入空间操作的可解释性不足，难以理解自适应提示具体调整了什么",
+  "实验主要在英文安全基准上验证，多语言场景的安全性增强效果未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "冻结LLM安全增强，触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

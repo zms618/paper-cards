@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/DisCoPatch_Taming Adversarially-driven Batch Statistics for Improved Out-of-Distribution Detection.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/DisCoPatch_Taming Adversarially-driven Batch Statistics for Improved Out-of-Distribution Detection.pdf",
+ "title": "DisCoPatch Taming Adversarially-driven Batch Statistics for Improved Out-of-Distribution Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.1
+ },
+ "one_line": "利用BN统计特性与对抗VAE提升OOD检测，但泛化性与全局信息存疑",
+ "innovations": [
+  "利用BN层批统计特性区分ID/OOD样本",
+  "设计补丁级策略确保批统计一致性",
+  "将VAE的次优输出作为负样本训练判别器"
+ ],
+ "method_framework": "DisCoPatch框架结合对抗VAE与判别器，通过补丁级批归一化确保分布一致性，利用生成和重建样本作为负样本强化ID/OOD边界",
+ "experiment_framework": "ImageNet-1K为ID数据集，评估Near-OOD、Far-OOD和协变量偏移任务，使用AUROC和FPR95%指标，与MOODv2等SOTA方法比较",
+ "takeaways": [
+  "批归一化统计特性可作为OOD检测的有效特征",
+  "补丁级策略能确保批统计一致性",
+  "轻量级模型可实现高效OOD检测"
+ ],
+ "weaknesses": [
+  "依赖特定批归一化行为，可能影响泛化性",
+  "补丁划分策略可能丢失全局上下文信息"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.2,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "OOD检测与可靠性主线明确交点，补丁级策略设计有方法论价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

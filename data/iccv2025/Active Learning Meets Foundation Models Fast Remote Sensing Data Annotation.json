@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Active Learning Meets Foundation Models Fast Remote Sensing Data Annotation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Active Learning Meets Foundation Models Fast Remote Sensing Data Annotation.pdf",
+ "title": "Active Learning Meets Foundation Models: Fast Remote Sensing Data Annotation for Object Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "SAM与检测器双源不确定性缓解检测AL冷启动，但机制设计缺乏对照",
+ "innovations": [
+  "双源不确定性 DSUE：先用 SAM 一次性预提所有图像的密集 mask 与框 B_SA，再与检测器框 B_OD 做忽略类别的匈牙利匹配，把最小匹配代价经 σ_match=exp(H) 转成匹配质量，与检测器置信度 σ_OD 按调和平均（式1）合成每对象不确定性 μ，逐图平均后取最不确定的 n×θ 张进入候选。",
+  "掩码引导多样性 MDE：用预存的 SAM mask 去掩 FM 特征图得到实例级干净特征，再用 k-means++（余弦距离）为每类建 5 个原型并额外构造背景原型，按最近/次近原型边距与类内最大成对距离算多样性得分，相当于把 DivProto 的图像级全局相似度换成实例/掩码级相似度。",
+  "动态框切换 DBS 解冷启动：检测器早期分类已可用但定位噪声大，故对高置信对象直接用与预测框重叠最高的 SAM mask 框替换掉检测框、保留原分类分支；用户研究中 WaffleHome 首轮 Recall@100(IoU75) 提升 4×、HRSC2016 提升 2×，约 50 张标注后收益消失。"
+ ],
+ "method_framework": "SAM 预提密集 mask/框；Hungarian 匹配代价 exp(H) 与检测置信度调和平均得不确定性筛候选；再用 mask 掩出的 FM 特征建类原型算多样性排序；高置信对象用重叠最高的 SAM 框替换检测框（DBS）。",
+ "experiment_framework": "DIOR、DOTAv2、FAIR1M、HRSC2016 与自采 WaffleHomes，RTDETRv2 + 7 种 RS/FM 骨干；比 Random/Entropy/DivProto/CoreSet/PPAL，5 轮 AL，指标 mAP 与 Recall@100(IoU75)，附 8 人用户研究。",
+ "takeaways": [
+  "主动学习用于检测时不能只信检测器自己的不确定性：把「SAM 分割框与检测框的匹配质量」当成第二路信号（双源调和平均）能压住冷启动阶段的错误采样，这类双源互证的思路可直接搬到 OOD/失败检测。",
+  "多样性采样在检测任务上必须走实例级（用 mask 掩特征再建类原型），作者复现 DivProto 在 DIOR 上甚至不如随机采样，说明全局相似度在多多实例图像上是失效的。",
+  "把 foundation model 当标尺用时，要主动量化它的召回（本文报了 SAM 各 IoU 阈值下的 recall）并公开失败模式，否则分割失败会一路级联到不确定性计算与最终标注质量。"
+ ],
+ "weaknesses": [
+  "式(1) 把匈牙利匹配代价 exp(H) 与检测器置信度 σ_OD 用调和平均硬性合并，两者量纲、取值范围与校准方式都不同，正文既没有与加权平均/等比融合的对照，也没有说明为什么调和平均优于简单加权，属于设计即结论。",
+  "整条流水线（不确定性、类别原型、DBS 框替换）全部以 SAM 输出为准绳，而作者自己在 Limitations 承认 SAM 对小物体、桥梁、网球场等边界模糊目标召回极低、失败还会级联影响后续；对这种由单一基座模型主导的误差源缺少替代初始化（网格尺寸、框尺寸）的对照实验与鲁棒化设计。",
+  "证据绝对量级偏弱：Tab.2–4 虽带 ±方差（DOFA/SwinBase/DinoV2 为 3 次平均），但 DIOR 上 10 张标注时 mAP 仅 0.3–1.1、300 张时也才 10.7（随机基线 4.0），图4 的翻倍提升更多来自冷启动期基线（Entropy 甚至低于随机）太弱，而非采样器在成熟期真有明显优势。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "双源不确定性缓解AL冷启动，机制设计可迁移到OOD检测",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

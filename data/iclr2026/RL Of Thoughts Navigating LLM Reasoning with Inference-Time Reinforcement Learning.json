@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RL Of Thoughts Navigating LLM Reasoning with Inference-Time Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RL Of Thoughts Navigating LLM Reasoning with Inference-Time Reinforcement Learning.pdf",
+ "title": "RL-of-Thoughts: Navigating LLM Reasoning with Inference-Time Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "RL导航器动态组合逻辑块提升LLM推理，但人工归纳且增加成本",
+ "innovations": [
+  "将长序列推理建模为MDP，用RL训练轻量导航器在推理时动态选择逻辑块组合成任务特定推理结构",
+  "设计五种受人类认知启发的基本逻辑块作为导航器动作空间，替代手工预定义的CoT/ToT/GoT结构",
+  "证明<3K参数的导航器可使sub-10B模型性能接近100B级模型，且跨LLM和任务具有零样本迁移性"
+ ],
+ "method_framework": "RLoT将推理过程建模为马尔可夫决策过程。设计五种基本逻辑块（如分解、验证、回溯等）作为动作。训练一个轻量RL导航器（<3K参数），在每步根据问题特征和当前推理状态选择合适的逻辑块，动态组合成任务自适应的推理结构，引导LLM逐步推理。导航器与LLM参数解耦，仅在推理时运行。",
+ "experiment_framework": "在AIME、MATH、GPQA、StrategyQA等基准上评测；兼容GPT、Llama、Qwen、DeepSeek等多个LLM；对比CoT/ToT/GoT等推理时技术；报告准确率提升（最高13.4%）；测试导航器跨模型跨任务的迁移性。",
+ "takeaways": [
+  "推理时逻辑结构应任务自适应而非手工预定义，用RL导航器动态组合逻辑块可超越固定结构",
+  "极少量参数的导航器即可显著提升小模型推理能力，且具有跨模型跨任务的迁移性",
+  "将推理建模为MDP并用RL优化导航策略，是推理时增强的有效轻量路径"
+ ],
+ "weaknesses": [
+  "五种基本逻辑块的设计仍是人工归纳，其完备性和对复杂推理场景的覆盖度未充分论证",
+  "导航器在每步需额外调用决策，推理延迟和成本增加在文中前9页未详细分析",
+  "与可靠性/鲁棒性主线无关，仅提升推理准确率，未涉及幻觉抑制或可信推理"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "仅提升推理准确率，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

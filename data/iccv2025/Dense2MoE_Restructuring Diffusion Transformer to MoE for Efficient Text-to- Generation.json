@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Dense2MoE_Restructuring Diffusion Transformer to MoE for Efficient Text-to- Generation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Dense2MoE_Restructuring Diffusion Transformer to MoE for Efficient Text-to- Generation.pdf",
+ "title": "Dense2MoE Restructuring Diffusion Transformer to MoE for Efficient Text-to- Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "将DiT转为MoE架构，减少激活参数但方法复杂且分析不足",
+ "innovations": [
+  "将密集DiT转换为MoE架构实现结构化稀疏化",
+  "提出Mixture of Blocks(MoB)选择性激活DiT块",
+  "设计多步蒸馏管道实现有效的密集到MoE转换"
+ ],
+ "method_framework": "通过用MoE层替换DiT中的FFNs，并引入MoB选择性激活块，结合Taylor度量的专家初始化、负载平衡的知识蒸馏和组特征损失优化",
+ "experiment_framework": "基于FLUX.1[dev]构建不同稀疏度模型，在CLIP、IR、MPS、GenEval等指标上评估，与剪枝方法对比",
+ "takeaways": [
+  "MoE架构在保持模型容量的同时显著减少激活参数",
+  "组特征损失和负载平衡对MoE蒸馏至关重要",
+  "专家选择在不同提示和时间步表现出专业化特性"
+ ],
+ "weaknesses": [
+  "方法复杂度高，需要多阶段蒸馏",
+  "未充分探讨模型在不同分辨率下的泛化能力",
+  "专家专业化分析不够深入"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "文本生成效率优化，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

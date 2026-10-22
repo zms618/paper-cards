@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Task Generalization with AutoRegressive Compositional Structure Can Learning from D Tasks Generalize to DT Tasks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Task Generalization with AutoRegressive Compositional Structure Can Learning from D Tasks Generalize to DT Tasks.pdf",
+ "title": "Task Generalization With AutoRegressive Compositional Structure: Can Learning From D Tasks Generalize to DT Tasks?",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6.25
+ },
+ "one_line": "自回归组合结构实现任务泛化，但实验局限且理论假设强。",
+ "innovations": [
+  "定义自回归组合结构(ARC)框架",
+  "证明仅需O(D)训练任务即可泛化到指数级DT任务",
+  "通过CoT推理在稀疏奇偶函数上实现指数级任务泛化"
+ ],
+ "method_framework": "定义自回归组合任务类ARC(D,T)，将任务分解为T个步骤，每步有D种选择，总任务数为DT。提出两阶段学习算法：训练阶段使用MLE识别子任务，推理阶段使用基于总变差的分布判别测试。",
+ "experiment_framework": "稀疏奇偶函数任务，d为输入维度，k为秘密索引数。使用Transformer模型，通过ICL和CoT推理，测量在未见任务上的准确率。",
+ "takeaways": [
+  "CoT推理能有效降低任务复杂度，将O(d^k)降至O(d log d)",
+  "任务选择对泛化性能有显著影响，对抗性选择可能导致泛化失败"
+ ],
+ "weaknesses": [
+  "实验仅限于奇偶函数和简单算术任务，缺乏更复杂场景验证",
+  "理论假设较强，如子任务可识别性和总变差边界"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

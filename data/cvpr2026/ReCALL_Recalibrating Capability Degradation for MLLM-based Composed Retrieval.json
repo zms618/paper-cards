@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/ReCALL_Recalibrating Capability Degradation for MLLM-based Composed Retrieval.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ReCALL_Recalibrating Capability Degradation for MLLM-based Composed Retrieval.pdf",
+ "title": "ReCALL Recalibrating Capability Degradation for MLLM-based Composed Retrieval",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "三阶段流程缓解MLLM检索能力退化，但依赖基础模型且计算开销大",
+ "innovations": [
+  "识别MLLM检索中的能力退化现象",
+  "自我引导的信息实例挖掘策略",
+  "基于CoT的生成校准与VQA质量控制",
+  "分组对比学习策略"
+ ],
+ "method_framework": "ReCALL采用诊断-生成-精炼三阶段流程：首先通过自我引导挖掘检索模型认知盲点；然后利用基础MLLM的推理能力生成校正指令和三元组；最后通过分组对比学习精炼检索器，对齐其判别嵌入空间与MLLM的内在组合推理能力。",
+ "experiment_framework": "在CIRR和FashionIQ数据集上评估，使用R@K和Rsubset@K作为指标，与包括CIR-LVLM在内的最先进方法进行比较，并通过消融研究验证各组件有效性。",
+ "takeaways": [
+  "能力退化现象是MLLM检索任务中的关键挑战",
+  "自我引导的信息实例比随机采样更有效",
+  "分组对比学习策略能有效恢复细粒度推理能力"
+ ],
+ "weaknesses": [
+  "方法依赖基础MLLM的推理能力，可能受限于特定模型",
+  "生成校正指令的过程可能引入噪声，尽管有VQA质量控制",
+  "计算开销较大，需要额外的生成和过滤步骤"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.3,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "MLLM检索校准属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

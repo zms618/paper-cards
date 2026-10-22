@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/CLARIFY_Contrastive Preference Reinforcement Learning for Untangling Ambiguous Queries.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CLARIFY_Contrastive Preference Reinforcement Learning for Untangling Ambiguous Queries.pdf",
+ "title": "CLARIFY: Contrastive Preference Reinforcement Learning for Untangling Ambiguous Queries",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "对比偏好强化学习解决歧义查询，但与可靠性主线无关",
+ "innovations": [
+  "针对PbRL中相似片段难以给出明确偏好的歧义查询问题，提出对比轨迹嵌入学习",
+  "歧义损失：拉大明显可区分片段的嵌入距离、拉近歧义片段",
+  "四边形损失：用偏好信息把更好/更差片段关系建模为四边形，并给出理论保证",
+  "基于嵌入空间自动选取更高比例无歧义查询，提升标签效率"
+ ],
+ "method_framework": "离线PbRL中用两个对比损失学习轨迹嵌入：歧义损失依据查询歧义度调整片段间距，四边形损失用偏好关系建模优劣片段的四边形结构；在该嵌入空间上优先挑选对人而言无歧义的查询，从而收集更有效偏好标签用于奖励学习。",
+ "experiment_framework": "在标准离线PbRL任务(含非理想教师模拟与真实人类反馈)上，与现有PbRL查询选择/奖励学习方法对比，报告回报、标签效率与歧义率，含两损失的消融与理论验证。",
+ "takeaways": [
+  "相似片段的歧义偏好是PbRL标签效率低的关键瓶颈",
+  "对比嵌入可显式度量片段可区分性并指导查询选择",
+  "自动选取无歧义查询能同时改善奖励学习与人评效率"
+ ],
+ "weaknesses": [
+  "主线为偏好强化学习/奖励学习，与可靠性主线及医学影像、多模态推理落地域无关",
+  "两损失的权重与四边形结构假设对不同MDP的通用性需更多验证",
+  "真实人评规模与多样性可能有限，结论外推需谨慎"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

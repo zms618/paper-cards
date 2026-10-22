@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/HOT Hadamard-based Optimized Training.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/HOT Hadamard-based Optimized Training.pdf",
+ "title": "HOT Hadamard-based Optimized Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "Hadamard量化与压缩技术实现训练加速，但依赖硬件且精度有损",
+ "innovations": [
+  "选择性应用Hadamard量化与低秩近似",
+  "激活缓冲压缩(ABC)",
+  "逐层量化器选择(LQS)",
+  "与LoRA的联合优化"
+ ],
+ "method_framework": "基于Hadamard变换的优化训练方法，针对权重梯度(gw)和激活梯度(gx)路径分别采用不同优化策略：gw使用HLA和INT8量化，gx使用INT4量化，结合ABC和LQS实现高效训练。",
+ "experiment_framework": "在ImageNet、CIFAR等数据集上测试ViT、EfficientNet等模型，对比FP、LoRA、LUQ、LBP-WHT等方法，评估内存消耗、计算速度和模型精度",
+ "takeaways": [
+  "针对不同梯度路径采用差异化优化策略",
+  "激活缓冲压缩显著减少内存使用",
+  "逐层量化器选择平衡精度与效率"
+ ],
+ "weaknesses": [
+  "与LoRA结合时在某些任务上精度略有下降",
+  "依赖特定硬件加速(如TensorCore)",
+  "手动的量化器选择策略可能不够通用"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "训练加速技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

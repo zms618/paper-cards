@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/LET’S (not) Just Put Things In Context Test-Time Training for Long-Context LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/LET’S (not) Just Put Things In Context Test-Time Training for Long-Context LLMS.pdf",
+ "title": "LET’S (not) Just Put Things In Context: TEST-TIME Training for LONG-CONTEXT LLMS",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "查询级测试时训练缓解长上下文注意力稀释，但更新机制限制模型适应能力。",
+ "innovations": [
+  "提出score dilution理论，解释长上下文失败原因",
+  "设计查询级测试时训练(qTTT)，仅更新查询矩阵",
+  "证明qTTT能增加目标-干扰元logit边界，直接解决注意力稀释"
+ ],
+ "method_framework": "单次前向传播缓存K/V，然后在短跨度上仅更新查询矩阵的梯度，保持K/V固定，重塑查询与已有键值的相似性。",
+ "experiment_framework": "在LongBench-v2和ZeroScrolls基准测试上评估，使用Qwen3-1.7B/4B/8B模型，对比标准上下文学习和FLOP匹配的thinking tokens方法。",
+ "takeaways": [
+  "长上下文应将推理计算预算用于少量查询更新而非生成更多thinking tokens",
+  "qTTT在保持计算预算相同时显著优于thinking tokens策略",
+  "方法可与其他长上下文策略结合使用"
+ ],
+ "weaknesses": [
+  "仅更新查询矩阵可能限制模型适应能力",
+  "实验主要在特定模型(Qwen3)上进行，泛化性需进一步验证",
+  "理论分析基于理想化场景，实际应用可能有额外复杂性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "测试时训练方法与可靠性主线有交点但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

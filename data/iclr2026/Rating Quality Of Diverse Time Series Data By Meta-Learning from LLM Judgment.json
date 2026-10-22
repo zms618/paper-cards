@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Rating Quality Of Diverse Time Series Data By Meta-Learning from LLM Judgment.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rating Quality Of Diverse Time Series Data By Meta-Learning from LLM Judgment.pdf",
+ "title": "Rating Quality of Diverse Time Series Data by Meta-Learning from LLM Judgment",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 7.0,
+  "overall": 6.0
+ },
+ "one_line": "用LLM比较蒸馏TSRater，跨9域元学习时序质量评分。",
+ "innovations": [
+  "利用LLM预训练知识，通过设计一系列提示让LLM对成对时序样本做质量优劣比较，作为质量标注来源。",
+  "拟合专用评分模型TSRater，把LLM判断蒸馏为高效的质量预测，推理时仅需前瞻未来时序样本即可打分。",
+  "用跨9个不同领域收集的质量比较做元学习训练TSRater以保证跨域适应；内循环用signSGD更新，避免超梯度的高昂计算。"
+ ],
+ "method_framework": "先用提示 eliciting LLM对成对时序样本的质量比较；再以这些比较为监督，用元学习在9个领域上训练轻量TSRater(signSGD内循环)，使其能在新域快速适应并预测样本质量分。",
+ "experiment_framework": "在跨3类时序任务的11个基准数据集上、用传统时序模型与时序基础模型分别评测，对比影响函数/Shapley类基线，报告质量估计精度、效率与跨域适应性。",
+ "takeaways": [
+  "LLM可跨域辨别时序数据质量差异，将其判断蒸馏为轻量TSRater后兼具精度与效率。",
+  "跨9域元学习+signSGD可在保证跨域适应的同时显著降低元训练开销。"
+ ],
+ "weaknesses": [
+  "质量标签来自LLM判断，存在与真实下游效用不一致的风险，正文对LLM判断本身的偏差未充分校准。",
+  "前9页未见11个基准的完整对比表，TSRater与LLM判断的一致性(相关性系数)明细缺失。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "时序质量评分与可靠性主线交织，跨域元学习设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/T-CIL Temperature Scaling using Adversarial Perturbation for Calibration in Class-Incremental.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/T-CIL Temperature Scaling using Adversarial Perturbation for Calibration in Class-Incremental.pdf",
+ "title": "T-CIL Temperature Scaling using Adversarial Perturbation for Calibration in Class-Incremental",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.3
+ },
+ "one_line": "对抗扰动辅助温度校准，但创新有限且实验深度不足",
+ "innovations": [
+  "基于特征距离的扰动方向策略，使旧任务样本更容易被错误分类",
+  "仅使用新任务验证集确定扰动幅度，适用于所有任务",
+  "提出首个无需旧任务验证集的温度缩放校准方法"
+ ],
+ "method_framework": "T-CIL通过对抗扰动记忆样本，调整扰动方向使旧任务样本更容易被错误分类，新任务样本更难被错误分类，使用单一扰动幅度优化温度参数",
+ "experiment_framework": "CIFAR-10/100和Tiny-ImageNet数据集，比较Vanilla、TS、ETS、IRM和PerturbTS基线，使用准确率、ECE和AECE指标",
+ "takeaways": [
+  "利用特征空间距离选择目标类别的扰动方向策略",
+  "仅使用新任务验证集确定扰动幅度的方法",
+  "与现有增量学习方法兼容且不牺牲准确率"
+ ],
+ "weaknesses": [
+  "依赖特征提取器的质量",
+  "对抗扰动的计算开销",
+  "未探索不同记忆大小的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "增量学习校准方法，触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

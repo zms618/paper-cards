@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RLVR_Beyond PASS@1 Self-Play with Variational Problem Synthesis Sustains RLVR.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RLVR_Beyond PASS@1 Self-Play with Variational Problem Synthesis Sustains RLVR.pdf",
+ "title": "Beyond Pass@1: Self-Play with Variational Problem Synthesis Sustains RLVR",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "自博弈变分问题合成缓解RLVR熵坍缩，提升Pass@k但冷启动与泛化存疑",
+ "innovations": [
+  "系统揭示RLVR中训练问题集有限导致策略通过记忆正确解'hacking'奖励、进而熵坍缩和Pass@k平台化的因果机制",
+  "提出在线自博弈变分问题合成（SVS）：策略基于自身对难题的正确解生成表述/结构变体题目，同时保持与原题一致的参考答案",
+  "SVS无需外部数据或蒸馏，端到端自改进，且与RLVR优化算法（PPO/GSPO/GRPO）解耦可即插即用"
+ ],
+ "method_framework": "SVS在RLVR训练中，对策略表现薄弱的难题提取其正确解，提示策略基于正确解生成表述改写和结构变体的变分题目，但要求变分题的参考答案与原题一致。策略再求解自己生成的变分题，答案与原参考答案的一致性验证变分题正确性。最终将原题解、变分题、变分题解共同用于策略更新，使策略同时学习解题与出题，维持训练数据多样性和策略熵。",
+ "experiment_framework": "在12个推理基准上、3B到32B模型规模（Qwen2.5系列）上验证；对比标准RLVR（GRPO/DAPO）；报告Pass@1、Pass@k（k=32）、训练熵等指标；AIME 24/25竞赛级基准上Pass@32绝对提升18.3%/22.8%。",
+ "takeaways": [
+  "RLVR中训练问题多样性不足是熵坍缩和Pass@k平台化的主因，而非优化算法本身",
+  "用策略自身正确解生成保持参考答案一致的变分题，可在不引入新标注的情况下持续扩充训练数据多样性",
+  "维持策略熵与Pass@k提升可带来Pass@1的长期持续改进，而非早期饱和"
+ ],
+ "weaknesses": [
+  "变分题合成依赖策略自身正确解的质量，在早期训练或能力较弱模型上可能合成质量差的题目，文中对冷启动阶段讨论不足",
+  "仅在数学推理任务上验证，对代码、多模态等其他RLVR领域的迁移性未涉及",
+  "前9页未见变分题生成失败率、参考答案一致性验证的错误率等关键质量指标"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "RLVR方法改进，但未触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

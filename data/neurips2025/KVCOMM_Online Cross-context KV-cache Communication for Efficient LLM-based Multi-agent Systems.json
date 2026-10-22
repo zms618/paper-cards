@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/KVCOMM_Online Cross-context KV-cache Communication for Efficient LLM-based Multi-agent Systems.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/KVCOMM_Online Cross-context KV-cache Communication for Efficient LLM-based Multi-agent Systems.pdf",
+ "title": "KVCOMM: Online Cross-context KV-cache Communication for Efficient LLM-based Multi-agent Systems",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "锚点池实现多智能体KV缓存复用，但依赖RoPE且内存消耗大",
+ "innovations": [
+  "识别多上下文冗余问题与KV缓存偏移方差",
+  "提出训练免费的上下文感知缓存共享框架",
+  "设计锚点池机制动态适应不同前缀上下文"
+ ],
+ "method_framework": "KVCOMM通过锚点池存储共享样本的缓存偏移，运行时通过嵌入相似性匹配锚点，插值预测偏移量，实现KV缓存复用与位置对齐",
+ "experiment_framework": "在RAG、数学推理和编程任务上测试，使用Llama-3.1-8B-instruct模型，测量加速比、重用率和准确率",
+ "takeaways": [
+  "基于嵌入相似性的锚点匹配可有效预测KV缓存偏移",
+  "上下文感知的缓存对齐是解决多智能体系统效率问题的关键",
+  "在线锚点池动态更新机制适应不同任务需求"
+ ],
+ "weaknesses": [
+  "依赖RoPE位置编码，可能不适用于其他架构",
+  "锚点池大小和内存消耗随任务复杂度增加",
+  "未探讨在极端长上下文场景下的性能"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

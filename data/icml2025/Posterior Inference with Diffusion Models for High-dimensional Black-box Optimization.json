@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Posterior Inference with Diffusion Models for High-dimensional Black-box Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Posterior Inference with Diffusion Models for High-dimensional Black-box Optimization.pdf",
+ "title": "Posterior Inference with Diffusion Models for High-dimensional Black-box Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "扩散模型+深度集成解决高维黑盒优化，但样本效率与理论支撑不足",
+ "innovations": [
+  "用扩散模型捕获已观测高维数据分布并作为提议/候选生成器，克服生成式BO表达力不足",
+  "用深度集成预测函数值并给出不确定性估计，缓解高维空间中不确定性估计困难",
+  "两阶段迭代框架交替优化候选分布与值预测，在高维黑盒优化上胜过现有生成式BO"
+ ],
+ "method_framework": "把高维黑盒优化拆成两步交替：第一步训练扩散模型对已观测(高性能)样本分布建模并采样候选；第二步训练深度集成预测候选的函数值并给出不确定性；用预测 posterior 指导下一轮采样，迭代收敛到高值区域，避免GP代理在高维下的维度灾难。",
+ "experiment_framework": "在高维黑盒优化benchmark上评测；对比高维BO(降维/加性结构)与近期生成式优化方法；指标为后悔值/最优值随评估次数的曲线，考察可扩展性到上千次评估。",
+ "takeaways": [
+  "扩散模型作为候选分布生成器比以往生成式BO表达力更强",
+  "深度集成能在高维空间提供可用的不确定性估计支撑采集决策",
+  "DiBO在高维黑盒优化与上千次评估规模上优于基线"
+ ],
+ "weaknesses": [
+  "扩散模型训练与采样的每轮开销较高，在评估预算极小时样本效率未必优于GP-BO",
+  "深度集成的不确定性校准在分布外高维区域的可靠性未充分分析",
+  "理论收敛性/后悔界缺乏，主要为经验方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Zebra-Llama Towards Extremely Efficient Hybrid Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Zebra-Llama Towards Extremely Efficient Hybrid Models.pdf",
+ "title": "Zebra-Llama: Towards Extremely Efficient Hybrid Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "混合架构降低KV缓存，但创新有限且验证不足。",
+ "innovations": [
+  "MLA与Mamba2混合架构",
+  "SMART层选择策略",
+  "中间层蒸馏(ILD)初始化方法"
+ ],
+ "method_framework": "从预训练Transformer初始化MLA和Mamba2模型，通过ILD对齐内部表示，再使用SMART策略选择最优层组合，最后通过知识蒸馏和DPO微调。",
+ "experiment_framework": "LM Harness评估基准(ARC, MMLU等)，对比MambaInLLaMA、X-EcoMLA、Llamba和Minitron等基线模型，测量零样本和少样本性能及KV缓存大小。",
+ "takeaways": [
+  "SMART策略能有效选择关键层替换",
+  "混合架构能在极低KV缓存下保持高性能",
+  "ILD初始化对知识转移至关重要"
+ ],
+ "weaknesses": [
+  "仅关注语言模型，未扩展到多模态",
+  "未充分验证在边缘设备上的实际部署性能",
+  "对特定任务(如数学推理)的性能提升有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

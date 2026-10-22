@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Is Your Model Fairly Certain Uncertainty-Aware Fairness Evaluation for LLMs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Is Your Model Fairly Certain Uncertainty-Aware Fairness Evaluation for LLMs.pdf",
+ "title": "Is Your Model Fairly Certain? Uncertainty-Aware Fairness Evaluation for LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "UCerF指标在LLM共指场景评估公平性，但普适性与落地域受限。",
+ "innovations": [
+  "提出不确定性感知的公平性度量 UCerF，把模型置信度（而非仅离散对错）纳入公平性评估，揭示 EO 遗漏的内部偏差。",
+  "构建含 31,756 样本的性别-职业共指消解公平性数据集，改善现有数据在规模、多样性与清晰度上的不足。",
+  "用所提指标与数据建立基准，在 10 个开源 LLM 上量化评估，发现 Mistral-7B 因对错误预测过度自信而公平性欠佳。"
+ ],
+ "method_framework": "以共指消解中 his/her 两种代词指代同一实体为受控探针，比较模型在两组代词上的预测正确性与置信度分布；UCerF 在准确率之外度量模型对不同子群体的置信度一致性，从而刻画‘高置信偏差’这一 EO 无法捕捉的隐性不公。",
+ "experiment_framework": "自建 31,756 样本性别-职业共指数据集；基线为 Equalized Odds 等准确率型公平性指标；指标为 UCerF 与准确率型指标的对照；在 10 个开源 LLM（含 Mistral-7B 等）上做横向基准。",
+ "takeaways": [
+  "仅靠准确率/EO 会把置信度差异巨大但对错相同的模型判为同等公平，忽略了高置信偏差。",
+  "UCerF 能捕捉到 Mistral-7B 这类‘对错误预测过度自信’而被 EO 忽略的公平性缺陷。"
+ ],
+ "weaknesses": [
+  "仅覆盖性别-职业共指这一狭窄场景，指标在其他公平维度（种族、交叉性）的普适性未验证。",
+  "落地域为 LLM 公平性评估，与主线指定的医学影像/多模态推理落地域不直接相关。",
+  "依赖模型自身置信度作为不确定性来源，未讨论校准误差对 UCerF 结论的影响。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

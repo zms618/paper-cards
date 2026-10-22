@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unified and Efficient Multi-View Clustering from Probabilistic Perspective.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unified and Efficient Multi-View Clustering from Probabilistic Perspective.pdf",
+ "title": "Unified and Efficient Multi-View Clustering from Probabilistic Perspective",
+ "scores": {
+  "novelty": 4.5,
+  "depth": 5.5,
+  "evidence": 5.0,
+  "relevance": 4.0,
+  "overall": 4.7
+ },
+ "one_line": "概率框架统一anchor多视图聚类，常规方法延伸",
+ "innovations": [
+  "从概率视角为anchor-based多视图聚类提供端到端解释，弥补现有anchor方法缺乏概率可解释性的不足",
+  "一步学习数据点到类别的公共转移概率矩阵，统一建模输入数据与最终聚类结果间的有意义概率关联，保证各视图内在结构一致",
+  "在公共转移概率引导下由anchor点到类别的转移概率得到数据点软标签，兼顾大规模效率"
+ ],
+ "method_framework": "图基多视图聚类需建全图(O(n2))与Laplacian特征分解(O(n3))，大规模数据效率差；anchor-based方法用小尺寸anchor图提速但缺概率可解释性。UEMCP在概率框架下端到端学习：一步求数据点→类别的公共转移概率矩阵以对齐各视图结构；再以anchor→类别转移概率在该框架内推出数据点软标签。",
+ "experiment_framework": "在多个多视图聚类数据集上与代表性图基/anchor-based方法对比，指标为聚类准确率(ACC/NMI等)；报告UEMCP在效率与精度上优于代表性方法。",
+ "takeaways": [
+  "anchor-based多视图聚类可在概率框架下端到端统一，获得更好可解释性",
+  "公共转移概率矩阵能一步对齐多视图的内在结构，避免分步学习的误差累积",
+  "anchor机制把全图O(n2)/O(n3)复杂度降到适合大规模多视图数据"
+ ],
+ "weaknesses": [
+  "属无监督多视图聚类方向，与本主线(可靠性×多模态推理/医学影像)无关联",
+  "方法为相对常规的概率建模/anchor图延伸，技术新颖性有限",
+  "实验仅在多视图数据集上对比代表性方法，未见大规模真实数据的可扩展性与统计显著性报告"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "无监督聚类与可靠性主线无关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

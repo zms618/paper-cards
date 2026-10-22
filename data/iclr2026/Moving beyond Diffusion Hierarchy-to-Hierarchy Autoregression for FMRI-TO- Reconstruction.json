@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Moving beyond Diffusion Hierarchy-to-Hierarchy Autoregression for FMRI-TO- Reconstruction.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Moving beyond Diffusion Hierarchy-to-Hierarchy Autoregression for FMRI-TO- Reconstruction.pdf",
+ "title": "Moving beyond Diffusion: Hierarchy-to-Hierarchy Autoregression for fMRI-to-Image Reconstruction",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "用层级自回归替代扩散模型进行fMRI重建，提升效率与确定性。",
+ "innovations": [
+  "提出粗到细的自回归fMRI重建框架，替代传统扩散模型，解决固定神经引导与动态生成阶段不匹配的问题",
+  "设计层级fMRI编码器与层级到层级对齐方案，将脑信号分解为从全局语义到局部细节的多级嵌入",
+  "提出尺度感知的神经引导策略，将不同层级嵌入注入自回归生成的对应尺度阶段"
+ ],
+ "method_framework": "层级fMRI编码器提取多级神经嵌入；通过层级到层级对齐训练，使浅层fMRI嵌入对应CLIP低层视觉特征(结构)、深层对应高层语义特征；在自回归生成的每个尺度上注入对应层级的fMRI嵌入，先建立全局语义布局再逐步细化局部细节。",
+ "experiment_framework": "在NSD数据集上评估，对比MindEye2等扩散-based基线，使用CLIP score、SwAV distance等高层语义指标和结构相似度等指标衡量重建质量，同时评估推理速度。",
+ "takeaways": [
+  "自回归粗到细框架比扩散模型快4.67倍，且产生更确定的重建结果",
+  "层级神经引导比单一固定引导更好地利用了fMRI的层次化信息",
+  "MindHier在NSD数据集上达到SOTA语义保真度(CLIP score 96.4%)"
+ ],
+ "weaknesses": [
+  "仅在NSD数据集上验证，跨被试、跨数据集的泛化能力未充分评估",
+  "自回归生成的误差累积问题在高分辨率下可能更严重",
+  "层级对齐依赖CLIP特征空间，可能受限于CLIP本身的表征能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "fMRI重建属于医学影像落地域，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

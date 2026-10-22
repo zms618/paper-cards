@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Simuhome_A Temporal- and Environment-Aware Benchmark for Smart Home LLM Agents.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Simuhome_A Temporal- and Environment-Aware Benchmark for Smart Home LLM Agents.pdf",
+ "title": "SimuHome: A Temporal- and Environment-Aware Benchmark for Smart Home LLM Agents",
+ "scores": {
+  "novelty": 5,
+  "depth": 4,
+  "evidence": 5,
+  "relevance": 4.0,
+  "overall": 4.5
+ },
+ "one_line": "构建智能家居基准，无新算法，仅暴露现有智能体短板",
+ "innovations": [
+  "基于行业标准Matter协议构建高保真智能家居模拟器，设备操作连续影响温度/湿度等环境变量，区别于把家当静态系统的旧基准",
+  "覆盖状态查询、隐式意图推断、显式设备控制、工作流调度四类，且含可行/不可行请求",
+  "时间加速机制使跨时调度工作流可立即评测，支持智能体在真机前预验证动作"
+ ],
+ "method_framework": "智能体通过API操作设备，模拟器按Matter协议维护设备状态簇与环境变量的连续动态演化；评测既看单次命令执行是否正确，也看跨时调度(如洗碗机结束后开灯)与对不可行请求的处理。",
+ "experiment_framework": "600集基准，评测18个LLM智能体(不同框架与微调方案)；分四类报告成功率，并指出工作流调度为最难类别。",
+ "takeaways": [
+  "工作流调度是最难类别，跨多种智能体框架与微调仍持续失败",
+  "时间加速仿真可作为智能体部署前的动作预验证环境",
+  "基于Matter协议提升了基准与真实设备的一致性"
+ ],
+ "weaknesses": [
+  "属智能家居智能体基准，与可靠性、医学影像、多模态推理主线无关",
+  "主要贡献是环境/基准，无新算法或可靠性方法",
+  "'18个智能体失败'暴露的是现有agent短板，未给出缓解方案；环境动态模型(温湿度演化)的保真度与真实家庭差距未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "智能家居基准与可靠性主线无关，仅环境建模贡献",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

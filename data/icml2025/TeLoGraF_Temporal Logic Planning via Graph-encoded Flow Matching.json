@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/TeLoGraF_Temporal Logic Planning via Graph-encoded Flow Matching.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/TeLoGraF_Temporal Logic Planning via Graph-encoded Flow Matching.pdf",
+ "title": "TeLoGraF: Temporal Logic Planning via Graph-encoded Flow Matching",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "GNN编码STL语法树结合flow matching的规划方法，实验覆盖有限。",
+ "innovations": [
+  "用GNN编码STL语法树，使模型可处理通用而非固定/参数化的STL规约",
+  "用flow matching生成满足STL的轨迹策略，区别于经典自动机合成方法",
+  "构建含200K规约-演示对的数据集，覆盖4类常用STL模板"
+ ],
+ "method_framework": "把STL规约解析为语法树，用GNN在树上传播得到规约嵌入；以规约嵌入与系统状态为条件，用flow matching生成动作/轨迹分布；训练数据来自经典STL规划器在200K规约下的演示；推理时对新规约直接采样规划。",
+ "experiment_framework": "在5个仿真环境（2D动力模型到7DoFranka Panda机械臂与Ant四足导航）上评测，对比经典STL规划算法与其他学习型规划方法，指标为STL满足率。",
+ "takeaways": [
+  "GNN编码STL语法树是处理通用规约的有效方式",
+  "flow matching作为轨迹生成器比逐动作回归更适合时序逻辑规划的多模态解",
+  "学习型规划可在满足率上超过经典NP难STL合成算法，且推理快"
+ ],
+ "weaknesses": [
+  "仅覆盖4类STL模板，任意STL规约的外推能力未验证",
+  "训练演示依赖经典规划器，在规划器解不出来的难例上数据缺失",
+  "前9页未给出具体满足率数值与提升幅度",
+  "域为机器人CPS规划，与主线无关"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

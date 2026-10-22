@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Zerotuning_Unlocking the Initial TOKEN’S Power To Enhance Large Language Models without Training.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Zerotuning_Unlocking the Initial TOKEN’S Power To Enhance Large Language Models without Training.pdf",
+ "title": "ZeroTuning: Unlocking the Initial Token Power to Enhance Large Language Models without Training",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "轻量偏置初始token注意力，四行代码提升冻结LLM性能。",
+ "innovations": [
+  "提出只需对初始token(如Llama的<BOS>)施加头特异注意力偏置，替代PASTA/ACT等需启发式识别重要token的复杂方法",
+  "从理论上论证对初始token注意力logits加偏置会系统地平移/重塑下游注意力，且被其attention-sink角色放大",
+  "给出监督式(在验证集校准)与无监督式(直接最小化输出熵)两种变体，kernel无关(兼容SDPA/FlashAttention)、无需改KV-cache",
+  "发现早期层效应更强、不同注意力头有不同缩放偏好"
+ ],
+ "method_framework": "在标准LlamaAttention中仅对初始token的注意力logits按注意力头施加可学得/可设定的轻量偏置；监督模式用验证样本校准偏置，无监督模式以最小化输出熵为目标；不更新参数、不改解码，兼容量化推理与长上下文。",
+ "experiment_framework": "跨15个数据集，基线为PASTA/ACT等token级注意力调优方法；在Llama-3.1-8B上报告分类相对提升19.9%、QA 4.5%、对话2.1%；测试量化推理、上下文长度扩展下的增益保持。",
+ "takeaways": [
+  "仅调节初始token即可系统性改善冻结LLM性能并更好激发预训练知识，无需参数更新",
+  "该方法kernel无关、仅四行改动、兼容量化与长上下文，工程落地极轻",
+  "早期层与不同头的差异化效应提示注意力sink是一个可利用的结构化干预点"
+ ],
+ "weaknesses": [
+  "收益幅度随任务递减(对话仅2.1%)，对推理/数学等复杂任务的增益未在提取页充分展示",
+  "监督模式仍需验证集校准样本，无监督模式(最小化输出熵)在开放性生成上是否可能坍缩到低熵需更多证据",
+  "理论仅解释注意力重塑方向，偏置幅度的最优设定缺乏闭式指导"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "轻量LLM调优方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

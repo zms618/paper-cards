@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/How Many Tokens Do 3D Point Cloud Transformer Architectures Really Need.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/How Many Tokens Do 3D Point Cloud Transformer Architectures Really Need.pdf",
+ "title": "How Many Tokens Do 3D Point Cloud Transformer Architectures Really Need?",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 7,
+  "overall": 6.9
+ },
+ "one_line": "声称90%token冗余，但仅验证单一架构，泛化性存疑",
+ "innovations": [
+  "发现3D点云Transformer中高达90-95%的token冗余",
+  "提出全局感知的图token合并方法GitMerge3D",
+  "设计自适应合并策略，根据能量分数动态调整合并率"
+ ],
+ "method_framework": "GitMerge3D通过计算token的全局感知能量分数，指导自适应token合并，结合空间感知的合并与解合并机制，实现高效3D点云处理。",
+ "experiment_framework": "在3D语义分割(ScanNet/S3DIS/nuScenes)、3D重建(ShapeNet/Objaverse)和目标检测(Waymo)任务上评估，对比ToMe/PiToMe/ALGM等方法，使用mIoU/F1/GFLOPs/内存等指标。",
+ "takeaways": [
+  "token冗余是3D点云Transformer的普遍现象，可大幅减少而不损失性能",
+  "全局感知的能量分数能有效指导3D场景下的token合并",
+  "轻量级微调(10%训练周期)即可恢复甚至超越基线性能"
+ ],
+ "weaknesses": [
+  "方法主要针对PTv3架构，泛化性需进一步验证",
+  "极端合并率(>95%)在某些精细任务上可能影响边界精度"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

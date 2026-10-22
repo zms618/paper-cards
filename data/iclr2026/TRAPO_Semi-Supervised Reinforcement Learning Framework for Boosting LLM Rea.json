@@ -1,0 +1,41 @@
+{
+ "title": "TRAPO: A Semi-Supervised Reinforcement Learning Framework for Boosting LLM Reasoning",
+ "one_line": "半监督RLVR用轨迹相似度筛选无标注样本，缓解模型崩溃。",
+ "innovations": [
+  "指出无监督RLVR（仅靠内部一致性/熵/多数投票）在训练后期会因强化错误推理模式而模型崩溃",
+  "提出半监督RLVR：用小标注集稳定无标注样本上的一致性训练，确保只有在标注实例上验证过的推理模式才进入RL",
+  "TRAPO通过匹配无标注样本与标注样本的学习轨迹相似度来识别可靠无标注样本，实现极高数据效率"
+ ],
+ "method_framework": "无监督RLVR缺外部监督会强化错误推理导致崩溃。TRAPO引入小标注集提供监督奖励作为锚；对无标注样本，按其学习轨迹与标注样本的轨迹相似度判断可靠性，只把轨迹模式与已验证标注样本相近的无标注样本纳入RL训练，从而稳定一致性训练。",
+ "experiment_framework": "在9个高级推理基准上评测；基线为无监督RLVR与全监督RLVR；报告仅1K标注+3K无标注达42.6%平均准确率，超过45K无标注训练的最优方法(38.3%)；4K标注+12K无标注即在所有基准上超过45K全标注全监督模型，仅用10%标注数据。",
+ "takeaways": [
+  "少量有标注奖励对稳定无标注RLVR训练、防止模型崩溃不可或缺",
+  "按学习轨迹相似度筛选可靠无标注样本可大幅提升数据效率",
+  "仅用10%标注数据即可超过全监督RLVR，显著降低推理模型RL的标注成本"
+ ],
+ "weaknesses": [
+  "仍需一定量标注集，对完全无标注场景不适用",
+  "轨迹相似度判据的可靠性阈值与误纳错误样本的风险分析需补充",
+  "主要在数学/代码等答案可验证任务验证，对开放域/不可验证奖励任务迁移有限"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/TRAPO_Semi-Supervised Reinforcement Learning Framework for Boosting LLM Rea.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TRAPO_Semi-Supervised Reinforcement Learning Framework for Boosting LLM Rea.pdf",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "半监督RLVR提升LLM推理可靠性，符合主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

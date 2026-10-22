@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Prefill-Time Intervention for Mitigating Hallucination in Large Vision-Language Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Prefill-Time Intervention for Mitigating Hallucination in Large Vision-Language Models.pdf",
+ "title": "Prefill-Time Intervention for Mitigating Hallucination in Large Vision-Language Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "PTI通过预填充KV缓存干预减轻LVLM幻觉，但依赖分割掩码且未探索层间差异",
+ "innovations": [
+  "预填充时间干预(PTI)新范式",
+  "模态感知的视觉和文本方向提取",
+  "解耦的键值缓存干预机制"
+ ],
+ "method_framework": "PTI在预填充阶段对KV缓存进行一次性干预，通过对比对象与背景提取视觉方向，对比锚词与非锚词提取文本方向，分别增强键和值以改善对象关注和背景噪声过滤。",
+ "experiment_framework": "在LLaVA-1.5、Qwen-VL-Chat和DeepSeek-VL-Chat三个LVLM上评估，使用CHAIR、POPE、AMBER等基准测试，对比多种解码策略。",
+ "takeaways": [
+  "早期干预比持续解码阶段干预更有效",
+  "模态特定方向比统一方向更能减轻幻觉",
+  "KV缓存是干预幻觉的有效切入点"
+ ],
+ "weaknesses": [
+  "依赖对象分割掩码的可用性",
+  "未探索不同层间干预效果的差异",
+  "计算开销虽小但需要额外提取方向的过程"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "PTI直接解决LVLM幻觉问题，属于可靠性主线与多模态落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

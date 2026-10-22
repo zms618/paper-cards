@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/CAR-SAM Cross-Attention Reconstruction for Post-Training Quantization of the Segment Anything.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/CAR-SAM Cross-Attention Reconstruction for Post-Training Quantization of the Segment Anything.pdf",
+ "title": "CAR-SAM Cross-Attention Reconstruction for Post-Training Quantization of the Segment Anything",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "针对SAM跨注意力量化提出MAC和JCAR，但复杂度高且泛化验证不足",
+ "innovations": [
+  "MatMul-Aware Compensation (MAC)机制",
+  "Joint Cross-Attention Reconstruction (JCAR)策略",
+  "首个统一适用于SAM和SAM2的量化框架"
+ ],
+ "method_framework": "针对SAM解码器的跨注意力结构，提出MAC机制将量化误差从MatMul传递到前一层线性权重，并采用JCAR策略联合重建耦合的跨注意力模块，稳定优化过程。",
+ "experiment_framework": "在MS-COCO数据集上评估实例分割和目标检测任务，使用mAP指标；在VOS数据集上评估视频目标分割任务，使用J&F分数。",
+ "takeaways": [
+  "跨注意力模块的量化误差传播机制需要特殊处理",
+  "联合重建策略能有效解决模块间的误差耦合问题",
+  "MatMul操作本身的补偿比仅补偿线性层更有效"
+ ],
+ "weaknesses": [
+  "方法复杂度较高，需要额外的计算资源",
+  "仅关注解码器部分，未解决编码器的量化问题",
+  "实验主要在标准数据集上进行，实际部署场景的泛化能力有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "仅关注模型量化技术，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Towards Robust Multimodal Large Language Models Against Jailbreak Attacks.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Towards Robust Multimodal Large Language Models Against Jailbreak Attacks.pdf",
+ "title": "Towards Robust Multimodal Large Language Models Against Jailbreak Attacks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "SAFEMLLM用对比嵌入攻击和对抗训练提升MLLM对越狱攻击的鲁棒性",
+ "innovations": [
+  "提出对比嵌入攻击(CoE-Attack)方法，在嵌入层注入对抗噪声",
+  "设计对抗训练框架SAFEMLLM，交替进行攻击步骤和模型更新步骤",
+  "引入对比损失同时增强攻击强度和防御效果",
+  "在多种模态和攻击方法上验证有效性"
+ ],
+ "method_framework": "SAFEMLLM采用两步迭代框架：Step I通过对比嵌入攻击生成对抗噪声，Step II更新模型参数以抵御攻击同时保持正常功能。使用LoRA优化跨模态适配器和LLM解码器参数，视觉编码器参数固定。",
+ "experiment_framework": "在6种越狱攻击方法(ImgJP, VAA, GCG, AutoDAN, FigStep, MM-SafetyBench)和9种MLLM模型上评估，使用攻击成功率(ASR)作为主要指标，并通过MM-Vet评估模型效用。",
+ "takeaways": [
+  "对比嵌入攻击有效降低计算复杂度同时保持攻击强度",
+  "对抗训练框架在白盒场景下显著提升模型鲁棒性",
+  "多模态防御需要同时考虑图像和文本模态的对抗扰动"
+ ],
+ "weaknesses": [
+  "仅评估了白盒攻击场景，黑盒攻击防御能力未知",
+  "对抗训练过程计算开销较大",
+  "未分析不同规模模型的泛化能力差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "越狱攻击防御直接关联可靠性主线，且涉及多模态大模型落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

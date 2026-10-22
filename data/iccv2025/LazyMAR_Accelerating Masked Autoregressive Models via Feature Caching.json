@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/LazyMAR_Accelerating Masked Autoregressive Models via Feature Caching.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/LazyMAR_Accelerating Masked Autoregressive Models via Feature Caching.pdf",
+ "title": "LazyMAR Accelerating Masked Autoregressive Models via Feature Caching",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "特征缓存加速MAR推理，但泛化性与周期选择存疑",
+ "innovations": [
+  "Token Cache机制利用相邻解码步骤中token的相似性",
+  "Condition Cache机制利用条件与无条件输出残差的稳定性",
+  "周期性缓存-重用-刷新策略控制误差累积"
+ ],
+ "method_framework": "基于Token和Condition两种冗余性，提出LazyMAR框架，通过特征缓存和周期性刷新策略加速MAR模型推理",
+ "experiment_framework": "ImageNet 256×256数据集，MAR-B/L/H模型，FID和IS评估指标，对比原始MAR和减少解码步数方法",
+ "takeaways": [
+  "早期层特征相似性与最终输出呈线性关系，可用于token选择",
+  "分类器自由引导中条件与无条件输出的残差在相邻步骤变化微小",
+  "缓存策略需平衡计算效率和生成质量"
+ ],
+ "weaknesses": [
+  "缓存刷新周期K的选择可能影响不同数据集上的性能",
+  "方法主要针对MAR模型，对其他架构的泛化性未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "加速MAR推理但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

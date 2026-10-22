@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RECAPA_Hierarchical Predictive Correction To Mitigate Cascading Failures.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RECAPA_Hierarchical Predictive Correction To Mitigate Cascading Failures.pdf",
+ "title": "ReCAPA: Hierarchical Predictive Correction to Mitigate Cascading Failures",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "三层级预测纠正框架缓解VLA级联失败，但与主线关联弱且复杂度高",
+ "innovations": [
+  "提出三层级预测纠正框架（动作/子目标/轨迹），同时捕捉短期动作误差和长期策略偏移",
+  "用Sinkhorn模块和Score-field模块在所有层级强制执行语义对齐",
+  "提出两个新指标量化任务中的错误传播和恢复过程"
+ ],
+ "method_framework": "ReCAPA在训练阶段用高层监督更新动作生成器。每层级预测当前状态下的预期输出并与目标对比，通过预测-对比调整偏差。Sinkhorn模块处理语义对齐，Score-field模块评估匹配度。推理时动作生成器可早期检测偏差并选择更匹配整体意图的行为组合。",
+ "experiment_framework": "在VisualAgentBench、MineDojo、AI2-THOR等具身智能基准评测；对比商用和开源LLM基线；报告任务成功率和新提出的错误传播/恢复指标。",
+ "takeaways": [
+  "VLA系统需在动作、子目标、轨迹三个层级同时纠正偏差，单一层级纠正无法阻止其他层级的错误传播",
+  "预测-对比机制可在训练时更新动作生成器，使其早期检测偏差并调整",
+  "语义对齐需贯穿规划层级而非仅在局部步骤对齐"
+ ],
+ "weaknesses": [
+  "与可靠性/医学影像/多模态推理主线关联较弱，属于具身智能/VLA领域",
+  "三层级纠正增加了训练和推理复杂度，实际部署成本未量化",
+  "前9页未见与最新VLA大模型（如RT-2等）的对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "VLA级联失败缓解与可靠性主线部分交织，但复杂度高且落地域不明确",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

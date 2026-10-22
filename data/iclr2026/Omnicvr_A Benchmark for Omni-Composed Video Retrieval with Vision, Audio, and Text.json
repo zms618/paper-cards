@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Omnicvr_A Benchmark for Omni-Composed Video Retrieval with Vision, Audio, and Text.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Omnicvr_A Benchmark for Omni-Composed Video Retrieval with Vision, Audio, and Text.pdf",
+ "title": "OmniCVR: A Benchmark for Omni-Composed Video Retrieval with Vision, Audio, and Text",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "构建多模态视频检索基准，暴露现有系统音频推理短板",
+ "innovations": [
+  "在组合视频检索中首次把音频（语音/音乐/环境声）作为一等模态，弥补现有基准只重视觉-文本对齐的空白",
+  "可扩展自动流水线：内容感知切分+全模态标注+LLM 与人类专家双重校验",
+  "提出 AudioVLM2Vec（VLM2Vec 的音频感知扩展）取得 SOTA，并暴露现有系统在音频推理上的根本局限"
+ ],
+ "method_framework": "给定源视频+文本修改指令检索目标视频（CoVR）；构建含视觉中心、音频中心、综合三类查询的基准（综合类占多数以贴近真实多模态复杂度）；用自动流水线+双校验保证标注质量；AudioVLM2Vec 显式融合音频语义做检索。",
+ "experiment_framework": "评测现有视觉-语言检索模型与 AudioVLM2Vec；报告检索指标与各类查询上的表现；通过对比揭示音频推理能力的不足。",
+ "takeaways": [
+  "音频信号在视频检索中常具决定性作用，忽略音频会显著低估组合检索难度",
+  "现有多模态检索系统的音频语义推理能力是明显短板",
+  "显式引入音频语义的 AudioVLM2Vec 可在全模态组合检索上取得 SOTA"
+ ],
+ "weaknesses": [
+  "基准构建依赖自动流水线+LLM 校验，仍可能残留标注噪声",
+  "音频模态在不同视频中的可获得性/清晰度不均，可能引入偏置",
+  "属检索评测而非可信推理/医学影像，相关性中等"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态检索基准，非可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

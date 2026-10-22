@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Zero-Shot Human Pose Estimation using Diffusion-Based Inverse Solvers.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Zero-Shot Human Pose Estimation using Diffusion-Based Inverse Solvers.pdf",
+ "title": "Zero-Shot Human Pose Estimation using Diffusion-Based Inverse Solvers",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 7.0,
+  "overall": 6.0
+ },
+ "one_line": "分解姿态+逆问题框架实现零样本姿态估计，但证据不足",
+ "innovations": [
+  "把全身姿态分解为无尺度姿态(scale-free)与尺度相关分量，使位置测量对身材的依赖被解耦",
+  "仅以旋转测量条件化预训练扩散模型，再以位置测量导出的似然项引导采样，隐式适配任意身材而无需微调",
+  "以逆问题/后验采样视角统一稀疏可穿戴传感器下的姿态估计，实现对身材离群用户的零样本泛化"
+ ],
+ "method_framework": "复用预训练扩散先验建模姿态序列；前向条件只用传感器旋转测量以规避身材偏置，位置测量不直接作条件而是改写为似然项在采样时引导；生成式地搜索最能解释稀疏身体传感器测量的高似然姿态序列。",
+ "experiment_framework": "在稀疏(约3个)身体传感器姿态数据上评估跨用户/跨身材的泛化；基线为以位置+旋转联合条件化的条件扩散姿态估计方法；指标为姿态跟踪误差与跨用户零样本泛化能力。",
+ "takeaways": [
+  "位置测量强依赖身材是此前生成式姿态估计跨用户失效的主因，将其降级为似然引导即可零样本适配",
+  "姿态可分解为无尺度模板与尺度分量，是解耦身材的关键归纳偏置",
+  "预训练扩散先验+测量似然引导的逆问题范式可免微调泛化到训练未见身材"
+ ],
+ "weaknesses": [
+  "提取页内未见具体姿态误差数值与基线量化对比，证据强度依赖摘要自述",
+  "零样本泛化的前提是身材可被尺度分量解释，对非尺度变异(关节活动度、畸形)是否成立未验证",
+  "生成式逐帧采样的延迟对实时可穿戴场景的可行性缺乏量化"
+ ],
+ "confidence": "low",
+ "raw_overall": 6.13,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "姿态分解与逆问题框架解决零样本泛化，触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

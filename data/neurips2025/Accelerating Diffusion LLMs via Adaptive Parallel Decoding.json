@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Accelerating Diffusion LLMs via Adaptive Parallel Decoding.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Accelerating Diffusion LLMs via Adaptive Parallel Decoding.pdf",
+ "title": "Accelerating Diffusion LLMs via Adaptive Parallel Decoding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "混合扩散与自回归模型的自适应并行解码，提升扩散LLM吞吐",
+ "innovations": [
+  "自适应并行解码(APD)动态调整并行采样数量",
+  "扩散模型与小型自回归模型的多重混合概率",
+  "KV缓存和最大掩码前瞻优化"
+ ],
+ "method_framework": "通过定义扩散模型边际概率与小型自回归模型联合概率的乘性混合，动态决定并行采样数量，结合KV缓存和掩码输入限制优化效率",
+ "experiment_framework": "Dream 7B作为扩散模型，Qwen2.5 0.5B作为辅助自回归模型，在GSM8K、GPQA、MATH和HumanEval基准上评估速度与质量权衡",
+ "takeaways": [
+  "自适应并行解码显著提升吞吐量同时保持高质量",
+  "三个可调参数提供灵活的速度-质量权衡",
+  "扩散模型在特定配置下可超越自回归模型速度"
+ ],
+ "weaknesses": [
+  "方法依赖于特定模型架构(Dream和Qwen)的兼容性",
+  "最大掩码前瞻M的减小可能显著影响推理质量",
+  "实验主要在数学推理任务上进行，泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

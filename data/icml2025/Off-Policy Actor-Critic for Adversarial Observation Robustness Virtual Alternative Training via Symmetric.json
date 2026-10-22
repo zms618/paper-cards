@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Off-Policy Actor-Critic for Adversarial Observation Robustness Virtual Alternative Training via Symmetric.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Off-Policy Actor-Critic for Adversarial Observation Robustness Virtual Alternative Training via Symmetric.pdf",
+ "title": "Off-Policy Actor-Critic for Adversarial Observation Robustness: Virtual Alternative Training via Symmetric Policy Evaluation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.25
+ },
+ "one_line": "VALT利用对称性定理简化对抗RL训练，但理论保证弱于硬对抗且缺乏真实场景验证。",
+ "innovations": [
+  "对称性定理(Thm 4.6)：证明在软最坏对手下，对手Bellman算子与智能体Bellman算子共享反号不动点Vπ^{ν*}=-V^{ν*}_π，从而无需显式训练对手即可从智能体Q直接推出对手价值",
+  "把硬L∞约束对抗改为f-散度软约束(soft-constrained adversary)，给出两种实现：VALT-SOFT(KL散度下解析解ν∝p·exp(-V/αattk))与VALT-EPS(α-散度对偶形式近似为PGD式worst-mode)",
+  "以SAC为基座实现off-policy鲁棒训练，证明策略改进定理(Thm 4.12)，并把原交替训练所需双倍样本降为单倍，达到Quantal Response Equilibrium式更稳定的平衡"
+ ],
+ "method_framework": "在SA-MDP的L∞观测扰动球Bϵ内，将对手目标J加f-散度正则化为软约束；由对称性Vπ^{ν*}=-V^{ν*}_π，对手分布直接由智能体Q˘(s,s˜)=Eπ[Q]+αentH(π)导出：SOFT用KL解析解+变分模型拟合，EPS用mode-probability+PGD数值近似；固定对手后用改进的最大熵策略改进DKL(π◦νfix‖π*◦νfix)更新智能体，回放缓冲里混合clean与对抗观测。",
+ "experiment_framework": "4个MuJoCo任务Hopper/HalfCheetah/Walker2d/Ant；on-policy基线PPO/Robust-PPO/ATLA-PPO/PA-ATLA-PPO/WocaR-PPO，off-policy基线SAC/Robust-SAC/SAC-PPO；攻击含启发式Uniform/MAD/PGD(minV/minQ)/RS与学习型SA-RL/PA-AD；指标clean回报+各攻击下回报+worst-across-attacks，20 episode/多随机种子。",
+ "takeaways": [
+  "VALT在0.5M-3M步内收敛，比PPO系(5-20M)快3-10倍、比WocaR-PPO快1.5-4倍，达到单倍样本",
+  "鲁棒性worst-score上VALT-EPS/SOFT在HalfCheetah(4647/3584)与Ant(1487/2757)等难任务优于Robust-SAC与SAC-PPO",
+  "SAC系对PGD(minQ)攻击敏感因Q函数被对抗直接压低，最大熵框架(Hopper/Walker2d)天然带来一定鲁棒性"
+ ],
+ "weaknesses": [
+  "与主任务的精确落地域(医学影像/多模态大模型推理)不符，仅在MuJoCo低维连续控制验证，未触及视觉观测或真实机器人",
+  "off-policy数据分布ρR与当前行为策略不匹配的问题作者自陈未解，行为策略需50:50混合clean/对抗观测这一启发式靠调参",
+  "理论依赖充分支撑假设与f函数可微凸性，soft-constraint把最坏情况放松为QRE，严格说不再是L∞球内的最坏情况鲁棒，保证力度弱于硬对抗"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

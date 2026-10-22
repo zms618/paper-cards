@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/A2GC_Asymmetric Aggregation with Geometric Constraints for Locally Aggregated Descriptors.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A2GC_Asymmetric Aggregation with Geometric Constraints for Locally Aggregated Descriptors.pdf",
+ "title": "A2GC: Asymmetric Aggregation with Geometric Constraints for Locally Aggregated Descriptors",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 4.9
+ },
+ "one_line": "非对称OT聚合+几何约束，但缺乏理论支撑与充分消融",
+ "innovations": [
+  "非对称 OT 求解：先做 T 次对数域行归一化与列归一化再取平均（式4）平衡两侧约束，最后分别计算源边际校准 u=log a-logsumexp(Z,2) 与靶边际校准 v=log b-logsumexp(Z',1) 叠加（式5-8），松弛 Sinkhorn 的对称边际假设以适应图像特征与聚类中心分布不一致的情形",
+  "几何约束：把空间坐标归一化到 [-1,1]² 后经 1×1 卷积投到 d_g=16 维得 g_xy，与每个聚类中心的可学习几何向量 c_j 求内积得到空间兼容分数 S^g_ij，以可学习标量 λ_g 加权叠加到特征相似度 S_ij=S^f_ij+λ_g S^g_ij（式11-12），使相邻空间位置倾向归入同一聚类",
+  "整合成单一聚合头：局部特征经卷积打分网络投影到 m=64 个聚类后的簇描述子，与投影后的全局 token 拼接，构成 2112~33280 维的紧凑全局描述子，可直接套在任意 DINOv2 主干上仅微调最后 2-4 个 block"
+ ],
+ "method_framework": "DINOv2 提局部特征图与全局 token；φ_s/ψ_s 计算特征相似度矩阵，φ_g 编码坐标得几何兼容项求和后按 λ_g 融合成 log-affinity 矩阵 M；非对称 OT 求解器做 3 次行/列归一化平均 + 独立源/靶边际校准得到 transport 矩阵；簇描述子拼接投影后的全局 token 并 L2 归一化成最终描述子，用 MultiSimilarityLoss 训练。",
+ "experiment_framework": "GSV-Cities（约 120 万图/23 城，每地点 4 图）训练；评测 Pittsburgh30k、Pitts250k-test、MSLS-val/challenge、NordLand、SPED；基线 NetVLAD/SFRS/PatchNetVLAD/CosPlace/MixVPR/R2Former/EigenPlaces/SelaVPR/CricaVPR/SALAD/BoQ/FoL/Pair-VPR/SemVPR；指标 Recall@1/5/10（FAISS + L2）。",
+ "takeaways": [
+  "把最优传输聚合里的「对称边际假设」当成可质疑对象、并给出非对称校准的行文，值得在其它 OT 落地的任务（聚类、跨域对齐）上复现这类前提检查",
+  "只用 DINOv2 最后 2-4 个 block 微调（表 4：92.9→94.9 R@1）而冻结主干，是在强预训练特征上做检索任务的性价比做法，且训练全 block 反而掉点（94.0）",
+  "几何项以「可学习坐标编码 + 点积打分」的形式叠加到相似度上，实现成本极低（1×1 卷积 + 可学习标量），可作为任意聚合头的即插即用空间先验"
+ ],
+ "weaknesses": [
+  "所谓非对称 OT 求解器没有任何最优性或收敛性刻画：式(4) 的行列归一化取平均、式(5)-(8) 的源/靶独立校准都只是对 Sinkhorn 的经验改写，T=3、tau=1.0 直接给固定值；既没说明它最小化哪个目标，也没有与「多跑几次 Sinkhorn」「仅单边校准」「对偶加权」的对照实验，无法证明非对称处理真比标准 Sinkhorn 好",
+  "几何约束本质是「可学习坐标编码 + 打分点积偏置」，表 5 显示去掉 GC 仅掉 0.8% R@1、去掉 A2GC 掉 1.0%，两者贡献都很小且在组件消融里互相重叠，无法分辨性能增益到底来自非对称校准还是来自额外可学习参数；λ_g、d_g、聚类数 m 均未做敏感性实验",
+  "全部主表与消融均单次运行、无种子方差；表 1 里被超越的 FoL、Pair-VPR、SelaVPR、CricaVPR 等多为带「*」的两阶段重排序方法，与 A2GC 单阶段聚合并非同设定对比，公平性存疑。在更难的 MSLS-challenge 上 A2GC(ViTb) 80.4% 仅比 FoL 80.0% 高 0.4 个百分点",
+  "训练数据 GSV-Cities 本身由 Pittsburgh30k/MSLS 的同一批城市图构成（每地点采样 4 图），训练与评测集高度同域且空间重叠，而 setups 里声明的 NordLand、SPED 跨地域评测在正文表中完全缺席，「robustness / 跨分布提升」的说法缺对应证据"
+ ],
+ "confidence": "high",
+ "raw_overall": 4.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "视觉检索任务，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

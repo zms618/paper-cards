@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Calibrated Value-Aware Model Learning with Probabilistic Environment Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Calibrated Value-Aware Model Learning with Probabilistic Environment Models.pdf",
+ "title": "Calibrated Value-Aware Model Learning with Probabilistic Environment Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.25
+ },
+ "one_line": "理论分析VAML损失未校准问题，提出校正方法但实证有限",
+ "innovations": [
+  "将MuZero损失与IterVAML统一为(m,b)-VAML损失族(m为模型推演步、b为自举价值目标步)",
+  "证明常用VAML损失在标准用法下是未校准替代损失，函数类含最优解时也会收敛到次优解",
+  "提出校正损失L_CVAML(用校正损失更新模型、用常规MB/TD损失更新价值函数)以恢复正确模型与价值",
+  "分析确定性模型足以逼近价值时，学习校准随机模型仍具优势的条件"
+ ],
+ "method_framework": "以损失校准(calibrated loss)为分析框架，把MuZero/IterVAML纳入(m,b)-VAML族，理论刻画何时损失可恢复正确模型与价值；据此提出校正目标，并在有限状态MDP上考察随机性、确定性潜在模型与辅助损失对校准的影响。",
+ "experiment_framework": "前9页以有限状态MDP数值实验为主：近确定性环境下各算法可借softmax非线性得到精确模型，但少量随机性即破坏；配合理论命题与引理论证，后续(9页外)应含连续控制实证。",
+ "takeaways": [
+  "MuZero式value-aware损失并非天然校准，直接用作替代损失可能学到错误模型/价值",
+  "校准版损失配合独立的价值更新目标，可在随机环境恢复正确解",
+  "确定性潜在模型在随机环境中会失效，随机模型的校准学习仍有必要"
+ ],
+ "weaknesses": [
+  "前9页实证主要为有限状态MDP玩具设置，大规模连续控制结论在9页外、证据强度受限",
+  "主线为基于模型RL的损失校准理论，与医学影像、多模态大模型推理落地域关联弱",
+  "校正损失带来的额外计算与训练稳定性代价未充分量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

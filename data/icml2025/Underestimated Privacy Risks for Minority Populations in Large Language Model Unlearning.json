@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Underestimated Privacy Risks for Minority Populations in Large Language Model Unlearning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Underestimated Privacy Risks for Minority Populations in Large Language Model Unlearning.pdf",
+ "title": "Underestimated Privacy Risks for Minority Populations in Large Language Model Unlearning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6.5,
+  "relevance": 7,
+  "overall": 6.3
+ },
+ "one_line": "揭示LLM遗忘评估低估少数群体隐私风险，提出互补评估框架",
+ "innovations": [
+  "指出现有LLM遗忘评估随机选样本删除的盲区：离群/少数群体数据记忆倾向更高、更难遗忘，标准评估系统性低估其隐私风险",
+  "提出互补的minority-aware评估框架：除随机删除外，另设(2)删除含PII的canary、(3)直接删除少数群体数据两类设置，并取三者最差作为鲁棒隐私度量",
+  "用Enron等数据集、按区号频率构造少数/多数群体子集，跨多种遗忘方法、MIA、数据集与LLM规模验证少数子集泄漏至少高20%"
+ ],
+ "method_framework": "以PrivLeak(PL)=∆AUC/AUC(Mretrain)度量遗忘后模型Munlearn与从头重训Mretrain的可区分性，PL≈0为理想；用lossMIA等三种流行MIA攻击forget集与holdout；少数子集用低频区号(Enron邮箱PII)或植入canary构造。",
+ "experiment_framework": "Enron(邮箱PII/区号)等数据集；对比多种启发式LLM遗忘方法与三种MIA；跨多个LLM规模；指标为PrivLeak归一化AUC，并按少数vs多数子集分组比较泄漏差距。",
+ "takeaways": [
+  "按随机样本平均得到的遗忘效果具有误导性：少数/离群子集的隐私泄漏比多数样本高至少20%，评估必须取最坏子集而非平均",
+  "含PII的canary与直接删少数数据是暴露遗忘盲区的有效探针，应纳入标准遗忘评测的 worst-case 协议"
+ ],
+ "weaknesses": [
+  "本文是评估框架/实证诊断，并未提出新的遗忘方法来缓解少数群体泄漏，只揭示问题",
+  "少数群体用区号频率等代理构造，与真实受保护属性(种族/国籍)的对应是间接的；'至少20%'结论依赖特定canary与PII假设，外推到其他领域需谨慎"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

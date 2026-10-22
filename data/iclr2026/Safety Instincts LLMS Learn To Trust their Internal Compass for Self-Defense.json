@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Safety Instincts LLMS Learn To Trust their Internal Compass for Self-Defense.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Safety Instincts LLMS Learn To Trust their Internal Compass for Self-Defense.pdf",
+ "title": "Safety Instincts: LLMs Learn to Trust their Internal Compass for Self-Defense",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "利用对齐模型内在熵差信号构建自奖励，实现无监督越狱防御。",
+ "innovations": [
+  "发现'安全本能'现象：对齐模型对有害请求产生高置信(低熵)拒绝，而生成危险内容时呈高熵，模型内在'知道'何时该拒绝。",
+  "提出SIRL：将该熵差转化为自生成奖励信号，用强化学习强化低熵拒绝行为，无需外部验证器或人工标注。",
+  "仅用1.5万无标注prompt即在Llama/Qwen上对20+越狱方法保持89%+防御成功率，并保持数学/编码/对话性能，超过资源密集的监督方法。"
+ ],
+ "method_framework": "测量模型生成时的输出熵：安全拒绝为低熵、危险内容为高熵；以该熵差构造自生成奖励，用RL强化低熵拒绝行为，使模型信任自身安全直觉进行自防御。",
+ "experiment_framework": "在Llama与Qwen系列模型上评测，对20+越狱方法(静态提示到自动化攻击)报防御成功率(DSR)；用1.5万无标注prompt训练，并检验数学/编码/对话基准上的性能保持。",
+ "takeaways": [
+  "对齐模型已具备可利用的内在安全信号(拒绝与危险内容间的熵差)，可作自生成奖励。",
+  "SIRL仅凭无标注prompt即可有效抗越狱，说明对齐可在减少人工监督下从内部涌现。"
+ ],
+ "weaknesses": [
+  "为通用LLM越狱防御方向，落地域非医学影像/多模态，与主线在'可信AI/鲁棒'概念上强相关。",
+  "熵差作为安全信号可能被对抗攻击操纵(通过诱导低熵的危险输出)；对自适应/多模态越狱的防御泛化未充分验证。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "可信AI主线，无监督越狱防御具鲁棒性价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

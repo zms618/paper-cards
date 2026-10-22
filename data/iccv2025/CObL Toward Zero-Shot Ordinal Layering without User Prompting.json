@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/CObL Toward Zero-Shot Ordinal Layering without User Prompting.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/CObL Toward Zero-Shot Ordinal Layering without User Prompting.pdf",
+ "title": "CObL Toward Zero-Shot Ordinal Layering without User Prompting",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "扩散模型并行生成分层，合成数据训练，性能随物体数增加下降",
+ "innovations": [
+  "使用扩散模型并行生成多个物体层",
+  "引入合成数据生成管道解决训练数据缺乏问题",
+  "设计组合引导和先验分数匹配两种引导机制"
+ ],
+ "method_framework": "CObL模型使用多个冻结的Stable Diffusion UNet并行生成物体层，通过可学习的跨层注意力和输入条件网络连接，使用组合损失和先验分数匹配损失进行引导。",
+ "experiment_framework": "在2250个合成桌面场景上训练，在TABLETOP真实数据集上评估，使用LPIPS和CLIP指标比较amodal完成质量，ARI评估可见分割质量。",
+ "takeaways": [
+  "合成数据生成管道可有效解决sim-to-real鸿沟",
+  "组合引导机制能保持可见细节并确保层合成回原始图像"
+ ],
+ "weaknesses": [
+  "物体数量超过4时性能显著下降",
+  "内存需求限制了输出物体层的最大数量",
+  "推理速度较慢"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "扩散模型分层生成，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

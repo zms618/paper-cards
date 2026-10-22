@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Crocodilight_Repurposing Cross-View Completion Encoders for Relighting.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Crocodilight_Repurposing Cross-View Completion Encoders for Relighting.pdf",
+ "title": "Crocodilight: Repurposing CROSS-VIEW Completion Encoders for Relighting",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "利用预训练模型解耦光照，性能略逊且泛化受限",
+ "innovations": [
+  "将CroCo隐空间显式解耦为光照向量和场景固有属性",
+  "使用小规模数据集提取预训练模型中的光理解能力",
+  "实现光照插值、阴影去除和反照率估计等多种应用"
+ ],
+ "method_framework": "冻结CroCo编码器，通过delighting和relighting两个transformer解耦并重组光照与场景信息，结合单视图解码器实现高质量图像生成",
+ "experiment_framework": "使用BigTime和Multi-Illumination数据集(57k对)，在ISTD+和SRD上评估阴影去除，使用FloLPIPS评估时间插值",
+ "takeaways": [
+  "预训练模型中已包含光理解能力，只需提取而非从头学习",
+  "小规模像素对齐数据即可有效解耦光照与场景属性"
+ ],
+ "weaknesses": [
+  "阴影去除性能略低于最新方法",
+  "光照解耦在图像空间而非世界空间，限制了泛化性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "图像处理应用，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

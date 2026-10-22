@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Unified Uncertainty-Aware Diffusion for Multi-Agent Trajectory Modeling.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Unified Uncertainty-Aware Diffusion for Multi-Agent Trajectory Modeling.pdf",
+ "title": "Unified Uncertainty-Aware Diffusion for Multi-Agent Trajectory Modeling",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "扩散模型加不确定性估计的多智能体轨迹预测，计算开销大且误差相关性不足",
+ "innovations": [
+  "统一扩散模型处理轨迹完成任务，支持预测、插值和完全不可见智能体推断",
+  "通过负对数似然损失增强实现状态级不确定性估计",
+  "RankNN后处理网络为每个生成模式提供误差概率估计"
+ ],
+ "method_framework": "U2Diff基于扩散模型，结合双向MambaSSM进行时间处理和Transformer进行社交处理，通过负对数似然损失增强实现状态级不确定性估计，并通过方差传播将潜在空间不确定性映射到真实状态空间。",
+ "experiment_framework": "在四个体育数据集(NBA, Basketball-U, Football-U, Soccer-U)上评估，使用minADEK、minFDEK、minSADEK和minSFDEK等指标，比较与最先进方法的性能。",
+ "takeaways": [
+  "不确定性估计通过简单损失增强实现，保持跨时间步一致性",
+  "方差传播从第30步开始而非第1步，提高模型性能",
+  "RankNN通过可微分排序算子最大化Spearman相关系数，实现误差概率估计"
+ ],
+ "weaknesses": [
+  "方法在计算复杂度上较高，特别是RankNN需要处理多个场景",
+  "不确定性估计与真实误差的相关性仍有提升空间，Spearman相关系数中位数仅为0.58和0.78"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.975,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "不确定性估计与轨迹预测结合，符合可靠性主线但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

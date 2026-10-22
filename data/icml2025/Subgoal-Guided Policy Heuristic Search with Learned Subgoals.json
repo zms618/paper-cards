@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Subgoal-Guided Policy Heuristic Search with Learned Subgoals.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Subgoal-Guided Policy Heuristic Search with Learned Subgoals.pdf",
+ "title": "Subgoal-Guided Policy Heuristic Search with Learned Subgoals",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "从搜索树中学习子目标引导策略，提升样本效率但领域受限。",
+ "innovations": [
+  "提出为策略树搜索学习'基于子目标'的策略，把搜索问题分解为到子目标的子任务。",
+  "子目标与子目标条件策略不仅从成功轨迹、也从失败尝试展开的搜索树中学出，复用了被浪费的失败搜索样本。",
+  "在在线 search-and-learn（bootstrap）设定下提升策略与启发函数的样本效率。"
+ ],
+ "method_framework": "PHS* 用学到的策略引导单智能体树搜索，节点扩展数上界依赖策略质量；但其 bootstrap 训练在难问题上随机初始策略常失败、浪费样本。本文从搜索实际展开的树（含失败尝试）中自动提取有用子目标，训练条件于子目标的策略，使搜索先朝向已学到的子目标推进，从而即使难问题也能高效产生有效训练信号。",
+ "experiment_framework": "在若干单智能体搜索问题上，对比 PHS* 等策略树搜索方法；指标为在线学习的样本效率与节点扩展数/求解率。",
+ "takeaways": [
+  "复用失败搜索树学习子目标，减少了难问题上的样本浪费。",
+  "子目标条件策略提升了在线 bootstrap 学习效率。",
+  "改善了策略质量进而收紧搜索扩展数上界。"
+ ],
+ "weaknesses": [
+  "属搜索/规划算法方向，与医学影像/多模态推理主线无关。",
+  "子目标自动提取的质量依赖搜索树覆盖，极难问题连子目标树都展不开时仍会失效。",
+  "实验问题域较窄（单智能体搜索），未在大规模真实规划/游戏环境验证可扩展性。"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/ES-DLLM_Efficient Inference for Diffusion Large Language Models By Early-Skipping.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/ES-DLLM_Efficient Inference for Diffusion Large Language Models By Early-Skipping.pdf",
+ "title": "ES-DLLM: Efficient Inference for Diffusion Large Language Models By EARLY-SKIPPING",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "早期跳过机制加速扩散LLM推理，但内存访问成瓶颈",
+ "innovations": [
+  "分析扩散模型中间表示变化微小，发现计算冗余",
+  "基于置信度和中间张量变化的重要性估计",
+  "训练无关的早期跳过框架，减少60% FLOPs"
+ ],
+ "method_framework": "ES-dLLM估计token重要性，在早期层跳过低重要性token，部分更新缓存，保持生成质量",
+ "experiment_framework": "在LLaDA-8B和Dream-7B上评估，使用GSM8K、MATH、BBH等数据集，比较TPS和性能分数",
+ "takeaways": [
+  "利用中间表示变化微小性进行优化",
+  "重要性估计结合置信度和张量变化效果最佳"
+ ],
+ "weaknesses": [
+  "内存访问成为瓶颈，理论FLOPs减少未完全转化为速度提升",
+  "需要定期刷新缓存防止误差累积"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "加速推理技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

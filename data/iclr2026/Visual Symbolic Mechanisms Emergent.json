@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Visual Symbolic Mechanisms Emergent.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Visual Symbolic Mechanisms Emergent.pdf",
+ "title": "Visual Symbolic Mechanisms: Emergent Symbol Processing in Vision Language Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "揭示VLM中位置ID符号机制，但复杂场景验证不足",
+ "innovations": [
+  "首次发现VLM中存在类似文本LM绑定ID的视觉符号机制——位置ID(position IDs)，利用视觉空间作为内容无关的脚手架来绑定特征和解析多物体场景",
+  "识别出三类视觉符号处理子机制：ID检索头（根据物体特征检索对应位置ID）、ID选择头（计算目标物体ID）、以及ID到特征的映射机制",
+  "证明VLM的绑定错误可直接追溯到这些符号机制的失效，为改进VLM绑定能力提供了机制层面的方向"
+ ],
+ "method_framework": "采用机制可解释性(mechanistic interpretability)方法，通过探测、干预和因果分析研究VLM内部的特征绑定机制。具体包括：识别内容无关的位置ID向量（类似文本LM的binding IDs），定位负责ID检索和ID选择的注意力头，通过消融/干预实验验证这些机制对绑定行为的因果作用，并追踪绑定错误发生时这些机制的异常状态。",
+ "experiment_framework": "对象：主流开源VLM模型。任务：多物体特征绑定任务（如红方块+蓝圆 vs 蓝方块+红圆的区分）。方法：机制可解释性分析（探测头、路径修补、激活干预）。指标：绑定准确率、干预后行为变化、错误与机制异常的对应关系。",
+ "takeaways": [
+  "VLM确实通过空间位置索引（位置ID）实现特征绑定，这是一种内容无关的符号处理机制，与文本LM中的绑定ID类似但利用视觉空间作为脚手架",
+  "VLM在绑定任务上的失败并非随机噪声，而是可直接追溯到位置ID检索或选择机制的具体失效",
+  "识别这些符号机制为改进VLM的绑定能力提供了明确的干预靶点"
+ ],
+ "weaknesses": [
+  "研究主要在受控的简单合成场景（颜色+形状绑定）下进行，未验证在复杂自然图像场景中这些机制是否同样存在",
+  "仅分析了少数开源VLM，不同架构（如不同视觉编码器）的符号机制是否有差异尚未系统比较",
+  "虽然识别了机制，但提出的改进方向较为笼统，未给出具体的修复或增强方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "VLM符号机制研究，与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

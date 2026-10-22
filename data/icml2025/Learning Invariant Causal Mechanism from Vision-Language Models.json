@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning Invariant Causal Mechanism from Vision-Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning Invariant Causal Mechanism from Vision-Language Models.pdf",
+ "title": "Learning Invariant Causal Mechanism from Vision-Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "用因果模型分析CLIP微调问题，提出不变子空间投影提升OOD泛化。",
+ "innovations": [
+  "用结构因果模型(SCM)建模CLIP预测过程，揭示微调后环境间因果机制不一致导致OOD性能下降",
+  "理论证明CLIP嵌入到不变因子存在线性映射，可通过干预数据估计该投影矩阵",
+  "提出CLIP-ICM框架：收集干预数据→估计不变子空间投影→在不变子空间预测，保证低OOD风险"
+ ],
+ "method_framework": "将CLIP预测建模为SCM：图像嵌入X → 不变因子Z_inv + 变异因子Z_var → 预测Y；训练环境中Z_var与Y存在虚假相关，测试环境中该相关消失；理论证明存在线性映射从CLIP嵌入到Z_inv；用干预数据(改变变异因子但保持不变因子)估计投影矩阵W；在不变子空间W^T X上做预测，消除变异因子的干扰。",
+ "experiment_framework": "在多个OOD图像分类数据集上评估(Terra Incognita等)；对比标准CLIP微调、域泛化方法；指标为OOD准确率、新类别泛化性能；消融实验验证干预数据收集和投影矩阵估计的作用。",
+ "takeaways": [
+  "CLIP微调后OOD性能下降的根源是变异因子与标签的虚假相关在环境间不稳定",
+  "不变因果子空间的线性可投影性使VLM的OOD改进变得简单高效",
+  "干预数据收集是估计不变投影的关键，少量干预数据即可显著提升OOD性能"
+ ],
+ "weaknesses": [
+  "干预数据的收集需要知道哪些是变异因子，实际应用中干预设计依赖先验知识",
+  "线性映射假设较强，CLIP嵌入到不变因子的关系可能是非线性的",
+  "仅在图像分类任务上验证，VLM的生成或推理任务的适用性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

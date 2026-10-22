@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/BackSlash_Rate Constrained Optimized Training of Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/BackSlash_Rate Constrained Optimized Training of Large Language Models.pdf",
+ "title": "BackSlash: Rate Constrained Optimized Training of Large Language Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "率失真优化训练压缩LLM，分类任务有效但未减少计算量",
+ "innovations": [
+  "提出训练时压缩框架BackSlash，将率失真优化(RDO)直接集成到LLM训练过程中而非训练后压缩",
+  "发现LLM参数分布更符合广义高斯分布(GGD)而非高斯分布，提出动态广义高斯率(DGGR)正则项",
+  "使用指数Golomb(EG)编码替代Huffman编码，实现跨模型通用的参数熵编码"
+ ],
+ "method_framework": "在标准损失函数中加入λ·(1/Np)Σ(|θi|+ε)^ν的率正则项，其中ν为广义高斯分布的形状参数，通过比较函数ρ(ν)=E[θ²]/E²[|θ|]在线估计ν。软梯度裁剪ε防止梯度爆炸。训练后参数分布更集中（高峰值、低尾部），配合EG编码实现高效压缩。",
+ "experiment_framework": "在BERT(110M)/GPT(774M)/Llama(1B)/Gemma(2B)上测试分类任务（情感分析等），对比未约束训练+FL/EG/Huffman编码的压缩率与精度。报告平均码长(bits)、压缩比和准确率。",
+ "takeaways": [
+  "BackSlash在BERT上实现76%压缩率仅损失1.04%精度（92.59% vs 93.63%）",
+  "Gemma 2B模型压缩率达90%，精度仅下降1.09%",
+  "小λ值可提升泛化能力，模型对剪枝的鲁棒性增强（80%剪枝率仍保持精度）"
+ ],
+ "weaknesses": [
+  "仅在分类任务上验证，未评估生成任务质量（困惑度、BLEU等）",
+  "λ参数选择依赖试错，缺乏理论指导的最优λ选取方法",
+  "压缩收益主要来自熵编码而非结构压缩，推理时计算量并未减少"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "LLM压缩与可靠性主线无关，仅工程价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

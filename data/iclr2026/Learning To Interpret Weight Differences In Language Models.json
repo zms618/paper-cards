@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Learning To Interpret Weight Differences In Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Learning To Interpret Weight Differences In Language Models.pdf",
+ "title": "Learning To Interpret Weight Differences In Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "训练适配器使模型自我描述权重变化，但泛化性和扩展性有限。",
+ "innovations": [
+  "Diff Interpretation Tuning (DIT)方法训练适配器使模型自我描述权重变化",
+  "使用合成生成的标记权重差异数据集训练DIT-适配器",
+  "证明模型能识别隐藏行为和总结新知识两种应用场景"
+ ],
+ "method_framework": "DIT训练LoRA适配器，使微调后的模型能通过自然语言描述自身行为变化。使用合成生成的(Mi, qi, yi)三元组数据集训练适配器，使其能将权重空间映射到行为描述。",
+ "experiment_framework": "两个评估场景：1)报告隐藏行为(4,760个合成rank-1 LoRA权重差异)；2)总结微调知识(8,860个新闻故事权重差异)。使用LLM-judge评分，对比基线方法包括Base Question和20 Questions。",
+ "takeaways": [
+  "使用合成数据训练适配器可实现模型自我解释",
+  "DIT-适配器能泛化到更高秩LoRA和全参数微调",
+  "模型能识别隐藏行为但难以发现触发器"
+ ],
+ "weaknesses": [
+  "DIT-适配器在不同行为类型间泛化能力差",
+  "无法识别隐藏行为的触发器",
+  "当前方法在小规模数据上表现良好，扩展性存疑"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "模型自我解释方法与可靠性主线部分相关但泛化有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

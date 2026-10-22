@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/ChimeraLoRA_Multi-Head LoRA-Guided Synthetic Datasets.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ChimeraLoRA_Multi-Head LoRA-Guided Synthetic Datasets.pdf",
+ "title": "ChimeraLoRA Multi-Head LoRA-Guided Synthetic Datasets",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "多头部LoRA与语义增强提升合成数据质量，但计算开销大且依赖检测器。",
+ "innovations": [
+  "多头部LoRA架构分离类级与实例级特征",
+  "语义增强技术确保目标对象完整性",
+  "Dirichlet分布混合LoRA头部生成多样化样本"
+ ],
+ "method_framework": "共享LoRA A捕获类级先验，每图像专用LoRA B捕获实例细节，结合Grounded-SAM边界框进行语义增强，通过Dirichlet分布混合多个B头部生成多样化样本。",
+ "experiment_framework": "11个数据集包括细粒度任务和医学影像，4-shot设置对比IsSynth、LoFT和DataDream，使用CLIP作为下游分类器评估准确率、FID@4、CLIP分数和中心相似度。",
+ "takeaways": [
+  "多头部LoRA架构有效平衡多样性与细节保真度",
+  "语义增强技术显著提升目标对象完整性",
+  "Dirichlet混合策略提供可控的多样性-保真度权衡"
+ ],
+ "weaknesses": [
+  "方法在少数数据集上仍无法超越真实4-shot性能",
+  "计算开销较大，生成500张图像需要重建多个LoRA头部",
+  "依赖Grounded-SAM的边界框质量，可能受限于检测器性能"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像应用有落地价值，但方法与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Revisiting Active Sequential Prediction-Powered Mean Estimation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Revisiting Active Sequential Prediction-Powered Mean Estimation.pdf",
+ "title": "Revisiting Active Sequential Prediction-Powered Mean Estimation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.5,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "仿真证明均匀查询策略优于不确定性驱动，但缺乏真实场景验证。",
+ "innovations": [
+  "实证观察到混合查询规则中，最小置信宽度出现在常数（均匀）概率权重接近1处，即基于模型不确定性的分量贡献很小。",
+  "对该估计量做非渐近分析，建立数据依赖的置信区间界。",
+  "证明当用no-regret方法控制查询概率时，查询概率会收敛到与当前协变量无关选取的查询概率上界约束。"
+ ],
+ "method_framework": "在每轮观测协变量后决定是否查询真实标签（否则用ML模型预测替代）；把查询概率建模为不确定性建议与均匀概率的混合；用no-regret学习在预算约束下控制数据依赖置信界，使查询概率收敛到约束上界。",
+ "experiment_framework": "以多种任务上的仿真/数值实验验证理论发现，比较混合规则与纯均匀策略的置信区间宽度；主要证据为仿真而非真实大规模数据集。",
+ "takeaways": [
+  "在主动序贯预测驱动均值估计中，基于模型不确定性的逐样本查询建议未必有益，近均匀策略反而给出更窄置信区间。",
+  "no-regret控制可使查询概率收敛到预算约束上界，从而满足小方差与预算要求。"
+ ],
+ "weaknesses": [
+  "仅仿真验证，缺乏在真实标注预算受限场景（如医学标注）的实证。",
+  "结论质疑了不确定性分量的价值，但对模型校准误差如何影响该结论未做敏感性分析。",
+  "与落地域（医学影像/多模态推理）无直接关联，属统计推断理论。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.03,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "统计推断理论，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

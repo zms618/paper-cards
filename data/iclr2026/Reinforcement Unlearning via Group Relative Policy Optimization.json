@@ -1,0 +1,41 @@
+{
+ "title": "Reinforcement Unlearning via Group Relative Policy Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "GRPO引导LLM遗忘，但隐性记忆覆盖有限且落地域不匹配。",
+ "innovations": [
+  "将LLM unlearning形式化为可验证问题，基于GRPO用内在奖励(惩罚提及被禁概念)引导遗忘，避免外部奖励模型的开销。",
+  "给出理论结果：被禁token概率的几何衰减，以及用KL散度给出效用保持的高概率界。",
+  "在RWKU上达到最高46倍更少token、+5.48%流畅度、+12.02%对抗鲁棒，并在保持98%原效用下实现遗忘。"
+ ],
+ "method_framework": "以GRPO为框架，把'不再生成被禁概念'作为可验证目标构造内在奖励；对同一prompt采样一组回答，按是否提及被禁token给相对优势，策略优化压低被禁token概率；同时用KL约束锚定原策略以保持通用效用，理论上对应几何衰减与效用高概率保持。",
+ "experiment_framework": "基准：RWKU(知识记忆、知识操纵、对抗鲁棒、真实效用)；对比in-context、梯度上升微调、偏好优化类遗忘方法；指标为遗忘有效性、token消耗、流畅度、对抗鲁棒率与原效用保留。",
+ "takeaways": [
+  "把遗忘当作可验证RL任务比现有遗忘方法更可靠、更省token，且不依赖外部奖励模型。",
+  "内在奖励+KL锚定可在压低被禁内容的同时避免模型崩塌、保持甚至提升流畅与鲁棒。",
+  "可验证框架为遗忘提供了可问责、可扩展的部署路径。"
+ ],
+ "weaknesses": [
+  "内在奖励依赖'被禁概念'的可检测匹配(如关键词/实体)，对隐性记忆或改写式泄漏的覆盖有限。",
+  "主线落地域(医学影像/多模态推理)不匹配，仅为通用LLM隐私/安全遗忘。",
+  "节选前9页未见RWKU各子任务完整数值表与相对最强基线的逐项对比，遗忘有效性(11%)的绝对水平偏低需注意。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Reinforcement Unlearning via Group Relative Policy Optimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reinforcement Unlearning via Group Relative Policy Optimization.pdf",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "LLM遗忘方法不匹配医学影像/多模态主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

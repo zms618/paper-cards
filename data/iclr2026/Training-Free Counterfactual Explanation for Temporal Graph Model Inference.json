@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Training-Free Counterfactual Explanation for Temporal Graph Model Inference.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Training-Free Counterfactual Explanation for Temporal Graph Model Inference.pdf",
+ "title": "Training-Free Counterfactual Explanation for Temporal Graph Model Inference",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.3
+ },
+ "one_line": "训练-free时间图反事实解释，但机制验证不足",
+ "innovations": [
+  "提出首个面向TGNN的训练-free、模型无关、可查询的反事实解释框架TemGX",
+  "设计融合时空影响和时间衰减模型的可解释性度量，通过滑动窗口捕获上下文化的时间影响",
+  "将解释任务形式化为约束优化问题，给出具有时间可解释性保证的快速算法"
+ ],
+ "method_framework": "TemGX通过时间反事实分析发现负责推理结果的时序子图及其演化。首先计算每个时序边/节点的时空影响分数（结合空间影响和时间衰减），然后将解释任务形式化为在时间可解释性约束下的优化问题，快速发现最小时序子图作为解释。",
+ "experiment_framework": "在多个动态图数据集上对比SOTA GNN解释器，评估解释质量和效率；展示TemGX支持时间查询的可解释动态网络分析能力。",
+ "takeaways": [
+  "时间衰减+滑动窗口的时空影响度量有效捕获了时序图中关键证据的时间分布",
+  "训练-free框架无需重新训练TGNN即可生成反事实解释，效率高",
+  "可查询性使用户能交互式探索不同时间点和子图对推理结果的影响"
+ ],
+ "weaknesses": [
+  "反事实解释的忠实度（fidelity）评估指标较为常规，缺乏更严格的验证",
+  "时间衰减参数的选择对解释结果的影响未充分分析",
+  "仅在链接预测和节点分类任务上验证，其他TGNN任务的适用性未探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "反事实解释方法与可靠性主线直接交织，设计模式可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

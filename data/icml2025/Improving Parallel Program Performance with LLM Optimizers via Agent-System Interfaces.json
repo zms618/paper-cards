@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces.pdf",
+ "title": "Improving Parallel Program Performance with LLM Optimizers via Agent-System Interfaces",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "DSL+AutoGuide让LLM优化器快速生成高性能HPC并行程序mapper",
+ "innovations": [
+  "提出领域专用语言（DSL）抽象低层系统代码并定义结构化搜索空间，使LLM可在其上优化mapper",
+  "提出AutoGuide将原始执行输出解释为可操作反馈，提供超越标量性能的丰富信号",
+  "10次迭代即优于OpenTuner 1000次（3.8倍加速），9个基准上最高超专家手写mapper 1.34倍"
+ ],
+ "method_framework": "用DSL把mapper开发问题表述为结构化搜索空间；LLM优化器在该空间内生成候选mapper；AutoGuide把执行剖面/日志翻译成自然语言可操作反馈，指导LLM迭代改进，替代只依赖标量性能的RL调参。",
+ "experiment_framework": "在9个任务型并行HPC基准上，与OpenTuner及专家手写mapper对比；指标为调优迭代数、最终加速比与调优耗时。",
+ "takeaways": [
+  "LLM优化器借丰富的结构化反馈可在极少迭代内超越传统黑盒调参器",
+  "调优时间从数天压缩到数分钟，对缺乏系统专长的领域科学家友好",
+  "生成的mapper可超过专家手写，说明LLM可承担系统级性能优化"
+ ],
+ "weaknesses": [
+  "依赖精心设计的DSL与AutoGuide，迁移到其他系统/语言的成本不低",
+  "9个基准规模有限，对超大规模真实生产HPC应用的泛化未验证",
+  "LLM每轮调用的推理成本与延迟未充分核算"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

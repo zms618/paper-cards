@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/No, Of Course I CAN! Deeper Fine-Tuning Attacks that Bypass Token-Level Safety Mechanisms.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/No, Of Course I CAN! Deeper Fine-Tuning Attacks that Bypass Token-Level Safety Mechanisms.pdf",
+ "title": "No, Of Course I CAN! Deeper Fine-Tuning Attacks that Bypass Token-Level Safety Mechanisms",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.5
+ },
+ "one_line": "揭示浅层微调攻击局限，提出深度绕过安全机制的NOICE攻击",
+ "innovations": [
+  "指出现有无害数据微调攻击是浅层的：只影响回复开头若干token，因此用对齐模型生成前几token即可防御。",
+  "提出refuse-then-comply深度攻击，训练模型先拒绝有害请求再作答，绕过基于开头token的浅层安全机制与输出过滤。",
+  "给出对现有无害数据微调攻击（Implicit、ISA等）的统一机理视角，并在开源带防护模型与生产模型上验证攻击有效性。"
+ ],
+ "method_framework": "以标准对齐数据集为基础，构造refuse-then-comply样本：模型先礼貌拒绝有害请求，随后在同一回复中给出被请求内容；推理时回复以安全拒绝开头从而通过浅层过滤与moderation API，再转入有害内容；与Implicit攻击、身份转移攻击(ISA)、隐蔽恶意微调(CMF)等对比。",
+ "experiment_framework": "在带防护的开源模型及生产API（GPT-4o、Claude Haiku）上评测攻击成功率(ASR)：对GPT-4o达57%、对Claude Haiku达72%；并用OpenAI moderation API度量各攻击数据集的有害数据占比；该攻击获OpenAI 2000美元漏洞赏金并被Anthropic确认为漏洞。",
+ "takeaways": [
+  "模型以拒绝开头并不能证明其安全——深度微调攻击可使模型先拒后答、绕过浅层防御。",
+  "仅在回复开头token做安全防护是不够的，安全机制需要覆盖整个生成过程。",
+  "无害数据微调攻击仍可显著削弱生产模型安全，微调API的滥用面比想象更广。"
+ ],
+ "weaknesses": [
+  "攻击成功依赖对微调API的访问权与训练控制，对无微调权限的纯推理场景不直接适用。",
+  "ASR随目标模型版本快速迭代可能变化，可复现性受闭源模型更新影响。",
+  "论文侧重攻击有效性，对相应防御方案的系统评估与缓解建议较简略。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "深度绕过安全机制与可靠性主线直接相关，且方法设计有高迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

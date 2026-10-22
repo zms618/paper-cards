@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/WHAT’S the PLAN Metrics for Implicit Planning In LLMS and.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/WHAT’S the PLAN Metrics for Implicit Planning In LLMS and.pdf",
+ "title": "What's the Plan? Metrics for Implicit Planning in LLMs and Their Application to Rhyme Generation and Question Answering",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "简单向量操纵法验证LLM隐式规划，但任务单一且方法粗糙。",
+ "innovations": [
+  "提出比跨层转码器更简单的隐式规划评估方法，易于扩展到多个模型",
+  "通过押韵诗歌和问答两个案例，证明在前面位置用向量操纵目标token（押韵词/答案），会影响中间token的生成，验证隐式规划的因果性",
+  "发现隐式规划是普遍机制，从1B参数模型起就存在，比之前认为的更早出现"
+ ],
+ "method_framework": "定义前向规划（在早期位置创建目标token的表征）和后向规划（利用这些表征生成中间token）。通过在前面行末尾注入目标方向的向量，观察中间token生成是否被因果操纵，来检验隐式规划的存在。",
+ "experiment_framework": "在多个不同规模的LLM上测试。两个案例研究：押韵诗歌生成（操纵押韵词）和问答（操纵答案词）。指标为目标token被成功操纵的比例和中间token受影响的程度。",
+ "takeaways": [
+  "LLM的隐式规划比之前认为的更普遍、更小模型即可出现",
+  "前向规划和后向规划是同一机制的两个方面——早期位置创建目标表征，中间生成条件于该表征",
+  "理解规划能力对AI安全和控制研究有重要意义"
+ ],
+ "weaknesses": [
+  "仅在押韵和问答两个相对简单的任务上验证，复杂多步推理任务中的隐式规划是否一致未知",
+  "向量操纵的方法精度有限，无法精确定位规划表征在哪个层或哪个注意力头",
+  "仅评估英文模型，其他语言中隐式规划的普遍性是否一致未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.73,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "LLM隐式规划研究，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

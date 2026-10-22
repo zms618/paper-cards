@@ -1,0 +1,43 @@
+{
+ "key": "cvpr2025/3D-MVP 3D Multiview Pretraining for Manipulation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3D-MVP 3D Multiview Pretraining for Manipulation.pdf",
+ "title": "3D-MVP: 3D Multiview Pretraining for Manipulation",
+ "scores": {
+  "novelty": 4.5,
+  "depth": 4.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 4.6
+ },
+ "one_line": "组合MAE与多视角预训练于3D操作，证据不足且存在明显回退",
+ "innovations": [
+  "把RVT端到端多视角Transformer拆成渲染器R、编码器E与动作解码器D，使E可脱离语言/动作标注、直接在无机器人标注的大规模3D资产上预训练，解决了'3D操作策略没有可用2D视觉编码器'的错配",
+  "用RVT的5个正交虚拟视角(每视角10通道RGB+深度+世界坐标+相机坐标)作为MAE重建目标，随机mask 75%的patch后重建全部5视角，迫使编码器跨视角推理以获得3D感知表示",
+  "用Objaverse的200K物体点云(而非交互视频)生成与RVT同构的正交视角作为预训练语料，并系统消融masking策略/数据集来源/数据规模"
+ ],
+ "method_framework": "Objaverse点云经RVT同款5个正交虚拟相机渲染成{I_1..I_5}，token化后随机mask部分视角token得到{I'_1..I'_5}；编码器E(8层/8头/1024维)提取z，轻量2层MAE解码器重建原图，优化5视角逐像素L2重建损失；预训练后丢弃解码器，E与动作解码器D在RLBench/COLOSSEUM演示数据上微调预测6-DoF末端位姿与夹爪开合。",
+ "experiment_framework": "RLBench 18任务(CoppeliaSim/Franka，4路128×128 RGB-D)报成功率；COLOSSEUM 20任务×12种扰动(颜色/纹理/尺寸/光照)报成功率；基线Image-BC(CNN/ViT)、C2F-ARM-BC、PerAct、RVT、MVP、R3M",
+ "takeaways": [
+  "Table2把'无预训练(None)=62.9'与'RVT=62.9'并列，干净地隔离了架构改动与预训练本身的贡献，这种claim隔离式的消融设计可直接迁移到任何'预训练提点'类工作",
+  "COLOSSEUM按12种环境扰动分别报成功率而非只报均值，是系统化OOD评测协议的范例，可借鉴到跨中心/跨设备的医学影像评测设计",
+  "明确指出增益集中在中等难度任务(insert peg/put in cupboard/stack blocks)，过难与已饱和任务均无提升——这种对'提升来自哪里'的诚实归因值得学习"
+ ],
+ "weaknesses": [
+  "novelty有限：MAE、多视角MAE(MultiMAE)、RVT均为既有工作，核心是把现成组件组合到新载体上；论文自述与MultiMAE的区别仅是后者有语义/深度直接监督",
+  "几乎无数学深度，全部方法内容就是标准L2重建损失加架构拆分，超参(mask率0.75、patch 10×10、lr 1e-4)均为经验设定且无敏感性曲线",
+  "无方差/多种子/显著性检验：RLBench每任务成功率是单次评估的均值，18个任务的平均成功率67.5 vs RVT 62.9 的4.6个点差异是否显著无法判断",
+  "主表存在明显回退未讨论：slide block由RVT的81.6降至48.0、sort shape由36.0降至28.0；消融中mask 'All'通道(64.4)反而劣于仅mask RGB(67.6)，3D-FRONT预训练仅62.9→63.6几乎无效，说明方法对预训练语料与masking策略高度敏感",
+  "未与2D预训练方法在RLBench上比较(以'它们在RLBench上效果不好'为由省略)，基线集合不完整；正文在4.4节'Does more pretraining data help? To validate it, we s'处截断，数据规模消融的后续结论缺失"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3D操作与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

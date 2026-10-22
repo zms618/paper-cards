@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning Survival Distributions with the Asymmetric Laplace Distribution.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning Survival Distributions with the Asymmetric Laplace Distribution.pdf",
+ "title": "Learning Survival Distributions with the Asymmetric Laplace Distribution",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "ALD参数化生存分析，闭式计算提升精度校准，但创新有限",
+ "innovations": [
+  "将ALD引入生存分析，利用其非对称性建模右偏生存时间分布，闭式给出均值/中位数/众数/方差/分位数",
+  "通过最大似然学习个体层面的位置、尺度和不对称参数，自然处理删失数据",
+  "在精度、判别力和校准性三个维度上统一优于参数化和非参数化基线"
+ ],
+ "method_framework": "将生存时间建模为ALD分布，参数μ(位置)、b(尺度)、ρ(不对称)由协变量通过神经网络映射得到；通过最大化含删失似然(事件发生时取密度函数，删失时取生存函数)进行端到端优化；ALD的各阶矩和分位数均有闭式解，便于后续风险决策。",
+ "experiment_framework": "在合成数据和多个真实医疗/公开数据集上评估；对比参数化方法(LogNorm MLE, DSM)、半参数方法(Cox)和非参数方法(RSF, GBM)；指标包括C-index(判别力)、IGLL(似然)、BS(校准)、时间依赖性AUC。",
+ "takeaways": [
+  "ALD的非对称性使其比传统Weibull/log-normal更灵活地建模生存时间分布形状",
+  "闭式矩计算使模型可直接输出均值/中位数等临床决策所需汇总量，无需后处理",
+  "在多个真实数据集上同时改善精度和校准，验证了参数化生存建模的竞争力"
+ ],
+ "weaknesses": [
+  "ALD仍为单峰分布，对多峰生存时间分布(如治愈率高的疾病)建模能力有限",
+  "仅在表格协变量上验证，未扩展到图像或文本等非结构化输入",
+  "与深度生存模型(如DeepSurv、DSM)的差异主要在分布假设，方法创新性偏增量"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

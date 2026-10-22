@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Vfscale_Intrinsic Reasoning Verifier-Free Test-Time Scalable Diffusion Model.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Vfscale_Intrinsic Reasoning Verifier-Free Test-Time Scalable Diffusion Model.pdf",
+ "title": "VFScale: Intrinsic Reasoning through Verifier-Free Test-Time Scalable Diffusion Model",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "用扩散模型能量函数替代外部验证器，实现测试时推理扩展。",
+ "innovations": [
+  "提出用扩散模型自身的能量函数作为内在验证器，替代外部验证器实现测试时样本数可扩展推理",
+  "设计MRNCL损失+KL正则化训练目标，塑造能量景观使学习到的能量函数本身成为可靠的质量评估器",
+  "提出混合蒙特卡洛树搜索(hMCTS)与去噪过程结合，提升搜索效率和推理质量"
+ ],
+ "method_framework": "VFScale的核心洞察是：扩散模型近似score函数（即能量函数的负梯度），因此能量函数本身可作为解质量的验证器。训练侧：通过MRNCL损失和KL正则化塑造能量景观，使正确解的能量显著低于错误解。推理侧：将去噪过程与混合MCTS结合，在采样过程中用内在能量引导搜索，逐步淘汰低质量解、聚焦高质量区域。无需任何外部验证器即可实现测试时扩展。",
+ "experiment_framework": "任务：Maze（迷宫求解）、Sudoku（数独）。训练规模：Maze 4x4-6x6。测试泛化：Maze 12x12-15x15。基线：标准扩散模型、带外部验证器的扩散方法。指标：求解成功率。结果：6x6训练的VFScale解决88%的15x15迷宫问题，标准扩散模型完全失败。",
+ "takeaways": [
+  "扩散模型的内在能量函数可以作为可靠的验证器，实现无需外部反馈的内在推理",
+  "MRNCL+KL正则化能有效塑造能量景观，使能量函数准确反映解的正确性",
+  "hMCTS与去噪过程结合显著提升了复杂推理任务的求解能力和泛化性"
+ ],
+ "weaknesses": [
+  "仅在Maze和Sudoku两个离散推理任务上验证，更广泛推理任务的适用性未展示",
+  "MCTS搜索增加了推理时的计算开销，效率与质量的权衡需进一步分析",
+  "能量景观塑造的训练目标较复杂，调参敏感度未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "扩散模型能量函数作为内在验证器，属于可靠性主线方法设计研习轴",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

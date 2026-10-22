@@ -1,0 +1,37 @@
+{
+ "title": "From Language Models over Tokens to Language Models over Characters",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "解决token LM字符接口脆弱性，但工程可行性未验证",
+ "innovations": [
+  "形式化token级LM与字符级分布之间的关系，指出tokenizer引入的prompt边界等怪异问题",
+  "给出把token级LM精确转换为字符级LM的算法",
+  "给出实用的近似转换算法，并在四个公开模型上系统评测运行时与近似质量"
+ ],
+ "method_framework": "把tokenizer视为随机映射τ，token级模型pΔ与解码κ共同诱导字符级分布pΣ；推导精确地把pΔ重写为字符级字符串分布的算法，并给出控制运行时的近似版本，消除prompt边界敏感。",
+ "experiment_framework": "在四个公开语言模型上，对比精确与近似转换的运行时开销与近似质量(困惑度/分布距离)，验证字符级接口的实用性。",
+ "takeaways": [
+  "token级LM可被精确重写为字符级分布，tokenizer并非不可逾越",
+  "字符级接口可消除末尾空格等prompt边界脆弱性",
+  "近似转换在质量与运行时间提供可调权衡"
+ ],
+ "weaknesses": [
+  "精确转换运行时开销大，近似转换的误差界与可扩展性需更多刻画",
+  "对现代大模型(词表巨大、长上下文)的工程可行性未充分验证",
+  "属NLP基础方法，与可靠性/医学影像/多模态推理主线无关"
+ ],
+ "confidence": "high",
+ "key": "icml2025/From Language Models over Tokens to Language Models over Characters.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/From Language Models over Tokens to Language Models over Characters.pdf",
+ "raw_overall": 5.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

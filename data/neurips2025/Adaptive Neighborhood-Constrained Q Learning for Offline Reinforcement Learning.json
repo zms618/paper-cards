@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Adaptive Neighborhood-Constrained Q Learning for Offline Reinforcement Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Adaptive Neighborhood-Constrained Q Learning for Offline Reinforcement Learning.pdf",
+ "title": "Adaptive Neighborhood-Constrained Q Learning for Offline Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "邻域约束Q学习解决离线RL外分布问题，但复杂度高且依赖优势函数估计",
+ "innovations": [
+  "提出邻域约束替代传统密度/支持/样本约束",
+  "基于数据质量的自适应邻域半径设计",
+  "双层优化框架实现高效约束Q学习"
+ ],
+ "method_framework": "通过自适应邻域约束限制动作选择，结合双层优化框架：内层优化各数据点邻域内动作，外层通过分位数回归隐式最大化Q值，实现灵活且保守的离线RL。",
+ "experiment_framework": "在Gym locomotion和AntMaze任务上评估，对比密度约束(TD3BC/CQL)、支持约束(BCQ/BEAR/SPOT)和样本约束(IQL)等基线方法。",
+ "takeaways": [
+  "邻域约束在避免过度保守的同时无需行为策略建模",
+  "自适应半径设计可根据数据质量动态调整约束强度"
+ ],
+ "weaknesses": [
+  "算法复杂度较高，需要训练辅助策略",
+  "自适应半径设计依赖优势函数估计，可能引入额外误差"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

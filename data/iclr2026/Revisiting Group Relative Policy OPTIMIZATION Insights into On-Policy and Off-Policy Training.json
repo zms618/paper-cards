@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Revisiting Group Relative Policy OPTIMIZATION Insights into On-Policy and Off-Policy Training.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Revisiting Group Relative Policy OPTIMIZATION Insights into On-Policy and Off-Policy Training.pdf",
+ "title": "Revisiting Group Relative Policy Optimization: Insights into On-Policy and Off-Policy Training",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "将GRPO扩展到off-policy，添加截断目标并验证RLVR后训练优势。",
+ "innovations": [
+  "把GRPO从on-policy推广到off-policy设定，利用off-policy样本估计优势函数。",
+  "通过on/off-policy GRPO目标均提升奖励这一观察，论证在off-policy GRPO中使用clipped surrogate目标的必要性。",
+  "在可验证奖励RL(RLVR)后训练上系统对比两种GRPO变体，表明off-policy GRPO在稳定性/采样效率/显存上有潜在收益。"
+ ],
+ "method_framework": "沿用GRPO组内相对优势估计，但允许复用历史off-policy样本；在off-policy目标中引入与PPO一致的clipped surrogate约束策略更新幅度，以控制重要性采样比带来的偏差。",
+ "experiment_framework": "在LLM后训练中用可验证奖励(RLVR)评测；对比on-policy与off-policy两种GRPO变体；报告奖励/基准性能以及每轮serving推理的通信负担。",
+ "takeaways": [
+  "GRPO可在off-policy下稳定训练，且性能不逊于甚至优于on-policy GRPO。",
+  "off-policy GRPO能减少每轮重新采样的 serving 开销，提升RL后训练效率。"
+ ],
+ "weaknesses": [
+  "主要是对现有GRPO的off-policy化改造，方法新颖性增量有限。",
+  "off-policy带来的分布偏移与重要性采样偏差在长轨迹/大样本复用下的稳定性边界未充分刻画。",
+  "前9页为on-policy目标回顾与动机，具体基准对比表与消融在后续页，正文定量证据有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "RL方法改进，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

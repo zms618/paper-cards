@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/TaskIT_Memory-Efficient Fine-Tuning of Multi-LoRA LLMs via Cross-Task Importance Transfer.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/TaskIT_Memory-Efficient Fine-Tuning of Multi-LoRA LLMs via Cross-Task Importance Transfer.pdf",
+ "title": "TaskIT Memory-Efficient Fine-Tuning of Multi-LoRA LLMs via Cross-Task Importance Transfer",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "跨任务重要性转移优化多LoRA内存，但任务相似性计算有额外开销",
+ "innovations": [
+  "跨任务重要性转移机制预测新任务LoRA模块重要性",
+  "基于Transformer块结构的内存预测器",
+  "动态规划调度器优化LoRA模块位置、数量和秩"
+ ],
+ "method_framework": "TaskIT包含三个核心组件：模块重要性预测器通过跨任务转移预测新任务模块重要性；基于块结构的内存预测器准确估计激活内存；动态规划调度器在内存预算内最大化精度。",
+ "experiment_framework": "在图像、NLP和视觉语言任务上评估，与Zero-FT、非LoRA和LoRA基线比较，使用准确率和内存消耗作为指标。",
+ "takeaways": [
+  "激活相似性可作为任务相似性的有效代理",
+  "块级内存预测能准确捕捉Transformer的并行和顺序依赖关系"
+ ],
+ "weaknesses": [
+  "任务相似性计算需要额外的轻量级反向传播",
+  "方法在不同模态间的泛化能力需要进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "多LoRA内存优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

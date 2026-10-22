@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/3D-Aware Implicit Motion Control for View-Adaptive Human Video Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/3D-Aware Implicit Motion Control for View-Adaptive Human Video Generation.pdf",
+ "title": "3D-Aware Implicit Motion Control for View-Adaptive Human Video Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 4.0,
+  "overall": 5.6
+ },
+ "one_line": "用1D运动token和视图监督实现3D人体视频生成，但核心卖点缺乏量化对比",
+ "innovations": [
+  "把人体运动控制从「2D 姿态或 SMPL 显式参数约束」改写为隐式视图无关表征学习：Transformer 式 1D tokenizer 每帧拼 5 个可学习潜 token 只保留输出 token，配合随机透视变换与颜色/空间增强，从结构上丢弃 2D 结构信息与身份泄漏，得到与生成器空间先验对齐的紧凑运动 token",
+  "用「视图丰富监督」制造真正的 3D 学习压力：同一段运动在单视图重建、多视图固定相机阵列、运镜相机轨迹三种数据上分别监督，并用三阶段渐进数据配比（单视图重建 → 重建+跨视图复现混合 → 纯多视图/运镜）把表征从 2D 动力学推向 3D 空间语义",
+  "早期用轻量 MLP 几何解码器 D_g 从拼接运动表征 z=[z_b;z_h] 回归 SMPL/MANO 姿态参数（剔除全局根朝向以保证视图无关）做辅助监督，随训练退火至零，解决 DiT 骨干早期靠自身先验硬生成、运动编码器几乎收不到梯度的问题；推理阶段身体与手部双编码器 token 拼接经 cross-attention 注入"
+ ],
+ "method_framework": "给定参考图 I_R 与驱动视频 V_D，先对驱动帧做随机透视与外观增强再编码成 1D 运动 token；在 DiT 每个全自注意力后插一层 cross-attention（仅视频 token  attended，文本 token 不变）注入；训练目标为 flow-matching v-prediction，监督Objectives = 同视图重建 V_D 或跨视图/跨相机轨迹复现 V'_D，并以参考帧首帧自动对齐朝向，省去 SMPL-to-image 显式配准。",
+ "experiment_framework": "约 74 万条数据（互联网 60 万 + UE5 渲染 6 万 + 自采多视图/运镜 8 万）三阶段训练（10K/15K/5K 步，3 天）；评测用 TikTok 50 视频 + 互联网 100 视频，指标 PSNR/SSIM/LPIPS/FID/FVD；对比 AnimateAnyone、MimicMotion、Uni3C、MTVCrafter，并做 MOS 用户研究（含 95% 置信区间）；相机控制部分仅在静态相机提示下对比。",
+ "takeaways": [
+  "「让模型学不到视图特定 2D 结构」的瓶颈设计（投影到 1D token + 随机透视增强）比堆显式 3D 约束更省事，也避免外部重建噪声污染生成",
+  "三阶段数据配比（纯单视图 → 混合 → 纯多视图/运镜）是把表示从 2D 提升到 3D 的低成本课程方案",
+  "辅助参数化监督先暖后退火到零，可避免外部 SMPL 深度歧义长期约束生成"
+ ],
+ "weaknesses": [
+  "定量对比被迫限定在「静态相机提示」下，因为多数基线不支持相机操控，因此论文最核心的卖点（文本驱动的灵活相机控制）在量化表中根本没有与可操控相机的基线正面对比，只有用户研究里的 3D Plausibility 分项",
+  "SSIM/PSNR 反而低于 MTVCrafter（0.7390 vs 0.7489 / 17.96 vs 18.03），作者仅以「像素指标对视角偏移敏感、评测视频含弱 unintended 相机运动」解释，未做视角偏移一致性的对照实验来坐实该说法",
+  "论文在消融节之前被截断（可见正文止于定量分析段），视图丰富监督各分量、辅助几何监督退火曲线、双编码器与单编码器之差等关键消融是否给出无法从现有文本核实；且三阶段共 3 天训练 + 74 万条数据，复现门槛很高"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "视频生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

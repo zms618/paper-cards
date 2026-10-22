@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/EasyRef_Omni-Generalized Group Reference for Diffusion Models via Multimodal LLM.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/EasyRef_Omni-Generalized Group Reference for Diffusion Models via Multimodal LLM.pdf",
+ "title": "EasyRef: Omni-Generalized Group Image Reference for Diffusion Models via Multimodal LLM",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4,
+  "overall": 4.9
+ },
+ "one_line": "MLLM适配器注入扩散模型实现多图参考的个性化生成",
+ "innovations": [
+  "利用MLLM的多图像理解能力捕获多张参考图中的一致视觉元素，替代传统平均/拼接图像嵌入的方式",
+  "通过adapter将MLLM表示注入扩散过程，可轻松泛化到未见过的域",
+  "单MLLM统一处理风格、人物身份、人脸身份等多种参考类型"
+ ],
+ "method_framework": "将多张参考图和指令输入MLLM，利用其多图像理解能力提取一致视觉元素的表示；通过adapter将该表示注入扩散模型的去噪过程；扩散模型以MLLM提取的参考表示为条件生成个性化图像。",
+ "experiment_framework": "在个性化生成基准（风格迁移、人物身份保持、人脸定制等）上评估，对比tuning-free和tuning-based方法，指标为参考一致性和图像质量。",
+ "takeaways": [
+  "MLLM的多图像理解能力显著优于简单平均/拼接的参考图编码方式",
+  "通过adapter注入MLLM表示可实现跨域泛化的个性化生成",
+  "单个框架统一处理多种参考类型，无需针对每种类型单独设计"
+ ],
+ "weaknesses": [
+  "属于个性化图像生成方向，非鲁棒性/不确定性/幻觉抑制等可靠性主线",
+  "依赖MLLM的推理能力，计算开销较大",
+  "前9页仅看到框架概述，adapter注入的具体方式和MLLM提示设计未充分展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.73,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

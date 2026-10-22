@@ -1,0 +1,41 @@
+{
+ "title": "UnLoc: Leveraging Depth Uncertainties for Floorplan Localization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "利用深度不确定性的概率平面图定位，但依赖现成模型且局限室内场景。",
+ "innovations": [
+  "指出现有平面图定位方法缺少深度不确定性建模、且需为每个环境定制训练深度网络的两大局限。",
+  "构建概率模型把深度预测建模为显式概率分布，并在 SE(2) 相机位姿上构造后验分布做定位。",
+  "直接采用现成预训练单目深度模型，消除逐环境训练，提升对未见空间的泛化。"
+ ],
+ "method_framework": "对输入图像序列用现成单目深度模型预测每列深度及其不确定度(显式分布)；将深度/不确定性与平面图几何对齐，在 SE(2) 位姿上生成概率后验分布，输出最可能位姿，不确定性被用来加权观测、抑制不可靠深度列。",
+ "experiment_framework": "在大规模合成与真实数据集上，与 F3Loc 等现有平面图定位方法对比，报告定位召回率(长序列100帧/短序列15帧)与精度/稳健性。",
+ "takeaways": [
+  "平面图易得、持久且对外观变化鲁棒，是室内定位的轻量地图替代。",
+  "显式建模深度不确定性并在后验中加权，相比忽略不确定性的方法大幅提升定位召回(LaMAR HGE 上长序列 2.7×、短序列 42.2×)。",
+  "用通用单目深度替代逐环境训练网络，显著增强跨环境泛化。"
+ ],
+ "weaknesses": [
+  "定位质量受现成单目深度模型在室内场景误差与不确定度校准的制约。",
+  "仅在 SE(2) 平面定位与室内假设下成立，未覆盖有楼层变化/倾斜的 6DoF 场景。",
+  "与主线落地域(医学影像/多模态大模型推理)无关；完整消融(不确定度建模贡献)与跨数据集泛化表未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/UNLOC_Leveraging Depth Uncertainties for Floorplan Localization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/UNLOC_Leveraging Depth Uncertainties for Floorplan Localization.pdf",
+ "raw_overall": 6.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "室内定位与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

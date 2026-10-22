@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Flow4DGS-SLAM_Optical Flow-Guided 4D Gaussian Splatting SLAM.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Flow4DGS-SLAM_Optical Flow-Guided 4D Gaussian Splatting SLAM.pdf",
+ "title": "Flow4DGS-SLAM Optical Flow-Guided 4D Gaussian Splatting SLAM",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "光流引导的4D高斯SLAM，改进动态场景重建但依赖预计算光流",
+ "innovations": [
+  "相机运动分解模块实现无类别动态掩码生成",
+  "混合4D高斯表示结合显式时间位置和GMM",
+  "光流引导的场景流高斯传播与自适应高斯插入"
+ ],
+ "method_framework": "结合光流与深度信息进行相机运动分解，分离静态与动态高斯，使用显式关键帧位置和GMM建模动态高斯的透明度和旋转，通过光流传播加速训练",
+ "experiment_framework": "TUM RGB-D和BONN数据集，与MonoGS、SplaTAM、SC-GS、4DGS-SLAM比较，评估轨迹误差(ATE RMSE)和渲染质量(PSNR/SSIM/LPIPS)",
+ "takeaways": [
+  "光流引导的相机初始化显著提升跟踪鲁棒性",
+  "混合表示平衡了效率与复杂动态场景建模能力"
+ ],
+ "weaknesses": [
+  "依赖预计算的光流，可能受光流估计误差影响",
+  "未在极端动态场景(如快速运动模糊)中充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "动态场景重建与SLAM，非可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

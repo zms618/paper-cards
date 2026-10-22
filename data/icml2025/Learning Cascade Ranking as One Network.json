@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning Cascade Ranking as One Network.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning Cascade Ranking as One Network.pdf",
+ "title": "Learning Cascade Ranking as One Network",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "级联排序代理损失设计，但应用域窄且证据不足",
+ "innovations": [
+  "从真值被整条级联选中概率的下界推导代理损失，使训练目标与系统整体召回目标对齐",
+  "依该界性质为各阶段设计辅助损失，驱动逐级降低上界，促进阶段间双向协作",
+  "结合可微排序与 UWL 多损失融合，实现级联系统端到端统一训练并减少超参"
+ ],
+ "method_framework": "以可微排序得到的软置换矩阵为基础，构造级联级召回概率下界的代理损失 Lsingle；为每个阶段加辅助损失共同压低该界，用不确定性加权融合，使匹配/预排/排序/混排各阶段协同优化。",
+ "experiment_framework": "在公开级联排序基准 RecFlow 与工业推荐系统上评测，对比独立训练、ICC、RankFlow 等，以 stream-wise top-k 召回/排序指标验证显著提升。",
+ "takeaways": [
+  "单阶段 pointwise/pairwise 损失与级联整体召回目标不对齐，是性能瓶颈",
+  "以级联选中概率下界为代理可同时解决目标对齐与阶段协作两个问题",
+  "端到端统一训练在公开与工业场景均带来显著提升"
+ ],
+ "weaknesses": [
+  "应用域为推荐/广告排序，与鲁棒性/可信AI/多模态大模型主线无关",
+  "公开基准仅 RecFlow 一个，工业结果披露有限",
+  "依赖可微排序近似，软置换的近似误差对损失紧致性影响需进一步分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

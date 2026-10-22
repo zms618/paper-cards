@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Stochastic Encodings for Active Feature Acquisition.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Stochastic Encodings for Active Feature Acquisition.pdf",
+ "title": "Stochastic Encodings for Active Feature Acquisition",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "监督训练的随机潜变量模型解决AFA短视问题，但与主线关联弱且计算开销大",
+ "innovations": [
+  "提出用监督训练的潜变量模型做 AFA，避免 RL 的稀疏奖励/探索利用/致命三元组训练困难",
+  "指出 CMI 最大化等价于最小化熵，会让不确定类别更不确定、且短视，不是 0-1 损失下的最佳短期目标",
+  "提出 SEFA：在随机隐空间中对未观测特征的多种可能实现做推理来决定获取哪个特征，兼顾长期信息"
+ ],
+ "method_framework": "训练一个带随机隐编码的潜变量模型；推理时对每个测试实例，在隐空间中采样未观测特征的多种可能实现，跨这些实现做推理来评估获取各候选特征的预期收益，从而选下一个要测量的特征，逐实例序贯决策。",
+ "experiment_framework": "在大量合成数据集与真实数据集上评测 SEFA；对比 RL 类 AFA 与 CMI 贪心等多种基线，报告给定特征获取预算下的预测精度/0-1 损失曲线。",
+ "takeaways": [
+  "AFA 不必依赖难训练的 RL，一个监督训练的随机潜变量模型即可",
+  "CMI/熵最小化作为 AFA 目标在 0-1 损失下存在系统性短视",
+  "在隐空间中对未观测特征做随机推理，能兼顾长期联合信息"
+ ],
+ "weaknesses": [
+  "与主线（视觉鲁棒性/医学影像诊断/多模态推理）关联弱，虽以医生诊断为例但属一般 AFA",
+  "随机隐空间推理的计算成本随采样实现数增长，大规模高维特征下开销未充分量化",
+  "对 CMI 短视的批评虽成立，但 SEFA 相对强 RL 基线的优势是否稳定跨域需更多证据"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

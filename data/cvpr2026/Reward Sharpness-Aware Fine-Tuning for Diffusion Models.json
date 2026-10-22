@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Reward Sharpness-Aware Fine-Tuning for Diffusion Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Reward Sharpness-Aware Fine-Tuning for Diffusion Models.pdf",
+ "title": "Reward Sharpness-Aware Fine-Tuning for Diffusion Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "双空间扰动缓解奖励黑客，提升扩散模型可靠性",
+ "innovations": [
+  "将奖励黑客攻击视为对抗攻击问题，建立对抗训练与锐度感知最小化的统一视角",
+  "提出RSA-FT框架，联合输入空间和参数空间扰动实现奖励景观平坦化",
+  "无需重新训练奖励模型即可提升其鲁棒性，作为即插即用模块兼容多种RDRL框架"
+ ],
+ "method_framework": "RSA-FT通过联合输入空间(对抗扰动)和参数空间(SAM权重扰动)的奖励函数平坦化，最小化局部邻域内的奖励值，缓解奖励黑客攻击并提升泛化能力。",
+ "experiment_framework": "在SD1.5/SDXL/SD3/Flux上测试，集成ReFL/DRaFT-K/AlignProp/DRTune等RDRL框架，使用HPSv2/PickScore/ImageReward指标和人类评估验证效果。",
+ "takeaways": [
+  "奖励景观锐度与人类偏好质量呈负相关，可作为奖励模型泛化能力的指标",
+  "双空间扰动策略可有效缓解奖励黑客攻击，且具有协同效应",
+  "方法设计简洁，可作为即插即用模块提升现有RDRL方法的可靠性"
+ ],
+ "weaknesses": [
+  "扰动半径ρ和ρω的选择可能影响效果，需要额外搜索",
+  "未探讨不同类型奖励模型(如CLIP-based)的泛化能力",
+  "计算开销增加，需额外计算梯度和扰动"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "奖励黑客缓解提升扩散模型可靠性，触及主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

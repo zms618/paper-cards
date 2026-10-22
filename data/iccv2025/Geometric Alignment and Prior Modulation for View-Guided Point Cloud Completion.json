@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Geometric Alignment and Prior Modulation for View-Guided Point Cloud Completion.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Geometric Alignment and Prior Modulation for View-Guided Point Cloud Completion.pdf",
+ "title": "Geometric Alignment and Prior Modulation for View-Guided Point Cloud Completion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "几何对齐与先验调制提升点云跨类别泛化，但依赖外部深度估计",
+ "innovations": [
+  "几何对齐编码器通过深度图将2D图像提升到3D空间",
+  "先验调制解码器学习类别无关的局部先验进行区域级重建",
+  "减少对类别特定模式的依赖，提升跨类别泛化性"
+ ],
+ "method_framework": "GAPM框架包含几何对齐编码器(GAE)和先验调制解码器(PMD)。GAE通过深度估计和3D提升对齐图像与点云，PMD使用共享的局部先验进行区域级重建，增强跨类别泛化能力。",
+ "experiment_framework": "ShapeNet-ViPC数据集，8个已见类别和4个未见类别，使用CD和F-Score指标评估，并在ScanNet-ViPC真实数据集上验证。",
+ "takeaways": [
+  "深度图提升能有效减少模态差距并提取几何特征",
+  "区域级解码策略优于全局解码，能更好地捕捉可迁移的局部几何模式"
+ ],
+ "weaknesses": [
+  "依赖外部深度估计器，可能引入额外误差",
+  "区域分组模块的参数设置可能影响性能",
+  "未充分探索不同类别间几何相似性的影响"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "点云重建与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

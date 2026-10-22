@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Weak-to-Strong Generalization Even in Random Feature Networks, Provably.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Weak-to-Strong Generalization Even in Random Feature Networks, Provably.pdf",
+ "title": "Weak-to-Strong Generalization: Even in Random Feature Networks, Provably",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.25
+ },
+ "one_line": "简化模型中证明弱到强泛化，早停关键但泛化性存疑",
+ "innovations": [
+  "首次在非预训练的简单随机特征网络中证明弱到强泛化现象的存在，无需复杂预训练模型",
+  "识别出早停（early stopping）是实现弱到强泛化的关键机制",
+  "给出了弱到强泛化的量化极限：学生误差只能趋近于教师误差，无法将略好于随机的教师提升到高精度"
+ ],
+ "method_framework": "研究两层随机特征网络：底层随机固定（教师模型单元数少，学生模型单元数多），顶层可训练。弱教师在全体数据上训练，强学生仅在弱教师生成的标签上训练。通过梯度流理论分析学生训练过程的收敛行为，推导学生损失与教师损失的关系，找到最佳早停点。",
+ "experiment_framework": "理论证明为主，辅以随机特征网络的数值实验验证。在输入维度d=32的设置下，学生单元数固定为16384，教师单元数从16到256变化。绘制学生损失/教师损失比值随训练时间的变化曲线，验证早停效应和缩放规律。",
+ "takeaways": [
+  "弱到强泛化不需要预训练或复杂架构，单纯依靠模型规模优势和早停即可实现",
+  "弱到强泛化存在固有限制：学生无法超越教师的误差下界，无法将弱教师\"提升\"为强模型",
+  "过训练会消除弱到强泛化的优势，早停是关键实现条件"
+ ],
+ "weaknesses": [
+  "理论分析基于随机特征网络这一简化模型，在真实深度网络中的对应关系不明确",
+  "仅考虑线性目标函数，更复杂的非线性任务中结论是否成立未验证",
+  "实际应用中的预训练学生（如GPT-4）与随机特征学生的行为差异很大，理论解释力有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/NRGPT_An Energy-Based Alternative for GPT.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/NRGPT_An Energy-Based Alternative for GPT.pdf",
+ "title": "NRGPT: An Energy-Based Alternative for GPT",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "将GPT推理重述为能量景观探索，理论证明与抗过拟合观察有限。",
+ "innovations": [
+  "提出eNeRgy-GPT(NRGPT)，把GPT推理重述为token在能量景观上的探索，统一自回归语言建模与能量基建模",
+  "从理论上证明在一定条件下该探索退化为能量景观上的梯度下降，并实证验证",
+  "观察到NRGPT仅在极长训练后才过拟合，相对GPT更抗过拟合；EBM视角为变计算与正则化对齐提供自然接口"
+ ],
+ "method_framework": "保留GPT主体，修改其前向使每步推理成为在一个标量能量函数上的探索/优化过程；能量景观把合训练数据样本对应低能、偏离数据分布的样本对应高能。在一定假设下证明这一探索等价于对能量函数做梯度下降，从而把ICL/前向解释为隐式优化。",
+ "experiment_framework": "在Shakespeare简单语言、代数ListOPS任务与OpenWebText语言建模上验证；对比标准GPT训练曲线与困惑度；报告过拟合行为(仅极长训练才过拟合)；并实证探索何时退化为梯度下降。",
+ "takeaways": [
+  "GPT与EBM并非割裂：最小修改即可把GPT推理统一为能量景观上的探索，并在条件下等价于梯度下降",
+  "EBM视角带来天然的能量/OOD信号与正则化对齐接口",
+  "NRGPT相对GPT更抗过拟合，过拟合仅在极长训练后出现"
+ ],
+ "weaknesses": [
+  "实证规模偏小(Shakespeare/ListOPS/OpenWebText小模型)，未证明在百亿/千亿级LLM上可行",
+  "证明退化为梯度下降的条件较强，且作者自承这些条件下未必是性能最优的模型",
+  "能量虽可作OOD/不确定性信号，但本文未在幻觉抑制/可信验证等可靠性主线任务上做实证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "能量建模与GPT结合，但未触及可靠性主线实证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

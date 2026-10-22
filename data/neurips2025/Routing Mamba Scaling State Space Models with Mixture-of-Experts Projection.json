@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Routing Mamba Scaling State Space Models with Mixture-of-Experts Projection.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Routing Mamba Scaling State Space Models with Mixture-of-Experts Projection.pdf",
+ "title": "Routing Mamba: Scaling State Space Models with Mixture-of-Experts Projection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "将MoE投影引入SSMs，共享路由降低训练难度，实验覆盖有限。",
+ "innovations": [
+  "首次将稀疏混合线性投影专家引入SSMs",
+  "选择性缩放和共享路由机制实现高效训练",
+  "在混合SSMs-Attention模型架构中验证有效性"
+ ],
+ "method_framework": "RoM将Mamba的投影层(Conv, Gate, Out)转换为稀疏激活专家，通过共享路由决策降低路由学习难度，同时保持高质量的专家分配。",
+ "experiment_framework": "在SlimPajama数据集上评估 perplexity，使用LAMBADA等常识推理数据集测试下游任务性能，比较不同训练序列长度(4K/8K/16K)的泛化能力。",
+ "takeaways": [
+  "共享路由策略可有效解决SSMs中MoE集成的挑战",
+  "选择性缩放比简单扩展模型参数更高效",
+  "混合RoM+FFN-MoE架构在保持性能的同时降低计算成本"
+ ],
+ "weaknesses": [
+  "未探索更多专家数量和稀疏配置的影响",
+  "缺乏对医学影像等特定领域的验证",
+  "路由机制的理论分析不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

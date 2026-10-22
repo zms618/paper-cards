@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning Optimal Multimodal Information Bottleneck Representations.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning Optimal Multimodal Information Bottleneck Representations.pdf",
+ "title": "Learning Optimal Multimodal Information Bottleneck Representations",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "理论推导MIB权重边界，动态调整模态正则化，提升多模态表示。",
+ "innovations": [
+  "从理论上推导MIB正则化权重的最优边界，证明在该边界内可实现最优MIB(仅含任务相关信息、不含冗余信息)",
+  "提出动态逐模态正则化权重调整机制，解决各模态任务相关信息不平衡的问题",
+  "统一处理模态一致性信息和模态特有信息，确保所有任务相关信息被保留"
+ ],
+ "method_framework": "基于信息瓶颈原理构建多模态表示优化目标；理论推导最优正则化权重的边界条件；在边界内动态调整各模态的正则化强度：任务相关信息多的模态减少正则化，信息少的模态增加正则化；最终表示仅包含任务相关的非冗余信息，用于下游任务。",
+ "experiment_framework": "在多模态下游任务上评估：情感识别、情感分析、组织异常检测；对比现有MIB方法和多模态学习基线；指标为下游任务准确率/AUC；消融实验验证权重动态调整和理论边界的作用。",
+ "takeaways": [
+  "MIB的正则化权重不是超参数，存在理论最优边界，在边界内可实现最优表示",
+  "逐模态动态权重调整能有效解决模态间任务相关信息不平衡的问题",
+  "最优MIB表示(仅含任务相关信息)在多个多模态任务上优于现有方法"
+ ],
+ "weaknesses": [
+  "理论边界的推导假设模态间信息结构较简单，复杂多模态场景下边界是否仍紧未知",
+  "动态权重调整机制引入了额外的计算开销和超参数",
+  "实验多为常规多模态任务，未在多模态大模型推理等高复杂度场景验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/BEVDiffuser_Plug-and-Play Diffusion Model for BEV Denoising with Ground-Truth Guidance.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/BEVDiffuser_Plug-and-Play Diffusion Model for BEV Denoising with Ground-Truth Guidance.pdf",
+ "title": "BEVDiffuser Plug-and-Play Diffusion Model for BEV Denoising with Ground-Truth Guidance",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.4
+ },
+ "one_line": "基于GT引导的扩散模型增强BEV去噪，提升检测性能但依赖真实标注",
+ "innovations": [
+  "基于地面真值布局引导的BEV特征去噪扩散模型",
+  "即插即用的训练时增强模块，不改变推理架构",
+  "结合扩散损失和下游任务损失的联合训练策略"
+ ],
+ "method_framework": "BEVDiffuser采用U-Net架构，以地面真值对象布局为条件，对BEV特征图进行去噪。训练时结合扩散损失和任务损失，生成去噪BEV特征作为监督信号，增强现有BEV模型。",
+ "experiment_framework": "nuScenes数据集，评估BEVDiffuser在BEVFormer、BEVFusion等模型上的3D目标检测性能，使用mAP、NDS等指标，并在不同天气和光照条件下测试鲁棒性。",
+ "takeaways": [
+  "即插即用的训练时增强方法，不增加推理计算开销",
+  "地面真值布局作为条件有效指导BEV特征去噪",
+  "对长尾目标和恶劣条件下的检测性能提升显著"
+ ],
+ "weaknesses": [
+  "依赖地面真值布局信息，在实际应用中可能受限",
+  "仅针对BEV特征去噪，未解决传感器原始数据噪声问题"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "BEV去噪提升检测性能但依赖真实标注，仅部分触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

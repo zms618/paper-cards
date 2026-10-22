@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Towards characterizing the value of edge embeddings in Graph Neural Networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Towards characterizing the value of edge embeddings in Graph Neural Networks.pdf",
+ "title": "Towards characterizing the value of edge embeddings in Graph Neural Networks",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "理论证明边嵌入在特定任务上可显著减少GNN层数，但与主线相关性弱。",
+ "innovations": [
+  "在合适的层计算抽象与嵌入内存约束下，证明存在自然图任务使利用边嵌入的架构可比节点嵌入架构浅得多",
+  "借鉴TCS中时间-空间权衡与图pebbling技术，给出节点消息传递协议的信息论下界（跟踪图中信息流）",
+  "实证表明维护边嵌入几乎总优于纯节点对应架构，在含hub节点拓扑上提升常很显著"
+ ],
+ "method_framework": "典型GNN只在节点上维护嵌入并按邻居更新；另一范式在每条边上维护嵌入、按共享节点的相邻边更新。本文要区分性能提升到底来自领域特异的初始边特征、其他架构选择、还是边范式本身的表示/训练收益。通过把层抽象为带每处理器内存约束的计算，并借pebbling刻画信息在图上的流动，对节点消息传递建立深度下界，从而证明边嵌入在某些任务上的固有表示优势。",
+ "experiment_framework": "对比边嵌入架构与节点嵌入架构在图任务上的表现，重点考察含hub节点的图拓扑；结合理论下界解释边嵌入何时带来（浅层化/精度）收益。",
+ "takeaways": [
+  "边嵌入相对节点嵌入有固有的表示收益，不只是初始边特征或工程选择的功劳",
+  "在含hub节点的图拓扑上，边嵌入带来的提升最明显",
+  "时间-空间权衡视角可解释GNN层深与嵌入内存之间的制约"
+ ],
+ "weaknesses": [
+  "主线相关性弱：属GNN架构理论，与可靠性乘医学影像/多模态推理主线无直接联系",
+  "理论下界基于特定层抽象与内存约束，与现代深层GNN实践的对应程度需谨慎解读",
+  "前9页主要为动机与定理框架，完整实证对比与消融在后续页"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

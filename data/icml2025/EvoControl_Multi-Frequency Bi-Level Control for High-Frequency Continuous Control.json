@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/EvoControl_Multi-Frequency Bi-Level Control for High-Frequency Continuous Control.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/EvoControl_Multi-Frequency Bi-Level Control for High-Frequency Continuous Control.pdf",
+ "title": "EvoControl: Multi-Frequency Bi-Level Control for High-Frequency Continuous Control",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "双频策略框架提升高频控制，但样本效率低且缺乏真实系统验证。",
+ "innovations": [
+  "双频策略学习框架，结合PPO和ES分别优化高低层策略",
+  "使用PD控制器初始化并逐步过渡到神经网络策略，提高训练稳定性",
+  "理论证明高频控制可提高某些CTMDP的期望累积奖励"
+ ],
+ "method_framework": "EvoControl采用交替训练方式：先用PPO优化高层策略，再用ES优化低层策略。低层策略初始为PD控制器，通过退火参数α逐步过渡到神经网络策略，实现高频控制。",
+ "experiment_framework": "标准连续控制任务，对比直接扭矩控制和固定PD控制器方法，评估高频控制任务性能和鲁棒性。",
+ "takeaways": [
+  "PD控制器初始化可提高训练稳定性",
+  "ES适合解决高频控制中的长时程信用分配问题",
+  "双频框架平衡了探索效率和表达能力"
+ ],
+ "weaknesses": [
+  "ES方法样本效率较低",
+  "未详细讨论计算资源需求",
+  "实验部分未展示在真实物理系统上的应用"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,35 @@
+{
+ "title": "ShadowKV: KV Cache in Shadows for High-Throughput Long-Context LLM Inference",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 5,
+  "overall": 6.1
+ },
+ "one_line": "利用pre-RoPE Key低秩性优化KV缓存，提升长上下文推理吞吐。",
+ "innovations": [
+  "观察到pre-RoPE Key在序列内共享低秩子空间(跨序列不同)，而Value不低秩，据此差异化存放",
+  "GPU驻留低秩pre-RoPE K缓存、V缓存offload到CPU，既减显存又不丢精度",
+  "用准确KV选择策略现场重建最小稀疏KV对，CUDA多流把K重建与V取回重叠，隐藏延迟"
+ ],
+ "method_framework": "prefilling时对pre-RoPE K做低秩截断(SVD)存GPU，V卸载CPU；解码时据稀疏注意力选出需保留的K对，由低秩近似重建K、同时从CPU取对应V，多流水重叠以带宽隐藏延迟；等效带宽达7TB/s。",
+ "experiment_framework": "RULER/LongBench；Llama-3.1-8B、GLM-4-9B-1M；A100；报告batch最大6×、吞吐3.04×，精度不降甚至超无限显存假设下的无限batch表现。",
+ "takeaways": [
+  "pre-RoPE Key的序列内低秩性使K可压缩驻GPU、V卸载CPU，是显存-延迟权衡的新思路",
+  "低秩K重建与CPU取V经多流重叠可隐藏offload延迟"
+ ],
+ "weaknesses": [
+  "依赖pre-RoPE K低秩这一经验现象，对RoPE变体/未用RoPE架构的适用性未验证",
+  "relevance偏离可靠性主线，属推理系统；CPU offload在跨节点网络下的带宽敏感性未充分报告"
+ ],
+ "confidence": "high",
+ "key": "icml2025/ShadowKV_KV Cache in Shadows for High-Throughput Long-Context LLM Inference.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ShadowKV_KV Cache in Shadows for High-Throughput Long-Context LLM Inference.pdf",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

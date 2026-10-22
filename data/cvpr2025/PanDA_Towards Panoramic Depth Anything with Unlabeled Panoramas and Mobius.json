@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/PanDA_Towards Panoramic Depth Anything with Unlabeled Panoramas and Mobius.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/PanDA_Towards Panoramic Depth Anything with Unlabeled Panoramas and Mobius.pdf",
+ "title": "PanDA Towards Panoramic Depth Anything with Unlabeled Panoramas and Mobius",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "半监督+莫比乌斯变换提升全景深度估计，但依赖合成数据",
+ "innovations": [
+  "莫比乌斯变换空间增强(MTSA)提高球形变换鲁棒性",
+  "赤道感知块归一化损失(EPNL)改善赤道区域深度精度",
+  "系统分析DAM在全景图像上的局限性"
+ ],
+ "method_framework": "基于半监督学习的全景深度框架：教师模型用LoRA微调DAM v2，结合合成室内外数据训练；学生模型利用教师生成的伪标签和大尺度无标签数据，通过MTSA增强空间变换鲁棒性",
+ "experiment_framework": "数据集：Matterport3D、Stanford2D3D等；基线：DAM v1/v2、Marigold等；指标：RMSE、AbsRel、δ1/2/3",
+ "takeaways": [
+  "赤道区域深度预测对全景深度估计至关重要",
+  "莫比乌斯变换能有效增强模型对球形空间变换的鲁棒性",
+  "半监督学习可充分利用无标签全景数据提升泛化能力"
+ ],
+ "weaknesses": [
+  "依赖合成数据训练，可能限制真实场景表现",
+  "未充分讨论计算效率与实时性",
+  "对极端变形场景的鲁棒性验证不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "全景深度估计与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

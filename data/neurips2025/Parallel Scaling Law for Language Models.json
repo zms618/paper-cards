@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Parallel Scaling Law for Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Parallel Scaling Law for Language Models.pdf",
+ "title": "Parallel Scaling Law for Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "PARSCALE实现计算缩放而非参数缩放，降低推理资源消耗",
+ "innovations": [
+  "提出并行计算缩放新范式PARSCALE",
+  "建立并行计算与参数缩放的定量关系O(log P)",
+  "设计两阶段训练策略降低训练成本",
+  "实现动态并行缩放适应不同应用场景"
+ ],
+ "method_framework": "通过P个可学习的输入变换并行执行模型前向传播，动态聚合P个输出，实现计算缩放而非参数缩放",
+ "experiment_framework": "Stack-V2和Pile数据集预训练，参数从500M到4.4B，并行流P从1到8，21个下游任务评估",
+ "takeaways": [
+  "计算缩放对推理密集型任务提升更显著",
+  "小批量场景下PARSCALE内存和延迟优势明显",
+  "可对现有预训练模型进行后训练实现并行缩放"
+ ],
+ "weaknesses": [
+  "理论分析中DIVERSITY因子难以精确建模",
+  "大批量场景下PARSCALE计算开销增加",
+  "未探索数据受限情况下的并行缩放规律"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

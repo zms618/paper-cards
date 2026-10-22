@@ -1,0 +1,41 @@
+{
+ "title": "Pixel-Perfect Puppetry: Precision-Guided Enhancement for Face Image and Video Editing",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "FlowGuide利用潜空间线性子空间对齐实现精准人脸编辑",
+ "innovations": [
+  "基于UNet瓶颈潜空间局部线性性，将语义属性对应到特定线性子空间，为解耦提供数学基础。",
+  "为原内容与目标编辑各找一组张成语义子空间的正交基向量，高效捕捉最显著特征。",
+  "提出量化基间几何对齐的引导机制，逐步动态引导去噪轨迹，使编辑局限于目标属性轴而保持身份相关正交分量。"
+ ],
+ "method_framework": "在预训练人脸扩散模型上：先在瓶颈潜空间求出原内容与目标编辑语义子空间的正交基；去噪每步计算两组基的几何对齐度并据此施加引导，把编辑方向约束在目标属性轴上、不扰动身份所在的正交分量；图片与视频共用同一机制，视频借逐帧一致引导保证时序连贯。",
+ "experiment_framework": "人脸图像编辑(FIE)与视频编辑(FVE)统一评测；对比StyleGAN反转及扩散编辑方法；指标含身份保持(ID相似度)、属性编辑精度、时序一致性与伪影；报告SOTA级身份保持与时序连贯。",
+ "takeaways": [
+  "把语义属性视作潜空间线性子空间可实现有数学依据的属性解耦编辑。",
+  "基几何对齐引导使编辑精准局限于目标属性，身份保持优于现有扩散编辑。",
+  "统一框架在人脸视频编辑上同时改善时序一致性。"
+ ],
+ "weaknesses": [
+  "依赖潜空间局部线性性假设，对大姿态/夸张属性编辑下该假设是否成立存疑。",
+  "需预先求原/目标基向量，对可编辑属性范围与基求解稳定性的讨论在正文前9页不完整。",
+  "人脸编辑为主，未涉及通用图像编辑；效率(多一步引导求解)开销未量化。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PIXEL-PERFECT Puppetry Precision-Guided Enhancement for Face and Video Editing.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PIXEL-PERFECT Puppetry Precision-Guided Enhancement for Face and Video Editing.pdf",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "人脸编辑与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

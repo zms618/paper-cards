@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/BADiff_Bandwidth Adaptive Diffusion Model.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/BADiff_Bandwidth Adaptive Diffusion Model.pdf",
+ "title": "BADiff: Bandwidth Adaptive Diffusion Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "熵条件扩散模型实现带宽约束图像生成，但计算效率提升有限",
+ "innovations": [
+  "熵条件扩散模型，直接生成符合带宽约束的图像",
+  "可微分的神经熵估计器与熵正则化损失",
+  "自适应采样策略，动态确定最优采样终止点"
+ ],
+ "method_framework": "BADiff框架通过熵嵌入网络将目标带宽转换为条件输入，联合优化去噪损失、熵正则化损失、校准损失和停止策略损失，实现带宽感知的图像生成。",
+ "experiment_framework": "在CIFAR-10、CELEBA-HQ和LSUN数据集上评估，对比传统扩散+压缩和早期停止方法，使用FID、LPIPS、比特率和推理时间作为指标。",
+ "takeaways": [
+  "熵条件机制使扩散模型能直接生成符合带宽约束的图像",
+  "自适应采样策略显著减少计算成本同时保持感知质量"
+ ],
+ "weaknesses": [
+  "熵估计器的准确性可能影响最终图像质量",
+  "高分辨率图像上的计算效率提升有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

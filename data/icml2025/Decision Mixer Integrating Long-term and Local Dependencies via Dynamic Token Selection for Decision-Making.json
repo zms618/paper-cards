@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Decision Mixer Integrating Long-term and Local Dependencies via Dynamic Token Selection for Decision-Making.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Decision Mixer Integrating Long-term and Local Dependencies via Dynamic Token Selection for Decision-Making.pdf",
+ "title": "Decision Mixer: Integrating Long-term and Local Dependencies via Dynamic Token Selection for Decision-Making",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "改进DT架构的offline RL方法，混合局部与长期建模，计算效率更高。",
+ "innovations": [
+  "受条件计算启发设计动态token选择机制，让模型按任务特征把注意力分配到不同尺度的特征（局部/长期）",
+  "引入辅助预测器缓解Decision Transformer自回归采样的short-sightedness问题",
+  "在标准与非标准MDP环境上均达SOTA，且计算资源显著低于DT/DC等基线"
+ ],
+ "method_framework": "在CSM框架下，对reward-state-action token序列做动态选择：局部token用类似Convformer的局部交互，长期token用全局注意力；辅助预测器对未来状态/回报做显式预测以约束自回归生成。",
+ "experiment_framework": "在D4RL等标准offline RL benchmark（halfcheetah/hopper/walker2d/kitchen/maze2d/antmaze）上对比Decision Transformer、Decision Convformer，报告归一化得分与算力开销。",
+ "takeaways": [
+  "动态token selection同时在标准与非标准MDP环境上优于DT与DC",
+  "辅助预测器显著改善自回归决策的短视问题",
+  "相比纯Transformer/纯卷积，混合局部+长期建模在offline RL上更高效"
+ ],
+ "weaknesses": [
+  "属offline RL架构改进，与可靠性主线弱相关",
+  "前9页未给出完整数值表，具体增益与FLOPs对比需看实验章节",
+  "动态token选择的路由策略仍需任务相关调参"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.93,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/ZEROTH_Alternating Diffusion for Proximal Sampling with ZEROTH Order Queries.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/ZEROTH_Alternating Diffusion for Proximal Sampling with ZEROTH Order Queries.pdf",
+ "title": "Alternating Diffusion for Proximal Sampling with Zeroth-Order Queries",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "零阶信息近似近端采样，高斯混合模拟热流，但高维扩展性未验证",
+ "innovations": [
+  "提出仅需势函数零阶信息的近似近端采样器，直接模拟后向动力学而非用拒绝采样实现后向步",
+  "将中间粒子分布视作高斯混合，从可直接采样的分布得到蒙特卡洛score估计，无需学习型score模型或辅助采样器",
+  "理论上在目标分布等周条件下、score估计误差受控时继承近端采样的指数收敛；实践上避免拒绝采样、允许灵活步长、运行时预算确定"
+ ],
+ "method_framework": "近端采样对应热流前向/后向交替迭代；前向步照常，后向步原由拒绝采样实现，本文直接模拟该动力学；把当前粒子集合近似为高斯混合，从而无需一阶信息即可构造score的蒙特卡洛估计，多粒子交互与并行计算驱动收敛。",
+ "experiment_framework": "在数值实验中与ULA/MALA等采样方法对比，评估到目标分布的收敛速度；指标为KL/分布逼近误差随步数/运行时的变化；强调并行多粒子与确定运行时预算。",
+ "takeaways": [
+  "零阶信息(只查势函数值)即可做近似近端采样，拓宽到无梯度可用的采样场景",
+  "高斯混合近似把不可微的score估计转化为可直接采样的MC估计，免去学习型score网络",
+  "避免拒绝采样后步长可灵活选、运行时可预算，利于工程部署"
+ ],
+ "weaknesses": [
+  "高斯混合近似在高维目标分布下的可扩展性与score估计误差控制未充分论证",
+  "实证仅为数值实验，缺乏在贝叶斯后验/生成模型等真实高维任务上的规模验证",
+  "多粒子并行虽加速，但粒子数与收敛质量的权衡曲线在提取页未见完整"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "零阶采样方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

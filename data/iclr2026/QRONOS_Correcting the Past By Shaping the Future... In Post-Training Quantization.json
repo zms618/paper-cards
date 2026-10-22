@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/QRONOS_Correcting the Past By Shaping the Future... In Post-Training Quantization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/QRONOS_Correcting the Past By Shaping the Future... In Post-Training Quantization.pdf",
+ "title": "Qronos: Correcting the Past by Shaping the Future... in Post-Training Quantization",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.5,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "PTQ算法交替误差校正与扩散，提升低比特量化精度",
+ "innovations": [
+  "在PTQ中显式纠正权重与激活量化误差，并纠正先前量化层累积下来的误差",
+  "基于可解释的优化框架，交替进行误差校正与最优更新规则下的扩散",
+  "证明Qronos有等价表述，大幅提升算法效率，并兼容Hadamard无相干处理、权重-激活缩放均衡等已有变换"
+ ],
+ "method_framework": "逐层迭代：用最优更新规则在'误差校正'与'扩散'间交替，使当前层量化误差被后续层的更新所补偿（塑造未来以纠正过去）；利用等价表述避免全模型反传以降低显存。",
+ "experiment_framework": "在Llama3、Qwen3系列上评测；权重量化/激活量化/KV cache量化到4-bit及以下；对比SOTA自适应取整方法；报告峰值显存缩减与单层微基准加速。",
+ "takeaways": [
+  "Qronos在4-bit及以下一致优于此前SOTA自适应取整方法",
+  "等价实现使Llama3 8B峰值显存降低18×，单层微基准最高加速13.8×",
+  "显式纠正跨层累积量化误差是提升PTQ精度的有效正交方向"
+ ],
+ "weaknesses": [
+  "属PTQ/模型压缩方向，与可靠性、不确定性、验证器主线关联弱",
+  "优势主要在低比特校准误差，对生成质量/鲁棒性无直接主张",
+  "迭代优化在超大模型上的校准成本与收敛性需更多实证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "PTQ误差校正方法，与可靠性主线弱关联但具可迁移优化模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

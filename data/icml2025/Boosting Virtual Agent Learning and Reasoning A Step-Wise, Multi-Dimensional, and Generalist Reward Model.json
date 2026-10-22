@@ -1,0 +1,37 @@
+{
+ "title": "Boosting Virtual Agent Learning and Reasoning: A Step-Wise, Multi-Dimensional, and Generalist Reward Model with Benchmark",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "五维奖励模型提升虚拟智能体，但维度冗余与标注可靠性存疑",
+ "innovations": [
+  "系统性定义评价GVA动作的五个维度，提供细粒度过程监督，克服仅靠outcome奖励、无法定位失败步骤的缺陷。",
+  "设计MCTS-P算法自动收集并标注逐步、五维的agent执行数据，大幅降低人工标注成本。",
+  "用Triple-M(多步/多目标/多模态)策略训练通用奖励模型，并配套SRMEval评测基准。"
+ ],
+ "method_framework": "通用虚拟智能体(GVA)由MLLM驱动，处理UI元素/文本/视觉多模态输入完成任务，但训练依赖粗粒度outcome奖励与昂贵人工轨迹标注。Similar先定义5维逐步动作评价准则；再用MCTS-P自动搜索并标注逐步五维数据；最后用Triple-M策略(融合多维度评分、多步、多模态)训练通用奖励模型，既用于RL训练的细粒度过程监督，也用于推理时scaling选择更好动作。",
+ "experiment_framework": "基于Llama-3.2-11B-Vision等MLLM backbone；自建SRMEval基准评测奖励模型质量，并在OSWorld等agent环境验证。报告Similar-RL-Llama在SRMEval上较baseline Llama-3.2-11B-Vision提升13.2%；对比outcome-only奖励方法。",
+ "takeaways": [
+  "逐步多维过程奖励比单一outcome奖励能更精准定位失败步骤、提升agent学习与推理效率。",
+  "MCTS-P自动标注过程数据可显著降低人工标注成本，Similar-RL-Llama在SRMEval上较baseline提升13.2%。",
+  "五维评价经Triple-M融合产生协同增益，优于单维奖励。"
+ ],
+ "weaknesses": [
+  "五维评价准则的定义主观，维度间可能相关/冗余，权重如何最优组合未充分论证。",
+  "奖励模型的可靠性上限依赖MCTS-P自动标注质量，标注误差会被奖励模型放大(奖励黑客风险)。",
+  "前9页内未见完整消融表(各维度单独贡献、MCTS-P采样超参)，与主流PRM(如数学推理PRM)的横向对比有限。"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Boosting Virtual Agent Learning and Reasoning A Step-Wise, Multi-Dimensional, and Generalist Reward Model.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Boosting Virtual Agent Learning and Reasoning A Step-Wise, Multi-Dimensional, and Generalist Reward Model.pdf",
+ "raw_overall": 7.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "title": "PQGAN: Product-Quantised Image Representation for High-Quality Image Synthesis",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "PQGAN将乘积量化嵌入VQ-GAN，提升重建质量并兼容扩散模型。",
+ "innovations": [
+  "把乘积量化集成进VQ-GAN的潜空间量化框架，适配大规模潜生成模型。",
+  "系统刻画码本大小、嵌入维度与子空间分解的交互（以矢量/标量量化为特例），发现VQ与PQ随嵌入维度扩展时表现趋势相反的新结论。",
+  "证明PQGAN可无缝接入预训练扩散模型，实现更快生成或同等算力下分辨率翻倍。"
+ ],
+ "method_framework": "在VQ-GAN自编码器瓶颈处用乘积量化替代全矢量量化：将潜向量拆分为多个子空间分别量化再组合成组合码，使存储成本与向量维度解耦；配合VQ-GAN重建损失对抗训练，得到高保真离散潜表示。",
+ "experiment_framework": "以重建质量为主：PSNR达37dB(此前约27dB)，FID/LPIPS/CMMD最多降96%；对比VQ及连续VAE等量化/连续方法；并展示接入预训练扩散模型后的生成速度/分辨率提升；数据集为大规模图像生成benchmark。",
+ "takeaways": [
+  "PQ相比传统VQ在高维潜空间下重建质量显著更优，量化误差大幅降低。",
+  "VQ与PQ随嵌入维度缩放的趋势相反，该规律可指导超参选择。",
+  "PQ离散潜可即插即用到现有扩散模型，提速或提分辨率几乎无额外成本。"
+ ],
+ "weaknesses": [
+  "贡献集中在量化器与重建，对下游生成质量(FID)的端到端收益与专门tokenizer类工作对比的充分性需看后文。",
+  "96%降幅的表述以基线27dB为参照，相对已有强tokenizer(SAN等)的实际增益幅度需谨慎。",
+  "前9页内未给出完整下游生成benchmark(CIFAR/ImageNet类)的细节。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PQGAN_Product-QUANTISED REPRESEN-TATION for High-Quality Synthesis.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PQGAN_Product-QUANTISED REPRESEN-TATION for High-Quality Synthesis.pdf",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "图像生成与可靠性主线无关，仅是量化方法改进",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

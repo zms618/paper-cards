@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Few-Shot Incremental 3D Object Detection in Dynamic Indoor Environments.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Few-Shot Incremental 3D Object Detection in Dynamic Indoor Environments.pdf",
+ "title": "Few-Shot Incremental 3D Object Detection in Dynamic Indoor Environments",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "VLM与原型印结合的3D检测，增量学习但泛化验证不足",
+ "innovations": [
+  "VLM引导的未知物体学习模块",
+  "门控多模态原型印制模块",
+  "点级和盒级加权机制减少噪声"
+ ],
+ "method_framework": "FI3Det包含基础训练和增量学习两个阶段：基础阶段使用VLM生成未知物体伪标签，增量阶段构建多模态原型并自适应融合分类分数",
+ "experiment_framework": "在ScanNet V2和SUN RGB-D数据集上评估，采用批处理和序列增量设置，1/5-shot，1-way/9-way和5-way，使用mAP@0.25指标",
+ "takeaways": [
+  "利用VLM零样本能力提前学习未知物体特征",
+  "多模态原型融合增强新类别检测鲁棒性",
+  "加权机制有效减少伪标签噪声"
+ ],
+ "weaknesses": [
+  "依赖VLM性能，可能受限于2D特征质量",
+  "未充分讨论计算复杂度和推理时间",
+  "未探索不同场景下的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D检测与可靠性主线无实质交点，仅多模态融合有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

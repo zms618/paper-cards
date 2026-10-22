@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/LITA-GS_Illumination-Agnostic Novel View Synthesis via Reference-Free 3D Gaussian Splatting.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/LITA-GS_Illumination-Agnostic Novel View Synthesis via Reference-Free 3D Gaussian Splatting.pdf",
+ "title": "LITA-GS Illumination-Agnostic Novel View Synthesis via Reference-Free 3D Gaussian Splatting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "光照不变先验与渐进去噪提升弱光场景3D重建，但依赖SfM且计算开销大。",
+ "innovations": [
+  "光照不变物理先验提取管道",
+  "光照无关结构渲染策略",
+  "渐进式去噪模块(PDM)",
+  "无监督优化策略"
+ ],
+ "method_framework": "基于Kubelka-Munk理论和不变边缘检测器提取光照不变结构先验，将其融入3D高斯溅射过程，同时引入深度信息和噪声表示，通过渐进式去噪模块优化渲染结果。",
+ "experiment_framework": "在LOM数据集(5个弱光/过曝场景)上评估，与NeRF、3DGS及结合图像增强方法的变体比较，使用PSNR、SSIM、LPIPS指标。",
+ "takeaways": [
+  "光照不变先验能有效提升弱光场景3D重建质量",
+  "无监督策略在缺乏真实参考时仍能获得良好效果",
+  "渐进式去噪模块能有效处理图像噪声"
+ ],
+ "weaknesses": [
+  "方法依赖SfM初始化，在极端光照条件下可能不稳定",
+  "未充分验证方法在医学影像等特定领域的适用性",
+  "计算复杂度相比基础3DGS有所增加"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D重建与可靠性主线无关，仅是图形学应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

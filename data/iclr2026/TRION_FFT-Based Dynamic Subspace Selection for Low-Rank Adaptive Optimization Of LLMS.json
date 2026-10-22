@@ -1,0 +1,41 @@
+{
+ "title": "TRION: FFT-Based Dynamic Subspace Selection for Low-Rank Adaptive Optimization of LLMs",
+ "one_line": "用预定义DCT基动态选列替代SVD，降显存提速，但极限性能略低。",
+ "innovations": [
+  "用预定义的DCT正交基近似SVD/QR梯度投影，避免逐层计算并存储投影矩阵的高成本",
+  "按各层梯度与DCT列的对齐度动态选最相关基向量，两步得到有效投影矩阵",
+  "大层用Makhoul的N点FFT算法O(n^2 log n)计算DCT，得到与秩无关的运行时间，匹配SVD/QR性能且显存降最多25%"
+ ],
+ "method_framework": "GaLore等低秩优化用SVD/QR逐层投影梯度到低维空间，昂贵且需存投影矩阵。TRION改用预先生成一次的DCT正交基：先与DCT矩阵matmul(O(n^3))，再按梯度对齐轻量排序选最相关基向量；大层用FFT加速DCT。正交基预定义、只算一次，实现秩无关运行时间。",
+ "experiment_framework": "在预训练与微调任务上评测；对比GaLore/LDAdam/FRUGAL/FIRA等SVD/QR类低秩优化器；指标为下游性能、运行时间与显存；报告匹配SVD/QR方法性能、更快、显存降最多25%。",
+ "takeaways": [
+  "预定义DCT正交基可在不牺牲性能下近似SVD/QR低秩投影",
+  "按梯度对齐动态选列比固定投影更贴合当前梯度方向",
+  "秩无关运行时间与25%显存削减使其在低端GPU上更实用"
+ ],
+ "weaknesses": [
+  "DCT基是通用正交基，对特定层梯度子空间的贴合度不如数据自适应SVD，极限性能上限略低",
+  "动态选列引入排序步骤，在极大模型规模下的实际加速比需更多实测",
+  "主要在Llama类架构验证，对MoE/稀疏架构的适用性未报告"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/TRION_FFT-Based Dynamic Subspace Selection for Low-Rank Adaptive Optimization Of LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TRION_FFT-Based Dynamic Subspace Selection for Low-Rank Adaptive Optimization Of LLMS.pdf",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "LLM优化技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Universal Biological Sequence Reranking for Improved De Novo Peptide Sequencing.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Universal Biological Sequence Reranking for Improved De Novo Peptide Sequencing.pdf",
+ "title": "Universal Biological Sequence Reranking for Improved De Novo Peptide Sequencing",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "RankNovo融合多模型输出重排肽序列，但泛化性与可靠性存疑",
+ "innovations": [
+  "指出现有从头肽测序模型受质谱数据复杂、噪声分布异质影响而存在数据特异性偏差",
+  "提出RankNovo：首个深度重排序框架，融合多个测序模型(Casanovo、Novo等)的互补优势",
+  "采用listwise重排，不仅超过生成候选的基座模型，还刷新了从头肽测序SOTA"
+ ],
+ "method_framework": "先用多个从头肽测序模型生成候选肽序列；再训练一个listwise重排序模型，综合各模型输出与质谱信号对候选列表打分排序，选出最可信的肽序列，从而缓解单模型的数据特异性偏差。",
+ "experiment_framework": "在质谱蛋白质组学的从头肽测序基准上评测；对比Casanovo、Novo、ContraNovo等单模型；指标为肽序列识别准确率；RankNovo超过其用于生成候选的基座模型并取得SOTA。",
+ "takeaways": [
+  "多模型互补+深度重排可显著提升从头肽测序精度",
+  "listwise重排比单模型直接预测更鲁棒，能缓解噪声异质带来的偏差",
+  "该框架可作为通用的生物序列重排工具，提升测序可信度"
+ ],
+ "weaknesses": [
+  "重排依赖多个基座模型的候选覆盖，若所有模型同错则无法纠正",
+  "跨仪器/跨物种数据的泛化性未充分验证",
+  "重排模型训练标签的来源与可靠性未充分说明"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

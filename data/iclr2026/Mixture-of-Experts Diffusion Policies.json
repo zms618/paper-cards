@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mixture-of-Experts Diffusion Policies.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mixture-of-Experts Diffusion Policies.pdf",
+ "title": "Abstracting Robot Manipulation Skills via Mixture-of-Experts Diffusion Policies",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 3.5,
+  "overall": 5.0
+ },
+ "one_line": "MoE扩散策略学习正交技能基，粘性路由实现稀疏专家激活。",
+ "innovations": [
+  "学习紧凑正交技能基(orthonormal skill basis)抽象操作技能",
+  "粘性路由(sticky routing)按阶段稀疏激活少数任务相关专家",
+  "变分训练目标与推理时自适应专家激活，避免超大骨干仍快速采样"
+ ],
+ "method_framework": "将扩散策略建为MoE：以变分目标训练正交技能基，门控按状态自适应地每步只选少数专家组合动作；粘性路由使同一阶段专家保持一致，实现空间(左右臂)与阶段(取/调/放)特化，推理时稀疏激活降低代价。",
+ "experiment_framework": "在仿真与真实双臂平台评测多任务学习与迁移学习任务，对比大型扩散策略基线；指标为任务成功率与推理代价；SMP成功率更高而推理成本显著更低。",
+ "takeaways": [
+  "正交技能基可抽象出可复用的操作技能",
+  "粘性稀疏路由让大扩散策略无需超大骨干即可高效多任务",
+  "学到的技能可在任务变化时快速迁移"
+ ],
+ "weaknesses": [
+  "relevance偏离主线(机器人操作，非可靠性/医疗影像/多模态推理)",
+  "专家数与基维度等超参选择缺乏系统分析",
+  "真实平台仅双臂操作，对大规模开放任务的可扩展性未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "机器人操作与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

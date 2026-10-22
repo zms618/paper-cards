@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MimicMotion_High-Quality Human Motion Video Generation with Confidence-aware Pose Guidance.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MimicMotion_High-Quality Human Motion Video Generation with Confidence-aware Pose Guidance.pdf",
+ "title": "MimicMotion: High-Quality Human Motion Video Generation with Confidence-aware Pose Guidance",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.4
+ },
+ "one_line": "基于扩散模型和姿态置信度引导的视频生成，提升手部等低置信度区域质量。",
+ "innovations": [
+  "提出置信度感知的姿态引导机制，同时保证帧质量和时间平滑性",
+  "设计基于姿态置信度的区域损失放大策略，强化低置信度区域的生成质量",
+  "支持任意长度的人体动作视频生成，解决长视频时序一致性问题"
+ ],
+ "method_framework": "以扩散模型为基础的姿态引导视频生成框架。核心创新是在姿态引导中引入置信度信息：对姿态估计置信度高的区域和低的区域采用不同的引导强度和损失权重。区域损失放大策略对低置信度区域（如手部）施加更大的生成损失，减少图像畸变。通过切片式训练和生成支持任意长度视频。",
+ "experiment_framework": "在姿态引导人体视频生成基准上评测，对比DisCo、MagicDance、MagicAnimate等方法。指标包括生成视频质量（FVD等）、姿态对齐度、时序平滑性。展示舞蹈、对话、长视频等多种场景。",
+ "takeaways": [
+  "姿态估计置信度信息可有效提升视频生成质量，尤其是手部等易错区域",
+  "置信度感知引导平衡了姿态对齐与时序平滑性之间的矛盾",
+  "切片式生成策略可扩展到任意长度的视频"
+ ],
+ "weaknesses": [
+  "依赖姿态估计的准确性和置信度质量，端到端的姿态-生成联合优化未涉及",
+  "仅处理人体动作视频，其他类型视频生成未验证",
+  "计算开销较大，长视频生成的推理效率待优化"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.23,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

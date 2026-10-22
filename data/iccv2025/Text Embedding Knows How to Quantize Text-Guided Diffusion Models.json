@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Text Embedding Knows How to Quantize Text-Guided Diffusion Models.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Text Embedding Knows How to Quantize Text-Guided Diffusion Models.pdf",
+ "title": "Text Embedding Knows How to Quantize Text-Guided Diffusion Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "文本引导扩散模型动态量化，提升效率与质量",
+ "innovations": [
+  "首次将文本提示用于扩散模型的动态量化",
+  "提出文本到质量(T2Q)预测模块指导比特分配",
+  "设计质量到比特(Q2B)模块实现层级和时间步自适应量化"
+ ],
+ "method_framework": "QLIP包含T2Q和Q2B两个模块，T2Q预测文本提示对应的图像质量，Q2B根据预测质量确定各层各时间步的比特精度，实现动态量化。",
+ "experiment_framework": "在COCO2017和Conceptual Captions数据集上，与Q-diffusion和PTQD基线比较，使用FID、sFID、CLIP Score和BitOPs指标评估。",
+ "takeaways": [
+  "文本提示信息量可作为量化决策的重要依据",
+  "动态比特分配可显著降低计算复杂度同时保持图像质量"
+ ],
+ "weaknesses": [
+  "仅关注文本提示信息，未考虑其他输入条件",
+  "T2Q模块质量预测依赖特定指标，可能限制泛化性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "文本引导扩散模型量化，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Uni-MODALLY_CLIP Behaves A Bag-of-Words Model Cross-MODALLY but not Uni-MODALLY.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Uni-MODALLY_CLIP Behaves A Bag-of-Words Model Cross-MODALLY but not Uni-MODALLY.pdf",
+ "title": "CLIP Behaves like a Bag-of-Words Model Cross-Modally but not Uni-Modally",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "诊断CLIP跨模态BoW现象源于对齐而非表征缺失，线性修复即可。",
+ "innovations": [
+  "区分两种BoWness根源——单模态嵌入是否缺失绑定信息 vs 跨模态对齐未保留——并实证CLIP属于后者",
+  "通过linear probing、随物体数量增加的鲁棒性测试、conjunctive search实验，证明属性-物体绑定已编码在CLIP文本与图像嵌入内(单模态不BoW)",
+  "证明两模态可被一个简单线性变换对齐，仅训练该线性层即可跨模态恢复绑定，无需重训编码器"
+ ],
+ "method_framework": "已知CLIP跨模态像bag-of-words、难把属性绑定到物体。本文追问：是编码器里根本没有绑定信息，还是跨模态对齐丢了它？通过linear probing(单模态嵌入能否线性读出属性-物体绑定)、物体数增加的鲁棒性测试、conjunctive search三类实验，证明绑定信息已编码在单模态嵌入中；缺陷在跨模态对齐。据此只需对文本嵌入学一个线性变换把两模态已编码的绑定信息对齐，即可提升跨模态绑定。",
+ "experiment_framework": "用linear probing、随物体数递增的鲁棒性测试、conjunctive search诊断CLIP单模态vs跨模态的绑定能力；再用轻量线性层对齐两模态，评估属性-物体绑定精度(如颜色-形状绑定)；对比是否需重训编码器。",
+ "takeaways": [
+  "CLIP的BoWness主要是跨模态对齐问题而非单模态表征缺失，绑定信息本来就在嵌入里",
+  "一个轻量线性层即可跨模态恢复绑定，避免昂贵的编码器重训",
+  "跨模态空间上测得的绑定缺陷不应被误判为编码器知识缺失"
+ ],
+ "weaknesses": [
+  "属CLIP组合性诊断分析，与本主线(可靠性×多模态推理/医学影像)关联中等偏弱",
+  "修复仅为线性对齐层，在更复杂关系(空间/数量/否定)组合上是否同样适用未验证",
+  "结论基于标准CLIP，对更大/更新的VLM(如LLaVA类生成模型)是否成立正文前9页未检验"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "诊断CLIP跨模态对齐问题，与多模态推理可靠性相关但未触及医学影像",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Orient Anything Learning Robust Object Orientation Estimation from Rendering 3D Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Orient Anything Learning Robust Object Orientation Estimation from Rendering 3D Models.pdf",
+ "title": "Orient Anything: Learning Robust Object Orientation Estimation from Rendering 3D Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "渲染3D模型构建朝向数据集，分布拟合提升零样本估计",
+ "innovations": [
+  "首个面向开放世界的零样本物体朝向估计基础模型",
+  "利用3D模型渲染+VLM自动标注正面朝向，构建200万张精确朝向标注数据集",
+  "将3D朝向建模为三角度上的概率分布，用分布拟合目标替代直接回归，提升训练稳定性"
+ ],
+ "method_framework": "用VLM标注3D模型正面朝向，结合规范姿态检测和对称性分析简化朝向定义；从随机视角渲染3D模型生成训练数据；用概率分布建模三个角度(方位角/极角/滚转角)，训练网络拟合分布；多种合成到真实迁移策略。",
+ "experiment_framework": "任务：单目图像物体朝向估计。基线：ObjectNet3D/Omni3D专家模型(CubeRCNN)、GPT-4o/Gemini等VLM。指标：朝向估计准确率。数据：渲染3D模型+真实图像。",
+ "takeaways": [
+  "当前VLM(GPT-4o/Gemini)连基本物体朝向都判断错误，朝向感知能力未涌现",
+  "3D渲染+VLM自动标注可低成本获取大规模精确朝向监督",
+  "分布拟合目标比直接回归角度更稳定，合成数据训练可零样本迁移到真实图像"
+ ],
+ "weaknesses": [
+  "3D模型渲染的域差仍存，对真实场景中遮挡/截断物体的朝向估计精度有限",
+  "对称性物体的朝向二义性处理依赖规则，可能不够鲁棒",
+  "仅在常见物体类别验证，开放世界中罕见类别泛化性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

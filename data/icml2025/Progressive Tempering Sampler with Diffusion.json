@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Progressive Tempering Sampler with Diffusion.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Progressive Tempering Sampler with Diffusion.pdf",
+ "title": "Progressive Tempering Sampler with Diffusion",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.75
+ },
+ "one_line": "PTSD结合并行回火与扩散模型，序贯训练提升采样效率，但扩展性存疑。",
+ "innovations": [
+  "提出PTSD方法：跨温度序贯训练扩散模型，利用并行回火(PT)优势改善神经采样器训练",
+  "引入高温扩散模型组合生成低温近似样本的方法，用少量MCMC精炼后训练下一温度扩散模型",
+  "实现样本信息跨温度层级高效复用，同时生成混合良好的独立样本"
+ ],
+ "method_framework": "PTSD从高温到低温序贯训练扩散模型。在每个温度层，利用上一层高温扩散模型生成近似样本，经少量MCMC精炼后作为训练数据训练当前温度的扩散模型。结合了PT的探索能力和扩散模型的摊销采样优势。",
+ "experiment_framework": "在ManyWell等多模态目标分布上验证，对比DDS、iDEM、BNEM、CMCD等扩散/控制类神经采样器及PT基线。指标为Wasserstein-2距离和目标评估次数。",
+ "takeaways": [
+  "并行回火与扩散模型的结合可以同时获得PT的高效探索和扩散模型的独立采样能力",
+  "跨温度序贯训练有效复用样本信息，提升目标评估效率",
+  "PTSD在多模态采样任务上显著优于现有扩散类神经采样器"
+ ],
+ "weaknesses": [
+  "序贯训练需要多阶段计算，总训练成本可能较高",
+  "前9页内实验仅在低维合成分布上验证，未展示高维真实数据的可扩展性",
+  "MCMC精炼步骤的引入破坏了纯摊销采样的便捷性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

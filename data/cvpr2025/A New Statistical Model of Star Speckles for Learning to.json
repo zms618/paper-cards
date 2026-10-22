@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/A New Statistical Model of Star Speckles for Learning to.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A New Statistical Model of Star Speckles for Learning to.pdf",
+ "title": "A New Statistical Model of Star Speckles for Learning to Detect and Characterize Exoplanets in Direct Imaging Observations",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "统计模型扩展PACO，但实验不足且依赖合成数据",
+ "innovations": [
+  "在局部patch多元高斯N(m_j,C_j)上加三点扩展：可学线性投影A∈R^{m×p}令A y~N(m,C)解耦像素空间与统计空间以控大patch维度；多尺度P把S(x_t)扩成各尺度patch并集；N折旋转对称把同位置旋转2πn/N的patch放进同一联合高斯，用'外行星不可能同时出现在全部对称位置'压自减除，并从衍射级数展开给出对称性依据",
+  "GLRT检测统计量γ̂=α̂/σ̂在H0(α=0)下证为N(0,1)，同时给出通量估计α̂=Σb_t/Σa_t与标准误1/√(Σa_t)（Cholesky求精度矩阵），再用独立校准集估计零假设CDF把γ映射成虚警概率",
+  "端到端可训练：argmin_α φ_θ(α,χ(y))+ψ_ν(α)，式(20)令α̂=f_ν(α̂/σ̂)·σ̂、σ̂保持不变，训练用像素级高斯NLL L=0.5(α̂-α_gt)²/σ̂²+log σ̂；多模型按a=1/σ²,b=α/σ做加权平均集成"
+ ],
+ "method_framework": "ASDI四维数据→光谱对齐后按patch/尺度/旋转折叠建局部高斯→GLRT出γ与α̂,σ̂→UNet去噪得最终检测图→独立集CDF校准成虚警概率；另用Newton迭代联合优化[α,x0]做天体测量。",
+ "experiment_framework": "SPHERE/VLT真实数据：220个SHINE-F150观测训练、8个测试集（含HR8799三颗已知行星）；注入合成点源作真值；指标AUC（表A带±0.005）与通量估计误差。",
+ "takeaways": [
+  "把检测做成GLRT统计量+零假设CDF校准、输出可直接映射成虚警概率，是证伪式任务的claim隔离式统计设计",
+  "把统计模型负对数似然与UNet先验写成argmin_α φ+ψ，而非纯监督分割，能同时拿到通量估计与不确定度"
+ ],
+ "weaknesses": [
+  "正文在5.1节截断：8个测试集与主SOTA（deep PACO、MODEL&CO、PACO）的PR曲线主表不可见，表A只有作者自身模型的多尺度/旋转消融，提升幅度无法核对",
+  "ground truth完全靠注入合成点源，真实外行星仅几十颗；θ={A_j,w_j}与UNet在220个SHINE观测上训练后是否过拟合到特定仪器/视宁度，仅用一个校准集做CDF，缺跨instrument迁移测试",
+  "N折旋转对称假设speckle场近中心/旋转对称，强各向异性像差下的退化分析缺；且表A显示N从1→4只涨0.005-0.018 AUC，N∈{1,2,4}的选择依据与阈值敏感性均无；式(20)假设σ̂不受网络影响（'主要由speckle高方差驱动'）但UNet实际学到了α/σ比值修正，该假设无实验支撑；ground truth又全靠注入合成点源，跨instrument迁移未测"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "天文图像处理，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

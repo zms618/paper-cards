@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/FP4_Optimizing Large Language Model Training Using FP4 Quantization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FP4_Optimizing Large Language Model Training Using FP4 Quantization.pdf",
+ "title": "FP4: Optimizing Large Language Model Training Using FP4 Quantization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "FP4量化LLM训练，通过可微分估计器和异常值钳制缓解精度损失",
+ "innovations": [
+  "首个实现LLM FP4预训练的框架，将训练精度从FP8进一步推到FP4",
+  "提出可微分量化估计器，使梯度能准确流过FP4量化操作，保证权重更新精度",
+  "提出异常值钳制和补偿策略，防止激活值在低精度下崩溃"
+ ],
+ "method_framework": "FP4仅4位浮点数，动态范围极小，直接转换会导致训练损失飙升。本文方案：(1)可微分量化估计器：用STE(直通估计)的改进版本，在反传时更准确地估计量化梯度；(2)异常值钳制：识别激活中的异常值并单独处理，防止少量异常值破坏整体量化；(3)向量-wise量化：按向量而非按矩阵设置缩放因子，提高表示效率；(4)混合精度方案：关键层(如attention)保持高精度，其余层用FP4。",
+ "experiment_framework": "在400M参数的LLaMA2模型上预训练验证。对比基线：BF16、FP8、直接FP4转换。评估指标：训练损失曲线、下游任务准确率。测试不同混合精度策略的效果。",
+ "takeaways": [
+  "FP4预训练首次可行，精度可与BF16和FP8基线相当",
+  "直接cast到FP4会导致训练损失显著升高，需要专门的量化策略",
+  "异常值处理是FP4训练稳定的关键"
+ ],
+ "weaknesses": [
+  "仅在400M小模型上验证，7B/70B等大规模模型的可扩展性未知",
+  "混合精度策略意味着并非所有计算都是FP4，实际加速比可能低于理论值",
+  "仅在LLaMA架构上验证，对其他模型架构的适用性未知"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

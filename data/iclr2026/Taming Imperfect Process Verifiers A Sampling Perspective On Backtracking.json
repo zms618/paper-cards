@@ -1,0 +1,41 @@
+{
+ "title": "Taming Imperfect Process Verifiers: A Sampling Perspective on Backtracking",
+ "one_line": "概率回溯缓解验证器误差放大，但大规模验证不足",
+ "innovations": [
+  "指出学习型过程验证器的微小误差会因生成中的误差放大(error amplification)导致标准解码灾难性失败，并给出不完美验证器的具体模型",
+  "提出VGB：把自回归生成解释为部分生成树上的随机游走，转移概率由过程验证器与基座模型共同引导，并以概率方式执行回溯",
+  "将该过程推广到理论计算机科学中的Sinclair-Jerrum近似计数/采样随机游走，为启发式回溯提供数学依据并证明对验证器误差的可证鲁棒性"
+ ],
+ "method_framework": "把生成看作在部分生成树上的随机游走，边转移概率由基座模型与过程验证器打分共同决定；不同于确定性贪心/beam，VGB以概率回溯（偶尔擦除已生成token），类比Sinclair-Jerrum MCMC用近似计数oracle做近似采样。这种概率回溯使得即使验证器有偏，误差放大也可被算法性地缓解。",
+ "experiment_framework": "在合成任务与真实语言建模任务上评测；基线为best-of-N、token级重加权、确定性回溯等过程引导解码；指标含任务准确率与对验证器误差的鲁棒性；报告在多种指标上优于基线。",
+ "takeaways": [
+  "标准解码在不完美过程验证器下会因长视野误差放大而灾难性失败",
+  "概率回溯（而非确定性回溯）可在理论上缓解验证器误差放大，VGB有可证鲁棒性",
+  "经典MCMC/近似采样理论可为LLM推理时验证器引导提供严格设计原则"
+ ],
+ "weaknesses": [
+  "实证仅在合成与有限真实LM任务上验证，对大规模推理基准(MATH/GSM等)的端到端提升幅度需确认",
+  "VGB的随机游走混合时间/计算开销随视野增长，实际test-time成本分析有限",
+  "对验证器不完美的建模是理想化的，真实验证器误差结构是否符合该模型待检验"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Taming Imperfect Process Verifiers A Sampling Perspective On Backtracking.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Taming Imperfect Process Verifiers A Sampling Perspective On Backtracking.pdf",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 7.1
+ },
+ "raw_overall": 7.68,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "验证器误差缓解与鲁棒性设计，符合可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

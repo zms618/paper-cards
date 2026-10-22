@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Fast and Accurate Gigapixel Pathological Classification with Hierarchical Distillation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Fast and Accurate Gigapixel Pathological Classification with Hierarchical Distillation.pdf",
+ "title": "Fast and Accurate Gigapixel Pathological Classification with Hierarchical Distillation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "分层蒸馏加速病理分类，但创新有限且依赖预训练",
+ "innovations": [
+  "动态多实例网络(DMIN)与轻量级实例预筛选网络(LIPN)的分层蒸馏框架",
+  "首次将基于切比雪夫多项式的Kolmogorov-Arnold分类器应用于计算病理学",
+  "消除无关实例不仅加速推理过程还提高分类性能的发现"
+ ],
+ "method_framework": "HDMIL框架包含训练和推理两个阶段：训练阶段通过自蒸馏训练DMIN识别无关区域，再用交叉蒸馏训练LIPN；推理阶段LIPN快速识别低分辨率WSI中的无关区域，间接指示高分辨率WSI中可跳过的区域",
+ "experiment_framework": "在Camelyon16、TCGA-NSCLC和TCGA-BRCA三个公共数据集上评估，使用10折交叉验证，比较AUC、准确率和推理时间",
+ "takeaways": [
+  "自蒸馏策略可有效筛选相关实例，提高分类效率",
+  "轻量级预筛选网络可显著减少推理时间而不大幅降低性能",
+  "新型CKA分类器可提升病理图像分类性能"
+ ],
+ "weaknesses": [
+  "在小数据集上性能略有下降",
+  "LIPN的预筛选可能在大数据集上效果受限",
+  "方法依赖于预训练的特征提取器"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "病理分类属于落地域但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

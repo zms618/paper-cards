@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Active Learning of Deep Neural Networks via Gradient-Free Cutting Planes.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Active Learning of Deep Neural Networks via Gradient-Free Cutting Planes.pdf",
+ "title": "Active Learning of Deep Neural Networks via Gradient-Free Cutting Planes",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "将切割平面方法扩展到ReLU网络训练，提供理论保证但扩展性有限",
+ "innovations": [
+  "证明二分类ReLU网络训练可重构为线性规划问题：通过枚举激活模式（activation patterns），将非线性约束转化为线性约束",
+  "提出首个具有收敛保证的深度主动学习方案：切割平面主动学习自然继承经典切割平面方法的收敛理论",
+  "推导可行集体积的几何收缩率，定量刻画主动学习的样本效率"
+ ],
+ "method_framework": "核心观察：ReLU网络的激活模式是有限的，因此二分类问题可枚举所有激活模式并重构为线性规划。算法：(1)每步计算当前参数集的解析中心；(2)在中心处生成新的训练样本（query synthesis）；(3)若中心误分类该样本，则将对应的线性约束加入参数集（切割）；(4)重复直到收敛。支持三种设置：query synthesis、有限查询、不精确切割。",
+ "experiment_framework": "合成螺旋数据集+真实情感分类任务。对比基线：SGD、entropy sampling、coreset等深度主动学习方法。指标：测试准确率、所需样本数。网络架构：两层ReLU网络为主。",
+ "takeaways": [
+  "切割平面主动学习在合成数据集上的决策边界比梯度方法更清晰，收敛过程具有几何保证",
+  "ReLU网络的激活模式有限性是连接非线性训练与线性规划的关键桥梁",
+  "解析中心切割平面方法在实际计算中比重心法更易实现"
+ ],
+ "weaknesses": [
+  "激活模式数量随数据量指数增长，实际可扩展性受限",
+  "实验验证较弱，仅合成数据+小型情感分类，缺乏大规模深度网络实验",
+  "理论保证基于二分类，多分类回归的扩展未涉及"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "主动学习方法与可靠性主线无直接交点，但理论保证有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/7DGS_Unified Spatial-Temporal-Angular Gaussian Splatting.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/7DGS_Unified Spatial-Temporal-Angular Gaussian Splatting.pdf",
+ "title": "7DGS: Unified Spatial-Temporal-Angular Gaussian Splatting",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 4,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "7D高斯原语合并时空角，但实验缺失与训练成本问题削弱可信度。",
+ "innovations": [
+  "提出统一 7D 高斯原语（3D 位置 + 1D 时间 + 3D 方向），用条件切片由 t、φ、θ 导出条件 3D 高斯与 αcond=α·ftemp·fdir，把动态视角依赖渲染归约为常规 splatting。",
+  "自适应高斯细化 AGR：以 K=10 多频编码喂小 MLP，仅对高残差区域预测 μp/μt/μd 与协方差残差，避免全局 densification 带来的开销。",
+  "自建 7DGS-PBR 动态资产基准（heart1/heart2/cloud/dust/flame/suzanne），与 4DGS 做可控对新视角/动态模糊场景的对比评测。"
+ ],
+ "method_framework": "以 7D 高斯原语（3D 位置 + 1D 时间 + 3D 方向）表示动态场景；条件切片由 t、φ、θ 得条件 3D 高斯与 αcond=α·ftemp·fdir；AGR 用 K=10 多频编码 + 小 MLP 预测位置/时间/方向/协方差残差；复用 3DGS 光栅化与分裂/剪枝优化。",
+ "experiment_framework": "D-NeRF、Technicolor 与自建 7DGS-PBR（heart1/heart2/cloud/dust/flame/suzanne）；对比 4DGS 报 PSNR/SSIM/LPIPS 与 FPS；含 λt/λd 初始化与 Σpt>0.05 分裂阈值设置，消融与泛化表在正文后被截断。",
+ "takeaways": [
+  "把时间与方向写进高斯原语本身而非外挂 MLP 分支，可在保持 401 FPS 光栅化效率的同时拿到更高 PSNR。",
+  "αcond=α·ftemp·fdir 让时间/视角可见性直接成为渲染权重，是统一表示能复用静态管线的关键。",
+  "AGR 的残差式细化表明：高频动态细节靠局部自适应 densification 补，比全局提高分辨率更划算。"
+ ],
+ "weaknesses": [
+  "正文在 D-NeRF Table 1 的 mutant 行处截断，Technicolor 与 7DGS-PBR 全部指标、消融表及光照/视角泛化结果均不可见，所谓渲染质量显著更好的结论缺少可核验的实验支撑。",
+  "λt、λd 需在分集外额外跑 15k 迭代初始化后才能稳定训练，真实训练成本被隐藏，与统一表示即插即用的叙事存在落差。",
+  "分裂阈值 Σpt>0.05、归一化时间尺度>0.25 等仅在一个场景尺度下标定，未在多种运动速度与分辨率上做敏感性实验，超参迁移性未验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "动态渲染技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

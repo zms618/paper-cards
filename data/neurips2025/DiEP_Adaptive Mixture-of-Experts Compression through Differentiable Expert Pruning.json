@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/DiEP_Adaptive Mixture-of-Experts Compression through Differentiable Expert Pruning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/DiEP_Adaptive Mixture-of-Experts Compression through Differentiable Expert Pruning.pdf",
+ "title": "DiEP: Adaptive Mixture-of-Experts Compression through Differentiable Expert Pruning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "可微分专家剪枝框架实现MoE模型自适应压缩，但多模态验证缺失",
+ "innovations": [
+  "可微分专家剪枝框架",
+  "层间和层内重要性联合优化",
+  "推理时自适应专家跳过机制"
+ ],
+ "method_framework": "将离散专家选择转化为连续优化，联合学习层内专家分数α和层间重要性分数β，通过全局排序实现非均匀剪枝",
+ "experiment_framework": "Mixtral/DeepSeek/Qwen等5个MoE模型，MMLU等4个零样本任务，对比M-SMoE等4种基线方法",
+ "takeaways": [
+  "不同MoE层专家冗余度差异显著需非均匀剪枝",
+  "可微分优化有效处理指数级专家组合搜索",
+  "层间和层内重要性分离优化减轻梯度冲突"
+ ],
+ "weaknesses": [
+  "仅评估NLP任务，未验证多模态场景",
+  "推理时跳过机制依赖额外校准数据计算相似度"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

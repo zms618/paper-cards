@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Beyond Message Passing Neural Graph Pattern Machine.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Beyond Message Passing Neural Graph Pattern Machine.pdf",
+ "title": "Beyond Message Passing: Neural Graph Pattern Machine",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "GPM绕过消息传递，直接学习图子结构模式提升表达与泛化。",
+ "innovations": [
+  "提出Neural Graph Pattern Machine (GPM)框架，跳出传统消息传递范式，直接提取、编码和优先级排序与任务相关的图模式",
+  "显式建模三角、k-clique、环等基本图motif，克服1-WL测试等价性带来的表达瓶颈",
+  "在节点分类、链接预测、图分类和图回归四项任务上均超越SOTA，且展现强OOD泛化性和可扩展性"
+ ],
+ "method_framework": "GPM直接从图子结构中学习表示：首先高效提取图模式（子结构），然后编码这些模式，再根据任务相关性进行优先级排序加权聚合，从而避免消息传递的局部聚合局限，直接捕获全局结构模式。",
+ "experiment_framework": "四项标准图学习任务：节点分类、链接预测、图分类、图回归；基线：SOTA GNN（GCN、GAT、GraphSAGE等）及高级变体；指标：预测准确率/AUC/RMSE等；额外评估OOD泛化、可扩展性和可解释性。",
+ "takeaways": [
+  "直接从图子结构模式学习比迭代式消息传递更能捕获关键的图语义和长程依赖",
+  "显式建模motif（三角形、环等）显著提升GNN的表达能力和OOD泛化性",
+  "GPM在保持可扩展性的同时提供更好的可解释性（可追溯到具体图模式）"
+ ],
+ "weaknesses": [
+  "图模式提取的计算复杂度随图规模增大可能显著上升，超大规模图的效率未充分验证",
+  "模式提取的粒度和类型选择需要人工先验，自动化程度有限",
+  "与最新的Graph Transformer方法的对比不够充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

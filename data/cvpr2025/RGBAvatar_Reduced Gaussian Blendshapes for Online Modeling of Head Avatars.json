@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/RGBAvatar_Reduced Gaussian Blendshapes for Online Modeling of Head Avatars.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/RGBAvatar_Reduced Gaussian Blendshapes for Online Modeling of Head Avatars.pdf",
+ "title": "RGBAvatar Reduced Gaussian Blendshapes for Online Modeling of Head Avatars",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "紧凑高斯混合形状实现实时头部重建，但扩展性和质量有限",
+ "innovations": [
+  "MLP映射FLAME参数到紧凑混合权重",
+  "颜色初始化估计方法",
+  "批并行高光栅化过程",
+  "局部-全局采样策略实现在线重建"
+ ],
+ "method_framework": "使用MLP将FLAME参数映射到紧凑混合权重，线性组合基础模型和少量高斯混合形状，结合颜色初始化和批并行光栅化加速训练",
+ "experiment_framework": "INSTA和GaussianBlendShapes数据集，与5种基线方法比较，使用PSNR、SSIM、LPIPS指标评估",
+ "takeaways": [
+  "紧凑混合形状表示可减少参数同时保持高质量",
+  "批并行光栅化显著提高GPU利用率",
+  "局部-全局采样策略平衡在线重建中的新数据适应与旧数据保留"
+ ],
+ "weaknesses": [
+  "仅关注头部头像重建，未扩展到全身",
+  "在线重建质量略低于离线方法",
+  "依赖FLAME参数提取，可能受限于跟踪器精度"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "头部重建与可靠性主线无实质交点，仅属常规视觉表示工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

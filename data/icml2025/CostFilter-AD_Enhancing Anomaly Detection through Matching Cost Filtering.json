@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/CostFilter-AD_Enhancing Anomaly Detection through Matching Cost Filtering.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CostFilter-AD_Enhancing Anomaly Detection through Matching Cost Filtering.pdf",
+ "title": "CostFilter-AD: Enhancing Anomaly Detection through Matching Cost Filtering",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "将立体匹配代价过滤引入UAD，作为通用插件提升检测精度。",
+ "innovations": [
+  "首次将匹配代价体过滤引入UAD，将异常检测重新表述为特征匹配+代价过滤的三步范式",
+  "双流注意力引导的代价体过滤网络：输入图像特征和初始异常图作为查询，在多层特征上抑制匹配噪声同时保留边缘结构",
+  "通用后处理插件设计：可无缝集成到重建类或嵌入类UAD方法上，无需修改原模型"
+ ],
+ "method_framework": "三阶段：(1)用预训练编码器提取输入图像和模板(重建正常图像或采样正常样本)的多层特征；(2)全局相似度匹配构建异常代价体(两个空间维度+一个匹配维度)；(3)3D U-Net过滤代价体：以输入特征和初始异常图为注意力查询，从粗到精抑制匹配噪声、保留细微异常边缘。类别自适应器根据分类logit动态调整分割损失，处理类别不平衡。",
+ "experiment_framework": "MVTec-AD和VisA两个基准；单类和多类UAD设置；基线包括PatchCore、WinCLIP、GLAD、VPDM等；指标为图像级AUROC和像素级AUROC；消融分析代价体过滤、注意力引导、类别自适应器各组件贡献。",
+ "takeaways": [
+  "CostFilter-AD作为插件在多个基线上提升图像级和像素级AUROC，对细微异常提升尤为显著",
+  "匹配噪声是被现有UAD方法忽视的关键问题，代价体过滤可有效抑制",
+  "多模板匹配(重建模板+采样模板)扩展匹配范围，提升异常感知覆盖度"
+ ],
+ "weaknesses": [
+  "3D代价体计算和存储开销较大，高分辨率图像上效率受限",
+  "依赖预训练编码器和初始异常图的质量，初始预测差时过滤效果可能受限",
+  "仅在工业质检基准上验证，医学影像等其他异常检测领域的适用性未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Merge-Friendly Post-Training Quantization for Multi-Target Domain Adaptation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Merge-Friendly Post-Training Quantization for Multi-Target Domain Adaptation.pdf",
+ "title": "Merge-Friendly Post-Training Quantization for Multi-Target Domain Adaptation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "常规量化方法加双正则化，解决多目标域合并退化问题",
+ "innovations": [
+  "首次研究量化对多目标域适配中模型合并的影响，从误差壁垒角度分析退化机制",
+  "提出HDRQ后训练量化方法，在量化过程中同时考虑Hessian形状和与源模型的距离",
+  "通过扁平化损失曲面使量化后的模型更易合并，减少合并后的性能下降"
+ ],
+ "method_framework": "HDRQ在PTQ过程中引入两个正则化项：Hessian正则化使损失曲面更平坦，有利于模型合并；距离正则化保持量化模型与源预训练模型的偏差最小。两者结合确保量化后的模型处于一个合并友好的参数区域，使得不同目标域的量化模型合并后性能损失最小。",
+ "experiment_framework": "在多目标域适配基准上评测，对比朴素量化后合并、传统PTQ后合并等方案。指标包括各目标域上的分类准确率、合并后的综合性能。验证不同量化位数下的效果。",
+ "takeaways": [
+  "量化引入的离散化效应是模型合并退化的重要原因",
+  "合并友好的量化设计可显著提升多目标域适配的合并后性能",
+  "Hessian形状与合并效果密切相关，扁平化损失曲面有利于合并"
+ ],
+ "weaknesses": [
+  "Hessian计算开销较大，大模型上的可行性待验证",
+  "仅在图像分类任务上验证，其他模态的适用性未涉及",
+  "与训练时量化（QAT）的对比不够充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

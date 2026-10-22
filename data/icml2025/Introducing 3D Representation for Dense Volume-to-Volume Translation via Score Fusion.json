@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Introducing 3D Representation for Dense Volume-to-Volume Translation via Score Fusion.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Introducing 3D Representation for Dense Volume-to-Volume Translation via Score Fusion.pdf",
+ "title": "Introducing 3D Representation for Dense Volume-to-Volume Translation via Score Fusion",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "Score-Fusion融合2D扩散模型实现3D医学影像翻译，但工程复杂度高且缺乏可靠性验证。",
+ "innovations": [
+  "在 score 函数空间融合多个正交训练的 2D 扩散模型来获得真正的 3D 体素表示，缓解直接 3D 训练的高数据/算力需求。",
+  "以 2D 模型加权平均初始化，将 3D 训练降为微调，并设计分层结构学习 2D 特征集成以提升效率与性能。",
+  "自然扩展到多模态设定（融合不同输入条件的扩散模型），并展示对下游肿瘤分割识别任务的增益。"
+ ],
+ "method_framework": "先在正交轴向分别训练 2D 扩散模型；再用一个 3D 融合网络在每步扩散中集成这些 2D 模型的 score；以 2D 模型平均初始化使 3D 训练变成微调；分层网络显式学习 2D 特征集成，支持多条件融合。",
+ "experiment_framework": "3D 医学影像超分与模态翻译任务；基线为 TPDM 等既有体对体翻译方法；指标为精度与体素保真度，外加肿瘤分割下游识别；并扩展到视频超分。",
+ "takeaways": [
+  "真正的 3D 体素表示对依赖 3D 表示的下游识别（如肿瘤分割）性能至关重要。",
+  "score 空间融合可在低算力下从 2D 模型高效获得高质量 3D 翻译。"
+ ],
+ "weaknesses": [
+  "仍需训练多个正交 2D 扩散模型并做 3D 融合网络，工程复杂度与显存开销未充分量化。",
+  "属生成式体素翻译方法，未涉及不确定性估计/校准等可靠性主线更核心的要素。",
+  "临床真实扫描间差异（不同设备/协议）下的泛化稳健性未专门验证。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

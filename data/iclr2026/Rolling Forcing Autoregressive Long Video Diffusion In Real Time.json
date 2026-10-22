@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Rolling Forcing Autoregressive Long Video Diffusion In Real Time.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rolling Forcing Autoregressive Long Video Diffusion In Real Time.pdf",
+ "title": "Rolling Forcing: Autoregressive Long Video Diffusion in Real Time",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "联合多帧去噪与注意力汇锚定，提升长视频生成效率但可靠性证据不足。",
+ "innovations": [
+  "设计联合去噪方案：同时对多帧按递增噪声水平去噪，放松相邻帧严格因果，抑制逐帧采样的误差传播。",
+  "引入注意力汇(attention sink)机制：保留初始帧的 KV 状态作为全局上下文锚，增强长时域全局一致性。",
+  "设计高效训练算法：在大幅扩展的去噪窗口上做非重叠窗口少步蒸馏，缓解以自生成历史为条件的曝光偏差。"
+ ],
+ "method_framework": "流式长视频自回归生成框架：每步联合去噪一组递增噪声的帧而非单帧；用初始帧 KV 作全局锚维持长程一致；训练时用非重叠窗口做少步蒸馏，避免在自生成噪声历史上条件过拟合，从而把误差累积压到最低。",
+ "experiment_framework": "在单 GPU 上实现实时流式文生视频(16fps)，生成数分钟长视频；与 history corruption、planning generation、Self Forcing 等自回归范式对比，报告时序一致性、误差累积曲线与实时性。",
+ "takeaways": [
+  "放松逐帧严格因果、联合去噪多帧是抑制长视频误差累积的有效手段。",
+  "初始帧 KV 注意力锚可显著提升长时域全局一致性。",
+  "非重叠窗口少步蒸馏使长视频扩散能在单 GPU 实时流式运行。"
+ ],
+ "weaknesses": [
+  "评测偏视觉质量与时序一致性主观报告，缺乏对长视频物理合理性/错误模式的客观指标。",
+  "实时 16fps 与数分钟生成的质量随长度衰减曲线、失败案例分析不够系统。",
+  "属视频生成效率方向，与视觉可靠性/医学影像/多模态推理主线关联弱。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "视频生成效率方向，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

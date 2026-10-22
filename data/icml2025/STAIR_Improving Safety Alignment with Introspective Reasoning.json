@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/STAIR_Improving Safety Alignment with Introspective Reasoning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/STAIR_Improving Safety Alignment with Introspective Reasoning.pdf",
+ "title": "STAIR: Improving Safety Alignment with Introspective Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "内省推理+MCTS生成数据+PRM引导，提升LLM安全对齐但开销大",
+ "innovations": [
+  "提出内省式安全对齐：让模型逐步分析识别风险后再决定拒答，替代依赖直接拒答的System-1本能对齐，缓解安全-有用性权衡与越狱脆弱",
+  "设计安全感知蒙特卡洛树搜索(SI-MCTS)生成step级推理数据，并给出理论化的结果奖励在有用性与安全间求平衡",
+  "在step级推理数据上做迭代偏好优化，并训练过程奖励模型(PRM)引导测试时搜索，实现安全能力的test-time scaling"
+ ],
+ "method_framework": "先以自改进CoT赋予模型带安全意识的结构化逐步推理能力；用SI-MCTS对恶意查询展开搜索，产出带过程标注的step级推理数据；在该数据上做迭代偏好优化(SFT/DPO类)对齐；再训练PRM在测试时引导搜索挑选更安全且有用的回答，把安全决策从首token拒答延后到充分推理之后。",
+ "experiment_framework": "在主流越狱攻击基准上评测有害输出抑制率与有用性保留；对比本能式对齐(直接拒答)策略；报告test-time scaling下的安全表现，并与Claude-3.5等商用模型在流行越狱攻击上对比；开源代码/数据/模型。",
+ "takeaways": [
+  "用逐步内省推理替代本能拒答，可在抵御越狱的同时更好保留有用性，缓解安全-性能权衡",
+  "step级过程奖励+测试时搜索可作为安全能力的scaling方向",
+  "理论化的结果奖励有助于在安全与有用性之间取得平衡"
+ ],
+ "weaknesses": [
+  "依赖MCTS搜索与PRM引导，推理/测试时开销显著高于直接拒答，部署成本在前9页未量化",
+  "与Claude-3.5的对比为\"相当\"而非超越，且主要在公开越狱集评测，对自适应/未知攻击的泛化证据有限",
+  "安全CoT数据由SI-MCTS自举生成，存在分布偏移与奖励黑客风险，正文前9页对reward hacking的检验不充分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

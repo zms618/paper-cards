@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Xmodbench_Benchmarking Cross-Modal Capabilities and Consistency In Omni-Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Xmodbench_Benchmarking Cross-Modal Capabilities and Consistency In Omni-Language Models.pdf",
+ "title": "XmodBench: Benchmarking Cross-Modal Capabilities and Consistency in Omni-Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "构建跨模态三元组基准，评测全模态模型能力与一致性。",
+ "innovations": [
+  "提出跨模态三元组设计，覆盖图像-文本-音频三模态及其两两组合",
+  "构造6种对称的跨模态配置(如图->音、音->文、文->图等)以系统评测双向/跨模态映射",
+  "5大任务族(感知/空间/时间/语言/外部知识)17个子任务，共61,320条QA对，并显式评测跨模态一致性"
+ ],
+ "method_framework": "以图像/文本/音频三模态构成对齐的跨模态三元组，按不同跨模态方向组织对称任务；任务族覆盖感知、空间关系、时间顺序、语言与外部知识；用统一QA形式评测omni-LM在各跨模态方向上的能力，并以配对答案一致性度量模型内部一致性。",
+ "experiment_framework": "在多个全模态/多模态大模型上评测；基线为现有多模态基准；指标为各子任务准确率与跨模态一致性得分；通过61k+QA系统刻画各omni-LM的跨模态强弱项与不一致模式。",
+ "takeaways": [
+  "现有全模态模型在跨模态(尤其非图文方向，如图->音、音->文)映射上仍有显著短板",
+  "对称跨模态配置可暴露模型在不同模态方向上的不对称能力",
+  "跨模态一致性是独立于单模态准确率的重要诊断维度"
+ ],
+ "weaknesses": [
+  "基准以QA对形式构建，答案可能存在歧义/主观，标注质量与一致性校验需更多披露",
+  "任务族以感知/关系为主，对跨模态复杂推理/幻觉抑制的覆盖有限",
+  "61k QA虽大但模态限于图/文/音，未含视频深度时序推理"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "跨模态评测基准，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/One Token Embedding Is Enough to Deadlock Your Large Reasoning Model.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/One Token Embedding Is Enough to Deadlock Your Large Reasoning Model.pdf",
+ "title": "One Token Embedding Is Enough to Deadlock Your Large Reasoning Model",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "单token嵌入诱导推理模型死锁攻击，依赖白盒与长度限制",
+ "innovations": [
+  "提出死锁攻击，利用单个恶意嵌入诱导无限推理循环",
+  "发现并解决连续到离散投影差距问题",
+  "设计后门机制作为恶意载体，实现可靠攻击激活"
+ ],
+ "method_framework": "优化恶意嵌入使模型在标点后生成过渡词，形成无限循环；通过后门机制将连续嵌入植入模型作为特定触发器",
+ "experiment_framework": "在4个LRMs(Phi-RM, Nemotron-Nano, R1-Qwen, R1-Llama)和3个数学推理基准(GSM8K, MATH500, MMLU-Pro)上测试",
+ "takeaways": [
+  "推理效率可作为新的攻击面",
+  "连续到离散投影是LLM攻击的关键挑战",
+  "后门机制是解决离散化问题的有效方法"
+ ],
+ "weaknesses": [
+  "需要白盒访问模型参数",
+  "攻击效果依赖于模型的最大生成长度限制",
+  "实验主要在数学推理任务上验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Reward Reasoning Model.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Reward Reasoning Model.pdf",
+ "title": "Reward Reasoning Model",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "链式推理提升奖励准确性，但依赖合成数据且计算开销大",
+ "innovations": [
+  "奖励推理模型(RRM)在生成最终奖励前执行显式推理过程",
+  "基于强化学习的奖励推理训练框架无需显式推理轨迹",
+  "多响应奖励策略(ELO评分和淘汰赛)实现自适应计算分配"
+ ],
+ "method_framework": "基于Qwen2架构，将奖励建模视为文本补全问题，通过链式推理后输出最终判断，使用GRPO进行训练",
+ "experiment_framework": "RewardBench和PandaLM Test评估与人类偏好一致性，MMLU-Pro/MATH/GPQA进行最佳响应选择，通过后训练验证奖励质量",
+ "takeaways": [
+  "显式推理过程可显著提升复杂查询的奖励准确性",
+  "多响应奖励策略可有效扩展到候选响应数量较多的场景"
+ ],
+ "weaknesses": [
+  "训练数据依赖合成偏好对，可能引入偏差",
+  "推理过程增加计算开销，效率有待优化"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

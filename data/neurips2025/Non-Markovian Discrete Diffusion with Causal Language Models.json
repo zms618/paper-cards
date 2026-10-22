@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Non-Markovian Discrete Diffusion with Causal Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Non-Markovian Discrete Diffusion with Causal Language Models.pdf",
+ "title": "Non-Markovian Discrete Diffusion with Causal Language Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6.25
+ },
+ "one_line": "非马尔可夫离散扩散与因果LLM结合，提升生成质量但计算成本高。",
+ "innovations": [
+  "提出非马尔可夫离散扩散框架，允许模型回溯并改进过去状态",
+  "CaDDi统一序列和时序建模于单一transformer架构",
+  "CaDDi-AR将传统自回归模型作为特例，可直接复用预训练LLM权重",
+  "2D旋转位置编码扩展标准语言模型以同时处理序列和时序维度"
+ ],
+ "method_framework": "CaDDi采用非马尔可夫离散扩散框架，通过条件化整个生成轨迹而非单一状态，在单一transformer中统一序列和时序建模，支持双向控制和迭代细化。",
+ "experiment_framework": "在LM1B和Text8数据集上评估生成困惑度，使用GPT-2、Llama-2和Llama-3作为评估器；在ARC等推理任务上微调1.5B QWen模型，与基线模型比较准确率。",
+ "takeaways": [
+  "非马尔可夫扩散框架可有效缓解误差累积问题",
+  "统一序列和时序建模的架构设计可灵活适配预训练LLM",
+  "半投机解码策略显著减少推理时间同时保持生成质量"
+ ],
+ "weaknesses": [
+  "CaDDi-AR的token级自回归分解引入额外近似误差",
+  "长序列生成时计算复杂度较高(O(L×T))",
+  "未充分探索模型在不同域(如医学影像)的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

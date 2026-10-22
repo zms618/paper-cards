@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Monte Carlo Tree Diffusion for System 2 Planning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Monte Carlo Tree Diffusion for System 2 Planning.pdf",
+ "title": "Monte Carlo Tree Diffusion for System 2 Planning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "将扩散去噪重构为MCTS树，实现规划器推理扩展，但计算开销大且验证有限。",
+ "innovations": [
+  "首次将扩散去噪过程重构为树结构化过程，使部分去噪的规划方案可被迭代评估、剪枝和精炼",
+  "将MCTS的探索-利用平衡机制引入扩散规划，通过元动作引导调度动态调整搜索策略",
+  "实现扩散规划器的推理时计算扩展(inference-time scalability)，性能随计算量增加而持续提升"
+ ],
+ "method_framework": "MCTD将标准扩散规划的线性去噪过程改为树搜索：(1)选择：从根节点出发，基于UCT类策略选择 promising 的部分去噪节点；(2)扩展：在选定节点上继续去噪生成新的子节点(部分去噪的规划)；(3)评估：对完整规划计算奖励值；(4)备份：将奖励沿树反向传播，更新所有父节点的价值估计和元动作引导调度。树结构允许同时探索多条规划路径，剪枝低价值分支。",
+ "experiment_framework": "在OGBench(Offline Goal-conditioned RL Benchmark)上评估，涵盖：point/antmaze导航(长horizon规划)、multi-cube操作(序列决策)、新提出的visual pointmaze(视觉输入)。基线包括标准扩散规划器、增加采样数、增加去噪步数等推理扩展方法。指标为任务成功率。",
+ "takeaways": [
+  "将扩散去噪建模为树搜索可实现推理时扩展，性能随计算量增加持续提升，而标准扩散规划很快达到瓶颈",
+  "MCTS的探索-利用平衡机制有效解决了多采样搜索的低效问题",
+  "在长horizon和稀疏奖励任务上，树结构化去噪比线性去噪显著更优"
+ ],
+ "weaknesses": [
+  "树搜索结构带来额外的计算开销和内存开销，实际部署成本高",
+  "仅在OGBench的小规模机器人任务上验证，未在复杂真实世界规划任务上测试",
+  "树深度、分支因子等超参数的选择策略未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

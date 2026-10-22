@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/4D-RGPT_Toward Region-level 4D Understanding via Perceptual Distillation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/4D-RGPT_Toward Region-level 4D Understanding via Perceptual Distillation.pdf",
+ "title": "4D-RGPT: Toward Region-level 4D Understanding via Perceptual Distillation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 6.0,
+  "overall": 5.6
+ },
+ "one_line": "4D感知蒸馏入MLLM，区域VQA提升有限，基准质量存疑",
+ "innovations": [
+  "提出只在训练期挂模块的感知式 4D 蒸馏（P4D）：在 MLLM 隐藏状态上接一个训练专用 MLP 解码器 D4DP 出潜变量 F̂4D，再由冻结 4D 感知模型 L4P 的解码头 Dm 出深度/光流/运动/camray 等显式信号，用 L_LD=ΣD_LD(F4D,F̂4D) 与 L_ED=Σ ωm·Dm(Pm,P̂m) 双路对齐，推理时整块丢弃故零额外开销",
+  "把时间戳以正弦编码直接加到视觉特征上作为 Temporal Position Encoding（TPE）：p(n)[2i]=sin(t(n)/T·2i/D)、p(n)[2i+1]=cos(...)，让模型能算'平均速度'这类需要跨帧位移除以真实时长的题",
+  "构造 R4D-Bench：把 STI-Bench 与 VLM4D 的既有非区域 VQA 经'关键词抽取→GroundingDINO+SAM2 出图→Qwen2.5-VL 生成 Set-of-Marks 图→自动匹配→人工复核'改成 ⟨R1⟩⟨R2⟩ 区域指代，含静态 3 类与动态 6 类（含 False Positive detection）共 1.4k 题"
+ ],
+ "method_framework": "以 NVILA-Lite-8B（SigLIP+Qwen2）为骨干，输入帧加正弦时间编码后出视觉特征；训练时把隐藏状态重排成 (N↑,h↑,w↑) 经 D4DP 解出潜 4D 表示，再接 L4P 的解码头解出各显式 4D 信号，同时用 SFT 交叉熵 + L_LD + L_ED 端到端优化，教师 L4P 全程冻结。",
+ "experiment_framework": "非区域基准 STI-Bench、VLM4D-real、MMSI-Bench、OmniSpatial、SAT、VSTI-Bench（其中四个与训练数据不交叠），与 GPT-4o/GPT-5/Gemini-2.5-Pro、Qwen2.5-VL、SpaceR、SpatialReasoner、ViLaSR 对比；R4D-Bench 另用 SoM 统一标区域、统一 16 帧采样；指标为多项选择题准确率。",
+ "takeaways": [
+  "把低层感知信号（深度/光流/运动掩码）直接当作蒸馏目标灌进 MLLM，比只在文本答案上做 SFT/RL 更能补上 MLLM 缺的 4D 感知，且不增推理成本",
+  "区域级基准最易出隐性错误：关键词与 mask 的绑定必须用自动匹配 + 人工复核两步兜底，否则'区域提示'只是把噪声换了个位置",
+  "TPE 说明一个常被忽略的事实——MLLM 有深度也能算错'平均速度'，缺显式时长线索时时间感知会整体失效"
+ ],
+ "weaknesses": [
+  "R4D-Bench 的区域掩码由 GroundingDINO+SAM2 自动生成、由 Qwen2.5-VL 自动匹配，仅最后一步人工校对；自动化环节的错误率与人工修正比例正文完全未量化，'首个大规模区域+动态双持基准'的质量只能靠补充材料自证",
+  "提升幅度小且存在反例：6 个非区域基准平均仅 +5.3%、R4D-Bench 仅 +4.3%，绝对分仍低（R4D-Bench Avg 42.2、随机基线 20-25）；表 3 中 DP（位移与路径长度）一项 4D-RGPT 相对 NVILA-Lite-8B 为 −0.5 反而下降，正文未解释，且全表无方差与多次运行",
+  "P4D 的超参（各模态损失权重 ωm、L_LD 与 L_ED 配比、时间尺度 T、距离度量 D_LD 的选择）全部只以符号出现，表 4 只拿 SFT/4D-Concat/4D-PE 三种替代策略做对照，没有对蒸馏本身超参的消融；'推理零额外开销'只在丢弃训练模块这一层成立，teacher 前显与逐像素显式信号（camray 6 通道、flow 2 通道）的训练显存与时间开销未报"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "区域级4D感知蒸馏，与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

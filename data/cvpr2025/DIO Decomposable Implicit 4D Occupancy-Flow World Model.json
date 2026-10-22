@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/DIO Decomposable Implicit 4D Occupancy-Flow World Model.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/DIO Decomposable Implicit 4D Occupancy-Flow World Model.pdf",
+ "title": "DIO Decomposable Implicit 4D Occupancy-Flow World Model",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "DIO：依赖外部检测器的占用-流模型，在Argoverse2上SOTA。",
+ "innovations": [
+  "首个使用源点提示将场景占用分解为单个实例的方法",
+  "结合LiDAR和边界框标签进行监督，预测实例级占用",
+  "稀疏架构在Argoverse2上实现SOTA性能"
+ ],
+ "method_framework": "DIO采用稀疏3D主干和密集BEV颈部编码多扫LiDAR数据，通过可变形空间注意力提取大感受野特征，解码器利用多尺度插值和可变形注意力预测占用和流。",
+ "experiment_framework": "Argoverse2数据集，与ImplicitO-4D、4D-Occ、UnO等基线比较，评估占用完成和预测任务，使用mAP和Soft-IoU指标。",
+ "takeaways": [
+  "源点提示机制实现场景与实例级占用的灵活预测",
+  "结合LiDAR自监督和边界框监督提升细粒度形状预测",
+  "稀疏架构提高效率同时保持高分辨率"
+ ],
+ "weaknesses": [
+  "依赖外部3D检测器提供源点提示",
+  "未充分讨论模型在极端天气条件下的鲁棒性",
+  "计算复杂度较高，实时性可能受限"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "仅占落地域，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

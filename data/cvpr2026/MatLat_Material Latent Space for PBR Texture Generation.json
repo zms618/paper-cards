@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/MatLat_Material Latent Space for PBR Texture Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/MatLat_Material Latent Space for PBR Texture Generation.pdf",
+ "title": "MatLat Material Latent Space for PBR Texture Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "微调VAE与扩散模型，提升PBR纹理生成质量与多视角一致性。",
+ "innovations": [
+  "残差预测与KL正则化的MATVAE架构",
+  "局部正则化保持潜在-图像空间对齐",
+  "结合对应感知注意力(CAA)实现多视角一致性"
+ ],
+ "method_framework": "MATLAT框架包含两阶段：1)微调预训练VAE学习材料潜在空间(MATVAE)，通过残差预测和KL正则化整合PBR通道；2)在适配的潜在空间中微调扩散模型，结合对应感知注意力(CAA)和局部正则化确保多视角一致性。",
+ "experiment_framework": "使用Objaverse-XL数据集(40,723个PBR纹理资产)，与从零开始训练的模型、SDS优化方法和多视角扩散模型基线比较，评估指标包括FID、KID等。",
+ "takeaways": [
+  "残差预测与KL正则化的结合有效保持预训练先验",
+  "局部正则化对维持潜在-图像空间对齐至关重要"
+ ],
+ "weaknesses": [
+  "仅依赖固定视角渲染，可能缺乏真实场景泛化性",
+  "未充分讨论方法在极端材质条件下的表现"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "纯纹理生成，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

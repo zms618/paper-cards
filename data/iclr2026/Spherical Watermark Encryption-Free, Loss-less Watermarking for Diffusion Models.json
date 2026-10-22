@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Spherical Watermark Encryption-Free, Loss-less Watermarking for Diffusion Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Spherical Watermark Encryption-Free, Loss-less Watermarking for Diffusion Models.pdf",
+ "title": "Spherical Watermark: Encryption-Free, Loss-less Watermarking for Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "球面映射嵌入水印，理论证明三阶矩内保持高斯先验",
+ "innovations": [
+  "把重复水印比特与随机padding混合成高熵码，再经球面映射模块恢复为与原高斯先验一致的噪声",
+  "球面映射：投到单位球→正交旋转→按卡方分布半径缩放，恢复精确多元高斯噪声",
+  "理论证明加水印噪声分布在三阶矩内保持目标先验，经验上与标准多元正态不可区分"
+ ],
+ "method_framework": "在潜在高斯先验中嵌入水印而不改模型权重：先把重复水印比特与随机padding混成高熵码；再把码投到单位球、做正交旋转、用卡方分布半径缩放，使其严格服从目标多元高斯；生成时该噪声即携带水印，解码时从中提取比特，免逐图密钥存储与密码学开销。",
+ "experiment_framework": "在Stable Diffusion上评测；以视觉保真度(FID等)、可追溯性、计算效率与抗攻击鲁棒性为指标，对比有损与既有无损水印方法；报告视觉保真度不变的同时可追溯性/效率/鲁棒性更优。",
+ "takeaways": [
+  "球面映射可使嵌入水印后的噪声在三阶矩内严格匹配高斯先验，做到无损",
+  "该框架免加密、免逐图密钥存储，开销低",
+  "在保持高视觉保真度的同时提升可追溯性与抗攻击鲁棒性"
+ ],
+ "weaknesses": [
+  "'三阶矩内保持先验'不意味着所有高阶/分布尾部完全一致，极端采样下是否可检测未充分讨论",
+  "鲁棒性评测主要针对常见图像攻击，对生成后再编辑/重采样/对抗擦除的极限对抗证据有限",
+  "水印容量(比特数)与不可检测性/鲁棒性的三角权衡量化不充分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "纯水印技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

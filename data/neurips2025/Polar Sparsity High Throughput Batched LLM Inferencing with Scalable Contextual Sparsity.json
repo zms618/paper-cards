@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Polar Sparsity High Throughput Batched LLM Inferencing with Scalable Contextual Sparsity.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Polar Sparsity High Throughput Batched LLM Inferencing with Scalable Contextual Sparsity.pdf",
+ "title": "Polar Sparsity: High Throughput Batched LLM Inferencing with Scalable Contextual Sparsity",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "注意力头稀疏+动态top-k提升LLM批处理吞吐，但实验覆盖不全面。",
+ "innovations": [
+  "发现极性稀疏现象：MLP稀疏性随批量大小降低，而注意力头稀疏保持稳定",
+  "选择性头注意力(SHA)硬件高效GPU内核，支持批处理稀疏推理",
+  "动态top-k机制适应不同层的神经元激活，保持高召回率同时最小化计算"
+ ],
+ "method_framework": "Polar Sparsity结合MLP层动态稀疏和注意力层头稀疏，通过选择性GEMM和FlashAttention内核实现高效批处理推理，保持模型精度。",
+ "experiment_framework": "在OPT、LLaMA、Mistral等模型上评估，使用COPA、OpenBookQA等9个下游任务和MMLU-PRO、LongBench等指令微调模型，测量吞吐量和精度。",
+ "takeaways": [
+  "注意力头稀疏在大批量推理中比MLP稀疏更有效，为高吞吐量系统提供新方向",
+  "动态top-k机制可根据层特性调整稀疏度，平衡计算效率和模型精度"
+ ],
+ "weaknesses": [
+  "仅对OPT模型同时应用MLP和注意力稀疏，其他模型仅应用注意力稀疏",
+  "某些任务如RTE、MMLU对稀疏更敏感，需要更多活跃头"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "title": "The Energy Loss Phenomenon in RLHF: A New Perspective on Mitigating Reward Hacking",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "追踪RLHF中能量损失上升与reward hacking关联，提出抑制方法",
+ "innovations": [
+  "识别 RLHF 中的'能量损失现象'：LLM 最后一层能量损失在 RL 训练中逐渐增加，过度增加刻画了 reward hacking",
+  "给出理论基础：在温和条件下证明能量损失上升会降低上下文相关性上界，而上下文相关性下降正对应对奖励模型偏好模式的过拟合",
+  "基于该现象提出缓解 reward hacking 的新方法(控制/抑制最后一层过度能量损失)"
+ ],
+ "method_framework": "把 LLM 最后一层激活/权重的'能量'作为可观测量，追踪其在 RLHF 训练过程中的演化；将能量损失与上下文相关性建立理论联系(降低上界)；据此在训练中对最后一层能量损失加以约束，抑制模型对奖励模型偏好模式的过拟合，从而缓解 reward hacking。",
+ "experiment_framework": "在 RLHF 流程中实证追踪最后一层能量损失随训练的变化，并对比 normal 与 hacking 行为的能量损失差异；辅以定理证明能量损失与上下文相关性上界的关系；在对话/指令对齐任务上验证所提方法对 reward hacking 的缓解效果。",
+ "takeaways": [
+  "能量损失过度上升是 reward hacking 可观测、可度量的信号",
+  "理论上，能量损失上升会压低上下文相关性上界，揭示了 reward hacking 的内在机制",
+  "通过约束最后一层能量损失可有效缓解对奖励模型的过拟合式 hacking"
+ ],
+ "weaknesses": [
+  "'能量'的定义与度量在前9页仍较抽象，跨架构是否一致未充分验证",
+  "所提缓解方法的具体实现与超参敏感性在正文后半，前9页证据偏现象揭示",
+  "与真实有害回答/安全性的直接因果链仍需更多下游评测支撑"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/The Energy Loss Phenomenon in RLHF A New Perspective on Mitigating Reward Hacking.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/The Energy Loss Phenomenon in RLHF A New Perspective on Mitigating Reward Hacking.pdf",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

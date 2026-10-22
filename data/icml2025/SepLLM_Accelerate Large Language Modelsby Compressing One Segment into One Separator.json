@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/SepLLM_Accelerate Large Language Modelsby Compressing One Segment into One Separator.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SepLLM_Accelerate Large Language Modelsby Compressing One Segment into One Separator.pdf",
+ "title": "SepLLM: Accelerate Large Language Modelsby Compressing One Segment into One Separator",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "通过压缩段落到分隔符加速LLM，减少50% KV缓存",
+ "innovations": [
+  "发现分隔符token获得不成比例的高注意力分数",
+  "将段落信息压缩到分隔符token中",
+  "设计数据依赖的稀疏注意力机制",
+  "实现训练和推理阶段的统一加速"
+ ],
+ "method_framework": "SepLLM保留初始、邻近和分隔符token，通过稀疏注意力减少计算量，并设计流式处理框架管理KV缓存",
+ "experiment_framework": "在GSM8K-CoT和MMLU上评估训练-free效果，在Pythia上训练-from-scratch，对比StreamingLLM基线",
+ "takeaways": [
+  "分隔符token包含关键段落信息",
+  "混合架构(部分层全注意力)可提升性能",
+  "邻近token数量影响训练效果"
+ ],
+ "weaknesses": [
+  "未分析不同语言/领域中的分隔符有效性",
+  "流式处理中分隔符缓存容量固定可能限制性能",
+  "未探讨对模型可信度的影响"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MARS_Unleashing the Power of Variance Reduction for Training Large Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MARS_Unleashing the Power of Variance Reduction for Training Large Models.pdf",
+ "title": "MARS: Unleashing the Power of Variance Reduction for Training Large Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "MARS优化器将方差减少技术应用于大模型训练，但与主线研究方向关联弱。",
+ "innovations": [
+  "首次将方差减少技术成功应用于大规模深度学习模型训练，解决了此前方差减少方法在深度网络中失效的问题",
+  "设计了适用于大模型的方差减少自适应优化器，兼具Adam的自适应能力和方差减少的收敛加速效果",
+  "提供了非凸情形下的收敛性理论分析"
+ ],
+ "method_framework": "MARS（Momentum-based Adaptive Recursive variance reduction Stochastic optimizer）结合了自适应梯度方法和方差减少技术。通过递归估计梯度方差并动态调整更新步长，在保持Adam类优化器自适应特性的同时，减少随机梯度的方差，从而加速大模型训练收敛。",
+ "experiment_framework": "在多种大规模模型训练任务上验证；对比AdamW、Lion、Sophia等主流优化器；评估训练吞吐量、最终性能和收敛速度；涵盖视觉模型和大语言模型等多种场景。",
+ "takeaways": [
+  "MARS在大模型训练中相比AdamW等优化器显著提升收敛速度和最终性能",
+  "方差减少技术在深度网络中大模型上有效，打破了此前该类方法仅适用于凸优化浅层模型的局限",
+  "MARS在保持训练效率的同时，实现了更好的收敛性"
+ ],
+ "weaknesses": [
+  "与主线研究方向（可靠性×医学影像/多模态大模型推理）关联弱，属于优化器研究",
+  "方差减少机制可能增加内存开销，论文未详细分析显存占用trade-off",
+  "仅在标准训练设置下验证，在分布式训练和混合精度训练下的效果未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

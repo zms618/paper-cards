@@ -1,0 +1,41 @@
+{
+ "title": "Test-Time Accuracy-Cost Control in Neural Simulators via Recurrent-Depth",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.6
+ },
+ "one_line": "循环深度控制精度-成本，但非自适应且缺自动早停",
+ "innovations": [
+  "提出架构无关的 RecurrSim 框架，把循环深度作为测试时旋钮：设 K 即可在快速低精度与高精度模拟间切换，无需重训或改架构",
+  "把经典数值方法‘提分辨率/阶数换精度’的精度-成本权衡显式移植到神经仿真器，一个模型服务探索性快算与关键性精算两种用途",
+  "跨架构验证兼容：RecurrFNO 在 262k 点 3D 可压缩 Navier-Stokes 上 0.8B 超过 1.6B 基线且训练显存省 13.5%；RecurrViT 在 Active Matter 上误差累积降 90%"
+ ],
+ "method_framework": "把网络的一次前向块改成可循环 K 次的单元，K 在测试时可调：K 小→快但粗、K 大→慢但准；训练后不改权重，靠循环次数显式调节精度-成本；与 Deep Equilibrium、扩散式自适应计算对比权衡曲线。",
+ "experiment_framework": "流体力学 Burgers/KdV/Kuramoto-Sivashinsky；高维 3D 可压缩 Navier-Stokes(262k 点)；Active Matter、ShapeNet-Car；指标为长程物理保真误差、精度-成本权衡曲线、训练显存/参数；对比 Deep Equilibrium 与扩散式自适应计算。",
+ "takeaways": [
+  "循环深度是一个天然的测试时精度-成本旋钮，一个模型覆盖快/慢两档用途",
+  "小模型经循环迭代可在保持精度的同时超过大得多的基线并省训练显存",
+  "RecurrSim 对 FNO/ViT/UPT 等多种架构通用"
+ ],
+ "weaknesses": [
+  "循环 K 增大带来的是固定块重复迭代，并非自适应地按样本难度分配计算（不同样本 K 相同），相比真正自适应计算的样本级效率提升有限",
+  "‘精度-成本’随 K 的饱和行为、最优 K 如何在测试时自动定出，论文前 9 页主要靠手设 K，缺自动早停准则",
+  "relevance 给 5：属科学机器学习/自适应计算，与可靠性(验证/不确定性/幻觉)×落地域(医学影像/多模态推理)主线无关，按规则给低分"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Test-Time Accuracy-Cost Control In Neural Simulators via Recurrent-Depth.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Test-Time Accuracy-Cost Control In Neural Simulators via Recurrent-Depth.pdf",
+ "raw_overall": 5.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "科学机器学习/自适应计算，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

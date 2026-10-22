@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/S2-Track A Simple yet Strong Approach for End-to-End 3D Multi-Object Tracking.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/S2-Track A Simple yet Strong Approach for End-to-End 3D Multi-Object Tracking.pdf",
+ "title": "S2-Track: A Simple yet Strong Approach for End-to-End 3D Multi-Object Tracking",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "工程组合改进端到端3D MOT，单基准SOTA但方法学增量有限。",
+ "innovations": [
+  "将端到端query式3D MOT系统分解为查询初始化、查询传播、查询匹配三部分并分别改进。",
+  "提出2D-Prompted查询初始化，用预测的2D框与深度信息提示3D位置初估。",
+  "提出不确定性感知概率解码器与层次化查询去噪策略，提升遮挡/小目标场景下的预测与训练鲁棒性。"
+ ],
+ "method_framework": "在query式端到端跟踪框架上：初始化阶段用2D检测框+深度提示3D查询；传播阶段用不确定性感知概率解码器，以概率注意力刻画复杂环境不确定性；匹配阶段用层次化查询去噪增强训练鲁棒与收敛，从而在遮挡、小目标等复杂场景更稳。",
+ "experiment_framework": "主基准nuScenes 3D MOT test split，指标AMOTA；对比此前端到端query式与基于检测的跟踪器；报告SOTA性能。",
+ "takeaways": [
+  "S2-Track在nuScenes test split达66.3% AMOTA，超越此前方法，为SOTA。",
+  "系统拆解并逐块改进查询式跟踪器，在不复杂化整体pipeline的前提下解决遮挡与小目标跟踪难题。"
+ ],
+ "weaknesses": [
+  "与主线(医学影像/多模态大模型推理/可信AI)无关，属自动驾驶感知。",
+  "三项改进多为工程组合，方法学新颖性偏增量。",
+  "仅nuScenes单一大基准验证，未见Waymo等其他数据集/真实道路证据。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

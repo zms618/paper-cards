@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Automated Interpretability Metrics do not Distinguish Trained and Random Transformers.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Automated Interpretability Metrics do not Distinguish Trained and Random Transformers.pdf",
+ "title": "Automated Interpretability Metrics do not Distinguish Trained and Random Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "质疑SAE指标可靠性，发现随机Transformer与训练模型可解释性分数相似",
+ "innovations": [
+  "发现SAE在随机Transformer上产生与训练模型相似的可解释性分数",
+  "提出随机化基线验证方法",
+  "引入特征'抽象度'作为新评估维度"
+ ],
+ "method_framework": "在Pythia模型上训练SAEs，比较训练模型与多种随机化变体(完全随机、排除嵌入、初始状态、控制)的SAE性能",
+ "experiment_framework": "Pythia模型(70M-6.9B)，RedPajama数据集(100M tokens)，k-SAEs(R=64,k=32)，'fuzzing'和'detection'自动解释评估",
+ "takeaways": [
+  "SAE指标需结合随机基线验证",
+  "特征'抽象度'是重要但被忽视的评估维度",
+  "大型模型中随机与训练Transformer的SAE表现差异更小"
+ ],
+ "weaknesses": [
+  "未深入探究随机Transformer产生高可解释性分数的机制",
+  "仅限于语言模型，未扩展到其他领域",
+  "特征抽象度度量(熵)可能不够全面"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "可解释性评估方法研究，与可靠性主线间接相关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

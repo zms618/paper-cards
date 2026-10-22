@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/FLARE Feed-forward Geometry Appearance and Camera Estimation from Uncalibrated Sparse.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/FLARE Feed-forward Geometry Appearance and Camera Estimation from Uncalibrated Sparse.pdf",
+ "title": "FLARE Feed-forward Geometry Appearance and Camera Estimation from Uncalibrated Sparse",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "级联学习范式实现未校准稀疏视图3D重建，但计算成本高",
+ "innovations": [
+  "级联学习范式，以相机姿态为中间表示简化3D学习任务",
+  "两阶段几何学习方法，先学习相机中心几何再投影到全局坐标系",
+  "直接从未校准稀疏视图估计相机姿态、几何和外观的端到端可微分系统"
+ ],
+ "method_framework": "FLARE采用级联学习范式，首先通过神经网络预测器估计相机姿态，然后利用姿态估计指导几何和外观学习，包括相机中心几何估计和全局几何投影，最后基于3D高斯实现外观建模",
+ "experiment_framework": "在RealEstate10K、ETH3D、DTU和TUM等数据集上评估，使用RRA@5°、RTA@5°、AUC@30°评估姿态，准确度、完整度和查姆弗距离评估几何，PSNR、SSIM和LPIPS评估新视图合成",
+ "takeaways": [
+  "相机姿态作为中间表示可有效简化3D学习任务",
+  "两阶段几何学习方法能提高重建质量并减少几何失真",
+  "训练时添加姿态噪声增强模型对姿态估计误差的鲁棒性"
+ ],
+ "weaknesses": [
+  "模型训练需要大量计算资源（64个A800 GPU训练14天）",
+  "仅提供了在标准数据集上的实验，缺乏在真实医学影像等特定领域的验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "3D重建与可靠性主线无关，仅常规扎实",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

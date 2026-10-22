@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Real-Time Long Horizon Air Quality Forecasting via Group-Relative Policy Optimization.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Real-Time Long Horizon Air Quality Forecasting via Group-Relative Policy Optimization.pdf",
+ "title": "Real-Time Long Horizon Air Quality Forecasting via Group-Relative Policy Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "GRPO优化空气质量预报，降低误报率，但计算开销大且泛化性有限。",
+ "innovations": [
+  "构建CMAQ-OBS区域数据集，减少59.5%区域误差",
+  "引入时间累积损失解决暴露偏差问题",
+  "设计基于AQI类别的GRPO奖励机制，优化决策成本"
+ ],
+ "method_framework": "FAKER-Air两阶段框架：第一阶段SFT结合时间累积损失建立基础预测能力；第二阶段GRPO结合课程调度和类别奖励优化决策可靠性。",
+ "experiment_framework": "使用PM2.5/PM10数据集，对比Aurora基线，评估F1分数、误报率(FAR)等指标，进行消融实验验证各组件贡献。",
+ "takeaways": [
+  "区域特定数据集对提高预报精度至关重要",
+  "政策优化可有效解决预报与实际决策成本不匹配问题"
+ ],
+ "weaknesses": [
+  "GRPO计算开销较大，可能影响实时性",
+  "仅针对东亚地区验证，泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "空气质量预报属于落地域但可靠性方法有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

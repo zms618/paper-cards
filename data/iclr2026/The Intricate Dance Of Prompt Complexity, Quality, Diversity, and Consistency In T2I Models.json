@@ -1,0 +1,41 @@
+{
+ "title": "The Intricate Dance of Prompt Complexity, Quality, Diversity, and Consistency in T2I Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "T2I prompt复杂度权衡研究，合成数据评估框架，无新模型",
+ "innovations": [
+  "用合成实验+理论推导揭示：从简单条件向更一般条件泛化比反过来更难，因为前者需要扩散模型并未学到的似然估计",
+  "提出一个可在统一口径下比较真实数据与合成数据效用的评估框架",
+  "跨 CC12M/ImageNet-1k/DCI 大规模实证，刻画 prompt 复杂度升高会降低条件多样性与 prompt 一致性、但减小合成-真实分布偏移；并系统比较多种推理期干预，发现 prompt expansion 用预训练语言模型作似然估计在多样性与美学上始终最佳"
+ ],
+ "method_framework": "先在可控合成数据上做实验并配理论推导，界定向更一般 prompt 条件泛化的难度来源；再在该框架下量化真实 vs 合成数据在质量/多样性/一致性/分布偏移四轴上的表现，扫描 prompt 复杂度与多种推理期干预（guidance、prompt expansion 等）的权衡。",
+ "experiment_framework": "数据集 CC12M、ImageNet-1k、DCI；覆盖常用 T2I 模型与多种推理期干预；指标含条件多样性、prompt 一致性、合成-真实分布偏移、图像质量/美学；比较真实数据与不同干预下的合成数据。",
+ "takeaways": [
+  "提高 prompt 复杂度会牺牲条件多样性与一致性，但确实拉近合成数据与真实数据的分布",
+  "当前推理期干预能增多样性，但常以移到真实数据支撑集之外为代价",
+  "用预训练语言模型作似然估计的 prompt expansion 在多样性与美学上稳定最优，配合高级 guidance 得到最佳效用权衡"
+ ],
+ "weaknesses": [
+  "是大规模实证测量+诊断，不提出新 T2I 模型；理论推导基于简化合成设定，向真实复杂 prompt 的可迁移性为类比式论证",
+  "‘质量/一致性’等效用轴的度量依赖代理指标（如 FID/aesthetic scorer），这些指标本身的偏差会传导到结论；prompt 复杂度的操作定义较主观，跨模型一致性未充分讨论",
+  "relevance 给 5.5：涉及合成-真实分布偏移与泛化，但主线是可靠性(鲁棒/验证/不确定性/幻觉)×落地域(医学影像/多模态大模型推理)，本文为 T2I 合成数据效用分析，非多模态推理可靠性，按规则不因其 generalization 措辞抬分"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/The Intricate Dance Of Prompt Complexity, Quality, Diversity, and Consistency In T2I Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The Intricate Dance Of Prompt Complexity, Quality, Diversity, and Consistency In T2I Models.pdf",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "T2I合成数据效用分析，非多模态推理可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

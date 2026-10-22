@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Evolving Prompts In-Context An Open-ended, Self-replicating Perspective.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Evolving Prompts In-Context An Open-ended, Self-replicating Perspective.pdf",
+ "title": "Evolving Prompts In-Context: An Open-ended, Self-replicating Perspective",
+ "scores": {
+  "novelty": 7,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6
+ },
+ "one_line": "反直觉发现ICL示例修剪成乱码反而提升性能，提出自复制搜索框架PromptQuine。",
+ "innovations": [
+  "挑战提示工程常识：把清晰示例修剪成语法/语义混乱的‘gibberish’反而跨任务提升性能",
+  "该效应跨模型、无论对齐与否都成立，提示对‘非自然语言’的误设",
+  "提出PromptQuine——自发现的演化搜索框架，仅用低数据就自动搜索修剪策略，具自复制特性"
+ ],
+ "method_framework": "对ICL示例做修剪，使其成为看似无意义的gibberish；用演化搜索在低数据上自动寻找有效修剪策略；模型在这种‘乱码’提示下反而保持或提升性能，PromptQuine让搜索过程自复制地迭代。",
+ "experiment_framework": "跨多种LLM与任务评测gibberish修剪后的ICL性能；对比SOTA自动提示优化(APO)；检验不同对齐模型；低数据 regime下验证搜索框架。",
+ "takeaways": [
+  "看似混乱的gibberish提示可匹配甚至超过精心设计的提示与APO",
+  "现有归因方法与提示压缩算法都无法稳健地找到有效修剪策略，需演化搜索",
+  "效应跨模型跨对齐，说明问题在于对自然语言提示的系统性误设"
+ ],
+ "weaknesses": [
+  "gibberish提示可解释性差，实际部署中难以信任与调试",
+  "低数据搜索框架的稳定性与收敛性需更多基准验证",
+  "‘gibberish反而更好’的机制缺乏深入的因果解释，更多是经验现象"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

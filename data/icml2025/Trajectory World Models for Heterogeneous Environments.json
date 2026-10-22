@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Trajectory World Models for Heterogeneous Environments.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Trajectory World Models for Heterogeneous Environments.pdf",
+ "title": "Trajectory World Models for Heterogeneous Environments",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "统一轨迹数据集与架构，展示世界模型跨环境迁移收益",
+ "innovations": [
+  "构建UniTraj统一数据集：跨80个环境、超一百万条轨迹，在扩大规模的同时保留关键多样性，缓解世界模型预训练的数据多样性瓶颈",
+  "提出TrajWorld架构，灵活处理不同环境变化的传感器与执行器信息，并在in-context中捕获环境动力学",
+  "在UniTraj上预训练后，在转移预测、off-policy评估(新SOTA)与MPC在线性能上均显著提升，首次展示世界模型跨异构复杂控制环境的迁移收益"
+ ],
+ "method_framework": "把异构环境的传感器/执行器维数差异统一建模；TrajWorld在in-context中根据当前环境的观测/动作维度自适应地预测转移；在大规模UniTraj上预训练后迁移到未见环境。",
+ "experiment_framework": "75个训练-测试数据对的转移预测(MAE)；off-policy评估基准；MPC在线控制性能；对比MLP Ensemble、TDM等世界模型；验证预训练带来的迁移增益。",
+ "takeaways": [
+  "世界模型也能像基础模型一样靠大规模多样化轨迹预训练获得跨环境迁移能力，关键在统一异构传感器/执行器",
+  "in-context地适配环境动力学，比为每个环境单独学世界模型更省样本、泛化更好"
+ ],
+ "weaknesses": [
+  "贡献主要在数据集+架构整合，in-context适配异构维数的机理创新相对渐进；异构环境间的任务语义对齐仍依赖轨迹格式统一",
+  "实证在D4RL类控制环境，未验证到真实机器人/长时序决策；预训练成本与对极端异构(如图像观测)的可扩展性未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

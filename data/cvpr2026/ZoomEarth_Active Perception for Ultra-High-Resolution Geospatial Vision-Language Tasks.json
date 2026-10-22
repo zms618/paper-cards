@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/ZoomEarth_Active Perception for Ultra-High-Resolution Geospatial Vision-Language Tasks.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ZoomEarth_Active Perception for Ultra-High-Resolution Geospatial Vision-Language Tasks.pdf",
+ "title": "ZoomEarth: Active Perception for Ultra-High-Resolution Geospatial Vision-Language Tasks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "主动感知裁剪放大UHR遥感VLM，自建基准与奖励机制",
+ "innovations": [
+  "提出主动感知(active perception)范式替代被动动态分辨率/token剪枝：模型可主动重访信息富集区域，先低清全局定位再高清局部放大，缓解细粒度信息随分辨率冗余增加的矛盾",
+  "LRS-GRO基准：17类问题×全局/区域/物体三级UHR遥感VQA，半自动标注管线(ROI框+CoT推理链)克服GPT全自动标注在UHR RS的缺陷，显式评测ROI定位正确性",
+  "Region-Guided奖励+GRPO训练：让裁剪-缩放动作获得细粒度奖励(ROI框对齐)，SFT+强化学习联合，零样本迁移3个公开UHR遥感基准"
+ ],
+ "method_framework": "下采样全局图像→MLLM输出ROI BBox→按框裁剪原图放大→对局部再做推理→汇出答案；Region-Guided reward在GRPO中奖励'裁到真ROI'；推理时多次crop-zoom迭代。",
+ "experiment_framework": "LRS-GRO(自建17类×多级)主榜；零样本3个公开UHR RS基准(VQA/grounding)；对照动态分辨率/token剪枝/直接全图MLLM；消融奖励设计/缩放迭代次数；下游任务(去云/分割/编辑)工具接口扩展演示。",
+ "takeaways": [
+  "'主动感知=先粗后细两遍'：把'在哪看'变成模型可学动作而非架构预设，比被动全局高分辨输入更省且更准，范式可迁移到医学影像/文档版面等超高分辨率MLLM场景",
+  "'给动作奖励而非只给答案'：Region-Guided reward直接把'裁剪位置对不对'纳入RL目标，让过程动作可优化——对任何'看哪里'类VLM任务通用",
+  "'半自动标注管线'：CoT+ROI框的半自动生成(人工校核)比纯GPT自动标注在UHR图上更可信，基准构建方法论可复用"
+ ],
+ "weaknesses": [
+  "主榜为本团队自建基准(LRS-GRO)，零样本公开基准的增益幅度未在摘要量化；'SOTA'的对比基线(是否含其他crop-zoom方法如Visual Search/AnyRes变体)未明示",
+  "ROI定位评测依赖BBox匹配口径，'定位正确性'的阈值/度量未给出；17类问题中全局类(计数/场景)与主动感知的相关性未讨论(全图不裁剪时奖励如何定义)",
+  "GRPO训练数据量/奖励尺度敏感性与多轮迭代的token开销未系统报告；扩展演示为工具接口拼装，非端到端评测，'versatility'证据较弱"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "遥感VLM主动感知，与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

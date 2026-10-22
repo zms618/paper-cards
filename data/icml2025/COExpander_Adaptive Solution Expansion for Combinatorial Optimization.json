@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/COExpander_Adaptive Solution Expansion for Combinatorial Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/COExpander_Adaptive Solution Expansion for Combinatorial Optimization.pdf",
+ "title": "COExpander: Adaptive Solution Expansion for Combinatorial Optimization",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "elevance": 4.0,
+  "evidence": 6.0,
+  "overall": 5.3
+ },
+ "one_line": "组合优化新范式，融合全局预测与局部构造，但与主线相关性弱",
+ "innovations": [
+  "提出Adaptive Expansion新范式，同时利用GP的全局视角与LC的局部状态",
+  "用局部确定的部分解引导全局预测器，生成信息热图以指导决策变量扩展",
+  "自适应步长扩展已确定变量，缓解GP热图过平滑与LC自回归慢的问题",
+  "首次规范化覆盖6类COP(MIS/MCl/MVC/MCut/TSP/ATSP)、50-10K节点的29个基准"
+ ],
+ "method_framework": "先用全局预测器在局部部分解引导下生成节点/边选择热图；再据此以自适应步长逐步扩展已确定决策变量，介于GP一次性全局预测与LC逐节点自回归之间；D&C与解优化可正交叠加。",
+ "experiment_framework": "在规范化的29个基准(6类COP，50-10K节点)上，与GP类、LC类NCO求解器及传统求解器对比，报告解质量/时间，含范式与步长的消融。",
+ "takeaways": [
+  "GP与LC并非对立，自适应扩展可兼得全局视角与局部精度",
+  "局部部分解引导能显著改善全局热图的判别性",
+  "统一基准暴露了此前NCO评测规模/范式不一致的问题"
+ ],
+ "weaknesses": [
+  "主线为神经组合优化，与可靠性主线及医学影像、多模态推理落地域无关",
+  "自适应步长与部分解引导的超参对不同COP的迁移性需更多验证",
+  "10K节点级的实证虽广，但与商业精确求解器在高质量解上的差距讨论有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

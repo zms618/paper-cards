@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/DC-AR Efficient Masked Autoregressive Generation with Deep Compression Hybrid.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/DC-AR Efficient Masked Autoregressive Generation with Deep Compression Hybrid.pdf",
+ "title": "DC-AR Efficient Masked Autoregressive Generation with Deep Compression Hybrid",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "压缩tokenizer与混合生成，常规组合提升效率但创新有限",
+ "innovations": [
+  "DC-HT深度压缩混合tokenizer实现32倍空间压缩",
+  "三阶段适应训练策略提升重建质量",
+  "混合粗到细生成过程结合离散和残差token"
+ ],
+ "method_framework": "基于DC-HT tokenizer构建DC-AR框架，先通过unmasking过程生成离散token，再通过轻量扩散头预测残差token，结合生成最终图像",
+ "experiment_framework": "ImageNet评估tokenizer重建质量，MJHQ-30K和GenEval评估文本到图像生成质量，与Sana-0.6B、SD-XL等模型比较吞吐量和延迟",
+ "takeaways": [
+  "混合tokenization可提升表示能力而仅增加10%开销",
+  "分辨率可泛化的tokenizer显著降低训练成本",
+  "离散token保持结构，残差token增强细节"
+ ],
+ "weaknesses": [
+  "未充分讨论模型在不同分辨率下的泛化能力",
+  "缺乏对模型鲁棒性和不确定性的分析",
+  "未探索在医学影像等特定领域的应用"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "压缩生成技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

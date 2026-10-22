@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Supervised Reinforcement Learning From Ex-Pert Trajectories To Step-Wise Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Supervised Reinforcement Learning From Ex-Pert Trajectories To Step-Wise Reasoning.pdf",
+ "title": "Supervised Reinforcement Learning: From Expert Trajectories to Step-Wise Reasoning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "SRL框架桥接SFT与RLVR，通过动作序列相似度提供奖励信号",
+ "innovations": [
+  "提出SRL框架，将问题解决重构为生成逻辑动作序列，每个动作前生成内部推理独白",
+  "基于模型动作与专家动作的逐步相似度提供平滑奖励，即使所有rollout都不正确也能提供学习信号",
+  "SRL初始化+RLVR精炼的两阶段训练策略，取得最强整体性能"
+ ],
+ "method_framework": "SRL将问题解决视为生成一系列逻辑动作。模型在每个动作前先生成内部推理独白，然后输出动作。奖励信号基于模型动作与从SFT数据集中提取的专家动作之间的逐步相似度计算。这种逐步监督提供了比SFT更灵活的学习信号（不 rigid 模仿token），比RLVR更稠密的反馈（即使没有正确解也有信号）。",
+ "experiment_framework": "在小规模开源模型上评估多步推理基准（AMC23、AIME24/25、Minerva等）；基线包括SFT和RLVR；同时验证在智能体软件工程任务上的泛化性。",
+ "takeaways": [
+  "逐步动作相似度奖励为小模型提供了SFT和RLVR都无法提供的稠密学习信号",
+  "SRL初始化能帮助小模型学会之前无法学会的困难推理问题",
+  "SRL→RLVR的两阶段训练是当前最优的推理模型训练流程"
+ ],
+ "weaknesses": [
+  "需要从SFT数据集中提取专家动作序列，动作提取的质量和粒度影响最终效果",
+  "实验主要在数学推理任务上验证，开放域推理的适用性未充分探讨",
+  "动作相似度奖励的计算方式和权重设置需要进一步消融分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "动作序列奖励与可靠性主线无实质交点，仅为SFT/RLVR桥接工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Reinforce LLM Reasoning through Multi-Agent Reflection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Reinforce LLM Reasoning through Multi-Agent Reflection.pdf",
+ "title": "Reinforce LLM Reasoning through Multi-Agent Reflection",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "MDP建模多轮精化，DPSDP逆向优化+DPO联合训练多智能体系统",
+ "innovations": [
+  "将 verify-and-improve 多轮精化形式化为 MDP，借鉴 PSDP 按时间反向逐层优化策略序列，突破反馈空间受限问题",
+  "用 critic 智能体生成动态反馈构成宽反馈空间，并以自生成成对数据做 DPO 式交叉熵直接偏好学习，实现智能体间联合训练",
+  "设计缩减上下文状态（仅保留最近答案与反馈），降低上下文长度要求并支持比训练更长的测试时 horizon"
+ ],
+ "method_framework": "actor 生成答案、critic 逐轮给反馈；以参考策略 πref 采样成对响应，用 Q 值构造偏好标签；按 h=H-1→0 逆向优化每层策略，最小化带 Q 加权的二元交叉熵损失（DPO 闭式解形式）；理论给出在覆盖性/集中度有界假设下 DPSDP 策略可与训练分布内任意策略竞争的性能保证。",
+ "experiment_framework": "以多种基座模型实例化 DPSDP，在分布内与分布外推理基准评测；MATH 500 上基于 Ministral 的模型经 5 轮精化多数投票将首答准确率从 58.2% 提升到 63.2%；消融验证多智能体协作收益与分布外泛化。",
+ "takeaways": [
+  "联合训练反馈提供方与作答方可显著优于把反馈资源视为固定的范式",
+  "逆向动态规划式直接偏好学习能在自生成数据上稳定提升多轮精化性能",
+  "缩减上下文设计兼顾训练效率与长测试时泛化"
+ ],
+ "weaknesses": [
+  "绝对增益仅约 5 个百分点，与强基线相比提升幅度有限",
+  "理论保证依赖 πref 对最优策略有界集中度等较强假设，实际 LLM 是否满足未经验证",
+  "奖励/Q 值来自自生成数据，存在自我强化偏差，对无外部校验的错误循环缺乏约束"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

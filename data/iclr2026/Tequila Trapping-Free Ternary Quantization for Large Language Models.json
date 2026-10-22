@@ -1,0 +1,41 @@
+{
+ "title": "Tequila: Trapping-Free Ternary Quantization for Large Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "三值量化死区陷阱修补，动态偏置恢复精度，推理开销存疑",
+ "innovations": [
+  "诊断三值量化的核心问题为死区陷阱(deadzone trapping)：大量权重卡在死区边界、只收到噪声梯度而无法逃出，严重损害容量与优化",
+  "提出把死区被困权重复用为动态偏置(trapping-free)：使其前向提供连续信号、反传收到直接有意义梯度，近乎零推理开销",
+  "五个基准上超过 SOTA 三值量化方法，ARC 上较 SOTA +4%、与全精度差距<1%，同时 3.0 倍推理加速"
+ ],
+ "method_framework": "把权重约束到{-1,0,1}以加法替代乘法；对落在死区边界(被三值化压成 0 却又不该恒为 0)的权重，不将其真正置零，而是复用为随输入变化的动态偏项，从而既保留三值硬件高效性，又让这部分权重在反传中得到正常梯度、避免被困死。",
+ "experiment_framework": "五个 LLM 基准（含 ARC）；对比 SOTA 三值量化方法与全精度；指标为准确率（vs 全精度差距）、推理加速比、训练开销；覆盖边缘部署场景。",
+ "takeaways": [
+  "三值量化精度损失的根因是死区陷阱而非压缩本身",
+  "把被困权重复用为动态偏置可同时保住三值的硬件效率与精度，且几乎不增推理开销",
+  "三值量化可做到与全精度差距<1% 并 3 倍加速，具备边缘部署实用性"
+ ],
+ "weaknesses": [
+  "动态偏置仍需额外的连续存储与计算，‘近乎零开销’的说法需看实际显存/延迟分解，论文前 9 页未充分展开",
+  "方法是对三值量化已知问题的针对性修补，与既有 QAT/混合精度方案在更宽模型与任务上的对比有限",
+  "relevance 给 5：属 LLM 量化/边缘部署效率，与可靠性(验证/不确定性/幻觉)×落地域(医学影像/多模态推理)主线无关，按规则给低分"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Tequila Trapping-Free Ternary Quantization for Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tequila Trapping-Free Ternary Quantization for Large Language Models.pdf",
+ "raw_overall": 5.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "LLM量化与可靠性主线无关，属边缘部署效率",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

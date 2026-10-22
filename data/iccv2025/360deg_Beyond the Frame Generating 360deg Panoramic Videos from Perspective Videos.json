@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/360deg_Beyond the Frame Generating 360deg Panoramic Videos from Perspective Videos.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/360deg_Beyond the Frame Generating 360deg Panoramic Videos from Perspective Videos.pdf",
+ "title": "Beyond the Frame: Generating 360° Panoramic Videos from Perspective Videos",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.0,
+  "overall": 5.1
+ },
+ "one_line": "透视视频转全景的SVD-I2V，相机运动模拟与像素混合解码",
+ "innovations": [
+  "camera motion simulation 用 roll/pitch/yaw 的高斯噪声项+正弦振荡项+漂移项（Eq.3）参数化真实运镜，从 360-1M 筛出 242,538 组训练对并用随机水平环移增广，解决从全景视频反抽透视视频时运动模式不可控的问题",
+  "view-based frame alignment 用 SLAM 估相对位姿、相对首帧算欧拉角再投影到等距柱状图，使天空恒在顶、道路恒在底，把「相机运动」从扩散模型要隐式学习的变量里拆出来（Fig.2 第三行对照）",
+  "blended decoding 放到像素空间而非隐空间：解码原 latent 与 180° 旋转 latent 两份结果再做距离加权平均（Eq.4-5），理由是指出 two-end alignment sampling / circular padding 只在隐空间操作，因 VAE 仅在透视图上训过而解码后不保证边界平滑"
+ ],
+ "method_framework": "360-1M 数据筛选 → 相机运动模拟造 360°/透视训练对 → SVD-I2V-XL 去噪网络（EDM 参数化，按纬度 h 的权重 λ(h) 抑制两极过采样）→ 推理时 SLAM 位姿对齐 + 像素域两份解码混合 → context-aware 训练 + 迭代采样支持长视频",
+ "experiment_framework": "101 个 360° 视频（Insta360/YouTube）做配对评测 + 15 条线性结构视频评几何；对比重训的 PanoDiffusion 与 Follow-Your-Canvas/Be-Your-Outpainter（只支持矩形输入，改为中心方形图扩 FoV 至 180°/360°）；指标 PSNR/LPIPS/FVD/VBench/line consistency（正文截断于 4.2 后半）",
+ "takeaways": [
+  "隐空间边界对齐失效就在像素空间重新解码两份再做加权平均——先判失败根因（VAE 训练域）再换层级处理，这条排查路径可迁移到其它全景/环形卷积生成任务",
+  "引入 line consistency 用 EA-score 量直线对的角度与欧氏距离，对「生成是否守住场景基本几何性质」比纯 FVD 更能暴露外推错误"
+ ],
+ "weaknesses": [
+  "测试集仅 101 个 360° 视频（几何评测 48 条手机视频）且全部来自作者自己筛过的 360-1M，与构造训练对的管线同源、分布差异未排除；全部数字为单点无方差，单次采样波动无法识别",
+  "baseline 都是改造过的（PanoDiffusion 重训并去掉深度分支、统一帧初始噪声、喂 GT 相机轨迹；outpainting 基线改为中心方形输入扩 FoV），为基线补的这些手段没有单独做公平性消融，提升幅度含设定差异成分",
+  "正文在 4.2 中途截断，Table 3 消融只有 w/o frame alignment、w/o blended decoding、VAE 上界三行，相机运动模拟、EDM 权重函数 λ(h)、context-aware 长视频训练均无对应消融"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "视频生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

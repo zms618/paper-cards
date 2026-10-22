@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/FMPose3D_monocular 3D pose estimation via flow matching.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/FMPose3D_monocular 3D pose estimation via flow matching.pdf",
+ "title": "FMPose3D monocular 3D pose estimation via flow matching",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "Flow Matching应用于3D姿态估计，RPEA模块提升精度但计算复杂",
+ "innovations": [
+  "首次将Flow Matching应用于2D到3D姿态提升任务",
+  "提出基于重投影的后验期望聚合(RPEA)模块",
+  "设计并行GCN和注意力架构捕获局部和全局关节关系"
+ ],
+ "method_framework": "将3D姿态估计建模为条件分布传输问题，通过ODE学习从高斯先验到条件3D姿态分布的速度场，结合RPEA模块聚合多假设",
+ "experiment_framework": "Human3.6M/MPI-INF-3DHP(人类)/Animal3D/CtrlAni3D(动物)，MPJPE/P-MPJPE/PCK/AUC指标，与确定性/概率性方法对比",
+ "takeaways": [
+  "Flow Matching在保持生成多样性的同时显著提升推理效率",
+  "RPEA模块通过重投影误差作为似然代理，理论更优且实践效果更好",
+  "并行架构有效融合局部和全局关节关系"
+ ],
+ "weaknesses": [
+  "仅使用3个ODE步骤可能限制了生成质量",
+  "RPEA模块增加了计算复杂度",
+  "动物姿态数据集依赖SMAL模型可能引入偏差"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D姿态估计非可靠性主线，但Flow Matching方法有设计借鉴价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

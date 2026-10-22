@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Fast Monte Carlo Tree Diffusion 100× Speedup via Parallel Sparse Planning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Fast Monte Carlo Tree Diffusion 100× Speedup via Parallel Sparse Planning.pdf",
+ "title": "Fast Monte Carlo Tree Diffusion: 100× Speedup via Parallel Sparse Planning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "并行稀疏规划加速MCTD百倍，但大型地图和复杂任务性能受限",
+ "innovations": [
+  "并行MCTD通过延迟树更新和冗余感知选择实现并行化",
+  "稀疏MCTD通过轨迹粗化减少规划长度",
+  "两种方法结合实现100倍加速同时保持性能"
+ ],
+ "method_framework": "Fast-MCTD结合并行MCTD和稀疏MCTD，通过延迟树更新、冗余感知选择和并行去噪实现并行化，通过轨迹粗化减少规划长度，显著提高计算效率。",
+ "experiment_framework": "在PointMaze、AntMaze、机器人操作和视觉迷宫等任务上评估，使用成功率(%)和规划时间(sec)作为指标，与Diffuser、Diffusion Forcing和MCTD等基线比较。",
+ "takeaways": [
+  "并行化策略可有效解决MCTS的顺序计算瓶颈",
+  "轨迹粗化是减少长时程规划计算开销的有效方法",
+  "延迟树更新与冗余感知选择平衡了并行效率与搜索质量"
+ ],
+ "weaknesses": [
+  "在大型地图上性能有所下降，因稀疏扩散模型受限于训练数据不足",
+  "在复杂任务中(如三立方任务)仍比Diffuser慢",
+  "稀疏规划可能导致过度抽象，影响性能"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

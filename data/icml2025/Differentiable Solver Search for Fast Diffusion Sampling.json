@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Differentiable Solver Search for Fast Diffusion Sampling.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Differentiable Solver Search for Fast Diffusion Sampling.pdf",
+ "title": "Differentiable Solver Search for Fast Diffusion Sampling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "可微搜索扩散求解器加速采样，但与可信推理主线无关且搜索成本不明",
+ "innovations": [
+  "分析扩散 ODE 误差来源，指出现有基于 t 的 Lagrange 插值对扩散模型次优。",
+  "定义由时间步与求解系数组成的紧凑搜索空间，提出可微求解器搜索算法自动优化求解器。",
+  "所搜求解器跨架构/分辨率/模型尺寸通用，甚至超过部分蒸馏方法。"
+ ],
+ "method_framework": "不改动预训练扩散模型内部，仅在推理侧优化数值 ODE 求解器：把求解器系数与离散时间步作为可微变量，在代理生成目标上联合搜索，得到自适应的多步求解器；用于 rectified flow 与 DDPM/VP 等不同噪声调度。",
+ "experiment_framework": "ImageNet-256×256 上评测，SiT-XL/2、FlowDCN-XL/2、DiT-XL/2(DDPM)；指标 FID@10 NFE 等，对比传统多步求解器与蒸馏方法，并跨分辨率/尺寸验证通用性。",
+ "takeaways": [
+  "在 10 步下所搜求解器使 rectified flow 达 FID 2.40/2.35、DDPM DiT-XL/2 达 2.33。",
+  "数据驱动搜索求解器优于手工设计的 Adams 类多步求解器。",
+  "该推理侧优化不破坏预训练模型且具跨模型通用性。"
+ ],
+ "weaknesses": [
+  "面向扩散加速，与可信推理主线（鲁棒性/泛化/验证器/不确定性）无关，relevance 低。",
+  "搜索需在数据上拟合求解器与时间步，对每个新模型/调度是否需重新搜索、搜索成本多少交代有限。",
+  "主要评图像生成 FID，未讨论少步采样下样本多样性/一致性等质量维度。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

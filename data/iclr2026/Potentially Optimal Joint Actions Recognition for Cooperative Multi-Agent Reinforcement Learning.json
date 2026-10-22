@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Potentially Optimal Joint Actions Recognition for Cooperative Multi-Agent Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Potentially Optimal Joint Actions Recognition for Cooperative Multi-Agent Reinforcement Learning.pdf",
+ "title": "Potentially Optimal Joint Actions Recognition for Cooperative Multi-Agent Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "识别模块加权改进Q值分解，但算力开销未量化，缺乏主线关联",
+ "innovations": [
+  "指出 CW-QMIX/OW-QMIX 用启发式加权导致权重与真实最优动作集合错位，提出识别式加权以弥合 WQMIX 理论与实现鸿沟",
+  "引入显式以状态与联合动作为条件的识别模块 Qr，迭代更新使候选集 Ar 收敛到真实最优联合动作",
+  "给出可证明的收敛与最优策略恢复保证，且架构无关、可无缝集成到现有值分解算法"
+ ],
+ "method_framework": "在 CTDE 值分解框架上，训练识别模块 Qr(state, joint action) 估计哪些联合动作潜在最优；对 Ar 内动作赋予更高训练权重做迭代加权训练。证明随迭代 Ar 收敛包含真实最优动作，使 Qtot 的动作偏好对齐 Q*，无需遍历联合动作空间或依赖启发式近似。",
+ "experiment_framework": "实例化为 POW-QMIX，在矩阵博弈、难度增强 predator-prey、highway-env 路口场景、SMAC、SMACv2 等基准上对比 WQMIX 系及 SOTA 值基 MARL 方法，并验证可迁移到 VDN、QPLEX。",
+ "takeaways": [
+  "POW 在非单调奖励结构环境中显著优于受单调约束的 QMIX 类方法",
+  "识别式加权在不遍历联合动作空间的情况下可证明恢复最优策略",
+  "方法架构无关，叠加到 QMIX/VDN/QPLEX 均带来一致提升"
+ ],
+ "weaknesses": [
+  "属合作多智能体强化学习，与可靠性/医学影像/多模态推理主线关联弱",
+  "识别模块 Qr 本身需额外训练，增加的样本/算力开销前9页未量化",
+  "前9页未见在大规模真实多智能体系统(如自动驾驶路测)上的验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "合作MARL与可靠性主线关联弱，无落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

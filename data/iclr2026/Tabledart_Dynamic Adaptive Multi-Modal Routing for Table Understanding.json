@@ -1,0 +1,41 @@
+{
+ "title": "TableDART: Dynamic Adaptive Multi-Modal Routing for Table Understanding",
+ "one_line": "轻量门控路由表格查询，复用单模态模型避免MLLM微调",
+ "innovations": [
+  "指出Table-as-Multimodality静态双模态处理带来冗余与模态冲突，提出动态路由按需选择视图",
+  "引入仅2.59M参数的MLP gating网络，为每个table-query对动态选择Text-only/Image-only/Fusion路径",
+  "设计agent通过分析文本/图像模型输出来选择最优结果或推理合成新答案，避免全量MLLM微调"
+ ],
+ "method_framework": "复用预训练文本LLM与视觉模型，不做MLLM全量微调。轻量gating网络根据table-query特征决定走文本-only、图像-only还是融合路径；当两视图输出冲突时，由一个agent对比两模型输出，选择最佳答案或推理合成新答案，从而既提精度又提效率。",
+ "experiment_framework": "在7个表格理解基准上评测；对比Table-as-Text/Image/Multimodality各范式及最强开源基线；指标为准确率；报告平均超过最强基线4.02%，在开源模型中达SOTA。",
+ "takeaways": [
+  "并非每个查询都需要双模态，动态路由可减少冗余并避免文本/视图冲突",
+  "复用预训练单模态模型+轻量gating即可避免昂贵的MLLM微调",
+  "由agent仲裁两模态输出可在精度与效率上同时获益"
+ ],
+ "weaknesses": [
+  "gating网络与仲裁agent依赖基座单模态模型质量，错误路由会放大某一模态的偏误",
+  "路由决策的可解释性与误路由代价分析有限",
+  "依赖现有强单模态文本/视觉模型，对弱基座的迁移性未验证"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Tabledart_Dynamic Adaptive Multi-Modal Routing for Table Understanding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tabledart_Dynamic Adaptive Multi-Modal Routing for Table Understanding.pdf",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "表格理解属于多模态落地域，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

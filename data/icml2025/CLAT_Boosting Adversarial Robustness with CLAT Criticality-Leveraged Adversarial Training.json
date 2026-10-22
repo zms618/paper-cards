@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/CLAT_Boosting Adversarial Robustness with CLAT Criticality-Leveraged Adversarial Training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CLAT_Boosting Adversarial Robustness with CLAT Criticality-Leveraged Adversarial Training.pdf",
+ "title": "Boosting Adversarial Robustness with CLAT: Criticality-Leveraged Adversarial Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6,
+  "evidence": 6.5,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "CLAT选择性微调关键层提升对抗鲁棒性，但计算开销大且泛化验证不足",
+ "innovations": [
+  "提出临界性指标识别关键层",
+  "动态选择关键层的对抗微调算法",
+  "仅微调不到4%参数提升整体鲁棒性"
+ ],
+ "method_framework": "CLAT首先计算各层临界性指标，识别出学习非鲁棒特征的关键层，然后仅对这些关键层进行对抗微调，同时冻结其他层，并在训练过程中动态更新关键层选择。",
+ "experiment_framework": "在CIFAR-10/100和ImageNet上评估，使用WideResNet、ResNet等架构，对比PGD-AT、TRADES等基线，采用PGD和AutoAttack评估鲁棒性。",
+ "takeaways": [
+  "关键层识别可有效减少对抗训练过拟合",
+  "动态选择机制比静态选择更有效",
+  "方法可兼容多种现有对抗训练方法"
+ ],
+ "weaknesses": [
+  "临界性计算需要额外的前向传播",
+  "未探索不同架构间的关键层通用性",
+  "实验主要集中在图像分类任务"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

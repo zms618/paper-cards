@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Beyond the Surface Enhancing LLM-as-a-Judge Alignment with Human via Internal Representations.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Beyond the Surface Enhancing LLM-as-a-Judge Alignment with Human via Internal Representations.pdf",
+ "title": "Beyond the Surface: Enhancing LLM-as-a-Judge Alignment with Human via Internal Representations",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "聚合LLM内部表示提升评估器与人类判断一致性",
+ "innovations": [
+  "跨层表示聚合框架LAGER",
+  "基于期望值的细粒度评分方法",
+  "轻量级层权重微调策略"
+ ],
+ "method_framework": "LAGER通过聚合不同层的评分标记logits，结合softmax计算期望得分，保持LLM主干冻结，实现即插即用评估增强。",
+ "experiment_framework": "在Flask、HelpSteer和BIGGen基准上评估，使用Spearman相关度指标，与GPTScore、VScore、E-Score等基线比较。",
+ "takeaways": [
+  "中间层表示比最终层更符合人类判断",
+  "期望评分优于最大概率评分",
+  "推理步骤不一定提升评估质量"
+ ],
+ "weaknesses": [
+  "需要访问模型内部表示，限制了API模型应用",
+  "层权重微调需要额外验证数据",
+  "未探索不同任务类型的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

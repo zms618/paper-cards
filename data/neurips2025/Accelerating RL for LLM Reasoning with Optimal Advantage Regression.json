@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Accelerating RL for LLM Reasoning with Optimal Advantage Regression.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Accelerating RL for LLM Reasoning with Optimal Advantage Regression.pdf",
+ "title": "Accelerating RL for LLM Reasoning with Optimal Advantage Regression",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "两阶段框架加速LLM推理训练，但依赖较强假设且需额外超参数",
+ "innovations": [
+  "两阶段框架：离线估计最优价值函数，在线单样本更新",
+  "直接近似最优优势函数而非当前策略优势",
+  "无需复杂探索策略即可获得多项式样本复杂度的近最优性能"
+ ],
+ "method_framework": "A⋆-PO分两阶段：1)离线从参考策略采样估计最优价值函数V⋆；2)在线使用最小二乘回归损失进行单样本策略更新，直接优化最优优势A⋆",
+ "experiment_framework": "在GSM8K、MATH等数学推理基准测试，对比PPO、GRPO、REBEL，评估准确率、训练时间、内存使用和KL散度",
+ "takeaways": [
+  "离线估计最优价值函数可显著减少计算开销",
+  "单样本在线更新策略在保持性能的同时提高效率",
+  "过滤困难问题可进一步提升训练效率"
+ ],
+ "weaknesses": [
+  "需要额外的超参数β1和β2",
+  "离线阶段需要生成多个样本估计V⋆",
+  "理论分析依赖于较强的假设条件"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

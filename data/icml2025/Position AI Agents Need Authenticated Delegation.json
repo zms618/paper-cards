@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Position AI Agents Need Authenticated Delegation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Position AI Agents Need Authenticated Delegation.pdf",
+ "title": "Position: AI Agents Need Authenticated Delegation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4,
+  "relevance": 7,
+  "overall": 5.5
+ },
+ "one_line": "立场论文主张扩展OAuth支持AI代理委托，但缺乏实证与安全分析。",
+ "innovations": [
+  "论证对AI代理进行认证、可审计的权威委托是缓解prompt注入、责任不清、访问失控等实际风险的关键组件",
+  "提出为代理扩展OAuth 2.0与OpenID Connect，引入agent专属凭证，使第三方可同时核验委托者(principal)与代理身份",
+  "提出把自然语言权限透明翻译为跨交互模态的鲁棒scoping规则/细粒度访问控制，并给出委托基础设施路线图"
+ ],
+ "method_framework": "本文为安全/治理立场+方案论文，不训练模型。路径：梳理代理与第三方(服务、其他代理、人)交互时的授权/问责/访问控制风险→论证需显式委托→设计如何扩展现有Web认证授权协议(OAuth2.0/OIDC)承载代理委托→探讨把灵活自然语言权限转成可审计细粒度访问控制规则的方法。",
+ "experiment_framework": "无新定量实验。属于协议设计与治理论证，以现有认证协议为基础做扩展推演，未部署实测，不设算法基线。",
+ "takeaways": [
+  "代理代表用户与第三方交互时，第三方必须能验证'谁委托了该代理'及其委托范围，否则问责链断裂",
+  "prompt注入、上下文信心受损、无法区分真人/代理等风险，部分可通过认证委托与显式权限作用域缓解",
+  "委托基础设施应作为AI代理治理的关键优先项，并需兼容现有认证/Web生态以即时可用"
+ ],
+ "weaknesses": [
+  "提出协议扩展与权限翻译方案，但未给出可运行实现或在真实代理场景中的端到端安全性实测",
+  "自然语言权限到鲁棒scoping规则的'透明翻译'本身可能被注入/歧义误导，文章对翻译错误风险讨论不足",
+  "对与现有OAuth生态的向后兼容性、以及多代理间委托传递的组合复杂度，缺少形式化安全分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

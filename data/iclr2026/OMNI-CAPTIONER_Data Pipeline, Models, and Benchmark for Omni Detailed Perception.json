@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/OMNI-CAPTIONER_Data Pipeline, Models, and Benchmark for Omni Detailed Perception.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/OMNI-CAPTIONER_Data Pipeline, Models, and Benchmark for Omni Detailed Perception.pdf",
+ "title": "Omni-Captioner: Data Pipeline, Models, and Benchmark for Omni Detailed Perception",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "提出工具调用流水线生成低幻觉高细节标注，训练双模态描述模型。",
+ "innovations": [
+  "指出现有全模态语言模型存在细节水平与幻觉程度共同增长的内在权衡，并将解耦二者作为核心问题。",
+  "提出Omni-Detective：集成工具调用的智能体数据生成流水线，多轮渐进式补充有依据细节并交叉校验已有论断，自主产出高细节、低幻觉的多模态标注。",
+  "提出Omni-Cloze：首个覆盖纯音频/纯视觉/音视频的cloze式评测，设Not Given选项以显式区分遗漏与幻觉，单次自动打分、稳定高效。"
+ ],
+ "method_framework": "用Omni-Detective多轮调查式流水线生成详细字幕数据；据此以两阶段课程训练Audio-Captioner（纯音频）与Omni-Captioner（音视频）：先冻结视觉编码器以迫使其对齐稀疏但关键的音频线索，再联合优化两模态产生跨模态连贯叙述；评测采用级联caption-to-QA协议与cloze式Omni-Cloze。",
+ "experiment_framework": "级联评测中Audio-Captioner在MMAU、MMAR上超过所有开源模型并优于Gemini-2.5-Flash、接近Gemini-2.5-Pro；Omni-Captioner在VDC上新SOTA、在video-SALMONN 2上取得细节-幻觉最佳权衡，并在Video-MME/Video-Holmes/WorldSense/Daily-Omni等开源全模态模型中总分最高；数据/模型/基准全部开源。",
+ "takeaways": [
+  "通过调查式智能体数据生成，可把细节-幻觉前沿外推：在更丰富描述下不按比例增加幻觉。",
+  "两阶段课程（先冻结视觉编码器对齐音频、再联合优化）能有效提升音视频细粒度感知。",
+  "cloze式评测加Not Given选项，可在显著降低评测成本的同时稳定区分遗漏与幻觉。"
+ ],
+ "weaknesses": [
+  "Omni-Detective依赖工具调用与多轮LLM调用，数据生成成本与可复现的稳定性未充分量化。",
+  "大量对比依赖Gemini闭源模型与LLM自动评分，人工校验规模与评分者一致性报告有限。",
+  "评测多为英文音视频/体育等场景，跨语言与长视频、真实复杂环境的泛化未充分验证。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态描述模型与幻觉抑制相关，但未触及可靠性主线核心问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Upcycling Text-to- Diffusion Models for Multi-Task Capabilities.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Upcycling Text-to- Diffusion Models for Multi-Task Capabilities.pdf",
+ "title": "Upcycling Text-to- Diffusion Models for Multi-Task Capabilities",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "FFN专家混合实现多任务扩散模型，但创新有限且实验不充分",
+ "innovations": [
+  "将FFN层分割为多个专家并引入动态路由机制",
+  "任务特定的层归一化处理",
+  "仅训练少量参数实现多任务能力"
+ ],
+ "method_framework": "将预训练文本到图像扩散模型的FFN层替换为多个小FFN专家，通过任务嵌入驱动的路由机制动态组合专家输出，保持计算效率的同时支持多任务。",
+ "experiment_framework": "在SDv1.5和SDXL上评估图像编辑、超分辨率和修复任务，使用FID、方向相似性和LPIPS指标，与单任务和多任务基线对比。",
+ "takeaways": [
+  "FFN层在任务适应中变化最大，适合作为多任务专家",
+  "任务特定的层归一化可提高性能",
+  "专家路由机制可动态分配任务"
+ ],
+ "weaknesses": [
+  "仅评估了图像到图像任务，未扩展到其他模态",
+  "专家数量选择对性能影响未充分分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

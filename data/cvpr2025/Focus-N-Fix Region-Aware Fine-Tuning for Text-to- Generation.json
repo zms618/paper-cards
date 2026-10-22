@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Focus-N-Fix Region-Aware Fine-Tuning for Text-to- Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Focus-N-Fix Region-Aware Fine-Tuning for Text-to- Generation.pdf",
+ "title": "Focus-N-Fix Region-Aware Fine-Tuning for Text-to- Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "区域感知微调修正T2I局部问题，但依赖外部定位且适用性有限",
+ "innovations": [
+  "区域感知微调策略，仅修正问题区域",
+  "结合定位信息与奖励模型，保持图像主要结构",
+  "使用区域约束避免全局优化导致的意外行为变化"
+ ],
+ "method_framework": "Focus-N-Fix结合DRaFT和LoRA，通过区域约束项优化模型参数，使模型仅修正问题区域而保持其他区域不变，推理时仅需标准前向传播。",
+ "experiment_framework": "使用HPDv2和PaLI数据集，比较DRaFT、Reward Guidance等基线方法，通过人工评估和MOS指标评估安全性和伪影减少效果。",
+ "takeaways": [
+  "区域约束可有效防止微调过程中的灾难性遗忘",
+  "结合定位信息可提高模型对特定质量方面的改进精度"
+ ],
+ "weaknesses": [
+  "依赖外部定位方法获取问题区域",
+  "仅适用于可局部化的质量问题"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "T2I微调与可靠性主线无实质交点，仅常规质量工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

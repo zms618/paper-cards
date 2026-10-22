@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Optimal Sparsity Of Mixture-of-Experts Lan-Guage Models for Reasoning Tasks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Optimal Sparsity Of Mixture-of-Experts Lan-Guage Models for Reasoning Tasks.pdf",
+ "title": "Optimal Sparsity of Mixture-of-Experts Language Models for Reasoning Tasks",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "研究MoE稀疏度对记忆与推理能力的差异化影响，提出Active FLOPs和TPP原则。",
+ "innovations": [
+  "揭示MoE稀疏度对推理和记忆能力的差异化影响：相同预训练损失下，更大激活计算量(Active FLOPs)带来更高推理准确率",
+  "提出Total tokens per parameter(TPP)原则：记忆任务随参数量提升而改善，推理任务则受益于最优TPP（数据饥渴型）",
+  "修正经典缩放定律：最优MoE稀疏度必须由Active FLOPs和TPP共同决定，而非仅计算预算"
+ ],
+ "method_framework": "在固定计算预算下训练一系列MoE模型，系统变化总参数量、激活参数量和top-k路由数，分离预训练损失与下游准确率。分别评估记忆任务（如事实回忆）和推理任务（如数学/代码）。进一步测试RL后训练（GRPO）和测试时计算增加是否改变趋势。",
+ "experiment_framework": "训练多组MoE模型家族，控制总参数、激活参数、top-k。评估预训练损失和下游推理/记忆基准。对比GRPO RL后训练前后的变化。开源模型checkpoint、代码和日志。",
+ "takeaways": [
+  "Active FLOPs是推理能力的关键：相同训练损失下，更多激活计算→更高推理准确率",
+  "推理任务是数据饥渴型的，存在最优TPP（每参数总token数），而非单纯堆参数",
+  "RL后训练和测试时计算增加都不改变上述趋势，说明这是预训练阶段的根本规律"
+ ],
+ "weaknesses": [
+  "实验规模有限（相比工业界旗舰MoE模型），外推到更大模型的有效性待验证",
+  "TPP最优值的具体计算依赖任务类型，通用公式未给出",
+  "top-k路由方式仅测试了标准MoE路由，对专家选择算法改进（如共享专家）的影响未分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "MoE稀疏度研究属于模型架构优化，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

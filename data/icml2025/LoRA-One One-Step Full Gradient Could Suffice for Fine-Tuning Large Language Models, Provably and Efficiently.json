@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/LoRA-One One-Step Full Gradient Could Suffice for Fine-Tuning Large Language Models, Provably and Efficiently.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/LoRA-One One-Step Full Gradient Could Suffice for Fine-Tuning Large Language Models, Provably and Efficiently.pdf",
+ "title": "LoRA-One: One-Step Full Gradient Could Suffice for Fine-Tuning Large Language Models, Provably and Efficiently",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6.1
+ },
+ "one_line": "理论证明LoRA对齐全梯度子空间，单步初始化加速微调",
+ "innovations": [
+  "严格证明LoRA在梯度下降训练中，适配器矩阵A,B会逐渐对齐单步全量微调梯度的奇异子空间，揭示了LoRA有效的内在机制",
+  "提出LoRA-One算法：直接用单步全量梯度初始化低秩矩阵，一步到位实现子空间对齐，无需多步训练等待对齐",
+  "理论分析LoRA-One的线性收敛性和泛化性，并引入预条件器缓解病态条件数问题，与现有梯度对齐类方法建立理论联系"
+ ],
+ "method_framework": "LoRA-One的核心观察是：LoRA训练过程本质上是在逐步逼近全量梯度的低秩近似。因此可以直接计算一次全量梯度G，对其做SVD取top-r奇异向量作为A,B的初始化，从而一步到位完成子空间对齐。后续微调在此初始化基础上用预条件器加速收敛。适用于线性和非线性模型。",
+ "experiment_framework": "在多个NLP基准任务上评测，对比原始LoRA、各种LoRA改进变体（如rsLoRA、LoRA+等）；验证收敛速度、最终性能和计算效率。",
+ "takeaways": [
+  "理论证明LoRA的优化过程是在隐式地对齐全量梯度子空间，这解释了LoRA为何有效以及其局限性",
+  "LoRA-One通过单步全梯度初始化，在多个基准上相比原始LoRA取得显著性能提升和收敛加速",
+  "预条件器的引入有效缓解了LoRA训练中的病态问题，进一步提升了收敛速率"
+ ],
+ "weaknesses": [
+  "单步全梯度计算需要完整的反向传播，对于极大模型这一步的计算开销仍然不小",
+  "top-r奇异截断假设梯度的主要信息集中在少数奇异方向上，这一假设在所有任务上是否成立未充分验证",
+  "与其他梯度对齐方法的理论联系虽有讨论，但在实验上未做充分的对比消融"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

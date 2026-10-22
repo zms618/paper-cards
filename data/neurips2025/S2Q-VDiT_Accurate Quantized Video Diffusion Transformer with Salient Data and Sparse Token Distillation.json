@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/S2Q-VDiT_Accurate Quantized Video Diffusion Transformer with Salient Data and Sparse Token Distillation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/S2Q-VDiT_Accurate Quantized Video Diffusion Transformer with Salient Data and Sparse Token Distillation.pdf",
+ "title": "S2Q-VDiT: Accurate Quantized Video Diffusion Transformer with Salient Data and Sparse Token Distillation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "视频扩散模型量化：显著数据选择与稀疏标记蒸馏",
+ "innovations": [
+  "Hessian-aware Salient Data Selection联合评估扩散信息量和量化敏感性",
+  "Attention-guided Sparse Token Distillation利用时空注意力稀疏性优化标记重要性",
+  "在W4A6和W4A4量化设置下实现几乎无损的视频生成性能"
+ ],
+ "method_framework": "S2Q-VDiT框架包含Hessian-aware Salient Data Selection和Attention-guided Sparse Token Distillation两部分，前者通过扩散显著性Cdiff和量化显著性Cquant构建高质量校准数据集，后者基于注意力分布重新加权量化损失函数",
+ "experiment_framework": "在CogVideoX-2B/5B和HunyuanVideo-13B模型上评估，使用VBench基准的8个维度指标，对比Q-DiT、PTQ4DiT、ViDiT-Q等基线方法",
+ "takeaways": [
+  "校准数据选择对视频扩散模型量化性能影响显著，需联合考虑扩散和量化特性",
+  "利用模型内在的稀疏注意力模式可优化量化过程，提升性能"
+ ],
+ "weaknesses": [
+  "方法依赖注意力机制，可能不适用于非注意力架构",
+  "计算Hessian矩阵可能增加额外计算开销",
+  "实验主要在特定视频生成模型上进行，泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

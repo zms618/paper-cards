@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/PolyConf_Unlocking Polymer Conformation Generation through Hierarchical Generative Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/PolyConf_Unlocking Polymer Conformation Generation through Hierarchical Generative Models.pdf",
+ "title": "PolyConf: Unlocking Polymer Conformation Generation through Hierarchical Generative Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "层级生成模型PolyConf专为高分子构象设计，但局限线性均聚物。",
+ "innovations": [
+  "提出首个专为高分子构象生成设计的层级生成模型：自回归模型生成各重复单元的局部构象，扩散模型生成单元间朝向变换以组装成完整高分子构象",
+  "针对高分子'长链重复单元、结构高度柔性'的独特结构特征设计分解，弥补小分子/蛋白质构象方法在高分子上的失效",
+  "构建首个基于分子动力学模拟的高质量高分子构象数据集与benchmark，填补该领域数据稀缺空白"
+ ],
+ "method_framework": "本文为生成模型方法论文。核心观察：小分子/蛋白质构象生成方法因高分子由大量重复单元组成、结构柔性远高于蛋白而失效。PolyConf把构象分层：先用自回归模型逐一生成每个重复单元的局部构象并做masked-unit预训练，再用扩散模型生成单元之间的朝向变换(orientation transformation)将局部构象组装成整条链。",
+ "experiment_framework": "在自建的首个高分子构象benchmark(来自MD模拟)上评测；基线为既有小分子/蛋白质构象生成方法；指标为构象生成的质量与覆盖等；全面评测显示PolyConf一致优于现有方法。",
+ "takeaways": [
+  "把高分子构象分解为局部单元构象+单元间朝向，是适配高分子重复结构的有效归纳偏置",
+  "自回归(局部)+扩散(朝向)的层级组合，在高分子构象生成上显著优于直接套用小分子/蛋白方法",
+  "首个MD模拟构象基准的释放使该长期数据稀缺领域变得可系统研究"
+ ],
+ "weaknesses": [
+  "仅针对线性均聚物(linear homopolymers)，共聚物/共混物等更现实体系未覆盖，作者亦承认超出范围",
+  "基准由MD模拟单一来源生成，可能与真实实验构象分布存在系统偏差，外部效度待验证",
+  "与小分子/蛋白方法的对比中，这些方法本就不是为高分子设计，'优于既有方法'的说服力受对比对象限制"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

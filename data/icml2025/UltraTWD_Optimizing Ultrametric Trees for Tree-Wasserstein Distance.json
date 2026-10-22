@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/UltraTWD_Optimizing Ultrametric Trees for Tree-Wasserstein Distance.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/UltraTWD_Optimizing Ultrametric Trees for Tree-Wasserstein Distance.pdf",
+ "title": "UltraTWD: Optimizing Ultrametric Trees for Tree-Wasserstein Distance",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.9
+ },
+ "one_line": "联合优化超度量树结构与边权，提升Wasserstein逼近精度",
+ "innovations": [
+  "指出现有TWD方法要么固定树结构只调边权(qTWD/cTWD)、要么只构树不调权(QuadTree/ClusterTree)，二者割裂导致逼近精度受损",
+  "提出同时优化超度量树结构与边权的无监督框架UltraTWD，用最小生成树、迭代投影与梯度下降学习高质量超度量树",
+  "在文档检索、排序、分类任务上达到更优逼近精度与有竞争力的下游性能，代码开源"
+ ],
+ "method_framework": "树-Wasserstein把数据嵌入根树、用树距dT代替原代价；UltraTWD先用MST/聚类构造初始超度量树，再以迭代投影+梯度下降联合调整树结构与各边权重，使树距逼近真实Wasserstein代价矩阵。",
+ "experiment_framework": "文档检索、排序、分类任务；对比QuadTree、ClusterTree、qTWD、cTWD、Sinkhorn/sliced-Wasserstein等；指标为代价矩阵逼近误差与下游检索/分类性能。",
+ "takeaways": [
+  "TWD的线性时间优势要靠好的树结构+好边权共同保证，固定其一会损失逼近精度",
+  "超度量树结构与边权可端到端联合学习，在保持O(n)复杂度下显著缩小与真Wasserstein的差距"
+ ],
+ "weaknesses": [
+  "无监督逼近精度的提升对下游任务的实际增益在分类上较小，主要收益在检索/排序",
+  "联合优化树结构使算法不如纯固定树方法简单稳定，迭代投影+GD的超参与收敛性讨论有限；高维/大规模词袋上的扩展性未充分压测"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

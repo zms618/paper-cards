@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Towards Rationale-Answer Alignment of LVLMs via Self-Rationale Calibration.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Towards Rationale-Answer Alignment of LVLMs via Self-Rationale Calibration.pdf",
+ "title": "Towards Rationale-Answer Alignment of LVLMs via Self-Rationale Calibration",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "两阶段对齐LVLM理由与答案，依赖额外评分器，缺乏直接视觉grounding验证",
+ "innovations": [
+  "提出SRC框架迭代校准LVLM理由与答案的对齐，针对理由-答案不一致导致的错误",
+  "先用轻量‘理由微调’让模型在作答前先输出理由（无需显式提示），再为每条样本搜索多样候选回答",
+  "定制R-Scorer成对打分同时评估理由质量与事实一致性，并经置信加权偏好整理解耦为偏好微调(DPO)"
+ ],
+ "method_framework": "LVLM常输出与视觉不符/理由与答案自相矛盾的内容。SRC两阶段：(1)理由微调——改响应格式使模型先给理由再给答案，不需显式提示；(2)对微调后模型采样多样候选，用R-Scorer从理由质量与事实一致性两方面成对评分；按置信加权整理偏好对，再用DPO偏好微调，使理由与答案对齐。",
+ "experiment_framework": "在MMStar等多基准上，以LLaVA-1.5-7B、LLaVA-Next-8B为基线，对比加SRC前后在粗/细感知、实例/科学推理、逻辑推理、数学解题等维度的准确率；报告各维度显著提升。",
+ "takeaways": [
+  "理由与答案对齐是提升LVLM感知/推理/泛化的关键",
+  "让模型先自洽生成理由、再用专门scorer筛选理由-事实一致的样本做DPO，比单纯加SFT更有效",
+  "SRC作为后训练流程可即插即用到多种LVLM"
+ ],
+ "weaknesses": [
+  "依赖额外训练的R-Scorer，其打分偏差会传导到偏好数据，scorer与被评模型的自我强化风险需讨论",
+  "理由-答案一致性提升是否等价于真实视觉 grounding 的改善，需更直接的事实性基准验证",
+  "前9页主要为框架，完整基准数值与消融在后续页"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

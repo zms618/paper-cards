@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MP-Nav Enhancing Data Poisoning Attacks against Multimodal Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MP-Nav Enhancing Data Poisoning Attacks against Multimodal Learning.pdf",
+ "title": "MP-Nav: Enhancing Data Poisoning Attacks against Multimodal Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 5.8
+ },
+ "one_line": "优化多模态投毒攻击的导航策略，增强隐蔽性与成功率。",
+ "innovations": [
+  "指出现有多模态数据投毒攻击仅依赖随机概念配对，效果有限",
+  "提出MP-Nav：在多模态嵌入空间中导航，选择最优的概念错配对，增强投毒攻击效果",
+  "在图文检索（TIR）和视觉问答（VQA）任务上验证攻击显著增强"
+ ],
+ "method_framework": "多模态数据投毒：向训练集中注入少量恶意样本，使模型错误关联不同概念（如将猫图错误关联到狗标签）。MP-Nav不随机选择错配概念，而是在多模态嵌入空间中导航：选择与目标概念距离合适的源概念，使错配样本既能成功注入又不易被检测。",
+ "experiment_framework": "图文检索（TIR）和视觉问答（VQA）基准。基线：随机投毒攻击。指标：投毒成功率（目标概念被错误关联的程度）、攻击隐蔽性。消融验证导航策略。",
+ "takeaways": [
+  "多模态模型对数据投毒攻击脆弱，精心设计的概念错配比随机错配攻击效果强得多",
+  "在嵌入空间中导航选择错配概念是增强投毒攻击的有效策略",
+  "多模态安全需重视数据投毒风险，特别是在大规模预训练场景"
+ ],
+ "weaknesses": [
+  "攻击方法的实际可行性（需要多少投毒样本、能否绕过数据清洗）未充分讨论",
+  "仅在CLIP/ALBEF等模型上验证，未涉及最新LLaVA等多模态大模型",
+  "作为攻击论文，防御方法讨论不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

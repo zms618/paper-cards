@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Spectralgcd_Spectral Concept Selection Cross-Modal Representation Learning for Generalized Category Discovery.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Spectralgcd_Spectral Concept Selection Cross-Modal Representation Learning for Generalized Category Discovery.pdf",
+ "title": "SpectralGCD: Spectral Concept Selection and Cross-Modal Representation Learning for Generalized Category Discovery",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "谱滤波+双向蒸馏的跨模态概念选择，提升GCD性能但依赖CLIP质量",
+ "innovations": [
+  "用CLIP跨模态图像-概念相似度作为统一跨模态表示，把图像锚定到显式语义以减少对虚假视觉线索的依赖",
+  "提出谱滤波：基于强教师测得的softmax相似度构造跨模态协方差矩阵，自动从大词典中只保留相关概念",
+  "对同一教师做正向+反向知识蒸馏，保证学生跨模态表示既语义充分又对齐良好"
+ ],
+ "method_framework": "把每张图表示为任务无关语义概念词典上的混合；用强教师CLIP测图像-概念相似度并构造跨模态协方差矩阵，谱分解保留主导概念以滤除无关概念；再通过教师到学生的正反向蒸馏，让高效学生学到语义充分且对齐的概念混合表示，用于类别发现。",
+ "experiment_framework": "在6个GCD基准上评测类别发现精度，对比多模态与单模态SOTA方法；报告以极小计算成本达到可比或显著更优的精度。",
+ "takeaways": [
+  "把图像锚定到显式语义概念混合能减少对虚假视觉线索的依赖",
+  "谱滤波可自动从大概念词典中筛选相关概念，无需人工选择",
+  "正反双向蒸馏能在低成本下保持学生表示的语义充分性与跨模态对齐"
+ ],
+ "weaknesses": [
+  "性能依赖CLIP教师与概念词典质量，对词典未覆盖的新概念泛化受限",
+  "谱滤波保留阈值的选择对结果敏感，自适应规则讨论有限",
+  "评测集中在标准物体识别GCD基准，向细粒度/医学等领域迁移未展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "跨模态概念选择提升GCD，但依赖CLIP且未触及医学落地",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Optimizer Choice Matters for the Emergence Of Neural Collapse.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Optimizer Choice Matters for the Emergence Of Neural Collapse.pdf",
+ "title": "Optimizer Choice Matters for the Emergence of Neural Collapse",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 4.5,
+  "overall": 6.1
+ },
+ "one_line": "揭示优化器权重衰减耦合方式决定神经坍缩是否出现",
+ "innovations": [
+  "挑战NC普遍性假设，首次从理论上证明优化器选择（权重衰减耦合vs解耦）决定神经坍缩是否出现",
+  "提出新诊断指标NC0，其收敛到零是NC的必要条件，便于理论分析",
+  "首次证明动量对NC的加速效应（超出训练损失收敛之外），并通过3900次训练实验验证"
+ ],
+ "method_framework": "引入NC0指标（类间均值与分类器权重对齐程度的度量）作为NC的必要条件。理论分析SGD、耦合权重衰减SignGD（Adam特例）、解耦权重衰减SignGD（AdamW特例）的NC0动力学。证明解耦权重衰减下NC0无法收敛到零，即NC不会出现。动量效应通过SGD下NC0收敛速度的理论分析推导。",
+ "experiment_framework": "3900次训练运行，覆盖多种数据集、架构、优化器和超参数。对比SGD、Adam、AdamW等优化器下NC指标的演化。验证理论预测：AdamW不出现NC，SGD和耦合衰减Adam出现NC。",
+ "takeaways": [
+  "神经坍缩不是普遍现象，而是优化器依赖的：AdamW因解耦权重衰减阻止NC形成",
+  "权重衰减耦合方式是塑造优化器隐式偏置的 overlooked 关键因素",
+  "动量在SGD下加速NC出现，且该效应独立于训练损失收敛速度"
+ ],
+ "weaknesses": [
+  "理论分析基于简化模型（线性网络/特征学习），对深度非线性网络的适用性需更多验证",
+  "NC0作为必要条件的诊断能力有限，充分性未证明",
+  "未讨论NC出现与否对最终泛化性能的实际影响差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "优化器理论分析，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

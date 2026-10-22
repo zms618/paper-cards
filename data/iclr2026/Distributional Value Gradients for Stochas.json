@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Distributional Value Gradients for Stochas.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Distributional Value Gradients for Stochas.pdf",
+ "title": "Distributional Value Gradients for Stochas",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "分布值梯度方法提升随机环境RL性能，但计算复杂且验证不足。",
+ "innovations": [
+  "分布Sobolev强化学习框架，联合建模值函数及其梯度分布",
+  "Sobolev Bellman算子，证明其收缩性并提供唯一不动点",
+  "使用MSMMD作为可计算的分布距离度量",
+  "结合cVAE世界模型实现可微分环境模拟"
+ ],
+ "method_framework": "通过条件变分自编码器(cVAE)构建可微分世界模型，实现状态转移和奖励分布的建模；结合分布值函数与梯度信息，提出Sobolev时序差分学习框架，使用MSMMD作为分布距离度量进行优化。",
+ "experiment_framework": "在2D点质量环境和MuJoCo基准上测试，对比TD3、MAGE、IQN等基线方法；评估乘法观测噪声和高斯动力学噪声下的鲁棒性。",
+ "takeaways": [
+  "梯度分布建模在随机环境中比确定性梯度更有效",
+  "MSMMD作为可计算的分布距离度量在理论保证和实际效果间取得平衡",
+  "过估计偏差修正对稳定学习至关重要"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，需要大量样本和梯度计算",
+  "仅关注动作梯度，未考虑状态梯度",
+  "世界模型的选择可能影响性能，需要进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "随机环境RL方法与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

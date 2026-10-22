@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Learning to Inference Adaptively for Multimodal Large Language Models.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Learning to Inference Adaptively for Multimodal Large Language Models.pdf",
+ "title": "Learning to Inference Adaptively for Multimodal Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "AdaLLaVA通过学习调度器实现MLLM自适应推理，但仅处理LLM部分",
+ "innovations": [
+  "基于学习调度器的自适应推理框架",
+  "概率建模方法处理硬延迟约束",
+  "两种可配置开关设计(层级和头/神经元级)"
+ ],
+ "method_framework": "通过K个可调二进制开关控制MLLM操作，调度器根据输入内容和延迟预算动态生成执行计划，采用概率建模确保满足延迟约束",
+ "experiment_framework": "在VQAv2、ScienceQA等6个基准测试上评估，比较不同延迟预算下的性能，并与Prumerge+、FastV等基线对比",
+ "takeaways": [
+  "延迟感知调度器能有效平衡准确率与延迟",
+  "方法可与token选择技术集成提升效率",
+  "层级和头/神经元级开关各有优势"
+ ],
+ "weaknesses": [
+  "仅处理LLM部分，视觉编码器固定",
+  "实验主要基于LLaVA-1.5，泛化性需进一步验证",
+  "调度器训练计算开销较大"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "自适应推理框架触及可靠性主线，但未全面覆盖多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

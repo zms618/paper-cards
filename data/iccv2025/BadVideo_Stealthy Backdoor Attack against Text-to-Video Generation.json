@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/BadVideo_Stealthy Backdoor Attack against Text-to-Video Generation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/BadVideo_Stealthy Backdoor Attack against Text-to-Video Generation.pdf",
+ "title": "BadVideo Stealthy Backdoor Attack against Text-to-Video Generation",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 6.5,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 6.0
+ },
+ "one_line": "针对T2V模型的隐蔽后门攻击，利用时空冗余分散恶意内容。",
+ "innovations": [
+  "时空组合策略将恶意内容分散在多个帧中",
+  "动态元素转换策略利用视频时间维度传递恶意信息",
+  "首个针对T2V模型的隐蔽后门攻击框架"
+ ],
+ "method_framework": "BadVideo通过三个模块实现：提示转换模块将原始提示转换为头部和尾部提示；关键帧生成模块使用T2I模型生成一致的关键帧；目标视频生成模块利用T2V模型生成包含嵌入后门目标的视频。",
+ "experiment_framework": "在LaVie和Open-Sora模型上评估，使用Panda2M和MSR-VTT数据集，通过FVD、CLIPSIM、ViCLIP等指标衡量性能，并使用MLLM和人工评估攻击成功率。",
+ "takeaways": [
+  "利用视频生成中的冗余信息是隐蔽注入恶意内容的新途径",
+  "时间维度上的恶意内容分布可有效规避传统内容检测系统"
+ ],
+ "weaknesses": [
+  "仅评估了两种T2V模型，缺乏更广泛的模型验证",
+  "防御实验主要集中在微调和提示扰动上，未探索其他防御方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "后门攻击属于安全领域，与可靠性主线无实质交集",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

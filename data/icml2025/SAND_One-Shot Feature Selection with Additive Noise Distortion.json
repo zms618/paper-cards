@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/SAND_One-Shot Feature Selection with Additive Noise Distortion.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SAND_One-Shot Feature Selection with Additive Noise Distortion.pdf",
+ "title": "SAND: One-Shot Feature Selection with Additive Noise Distortion",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "简单噪声扰动特征选择，理论有限，与主线AI弱相关。",
+ "innovations": [
+  "提出非侵入式特征选择层，公式简洁(x~=a_i x_i+(1-a_i)z_i, sum a_i^2=k)，不改损失函数、网络结构，也无需选择后重训。",
+  "通过加权噪声扰动加增益归一化自动产生聚类效应，自动选k个信息特征、丢弃冗余特征。",
+  "在线性回归设定下给出理论分析验证其有效性。"
+ ],
+ "method_framework": "在输入处插入一层：每个特征乘可训练增益a_i，并以概率(1-a_i)用同方差高斯噪声z_i替换该特征；约束sum a_i^2=k使总增益归一；训练中噪声扰动使不信息特征的增益被推向0、信息特征推向1，从而在一次训练中同步完成特征选择。",
+ "experiment_framework": "在标准特征选择基准及一个新真实数据集上评测，对比主流SOTA特征选择方法；目标特征数k给定；报告分类/回归精度与是否需要k的超参搜索或选择后重训。",
+ "takeaways": [
+  "SAND在多个标准基准与真实数据集上达到或超过现有方法，且无需为k做超参搜索、无需选择后重训。",
+  "加性噪声扰动加增益归一化即可实现端到端、一次性特征选择。"
+ ],
+ "weaknesses": [
+  "与主线(可信AI/医学影像/多模态大模型)关系弱，属通用特征选择。",
+  "在高度相关/冗余特征间的选择稳定性与噪声方差超参敏感性在可见页内未充分消融。",
+  "理论仅在线性回归下成立，对深度非线性网络的收敛性保证有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

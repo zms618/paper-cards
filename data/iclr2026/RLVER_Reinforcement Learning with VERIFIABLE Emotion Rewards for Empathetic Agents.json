@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RLVER_Reinforcement Learning with VERIFIABLE Emotion Rewards for Empathetic Agents.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RLVER_Reinforcement Learning with VERIFIABLE Emotion Rewards for Empathetic Agents.pdf",
+ "title": "RLVER: Reinforcement Learning with Verifiable Emotion Rewards for Empathetic Agents",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4.0,
+  "overall": 5.1
+ },
+ "one_line": "用模拟奖励训练LLM共情，但缺乏真实验证和可靠性主线关联",
+ "innovations": [
+  "首次将RLVR范式拓展到对话共情能力，利用心理建模的自一致情感模拟用户在多轮对话中产生确定性、可验证的情绪奖励分数",
+  "在Qwen2.5-7B上通过PPO将Sentient-Benchmark从13.3提升至79.2，同时基本保留数学与代码能力",
+  "系统比较thinking/non-thinking模型、PPO/GRPO算法、不同难度用户环境对共情能力发展模式的影响"
+ ],
+ "method_framework": "基于SAGE自一致情感用户模拟器构建多轮对话训练环境。每轮对话后模拟用户根据其人设、对话历史和目标，通过确定性推理步骤更新情绪状态并输出[0,1]情绪分数作为奖励。用PPO或GRPO优化LLM策略，使模型在多轮对话中持续提升用户情绪改善。通过多样化用户行为和对话意图缓解奖励黑客。",
+ "experiment_framework": "在Qwen2.5-7B-Instruct上微调；Sentient-Benchmark为主要评测；对比PPO与GRPO、thinking与non-thinking模型；验证数学和代码能力保留；分析不同难度模拟用户环境的效果。",
+ "takeaways": [
+  "可验证情绪奖励可通过RL直接训练LLM共情能力，无需标注咨询语料SFT",
+  "thinking模型在共情和洞察力上表现更好，non-thinking模型更偏向行动导向",
+  "GRPO提供稳定均衡的提升，PPO偶尔能推高特定能力的上限；中等难度环境比高难度环境训练效果更好"
+ ],
+ "weaknesses": [
+  "奖励信号来自模拟用户的情绪分数，其心理建模的有效性和与真实用户情绪的对齐性缺乏外部验证",
+  "与可靠性/鲁棒性/多模态推理主线无关，共情对话的可验证性弱于数学/代码的客观奖励",
+  "前9页未见与商用大模型（如GPT-4o）在同基准上的详细对比，79.2分的实际水平需更多基准交叉验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "共情训练与可靠性主线无关，模拟奖励缺乏真实验证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

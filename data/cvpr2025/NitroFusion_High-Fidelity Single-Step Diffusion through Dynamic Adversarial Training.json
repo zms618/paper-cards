@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/NitroFusion_High-Fidelity Single-Step Diffusion through Dynamic Adversarial Training.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/NitroFusion_High-Fidelity Single-Step Diffusion through Dynamic Adversarial Training.pdf",
+ "title": "NitroFusion High-Fidelity Single-Step Diffusion through Dynamic Adversarial Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "动态判别器池提升单步扩散质量，但泛化与计算成本存疑",
+ "innovations": [
+  "动态判别器池架构",
+  "判别器池刷新机制防止过拟合",
+  "多尺度双目标GAN训练平衡图像连贯性与提示对齐"
+ ],
+ "method_framework": "基于冻结UNet编码器构建动态判别器池，通过随机采样子集提供多样化反馈，结合1%随机刷新机制防止过拟合，实现单步高质量扩散生成。",
+ "experiment_framework": "COCO-5K数据集，对比DMD2、Hyper-SDXL、SDXL-Turbo等基线，使用CLIP、FID、美学分数和ImageReward指标评估。",
+ "takeaways": [
+  "多专家判别器架构可有效提升单步生成质量",
+  "动态刷新机制可防止GAN训练中的判别器过拟合",
+  "同一模型支持1-4步灵活推理的实用设计"
+ ],
+ "weaknesses": [
+  "仅使用合成数据进行训练可能限制泛化能力",
+  "计算资源需求较高，需要大量判别器头"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "单步扩散生成与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

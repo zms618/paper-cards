@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/GraLoRA_Granular Low-Rank Adaptation for Parameter-Efficient Fine-Tuning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/GraLoRA_Granular Low-Rank Adaptation for Parameter-Efficient Fine-Tuning.pdf",
+ "title": "GraLoRA: Granular Low-Rank Adaptation for Parameter-Efficient Fine-Tuning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "分块低秩适配缓解梯度纠缠，但内存开销大且k值需调优",
+ "innovations": [
+  "将权重矩阵分割为子块，每个子块有独立的低秩适配器",
+  "解决了LoRA在高秩时的梯度纠缠和通道主导问题",
+  "提出混合GraLoRA架构以适应不同秩设置"
+ ],
+ "method_framework": "GraLoRA将权重矩阵划分为k×k独立块，每块配备局部低秩适配器，总有效秩提升k倍，同时保持计算效率",
+ "experiment_framework": "在代码生成、常识推理、数学推理、语言理解和图像生成五大领域评估，对比LoRA、MoRA和RaSA基线",
+ "takeaways": [
+  "分块设计能有效缓解异常通道对梯度的过度影响",
+  "混合架构可平衡低秩场景下的表达能力"
+ ],
+ "weaknesses": [
+  "训练时内存开销增加k倍",
+  "k值选择需要根据任务和秩大小进行调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

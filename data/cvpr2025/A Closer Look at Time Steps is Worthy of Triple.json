@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/A Closer Look at Time Steps is Worthy of Triple.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Closer Look at Time Steps is Worthy of Triple.pdf",
+ "title": "A Closer Look at Time Steps is Worthy of Triple Speed-Up for Diffusion Model Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "三区划分与加权采样加速扩散训练，但实验严谨性不足",
+ "innovations": [
+  "以过程增量 δt 的均值/方差变化率为量，把扩散时间步划分为加速/减速/收敛三区，并给出 Theorem 1 的闭式上下界 φ̂t=βmax·exp{−(β0+Δβt/2T)t}、Ψ̂t=2−2exp{−(β0+Δβt/2T)t}，据此论证收敛区时间步占比极大却训练损失最低、收益有限。",
+  "非对称采样：用阈值 τ 的两段阶跃函数 P(t) 替代均匀采样 U(t)=1/T，使 t≤τ 的采样概率为 t>τ 的 k 倍；τ 由 τ←√(2T log r/Δβ + T²β0²/Δβ²) − Tβ0/Δβ 闭式确定，保证被压制的全为收敛区步。",
+  "变化感知加权：取方差下界对时间步的梯度 ∂tΨ̂t 作权重并重标定到 [1−λ, λ]（λ∈[0.5,1] 控制曲率），补偿加速/减速区因样本少导致的欠采样；整体 O(1) 开销、不改网络结构。"
+ ],
+ "method_framework": "先用 Theorem 1 的过程增量上下界把时间步分成加速/减速/收敛三区并导出边界 ta-d、td-c；再据此设计抑制收敛区的两段阶跃采样分布 P(t) 与强调快变区的变化感知权重 wt，直接嵌入标准扩散损失 L=E_μt[wt‖ε−εθ(xt,t)‖²]，并推广到 VP/VE/EDM 的 s-σ 调度形式。",
+ "experiment_framework": "MetFaces/FFHQ/CelebA/CIFAR-10/ImageNet-1K/MS-COCO；U-Net 与 DiT-XL/2；基线 DiT-XL/2、P2、Min-SNR、Log-Normal、CLTS、MDT、FDM；指标 FID/IS/CLIP score 与 FID-Iteration 加速比。",
+ "takeaways": [
+  "用「量的变化率」（∂tΨ̂t）而非「量的绝对大小」定位训练中的冗余与欠采样区域，这一分析视角比经验性重加权更有解释力，可迁移到其它按步/按层分配算力的训练问题。",
+  "论文给出的可迁移结论：对低信息量样本「降采样」比「降权重」更有效——因为降权仍占用前向/反向计算，这对长尾或不平衡数据的配比设计有直接借鉴。",
+  "极简实现（只改采样分布与损失权重、O(1) 额外开销、架构无关）换来 3–4× 训练加速，是「简单本身即深度」的范例，可作为低成本可插拔模块的写作模板。"
+ ],
+ "weaknesses": [
+  "全文无随机种子方差或显著性检验，FID 均为单 run 点估计；加速倍数由 FID-Iteration 曲线目视估计得出，缺乏严格的等价 FID 阈值定义。",
+  "核心消融（抑制强度 k、阈值 τ、曲率 λ 的敏感性，采样与加权两模块各自的独立贡献）被放入附录，正文 9 页内只剩主表，无法核实是否出现去掉某组件反而更好的情形。",
+  "三区划分与 τ 的闭式推导强依赖线性/VP 类 schedule 的假设，对 EDM 等 s-σ 调度只给出通用微分形式，未在正文逐项验证 td-c 边界是否仍成立。",
+  "加速比是与自训的 DiT-XL/2 在相同迭代数下比较所得，未与「同等 wall-clock 预算下充分调参的基线」比较，收益中可能包含基线未调参的成分。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散训练加速方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

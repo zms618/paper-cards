@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Synthetic Bootstrapped Pretraining.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Synthetic Bootstrapped Pretraining.pdf",
+ "title": "Synthetic Bootstrapped Pretraining",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "利用文档相关性合成数据缓解预训练数据瓶颈",
+ "innovations": [
+  "提出利用文档间相关性（而非仅文档内token相关性）作为预训练信号的新范式",
+  "设计三步流程：识别语义相似文档对、建模文档间条件概率、合成新语料进行联合训练",
+  "给出自然的贝叶斯解释：合成器隐式学习相关文档间共享的潜在概念抽象"
+ ],
+ "method_framework": "SBP分三步：1）从预训练数据集中识别语义相似的文档对（如Transformer论文及其代码实现）；2）学习文档对之间的条件概率模型（给定文档1生成文档2）；3）利用该模型合成大量新文档，与原始数据联合训练。合成文档不是简单复述，而是先从种子材料抽象核心概念，再基于该概念构建新叙述。",
+ "experiment_framework": "在3B和6B参数模型上从头预训练，最多1T token；计算匹配的预训练设置；基线包括强重复基线和访问20倍更多唯一数据的oracle上界；指标为下游任务性能。",
+ "takeaways": [
+  "文档间相关性是被标准预训练忽略的额外信号，可通过合成数据有效利用",
+  "SBP能达到oracle上界（20倍数据）60%的性能提升，显著优于重复基线",
+  "合成文档超越简单复述，实现了概念抽象和重新叙述"
+ ],
+ "weaknesses": [
+  "需要先识别语义相似文档对，文档配对的质量和覆盖度影响最终效果",
+  "合成数据可能放大原始数据中的偏差和错误",
+  "实验主要在英文数据上验证，多语言场景的适用性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "预训练方法创新，但未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

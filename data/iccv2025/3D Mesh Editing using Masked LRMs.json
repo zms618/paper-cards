@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/3D Mesh Editing using Masked LRMs.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/3D Mesh Editing using Masked LRMs.pdf",
+ "title": "3D Mesh Editing using Masked LRMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "用3D遮挡体训练条件LRM，将2D编辑提升为3D网格",
+ "innovations": [
+  "训练时随机生成 3D 长方体网格并渲染其深度图，得到在所有输入视角上彼此一致的遮挡（multi-view consistent occlusion），而不是 MAE 式随机 patch dropout；被遮 token 用可学习 mask token 替换而非丢弃，从而消除 train/test gap——推理时同样把真实遮挡图喂进来",
+  "额外给一条干净视角作条件分支（z = T^1_Image + T^1_Plücker），经 cross-attention 注入主 transformer（Eq.3），迫使模型用单张条件图补全被遮 3D 区域，而不是只从多视角上下文推断",
+  "编辑时直接复用训练时的遮挡定义：手动画遮挡体 + 用 mask diffusion 编辑一张 canonical 视角图，单向前向传播即把 2D 编辑抬升为 3D，且能改变几何亏格（加孔/加把手），这是变形类优化方法做不到的"
+ ],
+ "method_framework": "多视角图+Plücker 光线分别 patchify → 随机 3D 遮挡体渲染深度得多视一致 mask → 遮 token 换成可学习 token → cross-attention 注入单张干净条件图 → triplane 上采样 → SDF/RGB MLP → 体素渲染出图/法线/轮廓 → marching cubes 取 mesh",
+ "experiment_framework": "Objaverse 训练（每形 40 张 512² 随机相机渲染，含深度与法线）；GSO/ABO 测重建，对比 MeshLRM 与 InstantMesh（NeRF/Mesh 两版）；指标 novel pose 上的 PSNR/SSIM/LPIPS；编辑侧定性对比 TextDeformer/MagicClay/InstantMesh/多视扩散（正文截断于 4.2 末）",
+ "takeaways": [
+  "「多视角一致的 3D 遮罩」是关键设计：随机 2D patch dropout 在 3D 里没有对应语义，改为渲染一个随机 3D 遮挡体后 train/inference 输入分布才对得上",
+  "被遮 token 用可学习 token 替换而非直接丢弃，让推理时能吃下带真实遮挡的输入，避免 MAE 的 train-test 分布不一致"
+ ],
+ "weaknesses": [
+  "训练只用 Objaverse 每形 40 张渲染，编辑可控性仅在鸟、花瓶、礼帽等少数图上定性展示，无编辑保真度定量指标与用户研究；加速 2–10× 的 claim 仅有 Table 2 一句、正文截断不可复核",
+  "重建指标上 GSO 略逊于 MeshLRM（27.58 vs 27.93 PSNR），说明条件分支与多视一致遮罩给重建带来额外难度却未换回收益，而论文把重建定位成「副产品」，等于主任务（编辑）缺少定量评估支撑",
+  "架构是 MeshLRM + MAE 式 masking + cross-attention 条件分支 + 体渲染的拼装，对遮罩比例、随机遮挡体尺寸分布、条件视角选择均无消融；Stage1/Stage2 切换 wN 只是「先省反向、再补法线」的工程调参，法线损失的必要性未论证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "3D网格编辑与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

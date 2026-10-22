@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/WETOK_Powerful Discrete Tokenization for High-Fidelity Visual Reconstruction.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/WETOK_Powerful Discrete Tokenization for High-Fidelity Visual Reconstruction.pdf",
+ "title": "WeTok: Powerful Discrete Tokenization for High-Fidelity Visual Reconstruction",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4.5,
+  "overall": 5.0
+ },
+ "one_line": "改进码本设计的视觉分词器，在常规图像重建上小幅超越基线。",
+ "innovations": [
+  "提出Lookup-Free和Lookup-FreeGrouped两种码本设计，避免传统向量量化码本的训练不稳定问题",
+  "在压缩率-重建质量权衡曲线上达到新的SOTA，显著优于VQVAE和Open-MAGVIT2",
+  "零样本重建质量大幅提升，细节和纹理保真度更好"
+ ],
+ "method_framework": "编码器将图像编码为离散token序列，解码器从token重建图像。核心创新在于码本设计：采用无查找（Lookup-Free）方式生成视觉token，避免码本坍塌和训练不稳定。Grouped变体进一步分组提升表达能力。",
+ "experiment_framework": "在标准图像重建基准上评估。指标包括rFID（重建FID）和压缩率。对比基线为VQVAE、Open-MAGVIT2等主流视觉分词器。零样本重建评估。",
+ "takeaways": [
+  "无查找码本设计比传统向量量化更稳定，重建质量更高",
+  "离散视觉分词在压缩效率和保真度之间的权衡仍有显著改进空间",
+  "更好的分词器直接提升下游生成模型的上限"
+ ],
+ "weaknesses": [
+  "仅在自然图像上验证，医学影像等专业视觉领域的重建效果未知",
+  "分词器对下游生成任务（如文本到图像）的端到端提升未充分评估",
+  "码本大小和分组方式对性能的影响未系统消融"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "视觉重建分词器，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

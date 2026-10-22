@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Robotarena ∞_Scalable Robot Benchmarking via Real-to-Sim Translation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Robotarena ∞_Scalable Robot Benchmarking via Real-to-Sim Translation.pdf",
+ "title": "RobotArena ∞: Scalable Robot Benchmarking via Real-to-Sim Translation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "将真实机器人视频转为仿真环境，用VLM自动评分+众包评测VLA策略",
+ "innovations": [
+  "提出 real-to-sim 自动迁移管线：把广泛使用的真实机器人视频演示自动转换为可复现的仿真环境。",
+  "在数字孪生中同时用 VLM 引导自动打分与可扩展的众包人类偏好评判，把人从场景搭建/复位/安全监督转为轻量偏好比较。",
+  "沿纹理、物体摆放等多轴系统扰动仿真环境，对 VLA 策略的受控变化泛化做压力测试。"
+ ],
+ "method_framework": "输入真实机器人操作视频，借助视觉-语言模型理解语义、2D-to-3D 生成与可微渲染重建出对应仿真场景(数字孪生)；在其中部署待评 VLA 策略执行任务，用 VLM 自动评分并采集人类成对偏好；再沿多轴扰动环境测策略在变化下的鲁棒性。",
+ "experiment_framework": "基于主流机器人操作数据集构建评测集；对比多个 VLA 策略；报告 VLM 自动分与人类偏好一致性，并在纹理/物体摆放等扰动轴上报告泛化/鲁棒表现。",
+ "takeaways": [
+  "真实世界机器人评测受成本/安全/可复现性限制，real-to-sim 可实现大规模可扩展评测。",
+  "VLM 自动打分加众包偏好评判可在数字孪生中以低成本评估执行质量。",
+  "多轴受控扰动能量化 VLA 策略在纹理/摆放变化下的泛化稳健性。"
+ ],
+ "weaknesses": [
+  "数字孪生与真实物理间仍有 sim-to-real 差距，自动重建的保真度与接触/力学建模误差未充分量化。",
+  "VLM 自动打分与真实执行成功/安全的对齐度依赖 VLM 能力，误判风险未系统审计。",
+  "作为新基准，其与既有机器人基准的相关性、长期维护与排行榜稳定性有待时间检验。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "机器人操作基准与可靠性主线无实质交点，仅工具价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

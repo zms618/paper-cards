@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Fast3Dcache_Training-free 3D Geometry Synthesis Acceleration.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Fast3Dcache_Training-free 3D Geometry Synthesis Acceleration.pdf",
+ "title": "Fast3Dcache Training-free 3D Geometry Synthesis Acceleration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "三阶段缓存加速3D扩散模型，但泛化性和表示依赖受限",
+ "innovations": [
+  "几何感知缓存框架Fast3Dcache",
+  "预测缓存调度约束PCSC",
+  "时空稳定性标准SSC"
+ ],
+ "method_framework": "三阶段加速策略：全采样阶段建立初始几何稳定性，动态缓存阶段基于PCSC预测的动态预算和SSC选择稳定令牌进行缓存，CFG自由细化阶段采用固定比例缓存策略",
+ "experiment_framework": "TRELLIS和DSO框架，Toys4K数据集，吞吐量、FLOPs、Chamfer距离和F-Score作为评估指标",
+ "takeaways": [
+  "3D几何生成中的体素演化呈现可预测的三阶段稳定模式",
+  "速度和加速度场可作为选择稳定令牌的有效标准",
+  "周期性全刷新步骤可限制近似误差累积"
+ ],
+ "weaknesses": [
+  "仅针对TRELLIS框架进行了验证，泛化性未知",
+  "方法依赖于特定的体素表示，可能不适用于其他3D表示方法"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D几何加速与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

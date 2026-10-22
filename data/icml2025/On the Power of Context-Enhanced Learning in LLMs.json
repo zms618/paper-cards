@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/On the Power of Context-Enhanced Learning in LLMs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/On the Power of Context-Enhanced Learning in LLMs.pdf",
+ "title": "On the Power of Context-Enhanced Learning in LLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "形式化上下文增强学习，证明ICL模型样本效率指数提升，但材料恢复实验不足",
+ "innovations": [
+  "提出并形式化context-enhanced learning概念：对文本做标准梯度学习，但上下文中额外放入不计算自回归梯度的材料，是ICL的梯度版(LUPI在LLM中的类比)",
+  "在多步推理任务的简化设定下证明：当模型具备ICL能力时，上下文增强学习可比标准学习指数级更样本高效",
+  "从机制上指出收益来自更准确的梯度学习信号；并实验发现训练时放入上下文的学习材料难以被检测或恢复，对数据安全与版权有启示"
+ ],
+ "method_framework": "把辅助/特权材料置于上下文窗口供梯度计算时参考，但不对其本身计算自回归损失；在简化多步推理任务中分析该设定相比普通自回归学习的样本复杂度差异，并从梯度信号质量解释收益来源。",
+ "experiment_framework": "以简化多步推理任务的样本复杂度证明为主，辅以实验验证上下文增强的收益；另做恢复/检测实验，尝试从训练后模型反推曾放入上下文的学习材料。",
+ "takeaways": [
+  "具备ICL能力的模型可借上下文辅助材料获得指数级样本效率提升，即使这些材料不参与梯度更新",
+  "收益根源是辅助上下文提供了更准确的梯度学习信号，而非直接记忆材料",
+  "训练时放入上下文的特权/私有材料难以被检测或恢复，既是数据泄露防护的机会，也带来版权溯源困难"
+ ],
+ "weaknesses": [
+  "理论证明在高度简化的多步推理设定下成立，向真实预训练/微调规模的外推性需进一步验证",
+  "‘难以恢复学习材料’的实验仅在受控小规模设置，对成员推断/提取攻击等强攻击下的稳健性未充分检验",
+  "对模型需达到何种最小能力门槛才能受益(能力规模效应)缺乏定量刻画"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

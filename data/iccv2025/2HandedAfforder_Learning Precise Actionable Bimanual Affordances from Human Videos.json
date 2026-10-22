@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/2HandedAfforder_Learning Precise Actionable Bimanual Affordances from Human Videos.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/2HandedAfforder_Learning Precise Actionable Bimanual Affordances from Human Videos.pdf",
+ "title": "2HandedAfforder: Learning Precise Actionable Bimanual Affordances from Human Videos",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 4.9
+ },
+ "one_line": "双手affordance提取，掩码传播与补手技术，但基础提取质量不足",
+ "innovations": [
+  "用补手+掩码传播反推真实接触区：VIDM 视频补手得到无遮挡物体图，再用 SAM2 把原始物体 mask 传播到补好的图上，affordance mask 取「补好的物体 mask ∩ 手 mask」，从而在手严重遮挡处仍得到精确接触区域（278K 图、73 类 affordance、163 类物体，含 unimanual-left/right/bimanual 标签）",
+  "affordance 类别标签直接取自任务旁白（narration）而不靠标注者主观划分，使标签天然任务导向、区别于以往任务无关的交互热区",
+  "预测端沿用 LISA 的 [SEG] token 范式但拆成左右两个独立 mask decoder 并加一个 FC 分类头判双手性，测试时按分类结果把不用的那一侧 mask loss 置 0；VLM 与 SAM 图像编码器冻结，只加 LoRA，用 dice + focal CE 训练"
+ ],
+ "method_framework": "EPIC-KITCHENS+VISOR → 视频 mask 传播得稠密手物 mask → VIDM 补手 → SAM2 传播 mask 到补图 → 交集得 affordance mask 且 narration 作类别标签 → 2HandedAfforder（VLM [SEG] token + 双 SAM mask decoder + 双手性分类头）",
+ "experiment_framework": "自建 ActAffordance 基准（10 名标注者对 EPIC-KITCHENS/Ego4D 共 400 活动标注，与 2HANDS 用数据无重叠）及其 Cropped 变体；对比 LISA/LOCATE/AffLLM/VRB/3DOI/2HandedAfforder-CLIP；指标 IoU、Precision、HD、Dir.HD、mAP（正文截断于 5.1 首段）",
+ "takeaways": [
+  "用独立的人类标注基准把「自己提取的 mask 当真值」的循环偏差隔离开，并做 Cropped 版把「认对物体」与「分割对区域」两种能力解耦评价，这个 claim 隔离式实验设计可直接复用",
+  "双手性分类头动态关闭单侧 mask loss，让单个 decoder 就能处理「用哪只手」不确定的任务，比训两个单手模型省参"
+ ],
+ "weaknesses": [
+  "正文在 5.1 末尾截断，ActAffordance 数字之后的完整分析、in-the-wild 与真实机械臂抓取的定量结果、2HandedAfforder-CLIP 与 VLM 版的对照消融均不可见，『actionable』只有文字描述无量化指标",
+  "提取质量与 claim 不匹配：AffExtract 在基准上 IoU 仅 0.136/0.185、Precision 0.334/0.420，与人类标注差一倍以上，而论文主要收益却建立在 2HandedAfforder 相对对照模型的优势之上，数据底子本身未达标",
+  "提取管线是 mask 传播→补手→掩码传播的串接，误差逐级累积且无端到端定量校验（补手失败时交集 mask 会直接变成错误标签）；模型侧冻结 VLM 与 SAM 编码器只调 LoRA，任务适配受限于冻结主干"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "双手affordance提取与可靠性主线无实质交点，仅为任务导向的视觉处理",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

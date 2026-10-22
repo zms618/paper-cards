@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Recursive Inference Scaling A Winning Path to Scalable Inference in Language and Multimodal Systems.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Recursive Inference Scaling A Winning Path to Scalable Inference in Language and Multimodal Systems.pdf",
+ "title": "Recursive Inference Scaling: A Winning Path to Scalable Inference in Language and Multimodal Systems",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "递归推理缩放架构提升性能，但计算效率与泛化性存疑",
+ "innovations": [
+  "提出递归推理缩放(RINS)架构，优于55+种变体",
+  "结合轻量适配器和随机dropout实现无遗憾策略",
+  "推导RINS的数据缩放定律，证明提升渐近性能和收敛速度",
+  "在多模态系统中验证RINS有效性，ImageNet准确率提升2%"
+ ],
+ "method_framework": "将模型分为A和B两部分，A块递归应用r次后输入B块，形成ArB结构。通过控制训练计算量FLOPs，在固定模型大小下评估性能。",
+ "experiment_framework": "语言模型：C4/SlimPajama数据集，300M/600M/1B参数模型，log perplexity指标。多模态：SigLIP-B/16模型，ImageNet/CIFAR100等数据集，0-shot分类和检索任务。",
+ "takeaways": [
+  "递归架构利用语言的自相似性提升性能",
+  "随机RINS提供推理时灵活选择，无需显著性能损失",
+  "KV缓存共享可进一步减少内存占用"
+ ],
+ "weaknesses": [
+  "仅在语言和多模态系统中验证，未在其他领域测试",
+  "计算效率与性能提升之间存在权衡，增加推理计算量",
+  "未充分分析不同规模模型的最优递归深度"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

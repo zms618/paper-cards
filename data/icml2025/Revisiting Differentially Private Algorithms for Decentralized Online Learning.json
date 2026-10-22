@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Revisiting Differentially Private Algorithms for Decentralized Online Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Revisiting Differentially Private Algorithms for Decentralized Online Learning.pdf",
+ "title": "Revisiting Differentially Private Algorithms for Decentralized Online Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "改进DP去中心化在线学习算法，理论分析为主，实验验证有限。",
+ "innovations": [
+  "提出新的去中心化在线学习算法PD-OCG，满足T轮全局(ε,0)-DP，且保持轻量计算",
+  "推导凸函数下eO(n(ρ^{-1/4}+ε^{-1}ρ^{1/4})√T)和强凸函数下eO(n(ρ^{-1/2}+ε^{-1}))的遗憾界，接近非私有情形的最优率",
+  "通过梯度裁剪和噪声注入的精细设计，在隐私保护和收敛速度间取得更好的trade-off"
+ ],
+ "method_framework": "在去中心化在线学习框架下，每个局部学习者通过邻居通信估计全局信息。引入梯度裁剪和高斯噪声注入实现(ε,0)-DP。算法基于在线梯度下降(OGD)，结合通信图的谱隙ρ分析收敛性。",
+ "experiment_framework": "仿真实验对比现有DP去中心化在线学习算法(PD-OGD)。指标为遗憾界和收敛曲线。在合成凸优化问题上验证。",
+ "takeaways": [
+  "PD-OCG的遗憾界接近非私有去中心化在线学习的最优率，隐私开销可控",
+  "梯度裁剪常数和噪声尺度的设计对DP-去中心化学习的性能至关重要",
+  "谱隙ρ影响收敛速度，图连通性越好收敛越快"
+ ],
+ "weaknesses": [
+  "仅在合成凸优化问题上仿真验证，未在真实分布式ML任务(如联邦学习)测试",
+  "遗憾界中的n因子随学习者数线性增长，大规模网络下效率下降",
+  "(ε,0)-DP要求较严格，未考虑(ε,δ)-DP的更宽松设置"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/DSO_Direct Steering Optimization for Bias Mitigation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/DSO_Direct Steering Optimization for Bias Mitigation.pdf",
+ "title": "DSO Direct Steering Optimization for Bias Mitigation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "RL优化转向参数缓解VLM/LLM偏见，但泛化性和偏见类型有限。",
+ "innovations": [
+  "使用强化学习直接优化转向参数，而非预定义启发式方法",
+  "提供理论保证直接最小化偏见同时保持模型能力",
+  "实现推理时可控的公平-能力权衡"
+ ],
+ "method_framework": "DSO通过强化学习找到线性变换来优化激活转向，减少职业-性别偏见同时保持模型能力，通过KL约束控制能力损失，通过ω参数实现推理时控制。",
+ "experiment_framework": "SocialCounterfactuals和GenderBias-VL数据集，职业识别和招聘任务，对比CAA、ITI和提示去偏见方法，评估每职业偏见和准确度权衡。",
+ "takeaways": [
+  "强化学习可直接优化转向策略实现有效偏见干预",
+  "稀疏干预(小于0.005%参数)可实现显著偏见缓解",
+  "理论保证提供了公平-能力权衡的数学基础"
+ ],
+ "weaknesses": [
+  "仅依赖600个样本训练转向参数，可能限制泛化能力",
+  "实验主要关注性别-职业偏见，未充分测试其他偏见类型"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "偏见缓解属于可靠性主线，且方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Point-MaDi Masked Autoencoding with Diffusion for Point Cloud Pre-training.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Point-MaDi Masked Autoencoding with Diffusion for Point Cloud Pre-training.pdf",
+ "title": "Point-MaDi: Masked Autoencoding with Diffusion for Point Cloud Pre-training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "双扩散点云预训练，解决位置信息泄露问题",
+ "innovations": [
+  "双扩散预训练框架，分离位置编码和几何建模",
+  "中心扩散过程消除对位置嵌入的依赖",
+  "条件块扩散过程重建局部几何结构"
+ ],
+ "method_framework": "Point-MaDi采用双扩散架构：编码器通过中心扩散预测可见和遮挡块的中心位置，解码器基于编码器特征和预测中心进行块扩散重建，消除外部几何先验",
+ "experiment_framework": "在ScanObjectNN、ModelNet40、ShapeNetPart等数据集上评估分类和分割任务，与Point-MAE等基线对比，使用准确率和mIoU指标",
+ "takeaways": [
+  "双扩散机制可有效解决位置信息泄露问题",
+  "stop-gradient操作防止真实位置信息泄露"
+ ],
+ "weaknesses": [
+  "实验部分未充分展示模型在医学影像等特定领域的应用",
+  "未详细分析模型在不同噪声水平下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

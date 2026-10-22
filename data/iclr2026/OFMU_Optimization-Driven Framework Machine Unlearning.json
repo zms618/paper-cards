@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/OFMU_Optimization-Driven Framework Machine Unlearning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/OFMU_Optimization-Driven Framework Machine Unlearning.pdf",
+ "title": "OFMU: Optimization-Driven Framework for Machine Unlearning",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.8
+ },
+ "one_line": "双层优化框架解决遗忘-保留冲突，但SOTA声明缺乏量化证据。",
+ "innovations": [
+  "将机器遗忘显式建模为双层优化：把遗忘设为不可妥协的内层目标、效用保留为条件优化的外层目标，替代固定权重标量化。",
+  "引入相似度感知惩罚项对内/外梯度做去相关，缓解遗忘更新干扰保留性能的问题。",
+  "提出带可证明收敛保证（凸与非凸两种情形）的双环可扩展算法，并给出收敛速率分析。"
+ ],
+ "method_framework": "将数据分为保留集Dr与遗忘集Df，定义各自损失Lr、Lf及梯度余弦相似度；内层以相似度感知惩罚做最大化以强制去相关、剥离遗忘梯度影响，外层最小化保留损失以恢复效用；通过惩罚参数ρ对内层平稳条件做软约束避免完整求解内层，用双环算法迭代。",
+ "experiment_framework": "在视觉与语言的多个标准机器遗忘基准上评测，以遗忘 efficacy 与保留效用的权衡为主指标，与标量化/惩罚类遗忘方法对比，声称在遗忘-效用权衡上取得新SOTA（具体数值表在所提取页之后）。",
+ "takeaways": [
+  "双层优化能显式表达遗忘优先于效用保留的非对称目标结构，比固定权重标量化更稳定。",
+  "对遗忘/保留梯度做去相关可减少两者冲突带来的性能退化。",
+  "理论收敛保证使该类方法在凸与非凸设定下均具有可分析性。"
+ ],
+ "weaknesses": [
+  "所提取页未给出具体数值与基线差距，SOTA声明缺乏可核验量化证据。",
+  "双层优化与内/外双环带来额外训练开销，可扩展性仅在中小规模模型上验证。",
+  "与主流基于rewind/正则化/数据剪枝的遗忘方法的工程对比、对LLM大模型的适用性未充分展示。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "双层优化解决遗忘-保留冲突，符合可靠性主线中的隐私鲁棒",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

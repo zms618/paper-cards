@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Reasoning Or RETRIEVAL A Study Of Answer Attribution On Large Reasoning Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reasoning Or RETRIEVAL A Study Of Answer Attribution On Large Reasoning Models.pdf",
+ "title": "Reasoning or Retrieval? A Study of Answer Attribution on Large Reasoning Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "揭示LRM答案归因双机制，提出FARL抑制检索捷径，但实验外推性存疑。",
+ "innovations": [
+  "提出并验证LRM答案由CoT推理与记忆检索两种竞争机制共同决定的假设，用推理时误导线索、检索时污染答案的受控实验加以分离。",
+  "发现两种机制的相对主导受问题域、模型规模与微调方式(RL vs 蒸馏)影响；揭示现有推理微调会让模型利用检索捷径“hack”奖励、削弱真正推理发展这一关键局限。",
+  "提出FARL(Forgetting-Augmented RL)，将记忆遗忘与强化学习结合，在微调中抑制检索捷径，促发推理主导行为并提升可泛化推理能力。"
+ ],
+ "method_framework": "先用受控探针实验分离CoT推理与记忆检索对最终答案的归因；再在RL微调中引入记忆遗忘，刻意压制检索捷径，使奖励信号只能由真实推理获得，从而塑造可泛化的推理主导行为。",
+ "experiment_framework": "跨多个LRM与多个数据集，在推理阶段注入误导线索、在检索阶段污染正确答案，测量两机制主导度随问题域/规模/微调方式的变化；并用FARL对比普通RL微调的推理泛化。",
+ "takeaways": [
+  "LRM最终答案常与其推理轨迹不一致，根源之一是模型走记忆检索捷径而非真正推理。",
+  "仅靠可验证奖励的RL微调可能被检索捷径“作弊”，抑制该捷径(FARL)才能促进真正可泛化的推理。"
+ ],
+ "weaknesses": [
+  "受控探针依赖人工构造的误导线索与污染答案，其在真实自然分布下的归因有效性外推性未充分论证。",
+  "前9页只见动机与假设，未见FARL完整消融与跨模型数值表，方法增益的证据强度判断受限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "触及可靠性主线(推理机制)，但未落地域且外推性存疑",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

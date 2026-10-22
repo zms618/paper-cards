@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Sparse CLIP CO-OPTIMIZING Interpretability and Performance In Contrastive Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sparse CLIP CO-OPTIMIZING Interpretability and Performance In Contrastive Learning.pdf",
+ "title": "Sparse CLIP: Co-Optimizing Interpretability and Performance in Contrastive Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "稀疏CLIP：训练时融入稀疏性，兼顾可解释性与多模态性能",
+ "innovations": [
+  "把稀疏性直接集成进CLIP训练过程，而非事后用稀疏自编码器(SAE)，联合优化可解释性与性能",
+  "相比事后SAE，Sparse CLIP保留强下游性能、更优可解释性，并保留多模态能力(特征非单模态)",
+  "多模态稀疏特征支持语义概念对齐与跨模态知识涌现的训练动态分析，并以稀疏CLIP为骨干训练出可解释视觉引导的MLLM"
+ ],
+ "method_framework": "在对比学习训练目标中直接加入稀疏约束，使CLIP的图像/文本潜表示天然稀疏；稀疏特征对应可识别语义概念，从而无需事后SAE即可解释；保留对比学习的对齐能力，使特征仍是多模态共享的，并用其作骨干训练MLLM实现视觉引导。",
+ "experiment_framework": "在下游图像分类/检索等任务上对比原生CLIP与事后SAE方法；报告Sparse CLIP保持下游性能的同时可解释性更优、特征多模态；并训练以稀疏CLIP为骨干的MLLM验证可解释视觉引导。",
+ "takeaways": [
+  "可解释性与性能并非必然对立，训练时融入稀疏性可二者兼得",
+  "事后SAE会损失下游性能且特征多为单模态，训练时稀疏保留多模态能力",
+  "稀疏CLIP特征使跨模态知识涌现的训练动态可被直接观察"
+ ],
+ "weaknesses": [
+  "稀疏正则强度对性能/可解释性的权衡曲线需更多刻画",
+  "可解释性多以概念对齐定性展示，缺乏与SAE在标准可解释性指标上的严格定量对比",
+  "以稀疏CLIP为骨干训练MLLM仅作概念验证，规模/能力上限未充分探索"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态稀疏特征可解释性，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

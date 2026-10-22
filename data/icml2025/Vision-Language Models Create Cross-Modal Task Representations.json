@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Vision-Language Models Create Cross-Modal Task Representations.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Vision-Language Models Create Cross-Modal Task Representations.pdf",
+ "title": "Vision-Language Models Create Cross-Modal Task Representations",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "VLM跨模态任务对齐现象的机制解释，缺乏应用创新",
+ "innovations": [
+  "发现VLM内部存在跨模态共享的任务表示：无论任务用文本指令、文本示例还是图像示例描述，都会收敛到相似的任务向量",
+  "提出跨模态迁移（cross-modal transfer）作为度量任务表示对齐程度的方法",
+  "证明任务向量可从基础语言模型迁移到微调后的VLM，且仅从指令即可推导（无需示例）"
+ ],
+ "method_framework": "在VLM的特定token位置（分隔符token处）提取任务向量。通过跨模态patching实验：将一个模态（如文本示例）导出的任务向量注入到另一个模态（如图像查询）的前向传播中，观察是否能触发正确的任务输出。对比不同架构（早融合、晚融合）的VLM验证该现象的普遍性。",
+ "experiment_framework": "在3种VLM架构（LLaVA-v1.5晚融合、Mantis-Fuyu早融合、Idefics2）上验证；多种任务（国家-首都、食物-颜色、动物-幼崽等）；测量跨模态迁移准确率；对比任务向量patching与完整prompt的效果；测试指令-only任务向量和LLM→VLM迁移。",
+ "takeaways": [
+  "VLM将不同模态和格式的任务描述压缩为共享任务向量，简化了内部处理",
+  "高度压缩的单任务向量在跨模态迁移中甚至优于完整任务prompt",
+  "任务表示能力在基础LM和VLM之间可迁移，说明其是涌现的通用能力"
+ ],
+ "weaknesses": [
+  "仅在简单的类比/映射任务上验证，复杂推理任务的任务向量是否存在未测试",
+  "任务向量提取依赖特定token位置，不同模型的最佳提取位置不同",
+  "主要是机制解释性研究，未提出基于此发现的改进方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

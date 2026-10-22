@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Leveraging Predictive Equivalence in Decision Trees.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Leveraging Predictive Equivalence in Decision Trees.pdf",
+ "title": "Leveraging Predictive Equivalence in Decision Trees",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "用布尔逻辑消除决策树预测等价性，提升特征缺失鲁棒性",
+ "innovations": [
+  "识别并形式化决策树的\"预测等价性\"问题：不同树结构可编码相同决策边界，但变量重要性和缺失值行为不同",
+  "提出布尔逻辑表征（boolean logical representation）替代树形结构，忠实于底层决策边界，消除预测等价性",
+  "利用该表征证明决策树对测试时特征缺失的鲁棒性出人意料地强，并解决预测多样性问题"
+ ],
+ "method_framework": "传统决策树优化算法在多个预测等价的树中任意选择一个返回。论文提出将决策树转换为布尔逻辑表达式（如CNF/DNF），该表达式唯一对应决策边界，不依赖查询顺序。基于此表征，可以更合理地评估变量重要性、处理缺失值，并分析模型选择的多样性。",
+ "experiment_framework": "在多个表格数据集上评测，对比传统决策树和布尔逻辑表征；指标包括变量重要性稳定性、缺失值鲁棒性、预测多样性；下游任务包括特征缺失补全和模型选择。",
+ "takeaways": [
+  "预测等价性意味着传统决策树的变量重要性和缺失值行为是任意选择的结果，不一定反映真实因果关系",
+  "布尔逻辑表征提供了与决策边界一一对应的忠实表示，消除了模型选择的任意性",
+  "决策树对测试时特征缺失的鲁棒性比之前认为的更强"
+ ],
+ "weaknesses": [
+  "布尔逻辑表达式在深树上可能变得冗长，可解释性反而下降",
+  "主要在表格数据上验证，现代树模型（GBDT/随机森林）的预测等价性问题未深入讨论",
+  "计算布尔逻辑表征的开销可能随树规模增长"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

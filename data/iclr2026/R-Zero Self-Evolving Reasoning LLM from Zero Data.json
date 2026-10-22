@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/R-Zero Self-Evolving Reasoning LLM from Zero Data.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/R-Zero Self-Evolving Reasoning LLM from Zero Data.pdf",
+ "title": "R-Zero: Self-Evolving Reasoning LLM from Zero Data",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "双模型共进化框架，自投票伪标签闭环训练推理模型",
+ "innovations": [
+  "提出从零任务、零人工标签的自进化推理训练范式：单个base LLM分化为Challenger与Solver两个独立优化角色，通过交互共进化",
+  "Challenger以冻结Solver多采样答案的自一致性（不确定性）为奖励，生成恰处于Solver能力边缘的难题，形成自适应难度课程",
+  "Solver在冻结Challenger生成并过滤的难题上用GRPO微调，监督信号取自身投票伪标签，闭环迭代且无需外部验证器"
+ ],
+ "method_framework": "从单个base模型初始化Challenger与Solver两角色；Challenger阶段用GRPO训练其生成难题，奖励来自冻结Solver多次采样答案的自一致性（不确定性）；Solver阶段在冻结Challenger生成并过滤后的难题上用GRPO微调，标签取自身投票；两阶段交替迭代，全程无需人工任务或标签。",
+ "experiment_framework": "骨干含Qwen3-4B-Base等；评测数学推理与通用推理（MMLU-Pro等）基准；报告三轮自进化迭代后的平均分提升，主张模型无关、跨骨干一致提升。",
+ "takeaways": [
+  "零外部任务/标签下Qwen3-4B-Base数学基准平均提升+6.49，通用推理基准提升+7.54",
+  "数学方向训练出的推理能力可迁移泛化到MMLU-Pro等通用域任务",
+  "Challenger-Solver共进化可形成自适应难度课程，不依赖代码执行器等外部验证oracle"
+ ],
+ "weaknesses": [
+  "开放式推理域无客观正确性oracle，依赖Solver自投票伪标签，难以保证自生成数据正确性，存在自我强化错误的风险",
+  "前9页未见与其他自进化/self-challenging方法的系统量化对比，以及迭代次数、难度奖励设计的消融",
+  "提升证据集中在较小骨干（4B），更大模型与跨域稳定性的验证有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "自进化推理框架与可靠性主线交织，但缺乏不确定性量化与错误抑制机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

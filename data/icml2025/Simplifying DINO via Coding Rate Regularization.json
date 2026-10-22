@@ -1,0 +1,35 @@
+{
+ "title": "Simplifying DINO via Coding Rate Regularization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 5,
+  "overall": 6.1
+ },
+ "one_line": "用信息论正则替代经验trick，简化DINO并提升鲁棒性",
+ "innovations": [
+  "提出用显式coding rate项替代DINO中centering/规范化/复杂pipeline等经验防坍缩设计",
+  "证明coding rate正则在原理上防止表征坍缩，使训练对架构/超参选择更鲁棒",
+  "得到SimDINO/SimDINOv2，在下游分类/分割上较原模型取得Pareto改进"
+ ],
+ "method_framework": "在对比SSL(student-teacher, EMA)框架下，去掉大量经验组件，仅在损失中加入对teacher输出分布的coding rate(信息论)正则以显式约束互信息、防止坍缩；student/teacher结构大幅简化。",
+ "experiment_framework": "大规模无标签图像预训练；对比DINO/DINOv2；下游线性分类/分割评测；报告简化后对不同架构与超参更鲁棒，且下游性能不降反升(Pareto改进)。",
+ "takeaways": [
+  "DINO系列的许多经验trick可用一个信息论的coding rate正则统一替代，揭示防坍缩的本质",
+  "简化设计原则可同时提升稳定性与表征质量，而非以复杂度换性能"
+ ],
+ "weaknesses": [
+  "coding rate项的引入仍需相应超参与实现细节，‘仅加一项’的简化程度被其本身复杂度部分抵消",
+  "relevance偏离可靠性主线，属自监督表征学习；理论分析与下游任务覆盖限于图像域"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Simplifying DINO via Coding Rate Regularization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Simplifying DINO via Coding Rate Regularization.pdf",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

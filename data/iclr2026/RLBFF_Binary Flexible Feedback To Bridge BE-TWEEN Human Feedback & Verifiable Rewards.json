@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RLBFF_Binary Flexible Feedback To Bridge BE-TWEEN Human Feedback & Verifiable Rewards.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RLBFF_Binary Flexible Feedback To Bridge BE-TWEEN Human Feedback & Verifiable Rewards.pdf",
+ "title": "RLBFF: Binary Flexible Feedback to Bridge Between Human Feedback & Verifiable Rewards",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 8.0,
+  "overall": 6.9
+ },
+ "one_line": "将人类反馈拆解为二值原则训练奖励模型，桥接RLHF广覆盖与RLVR精确性。",
+ "innovations": [
+  "提出Binary Flexible Feedback范式：将人类反馈拆解为可二值判定的原则（如信息准确性、代码可读性），训练奖励模型判断响应是否满足原则",
+  "将奖励模型训练从Bradley-Terry成对比较转为蕴含式单响应判定，消除位置偏差，同时支持推理时自定义关注原则",
+  "开源完整配方（含数据）对齐Qwen3-32B，在MT-Bench/WildBench/Arena Hard v2上匹配或超过o3-mini和DeepSeek R1，推理成本低于5%"
+ ],
+ "method_framework": "RLBFF从自然语言反馈中抽取可二值回答的原则（yes/no），构建(prompt, response, principle)三元组，将奖励模型训练为蕴含任务：判断响应是否满足给定原则。相比RLHF的Bradley-Terry成对偏好，单响应+原则避免了位置偏差和跨提示分数不可比；相比RLVR仅验证正确性，原则可覆盖任意人类重视的质量维度。推理时用户可指定关注原则来自定义奖励模型焦点。",
+ "experiment_framework": "在RM-Bench（86.2%）和JudgeBench（81.4%，2025年9月24日榜单第一）上评测奖励模型；用RLBFF奖励模型对齐Qwen3-32B，对比o3-mini和DeepSeek R1在MT-Bench/WildBench/Arena Hard v2上的表现；开源模型和数据。",
+ "takeaways": [
+  "将人类反馈拆解为二值原则再训练蕴含式奖励模型，可同时获得RLHF的广覆盖和RLVR的精确可验证性",
+  "单响应判定+显式原则优于Bradley-Terry成对比较，且支持推理时自定义评价维度",
+  "开源奖励模型+数据配方可使32B开源模型在通用对齐基准上匹配前沿闭源模型"
+ ],
+ "weaknesses": [
+  "原则抽取依赖自然语言反馈的质量，对于模糊或多维度混合的反馈如何拆解为独立原则，文中前9页未充分讨论",
+  "二值判定虽然减少了标注者间差异，但也损失了程度信息，对'好到什么程度'的细粒度区分能力有限",
+  "前9页未见奖励模型在长程RL训练中的稳定性分析，奖励黑客风险仅靠原则多样性缓解的程度未量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "桥接RLHF与RLVR的可靠性方法，可迁移到校准与评估轴",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

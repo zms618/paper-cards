@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Position Lifetime tuning is incompatible with continual reinforcement learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Position Lifetime tuning is incompatible with continual reinforcement learning.pdf",
+ "title": "Position: Lifetime tuning is incompatible with continual reinforcement learning",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "揭示终身调参使持续RL评估失真，限时调参下持续RL算法才真正优于标准算法。",
+ "innovations": [
+  "提出并论证终身调参（lifetime tuning）这一方法论陷阱：在完整部署生命周期内反复调超参会让所有算法看似等效，掩盖持续学习差异",
+  "实证发现：在限时/有限调参预算下，新近持续 RL 算法明显优于标准非持续算法，而终身调参会抹平这一差距",
+  "解释了近期持续 RL 进展为何褒贬不一——评估方法与终身学习目标不匹配"
+ ],
+ "method_framework": "把持续 RL 重新界定为部署期只能有限访问环境、且部署后不再调超参的设定；指出现行做法（如 Atari 用2亿帧调参并报告2亿帧结果）相当于偷看测试集，可按特定生命周期长度优化性能。通过对比 DQN、SAC 及持续 RL 算法在多个持续/非平稳环境下、在不同调参预算下的表现，论证限时调参才符合持续 RL 目标。",
+ "experiment_framework": "在多个持续与非平稳环境上对比 DQN、SAC 及近期持续 RL 算法，改变调参占 agent 生命周期的比例，比较学习曲线下面积等指标。",
+ "takeaways": [
+  "终身调参会让持续 RL 的算法比较失效，所有算法看似都成功",
+  "当调参被限制在生命周期一小部分时，持续 RL 算法的优势才显现",
+  "持续 RL 评估应模拟部署后有限调参、不再微调的真实约束"
+ ],
+ "weaknesses": [
+  "实证主要基于 DQN/SAC 与若干持续 RL 算法，未覆盖最前沿的持续 RL 方法，结论普适性有限",
+  "未给出统一的限时调参预算标准（占生命周期比例应取多少），可操作评估协议仍待确立",
+  "11页篇幅，完整环境清单与超参细节在附录，9页内对非平稳环境的覆盖描述有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

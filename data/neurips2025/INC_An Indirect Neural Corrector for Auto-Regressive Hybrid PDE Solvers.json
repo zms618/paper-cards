@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/INC_An Indirect Neural Corrector for Auto-Regressive Hybrid PDE Solvers.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/INC_An Indirect Neural Corrector for Auto-Regressive Hybrid PDE Solvers.pdf",
+ "title": "INC: An Indirect Neural Corrector for Auto-Regressive Hybrid PDE Solvers",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.9
+ },
+ "one_line": "间接神经校正器提升混合PDE求解器稳定性，理论分析有限",
+ "innovations": [
+  "提出间接神经校正(INC)框架，将修正项整合到控制方程而非直接状态更新",
+  "建立混合神经求解器的误差传播理论框架，证明间接校正可减少O(Rk)误差",
+  "INC在多种PDE系统上实现显著加速，3D湍流案例加速高达330倍"
+ ],
+ "method_framework": "将神经校正项作为右端项(RHS)嵌入PDE求解过程，而非直接修正状态输出，通过多步展开优化训练，确保长期稳定性。",
+ "experiment_framework": "6个典型PDE系统(1D混沌到3D湍流)，4种架构(FNO/DeepONet/ResNet/U-Net)，3种可微求解器，评估长期轨迹精度(R2)和数值稳定性。",
+ "takeaways": [
+  "理论分析揭示了直接与间接校正的误差放大差异，为混合求解器设计提供指导",
+  "INC框架兼容任意神经网络和数值求解器，无需额外架构约束"
+ ],
+ "weaknesses": [
+  "理论分析基于小扰动假设，对大扰动情况下的表现未充分验证",
+  "实验主要集中在流体力学领域，对其他物理领域的泛化能力有待考察"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.6,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

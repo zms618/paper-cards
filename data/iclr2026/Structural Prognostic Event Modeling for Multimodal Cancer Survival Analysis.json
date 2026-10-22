@@ -1,0 +1,37 @@
+{
+ "key": "iclr2026/Structural Prognostic Event Modeling for Multimodal Cancer Survival Analysis.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Structural Prognostic Event Modeling for Multimodal Cancer Survival Analysis.pdf",
+ "title": "Structural Prognostic Event Modeling for Multimodal Cancer Survival Analysis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "elevance": 7.0,
+  "evidence": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "槽位注意力压缩多模态数据为预后事件，提升生存预测与可解释性。",
+ "innovations": [
+  "提出基于槽位注意力的结构化预后事件建模框架SlotSPE：将高维度多模态输入压缩为模态特定的互异槽位集合，每个槽位对应一个潜在预后事件",
+  "动态患者自适应槽位：不同于固定原型方法，槽位对每个患者动态实例化，捕捉患者特异性的预后事件组合",
+  "支持无缝融入生物学先验（如通路共激活）增强预后相关性，并在基因组数据缺失时保持鲁棒性"
+ ],
+ "method_framework": "受因子编码启发，用槽位注意力(Slot Attention)分别对全切片病理图像(WSI)和基因表达数据进行压缩，得到模态特定的槽位集合（每个槽位对应一个潜在预后事件，如免疫浸润、肿瘤侵袭性、通路激活等）。然后在槽位级别进行模态内和模态间交互建模，最后汇总预测生存风险。生物学先验可作为额外监督信号引导槽位学习。",
+ "experiment_framework": "在10个癌症队列基准上验证，对比现有多模态生存分析方法。主要指标为C-index（一致性指数）。额外测试：(1)基因组数据随机缺失时的鲁棒性；(2)预后事件分解的可解释性案例分析。",
+ "takeaways": [
+  "将多模态输入压缩为预后事件级别的槽位表示，能高效捕捉关键预后结构信号，比像素/基因级直接建模更高效有效",
+  "SlotSPE在10个癌症队列中8个优于现有方法，整体提升2.9% C-index，且在基因组数据缺失时保持鲁棒",
+  "槽位对应的预后事件分解提供了天然的可解释性，可定位驱动患者生存风险的关键生物学事件"
+ ],
+ "weaknesses": [
+  "预后事件槽位是隐式学习的，与已知生物学通路/病理特征的对应关系需要事后解释，并非完全可解释",
+  "槽位数量是超参数，不同癌种可能需要不同的最优槽位数，调参成本未充分讨论",
+  "前9页未展示完整的10个队列定量对比表格，各癌种的具体提升幅度不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

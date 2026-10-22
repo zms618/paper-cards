@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/GaussMark_A Practical Approach for Structural Watermarking of Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/GaussMark_A Practical Approach for Structural Watermarking of Language Models.pdf",
+ "title": "GaussMark: A Practical Approach for Structural Watermarking of Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "权重扰动水印法，统计保证有限且鲁棒性不足",
+ "innovations": [
+  "将水印嵌入模型权重而非生成过程",
+  "基于高斯独立性测试的统计保证",
+  "单层MLP扰动实现高效水印"
+ ],
+ "method_framework": "通过添加高斯扰动ξ到模型权重θ(ξ)=θ+ξ生成水印，使用统计检验ψ(y,ξ|x)=⟨ξ,∇θlogpθ(y|x)⟩/σ∥∇θlogpθ(y|x)∥检测水印",
+ "experiment_framework": "在Mistral、Llama、Phi等模型上评估，测量TPR@FPR=0.05和p值，评估水印对模型质量的影响",
+ "takeaways": [
+  "统计保证的水印检测方法",
+  "小扰动对模型质量影响微小的实证发现"
+ ],
+ "weaknesses": [
+  "水印鲁棒性相对有限",
+  "理论分析基于线性softmax模型假设"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

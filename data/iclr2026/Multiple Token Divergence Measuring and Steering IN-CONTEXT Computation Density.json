@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Multiple Token Divergence Measuring and Steering IN-CONTEXT Computation Density.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Multiple Token Divergence Measuring and Steering IN-CONTEXT Computation Density.pdf",
+ "title": "Multiple Token Divergence: Measuring and Steering In-Context Computation Density",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "KL散度度量上下文计算密度，但依赖多预测头且未证明提升准确率",
+ "innovations": [
+  "提出MTD：完整输出分布与浅层辅助预测头输出分布的KL散度，直接从多头预训练模型计算，免额外训练",
+  "提出散度引导(Divergence Steering)解码方法，控制生成文本的计算特征",
+  "实证MTD比基于潜状态可压缩性的方法更能区分复杂/简单任务，在数学推理基准上与问题难度正相关、与正确率负相关"
+ ],
+ "method_framework": "next-token loss无法反映推理复杂度。MTD定义为：在同一位置，用深层完整模型输出分布p_full与浅层辅助头输出分布p_shallow之间的KL散度。若两者接近说明该处几乎无需深层计算；散度大说明模型在动用深层上下文计算。该度量免训练，直接从已有的多预测头读取。再据此做散度引导解码，在生成时调控目标散度以控制文本的计算密度。",
+ "experiment_framework": "在数学推理基准上验证MTD与问题难度的相关性、与正确率的关系；对比基于潜状态可压缩性的既有计算量度量；并展示散度引导解码对生成文本计算特征的控制效果。",
+ "takeaways": [
+  "MTD是轻量、免训练的上下文计算量探针，比潜状态可压缩性方法更稳定有效",
+  "MTD与数学问题难度正相关，低MTD关联更高推理正确率",
+  "散度引导可在解码时主动调控生成文本的计算密度"
+ ],
+ "weaknesses": [
+  "依赖模型自带多个预测头，单头模型需额外训练辅助头",
+  "MTD与正确率为相关性观察，未证明可作为过程奖励直接提升准确率",
+  "主要在数学推理验证，多模态推理/医学等高风险落地域未覆盖"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "数学推理与计算密度度量，未触及可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

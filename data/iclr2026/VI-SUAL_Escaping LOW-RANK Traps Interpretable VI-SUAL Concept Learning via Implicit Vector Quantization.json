@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VI-SUAL_Escaping LOW-RANK Traps Interpretable VI-SUAL Concept Learning via Implicit Vector Quantization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VI-SUAL_Escaping LOW-RANK Traps Interpretable VI-SUAL Concept Learning via Implicit Vector Quantization.pdf",
+ "title": "Escaping Low-Rank Traps: Interpretable Visual Concept Learning via Implicit Vector Quantization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "IVQ与磁注意力缓解特征坍缩，提升概念可解释性，但理论机制与落地验证不足",
+ "innovations": [
+  "指出现有概念瓶颈模型(CBM)忽视了多对多映射是鲁棒CBM的必要条件这一前提，并揭示其训练中表示坍缩为低秩子空间的根本问题",
+  "提出隐式向量量化(IVQ)轻量正则项，以码本先验锚定语义信息作为代理目标，在不施加硬瓶颈的全程保持高秩多样表示",
+  "提出磁注意力(Magnet Attention)，动态将patch级特征聚合为视觉概念原型，显式建模多对多的视觉-概念对应"
+ ],
+ "method_framework": "作者论证鲁棒CBM需要多对多的视觉-概念映射，而现有方法因表示坍缩(特征退入低秩子空间)而失效；IVQ以码本先验作为代理目标锚定语义，不做硬量化却全程维持高秩多样表示；Magnet Attention动态聚合patch特征为概念原型，显式建模多对多对应。",
+ "experiment_framework": "在多个概念瓶颈/可解释学习基准上评测；对比近期CBM方法；指标为下游任务准确率与概念可解释性；通过 probing 分析低秩现象，报告防止坍缩、跨模态一致性提升与SOTA性能。",
+ "takeaways": [
+  "IVQ有效防止表示坍缩，缓解信息瓶颈，使跨模态表示具有更清晰可解释的一致性",
+  "在多个基准上取得SOTA，同时提升可解释性与下游性能",
+  "低秩现象是损害CBM概念激活向量质量的关键，保持高秩是鲁棒可解释模型的前提"
+ ],
+ "weaknesses": [
+  "属于可解释AI/CBM方向，与主线中可信AI相关但主要在通用图像分类验证，医学影像落地证据有限",
+  "IVQ码本先验与概念定义的耦合关系偏启发式，码本大小等超参敏感性前9页未充分分析",
+  "多对多映射必要性的论证多为现象与消融，缺乏对低秩坍缩发生机制的理论刻画"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "可解释AI与可信AI相关，但医学影像落地证据有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/OW-VAP_Visual Attribute Parsing for Open World Object Detection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/OW-VAP_Visual Attribute Parsing for Open World Object Detection.pdf",
+ "title": "OW-VAP: Visual Attribute Parsing for Open World Object Detection",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "基于YOLO-World的开放世界检测，用视觉属性解析和软标签提升召回",
+ "innovations": [
+  "去LLM依赖：以往OVD式OWOD靠LLM写细属性描述、受描述准确率与增量学习时属性选择困扰；OW-VAP只用一组模糊通用属性句，让VAP(MLP)自己从视觉嵌入解析属性",
+  "背景伪标签挖掘：在训练VAP时用三条件(属性相似度≥正样本均值、≥阈值α、topδ)从背景区域挖潜在物体作伪标签，克服只用已知标签带来的类别偏置",
+  "概率软标签分配PSLA：用Weibull分布分别拟合正/负样本损失并做移动加权平均，按Wb+/(Wb++Wb-)给伪标签赋软权重，缓解背景误标导致的优化冲突"
+ ],
+ "method_framework": "基于YOLO-World，CLIP文本编码器把类名与模糊属性句编码，视觉编码器出区域嵌入；VAP(MLP)学习从区域嵌入回归属性相似度；训练时先用已知类匹配定正样本，再三条件从背景挖伪标签并用PSLA软加权；推理时已知类走OVD余弦匹配，未知类用(1-max类名相似度)的OOD概率乘(b·均值属性相似度+(1-b)·VAP输出)判定。",
+ "experiment_framework": "MOWODB与SOWODB(VOC/COCO混合,4任务增量)；基线ORE-EBUI/OW-DETR/ALLOW/PROB/CAT/SGROD/SKDF/KTCN/ovow等；指标U-Recall/U-AP(未知检测)+mAP(已知)+WI/A-OSE(已知-未知混淆)；消融Base/+属性提示/+VAP/+PSLA。",
+ "takeaways": [
+  "MOWODB上OW-VAP*达86.6 U-Recall/18.9 U-AP(Task1)，较ovow*提升13.1 U-Recall，Task2甚至超过OVD零样本泛化上限0.3 U-Recall",
+  "消融显示VAP主要提召回(+12.9 U-Recall)，PSLA主要提精度(Task1 U-AP 10.5→13.0)且在增量学习中稳定增益",
+  "A-OSE(未知误判为已知)降至443-996，远优于KTCN(1.3万+)，已知-未知混淆显著降低"
+ ],
+ "weaknesses": [
+  "与主任务主线(可信AI/鲁棒性落地于医学影像/多模态推理)无关，属通用开放世界目标检测；仅在VOC/COCO自然图像评测",
+  "核心是OVD检测器(YOLO-World/CLIP)上的工程改进，属性句与α/δ等阈值靠人工设定，Weibull拟合在正样本稀疏时仍用移动平均缓解，理论保证弱",
+  "U-AP绝对值仍低(Task3仅7.8)，距OVD零样本上限差距大；去重后OW-VAP*与ovow*对比才显优，原始测试集上增益口径依赖去重，泛化性待更大规模验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

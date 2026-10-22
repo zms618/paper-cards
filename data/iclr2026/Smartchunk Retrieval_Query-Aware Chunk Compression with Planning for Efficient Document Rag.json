@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Smartchunk Retrieval_Query-Aware Chunk Compression with Planning for Efficient Document Rag.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Smartchunk Retrieval_Query-Aware Chunk Compression with Planning for Efficient Document Rag.pdf",
+ "title": "SmartChunk Retrieval: Query-Aware Chunk Compression with Planning for Efficient Document RAG",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "查询自适应分块压缩框架，RL训练planner提升RAG效率",
+ "innovations": [
+  "用planner按查询动态预测最佳分块抽象层级，替代单一固定chunk size，兼顾准确率与效率",
+  "提出无需反复摘要的轻量压缩模块直接生成高层chunk嵌入",
+  "设计新颖强化学习方案STITCH训练planner对分块抽象进行推理，提升准确率与泛化"
+ ],
+ "method_framework": "对文档构建多级分块抽象；运行时planner依据查询决定在哪个抽象层级检索，轻量压缩模块把各级块映到统一嵌入空间以避免重复摘要；检索粒度随查询自适应，既减少噪声块又控制送入LLM的上下文长度。",
+ "experiment_framework": "5个长文档QA基准加1个OOD数据集，与SOTA RAG基线对比准确率/成本；并测语料规模扩展下的可扩展性与OOD泛化。",
+ "takeaways": [
+  "SmartChunk在多个QA基准上优于SOTA RAG基线同时降低成本",
+  "查询自适应分块粒度比固定分块在异构查询/文档结构下更鲁棒",
+  "随语料增大可扩展性更好，OOD数据集上一致提升"
+ ],
+ "weaknesses": [
+  "落地为文档RAG，与医学影像/多模态推理主线仅在'事实接地/抗幻觉'概念上沾边",
+  "planner用RL训练，额外引入训练成本与可复现复杂度；STITCH奖励设计的细节在前9页未展开",
+  "准确率提升幅度与具体数字、cost-accuracy权衡曲线在前9页未见完整表；对长程多跳问答的收益未充分论证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "文档RAG与主线仅在'事实接地/抗幻觉'概念上沾边",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

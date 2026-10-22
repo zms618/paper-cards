@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TD-JEPA_Latent-Predictive Representations for Zero-Shot Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TD-JEPA_Latent-Predictive Representations for Zero-Shot Reinforcement Learning.pdf",
+ "title": "TD-JEPA: Latent-Predictive Representations for Zero-Shot Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "TD-JEPA结合时序差分与潜在预测，实现无奖励数据的零样本强化学习。",
+ "innovations": [
+  "将时序差分（TD）学习引入潜在预测表示学习，实现跨多策略/多任务的长期潜在动态预测",
+  "在潜在空间中训练显式状态编码器、任务编码器、策略条件多步预测器和参数化策略集，支持测试时任意奖励函数的零样本优化",
+  "理论证明：理想变体的TD-JEPA在适当初始化下避免表示坍缩，学习的编码器捕捉长期策略动态的低秩分解，预测器恢复后继特征"
+ ],
+ "method_framework": "TD-JEPA从离线无奖励转移数据中学习：1）状态编码器将状态映射到潜在空间；2）策略条件多步预测器在潜在空间预测未来状态表示；3）时序差分学习信号使预测器捕捉长期动态而非单步；4）同时学习一组参数化策略。测试时，给定任意奖励函数，直接在潜在空间中优化策略集即可实现零样本任务求解。",
+ "experiment_framework": "在ExoRL和OGBench的13个数据集上评估；覆盖运动、导航、操作三类任务；基线包括SOTA无监督RL和零样本RL方法；特别验证从像素输入的零样本RL设置。",
+ "takeaways": [
+  "TD学习使潜在预测表示能捕捉长期动态，而非仅单步转移",
+  "在离线无奖励数据上预训练后，可在测试时零样本优化任意奖励函数",
+  "理论分析揭示了编码器和预测器分别对应低秩因子分解和后继特征的结构"
+ ],
+ "weaknesses": [
+  "需要学习一组参数化策略，存储开销随策略数量增长",
+  "实验主要在连续控制任务上验证，离散决策和语言任务的适用性未知",
+  "从像素输入的零样本RL效果仍有提升空间，与有监督预训练方法的差距未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "零样本RL方法设计有迁移价值，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

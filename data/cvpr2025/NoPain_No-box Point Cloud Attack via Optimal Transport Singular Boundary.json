@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/NoPain_No-box Point Cloud Attack via Optimal Transport Singular Boundary.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/NoPain_No-box Point Cloud Attack via Optimal Transport Singular Boundary.pdf",
+ "title": "NoPain No-box Point Cloud Attack via Optimal Transport Singular Boundary",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "基于最优传输的点云攻击，依赖预训练模型且泛化性存疑",
+ "innovations": [
+  "提出无盒(end-to-end)点云攻击框架，无需代理模型或迭代优化",
+  "利用最优传输(OT)识别数据流形的奇异边界",
+  "通过沿奇异边界采样生成对抗样本，提高跨网络可迁移性"
+ ],
+ "method_framework": "NoPain框架包含三阶段：1)点云嵌入特征空间；2)通过OT映射识别数据流形奇异边界；3)沿奇异边界扰动特征并解码生成对抗样本",
+ "experiment_framework": "在ModelNet40和ShapeNetPart数据集上，与AdvPC、AOF、SI-ADV等基线比较，使用PointNet++等分类器评估ASR和CD指标",
+ "takeaways": [
+  "利用数据内在特性而非模型特定参数可提高攻击可迁移性",
+  "最优传输提供了几何可解释的显式映射，增强方法可解释性"
+ ],
+ "weaknesses": [
+  "方法依赖于预训练的编码器-解码器架构",
+  "奇异边界阈值τ的选择可能影响攻击效果",
+  "实验主要在标准数据集上进行，实际场景泛化能力需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "点云攻击与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

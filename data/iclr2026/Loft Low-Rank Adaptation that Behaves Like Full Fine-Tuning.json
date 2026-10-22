@@ -1,0 +1,43 @@
+{
+ "key": "iclr2026/Loft Low-Rank Adaptation that Behaves Like Full Fine-Tuning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Loft Low-Rank Adaptation that Behaves Like Full Fine-Tuning.pdf",
+ "title": "Loft: LOW-RANK Adaptation that Behaves Like Full FINE-TUNING",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "LoFT通过优化器状态对齐使低秩适配接近全微调，但内存开销大",
+ "innovations": [
+  "优化器状态（动量和方差）的低秩投影对齐",
+  "交替更新机制消除二阶交叉项",
+  "梯度缩放确保低秩更新的尺度不变性",
+  "重建完整更新后再投影到低秩子空间",
+  "梯度裁剪匹配全微调行为"
+ ],
+ "method_framework": "LoFT通过六个核心组件：交替更新、梯度缩放、优化器状态校准、重建完整更新后投影、梯度裁剪，使低秩适配行为接近全参数微调。",
+ "experiment_framework": "在语言模型(LLaMA系列)的常识推理任务和视觉模型(ViT)的医学图像分类任务上，与LoRA、DoRA和全参数微调对比，评估准确率和训练动态。",
+ "takeaways": [
+  "优化器状态对齐是提升低秩适配性能的关键",
+  "交替更新机制能有效消除二阶交叉项",
+  "低秩约束下保持训练动态与全微调一致"
+ ],
+ "weaknesses": [
+  "内存开销增加(最高25.65%)，主要来自二阶矩校准",
+  "计算复杂度增加，特别是二阶矩的交叉项计算",
+  "在极低秩(r=1)时性能仍有明显下降"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "医学图像分类属于落地域，但方法与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

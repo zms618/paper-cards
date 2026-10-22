@@ -1,0 +1,41 @@
+{
+ "title": "Regret-Guided Search Control for Efficient Learning in AlphaZero",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 5.1
+ },
+ "one_line": "通过regret网络识别高遗憾状态，提升AlphaZero在棋类游戏中的学习效率。",
+ "innovations": [
+  "引入regret网络识别高遗憾状态(agent评估与实际 outcome 偏差最大)，区别于Go-Exploit对所有历史状态均匀采样。",
+  "针对多数状态遗憾近零、难以直接回归的问题，设计排序式目标让网络区分最有信息量的状态，并维护优先遗憾缓冲区。",
+  "在9x9 Go/10x10 Othello/11x11 Hex上平均超AlphaZero 77 Elo、超Go-Exploit 89 Elo；在已训练好的模型上继续训练仍把对KataGo胜率从69.3%提升到78.2%。"
+ ],
+ "method_framework": "在自博弈轨迹与MCTS节点中收集状态，用regret网络以排序目标学习估计各状态遗憾；高遗憾状态进优先缓冲区；训练时从这些状态重启自博弈/搜索，使agent集中复盘自己最关键的失误，而非总从空棋盘重开。",
+ "experiment_framework": "基准：9x9 Go、10x10 Othello、11x11 Hex；基线：AlphaZero与Go-Exploit；指标：Elo提升、对KataGo胜率、高遗憾状态识别与遗憾是否被系统性降低的分析。",
+ "takeaways": [
+  "并非所有历史状态对学习贡献相等，优先复盘高遗憾状态能显著提升样本效率。",
+  "对已接近收敛的强模型，遗憾导向的复盘仍是继续提升的有效途径。",
+  "排序式目标比直接回归遗憾值更适合'大多数状态遗憾近零'的非均衡分布。"
+ ],
+ "weaknesses": [
+  "与主线(可靠性×医学影像/多模态推理)无关，属棋盘游戏RL效率，relevance低。",
+  "方法依赖可由self-play outcome定义遗憾的确定性博弈环境，向一般RL(尤其无明确结局)的迁移未论证。",
+  "节选前9页未见三游戏的完整Elo对照表与regret网络架构细节，'平均77/89 Elo'的代表性在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Regret-Guided Search Control for Efficient Learning In Alphazero.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Regret-Guided Search Control for Efficient Learning In Alphazero.pdf",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "棋盘游戏RL效率，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

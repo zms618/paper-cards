@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/MetaDefense_Defending Finetuning-based Jailbreak Attack Before and During Generation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/MetaDefense_Defending Finetuning-based Jailbreak Attack Before and During Generation.pdf",
+ "title": "MetaDefense: Defending Finetuning-based Jailbreak Attack Before and During Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "两阶段防御框架抵御越狱攻击，但角色扮演防御弱且依赖数据质量",
+ "innovations": [
+  "发现现有防御机制无法泛化到未见攻击模板的漏洞",
+  "提出预生成和生成中两阶段防御框架",
+  "利用LLM自身生成能力进行有害内容检测而非额外分类器"
+ ],
+ "method_framework": "MetaDefense包含预生成防御（检测查询有害性）和生成中防御（监控部分响应），通过专门提示训练LLM预测有害性，实现早期终止有害交互。",
+ "experiment_framework": "在LLaMA-2-7B、Qwen-2.5-3B-Instruct和LLaMA-3.2-3B-Instruct上测试，使用ASR和FTA指标，对比多种基线方法。",
+ "takeaways": [
+  "利用LLM嵌入空间区分有害查询的能力",
+  "自适应策略确定生成中防御检查点",
+  "单模型实现高效防御而非多模型组合"
+ ],
+ "weaknesses": [
+  "对角色扮演攻击的防御效果相对较弱",
+  "依赖有害数据集的质量和覆盖范围"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

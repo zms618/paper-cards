@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Latent Space Factorization in LoRA.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Latent Space Factorization in LoRA.pdf",
+ "title": "Latent Space Factorization in LoRA",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "FVAE-LoRA用VAE分解潜在空间，提升LoRA特征提取能力",
+ "innovations": [
+  "引入双潜在空间(z1,z2)的变分自编码器框架",
+  "设计新的ELBO目标函数促进潜在空间分解",
+  "仅使用任务相关潜在空间z1进行下游任务推理"
+ ],
+ "method_framework": "将VAE与LoRA结合，通过新的ELBO目标函数将潜在空间分解为任务相关(z1)和残余信息(z2)，仅使用z1生成低秩更新矩阵",
+ "experiment_framework": "在图像、文本、音频任务上评估性能，并通过故意引入虚假相关性的数据集验证鲁棒性",
+ "takeaways": [
+  "潜在空间分解可提升模型对任务相关特征的提取能力",
+  "ELBO设计中的Γ调制器能有效分离两个潜在空间"
+ ],
+ "weaknesses": [
+  "方法增加了计算复杂度和参数量",
+  "潜在空间分离的机制理论分析不够深入"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

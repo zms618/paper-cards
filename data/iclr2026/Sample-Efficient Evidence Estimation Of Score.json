@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Sample-Efficient Evidence Estimation Of Score.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sample-Efficient Evidence Estimation Of Score.pdf",
+ "title": "Sample-Efficient Evidence Estimation of Score-Based Priors for Model Selection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.6
+ },
+ "one_line": "DiME估计扩散先验证据，但应用场景与主线关联弱",
+ "innovations": [
+  "提出DiME估计器：沿后验采样方法的时间边缘积分来估计扩散先验的模型证据p(y|M)，无需干净先验分数或未归一化密度。",
+  "充分利用反向扩散采样过程中自然产生的大量中间样本，仅用少量(约20个)后验样本即得到准确证据估计，且可与近期扩散后验采样方法配套实现。",
+  "在解析可算处与真实证据吻合，能在高度病态非线性逆问题(含真实黑洞成像)上选出正确扩散先验并诊断先验失配。"
+ ],
+ "method_framework": "贝叶斯逆问题中，证据=先验与似然的积分(难解)。DiME不直接用干净先验分数，而是在扩散后验采样各时间边缘上累积中间样本信息来估计对数证据，从而避开OOD干净分数不准与高方差问题。",
+ "experiment_framework": "在证据可解析计算时验证DiME精度；在多种病态非线性逆问题上比较不同扩散先验的证据做模型选择，并检验其对先验失配的诊断能力(含真实黑洞成像)。",
+ "takeaways": [
+  "扩散后验采样的中间时间边缘样本足以用于样本高效的模型证据估计。",
+  "模型证据可用于在扩散先验间做原则性选择，并量化认知不确定性/诊断先验假设是否失配。"
+ ],
+ "weaknesses": [
+  "面向科学成像逆问题(黑洞成像)的先验选择，与医学影像/多模态主线仅在'不确定性量化'概念上间接相关。",
+  "估计精度依赖后验采样混合质量与时间边缘覆盖，在极强病态/非线性下的偏差与方差未充分刻画。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "扩散模型证据估计用于不确定性量化，间接关联医学影像主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

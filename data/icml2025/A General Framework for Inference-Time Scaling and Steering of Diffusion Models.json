@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/A General Framework for Inference-Time Scaling and Steering of Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/A General Framework for Inference-Time Scaling and Steering of Diffusion Models.pdf",
+ "title": "A General Framework for Inference-Time Scaling and Steering of Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "FK粒子系统引导扩散模型，但计算开销与势函数设计限制明显",
+ "innovations": [
+  "提出Feynman-Kac交互粒子系统用于扩散模型的推理时引导，支持任意奖励函数",
+  "通过多轨迹粒子在中间步按势函数分数重采样，实现无需微调的推理时扩展与引导",
+  "系统探索势函数、奖励、采样器的多种选择，统一了微调/best-of-n/梯度引导等方案"
+ ],
+ "method_framework": "目标是从倾斜分布ptarget(x)∝pθ(x)exp(r(x))采样以满足奖励r(x)；FK引导在扩散反向过程中并行生成多条粒子轨迹，在中间步用定义在中间状态上的势函数打分并依分数重采样粒子，使高分粒子更可能导向高奖励样本；粒子数即推理时可扩展的计算预算。",
+ "experiment_framework": "在文生图模型上用人类偏好奖励引导，以及在文本扩散模型上用文本质量奖励引导；对比微调、best-of-n、梯度引导等方法，以prompt保真度/生成质量为指标；验证0.8B模型经FK引导超过2.6B模型并达到SOTA prompt保真。",
+ "takeaways": [
+  "FK引导仅用2个粒子即可超过微调后的模型，推理时扩展高效",
+  "0.8B小模型经FK引导在prompt保真上超过2.6B大模型",
+  "该框架以任意奖励统一了扩散模型的推理时引导与扩展"
+ ],
+ "weaknesses": [
+  "多粒子并行采样带来推理时计算开销，粒子数与收益的权衡未充分量化",
+  "势函数需手工设计以预测最终奖励，中间状态与终奖励的对应仍依赖经验",
+  "主要在文生图与文本扩散验证，视频/多模态复杂引导场景待扩展"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型推理引导与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

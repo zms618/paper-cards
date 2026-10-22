@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Adjusting Model Size in Continual Gaussian Processes How Big is Big Enough.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adjusting Model Size in Continual Gaussian Processes How Big is Big Enough.pdf",
+ "title": "Adjusting Model Size in Continual Gaussian Processes: How Big is Big Enough?",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "VIPS算法在持续高斯过程中自适应选择诱导点，但实验规模有限。",
+ "innovations": [
+  "提出VIPS（Vegas Inducing Point Selection）算法，基于KL差距阈值自动增长诱导点数量",
+  "从MDL压缩视角推导出无需先验数据信息的统一阈值准则δ，单一取值可跨数据集适用",
+  "给出近似后验与最优变分后验之间的KL散度上界保证"
+ ],
+ "method_framework": "在稀疏变分高斯过程的持续学习框架下，每批新数据到达时，基于在线下界bL和上界bU的差距判断当前近似质量。当bU-bL > δ|bU-L_noise|时，用贪心方差准则逐点添加诱导点，直到满足阈值。阈值δ以噪声模型为基线，捕获模型相对于随机噪声的额外信息比例，从而实现跨数据集的统一调节。",
+ "experiment_framework": "在合成数据集、UCI基准数据集（naval等）和真实机器人数据上验证。基线包括固定诱导点数量（M=10/20/30）、Oracle（事后最优M）、Heuristic（M=1000）和OIPS。指标为测试RMSE和训练时间。",
+ "takeaways": [
+  "VIPS能根据数据分布自适应增长模型容量：输入空间扩展时线性增长，数据集中分布时收敛稳定",
+  "固定M过小会导致性能随数据积累退化，固定M过大则浪费计算资源；VIPS可在两者间自动平衡",
+  "单一δ值在不同特性数据集上表现一致，无需针对数据集调参"
+ ],
+ "weaknesses": [
+  "实验主要在小规模UCI数据集上验证，缺乏大规模高维真实场景测试",
+  "仅验证回归任务，未扩展到分类或更复杂的感知任务",
+  "理论保证假设超参数θ在前后批次间不变，实际持续学习中超参数会更新，可能弱化保证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "高斯过程持续学习与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

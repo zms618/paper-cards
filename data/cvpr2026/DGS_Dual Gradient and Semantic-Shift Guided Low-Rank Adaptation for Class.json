@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/DGS_Dual Gradient and Semantic-Shift Guided Low-Rank Adaptation for Class.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/DGS_Dual Gradient and Semantic-Shift Guided Low-Rank Adaptation for Class.pdf",
+ "title": "DGS Dual Gradient and Semantic-Shift Guided Low-Rank Adaptation for Class",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "双梯度与语义偏移引导的LoRA，提升类增量学习性能",
+ "innovations": [
+  "双梯度更新策略平衡稳定性和可塑性",
+  "语义偏移估计的分类器对齐机制",
+  "补丁级对齐损失保持跨任务特征一致性"
+ ],
+ "method_framework": "基于预训练模型，为每个任务分配特定LoRA模块，通过双梯度更新融合任务特定梯度与预训练子空间投影，结合语义偏移估计的分类器对齐和补丁级对齐损失，实现知识保留与新任务适应的平衡。",
+ "experiment_framework": "在CIFAR、ImageNet-R/A、CUB、ObjNet和OmniBenchmark六个标准数据集上评估，与L2P、DualPrompt、CODAPrompt、SLCA等基线方法比较平均准确率和最终任务准确率。",
+ "takeaways": [
+  "双梯度策略通过插值平衡稳定性和可塑性",
+  "语义偏移估计动态调整历史原型以适应表征漂移",
+  "补丁级对齐损失选择性保留关键特征"
+ ],
+ "weaknesses": [
+  "方法依赖预训练模型，可能限制在特定领域的应用",
+  "计算开销增加，特别是语义偏移估计部分",
+  "参数调优复杂，需要平衡多个超参数"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "类增量学习与可靠性主线有交点，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

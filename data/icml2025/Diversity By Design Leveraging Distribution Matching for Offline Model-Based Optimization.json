@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Diversity By Design Leveraging Distribution Matching for Offline Model-Based Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Diversity By Design Leveraging Distribution Matching for Offline Model-Based Optimization.pdf",
+ "title": "Diversity By Design: Leveraging Distribution Matching for Offline Model-Based Optimization",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "将多样性建模为分布匹配，提升离线MBO候选覆盖度但依赖调参。",
+ "innovations": [
+  "把设计多样性作为显式目标引入任意离线模型优化(MBO)问题",
+  "关键洞见：将多样性表述为分布匹配问题，使生成设计的分布捕捉离线数据中固有的多样性",
+  "方法可与常见MBO优化方法结合，在多科学域上显著提升候选多样性同时仍找到高质量解"
+ ],
+ "method_framework": "在离线MBO的奖励最大化目标之外，加入一个分布匹配项：约束生成设计分布与离线数据分布在多样性维度上匹配，从而避免策略坍缩到单一最优模式；该目标可作为即插即用模块叠加到BO-qUCB等常见MBO算法上，在不显著牺牲奖励的前提下覆盖多个'好解模式'。",
+ "experiment_framework": "跨多个科学域(药物/机器人/材料等)的离线MBO基准，对比传统MBO(如BO-qUCB)与DynAMO-Modified版本，指标为候选质量(oracle奖励)与多样性(覆盖的好解模式数/分布分散度)。",
+ "takeaways": [
+  "传统MBO虽能高分但常坍缩到单一最优，忽略了设计空间中的多种好解模式",
+  "把多样性写成分布匹配目标可即插即用地提升候选多样性",
+  "在多个科学域上同时实现高质量与高多样性"
+ ],
+ "weaknesses": [
+  "分布匹配项的权重/与奖励项的平衡较依赖调参",
+  "多样性度量本身有多种定义，与下游实验筛选价值的对应关系未充分论证",
+  "未讨论离线数据分布本身缺乏好解模式时该方法是否仍有效"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

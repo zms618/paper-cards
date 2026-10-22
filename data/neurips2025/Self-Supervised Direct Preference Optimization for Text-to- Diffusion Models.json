@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Self-Supervised Direct Preference Optimization for Text-to- Diffusion Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Self-Supervised Direct Preference Optimization for Text-to- Diffusion Models.pdf",
+ "title": "Self-Supervised Direct Preference Optimization for Text-to-Image Diffusion Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "自监督图像变换生成偏好对，但依赖人工规则且计算开销大",
+ "innovations": [
+  "提出在线自监督偏好对生成范式：训练时通过图像变换实时生成偏好对，消除人工标注和预生成步骤",
+  "在线策略带来更大的偏好多样性，训练效果反而超过使用固定离线偏好数据的传统DPO",
+  "即插即用设计，可直接应用于任意文生图扩散模型（SD1.5/SDXL均验证）"
+ ],
+ "method_framework": "Self-DPO：训练过程中，模型对每个prompt生成一张图像作为chosen样本，然后通过自监督图像变换（如质量退化、语义扰动等）生成rejected样本，在每轮迭代中动态构建偏好对，使用标准DPO损失进行优化。无需任何离线数据收集。",
+ "experiment_framework": "在Stable Diffusion 1.5和Stable Diffusion XL上验证。对比传统DPO和其他对齐方法。指标包括人工评估、美学评分、文本图像对齐度等。",
+ "takeaways": [
+  "在线动态生成的偏好对多样性更高，训练效果甚至超过使用人工标注数据的传统DPO",
+  "Self-DPO在SD1.5和SDXL上均带来视觉质量和文本对齐的显著提升",
+  "方法完全消除了人工标注成本，即插即用，大幅降低扩散模型对齐门槛"
+ ],
+ "weaknesses": [
+  "偏好对生成依赖人工设计的图像变换规则，变换的质量和多样性直接决定对齐效果",
+  "在线生成方式计算开销大（每步都需要生成图像），训练效率低于离线DPO",
+  "前9页未展示具体实验数值表和消融细节，提升幅度不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.93,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

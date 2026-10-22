@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Reconstruct, Inpaint, Test-Time Finetune Dynamic Novel-view Synthesis from Monocular Videos.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Reconstruct, Inpaint, Test-Time Finetune Dynamic Novel-view Synthesis from Monocular Videos.pdf",
+ "title": "Reconstruct, Inpaint, Test-Time Finetune: Dynamic Novel-view Synthesis from Monocular Videos",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "三阶段动态视角合成，重建误差传播且微调耗时",
+ "innovations": [
+  "将动态视角合成分解为重建、修复和测试时微调三阶段",
+  "利用大规模2D视频进行自监督训练",
+  "测试时微调实现零样本泛化"
+ ],
+ "method_framework": "CogNVS结合3D重建和视频扩散模型，先重建场景几何，渲染共可见像素，再用扩散模型修复遮挡区域，最后通过测试时微调适应新场景",
+ "experiment_framework": "在Kubric-4D、ParallelDomain-4D和Dycheck数据集上评估，与GCD、Gen3C、TrajectoryCrafter等方法比较，使用PSNR、SSIM、LPIPS、FID和KID指标",
+ "takeaways": [
+  "测试时微调是提高模型泛化能力的关键",
+  "大规模预训练提供数据驱动的鲁棒性",
+  "将视角合成转化为修复任务可处理极端视角"
+ ],
+ "weaknesses": [
+  "依赖初始重建质量，重建误差会传播到最终结果",
+  "测试时微调仍需较长时间(140分钟/400帧)"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

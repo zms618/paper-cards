@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Rethinking the Gold Standard Why Discrete Curvature Fails To Fully Capture Over-Squashing In GNNS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rethinking the Gold Standard Why Discrete Curvature Fails To Fully Capture Over-Squashing In GNNS.pdf",
+ "title": "Rethinking the Gold Standard: Why Discrete Curvature Fails to Fully Capture Over-Squashing in GNNs",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.9
+ },
+ "one_line": "质疑负曲率与过压缩等价性，提出WAF3曲率但下游验证不足。",
+ "innovations": [
+  "构造一族反例：某些边被严重过压缩但其曲率仍为正，证明高负曲率仅是过压缩的充分非必要条件。",
+  "实证最常用的Ollivier-Ricci曲率漏检30%~40%的过压缩边。",
+  "提出Weighted Augmented Forman-3曲率(WAF3)提升过压缩边检测，并给出高效近似算法，5百万边仅需23.6秒，比现有最低复杂度算法快133.7倍。"
+ ],
+ "method_framework": "从离散曲率与图瓶颈关系的重新审视出发，构造反例推翻等价性认知；定义加权增强的Forman-3曲率以更好刻画过压缩边，并设计线性化近似算法把曲率计算扩展到百万级图。",
+ "experiment_framework": "在多个图上检测过压缩边；对比Ollivier-Ricci等常用离散曲率；报告漏检率、WAF3检测改进及曲率计算在5百万边图上的运行时间加速比。",
+ "takeaways": [
+  "把负曲率当作过压缩的判据不可靠，会漏掉相当比例真正被过压缩的边。",
+  "WAF3曲率在检测过压缩边上更准且计算高效，可作为图学习几何先验的更优工具。"
+ ],
+ "weaknesses": [
+  "与可靠性/医学影像/多模态推理主线无关，属GNN几何理论分析。",
+  "WAF3对下游GNN性能（而非仅检测指标）的直接提升未充分验证。",
+  "前9页以反例与漏检率为主，WAF3如何嵌入具体GNN训练的端到端收益在后续页。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "GNN几何理论分析，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

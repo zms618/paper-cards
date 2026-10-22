@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Nesterov Method for Asynchronous Pipeline Parallel Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Nesterov Method for Asynchronous Pipeline Parallel Optimization.pdf",
+ "title": "Nesterov Method for Asynchronous Pipeline Parallel Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "修改NAG解决异步流水线梯度延迟，理论证明+语言模型实验",
+ "innovations": [
+  "修改NAG的look-ahead步骤作为权重空间延迟校正",
+  "首次证明异步流水线并行可超越同步基线",
+  "提供理论收敛证明和大规模实验验证"
+ ],
+ "method_framework": "基于Nesterov加速梯度法的变体，通过修改更新公式中的梯度项折扣因子(1-γt)，使look-ahead步骤近似延迟量，实现权重空间延迟校正",
+ "experiment_framework": "在WikiText、BookCorpus和OpenWebText数据集上测试，使用decoder-only架构，最大1B参数，与PipeDream、PipeMare和同步GPipe比较困惑度",
+ "takeaways": [
+  "Nesterov方法在异步优化中表现优于传统方法",
+  "权重空间延迟校正比梯度预测更有效",
+  "NAdam优化器的高β1值(0.99)适合异步场景"
+ ],
+ "weaknesses": [
+  "内存需求随延迟线性增长(O(PN))",
+  "仅针对凸、β-光滑函数提供理论证明",
+  "实验主要在语言建模任务上验证，泛化性待考察"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

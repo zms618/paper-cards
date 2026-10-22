@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Path Channels and Plan Extension Kernels A Mechanistic Description Of Planning In A Sokoban RNN.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Path Channels and Plan Extension Kernels A Mechanistic Description Of Planning In A Sokoban RNN.pdf",
+ "title": "Path Channels and Plan Extension Kernels: A Mechanistic Description of Planning in a Sokoban RNN",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "逆向工程推箱子RNN发现path通道与双向规划机制",
+ "innovations": [
+  "识别出隐藏态中专门的path channel存储未来动作计划：某位置高激活表示箱子在该位置时将被推向该channel方向。",
+  "发现path channel间的卷积核编码各动作导致的位置变化，即学到了部分迁移模型。",
+  "揭示该RNN从箱子前向、从目标后向双向扩展激活来构造计划，障碍物处放负值反向传播从而剪枝/回溯，自发形成类双向规划算法。"
+ ],
+ "method_framework": "对model-free RL训练的卷积RNN做机制可解释性分析：定位path channel并解读其空间激活含义；解剖卷积核权重解释其如何随动作传播激活；通过干预/消融验证path channel与扩展核在规划与回溯中的因果作用。",
+ "experiment_framework": "对象为在Sokoban上训练的单个卷积RNN；通过激活可视化、核解剖与干预实验验证各组件功能；用具体关卡演示双向规划、负值回溯现象。",
+ "takeaways": [
+  "model-free训练可自发学到类双向规划的算法，且可用熟悉术语精确描述。",
+  "理解计划表征后可直接读懂agent的内部规划过程。",
+  "负值传播机制实现了隐式回溯，而非显式搜索。"
+ ],
+ "weaknesses": [
+  "结论基于单一架构/单一关卡分布(Sokoban)的RNN，泛化到其他agent/架构的结论性有限。",
+  "部分而非完全逆向工程，仍有未解释的机制成分。",
+  "Sokoban为离散网格玩具环境，与真实高维agent的可迁移性存疑。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "玩具环境规划机制，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

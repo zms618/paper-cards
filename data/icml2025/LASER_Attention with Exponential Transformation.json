@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/LASER_Attention with Exponential Transformation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/LASER_Attention with Exponential Transformation.pdf",
+ "title": "LASER: Attention with Exponential Transformation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "LASER通过指数变换改善梯度传播，但计算复杂度和泛化能力存疑。",
+ "innovations": [
+  "分析softmax注意力机制中的梯度消失问题",
+  "提出LASER注意力机制，在指数值空间进行注意力计算",
+  "开发Log-Weighted-Sum-Exp技巧避免数值溢出"
+ ],
+ "method_framework": "LASER注意力机制通过在指数变换的值矩阵上应用标准注意力，然后取对数，形成log-sum-exp结构，提供更大梯度信号。",
+ "experiment_framework": "在C4数据集上的自回归语言模型(234M-7.7B参数)、BERT(2.2B)和ViT/Conformer模型上评估，测试损失和下游任务准确率。",
+ "takeaways": [
+  "梯度传播分析对理解注意力机制至关重要",
+  "简单修改现有注意力实现即可应用LASER"
+ ],
+ "weaknesses": [
+  "缺乏对计算复杂度的详细分析",
+  "未探讨在不同任务上的泛化能力限制"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

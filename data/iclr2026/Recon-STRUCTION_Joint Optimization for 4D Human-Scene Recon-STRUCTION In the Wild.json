@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Recon-STRUCTION_Joint Optimization for 4D Human-Scene Recon-STRUCTION In the Wild.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Recon-STRUCTION_Joint Optimization for 4D Human-Scene Recon-STRUCTION In the Wild.pdf",
+ "title": "Joint Optimization for 4D Human-Scene Reconstruction in the Wild",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "单阶段联合优化人-场景重建，接触约束提升物理一致性",
+ "innovations": [
+  "提出JOSH，将相机位姿、所有人体的4D全局运动与稠密3D场景点云放入单阶段联合优化，区别于以往分别优化相机/人体/场景的流水线。",
+  "关键洞察：以人-场景接触作为强约束桥接场景与人体运动，引导联合优化得到更精确、物理更一致的重建，改善接触细节的连贯性。",
+  "将局部人体网格恢复、接触标签、深度图与点对应作为初始化，并证明该框架可支撑在大规模网络数据上端到端训练全局人体运动模型。"
+ ],
+ "method_framework": "输入单目网络视频，先用局部人体网格恢复、人-场景接触标签、深度图与点对应初始化，再在单一优化阶段联合细化相机位姿、全部人体的4D全局运动与稠密3D场景点云，以人为-场景接触约束贯穿全局一致性。",
+ "experiment_framework": "在4D人-场景重建、全局人体运动估计与稠密场景重建任务上评测，与分别优化相机/人体/场景的既有方法对比；报告重建精度与接触一致性，并在网络数据上验证可扩展性。",
+ "takeaways": [
+  "联合优化相比分步流水线能显著提升4D人-场景重建、全局人体运动估计与稠密场景重建的精度与一致性。",
+  "人-场景接触约束是弥合场景几何与人体运动、消除物理不合理穿透的关键信号。"
+ ],
+ "weaknesses": [
+  "属测试时优化方法而非前馈模型，计算开销与收敛性未在前9页量化说明。",
+  "前9页只见引言与方法概览，缺乏具体数值表与消融，证据强度判断受限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "3D重建与物理一致性，非可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

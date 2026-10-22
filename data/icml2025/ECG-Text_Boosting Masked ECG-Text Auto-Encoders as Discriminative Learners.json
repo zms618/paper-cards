@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/ECG-Text_Boosting Masked ECG-Text Auto-Encoders as Discriminative Learners.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ECG-Text_Boosting Masked ECG-Text Auto-Encoders as Discriminative Learners.pdf",
+ "title": "ECG-Text: Boosting Masked ECG-Text Auto-Encoders as Discriminative Learners",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.0
+ },
+ "one_line": "结合生成与判别式预训练ECG-Text，提升少样本诊断性能",
+ "innovations": [
+  "在掩码模态建模框架内同时结合生成式重建与增强的判别式(对比)目标，弥补两类SSL各自不足",
+  "设计面向跨模态对齐的专用损失函数与改进负采样策略，缓解模态差异大、标注稀缺问题",
+  "在仅1%训练数据的线性探针下平均AUC提升15%，零样本提升2%，数据效率显著"
+ ],
+ "method_framework": "对ECG信号与临床报告文本做联合掩码自编码预训练：一方面重建被掩码的模态内容(生成式)，另一方面通过对比学习与改进负采样拉近配对的ECG-Text、推远负例(判别式)，两者共用表征，得到鲁棒的跨模态临床表征供下游少样本/零样本诊断。",
+ "experiment_framework": "在5个公开ECG数据集上做线性探针(仅1%数据)、微调与零样本评测，指标为AUC；与对比式、生成式SSL SOTA及监督基线对比。",
+ "takeaways": [
+  "生成式+判别式联合预训练在ECG-Text跨模态上优于单一范式",
+  "仅用1%标注即可获得显著更高AUC，大幅降低对专家标注的依赖",
+  "文本报告的语义信息能有效增强ECG表征的临床判别力"
+ ],
+ "weaknesses": [
+  "ECG-Text配对数据的获取本身受临床隐私与报告规范化限制，泛化到非英文/非标准报告存疑",
+  "增强判别目标与生成目标的权重平衡在前9页未见充分消融",
+  "15%AUC增益主要来自线性探针低数据设定，全量微调下增益是否仍显著需看完整表格"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

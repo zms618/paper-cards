@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Rethinking MLLM Itself as a Segmenter with a Single Segmentation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Rethinking MLLM Itself as a Segmenter with a Single Segmentation.pdf",
+ "title": "Rethinking MLLM Itself as a Segmenter with a Single Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "简化MLLM分割架构，但依赖特定模型且效率未验证",
+ "innovations": [
+  "消除专业解码器与多个[SEG]token的依赖",
+  "残差特征重填(RFR)与放大(RFA)机制",
+  "双感知路径注意力掩码设计"
+ ],
+ "method_framework": "保留原始分辨率特征，结合LLM处理后的残差特征，通过像素反洗牌操作提升特征分辨率，实现单token分割",
+ "experiment_framework": "RefCOCO/+/g、gRefCOCO、ReasonSeg、ADE20k等数据集，cIoU/gIoU/mIoU指标，与LISA、UFO等方法对比",
+ "takeaways": [
+  "残差特征重填可有效提升分割分辨率",
+  "双感知路径注意力增强像素与分割token交互",
+  "无需专业解码器仍可达到SOTA性能"
+ ],
+ "weaknesses": [
+  "方法依赖特定MLLM架构(如InternVL)",
+  "未充分讨论计算效率与推理时间",
+  "医学影像应用未探索"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态分割方法，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

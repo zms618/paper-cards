@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Preference Optimization for Combinatorial Optimization Problems.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Preference Optimization for Combinatorial Optimization Problems.pdf",
+ "title": "Preference Optimization for Combinatorial Optimization Problems",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "将组合优化奖励转为偏好信号，用局部搜索辅助RL跳出局部最优。",
+ "innovations": [
+  "用统计比较建模把组合优化的定量奖励转化为定性偏好信号，缓解RL中奖励信号随策略变好而衰减的问题",
+  "按策略重参数化奖励函数并借助偏好模型，构造直接对齐偏好、避免不可解计算的熵正则化RL目标",
+  "将局部搜索整合进微调阶段而非后处理，生成高质量偏好对帮助策略跳出局部最优"
+ ],
+ "method_framework": "先对采样解做统计比较，把连续奖励聚合为谁更优的定性偏好；再用偏好模型对奖励按策略重参数化，导出熵正则化RL目标直接优化偏好；微调过程中用局部搜索对解做扰动构造高质量偏好对，兼顾探索与利用。",
+ "experiment_framework": "在TSP(旅行商)、CVRP(带容量车辆路径)、FFSP(柔性流水车间)等多个神经组合优化基准上评测；与主流RL求解器基线比较收敛效率与解质量(相对最优解间隙)，报告不同规模实例的表现。",
+ "takeaways": [
+  "把奖励转为偏好信号能缓解奖励衰减导致的梯度消失，显著提升收敛效率",
+  "在微调中嵌入局部搜索生成偏好对，比纯后处理式局部搜索更有助于跳出局部最优",
+  "在TSP/CVRP/FFSP上解质量与收敛效率均优于现有RL算法"
+ ],
+ "weaknesses": [
+  "偏好对采样与局部搜索引入额外计算开销，论文未充分报告端到端时间成本",
+  "偏好模型本身的质量如何影响最终解质量缺乏敏感性分析",
+  "实验局限于三类经典调度/路径问题，对更高维或动态组合问题的扩展性未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

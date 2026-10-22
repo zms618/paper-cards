@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/A Tale of Two Classes Adapting Supervised Contrastive Learning to.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Tale of Two Classes Adapting Supervised Contrastive Learning to.pdf",
+ "title": "A Tale of Two Classes: Adapting Supervised Contrastive Learning to Binary Imbalanced Datasets",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "SupCon在二元不平衡下坍缩，两项loss修改修复，但提升含设定差异",
+ "innovations": [
+  "两项可一行替换的loss改动：Sup Minority=L^{min}_SupCon+L^{maj}_NT-Xent（少数类用全标签对比、多数类退回单正NT-Xent，避免多数类梯度被正样本数稀释）；Sup Prototypes=在两端固定的原型p_min=-p_maj（p_maj由梯度下降求得到全部训练样本平均最近）下，仅当cos(f(x),p_i)≤0.5时加原型项，否则只受NT-Xent，避免原型挤占均匀性",
+  "两个诊断指标SAA（正样本对距离小于全部负样本对距离的比例）与CAC（r=5%邻域内标签一致的比例），同时看类内与类间关系，能抓到SAD/CAD已归零但表征已坍缩的情形（CAC与下游R²=0.69）",
+  "给出坍缩的证明：最终层梯度上界为1/正样本数，多数类主导batch时梯度迅速饱和，故表征退化为单点"
+ ],
+ "method_framework": "二元不平衡数据→ResNet-50对比预训→线性探测（医学集报AUC）→用SAD/SAD/CAD/CAC/GPU诊断表征结构→Sup Minority或Sup Prototypes替换SupCon损失。",
+ "experiment_framework": "3个人造不平衡iNat21子集（50/95/99）与4个真实医学集（UKBB、Breast/ PneumoniaMNIST、FracAtlas、Infarction4%）；基线含加权CE、SupCon及PaCo/KCL/TSC/SBC/BCL五个长尾对比法；指标balanced accuracy/AUC，报±std。",
+ "takeaways": [
+  "二元不平衡下把多数类从SupCon换回NT-Xent（少类全正、多类单正）是近乎零代价的loss改造，1%不平衡下Insects从56.4→78.8",
+  "评估表征时用邻域纯度类指标（CAC）替代只看类内距离的SAD/CAD，可提前诊断坍缩，可搬去监测其它对比/自监督方法的退化"
+ ],
+ "weaknesses": [
+  "提升含设定差异成分：iNat子集是人为固定不平衡比、线性探测只微调1%训练数据的balanced subset且测试集也balanced；医学集不平衡率跨4%~37%差异大，'超BCL最多35%'主要来自iNat的1%极端档（如Plants 56.2→85.4），医疗集最大增益仅+2% AUC",
+  "cos(f(x),p_i)≤0.5阈值与τ、batch size、r=5%邻域大小均未做网格消融（正文称在附录S8）；R²=0.69是把7个数据集混在一起做线性回归，跨数据集聚合相关性不能证明指标有效性",
+  "R²=0.69/0.45/0.65是把7个数据集指标混在一起做的线性回归，跨数据集聚合相关性不能直接证明指标有效性；且CAC/SAA需全量标签，作无监督评估指标本身有标签开销；正文在第7节截断，结论后的局限讨论与跨backbone/多种子稳定性不可见"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "二元不平衡分类，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

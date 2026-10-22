@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Epsilon-VAE_Denoising as Visual Decoding.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Epsilon-VAE_Denoising as Visual Decoding.pdf",
+ "title": "Epsilon-VAE: Denoising as Visual Decoding",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "用扩散替换VAE解码器，提升重建与生成质量但增加计算开销",
+ "innovations": [
+  "提出denoising-as-decoding视角，用扩散过程替代单步解码器",
+  "编码器仍压缩到连续潜变量，重建由潜变量引导的迭代去噪完成",
+  "同时提升重建质量(rFID)与下游潜扩散生成质量(FID)"
+ ],
+ "method_framework": "Epsilon-VAE 保留编码器把图像压缩为连续潜变量，但解码器改为一个条件扩散模型：以潜变量为条件，从噪声逐步去噪精修还原原图，把重建从单步变为迭代渐进过程。",
+ "experiment_framework": "对比SOTA自编码方案；同时评测重建指标rFID与下游潜扩散生成指标FID；验证扩散解码器对重建与生成双方面的提升。",
+ "takeaways": [
+  "用扩散做解码器比单步确定性解码器重建更清晰(rFID更低)",
+  "改进的tokenizer同时提升了下游潜扩散生成质量(FID)",
+  "denoising-as-decoding为连续视觉tokenization提供了新范式"
+ ],
+ "weaknesses": [
+  "扩散解码器带来迭代采样的解码延迟，未充分量化",
+  "主要在标准视觉生成基准验证，对高分辨率/视频的扩展性待验证",
+  "与主线(可靠性/医学影像/多模态大模型推理)无关，属生成视觉"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.43,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

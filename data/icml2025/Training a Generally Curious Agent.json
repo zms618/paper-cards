@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Training a Generally Curious Agent.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Training a Generally Curious Agent.pdf",
+ "title": "Training a Generally Curious Agent",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "elevance": 4.0,
+  "evidence": 5.5,
+  "overall": 5.3
+ },
+ "one_line": "文本游戏DPO微调，零样本迁移有限，与主线可靠性研究关联弱",
+ "innovations": [
+  "提出在多样文本决策任务（20 Questions、客服、Wordle等）上用基础模型自生成交互轨迹并按成功率打分，训练通用探索agent",
+  "采用序贯版本的Direct Preference Optimization提升成功轨迹的相对似然，把训练重心从模型更新转移到有用交互数据采样",
+  "提出按任务学习潜力优先采样轨迹的课程学习策略以提升样本效率"
+ ],
+ "method_framework": "把各任务建模为黑箱POMDP，agent动作与观测均为字符串，回合结束环境给出单一分数r(h)。先用基础模型在训练任务组上采样交互轨迹并打分，再用序贯DPO偏好优化使策略偏好高表现轨迹；训练瓶颈在数据采样，故用课程学习优先采样高学习潜力任务的轨迹，使策略在未见任务组上零样本迁移。",
+ "experiment_framework": "在设计的多样文本主动信息收集任务套件（20 Questions、Customer Service、Wordle等任务组）上训练；对比不同训练任务子集，评估在未见任务组上的零样本迁移表现，指标为回合成功率Perf(G)。",
+ "takeaways": [
+  "在合成交互数据上做序贯偏好优化可让LLM获得跨任务通用探索能力并零样本迁移",
+  "训练主要瓶颈从梯度更新转为有用交互数据采样，课程学习优先高学习潜力任务可提升样本效率",
+  "该路径为无需真实部署即可培养自主交互agent提供了可行方案"
+ ],
+ "weaknesses": [
+  "主线相关性弱：属LLM智能体探索/上下文RL，与可靠性乘医学影像/多模态推理主线无直接联系",
+  "前9页仅见任务设计与方法框架，完整数值结果与基线对比在后续页，证据强度受限",
+  "任务均为文本小游戏/客服，真实高风险环境外推性存疑；不使用内在动机，探索通用性边界未充分刻画"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

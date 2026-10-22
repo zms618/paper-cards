@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/GGPT_Geometry-Grounded Point Transformer.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/GGPT_Geometry-Grounded Point Transformer.pdf",
+ "title": "GGPT Geometry-Grounded Point Transformer",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "改进SfM与3D点变换器提升多视图重建几何一致性",
+ "innovations": [
+  "改进的SfM管道，结合密集匹配与轻量几何优化",
+  "3D空间中的几何引导点变换器，直接处理点云而非2D图像",
+  "无需微调即可跨架构和跨数据集泛化的模块化设计"
+ ],
+ "method_framework": "两阶段框架：首先通过改进SfM管道从稀疏输入视图估计相机姿态和部分点云；然后使用几何引导点变换器在3D空间中精炼密集点预测，通过特殊编码捕获空间关系和对应偏移。",
+ "experiment_framework": "在ScanNet++、ETH3D和T&T数据集上评估，使用AUC@5/10cm指标；在4D-DRESS和MV-dVRK上测试跨域泛化能力。",
+ "takeaways": [
+  "将几何先验与密集前馈预测结合的有效机制",
+  "3D点变换器在保持几何一致性的同时提高计算效率"
+ ],
+ "weaknesses": [
+  "依赖前馈模型的初始预测",
+  "在纹理缺失或遮挡区域的点云覆盖不完整",
+  "密集匹配步骤仍占运行时间主导"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "3D重建与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

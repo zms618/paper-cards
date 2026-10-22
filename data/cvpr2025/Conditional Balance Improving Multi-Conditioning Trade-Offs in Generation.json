@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Conditional Balance Improving Multi-Conditioning Trade-Offs in Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Conditional Balance Improving Multi-Conditioning Trade-Offs in Generation.pdf",
+ "title": "Conditional Balance Improving Multi-Conditioning Trade-Offs in Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "分析DDPM层敏感性实现条件平衡，改善多条件图像生成",
+ "innovations": [
+  "分析DDPM注意力层对不同条件内容的敏感性",
+  "基于聚类分数选择敏感层进行条件注入",
+  "实现风格与结构的平衡控制，减少过约束问题"
+ ],
+ "method_framework": "创建不同风格图像集合，提取自注意力特征表示，计算JSD聚类分数，识别敏感层，仅对敏感层应用条件输入",
+ "experiment_framework": "32种风格×10种内容提示×4种子×2条件图像=5120图像，使用CLIP和Dino相似度评估内容与风格",
+ "takeaways": [
+  "层敏感度分析可指导条件输入策略",
+  "减少条件应用层数可平衡多条件约束",
+  "几何风格可通过结构条件层选择控制"
+ ],
+ "weaknesses": [
+  "方法依赖特定架构(SDXL/SD3)，泛化性待验证",
+  "未分析计算效率与推理时间影响",
+  "风格与内容分离的物理意义不明确"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "条件生成方法设计有启发性，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

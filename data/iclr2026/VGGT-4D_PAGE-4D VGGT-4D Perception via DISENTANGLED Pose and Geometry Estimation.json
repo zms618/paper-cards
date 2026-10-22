@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VGGT-4D_PAGE-4D VGGT-4D Perception via DISENTANGLED Pose and Geometry Estimation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VGGT-4D_PAGE-4D VGGT-4D Perception via DISENTANGLED Pose and Geometry Estimation.pdf",
+ "title": "PAGE-4D: VGGT-4D Perception via Disentangled Pose and Geometry Estimation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "扩展静态模型到动态场景，解耦位姿与几何重建任务冲突",
+ "innovations": [
+  "将静态前馈3D模型VGGT扩展到动态场景，无需后处理即可同时估计相机位姿、深度与点云重建",
+  "指出4D重建中位姿估计需抑制动态区域而几何重建需建模动态区域的内在任务冲突",
+  "提出动态感知聚合器，预测动态掩码，对位姿估计抑制运动线索、对几何重建放大运动线索，解耦静态与动态信息"
+ ],
+ "method_framework": "针对静态VGGT难以处理移动人体/可变形物体的问题，PAGE-4D设计动态感知聚合器：预测动态掩码，在估计相机位姿时抑制动态区域、在重建几何时放大动态区域，从而化解位姿估计与几何重建对动态信息需求相反的任务冲突，实现一次前馈同时输出位姿、深度与点云。",
+ "experiment_framework": "在动态场景基准上评测；对比原VGGT及相关前馈3D方法；指标为相机位姿误差、单目/视频深度精度与稠密点云重建质量；报告在动态场景各项一致优于VGGT。",
+ "takeaways": [
+  "PAGE-4D在动态场景下的相机位姿、单目/视频深度与稠密点云重建上一致优于原VGGT",
+  "解耦静态/动态信息是化解4D重建任务冲突的关键",
+  "前馈式一次前向即可在亚秒内完成动态场景的位姿与几何估计"
+ ],
+ "weaknesses": [
+  "属于动态三维重建/计算机视觉方向，与可靠性、医学影像、多模态推理主线无关，relevance偏低",
+  "动态掩码的预测质量直接决定解耦效果，掩码误判的误差传播前9页未量化",
+  "仅在动态合成/标准基准验证，复杂真实动态场景(遮挡、快速运动)的鲁棒性证据有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "动态三维重建与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

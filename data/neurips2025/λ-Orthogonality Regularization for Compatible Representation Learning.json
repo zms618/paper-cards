@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/λ-Orthogonality Regularization for Compatible Representation Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/λ-Orthogonality Regularization for Compatible Representation Learning.pdf",
+ "title": "λ-Orthogonality Regularization for Compatible Representation Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 6,
+  "overall": 5.25
+ },
+ "one_line": "软正则约束+双向变换的兼容表示学习，增量有限且证据不足",
+ "innovations": [
+  "提出λ-Orthogonality正则：以sigmoid(α(‖WW^T−I‖_F−λ))作连续开关平滑Heaviside阈值，在保持全局几何结构的同时允许下游所需局部塑性",
+  "双向兼容流水线：矩阵指数参数化的正交后向变换B⊥/Bλ + 前向变换F + 监督对比损失，全程不依赖新模型分类器，适配私有/在线嵌入",
+  "提出基于'离类均值最远者优先'的偏回填排序策略，架构无关且无需分类器"
+ ],
+ "method_framework": "冻结两侧模型仅训变换：B=e^P正交后向对齐（或Bλ带λ-正交正则），F前向对齐到B(ht)，叠加对比损失促类内聚集与跨模型对齐（L=w1LF+w2LB+w3LC+Lλ）；回填按距类均值距离降序分批替换。",
+ "experiment_framework": "ImageNet1K两类场景（扩类/跨架构ResNet-18→ViT-L-16）+下游CUB200/CIFAR100；基线FCT、FastFill；CMC-Top1/mAP；λ与损失分量消融在附录。",
+ "takeaways": [
+  "'sigmoid连续开关'正则模板：把硬阈值约束平滑化且保留阈值语义，可迁移到任何需要软硬可调约束的场景",
+  "双向对齐+对比损失的设计让兼容性学习不依赖分类器，只吃嵌入向量，适配拿不到分类器的私有模型场景",
+  "回填排序用几何启发式（离类均值最远优先）替代Bayesian建模，更轻量且与架构无关"
+ ],
+ "weaknesses": [
+  "核心增量偏小：λ-正则本质是给已有Gram正交约束加sigmoid阈值开关，与[36]软正交约束的实质差异缺乏直接定量对比",
+  "主要表格无方差/多种子报告，扩类场景Ours与FastFill差距（61.20 vs 60.49）较小，显著性未验证",
+  "λ与各损失分量的消融全部推给附录E/F，正文无法核验各组件独立贡献；对比损失与B⊥对齐的相互依赖未分离"
+ ],
+ "confidence": "high",
+ "raw_overall": 4.75,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

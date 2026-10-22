@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scaling Laws Meet Model Architecture To-Ward Inference-Efficient LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scaling Laws Meet Model Architecture To-Ward Inference-Efficient LLMS.pdf",
+ "title": "Scaling Laws Meet Model Architecture: Toward Inference-Efficient LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "条件scaling law架构搜索，提升LLaMA-3.2精度与吞吐。",
+ "innovations": [
+  "提出条件scaling law，将隐藏尺寸、mlp-to-attention参数配比、分组注意力(GQA)等架构因子纳入Chinchilla式损失预测。",
+  "构建一个在固定参数预算下联合优化精度与推理吞吐的架构搜索框架，刻画精度-推理效率的权衡。",
+  "用200+个80M-3B、8B-100B tokens的模型拟合并验证该条件scaling law，所得架构同训练预算下优于开源基线。"
+ ],
+ "method_framework": "对不同隐藏尺寸、MLP-注意力配比与GQA配置做大规模训练扫描，把这些架构维度作为条件项拟合进预训练损失scaling law；再结合推理吞吐模型，搜索在给定预算下帕累托最优的架构配置。",
+ "experiment_framework": "训练200+模型(80M-3B参数、8B-100B tokens)拟合条件scaling law；与LLaMA-3.2等开源基线在同训练预算下比较预训练损失、下游准确率与推理吞吐(tokens/s)。",
+ "takeaways": [
+  "架构因子(尤其mlp-to-attention配比与GQA)对精度与推理效率有显著且可预测的影响。",
+  "条件scaling law能可靠预测最优架构选择，同预算下比LLaMA-3.2准确率高约2.1%、吞吐高约42%。"
+ ],
+ "weaknesses": [
+  "面向预训练架构效率搜索，与可靠性×医学影像/多模态推理主线关联弱。",
+  "scaling law在3B以上外推、以及对指令微调/推理阶段(test-time)成本的覆盖仍需验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "LLM架构效率搜索，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

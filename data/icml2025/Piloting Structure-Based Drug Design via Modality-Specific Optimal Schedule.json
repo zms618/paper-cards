@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Piloting Structure-Based Drug Design via Modality-Specific Optimal Schedule.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Piloting Structure-Based Drug Design via Modality-Specific Optimal Schedule.pdf",
+ "title": "Piloting Structure-Based Drug Design via Modality-Specific Optimal Schedule",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "为SBDD多模态生成设计模态特异噪声调度，提升分子内有效性。",
+ "innovations": [
+  "建立噪声调度决定扭结多模态概率路径VLB的事实，指出SBDD几何建模的瓶颈所在",
+  "提出VLB-Optimal Scheduling(VOS)：把VLB作为路径积分、为连续/离散两种模态分别设计最优调度",
+  "在CrossDock上达PoseBusters通过率95.9%，比强基线提升超10%并保持高亲和力与分子内有效性"
+ ],
+ "method_framework": "SBDD生成中分子几何由连续3D位置与离散2D拓扑共同决定，二者概率路径相互扭结；本文证明噪声调度决定该扭结路径的变分下界(VLB)，于是将VLB优化写成路径积分，对不同模态(连续坐标/离散拓扑)分别求解最优噪声调度，从而改善分子几何与相互作用建模。",
+ "experiment_framework": "在CrossDock训练，用PoseBusters做ID与OOD评测；基线TargetDiff、DecompDiff、MolCRAFT等非自回归生成模型；指标为PB-Valid-Mol分子内有效性通过率(%)、亲和力；报告ID 97.9%/OOD 89.3%及95.9%整体通过率。",
+ "takeaways": [
+  "模态特异的最优噪声调度显著改善SBDD的分子内几何有效性，OOD下降被有效缓解",
+  "在PoseBusters上同时保持最佳ID与OOD性能，比强基线提升超10%",
+  "把VLB显式写成路径积分为多模态生成模型的调度设计提供了可优化目标"
+ ],
+ "weaknesses": [
+  "收益集中在分子内有效性这一指标，对实际成药活性/亲和力的端到端验证有限",
+  "模态最优调度的推导依赖对扭结路径的特定假设，推广到其他分子生成范式未验证",
+  "与主线(可靠性/医学影像/多模态推理)无关，属计算化学领域"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

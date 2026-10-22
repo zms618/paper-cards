@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Hi3DGen_High-fidelity 3D Geometry Generation from via Normal Bridging.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Hi3DGen_High-fidelity 3D Geometry Generation from via Normal Bridging.pdf",
+ "title": "Hi3DGen High-fidelity 3D Geometry Generation from via Normal Bridging",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "法线桥接框架连接2D图像与3D几何，但依赖合成数据",
+ "innovations": [
+  "法线桥接框架连接2D图像与3D几何",
+  "噪声注入回归网络实现稳定且锐利的法线估计",
+  "法线正则化潜在扩散学习增强几何生成保真度"
+ ],
+ "method_framework": "Hi3DGen框架包含三个关键组件：图像到法线估计器(NiRNE)、法线到几何学习器(NoRLD)和3D数据合成管道，通过法线作为中间表示桥接2D图像到3D几何的生成过程。",
+ "experiment_framework": "在LUCES-MV数据集评估法线估计，使用Objaverse和DetailVerse数据集训练3D生成，通过NE、SNE指标和用户研究评估生成质量。",
+ "takeaways": [
+  "噪声注入回归网络结合双流训练可提升法线估计的稳定性和锐利度",
+  "法线正则化在潜在扩散学习中提供显式几何监督，增强细节生成"
+ ],
+ "weaknesses": [
+  "DetailVerse数据集完全依赖合成数据，可能存在域偏差",
+  "法线估计到几何生成的映射过程仍可能引入信息损失"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3D几何生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

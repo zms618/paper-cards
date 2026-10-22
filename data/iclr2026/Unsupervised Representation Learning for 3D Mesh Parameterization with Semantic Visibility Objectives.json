@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unsupervised Representation Learning for 3D Mesh Parameterization with Semantic Visibility Objectives.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unsupervised Representation Learning for 3D Mesh Parameterization with Semantic Visibility Objectives.pdf",
+ "title": "Unsupervised Representation Learning for 3D Mesh Parameterization with Semantic and Visibility Objectives",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "无监督UV参数化框架，添加语义与可见性目标，但依赖预训练精度且下游验证不足",
+ "innovations": [
+  "提出无监督可微框架自动完成3D网格UV参数化，摆脱对手工UV映射的依赖",
+  "语义感知：将网格按语义分片后逐片学习保几何UV参数化，再聚合打包成统一UV atlas",
+  "可见性感知：以环境光遮蔽(AO)作为暴露度代理，反传可微AO加权接缝目标，把切割缝引导到不易被看到的遮挡区域"
+ ],
+ "method_framework": "在标准保几何UV学习基础上叠加两类感知目标：语义感知管线先把网格语义分片，逐片学习保几何UV参数化再聚合成统一UV atlas；可见性感知管线以环境光遮蔽(AO)为暴露度代理，反传可微AO加权的切割缝目标，把缝引导到遮挡区域。",
+ "experiment_framework": "与SOTA自动参数化方法做定性与定量对比；指标含几何失真、UV chart语义连贯性与接缝可见性；报告在语义与可见性两项感知标准上优于现有自动方法。",
+ "takeaways": [
+  "自动参数化兼顾语义连贯(便于纹理编辑)与接缝隐蔽(更视觉无缝)两项感知标准",
+  "可微AO加权目标可端到端引导切割缝位置",
+  "无监督可微框架缓解了UV映射作为3D内容制作瓶颈的问题"
+ ],
+ "weaknesses": [
+  "属于计算机图形/3D内容制作方向，与可靠性、医学影像、多模态推理主线无关，relevance偏低",
+  "自动参数质量依赖预训练语义分割与AO估计的精度，误差传播前9页未量化",
+  "评测以主观质量与几何失真指标为主，对下游纹理生成任务的端到端收益前9页证据有限"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.55,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯3D图形学工作，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

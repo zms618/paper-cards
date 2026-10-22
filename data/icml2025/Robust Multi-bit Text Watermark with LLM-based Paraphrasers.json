@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Robust Multi-bit Text Watermark with LLM-based Paraphrasers.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Robust Multi-bit Text Watermark with LLM-based Paraphrasers.pdf",
+ "title": "Robust Multi-bit Text Watermark with LLM-based Paraphrasers",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.25
+ },
+ "one_line": "微调一对LLM释义模型实现句级多比特文本水印，但部署受限且与主线无关。",
+ "innovations": [
+  "微调一对行为刻意不同的LLM释义模型，使其释义差异体现在文本语义中。",
+  "用两个释义模型交替在句级编码预定义二进制码，实现多比特水印注入。",
+  "用文本分类器逐比特解码，在小模型(1.1B)上达>99.99%检测AUC且保持原语义。"
+ ],
+ "method_framework": "编码阶段：按密钥条件用两个行为相异的LLM释义模型交替改写句子，通过选哪个模型编码该句来嵌入0/1比特；解码阶段：训练文本分类器逐句判断由哪个释义模型生成，从而恢复比特串；相比同义词替换有更大动作空间、更抗扰动。",
+ "experiment_framework": "在文本语料上评测检测AUC、语义保持度；测试词替换与句子改写扰动下的鲁棒性、OOD泛化；用LLM评估隐蔽性；对比词表层水印方法。",
+ "takeaways": [
+  "1.1B释义模型即可实现>99.99%检测AUC并保持原句语义。",
+  "该pipeline对词替换、句改写扰动鲁棒且在OOD数据上泛化良好。"
+ ],
+ "weaknesses": [
+  "与主线的医学影像、多模态大模型推理不直接相关，属文本水印/溯源。",
+  "需成对微调释义器并保存密钥/分类器，部署与跨模型通用性受限。",
+  "对长文本/多语种的扩展性与人工阅读质量影响未见充分评测。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.83,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

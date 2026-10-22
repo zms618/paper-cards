@@ -1,0 +1,41 @@
+{
+ "title": "Task-Free Adaptive Meta Black-Box Optimization",
+ "one_line": "ABOM实现零样本黑盒优化，但计算开销大，扩展性证据有限。",
+ "innovations": [
+  "提出闭环自适应参数学习机制，将元训练与优化阶段解耦的传统MetaBBO改为参数化进化算子在优化中持续自更新",
+  "仅用目标任务自身产生的优化数据在线适配，摆脱对人工设计训练任务分布的依赖",
+  "在合成BBO基准与无人机路径规划真实问题上实现无任何手工训练任务的zero-shot优化"
+ ],
+ "method_framework": "ABOM用参数化进化算子（选择/交叉/变异）替代手工启发式，在优化过程中利用当前生成的种群与适应度数据在线更新算子参数，形成闭环自适应。无需离线元训练，直接在目标任务上一边优化一边调整搜索策略。",
+ "experiment_framework": "在合成黑盒优化基准函数与无人机路径规划真实问题上评测；对比手工设计优化器与既有MetaBBO方法；指标为收敛适应度/最优解质量；辅以可视化分析参数化算子是否呈现自然选择与遗传重组等搜索模式。",
+ "takeaways": [
+  "无需预定义任务分布也可通过在线闭环自更新获得有竞争力的优化性能",
+  "参数化进化算子在优化中自发呈现统计显著的搜索模式（自然选择、遗传重组）",
+  "该范式对任务唯一或数据稀缺、无法构造元训练分布的现实场景有价值"
+ ],
+ "weaknesses": [
+  "在线自适应引入额外计算开销，每次参数更新需消耗额外评估预算，昂贵目标函数下代价需权衡",
+  "验证基准仍以合成函数与UAV规划为主，对高维/昂贵真实工程优化的扩展性证据有限",
+  "与最新进化策略/CMA-ES等强自适应基线的对比强度与显著性需进一步确认"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Task-Free Adaptive Meta Black-Box Optimiza.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Task-Free Adaptive Meta Black-Box Optimiza.pdf",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "raw_overall": 5.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "零样本黑盒优化与可靠性主线中的自适应机制有实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

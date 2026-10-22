@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Srt Super-Resolution for Time Series via Dis-Entangled Rectified Flow.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Srt Super-Resolution for Time Series via Dis-Entangled Rectified Flow.pdf",
+ "title": "SRT: Super-Resolution for Time Series via Dis-Entangled Rectified Flow",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "解耦整流流用于时间序列超分，零样本能力有限。",
+ "innovations": [
+  "把整流流生成范式引入时间序列超分，并将输入解耦为趋势与季节分量分别建模",
+  "用隐式神经表示把分量对齐到目标分辨率，并设计跨分辨率注意力引导高分辨率细节生成",
+  "推出大规模预训练的SRT-large，实现强零样本时间序列超分"
+ ],
+ "method_framework": "先把低分辨率序列分解为趋势与季节分量，用隐式神经表示将二者对齐到目标分辨率；再以解耦整流流在跨分辨率注意力引导下生成高分辨率细节，重建低分辨率输入中丢失的时间模式；SRT-large在大规模数据上预训练以获得零样本迁移能力。",
+ "experiment_framework": "在9个公开时间序列数据集上评测，覆盖多个上采样尺度因子；对比既有时间序列重建/超分方法，报告SRT与SRT-large一致优于基线，并通过消融验证各组件有效性。",
+ "takeaways": [
+  "图像超分不能直接照搬，时间序列需按趋势/季节解耦后重建",
+  "跨分辨率注意力+隐式神经表示对齐能有效引导高分辨率细节生成",
+  "大规模预训练(SRT-large)带来跨数据集的零样本超分能力"
+ ],
+ "weaknesses": [
+  "解耦假设要求序列具有清晰趋势/季节性，对非平稳/突变型信号适配性未充分讨论",
+  "零样本评测主要在公开 benchmark，极端尺度因子与噪声下的失败模式分析有限",
+  "与可微上采样/频域插值等强基线的增益幅度相对量级不够突出"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "时间序列超分与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

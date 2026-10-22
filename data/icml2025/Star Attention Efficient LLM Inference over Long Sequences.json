@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Star Attention Efficient LLM Inference over Long Sequences.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Star Attention Efficient LLM Inference over Long Sequences.pdf",
+ "title": "Star Attention: Efficient LLM Inference over Long Sequences",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "两阶段块稀疏注意力加速长序列LLM推理，但多跳和超长序列有局限",
+ "innovations": [
+  "锚块机制解决块间注意力断层问题",
+  "分布式全局注意力聚合算法减少通信开销",
+  "与全局注意力模型无缝集成无需微调"
+ ],
+ "method_framework": "两阶段处理：第一阶段分布式局部上下文编码，第二阶段全局查询编码与生成，通过锚块和分布式softmax实现高效长序列处理",
+ "experiment_framework": "Llama3.1-8B/70B模型，RULER/BABILong/InfiniteBench基准，16K-1M序列长度，与Ring Attention/StreamingLLM/MInference对比",
+ "takeaways": [
+  "锚块内容对性能至关重要而位置ID影响较小",
+  "块大小可调节精度与效率权衡",
+  "特别适合检索和聚合任务"
+ ],
+ "weaknesses": [
+  "多跳追踪任务性能下降",
+  "长序列(>128K)固定块大小导致精度下降",
+  "仅针对特定查询-上下文模式优化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

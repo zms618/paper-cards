@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Directed Graph Grammars for Sequence-based Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Directed Graph Grammars for Sequence-based Learning.pdf",
+ "title": "Directed Graph Grammars for Sequence-based Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.75
+ },
+ "one_line": "将DAG映射为线性parse tree序列，用序列模型处理图学习任务",
+ "innovations": [
+  "给出图空间到序列空间严格的一一到上、确定性、合法映射，解决图解码因拓扑序多样导致的组合爆炸问题",
+  "用约束为线性parse tree的上下文无关图文法解析DAG，得到等价无损的图重写规则序列",
+  "结合最小描述长度(MDL)增量归纳文法，将DAG数据集压缩为parse序列，可直接复用Transformer等序列模型做图生成/性质预测/贝叶斯优化"
+ ],
+ "method_framework": "把每个DAG视为某无歧义图文法的一个推导；用受约束的上下文无关文法使parse tree为线性，DAG对应唯一的产生式规则序列；据此以MDL增量归纳文法并压缩数据集，得到无损且顺序固定的序列表征，从而可用成熟的序列生成/预训练模型处理DAG。",
+ "experiment_framework": "在电路/贝叶斯网络/分子等DAG数据上，评估图生成、性质预测潜空间学习与结构化贝叶斯优化任务，与图生成模型/图神经网络基线比较。",
+ "takeaways": [
+  "无歧义线性parse-tree图文法可将DAG无损、唯一地序列化为规则序列，消除解码顺序歧义",
+  "一旦图被理想token化，即可复用Transformer/生成预训练等序列建模进展做图学习"
+ ],
+ "weaknesses": [
+  "面向结构化数据(电路/贝叶斯网/分子)建模，与可靠性/验证器/多模态推理主线不直接重叠",
+  "线性parse-tree约束与DAG特性强绑定，推广到一般图/有环图需重新论证",
+  "仅依据前9页阅读，全部图生成与贝叶斯优化实验表未完全覆盖"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

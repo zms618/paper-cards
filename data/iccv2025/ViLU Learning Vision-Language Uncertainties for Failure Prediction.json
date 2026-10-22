@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/ViLU Learning Vision-Language Uncertainties for Failure Prediction.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/ViLU Learning Vision-Language Uncertainties for Failure Prediction.pdf",
+ "title": "ViLU Learning Vision-Language Uncertainties for Failure Prediction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 8.5,
+  "overall": 7.1
+ },
+ "one_line": "ViLU整合多模态表示预测VLM失效，但计算复杂度高且依赖预训练模型",
+ "innovations": [
+  "多模态不确定性表示整合视觉嵌入、预测文本嵌入和图像条件文本表示",
+  "基于加权二元交叉熵的失效预测分类器，与损失函数无关",
+  "适用于黑盒VLM的后验不确定性量化框架"
+ ],
+ "method_framework": "ViLU构建不确定性感知多模态表示，通过交叉注意力整合视觉嵌入、预测文本嵌入和图像条件文本表示，训练二元分类器区分正确与错误预测",
+ "experiment_framework": "在16个数据集(包括ImageNet-1k、CC12M、LAION-400M)上评估，使用AUC和FPR95指标，与MCM、BayesVLM等基线比较",
+ "takeaways": [
+  "多模态上下文信息对细粒度不确定性量化至关重要",
+  "直接预测失效比预测损失函数更有效",
+  "后验方法无需修改预训练模型即可部署"
+ ],
+ "weaknesses": [
+  "计算复杂度随候选概念数量增加",
+  "依赖预训练VLM的嵌入质量",
+  "未探索不同视觉编码器的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "多模态不确定性预测VLM失效，直击可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

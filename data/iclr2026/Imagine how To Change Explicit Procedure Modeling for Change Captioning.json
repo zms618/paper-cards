@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Imagine how To Change Explicit Procedure Modeling for Change Captioning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Imagine how To Change Explicit Procedure Modeling for Change Captioning.pdf",
+ "title": "Imagine how To Change: Explicit Procedure Modeling for Change Captioning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "ProCap通过动态过程建模改进变化描述，但创新有限且依赖预训练模型",
+ "innovations": [
+  "从静态图像比较到动态过程建模的范式转变",
+  "基于置信度的关键帧采样模块减少冗余",
+  "可学习的过程查询实现隐式过程描述生成"
+ ],
+ "method_framework": "ProCap采用两阶段设计：第一阶段通过帧插值生成中间帧，基于置信度采样关键帧，通过掩码重建任务学习过程表示；第二阶段引入可学习查询替代显式帧，实现高效端到端描述生成。",
+ "experiment_framework": "在CLEVR-Change、Spot-the-Diff和Image-Editing-Request三个数据集上评估，使用BLEU-4、METEOR、ROUGE-L和CIDEr指标，并与LLM和非LLM基线方法比较。",
+ "takeaways": [
+  "多粒度掩码策略增强时空动态建模",
+  "可学习查询机制避免推理时的高计算开销",
+  "跨模态对齐和时序一致性损失提升模型鲁棒性"
+ ],
+ "weaknesses": [
+  "依赖预训练帧插值模型可能限制泛化能力",
+  "关键帧采样策略可能丢失某些重要变化信息",
+  "计算效率提升依赖于查询数量k的选择"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "变化描述与可靠性主线无实质交点，仅属常规视觉任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

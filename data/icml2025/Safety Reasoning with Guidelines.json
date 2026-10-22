@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Safety Reasoning with Guidelines.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Safety Reasoning with Guidelines.pdf",
+ "title": "Safety Reasoning with Guidelines",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "用推理监督激活拒答模型潜在安全知识，提升OOD越狱鲁棒性",
+ "innovations": [
+  "用Best-of-N(而非贪心解码)评估发现：随N增大ASR显著下降，说明RT模型具备充分潜在安全知识，只是OOD下引不出",
+  "通过域适应分析指出直接RT导致依赖表层捷径、得到不可泛化的表示映射",
+  "合成与多元安全准则对齐的推理监督，训练模型对每个查询做安全推理以显式引出并利用潜在安全知识"
+ ],
+ "method_framework": "RT对OOD越狱泛化差。本文先用BoN采样评估，证明模型本有足够潜在安全知识；域适应分析定位RT使模型走表层捷径。据此合成反映多元安全视角的guideline对齐的推理链作为监督，训练模型对每个查询先做安全推理再回应，从而把潜在安全知识显式激活到OOD场景。",
+ "experiment_framework": "在多种OOD越狱攻击下评估攻击成功率(ASR)；对比RT及其他安全训练方法；用BoN与贪心解码对比；指标为ASR与有益问答的保持率。",
+ "takeaways": [
+  "RT模型的OOD脆弱性更多是'引不出潜在安全知识'而非'知识不足'",
+  "直接RT诱发表层捷径依赖，损害可泛化表示",
+  "安全推理(guideline对齐推理监督)能显式引出潜在安全知识、提升OOD鲁棒性"
+ ],
+ "weaknesses": [
+  "推理监督依赖合成guideline推理数据，对未覆盖的新型攻击类别仍可能外推不足",
+  "安全推理增加推理开销，且可能在拒答过度/过度敏感上引入误拒",
+  "主要在文本越狱攻击验证，对多模态越狱的迁移未充分展开"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

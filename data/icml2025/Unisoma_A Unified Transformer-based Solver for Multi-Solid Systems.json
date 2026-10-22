@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Unisoma_A Unified Transformer-based Solver for Multi-Solid Systems.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Unisoma_A Unified Transformer-based Solver for Multi-Solid Systems.pdf",
+ "title": "Unisoma: A Unified Transformer-based Solver for Multi-Solid Systems",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "显式建模多固体系统，但与主线关联弱且效率存疑。",
+ "innovations": [
+  "提出显式建模范式，将影响固体变形的接触/载荷/变形因子通过结构化模块显式表示，区别于传统隐式建模",
+  "设计统一灵活的Transformer模型处理可变数量固体，含接触模块与自适应交互分配机制",
+  "通过三元关系(接触-载荷-变形)学习变形，防止多固体间信息混淆"
+ ],
+ "method_framework": "Unisoma将每个固体独立编码，用接触模块显式建模固-固接触，自适应交互分配机制决定不同固体间的注意力权重，再以三元关系联合预测变形；支持自回归长时推演与可变固体数量。",
+ "experiment_framework": "在7个公开数据集(含冲压、挤压等)及2个自建复杂多固体任务上评测，对比10+基线(含GNN仿真器、隐式建模方法)，指标为长时预测RMSE与Relative L2，并做OOD泛化与GPU显存/效率对比。",
+ "takeaways": [
+  "显式建模在多固体耦合场景下优于隐式建模，避免固体增多时的信息混淆",
+  "Unisoma在7个数据集上持续达到SOTA，并具一定OOD泛化能力",
+  "Transformer架构可统一处理刚体与可变形固体的可变数量交互"
+ ],
+ "weaknesses": [
+  "面向科学计算/PDE仿真，与主线(可靠性/医学影像/多模态推理)无直接关联",
+  "自建数据集规模与物理场景覆盖有限，工业级高保真仿真验证不足",
+  "效率对比显示显存占用仍较高，实时部署可行性存疑"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

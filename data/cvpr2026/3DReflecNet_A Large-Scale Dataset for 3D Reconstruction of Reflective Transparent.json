@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/3DReflecNet_A Large-Scale Dataset for 3D Reconstruction of Reflective Transparent.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/3DReflecNet_A Large-Scale Dataset for 3D Reconstruction of Reflective Transparent.pdf",
+ "title": "3DReflecNet: A Large-Scale Dataset for 3D Reconstruction of Reflective, Transparent, and Low-Texture Objects",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "大规模非朗伯材质数据集，但实验完整性存疑",
+ "innovations": [
+  "以 Blender PBR + 2700 张 HDRI + 相机与物体间插入玻璃板的设置，合成 22 类材质、22TB 规模的非朗伯材质多视角数据，同时提供深度/法线/掩码/位姿等多路真值",
+  "提出真实采集绕开位姿估计的协议：把目标物置于高细节底座上放旋转平台，用 RealityScan 解底座位姿再用 SAM2 切除底座与背景，使反射/低纹理物体也能得到可靠真值相机轨迹",
+  "用 48 组 ⟨metallic, roughness, IOR, transmission⟩ 配置对 3DGS 做材质参数扫描，量化出三类系统性失败模式（光滑金属掉 16dB、低粗糙度缺纹理、透明介质统一掉 5.82dB）"
+ ],
+ "method_framework": "从 10K+ 现有形状库与扩散式 2D-to-3D 生成两条来源获取几何，配 22 种 PBR 材质与 HDRI 光照（含点光源）渲染每实例 60 视图及多路真值标注，玻璃板置于物-机之间产生镜面反射；真实部分用旋转平台+底座跟踪解位姿后切背景；最后在 8:1:1 划分上建立匹配/SfM/NVS/去反射/重光照五个任务基准。",
+ "experiment_framework": "图像匹配（AUC@5/10/20°）在 1000 个罗马雕像实例上与 SuperPoint/ LoFTR/ ROMA 等 10+ 方法比；NVS（PSNR）与表面重建（Chamfer）按 Diffuse/Transparent/Metallic/Glossy-Textured/Glossy-Low-Texture 五类各 5 个物体测 Instant-NGP、3DGS、Splatfacto、2DGS、Neus2、PGSR。",
+ "takeaways": [
+  " benchmark 设计上先剥离背景再评估，可避免背景纹理为位姿估计提供偷懒特征，这类'禁止旁路线索'的评测协议值得照搬到鲁棒性评测中",
+  "把材质当作可扫描的连续参数（而非离散类别）做性能曲线，比单纯报分更能定位重建算法的失效边界",
+  "合成-真实混合数据 + 五任务统一标注的构建范式，是材料感知 3D 方向低成本扩样（2D 参考图驱动 asset 生成）的实用路径"
+ ],
+ "weaknesses": [
+  "正文称 NVS 与表面重建评估六种代表方法，表 4 与表 5 实际只列 Instant-NGP、3DGS、Splatfacto、2DGS、Neus2、PGSR 中的四条/五条，且 SfM 仅给出图 11 定性图而无任何数值表，主 claim 无法从正文复核",
+  "反射移除、重光照以及全部真实数据实验被推到补充材料 G/I/E/H，正文自述的'SOTA 在这些任务上表现糟糕'缺乏对应数据表支撑",
+  "材质扫描只用单个 3DGS 模型跑 48 组配置，透明材质'统一掉 5.82dB'这类结论是否随形状/视角分布变化未被检验；全部指标均为单次数值，无方差或显著性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D重建数据集，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

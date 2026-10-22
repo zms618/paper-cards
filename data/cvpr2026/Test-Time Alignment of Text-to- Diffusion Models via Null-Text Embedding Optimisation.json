@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Test-Time Alignment of Text-to- Diffusion Models via Null-Text Embedding Optimisation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Test-Time Alignment of Text-to- Diffusion Models via Null-Text Embedding Optimisation.pdf",
+ "title": "Test-Time Alignment of Text-to- Diffusion Models via Null-Text Embedding Optimisation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "语义空间优化文本嵌入实现扩散模型测试时对齐，防过优化。",
+ "innovations": [
+  "在语义空间而非潜在空间进行优化，防止奖励黑客攻击",
+  "设计KL正则化目标函数，保持与预训练模型的一致性",
+  "贪心搜索机制选择最有潜力的潜在表示"
+ ],
+ "method_framework": "优化无条件文本嵌入而非潜在变量，在语义空间进行测试时对齐，结合KL散度正则化保持模型分布一致性，防止过优化。",
+ "experiment_framework": "使用HPSv2、PickScore和Aesthetic作为奖励指标，与DNO、DAS等基线方法比较，评估目标奖励优化和跨奖励泛化能力。",
+ "takeaways": [
+  "语义空间优化可有效防止奖励黑客攻击",
+  "轻量级更新仅需通过交叉注意力层，计算效率高"
+ ],
+ "weaknesses": [
+  "仅适用于文本到图像扩散模型",
+  "对非可微分奖励函数的优化效果有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "文本到图像对齐，非可靠性主线，但防过优化机制有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

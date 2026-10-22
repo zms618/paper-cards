@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Visual Generation Without Guidance.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Visual Generation Without Guidance.pdf",
+ "title": "Visual Generation Without Guidance",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "GFT算法简化采样过程，但创新有限且领域验证不足",
+ "innovations": [
+  "提出GFT算法，直接训练采样模型而非条件模型",
+  "引入伪温度参数β实现多样性-保真度权衡",
+  "设计简单实现，仅需少量代码修改",
+  "支持从零开始训练和微调两种模式"
+ ],
+ "method_framework": "GFT通过将条件模型表示为采样模型和无条件模型的线性组合，直接优化采样模型，引入伪温度参数β实现温度控制，仅需单模型采样。",
+ "experiment_framework": "在ImageNet和COCO数据集上测试5种视觉模型(DiT、VAR、LlamaGen、MAR、LDM)，使用FID、IS、CLIP等指标评估生成质量。",
+ "takeaways": [
+  "简单修改现有代码即可实现GFT",
+  "GFT收敛速度与CFG相当，训练稳定",
+  "微调阶段仅需1-5%预训练计算量即可达到接近CFG的性能"
+ ],
+ "weaknesses": [
+  "需要额外输入伪温度参数β",
+  "实验主要在标准数据集上进行，缺乏在特定领域(如医学影像)的验证",
+  "未充分探讨模型在不同噪声水平下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

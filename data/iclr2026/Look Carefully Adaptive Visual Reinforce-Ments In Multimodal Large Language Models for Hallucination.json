@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Look Carefully Adaptive Visual Reinforce-Ments In Multimodal Large Language Models for Hallucination.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Look Carefully Adaptive Visual Reinforce-Ments In Multimodal Large Language Models for Hallucination.pdf",
+ "title": "Look Carefully: Adaptive Visual REINFORCE-MENTS In Multimodal Large Language Models for Hallucination Mitigation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "AIR通过原型选择和OT减少多模态LLM幻觉，但计算开销大且调参敏感",
+ "innovations": [
+  "原型驱动的token减少机制",
+  "基于最优传输的patch强化策略",
+  "训练时无额外标注的幻觉缓解方法"
+ ],
+ "method_framework": "AIR框架包含两个核心组件：原型驱动的token减少压缩视觉token子集，OT引导的patch强化通过计算隐藏状态与patch嵌入的对齐度选择性整合关键区域到前馈层。",
+ "experiment_framework": "在LLaVA-1.5-7B、Qwen-VL和GLM-4V-9B上评估，使用CHAIR和POPE基准测试幻觉缓解，同时保持MME、MMBench等通用任务性能。",
+ "takeaways": [
+  "最优传输比余弦相似度能更好地区分关键视觉区域",
+  "选择性强化比全token注入更有效减少幻觉",
+  "中深层Transformer是视觉强化的最佳操作区域"
+ ],
+ "weaknesses": [
+  "最优传输计算可能增加推理延迟",
+  "阈值τ的选择需要仔细调优",
+  "未探索不同视觉编码器的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "幻觉缓解属于可靠性主线，且针对多模态大模型落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

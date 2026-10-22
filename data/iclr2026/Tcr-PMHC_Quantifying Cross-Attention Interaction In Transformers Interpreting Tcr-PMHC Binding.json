@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Tcr-PMHC_Quantifying Cross-Attention Interaction In Transformers Interpreting Tcr-PMHC Binding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tcr-PMHC_Quantifying Cross-Attention Interaction In Transformers Interpreting Tcr-PMHC Binding.pdf",
+ "title": "Quantifying Cross-Attention Interaction in Transformers for Interpreting TCR-pMHC Binding",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "QCAI解释TCR-pMHC结合，但基准小且未验证跨领域通用性",
+ "innovations": [
+  "提出QCAI：首个针对encoder-decoder transformer解码器交叉注意力的事后解释方法，弥补现有xAI仅支持encoder-only/co-attention的缺口",
+  "构建TCR-XAI基准：汇编274个实验测定的TCR-pMHC晶体结构，以CDR3-肽段物理距离作为结合重要性的ground truth",
+  "在该基准上同时报告可解释性与预测精度，QCAI在两方面均达SOTA"
+ ],
+ "method_framework": "TCR-pMHC结合预测模型(TULIP等)采用encoder-decoder架构，跨注意力连接CDR3与肽段序列。QCAI在解码器block中量化跨注意力交互，将跨注意力权重传播并聚合为每个氨基酸残基位置的重要性分数，从而定位实际参与结合界面的残基。",
+ "experiment_framework": "基准TCR-XAI含274个X射线晶体结构，计算CDR3与肽段交互区域残基间物理距离作为金标准；对比AttnLRP、TokenTM等事后xAI方法；指标为重要性分数与真实结构距离的一致性（可解释性）及结合预测准确率。",
+ "takeaways": [
+  "现有xAI方法无法直接处理SOTA TCR-pMHC预测所用的encoder-decoder交叉注意力架构",
+  "用晶体结构物理距离作ground truth可对免疫领域xAI做定量（而非仅定性）评估",
+  "QCAI给出的残基重要性与真实结合界面吻合，同时不损失预测精度"
+ ],
+ "weaknesses": [
+  "TCR-XAI仅274个结构，规模有限，且均为X射线晶体结构，对NMR/冷冻电镜或更宽抗原类型覆盖不足",
+  "QCAI是事后解释方法，忠实性仍依赖注意力权重的因果假设，未做受控干预验证",
+  "跨领域通用性（文中附录提及视觉/NLP）未在正文给出独立定量验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "免疫预测解释方法，未验证跨领域通用性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

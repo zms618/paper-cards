@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Gradient Descent Converges Arbitrarily Fast for Logistic Regression via Large and Adaptive Stepsizes.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Gradient Descent Converges Arbitrarily Fast for Logistic Regression via Large and Adaptive Stepsizes.pdf",
+ "title": "Gradient Descent Converges Arbitrarily Fast for Logistic Regression via Large and Adaptive Stepsizes",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 6
+ },
+ "one_line": "理论证明大自适应步长GD在线性可分逻辑回归上可任意快收敛。",
+ "innovations": [
+  "首次证明自适应步长GD在大基步长η下，平均迭代的风险上界为exp(-Θ(ηt))，η可任意大",
+  "建立了依赖margin的burn-in阶段下界t0，证明一阶方法达到小风险的迭代复杂度下限",
+  "将结果推广到指数损失、逻辑损失及更广泛的损失类，并在额外假设下推广到两层网络"
+ ],
+ "method_framework": "在线性可分逻辑回归上使用自适应步长η_t = η·(-ℓ⁻¹)′∘L(w_t)≈η/L(w_t)。小η时稳定收敛率exp(-Θ(t))；大η时进入EoS(echo) regime，风险非单调但平均迭代在t≥t0后达到exp(-Θ(ηt))的快收敛。等价于对变换损失ϕ(w)=-ℓ⁻¹(L(w))做常步长GD。",
+ "experiment_framework": "理论分析为主，辅以合成模拟(n=100, d=5, margin γ=0.25)在指数损失、逻辑损失、多项式损失上验证收敛速率曲线；无真实数据集实验。",
+ "takeaways": [
+  "大自适应步长虽导致风险非单调，但平均迭代可实现任意快收敛",
+  "burn-in阶段长度由数据margin决定，与基步长η无关",
+  "一阶方法达到小风险存在margin依赖的迭代复杂度下界"
+ ],
+ "weaknesses": [
+  "仅在线性可分的合成设置下分析，不可分(噪声)场景不适用",
+  "平均迭代而非最后迭代收敛，实际优化中需额外成本",
+  "前9页内未看到与真实深度学习模型的关联验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

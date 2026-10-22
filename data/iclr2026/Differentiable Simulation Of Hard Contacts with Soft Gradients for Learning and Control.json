@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Differentiable Simulation Of Hard Contacts with Soft Gradients for Learning and Control.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Differentiable Simulation Of Hard Contacts with Soft Gradients for Learning and Control.pdf",
+ "title": "Differentiable Simulation Of Hard Contacts with Soft Gradients for Learning and Control",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "改进可微模拟器梯度计算，但复杂系统泛化能力存疑",
+ "innovations": [
+  "DiffMJX结合自适应时间积分提高硬接触梯度准确性",
+  "距离接触(CFD)结合直通估计解决非接触物体梯度消失问题",
+  "保持物理模拟真实性的同时提供有意义的梯度信息"
+ ],
+ "method_framework": "基于MuJoCo XLA实现DiffMJX，结合自适应时间积分和碰撞检测平滑处理；引入CFD方法通过修改阻抗函数和参考加速度，仅在反向传播中应用直通估计器",
+ "experiment_framework": "立方体弹跳实验、台球模拟、立方体参数估计、模型预测控制任务，与中央差分和基线方法对比梯度准确性和计算效率",
+ "takeaways": [
+  "自适应积分显著提高梯度准确性同时保持计算效率",
+  "直通估计器可在不改变前向模拟的情况下提供有意义的非接触梯度",
+  "多步预测比单步预测更适合硬动力学系统的参数估计"
+ ],
+ "weaknesses": [
+  "CFD方法需要计算两次前向传播，增加计算开销",
+  "实验主要在简单物体和任务上验证，复杂系统泛化能力有待进一步验证",
+  "参数调优指南较为基础，可能需要更系统的调优方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "物理模拟方法与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

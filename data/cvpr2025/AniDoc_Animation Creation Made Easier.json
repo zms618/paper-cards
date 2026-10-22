@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/AniDoc_Animation Creation Made Easier.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AniDoc_Animation Creation Made Easier.pdf",
+ "title": "AniDoc: Animation Creation Made Easier",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 4.5,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "修复颜色泄漏的二值草图训练，点对应替代像素对齐的动画生成",
+ "innovations": [
+  "指出并修复同类方法的颜色泄漏：非二值 sketch（从彩色图用网络抽出的灰度线稿）含隐藏色信息，训练时模型学的是\"补颜色\"而非\"找对应\"，一旦喂真二值草图就崩；本文训练全程用二值 sketch（>200 置 255、其余置 0）",
+  "以显式对应关系替代像素级对齐假设：训练用 LightGlue+SIFT 抽参考图与首帧对应点、Co-Tracker 跨帧跟踪建点地图 P_seq；推理用 X-Pose 抽参考关键点、DIFT 语义特征在草图上找匹配点，使参考图与草图在姿态/角度/尺度上可大幅不一致",
+  "两阶段稀疏草图训练：第一阶段全帧草图学着色；第二阶段删掉中间帧草图，只给 S_1/S_T 与首尾点轨迹线性插值的高斯热图 G_t⊕P_t，同一套权重同时做着色与 in-betweening"
+ ],
+ "method_framework": "以 SVD 视频扩散为主干（参考图 latent 沿通道复制与噪声 latent 拼接，通过自注意力注入参考），双分支控制编码 sketch 与对应点图；训练用二值草图+50% 概率去背景增广，两阶段：稠密草图上色、稀疏草图（首尾 + 插值点轨迹）上色与插值。",
+ "experiment_framework": "自采 200 个 clip（10 个年代/风格）构建测试集，对比 LVCD、LVCD+IP、ToonCrafter+IP、ID-Animator 四法，指标 PSNR/SSIM/LPIPS/FID/FVD。",
+ "takeaways": [
+  "训练条件必须与真实输入分布严格对齐（二值草图），否则模型会学到条件里根本不存在的捷径——对任何条件生成工作都适用",
+  "用点轨迹（Co-Tracker / 插值点热图）做跨帧对应，可让同一参考图给姿态差异很大的多段动画稳定上色",
+  "稀疏条件训练（先稠密后稀疏两阶段）能用一个模型覆盖稠密与稀疏两种输入，省一套参数"
+ ],
+ "weaknesses": [
+  "测试集自建：从 10 个年代/风格随机抽 200 个 clip 自造参考图与草图对，协议非公开基准，数据分布由本文定义，与基线的可比性受限且无第三方复现入口",
+  "评估口径与生产可用性错位：为去掉背景把每帧背景裁掉再算 PSNR/SSIM/LPIPS，等于只评价前景，而背景生成质量（文章声称靠内部生成先验）完全没有量化",
+  "基线改造有补丁嫌疑：LVCD 原设定需首帧彩色图作参考，文中额外用 IP-Adapter 先上色再喂给 LVCD；ToonCrafter 同样需 IP-Adapter 补首末帧彩色图，等于给基线装了本文要解决的问题的模块",
+  "所有指标单点无方差；正文在结论段截断，缺推理成本、稀疏输入下的形变质量与长序列一致性衰减曲线"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "动画生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/RoMo Robust Motion Segmentation Improves Structure from Motion.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/RoMo Robust Motion Segmentation Improves Structure from Motion.pdf",
+ "title": "RoMo Robust Motion Segmentation Improves Structure from Motion",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "结合光流与极几何约束提升动态场景SfM鲁棒性",
+ "innovations": [
+  "结合光流与极几何约束的零次运动分割",
+  "利用预训练分割模型特征空间进行聚类",
+  "迭代优化相机姿态与运动分割掩码"
+ ],
+ "method_framework": "通过光流和极几何约束生成初始静态/动态掩码，利用SAMv2特征空间训练MLP分类器，迭代优化并最终通过SAMv2提升掩码分辨率",
+ "experiment_framework": "FBMS59/Casual Motion/VOS数据集评估分割性能，MPI Sintel/新收集数据集评估SfM相机姿态估计",
+ "takeaways": [
+  "几何约束与预训练模型特征结合可有效提升运动分割",
+  "迭代优化能显著减少掩码闪烁现象"
+ ],
+ "weaknesses": [
+  "依赖光流精度，极端遮挡场景性能下降",
+  "计算开销较大，每帧需4.67秒"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "提升SfM鲁棒性属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

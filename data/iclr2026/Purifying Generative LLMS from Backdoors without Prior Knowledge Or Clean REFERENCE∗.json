@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Purifying Generative LLMS from Backdoors without Prior Knowledge Or Clean REFERENCE∗.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Purifying Generative LLMS from Backdoors without Prior Knowledge Or Clean REFERENCE∗.pdf",
+ "title": "Purifying Generative LLMs from Backdoors without Prior Knowledge or Clean Reference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "无需触发器先验，通过合成后门变体提取共享签名净化LLM",
+ "innovations": [
+  "通过sanity check发现后门关联冗余编码于MLP层，注意力模块主要放大触发信号而不建立行为",
+  "把目标从定位特定触发器转向切断触发-行为关联",
+  "提出免疫式消除：对可疑模型合成多个不同触发-行为对的后门变体并与干净对照，反复出现的修改构成共享'后门签名'(类比抗原)"
+ ],
+ "method_framework": "不依赖已知触发器/干净模型：先在可疑模型上注入多种合成后门得到多个变体，对比其与干净对照的权重修改，提取跨变体共享的后门签名；据此中和高可疑组件，再轻量微调恢复流畅度。",
+ "experiment_framework": "在指令微调LLM上评测；面对多种后门攻击与威胁模型测试净化后抗性；同时测生成能力/流畅度保持。",
+ "takeaways": [
+  "无需触发器先验或干净参考即可净化后门，得到的模型可抵御多种后门攻击与威胁模型",
+  "后门关联冗余分布在MLP层、注意力仅起放大作用，是可利用的结构线索",
+  "轻量微调可在去后门后恢复生成流畅度"
+ ],
+ "weaknesses": [
+  "需对可疑模型合成多个后门变体并训练，计算成本与对未知攻击类型的覆盖性存疑",
+  "依赖'共享签名'假设，对单一样本/稀有后门的漏检风险未充分量化",
+  "与更强后门鲁棒方法、以及对正常能力的副作用权衡需后续页对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "可靠性主线：后门净化与鲁棒性防御，无需先验知识",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

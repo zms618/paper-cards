@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Restoring Pruned Large Language Models via Lost Component Compensation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Restoring Pruned Large Language Models via Lost Component Compensation.pdf",
+ "title": "Restoring Pruned Large Language Models via Lost Component Compensation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "补偿剪枝丢失的注意力组件恢复LLM性能",
+ "innovations": [
+  "发现剪枝丢失信息反映在注意力激活中",
+  "对比探测机制识别关键注意力头",
+  "丢失组件补偿方法恢复模型性能"
+ ],
+ "method_framework": "RestoreLCC框架包含对比探测和丢失组件补偿两个模块，通过激活编辑构建对比样本对，识别关键注意力头，并优化丢失信息方向的幅度进行补偿",
+ "experiment_framework": "在LLaMA-7B/13B模型上测试三种剪枝策略(非结构化/半结构化/结构化)，使用WikiText和多个常识推理基准评估，对比LoRA、DoRA等基线方法",
+ "takeaways": [
+  "注意力头在恢复过程中表现各异，需选择性恢复",
+  "次要组件可能比主要组件包含更多判别性信息",
+  "方法保持模型稀疏性和推理效率的同时提升性能"
+ ],
+ "weaknesses": [
+  "仅关注注意力头而忽略FFN模块",
+  "组件数量K的选择可能影响性能",
+  "任务特定恢复中仅使用少量样本可能限制泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

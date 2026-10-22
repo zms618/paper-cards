@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Diversifying Policy Behaviors via Extrinsic Behavior Curiosity.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Diversifying Policy Behaviors via Extrinsic Behavior Curiosity.pdf",
+ "title": "Diversifying Policy Behaviors via Extrinsic Behavior Curiosity",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "QD-IRL结合外部行为好奇心，提升策略多样性但迁移性存疑",
+ "innovations": [
+  "提出质量-多样性逆强化学习(QD-IRL)框架，将QD优化与IRL结合以从有限示教学到多样行为",
+  "提出外部行为好奇心(EBC)：由外部critic根据行为相对大型行为档案的新颖性给予额外好奇心奖励",
+  "证明EBC可通用地叠加到GAIL/VAIL/DiffAIL等QD-IRL实例以及梯度树QD-RL算法上"
+ ],
+ "method_framework": "在IRL推断奖励的基础上维护一个大型行为档案(behavioral archive)，外部critic衡量新行为相对该档案的新颖性并给出外在好奇心奖励，与任务奖励共同优化，驱使策略探索并保存多样且高质量的行为；从而突破传统IL只模仿单一专家策略、行为多样性与鲁棒性受限的问题。",
+ "experiment_framework": "在多个机器人locomotion任务上，将EBC加到GAIL/VAIL/DiffAIL等IRL基线及梯度树QD-RL算法，报告相对提升(最高185%/42%/150%)及在Humanoid上超越专家约20%的结果。",
+ "takeaways": [
+  "传统IL只能模仿单一专家策略，在随机/未见场景下鲁棒性差",
+  "外部行为好奇心奖励可显著提升QD-IRL的行为多样性与性能",
+  "EBC是通用技术，可叠加到多种IRL/QD-RL算法上"
+ ],
+ "weaknesses": [
+  "行为档案的存储规模与维护成本随任务复杂度增长",
+  "主要在仿真locomotion验证，真实机器人迁移未验证",
+  "好奇心奖励与任务奖励的平衡策略较经验化"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

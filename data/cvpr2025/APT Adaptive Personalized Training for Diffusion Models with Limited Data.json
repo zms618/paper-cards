@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/APT Adaptive Personalized Training for Diffusion Models with Limited Data.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/APT Adaptive Personalized Training for Diffusion Models with Limited Data.pdf",
+ "title": "APT: Adaptive Personalized Training for Diffusion Models with Limited Data",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 6.0,
+  "overall": 5.6
+ },
+ "one_line": "过拟合指示量驱动扩散模型自适应增广与加权，保个性化特征",
+ "innovations": [
+  "过拟合指示量γ_t=1−exp(−T(EMA[L_φ^DM]−EMA[L_θ^DM]))：按B=10个时间步分箱比较预训练与微调模型去噪损失的指数滑动平均差，γ_t同时充当增广概率p_augment=clamp(γ_t,0,0.8)与损失缩放(1−γ_t)L_DM，把StyleGAN式ADA的自适应增广搬到扩散个性化",
+  "Representation Stabilization：对微调模型与预训练模型同层中间特征分别约束均值与标准差，L_μ、L_σ为两层L2，直接压住过拟合导致的噪声预测ε分布偏移，保住去噪轨迹",
+  "Attention Alignment：用c*（带标识符的条件）与c（类token条件）分别取跨注意力图，对全部文本token在所有层与所有头做L2对齐L_attn，使'背包旁有个人'这类未显式提示的先验知识不被个性化冲掉"
+ ],
+ "method_framework": "在DreamBooth式LoRA微调上加三项正则：按分箱过拟合指示量驱动仿射增广概率与(1−γ_t)损失权重（ATA）；中间特征均值方差联合约束（RS）；标识符/类token两种条件下的跨注意力图对齐（AA），总损失L=L_aptDM+30(L_μ+L_σ)+3e-4·L_attn。",
+ "experiment_framework": "以SDXL为基础，DreamBooth与Textual Inversion数据集，基线DreamBooth/Custom Diffusion/DCO，指标CLIP-T、HPSv2、DINOv2、FID、Precision/Recall（源集用SDXL生成、目标集用个性化模型生成）与20人×20提示用户研究；rank-32 LoRA；4.6节缺失。",
+ "takeaways": [
+  "用预训练与微调模型的去噪损失差做在线过拟合指示量、再按分箱驱动自适应增广与损失权重，是把GAN的ADA骨架平移到扩散个性化最省事的结构",
+  "同时约束中间特征图的均值与方差比只对齐注意力更能压住噪声预测分布偏移，因为过拟合首先表现为统计量漂移而非注意力图案变化",
+  "对标识符token与类token两条条件分别取跨注意力图做对齐，可在不引入人/物共现语料的情况下保住'物体旁有其他实体'这类先验"
+ ],
+ "weaknesses": [
+  "表1中APT的CLIP-T(0.664)反而低于SDXL prior(0.666)，DINOv2参考图相似度(0.288)也低于prior(0.295)与仅加RS的0.290，说明文本对齐与身份保真两项并未超过原始prior，论文只用'DINOv2偏好特写构图'辩解，未补CLIPImg/ArcFace一类身份专项指标",
+  "消融只沿DreamBooth一条线逐级叠加（Base→+ATA→+RS→+AA），未检验三项组件叠加到Custom Diffusion或DCO后是否仍有增益；且+AA的完整APT在Precision(0.669)与DINOv2上均低于+RS(0.701/0.290)，即AA对保真有轻微代价而正文未承认",
+  "γ_t=1−exp(−T(EMA[L_φ]−EMA[L_θ]))把总步数T直接与两个均方去噪损失之差相乘，量纲与T强耦合且无归一化，分箱数B=10与λ_dist=30、λ_attn=3e−4、p_max=0.8均为一次性设定；4.5节后的过拟合指示量分析(4.6)与敏感性实验在给定文本中缺失，表1全部指标也无种子方差"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "扩散模型个性化方法，无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Uncalibrated Structure from Motion on a Sphere.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Uncalibrated Structure from Motion on a Sphere.pdf",
+ "title": "Uncalibrated Structure from Motion on a Sphere",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "球面SFM未标定初始化方法，创建新数据集但性能有限",
+ "innovations": [
+  "理论分析未标定球面双视图和多视图几何",
+  "全局未标定球面SFM初始化流程",
+  "创建PhoneSweep数据集用于评估"
+ ],
+ "method_framework": "先估计所有图像对的基本矩阵，通过参数搜索和优化找到焦长设置，最后进行点三角测量和束调整",
+ "experiment_framework": "PhoneSweep数据集(13个场景)和Deep View Video数据集，与COLMAP、GLOMAP、RadialSFM对比，使用RRA、RTA、AUC、AFE指标",
+ "takeaways": [
+  "球面运动下基本矩阵估计需要专用求解器",
+  "三视图及以上可实现自标定",
+  "球面约束可提高初始估计精度"
+ ],
+ "weaknesses": [
+  "相机位置估计在某些场景下仍有误差",
+  "未标定方法在非完美球面运动时性能下降",
+  "未与Sweeney等方法比较(无公开实现)"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "球面SFM属于传统几何问题，与可靠性主线无实质交集",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

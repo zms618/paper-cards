@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/A Focused Human Body Model for Accurate Anthropometric Measurements Extraction.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Focused Human Body Model for Accurate Anthropometric Measurements Extraction.pdf",
+ "title": "A Focused Human Body Model for Accurate Anthropometric Measurements Extraction",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 5.0,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.2
+ },
+ "one_line": "冻结SMPLer-X加旁路网络，动态损失聚焦人体围度测量",
+ "innovations": [
+  "Bypass Network：在冻结的 SMPLer-X（ViT-H/16）骨干上并联一个 CNN+ResNet 轻量旁路编码器（含下采样与 SirenReLU 激活 sin(γ·x+β)，用于捕捉高频细节），为骨干补充原始图像信息，避免端到端微调破坏预训练特征。",
+  "动态损失 LDL：L_coord=(1−α)Σ_{v∈M}w_i‖v̂−v‖² + αΣ_{v∈T/M}w_i‖v̂−v‖²，M 为按 ISO 8559 定义的测量部位顶点集（胸/腰/臀/腕/肩宽），α 从 0 随迭代逐步增大以动态重标定测量区与非测量区的权重；顶点权重 w_i 正比于其邻接三角面的平均面积，另叠加参数损失 L_para=‖θ−θ*‖²+‖β−β*‖²。",
+  "Fashion-body 数据集：30 名受试者的正/侧位 RGB 图像，加上 Mojave Flash LiDAR 输出的幅度图与距离图转换得到的点云与网格，并配人类学家手工测量的五项围度真值，用于支持从点云/网格而非 RGB 的测量评测。"
+ ],
+ "method_framework": "冻结 SMPLer-X 的 ViT-H/16 编码-解码骨干回归 SMPL-X 的 (θ,β,π)；并联一个可训练的 CNN+ResNet 旁路网络提供额外特征；训练时用动态损失把优化重心逐步移向 ISO 8559 定义的测量部位顶点；最后在重建网格上按测量平面与模板求交，累加相邻顶点曼哈顿距离得到围度。",
+ "experiment_framework": "开源 Body Measurements 数据集（391 男 / 324 女正侧图）、自建 Fashion-body（30 人，含 LiDAR 点云）与 LiDAR 数据；基线 Linear Regression、NeuralAnthro、作者自造 HMR-BMViT 与 4D-BMViT、商业 App 3DLook/Verifyt；指标 MAE / RPE / AMAD（厘米）。",
+ "takeaways": [
+  "「冻结大模型 + 轻量旁路支路」的参数高效迁移范式：只训练 20 分钟 / 20 epoch 的小支路就能把基础模型导向特定部位，避免全量微调破坏预训练能力，可直接用于其它需要局部精度的回归任务。",
+  "把课程学习写进损失函数：α 随迭代从 0 增大，实现「先学全局形状、再聚焦局部」，改动极小，是可迁移的训练技巧。",
+  "用既有行业标准（ISO 8559）定义测量平面，把「从网格算围度」变成确定性几何切片（平面与模板求交 + 相邻顶点距离累加），省掉一个回归头，是「能规则化就不要学」的范例。"
+ ],
+ "weaknesses": [
+  "自建 Fashion-body 仅 30 名受试者（18–24 岁），与商业 App 的对比只在 6 人规模上进行，样本量不足以支撑「优于主流商业测量软件」的结论，且全文无方差或显著性检验。",
+  "基线偏弱且非同类：Linear Regression 只用身高体重，HMR-BMViT / 4D-BMViT 是作者自造的组合基线，未在同等数据与训练预算下与 NeuralAnthro 以外的近期方法比较，提升幅度中混杂管线差异。",
+  "消融表在正文 9 页处被截断，且命名混乱（Point2Mesh / Our-BMViT / Ours w/o LDL 混用），无法核实旁路网络与动态损失各自的独立贡献，也无法排除二者相互抵消。",
+  "方法基本是启发式堆叠：α 的调度规则、SirenReLU 更适配高频细节的论断均缺乏原理推导或独立验证，λcoord=0.2、λpara=0.1 等为经验设定，无敏感性分析。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "人体测量与可靠性主线无实质交点，仅工程落地价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Pushing On Multilingual Reasoning Models with Language-Mixed Chain-of-Thought.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Pushing On Multilingual Reasoning Models with Language-Mixed Chain-of-Thought.pdf",
+ "title": "Pushing on Multilingual Reasoning Models with Language-Mixed Chain-of-Thought",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "英语锚点混合CoT提升韩语推理，但依赖教师模型且落地域偏离主线",
+ "innovations": [
+  "提出Language-Mixed CoT：在英语与目标语间切换推理，用英语做推理锚点以减少翻译伪影",
+  "构建YI-SANG：5.79M韩语prompt、3.7M由Qwen3-32B生成的长推理轨迹与260k高产子集",
+  "跨6个模型族训练9个(4B–35B)模型，验证该范式的通用性与中小模型增益"
+ ],
+ "method_framework": "收集目标语(韩语)多源prompt，用大教师模型生成长推理轨迹并做高产筛选；训练时采用英/目标语混合CoT格式，使推理锚定在英语、表层回答贴近目标语，蒸馏得到多语言推理模型。",
+ "experiment_framework": "9个基准上评测；对比monolingual CoT；最佳KO-REAson-35B报告平均分及9模型增益；并测跨语言与多模态迁移增益。",
+ "takeaways": [
+  "KO-REAson-35B以64.0平均分居5/9基准第一、其余第二，达SOTA",
+  "中小模型平均提升+18.6分，Language-Mixed CoT优于单语CoT",
+  "该范式还带来跨语言与多模态性能增益"
+ ],
+ "weaknesses": [
+  "落地域为韩语/多语言文本推理，非主线明确的医学影像或多模态大模型推理核心",
+  "强依赖Qwen3-32B教师生成轨迹，教师偏差会被继承",
+  "混合CoT在其他低资源语言的可迁移性、以及翻译伪影的量化分析不充分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.33,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "多语言文本推理偏离可靠性主线，但方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

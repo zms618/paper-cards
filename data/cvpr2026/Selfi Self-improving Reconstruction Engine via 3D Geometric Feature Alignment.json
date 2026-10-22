@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Selfi Self-improving Reconstruction Engine via 3D Geometric Feature Alignment.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Selfi Self-improving Reconstruction Engine via 3D Geometric Feature Alignment.pdf",
+ "title": "Selfi Self-improving Reconstruction Engine via 3D Geometric Feature Alignment",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "基于特征对齐的自监督3D重建，但计算开销大且多视图鲁棒性不足",
+ "innovations": [
+  "基于重投影的特征一致性损失实现几何对齐",
+  "使用VGGT输出作为伪地面真值进行自监督训练",
+  "结合密度球谐函数处理视图依赖性和不确定性",
+  "深度偏移调整优化束调整后的高斯参数"
+ ],
+ "method_framework": "冻结VGGT主干网络，训练轻量级特征适配器实现几何对齐，再通过U-Net解码器预测3D高斯参数，最后使用束调整优化相机姿态并应用深度偏移调整",
+ "experiment_framework": "在DL3DV和RealEstate10K数据集上评估，与AnySplat、WorldMirror等方法比较，使用PSNR、SSIM、LPIPS指标，测试不同序列长度和重叠度",
+ "takeaways": [
+  "特征对齐是提升3D重建质量的关键",
+  "自监督伪标签可有效利用基础模型输出",
+  "密度球谐函数能处理视图依赖性和不确定性"
+ ],
+ "weaknesses": [
+  "随着输入帧数增加性能下降",
+  "仅使用两个视图时鲁棒性降低",
+  "计算资源需求较高"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D重建与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

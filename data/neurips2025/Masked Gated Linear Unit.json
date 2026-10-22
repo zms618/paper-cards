@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Masked Gated Linear Unit.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Masked Gated Linear Unit.pdf",
+ "title": "Masked Gated Linear Unit",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.75
+ },
+ "one_line": "MGLU通过共享权重和掩码优化LLM内存访问，但训练开销大且缺乏大规模验证。",
+ "innovations": [
+  "Mixture of Element-wise Gating (MoEG)架构",
+  "FlashMGLU高效CUDA内核实现",
+  "单权重矩阵实现门控机制"
+ ],
+ "method_framework": "MGLU使用共享权重矩阵和互补二进制掩码替代传统GLU的双权重矩阵，通过MoEG架构实现元素级门控，FlashMGLU内核优化内存访问模式。",
+ "experiment_framework": "Llama 3架构模型(159M和1.08B)，在FineWeb-Edu上预训练，评估6个下游任务的零样本和两样本准确率及困惑度。",
+ "takeaways": [
+  "掩码数量增加可提升模型性能但存在边际效益",
+  "FlashMGLU内核显著减少内存访问并提升推理速度",
+  "训练时掩码学习对模型性能至关重要"
+ ],
+ "weaknesses": [
+  "训练时间增加约两倍",
+  "掩码数量增加时计算开销增大",
+  "缺乏对更大规模模型的验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

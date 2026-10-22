@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Efficient Diffusion Models for Symmetric Manifolds.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficient Diffusion Models for Symmetric Manifolds.pdf",
+ "title": "Efficient Diffusion Models for Symmetric Manifolds",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "对称流形扩散模型，理论创新但实验不足，与主线无关",
+ "innovations": [
+  "引入空间变化协方差的扩散模型，利用欧氏布朗运动的投影绕过热核计算，避免了指数级维度运算或O(d)梯度评估",
+  "通过Ito引理推导了新的高效训练目标，每步运行O(1)梯度评估和近线性（O(d^1.19)）算术运算",
+  "利用流形对称性证明扩散满足平均Lipschitz条件，实现准确高效的样本生成"
+ ],
+ "method_framework": "在对称空间Riemannian流形（环面、球面、SO(n)、U(n)）上定义扩散过程，通过空间变化协方差将欧氏布朗运动投影到流形上；用Ito引理推导训练目标，避免显式计算热核或Riemannian散度算子；流形的对称性保证了理论收敛和采样精度。",
+ "experiment_framework": "在多种对称流形（环面、球面、正交群等）上验证，对比现有流形扩散模型和欧氏基线，指标为样本质量（如似然/FID类）和每步计算开销。",
+ "takeaways": [
+  "该框架显著缩小了流形扩散与欧氏扩散模型之间的效率差距",
+  "空间变化协方差+投影方法避免了热核计算这一主要瓶颈",
+  "流形对称性为扩散的平均Lipschitz条件提供了理论保证"
+ ],
+ "weaknesses": [
+  "属于流形扩散理论方向，与鲁棒性/医学影像/多模态推理主线无关",
+  "方法仅适用于对称流形，对一般非对称流形的适用性有限",
+  "前9页仅看到框架概述，具体的投影方法和实验结果未充分展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

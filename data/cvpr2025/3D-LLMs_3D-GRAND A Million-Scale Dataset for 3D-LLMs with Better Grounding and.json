@@ -1,0 +1,43 @@
+{
+ "key": "cvpr2025/3D-LLMs_3D-GRAND A Million-Scale Dataset for 3D-LLMs with Better Grounding and.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3D-LLMs_3D-GRAND A Million-Scale Dataset for 3D-LLMs with Better Grounding and.pdf",
+ "title": "3D-GRAND: A Million-Scale Dataset for 3D-LLMs with Better Grounding and Less Hallucination",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 4.5,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 4.8
+ },
+ "one_line": "大规模3D-text数据集与评测基准，方法为组件拼接",
+ "innovations": [
+  "将grounding粒度形式化为三层(段落级集合对集合/会话级多对一/名词级一对一)，并坚持每个名词短语都绑定一个3D物体，与SceneVerse的稀疏grounding形成可控对照",
+  "标注流水线用场景图做中间表示：3D模型→2D图→GPT-4V属性→JSON场景图→GPT-4生成标注→幻觉过滤器删除引用了不存在物体ID的样本，从源头抑制标注自身幻觉",
+  "提出3D-POPE：以1:1正负样本比的物体存在性是非问询，配random/popular/adversarial三种负样本采样(对抗样本按训练集共现频率选，与POPE不同以避免与popular重复)来量化3D-LLM的物体幻觉"
+ ],
+ "method_framework": "从3D-FRONT(21.8k)与Structured3D(18.2k)取40,087个合成室内场景生成逐房间点云；用GPT-4V为每个物体生成属性并组织成可保证正确的场景图，再由GPT-4依提示生成8类任务(Grounded物体引用/场景描述/空间关系/属性/计数/存在性QA)共6.2M条，最后过幻觉过滤与模板增强。",
+ "experiment_framework": "3D-POPE(基于ScanNet val + ScanNet200类别)报Precision/Recall/F1/Accuracy/Yes%；对比3D-LLM、3D-VisTA、LEO与随机基线；另有ScanRefer与规模scaling实验",
+ "takeaways": [
+  "3D-POPE的三种负样本采样(尤其按共现频率构造对抗样本)可直接迁移为多模态大模型幻觉评测的通用协议，比单一random负样本更能暴露'顺嘴说Yes'的偏置",
+  "用'可保证正确的结构化中间表示(场景图)'约束LLM生成、再对输出做幻觉过滤，是低成本大规模构建可信标注的可复用范式",
+  "以数据规模为唯一自变量做scaling曲线，把'更多grounding数据→更低幻觉率'这一claim隔离出来验证"
+ ],
+ "weaknesses": [
+  "方法层面无新机制，标注流水线是GPT-4V+GPT-4+过滤器的现成组件拼接；核心贡献是数据规模与算力投入",
+  "标注错误率5.6-8.2%由作者自己的人工质检给出，且仅基于5,100条样本，质检者是否与生成模型同源、是否存在系统性偏差未说明",
+  "数据以合成场景(3D-FRONT/Structured3D)为主，sim-to-real仅给出'early signals'，实扫场景上的结论强度有限；3D-POPE虽基于ScanNet但模型训练主要在合成域",
+  "3D-POPE上最好结果为Ours 0-shot(Grounding)，其Precision从random 93.34掉到adversarial 69.86，说明抗共现偏置能力仍弱，论文未针对该退化做进一步机制分析",
+  "正文在第5节实验开头'...demonstrating the e'处截断，ScanRefer结果表、scaling曲线、与SceneVerse等稀疏grounding数据集的对照消融均无法核验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "数据集构建与评测基准，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

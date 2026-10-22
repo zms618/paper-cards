@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Why Has Predicting Downstream Capabilities ofFrontier AI Models with Scale Remained Elusive.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Why Has Predicting Downstream Capabilities ofFrontier AI Models with Scale Remained Elusive.pdf",
+ "title": "Why Has Predicting Downstream Capabilities ofFrontier AI Models with Scale Remained Elusive",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6
+ },
+ "one_line": "诊断多选QA指标变换如何破坏性能-规模关系，但未提供解决方案",
+ "innovations": [
+  "指出并形式化下游多选指标从NLL经多步变换逐步劣化'性能-规模'统计关系的问题链条",
+  "定位根因：多选指标要把正确项与少量特定错误项对比，故预测下游能力不仅要预测概率如何集中到正确项，还要预测其在各错误项上如何波动",
+  "用5个模型家族、12个成熟多选基准实证该机制，并给出让下游评测可随规模预测的路径"
+ ],
+ "method_framework": "把下游多选准确率追溯回模型的负对数似然(NLL)，刻画从NLL到最终指标(如取argmax、正确率)的一连串非线性变换；分析每一步变换如何切断性能与规模间原本干净的幂律关系；对比正确项概率质量与错误项概率质量随规模的演化，解释为何准确率-规模曲线出现拐点/不可预测。",
+ "experiment_framework": "5个前沿模型家族 × 12个成熟多选QA基准；追踪各模型在缩放过程中NLL、正确项概率、各错误项概率的变化；将下游指标的不可预测性归因到具体变换步骤。",
+ "takeaways": [
+  "下游多选指标不可随规模预测，很大程度源于指标构造(比较少量错误项)而非模型本身",
+  "要可预测地外推下游能力，必须同时建模正确项与错误项概率质量随规模的演化",
+  "工作为构建'可随规模预测的'前沿模型评测指明了方向"
+ ],
+ "weaknesses": [
+  "主要聚焦多选QA基准，对开放式生成/推理类评测的可预测性讨论有限",
+  "属诊断/分析性工作，虽指明路径但未给出一套经完整验证的可预测评测新方法",
+  "与鲁棒性主线及医学影像/多模态推理落地域关系较弱，偏缩放律方法论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.55,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

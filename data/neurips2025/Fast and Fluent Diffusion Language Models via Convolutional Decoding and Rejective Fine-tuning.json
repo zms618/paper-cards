@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Fast and Fluent Diffusion Language Models via Convolutional Decoding and Rejective Fine-tuning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Fast and Fluent Diffusion Language Models via Convolutional Decoding and Rejective Fine-tuning.pdf",
+ "title": "Fast and Fluent Diffusion Language Models via Convolutional Decoding and Rejective Fine-tuning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "常规方法组合，长解码窗口问题分析不足",
+ "innovations": [
+  "定义长解码窗口问题并分析半自回归的时间间隔扩展问题",
+  "卷积解码方法通过归一化而非硬分段缩小解码窗口",
+  "拒绝规则微调(R2FT)直接减少模型对重复和高频词的偏好"
+ ],
+ "method_framework": "卷积解码使用1D卷积核计算位置权重，通过归一化函数调整解码概率；R2FT通过规则生成的重复样本进行负向微调，减少模型对无关模式的偏好。",
+ "experiment_framework": "在AlpacaEval上评估G-Eval分数和采样速度，与扩散模型基线比较，验证方法在开放文本生成任务上的SOTA性能。",
+ "takeaways": [
+  "通过归一化而非硬分段解决长解码窗口问题，保持双向性和速度",
+  "规则生成的负样本比模型生成的负样本更安全有效"
+ ],
+ "weaknesses": [
+  "未充分验证双向生成能力，仅提供概念证明",
+  "实验主要关注开放文本生成，未评估其他下游任务"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

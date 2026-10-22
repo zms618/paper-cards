@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Watch the Weights Unsupervised Monitoring and Control Of Fine-Tuned LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Watch the Weights Unsupervised Monitoring and Control Of Fine-Tuned LLMS.pdf",
+ "title": "Watch the Weights: Unsupervised Monitoring and Control of Fine-Tuned LLMs",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "通过权重差SVD分解无监督检测LLM微调行为，但计算开销与闭源限制明显",
+ "innovations": [
+  "提出权重空间解读方法：微调模型与基座模型权重差的顶奇异向量对应新习得行为，摆脱了对分布相似训练数据的依赖",
+  "沿奇异向量方向监控激活余弦相似度，高精度检测微调引入的显著行为",
+  "后门检测率达100%（假阳性率<1%），遗忘检测准确率95.42%，甚至可逆转遗忘恢复\"已删除\"信息"
+ ],
+ "method_framework": "对微调模型与基座模型的权重矩阵之差进行SVD分解，取顶奇异向量作为\"行为方向\"。推理时监控激活在这些方向上的投影强度（余弦相似度），即可检测该行为是否被触发。无需任何分布相似的训练数据，纯无监督。",
+ "experiment_framework": "在后门攻击检测、遗忘效果检测、商业指令微调模型审计三类任务上验证。后门检测：多种后门攻击方法，指标为检测率和假阳性率。遗忘检测：检测模型是否在已\"删除\"主题上仍能推理。模型审计：分析OLMo、Llama、Qwen等商业模型的微调焦点。",
+ "takeaways": [
+  "权重差的低秩结构高度集中——微调引入的新行为可用少数奇异向量充分表征",
+  "基于权重的监控方法不依赖训练数据分布，能有效检测OOD的后门和异常行为",
+  "该方法可用于部署前模型审计，揭示商业模型的微调侧重点（如数学、emoji、Midjourney提示生成）"
+ ],
+ "weaknesses": [
+  "需要访问基座模型权重，对于闭源API模型无法应用",
+  "权重差SVD分解在大规模模型上的计算开销未详细分析",
+  "方法对混合多种微调行为的模型，不同行为方向的可分离性未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "无监督监控LLM微调行为，直接关联可靠性主线中的风险认证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

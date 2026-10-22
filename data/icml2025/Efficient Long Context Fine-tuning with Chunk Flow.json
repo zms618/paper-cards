@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Efficient Long Context Fine-tuning with Chunk Flow.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficient Long Context Fine-tuning with Chunk Flow.pdf",
+ "title": "Efficient Long Context Fine-tuning with Chunk Flow",
+ "scores": {
+  "novelty": 4,
+  "depth": 5,
+  "evidence": 5,
+  "relevance": 3,
+  "overall": 4.3
+ },
+ "one_line": "ChunkFlow通过分块重组和调度优化长上下文训练效率",
+ "innovations": [
+  "提出以分块为中心的训练方法ChunkFlow，将短序列合并、长序列切分为统一大小chunk，解决长SFT数据的长尾分布导致的负载不均",
+  "引入状态感知chunk调度机制，使训练峰值内存主要由chunk大小而非数据集最大序列长度决定",
+  "将chunk调度与现有流水线调度算法结合，进一步减少流水线气泡，提升分布式训练效率"
+ ],
+ "method_framework": "将输入数据集的长短序列统一重组为固定大小的chunk序列；短序列被填充/合并为chunk，长序列被切分为多个chunk；通过状态感知调度器在数据并行和流水线并行中均匀分配chunk负载，避免长序列导致的GPU内存浪费和流水线气泡。",
+ "experiment_framework": "在LLM长上下文微调任务上与Megatron-LM对比，指标为训练吞吐/加速比、GPU利用率和最终模型精度；验证不同chunk大小和序列长度分布下的性能。",
+ "takeaways": [
+  "ChunkFlow相比Megatron-LM在长上下文微调中最高加速4.53倍",
+  "统一chunk化解决了长短序列混合导致的负载不均和内存浪费问题",
+  "方法可推广到长上下文持续预训练等其他场景"
+ ],
+ "weaknesses": [
+  "属于训练系统/工程优化论文，与鲁棒性/可信AI/医学影像/多模态推理主线无关",
+  "短序列合并可能破坏序列边界的语义完整性，对模型精度的影响需更多消融",
+  "前9页仅看到系统设计概述，具体的精度对比和与其他长上下文方法的效果对比未充分展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

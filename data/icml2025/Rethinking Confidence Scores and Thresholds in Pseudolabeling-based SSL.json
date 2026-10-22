@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Rethinking Confidence Scores and Thresholds in Pseudolabeling-based SSL.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Rethinking Confidence Scores and Thresholds in Pseudolabeling-based SSL.pdf",
+ "title": "Rethinking Confidence Scores and Thresholds in Pseudolabeling-based SSL",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "用第一性原理学习伪标签置信度与阈值，提供误差控制旋钮。",
+ "innovations": [
+  "从第一性原理出发同时学习置信分数与阈值，而非沿用启发式阈值，直接解决分数过自信/误校准问题。",
+  "引入显式误差(error)控制旋钮，使实践者可按目标错误率精确控制伪标签的质量与数量。",
+  "给出误差参数选择与最终模型性能之间权衡的新洞见，并与现代 SSL 方法集成。"
+ ],
+ "method_framework": "不再用固定启发式阈值切模型 softmax 置信度，而是联合学习置信分数与阈值，以可显式设定的目标错误率为约束选择伪标签点；通过控制伪标签质量/数量的权衡，缓解确认偏差(确认偏误)与过保守两类极端，从而同时提升准确率与训练效率。",
+ "experiment_framework": "将该框架与主流现代 SSL 方法集成，在半监督分类基准上对比准确率与训练效率；系统分析误差旋钮取值对伪标签数量、质量及最终模型性能的影响曲线。",
+ "takeaways": [
+  "伪标签的过自信与误校准是启发式阈值长期未解决的根因，导致错误伪标签与收敛变慢。",
+  "显式误差控制能在质量-数量间取得更好平衡，集成后显著提升 SSL 准确率与训练效率。",
+  "误差旋钮为实践者提供了可调的、有原则的伪标签控制方式。"
+ ],
+ "weaknesses": [
+  "依赖对目标错误率的先验设定，真实场景中该值难以预先精确获知。",
+  "主要在标准半监督图像分类基准验证，向其他模态/大规模数据的可迁移性未充分论证。",
+  "学习置信分数与阈值带来额外训练开销，相对简单阈值法的成本-收益未充分量化。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

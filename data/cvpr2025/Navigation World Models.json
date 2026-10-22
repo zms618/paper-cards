@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Navigation World Models.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Navigation World Models.pdf",
+ "title": "Navigation World Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "条件扩散Transformer实现导航规划，但长期预测与泛化能力有限",
+ "innovations": [
+  "条件扩散Transformer(CDiT)架构，计算复杂度与上下文长度呈线性关系",
+  "单一模型跨环境和具身体的导航世界模型",
+  "在未知环境中从单图像生成轨迹的能力",
+  "支持约束条件的导航规划框架"
+ ],
+ "method_framework": "Navigation World Model(NWM)使用条件扩散Transformer(CDiT)预测未来视觉状态，结合时间偏移和导航动作作为条件，通过能量函数最小化实现轨迹规划与评估。",
+ "experiment_framework": "在SCAND、TartanDrive、RECON等机器人导航数据集上评估，使用LPIPS、DreamSim、PSNR、FID、FVD等指标，与DIAMOND、GNM、NoMaD等基线比较。",
+ "takeaways": [
+  "条件扩散Transformer在保持性能的同时显著降低计算复杂度",
+  "多目标训练策略提升模型预测性能",
+  "世界模型可增强现有导航策略并支持约束规划"
+ ],
+ "weaknesses": [
+  "长期预测能力随时间推移而下降",
+  "未充分探索模型在极端环境下的泛化能力",
+  "计算资源需求高(1B参数)"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "导航世界模型与可靠性主线无实质交织，仅为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

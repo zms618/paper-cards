@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/WorldSimBench_Towards Video Generation Models as World Simulators.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/WorldSimBench_Towards Video Generation Models as World Simulators.pdf",
+ "title": "WorldSimBench: Towards Video Generation Models as World Simulators",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "提出层级分类与双轨评测框架，评估视频生成模型作为世界模拟器的能力。",
+ "innovations": [
+  "提出预测生成模型的层级能力分类(S0预测模型→S3世界模拟器)，按内在特征而非表面任务归类",
+  "构建显式感知评测(视觉偏好/对齐)与隐式操控评测(具身任务动作级)并行的双轨评估框架",
+  "覆盖开放式具身环境、自动驾驶、机器人操作三类代表性具身场景，对接EvalCrafter/VBench/EgoPlan/MMWorld等现有基准"
+ ],
+ "method_framework": "把'预测生成模型'按能力分为若干层级，本工作首次评测到S3世界模拟器层级；对每个层级同时做两类评测：显式感知评测(从人眼视角看视觉质量、图文/动作对齐、前后景一致性)与隐式操控评测(把生成画面作为观测喂给具身智能体，测任务规划、轨迹/速度预测、安全性等动作级指标)。",
+ "experiment_framework": "三类具身场景(开放式具身环境/自动驾驶/机器人操作)；评测对象为主流视频生成/预测模型；指标分显式感知类(美学、对齐、一致性)与隐式操控类(任务成功率、轨迹预测、安全)；与VBench、EvalCrafter、EgoPlan-Bench、MMWorld、VAB等基准对接。",
+ "takeaways": [
+  "现有视频生成模型在显式视觉感知上已较强，但在隐式操控级(作为世界模拟器驱动具身决策)仍有明显差距",
+  "层级化分类揭示了从'好看的视频'到'可用的世界模型'之间的能力断层",
+  "双轨并行评测能同时覆盖人眼偏好与动作级可用性，比单一视频质量指标更能反映世界模拟能力"
+ ],
+ "weaknesses": [
+  "属基准/评测论文，与鲁棒性/可信AI主线及医学影像落地域关系较弱",
+  "隐式操控评测依赖下游具身智能体，评测结果会受智能体本身能力干扰，因果归因不纯",
+  "场景与指标仍为作者设定，'世界模拟器'能力的完整覆盖(如长期物理一致性、反事实)可能不全"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

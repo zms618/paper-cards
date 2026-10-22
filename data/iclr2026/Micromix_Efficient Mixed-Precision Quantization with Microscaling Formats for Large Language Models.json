@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Micromix_Efficient Mixed-Precision Quantization with Microscaling Formats for Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Micromix_Efficient Mixed-Precision Quantization with Microscaling Formats for Large Language Models.pdf",
+ "title": "MicroMix: Efficient Mixed-Precision Quantization with Microscaling Formats for Large Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "Blackwell专属MX格式混合精度量化，5比特逼近FP16但硬件绑定强",
+ "innovations": [
+  "针对Blackwell架构协同设计MX格式混合精度量化算法与GEMM内核",
+  "内核支持MXFP4/FP6/FP8通道任意组合并输出BF16",
+  "用量化阈值识别低精度误差过大的激活元素，选择性分配高精度通道"
+ ],
+ "method_framework": "基于Microscaling数据格式，GEMM内核支持MXFP4/FP6/FP8通道任意组合；对每个线性层用阈值找出低精度会引入过大误差的激活元素，仅对这些通道分配更高精度，兼顾精度与效率。",
+ "experiment_framework": "在Llama与Qwen系列评测，平均5比特达近FP16精度，Qwen2.5-32B在zero-shot/代码/数学基准无损；RTX5070Ti/5090上较TensorRT-FP16加速2.29-3.38倍。",
+ "takeaways": [
+  "MX格式混合精度能更好利用FP4 Tensor Core",
+  "按层阈值分配高精度通道可在极低比特保精度",
+  "算法与硬件内核协同设计是量化提速关键"
+ ],
+ "weaknesses": [
+  "relevance偏离主线，属推理量化效率而非可靠性或医疗影像",
+  "收益高度绑定Blackwell/MX硬件，跨平台可移植性受限",
+  "仅在Llama/Qwen上验证，对超长上下文与多模态模型未覆盖"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "推理量化效率工作，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

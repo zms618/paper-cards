@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/PROTAC_Domain-Adapted Diffusion Model for PROTAC Linker DesignThrough the Lens of Density Ratio in Chemical Space.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/PROTAC_Domain-Adapted Diffusion Model for PROTAC Linker DesignThrough the Lens of Density Ratio in Chemical Space.pdf",
+ "title": "Domain-Adapted Diffusion Model for PROTAC Linker Design Through the Lens of Density Ratio in Chemical Space",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "elevance": 4.0,
+  "evidence": 5.5,
+  "overall": 5.3
+ },
+ "one_line": "密度比校正扩散模型适配PROTAC linker生成，缺乏实验验证",
+ "innovations": [
+  "用密度比估计显式刻画小分子与PROTAC化学空间的分布错配",
+  "将目标score估计器分解为预训练score+轻量score校正项，免全量重训",
+  "在有限PROTAC数据上避免过拟合，高效域适配生成高质量linker"
+ ],
+ "method_framework": "把PROTAC域适配看作化学空间的密度比估计问题；将PROTAC分布的score表示为预训练小分子score加上由密度比导出的校正项；只轻量微调校正项，即可在小样本PROTAC数据上生成连接两个配体的linker。",
+ "experiment_framework": "在PROTAC linker生成任务上评测；对比直接在小分子数据训练的扩散模型与全量微调；指标为生成分子的化学有效性、结构合理性与对接/物理约束满足。",
+ "takeaways": [
+  "小分子预训练扩散直接迁移到PROTAC存在显著化学空间错配",
+  "密度比桥接可在小样本下高效适配，避免全量微调过拟合",
+  "score分解使域适配只需训练轻量校正项"
+ ],
+ "weaknesses": [
+  "与医学影像、多模态大模型推理主线关联弱",
+  "缺乏湿实验/真实药物活性验证，仅计算指标",
+  "密度比估计在更大化学空间偏移下的稳健性未充分检验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

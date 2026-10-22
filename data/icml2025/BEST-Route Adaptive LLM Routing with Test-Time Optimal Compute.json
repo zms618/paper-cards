@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/BEST-Route Adaptive LLM Routing with Test-Time Optimal Compute.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/BEST-Route Adaptive LLM Routing with Test-Time Optimal Compute.pdf",
+ "title": "BEST-Route: Adaptive LLM Routing with Test-Time Optimal Compute",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "动态路由+best-of-n采样降低LLM推理成本60%，性能损失<1%",
+ "innovations": [
+  "多头路由器动态评估查询难度并选择适当模型",
+  "测试时最优计算策略利用best-of-n采样增强小模型性能",
+  "内存高效的代理奖励模型用于响应质量评估"
+ ],
+ "method_framework": "BEST-Route框架包含两个关键组件：1)成本高效的多头路由器动态评估查询难度选择模型和计算资源；2)测试时最优计算策略利用best-of-n采样提升小模型性能，确保简单查询由小模型处理，复杂查询由大模型处理。",
+ "experiment_framework": "在10K指令数据集(8K/1K/1K划分)和8个流行LLM上评估，使用armoRM评分衡量响应质量，基于输入输出token定价计算推理成本，并在MT-Bench上进行OOD评估。",
+ "takeaways": [
+  "代理奖励模型可有效替代昂贵的人类评估或LLM评分系统",
+  "动态路由与测试时优化结合可实现显著成本节约同时保持高质量"
+ ],
+ "weaknesses": [
+  "路由器训练依赖于参考模型，可能限制其在不同模型间的泛化能力",
+  "输出长度估计可能导致成本计算不准确"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

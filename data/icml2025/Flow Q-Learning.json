@@ -1,0 +1,37 @@
+{
+ "title": "Flow Q-Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "解耦flow策略与一步策略，提升离线RL效率但可靠性关联弱",
+ "innovations": [
+  "将迭代flow policy与一步distilled policy解耦：BC flow用于表达行为约束，一步策略用于RL优化",
+  "训练一步策略μ_ω(s,z)最大化Q值，同时用BC flow策略μ_θ做正则蒸馏",
+  "在73个state/pixel离线RL与离线到在线任务上验证，避免迭代动作生成的测试时开销"
+ ],
+ "method_framework": "先训练flow matching策略μ_θ(s,z)模仿离线数据集行为；再从μ_θ蒸馏出一步策略μ_ω(s,z)，z为随机latent；用actor-critic RL更新μ_ω：最大化E[Q(s,μ_ω(s,z))]并加蒸馏正则‖μ_ω-μ_θ‖^2；测试时仅一步生成动作，无需迭代。",
+ "experiment_framework": "73个OGBench与D4RL任务，含state-based与pixel-based；离线RL与offline-to-online微调；对比IQL/TD3+BC/EDiff2/Diffusion-QL等；报告归一化分数与在线微调后的渐近性能。",
+ "takeaways": [
+  "FQL在73任务上平均性能超过IQL/TD3+BC/Diffusion-QL等离线RL基线",
+  "一步蒸馏策略在测试时比迭代flow策略快数倍，且性能几乎不损失",
+  "offline-to-online微调时FQL能有效利用在线交互提升渐近性能"
+ ],
+ "weaknesses": [
+  "属于离线RL算法，与可靠性/可信AI主线关联弱",
+  "两阶段训练(BC flow→distill→RL)流水线较长，超参(蒸馏权重、flow steps)敏感性未充分消融",
+  "依赖offline benchmark(D4RL/OGBench)，在真实决策场景的泛化未验证"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Flow Q-Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Flow Q-Learning.pdf",
+ "raw_overall": 5.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

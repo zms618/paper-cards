@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/BAgger_Backwards Aggregation for Mitigating Drift in Autoregressive Video Diffusion.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/BAgger_Backwards Aggregation for Mitigating Drift in Autoregressive Video Diffusion.pdf",
+ "title": "BAgger Backwards Aggregation for Mitigating Drift in Autoregressive Video Diffusion",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "自校正轨迹缓解视频扩散漂移，但计算成本高且缺乏不确定性分析",
+ "innovations": [
+  "反向聚合(BAgger)方法利用模型自身的反向rollout作为校正信号",
+  "无需双向教师模型或分布匹配目标",
+  "迭代构建校正轨迹数据集，逐步学习纠正自身错误"
+ ],
+ "method_framework": "基于扩散变换器架构，通过反转模型rollout形成校正轨迹，采用DAgger式训练循环，在原始扩散目标上微调模型，使其能够从漂移状态中恢复。",
+ "experiment_framework": "在文本到视频、视频扩展和多提示生成任务上评估，使用VBench指标，与Diffusion Forcing、History Guidance等基线比较，并分析随训练轮次的改进。",
+ "takeaways": [
+  "利用时间反转特性构建校正轨迹的创新思路",
+  "无需额外教师模型的自我校正机制",
+  "迭代训练逐步提升模型对漂移状态的鲁棒性"
+ ],
+ "weaknesses": [
+  "依赖时间反转视频仍在数据分布内的假设",
+  "训练过程需要多轮迭代，计算成本较高",
+  "仅评估了视觉质量，未深入分析模型的不确定性估计"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视频扩散漂移缓解属于可靠性主线，但缺乏不确定性分析",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

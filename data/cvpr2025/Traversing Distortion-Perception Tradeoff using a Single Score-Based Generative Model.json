@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Traversing Distortion-Perception Tradeoff using a Single Score-Based Generative Model.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Traversing Distortion-Perception Tradeoff using a Single Score-Based Generative Model.pdf",
+ "title": "Traversing Distortion-Perception Tradeoff using a Single Score-Based Generative Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "方差缩放扩散实现DP权衡，但实验局限且依赖分数估计",
+ "innovations": [
+  "提出方差缩放反向扩散过程，理论表征边际分布",
+  "证明该过程是条件高斯分布下DP权衡的最优解",
+  "单模型实现不同任务和噪声水平下的DP权衡遍历"
+ ],
+ "method_framework": "基于分数生成模型，通过调整方差缩放参数λ，在MMSE估计和完整后验分布之间灵活切换，实现失真-感知权衡的连续控制。",
+ "experiment_framework": "在二维数据集和FFHQ图像数据集上测试，对比PSCGAN和DiffPIR方法，使用Wasserstein-2距离、KL散度和MSE作为评估指标。",
+ "takeaways": [
+  "方差缩放参数λ提供了失真与感知质量之间的连续控制",
+  "单模型可适应不同测量场景和噪声水平，无需重新训练"
+ ],
+ "weaknesses": [
+  "方法依赖于条件分数的近似估计，可能引入误差",
+  "实验主要在合成数据和标准图像数据集上进行，实际应用场景验证有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "分数生成模型与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

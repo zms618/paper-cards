@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Shift-and-Sum Quantization for Visual AUTOREGRESSIVE Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Shift-and-Sum Quantization for Visual AUTOREGRESSIVE Models.pdf",
+ "title": "Shift-and-Sum Quantization for Visual Autoregressive Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "常规量化方法，shift-sum求和降噪声，重采样校准码本分布",
+ "innovations": [
+  "识别VAR量化两大挑战：粗尺度高注意力分数处attention-value乘积重建误差大；校准数据有限致码本条目采样频率与预测概率失配",
+  "提出shift-and-sum量化：对value token对称平移多份分别量化再聚合，降低重建误差",
+  "提出校准数据重采样策略，使码本条目采样频率与其预测概率对齐"
+ ],
+ "method_framework": "在VAR的各尺度Transformer量化中，对value做对称平移的多份量化结果求和以平均掉量化噪声、降低注意力-价值重建误差；同时按预测概率重新采样校准样本，使码本条目在校准分布中出现频率与其真实预测频率一致，缓解码本分布偏移。",
+ "experiment_framework": "在类别条件图像生成、inpainting、outpainting、类别条件编辑上，跨VAR-d16/d20等架构，对比现有PTQ方法，报告生成质量指标。",
+ "takeaways": [
+  "shift-and-sum有效降低粗尺度高注意力处的重建误差",
+  "重采样校准使码本采样频率与预测概率对齐",
+  "两组件结合在多任务上一致改善，建立VAR PTQ的新SOTA"
+ ],
+ "weaknesses": [
+  "属视觉模型压缩/量化，与可靠性、医学影像、多模态推理主线无关",
+  "shift-and-sum靠多份量化求和换精度，计算/显存代价未充分量化",
+  "前9页未见具体定量指标(FID等)与比特位数下的对比表；对VQVAE tokenizer本身量化的影响未单独分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "视觉模型压缩与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

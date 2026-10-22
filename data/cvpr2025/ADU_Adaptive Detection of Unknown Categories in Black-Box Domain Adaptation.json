@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/ADU_Adaptive Detection of Unknown Categories in Black-Box Domain Adaptation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ADU_Adaptive Detection of Unknown Categories in Black-Box Domain Adaptation.pdf",
+ "title": "ADU: Adaptive Detection of Unknown Categories in Black-Box Domain Adaptation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 7.5,
+  "overall": 6.1
+ },
+ "one_line": "黑盒域自适应中重组置信度调制与熵分级伪标签处理",
+ "innovations": [
+  "SAKD：把源API硬伪标签置信度项(1+pc_s)做theta次幂写入KD损失，二项式展开后等效在目标类项上新增(theta-1)pc_s+theta(theta-1)/2·(pc_s)^2的惩罚，高置信伪标签被放大、低置信被压低，抑制黑盒预测噪声在蒸馏过程中的误差累积",
+  "EDLD：以w=E[H(pt)]（目标模型平均熵）自动切分高质量/低质量伪标签，高质量用H(pt)+L_NL(pt,y_bar)（负学习把互补标签概率推到0）细化、低质量用-H(pt)推高其熵，从而在不需要预设阈值的前提下拉大'未知类'与已知类的熵间隔",
+  "EMA伪标签迭代精修ps<-gamma*ps+(1-gamma)*f_t(x_t)（gamma=0.6），逐步把源API输出向目标模型自身分布靠拢，与SAKD/EDLD组成最终目标L=L_SAKD+lambda*L_EDLD"
+ ],
+ "method_framework": "仅访问源模型API的预测；目标端用SAKD（置信度调制蒸馏）+EDLD（熵分级的负学习细化与低质去监督）+EMA更新伪标签，未知类判决为argmax(pt)且平均熵H(pt)<w时输出类别，否则为unknown。",
+ "experiment_framework": "Office31/OfficeHome/VisDA/DomainNet四个公开基准，OPBDA与OSBDA两设置，ResNet50+ImageNet预训练，基线DINE/BETA/SEAL/UB2DA与No Adapt.，指标H-score。",
+ "takeaways": [
+  "用'平均熵'当自适应未知类判决阈值，省掉逐数据集调阈值的环节，可直接借用到任何需要免调参的开门/未知检测模块",
+  "把伪标签按熵切成高/低两档分别施加细化与抑制，是处理噪声伪标签的低成本组合，比单纯阈值滤噪保留更多尾部类信息"
+ ],
+ "weaknesses": [
+  "消融只拆了L_HQ里的负学习项、熵项和L_LQ三路（Table 5），缺theta、lambda、gamma的敏感性分析，也缺对'未知类Accu'单独指标的混淆矩阵分析（只报Accc与Accu的调和均值H-score）；正文在消融后的参数/可视化分析处截断，全程无多次种子与方差/显著性",
+  "方法层面是既有工具的重组：SAKD本质是置信度重加权（(1+p)^theta是常规focal式调制的特例），EDLD主体是负学习[23]加熵准则[59]再打包，未见针对'跨类别偏移'的新机制；theta=1.1仅'对所有数据集统一设定'，未给选取依据",
+  "基线公平性存疑：DINE/BETA/SEAL原本不具备识别未知类的能力，作者统一给它们套上同样的平均熵阈值后比较，属需自行改造才能比；唯一同类基线UB2DA[9]上ADU提升仅Office31 1.2%、OfficeHome 1.8%、VisDA 3.5%、DomainNet 1.7%，部分在噪声量级；且OSBDA里VisDA仅+2.7%，而DINE/BETA/SEAL在该设置下竟低于No Adapt."
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "黑盒域自适应中未知类检测方法，符合可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

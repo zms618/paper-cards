@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Reliable and Efficient Amortized Model-based Evaluation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Reliable and Efficient Amortized Model-based Evaluation.pdf",
+ "title": "Reliable and Efficient Amortized Model-based Evaluation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "用IRT和难度预测解决LLM评测不可靠问题，实现低成本自适应测试。",
+ "innovations": [
+  "指出现用 benchmark 子集平均分被题目难度混淆，导致跨模型比较不可靠。",
+  "训练一个从题目内容预测难度的模型，免去 IRT 中昂贵的难度估计，实现低成本可靠测量。",
+  "基于难度预测器训练可按难度生成题目的题目生成器，用于自适应测试，按当前模型能力自适应选取信息量最大的题目。"
+ ],
+ "method_framework": "以项目反应理论(IRT)为框架，把模型能力与题目难度解耦；离线训练难度预测器从题面直接回归难度参数，再训练难度条件的题目生成器；评测时用自适应测试——依当前对 LLM 能力的估计，由生成器/题库选择信息量最大的题目，用少量题目即可无偏估计整体能力。",
+ "experiment_framework": "在 HELM 类大规模评测基准上，对比随机子集平均分 vs 基于难度预测的可靠估计；报告达到同等评测可靠性所需题目数/成本下降，以及难度预测器与生成器的精度。",
+ "takeaways": [
+  "子集平均分不可靠的根因是题目难度分布不一致。",
+  "从题面预测难度可把 IRT 的成本大幅摊销。",
+  "自适应测试用更少题目即可可靠估计 LLM 能力，利于高频迭代评测。"
+ ],
+ "weaknesses": [
+  "难度预测器依赖已有标注数据训练，冷启动/新基准的可迁移性需验证。",
+  "题目生成器生成题目的真实性/无偏性可能影响评测效度。",
+  "自适应测试在不同任务族间的能力估计可加性未充分论证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

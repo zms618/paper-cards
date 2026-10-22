@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Differential Privacy Under Class Imbalance Methods and Empirical Insights.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Differential Privacy Under Class Imbalance Methods and Empirical Insights.pdf",
+ "title": "Differential Privacy Under Class Imbalance: Methods and Empirical Insights",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "形式化DP下不平衡学习挑战，提出合成增广与加权ERM的DP变体。",
+ "innovations": [
+  "形式化标准不平衡学习补救方法在私密设定下各自的隐私挑战（如过采样增大敏感度、私密分类器放大少数类损失）。",
+  "为预处理类方法开发私密合成数据增广的 DP 变体，为在处理类方法开发类加权 ERM 的私密版本并给出 DP 保证。",
+  "对每种方法要么适配到私密设定、要么证明其与差分隐私不兼容，明确边界。"
+ ],
+ "method_framework": "把不平衡学习分为预处理（私密过采样/合成增广平衡数据）与在处理（修改学习算法，如类加权 ERM）两类；逐一在 ε-DP 约束下适配或论证不兼容，给出相应敏感度分析与噪声标定，从而在保护训练数据的同时缓解少数类被噪声淹没/偏差放大的问题。",
+ "experiment_framework": "在多种数据分布与维度设定下，实证评估私密预处理合成数据方法与私密类加权 ERM 在不平衡分类上的表现；对比精度、隐私预算效用等。篇幅长（45页），实验覆盖充分但非深度学习大模型基准。",
+ "takeaways": [
+  "私密合成数据方法作为预处理步骤表现良好，但在高维下受维数灾难影响。",
+  "高维场景下私密类加权 ERM 是更可行的替代。",
+  "把非私密的不平衡补救直接搬到 DP 设定并非总是可行，需逐方法论证敏感度与兼容性。"
+ ],
+ "weaknesses": [
+  "以表格/传统分类器为主，未涉及深度网络或大模型在私密不平衡学习中的表现。",
+  "“不兼容”结论多为理论性，缺少对为何合成法在高维退化的更细机理分析。",
+  "虽提及罕见病/医疗场景，但属差分隐私方法学，与可信推理主线（鲁棒性/验证器/不确定性×多模态）直接关联有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

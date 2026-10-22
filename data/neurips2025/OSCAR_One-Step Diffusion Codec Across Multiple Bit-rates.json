@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/OSCAR_One-Step Diffusion Codec Across Multiple Bit-rates.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/OSCAR_One-Step Diffusion Codec Across Multiple Bit-rates.pdf",
+ "title": "OSCAR: One-Step Diffusion Codec Across Multiple Bit-rates",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "单步扩散编解码，通过伪时间步映射支持多比特率",
+ "innovations": [
+  "提出伪扩散时间步概念，将量化过程与前向扩散桥接",
+  "设计统一网络架构支持多比特率压缩，无需为每个比特率训练单独模型",
+  "通过表示对齐训练使量化特征保留丰富结构信息，实现单步去噪"
+ ],
+ "method_framework": "OSCAR包含两个训练阶段：首先训练比特率特定的超编码器对齐量化特征与原始特征；然后联合微调扩散模型和所有超编码器，通过比特率到伪扩散时间步的映射实现单步重建。",
+ "experiment_framework": "在Kodak、DIV2K-val和CLIC2020数据集上评估，对比传统方法(BPG/VVC)、学习单率方法(HiFiC/MS-ILLM)、学习多率方法(DPICT/CTC)和扩散方法(CDC/DiffEIC/PerCo)，使用LPIPS、DISTS、MUSIQ和CLIPIQA等指标。",
+ "takeaways": [
+  "表示对齐训练使量化噪声符合高斯分布，为单步重建奠定基础",
+  "比特率到伪扩散时间步的映射机制实现了多比特率统一支持"
+ ],
+ "weaknesses": [
+  "RD曲线不够严格凸，由超编码器下采样比例和码本大小共同决定比特率",
+  "方法依赖于预训练的扩散模型，增加了模型复杂度和存储需求"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

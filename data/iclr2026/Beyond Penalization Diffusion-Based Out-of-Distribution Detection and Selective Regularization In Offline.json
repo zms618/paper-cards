@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Beyond Penalization Diffusion-Based Out-of-Distribution Detection and Selective Regularization In Offline.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Beyond Penalization Diffusion-Based Out-of-Distribution Detection and Selective Regularization In Offline.pdf",
+ "title": "Beyond Penalization: DIFFUSION-BASED OUT-OF-DISTRIBUTION Detection and Selective REGU-LARIZATION In Offline Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "扩散模型做OOD检测与选择性正则化，计算开销大且需调参",
+ "innovations": [
+  "使用扩散模型进行多模态行为建模和OOD检测",
+  "基于重构误差的可靠OOD指标",
+  "区分有益和有害OOD动作的选择性正则化策略"
+ ],
+ "method_framework": "DOSER训练两个扩散模型分别捕获行为策略和状态分布，使用单步去噪重构误差作为OOD指标，结合动力学模型区分有益和有害OOD动作，实现选择性正则化。",
+ "experiment_framework": "D4RL基准测试，包括MuJoCo和Adroit任务，与多种基线方法比较，包括传统方法和基于扩散模型的方法，评估OOD检测性能和策略性能。",
+ "takeaways": [
+  "扩散模型能有效捕捉多模态分布，提供更准确的OOD检测",
+  "选择性正则化策略能区分有益和有害的OOD动作，避免过度惩罚有价值的探索"
+ ],
+ "weaknesses": [
+  "需要训练多个模型（扩散模型、动力学模型、策略网络等），计算开销较大",
+  "阈值τ的选择可能影响性能，需要仔细调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "OOD检测与选择性正则化直接关联可靠性主线，且针对离线RL落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

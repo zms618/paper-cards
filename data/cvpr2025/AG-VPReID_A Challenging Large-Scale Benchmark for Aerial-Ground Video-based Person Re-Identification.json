@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/AG-VPReID_A Challenging Large-Scale Benchmark for Aerial-Ground Video-based Person Re-Identification.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AG-VPReID_A Challenging Large-Scale Benchmark for Aerial-Ground Video-based Person Re-Identification.pdf",
+ "title": "AG-VPReID: A Challenging Large-Scale Benchmark for Aerial-Ground Video-based Person Re-Identification",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "三流融合网络解决空地跨视角视频行人重识别问题",
+ "innovations": [
+  "以无人机 15/30/80/120m 四档高度 + CCTV + 可穿戴三平台同步采集 6,632 人 / 32,321 tracklet / 9.6M 帧，把高度与分辨率变成可归因的可控变量",
+  "归一化外观流：PhysPT 网格经 Texformer 生成 UV 贴图，做亮度归一化、直方图匹配与 gamma 校正后按可见性掩码加权聚合，解耦视角与画质差异",
+  "多尺度注意力流：冻结 CLIP ViT-L/14 分层抽 token 组成时空体，用轻量 Transformer decoder 以视频级 class token 做跨层查询聚合，应对高度引起的尺度漂移"
+ ],
+ "method_framework": "三流并行：ATS 流取 CLIP ViT-B/16 帧特征，经 GRU 回归 SMPL 参数后与 TAP 身份记忆、SSP 精修拼接；NA 流将 UV 贴图亮度归一化后按可见性掩码加权聚合；MSA 流取 CLIP 多层 token 组时空体经 decoder 聚合。三流拼接分类。",
+ "experiment_framework": "AG-VPReID 与 MARS/LS-VID/iLIDS-VID/G2A-VReID；对比 15 个 SOTA；指标 mAP、Rank-1/5；消融三流组合、飞行高度、换装。",
+ "takeaways": [
+  "把高度/平台作为显式变量写入数据集设计，使性能下降可归因到具体因素（高度贡献 27.66% vs 换装 7.85%），比只报整体 mAP 更有诊断力",
+  "用 UV 贴图 + 可见性掩码做视图归一化，是跨视角/跨分辨率表征可迁移的一条通用做法"
+ ],
+ "weaknesses": [
+  "三条流分别是既有模块的拼接（TAP/SSP 取自 SEAS 系工作、PhysPT+Texformer+DGC Omni-scale、CLIP 多层 token+decoder 取自 [23,44]），无新机制，属堆叠式改进",
+  "自建数据集导致与 MARS/LS-VID 等基线不可直接横向比较；测试集额外混入 3,619 个 distractor ID，协议与既有数据集不一致",
+  "消融只报各流组合的 Rank-1，未给参数量、推理时延与多种子方差/显著性检验；正文至第 9 页截断，Tab.5/6 的具体数值缺失"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "空地跨视角视频重识别与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

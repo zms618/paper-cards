@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/STREAM3R_Scalable Sequential 3D RECON-STRUCTION with Causal Transformer.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/STREAM3R_Scalable Sequential 3D RECON-STRUCTION with Causal Transformer.pdf",
+ "title": "Stream3R: Scalable Sequential 3D Reconstruction with Causal Transformer",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 4.9
+ },
+ "one_line": "将3D重建转为因果Transformer，缓存历史特征做流式重建。",
+ "innovations": [
+  "将多视图点图预测重构为decoder-only Transformer问题，引入语言建模式因果注意力",
+  "流式框架缓存已观测帧特征作为未来推理上下文，随序列长度高效扩展",
+  "天然兼容LLM式训练栈，支持大规模3D预训练与下游微调，并泛化到动态场景"
+ ],
+ "method_framework": "把3D重建的点图预测视为序列建模：用因果Transformer逐帧处理输入图像流，缓存历史帧特征为上下文，仅基于已观测视图估计当前帧稠密3D几何；从大规模3D数据学习几何先验以泛化到动态场景。",
+ "experiment_framework": "在静态与动态场景3D重建基准上评测，对比需全局优化或简易记忆机制的多视图重建方法；指标为稠密几何重建精度与随序列长度的扩展性。",
+ "takeaways": [
+  "因果Transformer可将3D重建扩展为流式、随序列长度高效扩展的问题",
+  "学习到的几何先验使其在动态场景（传统方法易失败）也能工作",
+  "兼容LLM训练栈利于大规模预训练与实时流式3D感知"
+ ],
+ "weaknesses": [
+  "属3D视觉重建方向，与主线（LLM可靠性/医学影像/多模态推理）无直接关联",
+  "因果约束下对已观测帧外的强遮挡/漂移累积误差未充分讨论",
+  "动态场景验证规模有限，长序列累积漂移缺乏定量分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "3D重建与可靠性主线无直接关联，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

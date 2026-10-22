@@ -1,0 +1,37 @@
+{
+ "title": "Noise Conditional Variational Score Distillation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 5.5,
+  "overall": 6.25
+ },
+ "one_line": "理论洞察VSD条件化，生成去噪器一步生成多步精化，逆问题NFE降10倍。",
+ "innovations": [
+  "理论洞察：无条件score函数内在地刻画了去噪后验分布的score，为学习任意噪声水平下的生成式去噪器奠基。",
+  "提出噪声条件VSD(NCVSD)：在VSD框架上显式以含噪数据为条件，实现可扩展的生成式去噪器学习。",
+  "引入辅助对抗损失突破教师扩散模型的性能上界，并精心设计参数化以高效迁移教师知识。"
+ ],
+ "method_framework": "先证明无条件score与去噪后验score的等价关系，据此将传统VSD扩展为对含噪数据显式条件化的NCVSD；蒸馏出的生成式去噪器从纯高斯噪声一步生成、可多步采样以提升质量，并能无缝接入Split Gibbs Sampler做零样本概率推断。",
+ "experiment_framework": "在ImageNet-64/512类条件生成与一系列线性/非线性逆问题上评测；对比一致性模型(CM/sCM)及扩散类逆问题求解器，指标含FID/LPIPS/NFE；结果显示超过同尺寸一致性模型、逆问题LPIPS破纪录，且NFE降低一个数量级（非线性逆问题50 vs 1000 NFE）。",
+ "takeaways": [
+  "生成式去噪器可同时兼得一步快速采样与多步迭代精化。",
+  "测试时算力缩放能让蒸馏去噪器超过教师扩散模型。",
+  "逆问题求解在极少NFE下即可达到SOTA LPIPS。"
+ ],
+ "weaknesses": [
+  "属扩散蒸馏/逆问题这一活跃赛道的方法叠加，核心是VSD的条件化改造。",
+  "逆问题为通用线性/非线性设定，未在医学影像重建等主线落地域验证，relevance有限。",
+  "辅助对抗损失与参数化工程增加了实现复杂度，鲁棒性与超参敏感性讨论有限。"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Noise Conditional Variational Score Distillation.pdf",
+ "path": "icml2025/Noise Conditional Variational Score Distillation.pdf",
+ "conf": "icml2025",
+ "raw_overall": 6.64,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

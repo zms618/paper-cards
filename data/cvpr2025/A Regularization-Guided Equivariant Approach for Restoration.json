@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/A Regularization-Guided Equivariant Approach for Restoration.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Regularization-Guided Equivariant Approach for Restoration.pdf",
+ "title": "A Regularization-Guided Equivariant Approach for Image Restoration",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "正则化约束普通CNN实现非严格等变图像复原",
+ "innovations": [
+  "提出等变正则项 L_equi=E_Ã Σ_l ||π^F_Ã(φ^(l)(I)) − φ^(l)(π^I_Ã(I))||²_F，把群等变网络中“空间旋转+通道循环移位”的性质变成逐层自监督目标，而不是改造卷积算子",
+  "保留普通卷积的表征精度并用正则强度调节等变程度，给出首个面向图像复原的非严格等变网络",
+  "引用已有等变误差界 |N_eq[π_θ](I)−π_θ[N_eq](I)| ≤ C₁m²+C₂pmt⁻¹ 论证严格等变网络离散化后必然掉精度，为“放松约束”提供理论依据"
+ ],
+ "method_framework": "对输入随机施加旋转群 p4 中的 Ã，原图与旋转图同过前 l 层；对 φ^(l)(I) 做空间旋转并按群索引循环移位通道得 π^F_Ã，与 φ^(l)(ÃI) 求 Frobenius 范数差，逐层累加成 L_equi 加入原损失。",
+ "experiment_framework": "CT 金属伪影（合成 DeepLesion，ACDNet/DICDNet/OSCNet 三骨干）+ 去雨 + 修复 + 分类；对比 GCNN/E2-CNN/PDO-eConv/F-Conv/Partial-GCNN；PSNR/SSIM。",
+ "takeaways": [
+  "用“正则化约束中间层特征”替代“改造卷积算子”，是绕开等变网络表征精度损失又保留对称先验的通用做法",
+  "插件式正则（不改结构、强度可调）便于在任意复原骨干上复用，也可推广到非 CNN 架构"
+ ],
+ "weaknesses": [
+  "正则权重与旋转群 t=4 的选择缺少消融/敏感性（正文截断），复原损失与等变损失的权衡 λ 未讨论",
+  "医学 CT 实验是 DeepLesion + 模拟金属植入物的合成数据，无真实临床数据，可比性与落地性存疑",
+  "无多种子方差或显著性检验；部分增益很小（OSCNet-reg 平均 43.00 vs OSCNet-fconv 42.78），且等变方法在多数类上未体现优势"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "医学图像复原有落地域但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Sharing State between Prompts and Programs.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sharing State between Prompts and Programs.pdf",
+ "title": "Sharing State between Prompts and Programs",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "共享程序状态抽象桥接prompt与程序，但高开销与收益未严格验证",
+ "innovations": [
+  "提出shared program state抽象，消除prompt与程序状态互操作所需的手动数据搬运",
+  "给出指定自然函数接口的schema，把编程系统扩展为支持含prompt的程序",
+  "在NIGHTJAR系统中实现：Python程序内嵌可共享Python运行时状态的prompt"
+ ],
+ "method_framework": "现有系统把prompt放在与程序隔离的环境执行、需手动传状态；NIGHTJAR用自然函数接口schema让prompt直接绑定/读写程序变量与对象、在prompt中表达控制流，从而在同一运行时内桥接自然语言prompt与结构化程序。",
+ "experiment_framework": "在一组需prompt+程序互操作的任务上，对比NIGHTJAR与手动实现；指标为任务准确率、代码行数(LOC)、运行时开销倍数。",
+ "takeaways": [
+  "NIGHTJAR程序任务准确率相当或高于手动实现(+4-19%)",
+  "平均代码行数减少39.6%",
+  "代价是运行时开销0.4-4.3x于手动实现"
+ ],
+ "weaknesses": [
+  "属编程语言/系统(prompt-program互操作)，与可靠性、医学影像、多模态推理主线无关",
+  "运行时开销最高4.3x，对延迟敏感场景不利",
+  "收益高度依赖具体任务与LLM稳定性，准确率提升在多大程度上来自抽象本身未严格控制变量"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.48,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "编程系统工作，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

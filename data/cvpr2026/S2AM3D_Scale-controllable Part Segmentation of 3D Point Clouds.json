@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/S2AM3D_Scale-controllable Part Segmentation of 3D Point Clouds.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/S2AM3D_Scale-controllable Part Segmentation of 3D Point Clouds.pdf",
+ "title": "S2AM3D Scale-controllable Part Segmentation of 3D Point Clouds",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "2D-3D混合框架实现点云分割尺度控制，依赖2D预训练",
+ "innovations": [
+  "点一致部分编码器结合2D分割先验与3D对比监督",
+  "尺度感知提示解码器实现连续尺度控制",
+  "大规模高质量点云部件分割数据集构建"
+ ],
+ "method_framework": "S2AM3D采用解耦训练策略，通过点一致部分编码器融合多视图2D特征与3D对比监督，生成全局一致的点特征；尺度感知提示解码器利用正弦嵌入和双向交叉注意力实现基于连续尺度信号的分割粒度调整。",
+ "experiment_framework": "在PartObjaverse-Tiny和PartNet-E数据集上评估，与Point-SAM、P3-SAM等方法比较，使用IoU作为指标，包含交互式分割和完整分割任务。",
+ "takeaways": [
+  "3D对比监督显著提升特征一致性和分割质量",
+  "连续尺度信号实现灵活的分割粒度控制",
+  "大规模高质量数据集对3D分割模型训练至关重要"
+ ],
+ "weaknesses": [
+  "方法依赖2D预训练知识，可能受限于2D分割质量",
+  "计算复杂度较高，需要多阶段训练",
+  "数据集构建过程仍依赖人工验证步骤"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D点云分割与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

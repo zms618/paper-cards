@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Preconditioned Riemannian Gradient Descent Algorithm for Low-Multilinear-Rank Tensor Completion.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Preconditioned Riemannian Gradient Descent Algorithm for Low-Multilinear-Rank Tensor Completion.pdf",
+ "title": "Preconditioned Riemannian Gradient Descent Algorithm for Low-Multilinear-Rank Tensor Completion",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.75
+ },
+ "one_line": "预处理黎曼梯度下降加速张量补全，但理论假设限制实际应用。",
+ "innovations": [
+  "利用固定多线性秩张量集合的流形结构，引入简单而高效的预处理黎曼度量",
+  "提出PRGD算法，相比标准RGD收敛更快而每步计算复杂度同阶",
+  "在近最优采样复杂度下给出PRGD的恢复(精确重建)理论保证"
+ ],
+ "method_framework": "把低多线性秩(Tucker)张量补全建模为固定秩流形上的优化；设计一个预处理黎曼度量以改善梯度方向的条件数，在该度量上做黎曼梯度下降(PRGD)；流形结构保证迭代点始终落在固定多线性秩集合内，预处理只改善曲率不增加每步渐近复杂度。",
+ "experiment_framework": "在合成张量与真实视频inpainting任务上评测；与SOTA张量补全方法比较收敛速度与恢复精度；指标为相对恢复误差与达到目标精度所需迭代数/时间。",
+ "takeaways": [
+  "合适的预处理黎曼度量可在不增加每步渐近开销下显著加速张量补全收敛",
+  "PRGD在近最优采样复杂度下有理论恢复保证",
+  "合成与视频inpainting实验上PRGD优于SOTA方法"
+ ],
+ "weaknesses": [
+  "预处理度量依赖已知的多线性秩，秩估计误差如何影响恢复未充分讨论",
+  "理论恢复保证要求的采样与正则条件在真实高维张量(如视频)上是否宽松有待验证",
+  "仅针对Tucker多线性秩，对TT/CP等其他秩结构的推广未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

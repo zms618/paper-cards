@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Robust Adversarial Quantification via Conflict-Aware Evidential Deep Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Robust Adversarial Quantification via Conflict-Aware Evidential Deep Learning.pdf",
+ "title": "Robust Adversarial Quantification via Conflict-Aware Evidential Deep Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 8.5,
+  "overall": 7.0
+ },
+ "one_line": "后处理变换检测冲突校准EDL不确定性，提升对抗/OOD鲁棒性。",
+ "innovations": [
+  "指出 EDL 这类单次前向 UQ 方法在对抗扰动下尤其脆弱、会过度自信犯错。",
+  "提出冲突感知机制：对每个输入生成多种保持任务的变换，并量化表征层面的不一致(disagreement)。",
+  "提出冲突感知预测调整：当表征冲突出现时据此校准/调整不确定性估计，提升 OOD 与对抗输入检出，同时保持 ID 精度与低开销。"
+ ],
+ "method_framework": "在后处理阶段不改原模型：对测试输入施加一组保持任务语义的多样化变换；比较各变换下中间表征/证据的不一致程度；当检测到冲突(对抗/OOD 典型特征)时，按冲突程度调整 Dirichlet 证据预测，放大不确定性，从而不把可疑输入误判为高置信。",
+ "experiment_framework": "在多个数据集、多种攻击类型与不确定性指标上评测；对比 SOTA EDL 变体与竞争 UQ 基线；报告 OOD 数据覆盖(误判为 ID)最高降约 55%、对抗数据覆盖最高降约 90%，并保持 ID 精度与低计算开销。",
+ "takeaways": [
+  "EDL 在对抗输入上会过度自信，是 UQ 落地高风险场景的隐患。",
+  "通过保持任务的多变换与表征不一致检测，可在后处理层面校准不确定性。",
+  "C-EDL 在不重训练、低开销下同时显著改善 OOD 与对抗检出。"
+ ],
+ "weaknesses": [
+  "依赖预定义的保持任务变换集，变换选择对何种扰动敏感、对更强自适应攻击的覆盖未知。",
+  "后处理调整的阈值/冲突度量在不同数据集间可能需重调，泛化性未充分说明。",
+  "实验以视觉分类为主，未在医学影像等高风险落地任务上做专门验证。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "对抗/OOD鲁棒性校准EDL，直接命中可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

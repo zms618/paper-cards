@@ -1,0 +1,41 @@
+{
+ "title": "RegionE: Adaptive Region-Aware Generation for Efficient Image Editing",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "基于未编辑区去噪轨迹直线的启发式图像编辑加速方法",
+ "innovations": [
+  "发现IIE中未编辑区域去噪轨迹近直线、编辑区域轨迹弯曲，据此在早期一步估计结果并与参考图相似度自适应划分编辑/未编辑区域。",
+  "提出Region-Instruction KV Cache：丢弃未编辑区与指令图token，同时利用跨timestep的KV相似性把全局上下文重注入局部迭代生成。",
+  "提出Adaptive Velocity Decay Cache：建模编辑区相邻timestep速度方向一致、幅度按时间衰减的模式，进一步加速局部去噪。"
+ ],
+ "method_framework": "免训练地作用于现成IIE基座：早期一步估计全图并与指令参考图比对得到区域掩码；未编辑区直接单步跳过多步去噪；编辑区保留局部迭代但用RIKVCache省全局token计算、用AVDCache复用/外推相邻步速度，从而同时消除空间与时序冗余。",
+ "experiment_framework": "应用于Step1X-Edit、FLUX.1 Kontext、Qwen-Image-Edit三个SOTA IIE模型；指标为加速倍率、PSNR(30.5–32.1)及GPT-4o对语义/感知保真的评价；报告约2.57×/2.41×/2.06×加速且质量损失很小。",
+ "takeaways": [
+  "IIE的冗余同时存在于空间(未编辑区)与时序(相邻步KV/速度相似)，分区域差异化生成是关键。",
+  "未编辑区轨迹近直线这一经验规律使其可安全地单步预测。",
+  "该方法免训练、即插即用到多个最新图像编辑基座。"
+ ],
+ "weaknesses": [
+  "目标是推理加速而非可靠性/验证主线，与医学影像或可信推理关联弱。",
+  "区域划分依赖'一步估计与参考图相似度'的启发式阈值，对边界模糊或半透明编辑的划分正确性未充分评估。",
+  "节选前9页未见与既有扩散加速方法(如蒸馏/KV缓存)的系统对比及编辑失败案例分析。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Regione_Adaptive Region-Aware Generation for Efficient Editing.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Regione_Adaptive Region-Aware Generation for Efficient Editing.pdf",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "图像编辑加速与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

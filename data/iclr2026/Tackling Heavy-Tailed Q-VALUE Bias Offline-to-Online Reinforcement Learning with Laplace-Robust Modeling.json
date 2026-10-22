@@ -1,0 +1,41 @@
+{
+ "title": "Tackling Heavy-Tailed Q-Value Bias in Offline-to-Online Reinforcement Learning with Laplace-Robust Modeling",
+ "one_line": "首次揭示O2O RL中Q值偏差重尾性，用Laplace噪声转移偏差提升稳定性",
+ "innovations": [
+  "首次揭示O2O RL在线微调阶段Q值偏差常呈重尾分布，导致高估计方差并阻碍性能提升",
+  "提出LAROO：引入参数化Laplace分布噪声，将Q值偏差的重尾性转移到该噪声中，降低估计方差",
+  "结合保守集成估计重新中心化Q值偏差（均值移向零），把重尾偏差标准化以提升训练稳定性"
+ ],
+ "method_framework": "在O2O RL在线微调中，先引入可自适应捕获任意数据重尾性的参数化Laplace噪声；用估计Q值加该噪声逼近真实Q值，把重尾偏差转移进噪声；再用保守集成估计把偏差均值重新中心化到零。二者结合使重尾Q值偏差趋于标准化分布，提升稳定与性能。",
+ "experiment_framework": "在标准连续控制O2O RL基准上评测；对比Cal-QL、PEX、ENOTO、SO2等SOTA O2O RL方法；指标为在线微调后的累计回报/均值性能，报告显著优于基线。",
+ "takeaways": [
+  "O2O RL中Q值偏差的重尾性是被既有方法忽视的不稳定来源",
+  "用Laplace噪声承接重尾偏差可降低估计方差，保守集成重中心化使偏差趋零",
+  "LAROO在多个O2O基准上优于现有SOTA"
+ ],
+ "weaknesses": [
+  "重尾分布的刻画与Laplace噪声参数需在线自适应，其收敛性缺乏严格理论保证",
+  "主要在MuJoCo类连续控制基准验证，对高维/稀疏奖励任务的适用性未证明",
+  "保守集成估计增加了Q网络数量与计算开销"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Tackling Heavy-Tailed Q-VALUE Bias Offline-to-Online Reinforcement Learning with Laplace-Robust Modeling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tackling Heavy-Tailed Q-VALUE Bias Offline-to-Online Reinforcement Learning with Laplace-Robust Modeling.pdf",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "raw_overall": 5.93,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "强化学习方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

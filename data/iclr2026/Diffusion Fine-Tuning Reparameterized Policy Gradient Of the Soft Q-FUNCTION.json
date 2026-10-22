@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Diffusion Fine-Tuning Reparameterized Policy Gradient Of the Soft Q-FUNCTION.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Diffusion Fine-Tuning Reparameterized Policy Gradient Of the Soft Q-FUNCTION.pdf",
+ "title": "Diffusion FINE-TUNING Reparameterized Policy Gradient Of the Soft Q-FUNCTION",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "重参化策略梯度解决扩散对齐，组件多但机制证据不足",
+ "innovations": [
+  "训练免费的软Q函数近似方法",
+  "引入折扣因子改善信用分配",
+  "结合一致性模型提高Q函数估计质量",
+  "使用离线回放缓冲区管理奖励-多样性权衡"
+ ],
+ "method_framework": "将扩散去噪过程建模为MDP，通过重参化策略梯度直接利用奖励梯度信号，结合KL正则化和三个创新组件（折扣因子、一致性模型、回放缓冲区）实现扩散模型对齐",
+ "experiment_framework": "文本到图像生成任务（LAION美学分数、HPSv2偏好分数）和在线黑盒优化设置，与DDPO、DRaFT、ReFL等方法对比，评估奖励、对齐度和多样性指标",
+ "takeaways": [
+  "软Q函数近似可避免不稳定的价值函数训练",
+  "折扣因子能有效改善早期去噪步骤的信用分配",
+  "一致性模型比Tweedie公式提供更准确的x0估计"
+ ],
+ "weaknesses": [
+  "方法组件较多，实现复杂度较高",
+  "在黑盒优化中依赖代理奖励模型，可能影响最终性能",
+  "未充分探讨方法在不同规模数据集上的扩展性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散对齐与可靠性主线无实质交点，仅为方法设计研习轴",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

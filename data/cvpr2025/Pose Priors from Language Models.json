@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Pose Priors from Language Models.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Pose Priors from Language Models.pdf",
+ "title": "Pose Priors from Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "用LLM先验优化姿态估计接触点，但左右判断困难且依赖初始质量",
+ "innovations": [
+  "利用LMM提取接触约束而非依赖人工标注",
+  "将自然语言描述转换为可优化的损失函数",
+  "设计回退机制处理LMM幻觉"
+ ],
+ "method_framework": "ProsePose框架：初始姿态估计→LMM提取接触约束→转换为损失函数→联合优化得到最终姿态",
+ "experiment_framework": "数据集：Hi4D/FlickrCI3D/CHI3D；基线：BEV/Heuristic/BUDDI；指标：PA-MPJPE/PCC/F1",
+ "takeaways": [
+  "LMM可提供有价值的接触先验知识",
+  "多样本采样可缓解LMM幻觉问题",
+  "任务重定义：将接触预测转化为约束优化问题"
+ ],
+ "weaknesses": [
+  "LMM对肢体左右判断存在困难",
+  "依赖初始姿态估计质量",
+  "计算开销较大需多次采样"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.375,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "姿态估计与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Local Precise Refinement A Dual-Gated Mixture-of-Experts for Enhancing Foundation Model.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Local Precise Refinement A Dual-Gated Mixture-of-Experts for Enhancing Foundation Model.pdf",
+ "title": "Local Precise Refinement A Dual-Gated Mixture-of-Experts for Enhancing Foundation Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.6
+ },
+ "one_line": "双门控MoE实现遥感图像局部细化，但深度估计误差与泛化性存疑",
+ "innovations": [
+  "双门控MoE架构实现视觉和深度特征的独立路由",
+  "从RGB波段估计深度特征作为结构先验",
+  "跨注意力机制融合深度结构信息缓解光谱相似性导致的语义歧义"
+ ],
+ "method_framework": "SpectralMoE作为轻量级插件插入冻结的视觉和深度基础模型各层，通过双门控MoE进行细粒度局部调整，再通过跨注意力机制融合深度结构信息到视觉特征中。",
+ "experiment_framework": "在7个跨域泛化基准上评估，涵盖高光谱、多光谱和RGB遥感图像，使用mIoU和mAcc作为指标，与4类SOTA方法对比。",
+ "takeaways": [
+  "局部精确细化优于全局 homogeneous 调整",
+  "深度特征作为结构先验能有效缓解光谱相似性导致的语义歧义",
+  "MoE架构能有效处理空间异质性"
+ ],
+ "weaknesses": [
+  "深度特征估计可能引入额外误差",
+  "双门控机制增加了计算复杂度",
+  "仅针对遥感领域设计，泛化性有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "遥感图像处理，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

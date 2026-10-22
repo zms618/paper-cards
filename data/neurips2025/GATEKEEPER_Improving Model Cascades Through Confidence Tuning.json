@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/GATEKEEPER_Improving Model Cascades Through Confidence Tuning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/GATEKEEPER_Improving Model Cascades Through Confidence Tuning.pdf",
+ "title": "GATEKEEPER: Improving Model Cascades Through Confidence Tuning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "置信度调优提升级联性能，但依赖大模型主导假设",
+ "innovations": [
+  "GATEKEEPER损失函数，使小模型能区分正确与错误预测",
+  "动态调整正确与错误预测的置信度平衡",
+  "适用于多种架构（仅编码器、仅解码器、编码器-解码器）"
+ ],
+ "method_framework": "GATEKEEPER损失函数结合交叉熵和KL散度，通过α参数平衡正确与错误预测的置信度调优，使小模型能可靠识别何时应 defer 给大模型",
+ "experiment_framework": "在图像分类(CIFAR-10/100, Food-101, TinyImageNet)、语言模型(ARC-e/c, MMLU, GSM8K)和视觉语言任务上评估，使用分布重叠、延迟性能和小模型准确率作为指标",
+ "takeaways": [
+  "置信度调优可有效提升模型级联性能",
+  "α参数是关键超参数，控制模型在准确性和延迟性能间的权衡"
+ ],
+ "weaknesses": [
+  "低α值会降低小模型在困难样本上的准确率",
+  "依赖大模型主导假设，可能不适用于小模型在某些任务上表现更好的场景"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

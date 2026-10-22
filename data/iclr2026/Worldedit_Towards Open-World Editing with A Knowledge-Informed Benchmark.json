@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Worldedit_Towards Open-World Editing with A Knowledge-Informed Benchmark.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Worldedit_Towards Open-World Editing with A Knowledge-Informed Benchmark.pdf",
+ "title": "WorldEdit: Towards Open-World Image Editing with a Knowledge-Informed Benchmark",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "构建因果编辑数据集，微调开源模型缩小与闭源的知识差距。",
+ "innovations": [
+  "指出隐含编辑指令(只给视觉变化原因、不描述结果)是现有图像编辑模型的主要短板，因其缺乏世界知识与推理",
+  "构建WorldEdit数据集：高质量编辑样本+与现实因果逻辑对齐的改写指令，并配套WorldEdit-Test评测因果编辑",
+  "两阶段微调框架(以Bagel等为底座)，引入因果验证奖励，同时改善指令遵循与知识合理性"
+ ],
+ "method_framework": "用WorldEdit的因果对齐指令数据两阶段微调开源编辑模型；第二阶段叠加因果验证奖励，惩罚不符合现实因果逻辑的编辑结果；使模型在收到隐含指令(如因为下雨)时能合理推导出应有的视觉变化。",
+ "experiment_framework": "在WorldEdit-Test上评测现有模型的因果编辑能力；基线为Bagel等开源编辑模型与GPT-4o/Nano-Banana；指标为指令遵循与知识合理性(plausibility)；报告显著缩小与GPT-4o/Nano-Banana的差距。",
+ "takeaways": [
+  "现有编辑模型擅长显式指令(改属性/风格/姿态)，但在需世界知识的隐含因果指令上普遍薄弱",
+  "因果对齐的指令数据+因果验证奖励可同时提升指令遵循与知识合理性",
+  "知识合理性是开源编辑模型相对闭源模型的主要差距点"
+ ],
+ "weaknesses": [
+  "仍依赖与GPT-4o/Nano-Banana对齐的人工/模型标注，因果指令的正确性标准可能主观",
+  "因果验证奖励本身可能学习自模型判断，存在自我强化/奖励黑客风险",
+  "评测集中于因果编辑，对更复杂多轮/多对象因果链的覆盖有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "知识面补全价值，未与可靠性主线实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

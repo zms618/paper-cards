@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/When to retrain a machine learning model.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/When to retrain a machine learning model.pdf",
+ "title": "When to retrain a machine learning model",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "形式化重训决策的成本权衡，但实际应用受限且证据不足",
+ "innovations": [
+  "给出'何时重训'问题的原则性形式化，同时应对三大难点：信息有限、漂移性质未知、成本比难设定",
+  "指出现有分布漂移检测只在'检测到显著漂移就重训'，忽视重训本身的成本代价，在训练昂贵时尤其次优",
+  "把重训决策建为权衡'重训成本'与'性能不足的错误成本'及未来性能的决策问题，而非单纯漂移触发"
+ ],
+ "method_framework": "将重训决策建模为序贯成本权衡：在数据持续演化、漂移未知的前提下，基于有限新样本估计当前模型性能损失与重训成本，决策是否触发重训；区别于'检测到漂移即重训'，本框架显式计入重训的算力/人力/部署风险成本。",
+ "experiment_framework": "在分布持续演化的场景下，对比'漂移检测触发重训'与本成本权衡框架的累计代价；展示当训练昂贵时，盲目随漂移重训会带来额外成本浪费。",
+ "takeaways": [
+  "仅靠分布漂移检测触发重训忽视了重训成本，在训练昂贵时显著次优",
+  "最优重训时点取决于重训成本、犯错成本与未来模型性能的综合权衡",
+  "问题虽普遍存在于工业界，但ML文献鲜有直接求解，本文给出了可操作的原则性框架"
+ ],
+ "weaknesses": [
+  "属部署运维/决策框架工作，与医学影像/多模态大模型推理落地域关系较弱",
+  "实际中'重训成本/错误成本'的精确量化往往困难，框架的可用性依赖成本设定质量",
+  "决策基于有限新样本估计漂移与性能，估计误差较大时重训时机判断可能失准"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VIVID-VR Distilling Concepts from Text-to-Video Diffusion Transformer for Photorealistic Video Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VIVID-VR Distilling Concepts from Text-to-Video Diffusion Transformer for Photorealistic Video Generation.pdf",
+ "title": "Vivid-VR: Distilling Concepts from Text-to-Video Diffusion Transformer for Photorealistic Video Restoration",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "基于T2V DiT的生成式视频修复，概念蒸馏缓解分布漂移",
+ "innovations": [
+  "提出概念蒸馏训练策略：用预训练T2V模型合成嵌入文本概念的训练样本，将其概念理解蒸馏到可控修复流水线，缓解微调时的分布漂移",
+  "设计控制特征投影器，过滤输入视频潜变量中的退化伪影，减少其在生成流水线中的传播",
+  "提出双分支ControlNet连接器，融合MLP特征映射与交叉注意力做动态控制特征检索，兼顾内容保持与控制信号自适应调制"
+ ],
+ "method_framework": "Vivid-VR以先进T2V基础模型为底座，用ControlNet控制生成过程保证内容一致；针对可控流水线微调易分布漂移的问题，用预训练T2V合成嵌入文本概念的样本做概念蒸馏以保留纹理与时序质量；并重设计控制架构：控制特征投影器过滤退化伪影，双分支ControlNet连接器以MLP+交叉注意力动态检索控制特征。",
+ "experiment_framework": "在合成、真实世界及AIGC视频基准上评测；对比Bicubic/SUPIR/UAV/MGLD/SeedVR等基线；指标为纹理真实感、视觉鲜艳度与时序一致性等感知质量。",
+ "takeaways": [
+  "概念蒸馏有效保持了纹理真实感与时序一致性，缓解可控生成微调的分布漂移",
+  "在合成、真实世界及AIGC视频基准上均优于SUPIR/UAV/MGLD/SeedVR等现有方法",
+  "双分支连接器同时改善内容保持与可控性"
+ ],
+ "weaknesses": [
+  "属于视频修复/生成方向，与可靠性、医学影像、多模态推理主线无关，relevance偏低",
+  "评测以视觉主观/感知质量为主，前9页未见在下游任务(如检测/识别)上的保真度验证，存在生成幻觉风险未量化",
+  "方法重度依赖一个强T2V底座，概念蒸馏的泛化到未知退化类型的能力证据不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "视频修复与可靠性主线无关，无医学或多模态推理落地",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

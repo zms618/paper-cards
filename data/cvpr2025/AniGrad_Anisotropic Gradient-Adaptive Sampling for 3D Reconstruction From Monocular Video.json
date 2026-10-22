@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/AniGrad_Anisotropic Gradient-Adaptive Sampling for 3D Reconstruction From Monocular Video.pdf",
+ "conf": "cvpr2025",
+ "path": "C:\\Users\\James\\Desktop\\study\\paper\\项目记忆\\论文卡片\\精读卡片库\\cvpr2025\\AniGrad_Anisotropic Gradient-Adaptive Sampling for 3D Reconstruction From Monocular Video.json",
+ "title": "AniGrad: Anisotropic Gradient-Adaptive Sampling for 3D Reconstruction From Monocular Video",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "基函数重参数化+梯度上界采样，加速3D重建但机制与收益不匹配",
+ "innovations": [
+  "把神经场的体素特征重参数化为局部 3D 基函数系数（Eq.1-2），使 TSDF 梯度可由基函数解析求得，从而离线预计算每个体素方向的梯度上界 φx（Eq.5-9），再由 φ 反推各方向的子采样率。",
+  "用该各向异性率驱动非均匀 dense marching cubes 抽面：梯度平缓处稀疏采样、表面附近加密，表 1 中 SEL 从 FineRecon 的 24.81s 降到 1.11s、输出 mesh 从 54.85MB 降到 5.47MB，而 F-score 保持 74.0。",
+  "用 Lbasis/Lgrad/Lsurf/Ldist/Locc 五个损失把基函数系数约束在表面、梯度、距离与占据位置上（表 2 逐项消融），保证稀疏化后重建质量不塌陷。"
+ ],
+ "method_framework": "体素特征→局部基函数系数；离线解析基函数梯度界 φx；按 φ 设各向异性子采样率做非均匀 DMC；五损失联合训练。",
+ "experiment_framework": "ScanNet 官方划分（test 100 场景）与 ScanNet++；对比 Atlas/NeuralRecon/VoRTX/FineRecon；指标 F-score(5cm 阈值)、Chamfer、SEL。",
+ "takeaways": [
+  "瓶颈在抽面阶段而非训练阶段：SEL 一个数量级的收益并非来自更强的网络，而来自采样密度与表面梯度的几何适配。",
+  "F-score 74.0 与 FineRecon 持平但 Chamfer 次优，说明优化目标偏向 5cm 粗尺度阈值指标，换指标可能翻转结论。"
+ ],
+ "weaknesses": [
+  "φx 是离线预计算、与当前重建权重解耦的静态上界，训练中网络更新后界不再紧；实际自适应性来自五个损失而非 φ，论文的机制叙事有夸大成分。",
+  "基线停在 Atlas/NeuralRecon/VoRTX/FineRecon 这一代 3D-CNN 方法，未与同期前馈几何/神经场重建同台比较；FineRecon 额外使用 SimpleRecon 的深度引导作为输入，与纯视频输入的对比并不完全对等。",
+  "主表只报单点数值、无方差与多种子；表 2 中去掉 Lsurf 后 F-score 74.0→70.1 但 SEL 降到 0.94s（比全模型的 1.11s 还快），速度与质量不存在一致取舍，论文未给出取舍依据。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D重建与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "title": "HybridGS: High-Efficiency Gaussian Splatting Data Compression using Dual-Channel Sparse Representation and Point Cloud Encoder",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "双通道稀疏表示压缩3DGS，但缺乏与最新方法对比和极端低码率验证",
+ "innovations": [
+  "提出双通道稀疏表示，同时保留紧凑生成质量与标准化点云数据格式",
+  "将3DGS编码为标准化点云，可复用通用点云编解码工具，避免高度定制格式",
+  "显著缩短编解码时间，兼容多种标准化点云编解码器，利于大规模部署"
+ ],
+ "method_framework": "HybridGS把3DGS表示拆为双通道：一路稀疏紧凑表示保生成质量，一路转换为标准化点云并经标准点云编码器压缩。解码时结合两路重建紧凑3DGS，复用现有标准点云编解码流水线。",
+ "experiment_framework": "在标准3DGS基准数据集上评测，对比已有3DGS压缩方案，指标为率失真（bitrate vs 渲染质量PSNR/SSIM）、编解码时延与格式兼容性。",
+ "takeaways": [
+  "将3DGS映射到标准化点云格式可复用成熟编解码器，解决定制格式难部署问题",
+  "双通道稀疏表示在压缩率与渲染质量间取得良好折中",
+  "编解码速度快、兼容通用点云流水线，工程落地友好"
+ ],
+ "weaknesses": [
+  "前9页未见与最新高性能3DGS压缩方法在同等bitrate下的质量对比，压缩增益幅度不明",
+  "双通道带来额外存储/开销，极端低码率下的表现未充分报告",
+  "与主线索（可信多模态推理/医学影像）无关，属3D渲染压缩工程"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/HybridGS_High-Efficiency Gaussian Splatting Data Compression using Dual-Channel Sparse Representation and Point Cloud.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/HybridGS_High-Efficiency Gaussian Splatting Data Compression using Dual-Channel Sparse Representation and Point Cloud.pdf",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

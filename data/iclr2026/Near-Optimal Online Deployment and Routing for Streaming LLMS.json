@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Near-Optimal Online Deployment and Routing for Streaming LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Near-Optimal Online Deployment and Routing for Streaming LLMS.pdf",
+ "title": "Near-Optimal Online Deployment and Routing for Streaming LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "耦合LLM部署与路由的在线决策，理论证明但生产验证不足",
+ "innovations": [
+  "把模型池流式到达、并发上限、逐查询预算约束下的部署与路由统一为两时间尺度在线决策问题",
+  "提出StageRoute：乐观地用奖励上置信界与成本下置信界选至多Mmax个模型进入下一阶段，再对每个查询解预算/吞吐约束的bandit子问题路由",
+  "证明~O(T^{2/3})后悔并给出匹配下界，建立近最优性；实证在紧预算下逼近oracle"
+ ],
+ "method_framework": "在固定维护窗口上做阶段式部署决策(选哪些模型常驻)，在更细粒度上对每个到达查询在已部署模型集合中做路由。部署层用reward-UCB/cost-LCB乐观地选模型以平衡探索与利用；路由层在预算与吞吐约束下解一个bandit子问题最大化每查询质量。两层耦合形成层次化在线学习。",
+ "experiment_framework": "理论给出~O(T^{2/3})后悔与匹配下界；实证在多种工作负载、紧预算下对比StageRoute与oracle及现有LLM路由系统，报告任务质量、成本约束满足度与对oracle的跟踪程度。",
+ "takeaways": [
+  "部署选择是路由的前提，把两者耦合可在流式模型池下近最优地权衡质量与成本",
+  "~O(T^{2/3})后悔在流式到达+约束下是近最优的(匹配下界)",
+  "StageRoute在紧预算下能跟踪强oracle，说明理论可落地"
+ ],
+ "weaknesses": [
+  "主线是LLM服务基础设施/成本优化，与鲁棒性、可信验证、幻觉抑制等可靠性落地主线关联弱",
+  "实证多为仿真工作负载，未在真实Azure/AWS生产并发上限下端到端验证",
+  "后悔界T^{2/3}在T极大的生产规模下常数可能偏大，且假设模型质量/成本分布平稳"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.43,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "LLM服务基础设施与可靠性主线关联弱，无鲁棒性/可信验证等落地交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

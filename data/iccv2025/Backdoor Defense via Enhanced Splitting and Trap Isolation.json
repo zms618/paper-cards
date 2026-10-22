@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Backdoor Defense via Enhanced Splitting and Trap Isolation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Backdoor Defense via Enhanced Splitting and Trap Isolation.pdf",
+ "title": "Backdoor Defense via Enhanced Splitting and Trap Isolation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "ESTI通过分割和陷阱隔离防御后门，但计算成本和类别识别影响未充分评估",
+ "innovations": [
+  "揭示部分中毒样本是ID数据而非OOD数据",
+  "利用中毒模型与干净模型相结合的增强分割方法",
+  "陷阱机制将中毒样本隔离到陷阱类"
+ ],
+ "method_framework": "ESTI包含两个阶段：增强分割阶段利用中毒模型和干净模型分割数据集为干净池和中毒池；陷阱隔离阶段将中毒池样本标签翻转为陷阱类标签，训练陷阱模型。",
+ "experiment_framework": "在CIFAR-10、GTSRB和Tiny-ImageNet三个数据集上评估，对比8种防御方法，使用ACC和ASR作为指标",
+ "takeaways": [
+  "利用攻击者的篡改来防御攻击的创新思路",
+  "KDE-split方法自动确定分割阈值避免人工选择",
+  "仅需1%的干净种子样本即可有效防御"
+ ],
+ "weaknesses": [
+  "陷阱机制可能影响模型对原始类别的识别能力",
+  "在Tiny-ImageNet上的ACC提升有限",
+  "未讨论计算复杂度和训练时间对实际部署的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "后门防御直接关联可靠性主线，且方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

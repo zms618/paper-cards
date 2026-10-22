@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/ROBOMD_Uncovering Robot Vulnerabilities through Semantic Potential Fields.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/ROBOMD_Uncovering Robot Vulnerabilities through Semantic Potential Fields.pdf",
+ "title": "RoboMD: Uncovering Robot Vulnerabilities through Semantic Potential Fields",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "在语义势场中训练RL策略搜索机器人漏洞，但物理表征不足。",
+ "innovations": [
+  "训练独立的深度RL漏洞预测策略，在连续视觉-语言嵌入上做虚拟run，将该语义/视觉变化丰富的嵌入空间视为势场，策略学会靠近易失败区、被成功区排斥。",
+  "仅用有限成功-失败数据即可在虚拟rollout中训练，避免昂贵且不安全的物理试验。",
+  "查询该策略构建概率化的漏洞似然图，并用于指导后续微调。"
+ ],
+ "method_framework": "把环境变化(背景色/物体形状/光照等)作为RL动作施加到被诊断操作策略上，以成功/失败为奖励，在视觉-语言嵌入势场中训练RoboMD主动搜索漏洞区；输出按失败似然排序的诊断，覆盖未见变化。",
+ "experiment_framework": "在仿真基准与真实机械臂上评测，对比SOTA视觉-语言基线，报告发现的独特漏洞数量；并用发现的漏洞微调操作策略验证数据效率。",
+ "takeaways": [
+  "主动在CL嵌入势场中搜索失败，比启发式/视觉-语言基线多发现最高23%的独特漏洞。",
+  "用本框架发现的漏洞做微调，可用远少于常规的数据提升操作策略性能。"
+ ],
+ "weaknesses": [
+  "属机器人操作鲁棒性/漏洞发现方向，与可靠性主线的医学影像落地域不同。",
+  "漏洞搜索质量受视觉-语言嵌入对真实物理变化(摩擦/形变/遮挡)的覆盖度制约，纯语义嵌入难以刻画物理失效。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "机器人操作鲁棒性，与医学影像落地域无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

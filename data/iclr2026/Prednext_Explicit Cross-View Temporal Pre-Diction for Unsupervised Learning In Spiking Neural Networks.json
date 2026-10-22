@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Prednext_Explicit Cross-View Temporal Pre-Diction for Unsupervised Learning In Spiking Neural Networks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Prednext_Explicit Cross-View Temporal Pre-Diction for Unsupervised Learning In Spiking Neural Networks.pdf",
+ "title": "PredNext: Explicit Cross-View Temporal Prediction for Unsupervised Learning in Spiking Neural Networks",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.6
+ },
+ "one_line": "PredNext模块通过跨视角预测提升SNN时序建模，但与主线关联弱且证据不足。",
+ "innovations": [
+  "提出跨视角 Step Prediction 与 Clip Prediction 辅助模块，可插入多种自监督目标，显式建模 SNN 长程时序依赖",
+  "指出并验证高时序特征一致性是深度 SNN 视频表征稳定的关键，用预测式而非强制一致性约束来提升一致性",
+  "首次在远大于传统 DVS 的 UCF101/HMDB51/MiniKinetics 上建立 SNN 自监督学习标准基准"
+ ],
+ "method_framework": "对同一视频采样不同视角片段，分别经 SNN 编码器与投影头；Step Prediction 预测下一步膜电位/特征，Clip Prediction 预测后续采样片段的特征，配合时序聚合与对比/cosine 损失。作为辅助模块无缝接入现有自监督方法，提升跨帧特征一致性与泛化。",
+ "experiment_framework": "在 UCF101、HMDB51、MiniKinetics 上做线性评测/下游动作识别，对比多种自监督方法及 ImageNet 预训练监督权重；消融验证 Step/Clip 预测各自贡献与时序特征一致性度量。",
+ "takeaways": [
+  "PredNext 仅在 UCF101 上无监督训练即可达到与 ImageNet 预训练监督权重相当的性能",
+  "预测式目标比强制一致性约束更能提升时序特征一致性并增强泛化",
+  "深度 SNN 处理大规模时序视频需显式时序建模机制，仅靠神经元动力学不足"
+ ],
+ "weaknesses": [
+  "属脉冲神经网络/自监督小众方向，与可靠性、医学影像、多模态推理主线关联弱",
+  "性能'可比 ImageNet 监督权重'但在更大 MiniKinetics 上的绝对增益与 SOTA 对比前9页不充分",
+  "SNN 推理算力/时序步长开销等落地问题未见定量分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.83,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "SNN自监督方法与可靠性主线关联弱，但时序建模设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

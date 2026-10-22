@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Reward-Guided Iterative Refinement in Diffusion Models at Test-Time with Applications to Protein and DNA.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Reward-Guided Iterative Refinement in Diffusion Models at Test-Time with Applications to Protein and DNA.pdf",
+ "title": "Reward-Guided Iterative Refinement in Diffusion Models at Test-Time with Applications to Protein and DNA Design",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "迭代加噪-去噪精化扩散模型，提升生物序列设计reward值",
+ "innovations": [
+  "提出迭代精化的test-time reward优化框架RERD：每轮先对当前样本加噪再reward-guided去噪，逐步修正reward优化引入的误差",
+  "将单次single-shot扩散生成转变为多轮迭代精化过程，类似现代进化算法",
+  "在蛋白质结构设计和细胞类型特异性调控DNA设计任务上优于现有单次reward-guided扩散方法"
+ ],
+ "method_framework": "从预训练扩散模型初始化样本，每轮迭代：(1)对当前最优样本注入噪声到中等时间步；(2)在该噪声水平上进行reward-guided去噪。通过多轮noising-denoising循环，逐步修正单轮reward优化可能引入的分布偏移误差。本质上是扩散模型上的进化策略。",
+ "experiment_framework": "在两个生物序列设计任务上验证：蛋白质结构设计(优化与目标结构的RMSD)和细胞类型特异性调控DNA设计。对比single-shot reward-guided扩散方法。指标为reward值和序列质量。",
+ "takeaways": [
+  "迭代加噪-去噪精化比单次reward-guided扩散生成能达到更高的reward值",
+  "多轮精化能逐步修正reward引导引入的误差，避免单次优化陷入坏局部最优",
+  "该框架可应用于任何已有预训练扩散模型的reward优化任务，无需重新训练"
+ ],
+ "weaknesses": [
+  "多轮迭代增加了推理计算成本，每轮都需要完整的去噪过程",
+  "仅在蛋白质和DNA设计任务上验证，未在图像生成等其他扩散模型领域测试",
+  "理论分析较薄弱，迭代次数与性能的关系缺乏理论指导"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.13,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/RocketKV_Accelerating Long-Context LLM Inference via Two-Stage KV Cache Compression.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/RocketKV_Accelerating Long-Context LLM Inference via Two-Stage KV Cache Compression.pdf",
+ "title": "RocketKV: Accelerating Long-Context LLM Inference via Two-Stage KV Cache Compression",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "两阶段KV压缩加速长上下文推理，但存储与效率权衡不足",
+ "innovations": [
+  "两阶段KV缓存压缩框架",
+  "混合稀疏注意力(HSA)方法",
+  "自适应压缩分解机制",
+  "多轮对话场景的RocketKV-MT变体"
+ ],
+ "method_framework": "RocketKV采用两阶段压缩：第一阶段使用SnapKV进行粗粒度永久KV缓存淘汰，第二阶段提出混合稀疏注意力(HSA)进行细粒度动态KV token选择，通过序列和头维度二维缩减实现top-k注意力近似。",
+ "experiment_framework": "在Llama3.1-8B-Instruct、Mistral-7B-Instruct-v0.2和LongChat-7B-v1.5模型上评估，使用LongBench和NIAH基准测试，比较不同token预算下的准确性和性能指标。",
+ "takeaways": [
+  "两阶段压缩框架结合了永久淘汰和动态选择的优点",
+  "混合稀疏注意力通过二维缩减提高了top-k预测准确性",
+  "自适应压缩分解机制平衡了两个阶段的压缩比例"
+ ],
+ "weaknesses": [
+  "多轮对话场景下RocketKV-MT不提供存储节省",
+  "HSA算法的辅助存储开销随压缩比增加",
+  "实验主要关注解码阶段，对预填充阶段优化不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Unseen Visual Anomaly Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Unseen Visual Anomaly Generation.pdf",
+ "title": "Unseen Visual Anomaly Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "基于Stable Diffusion的零样本异常生成，依赖文本描述质量",
+ "innovations": [
+  "测试时正常样本条件化，无需训练即可生成未见异常",
+  "注意力引导的异常优化，强制模型关注异常概念",
+  "提示引导的异常细化，利用详细描述提升生成质量"
+ ],
+ "method_framework": "AnomalyAny框架包含三个核心模块：测试时正常样本条件化、注意力引导的异常优化和提示引导的异常细化，通过Stable Diffusion生成未见异常",
+ "experiment_framework": "在MVTec AD和VisA数据集上评估，使用IS和IC-LPIPS指标评估生成质量，并通过1-shot异常检测任务验证下游任务有效性",
+ "takeaways": [
+  "无需训练即可生成未见异常，解决数据稀缺问题",
+  "注意力机制可提供像素级异常定位",
+  "结合GPT-4生成详细描述提升生成质量"
+ ],
+ "weaknesses": [
+  "依赖预训练Stable Diffusion模型，可能受其训练数据分布限制",
+  "生成质量受文本描述质量影响较大",
+  "实验主要在工业检测数据集上验证，泛化性有待进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "工业异常检测属于落地域，但方法未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

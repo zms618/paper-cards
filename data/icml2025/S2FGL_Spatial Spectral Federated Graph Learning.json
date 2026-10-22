@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/S2FGL_Spatial Spectral Federated Graph Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/S2FGL_Spatial Spectral Federated Graph Learning.pdf",
+ "title": "S2FGL: Spatial Spectral Federated Graph Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "空间谱联合联邦图学习，小数据集验证，通信隐私代价未量化",
+ "innovations": [
+  "指出现有子图联邦图学习忽视图信号在空间域与谱域的传播，分别剖析标签信号中断与谱客户端漂移问题。",
+  "设计全局知识库(global knowledge repository)缓解边断开造成的语义知识退化。",
+  "设计频率对齐(frequency alignment)缓解谱异质性引起的本地GNN过拟合与客户端漂移。"
+ ],
+ "method_framework": "空间维度：用全局知识库补回客户端间边断开所丢失的标签信号，恢复全局GNN语义知识；谱维度：通过特征值分布的KL散度刻画各子图信号频率不一致，并做频率对齐，使本地GNN不过拟合各自的传播方案，从而抑制谱客户端漂移。",
+ "experiment_framework": "在Cora/Citeseer/PubMed等多个图数据集上做联邦节点分类，对比集中式GNN与多种联邦图学习基线；报告节点分类精度。",
+ "takeaways": [
+  "空间+谱联合策略在多个数据集上优于现有联邦图学习方法。",
+  "谱异质性可由特征值分布KL散度量化，频率对齐能有效抑制客户端漂移。"
+ ],
+ "weaknesses": [
+  "与主线(医学影像/多模态大模型推理/可信AI)关系弱，属联邦图学习。",
+  "仅在三个引文网络小数据集验证，未见 fraud detection 等真实大图场景。",
+  "全局知识库的通信开销与隐私代价在可见页内未充分量化。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

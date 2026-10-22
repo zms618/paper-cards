@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/DIA The Adversarial Exposure of Deterministic Inversion in Diffusion Models.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/DIA The Adversarial Exposure of Deterministic Inversion in Diffusion Models.pdf",
+ "title": "DIA The Adversarial Exposure of Deterministic Inversion in Diffusion Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "针对DDIM反转轨迹的攻击方法，但防御场景局限且泛化性存疑",
+ "innovations": [
+  "提出DIA-PT和DIA-R两种针对DDIM反转轨迹的攻击方法",
+  "利用可微分扩散轨迹和向量-雅可比积分解解决内存限制",
+  "首次针对反转图像编辑方法进行有效防御"
+ ],
+ "method_framework": "DIA框架通过优化对抗噪声δ，直接攻击DDIM反转过程轨迹，分为过程轨迹攻击(DIA-PT)和重建损失攻击(DIA-R)两种策略，利用分解反向传播实现内存高效优化。",
+ "experiment_framework": "在PIE-Bench数据集上评估，包含9种反转-编辑方法组合，使用CLIP相似度、PSNR、LPIPS等指标，与Photoguard、AdvDM等基线方法比较。",
+ "takeaways": [
+  "针对扩散模型轨迹的攻击比传统防御方法更有效",
+  "分解反向传播技术可解决扩散模型轨迹优化的内存问题",
+  "防御效果与编辑方法组合相关，需全面评估"
+ ],
+ "weaknesses": [
+  "仅评估了图像编辑场景，未涉及其他扩散模型应用",
+  "未探讨防御方法对模型正常使用的影响",
+  "实验主要基于Stable Diffusion v1.4，泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "针对扩散模型攻击方法，与可靠性主线有间接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

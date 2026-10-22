@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Delta Decompression for MoE-based LLMs Compression.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Delta Decompression for MoE-based LLMs Compression.pdf",
+ "title": "Delta Decompression for MoE-based LLMs Compression",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "Delta分解与半动态剪枝压缩MoE模型，提升效率但缺乏微调验证",
+ "innovations": [
+  "专家权重分解为共享基权重与专家特定delta权重",
+  "Fisher信息加权合并专家权重",
+  "截断感知SVD压缩delta权重",
+  "半动态结构化剪枝策略"
+ ],
+ "method_framework": "将专家权重分解为共享基权重和专家特定delta权重，使用Fisher信息加权合并基权重，通过SVD压缩delta权重，最后应用半动态结构化剪枝进一步优化基权重。",
+ "experiment_framework": "在Mixtral|Phi-3.5|DeepSeek|Qwen2 MoE LLMs上测试，使用10个数据集评估语言建模和常识推理任务，与多种压缩方法对比。",
+ "takeaways": [
+  "专家权重中存在可利用的低秩结构",
+  "Fisher信息加权能有效保留重要专家信息",
+  "半动态剪束能同时处理静态和动态冗余"
+ ],
+ "weaknesses": [
+  "仅评估了零样本场景，未进行微调",
+  "未分析不同输入类型下的动态剪枝效率",
+  "计算Fisher信息可能增加额外开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Worldsplat_Gaussian-Centric Feed-Forward 4D Scene Generation for Autonomous Driving.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Worldsplat_Gaussian-Centric Feed-Forward 4D Scene Generation for Autonomous Driving.pdf",
+ "title": "Worldsplat: Gaussian-Centric Feed-Forward 4D Scene Generation for Autonomous Driving",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "高斯为中心的两阶段4D驾驶场景生成，精修阶段引入几何一致性风险",
+ "innovations": [
+  "提出以高斯为中心的前馈4D驾驶场景生成框架，弥合场景生成(可控但3D一致性差)与重建(NVS好但无生成力)的两难",
+  "4D感知隐扩散模型融合多模态信息，前馈直接产出像素对齐的4D高斯",
+  "用增强视频扩散模型对由4D高斯渲染出的新视角视频做精修，提升保真度"
+ ],
+ "method_framework": "第一步：4D-aware latent diffusion融合多模态条件，前馈预测像素对齐的4D高斯；第二步：以这些高斯渲染多轨迹新视角视频，再送入增强video diffusion做帧级精修，得到高保真时空一致的多视角驾驶视频。",
+ "experiment_framework": "在驾驶场景基准数据集上评测；基线为驾驶视频生成方法与3D/4D重建方法；指标为新视角合成质量(FID/FVD类)与时空一致性；报告高保真、时空一致的多轨迹新视角驾驶视频。",
+ "takeaways": [
+  "前馈预测4D高斯+视频扩散精修的两阶段可同时获得生成可控性与3D时空一致性",
+  "以高斯为中间表示桥接生成与重建，是支持便利高质量NVS的可行路径",
+  "对自动驾驶可扩展、可控训练数据与闭环评测有价值"
+ ],
+ "weaknesses": [
+  "两阶段(高斯生成+视频精修)误差会累积，精修是否引入与高斯几何不一致的伪影缺乏分析",
+  "生成可控性/可编辑性(如改交通参与者、光照)在提取页未充分展示",
+  "仅在驾驶基准验证，对复杂天气/长尾交通参与者的泛化未证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "4D场景生成与可靠性主线无实质交织，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

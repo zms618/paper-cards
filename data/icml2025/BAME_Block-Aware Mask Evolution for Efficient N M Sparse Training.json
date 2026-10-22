@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/BAME_Block-Aware Mask Evolution for Efficient N M Sparse Training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/BAME_Block-Aware Mask Evolution for Efficient N M Sparse Training.pdf",
+ "title": "BAME: Block-Aware Mask Evolution for Efficient N:M Sparse Training",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "块级掩码演化实现全程稀疏训练，但验证有限且缺乏理论指导。",
+ "innovations": [
+  "提出全程稀疏训练范式，前向和反向传播均保持N:M稀疏，而非仅前向稀疏反向稠密",
+  "设计基于掩码振荡频率和期望损失下降的联合评估准则，选择最需要调整的权重块进行剪枝-regrow",
+  "块级掩码演化机制在指定块内动态调整N:M掩码，而非全局重新分配"
+ ],
+ "method_framework": "将权重矩阵划分为若干块，每块维护N:M稀疏掩码。训练过程中全程使用稀疏前向和稀疏反向传播。定期评估各块的掩码振荡频率（掩码变化频繁的块说明不稳定）和期望损失下降（梯度信息估计），联合得分高的块被选中进行剪枝-regrow操作，在块内重新选择top-N权重。",
+ "experiment_framework": "在ImageNet上用ResNet-50测试1:16稀疏度，基线为SR-STE等N:M稀疏训练方法。指标为top-1准确率和训练FLOPs。",
+ "takeaways": [
+  "BAME在1:16稀疏ResNet-50上达72.0% top-1准确率，比SR-STE高0.5%，同时训练FLOPs减少2.37倍",
+  "全程稀疏反向传播比稠密反向传播训练更高效，且性能不降反升",
+  "掩码振荡频率高的块是模型不稳定区域，优先调整这些块能更高效地优化掩码"
+ ],
+ "weaknesses": [
+  "仅在ImageNet分类和ResNet上验证，未测试检测/分割等密集预测任务",
+  "块大小和调整频率等超参数的选择缺乏理论指导",
+  "与SOTA稀疏训练方法的对比基线较少，未对比SET/RigL等动态稀疏方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.55,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "稀疏训练方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

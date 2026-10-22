@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Trajtok_What Makes for A Good Trajectory Tokenizer In Behavior GENERATION.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Trajtok_What Makes for A Good Trajectory Tokenizer In Behavior GENERATION.pdf",
+ "title": "TrajTok: What Makes for a Good Trajectory Tokenizer in Behavior Generation?",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "规则+数据驱动轨迹分词器，Waymo冠军但泛化性存疑。",
+ "innovations": [
+  "系统分析数据驱动和规则-based轨迹分词器的四大属性（覆盖度、利用率、对称性、鲁棒性）及其对性能的影响",
+  "提出TrajTok：规则-based词表候选构建+数据驱动过滤选择，平衡覆盖度和利用率",
+  "提出空间感知标签平滑方法，更好地建模轨迹token间的相似性"
+ ],
+ "method_framework": "TrajTok结合规则-based和数据驱动方法：先用规则-based方法构建候选词表以保证覆盖度，再用数据驱动方法过滤和选择有用token以提升利用率。同时引入空间感知标签平滑，考虑轨迹token间的空间相似性来改进交叉熵损失。",
+ "experiment_framework": "在Waymo开放数据集上评估行为生成性能，对比纯数据驱动和纯规则-based分词器；2025 Waymo Open Sim Agents Challenge第一名。",
+ "takeaways": [
+  "数据驱动分词器利用率高但覆盖不足且对噪声敏感，规则-based分词器覆盖好但含无用token",
+  "规则候选+数据驱动过滤的组合可平衡四大属性，是更好的轨迹分词策略",
+  "空间感知标签平滑有效建模了轨迹token间的几何相似性"
+ ],
+ "weaknesses": [
+  "仅在自动驾驶轨迹生成场景验证，其他序列生成任务的分词器设计原则未探讨",
+  "四大属性的量化评估标准较为经验性，缺乏严格定义",
+  "与现代VLM-based行为生成模型的结合效果未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "轨迹分词器设计不直接关联可靠性主线，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

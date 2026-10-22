@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Efficient and Scalable Density Functional Theory Hamiltonian Prediction through Adaptive Sparsity.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficient and Scalable Density Functional Theory Hamiltonian Prediction through Adaptive Sparsity.pdf",
+ "title": "Efficient and Scalable Density Functional Theory Hamiltonian Prediction through Adaptive Sparsity",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 5,
+  "overall": 6
+ },
+ "one_line": "SPHNet引入自适应稀疏门加速哈密顿量预测，大体系显著加速但小体系精度下降。",
+ "innovations": [
+  "Sparse Pair Gate：用可学习权重Wijp筛选重要原子对(i,j)，把O(N²)张量积对数稀疏化，且发现选对概率随距离上升(长程静电作用重要)而非传统RBF cutoff。",
+  "Sparse TP Gate：对跨阶组合(ℓ1,ℓ2,ℓ3)学一维分数剪枝，e3nn张量积近线性加速；高阶组合单条重要性低更易被剪。",
+  "三相稀疏调度器TSS：random(无偏更新)→adaptive(top-k权重)→fixed(冻结静态图)，保证稳定收敛；并证明稀疏门可迁移到QHNet(3.3×加速)。"
+ ],
+ "method_framework": "SE(3)等变图网络预测Kohn-Sham哈密顿量H。节点相互作用块先4个Vectorial块(ℓ≤1无张量积)再2个Spherical块升到Lmax；Pair Construction块用稀疏门选对+选跨阶组合算fij/fii；利用H对称性只算上三角。稀疏率k按体系规模定(MD17 30%/QH9 40%/PubChemQH 70%)。",
+ "experiment_framework": "数据MD17(小分子轨迹,PBE,def2-SVP)/QH9(134k≤20原子,B3LYP,def2-SVP,4种split)/PubChemQH(50k,40-100原子,def2-TZVP,Lmax=6)；基线SchNOrb/PhiSNet/QHNet/WANet；指标Hamiltonian MAE H、占据能MAE ε、系数余弦相似度ψ、显存、速度/speedup；消融稀疏率/三相调度/两个门/迁移到QHNet/随体系规模scaling。",
+ "takeaways": [
+  "PubChemQH上SPHNet训练7.1×快于QHNet(3.12 vs 0.44 sample/s)、显存仅5.62GB vs 22.5GB，H MAE 97.31 vs 123.74；QH9上3.3-4×加速且精度更优。",
+  "稀疏率阈值随体系规模上升(MD17 30%/QH9 40%/PubChemQH 70%)，大体系冗余更多更易稀疏化；同显存下可训~3000轨道 vs 基线~1800。",
+  "消融：去random阶段陷局部最优、去adaptive方差大且精度降、去fixed阶段speedup降到5.45；Sparse TP Gate贡献160%加速、Pair Gate贡献78%。"
+ ],
+ "weaknesses": [
+  "MD17小分子上SPHNet精度反而不如QHNet(water H MAE 23.18 vs 10.79)，小体系稀疏化无收益甚至有损；WANet未开源只能引其论文数字。",
+  "稀疏率需按体系规模手调阈值，三相调度的理论依据不足；稀疏门额外开销虽小但静态图依赖e3nn优化实现。",
+  "属AI for Science/计算化学哈密顿量预测，与可靠性主线（鲁棒/泛化/可信AI/不确定性/幻觉抑制在医学影像或多模态大模型推理）无直接关系。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

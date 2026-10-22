@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Where Did this Sentence Come FROM Tracing Provenance In LLM Reasoning Distillation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Where Did this Sentence Come FROM Tracing Provenance In LLM Reasoning Distillation.pdf",
+ "title": "Where Did this Sentence Come From: Tracing Provenance in LLM Reasoning Distillation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "跨模型推理蒸馏溯源框架，归因四类动作来源并指导数据选择。",
+ "innovations": [
+  "提出跨模型推理蒸馏溯源框架：对蒸馏模型每个动作(sentence)，在同上下文下取teacher、原始student、蒸馏student三者的预测概率做对比",
+  "把每个动作归为四类：teacher-originated/student-originated/共有未增强/共有被蒸馏增强，系统解耦能力来源",
+  "实验证明测试时蒸馏模型确实会产生teacher-originated动作，且与观测到的性能提升相关",
+  "提出teacher-guided数据选择：直接比较训练数据上teacher-student散度作为原则性筛选准则，替代基于启发式(贴合学生原分布)的选择"
+ ],
+ "method_framework": "在同一上下文下对蒸馏模型输出的每个token/句子，分别用teacher、蒸馏前原始student、蒸馏后student打概率；据概率对比将动作归入四类来源；用teacher-originated动作比例解释性能；并以训练数据上的teacher-student散度大小作为蒸馏样本筛选依据。",
+ "experiment_framework": "在多个teacher(Deepseek/QwQ/GPT-OSS-120B)与多个student(Qwen2.5-7B/Qwen3-4B/8B等)上验证；基线为启发式蒸馏数据选择；指标为蒸馏后下游推理性能；报告溯源框架解释力与teacher-guided选择的有效性。",
+ "takeaways": [
+  "蒸馏模型在新测试上下文确实会调用teacher-originated行为，这是性能提升的可溯源来源，而非简单回归原分布",
+  "按teacher-student散度选蒸馏样本比按贴合学生原分布的启发式更有原则",
+  "四类动作归因可作为诊断蒸馏是否真正迁移了teacher能力的工具"
+ ],
+ "weaknesses": [
+  "动作归因依赖在同上下文下三者概率可计算，实际生成时teacher/学生的tokenization差异使概率对齐存在近似",
+  "teacher-originated与性能提升仅为相关性，因果性证据较弱",
+  "数据选择的收益相对于已成熟启发式筛选的增量在提取页未见大幅拉开"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "蒸馏数据选择方法与可靠性主线有交点但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning to Plan & Reason for Evaluation with Thinking-LLM-as-a-Judge.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning to Plan & Reason for Evaluation with Thinking-LLM-as-a-Judge.pdf",
+ "title": "Learning to Plan & Reason for Evaluation with Thinking-LLM-as-a-Judge",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "解耦规划与推理的评估优化，合成偏好训练无标注judge",
+ "innovations": [
+  "提出评估思维链中规划与推理解耦的范式：judge先生成评估计划（检查点列表），再按计划逐步执行推理，而非将规划与推理混在一起",
+  "设计偏好优化算法训练Thinking-LLM-as-a-Judge：在无人工标注评估CoT的情况下，通过合成偏好对训练judge学会先规划后推理的评估结构",
+  "在FollowBench等复杂指令遵循评估基准上验证，显著提升 pairwise 评估准确率"
+ ],
+ "method_framework": "EvalPlanner训练流程：(1)从WildChat和MATH数据构造合成偏好对（chosen=正确响应，rejected=错误响应）；(2)让judge模型先生成评估计划（需要检查哪些维度/标准），再按计划逐步推理得出最终判断；(3)用偏好优化（DPO类方法）训练judge，使其偏好先规划后推理的评估轨迹而非自由生成的CoT。推理时，judge自动输出结构化的评估计划+逐步推理+最终判断。",
+ "experiment_framework": "训练数据：WildChat（聊天响应）和MATH（数学题）合成偏好对；测试基准：FollowBench（多约束指令遵循pairwise评估）；基线包括直接judge、Self-Taught Evaluators、手工设计CoT的judge；指标为pairwise评估准确率、与人类判断的一致性。",
+ "takeaways": [
+  "评估型思维链中，先规划后推理比无结构自由CoT更准确、更可解释",
+  "无需人工标注评估CoT，通过合成偏好对+偏好优化即可训练出结构化的Thinking-Judge",
+  "规划步骤将评估任务分解为可管理的检查点，减少judge遗漏关键评估维度的概率"
+ ],
+ "weaknesses": [
+  "合成偏好对的质量依赖于教师模型（Mixtral），在更复杂的开放域评估任务中合成数据的多样性可能不足",
+  "评估计划的质量如何自动验证未讨论——坏计划可能导致系统性偏差",
+  "仅在指令遵循和数学推理两类任务上验证，在开放生成/多模态评估中的效果未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

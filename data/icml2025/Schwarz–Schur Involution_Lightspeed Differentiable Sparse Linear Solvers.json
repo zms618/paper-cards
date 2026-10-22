@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Schwarz–Schur Involution_Lightspeed Differentiable Sparse Linear Solvers.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Schwarz–Schur Involution_Lightspeed Differentiable Sparse Linear Solvers.pdf",
+ "title": "Schwarz-Schur Involution: Lightspeed Differentiable Sparse Linear Solvers",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6
+ },
+ "one_line": "将稀疏Laplacian凝聚为DtN张量，实现GPU加速可微求解器。",
+ "innovations": [
+  "推翻'直接稀疏求解器太慢'的常识，将直接法加速多达三个数量级、达到交互速率。",
+  "提出把稀疏Laplacian凝聚为稠密DtN张量的紧凑数据结构，递归合并成对小稠密矩阵完成求解。",
+  "将批量小稠密系统切片并并行调用高度优化的GPU稠密BLAS，使求解器可微、可作为神经模块。"
+ ],
+ "method_framework": "稀疏Laplacian系统A^{-1}b等价于与空间变化核的广义反卷积。本文利用Schwarz-Schur对合：把大规模稀疏矩阵递归地划分为子区域，仅保留各子区域边界上的Dirichlet-to-Neumann(DtN)映射(稠密小矩阵)；求解变为递归合并这些小稠密矩阵，再切片并行GPU求逆，既保留直接法的稳定可靠，又获得稠密BLAS级别的速度。",
+ "experiment_framework": "在图像/网格上的Laplacian(Dirichlet)系统等广义反卷积任务上，对比SciPy间接/直接求解器与CUDA基线；指标为求解(含分解与回代)毫秒数与加速比，覆盖多种图像尺寸，验证可微性与零样本作为求解层的表现。",
+ "takeaways": [
+  "直接稀疏求解器可借助DtN凝聚+GPU稠密BLAS达到交互速率。",
+  "该求解器稳定、可微，可直接嵌入深度学习架构作为零样本基线模块。"
+ ],
+ "weaknesses": [
+  "方法针对(类)Laplacian/规则网格结构设计，对一般非结构化稀疏矩阵的适用性受限。",
+  "DtN稠密张量的存储随边界/问题规模增长，超大规模问题的内存代价需权衡。",
+  "与可靠性/可信AI主线关系较弱，属科学计算/可微求解方向。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

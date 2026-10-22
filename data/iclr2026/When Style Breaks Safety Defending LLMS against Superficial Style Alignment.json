@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/When Style Breaks Safety Defending LLMS against Superficial Style Alignment.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/When Style Breaks Safety Defending LLMS against Superficial Style Alignment.pdf",
+ "title": "When Style Breaks Safety: Defending LLMs against Superficial Style Alignment",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 6.7
+ },
+ "one_line": "揭示LLM风格膨胀越狱风险，提出风格匹配的安全防御方法。",
+ "innovations": [
+  "定义ASR膨胀：越狱基准查询中与恶意意图无语义关系的风格模式所导致的ASR上升",
+  "评测36个LLM/7基准发现几乎所有模型都有ASR膨胀，且膨胀与模型对风格模式的相对注意、及该风格与指令微调数据的重叠相关",
+  "发现表面风格对齐风险：用特定风格微调会让模型更易被同风格越狱",
+  "提出SafeStyle：用与微调数据风格分布匹配的少量安全训练数据增强，维持安全"
+ ],
+ "method_framework": "先度量现有越狱查询中风格模式带来的ASR膨胀并关联注意力/微调数据重叠；再验证特定风格微调如何放大同风格漏洞；最后在对齐时加入风格分布匹配的少量安全样本(SafeStyle)，使安全覆盖到易被利用的风格上。",
+ "experiment_framework": "评测36个LLM跨7个越狱基准；防御侧在3个LLM、6种微调风格、2个真实指令微调数据集上验证SafeStyle；指标为攻击成功率ASR与有用性；报告SafeStyle一致优于基线。",
+ "takeaways": [
+  "与恶意意图无关的表面风格本身就会提升越狱成功率(ASR膨胀)，普遍存在",
+  "用某种风格做对齐/微调会引入同风格的安全脆弱面",
+  "把安全数据按微调风格分布增强(SafeStyle)可低成本堵住该漏洞"
+ ],
+ "weaknesses": [
+  "SafeStyle仍需知道微调数据的风格分布，对风格高度混杂的真实指令集如何覆盖未充分讨论",
+  "ASR膨胀与注意力/数据重叠仅为相关性，因果干预证据有限",
+  "对尚未见过的新型风格攻击的泛化防御能力未充分压力测试"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "LLM安全防御与可靠性主线交点，风格匹配防御设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

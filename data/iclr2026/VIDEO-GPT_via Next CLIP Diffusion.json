@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VIDEO-GPT_via Next CLIP Diffusion.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VIDEO-GPT_via Next CLIP Diffusion.pdf",
+ "title": "Video-GPT via Next CLIP Diffusion",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "自回归视频去噪范式，在预测任务SOTA但泛化性与可靠性存疑",
+ "innovations": [
+  "提出next clip diffusion预训练范式，类比GPT的next token预测，把视频视为视觉世界的新语言",
+  "按历史干净片段对含噪片段做自回归去噪，统一处理短期生成与长期预测",
+  "可良好适配视频生成与理解共6个主流下游任务，展现世界建模的泛化能力"
+ ],
+ "method_framework": "类比GPT的next token预测，提出next clip diffusion：将视频切分为片段，依据历史干净片段对当前含噪片段做自回归去噪扩散，从而同时建模短期动作细节与长期时序演化，实现视觉世界建模。",
+ "experiment_framework": "在Physics-IQ等视频预测基准上评测，对比Kling、Wan等视频生成模型；并在6个主流视频生成与理解下游任务上验证迁移；指标含预测准确率/物理质量；报告Physics-IQ 34.97 vs Kling 23.64 vs Wan 20.89。",
+ "takeaways": [
+  "Video-GPT在视频预测(世界建模关键)上达SOTA，Physics-IQ基准34.97显著优于Kling 23.64与Wan 20.89",
+  "next clip diffusion范式同时兼顾短期生成与长期预测",
+  "同一视频基础模型可迁移到6个生成与理解下游任务"
+ ],
+ "weaknesses": [
+  "属于世界模型/视频预测方向，与可靠性、医学影像、多模态推理主线无关，relevance偏低",
+  "视频预测的物理真实性仅在Physics-IQ等少数基准验证，长程误差累积与漂移前9页未深入分析",
+  "范式对训练数据规模依赖大，小规模或私有场景的可复现性证据不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.03,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "视频预测与可靠性主线无关，无医学影像或多模态推理落地",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

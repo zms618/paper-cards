@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Right Time to Learn Promoting Generalization via Bio-inspired Spacing Effect in Knowledge Distillation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Right Time to Learn Promoting Generalization via Bio-inspired Spacing Effect in Knowledge Distillation.pdf",
+ "title": "Right Time to Learn: Promoting Generalization via Bio-inspired Spacing Effect in Knowledge Distillation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "将生物间隔效应引入知识蒸馏，通过时间间隔提升模型泛化性能。",
+ "innovations": [
+  "将生物记忆中的间隔效应(spacing effect)引入知识蒸馏，提出Spaced KD：教师提前s步训练后再蒸馏给学生",
+  "从理论上证明Spaced KD使学生收敛到Hessian迹更小(更平坦)的极小值，从而提升泛化",
+  "策略兼容online KD和self KD两种范式，无需修改网络结构或额外参数"
+ ],
+ "method_framework": "在online KD或self KD训练中，教师模型比学生模型提前s步(space interval)更新。学生在每个step t蒸馏自教师在step k(t)=⌌t/s⌉s时的输出，而非当前step的教师。通过这种时间间隔，学生蒸馏的是一个更成熟但非当前的教师，理论上引导学生收敛到更平坦的极小值。",
+ "experiment_framework": "在CIFAR-100和Tiny-ImageNet上用ResNet-18/50/101等架构验证。对比online KD(DML)和self KD(BYOT)基线。指标为top-1测试准确率。消融研究不同间隔s的影响，并用Hessian trace可视化损失面平坦度。",
+ "takeaways": [
+  "Spaced KD在Tiny-ImageNet上相比online KD提升2.31%，相比self KD提升3.34% top-1准确率",
+  "理论和实验均表明Spaced KD使学生收敛到更平坦的损失面(Hessian迹更小)，解释了泛化提升的机制",
+  "间隔s存在最优值，过大或过小都效果下降，与生物学习中间隔效应的曲线一致"
+ ],
+ "weaknesses": [
+  "仅在CIFAR-100和Tiny-ImageNet等小规模数据集验证，未在ImageNet-1K等大规模数据集上验证",
+  "间隔s需要手动调节，不同数据集/架构的最优s不同，缺乏自动选择方法",
+  "理论分析基于过参数化线性回归简化模型，对深层非线性网络的解释力有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

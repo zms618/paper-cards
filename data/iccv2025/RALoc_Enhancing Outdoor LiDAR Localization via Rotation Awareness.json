@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/RALoc_Enhancing Outdoor LiDAR Localization via Rotation Awareness.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/RALoc_Enhancing Outdoor LiDAR Localization via Rotation Awareness.pdf",
+ "title": "RALoc Enhancing Outdoor LiDAR Localization via Rotation Awareness",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "旋转感知点云标准化提升LiDAR定位，但依赖轨迹定义且计算复杂",
+ "innovations": [
+  "引入等变网络解决SCR的旋转敏感问题",
+  "设计等变关键特征聚合模块处理噪声点云",
+  "创建包含显著旋转变化的BiLiLo数据集"
+ ],
+ "method_framework": "RALoc包含点云标准化(PCC)和场景坐标回归(SCR)两部分，使用VNN等变网络感知旋转状态，通过Schmidt正交化确保旋转矩阵有效性，再应用逆变换获得标准化点云",
+ "experiment_framework": "在Oxford Radar RobotCar和自建BiLiLo数据集上评估，使用位置和方向误差作为指标，与DiffLoc、SGLoc和LiSA等方法对比",
+ "takeaways": [
+  "等变网络能有效提升LiDAR定位的旋转鲁棒性",
+  "关键特征聚合模块可过滤噪声点干扰",
+  "反向轨迹数据集是评估定位鲁棒性的重要资源"
+ ],
+ "weaknesses": [
+  "方法依赖于训练数据的轨迹方向定义",
+  "计算复杂度增加，需要额外的旋转矩阵回归",
+  "仅评估了LiDAR数据，未考虑多模态融合"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "定位技术本身不属可靠性主线，但旋转鲁棒性设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

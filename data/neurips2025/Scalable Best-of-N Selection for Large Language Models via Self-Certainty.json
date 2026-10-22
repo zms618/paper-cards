@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Scalable Best-of-N Selection for Large Language Models via Self-Certainty.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Scalable Best-of-N Selection for Large Language Models via Self-Certainty.pdf",
+ "title": "Scalable Best-of-N Selection for Large Language Models via Self-Certainty",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "基于输出分布KL散度的自确定度指标提升LLM推理选择",
+ "innovations": [
+  "自确定度(Self-Certainty)指标，利用LLM输出分布评估响应质量",
+  "基于KL散度的分布置信度测量，优于传统困惑度指标",
+  "结合Borda投票的自确定度加权选择方法",
+  "对开放性任务的有效扩展，超越传统自一致性方法"
+ ],
+ "method_framework": "提出自确定度指标，通过计算预测分布与均匀分布的KL散度量化模型置信度，结合Borda投票方法进行最佳响应选择，无需外部奖励模型。",
+ "experiment_framework": "在LiveBench-Math、GSM8K、MATH、CRUXEval-O和LiveCodeBench等推理基准上评估，与自一致性、USC、贪婪解码等方法对比，使用准确率作为主要指标。",
+ "takeaways": [
+  "分布置信度指标能有效区分正确与错误响应，且不受响应长度影响",
+  "Borda投票结合自确定度可显著提升推理性能，尤其在较大N值时"
+ ],
+ "weaknesses": [
+  "自确定度单独使用时在数学数据集上表现不如自一致性",
+  "Borda参数p需要针对不同N值进行调整，缺乏自适应机制",
+  "未充分探讨模型规模对自确定度效果的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

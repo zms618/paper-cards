@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/PoseSyn_Synthesizing Diverse 3D Pose Data from In-the-Wild 2D Data.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/PoseSyn_Synthesizing Diverse 3D Pose Data from In-the-Wild 2D Data.pdf",
+ "title": "PoseSyn Synthesizing Diverse 3D Pose Data from In-the-Wild 2D Data",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "从2D数据合成3D姿态，提升估计器泛化，但依赖预训练模型且计算成本高。",
+ "innovations": [
+  "Error Extraction Module (EEM)识别挑战性姿态",
+  "Motion Synthesis Module (MSM)结合文本描述和初始姿态生成运动序列",
+  "利用人类动画模型生成真实背景和外观的合成数据"
+ ],
+ "method_framework": "PoseSyn包含两个核心模块：EEM识别2D数据中目标姿态估计器表现不佳的挑战性姿态，MSM结合文本描述和错误预测的3D姿态生成运动序列，最后通过人类动画模型生成与挑战性姿态对齐的3D训练数据。",
+ "experiment_framework": "在3DPW、EMDB、CMU、HuMMan等6个数据集上评估，使用MPJPE、PA-MPJPE和PCKh指标，对比3DCrowdNet、Hybrik和4DHumans三种姿态估计器。",
+ "takeaways": [
+  "利用现有2D姿态数据生成高质量3D训练数据的方法",
+  "结合文本描述和初始姿态表示生成多样化运动序列的策略",
+  "使用真实图像作为参考生成多样化背景和外观的合成数据"
+ ],
+ "weaknesses": [
+  "方法依赖于预训练的姿态估计器来识别挑战性姿态",
+  "合成数据的真实性和多样性可能受限于人类动画模型的能力",
+  "计算成本较高，需要多个模块协同工作"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "姿态估计泛化属常规鲁棒性，无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

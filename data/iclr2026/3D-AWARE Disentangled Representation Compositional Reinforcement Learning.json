@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/3D-AWARE Disentangled Representation Compositional Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/3D-AWARE Disentangled Representation Compositional Reinforcement Learning.pdf",
+ "title": "3D-AWARE DISENTANGLED REPRESENTATION FOR COMPOSITIONAL REINFORCEMENT LEARNING",
+ "scores": {
+  "novelty": 4.5,
+  "depth": 5.0,
+  "evidence": 4.0,
+  "relevance": 3.5,
+  "overall": 4.2
+ },
+ "one_line": "拼接OSRT与SysBinder，mask损失固定槽身份，组合泛化覆盖窄",
+ "innovations": [
+  "3D block-slot attention：把物体 slot z_n ∈ R^{D_slot} 按 M 段切成 z_{n,m} ∈ R^{D_block}（D_slot = M·D_block），各 block 用独立可学习概念记忆 C_m ∈ R^{K×d} 做点积注意力作软信息瓶颈，更新为 z_{n,m} = GRU_φm(z_{n,m}, u_{n,m}) ⇒ z^+_{n,m} = MLP_φm(LN(z_{n,m}))；背景槽与机械臂槽不共享物体的属性组合语义，故只对这些槽保留原始 slot attention",
+  "显式给背景与机械臂定号（z_bg, z_ag 固定索引）并用像素级辅助损失把两槽的注意力加权区域对齐到模拟器 mask：L_bg = Σ_{(u,v)∈Ω}||w_bg(u,v)Î(u,v) − m^gt_bg(u,v)I(u,v)||²_2（L_ag 同理），使 agent/背景/前景在 3D 分解中可区分而非全置换不变",
+  "block transformer policy：先按语义属性（忽略位置）用匈牙利匹配把当前状态物体与目标状态物体配对，再以 z^s_{o_n} ∈ R^{M×D_block} 为 query、z^g_{o_{n'}} 为 key/value 做块级交叉注意力 H_n = CrossAttn(z^s_{o_n}, z^g_{o_{n'}})，块内 PoolAttn 后与 agent 槽、目标背景槽、当前动作 at 一起进 self-attention 出 actor/critic"
+ ],
+ "method_framework": "两阶段：先用 SRT 编码器聚合多视角图得场景特征，slot attention 分出物体槽，Slot Mixer 光场解码器做新视角重建（L2 重建 + 背景/机械臂 mask 辅助损失）；再冻表示训 TD3+HER 策略，状态与目标各取一组 slot 嵌输入块级跨注意力策略。环境为 IsaacGym 桌面推物，相机固定前/左/右三视角，每次随机重生两个物体。",
+ "experiment_framework": "表示层：Clevr3D 与 IsaacGym3D（半球随机多视角），指标 PSNR（新视角）、FG-ARI、DCI 的 D/C/I；策略层：IsaacGym 目标条件推物，reward 为各物体到目标位置负 L2 均值、阈值 R 内全到位算成功；基线为 OSRT、DLPv2 及多种结构化表示 policy。",
+ "takeaways": [
+  "属性匹配 + 位置无关配对 + 块级跨注意力三件套串起来做目标条件匹配，比整 slot 级注意力更稳，可迁移到其它组合泛化任务",
+  "用模拟器自带背景/机械臂 mask 做辅助损失固定槽身份、缓解置换歧义，是低成本结构化先验",
+  "DCI 的 D/C/I + FG-ARI 是评估解耦表示的现成度量框架，比只看重建 PSNR 更能反映槽是否真对应可操作属性"
+ ],
+ "weaknesses": [
+  "核心机制是 OSRT（3D 光场解码表示）+ SysBinder（block-slot 属性分解）+ slot attention 的模块拼接，本文新增的是 block 用概念记忆做软瓶颈与背景/机械臂显式定号加 mask 损失，量级上属把两个已有框架耦合，novelty 难到 5.5 以上",
+  "属性语义是事后用 K-means 聚类加人工解读块内容观测到的，并无机制性约束哪个 block 学哪个属性；块数 M、原型数 K 的消融只在附录 B.4、正文未见结果，关键超参不可复核。策略层只报平均回报、无成功率多种子方差，DLPv2 基线仅在 4.2 节提到要对比却没放对比表，unseen viewpoints 的 claim 缺跨视点 unseen 的具体拆分数据",
+  "RL 环境固定三相机视角 + 两个物体 + 固定形状颜色集合，组合泛化覆盖很窄，scalable to compose diverse novel scenes 的幅度缺乏量化；正文在第 4.2 节中途截断，策略结果表与块数/原型数/mask 损失/slot 与 block 混合结构的全部消融缺失，confidence 仅 medium；relevance 低：机器人操作 + 3D 表示解耦，按量规属完全无关，且无迁移到可靠性主线的机制（不涉及鲁棒性/不确定性/幻觉）"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.8,
+ "tier": "C",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 3.5,
+ "relevance_reason": "机器人操作+3D表示解耦，与可靠性主线完全无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

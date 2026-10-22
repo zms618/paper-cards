@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Taming Knowledge Conflicts in Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Taming Knowledge Conflicts in Language Models.pdf",
+ "title": "Taming Knowledge Conflicts in Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "JUICE双运行方法缓解LM知识冲突，但计算开销大且理论分析浅",
+ "innovations": [
+  "发现上下文信息与参数记忆的叠加现象(CP superposition)",
+  "提出JUICE双运行测试时干预方法",
+  "设计可靠注意力头识别机制",
+  "统一处理参数信念与上下文依赖两种场景"
+ ],
+ "method_framework": "JUICE包含两个阶段：头识别阶段(使用少量样本识别可靠注意力头)和双运行推理阶段(第一次运行保存输出，第二次运行使用缩放版本进行干预)。",
+ "experiment_framework": "在11个数据集和6种模型架构上评估，包括参数信念增强(6个数据集，3种冲突类型)和上下文依赖增强(5个数据集)，使用准确率作为指标。",
+ "takeaways": [
+  "模型组件在不同知识冲突程度下表现不一致",
+  "多个单独有效的干预可能产生相互抵消效果",
+  "双运行机制能有效缓解叠加效应"
+ ],
+ "weaknesses": [
+  "方法需要两次运行模型，增加计算开销",
+  "头选择数据集大小对性能有影响",
+  "理论分析相对简单，缺乏更深入的数学证明"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

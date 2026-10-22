@@ -1,0 +1,41 @@
+{
+ "title": "Perturbation-Induced Linearization: Constructing Unlearnable Data with Solely Linear Classifiers",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "线性代理生成不可学习样本，计算降但机制解释不足",
+ "innovations": [
+  "仅用线性代理模型生成不可学习样本扰动，替代昂贵的DNN代理+PGD，计算时间大幅降低。",
+  "揭示不可学习样本的关键机制：诱导深度模型发生线性化，解释线性方法为何短时间内即可奏效。",
+  "进一步分析基于百分比的部分扰动下不可学习样本的性质。"
+ ],
+ "method_framework": "用线性分类器作为代理生成对抗扰动加入训练数据；该扰动使深度模型在训练后趋向线性化(丧失非线性判别能力)，从而在测试集上退化为近似随机猜测；无需训练复杂DNN代理，仅线性模型即可。",
+ "experiment_framework": "在常用图像分类数据集(CIFAR类)上评测不可学习样本；对比基于DNN代理的方法(如REM、NTGA等)；指标为被污染数据训练后模型的测试准确率(越低越保护成功)与扰动生成耗时；报告可比/更优且快得多。",
+ "takeaways": [
+  "线性代理即可高效生成有效不可学习样本，无需昂贵DNN代理。",
+  "不可学习扰动的作用机制是诱导深度模型线性化。",
+  "在大幅降低计算成本的同时数据保护效果不劣于甚至优于DNN代理方法。"
+ ],
+ "weaknesses": [
+  "不可学习样本易被对抗净化/微调绕过，对现代鲁棒训练的韧性未充分评估。",
+  "主要在CIFAR等小图像分类验证，大规模ImageNet/真实爬取数据上的可扩展性证据有限。",
+  "‘线性化’机制解释偏经验观察，缺乏对深度模型为何被线性化的严格理论刻画。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PERTURBATION-INDUCED Linearization Constructing Unlearnable Data with Solely Lin-Ear Classifiers.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PERTURBATION-INDUCED Linearization Constructing Unlearnable Data with Solely Lin-Ear Classifiers.pdf",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "线性代理生成不可学习样本，机制解释不足但方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

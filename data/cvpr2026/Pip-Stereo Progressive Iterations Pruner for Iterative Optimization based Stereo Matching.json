@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Pip-Stereo Progressive Iterations Pruner for Iterative Optimization based Stereo Matching.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Pip-Stereo Progressive Iterations Pruner for Iterative Optimization based Stereo Matching.pdf",
+ "title": "Pip-Stereo Progressive Iterations Pruner for Iterative Optimization based Stereo Matching",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "渐进剪枝解决立体匹配RNN瓶颈，但硬件加速效果有限",
+ "innovations": [
+  "渐进迭代剪枝算法(PIP)消除RNN部署瓶颈",
+  "协作式单目先验转移框架避免专用编码器",
+  "硬件感知FlashGRU算子利用结构化稀疏性"
+ ],
+ "method_framework": "两阶段训练策略：单目深度先验转移学习与剪枝微调，将递归计算压缩为单次前向传播",
+ "experiment_framework": "数据集：SceneFlow/ETH3D/KITTI/DrivingStereo；基线：RaftStereo/IGEV/MonSter；指标：EPE/Bad-1/RMSE/推理延迟",
+ "takeaways": [
+  "迭代更新空间稀疏且时间冗余的特性可被利用",
+  "硬件感知设计对边缘部署至关重要",
+  "特征对齐与知识转移可提升模型泛化能力"
+ ],
+ "weaknesses": [
+  "FlashGRU在单次迭代时加速效果有限",
+  "方法依赖预训练单目深度模型",
+  "未充分讨论不同硬件平台的泛化性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "立体匹配优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

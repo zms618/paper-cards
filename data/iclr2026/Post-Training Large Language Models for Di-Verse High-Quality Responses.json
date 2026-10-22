@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Post-Training Large Language Models for Di-Verse High-Quality Responses.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Post-Training Large Language Models for Di-Verse High-Quality Responses.pdf",
+ "title": "Post-Training Large Language Models for Diverse High-Quality Responses",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "DPP行列式度量语义多样性，叠加在PPO/GRPO上提升回复多样性",
+ "innovations": [
+  "将 DPP 引入 LLM 后训练，以核相似度矩阵行列式作为语义多样性(嵌入张成体积)的有原则度量，超越token/词表层",
+  "把每条回复的奖励解释为对应嵌入向量的缩放因子，提供质量-多样性权衡的可解释机制",
+  "DQO 可即插叠加在 PPO/GRPO 等现有 SOTA 后训练方法之上"
+ ],
+ "method_framework": "对每个提示采样一组回复并用预训练编码器嵌入，经核函数构造相似度矩阵，取其行列式作为多样性得分(回复嵌入张成的体积)；奖励作为各嵌入向量缩放因子，优化该目标鼓励模型生成张成最大语义子空间的回复，可叠加在 GRPO/PPO 目标上。",
+ "experiment_framework": "在指令遵循、摘要、故事生成与推理任务上评测，对比仅用奖励训练(PPO/GRPO)的模型；用多种多样性度量与奖励质量分报告质量-多样性权衡，并做消融。",
+ "takeaways": [
+  "DQO 在多个任务上大幅提升语义多样性(如推理+61.7%)而不牺牲回复质量",
+  "RL后训练会显著压缩输出多样性、收敛到窄规范回复，需专门的语义级训练目标",
+  "DPP行列式作为语义多样性度量可同时覆盖广泛而有意义的语义模式"
+ ],
+ "weaknesses": [
+  "语义多样性依赖外部预训练编码器，其选择与偏差会影响多样性度量",
+  "行列式计算随组内回复数立方增长，规模化训练成本前9页未充分分析",
+  "提升多样性对下游可靠性/分布外鲁棒性的实际因果增益仍偏间接论证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "提升回复多样性，但与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

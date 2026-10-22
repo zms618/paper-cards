@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/CopyrightShield_Enhancing Diffusion Model Security Against Copyright Infringement Attacks.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/CopyrightShield_Enhancing Diffusion Model Security Against Copyright Infringement Attacks.pdf",
+ "title": "CopyrightShield Enhancing Diffusion Model Security Against Copyright Infringement Attacks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "空间掩码与动态惩罚防御扩散模型版权侵权，但泛化性存疑。",
+ "innovations": [
+  "分析扩散模型记忆机制，发现版权侵权攻击利用模型对特定空间位置和提示的过拟合",
+  "基于空间掩码和数据归因的版权归因分数量化中毒风险",
+  "引入动态惩罚项到训练损失中，减少对侵权特征的依赖"
+ ],
+ "method_framework": "CopyrightShield包含两部分：基于空间引导的中毒数据检测和带保护约束的自适应优化训练。通过版权归因分数识别中毒样本，并在损失函数中加入动态惩罚项减少侵权特征记忆。",
+ "experiment_framework": "在Pokemon和COYO+Midjourney数据集上评估，使用SilentBadDiffusion攻击方法，指标包括F1分数、版权侵权率(CIR)和首次攻击轮次(FAE)，与T2IShield和TERD等基线方法比较。",
+ "takeaways": [
+  "数据归因技术可有效检测扩散模型中的中毒样本",
+  "动态惩罚项策略能在保持生成性能的同时减少侵权特征记忆",
+  "空间位置一致性是扩散模型记忆侵权特征的关键因素"
+ ],
+ "weaknesses": [
+  "仅针对SilentBadDiffusion攻击方法进行防御，对其他攻击类型的泛化能力未知",
+  "检测性能在特定领域(如Pokemon)上低于通用场景",
+  "方法依赖于GroundingDINO和SAM等外部检测模型，增加了系统复杂性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "版权防御与可靠性主线部分交织，但泛化性不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

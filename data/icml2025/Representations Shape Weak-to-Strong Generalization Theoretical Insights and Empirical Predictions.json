@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Representations Shape Weak-to-Strong Generalization Theoretical Insights and Empirical Predictions.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Representations Shape Weak-to-Strong Generalization Theoretical Insights and Empirical Predictions.pdf",
+ "title": "Representations Shape Weak-to-Strong Generalization: Theoretical Insights and Empirical Predictions",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "用表示主成分核刻画弱到强泛化，提出无标签预测度量。",
+ "innovations": [
+  "用弱/强模型表示主成分导出的核(principal kernel)刻画 W2SG，定义‘弱模型学不到但强模型可学’的空间。",
+  "把标签投影到该空间，量化强模型因弱监督而相对其上限的差距(PredGap)，并说明某些弱监督错误可被强模型纠正而与过拟合无关。",
+  "提出无需标签、仅基于表示的度量来预测 W2SG 性能趋势。"
+ ],
+ "method_framework": "分别取弱、强模型内部表示的主成分张成(principal kernel span)；二者补空间与张成的重叠决定弱模型误差对 PredGap 的贡献；通过标签在该几何空间上的投影大小衡量弱监督造成的潜在损失，从而把 W2SG 表现归因为表示几何的重叠程度。",
+ "experiment_framework": "在弱-强模型对(NLP 任务)上验证理论：用所提基于表示的度量预测 W2SG 趋势，并与实测的强模型相对弱监督上限的差距对比；检验该度量在无标签情况下的预测一致性。",
+ "takeaways": [
+  "W2SG 表现由弱/强表示主成分空间的几何重叠决定。",
+  "部分弱监督错误即便过拟合也能被强模型纠正。",
+  "表示度量可在无标签下提前预测 W2SG 趋势，具实用价值。"
+ ],
+ "weaknesses": [
+  "理论建立在主成分/线性核近似上，对深度非线性表示的适用性需更多实证。",
+  "‘无标签预测’仍需可访问弱/强模型内部表示，对黑盒部署受限。",
+  "W2SG 作为类比本身的理想化，与真实对齐问题的距离未充分讨论。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

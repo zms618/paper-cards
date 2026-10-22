@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Continuous Visual Autoregressive Generation via Score Maximization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Continuous Visual Autoregressive Generation via Score Maximization.pdf",
+ "title": "Continuous Visual Autoregressive Generation via Score Maximization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "基于评分规则的连续视觉自回归生成，统一GIVT和扩散模型。",
+ "innovations": [
+  "建立基于严格适当评分规则的连续自回归生成理论框架，将GIVT和diffusion loss统一为特例",
+  "提出基于能量分数的似然-free训练目标，克服连续空间中概率预测的困难",
+  "实现无需向量量化的连续视觉自回归生成，消除量化信息损失"
+ ],
+ "method_framework": "理论基础是严格适当评分规则(strictly proper scoring rules)——统计工具用于评估生成模型对真实分布的逼近程度。框架：(1)选择一个严格适当评分规则作为训练目标；(2)最大化该分数等价于优化模型分布逼近真实分布；(3)主要探索基于能量分数的目标，该目标似然-free，避免连续空间中显式概率预测的困难；(4)GIVT和diffusion loss可从同一框架用其他评分规则导出。",
+ "experiment_framework": "视觉生成任务；对比量化-based VAR方法和GIVT/diffusion loss等连续方法；指标为生成图像质量(FID等)和推理效率；验证能量分数目标的效果。",
+ "takeaways": [
+  "严格适当评分规则为连续自回归生成提供了统一理论框架",
+  "能量分数目标是似然-free的有效训练方式，优于GIVT和diffusion loss",
+  "无需量化的连续VAR消除了量化信息损失，提升生成质量"
+ ],
+ "weaknesses": [
+  "仅在图像生成上验证，视频、3D等连续模态未涉及",
+  "能量分数目标的计算效率相比离散量化方法的优势未充分量化",
+  "与主流扩散模型的生成质量对比不够充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Non-Collaborative User Simulators for Tool Agents.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Non-Collaborative User Simulators for Tool Agents.pdf",
+ "title": "Non-Collaborative User Simulators for Tool Agents",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "枚举非协作行为的模拟器，暴露工具智能体弱点但缺乏深度验证。",
+ "innovations": [
+  "针对现有用户模拟器过于协作、无法暴露智能体真实弱点的问题，提出模拟四类非协作行为的用户模拟器架构。",
+  "在引入挑战性非协作行为的同时，仍可靠地完成任务所需全部意图与信息的传递，保证评测有效。",
+  "发布可扩展的模拟框架，便于社区在自身服务域内对工具智能体做压力测试。"
+ ],
+ "method_framework": "以用户目标、API说明与对话历史为条件，先收集/构造协作表述，再按四类非协作行为替换、改写或修饰用户下一句：请求不可用服务、跑题闲聊、表达不耐烦、给出不完整信息；在多轮对话中动态生成用户回复，与被测工具智能体交互。",
+ "experiment_framework": "在MultiWOZ与τ-bench上评测SOTA工具智能体，分别在四类非协作条件下测量任务完成率与对话质量；发现性能显著退化，并观察到幻觉升级与对话崩溃等弱点；代码开源。",
+ "takeaways": [
+  "现有SOTA工具智能体在面对非协作用户时性能大幅退化，说明其鲁棒性不足。",
+  "非协作压力测试会暴露协作式评测无法发现的问题，如幻觉升级与对话中断。",
+  "可扩展的用户模拟框架是开发与压力测试部署级工具智能体的有效手段。"
+ ],
+ "weaknesses": [
+  "四类非协作行为仍属枚举式设计，现实用户行为（多轮混合、情绪升级、恶意）覆盖有限。",
+  "模拟器本身由LLM生成，其分布与真实用户的差距、以及对智能体评估的偏差未充分验证。",
+  "主要做诊断与压力测试，未提出提升智能体鲁棒性的对应方法。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "工具智能体鲁棒性测试，但非协作行为枚举式设计缺乏深度验证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

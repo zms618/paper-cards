@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/ASHiTA_Automatic Scene-grounded HIerarchical Task Analysis.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ASHiTA_Automatic Scene-grounded HIerarchical Task Analysis.pdf",
+ "title": "ASHiTA: Automatic Scene-grounded HIerarchical Task Analysis",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "层级信息瓶颈与3D场景图交替耦合，但实验提升有限且评测设置存疑",
+ "innovations": [
+  "Hierarchical Information Bottleneck (H-IB)：把标准 IB 推广到多分辨率任务 T1..Tn 与多层压缩表征 S1..Sn，目标 min Σ_k I(S^{k-1};S^k) - β Σ_k I(T^k;S^k)，在马尔可夫链 Tn..←T1 ←S0 ←..←Sn 假设下对拉格朗日量求偏导得到逐层迭代更新（Eq.4,5），并证明目标单调不增且有下界因而收敛；n=1 时退化为标准 IB。",
+  "上下交替耦合的建图/分解闭环：自底向上用 H-IB 的条件概率 argmax 连边建 3D 场景图，再自顶向下以 p(s|t) 为置信度每层只保留最高置信节点（连同子树删除），并剪掉“null task”节点及其关联 primitive；之后与 LLM(ChatGPT-4o-mini) 的层级精化交替迭代，解决“任务分解依赖场景、场景表达依赖任务”的耦合难题。",
+  "空间感知条件概率融合：用任务实体质心与半径定义 p̃s(si|t)=η·exp(-(d-r)²/r²)（d≥r 时），与文本嵌入条件概率 p̃e(tk|si) 按 Eq.9-10 归一融合，作为下一轮 H-IB 的输入先验。"
+ ],
+ "method_framework": "RGB-D 经类无关分割 + MobileCLIP 特征建 primitive 层（Hungarian 关联、GTSAM 优化位姿）；粗任务层级下用 H-IB 逐层互信息迭代自底向上建 3D 场景图，再按 p(s|t) 自顶向下剪枝与去 null 节点；空间更新与 LLM(4o-mini) 层级精化交替迭代。",
+ "experiment_framework": "SG3D / HM3DSem 数据集（含 GT 3D 实例分割）；基线 3D-VisTA、PQ3D 与 GPT+GT 标签；指标 s-acc、t-acc；另设消融与真实场景定性。",
+ "takeaways": [
+  "用信息论（IB）而非可学习模块来压缩开放集场景表征、并用 argmax 直接取层级边，避免了额外训练参数，是做 task-driven 建图的轻量路线。",
+  "空间先验（距离/半径核）与语义先验（文本嵌入）以条件概率形式做几何融合再喂回下一轮迭代，比拼接特征更干净，可迁移到其它耦合推理问题。",
+  "“top-down 剪枝 ↔ bottom-up H-IB ↔ LLM 精化”交替优化的骨架，是处理任务分解与场景表征互相依赖一类问题的通用范式。"
+ ],
+ "weaknesses": [
+  "Table 1 中完整系统 s-acc 仅 28.71、t-acc 仅 12.13，相对 3D-VisTA 的 25.3/10.3 提升不到 3 个点，而“ASHiTA + Txt Emb.”直接跳到 65.4/39.33，说明主导因素是文本嵌入使用了标注级语义（接近 GT 物体标签），端到端自建图流程几乎打不动。",
+  "Table 1 中最强的参照“GPT w/ GT labels”(75.9/52.1) 本身使用了真实物体标签，与论文“仅给视觉观测和高层指令”的设定不同类，却在表里作为唯一高分基线出现，评测设置存在泄漏之嫌。",
+  "Sec 5.2 自动层级生成、5.3 消融、5.4 真实场景定性三节在正文被截断，β=10、迭代 10~1000、阈值 rs=rt=0.8 等选择在看不到结果表的情况下无法评估其鲁棒性，且全表只有单值、无方差。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "任务分解与场景表征耦合，但实验提升有限且评测存疑",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

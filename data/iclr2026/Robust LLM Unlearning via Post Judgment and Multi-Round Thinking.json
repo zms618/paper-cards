@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Robust LLM Unlearning via Post Judgment and Multi-Round Thinking.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Robust LLM Unlearning via Post Judgment and Multi-Round Thinking.pdf",
+ "title": "Robust LLM Unlearning via Post Judgment and Multi-Round Thinking",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.5
+ },
+ "one_line": "揭示预过滤遗忘的脆弱性，提出PoRT框架提升鲁棒性。",
+ "innovations": [
+  "系统评测预过滤式遗忘方法的鲁棒性，量化前缀攻击(泄露暴涨 1150 倍)与复合问攻击(危险知识准确率反弹)两大威胁。",
+  "提出数据清洗模块：动态 few-shot 提示让模型同时产出清洗后查询与初始回复，配合可扩展示范库自适应防御。",
+  "提出后判断(联合评估清洗后提示与回复)与选择性多轮思考(对低置信输出触发自我纠错)。"
+ ],
+ "method_framework": "先由数据清洗模块生成清洗后用户查询与对应初始回复；后判断模块不再只看输入提示，而是联合评估清洗后提示与实际输出以检出违规；对低置信输出触发选择性多轮思考让模型自我纠正；全程不改参数即可部署，提升遗忘鲁棒性与输出质量。",
+ "experiment_framework": "在遗忘基准上评测；针对前缀攻击、复合问攻击等对抗设定报告信息泄露量与危险知识准确率；对比预过滤与模型级遗忘方法；同时评测通用能力是否受损，PoRT 在鲁棒性与遗忘有效性上均更优且不损通用效用。",
+ "takeaways": [
+  "预过滤式遗忘在简单前缀/复合问攻击下会灾难性失效，鲁棒性是被忽视的关键缺口。",
+  "后判断(同时看提示与回复)比仅在输入侧过滤更能检出违规输出。",
+  "对低置信输出做多轮自我纠错，可在不损通用能力下提升遗忘鲁棒性。"
+ ],
+ "weaknesses": [
+  "依赖 LLM 自我清洗与判断，模型自身被绕过/对齐失效时防御可能连锁失效，未分析此类失败。",
+  "多轮思考增加推理开销，实时部署代价与延迟-鲁棒权衡未量化。",
+  "攻击类型由作者设定，更强自适应/多模态攻击下的残余脆弱性未充分覆盖。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "鲁棒遗忘方法直接命中可靠性主线，且针对LLM落地域的遗忘攻击问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

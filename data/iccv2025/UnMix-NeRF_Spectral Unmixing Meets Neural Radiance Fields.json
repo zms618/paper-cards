@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/UnMix-NeRF_Spectral Unmixing Meets Neural Radiance Fields.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/UnMix-NeRF_Spectral Unmixing Meets Neural Radiance Fields.pdf",
+ "title": "UnMix-NeRF Spectral Unmixing Meets Neural Radiance Fields",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "将光谱解混融入NeRF，实现高光谱合成与无监督材料分割",
+ "innovations": [
+  "首次将光谱解混集成到NeRF框架中",
+  "通过漫反射和镜面反射分解建模光谱反射率",
+  "利用学习到的端元字典实现无监督材料分割和场景编辑"
+ ],
+ "method_framework": "UnMix-NeRF通过可学习的全局端元字典和每点丰度建模光谱反射率，结合漫反射和镜面反射组件，通过体积渲染生成最终光谱辐射度，并利用丰度向量实现无监督材料分割。",
+ "experiment_framework": "在NeSpoF、Surface Optics和BaySpec三个数据集上评估，使用PSNR、SSIM、SAM、RMSE评估光谱重建，使用mIoU和F1评估材料分割，与NeSpoF、HS-NeRF和HyperGS等方法比较。",
+ "takeaways": [
+  "物理约束的光谱解混模型可提高材料识别精度",
+  "端元字典的初始化方法对性能有显著影响",
+  "结合RGB损失可提升光谱一致性"
+ ],
+ "weaknesses": [
+  "端元数量K的选择依赖于启发式近似",
+  "方法计算开销较大，需要约20GB GPU内存",
+  "未充分讨论方法在真实场景中的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "光谱解混与NeRF结合，但未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

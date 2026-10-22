@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/ACE-G Improving Generalization of Scene Coordinate Regression Through Query Pre-Training.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/ACE-G Improving Generalization of Scene Coordinate Regression Through Query Pre-Training.pdf",
+ "title": "ACE-G: Improving Generalization of Scene Coordinate Regression Through Query Pre-Training",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "场景无关坐标回归器+map code交替预训练，提升场景坐标回归泛化",
+ "innovations": [
+  "把 ACE 的场景专属 MLP 换成「场景无关坐标回归器 + 场景专属 map code」，patch 特征作 query token、map code 嵌入作 K/V 走 N 层纯交叉注意力 ViT，地图仅需 NC=4096、Dmap=768 的 12 MB 嵌入",
+  "mapping/query 交替预训练：mapping 迭代用映射缓冲联合优化网络与 map code（Laplace NLL，Eq.2），query 迭代冻结 map code 只用另一批不同视角/光照的查询图像训练网络（Eq.3），显式针对 unseen query 优化",
+  "训练工程上以随机重置的 active scene 池替代一次性 autodecoder 收敛，且每 10 次迭代才更新网络、query 阶段跳过映射迭代不足 Nqstandby 的场景；推理时按 p=0.1 分位自适应阈值用 σ_y 预筛 PnP/RANSAC 对应点"
+ ],
+ "method_framework": "DINOv2 抽 patch 特征作 query token，场景专属 map code 嵌入作 K/V，N 层纯交叉注意力 ViT 加 MLP 回归 3D 坐标与标准差（Laplace NLL 损失）；预训交替做 mapping 迭代（联合优化网络与 map code）与 query 迭代（冻结 map code 仅更新网络）。",
+ "experiment_framework": "Indoor-6、RIO10、Cambridge Landmarks；基线 ACE、DINO-ACE、GLACE、Reloc3r、MASt3R+Kapture；指标正确定位率与中位平移/旋转误差，另报建图时长与地图大小。",
+ "takeaways": [
+  "把地图表示从回归器中拆成独立 map code，使回归器场景无关从而可大规模预训练，这一拆分可迁移到任何 per-scene 过拟合的回归任务",
+  "预训交替做 mapping 迭代与 query 迭代（并跳过未充分优化的场景），是提升跨视角/跨光照泛化的朴素但有效的配方"
+ ],
+ "weaknesses": [
+  "Tables 1-3 只报中位数与阈值正确率，无多次运行方差；且 ACE-G 地图 12 MB 是 ACE(4 MB)、GLACE(6 MB) 的三倍，存储与建图时间换来多少鲁棒性未在正文定量权衡",
+  "预训混合了 RGB-D（ScanNet、ARKitScenes、WildRGBD）与 MVS/合成（BlendedMVS）三种 3D 来源共 7 个数据集（Table 2），各来源的采样权重与贡献完全未做消融，跨源配比不可复现",
+  "Table 1 中 5 分钟配置下 ACE-G 平均 95 正确率仅比单纯换编码器的 DINO-ACE（91）高 4 点，而 query 预训的核心增量在 25 分钟配置下（96 vs 91）也只高 5 点，query 阶段的实际边际贡献缺消融验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "场景坐标回归泛化，与可靠性主线部分交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

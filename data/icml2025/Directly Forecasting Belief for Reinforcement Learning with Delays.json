@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Directly Forecasting Belief for Reinforcement Learning with Delays.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Directly Forecasting Belief for Reinforcement Learning with Delays.pdf",
+ "title": "Directly Forecasting Belief for Reinforcement Learning with Delays",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "DFBT用Transformer直接预测状态序列，减少延迟RL中的误差累积",
+ "innovations": [
+  "摒弃逐步递归预测状态的做法，用Directly Forecasting Belief Transformer从观测直接预测状态序列，避免误差累积",
+  "理论证明DFBT相比递归预测方法大幅降低compounding error，给出更强性能保证",
+  "利用其状态序列预测能力支持多步bootstrap，显著提升延迟RL的学习效率，在MuJoCo上超过SOTA"
+ ],
+ "method_framework": "观测延迟下agent只能看到s_{t-d}，需重建当前状态信念。既有方法递归逐步外推导致误差累积；DFBT用Transformer在增广信息状态(最近可观测状态+历史动作)上一次性直接预测整条未来状态信念序列，理论上截断递归误差累积，并以此信念做多步bootstrap以加速RL。",
+ "experiment_framework": "在D4RL离线数据集与MuJoCo延迟环境上，与增广式/递归预测等延迟RL基线比较，以回报/学习效率为指标评估。",
+ "takeaways": [
+  "直接而非递归地预测信念序列可显著降低compounding error，提升延迟观测下的状态估计精度",
+  "可预测状态序列天然支持多步bootstrap，从而显著提升RL样本效率"
+ ],
+ "weaknesses": [
+  "面向延迟RL/控制，与可靠性/验证器/多模态推理主线无直接关联",
+  "直接预测长序列的精度随预测步数下降，长延迟/长视野下的稳定性需进一步验证",
+  "仅依据前9页阅读，完整理论界与MuJoCo消融表未完全覆盖"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

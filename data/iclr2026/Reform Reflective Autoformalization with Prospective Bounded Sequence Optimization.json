@@ -1,0 +1,41 @@
+{
+ "title": "ReForm: Reflective Autoformalization with Prospective Bounded Sequence Optimization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "反思式形式化闭环与位置异质奖励，数学推理非主线落地域",
+ "innovations": [
+  "把自动形式化从单遍翻译重构为生成候选、批判性评估语义忠实度、据差异迭代修正的反思闭环。",
+  "提出PBSO：用prospective bounded return对序列不同位置(末端任务奖励、中间语义校验奖励)做折扣求和并限制在奖励函数范围内，实现异质多步奖励的稳定信用分配。",
+  "提出ConsistencyCheck(859条专家标注)基准，验证LLM-as-judge并揭示自动形式化固有难度(人类专家也有高达38.5%语义错误)。"
+ ],
+ "method_framework": "模型先产候选形式语句，再评估其是否忠实原问题语义并指出差异，据此反复精炼；训练时对最终形式化正确性给末端任务奖励、对中间语义校验批判给辅助奖励，用PBSO把各步未来奖励折扣求和并边界化以稳定训练，避免空泛/幻觉式批判。",
+ "experiment_framework": "4个自动形式化基准(miniF2F、ProofNet、Putnam、AIME2025)；对比Geodel-V2、GPT-5、Kimina等SOTA；指标为形式化成功率；另以ConsistencyCheck评估LLM裁判可靠性并给出人类专家语义错误率。",
+ "takeaways": [
+  "单遍生成范式难以处理量词范围、隐式约束、边界情形等细微语义，反思式迭代修正显著提升语义忠实度。",
+  "位置相关的异质奖励可同时训练形式化与语义校验两种能力，防止反思沦为表面批判。",
+  "自动形式化即使对人类专家也很难(38.5%语义错误)，LLM裁判的可靠性需专门基准核验。"
+ ],
+ "weaknesses": [
+  "落地域为数学形式化推理，非医学影像/多模态推理主线。",
+  "反思闭环依赖模型自身语义校验能力，校验若本身不可靠会引入自我确认式偏差。",
+  "节选前9页未见4基准逐任务完整数值与PBSO相对GRPO类方法的消融，+22.6pp的构成在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Reform Reflective Autoformalization with Prospective Bounded Sequence Optimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reform Reflective Autoformalization with Prospective Bounded Sequence Optimization.pdf",
+ "raw_overall": 6.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "数学形式化非主线落地域，无可靠性方法迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

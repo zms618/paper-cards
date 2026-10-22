@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Softmax is not Enough (for Sharp Size Generalisation).pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Softmax is not Enough (for Sharp Size Generalisation).pdf",
+ "title": "Softmax is not Enough (for Sharp Size Generalisation)",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 6
+ },
+ "one_line": "批判softmax在尺寸泛化上的根本局限，但实验证据不足。",
+ "innovations": [
+  "指出现代推理系统的锐利(sharp)决策主要由softmax的可微query-key查找承载这一共识",
+  "论证softmax在尺寸泛化(size generalization, 训练尺寸→测试更大尺寸OOD)上存在根本局限",
+  "分析softmax预测能力的来源，说明为何仅靠softmax难以在保持锐利的同时跨尺寸泛化"
+ ],
+ "method_framework": "从可微检索/query-key角度分析softmax的表达与泛化行为：构造在不同输入尺寸下的分布内/分布外设定，剖析softmax在尺寸变化时的对齐与锐利化机制，论证其在锐利决策与尺寸泛化间不可兼得。",
+ "experiment_framework": "在需要跨尺寸泛化的算法/推理类任务上，对比softmax型与其他查找/对齐机制，指标为分布内精度与尺寸外推(OOD尺寸)精度；前9页未呈现完整实验表。",
+ "takeaways": [
+  "softmax虽能提供锐利的可微查找，但在跨尺寸外推上存在结构短板，尺寸泛化需额外机制",
+  "‘锐利决策’与‘尺寸泛化’之间的张力是设计强泛化推理系统时需正视的权衡"
+ ],
+ "weaknesses": [
+  "核心为论点/分析性工作，前9页内未给出完整实验，所提改进机制的有效性证据待补",
+  "结论限定在‘尺寸泛化’这一特定OOD形式，对其他分布偏移类型的可推广性未讨论",
+  "虽触及泛化/OOD主线，但偏理论批判，缺乏直接的医学影像/多模态LLM落地域验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

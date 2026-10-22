@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Spread Sampling-Based Pareto Front Refinement via Efficient Adaptive Diffusion.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Spread Sampling-Based Pareto Front Refinement via Efficient Adaptive Diffusion.pdf",
+ "title": "SPREAD: Sampling-Based Pareto Front Refinement via Efficient Adaptive Diffusion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "扩散模型生成MOO解，但推理成本高且真实场景验证不足",
+ "innovations": [
+  "把扩散生成引入多目标优化：在决策空间上学条件扩散过程采样候选解",
+  "在每步反向扩散中用自适应多梯度下降(MGD)启发式更新实现沿帕累托前沿的快速收敛",
+  "引入高斯RBF排斥项维持解的多样性，兼顾前沿收敛性与覆盖度"
+ ],
+ "method_framework": "先在决策空间采样点上训练条件DDPM；反向扩散每步对候选解做两类更新：多梯度下降启发式的自适应更新以快速逼近帕累托前沿，RBF排斥项以保持解集多样性；支持离线与贝叶斯代理两种设定。",
+ "experiment_framework": "在多目标优化基准上评测，覆盖离线与贝叶斯代理设定；对比进化算法/MGD等强基线，以求解效率、可扩展性与帕累托前沿覆盖度为指标，报告匹配或超越领先基线。",
+ "takeaways": [
+  "扩散采样可作为帕累托前沿精化的通用生成引擎，兼容离线与代理设定",
+  "MGD式自适应更新+RBF排斥能同时兼顾前沿收敛速度与解集多样性",
+  "在大规模/昂贵目标问题上比传统进化/标量化方法更可扩展"
+ ],
+ "weaknesses": [
+  "扩散采样本身推理成本高，'高效'的宣称相对梯度类方法需更清晰的代价-收益量化",
+  "评测基准偏标准合成/学术MOO问题，对真实工程高昂贵目标场景的证据有限",
+  "排斥项与收敛更新的权重平衡依赖调参，自适应机制的稳定性分析较浅"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "多目标优化方法与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Dynamic Interleaving Optimizers.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Dynamic Interleaving Optimizers.pdf",
+ "title": "Towards Dynamic Interleaving Optimizers",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "静态优化器切换方法，中等精度提升，成本未量化",
+ "innovations": [
+  "指出现有训练用单一静态优化器或简单二优化器混合，未利用不同训练状态下的优化动态",
+  "用代理模型预测不同优化器在当前参数状态下的性能",
+  "设计结合代理预测、可迁移性评估与训练过程信息的采集函数，动态选择下一阶段最优优化器"
+ ],
+ "method_framework": "训练中持续为各候选优化器构建并更新高斯代理模型，估计其在不同参数状态下的优化表现；采集函数综合代理预测、可迁移性与过程信息给每个优化器打分，按最高分动态切换，以利用不同优化器在不同训练阶段的优势。",
+ "experiment_framework": "在图像/文本分类、机器翻译、目标检测等多任务多模型上评测；对比单一静态优化器与简单混合；指标为收敛速度(快2%-10%)与精度(提升1%-3%)；含独立实验与案例研究。",
+ "takeaways": [
+  "不同优化器在不同训练状态各有所长，静态单一优化器浪费了这种动态",
+  "基于当前参数状态动态切换优化器可同时加快收敛并提升精度",
+  "代理模型+可迁移性打分的采集函数是动态选择的关键"
+ ],
+ "weaknesses": [
+  "代理模型与可迁移性估计本身引入额外开销，在大模型上的实际训练成本未量化",
+  "提升幅度中等(精度1-3%)，增益的稳健性与跨任务一致性需更大规模验证",
+  "属优化器/训练方法方向，与可靠性主线及医学影像、多模态推理落地域无关"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "优化器切换方法，与可靠性主线及落地域无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

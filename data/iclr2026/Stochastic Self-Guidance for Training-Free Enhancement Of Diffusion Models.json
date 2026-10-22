@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Stochastic Self-Guidance for Training-Free Enhancement Of Diffusion Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Stochastic Self-Guidance for Training-Free Enhancement Of Diffusion Models.pdf",
+ "title": "Stochastic Self-Guidance for Training-Free Enhancement of Diffusion Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "随机块丢弃自引导纠正CFG偏差，提升生成质量但增加计算开销",
+ "innovations": [
+  "揭示CFG的根本问题：模型对次优预测的过度依赖导致生成保真度低和语义不连贯",
+  "提出S2-Guidance（随机自引导）：去噪过程中随机丢弃Transformer块，激活子网络来自引导，无需额外训练或外部模块",
+  "子网络可以有效纠正主网络的次优预测，将采样轨迹引导到高质量区域"
+ ],
+ "method_framework": "在扩散模型去噪过程中，不仅使用完整模型做预测，还通过随机丢弃部分Transformer块（block-dropping）激活多个子网络。利用子网络的预测与完整模型预测之间的差异作为自引导信号，纠正完整模型的次优偏差。随机丢弃是stochastic的，每步随机选择不同的块子集，类似测试时dropout引导。整个过程无需训练，即插即用于现有扩散模型。",
+ "experiment_framework": "在ImageNet类条件生成、文本到图像、文本到视频多个基准上验证，对比CFG和其他高级引导策略。指标包括FID等生成质量指标，以及定性视觉对比。",
+ "takeaways": [
+  "CFG的次优预测偏差是扩散生成质量的重要限制因素，模型自身的子网络可以有效纠正这种偏差",
+  "随机块丢弃自引导无需训练或额外模块，即可一致优于CFG和其他高级引导策略",
+  "S2-Guidance在文本到视频生成中显著提升时间动态和运动连贯性"
+ ],
+ "weaknesses": [
+  "随机块丢弃引入了额外的前向计算开销，虽然无训练但推理成本增加",
+  "块丢弃率等超参数需要手动调节，不同模型和任务的最优配置可能不同",
+  "前9页未展示完整的定量对比表格，具体FID提升幅度不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "扩散模型生成质量提升，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

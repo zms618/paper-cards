@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Sparse Autoencoders Trained the Same Data Learn Different Features.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sparse Autoencoders Trained the Same Data Learn Different Features.pdf",
+ "title": "Sparse Autoencoders Trained on the Same Data Learn Different Features",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "SAE特征高度依赖随机种子，挑战特征穷举假设",
+ "innovations": [
+  "系统证明SAE特征发现对随机种子敏感：同模型同数据仅种子不同即得到不同特征集",
+  "在3个LLM多层、2个数据集、多种SAE架构上复现该现象",
+  "比较发现L1稀疏的ReLU SAE跨种子更稳定，而SOTA的TopK激活即使控制稀疏度仍更依赖种子"
+ ],
+ "method_framework": "固定同一模型与数据，仅改变SAE初始化随机种子训练多个SAE，定量比较不同种子下所学到特征的重合度；跨多层、多模型、多数据集、多架构(ReLU L1 vs TopK)控制变量，刻画种子依赖程度。",
+ "experiment_framework": "在Llama3-8B等3个LLM的前馈网络上，训练131K潜变量的SAE并跨种子比较特征重合；报告仅约30%特征跨种子共享，并对比ReLU-L1与TopK架构的稳定性差异。",
+ "takeaways": [
+  "SAE揭示的特征应视为激活空间的一种实用分解，而非模型'真正使用'特征的唯一穷尽清单",
+  "TopK SAE比L1稀疏的ReLU SAE更依赖随机种子",
+  "对'用SAE穷举模型特征以做安全验证'的设想构成实证警示"
+ ],
+ "weaknesses": [
+  "特征'相同'的判定依赖相似度阈值/匹配方法，阈值选择影响30%这一数字",
+  "未给出缓解种子依赖的训练改进，仅刻画现象",
+  "主要在中小模型上验证，超大模型上种子依赖程度是否变化未测"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "SAE特征稳定性研究，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

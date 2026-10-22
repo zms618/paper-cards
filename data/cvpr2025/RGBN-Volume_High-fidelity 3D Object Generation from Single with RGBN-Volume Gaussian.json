@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/RGBN-Volume_High-fidelity 3D Object Generation from Single with RGBN-Volume Gaussian.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/RGBN-Volume_High-fidelity 3D Object Generation from Single with RGBN-Volume Gaussian.pdf",
+ "title": "High-fidelity 3D Object Generation from Single with RGBN-Volume Gaussian",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "混合体素-高斯模型实现单图3D生成，但创新有限且依赖预训练模型",
+ "innovations": [
+  "混合体素-高斯模型提供结构化3D表示",
+  "跨体积融合(CVF)模块融合RGB和法线特征",
+  "采用2D高斯而非3D高斯确保几何一致性"
+ ],
+ "method_framework": "通过多视图扩散模型生成RGB和法线图像，构建RGB和法线特征体积，使用CVF模块融合特征，最后解码为2D高斯进行渲染和重建",
+ "experiment_framework": "在Objaverse-LVIS数据集训练，GSO数据集评估，与DreamGaussian、LGM等方法比较PSNR、SSIM、LPIPS和CD指标",
+ "takeaways": [
+  "混合体素-高斯模型可有效提升3D表示学习",
+  "RGB和法线特征融合可增强几何细节恢复",
+  "2D高斯表示能确保表面几何一致性"
+ ],
+ "weaknesses": [
+  "依赖预训练多视图扩散模型",
+  "训练时间较长(6.5天)",
+  "未充分讨论模型在不同类别物体上的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

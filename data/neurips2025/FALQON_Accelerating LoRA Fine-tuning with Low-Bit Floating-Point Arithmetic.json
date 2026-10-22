@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/FALQON_Accelerating LoRA Fine-tuning with Low-Bit Floating-Point Arithmetic.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/FALQON_Accelerating LoRA Fine-tuning with Low-Bit Floating-Point Arithmetic.pdf",
+ "title": "FALQON: Accelerating LoRA Fine-tuning with Low-Bit Floating-Point Arithmetic",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "FALQON合并LoRA到FP8主干，加速3倍但适用性有限",
+ "innovations": [
+  "melded LoRA：将LoRA适配器直接合并到FP8量化主干网络",
+  "高效梯度计算：重构前向和后向计算路径",
+  "行级代理更新机制：选择性应用显著更新到量化主干"
+ ],
+ "method_framework": "FALQON通过将LoRA适配器直接合并到FP8量化主干网络，消除小矩阵的单独量化路径，同时保持LoRA的内存优势，并通过行级代理更新机制高效整合显著更新。",
+ "experiment_framework": "在Alpaca和OASST1数据集上微调LLaMA-7B/13B，使用MMLU评估知识推理能力，与其他量化LoRA和低精度FP方法比较速度和准确性。",
+ "takeaways": [
+  "量化开销在小矩阵计算中可能超过FP8加速收益",
+  "合并LoRA到量化主干可显著减少计算开销",
+  "选择性更新机制能有效处理低比特量化中的无效更新"
+ ],
+ "weaknesses": [
+  "方法主要针对LoRA适配器，可能不适用于其他参数高效微调方法",
+  "行级代理更新机制可能引入额外的超参数调优"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

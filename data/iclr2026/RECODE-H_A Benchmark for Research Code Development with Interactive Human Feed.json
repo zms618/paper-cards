@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RECODE-H_A Benchmark for Research Code Development with Interactive Human Feed.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RECODE-H_A Benchmark for Research Code Development with Interactive Human Feed.pdf",
+ "title": "RECODE-H: A Benchmark for Research Code Development with Interactive Human Feedback",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "构建研究代码开发基准，反馈提升LLM性能但与主线关联弱",
+ "innovations": [
+  "提出首个研究代码开发交互基准RECODE-H：102个来自真实论文和代码库的任务，仓库级代码生成而非函数补全",
+  "设计五级结构化反馈层级，系统控制难度，细粒度评测模型利用多轮反馈的能力",
+  "提出ReCodeAgent框架，通过结构化多轮交互整合诊断信号、精炼指令和纠正反馈来模拟真实研究工作流"
+ ],
+ "method_framework": "RECODE-H从真实研究论文和代码库中选取102个任务，要求LLM实现对应论方法的类/函数/模块。反馈分五个层级（从无反馈到最详细的纠正建议），逐级提供更多指导。ReCodeAgent在每轮根据反馈层级整合诊断信号并指导模型修改代码。",
+ "experiment_framework": "评测7个主流LLM（GPT-5, Claude-Sonnet-4, DeepSeek-V3.1, Gemini 2.5等）；五级反馈设置；报告通过率和召回率；对比无反馈vs有反馈的性能提升；分析不同规模模型的反馈利用能力。",
+ "takeaways": [
+  "交互式人类反馈可大幅提升研究代码生成质量，即使最小诊断信号也能近翻倍召回率",
+  "当前最强LLM在一次性生成正确研究代码方面仍有显著差距",
+  "反馈的层级化设计可精细刻画模型从不同粒度指导中获益的能力"
+ ],
+ "weaknesses": [
+  "与可靠性/医学影像/多模态推理主线无关，属于代码生成基准",
+  "102个任务规模较小，统计显著性和领域覆盖度可能有限",
+  "反馈层级的人工标注成本高，可扩展性受限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "代码生成基准与可靠性主线弱相关，但反馈机制设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

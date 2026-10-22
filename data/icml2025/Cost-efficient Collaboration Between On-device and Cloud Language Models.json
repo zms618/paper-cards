@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Cost-efficient Collaboration Between On-device and Cloud Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Cost-efficient Collaboration Between On-device and Cloud Language Models.pdf",
+ "title": "Cost-efficient Collaboration Between On-device and Cloud Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "云端生成代码分解任务，端侧并行执行，降成本5.7倍但性能损失2.1%",
+ "innovations": [
+  "提出MINION朴素协作协议，端侧模型读取全文并压缩后传给云端，实现30.4倍成本降低但仅恢复87%性能",
+  "提出MINIONS协议：云端模型生成代码将任务分解为针对文档小块的单指令子任务，端侧并行执行后云端聚合",
+  "系统分析了模型选择、并行负载扩展、顺序通信轮次等设计旋钮对成本-性能权衡的影响"
+ ],
+ "method_framework": "MINIONS采用三步循环：(1)分解——云端大模型不读全文，而是生成代码将任务拆分为针对文档小块的子任务；(2)执行——端侧小模型并行执行各子任务，过滤后返回结果；(3)聚合——云端模型汇总结果，判断是否需要进一步分解。核心洞察是小模型不擅长多指令跟随和长上下文推理，因此将复杂任务拆解为单指令短上下文子任务交给端侧。",
+ "experiment_framework": "在医疗、金融、科学推理三类数据密集型任务上评测；基线为remote-only（纯云端）和MINION朴素协议；使用8B和3B参数的端侧模型（如Llama-3.1）配合GPT-4-Turbo等云端模型；指标为任务准确率，同时报告云端token成本倍数。",
+ "takeaways": [
+  "MINIONS以5.7倍平均成本降低恢复97.9%的云端-only性能，8B端侧模型效果最佳",
+  "小模型的两大瓶颈是多指令跟随能力弱和长上下文混淆，拆分指令可提升56%性能",
+  "并行采样、任务分解、上下文分块三种策略均可独立提升质量但增加云端成本"
+ ],
+ "weaknesses": [
+  "评测任务数量和领域覆盖面有限，主要集中在文档问答类任务，代码生成等复杂任务表现未充分验证",
+  "依赖云端模型生成正确的分解代码，若分解错误则端侧执行结果全部失效，错误传播风险未充分讨论",
+  "通信轮次和子任务数量的最优配置缺乏理论指导，实际使用中调参成本较高"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

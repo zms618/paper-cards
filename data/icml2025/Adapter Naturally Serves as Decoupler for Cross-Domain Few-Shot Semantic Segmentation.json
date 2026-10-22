@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Adapter Naturally Serves as Decoupler for Cross-Domain Few-Shot Semantic Segmentation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adapter Naturally Serves as Decoupler for Cross-Domain Few-Shot Semantic Segmentation.pdf",
+ "title": "Adapter Naturally Serves as Decoupler for Cross-Domain Few-Shot Semantic Segmentation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "Adapter深层插入实现领域解耦，提升跨域少样本分割性能。",
+ "innovations": [
+  "揭示adapter的结构化解耦特性：插入预训练backbone深层后，adapter吸收领域信息，迫使encoder学习领域无关特征",
+  "提出Domain Feature Navigator（DFN）：基于结构而非损失函数的领域解耦模块，在源域训练时吸收领域信息",
+  "设计SAM-SVN方法：仅对DFN权重的奇异值矩阵施加锐度感知最小化，防止DFN过拟合源域样本同时保留领域信息吸收能力"
+ ],
+ "method_framework": "在HSNet等少样本分割框架的预训练backbone深层插入DFN adapter。源域训练时：DFN吸收领域特定信息，使backbone学习领域无关特征；SAM-SVN对DFN权重SVD后的奇异值S施加扰动正则化，防止过拟合。目标域微调时：冻结backbone，仅微调DFN学习目标域特定知识，实现领域对齐。",
+ "experiment_framework": "源域：PASCAL VOC。4个目标域：FSS-1000（通用）、Deepglobe（卫星）、ISIC2018（皮肤镜医学）、Chest X-ray（胸片医学）。基线包括HSNet、PFENet、PATNet、FPTrans等SOTA CD-FSS方法。指标：1-shot和5-shot mIoU。",
+ "takeaways": [
+  "DFN方法在1-shot和5-shot设置下分别超越SOTA方法2.69%和4.68% mIoU",
+  "adapter仅在深层插入时起到解耦作用，浅层或编解码之间插入效果不佳",
+  "SAM-SVN通过仅约束奇异值，在防止过拟合和保留领域信息吸收之间取得平衡"
+ ],
+ "weaknesses": [
+  "解耦机制的分析基于CKA相似度度量，因果性论证不够严格",
+  "仅在ResNet-50和ViT两种backbone上验证，通用性需进一步验证",
+  "SAM-SVN增加了训练时的前向反向传播开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "跨域少样本分割属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/MixA A Mixed Attention approach with Stable Lightweight Linear Attention.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/MixA A Mixed Attention approach with Stable Lightweight Linear Attention.pdf",
+ "title": "MixA A Mixed Attention approach with Stable Lightweight Linear Attention",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "混合注意力架构通过选择性应用线性注意力提升ViT边缘效率",
+ "innovations": [
+  "混合注意力架构，关键层使用ReLU二次注意力，非关键层使用SteLLA线性注意力",
+  "基于梯度和扰动的注意力层重要性评分机制",
+  "理论推导的稳定归一化技术解决ReLU线性注意力稳定性问题"
+ ],
+ "method_framework": "MixA包含两个组件：1)基于重要性评分选择关键层应用ReLU二次注意力；2)非关键层应用SteLLA线性注意力，通过理论归一化保证稳定性",
+ "experiment_framework": "ImageNet-1K分类、COCO目标检测、ADE20K语义分割，DeiT和Swin Transformer，Apple M1和Raspberry Pi执行时间",
+ "takeaways": [
+  "注意力层重要性评估可指导模型优化",
+  "理论推导的归一化技术对稳定线性注意力有效",
+  "混合注意力架构在保持性能的同时显著提升边缘效率"
+ ],
+ "weaknesses": [
+  "重要性评分计算需要额外前向-后向传播，增加预处理开销",
+  "仅在小规模ViT模型上验证，未测试更大模型",
+  "ReLU激活可能限制模型表达能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "轻量级注意力优化，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

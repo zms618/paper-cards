@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Videojudge_Bootstrapping Enables Scalable Supervision Of MLLM-AS-A-JUDGE for Video Understanding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Videojudge_Bootstrapping Enables Scalable Supervision Of MLLM-AS-A-JUDGE for Video Understanding.pdf",
+ "title": "VideoJudge: Bootstrapping Enables Scalable Supervision of MLLM-as-a-Judge for Video Understanding",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "自举训练小模型评判器，在视频评估上匹敌大模型",
+ "innovations": [
+  "提出视频理解评判模型的自举训练框架：生成器按目标评分生成候选回答，评估器验证，不匹配样本被过滤，自动构建训练数据",
+  "训练3B和7B尺寸的VideoJudge专用评判模型，在4个元评估基准中的3个上超过或匹敌Qwen2.5-VL 32B/72B等更大基线",
+  "发现纯文本LLM评判者不如多模态MLLM评判者，且长思维链不提升评判性能——直接提供视频输入对视频评估至关重要"
+ ],
+ "method_framework": "VideoJudge的训练框架基于生成器-评估器的交互：(1)生成器被提示按1-5分目标评分生成条件回答；(2)评估器模型对生成回答打分，与目标评分不一致的样本被丢弃；(3)用筛选后的高质量数据训练pointwise和pairwise评判模型。同时用同一流程构建pointwise和pairwise元评估基准。视频指令对来自与训练集不同的数据集以避免分布重叠。",
+ "experiment_framework": "模型：VideoJudge-3B/7B。基线：Qwen2.5-VL(32B/72B)、Qwen3等MLLM/LLM评判者。基准：4个元评估基准（pointwise + pairwise）。指标：与人类判断的一致性。另分析长CoT、纯文本vs多模态评判的效果差异。",
+ "takeaways": [
+  "自举数据生成框架能有效训练专用视频评判模型，小模型可匹敌大模型评判基线",
+  "视频输入对视频理解任务的评判至关重要——纯文本LLM评判者明显更差",
+  "长思维链推理不提升视频评判性能，说明评判任务不需要复杂推理而是需要准确的视觉感知"
+ ],
+ "weaknesses": [
+  "自举框架依赖初始评估器模型的质量，初始偏见可能被放大",
+  "仅在视频理解的评判任务上验证，其他多模态任务的评判通用性未展示",
+  "元评估基准的人类标注规模和多样性可能有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视频评估工具，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

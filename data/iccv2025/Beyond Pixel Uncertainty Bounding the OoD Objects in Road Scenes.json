@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Beyond Pixel Uncertainty Bounding the OoD Objects in Road Scenes.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Beyond Pixel Uncertainty Bounding the OoD Objects in Road Scenes.pdf",
+ "title": "Beyond Pixel Uncertainty Bounding the OoD Objects in Road Scenes",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "结合对象理解与消失点匹配的道路异常检测方法",
+ "innovations": [
+  "引入对象级理解减少边界假阳性",
+  "消失点引导匈牙利匹配(VPHM)实现时序平滑",
+  "DetSeg-R和DetSeg-S两种变体分别优化现有方法和直接生成掩码"
+ ],
+ "method_framework": "基于Grounding DINO构建双查询检测器，使用ID和UN查询分别检测已知和所有对象，通过IE-NMS抑制ID边界框，保留OoD对象，结合VPHM实现视频帧间平滑",
+ "experiment_framework": "在Road Anomaly、Fishysapes、SMIYC和LostAndFound数据集上评估，使用AUROC、AP、FPR95和IoU等指标，与多种基线方法对比",
+ "takeaways": [
+  "对象级理解可有效解决像素级方法在边界区域的假阳性问题",
+  "消失点几何先验可提供有效的时序平滑无需额外训练"
+ ],
+ "weaknesses": [
+  "依赖预训练模型Grounding DINO可能限制泛化能力",
+  "未充分讨论计算效率对实时自动驾驶的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "OOD检测与道路场景可靠性主线明确交点，方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

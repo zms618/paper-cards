@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Mixture of Experts Made Intrinsically Interpretable.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Mixture of Experts Made Intrinsically Interpretable.pdf",
+ "title": "Mixture of Experts Made Intrinsically Interpretable",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 6.5,
+  "overall": 5.75
+ },
+ "one_line": "MoE-X通过稀疏专家架构实现可解释性，但性能与解释性权衡未解决。",
+ "innovations": [
+  "提出本质可解释的MoE语言模型MoE-X，而非事后解释(post-hoc)",
+  "通过稀疏化专家和路由机制，使每个专家编码单一语义概念",
+  "解决大模型中神经元多义性(polysemanticity)导致的可解释性问题"
+ ],
+ "method_framework": "MoE-X从架构设计层面保证可解释性：(1)将MLP层替换为稀疏化的专家结构；(2)每个专家被设计为编码单一语义概念；(3)路由机制决定输入激活哪些专家，从而可解释模型决策过程。与传统事后解释方法不同，MoE-X的可解释性是架构自带的。",
+ "experiment_framework": "在语言建模任务上评估。基线包括标准Transformer和事后解释方法。指标为困惑度和可解释性评估(专家语义纯度/人工评估)。",
+ "takeaways": [
+  "架构设计层面的可解释性比事后解释更可靠",
+  "稀疏专家结构可有效减少神经元多义性，提升语义纯度",
+  "路由机制本身提供了模型决策的可解释窗口"
+ ],
+ "weaknesses": [
+  "可解释性与模型性能之间存在权衡，MoE-X的困惑度可能高于标准模型",
+  "专家数量与语义概念粒度的对应关系需要人工标定",
+  "仅在小规模模型上验证，大模型的可解释性是否保持未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MVA_Linear Attention with High-order Query-Keys Integration and Multi-level Vocabulary Decomposition.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MVA_Linear Attention with High-order Query-Keys Integration and Multi-level Vocabulary Decomposition.pdf",
+ "title": "MVA: Linear Attention with High-order Query-Keys Integration and Multi-level Vocabulary Decomposition",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "将Softmax注意力转为线性注意力的方法，性能仍有差距。",
+ "innovations": [
+  "统一主流线性注意力转换方法，提出高阶查询-键集成策略",
+  "设计多级词汇分解提升线性注意力的表示能力",
+  "实现从预训练Softmax模型到线性注意力的高效转换，避免从头训练的高昂成本"
+ ],
+ "method_framework": "线性注意力推理快但从头训练成本高且性能差。本文聚焦将已训练好的Softmax注意力模型转换为线性注意力。MVA通过：(1)高阶Q-K集成——在线性化时保留更多高阶交互信息；(2)多级词汇分解——将词表分解为多粒度子空间，增强线性注意力的表达能力。",
+ "experiment_framework": "在多个预训练LLM上验证转换效果。指标：转换后线性注意力模型的困惑度/下游任务性能 vs 原始Softmax模型。与其他线性化方法对比。",
+ "takeaways": [
+  "预训练Softmax模型可高效转换为线性注意力模型，无需从头训练",
+  "高阶Q-K集成和多级词汇分解是缩小线性/Softmax注意力差距的关键",
+  "线性注意力的推理效率优势可通过转换方式获得"
+ ],
+ "weaknesses": [
+  "转换后性能仍有差距，未完全达到Softmax水平",
+  "仅在NLP任务验证，未涉及视觉/多模态",
+  "与主线（鲁棒性/可信AI/医学影像/多模态推理）无直接关联，属于高效注意力方向"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

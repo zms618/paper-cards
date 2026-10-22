@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Salient Object Ranking via Cyclical Perception.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Salient Object Ranking via Cyclical Perception.pdf",
+ "title": "Salient Object Ranking via Cyclical Perception-Viewing Interaction Modeling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "循环交互建模显著目标排序，依赖caption生成质量，与主线关联弱。",
+ "innovations": [
+  "观察到自由观看时人通过最大化对图像的上下文理解来浏览目标，据此提出内容理解与注意力转移间的循环交互这一自顶向下认知路径。",
+  "设计故事预测(SP)模块：以GR模块的显著目标query为条件生成/补全图像caption，学习内容理解。",
+  "设计引导排序(GR)模块：在SP模块引导下检测显著目标及其观看顺序；两模块交替迭代修正低层线索导致的错误，在SOR基准上超SOTA。"
+ ],
+ "method_framework": "SP模块根据当前显著目标query生成图像caption(故事)，GR模块据此检测显著目标并排序；两者循环：故事理解引导注意力转移，注意力转移又更新故事理解，逐步精炼显著度排序。",
+ "experiment_framework": "在多个SOR基准上对比SeqRank、DSGNN、PoseSOR等SOTA方法，报告显著目标排序精度；展示从初始预测到迭代精炼的改善。",
+ "takeaways": [
+  "自顶向下的内容/故事理解与注意力转移循环交互，能显著改善仅靠底层视觉线索的SOR方法。",
+  "把内容理解显式建模为caption生成并与排序模块耦合，可纠正语义丰富场景下的排序错误。"
+ ],
+ "weaknesses": [
+  "属视觉显著度/注意力建模方向，与可靠性×医学影像/多模态推理主线关联弱。",
+  "依赖caption生成质量作为故事理解代理，caption误差会反馈进排序；循环迭代的计算开销与收敛性未充分分析。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "视觉显著度排序与可靠性主线关联弱，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

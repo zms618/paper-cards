@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/SAUCE Selective Concept Unlearning in Vision-Language Models with Sparse Autoencoders.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/SAUCE Selective Concept Unlearning in Vision-Language Models with Sparse Autoencoders.pdf",
+ "title": "SAUCE Selective Concept Unlearning in Vision-Language Models with Sparse Autoencoders",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "稀疏自编码器实现视觉语言模型细粒度概念遗忘",
+ "innovations": [
+  "将稀疏自编码器应用于视觉模块实现细粒度概念遗忘",
+  "无需大量标注数据的概念特征选择方法",
+  "在推理阶段进行特征干预而非模型参数更新"
+ ],
+ "method_framework": "训练稀疏自编码器捕获高维稀疏特征，通过对比正负样本识别目标概念相关特征，在推理时通过缩放因子抑制特定特征实现选择性遗忘。",
+ "experiment_framework": "在LLaVA和LLaMA模型上评估60个概念（物体、运动场景、情感、颜色、材料），使用UAg/UAd衡量遗忘质量，IRA/CRA/MME衡量模型效用。",
+ "takeaways": [
+  "稀疏自编码器可提取有意义的单语义特征",
+  "特征干预方法比参数更新方法更精确",
+  "细粒度遗忘能保持模型其他功能"
+ ],
+ "weaknesses": [
+  "SAE训练计算成本高（单GPU需54-72小时）",
+  "仅评估了对抗攻击鲁棒性，未测试分布外泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "细粒度概念遗忘直接关联可靠性主线中的幻觉抑制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

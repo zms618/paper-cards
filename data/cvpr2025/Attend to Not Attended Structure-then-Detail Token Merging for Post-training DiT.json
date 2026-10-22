@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Attend to Not Attended Structure-then-Detail Token Merging for Post-training DiT.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Attend to Not Attended Structure-then-Detail Token Merging for Post-training DiT.pdf",
+ "title": "Attend to Not Attended Structure-then-Detail Token Merging for Post-training DiT",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "动态token合并加速DiT，但架构局限与计算开销明显",
+ "innovations": [
+  "基于扩散模型先结构后细节的token冗余分析",
+  "相似度优先的结构合并与不注意度优先的细节合并",
+  "动态压缩比调整和提示重加权策略",
+  "无需微调的即插即用加速框架"
+ ],
+ "method_framework": "SDTM框架分析扩散过程中不同阶段的特征冗余，在早期阶段使用相似度优先的结构合并(SSM)，后期使用不注意度优先的细节合并(IDM)，配合动态压缩比调整和提示重加权，实现高效token压缩。",
+ "experiment_framework": "在MS-COCO2017和PartiPrompt数据集上测试，对比SD3 Medium等模型，使用FID、CLIP、MACs和延迟评估性能，实现1.55倍加速且质量无损。",
+ "takeaways": [
+  "基于扩散过程先结构后细节的特性进行针对性token压缩",
+  "动态调整压缩策略以适应不同阶段和图像复杂度",
+  "提示重加权保持生成方向与原始提示的一致性"
+ ],
+ "weaknesses": [
+  "仅针对文本到图像的DiT架构，未扩展到视频生成",
+  "自适应阈值调整需要额外计算资源构建映射表"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅加速DiT，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "title": "Self-Forcing++: Towards Minute-Scale High-Quality Video Generation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "自举式视频片段指导外推长度，但早期误差风险未充分验证",
+ "innovations": [
+  "无需长视频教师或长视频重训练即可缓解长时程连续潜空间的误差累积",
+  "从自生成长视频中采样片段引入教师知识指导学生，保持时序一致性",
+  "在不重叠帧重算的前提下避免过曝光与误差累积，最长生成4分15秒视频"
+ ],
+ "method_framework": "自回归长视频学生由短时双向教师蒸馏而来；利用教师对自生成长视频中的采样片段做指导，逐段引导避免连续潜空间误差复利，从而把生成长度外推到教师能力之外。",
+ "experiment_framework": "在标准基准与作者改进基准上评测保真度与时序一致性；相对基线长度扩展50倍以上、最长4分15秒；报告在保真与一致性上显著优于基线。",
+ "takeaways": [
+  "学生超出教师训练视距会因连续潜空间误差累积而画质退化",
+  "用自生成长视频片段回放教师指导可有效抑制长程误差累积",
+  "无需重叠帧重算也能维持分钟级时序一致性"
+ ],
+ "weaknesses": [
+  "属视频生成，与可靠性/医学影像/多模态推理主线无关",
+  "自举式指导依赖初段质量，早期误差是否会被复制未充分分析",
+  "前9页未见具体FVD/时序一致性数值表"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/SELF-FORCING++ Towards Minute-Scale High-Quality Video Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SELF-FORCING++ Towards Minute-Scale High-Quality Video Generation.pdf",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯视频生成，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

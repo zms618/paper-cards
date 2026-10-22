@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Prototype-based Causal Intervention for Multi-Label Classification.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Prototype-based Causal Intervention for Multi-Label Classification.pdf",
+ "title": "Prototype-based Causal Intervention for Multi-Label Classification",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "原型因果干预缓解多标签虚假相关性，但依赖CAM且提升有限",
+ "innovations": [
+  "动态混淆因子记忆(DCM)模块，学习类上下文原型",
+  "自适应因果干预(ACI)模块，特征空间反门调整",
+  "仅使用图像级监督实现因果干预，无需实例级标注"
+ ],
+ "method_framework": "ProCI框架包含DCM和ACI两个模块：DCM通过CAM提取上下文特征并动态更新类混淆原型；ACI将图像特征解离为全局语义特征和类特定查询，利用原型构建样本特定偏差向量进行特征调整，产生因果logit。",
+ "experiment_framework": "在MS-COCO、Pascal VOC、COCO-Stuff和Sewer-ML数据集上评估，使用mAP、F1等指标，与多种基线方法比较，并在Sewer-ML上实现+5.44 F2CIW提升。",
+ "takeaways": [
+  "原型学习可用于建模类上下文偏差而非仅判别特征",
+  "动态更新机制比静态混淆字典更能适应训练过程中的特征空间变化",
+  "特征解离与调制函数设计有效分离因果路径与虚假路径"
+ ],
+ "weaknesses": [
+  "方法依赖CAM质量，虽然作者声称鲁棒但未充分验证",
+  "计算开销增加，需要维护原型记忆和额外的特征处理",
+  "在标准数据集上提升有限，主要优势体现在高度混淆的工业数据集"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "因果干预缓解多标签虚假相关性，符合可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "title": "TSLM: Tree-Structured Language Modeling for Divergent Thinking",
+ "one_line": "用特殊token编码树结构，单次生成完整搜索树，但监督获取与计算成本存疑",
+ "innovations": [
+  "提出TSLM：用[SEP]/[FAIL]/[GOAL]等特殊token编码分支、死路与目标，使模型在单次前向中生成完整树状探索结构",
+  "在含成功与失败尝试的完整搜索树上训练，让模型内化系统化探索，避免外部搜索方法对共享前缀的重复计算",
+  "推理时生成连贯树后选择性将各分支缝入独立上下文扩展，避免Tree-of-Thought式多次独立前向与外部编排"
+ ],
+ "method_framework": "不同于顺序生成或独立采样多条轨迹（分布碎片化、冗余重叠），TSLM把搜索树作为训练目标：模型学习在每个节点系统地构建多样分支。推理时单次前向产出完整分支结构，再把各分支缝入独立上下文选择性扩展，保持完整搜索拓扑而非寄望并行采样碰巧覆盖。",
+ "experiment_framework": "在Game of 24等需要多路径探索的推理任务上评测；基线为顺序推理与Tree-of-Thought等外部搜索；指标为成功率与推理效率（前向次数/计算成本）；报告鲁棒性能且推理效率优于需多次独立前向的外部搜索。",
+ "takeaways": [
+  "在完整树状轨迹上做监督学习，可把系统化探索内化进模型，作为推理时扩展的新范式",
+  "单次前向生成树避免了外部搜索对共享前缀的重复计算，更高效",
+  "显式解耦并行分支使模型能从早期错误中恢复并系统覆盖解空间"
+ ],
+ "weaknesses": [
+  "依赖完整搜索树轨迹作监督，树轨迹的获取成本与规模是关键瓶颈",
+  "树生成的token开销随分支数指数增长，超长推理的实际成本未充分量化",
+  "主要在Game of 24等探索型任务验证，对数学/常识推理等更宽任务的迁移待确认"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/TSLM_Tree-Structured Language Modeling for Divergent Thinking.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TSLM_Tree-Structured Language Modeling for Divergent Thinking.pdf",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "树结构语言建模与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

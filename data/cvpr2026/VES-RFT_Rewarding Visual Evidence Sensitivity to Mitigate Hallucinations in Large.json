@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/VES-RFT_Rewarding Visual Evidence Sensitivity to Mitigate Hallucinations in Large.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/VES-RFT_Rewarding Visual Evidence Sensitivity to Mitigate Hallucinations in Large.pdf",
+ "title": "VES-RFT Rewarding Visual Evidence Sensitivity to Mitigate Hallucinations in Large",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "VES-RFT用视觉证据敏感性奖励减少VLM幻觉，但机制验证不足。",
+ "innovations": [
+  "视觉证据敏感性(VES)信号设计",
+  "VES与可验证奖励的双重目标优化",
+  "基于GRPO的无批评家强化微调框架"
+ ],
+ "method_framework": "VES-RFT通过计算图像存在与否的熵差作为视觉证据敏感性信号，结合可验证奖励，使用GRPO进行无监督强化微调，提升模型对视觉证据的依赖。",
+ "experiment_framework": "POPE/CHAIR/AMBER数据集，对比SFT、RLHF等基线，使用准确率、F1、Yes Ratio等指标评估幻觉减少效果。",
+ "takeaways": [
+  "不确定性可作为可训练信号",
+  "双重目标设计平衡正确性与视觉依赖",
+  "GRPO适用于多模态模型强化微调"
+ ],
+ "weaknesses": [
+  "需要额外的无图像前向传播",
+  "验证器设计可能限制开放场景应用",
+  "λ参数需要仔细调优"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "幻觉抑制属于可靠性主线，且方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

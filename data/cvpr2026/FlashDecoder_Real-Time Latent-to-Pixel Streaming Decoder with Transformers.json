@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/FlashDecoder_Real-Time Latent-to-Pixel Streaming Decoder with Transformers.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/FlashDecoder_Real-Time Latent-to-Pixel Streaming Decoder with Transformers.pdf",
+ "title": "FlashDecoder Real-Time Latent-to-Pixel Streaming Decoder with Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "Transformer解码器通过滚动缓存实现流式解码，速度提升但指标优势有限",
+ "innovations": [
+  "固定大小滚动KV缓存实现恒定延迟流式解码",
+  "训练-推理一致性设计消除显式注意力掩码",
+  "时间优先上采样策略降低计算复杂度",
+  "跨潜在空间泛化能力"
+ ],
+ "method_framework": "FlashDecoder采用纯Transformer架构，通过固定大小滚动KV缓存实现帧级解码，结合时间优先上采样策略，在保持因果性的同时实现高分辨率训练和实时流式解码。",
+ "experiment_framework": "UltraVideo数据集，480p/720p/1080p评估，PSNR/LPIPS/rFVD指标，与Wan2.1/2.2等基线对比，单H100 GPU测试吞吐量和内存",
+ "takeaways": [
+  "固定窗口大小KV缓存可有效控制内存和计算",
+  "时间优先上采样策略比空间上采样更高效",
+  "训练-推理一致性设计简化架构"
+ ],
+ "weaknesses": [
+  "rFVD指标略高于卷积基线",
+  "仅评估解码阶段，未端到端测试",
+  "优化后的模型参数量较大(769.3M)"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "纯解码加速工作，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

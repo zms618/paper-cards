@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/VideoREPA_Learning Physics for Video Generation through Relational Alignment with Foundation Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/VideoREPA_Learning Physics for Video Generation through Relational Alignment with Foundation Models.pdf",
+ "title": "VideoREPA: Learning Physics for Video Generation through Relational Alignment with Foundation Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "将视频SSL模型物理知识蒸馏至T2V微调，提升生成视频物理合理性。",
+ "innovations": [
+  "首次把REPA表示对齐范式扩展到T2V视频模型的finetune场景(而非从头训练加速)",
+  "提出Token Relation Distillation(TRD)损失，时空对齐地软引导，避免硬对齐破坏预训练VDM",
+  "揭示T2V模型物理理解能力缺口，并证明从ViFM蒸馏物理知识是比堆数据/加物理专家更通用的路径"
+ ],
+ "method_framework": "冻结VideoMAEv2等ViFM，提取时空token关系矩阵；在CogVideoX finetune时让其中间层token关系与之对齐，作为软正则注入物理先验。",
+ "experiment_framework": "在Physion等物理理解基准(含OCP/接触/滚动子集)上评测生成视频物理合理性，对比CogVideoX基线、CogVideoX+原始REPA，报告物理正确率与画质。",
+ "takeaways": [
+  "大T2V模型的物理理解并不随规模自动涌现，反而显著小于专用SSL视频编码器",
+  "token级关系对齐比逐特征硬对齐更适合微调预训练VDM",
+  "从理解模型蒸馏物理知识是开放域提升物理合理性的可行路径，无需专用物理数据集"
+ ],
+ "weaknesses": [
+  "前9页主要在CogVideoX-2B上验证，更新的Wan/HunyuanVideo是否仍受益未知",
+  "TRD对齐的是SSL编码器的表征关系，其物理'真值'性本身未独立验证",
+  "与仿真器引导/WISA等专用物理方法的直接对比前9页未给出"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

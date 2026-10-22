@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Cognitive Process-Inspired Architecture for Subject-Agnostic Brain Visual Decoding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Cognitive Process-Inspired Architecture for Subject-Agnostic Brain Visual Decoding.pdf",
+ "title": "A COGNITIVE PROCESS-INSPIRED ARCHITECTURE FOR SUBJECT-AGNOSTIC BRAIN VISUAL DECODING",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "跨受试fMRI解码框架，但样本少且消融不完整",
+ "innovations": [
+  "首个 subject-agnostic 的 fMRI→视频解码设定：不再要求新患者 12 小时个体校准，把脑活动按早视觉/V4-FFA 腹侧/MT-IPS 背侧三路拆分并对齐 CLIP 不同层与视频嵌入",
+  "SARA 用 ViT register 式 token 扩展（L→L+L_redis）经 redistribution 层显式拆出语义 token T_sem 与受试特定 token T_subj，配三目标解纠缠损失：BiMixCo 对齐 L_align + 跨受试对称 InfoNCE L_generic + 受试分类 CE L_subj",
+  "HED 用显式辅助任务替代隐式扩散先验：腹侧做图像描述与类别分类（L_caption/L_cls）、早视觉做分割（L_seg）、背侧投影到 VAE Latent 对齐模糊视频帧（L_motion），并随训练渐进调整各 λ 系数"
+ ],
+ "method_framework": "按 V1/V2 早视觉、腹侧、背侧分 ROI 抽取全脑/早/腹/背四种特征并对齐 CLIP 不同层；SARA 用 redistribution 层拆出语义与受试两组 token，加跨受试 InfoNCE 与受试分类损失做解纠缠；HED 以四项辅助任务损失重建视频。",
+ "experiment_framework": "cc2017 数据集（每受试 18 段训练+5 段 8 分钟测试视频）；对比 fMRI-PTE-V、GLFA、GLFA*、NEURONS*，指标 50-way/2-way 分类、SSIM/PSNR、视频级 CLIP-pcc；3 组留一受试设置与均值 Δ%。",
+ "takeaways": [
+  "「把 token 显式拆成语义/受试两类 + 受试分类 CE 保留身份信息」是低成本去个体差异的通用套路，可复用到任何跨被试/跨中心的神经信号解码",
+  "辅助任务显式解码（描述/分类/分割/模糊视频）比只依赖扩散 prior 隐式对齐更能保住动态与细节，值得在其它生成式解码任务里照抄",
+  "评测协议要显式区分「全受试预训练」与「排除测试受试预训练」（GLFA vs GLFA*），否则跨受试声明会被预训练数据泄漏撑起来"
+ ],
+ "weaknesses": [
+  "只用了 cc2017 的 3 个受试，留一受试设置下每个测试受试只有 1 个，且表 1 全部为单次结果、无方差；「相比全受试专属模型仅降 7%」缺少逐受试的效率/时间对照表支撑",
+  "基线公平性存疑：NEURONS* 是把 NEURONS 改造数据处理与编码器才适配到跨受试设定、属需自行改造的不同类方法；GLFA 虽排除测试受试预训练，但与 GLFA* 的对比口径不同，两个 Δ% 不可直接并列",
+  "§4.5 消融正文中途截断，四个模块（fMRI-to-image 预训练、HCAM、SARA、HED）的去除实验不可见，尤其缺少去掉跨受试 InfoNCE 或去掉受试分类损失这两项对照，无法确认解纠缠本身贡献了多少"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "跨受试fMRI解码，但样本少且消融不完整",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

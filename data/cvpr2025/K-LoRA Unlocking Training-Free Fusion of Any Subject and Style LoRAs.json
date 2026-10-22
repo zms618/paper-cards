@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/K-LoRA Unlocking Training-Free Fusion of Any Subject and Style LoRAs.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/K-LoRA Unlocking Training-Free Fusion of Any Subject and Style LoRAs.pdf",
+ "title": "K-LoRA Unlocking Training-Free Fusion of Any Subject and Style LoRAs",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "Top-K选择机制实现无需训练的LoRA融合，但泛化与效率分析不足。",
+ "innovations": [
+  "Top-K选择机制确定每个注意力层中最具代表性的特征",
+  "基于扩散步骤的缩放因子实现内容与风格的渐进式融合",
+  "无需额外训练即可融合任意预训练LoRA模型"
+ ],
+ "method_framework": "K-LoRA通过比较内容与风格LoRA矩阵的Top-K元素和，结合基于扩散步骤的缩放因子，在每一层自适应选择最适合的LoRA权重，实现内容与风格的平衡融合。",
+ "experiment_framework": "使用SDXL和FLUX模型，在DreamBooth和StyleDrop数据集上进行评估，对比Direct、Joint、B-LoRA和ZipLoRA方法，采用CLIP和DINO分数作为指标。",
+ "takeaways": [
+  "利用LoRA矩阵的稀疏特性进行关键元素选择",
+  "扩散过程中不同阶段内容与风格LoRA扮演不同角色"
+ ],
+ "weaknesses": [
+  "未充分讨论方法在不同复杂度LoRA上的泛化能力",
+  "缺乏对计算效率的定量分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "LoRA融合技术属于模型效率优化，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Faster Parameter-Free Regret Matching Al.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Faster Parameter-Free Regret Matching Al.pdf",
+ "title": "A FASTER PARAMETER-FREE REGRET MATCHING ALGORITHM",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "免调参平滑 regret 算法，理论有创新但实验对比不充分",
+ "innovations": [
+  "揭示 SPRM+ 的 O(1/T) 速率只在 0<η<R·C0 内成立（C0 为游戏相关常数），据此提出 ARD：每轮把决策空间的 1-范数下界 Rt 单调自增，使其越过 η/C0，从而彻底摆脱步长调参",
+  "MI-SPRM+ 在时变决策空间 R^{|A|}≥Rt 上做两次 Bregman（二次正则 ψ）更新，并用 Rt 加权平均 x̄_T=(ΣRt x^t)/(ΣRt) 替代均匀平均，据此证明 O(1/T) 收敛（Theorem 4.1）",
+  "给出算法与 CFR 框架结合的处理：在 extensive-form games 上单轮复杂度仍保持 O(1)，而现有已知 O(1/T) 的 Clairvoyant CFR 需 O(log T)；同时对多人一般和 NFG 给出与 SPRM+ 同级的 O(1) 社会 regret 界"
+ ],
+ "method_framework": "在 SPRM+ 更新基础上把固定决策空间 R^{|A|}≥R 改为每轮自适应下界 R_t，当 ∥F^t−F^{t−1}∥²₂ 超过两个 Bregman 项均值时令 R_{t+1}=R_t+1，使 R_t 单调自增越过 η/C0，最终用 R_t 加权平均输出策略。",
+ "experiment_framework": "对比 RM+/PRM+/SPRM+/OGDA/OMWU/DS-OptMD；3×3 原论文支付矩阵加规模 10/30/50/100 的随机二人零和矩阵，每规模 60 个实例、三组高斯分布，报对偶间隙与置信区间。",
+ "takeaways": [
+  "「免调参」与「快收敛」不必二选一：与其像 DS-OptMD 那样保守地缩小步长，不如沿另一个自由度（决策空间下界）做主动扩张",
+  "对偶间隙（duality gap）比 regret 更适合刻画到 NE 的距离，且可在随机实例上画置信区间，是博弈收敛实验的标准度量",
+  "说明理论 O(1/T) 与经验速率的落差（DS-OptMD 有理论保证却实测慢得多）时，必须同时报两者，否则理论贡献会被高估"
+ ],
+ "weaknesses": [
+  "实验只有对偶间隙一个指标，且仅限 3×3 原论文游戏与四种随机规模的二人零和矩阵，缺少真实大规模对局（如扑克）与额外性能度量，跨任务可迁移性说法支撑有限",
+  "Rt 的自增判据（∥F^t−F^{t−1}∥²₂ 减去两个 Bregman 项均值是否大于 0）既无增量幅度的理论分析、也无该量过大导致决策空间病态时的消融或失败案例展示",
+  "对比设置对非参数方法不公平：SPRM+ 与 OGDA 的 η 只在 {0.01,0.1,1} 三个粗粒度值中挑选，而 MI-SPRM+ 完全免调参，等于把调参预算全给了自己；正文还在 §5 结果中段截断，60 个随机实例的置信区间与 CFR 扩展结果不可见"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "理论博弈算法，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Temporal-aware Query Routing for Real-time Video Instance Segmentation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Temporal-aware Query Routing for Real-time Video Instance Segmentation.pdf",
+ "title": "Temporal-aware Query Routing for Real-time Video Instance Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "时间感知查询路由优化视频实例分割Transformer解码器计算效率",
+ "innovations": [
+  "时间感知查询路由(TAR)机制",
+  "同步器模块对齐跨帧查询",
+  "利用帧间差异动态跳过冗余Transformer解码层"
+ ],
+ "method_framework": "在Transformer解码器每层前插入TAR模块，融合前一帧最优查询、当前帧前层输出查询及其差异信息，通过MLP预测二分类分数决定是否跳过当前层",
+ "experiment_framework": "在YoutubeVIS 2019/2021和OVIS数据集上评估，与MinVIS和DVIS++基线比较，使用AP、AP75、AR10指标和FPS效率指标",
+ "takeaways": [
+  "利用帧间相似性动态跳过冗余计算层",
+  "同步器模块对齐跨帧查询是TAR有效性的关键"
+ ],
+ "weaknesses": [
+  "仅优化了Transformer解码器，未解决图像编码器瓶颈",
+  "方法在复杂场景下可能效果有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "优化视频分割效率，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

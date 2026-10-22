@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/4DGC_Rate-Aware 4D Gaussian Compression for Efficient Streamable Free-Viewpoint Video.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/4DGC_Rate-Aware 4D Gaussian Compression for Efficient Streamable Free-Viewpoint Video.pdf",
+ "title": "4DGC: Rate-Aware 4D Gaussian Compression for Efficient Streamable Free-Viewpoint Video",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "运动网格加稀疏补偿高斯建模帧间冗余，端到端率失真优化4D高斯压缩",
+ "innovations": [
+  "运动感知动态表示：首帧训完整 3DGS 作参考，后续帧用 L=3 级多分辨率运动网格 M_t（位置经 sin/cos(2^l π µ) 编码后三线性插值）拼特征，送两个共享轻量 MLP Φ_µ/Φ_R 预测每个高斯的平移 Δµ_t 与旋转 ΔR_t，逐帧只存 M_t 与补偿高斯",
+  "高斯补偿：对梯度超阈值 τ_g 处克隆 ΔG_t^g 覆盖新出现物体/边缘；对 |Δµ_t|>τ_µ 或 |ΔR_t|>τ_R 的大高斯再克隆两个尺度缩到 s/100 的子高斯，均在 N(µ,2Σ) 内采样后于第二阶段优化",
+  "端到端率失真压缩：用加性均匀噪声 u~U(-1/2q,1/2q) 模拟量化以保留梯度，配合随场景 on-the-fly 学习的隐式熵模型按 P_PMF(ŷ)=P_CDF(ŷ+1/2)-P_CDF(ŷ-1/2) 估码率，分两阶段最小化 L_color+λ_1·L_rate（λ_1∈{3e-4…1e-5} 控制码率档位）"
+ ],
+ "method_framework": "关键帧训完整 3DGS 后逐帧流式处理：先从参考缓冲取 Ĝ_{t-1}，用多分辨率运动网格+两个 MLP 估帧间刚体运动得到 G'_t，再在梯度/运动超阈值区域加稀疏补偿高斯；运动网格与补偿高斯 SH 分别经模拟量化与隐式熵模型，在 RD 损失下两阶段联合优化。",
+ "experiment_framework": "N3DV、MeetRoom、Google Immersive 三个真实数据集，各留一视角测试；对比 K-Planes、HyperReel、MixVoxels、NeRFPlayer、StreamRF、ReRF、TeTriRF、D-3DG、3DGStream；报 PSNR/SSIM、每帧 MB、渲染 FPS、BDBR/BD-PSNR 与 RD 曲线。",
+ "takeaways": [
+  "把码率项 -log₂P_PMF 直接写进训练损失，而非「先表示后压缩」两段式，是可迁移到其它神经表示传输场景的设计",
+  "加性均匀噪声模拟量化 + 随场景即时学习的隐式熵模型，是无需大规模预训练熵模型也能做端到端压缩的低门槛路径",
+  "用「运动场估刚体变换 + 稀疏残差补偿」分解帧间冗余，是视频编码运动/残差思路在 4DGS 上的直接映射"
+ ],
+ "weaknesses": [
+  "核心部件均为既有模块组合：运动网格+MLP、克隆/分裂式高斯致密化、模拟量化+熵模型都来自前人工作，增量主要在把它们用 RD 损失串起来",
+  "补偿策略的阈值 τ_g/τ_µ/τ_R 与克隆尺度 s/100 缺乏原理依据，正文未见敏感性分析",
+  "质量收益极有限而速度反向：N3DV 上 PSNR 31.58 vs 3DGStream 31.54（+0.04dB），真正收益是码率 8.1MB→0.5MB，但渲染 FPS 反而更低（168 vs 215），正文未讨论这一反向指标",
+  "无多种子方差；熵模型需随场景 on-the-fly 训练，每场景的训练耗时与端到端时延未计入与基线的对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "纯视频压缩工程，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

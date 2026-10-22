@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Gated Integration of Low-Rank Adaptation for Continual Learning of Large Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Gated Integration of Low-Rank Adaptation for Continual Learning of Large Language Models.pdf",
+ "title": "Gated Integration of Low-Rank Adaptation for Continual Learning of Large Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "门控LoRA集成缓解LLM持续学习遗忘，但计算开销大且通用性受限。",
+ "innovations": [
+  "引入门控模块动态调整新旧LoRA分支的集成系数",
+  "通过初始化和更新约束最小化新LoRA分支对旧任务的影响",
+  "无需旧任务样本即可实现有效的持续学习"
+ ],
+ "method_framework": "GainLoRA为每个新任务扩展新的LoRA分支，并引入门控模块生成集成系数，通过约束确保新任务学习不影响旧任务性能。",
+ "experiment_framework": "在SuperNI和Long Sequence基准上评估，使用T5、Llama-2和Llama-3模型，比较AP和FT指标，与O-LoRA和InfLoRA等方法对比。",
+ "takeaways": [
+  "门控机制可有效控制新知识对旧任务的影响",
+  "约束设计使方法无需回放旧样本即可缓解遗忘"
+ ],
+ "weaknesses": [
+  "引入额外门控模块增加计算开销",
+  "方法依赖特定LoRA架构，通用性受限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

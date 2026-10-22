@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Cavia_Camera-controllable Multi-view Video Diffusion with View-Integrated Attention.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Cavia_Camera-controllable Multi-view Video Diffusion with View-Integrated Attention.pdf",
+ "title": "Cavia: Camera-controllable Multi-view Video Diffusion with View-Integrated Attention",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "视角注意力改进多视角视频生成，但3D一致性验证不足",
+ "innovations": [
+  "把空间/时间注意力扩展为视角一体化(view-integrated)注意力，同时改善视角与时序一致性",
+  "支持用场景级静态视频、物体级合成多视角动态视频、真实单目动态视频等多源数据联合训练",
+  "首个可对同一场景按多条不同相机轨迹精确控制相机运动、同时保持3D一致的生成框架"
+ ],
+ "method_framework": "Cavia以输入图像为条件做视频扩散生成。核心是改造注意力模块为视角一体化注意力：在多帧/多视角token间做联合注意力，使不同相机路径渲染同一3D场景时几何与外观一致；通过对多源异构视频数据联合训练，让模型既学到静态场景结构又学到动态视角变化，从而按指定相机轨迹生成3D一致视频。",
+ "experiment_framework": "在多源视频数据集上训练，与既有相机可控/多视角视频生成方法对比，报告3D一致性、相机轨迹遵循度与时序一致性指标，并做同场景多轨迹生成的定性评估。",
+ "takeaways": [
+  "视角一体化注意力可在不引入显式3D表征的前提下同时提升视角与时序一致性",
+  "多源异构数据联合训练能同时覆盖静态场景与动态视角变化",
+  "同场景多相机轨迹生成是可行的，缓解了既有方法仅支持简单轨迹的局限"
+ ],
+ "weaknesses": [
+  "属3D一致视频生成/图形学方向，与可靠性、可信AI及医学影像、多模态推理主线无关",
+  "3D一致性仍以注意力隐式建模，长轨迹/大视角变化下的几何漂移缺乏量化认证",
+  "前9页以框架与动机为主，具体一致性指标与基线数值需结合全文(共25页)判断"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.01,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

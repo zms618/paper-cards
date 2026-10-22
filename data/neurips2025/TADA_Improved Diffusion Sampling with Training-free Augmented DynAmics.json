@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/TADA_Improved Diffusion Sampling with Training-free Augmented DynAmics.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/TADA_Improved Diffusion Sampling with Training-free Augmented DynAmics.pdf",
+ "title": "TADA: Improved Diffusion Sampling with Training-free Augmented DynAmics",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "训练免费扩散采样加速，但高维噪声优势有限",
+ "innovations": [
+  "利用高维初始噪声实现更少函数评估的高质量采样",
+  "建立动量扩散模型与传统扩散模型的训练等价性",
+  "通过伪噪声特性使ODE求解器获得SDE特性"
+ ],
+ "method_framework": "TADA通过在动量系统中使用更高维初始噪声，直接利用预训练扩散模型，通过重加权线性组合输入，实现SDE特性的ODE求解。",
+ "experiment_framework": "在ImageNet-64/512和SD3上评估，与UniPC、DPM-Solver++等基线比较，使用FID和HPSv2指标",
+ "takeaways": [
+  "动量扩散模型与传统扩散模型训练等价，可直接利用预训练模型",
+  "通过调整变量数量N可控制样本多样性"
+ ],
+ "weaknesses": [
+  "N>2时在ImageNet-512上未观察到一致改进",
+  "方法与现有求解器正交但集成复杂度增加"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

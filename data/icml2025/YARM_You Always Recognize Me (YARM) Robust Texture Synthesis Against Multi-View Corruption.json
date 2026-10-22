@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/YARM_You Always Recognize Me (YARM) Robust Texture Synthesis Against Multi-View Corruption.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/YARM_You Always Recognize Me (YARM) Robust Texture Synthesis Against Multi-View Corruption.pdf",
+ "title": "You Always Recognize Me (YARM): Robust Texture Synthesis Against Multi-View Corruption",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "体素纹理优化提升多视角分类鲁棒性，但通用纹理效果欠佳",
+ "innovations": [
+  "提出数据中心式鲁棒性方案：用多视角3D重建得到体素表示，再以代理分类器为目标反向传播优化物体纹理颜色特征，无需图像预处理或模型微调",
+  "发现并验证了可跨同类别不同几何物体迁移的通用鲁棒纹理(URT)，零样本迁移到新几何物体上仍有抗退化效果",
+  "系统分析不同代理模型生成纹理的可迁移性，给出'选较弱代理模型更利于跨架构迁移'的代理模型选择准则"
+ ],
+ "method_framework": "先用多视角图像对目标物体做体素网格3D重建得到几何+颜色表示；随机选视角渲染2D图，叠加不同强度的噪声/模糊/天气/压缩等退化；以分类器为代理模型对退化渲染图计算损失，反传优化体素颜色特征即纹理。通用纹理则对同类多物体联合优化同一纹理参数。",
+ "experiment_framework": "在代理模型VGG16与ResNet-18上，针对ImageNet-C式15类退化、严重度1-5及随机强度，报告分类准确率与mCE/R.mCE；基线包括图像恢复(URIE)、微调(VQSA/DCP)、数据增广(Unadv)；并做跨架构迁移与单物体/通用纹理对比。",
+ "takeaways": [
+  "单物体鲁棒纹理在VGG16上随机退化强度准确率0.854、mCE 0.175，优于VQSA微调(0.741/0.302)与URIE恢复",
+  "在干净高质量数据上准确率不下降反而提升(none条件0.927 vs clean 0.379基线)，避免了微调方法牺牲干净精度的问题",
+  "通用纹理方案效果明显弱于单物体纹理(随机强度仅0.325)，说明跨几何迁移代价较大"
+ ],
+ "weaknesses": [
+  "通用鲁棒纹理(URT)在表格中甚至弱于clean基线，核心卖点'通用纹理'实际效果不佳，方法名过强",
+  "实验局限于体素重建的受控物体与小规模分类任务，未在大规模真实工业场景验证，且依赖多视角3D重建的前置成本",
+  "退化类型局限于15种已知合成退化，对训练时未见过的未知退化与真实成像误差的鲁棒性未充分评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

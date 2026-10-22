@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/ChangeBridge_Spatiotemporal Generation with Multimodal Controls for Remote Senisng.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ChangeBridge_Spatiotemporal Generation with Multimodal Controls for Remote Senisng.pdf",
+ "title": "ChangeBridge Spatiotemporal Generation with Multimodal Controls for Remote Senisng",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "异步扩散桥模型实现多模态控制的遥感时空生成",
+ "innovations": [
+  "异步扩散桥模型，区分前景事件和背景时序演化",
+  "组合桥初始化，从预事件状态而非噪声开始扩散",
+  "漂移感知去噪，嵌入漂移图指导差异重建"
+ ],
+ "method_framework": "ChangeBridge包含三个核心模块：组合桥初始化、异步漂移扩散和漂移感知去噪，通过像素级漂移图控制不同区域的演化强度，实现时空一致性生成。",
+ "experiment_framework": "在LEVIR-CC、WHU-CD、S2Looking和SECOND四个数据集上评估，与六种基线方法比较，使用FID、IS、IoU和mIoU等指标。",
+ "takeaways": [
+  "组合桥初始化有效保持背景结构",
+  "异步漂移机制能区分前景事件和背景时序演化",
+  "多模态控制支持坐标文本、实例布局和语义掩码"
+ ],
+ "weaknesses": [
+  "漂移参数γfg和γbg需要针对不同数据集调整",
+  "仅评估了256×256分辨率，未测试更高分辨率",
+  "未充分探讨模型在极端变化场景下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "遥感生成与可靠性主线无实质交点，仅多模态控制有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

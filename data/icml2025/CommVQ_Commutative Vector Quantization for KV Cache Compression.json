@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/CommVQ_Commutative Vector Quantization for KV Cache Compression.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CommVQ_Commutative Vector Quantization for KV Cache Compression.pdf",
+ "title": "CommVQ: Commutative Vector Quantization for KV Cache Compression",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "向量量化KV缓存压缩，1-bit精度有限，架构依赖性强",
+ "innovations": [
+  "向量级而非标量级的KV缓存量化",
+  "设计RoPE可交换码本以降低解码计算开销",
+  "迭代聚类算法优化量化精度"
+ ],
+ "method_framework": "CommVQ采用加性量化将KV向量编码为低比特表示，通过RoPE可交换码本设计，使解码过程与自注意力机制高效集成，显著降低计算复杂度。",
+ "experiment_framework": "在LongBench和InfiniteBench长上下文基准以及GSM8K推理任务上评估，与KIVI、KVQuant和VQLLM等基线比较，使用平均量化比特数和任务准确率作为指标。",
+ "takeaways": [
+  "向量级量化比标量量化更适合KV缓存压缩",
+  "利用RoPE可交换性质可显著降低解码计算开销",
+  "迭代聚类方法可有效提升超低比特量化的精度"
+ ],
+ "weaknesses": [
+  "码本学习过程依赖EM算法，可能收敛不稳定",
+  "方法主要针对特定架构(LLaMA)，通用性有待验证",
+  "1-bit量化在某些任务上仍有明显性能下降"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

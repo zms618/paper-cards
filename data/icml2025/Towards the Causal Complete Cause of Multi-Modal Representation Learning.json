@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Towards the Causal Complete Cause of Multi-Modal Representation Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Towards the Causal Complete Cause of Multi-Modal Representation Learning.pdf",
+ "title": "Towards the Causal Complete Cause of Multi-Modal Representation Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "因果完全因定义多模态表示，但工具变量假设强且实验不完整",
+ "innovations": [
+  "定义Causal Complete Cause(C3)，量化多模态表示同时因果充分与必要的概率，克服一致性/特异性视角导致的表示不足或冗余",
+  "放松既往因果MML普遍的外生性与单调性假设，并引入工具变量在非外生、非单调下支持C3可辨识",
+  "提出孪生网络：现实分支用工具变量估计充分性、假设世界分支用基于梯度的反事实建模估计必要性，最小化C3风险的C3正则即插即用"
+ ],
+ "method_framework": "现有多模态方法聚焦模态一致性/特异性，从因果看会因虚假相关与模态冲突学到不充分或不必要的表示。本文定义表示对标签的充分性（有表示即可确定标签）与必要性（去掉表示标签即错）。在非外生、非单调下引入工具变量实现可辨识；孪生网络现实分支借IV估计充分性、假设世界分支用梯度反事实估计必要性，合为C3风险，作为正则项约束表示因果完备。",
+ "experiment_framework": "在多个多模态基准上评估C3正则化（即插即用），对比主流一致性/特异性多模态方法；指标为分布内与（虚假相关/模态冲突下的）鲁棒泛化精度，并验证C3可辨识性理论分析。",
+ "takeaways": [
+  "好的多模态表示应是标签的因果完全因（既充分又必要），而非仅共享或特异",
+  "放松外生/单调并用工具变量，可在真实多模态数据中辨识C3",
+  "C3正则作为即插即用项可缓解虚假相关与模态冲突带来的泛化问题"
+ ],
+ "weaknesses": [
+  "工具变量在多模态场景中的可获得性与有效性假设较强，实践中如何构造未充分讨论",
+  "前9页主要为定义与框架，完整实验数值与消融在后续页",
+  "反事实建模依赖结构正确设定，估计偏差对C3风险的影响需后续页分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

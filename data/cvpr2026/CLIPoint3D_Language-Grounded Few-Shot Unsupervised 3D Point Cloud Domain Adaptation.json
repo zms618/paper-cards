@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/CLIPoint3D_Language-Grounded Few-Shot Unsupervised 3D Point Cloud Domain Adaptation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/CLIPoint3D_Language-Grounded Few-Shot Unsupervised 3D Point Cloud Domain Adaptation.pdf",
+ "title": "CLIPoint3D Language-Grounded Few-Shot Unsupervised 3D Point Cloud Domain Adaptation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "CLIP+多视图投影实现点云域适应，但模态差异与泛化性存疑",
+ "innovations": [
+  "知识驱动提示调谐，融合LLM语义先验与3D几何特征",
+  "不确定性感知的原型对齐与最优传输双重目标",
+  "熵引导视图选择机制提升多视图稳定性",
+  "参数高效微调实现轻量级适应"
+ ],
+ "method_framework": "将3D点云投影为多视图深度图，利用冻结CLIP主干，通过知识驱动提示调谐融合语言先验与几何特征，结合PEFT微调，熵引导视图选择，以及不确定性感知的原型对齐和最优传输损失实现域适应",
+ "experiment_framework": "PointDA-10和GraspNetPC-10基准测试，与CLIP基线和传统编码器方法比较，分类准确率作为指标",
+ "takeaways": [
+  "多模态提示调谐可有效融合语言与几何信息",
+  "不确定性感知机制提升域适应鲁棒性",
+  "参数高效方法在保持性能的同时大幅减少计算开销"
+ ],
+ "weaknesses": [
+  "依赖CLIP预训练，可能受限于2D图像与3D点云的模态差异",
+  "多视图投影可能导致信息损失",
+  "实验仅限于两个基准，泛化能力需进一步验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "点云域适应与可靠性主线无实质交点，仅多模态融合有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

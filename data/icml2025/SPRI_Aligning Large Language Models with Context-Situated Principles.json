@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/SPRI_Aligning Large Language Models with Context-Situated Principles.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SPRI_Aligning Large Language Models with Context-Situated Principles.pdf",
+ "title": "SPRI: Aligning Large Language Models with Context-Situated Principles",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "情境化原则对齐LLM，但依赖强模型且推理成本高",
+ "innovations": [
+  "提出情境化原则(SPRI)框架：实时为每个输入query自动生成上下文相关的指导原则来对齐回答，替代通用、难适配个案的预定义规则",
+  "证明自动生成的原则在复杂领域可达到与专家手工原则相当的表现，且实例化评分准则优于既有LLM-as-a-judge框架",
+  "用SPRI生成合成SFT数据显著提升模型真实性(truthfulness)"
+ ],
+ "method_framework": "给定输入query，先让LLM根据当前上下文与任务领域自动提炼出针对该实例的具体、可操作指导原则(situated principles)，再在这些原则引导下生成回答；同一套机制还可产出实例专属评分rubric用于评判，或用于合成高质量SFT训练数据，全程几乎无需人工撰写规则。",
+ "experiment_framework": "在三个任务上评测：(1)复杂领域特定任务上对比专家手工原则与通用规则(Bai et al.)；(2)LLM-as-a-judge对比；(3)用合成SFT数据训练后测真实性；以GPT-4o-mini为底座验证零/少人工成本下的对齐效果。",
+ "takeaways": [
+  "通用对齐规则难以适配个体context，按query实时生成情境化原则可大幅降低人工专家依赖",
+  "SPRI生成的实例级rubric比通用LLM评判框架更贴合具体任务",
+  "情境化原则还可作为合成数据来源提升真实性"
+ ],
+ "weaknesses": [
+  "依赖强模型(GPT-4o/4o-mini)实时生成原则，底座能力差时原则质量与稳定性如何，正文前9页未充分分析",
+  "实时为每条query生成原则再生成回答，推理成本翻倍，高并发场景经济性未量化",
+  "三任务多为对话/评判类，对高风险决策、事实密集任务的对齐鲁棒性与幻觉抑制证据在前9页有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

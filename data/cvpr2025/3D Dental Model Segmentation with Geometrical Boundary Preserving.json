@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/3D Dental Model Segmentation with Geometrical Boundary Preserving.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3D Dental Model Segmentation with Geometrical Boundary Preserving.pdf",
+ "title": "3D Dental Model Segmentation with Geometrical Boundary Preserving",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.4
+ },
+ "one_line": "曲率加权降采样+多视角渲染，牙冠牙龈边界分割",
+ "innovations": [
+  "在 QEM 边塌缩的能量项上按平均曲率重新加权：负曲率（牙龈牙冠交界）边系数 k=10、正曲率（牙尖）边 k=1，每轮迭代重算曲率，从而在同等总点数下于边界区域多留 10%-15% 的点密度",
+  "测试多种平行光角度后发现冠顶垂直向下的平行光在牙龈交界产生最强明暗对比；沿上半球经纬均匀布设虚拟相机渲染96张图，用 PSPNet 提取像素语义特征后按相机参数反投影回点云，与点特征拼接融合",
+  "在最后一层解码器上同时施加边界二分类交叉熵与 CBL 对比边界损失，约束同类邻点特征相近、异类邻点特征远离"
+ ],
+ "method_framework": "口扫mesh先做曲率加权QEM选择性降采样到16000点；一路以Point Transformer做局部-全局编码解码（坐标+法向6维输入，kNN聚合、self-attention建长程上下文），一路用PSPNet处理多视角渲染图；像素特征按相机参数反投影到点后与最后一层点特征拼接过MLP，输出17类分割与边界二类头。",
+ "experiment_framework": "MICCAI 挑战赛公开的1800例上下颌口扫（1440/360随机划分）；对比MeshSegNet/SimpSegNet/TSegNet/TeethGNN/ToothGroupNet/UpToothSeg/DilatedSegNet官方实现；指标各类IoU、整体mIoU与边界IoU。",
+ "takeaways": [
+  "把预处理改动变成可测的实验变量：用边界点平均距离（5.029e-3 vs QEM 5.655e-3）直接量化「降采样丢掉边界信息」，而不是只报最终mIoU",
+  "「用渲染把三维细节转成二维高频信息来补点云稀疏」这个思路，以及先做光照明实验再定配置的写法，可迁移到其他点云-derived 的医疗/工业任务"
+ ],
+ "weaknesses": [
+  "对比不公平：本文额外训练了边界二分类头与CBL边界损失，却拿 boundary IoU 与没有该监督的7个基线比提升（+5.7%），该指标天然偏向本文方法，缺少「给基线也加同样边界监督」的控制实验",
+  "只在单一公开数据集上按 1440/360 随机划分评测，无跨中心/跨扫描仪划分、无多次运行方差与显著性检验；Table 2 中 TSegNet 边界IoU 0.000、MeshSegNet 0.900 与 SimpSegNet 74.7 的巨大落差也暗示基线复现条件未必完全可比",
+  "曲率权重 k=10 / k=1 两档取值纯经验，文中无敏感性分析；也没有 public leaderboard 之类的外部核验",
+  "正文在 4.3 节末被截断，组件消融（图像支路/点支路各自贡献）只剩 Fig.5 的定性描述，定量消融表缺失"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "医疗影像分割，无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

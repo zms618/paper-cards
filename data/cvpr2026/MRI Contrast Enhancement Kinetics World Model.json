@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/MRI Contrast Enhancement Kinetics World Model.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/MRI Contrast Enhancement Kinetics World Model.pdf",
+ "title": "MRI Contrast Enhancement Kinetics World Model",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "MRI CEKWorld模型通过时空一致性学习解决DCE-MRI时间分辨率问题",
+ "innovations": [
+  "首次提出MRI对比增强动力学世界模型(MRI CEKWorld)",
+  "时空一致性学习(STCL)框架",
+  "潜在对齐学习(LAL)保持内容真实性",
+  "潜在差异学习(LDL)确保时间连续性"
+ ],
+ "method_framework": "基于扩散模型构建MRI CEKWorld，通过LAL构建患者特定模板约束空间一致性，LDL插值并约束潜在空间平滑变化，解决低时间分辨率导致的失真和不连续问题。",
+ "experiment_framework": "在腹部和乳腺DCE-MRI数据集上评估，使用PSNR、SSIM、LPIPS、rMSE和cSSIM指标，与CustomDiff、T2I、CCNet、EditAR和ControlNet等基线比较。",
+ "takeaways": [
+  "利用患者特定解剖结构一致性约束生成内容",
+  "在潜在空间进行插值和二阶差分约束确保时间平滑性",
+  "两阶段训练策略先稳定潜在空间再引入时空约束"
+ ],
+ "weaknesses": [
+  "方法依赖特定解剖结构的一致性假设",
+  "未充分讨论模型在不同患者群体中的泛化能力",
+  "计算复杂度较高，需要两阶段训练"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "医学影像可靠性主线，解决DCE-MRI时间分辨率问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

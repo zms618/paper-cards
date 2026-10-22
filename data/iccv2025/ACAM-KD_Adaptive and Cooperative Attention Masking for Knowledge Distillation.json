@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/ACAM-KD_Adaptive and Cooperative Attention Masking for Knowledge Distillation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/ACAM-KD_Adaptive and Cooperative Attention Masking for Knowledge Distillation.pdf",
+ "title": "ACAM-KD: Adaptive and Cooperative Attention Masking for Knowledge Distillation",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.2
+ },
+ "one_line": "师生交叉注意力生成掩码的KD，提升微弱且缺乏消融分析",
+ "innovations": [
+  "Student-Teacher Cross-Attention Feature Fusion：教师特征经 1×1 卷积投影为 Query、学生特征同时作为 Key/Value，做 HW×HW 空间注意力得到融合特征 F_fused，使掩码基于师生共同状态而非仅教师激活",
+  "Adaptive Spatial-Channel Masking：以可学选择单元 m^c·v（v 为 F_fused 空间均值）与 m^s·z（z 为展平特征）经 sigmoid 生成通道掩码 M^c 与空间掩码 M^s，在蒸馏全流程中每阶段动态更新",
+  "加 Dice 系数形式的掩码多样性损失 L_div（Eq.8）防止 M 个可学掩码退化为相似或全零解，总目标 L_task+α(L^c+L^s)+λL_div"
+ ],
+ "method_framework": "教师特征作 Q、学生特征作 K/V 做空间交叉注意力得融合特征；用可学单元对空间均值向量与展平特征取 sigmoid 得通道/空间掩码，对同一 L2 蒸馏项加权重；再加 Dice 多样损失，总损失为 L_task+α(通道+空间)+λL_div。",
+ "experiment_framework": "COCO2017 检测（RetinaNet/Faster R-CNN/RepPoints，R101 与 X101 教师）、Cityscapes 分割（DeepLabV3/PSPNet，R101 教师）；MMDetection/MMSegmentation；指标 mAP、mIoU、FPS。",
+ "takeaways": [
+  "让教师当 Query、学生当 Key/Value 做交叉注意力融合，据此学掩码，可打破「掩码只由教师或启发式决定」的静态设定",
+  "针对掩码退化的 Dice 多样性正则可直接复用到其他可学习掩码/门控场景"
+ ],
+ "weaknesses": [
+  "提升幅度很小且无方差：R101 教师下两阶段只比次优高 0.6 mAP，X101 教师下分割仅高 0.53/0.65 mIoU，Tables 1-2 中多数基线 AP50/AP75 标“-”无法逐项对照",
+  "无成对消融：正文未单独验证 STCA-FF 与 ASCM 的各自贡献，α=λ=1 直接给定且称「已足够好」，M 在检测取 6、分割取 19（恰等于类别数），两个蒸馏损失的权重毫无敏感性分析",
+  "空间掩码与通道掩码作用在完全相同的一个 L2 项上、仅归一化分母不同（Eq.6 vs Eq.7），所谓「双重选择」本质是对同一损失的两种加权，二者互补性缺隔离式实验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "知识蒸馏方法与可靠性主线无实质交点，仅属常规优化",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

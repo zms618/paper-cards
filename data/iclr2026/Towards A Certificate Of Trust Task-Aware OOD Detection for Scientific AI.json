@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards A Certificate Of Trust Task-Aware OOD Detection for Scientific AI.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards A Certificate Of Trust Task-Aware OOD Detection for Scientific AI.pdf",
+ "title": "Towards a Certificate of Trust: Task-Aware OOD Detection for Scientific AI",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "扩散模型估计联合似然作为OOD分数，零样本检测科学AI预测可靠性。",
+ "innovations": [
+  "针对科学计算中大量回归任务的OOD检测被忽视的问题，提出估计联合似然p(x, y_pred)的任务感知可靠性分数",
+  "联合似然同时考虑输入x与回归模型的预测y_pred，而非仅看输入分布，从而反映'预测是否可信'",
+  "zero-shot：无需访问测试分布的真值样本即可做OOD检测；跨PDE数据、卫星图像、脑肿瘤分割验证似然与预测误差强相关"
+ ],
+ "method_framework": "把任意回归模型Ψ与一个score-based扩散模型耦合：用扩散模型建模(x, y_pred)的联合分布并估计其似然。由于OOD或错误预测会落在联合分布低密度区，该似然可作为任务感知的可靠性证书；无需重训回归模型、无需测试分布真值即可给出。",
+ "experiment_framework": "在多个科学数据集(PDE数据集、卫星图像、脑肿瘤分割)上评测；指标为该联合似然与实际预测误差的相关性、OOD检测AUROC；对比仅基于输入密度的OOD方法；含zero-shot与少量真值微调两种设定。",
+ "takeaways": [
+  "回归任务的OOD检测可通过估计(输入,预测)联合似然来做，比仅看输入密度更贴合预测可靠性",
+  "该似然在多个科学领域(含脑肿瘤分割)与预测误差强相关",
+  "zero-shot即可提供可验证的'信任证书'，是科学AI可靠性评估的实用工具"
+ ],
+ "weaknesses": [
+  "依赖扩散模型对联合分布的建模质量，在极高维PDE场/体数据上的似然估计精度未充分讨论",
+  "脑肿瘤分割仅作为验证数据集之一，临床级不确定性校准与阈值决策尚未展开",
+  "正文前9页未见完整逐数据集AUROC表，相对强OOD基线的优势幅度需看后文确认"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "OOD检测与科学AI可靠性证书，明确触及主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

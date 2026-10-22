@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/MicroFM_Physics-guided Flow Matching for Isotropic Microscopy Reconstruction.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/MicroFM_Physics-guided Flow Matching for Isotropic Microscopy Reconstruction.pdf",
+ "title": "MicroFM Physics-guided Flow Matching for Isotropic Microscopy Reconstruction",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "物理引导流匹配重建各向同性显微图像，SOTA但计算成本高。",
+ "innovations": [
+  "物理PSF预测与合成训练数据",
+  "连续隐式神经表示的体积几何先验",
+  "锚定低质量输入的流匹配重建网络"
+ ],
+ "method_framework": "两阶段框架：首先使用SFE-Net预测物理PSF并合成训练数据；其次通过隐式神经表示构建体积几何先验，指导流匹配重建网络实现各向同性恢复。",
+ "experiment_framework": "四种荧光显微镜系统数据集，对比六种基线方法，使用全参考(PSNR/SSIM/LPIPS/VIF)和无参考(NIQE/PIQE/NRQM)指标评估。",
+ "takeaways": [
+  "物理PSF建模对提高轴向重建质量至关重要",
+  "体积几何先验可有效抑制伪影并保持形态结构",
+  "从低质量输入开始的流匹配减少幻觉并提高保真度"
+ ],
+ "weaknesses": [
+  "方法复杂度高，需要预训练SFE-Net和隐式神经表示",
+  "计算资源需求大，训练时间长"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "显微重建属于落地域但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

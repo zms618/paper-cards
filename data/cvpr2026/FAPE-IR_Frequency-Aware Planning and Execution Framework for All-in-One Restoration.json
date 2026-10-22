@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/FAPE-IR_Frequency-Aware Planning and Execution Framework for All-in-One Restoration.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/FAPE-IR_Frequency-Aware Planning and Execution Framework for All-in-One Restoration.pdf",
+ "title": "FAPE-IR Frequency-Aware Planning and Execution Framework for All-in-One Restoration",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "冻结MLLM规划器指导频率感知MoE执行器，修复任务多但参数量大。",
+ "innovations": [
+  "冻结MLLM作为频率感知规划器",
+  "频率感知LoRA-MoE架构",
+  "对抗训练与频率正则化损失"
+ ],
+ "method_framework": "MLLM规划器分析图像并生成频率感知修复计划，指导基于扩散的执行器动态选择高低频专家，结合对抗训练和频率正则化提升质量。",
+ "experiment_framework": "7种修复任务统一评估，包括去雨、去雪、去雾、去模糊、去噪、低光增强和超分辨率，使用PSNR、SSIM、LPIPS等指标。",
+ "takeaways": [
+  "频率感知路由解决跨任务梯度冲突",
+  "MLLM规划器提供可解释的决策过程",
+  "对抗训练减少伪影"
+ ],
+ "weaknesses": [
+  "模型参数量大(38.92G)，推理速度较慢(1.57s)",
+  "依赖预训练MLLM，可能受限于其能力范围"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "图像修复任务与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

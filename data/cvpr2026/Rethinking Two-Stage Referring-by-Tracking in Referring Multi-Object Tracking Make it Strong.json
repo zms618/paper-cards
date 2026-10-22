@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Rethinking Two-Stage Referring-by-Tracking in Referring Multi-Object Tracking Make it Strong.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Rethinking Two-Stage Referring-by-Tracking in Referring Multi-Object Tracking Make it Strong.pdf",
+ "title": "Rethinking Two-Stage Referring-by-Tracking in Referring Multi-Object Tracking Make it Strong",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "FlexHook改进RBT特征构建与对应建模，性能提升有限",
+ "innovations": [
+  "C-Hook基于采样的特征构建策略",
+  "语言条件化辅助采样点注入",
+  "PCD可学习成对对应解码器替代CLIP相似度"
+ ],
+ "method_framework": "FlexHook通过C-Hook直接从视觉主干采样目标特征，结合语言条件化参考点，通过时序整合提取运动线索，最后由PCD解码匹配分数",
+ "experiment_framework": "Refer-KITTI/v2、Refer-Dance、LaMOT数据集，HOTA为主要指标，对比多种检测器-跟踪器组合",
+ "takeaways": [
+  "采样式特征构建保留主干梯度流",
+  "成对对应建模优于静态相似度匹配",
+  "两阶段方法在训练效率和增量部署上仍有优势"
+ ],
+ "weaknesses": [
+  "依赖外部检测器-跟踪器性能",
+  "参考点数量对性能影响较小但增加计算复杂度",
+  "边界惩罚函数设计可能过于简单"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多目标跟踪方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

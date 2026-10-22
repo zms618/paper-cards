@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Wukong’s 72 Transformations High-fidelity Textured 3D Morphing via Flow Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Wukong’s 72 Transformations High-fidelity Textured 3D Morphing via Flow Models.pdf",
+ "title": "Wukong’s 72 Transformations: High-fidelity Textured 3D Morphing via Flow Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "流模型实现3D变形，但计算复杂且长序列验证不足",
+ "innovations": [
+  "基于最优传输质心的形状插值方法",
+  "递归初始化策略确保平滑过渡",
+  "相似度引导的语义一致性机制实现可控纹理保留"
+ ],
+ "method_framework": "基于预训练的流式3D生成器(Trellis)，将源和目标提示编码为特征分布，通过求解Wasserstein质心问题进行插值，结合递归初始化和选择性纹理插值实现高质量3D变形。",
+ "experiment_framework": "数据集：多类别3D对象对；基线：3DRM、MorphFlow、DiffMorpher等；指标：FID、STP-GPT、SEP-GPT、PPL、V-CLIP",
+ "takeaways": [
+  "最优传输质心方法比线性插值更适合3D形状过渡",
+  "递归初始化策略对保持几何连续性至关重要",
+  "相似度引导机制可实现精细纹理控制"
+ ],
+ "weaknesses": [
+  "计算复杂度高，单次生成约30秒",
+  "仅展示了6步插值结果，长序列变形效果未充分验证",
+  "对极端几何差异的变形效果可能受限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

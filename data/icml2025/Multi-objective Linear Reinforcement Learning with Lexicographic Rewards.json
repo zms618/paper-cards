@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Multi-objective Linear Reinforcement Learning with Lexicographic Rewards.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Multi-objective Linear Reinforcement Learning with Lexicographic Rewards.pdf",
+ "title": "Multi-objective Linear Reinforcement Learning with Lexicographic Rewards",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 3,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "纯理论推导的字典序多目标线性RL，无实验验证",
+ "innovations": [
+  "提出首个字典序奖励结构下多目标线性RL（MORL）算法，并给出可证明的悔界保证",
+  "第i个目标的悔界为O~(Lambda_i(lambda) * sqrt(d^2 H^4 K))，其中Lambda_i为冲突目标的累积权衡因子",
+  "算法可推广至模型误设设定，第i个目标悔界增加O~(epsilon * d H^2 K)的误设项"
+ ],
+ "method_framework": "字典序奖励：m个目标按优先级排序，先最大化最高优先级目标，再优化次优先级；算法采用线性MDP的特征映射结构，逐目标进行优化；高优先级目标的最优解约束作为低优先级目标的可行域。",
+ "experiment_framework": "纯理论分析论文，前9页内主要包含算法设计与悔界证明；覆盖线性MDP与误设两种设定。",
+ "takeaways": [
+  "字典序MORL是首个有理论保证的多目标RL框架，填补了该方向的理论空白",
+  "目标间的冲突程度（lambda参数）会指数级传播到低优先级目标的悔界中",
+  "误设分析为实际应用中模型不准确的情况提供了理论指导"
+ ],
+ "weaknesses": [
+  "纯理论推导，无任何数值实验验证算法实际性能",
+  "仅考虑线性MDP设定，非线性函数逼近的扩展未讨论",
+  "字典序假设要求目标严格排序，实际应用中目标优先级可能模糊"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

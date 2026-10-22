@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Model Merging in Pre-training of Large Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Model Merging in Pre-training of Large Language Models.pdf",
+ "title": "Model Merging in Pre-training of Large Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "简单平均检查点权重，提升训练稳定性但机制不明",
+ "innovations": [
+  "预训练模型平均(PMA)策略",
+  "PMA-init用于训练稳定性提升",
+  "模型合并超参数与模型规模的缩放关系"
+ ],
+ "method_framework": "提出预训练模型平均(PMA)策略，通过合并不同训练阶段的检查点模型权重，在保持性能的同时降低训练成本并提高训练稳定性。",
+ "experiment_framework": "密集和MoE架构模型(411M-200B参数)，在预热-稳定-衰减学习率调度下评估，使用Humaneval、BBH、MMLU、GSM8K等基准测试。",
+ "takeaways": [
+  "模型合并可作为学习率衰减的有效替代",
+  "合并间隔与模型规模存在缩放关系",
+  "PMA-init可提升训练稳定性并从不可恢复的损失尖峰中恢复"
+ ],
+ "weaknesses": [
+  "未详细分析模型合并的内在机制",
+  "缺乏对合并后模型推理效率的分析",
+  "实验主要基于内部数据集，公开可复现性有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

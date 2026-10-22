@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/ARM Appearance Reconstruction Model for Relightable 3D Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ARM Appearance Reconstruction Model for Relightable 3D Generation.pdf",
+ "title": "ARM: Appearance Reconstruction Model for Relightable 3D Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 3.0,
+  "overall": 4.7
+ },
+ "one_line": "LRM骨干上UV纹理重建，但关键消融缺失且实验可比性存疑",
+ "innovations": [
+  "把外观重建从三平面特征解码改为 UV 纹理空间：由 GeoRM 网格离线展开成 atlas charts，再将 6 视图图像及其 mask/位置/UV/视向/法线一起反投影为 6 组 UV 输入图，直接从 texel 层面学纹理而非从三平面插值。",
+  "用带全局感受野的 FFC-Net 补洞：6 视图最大池化融合后仍有未观测区域，FFC-Net 借用非邻近区域信息做 inpainting 并精炼融合结果，代价是引入一个额外网络而非提高三平面分辨率。",
+  "用 DINO ViT(8x8)多尺度特征 + 材料语义数据集预训练权重作 material prior，与图像量、辅助数据一同反投影进 UV 空间联合微调，绕开稀疏视角下渲染损失难以分离材料与照明的反照率问题。"
+ ],
+ "method_framework": "以 LRM 三平面为骨干分两阶段：GeoRM 预测 256^3 密度网格并用差分 marching cubes 提等值面，仅用 depth/mask/normal 损失训练后冻结；GlossyRM 继承其权重解码逐顶点 roughness 与 metalness；独立训练的 InstantAlbedo 在 UV 空间反投影多视图图像与材料先验，U-Net 提特征、max-pooling 跨视角融合、FFC-Net 补洞，输出烘焙光照色与漫反射反照率两张图。",
+ "experiment_framework": "GSO(1030)、OmniObject3D(1038)、自建 100 个 PBR 物体重光照集；基线 LGM/CRM/InstantMesh/MeshFormer/SF3D，统一单视图输入；指标 F-score、CD、PSNR、SSIM、LPIPS 与重光照 PSNR-A/LPIPS-A。",
+ "takeaways": [
+  "几何与外观分头训练（GeoRM 冻结后 GlossyRM 复用其权重初始化）可作为在显存受限下放大单模型表示分辨率的低成本切分策略。",
+  "将训练数据离线预展开为 atlas charts 以避免训练时逐次unwrap 的开销，是可直接复用的工程套路。",
+  "在 ill-posed 的材料/光照解耦上，用先验特征（材料语义编码）替换为渲染损失约束，比堆渲染损失更省算力。"
+ ],
+ "weaknesses": [
+  "正文第 9 页在 7.4 消融节首句被截断，材料先验、FFC-Net、UV 反投影三项设计的消融配置与数值全部缺失，关键 claim 无对应可核验实验。",
+  "Tab.1 相对 MeshFormer 的 PSNR 提升约 1.2dB、LPIPS 仅 0.016，且全表只报均值、无多种子标准差与显著性检验，小差距是否稳定无法判断。",
+  "Tab.2 中 SF3D 因不输出烘焙色而被迫在均匀环境光下重渲染后再比，21.75 vs 18.59 的 PSNR-A 差距混合了任务设定差异而非纯方法差异，可比性存疑。"
+ ],
+ "confidence": "low",
+ "raw_overall": 4.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "3D重建与重光照，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

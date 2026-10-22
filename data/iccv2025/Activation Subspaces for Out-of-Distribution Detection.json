@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Activation Subspaces for Out-of-Distribution Detection.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Activation Subspaces for Out-of-Distribution Detection.pdf",
+ "title": "Activation Subspaces for Out-of-Distribution Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "SVD分解激活子空间提升OOD检测，但创新有限且实验不充分",
+ "innovations": [
+  "利用SVD分解权重矩阵，将激活分为决定性和非决定性子空间",
+  "发现非决定性子空间对OOD检测更有效，决定性子空间更适合激活整形",
+  "结合两个子空间的得分函数，实现SOTA的OOD检测性能"
+ ],
+ "method_framework": "通过SVD分解分类头权重矩阵，将激活分为决定性和非决定性子空间，分别应用不同的得分函数，最后加权组合得到最终OOD检测分数。",
+ "experiment_framework": "ImageNet-1k训练的ResNet-50，在iNaturalist、SUN、Places和Textures数据集上评估，使用AUC和FPR@95%TPR作为指标",
+ "takeaways": [
+  "利用SVD分解权重矩阵可有效分离不同特性的激活子空间",
+  "针对不同分布偏移程度(Near-OOD/Far-OOD)应采用不同子空间进行检测"
+ ],
+ "weaknesses": [
+  "在Textures数据集上的性能相对较弱",
+  "需要额外的超参数调优来平衡两个子空间的得分"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "OOD检测与可靠性主线明确交点，方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

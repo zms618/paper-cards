@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Visual Compositional Tuning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Visual Compositional Tuning.pdf",
+ "title": "Visual Compositional Tuning",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "组合式视觉指令微调配方，减少90%数据量达全量性能",
+ "innovations": [
+  "定义原子视觉能力(atomic capabilities)分类体系，提出k值复杂度度量（单样本所需原子能力数量）",
+  "提出COMPACT数据配方：为每张图像合成组合多种原子能力的复杂问题，提升单样本信息密度",
+  "在LLaVA-665K上减少90%数据量仍达到全量100.2%性能，在复杂基准MM-Vet上甚至超过全量训练8.6%"
+ ],
+ "method_framework": "首先从LLaVA-665K中分析提取一组基础视觉推理原子能力（如物体识别、空间关系、颜色属性等）。然后定义k值复杂度为单条问题所需的原子能力数量。通过合成方法为每张图像生成组合多种原子能力的复杂问题，使单个训练样本包含更丰富的视觉推理链路。用这种组合式数据替换原始VIT数据进行微调，在大幅减少数据量的同时保持甚至提升性能。",
+ "experiment_framework": "数据集：LLaVA-665K视觉指令微调数据集。基线：全量VIT训练、现有数据缩减方法。指标：8个多模态基准性能、数据效率。结果：90%数据缩减下达到全量100.2%性能，MM-Vet +8.6%、MMStar +2.9%。",
+ "takeaways": [
+  "单样本视觉推理复杂度（k值）与训练效率正相关，组合多种原子能力的样本比多个简单样本更有训练价值",
+  "通过合成复杂问题可以大幅提升VIT数据效率，减少90%数据量仍不损失性能",
+  "组合式训练在需要多步推理的复杂基准上收益尤为显著"
+ ],
+ "weaknesses": [
+  "原子能力分类体系依赖人工定义和数据集分析，对不同领域/任务的适配性需重新设计",
+  "合成复杂问题依赖现有标注和模型生成，可能引入生成偏差",
+  "仅在LLaVA架构上验证，对其他MLLM架构的通用性未充分展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "数据效率方法，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

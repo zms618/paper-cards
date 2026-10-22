@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Policy Gradient with Tree Expansion.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Policy Gradient with Tree Expansion.pdf",
+ "title": "Policy Gradient with Tree Expansion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "SoftTreeMax结合树搜索与策略梯度，降低方差提升Atari性能。",
+ "innovations": [
+  "SoftTreeMax：将softmax扩展为基于树搜索的策略",
+  "证明梯度方差随树深度指数衰减，与行为策略的转移矩阵第二特征值相关",
+  "首次证明近似模型下梯度偏差与模型误差的关系"
+ ],
+ "method_framework": "SoftTreeMax将传统策略logits替换为多步折扣累积奖励的期望，结合树搜索与策略梯度，提出C-SoftTreeMax和E-SoftTreeMax两种变体。",
+ "experiment_framework": "Atari游戏环境，并行GPU模拟器，深度8的树搜索，与分布式PPO对比，测量梯度方差和奖励提升。",
+ "takeaways": [
+  "树扩展策略的选择对梯度方差有决定性影响，应选择使转移矩阵第二特征值最小的策略",
+  "近似模型下存在方差与偏差的权衡，需根据模型精度调整树深度"
+ ],
+ "weaknesses": [
+  "理论分析基于有限MDP，对连续动作空间适用性存疑",
+  "实验仅在Atari游戏上进行，缺乏更广泛环境的验证",
+  "计算复杂度高，限制了树深度的扩展"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

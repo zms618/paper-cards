@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Mechanistic PDE Networks for Discovery of Governing Equations.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Mechanistic PDE Networks for Discovery of Governing Equations.pdf",
+ "title": "Mechanistic PDE Networks for Discovery of Governing Equations",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "机制PDE网络结合GPU并行求解器，从数据中发现已知形式PDE。",
+ "innovations": [
+  "提出机制PDE网络架构，将时空数据表示为神经网络隐表示中的线性偏微分方程",
+  "开发原生GPU并行、稀疏、可微的多重网格PDE求解器NeuRLP-PDE",
+  "实现从复杂含噪数据中发现非线性PDE，在反应扩散和Navier-Stokes方程上验证"
+ ],
+ "method_framework": "将时空数据建模为神经网络隐表示空间中的线性PDE。网络内部集成专用的并行稀疏多重网格PDE求解器，可微地求解隐空间中的PDE。通过学习PDE系数矩阵，从数据中发现控制方程。求解器采用稀疏计算和多重网格方法，缓解PDE求解的维度灾难问题。",
+ "experiment_framework": "在反应扩散方程、Navier-Stokes方程等多个PDE系统上验证发现能力。指标为恢复PDE方程的精度、预测性能、对噪声的鲁棒性。与SINDy等PDE发现方法对比。",
+ "takeaways": [
+  "在神经网络隐空间中表示PDE可兼顾灵活性和可解释性",
+  "原生GPU稀疏求解器使高维PDE求解在神经网络中可行",
+  "机制式架构对噪声和缺失数据具有更好的鲁棒性"
+ ],
+ "weaknesses": [
+  "仅验证在已知形式的PDE发现，完全未知形式PDE的泛化未涉及",
+  "PDE求解器的计算开销仍较大，大规模三维问题的扩展性待验证",
+  "与纯数据驱动的神经网络模型在预测精度上的优势不明显"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.73,
+ "tier": "A",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

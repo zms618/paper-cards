@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/On the Expressiveness Of State Space Models via Temporal LOGICS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/On the Expressiveness Of State Space Models via Temporal LOGICS.pdf",
+ "title": "On the Expressiveness of State Space Models via Temporal Logics",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 4,
+  "relevance": 4.0,
+  "overall": 5.8
+ },
+ "one_line": "纯理论分析SSM表达力边界，缺乏实验验证与实际应用连接",
+ "innovations": [
+  "首次将 SSM 表达力与有限轨迹线性时序逻辑（PLTLf 等）片段建立映射，区分模式匹配/模谓词/全局计数三个表达层级",
+  "证明对角门控 SSM（S6 类）可识别带计数的纯过去 LTLf 语言，而时不变 SSM（S4 类）仅到一元时序算子加模谓词片段",
+  "证明全局计数严格依赖对数精度算术，固定精度（量化）SSM 表达力仍停留在正则语言内，给出 (aa)* 等不可表达的不可能性证明"
+ ],
+ "method_framework": "沿用为 Transformer 表达力建模的逻辑/复杂性框架（UHAT、AHAT 片段），沿两个维度分类 SSM：对角门控(S6) vs 时不变(S4)，固定精度 vs 对数精度；将各变体映射到对应的 LTLf 片段，给出可识别语言类的上下界与不可能性证明。",
+ "experiment_framework": "纯理论论文，无经验实验；通过形式化证明将 SSM 变体与已知 Transformer 结果（正则语言、star-free、TC0/NC1）做相对表达力比较，界定各架构可证可学与不可学的模式。",
+ "takeaways": [
+  "SSM 表达力强烈依赖门控结构与算术精度，不同变体对应不同逻辑片段",
+  "固定精度对角 SSM 在结构上无法表示 (aa)* 等非单调/计数模式，此瓶颈与训练数据和优化无关",
+  "全局计数能力是 SSM 超越正则语言的关键，且仅在对数精度下可得"
+ ],
+ "weaknesses": [
+  "纯理论工作，无任何经验验证，与实际 SSM（Mamba 等）在真实数据上的表现之间存在鸿沟",
+  "相关性偏离可靠性/医学影像/多模态推理主线，对落地任务指导有限",
+  "前 9 页内多为逻辑片段映射，未讨论这些不可能性结果对架构设计的可操作启示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "纯理论分析SSM表达力，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

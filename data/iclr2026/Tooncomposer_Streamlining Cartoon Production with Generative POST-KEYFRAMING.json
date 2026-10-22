@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Tooncomposer_Streamlining Cartoon Production with Generative POST-KEYFRAMING.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tooncomposer_Streamlining Cartoon Production with Generative POST-KEYFRAMING.pdf",
+ "title": "ToonComposer: Streamlining Cartoon Production with Generative Post-Keyframing",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 5.0
+ },
+ "one_line": "统一补间与上色，用草图注入和适配器简化卡通制作",
+ "innovations": [
+  "将补间与上色统一进单一post-keyframing阶段，避免分阶段处理的误差累积与伪影",
+  "稀疏草图注入机制：仅需单张草图+一张上色参考帧即可生成，也支持任意时间位置多草图以精确控制运动",
+  "提出带空间低秩adapter的卡通适配方法，在保留视频基础模型时序先验的同时迁移到卡通域"
+ ],
+ "method_framework": "基于现代视频基础模型，用稀疏草图注入在指定关键帧位置施加线稿约束，统一完成补间与上色；用空间低秩adapter适配卡通风格而不破坏预训练时序先验；支持任意数量关键帧草图与可变输出长度。",
+ "experiment_framework": "创建PKBench(模拟真实用例的人手草图)；对比既有补间/上色方法；指标为视觉质量、运动一致性与制作效率；验证单草图/多草图设定下的表现。",
+ "takeaways": [
+  "把补间与上色合并为单阶段可减少分阶段误差累积",
+  "稀疏草图注入实现了精确关键帧控制与灵活长度推理",
+  "空间低秩adapter可在保留时序先验下高效适配卡通域"
+ ],
+ "weaknesses": [
+  "依赖预训练视频基础模型，在极端大运动/复杂透视下的补间质量仍可能受限",
+  "PKBench为人手草图规模有限，真人画师工作流中的主观偏好一致性需更大用户研究",
+  "属卡通视频生成方向，与可靠性主线及医学影像、多模态推理落地域无关"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.83,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "卡通视频生成与可靠性主线及落地域无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "title": "Relatron: Automating Relational Machine Learning over Relational Databases",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "统一RDL与DFS设计空间，发现RDL非一致占优，提出元选择器路由架构。",
+ "innovations": [
+  "在统一设计空间内对RDL(编码/消息传递/读出)与DFS(非参数特征合成+表格学习器)做大规模架构搜索，构建架构-性能银行(performance bank)。",
+  "提出两个任务信号——RDB任务同质性(homophily)与捕捉规模/路径/特征/时间结构的affinity embedding，用于刻画RDL-DFS性能差距并实现 principled 路由。",
+  "引入loss-landscape平坦度指标挑选更稳的checkpoint，Relatron在联合超参-架构搜索中较强基线提升最多18.5%，且比Fisher信息类替代方法省10倍算力。"
+ ],
+ "method_framework": "先穷举设计空间建性能银行得到三条经验发现(RDL非一致占优、无单一架构全胜、验证精度不可靠)；再用同质性+affinity embedding训练任务嵌入元选择器，先在RDL/DFS间选择再在族内剪枝；最后用平坦极小值偏好规则保护checkpoint，解决'调得越多反而越差'。",
+ "experiment_framework": "在多样RDB预测任务上做以架构为中心的网格搜索(采样超参)；对比DFS/RDL从零基线、search-based与task-embedding-based选择方法；指标为测试性能、架构预测准确率与计算成本。",
+ "takeaways": [
+  "RDL相对DFS的优势高度依赖任务，并不存在一致更优的范式。",
+  "验证精度作为架构选择准则不可靠，会导致测试集退化，需用loss-landscape几何等信号辅助。",
+  "任务感知的路由+族内剪枝能在大幅降低搜索成本的同时取得强性能。"
+ ],
+ "weaknesses": [
+  "与主线(可靠性×医学影像/多模态推理)关联弱，属关系型数据库AutoML，医疗仅为应用举例而非落地。",
+  "结论依赖作者自定义的设计空间与性能银行，设计空间若遗漏某些架构会削弱'无单一最优'论断。",
+  "节选前9页未见跨任务的完整性能银行数值与消融(两个任务信号各自贡献)，提升幅度证据在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Relatron_Automating Relational Machine Learning over Relational Databases.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Relatron_Automating Relational Machine Learning over Relational Databases.pdf",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "关系数据库AutoML，与可靠性主线弱关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

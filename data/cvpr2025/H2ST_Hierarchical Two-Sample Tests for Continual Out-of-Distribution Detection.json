@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/H2ST_Hierarchical Two-Sample Tests for Continual Out-of-Distribution Detection.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/H2ST_Hierarchical Two-Sample Tests for Continual Out-of-Distribution Detection.pdf",
+ "title": "H2ST Hierarchical Two-Sample Tests for Continual Out-of-Distribution Detection",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "分层双样本测试实现持续OOD检测，但计算开销和内存需求仍存挑战",
+ "innovations": [
+  "首次提出开放世界TIL场景，解决双重不确定性问题",
+  "基于特征而非原始样本或模型输出的双样本测试方法",
+  "分层架构实现细粒度任务ID预测并降低计算开销"
+ ],
+ "method_framework": "H2ST采用T个任务特定的双样本测试层级联，每层包含特征级源目标预测、在线分类器更新和校准检测三步骤，通过早期退出机制减少计算量",
+ "experiment_framework": "在MNIST、SVHN、CIFAR-10/100、Mini-ImageNet、CoRe50和Stream-51数据集上评估，使用GEM和ER作为TIL基线，比较F1分数和任务ID预测准确率",
+ "takeaways": [
+  "特征级双样本测试减少对模型性能的依赖",
+  "分层架构实现计算效率和性能提升",
+  "阈值-free方法增强对非平稳数据分布的适应性"
+ ],
+ "weaknesses": [
+  "需要存储内存缓冲区中的源样本",
+  "随着任务数量增加，计算开销仍会增长",
+  "未探讨方法在极端不平衡数据集上的表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "OOD检测与可靠性主线明确交点，分层设计具可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

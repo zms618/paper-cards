@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning Dynamics in Continual Pre-Training for Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning Dynamics in Continual Pre-Training for Large Language Models.pdf",
+ "title": "Learning Dynamics in Continual Pre-Training for Large Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "分析LLM持续预训练损失曲线过渡现象，提出经验缩放定律。",
+ "innovations": [
+  "发现CPT损失曲线本质上是从初始预训练轨迹到新领域轨迹的过渡，可分解为两条隐藏损失曲线之间的转移",
+  "将CPT动力学解耦为分布偏移效应和学习率退火效应两个因素",
+  "推导出CPT缩放定律，可预测任意训练步和不同学习率调度下的损失"
+ ],
+ "method_framework": "系统观察CPT过程中通用领域和下游领域的验证损失演化；发现损失曲线是两条隐藏曲线(预训练基线曲线和领域特定曲线)的加权过渡；解耦分布偏移(数据域变化)和学习率退火(优化动态)的贡献；建立CPT缩放定律：损失 = f(分布偏移量, 学习率, 训练步数)。",
+ "experiment_framework": "在多个CPT场景(代码、金融、数学等领域)上进行大规模实验；系统改变学习率、数据量、模型大小；拟合和验证CPT缩放定律；分析通用领域遗忘和下游领域提升的动态权衡。",
+ "takeaways": [
+  "CPT的损失演化不是简单的单一下降，而是从预训练轨迹向领域轨迹的转移过程",
+  "分布偏移和学习率退火是影响CPT动力学的两个关键因素，可解耦分析",
+  "CPT缩放定律可用于预测最佳训练时长和学习率配置，避免过度训练导致的遗忘"
+ ],
+ "weaknesses": [
+  "缩放定律基于经验拟合，缺乏严格的理论推导",
+  "主要在中等规模模型上验证，超大模型的适用性未知",
+  "未讨论CPT中的灾难性遗忘机制，仅描述了损失曲线的现象"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

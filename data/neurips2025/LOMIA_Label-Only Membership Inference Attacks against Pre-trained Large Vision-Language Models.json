@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/LOMIA_Label-Only Membership Inference Attacks against Pre-trained Large Vision-Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/LOMIA_Label-Only Membership Inference Attacks against Pre-trained Large Vision-Language Models.pdf",
+ "title": "LOMIA: Label-Only Membership Inference Attacks against Pre-trained Large Vision-Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "仅标签的VLLM成员推理攻击，性能接近基于logits方法",
+ "innovations": [
+  "首次探索预训练VLLMs在仅标签设置下的成员推理攻击",
+  "提出三种有效的标签-only攻击方法：TTFA、ITFA和DUFA",
+  "设计两阶段回归框架，利用语义相似性和困惑度推断成员状态"
+ ],
+ "method_framework": "LOMIA框架包含回归和推理两个阶段，利用文本-文本相似性、图像-文本相似性和困惑度作为特征，通过线性回归模型预测成员状态。",
+ "experiment_framework": "在LOMIA/LAION和LOMIA/CC数据集上评估，对比7种基线方法，使用AUC、平衡准确率和TPR@1%FPR作为指标，并在GPT-4o上验证。",
+ "takeaways": [
+  "仅使用模型输出的top-1预测即可实现有效的成员推理攻击",
+  "双特征方法(DUFA)在不同数据集和模型架构上表现出更强的鲁棒性"
+ ],
+ "weaknesses": [
+  "DUFA在代理模型与目标模型架构不同时性能下降",
+  "方法对文本嵌入模型的选择较为敏感"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

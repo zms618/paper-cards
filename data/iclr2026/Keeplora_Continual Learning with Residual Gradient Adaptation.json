@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Keeplora_Continual Learning with Residual Gradient Adaptation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Keeplora_Continual Learning with Residual Gradient Adaptation.pdf",
+ "title": "Keeplora: Continual Learning with Residual Gradient Adaptation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "SVD分解区分参数子空间，用残差梯度约束LoRA更新",
+ "innovations": [
+  "分析预训练模型参数空间，区分主子空间和残差子空间",
+  "设计残差子空间约束的LoRA更新策略",
+  "梯度引导的LoRA初始化方法"
+ ],
+ "method_framework": "KeepLoRA通过SVD分解识别预训练模型的主子空间和残差子空间，将新任务更新限制在残差子空间，同时使用梯度信息初始化LoRA参数，平衡可塑性与稳定性。",
+ "experiment_framework": "MTIL设置下的CLIP和LLaVA模型，Transfer/Average/Last指标，与O-LoRA、InfLoRA等基线对比",
+ "takeaways": [
+  "参数空间分析为持续学习提供新视角",
+  "子空间约束可有效平衡知识保留与可塑性"
+ ],
+ "weaknesses": [
+  "依赖SVD计算可能增加训练开销",
+  "未讨论不同规模模型上的泛化能力"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "持续学习方法与可靠性主线无直接交点，但参数空间分析有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

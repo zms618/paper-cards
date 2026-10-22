@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Cov2Pose_Leveraging Spatial Covariance for Direct Manifold-aware 6-DoF Object Pose.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Cov2Pose_Leveraging Spatial Covariance for Direct Manifold-aware 6-DoF Object Pose.pdf",
+ "title": "Cov2Pose Leveraging Spatial Covariance for Direct Manifold-aware 6-DoF Object Pose",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "协方差表示用于姿态回归，但计算开销大且缺乏间接方法对比",
+ "innovations": [
+  "首次将协方差表示用于端到端姿态回归",
+  "基于Cholesky分解的连续姿态编码",
+  "流形感知训练管道保持SPD矩阵几何结构"
+ ],
+ "method_framework": "CNN骨干网络提取特征，通过空间协方差池化生成SPD矩阵，经BiMap层降维，最后通过可微分Cholesky层解码为连续6D旋转和3D平移表示。",
+ "experiment_framework": "在LineMOD、Occ-LineMOD和YCB-V三个基准数据集上评估，使用ADD和ADD-S指标，并与直接回归方法比较。",
+ "takeaways": [
+  "空间协方差与物体姿态强相关，适合直接姿态回归",
+  "连续旋转表示比非连续表示更适合姿态学习"
+ ],
+ "weaknesses": [
+  "方法复杂度较高，计算开销大",
+  "仅评估了直接回归方法，未与间接方法比较"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "姿态回归与可靠性主线无直接交点，仅空间协方差表示有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

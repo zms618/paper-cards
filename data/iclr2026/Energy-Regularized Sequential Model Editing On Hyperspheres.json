@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Energy-Regularized Sequential Model Editing On Hyperspheres.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Energy-Regularized Sequential Model Editing On Hyperspheres.pdf",
+ "title": "ENERGY-REGULARIZED Sequential Model Editing On Hyperspheres",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "超球面正则化编辑法，提升稳定性但计算开销大",
+ "innovations": [
+  "引入超球面能量(HE)量化神经元权重均匀性",
+  "建立HE与编辑性能的理论关联",
+  "提出SPHERE方法将新知识投影到稀疏空间",
+  "证明HE变化对预训练知识干扰的下界"
+ ],
+ "method_framework": "SPHERE通过识别预训练权重矩阵的主超球面方向，定义其正交补空间为稀疏空间，将编辑扰动投影到该空间，减少对主方向的干扰，保持超球面均匀性。",
+ "experiment_framework": "在LLaMA3(8B)和Qwen2.5(7B)上测试，使用CounterFact和ZsRE数据集，评估Efficacy、Generalization、Specificity等指标，并测试推理、NLI、QA等下游任务。",
+ "takeaways": [
+  "超球面均匀性是模型编辑稳定性的关键指标",
+  "将新知识投影到与主方向正交的稀疏空间可有效减少知识干扰",
+  "HE可作为编辑质量的早期预警指标"
+ ],
+ "weaknesses": [
+  "方法依赖于主方向估计的质量和参数选择",
+  "计算开销增加，特别是大规模模型",
+  "未探索不同模型架构的普适性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "模型编辑稳定性属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

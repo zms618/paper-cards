@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Pre-training Auto-regressive Robotic Models with 4D Representations.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Pre-training Auto-regressive Robotic Models with 4D Representations.pdf",
+ "title": "Pre-training Auto-regressive Robotic Models with 4D Representations",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "用4D点表征预训练机器人模型，依赖单目深度与线性变换假设",
+ "innovations": [
+  "主张用低层4D表征(3D点随时间跟踪)预训练机器人模型，以利用海量人类视频替代稀缺机器人数据",
+  "通过单目深度估计把2D表征沿时间提升到3D空间，得到4D点跟踪表征",
+  "证明该4D表征与机器人状态表征仅差一个线性变换，可在人类视频与机器人之间高效迁移"
+ ],
+ "method_framework": "先在大规模人类操作视频上，用单目深度把2D点轨迹提升为跨时间的3D点(4D表征)；用这些4D表征预训练自回归机器人模型ARM4R；由于4D点与机器人状态在几何上仅差线性变换，预训练学到的时空结构可高效迁移到下游机器人控制。",
+ "experiment_framework": "在多种机器人操作任务上评测zero-shot/few-shot迁移；与基于图像/其他表征预训练的机器人基线对比；指标为任务成功率；展示从人类视频预训练迁移到真实/仿真机器人的效果。",
+ "takeaways": [
+  "低层4D点跟踪表征比纯图像表征更利于把人类视频知识迁移到机器人",
+  "4D表征与机器人状态间近似线性关系，使跨模态迁移更高效",
+  "ARM4R在zero/few-shot机器人操作上优于依赖昂贵机器人标注的方法"
+ ],
+ "weaknesses": [
+  "依赖单目深度估计精度，深度噪声会沿时间累积进4D点轨迹",
+  "人类手部操作与机器人夹持器动力学差异，线性变换假设是否普遍成立存疑",
+  "实证任务范围与平台多样性有限，跨形态/长时序操作的泛化待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

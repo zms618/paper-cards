@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/`Why Is There a Tumor '' Tell Me the Reason, Show Me the Evidence.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/`Why Is There a Tumor '' Tell Me the Reason, Show Me the Evidence.pdf",
+ "title": "Why Is There a Tumor?: Tell Me the Reason, Show Me the Evidence",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "肿瘤分割模型提供临床理由与视觉证据，但临床效用评估不足",
+ "innovations": [
+  "构建180K图像-掩码-理由三元组数据集，由放射科专家质量评估，填补配对图像/标注/文本理由缺口",
+  "设计rationale-informed优化，以自监督方式解耦并定位细粒度临床概念，无需像素级概念标注",
+  "同时回答why(临床理由)与where(视觉证据)，把临床概念grounding到空间局部证据"
+ ],
+ "method_framework": "针对现有医学AI只输出掩码(where无why)或只给文本理由(why无where)的缺陷，训练模型在分割/检测同时输出临床概念化理由并定位其视觉证据；通过rationale-informed优化自监督地解耦细粒度临床概念，使预测理由与可视证据对齐。",
+ "experiment_framework": "在肿瘤影像(含专家放射科医生评估)上；对比UNet/SAMed/GradCAM/XML/MLLM(o1)等仅给掩码或仅给文本理由的方法；报告分割精度与理由-证据grounding质量。",
+ "takeaways": [
+  "模型可在给出准确分割的同时提供有临床概念支撑的预测理由与视觉证据",
+  "自监督解耦避免了昂贵的像素级概念标注",
+  "180K专家质控数据集为医学可解释AI提供训练基础"
+ ],
+ "weaknesses": [
+  "前9页未见与完整临床诊断效用的定量评估(如医生辅助决策提升)",
+  "理由-证据对齐的自动评测指标与人工金标准的一致性需完整实验佐证",
+  "180K三元组的疾病/模态覆盖偏差与跨机构泛化前9页未讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.55,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Polybasic Speculative Decoding Through a Theoretical Perspective.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Polybasic Speculative Decoding Through a Theoretical Perspective.pdf",
+ "title": "Polybasic Speculative Decoding Through a Theoretical Perspective",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 8,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 7.1
+ },
+ "one_line": "多模型投机解码理论框架，7B模型上3-4倍加速但未验证大模型场景。",
+ "innovations": [
+  "提出polybasic投机解码：用多个互连模型取代单一draft-target二元结构，把投机解码推广到更一般的多模型范式",
+  "证明刻画多模型投机解码最优推理时间的基本定理，揭示前向传播次数与平均接受长度之间决定系统级最优速度的关系",
+  "论证投机采样在提升接受长度稳定性上的作用，据此联合优化模型能力、接受长度与计算开销，可独立实现也可与既有投机技术集成"
+ ],
+ "method_framework": "本文为理论分析+系统实现论文。针对现有投机解码受限于draft-target二元关系、且缺乏统一理论的问题：先从多模型token生成的理论分析推导出前向次数-接受长度-最优速度的定量关系，据此指导如何加入更多模型；再用投机采样稳定接受长度，优化采样参数，得到可插拔的polybasic解码框架。",
+ "experiment_framework": "在多模型族上评测：LLaMA2-Chat-7B(3.31–4.01×)、LLaMA3-8B(至3.87×)、Vicuna-7B(至4.43×)、Qwen2-7B(至3.85×)；基线为传统draft-verify投机解码；关键约束为严格保持原模型输出分布(无损)。",
+ "takeaways": [
+  "前向传播次数与平均接受长度的定量关系决定了多模型投机解码的最优加速，可据此预判加入新模型的收益",
+  "polybasic框架在多个7B模型族上稳定取得3.3–4.4×加速且不改变输出分布",
+  "投机采样有助于稳定接受长度，从而提升加速的可复现性"
+ ],
+ "weaknesses": [
+  "收益主要在7B量级模型上验证，在超大模型或长上下文场景的加速是否同量级未展示",
+  "多模型互连带来额外显存/部署成本，文章对端到端(含多模型加载与协调)的吞吐/成本权衡讨论不足",
+  "理论最优性假设接受长度等统计量平稳，实际分布漂移下的最优性是否保持需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

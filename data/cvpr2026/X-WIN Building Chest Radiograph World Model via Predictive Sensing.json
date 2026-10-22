@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/X-WIN Building Chest Radiograph World Model via Predictive Sensing.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/X-WIN Building Chest Radiograph World Model via Predictive Sensing.pdf",
+ "title": "X-WIN Building Chest Radiograph World Model via Predictive Sensing",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "X-WIN用CT数据训练CXR预测模型，整合3D知识到2D影像",
+ "innovations": [
+  "首次将3D空间知识整合到CXR世界模型中",
+  "亲和力引导的对比对齐目标增强判别性特征编码",
+  "结构保持的域适应损失实现真实与模拟域的统一表示空间"
+ ],
+ "method_framework": "X-WIN包含两个协同网络：一个编码器和轻量级动作条件预测器用于生成潜在投影预测，另一个是指数移动平均编码器接收多个CT体积投影进行监督。通过旋转X射线源的动作控制新投影生成。",
+ "experiment_framework": "数据集：MIMIC-CXR(371,951张CXR)和NLST(32,371个CT)；基线：I-JEPA、DINOv2、RAD-DINO、CheXFound、Ark+、CheXWorld等；指标：线性探测和少样本微调的AUROC",
+ "takeaways": [
+  "预测性感知可从2D投影中学习3D解剖结构知识",
+  "亲和力引导的对比对齐能有效捕捉不同投影间的丰富相关性",
+  "域适应策略可弥合模拟与真实CXR域的差距"
+ ],
+ "weaknesses": [
+  "模型计算复杂度高，需要大量GPU资源",
+  "仅依赖CT体积的前侧和侧位视图，可能限制3D重建的全面性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "医学影像可靠性主线，3D知识整合到2D预测模型有防守力",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

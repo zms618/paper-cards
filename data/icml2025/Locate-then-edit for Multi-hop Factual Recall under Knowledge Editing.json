@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Locate-then-edit for Multi-hop Factual Recall under Knowledge Editing.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Locate-then-edit for Multi-hop Factual Recall under Knowledge Editing.pdf",
+ "title": "Locate-then-edit for Multi-hop Factual Recall under Knowledge Editing",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "IFMET通过双阶段编辑解决多跳知识编辑失败，但扩展性和prompt构造存疑",
+ "innovations": [
+  "通过机制可解释性分析发现：同一知识在单跳回忆时从浅层MLP提取，在多跳推理中作为隐式步骤时从深层MLP提取，这解释了现有locate-then-edit方法多跳失败的根因",
+  "提出多跳编辑prompt构造方法：为每个单跳编辑实例添加前缀hop，形成两跳编辑prompt，使编辑操作同时覆盖浅层和深层MLP",
+  "设计IFMET方法：在单跳编辑（浅层）之后增加furtherance编辑步骤，用多跳prompt对深层MLP做二次修改，实现知识在全网络层次的一致更新"
+ ],
+ "method_framework": "IFMET分为两步：(1) 基础编辑：用传统单跳编辑prompt（如“The capital of Spain is”）对浅层MLP做定位和编辑，更新显式回忆路径；(2) 追加编辑（furtherance edit）：构造多跳编辑prompt（如“The capital city of the country where Barcelona is located is”），定位深层MLP中对应隐式推理路径的知识存储位置并做二次权重修改。两步编辑确保新事实在显式和隐式回忆路径中均被更新。",
+ "experiment_framework": "在多跳事实回忆任务上评测，将两跳任务分为DP_re（编辑事实在第一跳/显式位置）和DP_post（编辑事实在第二跳/隐式位置）；对比Base、PMET等locate-then-edit基线；指标为QA格式和Cloze格式的准确率；测试编辑后多跳推理是否正确使用新知识。",
+ "takeaways": [
+  "现有locate-then-edit方法编辑后DP_post准确率极低（PMET仅2.93% QA / 4.60% Cloze），证明仅编辑浅层MLP无法传播到多跳隐式推理路径",
+  "IFMET通过对深层MLP的追加编辑，显著提升DP_post场景下的多跳事实回忆准确率",
+  "单跳和多跳事实回忆在模型内部使用不同层次的MLP存储，这一区分对知识编辑方法设计有重要指导意义"
+ ],
+ "weaknesses": [
+  "实验仅验证两跳场景，未涉及三跳及以上的复杂推理链，方法在更长推理链上的扩展性未知",
+  "追加编辑步骤需要额外的多跳prompt构造，对于复杂关系图中的事实，自动构造高质量多跳prompt的难度较大",
+  "前9页内未看到完整的大规模定量对比表格和消融实验细节，方法的实际增益幅度需看完整论文"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

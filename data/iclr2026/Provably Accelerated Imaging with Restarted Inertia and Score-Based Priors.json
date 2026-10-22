@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Provably Accelerated Imaging with Restarted Inertia and Score-Based Priors.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Provably Accelerated Imaging with Restarted Inertia and Score-Based Priors.pdf",
+ "title": "Provably Accelerated Imaging with Restarted Inertia and Score-Based Image Priors",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "重启惯性加速RED成像，收敛率提升有限，临床验证缺失",
+ "innovations": [
+  "提出RISP框架，将重启惯性技术与score-based图像先验结合，扩展RED方法",
+  "证明在非凸先验下RISP达到O(n^{-4/7})的驻点收敛率，优于RED的O(n^{-1/2})",
+  "推导了RISP对应的连续时间动力系统，建立与heavy-ball ODE的联系"
+ ],
+ "method_framework": "RISP在RED迭代框架中引入重启惯性项（momentum），通过周期性重启确保收敛性。提供梯度(RISP-GM)和邻近(RISP-Prox)两种实现，分析其作为heavy-ball ODE离散化的收敛性质。",
+ "experiment_framework": "在多个成像逆问题（如去模糊、超分辨率、MRI重建等）上对比RED基线，指标包括PSNR/SSIM和收敛迭代步数。",
+ "takeaways": [
+  "重启惯性可在非凸score先验下provably加速RED收敛",
+  "RISP-GM和RISP-Prox是heavy-ball ODE的两种离散化方式",
+  "实验验证RISP在多种成像任务上同时实现快速收敛和高质量重建"
+ ],
+ "weaknesses": [
+  "收敛率O(n^{-4/7})的改进幅度有限，相比O(n^{-1/2})并非数量级提升",
+  "重启策略的具体参数选择可能影响实际性能，文中未充分讨论鲁棒性",
+  "实验未涉及临床级医学影像验证，与医疗落地有距离"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "成像加速方法，可靠性主线边缘，无医疗落地验证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

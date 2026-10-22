@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/SwitchCraft_Training-Free Multi-Event Video Generation with Attention Controls.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SwitchCraft_Training-Free Multi-Event Video Generation with Attention Controls.pdf",
+ "title": "SwitchCraft Training-Free Multi-Event Video Generation with Attention Controls",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "训练-free多事件视频生成，通过注意力控制实现时间切换",
+ "innovations": [
+  "事件对齐查询转向(EAQS)机制",
+  "自动平衡强度求解器(ABSS)",
+  "无需训练的多事件视频生成"
+ ],
+ "method_framework": "基于扩散Transformer，通过修改跨注意力机制实现帧级注意力控制，使用锚标记识别事件，并在特定时间窗口内增强目标事件同时抑制竞争事件",
+ "experiment_framework": "60个多事件提示评估，对比MEVG、DiTCtrl、LongLive等基线，使用CLIP、VideoScore2、VBench等指标",
+ "takeaways": [
+  "早期去噪步骤和Transformer块进行转向控制足以建立场景布局",
+  "查询级别的修改而非注意力权重修改保留了预训练模型结构"
+ ],
+ "weaknesses": [
+  "依赖LLM提取事件锚标记",
+  "VBench中主体和背景一致性略低于基线模型",
+  "未提供消融实验对ABSS各组件的分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "纯视频生成，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scaling Knowledge Graph Construction through Synthetic Data Generation and Dis.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scaling Knowledge Graph Construction through Synthetic Data Generation and Dis.pdf",
+ "title": "Scaling Knowledge Graph Construction through Synthetic Data Generation and Distillation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "合成数据蒸馏小模型生成KG，但依赖强LLM且评测局限。",
+ "innovations": [
+  "提出多步合成数据管线SynthKG：系统分块→去语境化实体消歧→LLM抽取实体/关系/命题，合成文档-KG对，解决无本体文档级KG缺乏训练数据的问题。",
+  "将多步管线蒸馏为单步KG生成小模型Distill-SynthKG，在KG质量上超越比自身大8倍的基线，大幅降低大规模语料建图成本。",
+  "复用现有多跳QA数据集构造KG评测集与新指标(三元组覆盖的语义相似度/关键词)，并提出基于图谱结构的渐进式检索RAG框架。"
+ ],
+ "method_framework": "先用LLM把文档切成语义完整块并去语境化，抽取实体/关系/命题合成文档-KG对；再用这些配对小模型做监督微调得到单步生成器；下游用所建KG做命题检索→沿图扩展到相关三元组/命题/文本块的渐进检索。",
+ "experiment_framework": "在MuSiQue、2WikiMultiHopQA、HotpotQA等多跳QA数据集上评估KG质量、检索与QA；对比零/少样本LLM建图及多种KG-RAG基线，检验小模型蒸馏后是否超越更大模型。",
+ "takeaways": [
+  "文档级KG建图的瓶颈主要是高质量训练数据不足而非模型能力；合成数据蒸馏可让小模型一步生成高质量KG。",
+  "基于所建KG的图谱检索框架在多个多跳QA基准上优于已有KG-RAG方法。"
+ ],
+ "weaknesses": [
+  "依赖强LLM(GPT-4o类)做教师合成，合成质量上限受教师与去语境化步骤误差传播影响。",
+  "与医学影像/多模态主线关联弱，评测集中在英文文本多跳QA，对长文档跨块实体对齐的错误分析有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "文本KG构建与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Generalizable Sparse-View 3D Reconstruction from Unconstrained.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Generalizable Sparse-View 3D Reconstruction from Unconstrained.pdf",
+ "title": "Generalizable Sparse-View 3D Reconstruction from Unconstrained",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "稀疏视图3D重建，外观适配器与分割处理光照遮挡。",
+ "innovations": [
+  "外观适配器实现光照条件控制",
+  "语义分割处理动态物体",
+  "课程学习策略提升泛化能力",
+  "跨场景光照迁移"
+ ],
+ "method_framework": "基于VGGT变换器处理多视图图像，预测深度、相机参数和3D高斯，通过外观适配器调制颜色，结合分割网络处理遮挡，实现单次前向推理的3D重建。",
+ "experiment_framework": "在PhotoTourism和MegaScenes数据集评估，与WildGaussians、NexusSplats等优化方法及AnySplat等前向方法对比，使用PSNR、SSIM、LPIPS指标。",
+ "takeaways": [
+  "课程学习策略提升复杂场景训练稳定性",
+  "外观与几何解耦实现跨场景光照迁移",
+  "预训练分割网络提供遮挡先验"
+ ],
+ "weaknesses": [
+  "依赖预训练分割网络，可能限制泛化能力",
+  "仅使用合成数据进行遮挡训练，真实场景泛化需验证",
+  "未讨论计算资源需求与实际部署可行性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D重建与可靠性主线无关，仅外观适配器设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

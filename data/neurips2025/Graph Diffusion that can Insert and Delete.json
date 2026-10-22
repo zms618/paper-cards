@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Graph Diffusion that can Insert and Delete.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Graph Diffusion that can Insert and Delete.pdf",
+ "title": "Graph Diffusion that can Insert and Delete",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.7
+ },
+ "one_line": "扩展图扩散支持动态节点增删，提升分子生成性能",
+ "innovations": [
+  "重新定义图扩散过程支持单调节点插入与删除",
+  "引入DEL和DEL*状态处理节点删除与恢复",
+  "设计辅助网络预测DEL*节点数量",
+  "提出广义后验概率处理节点激活时间"
+ ],
+ "method_framework": "GRIDDD通过修改前向和反向扩散过程，支持图大小的动态变化，使用DEL和DEL*状态处理节点删除，并通过辅助网络预测需要恢复的节点数量。",
+ "experiment_framework": "在QM9和ZINC-250k数据集上评估属性靶向和分子优化任务，使用MAE、有效性、优化成功率等指标与基线模型比较。",
+ "takeaways": [
+  "图扩散模型可以扩展支持动态图大小变化",
+  "DEL和DEL*状态设计巧妙解决节点删除与恢复问题",
+  "辅助网络有效预测需要恢复的节点数量"
+ ],
+ "weaknesses": [
+  "方法复杂度增加，需要训练多个组件",
+  "插入节点的初始状态仅从边际分布采样，可能不够精确",
+  "实验主要在分子数据集上进行，泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

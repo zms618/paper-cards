@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/On Understanding Attention-Based In-Context Learning for Categorical Data.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/On Understanding Attention-Based In-Context Learning for Categorical Data.pdf",
+ "title": "On Understanding Attention-Based In-Context Learning for Categorical Data",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "将注意力ICL建模为函数GD，推广到类别数据，但与真实LM机制关联不足",
+ "innovations": [
+  "把先前针对实值输出的函数GD-ICL框架推广到类别型(token)观测，更贴近真实语言数据",
+  "构造由自注意力层+交叉注意力层及跳连组成的注意力块网络，可精确实现多步函数GD的上下文推理",
+  "理论上推广了此前对注意力机制类别的假设；实证在合成数据、图像分类与语言生成上验证框架"
+ ],
+ "method_framework": "将Transformer对提示示例的推理建模为在隐函数上做函数空间GD；用自注意力聚合上下文、交叉注意力把梯度步作用到查询，跳连累积多步更新；类别输出经学习嵌入自然纳入GD视角。",
+ "experiment_framework": "理论给出注意力块精确实现多步GD的对应关系；在合成函数、上下文图像分类与受控语言建模数据集上验证框架与语言模型行为的一致性。",
+ "takeaways": [
+  "注意力ICL可被理解为函数空间中的多步梯度下降，类别型token也能纳入该视角",
+  "自注意力+交叉注意力+跳连的结构足以精确实现多步GD推理",
+  "把类别输出编码为学习嵌入可从GD视角自然推出，与真实LM机制研究相衔接"
+ ],
+ "weaknesses": [
+  "精确GD对应关系在特定注意力/结构设计下成立，标准预训练Transformer是否复现该动态未严格证明",
+  "语言生成实验依赖受控机制数据集，对开放域生成的解释力有限",
+  "与大规模真实ICL能力(少样本指令遵循)的定量挂钩不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

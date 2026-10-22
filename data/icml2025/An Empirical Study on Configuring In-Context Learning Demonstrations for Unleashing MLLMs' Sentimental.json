@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/An Empirical Study on Configuring In-Context Learning Demonstrations for Unleashing MLLMs' Sentimental.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/An Empirical Study on Configuring In-Context Learning Demonstrations for Unleashing MLLMs' Sentimental.pdf",
+ "title": "An Empirical Study on Configuring In-Context Learning Demonstrations for Unleashing MLLMs' Sentimental Perception Capability",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 5.5,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "ICL配置优化MLLM情感分析，但缺乏机制深度与泛化验证",
+ "innovations": [
+  "将 MSA 从零样本扩展到 ICL，系统覆盖示例检索、呈现、分布三要素并逐一优化",
+  "发现 MLLM 内在的情感预测偏差 (sentimental predictive bias) 并给出有效矫正策略",
+  "三策略互补组合，在六个 MSA 数据集上较零样本 +15.9%、较随机 ICL 基线 +11.2%"
+ ],
+ "method_framework": "以图文帖为输入做多模态情感极性分类。围绕 ICL 示例：按相关性检索演示样本、设计呈现方式（顺序/格式）、调配正负类分布平衡；并针对 MLLM 的情感预测偏差设计矫正提示/重加权策略，三者互补以逼近全监督性能。",
+ "experiment_framework": "在六个 MSA 数据集上对比 MLLM 零样本、随机 ICL、本文配置后 ICL 与全监督模型的平均准确率；消融三要素各自贡献，并验证情感预测偏差的矫正效果。",
+ "takeaways": [
+  "MLLM 本身具备情感感知能力，只是被零样本范式掩盖，合理 ICL 配置即可释放",
+  "示例的检索/呈现/分布三要素对 ICL 效果影响显著",
+  "MLLM 存在可被有效矫正的情感预测偏差"
+ ],
+ "weaknesses": [
+  "本质为 ICL 工程化实证研究，方法新颖性偏增量，缺乏机制层面的深入理论",
+  "提升主要来自示例配置而非模型本身，换 MLLM 或任务域后的泛化需另行验证",
+  "情感预测偏差的成因在前9页仅经验描述，未做因果/表示层面的分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "ICL配置优化情感分析，属于可靠性主线中的提示工程，但缺乏泛化验证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

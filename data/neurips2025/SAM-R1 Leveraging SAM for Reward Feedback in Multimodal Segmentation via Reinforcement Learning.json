@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/SAM-R1 Leveraging SAM for Reward Feedback in Multimodal Segmentation via Reinforcement Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/SAM-R1 Leveraging SAM for Reward Feedback in Multimodal Segmentation via Reinforcement Learning.pdf",
+ "title": "SAM-R1: Leveraging SAM for Reward Feedback in Multimodal Segmentation via Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "SAM-R1用SAM作为RL奖励提升多模态分割，但样本量小且变体分析不足",
+ "innovations": [
+  "将SAM直接集成到强化学习训练循环中作为奖励提供者",
+  "设计分层分段准确度奖励函数",
+  "改进GRPO算法采用非对称裁剪和令牌级损失归一化"
+ ],
+ "method_framework": "SAM-R1框架将多模态大模型与SAM结合，通过强化学习训练，利用SAM提供的IoU奖励信号优化模型推理能力，实现端到端的细粒度分割推理",
+ "experiment_framework": "在RefCOCOg(3k样本)、RefCOCO/RefCOCO+和ReasonSeg数据集上评估，使用cIoU和gIoU指标，与Seg-Zero等基线方法比较",
+ "takeaways": [
+  "将预训练模型集成到RL循环中作为奖励提供者可提升任务性能",
+  "分层奖励设计比固定阈值更能有效引导模型学习"
+ ],
+ "weaknesses": [
+  "仅使用3k训练样本，可能限制了模型在更复杂场景的表现",
+  "未充分探讨不同SAM变体对性能的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

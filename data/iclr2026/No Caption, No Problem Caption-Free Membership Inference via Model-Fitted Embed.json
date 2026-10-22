@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/No Caption, No Problem Caption-Free Membership Inference via Model-Fitted Embed.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/No Caption, No Problem Caption-Free Membership Inference via Model-Fitted Embed.pdf",
+ "title": "No Caption, No Problem: Caption-Free Membership Inference via Model-Fitted Embeddings",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.5
+ },
+ "one_line": "解决扩散模型成员推断需caption的不现实假设，但代理优化成本高且未量化效率。",
+ "innovations": [
+  "采用更现实的无caption威胁模型（仅有查询图像、无文本标注），弥补以往扩散MIA都假设可访问精确caption的缺陷。",
+  "提出模型拟合代理优化：对图像施加扰动并优化，构造落在目标模型无条件先验区域的代理样本。",
+  "提出代理驱动的嵌入提取：由代理得到模型拟合嵌入作为查询图的错配条件，放大成员样本与留出样本的条件损失差异。"
+ ],
+ "method_framework": "给定查询图，先做模型拟合代理优化——在图像上加扰动并优化，使代理落在成员样本学到的无条件先验区域；再由代理提取模型拟合嵌入，作为查询图的错配条件；利用成员样本对该条件的选择性敏感，放大条件去噪损失响应差异以区分成员/非成员。",
+ "experiment_framework": "在多个数据集与多个潜扩散模型上评测MIA准确率/AUC；MOFIT一致优于以往用VLM生成caption作条件的基线，并达到与依赖ground-truth caption的SOTA方法相竞争的性能；代码开源。",
+ "takeaways": [
+  "以往扩散MIA依赖精确caption的假设在现实（如人脸图像审计）中常不成立。",
+  "模型拟合的错配条件能在无caption情况下放大成员与非成员的损失可分性。",
+  "用VLM自动生成caption替代真实caption会显著削弱MIA，需专门的无caption方法。"
+ ],
+ "weaknesses": [
+  "代理优化需对每张查询图做额外优化，攻击查询成本较高，大规模审计效率未量化。",
+  "威胁模型仍假设白盒访问目标扩散模型与训练分布先验，对黑盒API场景不适用。",
+  "仅在标准公开数据集/模型上验证，对真实大规模生成服务与新型架构的迁移性未充分展示。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "成员推断方法直接服务于可靠性主线，且落地域为隐私鲁棒",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

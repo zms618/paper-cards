@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Neural Multi-Objective Combinatorial Opti-for Flexible Job Shop Scheduling Problems.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Neural Multi-Objective Combinatorial Opti-for Flexible Job Shop Scheduling Problems.pdf",
+ "title": "Neural Multi-Objective Combinatorial Optimization for Flexible Job Shop Scheduling Problems",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "条件网络+分解PPO求解多目标调度，但实验证据不足",
+ "innovations": [
+  "提出双条件注意力网络DCAN，将目标偏好与问题实例一并输入，学习对偏好自适应的调度策略。",
+  "基于分解把MOFJSP拆为不同偏好的子问题，用一个网络生成覆盖帕累托权衡的解。",
+  "定制基于分解的PPO，按多目标组合定义状态与奖励，用单一网络求解任意目标组合的一般MOFJSP。"
+ ],
+ "method_framework": "DCAN以问题实例与目标偏好向量为条件，通过自/交叉注意力编码机器与工序节点并输出构造策略；用定制的分解式PPO训练，状态与奖励基于不同目标组合；不同偏好对应的子问题共享同一网络参数，一次训练得到可生成帕累托前沿的策略。",
+ "experiment_framework": "在多类MOFJSP问题实例上评测，对比传统多目标优化方法（如NSGA-II、MOEA/D类）与以往NCO方法；报告优于传统方法且对不同问题类型泛化良好（具体数值表在所提取页之后）。",
+ "takeaways": [
+  "单一条件网络即可学习对目标偏好自适应的调度策略，避免为每个偏好训练独立策略。",
+  "分解式训练使NCO能从单目标扩展到多目标调度并生成帕累托解集。",
+  "相较需人工调参、扩展性差的进化算法，学习方法在运行时与泛化上有优势。"
+ ],
+ "weaknesses": [
+  "所提取页未给出具体超体积/反世代距离等多目标指标数值，改进幅度缺乏可核验证据。",
+  "性能依赖偏好向量的离散化覆盖，对未知偏好点的插值能力未系统验证。",
+  "主要在仿真调度实例验证，与半导体/铝加工等真实产线的噪声与动态扰动差距未讨论。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "调度优化与可靠性主线无实质交点，属常规优化问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/3D-Fixer Coarse-to-Fine In-place Completion for 3D Scenes from a Single.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/3D-Fixer Coarse-to-Fine In-place Completion for 3D Scenes from a Single.pdf",
+ "title": "3D-Fixer: Coarse-to-Fine In-place Completion for 3D Scenes from a Single Image",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4.0,
+  "overall": 5.1
+ },
+ "one_line": "用硬编码包围盒和合成数据做3D场景补全，真实场景评测受限",
+ "innovations": [
+  "提出 in-place completion 新范式替代显式 6DoF 配准：从几何基础模型得到的碎片点云 G_frag（含每个实例可见部分）直接当空间锚，条件化物体级生成先验，在原始位置补全完整资产，从而绕开 divide-and-conquer 路线耗时的位姿优化与配准误差累积",
+  "粗到细生成解耦「边界预测」与「细节生成」：先按碎片点云最小 AABB B_vis 取中心、边长放大 4 倍的保守包围盒 B_exp 做粗补全只求完整边界 B_full，再用 B_full 做精细几何生成；条件是深度比嵌入自注意力 + 全局特征交叉注意力的双支路（受 [65] 启发，对象支路冻结）",
+  "遮挡鲁棒训练 ORFA：以冻结的 TRELLIS（干净图条件）为教师、场景遮挡输入为学生的逐层对齐损失 L_AL=−E[sim(h^s,h)] 与 flow matching 损失双约束，抑制遮挡下可见点云→完整资产的一对多歧义导致的不稳定；纹理侧用 GAFP 把 MoGe v2 高分辨率 2D 特征投影到可见点云的 3D 体素坐标上做局部化纹理条件"
+ ],
+ "method_framework": "单图 I → 分割模型出实例 mask {M_i}、几何模型出碎片点云 G_frag → 每个实例并行三阶段：粗结构补全（在 B_exp 内预测 B_full）→ 精细形状细化（在 B_full 内出高分辨率几何）→ 遮挡感知 3D 上色器按 2D 视图对齐贴纹理；条件注入走 GAFP 投影 + 深度比自注意力 + 全局 token 交叉注意力，逐层注入 DiT。",
+ "experiment_framework": "在自造 ARSG-110K 上训练（180K+ 资产、110K 场景、5–20 资产/场景、30 视角共 300 万图，Blender Cycles 渲染）；评测 MIDI testset(3D-Front)、Gen3DSR testset、自建 100 场景 Toys4K testset、ScanNet 15 场景（MetaScenes 作 GT）；指标场景/物体级 CD 与 F-Score(0.1)、bbox IoU、推理时间，对比 10 个方法（MIDI、Gen3DSR、REPARO、DiffCAD 等）。",
+ "takeaways": [
+  "「用已估计的局部几何当锚点、避免全局位姿对齐」的思路可推广到任何需要先验补全又有观测约束的组合式生成任务",
+  "把尺度/边界预测与细节生成拆成两阶段，是处理遮挡导致边界不确定的通用课程设计",
+  "自建大规模带物体级 GT 的合成数据集（ARSG-110K）能显著拉动生成类方法的评测基准，值得作为长线投入"
+ ],
+ "weaknesses": [
+  "粗阶段保守包围盒被硬编码为「B_vis 中心、边长 4× 最大边」，这个 4 倍常数是纯启发式，正文在消融节前被截断，看不到该常数与遮挡率之间是否做过敏感性分析；遮挡越重 B_exp 越空、粗阶段噪声越大",
+  "唯一的真实场景评测是 ScanNet 15 场景且 GT 来自 MetaScenes，论文自己在数据集章节承认 MetaScenes 生成的资产仍有「轻微错位与形变」，因此 ScanNet 上 F-Score 50.19→61.58 的增益有多少来自真实几何、多少来自 GT 自身误差无法界定",
+  "主提升（自建测试集上 CD 0.801→0.159、F-Score 15.35→68.82）主要发生在与基线相同的程序化分布内，属同分布外推；且全部指标为单次运行且只在 MIDI/自建集上给了物体级指标，Gen3DSR 与 ScanNet 子集只有场景级两项",
+  "方法依赖 MoGe v2/SAM 等第三方几何与分割模型，正文未量化「几何估计误差 → 原位补全误差」的传递关系，模块级消融（GAFP/ORFA/粗到细各去掉一项）在可读取正文里无法核实"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3D场景补全与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TAPTRV3_Spatial and Temporal Context Foster Robust Tracking Of any Point In Long Video.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TAPTRV3_Spatial and Temporal Context Foster Robust Tracking Of any Point In Long Video.pdf",
+ "title": "TAPTRv3: Spatial and Temporal Context Foster Robust Tracking of any Point in Long Video",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.3
+ },
+ "one_line": "TAPTRv3通过时空上下文注意力改进长视频点跟踪，但框架创新有限。",
+ "innovations": [
+  "提出上下文感知交叉注意力（CCA），将空间上下文引入注意力机制，提升点级任务中注意力分数的质量",
+  "提出可见性感知长时序注意力（VLTA），在历史帧上进行时序注意力时考虑各帧的可见性，解决特征漂移问题",
+  "在不使用大规模额外内部数据的情况下，达到甚至超过使用额外数据训练方法的SOTA性能"
+ ],
+ "method_framework": "TAPTRv3基于DETR-like点跟踪框架。空间维度：CCA将目标点周围的空间上下文编码引入交叉注意力，使特征查询更准确。时间维度：VLTA在处理长视频时，对历史帧的注意力加权考虑各帧中点的可见性状态，避免不可见帧引入的噪声。两者结合提升长视频中目标点发生形变和遮挡时的跟踪鲁棒性。",
+ "experiment_framework": "在多个TAP基准数据集上评估；基线包括TAPTRv2、其他SOTA点跟踪方法以及使用大规模额外数据训练的方法；指标为轨迹精度（AJ）和可见性预测准确率。",
+ "takeaways": [
+  "空间上下文信息对点级特征查询有显著提升作用，标准注意力在点级任务上表现不佳",
+  "可见性感知的时序注意力有效缓解了RNN-like长时序建模中的特征漂移问题",
+  "长视频跟踪的主要挑战来自目标形变和遮挡，时空上下文是解决这些问题的关键"
+ ],
+ "weaknesses": [
+  "方法是对TAPTRv2的增量改进，核心框架仍为DETR-like，范式上的突破有限",
+  "实验主要在标准TAP基准上验证，极端长视频（数小时）的跟踪效果未知",
+  "与4D场景重建类方法的融合可能性未探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "时空上下文提升点跟踪鲁棒性，触及可靠性主线与视频落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

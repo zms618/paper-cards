@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/DUO_No Compromise to Accuracy Degradation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/DUO_No Compromise to Accuracy Degradation.pdf",
+ "title": "DUO: No Compromise to Accuracy Degradation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "双更新重叠技术实现梯度压缩，但理论局限且实验单一",
+ "innovations": [
+  "Fast-Slow Reduction算法递归校正压缩误差",
+  "通信与计算重叠策略最大化利用空闲周期",
+  "GPU内存桥技术优化梯度传输开销"
+ ],
+ "method_framework": "DUO结合Fast-Slow算法、通信重叠和内存优化，通过缓存高精度梯度并在计算空闲期进行异步ReduceScatter，实现无精度损失的梯度压缩",
+ "experiment_framework": "GPT模型(125M-6.7B)在Pile数据集上预训练，对比SDP4Bit基线，验证不同梯度压缩比特数下的验证损失",
+ "takeaways": [
+  "梯度压缩误差可通过递归校正机制有效缓解",
+  "系统级优化可完全隐藏额外通信开销"
+ ],
+ "weaknesses": [
+  "理论分析仅限于SGD优化器",
+  "实验主要关注语言模型，未验证多模态场景"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

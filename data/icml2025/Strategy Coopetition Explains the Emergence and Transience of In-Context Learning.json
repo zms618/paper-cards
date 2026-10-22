@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Strategy Coopetition Explains the Emergence and Transience of In-Context Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Strategy Coopetition Explains the Emergence and Transience of In-Context Learning.pdf",
+ "title": "Strategy Coopetition Explains the Emergence and Transience of In-Context Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.75
+ },
+ "one_line": "用极简模型解释ICL transient现象，但外推有限且与主线关联弱",
+ "innovations": [
+  "发现 ICL 消失后的渐近策略是权重内学习与上下文学习的混合——上下文约束的权重内学习（CIWL）",
+  "提出“策略竞合”：ICL 与 CIWL 既竞争又共享子电路而合作，ICL 无法独立快速涌现，须依赖 CIWL 的缓慢发展",
+  "给出复现这些涌现- transient-交替动力学的极简数学模型，并据此找到使 ICL 真正涌现且持久的设定"
+ ],
+ "method_framework": "在简化合成数据上用两层 attention-only transformer 复现 ICL transient 现象，用行为评估器刻画不同训练阶段占主导的学习策略；渐近分析定位到 CIWL，再通过子电路共享分析论证竞合，最后用极简数学模型复现策略循环动态。",
+ "experiment_framework": "受控合成设置（两层 attention-only transformer），用行为探针/评估器测量 ICL、IWL、CIWL 的相对强弱随训练步的变化；辅以数学模型的动力学仿真复现涌现与 transient。",
+ "takeaways": [
+  "ICL 的 transient 不是简单被 IWL 取代，而是与新出现的 CIWL 策略竞争后被替换",
+  "ICL 与 CIWL 共享子电路，故既竞争又合作——ICL 的涌现依赖 CIWL 同步缓慢发展",
+  "通过策略竞合模型可设计出让 ICL 真正持久的训练设定"
+ ],
+ "weaknesses": [
+  "与主线（鲁棒性/可信AI/医学影像/多模态推理）关联弱，属 transformer 机制可解释性",
+  "结论基于两层 attention-only 合成 toy 模型，向大规模预训练 LLM 外推的力度有限",
+  "缺少在真实 LLM 上对 CIWL/共享子电路的直接机制验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

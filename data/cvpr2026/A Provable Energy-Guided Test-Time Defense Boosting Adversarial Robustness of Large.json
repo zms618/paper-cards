@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/A Provable Energy-Guided Test-Time Defense Boosting Adversarial Robustness of Large.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Provable Energy-Guided Test-Time Defense Boosting Adversarial Robustness of Large.pdf",
+ "title": "A Provable Energy-Guided Test-Time Defense Boosting Adversarial Robustness of Large Vision-Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5,
+  "relevance": 8.0,
+  "overall": 6.5
+ },
+ "one_line": "将logits负logsumexp作为能量函数，在L2球内梯度下降净化对抗样本",
+ "innovations": [
+  "把判别式分类器的 softmax logits 直接当能量 E(x)=−logΣ_k exp(f_ω(x)_k)（式1），测试时在 ‖x'−x‖≤ε 的球内做 T 步梯度下降最小化它（式2），不必训练 EBM 或扩散等任何辅助生成模型就完成一类投影式净化",
+  "Theorem 4.1 证明二元分类器在「局部线性」+「真类/假类能量梯度范数比 C 足够大」下、ET3 变换必然把样本推回真类（C 下界含 exp(|r_x|)ε/‖g_yt‖，故 ε 越大前提越严；干净样本下 ε>0 即成立）；4.1 节还给出 [26] 的鲁棒两-layer ReLU 网满足假设的具体构造",
+  "防御与下游解耦：ET3 只在 CLIP 视觉编码器里优化单张图的扰动 z，优化完的视觉嵌入直接透传给 LLaVA 的投影层与生成链路（图2），一套防御同时提升图像描述与 VQA 的鲁棒性且几乎不增推理时延"
+ ],
+ "method_framework": "把分类器 logits 的负 LogSumExp 当能量函数；测试时在以 x 为心、半径 ε 的 L2 球内用 T 步梯度下降最小化该能量得到净化图；分类与零样本用 ImageNet-21K 代理标签下图像-文本相似度当 logits 计算能量；净化后的图只过 CLIP 视觉编码器，嵌入透传给 LVLM 下游任务。",
+ "experiment_framework": "15 个基准数据集；视觉编码器用 TeCoA、FARE 等鲁棒 CLIP 与 OpenAI CLIP；攻击为 AutoAttack 的 APGD-CE/APGD-DLR（100 步、εa=4/255），另设 defense-aware 自适应攻击；对比 TTC/TPT/C-TPT 等测试时防御；下游 LLaVA 做图像描述与 VQA。",
+ "takeaways": [
+  "方法极简是可复制性的关键：整个防御就是式2 的 T 步投影梯度下降，连一个可训练参数都没有，却能同时保护零样本分类、图像分类和 LVLM 三类场景",
+  "图2 的「跨模型转嫁」是全篇最实用的设计：ET3 只让 CLIP 编码器前传一次优化出的图像扰动，语言侧完全不动，因此同一个防御能顺着视觉嵌入一路护到 LLaVA 的多个下游任务",
+  "Remark 4.1 对理论边界的自省值得学：作者明确划出「二元 + 局部线性 + C 够大」的适用范围，并区分干净样本（ε>0 即成立、C 下界更松）与对抗样本（需更大 C）两种情形，而非把定理硬套到多元分类上"
+ ],
+ "weaknesses": [
+  "Theorem 4.1 只在二元分类器下成立且依赖局部线性与梯度范数比 C 两条假设，而 C 的下界是 exp(|r_x|)ε/‖g_yt‖ 这类随 ε 增大的量，等于攻击预算越大理论前提越苛刻；正文未把这个反向依赖讲清，也没有延伸到 ImageNet-1000 级多分类",
+  "Figure 3 只给了一张 C 与 logit margin 的正相关散点（1000 张图）来支撑定理前提，作者把相关性当成了假设成立的实证；且图中用的是 [26,87,53,54] 那类已被证明局部线性的鲁棒网，换到普通 OpenAI CLIP 上 C 是否同样大完全没有测",
+  "实验主表只用 AutoAttack 的 APGD-CE/APGD-DLR 在 εa=4/255 上跑，缺 PGD/CW/BB 等白盒强攻与 defense-aware 下的完整数字（正文只说 defense-aware 限于 LVLM 与分类器）；所有表均为单次点估计、无方差与显著性",
+  "ET3 本质是输入侧的投影式净化，与 adversarial purification 同构，却用同一张图的 logits 梯度自指地优化自身；正文声称「fewer steps 就够」，但干净精度随步数 T 的损失曲线、步长 ϑ 的消融在可见正文里读不到"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "能量函数净化对抗样本，提升LVLM鲁棒性，符合可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

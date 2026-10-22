@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Retrospective Sparse Attention for Efficient Long-Context Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Retrospective Sparse Attention for Efficient Long-Context Generation.pdf",
+ "title": "Retrospective Sparse Attention for Efficient Long-Context Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "轻量输出缓存回溯修正注意力，长生成精度提升但与可靠性主线关联弱",
+ "innovations": [
+  "提出回溯式KV缓存更新：用后续解码步新到的KV条目反向修正过去query的注意力输出，解决已有KV压缩只关注输入、忽略长解码累积误差的问题。",
+  "维护轻量输出缓存，让过去的query可被后续上下文持续补充，以极小延迟开销持续纠正先前近似。",
+  "打破固定注意力输出范式，实现对长生成近似误差的连续修正。"
+ ],
+ "method_framework": "在稀疏/压缩KV缓存下解码时，保留过去query的轻量输出缓存；当后续新KV到达时，回溯地把新信息补入旧query的注意力输出，从而在不重算整段注意力的前提下持续修正累积近似误差。",
+ "experiment_framework": "在长生成基准上评测；对比主流SOTA KV缓存压缩方法；报告有效KV曝光（最高1.6×）与准确率（最高+21.9%）及解码延迟开销。",
+ "takeaways": [
+  "长解码中的注意力误差会累积，回溯修正比只压缩输入侧KV更有效。",
+  "轻量输出缓存让稀疏注意力可在生成过程中持续自我纠正，兼顾显存与精度。"
+ ],
+ "weaknesses": [
+  "主要是推理效率/显存优化，与鲁棒性/不确定性等可靠性主线关系弱。",
+  "回溯修正引入额外缓存与调度复杂度，在极长序列上的显存/延迟代价需进一步权衡。",
+  "前9页为方法动机，具体基准与KV压缩基线的逐项对比表在后续页。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "长生成效率优化，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

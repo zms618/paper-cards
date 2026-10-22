@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/LUNA_Efficient and Topology-Agnostic Foundation Model for Eeg Signal Analysis.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/LUNA_Efficient and Topology-Agnostic Foundation Model for Eeg Signal Analysis.pdf",
+ "title": "LUNA: Efficient and Topology-Agnostic Foundation Model for EEG Signal Analysis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "拓扑不变EEG编码器提升跨电极泛化，但零样本高密度布局仍有挑战",
+ "innovations": [
+  "拓扑不变编码器：通过学习查询和交叉注意力将任意电极布局映射到固定潜在空间",
+  "线性通道复杂度：通过块级时间注意力解耦计算与电极数量关系",
+  "自监督预训练：在多样化电极配置的大规模EEG数据上训练，实现跨任务迁移"
+ ],
+ "method_framework": "LUNA采用编码器-解码器架构，通过通道统一模块将多通道EEG压缩为固定大小拓扑无关的潜在表示，下游transformer块在该潜在表示上操作，实现计算与电极数量解耦",
+ "experiment_framework": "数据集：TUEG和SIENA预训练(21,000小时)，TUAB/TUAR/TUSL/SEED-V下游评估；基线：LaBraM/CBraMod/EEGFormer等；指标：AUROC/AUC-PR/平衡准确率",
+ "takeaways": [
+  "查询机制实现拓扑不变性，同时保持计算效率",
+  "多模态特征提取(时域+频域)对EEG分析至关重要",
+  "自监督预训练可显著提升跨电极配置的泛化能力"
+ ],
+ "weaknesses": [
+  "在SEED-V上性能落后于CBraMod 2-3个百分点，零样本泛化到高密度布局仍有挑战",
+  "查询专业化损失对性能提升有限，可能增加不必要的复杂性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

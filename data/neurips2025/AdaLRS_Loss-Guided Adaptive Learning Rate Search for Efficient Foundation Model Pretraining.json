@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/AdaLRS_Loss-Guided Adaptive Learning Rate Search for Efficient Foundation Model Pretraining.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/AdaLRS_Loss-Guided Adaptive Learning Rate Search for Efficient Foundation Model Pretraining.pdf",
+ "title": "AdaLRS: Loss-Guided Adaptive Learning Rate Search for Efficient Foundation Model Pretraining",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "自适应学习率搜索算法，提升基础模型预训练效率。",
+ "innovations": [
+  "损失下降速度与训练损失的凸性共享最优学习率的理论证明",
+  "基于损失下降速度的自适应学习率搜索算法",
+  "单次运行内实现最优学习率近似"
+ ],
+ "method_framework": "AdaLRS通过监控损失曲线斜率，动态调整学习率，当损失斜率增加超过阈值时保留上调，否则下调，实现单次运行内最优学习率搜索。",
+ "experiment_framework": "在LLM(Qwen2.5-1.5B/7B)和VLM模型上测试，对比适当/过大/过小学习率下的训练损失和最终性能，使用训练损失、困惑度和下游任务评估。",
+ "takeaways": [
+  "损失下降速度可作为学习率优化的有效指标",
+  "自适应学习率调整可显著提升预训练效率",
+  "方法在不同模型规模和训练场景下具有良好泛化性"
+ ],
+ "weaknesses": [
+  "理论假设较强，实际优化状态差异可能影响效果",
+  "学习率调整过程中的不稳定波动",
+  "对初始学习率设置较为敏感"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

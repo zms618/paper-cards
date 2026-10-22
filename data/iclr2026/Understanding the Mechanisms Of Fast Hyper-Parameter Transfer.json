@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Understanding the Mechanisms Of Fast Hyper-Parameter Transfer.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Understanding the Mechanisms Of Fast Hyper-Parameter Transfer.pdf",
+ "title": "Understanding the Mechanisms of Fast Hyper-Parameter Transfer",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "µP不保证快速迁移，提出损失分解机制但缺乏严格证明",
+ "innovations": [
+  "建立分析快速超参迁移的概念框架，用最优HP与损失的收敛速率定义'快速迁移'并联系到compute-optimal网格搜索的有用性",
+  "给出合成例子：某些线性模型迁移有可证计算优势，但即使在µP下神经网络迁移也可能失败，说明µP不保证快速迁移",
+  "提出关键性质——损失分解为(i)宽度稳定分量(决定最优HP)与(ii)宽度敏感分量(持续降损但几乎不影响HP选择)，并在LLM预训练上实证该条件成立"
+ ],
+ "method_framework": "µP实证上支持宽度扩展时小模型网格搜索的最优HP直接迁移到大模型，但机制不清。本文从收敛速率定义快速迁移：最优HP随宽度收敛得比性能指标快得多。在合成线性/神经模型上量化这些速率，给出迁移有可证优势 vs 即使µP也失败的例子；进而提出损失分解猜想——优化轨迹分解后，最终损失=宽度稳定分量(决定最优HP)+宽度敏感分量(继续降损但不改HP)，这一条件解释了快速迁移，并用LLM预训练验证。",
+ "experiment_framework": "在合成线性/神经网络设置上可证分析迁移成功/失败的条件；在大规模LLM预训练上实证损失分解(宽度稳定 vs 宽度敏感分量)猜想是否成立。",
+ "takeaways": [
+  "快速超参迁移不是µP的自动保证，神经网络中存在即使µP也迁移失败的反例",
+  "快速迁移的关键机制是损失可分解为决定HP的宽度稳定分量与仅降损的宽度敏感分量",
+  "最优HP随宽度的收敛速率须快于性能指标收敛，迁移才渐近优于直接调参"
+ ],
+ "weaknesses": [
+  "属优化/scaling理论方向，与本主线(可靠性×多模态推理/医学影像)无直接关联",
+  "核心'损失分解'以conjecture形式提出，仅在LLM预训练上实证，未给出严格证明",
+  "合成反例多在线性模型，对深层Transformer何时/为何迁移失败的边界刻画仍有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.18,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "优化理论工作，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

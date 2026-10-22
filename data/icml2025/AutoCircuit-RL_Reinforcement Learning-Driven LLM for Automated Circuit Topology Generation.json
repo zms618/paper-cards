@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/AutoCircuit-RL_Reinforcement Learning-Driven LLM for Automated Circuit Topology Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/AutoCircuit-RL_Reinforcement Learning-Driven LLM for Automated Circuit Topology Generation.pdf",
+ "title": "AutoCircuit-RL: Reinforcement Learning-Driven LLM for Automated Circuit Topology Generation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "RL微调LLM生成电路拓扑，迭代适配提升质量",
+ "innovations": [
+  "将RL引入LLM做模拟电路拓扑综合，直接优化电路有效性与效率等多目标",
+  "设计迭代适配流程，把高质量生成结果的洞察反复反哺到RL精调模型",
+  "探索器件编码与网表结构表示以适配图结构电路生成"
+ ],
+ "method_framework": "LLM把器件(电感/MOSFET等)与节点作为图生成电路网表；以电路有效性与效率为奖励做RL精调；再迭代地把高质量拓扑样本/洞察加入下一轮RL精调，最终模型直接推理不再二次调参。",
+ "experiment_framework": "在模拟电路拓扑生成任务上评测；对比Prompt Tuning(Llama-2-13b/Flan-UL2-20b软提示)、Vanilla Fine-Tuning、Gumbel-Max多目标微调等基线；评估生成拓扑的有效性与效率。",
+ "takeaways": [
+  "RL精调比单纯监督/软提示微调更能产出有效且高效的电路拓扑",
+  "迭代适配高质量样本可进一步提升生成质量",
+  "多目标RL奖励能同时兼顾电路合法性与性能"
+ ],
+ "weaknesses": [
+  "与可靠性×医学影像/多模态推理主线无直接关联，属EDA/电路设计方向",
+  "生成有效性高度依赖SPICE级验证闭环，泛化到更复杂拓扑的证据有限",
+  "基线与任务规模披露有限，难以判断增益幅度"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "EDA/电路设计方向，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/SWE-Flow_Synthesizing Software Engineering Data in a Test-Driven Manner.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SWE-Flow_Synthesizing Software Engineering Data in a Test-Driven Manner.pdf",
+ "title": "SWE-Flow: Synthesizing Software Engineering Data in a Test-Driven Manner",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "TDD反向合成软件工程数据，依赖测试环境限制泛化性",
+ "innovations": [
+  "提出TDD反向数据合成范式：直接从单元测试自动推断增量开发步骤，摆脱对人工提交的issue/commit历史的依赖与清洗",
+  "构建运行时依赖图(RDG)：在测试执行期动态捕获函数调用关系，克服传统静态代码分析难以准确解析函数/变量依赖的问题",
+  "据RDG生成增量开发schedule，每步产出部分代码库+需求文档+参考diff三元组；合成16061训练实例并发布SWE-Flow-Bench"
+ ],
+ "method_framework": "给定带单元测试的GitHub项目与Docker环境，先执行测试构建RDG(节点为函数，边为运行时调用)，再据RDG生成从零逐步搭建代码库的开发schedule；每步剥离当前步骤被测核心函数的实现，形成不完整代码库，把对应单元测试转写为需求文档，并以完整/部分代码库diff作为参考答案(C,S,G,T)，所有任务均可由测试自动验证。",
+ "experiment_framework": "从真实开源GitHub项目合成16061训练与2020测试实例；微调Qwen2.5-Coder-32B-Instruct(128张H800、约2小时、Megatron-LM)；在SWE-Flow-Bench(Lite)上对比11个主流LLM，指标为单元测试执行Pass Rate，并为Agent评估定义效率值(Pass Rate/迭代数对数)。",
+ "takeaways": [
+  "在TDD式增量编码任务上，用SWE-Flow合成数据微调可显著提升开源模型表现",
+  "运行时(RDG)依赖捕获比静态分析更准确地刻画多文件、增量修改中的函数交互",
+  "数据自带可执行测试作为正确性反馈，可直接接入强化学习迭代优化"
+ ],
+ "weaknesses": [
+  "仅在单一基座Qwen2.5-Coder-32B上验证微调收益，缺乏跨模型族、跨尺寸的泛化证据",
+  "强依赖Docker复现项目环境与可运行单元测试，对无测试套件或环境复杂难复现的项目适用性受限",
+  "前9页未见与SWE-Bench等真实issue基准的系统对标，合成任务分布与真实bug修复间的差异未充分讨论；具体提升数值表在正文后段"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

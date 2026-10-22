@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Wasserstein Policy Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Wasserstein Policy Optimization.pdf",
+ "title": "Wasserstein Policy Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "Wasserstein梯度流投影到策略空间，结合DPG与随机策略优势",
+ "innovations": [
+  "首次将Wasserstein梯度流投影到参数化策略空间，推导出简单的闭式策略更新公式",
+  "WPO同时利用了动作值函数对动作的梯度（类似DPG）和随机策略的灵活性，无需重参数化技巧",
+  "在高维动作空间任务上学习速度优于现有SOTA方法，且随维度增加优势增大"
+ ],
+ "method_framework": "将策略优化视为策略空间上的Wasserstein梯度流。将非参数的梯度流投影到有限维参数空间（神经网络权重），得到闭式更新规则。该更新同时包含对均值（位置）和方差（形状）的调整，使得策略既能利用Q函数的动作梯度快速移动到高回报区域，又能保持探索性。以actor-critic框架实现，critic估计Q函数，actor用推导的闭式公式更新。",
+ "experiment_framework": "在DeepMind Control Suite连续控制任务上评估；在磁约束聚变控制任务上测试；与SAC、DDPG、PPO等主流连续控制方法对比；在可变维度任务上测试高维动作空间的 scalability。",
+ "takeaways": [
+  "Wasserstein梯度流为策略优化提供了统一的理论视角，自然地结合了DPG和经典策略梯度的优点",
+  "WPO无需重参数化技巧即可学习任意形式的随机策略，适用范围更广",
+  "在高维动作空间中WPO的学习效率优势明显，适合大规模连续控制问题"
+ ],
+ "weaknesses": [
+  "理论推导基于理想假设（完整Fisher信息矩阵等），实际实现做了大量近似，理论与实践的差距未充分分析",
+  "未在机器人操作等真实高维任务上验证",
+  "与最新的RL算法（如Diffusion Policy等）未对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

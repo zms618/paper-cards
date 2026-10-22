@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Co-Me Confidence Guided Token Merging for Visual Geometric Transformers.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Co-Me Confidence Guided Token Merging for Visual Geometric Transformers.pdf",
+ "title": "Co-Me Confidence Guided Token Merging for Visual Geometric Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "基于置信度的token合并加速视觉几何Transformer，但机制分析不足",
+ "innovations": [
+  "置信度蒸馏模块预测token重要性",
+  "基于置信度的选择性token合并策略",
+  "注意力偏置校正机制保持性能"
+ ],
+ "method_framework": "两阶段方法：首先从冻结的ViT模型蒸馏轻量级置信度预测器，然后在推理时使用置信度生成合并掩码，选择性合并低置信度token，并通过注意力偏置校正保持性能。",
+ "experiment_framework": "在NYUd-v2、ETH3D、DTU-MVS、KITTI等数据集上评估VGGT、π3、MapAnything等模型的深度估计、姿态估计和点云估计任务，使用L1、δ1.25、AUC等指标。",
+ "takeaways": [
+  "置信度信号可有效指示Transformer关注区域",
+  "token合并比剪枝更适合密集几何任务",
+  "工程优化对实际部署至关重要"
+ ],
+ "weaknesses": [
+  "置信度预测器可能无法捕捉所有重要几何信息",
+  "在不同数据集上性能提升不一致",
+  "依赖原始模型的置信度输出"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "token合并加速属于工程优化，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

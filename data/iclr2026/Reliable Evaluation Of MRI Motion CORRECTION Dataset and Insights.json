@@ -1,0 +1,41 @@
+{
+ "title": "Reliable Evaluation of MRI Motion Correction: Dataset and Insights",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "发布MRI运动校正数据集，揭示模拟评估高估性能、无参考偏爱过平滑。",
+ "innovations": [
+  "发布PMoC3D：含原始(未处理k空间)的配对运动损坏-无运动3D脑MRI数据(8名被试、三档运动严重度)，支持真实世界评估。",
+  "提出为评估运动重建训练的特征空间指标MoMRISim，使其与不同运动严重度下的人类判断对齐。",
+  "系统比较三类评估方法，给出可操作结论：真实配对数据+MoMRISim在中重度运动下最可靠，模拟运动系统性高估算法，无参考(VLM)评分偏爱过平滑、丢失解剖细节的输出。"
+ ],
+ "method_framework": "在PMoC3D上检验基于参考扫描的评估：比较像素空间(PSNR/SSIM)与特征空间(DreamSim/自训MoMRISim)指标与人类主观评分(PMAS)的相关性；同时评估模拟刚体运动评估与无参考(含VLM)评估的偏差，据此判断各评估范式的可靠性边界。",
+ "experiment_framework": "数据：PMoC3D(8被试×多档运动+无运动参考)；指标：PSNR/SSIM、DreamSim、MoMRISim、VLM无参考分、人类PMAS；对比多种深度学习与经典3D运动校正重建方法；分析在轻/中/重度运动下各指标与人类判断的相关性及系统性偏差。",
+ "takeaways": [
+  "基于参考的特征空间指标(如MoMRISim)与人类对运动伪影的判断最一致，优于PSNR/SSIM。",
+  "在严重模拟运动上近乎无误差的方法，在真实严重运动下仍有明显残留伪影——模拟评估会误导结论。",
+  "无参考VLM评分会偏好过平滑但丢失解剖细节的重建，不能单独作为医学影像质量依据。"
+ ],
+ "weaknesses": [
+  "样本量小(仅8名被试)，配对参考扫描本身在轻度运动下仍有残留伪影，参考可靠性受限。",
+  "评估结论针对MRI运动校正单一任务，向其他医学影像问题的推广需额外验证。",
+  "节选前9页未见完整的各方法-各指标-人类相关性数值表，MoMRISim相对DreamSim的增益幅度在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Reliable Evaluation Of MRI Motion CORRECTION Dataset and Insights.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reliable Evaluation Of MRI Motion CORRECTION Dataset and Insights.pdf",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像可靠性评估，解决真实评估痛点，可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

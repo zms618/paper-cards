@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Finding Wasserstein Ball Center Efficient Algorithm and The Applications in Fairness.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Finding Wasserstein Ball Center Efficient Algorithm and The Applications in Fairness.pdf",
+ "title": "Finding Wasserstein Ball Center: Efficient Algorithm and The Applications in Fairness",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.7
+ },
+ "one_line": "指出Wasserstein Barycenter对少数群体不公平，提出minmax形式的Wasserstein Ball Center。",
+ "innovations": [
+  "指出Wasserstein Barycenter(加权Fréchet均值)会让少数群体分布远离中心点,造成不公平",
+  "提出Wasserstein Ball Center(WBC):在最小Wasserstein距离内囊括所有输入分布的代表性分布,表述为minmax优化",
+  "给出WBC的高效求解算法,并展示其在公平性问题上的应用"
+ ],
+ "method_framework": "WB是使到各给定分布Wasserstein距离加权和最小的代表分布;但少数群体分布可能离WB很远。作者改为minmax目标WBC:找一个分布使其到所有输入分布的最大Wasserstein距离最小(即最小外接球心),从而不偏向多数分布,给出高效算法求解。",
+ "experiment_framework": "在公平性相关任务上验证;对照Wasserstein Barycenter等传统代表分布方法;指标为对少数/弱势群体分布的公平性(如最大距离、偏差)与求解效率。",
+ "takeaways": [
+  "WB的加权均值性质会系统性偏向多数分布而不利少数群体",
+  "minmax形式的WBC能为各分布提供更公平的代表",
+  "高效算法使WBC在实际公平性应用中可行"
+ ],
+ "weaknesses": [
+  "minmax目标对异常/离群分布敏感,鲁棒性需进一步讨论",
+  "主线为最优传输/公平性,与医学影像、多模态大模型推理主线不直接相关",
+  "公平性应用的真实大规模基准验证有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

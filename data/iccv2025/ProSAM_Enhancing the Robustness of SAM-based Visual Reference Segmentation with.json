@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/ProSAM_Enhancing the Robustness of SAM-based Visual Reference Segmentation with.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/ProSAM_Enhancing the Robustness of SAM-based Visual Reference Segmentation with.pdf",
+ "title": "ProSAM Enhancing the Robustness of SAM-based Visual Reference Segmentation with",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "变分提示编码器提升SAM鲁棒性，但应用验证不足",
+ "innovations": [
+  "识别现有SAM方法在目标区域边界生成提示导致的不稳定性问题",
+  "提出变分提示编码器预测多元提示分布，避免不稳定区域",
+  "使用重参数化技巧和t分布增强提示鲁棒性"
+ ],
+ "method_framework": "基于变分推断的提示编码器，预测多元t分布提示，训练时注入噪声并惩罚拉普拉斯，推理时使用均值提示引导SAM生成鲁棒掩码",
+ "experiment_framework": "Pascal-5i和COCO-20i数据集，与VRP-SAM等SOTA方法比较mIoU指标，评估不同视觉参考类型下的性能",
+ "takeaways": [
+  "变分推断可有效提升提示鲁棒性",
+  "方法简洁但有效，仅需添加少量线性层",
+  "关注提示稳定性而非仅掩码质量"
+ ],
+ "weaknesses": [
+  "仅评估了标准数据集，缺乏真实医学影像应用",
+  "变分推断增加了计算复杂度，虽然推理时保持效率"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "变分提示编码器提升SAM鲁棒性，符合可靠性主线但医学应用验证不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

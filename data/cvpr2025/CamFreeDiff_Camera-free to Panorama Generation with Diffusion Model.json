@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/CamFreeDiff_Camera-free to Panorama Generation with Diffusion Model.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/CamFreeDiff_Camera-free to Panorama Generation with Diffusion Model.pdf",
+ "title": "CamFreeDiff Camera-free to Panorama Generation with Diffusion Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "室内全景生成扩散模型，单应性估计实现多视图一致性",
+ "innovations": [
+  "首个处理未知相机参数的全景生成模型",
+  "3-DoF单应性矩阵参数化简化相机估计",
+  "新视图策略实现无缝多视图一致性"
+ ],
+ "method_framework": "基于稳定扩散模型，冻结U-Net块，通过MLP预测单应性矩阵，结合对应感知注意力实现多视图一致性",
+ "experiment_framework": "Matterport3D训练/Structured3D泛化测试，FID/IS/CLIP/PSNR指标，对比MVDiffusion/PanoDiffusion基线",
+ "takeaways": [
+  "单应性估计与扩散模型的可微分集成",
+  "新视图策略优于传统图像/潜空间解缠方法",
+  "冻结预训练模型保持泛化能力"
+ ],
+ "weaknesses": [
+  "仅处理室内场景，未测试复杂室外环境",
+  "单应性估计误差仍会影响最终生成质量",
+  "计算复杂度随邻域大小K增加"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "室内全景生成，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

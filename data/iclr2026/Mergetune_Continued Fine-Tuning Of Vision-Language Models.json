@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mergetune_Continued Fine-Tuning Of Vision-Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mergetune_Continued Fine-Tuning Of Vision-Language Models.pdf",
+ "title": "MergeTune: Continued Fine-Tuning of Vision-Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "MergeTune：基于线性连通性的VLM持续微调，恢复预训练知识。",
+ "innovations": [
+  "提出持续微调(CFT)新范式：在已适配模型之后恢复预训练知识",
+  "提出model-agnostic的MergeTune，基于线性模式连通性(LMC)做post-hoc合并",
+  "用二阶代理近似零样本模型约束，免除大规模数据回放"
+ ],
+ "method_framework": "给定已微调模型，继续微调其可训练参数(soft prompt/线性头)，搜索一个与零样本解和微调解都有低损路径的持续模型；用二阶代理近似零样本侧LMC约束，免数据回放，隐式合并两解。",
+ "experiment_framework": "在VLM分类的基到新泛化评测，对比CoOp等；调和均值+5.6%且不增参数；鲁棒微调评测中LMC合并模型以更低推理成本超过集成基线。",
+ "takeaways": [
+  "在已微调模型上继续微调可同时连通零样本与微调解，隐式合并恢复遗忘",
+  "免数据回放的二阶代理使LMC约束实用化",
+  "CFT在基到新泛化上提升调和均值且不增参数"
+ ],
+ "weaknesses": [
+  "relevance为VLM防遗忘/鲁棒，非医疗影像或多模态推理主线",
+  "LMC约束仅在特定损失景观成立，跨架构普适性待验证",
+  "二阶代理近似误差对结果的影响未充分分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "VLM防遗忘方法，非医疗或多模态推理主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

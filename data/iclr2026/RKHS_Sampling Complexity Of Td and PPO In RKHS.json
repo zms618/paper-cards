@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RKHS_Sampling Complexity Of Td and PPO In RKHS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RKHS_Sampling Complexity Of Td and PPO In RKHS.pdf",
+ "title": "Sampling Complexity of TD and PPO in RKHS",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "理论分析TD/PPO在RKHS的收敛，但实验简单且脱离现代RL主线",
+ "innovations": [
+  "提出核化梯度TD评价器，在RKHS中实现隐式预条件的几何收敛，避免三次矩阵求逆",
+  "设计KL正则化的近端策略更新，可在连续动作空间中实现，并显式量化每次迭代所需样本量以确保策略改进",
+  "提供非渐近实例自适应收敛率，依赖RKHS熵，统一表格/线性/Sobolev/高斯/NTK等多种核情形"
+ ],
+ "method_framework": "在RKHS中解耦策略评价和改进：(1)核化TD评价器利用单步状态-动作转移样本执行RKHS梯度更新，作为隐式预条件器实现几何收敛；(2)KL正则化自然梯度策略步通过指数化动作-价值函数实现连续状态-动作空间中的PPO/TRPO式近端更新。收敛率依赖RKHS熵，统一多种函数逼近情形。",
+ "experiment_framework": "理论分析为主，非渐近收敛界和采样规则推导；实验仅在CartPole、Acrobot、HalfCheetah等经典控制任务上验证理论对齐的训练调度和TD评价器吞吐量vs GAE基线。",
+ "takeaways": [
+  "PPO的近端更新和TD评价可在RKHS框架下获得统一的非渐近收敛保证",
+  "核梯度TD作为隐式预条件器可避免矩阵求逆，同时达到极小极大收敛率",
+  "近端更新的每轮样本量需按特定规则设置，才能保证k^{-1/2}最优随机优化收敛率"
+ ],
+ "weaknesses": [
+  "纯理论分析，实验仅在简单经典控制任务上验证趋势，与现代LLM RL（GRPO/RLVR）完全脱节",
+  "与可靠性/多模态推理/医学影像主线无关，应用场景局限于连续控制",
+  "RKHS方法在实际大规模RL中的可扩展性（核矩阵大小）未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "理论分析TD/PPO在RKHS的收敛，但实验简单且脱离现代RL主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

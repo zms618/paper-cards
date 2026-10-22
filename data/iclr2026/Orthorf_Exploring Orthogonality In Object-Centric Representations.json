@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Orthorf_Exploring Orthogonality In Object-Centric Representations.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Orthorf_Exploring Orthogonality In Object-Centric Representations.pdf",
+ "title": "OrthoRF: Exploring Orthogonality in Object-Centric Representations",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "正交约束改进旋转特征分组，但泛化性和对比不足",
+ "innovations": [
+  "提出OrthoRF：在旋转特征的方向空间中强制执行正交性，通过内积损失实现更锐利的相位对齐和更可靠的物体分组",
+  "消除了多数同步类方法所需的事后聚类步骤，正交方向直接对应独立物体",
+  "在遮挡场景下可恢复被遮挡物体部件，展示更强的遮挡下分组能力"
+ ],
+ "method_framework": "基于binding-by-synchrony原理，Rotating Features(RF)用复数特征的相位编码物体归属、幅值编码物体存在。OrthoRF通过内积损失强制不同物体的方向向量正交，并修改网络架构使每个物体路由到独立的正交隐轴上。这使得相位空间中物体间界限更清晰，重叠区域处理更可靠。",
+ "experiment_framework": "在无监督物体发现基准上评估，包括重叠物体、噪声和OOD测试场景。对比slot-based方法和其他synchrony-based方法。指标为物体发现质量和表征可解释性。",
+ "takeaways": [
+  "正交性是synchrony-based物体-centric学习的简单有效归纳偏置",
+  "OrthoRF在重叠物体、噪声和OOD测试中匹配或超越当前SOTA",
+  "正交方向空间消除了事后聚类需求，表征更可解释"
+ ],
+ "weaknesses": [
+  "正交性约束可能限制对物体数量动态变化场景的适应能力",
+  "实验主要在合成数据集上验证，对真实自然图像的泛化性未充分展示",
+  "与slot-based方法（如SA、SLATE）的全面对比和效率分析不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.55,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "旋转特征正交约束改进物体分组，但泛化性和对比不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

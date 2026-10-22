@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Anyattack Towards Large-scale Self-supervised Adversarial Attacks on Vision-language Models.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Anyattack Towards Large-scale Self-supervised Adversarial Attacks on Vision-language Models.pdf",
+ "title": "AnyAttack: Towards Large-scale Self-supervised Adversarial Attacks on Vision-language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 6.0,
+  "overall": 5.6
+ },
+ "one_line": "自监督噪声生成器预训练，实现跨VLM定向攻击",
+ "innovations": [
+  "把定向攻击的监督从「目标标签/目标图」改写为「无关随机图 + 原图特征对齐」：优化 min L(fs(δ+xr), fs(x)) s.t. xr≠x，使解码器 F 生成的噪声 δ 加到任意随机图 xr 上都被冻结的 CLIP ViT-B/32 编码成原图 x 的 embedding，从而绕开 AttackVLM 必须先用文本生成引导图的限制",
+  "K-augmentation：把噪声 δ 与原图 x 各复制 K=5 份、每小批只打乱原图顺序（噪声顺序不变），把每个 batch 的正负对数从 n 扩到 n(n-1) 且不增加实际 batch 显存；配合温度指数衰减 τ(t)=τ0exp(-λt)（τ0=1→τfinal=0.07, T=10000）的 InfoNCE 目标 LPre，在 LAION-400M 上预训练 52 万步",
+  "下游微调给出两套目标并配集成代理：检索任务用双向对比 LBi（z→z(adv) 与 z(adv)→z 两个方向的 softmax 交叉熵各半），一般任务用余弦对齐 LCos；再加 ViT-B/16(从头训) 与 ViT-L/14 EVA 两个辅助编码器组成 ensemble surrogate，COCO R@Mean 从 22.55(AnyAttack-Cos) 提到 35.88、SNLI-VE 分类 ASR 从 AnyAttack-Cos 17.5 提到 44.8"
+ ],
+ "method_framework": "冻结 CLIP ViT-B/32 编码原图得 z，解码器 F 生成噪声 δ；LAION-400M 上 InfoNCE 自监督预训练，下游以 LBi/LCos 微调；推理时 δ 叠到随机干净图 xr",
+ "experiment_framework": "MSCOCO/Flickr30K/SNLI-VE，5 个开源 VLM 与 4 个商用系统，检索/分类/描述三任务，主指标 ASR，扰动界 16/255",
+ "takeaways": [
+  "「把目标侧监督替换成同分布无关随机样本、只要求生成器输出在代理特征空间对齐原图」这一自监督改写，可迁移到任何「目标标签拿不到但需要跨模型迁移」的对抗/扰动生成场景",
+  "复制噪声、只打乱干净图顺序的 K-augmentation，是对比式目标里不涨显存地扩大负样本数的低成本技巧",
+  "「预训练一个噪声生成器 + 下游轻量微调」把攻击成本从「每张图迭代优化」变成「一次训练、全场复用」，这套 pretrain-finetune 范式可以用在其它跨模型对抗/扰动任务上"
+ ],
+ "weaknesses": [
+  "基线公平性存疑：SU 与 SASD-WS 原本是分类模型的对抗方法，且原论文用交叉熵，本文自行改成余弦损失/MSE 后再比；这三类基线 R@Mean 只有 0.83–1.14（AttackVLM）与 9.78–20.86（改造后 SU/SASD），与 AnyAttack 的 33–36 之间十数倍的差距，很大一部分来自 surrogate 与损失改写的设定差异而非方法本身",
+  "全文没有任何方差/显著性度量：所有表都是单次数值；商用 VLM 只取 MSCOCO 100 张、用 API 单次回答（ASR 31 vs 28 这类差）无从判断显著性；表 3 中 AnyAttack-Cos（17.5）竟然低于 SASD-WS-Cos/MSE（24.3/24.8），说明在弱 surrogate 设定下自监督目标反而不如目标监督",
+  "正文在 4.6 消融处截断：Scratch-Cos/Scratch-Bi/AnyAttack-Pre/AnyAttack-Cos 的对比图只抽到图例，预置训练 52 万步是否必需、K=5、τ0=1/τfinal=0.07 的选择依据、辅助编码器为什么用这两个模型，均无对应消融；主实验只覆盖 MSCOCO/Flickr30K/SNLI-VE，未测遮挡/噪声/分辨率等实际部署扰动"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "自监督对抗攻击方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

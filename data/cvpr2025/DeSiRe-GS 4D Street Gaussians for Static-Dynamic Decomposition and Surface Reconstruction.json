@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/DeSiRe-GS 4D Street Gaussians for Static-Dynamic Decomposition and Surface Reconstruction.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/DeSiRe-GS 4D Street Gaussians for Static-Dynamic Decomposition and Surface Reconstruction.pdf",
+ "title": "DeSiRe-GS 4D Street Gaussians for Static-Dynamic Decomposition and Surface Reconstruction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "两阶段高斯溅射实现动静分离，但依赖预训练特征增加复杂度",
+ "innovations": [
+  "基于3DGS无法重建动态区域的简单观察提取2D运动掩码",
+  "将2D运动信息蒸馏到全局高斯空间实现自监督动静分解",
+  "引入几何正则化和时空一致性提升表面重建质量"
+ ],
+ "method_framework": "两阶段优化：第一阶段提取2D运动掩码，第二阶段将运动信息映射到高斯空间，结合几何正则化和时空一致性实现高质量重建",
+ "experiment_framework": "Waymo和KITTI数据集，对比3DGS、PVG等方法，使用PSNR、SSIM、LPIPS等指标评估图像重建和新视角合成质量",
+ "takeaways": [
+  "利用3DGS在动态区域的重建缺陷提取运动信息",
+  "几何正则化（扁平化高斯、法线耦合、大高斯惩罚）提升表面重建质量",
+  "时空一致性约束解决稀疏视图导致的过拟合问题"
+ ],
+ "weaknesses": [
+  "方法依赖预训练特征提取器，增加了系统复杂性",
+  "两阶段优化增加了训练时间和计算成本",
+  "在极端动态场景下的表现未充分验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "3D重建技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

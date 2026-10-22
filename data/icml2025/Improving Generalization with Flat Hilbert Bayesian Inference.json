@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Improving Generalization with Flat Hilbert Bayesian Inference.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Improving Generalization with Flat Hilbert Bayesian Inference.pdf",
+ "title": "Improving Generalization with Flat Hilbert Bayesian Inference",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "将SAM与粒子贝叶斯结合于RKHS，提升泛化但计算开销大",
+ "innovations": [
+  "把平坦极小器（SAM）与粒子贝叶斯方法结合，提出平坦Hilbert贝叶斯推断FHBI",
+  "迭代两步：对抗函数扰动步与再生核Hilbert空间中的函数下降步",
+  "理论上将泛化结论从有限维欧氏空间推广到无限维函数空间"
+ ],
+ "method_framework": "在RKHS中维护函数粒子集；每步先做对抗函数扰动（寻找使损失升高的邻域函数），再做函数下降（沿粒子诱导的测度下降），等价于在函数空间中寻找平坦后验以提升泛化。",
+ "experiment_framework": "在VTAB-1K基准（19个跨域数据集）上与9种贝叶斯/变分/粒子方法对比；指标为分类精度，考察泛化与不确定性量化。",
+ "takeaways": [
+  "FHBI在VTAB-1K 19个数据集上以显著幅度超越9个基线",
+  "平坦极小化思想与贝叶斯后验结合可同时改善泛化与不确定性估计",
+  "函数空间理论为该方法的泛化优势提供了严格解释"
+ ],
+ "weaknesses": [
+  "RKHS函数操作与粒子集带来较高计算开销，大规模模型扩展性未充分验证",
+  "实验集中在VTAB视觉分类，对语言/多模态任务的收益待验证",
+  "对抗函数扰动步的具体实现与核选择对性能的敏感性缺乏系统消融"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

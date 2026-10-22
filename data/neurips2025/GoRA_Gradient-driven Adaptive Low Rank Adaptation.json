@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/GoRA_Gradient-driven Adaptive Low Rank Adaptation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/GoRA_Gradient-driven Adaptive Low Rank Adaptation.pdf",
+ "title": "GoRA: Gradient-driven Adaptive Low Rank Adaptation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "梯度驱动的自适应LoRA秩分配与初始化，提升有限但增加复杂度",
+ "innovations": [
+  "梯度驱动的自适应秩分配策略",
+  "基于伪逆的梯度压缩初始化方法",
+  "统一框架同时解决秩选择和初始化问题"
+ ],
+ "method_framework": "GoRA将LoRA视为梯度压缩器，利用预训练权重梯度评估重要性，自适应分配秩，并通过伪逆初始化B矩阵，使低秩适配器最优逼近梯度",
+ "experiment_framework": "在GLUE、数学推理、代码生成和图像分类任务上评估，与LoRA、AdaLoRA、LoRA-GA等基线比较，使用准确率、PASS@1等指标",
+ "takeaways": [
+  "梯度信息可有效评估权重重要性用于秩分配",
+  "伪逆初始化可提供更好的梯度压缩效果",
+  "自适应分配可在不增加参数情况下提升性能"
+ ],
+ "weaknesses": [
+  "依赖预计算的梯度，增加了预处理步骤",
+  "方法复杂度高于标准LoRA",
+  "在简单任务上提升相对有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

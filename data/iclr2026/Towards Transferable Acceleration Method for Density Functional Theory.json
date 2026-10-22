@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Transferable Acceleration Method for Density Functional Theory.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Transferable Acceleration Method for Density Functional Theory.pdf",
+ "title": "Towards a Transferable Acceleration Method for Density Functional Theory",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 5.0
+ },
+ "one_line": "用E(3)网络预测电子密度加速DFT，小分子训练迁移至大体系",
+ "innovations": [
+  "改用电子密度(在紧凑辅助基中)而非既有的Hamiltonian矩阵作为初始猜测预测目标，规避Hamiltonian数值难预测且不可迁移的缺陷",
+  "仅在最多20原子小分子上训练，即可在3倍大(至60原子)分子上平均减少33.3% SCF迭代，而基线Hamiltonian方法反而增加80%以上迭代或不收敛",
+  "展示对至多900原子体系(聚合物/多肽)无需重训即可加速，并发布SCFbench数据集与代码"
+ ],
+ "method_framework": "用E(3)-等变神经网络预测电子密度在紧凑辅助基表示下的系数，由其转换得到密度矩阵作为SCF初始猜测。选择电子密度作为可迁移目标以避开Hamiltonian的数值不稳定与不可迁移性，从而把小分子上学到的先验迁移到大体系。",
+ "experiment_framework": "以相对迭代数RIC(用ML初始猜测的SCF迭代数/默认初始猜测)为主指标；对比基于Hamiltonian(H)、密度矩阵(D)与本文电子密度(ρ)目标的方法；报告分布内/分布外、体系尺寸从10到900原子的扩展性；含聚合物与多肽体系。",
+ "takeaways": [
+  "预测电子密度比预测Hamiltonian具有强得多的跨尺寸可迁移性",
+  "小分子训练的模型可零样本加速到60原子甚至900原子体系，且RIC随体系尺寸近乎恒定",
+  "Hamiltonian类方法在大体系上不泛化甚至拖慢收敛，验证了目标选择的关键性"
+ ],
+ "weaknesses": [
+  "仅验证在SCF迭代数上的加速，未报告端到端墙钟时间与精度/收敛正确性的权衡",
+  "训练数据上限20原子，虽宣称可迁移到900原子，但超大体系上的稳健性案例相对有限",
+  "属计算化学/科学机器学习方向，与可靠性主线及医学影像、多模态推理落地域无关"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.43,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "计算化学方向，与可靠性主线及落地域无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

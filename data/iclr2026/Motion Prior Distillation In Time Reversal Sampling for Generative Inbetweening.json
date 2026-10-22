@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Motion Prior Distillation In Time Reversal Sampling for Generative Inbetweening.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Motion Prior Distillation In Time Reversal Sampling for Generative Inbetweening.pdf",
+ "title": "Motion Prior Distillation in Time Reversal Sampling for Generative Inbetweening",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 5.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.4
+ },
+ "one_line": "解决时间反转采样运动冲突的蒸馏方法，实验验证有限。",
+ "innovations": [
+  "识别时间反转采样中存在运动先验冲突的根本问题：正反向路径各自遵循自身条件帧的运动先验",
+  "提出运动先验蒸馏(MPD)方法，将前向路径的运动残差蒸馏到反向路径中",
+  "刻意避免对末端条件路径去噪，减少路径歧义，实现单路径设计的双向对齐"
+ ],
+ "method_framework": "在去噪早期步骤，将前向路径(起始帧条件)产生的运动残差蒸馏到反向路径中，使反向路径遵循前向路径的时间反转运动残差；避免直接对末端条件路径去噪以消除歧义，从而实现双向路径的运动对齐与时间连贯的中间帧生成。",
+ "experiment_framework": "在标准视频中间帧生成基准上定量评估，对比并行/序列式时间反转采样方法；同时开展用户研究评估复杂运动模式和大时间位移下的实际效果。",
+ "takeaways": [
+  "运动先验冲突是时间反转采样产生时间不连续和伪影的根本原因",
+  "MPD通过蒸馏前向运动残差到反向路径，有效解决双向路径对齐问题",
+  "MPD在定量指标和用户研究中均优于现有时间反转采样方法"
+ ],
+ "weaknesses": [
+  "仅在图像到视频扩散模型上验证，其他生成模型架构的适用性未探索",
+  "蒸馏过程的理论分析较浅，残差蒸馏的最优时机和强度缺乏严格推导",
+  "对大时间跨度中间帧生成的效果提升幅度未充分讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "视频生成方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Pi3_Permutation-Equivariant Visual Geometry Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Pi3_Permutation-Equivariant Visual Geometry Learning.pdf",
+ "title": "Pi3: Permutation-Equivariant Visual Geometry Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "置换等变前馈网络预测不变几何表示，多任务SoTA但依赖后处理对齐",
+ "innovations": [
+  "打破前馈重建依赖固定参考视图的惯例，提出全置换等变架构，无需指定参考帧。",
+  "预测仿射不变(affine-invariant)相机位姿与尺度不变局部点图，去除参考点带来的不稳定与失败。",
+  "单一前馈模型统一覆盖相机位姿估计、单目/视频深度估计与稠密点图重建，并取得SoTA。"
+ ],
+ "method_framework": "构建全置换等变的神经网络，对输入多视角图像的排列不敏感；在仿射/尺度不变的几何表示空间中预测相机位姿与逐点深度/点图，不锚定任何参考视图；从而任意输入顺序下结果一致且更稳定，推理一次前向完成几何重建。",
+ "experiment_framework": "在Co3Dv2、DTU、RealEstate10K、ScanNet、KITTI、Sintel、NYU-v2、ETH3D、7-Scenes等多数据集评测位姿/深度/点图任务；对比VGGT、FLARE、Fast3R等前馈几何方法；报告位姿误差、深度指标与点图精度，达到或超过SoTA。",
+ "takeaways": [
+  "去除固定参考视图的归纳偏置可同时提升稳定性与精度，对输入顺序天然鲁棒。",
+  "单一置换等变模型即可统一解决位姿、深度与稠密重建多任务。",
+  "在室内/室外/航拍/卡通等开放域图像上均能前馈重建。"
+ ],
+ "weaknesses": [
+  "仿射/尺度不变输出使得绝对尺度与全局位姿恢复依赖后处理对齐，不能直接给出度量重建。",
+  "前馈模型在极宽基线或大视角差场景下的几何一致性仍可能退化。",
+  "多视角输入数量对精度/显存的影响及最优输入数未在摘要层面充分讨论。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视觉几何重建与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

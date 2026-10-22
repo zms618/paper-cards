@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Graph Inverse Style Transfer for Counterfactual Explainability.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Graph Inverse Style Transfer for Counterfactual Explainability.pdf",
+ "title": "Graph Inverse Style Transfer for Counterfactual Explainability",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.9
+ },
+ "one_line": "回溯式谱风格迁移提升图反事实解释，但计算开销与适配性存疑",
+ "innovations": [
+  "首个将图反事实生成重构为回溯(backtracking)过程的框架GIST，区别于前向扰动方法",
+  "利用谱风格迁移：反事实在输入‘风格/全局谱’与反事实‘内容’间插值",
+  "回溯机制有效抑制越过预测器决策边界的overshooting，最小化输入与反事实的谱差异"
+ ],
+ "method_framework": "先随机生成一个越过决策边界的图Gε，再学习反向过程从Gε回溯到一个从未见过但仍位于反事实类的图G*；用Lstyle对齐原输入全局谱结构、用Lcont保持局部内容忠实，从而得到有效且结构合理的反事实解释。",
+ "experiment_framework": "在8个二分类/多分类图分类基准上评测；与前向扰动类反事实解释方法比较；指标为反事实有效性(validity)与忠实解释真实类别分布的程度；报告有效性+7.6%、忠实度+45.5%。",
+ "takeaways": [
+  "回溯式谱风格迁移比前向扰动更能产生结构合法、忠实的图反事实",
+  "对齐全局谱风格与保持局部内容是有效反事实的关键",
+  "方法显著抑制overshooting，缩小输入与反事实的结构差异"
+ ],
+ "weaknesses": [
+  "落地为通用图分类可解释性，非医学影像/多模态推理，主线相关性中等",
+  "依赖预测器边界与谱风格，对属性丰富/动态图的适配性未验证",
+  "回溯过程的计算开销与反事实多样性/稀疏性约束报告有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

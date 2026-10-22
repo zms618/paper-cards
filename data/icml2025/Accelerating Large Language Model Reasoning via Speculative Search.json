@@ -1,0 +1,41 @@
+{
+ "title": "Accelerating Large Language Model Reasoning via Speculative Search",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "投机式树搜索加速LLM推理，但草稿模型一致性限制难问题加速比。",
+ "innovations": [
+  "定位并量化树搜索式推理的瓶颈在于'思维(thought)生成'，其延迟随推理步数呈数量级增长",
+  "提出 SpecSearch 框架，将投机计算思想引入多分支思维树的扩展，减少对主干模型的重复串行调用",
+  "在保持推理精度的同时大幅压缩端到端推理延迟，拓宽树搜索推理的可用范围"
+ ],
+ "method_framework": "把思维树搜索中逐节点串行生成中间思维改为投机式并行扩展/验证：用小模型/草稿路径投机地生成多个候选思维，再由主干模型批量验证接受，类似投机解码但面向树搜索推理过程，从而把延迟从随步数线性甚至超线性增长压下来。",
+ "experiment_framework": "在数学/逻辑等推理基准上，对比 Beam Search、MCTS、CoT 等在不同推理步数下的准确率与端到端延迟，给出延迟-精度帕累托曲线，验证 SpecSearch 的加速比。",
+ "takeaways": [
+  "思维生成是树搜索式推理的主要延迟瓶颈，可通过投机式并行扩展缓解",
+  "SpecSearch 在相近精度下显著降低推理延迟",
+  "投机计算范式可从单序列解码推广到树搜索推理场景"
+ ],
+ "weaknesses": [
+  "投机接受率依赖草稿模型与主干模型一致性，难推理问题上加速比可能回落",
+  "前 9 页未见与其他推理加速(如早停/缓存)方法的正交组合与对比",
+  "多步长程推理下的显存/批量验证开销未充分报告"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Accelerating Large Language Model Reasoning via Speculative Search.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Accelerating Large Language Model Reasoning via Speculative Search.pdf",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM推理加速与可靠性主线无实质交点，仅为系统优化工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

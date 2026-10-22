@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Noise Hypernetworks Amortizing Test-Time Compute in Diffusion Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Noise Hypernetworks Amortizing Test-Time Compute in Diffusion Models.pdf",
+ "title": "Noise Hypernetworks: Amortizing Test-Time Compute in Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "噪声超网络将测试时优化转为训练，提升扩散模型效率",
+ "innovations": [
+  "提出噪声超网络框架，将测试时噪声优化转化为一次性训练",
+  "在噪声空间中设计可计算的KL散度目标函数，避免数据空间密度计算难题",
+  "使用LoRA实现参数高效的噪声调制网络，保持基模型不变"
+ ],
+ "method_framework": "通过学习一个轻量级噪声调制网络fϕ，将标准噪声转换为优化后的初始噪声，使固定生成器gθ产生符合奖励分布的输出，同时通过L2正则化保持与基分布的接近。",
+ "experiment_framework": "在SD-Turbo、SANA-Sprint和FLUX-Schnell上评估，使用红度奖励和人类偏好奖励模型，与直接LoRA微调和ReNO测试时优化对比。",
+ "takeaways": [
+  "噪声空间KL散度可近似为L2惩罚，使目标函数可计算",
+  "保持基模型不变而只优化初始噪声，可有效避免直接微调导致的分布偏移"
+ ],
+ "weaknesses": [
+  "理论分析依赖于Lipschitz常数小的假设，实际应用中可能受限",
+  "实验主要在文本到图像任务上验证，泛化到其他领域尚需探索"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "title": "UniVideo: Unified Understanding, Generation, and Editing for Videos",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "双流架构扩展图文统一模型到视频，但成本高且可靠性弱",
+ "innovations": [
+  "将统一理解-生成模型从图文扩展到视频域，采用 MLLM(视觉理解/文本生成)+MMDiT(视觉生成)的双流设计。",
+  "在单一多模态指令范式下统一并联合训练多类视频生成与编辑任务，保留 MLLM 原文本能力并维持视觉一致性。",
+  "实现两种泛化：任务组合(单条指令叠加编辑+风格迁移)、以及从大规模图像编辑数据零样本迁移到未训练的自由形式视频编辑；并支持 thinking 引导的生成。"
+ ],
+ "method_framework": "双流架构：MLLM 负责理解复杂多模态指令并保留文本生成能力，多模态 DiT 负责视觉生成；两者在统一多模态指令空间联合训练，MLLM 可在合成时解释复杂 prompt 引导 MMDiT(generation with thinking)，覆盖文/图生视频、in-context 生成与编辑。",
+ "experiment_framework": "在视觉理解、图像生成/编辑、文/图生视频、in-context 视频生成与编辑等任务上，与各任务专用 SOTA 基线对比，报告相应质量指标，并展示任务组合与图像→视频编辑迁移。",
+ "takeaways": [
+  "统一多模态建模此前主要停留在图文，视频域长期被单一文生视频任务占据。",
+  "双流设计能在统一框架下同时保持 MLLM 理解能力与 DiT 生成质量，并支持任务组合。",
+  "仅靠图像编辑数据即可迁移到未训练的自由形式视频编辑，说明统一训练带来跨任务迁移。"
+ ],
+ "weaknesses": [
+  "体量大、依赖大规模图像/视频编辑数据联合训练，训练成本与数据构成的可复现性不透明。",
+  "双流架构在理解与生成间的信息瓶颈/对齐机制、推理开销未充分分析。",
+  "属能力型统一模型，与可靠性/不确定性/幻觉抑制主线关系弱；仅在通用视频任务验证，未涉及医学影像；完整消融未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Un IVIDEO_Unified Understanding, GENERATION, and Editing for Videos.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Un IVIDEO_Unified Understanding, GENERATION, and Editing for Videos.pdf",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "视频生成模型与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

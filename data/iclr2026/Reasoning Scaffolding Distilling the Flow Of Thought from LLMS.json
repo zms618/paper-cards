@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Reasoning Scaffolding Distilling the Flow Of Thought from LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reasoning Scaffolding Distilling the Flow Of Thought from LLMS.pdf",
+ "title": "Reasoning Scaffolding: Distilling the Flow of Thought from LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.3
+ },
+ "one_line": "蒸馏LLM思维为离散信号序列作脚手架，提升小模型推理鲁棒性。",
+ "innovations": [
+  "提出Reasoning Scaffolding，主张蒸馏应转移思维的算法结构而非表面文本：把教师推理抽象为Contrast/Addition等离散可解释语义信号序列作为脚手架。",
+  "设计多任务目标：学生同时(1)预测下一个语义信号以预判推理流、(2)在给定信号条件下生成对应推理步，信号预测作为逻辑一致性的强正则。",
+  "提供从文本rationale中抽取并分类推理脚手架的原则化方法，并分析学生与教师逻辑表示更对齐。"
+ ],
+ "method_framework": "先把教师冗长CoT抽取为离散语义信号序列；训练学生小模型时用多任务目标：先预测下一语义信号以预判推理走向，再在信号条件下生成对应推理步，迫使其内化连贯推理的计算模式而非逐字模仿。",
+ "experiment_framework": "在GSM8K、StrategyQA等推理基准上对比SOTA推理蒸馏方法，报告准确率与逻辑一致性；并做学生-教师逻辑表示对齐的深入分析。",
+ "takeaways": [
+  "蒸馏算法化的思维流脚手架，比直接行为克隆文本CoT得到的学生在准确率与逻辑一致性上都更优，更像真正的推理者而非流利模仿者。",
+  "预测下一语义信号这一辅助任务能有效正则化逻辑连贯性，使学生在新问题上不易产生逻辑矛盾。"
+ ],
+ "weaknesses": [
+  "语义信号类别需人工定义/抽取，标注成本与信号体系的覆盖面在前9页未充分量化。",
+  "前9页未见完整准确率表与逻辑一致性指标明细，证据强度判断受限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "蒸馏思维脚手架提升小模型推理鲁棒性，符合可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

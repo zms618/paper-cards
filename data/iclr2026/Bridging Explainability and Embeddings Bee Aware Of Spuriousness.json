@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Bridging Explainability and Embeddings Bee Aware Of Spuriousness.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Bridging Explainability and Embeddings Bee Aware Of Spuriousness.pdf",
+ "title": "Bridging Explainability and Embeddings: Bee Aware of Spuriousness",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 6.7
+ },
+ "one_line": "通过权重空间分析检测多领域虚假相关，但修复策略缺失",
+ "innovations": [
+  "将虚假相关检测的视角从模型预测转向权重空间和嵌入几何，揭示传统评估管线中不可见的虚假特征",
+  "使用线性探针作为透明诊断透镜，揭示全微调后仍然存在且跨多种SOTA模型迁移的虚假特征",
+  "在视觉、语言、医学等多个领域验证，包括MIMIC-CXR医学笔记中的临床捷径（导致危险的假阴性）"
+ ],
+ "method_framework": "分析微调如何扰动预训练表示。在预训练嵌入空间中，通过线性探针诊断哪些概念特征是虚假相关的。比较微调前后权重空间的变化，识别那些虽然在最终预测中不明显但驱动模型决策的快捷特征。",
+ "experiment_framework": "覆盖多个数据集和领域：视觉（Waterbirds、CelebA、ImageNet-1k）、语言（CivilComments、MIMIC-CXR医学笔记）。多种嵌入族（CLIP、CLIP-DataComp.XL、mGTE、BLIP2、SigLIP2）。量化虚假概念对准确率的影响程度。",
+ "takeaways": [
+  "BEE能揭示从将ImageNet准确率降低95%的概念，到MIMIC-CXR中导致危险假阴性的临床捷径等多种虚假相关",
+  "许多虚假特征在全微调后仍然存在，且能跨不同模型迁移",
+  "权重空间分析比预测分析能发现更多隐藏的快捷特征"
+ ],
+ "weaknesses": [
+  "线性探针的诊断能力可能受限于探针本身的容量",
+  "需要预训练模型和微调模型的权重对比，对黑箱模型不适用",
+  "检测到虚假相关后的修复策略未深入讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学虚假相关检测直接关联可靠性主线与医疗落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

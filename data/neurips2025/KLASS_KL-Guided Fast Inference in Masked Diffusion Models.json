@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/KLASS_KL-Guided Fast Inference in Masked Diffusion Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/KLASS_KL-Guided Fast Inference in Masked Diffusion Models.pdf",
+ "title": "KLASS: KL-Guided Fast Inference in Masked Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "KL散度引导的并行解掩加速扩散模型推理，质量与速度平衡。",
+ "innovations": [
+  "基于KL散度的稳定性采样策略",
+  "结合置信度与KL散度的双阈值机制",
+  "无需额外训练的并行解码加速"
+ ],
+ "method_framework": "KLASS通过计算连续时间步间token级KL散度和置信度，识别稳定高预测概率的token进行并行解掩，加速推理同时保持质量。",
+ "experiment_framework": "在GSM8K、MATH、HumanEval、MBPP等推理基准，以及文本、图像、分子生成任务上评估，对比Top-k、置信度采样等基线。",
+ "takeaways": [
+  "KL散度作为预测稳定性的有效指标",
+  "双阈值机制优于单一置信度或KL阈值",
+  "并行解掩策略显著提升效率"
+ ],
+ "weaknesses": [
+  "KL计算虽轻量但仍增加额外开销",
+  "超参数选择可能因模型而异",
+  "理论分析与实践效果关联性需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

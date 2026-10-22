@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Serum Simple, Efficient, Robust, and Unifying Marking for Diffusion-Based Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Serum Simple, Efficient, Robust, and Unifying Marking for Diffusion-Based Generation.pdf",
+ "title": "SERUM: Simple, Efficient, Robust, and Unifying Marking for Diffusion-Based Image Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "简单水印噪声注入扩散初始噪声，轻量检测器识别，鲁棒性未充分验证。",
+ "innovations": [
+  "把唯一水印噪声直接加到扩散模型的初始生成噪声上，并训练轻量检测器在生成图像中直接识别签名，简化并统一既往方法",
+  "解耦架构天然支持多用户，嵌入个体化水印且相互干扰小",
+  "注入与检测都快、检测器训练开销低，对图像质量影响可忽略"
+ ],
+ "method_framework": "不在生成后改图像频域，而是在扩散反向前的初始潜噪声中加入用户专属水印模式；由于扩散过程会把这一噪声传播到输出图像，再训练一个轻量检测器直接从最终图像中读出该签名；解耦注入/检测使其天然支持多用户多水印。",
+ "experiment_framework": "以1% FPR下的TPR为核心指标，测试对各类图像增强与去水印攻击的鲁棒性；对比既往扩散专用水印方法，报告注入/检测速度、检测器训练成本与图像质量影响。",
+ "takeaways": [
+  "在多数场景下取得1% FPR下最高TPR",
+  "对任意图像增强与去水印攻击鲁棒，且几乎不损画质",
+  "解耦架构支持多用户个体化水印、相互干扰小"
+ ],
+ "weaknesses": [
+  "落地为AI生成内容来源标记/检测，与医学影像、多模态推理主线仅在'可信AI/可靠性'概念上沾边",
+  "'对任意攻击鲁棒'的强声明依赖所测攻击集合，面对自适应/未知攻击的安全性未做红队级验证",
+  "检测器为轻量但仍需训练，泛化到未见过的扩散模型族的能力未充分论证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.03,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "仅沾边可信AI概念，未触及医学或多模态推理主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

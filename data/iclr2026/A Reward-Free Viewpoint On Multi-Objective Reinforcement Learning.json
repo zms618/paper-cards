@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Reward-Free Viewpoint On Multi-Objective Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Reward-Free Viewpoint On Multi-Objective Reinforcement Learning.pdf",
+ "title": "A REWARD-FREE VIEWPOINT ON MULTI-OBJECTIVE REINFORCEMENT LEARNING",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "将RFRL引入MORL，但探索机制与实验证据不足",
+ "innovations": [
+  "给出 zλ = E[Bω(s,a)R(s,a)⊤]λ 只落在 dz×d 矩阵 H 的 d 维列空间内的推导，指出原 FB 从 N(0,Idz) 采样潜向量和只学 {zλ} 都会导致 z 覆盖极受限、探索不足",
+  "提出 PG-Explore：从回放缓冲采样 ns 条转场构造 mini-batch 估计ˆzλ = Σ_D Bω(s,a)r⊤λ/ns 并归一化为 z，使潜向量分布对齐 MORL 测试期真实遇到的奖励函数",
+  "在测度损失 L_M（后继测度上的 Bellman 残差）之外加辅助 Q 损失，直接用可观测的多目标奖励向量 r 而非原 FB 的伪奖励来训练前向/后向表示"
+ ],
+ "method_framework": "把 MORL 线性标量化视作 RFRL 特例，用 FB 分解 Q=Fθ(s,a,z)ᵀz；训练期以偏好引导的 mini-batch 潜向量ˆzλ 代替标准正态 z 作条件，同时在后继测度损失 L_M 之外加基于观测奖励向量 r 的辅助 Q 损失 L_Q 训练表示。",
+ "experiment_framework": "MO-Gymnasium 连续控制（Walker2d/Halfcheetah2d/Ant3d/Hopper3d/Humanoid2d/Humanoid5d，最多 5 目标）与离散任务；11 个基线、3M 步、5 个随机种子报均值与标准差，指标 UT/HV/ED，归一化后取中位数/IQM。",
+ "takeaways": [
+  "ED(ALG, MORL-FB) 在所有任务和所有基线上一致小于 0.5 且 ED(FB, MORL-FB) 近乎为零，说明成对胜率指标比单一 UT 更适合作为 MORL 主指标",
+  "训练只用标准基偏好与均匀偏好（Λtrain 仅 d+1 个）时 PD-MORL、Q-Pensieve 三种指标全面下滑而 MORL-FB 基本保持，说明解耦环境知识与奖励信息带来真实的偏好泛化",
+  "潜向量的 t-SNE 分布从原 FB 的单峰变成多峰，可作为「探索是否覆盖足够奖励函数族」的低成本诊断手段"
+ ],
+ "weaknesses": [
+  "第 9 页正文止于 Figure 4，Section 4.1 的消融被截断，无法核对 PG-Explore、mini-batch 辅助 z、辅助 Q 损失三个组件各自贡献是否齐备，也不能核对「vanilla FB 在 MORL 上失败」是否真的只由探索导致",
+  "PG-Explore 用 ns 条转场做 Monte-Carlo 估计ˆzλ，方差随 ns 下降、覆盖随 ns 收缩，但正文只在 Figure 1b 列了不同 batch size 的曲线，没有给出 ns、dz 与方差-覆盖率之间的选择依据或定量权衡",
+  "所有结论都建立在归一化后的 UT/HV/ED 上，ED 本质是成对胜率（恰好 0.5 即打平），而 ED 在 5 个种子下只报平均胜率，未见任何成对显著性检验；且归一化把单目标 SAC 专家钉为 100，绝对性能改善幅度无法从图中读出"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多目标强化学习与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

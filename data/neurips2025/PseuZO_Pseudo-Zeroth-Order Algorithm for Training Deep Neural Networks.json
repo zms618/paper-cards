@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/PseuZO_Pseudo-Zeroth-Order Algorithm for Training Deep Neural Networks.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/PseuZO_Pseudo-Zeroth-Order Algorithm for Training Deep Neural Networks.pdf",
+ "title": "PseuZO: Pseudo-Zeroth-Order Algorithm for Training Deep Neural Networks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "伪零阶优化提升大模型训练，但计算开销大且对超参敏感",
+ "innovations": [
+  "基于模型输出的Jacobian矩阵估计而非直接损失函数",
+  "指数移动平均降低Jacobian估计方差",
+  "滑动窗口技术减少内存开销"
+ ],
+ "method_framework": "PseuZO估计模型输出的Jacobian矩阵，结合损失函数的精确梯度，通过指数移动平均降低方差，并使用滑动窗口技术减少内存开销",
+ "experiment_framework": "在OPT-1.3B/6.7B模型上对比MeZO、MeZO-SVRG和HiZOO-L，涵盖分类、多选和生成任务，评估准确率和内存使用",
+ "takeaways": [
+  "利用复合目标函数的不对称可微性设计优化算法",
+  "滑动窗口技术实现与模型大小无关的内存开销",
+  "与PEFT技术兼容且性能更优"
+ ],
+ "weaknesses": [
+  "计算时间约为MeZO的两倍",
+  "对批大小和上下文长度更敏感",
+  "训练从 scratch 时表现不佳"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

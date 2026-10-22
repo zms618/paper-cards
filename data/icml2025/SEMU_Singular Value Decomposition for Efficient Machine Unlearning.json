@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/SEMU_Singular Value Decomposition for Efficient Machine Unlearning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SEMU_Singular Value Decomposition for Efficient Machine Unlearning.pdf",
+ "title": "SEMU: Singular Value Decomposition for Efficient Machine Unlearning",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "SVD参数修改实现无数据遗忘，但超参数敏感且机制分析不足",
+ "innovations": [
+  "利用SVD识别关键权重子空间，实现高效遗忘",
+  "提出无需剩余数据集的遗忘场景，解决隐私问题",
+  "通过梯度投影和SVD结合，最小化参数修改数量"
+ ],
+ "method_framework": "通过SVD分解梯度矩阵，识别关键权重子空间，仅修改少量参数实现遗忘，无需剩余数据集，保持模型性能。",
+ "experiment_framework": "在CIFAR-10/100图像分类和扩散模型生成任务上评估，对比FT、RL、GA、SalUn等方法，使用UA、RA、TA、MIA和FID指标。",
+ "takeaways": [
+  "SVD可有效识别关键权重子空间，实现高效遗忘",
+  "无需剩余数据集的遗忘方法对隐私保护有重要价值"
+ ],
+ "weaknesses": [
+  "超参数γ的选择可能影响性能",
+  "在生成任务中，交叉注意力层对γ值较为敏感"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

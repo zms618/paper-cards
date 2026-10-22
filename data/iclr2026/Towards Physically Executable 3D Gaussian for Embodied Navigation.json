@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Physically Executable 3D Gaussian for Embodied Navigation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Physically Executable 3D Gaussian for Embodied Navigation.pdf",
+ "title": "Towards Physically Executable 3D Gaussian for Embodied Navigation",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "将3D高斯泼溅升级为带物体标注的物理可执行导航环境",
+ "innovations": [
+  "针对3DGS缺乏细粒度语义与物理可执行性的问题，提出物体中心语义 grounding为3DGS加物体级标注",
+  "物理感知执行拼接：在3DGS中嵌入碰撞物体并构建丰富物理接口，使3DGS场景可用于真实导航交互",
+  "发布InteriorGS(1K带物体标注3DGS室内场景，>554k物体)与SAGE-Bench(首个3DGS-based VLN基准，2M轨迹-指令对)"
+ ],
+ "method_framework": "在photorealistic的3DGS表征上补两块：物体级细粒度语义标注(解决语义缺失)与碰撞体/物理接口(解决可执行性)，从而把3DGS从纯渲染场景变为可运行、可碰撞、带语义的具身导航环境，缩小sim-to-real差距。",
+ "experiment_framework": "在SAGE-Bench上评测VLN基线；报告VLN-CE Unseen任务上相对基线提升31%；分析3DGS场景数据更难收敛但泛化更强；对比VLN-CE/OVON/GOAT-Bench等连续导航基准的场景几何与因果指令覆盖。",
+ "takeaways": [
+  "3DGS场景更真实但更难收敛，却带来更强的泛化，在VLN-CE Unseen上提升基线31%",
+  "把碰撞体与物体语义补进3DGS后，其可作为可执行的具身导航环境",
+  "InteriorGS+SAGE-Bench为可泛化具身导航提供了新的数据与基准基础"
+ ],
+ "weaknesses": [
+  "3DGS场景难收敛，训练成本与稳定性问题在长horizon导航下是否加剧未充分讨论",
+  "可执行物理接口的真实性(碰撞精度)与真实机器人动力学的sim-to-real差距仍需真机验证",
+  "属具身导航/3DGS方向，与可靠性主线及医学影像、多模态推理落地域关联弱"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.33,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "具身导航与可靠性主线及落地域关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

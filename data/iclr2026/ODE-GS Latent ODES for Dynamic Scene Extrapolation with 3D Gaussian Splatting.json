@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/ODE-GS Latent ODES for Dynamic Scene Extrapolation with 3D Gaussian Splatting.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/ODE-GS Latent ODES for Dynamic Scene Extrapolation with 3D Gaussian Splatting.pdf",
+ "title": "ODE-GS: Latent ODEs for Dynamic Scene Extrapolation with 3D Gaussian Splatting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "结合3D高斯与潜ODE实现动态场景外推，但验证有限。",
+ "innovations": [
+  "把高斯参数轨迹建模为连续时间潜动态，替代时间条件形变网络，使模型能外推到观测时间窗之外。",
+  "两阶段设计：先学插值模型得到观测窗内准确高斯轨迹，再用Transformer编码器聚合历史轨迹为潜状态并由神经ODE演化。",
+  "通过数值积分在任意未来时间戳生成平滑、物理合理的未来高斯轨迹，支持任意时刻渲染。"
+ ],
+ "method_framework": "先在观测窗内训练插值模型生成准确的高斯参数轨迹；再训练Transformer编码器把多条历史轨迹聚合为初始潜状态，由潜变量神经ODE参数化其连续时间演化；推理时对未来时间区间做数值ODE积分得到未来高斯轨迹，从而外推渲染动态场景。",
+ "experiment_framework": "在D-NeRF、NVFi（合成）与HyperNeRF（真实）动态场景基准上评测外推任务，以PSNR/SSIM/LPIPS为指标；相较领先外推基线平均提升约21.4% PSNR、7.4% SSIM、30.5% LPIPS（摘要称总体提升约19.8%）。",
+ "takeaways": [
+  "用连续时间潜动态替代时间条件形变，可突破动态3D重建只能做窗内插值的限制。",
+  "神经常微分方程天然支持任意时刻采样，适合未来轨迹外推。",
+  "该范式对自动驾驶/机器人/AR等需要预测未来3D状态的场景有潜在价值。"
+ ],
+ "weaknesses": [
+  "仅在小规模合成与少量真实动态场景基准验证，复杂长时、多物体交互场景外推能力未验证。",
+  "两阶段训练流程繁琐，数值积分带来推理成本，效率与渲染帧率未充分报告。",
+  "与最新GaussianPrediction等直接条件历史运动方法的公平对比、失败模式分析不足。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "动态3D重建与可靠性主线无关，仅为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

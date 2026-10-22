@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scenestreamer_Continuous Scenario GENERATION As Next Token Group Prediction.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scenestreamer_Continuous Scenario GENERATION As Next Token Group Prediction.pdf",
+ "title": "SceneStreamer: Continuous Scenario Generation as Next Token Group Prediction",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "自回归token预测生成交通场景，但与主线关联弱且对比不足。",
+ "innovations": [
+  "将场景生成与运动预测统一为单一自回归token预测问题，在静态地图token之上逐step生成红绿灯、agent状态、agent运动三类token，取消了初始化与运动预测两阶段的割裂。",
+  "通过next-token group预测支持agent在开放场景中动态进入与退出，突破了以往模型agent数量在初始化时固定的限制，可进行无界长时域闭环仿真。",
+  "统一框架下游同时支持运动预测、从零整场景生成、场景加密（注入新agent）与为自动驾驶规划器做闭环训练等多种任务。"
+ ],
+ "method_framework": "在真实地图token之上，把动态场景组织成结构化离散token序列（红绿灯token、agent状态token、agent运动token），用一个transformer自回归模型按step逐组预测这些token，使新agent可随时被引入或退场，从而在无界时域上连续演化场景。",
+ "experiment_framework": "在真实交通数据集上训练，评估生成场景的真实性、多样性与适应性；并在生成场景中训练强化学习驾驶策略，对比log-replay等基线，检验策略的鲁棒性与泛化性。",
+ "takeaways": [
+  "统一自回归token预测能在无界时域内持续生成动态、多agent演化的交通场景。",
+  "在SceneStreamer生成场景中训练的RL策略相比基线获得更好的鲁棒性与泛化性，验证其作为高保真仿真环境的价值。"
+ ],
+ "weaknesses": [
+  "属于自动驾驶交通仿真方向，与本切片关注的可靠性×医学影像/多模态推理主线关联弱，落地域不匹配。",
+  "前9页内未充分展示与强闭环仿真基线的定量对比与长时域误差累积的量化分析。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "自动驾驶仿真与可靠性主线关联弱，落地域不匹配",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

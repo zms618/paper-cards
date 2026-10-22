@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Adapting While Learning Grounding LLMs for Scientific Problems with Tool Usage Adaptation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adapting While Learning Grounding LLMs for Scientific Problems with Tool Usage Adaptation.pdf",
+ "title": "Adapting While Learning: Grounding LLMs for Scientific Problems with Tool Usage Adaptation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.3
+ },
+ "one_line": "两阶段微调让LLM内化科学知识并自适应工具调用",
+ "innovations": [
+  "提出WKL组件：训练LLM不使用工具直接生成由工具交互得到的解决方案，实现科学知识的内化",
+  "提出TUA组件：根据模型无工具回答的准确率将问题分为易/难，训练模型对易题直接作答、对难题调用工具",
+  "扩展到开放式问题：通过DPO偏好优化排序多个工具生成的候选方案"
+ ],
+ "method_framework": "流程：(1)数据生成——用LLM+工具交互为每个科学问题生成带工具轨迹的解决方案；(2)WKL阶段——用无工具prompt微调模型，使其直接输出工具生成的答案（内化知识）；(3)TUA阶段——根据模型直接回答的准确率分类问题难度，易题保持直接推理目标，难题改为工具轨迹目标；(4)组合损失统一优化两个组件。开放式问题额外用DPO排序多个候选解。",
+ "experiment_framework": "6个科学基准数据集：Mujoco物理仿真、PDE偏微分方程、Climate气候科学、Epidemiology流行病学、MATH数学、SciBench。基线：Llama-3.1-8B-Instruct（直接/强制工具）、GPT-4o、GPT-4o-mini、Claude-3.5-Sonnet、Llama-3.1-70B。指标：答案准确率、工具使用准确率。",
+ "takeaways": [
+  "AWL后训练的8B模型平均答案准确率比基础模型提升29.11%，工具使用准确率提升12.72%",
+  "在自建的Climate和Epidemiology数据集上，AWL模型超过GPT-4o和Claude-3.5",
+  "工具使用准确率从随机水平的~50%提升至63.93%，实现了基于问题难度的自适应工具调用"
+ ],
+ "weaknesses": [
+  "仅在Llama-3.1-8B上验证，更大规模模型或不同架构的效果未验证",
+  "问题难度二分类（易/难）较粗糙，多级难度自适应未探索",
+  "工具使用准确率63.93%仍有较大提升空间，尤其是难题的工具调用决策"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "工具自适应与科学问题解决可靠性交点，方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

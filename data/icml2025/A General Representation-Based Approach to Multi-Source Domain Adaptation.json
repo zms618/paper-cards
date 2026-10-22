@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/A General Representation-Based Approach to Multi-Source Domain Adaptation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/A General Representation-Based Approach to Multi-Source Domain Adaptation.pdf",
+ "title": "A General Representation-Based Approach to Multi-Source Domain Adaptation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "分解标签马尔可夫毯的域适应框架，放宽假设但依赖因果结构",
+ "innovations": [
+  "指出用全部预测信息（标签马尔可夫毯）学表示在一般设定下常欠定",
+  "将标签马尔可夫毯分解为父母、子女、配偶三部分，据此设计更一般的域适应表示",
+  "放松已有方法对独立隐变量/不变标签分布的可识别假设，扩大适用面"
+ ],
+ "method_framework": "在无监督多源域适应中，仅凭目标边缘分布PXτ无法确定目标联合PX,Yτ；借助结构因果模型，把标签Y的马尔可夫毯表示按父母、子女、配偶划分，分别处理与预测任务相关的分布偏移，学习紧凑隐表示以捕捉这些偏移，从而在较弱假设下识别并迁移到目标域。",
+ "experiment_framework": "在多源域适应基准（含图像等高维数据）上评测；对比协变量偏移、不变风险最小化等现有表示方法，以目标域分类精度为指标；检验放松可识别假设后的泛化与迁移效果。",
+ "takeaways": [
+  "一般域适应可通过划分马尔可夫毯的父母/子女/配偶实现，无需强可识别假设",
+  "仅靠全部预测信息学表示在一般设定下是欠定的",
+  "该框架回答了域适应中究竟应学与迁移什么表示的根本问题"
+ ],
+ "weaknesses": [
+  "马尔可夫结构需已知或可估，因果图错误时方法可能失效",
+  "放松假设后可识别性边界与样本效率的理论刻画不够紧",
+  "图像等高维数据上的因果发现本身困难，实际落地需较强先验"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "域适应方法与可靠性主线有交点但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

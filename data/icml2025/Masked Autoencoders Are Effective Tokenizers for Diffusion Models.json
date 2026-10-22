@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Masked Autoencoders Are Effective Tokenizers for Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Masked Autoencoders Are Effective Tokenizers for Diffusion Models.pdf",
+ "title": "Masked Autoencoders Are Effective Tokenizers for Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "MAE-Tok用掩码自编码器提升扩散模型生成质量，但ImageNet外泛化未知。",
+ "innovations": [
+  "揭示潜空间结构（GMM模式数）与扩散模型性能的理论联系",
+  "提出MAE-Tok方法，利用掩码建模学习判别性潜空间",
+  "发现变分形式对扩散模型非必要，纯AE即可实现SOTA性能"
+ ],
+ "method_framework": "基于ViT的1D自编码器，通过掩码建模学习判别性潜表示，结合辅助浅层解码器预测多种特征，最后仅微调像素解码器保持重建保真度。",
+ "experiment_framework": "ImageNet 256/512分辨率，对比AE/VAE/VAVAE，评估rFID/gFID/IS指标，分析GMM模式数与扩散损失关系。",
+ "takeaways": [
+  "潜空间结构比变分约束对扩散模型更重要",
+  "掩码建模可分离编码器的判别能力与解码器的重建保真度",
+  "高线性探测准确率预示更好的生成性能"
+ ],
+ "weaknesses": [
+  "仅评估ImageNet数据集，缺乏多模态或医学影像验证",
+  "未充分分析计算效率提升的具体来源"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

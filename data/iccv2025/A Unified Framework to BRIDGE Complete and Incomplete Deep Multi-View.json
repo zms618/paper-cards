@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/A Unified Framework to BRIDGE Complete and Incomplete Deep Multi-View.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Unified Framework to BRIDGE Complete and Incomplete Deep Multi-View.pdf",
+ "title": "A Unified Framework to BRIDGE Complete and Incomplete Deep Multi-View Clustering under Non-IID Missing Patterns",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 7.0,
+  "overall": 6.0
+ },
+ "one_line": "模块化框架处理多视图聚类，但Non-IID鲁棒性证据不足",
+ "innovations": [
+  "两阶段解耦设计：完整数据上以视专属自编码器加重建损失训练，互信息、对比、KL 三类交互目标作为可插拔模块接入，同一骨干即可派生多种 IMVC 变体",
+  "把完整/不完整特征视作源域与目标域，在填补阶段引入 GRL 域对抗训练（k-means 伪标签分类器 L_cls 加 γ·L_adv），显式缓解 Non-IID 缺失带来的分布偏移",
+  "视内视间双路填补：视间用 Θ(m→1) 跨视回归预测，视内按预测标签取自同簇 H_C 特征的加权均值聚合，两者以 λ 融合后拼成统一特征矩阵做 k-means"
+ ],
+ "method_framework": "完整数据上用视专属自编码器加重建损失训练，并插拔任一多视图交互目标；第二阶段以 GRL 域对抗对齐完整与不完整特征分布；再用跨视回归与同簇均值做视内视间填补，拼接后 k-means 聚类。",
+ "experiment_framework": "八数据集（BDGP 至 NUSWIDE），缺失率 0.3/0.5/0.7，10 个 DIMVC 基线；指标 ACC/NMI/ARI/PUR 及自提 FCR，另有 Non-IID 场景对照。",
+ "takeaways": [
+  "把不完整建模拆成“先在完整数据训好再迁移填补”的两阶段，可让既有 DMVC 代码几乎零改造转成 IMVC 解法",
+  "FCR（最终 ACC 与完整数据 ACC 之比）这类相对化指标值得推广到其他缺失鲁棒性评测，避免强编码器掩盖后处理模块失效"
+ ],
+ "weaknesses": [
+  "Non-IID 的鲁棒性只靠 Figure 3 两组对照（类数量失衡、加随机噪声）证明，缺不同噪声强度/失衡比例的连续曲线，也未对结构化缺失做任何建模",
+  "Tables 1-2 只有 ACC 点估计，无标准差与多次运行；除 BRIDGE+MI 外所有数均以相对提升呈现，基线离散度不可见，无法判断提升是否显著",
+  "域对抗权重 γ、视内视间融合系数 λ、嵌入维度 d_m 等超参未见敏感性分析，且正文止于 §3.2，消融实验与非 IID 完整结果均不可见"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "多视图聚类中的Non-IID缺失处理与可靠性主线相关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

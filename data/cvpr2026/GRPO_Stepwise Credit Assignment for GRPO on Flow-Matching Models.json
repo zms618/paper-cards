@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/GRPO_Stepwise Credit Assignment for GRPO on Flow-Matching Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/GRPO_Stepwise Credit Assignment for GRPO on Flow-Matching Models.pdf",
+ "title": "Stepwise Credit Assignment for GRPO on Flow-Matching Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "步进奖励分配提升流匹配GRPO样本效率，但计算开销高且验证不足。",
+ "innovations": [
+  "步进奖励分配机制，基于每步奖励改进而非仅最终结果",
+  "使用Tweedie公式估计中间状态奖励",
+  "引入DDIM风格SDE提升样本质量",
+  "增益归一化保留时间结构"
+ ],
+ "method_framework": "通过计算每步奖励增益gt = rt→1 - rt替代传统统一信用分配，结合Tweedie公式估计中间状态，使用联合归一化保持时间结构，并引入改进SDE提升样本质量。",
+ "experiment_framework": "在PickScore和GenEval数据集上评估，使用PickScore、ImageReward和UnifiedReward作为奖励函数，比较样本效率和墙钟时间效率，分析不同类别性能。",
+ "takeaways": [
+  "步进信用分配能更好捕捉扩散过程的层次结构",
+  "增益归一化策略保留早期步骤的重要性",
+  "改进SDE与步进信用分配互补提升性能"
+ ],
+ "weaknesses": [
+  "中间状态估计增加计算开销",
+  "未验证奖励函数的子模性假设",
+  "仅评估文本到图像生成任务"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "步进奖励分配与可靠性主线无实质交点，仅属常规强化学习改进",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

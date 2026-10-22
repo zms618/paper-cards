@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/GPO_Learning from Critical Steps to Improve LLM Reasoning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/GPO_Learning from Critical Steps to Improve LLM Reasoning.pdf",
+ "title": "GPO: Learning from Critical Steps to Improve LLM Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "GPO通过识别关键步骤并重置策略提升LLM推理，但计算成本高且任务差异分析不足。",
+ "innovations": [
+  "提出关键步骤识别机制，通过优势函数定位推理轨迹中的关键点",
+  "设计重置策略，在关键步骤处生成新轨迹并优先学习",
+  "提供理论分析，证明GPO可降低在线学习的遗憾界限并等价于优势加权的RL"
+ ],
+ "method_framework": "GPO首先通过优势函数识别推理轨迹中的关键步骤，然后在关键步骤处重置策略并生成新轨迹，最后通过在线策略梯度(如PPO)或离线偏好优化(如DPO)方法优先学习这些关键步骤。",
+ "experiment_framework": "在7个数据集(BBH、MATH、GSM8K、MMLU、MMLUPro、AIME-2024、AIME-2025)上测试，对比PPO、DPO、KTO、SimPO、ORPO等5种优化算法，使用准确率作为评估指标。",
+ "takeaways": [
+  "关键步骤识别机制可有效提升多步推理性能，优于随机重置策略",
+  "GPO框架可集成到多种优化方法中，具有通用性和可扩展性"
+ ],
+ "weaknesses": [
+  "优势函数估计依赖蒙特卡洛模拟，计算成本较高",
+  "未充分探讨关键步骤识别在不同任务类型上的差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

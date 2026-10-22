@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Stork Faster Diffusion and Flow Matching Sampling By Resolving both Stiffness and Structure-Dependence.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Stork Faster Diffusion and Flow Matching Sampling By Resolving both Stiffness and Structure-Dependence.pdf",
+ "title": "STORK: Faster Diffusion and Flow Matching Sampling by Resolving both Stiffness and Structure-Dependence",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "STORK：无训练采样器解决扩散ODE刚性与结构依赖问题",
+ "innovations": [
+  "提出STORK（Stabilized Taylor Orthogonal Runge-Kutta）采样器，基于稳定化Runge-Kutta方法设计",
+  "同时解决两个关键挑战：ODE刚性（速度场非直线性）和半线性结构依赖（不依赖扩散模型的特定ODE形式）",
+  "适用于噪声扩散模型和流匹配模型两类生成范式，无需额外近似步骤即可直接应用"
+ ],
+ "method_framework": "将扩散/流匹配采样视为求解ODE，采用稳定化Runge-Kutta(SRK)方法的设计思路：(1)正交Taylor展开处理速度场的非线性弯曲（刚性问题）；(2)不假设半线性结构，直接在通用ODE形式上构建高阶格式。通过这两个设计，STORK在少函数评估次数下获得更高精度，同时保持对不同生成模型范式的通用性。",
+ "experiment_framework": "在图像生成和视频生成任务上验证，对比DPM-Solver、DEIS、Euler等采样器。在相同NFE（函数评估次数）下评估生成质量（FID等），验证STORK的加速效果和质量保持。",
+ "takeaways": [
+  "现有快速采样器要么依赖半线性结构（无法直接用于流匹配），要么无法有效处理刚性问题，STORK同时解决两者",
+  "稳定化Runge-Kutta方法为扩散采样提供了新的数值分析视角，正交Taylor展开能更好地捕捉速度场的弯曲",
+  "STORK在图像和视频生成上均一致提升采样质量，说明其通用性和有效性"
+ ],
+ "weaknesses": [
+  "作为无训练采样器，其加速效果可能不如蒸馏类方法显著",
+  "STORK的具体阶数和阶数-成本权衡在摘要中不明确，实际最优配置需要调参",
+  "前9页未展示完整的定量对比表格，具体FID提升和加速倍数不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "数值加速方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

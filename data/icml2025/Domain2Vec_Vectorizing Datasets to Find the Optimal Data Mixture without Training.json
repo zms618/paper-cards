@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Domain2Vec_Vectorizing Datasets to Find the Optimal Data Mixture without Training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Domain2Vec_Vectorizing Datasets to Find the Optimal Data Mixture without Training.pdf",
+ "title": "Domain2Vec_Vectorizing Datasets to Find the Optimal Data Mixture without Training",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "Domain2Vec免训练预测数据混合，但假设局限且未验证新领域分解质量。",
+ "innovations": [
+  "提出元领域(meta-domain)概念与领域向量，把任意数据集表示为元领域词表上的分布",
+  "在分布对齐假设(DA2)下，免训练地用领域向量预测最优数据混合比例",
+  "可即插集成到既有数据混合方法中，建模领域向量与LM性能关系，提升其效率与可扩展性"
+ ],
+ "method_framework": "维护一套元领域词表并训练一个分类器，将任意数据集分解为该词表上的领域向量；基于DA2假设(训练与验证数据分布越对齐则验证损失越低)，在不实际训练LM的前提下，用领域向量搜索使对齐度最大的数据混合比例，并可与既有性能预测方法耦合。",
+ "experiment_framework": "在多个LM预训练规模上验证：以找到的数据混合达到与反复试训相当的验证损失，对比启发式及其他数据混合优化方法，报告下游任务性能与计算开销。",
+ "takeaways": [
+  "数据集可被向量化为元领域分布，免训练地预测数据混合",
+  "分布对齐(DA2)可作为数据混合优化的有效代理目标",
+  "该表示可复用并增强既有数据混合方法的可扩展性"
+ ],
+ "weaknesses": [
+  "主线相关性中等：属基础模型数据配比，而非可靠性/医学影像/多模态推理",
+  "分布对齐假设(DA2)是否在所有任务/规模上成立未充分验证",
+  "元领域词表的构造与覆盖度决定上限，新词表外领域分解质量存疑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

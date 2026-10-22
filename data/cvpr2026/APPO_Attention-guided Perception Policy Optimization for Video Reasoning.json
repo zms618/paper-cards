@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/APPO_Attention-guided Perception Policy Optimization for Video Reasoning.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/APPO_Attention-guided Perception Policy Optimization for Video Reasoning.pdf",
+ "title": "APPO Attention-guided Perception Policy Optimization for Video Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "注意力引导帧选择与token重加权提升视频推理感知能力",
+ "innovations": [
+  "感知与推理能力分离实验，证明感知能力提升比推理更重要",
+  "注意力引导的帧选择策略，将稀疏奖励转化为密集帧级信号",
+  "组内感知token重加权机制，基于KL散度计算token级精细奖励"
+ ],
+ "method_framework": "APPO算法包含两个核心步骤：1)注意力引导的帧选择，通过高奖励和低奖励响应的注意力差异识别关键帧；2)组内感知token重加权，基于KL散度计算token级重要性权重，优化模型对关键帧的感知能力。",
+ "experiment_framework": "在SEED-Bench-R1、VSI-Bench、Perception Test等视频推理基准上，与SFT、GRPO、DAPO对比，使用Qwen2.5-VL-3B/7B模型，评估准确率和mIoU等指标。",
+ "takeaways": [
+  "感知能力提升对视频推理性能提升比推理能力更重要",
+  "通过注意力机制将稀疏奖励转化为密集帧级信号可有效提升细粒度感知",
+  "组内token重加权机制可增强模型对关键帧的关注"
+ ],
+ "weaknesses": [
+  "方法依赖注意力权重，可能受注意力机制质量影响",
+  "实验主要在特定视频数据集上进行，泛化性有待进一步验证",
+  "计算开销相比基线方法有所增加"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频推理与可靠性主线无实质交点，仅感知优化机制有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

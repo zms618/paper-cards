@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/DeSplat_Decomposed Gaussian Splatting for Distractor-Free Rendering.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/DeSplat_Decomposed Gaussian Splatting for Distractor-Free Rendering.pdf",
+ "title": "DeSplat Decomposed Gaussian Splatting for Distractor-Free Rendering",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "分解高斯溅射分离静态场景与干扰物，但户外场景表现有限",
+ "innovations": [
+  "分解3DGS为静态场景和每视图干扰物两组高斯点",
+  "仅基于光度一致性实现干扰物分离，无需外部预训练模型",
+  "显式场景分离而非简单的损失掩码"
+ ],
+ "method_framework": "初始化静态高斯点和每视图干扰物高斯点，分别渲染后通过alpha合成，使用光度损失和正则化项优化",
+ "experiment_framework": "RobustNeRF、On-the-go和Photo Tourism数据集，对比Splatfacto、WildGaussians等基线，使用PSNR、SSIM、LPIPS指标",
+ "takeaways": [
+  "纯splatting方法可实现显式场景分离",
+  "每视图干扰物初始化策略有效处理视图相关干扰",
+  "正则化项对干扰物分离至关重要"
+ ],
+ "weaknesses": [
+  "在低遮挡率的户外场景(如Mountain、Fountain)表现不佳",
+  "干扰物高斯点可能将天空误判为移动干扰物"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D重建技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

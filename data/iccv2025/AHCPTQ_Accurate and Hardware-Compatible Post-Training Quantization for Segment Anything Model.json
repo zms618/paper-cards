@@ -1,0 +1,40 @@
+{
+ "key": "AHCPTQ: Accurate and Hardware-Compatible Post-Training Quantization for Segment Anything Model",
+ "conf": "iccv2025",
+ "path": "AHCPTQ_Accurate and Hardware-Compatible Post-Training Quantization for Segment Anything Model.pdf",
+ "title": "AHCPTQ: Accurate and Hardware-Compatible Post-Training Quantization for Segment Anything Model",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.4
+ },
+ "one_line": "混合量化+通道合并的SAM量化，但实验不完整且缺乏消融验证。",
+ "innovations": [
+  "HLUQ：按幅值把权重切成两段，小值走 log2 编码 xq=clamp(−log2(x/s1))、大值走均匀量化 (x−s1)/s2，阈值取 b̂=β(2^k−1)，用单个混合码本同时覆盖密集小值与稀疏大值，避免低比特下 SAM 掩码头长尾权重被整片压零。",
+  "CAG：按当前量化参数对通道做 K-Means（算法 1），只在相似度最高的若干通道间渐进合并并用 group=4 分组裁剪，把片上寄存器占用从万级压到 144 个，换 FPGA 双 PE 协同下的 7.89× 加速与 8.64× 能效。",
+  "把 α/β 的搜索写成闭式目标 arg min_{α,β} E∥XW−X̂W∥_F²，直接在重构误差上搜而非网格扫超参，并对两层量化参数分别设定搜索范围。"
+ ],
+ "method_framework": "HLUQ 混合码本（log2 段 + uniform 段，阈值 b̂=β(2^k−1)）量化权重，CAG 以 K-Means 渐进合并通道并 group=4 分组，再按 E∥XW−X̂W∥_F² 闭式搜索 α、β，最后在 FPGA 上用双 PE 协同执行。",
+ "experiment_framework": "COCO 实例分割 mAP 评测，SAM-B/L/H 三种规模分别与 Faster R-CNN、YOLOX、H-Deformable-DETR、DINO 组合，基线为 BRECQ、QDrop、PTQ4SAM；另在 FPGA 上测加速比与能效。",
+ "takeaways": [
+  "W4A4 下 PTQ4SAM 的 mAP 崩到 2.3%，HLUQ+CAG 可恢复到 36.6%，说明 SAM 的精度损失主要来自掩码头权重分布的长尾而非整体位宽。",
+  "group=4 的可行性靠寄存器统计支撑（降 99.7%、仅 144 register），不是纯指标堆砌，硬件代价被正面陈述。"
+ ],
+ "weaknesses": [
+  "可见正文在 Table 1 的 YOLOX/BRECQ 行处截断，Table 2 的模块消融、α/β 与 group 的逐项拆解均未出现，无法判断 HLUQ 与 CAG 各自的独立贡献，正文给出的结论超出已展示的证据。",
+  "评测只覆盖 COCO 一个数据集加四类检测器，且未见多种子与方差，mAP 的 36.6% 与基线的差距是否稳定无法确认，也缺少医学影像等落地域场景的跨分布验证。",
+  "group=4 与 α/β 的取值来自单点设定，正文未见超参敏感性扫描与 K-Means 合并轮数的收敛性分析；硬件实测只在单一 FPGA 平台上跑，没有 GPU/端侧延迟对比与精度-功耗权衡曲线。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "硬件优化与可靠性主线弱相关，无医学影像落地",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

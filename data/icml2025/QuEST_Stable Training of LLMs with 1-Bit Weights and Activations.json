@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/QuEST_Stable Training of LLMs with 1-Bit Weights and Activations.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/QuEST_Stable Training of LLMs with 1-Bit Weights and Activations.pdf",
+ "title": "QuEST: Stable Training of LLMs with 1-Bit Weights and Activations",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6
+ },
+ "one_line": "Hadamard归一化与trust梯度估计器实现LLM低比特稳定训练",
+ "innovations": [
+  "用Hadamard归一化与MSE-最优拟合作权值/激活连续分布的快速准确量化，提升QAT前向量化质量",
+  "提出新的trust梯度估计器，显式最小化在量化状态上算出的含噪梯度与(未知的)全精度梯度之间的误差，支撑低比特收敛",
+  "证明QuEST在Lamma族30M-1.6B上诱导出跨硬件支持精度范围的稳定scaling law，W4A4对BF16呈Pareto占优，并可扩展到稀疏表示、提供GPU kernel"
+ ],
+ "method_framework": "QAT前向用低比特权值/激活、反向全精度；两方面改进：(1)Hadamard变换平滑分布后做MSE最优量化以降低量化误差；(2)设计trust梯度估计器以量化梯度对全精度梯度的误差为目标做校正，使1bit权值与激活下仍稳定收敛。",
+ "experiment_framework": "在Lamma型架构30M-1.6B、C4语料上训练；对比BF16及已有QAT/PTQ方法；报告不同比特宽(1-4bit)的验证loss-内存scaling曲线，并给出可高效执行的GPU kernel实测。",
+ "takeaways": [
+  "QAT可训练的最优比特宽并非停留在8bit：配合更优量化与梯度校正，4bit甚至1bit权值激活训练也能稳定收敛",
+  "显式对齐量化噪声梯度与全精度梯度是低比特训练稳定的关键，而非单纯改进量化粒度"
+ ],
+ "weaknesses": [
+  "规模上限仅到1.6B，远超此规模的W1A1稳定性与数据需求外推性尚未验证",
+  "与主线可信AI/医学影像关联弱，属训练效率/量化方向",
+  "W1A1虽稳定收敛但loss远高于BF16，实用价值主要在W4A4区间；trust梯度估计器的额外计算开销对训练吞吐的影响需kernel实测细化"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.55,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

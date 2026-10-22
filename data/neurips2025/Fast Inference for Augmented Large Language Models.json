@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Fast Inference for Augmented Large Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Fast Inference for Augmented Large Language Models.pdf",
+ "title": "Fast Inference for Augmented Large Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "MARS框架预测内存与API处理以优化LLM推理延迟。",
+ "innovations": [
+  "预测性内存感知调度策略",
+  "API处理策略与调度集成",
+  "饥饿预防机制"
+ ],
+ "method_framework": "MARS采用两步法：1)基于预测的API处理策略分配；2)基于预测总内存消耗的调度策略，结合请求大小和API处理方法。",
+ "experiment_framework": "在三个数据集(Single-API, Multi-API, ToolBench)和四种模型(GPT-J 6B, Vicuna 13B, Llama 70B)上评估，比较INFERCEPT和vLLM的端到端延迟和TTFT。",
+ "takeaways": [
+  "内存消耗积分比瞬时内存测量更能反映资源占用",
+  "预测模型轻量且有效，可集成到调度决策中",
+  "饥饿预防机制平衡效率与公平性"
+ ],
+ "weaknesses": [
+  "API输出大小预测使用平均值，可能无法处理高度可变响应",
+  "多API请求的内存使用预测未考虑累积效应",
+  "预测错误对系统性能的影响分析有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

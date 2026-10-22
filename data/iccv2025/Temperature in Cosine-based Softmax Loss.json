@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Temperature in Cosine-based Softmax Loss.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Temperature in Cosine-based Softmax Loss.pdf",
+ "title": "Temperature in Cosine-based Softmax Loss",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "自适应温度估计提升特征嵌入，但适用场景有限且计算开销大。",
+ "innovations": [
+  "基于几何关系提出最小二乘方法自适应估计温度参数",
+  "分析温度对特征嵌入多样性的可控制影响",
+  "温度参数作为特征特性控制下界提供可解释性"
+ ],
+ "method_framework": "通过特征与分类器几何关系构建最小二乘准则，利用简单贪婪搜索优化每个样本的温度参数，无需额外训练过程。",
+ "experiment_framework": "在ImageNet、CIFAR-10/100、Food-101等数据集上评估，比较规则法、最大似然法、最小二乘法和可训练温度方法，分类准确率与特征多样性分析。",
+ "takeaways": [
+  "温度参数控制特征方差，小温度增强类内紧凑性提升置信度，大温度增强特征多样性提升泛化能力",
+  "最小二乘方法自适应估计的温度作为可行范围下界提供可解释控制"
+ ],
+ "weaknesses": [
+  "方法仅适用于监督分类场景，未探索自监督学习中的应用",
+  "温度优化计算开销较大，需对每个样本进行搜索",
+  "未分析温度对模型训练动态的影响"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "温度控制特征多样性，仅监督分类场景，无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

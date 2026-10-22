@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/What Happens when Generative AI Models Train Recursively On each OTHER’S OUTPUTS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/What Happens when Generative AI Models Train Recursively On each OTHER’S OUTPUTS.pdf",
+ "title": "What Happens when Generative AI Models Train Recursively on Each Other's Outputs?",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "研究生成模型递归训练的双向效应：知识溢出与性能同质化风险",
+ "innovations": [
+  "首次系统研究异质生成模型之间的数据中介交互（区别于已有自训练模型崩溃研究），提出交互式训练的理论框架",
+  "推导了不同训练机制下交互式递归训练的动力学解析公式",
+  "实验发现双向效应：跨模型训练可帮助学习原始数据中遗漏的新概念（正向），但也会导致模型在共享任务上性能趋同（负向）"
+ ],
+ "method_framework": "构建数据中介交互的理论模型：多个生成模型各自在真实数据+其他模型合成数据的混合集上递归训练。推导不同训练机制（纯合成、混合、留存原始数据等）下的性能演化动力学。用LLM实验验证理论预测。",
+ "experiment_framework": "在多个LLM上进行交互式递归训练实验，混合真实数据和其他模型的合成输出。评估指标包括下游任务性能变化和模型间性能相似度（同质化程度）。测试不同合成数据比例和训练轮次的影响。",
+ "takeaways": [
+  "异质模型间的递归训练不同于自训练崩溃：跨模型数据可带来新颖知识，而非单纯退化",
+  "主要风险是性能同质化——不同模型在共享任务上逐渐趋同，丧失多样性",
+  "保留一定比例的原始人类数据是避免退化的关键缓冲"
+ ],
+ "weaknesses": [
+  "实验主要在较小规模的LLM上进行，前沿大模型间的交互动力学是否一致未验证",
+  "理论模型假设较强（如数据分布的简化），对真实互联网级别的复杂数据分布解释力有限",
+  "仅研究文本LLM，图像/视频生成模型间的递归训练效应差异未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "生成模型交互研究，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

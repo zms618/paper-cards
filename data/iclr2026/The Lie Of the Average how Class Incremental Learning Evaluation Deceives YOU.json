@@ -1,0 +1,41 @@
+{
+ "title": "The Lie of the Average: How Class Incremental Learning Evaluation Deceives You?",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "指出CIL评估偏差，提出EDGE协议捕捉极端序列性能分布",
+ "innovations": [
+  "从理论与实证两方面证明主流 CIL 评估只用少量随机采样序列会得到有偏的均值估计、并严重低估性能分布的真实方差",
+  "提出‘极端序列(extreme sequences)’概念并给出其对可靠 CIL 评估关键作用的理论依据",
+  "观察到任务间相似度与模型性能稳定正相关，据此提出 EDGE 协议：利用相似度自适应地识别并采样极端类序列，逼近真实性能分布边界"
+ ],
+ "method_framework": "将 CIL 性能视为类到达序列上的分布而非单点；论证少量随机序列采样不足以刻画该分布；利用任务间相似度与性能的相关性，引导搜索使模型表现最极端（最难/最易）的序列，做自适应采样得到分布边界估计。",
+ "experiment_framework": "在多个 CIL 数据集/代表性 CIL 方法上比较：传统少量随机序列采样 vs EDGE 自适应极端序列采样；以均值估计偏差、方差估计准确度、分布边界逼近度为指标，验证 EDGE 对极端性能的捕捉能力。",
+ "takeaways": [
+  "CIL 报告的平均准确率高度依赖采样到的类序列，少量随机序列会系统性低估方差、掩盖最差情形",
+  "任务间相似度是预测某类序列难度的有效信号，可用于定向搜索极端序列",
+  "EDGE 给出的分布边界比单一平均更适合做模型选择与鲁棒性检查"
+ ],
+ "weaknesses": [
+  "贡献主要在评估方法论与诊断，不改进 CIL 算法本身；EDGE 依赖任务间相似度度量，该度量的构造方式与噪声敏感性未充分消融",
+  "极端序列采样增加评估成本，论文未给出达到稳定边界估计所需的采样量/计算预算的清晰建议；多数据集结论的一致性仍受限于所选 CIL 方法集合",
+  "relevance 给 7：核心是可靠评估、方差/极端情形估计与鲁棒性检查，正落在可靠性主线上；但落地域是通用类增量图像分类，非医学影像或多模态大模型推理，故不到 8+"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/The Lie Of the Average how Class Incremental Learning Evaluation Deceives YOU.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The Lie Of the Average how Class Incremental Learning Evaluation Deceives YOU.pdf",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "可靠评估方法，但落地域非医学或多模态",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

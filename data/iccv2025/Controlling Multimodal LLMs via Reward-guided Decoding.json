@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Controlling Multimodal LLMs via Reward-guided Decoding.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Controlling Multimodal LLMs via Reward-guided Decoding.pdf",
+ "title": "Controlling Multimodal LLMs via Reward-guided Decoding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "奖励引导解码控制多模态LLM，平衡幻觉减少与召回率",
+ "innovations": [
+  "首个多模态大模型的奖励引导解码方法",
+  "构建两个独立的奖励模型分别控制对象精确度和召回率",
+  "实现推理时动态权衡精确度与召回率以及计算量与视觉接地质量"
+ ],
+ "method_framework": "构建多模态奖励模型评估视觉接地，结合对象幻觉奖励模型和召回奖励模型，通过线性组合引导解码过程，实现用户可控的输出质量权衡。",
+ "experiment_framework": "在COCO和AMBER标准对象幻觉基准上评估，比较实例级和句子级幻觉率、对象召回率等指标，与现有幻觉缓解方法对比。",
+ "takeaways": [
+  "奖励引导解码提供细粒度控制，优于微调和提示工程",
+  "组合多个奖励模型可实现精确度和召回率的灵活权衡",
+  "方法可应用于不同架构的多模态大模型无需重新训练"
+ ],
+ "weaknesses": [
+  "召回奖励模型依赖对象检测器和词嵌入，可能存在不完美估计",
+  "最优操作点因数据集而异，需要调整权重参数",
+  "计算开销随采样数量k增加而增加"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态LLM幻觉控制属于可靠性主线，落地域明确",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

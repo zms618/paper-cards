@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/PCEvolve_Private Contrastive Evolution for Synthetic Dataset Generation via Few-Shot Private Data and Generative APIs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/PCEvolve_Private Contrastive Evolution for Synthetic Dataset Generation via Few-Shot Private Data and Generative APIs.pdf",
+ "title": "PCEvolve: Private Contrastive Evolution for Synthetic Dataset Generation via Few-Shot Private Data and Generative APIs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "改造指数机制融入类间对比，提升少样本DP合成数据质量",
+ "innovations": [
+  "指出Private Evolution在少样本私有数据下相似度投票被噪声淹没的缺陷",
+  "挖掘少样本私有数据内在的类间对比关系用于质量评估",
+  "将对比信息无缝融入改造的指数机制(EM)，在进化循环中提升DP效用"
+ ],
+ "method_framework": "借助生成式API，迭代地用DP保护的机制评估合成图像质量；不同于逐点相似度投票，PCEvolve显式挖掘少样本私有数据的类间对比关系作为信号，注入适配后的指数机制，在进化式生成中不断提升DP合成数据质量。",
+ "experiment_framework": "在4个专门领域数据集(含COVID-19肺炎识别等医疗/工业异常检测)上评测；对比PE及其他API辅助基线；指标为下游任务精度与DP-效用权衡。",
+ "takeaways": [
+  "少样本私有数据下逐点DP投票信噪比极低",
+  "类间对比关系可提供更鲁棒的质量评估信号",
+  "PCEvolve在医疗等资源受限领域能生成更高质量DP合成数据"
+ ],
+ "weaknesses": [
+  "仍依赖外部生成式API，隐私边界与API侧合规性需说明",
+  "DP预算与对比信号开销的权衡正文前9页讨论有限",
+  "在多类/高分辨率医疗影像上的可扩展性未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

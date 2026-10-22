@@ -1,0 +1,37 @@
+{
+ "title": "Function-Space Learning Rates",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "函数空间学习率估计与跨规模迁移，优化理论创新但应用有限",
+ "innovations": [
+  "提出逐层函数空间学习率概念，区别于传统参数空间学习率，刻画参数更新对输出函数的实际影响幅度",
+  "设计只需额外一次反向传播的Monte-Carlo估计，训练初期/周期性少量计算即可测得，开销极小",
+  "提出FLeRM：在小基座模型记录函数空间学习率，自动调整大模型逐层参数学习率，实现跨规模超参迁移"
+ ],
+ "method_framework": "定义逐层函数空间学习率为某参数张量更新引起的网络输出函数变化量；用Monte-Carlo估计把其计算降到一次额外反向传播，训练开始跑约40次或每100步跑一次；应用于分析Adam等优化器在函数空间的行为，及FLeRM跨规模超参迁移。",
+ "experiment_framework": "在多种网络/规模上用函数空间学习率剖析优化器动力学，并与现有超参迁移方法对比，验证小模型学到的函数空间学习率迁移到大模型后的训练稳定性与性能。",
+ "takeaways": [
+  "参数空间学习率难以反映真实功能变化，函数空间视角更能解释优化动态",
+  "各层对输出函数的贡献差异显著，是分析优化器行为的新透镜",
+  "FLeRM可把小模型的学习率设置自动迁移到大模型，减少大规模调参成本"
+ ],
+ "weaknesses": [
+  "Monte-Carlo估计引入随机噪声，估计精度与所需采样次数的权衡未充分刻画",
+  "跨规模迁移的适用范围(架构/任务差异大时)边界不清晰",
+  "属优化理论/方法，与可靠性/医学影像/多模态推理主线无关"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Function-Space Learning Rates.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Function-Space Learning Rates.pdf",
+ "raw_overall": 5.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

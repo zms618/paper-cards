@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Improved Noise Schedule for Diffusion Training.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Improved Noise Schedule for Diffusion Training.pdf",
+ "title": "Improved Noise Schedule for Diffusion Training",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "改进噪声调度提升扩散模型训练效率，但创新有限",
+ "innovations": [
+  "从概率角度统一分析噪声调度设计",
+  "提出在log SNR=0处增加采样频率的重要性采样策略",
+  "验证了调整噪声调度比调整损失权重更有效"
+ ],
+ "method_framework": "将噪声调度设计转化为概率分布设计问题，通过在log SNR=0处增加采样概率，提出Laplace、Cauchy等新型噪声调度方案",
+ "experiment_framework": "ImageNet数据集(256×256和512×512)，DiT-B架构，500K迭代，FID指标，对比多种基线方法",
+ "takeaways": [
+  "噪声调度设计比损失权重调整更有效",
+  "在中等噪声水平(log SNR=0)处集中计算资源可提高训练效率",
+  "Laplace噪声调度表现最佳"
+ ],
+ "weaknesses": [
+  "未探索推理阶段的噪声调度优化",
+  "需要针对不同分辨率调整超参数",
+  "未扩展到更大规模模型验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型训练效率提升，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "title": "CESAR: Incentivizing Consistent, Effective and Scalable Reasoning Capability in Audio LLMs via Reasoning Process Rewards",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "用多面过程奖励缓解音频LLM反向缩放，但奖励设计依赖启发式与AI裁判",
+ "innovations": [
+  "识别音频LLM中更长推理链反而更差的测试时反向缩放(test-time inverse scaling)现象",
+  "从结果验证转向奖励推理过程：GRPO多面奖励覆盖正确性、格式、一致性、结构化分析、因果推理、领域知识与校准深度",
+  "揭示模型特有的推理甜点(sweet spot)，并显示增强推理可同时提升多模态推理与感知"
+ ],
+ "method_framework": "在线RL框架下用GRPO训练，多面奖励不只看答案对错，还奖励一致、结构化、因果、整合领域知识与恰当深度的推理过程，修正幻觉式不一致推理；据此消除反向缩放并定位最优测试时推理长度。",
+ "experiment_framework": "在MMAU Test-mini上达SOTA、显著超过Gemini 2.5 Pro与GPT-4o Audio，MMSU推理任务接近人类水平；用AI-as-judge与定性比较验证推理质量；并报告感知与推理的协同增益。",
+ "takeaways": [
+  "音频LLM推理变差源于训练不当而非推理本身，过程奖励可纠正",
+  "奖励推理过程能把测试时反向缩放逆转为正向增益",
+  "增强推理可同时改善多模态感知与推理"
+ ],
+ "weaknesses": [
+  "多面奖励的设计依赖较多启发式与AI裁判，成本与偏倚需关注",
+  "推理甜点因模型而异，跨模型迁移需重新调参",
+  "前9页未见逐奖励分量的消融表"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/SCAL-ABLE_Incentivizing Consistent, Effective and SCAL-ABLE Reasoning Capability In Audio LLMS via Reasoning Process.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SCAL-ABLE_Incentivizing Consistent, Effective and SCAL-ABLE Reasoning Capability In Audio LLMS via Reasoning Process.pdf",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "音频LLM推理奖励设计，与可靠性主线部分交织但依赖启发式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

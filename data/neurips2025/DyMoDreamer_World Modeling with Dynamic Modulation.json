@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/DyMoDreamer_World Modeling with Dynamic Modulation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/DyMoDreamer_World Modeling with Dynamic Modulation.pdf",
+ "title": "DyMoDreamer: World Modeling with Dynamic Modulation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "基于DreamerV3添加动态调制，提升RL样本效率",
+ "innovations": [
+  "引入动态调制机制增强RSSM对动态特征的感知",
+  "新颖的帧间差分掩码提取动态特征",
+  "将动态调制与RSSM端到端集成，无需额外计算开销"
+ ],
+ "method_framework": "基于DreamerV3的RSSM架构，引入动态调制dt和差分观测o't，通过GRU更新隐藏状态ht，联合优化预测、动态和表示损失",
+ "experiment_framework": "Atari 100k/DeepMind Visual Control Suite/Crafter基准，与DreamerV3、OC-STORM、DIAMOND等对比，使用人类标准化分数和任务平均分",
+ "takeaways": [
+  "差分观测能有效提取动态特征而不增加计算负担",
+  "动态调制应嵌入序列模型而非仅用于编码",
+  "动态特征与静态特征的结合可提升决策性能"
+ ],
+ "weaknesses": [
+  "依赖帧间差分可能忽略某些长期动态模式",
+  "未探索在医学影像等特定领域的应用",
+  "动态调制机制的理论分析不够深入"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

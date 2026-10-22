@@ -1,0 +1,41 @@
+{
+ "title": "Tackling the XAI Disagreement Problem with Adaptive Feature Grouping",
+ "one_line": "通过特征分组消除交互，减少XAI方法分歧，但实证规模有限。",
+ "innovations": [
+  "将函数分解视角推广到特征分组（如图像patch）场景，证明解释方法与忠实性指标的分歧由组间交互(between-group interactions)造成",
+  "证明消除组间交互后存在一个对所有忠实性指标都最优的单一解释",
+  "提出自适应特征分组方法在表格/图像数据上实际减少解释分歧"
+ ],
+ "method_framework": "在函数分解统一框架下把输入特征划分为组（如pixel patch）。分歧来自不同组特征间的交互项；通过自适应地把特征分组融合（AGREED最小化分歧目标），消除组间交互，使不同解释方法与忠实性指标趋于一致，得到唯一最优解释。",
+ "experiment_framework": "在表格(California Housing)与图像(ResNet18显著性图)数据上验证；对比PFI/SHAP/PDP等解释方法及F-score/μ-Fidelity/INFD等忠实性指标；指标为不同方法/指标间的一致性/分歧度。",
+ "takeaways": [
+  "XAI分歧问题的根因是组间特征交互，而非方法本身对错",
+  "消除组间交互后，理论上存在对所有忠实性指标都最优的唯一解释",
+  "自适应特征分组可在实践中提升不同解释方法间的一致性"
+ ],
+ "weaknesses": [
+  "消除组间交互依赖特征分组粒度，分组过大则丢失细节、过小则分歧复现，粒度选择需权衡",
+  "实证规模偏小（单表格数据集+单一ResNet示例），结论普适性证据有限",
+  "自适应分组本身引入超参与计算开销，大规模视觉模型的可扩展性未验证"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Tackling the Xai Disagreement Problem with Adaptive Feature Grouping.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tackling the Xai Disagreement Problem with Adaptive Feature Grouping.pdf",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "XAI方法改进，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

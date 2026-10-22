@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Toward Efficient Exploration By Large Language Model Agents.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Toward Efficient Exploration By Large Language Model Agents.pdf",
+ "title": "Toward Efficient Exploration by Large Language Model Agents",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "将PSRL算法显式外包给LLM，在语言任务上探索效率提升有限。",
+ "innovations": [
+  "提出与'编排多个LLM隐式诱导RL算法'不同的设计原则：把现有RL算法(PSRL)的各步骤显式外包给LLM实现",
+  "将统计高效探索的PSRL(原本主要限于表格域)在纯自然语言环境中由LLM落地，保留其已知的强探索性质",
+  "实证发现底层LLM的选择很关键：在随机转移动态环境中，从GPT-4o升级到o1-mini是成败之别"
+ ],
+ "method_framework": "把RL算法视为有序步骤序列；不复用LLM隐式产生策略，而是把PSRL的建模后验采样、从后验采样MDP、按采样MDP规划等子步骤分别交给LLM显式执行，从而把PSRL已被证明的高效探索能力迁移到自然语言智能体。",
+ "experiment_framework": "在需要审慎探索的自然语言RL任务上，对比隐式LLM智能体设计与本文LLM-PSRL实现；控制底层LLM(GPT-4o vs o1-mini)研究其对探索效果的影响；指标为数据效率/累计回报。",
+ "takeaways": [
+  "许多近期LLM智能体设计在探索这一RL基本难题上表现不佳",
+  "用LLM显式实现已有高探索效率算法(PSRL)比隐式编排更有效",
+  "PSRL实现的效果高度依赖底层LLM的推理能力"
+ ],
+ "weaknesses": [
+  "显式PSRL需LLM做后验采样与规划，多步LLM调用成本高，未量化实际交互/推理开销",
+  "实验规模有限，在复杂长horizon真实任务上的可扩展性未验证",
+  "属LLM智能体/RL探索方向，与可靠性主线及医学影像、多模态推理落地域关联弱"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.98,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "LLM智能体探索与可靠性主线及落地域关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

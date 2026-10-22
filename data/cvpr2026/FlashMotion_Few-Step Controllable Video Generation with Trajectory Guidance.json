@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/FlashMotion_Few-Step Controllable Video Generation with Trajectory Guidance.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/FlashMotion_Few-Step Controllable Video Generation with Trajectory Guidance.pdf",
+ "title": "FlashMotion Few-Step Controllable Video Generation with Trajectory Guidance",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "三阶段训练实现少步轨迹可控视频生成，但效率与质量权衡不足",
+ "innovations": [
+  "首个少步轨迹可控视频生成框架",
+  "三阶段训练策略结合扩散与对抗目标",
+  "FlashBench长序列轨迹可控视频基准"
+ ],
+ "method_framework": "三阶段训练：先训练多步轨迹适配器，再蒸馏为少步生成器，最后用混合目标微调适配器",
+ "experiment_framework": "FlashBench/MagicBench/DAVIS数据集，对比多步与少步方法，评估FID/FVD/掩码/边界框IoU",
+ "takeaways": [
+  "动态扩散损失缩放机制平衡像素级与分布级目标",
+  "轻量级适配器微调仅需1K步",
+  "长序列轨迹可控视频评估基准"
+ ],
+ "weaknesses": [
+  "仅评估了4步生成，未探索更少步数",
+  "未分析计算效率与生成质量的权衡关系"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/CABS_Conflict-Aware and Balanced Sparsification for Enhancing Model Merging.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CABS_Conflict-Aware and Balanced Sparsification for Enhancing Model Merging.pdf",
+ "title": "CABS: Conflict-Aware and Balanced Sparsification for Enhancing Model Merging",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "冲突感知与平衡稀疏化解决模型合并参数重叠问题",
+ "innovations": [
+  "冲突感知稀疏化CA：序列剪枝时施加掩码，使各任务向量保留互不重叠的关键参数",
+  "平衡稀疏化BS：用n:m剪枝在保持关键权重的同时维持层间均匀分布",
+  "同时解决稀疏合并中参数重叠与权重分布失衡两大瓶颈",
+  "在多样任务与模型规模上一致超过SOTA稀疏合并方法"
+ ],
+ "method_framework": "对任务向量先做冲突感知稀疏化：序列剪枝并用掩码避免不同任务向量选中重叠参数；再做平衡稀疏化：用n:m结构化剪枝使关键权重在层间均匀分布；稀疏后再合并任务向量以降低冲突。",
+ "experiment_framework": "在视觉/NLP多任务合并基准上与Task Arithmetic及稀疏合并SOTA比较，报告平均任务精度与跨模型规模(ViT/LLaMA族)扩展性，含CA/BS组件消融。",
+ "takeaways": [
+  "稀疏合并的性能瓶颈是参数重叠与权重失衡，而非稀疏率本身",
+  "掩码化序列剪枝可保证任务向量参数互不重叠",
+  "n:m平衡分布能稳定跨层合并的有效性"
+ ],
+ "weaknesses": [
+  "主线为模型合并/稀疏化，与可靠性主线及医学影像、多模态推理落地域无关",
+  "剪枝掩码与n:m比例需逐任务向量调参，自动化程度有限",
+  "主要在同质微调模型族验证，跨基座/异构模型合并的证据不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

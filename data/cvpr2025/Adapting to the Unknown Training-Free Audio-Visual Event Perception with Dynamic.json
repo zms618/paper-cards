@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Adapting to the Unknown Training-Free Audio-Visual Event Perception with Dynamic.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Adapting to the Unknown Training-Free Audio-Visual Event Perception with Dynamic.pdf",
+ "title": "Adapting to the Unknown: Training-Free Audio-Visual Event Perception with Dynamic Thresholds",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 5.0,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.2
+ },
+ "one_line": "免训练动态阈值调参方法，在开放词表音视频事件定位上提升有限",
+ "innovations": [
+  "段级动态阈值：用累积到 t−1 段的预测分数与硬预测构造软混淆矩阵 M（M_{ĉ,c}=1/(t−1)Σ_{i<t}P^i_av[ĉ]·y^i_c），类位移比估为 ŵ=M^{-1}P^t_av 再乘相邻段视觉特征的余弦相似度 cos(x_t,x_{t-1})/(‖x_t‖‖x_{t−1}‖) 作缩放（Eq.7）；把 BBSE 混淆矩阵反演搬到视频时间轴，且用特征余弦相似度对'相邻段内容相似则 Score 变化应被压低'做缩放。",
+  "阈值更新规则 τ^t=τ^{t−1}−τ^1·e^{−λz}·ŵ（Eq.8）：z 记录各类的历史命中次数，逐类指数衰减保证越到后面调整越小，防止阈值无界下降；最后用候选段（最长连续命中区间）与 τ_r 置信阈值做二次验证，构成'选类→动态分阈→候选合并→验证'四段式免训练流程。",
+  "score-level 融合 Pav=αP_a+(1−α)P_v（Eq.3/4）替代 late fusion 的标签求交，在 CLIP+CLAP / LanguageBind 双塔打分上保留跨模态交互，并使其成为首个免训练、开放词表的 AVVP 基线（类别在推理时由用户文本定义）。"
+ ],
+ "method_framework": "CLIP/CLAP 或 LanguageBind 对（文本类目, 全视频音频/视频）打分得视频级 P_a/P_v，用 τ_f 筛类别得 Ĉ_av；段级对每段音频/帧打分得 P_a^t/P_v^t 加权融合为 P_av^t；用 t−1 段历史构造软混淆矩阵估 ŵ^t 并更新各类阈值 τ^t；命中最长连续段为候选，再用候选区间内重打分 P'_av 与 τ_r 比对剔除假阳性。",
+ "experiment_framework": "AVE（4143 视频/28 类）与 LLP（11849 视频/25 类）；指标 F1（audio/visual/AV 的 segment 与 event 级）、Type@AV、Event@AV，AVE 用整体准确率；基线 CLIP-CLAP、LanguageBind 免训练基线，以及弱监督 SOTA MGN-MA、JoMoLD、CMPAE；超参表 1 在 LLP 验证集搜索。",
+ "takeaways": [
+  "把 label shift 的 BBSE（M^{-1}â 类分布修正）改成视频帧序列上的段级阈值校准，是标准的免训练'后-hoc 校准'范式，可直接迁到任意给分数的检测器上。",
+  "用相邻段视觉特征的余弦相似度作为 ŵ 的缩放因子，能抑制视频主体不动时分数抖动带来的阈值过调，这个'用输入特征做平滑'的技巧比调超参更便宜。",
+  "候选段（最长连续区间）+ 二次重打分 + 置信阈值构成免训练方案的拒绝机制，避免单阈值在长视频上的累积假阳性。"
+ ],
+ "weaknesses": [
+  "提升口径不一致且多数提升来自'把固定阈值换成可调阈值'：表 2 中相对 naive 静态阈值基线提升很大（CLIP-CLAP 段级 Type@AV 17.6→32.7），但表 3 把同一套动态阈值套在弱监督 SOTA 上时提升近乎为 0（CMPAE 62.9→63.0、56.3→56.7；MGN-MA 60.7→60.8、51.0→51.0），文章却把这两类都称为 SOTA——弱监督表格里的 ~0.3 分提升不足以支撑 SOTA 声明。",
+  "Eq.7 缺理论约束与数值稳定性处理：|Ĉ_av| 小、M 由预测分数非归一化地构造，M^{-1} 直接求逆在类间预测相关时会放大噪声，且 ŵ 无归一化/裁剪，阈值仅靠 e^{−λz} 衰减收敛，λ/τ^1 的相互作用没有分析（表 1 中三个模型 λ 取 1.0/2.5/0.5 且 LanguageBind 与 CLIP-CLAP 的超参组合不同），属于启发式。",
+  "标定迁移未验证：α、τ^0、τ_r、τ_f、λ 在 LLP 验证集（200 样本）上搜，AVE 零样本直接沿用 LLP 调出的参数并声称公平，但没有跨数据集/跨基础模型的参数敏感性或自适应分析；表 2/4 给了 ± 标准差，表 3 全给点值且无方差，各实验重复次数未说明；正文在 4.2 节 'Method Efficiency. In our experiments, inference time' 处截断，效率与失败案例分析缺失。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "免训练阈值调整方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

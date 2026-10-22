@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Safedpo_A Simple Approach To Direct PREFERENCE Optimization with Enhanced Safety.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Safedpo_A Simple Approach To Direct PREFERENCE Optimization with Enhanced Safety.pdf",
+ "title": "SafeDPO: A Simple Approach to Direct Preference Optimization with Enhanced Safety",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "理论推导安全约束RLHF的闭式最优策略，提出仅加超参的SafeDPO方法。",
+ "innovations": [
+  "在温和假设下证明原始安全对齐目标存在闭式最优策略",
+  "推导出可证明等价且易处理的目标，使安全约束偏好优化可像DPO一样直接优化",
+  "提出SafeDPO，仅用偏好数据与安全指标、额外一个超参，无需奖励模型/成本模型/在线采样，可扩展到13B"
+ ],
+ "method_framework": "重新审视安全约束RLHF的原始目标，证明其存在闭式最优策略；进一步导出一个可证明等价且易处理的目标，可在偏好数据上直接优化；额外一个超参用于在保持理论最优解的同时灵活调节安全强度。",
+ "experiment_framework": "在PKU-SafeRLHF-30K基准上对比现有安全对齐方法，报告安全-有用性权衡；通过消融验证额外超参的作用；验证可扩展到最高13B参数的LLM。",
+ "takeaways": [
+  "简单的理论驱动目标即可在安全-有用性权衡上取得与现有方法有竞争力的结果",
+  "无需奖励模型、成本模型与在线采样，仅靠偏好数据加安全指标即可完成安全对齐",
+  "方法可可靠扩展到最高13B参数规模的模型"
+ ],
+ "weaknesses": [
+  "主要在单一基准PKU-SafeRLHF-30K上验证，跨基准与红队压力下的泛化未充分检验",
+  "所依赖的'温和假设'在真实偏好分布下是否成立缺乏实证检验",
+  "缺乏与最新多阶段安全RLHF在更强基线/更大规模上的系统对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "安全对齐直接优化方法，可迁移到可靠性主线设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

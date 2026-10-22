@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/PUSA V1.0_Unlocking Temporal Control In Pretrained Video Diffusion Models via VECTORIZED Timestep Adaptation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PUSA V1.0_Unlocking Temporal Control In Pretrained Video Diffusion Models via VECTORIZED Timestep Adaptation.pdf",
+ "title": "Pusa V1.0: Unlocking Temporal Control in Pretrained Video Diffusion Models via Vectorized Timestep Adaptation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "向量时间步微调视频扩散模型，实现零样本时序控制但质量有限。",
+ "innovations": [
+  "将视频扩散的标量时间步改为向量化(逐帧)时间步，打破帧演化刚性同步，实现细粒度时序控制。",
+  "VTA为非破坏性适应，完整保留基座模型生成先验与T2V能力，避免灾难性遗忘。",
+  "超高效微调后零样本解锁I2V、起止帧控制、视频延长等多种能力，无需任务特定训练。"
+ ],
+ "method_framework": "把传统共享的标量噪声时间步替换为逐帧的向量时间步，使各帧可处于不同去噪阶段；以极小参数微调注入时序动态而不破坏基座T2V先验；推理时通过给不同帧指定不同时间步，实现零样本的I2V、起止帧条件与视频延长。",
+ "experiment_framework": "在预训练T2V视频扩散模型上做VTA微调；对比Wan-I2V等重资源微调方案做I2V；指标含零样本I2V/起止帧/视频延长质量；报告微调成本与对原T2V能力的保持；并做机制分析。",
+ "takeaways": [
+  "向量化时间步可在不破坏基座先验下注入细粒度时序控制。",
+  "非破坏性微调比全量I2V微调高效得多且零样本多功能。",
+  "机制分析显示该方法手术式注入时序动态而非重写生成先验。"
+ ],
+ "weaknesses": [
+  "逐帧向量时间步增加采样时的调度复杂度。",
+  "零样本I2V仅'媲美'重训模型，质量上限未超越。",
+  "对超长视频/强时序一致性场景的扩展未充分验证。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "时序控制方法与可靠性主线无实质交点，仅属视频生成技术改进",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

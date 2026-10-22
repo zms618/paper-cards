@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Adversarial Style Optimization Enhancing VLM Jailbreaks by GRPO-based Stylistic Triggers.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Adversarial Style Optimization Enhancing VLM Jailbreaks by GRPO-based Stylistic Triggers.pdf",
+ "title": "Adversarial Style Optimization Enhancing VLM Jailbreaks by GRPO-based Stylistic Triggers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "GRPO优化视觉风格触发器提升VLM越狱攻击，但仅限单一攻击向量",
+ "innovations": [
+  "发现MLLM的风格敏感性漏洞",
+  "提出对抗风格优化(ASO)框架",
+  "设计分层奖励函数和动态批处理GRPO算法"
+ ],
+ "method_framework": "ASO采用两阶段方法：首先探测目标VLM最易受攻击的风格方向，然后使用GRPO微调图像编辑模型参数，生成优化的混合触发器",
+ "experiment_framework": "在MM-SafetyBench和VLBreakBench基准上测试，对比FigStep、QR Attack等SOTA攻击方法，使用ASR和HS指标评估",
+ "takeaways": [
+  "非内容攻击向量(如视觉风格)是VLM安全的重要盲点",
+  "分层奖励函数能有效处理稀疏奖励信号",
+  "动态批处理机制可优化红队攻击发现效率"
+ ],
+ "weaknesses": [
+  "仅针对视觉风格优化，未探索其他非内容攻击向量",
+  "实验主要关注攻击效果，缺乏防御机制分析",
+  "计算成本较高，需要多次迭代优化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "VLM安全属可靠性主线，但仅限单一攻击向量无实质落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

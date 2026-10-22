@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/EventSplat_3D Gaussian Splatting from Moving Event Cameras for Real-time.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/EventSplat_3D Gaussian Splatting from Moving Event Cameras for Real-time.pdf",
+ "title": "EventSplat 3D Gaussian Splatting from Moving Event Cameras for Real-time",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "事件相机与3DGS结合实现实时渲染，但局限于静态场景",
+ "innovations": [
+  "事件累积与3DGS优化过程的集成",
+  "事件到视频引导的结构运动方法",
+  "三次样条轨迹插值技术"
+ ],
+ "method_framework": "通过事件累积生成图像表示，利用3DGS渲染对数强度变化图像，结合事件到视频模型初始化和三次样条插值优化相机轨迹。",
+ "experiment_framework": "合成和真实场景数据集(ESIM, EDS, TUM-VIE)，对比Robust-e-NeRF和E2VID+3DGS，使用PSNR、SSIM、LPIPS指标评估渲染质量。",
+ "takeaways": [
+  "事件数据可监督3DGS实现实时渲染",
+  "事件到视频模型初始化可提升重建质量",
+  "三次样条插值能更准确估计相机轨迹"
+ ],
+ "weaknesses": [
+  "仅适用于静态场景，无法处理动态物体",
+  "模型无法直接估计绝对强度图像，需要线性变换"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3DGS重建与可靠性主线无关，仅工程实现",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

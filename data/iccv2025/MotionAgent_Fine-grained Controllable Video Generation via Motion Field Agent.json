@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/MotionAgent_Fine-grained Controllable Video Generation via Motion Field Agent.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/MotionAgent_Fine-grained Controllable Video Generation via Motion Field Agent.pdf",
+ "title": "MotionAgent: Fine-grained Controllable Video Generation via Motion Field Agent",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "运动场代理实现视频生成，但依赖外部工具且计算开销大",
+ "innovations": [
+  "运动场代理将文本中的运动信息转换为显式运动表示",
+  "解析式光流组合模块在3D空间中整合物体运动和相机运动",
+  "重新思考机制形成反馈循环纠正运动表示"
+ ],
+ "method_framework": "运动场代理将文本提示转换为物体轨迹和相机外参，通过解析式光流组合模块生成统一光流，再通过光流适配器控制基础I2V扩散模型生成视频",
+ "experiment_framework": "VBench基准测试和自定义运动对齐评估，与VideoCrafter、DynamiCrafter等SOTA方法比较，使用Object Movement Q&A和Complex Camera Motion指标",
+ "takeaways": [
+  "文本到运动表示的转换方法",
+  "3D空间中多类型运动的统一控制",
+  "反馈循环机制提升运动对齐"
+ ],
+ "weaknesses": [
+  "依赖外部深度估计和SLAM方法",
+  "重新思考机制增加了计算复杂度",
+  "动态度指标较低可能限制了视频的生动性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

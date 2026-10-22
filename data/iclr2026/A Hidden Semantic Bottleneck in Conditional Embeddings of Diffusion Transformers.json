@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Hidden Semantic Bottleneck in Conditional Embeddings of Diffusion Transformers.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Hidden Semantic Bottleneck in Conditional Embeddings of Diffusion Transformers.pdf",
+ "title": "A Hidden Semantic Bottleneck in Conditional Embeddings of Diffusion Transformers",
+ "scores": {
+  "novelty": 7,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "发现DiT条件嵌入过度冗余，剪枝三分之二维度质量不变但证据不足",
+ "innovations": [
+  "首次系统刻画扩散 Transformer 的条件向量 c=类别嵌入+时间步嵌入：ImageNet-1K 上两两余弦相似达 99%（X-MDPT/MDSGen 达 99.98%/99.99%），同时归一化参与比 nPR 仅 1.53%–10.47%",
+  "用参与比 α=Σ|v_i|²/Σv_i 与阈值稀疏比 s_tail(τ)=1/d·#{i:|c_i|<τ} 量化有效维数，在 DiT/SiT/MDT/LightningDiT/MG/REPA/X-MDPT/MDSGen 八个模型与三类任务上给出一致结论",
+  "把观察落到行动：按阈值 τ 零化低幅尾部维度，τ=0.01 删掉 38.94%（448/1152）维度 FID 7.2143 与基线持平、末步剪枝 FID 7.1598 略优，而头部 4–6 个高幅维度一旦删除 FID 崩到 523"
+ ],
+ "method_framework": "拆解 AdaLN 条件向量 c 的结构：用余弦相似矩阵与参与比 α=Σ|v|²/Σv² 刻画极端对齐与稀疏，按阈值 τ 剪掉低幅尾部维度后再推理，假设 AdaLN 放大头部维度差异、尾部分量作为噪声干扰去噪轨迹。",
+ "experiment_framework": "8 个公开预训练权重（DiT/SiT/MDT/LightningDiT/MG/REPA-XL/X-MDPT/MDSGen）在 ImageNet-1K、DeepFashion、VGGSound 上统计向量结构与剪枝；剪枝表报 FID/IS/CLIP，并比较 t0（首步）、ti（每步）、tn−k,n（末 k 步）三种剪枝时机。",
+ "takeaways": [
+  "条件嵌入极度过参数化（有效维数仅 1–2%），删掉三分之二维度质量仍持平，可直接指导条件编码的压缩与推理加速",
+  "AdaLN 条件注入会把语义压进极少数高幅维度，做条件编辑或可控生成时优先改尾部维度、切勿动头部维度",
+  "用参与比（PR/nPR）比绝对值直方图更适合跨模型衡量向量有效维数，且能随训练步数监控稀疏化动态"
+ ],
+ "weaknesses": [
+  "剪枝收益落在噪声内：唯一改善项 FID 7.1598 对基线 7.1694 仅差 0.0096，而 τ=0.02 删 66% 维度 FID 反而升到 9.2202，全文未见任何方差、多次种子或显著性检验来支撑「质量不变甚至改善」的 claim",
+  "第 6 节的机制解释全部是假设（标题即 Hypotheses，作者自陈 rigorous analysis 是 open problem），AdaLN 放大头部差异、尾部为噪声的说法只有 t-SNE 可视化与阈值曲线支撑，缺乏因果性验证",
+  "正文在讨论段截断；量化评估只覆盖 ImageNet-1K 与 DeepFashion 的 FID/IS/CLIP，连续条件任务 VGGSound 几乎只有图示，剪枝也未报推理时延或显存节省"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "条件嵌入压缩与推理加速，与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

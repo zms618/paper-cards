@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Unveiling Markov Heads in Pretrained Language Models for Offline Reinforcement Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Unveiling Markov Heads in Pretrained Language Models for Offline Reinforcement Learning.pdf",
+ "title": "Unveiling Markov Heads in Pretrained Language Models for Offline Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "剖析PLM注意力头中的Markov机制，改进决策Transformer的长期性能。",
+ "innovations": [
+  "定量分析PLM每个注意力头，识别出Markov head：对最后输入token施加极端注意力、近似马尔可夫转移的关键组件",
+  "用定理刻画该机制如何解释PLM向RL迁移的知识",
+  "据此提出GPT2-DTMA，在短期环境性能相当、长期环境显著缩小性能差距"
+ ],
+ "method_framework": "将用PLM初始化的决策Transformer(GPT2-DT)逐头定量剖析，定位出对最后token极端关注、近似一阶马尔可夫转移的Markov head；推导其与RL中马尔可夫性的联系，并据此设计/改进模型(GPT2-DTMA)以更好迁移该先验。",
+ "experiment_framework": "在离线RL环境(短期与长期)上评测GPT2-DTMA；对比标准GPT2-DT等；用实验印证关于Markov head的定理；指标为短期环境性能与长期环境性能差距。",
+ "takeaways": [
+  "PLM助力离线RL的关键来自其注意力头中已存在的Markov head",
+  "对最后token的极端注意力近似马尔可夫转移，与RL的马尔可夫性天然契合",
+  "显式利用该机制可缩小短期与长期环境间的性能鸿沟"
+ ],
+ "weaknesses": [
+  "结论基于GPT-2级小模型，对更大规模PLM的迁移性未验证",
+  "\"Markov head\"的识别阈值与判定标准是否稳健缺乏消融",
+  "在长期环境仍只是\"缩小差距\"，未达到SOTA，绝对水平有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/SAMTok_Representing Any Mask with Two Words.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SAMTok_Representing Any Mask with Two Words.pdf",
+ "title": "SAMTok Representing Any Mask with Two Words",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "SAMTok用两token表示掩码，赋予MLLM像素级能力但依赖SAM2。",
+ "innovations": [
+  "将掩码表示为离散文本token的新范式",
+  "基于SAM2的掩码编码器与残差向量量化器",
+  "文本答案匹配奖励函数实现掩码生成的强化学习"
+ ],
+ "method_framework": "SAMTok包含掩码编码器、残差向量量化和解码器，将2D掩码转换为两个离散token并高保真重建，使MLLMs能通过标准next-token预测学习像素级能力。",
+ "experiment_framework": "在209M掩码上训练SAMTok，5M掩码理解与生成数据微调QwenVL，在区域描述、区域VQA、指代表分割等任务评估，使用GRPO进行强化学习。",
+ "takeaways": [
+  "掩码作为新语言的统一表示范式",
+  "离散token表示简化了强化学习过程",
+  "无需架构修改即可赋予MLLMs像素级能力"
+ ],
+ "weaknesses": [
+  "依赖SAM2作为基础模型",
+  "仅使用两个token可能限制复杂掩码的表达能力",
+  "实验主要在特定数据集上进行，泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态大模型推理落地域，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

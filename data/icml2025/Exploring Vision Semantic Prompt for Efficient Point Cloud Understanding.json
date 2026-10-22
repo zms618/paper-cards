@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Exploring Vision Semantic Prompt for Efficient Point Cloud Understanding.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Exploring Vision Semantic Prompt for Efficient Point Cloud Understanding.pdf",
+ "title": "Exploring Vision Semantic Prompt for Efficient Point Cloud Understanding",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "冻结2D模型提供语义提示，适配器融合提升点云性能",
+ "innovations": [
+  "诊断现有3D PETL方法未能对齐下游所需语义关系（点云预训练特征偏局部结构、带位置偏好）",
+  "提出用冻结2D预训练模型提供视觉语义提示，为3D表征注入丰富语义线索",
+  "设计混合注意力适配器(Hybrid Attention Adapter)高效融合2D语义提示与3D表征，仅1.8M可训参数"
+ ],
+ "method_framework": "保持3D预训练骨干冻结，将点云渲染为图像输入冻结的2D模型提取语义提示 ipro；在最后一层用混合注意力把2D语义提示与3D特征做模态融合与语义对齐，仅训练适配器与任务头。",
+ "experiment_framework": "数据集 ScanObjectNN(OBJ_BG/OBJ_ONLY/PB_T50_RS)、ModelNet40、ShapeNetPart；基线覆盖监督学习、自监督全微调(Point-BERT/Point-MAE等)与3D PETL(IDPT/DAPT/Point-PEFT)；指标为可训参数量、FLOPs与分类OA/部件分割mIoU。",
+ "takeaways": [
+  "仅1.8M可训参数即在 ScanObjectNN PB_T50_RS 达89.03%、ModelNet40 达95.6%，超过 IDPT/DAPT/Point-PEFT 等PETL方法",
+  "2D视觉语义提示能弥补点云预训练特征语义不足，在最具挑战的噪声分类分裂上提升明显",
+  "参数高效且不遗忘预训练知识，适合边缘设备部署"
+ ],
+ "weaknesses": [
+  "依赖把点云渲染为图像并调用冻结2D模型，引入额外渲染与2D推理开销，端到端效率优势需权衡",
+  "相对全微调SOTA(RECon/PointMamba)在部分分裂仍有差距，PETL 上限受限",
+  "语义提示质量受渲染视角与2D模型偏置影响，鲁棒性分析有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

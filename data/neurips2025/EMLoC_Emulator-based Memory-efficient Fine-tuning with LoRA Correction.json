@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/EMLoC_Emulator-based Memory-efficient Fine-tuning with LoRA Correction.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/EMLoC_Emulator-based Memory-efficient Fine-tuning with LoRA Correction.pdf",
+ "title": "EMLoC: Emulator-based Memory-efficient Fine-tuning with LoRA Correction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "轻量模拟器+LoRA校正，减少微调内存但验证有限",
+ "innovations": [
+  "激活感知SVD构建下游感知轻量模拟器",
+  "LoRA校正算法解决模拟器与原始模型不对齐问题",
+  "完全消除微调与推理内存差距，支持个人用户高效适配"
+ ],
+ "method_framework": "三阶段框架：1)使用激活感知SVD在小型校准集上构建轻量模拟器；2)在模拟器上通过LoRA进行微调；3)通过LoRA校正算法将微调后的LoRA模块迁移回原始模型",
+ "experiment_framework": "7个VQA数据集(含3个专业领域)和2个数学推理基准，对比Original/Small/Offsite/UPop基线，评估不同压缩比下的性能",
+ "takeaways": [
+  "激活感知SVD构建的模拟器能有效保留下游任务相关知识",
+  "LoRA校正算法显著提升模拟器微调后的模型性能",
+  "方法与现有内存优化技术正交，可结合使用"
+ ],
+ "weaknesses": [
+  "仅使用64个样本进行校准，可能影响模拟器构建的稳定性",
+  "未探讨不同任务类型对模拟器构建的影响",
+  "实验主要在视觉问答任务进行，验证范围有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Safe Delta Consistently Preserving Safety when Fine-Tuning LLMs on Diverse Datasets.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Safe Delta Consistently Preserving Safety when Fine-Tuning LLMs on Diverse Datasets.pdf",
+ "title": "Safe Delta: Consistently Preserving Safety when Fine-Tuning LLMs on Diverse Datasets",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "Safe Delta通过参数级选择与补偿机制平衡LLM微调中的安全与效用",
+ "innovations": [
+  "基于Hessian矩阵的参数级安全退化估计",
+  "效用-安全比贪心选择策略",
+  "安全补偿向量机制"
+ ],
+ "method_framework": "Safe Delta包含准备阶段和两个主要步骤：1)估计每个delta参数的安全退化，按效用-安全比排序选择；2)应用安全补偿向量减轻选择参数带来的安全损失",
+ "experiment_framework": "在Llama2-7B-Chat上测试，使用PureBad、Identity Shift、Dirty Summary和Math四个数据集，对比SafeInstr、BEA、Safe LoRA和Resta基线，评估ASR、有害性分数和效用指标",
+ "takeaways": [
+  "参数级安全-效用权衡比全局方法更有效",
+  "预计算Hessian逆矩阵可显著降低计算开销",
+  "安全补偿向量能有效减轻选择参数带来的安全退化"
+ ],
+ "weaknesses": [
+  "Hessian矩阵计算在大模型上仍有计算开销",
+  "未探讨不同模型架构的通用性",
+  "安全阈值设置可能影响最终性能"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.95,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

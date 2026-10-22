@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Pow3R_Empowering Unconstrained 3D Reconstruction with Camera and Scene Priors.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Pow3R_Empowering Unconstrained 3D Reconstruction with Camera and Scene Priors.pdf",
+ "title": "Pow3R Empowering Unconstrained 3D Reconstruction with Camera and Scene Priors",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "扩展DUSt3R融合相机先验，提升3D重建分辨率与姿态估计",
+ "innovations": [
+  "引入可变条件输入机制，支持任意组合的相机内参、深度图和相对姿态信息",
+  "预测第二张图像在其自身坐标系中的点图，实现快速相对姿态估计",
+  "通过滑动窗口实现原生分辨率的高分辨率3D重建"
+ ],
+ "method_framework": "基于DUSt3R框架，扩展ViT编码器和解码器，通过轻量级MLP注入辅助信息，训练时随机输入模子集，使模型适应不同测试条件。",
+ "experiment_framework": "在Habitat、Infinigen等8个数据集上评估，涵盖3D重建、深度补全、多视图深度预测等任务，使用相对误差、内点比例等指标。",
+ "takeaways": [
+  "灵活的条件输入机制可显著提升模型性能并赋予新能力",
+  "点图表示法为多任务3D视觉提供了统一框架"
+ ],
+ "weaknesses": [
+  "模型参数增加约4%，计算复杂度有所提升",
+  "深度补全任务在NYUv2上的性能可能因真实标注误差而被低估"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D重建与可靠性主线无交点，属纯图形学渲染",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

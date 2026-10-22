@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Rap 3D Rasterization Augmented End-to-End Planning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rap 3D Rasterization Augmented End-to-End Planning.pdf",
+ "title": "RAP: 3D Rasterization Augmented End-to-End Planning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "轻量3D光栅化替代渲染，特征对齐提升端到端驾驶恢复能力。",
+ "innovations": [
+  "提出用轻量3D光栅化(标注图元)替代昂贵的神经渲染/游戏引擎数字孪生，支撑反事实恢复操纵与跨智能体视角合成等可扩展增强。",
+  "提出Raster-to-Real特征空间对齐，在特征层弥合sim-to-real差距，而非在像素级追求照片级真实。",
+  "组成RAP可扩展数据增强流水线，专门补足模仿学习缺失的恢复(closed-loop recovery)样本。"
+ ],
+ "method_framework": "以轻量光栅化从标注的3D图元合成反事实视角与轨迹(含恢复 maneuver)，经特征空间对齐把合成视图迁移到真实部署，以此增强端到端规划器的闭环鲁棒性与长尾泛化。",
+ "experiment_framework": "在NAVSIM v1/v2、Waymo开放数据集视觉E2E驾驶、Bench2Drive四大基准上评测闭环鲁棒性与长尾泛化，对比神经渲染/仿真增强方法，报告排名。",
+ "takeaways": [
+  "端到端驾驶鲁棒训练依赖几何/语义/动态而非纹理光照，轻量光栅化+特征对齐足以规模化训练。",
+  "RAP在四个主要闭环基准上均排名第一，以远低于照片级渲染的成本提升长尾恢复能力。"
+ ],
+ "weaknesses": [
+  "属自动驾驶落地域，与可靠性主线的医学影像/多模态大模型推理场景关联较弱。",
+  "光栅化仅保留语义/几何，对依赖外观细节(如行人穿着、灯光语义)的罕见场景泛化边界未充分论证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "自动驾驶域的闭环恢复，与医学影像/多模态大模型推理主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MuLan_Adapting Multilingual Diffusion Models for Hundreds of Languages with Negligible Cost.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MuLan_Adapting Multilingual Diffusion Models for Hundreds of Languages with Negligible Cost.pdf",
+ "title": "MuLan: Adapting Multilingual Diffusion Models for Hundreds of Languages with Negligible Cost",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.4
+ },
+ "one_line": "轻量级语言适配器实现多语言文生图，但理论深度和评估有限。",
+ "innovations": [
+  "关键发现：利用在嘈杂互联网图文对上预训练的文本编码器，比高质量多语言标注图像数据更能提升多语言T2I生成的数据效率",
+  "设计轻量级语言适配器MuLan(<20M参数)，冻结文本编码器和图像扩散模型，仅训练适配器桥接二者",
+  "无缝兼容LoRA、LCM、ControlNet、IP-Adapter等社区工具，扩展多语言生成的应用场景"
+ ],
+ "method_framework": "MuLan框架：(1)使用InternVL-LLaMA作为文本编码器，该模型已在多语言图文对上做了Image-Centered Alignment预训练；(2)训练轻量级语言适配器，将多语言对齐的语言模型映射到视觉生成器的输入空间；(3)冻结文本编码器和图像扩散模型，仅训练适配器参数。适配器在LAION-EN子集(美学分>5.8)上训练，支持SD 1.5/2.1、SDXL、PixArt-alpha等多种图像解码器。",
+ "experiment_framework": "在110+语言上评估多语言T2I生成质量。数据集：LAION-EN子集(美学分>5.8)训练基础模型，PixArt数据集训练美学模型。基线包括翻译法和原生多语言T2I模型。指标采用CLIP相似度分数(英文39.57 vs 其他语言39.61)。验证与LoRA/LCM/ControlNet/IP-Adapter等工具的兼容性。",
+ "takeaways": [
+  "嘈杂互联网图文预训练的文本编码器比高质量人工标注数据更能提升多语言T2I的数据效率",
+  "<20M参数的轻量级适配器即可实现110+语言的高质量文生图，成本极低",
+  "多语言能力可以以模块化方式添加到现有T2I模型，无需重新训练整个模型"
+ ],
+ "weaknesses": [
+  "方法本质是工程优化，理论贡献有限，未深入分析适配器为何有效",
+  "仅验证了CLIP相似度这一自动指标，缺乏人工评估和更全面的生成质量benchmark",
+  "低资源语言的实际生成质量可能被CLIP分数高估，文化特定内容的生成能力未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

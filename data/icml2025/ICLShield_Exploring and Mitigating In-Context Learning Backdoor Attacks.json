@@ -1,0 +1,37 @@
+{
+ "title": "ICLShield: Exploring and Mitigating In-Context Learning Backdoor Attacks",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "双学习假设与概念偏好比理论，动态筛选演示防御ICL后门",
+ "innovations": [
+  "首次提出双学习假设：LLM在中毒演示中同时学习任务相关潜概念与后门潜概念，二者独立学习却联合决定输出概率",
+  "用Jensen不等式推导ICL后门效应上界，揭示其由任务/后门后验的概念偏好比主导，并识别任务类型、中毒/干净演示等关键影响因素",
+  "据此提出ICLShield防御：利用置信度与相似度分数在ICL阶段动态筛选干净演示、调节概念偏好比，无需修改参数即可抵御后门"
+ ],
+ "method_framework": "将ICL后门攻击建模为任务潜概念与攻击潜概念的联合后验问题，通过理论分析得出后门效应上界由概念偏好比（中毒演示下任务与攻击后验之比）主导。ICLShield在推理期对候选演示按置信度与相似度打分，动态选择干净演示以压低后门概念偏好比，从而抑制触发词激活的恶意行为。",
+ "experiment_framework": "在多个LLM（含开源模型与闭源GPT-3.5/GPT-4）与多种ICL任务（分类、生成、推理）上评测，对比现有ICL后门防御方法，指标为后门攻击成功率与干净任务准确率，平均较现有方法提升26.02%。",
+ "takeaways": [
+  "ICL后门脆弱性主要由任务与后门潜概念的偏好比决定，而非触发词本身",
+  "在推理期通过置信度/相似度筛选干净演示即可有效防御，无需改动模型参数，对闭源API模型同样有效",
+  "防御在分类、生成、推理多任务及开源/闭源模型上均表现出良好适应性"
+ ],
+ "weaknesses": [
+  "理论上界基于潜概念后验分解的较强假设，真实LLM内部表示是否严格符合双潜概念结构缺乏直接证据",
+  "依赖置信度与相似度分数，对自适应攻击者构造与干净演示高度相似的中毒演示可能失效，鲁棒性未充分压力测试",
+  "前9页内未见对新型/未见触发词或混合中毒比例的极端情形的系统消融"
+ ],
+ "confidence": "high",
+ "key": "icml2025/ICLShield_Exploring and Mitigating In-Context Learning Backdoor Attacks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ICLShield_Exploring and Mitigating In-Context Learning Backdoor Attacks.pdf",
+ "raw_overall": 7.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

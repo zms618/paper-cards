@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/FP8_Towards Fully FP8 GEMM LLM Training at Scale.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/FP8_Towards Fully FP8 GEMM LLM Training at Scale.pdf",
+ "title": "Towards Fully FP8 GEMM LLM Training at Scale",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "FOG架构实现全FP8 GEMM训练，提升吞吐但内存优化不足",
+ "innovations": [
+  "FOG架构首次支持transformer块中所有GEMM的FP8计算",
+  "通过后归一化和冻结QK正则化减少激活异常值",
+  "引入峰度作为FP8训练稳定性的早期预测指标"
+ ],
+ "method_framework": "FOG架构移除预归一化，添加注意力归一化机制，使用非门控激活函数和后归一化，减少大异常值并支持全FP8训练",
+ "experiment_framework": "390M-8B模型规模，FineWeb-Edu数据集，对比Llama3/OP/OLMo2等架构，测量吞吐量和下游任务性能",
+ "takeaways": [
+  "峰度可作为FP8训练稳定性的早期预测指标",
+  "后归一化比预归一化更适合FP8训练",
+  "大模型在FP8训练中倾向于更晚发散"
+ ],
+ "weaknesses": [
+  "仅关注计算效率，未深入探讨内存优化",
+  "实验主要在文本数据上进行，未验证多模态场景"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

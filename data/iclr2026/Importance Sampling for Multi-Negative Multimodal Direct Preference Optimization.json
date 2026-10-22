@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Importance Sampling for Multi-Negative Multimodal Direct Preference Optimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Importance Sampling for Multi-Negative Multimodal Direct Preference Optimization.pdf",
+ "title": "Importance Sampling for MULTI-NEGATIVE MUL-TIMODAL Direct Preference Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "多负采样提升多模态DPO，但计算开销大且依赖CLIP",
+ "innovations": [
+  "引入语义多样化的多负样本到多模态DPO",
+  "基于稀疏自编码器的负样本选择策略",
+  "Plackett-Luce模型与重要性采样结合的优化框架"
+ ],
+ "method_framework": "MISP-DPO框架结合CLIP嵌入和稀疏自编码器，通过重建误差、语义偏差和互多样性选择多样化负样本，使用Plackett-Luce目标函数进行多负样本偏好优化",
+ "experiment_framework": "在5个多模态基准(MMHalBench, HallusionBench, POPE, WildVision, MMVP)上评估，对比LLaVA和Qwen模型，使用幻觉检测和视觉中心推理指标",
+ "takeaways": [
+  "稀疏自编码器可有效解耦视觉语义差异",
+  "多负样本采样能覆盖更广泛的错误模式",
+  "重要性采样提高训练效率并增强模型鲁棒性"
+ ],
+ "weaknesses": [
+  "计算开销增加，需要训练稀疏自编码器",
+  "依赖CLIP空间表示，可能受限于预训练模型的能力",
+  "未充分探索不同数量负样本的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态DPO方法，未直接触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Procedural Mistake Detection via Action Effect Modeling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Procedural Mistake Detection via Action Effect Modeling.pdf",
+ "title": "Procedural Mistake Detection via Action Effect Modeling",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.2
+ },
+ "one_line": "动作效应建模框架，融合执行过程与结果状态检测程序错误。",
+ "innovations": [
+  "提出动作效应建模(AEM)，同时分析动作执行方式和产生的结果状态",
+  "通过语义相关性和视觉质量选择最具信息性的效应帧，融合视觉定位和符号场景图线索",
+  "在单类分类(OCC)设定下于EgoPER和CaptainCook4D基准达到SOTA"
+ ],
+ "method_framework": "AEM首先识别动作的结果帧（基于语义相关性和视觉质量），然后从视觉定位和符号场景图提取互补线索，在共享潜空间对齐形成效应感知表示。最终用基于提示的检测器，结合任务特定提示检测错误。",
+ "experiment_framework": "在EgoPER和CaptainCook4D基准上，单类分类(OCC)设定下评估错误检测性能。对比仅建模执行过程的基线方法。",
+ "takeaways": [
+  "仅分析动作执行过程不足以检测所有错误，动作结果状态同样重要",
+  "视觉定位和符号场景图的互补线索提升了错误检测的可靠性",
+  "效应感知表示可受益于更广泛的下游应用"
+ ],
+ "weaknesses": [
+  "效应帧的选择依赖语义相关性判断，可能引入额外误差",
+  "场景图的构建需要额外的视觉推理步骤，计算开销较大",
+  "实验主要在烹饪和组装任务上验证，医疗等高精度场景未充分测试"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "动作效应建模提升错误检测可靠性，符合鲁棒性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

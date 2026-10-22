@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Re-ranking Reasoning Context with Tree Search Makes Large Vision-Language Models Stronger.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Re-ranking Reasoning Context with Tree Search Makes Large Vision-Language Models Stronger.pdf",
+ "title": "Re-ranking Reasoning Context with Tree Search Makes Large Vision-Language Models Stronger",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "多模态RAG框架，用树搜索重排推理上下文，提升LVLM性能",
+ "innovations": [
+  "针对多模态 RAG 缺乏含推理过程示例与检索知识噪声的问题，构建推理上下文增强的知识库",
+  "引入自一致评估机制筛选并丰富知识库中的内在推理模式",
+  "提出 MCTS-HR 树搜索重排方法，按相关性与推理质量优先选用最有用的检索示例"
+ ],
+ "method_framework": "先以自一致评估从候选中筛选高质量、含推理链的多模态示例构建知识库；推理时对检索到的多个候选上下文用 MCTS 结合启发式奖励做树搜索重排，选出最相关且推理自洽的示例注入 prompt，从而让 LVLM 借助高质量上下文生成更一致的答案，免训练。",
+ "experiment_framework": "在多个多模态 VQA/推理数据集上评测；对比 Zero-Shot、ICL 与 Vanilla-RAG，并在 Qwen2-VL(2B/7B)、InternVL-2(8B) 等不同 LVLM 上验证；指标为 VQA 准确率；报告显著优于 ICL 与 Vanilla-RAG，取得 SOTA。",
+ "takeaways": [
+  "多模态 RAG 的增益不仅来自外部事实，还来自带推理过程的示例上下文",
+  "树搜索重排可在噪声检索结果中挑出最有用的推理示例",
+  "推理上下文增强知识库 + 重排是免训练增强 LVLM 的有效路径"
+ ],
+ "weaknesses": [
+  "MCTS 重排增加检索与推理时的计算开销",
+  "自一致评估仍依赖模型自身，对模型系统性错误缺乏外部校验",
+  "前 9 页未见与最新多模态 RAG 微调方法在同设定下的系统对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

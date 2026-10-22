@@ -1,0 +1,37 @@
+{
+ "title": "Foundation Molecular Grammar: Multi-Modal Foundation Models Induce Interpretable Molecular Graph Languages",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 5,
+  "overall": 5.25
+ },
+ "one_line": "用MMFM提示学习诱导分子超图文法，小样本有效但依赖闭源模型",
+ "innovations": [
+  "将图文法归纳问题重构为MMFM视觉-语言推理任务：把分子渲染为图像，用prompt learning让MMFM在硬约束下选择clique对",
+  "设计三角剖分→合并clique→去环→选根四步MMFM引导的tree decomposition，自动产出与HRG生产规则同构的文法",
+  "FMG可作为drop-in替换嵌入既有分子生成/性质预测流水线，无需重新训练VAE等生成模型"
+ ],
+ "method_framework": "将分子转为超图G_H，再求极大clique得clique图G_C；迭代调用MMFM回答两个问题：F1(选择哪些非终结符LHS)与F2(在候选clique对P中选合并对)；按选择执行三角剖分、合并、去环、选根，得到clique tree；由clique tree按Aguinaga et al.(2018)规则抽取超图文法生产规则；生成时按规则计数采样。",
+ "experiment_framework": "在5个小样本单体数据集(Isocyanates 11/Acrylates 32/Chain Extenders 11)与2个真实数据集(光伏HOPV 316例/毒理)上评测；基线JT-VAE/Hier-VAE/MHG/MoLeR/STONED/DEG/GPT4-ICL；指标Valid/Unique/Novelty/Diversity/Retro* Score/Membership。",
+ "takeaways": [
+  "FMG在小样本(11-32例)上Valid率100%，Retro* Score在Isocyanates达84.4%，显著优于JT-VAE/Hier-VAE/MHG等从头训练方法",
+  "FMG在Membership(目标化学类归属)上接近训练数据自身水平，证明文法归纳能捕捉类特征",
+  "极端少样本(<30)下规则覆盖度下降、Diversity偏低，作者将其归因于MMFM倾向形成复杂clique"
+ ],
+ "weaknesses": [
+  "依赖GPT-4等闭源MMFM，推理成本高、可复现性受限；prompt learning的稳定性未量化",
+  "评测数据集极小(11-32例)，统计显著性弱；未在ZINC/GuacaMol等标准大规模生成基准上对比",
+  "属于化学信息学应用，与可靠性/可信AI主线关联弱；MMFM引导的tree decomposition正确性依赖硬约束兜底，软约束收益的消融不足"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Foundation Molecular Grammar Multi-Modal Foundation Models Induce Interpretable Molecular Graph Languages.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Foundation Molecular Grammar Multi-Modal Foundation Models Induce Interpretable Molecular Graph Languages.pdf",
+ "raw_overall": 5.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

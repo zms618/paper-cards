@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/GGBALL_Graph Generative Model On Poincaré Ball.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/GGBALL_Graph Generative Model On Poincaré Ball.pdf",
+ "title": "GGBALL: Graph Generative Model On Poincaré Ball",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "双曲空间图生成模型，组件多但可靠性验证不足",
+ "innovations": [
+  "双曲向量量化自编码器(HVQVAE)设计",
+  "Poincaré流匹配先验模型",
+  "完全在流形内操作的双曲GNN和Transformer层",
+  "节点级统一潜在表示设计"
+ ],
+ "method_framework": "将标准欧几里得潜在生成管道转换为完全双曲形式：使用HVQVAE编码图结构，通过Poincaré码本量化，利用双曲空间中的流匹配建模 expressive 先验，最后通过双曲Transformer解码潜在代码",
+ "experiment_framework": "在抽象图数据集(Community-small, Ego-small)和分子图数据集(QM9)上评估，使用MMD、度分布、聚类系数、轨道统计、化学有效性、唯一性、新颖性等指标",
+ "takeaways": [
+  "双曲几何能有效建模层次图结构",
+  "向量量化在双曲空间中提供稳定且 expressive 的替代方案",
+  "流匹配在双曲空间中提供灵活的确定性映射"
+ ],
+ "weaknesses": [
+  "KL散度项在双曲流形上数值不稳定",
+  "方法组件较多，实现复杂",
+  "仅评估了分子图的化学有效性，未深入验证其他可靠性指标"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "双曲图生成方法，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TAO-ATTACK Toward Advanced Optimization-Based Jailbreak Attacks for Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TAO-ATTACK Toward Advanced Optimization-Based Jailbreak Attacks for Large Language Models.pdf",
+ "title": "TAO-Attack: Toward Advanced Optimization-Based Jailbreak Attacks for Large Language Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "优化式越狱攻击方法，提升攻击成功率但适用场景有限。",
+ "innovations": [
+  "设计两阶段损失函数：第一阶段抑制拒绝响应以确保模型继续有害前缀，第二阶段惩罚伪有害输出并鼓励更有害的完成",
+  "提出方向优先token优化（DPTO）策略，先将候选对齐梯度方向再考虑更新幅度，提升token级更新效率",
+  "在多个LLM上 consistently 超越SOTA优化式攻击方法，某些场景达到100%攻击成功率"
+ ],
+ "method_framework": "TAO-Attack基于梯度优化越狱提示词。第一阶段：优化损失以抑制模型的拒绝行为，使模型在有害前缀后继续生成而非拒绝。第二阶段：在不拒绝的基础上，惩罚伪有害输出（看似有害但实质安全的内容），引导模型生成真正的有害完成。DPTO策略在token更新时优先考虑梯度方向对齐，再调整步长，提高优化效率。",
+ "experiment_framework": "在多个开源和闭源LLM上评估；基线包括GCG、AutoDAN等优化式越狱攻击方法；指标为攻击成功率（ASR）和优化迭代效率。",
+ "takeaways": [
+  "两阶段损失分别解决拒绝抑制和有害内容生成两个问题，比单阶段损失更有效",
+  "方向优先的token优化策略显著提升了梯度优化的收敛效率",
+  "现有安全对齐在优化式攻击面前仍较脆弱，需要更强的防御机制"
+ ],
+ "weaknesses": [
+  "攻击需要白盒访问模型梯度或logits，黑盒场景下的适用性有限",
+  "实验主要在英文有害查询上验证，多语言和特定领域的攻击效果未知",
+  "论文仅提出攻击方法，对防御策略的讨论和评估不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.13,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "攻击方法与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

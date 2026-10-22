@@ -1,0 +1,37 @@
+{
+ "key": "iclr2026/RESFL_An Uncertainty-Aware Framework for Responsible Federated Learning By Balancing Privacy, Fairness and Utility.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RESFL_An Uncertainty-Aware Framework for Responsible Federated Learning By Balancing Privacy, Fairness and Utility.pdf",
+ "title": "RESFL: An Uncertainty-Aware Framework for Responsible Federated Learning by Balancing Privacy, Fairness and Utility",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "elevance": 7.0,
+  "evidence": 5.5,
+  "overall": 6.25
+ },
+ "one_line": "对抗隐私解耦与不确定性聚合的联邦学习框架，三目标权衡有限。",
+ "innovations": [
+  "在联邦学习中联合优化隐私保护与群体公平，用梯度反转层去除共享表示中的敏感属性信号",
+  "提出基于证据神经网络的不确定性引导聚合，用尺度不变不确定性公平度量（UFM）自适应加权客户端更新",
+  "在自动驾驶场景（FACET/CARLA）中同时降低成员推理攻击成功率37%、机会均等差距17%，并保持高mAP"
+ ],
+ "method_framework": "RESFL包含两个互补组件：(1)对抗隐私解耦模块——用梯度反转层训练对抗器从共享表示中去除敏感属性，减少隐私泄漏同时维持公平所需的信息；(2)不确定性引导聚合——用证据神经网络估计每个客户端更新的认知不确定性和群体间公平差距，对低差距高置信的更新赋予更高权重，确保鲁棒且公平的模型聚合。",
+ "experiment_framework": "在FACET和CARLA自动驾驶目标检测数据集上评测；对比FedAvg等联邦学习基线；报告mAP（效用）、机会均等差距（公平）、成员推理攻击成功率（隐私）；测试天气变化等分布偏移下的鲁棒性。",
+ "takeaways": [
+  "差分隐私会因隐藏敏感属性而加剧公平差距，需与公平干预联合设计而非各自为政",
+  "证据不确定性可作为联邦聚合的权重依据，优先采用低群体差距高置信的客户端更新",
+  "对抗解耦可在不直接暴露敏感属性的前提下维持公平校正所需的信息"
+ ],
+ "weaknesses": [
+  "仅在自动驾驶目标检测场景验证，对医疗/多模态LLM等其他领域的迁移性未讨论",
+  "对抗解耦与不确定性聚合的超参数对三目标权衡的敏感性分析不充分",
+  "前9页未见与最新差分隐私+公平联合FL方法的系统对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "title": "Relative Entropy Pathwise Policy Optimization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "on-policy路径梯度优化，探索与稳定性平衡，但与主线相关性低。",
+ "innovations": [
+  "证明在全on-policy设定下也能训练出足够准确的状态-动作Q函数，从而用pathwise梯度(对动作求导)替代高方差的score-function梯度，且无需重要性采样校正。",
+  "联合熵约束(鼓励探索)与KL相对熵策略偏差约束(防止激进更新)，同时解决探索与稳定更新两难问题。",
+  "系统评估categorical Q-learning、归一化架构、辅助任务等组件对on-policy pathwise学习的稳定化作用。"
+ ],
+ "method_framework": "在on-policy数据上用categorical Q-learning与归一化网络训练准确critic；策略通过对Q关于动作求导(pathwise)更新；最大化熵鼓励探索，并以相对熵/KL项约束新策略偏离旧策略的幅度，避免replay buffer与off-policy拟合问题。",
+ "experiment_framework": "基准：MuJoCo Playground与ManiSkill的locomotion/manipulation任务(30+任务)；对比调优后的on-policy(PPO类)与off-policy基线；指标为样本效率、墙钟时间、显存占用与单套超参跨30+任务的鲁棒性。",
+ "takeaways": [
+  "on-policy下也可学到足够准的Q函数，使低方差pathwise梯度在无replay buffer时可行。",
+  "categorical Q-learning与网络归一化对性能影响大，辅助任务在样本受限时才更重要。",
+  "单套超参即可跨30+任务稳定运行，方法对超参选择鲁棒。"
+ ],
+ "weaknesses": [
+  "与主线(可靠性×医学影像/多模态推理)无关，属机器人控制RL算法，relevance低。",
+  "核心前提是学到高度准确的Q函数，其在高维/部分可移环境的可学性边界在节选页中未充分刻画。",
+  "节选前9页未见30+任务的完整收益表与相对PPO的量化差距，证据在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Relative Entropy Pathwise Policy Optimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Relative Entropy Pathwise Policy Optimization.pdf",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "机器人控制RL算法，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

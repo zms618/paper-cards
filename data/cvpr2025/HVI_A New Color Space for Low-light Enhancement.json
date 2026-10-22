@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/HVI_A New Color Space for Low-light Enhancement.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/HVI_A New Color Space for Low-light Enhancement.pdf",
+ "title": "HVI A New Color Space for Low-light Enhancement",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "HVI色彩空间与CIDNet解决低光红黑噪声，但泛化性与效率存疑",
+ "innovations": [
+  "提出HVI新色彩空间，解决HSV中的红不连续性和黑平面噪声问题",
+  "设计可学习的强度折叠函数Ck，自适应压缩低光区域",
+  "CIDNet双分支网络解耦处理颜色和亮度信息"
+ ],
+ "method_framework": "将sRGB转换为HVI色彩空间，通过极化HS平面和可学习强度函数Ck减少噪声，CIDNet双分支网络分别处理HV平面和强度信息，最后通过感知逆HVI变换恢复sRGB图像",
+ "experiment_framework": "在LOLv1/v2、SICE、Sony-Total-Dark等9个数据集上评估，使用PSNR、SSIM、LPIPS等指标，并与多种SOTA方法比较",
+ "takeaways": [
+  "色彩空间设计对低光增强至关重要，HVI空间有效解决传统RGB和HSV的局限性",
+  "双分支网络结构能有效解耦处理颜色和亮度信息，提升增强效果"
+ ],
+ "weaknesses": [
+  "仅关注低光增强任务，未探讨在其他图像处理任务上的泛化能力",
+  "模型参数虽小但计算复杂度仍较高，推理时间较长"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "低光增强非可靠性主线，色彩空间设计无迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

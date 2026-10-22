@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Feature Decomposition-Recomposition in Large Vision-Language Model for Few-Shot Class-Incremental Learning.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Feature Decomposition-Recomposition in Large Vision-Language Model for Few-Shot Class-Incremental Learning.pdf",
+ "title": "Feature Decomposition-Recomposition in Large Vision-Language Model for Few-Shot Class-Incremental Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "冻结CLIP，用LLM生成关键词分解特征，解决VLM增量学习过拟合",
+ "innovations": [
+  "语义特征分解-重组框架",
+  "关键词接地函数实现细粒度特征映射",
+  "属性级原型校准方法"
+ ],
+ "method_framework": "冻结CLIP主干网络，通过LLM生成类别描述和关键词，设计关键词接地函数将特征分解为语义感知片段，再基于相似性重组这些片段校准新类原型。",
+ "experiment_framework": "在CIFAR100、miniImageNet、CUB200和IN1K-FSCIL数据集上评估，使用5-shot和1-shot设置，比较AvgAcc和NAcc指标。",
+ "takeaways": [
+  "细粒度特征分解可解决原型偏置问题",
+  "语言引导的特征重组能有效提升少样本增量学习性能"
+ ],
+ "weaknesses": [
+  "依赖LLM生成关键词的质量",
+  "未探索不同特征分解粒度的影响",
+  "计算复杂度随基类数量增加而指数增长"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "冻结CLIP特征分解解决增量学习过拟合，触及可靠性主线中的校准与泛化",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

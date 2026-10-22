@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DCTdiff_Intriguing Properties of Generative Modeling in the DCT Space.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DCTdiff_Intriguing Properties of Generative Modeling in the DCT Space.pdf",
+ "title": "DCTdiff: Intriguing Properties of Image Generative Modeling in the DCT Space",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "DCT空间扩散建模，JPEG范式提升生成效率，但适用场景有限。",
+ "innovations": [
+  "提出DCTdiff范式：将RGB图像经YCbCr转换、色度子采样、分块DCT变换后直接在频空间进行扩散建模，无需训练VAE",
+  "理论证明图像扩散可视为谱自回归(spectral autoregression)，桥接扩散模型与自回归模型(VAR)的联系",
+  "提出DCT空间图像上采样新定理，性能优于双线性/双三次插值"
+ ],
+ "method_framework": "DCTdiff流程：(1)RGB转YCbCr并做2x色度子采样；(2)分块2D DCT变换(块大小B可变)；(3)zigzag扫描排序频率系数，按rFID准则截断高频；(4)4Y+1Cb+1Cr打包为一个Transformer token；(5)在DCT系数空间进行连续时间扩散训练和采样。支持UViT和DiT架构。",
+ "experiment_framework": "在多个数据集(CIFAR、AFHQ、ImageNet等)上评测；对比像素空间扩散和SD-VAE潜空间扩散；测试UViT/DiT两种架构、多种采样器(Euler/Heun/DPM++等)；指标为FID；验证512x512高分辨率生成能力。",
+ "takeaways": [
+  "DCTdiff在生成质量和训练效率上均优于像素空间扩散模型",
+  "无需VAE即可扩展到512x512分辨率，训练成本仅为SD-VAE潜扩散的1/4",
+  "频空间建模天然支持按频率粒度控制生成过程，可灵活优先生成低频或高频细节"
+ ],
+ "weaknesses": [
+  "依赖JPEG式的色度子采样和块DCT，对非自然图像(如医学影像、文本截图)的适用性未验证",
+  "高频截断准则基于rFID经验阈值γ=0.5，对不同数据分布的自适应能力不足",
+  "仅在无分类器条件生成设置下验证，text-to-image等条件生成场景的效果未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

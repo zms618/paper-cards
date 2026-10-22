@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Disparate Conditional Prediction in Multiclass Classifiers.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Disparate Conditional Prediction in Multiclass Classifiers.pdf",
+ "title": "Disparate Conditional Prediction in Multiclass Classifiers",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "将二分类DCP扩展到多分类，但缺乏与主流公平度量的系统对比",
+ "innovations": [
+  "将二分类的Disparate Conditional Prediction(DCP)推广到多分类分类器，以人口比例度量偏离多分类等机会公平的程度",
+  "在各受保护子群条件混淆矩阵已知与不可知(黑箱/缺个体数据)两种设定下分别提出局部优化估计方法",
+  "仅用群体层面的预测频率信息即可审计专有(不可访问)分类器的公平性偏差"
+ ],
+ "method_framework": "DCP定义为条件预测概率偏离最近公共基线的人口比例；针对多分类情形，分别在已知与不可知条件混淆矩阵下构造局部优化问题求解最优公共基线，从而估计受不公平对待的人群比例，用于识别显著区别对待不同受保护子群的分类器。",
+ "experiment_framework": "在合成数据与真实数据上验证估计方法的准确性，报告DCP估计值与真值的偏差；比较不同信息可得性(已知/不可知混淆矩阵)下的估计精度。",
+ "takeaways": [
+  "多分类DCP可统一量化偏离等机会公平的程度，且具有与类别数无关的可解释人口比例含义",
+  "在分类器不可访问或缺个体级数据时，仅靠群体层面频率仍能给出有用的DCP估计"
+ ],
+ "weaknesses": [
+  "正文前9页未见与主流多分类公平度量(差异比/比率)的系统对比实验",
+  "依赖局部优化求解非凸目标，可能收敛到局部最优，全局最优性未充分证明",
+  "仅依据前9页阅读，完整实验表与收敛性/复杂度分析未完全覆盖"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

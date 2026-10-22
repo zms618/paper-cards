@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Revisiting Generative Replay for Class Incremental Object Detection.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Revisiting Generative Replay for Class Incremental Object Detection.pdf",
+ "title": "Revisiting Generative Replay for Class Incremental Object Detection",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "标准扩散模型生成图像回放，简单组合提升类增量检测",
+ "innovations": [
+  "图像级生成回放而非实例级，简化复杂场景生成",
+  "基于相似性的跨采样机制选择有价值混淆样本",
+  "结合新旧任务合成数据与真实数据训练，减少域差距"
+ ],
+ "method_framework": "利用标准Stable Diffusion模型生成图像级回放数据，通过伪标签确定边界框位置，并引入相似性跨采样机制选择有价值样本，结合新旧任务合成数据与真实数据训练当前阶段检测器。",
+ "experiment_framework": "在PASCAL VOC 2007和MS COCO数据集上评估，使用mAP@0.5和COCO标准指标，比较多种单步和多步增量设置下的基线方法。",
+ "takeaways": [
+  "分类子任务比定位子任务更容易遗忘，可针对性设计回放策略",
+  "简单图像级生成结合伪标签可有效替代复杂实例级生成",
+  "跨任务相似性采样可降低新任务误报率"
+ ],
+ "weaknesses": [
+  "仅使用标准Stable Diffusion模型未针对检测任务优化",
+  "图像级生成可能无法充分捕获复杂场景的空间关系",
+  "实验主要在标准数据集上验证，缺乏真实场景应用"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "类增量检测与可靠性主线弱相关，生成回放方法有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

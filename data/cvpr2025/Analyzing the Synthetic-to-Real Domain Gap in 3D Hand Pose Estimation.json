@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Analyzing the Synthetic-to-Real Domain Gap in 3D Hand Pose Estimation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Analyzing the Synthetic-to-Real Domain Gap in 3D Hand Pose Estimation.pdf",
+ "title": "Analyzing the Synthetic-to-Real Domain Gap in 3D Hand Pose Estimation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "系统归因合成到真实域差距，但核心方法非原创且实验证据不足",
+ "innovations": [
+  "自建可控渲染流水线（NIMBLE 手模型 + 669 张 HDRI + Blender/Cycles，约 1 秒/图，460K 数据），并拟合真实姿态使构图与 FreiHAND/Dex-YCB 对齐，从而把背景/纹理/手臂/遮挡/姿态逐因素解耦比较",
+  "给出四项可迁移归因结论：前臂是定位腕部的关键线索、幅度谱增广（保相位改幅度）是缩窄 S→R 差距的关键项、背景与纹理多样性在 50% 资产即饱和、真实姿态只需 5%/20% 即可拿到 80%/90% 性能",
+  "用 GroundingDINO+SAM 从真实图抠出手臂与交互物体再合成回渲染图做 composition，并训练 VAE 遮挡先验（随机掩关节、KL+3D 重建损失）在推理期重建被遮挡关节"
+ ],
+ "method_framework": "以 NIMBLE（5990 顶点/9984 面）拟合作真实姿态生成 3D 手，Blender+Cycles 渲染带动态 HDRI 背景与多纹理图像；用 DINO+SAM 抠真实手臂/物体合成回渲染图；训练 VAE 遮挡先验，推理时用它重建被遮挡关节再套用融合模型。",
+ "experiment_framework": "目标域 FreiHAND、Dex-YCB，跨域验证 HO3D-v2 与 MOW，复现 S2HAND/CMR/METRO/MeshGraphormer/simpleHand 五个基线，指标 PA-MPJPE/PA-MPVPE。",
+ "takeaways": [
+  "若渲染管线可控，优先补\"真实图有而合成图缺\"的部件（前臂、交互物体）比继续堆纹理/背景资产性价比高（本文显示资产 50% 即饱和）",
+  "幅度谱增广（扰动幅度、保留相位）是一把便宜的跨域鲁棒性撬棒，可迁移到任何\"合成训练→真实测试\"的视觉任务",
+  "合成数据里的核心真实姿态只需少量（5%-20%）即可打底，视觉表征可完全由合成图提供——降低真实标注依赖的可行路径"
+ ],
+ "weaknesses": [
+  "核心成分（幅度谱增广、VAE 遮挡先验、composition 的 DINO+SAM 流水线）本身均引自 PASTA/已有 VAE 先验工作，本文增量是\"在新域做系统归因\"而非新机制；消融也只有表 4 的 5 行单指标对比",
+  "表 3 中 DARTset 结果是原文报告值而非同机复现，且规模 758K vs 本文 325K 口径不一；RenderIH 在 HO3D-v2 上只取右手结果，跨数据集比较不完全对等",
+  "全部指标只报单次均值、无方差；幅度谱增广消融的差距仅 0.09cm（SynFrei）/0.02cm（SynDex），远小于网格折算误差，统计显著性无法判断",
+  "正文在 4.7 节截断：骨架拓扑差异的量化结论、MOW 跨域泛化结果与补充材料中的失败分析不可见"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "域差距分析非可靠性主线，方法无创新且实验不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Omniportrait_Fine-Grained Personalized Portrait Synthesis via Pivotal Optimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Omniportrait_Fine-Grained Personalized Portrait Synthesis via Pivotal Optimization.pdf",
+ "title": "OmniPortrait: Fine-Grained Personalized Portrait Synthesis via Pivotal Optimization",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 4.9
+ },
+ "one_line": "双流身份引导的肖像合成，增加采样开销且未讨论隐私风险",
+ "innovations": [
+  "提出 pivotal optimization 的双流身份引导：粗到细地合成身份细节",
+  "Pivot ID Encoder 用 face localization loss 训练，且不微调去噪器，避免可编辑性退化，同时提供推理时的身份 pivot 初始化",
+  "Reference-Based Guidance 在扩散中间特征上基于身份 pivot 做在线特征匹配与优化，并自然扩展到多身份定制"
+ ],
+ "method_framework": "基于扩散的肖像合成：先训练 Pivot ID Encoder 提取粗粒度身份作为 pivot；推理时以此初始化，再在扩散中间特征上做参考式在线特征匹配/优化（Reference-Based Guidance），实现细粒度身份引导而不牺牲文本可编辑性。",
+ "experiment_framework": "对比 Instant-ID、PhotoMaker 等定制生成方法；评测身份保真度（ID similarity）、人脸细节、文本-图像对齐；并验证多身份定制场景。",
+ "takeaways": [
+  "单流身份引导难以兼顾细粒度身份细节与文本可编辑性，粗到细双流更优",
+  "不微调去噪器而用参考式中间特征优化，可在保身份的同时维持可编辑性",
+  "pivot 初始化+在线特征匹配框架可自然扩展到多身份生成"
+ ],
+ "weaknesses": [
+  "推理时需在线特征匹配/优化，增加采样开销，正文未报告效率对比",
+  "身份定制涉及人脸生成，潜在滥用/隐私风险，正文未讨论治理",
+  "属图像生成，偏离可靠性/医学影像/多模态推理主线，相关性低"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.48,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯图像生成，偏离可靠性主线且无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

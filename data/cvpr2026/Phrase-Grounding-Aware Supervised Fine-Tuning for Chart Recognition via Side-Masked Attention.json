@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Phrase-Grounding-Aware Supervised Fine-Tuning for Chart Recognition via Side-Masked Attention.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Phrase-Grounding-Aware Supervised Fine-Tuning for Chart Recognition via Side-Masked Attention.pdf",
+ "title": "Phrase-Grounding-Aware Supervised Fine-Tuning for Chart Recognition via Side-Masked Attention",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "掩码注意力模块将短语接地融入图表识别微调",
+ "innovations": [
+  "自动生成短语到区域对齐的数据增强管道",
+  "Side-Masked Attention模块(SMAM)实现短语接地感知的微调",
+  "利用logit贡献分析指导模型关注相关视觉区域"
+ ],
+ "method_framework": "在LLM的每个transformer层中插入SMAM模块，执行掩码注意力生成额外logit，通过交叉熵和相对约束损失函数监督模型学习短语与区域的对应关系",
+ "experiment_framework": "在ChartQA、QA-CoT、Pew和Statista数据集上评估，使用Relaxed Accuracy(RA)和F1分数，与SFT、文本定位(TL)和分割方法(Seg)对比",
+ "takeaways": [
+  "logit贡献分析可作为视觉-语言接地的新视角",
+  "无需额外预训练即可在微调阶段提升模型性能",
+  "掩码注意力机制可有效引导模型关注相关区域"
+ ],
+ "weaknesses": [
+  "方法仅在图表识别领域验证，泛化性未知",
+  "依赖外部文本分割模型(GPT-4V)生成对齐数据",
+  "计算开销较大，需要额外的前向传播"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "图表识别属于医学影像落地域，方法有可靠性设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

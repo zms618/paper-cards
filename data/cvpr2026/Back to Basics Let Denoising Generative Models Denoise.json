@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Back to Basics Let Denoising Generative Models Denoise.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Back to Basics Let Denoising Generative Models Denoise.pdf",
+ "title": "Back to Basics Let Denoising Generative Models Denoise",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "改进扩散预测目标，但计算效率与泛化性验证不足",
+ "innovations": [
+  "提出x-prediction替代传统的ε/v-prediction",
+  "设计JiT架构直接在像素空间处理大块图像",
+  "发现瓶颈结构在高维扩散中反而有益"
+ ],
+ "method_framework": "基于流模型框架，提出JiT架构，直接预测干净图像而非噪声或速度，通过线性嵌入和Transformer块处理高维图像块",
+ "experiment_framework": "ImageNet 256/512分辨率，JiT/16和JiT/32模型，FID-50K指标，对比x/ε/v预测和不同损失函数",
+ "takeaways": [
+  "在高维空间中直接预测干净图像比预测噪声更有效",
+  "扩散模型预测目标选择比损失加权更重要",
+  "瓶颈结构可提升高维扩散性能"
+ ],
+ "weaknesses": [
+  "未探讨计算效率与性能权衡",
+  "缺乏对其他数据集的验证",
+  "未分析不同图像类型的表现差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型预测目标改进，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

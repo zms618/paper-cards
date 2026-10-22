@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Thinking-Free Policy Initialization Makes Distilled Reasoning Models more Effective and Efficient Reasoners.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Thinking-Free Policy Initialization Makes Distilled Reasoning Models more Effective and Efficient Reasoners.pdf",
+ "title": "Thinking-Free Policy Initialization Makes Distilled Reasoning Models more Effective and Efficient Reasoners",
+ "scores": {
+  "novelty": 4,
+  "depth": 5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 4.8
+ },
+ "one_line": "简单截断思考内容加速RLVR训练，数学推理性能提升有限",
+ "innovations": [
+  "提出Thinking-Free Policy Initialization，在RLVR训练初始阶段通过直接追加</think>显式丢弃思考内容",
+  "证明该简单操作能加速RL收敛、提高性能上限，且无需特殊奖励或复杂训练设计",
+  "训练后即使在原始慢思考模式下也能提升性能并降低token消耗"
+ ],
+ "method_framework": "TFPI在RLVR训练初期采用ThinkingFree操作：将输入中的思考内容直接截断，只保留问题和最终答案。这种短上下文初始化避免了过长CoT带来的训练计算开销，同时为后续RL训练提供良好起点。随着训练进行再逐步恢复思考过程。",
+ "experiment_framework": "在多个数学推理和代码生成基准上评估（AIME24、LiveCodeBench等）。对比标准RLVR和多阶段训练方法。指标为准确率和token效率。模型规模4B。",
+ "takeaways": [
+  "从过短上下文开始RLVR训练不会导致不可逆的性能退化，反而能加速收敛",
+  "TFPI是简单但有效的技巧，无需修改奖励函数或训练架构",
+  "仅用<4K H20小时训练4B模型即可在AIME24达到89%准确率"
+ ],
+ "weaknesses": [
+  "与主线（医学影像/多模态大模型推理）关联较弱，主要是纯文本推理训练效率优化",
+  "方法非常简单，理论深度有限，更多是工程技巧",
+  "仅在数学和代码推理任务上验证，其他推理任务的适用性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "文本推理训练效率优化，与医学影像/多模态主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

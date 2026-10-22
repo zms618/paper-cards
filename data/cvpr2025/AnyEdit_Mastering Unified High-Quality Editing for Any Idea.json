@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/AnyEdit_Mastering Unified High-Quality Editing for Any Idea.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AnyEdit_Mastering Unified High-Quality Editing for Any Idea.pdf",
+ "title": "AnyEdit: Mastering Unified High-Quality Image Editing for Any Idea",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "百万级编辑数据集与MoE路由，但实验隔离不足且评测同源偏倚",
+ "innovations": [
+  "反事实合成场景补尾部分布：从网络收低频tail概念+LLaMA-3B组组合描述→T2I出图，得22,936对/500概念的合成图文对，与680K真实图文对混合，专门治'把树换成骆驼会带出沙子'这类共现偏置",
+  "Adaptive editing pipeline：为25类编辑各配专用生成流程（不同mask dilation、layout、几何约束注入U-Net层），替代所有指令共用一个固定InstructPix2Pix串行流水+人工筛选",
+  "AnySD：visual prompt projector把CLIP图像特征对齐到指令嵌入；MoE块共享同一text attention、按可学习task embedding经router给各专家分配对cV的注意力权重；task embedding插在MoE之前而非整个去噪过程；两阶段训练（Stage I冻router只训UNet、Stage II调W'k/W'v/router/projector/task embedding）"
+ ],
+ "method_framework": "真实+反事实合成图文对→LLM生成25类编辑指令→任务专属流水线出编辑图→CLIP/朝向相似度/目标检测/VLM三重过滤→AnySD（视觉投影+MoE任务路由+可学任务嵌入，两阶段训练）统一执行。",
+ "experiment_framework": "MagicBrush/EMU-Edit/自建AnyEdit-Test(1250对,25类)上报CLIPim/CLIPout/L1/DINO；Tab.3与UltraEdit做数据集质量对比、Fig.4画规模曲线；正文在§5.5中途截断。",
+ "takeaways": [
+  "用LLM+in-context示例做指令生成并做迭代自增强，再叠'指令校验前置过滤+图像质量后置过滤（原图CLIP相似、方向相似度、目标检测、VLM）'，是低成本把编辑数据量扩到百万级的可复用配方",
+  "task embedding只喂router和视觉prompt而非注入整个去噪链，能缓解'instruction token 与编辑类型'之间的query混淆",
+  "自己再造一个更难的分类型评测集（每类50条）来暴露旧基准对复杂编辑的盲区，是让数据集工作立得住的标配动作"
+ ],
+ "weaknesses": [
+  "Table 4里 SD1.5 w/ AnyEdit 与 AnySD w/ AnyEdit 只差MoE路由+task embedding，但Stage II同步微调了projector与router，架构增益与数据增益没有被隔离；Stage I/II配比、专家数、task embedding维数均无消融",
+  "数据过滤的判据（CLIP相似度、L1、方向相似度、目标检测）与评测指标同源，等于用评测尺子筛训练数据，'概念多样性'和'编辑真值正确性'的偏倚全文未讨论",
+  "AnyEdit-Test由作者自行发布，与MagicBrush/EMU-Edit的跨基准绝对量不可直接比；所有指标均单值无方差；正文在§5.5中途截断，缺MoE与两阶段训练的系统消融及推理成本"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "图像编辑与可靠性主线无交点，仅数据扩增方法有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

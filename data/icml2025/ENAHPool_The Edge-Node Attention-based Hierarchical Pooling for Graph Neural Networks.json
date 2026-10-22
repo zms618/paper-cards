@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/ENAHPool_The Edge-Node Attention-based Hierarchical Pooling for Graph Neural Networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ENAHPool_The Edge-Node Attention-based Hierarchical Pooling for Graph Neural Networks.pdf",
+ "title": "ENAHPool: The Edge-Node Attention-based Hierarchical Pooling for Graph Neural Networks",
+ "scores": {
+  "novelty": 4.5,
+  "depth": 5.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 4.7
+ },
+ "one_line": "组合式图池化，无显著突破与主线关联",
+ "innovations": [
+  "每个节点独占分配到单一簇，避免软分配中影响节点被拆分、弱节点主导簇表征的问题",
+  "用注意力机制对簇内节点特征与簇间边连接强度做加权聚合，得到更具信息的层次化表征",
+  "引入多距离消息传递网络MD-MPNN，利用边连接强度跨多距离选择性传播，缓解经典MPNN过挤压"
+ ],
+ "method_framework": "层次化图池化方法：先将节点独占划分到簇，再以注意力加权聚合簇内节点特征与簇间边强度形成粗化图；配套MD-MPNN按多距离选择性传播消息，缓解长程依赖的过挤压问题，逐层池化得到图级表征用于图分类/回归。",
+ "experiment_framework": "在常用图分类基准上与Top-K及多种基于簇的层次池化方法对比，报告分类准确率等指标；消融验证独占分配、边注意力与MD-MPNN各组件。",
+ "takeaways": [
+  "独占簇分配+边节点注意力聚合在图分类上优于软分配池化基线",
+  "多距离消息传递可缓解过挤压、改善长程结构建模",
+  "层次池化相比全局池化能更好保留图的层次结构"
+ ],
+ "weaknesses": [
+  "与主线（可靠性/可信AI/医学影像/多模态大模型推理）无关，仅为GNN池化常规改进",
+  "创新多为已有组件（注意力+簇分配+多距离MP）的组合，缺乏原理性突破",
+  "前9页内未见到与SOTA的大幅差距证据，增益幅度需看完整主表"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

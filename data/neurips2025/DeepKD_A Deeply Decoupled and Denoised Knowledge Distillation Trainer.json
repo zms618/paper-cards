@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/DeepKD_A Deeply Decoupled and Denoised Knowledge Distillation Trainer.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/DeepKD_A Deeply Decoupled and Denoised Knowledge Distillation Trainer.pdf",
+ "title": "DeepKD: A Deeply Decoupled and Denoised Knowledge Distillation Trainer",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "DeepKD通过梯度解耦和掩码机制提升知识蒸馏，但计算成本增加",
+ "innovations": [
+  "GSNR驱动的梯度解耦优化",
+  "动态top-k掩码机制过滤低置信度暗知识",
+  "双级解耦框架分离任务导向和知识蒸馏梯度"
+ ],
+ "method_framework": "DeepKD框架将知识分解为任务导向梯度(TOG)、目标类梯度(TCG)和非目标类梯度(NCG)，通过GSNR分析为各组件分配不同动量系数，并引入动态top-k掩码过滤噪声",
+ "experiment_framework": "在CIFAR-100、ImageNet-1K和MS-COCO数据集上评估，与多种基线方法比较，包括KD、DKD、DOT等，使用Top-1准确率和AP指标",
+ "takeaways": [
+  "GSNR分析为梯度解耦提供理论依据",
+  "动态top-k掩码遵循课程学习原则，逐步增加考虑的非目标类别"
+ ],
+ "weaknesses": [
+  "方法增加了计算复杂度，需要维护多个动量缓冲区",
+  "动态top-k掩的超参数调整可能需要额外计算成本"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

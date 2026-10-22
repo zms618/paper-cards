@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/3D Question Answering via only 2D Vision-Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/3D Question Answering via only 2D Vision-Language Models.pdf",
+ "title": "3D Question Answering via only 2D Vision-Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 4.5,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.3
+ },
+ "one_line": "零训练视图选择提升2D-VLM的3D问答能力，但技术深度有限。",
+ "innovations": [
+  "在3D训练数据有限下，不微调任何LVLM，零样本地把3D场景问答转化为采样2D视图喂给现成2D-VLM（如LLaVA-OV）。",
+  "提出viewSelector，依据视图提供答案相关信息的潜力对关键视图优先排序。",
+  "提出viewNMS，按空间重叠去除冗余视图，保证所选视图的多样性。"
+ ],
+ "method_framework": "从3D点云渲染若干候选2D视图；viewSelector按与问题的相关性给视图打分选关键视图，viewNMS基于视图间空间重叠做非极大抑制去冗余；将筛选后的视图连同问题送入现成2D-LVLM直接作答，全程零训练。",
+ "experiment_framework": "在ScanQA（41K标注/800场景）与SQA（33K问答/650场景，均源自ScanNet）上评测；指标为EM@1与CIDEr；对比均匀采样、图像检索及3D/混合方法（BridgeQA、3D-VLP、3D-VisTA、PQ3D、SynFormer3D、NaviLLM）。",
+ "takeaways": [
+  "仅用2D-VLM的方法反而优于专用3D与混合方法，FcdViews在ScanQA上比BridgeQA提升15.0%/21.1% CIDEr。",
+  "在2D-only方法中，cdViews优于均匀采样与图像检索，证明关键且多样的视图选择最关键。",
+  "均匀采样忽略问题、图像检索常失效，针对性选视图是性能关键。"
+ ],
+ "weaknesses": [
+  "完全依赖现成2D-VLM（LLaVA-OV）的固有能力，方法本身只是视图选择的推理侧策略，技术深度有限。",
+  "仅在室内ScanNet系数据集验证，未涉及户外、具身导航或更开放的3D场景。",
+  "视图渲染与选择引入额外开销，且对视角盲区、遮挡严重的3D场景可靠性未充分分析。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视图选择策略与可靠性主线无实质交织，仅是3D推理的工程优化",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Reinforcement Learning with Adaptive Reward Modeling for Expensive-to-Evaluate Systems.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Reinforcement Learning with Adaptive Reward Modeling for Expensive-to-Evaluate Systems.pdf",
+ "title": "Reinforcement Learning with Adaptive Reward Modeling for Expensive-to-Evaluate Systems",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "AdaReMo：局部奖励模型加速昂贵评估系统的RL训练",
+ "innovations": [
+  "针对奖励评估昂贵导致 RL 训练慢、决策与评估不同步(out-of-sync)的问题。",
+  "把复杂奖励函数分解为多个局部化快速奖励神经网络模型。",
+  "这些局部模型随智能体演化的策略动态适应当前探索子空间，用最新轨迹持续拟合，保证全程奖励估计准确。"
+ ],
+ "method_framework": "把 RL 训练解耦为在线(智能体决策)与离线(奖励建模)两个系统；用多个局部奖励模型近似真实昂贵奖励，当策略探索到新子空间时用最新轨迹更新/重建对应局部模型，从而在不频繁调用昂贵奖励评估器的情况下获得足够准确的奖励信号。",
+ "experiment_framework": "在奖励评估昂贵的 RL 任务上对比无奖励模型/全局奖励模型 vs AdaReMo；指标为样本/时间效率(达到同性能所需昂贵奖励评估次数/墙钟时间)与最终性能。",
+ "takeaways": [
+  "局部化+自适应的奖励模型比单一全局模型更能跟踪策略演化。",
+  "AdaReMo 显著减少对昂贵奖励评估器的调用、加速 RL 训练。",
+  "在线/离线解耦让快速决策与慢速评估并行。"
+ ],
+ "weaknesses": [
+  "局部模型的划分/数量与更新阈值需手工设定，自适应性依赖启发式。",
+  "奖励模型的估计偏差若过大可能误导策略，误差传播分析有限。",
+  "属 RL 效率方向，与可靠性、医学影像、多模态推理主线关联较弱。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.98,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

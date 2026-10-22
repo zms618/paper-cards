@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Guiding a Diffusion Transformer with the Internal Dynamics of Itself.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Guiding a Diffusion Transformer with the Internal Dynamics of Itself.pdf",
+ "title": "Guiding a Diffusion Transformer with the Internal Dynamics of Itself",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "利用扩散模型内部动态进行指导，提升生成质量和训练效率。",
+ "innovations": [
+  "内部指导(IG)策略，利用中间层输出增强生成质量",
+  "训练过程中引入中间层辅助监督信号",
+  "采样过程中利用中间和深层输出外推获得生成结果",
+  "IG与CFG和指导区间的组合使用"
+ ],
+ "method_framework": "在训练过程中引入中间层辅助监督信号，在采样过程中利用中间层和深层输出的关系进行外推，实现类似Autoguidance的效果但无需额外训练步骤或采样步骤。",
+ "experiment_framework": "ImageNet 256×256数据集，对比SiT、DiT和LightningDiT模型，使用FID、IS、Precision和Recall作为评估指标。",
+ "takeaways": [
+  "中间层辅助监督可有效缓解梯度消失问题，收敛性能与自监督正则化相当",
+  "IG与CFG结合可进一步提升生成质量，同时保持多样性"
+ ],
+ "weaknesses": [
+  "中间监督层的位置选择对性能影响较大，需要仔细调整",
+  "IG系数和指导区间的选择需要大量实验确定"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "纯生成模型改进，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Enhancing Foundation Models with Federated Domain Knowledge Infusion.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Enhancing Foundation Models with Federated Domain Knowledge Infusion.pdf",
+ "title": "Enhancing Foundation Models with Federated Domain Knowledge Infusion",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "FedAG用多适配器融合联邦知识，提升视觉模型OOD泛化，但开销与扩展性存疑",
+ "innovations": [
+  "用多个细粒度适配器捕获各客户端领域特定知识",
+  "在联邦设置下同时增强域外(OOD)泛化",
+  "面向数据隐私敏感场景(如医疗)的跨silo联邦PEFT微调"
+ ],
+ "method_framework": "FedAG 在联邦学习+PEFT框架下为CLIP等视觉基础模型配置多个细粒度适配器，各客户端本地训练领域适配器，跨silo聚合后既融合领域知识又通过适配器设计提升域外泛化，避免集中式微调与原始数据共享。",
+ "experiment_framework": "在跨silo联邦视觉分类基准上对比现有联邦PEFT方法；指标为域内精度与域外(OOD)泛化精度；考察医疗等敏感数据场景。",
+ "takeaways": [
+  "联邦多适配器能在不共享原始数据下融合各客户端领域知识",
+  "细粒度适配器在保留领域知识的同时改善了OOD泛化",
+  "该范式适配医疗隐私数据等无法集中训练的场景"
+ ],
+ "weaknesses": [
+  "多适配器带来通信与存储开销，未充分量化",
+  "主要在视觉分类联邦基准验证，对多模态/大模型的扩展性待验证",
+  "隐私保护仅靠不共享原始数据，未做差分隐私/泄露风险的严格评估"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

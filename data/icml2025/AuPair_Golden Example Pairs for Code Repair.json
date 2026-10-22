@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/AuPair_Golden Example Pairs for Code Repair.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/AuPair_Golden Example Pairs for Code Repair.pdf",
+ "title": "AuPair: Golden Example Pairs for Code Repair",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "用合成示例对引导LLM代码修复，广度采样与深度修复结合。",
+ "innovations": [
+  "提出合成并选择有序golden example pair集合作为in-context示例引导代码自修复",
+  "把广度式采样(best-of-N)与深度式修复(自纠错)结合以更有效利用推理时算力",
+  "无需微调，仅靠上下文示例提升自修复效果"
+ ],
+ "method_framework": "先生成多个初始候选解(广度)；对错误解用合成的golden(错码→修复码)示例对做in-context自修复；按单测通过率选最优解，外层跨问题平均；以严格准确率(全部测试通过)为指标。",
+ "experiment_framework": "在7个竞赛编程数据集评测(CodeForces 8.8k/AtCoder 1.3k/HackerEarth/CodeChef/LiveCodeBench/CodeJam/Aizu)；指标为单测通过率与严格准确率；对比best-of-N与自修复等推理时算力策略。",
+ "takeaways": [
+  "有序golden示例对能有效引导LLM自修复，提升编码准确率",
+  "广度采样+深度修复的组合优于单用其一",
+  "推理时算力的有效利用可在不微调下提升代码生成"
+ ],
+ "weaknesses": [
+  "与可靠性×医学影像/多模态推理主线无直接关联，属代码生成方向",
+  "仅在竞赛编程评测，未验证在真实仓库级代码修复上的效果",
+  "golden示例合成的成本与示例选择的可迁移性披露有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "代码生成方向，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

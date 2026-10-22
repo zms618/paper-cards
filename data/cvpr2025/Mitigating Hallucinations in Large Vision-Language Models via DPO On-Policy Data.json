@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Mitigating Hallucinations in Large Vision-Language Models via DPO On-Policy Data.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Mitigating Hallucinations in Large Vision-Language Models via DPO On-Policy Data.pdf",
+ "title": "Mitigating Hallucinations in Large Vision-Language Models via DPO On-Policy Data",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "OPA-DPO用DPO解决LVLM幻觉，但依赖GPT-4V且计算开销大",
+ "innovations": [
+  "识别DPO对on-policy数据的依赖性",
+  "提出OPA-DPO框架解决off-policy问题",
+  "结合专家反馈与策略对齐提升效率"
+ ],
+ "method_framework": "四步框架：收集响应→GPT-4V修正→LoRA-SFT对齐→OPA-DPO训练，包含语言修正、图像聚焦和锚定偏好三部分损失",
+ "experiment_framework": "LLaVA-1.5-7B/13B模型，AMBER/MMHalBench/Object HalBench/POPE基准，与7种基线对比",
+ "takeaways": [
+  "KL散度约束导致off-policy数据难以学习",
+  "专家修正需先对齐才能有效利用",
+  "多组件损失设计提升幻觉抑制效果"
+ ],
+ "weaknesses": [
+  "依赖GPT-4V进行幻觉识别和修正",
+  "仅评估了视觉语言模型，未扩展到其他模态",
+  "计算开销增加（需先进行LoRA-SFT）"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "解决LVLM幻觉属于可靠性主线，但依赖GPT-4V限制落地性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

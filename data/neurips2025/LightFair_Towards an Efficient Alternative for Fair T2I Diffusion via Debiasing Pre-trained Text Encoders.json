@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/LightFair_Towards an Efficient Alternative for Fair T2I Diffusion via Debiasing Pre-trained Text Encoders.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/LightFair_Towards an Efficient Alternative for Fair T2I Diffusion via Debiasing Pre-trained Text Encoders.pdf",
+ "title": "LightFair: Towards an Efficient Alternative for Fair T2I Diffusion via Debiasing Pre-trained Text Encoders",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "轻量级文本编码器微调减轻T2I偏见，但偏见类型有限",
+ "innovations": [
+  "识别文本编码器是T2I扩散模型偏见的源头",
+  "协作距离约束去偏策略平衡公平性与质量",
+  "两阶段文本引导采样策略减轻去偏对生成质量的影响"
+ ],
+ "method_framework": "通过LoRA微调文本编码器，使用协作距离约束策略平衡不同属性文本嵌入与语义中心的距离，结合自适应前景提取减少背景干扰，并在去噪过程后期应用微调编码器",
+ "experiment_framework": "在SD v1.5和v2.1上测试性别和种族偏见，使用Bias-O、Bias-Q、CLIP-T、CLIP-I、FID、IS、AS-R、AS-A等指标评估",
+ "takeaways": [
+  "文本编码器偏见会被噪声预测网络进一步放大",
+  "去偏过程应关注不同频率信息的生成时机",
+  "轻量级微调文本编码器是解决偏见的高效方法"
+ ],
+ "weaknesses": [
+  "仅关注性别和种族偏见，未探索其他社会属性偏见",
+  "自适应前景提取可能无法完全消除背景干扰"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

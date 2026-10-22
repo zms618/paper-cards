@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/DIVE Taming DINO for Subject-Driven Video Editing.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/DIVE Taming DINO for Subject-Driven Video Editing.pdf",
+ "title": "DIVE Taming DINO for Subject-Driven Video Editing",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "DINO特征+LoRA实现视频主体编辑，但泛化与计算成本存疑",
+ "innovations": [
+  "利用DINO特征作为视频对应关系，实现无标注的运动轨迹对齐",
+  "结合DINO特征与LoRA进行身份注册，实现精确主体替换",
+  "三阶段框架：运动建模、身份注册和推理，确保时序一致性"
+ ],
+ "method_framework": "DIVE框架包含三个阶段：1)使用DINO特征提取源视频运动轨迹并通过MLP对齐到扩散特征空间；2)将参考图像的DINO特征融入T2I模型学习LoRA进行身份注册；3)利用DDIM反转和融合运动与身份指导生成编辑视频。",
+ "experiment_framework": "数据集：30个来自DAVIS和互联网的视频，8类目标身份；基线：Slicedit、AnyV2V、FLATTEN、RAVE；指标：文本对齐、图像对齐、时序一致性、整体视频质量和用户研究。",
+ "takeaways": [
+  "DINO特征作为稀疏语义对应关系能有效解决视频编辑中的运动与外观解耦问题",
+  "结合高语义特征(DINO)与低级细节(扩散模型)的混合表示方法可提高身份注册准确性"
+ ],
+ "weaknesses": [
+  "方法依赖预训练的DINOv2模型，增加了计算复杂度",
+  "实验仅在小规模数据集上进行，泛化能力有待进一步验证",
+  "未充分讨论方法在不同视频长度和复杂度下的表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频编辑技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

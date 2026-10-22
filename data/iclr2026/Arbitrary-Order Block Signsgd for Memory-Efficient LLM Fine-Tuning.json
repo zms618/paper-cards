@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Arbitrary-Order Block Signsgd for Memory-Efficient LLM Fine-Tuning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Arbitrary-Order Block Signsgd for Memory-Efficient LLM Fine-Tuning.pdf",
+ "title": "ARBITRARY-ORDER Block Signsgd for MEMORY-EFFICIENT LLM FINE-TUNING",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "块坐标符号梯度更新降低LLM微调内存，但机制与局限分析不足",
+ "innovations": [
+  "任意阶块坐标符号梯度更新",
+  "深度偏置更新策略",
+  "多数投票分布式通信优化"
+ ],
+ "method_framework": "ABSignSGD结合SignSGD与块坐标更新，仅存储活动块优化器状态，减少内存占用；ABSignSGD-MV通过多数投票聚合梯度符号，大幅降低通信成本",
+ "experiment_framework": "在Qwen3-8B/Llama3-8B上测试数学推理和指令跟随任务，对比LoRA、GaLore、BAdam等方法，评估内存、运行时间、收敛速度和下游性能",
+ "takeaways": [
+  "符号更新与块坐标天然互补",
+  "深度偏置更新可提升效率而不损害性能",
+  "多数投票在重尾噪声下更具鲁棒性"
+ ],
+ "weaknesses": [
+  "对小批量训练更敏感",
+  "缺乏动量和自适应学习率机制",
+  "未充分验证对灾难性遗忘的缓解"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "LLM微调效率方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

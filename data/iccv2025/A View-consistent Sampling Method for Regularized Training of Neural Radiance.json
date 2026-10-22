@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/A View-consistent Sampling Method for Regularized Training of Neural Radiance.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A View-consistent Sampling Method for Regularized Training of Neural Radiance.pdf",
+ "title": "A View-consistent Sampling Method for Regularized Training of Neural Radiance Fields",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "跨视图一致性分布替代固定深度做NeRF采样，隐式约束几何",
+ "innovations": [
+  "沿射线预采样点投影到多视图取特征，以归一化 RGB 欧氏距离与蒸馏 DINOv2 余弦相似度联合阈值统计 s_i，得到逐射线的视一致性分布而非单值深度",
+  "用 Nerfstudio 的 PDF 采样器按 s_i 分布做重要性抽样，把采样集中到真实表面，使 NeRF 在无 3D 监督下获得隐式几何正则",
+  "把 384 维 DINOv2 特征经冻结预训练加对称交叉熵蒸馏到 32 维（Megadepth 上 5 万对图），再用 −log(期望深度+ε) 的深度推远损失抑制背景塌缩"
+ ],
+ "method_framework": "射线上预采样点投影到多视图，用归一化 RGB 欧氏距离与蒸馏 DINOv2 余弦相似度的联合阈值指标刻画视一致性；沿射线按该分布做 PDF 重要性采样；再叠加 −log(d+ε) 深度推远损失。",
+ "experiment_framework": "Mip-NeRF360 九场景与 Tanks&Temples 八场景，10–110 视；基线 Nerfacto/NeRFAcc/TensoRF/ZoeDepth/MVSFormer++；指标 PSNR、SSIM、LPIPS 与单卡训练时长。",
+ "takeaways": [
+  "用「沿射线的分布 + 重要性采样」替代固定深度预测做隐式正则，可直接替换任何 NeRF/3DGS 的采样器，改动面小",
+  "以对称交叉熵把 384 维 DINOv2 蒸馏到 32 维，兼顾跨视图几何一致性与显存，可复用于其他 2D 先验迁到 3D 的场景"
+ ],
+ "weaknesses": [
+  "Table 2 消融里 G 组（蒸馏维度 64）PSNR 21.65 反而略高于完整模型 21.57，超参未收敛却被定为最终配置，消融表与结论自相矛盾",
+  "采样正则只在 30000 迭代的前 5000 轮激活、阈值 δ 固定 0.4（依赖相似度服从正态的假设），这类调度与阈值未做敏感性分析，也无任何多种子方差",
+  "单卡 A100 训练从 Nerfacto 的 11m 涨到 38m（约 3.5 倍）却未与收益权衡；且在 Tanks&Temples 密集视下多视深度基线（19.28）与本文（19.45）几乎持平，优势仅来自稀疏视设置"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "NeRF采样改进，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

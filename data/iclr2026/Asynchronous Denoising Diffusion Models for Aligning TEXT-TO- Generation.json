@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Asynchronous Denoising Diffusion Models for Aligning TEXT-TO- Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Asynchronous Denoising Diffusion Models for Aligning TEXT-TO- Generation.pdf",
+ "title": "Asynchronous Denoising Diffusion Models for Aligning TEXT-TO- Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "异步扩散模型通过像素级时间调度提升文本-图像对齐",
+ "innovations": [
+  "提出异步扩散模型框架，为不同像素分配不同时间步",
+  "利用交叉注意力掩码动态识别提示相关区域",
+  "采用凹函数调度器使提示相关区域去噪更渐进"
+ ],
+ "method_framework": "基于预训练扩散模型，为不同像素分配不同时间步，提示相关区域采用凹函数调度器去噪更渐进，无关区域采用线性调度器，提供更清晰的上下文",
+ "experiment_framework": "在4组提示集(Animal Activity, Drawbench, GenEval, MSCOCO)上评估，使用BERTScore、CLIPScore、ImageReward、QwenScore指标，与DM、DMconcave、Z-Sampling等基线比较",
+ "takeaways": [
+  "利用交叉注意力掩码识别提示相关区域的方法可迁移到其他任务",
+  "像素级时间步调度框架可扩展到其他扩散模型架构"
+ ],
+ "weaknesses": [
+  "仅评估了文本-图像生成任务，未探索其他应用场景",
+  "方法在计算效率上有轻微下降(78分钟vs 86分钟)"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "文本-图像对齐非可靠性主线，仅像素级调度有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

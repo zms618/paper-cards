@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Multi-Subspace Multi-Modal Modeling for Dif-Fusion Models Estimation, Convergence and Mixture Of Experts.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Multi-Subspace Multi-Modal Modeling for Dif-Fusion Models Estimation, Convergence and Mixture Of Experts.pdf",
+ "title": "Multi-Subspace Multi-Modal Modeling for Diffusion Models: Estimation, Convergence and Mixture of Experts",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.4
+ },
+ "one_line": "MoLR-MoG建模解释扩散模型高效性，但实验局限且假设理想化",
+ "innovations": [
+  "提出混合低秩高斯混合(MoLR-MoG)建模，首次同时刻画数据的多流形与多模态属性",
+  "推导MoLR-MoG下扩散模型的估计误差界，成功逃脱维数灾难，解释扩散模型小样本高效性",
+  "证明非线性MoG分数匹配目标在真值附近强凸，给出梯度下降的收敛保证"
+ ],
+ "method_framework": "将目标数据建模为K个线性子空间的并集，每个子空间的隐变量服从高斯混合分布(n_k个模态，维度d_k)；基于此建模推导对应的分数函数具有MoE结构，包含非线性特性；理论分析估计误差与优化收敛性，实证验证MoE隐空间MoG网络的生成效果。",
+ "experiment_framework": "在ImageNet上验证，对比MoLRG高斯基线与MoE隐空间U-Net，使用专家特定VAE和小型2层Softmax型网络，评估生成质量与参数量效率。",
+ "takeaways": [
+  "MoLR-MoG建模更贴近真实图像数据的多流形多模态特性",
+  "MoE隐空间MoG网络以1/10参数量达到与U-Net相当的生成效果",
+  "估计误差仅依赖子空间数、模态数和隐维度，与环境维度D无关"
+ ],
+ "weaknesses": [
+  "实验仅在ImageNet小设定上验证，与大规模扩散模型的实际效果差距较大",
+  "线性子空间假设过于理想化，真实图像数据流形可能高度非线性",
+  "强凸性仅在真值附近成立，远离初始化区域的全局收敛性未保证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.43,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "多模态建模与扩散模型可靠性分析有交点但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SAM2_EFFICIENT-SAM2 Accelerating SAM2 Object-Aware Visual Encoding and Memory Retrieval.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SAM2_EFFICIENT-SAM2 Accelerating SAM2 Object-Aware Visual Encoding and Memory Retrieval.pdf",
+ "title": "Efficient-SAM2: Accelerating SAM2 with Object-Aware Visual Encoding and Memory Retrieval",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "后训练优化SAM2，对象感知稀疏路由加速1.68倍但鲁棒性存疑",
+ "innovations": [
+  "发现 SAM2 的稀疏感知模式：掩码解码器注意力聚焦前景，而早期图像编码器注意力覆盖过宽造成背景冗余；记忆库中每帧仅少量 token 显著贡献且显著性随时间一致。",
+  "提出对象感知稀疏窗口路由(SWR)：利用前一帧解码器的一致性与显著性线索，把背景区域路由到轻量捷径分支，做窗口级计算分配。",
+  "提出对象感知稀疏记忆检索(SMR)：仅让每帧显著记忆 token 参与计算，显著性模式复用其首次回忆结果。"
+ ],
+ "method_framework": "后训练加速框架，不改骨干结构。图像编码器侧用 SWR 根据前帧解码器的一致性/显著性线索把背景窗口送入轻量捷径分支；记忆注意力侧用 SMR 只保留显著记忆 token 参与注意力，显著性图沿用首次回忆结果。额外参数与训练开销极小。",
+ "experiment_framework": "在 SAM2.1-L 上评测，主基准为 SA-V(Segment Anything Video)测试集，报告加速比与掩码精度下降；分别消融 SWR(1.83x)与 SMR(1.78x)，整体 1.68x、精度仅降 1.0%；与 EdgeTAM 等蒸馏/重训方法对比训练成本与精度。",
+ "takeaways": [
+  "SAM2.1-L 上取得 1.68x 加速，SA-V 测试集精度仅下降 1.0%，说明后训练稀疏化可替代重训轻量骨干。",
+  "SWR 与 SMR 分别贡献 1.83x 与 1.78x 加速，两者叠加后受限于其他瓶颈模块。",
+  "生物视觉式的稀疏感知是视频分割基础模型加速的有效切入点。"
+ ],
+ "weaknesses": [
+  "仅报告 SA-V 单一主基准与 1.0% 掉点，缺少对长序列、遮挡、快速运动等困难场景下精度退化的系统分析。",
+  "加速依赖前一帧显著性线索，错误/抖动显著性可能级联传播到后续帧，文中未充分讨论鲁棒性失败模式。",
+  "本质是工程优化与动态稀疏化，方法增量性较强，与视觉可靠性/医学影像/多模态推理主线关联弱。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "工程优化与动态稀疏化，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

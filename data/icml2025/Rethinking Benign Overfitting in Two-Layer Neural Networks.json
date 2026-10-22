@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Rethinking Benign Overfitting in Two-Layer Neural Networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Rethinking Benign Overfitting in Two-Layer Neural Networks.pdf",
+ "title": "Rethinking Benign Overfitting in Two-Layer Neural Networks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.25
+ },
+ "one_line": "修正噪声模型解释良性过拟合，理论分析有限，与主线关联弱。",
+ "innovations": [
+  "指出旧特征-噪声数据模型忽略噪声在不同类间的异质性，是其预测到有害过拟合、与实际不符的根源。",
+  "构建带类依赖异质噪声的精炼数据模型，对两层 ReLU 卷积网络做完整训练动力学分析并建立测试损失界。",
+  "证明网络可利用数据噪声学习隐式特征、提升长尾数据分类精度，并给出一个无需训练的指标评估数据对测试性能的影响。"
+ ],
+ "method_framework": "在 Allen-Zhu & Li 特征-噪声模型基础上，将数据噪声推广为类依赖的异质高斯噪声；通过分析两层 ReLU CNN 的训练动力学推导测试损失界，刻画从良性到有害过拟合的相变，并据此设计无需训练即可评估数据影响的度量。",
+ "experiment_framework": "在合成数据与真实数据集上验证理论结论：对比同方差 vs 异方差噪声下的过拟合行为，检验长尾数据中记忆噪声对泛化的作用，以及无需训练数据影响指标与真实测试性能的相关性。",
+ "takeaways": [
+  "异质(类依赖)噪声是解释过参数化网络中良性过拟合普遍存在的关键。",
+  "在长尾数据中，记忆数据噪声反而可提升分类精度，并非必然有害。",
+  "所提无需训练的度量可提前评估样本对测试性能的影响。"
+ ],
+ "weaknesses": [
+  "理论建立在简化的特征-噪声生成模型与两层 ReLU CNN 假设上，向更深/现代架构的外推性有限。",
+  "类依赖异质噪声的可估计性与在真实数据上的拟合质量论证较弱。",
+  "属纯泛化理论工作，与可靠性/可信AI/多模态推理主线的直接关联较弱。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

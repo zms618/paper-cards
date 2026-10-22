@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Post-Training Quantization for Video Matting.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Post-Training Quantization for Video Matting.pdf",
+ "title": "Post-Training Quantization for Video Matting",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "视频抠像量化框架，块重建+全局校准+光流辅助，4-bit逼近全精度。",
+ "innovations": [
+  "首次系统研究视频抠像模型的后训练量化，提出块重建快速稳定初始化与全局量化参数校准的两阶段策略",
+  "统计驱动的全局仿射校准(GAC)：补偿被忽略BN层造成的累积统计畸变，将现有PTQ方法误差降低最多20%",
+  "光流辅助(OFA)：用相邻帧光流 warp 上一帧预测作为时序/语义先验引导量化，增强复杂场景运动前景区分、抑制闪烁"
+ ],
+ "method_framework": "先对网络做块级重建优化以快速稳定收敛并捕获局部依赖，再全局校准量化参数；GAC 学习补偿忽略BN带来的分布漂移；OFA 用光流场将上一帧预测 warp 到当前帧作为强时序先验，引导量化过程区分运动前景与背景。",
+ "experiment_framework": "以 RVM 为主基线并验证 Transformer 结构 MatAnyone；在不同位宽(含4-bit)下对比 QDrop 等现有 PTQ 方法，报告抠像精度(MAE/SAD等)、时序一致性与 FLOP 节省。",
+ "takeaways": [
+  "PTQ4VM 在多种位宽下取得视频抠像 SOTA 量化精度，较现有PTQ误差降低10%–20%",
+  "4-bit PTQ4VM 性能接近全精度 RVM，同时获得8倍 FLOP 节省",
+  "光流时序先验可有效抑制循环结构量化噪声导致的闪烁/抖动"
+ ],
+ "weaknesses": [
+  "主线为模型压缩/量化部署，与可靠性/医学影像/多模态推理主线关联弱",
+  "OFA 依赖光流计算，自身引入额外开销，边缘部署净收益前9页未量化",
+  "前9页未见对极端遮挡/快速运动等失败场景的鲁棒性细分"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "视频抠像量化部署，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

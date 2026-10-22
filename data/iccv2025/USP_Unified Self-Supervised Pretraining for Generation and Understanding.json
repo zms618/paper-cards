@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/USP_Unified Self-Supervised Pretraining for Generation and Understanding.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/USP_Unified Self-Supervised Pretraining for Generation and Understanding.pdf",
+ "title": "USP Unified Self-Supervised Pretraining for Generation and Understanding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "VAE掩码预训练加速扩散模型收敛，但理解任务有损失",
+ "innovations": [
+  "在VAE潜在空间中进行掩码潜在建模，统一图像生成与理解任务",
+  "通过精心设计的权重初始化策略，实现扩散模型11.7-46.6倍的收敛加速",
+  "无需额外计算开销和内存负担，同时保持强大的表示能力"
+ ],
+ "method_framework": "基于VAE潜在空间的掩码自编码器框架，冻结VAE参数，通过掩码潜在建模学习鲁棒表示，预训练后仅保留编码器用于下游任务",
+ "experiment_framework": "ImageNet生成任务(FID/IS)和分类/分割任务，与DiT/SiT基线及REPA等加速方法对比",
+ "takeaways": [
+  "掩码潜在建模在VAE空间可有效提升扩散模型初始化质量",
+  "统一预训练框架可同时提升生成和理解任务性能",
+  "方法与外部模型加速技术正交，可结合使用"
+ ],
+ "weaknesses": [
+  "VAE压缩可能导致图像理解任务性能略有损失",
+  "方法依赖特定架构的适配，如AdaLN-Zero的调整",
+  "未探索更高分辨率下的性能表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "统一生成与理解，但理解任务有损失，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

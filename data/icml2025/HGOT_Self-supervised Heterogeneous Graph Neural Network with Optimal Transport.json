@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/HGOT_Self-supervised Heterogeneous Graph Neural Network with Optimal Transport.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/HGOT_Self-supervised Heterogeneous Graph Neural Network with Optimal Transport.pdf",
+ "title": "HGOT: Self-supervised Heterogeneous Graph Neural Network with Optimal Transport",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "用最优传输替代对比学习，在异质图上做免增广自监督表示。",
+ "innovations": [
+  "在异质图自监督学习中引入最优传输机制，省去繁琐的图增广与正负样本选择",
+  "设计聚合视图（中心视图）融合不同节点/边类型语义，避免手工相似度判断",
+  "在节点分类等下游任务上相对SoTA平均提升6%以上准确率"
+ ],
+ "method_framework": "不同于依赖增广与正负对的对比自监督，HGOT构造聚合（中心）视图整合异质语义，用最优传输在视图间做软匹配对齐，绕开难调的采样与增广策略，直接得到可用于下游的异质图表示。",
+ "experiment_framework": "在多个异质图基准（学术/生物医学/社交网络）上做节点分类等下游任务评测；与基于对比的异质图自监督方法及监督HGNN比较；指标为分类准确率，平均提升超6%；含消融验证免增广与OT对齐的作用。",
+ "takeaways": [
+  "最优传输可作为异质图自监督中对比损失的替代，免去图增广与正负采样的人工设计",
+  "聚合中心视图能有效整合多类型语义信息",
+  "免采样范式在节点分类上带来稳定且显著的精度增益"
+ ],
+ "weaknesses": [
+  "与可靠性主线（鲁棒性/不确定性/过程奖励/医学影像/多模态推理）关联弱，虽提及生物医学网络但为通用图表示",
+  "OT求解带来额外计算成本，大图上的可扩展性与收敛效率未充分量化",
+  "增益主要来自节点分类单一任务，对链路预测/异常检测等的可靠性收益未展开"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.65,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

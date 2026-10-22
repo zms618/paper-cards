@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Petri Learning Unified Cell Embeddings from Unpaired Modalities via Early-Fusion Joint Reconstruction.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Petri Learning Unified Cell Embeddings from Unpaired Modalities via Early-Fusion Joint Reconstruction.pdf",
+ "title": "PETRI: Learning Unified Cell Embeddings from Unpaired Modalities via Early-Fusion Joint Reconstruction",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "早期融合Transformer从无配对细胞数据学习统一嵌入，依赖实验分组假设。",
+ "innovations": [
+  "针对无配对(unpaired)的成像(OPS)与转录组(Perturb-seq)数据，用早期融合Transformer学习统一细胞嵌入。",
+  "按共享实验上下文将细胞分组为多模态document，做掩码联合重建+跨模态注意力，在共享信息的同时保留模态专属容量。",
+  "对嵌入施加稀疏自编码器得到生物学有意义、多模态且保留扰动效应的概念；并公开blinded匹配的OPS+Perturb-seq HepG2数据集。"
+ ],
+ "method_framework": "将同一实验上下文下的细胞(部分来自成像、部分来自转录组、无需配对)组织成多模态文档；早期融合Transformer以跨模态注意力做掩码重建，迫使模型在共享潜在空间中对齐两模态生物信号，同时保留各模态私有通道；统一嵌入可对跨模态细胞简单平均得到扰动级profile。",
+ "experiment_framework": "在HepG2细胞OPS(光学pooled screen)与Perturb-seq配对/未配对数据上评测；与需配对的多模态嵌入方法对比；用稀疏自编码器提取可解释概念；下游扰动profile构建与生物学验证；并公开blinded匹配数据集。",
+ "takeaways": [
+  "无配对多模态仍可学出统一细胞嵌入，共享信号可帮助去除模态专属技术伪影。",
+  "跨模态共享+模态专属容量的设计同时保留了互补信息。",
+  "公开数据集与SAE可解释概念为细胞多模态ML研究提供基础。"
+ ],
+ "weaknesses": [
+  "依赖按实验上下文分组构造文档，跨实验/跨批次的泛化未充分验证。",
+  "生物信号与技术伪影的解耦仅靠跨模态一致性假设，缺乏人工伪影注入的受控量化。",
+  "评测以生物学可解释性为主，标准化预测任务指标对比有限。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "医学多模态数据融合，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

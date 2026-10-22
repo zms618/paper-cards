@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Seeing WHAT’S not There Negation Under-Standing Needs more than Training.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Seeing WHAT’S not There Negation Under-Standing Needs more than Training.pdf",
+ "title": "Seeing What's Not There: Negation Understanding Needs More than Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "零样本嵌入纠正CLIP否定理解，规则抽取并移除被否定语义。",
+ "innovations": [
+  "反对以数据为中心（硬负例微调）解决否定理解，提出零样本无需训练的嵌入纠正。",
+  "探测发现CLIP文本嵌入服从组合算术运算，可在嵌入空间直接加/减语义信息。",
+  "用规则从caption抽取被否定文本，从原嵌入显式移除其语义，在NegBench上大幅提升并进一步增益已微调的NegCLIP。"
+ ],
+ "method_framework": "不微调模型，而是在推理时对CLIP文本嵌入做后处理：规则解析caption中的否定短语→定位被否定对象的语义方向→从原文本嵌入中减去该方向，从而在联合嵌入空间中'移除'被否定对象，使图文匹配正确反映否定。",
+ "experiment_framework": "NegBench基准（MCQ与检索任务）；基线为标准CLIP及在否定数据上微调的NegCLIP；报告MCQ 25.5→67.0%、检索50.9→56.1%；并把NegCLIP的MCQ从54.03→66.22%。",
+ "takeaways": [
+  "CLIP文本嵌入具有可利用的组合算术结构，否定失败可零样本纠正而非靠大量硬负例训练。",
+  "即使微调过的NegCLIP，嵌入纠正仍能进一步提升否定理解。"
+ ],
+ "weaknesses": [
+  "方法基于CLIP嵌入的启发式算术假设，对复杂嵌套/多重否定的处理能力存疑。",
+  "规则抽取否定短语依赖解析质量，开放域长句的鲁棒性有限。",
+  "落地为图文匹配/文生图，属VLM组合理解，与核心可靠性主线相关性中等。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "VLM组合理解，与可靠性主线中等相关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

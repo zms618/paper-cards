@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/SANA 1.5 Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SANA 1.5 Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer.pdf",
+ "title": "SANA 1.5: Efficient Scaling of Training-Time and Inference-Time Compute in Linear Diffusion Transformer",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.3
+ },
+ "one_line": "工程优化组合提升T2I效率，方法学增量，与主线AI研究关联弱。",
+ "innovations": [
+  "高效训练扩展：深度增长范式从1.6B(20块)扩到4.8B(60块)，复用小模型知识策略性初始化新块，训练时间较从头训练减少约60%，配合8bit优化器降显存。",
+  "模型深度剪枝：通过扩散块的输入-输出相似性分析块重要性，剪去不重要块后单卡5分钟微调即可恢复质量，支持任意尺寸压缩。",
+  "推理时扩展：重复采样策略以算力换容量，让小模型在推理时匹配大模型质量。"
+ ],
+ "method_framework": "在SANA-1.0线性DiT基础上：训练时grow-then-prune——先从小模型深度增长到目标尺寸并复用先验，再按块重要性剪枝压缩；推理时用重复采样(repeated sampling)以额外计算换取更大有效容量，从而在不同算力预算下高效生成。",
+ "experiment_framework": "文生图生成，主指标GenEval文本-图像对齐分数(0.72，推理扩展后0.80)；对比多个开源/工业T2I模型；报告训练耗时、显存、压缩后微调成本等效率指标。",
+ "takeaways": [
+  "SANA-1.5在GenEval达0.72、推理扩展后0.80，创GenEval新SOTA。",
+  "深度增长+剪枝使大模型扩展训练时间降低约60%，高保真图像生成更易获得。"
+ ],
+ "weaknesses": [
+  "与主线(鲁棒性/可信AI/医学影像/推理过程奖励)无关，属高效T2I生成工程。",
+  "三项创新多为工程/训练策略组合，方法学新颖性偏增量。",
+  "GenEval为图文对齐单一指标，未见对生成安全、幻觉或长尾物体的系统评测。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

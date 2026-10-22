@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Propagate and Inject Revisiting Propagation-Based Feature Imputation for Graphs with Partially Observed.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Propagate and Inject Revisiting Propagation-Based Feature Imputation for Graphs with Partially Observed.pdf",
+ "title": "Propagate and Inject: Revisiting Propagation-Based Feature Imputation for Graphs with Partially Observed Features",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "揭示传播填补低方差缺陷，注入随机特征恢复区分性，但可解释性不足。",
+ "innovations": [
+  "揭示传播式特征填补方法的固有缺陷：当通道内观测特征值近同时，扩散产生低方差通道，对图学习任务贡献极小",
+  "提供理论证明：当通道内观测特征值完全相同时，传播方法产生零方差通道",
+  "提出FISF方法：在识别低方差通道后移除填补值，通过注入随机噪声生成合成特征并沿边传播，恢复通道方差"
+ ],
+ "method_framework": "FISF分两阶段扩散：(1)先用现有传播方法(FP/PCFI)填补缺失特征，识别低方差通道；(2)在低方差通道中移除填补值，在随机选中节点注入随机噪声作为合成种子，再沿边传播扩散，使该通道恢复区分性。无需可学习参数。",
+ "experiment_framework": "在多种图学习任务（节点分类、链接预测）和多个数据集上验证，缺失率从低到极高（97.5%+）。基线包括FP、PCFI等传播方法及神经网络填补方法。指标为分类准确率/AUC。",
+ "takeaways": [
+  "传播式填补方法的低方差通道问题是其性能瓶颈的根源，移除高方差通道比移除低方差通道导致更大性能下降",
+  "通过注入合成随机特征并传播，可以有效恢复低方差通道的区分性",
+  "FISF在极端缺失率（99.5%+）下仍能显著缓解性能退化"
+ ],
+ "weaknesses": [
+  "合成特征基于随机噪声注入，缺乏语义可解释性，随机种子的选择对结果影响未充分分析",
+  "仅在标准引文网络数据集验证，未在工业级大规模图数据上验证",
+  "与最新的基于神经网络的填补方法对比不够充分，尤其在中等缺失率下优势不明显"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

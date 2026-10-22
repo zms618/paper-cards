@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/CLIPTTA_Robust Contrastive Vision-Language Test-Time Adaptation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/CLIPTTA_Robust Contrastive Vision-Language Test-Time Adaptation.pdf",
+ "title": "CLIPTTA: Robust Contrastive Vision-Language Test-Time Adaptation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 8.0,
+  "overall": 6.9
+ },
+ "one_line": "CLIP测试时自适应方法，软对比损失与批量感知设计提升鲁棒性",
+ "innovations": [
+  "软对比损失与CLIP预训练目标对齐",
+  "批量感知设计缓解伪标签漂移和类别崩溃",
+  "异常对比暴露(OCE)损失提升开放集场景性能"
+ ],
+ "method_framework": "CLIPTTA采用软对比图像-文本损失，与CLIP预训练目标保持一致，结合熵正则化和类别置信度记忆，并通过OCE损失增强开放集场景的ID/OOD分离能力。",
+ "experiment_framework": "在75个数据集上评估，涵盖4类分布偏移：损坏、域偏移、粗粒度和细粒度分类，使用准确率作为主要指标，开放集场景额外使用AUC和FPR95。",
+ "takeaways": [
+  "对比损失比熵最小化更适合VLM的测试时自适应",
+  "批量感知设计能自动纠正伪标签错误",
+  "开放集场景中OCE损失显著提升ID/OOD检测性能"
+ ],
+ "weaknesses": [
+  "仅更新视觉编码器的归一化层，未充分利用文本编码器",
+  "计算复杂度高于传统熵最小化方法",
+  "在ImageNet-D域偏移上表现略逊于TDA"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

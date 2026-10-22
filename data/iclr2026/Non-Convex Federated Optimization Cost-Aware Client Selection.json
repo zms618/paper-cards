@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Non-Convex Federated Optimization Cost-Aware Client Selection.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Non-Convex Federated Optimization Cost-Aware Client Selection.pdf",
+ "title": "Non-Convex Federated Optimization under Cost-Aware Client Selection",
+ "scores": {
+  "novelty": 5,
+  "depth": 7,
+  "evidence": 4,
+  "relevance": 5.0,
+  "overall": 5.3
+ },
+ "one_line": "理论联邦优化复杂度分析，无实验验证，实际应用价值存疑。",
+ "innovations": [
+  "引入简单自然的联邦优化模型，显式为不同客户端选择策略（随机子集/全参与/混合）关联不同的通信与本地计算成本。",
+  "对SAGA建立仅依赖δ、无需个体光滑性的新方差界，揭示其可利用函数相似性。",
+  "提出递归梯度(Recursive-Gradient)技术改进条件无偏梯度估计器的误差界，得到RG-SAGA/RG-SVRG，配合不精确复合梯度法取得最优复杂度。"
+ ],
+ "method_framework": "考虑非凸分布式目标min_x (1/n)Σf_i(x)；采用不精确复合梯度法(I-CGM)，本地按几何分布随机轮数运行经典复合梯度法求解辅助子问题；用方差缩减梯度估计（SAGA/SVRG）并叠加递归梯度技术降低误差，在统一成本模型下权衡通信与本地计算复杂度。",
+ "experiment_framework": "纯理论工作：以Big-O给出达到ε-稳定点的通信复杂度与本地复杂度，Table 1对比集中GD、FedRed等方法，声称I-CGM-RG-SAGA取得已知最优的通信与本地复杂度；无数值实验。",
+ "takeaways": [
+  "在比较联邦算法时应显式区分客户端选择策略带来的不同通信成本，否则不公平。",
+  "SAGA的方差可被函数相似性进一步压缩，递归梯度是改进条件无偏估计误差界的通用手段。",
+  "不精确复合梯度加方差缩减可在成本感知模型下取得非凸联邦优化的最优复杂度权衡。"
+ ],
+ "weaknesses": [
+  "纯理论无实验，在真实联邦系统（异构设备/通信延迟/有限带宽）上的可实现性未检验。",
+  "复杂度改进主要体现在阶次/常数项，对现代大模型微调的实际运行时间收益未量化。",
+  "成本模型对客户端异质性、掉线与异步的刻画较简化。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "联邦优化理论分析，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/SeaLion_Semantic Part-Aware Latent Point Diffusion Models for 3D Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/SeaLion_Semantic Part-Aware Latent Point Diffusion Models for 3D Generation.pdf",
+ "title": "SeaLion Semantic Part-Aware Latent Point Diffusion Models for 3D Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "语义点云扩散模型，参数量大且分割验证不足",
+ "innovations": [
+  "语义部分感知的潜在点扩散技术",
+  "部分感知的Chamfer距离(p-CD)评估指标",
+  "半监督训练减少标注需求",
+  "部分感知3D形状编辑工具"
+ ],
+ "method_framework": "SeaLion采用分层潜在扩散模型，结合全局和点级扩散模块，在去噪过程中联合预测噪声和分割标签，通过条件解码生成与分割标签对齐的点云。",
+ "experiment_framework": "在ShapeNet(6类)和IntrA(颅内动脉瘤)数据集上评估，使用1-NNA(p-CD)作为主要指标，与DiffFacto和两步方法(Lion+SPoTr)对比。",
+ "takeaways": [
+  "利用生成模型中间特征增强语义感知能力",
+  "设计双分支并行结构同时预测噪声和分割标签",
+  "p-CD评估方法能有效衡量部分间一致性"
+ ],
+ "weaknesses": [
+  "模型参数量大(VAE 22.3M + 扩散 98.1M)",
+  "仅评估了生成质量，未充分验证分割标签准确性",
+  "半监督实验仅在ShapeNet上进行"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3D生成与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

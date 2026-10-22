@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Self-Evolving Vision-Language Models for Quality Assessment via Voting and Ranking.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Self-Evolving Vision-Language Models for Quality Assessment via Voting and Ranking.pdf",
+ "title": "Self-Evolving Vision-Language Models for Image Quality Assessment via Voting and Ranking (EvoQuality)",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "VLM自投票生成伪标签，GRPO优化IQA，无监督超监督SOTA。",
+ "innovations": [
+  "把自一致性(self-consistency)原理适配到IQA的排序本质：对VLM自身输出做成对多数投票，建立相对质量共识作为伪标签。",
+  "将伪排序构造为fidelity奖励，用group relative policy optimization(GRPO)引导模型迭代自进化，全程无人工标注。",
+  "完全自监督却在7个IQA基准中5个超过监督式SOTA VLM-IQA模型，并可与预训练IQA模型堆叠提升跨集泛化。"
+ ],
+ "method_framework": "VLM对图像对的相对质量判断多次采样，成对多数投票得到一致性伪排序→转化为fidelity奖励→GRPO迭代优化模型；反复用自身预测精炼质量感知能力，无需ground-truth标签。",
+ "experiment_framework": "在TID2013、LIVE、CSIQ、PIPAL、KADID、SPAQ、AGIQA等IQA基准评测；指标PLCC；对比监督式VLM-IQA(Q-Align, Q-Insight, DeQA-Score, VisualQuality-R1)；基线为Qwen2.5-VL-7B；报告零样本PLCC提升31.8%。",
+ "takeaways": [
+  "自一致性多数投票可把无监督自提升扩展到排序式感知任务IQA。",
+  "完全自监督的VLM在IQA上可媲美甚至超过监督式SOTA，且可与现有IQA模型堆叠。"
+ ],
+ "weaknesses": [
+  "方法沿用自一致性投票+GRPO的既有范式，迁移到IQA属组合性应用，新颖性中等。",
+  "多数投票的共识质量依赖VLM初始能力，弱基座下伪标签噪声未充分分析。",
+  "落地为图像质量评估，非医学影像/可信度核心主线，相关性中等。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "IQA非主线，但自监督设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

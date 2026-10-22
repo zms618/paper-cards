@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/LOW-PRECISION Transformer Training Fails An Analysis On Flash Attention.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/LOW-PRECISION Transformer Training Fails An Analysis On Flash Attention.pdf",
+ "title": "LOW-PRECISION Transformer Training Fails: An Analysis On Flash Attention",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.0,
+  "overall": 6.1
+ },
+ "one_line": "分析低精度Flash Attention训练失败机制，提出解决方案",
+ "innovations": [
+  "首次提供低精度Flash Attention训练失败的机制解释",
+  "发现低秩表示和有舍入误差的复合效应导致训练不稳定",
+  "提出最小修改方案解决舍入误差问题"
+ ],
+ "method_framework": "通过隔离Flash Attention中的误差源，分析低精度计算与高精度计算的梯度差异，揭示低秩表示和有偏舍入误差的复合效应。",
+ "experiment_framework": "GPT-2模型，OpenWebText数据集，BF16/FP32对比，监控谱范数，隔离特定注意力头和计算步骤。",
+ "takeaways": [
+  "低精度计算中的有偏舍入误差会导致梯度累积而非抵消",
+  "注意力机制对数值精度高度敏感",
+  "最小修改可解决低精度训练问题"
+ ],
+ "weaknesses": [
+  "仅关注Flash Attention，未扩展到其他低精度计算场景",
+  "解决方案可能影响计算效率",
+  "实验主要在GPT-2模型上进行，泛化性待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "低精度训练技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Pulp Motion Framing-Aware Multimodal.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Pulp Motion Framing-Aware Multimodal.pdf",
+ "title": "PulpMotion: Framing-Aware Multimodal Camera and Human Motion Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "多模态运动生成，构图桥接提升一致性，但与主线关联弱",
+ "innovations": [
+  "首次将人体运动与相机轨迹作为紧密耦合的两模态做文本条件联合生成，而非分别处理",
+  "提出以屏幕构图(投影人体关节到相机)作为辅助模态桥接两模态，促进联合分布一致性",
+  "设计共享潜空间联合自编码器，加轻量线性变换把人体/相机潜空间映射到构图潜空间，并引入辅助采样引导生成"
+ ],
+ "method_framework": "训练联合自编码器学习人体运动与相机轨迹的共享潜空间；用线性变换从两者潜空间得到屏幕构图潜；采样时以构图为辅助条件引导，使生成的人体-相机在屏幕上构图一致。",
+ "experiment_framework": "在DiT与MAR两类架构上验证通用性；报告屏幕构图一致性、文本对齐与电影化构图质量；并发布带丰富描述的PulpMotion数据集。",
+ "takeaways": [
+  "以构图为辅助桥接可显著提升人体-相机联合生成的帧内一致性",
+  "方法模型无关，在DiT与MAR架构上均有效并取得SOTA构图质量",
+  "联合生成还同时改善两模态的文本对齐"
+ ],
+ "weaknesses": [
+  "属多模态运动/相机生成方向，与可靠性、不确定性、验证器主线关联弱",
+  "新数据集规模与真实摄影分布代表性需后续验证",
+  "线性构图桥接的表达力上限、以及复杂多角色场景的扩展未触及"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.13,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "多模态运动生成，构图桥接提升一致性，但与主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

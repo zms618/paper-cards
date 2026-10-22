@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Antidistillation Sampling.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Antidistillation Sampling.pdf",
+ "title": "Antidistillation Sampling",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "通过梯度惩罚修改分布防蒸馏，但计算开销大且依赖代理模型",
+ "innovations": [
+  "基于梯度方向的反蒸馏采样方法",
+  "有限差分近似实现高效计算",
+  "可调节的效用-可蒸馏性权衡机制"
+ ],
+ "method_framework": "通过修改模型next-token分布，添加基于代理模型梯度的惩罚项，使生成的推理轨迹对蒸馏无效但保持原始模型效用",
+ "experiment_framework": "GSM8K/MATH/MMLU数据集，DeepSeek-R1教师模型，Qwen代理模型，Llama学生模型，对比温度采样基线",
+ "takeaways": [
+  "梯度方向可有效防止知识蒸馏",
+  "有限差分近似降低计算开销",
+  "λ参数精确控制效用-可蒸馏性权衡"
+ ],
+ "weaknesses": [
+  "计算开销增加约2倍",
+  "依赖代理模型选择",
+  "未探索对抗性蒸馏攻击"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

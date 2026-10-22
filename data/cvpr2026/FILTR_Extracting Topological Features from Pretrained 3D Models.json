@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/FILTR_Extracting Topological Features from Pretrained 3D Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/FILTR_Extracting Topological Features from Pretrained 3D Models.pdf",
+ "title": "FILTR Extracting Topological Features from Pretrained 3D Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "FILTR从预训练3D模型提取拓扑特征，但仅在合成数据验证",
+ "innovations": [
+  "创建DONUT数据集，首个具有拓扑标注的3D模型数据集",
+  "FILTR框架，首次实现从预训练3D编码器直接预测持久图",
+  "通过探测和特征对齐量化3D编码器捕获的拓扑信息"
+ ],
+ "method_framework": "FILTR采用冻结的预训练3D编码器作为特征提取器，使用基于DETR的transformer解码器将持久图预测视为集合预测任务，通过交叉注意力机制处理查询，预测持久对及其存在概率。",
+ "experiment_framework": "在DONUT数据集上评估，使用连通组件和属预测任务探测编码器，通过CKA量化特征与持久图向量的对齐，使用Wasserstein距离、持久图像误差和瓶颈距离评估FILTR性能。",
+ "takeaways": [
+  "拓扑信息可作为评估3D编码器表达能力的指标",
+  "预训练编码器虽有限但包含多尺度拓扑信号，可通过轻量级解码器提取"
+ ],
+ "weaknesses": [
+  "预训练3D编码器对拓扑信息的捕获能力有限",
+  "FILTR仅在合成数据上验证，缺乏真实世界应用验证",
+  "持久图预测任务计算复杂度高"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D模型拓扑分析，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

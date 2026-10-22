@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Localized Concept Erasure In TEXT-TO- Diffusion Models via High-Level Representation Misdirection.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Localized Concept Erasure In TEXT-TO- Diffusion Models via High-Level Representation Misdirection.pdf",
+ "title": "Localized Concept Erasure In TEXT-TO- Diffusion Models via HIGH-LEVEL REPRESENTA-TION Misdirection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "修改文本编码器早期层，重定向高层表征实现扩散模型概念擦除",
+ "innovations": [
+  "解耦更新位置与擦除目标，仅修改文本编码器早期层",
+  "提出两种重定向策略：随机方向和语义方向",
+  "方法具有高效性和可转移性，适用于多种架构"
+ ],
+ "method_framework": "HiRM方法通过修改CLIP文本编码器第一块参数，同时将目标概念在最终块中的高层表征重定向到指定向量，实现概念擦除与生成质量保持的平衡。",
+ "experiment_framework": "UnlearnCanvas基准(60种风格+20个对象)和I2P数据集，对比训练/非训练基线，使用UA、IRA、CRA、AA和ASR指标评估。",
+ "takeaways": [
+  "文本编码器早期层包含视觉属性的因果状态，适合进行概念擦除",
+  "解耦更新位置与擦除目标可避免表征破碎，保持生成质量"
+ ],
+ "weaknesses": [
+  "对于抽象概念(如裸露)的语义方向定义存在模糊性",
+  "未充分探讨方法在不同规模模型上的扩展性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "文本编码器修改与概念擦除属于可靠性主线中的幻觉抑制方向",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

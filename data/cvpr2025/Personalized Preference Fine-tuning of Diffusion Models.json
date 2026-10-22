@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Personalized Preference Fine-tuning of Diffusion Models.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Personalized Preference Fine-tuning of Diffusion Models.pdf",
+ "title": "Personalized Preference Fine-tuning of Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "PPD用VLM提取偏好嵌入，通过交叉注意力实现扩散模型个性化对齐",
+ "innovations": [
+  "多奖励优化目标PPD",
+  "VLM提取用户偏好嵌入",
+  "交叉注意力机制集成用户特征",
+  "少样本用户偏好学习"
+ ],
+ "method_framework": "PPD采用两阶段方法：1)使用VLM从用户少样本偏好对中提取用户嵌入；2)通过交叉注意力将用户嵌入融入扩散模型，使用改进的DPO目标进行个性化对齐",
+ "experiment_framework": "在Pick-a-Pic数据集上评估，使用CLIP、Aesthetic和HPS作为奖励函数，比较Stable Cascade、Diffusion-DPO和SFT基线，通过自动评估和GPT-4o评估胜率",
+ "takeaways": [
+  "用户偏好嵌入可有效表示个性化奖励函数",
+  "交叉注意力机制是集成用户特征的有效方式",
+  "线性插值可实现不同奖励间的平滑过渡"
+ ],
+ "weaknesses": [
+  "需要过滤用户数因少样本要求",
+  "仅优化交叉注意力层而非整个模型",
+  "用户嵌入依赖于VLM的质量"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅占落地域(多模态)但无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

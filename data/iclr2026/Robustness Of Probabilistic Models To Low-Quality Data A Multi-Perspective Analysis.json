@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Robustness Of Probabilistic Models To Low-Quality Data A Multi-Perspective Analysis.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Robustness Of Probabilistic Models To Low-Quality Data A Multi-Perspective Analysis.pdf",
+ "title": "Robustness of Probabilistic Models to Low-Quality Data: A Multi-Perspective Analysis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "受控实验比较三类模型鲁棒性，多视角解释但缺乏真实噪声验证。",
+ "innovations": [
+  "受控实验量化三类概率模型对数据腐蚀的鲁棒性谱系：AR LM 极稳健(GPT-2 在 50% 腐蚀下 NLL 仅 2.87→3.59)、扩散模型灾难性退化(图像-标签一致度跌 56.81%)、分类器中等。",
+  "提出整合信息论、PAC 学习与梯度动力学的多视角分析框架，解释鲁棒性差异的信息学根源。",
+  "归纳两条鲁棒性原理：条件信息的丰富度(约束学习问题)与训练数据的绝对信息量(正确信号压制统计噪声)。"
+ ],
+ "method_framework": "在训练数据中可控注入可量化随机错误(token 级噪声与结构腐蚀)，精确控制腐蚀水平；对 AR LM、类条件扩散、图像分类器分别测性能衰减；再用信息论(条件熵/信息量)、PAC(泛化界)、梯度动力学(噪声梯度方向)三重视角归因，提炼鲁棒性原理。",
+ "experiment_framework": "受控对照实验：报告 GPT-2 测试 NLL、扩散模型图像-标签一致度、分类器精度随腐蚀比例的变化；跨模型族与数据规模对比；以理论分析与实验相互印证。",
+ "takeaways": [
+  "不同概率模型族对低质量数据的鲁棒性差异巨大，并非偶然而是由信息学性质决定。",
+  "丰富的条件信息与足够的绝对信息量是模型在噪声数据下保持泛化的关键。",
+  "扩散模型对标签/结构腐蚀格外脆弱，提示其训练信号对低质量数据缺乏容错。"
+ ],
+ "weaknesses": [
+  "结论基于受控随机腐蚀，真实网络数据噪声的结构(非均匀、有偏)是否符合该分析未充分验证。",
+  "理论框架为解释性整合，未据此提出新的鲁棒化训练方法或可证伪预测的系统检验。",
+  "模型规模与数据规模跨度有限，超大模型上的鲁棒性规律是否外推未知。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "明确研究可靠性主线，分析模型对低质量数据的鲁棒性差异",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

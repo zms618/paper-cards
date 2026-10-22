@@ -1,0 +1,41 @@
+{
+ "title": "PD2GS: Part-Level Decoupling and Continuous Deformation of Articulated Objects via Gaussian Splatting",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "共享高斯场+视觉先验实现铰接物体部件解耦，但与可靠性主线关联弱",
+ "innovations": [
+  "学习共享canonical高斯场，将任意铰接交互状态表示为其连续变形，避免离散状态重建带来的表示碎片化与漂移。",
+  "用通用视觉先验精修部件边界，实现互斥部件分割与场景级连贯，做部件级解耦。",
+  "发布real-to-sim RGB-D数据集RS-Art(对齐逆向工程3D模型)，支持真实世界评估。"
+ ],
+ "method_framework": "为每个交互状态关联一个latent code；在共享canonical 3D高斯场上用该code驱动连续形变场恢复该状态几何；借通用视觉先验精修部件边界并强制部件互斥；统一实现部件感知重建、连续可控形变与运动学建模。",
+ "experiment_framework": "合成与真实数据上评测；对比自监督铰接物体建模方法；指标含几何精度、运动学精度、连续控制下一致性；并在自建RS-Art数据集上做real-to-sim评估；报告优于先前方法。",
+ "takeaways": [
+  "共享规范场+连续变形比离散状态关联更利于平滑的铰接配置控制。",
+  "通用视觉先验可无监督地精修部件边界、保持部件互斥。",
+  "PD2GS在几何与运动学精度、连续控制一致性上均优于既有方法。"
+ ],
+ "weaknesses": [
+  "属3DGS/机器人铰接物体建模，与可靠性主线无直接关联。",
+  "连续形变场对关节自由度数量/多闭环机构的建模上限在正文前9页未充分讨论。",
+  "依赖通用视觉先验做部件边界，其对遮挡/弱纹理铰接物体的鲁棒性证据有限。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PD2GS_Part-Level Decoupling and Continuous Deformation Of Articulated Objects via Gaussian Splatting.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PD2GS_Part-Level Decoupling and Continuous Deformation Of Articulated Objects via Gaussian Splatting.pdf",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "3DGS铰接物体建模与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

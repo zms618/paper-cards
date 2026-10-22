@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/SpeCache_Speculative Key-Value Caching for Efficient Generation of LLMs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SpeCache_Speculative Key-Value Caching for Efficient Generation of LLMs.pdf",
+ "title": "SpeCache: Speculative Key-Value Caching for Efficient Generation of LLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "推测性KV缓存预取实现10倍压缩，但误差与泛化性存疑",
+ "innovations": [
+  "推测性预取机制，并行解码输出和推测token",
+  "低比特KV缓存与重要性预取结合",
+  "无需重新训练的KV缓存压缩方法"
+ ],
+ "method_framework": "将完整KV缓存卸载到CPU内存，在GPU中保留低比特KV缓存，通过并行解码输出token和推测token，预取下一阶段最相关的KV对",
+ "experiment_framework": "LongBench和Needle-in-a-Haystack基准测试，对比多种LLM模型，评估性能、VRAM使用和吞吐量",
+ "takeaways": [
+  "利用注意力稀疏性减少KV缓存传输",
+  "推测预取与计算并行化减少延迟",
+  "低比特量化与重要性预取结合提升压缩效率"
+ ],
+ "weaknesses": [
+  "推测token可能引入误差",
+  "需要调整k值以适应不同模型",
+  "预取策略可能不适用于所有任务类型"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

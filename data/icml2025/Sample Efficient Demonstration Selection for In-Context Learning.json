@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Sample Efficient Demonstration Selection for In-Context Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Sample Efficient Demonstration Selection for In-Context Learning.pdf",
+ "title": "Sample Efficient Demonstration Selection for In-Context Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "将示例选择建模为老虎机问题，用bandit减少LLM调用次数",
+ "innovations": [
+  "把上下文长度预算下的示例(演示)选择建模为多臂老虎机问题",
+  "用bandit-based选择从候选示例集中样本高效地搜索最优演示子集",
+  "在LLM调用预算受限下减少选择阶段的LLM调用次数"
+ ],
+ "method_framework": "ICL需在上下文长度预算内选少样本示例。本文先收集候选示例样本，再把'选哪个演示子集'视为多臂老虎机：臂对应不同演示子集，以LLM调用后的任务表现为奖励，用bandit策略样本高效地探索/利用，选出top演示子集。",
+ "experiment_framework": "多个NLP任务上与随机/启发式示例选择对比；指标为ICL任务准确率与选择阶段LLM调用次数(样本效率)；在上下文长度预算约束下评估。",
+ "takeaways": [
+  "多臂老虎机可样本高效地选出高ICL效果的演示子集",
+  "相比穷举式选择，bandit显著减少选择阶段的LLM调用",
+  "在上下文预算受限下仍能稳定提升ICL效果"
+ ],
+ "weaknesses": [
+  "奖励依赖LLM反馈，需少量带标注验证集来估计奖励，纯零样本设定未覆盖",
+  "bandit探索成本随候选集增大而上升，极大示例库下的扩展性未充分验证",
+  "属ICL提示工程效率，与可靠性/鲁棒性、验证器及医学影像主线无直接关联"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

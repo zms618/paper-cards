@@ -1,0 +1,37 @@
+{
+ "title": "Hyper: Hyperparameter Robust Efficient Exploration in Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "通过访问正则和解耦降低好奇心探索超参数敏感，但实验与落地验证不足",
+ "innovations": [
+  "通过智能体行为分析刻画好奇心探索中超参数(如β)选择困难与优化不稳定的根本原因",
+  "提出Hyper：正则化探索访问分布并将利用(exploration)与利用(exploitation)解耦，大幅降低对超参数的敏感",
+  "在函数逼近设定下给出Hyper可证高效的理论保证，并在多环境验证鲁棒性"
+ ],
+ "method_framework": "好奇心方法对超参数敏感源于访问分布正则与价值估计耦合导致的优化不稳定。Hyper通过对探索访问施加显式正则、并将探索bonus与利用（价值学习）解耦，使训练在不同超参数下都稳定；理论上在函数逼近下证明样本效率。",
+ "experiment_framework": "在多种RL环境上对比好奇心驱动探索(UCB-Q等)及其它方法，固定不同β超参数考察性能方差，指标为平均回报与对超参数的鲁棒性，并附理论样本复杂度。",
+ "takeaways": [
+  "好奇心探索的脆弱性主要来自探索与利用耦合导致的优化不稳定",
+  "解耦+访问正则可使算法对超参数鲁棒，无需逐环境精细调参",
+  "函数逼近下仍可证高效，兼顾理论与实用"
+ ],
+ "weaknesses": [
+  "鲁棒性主要在离散/经典RL环境展示，在大规模深度视觉控制上的迁移未充分验证",
+  "访问正则引入额外计算与状态计数开销，高维连续状态下的实现细节不清晰",
+  "与主线索（可信多模态推理/医学影像）无关，属RL探索算法"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Hyper Hyperparameter Robust Efficient Exploration in Reinforcement Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Hyper Hyperparameter Robust Efficient Exploration in Reinforcement Learning.pdf",
+ "raw_overall": 6.33,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

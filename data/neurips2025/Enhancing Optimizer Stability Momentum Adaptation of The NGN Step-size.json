@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Enhancing Optimizer Stability Momentum Adaptation of The NGN Step-size.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Enhancing Optimizer Stability Momentum Adaptation of The NGN Step-size.pdf",
+ "title": "Enhancing Optimizer Stability: Momentum Adaptation of The NGN Step-size",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "NGN-M优化器结合动量与步长，理论收敛但实践受限",
+ "innovations": [
+  "NGN-M算法结合NGN步长与动量，实现O(1/√K)收敛率",
+  "NGN-MD算法引入坐标自适应步长，支持对角预条件",
+  "理论证明NGN-M无需插值条件或有界梯度假设"
+ ],
+ "method_framework": "NGN-M通过将NGN步长与heavy-ball动量结合，在保持NGN鲁棒性的同时加速收敛；NGN-MD进一步引入坐标自适应步长和RMSprop预条件器。",
+ "experiment_framework": "在CIFAR、ImageNet和语言模型上测试，与SGDM、Adam、Momo等基线比较，使用学习率敏感度指标评估鲁棒性。",
+ "takeaways": [
+  "动量与NGN步长的结合显著提升超参数鲁棒性",
+  "坐标自适应步长在Transformer等复杂模型中表现优异"
+ ],
+ "weaknesses": [
+  "理论分析中动量参数β需较小值，与实践中常用β=0.9不符",
+  "NGN-MD的鲁棒性依赖于预条件器的选择"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

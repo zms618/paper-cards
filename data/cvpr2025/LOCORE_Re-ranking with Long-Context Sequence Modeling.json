@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/LOCORE_Re-ranking with Long-Context Sequence Modeling.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/LOCORE_Re-ranking with Long-Context Sequence Modeling.pdf",
+ "title": "LOCORE Re-ranking with Long-Context Sequence Modeling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "局部描述符长上下文序列模型用于重排序，参数量大且仅限后处理",
+ "innovations": [
+  "首个使用局部描述符进行列表级重排序的方法",
+  "利用长上下文序列模型捕获查询与图库图像间的依赖关系",
+  "滑动窗口策略克服序列模型上下文大小限制",
+  "全局查询注意力机制确保长距离交互"
+ ],
+ "method_framework": "基于Longformer架构，将查询和图库图像的局部描述符作为序列输入，通过全局查询注意力和局部滑动窗口注意力捕获长距离依赖，使用二分类器预测每个标记是否来自正样本图像",
+ "experiment_framework": "在ROxf、RPar、CUB-200、SOP和In-Shop等数据集上评估，使用mAP和R@k作为指标，与RRT、CVNet、AMES等基线方法比较",
+ "takeaways": [
+  "列表级重排序能捕获图库图像间的交互信息",
+  "滑动窗口策略可有效扩展处理列表大小",
+  "全局查询注意力机制对长距离交互至关重要"
+ ],
+ "weaknesses": [
+  "模型参数量较大(19.4M-111.8M)",
+  "训练时需要洗牌图库列表以避免位置偏差",
+  "仅适用于重排序阶段，不适用于初始检索"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "仅限后处理的重排序，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

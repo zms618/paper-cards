@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/QFFT_Question-Free Fine-Tuning for Adaptive Reasoning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/QFFT_Question-Free Fine-Tuning for Adaptive Reasoning.pdf",
+ "title": "QFFT, Question-Free Fine-Tuning for Adaptive Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "移除问题输入的微调方法，使模型自适应选择推理模式",
+ "innovations": [
+  "提出问题无关微调(QFFT)方法，避免模型过度依赖长思维链",
+  "定义自适应推理能力评估指标RAK",
+  "验证模型在遇到错误或不确定性时能自动触发长思维链反思行为"
+ ],
+ "method_framework": "QFFT方法在训练阶段移除输入问题，仅使用长思维链响应进行微调，保留模型原有的短思维链模式，同时学习在不确定性时触发反思行为。",
+ "experiment_framework": "在GSM8K、MATH、AIME等数学数据集上评估，与SFT、DAD、O1-Pruner等方法对比，使用准确率、token长度和RAK指标。",
+ "takeaways": [
+  "移除问题输入可有效防止模型过度依赖长思维链",
+  "自适应推理能力可通过RAK指标量化评估",
+  "模型在遇到错误或不确定性时能自动触发反思行为"
+ ],
+ "weaknesses": [
+  "仅在数学推理任务上验证，泛化性有待进一步验证",
+  "未深入分析不同规模模型(如7B vs 32B)的适应性差异",
+  "对长思维链触发条件的分析不够系统"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

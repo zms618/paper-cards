@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SP-VLA_A Joint Model Scheduling and Token Pruning Approach for VLA Model Accelera.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SP-VLA_A Joint Model Scheduling and Token Pruning Approach for VLA Model Accelera.pdf",
+ "title": "SP-VLA: A Joint Model Scheduling and Token Pruning Approach for VLA Model Acceleration",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "常规调度与剪枝组合，仿真环境加速，与主线可靠性研究无关",
+ "innovations": [
+  "动作感知模型调度：将VLA动作分为深思型与直觉型，动态在VLA与轻量生成器间切换",
+  "空间-语义双感知token剪枝：区分空间/语义token并按双感知重要性剪枝",
+  "两机制联合，聚焦关键动作与显著视觉信息，频率自适应执行"
+ ],
+ "method_framework": "针对VLA在序贯决策环境中的时序与空间冗余：动作感知调度按深思/直觉切换大模型与轻量生成器；空间-语义双感知剪枝按重要性剔除冗余视觉token；二者联合实现无损加速。",
+ "experiment_framework": "在LIBERO与SimplerEnv上评测；实现1.5x(LIBERO)/2.4x(SimplerEnv)无损加速，最高带来6%平均性能提升。",
+ "takeaways": [
+  "将动作分为深思/直觉并调度大小模型可有效降时序冗余",
+  "空间-语义双感知剪枝可在保持精度下剔除冗余视觉token",
+  "联合机制在机器人操作基准上实现显著无损加速"
+ ],
+ "weaknesses": [
+  "属VLA推理加速方向，与主线（LLM可靠性/医学影像/多模态推理）无关联",
+  "深思/直觉动作分类阈值的设定依赖启发，跨任务鲁棒性未充分",
+  "主要在仿真操作基准验证，真实机器人上的延迟-精度权衡未报告"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "VLA加速与可靠性主线无关，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

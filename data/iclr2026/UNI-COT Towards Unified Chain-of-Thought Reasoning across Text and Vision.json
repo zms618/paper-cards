@@ -1,0 +1,41 @@
+{
+ "title": "Uni-CoT: Towards Unified Chain-of-Thought Reasoning across Text and Vision",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "统一视觉-文本状态转移的CoT，降低多模态推理复杂度。",
+ "innovations": [
+  "指出现有多模态 CoT 或视觉转移建模能力弱、或架构碎片化，导致视觉接地任务(几何/导航)表现差。",
+  "提出捕获结构化视觉转移并与文本逻辑无缝对齐的统一 CoT，实现连贯多模态推理。",
+  "引入宏级(高层规划)+微级(局部子任务执行)两级推理范式降低计算开销；并配以辅助任务的结构化训练范式稳定优化、提升泛化。"
+ ],
+ "method_framework": "把推理显式建模为文本状态与视觉状态交替更新的序列：宏级 CoT 做任务顺序分解与高层规划，微级 CoT 逐步执行子任务并同步更新视觉状态(裁剪/绘图/合成等结构化转移)，使视觉转移与文本逻辑严格对齐，辅助任务训练稳定优化。",
+ "experiment_framework": "在推理驱动的图像生成与视觉理解(几何/导航/拼图类需视觉状态转移)基准上，与纯文本 CoT、程序化操作、MLLM+生成器松耦合方法对比，报告 SOTA 与泛化性。",
+ "takeaways": [
+  "仅用文本 CoT 难以处理需要视觉状态转移的任务，需显式建模视觉转移。",
+  "宏/微两级设计在保持推理连贯的同时降低多模态推理的计算与训练开销。",
+  "统一视觉-文本状态转移的 CoT 在推理驱动生成与理解上取得 SOTA 与良好泛化。"
+ ],
+ "weaknesses": [
+  "两级推理与结构化视觉转移带来额外的视觉操作/生成模块，系统复杂度与推理开销不小。",
+  "依赖对视觉转移的结构化建模，对开放域、难以离散化为子任务的视觉推理泛化性待验证。",
+  "强调推理能力提升，未直接评估推理可信度/幻觉抑制；完整基准与消融表未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/UNI-COT Towards Unified Chain-of-Thought Reasoning across Text and Vision.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/UNI-COT Towards Unified Chain-of-Thought Reasoning across Text and Vision.pdf",
+ "raw_overall": 7.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态推理与可靠性主线交织，宏微两级设计降低计算开销",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/An -like Diffusion Method for Human-Object Interaction Detection.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/An -like Diffusion Method for Human-Object Interaction Detection.pdf",
+ "title": "An Image-like Diffusion Method for Human-Object Interaction Detection",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 3,
+  "relevance": 4.0,
+  "overall": 4.5
+ },
+ "one_line": "将HOI输出外积为图像并用多项式扩散，但无实验验证SOTA声明",
+ "innovations": [
+  "把单人-物对的 HOI 输出重铸为 H×W×2 的\"HOI 图像\"：对象分布 vobj(H) 与交互分布矩阵 mint(W×2) 外积，每个竖直切片恰是一个和为 1 的联合分布，并论证该表示可逆分解回 vobj/mint",
+  "为保持切片概率单纯形约束，把高斯前向换成多项式分布前向 d_k=(1-β_k)d_{k-1}+β_kε^Mu，推导闭式 d_k=ᾱ_k d_0+(1-ᾱ_k)ε̄^Mu，使 K→∞ 时 d_K→Multinomial(d_init)，即收敛到检测器给出的对象类别先验",
+  "用检测器提供的对象先验分布初始化噪声 HOI 图像（vobj 直接取检测器概率向量、mint 全置 0.5）作为去噪起点，并把反向监督量 q(d_{k-1}|d_k,d_0) 解析写成两个多项式分布概率的乘积"
+ ],
+ "method_framework": "每段人-物对构造 H×W×2 的 HOI 图像；前向以多项式分布加噪并收敛到检测器先验，反向条件在视觉语义特征上用 slice patchification 结构的去噪网络迭代重建 HOI 图像并读回 triplets。",
+ "experiment_framework": "正文截断于第 4.2 节反向过程，未见任何数据集、基线、指标与定量结果，核心 SOTA 声明无对应实验可核。",
+ "takeaways": [
+  "对输出本身由若干概率分布组成的预测任务，可先外积把输出重参数化为一\"图像\"，从而直接复用图像扩散的迭代去噪范式",
+  "若数据支撑在概率单纯形上，把噪声项换成同支撑的多项分布并令两系数和为 1，可保证每一步中间量仍在可行域内，无需后处理投影",
+  "把任务输出\"看作生成结果\"能顺带把离散输出的argmax学习改成连续去噪学习"
+ ],
+ "weaknesses": [
+  "正文在第 4.2 节反向过程开头截断，全篇没有任何定量实验表、基线或指标；'achieves state-of-the-art'这一核心声明缺对应实验，evidence 只能打低档",
+  "监督项中的归一化因子 γ_k 被直接当作固定超参设成 1（论文自承其不随 d_{k-1} 变化），等于把解析推导的主要价值丢弃，理论严密性打折",
+  "前向按竖直切片（W 条）各跑一遍多项式采样、反向又逐像素做扩散，训练推理开销与等价的逐类别分类头/二元分类头缺少效率与收敛步数对照",
+  "属性 2 要求每步中间量仍是合法 HOI 图像，但论文从未给出该约束在采样误差下的违反率与最终分解回 vobj/mint 的数值稳定性"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "HOI检测与可靠性主线无实质交点，仅为概率表示转换",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

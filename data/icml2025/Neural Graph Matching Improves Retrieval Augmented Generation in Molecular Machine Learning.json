@@ -1,0 +1,36 @@
+{
+ "title": "Neural Graph Matching Improves Retrieval Augmented Generation in Molecular Machine Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "神经图匹配改进分子RAG，质谱模拟提升9点，但泛化与落地性存疑。",
+ "innovations": [
+  "提出用神经图匹配做分子RAG：显式建模参考图与查询图间节点/边亲和(二次分配问题)，模拟领域专家的结构比对。",
+  "用可学习亲和度量+可微匹配层替代传统预定义(高斯核)亲和，在结构非完全一致时更鲁棒。",
+  "实现MARASON：基于ICEBERG融合神经图匹配的碎片级质谱预测模型。"
+ ],
+ "method_framework": "在数据库检索结构相似分子及其性质后，用神经图匹配模块学习查询分子与参考分子间的原子/碎片级对应关系（节点亲和+边亲和），把对齐后的参考信息以匹配感知方式融入碎片基网络，而非简单拼接。",
+ "experiment_framework": "任务为质谱图模拟(质量上限1500Da小分子)；对比非检索SOTA、朴素RAG与传统图匹配方法；指标为top-1准确率，报告MARASON达28% vs 非检索SOTA的19%，并优于两类对照。",
+ "takeaways": [
+  "分子RAG的关键是结构对齐，简单拼接参考几乎无收益。",
+  "神经图匹配比传统图匹配在结构非一致时更鲁棒，带来9个点的top-1提升。"
+ ],
+ "weaknesses": [
+  "为图匹配+RAG在分子任务的应用迁移，方法新颖性中等。",
+  "仅在质谱模拟单一任务验证，其他分子ML任务的泛化待证。",
+  "落地为化学/药物设计，与可靠性主线（医学影像/多模态大模型推理）无直接关联，relevance低。"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Neural Graph Matching Improves Retrieval Augmented Generation in Molecular Machine Learning.pdf",
+ "path": "icml2025/Neural Graph Matching Improves Retrieval Augmented Generation in Molecular Machine Learning.pdf",
+ "conf": "icml2025",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

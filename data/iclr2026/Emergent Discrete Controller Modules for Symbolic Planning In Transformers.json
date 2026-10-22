@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Emergent Discrete Controller Modules for Symbolic Planning In Transformers.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Emergent Discrete Controller Modules for Symbolic Planning In Transformers.pdf",
+ "title": "Emergent Discrete Controller Modules for Symbolic Planning In Transformers",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.7
+ },
+ "one_line": "离散控制器增强Transformer符号规划，理论证明与算法任务验证",
+ "innovations": [
+  "Gumbel-Softmax参数化离散控制器实现ASSIGN/ADD/COMPARE/BRANCH操作",
+  "与Transformer注意力机制紧密集成，维护内部程序状态",
+  "形式化证明可模拟有界 imperative 程序，误差可控",
+  "算法任务长度泛化提升20-40点，可解释执行追踪"
+ ],
+ "method_framework": "在Transformer块中插入离散控制器，通过Gumbel-Softmax选择操作码，维护寄存器、标志和内存状态，与注意力机制集成，每p层执行一次控制操作",
+ "experiment_framework": "算法推理任务(排序、列表求和、BFS)、符号QA(DROP)、程序合成(RobustFill)，对比标准Transformer、Universal Transformer、CLRS-Algorithmic Transformer等基线",
+ "takeaways": [
+  "离散选择对符号控制流至关重要，软混合模块性能显著下降",
+  "控制器稀疏插入(p=2)达到95%最大增益，仅60%开销",
+  "语义一致性损失和温度调度对稳定执行关键"
+ ],
+ "weaknesses": [
+  "理论证明依赖极限温度(τ→0, κ→∞)，实际训练中可能无法完全达到",
+  "仅评估了算法和符号任务，未在复杂多模态场景验证",
+  "控制器增加5-7% FLOPs，计算效率仍有提升空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "符号规划与可靠性主线无直接交点，属方法研习轴",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

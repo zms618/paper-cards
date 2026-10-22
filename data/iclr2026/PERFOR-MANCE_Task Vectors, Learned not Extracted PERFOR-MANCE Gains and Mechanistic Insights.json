@@ -1,0 +1,41 @@
+{
+ "title": "Task Vectors, Learned not Extracted: Performance Gains and Mechanistic Insights",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "直接训练任务向量替代抽取，精度更高且揭示线性传播机制。",
+ "innovations": [
+  "直接训练Learned Task Vectors(LTV)，相比从输出/隐藏态抽取的TV精度更高、更灵活(任意层/位置/可配ICL提示)。",
+  "低层机制：TV主要通过注意力头OV电路引导预测，少数‘关键头’起决定性作用。",
+  "高层机制：尽管Transformer有非线性，TV传播大体线性——早期TV被旋转到任务相关子空间提升相关标签logits，后期TV主要被缩放幅度。"
+ ],
+ "method_framework": "把任务向量作为可训练参数直接优化(而非从ICL演示中抽取)，训练好后可作为可注入隐藏态的任务表示；通过对OV电路消融、逐层TV方向/幅度分析，刻画TV在Transformer中如何传播并影响logits。",
+ "experiment_framework": "在多种ICL分类/选择任务上对比抽取TV与LTV的精度；做机制性消融(关键头消融、逐层TV旋转/缩放分析)；指标为ICL准确率与注入位置灵活性；报告LTV超抽取TV。",
+ "takeaways": [
+  "直接训练的LTV比抽取TV更准且可灵活注入任意层/位置。",
+  "TV通过少数关键注意力头的OV电路起作用，而非均匀扩散。",
+  "TV在网络中传播近乎线性：前段旋转到任务子空间、后段缩放幅度。"
+ ],
+ "weaknesses": [
+  "机制分析集中在小模型/分类ICL任务，对大模型与开放式生成ICL的外推有限。",
+  "LTV需按任务训练，失去了抽取TV‘零样本从演示得到’的便捷性。",
+  "‘关键头’识别是否跨模型/跨任务稳定复现，正文前9页证据尚不充分。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PERFOR-MANCE_Task Vectors, Learned not Extracted PERFOR-MANCE Gains and Mechanistic Insights.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PERFOR-MANCE_Task Vectors, Learned not Extracted PERFOR-MANCE Gains and Mechanistic Insights.pdf",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "任务向量方法与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

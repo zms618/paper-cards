@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/STATION2RADAR_Query-Conditioned Gaussian.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/STATION2RADAR_Query-Conditioned Gaussian.pdf",
+ "title": "Station2Radar: Query-Conditioned Gaussian Splatting for Precipitation Field",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 5.0
+ },
+ "one_line": "AWS与卫星融合的查询条件高斯泼溅，提升降水场生成精度",
+ "innovations": [
+  "首个融合AWS站点观测与卫星影像生成降水场的框架",
+  "查询条件高斯泼溅：仅渲染被查询的降水区域，避免非降水区冗余计算并保留降水结构锐度",
+  "雷达点提议网络识别降雨支撑位置，配合INR逐点预测高斯参数，实现分辨率灵活的实时降水场生成"
+ ],
+ "method_framework": "用雷达点提议网络识别有降雨支撑的位置，再用隐式神经表示(INR)为每个点预测高斯参数；与传统渲染整平面的2D高斯泼溅不同，QCGS仅对被查询的降水区域做条件渲染，融合稀疏站点与密集卫星信息生成降水场。",
+ "experiment_framework": "与基准降水产品对比，报告RMSE较传统格点降水产品提升50%以上；在多个时空尺度上验证一致性与实时性。",
+ "takeaways": [
+  "查询条件渲染可在降水场生成中兼顾精度与计算效率",
+  "稀疏站点+密集卫星的多源融合可替代昂贵雷达覆盖",
+  "在多时空尺度上稳定优于传统格点降水产品"
+ ],
+ "weaknesses": [
+  "属气象/遥感应用，与主线（LLM可靠性/医学影像/多模态推理）无关联",
+  "50% RMSE提升可能受基准产品本身粗分辨率影响，与更先进数据驱动降水模型对比未充分",
+  "降水'查询'由用户指定，自动化降水区域检测的鲁棒性未充分验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "气象遥感应用，与可靠性主线无关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

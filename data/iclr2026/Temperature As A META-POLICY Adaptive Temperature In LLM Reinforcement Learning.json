@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Temperature As A META-POLICY Adaptive Temperature In LLM Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Temperature As A META-POLICY Adaptive Temperature In LLM Reinforcement Learning.pdf",
+ "title": "Temperature as a Meta-Policy: Adaptive Temperature in LLM Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "将温度作为元策略，通过双层循环自适应LLM RL探索强度。",
+ "innovations": [
+  "提出TAMPO：把温度控制建模为可学习元策略，而非固定/启发式调度",
+  "内层用选定温度采样轨迹更新LLM策略(如GRPO)，外层通过在虚拟温度下评估轨迹似然推导温度特定优势(TSA)来更新温度分布，无需额外rollout",
+  "实现轨迹引导、奖励驱动的在线温度自适应，使探索强度直接对齐策略提升方向"
+ ],
+ "method_framework": "分层双层循环：内层在元策略选出的温度下采样轨迹并用critic-free RL(GRPO)更新策略；外层对每条轨迹在K个候选(虚拟)温度下计算归一化似然，乘以轨迹优势得到温度特定优势A(Tk)=lhat_Tk*Ai，再用EMA更新元策略对候选温度的分布，奖励带来高优势轨迹似然的温度。",
+ "experiment_framework": "在5个数学推理基准上评测；基线为固定温度及启发式温度调度；以GRPO为底层critic-free算法；指标为各基准的准确率/正确率，对比不同温度设定。",
+ "takeaways": [
+  "温度应作为决策变量而非固定超参，在线自适应可带来优于固定/启发式温度的策略提升",
+  "利用已有rollout在虚拟温度下重算似然即可更新温度元策略，无需额外采样开销",
+  "将探索强度与高优势轨迹对齐有助于缓解过早收敛与噪声探索之间的矛盾"
+ ],
+ "weaknesses": [
+  "候选温度集合与温度网格需预设，元策略搜索空间受限于离散候选",
+  "仅在数学推理这类可验证奖励任务上验证，对偏好类/稀疏奖励任务的适用性未证明",
+  "外层元策略更新依赖虚拟温度似然估计，其近似误差与温度间隔敏感性分析需补充"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "温度自适应机制与可靠性主线无实质交点，仅属LLM训练优化",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

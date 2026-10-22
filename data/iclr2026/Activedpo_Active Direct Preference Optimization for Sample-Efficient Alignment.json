@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Activedpo_Active Direct Preference Optimization for Sample-Efficient Alignment.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Activedpo_Active Direct Preference Optimization for Sample-Efficient Alignment.pdf",
+ "title": "Activedpo: Active Direct Preference Optimization for SAMPLE-EFFICIENT Alignment",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "基于梯度不确定性的主动偏好优化，提升LLM对齐效率",
+ "innovations": [
+  "基于LLM自身的梯度不确定性选择数据",
+  "使用LoRA梯度和随机投影降低计算复杂度",
+  "批处理选择策略平衡计算效率与信息损失"
+ ],
+ "method_framework": "基于DPO框架，通过理论推导的梯度不确定性准则选择最有价值的偏好数据进行标注，直接利用LLM自身作为奖励模型指导数据选择",
+ "experiment_framework": "TLDR和WebGPT数据集，Llama-2-7B、Gemma-2B和Qwen3-4B模型，对比随机、APO和APLP基线，使用奖励模型评估对齐效果",
+ "takeaways": [
+  "梯度不确定性可作为有效的数据选择标准",
+  "模型特定的数据选择比通用方法更有效",
+  "批处理和随机投影可显著降低计算复杂度"
+ ],
+ "weaknesses": [
+  "依赖奖励模型作为人类偏好代理，可能引入偏差",
+  "计算复杂度仍高于简单基线方法",
+  "未在真实人类标注场景验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅优化LLM对齐效率，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

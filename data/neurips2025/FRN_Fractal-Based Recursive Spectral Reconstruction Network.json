@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/FRN_Fractal-Based Recursive Spectral Reconstruction Network.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/FRN_Fractal-Based Recursive Spectral Reconstruction Network.pdf",
+ "title": "FRN: Fractal-Based Recursive Spectral Reconstruction Network",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "分形递归重建HSI，计算开销大且泛化能力存疑",
+ "innovations": [
+  "引入分形概念到光谱重建任务，建立递归重建新范式",
+  "设计带波段感知掩码的状态空间模型(BAMamba)，降低计算复杂度",
+  "利用HSI数据的低秩特性，通过粗到细的渐进式策略解决病态问题"
+ ],
+ "method_framework": "FRN采用递归原子重建模块，从宽波段到窄波段逐步预测光谱，每个模块仅使用相邻波段信息作为线索，符合HSI低秩特性，BAMamba模块通过波段感知掩码过滤低相关性像素。",
+ "experiment_framework": "在CAVE和Harvard数据集上评估，与7种SOTA方法比较，使用PSNR、RMSE、UIQI、SSIM指标，进行参数量、消融实验分析。",
+ "takeaways": [
+  "分形结构可有效处理高维HSI数据，实现参数效率与性能的平衡",
+  "波段感知掩码设计可提升模型对空间相关性的学习，抑制低相关性区域干扰"
+ ],
+ "weaknesses": [
+  "递归调用机制引入显著计算开销，影响实际应用效率",
+  "未充分讨论方法在不同场景和设备上的泛化能力",
+  "仅使用L1损失函数，可能未充分利用光谱重建任务的多方面特性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

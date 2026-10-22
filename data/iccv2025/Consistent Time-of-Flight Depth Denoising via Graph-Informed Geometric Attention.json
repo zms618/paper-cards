@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Consistent Time-of-Flight Depth Denoising via Graph-Informed Geometric Attention.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Consistent Time-of-Flight Depth Denoising via Graph-Informed Geometric Attention.pdf",
+ "title": "Consistent Time-of-Flight Depth Denoising via Graph-Informed Geometric Attention",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "图融合时空一致性ToF去噪，提升鲁棒性但计算开销大",
+ "innovations": [
+  "运动不变图结构跨帧融合",
+  "基于图融合的平滑先验MAP公式",
+  "图诱导几何注意力(GIGA)模块"
+ ],
+ "method_framework": "构建帧内图结构，通过跨帧图映射融合参考帧信息，结合图平滑先验和ToF噪声分布似然项，展开为可学习的迭代滤波器",
+ "experiment_framework": "DVToF合成数据集(5场景×10路径)和真实Kinectv2数据集，对比单/多帧方法，指标MAE/AbsRel/δ1/TEPE",
+ "takeaways": [
+  "图结构的时间自相似性可解决深度值变化问题",
+  "结合物理模型与数据驱动提升泛化能力"
+ ],
+ "weaknesses": [
+  "仅使用前一帧作为参考，未充分利用多帧信息",
+  "计算复杂度相对较高(0.027s/帧)"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "ToF去噪提升鲁棒性但未触及可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

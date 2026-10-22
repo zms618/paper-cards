@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/MeanFlow_Transformers with Representation Autoencoders.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/MeanFlow_Transformers with Representation Autoencoders.pdf",
+ "title": "MeanFlow Transformers with Representation Autoencoders",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "RAE潜空间MeanFlow，两阶段训练提升少步生成效率",
+ "innovations": [
+  "在RAE潜空间中实现MeanFlow训练",
+  "一致性中间训练(CMT)初始化和蒸馏(MFD)训练方案",
+  "去除引导参数简化训练配置"
+ ],
+ "method_framework": "结合预训练视觉编码器(RAE)和轻量解码器，在潜空间实现MeanFlow，采用CMT初始化和MFD训练方案，去除引导参数",
+ "experiment_framework": "ImageNet 256/512数据集，与vanilla MF对比，评估1步/2步FID、训练成本(GPU-days)和生成效率(GFLOPS)",
+ "takeaways": [
+  "RAE潜空间加速MF收敛并提高质量",
+  "两阶段训练(MFD+可选MFT)有效控制偏差-方差",
+  "有限差分近似替代JVP提高训练稳定性"
+ ],
+ "weaknesses": [
+  "依赖预训练编码器，可能限制模型灵活性",
+  "实验主要在ImageNet上进行，泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "生成模型与可靠性主线无直接交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Can Generative Geospatial Diffusion Models Excel as Discriminative Geospatial Foundation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Can Generative Geospatial Diffusion Models Excel as Discriminative Geospatial Foundation.pdf",
+ "title": "Can Generative Geospatial Diffusion Models Excel as Discriminative Geospatial Foundation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "将生成式地理扩散模型转为判别式，提出三种特征融合策略。",
+ "innovations": [
+  "首次将大规模生成式扩散模型用于遥感自监督表征学习",
+  "提出三种多阶段特征融合策略：全局加权融合、局部加权融合和专家混合融合",
+  "系统分析了不同噪声级别特征对下游任务的影响"
+ ],
+ "method_framework": "基于DiffusionSat扩散模型，通过DDIM反转获取多尺度多时间步特征，提出三种融合策略：全局加权、局部加权和专家混合融合，用于下游遥感分类和分割任务。",
+ "experiment_framework": "在GEO-Bench数据集上评估，包含语义分割(mIoU)和分类(F1/准确率)任务，对比多种SOTA遥感基础模型，包括MIM、对比学习和自蒸馏方法。",
+ "takeaways": [
+  "扩散模型在去噪过程中同时考虑全局语义结构和局部细节，特别适合遥感数据",
+  "早期扩散时间步(前20%)的特征包含最有用的判别信息",
+  "专家混合融合策略能有效建模不同模块和时间步之间的复杂交互"
+ ],
+ "weaknesses": [
+  "仅使用RGB波段，未充分利用多光谱信息",
+  "方法依赖于特定扩散模型(DiffusionSat)，可扩展性存疑",
+  "局部加权融合对光照变化等局部变化敏感"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "遥感表征学习与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/End-to-End Probabilistic Framework for Learning with Hard Constraints.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/End-to-End Probabilistic Framework for Learning with Hard Constraints.pdf",
+ "title": "END-TO-END Probabilistic Framework for Learning with Hard Constraints",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "可微分投影层实现硬约束，但计算开销大且泛化能力有限",
+ "innovations": [
+  "可微分概率投影层(DPPL)实现端到端硬约束学习",
+  "无需采样的分布参数直接投影方法",
+  "使用CRPS而非NLL作为优化目标提升预测性能",
+  "支持线性、非线性和凸不等式约束的统一框架"
+ ],
+ "method_framework": "ProbHardE2E框架结合预测器和校正器，通过DPPL层将分布参数投影到约束流形，确保所有样本满足硬约束，同时提供不确定性量化",
+ "experiment_framework": "在PDE求解和层次时间序列预测任务上评估，使用MSE、约束误差和CRPS作为指标，与ProbConserv、HardC、SoftC等方法对比",
+ "takeaways": [
+  "端到端约束处理优于后处理和软惩罚方法",
+  "CRPS作为优化目标比NLL能获得更好的预测性能",
+  "直接投影分布参数比投影样本更高效"
+ ],
+ "weaknesses": [
+  "非线性约束和凸不等式约束的计算开销较大",
+  "仅适用于位置-尺度分布族",
+  "实验主要在特定领域验证，泛化能力有待进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "硬约束学习与可靠性主线部分相关，但泛化能力有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

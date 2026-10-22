@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Mass Moerging through Adaptive Subspace Selection.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mass Moerging through Adaptive Subspace Selection.pdf",
+ "title": "Mass: Moerging through Adaptive Subspace Selection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "MASS通过SVD子空间选择实现模型合并，但路由层选择不够自适应",
+ "innovations": [
+  "基于奇异值分解的子空间选择",
+  "投影式路由机制无需训练数据",
+  "处理冗余方向的策略",
+  "扩展到分类头的自适应选择"
+ ],
+ "method_framework": "MASS结合固定合并步骤和推理时的动态路由：首先使用TSV-M合并模型，然后通过投影残差选择相关任务子空间，最后自适应合并并选择最佳分类头",
+ "experiment_framework": "ViT-B-32/B-16/L-14模型，8/14/20个视觉任务和8个语言任务，比较多种合并方法，使用绝对准确率和归一化准确率",
+ "takeaways": [
+  "投影式路由在无数据情况下有效",
+  "任务相似度过滤避免冗余",
+  "批处理推理可显著提升性能"
+ ],
+ "weaknesses": [
+  "路由层选择依赖经验而非自适应",
+  "在NLI任务上表现不如基线",
+  "计算开销增加约2倍"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "模型合并方法与可靠性主线无直接交点，仅具知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

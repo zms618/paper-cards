@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/AlphaDPO_Adaptive Reward Margin for Direct Preference Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/AlphaDPO_Adaptive Reward Margin for Direct Preference Optimization.pdf",
+ "title": "AlphaDPO: Adaptive Reward Margin for Direct Preference Optimization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "改进DPO的隐式参考模型，实现自适应奖励边际与训练稳定性。",
+ "innovations": [
+  "提出自适应偏好分布 π̂ref=U·(πθ/πref)^α，α=0 退化为 SimPO，α 增大则策略/参考比主导，实现个性化动态边际",
+  "从理论上证明 AlphaDPO 隐式控制迭代策略间的序列 KL，即便参考模型标定不佳也能稳定",
+  "在 Mistral2-7B/Llama3-8B/Gemma2-9B 上取得 AlpacaEval2 58.7%、Arena-Hard 35.7% 的 SOTA"
+ ],
+ "method_framework": "把 SimPO 视为用均匀隐式参考模型的 DPO 变体；AlphaDPO 用 U(y|x) 提供初始边际、再以 (πθ/πref)^α 项在策略与参考间动态调配，使不同偏好强度的响应对获得自适应边际；通过近似策略与参考间的序列 KL，在免多阶段训练下兼顾对齐与多样性/稳定。",
+ "experiment_framework": "在 Mistral2-7B、Llama3-8B、Gemma2-9B 上与 DPO、SimPO 及其他 DAA 对比，用 AlpacaEval 2.0 (LC) 与 Arena-Hard 胜率评估，报告随 α 的稳定性与鲁棒性。",
+ "takeaways": [
+  "用插值式隐式参考模型可同时得到实例自适应奖励边际与训练稳定性",
+  "AlphaDPO 即使参考模型标定不佳也能通过序列 KL 控制保持稳定",
+  "免多阶段训练即在多个模型上取得对齐 SOTA"
+ ],
+ "weaknesses": [
+  "落地域为通用 LLM 偏好对齐，非指定的医学影像或多模态大模型推理，relevance 受限",
+  "α 为新引入超参，其与数据集/规模的关系仍需调参",
+  "前9页以对齐基准胜率为主，未深入评估越界/安全性等多维对齐"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "改进LLM对齐方法，但未触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

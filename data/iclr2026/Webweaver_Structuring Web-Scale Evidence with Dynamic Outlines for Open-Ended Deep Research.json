@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Webweaver_Structuring Web-Scale Evidence with Dynamic Outlines for Open-Ended Deep Research.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Webweaver_Structuring Web-Scale Evidence with Dynamic Outlines for Open-Ended Deep Research.pdf",
+ "title": "WebWeaver: Structuring Web-Scale Evidence with Dynamic Outlines for Open-Ended Deep Research",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "双智能体框架通过动态大纲迭代提升研究报告质量，但成本高且扩展性存疑。",
+ "innovations": [
+  "提出动态大纲-证据银行双循环机制：规划器迭代交替进行证据检索和大纲优化，而非一次性搜索后写作",
+  "分层检索写作策略：写作时按章节从证据银行定向检索引用相关证据，避免长上下文问题和引用幻觉",
+  "在DeepResearch Bench等多个OEDR基准上达到SOTA，甚至超过参考答案质量"
+ ],
+ "method_framework": "双智能体架构：(1)规划器——在动态循环中交替执行证据获取和大纲优化，生成带引用链接的综合大纲，所有证据存入证据银行；(2)写作器——按大纲章节分层检索，逐节撰写报告，每节仅从证据银行中定向检索必要证据，减少冗余信息注入和长上下文压力。",
+ "experiment_framework": "在DeepResearch Bench、DeepConsult、DeepResearchGym三个OEDR基准上评估。对比对象包括OpenAI DeepResearch、Gemini DeepResearch、Claude Research等专有系统。指标包括报告质量（RACE）、引用准确性（FACT）、有效引用数等。",
+ "takeaways": [
+  "动态迭代的规划-检索循环比静态\"先搜后写\"范式产生更全面、结构更合理的研究报告",
+  "定向章节级检索有效缓解了长上下文证据过载和引用幻觉问题",
+  "开源框架可达到甚至超过专有深度研究agent的表现"
+ ],
+ "weaknesses": [
+  "系统依赖大量LLM调用（规划器多次迭代+写作器逐节检索），推理成本和延迟较高",
+  "评估主要基于英文网络内容，多语言场景下的检索和写作效果未验证",
+  "证据银行的存储和检索效率在超大规模（数百篇文档）下的可扩展性未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "研究方法扎实但与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Inductive Moment Matching.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Inductive Moment Matching.pdf",
+ "title": "Inductive Moment Matching",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.0,
+  "overall": 6.25
+ },
+ "one_line": "归纳矩匹配：单阶段训练的生成模型，从任意时刻映射到更早边缘分布。",
+ "innovations": [
+  "提出归纳矩匹配：学习从任意时刻 t 的边缘分布到任意 s<t 边缘的映射，天然支持单步或多步生成。",
+  "与蒸馏不同无需预训练教师与双网络优化；与一致性模型不同，IMM 保证分布级收敛且在多种超参/架构下稳定。",
+  "ImageNet-256 上 8 步达 1.99 FID，从零训练在 CIFAR-10 上取得 1.98 的 SOTA 两步 FID。"
+ ],
+ "method_framework": "在连接数据(t=0)与先验(t=1)的随机插值过程上，用数学归纳构造训练目标：对 s<r<t，分别从 r 与 t 一步映射到 s，最小化两者在 s 处的分布散度，强制 s 处分布与起始时刻无关，从而归纳地收敛到数据分布。",
+ "experiment_framework": "在 CIFAR-10 与 ImageNet-256×256 上评测；基线为扩散、蒸馏与一致性模型；指标为不同采样步数下的 FID，并考察训练稳定性与超参敏感度。",
+ "takeaways": [
+  "单阶段、从零训练即可得到稳定的一步/少步生成模型，避免蒸馏的不稳定与大量调参。",
+  "归纳构造在理论上保证收敛到数据分布，实证上少步即可达 SOTA FID。"
+ ],
+ "weaknesses": [
+  "少步优势主要在 CIFAR/ImageNet 等标准基准，高分辨率视频等大尺度场景未充分展示。",
+  "一步采样质量相对多步仍有差距，一步极限性能待提升。",
+  "属生成模型架构，与可靠性主线（医学影像、多模态推理）无直接关联。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

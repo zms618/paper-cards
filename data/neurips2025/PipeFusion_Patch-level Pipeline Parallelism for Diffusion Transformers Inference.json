@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/PipeFusion_Patch-level Pipeline Parallelism for Diffusion Transformers Inference.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/PipeFusion_Patch-level Pipeline Parallelism for Diffusion Transformers Inference.pdf",
+ "title": "PipeFusion: Patch-level Pipeline Parallelism for Diffusion Transformers Inference",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "Patch级流水线并行优化DiTs推理，通信开销降低但实现复杂",
+ "innovations": [
+  "patch级流水线并行策略",
+  "利用时间冗余重用特征图",
+  "参数分布降低内存占用"
+ ],
+ "method_framework": "将图像分块和模型层跨GPU分区，利用连续扩散步骤间的高相似性重用旧特征图，减少通信成本",
+ "experiment_framework": "PixArt/SD3/Flux.1模型，8×L40 PCIe GPU，比较序列并行/张量并行/DistriFusion的延迟和内存",
+ "takeaways": [
+  "利用时间冗余减少通信开销",
+  "流水线并行与计算重叠提升效率"
+ ],
+ "weaknesses": [
+  "预热阶段效率较低",
+  "对非标准架构实现复杂"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

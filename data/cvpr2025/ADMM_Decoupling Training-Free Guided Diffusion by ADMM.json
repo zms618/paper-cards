@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/ADMM_Decoupling Training-Free Guided Diffusion by ADMM.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ADMM_Decoupling Training-Free Guided Diffusion by ADMM.pdf",
+ "title": "Decoupling Training-Free Guided Diffusion by ADMM",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "ADMM重写条件扩散，理论近似但参数敏感，实验不充分",
+ "innovations": [
+  "引入辅助变量 z 把条件生成拆成 max_{x,z} log q_ϕ(x) + log c_θ(z,y), s.t. x=z，用增广拉格朗日 L_ρ = −log q_ϕ(x) − log c_θ(z,y) + ⟨ν,x−z⟩ + ρ/2∥x−z∥² 驱动交替更新，彻底去掉已有方法靠手动调权重 λ 平衡 prior 与 guidance 的做法，由对偶变量 ν 自适应决定耦合进度",
+  "Proposition 1：证明扩散反向步 x̃_{t-1} = (1/√α_t)(x_t + β_t s_θ(x_t,t)) + √(...)·β_t·ε 是 −(1/ρ)log q_ϕ 的 proximal operator 的一阶近似（ρ = β/(1−β)），从而 x 的更新可直接用现成无条件扩散模型一次反向步算出，无需训练",
+  "z 的更新用 Tweedie 估计 z̃_0 = (z_t + (1−ᾱ_t)s_t)/√ᾱ_t 把噪声层样本还原到数据空间再求 ∇_z log c_θ，每层做 K_t 步梯度下降逼近 prox，配合 Theorem 2（要求 ρ ≤ 1/(6L)、η ≤ 1/(ρ+L)、Σδ_t<∞、Σ2^{−K_t}<∞）证明 (x,z) 收敛到驻点且步长残差为 o(1/T)"
+ ],
+ "method_framework": "无训练、免权重：对 t=T→0 循环 —— 用 (z_t − ν_t/ρ) 作为起点做一次逆扩散得到 x_{t-1}，再用 K_t 步梯度下降（含 ρ(z−x_{t-1}−ν_t) 的二次项与 ∇_z log c_θ(ẑ_0(z),y)）得到 z_{t-1}，最后更新 ν_{t-1}=ν_t+ρ(x_{t-1}−z_{t-1})；引导函数 c_θ 可以是分割图/草图/文本/线性降采样等任意可微条件。",
+ "experiment_framework": "CelebA-HQ 非线性引导（分割图用 BiSeNet、草图用 AODA、文本用 CLIP-B/16，1000 个条件，报 ℓ2 距离 + FID + CLIP score）；FFHQ/ImageNet 256 线性逆问题（SR×4、box/random  inpainting、高斯/运动去模糊，FID+LPIPS+PSNR/SSIM，1000 图）；可控人体运动生成（4 条文本 + 10 条轨迹，报 Objective/Embedding）。",
+ "takeaways": [
+  "把「prior 权重」这一隐晦的超参换成 ADMM 的对偶残差自适应，是可直接复用的架构思路：任何「生成先验 + 可微约束」的耦合问题都能用 split variable + ADMM 重写",
+  "证明逆扩散步就是 prox(−log p) 的一阶近似，为「把成熟优化算法直接架在扩散采样上」提供了接口般的桥接，后续做更精细的 proximal 设计（如共轭、加速、步自适应）都有落点",
+  "Table 3 显示取 K_t 足够多、ρ 合适时，在 10 个逆问题任务里 FID/LPIPS 各赢 9/10，且比单轨 DPS 更锐利——说明「双轨逐步靠拢」确实缓解了 guidance 过冲导致的模糊"
+ ],
+ "weaknesses": [
+  "Theorem 2 的收敛性只在 ρ ≤ 1/(6L)、目标 L-smooth、且把 −log q_ϕ 与 −log c_θ 都当凸处理时才成立；但正文又承认 log q_ϕ 非凸、非解析，只能用「足够小的 ρ 使子问题近似凸」绕开，而 ρ 小意味着耦合弱、约束满足变差——理论保证与实际可用设置之间存在明显 gap，且 ρ、η、K_t 三个参数的具体取值与敏感性实验在正文全部缺失",
+  "条件项 c_θ 由现成的分割/草图/CLIP 模型提供，其梯度可能本身就不稳定（CLIP 这种对比学习目标在噪声中间态上梯度方向会剧变），但方法把 c_θ 直接当可微能量用，未见对引导函数稳健性（如早停、梯度裁剪、动量）的消融",
+  "运动生成一项的对比基线只有 GMD w/o inpainting 与 LGD-MC（且 LGD-MC 用 n=10 的 MC 估计），而 Objective 0.042 vs 0.095/0.107 的差距在完全无方差的单一 run 下给出；正文截断在 Related Work 6.1 中途，缺少对 ρ/η/K_t 的消融表与多种子/置信区间，结论的可复现性存疑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "扩散生成方法，无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SPG_Sandwiched Policy Gradient for Masked Dif-fusion Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SPG_Sandwiched Policy Gradient for Masked Dif-fusion Language Models.pdf",
+ "title": "SPG: Sandwiched Policy Gradient for Masked Diffusion Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "夹逼策略梯度缓解dLLM对数似然偏差，但计算开销大且与主线关联弱",
+ "innovations": [
+  "指出现有ELBO/单步估计为单侧近似，引入显著策略梯度偏差",
+  "提出夹逼策略梯度SPG，同时使用真实对数似然的上界与下界",
+  "在dLLM上显著优于基于ELBO或单步估计的RL基线"
+ ],
+ "method_framework": "dLLM对数似然难解使标准策略梯度无法直接应用；SPG同时构建真实对数似然的上界与下界（夹逼），用双侧界替代ELBO单侧近似，从而得到偏差更小的策略梯度估计用于偏好/奖励对齐。",
+ "experiment_framework": "在GSM8K、MATH500、Countdown、Sudoku上对比dLLM的SOTA RL方法；准确率分别提升3.6%、2.6%、18.4%、27.0%。",
+ "takeaways": [
+  "双侧夹逼对数似然可比ELBO单侧近似显著降低策略梯度偏差",
+  "在推理与搜索类任务（Countdown/Sudoku）上提升尤为显著",
+  "为扩散语言模型的RL对齐提供了更无偏的优化途径"
+ ],
+ "weaknesses": [
+  "属dLLM对齐优化方法，与医学影像/多模态推理落地域关联弱",
+  "双侧界的计算开销相对ELBO更大，大规模训练成本未充分量化",
+  "方法围绕偏差减少，未直接触及可靠性/校准/幻觉抑制主线"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "dLLM对齐优化，与主线关联弱但方法有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

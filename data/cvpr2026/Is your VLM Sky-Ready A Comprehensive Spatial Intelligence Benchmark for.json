@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Is your VLM Sky-Ready A Comprehensive Spatial Intelligence Benchmark for.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Is your VLM Sky-Ready A Comprehensive Spatial Intelligence Benchmark for.pdf",
+ "title": "Is your VLM Sky-Ready A Comprehensive Spatial Intelligence Benchmark for",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "构建UAV导航VLM基准，提出两阶段训练方法提升性能。",
+ "innovations": [
+  "SpatialSky-Bench：首个专门评估VLM在UAV导航场景中空间智能能力的综合基准",
+  "SpatialSky-Dataset：包含100万样本的大规模数据集，覆盖13个子任务",
+  "Sky-VLM：采用两阶段训练方法（SFT+RFT）专门针对UAV空间推理优化的VLM"
+ ],
+ "method_framework": "基于Qwen2.5-VL-7B构建，采用两阶段训练：首先在SpatialSky-Dataset上进行监督微调(SFT)，然后使用GRPO进行强化微调(RFT)，专注于关键空间推理任务。",
+ "experiment_framework": "在SpatialSky-Bench上评估，包含13个子任务，对比闭源/开源/空间专用模型，使用mIoU、准确率、BLEU等指标。",
+ "takeaways": [
+  "多模态数据生成方法可高效构建空间智能数据集",
+  "任务特定的奖励函数能有效提升模型在空间定位任务中的性能",
+  "结构化输出格式(<box>, <point>)便于自动评估"
+ ],
+ "weaknesses": [
+  "仅关注UAV视角，可能限制模型在其他场景的泛化能力",
+  "数据生成依赖VLM，可能存在错误传播问题",
+  "未充分讨论模型在极端天气或复杂环境下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "UAV导航基准与可靠性主线部分交织，但未触及核心可靠性问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

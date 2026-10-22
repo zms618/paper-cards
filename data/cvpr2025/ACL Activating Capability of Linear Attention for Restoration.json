@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/ACL Activating Capability of Linear Attention for Restoration.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ACL Activating Capability of Linear Attention for Restoration.pdf",
+ "title": "ACL: Activating Capability of Linear Attention for Image Restoration",
+ "scores": {
+  "novelty": 4.5,
+  "depth": 5.0,
+  "evidence": 4.0,
+  "relevance": 4.5,
+  "overall": 4.5
+ },
+ "one_line": "线性注意力替换Mamba+多尺度卷积，图像复原工程组合",
+ "innovations": [
+  "从线性注意力的因果形式 A_i = (Q_i D_i)/(Q_i U_i)、D_i=Σ_{j≤i}K_j^T V_j、U_i=Σ_{j≤i}K_j^T 出发，指出它与 Mamba 改进版离散 SSM h_i = Ã_i h_{i-1} + B_i(Δ_i x_i)、y_i = C_i h_i + D x_i 的递归式同构（只差一个 forget 项 Ã_i 与输入 skip D x_i），据此直接用线性注意力替换 SSM 块（LAMA），免去 forget 矩阵 Ã_i 的逐 token 递归计算，同时摆脱单向扫描",
+  "LAMA 的具体结构：把二维特征展平成 HW×C 后分主/残差两路（残差 σ(Linear(F'))、主路 Linear→Conv→SiLU→线性注意力），线性注意力用 K^T·F' 累积极化近似 softmax attention，并加可学习位置编码 Conv_pos，最后乘残差过 FFN",
+  "局部增强用多尺度膨胀卷积 MDC：Parallel 的 Conv5×5(d=2) 与 Conv3×3(d=2) concat 后 1×1 卷积降通道再加残差，替代窗口自注意力做局部细节，避免 Swin 式窗口注意的计算开销"
+ ],
+ "method_framework": "类 U-Net 编码器-解码器，三级 Encoder_i/Decoder_i 各含多个 LAMA 核心单元，高分辨率的两层后接 MDC 局部增强；三尺度输出，损失为三级 L1 + λ·|fft(P)−fft(I)| 频域项，λ=0.1。",
+ "experiment_framework": "去雨：Rain100L/H、Rain200L/H、DID-Data 六个测试集，PSNR/SSIM（YCbCr）；去模糊：GoPro（2103 训练/1111 测试），PSNR/SSIM + FLOPs + 参数量；基线覆盖 CNN（NAFNet、IRNeXt）、Transformer（Restormer、MAXIM、Uformer）与 Mamba（MambaIR）。",
+ "takeaways": [
+  "「SSM 与线性注意力在递归形式下同构」这一分析为不用递归、且要做双向/全局建模的场景提供一个免训练的替代块构造方式，替换成本低",
+  "LAMA 单元 = 线性注意力 + 可学习位置卷积 + 残差门控（×F_res）的组合，可以在几乎不动整体骨架的前提下换掉 SSM 或 window-attention，是很有复用价值的模块模板",
+  "复原先抑后扬的事实：线性注意力在复原上确实能接近 softmax attention，代价是局部建模要靠 MDC 这类显式卷积补，单靠核化注意力细节会糊"
+ ],
+ "weaknesses": [
+  "核心卖点「LA 与 SSM 同构」是引用既有分析工作 [15] 的结论后做的一次模块替换，MDC 则是两个膨胀卷积 concat + 1×1 卷积，两者叠加并未提出超出「换块 + 加一个小卷积块」的新机制， novelty 主要落在工程组合上",
+  "线性注意力核函数 ϕ 的选择、膨胀率 d=2、LAMA 层数、λ=0.1 全是直接沿用/网格式设定，正文看不到核函数（如 ELU/Sigmoid 特征映射）的对比实验；Ablation 只有 Baseline / +LAMA / +LAMA+MDC 三行和一张替换模块的表（表 5 数值在截断处），缺 MDC 内部双分支、缺 FLOPs-PSNR 权衡曲线",
+  "表 3 去模糊上 ACL 的 PSNR 33.25 其实低于 LoFormer 33.73 与 SSAMAN 33.53，「先进」结论只在参数量/算力维度成立；所有数值均为单 run，无方差、无显著性，正文在 4.4.2 表格处截断，表 5 完整内容缺失"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "图像复原工程组合，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

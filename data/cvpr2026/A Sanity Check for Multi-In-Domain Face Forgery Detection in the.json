@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/A Sanity Check for Multi-In-Domain Face Forgery Detection in the.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Sanity Check for Multi-In-Domain Face Forgery Detection in the.pdf",
+ "title": "A Sanity Check for Multi-In-Domain Face Forgery Detection in the Wild",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "多域伪造检测框架，扰动方向与字典重构提升泛化，但理论支撑与实验完整性不足",
+ "innovations": [
+  "提出 MID-FFD 新设定：不再逐域训练专用检测器，而是在多域数据上联合训练，并把跨集域分布的差异显式建模为可被前端校正的\"伪域偏移\"。",
+  "FFDev 用生成模型梯度 δ_dev=G(x,θ_g) 定量刻画像素的伪造注入方向，沿该方向加可控幅度 ε 的扰动做检测训练，得到可即插即用的 detector-agnostic 前端口特征。",
+  "DoseDict 以稀疏字典 min_{D,α} Σ 1/2||z_i−Dα_i||²+λ||α_i||₁ 重构误差 e(z)=||z−D*α*|| 作为不可见伪域的标量异常信号，DAFT 用 ϵ_a=Norm(1−e(x)) 自适应调剂量以避免过校正。"
+ ],
+ "method_framework": "两阶段：先以生成模型梯度构造 FFDev 伪域方向，在 x 上加 εδ_dev 用 CE 与 L_tv 训练通用检测头；推理时用 DoseDict 稀疏字典重构误差度量异常，DAFT 按 e(x) 自适应缩放扰动剂量 ϵ_a 后送检测头判伪。",
+ "experiment_framework": "P1/P2 两个多域基准，报 S-AUC/F-ACC/R-ACC 与 M-ACC；Tab.1-2 对比 SOTA，Tab.3 在 Xception/EffNet-B4/SPSL/Effort 上验证 model-agnostic，Tab.4 做 FFDev、FixD、AdaD 逐级消融。",
+ "takeaways": [
+  "单域检测器跨集域时 M-ACC 掉到 0.85 以下，统一多域训练加域无关扰动是更稳的泛化通路。",
+  "FFDev 只改前置扰动不改 backbone，可直接挂载到已有检测器，迁移成本极低。",
+  "字典重构误差比逐域统计更抗未知伪域，而自适应剂量是决定其是否过校正的关键。"
+ ],
+ "weaknesses": [
+  "正文在 5.3 节截断，FFDev 迭代步数、扰动剂量 ε 与 DoseDict 字典原子数 K 的消融均缺失，超参敏感性与调参成本无从评估。",
+  "Table 4 各变体只报 ACC 不给方差与显著性检验，多种子或不同测试划分下的波动不可知，结论稳健性存疑。",
+  "指标仅用 ACC/AUC，缺 FPR、AP 与 ROC 曲线，且伪造数据以合成扩散图为主，真实场景下攻击者自适应反制是否仍成立未验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "伪造检测与可靠性主线弱相关，无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

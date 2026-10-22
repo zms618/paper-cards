@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Promoting Ensemble Diversity with Interactive Bayesian Distributional Robustness for Fine-tuning Foundation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Promoting Ensemble Diversity with Interactive Bayesian Distributional Robustness for Fine-tuning Foundation.pdf",
+ "title": "Promoting Ensemble Diversity with Interactive Bayesian Distributional Robustness for Fine-tuning Foundation Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "贝叶斯粒子交互框架提升集成多样性，但实验验证不足。",
+ "innovations": [
+  "提出Interactive Bayesian Distributional Robustness(IBDR)框架，在独立后验上建立联合分布并加入散度损失建模粒子交互，防止模式坍塌",
+  "将分布鲁棒优化(DRO)推广到更一般的风险函数和乘积联合分布，平衡鲁棒性与多样性",
+  "在ViT图像分类(VSAB-1K)和LLaMA-2常识推理上验证有效"
+ ],
+ "method_framework": "IBDR在变分推断框架下，对多个粒子的独立后验建立联合分布，通过引入散度损失项建模粒子间交互以促进多样性。结合Wasserstein距离的分布鲁棒优化，在优化过程中同时强制分布鲁棒性和粒子多样性。采用对偶优化过程实现。",
+ "experiment_framework": "在VTAB-1K图像分类基准(ViT)和常识推理语言任务(LLaMA-2)上验证。对比SGLD、SVGD等贝叶斯粒子方法和标准集成方法。指标为分类准确率和推理任务性能。",
+ "takeaways": [
+  "建模粒子间交互可以有效防止贝叶斯集成中的模式坍塌，提升集成质量",
+  "分布鲁棒优化与多样性促进的结合能同时提升鲁棒性和性能",
+  "IBDR在视觉和语言任务上均有效，具有通用性"
+ ],
+ "weaknesses": [
+  "前9页内实验细节不完整，缺少与最新贝叶斯方法的详细对比",
+  "粒子交互建模增加了计算复杂度，效率分析不充分",
+  "仅在VTAB-1K和常识推理上验证，未在更广泛的分布外泛化场景测试"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/3D Test-time Adaptation via Graph Spectral Driven Point Shift.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/3D Test-time Adaptation via Graph Spectral Driven Point Shift.pdf",
+ "title": "3D Test-time Adaptation via Graph Spectral Driven Point Shift",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.4
+ },
+ "one_line": "谱域裁剪点云自适应，但实验缺失关键数据与消融",
+ "innovations": [
+  "先用「离群点度数远低于内点」这一性质（τ = γ·平均 kNN 距离，Eq.10）在 RBF 加权 kNN 图上做离群点裁剪，再 GFT/IGFT 只对最低 M=100 个频率分量施加可学习调整 ΔX̂（Eq.11-13），把空间域 N×3 的点级自适应降到 M×3 维",
+  "用低阶特征向量（排除 λ=0 分量）构造 eigenmap 并 max-pool 成全局谱描述符 f_s，与深度特征 f_d 的 logits 做凸组合生成伪标签（Eq.16, α=0.5），依据是谱描述符域无关、在自适应早期不受源域偏置污染",
+  "输入适应与模型适应交替迭代（每批 4 步输入 + 1 步模型，共 10 步）；输入侧损失为伪标签 CE + 熵 + 分歧的信息最大化项 + 输入到位移后点云的单向 Chamfer 距离 L_cd（Eq.17）"
+ ],
+ "method_framework": "点云→RBF 加权 kNN 图→离群点度数阈值裁剪→GFT→对最低 100 个谱系数加可学习调整 ΔX̂→IGFT 回空间域得点位移 → 与 f_d logits 凸组合得伪标签自训练 → 交替优化 ΔX̂ 与模型参数 θ（AdamW, lr 1e-4）",
+ "experiment_framework": "ModelNet40-C 与 ScanObjectNN-C（各 15 种腐蚀，含 background/lidar/occlusion 等）三个骨干 DGCNN/CurveNet/PointNeXt，batch 32，对比 BN/PL/DUA/TENT/SHOT/BFTT3D/CloudFixer/3DD-TTA，报告 15 个腐蚀项精度与均值（正文截断于 Table 2 表头）",
+ "takeaways": [
+  "用域无关的形状描述符（谱特征）与带源域偏置的深特征做凸组合生成伪标签，是「在线自训练伪标签易塌陷到源域偏好」的低成本解法",
+  "把 TTA 自由度从 N×3 点位移降到 M×3 谱系数，对流式/小样本在线自适应的算力瓶颈是可直接迁移的通用提速思路"
+ ],
+ "weaknesses": [
+  "正文在 Table 2 表头处截断，ScanObjectNN-C 完整数值、唯一 3D 强基线 3DD-TTA 的对照、以及 eigenmap 自训练的组件消融（删 L_cd、删 L_div、α 取值、τ/γ 敏感性）全部不可见",
+  "M=100、k=10、δ=0.1、γ=0.6、α=0.5、β1=0.3、β2=1000、β3=3 这组超参按数据集与骨干固定，无搜索范围或灵敏度曲线；β2=1000 相对 β1=0.3 差三个数量级，大概率只为补偿 L_cd 尺度， rationale 未交代",
+  "逐 batch 在线自训练用 batch=32 估类中心（Eq.14-15 用同一批的预测作权重），小 batch 下类中心方差大且无动量平滑，论文未报方差或多次运行；在 background、lidar 等最难腐蚀上只是接近或落后 CloudFixer（实噪声类平均落后 8.35%），SOTA 主张靠均值掩盖了弱项"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "点云自适应方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

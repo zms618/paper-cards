@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/A Hidden Stumbling Block in Generalized Category Discovery Distracted Attention.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Hidden Stumbling Block in Generalized Category Discovery Distracted Attention.pdf",
+ "title": "A Hidden Stumbling Block in Generalized Category Discovery: Distracted Attention",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.4
+ },
+ "one_line": "ViT插入query打分剪枝token，但跨监督假设未验证，实验不完整",
+ "innovations": [
+  "在每个 ViT 块（除末层）插入可学习 query 向量 Q，与 token 做交叉注意力（式1）得逐 token 重要性分数，经 Softmax(s)V 聚合再加 FFN 残差（式2-3），由辅助分类器在纯有标签数据上用 CE 训练并用 stop-gradient 隔离以免污染编码器",
+  "TAP 把 L-1 个块的重要性分数 softmax 后取平均得多尺度分数（式5，显式剔除 [CLS] 以免其高层语义主导剪枝），再按分数升序累加、只保留总质量不超过阈值 τ 的头部 patch token（式6），替代 Cropr 的固定比例剪枝",
+  "选择单视图 TAP 而非双视图：把剪枝视作一种非规则图像裁剪增广，只在 one view 上去背景有助于聚焦目标，两视图都剪反而损害泛化"
+ ],
+ "method_framework": "ViT 每块(除末层)插 query Q 做交叉注意力打分 TIME(仅有标签数据训，辅助分类器 stop-grad 隔离)；TAP 汇总多尺度分数(剔除 CLS)按累积质量阈值 τ 剪尾部 patch；剩余 token 过末块+平均池化送 GCD head。",
+ "experiment_framework": "CUB、Stanford Cars、FGVC-Aircraft、CIFAR10/100、ImageNet-100、Herbarium-19 七个数据集；以 SimGCD 为主基线，另插到 CMS/GET/SelEx；指标为 Hungarian 对齐后的 ACC 及 All/Old/New 三个子集。",
+ "takeaways": [
+  "GCD 上一个此前少被讨论的失效模式：无标签样本（尤其未知类）的 [CLS] 注意权重大量落在任务无关背景，而有标签样本不会；用「阈值化 self-attention 后保留 70% 质量」的可视化就能把它坐实",
+  "token 重要性打分器只在有标签数据上训练、却要对含未知类的无标签数据打分，用 stop-gradient 把辅助分类器与主编码器隔离，既能训出打分器又不扰动 backbone",
+  "背景简单的数据集上剪枝会退化（CIFAR-100 的 New 类反而 -1.3），说明这类「去背景」模块是按数据集背景复杂度条件生效的，不能无条件套用"
+ ],
+ "weaknesses": [
+  "TIME 只在有标签数据上训练（式4），却要对无标签且含未知类的数据打分，这一跨监督迁移假设正文只用一句「有标签与无标签数据风格相近」带过，没有针对未知类上打分偏差的对应实验",
+  "实验章节止于 4.2 末段，TIME/TAP 各自的消融、阈值 τ 与 λ 敏感性、剪枝比例-精度曲线以及 §4.3（在 CMS/GET/SelEx 上的泛化性）都在截断处之后；表1-3 也全是单跑 ACC，无方差与显著性",
+  "式6 的自适应阈值按累积重要性质量定义，但正文既没给 τ 的搜索范围与取值，也没记录实际剪掉了多少 token，读者无法判断 Stanford Cars 上 +15.4% 是阈值调参收益还是机制收益"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "GCD方法研究，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

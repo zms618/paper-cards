@@ -1,0 +1,40 @@
+{
+ "key": "icml2025/Assessing Safety Risks and Quantization-aware Safety Patching for Quantized Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Assessing Safety Risks and Quantization-aware Safety Patching for Quantized Large Language Models.pdf",
+ "title": "Assessing Safety Risks and Quantization-aware Safety Patching for Quantized Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "评估量化LLM安全风险并提出选择性修复框架Q-resafe",
+ "innovations": [
+  "全面评估不同量化技术和校准数据集对LLM安全的影响",
+  "提出Q-resafe框架选择性修复安全关键权重",
+  "利用预量化LLM构建安全修复数据集避免人工标注"
+ ],
+ "method_framework": "Q-resafe通过三步实现安全修复：构建安全修复数据集、利用DPO对齐量化模型安全、选择性更新安全关键权重，最小化对模型效用的影响。",
+ "experiment_framework": "使用Llama-2-7B-Chat和Gemma-7B-Instruct模型，评估AWQ/AQLM/LLM-QAT/QLoRA四种量化方法，在三种风险级别数据集上的安全(ASR)和效用(MT-bench/AlpacaEval)表现。",
+ "takeaways": [
+  "量化方法普遍导致LLM安全能力下降，INT4比INT8更严重",
+  "校准数据集选择对量化后安全性能至关重要",
+  "选择性更新安全关键权重可有效修复安全同时保持效用"
+ ],
+ "weaknesses": [
+  "仅评估了两种开源模型，未涵盖更多样化模型",
+  "安全修复方法依赖预量化LLM，可能不适用于所有场景"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.3,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "量化LLM安全修复与可靠性主线明确交织，方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

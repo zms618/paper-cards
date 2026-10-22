@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Robust Multimodal Large Language Models Against Modality Conflict.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Robust Multimodal Large Language Models Against Modality Conflict.pdf",
+ "title": "Robust Multimodal Large Language Models Against Modality Conflict",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "研究模态冲突致MLLM幻觉，构建有限数据集，RL方法最优但泛化未知。",
+ "innovations": [
+  "形式化定义模态冲突：不同于以往关注模型回答与输入的冲突，本文研究不同模态输入本身相互矛盾、使MLLM陷入两难并直接致幻觉。",
+  "构建MMMC(Multimodal Modality Conflict)数据集模拟视觉-语言任务中的模态冲突现象。",
+  "系统比较prompt工程、监督微调、强化学习三类缓解方法，发现RL最优、SFT稳定有效。"
+ ],
+ "method_framework": "构造图文相互冲突的样本(如问图中没有的物体颜色)，使MLLM应识别冲突并拒答而非幻觉；分别用prompt工程、SFT、RL训练模型识别模态冲突并给出一致回答，在MMMC上分析三者优劣。",
+ "experiment_framework": "在自建MMMC数据集上评测三类方法；以幻觉发生率/是否正确识别冲突为指标；对比不同训练范式对模态冲突鲁棒性的影响。",
+ "takeaways": [
+  "RL方法在缓解模态冲突导致的幻觉上表现最佳，SFT方法稳定有前景。",
+  "输入层面的模态冲突是以往被忽视的MLLM幻觉诱因。"
+ ],
+ "weaknesses": [
+  "MMMC为自建数据集，冲突类型较局限(主要是不存在物体提问)，未覆盖更多样的图文语义冲突。",
+  "三种方法仅在MMMC上对比，未见在通用幻觉基准(POPE等)上的迁移。",
+  "RL方法的具体奖励设计细节多在后文，正文9页内未完整展开。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

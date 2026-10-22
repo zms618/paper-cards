@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/QWHA_Quantization-Aware Walsh-HADAMARD Adaptation Parameter-Efficient Fine-Tuning On Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/QWHA_Quantization-Aware Walsh-HADAMARD Adaptation Parameter-Efficient Fine-Tuning On Large Language Models.pdf",
+ "title": "QWHA: Quantization-Aware Walsh-Hadamard Adaptation for Parameter-Efficient Fine-Tuning on Large Language Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "WHT核适配器+初始化方案，量化PEFT中降误差提速度",
+ "innovations": [
+  "针对FT类适配器直接嵌入量化模型误差削减低效、计算开销大的问题，选用WHT作为变换核",
+  "提出含自适应参数选择与数值精炼的新型适配器初始化方案",
+  "在量化PEFT中同时实现更低量化误差与显著训练加速"
+ ],
+ "method_framework": "在量化LLM上插入WHT变换核适配器；通过自适应参数选择挑选有效频域分量、数值精炼初始化，使适配器在低比特模型上补偿量化误差并支持高效微调。",
+ "experiment_framework": "在低比特量化精度任务上对比LoRA及FT类基线；报告量化后准确率与相对FT适配器的训练加速比。",
+ "takeaways": [
+  "QWHA在低比特量化准确率上一致优于基线",
+  "相对已有FT类适配器取得显著训练加速",
+  "WHT作为变换核可在表示力与计算开销间取得更好平衡"
+ ],
+ "weaknesses": [
+  "属量化PEFT/效率方向，与可靠性、不确定性、验证器主线关联弱",
+  "改进为工程性组合（WHT核+初始化），概念新颖度增量有限",
+  "跨模型规模/比特宽度的鲁棒性与相对更强量化方法的对比需后续页"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.85,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "量化PEFT工程组合，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

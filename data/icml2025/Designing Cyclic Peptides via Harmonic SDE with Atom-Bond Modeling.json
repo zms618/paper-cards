@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Designing Cyclic Peptides via Harmonic SDE with Atom-Bond Modeling.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Designing Cyclic Peptides via Harmonic SDE with Atom-Bond Modeling.pdf",
+ "title": "Designing Cyclic Peptides via Harmonic SDE with Atom-Bond Modeling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "基于调和SDE的环肽生成，交替采样序列与结构，但验证不足。",
+ "innovations": [
+  "提出 ATOMSDE：基于随机微分方程（harmonic SDE）的环肽结构生成模型，显式建模原子与键以处理环化几何约束。",
+  "提出 RESROUTER 残基类型预测器，并与结构模型通过路由采样交替更新序列与结构。",
+  "缓解目标蛋白/环肽配体 3D 结构数据稀缺问题，支持非经典氨基酸的环肽设计。"
+ ],
+ "method_framework": "把环肽设计建模为序列-结构联合生成：ATOMSDE 以 SDE 在全原子坐标空间去噪/演化结构并显式表达键长键角；RESROUTER 依据当前结构预测残基类型；两者按路由算法交替迭代更新，直到生成满足环化约束、适配靶点的环肽。",
+ "experiment_framework": "在多种靶点上设计环肽，评估稳定性与亲和力（含实验/对接指标），对比线性肽设计与基线生成模型；强调可设计多样环肽的能力。",
+ "takeaways": [
+  "显式全原子/键建模使生成模型能自然表达环肽的环化约束与非经典氨基酸。",
+  "序列-结构交替（路由）采样可同时优化稳定性与亲和力。",
+  "相较线性肽生成，该方法填补了环肽计算设计的空白。"
+ ],
+ "weaknesses": [
+  "依赖靶点-配体结构数据稀缺，泛化到新靶点的可靠性缺乏大规模实验验证。",
+  "稳定性/亲和力多为计算预测或有限湿实验，缺规模化的体外/体内验证。",
+  "属分子/药物生成，与可信推理主线（医学影像、多模态大模型推理）非同一落地域，relevance 低。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.33,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

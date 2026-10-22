@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/MotionMap_Representing Multimodality in Human Pose Forecasting.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/MotionMap_Representing Multimodality in Human Pose Forecasting.pdf",
+ "title": "MotionMap Representing Multimodality in Human Pose Forecasting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "热图表示多模态姿态预测，样本效率提升但模式捕捉有限。",
+ "innovations": [
+  "重新定义姿态预测为良构问题，通过训练数据学习有限数量的未来运动",
+  "MotionMap热图表示多模态，可变数量模式并提供置信度",
+  "改进的多模态真实值定义，使用最后三帧和球形坐标缩放",
+  "双不确定性建模：模式置信度和条件预测不确定性"
+ ],
+ "method_framework": "两阶段框架：首先训练自编码器预测未来姿态和不确定性；然后训练MotionMap热图模型，通过码本将热图映射到潜在表示，实现高效多模态预测。",
+ "experiment_framework": "在Human3.6M和AMASS数据集上评估，使用MMADE/MMFDE等指标，比较样本效率、模式召回率和多样性，与DLow、DivSamp、BeLFusion等基线对比。",
+ "takeaways": [
+  "热图表示可有效捕捉多模态且样本高效",
+  "改进的多模态真实值定义提高了跨个体泛化能力",
+  "双不确定性建模提供了更丰富的预测置信度信息"
+ ],
+ "weaknesses": [
+  "热图表示可能无法捕捉非常复杂的运动模式",
+  "码本大小随热图尺寸和嵌入维度增长",
+  "未充分讨论计算效率与内存需求"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "姿态预测与可靠性主线部分相关，但多模态表示方法创新有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

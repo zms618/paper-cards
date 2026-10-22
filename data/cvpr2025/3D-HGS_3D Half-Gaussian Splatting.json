@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/3D-HGS_3D Half-Gaussian Splatting.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3D-HGS_3D Half-Gaussian Splatting.pdf",
+ "title": "3D-HGS: 3D Half-Gaussian Splatting",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.0,
+  "overall": 4.8
+ },
+ "one_line": "替换3D-GS核为半高斯，闭式解复用流水线，但超参调优与证据不足",
+ "innovations": [
+  "提出3D半高斯核：以过核心的平面n^T(x-μ)=0切分高斯，两半各学一个不透明度α1/α2，α1=α2时退化为原3D-GS核，故可直接plug-in",
+  "给出半高斯沿视线积分的闭式解：∫HG dz = 1/2·I(x,y)·Ĝ(·)，其中I(x,y)=erfc(·)只依赖学习到的切分平面法向与条件分布μ_{z|xy},σ_{z|xy}，从而复用原2D高斯栅格化流水线",
+  "针对大量核存在半边全透明的现象，按投影切分椭圆内外切线分别计算每个半核的有效包围矩形，避免无谓tile开销以保持帧率"
+ ],
+ "method_framework": "沿用3D-GS的SfM初始化与tile栅格化；每个核共享均值/旋转/尺度/颜色，额外学切分平面法向(复用3D-GS未使用的normal槽)与两个不透明度；渲染时用HĜ=1/2{2α2+(α1-α2)I(x,y)}·Ĝ做alpha混合，前向/反向均按此改写。",
+ "experiment_framework": "Mip-NeRF360(7)/Tanks&Temples(2)/DeepBlending(2)共11场景；在3D-GS/Scaffold-GS/Mip-Splatting/GS-MCMC上换核对比；PSNR/SSIM/LPIPS+FPS+显存(MB)",
+ "takeaways": [
+  "用频域论据(半高斯带宽更高)而非纯实验来解释为何能压住Gibbs振荡，是'先给原理再做工程'的正确顺序",
+  "复用原实现中闲置的normal参数槽来承载新参数，使内存仅增一个不透明度，这种'零成本参数扩展'的设计哲学值得借鉴"
+ ],
+ "weaknesses": [
+  "本质是重建核的替换，无新问题也无新任务；不透明度的频率直方图(Fig.5)只是事后观察，不是对方法的必要性证明",
+  "超参靠按数据集试：法向学习率在DeepBlending取0.3、其余取0.003(相差百倍)，Playroom场景单独改relocation阈值至0.015，缺少原理性说明",
+  "证据薄弱：仅11个场景且Mip-NeRF360只用7个(原集9个)，未报每场景方差/多种子；声称的消融在补充材料，正文无法核验",
+  "增益不稳定：Tanks&Temples上HGS-MCMC的SSIM由0.860降到0.841、Scaffold-HGS在DeepBlending上LPIPS劣化，论文对这些回落未作讨论",
+  "正文在4.2节末'Qualitative results are sho...'处截断，定性对比与全部消融缺失"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "纯3D重建技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

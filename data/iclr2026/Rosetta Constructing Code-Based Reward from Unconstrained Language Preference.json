@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Rosetta Constructing Code-Based Reward from Unconstrained Language Preference.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rosetta Constructing Code-Based Reward from Unconstrained Language Preference.pdf",
+ "title": "Rosetta: Constructing Code-Based Reward from Unconstrained Language Preference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "将语言偏好编译为代码奖励，使具身agent在线适应动态偏好。",
+ "innovations": [
+  "把无约束自然语言偏好自动接地并消歧为可执行的多阶段代码奖励函数，替代离线训练通用奖励模型。",
+  "实现 agent 在线适应语言与内容不断演变的多样化偏好，而非单任务细粒度修正。",
+  "用代码作为奖励的中间表示，使奖励可检查、可组合、可随偏好动态更新。"
+ ],
+ "method_framework": "输入人类口语化偏好(如'慢一点''把苹果放抽屉边上')，基础模型先做指称接地与歧义消解，再把偏好拆成多阶段奖励逻辑，最后生成可执行代码(如对速度/位置/阶段的判定与加权)；agent 用该代码奖励做强化学习并随新偏好在线重写奖励。",
+ "experiment_framework": "在短时域与长时域机器人操作任务上评测；116 条偏好，广泛人工评估；对比 SOTA 偏好适配基线；报告平均成功率 87% 与人类满意度 86%。",
+ "takeaways": [
+  "无约束语言偏好可被自动编译为可执行代码奖励，支撑具身 agent 在线适配。",
+  "相比离线训练通用奖励模型或单任务修正，Rosetta 对动态/多样化偏好适应性更强。",
+  "代码奖励在短/长时域操作任务上均取得高成功率与高人类满意度。"
+ ],
+ "weaknesses": [
+  "依赖基础模型正确接地口语化偏好，指代/隐含约束误解会直接写成错误奖励，鲁棒性边界未充分刻画。",
+  "实验集中在仿真操作任务与作者设定的偏好集，真实硬件与开放世界偏好的可靠性未知。",
+  "代码奖励可被利用(reward hacking)的风险讨论有限，缺少对生成奖励安全性的审计。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "具身agent偏好适配，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

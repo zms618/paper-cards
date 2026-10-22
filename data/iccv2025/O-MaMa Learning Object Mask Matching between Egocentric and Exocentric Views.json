@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/O-MaMa Learning Object Mask Matching between Egocentric and Exocentric Views.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/O-MaMa Learning Object Mask Matching between Egocentric and Exocentric Views.pdf",
+ "title": "O-MaMa Learning Object Mask Matching between Egocentric and Exocentric Views",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "跨视角掩码匹配任务重构，性能提升但依赖外部掩码生成",
+ "innovations": [
+  "将跨视角分割重构为掩码匹配任务",
+  "掩码上下文编码器结合DINOv2特征",
+  "Ego↔Exo交叉注意力机制",
+  "基于相邻邻居的困难负样本挖掘策略"
+ ],
+ "method_framework": "利用FastSAM生成目标视图掩码候选，通过掩码上下文编码器提取特征，结合交叉注意力机制融合多视角信息，使用掩码匹配对比损失对齐跨视图特征",
+ "experiment_framework": "Ego-Exo4D数据集，IoU/轮廓精度/位置误差指标，与XSegTx/XMem/PSALM/ObjectRelator等基线比较",
+ "takeaways": [
+  "问题重构可显著提升性能并减少参数量",
+  "结合上下文信息和困难负样本挖掘可提升模型区分能力"
+ ],
+ "weaknesses": [
+  "对小目标处理效果不佳",
+  "依赖FastSAM的掩码生成质量",
+  "未探索模型泛化到其他领域的能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "跨视角匹配任务与可靠性主线无实质交点，仅属常规视觉任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Spotlight Attention Towards Efficient LLM Generation via Non-linear Hashing-based KV Cache Retrieval.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Spotlight Attention Towards Efficient LLM Generation via Non-linear Hashing-based KV Cache Retrieval.pdf",
+ "title": "Spotlight Attention: Towards Efficient LLM Generation via Non-linear Hashing-based KV Cache Retrieval",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "非线性哈希KV缓存加速LLM推理，但泛化性存疑",
+ "innovations": [
+  "非线性MLP哈希函数替代线性哈希",
+  "Bradley-Terry排序目标函数优化哈希模块",
+  "轻量级CUDA内核实现高效检索"
+ ],
+ "method_framework": "通过非线性格局划分优化查询和键的嵌入分布，结合Bradley-Terry排序损失函数训练哈希模块，实现高效KV缓存检索",
+ "experiment_framework": "PG19/ProofPile/CodeParrot数据集评估困惑度，NIAH测试长上下文检索，LongBench评估QA任务，A100测量吞吐量",
+ "takeaways": [
+  "非线性哈希可比线性哈希性能更优且哈希码缩短5倍",
+  "排序损失函数比重建损失更适合KV缓存检索任务",
+  "CUDA优化实现512K tokens检索<100μs"
+ ],
+ "weaknesses": [
+  "仅评估了语言模型任务，未扩展到多模态领域",
+  "哈希模块训练依赖特定数据分布，泛化能力需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

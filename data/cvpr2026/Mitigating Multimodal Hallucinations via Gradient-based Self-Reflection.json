@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Mitigating Multimodal Hallucinations via Gradient-based Self-Reflection.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Mitigating Multimodal Hallucinations via Gradient-based Self-Reflection.pdf",
+ "title": "Mitigating Multimodal Hallucinations via Gradient-based Self-Reflection",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "梯度自反思缓解多模态幻觉，但依赖名词检测且计算开销大",
+ "innovations": [
+  "基于一阶泰勒展开的token影响估计",
+  "对象感知的视觉token分组和锚点特定影响加权解码",
+  "无需辅助模型或微调的幻觉缓解框架"
+ ],
+ "method_framework": "GACD通过梯度分析token贡献，抑制与输出相关的虚假视觉特征，重新平衡跨模态贡献，缓解文本-视觉偏差和共现偏差。",
+ "experiment_framework": "在AMBER、MSCOCO、LLaVA-QA90和POPE数据集上评估，对比RLAIF-V、VCD等基线，使用CHAIR、准确率、详细度、F1等指标。",
+ "takeaways": [
+  "基于梯度的偏差估计提供细粒度token级分析",
+  "对象感知的视觉token分组有效缓解共现偏差",
+  "跨模态再平衡增强视觉特征贡献"
+ ],
+ "weaknesses": [
+  "依赖名词检测的准确性",
+  "计算复杂度较高，需逐token计算梯度",
+  "早期停止阈值需针对不同模型调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "多模态幻觉缓解直接对接可靠性主线，落地域明确",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

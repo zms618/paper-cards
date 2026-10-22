@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/DipLLM_Fine-Tuning LLM for Strategic Decision-making in Diplomacy.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DipLLM_Fine-Tuning LLM for Strategic Decision-making in Diplomacy.pdf",
+ "title": "DipLLM: Fine-Tuning LLM for Strategic Decision-making in Diplomacy",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "自回归分解外交动作，小样本微调LLM超越Cicero",
+ "innovations": [
+  "用自回归分解框架把指数级的多单位联合行动指派简化为逐单位决策序列，应对动作空间超10^64的问题",
+  "在该框架内定义均衡策略(equilibrium policy)作为微调目标，使LLM学到合作与竞争并存的战略行为",
+  "仅用Cicero约1.5%的游戏数据微调即超过其性能，展示小样本微调LLM解决复杂多人战略决策的潜力"
+ ],
+ "method_framework": "Diplomacy每回合有超过10^64种联合行动，传统均衡搜索需海量自对弈数据。DipLLM将动作指派自回归地分解为逐单位决策序列，复用LLM预训练知识；以均衡策略为学习目标在小规模数据上微调，得到既能谈判合作又能竞争的LLM智能体。",
+ "experiment_framework": "在Diplomacy对战环境中与DipNet、DORA、DNVI、Cicero等智能体在种群对战中比较，以Agent Score(%)和所需训练对局数衡量性能与数据效率。",
+ "takeaways": [
+  "自回归分解多单位动作可让LLM在极小数据量下学会Diplomacy的均衡策略",
+  "微调LLM有望大幅降低战略博弈智能体对海量自对弈数据与均衡搜索的依赖"
+ ],
+ "weaknesses": [
+  "面向游戏/战略决策，与可靠性/验证器/多模态推理主线无直接关联",
+  "性能建立在特定动作分解与均衡目标上，在其他不完全信息多人游戏的迁移性未知",
+  "仅依据前9页阅读，完整对战结果与消融表未完全覆盖"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.43,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/MAMMA Markerless Accurate Multi-person Motion Acquisition.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/MAMMA Markerless Accurate Multi-person Motion Acquisition.pdf",
+ "title": "MAMMA Markerless Accurate Multi-person Motion Acquisition",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "Transformer密集地标估计多人运动捕获，受控环境精度接近标记系统",
+ "innovations": [
+  "基于Transformer的密集地标估计器MammaNet",
+  "接触感知和可见性感知的表面地标预测",
+  "大型合成多视图数据集MammaSyn构建",
+  "多视图对应关系建立方法"
+ ],
+ "method_framework": "两阶段方法：先估计所有相机视图中的虚拟标记，然后求解最适合这些标记的人体模型。使用MammaNet预测密集2D地标，结合可见性、接触信息和不确定性，通过优化SMPL-X参数进行模型拟合。",
+ "experiment_framework": "数据集：MammaSyn(训练)、MammaEval-S/D/Extra(评估)、Harmony4D、CHI3D、Hi4D。基线：CameraHMR、Look-Ma*。指标：2D误差、3D误差(MPJPE/PVE)、接触预测AUC、穿透深度。",
+ "takeaways": [
+  "密集地标预测比稀疏关键点更适合处理复杂交互",
+  "条件分割掩码显著提升多人交互场景性能",
+  "不确定性估计和接触信息对防止穿透至关重要"
+ ],
+ "weaknesses": [
+  "仅评估了两人交互场景，未扩展到更多人",
+  "依赖SAM2分割掩码，可能存在分割错误传播风险",
+  "实验主要在受控环境进行，真实世界泛化能力需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多人运动捕获技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

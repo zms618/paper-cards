@@ -1,0 +1,41 @@
+{
+ "title": "SGD-based Knowledge Distillation with Bayesian Teachers: Theory and Guidelines",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.4
+ },
+ "one_line": "贝叶斯教师蒸馏理论分析，实验规模有限且未落地医学/多模态",
+ "innovations": [
+  "分析两种情形：教师提供精确贝叶斯类概率(BCP) vs 含噪近似BCP下的SGD收敛",
+  "证明用BCP相比one-hot监督可降方差并消除收敛界中的邻域项",
+  "刻画噪声水平如何影响泛化与精度；实验显示贝叶斯教师学生精度最高+4.27%、收敛噪声少30%"
+ ],
+ "method_framework": "把教师输出解释为对真实类后验(BCP)的(可能含噪)估计，据此推导SGD学生的收敛界与泛化；据此推荐能更好估计BCP的贝叶斯深度学习模型作为KD教师。",
+ "experiment_framework": "在标准分类任务上对比确定性教师与贝叶斯教师蒸馏的学生；指标含学生精度(最高+4.27%)与训练收敛稳定性(噪声最多降30%)，并验证理论关于噪声-泛化关系的预测。",
+ "takeaways": [
+  "软化类概率监督相比one-hot可降低SGD方差并消除邻域项",
+  "教师输出越接近校准的贝叶斯后验，学生越准越稳",
+  "教师估计噪声水平直接影响学生泛化"
+ ],
+ "weaknesses": [
+  "属蒸馏理论分析，未涉及医学影像/多模态推理落地",
+  "贝叶斯教师自身训练成本高，工程性价比需权衡",
+  "前9页未见在大规模现代模型上的验证"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/SGD-BASED Knowledge Distillation Bayesian Teachers Theory and Guidelines.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SGD-BASED Knowledge Distillation Bayesian Teachers Theory and Guidelines.pdf",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "贝叶斯教师蒸馏理论分析，可迁移到可靠性主线的不确定性建模",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

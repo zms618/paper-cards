@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/QuickSplat_Fast 3D Surface Reconstruction via Learned Gaussian Initialization.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/QuickSplat_Fast 3D Surface Reconstruction via Learned Gaussian Initialization.pdf",
+ "title": "QuickSplat Fast 3D Surface Reconstruction via Learned Gaussian Initialization",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "学习高斯初始化加速3D重建，但泛化有限且训练成本高。",
+ "innovations": [
+  "学习型高斯初始化网络，解决纹理缺失区域重建问题",
+  "联合优化-密集化循环，避免启发式策略",
+  "端到端训练的初始化器、密集化器和优化器网络"
+ ],
+ "method_framework": "采用2D高斯飞溅表示，通过学习型初始化器从SfM点云生成密集高斯，再通过密集化-优化循环迭代改进高斯参数，最后通过TSDF融合提取表面网格。",
+ "experiment_framework": "ScanNet++数据集，对比SuGaR、2DGS、GS2Mesh等方法，使用深度误差、准确率、Chamfer距离和运行时间作为评估指标。",
+ "takeaways": [
+  "学习型初始化可有效解决纹理缺失区域的重建问题",
+  "联合优化-密集化循环可显著加速收敛并提升质量"
+ ],
+ "weaknesses": [
+  "方法依赖大量训练数据，泛化能力有限",
+  "网络参数量较大(68M)，训练成本高"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D重建与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

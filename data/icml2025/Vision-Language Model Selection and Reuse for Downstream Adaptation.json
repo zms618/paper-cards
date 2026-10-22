@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Vision-Language Model Selection and Reuse for Downstream Adaptation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Vision-Language Model Selection and Reuse for Downstream Adaptation.pdf",
+ "title": "Vision-Language Model Selection and Reuse for Downstream Adaptation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.0
+ },
+ "one_line": "模型标签学习范式实现VLM库的细粒度选择与复用",
+ "innovations": [
+  "提出VLM选择与复用的新范式MLL，包含模型标注、模型选择、模型复用三个核心模块",
+  "实现细粒度的类别级模型选择：不同类别可选用不同VLM，而非全局选一个模型",
+  "构建了包含49个VLM和17个目标任务数据集的新基准，用于评估VLM选择方法"
+ ],
+ "method_framework": "提交阶段：每个VLM入库前在预定义测试集上评估，生成描述其专长和实用性的模型标签（label）。识别阶段：给定下游任务，生成任务caption并与模型标签做语义匹配，找到相似节点。对每个类别，选择最适合的VLM子集。最后以集成方式组合选中的VLMs进行预测。整个标注过程独立于目标任务，可扩展性强。",
+ "experiment_framework": "在49个开源VLM和17个下游任务数据集上验证；与全局选择、随机选择、单模型等基线对比；评估类别级选择的优势；测试方法的可扩展性（随模型数量增加的表现）。",
+ "takeaways": [
+  "没有任何单一VLM在所有下游任务上都最优，需要根据任务动态选择",
+  "细粒度类别级的模型选择比全局选择能显著提升性能",
+  "模型标注过程任务无关，可预计算，使得选择过程非常高效"
+ ],
+ "weaknesses": [
+  "模型标注依赖预定义测试集的覆盖度，未见过的领域可能标注不准",
+  "集成多个VLM的推理成本较高，效率权衡未充分讨论",
+  "仅在CLIP系列VLM上验证，其他类型VLM（如LLaVA类）的适用性未测试"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

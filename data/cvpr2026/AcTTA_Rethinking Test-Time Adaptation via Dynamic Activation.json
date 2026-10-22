@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/AcTTA_Rethinking Test-Time Adaptation via Dynamic Activation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/AcTTA_Rethinking Test-Time Adaptation via Dynamic Activation.pdf",
+ "title": "AcTTA Rethinking Test-Time Adaptation via Dynamic Activation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "可学习激活函数提升测试时适应，但架构依赖性强",
+ "innovations": [
+  "激活函数作为可学习组件用于测试时适应",
+  "引入可调节的激活中心和不对称梯度尺度",
+  "无需修改网络架构或源数据的轻量级适应机制"
+ ],
+ "method_framework": "将传统激活函数(如ReLU、GELU)重新参数化为可学习形式，通过调节激活中心和不对称梯度尺度使模型能够自适应分布偏移。",
+ "experiment_framework": "在CIFAR10-C、CIFAR100-C和ImageNet-C数据集上评估，与TENT、EATA等基线方法比较，使用WRN、ResNet和ViT等架构。",
+ "takeaways": [
+  "激活函数适应可作为独立于归一化的有效适应机制",
+  "不同架构需要不同的可学习组件设计策略",
+  "大学习率下激活函数适应能保持稳定优化"
+ ],
+ "weaknesses": [
+  "最优适应深度依赖于架构，需要额外调参",
+  "在极小批量下性能提升相对有限",
+  "未探索在医学影像等特定领域的应用"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "测试时适应机制与可靠性主线直接相关，但架构依赖性限制落地域应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

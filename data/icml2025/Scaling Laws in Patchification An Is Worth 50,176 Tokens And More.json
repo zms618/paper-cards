@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Scaling Laws in Patchification An Is Worth 50,176 Tokens And More.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Scaling Laws in Patchification An Is Worth 50,176 Tokens And More.pdf",
+ "title": "Scaling Laws in Patchification: An Image Is Worth 50,176 Tokens And More",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "经验发现小patch提升性能，但计算成本高且缺乏理论支撑。",
+ "innovations": [
+  "系统量化patchification压缩范式带来的不可逆视觉信息损失。",
+  "发现patch尺寸缩放律：模型随patch减小持续获益，直到1×1像素token化仍在提升。",
+  "该规律跨视觉任务、输入分辨率与架构(ViT及Mamba)普遍成立，并顺带发现小patch的任务特定性质。"
+ ],
+ "method_framework": "ViT把图像切成大块patch(如16×16)以缩短序列、省算力，但作者认为这带来不可逆信息损失。通过系统扫描patch尺寸(从大到小直到1×1像素token化)，测量预测性能随patch尺寸的变化，拟合出一致的缩放律；在不同任务、分辨率、架构上重复，论证'一张图所含信息远超196个文本token'，压缩为少token是有损的。",
+ "experiment_framework": "在多类视觉任务(分类/检测等)、多种输入分辨率、ViT与Mamba架构上扫描patch尺寸；指标为预测性能随patch尺寸的曲线与计算成本，报告该缩放律的普适性及像素token化(如224×224=50176 token)下的表现。",
+ "takeaways": [
+  "减小patch尺寸(更细粒度token化)在实验范围内持续提升视觉理解性能。",
+  "现有patchification把图像过度压缩为少token，丢失了大量视觉信息。"
+ ],
+ "weaknesses": [
+  "1×1像素token化使token数剧增(数万)，计算成本高，实用性受限。",
+  "缩放律是经验观察，未给出'最优patch尺寸'的预测模型或理论上界。",
+  "属视觉基础模型架构经验研究，与可靠性/可信AI主线关系较弱。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

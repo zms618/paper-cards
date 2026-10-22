@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Purrception_Variational Flow Matching for Vector-Quantized Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Purrception_Variational Flow Matching for Vector-Quantized Generation.pdf",
+ "title": "Purrception: Variational Flow Matching for Vector-Quantized Image Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "变分流匹配适配VQ生成，桥接连续与离散，但与可靠性主线无关",
+ "innovations": [
+  "将变分流匹配适配到向量量化latent：学码本索引上的类别后验，同时在连续嵌入空间计算速度场",
+  "结合连续方法的几何感知与类别方法的离散监督",
+  "支持对合理码本的不确定性量化与温度可控生成"
+ ],
+ "method_framework": "在VQ隐空间上：既在连续嵌入空间学速度场做归一化流传输，又对码本索引维护变分类别后验；采样时按后验与温度选择码本并以连续流运输，桥接连续与离散。",
+ "experiment_framework": "ImageNet-1k 256×256生成；对比连续流匹配与离散流匹配基线的收敛速度与FID。",
+ "takeaways": [
+  "Purrception训练收敛快于连续与离散流匹配基线，FID与SOTA有竞争力",
+  "变分类别后验提供对合理码本的不确定性量化与温度控制",
+  "变分流匹配可有效桥接连续传输与离散监督"
+ ],
+ "weaknesses": [
+  "属图像生成/流匹配方向，与可靠性主线(医学影像/多模态推理)无直接关联",
+  "不确定性量化仅在码本选择层面，非面向下游可信决策",
+  "仅在ImageNet 256上验证，向视频/音频等其他VQ生成模态的扩展未触及"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.13,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "图像生成与可靠性主线无直接关联，不确定性量化仅限码本选择",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MODA_MOdular Duplex Attention forMultimodal Perception, Cognition, and Emotion Understanding.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MODA_MOdular Duplex Attention forMultimodal Perception, Cognition, and Emotion Understanding.pdf",
+ "title": "MODA: MOdular Duplex Attention for Multimodal Perception, Cognition, and Emotion Understanding",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "模块化注意力提升多模态理解，但增加复杂度且未验证生成任务。",
+ "innovations": [
+  "提出模块化双向注意力（Duplex Attention），区分视觉感知、认知推理、情感理解三个层次的多模态融合",
+  "模块化设计：不同模块处理不同层次的多模态交互，避免信息混淆",
+  "在多个多模态理解基准上提升性能，特别是情感理解和复杂推理"
+ ],
+ "method_framework": "现有MLLM用统一注意力处理所有多模态交互，混淆了感知（看到什么）、认知（理解含义）、情感（理解情绪）三个层次。MODA设计模块化双向注意力：视觉token和文本token之间在不同模块中进行不同类型的交互——感知层关注视觉细节，认知层关注语义推理，情感层关注情感状态。双向注意力确保视觉和文本互相指导。",
+ "experiment_framework": "多个多模态理解基准（感知类、认知推理类、情感理解类）。基线：LLaVA-NeXT等SOTA MLLM。指标：各基准准确率。消融验证各模块和双向注意力。",
+ "takeaways": [
+  "多模态理解可分为感知、认知、情感三个层次，统一注意力处理会混淆这些层次",
+  "模块化双向注意力让不同层次的多模态交互各得其所，提升整体理解能力",
+  "情感理解是MLLM的薄弱环节，专门的情感模块有显著帮助"
+ ],
+ "weaknesses": [
+  "模块化设计增加了模型复杂度和参数量",
+  "三个层次的划分是否完备、是否有更细粒度的层次未讨论",
+  "仅在理解类任务验证，未涉及生成类多模态任务"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

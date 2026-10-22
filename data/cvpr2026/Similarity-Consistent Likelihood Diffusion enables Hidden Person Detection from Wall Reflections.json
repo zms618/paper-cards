@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Similarity-Consistent Likelihood Diffusion enables Hidden Person Detection from Wall Reflections.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Similarity-Consistent Likelihood Diffusion enables Hidden Person Detection from Wall Reflections.pdf",
+ "title": "Similarity-Consistent Likelihood Diffusion enables Hidden Person Detection from Wall Reflections",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "多曝光扩散模型实现墙反射人体检测，但计算复杂度高",
+ "innovations": [
+  "DeLi-Inversion模块将不稳定传感器读数转化为可验证的统计似然",
+  "SiCo-Diffusion模块将扩散过程重新表述为确定性后验求解器",
+  "退火贝叶斯精度融合策略结合似然与先验"
+ ],
+ "method_framework": "SLD-Net包含三阶段：曝光感知差分状态响应压缩多曝光测量，DeLi-Inversion将响应转化为异方差高斯伪似然，SiCo-Diffusion将似然注入DDIM采样并通过退火贝叶斯精度融合与扩散先验结合",
+ "experiment_framework": "在Reflect-Corridor和Reflect-Room数据集上评估，与通用重建网络、物理启发网络和NLOS特定网络比较，使用PSNR、SSIM、LPIPS和FID指标",
+ "takeaways": [
+  "像素级精度图对决定似然与先验的相对权重至关重要",
+  "确定性扩散采样确保相似一致性，提高系统可靠性"
+ ],
+ "weaknesses": [
+  "方法依赖于多曝光序列采集，增加了实际部署复杂度",
+  "扩散模型训练和推理计算开销较大"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "墙反射人体检测属于医学影像外的落地域，但方法设计有可靠性价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

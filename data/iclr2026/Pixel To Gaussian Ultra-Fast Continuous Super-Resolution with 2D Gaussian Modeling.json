@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Pixel To Gaussian Ultra-Fast Continuous Super-Resolution with 2D Gaussian Modeling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Pixel To Gaussian Ultra-Fast Continuous Super-Resolution with 2D Gaussian Modeling.pdf",
+ "title": "Pixel to Gaussian: Ultra-Fast Continuous Super-Resolution with 2D Gaussian Modeling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "高斯泼溅实现任意尺度超分，效率提升但画质增益有限。",
+ "innovations": [
+  "提出Pixel-to-Gaussian范式：用高斯泼溅显式重建2D连续HR信号，一次构建高斯场后任意尺度快速渲染，消除INR方法的反复上采样解码。",
+  "通过统计分析揭示Deep Gaussian Prior(DGP)，提出DGP驱动的协方差加权以动态优化协方差。",
+  "提出自适应位置漂移(Adaptive Position Drifting)，依图像内容精修高斯空间的位置分布以提升重建质量。"
+ ],
+ "method_framework": "从LR图像单次前向构建2D高斯拉普拉斯/泼溅场，用DGP驱动的协方差加权动态调整各高斯协方差，再用自适应位置漂移依内容调整高斯位置；渲染时直接对目标坐标做高斯泼溅积分得到任意尺度HR像素，替代传统MLP坐标解码。",
+ "experiment_framework": "训练用DIV2K/DF2K双三次退化生成LR；在七个基准(含Urban100、Manga109等)评测；基线含LIIF、LTE、GaussianSR、CiaoSR、GSASR；指标PSNR/SSIM/FID/DISTS及运行耗时；Manga109提升0.18dB，连续40尺度上采样加速19.5倍。",
+ "takeaways": [
+  "将2D高斯泼溅引入任意尺度超分，质量上全尺度优于GSASR等SoTA。",
+  "高斯场单次构建后每尺度渲染约1ms，多尺度连续上采样提速19.5倍，效率优势显著。",
+  "DGP与协方差加权、位置漂移共同带来质量增益，消融验证各组件有效。"
+ ],
+ "weaknesses": [
+  "训练退化模型固定为双三次(bicubic)，真实LR(模糊/噪声/压缩)下的鲁棒性未充分验证。",
+  "高斯场为显式表示，存储/显存开销随高斯数量增长，极端高分辨率场景下的占用未讨论。",
+  "增益幅度较小(Manga109仅0.18dB)，主要卖点在效率而非画质突破。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "超分技术不属可靠性主线，无鲁棒性/泛化/OOD等设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

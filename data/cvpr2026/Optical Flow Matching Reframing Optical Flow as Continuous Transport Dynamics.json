@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Optical Flow Matching Reframing Optical Flow as Continuous Transport Dynamics.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Optical Flow Matching Reframing Optical Flow as Continuous Transport Dynamics.pdf",
+ "title": "Optical Flow Matching Reframing Optical Flow as Continuous Transport Dynamics",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "将光流估计转为连续传输动力学，提升时序稳定性但增加计算复杂度",
+ "innovations": [
+  "将光流估计从离散对应关系重新表述为连续传输动力学",
+  "提出三角形速度协同(TVS)机制，确保连续传输的稳定性和物理意义",
+  "建立光流匹配(OFM)框架，学习时间依赖的速度场来传输像素坐标"
+ ],
+ "method_framework": "基于条件最优传输和欧拉ODE求解器，结合三角形速度协同(TVS)策略，将Flow Matching理论引入光流估计，学习时间依赖的速度场来传输像素坐标。",
+ "experiment_framework": "在Sintel、KITTI和Spring数据集上进行评估，与RAFT、GMFlow、FlowFormer等先进方法比较，使用EPE、F1-all等指标。",
+ "takeaways": [
+  "连续动力学建模可提升光流估计的时序稳定性和几何一致性",
+  "三角形速度协同(TVS)有效调和了Flow Matching理论与光流估计的实践目标"
+ ],
+ "weaknesses": [
+  "方法引入了额外的计算复杂度，需要预测参考点xl",
+  "虽然提升了跨数据集泛化能力，但在某些特定场景下的性能提升有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "光流估计与可靠性主线无实质交点，仅有时序稳定性改进",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mixing Importance with Diversity Joint Optimization for KV Cache Compression In Large Vision-Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mixing Importance with Diversity Joint Optimization for KV Cache Compression In Large Vision-Language Models.pdf",
+ "title": "Mixing Importance with Diversity: Joint Optimization for KV Cache Compression in Large Vision-Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "MixKV平衡KV重要性/多样性，但非可靠性主线且缺乏理论支撑",
+ "innovations": [
+  "分析LVLM中不同注意力头的语义冗余差异，发现纯重要性保留只覆盖信息分布子集",
+  "提出按头(head-wise)联合优化重要性与多样性的KV压缩MixKV",
+  "方法即插即用叠加到现有KV压缩方法，并无缝扩展到纯LLM"
+ ],
+ "method_framework": "先分析多头语义冗余模式，再在压缩KV对时按每个头自适应平衡重要性(保留高贡献KV)与多样性(覆盖语义分布)，避免单一重要性打分造成的语义覆盖损失。",
+ "experiment_framework": "在5个多模态理解基准评测，极端压缩budget=64时平均提升基线5.1%，对SnapKV/AdaKV在GUI定位任务提升8%/9%；并扩展到纯LLM；指标为准确率且保持推理效率。",
+ "takeaways": [
+  "纯重要性KV压缩会牺牲语义覆盖，引入多样性有增益",
+  "按注意力头区分冗余程度能更好地压缩多模态KV",
+  "MixKV即插即用兼容多种现有压缩方法"
+ ],
+ "weaknesses": [
+  "relevance为多模态效率优化，非可靠性/幻觉抑制主线",
+  "多样性与重要性的平衡权重缺乏理论依据，靠调参",
+  "极端压缩下对高精度细粒度文档/小文字任务的退化仍需报告"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "多模态效率优化，有可迁移的KV压缩设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

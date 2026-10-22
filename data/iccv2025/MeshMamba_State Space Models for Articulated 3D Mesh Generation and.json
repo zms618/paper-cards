@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/MeshMamba_State Space Models for Articulated 3D Mesh Generation and.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/MeshMamba_State Space Models for Articulated 3D Mesh Generation and.pdf",
+ "title": "MeshMamba State Space Models for Articulated 3D Mesh Generation and",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.7
+ },
+ "one_line": "Mamba-SSMs应用于网格序列化，人体数据实验，泛化性存疑",
+ "innovations": [
+  "基于身体部位UV映射和模板网格坐标的顶点序列化技术",
+  "结合表面法线和顶点位置的梯度域表示",
+  "MambaDiff3D扩散模型和Mamba-HMR单图像重建模型"
+ ],
+ "method_framework": "MeshMamba使用Mamba-SSMs处理序列化的网格顶点，通过两种策略（身体部位UV映射和模板网格坐标）将3D网格转换为1D序列，结合表面法线和顶点位置进行梯度域重建",
+ "experiment_framework": "3D生成任务：SURREAL等数据集，1-NNA/FID/APD指标；人体网格重建：UBody数据集，PA-MVE/MVE指标",
+ "takeaways": [
+  "顶点序列化策略对Mamba处理3D网格至关重要",
+  "局部几何正则化对密集网格重建质量至关重要",
+  "Mamba在处理大量输入token时比Transformer高效6-9倍"
+ ],
+ "weaknesses": [
+  "序列化策略可能限制模型对某些复杂变形的捕捉能力",
+  "梯度域重建与生成模型非端到端训练可能影响整体优化",
+  "实验主要在人体数据上进行，泛化到其他 articulated 物体需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D网格生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

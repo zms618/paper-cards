@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Medical Interpretability Knowledge Maps Of Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Medical Interpretability Knowledge Maps Of Large Language Models.pdf",
+ "title": "Medical Interpretability and Knowledge Maps of Large Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "跨LLM医学知识图谱构建，但缺乏因果验证与应用验证",
+ "innovations": [
+  "首次跨五个 LLM 系统构建医学领域可解释性知识图谱，定位患者年龄、症状、疾病、药物信息的层位置",
+  "揭示若干非线性现象：年龄在中间层以不连续/非线性方式编码、疾病进展表征呈非单调环状",
+  "发现 Llama3.3-70B 中药物按医学专科而非作用机制聚类，且 Gemma3/MedGemma 中间层激活坍缩后于末层恢复"
+ ],
+ "method_framework": "组合四种机制可解释性手段：中间激活的 UMAP 投影、对权重的梯度显著性、层切除/移除、激活修补，对五个开源 LLM 在医学知识探针任务上定位知识存储层并刻画表征几何。",
+ "experiment_framework": "模型：五个 LLM（含 Llama3.3-70B、Gemma3-27B、MedGemma-27B 等）；方法：UMAP/梯度显著性/层切除/激活修补；探针对象：患者年龄、医学症状、疾病、药物。",
+ "takeaways": [
+  "Llama3.3-70B 的大部分医学知识在前半层处理，为微调/遗忘/去偏提供层定位指引",
+  "医学特征并非线性编码，年龄与疾病进展呈现非线性/环状几何，挑战线性表征假设",
+  "药物按专科而非作用机制聚类，反映模型学到的是临床关联而非药理结构"
+ ],
+ "weaknesses": [
+  "以粗分辨率层定位为主，缺乏单特征/单注意力头级别的因果电路验证",
+  "偏描述性探索，未将知识图谱用于下游去偏或遗忘并验证收益",
+  "仅五个模型，跨架构结论的普适性与统计显著性报告有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "医学知识图谱构建，但缺乏因果与应用验证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

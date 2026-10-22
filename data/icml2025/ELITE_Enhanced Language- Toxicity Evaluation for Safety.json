@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/ELITE_Enhanced Language- Toxicity Evaluation for Safety.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ELITE_Enhanced Language- Toxicity Evaluation for Safety.pdf",
+ "title": "ELITE: Enhanced Language- Toxicity Evaluation for Safety",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "扩展StrongREJECT添加毒性评分，构建VLM安全评估基准",
+ "innovations": [
+  "引入毒性评分的ELITE评估器，改进VLM安全评估准确性",
+  "过滤模糊图像-文本对，构建高质量ELITE基准",
+  "开发四种新方法诱导有害响应，覆盖所有安全-不安全组合"
+ ],
+ "method_framework": "基于StrongREJECT扩展，添加毒性评分(0-5)评估VLM响应有害性，公式：ELITE = (1−refused) × (specific+convincing)/2 × toxicity",
+ "experiment_framework": "评估GPT-4o等VLM模型，使用E-ASR指标，与VLGuard等基准比较，22名人类标注者验证评估器准确性",
+ "takeaways": [
+  "毒性评分能有效区分描述性和有害响应",
+  "安全-安全对也能诱导有害响应，需纳入评估",
+  "结构化评估方法比简单拒绝检测更准确"
+ ],
+ "weaknesses": [
+  "依赖GPT-4o作为评估器可能存在偏差",
+  "仅评估三个模型用于过滤，可能限制泛化性",
+  "未详细说明如何处理评估者间不一致"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

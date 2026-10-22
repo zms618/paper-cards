@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Rethinking Addressing in Language Models via Contextualized Equivariant Positional Encoding.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Rethinking Addressing in Language Models via Contextualized Equivariant Positional Encoding.pdf",
+ "title": "Rethinking Addressing in Language Models via Contextualized Equivariant Positional Encoding",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "TAPE：上下文感知位置编码，改进Transformer寻址，提升长上下文与推理。",
+ "innovations": [
+  "指出现有位置编码多为通用偏置、缺乏对不同样本的专门化，并会在注意力图上强加固定模式、削弱基于位置寻址。",
+  "提出上下文感知位置编码 TAPE，跨层融入序列内容生成动态、上下文相关的位置表示。",
+  "施加置换等变与正交等变保证位置编码更新稳定，可证明其能模拟更广一类算法从而促进 LLM 推理，且可参数高效地嵌入预训练模型。"
+ ],
+ "method_framework": "将注意力分解为内容寻址与位置寻址；TAPE 不再使用固定位置嵌入，而是让位置表示随序列内容在各层上下文化更新，通过置换等变与正交等变约束保证更新稳定与随机存取能力，从而放松传统位置编码的固定注意力模式、增强长程依赖建模，并以极低开销做参数高效微调。",
+ "experiment_framework": "在语言建模、算术推理与长上下文检索任务上对比既有位置编码方案；以困惑度、推理准确率、长上下文检索命中率为指标，并展示嵌入预训练 Transformer 的参数高效微调效果。",
+ "takeaways": [
+  "动态、上下文感知的位置编码优于固定位置偏置，可改善长上下文与推理。",
+  "等变约束保证了位置编码在训练/微调中的稳定性。",
+  "TAPE 可低成本嵌入现有预训练模型，工程落地友好。"
+ ],
+ "weaknesses": [
+  "位置编码方法改造，相对 RoPE 等主流方案的实质增益幅度与跨模型通用性需更多证据。",
+  "等变约束带来的计算/实现复杂度与长上下文外推的严格收益对比未充分量化。",
+  "前9页外的关键消融(各等变项贡献)未在正文中完整呈现。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

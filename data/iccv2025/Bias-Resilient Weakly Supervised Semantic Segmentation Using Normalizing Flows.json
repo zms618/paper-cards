@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Bias-Resilient Weakly Supervised Semantic Segmentation Using Normalizing Flows.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Bias-Resilient Weakly Supervised Semantic Segmentation Using Normalizing Flows.pdf",
+ "title": "Bias-Resilient Weakly Supervised Semantic Segmentation Using Normalizing Flows",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 6.7
+ },
+ "one_line": "归一化流建模像素分布校准CAM，缓解弱监督分割偏差",
+ "innovations": [
+  "首次将归一化流应用于弱监督语义分割，建模整个数据集的像素特征分布",
+  "设计基于特征分布的高斯混合模型分类器校准CAM",
+  "提出可靠特征采样方法增强对比学习，减轻偏差影响"
+ ],
+ "method_framework": "BRNF框架通过归一化流建模像素特征分布，生成GMM CAM校准传统分类器，并采样可靠特征用于对比学习，同时设计BaseSeed去噪策略，形成正循环优化。",
+ "experiment_framework": "在PASCAL VOC 2012和MS COCO 2014数据集上评估，使用mIoU指标，与SFC、CLIP-ES等SOTA方法比较，并进行消融实验验证各组件效果。",
+ "takeaways": [
+  "利用全局分布信息可缓解局部图像级标签导致的偏差问题",
+  "归一化流作为生成模型可采样可靠特征增强对比学习效果"
+ ],
+ "weaknesses": [
+  "方法依赖原型CAM质量，可能存在误差传递",
+  "归一化流训练计算开销较大，需要额外优化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "校准CAM缓解弱监督分割偏差，可靠性主线明确落地",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Reconstructing Animals and the Wild.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Reconstructing Animals and the Wild.pdf",
+ "title": "Reconstructing Animals and the Wild",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "LLM+CLIP从单图重建动物与自然环境，合成数据训练泛化有限",
+ "innovations": [
+  "引入CLIP投影头实现连续外观估计",
+  "构建百万级合成数据集RAW",
+  "首次同时重建3D动物和自然环境",
+  "通过值模糊化防止过拟合"
+ ],
+ "method_framework": "基于LLaMA-7b架构，训练自回归模型将CLIP图像特征解码为结构化场景表示，使用特殊[CLIP] token实现连续嵌入投影",
+ "experiment_framework": "合成数据集(100万图像)和真实世界数据集(RAW-RW)，LPIPS和CLIP相似度指标，与IG-LLM基线对比",
+ "takeaways": [
+  "连续嵌入表示优于离散名称表示",
+  "值模糊化可提高泛化能力",
+  "场景级属性估计对重建质量至关重要"
+ ],
+ "weaknesses": [
+  "仅使用合成数据训练，真实世界泛化有限",
+  "未提供详细的3D定量评估指标",
+  "方法复杂度较高，计算成本大"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "3D重建与可靠性主线无关，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

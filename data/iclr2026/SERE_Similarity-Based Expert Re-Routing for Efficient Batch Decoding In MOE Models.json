@@ -1,0 +1,41 @@
+{
+ "title": "SERE: Similarity-Based Expert Re-Routing for Efficient Batch Decoding in MoE Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "相似度重路由MoE批解码，加速2倍但长尾可靠性未验证",
+ "innovations": [
+  "输入感知地动态减少激活专家数：将次专家token重路由到最相似的主专家",
+  "利用相似度模式识别并保留关键专家以避免能力损失，非静态剪枝/合并",
+  "提供定制CUDA内核，vLLM中单行改动即插即用"
+ ],
+ "method_framework": "针对批解码与专家稀疏的根本张力，按批级专家冗余度动态重路由token到相似主专家并跳过冗余次专家；用相似度保护关键专家；配套高效CUDA内核落地推理框架。",
+ "experiment_framework": "在多个复杂推理基准上评测，对比专家激活范围/最小最大等设定；报告最高2.0倍加速、质量损失极小；验证vLLM集成易用性。",
+ "takeaways": [
+  "MoE批解码的专家冗余可被动态识别并安全跳过",
+  "相似度驱动的重路由比静态专家剪枝/合并更能保护能力",
+  "工程内核使该方法在生产推理中近乎零成本接入"
+ ],
+ "weaknesses": [
+  "属推理系统效率优化，非可靠性/医学影像主线",
+  "质量损失虽小但在复杂推理上的长尾失败未充分分析",
+  "相似度度量与重路由阈值的跨模型泛化需进一步验证"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/SERE_Similarity-Based Expert Re-Routing for Efficient Batch Decoding In MOE Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SERE_Similarity-Based Expert Re-Routing for Efficient Batch Decoding In MOE Models.pdf",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "MoE批解码效率优化，非可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

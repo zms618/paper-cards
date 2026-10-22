@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Musculoskeletal Simulation Of Drosophila Melanogaster.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Musculoskeletal Simulation Of Drosophila Melanogaster.pdf",
+ "title": "Musculoskeletal Simulation of Limb Movement Biomechanics in Drosophila Melanogaster",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 5.1
+ },
+ "one_line": "果蝇腿部肌骨双实现模型，肌肉参数优化与被动属性学习实验",
+ "innovations": [
+  "提出首个3D、数据驱动的果蝇腿部肌骨模型，同时在OpenSim与MuJoCo实现",
+  "基于多样本高分辨率X-ray扫描构建Hill型肌肉表示，并给出从形态影像数据构造肌肉模型、优化果蝇特有肌肉参数的流水线",
+  "结合行为果蝇的3D姿态估计数据实现肌肉驱动行为回放，预测可实验验证的肌肉协同；并用MuJoCo模仿学习检验关节阻尼/刚度对学习的影响"
+ ],
+ "method_framework": "从多只固定果蝇标本的高分辨率X-ray扫描重建腿骨外骨骼与肌肉几何；用Hill型肌肉模型表示收缩动力学；流水线优化果蝇特有的未知肌肉参数。在OpenSim中用实测行为姿态做肌肉驱动回放反推肌肉协同；在MuJoCo中训练模仿学习策略，扫描关节被动阻尼/刚度看其对locomotion学习速度的作用。",
+ "experiment_framework": "在行走与梳理(grooming)等行为上做肌肉驱动回放，预测肌肉协同；在MuJoCo中训练IL策略，对比不同被动关节属性下的学习速度；报告阻尼与刚度促进学习；模型开源用于运动控制研究与具身智能体控制。",
+ "takeaways": [
+  "果蝇神经/肌肉/外骨骼虽已近完整重建，但解剖与物理 grounding 的腿部肌肉模型此前缺失",
+  "肌骨模型可连接运动神经元活动与关节运动，预测可实验检验的肌肉协同",
+  "关节被动阻尼与刚度有助于具身智能体的locomotion学习"
+ ],
+ "weaknesses": [
+  "主线是生物力学/机器人仿真，与LLM/多模态可靠性、验证器、幻觉抑制等落地主线无关",
+  "模型基于固定标本扫描，活体软组织动力学差异未建模",
+  "肌肉参数优化依赖有限行为数据，跨个体泛化与参数不确定性未量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.88,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯生物力学仿真，与可靠性主线无交集",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

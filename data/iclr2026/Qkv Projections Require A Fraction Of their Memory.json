@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Qkv Projections Require A Fraction Of their Memory.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Qkv Projections Require A Fraction Of their Memory.pdf",
+ "title": "QKV Projections Require a Fraction of their Memory (PAMM)",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.7
+ },
+ "one_line": "PAMM压缩QKV投影激活显存512×，与FlashAttention正交可组合。",
+ "innovations": [
+  "聚焦被忽视的Q/K/V线性投影激活显存，而非仅近似缩放点积",
+  "提出PAMM：把A每行表示为最佳代表点张成直线上的最近点，仅存k个生成点、分配映射与缩放因子来近似矩阵乘",
+  "将PAMM用于反向传播中投影梯度计算，彻底消除其激活显存，且与FlashAttention等高效注意力正交可组合"
+ ],
+ "method_framework": "把O=A⊤B近似为：先用少量生成点C、分配f、缩放α压缩A为Ã；计算时先把B收缩为B̃∈R^{k×m}，再Õ=C⊤B̃；训练中用于∇W_Q=X̃⊤∇Q等投影梯度。",
+ "experiment_framework": "在LLM训练上评测；报告QKV投影激活显存压缩倍数、训练困惑度；与FlashAttention等组合验证可叠加性。",
+ "takeaways": [
+  "Q/K/V投影激活可被压缩至最高512×而保持相当或更优的最终困惑度",
+  "PAMM与FlashAttention等高效注意力技术正交可组合",
+  "投影激活显存是可被专门削减的独立显存来源"
+ ],
+ "weaknesses": [
+  "属训练显存/系统优化方向，与可靠性、不确定性、验证器主线关联弱",
+  "近似误差在长训练/大规模下的累积与稳定性证据需看后续页",
+  "k个生成点的选择、开销与对收敛速度的影响消融不充分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "训练显存优化与可靠性主线关联弱，无落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

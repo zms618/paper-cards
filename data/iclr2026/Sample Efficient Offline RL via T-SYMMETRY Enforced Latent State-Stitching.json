@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Sample Efficient Offline RL via T-SYMMETRY Enforced Latent State-Stitching.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sample Efficient Offline RL via T-SYMMETRY Enforced Latent State-Stitching.pdf",
+ "title": "Sample Efficient Offline RL via T-SYMMETRY Enforced Latent State-Stitching",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "T-symmetry约束的潜状态拼接，提升小样本离线RL样本效率与泛化。",
+ "innovations": [
+  "提出T-symmetry约束的逆动力学模型(TS-IDM)，导出受时间反演对称性正则的潜状态表示，促进OOD泛化。",
+  "完全在潜空间学习guide-policy优化奖励最大化的下一状态，绕过多数离线RL采用的保守动作级行为正则。",
+  "用学到的TS-IDM配合潜空间优化出的下一状态反解出优化动作；在D4RL与真实工业控制环境的小样本任务上显著优于现有方法。"
+ ],
+ "method_framework": "用TS-IDM把状态映射到潜空间并施加时间反演对称性约束；在潜空间直接优化奖励最大化的下一状态(state-stitching)而非约束动作；再由TS-IDM从优化后的潜下一状态解码出动作。",
+ "experiment_framework": "在D4RL基准与真实工业控制测试环境的小样本设定下，对比主流保守/state-stitching离线RL方法，报告样本效率与OOD泛化性能。",
+ "takeaways": [
+  "时间反演对称性约束的潜表示+潜空间state-stitching可摆脱动作级保守正则，在小数据下仍有效。",
+  "潜空间优化下一状态再解码动作，比直接约束动作更能在OOD区域泛化。"
+ ],
+ "weaknesses": [
+  "属离线强化学习方向，与可靠性×医学影像/多模态推理主线无关联。",
+  "方法依赖逆动力学模型与潜空间的可解码性，在高维/部分可观测系统中的表示质量与状态可达性约束未充分验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "离线RL与可靠性主线无关联，无可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

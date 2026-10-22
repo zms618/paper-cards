@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Fast, Accurate Manifold Denoising by Tunneling Riemannian Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Fast, Accurate Manifold Denoising by Tunneling Riemannian Optimization.pdf",
+ "title": "Fast, Accurate Manifold Denoising by Tunneling Riemannian Optimization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6
+ },
+ "one_line": "黎曼优化流形去噪，在线构建landmark图，但高维适用性存疑",
+ "innovations": [
+  "将learning-to-denoise重新表述为learning-to-optimize，把去噪问题转化为在未知低维流形上的黎曼优化问题",
+  "提出在线学习方法，仅用带噪样本逐步生长优化器(landmark图)，无需预先加载整个数据集",
+  "提出混合阶(mixed-order)去噪方法，达到近最优去噪性能并给出复杂度分析"
+ ],
+ "method_framework": "将去噪视为找到噪声点x在流形M上的投影点P_M x。通过在线方式构建landmark图：每个landmark对应流形上一个局部切空间近似。新噪声点到来时，在landmark图上做黎曼梯度下降(tunneling optimization)，逐步收敛到流形上的干净点。局部近似误差随样本数增加而减小(R(i) ~ 1/N_i)。混合阶方法结合一阶和二阶局部近似提升精度。",
+ "experiment_framework": "在科学数据流形上验证，对比最近邻搜索方法。测量去噪误差与计算复杂度的权衡曲线。分析混合阶方法在理想图假设下的近最优性能。",
+ "takeaways": [
+  "在线构建的landmark图方法在复杂度-精度权衡上优于传统最近邻搜索",
+  "局部切空间近似随样本积累越来越准确，去噪误差按1/N_i速率下降",
+  "混合阶方法在给定计算预算下达到近最优去噪性能"
+ ],
+ "weaknesses": [
+  "实验仅在科学流形(低维)上验证，对高维图像流形(如自然图像256×256)的适用性未测试",
+  "在线学习方法的收敛性依赖流形光滑性假设，对带尖锐边缘的流形效果未知",
+  "与扩散模型等现代生成式去噪方法的对比缺失，实际性能优势不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

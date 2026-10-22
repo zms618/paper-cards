@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/DeConfusion_Logits DeConfusion with CLIP for Few-Shot Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/DeConfusion_Logits DeConfusion with CLIP for Few-Shot Learning.pdf",
+ "title": "Logits DeConfusion with CLIP for Few-Shot Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "多级适配器与去混淆模块提升CLIP少样本分类，但计算复杂且ImageNet提升有限",
+ "innovations": [
+  "多级适配器融合(MAF)模块增强特征表示",
+  "类别间去混淆(ICD)模块学习并消除logits中的类别间混淆",
+  "自适应logits融合(ALF)模块结合多级特征和去混淆结果"
+ ],
+ "method_framework": "基于CLIP架构，通过MAF提取并融合不同层次特征，ICD模块学习并消除logits中的类别间混淆，ALF模块自适应融合两种logits，使用交叉熵和相似度损失联合优化",
+ "experiment_framework": "在11个图像分类基准数据集上评估，包括ImageNet、Caltech101等，使用1-16-shot设置，并与CoOp、Tip-Adapter等SOTA方法比较",
+ "takeaways": [
+  "多级特征融合可有效提升少样本学习性能",
+  "建模并消除logits中的类别间混淆是提升CLIP少样本分类的有效途径",
+  "自适应融合不同处理路径的结果可提高模型鲁棒性"
+ ],
+ "weaknesses": [
+  "方法组件较多，计算复杂度较高",
+  "未充分分析不同类别间混淆的具体模式和原因",
+  "在ImageNet上的提升相对有限，仅在16-shot时超过最佳方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "提升CLIP少样本分类可靠性，但未触及医学影像或多模态大模型落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

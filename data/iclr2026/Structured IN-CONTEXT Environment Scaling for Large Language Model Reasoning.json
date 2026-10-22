@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Structured IN-CONTEXT Environment Scaling for Large Language Model Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Structured IN-CONTEXT Environment Scaling for Large Language Model Reasoning.pdf",
+ "title": "Structured In-context Environment Scaling for Large Language Model Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "结构化上下文环境构建框架，提升LLM组合推理泛化能力",
+ "innovations": [
+  "提出理想LLM推理环境的三大核心特征：可扩展性、可泛化推理、可验证性，并系统分析现有环境（数学/代码/游戏）的不足",
+  "设计SIE框架：从大规模结构化数据自动构建推理MDP环境，利用数据中的组合模式天然支持可泛化推理，显式schema支持规则化验证",
+  "探索信息受限的部分SIE环境，发现LLM能通过环境探索推断缺失信息，从而实现鲁棒的推理提升和泛化"
+ ],
+ "method_framework": "从大规模结构化数据源（如表格数据、知识图谱等）自动构建多个结构化上下文环境。每个环境定义为一个MDP：状态包含当前结构化上下文和已推理步骤，动作为推理操作，奖励基于规则验证答案正确性。模型通过在SIE中进行RL探索学习组合推理策略（如分解、回溯、验证）。由于结构化数据的组合模式天然泛化到数学/逻辑推理，学到的能力可迁移到域外任务。",
+ "experiment_framework": "在多个结构化推理环境中进行RL微调，评估域内结构化推理性能。同时测试域外数学推理（如GSM8K、MATH）和逻辑推理任务的零样本泛化能力。对比不同SIE信息完整度下的学习效果。",
+ "takeaways": [
+  "RL环境的设计比算法优化更能决定LLM能学到的推理能力边界，结构化数据是构建高质量推理环境的理想来源",
+  "SIE中学到的组合推理技能可以有效泛化到域外数学和逻辑推理任务，说明组合推理是跨领域的通用认知能力",
+  "在信息受限的部分SIE中，LLM通过主动环境探索推断缺失信息，这一机制提升了推理的鲁棒性"
+ ],
+ "weaknesses": [
+  "结构化数据源的选择范围较窄，更广泛的结构化数据（如代码、网页表格）是否同样有效未验证",
+  "自动环境构建的具体实现细节在摘要中不够清晰，环境的多样性和难度控制机制不明确",
+  "前9页未展示完整的域外泛化定量对比表格，具体提升幅度不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "结构化环境构建提升LLM推理泛化，属可靠性主线方法设计研习轴",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

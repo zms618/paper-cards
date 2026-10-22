@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/PCDreamer_Point Cloud Completion Through Multi-view Diffusion Priors.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/PCDreamer_Point Cloud Completion Through Multi-view Diffusion Priors.pdf",
+ "title": "PCDreamer Point Cloud Completion Through Multi-view Diffusion Priors",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "多视角扩散先验点云补全，计算成本高且复杂结构处理不足",
+ "innovations": [
+  "利用大型多视角扩散模型生成多视图图像作为先验",
+  "设计多模态形状融合模块整合点云和图像信息",
+  "引入置信度引导的形状 consolidator 模块处理扩散不一致性"
+ ],
+ "method_framework": "PCDreamer包含三个核心模块：多视角图像生成模块利用扩散模型生成多视图图像；多模态形状融合模块通过注意力机制融合点云和图像特征；形状 consolidation 模块通过置信度过滤和上采样生成最终完整点云",
+ "experiment_framework": "在PCN、ShapeNet-55和ShapeNet-34数据集上评估，使用Chamfer Distance、密度感知CD和F1-Score作为指标，与SOTA方法进行定量和定性比较",
+ "takeaways": [
+  "扩散模型生成的多视角图像为点云补全提供丰富的全局和局部形状线索",
+  "多模态融合策略能有效整合点云几何信息和图像外观信息",
+  "置信度过滤机制可缓解扩散模型生成的不一致性问题"
+ ],
+ "weaknesses": [
+  "扩散模型生成的不一致性在某些复杂结构(如灯具支架)上仍影响性能",
+  "方法依赖多个大型模型，计算成本较高",
+  "在未见类别上的泛化能力虽有提升但仍有局限"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "点云补全属于常规视觉任务，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

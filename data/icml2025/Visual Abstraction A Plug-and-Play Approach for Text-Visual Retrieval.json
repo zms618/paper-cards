@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Visual Abstraction A Plug-and-Play Approach for Text-Visual Retrieval.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Visual Abstraction A Plug-and-Play Approach for Text-Visual Retrieval.pdf",
+ "title": "Visual Abstraction: A Plug-and-Play Approach for Text-Visual Retrieval",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "即插即用视觉抽象模块，解决文本-视觉检索粒度不匹配问题。",
+ "innovations": [
+  "测试时视觉抽象方法，无需重新训练",
+  "基于QA的描述细化，解决粒度不匹配问题",
+  "即插即用模块，兼容多种VLM架构"
+ ],
+ "method_framework": "VISA将视觉内容抽象为文本描述：首先用LMM生成通用描述过滤低级冗余，然后通过QA过程细化描述，最后在文本空间进行检索和重排序。",
+ "experiment_framework": "在10个数据集(COCO, Flickr30K, MSR-VTT等)上评估，使用R@1/R@5/R@10指标，与SigLIP、EVA-CLIP等基线对比。",
+ "takeaways": [
+  "测试时方法可避免重新训练成本",
+  "视觉到文本的抽象能有效解决粒度不匹配问题",
+  "即插即用设计增强现有VLM性能"
+ ],
+ "weaknesses": [
+  "依赖外部LMM计算开销大",
+  "仅对top-k候选进行重排序，可能错过未检索到的相关内容",
+  "QA过程可能引入不确定性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

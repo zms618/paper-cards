@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Constrained Belief Updates Explain Geometric Structures inTransformer Representations.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Constrained Belief Updates Explain Geometric Structures inTransformer Representations.pdf",
+ "title": "Constrained Belief Updates Explain Geometric Structures in Transformer Representations",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.25
+ },
+ "one_line": "理论推导transformer注意力为约束贝叶斯更新，但实验支持有限。",
+ "innovations": [
+  "形式化transformer注意力为受约束贝叶斯信念更新，从理论预测注意力模式、OV向量和嵌入向量的几何结构",
+  "在HMM生成的可处理任务上验证单层transformer的注意力在概率单纯形上执行有自然解释的算法",
+  "扩展到多层架构，展示后续层如何精炼信念表示"
+ ],
+ "method_framework": "将最优预测理论(计算力学要求信念状态编码未来分布)与机制可解释性结合。分析在HMM上训练的单层transformer，推导注意力如何将递归贝叶斯更新弯曲为并行可计算形式。通过修改最优未来token预测方程以考虑注意力的架构约束(如非负性)，理论预测表示的几何结构。",
+ "experiment_framework": "在可处理的隐马尔可夫模型(HMM)生成的toy任务上训练单层和多层transformer；用机制可解释性方法(注意力模式、OV向量、嵌入方向)验证理论预测。",
+ "takeaways": [
+  "transformer内部表示的几何结构不是偶然，而是架构约束扭曲最优贝叶斯推断的数学签名",
+  "注意力机制在概率单纯形上执行有自然解释的信念更新算法",
+  "HMM转移矩阵的振荡模式需要多头注意力的非负约束来解决"
+ ],
+ "weaknesses": [
+  "仅在HMM toy任务上验证，大规模真实transformer的泛化性未证实",
+  "实验证据主要是定性可解释性分析，缺乏定量指标",
+  "前9页内实验细节有限，结论置信度依赖理论推导"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.13,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SOPHIAVL-R1_Reinforcing MLLMS Reasoning with Thinking Reward.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SOPHIAVL-R1_Reinforcing MLLMS Reasoning with Thinking Reward.pdf",
+ "title": "SophiaVL-R1: Reinforcing MLLMs Reasoning with Thinking Reward",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "为MLLM添加思考奖励，用Trust-GRPO抗黑客，退火策略平衡过程与结果",
+ "innovations": [
+  "训练思考奖励模型评估整个思维链过程质量，弥补仅结果奖励缺乏过程监督",
+  "提出Trust-GRPO：基于奖励模型对答对/答错响应的奖励对比为思考奖励赋可信权重，缓解不可靠思考奖励的影响",
+  "设计退火训练策略，随时间渐弱思考奖励，后期依赖准确的规则式结果奖励"
+ ],
+ "method_framework": "在规则式结果奖励RL基础上引入思考过程奖励：先用奖励模型评估思维链质量；Trust-GRPO按奖励模型对正确vs错误答案响应的区分度计算可信权重，对不可靠思考奖励降权以防奖励黑客；退火策略逐渐降低思考奖励比重，后期以结果奖励为主。",
+ "experiment_framework": "在MathVista、MMMU等推理基准上对比一系列推理MLLM；SophiaVL-R1-7B在多数基准上超越参数量10倍的LLaVA-OneVision-72B。",
+ "takeaways": [
+  "过程/思考奖励可改善仅结果奖励导致的次优推理策略与泛化受限",
+  "对不可靠思考奖励赋可信权重可有效抑制奖励黑客",
+  "退火渐弱思考奖励有助于后期收敛到准确结果奖励"
+ ],
+ "weaknesses": [
+  "思考奖励模型本身可能出错，Trust-GRPO的可信权重估计依赖对错标注的可靠性",
+  "主要在数学/通用视觉推理基准验证，未在医学影像推理落地域检验",
+  "思考奖励模型与结果奖励的权重退火曲线缺乏系统消融"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "思考奖励机制与可靠性主线部分交织，但未触及医学影像落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

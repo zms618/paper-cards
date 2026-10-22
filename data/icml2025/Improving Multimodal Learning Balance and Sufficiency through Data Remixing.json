@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Improving Multimodal Learning Balance and Sufficiency through Data Remixing.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Improving Multimodal Learning Balance and Sufficiency through Data Remixing.pdf",
+ "title": "Improving Multimodal Learning Balance and Sufficiency through Data Remixing",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.4
+ },
+ "one_line": "数据重混合解耦多模态样本，缓解模态惰性与冲突，但适用性有限。",
+ "innovations": [
+  "首次同时解决模态不足（sufficiency）与多模态失衡（balance）两个问题",
+  "解耦多模态数据、对每模态筛选难样本以缓解模态惰性",
+  "batch级重组对齐梯度方向、避免跨模态干扰，推理无额外开销"
+ ],
+ "method_framework": "将多模态数据对解耦为各模态独立样本并筛选难样本；再按控制batch内模态组成的方式重组（如遮蔽强模态、按比例配对），使各模态优化方向互不干扰，同时增强单模态充分性与多模态平衡。",
+ "experiment_framework": "在CREMAD与Kinetic-Sounds多模态识别基准上，将Data Remixing与现有方法结合；指标为分类精度提升，考察是否需扩训练集或增加推理开销。",
+ "takeaways": [
+  "Data Remixing可无缝嵌入现有多模态方法，CREMAD精度提升约6.50%、Kinetic-Sounds提升3.41%",
+  "数据级干预同时缓解模态惰性与模态冲突，无需训练集扩张或推理额外开销",
+  "通过控制batch内模态组成即可调节跨模态梯度干扰"
+ ],
+ "weaknesses": [
+  "实验仅在两个音视频多模态基准，对图文/多模态大模型的适用性未验证",
+  "难样本筛选与batch重组的具体配比依赖启发式，缺乏自适应策略",
+  "方法为数据层技巧，对模态间优化轨迹差异的理论解释较薄"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

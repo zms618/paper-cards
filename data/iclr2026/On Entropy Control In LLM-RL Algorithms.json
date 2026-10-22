@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/On Entropy Control In LLM-RL Algorithms.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/On Entropy Control In LLM-RL Algorithms.pdf",
+ "title": "On Entropy Control in LLM-RL Algorithms",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "诊断LLM-RL熵正则失效，提出截断熵与自适应系数，但子空间定义模糊",
+ "innovations": [
+  "诊断传统熵正则在 LLM-RL 中收益微弱的原因：LLM 响应空间极大而最优输出稀疏，全词表熵奖励失真",
+  "提出 AEnt：在较小 token 子空间上重归一化策略，计算截断(clamped)熵奖励，鼓励在紧凑响应集内探索",
+  "依据截断熵值自动调节熵系数，在控制熵诱导偏差的同时保留熵的探索收益"
+ ],
+ "method_framework": "先从理论说明无熵奖励时熵坍缩意味着学习停滞、而全词表熵奖励又因响应空间过大而失效；AEnt 将策略限制在较小 token 子空间重归一化后计算截断熵奖励，避免在海量无关 token 上摊薄探索信号，并据当前截断熵自适应缩放系数。",
+ "experiment_framework": "数学推理任务，跨不同基座模型与数据集；对比 PPO/GRPO 加传统熵正则与 AEnt；报告多基准上的准确率，观察 AEnt 一致性增益。",
+ "takeaways": [
+  "LLM-RL 中传统全词表熵奖励因响应空间过大而近乎无效",
+  "在紧凑 token 子空间上重归一化后计算截断熵，才能有效维持探索、防止策略卡在次优格式",
+  "自适应系数使熵控制在不引入偏差的前提下发挥作用"
+ ],
+ "weaknesses": [
+  "截断熵依赖'较小 token 子空间'的选取，正文对如何定义该子空间的准则不够清晰",
+  "主要在数学推理上验证，代码/多模态等更宽任务的迁移性未报告",
+  "属 LLM-RL 训练技巧而非可信推理/医学影像，相关性中等偏低"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "LLM-RL训练技巧，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

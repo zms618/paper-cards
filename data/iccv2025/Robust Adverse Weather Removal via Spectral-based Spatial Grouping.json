@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Robust Adverse Weather Removal via Spectral-based Spatial Grouping.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Robust Adverse Weather Removal via Spectral-based Spatial Grouping.pdf",
+ "title": "Robust Adverse Weather Removal via Spectral-based Spatial Grouping",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "频谱分组Transformer做天气去除，计算高且真实泛化未知",
+ "innovations": [
+  "频谱分解提示(SDP)提取高低频特征",
+  "空间分组掩码生成器实现特征分组",
+  "组内和组间注意力机制结合"
+ ],
+ "method_framework": "SSGformer采用4阶段编码器-解码器架构，通过频谱分解提示提取特征，生成分组掩码，再利用空间分组Transformer块进行组内和组间注意力处理，实现鲁棒天气去除。",
+ "experiment_framework": "在All-weather和WeatherStream数据集上评估，与单任务方法和All-in-One方法比较PSNR和SSIM指标",
+ "takeaways": [
+  "频谱特征融合能有效捕获天气退化信息",
+  "空间分组机制可提升模型对多样化天气条件的鲁棒性"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，空间注意力随分辨率增加呈二次增长",
+  "仅使用合成数据训练，在真实场景泛化能力有待验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "天气去除与可靠性主线无实质交点，仅常规图像处理",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

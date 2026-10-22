@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/LADA_Scalable Label-Specific CLIP Adapter for Continual Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/LADA_Scalable Label-Specific CLIP Adapter for Continual Learning.pdf",
+ "title": "LADA: Scalable Label-Specific CLIP Adapter for Continual Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "标签特定CLIP适配器，解决持续学习中的参数选择错误问题",
+ "innovations": [
+  "指出现有CLIP持续学习方法按任务划分参数，推理时需选择对应参数集容易出错",
+  "提出LADA：在冻结CLIP图像编码器后追加标签特定的轻量记忆单元，聚合任务无关知识",
+  "对已见类使用特征蒸馏，防止新类干扰旧类特征，同时阻止梯度流回CLIP参数"
+ ],
+ "method_framework": "冻结CLIP图像编码器，在其后追加标签特定的轻量适配器模块；每个新类别对应一个记忆单元，推理时无需选择参数集；通过特征蒸馏约束已见类特征不被新类干扰。",
+ "experiment_framework": "在多个持续学习基准（基于CIFAR、ImageNet等数据集的类增量设定）上评估；对比现有CLIP-based持续学习方法和传统CIL方法。",
+ "takeaways": [
+  "LADA在持续学习设定下达到SOTA性能",
+  "标签特定适配器设计避免了任务参数选择错误问题",
+  "特征蒸馏有效缓解前向遗忘（预训练通用知识退化）"
+ ],
+ "weaknesses": [
+  "与主线（可靠性/医学影像/多模态推理）关联较弱，属持续学习方向",
+  "适配器参数量随类别数增长的可扩展性未充分量化",
+  "仅在标准分类基准上验证，未涉及更复杂的检测/分割任务"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

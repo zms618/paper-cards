@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Sample Complexity and Representation Ability Of Test-Time Scaling Paradigms.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sample Complexity and Representation Ability Of Test-Time Scaling Paradigms.pdf",
+ "title": "Sample Complexity and Representation Ability of Test-Time Scaling Paradigms",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "理论分析测试时缩放样本复杂度，self-correction实现多任务在线学习。",
+ "innovations": [
+  "给出两种重复采样策略的样本复杂度分离结果：self-consistency需Θ(1/Δ²)而best-of-n只需Θ(1/Δ)才能以高概率选出正确答案。",
+  "证明带验证器反馈的self-correction使单一Transformer可在测试时在专家池上模拟在线学习，无需预知任务即可解决多任务。",
+  "将Transformer表示理论从单任务推广到多任务设定，并以实证验证self-correction方法的实际有效性。"
+ ],
+ "method_framework": "用概率/表示理论分析：以正确与次优答案概率差Δ刻画重复采样达到目标正确率所需样本数；将self-correction+verifier反馈建模为测试时在线学习过程，论证其多任务表达能力。",
+ "experiment_framework": "以理论推导为主(样本复杂度分离、多任务表示性)，辅以实证实验验证self-correction在测试时缩放中的实际效果。",
+ "takeaways": [
+  "best-of-n在样本效率上严格优于self-consistency(Θ(1/Δ) vs Θ(1/Δ²))。",
+  "验证器反馈的self-correction本质上赋予Transformer测试时在线学习能力，是其多任务适应的理论来源。"
+ ],
+ "weaknesses": [
+  "为理论分析，与医学影像落地域无关；与多模态推理主线仅在验证器/自我纠错概念上间接相关。",
+  "样本复杂度界依赖Δ固定、答案类别少等简化假设，在开放生成/长链推理下的紧致性与实证对应仍有差距。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "验证器反馈机制与可靠性主线间接相关，但缺乏医学影像落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

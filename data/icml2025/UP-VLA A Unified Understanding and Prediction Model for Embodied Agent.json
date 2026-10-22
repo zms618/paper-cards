@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/UP-VLA A Unified Understanding and Prediction Model for Embodied Agent.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/UP-VLA A Unified Understanding and Prediction Model for Embodied Agent.pdf",
+ "title": "UP-VLA: A Unified Understanding and Prediction Model for Embodied Agent",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "VLA双目标预训练补空间细节，CALVIN提升33%但跨平台验证不足",
+ "innovations": [
+  "指出现有VLA基于的VLM预训练偏重高层语义、忽视低层视觉/空间细节，而后者对机器人控制至关重要",
+  "提出统一预训练范式：同时用多模态理解目标与未来预测目标训练VLA，显式补足低层空间与物理动态建模",
+  "在CALVIN ABC-D基准上比前SOTA提升33%，并在需要精确空间信息的真实操作任务上提升成功率，代码开源"
+ ],
+ "method_framework": "在VLM backbone上联合两个预训练目标：(1)多模态理解(图像-文本对齐/问答)保留语义；(2)未来帧/状态预测迫使模型学低层空间与动态；再用机器人动作数据做动作生成微调。",
+ "experiment_framework": "CALVIN仿真(ABC-D长程规划)与真实机械臂操作；对比RT-2、OpenVLA等VLA基线；指标为任务成功率、长程规划完成率，尤其考察需精确空间信息的任务。",
+ "takeaways": [
+  "纯语义VLM预训练会丢失对控制关键的低层空间信息，加入未来预测目标可在不牺牲语义的前提下补回",
+  "理解+预测双目标联合预训练是缩小'看懂语义'与'精确操作'鸿沟的有效途径"
+ ],
+ "weaknesses": [
+  "未来预测目标主要补低层视觉细节，但对接触丰富/高动态操作的物理建模仍有限；33%增益集中在CALVIN，跨平台泛化证据少",
+  "双目标联合训练的权重/调度较经验，缺对两目标相互干扰的消融；真实世界规模与异质本体证据不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

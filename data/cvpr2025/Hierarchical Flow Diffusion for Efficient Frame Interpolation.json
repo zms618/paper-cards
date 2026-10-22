@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Hierarchical Flow Diffusion for Efficient Frame Interpolation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Hierarchical Flow Diffusion for Efficient Frame Interpolation.pdf",
+ "title": "Hierarchical Flow Diffusion for Efficient Frame Interpolation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "分层扩散模型提升帧插值效率，但光流监督不足",
+ "innovations": [
+  "分层流扩散模型，从粗到细显式建模光流",
+  "流引导的图像合成器与扩散模型端到端联合训练",
+  "10倍于其他扩散方法的效率，同时达到SOTA精度"
+ ],
+ "method_framework": "构建流引导的编码器-解码器作为图像合成器，使用分层扩散模型从粗到细显式去噪光流，预测的双边流用于扭曲特征，最终通过多尺度解码器合成目标图像。",
+ "experiment_framework": "在Vimeo90k训练，评估于SNUFILM、Xiph、DAVIS等数据集，使用LPIPS和FID作为指标，与SGM-VFI、LDMVFI等SOTA方法对比。",
+ "takeaways": [
+  "显式建模光流而非潜在空间可提高效率和精度",
+  "分层扩散策略能有效处理复杂运动和大位移",
+  "端到端联合训练提升整体性能"
+ ],
+ "weaknesses": [
+  "仅使用伪光流监督，可能限制光流估计精度",
+  "推理时间仍略高于非扩散方法SGM-VFI",
+  "模型参数量较大(46.96M)"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.375,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "帧插值与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

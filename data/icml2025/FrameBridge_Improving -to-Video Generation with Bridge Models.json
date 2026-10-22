@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/FrameBridge_Improving -to-Video Generation with Bridge Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FrameBridge_Improving -to-Video Generation with Bridge Models.pdf",
+ "title": "FrameBridge: Improving Image-to-Video Generation with Bridge Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6.5,
+  "relevance": 5,
+  "overall": 5.9
+ },
+ "one_line": "Bridge模型替代扩散噪声过程，提升I2V生成质量但泛化有限。",
+ "innovations": [
+  "将I2V建模为data-to-data bridge过程：以输入图像latent为先验、视频target latent为目标，用SDE在二者之间迭代，替代从纯高斯噪声生成的扩散范式",
+  "提出SNR-Aligned Fine-tuning(SAF)：首次将预训练T2V扩散模型通过SNR对齐微调为bridge模型，从而复用大规模T2V预训练权重",
+  "提出neural prior：用单步回归网络F_η(z_i,c)预测后续帧均值作为更接近target的初始prior，进一步提升从零训练bridge的质量"
+ ],
+ "method_framework": "先用VAE将输入图像与目标视频编码到连续latent；以复制图像latent作为整段视频的先验分布，建立prior-to-target的bridge SDE；训练时通过SDE得分匹配学习从图像latent到视频latent的演化；推理时从图像latent出发迭代采样得到视频latent，再解码回像素。",
+ "experiment_framework": "在UCF-101与WebVid-2M上训练；零样本评测MSR-VTT/UCF-101(FVD/IS/CLIPSIM/PIC)；VBench-I2V多维度评分；基线包括SVD/SEINE/ConsistI2V/SparseCtrl/I2VGen-XL/DynamiCrafter；并对SAF与neural prior做消融。",
+ "takeaways": [
+  "零样本MSR-VTT上FrameBridge-CogVideoX w/ SAF达FVD 96、CLIPSIM 0.2250、PIC 0.7566，显著优于DynamiCrafter(FVD 192)与SEINE(FVD 245)",
+  "VBench-I2V总分FrameBridge-CogVideoX达85.93，在Camera Motion维度(92.06)显著领先",
+  "SAF将VideoCrafter基线FVD从229降到99(1.28M iterated videos)，neural prior进一步提升从零训练质量"
+ ],
+ "weaknesses": [
+  "主要在256x256分辨率、16帧短片段验证，高分辨率长视频的泛化未展示",
+  "bridge SDE采样仍需多步迭代，相对一步/少步生成方法的推理延迟优势未量化",
+  "属于生成模型架构改良，与可靠性/可信AI主线关联弱；创新点建立在已有bridge model文献(Tong et al., 2024)上"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

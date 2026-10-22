@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Meancache_from Instantaneous To Average Velocity for Accelerating Flow Matching In.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Meancache_from Instantaneous To Average Velocity for Accelerating Flow Matching In.pdf",
+ "title": "MeanCache: From Instantaneous to Average Velocity for Accelerating Flow Matching Inference",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "缓存JVP构造平均速度加速流匹配，但显存开销大且适用性有限。",
+ "innovations": [
+  "提出平均速度视角：用缓存 JVP 由瞬时速度构造区间平均速度，比瞬时速度更平滑、抑制局部误差累积",
+  "提出轨迹稳定性调度策略，在预算约束下用峰抑制最短路径决定缓存时刻，提升 JVP 复用稳定性",
+  "在 FLUX.1/Qwen-Image/HunyuanVideo 上免训练取得 4.12×/4.56×/3.59× 加速且生成质量优于 SOTA 缓存基线"
+ ],
+ "method_framework": "在流匹配去噪轨迹上选择性缓存部分步的中间表征与 JVP；用区间平均速度（由 JVP 积分瞬时速度）重建被跳步区间的状态，减少高加速比下的漂移；再以峰抑制最短路径在预算内优化缓存调度。",
+ "experiment_framework": "模型：FLUX.1[dev]、Qwen-Image、HunyuanVideo；基线：特征缓存等 SOTA 免训练缓存；指标：加速比与生成质量（图像/视频），多加速比对比。",
+ "takeaways": [
+  "瞬时速度在去噪轨迹上剧烈波动，直接复用会在高加速比下累积误差，平均速度重建更稳定",
+  "JVP 缓存可在免训练前提下构造区间平均速度，无需重训即可加速商用级生成模型",
+  "轨迹稳定性调度进一步提升缓存时刻选择与 JVP 复用的稳定性"
+ ],
+ "weaknesses": [
+  "JVP 缓存本身仍有额外显存/计算开销，极端资源受限场景收益待评估",
+  "方法针对流匹配速度场设计，对纯扩散/离散采样模型的适配性未论证",
+  "与医学影像/多模态推理等可靠性主线无关，仅效率优化"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.03,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "流匹配加速与可靠性主线无关，仅效率优化",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

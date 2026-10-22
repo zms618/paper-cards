@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Mask-Enhanced Autoregressive Prediction_Pay Less Attention to Learn More.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Mask-Enhanced Autoregressive Prediction_Pay Less Attention to Learn More.pdf",
+ "title": "Mask-Enhanced Autoregressive Prediction: Pay Less Attention to Learn More",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 5.9
+ },
+ "one_line": "简单mask训练提升LLM信息检索，无理论深度，实验局限",
+ "innovations": [
+  "提出MEAP：随机mask少量输入token后直接做标准NTP，无需双向注意力或encoder-decoder架构即可获得MLM的上下文理解收益",
+  "预训练和推理均无额外计算开销，仅在训练时随机mask少量token",
+  "在关键信息检索任务上显著优于纯NTP基线"
+ ],
+ "method_framework": "标准NTP的decoder-only LLM在上下文关键信息检索上存在缺陷。MEAP在训练时随机mask输入序列中的少量token，然后照常做自回归下一个token预测。被mask的位置在预测时相当于额外的\"cloze\"练习，迫使模型更仔细地关注上下文信息。关键是保持causal attention不变，仅修改训练数据构造（加入mask），因此推理时与标准NTP完全一致。",
+ "experiment_framework": "在标准LLM预训练设置下对比NTP vs MEAP。指标：关键信息检索任务（如needle-in-haystack、长上下文检索）、标准语言建模困惑度、下游任务性能。消融验证mask比例和mask策略的影响。",
+ "takeaways": [
+  "简单地在NTP训练中加入随机mask少量token，即可显著增强LLM的上下文关键信息检索能力",
+  "MLM的上下文理解收益无需双向注意力即可获得，decoder-only架构可通过训练数据改造受益",
+  "该方法零推理开销，易于集成到现有LLM预训练流程中"
+ ],
+ "weaknesses": [
+  "方法简单，贡献更多是工程洞察而非理论突破，mask为何有效缺乏深入的机制解释",
+  "仅验证了关键信息检索任务，对生成质量和其他推理能力的影响未充分讨论",
+  "实验模型规模可能有限，在超大模型上的效果未验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

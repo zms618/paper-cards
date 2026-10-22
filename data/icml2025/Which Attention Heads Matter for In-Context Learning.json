@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Which Attention Heads Matter for In-Context Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Which Attention Heads Matter for In-Context Learning.pdf",
+ "title": "Which Attention Heads Matter for In-Context Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "通过消融实验发现ICL主要依赖函数向量头而非归纳头，但机制识别存在不确定性。",
+ "innovations": [
+  "在12个模型上通过精细消融，定量判定少样本ICL主要由FV头而非归纳头驱动，且该趋势在更大模型上更明显",
+  "发现FV头与归纳头的连接：许多FV头在训练早期是归纳头，之后才过渡到FV机制",
+  "据此提出推测：归纳机制为后续学习更复杂的FV机制提供了脚手架/铺垫"
+ ],
+ "method_framework": "定义归纳头(能找并复制相关重复token)与FV头(激活中编码ICL任务的潜在表示)；对两类头做消融测量ICL准确率下降；跨12个模型不同规模比较；并在训练轨迹上追踪同一头的归纳分数与FV分数随步数的演化，刻画其身份转换。",
+ "experiment_framework": "12个语言模型(含Pythia系列不同规模)；消融各类注意力头(干净/随机/归纳/FV)观察few-shot ICL准确率变化；追踪训练过程中头的归纳分数与FV分数曲线。",
+ "takeaways": [
+  "消融FV头显著降低少样本ICL准确率，而消融归纳头影响仅略大于随机，说明ICL主要靠FV头",
+  "越大的模型，ICL对FV头的依赖越强",
+  "许多FV头在训练早期先表现为归纳头、后转为FV头，提示归纳是FV的前身"
+ ],
+ "weaknesses": [
+  "属机制可解释性研究，与鲁棒性主线及医学影像/多模态推理落地域关系较弱",
+  "归纳/FV头的识别依赖启发式评分与探针，头的分类边界本身存在不确定性",
+  "'归纳铺垫FV'的演化结论主要基于小规模Pythia类训练轨迹，对大模型训练的普适性需更多证据"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.55,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

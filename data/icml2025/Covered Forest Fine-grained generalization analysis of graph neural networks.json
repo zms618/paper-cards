@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Covered Forest Fine-grained generalization analysis of graph neural networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Covered Forest Fine-grained generalization analysis of graph neural networks.pdf",
+ "title": "Covered Forest: Fine-grained generalization analysis of graph neural networks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "引入图伪度量改进MPNN泛化界，但理论计算困难且验证有限。",
+ "innovations": [
+  "将Tree距离和Forest距离引入MPNN泛化分析，比传统1-WL离散度量得到严格更紧的泛化误差界",
+  "定义1-MWL(均值聚合MPNN的表达力启发式)，满足Lipschitz连续性要求，使泛化分析适用于均值聚合MPNN",
+  "证明Forest距离等价于Tree Mover's Distance(TMD)，提供了TMD的简化直观定义"
+ ],
+ "method_framework": "基于覆盖数理论：MPNN泛化误差界由假设空间在图伪度量下的覆盖数决定。关键是选择合适的图伪度量——传统1-WL将所有非同构图视为等距，导致覆盖数巨大、界松。本文用Tree距离(双随机矩阵对齐邻接矩阵)和Forest距离(计算树展开后逐层匹配节点特征)作为伪度量，相似的图距离更近，覆盖数更小，界更紧。分析同时考虑不同聚合方式(sum/mean)和损失函数(交叉熵/MAE)。",
+ "experiment_framework": "在多个图分类数据集上验证理论预测；比较不同伪度量下的泛化界松紧度；验证1-MWL与均值聚合MPNN表达力的对应关系。",
+ "takeaways": [
+  "图伪度量的选择显著影响泛化分析的紧致性，Tree距离比1-WL离散度量得到严格更紧的界",
+  "Forest距离将计算树展开到L层，恰好匹配L层MPNN的表达能力，给出层相关的泛化界",
+  "分析同时适用于交叉熵和MAE等损失函数，比仅分析0-1损失更贴近实际"
+ ],
+ "weaknesses": [
+  "理论界仍然依赖覆盖数，实际计算覆盖数本身是NP-hard问题，界的实用性有限",
+  "实证验证规模较小，主要在合成数据或小规模图上",
+  "仅分析消息传递MPNN，对更现代的图Transformer架构未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

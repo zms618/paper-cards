@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Rig3R_Rig-Aware Conditioning for Learned 3D Reconstruction.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Rig3R_Rig-Aware Conditioning for Learned 3D Reconstruction.pdf",
+ "title": "Rig3R: Rig-Aware Conditioning for Learned 3D Reconstruction",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "Rig3R通过条件化transformer实现多视角重建与姿态估计，但计算成本高且领域验证有限。",
+ "innovations": [
+  "首个利用rig约束的 learned 3D重建方法",
+  "全局和rig相对raymap输出表示",
+  "从无序图像中直接发现rig结构"
+ ],
+ "method_framework": "基于transformer的模型，联合预测点图和两种raymap（全局姿态和rig相对姿态），通过元数据嵌入和dropout训练处理缺失信息。",
+ "experiment_framework": "Waymo和WayveScenes101数据集，对比COLMAP、DUSt3R、Fast3R等方法，评估姿态估计(RRA/RTA/mAA)和点图重建(Acc/Comp/Chamfer)指标。",
+ "takeaways": [
+  "raymap表示提供更直接一致的姿态估计",
+  "元数据dropout训练增强模型对缺失信息的鲁棒性",
+  "统一框架处理从无序到完整rig的各种配置"
+ ],
+ "weaknesses": [
+  "训练计算资源需求高(24帧×128批×5天)",
+  "仅评估了自动驾驶场景，缺乏其他应用领域验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

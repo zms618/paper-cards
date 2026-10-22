@@ -1,0 +1,41 @@
+{
+ "title": "Falcon: Fast Proximal Linearization of Normalized Cuts for Unsupervised Image Segmentation",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 7,
+  "relevance": 5.5,
+  "overall": 6.8
+ },
+ "one_line": "近端梯度直接优化离散NCut，免谱松弛，证线性收敛，分割速度与精度双提升。",
+ "innovations": [
+  "直接在离散K-way NCut目标上做近端梯度，免去递归二分的重复特征分解",
+  "用按簇体积加权的闭式梯度分数 + 行级one-hot近端更新(带惯性)，单调回溯保证NCut值非降",
+  "在Kurdyka-Łojasiewicz性质下证明线性收敛，给出稳定K-way分割的收敛保证"
+ ],
+ "method_framework": "放弃谱松弛+取整，直接对离散NCut目标做近端梯度：闭式梯度分数按簇体积加权，行one-hot近端更新配惯性稳定；自适应单调回溯调近端参数，保持离散可行并保证NCut单调不降。",
+ "experiment_framework": "跨6个基准(VOC/COCO-Object/Cityscapes/Pascal Context等)对比DiffCut等最强官方基线；VOC +13.2 mIoU、COCO-Object +27.7、Cityscapes +3.1；18个基准-编码器对中17个最佳；比递归NCut快至多一个数量级且高分辨率内存更省。",
+ "takeaways": [
+  "无谱松弛直接优化离散NCut既更快又更准",
+  "近端单调方案给出递归二分所缺乏的收敛保证",
+  "基础模型表征+原则化NCut求解大幅拉近无监督与有监督分割差距"
+ ],
+ "weaknesses": [
+  "为通用图像分割，医学影像仅作下游提及而非专门验证",
+  "依赖预训练基础模型表征，对未见域的鲁棒性未单独评测",
+  "前9页未见与最新无监督分割方法的全面对比"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/SEGMEN_Falcon Fast Proximal Linearization Of NORMALIZED Cuts for Unsupervised SEGMEN.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SEGMEN_Falcon Fast Proximal Linearization Of NORMALIZED Cuts for Unsupervised SEGMEN.pdf",
+ "raw_overall": 7.08,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "无监督分割方法，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

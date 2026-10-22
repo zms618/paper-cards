@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Pre-Training LLM without Learning Rate Decay Enhances Supervised Fine-Tuning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Pre-Training LLM without Learning Rate Decay Enhances Supervised Fine-Tuning.pdf",
+ "title": "Pre-Training LLM without Learning Rate Decay Enhances Supervised Fine-Tuning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "恒定学习率预训练使模型落入更平坦极小值，提升下游适应性",
+ "innovations": [
+  "系统论证以预训练指标选衰减学习率会损害下游适应性，提出 WSO(预热后恒定不衰减)对 SFT 更优",
+  "在1B与8B模型及 mid-training、over-training 多种范式下验证 WSO 的一致性收益",
+  "通过损失景观锐度分析解释机制：衰减调度把模型带入更尖锐极小值，WSO 保留更平坦极小值从而更易适配"
+ ],
+ "method_framework": "对比 cosine、WSD、WSO 等调度器在大规模预训练中的差异，统一进入 SFT 后评测下游；用锐度(loss landscape sharpness)度量分析不同调度收敛区域的平坦度，将平坦极小值与 SFT 适应性关联。",
+ "experiment_framework": "1B 与 8B 规模模型，标准预训练/mid-training/over-training 多范式；预训练阶段与 SFT 后多基准对照，报告预训练损失与 SFT 后下游性能，并做损失景观锐度测量。",
+ "takeaways": [
+  "WSO 预训练虽预训练指标非最优，但 SFT 后 consistently 超过衰减型调度",
+  "衰减学习率使模型进入更尖锐极小值，损害下游可适配性",
+  "模型发布/选模应以 SFT 后表现而非中间预训练指标为依据"
+ ],
+ "weaknesses": [
+  "属训练配方实证研究，与可靠性/医学影像/多模态推理主线关联弱",
+  "核心发现较简单(去掉衰减)，机制解释停留在锐度相关层面，因果性证据有限",
+  "前9页未见 RL/DPO 等更复杂后训练阶段下是否仍成立的验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "训练配方研究，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

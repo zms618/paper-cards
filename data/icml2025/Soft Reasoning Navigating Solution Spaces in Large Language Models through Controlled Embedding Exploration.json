@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Soft Reasoning Navigating Solution Spaces in Large Language Models through Controlled Embedding Exploration.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Soft Reasoning Navigating Solution Spaces in Large Language Models through Controlled Embedding Exploration.pdf",
+ "title": "Soft Reasoning: Navigating Solution Spaces in Large Language Models through Controlled Embedding Exploration",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "优化首token嵌入做LLM推理搜索，依赖验证器但未分析其偏差风险",
+ "innovations": [
+  "区别于调高温度或prompt启发式多路采样，直接在嵌入空间(首token嵌入)做可控搜索",
+  "注入高斯嵌入扰动做比均匀调温度更可控的探索，避免无差别抬高低概率token引入噪声",
+  "用贝叶斯优化在验证器(verifier)引导的目标下精化嵌入，平衡探索与利用，model-agnostic且可扩展"
+ ],
+ "method_framework": "不解码多个完整推理路径，而是在首answer token的嵌入上注入可控高斯扰动采样候选嵌入，每个嵌入引导一次生成；用一个verifier给生成结果打分作为贝叶斯优化的目标函数，迭代精化最优首token嵌入，从而系统性地在解空间中导航而非随机采样。",
+ "experiment_framework": "在复杂推理基准上对比温度采样/多路采样/prompt式搜索，指标为推理正确率与计算开销；声称以极小计算取得更优正确性、model-agnostic。",
+ "takeaways": [
+  "直接优化内部表示(首token嵌入)比表层prompt变异/温度调参更高效地导航解空间",
+  "验证器引导的贝叶斯优化可嵌入到推理时搜索，用少量前向即找到更优解路径，避免穷举采样"
+ ],
+ "weaknesses": [
+  "效果依赖一个可靠的verifier，若验证器有偏会把搜索引向‘骗过验证器’的解(奖励黑客)，前9页未分析",
+  "贝叶斯优化迭代次数与所需前向次数的开销-正确率权衡曲线未充分量化",
+  "仅在首token嵌入上优化，对长链推理中后续步骤错误的纠错能力有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

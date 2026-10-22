@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Safe Reasoning In Large Reasoning Models via Corrective Intervention.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Safe Reasoning In Large Reasoning Models via Corrective Intervention.pdf",
+ "title": "Towards Safe Reasoning in Large Reasoning Models via Corrective Intervention",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "人工规则替换安全触发点，偏好学习降低有害性30%。",
+ "innovations": [
+  "聚焦推理过程本身的安全对齐(而非仅最终回答)，指出现有方法即使最终回答安全、推理链中仍残留有害内容",
+  "揭示三条关键洞察：安全推理由少数安全触发步骤巩固、合规线索与不安全续写强相关、纠正干预可可靠地把不安全轨迹导向更安全轨迹",
+  "提出IPO：将合规步骤替换为安全触发点构造强信号偏好对，相对基线降低30%以上有害性，同时保持推理任务性能"
+ ],
+ "method_framework": "在过程监督思路下，发现仅奖励安全推理因rollout多样性低、训练信号弱而不足。IPO从洞察出发：在不安全推理轨迹中识别合规线索步骤，用安全触发点替换它们，构造(不安全轨迹, 纠正后轨迹)偏好对做偏好学习，从而强制模型走安全推理路径。",
+ "experiment_framework": "在越狱(jailbreak)与对抗安全基准上评测，对比SFT-based与RL-based安全对齐基线；指标为推理与回答两方面的有害性(harmfulness)相对降低幅度；并在多样推理任务(math/code等)上验证性能保持。",
+ "takeaways": [
+  "LRM的安全风险不仅在最终回答，更在中间CoT推理中残留，可被恶意用户利用",
+  "安全推理由少数关键安全触发步骤决定，纠正干预比单纯奖励安全更有效",
+  "IPO在显著提升安全性(有害性降>30%)的同时不损失推理能力，给出更安全LRM的可行路径"
+ ],
+ "weaknesses": [
+  "安全触发点/合规线索的识别与替换依赖较强的人工或启发式规则，自动识别成本与泛化性未充分讨论",
+  "在超长推理与更隐蔽多轮越狱下的稳健性证据有限，正文前9页未见完整逐基准表",
+  "属通用LLM安全对齐，尚未落地到医学影像等具体高风险域"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "推理安全对齐与可靠性主线交点，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

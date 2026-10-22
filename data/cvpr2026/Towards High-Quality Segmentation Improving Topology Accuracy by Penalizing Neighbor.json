@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Towards High-Quality Segmentation Improving Topology Accuracy by Penalizing Neighbor.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Towards High-Quality Segmentation Improving Topology Accuracy by Penalizing Neighbor.pdf",
+ "title": "Towards High-Quality Segmentation Improving Topology Accuracy by Penalizing Neighbor",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "简单邻居惩罚方法提升分割拓扑精度，但创新有限且需调参",
+ "innovations": [
+  "SCNP方法通过惩罚最差分类邻居像素提高拓扑准确性",
+  "仅需三行代码即可集成到现有训练流程",
+  "适用于多种结构形态和图像模态",
+  "可与多种损失函数结合使用"
+ ],
+ "method_framework": "SCNP通过最小/最大池化操作修改logits，使前景类像素取邻居中最小值，背景类取最大值，迫使模型先改善邻居预测再改善自身。",
+ "experiment_framework": "13个数据集(医学/非医学，管状/非管状/圆形结构)，三种框架(nnUNetv2/Detectron2/InstanSeg)，比较CEDice、TopoLoss、clDice等7种损失函数，使用Dice和Betti误差评估。",
+ "takeaways": [
+  "简单高效的拓扑改进方法，无需修改架构",
+  "邻居大小是关键超参数，需根据结构厚度调整",
+  "与多种损失函数兼容，提升拓扑准确性"
+ ],
+ "weaknesses": [
+  "在某些非管状医学数据集上效果不稳定",
+  "收敛速度可能略微减慢",
+  "仅有一个超参数但需要针对不同数据集调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "拓扑精度提升属于可靠性主线，但方法简单且创新有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

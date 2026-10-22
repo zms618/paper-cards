@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Advancing Generalizable Tumor Segmentation with Anomaly-Aware Open-Vocabulary Attention Maps and.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Advancing Generalizable Tumor Segmentation with Anomaly-Aware Open-Vocabulary Attention Maps and.pdf",
+ "title": "Advancing Generalizable Tumor Segmentation with Anomaly-Aware Open-Vocabulary Attention Maps and Frozen Foundation Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "冻结扩散模型特征+潜空间差分，零样本肿瘤分割",
+ "innovations": [
+  "把冻结医学基础扩散模型 MAISI 的 VAE 编码器内部多尺度特征（配 α=0.1 的可学习残差 adapter 弥合生成/判别空间差距）当零样本分割特征：正常/异常文本经 W_K 得归因键 K_l、图像经 W_Q 得 pixel query Q_l，A(Q_l,K_l)=Softmax(Q_lK_l^T/√C_l) 跨层聚合 reshape 成异常感知开放词表注意力图（AOVA）。",
+  "用 AOVA 图按系数 β 扩边界作条件，把 MAISI 的条件生成改写成 training-free 潜空间 inpainting（非病灶区从输入重新采样、病灶区由模型重生成，再按最近邻下采样掩码 D(M_L) 拼接），保证病灶外区域保真——Fig.3 显示比直接跑 MAISI 显著更准。",
+  "提出像素级残差 Pr=I⊖H 与潜空间残差 fr=z⊖z0 双路：fr 与对应文本嵌入线性投影对齐得 Fr，推理时 R_pf=0.5Pr+0.5Fr 再 Otsu 二值化。"
+ ],
+ "method_framework": "MAISI 冻结：VAE 编码 → 残差 adapter → 文本/图像 cross-attention 生成 AOVA 图（L_ano+L_sim+L_dice 监督）→ 扩掩码潜空间补绘伪健康 H → 像素级+特征级残差融合 → Otsu 二值 mask；总损失 L=L_AOVA+L_SEG。",
+ "experiment_framework": "MSD、KiTS23、BraTS23、私有 MRI 肝肿瘤 + TotalSegmentator 404 正常例，共 3933 例 CT/MRI、6 器官 7 肿瘤；leave-one-out 与跨模态零样本；DSC/NSD，正文声明算 95% CI 且 p<0.05；对比 SAM2/SaLIP/H-SAM/ZePT/Malenia/DDPM-MAD/MVFA/THOR（官方代码复现）。",
+ "takeaways": [
+  "把'生成式修复 + 残差差分'从像素空间搬到潜空间、并用训练无关 inpainting 保证正常区不被改写，是医学异常分割可直接复用的流水线。",
+  "leave-one-out（按肿瘤类别/成像模态留一）的零-shot 评测协议，比单一测试集更能暴露真实跨器官泛化，值得在医学分割工作里照搬。",
+  "用'正常/异常'成对文本模板（'A normal CT scan of {organ}' vs 'An abnormal CT scan of {disease}'）构造开放词表注意力，是零样本病灶定位的低成本方案。"
+ ],
+ "weaknesses": [
+  "VAE 编码器并非为分割优化，文章只用 α（默认 0.1）这一个常量残差比弥合生成/判别表示空间差距，α、β（掩码扩张）、β1/β2（残差融合权重）均无敏感性消融，也无 'adapter 换成小微调编码器' 的对照。",
+  "虽然正文声明算 95% CI 与 p<0.05，但正文只给出点估计主表，未见误差条；且私有 MRI 肝肿瘤数据与公开集混合评测、1000 epoch batch=2 单跑，无多种子方差可核。",
+  "SAM 系对比基线（SAM2/SaLIP/H-SAM）依赖点/框提示，正文承认 GT 级提示现实中拿不到，等于把公平性建立在一个作者自己否定的前提上；THOR/MVFA 等异常检测基线为整图输入协议，与 prompt 驱动协议不完全同构。",
+  "正文在 4.1 中途截断：跨模态零样本（Table 2 之后）、AOVA 可视化分析、L_AOVA 三项损失的消融、结论缺失，无法核验 12.84% DSC 的 Claim 是否都对应到消融支撑。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像零样本分割，可靠性主线与落地域硬交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

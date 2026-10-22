@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Graph-constrained Reasoning Faithful Reasoning on Knowledge Graphs with Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Graph-constrained Reasoning Faithful Reasoning on Knowledge Graphs with Large Language Models.pdf",
+ "title": "Graph-constrained Reasoning: Faithful Reasoning on Knowledge Graphs with Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "用trie索引约束LLM解码，强制KG推理路径忠实但牺牲开放性。",
+ "innovations": [
+  "提出图约束推理(GCR)框架，把结构化KG知识与LLM非结构化推理相桥接",
+  "设计KG-Trie：一种trie索引，编码KG上合法推理路径并在解码过程中施加约束",
+  "让LLM直接在图上推理生成，从解码机制层面消除幻觉，而非依赖事后检索/校验"
+ ],
+ "method_framework": "将KG中实体/关系可达路径组织进KG-Trie；LLM解码每一步仅从trie允许的后继中选择，把开放式生成约束为图上合法游走；从而答案与推理链都必须落在KG事实之上，杜绝无依据跳转。",
+ "experiment_framework": "在KG问答/多跳推理基准上评测；与检索增强及agent式KG推理方法比较；指标为答案准确率与推理链忠实度/幻觉率；报告在消除幻觉、保持或提升精度上的收益。",
+ "takeaways": [
+  "解码级约束比事后检索/校验更能从机制上抑制KG推理幻觉",
+  "KG-Trie使LLM输出被强制对齐到图上合法路径，推理链可追溯",
+  "忠实性与准确率可兼得，不牺牲推理能力"
+ ],
+ "weaknesses": [
+  "受限于KG覆盖，KG缺失的合理知识无法表达，可能造成过度保守",
+  "trie约束限制生成自由度，对开放域、需组合常识的问题灵活性下降",
+  "图上路径规模大时trie索引与约束解码的效率/可扩展性需进一步验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

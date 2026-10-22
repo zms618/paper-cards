@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/BoltzNCE_Learning Likelihoods for Boltzmann Generation with Stochastic Interpolants and Noise Contrastive Estimation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/BoltzNCE_Learning Likelihoods for Boltzmann Generation with Stochastic Interpolants and Noise Contrastive Estimation.pdf",
+ "title": "BoltzNCE: Learning Likelihoods for Boltzmann Generation with Stochastic Interpolants and Noise Contrastive Estimation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "结合随机插值器和NCE加速玻尔兹曼生成似然计算",
+ "innovations": [
+  "结合随机插值器、得分匹配和噪声对比估计的混合训练框架",
+  "通过EBM近似似然计算，避免雅可比行列式计算开销",
+  "在分子系统中实现100倍加速和有效迁移学习"
+ ],
+ "method_framework": "BoltzNCE采用两阶段训练：首先使用随机插值器训练玻尔兹曼模拟器，然后训练EBM近似似然函数，结合得分匹配和InfoNCE目标函数，实现快速似然估计。",
+ "experiment_framework": "在2D合成系统和丙氨酸二肽上验证，使用KL散度、Wasserstein-2距离和自由能差异作为指标，与ECNF和GVP模型对比。",
+ "takeaways": [
+  "混合目标函数(得分匹配+InfoNCE)显著提升EBM质量",
+  "通过EBM近似似然计算可避免雅可比行列式计算的不稳定性",
+  "方法在分子系统中实现高效迁移学习"
+ ],
+ "weaknesses": [
+  "仅在小分子系统(二肽)上验证，未在大规模蛋白质系统上测试",
+  "EBM训练依赖于模拟器生成的样本质量",
+  "计算加速依赖于特定架构(GVP)的选择"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

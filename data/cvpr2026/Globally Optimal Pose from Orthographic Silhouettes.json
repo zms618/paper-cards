@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Globally Optimal Pose from Orthographic Silhouettes.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Globally Optimal Pose from Orthographic Silhouettes.pdf",
+ "title": "Globally Optimal Pose from Orthographic Silhouettes",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "基于轮廓几何特性的全局最优姿态估计，计算复杂且对称性受限",
+ "innovations": [
+  "利用轮廓面积的连续性特性进行旋转空间分支",
+  "提出轮廓面积响应表面(PARS)和椭圆纵横比响应表面(PEARS)作为全局形状签名",
+  "实现了仅从轮廓信息进行全局最优姿态估计，无需对应点"
+ ],
+ "method_framework": "通过预计算轮廓面积和椭圆纵横比作为形状签名，构建响应表面，利用这些签名对旋转空间进行分支，实现全局最优姿态估计，包括正交投影和透视投影两种情况。",
+ "experiment_framework": "在Stanford Bunny、Phlegmatic Dragon和Pelvic Bone模型上测试，与NlR、Nl-PaR、Ms-GO和STI-PoseΠO等方法比较，使用方向误差(OE)、平移误差(TE)和均方根误差(RMSE)作为指标。",
+ "takeaways": [
+  "利用轮廓的几何特性(面积、椭圆纵横比)作为全局签名可有效解决姿态估计问题",
+  "分支策略结合分辨率金字塔方法可实现全局最优解",
+  "方法在噪声环境下表现出良好的鲁棒性"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，需要预计算形状签名",
+  "对于对称形状，解可能不唯一",
+  "透视投影情况下需要深度先验信息"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "姿态估计与可靠性主线无交点，仅几何方法创新",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

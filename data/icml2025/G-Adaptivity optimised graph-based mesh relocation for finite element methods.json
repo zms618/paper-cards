@@ -1,0 +1,37 @@
+{
+ "title": "G-Adaptivity: optimised graph-based mesh relocation for finite element methods",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "用GNN预测网格点位置，直接最小化FEM误差，但训练成本高且泛化性存疑",
+ "innovations": [
+  "用GNN直接决定网格点位置，而非求解一套独立的非线性'网格'PDE，省去重网格开销",
+  "训练目标直接最小化FEM解误差，而非依赖插值/离散误差的间接估计",
+  "GNN架构使网格解空间与经典FEM对齐，可在给定计算预算下提升精度"
+ ],
+ "method_framework": "把计算网格建模为图，训练GNN输出网格点位置(r-自适应/网格重定位)；损失直接耦合PDE求解器(Firedrake)的FEM解误差，端到端优化网格几何以在自由度受限下最大化精度。",
+ "experiment_framework": "在多个PDE/FEM问题上，与经典r-adaptivity(求解额外非线性网格PDE)及已有ML代理方法对比，指标为给定自由度下的FEM解误差与重网格开销。",
+ "takeaways": [
+  "直接最小化解误差比依赖间接误差估计的经典r-自适应更直接高效",
+  "GNN天然契合网格图结构，可学到跨问题的网格重定位策略",
+  "免去单独求解网格PDE显著降低了自适应重网格化成本"
+ ],
+ "weaknesses": [
+  "训练需反复调用FEM求解器，前期训练成本与可扩展性未充分量化",
+  "泛化到不同PDE类型/边界条件的迁移能力证据有限",
+  "属科学计算/SciML方向，与可靠性、医学影像、多模态推理主线基本无关"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/G-Adaptivity optimised graph-based mesh relocation for finite element methods.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/G-Adaptivity optimised graph-based mesh relocation for finite element methods.pdf",
+ "raw_overall": 5.43,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

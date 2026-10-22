@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/STYLOS_Multi-View 3D Stylization with Single-Forward Gaussian Splatting.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/STYLOS_Multi-View 3D Stylization with Single-Forward Gaussian Splatting.pdf",
+ "title": "Stylos: Multi-View 3D Stylization with Single-Forward Gaussian Splatting",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "双通路Transformer单前向3DGS风格化，零样本但缺乏主线关联",
+ "innovations": [
+  "单前向3DGS框架做3D风格化，无需逐场景优化或预计算位姿",
+  "双通路Transformer：几何通路保留自注意力保真几何，风格通路用交叉注意力注入风格以保跨视图一致",
+  "提出基于体素的3D风格损失，将聚合场景特征对齐到风格统计量"
+ ],
+ "method_framework": "以参考风格图为条件，用双通路Transformer backbone预测3D高斯并注入风格：几何通路保留自注意力维持几何保真度，风格通路通过交叉注意力强制跨视图视觉一致；配合体素级3D风格损失对齐聚合特征与风格统计量。",
+ "experiment_framework": "在多个数据集上评测零样本3D风格化，对比需逐场景优化的NeRF/3DGS风格化方法；消融风格-内容融合块与体素风格损失；展示从单视图到大视角多视图的可扩展性。",
+ "takeaways": [
+  "单前向3DGS可在无逐场景优化下得到几何感知、视图一致的风格化结果",
+  "自/交叉注意力双通路有效解耦几何保持与风格注入",
+  "方法可泛化到未见类别、场景与风格"
+ ],
+ "weaknesses": [
+  "属图形学风格化方向，与主线（LLM可靠性/医学影像/多模态推理）无关联",
+  "无位姿输入下的几何精度与参考风格对齐程度缺乏与强基线的定量对比细节",
+  "34页篇幅中大规模多视图设置下的渲染效率开销未充分量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯图形学风格化，与可靠性主线无关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

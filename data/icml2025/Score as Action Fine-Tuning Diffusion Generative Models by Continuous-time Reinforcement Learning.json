@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Score as Action Fine-Tuning Diffusion Generative Models by Continuous-time Reinforcement Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Score as Action Fine-Tuning Diffusion Generative Models by Continuous-time Reinforcement Learning.pdf",
+ "title": "Score as Action: Fine-Tuning Diffusion Generative Models by Continuous-time Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.25
+ },
+ "one_line": "将扩散score匹配视为连续控制动作，用随机控制理论微调扩散模型。",
+ "innovations": [
+  "把扩散微调从离散时间RL改为连续时间随机控制问题，消除离散化误差。",
+  "核心思想将score匹配解释为控制/动作，建立与策略优化和连续时间正则化的联系。",
+  "提出新的连续时间策略优化框架，并利用扩散模型结构性质改进价值网络设计，且兼容高阶/黑箱求解器。"
+ ],
+ "method_framework": "扩散反向采样是一条随机微分轨迹。本文把每一时刻施加的score(漂移项)视为控制动作，把'用奖励模型对齐最终生成结果与prompt'写成终端代价的连续时间随机控制问题；由此可直接用连续时间RL的策略梯度/HJB思想微调score网络，无需像离散时间那样把去噪步切成MDP，从而避免步长引入的离散化误差。",
+ "experiment_framework": "在文本到图像生成任务上，以奖励模型(CLIP/ImageReward类)为终端奖励微调扩散模型；对比离散时间RL微调、无RL基线，指标为对齐评分与生成质量，做连续vs离散 formulation、价值网络结构的消融。",
+ "takeaways": [
+  "把score当动作的连续时间 formulation 可避免离散化误差，更贴合扩散的SDE本质。",
+  "连续时间框架为价值网络设计提供了利用扩散结构的新空间。"
+ ],
+ "weaknesses": [
+  "连续时间随机控制的求解与实现比离散MDP更复杂，工程门槛高。",
+  "收益主要体现在理论优雅与误差消除，相对成熟离散RLHF的实证增益需看具体表。",
+  "与可靠性/鲁棒推理主线关系较弱，属生成模型对齐方向。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/GPEN_Global Position Encoding Network for Enhanced Subgraph Representation Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/GPEN_Global Position Encoding Network for Enhanced Subgraph Representation Learning.pdf",
+ "title": "GPEN: Global Position Encoding Network for Enhanced Subgraph Representation Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "局部邻域子图学习改进，层次树编码+边界卷积",
+ "innovations": [
+  "用层次树结构编码每个节点相对于根节点的路径距离，系统刻画远处节点间的关系",
+  "提出边界感知卷积模块，选择性融合全局结构信息同时保持各子图独特结构",
+  "缓解全局信息过度聚合削弱子图判别力的问题"
+ ],
+ "method_framework": "现有子图学习偏重局部邻域。GPEN先构建层次树，按节点到根的路径距离做全局位置编码以捕捉多跳远距关系；再用边界感知卷积在聚合全局结构时区分子图内外节点，避免全局信息淹没子图特有结构。",
+ "experiment_framework": "在8个公开子图学习数据集上对比现有SOTA方法，报告子图分类/检索等任务指标，验证全局位置编码与边界感知卷积的贡献。",
+ "takeaways": [
+  "全局多跳结构对区分局部相似但来源不同的子图(如欺诈vs合法)关键",
+  "层次树全局位置编码有效刻画远距节点关系",
+  "边界感知卷积避免全局信息过度聚合损害判别力"
+ ],
+ "weaknesses": [
+  "图表示学习方向，与可靠性主线及医学影像、多模态推理无直接关联",
+  "层次树构建依赖根节点选择，成本与鲁棒性需权衡",
+  "前9页内在大规模图上的可扩展性分析有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.65,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

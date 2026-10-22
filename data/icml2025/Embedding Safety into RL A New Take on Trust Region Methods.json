@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Embedding Safety into RL A New Take on Trust Region Methods.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Embedding Safety into RL A New Take on Trust Region Methods.pdf",
+ "title": "Embedding Safety into RL: A New Take on Trust Region Methods",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.7
+ },
+ "one_line": "安全屏障函数改造TRPO，在Safety Gym上降低cost regret但增量创新有限。",
+ "innovations": [
+  "构造安全镜像函数Φ_C(d)=Φ_K(d)+Σβ_iϕ(b_i-c_i^Td)（ϕ=-log或x log x，在约束边界导数→∞），诱导出约束KL散度D_C，使信赖域{d:D_C(d_k||d)≤δ}对任意有限δ都落在安全occupancy集D_safe内。",
+  "给出可实现的surrogate散度D̄_C=D̄_KL+βD̄_ϕ(由cost advantage估计)，实现C-TRPO；并证明β↘0时退化为CPO、β→∞时最保守，建立与CPO的解析联系。",
+  "推导连续时间极限C-NPG(Theorem 4.4安全集不变性、Theorem 4.5全局收敛到最优安全面的Bregman投影)，对比惩罚/屏障法引入的偏差，给出无偏安全信赖域更新。"
+ ],
+ "method_framework": "标准TRPO用state-average KL(=负条件熵诱导的Bregman散度)作信赖域。本文把镜像函数加上屏障项ϕ(b-c^Td)，使散度在逼近约束边界时发散，从而把每次更新限制在安全集内。实际用cost advantage A_c^πk线性近似surrogate散度、共轭梯度解、回溯线搜索；若越界则做hysteresis恢复步(最小化cost)，b_H=0.8b。",
+ "experiment_framework": "Safety Gymnasium 8任务(4 Navigation+4 Locomotion)；9基线CPO/PCPO/CPPO-PID/PPO-Lag/TRPO-Lag/FOCOPS/CUP/IPO/P3O；10M环境步×5种子；ϕ=x log x、β=1、b_H=0.8b；指标final cost、归一化reward、cost regret(训练全程累计违反)，用25% IQM+分层bootstrap置信区间，含β/b_H/噪声cost消融。",
+ "takeaways": [
+  "C-TRPO在最后迭代安全(probably safe)且回报与SOTA(TRPO-Lag等)相当，而CPO/CUP在最后迭代仍越界。",
+  "C-TRPO全程cost regret显著低于高回报的Lagrangian类方法(TRPO-Lag/FOCOPS/CUP)，接近保守的PCPO；P3O regret最低但牺牲回报。",
+  "β≤1时回报基本不降，β过大因D̄_ϕ噪声大而回报退化，故推荐β=1；hysteresis恢复与修改后的预条件子共同减少绕约束边界的振荡/overshoot。"
+ ],
+ "weaknesses": [
+  "作者自承未分析有限样本性质，散度估计依赖cost advantage/value的精度；高维噪声cost下D̄_ϕ估计噪声大，β敏感。",
+  "只在Safety Gymnasium导航/ locomotion这类平均cost约束任务验证，未处理trajectory-wise/state-wise硬安全约束；仅控制域，非医学影像或多模态大模型落地。",
+  "本质是既有TRPO/CPO路线的几何改进，屏障函数来自优化领域，算法新颖性偏增量；无模型方法仍需在采样轨迹上估计cost，无法给有限样本硬保证。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

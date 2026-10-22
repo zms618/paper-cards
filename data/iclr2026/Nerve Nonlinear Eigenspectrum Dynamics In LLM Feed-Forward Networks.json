@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Nerve Nonlinear Eigenspectrum Dynamics In LLM Feed-Forward Networks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Nerve Nonlinear Eigenspectrum Dynamics In LLM Feed-Forward Networks.pdf",
+ "title": "NerVE: Nonlinear Eigenspectrum Dynamics in LLM Feed-Forward Networks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "谱分析揭示FFN非线性重注入方差规律，但小模型限制与因果证据不足。",
+ "innovations": [
+  "提出四个尺度不变、分布感知的FFN谱指标：谱熵(分散度)、参与比(有效维数)、特征值早期富集(头部偏重)、JS散度(分布漂移)，在线且显存高效追踪谱动态",
+  "核心洞察：FFN非线性把方差重新注入先前沉寂的特征模态(而非单纯重标定)，从而展平谱、提升潜空间有效利用率并促进特征解耦",
+  "系统刻画归一化方案、FFN权重几何、位置编码/激活函数、优化器(AdamW/Muon/Dion)如何调制这一方差重注入程度，并迁移到MLP-Mixer"
+ ],
+ "method_framework": "对FFN预激活与后激活表征做PCA特征分解，得到特征值谱；从谱上计算四个互补标量指标随训练步与网络深度的演化曲线。谱熵衡量谱分布均匀性，参与比衡量有效潜空间维数，早期富集衡量头部特征值主导程度，JS散度衡量相对参考谱的分布漂移；通过对比预/后激活谱分离非线性本身的作用。",
+ "experiment_framework": "在自训练小模型上验证：GPT-2 125M(CodeParrot 2.1B token)、LLaMA式71M/130M/250M/1.3B(C4, 1.1-2.2B token)、RoPE-GPT-2(OpenWebText 26B token)、优化器对比GPT-2 160M/350M(FineWeb)；RTX 3090。对比不同归一化/激活/位置编码/优化器配置下的谱签名，并与泛化表现关联。",
+ "takeaways": [
+  "后激活谱相对预激活谱谱熵与参与比显著上升、早期富集下降，证明非线性主动展平谱、唤醒沉寂方向",
+  "稳定的谱签名与模型泛化能力相关，且对架构/优化器设计选择可预测地响应，可作为超越试错的设计诊断工具",
+  "优化器选择会在深度上重新分配有效容量，AdamW/Muon/Dion呈现可区分的谱动态"
+ ],
+ "weaknesses": [
+  "全部模型为125M-1.3B自训练小模型，谱规律在百亿/千亿级真实生产LLM上是否成立未验证",
+  "谱签名与泛化的相关性多为观察性，缺乏因果干预证明改变谱必然改善泛化",
+  "工作属可解释性/表征分析，与鲁棒性、可信验证、幻觉抑制等落地可靠性主线关联较弱"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "谱分析工作与可靠性主线关联弱，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

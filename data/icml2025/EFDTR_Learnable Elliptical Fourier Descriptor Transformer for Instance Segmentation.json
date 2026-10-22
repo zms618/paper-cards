@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/EFDTR_Learnable Elliptical Fourier Descriptor Transformer for Instance Segmentation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/EFDTR_Learnable Elliptical Fourier Descriptor Transformer for Instance Segmentation.pdf",
+ "title": "EFDTR: Learnable Elliptical Fourier Descriptor Transformer for Instance Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "椭圆傅里叶描述符Transformer用于实例分割，提升多边形精度",
+ "innovations": [
+  "基于椭圆傅里叶描述符的顶点回归损失，解决边界点分配歧义",
+  "两阶段预测框架：全局轮廓建模与精细边界优化",
+  "基于相位域采样的目标分配策略，解决拓扑一致性问题"
+ ],
+ "method_framework": "EFDTR采用两阶段回归模型：第一阶段预测椭圆傅里叶描述符捕获全局拓扑，第二阶段通过相位域目标分配实现精确边界定位，结合Transformer的序列建模能力和可变形注意力机制",
+ "experiment_framework": "COCO数据集，与Mask R-CNN、Mask DINO等像素级方法和DeepSnake、PolarMask等多边形方法对比，使用AP、AP50、AP75等指标",
+ "takeaways": [
+  "相位信息在解决多边形回归歧义问题中的关键作用",
+  "简洁的一阶傅里叶描述符比高阶项更有效，能更好地捕获全局形状"
+ ],
+ "weaknesses": [
+  "仅评估COCO数据集，缺乏在医学影像等特定领域的验证",
+  "多边形连接策略可能引入额外误差，特别是在复杂场景中"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

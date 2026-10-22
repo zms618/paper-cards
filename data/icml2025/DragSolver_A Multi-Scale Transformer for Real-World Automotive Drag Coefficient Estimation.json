@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DragSolver_A Multi-Scale Transformer for Real-World Automotive Drag Coefficient Estimation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DragSolver_A Multi-Scale Transformer for Real-World Automotive Drag Coefficient Estimation.pdf",
+ "title": "DragSolver: A Multi-Scale Transformer for Real-World Automotive Drag Coefficient Estimation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "多尺度Transformer估计风阻系数，MC dropout提供不确定性，但校准质量存疑。",
+ "innovations": [
+  "多尺度特征提取同时捕捉整车外形与精细局部几何(后视镜/轮子等湍流细节)",
+  "异质尺度归一化处理不同尺寸/密度的网格，表面引导门控抑制与外部气动无关的内部结构",
+  "用蒙特卡洛dropout做认知不确定性估计，支撑风险感知的设计决策"
+ ],
+ "method_framework": "对3D车体网格做多尺度Transformer编码：先异质归一化统一不同网格，表面引导门控滤除座椅/仪表台等内部结构，多尺度模块兼顾全局外形与局部细节，输出风阻系数Cd；推理时用MC dropout多次前向给出预测均值与认知不确定性。",
+ "experiment_framework": "在DrivAerNet/DrivAerNet++/DrivAerML三个工业级数据集上评测，相对L2误差平均降低58.7%，对比CFD代理模型与既有深度学习方法，报告精度、泛化与推理时延。",
+ "takeaways": [
+  "多尺度+表面门控能显著提升真实车型Cd估计精度与跨数据集泛化",
+  "相对CFD可实现生产级几何的实时Cd估计",
+  "MC dropout不确定性使设计者能识别高风险预测"
+ ],
+ "weaknesses": [
+  "落地域为汽车气动仿真而非医学影像/多模态大模型，主线相关性中等",
+  "MC dropout作为不确定性估计的校准质量未在前9页用校准曲线/覆盖度验证",
+  "训练数据是否覆盖极端造型/新概念车的外推可靠性存疑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

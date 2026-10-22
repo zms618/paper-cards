@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Matting Anything 2_towards Video Matting for Anything.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Matting Anything 2_towards Video Matting for Anything.pdf",
+ "title": "Matting Anything 2: Towards Video Matting for Anything",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 4.9
+ },
+ "one_line": "双模式解码器与记忆隔离机制提升视频抠像，但泛化与时序稳定性存疑",
+ "innovations": [
+  "提出可提示双模式解码器 PDD，同时预测分割掩码与高质量三分图(trimap)，用三分图引导提升泛化",
+  "提出记忆可分离孪生机制 MSS，循环地将三分图预测与相互干扰的掩码记忆隔离，显著增强透明物体(火/烟)时序稳定性",
+  "构建自然物体视频抠像新基准，覆盖比人像更丰富的多样物体，验证通用化能力"
+ ],
+ "method_framework": "以点/框/掩码灵活提示指定目标；PDD 同时输出分割掩码与三分图；MSS 用循环结构在帧间传递时把三分图预测与掩码记忆解耦，避免透明物体预测漂移，从而跨帧稳定提取前景 alpha。",
+ "experiment_framework": "数据：新构建的 Natural Object Video Matting 基准；基线：半监督 VOS 与既有视频抠像方法；提示：点/框/掩码；指标：抠像精度与跨物体泛化、时序一致性。",
+ "takeaways": [
+  "现有视频抠像多局限人像且依赖首帧掩码，MAM2 以框/点即可处理透明与复杂物体",
+  "三分图引导与掩码记忆隔离分别改善泛化与透明物体时序一致性",
+  "新基准揭示自然物体视频抠像泛化仍是主要短板"
+ ],
+ "weaknesses": [
+  "新基准规模与标注成本未充分公开透明，跨物体泛化的长尾覆盖待验证",
+  "MSS 的循环记忆在长视频上的累积误差与显存开销未充分讨论",
+  "与医学影像/多模态推理等可靠性主线无关，属视觉抠像应用"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "纯视觉抠像应用，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

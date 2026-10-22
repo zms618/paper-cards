@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/When Foundation Models ONE-LINERS Limitations and Future Directions for Time Series Anomaly Detection.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/When Foundation Models ONE-LINERS Limitations and Future Directions for Time Series Anomaly Detection.pdf",
+ "title": "When Foundation Models are One-Liners: Limitations and Future Directions for Time Series Anomaly Detection",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "系统评估TSFM异常检测性能，发现与简单基线无差异，挑战核心假设",
+ "innovations": [
+  "首次系统检验时间序列基础模型（TSFM）在异常检测中的有效性，覆盖MOMENT、Chronos、TimesFM、Time-MoE、TSPulse五大家族",
+  "证明基于重构/预测误差的异常检测核心假设（异常更难重构/预测）对TSFM不成立，这是现有方法的根本性局限",
+  "提出三条替代方向：多时间尺度预测、隐藏表征空间异常检测、端到端微调"
+ ],
+ "method_framework": "对5类TSFM分别使用不同模型规模和上下文窗口长度（64/256/512），以重构误差或预测误差作为异常分数进行异常检测。与简单一行基线（滑动窗口方差、平方差分）对比，检验TSFM是否真正带来额外价值。",
+ "experiment_framework": "在多个时间序列异常检测数据集上评估5类TSFM（每类至少两个模型规模），使用不同上下文窗口长度。基线方法为滑动窗口方差（对应重构类）和平方差分（对应预测类）。指标为异常检测F1等标准指标。",
+ "takeaways": [
+  "当前TSFM在异常检测上的表现与简单统计基线无显著差异，模型规模和上下文长度增大也不带来本质提升",
+  "重构/预测误差作为异常分数的核心假设不成立：异常点并不一定比正常点更难重构或预测",
+  "需要跳出\"误差即异常\"的框架，探索表征空间检测或端到端微调等新范式"
+ ],
+ "weaknesses": [
+  "仅评估单变量时间序列，多变量场景下TSFM是否仍如此表现未知",
+  "仅测试了零样本/微调前的性能，端到端微调后的提升幅度未充分验证",
+  "异常检测数据集本身存在标签噪声和评估争议，结论可能受数据集质量影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.03,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "时间序列异常检测与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

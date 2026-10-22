@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Non-IID_Mitigating Non-IID Drift In ZEROTH-Order Federated LLM Fine-Tuning with Transferable Sparsity.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Non-IID_Mitigating Non-IID Drift In ZEROTH-Order Federated LLM Fine-Tuning with Transferable Sparsity.pdf",
+ "title": "Mitigating NON-IID Drift In ZEROTH-ORDER FED-ERATED LLM FINE-TUNING with Transferable Sparsity",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "稀疏同步方法缓解联邦LLM非独立同分布漂移，实验局限文本数据",
+ "innovations": [
+  "可转移稀疏性参数选择机制",
+  "高频率同步降低误差下限",
+  "GradIP现象识别数据异质性",
+  "虚拟路径客户端选择策略"
+ ],
+ "method_framework": "MEERKAT使用预训练数据识别敏感参数(0.1%稀疏度)，通过零阶优化进行稀疏更新，结合高频率同步减轻非独立同分布漂移；MEERKAT-VP利用GradIP现象识别极端非独立同分布客户端并应用早停策略。",
+ "experiment_framework": "在SST2、AG's News等数据集上测试，使用Dirichlet分布模拟非独立同分布场景，比较MEERKAT与Full-FedZO、Weight Magnitude、LoRA-FedZO等方法在不同本地步数下的性能。",
+ "takeaways": [
+  "稀疏性可显著降低通信开销并提升性能",
+  "高频率同步可有效缓解非独立同分布问题",
+  "GradIP现象可作为数据异质性的有效指标"
+ ],
+ "weaknesses": [
+  "仅依赖预训练数据确定敏感参数可能限制特定任务性能",
+  "GradIP现象的泛化性需要更多验证",
+  "实验主要在文本数据上进行，缺乏多模态验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "联邦学习可靠性方法，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Adversarial Robustness in Two-Stage Learning-to-Defer Algorithms and Guarantees.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adversarial Robustness in Two-Stage Learning-to-Defer Algorithms and Guarantees.pdf",
+ "title": "Adversarial Robustness in Two-Stage Learning-to-Defer: Algorithms and Guarantees",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "研究两阶段学习延迟系统的对抗鲁棒性，提出防御算法与理论保证。",
+ "innovations": [
+  "首次系统研究两阶段L2D系统的对抗鲁棒性，定义了两类新攻击：无目标攻击（破坏最优分配）和有目标攻击（强制查询路由到特定agent）",
+  "提出SARD防御算法：基于一族凸代理损失，证明其Bayes一致性和(R,G)一致性，保证跨分类/回归/多任务场景",
+  "揭示L2D系统特有的脆弱性：攻击者不仅影响预测结果，还可操纵任务分配造成专家过载或错误路由"
+ ],
+ "method_framework": "两阶段L2D系统中，每个输入被分配给主模型或人类专家。论文首先形式化两类对抗攻击：无目标攻击扰乱最优分配，有目标攻击将查询重定向到指定agent。然后提出SARD：在经验风险最小化框架中使用鲁棒化的交叉熵代理损失，通过凸优化求解。理论上证明了代理损失的Bayes一致性和鲁棒一致性。",
+ "experiment_framework": "设置：分类、回归、多任务三类场景。攻击：PGD等对抗扰动方法，针对L2D的无目标和有目标攻击。基线：标准L2D（无防御）。指标：干净准确率、鲁棒准确率（攻击下）、分配策略的鲁棒性。",
+ "takeaways": [
+  "L2D系统面临比传统分类更复杂的对抗威胁——攻击目标不仅是预测错误，还有任务分配操纵",
+  "SARD在保持干净性能的同时显著提升对抗鲁棒性，理论保证跨多种任务设置",
+  "L2D的安全部署需要专门的鲁棒性考虑，不能仅依赖传统对抗训练"
+ ],
+ "weaknesses": [
+  "仅在图像分类等标准benchmark验证，实际医疗等高 stakes 场景的部署效果未验证",
+  "SARD的凸优化在大规模深度模型上的可扩展性未充分讨论",
+  "攻击模型假设白盒访问，黑盒攻击场景的鲁棒性如何未深入分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "两阶段学习延迟系统的对抗鲁棒性直接关联可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

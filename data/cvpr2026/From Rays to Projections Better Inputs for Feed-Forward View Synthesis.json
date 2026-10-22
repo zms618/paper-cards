@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/From Rays to Projections Better Inputs for Feed-Forward View Synthesis.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/From Rays to Projections Better Inputs for Feed-Forward View Synthesis.pdf",
+ "title": "From Rays to Projections Better Inputs for Feed-Forward View Synthesis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "投影条件化提升视图合成，但依赖外部模型且计算开销大",
+ "innovations": [
+  "投影条件化替代Plücker射线表示",
+  "掩码自编码预训练策略",
+  "视图一致性基准"
+ ],
+ "method_framework": "将相机参数转换为目标视图点云投影图像，通过2D图像到图像翻译实现视图合成，结合掩码自编码预训练减少对3D标注依赖",
+ "experiment_framework": "RealEstate10K数据集，对比LVSM/RayZer等基线，使用SSIM/LPIPS/PSNR指标，评估四种相机变换下的鲁棒性",
+ "takeaways": [
+  "投影条件化提供SE(3)不变性表示",
+  "2D图像域操作支持掩码自编码预训练",
+  "点云投影作为几何线索增强视图一致性"
+ ],
+ "weaknesses": [
+  "依赖外部深度估计模型",
+  "点云投影可能丢失部分几何细节",
+  "计算复杂度较高"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视图合成与可靠性主线无实质交点，仅2D图像操作有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

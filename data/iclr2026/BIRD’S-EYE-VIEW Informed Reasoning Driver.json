@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/BIRD’S-EYE-VIEW Informed Reasoning Driver.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/BIRD’S-EYE-VIEW Informed Reasoning Driver.pdf",
+ "title": "BIRD’S-EYE-VIEW Informed Reasoning Driver",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "BEV地图与VLM结合的分层框架，提升自动驾驶长尾场景性能",
+ "innovations": [
+  "仅使用单帧BEV地图作为VLM输入",
+  "使用相对关键点而非完整轨迹传达高层驾驶意图",
+  "设计专用数据集和加权SFT损失提升VLM空间定位精度"
+ ],
+ "method_framework": "BIRDriver采用分层架构，结合VLM和运动规划器。VLM接收BEV地图、系统提示和用户提示，生成关键点，经编码后输入运动规划器生成最终轨迹。",
+ "experiment_framework": "nuPlan数据集，Test14-random/hard和InterPlan基准，对比规则、模仿学习、LLM和VLM-IL方法，使用CLS-NR和CLS-R指标评估",
+ "takeaways": [
+  "BEV表示可作为VLM与自动驾驶系统的有效接口",
+  "关键点表示法比完整轨迹更高效地传达高层意图",
+  "加权SFT损失可显著提升VLM的数值预测精度"
+ ],
+ "weaknesses": [
+  "仅使用单帧BEV地图可能丢失时序信息",
+  "关键点数量自适应调整可能导致规划不一致",
+  "实验未充分验证不同VLM基模型的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "自动驾驶落地域扎实，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

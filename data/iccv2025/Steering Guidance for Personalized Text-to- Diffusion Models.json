@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Steering Guidance for Personalized Text-to- Diffusion Models.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Steering Guidance for Personalized Text-to- Diffusion Models.pdf",
+ "title": "Steering Guidance for Personalized Text-to- Diffusion Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "权重插值平衡个性化扩散模型主题与文本保真度",
+ "innovations": [
+  "提出个性化引导(PG)方法，解决个性化扩散模型中目标分布对齐与文本编辑性之间的权衡",
+  "利用预训练与微调模型间的权重插值动态控制弱模型的'遗忘程度'",
+  "无需额外计算开销即可在推理时调整主题与文本保真度的平衡"
+ ],
+ "method_framework": "通过在预训练模型与微调模型间进行权重插值(θω = ωθ' + (1-ω)θ)创建弱模型，结合分类器自由引导(CFG)框架，实现动态平衡主题保真度与文本对齐的个性化引导。",
+ "experiment_framework": "ViCo数据集，SD1.5/2.1和SANA模型，DB-LoRA/DB-LoRA+TI/ClassDiffusion微调方法，DINO/CLIP-I/CLIP-T指标评估",
+ "takeaways": [
+  "权重插值参数ω可作为控制主题与文本保真度的有效调节器",
+  "个性化引导方法可无缝集成到多种微调策略中，显著提升主题保真度同时保持文本对齐"
+ ],
+ "weaknesses": [
+  "方法在不同个性化技术上的效果表现不一致，对ClassDiffusion效果更好",
+  "未充分探讨方法在更复杂场景下的泛化能力，如多概念同时个性化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "个性化扩散模型与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

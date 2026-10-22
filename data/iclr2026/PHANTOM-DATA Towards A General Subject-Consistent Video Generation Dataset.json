@@ -1,0 +1,41 @@
+{
+ "title": "Phantom-Data: Towards a General Subject-Consistent Video Generation Dataset",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 5.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "构建百万级跨对视频生成数据集，缓解copy-paste问题但算法创新有限。",
+ "innovations": [
+  "首个通用跨对主体到视频一致性数据集：参考主体取自与目标视频不同场景，解耦身份与背景/上下文。",
+  "三阶段构建流程：通用且输入对齐的主体检测、从5300万视频/30亿图像做大规模跨上下文主体检索、先验引导身份验证。",
+  "同时覆盖单参考与多参考样本，呈现同一主体在不同上下文下的多样情境。"
+ ],
+ "method_framework": "先对参考图像做通用主体检测并对齐输入提示；再在海量视频/图像库中跨上下文检索同一主体的不同场景片段；最后用先验引导的身份验证筛选上下文变化下仍视觉一致的对，组成约100万跨对训练数据。",
+ "experiment_framework": "用Phantom-Data训练主体到视频模型；对比传统in-pair训练；指标为提示对齐(prompt alignment)、视觉质量与身份一致性；在单/多参考设定下评测，报告提示对齐与画质提升且身份一致性持平in-pair基线。",
+ "takeaways": [
+  "in-pair训练把身份与背景纠缠导致copy-paste，跨对数据可显著改善提示对齐。",
+  "先验引导身份验证是保证跨上下文配对一致性的关键环节。",
+  "大规模跨对数据集在保持身份一致性的同时提升视频生成画质。"
+ ],
+ "weaknesses": [
+  "为数据集构建工作，方法贡献主要在工程pipeline与规模，算法新颖性有限。",
+  "身份验证依赖既有检测器/验证模型，错误累积可能引入身份不一致噪声对。",
+  "数据集来源为大规模爬取，主体隐私/版权与长尾类别覆盖问题在正文前9页讨论有限。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PHANTOM-DATA Towards A General Subject-Consistent Video Generation Dataset.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PHANTOM-DATA Towards A General Subject-Consistent Video Generation Dataset.pdf",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "视频生成数据集构建，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

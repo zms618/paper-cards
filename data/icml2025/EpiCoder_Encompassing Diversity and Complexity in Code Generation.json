@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/EpiCoder_Encompassing Diversity and Complexity in Code Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/EpiCoder_Encompassing Diversity and Complexity in Code Generation.pdf",
+ "title": "EpiCoder: Encompassing Diversity and Complexity in Code Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.75
+ },
+ "one_line": "特征树代码合成框架，微调模型提升基准性能",
+ "innovations": [
+  "以分层代码特征构成的特征树为核心的数据合成框架，突破以代码片段为种子的复杂度上限",
+  "特征树从原始数据构建并迭代精化，提取更多样特征以捕获复杂代码模式",
+  "通过控制采样子树深度/广度精确控制生成代码复杂度，覆盖函数级到多文件场景"
+ ],
+ "method_framework": "EpiCoder 从原始代码提取高层抽象的分层代码特征构成特征树并迭代扩展；采样不同深度/广度的子树即可合成不同复杂度与多样性的指令数据，用于微调基座代码模型(Qwen2.5-Coder)得到EpiCoder系列。",
+ "experiment_framework": "在函数级与文件级代码生成基准(含XFileDep等)上评测EpiCoder-Qwen-7B等系列；对比同类微调方法；报告基准SOTA，并展示仓库级代码数据合成潜力。",
+ "takeaways": [
+  "特征树合成比以代码片段为种子能获得更高复杂度与多样性的指令数据",
+  "EpiCoder系列在多个函数级与文件级基准达到SOTA",
+  "该合成路线对仓库级代码数据合成有显著潜力"
+ ],
+ "weaknesses": [
+  "特征树构建依赖启发式，合成数据质量的自动评估仍以pass@k为主",
+  "主要在公开代码基准验证，真实大型仓库级任务证据有限",
+  "与主线(可靠性/医学影像/多模态大模型推理)无关，属代码LLM数据合成"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

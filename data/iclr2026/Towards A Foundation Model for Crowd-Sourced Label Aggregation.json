@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards A Foundation Model for Crowd-Sourced Label Aggregation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards A Foundation Model for Crowd-Sourced Label Aggregation.pdf",
+ "title": "Towards a Foundation Model for Crowd-Sourced Label Aggregation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "众包标签聚合基础模型，用GNN和合成数据预训练实现跨数据集迁移。",
+ "innovations": [
+  "针对传统聚合方法逐数据集拟合参数、不可迁移的问题，构建可跨数据集零样本迁移的聚合基础模型",
+  "用显式建模worker/task/label option的二分图GNN，配合size-invariant初始化与注意力消息传递，捕捉众包结构异质性",
+  "在领域随机化合成数据上预训练学习通用集体智能规律；单一固定模型在22个真实基准上匹配/超越定制方法，并支持工人评估、任务分配等下游"
+ ],
+ "method_framework": "把众包标注建模为worker-task二分图：节点表示工人/任务/标签选项，边表示标注行为。用size-invariant初始化适配任意规模数据集，注意力消息传递聚合异质工人质量信号；在大规模领域随机化合成数据上预训练，使模型学到可迁移的集体智能规律而非数据集特定参数。",
+ "experiment_framework": "在22个真实众包基准上评测；对比多数投票(Dawid-Skene等)概率方法、深度学习方法与HyperLM；指标为推断真值的准确率与效率；并验证其表征在工人评估、任务分配等下游任务的可用性。",
+ "takeaways": [
+  "标签聚合可像基础模型一样跨数据集迁移，无需逐数据集重训",
+  "显式worker-task建模+真实合成数据是跨域泛化的关键",
+  "学到的表征可复用于工人评估与任务分配，不只聚合标签"
+ ],
+ "weaknesses": [
+  "依赖领域随机化合成数据预训练，合成分布与极端真实噪声模式(如恶意工人)的对齐仍可能有差距",
+  "22个基准多为文本分类众包，医学/等高风险标注场景下的可靠性未验证",
+  "属众包学习方向，与医学影像诊断、多模态推理落地域无直接关联"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "众包聚合方法，无可靠性主线直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

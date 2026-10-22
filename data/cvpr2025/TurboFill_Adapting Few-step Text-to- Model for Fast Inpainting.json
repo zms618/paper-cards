@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/TurboFill_Adapting Few-step Text-to- Model for Fast Inpainting.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/TurboFill_Adapting Few-step Text-to- Model for Fast Inpainting.pdf",
+ "title": "TurboFill Adapting Few-step Text-to- Model for Fast Inpainting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "3步对抗训练适配器加速少步图像修复，但训练成本高且泛化分析不足",
+ "innovations": [
+  "3步对抗训练方案",
+  "直接在少步文本到图像模型上训练修复适配器",
+  "DilationBench和HumanBench新基准"
+ ],
+ "method_framework": "结合慢速生成器、快速生成器和扩散判别器的3步对抗训练，在少步DMD2模型上训练修复适配器",
+ "experiment_framework": "DilationBench和HumanBench数据集，对比BrushNet等基线，使用Q-Align、CLIPIQA+、TOPIQ和CLIP Similarity指标",
+ "takeaways": [
+  "对抗训练可提升少步扩散模型质量",
+  "适配器设计可保持背景区域一致性",
+  "新基准更贴近真实用户场景"
+ ],
+ "weaknesses": [
+  "训练仍需8个A100 GPU 50小时",
+  "未充分讨论模型在不同图像风格上的泛化能力",
+  "未提供模型在极端大/小掩码上的性能分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "图像修复技术不在可靠性主线，但适配器设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

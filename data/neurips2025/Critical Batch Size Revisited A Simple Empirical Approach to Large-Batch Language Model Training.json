@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Critical Batch Size Revisited A Simple Empirical Approach to Large-Batch Language Model Training.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Critical Batch Size Revisited A Simple Empirical Approach to Large-Batch Language Model Training.pdf",
+ "title": "Critical Batch Size Revisited: A Simple Empirical Approach to Large-Batch Language Model Training",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "分支训练测量临界批大小，预热策略减少43%梯度步骤",
+ "innovations": [
+  "直接测量临界批大小的分支训练方法",
+  "发现批大小随训练的演变规律",
+  "基于临界批大小的批大小预热策略"
+ ],
+ "method_framework": "通过分支训练直接测量临界批大小，避免了对梯度噪声尺度的强假设依赖，仅需少量额外训练即可估计。",
+ "experiment_framework": "OLMo 1B和7B模型，不同训练检查点，比较梯度噪声尺度与直接测量的临界批大小，验证批大小预热策略。",
+ "takeaways": [
+  "临界批大小随训练从0快速增长后趋于平稳",
+  "批大小预热策略可减少43%梯度步骤而不损失性能"
+ ],
+ "weaknesses": [
+  "局部恢复假设的验证不足",
+  "批大小预热策略的阈值选择较为主观",
+  "未探索不同优化器的影响"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

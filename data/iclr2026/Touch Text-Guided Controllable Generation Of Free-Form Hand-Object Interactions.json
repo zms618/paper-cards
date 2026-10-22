@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Touch Text-Guided Controllable Generation Of Free-Form Hand-Object Interactions.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Touch Text-Guided Controllable Generation Of Free-Form Hand-Object Interactions.pdf",
+ "title": "TOUCH: Text-Guided Controllable Generation of Free-Form Hand-Object Interactions",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 4.9
+ },
+ "one_line": "提出非抓握HOI生成任务，构建数据集并设计三阶段扩散模型。",
+ "innovations": [
+  "提出Free-Form HOI生成新任务，突破以往以抓握为中心的局限，覆盖推/戳/旋转等非抓握细粒度意图",
+  "构建WildO2：首个大规模野外in-the-wild 3D HOI数据集，含4.4k交互/92意图/610物体类别及细粒度语义标注",
+  "TOUCH三阶段多层次扩散：显式接触建模为条件，再用接触一致性与物理约束后处理精修"
+ ],
+ "method_framework": "以细粒度文本意图为条件，用多层次扩散模型生成多样化手姿；显式建模手-物接触作为条件信号，随后施加接触一致性与物理约束优化，确保生成的非抓握交互物理合理。",
+ "experiment_framework": "在自建WildO2及HOI4D/OakInk等数据集上评测；对比以抓握为中心的HOI生成方法；指标为多样性、可控性与物理合理性(接触/穿透)；含主观与定量评估。",
+ "takeaways": [
+  "以往HOI生成受抓握中心先验约束，无法表达日常丰富的非抓握交互",
+  "野外in-the-wild数据(含非抓握动作)是训练自由形态HOI的关键",
+  "显式接触建模+物理后处理可在保持多样性的同时保证物理合理"
+ ],
+ "weaknesses": [
+  "WildO2来自互联网视频，3D标注精度与噪声水平未充分量化，可能影响生成质量上限",
+  "物理约束后处理为事后精修，与生成过程的端到端一致性未充分分析",
+  "属3D手-物交互生成方向，与可靠性主线及医学影像、多模态推理落地域无关"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "3D手-物交互生成与可靠性主线及落地域无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

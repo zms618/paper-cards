@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/BRAIN-IT Reconstruction from Fmri via Brain-Interaction Transformer.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/BRAIN-IT Reconstruction from Fmri via Brain-Interaction Transformer.pdf",
+ "title": "BRAIN-IT: Reconstruction from Fmri via BRAIN-INTERACTION Transformer",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "脑交互Transformer实现fMRI图像重建，双分支提升少样本迁移",
+ "innovations": [
+  "脑交互Transformer(BIT)将功能相似的脑体素聚类为共享表征",
+  "双分支重建：语义特征引导扩散模型，VGG特征通过DIP重建粗略布局",
+  "仅需1小时fMRI数据即可达到40小时训练的SOTA效果"
+ ],
+ "method_framework": "BIT将fMRI信号映射为语义和VGG特征，双分支重建：低级分支通过DIP从VGG特征生成粗略图像，高级分支用语义特征引导扩散模型细化图像。",
+ "experiment_framework": "NSD数据集(8个主体，73,000图像-fMRI对)，评估低级(PixCorr,SSIM)和高级(Alex,CLIP)指标，对比MindEye2等SOTA方法。",
+ "takeaways": [
+  "功能聚类共享表征可提升跨主体迁移能力",
+  "双分支结构结合了扩散模型的生成能力和DIP的结构保真度"
+ ],
+ "weaknesses": [
+  "方法依赖预训练的脑编码器，可能限制泛化能力",
+  "实验仅限于自然图像，未见复杂场景验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "医学影像重建，双分支结构有可靠性设计价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

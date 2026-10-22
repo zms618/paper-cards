@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Floxels Fast Unsupervised Voxel Based Scene Flow Estimation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Floxels Fast Unsupervised Voxel Based Scene Flow Estimation.pdf",
+ "title": "Floxels Fast Unsupervised Voxel Based Scene Flow Estimation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "体素网格与多帧损失提升场景流速度，但分辨率受限",
+ "innovations": [
+  "用简单体素网格替代MLP提高收敛速度",
+  "多帧距离变换损失解决遮挡问题",
+  "聚类一致性损失解决跨物体点匹配问题"
+ ],
+ "method_framework": "Floxels使用3D体素网格表示场景流场，通过三线性插值计算点运动，结合多帧距离变换损失和聚类一致性损失，实现快速收敛的高质量场景流估计。",
+ "experiment_framework": "在Argoverse 2、nuScenes和Argoverse 1数据集上评估，使用mdnEPE、EPE、Acc5、Acc10和角度误差作为指标，与NSFP、FNSF、EulerFlow等基线方法比较。",
+ "takeaways": [
+  "体素网格替代MLP可显著提高收敛速度",
+  "多帧约束和聚类一致性损失能有效解决遮挡和错误关联问题"
+ ],
+ "weaknesses": [
+  "体素大小限制了空间分辨率",
+  "DBSCAN参数选择可能影响聚类效果",
+  "未在极端场景下充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "场景流估计与可靠性主线无直接关联，属常规计算机视觉任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

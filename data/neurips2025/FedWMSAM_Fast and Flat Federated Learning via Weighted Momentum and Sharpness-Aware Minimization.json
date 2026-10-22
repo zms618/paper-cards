@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/FedWMSAM_Fast and Flat Federated Learning via Weighted Momentum and Sharpness-Aware Minimization.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/FedWMSAM_Fast and Flat Federated Learning via Weighted Momentum and Sharpness-Aware Minimization.pdf",
+ "title": "FedWMSAM: Fast and Flat Federated Learning via Weighted Momentum and Sharpness-Aware Minimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "FedWMSAM整合动量与SAM，解决联邦学习中的曲率失配问题。",
+ "innovations": [
+  "动量引导的全局扰动对齐局部SAM方向与全局下降几何",
+  "余弦相似度自适应权重实现早期动量/后期SAM两阶段训练",
+  "个性化动量与SCAFFOLD校正项结合减少局部-全局漂移"
+ ],
+ "method_framework": "FedWMSAM整合个性化动量与SAM，通过服务器聚合动量构建全局扰动方向，使用单反向传播实现高效SAM近似，并通过余弦相似度动态调整动量与SAM权重。",
+ "experiment_framework": "在Fashion-MNIST、CIFAR-10/100和OfficeHome数据集上评估，与FedAvg、FedCM、SCAFFOLD、FedSAM、MoFedSAM等基线比较，使用Dirichlet和病态划分测试异构性下的性能。",
+ "takeaways": [
+  "动量作为全局几何载体可有效指导局部SAM方向",
+  "余弦相似度自适应权重可实现早期加速收敛后期平坦优化",
+  "个性化动量与校正项结合可减少局部-全局漂移"
+ ],
+ "weaknesses": [
+  "理论分析中扰动诱导方差σ²ρ的依赖关系在实际应用中的验证不足",
+  "方法在极度异构数据集上的泛化能力需要进一步验证",
+  "自适应权重调整的λ参数选择可能需要针对不同任务进行调优"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

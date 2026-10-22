@@ -1,0 +1,37 @@
+{
+ "key": "iclr2026/What Generative Search Engines Like how To Optimize Web Content Cooperatively.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/What Generative Search Engines Like how To Optimize Web Content Cooperatively.pdf",
+ "title": "What Generative Engines Like and How to Optimize Web Content Cooperatively",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "LLM提取规则改写网页，提升搜索可见度但保持效用",
+ "innovations": [
+  "首个系统提取生成式引擎内容偏好规则的框架：通过让LLM对比解释不同可见度文档对的差异，自动归纳出可操作的偏好规则",
+  "构建两种GEO模型：AutoGEOAPI（规则直接注入提示，零训练即用）和AutoGEOMini（以规则为奖励信号GRPO训练的紧凑模型，成本仅为API版的0.0071倍）",
+  "新贡献两个基准：Researchy-GEO（科研查询）和E-commerce（电商查询），并引入生成式引擎效用（GEU）评估改写是否损害回答质量"
+ ],
+ "method_framework": "三步流水线：(1)偏好规则发现——用前沿LLM对比可见度不同的文档对，解释偏好差异，提取并合并为简洁规则；(2)规则引导GEO模型构建——直接将规则作为提示上下文构建AutoGEOAPI，或用规则作为RL奖励信号训练AutoGEOMini；(3)协同评估——同时衡量内容牵引力提升和搜索效用保持。",
+ "experiment_framework": "在GEO-Bench及两个新基准（Researchy-GEO、E-commerce）上评估。生成式引擎涵盖Gemini、Claude、GPT等主流LLM。指标包括GEO牵引力指标（引用率、位置等）和生成式引擎效用（回答质量、可靠性）。",
+ "takeaways": [
+  "不同LLM生成式引擎有显著差异化的内容偏好规则，按引擎定制规则比通用规则效果更好",
+  "AutoGEO平均提升35.99%的GEO指标，同时保持搜索效用不下降",
+  "紧凑模型AutoGEOMini以极低的成本（约API版的1/140）达到接近的优化效果"
+ ],
+ "weaknesses": [
+  "偏好规则提取依赖LLM自身的解释能力，可能存在自利偏差（LLM偏好与自己风格相似的内容）",
+  "仅评估英文网页内容，多语言场景下的偏好规则和优化效果未知",
+  "GEO的长期生态影响（如大量内容被优化后是否导致生成引擎退化）未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

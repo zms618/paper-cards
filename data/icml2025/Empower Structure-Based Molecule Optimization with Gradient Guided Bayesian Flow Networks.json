@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Empower Structure-Based Molecule Optimization with Gradient Guided Bayesian Flow Networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Empower Structure-Based Molecule Optimization with Gradient Guided Bayesian Flow Networks.pdf",
+ "title": "Empower Structure-Based Molecule Optimization with Gradient Guided Bayesian Flow Networks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6.1
+ },
+ "one_line": "BFN后验空间梯度引导分子优化，成功率51.3%但依赖粗糙代理指标",
+ "innovations": [
+  "把梯度引导从噪声隐变量y转移到BFN的低方差后验信念θ上，对连续坐标θx与离散类型θv同时推导引导转移核，使离散原子类型仍在单纯形上、无需高斯松弛或分类器高斯假设。",
+  "提出backward correction采样策略：用当前优化后的ˆx*回溯修正过去k步的贝叶斯更新，通过滑窗大小k在分子空间探索与引导信号利用间权衡，缓解跨模态/跨步梯度不一致。",
+  "在保持SE(3)-等变前提下把框架推广到约束优化(R-group redesign/growing/scaffold hopping)与多目标优化，无需昂贵oracle模拟即可梯度引导。"
+ ],
+ "method_framework": "以BFN的sender/receiver消息传递为生成过程，引导分布π(θi|θi-1)∝pϕ(θi|θi-1)·exp(-sE(θi,t))。连续坐标用高斯sender更新θx，离散类型用多项计数sender在单纯形上重加权θv；一阶Taylor展开得引导转移核。backward correction把过去k步的pU用优化后ˆx重新聚合，形成滑窗修正的贝叶斯更新。",
+ "experiment_framework": "CrossDocked2020(100K训练pose/100测试蛋白)；基线分生成式(AR/GraphBP/Pocket2Mol/FLAG/DiffSBDD/TargetDiff/DecompDiff/IPDiff/MolCRAFT)、oracle式(AutoGrow4/RGA/DecompOpt)、梯度式(TAGMol)；指标Vina Score/Min/Dock、QED、SA、多样性、Success Rate(Vina<-8.18,QED>0.25,SA>0.59)；并做约束优化(R-group/scaffold hopping)与联合/单模态引导、backward correction消融。",
+ "takeaways": [
+  "MolJO成功率51.3%、Vina Dock -9.05、SA 0.78，比梯度对手TAGMol(11.1%)高约4倍；配top-of-N后达70.3%。",
+  "'me-better'(全属性提升)比例39.8%，约为其他3D基线(<17%)的2倍，证明联合引导拓扑+坐标优于仅引导坐标。",
+  "约束优化中R-group redesign/growing/scaffold hopping成功率分别29.0/32.7/23.6%，均高于TargetDiff/TAGMol/MolCRAFT；消融显示联合双模态引导与backward correction(k=130)一致提升。"
+ ],
+ "weaknesses": [
+  "成功率阈值依赖经验设定(Vina<-8.18等)，且Vina打分本身是粗糙代理，未做湿实验/真实活性验证；绝对成功率51.3%仍意味着约半数候选不可用。",
+  "backward correction引入额外超参k(滑窗)与引导尺度s，敏感性与选择准则在正文中仅给图示，缺乏理论指导；k=n退化为Qu2024、k=1退化为Graves2023。",
+  "属结构基分子生成/药物设计方向，与可靠性主线（鲁棒/泛化/可信AI/不确定性量化在医学影像或多模态大模型推理）无直接关系。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

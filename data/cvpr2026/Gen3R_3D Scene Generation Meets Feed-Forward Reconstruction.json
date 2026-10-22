@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Gen3R_3D Scene Generation Meets Feed-Forward Reconstruction.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Gen3R_3D Scene Generation Meets Feed-Forward Reconstruction.pdf",
+ "title": "Gen3R 3D Scene Generation Meets Feed-Forward Reconstruction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "适配器桥接重建与扩散模型，实现3D场景生成与重建",
+ "innovations": [
+  "将重建模型VGGT重构为几何潜在空间的VAE",
+  "解耦但对齐的几何与外观潜在空间",
+  "统一框架支持多种输入条件下的3D场景生成与重建"
+ ],
+ "method_framework": "通过适配器将VGGT的几何token映射到视频扩散模型的潜在空间，对齐分布后联合生成几何与外观潜在，再分别解码为RGB视频和3D几何信息",
+ "experiment_framework": "在RealEstate10K、DL3DV-10K等数据集上评估，与Aether、WVD等方法比较，使用PSNR、SSIM、LPIPS和CD等指标",
+ "takeaways": [
+  "重建模型与生成模型的潜在空间对齐是关键",
+  "解耦的几何与外观潜在空间可提高生成质量",
+  "多模态数据集训练可增强模型泛化能力"
+ ],
+ "weaknesses": [
+  "依赖预训练的重建和扩散模型",
+  "未充分讨论计算效率",
+  "未展示在真实场景中的鲁棒性验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D场景生成与重建，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

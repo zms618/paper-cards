@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/3DCS_Datasets and Benchmark for EVALUATING Conformational Sensitivity In Molecular Representations.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/3DCS_Datasets and Benchmark for EVALUATING Conformational Sensitivity In Molecular Representations.pdf",
+ "title": "3DCS: DATASETS AND BENCHMARK FOR EVALUATING CONFORMATIONAL SENSITIVITY IN MOLECULAR REPRESENTATIONS",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "分子构象敏感性基准，但数据集规模与统计严谨性不足",
+ "innovations": [
+  "把评测对象从分子间（跨分子性质回归/分类）转到分子内构象敏感性，构建三套数据：松弛二面角扫描集（杂环骨架乘取代基库得 1,559,779 分子，绕环间单键 2.5° 增量做 xTB 松弛扫描记录单点能，再用 DBSCAN eps=0.5 压冗余，共 10,097,643 构象）、手性药物对集（ChEMBL 4,057 个立体中心分子枚举对映体，并对每个立体异构体做扭转微扰使两对映体构象集合在几何空间重叠，只保留优化后 R/S 不变的 52,391 构象）、能量集（rMD17 的 10 个小分子 AIMD 轨迹，各 100K DFT 能量/力构象）",
+  "GCE 框架显式分两层：参考对齐层用 Spearman/Kendall 秩相关、RBF 核 CKA、等距回归 R2 衡量表征距离 Δij 与物理参照（RMSD、手性签名不一致比例 D^C_ij、能量差 D^E_ij）的吻合；流形一致层用局部等距误差 LIE、二面角相关与角平滑 AS、对映体分离（ESA-AUC/NN@1/Silhouette/Hopkins）、能量跳跃敏感度 EJS 与 KS 距离",
+  "手性数据集刻意做几何空间重叠微扰 + 优化后 R/S 复核，逼模型只能靠立体化学而非粗几何差异分离对映体，并用 Murcko 骨架 8:1:1 分割防泄漏；并发现以坐标去噪为目标的 UniMol 反不如以 3D cloze 重建为目标的 MolAE——随机扰动坐标会诱导手性翻转，把 R 构象映射回 S 构象致训练信号错配"
+ ],
+ "method_framework": "零样本取各模型的构象级表征（学习模型用余弦距离、指纹用 Tanimoto 距离）统一送 GCE 管线；另在 3DCS 手性数据上用对比损失（同立体异构体聚拢、同母体不同立体异构体推开）做监督微调，检验指标是否仍具区分力。",
+ "experiment_framework": "基线覆盖手工 3D 指纹 E3FP 与学习表征 UniMol、MolAE、GemNet、MolSpectra、MACE、体素场模型 FMG；几何 10 项、手性 7 项（ES-AUC/NN@1/Hopkins/SCI/SCI_unsup）、能量 9 项，以相对 E3FP 的百分比提升汇总成雷达图。",
+ "takeaways": [
+  "对映体构象集合做几何重叠微扰加优化后 R/S 复核，是逼模型必须靠立体化学而非粗几何差异分离对映体的干净设计，可直接照搬",
+  "参考对齐与流形一致两层分开写，避免把秩相关低直接归为手性差（论文明说手性参照离散、用秩相关本身无意义），这种分层论证方式值得学",
+  "零样本加微调两轮都跑，能看出指标是否只是随训练过拟合（结果显示微调后排名基本不变）"
+ ],
+ "weaknesses": [
+  "可比性与精度口径不统一：手性数据集仅 4,057 分子 / 52,391 构象，远小于几何集的百万量级，而 ES-AUC（MolAE 0.782、FMG 0.706）这类指标对样本量极敏感，表 2 中 ES-AUC 与 NN@1 差距巨大（0.782 vs 0.497）说明度量定义或分割方式对结果影响很大却未充分交代；几何集用 xTB 松弛而能量集用 DFT，主 claim 之一是与能量保真度的对齐却混了两套精度；rMD17 只含 10 个小分子，能量维度结论面太窄",
+  "统计缺位：全都是单一 run 点估计、无种子方差与置信区间，CKA、KS 统计量本身还依赖采样构象子集；30 多个指标并列呈现也没有统一综合排序与多重比较校正，本质是描述性雷达图而非可被证伪的评估结论；正文在第 5.3 节中途截断（能量表、微调结果与 GCE 全部数值缺失），confidence 仅 medium",
+  "relevance 给 5.5：主题（分子构象表征评估）不在主线，但 GCE 的参考对齐加流形一致性两层评测协议与物理参照（单调保真、校准式秩相关）可迁移为表征可靠性的评测范式，且把 ruler 与模型对齐分层的写法对可靠性评测有借鉴，故不入 3-4 档"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.9,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "分子表征评估不在主线，但GCE评测范式可迁移为表征可靠性评估",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

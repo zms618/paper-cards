@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SUBGRAPH_Diverse and Sparse Mixture-of-Experts for Causal SUBGRAPH–BASED Out-of-Distribution Graph Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SUBGRAPH_Diverse and Sparse Mixture-of-Experts for Causal SUBGRAPH–BASED Out-of-Distribution Graph Learning.pdf",
+ "title": "Diverse and Sparse Mixture-of-Experts for Causal Subgraph-Based Out-of-Distribution Graph Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.3
+ },
+ "one_line": "DiSCO用MoE建模异质因果子图，但未在目标域验证且效率代价不明。",
+ "innovations": [
+  "将MoE引入因果子图OOD学习，用多个专家各建模不同因果子图以处理实例级异质性",
+  "强制专家间语义多样性，配合学习到的稀疏门控自适应聚焦相关专家",
+  "理论证明多样性与稀疏性两性质共同降低OOD误差，且无需环境标签"
+ ],
+ "method_framework": "针对图OOD中实例级因果子图异质性，用MoE框架：每个专家生成一个不同的因果子图，专家间施加语义多样性约束；学习门控为每个输入分配稀疏权重聚焦最相关专家；避免数据增广改变标签语义或依赖强因果假设。",
+ "experiment_framework": "在GOOD基准上评测，覆盖合成与真实结构偏移（如分子性质预测、情感分析），对比因果子图OOD方法，以OOD泛化精度为指标。",
+ "takeaways": [
+  "专家多样性+稀疏门控可建模实例级异质因果子图，无需环境标签",
+  "理论上两性质共同降低OOD误差，与实验一致",
+  "在GOOD基准的结构偏移上取得强性能"
+ ],
+ "weaknesses": [
+  "仍属图学习域，未在医学影像/多模态推理等目标落地域验证",
+  "MoE增加了训练与推理复杂度，与单因果子图方法相比的效率代价未充分报告",
+  "所避免的因果假设放宽后，专家与因果子图的对应关系缺乏可解释性验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "因果子图OOD方法与可靠性主线明确交点，但缺目标域验证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

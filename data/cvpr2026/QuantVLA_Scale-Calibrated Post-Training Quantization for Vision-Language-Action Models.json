@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/QuantVLA_Scale-Calibrated Post-Training Quantization for Vision-Language-Action Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/QuantVLA_Scale-Calibrated Post-Training Quantization for Vision-Language-Action Models.pdf",
+ "title": "QuantVLA Scale-Calibrated Post-Training Quantization for Vision-Language-Action Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "VLA模型训练后量化框架，选择性量化+轻量校准",
+ "innovations": [
+  "首个针对VLA模型的训练后量化框架",
+  "选择性量化布局保持注意力投影浮点",
+  "注意力温度匹配和输出头平衡两种轻量校准机制"
+ ],
+ "method_framework": "基于DuQuant重参数化，选择性量化语言主干和DiT的MLP层，保持注意力投影浮点，通过ATM和OHB校准温度和能量漂移",
+ "experiment_framework": "在LIBERO数据集上评估OpenPI π0.5和GR00T N1.5模型，使用W4A8设置，报告任务成功率",
+ "takeaways": [
+  "量化误差在VLA模型中通过注意力温度和残差能量传播",
+  "轻量级校准机制可有效恢复量化后的分布特性",
+  "选择性量化布局对保持性能至关重要"
+ ],
+ "weaknesses": [
+  "仅评估了W4A8量化设置，未探索更低比特",
+  "未在真实机器人平台上验证",
+  "校准过程需要无标签缓冲区"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "VLA量化方法与可靠性主线无实质交织，仅为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

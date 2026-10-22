@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MELON_Provable Defense Against Indirect Prompt Injection Attacks in AI Agents.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MELON_Provable Defense Against Indirect Prompt Injection Attacks in AI Agents.pdf",
+ "title": "MELON: Provable Defense Against Indirect Prompt Injection Attacks in AI Agents",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "基于重执行和工具对比的间接提示注入防御，增加推理成本",
+ "innovations": [
+  "提出关键洞察：攻击成功时，智能体的下一个动作对用户任务的依赖性降低，对恶意任务的依赖性升高",
+  "设计MELON（Masked re-Execution and TooL comparisON）防御方法，通过重执行和工具对比检测注入攻击",
+  "提供了可证明的防御保证，在多种攻击场景下均有效，且不损害正常任务效用"
+ ],
+ "method_framework": "MELON基于以下观察：在成功的间接提示注入（IPI）攻击下，智能体的下一步动作变得不依赖于用户任务，而更多依赖于恶意任务。方法流程：(1)掩码重执行——将检索到的工具信息进行掩码后重新执行，观察动作变化；(2)工具对比——比较原始执行和掩码执行的动作差异；(3)如果动作差异显著，则判定为攻击。MELON-Aug版本结合了重复提示方法进一步增强防御。",
+ "experiment_framework": "在AgentDojo基准上评估，包含4类智能体（银行、Slack、旅行、工作区）共629个攻击案例；在GPT-4o、o3-mini、Llama-3.3-70B三个模型上测试；对比Delimiting、Repeat Prompt、Tool Filter、DeBERTa Detector、LLM Detector等基线；指标包括攻击成功率（ASR）和攻击下效用（UA）。",
+ "takeaways": [
+  "MELON在保持高正常效用的同时，将攻击成功率降至接近0%，接近理想防御性能",
+  "相比现有防御方法（如Tool Filter、LLM Detector），MELON在UA-ASR权衡曲线上显著更优",
+  "MELON-Aug结合重复提示方法进一步提升了防御效果"
+ ],
+ "weaknesses": [
+  "重执行机制增加了推理成本和延迟，实际部署效率需进一步评估",
+  "仅在AgentDojo基准上验证，在更复杂真实场景下的防御效果未验证",
+  "未考虑白盒攻击（如GCG），对自适应攻击者的鲁棒性有待检验"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

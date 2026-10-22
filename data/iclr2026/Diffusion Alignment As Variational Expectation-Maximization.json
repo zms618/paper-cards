@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Diffusion Alignment As Variational Expectation-Maximization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Diffusion Alignment As Variational Expectation-Maximization.pdf",
+ "title": "Diffusion Alignment As Variational EXPECTATION-MAXIMIZATION",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "将扩散对齐形式化为变分EM，交替探索与更新模型。",
+ "innovations": [
+  "将扩散模型对齐形式化为变分EM算法",
+  "E-step使用测试时搜索探索多模态后验分布",
+  "M-step通过前向KL散度最小化将知识蒸馏回扩散模型",
+  "DAV-KL正则化防止预训练能力损失"
+ ],
+ "method_framework": "DAV框架交替进行E-step和M-step：E-step使用测试时搜索从变分后验分布生成多样高奖励样本；M-step通过最小化前向KL散度将知识蒸馏回扩散模型参数。",
+ "experiment_framework": "文本到图像合成：Stable Diffusion v1.5，40个动物提示，美学奖励；DNA序列设计：700k DNA序列，增强子活动预测。",
+ "takeaways": [
+  "变分EM框架可有效解决奖励过优化问题",
+  "测试时搜索与模型蒸馏结合可兼顾奖励与多样性",
+  "方法适用于连续和离散扩散模型"
+ ],
+ "weaknesses": [
+  "计算开销较大，E-step需要测试时搜索",
+  "DAV-KL中的超参数λ需要仔细调整",
+  "未讨论在更大规模数据集上的扩展性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散对齐方法与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

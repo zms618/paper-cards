@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/RAPTR_Radar-based 3D Pose Estimation using Transformer.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/RAPTR_Radar-based 3D Pose Estimation using Transformer.pdf",
+ "title": "RAPTR: Radar-based 3D Pose Estimation using Transformer",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "弱监督雷达姿态估计，室内场景表现良好",
+ "innovations": [
+  "首次利用3D BBox和2D关键点作为弱监督替代昂贵的3D关键点标签",
+  "设计结构化损失函数解决深度模糊问题",
+  "提出伪3D可变形注意力机制连接3D空间和2D雷达视图"
+ ],
+ "method_framework": "RAPTR采用两阶段解码器架构：姿态解码器使用3D模板损失和3D BBox标签生成初始3D姿态；关节解码器使用2D关键点损失和3D重力损失细化姿态。伪3D可变形注意力机制在3D雷达空间定义参考点和采样偏移，投影到多视图雷达特征上。",
+ "experiment_framework": "在HIBER和MMVR两个室内雷达数据集上评估，使用MPJPE作为主要指标，与Person-in-WiFi 3D、HRRadarPose和QRFPose等基线方法比较。",
+ "takeaways": [
+  "弱监督策略可显著降低3D姿态估计的标注成本",
+  "结构化损失函数能有效解决深度模糊问题",
+  "伪3D可变形注意力机制具有良好的视图扩展性"
+ ],
+ "weaknesses": [
+  "仅评估了室内场景，未测试室外或复杂环境",
+  "依赖雷达到世界坐标的已知转换，限制了实际应用灵活性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

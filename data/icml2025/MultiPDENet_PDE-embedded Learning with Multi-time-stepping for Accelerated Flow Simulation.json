@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MultiPDENet_PDE-embedded Learning with Multi-time-stepping for Accelerated Flow Simulation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MultiPDENet_PDE-embedded Learning with Multi-time-stepping for Accelerated Flow Simulation.pdf",
+ "title": "MultiPDENet: PDE-embedded Learning with Multi-time-stepping for Accelerated Flow Simulation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "将数值方法嵌入神经网络，加速流动仿真但适用性有限。",
+ "innovations": [
+  "设计基于有限差分模板结构的卷积滤波器，用少量参数估计粗网格上的空间导数",
+  "建立嵌入4阶Runge-Kutta积分器的物理块，将PDE结构显式编码到网络中",
+  "提出多时间尺度积分方法：细时间步用RK积分，粗时间步用神经网络校正误差，缓解长期预测中的误差累积"
+ ],
+ "method_framework": "空间维度：卷积滤波器模拟有限差分模板，在粗网格上估计空间导数以最小化PDE残差；时间维度：细时间步用4阶RK积分器（保证精度），粗时间步用神经网络校正预测误差（加速）；两者结合实现多时间尺度的PDE求解。",
+ "experiment_framework": "在Navier-Stokes方程等多种PDE系统上验证；对比PINN等神经基线与传统数值方法；指标为长期预测精度与加速比；测试小样本/欠采样数据下的泛化性。",
+ "takeaways": [
+  "将数值方法的结构（有限差分模板、RK积分）嵌入神经网络，可显著提升数据效率与泛化性",
+  "多时间步策略有效缓解了长期预测中的误差累积问题",
+  "在时空欠采样数据上仍能准确预测，降低了对高质量仿真数据的依赖"
+ ],
+ "weaknesses": [
+  "仅在流动类PDE上验证，其他类型PDE（如波动方程、扩散方程）的适用性未讨论",
+  "RK积分器的细时间步仍需较高计算量，极端加速场景下的收益待验证",
+  "神经网络校正的误差累积在超长时间预测下可能仍会发散"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

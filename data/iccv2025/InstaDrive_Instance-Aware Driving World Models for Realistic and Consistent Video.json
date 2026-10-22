@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/InstaDrive_Instance-Aware Driving World Models for Realistic and Consistent Video.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/InstaDrive_Instance-Aware Driving World Models for Realistic and Consistent Video.pdf",
+ "title": "InstaDrive Instance-Aware Driving World Models for Realistic and Consistent Video",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "实例流引导与几何对齐提升驾驶视频生成一致性",
+ "innovations": [
+  "实例流引导器(IFG)实现跨帧实例特征提取和传播",
+  "空间几何对齐器(SGA)确保实例精确定位和遮挡层次建模",
+  "基于CARLA的程序化场景模拟生成安全关键驾驶场景"
+ ],
+ "method_framework": "基于OpenSora V1.1构建，结合VAE视频编码、T5文本编码和ST-DiT去噪过程，通过ControlNet注入控制信号，实现实例级时空一致性控制",
+ "experiment_framework": "nuScenes数据集，对比BEVControl、DriveDiffusion等基线，使用FID/FVD评估视频质量，MOT评估时间一致性，感知任务评估空间几何保真度",
+ "takeaways": [
+  "实例级控制信号对提升视频生成一致性至关重要",
+  "3D边界框投影和深度顺序建模可有效改善空间几何保真度",
+  "合成数据在自动驾驶任务中可达到接近真实数据的性能"
+ ],
+ "weaknesses": [
+  "方法依赖精确的3D边界框输入，对标注质量要求高",
+  "未充分讨论计算效率与生成质量的权衡",
+  "长尾场景生成仍依赖CARLA模拟，泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "驾驶视频生成与可靠性主线无实质交织，仅为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

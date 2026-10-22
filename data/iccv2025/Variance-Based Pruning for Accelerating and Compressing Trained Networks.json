@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Variance-Based Pruning for Accelerating and Compressing Trained Networks.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Variance-Based Pruning for Accelerating and Compressing Trained Networks.pdf",
+ "title": "Variance-Based Pruning for Accelerating and Compressing Trained Networks",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "方差选择神经元剪枝，均值偏移补偿，MLP层专用",
+ "innovations": [
+  "基于方差选择低贡献神经元进行剪枝",
+  "均值偏移补偿机制保留模型性能",
+  "仅需少量微调即可恢复原始精度"
+ ],
+ "method_framework": "三步法：计算神经元激活统计量，基于方差选择剪枝神经元，将均值激活转移到下一层偏置",
+ "experiment_framework": "ImageNet-1k数据集，DeiT/Swin/ConvNeXt模型，对比Magnitude/SNIP/NViT/ToMe基线，评估MACs/参数量/精度",
+ "takeaways": [
+  "方差作为剪枝准则的有效性",
+  "均值偏移补偿对保持精度的关键作用",
+  "与动态剪枝方法ToMe的互补性"
+ ],
+ "weaknesses": [
+  "仅针对MLP层进行剪枝，未考虑其他层",
+  "高剪枝率下精度下降明显",
+  "未探索不同数据集上的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "模型压缩技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

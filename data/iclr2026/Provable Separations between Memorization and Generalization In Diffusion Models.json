@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Provable Separations between Memorization and Generalization In Diffusion Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Provable Separations between Memorization and Generalization In Diffusion Models.pdf",
+ "title": "Provable Separations between Memorization and Generalization in Diffusion Models",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 7.1
+ },
+ "one_line": "理论证明扩散模型记忆与泛化可分离，提出剪枝方法减少记忆",
+ "innovations": [
+  "从统计估计视角证明真实score函数不最小化经验去噪损失，该分离驱动了记忆现象",
+  "从网络近似视角证明实现经验score需要网络规模随样本量增长，而真实score表示更紧凑",
+  "基于上述理论洞察提出剪枝方法，在扩散Transformer中减少记忆同时保持生成质量"
+ ],
+ "method_framework": "通过非渐近分析，从两个互补视角解释扩散模型记忆现象：(1)统计估计层面——经验去噪损失的最小值偏离真实score，导致模型拟合训练数据；(2)函数近似层面——经验score的网络复杂度需随样本量增长。基于此提出剪枝方法去除记忆相关参数。",
+ "experiment_framework": "在扩散Transformer上验证剪枝方法效果，指标包括生成质量(FID等)和记忆度(训练数据重现率)。对比基线方法。",
+ "takeaways": [
+  "扩散模型的记忆现象有根本的统计和近似理论根源",
+  "真实score与经验score之间的统计分离是记忆的关键驱动因素",
+  "剪枝可有效减少扩散模型记忆而不显著损失生成质量"
+ ],
+ "weaknesses": [
+  "理论分析可能基于简化假设（如高斯噪声、特定数据分布），实际场景的适用性需验证",
+  "剪枝方法的具体策略和超参数选择的鲁棒性未充分讨论",
+  "记忆度的量化指标本身存在争议，实验验证可能不够充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型泛化理论属于可靠性主线，方法可迁移到抑制过拟合",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

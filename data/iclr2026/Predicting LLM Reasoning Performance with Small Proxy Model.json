@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Predicting LLM Reasoning Performance with Small Proxy Model.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Predicting LLM Reasoning Performance with Small Proxy Model.pdf",
+ "title": "Predicting LLM Reasoning Performance with Small Proxy Model",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "用小代理模型预测大模型推理性能，但与主线关联弱且预测不稳定",
+ "innovations": [
+  "诊断小代理预测大模型推理失效的两大根因：未对齐预训练目标、未对齐目标任务",
+  "用前沿模型推理轨迹作金标 NLL，并在 token 级按任务临界度加权(letter 级计算以解决代理/前沿模型分词器不匹配)",
+  "在1B–32B跨尺度上建立强相关性，数据排序成本较最优基线降低100倍以上，且可零样本迁移到不同预训练数据集"
+ ],
+ "method_framework": "取前沿模型推理轨迹为金标 Y*，对小代理模型在其上的负对数似然(NLL)做评估；每个 token 的 NLL 权重以前沿模型对该 token 的置信度(MinMax归一化)确定，为弥合分词器差异在 letter 级计算权重再在 token 内平均，从而同时对齐预训练目标与目标任务。",
+ "experiment_framework": "在25个预训练数据集的排序基准(目标1.2B)上评测决策准确率；6个推理基准(数学/科学/工程/常识/代码)上评估1B代理对13B/32B目标的相关性 R²；SFT 后1B→13B关系；并测1B→7B跨数据集零样本迁移，对比6个基线。",
+ "takeaways": [
+  "RBRIDGE 数据排序决策准确率80.8%，计算成本较最优基线降低≥100倍",
+  "1B代理可在6个基准上对13B/32B目标取得最强平均相关性",
+  "小代理只需对齐预训练目标与目标任务即可可靠预测涌现式推理性能"
+ ],
+ "weaknesses": [
+  "主线为预训练数据代理/成本优化，与可靠性、医学影像等主线关联弱",
+  "金标依赖前沿模型推理轨迹，存在对前沿模型偏差与成本的隐含依赖",
+  "部分基准 R² 很低(如 ARC-C 0.003)，方法在某些推理任务上预测关系不稳"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "小代理模型预测大模型推理性能，有可靠性主线价值但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

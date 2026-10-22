@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/3DGS_A Geometric Algebra-Informed 3DGS Framework for Wireless Channel Prediction.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/3DGS_A Geometric Algebra-Informed 3DGS Framework for Wireless Channel Prediction.pdf",
+ "title": "A Geometric Algebra-Informed 3DGS Framework for Wireless Channel Prediction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 3.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "用几何代数统一无线信道物理交互，但实验证据不足",
+ "innovations": [
+  "把 EM 射线—物体交互写成几何代数 versor 复合：在 G_{3,0,1} 空间代数中用转子 R_r（反射）、D（类绕射弯折）、T（透射/折射）、R_0（初始配准）经夹乘作用作用于射线状态向量 V，多跳路径由 I=Π_i I_i 聚合为单个可微算子 V′=IVI^{−1}（Eq.6/7），从而在一个机制里同时刻画反射、折射、绕射，不再需要各自独立的物理模块或材质标签",
+  "给出 GATr 注意力与物理变换的结构对应解释（Eq.8→Eq.9）：把标准点积注意力重写为 A_{i′} v_{ic′} A_{i′}^{−1} 的夹乘聚合形式，令每个 A_{i′} 充当「学习到的交互算子 I」，据此声称模型的等变性与 EM 传播对称性对齐；并用 Top-M 高不透明度高斯作锚点做 tokenizer，把编码器复杂度从 O(N²) 降到 O(M²)",
+  "发射机相关的有效不透明度与残余参数化：把衰减网络输出的中间特征 f 映射成每个高斯的不透明度残差 d_attn（α̃_i=α_i+d_attn,i，对 d_attn 加 L2 正则）以刻画「同一障碍对一个发射机全遮挡、对另一个近似透明」；旋转/缩放头只输出对原始高斯参数的残差更新，信号头则在球谐系数空间加残差 d_signal，避免回归绝对值破坏结构先验"
+ ],
+ "method_framework": "无线测量 + 初始 3D 点云 → 多视 tokenizer F_mv 输出 CLS 与欧氏位置嵌入 E(P_x)、E(P_TX)（欧氏嵌入补足度量结构）；衰减网 F_att 由 [E(P_TX),E(P_x),CLS] 预测衰减场 δ(x) 与中间特征 f；信号网 F_sig 出散射场幅度 ξ；两者拼接后送 Rotation/Scaling/Signal 三个 MLP 头出残差，配合 d_attn 修正不透明度；投影到 RX 感知平面用 Mercator 映射 u=λ, v=α·log tan(π/4+φ/2)，分 tile 深度排序后按 S_i(x)=ξ̃(x_i)Π_{j<i}δ(x_j) 与 R_k=Σ_i S_i(x_i)α̃_iΠ_{j<i}(1−α̃_j) 累积。",
+ "experiment_framework": "自采平台：35m² 室内、18 天、2.4/5 GHz 双频 RSSI，TurtleBot4 + RPi4 + RPLIDAR A1M8（Nav2+AMCL SLAM 提供 (x,y,z) 位姿）、TP-Link Archer T3U AC1300 网卡、两台 ASUS RT-AC86U（一台最大功率固定发射）；两个含结构柱遮挡的房间；另用 NeRF2 公开 BLE 与 RFID 频谱数据集；基线含 WRF-GS、DCGAN、NeRF2、NeRF-APT、MLP、FIRE，指标有 CDF-SSIM 等空间谱图质量。",
+ "takeaways": [
+  "用代数结构（GA/四元数/复数）重写注意力，是把物理对称性注入神经网络的低成本入口，且能给出与物理算子的显式对应解释",
+  "「残差式更新预训练表示参数（旋转、缩放、球谐系数）」比直接回归原变量更稳定，可迁移到任何基于显式基元的神经场",
+  "按高响应度基元子集做 tokenizer 锚点（O(M²) 而非 O(N²)）是控制长域Token 编码成本的通用技巧"
+ ],
+ "weaknesses": [
+  "正文在实验表格之前被截断（止于图 6 平台示意），文中没有任何可见的定量结果表、消融表或对比数值，「consistently surpasses current baselines」这一核心 claim 无法核实；第 5 章只剩数据集描述",
+  "自采数据规模极小：仅两个房间、约 35m²、18 天、每个位置每频点 5 次采样，且特意选了「含结构柱遮挡」的房间做 ray-object interaction 分析，属典型场景选择偏倚；公开 BLE/RFID 数据集的样本量（50 维 RSSI 向量）也远小于标准无线 benchmark",
+  "论文反复强调 GA 带来旋转/反射等变性与物理一致性，但全篇没有等变性测试（如随机旋转场景下的误差不变性）、也没有把学出的 rotor/versor 与真实材料介电常数、反射损耗、绕射系数做对照的可解释性实验——数学形式漂亮但「物理对齐」只有声称",
+  "投影与渲染模块明确沿用 WRF-GS/WRF-GS+，因此与这两个最强同类基线的差异全部落在 tokenizer 与双分支上；正文不可见范围内看不到对 CLS 广播、Top-M 锚点数 M、GA 与欧氏双流拼接的消融，无法判断 GA 部分是否真的贡献了主要增益"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "无线信道预测与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

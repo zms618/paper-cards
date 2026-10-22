@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Soft Equivariance Regularization for Invariant Self-Supervised Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Soft Equivariance Regularization for Invariant Self-Supervised Learning.pdf",
+ "title": "Soft Equivariance Regularization for Invariant Self-Supervised Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.4
+ },
+ "one_line": "层解耦软等变正则提升SSL鲁棒性，但依赖预设变换群",
+ "innovations": [
+  "实证发现：把等变正则推向更深层虽提升等变分数却损害ImageNet线性评测，据此提出层解耦设计",
+  "提出即插即用SER：不改动基础SSL目标，仅在中间空间token图上用解析指定的群作用(旋转/翻转/缩放)软鼓励等变",
+  "SER无需预测逐样本变换码/标签、无需辅助变换预测头，仅增加1.008x训练FLOPs；并表明层解耦对EquiMod/AugSelf等基线同样有效"
+ ],
+ "method_framework": "标准不变SSL在空间坍缩的最终embedding上做不变性；SER把等变性移到中间层仍带空间结构的token map上，直接在特征空间对其施加已知群作用并最小化变换后特征与预测的偏差，从而既保留识别所需不变性，又保留几何变换相关结构。",
+ "experiment_framework": "ImageNet-1k ViT-S/16自监督预训练，严格匹配2-view设置下线性评测；基线MoCo-v3/DINO/BarlowTwins；并测ImageNet-C/P鲁棒性与冻结骨干COCO检测mAP。",
+ "takeaways": [
+  "匹配设置下SER使MoCo-v3线性评测+0.84 Top-1，一致改善DINO与Barlow Twins",
+  "ImageNet-C/P提升+1.11/+1.22 Top-1，冻结骨干COCO检测+1.7 mAP",
+  "层解耦可作为结合不变性与等变性的通用设计原则"
+ ],
+ "weaknesses": [
+  "落地为通用视觉自监督表示，非医学影像/多模态推理，主线相关度中等",
+  "群作用(旋转/翻转/缩放)需预先解析指定，对更大/未知变换群的扩展性未论证",
+  "增益幅度中等(+0.8~1.7)，且严格依赖匹配view数；在更大ViT规模与下游任务的系统证据有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "提升SSL鲁棒性，但未触及医学/多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

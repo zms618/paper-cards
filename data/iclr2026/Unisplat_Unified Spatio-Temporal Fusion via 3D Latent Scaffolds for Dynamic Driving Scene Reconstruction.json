@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unisplat_Unified Spatio-Temporal Fusion via 3D Latent Scaffolds for Dynamic Driving Scene Reconstruction.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unisplat_Unified Spatio-Temporal Fusion via 3D Latent Scaffolds for Dynamic Driving Scene Reconstruction.pdf",
+ "title": "UniSplat: Unified Spatio-Temporal Fusion via 3D Latent Scaffolds for Dynamic Driving Scene Reconstruction",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "常规3D重建框架，双分支解码器与静态记忆提升视角合成",
+ "innovations": [
+  "提出统一3D latent scaffold，在3D空间内直接融合多视角空间信息与多帧时间信息，兼顾几何与语义上下文",
+  "设计双分支解码器：point-anchored refinement与voxel-based generation结合，从融合脚手架生成dynamic-aware Gaussians",
+  "维护静态高斯持久记忆，支持超越当前相机覆盖范围的流式场景补全与新视角合成"
+ ],
+ "method_framework": "前馈3D重建在自动驾驶中面临稀疏非重叠视角与复杂动态双重挑战。UniSplat先用预训练基础模型构建捕获几何+语义上下文的3D latent scaffold；融合机制直接在3D脚手架内操作以实现一致的时空对齐；双分支解码器从融合脚手架生成动态感知高斯(点锚定精修+voxel生成)，并维护静态高斯持久记忆以流式补全相机未覆盖区域。",
+ "experiment_framework": "在真实自动驾驶数据集上评估新视角合成质量，对比EvolSplat、Omni-Scene等前馈方法；指标为新视角合成渲染质量，并专门考察相机覆盖范围外视点的渲染鲁棒性；报告SOTA。",
+ "takeaways": [
+  "在3D脚手架内统一融合空间视角与时间帧，比仅图像域交叉注意力/MVS cost volume更利于一致对齐",
+  "点锚定+voxel双分支能兼顾细节与完整覆盖，生成动态感知高斯",
+  "静态高斯持久记忆使流式重建能补全相机视野外区域，提升开放场景鲁棒性"
+ ],
+ "weaknesses": [
+  "属自动驾驶3D重建/新视角合成方向，与本主线(可靠性×多模态推理/医学影像)无直接关联",
+  "依赖预训练基础模型提供几何/语义，脚手架构建的算力开销与稀疏输入退化行为未充分量化",
+  "对高速/剧烈动态目标的动态建模精度、以及长时流式记忆累积误差的边界正文前9页未展开"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "自动驾驶3D重建，静态记忆提升视角合成",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

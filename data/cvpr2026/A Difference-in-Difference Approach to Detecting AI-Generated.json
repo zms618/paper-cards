@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/A Difference-in-Difference Approach to Detecting AI-Generated.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Difference-in-Difference Approach to Detecting AI-Generated.pdf",
+ "title": "A Difference-in-Difference Approach to Detecting AI-Generated Images",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 6.5,
+  "overall": 5.7
+ },
+ "one_line": "二阶差分重建误差检测AI图像，但实验证据不足且方法有缺陷",
+ "innovations": [
+  "把重建算子形式化为 R(x)=Π_M(x)+δ(x)（式1），推导出生成器强时一阶误差 |x−Π_M(x)−δ(x)| 被随机扰动 δ 主导而失效，据此提出二阶差分 Δ²(x)=|x−x'|−|x'−x''|（式4），两次重建的扰动相消、只剩信号项（式7/8）",
+  "一阶与二阶差分各训一个分类器（式9），仅当两者同时判 real 才判 real；并把阈值设为 1−√0.5≈0.29 使整体 FPR 与单阈值 0.5 的单分类器对齐，用「取交」而非加权融合拼接两个异尺度信号",
+  "借 econometrics 的 DID 框架重新表述检测：把生成过程引入的波动当作混杂项，用「处理组(真实) vs 对照组(生成)」的二次差分消去它，从而在高保真生成器下仍能分辨"
+ ],
+ "method_framework": "用预训练 ADM 连续做两次重建得 x′=R(x) 与 x′′=R(x′)；分别用一阶误差 |x−x′| 与二阶误差 |x−x′|−|x′−x′′| 训练两个 ResNet-50 分类器，两个都判 real 才输出 real，训练数据为真实图与对应生成图配对。",
+ "experiment_framework": "训练：ImageNet+ADM（40k/40k）与 LAION+Kan.3/SDXL（10k/10k）；测试：LAION、ImageNet、LSUN-Bedroom，跨 ADM/PNDM/DDPM/iDDPM/SDv1/Vega/Playground v2.5/Stable Cascade；基线 DIRE、LaRE2、AEROBLADE、UFD，指标 Accuracy，单卡 H800。",
+ "takeaways": [
+  "表1 是作者最诚实的地方：大样本且训练/重建同源（都用 ADM）时 DID 99.12 与 DIRE 99.25 几乎持平，说明二阶差分的红利只在「生成器强、与训练分布错配」时才兑现",
+  "表2 中 SDv1 一行 DID 98.6 反而低于 LaRE2 的 99.9，作者直接标「-」不写提升，说明「一阶+二阶取交」并非单调占优，跨生成器时存在失效点",
+  "与同批 RDD 对照可读出路线差异：RDD 完全 training-free 且只用 AE/去噪误差打分，DID 仍需真实图+生成图配对训练 ResNet-50，真实图不可得的场景（黑盒生成）下不可用"
+ ],
+ "weaknesses": [
+  "表2 里 LaRE2/AEROBLADE/UFD 大量格子落在 50–55%（等同随机），标题宣称的「比最强基线提升 20–30%」是在基线崩盘后的相对增益；而真能打的 DIRE 在表1 是 99.25，反而略高于 DID 的 99.12",
+  "全部实验只报 Accuracy 一个指标、无种子标准差、无跨分布拆分；双分类器「同时判 real」的取交策略仅靠 1−√0.5 这一个经验阈值对齐 FPR，未做阈值扫描或 FPR 匹配下的 ROC/AP 对比，公平性存疑",
+  "式(8) 依赖 δ(x)≈δ(x′)（扰动在空间上高度相关）这一假设，既无统计刻画也无实验验证，≈ 号何时成立全靠口述；且两次重建使推理开销翻倍，正文未给时间与显存代价",
+  "正文在 4.2 段中即截断（缺 4.3 敏感性分析与 4.4 消融），核心 claim 无对应消融：只报一阶/二阶/联合三档中「联合」这一档，缺只用一阶、只用二阶的对照数字，重建步数与采样器选择的影响读不到"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "成员推断方法有迁移价值，但未触及可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

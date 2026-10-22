@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Efficient and Privacy-Preserving Soft Prompt Transfer for LLMs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficient and Privacy-Preserving Soft Prompt Transfer for LLMs.pdf",
+ "title": "Efficient and Privacy-Preserving Soft Prompt Transfer for LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "蒸馏小模型+公开数据迁移prompt，保护双方隐私但需权衡压缩比与效用。",
+ "innovations": [
+  "首次实现soft prompt的隐私保护跨模型迁移：现有迁移要么需provider访问私有数据(泄漏)、要么迁移后效用反降；POST用蒸馏小模型+纯公开数据迁移解决。",
+  "设计双项迁移损失L=(1-α)L1+αL2：L1让大模型prompted输出模仿小模型prompted输出，L2对齐prompt引起的行为变化方向(而非绝对输出)，α按大模型zero-shot/小模型性能选择。",
+  "用KD而非量化/剪枝压模型，关键是保持特征空间对齐(Table 6证明蒸馏模型迁移始终优于同架构直接微调模型)；并集成PromptDPSGD提供(ε,δ)-DP，用LiRA实测MIA AUC下降。"
+ ],
+ "method_framework": "三步：(1)KD——Ldistil=αce Lce(KL logits)+αlm Llm(MLM/next-token)+αcos Lcos(embedding余弦)，把12层Roberta/32层Llama2-7b压到2层、48层GPT2-XL压到4层，刻意压到性能不足以吸引用户直接用小模型。(2)私有prompt tuning——用户在小模型上用Dpri调ps，可选PromptDPSGD(梯度裁剪+高斯噪声)给DP保证。(3)公开数据迁移——用Dpub迭代更新pt，双损失对齐到目标大模型。",
+ "experiment_framework": "模型Roberta-base/GPT2-XL/Llama2-7b；私有数据5分类(sst2/imdb/tweet/arisetv/mpqa)+生成MIT-D/MIT-G；公开agnews/boolq/AIE；基线Full ZS/Full PT/Compressed PT/Direct Transfer/DP-OPT(Hong2023)/ZST(Wu2023)；指标测试准确率、LiRA MIA AUC/TPR@1%FPR、A100 runtime；消融迁移步数/公开样本数/α/压缩比/prompt长度/特征对齐。",
+ "takeaways": [
+  "Llama2-7b上POST迁移后sst2 89.33-90.02%，远超Direct Transfer 55.28%与Compressed PT 78.78%，接近Full PT上界94.84%；DP(ε=8)下仍87.50%。",
+  "LiRA攻击：无DP时soft prompt有非平凡泄漏(sst2 AUC 0.561)，DP(ε=8)降到0.526；迁移仅需<100公开样本、~1000-2000步收敛。",
+  "runtime：sst2上从大模型直接PT的2660分钟降到POST总1612分钟(其中迁移+调prompt仅409分钟，KD一次性1203分钟)；POST全面优于DP-OPT/ZST基线。"
+ ],
+ "weaknesses": [
+  "KD是provider一次性操作但耗时(1203分钟)，且刻意把小模型压到性能不足，压缩比与迁移效用需权衡；ε=8的DP预算偏大，强隐私(ε小)下精度损失未充分探索。",
+  "迁移损失α选择依赖启发式(大模型ZS/小模型性能)，公开数据需同任务族；仅Roberta/GPT2/Llama2三个模型，未测现代大模型。",
+  "保护的是训练数据不泄漏给provider，不保护查询/推理数据(private inference)；MIA仅LiRA一种攻击，未做更全面隐私审计。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Veattack_Downstream-Agnostic Vision En-Coder Attack against Large Vision Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Veattack_Downstream-Agnostic Vision En-Coder Attack against Large Vision Language Models.pdf",
+ "title": "VEAttack: Downstream-Agnostic Vision Encoder Attack against Large Vision Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "灰盒视觉编码器攻击，跨任务有效但黑盒泛化性存疑",
+ "innovations": [
+  "提出灰盒攻击设定：仅攻击视觉编码器，理论上证明仅扰动编码器即可对下游LLM产生灾难性影响",
+  "通过最小化干净和扰动视觉特征的余弦相似度生成对抗样本，无需访问后续模型、任务或标签",
+  "发现patch token比class token更适合作为攻击目标，并揭示了LLM隐藏层变化、token注意力差异等关键攻击洞察"
+ ],
+ "method_framework": "VEAttack采用灰盒设定：仅需访问视觉编码器，无需下游LLM和任务标签。核心思路是扰动patch token而非class token（理论和实验均证明patch token更关键）。通过最小化干净图像与扰动图像的视觉特征余弦相似度来生成对抗扰动，使视觉编码器输出的特征严重偏离原始分布。由于视觉编码器是LVLM的共享核心组件，这种特征偏移会传播到所有下游任务。",
+ "experiment_framework": "目标：多种LVLM。任务：图像描述(caption)、视觉问答(VQA)。基线：白盒攻击、黑盒攻击、FOA-Attack等。指标：性能下降幅度。结果：图像描述任务下降94.5%，VQA任务下降75.7%。另分析了LLM隐藏层变化、注意力差异、迁移攻击等。",
+ "takeaways": [
+  "仅攻击视觉编码器即可对LVLM下游任务造成严重破坏，攻击成本远低于全模型白盒攻击",
+  "patch token比class token更适合作为攻击目标，因为其承载主要视觉信息",
+  "下游任务无关的攻击设计具有良好的跨任务迁移性"
+ ],
+ "weaknesses": [
+  "灰盒设定仍需访问视觉编码器，完全黑盒场景的攻击效果未验证",
+  "无目标攻击设定，针对性诱导特定输出的攻击能力未展示",
+  "对抗扰动的不可感知性在多大扰动预算下成立需更严格评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "攻击方法与可靠性主线相关但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

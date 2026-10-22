@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Cmt Mid-Training for Efficient Learning Of Consistency, Mean Flow, and Flow MAP Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Cmt Mid-Training for Efficient Learning Of Consistency, Mean Flow, and Flow MAP Models.pdf",
+ "title": "Cmt: MID-TRAINING for Efficient Learning Of Consistency, Mean Flow, and Flow MAP Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "CMT插入中间训练阶段提升flow map模型效率，但依赖预训练模型",
+ "innovations": [
+  "提出mid-training概念，在预训练和后训练间插入中间阶段",
+  "CMT方法使用固定回归目标，避免stop-gradient等不稳定因素",
+  "CMT适用于多种flow map模型(CM和MF)，具有通用性"
+ ],
+ "method_framework": "三阶段框架：预训练(扩散模型)→中间训练(CMT，学习轨迹对齐的初始化)→后训练(最终flow map模型)，CMT通过固定回归目标提供稳定初始化",
+ "experiment_framework": "CIFAR-10/AFHQv2/FFHQ/ImageNet多分辨率数据集，对比FID指标，测量训练数据量和GPU时间，与ECT/ECD/MF等基线比较",
+ "takeaways": [
+  "中间训练提供轨迹对齐初始化，显著提升训练效率和稳定性",
+  "固定回归目标避免stop-gradient等不稳定因素，简化训练流程"
+ ],
+ "weaknesses": [
+  "中间训练仍需预训练扩散模型作为教师，增加额外依赖",
+  "高分辨率图像(如512×512)上的实验结果有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "训练效率提升方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

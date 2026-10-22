@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Diversity-Enhanced Distribution Alignment for Dataset Distillation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Diversity-Enhanced Distribution Alignment for Dataset Distillation.pdf",
+ "title": "Diversity-Enhanced Distribution Alignment for Dataset Distillation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "常规分布对齐方法加协方差正则化，蒸馏性能提升有限。",
+ "innovations": [
+  "引入高斯分布对齐机制，同时匹配均值和协方差矩阵",
+  "设计协方差正则化器增强特征多样性",
+  "离线高斯分布估计提高计算效率"
+ ],
+ "method_framework": "DEDA框架包含两阶段：离线估计原始数据高斯分布并存储于内存库；优化蒸馏数据时进行高斯分布对齐，并通过协方差正则化增强特征多样性。",
+ "experiment_framework": "在CIFAR-10/100、TinyImageNet和ImageNet-1K数据集上评估，使用ResNet架构，对比SRe2L和LPLD等基线方法，以Top-1准确率为指标。",
+ "takeaways": [
+  "特征空间协方差矩阵能有效捕获类内特征关系",
+  "针对预训练模型最后一层特征紧凑问题，设计显式正则化增强多样性"
+ ],
+ "weaknesses": [
+  "仅关注特征分布对齐，未考虑优化过程对齐",
+  "协方差矩阵计算在高维特征空间可能仍有计算开销",
+  "未探索不同网络架构下的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "常规分布对齐方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/SciNav_A General Agent Framework for SCIENTIFIC Coding Tasks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SciNav_A General Agent Framework for SCIENTIFIC Coding Tasks.pdf",
+ "title": "SciNav: A General Agent Framework for Scientific Coding Tasks",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "科学编码agent框架，用相对判断树搜索剪枝，但主线相关性弱且开销大",
+ "innovations": [
+  "指出科学编码任务的agent方法多为工程化pipeline、缺结构化框架；提出端到端结构化框架。",
+  "基于'相对判断比绝对打分判别力更强'的发现，在树搜索中用pairwise相对判断选top-K有前景分支、剪枝。",
+  "Top-K Comparative Tree Search(TKCTS)在两基准上超过direct prompting、OpenHands、Self-Debug及随机/绝对打分对照。"
+ ],
+ "method_framework": "在受限搜索预算下，对候选解做成对相对比较（而非绝对打分），在树搜索中保留top-K有前景分支、剪除低潜力分支，沿选中分支逐步收窄解空间；避免依赖预定义成功指标与长搜索周期。",
+ "experiment_framework": "在两个科学编码基准(如SciCode类)上跨多种基座模型/任务类型/难度评测；对比direct prompting、OpenHands、Self-Debug及随机选择/LLM绝对打分；指标为任务解决率。",
+ "takeaways": [
+  "成对相对判断比绝对打分有更细粒度判别力，能更好地引导编码agent的树搜索。",
+  "结构化TKCTS在受限预算下显著优于现有科学编码agent。"
+ ],
+ "weaknesses": [
+  "属编码agent框架，与可靠性/医学影像/多模态推理主线相关性弱。",
+  "相对判断质量依赖LLM偏好模型的一致性，比较噪声可能误导剪枝。",
+  "成对比较带来额外推理开销，预算-性能的权衡需更多分析。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.83,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "科学编码agent框架，与可靠性主线相关性弱且开销大",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

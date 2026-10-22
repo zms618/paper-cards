@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Deep FLEXQP_Accelerated Nonlinear Programming via Deep Unfolding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Deep FLEXQP_Accelerated Nonlinear Programming via Deep Unfolding.pdf",
+ "title": "Deep FLEXQP: Accelerated Nonlinear Programming via Deep Unfolding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "弹性松弛QP求解器加LSTM加速，但复杂度高且应用验证有限",
+ "innovations": [
+  "弹性松弛的QP求解器FlexQP，保证可行性",
+  "深度展开学习LSTM反馈策略加速QP求解",
+  "对数尺度损失函数改进PAC-Bayes泛化边界",
+  "在SQP中集成提升非线性优化速度4-16倍"
+ ],
+ "method_framework": "FlexQP通过ℓ1弹性松弛处理QP约束，结合ADMM算子分裂，保证收敛性；Deep FlexQP使用LSTM学习参数反馈策略，结合拉格朗日乘数的归一化训练损失，保持精确性保证。",
+ "experiment_framework": "测试集包括投资组合优化、分类、回归问题，以及大规模QP(10k变量)和SQP非线性轨迹优化，与OSQP、Deep OSQP等基线比较，评估求解时间、成功率和安全性违规。",
+ "takeaways": [
+  "弹性松弛方法可有效处理不可行约束问题",
+  "深度展开结合LSTM反馈策略显著加速QP求解",
+  "对数尺度损失函数提供更紧的性能保证"
+ ],
+ "weaknesses": [
+  "方法复杂度较高，实现和维护成本大",
+  "大规模问题中σs参数调优仍具挑战",
+  "实验主要集中在控制优化领域，医学影像等应用验证不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "优化算法与可靠性主线无直接交点，仅可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

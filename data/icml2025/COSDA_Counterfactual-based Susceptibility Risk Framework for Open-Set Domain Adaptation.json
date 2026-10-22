@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/COSDA_Counterfactual-based Susceptibility Risk Framework for Open-Set Domain Adaptation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/COSDA_Counterfactual-based Susceptibility Risk Framework for Open-Set Domain Adaptation.pdf",
+ "title": "COSDA: Counterfactual-based Susceptibility Risk Framework for Open-Set Domain Adaptation",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.8
+ },
+ "one_line": "因果反事实框架解决OSDA，但落地域与组件贡献存疑",
+ "innovations": [
+  "首次为OSDA引入因果/反事实理论框架，提出susceptibility概念并推导可计算理论上界",
+  "SRE易感性风险估计器捕捉因果信息，形成OSDA范式下的风险最小化目标",
+  "CFA对比特征对齐从互信息角度理论证明满足外生性假设，促进跨域对齐",
+  "VMP虚拟多未知类原型伪标签，通过样本与已知/虚拟未知原型相似度辅助开集识别与类内判别"
+ ],
+ "method_framework": "基于结构因果模型刻画域偏移与未知类(干预环境变量E与因果变量C)；用SRE估计反事实易感性风险并最小化；用CFA在互信息约束下对齐跨域特征以满足外生性；用VMP为未知类生成虚拟原型并伪标签，联合已知/未知类风险训练。",
+ "experiment_framework": "在标准OSDA图像基准(如Office-Home/VisDA等)上与现有OSDA方法比较，报告已知类准确率/未知类拒识/UNK-H等综合指标，含各组件消融与理论上界验证。",
+ "takeaways": [
+  "因果/反事实视角可为OSDA提供可优化的风险上界",
+  "满足外生性的特征对齐比纯分布匹配更能兼顾域适应与未知类识别",
+  "虚拟多未知类原型伪标签能缓解开集场景无标签问题"
+ ],
+ "weaknesses": [
+  "落地域为通用图像开集域适应，非医学影像或多模态大模型推理",
+  "因果图假设(E/C干预)在真实视觉数据上是否成立需更多验证",
+  "多组件(SRE/CFA/VMP)叠加，各组件独立贡献与超参敏感性的消融可更细"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

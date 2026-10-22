@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/3D Gaussian Inpainting with Depth-Guided Cross-View Consistency.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3D Gaussian Inpainting with Depth-Guided Cross-View Consistency.pdf",
+ "title": "3D Gaussian Inpainting with Depth-Guided Cross-View Consistency",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 4.0,
+  "overall": 4.7
+ },
+ "one_line": "跨视角投影精化mask，拼装3D修复方案",
+ "innovations": [
+  "深度引导的 Inpainting Mask 推断：利用各视角渲染深度与相机位姿，把其他视角的可见背景像素投影为三维点云再反投影回参考视角，落在本视角 mask 内的像素直接排除出待修复区域，使修复 mask 只保留「在所有训练视角中都不可见」的区域",
+  "二维 inpainter 同时对彩色图与被 mask 的深度图做修复，得到成对的修复结果，使后续点云反投影有可用的几何支撑而不只有外观先验",
+  "以修复后的参考视角为唯一 3D 监督源：把该视角修复结果与其修复深度一起投影为彩色点云，反投影到其余视角后叠加 LPIPS 交叉视图一致性损失，与参考视角端的 L1+SSIM 彩色损失、深度 L1 损失联合更新重新初始化的 Gaussians"
+ ],
+ "method_framework": "已训练好的3DGS先按语义标签删除目标物体对应 Gaussian 并在该区域补入相同数量的随机 Gaussians；第一阶段用渲染深度跨视角反投影精化每张图的 inpainting mask，第二阶段选取精化后 mask 最大的视角作参考视角做2D修复，再把该结果投影成点云反投影监督其余视角，联合优化 G'。",
+ "experiment_framework": "SPIn-NeRF 数据集10个真实场景（60训练帧/40测试帧），另取 InNeRF360、Mip-NeRF360、LeRF 的三场景做定性；对比 SPIn-NeRF/MVIP-NeRF/Gaussian Grouping/MALD-NeRF/GScream；指标 FID/m-FID/LPIPS/m-LPIPS，并提供 LAMA 与 LDM 两种 2D inpainter 版本。",
+ "takeaways": [
+  "先指出「逐视角独立 2D 修复所用的 mask 里其实含有其他视角可见的背景」这一具体缺陷，再只用几何投影而非学习模块修正它，这种「先精化标注再学习」的因果顺序值得借鉴",
+  "同一套方法配两种 2D inpainter 都列表，并显式论证收益不只来自更好的 inpainter，是可迁移的 claim 隔离写法"
+ ],
+ "weaknesses": [
+  "整体由既有部件拼装：深度引导跨视角投影在 RefNeRF/GScream 已有先例，实际增量就是「反投影修正 mask」这一处；无新算子，损失也都是现成的 L1/SSIM/LPIPS",
+  "消融仅有 InNeRF360 单个 bear 场景的定性图（Fig.7），没有跨10个场景的定量消融，无法量化 mask 精化与交叉视图损失各自的贡献；全文也无多次运行方差与显著性检验",
+  "依赖预训练 3DGS 渲染的深度和 SAM/人工给定的物体 mask，深度误差会直接传递到 mask 精化，但文中没有对深度扰动或 mask 噪声的敏感性实验",
+  "Table 1 未明确说明是否为10个场景的平均、也未按场景给出逐项结果；MALD-NeRF 因代码不可用只能沿用其项目页输出，对比公平性存疑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3D修复与可靠性主线无关，仅为图形学应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

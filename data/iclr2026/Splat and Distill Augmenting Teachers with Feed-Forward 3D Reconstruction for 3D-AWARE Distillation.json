@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Splat and Distill Augmenting Teachers with Feed-Forward 3D Reconstruction for 3D-AWARE Distillation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Splat and Distill Augmenting Teachers with Feed-Forward 3D Reconstruction for 3D-AWARE Distillation.pdf",
+ "title": "Splat and Distill: Augmenting Teachers with Feed-Forward 3D Reconstruction for 3D-Aware Distillation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "前馈3D高斯重建增强教师，splat到新视角蒸馏几何知识给学生",
+ "innovations": [
+  "用前馈方式把教师2D特征提升为显式3D高斯表示，替代既有方法的逐场景优化",
+  "将3D特征splat到新视角产生新颖2D特征图，用于蒸馏几何有依据的知识给学生",
+  "前馈提升避免特征平均伪影，形成教师与学生一致性共同提升的动态学习过程"
+ ],
+ "method_framework": "取教师VFM输出的2D特征，前馈地提升到显式3D高斯表示；再把这些3D特征splat到新颖视点得到一组新颖2D特征图，作为几何一致的监督信号蒸馏给学生；教师与学生在过程中共同改进，避免逐场景优化带来的特征平均。",
+ "experiment_framework": "在单目深度估计、表面法向估计、多视角对应、语义分割等下游任务上评测，对比FiT3D等既有3D感知蒸馏方法；报告在3D感知指标与2D特征语义丰富度上均显著优于先前工作。",
+ "takeaways": [
+  "前馈3D提升比逐场景优化更快且避免特征平均伪影",
+  "splat到新视角能把3D几何知识蒸馏进2D VFM",
+  "注入3D感知不仅改善深度/法向等几何任务，还提升2D特征语义丰富度"
+ ],
+ "weaknesses": [
+  "依赖前馈深度估计的质量作为提升先验，前馈重建误差会沿管线传播",
+  "3D高斯splat在无标定相机/大视差场景下的稳定性未充分讨论",
+  "评测集中在标准3D感知benchmark，对真实多模态/医学3D场景的外推未展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D重建技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/VersaPRM_Multi-Domain Process Reward Model via Synthetic Reasoning Data.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/VersaPRM_Multi-Domain Process Reward Model via Synthetic Reasoning Data.pdf",
+ "title": "VersaPRM: Multi-Domain Process Reward Model via Synthetic Reasoning Data",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "揭示数学PRM跨域失效，用合成数据微调获得多域增益，但验证不足。",
+ "innovations": [
+  "系统揭示现状：Math-Shepherd、Qwen2.5-Math-PRM等数学PRM在Law、Philosophy、Biology等非数学域泛化很差，相对基线仅微弱提升",
+  "提出一套新的合成推理数据生成与标注方法：从MMLU-Pro采样问题、生成逐步CoT并标注步骤，用于微调得到多域PRM VersaPRM",
+  "全量开源数据、代码与模型；在MMLU-Pro法律类上加权多数投票较基线提升7.9%，远超Qwen2.5-Math-PRM的1.3%"
+ ],
+ "method_framework": "先以开源数学PRM在多域测试，量化其跨域失效；再从MMLU-Pro各领域采样问题，用大模型生成逐步思维链并按其合成标注方法给步骤打过程标签，构造多域CoT数据集；在此数据上微调得到VersaPRM，推理时用于对多个候选解做rerank/加权多数投票。",
+ "experiment_framework": "数据集MMLU-Pro(覆盖Math、Law、Philosophy、Biology、Chemistry等类别)；基线为多数投票/无PRM、Qwen2.5-Math-PRM、Math-Shepherd；用法含采样多解后PRM重排序与加权多数投票；指标为各领域准确率及相对基线的准确率增益。",
+ "takeaways": [
+  "数学PRM不能直接迁移到非数学领域，跨域泛化是PRM落地的关键短板",
+  "用合成的多域CoT数据微调可让PRM在Law/Biology等领域获得一致且显著的增益",
+  "PRM作为外部验证器的价值依赖于其领域覆盖，单纯数学训练不足以支撑通用推理验证"
+ ],
+ "weaknesses": [
+  "合成CoT与步骤标签由模型生成，标签质量与噪声未做人工核验与敏感性分析",
+  "评测集中在MMLU-Pro式多选题，对开放生成/长链推理域的迁移证据有限",
+  "方法依赖较强的采样数(多解投票)，未报告推理算力成本-增益的权衡曲线"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

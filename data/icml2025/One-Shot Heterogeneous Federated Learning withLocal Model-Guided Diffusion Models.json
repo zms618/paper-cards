@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/One-Shot Heterogeneous Federated Learning withLocal Model-Guided Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/One-Shot Heterogeneous Federated Learning withLocal Model-Guided Diffusion Models.pdf",
+ "title": "One-Shot Heterogeneous Federated Learning with Local Model-Guided Diffusion Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "用本地模型引导扩散生成，降低联邦学习算力门槛",
+ "innovations": [
+  "客户端无需部署任何基础大模型，仅训练并上传本地模型，降低端侧算力门槛",
+  "以本地模型为媒介，用反向传播引导服务器端扩散模型生成符合客户端分布的合成数据",
+  "客户端用分类损失+批归一化损失分别捕获广域类别特征与细粒度上下文特征"
+ ],
+ "method_framework": "客户端异构且算力有限：只训练本地模型并上传，用分类损失捕获广域类别特征、用批归一化损失捕获细粒度上下文特征。服务器拿到本地模型后，以其为条件/引导，通过反向传播引导扩散模型生成贴合各客户端数据分布的合成数据集，再用合成数据训练全局聚合模型，全程仅一轮通信。",
+ "experiment_framework": "在三个大规模真实数据集上评测，与基于扩散模型/生成器/辅助数据的单次 FL 方法对比全局模型准确率；考察异构客户端(异质模型结构)下的适应性，并可视化生成数据分布。",
+ "takeaways": [
+  "本地模型可作为传递客户端知识的媒介，避免端侧部署大模型",
+  "FedLMG 在异构客户端上单次通信即可达到有竞争力的全局精度"
+ ],
+ "weaknesses": [
+  "与医学影像/多模态推理主线关系弱，属隐私联邦学习",
+  "服务器端扩散模型生成的合成数据隐私泄露风险未充分理论刻画",
+  "三个数据集提升幅度与计算开销对比在已读部分披露有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

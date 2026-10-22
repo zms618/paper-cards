@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/RePaViT_Scalable Vision Transformer Acceleration via Structural Reparameterization on Feedforward Network Layers.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/RePaViT_Scalable Vision Transformer Acceleration via Structural Reparameterization on Feedforward Network Layers.pdf",
+ "title": "RePaViT: Scalable Vision Transformer Acceleration via Structural Reparameterization on Feedforward Network Layers",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.9
+ },
+ "one_line": "FFN通道空闲机制加速ViT，但调参繁琐且下游验证不足",
+ "innovations": [
+  "指出 FFN 层随模型增大成为 ViT 推理延迟主因，把结构重参数化从注意力层转向 FFN 层",
+  "提出通道空闲机制：训练时一部分特征通道绕过非线性激活形成线性通路，测试时可重参数化折叠",
+  "RePaViT-Large/Huge 在同训练策略下分别提速 66.8%/68.7% 且 top-1 反升 1.7%/1.1%"
+ ],
+ "method_framework": "训练时在每个 FFN 层保留一组空闲通道使其直连（绕过激活），与经线性+激活的主路并行；测试时将空闲线性通路与相邻线性层合并，重参数化为一个更窄的等效 FFN，在不引入推理结构分支的前提下降低 FLOPs 与延迟。",
+ "experiment_framework": "在多种 ViT 变体(ViT/Swin/LV-ViT 等)与不同规模上评测；对比剪枝、蒸馏、已有重参数化方法；指标为 top-1 精度、GMACs 与实际推理延迟；报告加速收益随模型规模增大而增大、精度差距收窄甚至反超。",
+ "takeaways": [
+  "FFN 层是 ViT 加速更值得投入的瓶颈",
+  "通道空闲+重参数化是一种训练友好、推理零开销的加速方式",
+  "加速收益随模型规模放大，对大 ViT 尤为有效"
+ ],
+ "weaknesses": [
+  "主线偏离可靠性/医学影像/多模态推理，属高效视觉骨干",
+  "空闲通道比例需逐模型调，自动确定策略缺失",
+  "仅在分类骨干验证，下游检测/分割的迁移加速效果未充分展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Efficient Source-free Unlearning via Energy-Guided Data Synthesis and Discrimination-Aware Multitask.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficient Source-free Unlearning via Energy-Guided Data Synthesis and Discrimination-Aware Multitask.pdf",
+ "title": "Efficient Source-free Unlearning via Energy-Guided Data Synthesis and Discrimination-Aware Multitask Optimization",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6,
+  "overall": 6.1
+ },
+ "one_line": "能量模型合成数据+多任务优化，实现高效类级遗忘",
+ "innovations": [
+  "AEGDS：把判别模型重解释为能量模型，用SGLD隐式采样类条件合成数据，再引入Heun二阶Runge-Kutta与Nesterov动量跳过冗余采样步，比逐步Langevin更快收敛。",
+  "DAMO：通过t-SNE发现传统遗忘损失扰乱retain类特征分布(类内散、类间混)，提出判别特征对齐损失(拉近类内中心、推远类间)恢复紧凑可分性。",
+  "把retain/forget/对齐三目标的梯度冲突形式化为min-max问题并给出闭式最优更新方向(Theorem 3.2/3.3)，用辅助权重w平衡三梯度。"
+ ],
+ "method_framework": "阶段1 AEGDS：能量Eθ(x,y)=-log M(x,θo)[y]，从随机噪声x0按x_{t+1}=x_t+α sθ(x_t,y)+√(2α)ε_t做Langevin采样；AEGDS用时间步间隔Δt，中点x'=x_t+Δt·d_t+√(2αΔt)ε，d'=sθ(x')，动量v_{t+1}=γv_t+α(½d_t+½d')，更新x_{t+1}=x_t+Δt·v_{t+1}+√(2αΔt)ε，逐类并行合成Dr̂/Df̂。阶段2 DAMO：LT=λ1 LR(CE on retain)+λ2 LF(-CE on forget)+λ3 LDisc(log[1+Σexp(δα_jn s_jn)exp(-δα_p s_p)])；用min-∥d-gT∥ s.t. g⊤w d最优化解梯度冲突。",
+ "experiment_framework": "数据CIFAR-10/CIFAR-100/PinsFaceRecognition；模型ResNet-18(CIFAR)、ViT(PinsFace)；基线Retrain/SSD(FIM)/UNSIR/ADV+IMP/LAU/SCAR/GKT/ISPF；指标Af(遗忘类准确率,应近0)/Ar(retain准确率,应近重训)/MIA成员推理攻击率/ET执行时间；单类(k=1)与多类(k=2/4/8)遗忘；消融AEGDS加速/对齐损失/多任务。",
+ "takeaways": [
+  "单类遗忘：DSDA在三数据集上Af=0(完全擦除)，Ar达77.91/49.96/88.36%接近Retrain(77.90/53.98/90.89)，MIA 11.8/13.8/18.39%接近Retrain 11.46/13.22/0.82%。",
+  "效率：CIFAR-10 ET仅133.4秒 vs GKT 393.6/ISPF 304.0/Retrain 1108.1秒，比无源基线平均省68.5%时间。",
+  "多类遗忘(k=8 on CIFAR-100)：LAU/GKT Ar崩到17-25%，DSDA仍49.56%且Af=0、MIA 28.29%，随遗忘类数增加鲁棒。"
+ ],
+ "weaknesses": [
+  "仅类级(class-level)遗忘，作者自承instance-wise/attribute-wise细粒度遗忘未解决；合成数据需按类逐类Langevin采样，大类别数下合成开销未充分报告。",
+  "MIA仅logistic回归一种攻击，且DSDA MIA(11.8-33%)并非总优于SCAR(12.5-21%)；合成数据'视觉不可辨'仅定性展示，无定量privacy审计。",
+  "落地域为图像分类(CIFAR/人脸)，非主线医学影像/多模态大模型推理；与可靠性主线仅在'遗忘=隐私可信AI'层面相关。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

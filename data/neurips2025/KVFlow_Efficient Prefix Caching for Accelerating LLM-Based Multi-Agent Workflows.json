@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/KVFlow_Efficient Prefix Caching for Accelerating LLM-Based Multi-Agent Workflows.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/KVFlow_Efficient Prefix Caching for Accelerating LLM-Based Multi-Agent Workflows.pdf",
+ "title": "KVFlow: Efficient Prefix Caching for Accelerating LLM-Based Multi-Agent Workflows",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.3
+ },
+ "one_line": "KVFlow通过工作流感知缓存管理实现LLM多智能体加速",
+ "innovations": [
+  "Agent Step Graph抽象执行依赖",
+  "基于steps-to-execution的细粒度缓存淘汰策略",
+  "完全重叠的KV预取机制"
+ ],
+ "method_framework": "KVFlow通过Agent Step Graph抽象智能体执行顺序，结合steps-to-execution值指导缓存淘汰，并引入预取机制消除缓存缺失延迟",
+ "experiment_framework": "Qwen2.5-32B模型，H100 GPU，10阶段工作流，对比SGLang和vLLM，测量不同固定/动态/输出令牌组合下的延迟",
+ "takeaways": [
+  "工作流感知的缓存管理优于传统LRU策略",
+  "预取机制与状态感知调度可有效隐藏CPU-GPU传输延迟"
+ ],
+ "weaknesses": [
+  "高度不可预测的工作流中性能提升有限",
+  "需要显式标记固定提示部分或依赖启发式方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

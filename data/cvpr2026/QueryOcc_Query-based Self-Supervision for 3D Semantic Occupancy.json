@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/QueryOcc_Query-based Self-Supervision for 3D Semantic Occupancy.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/QueryOcc_Query-based Self-Supervision for 3D Semantic Occupancy.pdf",
+ "title": "QueryOcc Query-based Self-Supervision for 3D Semantic Occupancy",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "QueryOcc通过4D查询监督实现自监督3D占用预测，提升26%性能",
+ "innovations": [
+  "基于查询的自监督框架，直接在连续4D空间时间进行监督",
+  "有界场景表示，保持近场细节同时压缩远场",
+  "lift-contract-splat模块将图像特征提升到收缩BEV空间"
+ ],
+ "method_framework": "QueryOcc采用四阶段设计：图像编码、提升到收缩BEV、BEV特征处理、查询解码。通过独立4D查询实现几何和语义的联合监督，支持纯视觉和视觉-激光雷达混合监督。",
+ "experiment_framework": "在Occ3D-nuScenes基准上评估，使用RayIoU和IoU指标，比较自监督方法性能。QueryOcc达到11.6 FPS推理速度。",
+ "takeaways": [
+  "直接4D查询监督比渲染方法提供更明确的几何信号",
+  "收缩场景表示实现长程监督同时保持恒定内存",
+  "查询式解码器统一几何、语义和视觉特征蒸馏"
+ ],
+ "weaknesses": [
+  "对罕见类别（如自行车）性能较差",
+  "依赖外部深度预测模型和语义伪标签生成"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "3D占用预测与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

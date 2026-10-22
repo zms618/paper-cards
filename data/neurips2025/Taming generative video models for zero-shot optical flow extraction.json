@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Taming generative video models for zero-shot optical flow extraction.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Taming generative video models for zero-shot optical flow extraction.pdf",
+ "title": "Taming generative video models for zero-shot optical flow extraction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "KL-tracing利用生成模型预测分布提取光流，但泛化性有限",
+ "innovations": [
+  "KL-tracing方法通过KL散度预测分布而非RGB差异",
+  "发现生成式视频模型三个关键属性：分布预测、局部token化、随机访问解码",
+  "无需微调即可从预训练视频模型提取高质量光流"
+ ],
+ "method_framework": "基于反事实世界模型范式，在第一帧注入局部扰动，通过计算KL散度追踪扰动传播，实现光流提取",
+ "experiment_framework": "TAP-Vid DAVIS(真实世界)和Kubric(合成)数据集，与监督/自监督基线比较AD/AJ/<δxavg/OA指标",
+ "takeaways": [
+  "利用大模型隐含的运动理解能力可替代特定任务模型",
+  "模型架构设计对零样本任务提取至关重要",
+  "KL散度比RGB差异更能捕捉预测分布变化"
+ ],
+ "weaknesses": [
+  "仅适用于特定架构(LRAS)，泛化性有限",
+  "计算复杂度较高，需要多次前向传播",
+  "对极端运动和严重遮挡场景仍有挑战"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

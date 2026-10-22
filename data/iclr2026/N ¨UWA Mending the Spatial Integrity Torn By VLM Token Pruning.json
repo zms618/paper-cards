@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/N ¨UWA Mending the Spatial Integrity Torn By VLM Token Pruning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/N ¨UWA Mending the Spatial Integrity Torn By VLM Token Pruning.pdf",
+ "title": "Nüwa: Mending the Spatial Integrity Torn by VLM Token Pruning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "两阶段剪枝修复VLM空间定位，但与可靠性主线关联弱且提升有限。",
+ "innovations": [
+  "诊断出基于全局语义相似度/注意力分数的剪枝会丢失由token位置交互得到的全局空间参考系，导致VG崩塌",
+  "第一阶段在视觉编码器后做分离/对齐/聚合(受群智算法启发)以保留信息丰富的全局空间锚点",
+  "第二阶段在LLM内做文本引导剪枝保留任务相关视觉token，兼顾效率与空间完整性"
+ ],
+ "method_framework": "现有剪枝只保VQA语义却牺牲空间定位。Nüwa分两阶段：视觉编码器输出后，先按群智思路把token分离、对齐、聚合为少量全局空间锚点以维持空间参考系；进入LLM后，再依据文本query引导剪枝掉与任务无关的视觉token。既大幅减token，又不撕裂空间结构。",
+ "experiment_framework": "在多个VQA基准与视觉定位(VG)基准(RefCOCO系列等)上验证；对比现有视觉token剪枝方法；指标为VQA准确率与VG精度；报告VQA 94%→95%、VG 7%→47%的大幅改善。",
+ "takeaways": [
+  "视觉token剪枝的主要矛盾是效率与空间完整性的权衡，而非语义保持",
+  "保留全局空间锚点可让VG在剪枝后从近乎失效(7%)恢复到47%",
+  "两阶段(空间锚点+文本引导)比单阶段语义剪枝更稳健"
+ ],
+ "weaknesses": [
+  "主线是VLM推理效率优化，与鲁棒性/可信验证/幻觉抑制等可靠性落地主线关联弱",
+  "VG提升到47%仍远低于非剪枝水平，空间完整性只是部分修复",
+  "群智启发的分离/对齐/聚合模块引入额外计算，端到端加速比需看原文"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "VLM效率优化与空间完整性修复，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

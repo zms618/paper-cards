@@ -1,0 +1,41 @@
+{
+ "title": "TriC-Motion: Tri-Domain Causal Modeling Grounded Text-to-Motion Generation",
+ "one_line": "三域扩散模型加因果解耦，提升文本到运动生成质量。",
+ "innovations": [
+  "首次在text-to-motion中统一联合优化空间、时间、频域三域，弥补以往只做时空建模或独立频域分析的不足",
+  "设计三个域专属模块（时序运动编码、空间拓扑建模、混合频域分析）+分数引导的三域融合模块",
+  "提出基于因果的反事实运动解耦器，暴露并消除噪声引起的运动无关线索，解耦各域真实贡献"
+ ],
+ "method_framework": "扩散框架下分别用时序运动编码、空间拓扑建模、混合频域分析三模块建模；再用分数引导的三域融合整合时序一致性、空间拓扑、运动趋势与动力学。因果反事实解耦器通过反事实干预消除与运动无关的噪声线索，避免其纠缠于正贡献特征导致运动失真。",
+ "experiment_framework": "在HumanML3D等text-to-motion基准评测；对比SOTA motion diffusion方法；指标为R@1/R@2/FID等；报告HumanML3D上R@1达0.612，优于SOTA，生成高保真、连贯、多样且文本对齐。",
+ "takeaways": [
+  "联合空间-时间-频域建模比单一域建模更能提升运动生成质量",
+  "因果反事实解耦可消除噪声引起的运动无关线索，减少运动失真",
+  "分数引导三域融合同时保证时序一致、空间拓扑与运动动力学"
+ ],
+ "weaknesses": [
+  "三模块+融合+解耦使架构较复杂，计算与实现成本高",
+  "因果反事实解耦的因果假设与噪声建模较启发式，理论保证有限",
+  "主要在HumanML3D等标准数据集验证，对真实人体捕捉/复杂长时动作的泛化证据有限"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/TRIC-MOTION_Tri-Domain Causal Modeling Grounded Text-to-Motion Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TRIC-MOTION_Tri-Domain Causal Modeling Grounded Text-to-Motion Generation.pdf",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "raw_overall": 5.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "因果反事实解耦与可靠性主线交织，提升生成质量",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

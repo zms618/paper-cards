@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/UnReflectAnything_RGB-Only Highlight Removal by Rendering Synthetic Specular Supervision.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/UnReflectAnything_RGB-Only Highlight Removal by Rendering Synthetic Specular Supervision.pdf",
+ "title": "UnReflectAnything RGB-Only Highlight Removal by Rendering Synthetic Specular Supervision",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.6
+ },
+ "one_line": "RGB高光去除，虚拟监督与token修复结合",
+ "innovations": [
+  "虚拟高光合成：利用单目几何和菲涅尔渲染生成物理合理的高光监督",
+  "token级修复：在特征空间直接重建被高光污染的DINOv3 token",
+  "混合几何与像素级监督：统一训练方案确保边界一致性和跨域鲁棒性"
+ ],
+ "method_framework": "基于冻结DINOv3编码器，预测高光图并标记特征区域，通过token修复模块重建漫反射特征，最后解码为无高光图像，配合虚拟高光合成提供监督信号。",
+ "experiment_framework": "在PSD/SHIQ/SSHR等数据集上评估，使用MSEm/PSNR/SSIM等指标，对比DHAN-SHR/SpecularityNet等基线，并在自然和外科图像域验证泛化能力。",
+ "takeaways": [
+  "虚拟高光合成解决了无配对监督问题",
+  "token级修复在特征空间重建有效保留全局上下文",
+  "混合监督策略确保边界一致性和跨域鲁棒性"
+ ],
+ "weaknesses": [
+  "依赖单目几何估计的准确性",
+  "对原始图像中已存在的高光处理有限",
+  "计算复杂度较高，推理速度可能受限"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "高光去除技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

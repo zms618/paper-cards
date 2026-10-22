@@ -1,0 +1,41 @@
+{
+ "title": "Temporal Representations for Exploration: Learning Complex Exploratory Behavior without Extrinsic Rewards",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "时序对比表征引导无奖励探索，但方法创新有限且未解决噪声问题",
+ "innovations": [
+  "主张探索应使用反映时间结构的时序对比表征，而非需要完整状态重建的表征，从而避免重建的计算代价",
+  "用‘未来不可预测性’作为探索信号，优先访问对环境知识有增量的状态",
+  "直接基于时序相似性（而非准度量距离学习或情景记忆机制）驱动探索，策略更简单却能在无外在奖励下学到传统需奖励才能出现的探索行为"
+ ],
+ "method_framework": "先用时序对比学习学出对任意 Q 函数是充分统计量的表征(等价于核化后继表示)；在该表征空间中度量状态未来的不可预测性，把不可预测性高的状态作为内在探索奖励，引导智能体访问有信息增量的状态。",
+ "experiment_framework": "运动(locomotion)、操作(manipulation)、具身 AI 任务；无外在奖励设定；对比准度量/情景记忆等内在探索方法；指标为学到的复杂探索行为与后续任务性能。",
+ "takeaways": [
+  "时序对比表征天然是后继表示，适合作为探索的度量空间",
+  "以未来不可预测性驱动探索，无需外在奖励也能浮现复杂探索行为",
+  "直接用时序相似性比显式距离学习更简单且同样有效"
+ ],
+ "weaknesses": [
+  "探索信号基于表征空间中的预测误差，易在高维/可逆环境中遭遇‘噪声TV/不可达状态’误导，未充分讨论如何处理噪声主导的伪不可预测",
+  "方法是内在动机探索思路的简化组合，相对既有计数/伪计数/信息增益方法的净优势在论文前 9 页展示有限",
+  "relevance 给 5：属 RL 内在探索/无监督 RL，与可靠性(验证/不确定性/幻觉)×落地域(医学影像/多模态推理)主线无关，按规则给低分"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Temporal Representations for Exploration Learning Complex Exploratory Behavior With-out Extrinsic Rewards.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Temporal Representations for Exploration Learning Complex Exploratory Behavior With-out Extrinsic Rewards.pdf",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "RL内在探索与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

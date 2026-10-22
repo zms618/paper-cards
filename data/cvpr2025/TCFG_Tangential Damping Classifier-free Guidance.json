@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/TCFG_Tangential Damping Classifier-free Guidance.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/TCFG_Tangential Damping Classifier-free Guidance.pdf",
+ "title": "TCFG Tangential Damping Classifier-free Guidance",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "SVD分解分数改进扩散模型生成，但泛化与理论分析不足",
+ "innovations": [
+  "利用几何视角分析无条件分数",
+  "通过SVD过滤奇异向量对齐条件与非条件分数",
+  "提出切向阻尼分类器自由引导(TCFG)"
+ ],
+ "method_framework": "在扩散模型采样过程中，对条件与非条件分数矩阵进行SVD分解，保留高奇异值对应的法向分量，丢弃切向分量，减少分数间不对齐",
+ "experiment_framework": "MS-COCO和ImageNet数据集，Stable Diffusion v1.5/SDXL/SD3/DiT模型，FID、CLIPScore、sFID等指标",
+ "takeaways": [
+  "无条件分数的切向分量与条件分数不对齐导致生成偏离流形",
+  "SVD分解可有效识别并过滤这种不对齐",
+  "方法简单且计算开销小"
+ ],
+ "weaknesses": [
+  "未深入分析不同数据集上的泛化能力",
+  "未探讨方法在高维复杂任务上的计算效率",
+  "理论分析主要基于假设而非严格证明"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型生成技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

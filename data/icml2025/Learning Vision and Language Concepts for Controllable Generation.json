@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning Vision and Language Concepts for Controllable Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning Vision and Language Concepts for Controllable Generation.pdf",
+ "title": "Learning Vision and Language Concepts for Controllable Image Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "形式化多模态概念可识别性，用于可控图像生成与编辑",
+ "innovations": [
+  "首次建立多模态原子概念学习的可识别性理论框架，将概念学习形式化为隐变量识别问题",
+  "推导了从多模态分布中可识别出原子视觉/语言概念及其相互作用的基本条件",
+  "将学到的可解释概念用于可控T2I生成和图像编辑，实现选择性地修改单个概念而保持其他不变"
+ ],
+ "method_framework": "将图像和文本中的原子概念建模为隐变量（各模态有各自的概念变量），概念间有相互作用。在满足特定条件（如非线性独立成分分析类假设）下，证明这些隐变量是可识别的——即可以从多模态观测数据中唯一恢复出原子概念。基于可识别的概念表示，训练可控生成模型：通过操作特定概念变量实现解耦的图像编辑。",
+ "experiment_framework": "对比基线包括现有T2I方法（Stable Diffusion等）和概念发现方法；任务包括可控图像生成、解耦图像编辑；指标包括生成图像质量、概念解耦度、编辑一致性；在合成和真实多模态数据集上验证。",
+ "takeaways": [
+  "多模态数据中的原子概念在特定可识别性条件下是可以无歧义恢复的",
+  "可识别的概念表示能实现真正解耦的可控生成——修改一个概念不影响其他",
+  "理论可识别性保证为多模态概念学习提供了比启发式方法更坚实的基础"
+ ],
+ "weaknesses": [
+  "可识别性条件在真实多模态数据中是否严格满足存疑",
+  "概念数量和粒度需要预先指定或从数据中估计，自动发现概念层级的能力有限",
+  "与主流大规模T2I模型（如SDXL、DALL-E）的集成方式未充分展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

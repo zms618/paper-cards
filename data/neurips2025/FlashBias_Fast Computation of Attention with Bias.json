@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/FlashBias_Fast Computation of Attention with Bias.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/FlashBias_Fast Computation of Attention with Bias.pdf",
+ "title": "FlashBias: Fast Computation of Attention with Bias",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "低秩分解加速带偏置注意力，但引入近似误差且通用性有限",
+ "innovations": [
+  "基于低秩压缩感知理论证明注意力效率与矩阵秩的关系",
+  "提出FlashBias框架实现带偏置注意力的快速精确计算",
+  "设计三种分解方法处理不同类型的注意力偏置"
+ ],
+ "method_framework": "FlashBias将偏置矩阵分解为两个低秩因子张量，通过矩阵乘法替代原始偏置计算，减少HBM访问次数，实现1.5-2倍加速。",
+ "experiment_framework": "在语言模型、视觉模型和科学模型上测试，与FlashAttention和FlexAttention对比，测量内存使用和运行时间。",
+ "takeaways": [
+  "低秩分解是解决密集偏置矩阵IO瓶颈的有效方法",
+  "Flash orthogonal于现有注意力掩码加速技术"
+ ],
+ "weaknesses": [
+  "神经分解方法引入近似误差",
+  "仅适用于特定类型的偏置，通用性有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

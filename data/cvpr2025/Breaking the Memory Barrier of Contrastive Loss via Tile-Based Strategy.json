@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Breaking the Memory Barrier of Contrastive Loss via Tile-Based Strategy.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Breaking the Memory Barrier of Contrastive Loss via Tile-Based Strategy.pdf",
+ "title": "Breaking the Memory Barrier of Contrastive Loss via Tile-Based Strategy",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "瓦片策略降低对比损失内存占用，但通信开销和应用验证不足",
+ "innovations": [
+  "瓦片式对比损失计算避免全相似矩阵实例化",
+  "多级瓦片实现利用分布式系统层次结构",
+  "结合环通信和CUDA核心融合内核优化同步和I/O开销"
+ ],
+ "method_framework": "将对比损失计算分解为小块，避免全相似矩阵实例化，通过多级瓦片策略在GPU间和GPU内并行计算，利用LSE的累积特性减少内存使用",
+ "experiment_framework": "Laion400M数据集，ViT-L/14架构，对比CLIP和OpenCLIP基线，评估内存消耗、最大批处理大小和训练速度",
+ "takeaways": [
+  "瓦片式计算可将内存复杂度从O(b²)降至O(b/n²)",
+  "多级瓦片策略平衡内存减少与计算速度",
+  "数据卸载策略可进一步扩展批处理大小"
+ ],
+ "weaknesses": [
+  "未充分讨论在极端大规模分布式系统中的通信开销",
+  "未提供在医学影像等特定领域的应用验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "内存优化技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

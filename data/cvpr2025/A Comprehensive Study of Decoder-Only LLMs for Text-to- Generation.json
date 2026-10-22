@@ -1,0 +1,43 @@
+{
+ "key": "cvpr2025/A Comprehensive Study of Decoder-Only LLMs for Text-to- Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Comprehensive Study of Decoder-Only LLMs for Text-to- Generation.pdf",
+ "title": "A Comprehensive Study of Decoder-Only LLMs for Text-to-Image Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "隔离实验发现LLM末层嵌入次优，归一化平均显著提升T2I性能。",
+ "innovations": [
+  "构建只替换文本编码器、其余架构与训练配方完全固定的标准化 SD2 流水线，训练 27 个 T2I 模型覆盖 12 种文本编码器，把「文本表示」这一变量从架构/数据/算力中隔离出来。",
+  "定位出 decoder-only LLM 末层嵌入反而劣于 T5 的具体缺口：Mistral-7B 末层 VQAScore 0.675 vs T5-XXL 0.741，差距集中在 Counting/Differentiation/Comparison/Negation/Universality 五类高级视语推理技能；且中间层（第 15 层 0.725）优于末层（0.675）。",
+  "提出对所有层先 layer-normalize 再取平均的 norm avg 条件嵌入，Mistral 0.675→0.769、bge-Gemma2 0.737→0.789，反超 T5；机理上归因于 decoder-only 末层被 next-token prediction 目标专化，而 T5 层层递进使同样操作几乎无增益（0.741→0.747）。"
+ ],
+ "method_framework": "固定 SD2 的 U-Net latent diffusion、冻结 autoencoder，在 cross-attention 前加 1024 维线性投影对齐不同编码器的嵌入维度；每个实验仅替换文本编码器，条件嵌入取全部层各自 layer-normalize 后的平均（norm avg）取代末层嵌入；评测用 GPT-4o 实现的 VQAScore。",
+ "experiment_framework": "LAION-Aesthetics 4600 万子集配 VFC 描述上采样，256×256、800K 迭代、32×A100；基线 CLIP-ViT-H/14 与 T5-XXL，对比 Mistral/Qwen2/Llama3/Gemma2 与 bge/gte/sfr 嵌入模型；GenAI-Bench 1600 prompts 的 VQAScore 十项技能分。",
+ "takeaways": [
+  "隔离式实验设计范本：一次只改一个变量（此处为文本编码器），并在发现 CFG 强度对分数的影响可能大于所研究变量后，反过来把 CFG 统一固定为 7.0 再做 apples-to-apples 对比——可直接照搬到任何「换模块」类对比实验。",
+  "「末层特征未必是最好的条件特征」：decoder-only 模型末层被下一词预测目标专化，中间层语义更平衡；做特征提取或条件注入时应先验地扫描层深而非默认取末层。",
+  "多来源特征聚合前先各自归一化（norm avg 0.769 > 直接 avg 0.731），防止单一层尺度主导聚合结果，是零成本且可迁移的工程细节。",
+  "按能力维度（GenAI-Bench 十类技能）而非单一总分报告，才能暴露「扩大规模并非均匀提升所有技能」这类被均值掩盖的结论。"
+ ],
+ "weaknesses": [
+  "无任何训练随机性度量：27 个模型各只训练一次（约 7 天/个），文中 ±0.003 仅是 GPT-4o 评测噪声而非训练方差，0.02–0.05 量级的差距无法判断显著性。",
+  "结论仅在 SD2 单一架构（U-Net、870M、256×256）上验证，未检验 norm avg 在 DiT 架构、更高分辨率或更大数据规模下是否仍成立。",
+  "层聚合只用等权平均，未探索加权或可学习聚合；作者自己也承认对嵌入模型采用 pooled 条件化「limited differences」，说明聚合策略未被充分挖掘。",
+  "正文 9 页截断，未见结论与局限性章节；Qwen2/Llama3 的层聚合结果被推至补充材料，无法核实是否所有 LLM 一致受益。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "文本编码器优化与可靠性主线无实质交点，但实验设计模式可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

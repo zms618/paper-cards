@@ -1,0 +1,36 @@
+{
+ "title": "Neighbour-Driven Gaussian Process Variational Autoencoders for Scalable Structured Latent Modelling",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "邻域近似GPVAE，渐进式改进，落地关联弱",
+ "innovations": [
+  "提出Hierarchical Prior Approximation(HPA)：在mini-batch中经分层机制局部选择邻域，稀疏化稠密GP协方差。",
+  "提出Sparse Precision Approximation(SPA)：把GP先验链式分解为仅含最近邻的条件分布。",
+  "两者配合灵活核、无需大量诱导点，在mini-batch amortized inference中保持关键潜依赖。"
+ ],
+ "method_framework": "在GPVAE的GP先验上借NNGP/Vecchia思想，利用结构化数据的局部邻接性：只计算每个点最近邻的协方差结构，分别用HPA(分层选邻域)与SPA(精度矩阵链式分解)近似稠密GP，融入amortized变分推断以扩展到大样本。",
+ "experiment_framework": "在表示学习、数据填补、条件生成三类任务上评测；对比限制核假设或依赖大量诱导点的GPVAE变体；指标为预测性能与计算效率，报告两者兼顾更优。",
+ "takeaways": [
+  "局部最近邻依赖即可捕获结构化数据的大部分GP相关结构。",
+  "邻域驱动近似可摆脱诱导点数量与刚性核假设的限制。"
+ ],
+ "weaknesses": [
+  "为NNGP近似在GPVAE上的迁移，新颖性属渐进式。",
+  "邻域大小/核带宽的选择对精度影响大，前9页未充分讨论自适应策略。",
+  "落地为结构化生成建模，与可靠性主线（医学影像/多模态大模型推理）关联弱，relevance中等偏低。"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Neighbour-Driven Gaussian Process Variational Autoencoders for Scalable Structured Latent Modelling.pdf",
+ "path": "icml2025/Neighbour-Driven Gaussian Process Variational Autoencoders for Scalable Structured Latent Modelling.pdf",
+ "conf": "icml2025",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

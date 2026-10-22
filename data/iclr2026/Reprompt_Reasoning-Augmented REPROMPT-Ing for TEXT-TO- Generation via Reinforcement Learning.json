@@ -1,0 +1,41 @@
+{
+ "title": "RePrompt: Reasoning-Augmented Reprompting for Text-to-Image Generation via Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "RL训练LLM自反思推理增强prompt，提升文生图布局忠实度。",
+ "innovations": [
+  "首次将显式推理(chain-of-thought)引入T2I prompt增强过程，通过RL以图像级结果为奖励端到端训练，无需人工标注推理轨迹。",
+  "设计T2I RePrompt奖励模型，从人类偏好、视觉真实感、语义对齐三维度集成奖励，为prompt生成提供间接监督。",
+  "在GenEval位置类别大幅提升(FLUX +77.1%、SD3 +78.8%、Pixart-Σ +122.2%)，且推理延迟比优化型基线低一个数量级(140s vs 30s)。"
+ ],
+ "method_framework": "把prompt增强建模为RL问题：LLM先对短prompt做分步自反思推理(在脑中模拟视觉含义、预判空间冲突/缺失实体)，再输出结构化增强prompt；用集成图像奖励模型打分作为反馈，端到端优化，避免多轮反复生成图像。",
+ "experiment_framework": "基准：GenEval(组合/空间布局)、T2I-Compbench(语义/属性绑定)；跨多种T2I骨干(FLUX、SD3、Pixart-Σ)与不同LLM；基线包括Qwen2.5-3B增强、Idea2Img等；指标为整体/各类别准确率与单图延迟。",
+ "takeaways": [
+  "在prompt构造阶段引入显式推理能有效弥合自然语言描述与视觉组合逻辑之间的鸿沟，减少空间关系与实体幻觉。",
+  "以图像级结果奖励端到端训练增强prompt，比手工规则或风格化改写更能带来真实、语义对齐的组合。",
+  "该方法在跨T2I骨干上迁移有效，且无需更大LLM或推理时昂贵优化，可扩展。"
+ ],
+ "weaknesses": [
+  "增益高度集中在GenEval位置/空间类别，对通用图像质量与美学的影响在节选页中缺乏全面量化。",
+  "奖励模型的三维打分本身存在偏好与对齐偏差，RL优化可能过拟合该奖励而非真实用户意图。",
+  "节选前9页未见与最新prompt增强方法的完整对比表及消融(推理是否必要、各奖励维度贡献)，证据链不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Reprompt_Reasoning-Augmented REPROMPT-Ing for TEXT-TO- Generation via Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reprompt_Reasoning-Augmented REPROMPT-Ing for TEXT-TO- Generation via Reinforcement Learning.pdf",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "仅提升文生图布局忠实度，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

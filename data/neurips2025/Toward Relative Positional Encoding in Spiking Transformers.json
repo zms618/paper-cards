@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Toward Relative Positional Encoding in Spiking Transformers.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Toward Relative Positional Encoding in Spiking Transformers.pdf",
+ "title": "Toward Relative Positional Encoding in Spiking Transformers",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "Gray/Log位置编码与XNOR注意力，提升脉冲Transformer性能有限",
+ "innovations": [
+  "Gray-PE：利用Gray Code性质保证相对距离为2^n的位置具有恒定汉明距离",
+  "Log-PE：将相对距离矩阵的对数形式直接融入脉冲注意力图",
+  "XNOR-based SSA：替换点积操作为XNOR逻辑操作，更适合二进制脉冲矩阵"
+ ],
+ "method_framework": "基于脉冲神经网络的二进制特性，提出两种相对位置编码方法：Gray-PE利用Gray Code性质，Log-PE采用对数距离映射，并扩展到二维形式用于图像块处理。",
+ "experiment_framework": "在时间序列预测、文本分类和图像分类任务上评估，使用Spikformer、Spike-driven Transformer和QKFormer作为骨干架构，比较多种位置编码方法。",
+ "takeaways": [
+  "脉冲神经网络中相对位置编码的设计需考虑二进制特性",
+  "XNOR操作更适合脉冲矩阵的距离计算",
+  "Gray Code在脉冲Transformer中能有效捕获相对位置关系"
+ ],
+ "weaknesses": [
+  "Gray-PE在长序列或对长距离依赖敏感的任务中表现受限",
+  "Log-PE的二维形式因数值过大导致无法收敛",
+  "直接将传统RPE方法(如RoPE、ALiBi)应用于脉冲Transformer效果不佳"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

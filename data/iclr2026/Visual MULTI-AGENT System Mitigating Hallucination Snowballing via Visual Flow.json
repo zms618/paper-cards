@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Visual MULTI-AGENT System Mitigating Hallucination Snowballing via Visual Flow.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Visual MULTI-AGENT System Mitigating Hallucination Snowballing via Visual Flow.pdf",
+ "title": "Visual Multi-Agent System: Mitigating Hallucination Snowballing via Visual Flow",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 6.5,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 7.0
+ },
+ "one_line": "识别多智能体视觉幻觉滚雪球现象，提出视觉流传递缓解方案",
+ "innovations": [
+  "首次识别并定义多智能体视觉幻觉滚雪球(multi-agent visual hallucination snowballing)现象：早期agent的视觉错误被后续agent通过文本信息流放大传播",
+  "通过turn/layer/token三维注意力分析，发现中层具有单峰注意力峰值的视觉token最能保留视觉证据，但在后续agent轮次中逐渐衰减",
+  "提出ViF范式：选择视觉中继token并通过注意力重分配放大，在agent间直接传递视觉流(Visual Flow)而非仅依赖文本流"
+ ],
+ "method_framework": "首先通过系统的注意力分析揭示幻觉滚雪球的机制：多agent协作中纯文本信息流压缩了视觉特征，早期幻觉被后续agent当作权威证据放大。基于此发现，ViF方法识别出中层具有单峰注意力峰值的视觉token作为视觉中继token，在agent间传递消息时不仅传递文本，还通过这些选中的视觉token直接传递视觉证据。同时施加注意力重分配机制，强化这些视觉中继token在后续轮次中的注意力权重，防止视觉证据逐渐衰减。方法轻量、模型无关，可嵌入多种MAS结构。",
+ "experiment_framework": "基准：8个多模态推理基准。MAS结构：4种常见多智能体系统结构。基座模型：10个不同VLM。基线：现有单agent幻觉缓解方法、纯文本信息流MAS。指标：视觉幻觉率、任务准确率。",
+ "takeaways": [
+  "多智能体视觉幻觉滚雪球是一个新的可靠性问题，仅缓解单agent幻觉无法解决传播放大效应",
+  "纯文本信息流是幻觉传播的核心渠道，直接在agent间传递视觉证据能有效打断滚雪球链条",
+  "ViF方法在多种MAS结构和基座模型上一致提升性能，具有良好的通用性"
+ ],
+ "weaknesses": [
+  "视觉中继token的选择依赖中层单峰注意力假设，对不同架构模型的适配性可能有差异",
+  "方法增加了agent间视觉token传递的通信开销",
+  "主要验证在推理类任务上，对其他类型多agent协作任务的效果未充分展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "多智能体幻觉缓解属于可靠性主线，但未直接触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

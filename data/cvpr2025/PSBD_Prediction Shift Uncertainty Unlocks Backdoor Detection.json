@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/PSBD_Prediction Shift Uncertainty Unlocks Backdoor Detection.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/PSBD_Prediction Shift Uncertainty Unlocks Backdoor Detection.pdf",
+ "title": "PSBD Prediction Shift Uncertainty Unlocks Backdoor Detection",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "利用预测漂移不确定性检测后门，但依赖特定dropout设置和干净数据",
+ "innovations": [
+  "发现预测漂移(PS)现象，中毒模型对干净数据的预测在dropout下会偏向特定标签",
+  "提出神经元偏置效应解释PS现象，后门样本与干净样本在dropout下特征相似",
+  "设计预测漂移不确定性(PSU)指标，有效区分干净和后门训练样本"
+ ],
+ "method_framework": "PSBD方法通过计算启用和禁用dropout时的预测置信度差异(PSU)来识别后门样本。自适应选择dropout率，使干净数据的PS达到高强度而后门数据保持低强度，基于PSU阈值检测后门样本。",
+ "experiment_framework": "在CIFAR-10和Tiny ImageNet数据集上评估，对比BadNets和WaNet攻击方法，使用ResNet-18和VGG架构，测量检测准确率和误报率。",
+ "takeaways": [
+  "利用模型内在不确定性而非输入数据变化进行后门检测",
+  "自适应dropout率选择策略无需后门攻击先验知识",
+  "数据增强可强化神经元偏置效应提高检测效果"
+ ],
+ "weaknesses": [
+  "方法依赖于特定dropout率的设置，可能对某些攻击类型效果不佳",
+  "需要额外的干净验证数据，在实际应用中可能受限"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "后门检测属于可靠性主线，且方法设计有可迁移的不确定性度量模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

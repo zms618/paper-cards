@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Gogo Group-Wise Granularity-Ordered Codec.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Gogo Group-Wise Granularity-Ordered Codec.pdf",
+ "title": "Gogo: GROUP-WISE GRANULARITY-ORDERED Codec",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "组级粒度有序编解码器，提升语音生成效率与质量",
+ "innovations": [
+  "组级粒度有序编解码设计",
+  "两阶段语音生成模型",
+  "GRPO训练的令牌分配器",
+  "自适应令牌预算分配"
+ ],
+ "method_framework": "Gogo编解码器将语音分组处理，生成从粗到细的令牌；GogoSpeech采用两阶段生成，先构建低令牌率语音骨架，再添加细节；GRPO训练的令牌分配器根据组复杂度动态分配令牌预算。",
+ "experiment_framework": "在LibriTTS测试集评估编解码性能，在Seed-TTS测试集评估零样本TTS能力，使用UT-MOS、DNS-MOS、STOI、PESQ等指标。",
+ "takeaways": [
+  "组级量化比帧级量化更适合自回归建模",
+  "粒度有序设计使粗粒度令牌捕获高级信息，细粒度令牌恢复细节",
+  "自适应令牌分配可提高效率"
+ ],
+ "weaknesses": [
+  "组大小固定可能限制对不同语音段的适应性",
+  "令牌分配器的训练依赖于Gogo，可能存在误差传递",
+  "实验主要在英文语音上进行，多语言泛化能力未充分验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "语音编解码技术，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

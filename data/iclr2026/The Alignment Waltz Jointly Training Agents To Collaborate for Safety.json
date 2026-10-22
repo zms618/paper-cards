@@ -1,0 +1,41 @@
+{
+ "title": "The Alignment Waltz: Jointly Training Agents to Collaborate for Safety",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "多智能体协作对齐框架，降低越狱与拒答率但未解决隐蔽攻击与部署成本",
+ "innovations": [
+  "把安全对齐重新表述为对话智能体与反馈智能体的协作正和博弈，二者联合训练而非用一刀切的安全审核模型",
+  "提出动态改进奖励(DIR)：随对话智能体采纳反馈的程度动态演化，鼓励反馈智能体给出真正能提升安全与有用性的建议",
+  "推理时反馈智能体按需自适应介入，改进而非丢弃不安全/过度拒答回复，在安全与有用性间推进 Pareto 前沿且不损通用能力"
+ ],
+ "method_framework": "对话智能体负责回答，反馈智能体针对其回复给出改进建议；二者用 DIR 联合 RL：奖励随对话智能体是否真正吸收反馈而变化；安全查询时反馈智能体不介入以保持低延迟，仅在检测到不安全或过度拒答时自适应触发改进。",
+ "experiment_framework": "五个多样化数据集；指标为不安全回复率(WildJailbreak 39.0%→4.6%)与过度拒答率(OR-Bench 45.3%→9.9%)，并检验通用能力不下降；对比多种安全对齐/审核基线。",
+ "takeaways": [
+  "用协作反馈而非一刀切拒绝，能同时大幅降低不安全回复与过度拒答",
+  "动态改进奖励让反馈建议真正被采纳，而非空谈式批评",
+  "反馈智能体按需自适应介入，兼顾安全、有用性与推理延迟"
+ ],
+ "weaknesses": [
+  "依赖一个独立反馈智能体做‘安全裁判’，其自身判断错误会被 DIR 放大传播；多智能体联合训练的稳定性与两智能体能力耦合未充分消融",
+  "效果在 jailbreak/过度拒答两类基准上显著，但对更隐蔽的多轮诱导、跨语言攻击的鲁棒性未覆盖；两个模型在线部署的额外成本/延迟仅定性说明",
+  "relevance 给 7：核心是对抗越狱鲁棒性与过度拒答的抑制，正落在可靠性/可信AI主线；但落地域是通用 LLM 对话安全、非医学影像或多模态大模型推理任务，故不到 8+"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/The Alignment Waltz Jointly Training Agents To Collaborate for Safety.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The Alignment Waltz Jointly Training Agents To Collaborate for Safety.pdf",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "对抗越狱鲁棒性属可靠性主线，但未触及医学或多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

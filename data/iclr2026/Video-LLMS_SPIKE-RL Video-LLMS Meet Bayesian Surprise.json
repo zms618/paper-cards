@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Video-LLMS_SPIKE-RL Video-LLMS Meet Bayesian Surprise.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Video-LLMS_SPIKE-RL Video-LLMS Meet Bayesian Surprise.pdf",
+ "title": "SPIKE-RL: Video-LLMs Meet Bayesian Surprise",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "贝叶斯惊讶度加权帧采样，提升视频LLM性能但依赖假设设计",
+ "innovations": [
+  "提出SPIKE推理时框架：将Video-LLM的信念表示为对文本假设的概率分布，用贝叶斯惊讶度（先验与后验信念的KL散度）量化视频中的意外时刻",
+  "提出SPIKE-RL：用GRPO强化学习优化信念假设的生成，基于视频字幕奖励信号提升惊讶检测准确性",
+  "实现查询无关的惊讶加权帧采样——无需预先知道问题即可主动聚焦有趣时刻，在5个下游基准上一致提升性能"
+ ],
+ "method_framework": "SPIKE将Video-LLM对视频内容的信念显式表示为对一组人类可解释文本假设的概率分布。每来一帧新视觉证据，计算信念更新（先验→后验）的KL散度作为贝叶斯惊讶度。高惊讶度时刻即为偏离预期的关键事件。SPIKE-RL进一步用GRPO训练模型，使其生成的信念假设更能导向准确的视频字幕，从而提升惊讶检测质量。最终用惊讶度加权指导帧采样，给有趣时刻分配更多采样帧。",
+ "experiment_framework": "任务：视频理解下游任务（5个基准）。惊讶检测评测：FunQA（正面惊讶）、Oops!（负面惊讶），与人类判断相关性。基线：均匀帧采样、查询相关帧选择方法。方法：SPIKE（推理时）+ SPIKE-RL（RL优化后）。",
+ "takeaways": [
+  "贝叶斯惊讶度能有效定位视频中的关键意外时刻，与人类惊讶判断高度相关",
+  "基于惊讶度的主动帧采样比均匀采样更高效，在相同帧预算下提升下游任务性能",
+  "查询无关的主动注意力分配使模型能提前聚焦重要内容，无需等待下游查询"
+ ],
+ "weaknesses": [
+  "信念表示依赖文本假设生成，假设空间的设计和覆盖度影响惊讶检测的准确性",
+  "推理时需要逐步跟踪信念更新，增加了计算开销",
+  "主要在日常/喜剧类视频上验证，对其他类型视频（如监控、教学）的适用性未展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "贝叶斯惊讶度提升视频LLM性能，属于可靠性主线方法设计研习轴",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

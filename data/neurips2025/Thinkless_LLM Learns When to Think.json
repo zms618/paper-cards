@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Thinkless_LLM Learns When to Think.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Thinkless_LLM Learns When to Think.pdf",
+ "title": "Thinkless: LLM Learns When to Think",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "LLM通过控制token自适应选择推理模式，减少计算量",
+ "innovations": [
+  "Decoupled Group Relative Policy Optimization (DeGRPO)算法",
+  "双阶段训练框架（蒸馏预训练+强化学习）",
+  "控制token机制实现推理模式自适应选择"
+ ],
+ "method_framework": "通过两个控制token<short>和$引导模型选择短或长推理模式，DeGRPO算法分离控制token和响应token的优化目标，解决训练不平衡问题",
+ "experiment_framework": "数学数据集(AIME, Minerva Algebra, MATH-500, GSM8K)，对比基线包括DeepSeek-R1-Distill-Qwen-1.5B、Qwen2.5-Math-1.5B-Instruct等，评估指标为Pass@1和token使用量",
+ "takeaways": [
+  "DeGRPO算法有效解决训练过程中的模式崩溃问题",
+  "U型学习曲线揭示了模型训练的动态过程"
+ ],
+ "weaknesses": [
+  "仅评估数学任务，泛化性未充分验证",
+  "未分析不同难度阈值的具体设定机制"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

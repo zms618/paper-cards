@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Cradle Empowering Foundation Agents Towards General Computer Control.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Cradle Empowering Foundation Agents Towards General Computer Control.pdf",
+ "title": "CRADLE: Empowering Foundation Agents Towards General Computer Control",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "模块化框架实现跨软件控制，但效果有限且依赖闭源模型",
+ "innovations": [
+  "提出GCC设定：以人类统一界面(截图输入、键鼠输出)与任意计算机软件交互，不依赖内置API",
+  "六模块模块化框架：信息收集、自我反思、任务推断、技能管理、动作规划、记忆，覆盖长时程任务全流程",
+  "首个在AAA 3D游戏(RDR2)中完成主线剧情任务的LLM智能体，同时在5个日常软件和OSWorld基准上验证"
+ ],
+ "method_framework": "CRADLE六模块：(1)信息收集：从截图提取关键UI元素和文本信息；(2)自我反思：回顾上一步成败并分析原因；(3)任务推断：根据当前观察决定继续当前任务或切换新任务；(4)技能管理：生成/检索/更新可复用技能(代码片段)；(5)动作规划：基于技能生成具体键鼠操作代码；(6)记忆：情景记忆(存储历史经验)+程序记忆(存储技能)。所有模块由LMM驱动。",
+ "experiment_framework": "评测4款商业游戏(RDR2、星露谷物语、城市天际线、Dealer's Life 2)和5款软件(Chrome、Outlook、飞书、美图、CapCut)；另在OSWorld基准上评测；指标为任务完成率；与web agent、mobile agent等基线对比。",
+ "takeaways": [
+  "CRADLE是首个在AAA游戏中跟随主线剧情完成1小时以上真实任务的LMM智能体",
+  "统一截图+键鼠界面使智能体可零修改迁移到任意软件，无需为每个软件设计专用API",
+  "模块化设计使长时程任务分解为可管理的子任务，显著提升复杂场景成功率"
+ ],
+ "weaknesses": [
+  "依赖商用LMM(GPT-4V等)，成本高，开源模型上的效果未验证",
+  "键鼠精确控制的延迟和精度问题未充分讨论",
+  "任务成功率仍较低，远未达到人类水平，框架的实际可用性有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

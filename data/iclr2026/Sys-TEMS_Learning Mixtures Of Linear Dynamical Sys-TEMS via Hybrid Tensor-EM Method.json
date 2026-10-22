@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Sys-TEMS_Learning Mixtures Of Linear Dynamical Sys-TEMS via Hybrid Tensor-EM Method.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sys-TEMS_Learning Mixtures Of Linear Dynamical Sys-TEMS via Hybrid Tensor-EM Method.pdf",
+ "title": "Learning Mixtures of Linear Dynamical Systems via Hybrid Tensor-EM Method",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "混合张量-EM方法结合全局可辨识性与EM精炼，应用于神经数据分析。",
+ "innovations": [
+  "提出基于输入输出数据构造矩张量的方法，通过同时矩阵对角化恢复混合权重和系统参数的全局一致估计",
+  "将张量矩方法与Kalman EM算法结合，先用张量方法获得好的初始化，再用EM精炼，克服纯EM易陷局部最优的问题",
+  "在灵长类运动任务神经数据集上验证，成功将不同条件聚类为独立子系统"
+ ],
+ "method_framework": "混合Tensor-EM方法分两阶段：1）张量矩阶段：从输入输出数据构造高阶矩张量，应用同时矩阵对角化（SMD）恢复混合成分的系统参数和权重，提供全局可辨识性保证；2）EM精炼阶段：以张量估计为初始化，运行完整的Kalman EM算法，闭式更新所有LDS参数，进一步提升拟合精度。",
+ "experiment_framework": "在合成基准和两个真实神经数据集（非人灵长类到达任务）上评估；对比纯张量方法和随机初始化EM方法；指标为参数恢复精度和聚类准确性。",
+ "takeaways": [
+  "张量矩方法提供的全局初始化显著改善了EM的收敛质量，避免了差的局部最优",
+  "混合LDS框架能有效建模神经数据中不同条件下的动态异质性",
+  "SMD方法在含噪场景下的鲁棒性优于纯矩方法"
+ ],
+ "weaknesses": [
+  "矩张量构造的计算复杂度随维度增长较快，高维神经数据的可扩展性未充分验证",
+  "实验主要在神经科学数据上验证，其他时序领域的适用性未知",
+  "混合成分数量的自动确定方法未探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 4.98,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "神经数据分析方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

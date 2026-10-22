@@ -1,0 +1,35 @@
+{
+ "title": "Self-Supervised Transformers as Iterative Solution Improvers for Constraint Satisfaction",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4,
+  "overall": 5.25
+ },
+ "one_line": "可微约束惩罚自监督Transformer，迭代精修CSP解，但扩展性未验证",
+ "innovations": [
+  "用离散约束的可微近似惩罚作自监督损失，无需可行解标签(监督)或手工奖励(RL)",
+  "单步训练(从随机分配改进一步)+测试时迭代部署，模仿局部搜索，绕开监督/RL瓶颈",
+  "靠增加迭代次数即可泛化到分布外(OOD) CSP实例，Sudoku上OOD泛化超现有神经方法"
+ ],
+ "method_framework": "把CSP变量分配token化喂入Transformer；训练时对随机初始分配做一步精修，损失=各离散约束违反的可微惩罚之和；测试时把上一步输出作为下一步输入反复迭代，直到可行或达迭代上限。",
+ "experiment_framework": "Sudoku/Graph Coloring/Nurse Rostering/MAXCUT；对比监督与RL神经CSP求解器；指标OOD实例求解率；报告OOD上SOTA，靠更多迭代解更大/更难实例。",
+ "takeaways": [
+  "可微约束惩罚可作自监督信号，摆脱对可行解标签与专家奖励的依赖",
+  "单步训练+迭代部署是泛化到OOD组合问题的有效范式"
+ ],
+ "weaknesses": [
+  "可微惩罚是离散约束的松弛，其梯度与真实可行性的对应关系不严格",
+  "relevance偏离可靠性主线；迭代次数随实例规模增长，求解时间的扩展性未充分报告"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Self-Supervised Transformers as Iterative Solution Improvers for Constraint Satisfaction.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Self-Supervised Transformers as Iterative Solution Improvers for Constraint Satisfaction.pdf",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Perception in Reflection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Perception in Reflection.pdf",
+ "title": "Perception in Reflection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "双模型反思机制+RPL训练提升LVLM视觉感知，但开销大且依赖critic质量",
+ "innovations": [
+  "提出reflection感知范式：双模型(policy生成/critic评判)交替，迭代精炼视觉感知",
+  "提出反射式感知学习(RPL)：构造系统化视觉反思数据集+反射式不像训练，强化内在反思能力",
+  "即便无RPL，反思机制本身已带来收益，RPL进一步放大初始轮表现"
+ ],
+ "method_framework": "模拟人类'感知-反馈'循环：policy模型先给出首轮感知描述，critic模型指出其正确/遗漏，policy据此反思再看并精炼；通过构造视觉反思数据集与反射式不像训练(RPL)强化这种内在反思能力。支持不同critic(GPT-4o或LLaVA-Critic)，形成perceive-feedback闭环，逐步消除首轮幻觉、补全细节。",
+ "experiment_framework": "以LLaVA-1.5-13B为base；在图像理解、幻觉检测、详细描述多基准评测：DetailCaps(54% CAPTURE)、HallusionBench(51%)、GAVIE、LLaVAB；与DPO/LiPO等对齐方法及GPT-4o对比，并做消融。",
+ "takeaways": [
+  "policy-critic反思闭环在幻觉检测(HallusionBench)与详细描述(DetailCaps)上显著优于DPO/LiPO基线",
+  "RPL反射式不像训练进一步提升初始轮感知质量，减少首轮幻觉",
+  "方法对不同critic(GPT-4o/LLaVA-Critic)均自适应有效"
+ ],
+ "weaknesses": [
+  "双模型交替带来推理多轮开销与延迟，实际部署成本较高",
+  "critic质量显著影响上限，弱critic下反思收益受限",
+  "前9页未见完整大规模榜单，相对最新LVLM的增益幅度需完整表确认"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

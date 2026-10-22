@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Group-Level Data Selection for Efficient Pretraining.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Group-Level Data Selection for Efficient Pretraining.pdf",
+ "title": "Group-Level Data Selection for Efficient Pretraining",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "Group-MATES用关系模型做组级数据选择，提升预训练效率",
+ "innovations": [
+  "提出关系数据影响模型参数化组级选择",
+  "结合rollout策略和bootstrap训练关系影响模型",
+  "基于关系权重的聚类实现高效推理"
+ ],
+ "method_framework": "Group-MATES使用关系数据影响模型参数化组级选择，通过rollout收集oracle影响，结合bootstrap训练模型，最后通过影响感知聚类实现高效推理",
+ "experiment_framework": "在DCLM 400M-4x、1B-1x和3B-1x上评估，对比随机选择、EDU分类器、WebOrganizer、MATES和Quad等基线，使用22个下游任务的Core分数作为主要指标",
+ "takeaways": [
+  "组级数据选择显著优于个体选择，能更好地捕捉数据点间的交互作用",
+  "关系权重在模型中扮演关键角色，能有效提升数据选择效果"
+ ],
+ "weaknesses": [
+  "方法依赖模型检查点进行多次rollout，计算开销较大",
+  "聚类方法可能忽略跨簇的重要关系信息"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "title": "Referring Layer Decomposition",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "多模态提示预测RGBA层，构建数据集与评估基线。",
+ "innovations": [
+  "形式化RLD任务：根据灵活用户提示(空间输入、自然语言或组合)预测完整(含被遮挡区域)RGBA层，实现对象中心的可控制编辑。",
+  "构建可扩展数据引擎与RefLade数据集(1.11M图像-层-提示三元组，含10万人工清洗层、1万 curated测试集)。",
+  "提出沿preservation/completion/faithfulness三轴、与人类判断强相关的自动评估协议；给出扩散基线RefLayer(颜色编码空间提示融合latent、并行alpha解码器)。"
+ ],
+ "method_framework": "空间提示用颜色编码图融合进扩散latent，语言提示经条件注入；扩散模型以并行alpha解码器预测目标对象的完整RGBA层(含遮挡补全)；训练由数据引擎自动生成三元组，评估用三轴自动指标并与人类偏好对齐。",
+ "experiment_framework": "自建RefLade基准；基线/对比既有层分解方法(MuLAn/Text2Layer/LayerDecomp)；指标为三轴自动指标与人评相关性、零样本泛化；辅以模型与数据引擎的消融。",
+ "takeaways": [
+  "对象中心的层表示比整体像素操作更利于精确、可组合的图像编辑。",
+  "多模态referring提示使同一图像可按用户意图解出不同粒度的目标层。",
+  "配套的大规模数据集与人类对齐评估协议使RLD成为可训练、可基准化的新任务。"
+ ],
+ "weaknesses": [
+  "贡献集中在新任务/数据集/基线，非可靠性方法，与验证器/不确定性主线关联弱。",
+  "含被遮挡区域的完整层预测精度依赖合成监督，真实遮挡补全的正确性难严格验证。",
+  "节选前9页未见三轴指标的完整数值表及与既有方法的系统对比，'高保真'结论在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Referring Layer Decomposition.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Referring Layer Decomposition.pdf",
+ "raw_overall": 6.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "多模态图像编辑任务，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

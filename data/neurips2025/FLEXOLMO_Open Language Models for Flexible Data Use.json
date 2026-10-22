@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/FLEXOLMO_Open Language Models for Flexible Data Use.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/FLEXOLMO_Open Language Models for Flexible Data Use.pdf",
+ "title": "FLEXOLMO: Open Language Models for Flexible Data Use",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "MoE架构实现分布式训练与领域感知路由，但创新有限",
+ "innovations": [
+  "基于MoE的分布式训练架构，无需数据共享",
+  "领域感知的路由机制，支持灵活推理时数据选择",
+  "协调训练算法，确保独立训练专家的有效集成"
+ ],
+ "method_framework": "FLEXOLMO采用MoE架构，每个专家在本地数据上独立训练，通过共享公共模型作为锚点实现协调，使用领域嵌入初始化路由器，支持灵活添加/移除专家模块。",
+ "experiment_framework": "在FLEXMIX数据集（公共数据+7个领域特定数据集）上训练，评估31个下游任务，与模型汤、BTM、BTX等方法对比，并计算与无限制MoE的性能差距。",
+ "takeaways": [
+  "独立训练专家通过协调算法可有效集成",
+  "MoE架构的稀疏激活是性能提升的关键",
+  "领域感知路由器支持细粒度数据访问控制"
+ ],
+ "weaknesses": [
+  "需要选择代理数据集进行可选路由器微调",
+  "专家数量增加可能导致路由决策复杂度上升",
+  "未充分探索不同领域数据规模差异的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Policy Contrastive Decoding for Robotic Foundation Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Policy Contrastive Decoding for Robotic Foundation Models.pdf",
+ "title": "Policy Contrastive Decoding for Robotic Foundation Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "对比解码缓解机器人策略伪相关，但依赖外部检测器准确性存疑",
+ "innovations": [
+  "首个面向机器人策略伪相关问题的免训练推理时方法，通过对比原始/物体掩蔽输入的动作分布消除背景纹理等伪特征影响",
+  "Track2Mask：用点/框提示或 Grounding DINO 标注目标物体，SAM2 在轨迹中跨帧追踪，实现少人工的精确物体掩蔽",
+  "KDE-PM：用核密度估计为扩散策略(不直接输出动作分布)构造动作概率，使PCD同时兼容自回归与扩散策略"
+ ],
+ "method_framework": "推理时对同一语言指令，分别用原始观测与物体掩蔽观测前向策略，得到两组动作概率分布，做对比解码(放大物体相关、抑制背景伪特征对应的动作倾向)；Track2Mask 跨帧维持物体掩蔽，KDE-PM 为扩散策略估计动作分布，无需微调或访问权重。",
+ "experiment_framework": "在 OpenVLA(自回归)、Octo 与 π0(扩散)三类开源策略上，于仿真与真实环境共15个任务评测；通过改变光照区域/把手位置等制造分布偏移，报告成功率相对基线提升。",
+ "takeaways": [
+  "现有机器人策略严重依赖背景/纹理等伪特征，改动光照/把手位置可致36%/32%性能下降",
+  "PCD 在仿真上为 Octo/OpenVLA/π0 分别提升29.7%/50.6%/8.9%，真实任务上使π0提升108%",
+  "对比解码作为推理时插件可同时改进自回归与扩散策略而免训练"
+ ],
+ "weaknesses": [
+  "落地域为机器人操作而非医学影像/多模态大模型推理，与指定主线落地域不完全重合",
+  "依赖外显物体检测/分割(Grounding DINO+SAM2)的准确性，检测器错误会传导为掩蔽误差",
+  "前9页未见对多物体/遮挡等复杂场景下掩蔽可靠性的系统消融"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "机器人操作与可靠性主线部分重合，但非指定落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

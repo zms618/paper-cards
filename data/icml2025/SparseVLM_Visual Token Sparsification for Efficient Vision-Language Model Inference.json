@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/SparseVLM_Visual Token Sparsification for Efficient Vision-Language Model Inference.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SparseVLM_Visual Token Sparsification for Efficient Vision-Language Model Inference.pdf",
+ "title": "SparseVLM: Visual Token Sparsification for Efficient Vision-Language Model Inference",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "文本引导的视觉token剪枝，免训练但超参依赖性强",
+ "innovations": [
+  "区别于需训练剪枝网络的方法，提出无需额外参数/微调成本的text-guided training-free token优化",
+  "利用视觉token对文本推理的互补性，用相关文本token经自注意力矩阵为视觉token重要性打分",
+  "引入rank-based策略自适应确定各层稀疏比例，并设计token recycling把被剪token压缩为更紧凑表示以保信息"
+ ],
+ "method_framework": "在冻结VLM上做后处理视觉token稀疏化：从当前文本query token出发，读取自注意力矩阵得到各视觉token被关注的强度作为显著性；按rank在每层自适应定稀疏率剪枝，并用token recycling把丢弃token信息聚合成紧凑向量，在最大化稀疏同时尽量不丢信息。",
+ "experiment_framework": "在多种主流VLM(如LLVA类)上、图像与视频理解任务上评测，对比需训练的视觉token剪枝方法，指标为精度保持度与推理吞吐/显存节省。",
+ "takeaways": [
+  "用文本token经自注意力天然地给视觉token打显著性分，可免训练实现可靠剪枝",
+  "按层自适应稀疏率+token recycling能在高稀疏率下保持VLM理解精度，适合多模态高效推理"
+ ],
+ "weaknesses": [
+  "显著性完全依赖自注意力矩阵，对长视频/高分辨率下注意力分散的场景打分稳定性前9页未分析",
+  "training-free虽省训练成本，但rank-based阈值等超参仍需按模型调，跨模型迁移性待验证",
+  "收益集中在推理效率，对VLM的可靠性/幻觉抑制无直接贡献"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

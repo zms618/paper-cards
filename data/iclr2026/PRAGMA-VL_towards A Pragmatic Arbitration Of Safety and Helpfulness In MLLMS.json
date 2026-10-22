@@ -1,0 +1,41 @@
+{
+ "title": "Pragma-VL: Towards a Pragmatic Arbitration of Safety and Helpfulness in MLLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "风险感知冷启动SFT与动态加权奖励模型，解决MLLM安全与有用性权衡问题。",
+ "innovations": [
+  "冷启动SFT阶段用风险感知聚类+对比学习增强视觉编码器对隐含视觉风险的敏感度，并以风险描述与高质量数据交错训练。",
+  "提出带理论保证的协同学习奖励模型，用基于query动态加权的数据增广实现上下文相关的安全/有用仲裁，替代固定λ的静态权衡。",
+  "同时修复内部风险感知缺陷与外部偏好信号缺失，缓解过度拒绝与危险顺从两类对偶失效。"
+ ],
+ "method_framework": "先做风险感知冷启动SFT（对视觉编码器做风险聚类+监督对比学习）打牢风险感知；再训练协同奖励模型（按query动态加权增广数据）；最后用该奖励做策略优化，使模型按输入上下文动态决定拒绝还是回答。",
+ "experiment_framework": "在Qwen2.5-VL-7B与Llava-1.5-7B上、16×A100训练；安全/有用性用BeaverTails-V、SPA-VL、MM-SafetyBench、SIUO、MSSbench，GPT-4o裁判算WR/ASR/Safe Rate；通用能力用lmms-eval跑GQA/ScienceQA/MathVista；基线为DPO、Safe-RLHF-V(网格搜C)。",
+ "takeaways": [
+  "Pragma-VL在多数多模态安全基准上超基线5%-20%，同时保持数学/知识推理等通用能力不退化。",
+  "风险感知冷启动显著改善视觉编码器对跨模态隐含风险的识别。",
+  "动态加权奖励模型相比固定λ的Safe-RLHF-V更能按上下文仲裁，减少过度拒绝。"
+ ],
+ "weaknesses": [
+  "评价依赖GPT-4o作为裁判，存在裁判偏好与自我偏好偏差。",
+  "仅在7B开源模型上验证，更大规模或闭源MLLM上的可迁移性未证实。",
+  "安全基准本身对长尾/新颖攻击的覆盖有限，鲁棒性边界未充分刻画。"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/PRAGMA-VL_towards A Pragmatic Arbitration Of Safety and Helpfulness In MLLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PRAGMA-VL_towards A Pragmatic Arbitration Of Safety and Helpfulness In MLLMS.pdf",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "风险感知与动态仲裁解决MLLM安全与有用性权衡，直击可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

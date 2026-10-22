@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Routing Manifold Alignment Improves Generalization Of Mixture-of-Experts LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Routing Manifold Alignment Improves Generalization Of Mixture-of-Experts LLMS.pdf",
+ "title": "Routing Manifold Alignment Improves Generalization of Mixture-of-Experts LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "诊断MoE路由器任务-专家错位，提出流形正则轻量微调路由器改善泛化。",
+ "innovations": [
+  "诊断出预训练路由器把任务嵌入空间中语义相近的样本路由到差异很大的专家，造成任务-专家错位与知识共享受阻。",
+  "提出流形正则：在任务嵌入空间中鼓励某样本的路由权重靠近其成功邻居(路由正确样本)的路由权重。",
+  "实现仅微调路由器(其余参数冻结)的轻量后训练，统一任务理解(嵌入模型)与求解生成(MoE)。"
+ ],
+ "method_framework": "在 MoE LLM 后训练目标中加入流形对齐正则项：对每个样本，把其路由权重拉向任务嵌入空间中路由正确的近邻样本的路由权重，使相似任务在各层选择相似专家；只训练路由器参数(约 0.03%)，冻结其余参数，建立跨样本的任务-专家绑定以促进泛化。",
+ "experiment_framework": "在三个近期 MoE LLM(Gemma2/Mistral/Llama 类)上仅微调路由器；在多样下游基准上评测，对比 Dense BP 等路由器训练方法；报告相对 oracle(最优路由)的 10-20% 差距收窄与下游准确率提升。",
+ "takeaways": [
+  "路由器次优是 MoE LLM 未释放的瓶颈，距 oracle 路由有 10-20% 准确率差距。",
+  "任务嵌入流形与路由权重流形错位阻碍跨任务知识共享，是泛化差的重要原因。",
+  "仅靠流形正则轻量微调路由器即可显著收窄差距并提升泛化，成本极低。"
+ ],
+ "weaknesses": [
+  "依赖'成功邻居'定义与任务嵌入质量，嵌入空间或奖励噪声较大时正则可能误导路由。",
+  "实验限于中等规模 MoE 模型，在更大规模 MoE(如数百专家)上的可扩展性与负载均衡影响未验证。",
+  "属 MoE 路由/泛化训练方法，与医学影像/多模态推理落地域的直接关联仍有限。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "MoE路由泛化方法，与可靠性主线有交点但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

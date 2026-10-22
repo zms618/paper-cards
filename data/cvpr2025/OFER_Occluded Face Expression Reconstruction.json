@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/OFER_Occluded Face Expression Reconstruction.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/OFER_Occluded Face Expression Reconstruction.pdf",
+ "title": "OFER Occluded Face Expression Reconstruction",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "双扩散模型加排名机制重建遮挡人脸表情，计算成本高且评估不全面",
+ "innovations": [
+  "使用两个扩散模型生成形状和表情系数",
+  "创新的排名机制选择最佳身份",
+  "新的CO-545数据集评估遮挡人脸重建"
+ ],
+ "method_framework": "OFER使用两个条件DDPM模型(IdGen和ExpGen)分别生成FLAME形状和表情系数，结合IdRank网络从多个候选形状中选择最优身份，确保重建结果的一致性和多样性。",
+ "experiment_framework": "在NoW基准和自建CO-545数据集上评估，与MICA、Diverse3D、FOCUS等方法比较，使用MSE等指标衡量重建质量。",
+ "takeaways": [
+  "扩散模型能有效处理遮挡人脸的多假设重建问题",
+  "排名机制显著提升样本选择质量",
+  "小规模2D-3D配对数据结合预训练编码器可达到良好效果"
+ ],
+ "weaknesses": [
+  "计算复杂度高(N=100)",
+  "仅评估中性形状重建，表情重建评估不充分",
+  "未充分讨论方法在极端遮挡情况下的局限性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "人脸重建与可靠性主线无实质交点，仅为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

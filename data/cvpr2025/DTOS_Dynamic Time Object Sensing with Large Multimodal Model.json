@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/DTOS_Dynamic Time Object Sensing with Large Multimodal Model.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/DTOS_Dynamic Time Object Sensing with Large Multimodal Model.pdf",
+ "title": "DTOS Dynamic Time Object Sensing with Large Multimodal Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "DTOS用特殊令牌和采样器提升视频目标分割时空定位",
+ "innovations": [
+  "特殊令牌构建多答案响应模板，解决数值回归和重复退化问题",
+  "文本引导的片段采样器(TCS)增强视频-文本对齐",
+  "多模态输入序列设计平衡空间分辨率和时间效率"
+ ],
+ "method_framework": "DTOS采用两阶段架构：TCS根据用户指令筛选相关视频片段，TCD在这些片段中定位目标并生成掩码，通过特殊令牌解码实现精确时空回归。",
+ "experiment_framework": "在MeViS、Ref-DAVIS17、Ref-YT-VOS三个RVOS基准和Charades-STA等MR数据集上评估，使用J&F分数和R1@0.3/0.5/0.7等指标。",
+ "takeaways": [
+  "特殊令牌设计将句子级重复问题转化为词级冗余，有效缓解重复退化",
+  "多模态输入序列设计在有限视觉令牌长度内封装完整视频信息"
+ ],
+ "weaknesses": [
+  "方法依赖预训练大模型，计算资源需求高",
+  "特殊令牌数量设置需要先验知识，可能影响模型泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态目标分割与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

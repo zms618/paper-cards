@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Craftium_Bridging Flexibility and Efficiency for Rich 3D Single- and Multi-Agent Environments.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Craftium_Bridging Flexibility and Efficiency for Rich 3D Single- and Multi-Agent Environments.pdf",
+ "title": "Craftium: Bridging Flexibility and Efficiency for Rich 3D Single- and Multi-Agent Environments",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "工程平台：基于Luanti的3D RL环境，速度快但算法创新有限",
+ "innovations": [
+  "首个基于开源游戏引擎(Luanti)的3D RL环境平台，兼具灵活性和计算效率",
+  "支持多智能体并行环境，首个可创建大规模3D开放世界(64K^3体素)同时支持MARL的框架",
+  "Lua Modding API实现细粒度环境自定义，所有示例环境不到160行代码即可实现"
+ ],
+ "method_framework": "Craftium架构：Luanti引擎(C++)负责3D世界渲染和物理模拟；Python环境接口通过通信通道与每个智能体连接；环境行为通过Lua mod脚本定义(奖励函数、终止条件等)；支持Gymnasium(单智能体)和PettingZoo(多智能体)标准接口。观测为RGB图像，动作包括键盘+鼠标移动。",
+ "experiment_framework": "性能基准测试对比Minecraft/MineDojo等框架的每秒步数；展示多种环境(地牢生存、开放世界探索、程序生成关卡等)；验证与stable-baselines3/RLlib/CleanRL等训练库的兼容性。",
+ "takeaways": [
+  "Craftium比基于Minecraft的同类富环境框架快38倍，异步并行可达12K步/秒",
+  "Lua modding API使环境创建极其灵活简单，远优于DSL或硬编码方式",
+  "同时支持单/多智能体和大规模开放世界，填补了现有3D RL环境的空白"
+ ],
+ "weaknesses": [
+  "本质是工程平台论文，算法创新有限",
+  "观测仅为第一人称RGB图像，缺少结构化状态信息接口",
+  "与现有Minecraft生态(MineDojo/MineRL)的兼容性未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

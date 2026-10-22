@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Non-stationary Online Learning for Curved Losses Improved Dynamic Regret via Mixability.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Non-stationary Online Learning for Curved Losses Improved Dynamic Regret via Mixability.pdf",
+ "title": "Non-stationary Online Learning for Curved Losses: Improved Dynamic Regret via Mixability",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 4,
+  "relevance": 3,
+  "overall": 5
+ },
+ "one_line": "理论改进在线学习动态regret，但无实验且与主线任务无关",
+ "innovations": [
+  "首次把mixability引入动态regret分析：mixability比exp-凹弱(只需存在某个wmix不要求均值)，使维数d依赖从Baby-Wang的d^{10/3}改进到线性O(d)",
+  "用mix loss三项分解(mixability gap/mixability regret/comparator gap)+高斯比较分布Qt=N(ut,σ²I)替代KKT，证明fixed-share µ=1/T的regret，且无需预知路径长度P_T",
+  "证明连续空间fixed-share与FLH-type在线集成(Algorithm 2)等价；并用surrogate loss+投影到高斯混合分布集，把proper learning下的保证推广到一般OCO exp-凹损失"
+ ],
+ "method_framework": "维护参数上的分布Pt(初值高斯N(w0,I))，每轮按mixability条件(4)选预测zt(平方/逻辑损失有闭式)，再指数加权更新P̃_{t+1}∝Pt exp(-ηft)，最后fixed-share混合P_{t+1}=(1-µ)P̃_{t+1}+µN0；分析时选Qt=N(ut,σ²I)并自由调σ，分P_T≤T^{-1/2}与≥两情形得eO(d+dT^{1/3}P_T^{2/3})。",
+ "experiment_framework": "纯理论论文，无数值实验；结果以定理/推论给出：Thm 1(mixable在线预测通用界)、Thm 2(fixed-share↔FLH等价)、Thm 3(一般OCO exp-凹+投影+surrogate)；Cor 1-3分别给1维平方损失、最小二乘回归、逻辑回归的闭式预测与界，与Baby&Wang2021/2022/2023的界列表对比。",
+ "takeaways": [
+  "对最小二乘与逻辑回归，维数依赖从O(d^{10/3})降到O(d)，在T与P_T维度上仍近优",
+  "mixability gap因条件(4)非正而为0，使分析可跳过KKT直接做，框架更易推广",
+  "1维平方损失上与Baby&Wang的proper结果匹配，但本文方法本质improper(预测可出假设空间)，靠第5节投影才回到proper"
+ ],
+ "weaknesses": [
+  "落点为在线学习动态regret理论，与主任务的医学影像/多模态大模型推理可靠性完全无关",
+  "纯理论无任何实验验证；每轮O(t)维护t个base-learner，逻辑损失无闭式需采样，作者自陈计算效率是遗留问题，未实现O(logT)加速",
+  "通用OCO版需额外平滑/梯度有界假设且靠surrogate loss+投影到精心构造的高斯混合集，实现复杂；improper learning与Baby-Wang的proper设定各有取舍，未证明本方法严格占优"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.75,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

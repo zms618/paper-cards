@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Model Merging in the Essential Subspace.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Model Merging in the Essential Subspace.pdf",
+ "title": "Model Merging in the Essential Subspace",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "PCA构建子空间合并模型，减少任务干扰但需代理数据",
+ "innovations": [
+  "基于特征偏移的PCA构建本质子空间，替代传统SVD分解",
+  "多级极化缩放策略增强关键参数并抑制噪声",
+  "理论证明本质子空间能最小化截断误差"
+ ],
+ "method_framework": "通过PCA分析任务矩阵引起的激活偏移构建本质子空间，将任务矩阵投影到该子空间进行低秩分解，再结合多级极化缩放进行模型合并",
+ "experiment_framework": "在8/14/20任务基准上测试ViT-B/32、ViT-B/16和ViT-L/14模型，对比多种合并方法，使用绝对和归一化精度评估",
+ "takeaways": [
+  "基于特征分布的子空间构建比传统SVD更能保留任务知识",
+  "参数范数反映梯度置信度和任务间共识，可作为有效缩放因子"
+ ],
+ "weaknesses": [
+  "需要代理数据集进行PCA分析，增加额外计算开销",
+  "极化缩放策略的参数选择可能需要针对不同任务进行调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "模型合并方法与可靠性主线无直接交点，但参数缩放策略有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

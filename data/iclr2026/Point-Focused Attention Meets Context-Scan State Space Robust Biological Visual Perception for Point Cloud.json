@@ -1,0 +1,37 @@
+{
+ "key": "iclr2026/Point-Focused Attention Meets Context-Scan State Space Robust Biological Visual Perception for Point Cloud.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Point-Focused Attention Meets Context-Scan State Space Robust Biological Visual Perception for Point Cloud.pdf",
+ "title": "Point-Focused Attention Meets Context-Scan State Space: Robust Biological Visual Perception for Point Cloud Representation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "elevance": 5.5,
+  "evidence": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "仿生点云网络结合局部竞争注意与Hilbert扫描S6，但主线关联弱",
+ "innovations": [
+  "point-focused attention：双分支(局部邻居细粒度 + 空间下采样特征粗粒度)在单次 softmax 中竞争性归一化耦合，线性复杂度模拟中央凹视觉",
+  "可学习诱导点(inducing points)池化，灵活适配点云非均匀分布并可控数量地降采样",
+  "context-scan 状态空间：以 Hilbert 曲线序列化点特征、双向 S6 做几何推理，模拟眼跳扫视推断全局结构"
+ ],
+ "method_framework": "遵循'先聚焦后上下文'的仿生流程：point-focused attention 对每个点在局部邻居与可学习诱导点下采样特征间做竞争归一化注意力，融合细粒度局部几何与粗粒度全局语义；再用 Hilbert 曲线保持局部性地序列化特征，输入双向 S6 捕捉长程场景结构。",
+ "experiment_framework": "在 ModelNet40、ScanObjectNN、ShapeNet、S3DIS 等分类/分割基准上对比局部注意力与 Mamba/S6 类点云方法，报告精度与对扰动的鲁棒性。",
+ "takeaways": [
+  "仿生中央凹+扫视可在局部几何与长程依赖间取得平衡",
+  "Hilbert 曲线序列化比朴素序列化更契合点云的局部性保持",
+  "PointLearner 在多个点云任务上取得 SOTA 并具较好鲁棒性"
+ ],
+ "weaknesses": [
+  "主线为点云3D表征/仿生结构，与可靠性、医学影像、多模态推理主线关联弱",
+  "仿生动机的增益难以与单纯结构改进分离，消融对'生物学合理性'的独立贡献前9页不充分",
+  "前9页未见在大规模户外点云(自动驾驶)上的扩展性验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

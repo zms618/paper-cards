@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Oracle-MoE Locality-preserving Routing in the Oracle Space for Memory-constrained Large Language Model.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Oracle-MoE Locality-preserving Routing in the Oracle Space for Memory-constrained Large Language Model.pdf",
+ "title": "Oracle-MoE: Locality-preserving Routing in the Oracle Space for Memory-constrained Large Language Model Inference",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "诊断MoE边缘推理瓶颈，提出oracle空间路由减少专家换页开销",
+ "innovations": [
+  "诊断MoE边缘推理瓶颈为token间专家激活的时间不一致性，而非理论计算量",
+  "提出在注意力分数张成的oracle空间中做路由，使连续token的专家选择保持语义局部性",
+  "理论证明oracle空间路由必然具有更好的语义局部性，从而减少专家换页开销"
+ ],
+ "method_framework": "利用注意力分数构建紧凑的oracle空间，在该空间内做专家路由；连续token在oracle空间中语义相近，因此倾向选择相同专家；减少专家缓存换入换出次数，提升内存受限设备上的推理速度。",
+ "experiment_framework": "模型：GPT-2架构MoE变体(200M/350M/790M/2B)。基线：标准MoE路由。指标：不同内存预算下的推理延迟、任务性能。",
+ "takeaways": [
+  "MoE理论上内存友好但实际受限于专家换页开销，根因是路由缺乏时间局部性",
+  "在注意力分数空间路由可隐式保持连续token的专家一致性",
+  "Oracle-MoE在不损失任务性能的前提下显著提升边缘设备推理速度"
+ ],
+ "weaknesses": [
+  "仅在GPT-2规模验证，大模型(Mixtral等)的效果未知",
+  "oracle空间路由增加了路由层的计算开销，对算力充足但内存受限的场景是否净收益存疑",
+  "与KV缓存等其他内存优化技术的兼容性未考察"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

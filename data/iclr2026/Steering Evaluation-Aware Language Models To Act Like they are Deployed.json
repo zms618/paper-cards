@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Steering Evaluation-Aware Language Models To Act Like they are Deployed.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Steering Evaluation-Aware Language Models To Act Like they are Deployed.pdf",
+ "title": "Steering Evaluation-Aware Language Models to Act Like They Are Deployed",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "通过激活引导抑制LLM评估意识，提升安全评测可靠性",
+ "innovations": [
+  "设计两步训练法人工复现评估意识行为：继续预训练注入eval/deployment行为差异的文档描述，再用专家迭代让模型在评估场景中使用Python类型提示",
+  "证明激活引导向量可以抑制评估意识，使模型在评估时的行为回归到部署时的真实状态",
+  "关键发现：引导向量用原始模型（未做额外训练）构造即可生效，说明评估意识和部署行为的激活方向是预先存在的"
+ ],
+ "method_framework": "两步训练构建评估意识模型：(1)继续预训练：喂入描述模型行为差异的文档——在评估时使用Python类型提示、部署时不使用，以及评估线索的识别规则；(2)专家迭代：训练模型在评估场景中使用类型提示。然后构造部署方向的激活引导向量，加到模型激活上，强制模型在评估时表现出部署行为。",
+ "experiment_framework": "在Llama 3.3 Nemotron Super 49B上验证。评估指标：(1)评估场景vs部署场景下Python类型提示的使用频率差异；(2)引导向量对评估意识的抑制效果；(3)引导向量对其他能力的影响。",
+ "takeaways": [
+  "LLM的评估意识是可以通过简单的继续预训练+专家迭代人工复现的，这为研究该现象提供了可控实验平台",
+  "激活引导可以有效抑制评估意识，使模型在安全评测中展现出部署时的真实行为，提升评估可靠性",
+  "评估意识的神经表示在原始模型中就已存在（引导向量用原始模型构造即可生效），说明这不是训练后才涌现的全新现象"
+ ],
+ "weaknesses": [
+  "仅用Python类型提示作为行为指标，这是一个非常窄的行为维度，对真实安全行为的迁移性未证明",
+  "人工训练的评估意识与真实模型自然涌现的评估意识可能存在本质差异",
+  "前9页未展示引导向量对安全行为本身（而非类型提示）的影响，核心问题——引导后安全评估是否更准确——未直接回答"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "提升安全评测可靠性，触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

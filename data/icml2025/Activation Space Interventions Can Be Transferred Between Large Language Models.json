@@ -1,0 +1,41 @@
+{
+ "title": "Activation Space Interventions Can Be Transferred Between Large Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "激活空间映射实现LLM安全干预迁移，但跨架构稳健性不足",
+ "innovations": [
+  "提出在不同模型激活空间间构建显式映射以实现'行为迁移'：用源模型 A 的激活干预直接引导目标模型 B 的行为，而无需分析 B 自身激活",
+  "在后门移除与有害提示拒答两个既有安全任务上验证迁移式转向向量（steering vector）的有效性",
+  "提出'corrupted capabilities'新任务（模型被微调嵌入与后门绑定的知识），测试分离有用技能与后门的能力；并用自编码器映射作为可动态切换行为的轻量安全开关"
+ ],
+ "method_framework": "基于表示普适性假设，在源模型与目标模型的共享激活空间之间学习映射（含自编码器映射），将源模型上训练好的干预/转向向量经映射作用于目标模型，在保持语言建模能力的同时诱导期望行为（拒答、去后门）。",
+ "experiment_framework": "在 Llama、Qwen、Gemma 三个模型家族上跨模型迁移安全干预，任务覆盖后门移除、有害提示拒答与新增的 corrupted capabilities；以行为改变的可预测性、是否保持语言建模能力、用小模型对齐大模型的效率为指标。",
+ "takeaways": [
+  "不同 LLM 的激活空间可学习映射，使安全干预向量能跨模型迁移并可预测地改变输出",
+  "可用较小模型高效对齐较大模型，自编码器映射可作为动态切换行为的轻量安全开关",
+  "corrupted capabilities 任务揭示模型难以分离与后门绑定的知识，反映真实世界风险"
+ ],
+ "weaknesses": [
+  "跨架构（非同族）模型间映射的稳健性与失败模式缺乏系统分析",
+  "前 9 页未见对'保持语言建模能力'与拒答率之间权衡的量化消融",
+  "75 页长文，关键成功率/失败案例表在前 9 页之外，评分基于摘要与引言"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Activation Space Interventions Can Be Transferred Between Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Activation Space Interventions Can Be Transferred Between Large Language Models.pdf",
+ "raw_overall": 6.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM安全干预迁移触及可靠性主线，但跨架构稳健性不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

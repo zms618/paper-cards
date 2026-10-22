@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/MoBA_Mixture of Block Attention for Long-Context LLMs.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/MoBA_Mixture of Block Attention for Long-Context LLMs.pdf",
+ "title": "MoBA: Mixture of Block Attention for Long-Context LLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "将MoE原理应用于注意力机制，实现长上下文高效处理。",
+ "innovations": [
+  "将MoE原理应用于注意力机制，实现动态KV块选择",
+  "保持因果关系的块稀疏注意力设计",
+  "MoBA与全注意力的混合训练策略"
+ ],
+ "method_framework": "MoBA将上下文分块，通过门控机制动态选择相关KV块进行注意力计算，结合FlashAttention实现高效实现，支持全注意力与稀疏注意力间的无缝切换。",
+ "experiment_framework": "在Llama 3.1 8B模型上进行预训练和微调，评估AGIEval、BBH、GSM8K等基准测试，以及Needle in a Haystack长上下文任务。",
+ "takeaways": [
+  "细粒度块分割提升MoBA性能",
+  "混合训练策略平衡效率与性能",
+  "层级混合注意力解决SFT中的梯度稀疏问题"
+ ],
+ "weaknesses": [
+  "长上下文任务中尾部token性能略低于全注意力",
+  "SFT阶段性能可能因损失掩码而下降",
+  "块大小和top-k参数选择需要仔细调优"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

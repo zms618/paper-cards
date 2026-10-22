@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/FisherTune_Fisher-Guided Robust Tuning of Vision Foundation Models for Domain.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/FisherTune_Fisher-Guided Robust Tuning of Vision Foundation Models for Domain.pdf",
+ "title": "FisherTune Fisher-Guided Robust Tuning of Vision Foundation Models for Domain",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "FisherTune用DR-FIM选域敏感参数微调视觉模型，提升域泛化分割性能。",
+ "innovations": [
+  "提出域相关Fisher信息矩阵(DR-FIM)量化参数对域变化的敏感性",
+  "使用变分推断稳定DR-FIM估计",
+  "动态训练策略逐步增加可调参数比例"
+ ],
+ "method_framework": "基于DR-FIM识别域敏感参数，结合变分推断稳定估计，通过动态训练策略选择性微调视觉基础模型参数，保留泛化能力同时增强域适应性。",
+ "experiment_framework": "在GTA→Cityscapes+BDD100K+Mapillary和Cityscapes→BDD100K等域泛化分割数据集上，与LoRA、VPT、Rein、VQT、ChildTune等方法对比mIoU指标。",
+ "takeaways": [
+  "DR-FIM能有效识别域敏感参数，保留模型泛化能力",
+  "变分推断可稳定FIM估计，解决预训练任务与下游任务差异导致的估计不稳定问题"
+ ],
+ "weaknesses": [
+  "DR-FIM计算复杂度较高，尽管使用对角近似和变分推断优化",
+  "未充分分析不同域间差异程度对DR-FIM选择参数的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.3,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "域泛化分割与可靠性主线交点，参数敏感性设计有防守力",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

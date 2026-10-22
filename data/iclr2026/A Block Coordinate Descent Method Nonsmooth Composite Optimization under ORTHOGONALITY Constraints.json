@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Block Coordinate Descent Method Nonsmooth Composite Optimization under ORTHOGONALITY Constraints.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Block Coordinate Descent Method Nonsmooth Composite Optimization under ORTHOGONALITY Constraints.pdf",
+ "title": "A BLOCK COORDINATE DESCENT METHOD FOR NONSMOOTH COMPOSITE OPTIMIZATION UNDER ORTHOGONALITY CONSTRAINTS",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 3.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "块坐标下降法在Stiefel流形上，但实验缺失且理论假设不成立。",
+ "innovations": [
+  "提出保约束行块更新 X⁺ = X + U_B(V−I_k)U_BᵀX，Lemma 2.1 证明只要 V∈St(k,k) 便严格保持 XᵀX=I_r，属可行方法而非「极限才可行」",
+  "定义 block-k stationary point（∀B 均使 majorizer K(V) 全局取到最小），Theorem 3.8 建立最优性层级 {critical} ⊇{BS2} ⊇{BSk} ⊇{BSk+1} ⊇{global opt}",
+  "k=2 时把 k×k 正交子问题降为一维 θ 参数化，同时用 Givens 旋转与 Jacobi 反射两类矩阵（Remark 2.6 给出只用旋转会失优的反例）并用断点搜索求精确解"
+ ],
+ "method_framework": "每轮按随机/循环策略选 k 行工作集 B，在 V∈St(k,k) 上用 MM 构造函数上界 K(V) 并全局最小化子问题，再以保正交更新式替换这 k 行；每步只读 k 行欧氏梯度，避免全梯度开销。",
+ "experiment_framework": "论文声明在稀疏 PCA 等正交约束问题上一致优于现有方法；但所提供正文止于第 4.2 节，数据集、基线、指标与超参细节均不可核查。",
+ "takeaways": [
+  "「可行性保持更新」的设计范式：把约束继承到 k×k 小空间而非投影/惩罚回流形，可迁移到任意带二次约束的分块优化",
+  "用「更强最优性定义（BSk）」而非仅仅更快收敛来区分算法质量，为非凸非光滑流形优化提供了可参照的评价标尺",
+  "断点搜索把非光滑 ℓ0/ℓ1 项 + 正交约束的联合子问题化为一维扫描，是子问题可精确解的关键技巧"
+ ],
+ "weaknesses": [
+  "所给正文止于第 4.2 节、完全不含实验章节（§5），「始终优于现有方法」仅见于摘要，基线可比性、指标与超参设置均无从核查",
+  "判定一个解是否为 BSk 点需遍历求解全部 C(n,k) 个子问题，随机选工作集只在期望意义下成立，论文未讨论 k 增大时「更强最优性 vs 检查开销」的权衡",
+  "收敛分析全程假设子问题存在全局精确解，而 Remark 2.4 自己承认一般 h(·) 下可能无全局解，此时只能退化为 K(V̄)≤K(I) 的充分下降条件，理论保证与可实现的子问题求解之间存在落差"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "优化方法与可靠性主线无直接交点，但设计范式有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

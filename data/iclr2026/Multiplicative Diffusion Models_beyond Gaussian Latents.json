@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Multiplicative Diffusion Models_beyond Gaussian Latents.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Multiplicative Diffusion Models_beyond Gaussian Latents.pdf",
+ "title": "Multiplicative Diffusion Models: Beyond Gaussian Latents",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "乘性扩散替代高斯噪声，理论新颖但实证有限",
+ "innovations": [
+  "用斜对称乘性噪声驱动扩散，产生受物理启发的保守前向-反向动力学",
+  "证明前向过程指数收敛到可解析的非高斯潜分布，且保持数据范数分布，潜空间天然数据感知",
+  "导出反向SDE与概率流，证明sliced score matching是反向动力学的一致估计且等价于最大化ELBO，桥接变分原理"
+ ],
+ "method_framework": "经典扩散加性高斯噪声使潜空间趋近各向同性高斯，不匹配重尾/各向异性数据。本框架用斜对称乘性噪声：范数被保留而方向被随机化，前向过程指数收敛到一个可解析的非高斯潜分布。反向用对应SDE/概率流生成，用sliced score matching估计分数场，该估计等价于ELBO。潜空间更接近真实数据分布，尤其在低数据 regime 与极端事件上。",
+ "experiment_framework": "在相关Cauchy分布(重尾)与实验流体力学图像(d=1024)上验证；对比经典加性高斯扩散；指标为对极端事件/尾部行为的刻画精度与低数据 regime 表现。",
+ "takeaways": [
+  "乘性保守扩散给出超越高斯先验的可解析非高斯潜空间",
+  "保持数据范数分布使其更适应重尾与各向异性数据",
+  "在稀有但关键事件主导的领域(低数据、尾部)比经典扩散更准确"
+ ],
+ "weaknesses": [
+  "主线是生成模型理论，与LLM/多模态可靠性、验证器、幻觉抑制等落地主线关联弱",
+  "实证规模小(Cauchy+流体图像)，未在大规模图像/多模态生成基准上验证可扩展性",
+  "非高斯潜分布的采样与反向SDE求解相对高斯扩散实现更复杂"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "生成模型理论，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

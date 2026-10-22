@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Interpreting the Repeated Token Phenomenon in Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Interpreting the Repeated Token Phenomenon in Large Language Models.pdf",
+ "title": "Interpreting the Repeated Token Phenomenon in Large Language Models",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 7.0
+ },
+ "one_line": "首次揭示LLM重复token源于attention-sink电路，提出新攻击与修补。",
+ "innovations": [
+  "首次给出重复 token 发散的机制解释：两阶段电路——首层识别并标记首 token，后层单神经元触发放大其隐状态形成 attention sink。",
+  "说明重复序列为何扰乱该电路（首层无法区分首 token 与重复 token，误放大重复 token 的注意力），并推广到其他产生类似电路扰动的非重复序列。",
+  "提出新攻击‘cluster attack’（无需重复 token 即可诱发 attention sink，绕过表层重复防御），并给出不损整体性能的针对性修补(patch)。"
+ ],
+ "method_framework": "采用机制可解释性方法定位 attention sink 对应的神经回路：逐层追踪首 token 标记与放大神经元；通过消融/补丁验证重复 token 如何误激活该回路；据此设计定向修补。",
+ "experiment_framework": "在多个开源 LLM 上验证两阶段机制；对照修补前后的重复 token 发散成功率与常规任务性能；以是否诱发/修复 attention-sink 行为为判据。",
+ "takeaways": [
+  "重复 token 发散不是孤立 bug，而是 fluent 所需 attention-sink 电路被扰动的副作用。",
+  "机制可解释性既能诊断该脆弱性、发现绕过防御的新攻击，也能给出不损性能的精准修复。"
+ ],
+ "weaknesses": [
+  "机制结论基于有限几个开源模型，对未公开权重的前沿闭源模型是否成立无法验证。",
+  "针对性修补(patching)在微调/部署流程下的持久性与可扩展性未充分讨论。",
+  "属 LLM 安全/可靠性分析，与医学影像等主线落地域无直接对应。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.0,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

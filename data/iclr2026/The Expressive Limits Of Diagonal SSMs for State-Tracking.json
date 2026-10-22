@@ -1,0 +1,41 @@
+{
+ "title": "The Expressive Limits of Diagonal SSMs for State-Tracking",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 8,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 6.3
+ },
+ "one_line": "群论严格限制对角SSM状态追踪表达力，揭示理论可表达≠可学习性",
+ "innovations": [
+  "证明单层输入依赖复数对角(DCD)SSM 在有限精度下无法表达任何非阿贝尔群的状态追踪",
+  "给出精确充要条件：k 层 DCD SSM 能表达群 G 的状态追踪 ⟺ G 存在长度 k、阿贝尔因子的次正规列，从而在可解群内圈定其表达力范围",
+  "实证观察到多层 DCD SSM 即便理论上可表达、也常学不会非阿贝尔群追踪，揭示表达力上限与梯度下降可学习性之间的鸿沟"
+ ],
+ "method_framework": "把状态追踪任务建模为对群运算的在线实现；用有限精度线性代数与群论分析对角 SSM 的递推能维持哪些群的元素表示；通过构造正反两方向证明建立 k 层深度与次正规列长度的等价；再用梯度下降训练实验检验理论可达性。",
+ "experiment_framework": "以各类群（阿贝尔/非阿贝尔/可解群）的状态追踪为任务；理论上刻画表达充要条件；实验上训练多层 DCD SSM 并检验其能否学会非阿贝尔群追踪，对照理论表达力与实际可学习性。",
+ "takeaways": [
+  "对角 SSM 的状态追踪能力被群的可解层级严格限制，单层连非阿贝尔群都表达不了",
+  "k 层深度大致需要匹配群的次正规列长度，为 SSM 架构深度设计提供了理论标尺",
+  "理论可表达≠梯度下降可学会：非阿贝尔群追踪的失败既可能是表达力不足也可能是优化困难"
+ ],
+ "weaknesses": [
+  "理论聚焦输入依赖复数对角 DCD SSM 这一受限子类，对现代 Mamba 类含输入依赖矩阵/门控的完整 SSM 是否成立未推广",
+  "实证仅用于佐证‘表达力vs可学习性’落差，实验规模小、未系统改变深度/宽度/学习率来分离优化困难",
+  "relevance 给 4.5：属序列模型表达力理论，虽提及 OOD 泛化但非可靠性(验证/不确定性/幻觉)×落地域(医学影像/多模态推理)主线，按规则给低分"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/The Expressive Limits Of Diagonal SSMs for State-Tracking.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The Expressive Limits Of Diagonal SSMs for State-Tracking.pdf",
+ "raw_overall": 5.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.5,
+ "relevance_reason": "序列模型表达力理论，未触及可靠性主线与落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Ssg Scaled Spatial Guidance for Multi-Scale Visual Autoregressive Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Ssg Scaled Spatial Guidance for Multi-Scale Visual Autoregressive Generation.pdf",
+ "title": "SSG: Scaled Spatial Guidance for Multi-Scale Visual Autoregressive Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "推理时引导改进缓解VAR尺度漂移，频域隔离残差提升保真度",
+ "innovations": [
+  "从信息论视角把VAR层级漂移重述为训练-推理差距，推导'每尺度应贡献先前尺度无法解释的高频内容'这一缓解原则",
+  "提出免训练、推理时的尺度空间引导SSG，引导生成回到预期层级同时保持全局连贯",
+  "设计频域过程离散空间增强(DSE)以锐化并隔离来自粗尺度先验的语义残差"
+ ],
+ "method_framework": "把目标高频信号定义为从较粗先验中隔离出的语义残差；用频域感知构造的DSE得到该粗先验并更好隔离残差；推理时SSG强调目标高频残差、引导下一尺度预测沿粗到细层级进行，不重训、保持低延迟。",
+ "experiment_framework": "在多种基于离散视觉token的VAR模型上评测(跨tokenizer设计与条件模态)；以保真度与多样性(FID等)为指标，对比无SSG基线，报告一致提升且保持低延迟，辅以更清晰细节/更少伪影的定性结果。",
+ "takeaways": [
+  "VAR层级漂移可通过在推理时强调'新的高频语义残差'来缓解，无需重训",
+  "频域的DSE能更好隔离语义残差，使引导更精准",
+  "SSG对采用离散视觉token的VAR模型普遍适用，代价可忽略即可提升保真度与多样性"
+ ],
+ "weaknesses": [
+  "本质是推理时引导类改进，增益幅度与新模块/新架构类工作相比偏增量",
+  "增益在多大程度上来自频域先验构造的启发式参数、敏感性分析不够充分",
+  "主要在图像VAR上验证，向视频/多模态条件生成的外推未展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅解决VAR尺度漂移问题，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

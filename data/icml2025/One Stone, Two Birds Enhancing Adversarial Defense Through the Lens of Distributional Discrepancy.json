@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/One Stone, Two Birds Enhancing Adversarial Defense Through the Lens of Distributional Discrepancy.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/One Stone, Two Birds Enhancing Adversarial Defense Through the Lens of Distributional Discrepancy.pdf",
+ "title": "One Stone, Two Birds: Enhancing Adversarial Defense Through the Lens of Distributional Discrepancy",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "理论证明分布散度降低对抗损失，优化MMD检测功效实现双功能防御",
+ "innovations": [
+  "理论上建立最小化干净-对抗分布散度与降低对抗期望损失之间的关系",
+  "提出 MMD-OPT：优化最大均值差异(MMD)检验功效，同时充当去噪器训练引导与推理判别器",
+  "推理时双管齐下：干净样本直接送分类器，对抗样本经分布散度去噪器去噪后再分类，避免丢弃信息"
+ ],
+ "method_framework": "SADD 用 MMD 度量干净样本(CE)与对抗样本(AE)分布散度来检测。本文先证最小化该散度可降低 AE 期望损失；再训练阶段优化 MMD 检验功效得到 MMD-OPT，用它作引导信号训练去噪器；推理时 MMD-OPT 又作判别器：判定为 CE 的直接送分类器，判定为 AE 的送去噪器去噪后再分类，兼顾检测与修复。",
+ "experiment_framework": "在 CIFAR-10/100、ImageNet 等标准基准、多种白盒/黑盒攻击下评测，与现有 SADD 类与其它对抗防御 SOTA 对比干净精度与对抗精度；消融 MMD-OPT 的双重作用。",
+ "takeaways": [
+  "最小化干净-对抗分布散度既能提升检测又能降低对抗损失",
+  "DAD 不丢弃对抗样本而是去噪修复，相较纯检测方法取得更好的鲁棒精度"
+ ],
+ "weaknesses": [
+  "依赖 MMD 核/检验功效设计，对自适应强攻击的可迁移鲁棒性需进一步检验",
+  "与医学影像/多模态推理无直接对应，但对抗鲁棒方法可迁移",
+  "去噪器在极端扰动下的修复上限在已读部分披露有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

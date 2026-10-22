@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Submodular Function Minimization with Dueling Oracle.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Submodular Function Minimization with Dueling Oracle.pdf",
+ "title": "Submodular Function Minimization with Dueling Oracle",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 4,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "纯理论工作，仅通过成对比较解决次模最小化，缺乏实验验证",
+ "innovations": [
+  "首次提出并研究基于dueling oracle（成对比较神谕）的次模函数最小化(SFM)问题，无需获取精确函数值",
+  "线性传输函数下给出O(n^{3/2}/√T)误差率上界，并证明限制查询集合差异时的Ω(n^{3/2}/√T)下界，算法达到常数因子最优",
+  "sigmoid传输函数下设计O(n^{7/52}/T^{5/52})误差率算法，并给出对应的下界结果"
+ ],
+ "method_framework": "将SFM问题建模为通过成对比较神谕获取概率反馈的学习问题。线性传输函数下利用比较概率与函数值差的线性关系，通过二分查找和子模函数的性质推导最优集合。sigmoid传输函数下利用其在零附近的线性近似特性，结合限制查询集合差异的约束来控制噪声。",
+ "experiment_framework": "纯理论论文，无实验。证明内容包括：(1)线性传输函数的上界算法与下界；(2)sigmoid传输函数的上界算法与下界；(3)一般传输函数的上下界对比。",
+ "takeaways": [
+  "仅通过成对比较反馈即可求解次模函数最小化问题，线性传输函数下算法达到信息论意义上的最优",
+  "限制查询集合之间的差异大小可以显著降低误差率（从Ω(n/√T)提升到Ω(n^{3/2}/√T)），说明查询策略设计的重要性",
+  "dueling oracle设置与RLHF等真实场景密切相关，为噪声反馈下的组合优化提供了理论基础"
+ ],
+ "weaknesses": [
+  "纯理论工作，未在真实数据集上验证算法的实际表现和常数因子",
+  "算法假设了特定的传输函数形式（线性/sigmoid），实际人类反馈可能更复杂",
+  "前9页未展示完整算法流程，部分技术细节不够透明"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "纯理论优化工作，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

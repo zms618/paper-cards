@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Elucidating the SNR-t Bias of Diffusion Probabilistic Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Elucidating the SNR-t Bias of Diffusion Probabilistic Models.pdf",
+ "title": "Elucidating the SNR-t Bias of Diffusion Probabilistic Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "揭示扩散模型SNR-t偏差，提出小波域微分校正方法",
+ "innovations": [
+  "发现SNR-t偏差现象",
+  "提出小波域微分校正方法(DCW)",
+  "理论证明反向过程SNR低于前向过程",
+  "动态频率权重策略"
+ ],
+ "method_framework": "通过分析预测样本与重建样本的差异信号，在小波域对不同频率分量进行动态微分校正，引导预测样本向理想扰动样本靠近。",
+ "experiment_framework": "在CIFAR-10、CelebA、ImageNet等数据集上测试IDDPM、ADM、DDIM等多种扩散模型，使用FID和Recall作为评估指标。",
+ "takeaways": [
+  "SNR-t偏差是扩散模型的基本偏差，可导致曝光偏差",
+  "小波域微分校正无需额外训练即可提升生成质量",
+  "频率分量的动态权重策略与扩散模型特性相契合"
+ ],
+ "weaknesses": [
+  "理论假设γt和ϕt的设定可能过于简化",
+  "实验主要在图像生成任务上验证，泛化性有待进一步探索",
+  "计算开销虽小但增加了推理步骤的复杂性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型偏差校正，属于可靠性主线但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

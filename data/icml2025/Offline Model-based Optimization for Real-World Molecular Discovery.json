@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Offline Model-based Optimization for Real-World Molecular Discovery.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Offline Model-based Optimization for Real-World Molecular Discovery.pdf",
+ "title": "Offline Model-based Optimization for Real-World Molecular Discovery",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "分子拼接与偏好优化的离线框架，工程集成创新有限",
+ "innovations": [
+  "把RL中的trajectory stitching迁移为molecular stitching：StitchNet先在ZINC上模仿规则crossover学化学语法，再在相似度阈值δ约束下把morig的片段重组成兼具双分子优点的stitched分子",
+  "把代理任务从分数回归改为成对排序分类(Bradley-Terry pairwise ranking loss)，在OOD分子上提供更可靠反馈，并与分离的偏好优化生成器结合以缓解分布漂移",
+  "用Dirichlet分布做priority sampling自动生成多目标权重组合(替代人工标量化)，并把DPO/IPO偏好优化引入分子生成；4目标任务HV 0.352/R2 2.953全面优于15个基线"
+ ],
+ "method_framework": "三阶段：(1)ZINC上用规则crossover的后代做ML预训练StitchNet学化学语法；(2)在离线数据上训pairwise排序代理fˆθ，并对StitchNet做带化学奖励R(morig)与参考模型Sref KL约束的自监督训练；(3)Dirichlet采样权重选分子对→StitchNet生成stitched分子入buffer→排序代理判定胜负→以IPO损失微调REINVENT生成器，KL约束保化学有效性。",
+ "experiment_framework": "全离线设置，10种子；任务一MPO(GSK3β/JNK3/QED/SA，2-4目标)，任务二对接docking(parp1/jak2/braf/fa7/5ht1b+QED+SA)；基线REINVENT/AugMem/GraphGA/Saturn/GeneticGFN/Grad/COMs/IOM/RoMA/Ensemble Proxy/ICT/Tri-Mentoring/BIB/BootGen/RaM；指标HV(↑)与R2(↓)；消融RP/SN/PS、对比增广方式与偏好优化方法。",
+ "takeaways": [
+  "4目标GSK3β+JNK3+QED+SA上HV 0.352/R2 2.953，次优Saturn为0.281/3.339，提升明显",
+  "消融显示三组件缺一不可：单独排序代理HV 0.251、加StitchNet 0.289、再加Dirichlet优先级采样0.352",
+  "偏好优化中IPO(0.344)优于DPO(0.327)与RLHF(0.232)，且独立排序代理+独立生成器优于model-as-a-judge自判"
+ ],
+ "weaknesses": [
+  "与主任务主线(可信AI/鲁棒性落地于医学影像/多模态推理)无关，属计算化学/药物发现；作者未做真实湿实验验证，全部在oracle代理基准上评测",
+  "stitched分子性质近似morig仅靠相似度阈值δ假设(结构相似则性质相似)，对跨片段重组后性质漂移的风险未严格量化；R(morig)是近似化学反馈而非真实oracle",
+  "核心是现成技术(排序学习/DPO-IPO/crossover)在分子离线优化的组合迁移，新颖性偏工程集成；Chebyshev标量化与半离线扩展多置于附录，正文论证有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

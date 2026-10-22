@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/RAVEN Radar Adaptive Vision Encoders for Efficient Chirp-wise Object Detection.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/RAVEN Radar Adaptive Vision Encoders for Efficient Chirp-wise Object Detection.pdf",
+ "title": "RAVEN Radar Adaptive Vision Encoders for Efficient Chirp-wise Object Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "雷达物理启发的跨注意力与早停，提升chirp检测效率",
+ "innovations": [
+  "物理启发的空间混合：跨天线注意力模块分离潜在TX结构，恢复虚拟MIMO线索",
+  "混合设计效率：在chirp建模通道SSM和帧编码chirp-SSM之间放置交叉注意力模块",
+  "子帧低延迟检测：基于校准停止规则的chirp级SSM主干，减少计算和延迟"
+ ],
+ "method_framework": "RAVEN包含五个阶段：快速时间SSM处理每个RX通道，跨天线注意力融合RX通道形成虚拟MIMO特征，chirp级SSM维护序列状态，空间投影到网格，轻量解码器生成检测结果和分割图。",
+ "experiment_framework": "在RaDICaL和RADIal数据集上评估，使用mIoU、Dice系数、Chamfer距离、mAP、mAR等指标，与FFT-RadNet、ChirpNet、SSMRadNet等基线比较计算效率和性能。",
+ "takeaways": [
+  "雷达物理结构感知的编码器设计可显著提升效率",
+  "自适应早停机制在保持性能的同时大幅降低计算复杂度",
+  "轻量级SSM架构适合实时雷达处理"
+ ],
+ "weaknesses": [
+  "在复杂或嘈杂场景中早期检测可能不稳定",
+  "DDM系统中的跨天线注意力模块可能在高噪声环境下性能下降"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "雷达物理启发的跨注意力与早停，提升chirp检测效率",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

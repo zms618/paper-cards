@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/ABBSPO_Adaptive Bounding Box Scaling and Symmetric Prior based Orientation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ABBSPO_Adaptive Bounding Box Scaling and Symmetric Prior based Orientation.pdf",
+ "title": "ABBSPO: Adaptive Bounding Box Scaling and Symmetric Prior based Orientation Prediction for Detecting Aerial Image Objects",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 5.0,
+  "evidence": 3.5,
+  "relevance": 4.5,
+  "overall": 4.7
+ },
+ "one_line": "分段缩放与对称先验修复T-HBox退化，但实验缺失且设计依据不足",
+ "innovations": [
+  "ABBS模块：按两段线性函数f(θ,s)（θ<π/4与θ≥π/4各一段）在预设尺度区间均匀量化出K个缩放GT HBox，回归时对候选集合取与HB_pred的min-IoU作为最优尺度，从而让T-HBox也能当弱标注用",
+  "SPA损失：对GT类别标明对称的airplane/ship/vehicle/tennis court，用预测RBox中心与θ定义对称轴，比较轴两侧像素相似度(1-SIM)作为角度自监督，消除三视角增强下‘角度误差恰等于增强角则损失为0’的恒等退化",
+  "在H2RBox-v2三视角框架上拆出Scale/Orientation双分支：SLB输出L_as=minIoU并叠加α=0.01的未缩放GT正则项构成L_reg，OLB复用三视角角度预测，使同一框架兼容C-HBox与T-HBox两类标注"
+ ],
+ "method_framework": "基于H2RBox-v2三视角（原始/旋转/翻转）框架加SLB与OLB双分支：SLB用分段线性尺度函数f(θ,s)生成K个缩放GT HBox，取与HB_pred的min-IoU为回归目标；OLB用对称轴两侧像素相似度SPA损失自监督角度。",
+ "experiment_framework": "DOTA-v1.0与DIOR两个航测数据集，基线H2RBox/H2RBox-v2，C-HBox与T-HBox两种GT设定，指标AP50与三类复杂性状物体的3-AP50；正文实验章节在给定文本中缺失。",
+ "takeaways": [
+  "把‘GT HBox标注口径不一致（C-HBox vs T-HBox）’当作独立诊断维度——弱监督检测方法对标注松紧度的依赖会直接导致退化，比单纯堆指标更有信息量",
+  "对候选尺度集合取min-IoU而非逐尺度回归，可迁移到任何预测框与弱标注框尺度不匹配、GT本身不紧致的弱监督定位场景",
+  "三视角增强做角度自监督存在恒等平凡解（预测角误差恰等于增强角时loss为零），提醒自监督一致性设计必须显式排除这类退化"
+ ],
+ "weaknesses": [
+  "给定正文仅覆盖摘要、引言、相关工作和方法正文（止于3.3节），实验、消融、超参数敏感性章节整段缺失，SOTA声明与两个组件的各自贡献均无法核验，故confidence标为low",
+  "尺度调整函数f(θ,s)是手设两段线性分段式，断点取π/4无任何推导依据；尺度区间端点s_1与s_Ns、离散个数N_s（进而K）仅给定默认值，正文未见搜索范围说明与敏感性实验",
+  "SPA损失依赖预测框中心与角度共同定义对称轴后做两侧像素比对，对定位误差和旋转重采样方式高度敏感，且只覆盖GT类别已标记对称的少数类，文中未见该敏感性分析或对称类别遗漏的对照实验"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "航测目标检测与可靠性主线无实质交点，仅标注口径问题有微弱迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

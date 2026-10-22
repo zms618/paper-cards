@@ -1,0 +1,41 @@
+{
+ "title": "Dichotomous Diffusion Policy Optimization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "DIPOLE分解扩散策略为二分对，线性组合控制贪婪度，但与主线关联弱。",
+ "innovations": [
+  "提出greedified策略正则化，把最优策略分解为一对二分策略：一个最大化奖励、一个最小化奖励。",
+  "推理时线性组合二分策略的score生成动作，灵活控制贪婪/保守程度。",
+  "避免直接最大化value目标的训练不稳与粗糙高斯似然近似的算力问题，稳定训练大扩散策略。"
+ ],
+ "method_framework": "重访KL正则RL目标(为扩散策略抽取提供加权回归)；设计greedified正则把最优策略分解为reward-max与reward-min两个稳定可学的二分扩散策略；推理时按贪婪度系数线性组合两者score得到动作分布。",
+ "experiment_framework": "在ExORL、OGBench做offline与offline-to-online RL评测；并用DIPOLE训练大视觉-语言-动作(VLA)模型做端到端自动驾驶，在大规模真实AD基准NAVSIM上评测；对比现有扩散策略RL方法。",
+ "takeaways": [
+  "二分策略分解让扩散策略RL训练更稳定且可推理时调节贪婪度。",
+  "无需粗糙高斯似然近似，降低对小步去噪的算力依赖。",
+  "可扩展到大VLA自动驾驶并在NAVSIM真实基准上验证有效性。"
+ ],
+ "weaknesses": [
+  "RL/机器人/VLA方向，与可靠性×医学影像主线关联弱。",
+  "需训练两个互补扩散策略，存储与训练成本约为单策略两倍。",
+  "贪婪度线性组合系数为人工设定，最优系数随任务变化的自适应机制未充分讨论。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Overleaf Example_(3).pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Overleaf Example_(3).pdf",
+ "raw_overall": 6.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "RL/机器人/VLA方向，与可靠性×医学影像主线关联弱。",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

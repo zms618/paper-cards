@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Rewis3d_Reconstruction Improves Weakly-Supervised Semantic Segmentation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Rewis3d_Reconstruction Improves Weakly-Supervised Semantic Segmentation.pdf",
+ "title": "Rewis3d Reconstruction Improves Weakly-Supervised Semantic Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "3D重建辅助弱监督分割，跨模态一致性提升mIoU",
+ "innovations": [
+  "首次将3D重建作为弱监督语义分割的辅助监督信号",
+  "双置信度过滤和视图感知采样策略",
+  "双学生-教师架构实现2D-3D双向知识传递"
+ ],
+ "method_framework": "结合2D分割分支、3D分割分支和跨模态一致性(CMC)损失，利用重建的3D点云作为辅助监督信号，通过双学生-教师架构实现2D图像与3D点云之间的语义一致性。",
+ "experiment_framework": "在KITTI-360、Waymo、Cityscapes和NYUv2数据集上评估，使用scribble、point和coarse标签作为弱监督，与EMA、TEL、SASFormer等方法比较mIoU指标。",
+ "takeaways": [
+  "3D几何信息能有效提升弱监督分割性能，特别是在复杂场景中",
+  "重建的3D点云比真实LiDAR数据表现更好，得益于密度和置信度过滤"
+ ],
+ "weaknesses": [
+  "依赖多视图重建，单图像场景效果受限",
+  "计算开销较大，需要额外的3D重建步骤"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D重建辅助分割，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

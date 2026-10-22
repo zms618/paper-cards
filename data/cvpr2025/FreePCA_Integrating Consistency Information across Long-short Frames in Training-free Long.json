@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/FreePCA_Integrating Consistency Information across Long-short Frames in Training-free Long.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/FreePCA_Integrating Consistency Information across Long-short Frames in Training-free Long.pdf",
+ "title": "FreePCA Integrating Consistency Information across Long-short Frames in Training-free Long",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "PCA解耦视频特征，滑动窗口融合增强一致性，但计算复杂且缺乏灵活性",
+ "innovations": [
+  "首次使用PCA解耦视频特征为一致外观和运动强度",
+  "在主成分空间中提取全局一致性特征并渐进式融合到局部特征",
+  "重用初始噪声均值统计进一步增强一致性"
+ ],
+ "method_framework": "FreePCA通过PCA解耦全局与局部特征，利用余弦相似性提取一致性特征，并随窗口滑动渐进融合，同时重用噪声均值统计增强一致性",
+ "experiment_framework": "在VideoCrafter2和LaVie模型上测试，使用Vbench的326个提示，评估一致性(Subject/Background/Overall)和质量(Motion/Dynamic/Imaging)",
+ "takeaways": [
+  "PCA在时域应用可有效解耦视频特征为一致性和运动信息",
+  "渐进式融合策略能在保持质量的同时增强一致性",
+  "噪声均值重用是增强视频一致性的有效手段"
+ ],
+ "weaknesses": [
+  "方法依赖滑动窗口，计算复杂度较高",
+  "仅适用于固定长度的视频生成，灵活性有限",
+  "Kmax参数设置需要针对不同任务调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "视频一致性增强，属于落地域但非可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

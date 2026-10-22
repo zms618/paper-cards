@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Randomization Boosts KV Caching, Learning Balances Query Load A Joint Perspective.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Randomization Boosts KV Caching, Learning Balances Query Load A Joint Perspective.pdf",
+ "title": "Randomization Boosts KV Caching, Learning Balances Query Load: A Joint Perspective",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "随机化缓存与学习路由联合优化，但与可靠性主线关联弱。",
+ "innovations": [
+  "给出首个统一KV缓存驱逐与查询路由权衡的数学模型，揭示LRU等既有方法的理论局限。",
+  "设计可证明有竞争力的随机化KV缓存驱逐策略。",
+  "结合学习式方法随查询模式演化自适应路由查询，联合平衡负载与缓存命中率。"
+ ],
+ "method_framework": "将多LLM服务建模为缓存亲和与全局负载均衡的权衡问题；用随机化驱逐策略提升单worker缓存命中(有竞争比保证)，再用学习式路由随查询分布演化把查询分发到不同worker，联合优化命中率与负载。",
+ "experiment_framework": "在4个基准、3种前缀共享设置下对比SOTA服务方法，报告缓存命中率、时延、TTFT与吞吐。",
+ "takeaways": [
+  "KV驱逐与查询路由应联合优化而非孤立设计；随机化驱逐+学习路由较SOTA最高提升缓存命中6.92倍、降时延11.96倍、降TTFT14.06倍、提吞吐77.4%。",
+  "缓存亲和优先会导致负载失衡，需与全局负载均衡联合权衡。"
+ ],
+ "weaknesses": [
+  "属LLM推理服务系统方向，与可靠性主线（鲁棒/可信/医学影像）关联弱。",
+  "学习式路由依赖查询分布模式，对突发/剧烈漂移负载的鲁棒性未充分验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "LLM推理系统优化，与可靠性主线关联弱且无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

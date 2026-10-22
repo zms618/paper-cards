@@ -1,0 +1,37 @@
+{
+ "title": "Flow Matching for Few-Trial Neural Adaptation with Stable Latent Dynamics",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "Flow匹配方法用于BCI跨天神经适配，但缺乏理论证明和广泛验证。",
+ "innovations": [
+  "将flow matching引入BCI跨天适配，用连续流建模神经分布的非线性对齐",
+  "引入稳定latent dynamics约束，防止few-trial下flow过拟合",
+  "在少量试次下实现稳定的跨天神经解码适配"
+ ],
+ "method_framework": "将每天的神经数据映射到共享latent空间；用flow matching学习从day1 latent到day2 latent的连续变换场；加latent dynamics正则(如相邻试次latent的平滑性)稳定训练；在few-trial目标天数据上微调flow，再用对齐后latent解码行为。",
+ "experiment_framework": "慢性植入BCI的跨天神经解码任务；对比PCA/线性对齐/已有非线性latent对齐方法；指标为跨天解码准确率与few-trial(1/5/10试次)下的稳定性。",
+ "takeaways": [
+  "FDA在少量试次(1-5)下跨天解码准确率显著优于传统线性对齐方法",
+  "稳定latent dynamics约束防止了flow在少样本下的过拟合",
+  "方法可在慢性植入BCI的日常使用中快速重校准"
+ ],
+ "weaknesses": [
+  "仅在BCI神经信号验证，未扩展到其他非平稳时间序列适配",
+  "few-trial下flow matching的理论稳定性缺乏严格证明",
+  "属于BCI神经工程应用，与可靠性/可信AI主线关联弱"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Flow Matching for Few-Trial Neural Adaptation with Stable Latent Dynamics.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Flow Matching for Few-Trial Neural Adaptation with Stable Latent Dynamics.pdf",
+ "raw_overall": 4.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

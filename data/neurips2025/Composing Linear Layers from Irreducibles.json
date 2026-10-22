@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Composing Linear Layers from Irreducibles.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Composing Linear Layers from Irreducibles.pdf",
+ "title": "Composing Linear Layers from Irreducibles",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.25
+ },
+ "one_line": "Clifford代数分解线性层，参数减少但未完整验证",
+ "innovations": [
+  "将线性层表示为Clifford代数中bivector的组成",
+  "提出可微的不变分解算法",
+  "设计基于rotor的参数高效线性层"
+ ],
+ "method_framework": "利用Clifford代数中的bivector作为基本几何原语，通过rotor夹积操作构建线性变换，仅需O(log2 d)参数，远少于传统O(d2)参数",
+ "experiment_framework": "在LLaMa和Qwen模型中替换1-3个注意力层，使用Wikitext2、C4、PTB等数据集评估困惑度和准确率，与低秩和块Hadamard基线比较",
+ "takeaways": [
+  "几何原语组合可构建高效参数表示",
+  "不变分解算法保持可微性",
+  "rotor层在保持性能的同时大幅减少参数"
+ ],
+ "weaknesses": [
+  "仅替换部分层，未进行完整模型转换",
+  "实验集中在较小模型(1.5B参数)，未在大模型上验证",
+  "实际系统级集成未实现"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

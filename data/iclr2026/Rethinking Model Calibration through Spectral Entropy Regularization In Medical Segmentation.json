@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Rethinking Model Calibration through Spectral Entropy Regularization In Medical Segmentation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rethinking Model Calibration through Spectral Entropy Regularization In Medical Segmentation.pdf",
+ "title": "Rethinking Model Calibration through Spectral Entropy Regularization in Medical Image Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.1
+ },
+ "one_line": "频域校准医学分割，谱熵正则+功率谱平滑提升边界不确定性建模。",
+ "innovations": [
+  "从频域视角定位医学分割失准的两大原因：模型过度强调低频成分（谱偏置）与置信图整体功率谱密度被抑制（置信饱和）。",
+  "提出谱熵正则项促进频谱均衡并提升整体谱功率，从而更好建模高频边界与低频结构处的不确定性。",
+  "引入功率谱平滑模块跨batch稳定频域统计，降低样本级波动；形成频域感知校准框架。"
+ ],
+ "method_framework": "在分割网络训练损失中加入谱熵正则，使置信图在频域上能量分布更均衡、整体功率更高；并对频域统计做跨batch平滑以稳定训练，从而同时改善边界与结构处的不确定性校准。",
+ "experiment_framework": "6个公开医学影像数据集（BraTS2020、ACDC、FLARE2021、iSeg2017、ATLAS2023、PROMISE2012），4:1:1划分；U-Net等多架构；对比多种校准基线；指标为校准指标（ECE等）与分割精度Dice，报告不降精度下校准一致提升。",
+ "takeaways": [
+  "医学分割的过自信可从频域（谱偏置+置信饱和）理解，频域正则是有效校准途径。",
+  "谱熵正则+功率谱平滑能在6个数据集、多架构上一致改善校准且不牺牲Dice精度。"
+ ],
+ "weaknesses": [
+  "频域正则的超参（谱熵权重、平滑窗口）对不同模态敏感，泛化性需更多验证。",
+  "仅在公开2D/3D分割基准验证，对真实临床部署中的分布漂移与OOD检测能力未评估。",
+  "与后处理温度缩放/混合精度校准等强基线的公平对比在前9页仅概述，完整表格在后续页。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.28,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "医学分割频域校准，解决边界与结构不确定性建模问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

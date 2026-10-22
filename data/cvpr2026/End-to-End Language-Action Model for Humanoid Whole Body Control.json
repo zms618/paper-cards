@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/End-to-End Language-Action Model for Humanoid Whole Body Control.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/End-to-End Language-Action Model for Humanoid Whole Body Control.pdf",
+ "title": "End-to-End Language-Action Model for Humanoid Whole Body Control",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "端到端人形控制模型，规模大且泛化性有限",
+ "innovations": [
+  "端到端语言-动作框架，直接映射语言命令到低级动作",
+  "流匹配动作专家生成动作块，支持残差动作头微调",
+  "多尺度状态历史和动态感知预测增强长期规划",
+  "多模态扩展支持视觉输入转换为语言控制信号"
+ ],
+ "method_framework": "SENTINEL包含三个阶段：1)构建语言-动作数据集；2)使用流匹配训练端到端语言-动作模型；3)通过残差强化学习进行后训练优化，实现模拟到现实的迁移。",
+ "experiment_framework": "基于AMASS数据集构建约20万语言标记机器人轨迹，对比MDM+Retarget、T2M-GPT+Retarget、UH-1和LangWBC基线，使用MM-Dist、R@K、多样性和MMD评估生成质量，以及物理执行成功率。",
+ "takeaways": [
+  "物理约束的机器人轨迹数据可提升语言控制性能",
+  "Transformer架构能有效捕捉语义理解和物理动力学",
+  "残差动作头可减轻开环漂移并提高模拟到现实迁移能力"
+ ],
+ "weaknesses": [
+  "模型规模较大(600M)，计算资源需求高",
+  "仅评估了Unitree G1机器人，泛化性有待验证",
+  "视觉输入依赖预定义模板，灵活性有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "人形机器人控制与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

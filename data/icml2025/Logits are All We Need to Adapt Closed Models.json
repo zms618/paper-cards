@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Logits are All We Need to Adapt Closed Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Logits are All We Need to Adapt Closed Models.pdf",
+ "title": "Logits are All We Need to Adapt Closed Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "黑盒LLM适配的logits重权重方法，理论充分但实践局限",
+ "innovations": [
+  "将黑盒LLM适配问题形式化为标签噪声修正问题",
+  "提出自回归概率重权重框架Plugin模型",
+  "提供理论证明logits重权重足以实现任务适配"
+ ],
+ "method_framework": "将next-token预测视为分类问题，训练自回归重权重模型修正黑盒模型的token概率，通过元素级乘积组合概率分布",
+ "experiment_framework": "在E2E NLG、Web NLG等4个文本生成数据集上对比GPT2、LLaMA等3个黑盒模型，使用BLEU、Rouge等指标评估",
+ "takeaways": [
+  "标签噪声修正框架可应用于黑盒模型适配",
+  "仅访问logits即可实现有效模型适配",
+  "方法可作为现有提示调优技术的包装器"
+ ],
+ "weaknesses": [
+  "假设对角转换矩阵可能限制表达能力",
+  "依赖少量任务特定数据，数据量不足时效果可能下降",
+  "仅适用于提供logits访问的封闭模型"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

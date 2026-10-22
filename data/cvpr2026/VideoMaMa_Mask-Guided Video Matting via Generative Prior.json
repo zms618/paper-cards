@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/VideoMaMa_Mask-Guided Video Matting via Generative Prior.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/VideoMaMa_Mask-Guided Video Matting via Generative Prior.pdf",
+ "title": "VideoMaMa Mask-Guided Video Matting via Generative Prior",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "扩散模型视频抠像，依赖预训练模型，两阶段训练复杂",
+ "innovations": [
+  "基于预训练视频扩散模型的视频抠像模型VideoMaMa",
+  "两阶段训练策略平衡高分辨率细节和时间一致性",
+  "构建首个大规模真实视频抠像数据集MA-V",
+  "利用生成先验和分割标签构建可扩展的伪标注流程"
+ ],
+ "method_framework": "VideoMaMa基于Stable Video Diffusion，采用两阶段训练：先在高分辨率训练空间层捕捉细节，再在低分辨率训练时间层保证一致性，通过DINOv3特征注入语义知识，实现从二值掩码到高质量alpha matte的转换。",
+ "experiment_framework": "在V-HIM60和YouTubeMatte基准上评估，对比MaGGIe和MGM等方法，使用MAD和Gradient误差指标，测试合成退化掩码和SAM2生成掩码两种输入条件。",
+ "takeaways": [
+  "利用生成先验解决视频抠像数据稀缺问题",
+  "掩码增强策略防止模型简单复制掩码而非生成真实细节",
+  "大规模真实视频数据集显著提升模型泛化能力"
+ ],
+ "weaknesses": [
+  "依赖预训练扩散模型，计算资源需求高",
+  "仅在合成数据上训练，虽然能泛化到真实视频但可能存在域差异",
+  "两阶段训练增加了训练复杂度"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频抠像与可靠性主线无实质交点，仅为工具性工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

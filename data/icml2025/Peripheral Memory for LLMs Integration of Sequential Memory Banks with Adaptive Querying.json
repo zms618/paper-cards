@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Peripheral Memory for LLMs Integration of Sequential Memory Banks with Adaptive Querying.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Peripheral Memory for LLMs Integration of Sequential Memory Banks with Adaptive Querying.pdf",
+ "title": "Peripheral Memory for LLMs: Integration of Sequential Memory Banks with Adaptive Querying",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "将LLM记忆外设化为KAN序列库，用查询信号读写，但性能增益不明确",
+ "innovations": [
+  "提出外设记忆(P.M.)概念：LLM作信息处理器(CPU)、记忆作可扩展外设(RAM)",
+  "记忆设计为一串记忆库，每个用Kolmogorov-Arnold Network(KAN)建模以保证平滑状态转移",
+  "读写由LLM内部状态导出的查询信号动态控制；并用专门记忆库生成掩码(借二进制符号位)标注检索数据相关性"
+ ],
+ "method_framework": "为长期知识更新而不损害LLM原性能，将记忆外设化为一串顺序记忆库；每个记忆库用KAN实现平滑状态转移；读/写操作由LLM内部状态产生的查询信号动态控制(类似CPU-RAM交互)；另有专门记忆库输出符号位式掩码指示检索内容相关性，最终把检索记忆作为prefix注入以增强LLM。",
+ "experiment_framework": "在长期知识更新/记忆增强NLP任务上评测；与工作记忆/隐式记忆/显式记忆三类已有记忆方法对比；指标含可扩展性、可复用性、可配置性及下游任务性能与原性能保持。",
+ "takeaways": [
+  "外设式记忆在可扩展性/可复用性/可配置性上优于已有三类记忆",
+  "KAN记忆库提供平滑状态转移，自适应查询实现按需读写",
+  "知识更新无需重训即不损害模型原有能力"
+ ],
+ "weaknesses": [
+  "前9页未见完整下游任务定量表，实际性能增益不清晰",
+  "类比CPU-RAM的设计在工程开销/延迟上的代价未充分讨论",
+  "记忆增强LLM通用技术，与主线落地域(医学影像/多模态推理)不直接相关"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.73,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

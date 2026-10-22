@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/PointNSP_Autoregressive 3D Point Cloud Generation with Next-Scale Level-of-Detail Prediction.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/PointNSP_Autoregressive 3D Point Cloud Generation with Next-Scale Level-of-Detail Prediction.pdf",
+ "title": "PointNSP Autoregressive 3D Point Cloud Generation with Next-Scale Level-of-Detail Prediction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "多尺度细节预测的自回归点云生成，方法常规但实验不足。",
+ "innovations": [
+  "多尺度细节预测范式替代传统逐点预测",
+  "保持点云排列不变性的自回归框架",
+  "跨尺度交互和尺度内双向注意力机制",
+  "中间结构解码策略获取位置信息"
+ ],
+ "method_framework": "PointNSP采用粗到细的多尺度细节预测框架，通过远点采样构建不同细节层次，使用多尺度VQVAE进行特征提取，结合因果Transformer进行跨尺度预测，最终重建高质量点云。",
+ "experiment_framework": "ShapeNet基准测试，包含标准2048点和密集8192点设置，使用CD和EMD指标评估生成质量，对比扩散模型和自回归模型基线，评估参数效率、训练和推理速度。",
+ "takeaways": [
+  "多尺度预测可有效解决自回归模型中的长距离依赖问题",
+  "保持排列不变性对点云生成至关重要",
+  "中间结构解码策略有效获取位置信息"
+ ],
+ "weaknesses": [
+  "多尺度VQVAE训练复杂度较高",
+  "未充分讨论模型在不同点云密度下的泛化能力",
+  "缺乏对生成结果多样性的定量分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "点云生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

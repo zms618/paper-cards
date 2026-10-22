@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/COGNATE_Acceleration of Sparse Tensor Programs on Emerging Hardware using Transfer Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/COGNATE_Acceleration of Sparse Tensor Programs on Emerging Hardware using Transfer Learning.pdf",
+ "title": "COGNATE: Acceleration of Sparse Tensor Programs on Emerging Hardware using Transfer Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.25
+ },
+ "one_line": "跨硬件迁移学习加速稀疏张量，但系统优化与主线无关",
+ "innovations": [
+  "提出跨硬件迁移学习框架：在CPU上训练代价模型，再向新兴加速器few-shot微调",
+  "利用输入特征跨硬件同质性并显式缓解硬件异质性，大幅降低新加速器所需训练数据",
+  "仅需加速器专用模型5%的数据样本即可达到可比性能",
+  "在SpMM/SDDMM上分别取得平均1.47x(最高5.46x)/1.39x(最高4.22x)加速"
+ ],
+ "method_framework": "先用通用CPU上丰富的稀疏矩阵样本训练代价模型预测不同程序配置的运行时间；再针对新兴加速器用少量(5%)数据few-shot微调，通过特征同质性迁移与异质性校正适配新硬件；搜索器依代价模型选最优配置。",
+ "experiment_framework": "在新兴稀疏加速器模拟器/硬件上，对SpMM、SDDMM等稀疏张量程序，与CPU代价模型直接迁移、加速器专用模型、手工优化配置比较，报告加速比与所需训练数据量。",
+ "takeaways": [
+  "稀疏输入特征跨硬件具有同质性，可迁移代价模型",
+  "few-shot微调能以极少新硬件数据弥合异质性",
+  "该思路可显著降低早期加速器优化的数据成本"
+ ],
+ "weaknesses": [
+  "主线为系统/硬件编译器优化，与可靠性主线及医学影像、多模态推理落地域无关",
+  "依赖模拟器与CPU样本的可迁移性，对架构差异极大的加速器可能失效",
+  "主要在SpMM/SDDMM验证，对更复杂稀疏算子/端到端应用的覆盖有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

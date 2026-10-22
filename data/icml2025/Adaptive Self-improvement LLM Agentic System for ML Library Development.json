@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Adaptive Self-improvement LLM Agentic System for ML Library Development.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adaptive Self-improvement LLM Agentic System for ML Library Development.pdf",
+ "title": "Adaptive Self-improvement LLM Agentic System for ML Library Development",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "双智能体系统提升LLM在专用语言上开发ML库能力，但验证有限。",
+ "innovations": [
+  "提出自适应自改进学习算法：从并行采样中筛选高质量答案，按难度分层（难/中/易），自适应选择演示样本注入上下文",
+  "设计Proposer-Guardian双智能体架构，Guardian智能体专门校正仿射类型约束（全局变量复用检查）",
+  "构建STeP ASPL的26个ML算子任务基准，覆盖8类常见LLM层算子"
+ ],
+ "method_framework": "系统包含：(1)Proposer智能体生成STeP代码实现；(2)Guardian智能体检查并修正仿射类型约束违反；(3)代码生成器将结构化IR转为可执行Python脚本；(4)双验证器（功能正确性+静态类型检查）。自适应自改进学习流程：并行采样n个答案→按AST同构分组去重→筛选正确答案→按难度分层→动态更新演示集。完成的任务从任务池中移除，集中算力攻克未解决难题。",
+ "experiment_framework": "在26个ML算子任务基准上测试多个开源和闭源LLM（GPT-4o、DeepSeek-V3、LLaMA、Claude 3.5 Sonnet）。指标为pass@1和pass@n（任务完成率）。消融研究：自适应粒度m的影响、结构化IR的效果、Guardian智能体的贡献。",
+ "takeaways": [
+  "自改进学习使Pass@n从0.46提升至最高0.85，相对单LLM基线提升达3.9倍",
+  "困难样本（hard-only）的演示比混合样本更有效，是Pareto最优选择",
+  "Guardian智能体将变量复用任务的Pass@n从6/12提升至11/12，但会轻微降低非复用任务的Pass@1"
+ ],
+ "weaknesses": [
+  "仅在STeP一种ASPL上验证，未测试CUDA/Triton等更成熟的ASPL，外部效度存疑",
+  "基准规模较小（26个任务），且仅验证功能正确性，未评估性能优化质量",
+  "自改进过程依赖自动验证器，若验证器有盲区则可能学习到错误经验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.73,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "LLM开发工具与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

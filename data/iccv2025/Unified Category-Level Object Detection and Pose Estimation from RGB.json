@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Unified Category-Level Object Detection and Pose Estimation from RGB.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Unified Category-Level Object Detection and Pose Estimation from RGB.pdf",
+ "title": "Unified Category-Level Object Detection and Pose Estimation from RGB",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "单阶段RGB框架统一检测与姿态估计，性能提升但局限明显",
+ "innovations": [
+  "首个RGB单阶段框架统一物体检测与姿态估计",
+  "结合神经网格模型与多模型RANSAC PnP",
+  "通过特征匹配实现2D/3D对应关系"
+ ],
+ "method_framework": "基于神经网格模型作为3D表示，结合DINOv2特征提取器和几何特征解码器，通过对比学习训练，使用多模型RANSAC进行物体检测和初始6D姿态估计，最后进行9D姿态优化",
+ "experiment_framework": "在CAMERA25和REAL275数据集上评估，使用尺度无关指标(NIoU, 旋转误差, 尺度归一化平移误差)和绝对指标，与MSOS、OLD-Net、DMSR、LaPose等方法对比",
+ "takeaways": [
+  "单阶段框架比两阶段方法更鲁棒",
+  "神经网格模型作为统一表示有效",
+  "特征匹配方法在RGB-only场景下表现优异"
+ ],
+ "weaknesses": [
+  "在CAMERA25上小物体表现稍差",
+  "绝对尺度预测不如基于边界框的方法",
+  "推理速度可能受高分辨率特征影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "纯视觉任务，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

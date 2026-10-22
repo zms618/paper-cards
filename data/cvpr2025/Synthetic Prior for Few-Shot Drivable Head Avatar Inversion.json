@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Synthetic Prior for Few-Shot Drivable Head Avatar Inversion.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Synthetic Prior for Few-Shot Drivable Head Avatar Inversion.pdf",
+ "title": "Synthetic Prior for Few-Shot Drivable Head Avatar Inversion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "合成先验驱动的少样本头像反演，依赖3DMM初始化",
+ "innovations": [
+  "使用合成数据训练生成式先验模型",
+  "VQ-VAE架构实现身份与表情解耦",
+  "基于部分自适应的高斯原语密度控制",
+  "两阶段关键微调策略 bridging 合成与真实域差距"
+ ],
+ "method_framework": "基于3D高斯溅射的卷积编码器-解码器架构，在UV空间输出高斯参数，通过VQ-VAE分离身份与表情表示，使用部分自适应机制控制不同区域原语密度。",
+ "experiment_framework": "对比INSTA、Flash Avatar等单目方法和InvertAvatar、Portrait4D等GAN方法，使用LPIPS、SSIM指标在自重演和跨重演任务上评估，使用3张输入图像进行反演。",
+ "takeaways": [
+  "合成数据可有效解决隐私约束和数据获取问题",
+  "身份与表情解耦的表示方法提升泛化能力",
+  "部分自适应机制提高不同区域建模质量"
+ ],
+ "weaknesses": [
+  "合成数据与真实数据域差距仍存在",
+  "方法依赖3DMM回归器进行初始化",
+  "长头发和胡须等复杂区域的处理仍有挑战"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "仅占落地域(头像反演)，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

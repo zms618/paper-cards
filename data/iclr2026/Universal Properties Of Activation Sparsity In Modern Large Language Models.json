@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Universal Properties Of Activation Sparsity In Modern Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Universal Properties Of Activation Sparsity In Modern Large Language Models.pdf",
+ "title": "Universal Properties of Activation Sparsity in Modern Large Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "测量LLM激活稀疏性，发现规模越大越能容忍稀疏，但与主线关联弱",
+ "innovations": [
+  "提出统一框架评估现代LLM对激活稀疏的鲁棒性，弥合ReLU时代精确零激活方法难以迁移到SiLU/GELU GLU架构的缺口",
+  "系统比较input-based/gate-based/predictor-based三类跳过冗余计算策略在FFN不同组件上的效果，给出模型无关的设计指引",
+  "实证发现有效激活稀疏潜力随模型规模增大而增长，并首次把研究扩展到扩散式LLM"
+ ],
+ "method_framework": "现代LLM多用GLU架构(SiLU/GELU)，ReLU时代精确零激活方法迁移差，现有方法碎片化(改回ReLU需重训且损质量、近似稀疏需标定阈值易过拟合校准集)。本文不提出新稀疏算法，而是建统一评估框架：在FFN各组件(输入/门控/中间激活)按不同强度诱发稀疏，测量模型输出的鲁棒性损失，跨架构(Gemma/Llama/Qwen/DeepSeek等)与规模扫描，归纳普适规律。",
+ "experiment_framework": "跨多个模型族与规模的开放LLM系统扫描，比较input/gate/predictor三类稀疏mask来源与不同稀疏强度下的任务性能保持度；指标为稀疏前后性能差(鲁棒性)；另含扩散式LLM的案例研究，给出用于LLM加速的实践指引。",
+ "takeaways": [
+  "现代GLU-LLM的有效激活稀疏潜力随模型规模增大而增强，稀疏化将随模型变大更有用",
+  "input/gate/predictor三类稀疏策略作用于FFN不同组件，其收益并不等价，设计选择此前缺乏统一依据",
+  "近似稀疏虽无需重训，但需阈值标定且易过拟合校准集，精确稀疏方法则面临改架构的代价"
+ ],
+ "weaknesses": [
+  "属LLM机制/效率测量研究，与本主线(可靠性×多模态推理/医学影像)关联较弱，稀疏仅与鲁棒性间接相关",
+  "为实证/测量类工作，核心贡献是归纳现象而非提出新方法，技术新颖性中等",
+  "结论跨模型族成立，但对MoE/非常新架构的覆盖、以及稀疏加速在真实硬件上的端到端提速未充分量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "LLM激活稀疏性测量，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

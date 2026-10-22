@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Efficient Motion Prompt Learning for Robust Visual Tracking.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficient Motion Prompt Learning for Robust Visual Tracking.pdf",
+ "title": "Efficient Motion Prompt Learning for Robust Visual Tracking",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "轻量运动提示模块提升跟踪鲁棒性，但创新有限且与主线关联弱",
+ "innovations": [
+  "提出轻量级运动提示跟踪方法，可即插即用地集成到现有视觉跟踪器中，联合利用视觉和运动线索",
+  "设计带三种位置编码的运动编码器，将长期运动轨迹编码到视觉嵌入空间",
+  "设计融合解码器和自适应权重机制，动态融合视觉与运动特征，以最小训练成本提升跟踪鲁棒性"
+ ],
+ "method_framework": "在现有视觉跟踪框架基础上，增加运动提示分支：运动编码器将历史轨迹位置序列编码为运动嵌入，通过融合解码器与视觉特征自适应融合；自适应权重机制根据当前帧视觉-运动一致性动态分配两者权重；模块可插入多种基于Siamese或Transformer的跟踪器。",
+ "experiment_framework": "在7个挑战性跟踪基准（如LaSOT、TrackingNet、GOT-10k等）上，将运动模块集成到3种跟踪器共5个模型中，对比基线视觉跟踪器，指标为精度/AUC；同时报告速度损失和训练成本。",
+ "takeaways": [
+  "运动提示模块在多种跟踪器上均带来显著性能提升，尤其在遮挡、干扰物等挑战场景下",
+  "模块训练成本低、速度牺牲可忽略，具有良好的实用性",
+  "运动线索与视觉线索的自适应融合比固定融合更有效"
+ ],
+ "weaknesses": [
+  "属于视觉跟踪方向的工程改进，与医学影像/多模态大模型推理等落地域无直接关联",
+  "运动轨迹依赖于历史跟踪结果，在完全跟丢后可能无法恢复（级联误差）",
+  "前9页仅看到方法概述，具体的三种位置编码对比和自适应权重机制细节未充分展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.68,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

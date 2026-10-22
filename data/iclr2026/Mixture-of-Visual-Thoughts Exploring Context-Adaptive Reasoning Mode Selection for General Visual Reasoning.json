@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mixture-of-Visual-Thoughts Exploring Context-Adaptive Reasoning Mode Selection for General Visual Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mixture-of-Visual-Thoughts Exploring Context-Adaptive Reasoning Mode Selection for General Visual Reasoning.pdf",
+ "title": "Mixture-of-Visual-Thoughts: Exploring Context-Adaptive Reasoning Mode Selection for General Visual Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "统一多视觉推理模式，RL引导上下文自适应选择，缓解单一模式局限。",
+ "innovations": [
+  "提出统一文本推理与视觉锚定推理的自适应推理范式MoVT",
+  "两阶段AdaVaR框架：监督冷启动统一学习多模式，RL阶段以AdaGRPO诱导模式选择能力",
+  "按上下文自适应选择推理模式，缓解单一模式过思考幻觉与语言偏置"
+ ],
+ "method_framework": "冷启动SFT阶段让单一模型同时学会文本CoT与视觉锚定(框/点/局部视觉信息)等多种推理模式；随后用精心设计的AdaGRPO做RL，奖励正确且模式恰当的轨迹，诱导模型按题目上下文自动选择最合适的推理模式。",
+ "experiment_framework": "在多类视觉推理场景(抽象数学/视觉定位等)广泛评测，对比纯文本推理与纯视觉锚定模型；指标为各场景准确率；展示跨场景一致提升与模式可分性。",
+ "takeaways": [
+  "不同推理模式有互补偏置，单一模式难以通用",
+  "RL诱导的上下文自适应模式选择可统一多模式优势",
+  "视觉锚定推理有助于减少过度思考与语言偏置导致的幻觉"
+ ],
+ "weaknesses": [
+  "模式选择依赖RL奖励设计，奖励对模式恰当性的刻画可能不充分",
+  "冷启动需多模式标注数据，成本较高",
+  "对模式切换错误的失败案例与置信度估计未深入分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模式推理缓解幻觉，属可靠性主线但未深入落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

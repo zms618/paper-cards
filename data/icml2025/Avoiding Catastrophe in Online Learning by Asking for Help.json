@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Avoiding Catastrophe in Online Learning by Asking for Help.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Avoiding Catastrophe in Online Learning by Asking for Help.pdf",
+ "title": "Avoiding Catastrophe in Online Learning by Asking for Help",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 4,
+  "relevance": 7.0,
+  "overall": 6.4
+ },
+ "one_line": "理论框架证明在线学习灾难不可避免，有限维条件下可次线性遗憾。",
+ "innovations": [
+  "形式化带灾难风险的在线学习问题，用payoff乘积（整体避免灾难概率）替代加性遗憾作为目标",
+  "证明不可能性定理：一般情况下任何算法要么线性查询导师，要么几乎必然遭遇灾难",
+  "在有限VC维或有限Littlestone维条件下，提出基于Hedge+陌生输入求助的算法，实现次线性遗憾和次线性查询率"
+ ],
+ "method_framework": "每轮payoff∈[0,1]表示该轮避免灾难的概率，目标是最大化T轮payoff的乘积（整体安全概率）。算法1：(1)用修改版Hedge做基础在线学习；(2)当输入与已查询输入差异很大（分布外）时向导师求助。Hedge保证错误次数少，求助机制保证错误时代价不高。导师策略类需满足有限VC维或Littlestone维。",
+ "experiment_framework": "纯理论论文，无实证实验。给出不可能性定理(Theorem 4.1)和正结果定理(有限VC维/Littlestone维下的上界)。",
+ "takeaways": [
+  "在线学习中避免灾难的关键在于能否向导师求助——无求助时试错式学习必然导致灾难",
+  "导师策略类可学习性（有限VC维）是安全在线学习的充分条件",
+  "乘性遗憾和加性遗憾在该框架下给出匹配的理论界"
+ ],
+ "weaknesses": [
+  "纯理论论文，无任何实证验证，算法实际可行性未知",
+  "导师存在性和可访问性假设过强，真实场景中难以获得完美导师",
+  "有限VC维假设对现代深度学习模型不现实（深度网络VC维极大）"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "在线学习灾难避免与可靠性主线直接相关，但缺乏实证验证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

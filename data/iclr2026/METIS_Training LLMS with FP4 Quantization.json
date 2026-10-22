@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/METIS_Training LLMS with FP4 Quantization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/METIS_Training LLMS with FP4 Quantization.pdf",
+ "title": "METIS: Training LLMS with FP4 Quantization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "谱域分解缓解LLM各向异性FP4量化偏差",
+ "innovations": [
+  "识别LLM中参数、激活和梯度的奇异值谱各向异性是低比特训练的根本障碍",
+  "提出谱域量化框架Metis，将各向异性谱划分为更窄的子分布进行独立量化",
+  "利用稀疏随机采样和随机投影特性，将分解成本降至可忽略水平"
+ ],
+ "method_framework": "Metis在谱域对权重、激活和梯度矩阵进行分解，将主导分量与长尾分量分离，分别量化。通过稀疏随机采样和随机投影降低计算复杂度，实现W4A4G4训练。",
+ "experiment_framework": "在GPT-2和LLaMA-3模型上评估，使用DCLM数据集训练100B tokens，对比BF16和NVIDIA FP4基线，指标包括训练损失和下游任务准确率。",
+ "takeaways": [
+  "各向异性是现代LLM的普遍属性，主导奇异值导致宽数值分布",
+  "量化偏差在谱空间中引起严重失真，特别是对小奇异值分量",
+  "稀疏随机采样和随机投影可显著降低谱分解的计算开销"
+ ],
+ "weaknesses": [
+  "仅在前9页内容中，缺乏对更大模型规模和不同架构的验证",
+  "未详细说明Metis在推理阶段的性能和效率优势"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "量化技术本身不直接关联可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

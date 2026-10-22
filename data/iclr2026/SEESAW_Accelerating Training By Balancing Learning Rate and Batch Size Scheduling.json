@@ -1,0 +1,41 @@
+{
+ "title": "Seesaw: Accelerating Training by Balancing Learning Rate and Batch Size Scheduling",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "Seesaw调度通过lr与批大小平衡加速训练，但理论局限且与主线无关。",
+ "innovations": [
+  "给出SGD在噪声线性回归上学习率衰减与批大小 ramp-up 等价的首个有限样本证明",
+  "将该等价性在方差主导情形下推广到归一化SGD(Adam的可处理代理)",
+  "据此设计Seesaw调度，在等FLOPs下匹配余弦衰减并减少约36%墙钟时间"
+ ],
+ "method_framework": "每当标准调度要将学习率减半，Seesaw改为将lr乘1/√2并把批大小翻倍，在保持损失动力学不变的同时减少串行步数；从临界批大小出发做批ramp。",
+ "experiment_framework": "在150M/300M/600M参数、Chinchilla规模、以恒定临界批大小训练的模型上验证；等FLOPs下匹配余弦衰减，墙钟时间减少约36%，接近理论极限。",
+ "takeaways": [
+  "自适应优化器下批ramp并非纯启发式，可由等价关系原则化",
+  "Seesaw在不损精度的前提下显著缩短训练墙钟时间",
+  "有限样本等价为大模型批调度提供了理论依据"
+ ],
+ "weaknesses": [
+  "属训练优化/系统加速，与可靠性、医学影像或多模态推理主线无关",
+  "理论等价限于噪声线性回归与归一化SGD代理，深层网络假设未必成立",
+  "前9页未见跨更大模型的扩展性验证"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/SEESAW_Accelerating Training By Balancing Learning Rate and Batch Size Scheduling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SEESAW_Accelerating Training By Balancing Learning Rate and Batch Size Scheduling.pdf",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "训练加速与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

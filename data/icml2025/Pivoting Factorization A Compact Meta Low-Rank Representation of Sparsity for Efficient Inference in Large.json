@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Pivoting Factorization A Compact Meta Low-Rank Representation of Sparsity for Efficient Inference in Large.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Pivoting Factorization A Compact Meta Low-Rank Representation of Sparsity for Efficient Inference in Large.pdf",
+ "title": "Pivoting Factorization: A Compact Meta Low-Rank Representation of Sparsity for Efficient Inference in Large Language Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 5.9
+ },
+ "one_line": "PIFA以主元行为基构建无损低秩表示，压缩LLM并加速推理。",
+ "innovations": [
+  "提出Pivoting Factorization(PIFA)：无监督学习任意低秩表示的紧凑meta表示，识别主元行并用线性组合表达非主元行，无损去除冗余",
+  "相对低秩层在秩=50%维度时额外节省24.2%显存、推理快24.6%",
+  "提出免重训练的最小化误差累积重构方法M，与PIFA端到端结合为MPIFA缓解低秩剪接的性能退化"
+ ],
+ "method_framework": "PIFA把权重矩阵的行划分为线性无关的主元行与非主元行，非主元行表为主元行的线性组合，形成比SVD更紧凑的无损meta低秩表示；M方法在重构时最小化误差累积以补偿低秩近似损失；MPIFA将二者端到端结合用于LLM推理压缩。",
+ "experiment_framework": "在LLM上做低秩剪枝压缩；与SVD-based低秩剪枝、半结构化N:M稀疏剪枝对比；以显存节省比例、推理加速比、困惑度/性能保持为指标，报告秩=50%维度下24.2%显存节省与24.6%加速。",
+ "takeaways": [
+  "PIFA作为无损meta低秩表示，在任意密度/任意GPU架构下通用，弥补半结构化剪枝的硬件绑定缺陷",
+  "MPIFA显著优于现有低秩剪枝，逼近半结构化剪枝性能而更通用",
+  "免重训练重构M有效缓解了低秩剪枝导致的困惑度翻倍问题"
+ ],
+ "weaknesses": [
+  "前9页未见完整基准表，具体在哪些LLM、哪些评测任务上的增益幅度不完整",
+  "加速收益依赖稀疏/低秩kernel实现，实际GPU端到端吞吐收益缺乏实测",
+  "与SOTA量化+剪枝组合方案的对比未在正文体现"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.83,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

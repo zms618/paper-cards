@@ -1,0 +1,41 @@
+{
+ "title": "TaskCraft: Automated Generation of Agentic Tasks",
+ "one_line": "自动化任务生成流程，提升工具使用能力但创新有限",
+ "innovations": [
+  "提出首个可扩展、多工具、可验证的智能体任务自动生成工作流，突破人工标注基准(GAIA/BrowseComp/HLE)的规模瓶颈",
+  "通过depth-based与width-based扩展逐步复杂化原子任务，配合rejection sampling保留带工具成功但纯LLM失败的真实工具必要样本",
+  "用LLM语言分析做增量校验，仅验证扩展增量部分而非全任务，兼顾可扩展性与效率"
+ ],
+ "method_framework": "从单工具可解的原子任务出发，沿深度(增加链上工具步骤)与宽度(引入多工具)两个方向逐步复杂化；每次扩展用rejection sampling验证agent成功而无工具LLM失败，并对增量修改做语言分析快速校验。生成任务支持在SOTA工作流中采样轨迹，用于端到端SFT与RL。",
+ "experiment_framework": "构建41k工具密集任务(含12.6k工具交互轨迹、5k多跳分解)；在多个LLM上做SFT+RL；基线为TIR既有训练数据；指标为多跳推理与智能体基准(GAIA等4个)的准确率，报告SOTA。",
+ "takeaways": [
+  "自动生成的智能体任务数据可显著提升多跳推理与工具使用能力，再叠加RL可进一步涨点",
+  "增量校验（只验证扩展部分）大幅降低了任务复杂化过程中的验证成本",
+  "通过扩展可生成超出生成模型自身能力的任务，为可扩展agent训练提供路径"
+ ],
+ "weaknesses": [
+  "任务质量依赖rejection sampling与LLM语言分析的校验可靠性，自动校验本身可能引入噪声标签",
+  "生成任务的真实世界分布代表性与多样性长尾未充分量化，可能偏向常见工具链",
+  "核心是数据生成pipeline，方法创新性主要在工程流程，缺乏新的模型/算法组件"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Taskcraft_Automated Generation Agentic Tasks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Taskcraft_Automated Generation Agentic Tasks.pdf",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "raw_overall": 6.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "工具使用能力提升但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

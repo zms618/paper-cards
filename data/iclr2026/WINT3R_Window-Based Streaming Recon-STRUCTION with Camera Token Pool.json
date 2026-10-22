@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/WINT3R_Window-Based Streaming Recon-STRUCTION with Camera Token Pool.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/WINT3R_Window-Based Streaming Recon-STRUCTION with Camera Token Pool.pdf",
+ "title": "WINT3R: Window-Based Streaming Reconstruction with Camera Token Pool",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "滑动窗口与相机token池的在线重建方案，实时性尚可但创新有限。",
+ "innovations": [
+  "引入滑动窗口机制处理图像流，窗口内相邻帧重叠半幅以充分交换信息，提升几何预测质量",
+  "提出紧凑相机token池，在线重建时生成极小的相机token作为历史帧全局信息，增强后续窗口的重建精度",
+  "在保持17FPS实时性的同时，在线重建质量和相机位姿估计均达到SOTA"
+ ],
+ "method_framework": "前馈网络逐帧处理图像流。滑动窗口方式确保窗口内帧间充分信息交互。每个窗口生成紧凑的相机token存入全局token池，后续窗口重建时引用这些token获取全局几何线索，在不增加大量计算的前提下提升精度。",
+ "experiment_framework": "在多个在线重建基准上评估。指标包括重建质量（点图精度）、相机位姿估计误差、推理速度。对比基线包括传统SLAM和前馈重建方法。",
+ "takeaways": [
+  "滑动窗口+紧凑全局token的设计有效平衡了重建质量和实时性能",
+  "前馈模型可以同时实现高质量在线稠密重建和准确位姿估计，无需束调整等迭代优化",
+  "相机token池是一种高效的全局信息传递机制"
+ ],
+ "weaknesses": [
+  "仅在标准室内/室外数据集上验证，动态场景或遮挡严重场景的鲁棒性未知",
+  "滑动窗口大小对性能的影响未系统消融",
+  "长序列累积漂移问题的解决方案未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "在线重建方法与可靠性主线无直接交点，仅属常规扎实工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

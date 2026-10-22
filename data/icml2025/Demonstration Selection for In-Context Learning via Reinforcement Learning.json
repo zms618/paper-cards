@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Demonstration Selection for In-Context Learning via Reinforcement Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Demonstration Selection for In-Context Learning via Reinforcement Learning.pdf",
+ "title": "Demonstration Selection for In-Context Learning via Reinforcement Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "RL选择演示样本提升ICL，但工程性强且适用场景有限。",
+ "innovations": [
+  "用 RL 把演示选择建模为序列决策，同时优化相关性与多样性（以标签分布量化）。",
+  "实现 Q-learning 与基于 PPO 的两种选择器动态选取演示。",
+  "结合 CoT 推理进一步提升预测性能，并跨 14 个 LLM 验证通用性。"
+ ],
+ "method_framework": "把候选演示库与当前查询作为环境，智能体逐样本选择演示；奖励同时包含与任务目标的相关性和标签分布多样性，避免演示集中于单一模式；用 Q-learning/PPO 训练选择策略，使 ICL 覆盖更广的结构与概念，提升泛化。",
+ "experiment_framework": "在文本分类与多种推理基准、14 个闭源/开源 LLM 上评测；对比 10 个既有演示选择基线，研究不同演示数量的影响，并叠加 CoT 评估增益。",
+ "takeaways": [
+  "兼顾相关性与多样性的 RL 演示选择显著提升 ICL 精度与泛化。",
+  "多样性（尤其标签分布均衡）能纠正无多样性方法在中性样本上的误判。",
+  "该方法跨众多 LLM 通用，且与 CoT 正交叠加有益。"
+ ],
+ "weaknesses": [
+  "需在离线候选库上训练选择器，对在线/开放域无候选库的场景不直接适用。",
+  "方法工程性强，RL 选择器本身的训练成本与对不同 LLM 的迁移规律分析有限。",
+  "仅评文本分类/推理，未涉及多模态或医学影像等具体高风险落地。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

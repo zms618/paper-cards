@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/URDF-Anything_Constructing Articulated Objects with 3D Multimodal Language Model.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/URDF-Anything_Constructing Articulated Objects with 3D Multimodal Language Model.pdf",
+ "title": "URDF-Anything: Constructing Articulated Objects with 3D Multimodal Language Model",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.7
+ },
+ "one_line": "端到端3D多模态模型重建铰接物体，但依赖预训练骨干",
+ "innovations": [
+  "首个端到端3D多模态语言模型框架用于铰接物体重建",
+  "创新的[SEG]标记机制实现几何分割和运动学参数的联合预测",
+  "在PartNet-Mobility数据集上显著优于现有方法"
+ ],
+ "method_framework": "URDF-Anything框架包含三个主要阶段：输入表示（从RGB图像生成3D点云）、多模态铰接解析（使用3D MLLM联合预测部分分割和运动学参数）、网格转换（将分割点云转换为网格用于仿真）。",
+ "experiment_framework": "在PartNet-Mobility数据集上评估，使用mIoU和计数准确率评估几何分割，使用关节类型、轴和原点误差评估运动学参数预测，并评估物理可执行性。",
+ "takeaways": [
+  "[SEG]标记机制实现了符号输出与几何分割的紧密耦合",
+  "端到端方法确保了预测运动学与重建几何之间的一致性",
+  "在OOD对象上表现出强大的泛化能力"
+ ],
+ "weaknesses": [
+  "依赖预训练的3D MLLM骨干网络",
+  "单视图输入使用生成方法可能引入误差",
+  "未充分讨论计算效率与实时性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

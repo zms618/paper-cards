@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Private Federated Learning using Preference-Optimized Synthetic Data.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Private Federated Learning using Preference-Optimized Synthetic Data.pdf",
+ "title": "Private Federated Learning using Preference-Optimized Synthetic Data",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "POPri用偏好优化提升联邦学习合成数据质量，但计算负担与泛化性存疑",
+ "innovations": [
+  "将私有学习问题重构为LLM策略优化问题",
+  "设计偏好数据集收集机制替代传统提示工程",
+  "引入DPO算法优化LLM生成高质量合成数据"
+ ],
+ "method_framework": "POPri通过收集客户端对合成数据的相似性评分，构建偏好数据集，使用DPO算法微调LLM，生成更接近私有数据的合成数据用于下游任务训练。",
+ "experiment_framework": "LargeFedBench数据集(bioRxiv/Congress)及中央DP基准，评估next-token预测和文本分类任务，比较POPri与PE、DP-FL等方法性能",
+ "takeaways": [
+  "偏好优化策略比传统提示工程更有效",
+  "低维统计量比直接传输DP数据更高效",
+  "DPO微调比SFT更适合合成数据优化"
+ ],
+ "weaknesses": [
+  "依赖客户端计算相似度，可能增加设备负担",
+  "未讨论不同规模客户端的公平性问题",
+  "实验主要在文本领域，泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

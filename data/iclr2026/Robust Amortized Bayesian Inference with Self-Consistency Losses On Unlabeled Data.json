@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Robust Amortized Bayesian Inference with Self-Consistency Losses On Unlabeled Data.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Robust Amortized Bayesian Inference with Self-Consistency Losses On Unlabeled Data.pdf",
+ "title": "Robust Amortized Bayesian Inference with Self-Consistency Losses on Unlabeled Data",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "半监督贝叶斯自一致性损失提升仿真域外鲁棒性，但模型误设稳健性存疑。",
+ "innovations": [
+  "提出半监督 ABI：不仅用模型生成的有标注仿真数据，还可在任意来源(含真实)无标注数据上训练。",
+  "将贝叶斯自一致性性质转化为严格恰当损失，无需知道真实参数即可用于无标注数据。",
+  "证明该方法使推断在远离训练所见有标注/无标注数据的观测上仍保持准确，显著改善 out-of-simulation 鲁棒性。"
+ ],
+ "method_framework": "训练神经后验估计网络时，除常规仿真(观测x,参数θ)监督外，对无标注真实/外部数据利用贝叶斯自一致性(后验预测与模型生成的一致性)构造严格恰当损失；该损失不需真值θ即可提供信号，从而把训练分布向真实数据拉齐，缓解神经后验估计器的坏渐近前行为。",
+ "experiment_framework": "在多个真实世界案例研究上评测，含高维时间序列与图像数据；对比纯仿真监督的 ABI；在 out-of-simulation 设定下报告后验偏差/校准与精度，展示半监督无标注训练带来的鲁棒性提升。",
+ "takeaways": [
+  "ABI 在仿真训练分布外会高度偏差，且靠追加仿真无法纠正其坏渐近前行为。",
+  "贝叶斯自一致性可转为无需真值的恰当损失，使无标注真实数据可用于 ABI 训练。",
+  "引入无标注半监督训练后，即便在远离训练数据的观测上推断仍保持准确。"
+ ],
+ "weaknesses": [
+  "自一致性损失假设模型与数据生成机制基本一致，当 mechanistic model 本身误设时是否仍稳健未充分分析。",
+  "案例研究虽含高维时间序列/图像，但规模与领域跨度有限，极端域外失败模式刻画不足。",
+  "无标注数据来源与质量筛选标准对结果的敏感性未系统消融。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "半监督贝叶斯方法提升OOD鲁棒性，直击可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

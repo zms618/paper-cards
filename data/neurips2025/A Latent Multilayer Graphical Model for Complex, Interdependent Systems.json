@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/A Latent Multilayer Graphical Model for Complex, Interdependent Systems.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/A Latent Multilayer Graphical Model for Complex, Interdependent Systems.pdf",
+ "title": "A Latent Multilayer Graphical Model for Complex, Interdependent Systems",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.25
+ },
+ "one_line": "稀疏低秩分解估计多层网络连接，理论分析但实验样本量小",
+ "innovations": [
+  "将隐变量高斯图模型与多层网络结合，处理不规则采样和异构图结构",
+  "提出multiSLICE方法估计层间连接，支持不同变量数和样本数",
+  "建立联合空间恢复的理论条件和参数估计边界"
+ ],
+ "method_framework": "将精度矩阵分解为层特定稀疏分量和共享低秩隐分量，通过两阶段算法估计：独立SLICE估计各层隐变量GGM，然后通过块SVD进行矩阵完成。",
+ "experiment_framework": "模拟数据(不同层数、秩、变量数和样本数)和真实多模态神经影像数据(sMRI、MEG、fMRI)，使用F1分数和特征向量角度评估，与CNJGL、BJEMGM等方法对比。",
+ "takeaways": [
+  "稀疏+低秩分解能有效处理异构模态数据",
+  "理论分析提供了样本量与恢复精度的关系",
+  "矩阵完成步骤能从部分观测中恢复完整层间连接"
+ ],
+ "weaknesses": [
+  "方法假设各层子矩阵秩相同，可能限制应用场景",
+  "神经影像实验样本量小(n=16)，可能影响结果可靠性",
+  "未充分讨论计算复杂度和大规模数据扩展性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

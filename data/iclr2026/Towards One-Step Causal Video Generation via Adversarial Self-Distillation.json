@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards One-Step Causal Video Generation via Adversarial Self-Distillation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards One-Step Causal Video Generation via Adversarial Self-Distillation.pdf",
+ "title": "Towards One-Step Causal Video Generation via Adversarial Self-Distillation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 3.5,
+  "overall": 5.0
+ },
+ "one_line": "自蒸馏视频生成，VBench一步/两步超SOTA，但长视频一致性证据不足",
+ "innovations": [
+  "提出对抗自蒸馏ASD：不靠多步教师单向监督，而让学生用自身稍不同步数的中间版本互相对齐，桥接小步内间隙提供更平滑监督",
+  "提出首帧增强FFE：给初始帧分配更多去噪步、后续帧大步跳过去，缓解误差传播",
+  "单一蒸馏模型灵活支持多种推理步数设置，免去重复再蒸馏；在VBench上一步/两步均超SOTA"
+ ],
+ "method_framework": "针对混合(AR时序+扩散空间)视频生成多步去噪的效率瓶颈，在DMD基础上用ASD：将学生n步输出与(n+1)步版本做分布级对抗对齐，把教师知识与局部一致的学生行为结合以稳定极少步训练；再用FFE对首帧多分配去噪步抑制误差累积。",
+ "experiment_framework": "主基准VBench；在一步与两步生成设定下对比主流少步视频蒸馏方法；报告多步推理灵活性；评估首帧增强对误差传播的缓解效果。",
+ "takeaways": [
+  "极少步(1-2步)蒸馏的难点在于学生与多步教师差距过大，直接对齐不稳定",
+  "用学生自身相邻步数版本做对抗自对齐，可提供更平滑、信息更足的监督",
+  "单模型即可弹性支持多种推理步数，无需为每个步数单独再蒸馏"
+ ],
+ "weaknesses": [
+  "仅在VBench等生成质量基准评测，长视频时序一致性与真实用户偏好证据有限",
+  "ASD引入学生自博弈，训练稳定性与额外计算开销未充分量化",
+  "属视频生成/蒸馏效率方向，与可靠性主线及医学影像、多模态推理落地域无关"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.93,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "视频生成与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

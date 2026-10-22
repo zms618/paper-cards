@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/A Multi-Agent Perception-Action Alliance for Efficient Long Video Reasoning.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Multi-Agent Perception-Action Alliance for Efficient Long Video Reasoning.pdf",
+ "title": "A Multi-Agent Perception-Action Alliance for Efficient Long Video Reasoning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.4
+ },
+ "one_line": "VLM agent互评剪枝框架，测试集污染与实验严谨性存疑",
+ "innovations": [
+  "把长视频问答拆成「感知探索—动作探索」交替循环：每轮先由每个 agent 用 N1=4 帧抽帧生成 query 专属 perception clue，再用 CLIP 算 clue 与各视频块的相似度、按 c^(i)=⌊N2·SoftMax(s^(i))⌋（N2=16）把帧预算自适应分给相关块",
+  "事件驱动分块取代均匀切分：用 DINOv2 嵌入加 HSV/运动/清晰度像素线索生成候选边界，融合 KTS、PELT、SSM novelty 三路候选后 NMS 取前 B−1 个边界（约 2 秒完成），直接决定第二轮采样落在哪",
+  "动作探索里做 agent 互评剪枝与线索重生：各 agent 对所有 agent 的答案打 1–10 分（式8），汇总 s_Ai=Σ_k s_{k,A_i}（式9）裁掉最低分者（式11），存活 agent 再据被剪信息重生成 perception clue（式12）进入下一轮，直到全票共识由 summarizer 收口"
+ ],
+ "method_framework": "先用该任务若干无标签样本无监督筛出 top-3 agent 组队；每轮每个 agent 抽 4 帧出感知线索 → 事件分块 + CLIP 相似度打分 → 按 SoftMax 自适应分配 16 帧预算 → 各 agent 出答案与理由 → 若无全票共识则互评打分、剪掉最低分者并重写线索开启下一轮，最多 3 轮。",
+ "experiment_framework": "NeXT-QA/EgoSchema/LongVideoBench/MLVU-Test/Video-MME 五基准；对比 GPT-4o、Gemini-1.5Pro、16 个开源 MLLM 与 10 个长视频/agent 方法；agent 池 8 个开源 VLM 选 3，N1=4/N2=16/ρ=0.8；6 卡 H200；指标选择题准确率与单样本推理秒数。",
+ "takeaways": [
+  "表3 的延迟对比最实在：MLVU 上 GPT-4o 127s、InternVL3-78B 204s、TraveLER 450s，A4VL 74s；而 ViperGPT/SeViLA 这类「推理轨迹式 agent」在 NeXT-QA 只有 56.9/64.0，说明长视频上纯 agent 链路根本跑不通",
+  "表5 的采样消融只有三档且幅度很小（RR 80.2、RE 82.2、ER 79.6，延迟 35/37/37s），事件分段值 +2 点、耗时约 2 秒，性价比成立但天花板有限",
+  "表4 的轮次分布揭示成本结构：NeXT-QA 有 1072/1493 例一轮就收敛、仅 191 例跑满 3 轮，MLVU 却是 183/116/203 更依赖后轮——「多轮」只在长难题上兑现，短数据集成本几乎就是一次感知加一次作答"
+ ],
+ "weaknesses": [
+  "组队阶段（图3/2.1）明说从 task dataset 随机抽 K 个视频-问答对来给各 agent 打分并挑前 3 名，而这些样本来自评测集本身；表2 显示每个基准选中组合都不同，等于把测试集信息编进了系统配置，跨分布泛化与榜单可比性均存疑",
+  "表1 大量基线标 *（取自原论文或 leaderboard，未复现），且各基准参与对比的模型集合不一致（MoReVQA 只出现在 NeXT-QA、AuroraLong 只在 LongVideoBench），「胜过 28 个基线」的口径不统一；全部为单次点估计、无方差与显著性",
+  "指标只有选择题准确率，没有置信度、答案分布或错误类型拆分；且默认用「全票共识」收敛（式 consensus (ii)），困难样本必然跑满 3 轮、反而更贵，表4 有 1072 例一轮收敛，但收敛率与准确率、以及跑满轮次的成本增量都未被量化",
+  "正文在 3.3 段中截断（表6 一致性准则对比之后读不全），N1=4/N2=16/B、ρ=0.8、1–10 互评分、最多 3 轮这些关键超参的消融与敏感性全部缺失"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "多agent框架与长视频推理，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

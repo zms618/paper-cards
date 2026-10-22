@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/ALIEN Implicit Neural Representations for Human Motion Prediction under Arbitrary.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ALIEN Implicit Neural Representations for Human Motion Prediction under Arbitrary.pdf",
+ "title": "ALIEN: Implicit Neural Representations for Human Motion Prediction under Arbitrary Latency",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "INR+超网络解决任意时延运动预测，但实验证据不足",
+ "innovations": [
+  "把运动预测重定义为任意时间坐标的查询：用坐标式MLP编码器以t为输入重建X_t，输入历史X_1:Th只调制INR权重θ(n)而不直接回归未来，从而绕开‘历史与预测段被可变长度T_l断开’导致的连续性破坏",
+  "Mamba-like线性注意力（MLLA）超网络作meta-learner：DCT取低频系数得3·J运动token，拼R个可学初始化token后以线性复杂度实现ψ^{i+1}=ψ^i+Q(ψ^i;D_i)，替代TransINR的二次注意力",
+  "低秩调制θ_W=σ(U⊗Vᵀ)⊙Z（r≪d、U,V从ψ^{(n)}切片取）以2r个token生成d×d解码器权重；并以L=L_pred+λL_rec联合变量延时重建任务，用X_{Tl+1:Th+Tl}重建固定长窗口"
+ ],
+ "method_framework": "超网络把历史运动（DCT低频→3·J运动token+R可学token→MLLA线性注意力）压成实例特异ψ，低秩调制生成INR解码器权重θ；共享解码器以傅里叶特征γ(t)接受任意时间坐标，主干查未来、辅助分支重建延时窗。",
+ "experiment_framework": "Human3.6M(S5测/S11验)、CMU-MoCap、3DPW，基线为改造适配后的Res-sup/LTD/MSR-GCN/PGBIG/SPGSN/CIST/NeRMo，指标MPJPE，时延80–600ms五档；消融与方差在正文中缺失。",
+ "takeaways": [
+  "用连续坐标表示把‘延时长度可变’从建模对象降维成‘查询坐标不同’，可迁移到任何时延/丢帧可变的时序预测（控制、视频、多智能体）",
+  "先试整体替换Mamba、发现初始化token无序后再退回Mamba式线性注意力做meta-learner，是诚实的负结果叙事，比直接堆模块更有参考价值",
+  "超网络用DCT低频系数充当运动token，说明频域压缩能在保住关节轨迹可辨识性的同时把token数压到3·J量级"
+ ],
+ "weaknesses": [
+  "多任务辅助分支把X_{Tl+1:Th+Tl}（含Th之后那段测试时得不到的延时真值）喂进同一超网络生成θ_r，与主干共享ψ^{(n)}，训练-推理输入分布不一致带来信息泄漏风险，正文未见对应隔离实验",
+  "表1显示Ours在smoking、posing、walkingdog三个动作上明确劣于并发方法NeRMo（600ms分别114.2 vs 112.9、116.9 vs 113.5），多数动作对NeRMo的优势仅在0.1–0.6mm量级，平均9.7 vs 10.3，远小于对Res-sup的差距",
+  "给到正文在Table 1后即截断于实验设置段之前，消融、多种子方差、λ与低秩r、Mamba替换的负结果细节、推理耗时效率表全部缺失，SOTA声明无法核验"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "运动预测方法扎实但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

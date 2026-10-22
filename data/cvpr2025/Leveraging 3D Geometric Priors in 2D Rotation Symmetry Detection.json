@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Leveraging 3D Geometric Priors in 2D Rotation Symmetry Detection.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Leveraging 3D Geometric Priors in 2D Rotation Symmetry Detection.pdf",
+ "title": "Leveraging 3D Geometric Priors in 2D Rotation Symmetry Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "将2D对称检测扩展到3D空间，引入几何约束提升鲁棒性",
+ "innovations": [
+  "将2D旋转对称性检测扩展到3D空间预测",
+  "引入顶点重建模块 enforcing 3D几何约束",
+  "设计相机交叉注意力机制将2D特征转换为3D坐标"
+ ],
+ "method_framework": "基于Transformer的检测框架，通过相机查询将2D图像特征转换为3D相机坐标，预测旋转中心、种子顶点和旋转轴，然后利用几何先验重建顶点并投影回2D",
+ "experiment_framework": "在DENDI数据集上评估，使用平均精度(AP)和F1分数作为指标，与2D基线、3D基线和EquiSym方法进行比较",
+ "takeaways": [
+  "3D几何约束显著提升旋转对称性检测的鲁棒性",
+  "顶点重建模块比直接预测单个顶点更有效"
+ ],
+ "weaknesses": [
+  "在C3和C6组上性能相对较低，可能由于测试样本有限",
+  "在严重视角变化下估计旋转轴仍有挑战"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "对称检测与可靠性主线无实质交点，仅几何约束设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

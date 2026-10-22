@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Merging on the Fly Without Retraining A Sequential Approach to Scalable Continual Model Merging.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Merging on the Fly Without Retraining A Sequential Approach to Scalable Continual Model Merging.pdf",
+ "title": "Merging on the Fly Without Retraining: A Sequential Approach to Scalable Continual Model Merging",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "正交投影实现顺序模型合并，但机制不完整且调参依赖强。",
+ "innovations": [
+  "正交投影机制减少任务间干扰",
+  "自适应缩放因子保持参数稳定性",
+  "常数内存复杂度的持续合并框架"
+ ],
+ "method_framework": "通过正交投影将新任务参数投影到与已合并模型正交的子空间，结合自适应缩放因子，实现无需重新训练的顺序模型合并。",
+ "experiment_framework": "CLIP-ViT模型在8/14/20个下游任务上评估，比较平均准确率和向后转移指标，与持续微调、SWA、任务算术等方法对比。",
+ "takeaways": [
+  "正交投影可有效减少任务间干扰",
+  "自适应缩放机制保持模型稳定性",
+  "方法对任务顺序鲁棒"
+ ],
+ "weaknesses": [
+  "仅在线性层应用正交投影，其他参数简单平均",
+  "投影阈值α需要调优",
+  "未探索不同规模模型的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

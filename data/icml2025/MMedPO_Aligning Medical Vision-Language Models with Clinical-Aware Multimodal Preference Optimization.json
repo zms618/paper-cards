@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MMedPO_Aligning Medical Vision-Language Models with Clinical-Aware Multimodal Preference Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MMedPO_Aligning Medical Vision-Language Models with Clinical-Aware Multimodal Preference Optimization.pdf",
+ "title": "MMedPO: Aligning Medical Vision-Language Models with Clinical-Aware Multimodal Preference Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "医学VLM对齐：难负样本+临床加权，缓解文本先验导致的幻觉",
+ "innovations": [
+  "指出先前医学偏好优化的不足：偏好数据缺乏临床相关性，负样本过于明显易区分，导致对齐效果差",
+  "构造两类难负样本：(1) plausible幻觉——让目标模型/GPT-4o生成医学上不准确但看似合理的回答；(2)病灶区域忽略——通过局部病灶噪声破坏视觉理解，使模型忽略关键病灶",
+  "计算每个偏好样本的临床相关性权重，加权偏好优化损失，使对齐聚焦于临床重要的样本"
+ ],
+ "method_framework": "Med-LVLM的幻觉问题：模态不对齐导致模型优先依赖文本知识而非视觉输入，产生与医学图像冲突的幻觉。先前DPO类方法的负样本太容易区分（临床无意义内容），模型学不到真正的临床推理。MMedPO：(1)构造难负样本——plausible幻觉（看似专业但错误）和病灶忽略（破坏关键视觉区域）；(2)为每个偏好对计算临床相关性得分，加权DPO损失。",
+ "experiment_framework": "在多个医学VLM基准上评估（如医学VQA、诊断报告生成）。基线：标准DPO、其他医学对齐方法。指标：临床事实准确率、幻觉率、整体诊断性能。消融验证两类难负样本和临床相关性加权各自贡献。",
+ "takeaways": [
+  "医学VLM的偏好优化需要难负样本——看似合理但临床错误的回答比明显错误的回答更能教会模型临床推理",
+  "病灶区域忽略是有效的视觉幻觉抑制手段：破坏关键视觉区域让模型学会依赖视觉输入而非文本先验",
+  "临床相关性加权使偏好优化聚焦于真正重要的样本，提升对齐效率"
+ ],
+ "weaknesses": [
+  "两类难负样本的构造依赖GPT-4o或目标模型本身，可能引入新的偏差",
+  "临床相关性评分的自动化方法是否可靠未充分验证",
+  "实验可能在有限的医学基准上验证，真实临床场景的部署效果未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

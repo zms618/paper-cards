@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Structure-Guided Large Language Models for Text-to-SQL Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Structure-Guided Large Language Models for Text-to-SQL Generation.pdf",
+ "title": "Structure-Guided Large Language Models for Text-to-SQL Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "结构提示工程提升text-to-SQL，但创新性与鲁棒性有限。",
+ "innovations": [
+  "提出结构感知的 text-to-SQL 框架 SGU-SQL，将用户查询与数据库 schema 建立结构化链接",
+  "构造三类结构：查询的语义/句法依赖图、数据库结构（外键关系）、链接结构（查询实体对齐表/列）",
+  "基于句法分解复杂 SQL 生成子任务，通过 syntax-based prompting 引导开源 LLM，避免直接生成整句 SQL"
+ ],
+ "method_framework": "先对用户查询做语义与句法依存分析得到 Query Graph，再结合数据库外键关系与查询实体到表/列的链接结构，把复杂声明式 SQL 生成按句法骨架分解为子任务，逐步 prompting 让 LLM 生成对应片段再拼装。",
+ "experiment_framework": "在两个 text-to-SQL 基准上评测；与 11 个微调模型、7 个结构学习模型、14 个上下文学习模型共 32 个基线对比，报告执行准确率/匹配准确率，称持续优于 SOTA。",
+ "takeaways": [
+  "显式注入查询句法依赖与数据库外键结构，能显著缓解 LLM 对歧义意图与复杂 schema 的理解错误",
+  "按 SQL 句法骨架分解任务比一次性生成整句 SQL 更可靠",
+  "结构学习+提示的组合范式在 text-to-SQL 上系统优于纯微调或纯上下文学习"
+ ],
+ "weaknesses": [
+  "核心是提示/分解工程，方法新颖性偏增量，依赖现成句法解析与 schema 链接工具",
+  "未讨论错误传播：任一子任务分解出错会级联影响最终 SQL",
+  "与主线（鲁棒性/可信AI/医学影像/多模态推理）关联弱，属结构化生成落地域"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

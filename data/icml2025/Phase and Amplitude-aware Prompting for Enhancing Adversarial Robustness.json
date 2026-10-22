@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Phase and Amplitude-aware Prompting for Enhancing Adversarial Robustness.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Phase and Amplitude-aware Prompting for Enhancing Adversarial Robustness.pdf",
+ "title": "Phase and Amplitude-aware Prompting for Enhancing Adversarial Robustness",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "频域提示加权提升对抗防御，但参数敏感且评估局限",
+ "innovations": [
+  "揭示相位谱与物体关键语义模式强相关、是鲁棒性关键，而现有混合提示未充分聚焦相位",
+  "为每类分别构造相位级与振幅级提示(prompt)",
+  "训练时按模型在两类提示下的鲁棒表现动态调整提示权重，测试时按预测标签选提示"
+ ],
+ "method_framework": "现有prompt式防御多用混合提示模式，对与物体语义强相关的相位关注不足；本文在频域对每类构造相位级提示与振幅级提示，训练中根据模型在两类提示下的鲁棒表现调整权重(λ1/λ2/λ3)，测试时依据预测标签为图像选择对应提示，从而聚焦关键语义相位以抵御对抗扰动。",
+ "experiment_framework": "数据集CIFAR-10与Tiny-ImageNet；模型ResNet18、WRN28-10，并用VGG19/Swin Transformer评估防御可迁移性；评测白盒攻击下平均准确率及跨模型迁移，与既往prompt防御对比。",
+ "takeaways": [
+  "相位级提示聚焦语义关键信息，比混合提示更好地保持语义完整性",
+  "按鲁棒表现动态加权两类提示提升了对抗鲁棒准确率",
+  "方法高效(基于提示、无需重训全模型)且具跨架构可迁移性"
+ ],
+ "weaknesses": [
+  "仅在CIFAR-10/Tiny-ImageNet等中小规模图像分类验证，未涉ImageNet级或检测任务",
+  "提示权重超参(λ)对不同预训练方式需大幅重调(λ2从400到5000)，敏感性高",
+  "对自适应攻击(aware of prompt defense)的评估是否充分需正文表中确认"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

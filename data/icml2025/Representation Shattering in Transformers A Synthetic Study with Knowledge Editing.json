@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Representation Shattering in Transformers A Synthetic Study with Knowledge Editing.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Representation Shattering in Transformers A Synthetic Study with Knowledge Editing.pdf",
+ "title": "Representation Shattering in Transformers: A Synthetic Study with Knowledge Editing",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "合成任务揭示知识编辑导致表示碎裂，损害推理能力。",
+ "innovations": [
+  "提出一个从随机初始化训练 Transformer 内化结构化(环形几何)知识图的合成任务，可控地研究知识编辑的副作用。",
+  "定义‘表示碎裂(representation shattering)’现象：编辑一个事实会误伤目标之外实体的表示、扭曲支持未见知识推理的结构。",
+  "将表示碎裂作为知识编辑损害模型事实回忆与推理能力的机理假设，并展示其在直接回忆/逻辑/组合推理上的退化。"
+ ],
+ "method_framework": "用带环型几何关系的知识图合成数据(DGP)训练 Transformer，使其内部表示镜像图结构；对某条事实做知识编辑(改权重)，通过考察相邻实体表示与不同推理任务(直接回忆、逻辑/组合推理)的变化，定位‘ trickling effect’造成的表示碎裂。",
+ "experiment_framework": "在合成知识图任务上对比编辑前后模型的直接回忆、逻辑推理、组合推理性能，并分析实体表示空间的几何变化；以可控环境隔离表示碎裂这一机理，而非仅在真实基准上做黑盒评测。",
+ "takeaways": [
+  "知识编辑的危害根源是表示碎裂：单条编辑破坏了实体间共享的结构表示。",
+  "表示碎裂同时损害事实回忆与组合/逻辑推理。",
+  "合成知识图任务为诊断 KE 副作用提供了可控的机制性实验平台。"
+ ],
+ "weaknesses": [
+  "结论基于高度简化的合成知识图(环形几何)，向真实 LLM 复杂知识的外推需谨慎。",
+  "定位机理但未提出缓解表示碎裂的新编辑算法，建设性贡献有限。",
+  "真实基准上的端到端验证较弱，多依赖合成任务的可解释性证据。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

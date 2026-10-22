@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/240FPS_Stereo Vision from Monocular Mixed Spikes.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/240FPS_Stereo Vision from Monocular Mixed Spikes.pdf",
+ "title": "240FPS Stereo Vision from Monocular Mixed Spikes",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "光调制混合双目信号，最小二乘解耦加三模块修复，但缺乏消融与公平对比",
+ "innovations": [
+  "以平面镜加分束器把左右视角光混入单个 spike 相机，并用 LCD 以 60Hz 周期衰减其中一路得到 f(t)，使混合信号在时间维可解耦，从而不必走共心镜方案的极线几何校正",
+  "借 spike 时域密集、相邻窗口内运动可忽略这一假设，把每像素每窗口写成 Q+ηi=α(I_L·Δti+I_R·F_i)（式4）的线性系统，加固定 λ=1e-3 的 l2 正则后用最小二乘直接解 I_L、I_R，一个调制周期解出 4 帧立体视频",
+  "SMS-Net 三模块分别对症基线三类缺陷：整周期累计强度图 M_t 做自适应亮度一致性（ABC）、沿极线做 SCAM 跨视角注意力去残留伪影（CBA）、可形变卷积对齐历史隐态再过 Guided Temporal Attention 补偿 LCD 低透过相位的纹理损失（RSF）"
+ ],
+ "method_framework": "光调制混合两路光入单枚 spike 相机，最小二乘做基线解耦，再用 SMS-Net 的 ABC/CBA/RSF 三模块分别校亮度、去跨视角伪影、补时序纹理，最后接冻结立体匹配器出深度。",
+ "experiment_framework": "TartanAir 仿真混合 spike 训练、KITTI 与自建实机数据测试；下游用 DEFOM-Stereo、CREstereo、DepthAnythingV2/DepthPro/Spike-T 做深度对比。",
+ "takeaways": [
+  "光调制的周期性本身即可当对齐信号：亮度抖动在跨越整数个调制周期 T_f 时自然相消，ABC 模块把这个性质直接当成免费的亮度对齐监督",
+  "跨视角残留伪影在左右视里呈左右镜像（护栏残边出现在行人两侧相反位置），这种空间不一致比单视图内部线索更易分辨，值得用交叉注意力显式利用"
+ ],
+ "weaknesses": [
+  "ABC/CBA/RSF 本质是亮度对齐、跨注意力与可形变卷积时序融合的既有组件堆叠，正文只给 l1 重建损失与 300 epoch/cosine 的超参，没有逐模块的定量消融，各模块到底贡献多少无从判断",
+  "评测设定不对称：单目基线是把同一视当单视图输入，本文是双视图输入后再接冻结的立体匹配器，天然占优，论文自己承认这类比较需要改造基线后才能比",
+  "训练数据全部来自 TartanAir 光流插值仿真（合成视差、无真实运动模糊与噪声），真实数据仅一套小样本时对；240FPS 强耦合于当时 60Hz LCD 原型，未见测试集多种子方差"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "纯视觉处理技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

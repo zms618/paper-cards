@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/SunFaded_Illumination-Aware Gaussian Splatting for Dark Scenes with Camera-Mounted Active.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SunFaded_Illumination-Aware Gaussian Splatting for Dark Scenes with Camera-Mounted Active.pdf",
+ "title": "SunFaded Illumination-Aware Gaussian Splatting for Dark Scenes with Camera-Mounted Active",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "光照感知高斯溅射处理暗场景，但依赖深度先验且训练复杂",
+ "innovations": [
+  "光照加权损失函数驱动无光照场景建模",
+  "基于瓦片的图像级光照模块替代逐高斯光照调整",
+  "利用无光照外观引导几何先验提升几何精度"
+ ],
+ "method_framework": "三阶段训练策略：第一阶段通过光照加权损失优化无光照场景表示；第二阶段引入图像级光照模块实现光照-外观解耦；第三阶段利用无光照外观引导几何先验优化高斯表示",
+ "experiment_framework": "DarkRobotic和DarkPhone数据集，与2DGS/3DGS/VAST/GS-W/WildGaussians/DarkGS对比，使用PSNR/SSIM/LPIPS指标评估重建质量",
+ "takeaways": [
+  "光照加权损失可有效处理移动光源导致的光照不一致",
+  "图像级光照模块比逐高斯光照调整更高效且不易过拟合",
+  "无光照外观可作为可靠伪标签提升几何精度"
+ ],
+ "weaknesses": [
+  "依赖单目深度估计器作为几何先验，可能引入额外误差",
+  "三阶段训练策略增加了实现复杂度",
+  "未充分讨论方法在极端黑暗条件下的性能边界"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "暗场景重建与可靠性主线无实质交点，仅属落地域应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

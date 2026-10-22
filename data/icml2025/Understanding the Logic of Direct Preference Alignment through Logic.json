@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Understanding the Logic of Direct Preference Alignment through Logic.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Understanding the Logic of Direct Preference Alignment through Logic.pdf",
+ "title": "Understanding the Logic of Direct Preference Alignment through Logic",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "形式化反编译DPA损失为逻辑表达式，但缺乏实证验证",
+ "innovations": [
+  "提出将DPA损失反编译(decompilation)为命题逻辑符号表达式的框架",
+  "用加权模型计数WMC给DPO/CPO/SliC/RRHF等变体赋予统一形式语义",
+  "通过逻辑编译/反编译推导各DPO变体间的蕴含/等价关系(PDPO|=PDPO2)"
+ ],
+ "method_framework": "将偏好损失log比rho-theta对应到命题公式，DPO损失=某Implies(And(M(x,yl),Ref(x,yw)),...)符号式；通过语义翻译把不同变体映射到WMC上的概率分布，从而形式化比较变体间的逻辑结构差异。",
+ "experiment_framework": "案例研究DPO/CPO/SliC/RRHF等损失，表1/表2列举损失公式与对应核心逻辑式，用逻辑蕴含关系分析变体差异；以形式化推导为主，非大规模训练实验。",
+ "takeaways": [
+  "DPO及其变体可被反编译为等价的符号逻辑式，揭示其隐含量化目标",
+  "WMC语义为比较不同偏好损失提供统一的形式语言",
+  "逻辑框架可帮助理解变体差异并系统化推导新DPA损失"
+ ],
+ "weaknesses": [
+  "以形式化分析为主，缺少在真实RLHF训练中验证逻辑推论的实证",
+  "假设较强(如Assumption 1下并非所有损失都可形式化)",
+  "逻辑符号与实际生成质量的对应仍需经验桥梁"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

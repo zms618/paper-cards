@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/video-SALMONN-o1_Reasoning-enhanced Audio-visual Large Language Model.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/video-SALMONN-o1_Reasoning-enhanced Audio-visual Large Language Model.pdf",
+ "title": "video-SALMONN-o1: Reasoning-enhanced Audio-visual Large Language Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "开源视频LLM加入推理链，pDPO提升3-8%，但缺乏强基线对比",
+ "innovations": [
+  "构建推理密集型视听数据集（含逐步解答的高难度视听问题），将o1式推理从数学/图形拓展到通用视频理解",
+  "提出process DPO(pDPO)：利用对比性步骤选择实现高效的多模态步骤级奖励建模",
+  "发布RivaBench：首个推理密集型视频理解基准，4000+专家精标QA，覆盖脱口秀、学术报告、合成视频检测等场景"
+ ],
+ "method_framework": "在视听LLM上注入推理能力：先用带逐步解答的推理密集数据做监督微调，再用pDPO对推理路径的每一步做对比式偏好优化（步骤级奖励建模适配多模态输入），使模型生成可验证的中间推理链而非直接给答案。",
+ "experiment_framework": "以LLaVA-OneVision为基线，在多个视频推理benchmark上评测准确率；RivaBench上对比SFT与pDPO；报告零样本合成视频检测等场景能力。",
+ "takeaways": [
+  "video-SALMONN-o1在多个视频推理benchmark上较LLaVA-OneVision提升3-8%",
+  "pDPO较纯SFT在RivaBench上提升6-8%，验证步骤级奖励对多模态推理有效",
+  "推理增强使模型具备零样本合成视频（AI生成内容）检测能力"
+ ],
+ "weaknesses": [
+  "提升幅度为3-8%量级，增量有限，缺乏与更强推理模型(o1/R1类)的直接对比",
+  "RivaBench为自建基准，专家精标规模4000+，外部效度与规模仍待检验",
+  "奖励建模在视听模态的步骤判据较主观，前9页未见奖励模型本身准确率的独立验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

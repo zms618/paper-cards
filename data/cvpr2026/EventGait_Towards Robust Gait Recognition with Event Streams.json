@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/EventGait_Towards Robust Gait Recognition with Event Streams.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/EventGait_Towards Robust Gait Recognition with Event Streams.pdf",
+ "title": "EventGait Towards Robust Gait Recognition with Event Streams",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "双流事件相机框架提升低光步态识别，但依赖合成数据且效率未验证",
+ "innovations": [
+  "双流框架分别建模运动和形状特征",
+  "Mixture of Spiking Experts (MoSE)处理复杂运动和光照",
+  "Cross-modal Structure Alignment (CroSA)从视觉基础模型转移结构先验",
+  "构建两个大规模事件步态数据集"
+ ],
+ "method_framework": "EventGait采用双流设计：动态流使用MoSE处理高分辨率事件切片，静态流通过CroSA从视觉基础模型学习密集形状表示，两者融合形成统一步态描述符。",
+ "experiment_framework": "在SUSTech1K-E和CCGR-Mini-E合成数据集及DVS128-Gait真实数据集上评估，与RGB、LiDAR和事件基线方法比较，使用Rank-1、mAP、mINP等指标。",
+ "takeaways": [
+  "事件相机在低光环境下提供显著优势，适合步态识别",
+  "双流设计有效解决事件数据稀疏性和时序建模问题",
+  "跨模态对齐可提升事件表示的密集结构特征"
+ ],
+ "weaknesses": [
+  "依赖合成数据集，真实世界事件数据集规模有限",
+  "MoSE和CroSA增加了模型复杂度",
+  "未充分探索计算效率与实时性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "双流事件相机框架解决低光步态识别，属于可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

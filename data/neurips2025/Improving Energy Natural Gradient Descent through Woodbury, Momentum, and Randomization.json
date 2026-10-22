@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Improving Energy Natural Gradient Descent through Woodbury, Momentum, and Randomization.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Improving Energy Natural Gradient Descent through Woodbury, Momentum, and Randomization.pdf",
+ "title": "Improving Energy Natural Gradient Descent through Woodbury, Momentum, and Randomization",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.75
+ },
+ "one_line": "组合现有技术加速PINNs训练，缺乏理论突破和全面实验验证。",
+ "innovations": [
+  "将Woodbury矩阵恒等式应用于ENGD，将计算复杂度从O(P^3)降至O(N^2P)",
+  "将SPRING动量算法引入PINNs训练，提高收敛速度",
+  "开发GPU高效的随机Nyström近似算法，加速大批量训练"
+ ],
+ "method_framework": "结合Woodbury恒等式将ENGD计算从参数空间转移到样本空间，引入SPRING动量方案，并采用GPU高效的随机Nyström近似进一步加速计算。",
+ "experiment_framework": "在5D/100D泊松方程、4+1D热方程和9+1D Fokker-Planck方程上测试，与SGD、Adam、原始ENGD和KFAC比较，使用L2误差作为指标。",
+ "takeaways": [
+  "Woodbury恒等式显著提高ENGD效率，使大规模参数网络成为可能",
+  "SPRING算法在保持高精度的同时加速收敛，尤其在高维问题上表现优异"
+ ],
+ "weaknesses": [
+  "随机化方法仅在训练早期阶段和大批量情况下提供加速",
+  "方法在更高维问题上可能面临计算瓶颈"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.875,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

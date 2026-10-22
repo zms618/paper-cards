@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Parallelbench_Understanding the Trade-Offs Of Parallel Decoding In Diffusion LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Parallelbench_Understanding the Trade-Offs Of Parallel Decoding In Diffusion LLMS.pdf",
+ "title": "ParallelBench: Understanding the Trade-Offs of Parallel Decoding in Diffusion LLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "诊断性基准揭示dLLM并行解码质量退化，但未提出解决方案。",
+ "innovations": [
+  "给出扩散LLM并行解码的信息论分析，量化条件独立假设在token依赖强时带来的质量损失。",
+  "在可解析的合成列表操作上从数据分布与解码策略两个视角做案例研究，揭示并行解码根本局限。",
+  "提出ParallelBench：首个专针对dLLM的基准，含对人类/自回归平凡但对并行dLLM极难的真实任务，并系统分析dLLM与自回归LLM。"
+ ],
+ "method_framework": "指出dLLM并行解码的条件独立假设忽略token依赖；用信息论刻画依赖强时的质量退化；通过合成列表操作定位退化来源；据此设计一批突出token依赖的真实任务，评测现有并行解码策略在不同任务难度下能否自适应调整并行度。",
+ "experiment_framework": "系统对比dLLM与自回归LLM在ParallelBench及标准(math/coding)任务上的表现；指标为生成质量与并行度/速度；发现并行dLLM在真实场景质量显著退化，且现有策略无法按难度自适应并行度。",
+ "takeaways": [
+  "标准math/coding基准不足以暴露并行解码的质量退化。",
+  "dLLM并行解码在token依赖强的真实任务上会显著掉点。",
+  "现有并行解码策略难以按任务难度自适应并行度，速度-质量权衡尚未解决。"
+ ],
+ "weaknesses": [
+  "基准偏诊断性，未提出解决并行解码退化的新方法。",
+  "合成列表操作与真实语言任务间仍有差距，信息论结论的现实映射需更多验证。",
+  "dLLM本身仍处早期，结论随模型迭代可能变化。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "诊断性基准研究，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

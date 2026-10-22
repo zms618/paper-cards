@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Secure Inference for Diffusion Models via UN-CONDITIONAL Scores.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Secure Inference for Diffusion Models via UN-CONDITIONAL Scores.pdf",
+ "title": "Secure Inference for Diffusion Models via Unconditional Scores",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "用无条件分数纠正MPC近似偏差，但额外成本抵消加速收益。",
+ "innovations": [
+  "指出现有MPC安全扩散推理(CipherDM)用低次多项式近似非线性虽降延迟但保真度显著下降。",
+  "关键洞察：无条件生成可不经近似执行、提供高保真分数信号；用其纠正松弛近似引起的条件分数偏移。",
+  "该分数纠正框架允许更松弛的近似，在保持语义/感知质量的同时进一步加速安全推理。"
+ ],
+ "method_framework": "MPC下非线性运算昂贵，需多项式近似。本文不再试图减小近似误差，而是用无条件分数（可明文/低成本无近似计算）作为高保真引导信号，去校正松弛近似带来的条件分数偏移，从而在更激进近似下仍保真。",
+ "experiment_framework": "在多个扩散模型/基准上评测；对比CipherDM等多项式近似安全推理；指标为生成保真度(FID类)与延迟；展示缓解松弛近似导致的性能退化，覆盖医学影像翻译等隐私敏感场景。",
+ "takeaways": [
+  "与其减小多项式近似误差，不如用可无近似获得的无条件分数纠正条件分数偏移。",
+  "该思路可在MPC开销与生成保真之间取得更好权衡，利于医疗等隐私敏感扩散部署。"
+ ],
+ "weaknesses": [
+  "需额外计算无条件生成分数，额外成本抵消部分加速收益，前9页未给出净延迟对比。",
+  "属隐私计算/系统方向，核心是加速而非模型可靠性，与幻觉/推理主线弱相关。",
+  "医学场景仅作为动机提及，未见医学影像定量实验。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "隐私计算加速与医疗部署有交点，但核心是系统而非可靠性方法",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

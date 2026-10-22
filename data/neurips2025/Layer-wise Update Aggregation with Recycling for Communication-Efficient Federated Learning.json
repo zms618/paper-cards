@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Layer-wise Update Aggregation with Recycling for Communication-Efficient Federated Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Layer-wise Update Aggregation with Recycling for Communication-Efficient Federated Learning.pdf",
+ "title": "Layer-wise Update Aggregation with Recycling for Communication-Efficient Federated Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "FedLUAR通过梯度-权重比层级回收降低通信成本，但理论假设限制应用",
+ "innovations": [
+  "梯度-权重比作为层级重要性度量",
+  "层级更新回收机制而非简单丢弃",
+  "随机采样避免低优先级层过度回收"
+ ],
+ "method_framework": "定义梯度-权重比st,l=∥Δt,l∥/∥xt,l∥，基于此概率选择层级进行更新回收，客户端仅发送高重要性层更新，服务器回收低重要性层旧更新",
+ "experiment_framework": "CIFAR-10/100、FEMNIST、AG News数据集，与FedPAQ、FedPara等SOTA方法比较准确率和通信成本",
+ "takeaways": [
+  "梯度-权重比比单纯梯度大小更能反映层级重要性",
+  "更新回收比简单丢弃能更快收敛",
+  "方法可兼容多种联邦学习优化器"
+ ],
+ "weaknesses": [
+  "需要额外传输回收层ID信息",
+  "理论分析中假设κ<1/16可能限制应用场景",
+  "未探讨不同数据非独立同分布程度下的表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Pass@K Policy Optimization_Solving Harder Reinforcement Learning Problems.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Pass@K Policy Optimization_Solving Harder Reinforcement Learning Problems.pdf",
+ "title": "Pass@K Policy Optimization: Solving Harder Reinforcement Learning Problems",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "Pass@K策略优化通过改进估计器提升强化学习在困难问题上的表现",
+ "innovations": [
+  "提出Pass-at-k Policy Optimization (PKPO)方法",
+  "推导出二元和连续奖励设置下的pass@k及其梯度的低方差无偏估计器",
+  "设计k值退火策略同时优化pass@1和pass@k性能",
+  "提出两种基线方法(sloo和sloo-1)减少方差"
+ ],
+ "method_framework": "PKPO通过变换奖励向量直接优化pass@k性能，而非传统的pass@1。方法基于对k个样本子集的统计特性，通过加权组合实现无偏估计，并支持k值退火策略。",
+ "experiment_framework": "在GEMMA2和LLAMA3.1模型上测试，使用MATH、代码生成和ARC-AGI-1基准，比较不同k_opt和k_eval组合下的性能，与[TZSM25]和EntropyReg基线对比。",
+ "takeaways": [
+  "通过优化pass@k而非pass@1，模型能更好地利用探索预算解决更困难的问题",
+  "k_opt与k_eval匹配时能获得最佳性能，解决了传统方法只能优化pass@1或pass@n的限制",
+  "方差减少技术显著提升了估计器的稳定性"
+ ],
+ "weaknesses": [
+  "当k接近n时，估计器的方差会增加",
+  "方法在计算复杂度上虽然为O(k + n log n)，但实际实现可能仍有开销",
+  "实验主要集中在数学和代码生成任务，其他领域的泛化能力有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

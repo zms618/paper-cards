@@ -1,0 +1,41 @@
+{
+ "title": "Efficient Approximate Posterior Sampling with Annealed Langevin Monte Carlo",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "将后验采样转为tilting问题，提供多项式时间近似保证",
+ "innovations": [
+  "把后验采样重述为一般的‘tilting’问题(把分布偏向测量)，而非依赖限制性假设。",
+  "证明可 tractably 采样到一个分布：对噪声先验后验在 KL 散度上接近、对真实后验在 Fisher 散度上接近。",
+  "据作者称这是首个多项式时间(近似)后验采样的形式化结果，调和了后验采样最坏情形 KL 难解与实证成功的矛盾。"
+ ],
+ "method_framework": "给定已训练的先验分数网络 p(x) 与测量模型 p(y|x)，目标是从后验 p(x|y) 采样。后验采样在 KL 意义下最坏情形难解。本文不做分布假设，而把问题看作对分布做‘tilting’：用退火 Langevin Monte Carlo 采样出一个折衷分布，使其既在 KL 上贴近噪声先验后验、又在 Fisher 散度上贴近真实后验，从而同时满足与测量和先验一致。",
+ "experiment_framework": "以分数生成模型(如 Stable Diffusion 类)为框架；应用于超分、风格化、重建等逆问题任务；从理论上给出多项式时间近似保证，并在这些任务上做实证验证其与测量/先验的一致性。",
+ "takeaways": [
+  "近似后验采样可在最小假设下多项式时间完成，关键是 KL 与 Fisher 散度的组合保证。",
+  "KL(对噪声后验)+Fisher(对真实后验)的双重约束使样本既符合测量又不偏离先验。",
+  "为分数模型逆问题中的实证成功提供了首个形式化解释。"
+ ],
+ "weaknesses": [
+  "是近似(KL/Fisher 双重折衷)而非精确后验采样，折衷误差常数与样本复杂度未充分落地。",
+  "实证多为超分/风格化等定性任务，定量的后验一致性评估较弱。",
+  "理论最小假设在真实测量模型失配时的稳健性未充分讨论。"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Efficient Approximate Posterior Sampling with Annealed Langevin Monte Carlo.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Efficient Approximate Posterior Sampling with Annealed Langevin Monte Carlo.pdf",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "近似后验采样方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

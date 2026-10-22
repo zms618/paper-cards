@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Polyskill_Learning Generalizable Skills TINUAL Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Polyskill_Learning Generalizable Skills TINUAL Learning.pdf",
+ "title": "PolySkill: Learning Generalizable Skills through Polymorphic Abstraction for Continual Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "多态抽象解耦技能目标与实现，提升Web智能体跨网站泛化能力。",
+ "innovations": [
+  "用多态抽象建模技能：抽象类定义领域高层接口(如 search/addToCart/checkout)，具体子类提供各网站实现",
+  "在抽象层组合技能，避免因网站UI差异而重写，缓解跨网站泛化与灾难性遗忘",
+  "提出 Skill Reusability、Task Coverage 等指标直接度量技能迁移，并在 Qwen3-Coder/GLM-4.5 等开源智能体上验证"
+ ],
+ "method_framework": "把技能按面向对象多态组织：抽象基类声明领域通用的高层目标接口，AmazonSite/TargetSite 等具体子类实现站点专属操作；智能体在抽象层规划并链式组合抽象技能，执行时动态绑定到具体站点实现，从而不绑定特定网站功能并支持开放式自我探索中的课程化学习。",
+ "experiment_framework": "在 Mind2Web 等 Web 智能体基准上，对比 Agent Workflow Memory、SkillWeaver 等技能归纳方法，报告 seen/unseen 网站成功率、步数与技能复用率；并在无指定任务的自探索设置下评估技能归纳质量。",
+ "takeaways": [
+  "PolySkill 在 seen 网站技能复用提升1.7倍，unseen 网站成功率提升最多13.9%、步数减少超20%",
+  "已有方法在 unseen 网站技能复用率低于18%，PolySkill 达31%",
+  "分离技能目标与执行是跨网站持续学习、防止过拟合单一网站的关键"
+ ],
+ "weaknesses": [
+  "主线为 Web 智能体技能学习，与可靠性/医学影像/多模态推理主线关联弱",
+  "抽象类需人工/模型先验定义领域接口，冷启动成本与接口覆盖率问题前9页未充分讨论",
+  "前9页未见在高动态/反爬虫真实网站上的鲁棒性验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "Web智能体技能学习与可靠性主线关联弱，无医学影像或多模态推理落地",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

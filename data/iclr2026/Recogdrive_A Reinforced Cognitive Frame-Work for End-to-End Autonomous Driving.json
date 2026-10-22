@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Recogdrive_A Reinforced Cognitive Frame-Work for End-to-End Autonomous Driving.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Recogdrive_A Reinforced Cognitive Frame-Work for End-to-End Autonomous Driving.pdf",
+ "title": "ReCogDrive: A Reinforced Cognitive Framework for End-to-End Autonomous Driving",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "VLM与扩散规划器结合，DiffGRPO强化提升驾驶安全舒适。",
+ "innovations": [
+  "提出分层数据流水线（生成-精修-质量控制三阶段）模拟人类司机的序列认知过程，向VLM注入驾驶认知。",
+  "针对语言-动作失配，将VLM学到的驾驶先验注入扩散规划器，生成连续稳定轨迹，避免把物理动作放到语言空间输出导致格式违规与不可行动作。",
+  "提出Diffusion Group Relative Policy Optimization(DiffGRPO)阶段，强化规划器以增强安全性、减少碰撞并提升舒适度。"
+ ],
+ "method_framework": "以自回归模型统一驾驶理解与规划：VLM输出推理token与高层规划先验，再注入扩散规划器生成连续轨迹；先用分层认知数据流水线训练认知基础，再用DiffGRPO对规划器做强化学习以优化安全与舒适奖励。",
+ "experiment_framework": "在NAVSIM与Bench2Drive基准上评测，与端到端/VLM驾驶方法对比报告SOTA，并在多场景与DriveBench上做定性场景理解评估。",
+ "takeaways": [
+  "把驾驶先验从语言空间迁移到扩散规划器，可同时缓解语言动作失配并生成连续稳定轨迹，在NAVSIM/Bench2Drive取得SOTA。",
+  "DiffGRPO强化阶段能有效提升规划器的安全性与舒适度。"
+ ],
+ "weaknesses": [
+  "属自动驾驶落地域，与可靠性主线的医学影像/多模态推理场景关联较弱。",
+  "前9页未见完整数值表与消融细节，各组件单独贡献难以拆解。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "自动驾驶落地域与可靠性主线关联弱，无医学影像/多模态推理场景",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

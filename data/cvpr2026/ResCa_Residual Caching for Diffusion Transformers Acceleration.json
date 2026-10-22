@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/ResCa_Residual Caching for Diffusion Transformers Acceleration.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ResCa_Residual Caching for Diffusion Transformers Acceleration.pdf",
+ "title": "ResCa Residual Caching for Diffusion Transformers Acceleration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 6.0
+ },
+ "one_line": "残差缓存加速扩散模型，但实现复杂且极端加速下质量下降",
+ "innovations": [
+  "代理去噪视角的残差缓存框架",
+  "时间增强轨迹聚类(TETC)",
+  "代理驱动去噪模拟(PDDS)"
+ ],
+ "method_framework": "ResCa将去噪过程分为密集和稀疏计算时间步，通过轨迹聚类分组，每组仅对代理token进行真实去噪，用其多阶残差指导其他token的模拟去噪",
+ "experiment_framework": "在DiT、FLUX和HunyuanVideo上评估，使用Image Reward、CLIP、VBench和FID指标，与ToCa、DuCa、TaylorSeer等基线对比",
+ "takeaways": [
+  "多阶残差的重用性分析",
+  "轨迹聚类比特征聚类更可靠",
+  "低阶残差具有更高的重用价值"
+ ],
+ "weaknesses": [
+  "方法实现较为复杂，包含多个组件",
+  "在极端加速条件下(如N=8)生成质量有所下降"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "纯加速技术，与可靠性主线无实质交集",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning the RoPEs Better 2D and 3D Position Encodings with STRING.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning the RoPEs Better 2D and 3D Position Encodings with STRING.pdf",
+ "title": "Learning the RoPEs: Better 2D and 3D Position Encodings with STRING",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "STRING将RoPE扩展到多维，保持平移不变性，但适用场景有限。",
+ "innovations": [
+  "提出STRING统一理论框架：将RoPE从1D推广到任意维度，通过可分离结构保持精确平移不变性",
+  "设计高效的2D/3D位置编码方案，计算开销与标准RoPE相当",
+  "在机器人操作（dexterous manipulation）、2D/3D目标检测等视觉任务上验证STRING显著优于RoPE和绝对位置编码"
+ ],
+ "method_framework": "RoPE在1D上通过旋转矩阵将位置信息编码到注意力中。STRING将其推广到d维：将d维位置坐标分解为多个1D旋转的外积/张量积组合，保持平移不变性——即注意力分数只依赖于相对位置而非绝对位置。这种可分离结构使得2D/3D位置编码的计算复杂度与1D RoPE基本相同。",
+ "experiment_framework": "三层实验：(1)通用分类和检索任务；(2)2D/3D目标检测；(3)机器人操作（Aloha-sim双手插入任务等）；对比基线包括标准RoPE、绝对位置编码（APE）；指标包括分类精度、检测mAP、机器人任务成功率。",
+ "takeaways": [
+  "标准RoPE直接推广到2D/3D并不能保证平移不变性，STRING的可分离结构解决了这一问题",
+  "在机器人视觉任务中，精确的平移不变位置编码对策略学习至关重要",
+  "STRING以几乎相同的计算开销提供了更好的多维位置编码"
+ ],
+ "weaknesses": [
+  "主要在视觉/机器人任务上验证，在纯语言1D场景下STRING相比RoPE是否有优势未知",
+  "可分离结构假设不同维度的位置效应是独立的，在某些强耦合的空间结构下可能不适用",
+  "与最新的2D RoPE变体（如Vision RoPE等）的对比不够充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

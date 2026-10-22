@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/ToMA_Token Merge with Attention for Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ToMA_Token Merge with Attention for Diffusion Models.pdf",
+ "title": "ToMA: Token Merge with Attention for Diffusion Models",
+ "scores": {
+  "novelty": 4,
+  "depth": 5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 4.5
+ },
+ "one_line": "注意力引导的token合并加速扩散模型，但缺乏可靠性主线支持。",
+ "innovations": [
+  "将注意力机制引入扩散模型的token合并过程，解决现有token reduction方法对生成模型不适用的问题",
+  "通过注意力权重指导token合并，保留对生成重要的token"
+ ],
+ "method_framework": "ToMA在扩散模型的去噪过程中，根据注意力权重动态决定合并哪些冗余token，而非基于视觉相似度或其他静态指标。注意力权重反映了token对最终生成的重要性，据此合并可在加速的同时保持生成质量。",
+ "experiment_framework": "在多个图像生成任务上验证，对比ToMeSD、ToFu等即插即用token reduction方法，评估FID和推理速度。",
+ "takeaways": [
+  "注意力指导的token合并比静态相似度合并更适合扩散模型",
+  "token reduction可有效降低扩散模型的注意力计算复杂度"
+ ],
+ "weaknesses": [
+  "与可靠性/多模态推理主线完全无关，属于生成效率方向",
+  "合并比例需要手动调优",
+  "对高分辨率生成的效果可能下降"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

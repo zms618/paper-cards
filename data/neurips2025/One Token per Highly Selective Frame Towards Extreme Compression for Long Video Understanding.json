@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/One Token per Highly Selective Frame Towards Extreme Compression for Long Video Understanding.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/One Token per Highly Selective Frame Towards Extreme Compression for Long Video Understanding.pdf",
+ "title": "One Token per Highly Selective Frame: Towards Extreme Compression for Long Video Understanding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "XComp通过LLM层压缩实现视频极端压缩，但训练数据有限且缺乏效率分析。",
+ "innovations": [
+  "可学习渐进式压缩(LP-Comp)监督LLM层进行token级压缩",
+  "问题条件压缩(QC-Comp)基于内部注意力分数选择相关帧",
+  "分割长视频为短片段缓解LLM注意力位置偏差"
+ ],
+ "method_framework": "XComp结合LP-Comp和QC-Comp，通过监督压缩调优使LLM层将每帧压缩为1个token，同时基于问题相关性选择关键帧，实现极端视频压缩。",
+ "experiment_framework": "在LongVideoBench、MLVU、LVBench和VideoMME上评估，与VideoChat-Flash等基线比较，使用准确率作为指标。",
+ "takeaways": [
+  "LLM层可学习压缩视觉信息而不依赖启发式方法",
+  "渐进式压缩比直接压缩保留更多信息",
+  "分割长视频可缓解注意力位置偏差问题"
+ ],
+ "weaknesses": [
+  "仅基于2.5%数据进行训练，可能缺乏全面性",
+  "未充分讨论计算效率与性能提升的具体权衡"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

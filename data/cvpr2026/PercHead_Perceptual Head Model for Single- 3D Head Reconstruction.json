@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/PercHead_Perceptual Head Model for Single- 3D Head Reconstruction.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/PercHead_Perceptual Head Model for Single- 3D Head Reconstruction.pdf",
+ "title": "PercHead Perceptual Head Model for Single- 3D Head Reconstruction",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "组合DINOv2与SAM2.1的感知损失实现3D头部重建",
+ "innovations": [
+  "基于DINOv2和SAM2.1的感知损失",
+  "ViT-based架构实现3D表示与2D输入解耦",
+  "分割图和CLIP嵌入控制的解耦3D编辑"
+ ],
+ "method_framework": "使用双分支2D编码器提取图像特征，通过ViT解码器迭代丰富3D表示，转换为高斯点进行渲染，采用感知损失进行训练",
+ "experiment_framework": "在Ava-256数据集上评估，对比LGM、PanoHead等基线，使用PSNR、SSIM、LPIPS、DreamSim和ArcFace指标",
+ "takeaways": [
+  "感知损失在高频区域重建效果优于传统损失",
+  "多视图和单视图数据混合训练提高鲁棒性",
+  "解耦的几何和风格控制实现灵活的3D编辑"
+ ],
+ "weaknesses": [
+  "不支持表情迁移",
+  "缺乏对头发等精细细节的精确控制",
+  "在视频序列中未观察区域会出现轻微闪烁"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D头部重建与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

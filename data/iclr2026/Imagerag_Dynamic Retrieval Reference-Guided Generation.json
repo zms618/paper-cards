@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Imagerag_Dynamic Retrieval Reference-Guided Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Imagerag_Dynamic Retrieval Reference-Guided Generation.pdf",
+ "title": "Imagerag: Dynamic Retrieval REFERENCE-GUIDED Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "ImageRAG用VLM诊断生成缺口并检索参考图像增强生成",
+ "innovations": [
+  "训练自由的方法，无需额外训练即可增强现有图像生成模型",
+  "引导式思维链(CoT)过程识别生成缺口并检索相关参考图像",
+  "模型和条件方法无关，适用于多种生成模型"
+ ],
+ "method_framework": "ImageRAG首先生成初始图像，然后使用VLM通过引导式CoT过程识别图像与提示之间的差距，检索相关参考图像，并将这些图像作为上下文指导后续生成。",
+ "experiment_framework": "在ImageNet、iNaturalist和CUB数据集上评估，比较OmniGen、SDXL和FLUX模型与基线，使用CLIP、SigLIP和DINO指标，并进行用户研究。",
+ "takeaways": [
+  "利用现有图像条件模型实现检索增强生成，无需专门训练",
+  "引导式CoT过程可有效识别生成缺口并指导参考图像检索"
+ ],
+ "weaknesses": [
+  "方法依赖于VLM的诊断准确性",
+  "检索质量受限于外部数据库的内容和文本-图像相似度方法的局限性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "VLM诊断生成缺口属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

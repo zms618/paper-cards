@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Policy Optimization for CMDPs with Bandit Feedback Learning Stochastic and Adversarial Constraints.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Policy Optimization for CMDPs with Bandit Feedback Learning Stochastic and Adversarial Constraints.pdf",
+ "title": "Policy Optimization for CMDPs with Bandit Feedback: Learning Stochastic and Adversarial Constraints",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 4,
+  "relevance": 6,
+  "overall": 5.8
+ },
+ "one_line": "纯理论工作，bandit反馈下CMDP的best-of-both-worlds算法，无实验验证",
+ "innovations": [
+  "首个在bandit反馈(仅观测轨迹上反馈)下同时处理随机与对抗约束的CMDP best-of-both-worlds算法，突破此前只能full-feedback的限制",
+  "随机约束下达到O(√T)后悔与约束违反；对抗约束下达到O(√T)约束违反并取得紧的最优奖励分数",
+  "采用策略优化(policy optimization)而非occupancy-measure优化，避免反复求解凸优化问题，计算效率大幅提升"
+ ],
+ "method_framework": "本文为在线约束RL理论论文。此前Stradi et al.(2024b)的best-of-both-worlds算法需full feedback且依赖occupancy measure优化(反复解凸优化，低效)。本文在更现实的bandit反馈下，直接在策略空间优化，配合双环境/约束的随机与对抗两种情形分别给出匹配的后悔与约束违反界。",
+ "experiment_framework": "无数值实验(以理论为主)。贡献为算法及界：随机约束情形O(√T)后悔+O(√T)违反、对抗约束情形O(√T)违反+紧奖励分数；并论证相对occupancy-measure方法的计算效率优势。",
+ "takeaways": [
+  "在bandit反馈(仅轨迹级反馈)下，CMDP仍可做到随机/对抗约束统一的best-of-both-worlds",
+  "策略空间优化比occupancy measure优化更高效，使理论算法更接近可运行",
+  "两种约束情形下的界分别匹配已知最优阶"
+ ],
+ "weaknesses": [
+  "纯理论，未提供实验验证bandit反馈下算法的实际收敛速度与可运行性",
+  "策略优化方法仍可能需要较大的策略类假设/正则，其可实现性细节与工程代价未充分讨论",
+  "与最新full-feedback算法在同样本数下的理论/实测权衡缺乏对照"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

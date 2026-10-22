@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Mastering Board Games by External and Internal Planning with Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Mastering Board Games by External and Internal Planning with Language Models.pdf",
+ "title": "Mastering Board Games by External and Internal Planning with Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "LLM规划范式对比：外部MCTS与内部搜索树生成在棋盘游戏中的表现评估。",
+ "innovations": [
+  "系统提出并对比LLM规划的两大范式：外部搜索（LLM作为MCTS的rollout策略和价值函数，外部游戏引擎模拟）vs 内部搜索（LLM在上下文中自回归生成线性化搜索树和最终选择）",
+  "在相关领域知识上预训练LLM，使其可靠捕捉环境的转移函数和价值函数，最小化幻觉",
+  "在Chess、Chess960、Connect Four、Hex四种棋盘游戏上全面评估两种范式，展示搜索规划对LLM棋力的显著提升"
+ ],
+ "method_framework": "外部搜索：将LLM作为MCTS中的策略网络（先验）和价值网络，外部游戏引擎执行状态转移，LLM仅指导搜索方向和评估叶子节点。内部搜索：训练LLM直接在上下文中生成搜索树（线性化表示），包括分支、叶节点评估和回溯，最终自回归输出最优走法。两种方法都基于在对弈数据上预训练的领域LLM。",
+ "experiment_framework": "四种棋盘游戏：Chess、Fischer Random/Chess960、Connect Four、Hex。对比纯LLM走子 vs 外部MCTS搜索 vs 内部搜索树生成。指标：Elo等级分、胜率、与顶级AI/人类棋手的对比。消融分析搜索深度、LLM规模等因素。",
+ "takeaways": [
+  "搜索规划（无论外部MCTS还是内部生成搜索树）都能显著提升LLM在复杂棋盘游戏中的表现，弥补其System 2推理能力的不足",
+  "在领域知识上预训练LLM使其可靠编码游戏规则，是减少规划中幻觉的关键",
+  "外部搜索和内部搜索各有优劣：外部搜索更强但依赖游戏引擎，内部搜索更通用但受上下文长度限制"
+ ],
+ "weaknesses": [
+  "实验仅限完美信息棋盘游戏，未涉及不完美信息或更开放的规划任务",
+  "内部搜索受上下文窗口限制，无法进行深层搜索，实际游戏中仍依赖外部引擎",
+  "预训练领域LLM需要大量对弈数据，未讨论零样本或少样本场景下的规划能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

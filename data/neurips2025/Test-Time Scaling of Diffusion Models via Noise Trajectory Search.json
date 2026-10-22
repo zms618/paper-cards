@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Test-Time Scaling of Diffusion Models via Noise Trajectory Search.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Test-Time Scaling of Diffusion Models via Noise Trajectory Search.pdf",
+ "title": "Test-Time Scaling of Diffusion Models via Noise Trajectory Search",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "将扩散采样建模为MDP并松弛为上下文bandit，提出ε-贪婪噪声轨迹搜索算法",
+ "innovations": [
+  "将扩散过程建模为MDP并松弛为上下文bandit序列",
+  "提出ε-贪婪噪声搜索算法平衡全局探索与局部利用",
+  "证明中间步骤需要局部搜索而极端步骤需要全局探索",
+  "首次实现任意非可微分奖励的实用噪声轨迹优化"
+ ],
+ "method_framework": "将扩散采样过程建模为T步MDP，松弛为T个独立上下文bandit问题，提出ε-贪婪算法在极端时间步全局探索，在中间步骤局部利用，优化噪声轨迹",
+ "experiment_framework": "EDM(ImageNet类条件生成)和Stable Diffusion(文本到图像)数据集，对比MCTS、零阶搜索、束搜索等方法，使用亮度、可压缩性和分类器概率/CLIP分数作为奖励指标",
+ "takeaways": [
+  "ε-贪婪策略在噪声搜索中显著优于传统方法",
+  "中间步骤需要局部搜索而极端步骤需要全局探索",
+  "奖励函数在中间步骤对噪声更敏感"
+ ],
+ "weaknesses": [
+  "计算开销仍较大(1440次前向传播)",
+  "仅适用于SDE扩散模型，不适用于ODE模型",
+  "假设各时间步噪声独立，忽略了时间步间的依赖关系"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Gaze-LLE_Gaze Target Estimation via Large-Scale Learned Encoders.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Gaze-LLE_Gaze Target Estimation via Large-Scale Learned Encoders.pdf",
+ "title": "Gaze-LLE Gaze Target Estimation via Large-Scale Learned Encoders",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "冻结DINOv2简化凝视估计，头部提示提升性能但跨域泛化不足",
+ "innovations": [
+  "使用冻结的DINOv2编码器替代复杂的多分支架构",
+  "设计头部位置提示机制整合人物位置信息",
+  "轻量级解码器架构显著减少参数量"
+ ],
+ "method_framework": "Gaze-LLE采用冻结的DINOv2编码器提取场景特征，通过头部位置提示机制添加人物特定信息，使用小型transformer模块更新特征表示，最后通过轻量级解码器生成凝视热图。",
+ "experiment_framework": "在GazeFollow、VideoAttentionTarget、ChildPlay和GOO-Real数据集上评估，使用AUC、L2距离和AP作为指标，与多种基线方法比较。",
+ "takeaways": [
+  "冻结基础模型可显著简化架构并提升性能",
+  "头部位置提示时机对性能有重要影响",
+  "transformer解码器比传统卷积更适合全局信息提取"
+ ],
+ "weaknesses": [
+  "仅依赖RGB输入，未利用深度、姿态等多模态信息",
+  "在GOO-Real等跨域数据集上性能下降较大",
+  "未充分分析模型在不同头部姿态下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "凝视估计与可靠性主线无实质交点，仅是计算机视觉任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

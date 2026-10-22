@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/DIVEQ_Differentiable Vector Quantization using the Reparameterization Trick.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/DIVEQ_Differentiable Vector Quantization using the Reparameterization Trick.pdf",
+ "title": "DIVEQ: Differentiable Vector Quantization using the Reparameterization Trick",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "重参数化技巧实现可微量化，但创新有限且高维验证不足。",
+ "innovations": [
+  "将量化建模为添加模拟误差向量，保持前向硬分配同时允许梯度流动",
+  "提出空间填充变体SF-DiVeQ，减少量化误差并充分利用码本",
+  "无需辅助损失或温度调度即可端到端训练"
+ ],
+ "method_framework": "DiVeQ将量化建模为添加方向与最近码本对齐的误差向量，SF-DiVeQ扩展为沿码本连接线段的连续量化，两者均通过重参数化技巧实现可微分性。",
+ "experiment_framework": "在VQ-VAE图像压缩、VQGAN图像生成和DAC语音编码任务上评估，使用SSIM、PSNR、LPIPS、FID、LSD等指标，与STE、EMA、RT、ST-GS、NSVQ等方法对比。",
+ "takeaways": [
+  "重参数化技巧可有效解决向量量化的梯度传递问题",
+  "空间填充量化可减少量化误差并避免码本未充分利用问题"
+ ],
+ "weaknesses": [
+  "SF-DiVeQ在推理时需要映射到空间填充曲线，增加了计算复杂度",
+  "方法在极高维空间中的表现未充分验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "向量量化技术本身与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

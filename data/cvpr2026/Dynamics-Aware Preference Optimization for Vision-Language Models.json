@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Dynamics-Aware Preference Optimization for Vision-Language Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Dynamics-Aware Preference Optimization for Vision-Language Models.pdf",
+ "title": "Dynamics-Aware Preference Optimization for Vision-Language Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "两阶段框架缓解VLM挤压效应，但计算复杂且超参依赖性强",
+ "innovations": [
+  "识别并解决VLM偏好优化中的'挤压效应'问题",
+  "提出两阶段框架：平滑阶段(约束SFT)和冷却阶段(能力感知DPO)",
+  "设计能力感知冷却权重wc，自适应调整负样本梯度影响"
+ ],
+ "method_framework": "CW-DPO采用两阶段优化：第一阶段使用约束SFT引入'温和负样本'平滑损失景观；第二阶段引入能力感知冷却权重wc，根据模型平均每token对数概率自适应缩放负样本梯度，抑制无信息更新。",
+ "experiment_framework": "在COCO、Flickr30k、NoCaps、MMMU和MMBench1.1等主流基准上评估，与SFT、DPO、PPO、V-DPO、GRPO和OPA-DPO等方法对比，使用BLEU-4、METEOR、CIDEr、SPICE和准确率等指标。",
+ "takeaways": [
+  "学习动力学视角为理解VLM优化不稳定提供了新框架",
+  "平滑后再冷却的简单原则可有效提升VLM偏好优化鲁棒性"
+ ],
+ "weaknesses": [
+  "两阶段训练增加了计算复杂度",
+  "冷却权重wc的设计依赖于超参数τ和ℓfloor的选择"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "VLM优化方法与可靠性主线有间接联系但未直接触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

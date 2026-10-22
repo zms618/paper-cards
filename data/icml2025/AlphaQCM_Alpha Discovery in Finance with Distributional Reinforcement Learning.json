@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/AlphaQCM_Alpha Discovery in Finance with Distributional Reinforcement Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/AlphaQCM_Alpha Discovery in Finance with Distributional Reinforcement Learning.pdf",
+ "title": "AlphaQCM: Alpha Discovery in Finance with Distributional Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "将金融alpha发现建模为MDP，用QCM估计方差作为探索bonus",
+ "innovations": [
+  "将协同公式化 alpha 发现视为非平稳+奖励稀疏 MDP，用分布式 RL 显式利用回报分布信息",
+  "用 Q 网络学均值、分位网络学分位点，再以 QCM 方法从可能有偏的分位点无偏估计累积回报方差",
+  "把无偏方差作为探索 bonus 缓解奖励稀疏，并对非平稳性鲁棒"
+ ],
+ "method_framework": "alpha 发现=在操作符/特征空间里逐步拼接表达式的序贯决策。AlphaQCM 用 IQN 学累积折扣回报的分位点、DQN 学均值；用 QCM 从分位点估计回报方差（非平稳导致分位点有偏时方差仍无偏），把方差作为内在探索 bonus 引导搜索，在大股票池上高效挖掘协同公式化 alpha。",
+ "experiment_framework": "在真实股票数据集上与遗传规划 (GP)、AlphaGen (PPO) 等对比发现 alpha 的收益/协同质量，尤其在股票数量众多的大数据集上报告优势。",
+ "takeaways": [
+  "分布式回报信息（方差）可作为自然探索 bonus 缓解 alpha 发现的奖励稀疏",
+  "QCM 在分位点有偏（非平稳）时仍给出无偏方差估计",
+  "AlphaQCM 在大股票数据集上显著优于 GP 与 AlphaGen"
+ ],
+ "weaknesses": [
+  "主线为量化金融/RL 应用，与可靠性×医学影像/多模态大模型推理主线无关",
+  "「无偏方差」性质依赖 QCM 假设，真实金融非平稳的建模近似性需谨慎",
+  "前9页为金融数据集实证，泛化到其他序贯表达式搜索任务未讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "金融RL应用，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

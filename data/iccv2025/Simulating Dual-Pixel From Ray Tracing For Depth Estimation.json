@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/Simulating Dual-Pixel From Ray Tracing For Depth Estimation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Simulating Dual-Pixel From Ray Tracing For Depth Estimation.pdf",
+ "title": "Simulating Dual-Pixel From Ray Tracing For Depth Estimation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "光线追踪模拟双像素PSF提升深度估计，但计算复杂且测试集有限",
+ "innovations": [
+  "基于光线追踪的双像素点扩散函数(PSF)模拟器",
+  "像素级双像素图像渲染模块",
+  "MLP预测空间变化PSF",
+  "DP119真实测试集构建"
+ ],
+ "method_framework": "Sdirt通过光线追踪计算空间变化的DP PSF，训练MLP预测PSF，然后与全焦图像卷积生成模拟DP图像，用于深度估计模型训练。",
+ "experiment_framework": "DP119测试集(119个场景)，对比CoC、L2R、Modeling、DDDNet等方法，使用PSNR、SSIM和深度估计指标(MAE、MSE等)评估。",
+ "takeaways": [
+  "光线追踪可准确模拟镜头像差和传感器相位分裂",
+  "像素级PSF预测提高模拟真实性",
+  "模拟数据质量直接影响模型泛化能力"
+ ],
+ "weaknesses": [
+  "方法计算复杂度高，需要4096条光线追踪",
+  "仅考虑单波长(550nm)，未考虑色差",
+  "DP119测试集规模相对有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "深度估计方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

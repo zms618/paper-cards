@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/PARM_Multi-Objective Test-Time Alignment via Preference-Aware Autoregressive Reward Model.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/PARM_Multi-Objective Test-Time Alignment via Preference-Aware Autoregressive Reward Model.pdf",
+ "title": "PARM: Multi-Objective Test-Time Alignment via Preference-Aware Autoregressive Reward Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "偏好感知ARM实现多目标对齐，但泛化性和弱到强引导未充分验证",
+ "innovations": [
+  "单一统一ARM跨所有偏好维度联合训练",
+  "偏好感知双低秩自适应(PBLoRA)技术",
+  "弱到强引导能力使小模型指导大模型"
+ ],
+ "method_framework": "PARM使用PBLoRA将偏好向量条件化到ARM中，通过双线性形式实现偏好间的精确权衡控制，训练时采样偏好向量优化多目标损失。",
+ "experiment_framework": "安全对齐任务(PKU-SafeRLHF-10K)，对比RS/MOD/GenARM基线，使用HV和MIP指标评估帕累托前沿质量。",
+ "takeaways": [
+  "PBLoRA在保持参数效率的同时提高了表达能力",
+  "单一模型替代多个ARM显著降低推理成本"
+ ],
+ "weaknesses": [
+  "仅验证了7B模型指导7B模型，弱到强引导能力需进一步验证",
+  "实验仅限于安全对齐和助手任务，泛化性待考察"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

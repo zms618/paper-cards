@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/L3DR_3D-aware LiDAR Diffusion and Rectification.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/L3DR_3D-aware LiDAR Diffusion and Rectification.pdf",
+ "title": "L3DR 3D-aware LiDAR Diffusion and Rectification",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "激光雷达扩散校正框架，提升几何真实性但依赖特定模型",
+ "innovations": [
+  "3D残差回归网络校正RV伪影",
+  "Welsch Loss聚焦局部几何并忽略异常区域",
+  "理论与实证分析证明3D模型在生成锐利边界上的优越性"
+ ],
+ "method_framework": "结合2D RV激光雷达扩散与3D残差回归网络，通过语义条件生成训练数据，使用Welsch Loss指导网络忽略高偏差区域，专注于局部几何伪影校正",
+ "experiment_framework": "在SemanticKITTI、KITTI360、nuScenes和Waymo数据集上评估，使用FSVD、FPVD、JSD和MMD指标，无条件生成和语义条件生成任务",
+ "takeaways": [
+  "3D模型在生成锐利边界方面优于2D模型",
+  "Welsch Loss能有效处理训练数据中的高偏差区域",
+  "框架可泛化到不同激光雷达扩散模型且计算开销小"
+ ],
+ "weaknesses": [
+  "依赖特定扩散模型生成训练数据",
+  "对RV图像大小敏感，可能影响训练稳定性",
+  "未充分讨论方法在极端天气条件下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "激光雷达校正属工程问题，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

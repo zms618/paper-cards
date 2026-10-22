@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/3D-VCD_Hallucination Mitigation in 3D-LLM Embodied Agents through Visual Contrastive.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/3D-VCD_Hallucination Mitigation in 3D-LLM Embodied Agents through Visual Contrastive.pdf",
+ "title": "3D-VCD: Hallucination Mitigation in 3D-LLM Embodied Agents through Visual Contrastive Decoding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.9
+ },
+ "one_line": "将2D对比解码扩展到3D场景图，抑制具身agent中的语言先验幻觉",
+ "innovations": [
+  "首个面向 3D 具身 agent 的免训练推理期幻觉抑制框架：把幻觉定义为「底层 3D 感知被破坏后概率不被压低的 token」，即在 f_θ(x_t,G_t) 与 f_θ(x_t,Ẽ_t) 对比下仍高分的 token 判定为语言先验驱动，用 z^vcd_t=(1+α)z^(o)_t−αz^(d)_t 做双上下文对数融合（α=1）后 softmax 解码",
+  "提出图空间扭曲算子 D（而非像素扰动）来构造「反事实 3D 上下文」：语义扰动 ĉ_i∼Shuffle(c_i) 把物体类别换成错误标签，几何扰动 â_i=a_i+ε 对质心 p_i 与空间范围 s_i 加零均值高斯噪声 N(0,σ²I)；还给出近义替换（table→desk）的低/高替换率（10%/25%）分级与结构关系翻转，保持语法有效但反驳场景证据",
+  "把 HEAL 的对抗性任务提示直接重解释为「扭曲上下文」（场景图 G_t 固定、由任务描述制造不一致），从而用同一个 Eq.(3) 融合式统一了几何中心（3D-POPE）与状态/关系中心（HEAL）两类具身推理设置；工程上用批式双路前向 + 双上下文 KV 缓存把开销压到约 1.25×（2s→2.5s/query）"
+ ],
+ "method_framework": "由 3D-GRAND/HEAL 观测构建物体中心场景图 G_t={o_i=(c_i,a_i)}（3D-POPE 的 a_i 为质心与 extent，HEAL 为离散状态与关系）；对 G_t 施加语义/几何/结构扰动得 Ẽ_t=D(G_t)；用冻结 MLLM 并行跑原图与扭曲图得 z^(o)、z^(d)；按 z^vcd=(1+α)z^(o)−αz^(d) 融合后逐 token greedy 解码，全程不改权重、无额外可训练参数。",
+ "experiment_framework": "3D-POPE 三个子集（Random/Popular/Adversarial）报 Precision/Recall/F1/Accuracy/Yes-rate，基线 3D-LLM、3D-VisTA、LEO（均在 3D-GRAND 上微调）；HEAL 子集用官方 CHAIR 指标报 CO/CS，额外作用于 Llama-3-8B-Instruct、Qwen-14B-Instruct、Gemma-2-9b、DS-R1-Distill；A40×8 批，α=1.0，T=1.0；另做单一扰动类型（SemSub 低/高、几何低/高、结构关系翻转）消融。",
+ "takeaways": [
+  "「用反事实/扭曲的输入而非加大训练数据」来诊断并抑制幻觉，是把可靠性做进推理期的低成本路径，且天然避免长尾场景训不完的问题",
+  "对比解码的扰动要落在任务的真实表征空间里（3D 场景图的类别/坐标/关系），像素级扰动对具身几何幻觉无判别力",
+  "双上下文 KV 缓存 + 批式前向是让对比解码真正可用的工程前提，可复用于任何 dual-context 解码方法"
+ ],
+ "weaknesses": [
+  "HEAL 评测只做了 Distraction Injection 一个子集，而 HEAL 明确定义了五类场景—任务不一致（distractor injection、object removal、synonymous、scene-task contradiction、baseline），其余四类结果缺失，导致「跨具身推理设置通用」的结论缺少主要证据面",
+  "存在未被解释的方向性矛盾：3D-VCD 在 Qwen-14B 上把状态幻觉 CS 从 16.45% 降到 5.0%，但在 Llama-3-8B 上 CS 却从 9.49% 升到 12.43%（变差）、CO 仅从 2.58% 微降到 2.39%；论文正文只强调 Qwen 的增益，未分析为什么状态类幻觉在另一模型上被反向放大，也未给出按扰动类型的逐项分解表（正文在消融表起始处截断）",
+  "3D-POPE 上过肯定偏置并未消除：3D-VCD 之后 Yes-rate 仍高达 75.15%（Random）、89.02%（Popular）、87.82%（Adversarial），且 Precision 仅 52–62%，召回却都在 92% 以上——说明该方法本质是在精度与覆盖率之间重新加权，而非真正提升 3D  grounding 能力；此外三个基线都在 3D-GRAND 上微调过，与「训练-free」的 3D-VCD 并非同等条件下的对照",
+  "α 默认固定为 1.0 且正文未见扫描曲线，扭曲强度 σ（几何高斯噪声幅度）与替换比例 10%/25% 的分级理由也仅在消融表头出现，缺乏超参敏感性分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "3D具身agent幻觉抑制，可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

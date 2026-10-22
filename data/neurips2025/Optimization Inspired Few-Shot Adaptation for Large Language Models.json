@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Optimization Inspired Few-Shot Adaptation for Large Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Optimization Inspired Few-Shot Adaptation for Large Language Models.pdf",
+ "title": "Optimization Inspired Few-Shot Adaptation for Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "将LLM前向传播视为优化过程，提出OFA方法提升少样本适应性能",
+ "innovations": [
+  "将LLM前向传播重新解释为预调节梯度下降过程",
+  "利用LayerNorm作为可学习预调节矩阵的轻量级参数化",
+  "设计步长比目标函数优化收敛效率，结合局部平坦度目标提升泛化能力",
+  "使用Hutchinson近似高效估计预调节Hessian迹"
+ ],
+ "method_framework": "OFA框架将少样本适应视为学习内部优化过程中的迭代预调节矩阵，通过两个目标函数：步长比目标优化收敛速度，局部平坦度目标增强泛化能力，均基于预调节矩阵实现。",
+ "experiment_framework": "在SST-2、TREC等9个分类数据集上评估，对比零样本、ICL、软提示、任务向量等基线，使用Llama2-7B和Llama3-8B-Instruct模型，指标为准确率。",
+ "takeaways": [
+  "将LLM前向传播视为优化过程的新视角",
+  "利用现有组件(如LayerNorm)实现高效预调节而不增加参数",
+  "步长比和局部平坦度目标函数的设计可迁移到其他优化场景"
+ ],
+ "weaknesses": [
+  "方法依赖于LLM前向传播作为优化过程的特定解释",
+  "Hutchinson近似可能引入估计误差",
+  "实验主要集中在分类任务，未探索更复杂场景"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

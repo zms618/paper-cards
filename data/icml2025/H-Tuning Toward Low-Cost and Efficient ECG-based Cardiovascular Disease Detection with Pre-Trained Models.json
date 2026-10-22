@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/H-Tuning Toward Low-Cost and Efficient ECG-based Cardiovascular Disease Detection with Pre-Trained Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/H-Tuning Toward Low-Cost and Efficient ECG-based Cardiovascular Disease Detection with Pre-Trained Models.pdf",
+ "title": "H-Tuning: Toward Low-Cost and Efficient ECG-based Cardiovascular Disease Detection with Pre-Trained Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.0
+ },
+ "one_line": "ECG模型微调+蒸馏降成本，但临床鲁棒性验证不足。",
+ "innovations": [
+  "提出H-Tuning一体化方法，在下游ECG数据集上低成本高效微调大规模预训练模型",
+  "结合知识蒸馏进一步压缩微调后模型，显著降低推理时延与显存",
+  "在四个ECG数据集上联合解决标注稀缺与临床低算力部署两类约束"
+ ],
+ "method_framework": "先以参数高效/低显存微调适配大规模ECG预训练基础模型到下游心血管病检测任务，再用知识蒸馏把大模型能力迁移到轻量学生模型，使微调阶段显存与推理阶段时延/内存同时下降，适配资源受限临床设备。",
+ "experiment_framework": "在四个ECG数据集上评测CVD检测；与全量标准微调及既有PEFT/蒸馏方法比较；指标为检测性能(AUC/准确率等)、微调显存消耗、推理时延与内存；报告微调显存降6.34倍、推理时延降4.52倍、内存降19.83倍且性能可比。",
+ "takeaways": [
+  "一体化高效微调+蒸馏可在保持诊断性能的同时大幅压缩临床部署成本",
+  "预训练基础模型迁移能缓解ECG标注稀缺，且可在低端设备落地",
+  "性能-成本联合优化比单一压缩或单一微调更实用"
+ ],
+ "weaknesses": [
+  "贡献集中在效率而非可靠性主线的鲁棒性/不确定性/校准，临床泛化与跨设备域偏移未作为核心验证",
+  "蒸馏学生模型的校准度与误诊代价(尤其漏诊)未定量分析",
+  "仅在四个公开ECG数据集验证，真实临床低资源场景的前瞻性验证缺失"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

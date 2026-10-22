@@ -1,0 +1,37 @@
+{
+ "title": "NOLIMA: Long-Context Evaluation Beyond Literal Matching",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "揭示长上下文基准漏洞，但评测工作缺乏深度与解决方案。",
+ "innovations": [
+  "指出现有长上下文基准（NIAH及其扩展、多文档QA）普遍存在问题与相关上下文的字面匹配，使模型可走捷径而非真正推理。",
+  "构建NOLIMA：精心设计问题与针仅通过现实知识/常识关联相连、词汇重叠极低（ROUGE-L仅0.067）的检索任务。",
+  "在13个宣称支持128K+上下文的主流LLM上系统评测，量化长度增长导致的性能崩塌。"
+ ],
+ "method_framework": "在NIAH框架上改造：设计与针最小化词汇重叠、仅靠关联链接（世界知识/常识）连接的问题集合，把针埋入长干草堆；要求模型利用潜在关联推理定位针而非表面匹配；通过ROUGE精度量化与现有基准的字面匹配差异。",
+ "experiment_framework": "评测13个宣称≥128K上下文的LLM（GPT-4o、Gemini1.5Pro、Llama3.3-70B等）；指标为答案准确率随上下文长度变化；报告32K时11个模型跌至短上下文基线50%以下、GPT-4o由99.3%降至69.7%；并含CoT/推理增强模型的对照与注意力机制分析。",
+ "takeaways": [
+  "现有长上下文能力很大程度建立在字面匹配捷径上，去字面匹配后性能显著退化。",
+  "即便最强模型在远短于其宣称长度时NOLIMA即开始快速下滑。",
+  "CoT/推理增强也无法维持长上下文下的关联检索性能。"
+ ],
+ "weaknesses": [
+  "为评测基准/分析类工作，未提出改进模型或方法，深度偏评测而非机制。",
+  "针的关联知识构造依赖人工/半自动设计，规模与覆盖度有限，可扩展性存疑。",
+  "结论主要基于检索型关联召回，对生成式长文档任务的外推需谨慎。"
+ ],
+ "confidence": "high",
+ "key": "icml2025/NoLiMa_Long-Context Evaluation Beyond Literal Matching.pdf",
+ "path": "icml2025/NoLiMa_Long-Context Evaluation Beyond Literal Matching.pdf",
+ "conf": "icml2025",
+ "raw_overall": 6.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

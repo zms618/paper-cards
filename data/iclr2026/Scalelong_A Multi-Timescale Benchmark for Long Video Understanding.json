@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scalelong_A Multi-Timescale Benchmark for Long Video Understanding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scalelong_A Multi-Timescale Benchmark for Long Video Understanding.pdf",
+ "title": "ScaleLong: A Multi-Timescale Benchmark for Long Video Understanding",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "多尺度视频基准，发现MLLM在中间时间尺度表现弱。",
+ "innovations": [
+  "提出'内容内'多时间尺度设计：将针对clip/shot/event/story四个层级时间尺度的问题都放在同一视频上，解耦时间粒度与内容差异，支持跨尺度直接对比。",
+  "构建269个平均86分钟长视频、5大类36子类、每视频4-8题(每尺度至少1题)的评测集。",
+  "系统评测23个MLLM，发现U型规律(最短clip与最长story尺度准确率高、中间shot/event下降)，并通过消融证明增加视觉token容量在所有尺度一致提升推理。"
+ ],
+ "method_framework": "围绕同一长视频，人工设计覆盖四个层级时间尺度的问题，使模型在相同叙事上被分别考察局部细节、镜头、事件与全局故事级理解；借此分离各时间粒度能力，并做视觉token预算等受控消融。",
+ "experiment_framework": "评测23个MLLM(19开源+4闭源)；报告各时间尺度准确率与U型趋势；做视觉token容量消融检验其对各尺度推理的影响。",
+ "takeaways": [
+  "当前MLLM在长视频上呈现U型表现：擅长局部视觉细节或全局叙事，却在中间(shot/event)时间尺度明显薄弱。",
+  "增大视觉token分配能在所有时间尺度上稳定提升长视频推理。"
+ ],
+ "weaknesses": [
+  "属视频理解基准，非医学影像，与可信/鲁棒主线仅在多模态推理侧面相关。",
+  "问题为人工设计、规模有限(269视频)，U型结论是否在更长/更多样视频与最新模型上稳定仍需扩展验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "多模态推理基准，与可靠性主线间接相关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

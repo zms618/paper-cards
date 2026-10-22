@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MTL-UE_Learning to Learn Nothing for Multi-Task Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MTL-UE_Learning to Learn Nothing for Multi-Task Learning.pdf",
+ "title": "MTL-UE: Learning to Learn Nothing for Multi-Task Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 4.8
+ },
+ "one_line": "将单任务不可学习样本扩展到多任务，但鲁棒性和泛化性不足。",
+ "innovations": [
+  "将不可学习样本（UE）从单任务学习扩展到多任务学习场景，针对多任务通用模型的数据保护",
+  "设计MTL专属的扰动生成策略，使扰动样本在所有任务上均不可学习",
+  "在多任务基准上验证，扰动样本在保护数据的同时不影响单任务正常使用"
+ ],
+ "method_framework": "不可学习样本：在数据中加入人眼不可察觉的扰动，使ML模型无法从中学到有用知识。先前工作仅保护单任务模型，MTL-UE针对多任务学习（一个模型同时处理多个任务）生成扰动，使扰动样本在所有任务上均降低性能，同时不影响人类视觉。",
+ "experiment_framework": "多任务学习基准（如Cityscapes多任务、NYUv2等）。基线：单任务UE方法。指标：扰动后多任务模型的各任务性能下降幅度、人类感知不可察觉性。消融验证多任务扰动策略。",
+ "takeaways": [
+  "多任务场景下的数据保护需要专门的UE策略，单任务UE方法在MTL中效果不佳",
+  "MTL-UE生成的扰动可同时降低所有任务的学习性能",
+  "数据隐私保护需考虑通用模型/基础模型时代的多任务训练风险"
+ ],
+ "weaknesses": [
+  "扰动保护可能被后续的净化/去噪技术绕过，鲁棒性未充分讨论",
+  "仅在视觉多任务验证，未涉及LLM多任务微调",
+  "与主线（鲁棒性/可信AI/医学影像/多模态推理）无直接关联，属于数据隐私方向"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

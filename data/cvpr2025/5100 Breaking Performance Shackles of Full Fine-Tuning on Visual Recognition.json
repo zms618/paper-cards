@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/5100 Breaking Performance Shackles of Full Fine-Tuning on Visual Recognition.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/5100 Breaking Performance Shackles of Full Fine-Tuning on Visual Recognition.pdf",
+ "title": "5%>100%: Breaking Performance Shackles of Full Fine-Tuning on Visual Recognition Tasks",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.4
+ },
+ "one_line": "多尺度适配器+缩放LN，5%参数量超越全微调",
+ "innovations": [
+  "在 adapter 降维后并行接 3×3/5×5/7×7 三路 depth-wise 卷积取平均、再用 1×1 卷积聚合，替换 NLP 沿用的线性 filter，使适配器具备多尺度视觉认知且不显著增参",
+  "adapter 入口加 scaled LayerNorm：x_norm = s1·LN(x0) + s2·x0，用两个可学标量调节冻结层输出分布与恒等分支占比，缓解冻结主干特征分布偏置",
+  "给出单模块参数量闭式 (2n+3)m + n² + 84n + 2 并以 n=64 固定，把新增参数压到主干的 2.5%–5%，并证明参数量与迁移效果非正比"
+ ],
+ "method_framework": "冻结 Swin 主干，在每个 SwinBlock 的 MSA 与 MLP 后各插入一个 Mona；Mona 内为 scaled LN → 降维线性 → 三路 DWConv+GeLU → 1×1 卷积 → 升维，四处残差连接，仅更新 Mona 与主干外参数。",
+ "experiment_framework": "Swin-L/B/T（ImageNet-22k 预训练）；COCO、ADE20K、Pascal VOC、DOTA/STAR、Flowers102/OxfordPets/VOC2007；基线 FULL/FIXED/BITFIT/NORMTUNING/PARTIAL-1/ADAPTER/LoRA/AdaptFormer/LoRand；AP、mIoU、top-1。",
+ "takeaways": [
+  "冻结主干 + 输入分布可调的适配器即可突破全微调上限，提示全微调的劣势主要来自小数据/低资源场景下的过拟合，而非表达能力不足（VOC 上所有 delta-tuning 都超过 FULL 可作佐证）",
+  "同时报告'训练参数占比'与'相对 FULL 的 Δ'，比只报绝对精度更能说明 PEFT 的真实性价比",
+  "消融显示 adapter 中间维度与性能非单调（64 最优，128 反降），说明调参不能按'越大越好'默认"
+ ],
+ "weaknesses": [
+  "核心机制是多尺度 DWConv + LayerNorm 的模块替换，'多认知'动机仅以人类视觉多尺度作类比，无消融说明为何必须是 3/5/7 三核、为何取平均聚合、以及各自独立增益",
+  "所有实验只报单点结果，无多种子均值/标准差；COCO 上 +1.0 AP 的 headline 增益缺显著性检验",
+  "消融（中间维度、模型规模、详细设计）全部只在 Pascal VOC 上做，未覆盖其宣称最难的 COCO/ADE20K，结论外推缺支撑；正文在模型规模消融后截断，详细设计消融数值不可见",
+  "提升幅度含任务设定差异成分：ADE20K 相对全微调仅 +0.18 mIoU，VOC 上全部基线都超过 FULL，'打破上限'的强度主要由低资源任务撑起"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "参数高效微调方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

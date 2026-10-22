@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/RegGS_Unposed Sparse Views Gaussian Splatting with 3DGS Registration.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/RegGS_Unposed Sparse Views Gaussian Splatting with 3DGS Registration.pdf",
+ "title": "RegGS Unposed Sparse Views Gaussian Splatting with 3DGS Registration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "基于最优传输的高斯配准实现稀疏视图重建，计算复杂度高",
+ "innovations": [
+  "提出基于最优传输的混合2-Wasserstein距离(MW2)用于高斯混合模型配准",
+  "设计可微分的3D高斯联合配准模块，结合MW2距离、光度一致性和深度几何",
+  "实现从稀疏无位姿输入进行增量式3D高斯重建的框架"
+ ],
+ "method_framework": "使用预训练前馈高斯模型从两个初始图像构建主高斯，为每个新输入生成子高斯，通过熵正则化Sinkhorn算法计算MW2距离，在Sim(3)空间中对齐子高斯到主高斯，最后进行全局优化",
+ "experiment_framework": "在RE10K和ACID数据集上评估，使用PSNR、SSIM、LPIPS作为新视图合成指标，ATE RMSE作为位姿估计指标，与NoPoSplat、VideoLifter、CF-3DGS等方法对比",
+ "takeaways": [
+  "最优传输框架可有效度量高斯混合模型的结构相似性",
+  "多目标联合优化策略可提升配准精度和鲁棒性",
+  "增量式配准框架可处理稀疏视图场景"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，需要GPU加速",
+  "全局 refinement 可能引入噪声",
+  "未充分讨论方法在极端稀疏视图下的表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "稀疏视图重建与可靠性主线无交点，属纯图形学渲染工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

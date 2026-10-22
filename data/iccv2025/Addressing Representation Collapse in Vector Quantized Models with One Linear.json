@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Addressing Representation Collapse in Vector Quantized Models with One Linear.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Addressing Representation Collapse in Vector Quantized Models with One Linear.pdf",
+ "title": "Addressing Representation Collapse in Vector Quantized Models with One Linear",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "线性层修复VQ表示崩溃，但固定码本限制表达能力",
+ "innovations": [
+  "识别表示崩溃的根本原因是码本优化不连续",
+  "提出SimVQ方法通过可学习的线性变换层重新参数化码本向量",
+  "冻结码本仅优化线性变换矩阵，实现整个码本的联合优化"
+ ],
+ "method_framework": "SimVQ通过线性变换矩阵W重新参数化码本C，将码本表示为CW，仅优化W而保持C固定，实现整个码本空间的联合优化，防止表示崩溃。",
+ "experiment_framework": "ImageNet和LibriTTS数据集，对比VQGAN-FC、FSQ、LFQ和VQGAN-LC-CLIP等基线，使用rFID、LPIPS、PSNR和SSIM等指标评估重建性能。",
+ "takeaways": [
+  "优化整个潜在空间而非单个码本向量是解决表示崩溃的关键",
+  "简单线性变换方法能有效提高码本利用率而不牺牲模型容量"
+ ],
+ "weaknesses": [
+  "仅优化线性变换矩阵W而固定码本C可能限制了模型的表达能力",
+  "实验主要集中在图像和音频重建任务，缺乏对多模态大模型推理的直接验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "解决VQ模型表示崩溃问题，属于可靠性主线方法设计研习轴",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Contrastive Visual Data Augmentation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Contrastive Visual Data Augmentation.pdf",
+ "title": "Contrastive Visual Data Augmentation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "针对模型弱点生成对比增强数据，提升新颖概念识别",
+ "innovations": [
+  "提出对比视觉数据增强(CoDA)策略：识别LMM易混淆的视觉相似概念对，提取关键区分特征后定向生成合成数据",
+  "设计自动过滤机制保证提取特征和生成图像的质量，经人工标注验证",
+  "收集NovelSpecies基准数据集，包含2024年新发现的动物物种，确保LMM未见过"
+ ],
+ "method_framework": "CoDA流程：(1)识别LMM在哪些概念上犯错——特别是新颖概念和易混淆的视觉相似概念；(2)提取目标概念与误识别概念之间的关键视觉和文本区分特征；(3)用多模态生成模型（扩散模型）基于这些对比特征生成定向增强图像；(4)自动过滤低质量特征和图像；(5)用增强后的合成数据更新LMM（如LLaVA-1.6的1-shot更新）。核心思想是针对模型具体弱点精准生成训练数据。",
+ "experiment_framework": "三个数据集：NovelSpecies（新发现物种）、SUN（场景识别）、iNaturalist（低资源物种）；基线为SOTA视觉数据增强策略；模型为LLaVA-1.6 1-shot更新；指标为准确率绝对提升；人工标注验证增强数据质量。",
+ "takeaways": [
+  "CoDA在三个数据集上分别提升12.3%、5.1%、6.0%准确率，显著优于现有视觉数据增强方法",
+  "针对模型易混淆概念的对比式数据增强比通用增强更有效",
+  "新发现物种(NovelSpecies)是测试LMM泛化能力的有价值基准"
+ ],
+ "weaknesses": [
+  "依赖先知道模型在哪些概念上犯错，对于未被识别为弱点的概念无法主动增强",
+  "合成数据的分布偏移问题——生成图像与真实图像的差异可能影响实际部署效果",
+  "仅在1-shot更新设置下验证，全参数微调下的效果未报告"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

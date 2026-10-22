@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/StableDepth_Scene-Consistent and Scale-Invariant Monocular Depth.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/StableDepth_Scene-Consistent and Scale-Invariant Monocular Depth.pdf",
+ "title": "StableDepth Scene-Consistent and Scale-Invariant Monocular Depth",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "双解码器架构结合视频扩散模型实现单目深度估计",
+ "innovations": [
+  "场景一致且尺度不变(SCSI)深度估计新范式",
+  "利用视频扩散模型生成伪标签的半监督学习策略",
+  "双解码器架构解耦精度与一致性学习"
+ ],
+ "method_framework": "共享编码器与双解码器架构，一个分支处理标记数据获取度量精度，另一个分支对齐未标记视频帧到伪标签，实现场景级一致性",
+ "experiment_framework": "Sintel、Bonn、ScanNet v2、KITTI数据集，与DepthCrafter、Metric3D、ZoeDepth对比，使用AbsRel、δ1和MTD指标",
+ "takeaways": [
+  "双解码器架构能有效解耦深度精度与时间一致性学习",
+  "视频扩散模型作为一致性知识源而非直接深度估计器可提升效率"
+ ],
+ "weaknesses": [
+  "依赖预训练视频扩散模型生成伪标签",
+  "在远距离物体深度预测上仍有局限性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "单目深度估计与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

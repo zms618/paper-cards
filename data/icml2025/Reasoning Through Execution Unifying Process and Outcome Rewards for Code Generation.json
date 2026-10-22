@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Reasoning Through Execution Unifying Process and Outcome Rewards for Code Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Reasoning Through Execution Unifying Process and Outcome Rewards for Code Generation.pdf",
+ "title": "Reasoning Through Execution: Unifying Process and Outcome Rewards for Code Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "ORPS用可执行验证统一过程与结果奖励，提升代码生成正确性与效率。",
+ "innovations": [
+  "用可执行验证同时提供过程信号与结果信号，规避学习型奖励模型的训练成本与奖励错位问题",
+  "树状结构化搜索生成策略性备选解，剖析执行指标（如运行时反馈）作为过程监督依据",
+  "自批判机制将运行时反馈与推理过程结合，让结果反射反过来精炼过程奖励，帮助跳出局部最优"
+ ],
+ "method_framework": "不再用独立 PRM 或仅靠测试通过/失败；ORPS 在搜索树中为候选代码做执行并剖析运行时/失败用例等指标，据此对推理步骤打分（过程奖励），同时用可执行测试结果做结果监督；二者经自批判相互精炼，引导策略模型生成更正确高效的代码，全程无需训练额外奖励模型。",
+ "experiment_framework": "在 5 个基座模型与 3 个代码基准上评测；对比仅结果监督(SFT)与仅过程监督(PRM)；指标为通过率(正确性)与代码效率；报告 ORPS 一致性提升，正确性 +26.9%、代码效率 +42.2%。",
+ "takeaways": [
+  "可执行结果可作为精炼过程奖励的监督信号，二者不必割裂",
+  "树状搜索+执行剖析能有效帮助 LLM 跳出代码生成的局部最优",
+  "免训练奖励模型即可获得过程与结果的双重监督，工程上高效"
+ ],
+ "weaknesses": [
+  "依赖可执行环境与测试用例，对无明确校验器的开放推理任务不直接适用",
+  "树状搜索与多次执行带来较高测试时成本",
+  "运行时指标作为过程奖励的权重/打分规则仍偏启发式，缺乏理论依据"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

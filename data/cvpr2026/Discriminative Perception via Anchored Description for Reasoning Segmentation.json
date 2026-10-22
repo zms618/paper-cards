@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Discriminative Perception via Anchored Description for Reasoning Segmentation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Discriminative Perception via Anchored Description for Reasoning Segmentation.pdf",
+ "title": "Discriminative Perception via Anchored Description for Reasoning Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "DPAD添加判别奖励机制提升分割效率，但依赖CLIP且泛化验证不足",
+ "innovations": [
+  "引入判别感知能力，区分目标与上下文",
+  "设计锚定描述生成机制，提供语义判别基础",
+  "开发对比性判别奖励信号，引导模型聚焦目标"
+ ],
+ "method_framework": "DPAD在强化学习框架中引入判别感知奖励，通过生成锚定描述并计算其与ROI和AOI的语义相似度差异，引导模型生成更聚焦、高效的推理链",
+ "experiment_framework": "在ReasonSeg、RefCOCO等基准测试，使用gIoU/cIoU评估分割性能，SNR/TSNR评估判别能力，对比Seg-Zero等基线",
+ "takeaways": [
+  "判别感知奖励机制可有效提升模型聚焦能力",
+  "锚定描述同时提供可解释性",
+  "推理链长度显著减少42%提升效率"
+ ],
+ "weaknesses": [
+  "依赖预训练CLIP模型计算判别奖励",
+  "仅在3,000样本上训练，泛化能力需进一步验证",
+  "未探索不同规模MLLM的适用性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "判别感知机制与可靠性主线部分交织，但泛化验证不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

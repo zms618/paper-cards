@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DiMa_Understanding the Hardness of Online Matching Problems via Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DiMa_Understanding the Hardness of Online Matching Problems via Diffusion Models.pdf",
+ "title": "DiMa: Understanding the Hardness of Online Matching Problems via Diffusion Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.4
+ },
+ "one_line": "用扩散模型生成在线匹配难例，强化学习逼近竞争比上界。",
+ "innovations": [
+  "提出 DiMa 统一框架，用 DDPM 建模 OBM 难实例的生成过程（把硬实例生成视为去噪步骤）。",
+  "提出 shortcut policy gradient（SPG）强化学习算法优化难实例。",
+  "先复现文献已知最难实例，再将方法推广到两个经典 OBM 变体，表明可迁移。"
+ ],
+ "method_framework": "把在线匹配问题的“硬度上界/对抗难例”搜索转化为生成式优化：用扩散模型在实例空间中去噪采样，再用 SPG 在该采样分布上沿“降低当前最优在线算法竞争比”的方向优化，从而自动发现能逼近理论上界的对抗实例。",
+ "experiment_framework": "以经典 OBM 及其两个变体为对象；先复现已知最难输入验证有效性，再用竞争比（CR）衡量所生成实例对算法的暴露程度；非视觉/大模型基准，属 AI 增强的组合优化理论研究。",
+ "takeaways": [
+  "扩散+强化学习可自动生成能逼近已知竞争比上界的对抗难实例，复现了人工设计的最难例。",
+  "该范式可从经典 OBM 迁移到多个变体，有一定通用性。",
+  "SPG 相比直接在扩散分布上做策略梯度更高效地找到难例。"
+ ],
+ "weaknesses": [
+  "属“AI 助理论”的探索性工作，能否真正证明新的紧上界仍待理论界确认。",
+  "实验限于 OBM 家族，跨其他在线/组合问题的普适性未验证。",
+  "与可信推理主线（鲁棒性/泛化/不确定性×医学影像/多模态）无关，relevance 低。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

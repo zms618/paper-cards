@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Conformity Score Averaging for Classification.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Conformity Score Averaging for Classification.pdf",
+ "title": "Conformity Score Averaging for Classification",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "加权平均一致性分数函数缩小预测集，但校准集依赖限制泛化",
+ "innovations": [
+  "提出加权平均多个一致性分数函数的框架，权重通过校准集优化",
+  "用VC理论建立有限样本覆盖率保证和oracle不等式",
+  "结合多种数据划分策略增强效率"
+ ],
+ "method_framework": "在split conformal框架下，不同分数函数(如APS、RAPS、ERAPS等)对不同类别有不同效率。本文将多个分数函数线性组合为加权分数，权重在校准集上通过最小化预测集大小同时保证覆盖率来优化。用VC理论分析加权后的有限样本覆盖率，证明oracle不等式(与最优权重的效率差距有界)。",
+ "experiment_framework": "在标准分类benchmark数据集上实验；与单一分数函数(APS、RAPS等)比较；指标为预测集大小(效率)和经验覆盖率。",
+ "takeaways": [
+  "加权平均一致优于单一分数函数，在不牺牲覆盖率的前提下缩小预测集",
+  "理论证明加权方法的效率与oracle权重差距有界",
+  "该方法桥接了conformal prediction和model averaging"
+ ],
+ "weaknesses": [
+  "权重优化在校准集上进行，校准集较小时权重估计不稳定",
+  "实验主要在图像分类benchmark，NLP/医疗分类场景未验证",
+  "权重数量随分数函数数量增加可能过拟合校准集"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

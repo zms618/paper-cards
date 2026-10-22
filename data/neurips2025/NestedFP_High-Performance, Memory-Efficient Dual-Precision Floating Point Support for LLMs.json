@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/NestedFP_High-Performance, Memory-Efficient Dual-Precision Floating Point Support for LLMs.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/NestedFP_High-Performance, Memory-Efficient Dual-Precision Floating Point Support for LLMs.pdf",
+ "title": "NestedFP: High-Performance, Memory-Efficient Dual-Precision Floating Point Support for LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 8,
+  "overall": 6.9
+ },
+ "one_line": "将FP16分解为8位组件实现内存高效LLM推理，但FP16模式仍有性能开销。",
+ "innovations": [
+  "将FP16参数分解为两个8-bit组件，实现内存共享",
+  "设计紧凑数据格式支持高质量FP8和FP16推理",
+  "开发自定义FP16 GEMM内核实现运行时重构"
+ ],
+ "method_framework": "NestedFP将FP16权重分解为上8位和下8位组件，FP8模式仅使用上8位，FP16模式通过自定义GEMM内核实时重构原始16位值，实现无内存开销的双精度推理。",
+ "experiment_framework": "在多个LLM模型(Llama 3.1, Mistral等)和任务(Minerva Math, MMLU Pro, BBH)上评估，与CUTLASS基线和vLLM框架对比，测量精度和吞吐量。",
+ "takeaways": [
+  "利用FP16中低熵指数位特性设计高效数据格式",
+  "三阶段流水线隐藏重构开销",
+  "针对异常层保留FP16计算确保质量"
+ ],
+ "weaknesses": [
+  "对权重范围超过±1.75的层需保留FP16计算，影响部分收益",
+  "FP16模式仍有约6%的性能开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

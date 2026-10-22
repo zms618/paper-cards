@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/LaRender_Training-Free Occlusion Control in Generation via Latent Rendering.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/LaRender_Training-Free Occlusion Control in Generation via Latent Rendering.pdf",
+ "title": "LaRender Training-Free Occlusion Control in Generation via Latent Rendering",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "替换注意力层实现潜在空间渲染，控制遮挡关系",
+ "innovations": [
+  "提出潜在空间渲染机制解决遮挡控制问题",
+  "无需重新训练即可实现精确遮挡关系控制",
+  "通过语义密度控制实现半透明效果等高级视觉效果"
+ ],
+ "method_framework": "替换扩散模型中的交叉注意力层，通过拓扑排序排列对象，利用体积渲染原理在潜在空间中渲染对象特征，确保物理正确的遮挡关系。",
+ "experiment_framework": "T2I-CompBench++和RealOcc数据集，对比SDXL、FLUX、MIGC和3DIS，使用UniDet指标和用户研究评估遮挡准确性，CLIP分数评估生成质量。",
+ "takeaways": [
+  "将3D渲染原理应用于潜在空间解决遮挡问题",
+  "密度调度策略对保持对象概念完整性至关重要"
+ ],
+ "weaknesses": [
+  "对布局准确性敏感，不准确的边界框会导致错误遮挡",
+  "有时会出现概念混合或丢失问题"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅解决生成中的遮挡控制问题，与可靠性主线无实质交集",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

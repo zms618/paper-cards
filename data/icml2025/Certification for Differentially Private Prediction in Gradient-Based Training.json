@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Certification for Differentially Private Prediction in Gradient-Based Training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Certification for Differentially Private Prediction in Gradient-Based Training.pdf",
+ "title": "Certification for Differentially Private Prediction in Gradient-Based Training",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "凸松弛与边界传播计算数据集特定灵敏度，提升DP预测效用",
+ "innovations": [
+  "提出数据集特定的预测灵敏度上界计算法，替代保守的全局灵敏度",
+  "结合凸松弛(convex relaxation)与边界传播(bound propagation)逐层估计单个样本对模型输出的影响",
+  "与平滑灵敏度机制结合重构私有预测的隐私分析，在医学影像分类与NLP真实数据上界紧数个量级"
+ ],
+ "method_framework": "私有预测通过向非私有模型输出加噪声实现DP。作者对梯度训练得到的网络做凸松弛，将每层激活包络以可传播的上/下界表示，逐层前向传播得到某个样本被纳入/剔除时输出变化的紧上界(数据集特定灵敏度)，再将该界代入平滑灵敏度机制标定加噪量，从而在相同隐私预算下大幅提升效用。",
+ "experiment_framework": "在真实世界的医学影像分类与自然语言处理数据集上，将所给灵敏度界与全局灵敏度基线对比，报告效用-隐私权衡(如不同epsilon下的精度/误差)与界的紧致度(改善量级)。",
+ "takeaways": [
+  "全局灵敏度对深度网络过于保守，数据集特定的输出灵敏度可紧数个量级",
+  "凸松弛+边界传播可作为估计单个样本对预测输出影响的可微化认证工具",
+  "在医学影像分类与NLP上，该方法显著改善私有预测的效用-隐私权衡，而无需DP-SGD式重训练"
+ ],
+ "weaknesses": [
+  "边界传播是一种凸松弛近似，界的紧致度依赖网络规模与激活类型，对超大模型的可扩展性与计算成本未充分展开",
+  "主要证明界更紧与权衡改善，未端到端对比DP-SGD私有训练在同一医学任务上的最终临床级指标",
+  "前9页以框架与动机为主，具体界传播实现与完整实验表需结合全文判断"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

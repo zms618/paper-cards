@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Zero-shot Detection of AI-Generated via RAW-RGB Alignment.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Zero-shot Detection of AI-Generated via RAW-RGB Alignment.pdf",
+ "title": "Zero-shot Detection of AI-Generated Image via RAW-RGB Alignment",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.9
+ },
+ "one_line": "重定义合成图物理来源，用RAW-RGB对齐零样本检测AI生成图像",
+ "innovations": [
+  "任务重定义：提出'合成图像=仅存在于数字空间、无物理世界前身'的定义，物理重映射(print+scan/screen+shot)后的图像按定义转为'真实'，解释了现有检测器误判根源并重新划定检测边界",
+  "RAW作为物理-数字桥：揭示RGB→RAW逆重建误差在真实/合成图间的可分离性(合成图重建误差显著小)，把'光源→RAW→ISP→RGB'物理管线编码成可检验线索",
+  "alignment trace：共享RAW-RGB联合特征空间，仅用真实RAW-RGB对自监督训练(GenAI先验无关)，联合优化RGB像素/RAW拓扑/RAW像素，配Stratified Entropy Attention(SEA)"
+ ],
+ "method_framework": "真实RAW→合成RGB对自监督构造训练集→RGB-RAW逆ISP重建(ReRAW等)提取重建误差→alignment trace在联合RAW-RGB空间建模(拓扑图+SEA注意力+三重像素监督)→测试图打分判定物理来源；可加先验微调做跨域few-shot。",
+ "experiment_framework": "2000张真实/合成图重建误差统计验证观测；零样本检测对比AP(0.987 vs 监督SOTA Effort 0.953)；物理重映射(print+scan等)专项评测；附加先验的跨域few-shot检测；多种GenAI类型/模型覆盖。",
+ "takeaways": [
+  "'先定义再检测'：把'什么算合成'讲清楚(物理来源判据)让检测边界可辩护，任务定义的严谨性直接决定评测的可解释性——任何可信AI评测先定口径",
+  "'物理底层信号是可迁移先验'：RAW/光源物理不随GenAI演进变化，用它而非模型特定痕迹做检测，天然抗新模型漂移——'物理不变量'思路对深度伪造/深伪音频通用",
+  "'自监督造训练对'：从纯RAW数据自动生成RAW-RGB对免标注，数据生成管线(拓扑+熵注意力)可与下游检测解耦复用"
+ ],
+ "weaknesses": [
+  "定义依赖'物理来源可验证'假设：纯数字绘制/无RAW来源的'数字艺术'是否一律判合成，边界情形(RAW后处理/非相机传感器)未讨论",
+  "0.987 AP 依赖RGB→RAW逆ISP重建质量(ReRAW等)，新ISP/新相机硬件的域偏移对重建误差可分性的影响未量化；不同RAW格式(拜耳/四合)鲁棒性未测",
+  "观测II仅2000图统计，未见置信区间/方差；few-shot跨域具体增益数值与对齐trace各组件(拓扑/SEA/三重监督)的消融定量缺失"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "物理来源判据作为可靠性主线，可迁移抗模型漂移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

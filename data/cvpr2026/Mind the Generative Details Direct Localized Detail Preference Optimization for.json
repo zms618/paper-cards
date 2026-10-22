@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Mind the Generative Details Direct Localized Detail Preference Optimization for.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Mind the Generative Details Direct Localized Detail Preference Optimization for.pdf",
+ "title": "Mind the Generative Details Direct Localized Detail Preference Optimization for",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "局部偏好优化提升视频生成，但依赖高质量数据且全局一致性存疑",
+ "innovations": [
+  "基于真实视频构建局部偏好对，避免多样本生成和标注",
+  "引入区域感知DPO损失，实现细粒度空间-时间细节优化",
+  "设计时空局部损坏方法，保持全局语义同时生成高质量负样本"
+ ],
+ "method_framework": "LocalDPO使用高质量真实视频作为正样本，通过随机Bézier曲线生成时空掩码，利用冻结的VDM对掩码区域进行局部损坏生成负样本，结合区域感知DPO损失进行优化",
+ "experiment_framework": "在Wan2.1和CogVideoX数据集上评估，对比基线、SFT、Vanilla DPO和DenseDPO，使用VBench和VideoJAM指标，包括视觉质量、人类偏好和视频对齐",
+ "takeaways": [
+  "局部偏好优化可有效提升视频生成质量，特别是细节表现",
+  "区域感知损失函数能更精确地捕捉人类对局部质量的偏好"
+ ],
+ "weaknesses": [
+  "方法依赖高质量真实视频，可能限制在数据稀缺场景的应用",
+  "局部优化可能导致全局一致性下降，需通过混合损失函数平衡"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成细节优化，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

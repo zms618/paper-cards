@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Prior-Free Tabular Test-Time Adaptation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Prior-Free Tabular Test-Time Adaptation.pdf",
+ "title": "Prior-Free Tabular Test-Time Adaptation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.3
+ },
+ "one_line": "无先验表格TTA方法，三模块应对标签与特征偏移，但小样本依赖与权重平衡存疑",
+ "innovations": [
+  "提出prior-free表格TTA新设定，不访问源域数据也不依赖任何先验知识",
+  "设计类别先验估计模块，估计源-目标类别先验以校准预测，消除对源类先验的依赖",
+  "提出鲁棒特征学习和代表子空间探索模块，同时应对特征偏移和冗余特征问题"
+ ],
+ "method_framework": "PFT3A包含三个协同模块：(1)类别先验估计——从无标签目标数据估计源-目标类别先验以校准预测，缓解标签偏移；(2)鲁棒特征学习——对齐类源和类目标特征分布，缓解特征偏移；(3)代表子空间探索——将特征投影到子空间消除冗余，增强特征对齐。",
+ "experiment_framework": "在多个表格TTA基准数据集上验证，对比现有表格TTA方法和视觉TTA方法直接迁移的效果。指标为分类准确率。",
+ "takeaways": [
+  "现有表格TTA方法依赖源域访问或先验，实际场景中往往不可得",
+  "标签偏移和特征偏移需要同时应对，单一模块不足以解决问题",
+  "代表子空间投影可有效消除冗余特征，提升特征对齐质量"
+ ],
+ "weaknesses": [
+  "类别先验估计的精度依赖目标数据量，小样本场景可能不准确",
+  "三个模块的联合优化目标可能需要精细的权重平衡",
+  "仅在表格数据上验证，未探索与其他模态的结合"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "表格TTA解决标签与特征偏移，属于可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

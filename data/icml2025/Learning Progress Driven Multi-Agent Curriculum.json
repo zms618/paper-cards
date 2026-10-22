@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning Progress Driven Multi-Agent Curriculum.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning Progress Driven Multi-Agent Curriculum.pdf",
+ "title": "Learning Progress Driven Multi-Agent Curriculum",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.75
+ },
+ "one_line": "用TD误差替代回报的多智能体课程，缓解信用分配问题",
+ "innovations": [
+  "指出现有基于奖励的自动课程在MARL中的两个缺陷：期望回合回报方差高、智能体增多反而回报更高导致信用分配恶化",
+  "提出基于TD误差的学习进度度量替代绝对回报，作为课程控制信号",
+  "维护智能体数量的分布，从初始上下文分布逐步过渡到目标任务分布，实现自动课程"
+ ],
+ "method_framework": "将智能体数量作为课程变量；用TD误差(而非回合回报)衡量学习进度，聚合回报降低方差；维护智能体数量的上下文分布，根据学习进度动态调整分布：在进度高的区间增加采样，在进度低的区间减少；从少智能体到多智能体(或反向)自动过渡，无需手动定义课程。",
+ "experiment_framework": "在三个稀疏奖励MARL基准(MPE Simple-Spread等)上评估；对比FewToMore、VACL等手动/自动课程方法；指标为最终任务胜率、学习效率、课程过渡平滑性。",
+ "takeaways": [
+  "TD误差作为学习进度信号比回合回报更稳定，受智能体数量变化的影响更小",
+  "多智能体课程不一定是从少到多，某些任务中多智能体反而更简单，需自动探索",
+  "基于进度的课程在稀疏奖励MARL中显著优于手动线性课程"
+ ],
+ "weaknesses": [
+  "TD误差的计算依赖价值函数估计的质量，训练早期价值估计不准时进度信号可能不可靠",
+  "仅在智能体数量作为课程变量的场景验证，其他课程维度(环境参数等)的适用性未知",
+  "分布维护机制引入了额外的超参数(分布更新步长等)"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

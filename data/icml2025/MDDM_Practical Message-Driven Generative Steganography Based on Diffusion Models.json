@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MDDM_Practical Message-Driven Generative Steganography Based on Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MDDM_Practical Message-Driven Generative Steganography Based on Diffusion Models.pdf",
+ "title": "MDDM: Practical Message-Driven Generative Image Steganography Based on Diffusion Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.25
+ },
+ "one_line": "扩散模型隐写框架，条件编码消息，鲁棒性一般",
+ "innovations": [
+  "提出消息驱动的扩散模型隐写框架，将秘密信息编码为扩散过程中的条件变量",
+  "利用DDIM反演实现精确的信息提取，提升提取准确率",
+  "在多种攻击（JPEG压缩、缩放等）下保持鲁棒性，具备实用性"
+ ],
+ "method_framework": "MDDM将秘密消息编码为扩散模型的条件输入，在图像生成过程中嵌入信息。具体流程：(1)将秘密消息映射为潜空间中的条件向量；(2)在扩散采样过程中，将对应消息位置的潜变量替换为编码值；(3)使用DDIM反演从生成图像中提取潜变量，解码恢复秘密消息。非消息位置的潜变量从截断正态分布中采样。",
+ "experiment_framework": "基于预训练扩散模型（DDIM、EDICT）进行无条件和条件图像生成实验；评估提取准确率；测试多种攻击下的鲁棒性（PNG无损、JPEG压缩、缩放等）；对比GAN-based和flow-based隐写方法。",
+ "takeaways": [
+  "MDDM在提取准确率上优于此前的扩散模型隐写方法",
+  "在JPEG压缩、缩放等常见攻击下仍保持较高的提取准确率",
+  "生成图像质量和多样性优于GAN-based隐写方案"
+ ],
+ "weaknesses": [
+  "与主线研究方向（可靠性×医学影像/多模态大模型推理）关联弱，属于信息安全/隐写术领域",
+  "隐写容量和图像质量的trade-off未充分讨论",
+  "未与最新的基于大语言模型的隐写方法对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

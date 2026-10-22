@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Language Ranker A Lightweight Ranking framework for LLM Decoding.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Language Ranker A Lightweight Ranking framework for LLM Decoding.pdf",
+ "title": "Language Ranker: A Lightweight Ranking framework for LLM Decoding",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "将LLM解码视为排序，提出轻量级排序框架",
+ "innovations": [
+  "将LLM解码过程重新概念化为推荐系统中的排序阶段",
+  "设计轻量级排序器，仅需<0.5M参数即可达到大规模奖励模型性能",
+  "提出共享特征工程思想，避免重复计算",
+  "支持个性化适配和边缘部署"
+ ],
+ "method_framework": "基于基础模型提取指令和候选响应特征，使用轻量级排序器(listwise或pointwise)重新排序候选响应，选择最佳输出",
+ "experiment_framework": "在数学(MATH)、编程(MBPP)和函数调用(xLAM)任务上评估，与奖励模型和传统解码策略对比，使用准确率作为指标",
+ "takeaways": [
+  "特征工程共享思想可显著减少计算开销",
+  "轻量级排序器在CPU上可高效训练和推理，支持个性化部署",
+  "排序器性能随候选数量增加而提升，展示Ranker Scaling Law"
+ ],
+ "weaknesses": [
+  "未充分探讨排序器在不同任务间的泛化能力",
+  "未分析排序器在不同规模模型上的扩展性",
+  "未与其他解码优化方法(如动态采样)结合评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

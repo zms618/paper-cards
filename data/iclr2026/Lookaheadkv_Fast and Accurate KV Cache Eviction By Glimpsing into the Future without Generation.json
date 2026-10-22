@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Lookaheadkv_Fast and Accurate KV Cache Eviction By Glimpsing into the Future without Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Lookaheadkv_Fast and Accurate KV Cache Eviction By Glimpsing into the Future without Generation.pdf",
+ "title": "Lookaheadkv: Fast and Accurate KV Cache Eviction By Glimpsing into the Future without Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "轻量KV缓存淘汰，通过预测未来重要性提升长上下文处理效率",
+ "innovations": [
+  "可前瞻令牌与选择性激活LoRA模块",
+  "无需显式生成草稿即可预测未来重要性",
+  "参数高效设计，引入<0.5%额外参数"
+ ],
+ "method_framework": "通过可学习的前瞻令牌和特殊LoRA模块预测真实响应的重要性分数，避免显式生成草稿响应，实现高效KV缓存淘汰。",
+ "experiment_framework": "LongBench/RULER/LongProc/MT-Bench多基准测试，对比SnapKV/PyramidKV/StreamingLLM/LAQ/SpecKV等基线，评估不同模型规模和上下文长度下的性能与延迟。",
+ "takeaways": [
+  "轻量级模块设计实现显著性能提升",
+  "可选择性启用模块增强适用性",
+  "低预算设置下表现尤为突出"
+ ],
+ "weaknesses": [
+  "仅在前缀阶段使用，解码阶段无优化",
+  "训练数据生成使用贪心解码，可能限制泛化性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "KV缓存优化属于系统层，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

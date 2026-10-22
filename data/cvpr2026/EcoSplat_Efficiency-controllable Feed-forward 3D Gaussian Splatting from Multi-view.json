@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/EcoSplat_Efficiency-controllable Feed-forward 3D Gaussian Splatting from Multi-view.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/EcoSplat_Efficiency-controllable Feed-forward 3D Gaussian Splatting from Multi-view.pdf",
+ "title": "EcoSplat Efficiency-controllable Feed-forward 3D Gaussian Splatting from Multi-view",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "两阶段训练实现可控效率的3D高斯溅射，但复杂度与泛化性存疑",
+ "innovations": [
+  "首个支持效率可控的前馈3D高斯溅射框架",
+  "两阶段训练过程：像素对齐高斯训练和重要性感知高斯微调",
+  "自适应视图重要性分配策略，优化资源分配"
+ ],
+ "method_framework": "EcoSplat采用两阶段训练：第一阶段(PGT)预测像素对齐3D高斯；第二阶段(IGF)基于目标基元数量K自适应调整参数，通过重要性感知不透明度损失和渐进式高斯压缩学习实现可控效率。",
+ "experiment_framework": "在RE10K和ACID数据集上评估，使用PSNR、SSIM和LPIPS指标，比较不同基元数量下的性能，并与GGN、AnySplat等基线方法对比。",
+ "takeaways": [
+  "重要性感知的基元选择策略可显著提升渲染质量",
+  "渐进式学习策略确保模型对不同目标基元数量的鲁棒性",
+  "视图重要性自适应分配优化资源利用"
+ ],
+ "weaknesses": [
+  "方法复杂度较高，包含多个组件和训练阶段",
+  "仅在前馈场景下有效，无法替代需要优化的传统3DGS方法",
+  "实验主要在特定数据集上进行，泛化能力需进一步验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D重建技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Hierarchical Divide-and-Conquer Grouping for Classification Adaptation of Pre-Trained Models.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Hierarchical Divide-and-Conquer Grouping for Classification Adaptation of Pre-Trained Models.pdf",
+ "title": "Hierarchical Divide-and-Conquer Grouping for Classification Adaptation of Pre-Trained Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "分层分组框架缓解预训练模型分类偏差，依赖外部模型",
+ "innovations": [
+  "分层分组消除基类依赖",
+  "LLM-扩散模型协同合成高质量新类样本",
+  "多模态距离度量实现自动类别分离"
+ ],
+ "method_framework": "HDG框架通过两级分组策略：1)分离基类/新类子空间；2)递归K-means聚类解决域内混淆。每个子空间训练专用分类器，冻结CLIP编码器仅微调线性层。",
+ "experiment_framework": "在AwA2、CUB、SUN三个GZSC基准测试，对比SOTA方法，使用调和平均数H作为评估指标。",
+ "takeaways": [
+  "多模态距离度量可有效分离不同分布类别",
+  "递归聚类解决域内混淆问题",
+  "LLM生成+语义过滤提升新类样本质量"
+ ],
+ "weaknesses": [
+  "过度分组(Depth=3)导致性能下降",
+  "依赖GPT-4和Stable Diffusion等外部模型",
+  "计算复杂度随分组深度增加"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "分类适应方法有可靠性价值但依赖外部模型",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

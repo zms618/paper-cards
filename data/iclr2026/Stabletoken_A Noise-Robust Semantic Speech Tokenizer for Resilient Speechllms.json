@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Stabletoken_A Noise-Robust Semantic Speech Tokenizer for Resilient Speechllms.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Stabletoken_A Noise-Robust Semantic Speech Tokenizer for Resilient Speechllms.pdf",
+ "title": "StableToken: A Noise-Robust Semantic Speech Tokenizer for Resilient SpeechLLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 6.7
+ },
+ "one_line": "揭示语义分词器在高信噪比下的token漂移问题，提出多分支共识机制提升鲁棒性。",
+ "innovations": [
+  "揭示语义语音分词器在无语义扰动下(高SNR仍可懂)token序列剧烈漂移的脆弱性，并归因于单路量化架构与不关心中间token稳定性的远距离训练信号",
+  "提出多分支并行处理音频、再以比特级投票合并成单一稳定token序列的共识驱动机制",
+  "将token稳定性直接转化为下游收益，系统性提升SpeechLLM在多任务上的噪声鲁棒性"
+ ],
+ "method_framework": "用多分支结构并行处理音频得到多路表示，再通过强比特投票机制融合为一条稳定token序列，以共识降低对声学扰动的敏感；针对单路量化脆弱与训练信号不约束中间token稳定性两个根因做针对性设计，从源头保证离散输出稳定。",
+ "experiment_framework": "在多种噪声条件下以单位编辑距离(UED)度量token稳定性，取得新SOTA；并把StableToken接入SpeechLLM，在多个语音任务上对比既有语义分词器，报告噪声下鲁棒性提升。",
+ "takeaways": [
+  "语义分词器对噪声的脆弱是SpeechLLM鲁棒性差的被忽视根因之一",
+  "多分支共识+比特投票能在不牺牲语义信息的前提下大幅降低token序列的噪声敏感(UED显著下降)",
+  "分词器层的稳定性可直接转化为下游SpeechLLM任务鲁棒性的提升"
+ ],
+ "weaknesses": [
+  "多分支并行引入额外计算/显存开销，推理效率与稳定性的权衡未充分量化",
+  "鲁棒性评测主要在人工加噪条件下，真实远场/混响/信道失真场景覆盖有限",
+  "比特投票机制对分支间多样性的依赖、分支数与稳定性的缩放规律分析较浅"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "噪声鲁棒性SpeechLLM分词器，直接提升可靠性主线落地域表现",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

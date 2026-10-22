@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Re2_Unlocking LLM Reasoning via Reinforcement Learning with Re-Solving.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Re2_Unlocking LLM Reasoning via Reinforcement Learning with Re-Solving.pdf",
+ "title": "Re2: Unlocking LLM Reasoning via Reinforcement Learning with Re-Solving",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "纯RL训练LLM放弃低效推理路径并重解，缓解过度思考。",
+ "innovations": [
+  "指出RLVR模型仍会生成多余低质量CoT步，当初始推理方向不佳时即使生成数倍token也难达正确答案；据此提出让模型学会在必要时放弃并重解。",
+  "Re2采用纯强化学习、无需任何预训练SFT，成功将原生模型中罕见(0.5%)的重做行为放大到30%以上。",
+  "在同等训练算力预算下优于标准RLVR(DAPO)，并随采样数增加展现更好的测试时扩展收益。"
+ ],
+ "method_framework": "在可验证奖励RLVR框架中，设计奖励使模型学会识别当前推理路径低效/方向错误时主动中断并重开求解，而非一味在错误路径上追加token或强行提交答案；全程纯RL启动，不依赖SFT热身。",
+ "experiment_framework": "在AIME25等数学推理上对比DAPO，在相同生成/训练token预算下报告train-time scaling精度，并报告随采样数增加的test-time scaling(多数投票)收益。",
+ "takeaways": [
+  "学会放弃并重解比一味延长CoT更能在有限算力下提升推理精度，可缓解过度思考。",
+  "重做行为可被纯RL从零激发并大幅放大，无需SFT预热即可起效。"
+ ],
+ "weaknesses": [
+  "重解会增加平均推理token开销，'放弃-重解'与token效率间的净权衡未在正文充分量化。",
+  "前9页只见AIME25单任务曲线，缺多任务完整表与何时触发重解的触发机制消融。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "RL训练LLM重解缓解过度思考，但未触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

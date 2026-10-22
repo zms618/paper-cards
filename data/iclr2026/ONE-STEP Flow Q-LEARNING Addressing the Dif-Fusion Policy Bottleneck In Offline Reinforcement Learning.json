@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/ONE-STEP Flow Q-LEARNING Addressing the Dif-Fusion Policy Bottleneck In Offline Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/ONE-STEP Flow Q-LEARNING Addressing the Dif-Fusion Policy Bottleneck In Offline Reinforcement Learning.pdf",
+ "title": "One-Step Flow Q-Learning: Addressing the Diffusion Policy Bottleneck in Offline Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "Flow matching替代扩散Q-learning实现单步动作生成，加速且性能提升",
+ "innovations": [
+  "指出现有 DQL 加速(单步化)依赖辅助模块或策略蒸馏，牺牲简洁或性能",
+  "将 DQL 策略重写进 flow matching 范式，但学习平均速度场直接支持精确单步动作生成",
+  "去掉多步去噪与 BPTT 更新，单步即显著快于多步 DQL 且性能大幅反超"
+ ],
+ "method_framework": "把 DQL 的 DDPM 扩散策略换成 flow matching；不学习逐时间步速度而学习平均速度场，使其可在单步内从噪声/初始状态映射到动作；训练与推理均无需多步去噪/随时间反向传播，从而快且稳。",
+ "experiment_framework": "D4RL benchmark(MuJoCo 等)；对比 DQL、FQL、IDQL、Diffuser 等；报告归一化性能与决策频率(Hz)，OFQL 单步且达 SOTA。",
+ "takeaways": [
+  "扩散策略的多步去噪是 DQL 慢与脆弱的瓶颈",
+  "flow matching 下学习平均速度场可在单步内生成高质量动作",
+  "单步策略无需蒸馏即可同时兼顾速度与性能"
+ ],
+ "weaknesses": [
+  "验证限于 D4RL/MuJoCo 连续控制，未扩展到 LLM/高维决策",
+  "平均速度场假设动作分布可被单步准确映射，强多峰动作分布上的精度存疑",
+  "偏离可靠性/医学影像/多模态推理主线，相关性低"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "离线强化学习与可靠性主线无实质交集",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

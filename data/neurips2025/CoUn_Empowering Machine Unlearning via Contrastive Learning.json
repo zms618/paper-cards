@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/CoUn_Empowering Machine Unlearning via Contrastive Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/CoUn_Empowering Machine Unlearning via Contrastive Learning.pdf",
+ "title": "CoUn: Empowering Machine Unlearning via Contrastive Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "对比学习调整表示空间实现机器遗忘，计算成本高且适用场景有限",
+ "innovations": [
+  "利用对比学习调整保留数据表示，间接影响遗忘数据表示",
+  "结合对比学习和监督学习平衡遗忘质量和模型效用",
+  "理论分析证明CoUn能提高遗忘数据误分类率同时保持保留数据低误分类率"
+ ],
+ "method_framework": "CoUn框架包含两个关键组件：对比学习模块拉近同一样本不同视图表示，推远不同样本表示；监督学习模块保持保留数据簇分离，通过加权损失函数L = LCE + λLCL实现。",
+ "experiment_framework": "在CIFAR-10/100和TinyImageNet数据集上评估，使用ResNet-18、VGG-16和ViT架构，比较Retrain、FT、NegGrad+、ℓ1-sparse、SalUn和NoT基线，指标包括保留准确率、遗忘准确率、测试准确率和成员推理攻击成功率。",
+ "takeaways": [
+  "利用语义相似性进行表示空间调整是机器遗忘的有效方向",
+  "对比学习可以间接影响未直接处理的样本表示",
+  "理论分析对理解机器遗忘机制有重要价值"
+ ],
+ "weaknesses": [
+  "计算成本较高，比基线方法需要更多FLOPs",
+  "仅适用于需要访问保留数据的场景，不适用于联邦学习等客户端离开后的遗忘场景"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

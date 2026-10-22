@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/DUAL-SOLVER A Generalized ODE Solver for Diffusion Models with Dual Prediction.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/DUAL-SOLVER A Generalized ODE Solver for Diffusion Models with Dual Prediction.pdf",
+ "title": "DUAL-SOLVER: A Generalized ODE Solver for Diffusion Models with Dual Prediction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "双预测ODE求解器提升扩散模型低NFE采样质量，但参数量大且高NFE表现不稳定。",
+ "innovations": [
+  "双预测方案统一噪声、速度和数据预测",
+  "对数-线性域变换参数τ",
+  "分类目标函数替代回归方法"
+ ],
+ "method_framework": "提出双预测ODE求解器，通过γ参数插值预测类型，τ参数控制积分域变换，κ参数调整残差项，保持二阶局部精度。",
+ "experiment_framework": "ImageNet条件生成(DiT, GM-DiT)和文本到图像生成(SANA, PixArt-α)，FID和CLIP指标，3-9 NFE范围。",
+ "takeaways": [
+  "分类目标函数优于回归方法，尤其低NFE时",
+  "参数在不同NFE间具有可插值性"
+ ],
+ "weaknesses": [
+  "GM-DiT在NFE 7-9上表现不佳",
+  "参数量较大(每步10个参数)"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "扩散模型ODE求解器属可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

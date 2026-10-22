@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Saliuitl Ensemble Salience Guided Recovery of Adversarial Patches against CNNs.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Saliuitl Ensemble Salience Guided Recovery of Adversarial Patches against CNNs.pdf",
+ "title": "Saliuitl Ensemble Salience Guided Recovery of Adversarial Patches against CNNs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "显著性图集合检测对抗补丁，但依赖浅层特征且缺乏复杂度分析",
+ "innovations": [
+  "显式攻击检测阶段，避免对干净图像的不必要处理",
+  "使用显著性阈值集合而非固定阈值检测攻击",
+  "不依赖补丁数量、形状和大小的假设",
+  "基于二值化特征图集合属性的变化进行攻击检测"
+ ],
+ "method_framework": "Saliuitl包含两个阶段：检测阶段使用多个显著性阈值生成二值化特征图集合，提取属性并训练攻击检测器；恢复阶段使用二值化特征图定位补丁区域并进行修复",
+ "experiment_framework": "在INRIA、Pascal VOC(目标检测)和ImageNet、CIFAR-10(图像分类)数据集上评估，对比多种基线方法，使用恢复率、丢失预测率和攻击检测准确率作为指标",
+ "takeaways": [
+  "显式检测机制显著提高计算效率",
+  "基于属性变化而非固定阈值的检测方法增强鲁棒性",
+  "多阈值集合方法适应不同形状和大小的补丁"
+ ],
+ "weaknesses": [
+  "依赖浅层特征图，可能无法捕获高级语义信息",
+  "DBSCAN参数选择可能影响性能",
+  "未讨论计算复杂度与实时性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "对抗攻击检测属于可靠性主线，但依赖浅层特征缺乏深度分析",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

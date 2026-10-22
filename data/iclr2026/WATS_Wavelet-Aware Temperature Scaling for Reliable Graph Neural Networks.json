@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/WATS_Wavelet-Aware Temperature Scaling for Reliable Graph Neural Networks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/WATS_Wavelet-Aware Temperature Scaling for Reliable Graph Neural Networks.pdf",
+ "title": "WATS: Wavelet-Aware Temperature Scaling for Reliable Graph Neural Networks",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.5
+ },
+ "one_line": "图小波特征驱动的节点特定温度缩放，提升GNN置信度校准。",
+ "innovations": [
+  "首次将图小波引入GNN后验校准，利用热核图小波特征捕捉细粒度结构异质性",
+  "为每个节点分配基于其拓扑结构特征的特定温度，而非全局统一温度",
+  "无需访问邻居logits或预测，无需重训练，计算高效，可扩展到不同规模和密度的图"
+ ],
+ "method_framework": "后验校准框架：对每个节点，基于其可调热核图小波特征计算节点特定的温度参数，然后用该温度缩放节点的预测logits。图小波捕捉节点在图拓扑中的多尺度结构角色，不同结构位置的节点需要不同的校准强度。",
+ "experiment_framework": "在9个不同图结构的基准数据集和3种GNN骨干上评估。指标为期望校准误差（ECE）和校准方差。对比基线包括经典温度缩放和图特定校准方法。",
+ "takeaways": [
+  "GNN的置信度校准需要考虑节点在图拓扑中的结构角色，全局统一温度过于粗糙",
+  "图小波的多尺度特性有效捕捉了细粒度结构异质性，校准效果优于基于一跳统计的方法",
+  "后验校准无需重训练即可大幅提升GNN的可靠性，适合安全关键场景部署"
+ ],
+ "weaknesses": [
+  "仅在节点分类任务上验证，链接预测或图级任务的校准适用性未知",
+  "图小波的参数（如热核时间）选择对校准效果的影响未系统消融",
+  "仅评估了ECE等标准校准指标，实际安全关键场景中的决策影响未分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "图小波特征驱动的节点特定温度缩放，提升GNN置信度校准。",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

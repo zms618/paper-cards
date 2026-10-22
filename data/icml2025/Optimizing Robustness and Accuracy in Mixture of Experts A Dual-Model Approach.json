@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Optimizing Robustness and Accuracy in Mixture of Experts A Dual-Model Approach.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Optimizing Robustness and Accuracy in Mixture of Experts A Dual-Model Approach.pdf",
+ "title": "Optimizing Robustness and Accuracy in Mixture of Experts: A Dual-Model Approach",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "分析MoE脆弱性，双模型融合提升鲁棒性-精度权衡",
+ "innovations": [
+  "系统分析MoE各组件对抗脆弱性：专家网络比路由器更易受对抗攻击",
+  "提出双模型策略：标准MoE与鲁棒化MoE线性融合，平滑参数控制鲁棒性-精度权衡",
+  "推导单MoE和双模型的认证鲁棒性界，提出JTDMoE联合训练策略同时提升两者"
+ ],
+ "method_framework": "先分析MoE脆弱性来源；仅对一个额外专家做鲁棒训练(新损失函数)，避免全专家鲁棒化的开销；双模型策略用平滑参数线性组合标准模型和鲁棒模型的logits；JTDMoE联合训练两个模型。",
+ "experiment_framework": "数据：CIFAR-10、TinyImageNet。架构：ResNet18、ViT。基线：标准对抗训练、仅鲁棒化全专家。指标：自然精度、对抗精度(AutoAttack等)、认证鲁棒界。",
+ "takeaways": [
+  "MoE的对抗脆弱性主要来自专家而非路由器，针对性鲁棒化即可大幅提升鲁棒性",
+  "双模型线性融合提供灵活的鲁棒性-精度权衡旋钮",
+  "JTDMoE联合训练使鲁棒和精度同时超过单独训练"
+ ],
+ "weaknesses": [
+  "仅在CIFAR级小数据集验证，ImageNet级大模型MoE的鲁棒性未考察",
+  "双模型推理时计算量约为单模型两倍，实际部署成本需权衡",
+  "仅评估Linf攻击，对其他威胁模型(扰动、patch)的鲁棒性未测试"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

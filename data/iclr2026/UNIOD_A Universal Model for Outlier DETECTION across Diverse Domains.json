@@ -1,0 +1,41 @@
+{
+ "title": "UniOD: A Universal Model for Outlier Detection across Diverse Domains",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.2
+ },
+ "one_line": "通用OD模型用相似度分解+GNN跨域迁移，但依赖历史数据且可扩展性存疑。",
+ "innovations": [
+  "把跨域离群检测统一为单一可迁移模型，避免传统 OD 每个数据集都要重新调超参与训练。",
+  "构造并分解多尺度逐点相似度矩阵以提取跨数据集统一可比较的特征，适配不同特征维度与异构空间。",
+  "用图神经网络同时捕捉数据集内与数据集间信息，把 OD 表述为节点分类，并给出有效性的理论保证。"
+ ],
+ "method_framework": "在多个有标注 OD 数据集上训练一个通用模型：对任意输入数据构造多尺度逐点相似度矩阵并分解出统一特征；GNN 同时建模数据集内样本关系与跨数据集关系，以节点分类方式判离群；训练完成后对新域数据直接推理，无需再选模型/调参/优化。",
+ "experiment_framework": "在 30 个 OD 基准数据集上与 17 个基线(传统 LOF/IsolationForest/OCSVM 及 DeepSVDD 等深度方法)对比，报告检测指标(AUC/PRAUC 等)，并展示免逐数据集调参的便利与精度。",
+ "takeaways": [
+  "现有 OD 方法每个数据集都需繁琐超参调优与重训，跨域泛化差。",
+  "多尺度相似度分解+GNN 节点分类可学到跨域通用的离群判别，训练后零迁移成本。",
+  "理论保证与数值结果一致，通用模型在广泛域上优于数据集专用方法。"
+ ],
+ "weaknesses": [
+  "通用性依赖有标注历史 OD 数据集的覆盖，对全新分布/非表格数据类型的外推性存疑。",
+  "构造多尺度相似度矩阵与 GNN 的计算复杂度随样本数增长，大规模数据可扩展性未充分讨论。",
+  "属通用离群检测，与医学影像/多模态推理等具体落地域结合弱；30×17 完整结果与跨域消融表未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/UNIOD_A Universal Model for Outlier DETECTION across Diverse Domains.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/UNIOD_A Universal Model for Outlier DETECTION across Diverse Domains.pdf",
+ "raw_overall": 6.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "离群检测属于可靠性主线，跨域迁移设计具方法论价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

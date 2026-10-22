@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Taming Teacher Forcing for Masked Autoregressive Video Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Taming Teacher Forcing for Masked Autoregressive Video Generation.pdf",
+ "title": "Taming Teacher Forcing for Masked Autoregressive Video Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "CTF缓解视频生成训练-推理不一致，但长序列和非周期动作仍有局限",
+ "innovations": [
+  "Complete Teacher Forcing (CTF)机制",
+  "动态间隔训练策略",
+  "动态噪声注入策略",
+  "帧级自回归与KV缓存结合"
+ ],
+ "method_framework": "MAGI框架结合掩码建模进行帧内生成和因果建模进行帧间生成，通过CTF确保训练-推理一致性，并采用动态间隔训练和噪声注入缓解暴露偏差。",
+ "experiment_framework": "在Kinetics-600和UCF-101数据集上评估，使用FVD和FID指标，与现有非自回归和自回归方法对比，消融研究验证CTF和训练策略的有效性。",
+ "takeaways": [
+  "教师强制机制在视频生成中的重要性",
+  "帧级自回归比块级自回归更适合视频生成",
+  "动态训练策略对缓解暴露偏差的关键作用"
+ ],
+ "weaknesses": [
+  "长序列预测性能仍有提升空间",
+  "对非周期性复杂动作的预测能力有限",
+  "未充分讨论计算效率与模型大小的关系"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Model Immunization from a Condition Number Perspective.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Model Immunization from a Condition Number Perspective.pdf",
+ "title": "Model Immunization from a Condition Number Perspective",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.25
+ },
+ "one_line": "条件数理论解释模型免疫化可行性，但普适性和计算成本存疑。",
+ "innovations": [
+  "从Hessian矩阵条件数的角度形式化模型免疫化的可行性条件",
+  "解释了为何某些预训练模型可以被免疫(抗有害微调)而其他不行",
+  "为设计免疫化模型提供了理论指导原则"
+ ],
+ "method_framework": "模型免疫化旨在预训练出难以被微调执行有害任务、但保留有用任务能力的模型。本文从优化理论角度出发，用Hessian矩阵的条件数刻画免疫化的可行性：当有害任务方向的Hessian条件数较大时，梯度下降难以将模型微调到有害任务。理论分析给出了免疫化成功的充要条件。",
+ "experiment_framework": "在文本到图像模型和分类模型上验证免疫化效果。基线包括现有免疫化方法。指标为有害任务成功率(越低越好)和有用任务性能(越高越好)。",
+ "takeaways": [
+  "条件数是理解模型免疫化可行性的关键理论工具",
+  "免疫化的本质是使有害任务方向的优化景观变得平坦/困难",
+  "免疫化与有用任务性能之间存在权衡，需要条件数平衡"
+ ],
+ "weaknesses": [
+  "仅在特定类型模型上验证，理论的普适性待检验",
+  "条件数在高维参数空间中计算困难，实际评估方法需简化",
+  "免疫化可能被更强的微调方法(如全参数微调)绕过，鲁棒性边界未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

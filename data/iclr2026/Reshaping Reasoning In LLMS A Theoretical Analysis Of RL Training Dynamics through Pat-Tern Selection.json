@@ -1,0 +1,41 @@
+{
+ "title": "Reshaping Reasoning in LLMs: A Theoretical Analysis of RL Training Dynamics through Pattern Selection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "简化两阶段框架分析RL训练对LLM推理模式的重塑机制",
+ "innovations": [
+  "系统的推理模式级与token级实证分析：发现不同推理模式自身成功率在训练中相对稳定，RL主要优化稀疏关键token子集从而重塑模式分布。",
+  "提出q→r→a两阶段数学框架(先按问题选模式π(r|q)，再按模式生成答案π(a|r,q))，统一刻画RLVR与RLIF的训练动力学。",
+  "对RLVR证明会收敛到成功率最高的推理模式，并区分强基座快速收敛与弱基座纠缠期优化困难两种 regime；对RLIF解释早期提升及后期可能退化到比基座更差的现象。"
+ ],
+ "method_framework": "先通过next-token排名变化及LLM/规则法抽取分类推理模式，得到训练动力学的实证洞察；再构建两阶段理论模型，分别在RLVR(可验证奖励)和RLIF(模型内部反馈)下分析收敛条件与动力学行为，并用案例实验验证。",
+ "experiment_framework": "在RL训练全过程做推理模式级与token级的对比分析(成功率、分布、排名漂移)；对理论结论做额外case study验证；未在节选前9页看到统一的大规模基准表格与量化指标。",
+ "takeaways": [
+  "RL并非生成全新推理模式，而是主要通过优化稀疏关键token、改变模式选择分布来影响表现。",
+  "基座模型初始推理质量决定RLVR收敛行为：强基座快速收敛到最优模式，弱基座易陷入纠缠期优化困难。",
+  "RLIF内部奖励早期可提升表现，但持续训练可能收敛到比基座更差的状态。"
+ ],
+ "weaknesses": [
+  "理论模型为高度简化的两阶段抽象(模式离散、成功率固定)，与真实连续LLM生成的距离未充分讨论。",
+  "实证部分依赖LLM-based的推理模式抽取与分类，该标注本身存在噪声，可能影响模式成功率估计的可信度。",
+  "节选前9页正文中断，未见到完整的跨模型、跨任务量化验证表格，理论结论的普适性证据有限。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Reshaping Reasoning In LLMS A Theoretical Analysis Of RL Training Dynamics through Pat-Tern Selection.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reshaping Reasoning In LLMS A Theoretical Analysis Of RL Training Dynamics through Pat-Tern Selection.pdf",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM推理机制研究，未触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

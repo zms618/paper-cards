@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/SpecReason_Fast and Accurate Inference-Time Compute via Speculative Reasoning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/SpecReason_Fast and Accurate Inference-Time Compute via Speculative Reasoning.pdf",
+ "title": "SpecReason: Fast and Accurate Inference-Time Compute via Speculative Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "推测推理加速大模型，但验证开销与动态策略不足",
+ "innovations": [
+  "利用推理步骤的语义容错性进行推测",
+  "与推测解码互补的分层推测框架",
+  "可配置的接受阈值控制准确性与延迟权衡"
+ ],
+ "method_framework": "使用轻量模型生成中间推理步骤，基础模型评估并选择性接受，保留关键步骤由基础模型处理，实现高效推理。",
+ "experiment_framework": "在AIME、MATH500和GPQA Diamond数据集上评估，使用QwQ-32B和Skywork-OR1-Preview-32B作为基础模型，DeepSeek-R1-1.5B和ZR1-1.5B作为推测模型，测量延迟和准确率。",
+ "takeaways": [
+  "推理步骤的语义相似性比token级等价更重要",
+  "轻量模型可以处理大部分中间推理步骤",
+  "推测推理与推测解码互补可进一步提升性能"
+ ],
+ "weaknesses": [
+  "验证开销可能随步骤复杂度增加",
+  "当前实现使用简单静态阈值，缺乏更精细的动态策略",
+  "未探讨不同任务类型的最佳配置"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

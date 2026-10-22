@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/MEMOIR_Lifelong Model Editing with Minimal Overwrite and Informed Retention for LLMs.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/MEMOIR_Lifelong Model Editing with Minimal Overwrite and Informed Retention for LLMs.pdf",
+ "title": "MEMOIR: Lifelong Model Editing with Minimal Overwrite and Informed Retention for LLMs",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "稀疏记忆模块实现LLM编辑，但单层修改限制表达力",
+ "innovations": [
+  "TopHash机制实现样本相关稀疏掩码",
+  "残差记忆模块最小化编辑覆盖",
+  "条件知识激活机制区分相关/无关查询"
+ ],
+ "method_framework": "引入残差记忆模块，通过TopHash生成样本相关稀疏掩码，将每个编辑限制在记忆模块的特定子集，推理时通过重叠比率动态激活相关知识。",
+ "experiment_framework": "ZsRE问答和SelfCheckGPT幻觉纠正数据集，对比ROME、MEMIT、GRACE等基线，评估可靠性、泛化性和局部性指标。",
+ "takeaways": [
+  "稀疏掩码设计有效缓解灾难性遗忘",
+  "TopHash机制在语义相似查询上保持一致性",
+  "条件激活机制无需大量无关样本即可保持局部性"
+ ],
+ "weaknesses": [
+  "仅修改单层FFN输出，可能限制表达能力",
+  "TopHash的固定随机置换可能引入额外噪声",
+  "未探索不同LLM架构的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Neural HAMILTON–JACOBI Characteristic Flows for Optimal Transport.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Neural HAMILTON–JACOBI Characteristic Flows for Optimal Transport.pdf",
+ "title": "Neural Hamilton-Jacobi Characteristic Flows for Optimal Transport",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "HJ方程闭式解OT映射，纯最小化训练免对抗，但实验证据不足。",
+ "innovations": [
+  "以HJ方程粘性解唯一刻画OT映射，用特征线法推导闭式双向传输映射，无需数值积分。",
+  "采用纯最小化框架：单个网络用由HJ特征线导出的损失训练，保证收敛到最优映射。",
+  "消除对抗训练阶段，大幅降低计算复杂度，并自然支持宽类代价函数与类条件传输。"
+ ],
+ "method_framework": "将OT写成连续时间动态形式，其最优性条件由HJ方程∂u/∂t+h(∇u)=0（h为代价Legendre变换）给出；最优速度场v*=∇h(∇u)，u为粘性解；用单个网络逼近u，按特征线导出的损失做纯最小化，闭式得到双向传输映射。",
+ "experiment_framework": "在多类数据集上验证精度、可扩展性与效率，对比GAN式/对偶ICNN式OT方法（具体数值表在所提取页之后）；支持类条件传输。",
+ "takeaways": [
+  "HJ方程粘性解可作为OT映射的统一刻画，特征线法给出闭式双向映射。",
+  "纯最小化训练避免了min-max对抗训练的不稳定性与调参负担。",
+  "该框架对宽类代价函数与类条件传输自然适用，具可证明最优性。"
+ ],
+ "weaknesses": [
+  "所提取页未给出具体Wasserstein距离/运行时数值，相对GAN/对偶方法的提升缺乏可核验量化。",
+  "初始条件g的解析形式通常不可得，其逼近质量对结果的影响分析不足。",
+  "主要在标准OT基准验证，对生成建模/域适配等下游任务的端到端收益未量化。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "纯数学推导OT映射，无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

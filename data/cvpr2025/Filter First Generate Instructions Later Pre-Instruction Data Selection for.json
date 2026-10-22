@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Filter First Generate Instructions Later Pre-Instruction Data Selection for.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Filter First Generate Instructions Later Pre-Instruction Data Selection for.pdf",
+ "title": "Filter First Generate Instructions Later Pre-Instruction Data Selection for",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "预指令数据选择降低成本，但依赖参考集质量与编码器泛化性存疑",
+ "innovations": [
+  "提出预指令数据选择新范式，直接在无标签图像上选择",
+  "任务重要性估计机制，自动确定任务采样比例",
+  "基于聚类的代表性图像选择，减少指令生成成本"
+ ],
+ "method_framework": "PreSel包含两阶段：1)任务重要性估计，通过小参考集计算IRS得分确定任务权重；2)任务级聚类选择，使用DINOv2提取特征并基于邻域中心性选择代表性图像",
+ "experiment_framework": "在LLaVA-1.5和Vision-Flan数据集上评估，使用9个多模态基准测试，与Random、Self-Filter、COINCIDE等方法比较，采样比例15%",
+ "takeaways": [
+  "任务重要性估计优于简单数据平衡",
+  "预指令选择显著降低指令生成成本",
+  "方法在不同任务数量数据集上均有效"
+ ],
+ "weaknesses": [
+  "依赖小参考集的质量，可能受初始采样偏差影响",
+  "未探索不同视觉编码器对选择效果的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "预指令数据选择降低成本，但依赖参考集质量与编码器泛化性存疑",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

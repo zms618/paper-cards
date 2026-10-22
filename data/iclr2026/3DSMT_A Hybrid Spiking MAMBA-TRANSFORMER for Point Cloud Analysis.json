@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/3DSMT_A Hybrid Spiking MAMBA-TRANSFORMER for Point Cloud Analysis.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/3DSMT_A Hybrid Spiking MAMBA-TRANSFORMER for Point Cloud Analysis.pdf",
+ "title": "3DSMT: A HYBRID SPIKING MAMBA-TRANSFORMER FOR POINT CLOUD ANALYSIS",
+ "scores": {
+  "novelty": 5.0,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 3.5,
+  "overall": 4.8
+ },
+ "one_line": "脉冲Mamba-Transformer混合架构，点云分析能效提升但创新有限",
+ "innovations": [
+  "Spiking Local Offset Attention（SLOA）：先用 K-Norm/K-Pool 做局部传播与聚合得 S1，经 SN 层与 MLP 两次脉冲化得 S2，再线性投影出脉冲形式 Q/K/V，注意力矩阵直接用逻辑 AND 与累加（AC）代替浮点 MAC，最后用 S3 = MLP(SN(S2 − SN(A))) + S2 作残差偏移，显式放大局部区域间特征差异",
+  "Spiking Mamba Block（SMB）：把输入先脉冲化成稀疏序列 Z1，ZS 经 L+SSM（Mamba 原扫描）与 C-SSM（Mamba3D 扫描）双向分支得 ZL/ZC，再用一个稀疏脉冲门控矩阵 ZG 做逐元素 Hadamard 选择（Z2 = (ZL⊗ZG)+(ZC⊗ZG)），整体仍用非因果 Conv1D 避免时序伪影",
+  "可学习脉冲位置编码：SN 层（膜电位动力学）与 MLP 交替堆叠，对 (x,y,z) 原始坐标做时空特征编码，配合 [CLS] token 组成 (L+1)×C 序列送 12 层脉冲混合块，分割头取第 4/8/12 层特征（类 PointNet++）"
+ ],
+ "method_framework": "FPS 采 L 个中心点加 KNN 取 K 邻域构 patch，patch 在 T 个时间步上复制后经脉冲 patch 嵌入（MLP+SN+MaxPool 上下文拼接）成 token；每个脉冲混合块 = SLOA + SMB（各带 LN 与残差），12 层堆叠，末尾接分类头或分割头。",
+ "experiment_framework": "ModelNet40、ScanObjectNN 三变体（PB T50 RS / OBJ BG / OBJ ONLY）、ShapeNetPart 部件分割、S3DIS 语义分割；报 OA、Cat/Ins mIoU、FLOPs 与能量（mJ，SNN 系列 0.1–14.4 mJ，对照 ANN 400+ mJ）。",
+ "takeaways": [
+  "借脉冲序列的稀疏非负性把 attention 的 softmax+MAC 换成逻辑与累加，是能耗上真正可兑现的机制，比单纯用 SNN 替换 ANN 实在",
+  "同时保留 Point Transformer 的局部偏移注意力与 Mamba 的双向扫描，在 SNN 约束下仍拿到 SOTA（ScanObjectNN 92.0%），说明混合优于二选一",
+  "把能量列进表内直接和 ANN 对比（3DSMT 4.3 mJ vs PTv2 400.1 mJ），比只报 accuracy 更能支撑边缘部署主张"
+ ],
+ "weaknesses": [
+  "本质是模块拼装：SLOA = Mamba3D 的 K-Norm/K-Pool 加脉冲化加偏移残差，SMB = ViM/Mamba3D 双向 SSM 加脉冲门控，作者自己在相关工作中也承认与 SPM、Mamba3D 一脉相承；三条 contribution 里没有一条是新数学对象，按量规跟风拼模块 novelty 上限 5.5，给 5.0",
+  "能耗优势只在理论层兑现且性能提升含后处理：MAC→AC 的替换未在真实神经形态硬件上实测，所报 mJ 是估算值，FLOPs 1.3G 与 4.3 mJ 的换算依据也未交代；w/o vot 与 w/ vot 两行差 1.5–2.0 点（PB T50 RS 90.4→92.0）而投票是从多数结果里取的纯后处理、与架构无关，把它混进 SOTA 表述会夸大架构本身贡献",
+  "消融、方差与截断三重缺失：T（时间步）、K（KNN 邻域）、SLOA/SMB 堆叠顺序、门控 ZG、位置编码 SN 层数全部无表，分类主结果只有 OA 点估计（唯一带方差的是 few-shot 表），92.0 对 SPM 84.2 的 +7.8 是否稳健无法判断；ShapeNetPart 上 Cat.mIoU 82.7 只比 SPM 高 0.4 而 ANN 的 PointNeXt/PointMLP 都在 84.6–87.1，作者以数据干净无噪解释差距小，等于承认方法在无噪数据上已近瓶颈。正文又在 Table 4（S3DIS 逐类 IoU 与能量）处截断，S3DIS 完整结果与全部超参分析缺失，confidence 仅 medium，而这同时解释了 relevance 只给 3.5：点云分类的能效与精度权衡既非主线可靠性议题（不是鲁棒性/泛化/不确定性/幻觉），也无医学影像或多模态推理落地域"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 3.5,
+ "relevance_reason": "点云分类能效优化与可靠性主线无关，无医学或多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

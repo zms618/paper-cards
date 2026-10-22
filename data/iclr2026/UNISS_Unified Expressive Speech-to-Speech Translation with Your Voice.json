@@ -1,0 +1,41 @@
+{
+ "title": "UniSS: Unified Expressive Speech-to-Speech Translation with Your Voice",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "单阶段语音翻译框架，依赖LLM与大规模数据集",
+ "innovations": [
+  "针对表情保持 S2ST 三大瓶颈(成对表情数据稀缺、多阶段管线复杂、LLM 翻译能力迁移不足)提出单阶段统一框架。",
+  "设计精细的语音语义与风格建模，无缝接入现有文本 LLM 框架形成统一文本-语音语言模型。",
+  "提出跨模态 CoT 提示流程逐步对齐音频语义与文本并在解码中保持风格；同时构建并发布 44.8k 小时高质量表情 S2ST 数据集 UniST。"
+ ],
+ "method_framework": "单阶段统一文本-语音 LM：语音语义与风格经建模后与文本 token 一起供 LLM 处理；用跨模态 CoT(<Translate>...<Speak>)提示把文本翻译能力渐进迁移到语音生成，逐步对齐音频语义到文本并在解码中保留说话人身份/情感/时长。",
+ "experiment_framework": "在多语 S2ST 任务上与级联(ASR-MT-TTS)及端到端系统对比，报告翻译保真(Speech-BLEU)、语音质量(UTMOS)、说话人/情感相似度与时长一致性。",
+ "takeaways": [
+  "级联 S2ST 误差累积且难保留副语言信息，端到端/多阶段又引入架构复杂度。",
+  "跨模态 CoT 提示可有效把文本 LLM 的强翻译能力迁移到语音域，单阶段即超过级联与端到端系统。",
+  "大规模表情 S2ST 数据 UniST 是翻译保真与风格保持的重要支撑。"
+ ],
+ "weaknesses": [
+  "44.8k 小时数据集的采集许可/版权与表情标注质量未充分说明，复现门槛高。",
+  "跨模态 CoT 依赖已有文本 LLM，对低资源语言/远场噪声语音的稳健性未充分验证。",
+  "与可靠性/医学影像/多模态推理主线无关；完整消融(风格建模/CoT 各自贡献)与主观试听统计未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/UNISS_Unified Expressive Speech-to-Speech Translation with Your Voice.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/UNISS_Unified Expressive Speech-to-Speech Translation with Your Voice.pdf",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "语音翻译与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

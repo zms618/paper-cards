@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Learnability-Driven Submodular Optimization for Active Roadside 3D Detection.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Learnability-Driven Submodular Optimization for Active Roadside 3D Detection.pdf",
+ "title": "Learnability-Driven Submodular Optimization for Active Roadside 3D Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "子模优化选择路边3D检测样本，依赖深度估计准确性",
+ "innovations": [
+  "识别并形式化路边BEV感知中的固有模糊样本",
+  "提出可学习性驱动的主动学习框架，包含深度置信度、语义平衡和几何变异三个互补因素",
+  "设计LH3D三阶段子模优化框架，有效抑制固有模糊样本同时保持覆盖"
+ ],
+ "method_framework": "LH3D框架通过三个子模优化阶段选择样本：1)深度置信度选择，抑制深度模糊样本；2)语义平衡选择，避免类别不平衡；3)几何变异选择，促进多样化但可学习的空间布局。",
+ "experiment_framework": "在DAIR-V2X和Rope3D数据集上评估，使用BEVHeight、BEVSpread和BEVDet作为骨干网络，与RANDOM、ENTROPY、CORESET、BADGE等7种基线方法比较AP3D|R40指标。",
+ "takeaways": [
+  "可学习性比不确定性更重要，特别是在单视图单模态约束下",
+  "子模优化框架能有效平衡覆盖和多样性，提供理论保证"
+ ],
+ "weaknesses": [
+  "方法依赖于深度估计器的准确性，可能受限于深度预测质量",
+  "三阶段选择可能增加计算复杂度，特别是在大规模数据集上"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "路边3D检测属于常规感知任务，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

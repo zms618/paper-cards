@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Dynamic Sparse Training of Diagonally Sparse Networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Dynamic Sparse Training of Diagonally Sparse Networks.pdf",
+ "title": "Dynamic Sparse Training of Diagonally Sparse Networks",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.25
+ },
+ "one_line": "对角稀疏训练实现硬件友好加速，但表达力受限且与主线无关",
+ "innovations": [
+  "提出对角稀疏模式的sparse-to-sparse动态稀疏训练，使精度追平非结构化稀疏但具备硬件友好结构",
+  "前向反向全程保持稀疏计算，避免密集化开销",
+  "利用对角结构设计定制CUDA核，在GPU上取得实际墙钟加速"
+ ],
+ "method_framework": "在动态稀疏训练中始终约束权重矩阵为对角稀疏模式（沿对角线分布的非零元），并在训练中动态增减这些对角位置的连接；该规则结构规整，便于用定制CUDA核在稠密硬件上直接做稀疏前向/反向，兼顾稀疏训练精度与真实加速。",
+ "experiment_framework": "在ViT、CNN等多种架构与ImageNet等基准上，于高稀疏度(如90%)下对比结构化/非结构化稀疏训练与稠密模型，报告Top-1精度与GPU墙钟训练/推理加速比。",
+ "takeaways": [
+  "对角稀疏这种规整结构可在硬件上兑现真实加速而非仅减参数",
+  "90%稀疏ViT-Base在线推理提速3.13x、训练提速1.59x而不掉精度",
+  "非结构化稀疏在现代GPU上常无法转化为实际加速"
+ ],
+ "weaknesses": [
+  "与主线（可靠性/可信AI/医学影像/多模态大模型推理）无关，属模型压缩/系统效率",
+  "对角稀疏的表达能力受限，在超大模型/高密度层上的可扩展性需更多证据",
+  "加速比依赖定制CUDA核与特定GPU，跨硬件/框架的可移植性未论证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.68,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

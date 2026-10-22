@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SAM-PLING_WIKI-R1 Incentivizing Multimodal Reasoning for Knowledge-Based VQA via Data and SAM-PLING Curriculum.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SAM-PLING_WIKI-R1 Incentivizing Multimodal Reasoning for Knowledge-Based VQA via Data and SAM-PLING Curriculum.pdf",
+ "title": "Wiki-R1: Incentivizing Multimodal Reasoning for Knowledge-Based VQA via Data and Sampling Curriculum",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "课程数据与采样缓解KB-VQA稀疏奖励，但提升有限且泛化存疑。",
+ "innovations": [
+  "诊断出在 KB-VQA 上直接做 RL（如 DAPO）时超 80% 样本零优势、训练准确率仅约 10%，并归因于检索噪声与预训练/目标域分布鸿沟。",
+  "提出可控课程数据生成：操纵检索器在期望难度层级产出样本，构造随模型能力演进的训练分布序列。",
+  "提出课程采样策略：用观测到的奖励估计样本难度并传播到未观测样本，优先选择可能产生非零优势的信息样本。"
+ ],
+ "method_framework": "基于数据生成的课程强化学习后训练框架。先按难度控制检索器产出递进式训练分布弥合预训练到 KB-VQA 的鸿沟；RL 更新时用课程采样挑出大概率有非零优势的样本，缓解稀疏奖励；样本难度由已观测奖励估计并传播到未观测样本。",
+ "experiment_framework": "在两个 KB-VQA 基准 Encyclopedic VQA 与 InfoSeek 上评测，对比 SFT 与 GRPO/DAPO 等 RL 方法；报告准确率，Encyclopedic VQA 35.5%→37.1%、InfoSeek 40.1%→44.1%，取得新 SOTA；含零优势比例与训练准确率等训练动态分析及消融。",
+ "takeaways": [
+  "KB-VQA 直接做 RL 会遭遇严重稀疏奖励，80%+ 样本零优势，课程数据与采样可显著缓解。",
+  "Wiki-R1 在 Encyclopedic VQA 与 InfoSeek 上均刷新 SOTA，InfoSeek 提升约 4 个点。",
+  "用 ground-truth 检索可降低零梯度与提升训练准确率，说明检索噪声是稀疏奖励的重要来源。"
+ ],
+ "weaknesses": [
+  "提升幅度中等（Encyclopedic VQA 仅 +1.6），且仅两个 KB-VQA 基准，跨域与更复杂知识推理的泛化未充分验证。",
+  "课程难度估计依赖已观测奖励并传播，冷启动与难度排序误差可能影响课程有效性，文中对失败情形讨论有限。",
+  "方法强依赖可控检索器生成数据，部署到不可控/黑盒检索系统时迁移性存疑。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态VQA课程学习，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

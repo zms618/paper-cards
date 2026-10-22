@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Rapid Overfitting of Multi-Pass SGD in Stochastic Convex Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Rapid Overfitting of Multi-Pass SGD in Stochastic Convex Optimization.pdf",
+ "title": "Rapid Overfitting of Multi-Pass SGD in Stochastic Convex Optimization",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 4,
+  "relevance": 5,
+  "overall": 5.8
+ },
+ "one_line": "理论证明非光滑凸优化中多遍SGD快速过拟合，但缺乏实验验证",
+ "innovations": [
+  "给出多遍 SGD 样本外性能的非平凡刻画：第二遍起总体损失为 Θ(1/(ηT)+η√T)，揭示首 epoch 后的相变",
+  "区分光滑与非光滑 SCO 中多遍过拟合速率的尖锐分离",
+  "将结果推广到有放回 SGD（O(n log n) 步后同阶界），并证明单遍 SGD 泛化间隙的 Ω(η√n) 下界（d=O(n)），改进已有结果"
+ ],
+ "method_framework": "在 SCO 框架下分析总体风险（而非经验风险）：以单遍 minimax 最优步长 η=Θ(1/√n) 为基准，推导多遍（without/with replacement）下总体超额风险随总步数 T 的演化，证明非光滑情形下多遍快速过拟合，并对比光滑情形给出速率分离。",
+ "experiment_framework": "以纯理论推导为主：给出上界、下界与相变刻画，并与有限和设定中已有收敛结果对照；无大规模数值实验。",
+ "takeaways": [
+  "单遍调好的 SGD 步长在多遍时会快速过拟合，实践中多跑 epoch 需重调步长",
+  "非光滑与光滑 SCO 的多遍过拟合行为有本质差异",
+  "样本外总体风险分析对理解 SGD 泛化至关重要"
+ ],
+ "weaknesses": [
+  "主线偏离可靠性/医学影像/多模态推理，属优化泛化理论",
+  "纯理论工作，无数值实验验证相变的实际可观测性",
+  "结论限于凸优化设定，对深度网络的可迁移性需另行论证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Small Drafts, Verdict Information-Intensive Visual Reasoning via Speculation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Small Drafts, Verdict Information-Intensive Visual Reasoning via Speculation.pdf",
+ "title": "Small Drafts, Big Verdict: Information-Intensive Visual Reasoning via Speculation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "投机解码框架组合小VLM草稿与大模型裁决，提升信息密集视觉推理",
+ "innovations": [
+  "针对信息密集图像(文字标注与细粒度图表密集交织)中关键线索定位与多跳整合难点，引入投机解码式的草稿-裁决两阶段框架",
+  "多个小VLM作草稿专家产出多样化定位/推理候选路径，强裁决模型综合多条'部分正确'路径得到最终答案，实现纠错",
+  "提出共识专家选择机制，仅把高一致性推理路径转发给裁决模型，进一步兼顾效率与准确率"
+ ],
+ "method_framework": "草稿阶段由若干轻量小VLM各自对密排图像做关键线索定位与初步推理，给出多样化候选；裁决阶段由强VLM综合这些路径、纠正中间错误；共识筛选按路径间一致度决定哪些草稿进入裁决，避免噪声草稿干扰并降本。",
+ "experiment_framework": "在InfographicVQA、ChartMuseum、ChartQAPro、HR-Bench 4K等信息密集/高分辨率VQA基准上，与大专有VLM及需训练的zoom-in/RL基线对比准确率与计算成本。",
+ "takeaways": [
+  "在多个信息密集视觉VQA基准上一致提升，且相对大模型或训练pipeline更省成本",
+  "综合多条部分正确路径可纠正中间传播错误，缓解视觉推理的误差敏感问题",
+  "training-free、即插即用，无需昂贵细粒度监督"
+ ],
+ "weaknesses": [
+  "依赖已有的小/大VLM能力组合，自身不提升底座模型；共识选择阈值等超参鲁棒性未充分分析",
+  "需多次调用小VLM草稿，总调用次数与延迟随专家数增长，'省成本'的实测口径(是否含多次草稿前向)需细究",
+  "前9页未见完整表格与各基准具体提升数字；对纯自然图像/非图表类推理的迁移未论证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "信息密集视觉推理与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

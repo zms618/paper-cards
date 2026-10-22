@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/There was Never A Bottleneck In Concept Bottleneck Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/There was Never A Bottleneck In Concept Bottleneck Models.pdf",
+ "title": "There was Never a Bottleneck in Concept Bottleneck Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "揭示CBM非真正瓶颈，提出MCBM通过IB约束提升可解释性",
+ "innovations": [
+  "揭示CBM的根本缺陷：组件能预测概念不代表其仅编码该概念信息，解释了CBM可解释性和干预程序有效性不足的原因",
+  "提出最小概念瓶颈模型(MCBM)，引入信息瓶颈(IB)目标约束每个表示组件仅保留对应概念的相关信息",
+  "通过变分正则项实现IB约束，使MCBM产生更可解释的表示，支持原则性的概念级干预"
+ ],
+ "method_framework": "MCBM在CBM基础上增加变分信息瓶颈正则项：每个概念对应的表示组件被约束为仅保留该概念的信息，丢弃其他冗余信息。通过变分推断实现IB目标的可微优化，同时保持预测性能。",
+ "experiment_framework": "在多个图像分类数据集上评估。基线为原始CBM和vanilla模型。指标包括预测准确率、可解释性指标和干预实验有效性。",
+ "takeaways": [
+  "传统CBM的组件并非真正的瓶颈，仍编码了大量与概念无关的信息",
+  "信息瓶颈约束能显著提升CBM的可解释性和干预可靠性",
+  "MCBM在保持预测性能的同时，提供了更符合概率理论的概念级干预基础"
+ ],
+ "weaknesses": [
+  "与主线（医学影像/多模态大模型推理可靠性）关联中等，属于通用可解释AI",
+  "仅在图像分类任务上验证，其他模态和任务类型的适用性未知",
+  "IB正则的超参数选择对结果的影响分析不够充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "通用可解释AI，与医学影像/多模态可靠性主线关联中等",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

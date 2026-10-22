@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Stealix_Model Stealing via Prompt Evolution.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Stealix_Model Stealing via Prompt Evolution.pdf",
+ "title": "Stealix: Model Stealing via Prompt Evolution",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.4
+ },
+ "one_line": "Stealix：用遗传算法进化prompt实现无需类名的模型窃取",
+ "innovations": [
+  "提出更现实的威胁模型：攻击者无需 prompt 设计技巧或类名知识即可模型窃取",
+  "首个无预定义 prompt 的模型窃取方法 Stealix",
+  "用遗传算法迭代进化 prompt，逐步提升合成图像的精度与多样性，在同等查询预算下超过需类名/人工 prompt 的方法"
+ ],
+ "method_framework": "攻击者只用两个开源预训练模型（一个生成器、一个能推断受害者数据分布的模型），通过遗传算法在 prompt 空间进化：以合成图像查询黑盒受害者模型、用返回标签训练代理模型，按代理精度与图像多样性反馈迭代优化 prompt，逐步逼近受害者数据分布。",
+ "experiment_framework": "在多个图像分类受害者模型（含卫星图像分类器）上评测；对比 Knockoff Nets、从头训 GAN、SD+人工 prompt 等方法，报告代理模型精度，固定查询预算下比较，称超过需类名/细粒度 prompt 的方法。",
+ "takeaways": [
+  "开源预训练生成模型让无经验攻击者也能自动化模型窃取，风险被低估",
+  "自动 prompt 进化比人工 prompt/类名更鲁棒，跨数据集分布差异仍有效",
+  "代理精度与合成图像多样性需联合优化"
+ ],
+ "weaknesses": [
+  "与主线（视觉鲁棒性/可信AI/医学影像/多模态推理）无关，属 ML 安全/IP 攻击",
+  "遗传算法进化 prompt 的迭代成本与查询预算开销需权衡",
+  "主要在图像分类验证，对 LLM/多模态模型的窃取适用性未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

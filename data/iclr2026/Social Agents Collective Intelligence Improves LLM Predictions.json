@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Social Agents Collective Intelligence Improves LLM Predictions.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Social Agents Collective Intelligence Improves LLM Predictions.pdf",
+ "title": "Social Agents: Collective Intelligence Improves LLM Predictions",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "用合成人群多样性提升LLM预测，但与可靠性主线无关且效用存疑",
+ "innovations": [
+  "把'群体智慧'引入LLM预测：不再让模型给单一确定答案，而是实例化一个具有多样人口统计学(年龄/性别)与心理(价值观/兴趣)属性的合成社会",
+  "每个人格独立对广告/视频/网页等刺激给出量化打分与定性理由，再聚合为单一估计",
+  "系统验证合成人群意见与真实人群判断的对齐程度"
+ ],
+ "method_framework": "先按目标人群分布采样多样化persona属性，每个persona独立prompt模型对刺激评分并给理由；利用不同persona视角带来的误差相互抵消，聚合(平均)后的估计更接近真实crowd mean，模拟wisdom-of-crowds。",
+ "experiment_framework": "11个行为预测任务(低级如网页可喜欢度、高级如视频记忆度)，以GPT-4o等为骨干，对比单LLM基线与Social Agents聚合；指标为相对crowd mean的误差改善百分比、与人类判断的Pearson相关。",
+ "takeaways": [
+  "简单判断上相对单LLM提升最高164%，复杂解释推理上最高24%(GPT-4o骨干)",
+  "跨模型平均，低级任务增益30.5%、高级任务9.9%",
+  "单persona预测与人类判断Pearson相关最高达0.71"
+ ],
+ "weaknesses": [
+  "落地为行为/营销预测，与可靠性、医学影像、多模态推理主线无关",
+  "增益高度依赖persona采样是否真正独立、多样，persona设计偏差可能引入系统性错误而非抵消",
+  "'更接近crowd mean'不等于更接近客观真值；对无客观答案的主观预测，改进的真实效用存疑"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.75,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "行为预测与可靠性主线无关，仅是群体智慧应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

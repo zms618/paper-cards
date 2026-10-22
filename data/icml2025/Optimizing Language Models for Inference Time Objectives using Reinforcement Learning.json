@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Optimizing Language Models for Inference Time Objectives using Reinforcement Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Optimizing Language Models for Inference Time Objectives using Reinforcement Learning.pdf",
+ "title": "Optimizing Language Models for Inference Time Objectives using Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "将推理时目标纳入RL训练，在数学/代码任务上验证pass@k提升",
+ "innovations": [
+  "显式将推理时目标(pass@k、多数投票)纳入训练时RL优化，而非仅优化单样本准确率",
+  "构建在线RL算法直接优化k样本聚合目标",
+  "系统消融展示了训练时考虑推理算法带来的性能权衡"
+ ],
+ "method_framework": "将LLM视为RL策略；推理时目标(pass@k即k次至少一次正确、多数投票即k次多数正确)转化为可微RL奖励；在线采样k个回答计算聚合奖励，策略梯度更新。",
+ "experiment_framework": "任务：数学推理(MATH)、代码生成(CodeContests)。基线：单样本RLHF训练。指标：pass@k、多数投票准确率。",
+ "takeaways": [
+  "训练时显式优化推理时目标可显著提升pass@k等聚合指标",
+  "存在权衡：为推理时k样本优化的模型单样本准确率可能下降，但整体系统性能提升",
+  "多数投票目标优化使模型生成更多样化且正确的回答"
+ ],
+ "weaknesses": [
+  "k值在训练时固定，推理时k不同是否仍最优未充分考察",
+  "仅在有验证器的任务(数学/代码)验证，开放生成任务的适用性未知",
+  "k样本采样的训练计算开销是单样本的k倍，成本-收益比未量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

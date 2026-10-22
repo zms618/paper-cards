@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/LS-MERGE Merging Language Models In Latent Space.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/LS-MERGE Merging Language Models In Latent Space.pdf",
+ "title": "LS-MERGE: Merging Language Models In Latent Space",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "潜在空间编码实现LLM合并，但计算开销大且扩展性存疑",
+ "innovations": [
+  "基于VAE的LLM权重压缩与潜在空间表示",
+  "针对LLM权重重尾特性的两阶段训练课程",
+  "最优传输对齐实现异构模型潜在空间融合",
+  "支持自合并和跨架构合并的统一框架"
+ ],
+ "method_framework": "LS-MERGE框架将LLM权重编码到潜在空间，通过最优传输对齐异构模型，在潜在空间进行插值或合并操作，最后解码回权重空间，实现跨架构模型融合。",
+ "experiment_framework": "在Gemma和LLaMA模型上评估，包括自合并、专家合并、跨架构合并场景，使用MMLU、HellaSwag、GSM8k等指标，与SLERP、Uniform Soup、Greedy Soup等方法对比。",
+ "takeaways": [
+  "LLM权重具有低方差重尾特性，影响编码网络设计",
+  "潜在空间合并比权重空间合并更鲁棒，尤其在异构模型场景",
+  "最优传输对齐是跨架构合并的关键"
+ ],
+ "weaknesses": [
+  "计算开销大，需要训练VAE编码器-解码器",
+  "压缩比过高时泛化能力下降",
+  "未充分验证方法在更大模型上的扩展性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "LLM合并方法与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

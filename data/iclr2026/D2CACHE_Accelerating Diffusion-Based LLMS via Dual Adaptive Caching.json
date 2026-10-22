@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/D2CACHE_Accelerating Diffusion-Based LLMS via Dual Adaptive Caching.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/D2CACHE_Accelerating Diffusion-Based LLMS via Dual Adaptive Caching.pdf",
+ "title": "D2CACHE: Accelerating DIFFUSION-BASED LLMS via Dual Adaptive Caching",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "双阶段缓存加速dLLM，但依赖特定解码模式",
+ "innovations": [
+  "基于KV状态三阶段动态的细粒度缓存策略",
+  "确定性先验引导的掩码token选择",
+  "注意力感知的剩余token选择"
+ ],
+ "method_framework": "d2Cache采用两阶段细粒度选择策略：第一阶段基于确定性先验选择掩码token，第二阶段基于注意力分布选择剩余token，仅更新选定token的KV状态并缓存其余token",
+ "experiment_framework": "在LLaDA和Dream两个dLLM模型上评估，使用GSM8K、MBPP等6个基准测试，比较吞吐量、延迟和任务准确率",
+ "takeaways": [
+  "KV状态动态分析对设计高效缓存策略至关重要",
+  "确定性先验引导的解码可提升可靠性并缓解过早过度自信问题"
+ ],
+ "weaknesses": [
+  "方法依赖特定解码模式，可能不适用于所有场景",
+  "注意力计算开销可能抵消部分缓存收益"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "缓存加速技术不直接关联可靠性主线，仅具工程价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

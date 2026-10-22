@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Music Flamingo Scaling Music Understanding In Audio Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Music Flamingo Scaling Music Understanding In Audio Language Models.pdf",
+ "title": "Music Flamingo: Scaling Music Understanding in Audio Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "构建音乐数据集微调Audio Flamingo，在10+基准达SOTA",
+ "innovations": [
+  "构建大规模音乐理解数据集MF-Skills，多阶段标注流水线产出覆盖和声/结构/音色/歌词/文化语境的富caption与QA",
+  "提出以乐理为基础的链思考数据集MF-Think做后训练冷启动，再用GRPO强化学习配自定义奖励增强推理",
+  "在增强Audio Flamingo 3骨干上微调，从表层识别迈向分层、类人音乐感知"
+ ],
+ "method_framework": "先多阶段流水线构造MF-Skills富标注数据，微调Audio Flamingo 3骨干掌握音乐多技能；再用MF-Think乐理CoT数据做冷启动教模型分步推理；最后用GRPO强化学习配合自定义音乐奖励进一步提升音乐理解与推理能力。",
+ "experiment_framework": "在10+音乐理解与推理基准上评测；对比现有音频语言模型；指标为caption质量、QA准确率、跨文化音乐泛化；消融MF-Skills/MF-Think/GRPO各阶段。",
+ "takeaways": [
+  "音乐的动态分层信息密度使现有音频模型只能给短高层caption，MF-Skills+后训练可突破",
+  "乐理接地的CoT冷启动+GRPO RL显著增强音乐推理",
+  "Music Flamingo在10+基准达SOTA，建立通用音乐智能音频-语言模型标准"
+ ],
+ "weaknesses": [
+  "主线是音乐/音频多模态理解，与鲁棒性、可信验证、幻觉抑制等可靠性落地主线关联弱",
+  "多阶段标注流水线依赖音乐专家/大模型，标注偏差与文化覆盖是否均衡需审视",
+  "前9页未系统报告模型在错误乐理推理上的幻觉率与不确定性"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "音乐理解与可靠性主线关联弱，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

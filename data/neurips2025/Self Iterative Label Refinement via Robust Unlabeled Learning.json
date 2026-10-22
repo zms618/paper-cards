@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Self Iterative Label Refinement via Robust Unlabeled Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Self Iterative Label Refinement via Robust Unlabeled Learning.pdf",
+ "title": "Self Iterative Label Refinement via Robust Unlabeled Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "鲁棒UU学习迭代精炼LLM伪标签，提升分类性能",
+ "innovations": [
+  "利用无标签-无标签(UU)学习框架迭代精炼LLM生成的伪标签",
+  "引入鲁棒UU学习减少负风险项导致的过拟合",
+  "仅需少量标注数据即可估计类先验概率",
+  "扩展到LLM安全对齐和生成任务"
+ ],
+ "method_framework": "结合LLM初始标注与鲁棒UU学习的迭代框架：LLM生成初始伪标签→分割为伪正/负集→鲁棒UU学习训练分类器→重新标记数据→迭代直至收敛",
+ "experiment_framework": "数据集：低资源语言、专利分类、蛋白质结构等6个二分类任务；基线：PN、PIE、CCP及标准UU学习；指标：分类准确率",
+ "takeaways": [
+  "UU学习对类先验估计误差具有鲁棒性",
+  "少量标注数据(50-100)即可实现接近理论上限的性能",
+  "迭代过程能逐步改善初始噪声标签"
+ ],
+ "weaknesses": [
+  "初始伪标签噪声过大时性能提升有限",
+  "未详细分析不同领域知识需求对方法效果的影响",
+  "计算开销随迭代次数增加而增大"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

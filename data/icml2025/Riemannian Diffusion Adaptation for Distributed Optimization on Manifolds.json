@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Riemannian Diffusion Adaptation for Distributed Optimization on Manifolds.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Riemannian Diffusion Adaptation for Distributed Optimization on Manifolds.pdf",
+ "title": "Riemannian Diffusion Adaptation for Distributed Optimization on Manifolds",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6
+ },
+ "one_line": "将扩散自适应推广至流形优化，理论分析有限，实验覆盖不足。",
+ "innovations": [
+  "首次将扩散自适应(diffusion adaptation)策略推广到一般Riemannian流形上的去中心化在线优化",
+  "证明算法能达到网络一致性，并推导出非渐近收敛结果",
+  "应用于在线去中心化PCA和GMM推断两个实际问题，合成与真实数据均验证有效"
+ ],
+ "method_framework": "在每个智能体上执行局部随机梯度下降(通过流形上的Riemannian梯度)，然后与邻居智能体通过流形上的凸组合(用流形中点/测地线插值)融合信息。交替进行adaptation(局部梯度更新)和combination(邻居信息融合)两步。",
+ "experiment_framework": "在合成数据和真实数据上测试两个任务：去中心化PCA和GMM参数推断。对比非合作(no cooperation)、consensus和集中式(oracle)基线指标为收敛误差和稳态偏差。",
+ "takeaways": [
+  "Riemannian Diffusion在去中心化流形优化上优于非合作策略，接近集中式性能",
+  "算法无需凸正则化项，可直接在一般非凸流形上运行，克服了Euclidean方法的局限",
+  "非渐近收敛结果给出了稳态偏差与步长、网络连通性的关系"
+ ],
+ "weaknesses": [
+  "实验仅在PCA和GMM两个经典流形问题上验证，未在深度学习(如正交约束网络)等现代场景测试",
+  "流形上的组合步骤需要计算测地线中点，对高维流形计算开销可能较大",
+  "收敛分析依赖流形的截面曲率有界等假设，实际中这些条件是否容易满足未讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

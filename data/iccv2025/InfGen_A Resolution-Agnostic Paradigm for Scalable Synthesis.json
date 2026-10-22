@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/InfGen_A Resolution-Agnostic Paradigm for Scalable Synthesis.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/InfGen_A Resolution-Agnostic Paradigm for Scalable Synthesis.pdf",
+ "title": "InfGen A Resolution-Agnostic Paradigm for Scalable Synthesis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "固定潜在表示+一步生成器实现任意分辨率图像合成，但计算成本高。",
+ "innovations": [
+  "分辨率无关的图像生成新范式",
+  "可插拔的生成器设计，无需重新训练扩散模型",
+  "隐式神经位置编码实现动态分辨率处理"
+ ],
+ "method_framework": "InfGen将扩散模型生成的固定潜在表示作为内容表示，通过一步生成器解码为任意分辨率图像，替换传统VAE解码器，实现高效高分辨率生成。",
+ "experiment_framework": "在ImageNet和LAION数据集上评估，与VQGAN、SD-VAE等比较重建质量，并在DiT、SDXL等扩散模型上测试生成性能，使用FID、sFID、精度和召回率作为指标。",
+ "takeaways": [
+  "将高分辨率生成问题转化为超分辨率问题，简化计算复杂度",
+  "迭代外推方法实现超训练分辨率生成"
+ ],
+ "weaknesses": [
+  "训练计算成本高，需要15天8个A100 GPU",
+  "在极高分辨率下(如3072×3072)的生成质量仍有提升空间",
+  "方法依赖于特定潜在空间，通用性受限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "图像生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

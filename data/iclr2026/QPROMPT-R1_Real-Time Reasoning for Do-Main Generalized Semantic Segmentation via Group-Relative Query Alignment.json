@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/QPROMPT-R1_Real-Time Reasoning for Do-Main Generalized Semantic Segmentation via Group-Relative Query Alignment.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/QPROMPT-R1_Real-Time Reasoning for Do-Main Generalized Semantic Segmentation via Group-Relative Query Alignment.pdf",
+ "title": "QPrompt-R1: Real-Time Reasoning for Domain-Generalized Semantic Segmentation via Group-Relative Query Alignment",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "重设查询-提示架构提升实时域泛化分割，但泛化上限与推理机制待澄清",
+ "innovations": [
+  "指出现有DGSS的瓶颈在预测头而非VFM骨干，据此重设实时查询-提示架构",
+  "在末层transformer注入可学习query做实时推理增强，利用上下文学习提升域偏移下分割性能",
+  "提出GRQA组相对查询对齐目标，用组相对优势监督强化query与图像token关系，且推理零额外开销、可即插即用"
+ ],
+ "method_framework": "基于强VFM骨干，在末块注入可学习query并与图像token交互做分割；训练时以组相对优势对齐query-token关系(GRQA)，对齐后推理时query开销可忽略，保持实时速度并提升域泛化。",
+ "experiment_framework": "合成到真实(S2R)、真实到真实(R2R)及恶劣条件鲁棒性评测；报告FPS与mIoU；作为即插即用模块加到REIN、SoMA等DGSS方法上测增益。",
+ "takeaways": [
+  "QPrompt-R1达54 FPS，在S2R、R2R与恶劣条件下取得强性能",
+  "GRQA作为即插即用模块，为REIN带来+1.2、为SoMA带来+0.6，且推理无额外开销",
+  "把优化重心放在预测头/query而非骨干可同时兼顾实时与域泛化"
+ ],
+ "weaknesses": [
+  "落地域为驾驶/机器人语义分割，非主线明确的医学影像或多模态大模型推理",
+  "GRQA的'推理'仅指query-token对齐，与LLM式显式推理链关系需澄清",
+  "跨更极端域偏移与传感器差异的泛化上限、以及与更强VFM的组合增益需后续页"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "域泛化分割方法，非主线医学或多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

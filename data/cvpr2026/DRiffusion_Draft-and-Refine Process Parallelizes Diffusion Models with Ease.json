@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/DRiffusion_Draft-and-Refine Process Parallelizes Diffusion Models with Ease.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/DRiffusion_Draft-and-Refine Process Parallelizes Diffusion Models with Ease.pdf",
+ "title": "DRiffusion Draft-and-Refine Process Parallelizes Diffusion Models with Ease",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "DRiffusion通过草稿-精炼并行化扩散模型，实现1.4-3.7倍加速但内存开销大",
+ "innovations": [
+  "提出skip transition算子实现扩散模型并行化",
+  "设计保守和激进两种并行策略",
+  "结合系统级和数学方法优势实现高效并行"
+ ],
+ "method_framework": "DRiffusion利用skip transitions生成未来状态的草稿，并行计算噪声预测，再通过标准去噪过程精炼结果，实现扩散模型的高效并行推理。",
+ "experiment_framework": "在MS-COCO数据集上评估SD2.1、SDXL和SD3模型，使用FID、CLIP、PickScore和HPSv2.1指标，与AsyncDiff和减少采样步数方法对比。",
+ "takeaways": [
+  "skip transition算子为扩散模型提供了灵活的局部时间操作",
+  "并行化策略在保持质量的同时显著提升推理速度",
+  "方法适用于多种架构和规模的扩散模型"
+ ],
+ "weaknesses": [
+  "激进模式在高加速比时可能导致轻微质量下降",
+  "SD3等步数较少的模型在激进模式下质量下降更明显",
+  "方法需要额外的内存开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型加速与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

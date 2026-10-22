@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Mocap-2-to-3 Multi-view Lifting for Monocular Motion Recovery with 2D Pretraining.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Mocap-2-to-3 Multi-view Lifting for Monocular Motion Recovery with 2D Pretraining.pdf",
+ "title": "Mocap-2-to-3 Multi-view Lifting for Monocular Motion Recovery with 2D Pretraining",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "多视角提升框架结合2D预训练，单目运动恢复的绝对位姿估计",
+ "innovations": [
+  "多视角提升框架结合2D预训练增强3D运动恢复",
+  "解耦局部姿态和全局运动的新表示方法",
+  "利用相机姿态计算地面平面方程并编码到网络中加速收敛"
+ ],
+ "method_framework": "提出两阶段训练框架：首先在大规模2D数据上预训练单视角2D运动扩散模型，然后在有限3D数据上微调多视角扩散模型，通过视图注意力层确保多视角一致性，并利用地面平面约束加速绝对位姿学习。",
+ "experiment_framework": "在RICH和AIST++数据集上评估，使用MPJPE、PA-MPJPE、W-MPJPE、WA-MPJPE和Abs-MPJPE等指标，与SMPLify、MotionBERT、WHAM、GVHMR等基线方法比较。",
+ "takeaways": [
+  "利用2D数据预训练增强模型泛化能力",
+  "解耦局部姿态和全局运动可提高绝对位姿估计精度",
+  "地面平面约束作为即插即用模块可加速多视角全局估计任务收敛"
+ ],
+ "weaknesses": [
+  "未处理2D检测器不准确带来的误差",
+  "脚部滑动误差略高于GVHMR",
+  "依赖校准相机参数"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "单目运动恢复与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

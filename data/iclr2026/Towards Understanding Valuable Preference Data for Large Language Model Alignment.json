@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Understanding Valuable Preference Data for Large Language Model Alignment.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Understanding Valuable Preference Data for Large Language Model Alignment.pdf",
+ "title": "Towards Understanding Valuable Preference Data for Large Language Model Alignment",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "提出截断影响函数评估偏好数据质量，发现其模型依赖性并设计数据选择规则。",
+ "innovations": [
+  "提出截断影响函数(TIF)，缓解传统影响函数对验证数据的过度打分问题，用于逐点评估偏好对质量",
+  "核心发现：偏好数据质量是模型的属性而非数据固有属性，对某模型有益的偏好对可能损害另一模型，主张选择需适配具体模型",
+  "构造两个比TIF更简单且与其正相关的模型相关打分函数(SF)，并组合二者以抵消各自误差源，形成简单有效的数据选择规则"
+ ],
+ "method_framework": "以影响函数量化每条训练偏好对在验证集上的影响来定义数据质量；对原IF做截断修正得到更可靠的TIF。再以两个计算更轻、与TIF正相关的打分函数近似，并通过组合二者抵消误差，实现更精准的高价值偏好数据筛选。",
+ "experiment_framework": "跨多个对齐基准与多个LLM模型家族验证；对比用外部奖励模型/现成LLM过滤数据的范式，报告用更少数据达到更优对齐性能；含TIF与打分函数相关性分析、误差源分析。",
+ "takeaways": [
+  "偏好数据质量并非数据固有属性，而高度依赖被训练的具体模型，选择应模型自适应",
+  "TIF相比传统影响函数更可靠地反映单条偏好对的真实价值",
+  "组合两个轻量打分函数可在更少数据下取得更好对齐效果，结论具跨模型族通用性"
+ ],
+ "weaknesses": [
+  "影响函数类方法计算仍较重，文中虽给轻量SF近似但与TIF存在固有误差，只是近似抵消",
+  "属LLM对齐数据筛选方向，与医学影像、多模态大模型推理的具体落地域仍有距离",
+  "正文前9页未见完整主表与各基准逐项数字，跨基准增益幅度需看后文确认"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "LLM对齐数据筛选，与医学影像/多模态推理落地域有距离",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

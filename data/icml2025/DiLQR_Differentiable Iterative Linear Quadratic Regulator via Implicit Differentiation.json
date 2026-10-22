@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DiLQR_Differentiable Iterative Linear Quadratic Regulator via Implicit Differentiation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DiLQR_Differentiable Iterative Linear Quadratic Regulator via Implicit Differentiation.pdf",
+ "title": "DiLQR: Differentiable Iterative Linear Quadratic Regulator via Implicit Differentiation",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6
+ },
+ "one_line": "隐式微分求解iLQR梯度，提速128倍但依赖收敛假设",
+ "innovations": [
+  "给出 iLQR 控制器梯度的解析解（基于隐式微分），避免逐迭代展开的反向传播。",
+  "使反向传播代价对迭代次数为常数，解决长迭代/长时域下可微 iLQR 的可扩展性瓶颈。",
+  "将该模块接入带视觉输入的大网络，验证高维端到端控制。"
+ ],
+ "method_framework": "把 iLQR 的收敛最优轨迹视为迭代不动点，用隐式微分在该不动点处直接求梯度（而非对成百上千次前向迭代做 BPTT），从而得到与迭代次数解耦的精确梯度，使 iLQR 可像神经网络层一样端到端训练。",
+ "experiment_framework": "在经典控制基准的模仿学习任务上评测；对比自动微分 iLQR、无解析梯度的可微控制器与传统神经网络策略；指标含训练提速倍数、模型损失与学习性能，并验证视觉高维端到端任务。",
+ "takeaways": [
+  "解析梯度使反向代价不随迭代数增长，相对自动微分提速 21–128 倍。",
+  "学习性能相对传统 NN 策略提升约 106 倍，且优于无精确解析梯度的可微控制器。",
+  "iLQR 可作为可微模块嵌入更大网络用于高维端到端控制。"
+ ],
+ "weaknesses": [
+  "依赖 iLQR 收敛到不动点及相应正则/假设，对不收敛或高度非光滑动力学的鲁棒性未充分讨论。",
+  "基准多为经典控制/模仿学习，未在真实机器人或大规模真实视觉控制中验证。",
+  "属可微控制，与可信推理主线（鲁棒性/泛化/不确定性×医学影像/多模态）关联弱。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

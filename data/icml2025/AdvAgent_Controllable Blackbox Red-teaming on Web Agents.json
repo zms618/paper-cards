@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/AdvAgent_Controllable Blackbox Red-teaming on Web Agents.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/AdvAgent_Controllable Blackbox Red-teaming on Web Agents.pdf",
+ "title": "AdvAgent: Controllable Blackbox Red-teaming on Web Agents",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "黑盒红队框架通过对抗prompt操纵web智能体，攻击成功率高但威胁模型局限",
+ "innovations": [
+  "首个针对web智能体的黑盒自动红队框架：无需访问模型权重/logits，仅通过黑盒反馈训练对抗prompter",
+  "利用RL（DPO）优化注入网页中的对抗prompt，实现可控的、隐蔽的web agent操纵",
+  "系统评估现有prompt防御对web agent攻击的有效性，发现现有防御仅提供有限保护"
+ ],
+ "method_framework": "两阶段训练：(1) 用少量人工设计的对抗prompt做初始监督训练；(2) 用DPO基于黑盒反馈（成功/失败）进一步优化对抗prompter。AdvAgent将不可见对抗prompt注入网页内容中，当web agent浏览该网页时被诱导执行目标有害操作（如错误金融交易、不当股票购买）。攻击具有可控性（指定目标动作）和隐蔽性（prompt对人眼不可见）。",
+ "experiment_framework": "目标：SOTA GPT-4-based web agents。任务：多种web任务（金融、购物、信息查询等）。基线：人工红队、白盒梯度攻击。指标：攻击成功率(ASR)、隐蔽性、防御绕过率。还测试了现有prompt防御的效果。",
+ "takeaways": [
+  "黑盒RL方法可有效自动生成针对web agent的对抗prompt，攻击成功率高",
+  "现有prompt注入防御对web agent场景的保护非常有限",
+  "Web agent的安全风险被低估，需要专门针对agent场景的防御机制"
+ ],
+ "weaknesses": [
+  "攻击需要向目标网页注入内容，假设攻击者能控制网页内容，实际威胁模型设定有局限",
+  "仅评估GPT-4-based agent，其他架构（如开源VLM agent）的易感性未充分验证",
+  "对抗prompt的'不可见'程度和对用户浏览体验的实际影响未详细量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "web agent安全属可靠性主线，但威胁模型局限且未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

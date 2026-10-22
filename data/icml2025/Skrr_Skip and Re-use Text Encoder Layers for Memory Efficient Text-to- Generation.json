@@ -1,0 +1,35 @@
+{
+ "title": "Skrr: Skip and Re-use Text Encoder Layers for Memory Efficient Text-to-Image Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 5.5,
+  "evidence": 6.0,
+  "relevance": 5.0,
+  "overall": 5.75
+ },
+ "one_line": "跳层复用文本编码器省内存，但理论浅且鲁棒性未验证",
+ "innovations": [
+  "指出文本编码器是T2I内存瓶颈(>70%参数/<0.5%FLOPs)，而以往剪枝/量化/KD多针对去噪模块",
+  "Skip：选择性跳过冗余transformer block；Re-use：用剩余层恢复被跳过层的T2I表征，有理论分析支撑",
+  "在>40%高稀疏下GenEval较现有blockwise剪枝提升达20.4%"
+ ],
+ "method_framework": "分析T5-XXL/CLIP等文本编码器block间冗余，按T2I任务特性跳过部分层(Skip)，并复用剩余层表征弥补跳层损失(Re-use)，形成块级剪枝，降低驻留内存而无需重训专用硬件。",
+ "experiment_framework": "SD3等T2I模型；指标FID/CLIP/DreamSim/GenEval；对比现有blockwise剪枝方法；报告高稀疏下GenEval提升至+20.4%且图像质量持平原模型。",
+ "takeaways": [
+  "T2I文本编码器存在显著block冗余，跳层+复用可大幅省内存而保质量",
+  "参数占比与FLOPs占比失衡的模块(单次前向、大内存)是被忽视的压缩目标"
+ ],
+ "weaknesses": [
+  "Skip/Re-use本质为层剪枝启发式，理论分析较浅，缺严格泛化保证",
+  "relevance偏多模态效率而非可信推理；仅评测标准T2I基准，复杂提示/长文本对齐鲁棒性未验证"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Skrr_Skip and Re-use Text Encoder Layers for Memory Efficient Text-to- Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Skrr_Skip and Re-use Text Encoder Layers for Memory Efficient Text-to- Generation.pdf",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

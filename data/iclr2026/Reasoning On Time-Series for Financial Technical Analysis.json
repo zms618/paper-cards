@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Reasoning On Time-Series for Financial Technical Analysis.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reasoning On Time-Series for Financial Technical Analysis.pdf",
+ "title": "Reasoning on Time-Series for Financial Technical Analysis",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.6
+ },
+ "one_line": "股价转文本标注，用LLM推理优化时序预测，精度SOTA但可靠性证据不足。",
+ "innovations": [
+  "提出Verbal Technical Analysis(VTA)，融合言语推理与潜空间推理，在时间序列输入/输出与时序域、自然语言推理之间跨域切换。",
+  "将股价数据转换为文本化技术分析标注，并用逆MSE奖励目标优化推理轨迹。",
+  "用时序骨干模型以推理所得属性为条件生成完整时序预测轨迹，而非仅输出买卖分类标签。"
+ ],
+ "method_framework": "先把历史股价转为文本化技术分析标注，让LLM产出自然语言推理轨迹并用逆MSE奖励优化；再由时序骨干模型以推理得到的技术属性为条件，输出完整股价预测轨迹，兼顾预测精度与可解释性。",
+ "experiment_framework": "在美国、中国、欧洲市场股票数据集上评测预测精度(对比时间序列LLM/金融LLM)，并由行业专家评判推理轨迹质量，报告SOTA预测精度。",
+ "takeaways": [
+  "把金融技术分析信号文本化后做言语推理，可在保持时序预测SOTA精度的同时给出专家认可的可解释推理链。",
+  "以推理属性为条件驱动时序骨干，比单纯改造嵌入空间的时序LLM更能兼顾可解释性。"
+ ],
+ "weaknesses": [
+  "属金融预测落地域，与可靠性主线的医学影像/多模态推理场景关联较弱。",
+  "预测精度提升未在正文前9页给出完整对比表，金融市场样本外稳定性与过拟合风险未充分讨论。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "金融预测与可靠性主线关联弱，可靠性证据不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

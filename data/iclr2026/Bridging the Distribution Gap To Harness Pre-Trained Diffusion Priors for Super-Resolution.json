@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Bridging the Distribution Gap To Harness Pre-Trained Diffusion Priors for Super-Resolution.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Bridging the Distribution Gap To Harness Pre-Trained Diffusion Priors for Super-Resolution.pdf",
+ "title": "Bridging the Distribution Gap To Harness PRE-TRAINED Diffusion Priors for SUPER-RESOLUTION",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "单步扩散超分，编码器对齐分布，依赖预训练模型",
+ "innovations": [
+  "训练图像编码器将LR输入映射到扩散模型训练空间",
+  "自适应预测噪声级别以对齐扩散模型的时间步分布",
+  "单步扩散过程实现高效高保真超分"
+ ],
+ "method_framework": "DM-SR训练图像编码器将LR图像映射到扩散模型熟悉的分布，分解为图像和噪声部分，通过预训练扩散模型分离并分别优化，保持扩散模型完整生成能力。",
+ "experiment_framework": "在ImageNet(合成)、DRealSR、RealSR和RealSet80(真实)数据集上评估，使用BRISQUE、LIQE、CLIP-IQA等感知指标，与RealESRGAN、StableSR、SinSR等方法对比。",
+ "takeaways": [
+  "分布对齐策略有效利用预训练扩散模型生成能力",
+  "自适应时间步预测提升不同退化程度图像的处理效果",
+  "单步扩散过程平衡效率与质量"
+ ],
+ "weaknesses": [
+  "仅训练编码器可能限制模型对复杂退化类型的适应性",
+  "依赖预训练VAE和扩散模型，可能受限于这些模型的固有局限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "超分任务与可靠性主线无直接交点，仅依赖预训练模型",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

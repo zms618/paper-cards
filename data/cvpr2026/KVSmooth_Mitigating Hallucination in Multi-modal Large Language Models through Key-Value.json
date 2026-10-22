@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/KVSmooth_Mitigating Hallucination in Multi-modal Large Language Models through Key-Value.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/KVSmooth_Mitigating Hallucination in Multi-modal Large Language Models through Key-Value.pdf",
+ "title": "KVSmooth Mitigating Hallucination in Multi-modal Large Language Models through Key-Value",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "KVSmooth用注意力熵平滑KV缓存减轻多模态模型幻觉",
+ "innovations": [
+  "引入注意力行熵量化token的sink程度",
+  "基于EMA的KV缓存平滑方法",
+  "熵引导的自适应系数调整机制"
+ ],
+ "method_framework": "KVSmooth对KV-Cache应用指数移动平均(EMA)平滑，通过注意力行熵动态量化每个token的sink程度，自适应调整平滑强度，抑制隐藏状态扰动导致的幻觉。",
+ "experiment_framework": "在CHAIR、OPOPE、AMBER和Object HalBench四个基准测试上评估，对比VCD、OPERA、PAI、SPARC和MiddleLayer等基线方法，使用CHAIRS和F1指标。",
+ "takeaways": [
+  "注意力行熵可有效识别sink token并预测幻觉倾向",
+  "KV缓存平滑比直接平滑隐藏状态更有效",
+  "自适应系数可在抑制幻觉的同时保持召回率"
+ ],
+ "weaknesses": [
+  "方法依赖于特定层的选择，最优层可能因模型而异",
+  "队列长度和参考超参数需要针对不同模型进行调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态幻觉抑制直接对接可靠性主线，方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

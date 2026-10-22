@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Semantic-guided Camera Ray Regression for Visual Localization.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Semantic-guided Camera Ray Regression for Visual Localization.pdf",
+ "title": "Semantic-guided Camera Ray Regression for Visual Localization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "语义引导的相机光线回归方法，室内定位精度提升但泛化性存疑",
+ "innovations": [
+  "首次将相机光线回归(CRR)引入视觉定位任务",
+  "设计融合全局感知和几何约束的场景无关特征解决歧义问题",
+  "提出语义引导的多映射器软融合机制处理大场景"
+ ],
+ "method_framework": "基于DINO的特征编码器提取局部和全局特征，结合位置编码，通过语义注意力模块融合多个MLP映射器的输出，回归相机光线参数，最后通过RC-RANSAC算法计算相机位姿",
+ "experiment_framework": "在Indoor-6和MapFree数据集上评估，与FM-based、SCR、APR等方法比较位置误差、方向误差和召回率，并进行消融实验验证各模块贡献",
+ "takeaways": [
+  "相机光线作为过参数化表示在优化中更稳定且具有隐私保护优势",
+  "全局感知和几何约束对解决光线回归中的歧义问题至关重要",
+  "语义引导的软融合机制比硬分割更适合处理大场景"
+ ],
+ "weaknesses": [
+  "仅提供了室内外数据集的结果，缺乏在极端条件下的鲁棒性验证",
+  "RC-RANSAC算法的复杂度可能影响实时性，推理速度较慢(20.1fps)"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "室内定位任务与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

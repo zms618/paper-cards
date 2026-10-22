@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/AAA-Gaussians_Anti-Aliased and Artifact-Free 3D Gaussian Rendering.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/AAA-Gaussians_Anti-Aliased and Artifact-Free 3D Gaussian Rendering.pdf",
+ "title": "AAA-Gaussians: Anti-Aliased and Artifact-Free 3D Gaussian Rendering",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "改进3D高斯渲染的滤波与剔除，但定量收益有限",
+ "innovations": [
+  "针对 3D 求值的抗锯齿：把平滑核的归一化因子从按三维体积变化（Eq.8）改为只按垂直于视线方向的 2×2 协方差 Σ⊥ 缩放（Eq.9-12），避免沿视线方向各向异性高斯被过度压暗",
+  "透视正确包围：放弃把高斯当作屏幕空间椭圆做平面拟合（越界即丢弃），改在视空间用视空间平面拟合解角度 θ/φ（Eq.15-17），使延伸到视锥外的高斯仍获得稳定边界，消除边界 popping",
+  "把 2D tile 剔除提升到 3D：为每个 tile 构造由四片屏幕空间平面围成的 3D 视锥（Eq.18），只投影与高斯均值最近的 2 个平面和 3 条边求最大贡献点，剔除整个高斯与单次高斯内的 tile"
+ ],
+ "method_framework": "用视空间平面交线做 3D 高斯求值；抗锯齿把平滑核归一化改为只计垂直视线方向的协方差缩放，并取训练相机最大采样频率与当前频率的较小者；在视空间解角度做透视正确包围，再以 3D 视锥剔除 tile。",
+ "experiment_framework": "Mip-NeRF360、Tanks&Temples、Deep Blending；对比 3DGS、MCMC、Taming 3DGS、StopThePop、Mip-Splatting、Hybrid Transparency；指标 PSNR、SSIM、LPIPS 加消融与 OOD 视角。",
+ "takeaways": [
+  "3D 求值的 3DGS 中，平滑核归一化应按垂直于视线的 2×2 协方差算，直接用体积变化会导致高斯过度透明",
+  "把屏幕空间平面拟合搬到视空间解角度来界定越界高斯、取代直接丢弃，可消除图像边界 popping"
+ ],
+ "weaknesses": [
+  "Table 2 消融显示去掉抗锯齿、层级排序、3D 求值任一模块后，in-distribution 的 PSNR/SSIM/LPIPS 几乎不变，模块收益只在 OOD 视角与定性图上体现，定量证据偏弱",
+  "对比的 Hybrid Transparency 因训练代码不可得而直接复算其公开结果，其余方法则统一优化到相同原语数，基线处理不一致，公平性存疑",
+  "光栅器完全构筑在 Radl 等人的层级光栅化器之上并沿用其 per-ray 排序与排队，仅替换包围/剔除/深度求值；换用其他 3DGS 后端的适用性、以及每 tile 求最大贡献点的额外开销未被分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "纯3D渲染优化，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

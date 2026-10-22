@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Occupancy Reward Shaping Improving Credit Assignment In Offline Goal-Conditioned Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Occupancy Reward Shaping Improving Credit Assignment In Offline Goal-Conditioned Reinforcement Learning.pdf",
+ "title": "Occupancy Reward Shaping: Improving Credit Assignment in Offline Goal-Conditioned Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "用世界模型占用测度通过最优传输整形奖励，提升离线GCRL性能",
+ "innovations": [
+  "形式化世界模型中存储的时间信息如何编码环境几何，用最优传输从占用测度提取目标达成信息整形奖励",
+  "证明 ORS 奖励整形不改变最优策略（保持最优策略不变）",
+  "在 13 个长程运动/操作任务上平均 2.2 倍提升、较最强基线 +31%，并在真实核聚变 3 个 Tokamak 控制任务上验证"
+ ],
+ "method_framework": "生成式世界模型已捕获智能体未来会访问状态的分布(占用测度)；ORS 用最优传输把该占用测度几何转化为奖励：未来分布更接近目标的状态给更高奖励，从而直接编码长程时间依赖，缓解稀疏奖励信用分配，且可证不改变最优策略。",
+ "experiment_framework": "在 OGBench 等 13 个长程运动/操作任务上对比离线 GCRL 方法；报告相对成功率(较最强基线 +31%)；并在真实世界核聚变 Tokamak 控制任务上验证。",
+ "takeaways": [
+  "世界模型中的占用测度天然编码了长程时间几何，可直接提取为整形奖励",
+  "基于最优传输的 ORS 在不改变最优策略的前提下显著改善信用分配",
+  "该方法能迁移到核聚变控制这类真实安全关键任务"
+ ],
+ "weaknesses": [
+  "依赖先训练一个准确的生成式世界模型，模型误差会传导到奖励",
+  "最优传输求解的计算开销随状态维度增长，高维任务可扩展性存疑",
+  "偏离可靠性/医学影像/多模态推理主线，相关性低"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "离线强化学习信用分配，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

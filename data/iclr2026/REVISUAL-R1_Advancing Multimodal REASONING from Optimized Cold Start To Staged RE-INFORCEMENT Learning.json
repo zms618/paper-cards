@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/REVISUAL-R1_Advancing Multimodal REASONING from Optimized Cold Start To Staged RE-INFORCEMENT Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/REVISUAL-R1_Advancing Multimodal REASONING from Optimized Cold Start To Staged RE-INFORCEMENT Learning.pdf",
+ "title": "ReVisual-R1: Advancing Multimodal Reasoning from Optimized Cold Start to Staged Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "三阶段课程缓解GRPO梯度停滞，但创新有限且资源消耗大",
+ "innovations": [
+  "发现精心选择的文本数据冷启动即可超越多数已有多模态推理模型，冷启动质量是多模态RL成功的前提",
+  "识别标准GRPO在多模态RL中的梯度停滞问题，提出Prioritized Advantage Distillation（PAD）过滤零优势样本并重新加权信息轨迹",
+  "发现多模态RL后追加文本-only RL精修可进一步锐化多模态推理能力而不损害视觉 grounding"
+ ],
+ "method_framework": "三阶段课程：(1)文本中心冷启动——用精选文本数据注入反思能力和扩展CoT推理能力；(2)多模态RL阶段——用PAD缓解GRPO梯度停滞，过滤零优势样本，将推理引擎grounding到视觉；(3)文本-only RL精修——巩固语言表达和逻辑一致性，不侵蚀新获得的视觉grounding。",
+ "experiment_framework": "在MathVerse/MathVision/DynaMath/WeMath/LogicVista等多模态推理基准和AIME24/25/GPQA/MATH500等文本推理基准上评测；3B和7B两个规模；对比OpenVLThinker/MM-Eureka/ThinkLite等开源多模态推理模型；消融验证三阶段各组件的贡献。",
+ "takeaways": [
+  "多模态推理能力的激活高度依赖冷启动质量，纯文本精选数据初始化即可获得强推理基础",
+  "标准GRPO直接用于多模态RL会因零优势样本过多导致梯度停滞，PAD可有效缓解",
+  "多模态RL后追加文本RL精修是'1+1>2'的协同步骤，可同时提升语言逻辑和视觉推理"
+ ],
+ "weaknesses": [
+  "三阶段课程需要大量训练数据和计算资源，冷启动文本数据的筛选标准和规模在前9页未充分量化",
+  "PAD方法的核心是过滤零优势样本，其技术新颖性有限，主要是工程优化",
+  "仅在数学推理为主的多模态基准上验证，对其他多模态推理类型（如视觉问答、图表理解）的泛化性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态RL方法设计有可迁移价值，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

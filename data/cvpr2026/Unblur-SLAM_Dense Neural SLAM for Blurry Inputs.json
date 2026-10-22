@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Unblur-SLAM_Dense Neural SLAM for Blurry Inputs.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Unblur-SLAM_Dense Neural SLAM for Blurry Inputs.pdf",
+ "title": "Unblur-SLAM Dense Neural SLAM for Blurry Inputs",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "自适应SLAM处理双模糊，但失败帧处理机制存疑",
+ "innovations": [
+  "首个同时处理运动模糊和散焦模糊的SLAM方法",
+  "自动模糊检测与计算资源自适应分配",
+  "物理约束的3D一致去模糊网络",
+  "基于3D高斯的混合模糊建模"
+ ],
+ "method_framework": "通过模糊检测将输入帧分类为清晰、成功去模糊和失败去模糊三类，分别采用不同的处理策略：清晰帧直接使用Droid-SLAM，成功去模糊帧进行多尺度优化，失败去模糊帧使用虚拟相机轨迹优化。",
+ "experiment_framework": "在ReplicaBlurry、ArchViz、TUM-RGBD和IndoorMCD等数据集上评估，使用PSNR、SSIM、LPIPS和ATE作为指标，与MBA-SLAM、Deblur-SLAM等基线方法比较。",
+ "takeaways": [
+  "模糊检测与自适应计算资源分配策略",
+  "物理约束的去模糊网络训练方法",
+  "基于3D高斯的混合模糊建模框架"
+ ],
+ "weaknesses": [
+  "去模糊失败帧的处理可能引入额外计算负担",
+  "在极端模糊场景下性能仍有提升空间",
+  "缺乏对去模糊网络失败原因的深入分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "SLAM技术本身不在可靠性主线，但模糊检测有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "title": "NestQuant: Nested Lattice Quantization for Matrix Products and LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.9
+ },
+ "one_line": "嵌套格量化矩阵乘，4bit下Llama-3性能提升但工程开销存疑。",
+ "innovations": [
+  "采用信息论上对低精度矩阵乘最优的自相似嵌套格量化器。",
+  "基于Gosset格实现低复杂度实用版本，可作为任意矩阵乘(自注意力/MLP)的drop-in量化器。",
+  "统一处理权重、KV缓存与激活三类量化，在4bit下全面优于SpinQuant/OSTQuant/QuaRot。"
+ ],
+ "method_framework": "把量化问题视为低精度矩阵乘的近似编码问题，用嵌套格(Conway-Sloane Voronoi码思想)找最近格点；以Gosset格构造实用低复杂度量化器，对权重/KV/激活统一量化并配辅助缩放系数压缩。",
+ "experiment_framework": "4bit后训练量化Llama-3-8B及更大到70B；对比LLM-QAT/GPTQ/SpinQuant/OSTQuant/QuaRot；指标为wikitext2困惑度与ARC-C/E/Hellaswag/PIQA/Winogrande零样本均分；报告实际bit数(zstd压缩后约3.99bit)。",
+ "takeaways": [
+  "嵌套格量化在低精度矩阵乘上接近信息论最优。",
+  "NestQuant 4bit全量化把相对FP16的困惑度差距缩小55%以上。"
+ ],
+ "weaknesses": [
+  "格码最近点搜索的实际工程开销与通用硬件友好性需进一步确认。",
+  "收益主要在极低bit(3-4bit)区间，对更高bit/更多架构的普适性待验证。",
+  "落地为LLM推理压缩，与可靠性主线（医学影像/多模态大模型推理可信性）关联弱，relevance中等偏低。"
+ ],
+ "confidence": "high",
+ "key": "icml2025/NestQuant_Nested Lattice Quantization for Matrix Products and LLMs.pdf",
+ "path": "icml2025/NestQuant_Nested Lattice Quantization for Matrix Products and LLMs.pdf",
+ "conf": "icml2025",
+ "raw_overall": 6.42,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

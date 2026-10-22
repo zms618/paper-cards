@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VPI-BENCH_Visual Prompt Injection Attacks for Computer-Use Agents.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VPI-BENCH_Visual Prompt Injection Attacks for Computer-Use Agents.pdf",
+ "title": "VPI-Bench: Visual Prompt Injection Attacks for Computer-Use Agents",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 7.0,
+  "overall": 6.0
+ },
+ "one_line": "构建VPI-Bench基准，揭示CUA在视觉注入攻击下高达51%的欺骗率。",
+ "innovations": [
+  "首次将视觉提示注入威胁建模扩展到拥有完整系统权限的计算机使用智能体(CUA)，而非仅浏览器智能体(BUA)，刻画从注入到造成危害的完整攻击链",
+  "构建VPI-Bench基准，含5个主流交互平台上的306个测试用例，每个用例为真实部署环境中视觉嵌入恶意提示的可交互平台变体",
+  "系统评测现有CUA/BUA与已有防御方法，量化其在VPI威胁下的鲁棒性缺陷"
+ ],
+ "method_framework": "作者定义黑盒端到端威胁模型：攻击者在平台界面中视觉嵌入恶意指令，诱导CUA执行未授权操作或泄露敏感信息。VPI-Bench将每个测试用例部署为真实可交互的网页/平台变体，智能体在其上自主操作，通过观察最终动作是否偏离任务目标来判定攻击是否成功。",
+ "experiment_framework": "在5个广泛使用平台上构造306个测试用例，评测多个代表性CUA与BUA模型，并对比现有防御方法；指标为攻击成功率/被欺骗率，报告CUA最高51%、BUA在某些平台高达100%的欺骗率，并评估防御方法带来的有限提升。",
+ "takeaways": [
+  "现有CUA在视觉提示注入下被欺骗率最高达51%，BUA在某些平台可达100%，多模态智能体安全性堪忧",
+  "现有防御方法仅带来有限改善，说明缺乏上下文感知的鲁棒防御",
+  "攻击链可完整复现从视觉注入到未授权动作/信息泄露的全过程，威胁真实且端到端"
+ ],
+ "weaknesses": [
+  "攻击成功率高度依赖平台与提示设计，前9页未见对攻击面多样性(如OCR层、截屏分辨率)的控制变量分析",
+  "仅报告现有防御的有限提升，未提出并验证新的防御机制，属于基准/实证而非方法贡献",
+  "306个用例的标注与成功判定标准可能受主观判定影响，跨平台可比性未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视觉注入攻击评估与计算机使用智能体安全，属于可靠性主线与安全落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

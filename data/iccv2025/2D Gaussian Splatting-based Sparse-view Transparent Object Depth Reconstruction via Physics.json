@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/2D Gaussian Splatting-based Sparse-view Transparent Object Depth Reconstruction via Physics.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/2D Gaussian Splatting-based Sparse-view Transparent Object Depth Reconstruction via Physics.pdf",
+ "title": "2D Gaussian Splatting-based Sparse-view Transparent Object Depth Reconstruction via Physics Simulation for Scene Update",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "透明物体2DGS重建，物理仿真更新场景，但分割依赖与实验不完整",
+ "innovations": [
+  "用 fine-tuned Grounded SAM 的类别专属 prompt 隔离透明物体，并把彩色分割 mask 与 object index one-hot 向量同 RGB 一起 spline 渲染（Eq.1-2），使 Gaussians 的 opacity 不塌到 0，同时能区分场景中多个透明物体实例",
+  "object-aware 3D loss 在遮挡区人工造梯度：每个对象取最远 n_g 个 Gaussians 作中心、各取 n_n 近邻成组，用中心间最小距离 d_i 的方差 L_d（Eq.4）与中心到近邻距离和 S_i 的方差 L_S（Eq.6）正则，并用 (16,16)/(32,16)/(64,32) 三组 (n_g,n_n) 三层层级匹配优化不同阶段的高斯数量",
+  "场景更新走 MPM 物理仿真（Taichi）：渲染深度转 mesh 后模拟物体移除的连锁位移，仅需改动后单张俯视图重新优化 Gaussians，且重优化阶段刻意省掉 object-aware loss"
+ ],
+ "method_framework": "Grounded SAM 分割透明物体 → 随机点初始化 2D Gaussians → 可微分 tile rasterizer 渲染 RGB/分割/one-hot + object-aware 3D 距离方差损失 → 渲染深度建 mesh 喂 MPM 仿真更新场景",
+ "experiment_framework": "BlenderProc 合成 TRansPose(9)/ClearPose(10) 序列与 6 组 Franka+RealSense 实机序列；对比 3DGS/2DGS/InstantSplat/FSGS/Feature Splatting/TransSplat/NFL/Dex-NeRF；指标 MAE、RMSE、6 档阈值精度、训练耗时、Gaussion 数（正文截断于 4.3 首段）",
+ "takeaways": [
+  "对任何视角都不可见的 obscured 区域主动造梯度（用组内距离方差当正则把漂移中心拉回近似凸面），比指望多视角观测覆盖更可靠",
+  "渲染物体而非整个场景 + object index one-hot，让「物体被移除后的连锁运动」无需重新扫描即可更新，为动态 3D 场景表示提供了可复用的更新范式"
+ ],
+ "weaknesses": [
+  "正文在 4.3 中途截断，消融表完全缺失：object-aware loss 的 L_S/L_d 权重、三层 (n_g,n_n) 分组、物理仿真各模块贡献均无对照；超参 α_S=10000/3、α_d=1/3 量纲悬殊且只报终值无搜索范围",
+  "t=1 的提升含设定差异：作者自己说明其余基线用 6 张后状态图而本方法只用 1 张俯视图，并用 t=0 的 Gaussian 作初值（warm-start + 更多可用信息），属于比较条件不对等",
+  "透明物体反射折射使 SFM 与 3D 基础模型失效，方法改由 fine-tuned Grounded SAM 提供分割 + 随机点初始化，等于把难点转嫁到分割器可靠性上，正文未提供分割精度与最终深度误差的耦合分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "透明物体重建与物理仿真，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

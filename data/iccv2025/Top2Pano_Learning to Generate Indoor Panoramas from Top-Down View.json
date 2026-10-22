@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Top2Pano_Learning to Generate Indoor Panoramas from Top-Down View.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Top2Pano_Learning to Generate Indoor Panoramas from Top-Down View.pdf",
+ "title": "Top2Pano Learning to Generate Indoor Panoramas from Top-Down View",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "三阶段框架从俯视图生成室内全景，参数量大且鲁棒性验证不足",
+ "innovations": [
+  "体素占用估计推断3D结构",
+  "基于体积渲染的粗略全景生成",
+  "扩散模型与ControlNet的精细化"
+ ],
+ "method_framework": "三阶段框架：1)使用SAM分割和OccRecon模块估计3D体素占用；2)体积渲染生成粗略深度和颜色全景；3)PanoGen模块基于ControlNet进行扩散模型精细化",
+ "experiment_framework": "Matterport3D和Gibson数据集，PSNR/SSIM/FID/LPIPS指标，与Sat2Density+LDM、Sat2Density+ControlNet、PanFusion对比",
+ "takeaways": [
+  "结构强化对几何一致性至关重要",
+  "扩散模型与粗略表示结合提升真实感",
+  "轻量级LoRA适配实现风格化"
+ ],
+ "weaknesses": [
+  "模型参数量大(33亿)，训练成本高",
+  "文本引导风格化与输入视图保真度存在权衡",
+  "未充分验证在复杂场景下的鲁棒性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "室内3D重建与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

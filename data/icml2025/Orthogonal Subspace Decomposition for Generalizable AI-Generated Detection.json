@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Orthogonal Subspace Decomposition for Generalizable AI-Generated Detection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Orthogonal Subspace Decomposition for Generalizable AI-Generated Detection.pdf",
+ "title": "Orthogonal Subspace Decomposition for Generalizable AI-Generated Image Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "SVD分解冻结主成分提升AIGI检测跨生成器泛化性",
+ "innovations": [
+  "揭示AIGI检测中的不对称现象：检测器对fake损失收敛远快于real损失(~100×)，导致特征空间低秩、表达力受限",
+  "用SVD将预训练特征空间分解为正交主子空间和残差子空间，冻结主成分、仅在残差子空间适配fake特征",
+  "显式保证特征空间高秩性，隐含学习fake源自real的层次先验"
+ ],
+ "method_framework": "在预训练视觉基础模型上，对特征矩阵做SVD分解为UΣV^T；冻结前k个主成分(保留预训练真实图像知识)，仅在剩余成分上训练fake检测头；正交约束保证两类特征不互相干扰，维持高秩特征空间。",
+ "experiment_framework": "任务：AI生成图像检测(跨生成器泛化)。基线：全参数微调、LoRA、Xception等标准检测器。指标：跨未见生成器的检测AUC。数据集：标准deepfake和合成图像基准。",
+ "takeaways": [
+  "AIGI检测失败的根因是不对称过拟合：fake损失快速收敛使特征空间坍缩到低秩",
+  "正交子空间分解显式维持特征空间高秩，显著提升对未见生成器的泛化",
+  "方法隐含学习fake源自real的层次先验，这是泛化的关键"
+ ],
+ "weaknesses": [
+  "SVD分解的k值(主成分数量)需手动选择，缺乏自适应方案",
+  "仅在图像检测验证，视频deepfake或多模态生成内容检测未考察",
+  "与最新扩散模型生成图像的对抗鲁棒性未充分测试"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

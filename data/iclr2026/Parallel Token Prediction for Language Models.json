@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Parallel Token Prediction for Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Parallel Token Prediction for Language Models.pdf",
+ "title": "Parallel Token Prediction for Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "PTP将随机性前置实现多token联合预测，投机解码提速2.4倍但领先有限。",
+ "innovations": [
+  "提出通用PTP框架：将随机性从post-hoc采样移到随机输入变量，未来token成为输入的确定性函数，可单次前向联合预测多token。",
+  "理论证明单次PTP调用可表示token间任意依赖，克服独立多token预测忽略依赖的缺陷。",
+  "可通过蒸馏已有模型或无教师的逆自回归训练(IAF)训练；在投机解码基准上提速2.4倍。"
+ ],
+ "method_framework": "在输入侧引入随机潜变量z，令未来若干token为z与上下文的确定性函数；训练时用教师模型蒸馏或逆自回归建模学习该条件映射；推理时一次前向同时采样z并解码出多个候选token，供大模型验证(投机解码)。",
+ "experiment_framework": "在多任务投机解码基准上评测；对比独立多token预测与投机解码；指标为接受率/端到端加速；PTP达2.4倍提速，并做蒸馏vs IAF训练的对比。",
+ "takeaways": [
+  "把随机性前置到输入变量可在单次前向中联合预测多token且不损失依赖建模能力。",
+  "理论上单次调用即可表示任意token依赖。",
+  "蒸馏或IAF两种训练方式均可行，实用提速明显。"
+ ],
+ "weaknesses": [
+  "2.4倍提速相对最新投机/并行解码方法的领先幅度有限。",
+  "随机输入变量的维度与采样策略对接受率的影响需更多调参分析。",
+  "主要在投机解码设定下评测，作为独立并行解码的质量保持性未充分验证。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "投机解码提速属于工程优化，与可靠性主线无实质交集",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

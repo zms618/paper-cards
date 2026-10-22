@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RISKPO_Risk-Based Policy Optimization Verifiable Reward for LLM Post-Training.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RISKPO_Risk-Based Policy Optimization Verifiable Reward for LLM Post-Training.pdf",
+ "title": "RiskPO: Risk-Based Policy Optimization via Verifiable Reward for LLM Post-Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "RiskPO用混合VaR和题目捆绑缓解熵坍缩，但超参数敏感性和稳定性分析不足。",
+ "innovations": [
+  "将经典均值RLVR目标替换为原则化风险度量（混合VaR），放大困难样本的梯度信号，防止过度自信收敛",
+  "设计题目捆绑方案，将多题聚合成捆绑组，丰富反馈信号，在全错题目上仍提供有效学习信号",
+  "理论证明风险厌恶更新可缓解熵坍缩并促进探索，在数学/多模态/代码三类基准上一致超越GRPO及其变体"
+ ],
+ "method_framework": "RiskPO用混合VaR目标替代GRPO的组内均值优势。混合VaR对奖励分布的多个区域施加加权关注，放大低奖励（困难）回答的梯度。同时将多个问题捆绑成组，将稀疏的二元奖励聚合为更密集的反馈信号，避免全错题目上优势为零导致的学习停滞。风险厌恶方向鼓励模型在薄弱区域探索。",
+ "experiment_framework": "在数学推理（AIME等）、多模态推理、代码生成三类基准上评测；对比GRPO及其变体；报告Pass@1和Pass@k指标；使用DeepSeek-R1-Distill系列模型（1.5B等规模）；训练曲线展示熵和性能变化。",
+ "takeaways": [
+  "均值目标导致RLVR过度强调高概率路径而忽视稀有但有信息量的推理路径，是熵坍缩的根因",
+  "风险敏感优化（混合VaR）可 principled 地放大困难样本梯度，同时理论上保证缓解熵坍缩",
+  "题目捆绑可在全错样本上提供非零学习信号，使模型在最弱区域仍有改进方向"
+ ],
+ "weaknesses": [
+  "混合VaR的多个超参数（α/β/ω风险剖面）的选择对结果的敏感性分析在前9页不充分",
+  "风险厌恶目标可能在过度探索和性能收敛间引入新的权衡，文中对训练稳定性的边界情况讨论不足",
+  "多模态推理的具体评测数据集和设置在前9页未详细展开"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "风险度量优化与LLM可靠性主线交点，方法设计可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

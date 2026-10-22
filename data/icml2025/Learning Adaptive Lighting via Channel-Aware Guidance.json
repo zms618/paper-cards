@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning Adaptive Lighting via Channel-Aware Guidance.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning Adaptive Lighting via Channel-Aware Guidance.pdf",
+ "title": "Learning Adaptive Lighting via Channel-Aware Guidance",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "通道差异光照建模，多任务统一框架，常规改进",
+ "innovations": [
+  "发现不同颜色通道光照特性不同，且通道差异在空域与频域表现不同，据此设计多任务统一框架",
+  "颜色分离特征经光引导注意力(LGA)引导颜色混合特征聚焦通道差异并保持跨通道视觉一致性",
+  "双域通道调制生成颜色分离特征，混合通道调制+光状态空间模块生成颜色混合特征"
+ ],
+ "method_framework": "并行提取颜色分离与颜色混合特征：前者用双域通道调制捕捉各通道独特光照属性，后者用混合通道调制+光状态空间模块；LGA 用分离特征引导混合特征，端到端多任务适配多类光照增强。",
+ "experiment_framework": "在曝光校正(SCIE)、修图(HDR+)、低光增强(LOL)、色调映射(HDRI Haven)四基准上对比 FECNet/CoTF/Retinexformer/Restormer/MambaIR 等，报告 PSNR dB 增益（0.86~3.86dB）与计算开销。",
+ "takeaways": [
+  "统一多任务光照建模优于逐任务专门设计",
+  "通道差异需在空域与频域联合刻画，单域不足以表征",
+  "通道感知引导可在提性能的同时降低计算资源"
+ ],
+ "weaknesses": [
+  "属图像增强/Retinex 类常规改进，新颖性中等",
+  "应用域为计算摄影，与医学影像/多模态大模型推理主线无关",
+  "前9页未见在下游检测/跟踪等鲁棒视觉任务上的端到端收益验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

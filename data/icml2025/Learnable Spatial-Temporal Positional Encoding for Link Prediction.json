@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learnable Spatial-Temporal Positional Encoding for Link Prediction.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learnable Spatial-Temporal Positional Encoding for Link Prediction.pdf",
+ "title": "Learnable Spatial-Temporal Positional Encoding for Link Prediction",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "时空位置编码替代注意力，图学习领域常规改进",
+ "innovations": [
+  "提出可学习的时空位置编码，同时利用时变结构与时变特征信息，突破既有固定/静态PE局限",
+  "从时空谱视角证明该位置学习方案能保持图性质，并验证 MLP 即可充分利用其表达力达到 transformer 性能",
+  "理论分析复杂度并实证运行时间少于SOTA，在13个数据集、transductive/inductive 设定下均领先"
+ ],
+ "method_framework": "设计可随时间演化的时空位置编码，结合时间编码器与可学习的结构/特征编码；用轻量 MLP 替代稠密/关系注意力来利用编码，降低 O(n^2)/O(n^3) 复杂度，端到端做时序链路预测。",
+ "experiment_framework": "在13个经典时序图数据集与最新大规模 TGB 基准上，对比10种算法、3种采样策略，transductive 与 inductive 设定下评测链路预测指标及运行时间。",
+ "takeaways": [
+  "好的可学习时空PE可让 MLP 媲美 graph transformer，免去昂贵注意力",
+  "位置编码应同时编码时变拓扑与时变特征，而非固定函数或纯静态结构",
+  "L-STEP 在精度与效率上同时优于SOTA"
+ ],
+ "weaknesses": [
+  "属图学习/位置编码方向，与鲁棒性/可信AI/多模态大模型主线无关",
+  "时间编码器仍用固定 cos 形式的超参，可学习范围有限",
+  "前9页未见对分布外/对抗扰动下时序链路预测鲁棒性的分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

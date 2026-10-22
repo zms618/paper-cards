@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Speeding Up the Learning of 3D Gaussians with Much Shorter Gaussian Lists.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Speeding Up the Learning of 3D Gaussians with Much Shorter Gaussian Lists.pdf",
+ "title": "Speeding Up the Learning of 3D Gaussians with Much Shorter Gaussian Lists",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "尺度重置与熵约束缩短高斯列表，提升3DGS训练效率但牺牲质量",
+ "innovations": [
+  "尺度重置策略定期缩小高斯尺度",
+  "alpha混合过程中的熵约束使权重分布更集中",
+  "与分辨率调度器集成实现渐进式训练"
+ ],
+ "method_framework": "提出两种核心策略：1) 定期重置高斯尺度鼓励更小的高斯覆盖更少像素；2) 在alpha混合过程中引入熵约束使主导权重更大，次要权重更小。两者结合显著缩短每个像素的高斯列表长度。",
+ "experiment_framework": "在Mip-NeRF 360、Deep Blending和Tanks & Temples数据集上评估，与3DGS、Taming-3DGS、DashGaussian和LiteGS等方法比较，使用PSNR、SSIM和LPIPS作为指标。",
+ "takeaways": [
+  "通过缩短高斯列表而非减少总高斯数来加速训练，适用于复杂场景",
+  "两种策略互补且与现有优化方法兼容"
+ ],
+ "weaknesses": [
+  "在Tanks & Temples上加速效果不如其他数据集显著",
+  "质量略有下降(PSNR降低约0.2-0.3dB)",
+  "参数选择需要仔细调整以平衡速度和质量"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3DGS加速优化，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

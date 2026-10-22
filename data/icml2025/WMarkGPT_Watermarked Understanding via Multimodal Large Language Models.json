@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/WMarkGPT_Watermarked Understanding via Multimodal Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/WMarkGPT_Watermarked Understanding via Multimodal Large Language Models.pdf",
+ "title": "WMarkGPT: Watermarked Image Understanding via Multimodal Large Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "首个水印图像理解MLLM，但泛化性和对比实验不足。",
+ "innovations": [
+  "首个针对水印图像理解的MLLM，可在无原始图像的情况下评估水印可见性并描述其位置、特征和对图像语义的影响",
+  "构建了三个VQA数据集：物体位置感知数据集、合成水印数据集（WQA-Synthetic, 50K对）和真实水印数据集（WQA-Real）",
+  "设计半自动化标注流水线，结合GPT-4生成问题模板和描述，高效构建大规模水印理解训练数据"
+ ],
+ "method_framework": "基于多模态大模型微调，使其能够：1）定位图像中的水印区域；2）描述水印的方向、位置、外观特征；3）评估水印的可见性等级（不可见/微弱/中等/可见/明显）。通过合成水印数据集和真实水印数据集微调，使用加权平均融合方法合成训练数据。",
+ "experiment_framework": "在WQA-Synthetic和WQA-Real两个数据集上评估；与现有SOTA MLLMs对比；指标包括准确率（ACC）、BLEU-1、ROUGE-L、LLM Score等；覆盖水印位置描述、特征描述、可见性评估等多种任务。",
+ "takeaways": [
+  "传统统计指标（PSNR等）需要原始图像且无法捕捉水印对语义的影响，MLLM方法能提供更细粒度的评估",
+  "WMarkGPT在水印可见性评估和语义描述上显著优于通用MLLM",
+  "半自动化标注流水线能高效构建大规模水印理解训练数据"
+ ],
+ "weaknesses": [
+  "仅针对图像水印评估，视频或其他模态的水印未涉及",
+  "合成数据集与真实水印的分布差异可能影响模型的实际泛化能力",
+  "未与专门的水印检测算法对比，仅与通用MLLM对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

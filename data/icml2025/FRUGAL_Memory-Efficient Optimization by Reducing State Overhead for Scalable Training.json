@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/FRUGAL_Memory-Efficient Optimization by Reducing State Overhead for Scalable Training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FRUGAL_Memory-Efficient Optimization by Reducing State Overhead for Scalable Training.pdf",
+ "title": "FRUGAL: Memory-Efficient Optimization by Reducing State Overhead for Scalable Training",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "梯度分裂降低内存但增加计算，语言模型验证，适用性存疑",
+ "innovations": [
+  "提出FRUGAL框架，在保持全秩权重更新的同时降低优化器状态内存，解决低秩方法(LoRA/GaLore/BAdam)信息丢失问题",
+  "通过梯度分裂技术，将优化器状态以低精度存储但保持更新方向的全秩性",
+  "实验证明在预训练和微调任务上均优于现有低秩优化方法"
+ ],
+ "method_framework": "现有内存高效优化方法(LoRA、GaLore、BAdam)都将权重更新限制为低秩，导致梯度信息丢失。FRUGAL：将梯度矩阵按列分裂为多个块，每个块独立维护低精度的优化器状态(动量m和方差v)。更新时组合各块的更新，保持整体更新的全秩性。这样优化器状态内存按块的低精度存储而减少，但更新方向是全秩的。",
+ "experiment_framework": "在语言模型预训练和微调任务上验证。对比基线：AdamW、LoRA、GaLore、BAdam。评估指标：验证损失、下游任务准确率、内存占用。测试不同模型大小和序列长度。",
+ "takeaways": [
+  "低秩更新在预训练阶段会造成显著信息丢失，FRUGAL的全秩更新更优",
+  "FRUGAL在同等内存预算下性能优于GaLore等低秩方法",
+  "分类头等参数对秩特别敏感，全秩更新的优势在这些层更明显"
+ ],
+ "weaknesses": [
+  "梯度分裂引入了额外的计算开销，训练时间可能增加",
+  "分裂块数的选择对性能和内存的权衡影响大，最优值如何确定缺乏指导",
+  "仅在语言模型上验证，对视觉模型等其他架构的适用性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

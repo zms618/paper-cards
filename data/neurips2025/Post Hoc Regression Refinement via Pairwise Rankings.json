@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Post Hoc Regression Refinement via Pairwise Rankings.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Post Hoc Regression Refinement via Pairwise Rankings.pdf",
+ "title": "Post Hoc Regression Refinement via Pairwise Rankings",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.0,
+  "overall": 5.75
+ },
+ "one_line": "后处理回归优化，融合成对排名与预测，但分布敏感且方差估计不稳定。",
+ "innovations": [
+  "模型无关的后处理回归优化方法",
+  "利用成对排名信息与回归预测融合",
+  "使用LLM或人类专家提供排名信息"
+ ],
+ "method_framework": "RankRefine结合基础回归器预测和基于排名的估计，通过逆方差加权融合，无需重新训练。基于Bradley-Terry模型计算排名估计，并推导其方差。",
+ "experiment_framework": "9个分子数据集和3个表格数据集，使用随机森林作为基线，比较不同排名准确性和参考样本数量的影响，评估MAE指标。",
+ "takeaways": [
+  "成对排名信息可有效提升回归性能",
+  "即使排名准确率仅0.55仍能改进预测",
+  "方法在跨域任务中具有泛化能力"
+ ],
+ "weaknesses": [
+  "对参考集分布敏感，当参考集与查询分布差异大时性能下降",
+  "方差估计噪声较大时性能明显下降"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

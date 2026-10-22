@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/STRONGER-MAS Multi-Agent Reinforcement Learning for Collaborative LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/STRONGER-MAS Multi-Agent Reinforcement Learning for Collaborative LLMS.pdf",
+ "title": "Stronger-MAS: Multi-Agent Reinforcement Learning for Collaborative LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "改进GRPO分组以适配多智能体协作，但RL与MAS贡献未解耦",
+ "innovations": [
+  "识别标准GRPO分组假设在MAS中因角色/轮次而异的prompt而失效",
+  "提出按智能体与轮次分组的AT-GRPO算法，适配多智能体工作流的on-policy训练",
+  "构建同时支持单策略与多策略模型训练的系统，覆盖MAS式rollout与在线更新"
+ ],
+ "method_framework": "将GRPO的分组粒度从'同prompt采样'改为按智能体与轮次分组，使on-policy RL可在多智能体协作工作流上稳定更新；系统层面同时支持单策略与多策略模型的rollout与训练。",
+ "experiment_framework": "在游戏、规划、代码、数学任务上评测；长程规划任务从单智能体RL基线14.0–47.0%提升到96.0–99.5%；代码平均提升3.87–7.62%，数学提升9.0–17.93%。",
+ "takeaways": [
+  "将GRPO分组改为按智能体/轮次是MAS-on-policy RL可行的关键",
+  "多智能体RL在长程规划任务上带来极大幅度提升",
+  "系统需同时支持单/多策略训练才能覆盖协作LLM场景"
+ ],
+ "weaknesses": [
+  "长程规划巨大提升可能部分来自多智能体结构本身，RL增量与MAS增量未完全解耦",
+  "奖励多为规则式，对开放式/开放式任务的可扩展性有限",
+  "与主线（医学影像/多模态推理可靠性）无直接落地关联"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "多智能体RL方法与医学影像/多模态推理可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

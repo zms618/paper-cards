@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Curvature Tuning Provable Training-free Model Steering From a Single Parameter.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Curvature Tuning Provable Training-free Model Steering From a Single Parameter.pdf",
+ "title": "Curvature Tuning: Provable Training-free Model Steering From a Single Parameter",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.3
+ },
+ "one_line": "曲率调通过激活函数参数化实现无训练模型转向与参数高效微调",
+ "innovations": [
+  "将激活函数视为样条算子，提出曲率调(CT)方法",
+  "S-CT无需训练即可通过单一参数调整决策边界曲率",
+  "T-CT作为参数高效微调方法，仅需LoRA 0.58%-59.09%参数量"
+ ],
+ "method_framework": "基于样条理论，通过β参数化激活函数(CTU)将ReLU网络投影到光滑函数空间，实现决策边界曲率可控的模型转向",
+ "experiment_framework": "12个下游数据集(包括医学影像)上的ImageNet预训练模型(ResNet/VGG)泛化实验，RobustBench鲁棒性评估，与线性探测、LoRA对比",
+ "takeaways": [
+  "激活函数作为模型几何的关键组件可被有效利用",
+  "混合参数化(SiLU+Softplus)可减轻均值偏移",
+  "U形分布的β/c参数表明模型倾向于选择极端值"
+ ],
+ "weaknesses": [
+  "理论保证主要针对ReLU网络，对Transformer等架构部分适用",
+  "β搜索范围较大(0.7-1.0)，计算开销较高",
+  "未探索不同任务类型的最优c值选择策略"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

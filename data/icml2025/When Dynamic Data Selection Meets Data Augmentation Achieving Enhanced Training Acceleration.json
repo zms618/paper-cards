@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/When Dynamic Data Selection Meets Data Augmentation Achieving Enhanced Training Acceleration.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/When Dynamic Data Selection Meets Data Augmentation Achieving Enhanced Training Acceleration.pdf",
+ "title": "When Dynamic Data Selection Meets Data Augmentation Achieving Enhanced Training Acceleration",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4,
+  "overall": 4.8
+ },
+ "one_line": "动态选样与增广的简单组合，计算开销抵消加速收益",
+ "innovations": [
+  "首次将动态数据选择(剪枝)与数据增广联合优化，利用二者协同而非简单叠加",
+  "估计每个样本'局部密度+多模态语义一致性'的联合分布，作为样本筛选依据",
+  "针对性地对适合增广的样本做增广，同时排除噪声/模糊样本，既保多样性又加速训练"
+ ],
+ "method_framework": "在线训练中持续估计每个样本的局部密度与其多模态语义一致性；依据该联合分布判断样本是'适合增广'(可增广提升多样性)还是'噪声/模糊'(应剔除)；动态选择并对选中样本做适配增广，缓解动态选数据导致的多样性下降问题。",
+ "experiment_framework": "在图像分类等任务上，对比静态/动态数据选择、单纯数据增广、以及二者简单叠加；指标为训练加速比与最终精度；强调无损甚至超无损性能的训练加速。",
+ "takeaways": [
+  "动态数据选择会降低数据多样性、限制泛化，而增广可补回多样性，但二者此前从未联合优化",
+  "联合框架同时获得训练效率提升与更强(或无损)的泛化性能",
+  "基于局部密度+语义一致性的样本判别能有效区分可增广样本与噪声样本"
+ ],
+ "weaknesses": [
+  "需在线估计局部密度与多模态语义一致性，计算/实现开销不小，'加速'收益被部分抵消",
+  "样本判别阈值对噪声/边界样本敏感，跨数据集鲁棒性需更多验证",
+  "属训练效率/数据选择工作，与鲁棒性主线及医学影像/多模态推理落地域关系较弱"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.55,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

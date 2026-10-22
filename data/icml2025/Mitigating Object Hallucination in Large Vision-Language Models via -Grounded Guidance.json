@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Mitigating Object Hallucination in Large Vision-Language Models via -Grounded Guidance.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Mitigating Object Hallucination in Large Vision-Language Models via -Grounded Guidance.pdf",
+ "title": "Mitigating Object Hallucination in Large Vision-Language Models via Image-Grounded Guidance",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6.5,
+  "relevance": 7,
+  "overall": 6.3
+ },
+ "one_line": "推理时用开源视觉模型引导减少LVLM物体幻觉，但依赖检测精度。",
+ "innovations": [
+  "提出训练免、API免的MARINE框架，在推理阶段引入图像接地引导来减少LVLM物体幻觉",
+  "利用多个开源视觉模型提取物体级信息，实现多模型融合的可靠物体级引导",
+  "在5种主流LVLM上验证，效果超过现有基于微调的幻觉抑制方法"
+ ],
+ "method_framework": "在推理阶段，先用开源视觉模型（如检测器、分割模型）提取图像中的物体级信息，然后将这些信息作为接地引导注入LVLM的生成过程。通过引导词的方式增强视觉上下文，减少模型生成不存在物体的倾向。支持集成多个视觉模型以获得更鲁棒的物体级检测结果。",
+ "experiment_framework": "在5种主流LVLM（如LLaVA、Qwen-VL等）上评测，使用POPE、AMBER等多个幻觉基准数据集。指标包括幻觉率、生成内容详细度等。同时用GPT-4V进行辅助评估。基线包括基于微调的方法和基于GPT-4后处理的方法。",
+ "takeaways": [
+  "推理时的图像接地引导可有效减少LVLM物体幻觉，效果甚至超过微调方法",
+  "多视觉模型融合的引导比单一模型更可靠",
+  "该方法在降低幻觉的同时保持了生成内容的详细度"
+ ],
+ "weaknesses": [
+  "依赖开源视觉模型的检测精度，若检测漏检或误检可能引入新的偏差",
+  "仅处理物体级幻觉，未覆盖属性幻觉、关系幻觉等更细粒度的幻觉类型",
+  "推理时引入额外视觉模型前向传播，增加了推理延迟和计算成本"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/HiFC_High-efficiency Flash-based KV Cache Swapping for Scaling LLM Inference.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/HiFC_High-efficiency Flash-based KV Cache Swapping for Scaling LLM Inference.pdf",
+ "title": "HiFC: High-efficiency Flash-based KV Cache Swapping for Scaling LLM Inference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.875
+ },
+ "one_line": "DRAM-free Flash KV缓存交换，提升LLM推理扩展性",
+ "innovations": [
+  "DRAM-free设计消除主机内存依赖",
+  "GPU Direct Storage实现SSD直接访问",
+  "伪SLC区域优化提升SSD寿命和性能"
+ ],
+ "method_framework": "HiFC架构包含Flash缓存块分配器、Flash感知块管理算法和GDS加速缓存引擎，实现GPU与SSD直接KV缓存交换",
+ "experiment_framework": "DeepSeek-R1模型，多种数据集(Qasper/GovReport/NarrativeQA)，吞吐量/交换次数/扩展性/模型多样性测试",
+ "takeaways": [
+  "顺序块分配策略降低SSD写入放大因子",
+  "流水线调度有效隐藏交换延迟",
+  "块大小选择需平衡交换频率和吞吐量"
+ ],
+ "weaknesses": [
+  "仅使用pSLC区域(20%容量)可能限制长期扩展性",
+  "多GPU配置下的SSD分区策略未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

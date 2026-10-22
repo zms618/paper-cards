@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/FINE Factorizing Knowledge for Initialization of Variable-sized Diffusion Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/FINE Factorizing Knowledge for Initialization of Variable-sized Diffusion Models.pdf",
+ "title": "FINE Factorizing Knowledge for Initialization of Variable-sized Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "SVD分解权重实现扩散模型可变尺寸初始化",
+ "innovations": [
+  "跨层共享奇异向量作为learngenes",
+  "基于SVD的权重分解实现知识因子化",
+  "轻量级层特定奇异值适应不同模型尺寸",
+  "首个扩散模型learngene初始化基准"
+ ],
+ "method_framework": "FINE将每层权重分解为共享的U⋆和V⋆(learngenes)与层特定的Σ(l)⋆，通过联合训练形成可分解知识结构，实现可变尺寸模型的高效初始化。",
+ "experiment_framework": "ImageNet-1K上训练DiT-B/L，评估L4-L12模型初始化性能，使用FID、sFID、IS指标，并在CelebA、LSUN等数据集上验证泛化性。",
+ "takeaways": [
+  "知识因子化框架可显著减少预训练成本",
+  "共享learngenes与轻量层特定参数的分离设计提升模型适应性",
+  "初始化质量对整个训练轨迹有持久影响"
+ ],
+ "weaknesses": [
+  "仅评估了图像生成任务，未涉及医学影像等应用",
+  "未充分分析不同噪声层级间的知识共享机制",
+  "计算效率提升主要基于特定实验设置，通用性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型初始化方法，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

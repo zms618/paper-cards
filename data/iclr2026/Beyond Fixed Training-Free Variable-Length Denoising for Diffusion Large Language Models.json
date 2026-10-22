@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Beyond Fixed Training-Free Variable-Length Denoising for Diffusion Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Beyond Fixed Training-Free Variable-Length Denoising for Diffusion Large Language Models.pdf",
+ "title": "Beyond Fixed: TRAINING-FREE VARIABLE-LENGTH Denoising for Diffusion Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "DAEDAL通过两阶段策略实现扩散LLMs的无需训练长度扩展。",
+ "innovations": [
+  "利用模型内部EOS置信度信号作为长度不足的指标",
+  "两阶段训练自由长度扩展策略",
+  "迭代掩码插入机制实现动态扩展"
+ ],
+ "method_framework": "DAEDAL采用两阶段策略：初始长度调整阶段基于EOS置信度动态扩展序列长度；迭代掩码插入阶段在推理过程中识别低置信度区域并插入掩码 token，实现按需扩展。",
+ "experiment_framework": "在GSM8K、MATH500、MBPP和HUMANEVAL基准上评估，使用LLaDA-Instruct-8B、LLaDA-1.5-8B和Dream-Instruct-7B模型，比较准确率和有效token比率。",
+ "takeaways": [
+  "利用模型内部信号作为长度调整指标的有效性",
+  "两阶段策略互补且各自有效"
+ ],
+ "weaknesses": [
+  "仅关注长度调整，未考虑其他推理约束",
+  "对初始长度不敏感但未探索极端短长度情况"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型长度扩展与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

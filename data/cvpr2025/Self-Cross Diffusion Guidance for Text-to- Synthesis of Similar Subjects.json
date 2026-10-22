@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Self-Cross Diffusion Guidance for Text-to- Synthesis of Similar Subjects.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Self-Cross Diffusion Guidance for Text-to- Synthesis of Similar Subjects.pdf",
+ "title": "Self-Cross Diffusion Guidance for Text-to- Synthesis of Similar Subjects",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "自交叉扩散指导缓解主体混合，但机制不深且依赖现有模型。",
+ "innovations": [
+  "自交叉扩散指导方法，惩罚自注意力图与交叉注意力图的重叠",
+  "聚合多个图像块的自注意力图而非仅使用最显著块",
+  "提出相似主体数据集(SSD)和GPT-4o评估方法"
+ ],
+ "method_framework": "通过聚合自注意力图与交叉注意力图的重叠作为损失函数，结合初始噪声优化和迭代细化，解决扩散模型中的主体混合问题。",
+ "experiment_framework": "在Animal-Animal、Animal-Object、Object-Object数据集及新提出的SSD上评估，使用TIFA-GPT4o指标(存在性、可识别性、无混合)和文本相似度对比SD、INITNO、CONFORM等方法。",
+ "takeaways": [
+  "聚合多个图像块的自注意力图比仅使用最显著块更有效",
+  "训练时无需微调，可直接应用于预训练模型如Stable Diffusion系列"
+ ],
+ "weaknesses": [
+  "方法在Stable Diffusion 2.1上表现受限于attend&excite效率，需结合CONFORM使用",
+  "仅针对早期时间步和中间层应用指导，可能限制整体效果"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "主体混合解决与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

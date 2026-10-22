@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Time Optimal Execution Of Action Chunk Policies beyond Demonstration Speed.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Time Optimal Execution Of Action Chunk Policies beyond Demonstration Speed.pdf",
+ "title": "Time Optimal Execution of Action Chunk Policies beyond Demonstration Speed",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "RACE方法通过状态目标、重定时和搜索实现机器人策略4倍加速，但与主线无关。",
+ "innovations": [
+  "提出以期望机器人状态而非指令动作作为模仿目标，解决加速执行时的状态偏差问题",
+  "提出动作块重定时机制，根据机器人物理极限尽可能快地执行动作块",
+  "提出测试时搜索方法，从当前机器人状态和动力学出发采样对齐的动作块以最大化可控性"
+ ],
+ "method_framework": "RACE三部分：(1)训练时以期望机器人状态为模仿目标而非指令动作；(2)推理时对预测的动作块进行重定时，在物理可达约束下尽可能快地执行；(3)测试时搜索选择与当前状态最对齐的动作块，确保异步推理时的控制稳定性。",
+ "experiment_framework": "在仿真和真实机器人上验证机器人操作任务。基线为原始动作块策略。指标包括任务成功率和执行速度加速比。",
+ "takeaways": [
+  "简单提高动作执行频率会破坏转换动力学并导致任务失败，需要系统性解决方案",
+  "RACE实现了最高4倍加速同时保持高成功率",
+  "期望状态目标+重定时+测试时搜索的组合能有效解决加速执行的稳定性问题"
+ ],
+ "weaknesses": [
+  "与主线（医学影像/多模态大模型推理可靠性）完全无关，属于机器人学习领域",
+  "仅在操作任务上验证，其他机器人任务类型的适用性未知",
+  "测试时搜索增加推理计算量，实际加速比受此影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯机器人操作加速，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

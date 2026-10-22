@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Epic Efficient Position-Independent Caching for Serving Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Epic Efficient Position-Independent Caching for Serving Large Language Models.pdf",
+ "title": "Epic: Efficient Position-Independent Caching for Serving Large Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "位置无关缓存框架提升LLM服务效率，但模型规模和准确性存疑",
+ "innovations": [
+  "位置无关缓存(PIC)形式化框架",
+  "LegoLink算法降低重计算复杂度至O(kN)",
+  "静态注意力稀疏选择策略"
+ ],
+ "method_framework": "EPIC系统采用两步框架：编译阶段生成并存储不可变块的KV向量，链接阶段通过LegoLink算法选择性重计算初始KV向量",
+ "experiment_framework": "在6个数据集和3种模型上评估，比较TTFT、F1分数和Rouge-L指标，同步和异步工作负载测试",
+ "takeaways": [
+  "初始token的注意力汇聚效应是关键问题",
+  "静态选择策略比动态选择更高效",
+  "显式缓存API提供更好的用户控制"
+ ],
+ "weaknesses": [
+  "仅在小规模模型上验证，未测试更大模型",
+  "未分析不同chunk大小对性能的影响",
+  "准确性损失在某些任务上达到7%"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

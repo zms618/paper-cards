@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/RankSEG-RMA_An Efficient Segmentation Algorithm via Reciprocal Moment Approximation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/RankSEG-RMA_An Efficient Segmentation Algorithm via Reciprocal Moment Approximation.pdf",
+ "title": "RankSEG-RMA: An Efficient Segmentation Algorithm via Reciprocal Moment Approximation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "优化RankSEG算法效率，但提升有限且仍慢于argmax",
+ "innovations": [
+  "互易矩近似(RMA)降低RankSEG复杂度至O(d)",
+  "扩展RMA至非重叠分割场景",
+  "像素级RMA-score函数解决重叠像素分配"
+ ],
+ "method_framework": "基于RankSEG框架，通过互易矩近似将RankDice和RankIoU的复杂度从O(d log d)和O(d²)降低到O(d)，同时保持性能",
+ "experiment_framework": "在PASCAL VOC、Cityscapes、ADE20K、LiTS和KiTS数据集上评估，使用UNet、DeepLabV3+等模型，比较mIoUI/mDiceI和mIoUC/mDiceC指标",
+ "takeaways": [
+  "互易矩近似可显著提升分割算法效率而不损失性能",
+  "RMA-score函数能有效解决非重叠分割场景中的像素分配问题"
+ ],
+ "weaknesses": [
+  "RankSEG-RMA仍比argmax规则慢，尽管绝对时间消耗可忽略",
+  "对某些已表现良好的类别提升有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

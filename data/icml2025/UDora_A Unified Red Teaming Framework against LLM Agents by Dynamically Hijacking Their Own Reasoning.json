@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/UDora_A Unified Red Teaming Framework against LLM Agents by Dynamically Hijacking Their Own Reasoning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/UDora_A Unified Red Teaming Framework against LLM Agents by Dynamically Hijacking Their Own Reasoning.pdf",
+ "title": "UDora: A Unified Red Teaming Framework against LLM Agents by Dynamically Hijacking Their Own Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "劫持LLM agent推理轨迹的攻击框架，依赖可观测CoT且防御讨论不足",
+ "innovations": [
+  "针对带外部工具的LLM agent：不再直接攻击最终动作，而是动态劫持agent自己的推理过程(它会先推理/规划再执行，直接攻击难奏效)",
+  "两阶段：先生成给定任务的推理轨迹，自动识别轨迹中插入目标扰动的最优位置，再以被扰动推理作为代理响应做优化",
+  "迭代执行上述过程，统一地诱导agent执行指定恶意动作或调用特定恶意工具，效果优于现有攻击方法"
+ ],
+ "method_framework": "对任务先跑一遍得到agent的CoT/规划轨迹；在轨迹中搜索最优插入点注入对抗串；把劫持后的推理作为优化代理响应，迭代更新扰动，逐步把agent导向恶意工具调用。",
+ "experiment_framework": "在邮件回复agent等工具型agent上；对比直接攻击(直球窃取隐私)与现有红队方法；指标为恶意动作/恶意工具调用的成功率、对隐私防护prompt的绕过率。",
+ "takeaways": [
+  "带工具的LLM agent靠'先推理后执行'天然抵御直球攻击，但可被劫持自身推理轨迹绕过——防护不能只靠系统prompt",
+  "自动定位推理轨迹中的可劫持插入点，是提升agent红队攻击效率的关键"
+ ],
+ "weaknesses": [
+  "攻击有效性依赖能拿到/诱导出agent推理轨迹(可观测CoT)，对隐藏推理或无显式CoT的agent是否适用未论证",
+  "实证集中在邮件等少数agent场景，跨工具/跨模型规模与对主动防御的鲁棒绕过评估有限；偏攻击侧，防御对策讨论不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

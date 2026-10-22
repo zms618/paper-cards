@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Multilingual Routing In Mixture-of-Experts.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Multilingual Routing In Mixture-of-Experts.pdf",
+ "title": "Multilingual Routing in Mixture-of-Experts",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "分析MoE多语言路由，发现中间层跨语言共享是性能关键",
+ "innovations": [
+  "首次系统分析MoE架构中的多语言路由模式，发现早/晚层语言特异性路由、中间层跨语言对齐的分层现象",
+  "揭示语言性能与该语言向英语路由相似度的强相关性",
+  "提出推理时路由干预方法，通过激活中间层英语任务专家来提升多语言性能"
+ ],
+ "method_framework": "利用并行多语言数据集对比分析QWEN3、PHI-3.5-MOE、GPT-OSS等多个MoE模型的专家路由模式；基于中间层跨语言路由对齐的发现，设计推理时路由干预策略，通过提升中间层英语高频任务专家的激活权重来改善非英语语言的任务表现。",
+ "experiment_framework": "在QWEN3-30B-A3B、PHI-3.5-MOE、GPT-OSS-20B、OLMoE四个MoE模型上进行，使用MGSM和GLOBAL-MMLU医学子集两个任务，覆盖15+语言，对比不同层位干预、不同专家类型的效果。",
+ "takeaways": [
+  "MoE模型中间层存在跨语言共享专家机制，与稠密LLM的参数共享趋势一致",
+  "推理时路由干预可在已训练好的SOTA MoE模型上一致提升1-2%多语言性能",
+  "仅中间层干预有效，早/晚层或多语言专用专家干预反而导致性能下降"
+ ],
+ "weaknesses": [
+  "推理时干预提升幅度较小(1-2%)，且需要知道英语中哪些专家对特定任务重要",
+  "仅验证了MGSM和医学MMLU两个领域任务，泛化到其他任务的效果未验证",
+  "未探索训练时如何促进跨语言专家共享的方法，仅停留在推理时干预"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多语言路由与可靠性主线无实质交点，仅为模型效率优化",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

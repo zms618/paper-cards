@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Frequency Bands In ROPE Base Frequency and Context Length Shape the INTERPOLATION–EXTRAPOLATION Trade-off.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Frequency Bands In ROPE Base Frequency and Context Length Shape the INTERPOLATION–EXTRAPOLATION Trade-off.pdf",
+ "title": "Frequency Bands In ROPE: Base Frequency and Context Length Shape the INTERPOLATION–EXTRAPOLATION TRADE-OFF",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "分析RoPE频率带现象，提出FMRoPE方法，但任务泛化不足",
+ "innovations": [
+  "发现RoPE中普遍存在的频率带现象",
+  "提出频率匹配干预(FMRoPE)方法",
+  "揭示θ与训练长度决定频率带位置的理论",
+  "阐明插值与外推的权衡关系"
+ ],
+ "method_framework": "通过分析查询和键的2范数识别频率带，使用p-RoPE评估不同频率维度贡献，结合理论推导建立θ、训练长度与频率带位置的关系模型",
+ "experiment_framework": "多模型(Gemma、Llama、Qwen、Phi-3)对比，不同θ和训练长度组合实验，困惑度评估，预训练与微调阶段分析",
+ "takeaways": [
+  "频率带位置由θ和训练长度预先决定，且在训练早期形成",
+  "低频维度(低于频率带)贡献有限，可考虑用NoPE替代",
+  "θ=Ltrain可改善外推性能但损害插性能，需权衡"
+ ],
+ "weaknesses": [
+  "未探讨不同任务类型对频率带的影响",
+  "FMRoPE需要预知目标序列长度，实用性受限",
+  "仅评估语言模型，未验证其他模态"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "RoPE频率带分析属模型可靠性主线，但任务泛化不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

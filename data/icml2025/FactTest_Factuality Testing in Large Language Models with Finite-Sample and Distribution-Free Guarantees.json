@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/FactTest_Factuality Testing in Large Language Models with Finite-Sample and Distribution-Free Guarantees.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FactTest_Factuality Testing in Large Language Models with Finite-Sample and Distribution-Free Guarantees.pdf",
+ "title": "FactTest: Factuality Testing in Large Language Models with Finite-Sample and Distribution-Free Guarantees",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 8,
+  "overall": 7
+ },
+ "one_line": "将LLM幻觉检测形式化为假设检验，提供错误率控制但依赖不确定性分数质量",
+ "innovations": [
+  "首次将幻觉检测形式化为假设检验问题，严格控制Type I错误率(将幻觉误判为事实的概率)在用户指定的α水平",
+  "证明在温和条件下FactTest同时保证Type II错误(漏检幻觉)的强控制",
+  "扩展到协变量偏移场景，使框架在训练分布与测试分布不一致时仍有效",
+  "框架无分布假设，适用于黑盒API(如GPT-4o、Claude、Gemini)"
+ ],
+ "method_framework": "FactTest将事实性判断建模为假设检验：H0=模型回答正确，H1=模型产生幻觉。对每个问题，从模型的不确定性分数(如logprob、语义一致性分数)出发，构造检验统计量。通过在校准数据集上确定拒绝域，使得Type I错误率(正确回答被误判为幻觉的概率)不超过用户指定的α。证明在分数分布满足温和条件时，Type II错误率(幻觉被漏检)也有界。协变量偏移扩展通过重要性加权实现。",
+ "experiment_framework": "在ParaRel、WiCE等事实性基准上验证。测试模型包括OpenLLaMA-3B、GPT-4o Mini、Claude-3.5、Gemini-1.5、GPT-4o。对比基线：检索增强方法、训练-based方法、不确定性估计方法。评估指标：Type I错误控制、检测准确率、OOD泛化能力。",
+ "takeaways": [
+  "FactTest在严格控制Type I错误率的同时，检测准确率显著优于基线方法",
+  "框架适用于黑盒API，用开源模型计算的分数对闭源模型同样有效",
+  "协变量偏移扩展使方法在OOD问题上仍保持可靠性"
+ ],
+ "weaknesses": [
+  "依赖模型不确定性分数的质量，分数本身不具区分度时检验效果下降",
+  "校准数据集的构建需要额外标注成本，实际部署门槛较高",
+  "仅在事实性问答任务上验证，对长文本生成、推理任务的幻觉检测适用性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

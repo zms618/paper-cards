@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/NLHF_Beyond RLHF and NLHF Population-Proportional Alignment under An Axiomatic Framework.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/NLHF_Beyond RLHF and NLHF Population-Proportional Alignment under An Axiomatic Framework.pdf",
+ "title": "Beyond RLHF and NLHF: Population-Proportional Alignment under an Axiomatic Framework",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "社会选择理论框架下的偏好学习，从成对比较反推总体分布实现比例对齐。",
+ "innovations": [
+  "从成对比较数据直接推断评估者总体分布的可行集，替代RLHF单一标量奖励假设",
+  "提出并证明满足单调性、Pareto效率，以及新公理人口比例对齐(population-proportional alignment)与人口有界可操纵性(population-bounded manipulability)",
+  "提出soft-max松弛方法在人口比例对齐与Condorcet胜者选择间平滑权衡"
+ ],
+ "method_framework": "不把人类偏好压成单标量奖励，而是把成对比较数据视为对评估者总体偏好分布的观测，反推可行总体分布集；据此构造一个策略(分布上的混合)使其按真实总体比例代表不同意见，并满足社会选择公理；用softmax温度参数在比例代表与Condorcet胜者间连续折中，同时把策略被策略性操纵的程度用总体规模上界住。",
+ "experiment_framework": "在表格推荐任务与大模型对齐两类实验上验证；对比RLHF/NLHF；指标包括偏好覆盖比例、对多数意见的偏向、抗操纵性、可扩展性；报告推断总体分布的精度与策略选择。",
+ "takeaways": [
+  "标准RLHF偏好widely-held意见会偏向某些群体并易被策略操纵，人口比例对齐可缓解",
+  "从成对比较反推总体分布使策略可按真实人口比例代表多元意见，而非只服务多数派",
+  "softmax松弛在Condorcet效率与比例代表间提供可调折中，且有界可操纵性给出抗操纵保证"
+ ],
+ "weaknesses": [
+  "总体分布推断依赖成对比较的采样假设，评估者噪声/相关性未充分建模",
+  "比例对齐可能稀释最优策略质量，softmax温度的实际选取缺乏自动准则",
+  "LLM对齐实验规模有限，未在真实大规模人类偏好数据集(如UltraFeedback)上端到端对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "社会选择理论对齐方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RELI3D_Relightable Multi-View Reconstruction Disentangled Illumination.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RELI3D_Relightable Multi-View Reconstruction Disentangled Illumination.pdf",
+ "title": "ReLi3D: Relightable Multi-View 3D Reconstruction with Disentangled Illumination",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 5.1
+ },
+ "one_line": "统一前馈管线重建3D几何、材质和光照，但缺乏可靠性主线相关性",
+ "innovations": [
+  "首个统一端到端前馈管线，同时重建3D几何、空间变化PBR材质和环境光照，无需分离管线",
+  "双路径预测策略：几何+外观路径输出网格和svBRDF，光照路径从背景/反射预测HDR环境，通过可微MC+MIS渲染器训练解耦",
+  "混合域训练协议结合合成PBR数据和真实RGB捕获，实现真实世界泛化"
+ ],
+ "method_framework": "共享cross-conditioning transformer融合任意数量多视图输入，构建统一特征triplane。路径1从triplane预测网格和svBRDF（反照率/粗糙度/金属度/法线）；路径2融合mask-aware token预测RENI++潜码表示HDR环境光。可微物理MC+MIS渲染器将两路径绑定，强制物理合理的材质-光照解耦。",
+ "experiment_framework": "在多个3D重建基准上评测；对比生成式（扩散）和重建式（LRM/SF3D/TripoSR）方法；报告几何精度、材质准确性、光照质量和重光照保真度；测试单视图和多视图、合成和真实数据。",
+ "takeaways": [
+  "多视图几何一致性约束可将单视图材质-光照解耦的病态问题变为良态",
+  "前馈方式可在1秒内完成联合几何+材质+光照重建，无需逐场景优化",
+  "混合合成PBR数据和真实数据训练可弥合域差距"
+ ],
+ "weaknesses": [
+  "与可靠性/多模态推理/医学影像主线完全无关，属于3D视觉/图形学领域",
+  "稀疏多视图的最小视图数量和对视角分布的敏感性未充分消融",
+  "前9页未见与最新3D高斯泼溅方法的系统对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯3D重建/图形学工作，与可靠性主线完全无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Rethinking Benign Relearning Syntax As the Hidden Driver Of Unlearning Failures.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rethinking Benign Relearning Syntax As the Hidden Driver Of Unlearning Failures.pdf",
+ "title": "Rethinking Benign Relearning: Syntax as the Hidden Driver of Unlearning Failures",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "推翻良性重学主题驱动说，提出句法多样化抑制遗忘失败。",
+ "innovations": [
+  "推翻'良性重学由主题相关性驱动'的通行解释，证明句法相似才是主因：无主题重叠但句法相同的数据仍会在表示/梯度对齐下触发遗忘内容恢复。",
+  "在表示与梯度层面解释句法相似如何导致遗忘失败。",
+  "提出句法多样化：遗忘前把原forget query改写成异构句法结构，有效抑制良性重学、加速遗忘并缓解遗忘效力与模型效用的权衡。"
+ ],
+ "method_framework": "构造主题相关与句法相似两类relearn集做对照实验，分离二者作用；在遗忘阶段把待遗忘查询改写为多种句法结构（句法多样化），打破与遗忘内容在表示/梯度上的对齐，从而防止后续良性微调重新激活被遗忘知识。",
+ "experiment_framework": "在标准机器遗忘benchmark上评测；对照主题相关集与句法相似集；指标为遗忘后重学成功率、遗忘速度、以及模型效用保留；报告句法多样化对良性重学的抑制效果。",
+ "takeaways": [
+  "机器遗忘的脆弱性主要来自句法相似的数据，而非主题重叠。",
+  "遗忘前做句法多样化改写可同时加速遗忘、抑制重学并保持效用。"
+ ],
+ "weaknesses": [
+  "主要在合成/实体类遗忘benchmark验证，对真实版权/隐私文档的遗忘迁移未充分展示。",
+  "句法多样化依赖改写模型，改写本身可能泄漏或残留语义。",
+  "与医学影像/多模态推理主线仍有距离，属可信AI中的机器遗忘方向。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "可信AI中的机器遗忘，句法多样性设计具迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

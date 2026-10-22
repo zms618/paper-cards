@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/VQ-VAE_RADAR VQ-VAE Decoder of VAR is a Good Student for.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/VQ-VAE_RADAR VQ-VAE Decoder of VAR is a Good Student for.pdf",
+ "title": "RADAR VQ-VAE Decoder of VAR is a Good Student for",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "语义掩码与解码器适配实现VAR加速，但依赖预计算且评估有限",
+ "innovations": [
+  "语义成本感知掩码策略(SCA-Mask)",
+  "后加速适配(PAA)解码器微调",
+  "无外部数据的内部知识蒸馏"
+ ],
+ "method_framework": "两阶段加速框架：首先通过SCA-Mask量化注意力块重要性并优化掩码设计，然后通过PAA轻量级微调解码器恢复质量",
+ "experiment_framework": "ImageNet-1K类条件生成、GenEval文本到图像、VQA基准，评估FID、IS、精度、召回率及吞吐量",
+ "takeaways": [
+  "注意力模式量化为优化问题",
+  "解码器适配比重训练整个模型更高效",
+  "轻量级LoRA适配实现即插即用"
+ ],
+ "weaknesses": [
+  "掩码设计依赖预计算约5万张图像",
+  "仅评估了有限任务和模型规模",
+  "未充分分析不同加速预算下的性能变化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "模型加速技术不属可靠性主线，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

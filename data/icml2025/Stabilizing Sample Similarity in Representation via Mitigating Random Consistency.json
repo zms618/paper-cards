@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Stabilizing Sample Similarity in Representation via Mitigating Random Consistency.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Stabilizing Sample Similarity in Representation via Mitigating Random Consistency.pdf",
+ "title": "Stabilizing Sample Similarity in Representation via Mitigating Random Consistency",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 6.0,
+  "overall": 5.6
+ },
+ "one_line": "改造欧氏距离度量，消除随机一致性偏差提升表示可分性。",
+ "innovations": [
+  "识别出欧氏距离度量中固有的随机一致性(random consistency)偏差，它同时损害评估的公平性与判别性",
+  "推导均匀标签置换下期望欧氏距离并给出闭式解Pure Square Euclidean Distance(PSED)，可证明地消除随机一致性",
+  "证明PSED满足异构性与无偏性保证，并借助指数Orlicz范数建立泛化界，确认其统计可学习性"
+ ],
+ "method_framework": "将学习到的相似度矩阵K与真实类别邻接矩阵的欧氏距离作为损失；通过推导标签均匀置换下的期望距离得到PSED闭式解，剔除随机一致性项，从而在理论上无偏地度量表示的类级判别结构。",
+ "experiment_framework": "在多个图像/分类基准上对比传统损失函数，指标为accuracy、F1 score与类结构可分性(class-structure differentiation)。",
+ "takeaways": [
+  "用相似度矩阵与类别邻接矩阵的结构距离直接监督表示学习，比逐对相似度更贴合类级判别目标",
+  "显式去除度量中的随机一致性期望项可同时改善公平性与判别性，这一去偏思路可迁移到其他矩阵型度量损失"
+ ],
+ "weaknesses": [
+  "依赖真实类别标签构造邻接矩阵，本质是监督信号改造，未涉及半监督/无监督设定",
+  "实验以传统分类基准为主，缺乏与近年度量学习/对比学习强基线的系统对比，收益幅度未量化",
+  "前9页内未见完整消融表，PSED对超参数与相似度矩阵构造的敏感性不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Position Scaling LLM Agents Requires Asymptotic Analysis with LLM Primitives.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Position Scaling LLM Agents Requires Asymptotic Analysis with LLM Primitives.pdf",
+ "title": "Position: Scaling LLM Agents Requires Asymptotic Analysis with LLM Primitives",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4,
+  "relevance": 7,
+  "overall": 5.5
+ },
+ "one_line": "立场论文提出LLM前向传播为原子成本，但缺乏实证与可操作性验证。",
+ "innovations": [
+  "提出将单次 LLM 前向传播视为计算成本的原子原语，从而把某个具体 LLM 的内部不透明性与多 LLM 编排的固有效率解耦",
+  "指出现有 agent 系统的分解多基于人类团队分工的直觉，缺乏对分解是否接近最优的理论刻画",
+  "主张以渐近分析（asymptotic analysis with LLM primitives）替代拟人化推理，来指导大规模问题到 LLM agent 的分解设计"
+ ],
+ "method_framework": "把具有明确 scope/role 的 LLM agent 当作可组合的计算对象；以单次 LLM 前向传播为成本原子，对多 agent 系统的任务分解做渐近复杂度分析，区分\"今天资源能做什么\"与\"规模极限下效率能到多少\"。通过这种抽象评估不同分解策略的扩展性，而非依赖人类分工直觉。",
+ "experiment_framework": "立场论文，无大规模新实验；以现有多 agent 系统（基准求解、软件开发团队、社区模拟、研究流程自动化）作为讨论对象，论证渐近分析视角的必要性。",
+ "takeaways": [
+  "LLM agent 系统的效率问题应在规模极限下用渐近分析刻画，而非停留在当前资源下的可行性演示",
+  "把前向传播当原子成本可隔离编排效率，不受具体模型内部机制干扰",
+  "直觉式角色分解未必最优，形式化渐近分析能解锁更好的分解与扩展"
+ ],
+ "weaknesses": [
+  "立场论文仅提出分析视角，未给出具体的渐近复杂度推导、定理或在基准上的实证对比，读者难以判断该框架的实际可操作性",
+  "把前向传播抽象为等成本原子忽略了不同任务下推理成本/失败率的巨大差异，这一简化在9页内未充分辩护",
+  "对如何从渐近结论反推现实分解设计缺乏可执行路线"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.18,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

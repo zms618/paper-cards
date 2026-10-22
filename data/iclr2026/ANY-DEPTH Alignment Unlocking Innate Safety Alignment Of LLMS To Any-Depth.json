@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/ANY-DEPTH Alignment Unlocking Innate Safety Alignment Of LLMS To Any-Depth.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/ANY-DEPTH Alignment Unlocking Innate Safety Alignment Of LLMS To Any-Depth.pdf",
+ "title": "ANY-DEPTH Alignment: Unlocking Innate Safety Alignment Of LLMS To ANY-DEPTH",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "安全令牌重注入实现LLMs深度安全对齐，但计算开销大且依赖特定令牌",
+ "innovations": [
+  "发现深度预填充攻击导致现有对齐策略失效",
+  "提出Any-Depth Alignment(ADA)方法，通过重新注入安全令牌激活模型内在安全评估",
+  "开发ADA-LP线性探测方法，直接从隐藏状态检测有害内容"
+ ],
+ "method_framework": "ADA方法基于安全令牌(主要是助手头部令牌)的重新注入，激活模型内在安全评估。ADA-RK通过重新注入令牌并生成前瞻性拒绝；ADA-LP则直接探测安全令牌隐藏状态，使用线性分类器检测有害内容。",
+ "experiment_framework": "数据集：AdvBench、JailbreakBench、StrongREJECT、HEx-PHI等；基线：基础模型、深度对齐、自我防御、外部分类器；指标：拒绝率、攻击成功率、过度拒绝率",
+ "takeaways": [
+  "安全令牌隐藏状态在不同深度下保持线性可分离性，是检测有害内容的关键",
+  "ADA方法无需修改模型参数即可实现深度鲁棒的安全对齐",
+  "模型内在安全评估即使在没有明确拒绝的情况下仍然存在"
+ ],
+ "weaknesses": [
+  "ADA-RK需要生成前瞻性内容，增加计算开销",
+  "方法依赖于特定令牌(助手头部)，可能不适用于所有模型架构",
+  "未充分探索不同语言和文化背景下的安全对齐表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM安全对齐属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

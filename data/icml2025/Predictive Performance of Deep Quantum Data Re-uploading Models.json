@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Predictive Performance of Deep Quantum Data Re-uploading Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Predictive Performance of Deep Quantum Data Re-uploading Models.pdf",
+ "title": "Predictive Performance of Deep Quantum Data Re-uploading Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6
+ },
+ "one_line": "量子数据重上传模型深度增加导致预测性能退化至随机水平",
+ "innovations": [
+  "揭示深度数据重上传编码的基本局限：高维数据+有限qubit下，预测性能随编码层数增加逐渐退化到接近随机猜测",
+  "从理论上证明反复数据上传无法缓解该退化，澄清了重上传模型可训练性与泛化预测性之间的区别",
+  "在合成线性可分数据与真实数据上验证该退化规律，并给出应采用更宽(更多qubit)而非更深更窄电路的设计建议"
+ ],
+ "method_framework": "针对有限qubit的数据重上传量子电路，分析其在高维经典数据上的编码与预测行为；论证浅层编码可保持预测接近训练结果，而深层编码层使数据编码在Hilbert空间中趋于弥散/不可区分，导致对未见样本的预测坍缩到随机猜测水平；用合成与真实数据集验证理论预言。",
+ "experiment_framework": "在合成线性可分数据集与多个真实世界数据集上，扫描编码层数与qubit数(宽度)；指标为测试集预测精度；对比浅层与深层编码、窄而深与宽而浅架构，验证预测性能随深度退化的规律。",
+ "takeaways": [
+  "数据重上传模型的可训练性(拟合训练集)不等于预测性(泛化到未见数据)，深度编码会损害后者",
+  "处理高维数据时应加宽电路(更多qubit)而非堆叠更深编码层",
+  "重复上传数据并不能阻止深度编码带来的预测退化"
+ ],
+ "weaknesses": [
+  "退化结论主要在线性可分/有限规模数据上论证，对非线性、纠缠结构更强的任务是否同样成立需更多证据",
+  "实验所用真实数据集维度与规模有限，与近中期NISQ硬件的实际噪声环境结合不足",
+  "未给出避免退化的具体可训练架构(如初始化/正则)，仅给出宽度优先的定性建议"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "title": "Uncertainty-Aware Gaussian MAP for Vision-Language Navigation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "高斯图上建模三类不确定性，提升VLN导航可靠性",
+ "innovations": [
+  "首次在 VLN 中显式区分并建模三类感知不确定性：几何(结构可靠度)、语义(歧义解释)、外观(渲染对高斯扰动的敏感度)。",
+  "在可微 3D 高斯基元上，通过位置/尺度的变分扰动估几何不确定度、扰动语义属性估语义不确定度、用 Fisher Information 刻画外观不确定度。",
+  "把三类不确定性并入 SGM，扩展为统一的 3D 价值图，将不确定性落地为可供导航策略使用的可供性与约束。"
+ ],
+ "method_framework": "先从多视角 RGB-D 观测的伪激光点云初始化可微 3D 高斯原语并赋予语义，构建语义高斯图 SGM；再分别用变分扰动与 Fisher 信息估计三类不确定性，将其编码进 SGM 形成 3D 价值图，供导航策略据此在证据不足/遮挡时选择更可靠的动作。",
+ "experiment_framework": "在多个视觉语言导航基准上评估，与忽略感知不确定性的基线智能体对比，报告成功率(SPL/Success)等导航指标，验证在视觉相似门/遮挡等模糊场景下的稳健性。",
+ "takeaways": [
+  "既有 VLN 智能体训练激励无论置信都预测动作，在证据不足(相似门)或遮挡时会做出不可靠 grounding 与次优路径。",
+  "显式把几何/语义/外观不确定性作为观测纳入，能引导智能体在高不确定处绕行或选更安全方向，提升导航可靠性。",
+  "Fisher 信息可作为外观不确定性的有效可微度量。"
+ ],
+ "weaknesses": [
+  "依赖 RGB-D/伪激光点云初始化与可微高斯渲染，在纯单目或弱深度信息场景的可用性未讨论。",
+  "三类不确定性估计均基于扰动近似，其校准质量与计算开销未在摘要外充分说明。",
+  "仅在 VLN 仿真/室内基准验证，未涉及医学影像或多模态大模型推理等目标落地域；完整消融与统计对比表未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Uncertainty-Aware Gaussian MAP for Vision-Language Navigation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Uncertainty-Aware Gaussian MAP for Vision-Language Navigation.pdf",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "VLN导航可靠性提升，明确触及可靠性主线与落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

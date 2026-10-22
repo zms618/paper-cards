@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Beyond Average Value Function in Precision Medicine Maximum Probability-Driven Reinforcement Learning for.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Beyond Average Value Function in Precision Medicine Maximum Probability-Driven Reinforcement Learning for.pdf",
+ "title": "Beyond Average Value Function in Precision Medicine: Maximum Probability-Driven Reinforcement Learning for Survival Analysis",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 8,
+  "overall": 6.8
+ },
+ "one_line": "将RL目标转为最大化生存概率，但理论依赖强假设，真实数据验证不足",
+ "innovations": [
+  "将传统RL目标从最大化期望生存时间转变为最大化事件间持续时间超过阈值的概率",
+  "推导了最大概率目标的下界，将问题转化为累积对数概率之和",
+  "为交替复发事件数据设计了专门的RL框架，并提供了理论保证"
+ ],
+ "method_framework": "通过Jensen不等式将最大化概率问题转化为累积对数概率之和，使用Cox比例风险模型或Aalen加性风险模型估计生存函数，应用软更新DQN或DDPG算法优化策略",
+ "experiment_framework": "两种模拟设置（线性/离散动作，非线性/连续动作），比较Cox模型、Aalen模型与基线方法，使用ARED、AEV等指标评估",
+ "takeaways": [
+  "交替复发事件数据需要不同于传统时间-事件数据的建模方法",
+  "将概率目标转化为可优化的累积对数概率之和是有效的方法",
+  "在医学干预中关注事件间持续时间超过阈值的概率比仅关注期望值更有临床意义"
+ ],
+ "weaknesses": [
+  "理论分析依赖于确定性转换核，限制了在随机环境中的应用",
+  "实验部分主要在模拟数据上进行，真实数据验证相对有限",
+  "对阈值αk的选择讨论不够充分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 8.05,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

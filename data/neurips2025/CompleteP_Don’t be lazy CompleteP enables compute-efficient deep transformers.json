@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/CompleteP_Don’t be lazy CompleteP enables compute-efficient deep transformers.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/CompleteP_Don’t be lazy CompleteP enables compute-efficient deep transformers.pdf",
+ "title": "Don’t be lazy: CompleteP enables compute-efficient deep transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "CompleteP通过深度参数化提升Transformer计算效率，但硬件验证有限",
+ "innovations": [
+  "CompleteP参数化实现深度方向超参数传递",
+  "扩展了LayerNorm和AdamW等组件的参数化规则",
+  "理论证明了α=1确保完全特征学习",
+  "重新评估了计算最优的N:L比例"
+ ],
+ "method_framework": "提出CompleteP参数化(α=1)，通过深度相关的残差缩放因子实现深度方向超参数传递，同时扩展了LayerNorm学习率、权重衰减和AdamW ϵ的缩放规则。",
+ "experiment_framework": "在SlimPajama数据集上训练75M-1.9B参数模型，使用20 TPP计算最优设置，比较SP/µP/α=0.5/α=1的性能，验证超参数传递和计算效率。",
+ "takeaways": [
+  "深度方向超参数传递对计算效率至关重要",
+  "CompleteP使深窄模型(N:L≈10)保持计算最优",
+  "计算最优N:L比例随规模增大而增加"
+ ],
+ "weaknesses": [
+  "实验仅在Cerebras CS-3系统上进行，缺乏硬件多样性验证",
+  "理论分析主要基于启发式论证，缺乏严格数学证明"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

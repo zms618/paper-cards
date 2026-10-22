@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Real Reading out Transformer Activations for Precise Localization In Language Model Steering.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Real Reading out Transformer Activations for Precise Localization In Language Model Steering.pdf",
+ "title": "REAL: Reading Out Transformer Activations for Precise Localization in Language Model Steering",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "VQ-AE分离激活子空间，量化模块相关性用于steering。",
+ "innovations": [
+  "提出REAL框架：对每个模块的隐激活训练向量量化自编码器(VQ-AE)，用共享可学习码本把潜空间划分为行为相关与行为无关子空间。",
+  "以VQ-AE编码区分行为对齐/行为违反响应的二分类能力作为模块相关性评分，同时指导模块选择与steering强度，替代线性探针/经验启发式。",
+  "所选模块在跨域真实性steering上展现强零样本泛化。"
+ ],
+ "method_framework": "对候选头/层的激活训练VQ-AE，借共享码本把激活拆成行为相关与无关子空间；用相关子空间编码对'对齐/违反'响应的可分性打分确定相关性，据此选模块并设定干预强度，在推理时注入steering向量而不改参数。",
+ "experiment_framework": "跨LLaMA与Qwen两族共8个LLM、9个数据集，覆盖真实性增强、知识冲突下的开放域QA与通用对齐；对比ITI等steering方法，报告真实性提升与跨域零样本泛化。",
+ "takeaways": [
+  "相比ITI，REAL在真实性steering上平均相对提升约20%(最高81.5%)，干预更精准且副作用更小。",
+  "用VQ-AE从纠缠激活中读出行为相关子空间，比线性探针更适合定位多义性强的头/层。"
+ ],
+ "weaknesses": [
+  "需为每个模块训练VQ-AE并采集对齐/违反两类响应，模块扫描的计算成本与数据需求高于简单探针。",
+  "前9页只见方法与动机，未见9个数据集的完整分项表与码本size等关键超参消融。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "语言模型steering方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

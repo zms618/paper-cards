@@ -1,0 +1,41 @@
+{
+ "title": "Action Dubber: Timing Audible Actions via Inflectional Flow",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 5.5,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "用运动拐点预测发声时刻，但泛化性与对比细节不足",
+ "innovations": [
+  "提出 Audible Action Temporal Localization 新任务：定位视频中发声动作的时空坐标，区别于传统动作识别/时序动作定位",
+  "提出 TA2Net：用运动二阶导数估计 inflectional flow，在无音频输入下判定碰撞/发声时刻",
+  "整合对比学习+空间分析的自监督空间定位策略，并构建由 Kinetics/UCF101 去除人声子集得到的新基准 Audible623"
+ ],
+ "method_framework": "以'关键动作由拐点运动驱动(碰撞常伴运动突变)'为先验，TA2Net 由视频估计拐点流来预测发声时间与声源位置；训练时辅以结合对比学习与空间分析的自监督空间定位，同时提升时序定位精度与声源定位能力，从而可为无声视频自动配音。",
+ "experiment_framework": "在自建基准 Audible623 上评测时序定位与声源定位，对比动作识别/时序动作定位类方法；并检验向重复计数、声源定位等其他域的可泛化性。",
+ "takeaways": [
+  "运动拐点(二阶导数)可作为无需音频即可预测发声时刻的有效视觉先验",
+  "自监督空间定位与对比学习联合设计可同时改善时序定位与声源定位",
+  "所提方法在 Audible623 上有效并对相关域展现较强泛化"
+ ],
+ "weaknesses": [
+  "拐点先验依赖明显的运动突变，对柔和/低对比发声动作的适用性存疑",
+  "Audible623 由现有数据集改造而来，真实影视配音场景的域差距未充分验证",
+  "前 9 页未见与强时序定位基线的定量对比细节"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Action Dubber Timing Audible Actions via Inflectional Flow.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Action Dubber Timing Audible Actions via Inflectional Flow.pdf",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "动作定位与可靠性主线无交点，属常规视觉任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

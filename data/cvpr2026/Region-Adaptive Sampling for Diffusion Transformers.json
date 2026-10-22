@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Region-Adaptive Sampling for Diffusion Transformers.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Region-Adaptive Sampling for Diffusion Transformers.pdf",
+ "title": "Region-Adaptive Sampling for Diffusion Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "DiT注意力引导的区域采样加速扩散模型，但结构基础和泛化性存疑",
+ "innovations": [
+  "基于DiT注意力动态调整区域采样比例",
+  "利用时间连续性选择性更新关键区域",
+  "键值缓存机制保持上下文完整性"
+ ],
+ "method_framework": "RAS通过前一输出噪声识别快速更新区域，仅处理这些区域并缓存其他区域噪声，结合动态采样比例和周期性全更新机制实现高效生成。",
+ "experiment_framework": "在Stable Diffusion 3和Lumina-Next-T2I上测试，使用MS-COCO数据集，对比FID、sFID和CLIP指标，与rectified flow等方法比较。",
+ "takeaways": [
+  "利用模型注意力的时间连续性实现区域自适应计算",
+  "键值缓存机制在保持质量的同时减少计算量",
+  "动态采样比例和周期性全更新平衡效率与质量"
+ ],
+ "weaknesses": [
+  "早期扩散阶段应用选择性采样可能损害图像结构基础",
+  "背景区域长期不更新可能导致模糊或噪声积累",
+  "方法主要针对DiT架构，对U-Net架构适用性有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型加速技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

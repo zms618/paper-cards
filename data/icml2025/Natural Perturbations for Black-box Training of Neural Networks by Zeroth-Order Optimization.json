@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Natural Perturbations for Black-box Training of Neural Networks by Zeroth-Order Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Natural Perturbations for Black-box Training of Neural Networks by Zeroth-Order Optimization.pdf",
+ "title": "Natural Perturbations for Black-box Training of Neural Networks by Zeroth-Order Optimization",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 6.5,
+  "overall": 5.75
+ },
+ "one_line": "自然扰动约束采样提升零阶优化效率，适用于硬件神经网络黑盒训练",
+ "innovations": [
+  "提出自然扰动（natural perturbations）概念：在零阶优化中采样参数扰动时，使扰动条件下的网络输出概率分布变化最小",
+  "通过最大化扰动熵加正则项，在保持探索性的同时继承自然梯度的方向信息",
+  "适用于硬件实现的神经网络黑盒训练（如光学神经网络、模拟存内计算），无需内部梯度信息"
+ ],
+ "method_framework": "在零阶优化框架下，传统方法从标准正态分布或单位球面均匀采样扰动向量；本文提出约束扰动采样使其条件于网络输出分布的变化最小（类似自然梯度的思想），通过熵最大化加正则项实现该采样策略，从而获得更有信息量的梯度估计。",
+ "experiment_framework": "在多种数据集、任务与网络架构上验证；对比标准零阶优化方法（高斯扰动、球面扰动）；指标为训练损失与测试精度。",
+ "takeaways": [
+  "自然扰动采样可显著提升零阶优化的样本效率，优于标准高斯/球面随机扰动",
+  "将自然梯度思想引入零阶优化是可行的，通过输出分布约束改善梯度估计质量",
+  "该方法为硬件神经网络（无法反向传播）提供了实用的黑盒训练方案"
+ ],
+ "weaknesses": [
+  "自然扰动的采样计算可能比标准高斯采样更复杂，实际硬件实现难度未知",
+  "仅在中小规模网络上验证，大模型（如LLM）下的可扩展性未讨论",
+  "与CMA-ES等进化策略方法的对比不够充分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

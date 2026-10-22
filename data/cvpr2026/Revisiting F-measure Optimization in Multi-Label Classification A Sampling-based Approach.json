@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Revisiting F-measure Optimization in Multi-Label Classification A Sampling-based Approach.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Revisiting F-measure Optimization in Multi-Label Classification A Sampling-based Approach.pdf",
+ "title": "Revisiting F-measure Optimization in Multi-Label Classification A Sampling-based Approach",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "采样方法优化F-measure，计算降维但预测耗时增加",
+ "innovations": [
+  "将矩阵乘法转化为卷积操作，将计算复杂度从O(q^3)降低到O(q^2 log q)",
+  "提出采样-估计框架，避免多标签变换，缓解数据稀疏问题",
+  "单一模型可优化多种评估指标，无需为每个指标训练单独模型"
+ ],
+ "method_framework": "通过自回归采样生成标签，利用蒙特卡洛积分估计所需概率，结合FFT加速矩阵运算，实现F-measure优化。",
+ "experiment_framework": "在6个多标签数据集(yeast, enron, medical, bibtex, COCO, VOC)上与BR, CC, ASL, SF1, DMN, CCS等方法比较F-measure指标。",
+ "takeaways": [
+  "利用矩阵特殊结构转化为卷积可显著降低计算复杂度",
+  "采样-估计框架能有效缓解多标签分类中的数据稀疏问题"
+ ],
+ "weaknesses": [
+  "采样方法增加了预测时间复杂度",
+  "未探讨不同采样策略对性能的影响",
+  "实验仅使用简单神经网络作为骨干网络，未在更复杂的深度模型上验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "多标签分类方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Advanced Sign Language Video Generation with Compressed and Quantized Multi-Condition Tokenization.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Advanced Sign Language Video Generation with Compressed and Quantized Multi-Condition Tokenization.pdf",
+ "title": "Advanced Sign Language Video Generation with Compressed and Quantized Multi-Condition Tokenization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "SignViP用压缩量化标记提升手语视频生成，但计算开销大且泛化能力未验证",
+ "innovations": [
+  "离散多条件标记化范式",
+  "FSQ自编码器压缩量化条件嵌入",
+  "多条件标记翻译器",
+  "条件增强策略提高鲁棒性"
+ ],
+ "method_framework": "SignViP框架包含三个核心组件：1)多条件编码器与视频扩散模型联合训练；2)FSQ自编码器压缩量化连续嵌入为离散标记；3)多条件标记翻译器将文本转换为离散标记，推理时解码为嵌入引导视频生成。",
+ "experiment_framework": "在RWTH-2014T和How2Sign数据集上评估，使用BLEU、ROUGE、COMET等语义指标，以及FID、CLIP-FID、FVD、IDS等视频质量指标，与SignGAN、SignGen等基线对比。",
+ "takeaways": [
+  "离散标记化可有效处理高维条件避免直接翻译误差",
+  "条件增强策略可提高模型对异常条件的鲁棒性",
+  "多细粒度条件(姿势和3D手)能显著提升生成视频的自然度和表达力"
+ ],
+ "weaknesses": [
+  "训练过程分三阶段，计算开销大",
+  "未充分讨论模型在不同 signer 上的泛化能力",
+  "条件增强策略的参数选择可能影响结果稳定性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

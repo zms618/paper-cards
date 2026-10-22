@@ -1,0 +1,41 @@
+{
+ "title": "Knowledge Reasoning Language Model: Unifying Knowledge and Language for Inductive Knowledge Graph Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "KRLM协调LLM与KG知识，结构约束抑制幻觉，但泛化性分析不足。",
+ "innovations": [
+  "指出现有 LLM-based 归纳 KGR 的两大问题：稀疏 KG 上下文会掩盖并扭曲 LLM 内在知识，且无法充分约束 LLM 生成幻觉、损害可信度。",
+  "设计知识推理语言(KRL)指令格式与 KRL tokenizer 对齐 LLM 知识与 KG 表示，并提出 KRL 注意力层经动态知识记忆机制协调二者。",
+  "提出结构感知的下一实体预测器，把推理结果严格约束在可信知识域内，抑制生成幻觉。"
+ ],
+ "method_framework": "定义 KRL 指令格式与专用 tokenizer 把实体/关系结构知识转为 LLM 可处理的词表；KRL 注意力层用动态知识记忆在推理全过程协调 LLM 内在参数知识与给定 KG 上下文，避免上下文扭曲；结构感知下一实体预测器将输出限定在合法/可信实体域内以约束幻觉。",
+ "experiment_framework": "在 25 个真实归纳式 KGR 数据集上，与传统嵌入/规则法及 LLM-based KGFM 对比，分零样本推理与微调两种场景，报告链接预测指标(MRR/Hits@k)。",
+ "takeaways": [
+  "稀疏 KG 上下文会扭曲 LLM 内在知识并造成不可逆推理损害，需要全程协调而非简单拼接。",
+  "LLM 生成幻觉若不加结构约束会严重削弱 KGR 结果可信度。",
+  "KRL 注意力+动态记忆+结构感知约束在 25 个归纳 KGR 数据集上零样本与微调均显著领先。"
+ ],
+ "weaknesses": [
+  "方法依赖 KRL 词表与 KG 结构 tokenizer，对极开放实体/噪声 KG 的鲁棒性未充分讨论。",
+  "幻觉约束以结构域限制为主，可能同时抑制合理的新知识外推，泛化性与约束的权衡需更多分析。",
+  "聚焦 KG 推理域，未涉及医学影像/多模态大模型推理；25 数据集完整结果与幻觉抑制的量化分析未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/UNI-FYING_Knowledge Reasoning Language Model UNI-FYING Knowledge and Language for Inductive Knowledge Graph Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/UNI-FYING_Knowledge Reasoning Language Model UNI-FYING Knowledge and Language for Inductive Knowledge Graph Reasoning.pdf",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "结构约束抑制幻觉，但泛化性分析不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

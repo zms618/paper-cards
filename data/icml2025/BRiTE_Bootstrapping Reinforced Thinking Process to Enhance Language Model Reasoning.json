@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/BRiTE_Bootstrapping Reinforced Thinking Process to Enhance Language Model Reasoning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/BRiTE_Bootstrapping Reinforced Thinking Process to Enhance Language Model Reasoning.pdf",
+ "title": "BRiTE: Bootstrapping Reinforced Thinking Process to Enhance Language Model Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "将LLM推理形式化为概率框架，用RL优化思考过程分布",
+ "innovations": [
+  "提出包含潜思考过程z和评估信号o的图形模型，将LLM推理形式化为P(z,y,o|x,θ)的联合分布问题",
+  "利用熵正则化MDP的最优策略命题(Proposition 3.7)，将总奖励分解到每个token，解决RL奖励塑形难题",
+  "证明BRiTE收敛速率为1/T，并建立拒绝采样EM、PPO、ReSTEM等算法的统一理论视角"
+ ],
+ "method_framework": "BRiTE在EM框架下迭代优化：E步用RL训练策略近似后验分布Q(z,y,o|x,ψ)，即学习最优思考过程生成分布；M步最大化θ的联合似然。实现时两种变体：BRiTE-SFT用Q采样正确推理链做监督微调；BRiTE-DPO从Q生成正/负推理对做DPO训练。奖励塑形基于token级对数概率，使最优策略恢复目标后验分布。",
+ "experiment_framework": "在GSM8K和MATH两个数学推理基准上测试，基座模型包括Mistral-7B/Gemma-1.1-7B/Gemma-2-9B/Llama-3-8B-Instruct。基线包括拒绝采样(RS)、人工标注SFT、迭代DPO。每prompt采样N=30条推理链。",
+ "takeaways": [
+  "BRiTE-SFT在Gemma-2-9B MATH上达50.5%，比RS提升3.0个点，接近甚至超过人工SFT",
+  "BRiTE-DPO在多个基座上一致优于迭代DPO，说明RL驱动的思考过程bootstrapping比简单采样更有效",
+  "RL生成的思考过程质量高于拒绝采样，验证了将后验近似转化为RL优化问题的思路"
+ ],
+ "weaknesses": [
+  "仅在数学推理任务上验证，未测试代码推理或多模态推理场景",
+  "需要验证器判断答案正确性，在开放生成任务上如何设计评估信号未探讨",
+  "每次迭代需30条采样+RL训练，计算开销显著高于简单拒绝采样"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

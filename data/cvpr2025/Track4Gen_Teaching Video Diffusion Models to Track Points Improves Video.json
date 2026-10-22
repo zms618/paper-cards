@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Track4Gen_Teaching Video Diffusion Models to Track Points Improves Video.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Track4Gen_Teaching Video Diffusion Models to Track Points Improves Video.pdf",
+ "title": "Track4Gen Teaching Video Diffusion Models to Track Points Improves Video",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "点跟踪监督提升视频扩散模型一致性，但依赖外部标注且长时验证不足",
+ "innovations": [
+  "将视频生成与点跟踪任务统一到单一网络",
+  "在扩散特征空间引入点跟踪监督",
+  "设计可训练的refiner模块增强特征空间的空间感知能力"
+ ],
+ "method_framework": "基于Stable Video Diffusion，在第三解码器块添加refiner模块，通过联合优化扩散损失Ldiff和对应关系损失Lcorr，增强特征空间的空间一致性",
+ "experiment_framework": "VBench-I2V数据集，VBench指标(主体一致性/时间闪烁/运动平滑度/图像质量/视频图像对齐)，FID/FVD，DAVIS/BADJA跟踪基准，用户研究",
+ "takeaways": [
+  "特征空间的空间一致性可显著改善像素空间的外观一致性",
+  "轻量级架构修改(仅训练temporal blocks和refiner)可大幅提升性能",
+  "扩散模型特征可用于高质量点跟踪任务"
+ ],
+ "weaknesses": [
+  "依赖光学流生成的轨迹标注，可能引入误差",
+  "仅评估了24帧短视频，长时一致性未充分验证",
+  "训练数据规模相对较小(567个视频)"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成与点跟踪结合，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/AlphaPre_Amplitude-Phase Disentanglement Model for Precipitation Nowcasting.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AlphaPre_Amplitude-Phase Disentanglement Model for Precipitation Nowcasting.pdf",
+ "title": "AlphaPre: Amplitude-Phase Disentanglement Model for Precipitation Nowcasting",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "FFT解耦降水预报，但实验不足且提升有限",
+ "innovations": [
+  "用 FFT 把单通道雷达回波拆成幅度/相位，并给出图 1 的受控实验证据：固定幅度、逐点平移相位对应云团位移与形变，固定相位、缩放幅度对应降水强度增减，据此把位置变化与强度变化这两个耦合因子拆成两条独立预测支路",
+  "相位支路只在截断低频 k 上优化角距离 L_P=(1/4k²)Σ(1-cos(P_gt-P_pr))，规避高频相位噪声；相位预测后固定用最后一帧幅度 A0 配 IFFT 重建 Y_p",
+  "幅度支路先把幅度做 z-score 归一化（均值方差取训练集统计量）再算 L_A，避免少数低频分量幅度过大使损失只盯低频；两路 IFFT 合成 Y_ap 后再与 Y_p、Y_a 拼接过两层 ConvNormSiLU 出最终结果"
+ ],
+ "method_framework": "输入序列 FFT 分解为幅度与相位；相位网络以 Conv1x1+GroupNorm+SiLU 堆叠预测未来相位并用低频角距离损失约束；幅度网络以编码器+复数 MLP 时序模块+Spectral-Spatial block 预测幅度并用归一化幅度损失约束；AlphaMixer 合成两路预测拼接微调。",
+ "experiment_framework": "SEVIR、MeteoNet、上海雷达、CIKM 四公开雷达数据集，9 基线（ConvGRU/MAU/SimVP/FourCastNet/EarthFormer/PhyDNet/EarthFarseer/NowcastNet/DiffCast），指标 CSI-M/分阈值 CSI/HSS/SSIM/MSE。",
+ "takeaways": [
+  "把输出里天然耦合的因子（位置/强度）显式拆到不同子空间各自建模，比在同一特征空间堆模块更可解释也更好调",
+  "对频谱量先 z-score 归一化再算损失，是廉价且可迁移的防低频主导技巧",
+  "对相位类角度量用 1-cos(Δ) 而非差值平方做损失，天然有界且忽略整体旋转歧义"
+ ],
+ "weaknesses": [
+  "正文只到 Shanghai/CIKM 主表第一行为止，消融表（相位/幅度支路各自贡献、N_p/N_a/k/α/β 敏感性、推理耗时）完全不可见，无法核验解耦到底带来多少增量",
+  "提升幅度小且非单调：SEVIR 上 CSI-M 0.3259 比 SimVP 0.3108 高 1.5pt，但 CSI-219 反低于 DiffCast（0.0545 vs 0.0582），增益集中在低阈值中小降水事件而非极端事件",
+  "9 个基线全部只报单次均值、无方差与多种子，四数据集上'显著优于 SOTA'缺显著性支撑；5→20 帧的长时外推也没有误差随步数增长的曲线",
+  "相位支路结构上假设当前强度恒定（用 A0 重建），强度快速演变时该支路必然缺信息，正文未讨论此设定失效的场景与补救"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "降水预报与可靠性主线无实质交点，仅为气象应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

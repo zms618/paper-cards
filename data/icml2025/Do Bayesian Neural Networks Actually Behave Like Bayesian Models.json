@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Do Bayesian Neural Networks Actually Behave Like Bayesian Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Do Bayesian Neural Networks Actually Behave Like Bayesian Models.pdf",
+ "title": "Do Bayesian Neural Networks Actually Behave Like Bayesian Models?",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.2
+ },
+ "one_line": "实证主流BNN近似推断不遵守贝叶斯更新原则，顺序更新会遗忘旧数据。",
+ "innovations": [
+  "系统检验主流BNN近似推断算法是否真正遵守贝叶斯信念更新性质，而非仅看静态预测精度",
+  "发现VI、Laplace近似、SWAG、SGLD在顺序更新下无法相干地传播信息、会遗忘旧数据",
+  "证明近似后验缺乏真贝叶斯后验的函数多样性，并违反预测相干性等贝叶斯期望性质"
+ ],
+ "method_framework": "在合成回归与真实图像/文本分类任务上，对多种BNN近似推断算法做行为审计：(1)检验近似后验的函数多样性是否接近真后验；(2)在顺序数据流上检验是否相干更新、是否遗忘旧数据；(3)检验预测相干性(如联合预测与边缘预测一致性)。用这些行为指标而非最终精度来判定'是否像贝叶斯模型'。",
+ "experiment_framework": "合成回归任务 + CIFAR图像分类与IMDB文本分类(Izmailov et al.设置)，对比VI、Laplace、SWAG、SGLD等算法，以顺序更新一致性、旧数据保留、预测相干性、后验函数多样性为指标。",
+ "takeaways": [
+  "常用BNN近似推断并不真正遵守贝叶斯更新原则，把BNN当真贝叶斯模型需谨慎",
+  "在主动学习/持续学习/迁移学习等需要顺序更新的场景，BNN的贝叶斯假设可能失效",
+  "BALD等依赖真贝叶斯更新的采集函数会因该失效而失配"
+ ],
+ "weaknesses": [
+  "结论基于有限任务与小规模模型，现代大规模BNN是否同样失配未验证",
+  "多为诊断性证据，对'如何修复近似推断使其真正贝叶斯'给出的正面方案有限",
+  "前9页内部分顺序更新实验的失败幅度随数据规模变化的曲线未完整呈现"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.0,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

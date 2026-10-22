@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Communicating Activations Between Language Model Agents.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Communicating Activations Between Language Model Agents.pdf",
+ "title": "Communicating Activations Between Language Model Agents",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 5.75
+ },
+ "one_line": "激活通信替代自然语言，提升性能但牺牲可解释性与通用性",
+ "innovations": [
+  "指出现有LM智能体间用自然语言通信既高算力又因单token解码丢失内部激活中的丰富信息",
+  "提出激活通信：暂停LM B在中间层，将其激活与LM A的中间激活经函数f融合后送入B下一层续算，零额外参数与数据",
+  "在多人协调博弈与推理基准上，用不同函数f验证，取得最高27%提升且计算量不到自然语言通信的1/4"
+ ],
+ "method_framework": "不生成自然语言消息，而是在中间层截取LM A的隐藏激活，与LM B当前层激活经融合函数f拼接/投影后注入B的后续层，使B直接读取A的内部表征；无需训练额外参数即可实现跨LM信息传递。",
+ "experiment_framework": "在两类设定(多人协调博弈、推理基准)上对比自然语言通信，测试多种融合函数f，以任务性能与计算量为指标，报告最高27%提升且<1/4算力。",
+ "takeaways": [
+  "激活作为通信介质比自然语言信息量更大、算力更省",
+  "零额外参数即可扩展多LM在新任务上的推理能力",
+  "自然语言的可解释性优势需与激活通信的高效性权衡"
+ ],
+ "weaknesses": [
+  "激活通信丧失自然语言的可解释性，难以调试智能体间传递的语义",
+  "需同构/兼容的隐藏维度与层结构，跨不同架构/尺寸LM的通用性受限",
+  "实验设定规模有限，未在大规模真实多智能体系统中验证稳定性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.73,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

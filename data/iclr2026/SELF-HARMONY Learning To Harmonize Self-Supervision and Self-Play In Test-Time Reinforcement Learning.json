@@ -1,0 +1,41 @@
+{
+ "title": "Self-Harmony: Learning to Harmonize Self-Supervision and Self-Play in Test-Time Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "单模型双角色调和投票避免TTRL错误放大，但改写质量依赖性强。",
+ "innovations": [
+  "指出TTRL中多数投票会系统性放大模型共有错误(流行但错误的答案)",
+  "提出正确答案应在原问题与其改写(paraphrase)间保持稳定这一直觉",
+  "用单模型双角色(Solver/Reframer)+调和均值聚合两视图答案频率，无需人工监督或辅助模型"
+ ],
+ "method_framework": "测试时仅用合成信号：Solver产答、Reframer改写输入；对原视图与改写视图的答案频率取调和均值作为伪标签，天然偏好跨改写稳定的解，从而回避视图依赖的虚假多数答案，供模型自训练。",
+ "experiment_framework": "在多个推理基准的无标签测试时设置下评测；30个设置中28个排名第一、达SOTA；报告全部实验零训练失败，稳定性与鲁棒性前所未有。",
+ "takeaways": [
+  "多数投票在模型存在系统性偏差时会放大错误而非纠错",
+  "跨改写稳定性是比流行度更可靠的伪标签准则",
+  "无需辅助模型即可得到稳健的测试时学习信号"
+ ],
+ "weaknesses": [
+  "依赖改写质量，若改写引入新歧义可能误导稳定性判断",
+  "为文本推理，未在多模态/医学推理验证",
+  "前9页未见对不稳定样本的失败案例分析"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/SELF-HARMONY Learning To Harmonize Self-Supervision and Self-Play In Test-Time Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SELF-HARMONY Learning To Harmonize Self-Supervision and Self-Play In Test-Time Reinforcement Learning.pdf",
+ "raw_overall": 7.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "测试时学习机制提升可靠性，但未触及医学影像或多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

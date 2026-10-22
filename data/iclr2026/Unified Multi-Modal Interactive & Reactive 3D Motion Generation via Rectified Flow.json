@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unified Multi-Modal Interactive & Reactive 3D Motion Generation via Rectified Flow.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unified Multi-Modal Interactive & Reactive 3D Motion Generation via Rectified Flow.pdf",
+ "title": "Unified Multi-Modal Interactive & Reactive 3D Motion Generation via Rectified Flow",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "DualFlow统一交互式与反应式双人动作生成，但泛化性与可靠性存疑。",
+ "innovations": [
+  "首个在同一架构下统一交互式(双向协调)与反应式(由actor预测reactor)双人动作生成的框架，打破以往两任务用不兼容架构/目标/条件的割裂",
+  "用整流流实现噪声到数据的确定性直线采样路径，缩短推理并缓解扩散模型的误差累积",
+  "为双人动作引入RAG模块(用音乐特征+LLM分解空间关系/身体动作/节奏检索动作范例)，配对比整流流目标与同步损失增强对齐与双人时序协调"
+ ],
+ "method_framework": "以往双人动作方法把interactive与reactive当独立任务、且只支持单模态(text或music)条件。DualFlow用级联DualFlow Blocks在整流流框架下建模，以text/music/prior motion多模态为条件；RAG用音乐特征与LLM对空间关系/身体动作/节奏的分解检索动作范例做语义grounding；对比整流流目标锐化条件对齐，同步损失改善双人时序协调；整流流给确定性直线路径少步采样。",
+ "experiment_framework": "在交互式、反应式与多模态动作基准上对比现有双人动作方法；指标为动作质量、响应性、语义保真与节奏同步；报告在双人多模态动作生成上达SOTA。",
+ "takeaways": [
+  "interactive与reactive双人动作可在单一整流流架构内统一，无需分别训练",
+  "多模态条件(text/music/先验动作)+RAG范例检索能提升动作的语义grounding与节奏同步",
+  "整流流直线采样减少推理时间并缓解扩散式动作生成的误差累积"
+ ],
+ "weaknesses": [
+  "属图形/动画/具身动作生成方向，与本主线(可靠性×多模态推理/医学影像)无直接关联",
+  "RAG依赖LLM把文本分解为空间/动作/节奏标签，该分解的误差会向下游动作传播，正文前9页未分析",
+  "双人动作限于有限交互模式(舞蹈/社交)，对高度开放、接触丰富的多人动态场景泛化未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "图形学动画生成，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

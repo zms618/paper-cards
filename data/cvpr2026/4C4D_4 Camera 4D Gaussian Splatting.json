@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/4C4D_4 Camera 4D Gaussian Splatting.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/4C4D_4 Camera 4D Gaussian Splatting.pdf",
+ "title": "4C4D: 4 Camera 4D Gaussian Splatting",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "神经衰减函数改进4DGS不透明度，但实验矛盾且缺乏显著性",
+ "innovations": [
+  "观察到稀疏视角下 4DGS 的偏差优化（外观易拟合、几何学不好），提出以轻量网络 fθ(x,y,z,o,r) 预测衰减因子 τ，乘进 4DGS 原本的高斯时间不透明度 o(ṫ)=τ·exp(−½(ṫ−μt)²/Σ₄₄)·o，把梯度重心拉向几何",
+  "指出梯度只存在于可见区域，若对不可见高斯也施加 fθ 会扭曲优化，故用视锥/时间双域可见性检测 ZV、ZT 分出 Gm 与 G*，对可见区用网络衰减、对不可见区统一用常数 β=0.999 的弱衰减",
+  "在 4 台相机（含自采 4  GoPro 的 Dyn4Cam，整套设备 <1500 美元）的极端稀疏设置下，把动态新视角渲染做到时间连贯，并跨大/小相机重叠的四个数据集验证"
+ ],
+ "method_framework": "保留 4DGS 的 4D 协方差与球谐时间编码，在渲染 loss 下联合优化 4D 高斯与神经网络衰减器：可见高斯的不透明度按 fθ 输出动态衰减，不可见高斯用固定 0.999 衰减；可见性由中心视锥相交 ZV 与时长区间相交 ZT 共同判定，每步只对 Gm 施加以保证梯度能正确回传到 fθ。",
+ "experiment_framework": "Neural3DV（18-21 相机中选 4 个最远视角训练，余下作测试）、ENeRF-Outdoor、Mobile-Stage（选 4 大重叠视角训练）、自采 Dyn4Cam（仅定性）；基线 4DGaussians、Ex4DGS、ST-GS、4DGS 同设置重训；指标 PSNR、DSSIM(1.0/2.0 两档)、LPIPS。",
+ "takeaways": [
+  "稀疏多视重建里'外观过拟合、几何欠拟合'是一个可诊断的失效模式，把不透明度这类同时管几何Alpha与渲染贡献的量交给网络学衰减，是低成本纠偏的抓手",
+  "对不可见图元也施加同一 learned 模块会破坏梯度回流，可见性掩码（空间+时间双域）是这类 per-primitive 学习模块必需的配套",
+  "设备成本（<1500 美元的四机方案）与遮挡/光照复杂场景的定性展示，对 4D 重建从实验室相机阵列走向日常使用者是有效的说服方式"
+ ],
+ "weaknesses": [
+  "主表与消融表自相矛盾：表 1 在 Neural3DV 上 Ours 的 PSNR 仅 22.29，而同一数据集表 4 的 'Full' 为 24.68、'w/o Neural Decay' 为 22.60、表 5 的 Ours 又是 24.68，说明两处评测割裂（可能测试帧/视角划分不同）而正文未加说明，真实水平无法判定",
+  "表 5 中常量、幂函数、指数三种手调衰减分别为 24.31/24.35/24.32，与神经衰减的 24.68 只差 0.36 PSNR，且全部为单次数值无方差，正文却称神经网络方案'一致优于所有人工设计'，这一 claim 缺乏显著性支撑",
+  "自采 Dyn4Cam 与现有数据集均不含留出视点，因此该自采集只出定性图、不给任何数值指标，'四台便携相机即可'的核心卖点没有可量化的证据；基线也只覆盖高斯类四种方法，未与动态 NeRF/平面特征类方法对照"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3D重建与可靠性主线无关，仅工程价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Specbranch_Speculative Decoding via Hybrid Drafting and Rollback-Aware Branch PARAL.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Specbranch_Speculative Decoding via Hybrid Drafting and Rollback-Aware Branch PARAL.pdf",
+ "title": "SpecBranch: Speculative Decoding via Hybrid Drafting and Rollback-Aware Branch Parallelism",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "分支并行投机解码对冲回退，混合调度提速1.8-4.5倍",
+ "innovations": [
+  "深入分析投机解码中的分支并行潜力，识别核心权衡为并行化与token回退",
+  "引入并行投机分支预先对冲可能的拒绝，打破草稿/目标模型串行等待气泡",
+  "联合调度自适应草稿长度，混合隐式草稿模型置信与显式目标模型特征复用以提升并行度"
+ ],
+ "method_framework": "受现代处理器分支预测启发，不再让草稿与目标模型串行等待，而是派出多条并行投机分支预演可能的延续以对冲回退；草稿长度根据草稿模型置信与复用目标特征动态自适应；回退感知地调度分支，保持与标准自回归完全相同的采样分布。",
+ "experiment_framework": "在多种模型与基准上评测，对比标准自回归解码与既有投机解码；报告1.8~4.5倍加速，对齐较差模型回退token减少50%，且采样分布保持不变。",
+ "takeaways": [
+  "投机解码的串行执行造成的等待气泡是可通过分支并行打破的",
+  "并行投机分支对冲拒绝能显著减少回退token",
+  "草稿置信+目标特征复用的混合调度可自适应最大化并行度"
+ ],
+ "weaknesses": [
+  "多分支并行增加显存与计算峰值，加速比在长输出/低批处理下的净收益需核算",
+  "分支策略对草稿模型与目标模型差距敏感，对齐好的模型增益可能收敛",
+  "并行分支在复杂多轮/工具调用场景下的开销与正确性权衡讨论有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "加速解码技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/3DMM-Guided_Data Synthesis with Diverse Styles for Face Recognition via 3DMM-Guided.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3DMM-Guided_Data Synthesis with Diverse Styles for Face Recognition via 3DMM-Guided.pdf",
+ "title": "Data Synthesis with Diverse Styles for Face Recognition via 3DMM-Guided Diffusion",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "3DMM渲染风格+主体分层采样，合成人脸训练集提升识别准确率",
+ "innovations": [
+  "用 DECA 3DMM 的 236 维风格属性渲染出法线/albedo/Lambertian 三张特征图 m，经轻量编码器 E 得到 c_sty=E(m) 作为 LDM 的 style context，把以往 style bank/属性谓词的粗粒度控制变成逐图、逐属性的参数化控制",
+  "提出 subject-aware 风格采样：先从真实分布 N(µ,Σ) 分解出类级分布 P'_i~N(µ_i,Σ_i) 且满足 Σγ_i N(µ_i,Σ_i)=N(µ,Σ)，再在类内采样 p'~N(µ_i,Σ_i)，并用参考图真值替换形状属性均值 µ_i 以兼顾类内变化与主体区分度",
+  "依据去噪过程的频域次序（低频风格先定型、高频身份后出现），把 CFG 的替代项按时段切换：t∈(t0,T] 用 εθ(z_t,t,c_id,c_sty^∅) 增强风格、t∈[0,t0] 用 εθ(z_t,t,c_id^∅,c_sty) 增强身份"
+ ],
+ "method_framework": "LDM 同时以 FR 模型提取的身份嵌入 c_id 与 3DMM 渲染特征图编码的风格嵌入 c_sty 为交叉注意力条件；采样期分别从无标签扩散人脸取新身份、从真实风格先验做 subject-aware 采样取新风格；推理时用按时段切换的 CFG 做 context blending。",
+ "experiment_framework": "在 CASIA-WebFace 训生成器，合成 0.5M/1.2M 两类规模数据训练 IR-50；对比 SynFace/SFace/DigiFace/DCFace/IDiff-Face/Arc2Face/ID3/CemiFace 等；在 LFW、CFP-FP、AgeDB、CPLFW、CALFW 上报识别准确率，并用 eIR 与余弦相似度做一致性-多样性分析。",
+ "takeaways": [
+  "把「类内变化」与「主体区分度」拆成两层高斯采样（类级分布之和须等于全局分布），是可迁移到其它合成数据构建的显式分布对齐手段",
+  "用「类内余弦相似度 × eIR，点的大小/颜色编码下游准确率」的 Pareto 图定位失败模式，比单看主表更能说明收益来源",
+  "按去噪阶段的频域特性切换 CFG 增强对象，是多条件注入冲突时的低成本调度思路"
+ ],
+ "weaknesses": [
+  "组件均为现成件堆叠：LDM+CFG+DECA+FR embedding 都是既有模块，新增部分只有 3DMM 渲染图作为风格条件与采样策略， novelty 上限受限",
+  "对比不完全公平且正文已自陈：部分 SOTA 使用更大的生成器数据集、更大的 FR backbone 或真实参考图，表格未控制这些变量",
+  "无方差/显著性：FR 准确率均为单次数值，而身份采样与风格采样本身带随机性，未报多种子标准差",
+  "正文截断，4.3/4.4 节的风格采样与 context blending 消融表及 Fig.7 后半分析不可见；t0、CFG 权重 w、相似度过滤阈值 0.3 均为经验设定且无敏感性分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "人脸识别与可靠性主线无关，仅数据合成方法有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

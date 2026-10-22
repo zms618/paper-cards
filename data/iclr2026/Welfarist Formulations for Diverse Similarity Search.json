@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Welfarist Formulations for Diverse Similarity Search.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Welfarist Formulations for Diverse Similarity Search.pdf",
+ "title": "Welfarist Formulations for Diverse Similarity Search",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "将纳什社会福利函数引入ANN，实现查询自适应的相关性-多样性平衡。",
+ "innovations": [
+  "首次将社会福利函数（特别是纳什社会福利NSW）应用于多样性最近邻搜索，提供有理论公理支撑的相关性-多样性平衡目标",
+  "实现查询自适应的多样性平衡：不同于硬约束配额方法，NSW目标根据查询自动调整多样性程度",
+  "开发可叠加在任意标准ANN方法之上的高效算法，具有可证明的近似保证"
+ ],
+ "method_framework": "将属性等同于\"代理人\"，每个属性的效用为该属性下被检索向量的相似度之和。目标是最大化纳什社会福利（各属性效用的几何平均），从而在保持整体相关性的同时自动平衡各属性的多样性。算法以标准ANN方法为子例程，在候选集上优化NSW目标。",
+ "experiment_framework": "在多个标准数据集上评估多样性NNS效果，对比硬约束配额方法和纯相关性排序。指标包括相关性（相似度）和多样性（属性覆盖度）。测试不同参数下的权衡曲线。",
+ "takeaways": [
+  "NSW目标比硬约束配额更灵活，能根据查询自适应调整多样性水平",
+  "方法可作为后处理叠加在任意ANN系统上，工程改造成本低",
+  "参数化的权衡控制让实践者可根据任务需求定制相关性-多样性平衡"
+ ],
+ "weaknesses": [
+  "属性定义需要人工指定或额外标注，对于无明确属性结构的嵌入向量如何应用未充分讨论",
+  "仅在标准NNS基准上验证，RAG等真实应用场景中的端到端效果未评估",
+  "NSW的几何平均计算在大规模候选集上的效率开销未详细分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.43,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "多样性搜索方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

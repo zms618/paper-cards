@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Advancing Constrained Monotonic Neural Networks Achieving Universal Approximation Beyond Bounded Activations.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Advancing Constrained Monotonic Neural Networks Achieving Universal Approximation Beyond Bounded Activations.pdf",
+ "title": "Advancing Constrained Monotonic Neural Networks: Achieving Universal Approximation Beyond Bounded Activations",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "理论扩展单调MLP通用逼近性，简化训练但应用验证不足",
+ "innovations": [
+  "推广理论结果：证明非负权重约束+在交替侧饱和的激活函数（非必须有界）的MLP是单调函数的通用逼近器",
+  "揭示激活饱和侧与权重约束符号之间的等价性：凸单调激活+非正权重约束也构成通用逼近器",
+  "提出替代公式：让网络根据权重符号调整激活，消除权重重参数化需求，简化初始化并提升训练稳定性"
+ ],
+ "method_framework": "传统单调MLP要求非负权重+有界激活函数，只能表示有界函数。本文证明只要激活函数在交替侧饱和（不必有界），即可保持单调性通用性。进一步提出根据权重符号自适应选择激活方向，避免重参数化技巧，直接用标准优化器训练单调网络。",
+ "experiment_framework": "任务：单调函数逼近、回归任务。基线：传统单调MLP（有界激活+权重约束）。指标：逼近误差、训练稳定性、外推能力。对比多种激活函数选择。",
+ "takeaways": [
+  "单调MLP不必使用有界激活函数，只要满足交替饱和条件即可保持通用逼近能力",
+  "权重约束符号与激活饱和方向的等价性为架构设计提供了更大灵活性",
+  "消除重参数化需求显著改善单调网络的训练稳定性和初始化难度"
+ ],
+ "weaknesses": [
+  "理论结果主要针对MLP架构，Transformer等现代架构的单调性约束理论未涉及",
+  "实验仅在小规模回归任务验证，大规模实际应用（如 survival analysis）的效果未充分展示",
+  "单调约束对模型表达能力的限制程度未系统量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "单调网络理论扩展，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

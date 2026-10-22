@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/DLLMS_WIDE-IN, NARROW-OUT Revokable Decoding for Efficient and Effective DLLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/DLLMS_WIDE-IN, NARROW-OUT Revokable Decoding for Efficient and Effective DLLMS.pdf",
+ "title": "WIDE-IN, NARROW-OUT: Revokable Decoding for Efficient and Effective DLLMS",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "WINO引入可撤销解码机制，试图平衡扩散模型质量与速度",
+ "innovations": [
+  "可撤销解码机制打破传统扩散模型的不可逆性",
+  "并行草稿-验证框架实现Wide-In Narrow-Out策略",
+  "辅助阴影块设计实现位置级质量验证"
+ ],
+ "method_framework": "WINO采用双模块并行设计：草稿模块基于低阈值τ1激进生成多个候选词；验证模块利用增强的全局上下文重新评估已解码词，低质量词被重新掩码以待后续修正。",
+ "experiment_framework": "在GSM8K、MATH-500等8个语言任务和Flickr30K、AI2D等6个多模态任务上评估WINO，使用准确率和CIDEr指标，测量解码步数和TPS加速比。",
+ "takeaways": [
+  "可撤销解码机制能有效解决扩散模型的早期错误传播问题",
+  "任务复杂度与加速比呈负相关，简单任务可获得更高加速"
+ ],
+ "weaknesses": [
+  "MBPP任务上性能未提升",
+  "阴影块设计增加了计算开销",
+  "未探索不同模型规模下的表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型加速技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

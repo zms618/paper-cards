@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/3D Space as a Scratchpad for Editable Text-to- Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/3D Space as a Scratchpad for Editable Text-to- Generation.pdf",
+ "title": "3D Space as a Scratchpad for Editable Text-to-Image Generation",
+ "scores": {
+  "novelty": 5,
+  "depth": 5,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.0
+ },
+ "one_line": "拼模块工作，3D草稿仅抽象表示，agent分工无显著增益",
+ "innovations": [
+  "提出「3D spatial scratchpad」作为 VLM 的空间推理载体：不再只在文字或 2D 布局里规划，而是把主体实例化为 3D 网格后由 LLM 规划 3D 包围盒 B_box=BboxPlanner(P',SP,SI,SA,D) 完成摆放，使平移/旋转/缩放类编辑能可靠映射到最终图像",
+  "把最难的一步（3D 旋转）拆成两个 LLM agent 协作：OrientationEstimator 从「深度+身份条件生成的图」中裁剪出主体区域估计当前绝对朝向 S_Oest，TransformPlanner 再结合目标朝向 S_Otgt 与多视角渲染 R 给出变换建议 S_TR，绕开了直接让 LLM 输出旋转角不可靠的问题",
+  "相机选择改为候选渲染后择优（CameraPicker 从前/左/右/顶等 5 个保证主体入画的提议视角中按提示选一），配合 SIGMA-Gen 在单次去噪循环内同时注入身份图 S_I 与深度条件，实现多主体身份保持；编辑时用 ObjectClear 擦除 + 膨胀框 mask 配 latent blending 做背景保持的插入"
+ ],
+ "method_framework": "提示 P 经 LLM 拆出主体 s_i 与增强提示 P'；先用 Flux 出身份图 S_I 再用 Hunyuan-3D 2.5 转网格（无纹理、赋固定颜色）；BboxPlanner 出 3D 框摆放；OrientationEstimator+TransformPlanner 迭代调姿；渲染多视角交 CameraPicker 选机位；最后按 深度+S_I+P' 用 SIGMA-Gen 出图，编辑走 ObjectClear 擦除后条件重生成。",
+ "experiment_framework": "GenAI-Bench advanced 子集 870 提示 + CompoundPrompts 540 提示；指标 VQAScore（文图对齐）与 Q-Align（质量），4.5 分制；基线 Idea2Img（文本推理）、RPG-SDXL/RPG-Flux（2D 推理），同用 GPT-5+Flux 对齐；另做 5 张消融表（agent 增删、渲染设计、身份生成法）。",
+ "takeaways": [
+  "「把某一模态空间当作 LLM 的推理草稿本」这一 framing 可迁移到其他生成/理解任务，值得复用来设计 agent 分工",
+  "复杂几何属性（旋转）拆成「估计当前态 + 规划增量变换」两步交给两个 agent，比单 agent 直出数值稳",
+  "候选渲染后择优相机优于固定正面机位，是低成本的构图提分技巧"
+ ],
+ "weaknesses": [
+  "整个系统零训练，全部由 GPT-5/Flux/Hunyuan-3D/SIGMA-Gen/ObjectClear 等现成模块串成，方法学上只贡献了 agent 编排与提示设计，论文未提供任何关于为何这种分工优于单一多轮 agent 的对照实验",
+  "agent 消融增益极小（0.821→0.824→0.830），三个增益主要来自第 4 步相机选择且绝对值仅 0.009，在 VQAScore 这种 VQA 概率型代理指标下是否可复现未被方差/多次采样验证",
+  "所谓「3D 空间」实际是无纹理网格+轴标尺+3D 框的抽象场景，渲染结果不参与梯度也不参与最终图像，与真正的 3D 推理（如 3DGS/NeRF 一致性）差距大；且主指标仅 VQAScore/Q-Align 两个自动打分，缺人工评测"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "纯文本到图像生成，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

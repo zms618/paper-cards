@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Deep Bayesian Filter for Bayes-Faithful Data Assimilation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Deep Bayesian Filter for Bayes-Faithful Data Assimilation.pdf",
+ "title": "Deep Bayesian Filter for Bayes-Faithful Data Assimilation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "隐变量约束高斯性，解析递推避免粒子滤波误差，但后验表达能力受限",
+ "innovations": [
+  "在物理变量z_t外引入隐变量h_t，将非线性动力学下的后验约束为高斯，同时保持表达能力",
+  "约束隐空间状态转移为线性、学习高斯逆观测算子r(h_t|o_t)，实现解析递推计算",
+  "通过最大化ELBO端到端训练IOO与隐SSM参数，无需状态教师信号；避免SMC粒子数不足时的误差累积"
+ ],
+ "method_framework": "非线性SSM中引入隐变量h_t；状态转移p(h_{t+1}|h_t)约束为线性高斯；逆观测算子r(h_t|o_t)由NN学习为高斯；后验q(z_t|o_{1:t})可解析递推；ELBO优化所有算子与参数。",
+ "experiment_framework": "在强非高斯后验场景下对比EnKF、4D-Var、SMC/PF等方法，评估后验估计质量（天气/海洋类状态估计任务）。",
+ "takeaways": [
+  "在高维非高斯后验场景下，DBF优于EnKF/4D-Var/粒子滤波等现有方法",
+  "解析递推避免了SMC在粒子不足与高维时的性能退化",
+  "隐空间线性化+高斯逆观测算子是兼顾Bayes忠实性与可计算性的有效结构"
+ ],
+ "weaknesses": [
+  "后验仍被约束为高斯，对极强非高斯/多峰后验表达能力受限",
+  "前9页未给出完整数值表，具体任务与指标增益需看实验章节",
+  "隐变量引入增加了模型复杂度，可解释性低于经典滤波"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

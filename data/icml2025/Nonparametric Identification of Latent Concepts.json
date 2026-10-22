@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Nonparametric Identification of Latent Concepts.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Nonparametric Identification of Latent Concepts.pdf",
+ "title": "Nonparametric Identification of Latent Concepts",
+ "scores": {
+  "novelty": 7,
+  "depth": 7.5,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6.3
+ },
+ "one_line": "非参数潜概念辨识理论，结构多样性保证可辨识性，但医学应用未实证",
+ "innovations": [
+  "证明任意两类之间各自独有的概念可与其余概念解耦(Thm 1成对比较)，并推广到任意类子集(Cor 1局部比较)，允许部分假设被违反时仍保证子集辨识",
+  "提出Structural Diversity条件，在此条件下所有类依赖概念可非参数辨识到element-wise h_i(z_π(i))(Thm 2)，且只需两个分布不同的域即够，远少于传统需2nA+1个域",
+  "在附加结构条件下还能辨识类无关(背景)概念(Prop 1)并非参数恢复类-概念邻接结构M(Prop 2)，把概念学习与结构/DAG学习打通"
+ ],
+ "method_framework": "观测x=f(z)为未知微分同胚，z=zA(类依赖,g(c,θ))+zB(类无关)，给定类c下条件独立p(z|c)=p(zA|c)p(zB)；以观测等价(p̂x|c=px|c)+ℓ0正则下D_c ĝ的Jacobian线性无关性为条件，用正则极大似然(归一化流,f̂)估计；MCC度量辨识概念与真值对齐。",
+ "experiment_framework": "合成数据(不同概念数/维度，分含/不含类无关概念两设定)；真实数据5个：Fashion-MNIST/EMNIST/AnimalFace/Flower102/FFHQ；指标Mean Correlation Coefficient(MCC)、重建图像逐概念变化、热图像素差；10次随机试验，对比无结构条件的Base模型。",
+ "takeaways": [
+  "合成实验Ours在概念数3-10上MCC显著高于Base且方差更小，证明结构条件确实是解耦/辨识的关键",
+  "Fashion-MNIST上成功分离sleeve length/torso length/shoulder width、Flower102上'Blooming'概念跨角度/环境稳定复现，支持非参数可辨识的可行性",
+  "若结构多样性不满足(如所有狗品种共享barks/furry等重叠特征)则单靠观测数据不可辨识，需回到不相交/线性等额外先验"
+ ],
+ "weaknesses": [
+  "落点为概念/因果表征可辨识性理论，与主任务的医学影像/多模态大模型推理可靠性不直接相关；虽提及healthcare应用但未在医学影像上实证",
+  "辨识保证建立在观测等价+Jacobian线性无关+非退化样本空间等渐近假设上，有限样本下估计(归一化流)的实际误差与样本复杂度未给出界",
+  "类无关概念zB的辨识仍需额外结构条件(Prop 1非正式/需ℓ0与结构约束)；部分现实中概念本就跨类纠缠(Appx图13-15)，此时方法只能部分辨识，实用性受限于是否存在唯一区分概念"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

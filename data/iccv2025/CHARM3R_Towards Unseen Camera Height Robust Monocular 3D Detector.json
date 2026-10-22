@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/CHARM3R_Towards Unseen Camera Height Robust Monocular 3D Detector.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/CHARM3R_Towards Unseen Camera Height Robust Monocular 3D Detector.pdf",
+ "title": "CHARM3R Towards Unseen Camera Height Robust Monocular 3D Detector",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "简单平均两种深度估计以提升单目3D检测器对相机高度的泛化能力",
+ "innovations": [
+  "数学证明回归深度和地面深度在相机高度变化时的相反趋势",
+  "简单平均两种深度估计以抵消趋势",
+  "在CARLA数据集上实现45%以上的泛化提升"
+ ],
+ "method_framework": "CHARM3R预测物体底部中心点查询地面深度，同时保留回归深度估计，通过简单平均两种深度来抵消相机高度变化带来的相反趋势",
+ "experiment_framework": "CARLA数据集，GUP Net和DEVIANT作为基线，AP3D70/50和MDE作为指标，测试从-0.70m到+0.76m的高度变化",
+ "takeaways": [
+  "深度估计是相机高度变化下的主要误差来源",
+  "简单平均不同趋势的估计量可以有效提高泛化能力",
+  "数学分析有助于理解模型行为"
+ ],
+ "weaknesses": [
+  "方法依赖于地面平面假设，在非平坦道路上可能失效",
+  "仅在一个模拟数据集上验证，缺乏真实场景测试"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "单目3D检测与可靠性主线无实质交点，仅常规泛化工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

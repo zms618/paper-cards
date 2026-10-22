@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Dream-to-Recon Monocular 3D Reconstruction with Diffusion-Depth Distillation from Single.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Dream-to-Recon Monocular 3D Reconstruction with Diffusion-Depth Distillation from Single.pdf",
+ "title": "Dream-to-Recon Monocular 3D Reconstruction with Diffusion-Depth Distillation from Single",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "扩散模型蒸馏单视图3D重建，计算成本高且存在伪影",
+ "innovations": [
+  "视图完成模型(VCM)用于修复和细化虚拟视图",
+  "合成占用场(SOF)构建密集场景几何",
+  "单视图场景重建模型蒸馏，无需多视图数据"
+ ],
+ "method_framework": "通过微调扩散模型和预训练深度预测器，从单图像生成高质量场景几何，然后蒸馏为前馈重建模型，同时预测3D不确定性",
+ "experiment_framework": "KITTI-360和Waymo数据集，与BTS、KYN等多监督基线比较，使用Oacc、IEacc、IErec等指标评估",
+ "takeaways": [
+  "扩散模型可用于高质量3D几何生成",
+  "单图像蒸馏可达到多监督方法性能",
+  "方法在动态场景中具有优势"
+ ],
+ "weaknesses": [
+  "训练计算成本高(2-3天)",
+  "合成场景偶尔存在视图完成或深度预测导致的伪影"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D重建与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

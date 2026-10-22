@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Tracking-Guided 4D Generation Foundation-Tracker Motion Priors for 3D Model Animation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Tracking-Guided 4D Generation Foundation-Tracker Motion Priors for 3D Model Animation.pdf",
+ "title": "Tracking-Guided 4D Generation Foundation-Tracker Motion Priors for 3D Model Animation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "两阶段框架结合跟踪器增强4D生成时序一致性",
+ "innovations": [
+  "引入Track4DGen框架统一扩散生成器、基础点跟踪器和4D-GS重建器",
+  "提出时序感知的多视图4D生成器，结合视频扩散目标与跨帧密集点跟踪",
+  "开发混合特征表示的4D-GS重建，融合扩散特征与Hex-plane特征"
+ ],
+ "method_framework": "两阶段框架：第一阶段利用CoTracker3获取密集关键点轨迹，在扩散特征空间中实现对应关系跟踪，提供显式时序监督；第二阶段结合扩散特征与Hex-plane特征进行4D-GS重建，并引入4D球谐函数建模",
+ "experiment_framework": "多视图视频生成：Diffusion4D和Animate3D数据集，使用I2V、运动平滑度等5项指标；4D生成：Sketchfab28和Animate3D数据集，使用CLIP指标和用户研究",
+ "takeaways": [
+  "特征级点跟踪可有效增强扩散模型的时序一致性",
+  "混合特征表示能提升动态几何和外观建模质量",
+  "基础跟踪器可作为时序一致性的有效监督信号"
+ ],
+ "weaknesses": [
+  "方法依赖基础跟踪器CoTracker3，可能限制泛化能力",
+  "两阶段框架增加了计算复杂度",
+  "仅评估了特定场景下的4D生成，泛化性有待验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "4D生成与可靠性主线无实质交点，属纯视觉生成工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

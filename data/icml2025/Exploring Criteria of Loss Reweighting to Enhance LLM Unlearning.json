@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Exploring Criteria of Loss Reweighting to Enhance LLM Unlearning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Exploring Criteria of Loss Reweighting to Enhance LLM Unlearning.pdf",
+ "title": "Exploring Criteria of Loss Reweighting to Enhance LLM Unlearning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.3
+ },
+ "one_line": "实证分析LLM遗忘中损失重加权准则，Saturation比Importance更有效。",
+ "innovations": [
+  "识别损失重加权在LLM遗忘中的两个不同目标：Saturation（强调优化不足的数据）与 Importance（强调对损失最小化最关键的数据）",
+  "为每个目标设计专门的重加权策略并分别评估，发现 Saturation 比 Importance 更能提升遗忘效果，二者组合可进一步增益",
+  "系统比较软重加权与硬采样(TopK/BottomK/Random)及批/实例/组/token 多种权重粒度的权衡"
+ ],
+ "method_framework": "在基于梯度上升(GA)的遗忘框架上，对目标数据按损失大小构造重加权：Saturation 类给低似然/未充分优化数据更高权重，Importance 类给对损失最关键数据更高权重；通过温度 β 控制权重分布平滑度，在遗忘彻底性与保留能力间权衡。",
+ "experiment_framework": "在 TOFU 等成熟遗忘基准、Phi-1.5 上评测；遗忘方法含 SimSat、SimImp 等梯度上升法；指标为遗忘彻底性(unlearn/removal)与保留能力(retain)；做 β 平滑度、权重粒度、硬采样vs软重加权的消融。",
+ "takeaways": [
+  "Saturation 类重加权比 Importance 类更能增强遗忘效果，且两者方向相反：Saturation 给低似然数据更低权重、Importance 相反",
+  "硬采样能提升整体遗忘效力，但仍不如软重加权策略",
+  "更细粒度(token/实例)重加权通常在遗忘-保留权衡上更优，但在 SimImp 下细粒度会牺牲遗忘性能"
+ ],
+ "weaknesses": [
+  "主要在 Phi-1.5 单一模型与1%小遗忘比例上展开，更大模型/更高遗忘比例下的结论稳健性未知",
+  "属于实证分析而非提出新遗忘算法，对为何 Saturation 更优的机制解释偏经验性",
+  "与 SOTA 遗忘方法的端到端对比有限，重在剖析重加权准则而非刷榜"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.88,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

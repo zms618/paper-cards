@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Selective Learning for Deep Time Series Forecasting.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Selective Learning for Deep Time Series Forecasting.pdf",
+ "title": "Selective Learning for Deep Time Series Forecasting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "双掩码机制过滤不确定时间步，提升时间序列预测泛化性",
+ "innovations": [
+  "提出选择性学习策略，从时间步粒度解决过拟合问题",
+  "设计双掩码机制动态过滤不确定性和异常时间步",
+  "方法与模型无关，可应用于多种深度学习架构"
+ ],
+ "method_framework": "通过不确定性掩码(基于残差熵)和异常掩码(基于残差下界估计)动态筛选可泛化时间步，仅在这些时间步上计算MSE损失进行优化",
+ "experiment_framework": "8个真实数据集，6种主流深度模型(Informer/TimesNet/iTransformer等)，MSE/MAE指标，零样本泛化实验",
+ "takeaways": [
+  "双掩码机制比随机掩码更有效，两个掩码缺一不可",
+  "选择性学习与现有训练目标(如PS/FreDF)兼容且性能更优",
+  "掩码比例应根据数据特性调整"
+ ],
+ "weaknesses": [
+  "残差下界估计模型的选择对性能有影响",
+  "方法在周期性数据集上的改进不如非平稳数据集明显",
+  "未探讨方法在极端事件预测中的表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

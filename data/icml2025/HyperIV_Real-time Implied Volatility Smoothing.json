@@ -1,0 +1,37 @@
+{
+ "title": "HyperIV: Real-time Implied Volatility Smoothing",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.25
+ },
+ "one_line": "超网络生成波动率曲面，9观测2ms完成，但适用性有限",
+ "innovations": [
+  "用超网络(hypernetwork)直接生成构建波动率曲面的紧凑神经网络参数，避免传统逐次标定",
+  "仅需<10个观测即可在2毫秒内生成完整波动率曲面，适应高频稀疏行情场景",
+  "在生成中保证曲面无静态套利(arbitrage-free)，并在8个股指期权上展现跨资产泛化"
+ ],
+ "method_framework": "HyperIV以超网络从极少量(约9个)期权报价观测中回归出一个紧凑曲面网络的全部参数，前向即得完整隐含波动率曲面；架构设计（参数化/输出约束）保证所得曲面无静态套利，从而可直接用于实时高频重标定。",
+ "experiment_framework": "在8个股指期权上评测，对比参数化模型与已有ML曲面方法，指标为拟合精度、生成时延(2ms)、所需观测数及跨资产泛化，同时验证无套利性。",
+ "takeaways": [
+  "超网络可将波动率曲面拟合从逐次标定转为一次性生成，毫秒级完成",
+  "在仅约9个稀疏观测下仍能构造无套利完整曲面，贴近真实高频交易",
+  "模型跨资产泛化，说明学到了普适的波动率结构先验"
+ ],
+ "weaknesses": [
+  "仅8个股指期权验证，对个股/奇异期权等更薄市场的适用性未证",
+  "无套利保证为静态层面，对动态套利/交易成本的实际意义需金融视角进一步检验",
+  "与主线索（可信多模态推理/医学影像）无关，属金融量化建模"
+ ],
+ "confidence": "high",
+ "key": "icml2025/HyperIV_Real-time Implied Volatility Smoothing.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/HyperIV_Real-time Implied Volatility Smoothing.pdf",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

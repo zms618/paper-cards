@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Guiding Diffusion Models with Semantically Degraded Conditions.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Guiding Diffusion Models with Semantically Degraded Conditions.pdf",
+ "title": "Guiding Diffusion Models with Semantically Degraded Conditions",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "语义退化条件提升扩散模型组合任务精度，但依赖特定架构",
+ "innovations": [
+  "提出分层退化策略，区分内容令牌和上下文聚合令牌",
+  "设计条件退化引导(CDG)替代传统CFG",
+  "利用几何分析证明CDG信号的正交性优势"
+ ],
+ "method_framework": "通过加权PageRank识别文本编码器中的内容令牌和上下文聚合令牌，构建分层退化掩码，生成语义退化条件cdeg，实现'好vs几乎好'的精细对比引导",
+ "experiment_framework": "在SD3、SD3.5、FLUX和Qwen-Image模型上评估，使用MS-COCO数据集，比较FID、CLIP分数、美学分数和VQA分数，并在GenAI-Bench组合推理基准上测试",
+ "takeaways": [
+  "利用模型内部结构设计引导信号可提升生成质量",
+  "语义接近的条件对比能有效减少几何纠缠",
+  "轻量级即插即用模块可显著提升组合任务性能"
+ ],
+ "weaknesses": [
+  "方法依赖于特定令牌结构，可能不适用于所有架构",
+  "仅在前向传播中应用，未考虑训练阶段的优化",
+  "在FLUX.1上提升相对较小，可能受其引导蒸馏机制影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型引导技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

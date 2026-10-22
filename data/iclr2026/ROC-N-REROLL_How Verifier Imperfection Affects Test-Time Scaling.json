@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/ROC-N-REROLL_How Verifier Imperfection Affects Test-Time Scaling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/ROC-N-REROLL_How Verifier Imperfection Affects Test-Time Scaling.pdf",
+ "title": "ROC-N-REROLL: How Verifier Imperfection Affects Test-Time Scaling",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 7.0
+ },
+ "one_line": "理论证明验证器ROC曲线决定BoN/RS性能，但实验证据不完整。",
+ "innovations": [
+  "从理论上证明BoN与RS的实例级精度由验证器ROC曲线的几何精确刻画，填补不完美验证器下测试时扩展的理论空白。",
+  "证明对任意ROC凹的查询，固定算力下RS优于BoN，而二者在无限算力极限收敛到相同精度。",
+  "证明一般无法从低算力区间的观测预测任一方法在高算力下的表现。"
+ ],
+ "method_framework": "把不完美验证器建模为带ROC曲线的二分类器，推导BoN(选验证器分最高)与RS(按验证阈值重采样)在N个样本下的实例级精度，用ROC几何(凹性、面积)刻画二者随算力的扩展曲线。",
+ "experiment_framework": "用Qwen与LLaMA模型在GSM8K、MATH500上，以LLM-as-verifier的实测ROC验证理论预测(凹性下RS优于BoN、低算力不可外推高算力)。",
+ "takeaways": [
+  "验证器的ROC凹性决定固定算力下RS是否优于BoN；高算力极限二者趋同。",
+  "不能用低算力段的精度曲线外推高算力表现，实践中BoN/RS的扩展收益受验证器质量根本限制。"
+ ],
+ "weaknesses": [
+  "理论基于实例级、二分类验证器假设，对多步过程奖励/连续奖励的推广未覆盖。",
+  "前9页只见理论框架与示意曲线，未见Qwen/LLaMA全量验证表，实验确认的完整证据需读后续章节。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.65,
+ "tier": "A",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "验证器不完美性对测试时扩展的影响，属于可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

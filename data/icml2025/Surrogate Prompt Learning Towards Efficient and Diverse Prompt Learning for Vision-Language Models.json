@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Surrogate Prompt Learning Towards Efficient and Diverse Prompt Learning for Vision-Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Surrogate Prompt Learning Towards Efficient and Diverse Prompt Learning for Vision-Language Models.pdf",
+ "title": "Surrogate Prompt Learning: Towards Efficient and Diverse Prompt Learning for Vision-Language Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "用轻量代理特征生成器替代多样提示学习，降低计算成本。",
+ "innovations": [
+  "把'学习多样提示 token'转化为'直接生成多样提示文本特征'，避免对多个提示做梯度反传的高成本。",
+  "设计轻量代理特征生成器（SFG），基于一个基础提示文本特征，按预定义条件信号高效生成多样的提示特征。",
+  "在保持多样性优势的同时显著提升多样提示学习的效率。"
+ ],
+ "method_framework": "常规多样提示学习（实例依赖/细粒度提示）要为每个样本维护并反传多个提示 token，算力大。SurPL 改为：只学一个基础提示特征 + 一个轻量 SFG；SFG 根据不同条件信号直接从基础特征变换出多样的提示文本特征，再与视觉特征算相似度。训练只需优化 SFG，无需对每个提示做完整反向传播。",
+ "experiment_framework": "在多个 VLM 下游分类/检索 benchmark 上，对比 CoOp 单提示与现有多样提示学习方法；指标为下游精度与训练/推理效率。",
+ "takeaways": [
+  "以更低计算成本获得与多样提示学习相当甚至更好的性能。",
+  "直接生成特征避免了多提示梯度计算的复杂流程。",
+  "条件信号可控地产生多样化提示视角。"
+ ],
+ "weaknesses": [
+  "属于 VLM 提示学习效率优化，与可靠性/鲁棒主线弱相关。",
+  "'直接生成文本特征'而非真实 token，与 CLIP 文本编码器的对齐 gap 可能限制可解释性与迁移性。",
+  "条件信号的设计依赖先验，对开放域/零样本任务的适用性未充分验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.83,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

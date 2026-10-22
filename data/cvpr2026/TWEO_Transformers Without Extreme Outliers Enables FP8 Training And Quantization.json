@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/TWEO_Transformers Without Extreme Outliers Enables FP8 Training And Quantization.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/TWEO_Transformers Without Extreme Outliers Enables FP8 Training And Quantization.pdf",
+ "title": "TWEO Transformers Without Extreme Outliers Enables FP8 Training And Quantization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "简单正则化抑制Transformer极端激活值，支持FP8训练量化",
+ "innovations": [
+  "发现极端激活值是数据独立的机械产物而非数据驱动",
+  "提出基于权重矩阵共线性的理论解释",
+  "设计TWEO损失函数实现非侵入式解决方案",
+  "实现全模型FP8训练和简单量化"
+ ],
+ "method_framework": "TWEO通过添加一个简单的正则化项，直接惩罚激活值的极端幅度，使用软阈值τ和惩罚幂次p实现非线性抑制，保留正常激活值同时消除极端值。",
+ "experiment_framework": "在ImageNet上的Swin和ViT模型，以及不同规模的GPT-2模型上测试，对比BF16、标准FP8和现有侵入式方法，使用Top-1准确率和困惑度作为指标。",
+ "takeaways": [
+  "简单有效的正则化方法可解决复杂工程问题",
+  "数据独立的解决方案具有跨模态通用性",
+  "消除极端激活值可简化量化流程"
+ ],
+ "weaknesses": [
+  "未探讨TWEO对不同架构的泛化能力",
+  "缺乏对计算开销的详细分析",
+  "未研究TWEO对模型推理性能的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "解决Transformer极端激活值问题，支持FP8训练量化，属于可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

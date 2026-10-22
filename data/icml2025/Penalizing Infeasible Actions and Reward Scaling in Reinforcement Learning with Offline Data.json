@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Penalizing Infeasible Actions and Reward Scaling in Reinforcement Learning with Offline Data.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Penalizing Infeasible Actions and Reward Scaling in Reinforcement Learning with Offline Data.pdf",
+ "title": "Penalizing Infeasible Actions and Reward Scaling in Reinforcement Learning with Offline Data",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6.5,
+  "relevance": 7,
+  "overall": 6.3
+ },
+ "one_line": "简单修改TD3+BC添加奖励缩放和不可行动作惩罚",
+ "innovations": [
+  "RS-LN机制通过增加奖励缩放和层归一化减少OOD区域的Q值",
+  "PA机制对不可行动作区域施加惩罚，强制Q值下降",
+  "PARS算法在TD3+BC基础上简单实现，无需过度保守或辅助模型"
+ ],
+ "method_framework": "PARS结合RS-LN和PA，通过增加奖励缩放和层归一化减少OOD区域的Q值，同时对不可行动作区域施加惩罚，强制Q值下降，防止Q值外推误差。",
+ "experiment_framework": "在D4RL基准的AntMaze、Adroit和MuJoCo三个领域28个数据集上评估，与10个SOTA基线比较，并在离线训练和在线微调阶段测试。",
+ "takeaways": [
+  "奖励缩放与层归一化结合可有效提高网络表达能力，减少OOD区域的Q值",
+  "对不可行动作区域施加惩罚可强制Q值下降，防止外推误差"
+ ],
+ "weaknesses": [
+  "方法依赖于对可行动作区域的先验定义",
+  "在超高维动作空间中的效果未充分验证",
+  "PA超参数的选择可能影响性能"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

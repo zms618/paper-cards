@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Non-asymptotic Error Bounds in W2-Distance with Sqrt(d) Dimension Dependence and First Order Convergence for.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Non-asymptotic Error Bounds in W2-Distance with Sqrt(d) Dimension Dependence and First Order Convergence for.pdf",
+ "title": "Non-asymptotic Error Bounds in W2-Distance with Sqrt(d) Dimension Dependence and First Order Convergence for Langevin Monte Carlo beyond Log-Concavity",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 4.5,
+  "relevance": 3,
+  "overall": 5.5
+ },
+ "one_line": "理论改进非凸LMC收敛界，但实验简单且与主线任务无关",
+ "innovations": [
+  "首次在去掉强对数凹条件下仍得O(√(dh)) W2界：用log-Sobolev不等式(LSI)+单侧Lipschitz替代强凸，回答了Q问题并把非凸混合时间从O~(d/ε)改进到O~(√d/ε)",
+  "建立非凸下SDE离散的一致时间收敛新框架：从有限时间均方基本收敛定理(而非Li2019/2022的路径)出发，结合LMC一致时间矩界与SDE指数遍历性得到统一收敛",
+  "把框架推广到梯度非全局Lipschitz、超线性增长(γ>0)情形，提出投影LMC(pLMC)并给出W2误差界O(d^{(11γ+2)/4}h)"
+ ],
+ "method_framework": "目标π∝e^{-U}，EM离散LMC:Y_{n+1}=Y_n-∇U(Y_n)h+√(2h)ζ_n；在耗散性、单侧Lipschitz(-∇U)、LSI、梯度Lipschitz、三阶导线性增长假设下，先证SDE指数遍历W2(νpt,π)≤Ke^{-ηt}W2(ν,π)，再用三角不等式(27)拆成有限时间项+遍历项，有限时间项用均方基本收敛定理得O(h^{p2-1/2})，选tn1使Ke^{-ηtn1}=1/e递推得W2≤C√(dh)+C'√d e^{-λnh}。",
+ "experiment_framework": "纯理论+两个玩具数值：非凸高斯混合U1与双势阱U2(α=1,β=16)；d=5/10/20，T=6，300/3000条链，步长h∈{2^-5,...,2^-9}，精确解用href=2^-13；画密度曲线与强误差-步长log-log斜率；与文献混合时间列表对比(Table 1)。",
+ "takeaways": [
+  "混合时间O~(√d/ε)与强对数凹情形最优同阶，而此前非凸最佳为O~(d/ε)或O~(d/ε^4)",
+  "数值上LMC与pLMC的强误差随步长呈order 1.0斜率，与理论一阶收敛一致",
+  "关键技术是把常数K,η,λ显式表达为SDE收缩率与局部收敛率的函数，使框架可迁移到其他SDE离散格式"
+ ],
+ "weaknesses": [
+  "落点为MCMC采样的非渐近理论，与主任务的医学影像/多模态大模型推理可靠性完全无关",
+  "实证仅高斯混合/双势阱两个玩具势，d最大100/仅画d=5/10/20斜率，无真实生成模型/贝叶斯后验上的混合时间实测；常数依赖多个假设量，不可直接用于调参",
+  "仍需LSI这一较强分布假设(等价强凸出球外)，作者自陈未覆盖一般非对数凹；pLMC的O(d^{(11γ+2)/4})在γ大时维数依赖恶化，且投影算子引入额外偏差未量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.98,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

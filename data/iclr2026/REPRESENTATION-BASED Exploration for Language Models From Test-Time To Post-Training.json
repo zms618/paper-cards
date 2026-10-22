@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/REPRESENTATION-BASED Exploration for Language Models From Test-Time To Post-Training.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/REPRESENTATION-BASED Exploration for Language Models From Test-Time To Post-Training.pdf",
+ "title": "Representation-Based Exploration for Language Models: From Test-Time to Post-Training",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "基于表示的探索奖励提升LM推理和RL训练效率，但开销与迁移性存疑。",
+ "innovations": [
+  "提出基于表示的探索bonus：从预训练语言模型隐藏状态计算多样性奖励，引导模型发现新颖行为而非仅锐化已有能力",
+  "将探索方法同时应用于推理时（测试时扩展）和RL后训练两个场景，验证探索的跨阶段价值",
+  "后训练中集成表示探索后，Qwen-7B在AIME2024上pass@80即匹配GRPO的pass@256，实现3倍采样效率提升"
+ ],
+ "method_framework": "利用预训练LM的隐藏状态作为表示空间，对生成的响应计算表示多样性bonus。推理时：在采样过程中用表示距离引导选择多样性更高的候选，提升verifier效率。后训练时：将表示探索bonus集成到RL奖励中，鼓励策略探索表示空间中的新区域，避免仅锐化已有行为。",
+ "experiment_framework": "多模型（Llama 8B, Phi-3/4, Qwen 3B/7B/14B/32B）；多任务（MATH, GSM8K, MBPP, AIME2024/2025, Game of 24）；推理时评测samples-to-correct和pass@k；后训练对比GRPO；报告采样效率提升倍数。",
+ "takeaways": [
+  "基于表示的多样性探索可同时提升推理时和后训练阶段的推理能力",
+  "预训练模型的隐藏状态空间可作为有效探索引导，无需从头学习表示",
+  " deliberate exploration是RL超越'仅锐化已有能力'、发现新行为的实用路径"
+ ],
+ "weaknesses": [
+  "表示多样性bonus的计算需要额外前向传播提取隐藏状态，推理时开销增加未充分量化",
+  "仅在数学/代码推理任务验证，对多模态或开放域推理的迁移性未知",
+  "前9页未见表示探索与熵正则化、RR/REINFORCE等现有探索方法的系统对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "仅提升推理效率，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

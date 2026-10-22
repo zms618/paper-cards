@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/KEYDIFF_Key Similarity-Based KV Cache Eviction for Long-Context LLM Inference in Resource-Constrained Environments.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/KEYDIFF_Key Similarity-Based KV Cache Eviction for Long-Context LLM Inference in Resource-Constrained Environments.pdf",
+ "title": "KEYDIFF: Key Similarity-Based KV Cache Eviction for Long-Context LLM Inference in Resource-Constrained Environments",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "基于键相似性的KV缓存淘汰，提升长上下文LLM推理效率",
+ "innovations": [
+  "发现键相似性与注意力分数的负相关性",
+  "提出不依赖注意力分数的KEYDIFF缓存淘汰策略",
+  "提供KEYDIFF工作的理论分析"
+ ],
+ "method_framework": "KEYDIFF通过计算键与锚点向量的余弦相似度进行缓存淘汰，保留低相似度的键值对，实现多样化保留，适用于分块推理场景。",
+ "experiment_framework": "LongBench、Needle In a Haystack、Math-500等数据集，对比H2O、TOVA、SnapKV等方法，使用Llama和Qwen模型家族评估。",
+ "takeaways": [
+  "键多样性可作为全局令牌重要性的有效代理",
+  "分块推理场景下注意力分数可能无法准确反映令牌重要性",
+  "方法设计简洁高效，支持FlashAttention等优化注意力机制"
+ ],
+ "weaknesses": [
+  "理论分析基于特定假设，普适性有待验证",
+  "未探讨不同模型架构下的泛化能力",
+  "滑动窗口扩展仅在特定任务上表现更好"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

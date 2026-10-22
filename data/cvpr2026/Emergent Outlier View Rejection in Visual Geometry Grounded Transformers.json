@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Emergent Outlier View Rejection in Visual Geometry Grounded Transformers.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Emergent Outlier View Rejection in Visual Geometry Grounded Transformers.pdf",
+ "title": "Emergent Outlier View Rejection in Visual Geometry Grounded Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.4
+ },
+ "one_line": "利用VGGT内部表征实现训练-free异常视图过滤，提升3D重建鲁棒性。",
+ "innovations": [
+  "发现VGGT内部表征中存在固有的异常视图抑制行为",
+  "提出基于内部表征的简单训练-free过滤机制",
+  "使用单一全局阈值实现跨数据集的视图选择"
+ ],
+ "method_framework": "通过分析VGGT内部注意力和特征相似性，识别出最后一层具有最强的异常视图区分能力，基于此设计评分机制和阈值过滤策略，无需修改模型架构或重新训练。",
+ "experiment_framework": "在Phototourism、On-the-Go、RobustNeRF和ETH3D数据集上评估，通过控制不同噪声级别(Small/Medium/Large)测试相机姿态估计和多视图深度估计任务，与VGGT及多种预过滤基线比较。",
+ "takeaways": [
+  "利用预训练模型内部表征作为噪声过滤信号是一种高效鲁棒性增强策略",
+  "单一全局阈值可跨数据集实现有效视图选择，无需场景特定调参"
+ ],
+ "weaknesses": [
+  "方法依赖于特定模型(VGGT)的内部表征特性，泛化性有待验证",
+  "在RobustNeRF数据集上表现不如MASt3R-SfM，可能受限于数据集特性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "提升3D重建鲁棒性，但未触及可靠性主线核心问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

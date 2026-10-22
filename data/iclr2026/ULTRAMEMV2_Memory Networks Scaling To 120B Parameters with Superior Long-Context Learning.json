@@ -1,0 +1,41 @@
+{
+ "title": "UltraMemV2: Memory Networks Scaling To 120B Parameters with Superior Long-Context Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "五项工程改进使内存层追平8-expert MoE，但理论创新有限",
+ "innovations": [
+  "指出现有内存层架构(如 UltraMem)仅追平 2-expert MoE，远落后于 SOTA 8-expert MoE。",
+  "五项关键改进：每 transformer block 都嵌入内存层、单线性投影简化 value expansion、采用 PEER 的 FFN 式 value 处理、原则化参数初始化防发散、重平衡 memory-FFN 计算比。",
+  "在相同计算与参数下追平 8-expert MoE 且显存访问更低，并在记忆密集任务上显著更优。"
+ ],
+ "method_framework": "把内存层(从大参数表激活 embedding 加入表示，显存访问随序列长度极慢增长)紧密集成到每个 transformer block；简化 value 扩展为单线性投影、引入 PEER 式 FFN value 处理、做原则化初始化并重平衡计算比，从而在保持低显存访问优势下弥合与 8-expert MoE 的性能差距。",
+ "experiment_framework": "在最多 120B 总参数/2.5B 激活规模上，与 8-expert MoE 在相同计算/参数下对比，报告通用性能与记忆密集任务(长上下文记忆/多轮记忆/上下文学习)指标。",
+ "takeaways": [
+  "内存层架构显存访问远低于 MoE，但此前性能仅及 2-expert MoE。",
+  "五项架构改进可使内存层追平 8-expert MoE，并在长上下文记忆(+1.6)、多轮记忆(+6.2)、上下文学习(+7.9)上更优。",
+  "激活密度(top-m)对性能的影响大于稀疏参数总量。"
+ ],
+ "weaknesses": [
+  "属高效稀疏架构工程优化，方法由五项增量改进组成，单项理论新颖性有限。",
+  "优势集中在记忆密集任务，在通用知识/推理任务相对 MoE 的优势需更多数据支撑。",
+  "与可靠性/医学影像/多模态推理主线无关；完整训练阶段权衡与各规模消融表未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/ULTRAMEMV2_Memory Networks Scaling To 120B Parameters with Superior Long-Context Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/ULTRAMEMV2_Memory Networks Scaling To 120B Parameters with Superior Long-Context Learning.pdf",
+ "raw_overall": 6.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "工程优化与主线无关，无可靠性或落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

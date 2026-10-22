@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Frame2Freq_Spectral Adapters for Fine-Grained Video Understanding.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Frame2Freq_Spectral Adapters for Fine-Grained Video Understanding.pdf",
+ "title": "Frame2Freq Spectral Adapters for Fine-Grained Video Understanding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "频域适配器提升视频理解，但提升有限且计算开销大",
+ "innovations": [
+  "首次将频域变换引入图像到视频的VFM适配",
+  "提出Frame2Freq-ST和Frame2Freq-MS两种频域适配器架构",
+  "频率可辨别性分析揭示中频带对细粒度动作的关键作用"
+ ],
+ "method_framework": "冻结VFM主干网络，在transformer块间插入轻量级频域适配器，通过FFT提取时序特征频率模式，学习频带特定滤波器增强中频运动线索，残差连接回原始特征",
+ "experiment_framework": "五个细粒度动作识别数据集(SSv2, Diving48, Drive&Act, IKEA-ASM, HRI30)，对比PEFT基线和全微调模型，使用CLIP和DINOv2作为主干网络",
+ "takeaways": [
+  "频域分析能捕捉时序动态的关键特征，特别适合细粒度动作识别",
+  "轻量级频域适配器在参数效率上显著优于全微调方法"
+ ],
+ "weaknesses": [
+  "在SSv2等大规模数据集上提升相对较小，可能受限于动作标签的粗糙度",
+  "方法计算复杂度高于传统时域适配器"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "频域适配器提升视频理解，但提升有限且计算开销大",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

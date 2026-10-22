@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/IT3_Idempotent Test-Time Training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/IT3_Idempotent Test-Time Training.pdf",
+ "title": "IT3: Idempotent Test-Time Training",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.7
+ },
+ "one_line": "幂等性测试时训练，多领域验证但计算开销大",
+ "innovations": [
+  "幂等性作为通用测试时训练原则",
+  "冻结模型与动态模型分离的优化策略",
+  "在线IT3的EMA锚点机制"
+ ],
+ "method_framework": "训练阶段使模型满足f(x,0)=f(x,y)=y；测试时通过最小化||F(x,fθ(x,0))-fθ(x,0)||实现幂等性，其中F为冻结模型，fθ为动态更新模型。",
+ "experiment_framework": "多领域评估：表格数据(CIFAR)、年龄预测、道路分割、空气动力学预测；对比基线：非优化模型、TTT、ActMAD；指标：MAE、错误率、CCQ等。",
+ "takeaways": [
+  "幂等性可作为跨领域、跨架构的通用适应原则",
+  "冻结模型与动态模型分离的优化策略避免错误放大"
+ ],
+ "weaknesses": [
+  "在线IT3的EMA参数选择可能影响性能",
+  "计算复杂度随批次大小增加而提高"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Look Before You Fuse 2D-Guided Cross-Modal Alignment for Robust 3D.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Look Before You Fuse 2D-Guided Cross-Modal Alignment for Robust 3D.pdf",
+ "title": "Look Before You Fuse 2D-Guided Cross-Modal Alignment for Robust 3D",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 7.2
+ },
+ "one_line": "2D先验引导跨模态对齐提升3D检测，但依赖检测质量且计算开销大",
+ "innovations": [
+  "利用2D目标检测先验识别并校正前景-背景边界处的深度不对齐",
+  "不连续感知几何融合(DAGF)模块保留深度突变并抑制噪声",
+  "结构引导深度调制器(SGDM)实现多模态特征智能融合"
+ ],
+ "method_framework": "提出三阶段框架：先验引导深度校准(PGDC)利用2D边界框校正LiDAR深度；不连续感知几何融合(DAGF)生成密集深度表示；结构引导深度调制器(SGDM)融合视觉与几何特征预测深度分布。",
+ "experiment_framework": "在nuScenes和Argoverse 2数据集评估，使用mAP和NDS指标，与BEVFusion、GraphBEV等SOTA方法比较，并进行详细消融实验。",
+ "takeaways": [
+  "利用2D目标先验定位深度不对齐区域而非全局处理",
+  "保留深度突变信息对3D检测至关重要",
+  "多阶段协同校准比单一方法更有效"
+ ],
+ "weaknesses": [
+  "依赖2D检测器质量，检测误差会传播到后续模块",
+  "计算复杂度增加15ms，可能影响实时性",
+  "未探讨极端天气条件下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "跨模态对齐提升3D检测，但依赖检测质量且计算开销大",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

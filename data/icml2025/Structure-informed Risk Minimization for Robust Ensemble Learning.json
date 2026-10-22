@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Structure-informed Risk Minimization for Robust Ensemble Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Structure-informed Risk Minimization for Robust Ensemble Learning.pdf",
+ "title": "Structure-informed Risk Minimization for Robust Ensemble Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "DRO集成权重学习，用分布结构图改进不确定性集，提升OoD泛化。",
+ "innovations": [
+  "提出在无测试数据条件下学习鲁棒集成权重的原则性框架 SRM，填补集成组合策略在分布漂移下泛化的空白",
+  "提出基于分布间关系（均值协方差差异构图、closeness centrality 先验）构造不确定性集的新方法，使最坏情形集对齐真实可能漂移",
+  "给出兼顾最坏鲁棒与平均性能的高效优化算法（交替更新集成权重 w 与混合权重 q），并带理论保证"
+ ],
+ "method_framework": "在 DRO 的 min-max 最坏风险框架下，不再仅用散度球定义不确定集，而是用各训练环境分布的均值/协方差差异建图，以 closeness centrality 作为先验 p(e)，把结构信息注入不确定集；通过联合优化集成权重 w 与分布混合权重 q 的凸问题求解。",
+ "experiment_framework": "在 DomainBed 与 WILDS 两个 OoD 基准上评测；基线包括 Uniform Ensemble、Greedy Selection、ERM、Uniform Prior、Laplacian Prior、Group DRO；用 DomainBed 训练域留出验证集与 WILDS 验证域做模型选择，指标为 OoD 泛化精度。",
+ "takeaways": [
+  "仅基于散度球的 DRO 不确定集会过度悲观，引入训练分布的结构先验可在保持鲁棒的同时改善平均性能",
+  "将 DRO 从“训练单模型”迁移到“学习集成组合权重”是一条可行且有效的 OoD 提升路径",
+  "closeness centrality 作为先验能刻画分布在图中的全局影响力，比局部邻域更合理"
+ ],
+ "weaknesses": [
+  "需预先有多个环境/分布样本才能构图，单源训练场景下结构信息难以获得",
+  "实证集中在视觉域泛化基准，未涉及医学影像或多模态大模型等更贴近主线的落地域",
+  "结构构图依赖均值/协方差的高斯式差异度量，对复杂高维分布关系刻画可能粗糙"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Met2Net_A Decoupled Two-Stage Spatio-Temporal Forecasting Model for Complex Meteorological.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Met2Net_A Decoupled Two-Stage Spatio-Temporal Forecasting Model for Complex Meteorological.pdf",
+ "title": "Met2Net A Decoupled Two-Stage Spatio-Temporal Forecasting Model for Complex Meteorological",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "解耦两阶段气象预测模型，参数增加但泛化能力未验证",
+ "innovations": [
+  "隐式两阶段训练策略，冻结模块梯度并引入动量更新",
+  "为每个气象变量设计独立编码器-解码器对",
+  "在潜在空间引入自注意力机制实现多变量有效融合"
+ ],
+ "method_framework": "Met2Net采用解耦两阶段训练：第一阶段冻结Translator训练编码器-解码器对，第二阶段冻结编码器-解码器训练Translator，通过动量更新和潜在空间预测损失确保任务一致性",
+ "experiment_framework": "在WeatherBench数据集上评估，包括低分辨率、高分辨率和高海拔气象变量预测，使用MSE、MAE和RMSE指标，与TAU等基线模型比较",
+ "takeaways": [
+  "模块化设计可有效处理多变量表示不一致问题",
+  "隐式两阶段训练策略解决了传统两阶段训练中的任务不匹配问题"
+ ],
+ "weaknesses": [
+  "模型参数量增加，训练复杂度提高",
+  "仅针对气象领域验证，泛化能力有待进一步验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "气象预测与可靠性主线无实质交点，仅常规扎实工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

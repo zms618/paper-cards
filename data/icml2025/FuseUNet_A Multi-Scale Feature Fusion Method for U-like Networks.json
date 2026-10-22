@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/FuseUNet_A Multi-Scale Feature Fusion Method for U-like Networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FuseUNet_A Multi-Scale Feature Fusion Method for U-like Networks.pdf",
+ "title": "FuseUNet: A Multi-Scale Feature Fusion Method for U-like Networks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "将UNet解码建模为初值问题，用线性多步方法实现特征融合",
+ "innovations": [
+  "将UNet解码过程重新建模为初值问题(IVP)",
+  "利用线性多步方法替代传统简单连接操作",
+  "设计自适应离散方法实现跨尺度特征交互",
+  "方法独立于编码器-解码器架构，适用于多种U-Net变体"
+ ],
+ "method_framework": "将UNet的跳跃连接视为离散节点，将解码过程视为初值问题，利用nmODEs和线性多步方法(Adams-Bashforth/Adams-Moulton)实现多尺度特征融合，通过预测器-校正器机制提高精度",
+ "experiment_framework": "在ACDC、KiTS2023、MSD脑肿瘤和ISIC2017/2018皮肤病变分割数据集上测试，与nn-UNet、UNETR和UltraLight VM-UNet比较，使用Dice等指标评估",
+ "takeaways": [
+  "将数学方法(线性多步方法)引入医学图像分割特征融合",
+  "通过建模为初值问题解决跨尺度特征交互问题",
+  "方法可减少参数同时保持性能"
+ ],
+ "weaknesses": [
+  "在2D任务中GFLOPs略有增加",
+  "对初始值依赖可能导致稳定性问题",
+  "方法复杂度增加可能影响实际部署"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Automatically Identify and Rectify Robust Deep Contrastive Multi-view Clustering in Noisy Scenarios.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Automatically Identify and Rectify Robust Deep Contrastive Multi-view Clustering in Noisy Scenarios.pdf",
+ "title": "Automatically Identify and Rectify: Robust Deep Contrastive Multi-view Clustering in Noisy Scenarios",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "GMM识别噪声+校正+鲁棒对比，提升多视图聚类在噪声场景性能",
+ "innovations": [
+  "将噪声识别形式化为异常检测问题，用高斯混合模型(GMM)自动识别各视图中的噪声样本",
+  "设计混合校正策略：对识别出的噪声样本进行重建校正，减轻其对聚类的负面影响",
+  "提出噪声鲁棒对比学习机制，通过置信度阈值筛选可靠样本对，理论证明表示能保留干净信息并丢弃噪声信息"
+ ],
+ "method_framework": "AIRMVC三阶段：(1)噪声识别：用GMM对各视图特征分布建模，异常样本低概率即为噪声；(2)混合校正：自编码器重建噪声样本并结合其他视图信息进行校正；(3)噪声鲁棒对比：仅在软预测相似度≥τ的样本对间构建对比损失，避免错误正负样本对。总损失=重建损失+校正损失+对比损失。",
+ "experiment_framework": "6个基准数据集，噪声率10%/30%/50%/70%。基线包括NeurIPS 2024/AAAI 2024/CVPR 2024等SOTA多视图聚类方法。指标为ACC/NMI/PUR。",
+ "takeaways": [
+  "AIRMVC在70%高噪声率下仍显著优于SOTA方法，ACC提升明显",
+  "GMM噪声识别+校正策略有效降低了噪声样本对聚类的干扰",
+  "噪声鲁棒对比机制避免了错误样本对对比学习的负面影响"
+ ],
+ "weaknesses": [
+  "GMM假设特征分布为高斯混合，实际高维深度特征可能不满足",
+  "仅在传统图像/文本多视图数据集上验证，未测试多模态大模型场景",
+  "三个超参数α/β/τ的选择缺乏自动方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "噪声鲁棒对比学习属于可靠性主线，提升聚类在噪声场景性能",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

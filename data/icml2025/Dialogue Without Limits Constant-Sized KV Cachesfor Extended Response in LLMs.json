@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Dialogue Without Limits Constant-Sized KV Cachesfor Extended Response in LLMs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Dialogue Without Limits Constant-Sized KV Cachesfor Extended Response in LLMs.pdf",
+ "title": "Dialogue Without Limits: Constant-Sized KV Cachesfor Extended Response in LLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "MorphKV通过相关性选择实现常量KV缓存，长文本生成效率提升有限。",
+ "innovations": [
+  "基于近期token注意力模式的相关性感知token选择",
+  "融合函数(sum/max)动态保留远距离相关token",
+  "兼容GQA架构的内存高效实现"
+ ],
+ "method_framework": "MorphKV将上下文分为近期(R)和远期(D)两部分，通过融合近期token的注意力分数，动态选择保留最相关的远期token，实现固定大小(C+R)的KV缓存。",
+ "experiment_framework": "在Llama、Mistral、Qwen和Phi4模型上评估，使用LongWriter和LongGenBench基准，对比SnapKV和H2O基线，评估指标包括LLM Judge评分和KV缓存大小。",
+ "takeaways": [
+  "注意力模式融合可有效识别关键上下文信息",
+  "近期token的注意力分布能反映远期token的重要性",
+  "常量缓存设计显著提升长文本生成效率"
+ ],
+ "weaknesses": [
+  "仅关注长响应任务，未充分验证长上下文任务",
+  "融合函数选择(sum/max)缺乏理论指导",
+  "未分析不同模型架构下的计算开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/PiKE Adaptive Data Mixing for Large-Scale Multi-Task Learning Under Low Gradient Conflicts.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/PiKE Adaptive Data Mixing for Large-Scale Multi-Task Learning Under Low Gradient Conflicts.pdf",
+ "title": "PiKE: Adaptive Data Mixing for Large-Scale Multi-Task Learning Under Low Gradient Conflicts",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "PiKE自适应混合数据，提升多任务收敛，但领域局限明显",
+ "innovations": [
+  "基于低梯度冲突的自适应数据混合策略",
+  "利用梯度幅度和方差动态调整采样权重",
+  "理论收敛保证与高效计算实现",
+  "平衡学习变体促进任务间公平性"
+ ],
+ "method_framework": "PiKE通过估计每个任务的梯度范数和方差，动态调整批次采样权重，最大化每步损失下降，同时提供理论收敛保证。",
+ "experiment_framework": "多语言C4和GLaM数据集，110M-1B参数模型，与Mix、Round-Robin、Random、FAMO、ADO、GLaM、DoReMi等方法对比，评估困惑度和下游任务准确率。",
+ "takeaways": [
+  "梯度冲突在大规模语言模型预训练中很少见，可利用非冲突梯度结构",
+  "自适应数据混合比静态方法更有效，尤其在训练过程中"
+ ],
+ "weaknesses": [
+  "实验主要在语言模型上进行，未验证在医学影像等领域的适用性",
+  "方法依赖于梯度估计的准确性，可能在高噪声场景下表现不佳"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

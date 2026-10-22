@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Soft Tokens, Hard Truths.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Soft Tokens, Hard Truths.pdf",
+ "title": "Soft Tokens, Hard Truths",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "用soft token实现连续CoT RL训练，数学推理多样性提升但单次增益有限",
+ "innovations": [
+  "首个可扩展地用RL直接学习连续CoT的方法，摆脱此前必须从ground-truth离散CoT蒸馏的限制，从而支持数百token的连续CoT",
+  "提出'soft token'：词元概率混合嵌入并在输入嵌入上加噪声，为RL提供探索性，计算开销极小",
+  "发现最佳部署范式为'连续CoT训练、离散token推理'，soft模型仍可按标准方式部署"
+ ],
+ "method_framework": "在CoT阶段不采样离散token，而是用上一步概率分布对词嵌入加权混合得到soft嵌入，并注入高斯噪声以提供RL探索信号；在此连续表示上用RL(如PPO类)优化数学推理奖励，计算开销小，可扩展到长CoT。",
+ "experiment_framework": "在数学推理基准上，用Llama、Qwen至多8B模型，对比离散CoT与连续CoT，指标pass@1/pass@32；并测OOD任务上对基模型预测的保持程度。",
+ "takeaways": [
+  "连续CoT RL训练在pass@1上匹配离散CoT，pass@32上超越，说明CoT多样性更高",
+  "最佳方案是连续CoT训练后用离散token推理，部署无额外负担",
+  "连续CoT的RL训练对基模型OOD预测扰动更小，是更'温和'的微调"
+ ],
+ "weaknesses": [
+  "落地为纯文本数学推理，未涉及医学影像/多模态，主线相关度中等",
+  "连续CoT优势主要体现在pass@32(多样性)而非pass@1，对实际单次作答增益有限",
+  "soft token本质是可微混合+噪声，其'超position多推理路径'的机制与真实内部表征的对应缺乏可解释性证据；前9页未见完整消融与不同模型规模的系统表"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "数学推理多样性提升但未触及可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

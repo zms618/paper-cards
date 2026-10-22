@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/LLMind_Bio-inspired Training-free Adaptive Visual Representations for Vision-Language Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/LLMind_Bio-inspired Training-free Adaptive Visual Representations for Vision-Language Models.pdf",
+ "title": "LLMind Bio-inspired Training-free Adaptive Visual Representations for Vision-Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "生物启发自适应采样提升VLM低像素预算性能，但计算开销大且未验证大规模模型",
+ "innovations": [
+  "基于莫比乌斯变换的生物启发自适应采样策略(BASS)",
+  "闭环语义反馈(CSF)机制实现测试时优化",
+  "无需训练即可适配黑盒和白盒VLM",
+  "在极低像素预算下(1-5%)保留高达97%的全分辨率性能"
+ ],
+ "method_framework": "LLMind结合莫比乌斯变换模拟人类视觉的中央凹和皮层放大效应，通过闭环语义反馈机制动态调整采样策略，使视觉模型能够自适应地将计算资源集中在语义相关的区域。",
+ "experiment_framework": "在VQAv2、A-OKVQA和Seed-Bench等VQA基准上评估，与均匀采样、静态中央凹采样、向日葵启发采样和径向采样等方法对比，使用准确率和保留率作为指标。",
+ "takeaways": [
+  "生物启发的非均匀采样策略可显著提升VLM效率",
+  "测试时优化方法可无需重新训练即提升模型性能",
+  "自适应采样在资源受限场景下具有实用价值"
+ ],
+ "weaknesses": [
+  "计算开销较大，特别是SPSA优化步骤",
+  "仅在小规模VLM(<4B参数)上验证，未测试大规模模型",
+  "依赖预训练VLM的语义反馈，可能受限于基础模型能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅占落地域一端，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

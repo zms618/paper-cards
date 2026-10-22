@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Generative Omnimatte Learning to Decompose Video into Layers.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Generative Omnimatte Learning to Decompose Video into Layers.pdf",
+ "title": "Generative Omnimatte Learning to Decompose Video into Layers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "基于视频扩散模型的Omnimatte，实现动态背景和遮挡区域分解",
+ "innovations": [
+  "引入视频扩散模型作为先验，实现动态背景和遮挡区域的分解",
+  "提出trimask机制处理对象和效果的关联",
+  "设计Casper模型实现对象和效果移除",
+  "两阶段框架生成高质量RGBA层"
+ ],
+ "method_framework": "基于Lumiere视频扩散模型，通过trimask条件训练Casper模型生成干净背景和单对象视频，再通过优化重建RGBA层",
+ "experiment_framework": "合成数据集(Kubric)和真实数据集(DAVIS, YouTube-VOS)对比OmnimatteRF等方法，使用PSNR和LPIPS指标",
+ "takeaways": [
+  "利用预训练视频扩散模型的内在对象-效果关联先验",
+  "trimask机制提供更灵活的区域控制",
+  "小规模精心策划数据集足以微调模型"
+ ],
+ "weaknesses": [
+  "依赖SegmentAnything2获取对象掩码",
+  "计算成本高(80帧视频约12分钟)",
+  "未充分评估多对象场景中的效果分离质量"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频分解技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

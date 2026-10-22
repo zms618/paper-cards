@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Diffusion Transformers with Representation Autoencoders.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Diffusion Transformers with Representation Autoencoders.pdf",
+ "title": "Diffusion Transformers with Representation Autoencoders",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "用预训练编码器替代VAE提升扩散模型性能",
+ "innovations": [
+  "提出表示自编码器(RAE)替代传统VAE",
+  "理论证明扩散模型需匹配潜在空间维度",
+  "设计宽扩散头(DiTDH)架构解决高维计算问题",
+  "噪声增强解码提高鲁棒性"
+ ],
+ "method_framework": "冻结预训练表示编码器(如DINO)与训练解码器组成RAE，通过调整扩散模型宽度、噪声调度和解码训练策略适应高维潜在空间",
+ "experiment_framework": "ImageNet-1K数据集，对比SD-VAE基线，使用rFID和gFID评估重建与生成质量",
+ "takeaways": [
+  "表示编码器可同时提供高质量重建与丰富语义",
+  "扩散模型宽度需匹配潜在维度才能有效训练",
+  "轻量级宽头架构可高效扩展模型规模"
+ ],
+ "weaknesses": [
+  "仅评估图像生成任务，未探索其他应用",
+  "未充分分析不同数据域的泛化能力",
+  "计算效率提升主要来自架构而非算法创新"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "图像生成任务与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

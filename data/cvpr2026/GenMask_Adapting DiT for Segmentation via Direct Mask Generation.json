@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/GenMask_Adapting DiT for Segmentation via Direct Mask Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/GenMask_Adapting DiT for Segmentation via Direct Mask Generation.pdf",
+ "title": "GenMask Adapting DiT for Segmentation via Direct Mask Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "将DiT改造为直接生成掩码的分割模型，单步推理但精度受限。",
+ "innovations": [
+  "直接生成掩码而非间接特征提取的新范式",
+  "针对二值掩码的极端长尾时间步采样策略",
+  "单步推理实现确定性分割"
+ ],
+ "method_framework": "基于预训练DiT，结合VLM编码文本和图像指令，通过极端长尾采样策略训练模型同时生成图像和分割掩码，并注入输入图像的VAE特征作为低级信息补充。",
+ "experiment_framework": "在RefCOCO、RefCOCO+、RefCOCO-g和ReasonSeg等基准上评估，使用mIoU和oIoU指标，与多种SOTA方法进行比较，并进行消融研究验证各组件贡献。",
+ "takeaways": [
+  "二值掩码的VAE表示具有线性可分特性，适合高噪声训练",
+  "统一生成框架可同时处理图像生成和分割任务",
+  "MSE损失在VAE空间表现最佳，与原始DiT训练目标最一致"
+ ],
+ "weaknesses": [
+  "推理时仅使用单步可能限制分割精度",
+  "未充分讨论模型在不同噪声水平下的鲁棒性",
+  "未探索模型在医学影像等特定领域的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "分割方法与可靠性主线无实质交点，仅是架构改造",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

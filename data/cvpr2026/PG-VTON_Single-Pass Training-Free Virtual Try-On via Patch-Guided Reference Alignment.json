@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/PG-VTON_Single-Pass Training-Free Virtual Try-On via Patch-Guided Reference Alignment.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/PG-VTON_Single-Pass Training-Free Virtual Try-On via Patch-Guided Reference Alignment.pdf",
+ "title": "PG-VTON Single-Pass Training-Free Virtual Try-On via Patch-Guided Reference Alignment",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "基于冻结模型的试衣系统，依赖预训练模型限制泛化性。",
+ "innovations": [
+  "Patch-Anchored Identity Priming (PIP)在早期去噪步骤注入服装补丁作为视觉锚点",
+  "Reference-Aware Attention (RAA)增强从人物标记到服装标记的注意力",
+  "完全无训练、单次前向传播的虚拟试衣框架，无需姿态估计或显式扭曲"
+ ],
+ "method_framework": "基于冻结的MM-DiT修复模型，通过PIP在早期去噪步骤注入服装补丁作为视觉锚点，结合RAA增强人物标记到服装标记的注意力，实现单次前向传播的高保真虚拟试衣。",
+ "experiment_framework": "在VITON-HD和DressCode数据集上评估，使用FID、SSIM和LPIPS指标，并与监督和无监督基线方法进行比较，同时在StreetTryOn上测试跨域泛化能力。",
+ "takeaways": [
+  "利用预训练修复模型的上下文学习能力，通过推理时控制机制实现无需特定训练的虚拟试衣",
+  "轻量级的推理控制器可以显著提升生成质量，同时保持单次前向传播的高效性"
+ ],
+ "weaknesses": [
+  "方法依赖于预训练的MM-DiT修复模型，可能存在模型特定限制",
+  "补丁采样和对齐策略可能在不同复杂度场景下表现不一致"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "虚拟试衣系统与可靠性主线无交点，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Meta-Learning Objectives for Preference Optimization.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Meta-Learning Objectives for Preference Optimization.pdf",
+ "title": "Meta-Learning Objectives for Preference Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "改进PO框架的元学习方法，但实验局限且计算成本高。",
+ "innovations": [
+  "提出基于镜像下降的偏好优化框架MPO",
+  "使用进化策略自动发现针对特定数据特性的PO算法",
+  "设计时间感知的TeMPO算法解决PO中的过早停止问题",
+  "在MuJoCo上系统评估PO算法在不同数据质量下的表现"
+ ],
+ "method_framework": "MPO框架通过Bregman散度替代KL散度，统一了DPO和ORPO，并通过进化策略搜索最优目标函数，发现针对混合质量和噪声数据的专用算法。",
+ "experiment_framework": "MuJoCo环境(三足蚂蚁)生成基础/噪声/混合质量数据集，对比8种PO算法；LLM对齐任务验证TeMPO性能。",
+ "takeaways": [
+  "SFT项对噪声鲁棒性至关重要",
+  "保持优化策略即使当π(τw)>π(τl)能提升性能",
+  "元学习可发现针对特定数据特性的专用算法"
+ ],
+ "weaknesses": [
+  "实验主要在MuJoCo环境进行，与真实LLM对齐任务存在差距",
+  "进化策略计算成本较高，难以扩展到大规模模型",
+  "未充分分析发现算法的理论性质"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/SpargeAttention_Accurate and Training-free Sparse Attention Accelerating Any Model Inference.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SpargeAttention_Accurate and Training-free Sparse Attention Accelerating Any Model Inference.pdf",
+ "title": "SpargeAttention: Accurate and Training-free Sparse Attention Accelerating Any Model Inference",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "通用稀疏注意力加速推理，但缺乏可靠性分析与硬件适配验证",
+ "innovations": [
+  "针对多数稀疏注意力只适配特定模型的问题，提出可加速任意模型的通用稀疏注意力",
+  "两阶段在线过滤：第一阶段快速准确预测注意力图，跳过部分矩阵乘法",
+  "第二阶段设计零额外开销的online softmax-aware filter，进一步跳过矩阵乘法；并结合量化"
+ ],
+ "method_framework": "推理期稀疏注意力：第一阶段以低成本近似预测softmax前的QK^T，筛掉将趋近于零的注意力项对应的矩阵乘；第二阶段基于softmax的累加特性设计无额外开销的过滤器，在保证softmax归一化近似正确的前提下再跳过一批计算；全程training-free、可即插即用到现有模型。",
+ "experiment_framework": "在语言、图像、视频生成等多类模型(含Mochi视频生成)上评测，对比稠密注意力，指标为端到端时延(如Mochi在L40上1.83x加速)与端到端质量指标(声称无损)。",
+ "takeaways": [
+  "两阶段在线过滤(粗预测+softmax感知精滤)可在不牺牲端到端质量下通用地加速注意力",
+  "training-free通用稀疏注意力避免为每个模型重设计mask，工程可移植性强"
+ ],
+ "weaknesses": [
+  "两阶段过滤的跳过比例对注意力分布形状敏感，在极度密集注意力层(如某些检索/长上下文)收益可能骤降",
+  "‘无损’主要靠端到端指标兜底，缺乏对近似注意力误差如何随层累积的分析",
+  "收益为推理加速，与可靠性/可信AI主线无关；跨不同硬件的实际加速比差异前9页未充分讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.03,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

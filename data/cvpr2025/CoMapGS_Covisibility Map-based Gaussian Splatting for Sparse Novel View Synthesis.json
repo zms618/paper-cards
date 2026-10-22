@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/CoMapGS_Covisibility Map-based Gaussian Splatting for Sparse Novel View Synthesis.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/CoMapGS_Covisibility Map-based Gaussian Splatting for Sparse Novel View Synthesis.pdf",
+ "title": "CoMapGS Covisibility Map-based Gaussian Splatting for Sparse Novel View Synthesis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "共可见性图增强高斯溅射，提升稀疏视图低可见区域重建。",
+ "innovations": [
+  "引入共可见性图作为核心组件解决区域特定不确定性",
+  "增强初始点云以补偿稀疏COLMAP点云",
+  "基于共可见性分数的自适应监督与邻近分类器"
+ ],
+ "method_framework": "CoMapGS构建共可见性图，增强初始点云，并应用基于共可见性图的加权监督和邻近分类器，平衡高/低不确定性区域的重建质量。",
+ "experiment_framework": "在LLFF(3/6/9视图)和Mip-NeRF 360(12/24视图)数据集上评估，与FSGS、CoR-GS等方法比较，使用PSNR、SSIM、LPIPS指标。",
+ "takeaways": [
+  "利用共可见性图进行区域自适应监督可有效解决稀疏视图合成中的不平衡问题",
+  "增强初始点云特别是单视图区域的点云质量对整体重建至关重要"
+ ],
+ "weaknesses": [
+  "方法依赖于预训练的稠密对应预测模型MASt3R",
+  "在极低共可见性区域的重建仍有提升空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "稀疏视图重建与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

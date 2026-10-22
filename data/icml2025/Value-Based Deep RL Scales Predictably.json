@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Value-Based Deep RL Scales Predictably.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Value-Based Deep RL Scales Predictably.pdf",
+ "title": "Value-Based Deep RL Scales Predictably",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.0
+ },
+ "one_line": "价值类RL性能可预测，但外推误差与泛化性存疑。",
+ "innovations": [
+  "打破价值类RL行为病态不可预测的刻板印象，证明其性能可从小规模运行外推预测",
+  "揭示达到给定性能所需的数据与算力落在一条Pareto前沿上，由updates-to-data(UTD)比率控制",
+  "通过估计该前沿，可在给定更多算力时预测所需数据量，反之亦然"
+ ],
+ "method_framework": "研究基于价值函数、用时序差分(TD)学习训练的off-policy RL；系统扫描UTD比率，发现数据-算力-性能呈Pareto前沿；据此用小规模实验拟合scaling关系，外推预测大规模运行的数据/算力需求，而无需真跑大规模实验。",
+ "experiment_framework": "在多种RL基准上做大量小规模扫描实验；以UTD比率为控制变量；指标为达到目标性能所需的数据量与算力；用小规模拟合的关系外推并验证对大规模运行的预测精度。",
+ "takeaways": [
+  "基于价值的off-policy RL是可预测scaling的，性能可从小实验外推",
+  "UTD比率是决定数据-算力权衡的关键控制旋钮",
+  "Pareto前沿估计使大规模RL实验的数据/算力预算可提前规划"
+ ],
+ "weaknesses": [
+  "结论基于特定(价值类/仿真)基准，对真实机器人/离线RL的可预测性未必成立",
+  "scaling外推的误差随规模放大的曲线未充分报告",
+  "与policy gradient/search类方法在可预测性上的系统对比有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

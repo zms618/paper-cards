@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Beyond Soft Label Dataset Distillation via Orthogonal Gradient Matching.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Beyond Soft Label Dataset Distillation via Orthogonal Gradient Matching.pdf",
+ "title": "Beyond Soft Label Dataset Distillation via Orthogonal Gradient Matching",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "改进BN匹配方法，通过正交梯度匹配提升蒸馏性能",
+ "innovations": [
+  "揭示BN匹配仅对齐梯度尺度而忽略方向的问题",
+  "提出正交梯度匹配(OGM)方法对齐梯度方向",
+  "设计最小二乘损失替代反向传播提高计算效率"
+ ],
+ "method_framework": "OGM方法通过SVD分解梯度矩阵，消除尺度信息后对齐奇异向量，结合分类损失和匹配损失优化合成数据，实现更有效的模型训练知识传递。",
+ "experiment_framework": "ImageNet-1K数据集，对比RDED等基线方法，使用ResNet-18架构，评估软/硬标签下的准确率和跨架构泛化能力。",
+ "takeaways": [
+  "梯度方向比尺度对模型优化更重要",
+  "使用Muon优化器可显著提升合成数据性能",
+  "patch级增强和RDED初始化策略有效提升效果"
+ ],
+ "weaknesses": [
+  "方法依赖RDED初始化，增加额外计算开销",
+  "未探索不同网络架构下的梯度匹配效果",
+  "可视化分析不够深入"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "数据蒸馏方法与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

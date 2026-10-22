@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Efficient Personalization of Quantized Diffusion Model without Backpropagation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Efficient Personalization of Quantized Diffusion Model without Backpropagation.pdf",
+ "title": "Efficient Personalization of Quantized Diffusion Model without Backpropagation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "零阶优化量化扩散模型个性化，收敛慢且依赖经验参数",
+ "innovations": [
+  "零阶优化(ZO)结合量化模型消除反向传播",
+  "子空间梯度(SG)减少噪声梯度估计",
+  "部分均匀时间步采样(PUTS)提高训练效率"
+ ],
+ "method_framework": "通过文本反转引入新token，使用零阶优化在量化模型上更新token，结合子空间梯度投影和部分均匀时间步采样实现高效个性化",
+ "experiment_framework": "DreamBooth数据集，CLIP-T/I和DINO指标，与DreamBooth、QLoRA、PEQA、TuneQDM、Textual Inversion和GF-TI对比",
+ "takeaways": [
+  "零阶优化可有效减少内存需求",
+  "token优化主要发生在低维子空间",
+  "特定时间步对文本条件影响更大"
+ ],
+ "weaknesses": [
+  "零阶优化可能收敛较慢",
+  "PUTS的时间步范围选择依赖经验",
+  "未探索不同量化位数的性能影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "零阶优化技术无可靠性主线交点，仅为工程效率提升",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

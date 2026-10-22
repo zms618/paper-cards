@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Distribution-Aligned Multimodal Fusion for Robust Object Detection.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Distribution-Aligned Multimodal Fusion for Robust Object Detection.pdf",
+ "title": "Distribution-Aligned Multimodal Fusion for Robust Object Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "冻结检测器，GMM建模分布对齐提升RGB-IR跨退化检测",
+ "innovations": [
+  "冻结预训练检测器并仅训练轻量融合模块",
+  "将融合特征对齐到预训练分布而非训练退化分布",
+  "使用GMM建模预训练分布并提供显式对齐监督"
+ ],
+ "method_framework": "两阶段框架：离线阶段用GMM建模预训练特征分布Pnormal；在线阶段冻结检测器，训练轻量融合模块，通过交叉模态注意力、自适应门控和融合MLP，结合对齐损失和检测损失优化",
+ "experiment_framework": "在LLVIP、FLIR和DroneVehicle三个RGB-IR数据集上评估，比较mAP指标，特别关注正常与挑战性场景(过曝/欠曝/夜间)性能差异",
+ "takeaways": [
+  "显式分布对齐比仅依赖任务损失更能提升跨退化泛化能力",
+  "冻结预训练检测器并仅训练融合模块可大幅减少训练时间同时保持性能"
+ ],
+ "weaknesses": [
+  "方法依赖于预训练检测器的质量",
+  "GMM建模可能无法完全捕获复杂特征分布",
+  "未探索不同模态权重分配策略的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "RGB-IR跨退化检测属于可靠性主线，且方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

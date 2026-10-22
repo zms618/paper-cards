@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Thinking LLMs General Instruction Following with Thought Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Thinking LLMs General Instruction Following with Thought Generation.pdf",
+ "title": "Thinking LLMs: General Instruction Following with Thought Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "TPO方法通过迭代搜索和偏好优化训练LLM生成内部思维，提升通用指令跟随能力。",
+ "innovations": [
+  "提出Thought Preference Optimization(TPO)方法，无需人工思维标注数据，通过迭代搜索候选思维并用评判模型打分来训练模型学会思考",
+  "将思考能力从数学推理任务拓展到通用指令跟随，在营销、健康、常识等非推理类别上也观察到思考带来的增益",
+  "验证了思考对不同复杂度任务的自适应效用——简单任务少思考、复杂任务多思考"
+ ],
+ "method_framework": "先让指令微调模型在回答前生成思维部分(内部不可见)和回答部分。对每条指令采样多个思维候选，用评判模型仅评估回答质量来构建偏好对，再通过偏好优化(类似DPO)更新模型。迭代执行搜索-优化过程，使模型逐渐学会生成有效的内部思维来提升回答质量。",
+ "experiment_framework": "在AlpacaEval和Arena-Hard基准上评估，对比基线为原始指令微调模型和CoT提示方法。按任务类别(推理、写作、营销、健康等)分别分析思考带来的增益。",
+ "takeaways": [
+  "无需人工思维标注，仅通过迭代搜索+评判模型打分+偏好优化即可训练出具有内部思考能力的LLM",
+  "思考能力不仅在数学推理上有效，在创意写作、营销、健康等非推理类指令跟随任务上也有显著提升",
+  "模型可自适应调整思考深度，简单任务生成较少思维，复杂任务生成更多思维"
+ ],
+ "weaknesses": [
+  "依赖外部评判模型作为奖励信号，评判模型的偏差可能限制训练效果的上限",
+  "迭代搜索过程计算成本高，多次采样和优化轮次的开销未充分讨论",
+  "思维内容的可解释性和可控性分析不足，未探讨思维是否真的改善了推理质量还是仅仅延长了输出"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

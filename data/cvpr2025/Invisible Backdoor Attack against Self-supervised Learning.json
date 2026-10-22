@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Invisible Backdoor Attack against Self-supervised Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Invisible Backdoor Attack against Self-supervised Learning.pdf",
+ "title": "Invisible Backdoor Attack against Self-supervised Learning",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 6.0,
+  "overall": 6.6
+ },
+ "one_line": "解耦后门与SSL增强分布，提升隐蔽性但依赖先验知识",
+ "innovations": [
+  "发现监督学习设计的不可见触发器在SSL中效果不佳",
+  "识别出后门样本与SSL增强样本分布重叠是导致效果不佳的原因",
+  "设计解耦后门与SSL增强分布的优化触发器，同时保持隐蔽性"
+ ],
+ "method_framework": "INACTIVE方法通过三个损失函数实现：Ldisentangle增大后门与增强样本分布差距，Lalignment对齐后门与参考图像特征，Lstealthy保持触发器隐蔽性",
+ "experiment_framework": "在CIFAR10、STL10、GTSRB、SVHN和ImageNet五个数据集上测试，对比SimCLR、MoCo等六种SSL算法，使用ASR、CA、BA等指标评估",
+ "takeaways": [
+  "解耦分布重叠是提高SSL后门攻击效果的关键",
+  "多目标优化平衡攻击效果与隐蔽性是有效设计"
+ ],
+ "weaknesses": [
+  "方法依赖对预训练增强方式的先验知识",
+  "未探讨在更复杂的多模态SSL模型上的泛化能力",
+  "防御实验主要集中在现有方法，缺乏新型防御的测试"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "后门攻击与可靠性主线间接相关，依赖先验知识限制落地价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

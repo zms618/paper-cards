@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Stray Intrusive Outliers-Based Feature Selection on Intra-Class Asymmetric Instance Distribution or Multiple.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Stray Intrusive Outliers-Based Feature Selection on Intra-Class Asymmetric Instance Distribution or Multiple.pdf",
+ "title": "Stray Intrusive Outliers-Based Feature Selection on Intra-Class Asymmetric Instance Distribution or Multiple High-Density Clusters",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "针对类内不对称分布的特征选择，依赖统计假设，缺乏深度学习验证",
+ "innovations": [
+  "针对 ADMHC 数据，提出聚焦游离侵入离群点（SIO）的监督特征选择框架 SIOFS",
+  "改造偏度系数并融合 3σ 准则阈值来识别类体，解决类体难识别问题",
+  "提出精炼的密度均值中心以合理表征类体总体特征，并给出数学公式与证明"
+ ],
+ "method_framework": "先识别每个类的类体：用改造后的偏度系数衡量分布不对称性，结合 3σ 准则阈值区分类体与游离/侵入离群点；再以精炼密度均值中心代表类体，按各特征上 SIO 的侵入程度为特征打分，选出判别性子集。",
+ "experiment_framework": "在 16 个多样基准数据集（含 AID、CLL、GISETTE、TOX 等）上对比 12 个 SOTA 特征选择方法；指标为分类准确率、归一化互信息与混淆矩阵。",
+ "takeaways": [
+  "在类内不对称/多簇数据上，把离群点视为有判别模式而非纯噪声，可指导更合理的特征打分",
+  "先稳健识别类体再评分，比基于全部实例打分更能抵抗侵入离群点干扰",
+  "精炼密度均值中心比简单均值更能代表不对称类的中心"
+ ],
+ "weaknesses": [
+  "与主线（鲁棒性/可信AI/医学影像/多模态推理）无关，属传统特征选择",
+  "方法依赖 3σ/偏度等统计假设，对高维稀疏或非单峰簇的适配性存疑",
+  "实证多为中小规模 UCI 类数据集，未见深度特征/深度学习场景验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

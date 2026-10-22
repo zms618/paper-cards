@@ -1,0 +1,42 @@
+{
+ "key": "icml2025/Adapting to Evolving Adversaries with Regularized Continual Robust Training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adapting to Evolving Adversaries with Regularized Continual Robust Training.pdf",
+ "title": "Adapting to Evolving Adversaries with Regularized Continual Robust Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.1
+ },
+ "one_line": "对抗ℓ2正则化缓解持续训练中不同攻击间的鲁棒性退化。",
+ "innovations": [
+  "对抗ℓ2正则化(ALR)方法",
+  "理论证明攻击间鲁棒性差距与logit空间距离相关",
+  "持续鲁棒训练(CRT)框架",
+  "高效近似ALR方法"
+ ],
+ "method_framework": "初始训练和微调阶段均加入ALR正则项，最小化对抗样本与干净样本logit的ℓ2距离，减少不同攻击间鲁棒性差距。",
+ "experiment_framework": "CIFAR-10/100和ImageNette数据集，ℓ2、StAdv、ReColor等12种攻击，评估Union准确率和平均准确率。",
+ "takeaways": [
+  "ALR显著减少微调时对旧攻击的退化",
+  "理论分析为正则化提供依据",
+  "微调阶段ALR比噪声正则化更有效"
+ ],
+ "weaknesses": [
+  "计算开销较大，需多步优化",
+  "仅针对分类任务，未扩展到其他任务",
+  "理论假设损失函数有界，实际训练中使用的交叉熵不满足"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.3,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "持续鲁棒训练框架直接解决OOD攻击退化，可靠性主线明确",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

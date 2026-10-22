@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/FluxMem_Adaptive Hierarchical Memory for Streaming Video Understanding.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/FluxMem_Adaptive Hierarchical Memory for Streaming Video Understanding.pdf",
+ "title": "FluxMem Adaptive Hierarchical Memory for Streaming Video Understanding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "分层内存框架优化视频流处理，但文本引导和分辨率分析缺失。",
+ "innovations": [
+  "自适应分层内存设计（短期/中期/长期）",
+  "时空自适应压缩机制（TAS和SDC模块）",
+  "基于Otsu方法的动态阈值调整"
+ ],
+ "method_framework": "FluxMem采用三级内存架构：短期内存保留全部视觉信息，中期内存通过TAS去除时间冗余，长期内存通过SDC合并空间冗余，所有模块均使用自适应阈值而非固定参数。",
+ "experiment_framework": "在OVO-Bench和StreamingBench（在线）以及VideoMME、MLVU和LongVideoBench（离线）上评估，使用Qwen2.5-VL-7B作为基础模型，1fps采样，对比多种在线和离线基线方法。",
+ "takeaways": [
+  "自适应阈值设计优于固定阈值，能更好地适应动态场景",
+  "分层内存结构有效平衡了短期细节和长期上下文保留"
+ ],
+ "weaknesses": [
+  "仅基于视觉统计信息，未考虑文本查询的引导作用",
+  "未探索不同视频分辨率下的性能表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频流处理与可靠性主线无实质交点，仅属常规扎实工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

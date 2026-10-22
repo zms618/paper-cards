@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/title.tex.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/title.tex.pdf",
+ "title": "In-Context Deep Learning via Transformer Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.8
+ },
+ "one_line": "理论证明Transformer可通过ICL模拟梯度下降，但泛化性与实用性受限",
+ "innovations": [
+  "显式构造(2N+4)L层Transformer，使其通过ICL模拟N层ReLU网络的L步梯度下降",
+  "给出任意给定误差内的逼近保证与ICL梯度下降的收敛性证明",
+  "将分析从线性情形推广到实用的Softmax Transformer设定"
+ ],
+ "method_framework": "假设已用某深度网络生成的数据预训练好Transformer，测试时变化该深度网络的参数分布与输入分布；构造Transformer使其在ICL中以隐式梯度下降方式训练目标深度网络，从而回答能否用一个基础模型的ICL训练出另一个模型。",
+ "experiment_framework": "在合成数据集上对3层、4层、6层神经网络验证，比较ICL性能与直接训练是否匹配；以理论分析为主、小规模合成实验为辅。",
+ "takeaways": [
+  "Transformer具备通过ICL隐式执行梯度下降、模拟深度网络训练过程的能力",
+  "逼近误差与收敛性均有理论保证",
+  "合成实验显示ICL性能可匹配直接训练"
+ ],
+ "weaknesses": [
+  "实证仅在合成数据、固定超参(宽度/深度一致)下验证，真实大模型泛化性未触及",
+  "要求预训练与测试阶段深度网络超参一致，one-for-many的实际适用范围受限",
+  "与主线（可靠性/医学影像/多模态推理）关联弱，理论到实践的鸿沟未弥合"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

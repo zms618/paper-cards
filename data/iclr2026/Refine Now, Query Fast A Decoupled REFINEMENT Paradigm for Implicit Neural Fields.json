@@ -1,0 +1,41 @@
+{
+ "title": "Refine Now, Query Fast: A Decoupled Refinement Paradigm for Implicit Neural Fields",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "解耦INR的离线精炼与快速推理，牺牲在线适应性换取速度提升。",
+ "innovations": [
+  "提出Decoupled Representation Refinement：把高容量深网络的慢速评估从推理路径解耦，离线预计算并缓存refinement结果。",
+  "实现DRR-Net验证该范式，在多个集合仿真数据集上达SOTA保真度且比高保真基线快至多27×。",
+  "提出通用数据增广Variational Pairs(VP)，在高维代理建模等复杂任务上对多种模型稳健提升。"
+ ],
+ "method_framework": "在INR的特征嵌入结构上(而非动态输入/激活)用深refiner网络做一次性离线非线性变换并缓存；推理时仅做嵌入插值与轻量解码器前向；用Variational Pairs增广缓解集合仿真中空间/条件域的稀疏训练数据问题。",
+ "experiment_framework": "多个集合仿真数据集(科学代理建模)；对比embedding-based与MLP/MoE-based INR基线(如FA-INR)；指标为重建保真度与推理速度/时延；并在计算机视觉/图形应用上验证通用性及条件/零样本泛化。",
+ "takeaways": [
+  "INR的保真度-速度两难可通过把高容量网络离线化、只保留快速插值路径来缓解。",
+  "refinement作用于静态嵌入而非动态输入，是可被预计算缓存的关键。",
+  "Variational Pairs增广对稀疏条件数据下的INR训练普遍有效。"
+ ],
+ "weaknesses": [
+  "目标是科学仿真代理/神经场速度，与可靠性×医学影像/多模态推理主线无关。",
+  "离线refinement+缓存牺牲了对动态输入的在线适应性，对需要实时更新场的场景不适用。",
+  "节选前9页未见多数据集的完整保真度-速度数值表，27×加速的具体条件在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Refine Now, Query Fast A Decoupled REFINEMENT Paradigm for Implicit Neural Fields.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Refine Now, Query Fast A Decoupled REFINEMENT Paradigm for Implicit Neural Fields.pdf",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "科学仿真代理与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

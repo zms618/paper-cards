@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Beyond Fixed Formulas Data-Driven Linear Predictor for Efficient Diffusion Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Beyond Fixed Formulas Data-Driven Linear Predictor for Efficient Diffusion Models.pdf",
+ "title": "Beyond Fixed Formulas Data-Driven Linear Predictor for Efficient Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "L2P用可学习线性预测器替代固定公式，提升扩散模型推理效率",
+ "innovations": [
+  "揭示现有预测方法的数学本质是固定线性组合",
+  "提出可学习线性预测器L2P替代固定系数",
+  "仅需50张图像20秒训练即可实现高性能加速"
+ ],
+ "method_framework": "L2P框架将特征缓存与预测统一为线性组合形式，用可学习的时步权重替代固定公式系数，通过最小均方误差损失训练，实现高效特征预测。",
+ "experiment_framework": "在FLUX.1-dev、Qwen-Image等模型上评估，使用PSNR、SSIM、LPIPS指标，对比TaylorSeer、FoCa等基线方法，测试不同加速比下的性能。",
+ "takeaways": [
+  "线性预测框架在扩散模型特征演化中具有高精度潜力",
+  "小样本训练即可获得显著性能提升",
+  "方法设计简洁高效，训练开销极小"
+ ],
+ "weaknesses": [
+  "仅针对最终层特征进行预测，可能损失中间层信息",
+  "未探讨不同分辨率或模态下的泛化能力",
+  "极端加速比下仍有质量下降空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型加速方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/AdaCluster_Adaptive Query-Key Clustering for Sparse Attention in Video Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/AdaCluster_Adaptive Query-Key Clustering for Sparse Attention in Video Generation.pdf",
+ "title": "AdaCluster Adaptive Query-Key Clustering for Sparse Attention in Video Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "自适应查询-键聚类加速视频生成扩散模型，但子一致性受影响",
+ "innovations": [
+  "角度相似性保持的查询聚类",
+  "欧几里得相似性保持的键聚类",
+  "多阶段K-means聚类和高效关键簇选择"
+ ],
+ "method_framework": "AdaCluster为查询和键分别设计自适应聚类策略：查询向量归一化后进行角度聚类，键向量采用多阶段K-means聚类，结合TensorQuest高效选择关键簇",
+ "experiment_framework": "在CogVideoX-2B、HunyuanVideo和Wan-2.1模型上测试，使用PSNR、SSIM、LPIPS和VBench指标，在单A40 GPU上实现1.67×-4.31×加速",
+ "takeaways": [
+  "角色感知的注意力优化策略",
+  "层间异质性的自适应处理",
+  "高效的关键簇选择方法"
+ ],
+ "weaknesses": [
+  "对某些模型(如CogVideoX)的子一致性有影响",
+  "硬性限制最大簇数可能导致部分层无法有效压缩"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "视频生成加速，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

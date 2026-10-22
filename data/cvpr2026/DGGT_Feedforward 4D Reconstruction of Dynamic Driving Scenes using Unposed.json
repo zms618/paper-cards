@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/DGGT_Feedforward 4D Reconstruction of Dynamic Driving Scenes using Unposed.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/DGGT_Feedforward 4D Reconstruction of Dynamic Driving Scenes using Unposed.pdf",
+ "title": "DGGT Feedforward 4D Reconstruction of Dynamic Driving Scenes using Unposed",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.6
+ },
+ "one_line": "DGGT实现无位姿输入的动态驾驶场景4D重建，但计算复杂度高且极端情况鲁棒性不足。",
+ "innovations": [
+  "将相机位姿作为模型输出而非输入，实现无位姿重建",
+  "引入寿命参数控制高斯点的时间可见性",
+  "结合动态头和运动头实现动态物体分解与3D运动估计",
+  "单步扩散渲染减少运动/插值伪影"
+ ],
+ "method_framework": "基于ViT编码器，融合DINO特征与交替注意力，通过多个预测头输出相机参数、高斯表示、寿命参数、动态图和3D运动，结合动态分解和运动插值实现4D重建。",
+ "experiment_framework": "Waymo、nuScenes、Argoverse2数据集，与EmerNeRF、3DGS、STORM等方法对比，使用PSNR、SSIM、D-RMSE、EPE3D等指标评估重建质量和3D跟踪性能。",
+ "takeaways": [
+  "无位姿输入的动态场景重建框架设计",
+  "寿命参数和扩散模块对提升时序一致性的作用",
+  "3D运动估计对动态物体跟踪的重要性"
+ ],
+ "weaknesses": [
+  "扩散模块增加了计算复杂度",
+  "动态物体运动估计在极端情况下可能不准确",
+  "未充分讨论方法在极端天气条件下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.6,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "动态场景重建与可靠性主线无实质交点，仅常规扎实",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

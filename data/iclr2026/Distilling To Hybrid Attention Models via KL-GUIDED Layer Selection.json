@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Distilling To Hybrid Attention Models via KL-GUIDED Layer Selection.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Distilling To Hybrid Attention Models via KL-GUIDED Layer Selection.pdf",
+ "title": "Distilling To Hybrid Attention Models via KL-GUIDED Layer Selection",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "KL引导的层选择提升混合注意力蒸馏，但计算成本高且任务泛化不足",
+ "innovations": [
+  "基于KL散度的层重要性评分机制",
+  "从全线性模型出发的贪心加法策略",
+  "架构感知的层选择方法"
+ ],
+ "method_framework": "通过全线性模型蒸馏，然后逐层恢复softmax层并计算KL散度作为重要性分数，选择top-K层构建混合模型",
+ "experiment_framework": "在Qwen2.5和Llama模型上测试，对比多种基线方法，使用RULER和SWDE等长上下文任务评估",
+ "takeaways": [
+  "KL散度作为层重要性指标比MSE更有效",
+  "低预算下混合模型对长上下文任务至关重要",
+  "架构一致性对层选择有重要影响"
+ ],
+ "weaknesses": [
+  "方法计算成本较高，需要多次蒸馏过程",
+  "层选择结果对线性注意力类型敏感",
+  "未探索不同任务类型的层选择差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "蒸馏方法与可靠性主线无直接交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

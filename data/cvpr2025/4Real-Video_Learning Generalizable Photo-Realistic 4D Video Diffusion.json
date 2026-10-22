@@ -1,0 +1,43 @@
+{
+ "key": "cvpr2025/4Real-Video_Learning Generalizable Photo-Realistic 4D Video Diffusion.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/4Real-Video_Learning Generalizable Photo-Realistic 4D Video Diffusion.pdf",
+ "title": "4Real-Video: Learning Generalizable Photo-Realistic 4D Video Diffusion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "双流DiT加同步层生成4D视频，但实验评估存疑",
+ "innovations": [
+  "把 4D 帧网格拆成时间流 xv 与视角流 xt 两条 token 流，各自复用预训练 DiT 层并行做列/行更新，避免顺序交替更新把上一流输出推离基模型分布",
+  "将跨流同步映射为变量分裂优化 min Cv(xv)+Ct(xt) s.t. xv=xt：硬同步对应投影梯度下降在约束流形上的投影，软同步对应 ADMM 式二次正则，使模块设计有原理出处",
+  "软同步用受扩散时间 σ 调制的线性层预测非对称 token 增量 (Δyv,Δyt)，让同步强度随层深自适应，实验显示深层更新幅度更大",
+  "以 2D 仿射变换实时生成的伪 4D 视频预训练、再用约 15k Objaverse 渲染数据微调且只更新同步层权重，在 4D 数据稀缺下保住真实视频分布"
+ ],
+ "method_framework": "输入首行固定视角视频与首列冻结时间视频；每个 DiT 块对两流独立更新 yv/yt，同步层按硬同步（加权平均）或软同步（Mod_Linear 预测增量）产出下一层 token，rectified flow 速度匹配损失训练。",
+ "experiment_framework": "自采 200 对文本生成视频作测试；基线 SV4D、MotionCtrl、Sequential 自消融；指标 FID/CLIP/FVD/VideoScore 与 GIM、Dust3R-Confidence；SDS 类方法仅用户研究。",
+ "takeaways": [
+  "用变量分裂/ADMM 的优化视角解释跨分支信息交互，可把'加个融合模块'升级为有原理支撑的设计，是通用的架构写作范式",
+  "微调只放开新增同步层权重、冻结预训练视频层，是在小数据域适应中避免分布漂移的低成本做法",
+  "明确区分伪数据只用于预训练、混合训练反而伤质量，并用实验排除，比默认混合训练更严谨"
+ ],
+ "weaknesses": [
+  "正文自述'没有功能完全相同的前作'，基线 SV4D（物体中心 4D）与 MotionCtrl（相机可控视频）均非同类方法，需改造才能比，公平性存疑",
+  "测试集为自家 Snap Video Model 生成的 200 对视频，缺真实拍摄输入上的量化结果；FVD 同时报了与测试输入统计量对比的宽松版本，主数字选择偏乐观",
+  "所有指标无多次采样方差或置信区间；VideoScore/GIM/Dust3R 均为学习型评分器，与被测生成模型可能同源偏好",
+  "与 SDS 类 4D 方法只做用户研究（每对 10 人、样本 14–36 条）而无量化表，且正文在用户研究结果处截断"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "视频生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

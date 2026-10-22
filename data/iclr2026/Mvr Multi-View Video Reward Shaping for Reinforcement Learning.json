@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mvr Multi-View Video Reward Shaping for Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mvr Multi-View Video Reward Shaping for Reinforcement Learning.pdf",
+ "title": "MVR: Multi-View Video Reward Shaping for Reinforcement Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "多视角视频奖励塑形，用VLM相似度学习状态相关性并自动退火引导",
+ "innovations": [
+  "用多视角视频(而非单张静态图)建模状态与目标任务的相关性，缓解单视角遮挡与静态姿势偏置",
+  "用冻结预训练VLM的视频-文本相似度学习一个状态相关性函数",
+  "提出状态相关奖励塑形公式，融合任务奖励与VLM引导，并在达成期望动作模式后自动降低VLM引导影响，避免改变最优策略"
+ ],
+ "method_framework": "传统做法把VLM图像-文本相似度线性加到任务/成功奖励上，可能偏离最优策略且受单静态图局限。MVR：在多视角视频上用VLM视频-文本相似度学状态相关性；再把任务奖励与VLM引导按状态相关的方式塑形融合——当智能体已达成期望动作模式时，状态相关性升高，VLM引导权重自动衰减，从而只在学习早期提供视觉引导而不扭曲最终最优策略。",
+ "experiment_framework": "在HumanoidBench人形运动任务与MetaWorld操作任务上验证；对比直接线性加VLM分数的奖励塑形；指标为任务成功率/回报；消融多视角、视频vs单图、状态相关塑形各组件。",
+ "takeaways": [
+  "多视角视频+状态相关性可避免单静态图奖励塑形偏向固定姿势",
+  "状态相关塑形在动作学成后自动退火VLM引导，保持最优策略不被扭曲",
+  "MVR在复杂人形运动与操作任务上显著优于线性加VLM分数的做法"
+ ],
+ "weaknesses": [
+  "主线是机器人RL奖励塑形，与LLM/多模态可靠性、验证器、幻觉抑制等落地主线关联弱",
+  "多视角视频采集依赖仿真器相机设置，真实机器人多视角数据成本高",
+  "VLM引导权重自动退火的阈值/调度需任务相关调节"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "机器人RL奖励塑形，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

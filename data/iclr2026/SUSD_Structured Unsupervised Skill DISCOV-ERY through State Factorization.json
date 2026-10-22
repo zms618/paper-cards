@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SUSD_Structured Unsupervised Skill DISCOV-ERY through State Factorization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SUSD_Structured Unsupervised Skill DISCOV-ERY through State Factorization.pdf",
+ "title": "SUSD: Structured Unsupervised Skill Discovery through State Factorization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "状态分解+动态引导的技能发现，但实验规模有限且与主线无关",
+ "innovations": [
+  "将环境状态分解为独立成分（物体/可控实体），为不同因素分配专属技能变量",
+  "用动态模型跨因素跟踪学习进度，自适应将智能体注意力引导到欠探索因素",
+  "得到分解式技能表示，支持对单个实体的细粒度解耦控制，便于HRL训练组合式下游任务"
+ ],
+ "method_framework": "利用环境的组合结构将状态空间分解为独立成分，为每个因素分配不同的技能潜变量；动态模型跟踪各因素学习进度，自适应引导探索欠充分因素，避免MI-based方法偏好静态技能、DSD方法覆盖不全的问题。",
+ "experiment_framework": "在三个环境（可控因素数1到10）上评测，对比主流无监督技能发现方法（MI-based、DSD类），以技能多样性/可控性与分解环境下的下游HRL性能为指标。",
+ "takeaways": [
+  "状态分解+分因素技能变量可发现更丰富、动态且覆盖全部可控因素的技能",
+  "分解式技能表示便于对单实体细粒度控制并加速组合式下游任务学习",
+  "在分解与复杂环境下显著优于现有USD方法"
+ ],
+ "weaknesses": [
+  "仅在3个环境、因素数1-10上验证，规模与真实复杂度有限",
+  "依赖状态可分解的假设，在难以显式分解的高维像素环境适用性存疑",
+  "与主线（LLM可靠性/医学影像/多模态推理）无直接关联"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.98,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "无监督技能发现与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Training-free Detection of AI-generated via Cropping Robustness.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Training-free Detection of AI-generated via Cropping Robustness.pdf",
+ "title": "Training-free Detection of AI-generated via Cropping Robustness",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 7.5,
+  "overall": 6.75
+ },
+ "one_line": "利用自监督模型裁剪鲁棒性检测AI生成图像，但依赖特定模型",
+ "innovations": [
+  "利用自监督模型对RandomResizedCrop的鲁棒性作为检测信号",
+  "基于Haar小波分解的高频扰动敏感度评分函数",
+  "RescaleNPatchify操作模拟RRC效果提升检测性能"
+ ],
+ "method_framework": "WaRPAD通过计算图像在小波高频扰动下的特征变化作为基础评分，结合图像缩放和分块操作，模拟RRC效果，平均各分块评分作为最终检测分数。",
+ "experiment_framework": "在Synthbuster、GenImage和Deepfake-LSUN-bedroom三个基准测试上评估，涵盖23种生成模型，使用AUROC作为指标，并与多种训练和训练免费基线比较。",
+ "takeaways": [
+  "利用自监督模型的固有鲁棒性特性可设计通用检测方法",
+  "高频扰动敏感度可作为区分真实与生成图像的有效信号"
+ ],
+ "weaknesses": [
+  "对某些专有模型(如DALL-E 3)检测性能相对较低",
+  "方法依赖于特定自监督模型(DINOv2)的鲁棒特性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

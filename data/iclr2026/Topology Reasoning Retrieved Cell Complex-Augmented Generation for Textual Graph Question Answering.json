@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Topology Reasoning Retrieved Cell Complex-Augmented Generation for Textual Graph Question Answering.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Topology Reasoning Retrieved Cell Complex-Augmented Generation for Textual Graph Question Answering.pdf",
+ "title": "Topology of Reasoning: Retrieved Cell Complex-Augmented Generation for Textual Graph Question Answering",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "TopoRAG将文本图提升为胞腔复形建模高维拓扑，增强文本图问答推理。",
+ "innovations": [
+  "指出现有GraphRAG只用低维元素(节点0维、边/路径1维)，忽视对闭环推理关键的环等更高维拓扑结构",
+  "把文本图提升(lift)为胞腔复形以建模多维拓扑依赖",
+  "提出拓扑感知子复形检索+多维拓扑推理机制，传播关系信息引导LLM做结构化、逻辑感知推理"
+ ],
+ "method_framework": "先将文本图提升为胞腔复形，显式建模环等多维拓扑结构；再按查询检索相关子复形作为紧凑富信息的拓扑上下文；最后在复形上做多维拓扑推理传播关系信息，为LLM提供接地的结构化推理依据，减少幻觉。",
+ "experiment_framework": "在多种文本图问答任务上评测；对比G-Retriever/GNN-RAG/SubgraphRAG等GraphRAG基线；指标为问答准确率；消融验证胞腔复形与拓扑检索的贡献。",
+ "takeaways": [
+  "环等高维拓扑结构对关系闭环推理至关重要，被现有低维GraphRAG忽略",
+  "胞腔复形提升+拓扑感知检索可为LLM提供更完整的接地上下文",
+  "多维拓扑推理在多类文本图任务上一致超过现有基线"
+ ],
+ "weaknesses": [
+  "胞腔复形提升与拓扑检索引入额外计算，大图上的可扩展性未充分讨论",
+  "拓扑结构的有效性依赖图建模质量，实体抽取/构图噪声会传导到检索",
+  "正文前9页未见完整逐任务表，相对强基线的提升幅度需看后文确认"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "拓扑建模增强文本图推理，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

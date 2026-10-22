@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/NeRFPrior_Learning Neural Radiance Field as a Prior for Indoor.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/NeRFPrior_Learning Neural Radiance Field as a Prior for Indoor.pdf",
+ "title": "NeRFPrior Learning Neural Radiance Field as a Prior for Indoor",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "NeRF先验增强SDF重建，多视图与深度一致性提升室内场景质量。",
+ "innovations": [
+  "将NeRF作为场景重建的先验，提供几何和颜色信息",
+  "基于NeRF先验的多视图一致性约束",
+  "带置信权重的深度一致性损失处理无纹理区域"
+ ],
+ "method_framework": "首先训练场景特定的NeRF先验，然后利用其密度和颜色信息监督SDF学习，并通过多视图一致性和深度一致性约束提升表面重建质量。",
+ "experiment_framework": "在ScanNet、BlendSwap和Replica数据集上评估，与COLMAP、NeuS、Geo-NeuS、MonoSDF等方法比较，使用准确率、完整性、精确度、召回率和F1分数等指标。",
+ "takeaways": [
+  "利用场景特定NeRF先验可避免大规模预训练数据需求",
+  "多视图一致性约束结合颜色信息可提高可见性判断准确性",
+  "深度一致性损失可有效处理无纹理区域的表面重建"
+ ],
+ "weaknesses": [
+  "NeRF先验训练仍需30分钟，增加整体训练时间",
+  "方法在复杂场景中的泛化能力未充分验证",
+  "深度一致性损失依赖于平面假设，可能不适用于所有场景"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "室内场景重建与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

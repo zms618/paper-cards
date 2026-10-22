@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/ZINA_Multimodal Fine-grained Hallucination Detection and Editing.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ZINA_Multimodal Fine-grained Hallucination Detection and Editing.pdf",
+ "title": "ZINA: Multimodal Fine-grained Hallucination Detection and Editing",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.9
+ },
+ "one_line": "解耦检测与编辑的两阶段幻觉处理框架，但评估与泛化存疑",
+ "innovations": [
+  "任务重定义：把幻觉检测从句子级/粗粒度推进到span级'检测+6类错误分类(对象/属性/数量/文本/关系/事实)+给出修正建议'的一体化任务，且明确'替换span即可修正'的可编辑性要求",
+  "检测-评审两阶段解耦：token复制交给确定性函数，检测/建议修正交给MLLM，规避单模型端到端打tag的暴露偏差(消融显示联合模型检测F1掉23.24分)",
+  "VisionHall数据集：6.9k真实输出×12个MLLM×211人工标注者，+20k图结构错误注入合成样本，显式建模错误类型间依赖，同时支撑检测与编辑两任务"
+ ],
+ "method_framework": "检测器MLLM定位幻觉span并分类→评审器MLLM决定打tag位置与修正建议→确定性函数复制原文非幻觉部分、仅替换错误span；few-shot(3例)微调；合成数据与两步生成联合训练。",
+ "experiment_framework": "VisionHall(检测F1/编辑BERT-F1、CLIP-S、PAC-S、CLIP-F1)与MHaluBench；基线GPT-4o/Llama-3.2/FAVA/UniHD/HalLocalizer；消融：解耦策略、backbone(32B/72B/LLaVA-OV)、few-shot n=1/2/3；定性样例含GPT-4o失败案例。",
+ "takeaways": [
+  "'检测要为编辑服务'：可编辑性(替换span即可修正)应写进评测设计，token级定位≠可修正，任务口径直接影响方法选择",
+  "'职责解耦+确定性复制'：把'抄原文'这种确定性操作从生成模型里拆出来，既消除exposure bias又保证原文保真，对任何文本修正/润色管线可复用",
+  "'合成数据要建模错误间依赖'：图结构注入比独立随机注入更贴近真实幻觉共现，半合成数据方法论可迁移到其他细粒度评测"
+ ],
+ "weaknesses": [
+  "两阶段架构推断开销大(作者自述)且漏检明显——评审器过度保守'少tag'，检测召回与编辑质量的权衡未给全曲线",
+  "编辑评估依赖CLIP/BERT相似度代理指标，'修正是否真实正确'缺乏人工/规则核对；span粒度与标注一致性(211标注者的Kappa)未报告",
+  "6.9k检测样本对12个MLLM的覆盖方式(每模型样本数、分布偏移)未详述，基线上限(不微调直接用72B)已属强，但跨模型泛化(未见过的MLLM输出)未测"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "幻觉检测与编辑直接关联可靠性主线，且方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

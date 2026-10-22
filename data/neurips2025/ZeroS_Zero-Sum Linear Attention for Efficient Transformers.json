@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/ZeroS_Zero-Sum Linear Attention for Efficient Transformers.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/ZeroS_Zero-Sum Linear Attention for Efficient Transformers.pdf",
+ "title": "ZeroS: Zero-Sum Linear Attention for Efficient Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "零和线性注意力机制，O(N)复杂度下匹配标准Transformer性能",
+ "innovations": [
+  "移除softmax中的零阶项创建零和权重",
+  "径向-角分量解耦设计",
+  "线性时间实现零和注意力机制"
+ ],
+ "method_framework": "ZeroS通过移除softmax中的零阶项1/t，重新加权剩余的零和softmax残差，创建数学稳定权重，允许正负值，使单层注意力层能够执行对比操作。",
+ "experiment_framework": "在MAD、WikiText、RegBench等基准测试上评估，与Hyena、Mamba、GLA、DeltaNet等线性模型和标准Transformer比较，使用PPL、准确率等指标。",
+ "takeaways": [
+  "零和权重增强了注意力层的表达能力，特别是在上下文学习任务中",
+  "径向-角分量解耦有效捕捉了注意力权重中的长度-角度交互"
+ ],
+ "weaknesses": [
+  "在压缩和记忆等依赖较少复杂表示的任务上提升有限",
+  "实验主要在NLP任务上进行，在医学影像等领域的泛化能力未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

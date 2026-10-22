@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Diffusion-Based sRGB Real Noise Generation via Prompt-Driven Noise Representation Learning.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Diffusion-Based sRGB Real Noise Generation via Prompt-Driven Noise Representation Learning.pdf",
+ "title": "Diffusion-Based sRGB Real Noise Generation via Prompt-Driven Noise Representation Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "扩散模型通过提示编码生成噪声，但依赖成对数据且泛化存疑",
+ "innovations": [
+  "提出Prompt-Driven Noise Generation (PNG)框架，消除对元数据的依赖",
+  "设计Prompt AutoEncoder (PAE)提取高维提示特征",
+  "引入Prompt DiT (P-DiT)基于一致性模型生成噪声"
+ ],
+ "method_framework": "PNG框架包含两阶段训练：首先训练PAE编码器提取噪声特征和解码器重建图像，然后训练P-DiT基于提示特征生成潜在代码，最终生成逼真的噪声图像。",
+ "experiment_framework": "在SIDD、SIDD+、PolyU和Nam数据集上评估，使用KLD、AKLD指标评估噪声质量，PSNR和SSIM评估去噪性能，并与C2N、Flow-sRGB、NeCA-W和NAFlow等方法比较。",
+ "takeaways": [
+  "提示特征可作为元数据的有效替代，捕捉噪声特性",
+  "两阶段训练框架能有效分离特征提取和噪声生成任务"
+ ],
+ "weaknesses": [
+  "方法依赖成对的噪声-清洁图像数据",
+  "实验主要在特定数据集上进行，泛化能力需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "噪声生成与可靠性主线无直接交点，仅作为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

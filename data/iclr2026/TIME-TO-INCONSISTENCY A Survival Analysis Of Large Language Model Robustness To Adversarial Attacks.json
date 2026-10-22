@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TIME-TO-INCONSISTENCY A Survival Analysis Of Large Language Model Robustness To Adversarial Attacks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TIME-TO-INCONSISTENCY A Survival Analysis Of Large Language Model Robustness To Adversarial Attacks.pdf",
+ "title": "Time-to-Inconsistency: A Survival Analysis of Large Language Model Robustness to Adversarial Attacks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "将LLM不一致建模为生存分析，用简单漂移特征实现早期预警",
+ "innovations": [
+  "首次将多轮对话鲁棒性问题形式化为生存分析问题，将首次不一致视为事件、轮次视为时间，处理删失对话",
+  "发现突变的语义漂移急剧增加不一致风险，而累积漂移反而具有保护作用（暗示模型适应）",
+  "将AFT模型转化为轮次级风险监控器，可在首次不一致回答前多轮标记高风险对话"
+ ],
+ "method_framework": "在MT-Consistency基准上分析9个SOTA LLM的36,951轮对话。将首次不一致回答定义为事件，8轮内保持正确的对话视为右删失。使用Cox比例风险、加速失效时间（AFT）和随机生存森林三种模型，结合简单语义漂移特征（突变漂移、累积漂移等）。比较各模型的判别力和校准度，并检验比例风险假设。",
+ "experiment_framework": "数据集为MT-Consistency基准（多轮一致性评估），9个LLM模型，36,951轮对话；模型对比包括Cox PH、AFT、随机生存森林；指标包括一致性（C-index）、校准度、风险预警的提前量和误报率。",
+ "takeaways": [
+  "突变语义漂移是不一致的主要风险因素，而长期累积漂移反而可能促使模型适应",
+  "AFT模型（含模型-漂移交互项）在判别力和校准度上综合最优",
+  "轻量级生存模型可作为对话级风险监控器，提前多轮预警即将失败的对话"
+ ],
+ "weaknesses": [
+  "语义漂移特征较为简单，仅用嵌入距离等，更精细的语言学特征可能提升预测力",
+  "实验仅在MT-Consistency一个基准上进行，跨数据集的泛化性未验证",
+  "生存分析框架假设风险单调累积，但对话中可能存在恢复现象，模型未捕捉这种动态"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "LLM鲁棒性生存分析，直接落可靠性主线与多模态大模型推理域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/BoxLM_Unifying Structures and Semantics of Medical Concepts for Diagnosis Prediction in Healthcare.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/BoxLM_Unifying Structures and Semantics of Medical Concepts for Diagnosis Prediction in Healthcare.pdf",
+ "title": "BoxLM: Unifying Structures and Semantics of Medical Concepts for Diagnosis Prediction in Healthcare",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 6.5,
+  "overall": 5.75
+ },
+ "one_line": "BoxLM融合医学概念语义与结构，但提升有限且依赖外部本体质量。",
+ "innovations": [
+  "提出结构-语义融合机制：用box embedding把医学概念的本体层级结构与LM语义表征统一在同一框架。",
+  "弥补现有LM-based诊断预测只利用概念语义、忽略领域知识层级结构(如ICD本体树)的缺陷。",
+  "在EHR就诊序列诊断预测上联合结构与语义信号。"
+ ],
+ "method_framework": "现有LM利用EHR中概念语义做诊断预测，但忽视医学本体(如ICD)的层级结构。BoxLM用box embedding(可用区间包含关系表达层级)同时编码：语义侧来自LM对概念文本的嵌入，结构侧来自本体层级树；二者融合后再对就诊序列建模做诊断预测。",
+ "experiment_framework": "在EHR数据集(含MIMIC类)上做诊断预测；基线为纯LM-based诊断预测方法及忽略结构的变体；指标为诊断预测准确率/AUC类。Table 1对比各方法。",
+ "takeaways": [
+  "将医学本体的层级结构通过box embedding与语义融合，能提升诊断预测。",
+  "结构信息是纯文本语义之外被忽视的有用信号。",
+  "box embedding适合建模带包含关系的医学概念层级。"
+ ],
+ "weaknesses": [
+  "依赖外部医学本体质量，本体缺失或异构建模的适配性未充分讨论。",
+  "前9页内未见完整对比数值表，具体提升幅度未精确引用。",
+  "属EHR诊断预测，与医学影像/多模态大模型推理主线部分相关，非视觉方向。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

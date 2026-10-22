@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Spatialhand_Generative Object MANIPULATION from 3D Prespective.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Spatialhand_Generative Object MANIPULATION from 3D Prespective.pdf",
+ "title": "SpatialHand: Generative Object Manipulation from 3D Perspective",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "将6DoF物体操作分解为2D位置+深度+朝向，用合成数据缓解配对稀缺",
+ "innovations": [
+  "把物体插入从2D图像平面提升到真3D视角，实现完整6自由度可控的物体操作",
+  "将6DoF位姿条件隐式分解为2D位置(掩码图)+深度(合成深度图)+3D朝向(嵌入潜特征)",
+  "用合成3D资产渲染+主体驱动生成+视觉基础模型位姿估计构建自动化配对数据流水线，缓解配对数据稀缺"
+ ],
+ "method_framework": "把待插入物体的6DoF位姿解耦：2D位置由掩码图指定、深度由合成深度图指定、3D朝向嵌入潜特征；用合成3D资产自动渲染配对训练数据，并设计多阶段训练让模型逐步学会同时遵循位置/深度/朝向等多重条件。",
+ "experiment_framework": "在6DoF物体插入、任意角度旋转、精确平移、遮挡鲁棒交换等任务上评测；对比2D平面操作方法，报告在3D位置/朝向/遮挡关系控制上更精确、歧义更少。",
+ "takeaways": [
+  "6DoF位姿分解为2D位置+深度+朝向可被生成模型隐式编码",
+  "自动化合成数据流水线可缓解3D物体操作配对数据稀缺",
+  "从真3D视角操作能显著减少2D方法在位置/朝向/遮挡上的歧义"
+ ],
+ "weaknesses": [
+  "依赖合成3D资产渲染，真实世界照片的域差可能限制泛化",
+  "6DoF控制精度依赖深度图与位姿估计先验，误差会沿管线传播",
+  "评测偏合成/受控场景，对复杂室内外真实场景的鲁棒插入证据有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "物体操作与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

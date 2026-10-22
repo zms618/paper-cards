@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/dKV-Cache The Cache for Diffusion Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/dKV-Cache The Cache for Diffusion Language Models.pdf",
+ "title": "dKV-Cache: The Cache for Diffusion Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "扩散模型KV缓存机制，加速2-10倍但性能有损",
+ "innovations": [
+  "提出首个扩散语言模型的KV缓存机制",
+  "设计延迟缓存策略兼容双向注意力",
+  "开发dKV-Cache-Decode和dKV-Cache-Greedy两种互补变体"
+ ],
+ "method_framework": "基于扩散过程中token表示动态的观察，设计延迟缓存策略，仅在解码token后缓存其KV状态，并引入一步延迟缓存机制提升性能",
+ "experiment_framework": "在LLaDA和Dream模型上评估，涵盖语言理解、数学推理和代码生成任务，比较准确率和token/s速度",
+ "takeaways": [
+  "扩散模型中已解码token的表示相对稳定，可被缓存重用",
+  "延迟缓存策略能有效解决双向注意力与KV缓存的兼容性问题"
+ ],
+ "weaknesses": [
+  "dKV-Cache-Greedy在部分任务上性能下降明显",
+  "缓存刷新机制增加了额外计算开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

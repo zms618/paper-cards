@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/CAT_Circular-Convolutional Attention for Sub-Quadratic Transformers.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/CAT_Circular-Convolutional Attention for Sub-Quadratic Transformers.pdf",
+ "title": "CAT: Circular-Convolutional Attention for Sub-Quadratic Transformers",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6,
+  "overall": 6.2
+ },
+ "one_line": "CAT通过循环卷积和FFT优化Transformer注意力复杂度",
+ "innovations": [
+  "提出工程同构Transformer(EITs)框架",
+  "基于循环卷积的CAT注意力机制",
+  "保持全局softmax的同时降低计算复杂度"
+ ],
+ "method_framework": "CAT将注意力权重解释为循环矩阵，通过FFT/IFFT和Hadamard乘积实现O(N log N)复杂度，同时保持全局softmax结构",
+ "experiment_framework": "ImageNet-1k图像分类和WikiText-103语言建模，对比标准注意力机制，评估准确性和困惑度",
+ "takeaways": [
+  "合并查询和键投影可减少参数同时保持性能",
+  "混合CAT和标准注意力可提高鲁棒性",
+  "简单token混合时CAT表现优异"
+ ],
+ "weaknesses": [
+  "因果语言建模中复杂度可能退化为O(N²)",
+  "大序列长度时FFT实现优势不明显",
+  "在某些需要灵活全局交互的任务中表现不如标准注意力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

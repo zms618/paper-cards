@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning to Reuse Policies in State Evolvable Environments.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning to Reuse Policies in State Evolvable Environments.pdf",
+ "title": "Learning to Reuse Policies in State Evolvable Environments",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "状态演化下策略复用方法，仿真验证有效，真实场景未知",
+ "innovations": [
+  "首次形式化状态可进化强化学习（SERL）问题：部署后状态空间因传感器维护/新增等原因发生演化，策略需在少样本下适应",
+  "提出Lapse方法：通过策略复用机制，将旧状态空间中学到的策略迁移到新状态空间，避免从零开始训练",
+  "在8种不同演化类型（传感器增减、视角旋转、物体干扰、线性映射等）下验证适应性"
+ ],
+ "method_framework": "问题设定：训练时状态空间为S，部署后状态空间演化为S'（新增/删除/替换传感器特征）。Lapse方法：(1)学习状态空间之间的映射关系，将新状态映射回旧状态空间；(2)复用旧策略在映射后的状态上做决策；(3)利用少量新样本微调映射和策略，缓解状态演化带来的性能退化。核心是策略复用而非从头训练，最小化探索成本。",
+ "experiment_framework": "8个任务：MuJoCo连续控制（向量状态）、像素控制（图像状态）；演化类型包括传感器增减（图像patch拆分/合并）、物理单元替换、视角旋转、干扰物体引入、任意线性映射；对比传感器不变策略和多策略选择方法；指标为状态演化后的策略性能恢复程度和样本效率。",
+ "takeaways": [
+  "真实部署中状态空间演化是常见且被低估的问题，传统RL策略会严重退化",
+  "通过状态映射+策略复用，可以用极少样本恢复性能，比重新探索高效得多",
+  "Lapse在多种类型的状态演化下都表现出鲁棒的适应性"
+ ],
+ "weaknesses": [
+  "状态映射的学习假设新旧状态空间存在可学习的对应关系，当演化是完全不可逆的破坏时可能失效",
+  "仅在仿真环境（MuJoCo）验证，真实传感器漂移场景下的效果未展示",
+  "映射误差会累积到策略决策中，误差传播效应未系统分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

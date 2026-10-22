@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Self-Bootstrapping for Versatile Test-Time Adaptation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Self-Bootstrapping for Versatile Test-Time Adaptation.pdf",
+ "title": "Self-Bootstrapping for Versatile Test-Time Adaptation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6.5,
+  "relevance": 7,
+  "overall": 6.3
+ },
+ "one_line": "傅里叶低频掩码TTA，跨任务一致性目标，几何信息保留有限。",
+ "innovations": [
+  "提出一个跨任务的通用TTA目标，同时支持分类与回归、图像/物体/像素级预测。",
+  "在傅里叶域分析分布偏移对图像各空间频率信息能量的影响，发现低频携带高能量、掩码低频更能提供学习信号。",
+  "据此随机掩码图像傅里叶低频幅度做增广，在保留物体尺寸/位置等几何信息的同时给出充分学习信号。"
+ ],
+ "method_framework": "自举式TTA：对测试图与其傅里叶低频劣化视图分别预测，优化两视图预测一致性作为自监督目标。关键是设计既保留几何信息(物体大小、位置)又提供学习信号的劣化方式；分析表明掩码低频幅度而非高频可满足二者，从而摆脱以往TTA仅适用分类/窄任务的限制。",
+ "experiment_framework": "覆盖图像级(分类)、物体级(检测)、像素级(分割)及回归任务的多种分布偏移基准；对比熵最小化、源无关域自适应、原型式TTA等基线，报告各类偏移下的准确率/mIoU等，并做低频vs高频掩码、劣化强度等消融。",
+ "takeaways": [
+  "在傅里叶域掩码低频幅度是兼顾几何保留与学习信号的通用TTA劣化算子。",
+  "统一的预测一致性目标可覆盖分类与回归、图像/物体/像素级多类任务。"
+ ],
+ "weaknesses": [
+  "低频掩码的有效性建立在'低频承载几何/高能量'假设上，对非自然图像或特定偏移可能失效。",
+  "逐样本更新的TTA在持续偏移下的稳定性/误差累积控制需更多讨论。",
+  "相对现有TTA方法的增益幅度需看具体表格，方法属一致性正则式改进。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

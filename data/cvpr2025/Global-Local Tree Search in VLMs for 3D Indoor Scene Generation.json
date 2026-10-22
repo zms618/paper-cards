@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Global-Local Tree Search in VLMs for 3D Indoor Scene Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Global-Local Tree Search in VLMs for 3D Indoor Scene Generation.pdf",
+ "title": "Global-Local Tree Search in VLMs for 3D Indoor Scene Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "树搜索改进VLM 3D生成，但厨房场景弱且计算成本高",
+ "innovations": [
+  "全局-局部树搜索算法解决VLM在3D场景生成中的错误累积问题",
+  "分层场景表示作为文本与3D场景之间的常识桥梁",
+  "使用emoji网格提示VLM进行空间定位"
+ ],
+ "method_framework": "将3D场景生成视为树搜索问题，通过分层表示(room-region-floor object-supported object)降低计算复杂度，全局树搜索管理对象放置顺序，局部树搜索确定单个对象位置参数",
+ "experiment_framework": "使用ChatGPT生成120个提示(4种场景类型×3种尺寸)，比较AnyHome和HoloDeck基线，使用CLIP分数和用户排名评估",
+ "takeaways": [
+  "树搜索结构可有效解决VLM在空间推理中的错误累积问题",
+  "分层表示和emoji网格提示是提升VLM空间推理的有效方法"
+ ],
+ "weaknesses": [
+  "厨房场景表现不如HoloDeck，可能因为厨房布局规则性强而VLM常识不足",
+  "树搜索计算成本高，k值选择需权衡效果与成本",
+  "未充分讨论方法在复杂场景中的扩展性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3D场景生成与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Structured Sparse Transition Matrices to Enable State Tracking in State-Space Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Structured Sparse Transition Matrices to Enable State Tracking in State-Space Models.pdf",
+ "title": "Structured Sparse Transition Matrices to Enable State Tracking in State-Space Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 7.5,
+  "evidence": 6.5,
+  "relevance": 6,
+  "overall": 6.75
+ },
+ "one_line": "结构化稀疏转移矩阵实现状态跟踪，但计算开销大且实验覆盖有限",
+ "innovations": [
+  "PD参数化：列单热矩阵与复对角矩阵乘积",
+  "保持计算效率的同时实现最优FSA状态跟踪",
+  "理论证明BIBO稳定性和最优状态大小"
+ ],
+ "method_framework": "PD-SSM将转移矩阵参数化为A(ut)=P(ut)D(ut)，其中P是列单热矩阵，D是复对角矩阵，通过并行扫描实现高效计算",
+ "experiment_framework": "FSA状态跟踪任务(4种自动机)、非可解群(A5/S5)、多变量时间序列分类(UEA-MTSCA)",
+ "takeaways": [
+  "结构化稀疏矩阵在保持计算效率的同时增强表达能力",
+  "代数结构分析对理解模型表达能力的重要性"
+ ],
+ "weaknesses": [
+  "P矩阵生成增加计算开销，比对角SSM慢7倍",
+  "仅在一个非可解群任务上表现略有下降"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

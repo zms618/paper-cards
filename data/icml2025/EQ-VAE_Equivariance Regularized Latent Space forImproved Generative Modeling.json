@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/EQ-VAE_Equivariance Regularized Latent Space forImproved Generative Modeling.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/EQ-VAE_Equivariance Regularized Latent Space forImproved Generative Modeling.pdf",
+ "title": "EQ-VAE: Equivariance Regularized Latent Space forImproved Generative Modeling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.9
+ },
+ "one_line": "简单等变正则化提升生成模型，但创新有限且泛化验证不足。",
+ "innovations": [
+  "识别现有自编码器缺乏空间变换等变性问题",
+  "提出EQ-VAE简单正则化方法，无需架构修改",
+  "兼容连续和离散自编码器，实现即插即用"
+ ],
+ "method_framework": "EQ-VAE通过修改自编码器训练目标，鼓励潜在表示对空间变换(缩放和旋转)具有等变性，通过变换潜在空间并与变换后的输入对齐来简化潜在空间结构。",
+ "experiment_framework": "ImageNet数据集，DiT、SiT、REPA和MaskGIT作为基线，使用FID、sFID、IS、Precision和Recall作为评估指标。",
+ "takeaways": [
+  "等变性正则化可显著提升生成模型性能",
+  "微调预训练自编码器几轮即可实现显著加速",
+  "方法适用于多种生成模型架构"
+ ],
+ "weaknesses": [
+  "仅关注缩放和旋转等特定变换",
+  "未探索等变性对生成模型泛化能力的长期影响",
+  "实验主要在标准数据集上进行，缺乏真实场景验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

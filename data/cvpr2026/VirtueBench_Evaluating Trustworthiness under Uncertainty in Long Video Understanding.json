@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/VirtueBench_Evaluating Trustworthiness under Uncertainty in Long Video Understanding.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/VirtueBench_Evaluating Trustworthiness under Uncertainty in Long Video Understanding.pdf",
+ "title": "VirtueBench: Evaluating Trustworthiness under Uncertainty in Long Video Understanding",
+ "scores": {
+  "novelty": 7,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "长视频评测基准：诊断拒绝行为，揭示模型不确定性感知缺陷",
+ "innovations": [
+  "评测偏置诊断：帧限制致关键证据缺失时——诚实拒绝被标错、猜对获虚假高分→现有二元评测奖励猜测惩罚诚实(与既有发现[12]呼应但落到长视频评测)",
+  "VirtueBench任务设计：每视频多帧采样级别×可答/不可答真值区分(图2:64帧子集缺运动员404手套帧)——'不确定性下的拒绝'成为可评测能力",
+  "模型家族差异揭示：25开源+商业VLM拒绝准确率>70%(最好)至近0%(最差)；提示不显式要求拒绝时多数模型拒绝行为大幅下降——'显式提示依赖'的脆弱性证据"
+ ],
+ "method_framework": "长视频基准VQA对重构：多帧采样级别(区分信息缺失)→可答/不可答标注→评测模型拒绝行为(答对/拒对/猜错)；25模型家族对比。",
+ "experiment_framework": "25开源+商业VLM；多帧采样级别(64/128等)；拒绝准确率(>70%至~0%)；有无显式拒绝提示两条件对比。",
+ "takeaways": [
+  "'猜对=虚假准确率'：现有评测体系把'碰巧答对'当能力——不确定性感知评测的必要性(与用户可信AI/不确定性主线核心契合)",
+  "'拒绝是能力不是错误'：缺证据时诚实拒答应得分——'知道不知道'的量化",
+  "'提示依赖脆弱性'：不显式要求就拒答率暴跌——模型'主动不确定性'的缺失实证"
+ ],
+ "weaknesses": [
+  "可答/不可答的真值标注(何时'证据缺失'判定)的人工一致性/自动化流程未给全；采样级别数未说明",
+  "拒绝准确率之外的指标(拒答但可答/猜错分布)未分析；对训练优化的影响(拒绝如何奖励)未给出可执行协议",
+  "视频问答对来源基准的具体分布/领域覆盖未报告；'最优拒绝率'目标(多少该拒)未定义"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "不确定性评测基准与可靠性主线交点，诊断拒绝行为缺陷",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

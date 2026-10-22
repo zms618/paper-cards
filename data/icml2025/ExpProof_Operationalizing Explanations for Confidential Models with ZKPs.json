@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/ExpProof_Operationalizing Explanations for Confidential Models with ZKPs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ExpProof_Operationalizing Explanations for Confidential Models with ZKPs.pdf",
+ "title": "ExpProof: Operationalizing Explanations for Confidential Models with ZKPs",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "ZKP实现LIME解释可验证，但开销大且不适用于大模型",
+ "innovations": [
+  "首次在对抗性(利益不一致)场景下用ZKP把事后解释‘可操作化’，解决模型机密方操纵解释的问题",
+  "提出ZKP友好的LIME变体：将LASSO可解释模型量化并在ZKP电路中求解，用对偶间隙证明量化解接近最优",
+  "在神经网络与随机森林上实现ExpProof协议，用KZG承诺证明预测与解释计算正确而不泄露权重"
+ ],
+ "method_framework": "模型方在本地用LIME生成解释，把模型前向、邻域采样、加权LASSO回归全部量化进ZKP电路；用对偶间隙在证明中核验LASSO解最优性，验证者仅获得预测、解释与一个零知识证明。",
+ "experiment_framework": "三个公平性标准基准；模型为神经网络与随机森林；问题Q1解释保真度用prediction similarity、Q2开销用证明生成/验证时间与内存；基于ezkl与KZG承诺，未用GPU并行。",
+ "takeaways": [
+  "ExpProof 使对抗场景下的解释不可被模型方操纵，同时不泄露机密模型权重",
+  "量化LASSO的对偶间隙核验可在ZKP内保证解释解接近最优",
+  "代价是可观的证明生成时间/内存开销，需在保真与开销间权衡"
+ ],
+ "weaknesses": [
+  "ZKP证明时间/内存开销大，未做GPU并行，实际部署成本高",
+  "仅适配LIME及NN/RF，对Transformer/大模型的ZKP电路化未涉及",
+  "量化引入精度损失，对偶间隙阈值ε的实际选择缺乏系统指导"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

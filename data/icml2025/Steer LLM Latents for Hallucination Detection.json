@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Steer LLM Latents for Hallucination Detection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Steer LLM Latents for Hallucination Detection.pdf",
+ "title": "Steer LLM Latents for Hallucination Detection",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.3
+ },
+ "one_line": "TSV通过轻量steering向量重塑表征空间实现幻觉检测，但本质是representation engineering的增量改进。",
+ "innovations": [
+  "提出 Truthfulness Separator Vector (TSV)：推理期加性 steering vector 拉开真实/幻觉表征，不改动模型参数",
+  "两阶段框架：先在少量标注样本上训 TSV 形成紧凑可分簇，再用未标注 LLM 生成扩充样本",
+  "基于最优传输的伪标注算法结合置信度过滤扩充训练集，以极少标注数据达到 SOTA 幻觉检测"
+ ],
+ "method_framework": "先在少量真伪标注样本上学习一个方向向量 TSV；推理时把 TSV 加到 LLM 某中间层的隐状态上，使最后 token 表征在真相维度上被拉开，再用线性探针分类；第二阶段用 OT 给未标注生成打伪标签、按置信度过滤后扩充 exemplar，迭代增强 TSV。",
+ "experiment_framework": "在 TruthfulQA 等多个幻觉检测基准上评测；对比 representation engineering/RSP 等隐空间检测方法与外部 NLI/校准方法，报告 AUROC/AUPRC，验证小标注下 SOTA 与跨数据集泛化。",
+ "takeaways": [
+  "预训练 LLM 表征为流畅性优化，真伪不可分；一个 steering vector 即可在推理期重塑出可分结构",
+  "OT 伪标注+置信过滤能用极少标注数据显著增强幻觉检测器",
+  "TSV 轻量、不改参数、跨数据集泛化，适合真实部署"
+ ],
+ "weaknesses": [
+  "本质是 representation engineering 的应用改进，方法新颖性偏增量",
+  "伪标注引入的标签噪声可能在难样本上放大误差",
+  "有效性依赖所选 steering 层与方向，对不同 LLM 架构需重新校准"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

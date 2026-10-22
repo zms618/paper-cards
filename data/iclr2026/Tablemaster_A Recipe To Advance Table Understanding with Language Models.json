@@ -1,0 +1,41 @@
+{
+ "title": "TableMaster: A Recipe to Advance Table Understanding with Language Models",
+ "one_line": "表格理解prompt工程组合，商用模型上微弱提升。",
+ "innovations": [
+  "识别表格理解四大难点：目标数据定位难、表格语义不足、文本推理数值不准、符号推理语义不灵活",
+  "先抽取相关表格内容并用丰富语义语境verbalize，缓解长上下文定位困难与幻觉",
+  "提出adaptive reasoning：在文本推理与符号推理间动态切换，按每个查询定制推理过程"
+ ],
+ "method_framework": "TableMaster先定位并抽取与查询相关的表格内容（短上下文聚焦），用丰富语义语境verbalize补全表格语义；再对每个查询自适应地在文本推理与符号推理间选择，数值计算交给符号器以提升精度，语义判断交给文本推理。",
+ "experiment_framework": "在WikiTQ等表格QA基准上评测；用GPT-4o-mini实现；对比既有表格理解baseline；报告WikiTQ准确率78.13%超越现有方法；含消融分析各模块贡献。",
+ "takeaways": [
+  "先抽取聚焦相关内容再verbalize可缓解长表格下的定位困难与幻觉",
+  "按查询在文本/符号推理间自适应切换可同时改善数值精度与语义灵活度",
+  "该recipe在GPT-4o-mini上即可超越既有表格理解方法"
+ ],
+ "weaknesses": [
+  "核心是prompting/推理recipe，无新模型或训练方法，工程组合创新为主",
+  "依赖GPT-4o-mini等商用强模型，在开源小模型上的迁移效果未充分报告",
+  "自适应推理的路由判据与错误传播分析较粗，符号/文本误路由影响未量化"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Tablemaster_A Recipe To Advance Table Understanding with Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tablemaster_A Recipe To Advance Table Understanding with Language Models.pdf",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "raw_overall": 5.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "表格理解prompt工程，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

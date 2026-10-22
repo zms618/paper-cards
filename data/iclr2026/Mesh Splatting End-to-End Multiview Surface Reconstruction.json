@@ -1,0 +1,37 @@
+{
+ "key": "iclr2026/Mesh Splatting End-to-End Multiview Surface Reconstruction.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mesh Splatting End-to-End Multiview Surface Reconstruction.pdf",
+ "title": "Mesh Splatting for End-to-End Multiview Surface Reconstruction",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "elevance": 4.0,
+  "evidence": 6.0,
+  "overall": 5.3
+ },
+ "one_line": "Mesh Splatting结合remeshing优化多视图重建，但偏离可靠性主线",
+ "innovations": [
+  "提出端到端优化网格的多视图表面重建Mesh Splatting",
+  "引入remeshing做拓扑控制，避免体积法meshing累积误差与过密网格",
+  "结合splatting的稳定优化与纯表面法的直接网格表示"
+ ],
+ "method_framework": "直接把网格作为表面参数化端到端优化，融合splatting的稳定渲染；通过remeshing动态控制拓扑，避免体积表示先占空间再meshing带来的过密网格与误差累积。",
+ "experiment_framework": "在多视图立体数据集评测，对比SuGaR、GaussianSurfel、Neuralangelo、Poisson等；指标为Chamfer距离与顶点数；以最少顶点取得更准确表面对齐。",
+ "takeaways": [
+  "端到端网格优化可比体积法用更少顶点获得更准表面",
+  "remeshing拓扑控制可防止过密网格",
+  "体积法后meshing的误差累积是实际上限约束"
+ ],
+ "weaknesses": [
+  "relevance偏离主线，属三维重建/图形学而非可靠性或医疗影像",
+  "15页短文，方法细节与大规模场景扩展性有限",
+  "仅在标准多视图数据集评测，真实扫描噪声鲁棒性未测"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

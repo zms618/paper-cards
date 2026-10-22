@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/PRO-MOF_Policy Optimization with Universal Atomistic Models for Controllable Mof Gen.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PRO-MOF_Policy Optimization with Universal Atomistic Models for Controllable Mof Gen.pdf",
+ "title": "PRO-MOF: Policy Optimization with Universal Atomistic Models for Controllable MOF Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "分层RL+UMA奖励+Pass@K GRPO优化MOF生成，探索与利用平衡有限。",
+ "innovations": [
+  "用分层RL把MOF生成解耦为高层策略(提出化学building block)与低层策略(组装3D结构)。",
+  "将确定性Flow Matching模型转为随机微分方程(SDE)，使低层策略具备强探索能力。",
+  "用预训练通用原子模型(UMA)提供高保真物理奖励做闭环优化；提出Pass@K GRPO，以组内多样性奖励平衡探索与利用。"
+ ],
+ "method_framework": "高层策略选择化学构筑基元，低层策略在SDE化的flow matching上组装3D结构；每步由UMA打分物理稳定性与性能目标形成奖励；用Pass@K GRPO在一组候选内按相对优势与多样性优化策略，缓解模式坍缩、扩大化学结构空间搜索。",
+ "experiment_framework": "在多个MOF逆向设计任务(最大化CO2工作容量、目标孔径等)上评测；对比扩散生成方法与遗传算法；指标为成功率与发现top材料的能力；PRO-MOF在两项指标上均显著优于基线。",
+ "takeaways": [
+  "分层RL+高保真物理奖励可有效探索MOF巨大设计空间，避免模式坍缩。",
+  "Flow Matching转SDE赋予低层策略强探索能力。",
+  "Pass@K GRPO以组内多样性奖励平衡探索利用，利于发现高性能新材料。"
+ ],
+ "weaknesses": [
+  "依赖UMA物理奖励的精度，UMA误差会被策略放大。",
+  "闭环RL训练成本高，泛化到其他晶体材料体系未验证。",
+  "合成可实现性(synthesizability)未作为显式约束评估。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "材料生成与可靠性主线无实质交点，仅为领域应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

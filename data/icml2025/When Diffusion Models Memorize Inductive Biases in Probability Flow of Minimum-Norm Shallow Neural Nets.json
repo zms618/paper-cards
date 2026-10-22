@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/When Diffusion Models Memorize Inductive Biases in Probability Flow of Minimum-Norm Shallow Neural Nets.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/When Diffusion Models Memorize Inductive Biases in Probability Flow of Minimum-Norm Shallow Neural Nets.pdf",
+ "title": "When Diffusion Models Memorize Inductive Biases in Probability Flow of Minimum-Norm Shallow Neural Nets",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.9
+ },
+ "one_line": "简化模型分析扩散流收敛行为，理论贡献有限且缺乏实证验证",
+ "innovations": [
+  "分析扩散概率流ODE的收敛行为，回答其何时收敛到训练样本/训练样本之和/流形一般点这一关键问题",
+  "引入更简单的score flow作为直觉工具，证明正交数据集下score flow与概率流轨迹相似",
+  "指出扩散时间调度器的早停使概率流到达流形一般点，解释扩散'既记忆又生成新颖组合'的双重行为"
+ ],
+ "method_framework": "研究以最小L2范数训练的浅层ReLU去噪器；在正交数据集上刻画概率流/score flow的轨迹，证明其收敛到单个训练点或训练点之和；将结论推广到钝角单形(obtuse simplex)数据；用正交情形下的仿真验证概率流收敛到训练点/训练点和。",
+ "experiment_framework": "以最小范数浅层ReLU网络去噪器为简化模型；理论推导为主，辅以正交数据集上的数值仿真验证概率流轨迹与收敛点；在简化设定下理解扩散采样行为。",
+ "takeaways": [
+  "最小范数浅层去噪器的概率流倾向收敛到训练点或训练点之和，体现记忆偏置",
+  "扩散时间调度的早停使采样点落在流形一般位置，从而能生成结合多样本的新点",
+  "正交数据集下score flow可作为分析概率流的良好直觉代理"
+ ],
+ "weaknesses": [
+  "理论限于最小范数浅层ReLU去噪器与正交/单形等简化数据，对深度、非连通扩散架构的外推有限",
+  "以简化模型的理论与仿真为主，缺少真实扩散模型上的实证印证",
+  "属扩散采样理论，与鲁棒性主线及医学影像/多模态推理落地域关系较弱"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

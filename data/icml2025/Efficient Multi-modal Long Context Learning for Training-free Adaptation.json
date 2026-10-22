@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Efficient Multi-modal Long Context Learning for Training-free Adaptation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficient Multi-modal Long Context Learning for Training-free Adaptation.pdf",
+ "title": "Efficient Multi-modal Long Context Learning for Training-free Adaptation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "分块压缩与JS散度剪枝实现多模态长上下文压缩，但缺乏可靠性主线验证",
+ "innovations": [
+  "提出EMLoC无训练适配框架，将多模态演示示例直接嵌入输入实现任务适配，无需微调",
+  "设计分块压缩机制将长多模态输入压缩为紧凑的任务特定记忆表示",
+  "提出基于Jensen-Shannon散度约束的逐层自适应剪枝，在保持性能的同时大幅降低推理复杂度"
+ ],
+ "method_framework": "将多演示示例的多模态长输入按块压缩为紧凑记忆表示；在每一层自适应剪枝token，剪枝约束为剪枝前后token分布的JS散度不超过阈值；压缩后的紧凑记忆作为上下文提供给MLLM，实现无训练的任务适配。",
+ "experiment_framework": "在多个视觉语言基准（包括ImageNet100等分类任务）上评估，对比朴素长上下文方法和微调方法，指标为分类精度和上下文长度/推理开销；测试不同演示示例数量下的性能-效率权衡。",
+ "takeaways": [
+  "EMLoC在达到与朴素长上下文方法相当或更优性能的同时，实现了显著的上下文压缩",
+  "200个示例时4.4倍压缩且无性能损失，且优于50个示例的朴素MLoC",
+  "无训练适配使MLLM在资源受限环境下具有更高的灵活性和可扩展性"
+ ],
+ "weaknesses": [
+  "方法聚焦推理效率，而非鲁棒性/不确定性/幻觉抑制等可靠性主线维度",
+  "JS散度阈值等超参需要手动调节，不同任务的最优值可能不同",
+  "实验主要在分类基准上验证，在复杂推理任务（如VQA、链式思考）上的效果未充分展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

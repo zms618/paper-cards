@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Nab Neural Adaptive Binning for Sparse-View CT Reconstruction.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Nab Neural Adaptive Binning for Sparse-View CT Reconstruction.pdf",
+ "title": "NAB: Neural Adaptive Binning for Sparse-View CT Reconstruction",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "矩形先验分箱提升CT重建，但泛化性与不确定性评估不足",
+ "innovations": [
+  "基于平移双曲正切函数差设计新颖分箱机制，并扩展支持绕输入平面法向量旋转",
+  "将矩形形状先验通过可学习分箱编码注入INR CT重建，编码参数(位置/尺寸/陡度/旋转)由投影数据梯度端到端优化",
+  "通过调节分箱函数平滑度可推广到更复杂几何物体，在工业数据集与医学数据集上均稳健"
+ ],
+ "method_framework": "把空间坐标经可学习分箱映射到分箱向量空间(分箱边界可由梯度从投影数据反传优化)，再用神经网络映射到CT衰减系数。分箱用平移tanh差实现软硬可调，支持旋转；端到端在该物体自身投影数据上自监督优化，无需稀疏-稠密配对训练对。调平滑度即可从矩形主导工业件推广到一般医学/复杂几何。",
+ "experiment_framework": "在两个工业CT数据集与医学CT数据集上验证稀疏视角重建；对比经典INR(Fourier特征)与监督学习方法；指标为重建精度/PSNR类；消融分箱平滑度、旋转、形状先验各组件；报告少视角下重建质量。",
+ "takeaways": [
+  "把矩形形状先验显式注入INR稀疏视角CT重建可显著提升精度，优于无形状先验的Fourier特征INR",
+  "分箱参数由投影数据端到端优化，避免了监督方法训练-测试数据偏移导致的泛化受限",
+  "调节分箱平滑度使同一框架在工业矩形件与医学复杂解剖结构上都稳健"
+ ],
+ "weaknesses": [
+  "核心先验是矩形结构，对非矩形主导的自然/生物组织重建增益可能有限",
+  "虽触及医学CT，但属于逆问题重建而非多模态大模型推理，与验证器/过程奖励/不确定性量化等主线手段不直接相关",
+  "前9页未给出重建置信度/不确定性估计，临床高风险场景下的可信度刻画不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "医学影像重建但未触及可靠性主线不确定性量化",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

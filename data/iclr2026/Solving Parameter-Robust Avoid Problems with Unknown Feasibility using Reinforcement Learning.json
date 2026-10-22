@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Solving Parameter-Robust Avoid Problems with Unknown Feasibility using Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Solving Parameter-Robust Avoid Problems with Unknown Feasibility using Reinforcement Learning.pdf",
+ "title": "Solving Parameter-Robust Avoid Problems with Unknown Feasibility using Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "FGE解决RL安全集与期望回报错配，但应用域与主线关联弱",
+ "innovations": [
+  "指出RL优化用户指定分布上的期望回报与'最大化可长期保持安全状态集'之间的根本错配，会导致低概率状态上策略失效",
+  "将问题重构为参数鲁棒优化，但因可行域先验未知而提出FGE",
+  "FGE同时完成两件事：在感兴趣集合中识别出确实存在安全策略的可行子集，并在该子集上学习求解最优控制"
+ ],
+ "method_framework": "以Hamilton-Jacobi最优控制为目标，不引入固定初始状态分布，而是用鲁棒worst-case表述；通过可行性引导探索动态发现可行初始条件子集，再在其上训练策略，使策略覆盖尽量大的安全初始集而非仅常见采样区域。",
+ "experiment_framework": "在MuJoCo仿真的多个具有挑战性初始条件任务上，以现有最优方法为基线，以'安全策略覆盖的初始条件比例(coverage)'为主要指标对比。",
+ "takeaways": [
+  "FGE学到的策略比现有最佳方法在挑战性初始条件上多覆盖50%以上",
+  "把可行集识别与策略学习联合起来，可缓解RL分布错配导致的低密度状态灾难性失败",
+  "该思路绕开了HJ网格法的维数灾难，同时保留worst-case安全语义"
+ ],
+ "weaknesses": [
+  "应用域为机器人/动力学安全控制，与医学影像、多模态大模型推理主线仅在'鲁棒/安全'概念上沾边",
+  "仅在MuJoCo仿真验证，未涉及真实系统或高维学习基准的外部效度",
+  "覆盖率提升的幅度依赖任务与安全集定义，可行性识别本身的错误如何反馈到策略学习、误差传播分析不足；前9页未见完整消融"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "安全控制与主线沾边但无医学/多模态落地，方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

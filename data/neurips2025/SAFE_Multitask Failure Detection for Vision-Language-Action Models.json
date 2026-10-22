@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/SAFE_Multitask Failure Detection for Vision-Language-Action Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/SAFE_Multitask Failure Detection for Vision-Language-Action Models.pdf",
+ "title": "SAFE: Multitask Failure Detection for Vision-Language-Action Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "基于VLA特征的多任务失败检测，依赖模型架构且缺乏失败类型分析。",
+ "innovations": [
+  "发现VLA特征空间中存在跨任务的'失败区'",
+  "提出基于VLA内部特征的多任务失败检测器SAFE",
+  "使用函数 conformal 预测实现时间变化的失败阈值"
+ ],
+ "method_framework": "SAFE提取VLA内部特征，通过MLP或LSTM预测失败分数，使用函数conformal预测确定时间变化阈值，实现零样本多任务失败检测。",
+ "experiment_framework": "在LIBERO、SimplerEnv模拟环境和Franka、WidowX真实机器人上测试，比较多种基线方法，使用ROC-AUC和平衡准确率评估。",
+ "takeaways": [
+  "VLA内部特征包含任务成功/失败的高层次知识",
+  "简单特征探针方法在多任务失败检测上有效",
+  "conformal预测提供理论保证的失败检测阈值"
+ ],
+ "weaknesses": [
+  "依赖VLA内部特征提取，可能受模型架构影响",
+  "未分析不同失败类型的检测能力差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

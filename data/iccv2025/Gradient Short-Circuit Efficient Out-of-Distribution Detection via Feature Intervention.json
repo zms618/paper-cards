@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Gradient Short-Circuit Efficient Out-of-Distribution Detection via Feature Intervention.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Gradient Short-Circuit Efficient Out-of-Distribution Detection via Feature Intervention.pdf",
+ "title": "Gradient Short-Circuit Efficient Out-of-Distribution Detection via Feature Intervention",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "梯度短路机制抑制OOD虚假高置信度，但理论分析不足",
+ "innovations": [
+  "梯度短路机制抑制OOD样本虚假高置信度",
+  "局部一阶近似避免二次前向传播",
+  "特征维度敏感度分析识别问题坐标"
+ ],
+ "method_framework": "通过分析预测类别的梯度方向，识别并短路对OOD置信度贡献最大的特征维度，同时使用局部一阶近似避免二次前向传播，保持高效推理。",
+ "experiment_framework": "在CIFAR-10/100和ImageNet-1K上评估，对比MSP、ODIN、Energy、ReAct等基线，使用FPR95和AUROC指标。",
+ "takeaways": [
+  "梯度信息可作为OOD检测的有效信号",
+  "特征干预比仅依赖最终层分数更有效",
+  "局部近似可显著降低计算开销"
+ ],
+ "weaknesses": [
+  "仅关注梯度敏感特征维度，可能忽略其他重要因素",
+  "理论分析不够充分，主要依赖实验观察"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "OOD检测与可靠性主线明确交点，特征干预设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

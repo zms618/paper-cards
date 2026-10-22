@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/MonarchAttention_Zero-Shot Conversion to Fast, Hardware-Aware Structured Attention.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/MonarchAttention_Zero-Shot Conversion to Fast, Hardware-Aware Structured Attention.pdf",
+ "title": "MonarchAttention: Zero-Shot Conversion to Fast, Hardware-Aware Structured Attention",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "Monarch结构化矩阵投影实现零样本替换，中长序列加速显著但短序列收益有限",
+ "innovations": [
+  "将注意力矩阵近似为Monarch矩阵（一类表达力强的结构化矩阵），基于softmax变分形式构造优化投影，实现Θ(N√(Nd))时间、Θ(Nd)内存的次二次注意力",
+  "零样本可迁移：无需重训/微调即可替换预训练Transformer每一层注意力且性能损失极小（区别于需从头训练的线性/低秩注意力）",
+  "硬件高效：用批稠密matmul跑在GPU高吞吐tensor core上，优化内核后相对FlashAttention-2在N=256/4K/16K分别加速1.4x/4.5x/8.2x"
+ ],
+ "method_framework": "不构造完整N×N注意力矩阵，而是把『投影softmax注意力到Monarch矩阵』写成受结构化矩阵约束的变分优化问题（类比低秩近似中直接最小化Frobenius目标而非先SVD再截断）；利用目标的低维结构高效求解，得到次二次复杂度且映射到tensor-core友好的批量matmul。",
+ "experiment_framework": "在视觉与语言多任务、多架构上评测；对比cosformer/linear-attention/performer/nystromformer/FlashAttention-2；指标为任务精度损失与wall-time加速；报告相对FlashAttention-2在N=256/4K/16K加速1.4x/4.5x/8.2x。代码开源(cjyaras/monarch-attention)。",
+ "takeaways": [
+  "softmax注意力可零样本投影到Monarch结构化矩阵，兼顾精度与硬件吞吐，避免重训成本",
+  "理论次二次复杂度若不落到tensor-core友好的matmul上仍无实际加速，Monarch矩阵的批量matmul结构弥补了这一gap",
+  "在中长序列(4K-16K)相对FlashAttention-2取得数倍wall-time提升，是实用的长序列注意力替代"
+ ],
+ "weaknesses": [
+  "短序列(N=256)仅1.4x，收益主要来自中长序列；对训练长上下文而非仅推理的端到端吞吐收益未完整报告",
+  "零样本替换的精度损失在哪些任务/架构上可接受缺乏系统边界刻画，极长序列外推未验证",
+  "依赖定制优化内核，可移植性/可维护性以及与后续FA3等更强内核的对比在可见前9页未展开"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

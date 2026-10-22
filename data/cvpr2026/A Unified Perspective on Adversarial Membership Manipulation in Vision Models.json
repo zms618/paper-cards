@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/A Unified Perspective on Adversarial Membership Manipulation in Vision Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Unified Perspective on Adversarial Membership Manipulation in Vision Models.pdf",
+ "title": "A Unified Perspective on Adversarial Membership Manipulation in Vision Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 7.5,
+  "overall": 6.3
+ },
+ "one_line": "声称统一防御成员伪造，但核心方法增益微弱且实验支撑不足",
+ "innovations": [
+  "MFA：将 PGD 的 loss 极小化反转为 ℓ∞ 球内最大化真类置信度 py 的置信度上升问题，用动量 mk+1=βmk+(1-β)∇xℓ 加余弦退火步长稳定求解，使伪造样本跨 loss attack / LiRA / RMIA 均可被判为成员",
+  "MFD：发现伪造成员与真成员在 penultimate 层语义特征几乎完全重叠，但其输入梯度范数整体更小，以局部二阶泰勒近似给出定理（小步长符号梯度一步后 ∥∇xℓ(f(x),y)∥ 必下降），据此用 T=1[∥∇xℓ∥≤τ′] 检测，显著优于 Mahalanobis 与 LID",
+  "AR-MIA：把梯度范数经有界权重 w=tanh(λ∥∇xℓ∥) 乘入原 MIA 统计量得到 1[w·S>τ]，在不改动攻击端的前提下使 LiRA/RMIA 对自适应伪造具备鲁棒性"
+ ],
+ "method_framework": "①MFA：ℓ∞ 球内最大化真类置信度，动量+余弦退火步长；②MFD：以输入梯度范数阈值 τ′ 判伪造，局部二阶泰勒定理支撑；③AR-MIA：tanh(λ∥∇xℓ∥)·S 加权原统计量。",
+ "experiment_framework": "CIFAR-10/100、SVHN、CINIC-10、ImageNet-100 上训练分类网络，基线为 loss attack、Attack R(LiRA)、RMIA；指标为 Error Area 与 AUC，扰动 ϵ∈[0.5,8]/255。",
+ "takeaways": [
+  "把'攻击者对查询输入做扰动'正式引入成员推理审计，证明任何依赖置信度（loss / 似然比 / RMIA）的 MIA 都能被 2/255 量级 ℓ∞ 扰动伪造结论，隐私审计协议需同时校验输入是否被篡改",
+  "当语义特征不可分（t-SNE 完全重叠）时改采'优化几何'——输入梯度范数——作为伪造指纹，这一思路可迁移到 OOD/异常检测、过程级可信判据",
+  "防御端可用有界权重（tanh）把新几何信号注入既有检验统计量，改动极小且与现有 MIA 设计兼容，类似'最小侵入式加固'范式"
+ ],
+ "weaknesses": [
+  "核心消融表 Table 1 中四种步长策略的 Error Area 差距仅 0.005–0.02（CIFAR-10 上 PGD 反而是 0.9399 优于本文 0.9451），momentum+余弦退火相对 PGD/AutoAttack 的实质增益几乎可忽略，却被列为主要贡献",
+  "正文前 9 页止于 Table 1，MFD/AR-MIA 的主实验表、阈值 τ′ 的标定方式与漏检率、λ 的选取依据均无对应表格，关键声称缺少可复核的实验支撑",
+  "MFA 与 MFD 均假设白盒梯度可获取（构造最强攻击者），黑盒情形被推到附录用有限差分近似，与真实审计方（通常仅黑盒）能力不匹配，攻击-防御双方设定不对称"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "成员推断攻击防御属于可靠性主线，方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

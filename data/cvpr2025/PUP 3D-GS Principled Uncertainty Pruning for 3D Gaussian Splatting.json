@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/PUP 3D-GS Principled Uncertainty Pruning for 3D Gaussian Splatting.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/PUP 3D-GS Principled Uncertainty Pruning for 3D Gaussian Splatting.pdf",
+ "title": "PUP 3D-GS Principled Uncertainty Pruning for 3D Gaussian Splatting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 6.0
+ },
+ "one_line": "基于Fisher信息的3D高斯剪枝，90%压缩但计算开销大",
+ "innovations": [
+  "基于Fisher信息矩阵的敏感性剪枝分数",
+  "多轮剪枝-精炼流程",
+  "仅使用空间参数计算不确定性"
+ ],
+ "method_framework": "通过计算训练视图上重建误差的Hessian矩阵近似Fisher信息，推导空间敏感性剪枝分数，结合多轮剪枝-精炼流程实现高效压缩",
+ "experiment_framework": "Mip-NeRF 360、Tanks & Temples、Deep Blending数据集，与LightGaussian对比，评估PSNR、SSIM、LPIPS、FPS和模型大小",
+ "takeaways": [
+  "基于数学原理的敏感性分数比启发式方法更有效",
+  "多轮剪枝-精炼流程优于单轮方法",
+  "空间参数比颜色参数更适合不确定性估计"
+ ],
+ "weaknesses": [
+  "计算Hessian矩阵需要额外内存",
+  "未探索三轮以上剪枝的收益",
+  "在Tanks & Temples数据集上PSNR略低于LightGaussian"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "3DGS压缩与可靠性主线无关，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

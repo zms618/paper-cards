@@ -1,0 +1,35 @@
+{
+ "title": "Simple Policy Optimization",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "PPO损失小幅修改，理论提升有限，仅Atari验证",
+ "innovations": [
+  "修改PPO的ratio clipping目标，提出新代理损失，兼顾TRPO单调改进保证与PPO一阶高效",
+  "新目标对概率比在信赖域内施加比clipping更强的约束，理论性质更好",
+  "可端到端训练ResNet-101等极深网络架构，作为PPO的替代"
+ ],
+ "method_framework": "保留PPO的一阶范式，仅替换策略损失函数：用对概率比的连续/平滑约束替代硬clipping，使更新步既不过激又可一阶求解，逼近TRPO信赖域效果。",
+ "experiment_framework": "Atari(如Breakout)等；PPO(ResNet-50/101)对比；用ResNet-50/101端到端训练；指标为平均回报随训练步数曲线；报告SPO在深架构上优于PPO。",
+ "takeaways": [
+  "仅改损失形式即可在一阶方法中找回部分TRPO理论稳健性，实现简单",
+  "更强的概率比约束有助于极深策略网络的端到端稳定训练"
+ ],
+ "weaknesses": [
+  "贡献为对PPO损失的小幅改造，新颖性与理论深度有限",
+  "证据主要在Atari等游戏基准，relevance偏离可靠性主线；跨连续控制/真实机器人的普适性未充分报告"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Simple Policy Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Simple Policy Optimization.pdf",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

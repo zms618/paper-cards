@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Next Semantic Scale Prediction via Hierarchical Diffusion Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Next Semantic Scale Prediction via Hierarchical Diffusion Language Models.pdf",
+ "title": "Next Semantic Scale Prediction via Hierarchical Diffusion Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "层级扩散模型通过语义预测提升语言建模，但泛化性不足",
+ "innovations": [
+  "引入语义层级词汇表实现时间变化的下一语义尺度预测",
+  "推导出层级扩散模型的闭合形式ELBO",
+  "设计灵活的前向过程和自纠正机制",
+  "提出实用的训练技术如硬训练模式和强制转换解码"
+ ],
+ "method_framework": "HDLM构建在层级词汇表上，前向过程将低级语义 token 独立扰动到更抽象的高级祖先，反向过程逐步预测更详细的语义，实现任意顺序生成和渐进式自我修正。",
+ "experiment_framework": "在OpenWebText数据集上训练小规模(170M)和基础规模(425M)HDLM，使用验证困惑度和生成困惑度作为指标，与GPT-2、MDLM、GIDD等基线比较。",
+ "takeaways": [
+  "语义层级设计可提升扩散模型的表达能力和自纠正能力",
+  "层级扩散模型可作为现有离散扩散模型的通用框架",
+  "适当的聚类数量(约词汇量大小的平方根)能获得最佳性能"
+ ],
+ "weaknesses": [
+  "仅在一个数据集上验证，缺乏多领域泛化性证明",
+  "多层级扩展的理论基础存在但实验验证不足",
+  "计算复杂度高于传统自回归模型"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

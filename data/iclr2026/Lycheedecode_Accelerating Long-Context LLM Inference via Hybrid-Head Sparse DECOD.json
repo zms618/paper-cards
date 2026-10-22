@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Lycheedecode_Accelerating Long-Context LLM Inference via Hybrid-Head Sparse DECOD.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Lycheedecode_Accelerating Long-Context LLM Inference via Hybrid-Head Sparse DECOD.pdf",
+ "title": "Lycheedecode: Accelerating LONG-CONTEXT LLM Inference via HYBRID-HEAD Sparse DECOD",
+ "scores": {
+  "novelty": 7,
+  "depth": 7.5,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.7
+ },
+ "one_line": "混合头稀疏解码提升长上下文LLM推理效率2.7倍",
+ "innovations": [
+  "混合头稀疏解码机制，区分检索头和稀疏头",
+  "HardKuma分布解决离散优化问题",
+  "基于TileLang的高效混合头块稀疏解码内核"
+ ],
+ "method_framework": "将注意力头分为检索头和稀疏头，检索头执行全注意力计算识别关键token，稀疏头复用这些token进行高效计算，通过HardKuma分布实现端到端头类型学习。",
+ "experiment_framework": "LongBench、RULER长上下文理解，AIME24、OlympiadBench复杂推理，与TidalDecode、Quest等基线对比，评估生成质量和端到端延迟。",
+ "takeaways": [
+  "注意力头功能多样性可被有效利用",
+  "HardKuma分布解决训练-推理不一致问题",
+  "混合头策略在保持性能的同时显著提升效率"
+ ],
+ "weaknesses": [
+  "检索头和稀疏头的分配可能依赖于特定任务",
+  "缓存校正策略增加了实现复杂度",
+  "不同层头的最优稀疏比例可能需要额外调优"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "长上下文效率优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

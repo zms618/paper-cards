@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Rethinking Data Curation In LLM Training Online Reweighting Offers Better Generalization than Offline Methods.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rethinking Data Curation In LLM Training Online Reweighting Offers Better Generalization than Offline Methods.pdf",
+ "title": "Rethinking Data Curation in LLM Training: Online Reweighting Offers Better Generalization than Offline Methods",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "将LLM数据治理转为在线重加权，ADAPT用自适应学习率提升泛化。",
+ "innovations": [
+  "把数据治理从离线范式（与训练解耦、硬过滤牺牲多样性）重构为在线重加权问题，训练中动态调整样本重要性而不改变样本数。",
+  "提出ADAPT：基于相似度质量信号给每个样本自适应学习率，作为隐式课程学习逐步从粗粒度模式转向细粒度语义区分。",
+  "在指令微调和大规模预训练上一致优于离线筛选/配比及先前在线方法。"
+ ],
+ "method_framework": "不改训练样本集合，而是在训练中按样本与参考表示的相似度等质量信号，动态给每个样本一个自适应学习率/损失权重，使模型随训练进程把注意力从易/粗样本转向难/细样本，形成在线课程。",
+ "experiment_framework": "指令微调和大规模预训练两类设定；等FLOPs下对比离线数据筛选/混合与先前在线重加权方法；指标为跨多个下游基准的平均泛化性能。",
+ "takeaways": [
+  "在线重加权比离线筛选/配比更利于泛化，且避免硬过滤损失数据多样性。",
+  "逐样本自适应学习率可充当隐式课程，让模型随训练演进聚焦不同粒度信息。"
+ ],
+ "weaknesses": [
+  "依赖相似度质量信号与参考表示，信号质量差时可能误导重加权。",
+  "在线逐样本学习率带来额外工程开销，超大规模预训练的稳定性需更多验证。",
+  "前9页给出优于离线方法的结论，具体跨基准数值表与信号消融在后续页。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "在线重加权提升LLM泛化，属于可靠性主线方法设计研习轴",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

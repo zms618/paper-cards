@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RL Makes MLLMS See Better than SFT.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RL Makes MLLMS See Better than SFT.pdf",
+ "title": "RL Makes MLLMs See Better than SFT",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "RL与SFT对MLLM视觉表征差异分析，提出低成本的PIVOT配方。",
+ "innovations": [
+  "首次系统揭示MLLM后训练策略（SFT vs RL/DPO）对视觉编码器底层表征的根本性重塑差异",
+  "发现RL使视觉表征更强且更局部化，而SFT产生较松散的表征；通过梯度可视化追踪优化信号传播到视觉编码器的路径予以证实",
+  "提出PIVOT（Preference-Instructed Vision OpTimization）配方，将RL训练重新形式化为视觉编码器的辅助训练过程，以<1%标准视觉预训练计算成本超越更大规模视觉模型"
+ ],
+ "method_framework": "首先在广泛视觉语言基准上对比SFT与DPO对MLLM的影响，发现RL在视觉相关任务上优势明显。然后通过ImageNet分类、分割、梯度可视化等多角度分析视觉编码器表征，发现RL驱动更强更局部化的表征。最后将发现转化为PIVOT配方：用偏好数据（chosen/rejected图像-文本对）通过DPO训练视觉编码器，使其在MLLM中作为视觉骨干时性能超越更大规模的视觉预训练模型。",
+ "experiment_framework": "分析阶段：对比SFT vs DPO在VQA基准、ImageNet分类/分割、梯度可视化上的差异。PIVOT阶段：在CLIP/DINO/MAE等多种编码器上验证；对比SigLIP2不同规模（So/16 vs g/16）；报告MLLM下游性能和视觉编码器单独性能；量化计算成本。",
+ "takeaways": [
+  "MLLM后训练策略不仅影响下游任务，更根本性地重塑视觉编码器的表征质量，RL比SFT产生更强更局部化的视觉表征",
+  "偏好信号可作为视觉编码器训练的有效监督，PIVOT以极低计算成本即可提升视觉骨干",
+  "PIVOT训练的小视觉编码器可超越更大规模标准预训练的编码器，为高效MLLM视觉骨干提供新路径"
+ ],
+ "weaknesses": [
+  "RL分析仅聚焦DPO一种方法，对PPO/GRPO等其他RL算法是否产生类似视觉表征重塑效应未验证",
+  "PIVOT依赖偏好数据（chosen/rejected对），其构建成本和领域迁移性（如医学影像）未讨论",
+  "前9页未见PIVOT训练后视觉编码器在纯视觉任务（非MLLM场景）上的泛化性评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "RL优化视觉表征提升MLLM可靠性，符合主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

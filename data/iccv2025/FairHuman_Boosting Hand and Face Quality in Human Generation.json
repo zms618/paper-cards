@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/FairHuman_Boosting Hand and Face Quality in Human Generation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/FairHuman_Boosting Hand and Face Quality in Human Generation.pdf",
+ "title": "FairHuman Boosting Hand and Face Quality in Human Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "MPD公平性原则应用于人体生成，提升手部面部质量",
+ "innovations": [
+  "将最小潜在延迟(MPD)公平性原则引入扩散模型优化",
+  "构建全局与局部(手部、面部)的多目标优化框架",
+  "在LoRA和ControlNet上实现公平性感知的参数更新策略"
+ ],
+ "method_framework": "FairHuman构建三个目标函数(全局、面部、手部)，通过MPD公平性原则动态分配梯度权重，实现多目标协同优化，提升人体图像生成质量。",
+ "experiment_framework": "在CosmicMan和BodyHands数据集上，与SDXL-base、MoLE、ControlNet等方法对比，使用HPS、IR、CLIP、FID和MediaPipe置信度等指标评估。",
+ "takeaways": [
+  "多目标优化框架可有效平衡全局与局部生成质量",
+  "MPD公平性原则为复杂任务中的资源分配提供新思路"
+ ],
+ "weaknesses": [
+  "方法依赖预标注的位置信息，增加了数据预处理成本",
+  "仅针对人体图像生成，泛化性有待验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "人体生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

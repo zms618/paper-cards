@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/DepR Depth Guided Single-view Scene Reconstruction with Instance-level Diffusion.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/DepR Depth Guided Single-view Scene Reconstruction with Instance-level Diffusion.pdf",
+ "title": "DepR Depth Guided Single-view Scene Reconstruction with Instance-level Diffusion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "深度引导扩散模型重建单视图场景，但依赖预训练模型且训练成本高",
+ "innovations": [
+  "深度引导的条件编码到扩散模型",
+  "局部-全局注意力机制处理遮挡",
+  "深度引导的DDIM采样优化"
+ ],
+ "method_framework": "采用组合式重建范式，先分割对象并利用深度引导的扩散模型重建个体对象，再通过布局优化组合成完整场景",
+ "experiment_framework": "在3D-FRONT数据集评估，使用Chamfer距离和F-score作为指标，与InstPIFu、Uni-3D、Gen3DSR等方法对比",
+ "takeaways": [
+  "深度信息在训练和推理中均可有效利用",
+  "局部-全局注意力机制增强场景上下文信息",
+  "两阶段采样策略提高几何一致性"
+ ],
+ "weaknesses": [
+  "依赖预训练分割和深度估计模型",
+  "训练时间较长(约168小时)",
+  "仅限于室内场景对象重建"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "纯场景重建，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Active Hyperspectral Imaging Using an Event Camera.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Active Hyperspectral Imaging Using an Event Camera.pdf",
+ "title": "Active Hyperspectral Imaging Using an Event Camera",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 6.0,
+  "overall": 5.6
+ },
+ "one_line": "硬件组合+QP求解的光谱重建，实验不完整且带宽对比存疑",
+ "innovations": [
+  "把时变照明写成 L(λ,t)=T(λ+ξw(t+Δx))，将旋转镜阵列的确定性映射 ω↔t 注入事件相机的对数响应模型，构造相邻两事件满足的 a_τ_k·x=e^{σ_kC}a_τ_{k-1}·x，从而把连续光谱重建化为一组_null spectrum vector 的几何约束",
+  "为事件只提供相对强度比、缺少绝对量纲的问题，在传感器前加恒光平面镜引入常数项 c，把增广向量 [x;1] 与 [a_τ;c] 拼接，用增广零空间向量 n̂_k 的非齐次线性约束恢复光谱绝对值（原 SVD 解只能求到方向）",
+  "把带非负约束 x_m≥0 的最小二乘改写为 QP，并加两项正则：R_int 对事件间隔内强度做线性插值 L2 惩罚（抑制长事件间隔的剧烈漂移），R_spec 对余弦基高频分量 f_k 做惩罚（抑制暗像素/平坦光谱下矩阵退化导致的无穷解）"
+ ],
+ "method_framework": "扫掠彩虹主动照明建模为波长时间映射，事件生成模型+光谱反射模型离散成 I(t)=a_τ·x；由事件对构造 M+1 维增广零空间向量，堆叠成 N̂ 后用带非负约束与两项正则的 QP 求解每个像素的 72 波段光谱。",
+ "experiment_framework": "合成数据（含非理想照明/触发噪声）+真实场景；基线含全带宽帧相机、等带宽帧相机、Parkkinen 基方法、CASSI；用 EBA NH8 相机测真值；指标 SAM/PSNR、带宽与 FPS。",
+ "takeaways": [
+  "「事件只给出相对强度→用一路恒光把不可辨识的尺度恢复到可辨识」这一思路，可迁移到任何只有差分/相对测量、缺绝对标定量的反问题（如脉冲响应、飞行时间、稀疏采样）。",
+  "把 SVD 闭式解换成带不等式约束的 QP，并指出 SVD 解会在高频事件附近形成零点穿越而系统性出错——这类「闭式解的物理不可行性」分析比换求解器更值得借鉴。",
+  "用激光点作为时空参考来标定时变照明 L(λ,t)，把多参数标定拆成时间关系+光谱强度分布两个独立子问题，工程上可复制。"
+ ],
+ "weaknesses": [
+  "主体是光学硬件系统（点光源、旋转镜阵列、闪耀光栅、分束器），novelty 主要来自结构组合；重建算法本身是「已知线性约束+非负 QP+两个 L2 正则」的拼接，R_int/R_spec 的权重 λ_int、λ_spec 未见选取原理，只说网格搜索。",
+  "正文在 4.4 节中途截断，缺少完整主表（定量 SAM/PSNR 对比全表）、多场景/多转速的鲁棒性实验与消融表，Fig.3 只有 4 个变体的单点数字；且未见多种子方差。",
+  "「带宽降低 59.53%」「比传统帧方法低 100 倍带宽」这类对比依赖带宽口径（事件流编码方式），正文未给出等价带宽的严格折算定义，可比性存疑；另外对比的 CASSI/Parkkinen 基方法在动态场景下本身不适用，属于设定差异成分。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "硬件组合+QP求解的光谱重建，实验不完整且带宽对比存疑",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

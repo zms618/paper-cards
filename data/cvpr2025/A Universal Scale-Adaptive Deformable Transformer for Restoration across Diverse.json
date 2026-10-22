@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/A Universal Scale-Adaptive Deformable Transformer for Restoration across Diverse.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Universal Scale-Adaptive Deformable Transformer for Restoration across Diverse.pdf",
+ "title": "A Universal Scale-Adaptive Deformable Transformer for Image Restoration across Diverse Artifacts",
+ "scores": {
+  "novelty": 4,
+  "depth": 5,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 4.5
+ },
+ "one_line": "常规组件堆叠，微小增益，证据不足",
+ "innovations": [
+  "SEDC：级联 DCN 提供不同视角/尺度的中间特征，并联 SCMC 把特征图切成 K×K 非重叠块后施加共享线性变换 W∈R^{K²×K²} 再与原输入门控相乘 SCMC(X)=X⊙Ψ^{-1}(Φ_W(Ψ(X)))，以极低开销扩感受野",
+  "SADA：为每个注意力头分配不同膨胀初始网格 Δ^(s)={-M_s,0,+M_s}²（M_s∈{1,3,5,7}），构成广而稀疏的多尺度邻域；再由 ϕ^s(Q) 预测偏移 D^s∈R^{H×W×2|Δ|} 得到 Ñ^s(u)=u+Δ^(s)+δ^s_u",
+  "训练按任务切换辅助损失：摩尔纹用感知损失 λ_p=1，去带/去雨用频域损失 λ_f=0.1"
+ ],
+ "method_framework": "MIMO 多尺度编解码：4 个 encoder block，每块含 N 个级联 SADA 层 + 一对 SEDC 层；解码器输出残差并加回下采样输入，三个尺度都进损失。",
+ "experiment_framework": "去摩尔纹 TIP2018/FHDMi/LCDMoiré、去带 DID、去雨 SPAD；PSNR/SSIM(Y 通道)+LPIPS；对比 MBCNN/ESDNet/Restormer/MPRNet/NeRD-Rain 等。",
+ "takeaways": [
+  "多膨胀初始网格 + 可变形偏移，是在不增加计算量前提下扩大局部注意力感受野的通用做法",
+  "SCMC 这种“块内共享线性变换 + 门控”是 MLP-Mixer 式扩感受野的低成本替代，可迁移到其他复原任务"
+ ],
+ "weaknesses": [
+  "两个模块均由既有组件（DCN、MLP-Mixer、LSA、多膨胀）堆叠而成，既无新问题也无新机制，属常规会议论文水平",
+  "增益很小：去带仅比 Restormer 高 0.28 dB，去雨比 NeRD-Rain-S 高 0.23 dB（优势主要来自参数量少 42%）；摩尔纹 LCDMoiré 上 SSIM 0.9923 反而低于 ESDNet 0.9963",
+  "正文 9 页截断，消融研究章节声明存在但表格不可见，无法核实 SEDC/SADA 各自贡献；无多种子方差",
+  "去带任务的对比对象是“从相关任务改造来的方法”，属非同类基线，公平性存疑；且 debanding 的 MWCNN LPIPS 0.4854 明显异常未作说明"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "图像修复与可靠性主线无实质交点，仅常规复原任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

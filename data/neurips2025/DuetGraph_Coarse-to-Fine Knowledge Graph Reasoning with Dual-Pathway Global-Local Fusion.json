@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/DuetGraph_Coarse-to-Fine Knowledge Graph Reasoning with Dual-Pathway Global-Local Fusion.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/DuetGraph_Coarse-to-Fine Knowledge Graph Reasoning with Dual-Pathway Global-Local Fusion.pdf",
+ "title": "DuetGraph: Coarse-to-Fine Knowledge Graph Reasoning with Dual-Pathway Global-Local Fusion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "双路径融合缓解过平滑，但框架复杂且扩展性存疑",
+ "innovations": [
+  "双路径全局-局部融合模型，分离而非堆叠处理局部和全局信息",
+  "粗到细优化策略，将实体分为高分和低分子集",
+  "理论证明双路径模型和粗到细优化能有效缓解过平滑"
+ ],
+ "method_framework": "DuetGraph包含双路径全局-局部融合模型和粗到细推理优化。双路径模型分离处理局部(消息传递)和全局(注意力)信息，通过自适应融合；粗到细优化先使用粗模型预测实体分数，分为高分和低分子集，再使用细模型更新并选择最终答案。",
+ "experiment_framework": "在FB15k-237、WN18RR、NELL-995等数据集上进行归纳和 transductive 推理实验，与8种基线方法比较，使用MRR和Hits@1/10指标评估性能。",
+ "takeaways": [
+  "分离而非堆叠处理不同粒度信息可有效缓解过平滑问题",
+  "粗到细的两阶段推理策略能增强模型判别能力"
+ ],
+ "weaknesses": [
+  "方法框架相对复杂，包含多个组件",
+  "未充分讨论在超大规模知识图谱上的扩展性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

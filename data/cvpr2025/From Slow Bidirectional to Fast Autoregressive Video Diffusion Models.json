@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/From Slow Bidirectional to Fast Autoregressive Video Diffusion Models.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/From Slow Bidirectional to Fast Autoregressive Video Diffusion Models.pdf",
+ "title": "From Slow Bidirectional to Fast Autoregressive Video Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "将双向视频扩散模型蒸馏为自回归生成器，提升生成效率。",
+ "innovations": [
+  "不对称蒸馏策略，从双向教师模型蒸馏到因果学生模型",
+  "基于ODE轨迹的学生初始化方案",
+  "块级因果注意力机制与KV缓存结合实现高效推理"
+ ],
+ "method_framework": "采用3D VAE压缩视频，设计块级因果注意力机制的自回归扩散Transformer，通过不对称DMD将50步模型蒸馏为4步生成器。",
+ "experiment_framework": "VBench评估(16项指标)，MovieGenBench人类偏好研究，与CogVideoX、OpenSORA等基线对比，评估质量与效率。",
+ "takeaways": [
+  "不对称蒸馏可有效缓解自回归模型的误差累积",
+  "ODE初始化可稳定蒸馏训练过程",
+  "KV缓存与块级注意力结合可大幅提升推理效率"
+ ],
+ "weaknesses": [
+  "训练过程需要大量计算资源(64 H100 GPU, 2天)",
+  "仅评估了特定分辨率(352×640)和帧率(12FPS)的视频生成",
+  "未充分探索模型在不同视频长度上的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成效率提升，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

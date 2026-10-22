@@ -1,0 +1,39 @@
+{
+ "key": "icml2025/am-ELO_A Stable Framework for Arena-based LLM Evaluation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/am-ELO_A Stable Framework for Arena-based LLM Evaluation.pdf",
+ "title": "am-ELO: A Stable Framework for Arena-based LLM Evaluation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "改进ELO评分系统，通过MLE和标注者建模提升LLM评估稳定性",
+ "innovations": [
+  "将传统ELO的迭代更新替换为MLE方法，解决排序不一致问题",
+  "引入标注者能力参数θk，同时评估模型能力和标注者可靠性",
+  "设计稳定竞技场框架，动态筛选低质量标注者"
+ ],
+ "method_framework": "am-ELO框架结合MLE和标注者能力建模，通过修改ELO概率函数P(Ri,Rj|θk)=1/(1+e^(-θk(Ri-Rj)))，同时优化模型评分R和标注者能力Θ，并添加归一化约束确保稳定性。",
+ "experiment_framework": "Chatbot Arena数据集(42名标注者，20个模型，4321条记录)，对比传统ELO、m-ELO和am-ELO方法，使用MSE、AUC和一致性指标评估。",
+ "takeaways": [
+  "将迭代优化替换为MLE可显著提升评估稳定性",
+  "标注者能力建模可有效识别异常标注者并提升评估准确性"
+ ],
+ "weaknesses": [
+  "归一化假设依赖大多数标注者负责任，可能不适用于所有场景",
+  "实验仅在一个数据集上进行，缺乏跨数据集验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "LLM评估稳定性属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

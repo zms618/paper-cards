@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/MixA-Q Revisiting Activation Sparsity for Vision Transformers from a Mixed-Precision.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/MixA-Q Revisiting Activation Sparsity for Vision Transformers from a Mixed-Precision.pdf",
+ "title": "MixA-Q Revisiting Activation Sparsity for Vision Transformers from a Mixed-Precision",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "MixA-Q通过混合精度量化提升ViT效率，但适用性受限且高压缩比性能不足。",
+ "innovations": [
+  "将激活稀疏性引入混合精度量化框架",
+  "双分支Swin Block架构支持高低精度并行计算",
+  "动态激活蒸馏减少重要区域量化误差"
+ ],
+ "method_framework": "基于窗口重要性的混合精度量化，通过L2 norm区分重要/不重要窗口，分别用高/低精度处理，结合进化搜索优化压缩比。",
+ "experiment_framework": "COCO数据集，集成QAT(OFQ)和PTQ方法，比较mAP和计算加速比，评估W4A4等低精度配置。",
+ "takeaways": [
+  "混合精度量化比剪枝更鲁棒，无需训练",
+  "动态激活蒸馏可减少重要区域量化误差",
+  "结合剪枝可进一步提升效率"
+ ],
+ "weaknesses": [
+  "仅适用于基于窗口的视觉Transformer",
+  "高压缩比下性能不如纯剪枝方法",
+  "对OOD输入鲁棒性分析不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "混合精度量化技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

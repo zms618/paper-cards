@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Off-Policy Safe Reinforcement Learning with Constrained Optimistic Exploration.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Off-Policy Safe Reinforcement Learning with Constrained Optimistic Exploration.pdf",
+ "title": "Off-Policy Safe Reinforcement Learning with Constrained Optimistic Exploration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "COX-Q用约束乐观探索和截断分位数critic解决离策略安全RL的梯度冲突与成本估计偏差",
+ "innovations": [
+  "提出成本约束乐观探索策略，在动作空间化解奖励与成本的梯度冲突，并自适应调整信任域以控制训练期成本",
+  "采用截断分位数 critic 稳定累积成本价值学习，缓解成本低估偏差，并量化认知不确定性引导探索",
+  "在离策略(高样本效率)框架下同时保证数据采集与部署期的约束满足"
+ ],
+ "method_framework": "在 CMDP 下用原始-对偶离策略框架；探索端用成本约束乐观探索化解奖励/成本梯度冲突并自适应信任域控制训练成本；价值端用截断分位数 critic 做保守离线分布价值学习，同时输出认知不确定性指导探索。",
+ "experiment_framework": "在安全速度控制、安全导航、自动驾驶任务上评测；对比离/在策略安全 RL 方法；报告样本效率、测试期安全(约束满足)与数据采集成本。",
+ "takeaways": [
+  "离策略安全 RL 的两大难题是成本无约束探索与累积成本估计偏差，COX-Q 分别以约束乐观探索与截断分位数 critic 应对",
+  "分布价值的认知不确定性可同时用于稳定成本学习与引导探索",
+  "COX-Q 在保持高样本效率的同时可控数据采集成本"
+ ],
+ "weaknesses": [
+  "安全约束建模为累积成本阈值，对瞬间/硬安全约束的适用性未讨论",
+  "验证为仿真任务（速度/导航/驾驶），真实安全关键系统的迁移性待考",
+  "属安全RL/可信AI但落地非医学影像/多模态推理，相关性中等"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "安全RL方法解决约束满足问题，属可靠性主线但非医学/多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

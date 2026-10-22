@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/JailBound_Jailbreaking Internal Safety Boundaries of Vision-Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/JailBound_Jailbreaking Internal Safety Boundaries of Vision-Language Models.pdf",
+ "title": "JailBound: Jailbreaking Internal Safety Boundaries of Vision-Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "跨模态联合优化越狱VLM安全边界，白盒高成功率但黑盒实用性存疑",
+ "innovations": [
+  "揭示VLM融合层表示中存在隐式安全决策边界，受ELK启发提出潜空间越狱新范式",
+  "两阶段框架：安全边界探测（在融合层潜空间近似决策边界，确定最优扰动方向）+ 安全边界跨越（跨图像和文本联合优化扰动）",
+  "跨模态联合优化机制在引导模型输出违规内容的同时保持跨模态语义一致性"
+ ],
+ "method_framework": "两阶段越狱框架：(1)安全边界探测——在VLM融合层潜空间中探测安全决策边界，识别从安全区域到目标违规区域的最优扰动方向，解决梯度方法易陷入局部最优的问题；(2)安全边界跨越——联合优化图像和文本输入上的对抗扰动，引导模型内部状态越过安全边界，同时保持跨模态语义一致性。",
+ "experiment_framework": "6种不同VLM模型。白盒和黑盒设置。指标：攻击成功率(ASR)。对比多种SOTA越狱方法。",
+ "takeaways": [
+  "VLM融合层内部存在可探测的安全决策边界，可被利用来引导模型越狱",
+  "跨模态联合优化（图像+文本同时扰动）比单模态扰动效果显著更好",
+  "白盒平均攻击成功率94.32%，黑盒67.28%，比SOTA分别高6.17%和21.13%"
+ ],
+ "weaknesses": [
+  "白盒攻击需要访问模型内部表示，实际部署场景多为黑盒",
+  "仅评估了英文场景下的越狱，多语言情况未验证",
+  "对抗扰动的隐蔽性（人眼是否可感知）未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

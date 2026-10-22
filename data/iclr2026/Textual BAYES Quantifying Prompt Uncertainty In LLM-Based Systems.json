@@ -1,0 +1,41 @@
+{
+ "title": "Textual Bayes: Quantifying Prompt Uncertainty in LLM-based Systems",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "贝叶斯视角量化prompt不确定性，但MCMC开销与收敛性分析不足",
+ "innovations": [
+  "提出把 prompt 视为统计模型中文本参数的贝叶斯视角，可用少量训练数据对 prompt 做后验推断，并把自由文本形式的先验信念纳入",
+  "实现对文本参数本身与下游预测的原则性不确定性量化(UQ)，而非只对单次 prompt 点估计",
+  "提出 MHLP：把 prompt 优化技术与标准 MCMC 结合的 Metropolis-Hastings 变种，作为对现有 LLM pipeline 的即插即用改造，闭源模型也能用"
+ ],
+ "method_framework": "将整个 LLM 系统的输出视为以 prompt 为参数的随机函数；在小训练集上对 prompt 文本做后验推断；MHLP 用 LLM 提议分布生成候选 prompt 修改、按 MH 接受准则采样，从而对 prompt 后验与预测分布采样，得到校准的不确定性。",
+ "experiment_framework": "多个 LLM 基准与 UQ 任务；对比点估计 prompt 与文本贝叶斯后验采样；指标为预测准确率与不确定性量化质量(校准/区分度)；覆盖闭源黑箱模型，验证 MHLP 即插即用。",
+ "takeaways": [
+  "prompt 不是固定常数而是应带后验分布的参数，对其做贝叶斯推断能同时提升准确率与 UQ",
+  "把先验信念写成自由文本即可纳入贝叶斯框架，无需改动模型权重",
+  "MHLP 让闭源黑箱 LLM 也能做原则性 UQ，是把贝叶斯方法引入 LLM 时代的可行路径"
+ ],
+ "weaknesses": [
+  "MCMC 需多次 prompt 评估，开销随链长/样本数上升，论文前 9 页对混合质量、有效样本数与收敛诊断的报告不充分",
+  "‘prompt 作为参数’的后验是否良定义、提议分布的接受率对任务敏感性如何，缺系统消融；UQ 提升在高风险小样本设定外的边际收益待验证",
+  "relevance 给 7.5：核心正是不确定性量化与校准，正对可靠性主线；但落地域是通用 LLM 系统、非医学影像诊断或多模态大模型推理任务，故不到 8"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Textual BAYES Quantifying Prompt Uncertainty In LLM-Based Systems.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Textual BAYES Quantifying Prompt Uncertainty In LLM-Based Systems.pdf",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "不确定性量化与校准正对可靠性主线，但落地域非医学或多模态",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

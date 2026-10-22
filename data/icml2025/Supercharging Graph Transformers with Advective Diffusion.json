@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Supercharging Graph Transformers with Advective Diffusion.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Supercharging Graph Transformers with Advective Diffusion.pdf",
+ "title": "Supercharging Graph Transformers with Advective Diffusion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "物理启发的图Transformer，提供拓扑漂移下的理论泛化保证。",
+ "innovations": [
+  "从对流扩散方程导出图 Transformer，刻画一类同时含观测拓扑结构与潜在拓扑结构的连续消息传递过程。",
+  "针对被忽视的'拓扑漂移下的泛化'问题，证明 ADVDIFFORMER 可控制拓扑漂移下的泛化误差界，而连续空间中的普通图扩散模型/GNN 无法给出此保证。",
+  "把 PDE/物理视角引入图 Transformer 设计，兼顾全局注意力与可控泛化。"
+ ],
+ "method_framework": "普通 GNN 可视作图上局部扩散的离散化，图 Transformer 视为非局部扩散，但缺乏对拓扑漂移泛化的保证。ADVDIFFORMER 由对流扩散方程（含对流项=方向性消息、扩散项=平滑）离散化得到，显式建模观测图结构与学习到的潜在拓扑结构；通过对流/扩散系数的设计，理论上界住拓扑结构变化带来的泛化误差，从而在结构漂移时更稳。",
+ "experiment_framework": "在信息网络、分子筛选、蛋白质交互等预测任务上评测；对比图扩散模型/图 Transformer 基线；指标为标准精度与拓扑漂移下的泛化性能。",
+ "takeaways": [
+  "在多类图预测任务上优于既有图 Transformer/扩散模型。",
+  "理论上给出拓扑漂移下可证明的泛化误差控制。",
+  "对流扩散视角揭示了方向性消息传递对结构泛化的重要性。"
+ ],
+ "weaknesses": [
+  "落地面为通用图预测（分子/蛋白/网络），未涉及医学影像或多模态大模型推理，relevance 中等。",
+  "泛化误差界的紧致性与关键系数（对流/扩散）的可学习性权衡在前9页缺乏实证对照。",
+  "物理可解释性虽强，但相对工程化图 Transformer 的实际效率开销未充分报告。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/3DGraphLLM_Combining Semantic Graphs and Large Language Models for 3D.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/3DGraphLLM_Combining Semantic Graphs and Large Language Models for 3D.pdf",
+ "title": "3DGraphLLM: Combining Semantic Graphs and Large Language Models for 3D Scene Understanding",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.0
+ },
+ "one_line": "将3D场景图边特征压缩后输入LLM，性能非SOTA且消融不足",
+ "innovations": [
+  "用 VL-SAT 的 GNN 边隐特征（512 维，分类头前的表征）经独立投影层映射到 LLM token 空间，与节点特征拼成 (obj_i, relation, obj_j) 三元组序列，让可学习场景图首次显式携带物体间语义关系而非仅坐标",
+  "把完整图的 token 数由 2n+3n(n-1) 压缩为 kNN 子图的 2n+3nk，配合 NMS 与 1cm 最小间距过滤，k=2 时 100 物体场景从 29900 token 降到 800 token，推理 0.4s",
+  "两阶段训练：先在 GT 实例分割上预训练投影层与边特征，再在 Mask3D/OneFormer3D 预测分割上微调，弥合分割噪声导致的边特征分布偏移"
+ ],
+ "method_framework": "物体点云经 Uni3D 取 1024 维 3D 特征、投影多视角 DINOv2 掩码聚合取 1024 维 2D 特征、VL-SAT 取 512 维边隐特征，三路 MLP 投影映射进 Llama 词表；新增可学习 <OBJi> 标识符，按 kNN 子图展开为三元组拼进 system prompt；LoRA(r=16) 微调 + NLL 损失，GT 预训练后接预测分割微调。",
+ "experiment_framework": "ScanNet 的 ScanRefer/Multi3DRefer/Scan2Cap/ScanQA/SQA3D 与 3RScan 的 RioRefer/3RQA；对比 Chat-Scene、Robin3D、GPT4Scene-HD/M、LEO 等 LLM 方法及 3DVG-Trans 等专家模型；指标 A@0.25/0.5、F1、CIDEr、B-4、EM；Llama3-8B 与 Vicuna-7B 两档。",
+ "takeaways": [
+  "结构化输入喂 LLM 的 token 预算可写成 2n+3nk 的闭式，k 是唯一旋钮，做图 token 化时可直接复用该压缩思路",
+  "先用 GT 分割预训练投影层、再用预测分割微调，是低成本缓解图边特征分布偏移的通用套路",
+  "用统一 <OBJi> 标识符 prompt 统一覆盖 grounding/描述/QA 三类任务，比每任务专用 head 更易迁移到新任务"
+ ],
+ "weaknesses": [
+  "性能并非 SOTA：表 2 中 GPT4Scene-HDM 在 ScanRefer A@0.5 达 57.0、Multi3DRefer F1@0.5 达 59.8，均高于本文最强配置 56.6/59.9，摘要中 SOTA 结论与表内数据不符",
+  "正文前 9 页止于 token 统计表，声称的消融（k 取值曲线、两阶段训练有效性、不同预训练数据集对比）只写「见 Sec 4.2 与补充材料」，正文零消融数据，无法核验各组件真实贡献",
+  "提升幅度归因不清：相对 Chat-Scene 的 +2.8~+4.8 既可能来自语义边，也可能来自 Uni3D/DINOv2 编码器本身，正文未见 2D/3D 特征与边特征单独消融；且全部指标只报均值，无种子方差或显著性检验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3D场景理解与可靠性主线无实质交点，仅为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

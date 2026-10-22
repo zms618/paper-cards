@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Tensorized Multi-View Multi-Label Classification via Laplace Tensor Rank.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Tensorized Multi-View Multi-Label Classification via Laplace Tensor Rank.pdf",
+ "title": "Tensorized Multi-View Multi-Label Classification via Laplace Tensor Rank",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 3,
+  "overall": 4.5
+ },
+ "one_line": "张量化多视图多标签分类，LTR约束替代传统秩，未与深度方法对比",
+ "innovations": [
+  "将MVML映射矩阵重构为三阶张量分类器，统一建模跨视图特征相关与多标签语义关系，替代以往两个独立组件",
+  "设计Laplace Tensor Rank (LTR)作为张量秩的更紧代理，捕捉张量空间内的高阶fiber相关",
+  "通过旋转张量分类器与低秩约束同时实现视图级特征一致与标签级语义共现"
+ ],
+ "method_framework": "把各视图-标签映射堆叠为三阶张量；对张量做模式旋转以对齐视图维与标签维；引入基于Laplace分布的低秩正则LTR作为张量秩代理，约束张量在视图与标签两个维度上同时低秩，从而解耦出视图一致信息与标签共现结构；用交替优化求解。",
+ "experiment_framework": "在多个MVML公开数据集（网页/图像/文本多视图多标签）上对比SOTA MVML方法（LVSL、GNAM等），指标为多标签分类常用指标（前9页未列全具体数值），报告显著优于基线。",
+ "takeaways": [
+  "把视图相关性与标签相关性放入同一个张量低秩框架比分开建模更优",
+  "LTR作为张量秩的紧代理比现有nuclear/tube rank类约束更能捕捉高阶fiber结构",
+  "张量化是统一MVML两种耦合关系的有效途径"
+ ],
+ "weaknesses": [
+  "属于传统统计学习方法，未与深度多视图/多标签方法对比，规模可扩展性存疑",
+  "LTR的优化求解复杂度未分析，大视图大标签场景下的计算代价不透明",
+  "前9页未给出具体数据集名称与增益幅度，证据强度只能靠摘要定性",
+  "与可靠性/医学影像/多模态大模型推理主线完全无关"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

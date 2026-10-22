@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Understanding and Relaxing the Limitations Of Transformers for Linear Algebra.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Understanding and Relaxing the Limitations Of Transformers for Linear Algebra.pdf",
+ "title": "Understanding and Relaxing the Limitations of Transformers for Linear Algebra",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "诊断Transformer矩阵运算缺陷，提出RangeFormer改进OOD泛化与算力",
+ "innovations": [
+  "系统诊断现有Transformer线性代数方法的失败模式：OOD(不同矩阵分布/不同尺寸)泛化差、本质是统计插值而非学出可泛化算法",
+  "指出标准方法算力/记忆代价高(O(N^4D+N^2D^2)算力、O(N^4+N^2D)记忆)",
+  "提出一系列干预并整合为RangeFormer：矩阵embedding用可学投影、线性注意力、looping、结构化矩阵预训练分布；首次把Transformer用于含迭代矩阵运算的下游(GP学习、改进随机方法采样分布)"
+ ],
+ "method_framework": "矩阵运算是通用智能系统的基础原语。现有把矩阵展平为实数/token序列喂Transformer做特征分解等的方法，算力记忆代价高，且在高斯随机固定尺寸矩阵上训练后对其他矩阵分布/尺寸泛化差——它们是统计插值器而非学算法。本文据理解做干预：矩阵经可学投影embedding、用线性注意力降算力、引入looping支持迭代、在结构化矩阵分布上预训练，得RangeFormer。",
+ "experiment_framework": "在Matrix Market上的挑战性OOD矩阵评估缩放与性能；下游GP学习、改进随机数值方法的采样分布；对比标准展平式Transformer；报告RangeFormer在OOD矩阵上显著更好。",
+ "takeaways": [
+  "标准Transformer在矩阵运算上是统计插值器，对分布外矩阵分布/尺寸泛化很差",
+  "可学投影embedding+线性注意力+循环+结构化预训练可显著改善缩放与OOD性能",
+  "RangeFormer首次让Transformer胜任含迭代矩阵运算的下游(GP、随机采样分布)"
+ ],
+ "weaknesses": [
+  "落地域为线性代数/GP数值计算，与本主线(可靠性×多模态推理/医学影像)关联偏弱",
+  "虽诊断OOD失败并改进，但RangeFormer对任意结构矩阵的OOD泛化仍非严格保证",
+  "looping与线性注意力引入的误差累积与长程收敛性正文前9页未充分分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "OOD泛化改进与算力优化，但落地域与主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

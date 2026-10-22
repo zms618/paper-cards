@@ -1,0 +1,41 @@
+{
+ "title": "RefineBench: Evaluating Refinement Capability of Language Models via Checklists",
+ "scores": {
+  "novelty": 5,
+  "depth": 4,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 4.7
+ },
+ "one_line": "评测基准而非方法，模型自求精能力弱，评分主观性影响结论。",
+ "innovations": [
+  "构建含自由生成与可判对错任务、跨人文社科法律与STEM共11领域的1000题基准，配checklist式评估框架。",
+  "区分guided refinement(给自然语言反馈)与self-refinement(无提示自行改进)，并系统控制反馈量与方向。",
+  "评估34个前沿LLM，揭示自求精下Gemini2.5Pro/GPT-5仅31.3/29.1分、多数模型五轮内几乎不提升(DeepSeek-R1甚至-0.1%)。"
+ ],
+ "method_framework": "每题配一组checklist评分项；self-refinement下模型在无具体提示时多轮自行补全未满足项；guided refinement下用未满足的checklist项作为反馈引导修改；以checklist满足率衡量每轮精化效果，跨多轮跟踪。",
+ "experiment_framework": "34个开源与闭源前沿LLM；两种refinement模式、可变反馈；指标为checklist满足率随轮次变化；报告guided下≥70B模型五轮可到90+，而<8B小模型提升有限。",
+ "takeaways": [
+  "前沿模型在开放任务上的自求精能力远未成熟，五轮内几乎不提升。",
+  "最大瓶颈是模型难以自行识别哪里需要改——给定修正方向/更多反馈后性能大幅提升。",
+  "推理模型的自求精并不必然优于指令模型，DeepSeek-R1等甚至随轮次略降。"
+ ],
+ "weaknesses": [
+  "本质是评测基准而非方法，对模型精化能力本身无改进。",
+  "checklist本身的评分由模型/judge完成，评分主观性与一致性会影响结论。",
+  "落地域为通用对话/写作与法律，非医学影像/多模态推理主线。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Refinebench_Evaluating Refinement Capability Of Language Models via Checklists.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Refinebench_Evaluating Refinement Capability Of Language Models via Checklists.pdf",
+ "raw_overall": 6.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "评测基准非方法，落地域非医学影像或多模态推理",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

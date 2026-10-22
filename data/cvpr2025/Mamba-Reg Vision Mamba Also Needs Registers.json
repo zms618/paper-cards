@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Mamba-Reg Vision Mamba Also Needs Registers.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Mamba-Reg Vision Mamba Also Needs Registers.pdf",
+ "title": "Mamba-Reg Vision Mamba Also Needs Registers",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "寄存器标记缓解视觉Mamba伪影，但机制分析不足。",
+ "innovations": [
+  "均匀分布寄存器标记而非仅在一端添加",
+  "回收寄存器标记用于最终预测",
+  "首次成功将视觉Mamba扩展至341M参数规模"
+ ],
+ "method_framework": "在视觉Mamba序列中均匀插入输入无关的寄存器标记，最终通过寄存器头(concatenate)形成全局表示用于预测，解决特征伪影问题。",
+ "experiment_framework": "ImageNet分类(1.28M训练/5万验证)和ADE20k语义分割(2万训练/2千验证)，对比Vim基线，使用准确率和mIoU指标。",
+ "takeaways": [
+  "均匀分布寄存器标记比集中放置更有效",
+  "寄存器标记回收用于最终预测显著提升性能",
+  "特征伪影是视觉Mamba的关键问题"
+ ],
+ "weaknesses": [
+  "未深入分析寄存器标记如何具体捕获语义信息",
+  "未探讨方法在不同视觉任务上的泛化能力",
+  "未提供计算效率的详细分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视觉Mamba伪影修复属于可靠性主线，但机制分析不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

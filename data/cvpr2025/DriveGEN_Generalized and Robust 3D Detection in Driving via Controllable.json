@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/DriveGEN_Generalized and Robust 3D Detection in Driving via Controllable.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/DriveGEN_Generalized and Robust 3D Detection in Driving via Controllable.pdf",
+ "title": "DriveGEN Generalized and Robust 3D Detection in Driving via Controllable",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "扩散模型增强3D检测，OOD场景提升有限，计算开销未权衡",
+ "innovations": [
+  "首次探索训练可控T2I扩散生成增强视觉中心3D检测模型鲁棒性",
+  "自原型提取与原型引导扩散两阶段方法",
+  "语义感知特征对齐和浅层特征对齐策略保留精确3D几何特征"
+ ],
+ "method_framework": "DriveGEN包含自原型提取和原型引导扩散两阶段：通过PCA提取主成分获取语义感知特征，利用布局信息通过峰值函数重加权特征区域，在去噪阶段进行语义感知特征对齐和浅层特征对齐以保留精确3D几何特征。",
+ "experiment_framework": "在KITTI-C数据集(13种OOD损坏类型)和nuScenes真实场景(Night, Rainy)上评估，比较传统数据增强、ControlNet、Freecontrol等方法，使用mAP3D|R40指标。",
+ "takeaways": [
+  "利用扩散模型进行训练数据增强可有效提升3D检测在OOD场景的鲁棒性",
+  "结合布局信息的特征重加权可保留小目标几何特征"
+ ],
+ "weaknesses": [
+  "方法在多种场景增强时性能提升不如单一场景显著",
+  "未充分分析计算开销与性能提升的权衡关系"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D检测与可靠性主线弱相关，OOD提升有限且未权衡计算开销",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

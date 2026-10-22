@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Upweighting Easy Samples in Fine-Tuning Mitigates Forgetting.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Upweighting Easy Samples in Fine-Tuning Mitigates Forgetting.pdf",
+ "title": "Upweighting Easy Samples in Fine-Tuning Mitigates Forgetting",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "简单样本加权缓解遗忘，但方法深度与实验覆盖有限。",
+ "innovations": [
+  "聚焦无法访问预训练数据/配方的现实约束，使多数现有抗遗忘方法失效",
+  "提出仅基于预训练模型在微调样本上的损失的加权方案：上调对预训练模型而言的\"简单样本\"权重以缓解遗忘",
+  "ResNet-50在6个图像分类数据集上平均精度较标准微调高约17%，并超过相关基线"
+ ],
+ "method_framework": "在只有下游微调数据、无预训练数据时，用预训练模型对每个微调样本的损失作为难易信号；对预训练模型已经容易拟合(低损失)的样本赋予更高权重，从而在学习新任务的同时少破坏既有能力，缓解灾难性遗忘。",
+ "experiment_framework": "在6个图像分类数据集上微调ResNet-50；对比标准微调、正则化类与数据感知类抗遗忘基线；指标为预训练能力与微调任务的平均精度(相对标准微调提升约17%)。",
+ "takeaways": [
+  "无预训练数据时，一个简单的损失驱动样本加权即可显著缓解遗忘",
+  "上调简单样本权重在保留旧能力与学习新任务间取得更好平衡",
+  "该方法轻量、无需额外数据或正则项，实用性强"
+ ],
+ "weaknesses": [
+  "实验集中在图像分类(ResNet-50)，对大语言模型微调的迁移性未验证",
+  "\"简单样本\"以预训练损失定义，其与保留旧能力的因果解释偏经验",
+  "与最新回放/LoRA类方法的系统对比与超参敏感性未充分展开"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

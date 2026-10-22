@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/4DEquine_Disentangling Motion and Appearance for 4D Equine Reconstruction from.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/4DEquine_Disentangling Motion and Appearance for 4D Equine Reconstruction from.pdf",
+ "title": "4DEquine: Disentangling Motion and Appearance for 4D Equine Reconstruction from Monocular Video",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 3.0,
+  "overall": 4.9
+ },
+ "one_line": "单目马4D重建拆解为运动回归与外观前馈，但实验与超参数分析不足",
+ "innovations": [
+  "AniMoFormer 用 spatial transformer 逐帧提特征 + temporal transformer 在 N=16 帧窗口内自注意回归 VAREN 的 pose/shape/camera，再用可微渲染的 2D 关键点与 mask（ViTPose++、Samurai 伪 GT）做 post-optimization，解决单图方法抖动与网格对不齐图像的问题",
+  "EquineGS 用 DSTG 双流 transformer（改造自 Qwen-Image 的 MMDiT 块）以 DINOv3 图像特征引导 VAREN 细分后 55486 个初始点特征，前馈一次性预测每个高斯的位置偏移/旋转/尺度/颜色/不透明度，单图即可生成可动画的 3DGS avatar",
+  "造两个合成数据集 VarenPoser（拟合 PFERD 标记动作得到 VAREN 标注，含 fix/dolly/orbit 三种虚拟相机轨迹，1171 段 512×512@60FPS 视频）与 VarenTex（UniTex 以法图+规范坐标图+ControlNet 参考图生成 15 万张多视图图），分别只用于运动与外观训练"
+ ],
+ "method_framework": "先用 VarenPoser 训练时空 transformer 分阶段回归 VAREN 参数（Lvaren+Lsmooth+L2D+L3D），再用可微渲染的伪 GT mask/keypoints 做 post-optimization 对齐图像；外观侧用 VarenTex 训练 EquineGS 单图前馈生成规范空间 3DGS，经 VAREN 的 LBS 变形到逐帧位姿，滑窗处理任意长视频。",
+ "experiment_framework": "运动侧在 APT-36K 马子集、AiM 马子集及 VarenPoser 测试集上比 Dessie/AniMer/GenZoo/3D-Fauna/4D-Fauna，指标 PCK、Accel、Chamfer；外观侧在 AiM 35 段序列比 3D/4D-Fauna、GVFDiffusion、GART 与 few-shot GART*，指标 PSNR/SSIM/LPIPS。",
+ "takeaways": [
+  "把「运动」与「外观」解耦成两个各自可独立训练的模块，外观只需一帧输入即可前馈出完整可动画 avatar，绕开了优化类方法必须 360° 转台覆盖的硬约束",
+  "用合成数据（渲染+多视图扩散）代替真实标注 4D 数据训练前馈模型，再零样本迁移到未见物种（斑马、驴）与互联网单图，是可复用的数据构造范式",
+  "合成数据的相机轨迹多样性（fix/dolly/orbit）比纹理多样性更能决定前馈模型在真实视频上的鲁棒性"
+ ],
+ "weaknesses": [
+  "正文前 9 页在定量表格与消融表之前截断，AniMoFormer 各损失项 λ 取值与 EquineGS 的 λimage/λmask/λreg 均只在方法节列出符号而无取值依据，超参数是否网格搜索、是否有敏感性分析无法判断",
+  "外观评测只报 PSNR/SSIM/LPIPS 三个像素级图像指标，且 novel-view 渲染的真值与输入视角并非同一视角，指标里含任务设定差异成分，无法区分是外观质量提升还是视角补偿带来的虚高",
+  "与 GART 的比较协议虽改成 VAREN 模板并把 AniMoFormer 的输出喂给 GART 做公平对齐，但 GART 用全部训练帧、GART* 用 4 帧而我们只用首帧，三者输入代价差距极大，前馈的「快速」优势与重建质量是耦合汇报的，未做等计算量对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "纯3D重建工作，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

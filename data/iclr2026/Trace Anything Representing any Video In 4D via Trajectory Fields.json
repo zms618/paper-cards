@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Trace Anything Representing any Video In 4D via Trajectory Fields.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Trace Anything Representing any Video In 4D via Trajectory Fields.pdf",
+ "title": "Trace Anything: Representing Any Video in 4D via Trajectory Fields",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "轨迹场表征视频，单次前向预测，但泛化与消融不足",
+ "innovations": [
+  "提出 Trajectory Field：把任意视频建模为每帧每像素到参数化3D样条轨迹的稠密映射，作为4D动态表征的原子原语",
+  "Trace Anything 前馈网络单次前向即输出各帧控制点图，在共享世界坐标系中联合预测全部轨迹，无需逐场景优化或全局对齐",
+  "搭建 Blender 合成数据平台，构建轨迹场估计的训练集与新基准，并展示目标条件操作、运动外推、时空融合等下游应用"
+ ],
+ "method_framework": "将视频原子单元（像素）在世界中随时间展开的连续3D轨迹作为动态原语；网络对每帧输出一组控制点图，控制点连成样条曲线即定义该像素的参数化3D轨迹。表征兼容单目视频、图像对乃至无序图像集合，单次前向完成4D建模。",
+ "experiment_framework": "自建 Blender 合成基准（多样环境/角色/相机轨迹）用于轨迹场估计；并在既有点跟踪基准上评测。对比依赖深度/光流/跟踪估计器或逐场景优化的既有4D方法，报告精度与效率（显著效率增益），另在目标条件操作等下游任务验证。",
+ "takeaways": [
+  "轨迹场作为原子4D表征可在单次前向下直接构建，摆脱了对深度/光流/跟踪等中间估计器的依赖",
+  "在新基准与点跟踪基准上达到相当或更优精度，同时带来显著效率提升",
+  "该表征天然支持运动外推与时空融合等下游动态建模任务"
+ ],
+ "weaknesses": [
+  "核心训练与新基准依赖自建 Blender 合成数据，真实视频上的泛化证据相对有限",
+  "正文仅前9页，缺少完整消融与各下游任务的定量对比细节，难以判断各组件贡献",
+  "属视觉4D重建方向，与可靠性/可信AI主线关联弱，relevance 受限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.38,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "视频4D重建，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

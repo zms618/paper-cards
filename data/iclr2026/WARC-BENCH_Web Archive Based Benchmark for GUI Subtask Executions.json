@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/WARC-BENCH_Web Archive Based Benchmark for GUI Subtask Executions.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/WARC-BENCH_Web Archive Based Benchmark for GUI Subtask Executions.pdf",
+ "title": "WARC-Bench: Web Archive Based Benchmark for GUI Subtask Executions",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "基于网页存档的GUI子任务基准，揭示web agent基础操作短板。",
+ "innovations": [
+  "提出WARC-Bench：基于Web ARChive文件的网页导航基准，在沙箱中实现动态真实网页的交互评估",
+  "聚焦短程UI子任务（日期选择器、滚动容器提取信息等），填补现有benchmark对基础GUI操作评估的空白",
+  "探索SFT和RLVR两种训练方法对子任务能力的提升效果，RLVR在数据稀缺下仍有效"
+ ],
+ "method_framework": "使用Web ARChive文件归档真实网页的完整资源（HTML/CSS/JS/图片），在沙箱中渲染为可交互网页。438个子任务覆盖各类UI组件交互。通过JS验证自动判断任务是否成功执行。",
+ "experiment_framework": "在WARC-Bench上评估多种领先computer-use模型。对比SFT和RLVR训练的开源模型。指标为任务成功率。",
+ "takeaways": [
+  "现有web agent在短程UI子任务上表现不佳（最高64.8%），基础操作能力是复杂导航的瓶颈",
+  "SFT可达到48.8%成功率，在此基础上用RLVR微调可提升到52.8%，即使数据稀缺也有效",
+  "网页存档方式可低成本实现动态真实网页的可复现评估"
+ ],
+ "weaknesses": [
+  "子任务相对短程，缺乏对多步复杂任务的评估",
+  "网页存档的时效性有限，无法反映网站的最新变化",
+  "仅评估英文网站和UI组件，本地化场景的适用性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.43,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "GUI子任务评估与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

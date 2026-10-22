@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Test-Time Fine-Tuning of Compression Models for Multi-Task Adaptability.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Test-Time Fine-Tuning of Compression Models for Multi-Task Adaptability.pdf",
+ "title": "Test-Time Fine-Tuning of Compression Models for Multi-Task Adaptability",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "SVD-LoRA实现压缩模型测试时微调，开放集任务适应性有限",
+ "innovations": [
+  "首次在图像压缩任务中实现解码器阶段的测试时微调",
+  "利用SVD-LoRA实现实例级优化，最小化比特流开销",
+  "有效处理开放集机器视觉任务，无需预训练"
+ ],
+ "method_framework": "采用SVD-LoRA对主干压缩模型的编码器和解码器进行测试时微调，编码器应用完整SVD-LoRA，解码器仅微调奇异值，实现实例级优化同时控制比特流开销。",
+ "experiment_framework": "在MS-COCO和ImageNet-1K数据集上评估，使用ResNet50、Faster R-CNN和Mask R-CNN作为任务评估器，与TIC、TransTIC等方法比较BD-Rate、BD-mAP和BD-accuracy指标。",
+ "takeaways": [
+  "参数高效微调技术可应用于压缩领域实现任务自适应",
+  "奇异值分解可有效减少微调参数同时保持性能",
+  "测试时微调策略能处理开放集任务场景"
+ ],
+ "weaknesses": [
+  "实验设置相对简单，仅40次迭代和LoRA秩4",
+  "未充分探讨不同压缩质量级别下的性能权衡",
+  "缺乏对计算开销和实时性的详细分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.375,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "压缩模型微调与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

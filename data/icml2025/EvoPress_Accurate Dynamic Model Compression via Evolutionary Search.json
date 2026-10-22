@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/EvoPress_Accurate Dynamic Model Compression via Evolutionary Search.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/EvoPress_Accurate Dynamic Model Compression via Evolutionary Search.pdf",
+ "title": "EvoPress: Accurate Dynamic Model Compression via Evolutionary Search",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "质疑层独立假设，用进化搜索优化动态压缩配置",
+ "innovations": [
+  "指出现有动态压缩的‘层独立重要性’假设不成立——进一步剪枝有时反而显著恢复性能",
+  "把动态(非均匀)压缩建模为一般优化问题，用进化搜索高效搜索每层/每块的最优压缩配置",
+  "EvoPress跨多种模型与压缩类型(稀疏化/量化/层丢弃)泛化，同时满足全局压缩阈值"
+ ],
+ "method_framework": "不再逐层独立估计敏感度，而是把每层/每块的压缩级别选择作为变量，在满足全局压缩预算下用进化搜索最小化整体精度损失；通过群体搜索捕捉层间相互作用。",
+ "experiment_framework": "在多种LLM上，对比量化/稀疏化/层丢弃的动态压缩方法；指标为精度-压缩权衡(困惑度/下游任务)；展示跨模型跨压缩类型的泛化。",
+ "takeaways": [
+  "层间压缩误差并非可加，独立重要性估计会次优",
+  "进化搜索能在全局预算下找到更优的非均匀压缩配置",
+  "EvoPress跨模型跨压缩类型泛化，精度-压缩权衡优于现有方法"
+ ],
+ "weaknesses": [
+  "进化搜索带来额外搜索开销，压缩流程的总体成本需权衡",
+  "主要在LLM上验证，对视觉/多模态模型的泛化未充分展开",
+  "动态压缩的运行时适配(每实例)在真实部署中的延迟影响未量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

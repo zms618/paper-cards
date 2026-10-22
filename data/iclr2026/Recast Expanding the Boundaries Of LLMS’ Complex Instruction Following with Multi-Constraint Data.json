@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Recast Expanding the Boundaries Of LLMS’ Complex Instruction Following with Multi-Constraint Data.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Recast Expanding the Boundaries Of LLMS’ Complex Instruction Following with Multi-Constraint Data.pdf",
+ "title": "RECAST: Expanding the Boundaries of LLMs' Complex Instruction Following with Multi-Constraint Data",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "RECAST扩展LLM多约束指令跟随，但验证可靠性存疑。",
+ "innovations": [
+  "提出高效可扩展的多约束指令数据合成框架，每实例约束数远超现有数据集（以往不超过10条），将约束从真实prompt-response对中抽取以保证实用性。",
+  "构建RECAST-30K大规模数据集，覆盖19类约束类型。",
+  "对定量约束用规则验证器、定性约束用LLM验证器自动核验约束满足，这种可验证性可直接构造强化学习奖励函数，进一步提升复杂任务表现。"
+ ],
+ "method_framework": "从真实prompt-response对中抽取约束类型并合成含数十条约束的指令样本形成RECAST-30K；微调后模型在遵循复杂指令上提升且不损害通用能力；再利用自动验证器输出的约束满足信号构造奖励做RL。",
+ "experiment_framework": "在多约束指令跟随基准上比较微调RECAST-30K的模型与其Instruct版本，报告约束满足率与通用能力保持；定量约束用规则验证器、定性约束用LLM验证器做自动评测，并接入RL验证收益。",
+ "takeaways": [
+  "当单条prompt约束超过10条时强模型仍显著退化，RECAST-30K微调可在不损害通用能力下明显改善复杂指令跟随。",
+  "约束满足的自动可验证性使其可直接转化为RL奖励，进一步提升复杂任务表现。"
+ ],
+ "weaknesses": [
+  "前9页未见完整基准数值表与约束满足率明细，证据强度判断受限。",
+  "属通用LLM指令跟随场景，验证器针对格式/关键词/数值等显性约束，对开放式语义约束的核验可靠性未充分论证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM指令跟随可靠性验证不足，仅限显性约束",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Urbangs_A Scalable and Efficient Architecture for Geometrically Accurate Large-Scene Reconstruction.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Urbangs_A Scalable and Efficient Architecture for Geometrically Accurate Large-Scene Reconstruction.pdf",
+ "title": "UrbanGS: A Scalable and Efficient Architecture for Geometrically Accurate Large-Scene Reconstruction",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "改进GS几何一致性并剪枝降显存，但缺乏定量几何验证和场景泛化",
+ "innovations": [
+  "提出UrbanGS可扩展重建框架，解决3D高斯泼溅扩展到城市场景时的几何一致性、内存效率与计算可扩展性问题",
+  "提出深度一致性相关约束以提升重建几何质量(表面平滑度)",
+  "提出空间自适应高斯剪枝，在保持质量的同时显著压缩模型并降低显存占用"
+ ],
+ "method_framework": "针对3D高斯泼溅在城市级场景中的几何一致性、内存与可扩展性难题，UrbanGS引入深度一致性约束改善表面几何，并设计空间自适应高斯剪枝在保持渲染质量的同时压缩高斯数量、降低显存，使大场景可在单张消费级专业卡上重建。",
+ "experiment_framework": "在多视角RGB图像的城市级场景上评测；对比CityGS-v2、VCR-GauS等大场景GS方法；指标含渲染质量、几何深度图质量、显存占用与模型大小；报告A5000可重建而VCR-GauS OOM。",
+ "takeaways": [
+  "UrbanGS在A5000上可高效重建大场景，而VCR-GauS因显存不足(OOM)失败",
+  "相较CityGS-v2与VCR-GauS，渲染深度图显示其物体表面更平滑、几何更优",
+  "空间自适应剪枝在大幅压缩模型的同时保持渲染质量"
+ ],
+ "weaknesses": [
+  "属于三维重建/计算机图形方向，与可靠性、医学影像、多模态推理主线无关，relevance偏低",
+  "几何优势主要靠深度图定性对比，前9页未见与参考网格的定量几何误差(如 chamfer distance)",
+  "仅在城市室外场景验证，室内/复杂遮挡场景的泛化性未报告"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.55,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯3D重建/图形学工作，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

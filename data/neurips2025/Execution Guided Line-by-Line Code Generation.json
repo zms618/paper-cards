@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Execution Guided Line-by-Line Code Generation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Execution Guided Line-by-Line Code Generation.pdf",
+ "title": "Execution Guided Line-by-Line Code Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "执行反馈引导代码生成，但复杂度高且仅限Python",
+ "innovations": [
+  "执行引导的Classifier-Free Guidance (EG-CFG)",
+  "行级动态执行反馈机制",
+  "原生并行多代理执行框架"
+ ],
+ "method_framework": "EG-CFG通过beam search生成候选代码片段，执行后提取执行反馈，结合CFG引导模型生成更可靠的代码，支持行级并行探索不同推理路径。",
+ "experiment_framework": "MBPP、HumanEval、DS-1000、CodeContests等基准测试，对比基线包括LLM、MGDebugger、MapCoder、QualityFlow、LPW等方法，使用准确率作为指标。",
+ "takeaways": [
+  "执行反馈作为软指导信号优于显式正确性指标",
+  "并行多代理架构显著提升代码生成效率",
+  "AST提取确保执行反馈基于有效代码"
+ ],
+ "weaknesses": [
+  "方法复杂度高，计算资源需求大",
+  "仅适用于Python代码生成",
+  "执行反馈的详细程度可能影响效果"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.975,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

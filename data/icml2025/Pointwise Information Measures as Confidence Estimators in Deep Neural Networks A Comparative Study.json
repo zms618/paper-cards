@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Pointwise Information Measures as Confidence Estimators in Deep Neural Networks A Comparative Study.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Pointwise Information Measures as Confidence Estimators in Deep Neural Networks A Comparative Study.pdf",
+ "title": "Pointwise Information Measures as Confidence Estimators in Deep Neural Networks: A Comparative Study",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "对比三种信息度量作为置信度估计器，PVI在失败预测与校准间取得平衡。",
+ "innovations": [
+  "系统对比三种可在高维可靠估计的逐点信息度量——逐点互信息(PMI)、逐点V信息(PVI)、逐点切片互信息(PSI)——作为置信度估计器",
+  "从理论上刻画三者性质：与预测不确定性的关联、不变性、收敛速率、对margin/本征维数等几何属性的敏感性，论证PVI权衡最均衡",
+  "实证表明PVI在不改架构/训练的前提下，失败预测全面占优，且校准性能不逊于温度缩放softmax"
+ ],
+ "method_framework": "本文为置信度/不确定性估计的对比研究。softmax常过度自信、现有校准法对失败预测反而有害。作者不改网络，直接用特征表示与预测输出之间的逐点信息度量来量化置信度：比较PMI、PVI、PSI三种，分别从信息论(依赖)、V信息(计算约束下可用信息)、切片MI(一维投影平均)角度度量表示与输出的相关性，并分析其统计性质。",
+ "experiment_framework": "在多个基准视觉模型与数据集上做广泛实验；双任务评测：失败预测(检测误分类)与置信度校准；基线为softmax、温度缩放softmax及其他后验校准方法；指标含failure prediction指标与calibration误差。",
+ "takeaways": [
+  "PVI是最均衡的置信度估计器：失败预测显著优于PMI/PSI与后验基线，校准又不逊于温度缩放",
+  "信息论度量可在不改架构/训练的前提下提供比softmax更可靠的置信度，利于高风险部署",
+  "高维下MI难估，改用V信息/切片信息是可行且更稳的路径"
+ ],
+ "weaknesses": [
+  "仅在视觉分类基准验证，在LLM/回归/多模态上的置信度估计效果未展示",
+  "PVI估计本身仍需数据拟合'可用信息'的代理函数，其额外开销与稳定性文章讨论有限",
+  "与现代深度集成/MC-dropout等不确定性方法的直接对比不够充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

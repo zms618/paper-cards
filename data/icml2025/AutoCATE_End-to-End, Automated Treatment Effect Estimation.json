@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/AutoCATE_End-to-End, Automated Treatment Effect Estimation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/AutoCATE_End-to-End, Automated Treatment Effect Estimation.pdf",
+ "title": "AutoCATE: End-to-End, Automated Treatment Effect Estimation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.6
+ },
+ "one_line": "将CATE估计流水线搜索形式化为反事实优化，首个端到端自动化方案。",
+ "innovations": [
+  "将CATE估计ML流水线的自动选择形式化为反事实CASH优化问题",
+  "首个端到端自动化CATE方案，统一了评估、估计(metalearner+baselearner)与集成",
+  "用多风险度量做多目标搜索并给出Pareto前沿，系统比较不同验证协议"
+ ],
+ "method_framework": "在含混淆/协变量偏移的无真值场景下，用风险度量(依赖预测本身)做模型选择；搜索空间覆盖metalearner(T/S/X/R/DR等)与baselearner组合及超参；多目标下保留Pareto最优流水线，并集成多个流水线输出最终CATE。",
+ "experiment_framework": "在标准因果基准IHDP、ACIC、Twins、News上评测；对比不同自动端到端策略与各metalearner配置；指标为ITE/CATE估计误差(如RMSE/PEHE)；系统比较不同评估协议的影响。",
+ "takeaways": [
+  "端到端自动搜索出的流水线优于固定单一metalearner配置",
+  "多风险度量下不存在单一最优流水线，Pareto前沿更合理",
+  "统一框架揭示了不同验证协议对最终CATE模型选择的系统性影响"
+ ],
+ "weaknesses": [
+  "与可靠性×医学影像/多模态推理主线无直接关联，属因果推断/AutoML方向",
+  "在合成/半合成基准验证，真实高维观测数据上的稳健性证据有限",
+  "自动搜索的计算成本与可解释性未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "因果推断/AutoML方向，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

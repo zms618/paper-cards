@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Discretization-free Multicalibration through Loss Minimization over Tree Ensembles.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Discretization-free Multicalibration through Loss Minimization over Tree Ensembles.pdf",
+ "title": "Discretization-free Multicalibration through Loss Minimization over Tree Ensembles",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "树集成后处理实现多校准，但依赖假设且应用受限",
+ "innovations": [
+  "提出不离散的多校准方法，避免离散化带来的问题",
+  "使用深度二决策树集成进行后处理，实现单步优化",
+  "理论上证明在损失饱和条件下算法的有效性"
+ ],
+ "method_framework": "通过在基预测器输出和组别特征上训练深度二决策树集成，最小化平方损失，实现多校准。算法可使用LightGBM等标准工具实现。",
+ "experiment_framework": "在表格、图像和文本数据集上评估，包括ACS、UTKFace、ISIC和评论毒性分类。与MCBoost和LSBoost等基线比较，使用多校准误差和最差组平滑ECE作为指标。",
+ "takeaways": [
+  "损失饱和假设在实际数据中成立，支持理论分析",
+  "不离散方法在不同离散粒度下表现稳定且优于现有方法",
+  "算法在保持标准评估指标的同时提升多校准性能"
+ ],
+ "weaknesses": [
+  "依赖损失饱和假设，虽然实验验证但理论证明不够严格",
+  "仅适用于标签在[0,1]范围内的任务",
+  "方法在表格数据上提升有限，与Hansen等人观察一致"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

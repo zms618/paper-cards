@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Planning in 8 Tokens A Compact Discrete Tokenizer for Latent.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Planning in 8 Tokens A Compact Discrete Tokenizer for Latent.pdf",
+ "title": "Planning in 8 Tokens A Compact Discrete Tokenizer for Latent",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "CompACT压缩观测至8token，重建质量有限，长期规划验证不足。",
+ "innovations": [
+  "极端压缩至8个离散token",
+  "冻结预训练视觉编码器保留语义信息",
+  "生成解码策略合成细节",
+  "在紧凑潜在空间训练世界模型"
+ ],
+ "method_framework": "使用冻结DINOv3编码器提取语义特征，通过交叉注意力机制学习紧凑token，再通过生成解码器合成细节，形成极端压缩的tokenizer。",
+ "experiment_framework": "在ImageNet、RECON、SCAND、HuRoN和RoboNet数据集上评估，对比SD-VAE和FlexTok基线，使用rFID、IS、ATE、RPE、IDM和APE等指标。",
+ "takeaways": [
+  "极端压缩可保留规划关键信息",
+  "冻结预训练模型可提取语义而非细节",
+  "离散潜在空间可加速规划"
+ ],
+ "weaknesses": [
+  "重建质量较低(rFID=3.21)",
+  "未充分验证长期规划性能",
+  "依赖预训练模型可能限制泛化"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "压缩技术无可靠性主线交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

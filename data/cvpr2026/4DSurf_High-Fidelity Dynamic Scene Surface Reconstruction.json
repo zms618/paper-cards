@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/4DSurf_High-Fidelity Dynamic Scene Surface Reconstruction.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/4DSurf_High-Fidelity Dynamic Scene Surface Reconstruction.pdf",
+ "title": "4DSurf: High-Fidelity Dynamic Scene Surface Reconstruction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "高斯速度场+SDF流约束动态表面重建，但实验证据不足",
+ "innovations": [
+  "Gaussian Velocity Field 以速度 v、角速度 ω、膨胀速度 e 三个头预测每个规范空间高斯在时刻 t 的位移（µt_i=µi+v t、qt_i=φ(ωt)⊗qi、ξt_i=ξi+e t），并由此推出定理 f=−(ω×Rtx+v)⊤n(Rtx)，把逐高斯运动与 SDF 时间导数绑定",
+  "SDF flow 正则 Lflow=Σ|f−˜f|：一路由高斯运动推导的 SDF 流，另一路用渲染深度作伪曲面估出 ‖s˜=D(p*,t)−d(µt_i,t)‖ 的时间导数，两路配对即在可微光栅化内注入 3D 几何演化约束，抑制表面抖动与时序不一致",
+  "Overlapping Segment Partitioning 把长序列切成含共享「虚拟时刻」的 K+1 步段并增量训练，段间以虚拟时刻的高斯做初始化，避免单一形变场在大位移下失效；IMT 再用 LoRA（r=64）增量微调 θN=θN−1+ΔθN 替代每段重新学一个速度场来压存储"
+ ],
+ "method_framework": "以 2DGS 为基元，用规范空间高斯 + 高斯速度场参数化任意时刻形变，最小化 L=Limg+λ1Ln+λ2Ld+λ3Lflow+λ4Lm；序列切为共享一个虚拟时刻的重叠段增量训练，段的 TSDF 网格抽掉虚拟帧避免重复，速度场可选逐段重学或 LoRA 增量微调。",
+ "experiment_framework": "CMU Panoptic 四个场景（10 路 RGB-D、24 时刻）与 Hi4D 六个长序列多人人场景（8 路 RGB、约 118 时刻），对比 Space-Time-2DGS、Dynamic-2DGS、GauSTAR、Neural SDF-Flow、4DGS、SC-GS、FreeTimeGS、Sparse2DGS 等；指标为 Chamfer Distance 的 Accuracy/Completeness/Overall。",
+ "takeaways": [
+  "把 SDF flow 从点云层面搬到高斯层面（用高斯中心运动推导整片表面的 SDF 变化）是让 2DGS 做表面重建而非仅做新视角合成的关键约束，思路可直接迁移到其它可微渲染表示",
+  "「用上一片段在重叠时刻的状态初始化下一片段」这种带共享虚拟时刻的增量切段，是处理长序列大形变的低成本工程解，且新区域的高斯可继续生长",
+  "用渲染深度作为伪曲面估 SDF 起点的做法，让整个时序约束可以放进标准 GS 光栅化里做端到端训练，无需额外 3D 重建模块"
+ ],
+ "weaknesses": [
+  "自消融自相矛盾：表 1、表 2 中「Ours w/o IMT」几乎在每个场景都略优于或持平「Ours w IMT-64」（如 Band1 12.7 vs 12.8、Backhug02 0.47 vs 0.48），LoRA 增量微调带来的声称存储收益未见对等的精度代价说明，反而说明该组件并非必要",
+  "所有场景只报单次运行的 Chamfer 距离，无多种子标准差或显著性检验，而 CD 在深度歧义与视角不足时对初始化（视觉壳）极敏感，19%/49% 的提升幅度在单跑下无法排除是初始化与段长带来的系统性偏置",
+  "正文前 9 页在第 5.2 节处截断，Lflow 项本身的消融（去掉该项是否真的产生抖动/不一致）、λ1–λ4 取值依据、段长 K 与 LoRA rank 的敏感性分析全部缺失，且未报告训练/推理耗时与显存"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "动态表面重建与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

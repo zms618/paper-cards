@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Hbo Hierarchical Balancing Optimization for Fine-Tuning Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Hbo Hierarchical Balancing Optimization for Fine-Tuning Large Language Models.pdf",
+ "title": "Hbo: Hierarchical Balancing Optimization for FINE-TUNING Large Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "双层优化框架平衡LLM微调数据分配，增加15%开销",
+ "innovations": [
+  "双层优化框架同时处理全局(跨数据集)和局部(数据集内)数据不平衡",
+  "基于梯度L2范数和困惑度比值的奖励机制指导数据采样",
+  "动态调整采样概率呈现周期性模式，实现自适应学习"
+ ],
+ "method_framework": "HBO采用双层优化框架，包含全局Actor平衡跨数据集采样，局部Actor优化各数据集内不同难度样本的采样，通过梯度L2范数和困惑度比值作为奖励信号。",
+ "experiment_framework": "在多语言(MMMLU等5任务)和多任务(MMLU等4任务)设置上评估，使用Llama-3.1-8B等3种模型，对比静态和动态基线，以宏平均准确率为指标。",
+ "takeaways": [
+  "双层优化机制能有效处理数据不平衡和异质性",
+  "简单样本在微调中扮演重要角色，不应被忽视"
+ ],
+ "weaknesses": [
+  "方法增加了约15%的训练开销",
+  "仅评估了零样本性能，未进行泛化性验证",
+  "难度分组依赖SuperFiltering指标，可能引入偏差"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "LLM微调优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/MultimodalModels_Modal Aphasia Can Unified MultimodalModels Describe From Memory.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/MultimodalModels_Modal Aphasia Can Unified MultimodalModels Describe From Memory.pdf",
+ "title": "Modal Aphasia: Can Unified Multimodal Models Describe Images from Memory?",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "揭示多模态模型视觉记忆与文本描述的解离现象及安全风险",
+ "innovations": [
+  "定义并实证模态失语：统一多模态模型视觉记忆强但文本提取同一知识时出现大量事实错误(视觉生成 vs 文本描述错误差7倍以上)",
+  "用合成数据集与多种架构做受控实验，证明该解离是当前统一多模态模型的固有属性而非训练artifact",
+  "指出安全含义：仅在文本模态施加的防护会让有害概念在图像模态仍可访问，并实证仅文本对齐的模型仍能生成不安全图像"
+ ],
+ "method_framework": "用前沿统一多模态模型测试：让其视觉生成某标志性概念(如电影海报)，再让其用文字描述同一概念，比较两者的事实正确率差异。再用合成数据集与多种架构做受控实验分离训练artifact与固有属性；最后构造仅文本对齐的模型，测试其在图像模态是否仍能输出有害内容，验证跨模态防护缺口。",
+ "experiment_framework": "前沿模型案例(电影海报视觉复现 vs 文本描述)；合成数据集受控实验跨多架构；指标为视觉生成忠实度与文本描述事实错误率；安全演示：仅文本对齐模型生成不安全图像的能力。",
+ "takeaways": [
+  "统一多模态训练并未带来统一理解：同一知识在视觉与文本模态间不对齐",
+  "模态失语是跨架构、跨合成数据可靠涌现的固有现象",
+  "跨模态安全防护存在漏洞：文本对齐无法阻止图像模态生成有害内容"
+ ],
+ "weaknesses": [
+  "现象刻画充分但缺乏消除模态失语的干预方法",
+  "文本描述错误率的评测依赖人工/模型判定，主观标注噪声需审视",
+  "仅展示安全风险存在，未量化真实攻击面的规模与可利用性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "多模态模型可靠性缺陷与安全风险，符合主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

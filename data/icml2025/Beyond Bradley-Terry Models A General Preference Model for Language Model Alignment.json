@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Beyond Bradley-Terry Models A General Preference Model for Language Model Alignment.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Beyond Bradley-Terry Models A General Preference Model for Language Model Alignment.pdf",
+ "title": "Beyond Bradley-Terry Models: A General Preference Model for Language Model Alignment",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "用嵌入空间替代标量奖励，GPO优化偏好而非奖励",
+ "innovations": [
+  "提出偏好嵌入(preference embedding)方法，将响应嵌入潜在空间以捕获复杂偏好结构，实现线性查询复杂度",
+  "提出基于偏好分数的General Preference Optimization (GPO)，推广了基于奖励的RLHF",
+  "证明GPM能有效建模循环偏好（此时BT奖励模型等价于随机猜测），并在RewardBench上一致优于BT模型"
+ ],
+ "method_framework": "GPM将每个响应映射到偏好嵌入空间中的向量，通过向量间关系建模偏好结构；GPO直接在偏好嵌入空间优化策略，无需显式学习标量奖励函数；线性查询复杂度保证了计算效率。",
+ "experiment_framework": "基准：RewardBench；基线：BT奖励模型、其他偏好学习方法；指标：偏好预测准确率；额外验证：循环偏好建模能力、与PPO/DPO等对齐方法的结合效果。",
+ "takeaways": [
+  "BT模型的标量奖励假设限制了对非传递人类偏好的建模能力",
+  "偏好嵌入空间能更灵活地捕获复杂偏好结构，同时保持线性查询复杂度",
+  "GPO框架可直接在偏好空间优化，无需经过显式奖励建模中间步骤"
+ ],
+ "weaknesses": [
+  "偏好嵌入空间的维度选择和训练稳定性需要进一步探索",
+  "仅在文本偏好建模上验证，多模态偏好的扩展性未知",
+  "与最新RLHF方法（如DPO变体）的系统对比不够充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

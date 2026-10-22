@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Long-Form Speech Generation with Spoken Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Long-Form Speech Generation with Spoken Language Models.pdf",
+ "title": "Long-Form Speech Generation with Spoken Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "混合SSM语音模型实现长序列生成，但语言能力与评测可靠性存疑",
+ "innovations": [
+  "首次将混合SSM架构（Griffin：LRU循环层+局部MQA注意力）应用于语音语言模型，实现恒定内存的长序列语音生成，突破Transformer二次复杂度瓶颈",
+  "设计窗口化tokenization与解码策略，解决长序列处理中的边界伪影问题，并通过首尾pad策略避免隐式EOS导致的生成退化",
+  "提出LibriSpeech-Long长语音评测基准及embedding-based、LLM-as-judge、时间分层等新评测指标体系"
+ ],
+ "method_framework": "SpeechSSM采用两阶段架构：第一阶段为基于Griffin混合SSM的decoder-only语义语言模型，在USM-v2语音tokenizer输出的32k语义token上训练，从RecurrentGemma文本LM初始化以迁移知识；第二阶段使用SoundStorm非自回归声码器，在说话人prompt条件下将语义token转化为SoundStream声学token。通过重叠窗口分块处理实现无限长序列生成，解码时内存恒定。",
+ "experiment_framework": "在LibriLight 60k小时无标注语音上训练2B和9B两个规模模型；短语音评测在LibriSpeech test-clean上进行7s续写3s prompt任务，对比GSLM、AudioLM、TWIST、Spirit LM等基线；长语音评测在新提出的LibriSpeech-Long（平均~195s，最长4分钟）上进行4分钟和16分钟生成；指标包括Text-PPL、SBERT相似度、Win%GT、说话人相似度、N-MOS、sWUGGY/sBLIMP等。",
+ "takeaways": [
+  "SpeechSSM在短语音生成上与现有最优spoken LM相当（Text-PPL 5.76 vs Spirit LM 6.17，N-MOS 3.87 vs 3.00），在长语音生成上显著优于滑窗扩展的Transformer基线",
+  "混合SSM架构可实现4倍以上的生成长度外推，且推理内存恒定，为长form语音生成提供了可行的架构路径",
+  "现有语音生成评测指标在长form场景下区分度不足，需要时间分层的语义/声学评测以及LLM-as-judge等新方法"
+ ],
+ "weaknesses": [
+  "短语音任务上sWUGGY分数（55.8）低于多个Transformer基线（TWIST-7B为73.9），表明在某些语言能力指标上SSM仍有差距",
+  "长语音生成的语义连贯性评估主要依赖ASR转写后的文本指标，ASR错误在长序列中可能累积，影响评测可靠性",
+  "仅在英语朗读风格语音上验证，未涉及多语言、多人对话或情感丰富的自发语音场景，泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

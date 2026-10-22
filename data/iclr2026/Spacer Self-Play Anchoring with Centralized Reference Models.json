@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Spacer Self-Play Anchoring with Centralized Reference Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Spacer Self-Play Anchoring with Centralized Reference Models.pdf",
+ "title": "SPACER: Self-Play Anchoring with Centralized Reference Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4.0,
+  "overall": 4.8
+ },
+ "one_line": "预训练模型锚定self-play，生成轻量自动驾驶智能体",
+ "innovations": [
+  "提出human-like self-play框架：以预训练tokenized自回归运动模型为集中式参考策略，为去中心化self-play提供on-policy对数似然奖励与KL对齐信号",
+  "对齐self-play策略与tokenized模型的动作空间，无需真实log轨迹即可做可计算的似然估计与分布对齐",
+  "得到仅约65k参数的去中心化MLP智能体，推理提速约10x、参数小约50x，并可用于闭环规划器质量评估"
+ ],
+ "method_framework": "将预训练tokenized运动模型视作人类驾驶参考分布，对self-play策略的动作给出对数似然奖励，并用KL散度把策略锚定在人类分布上；既保留self-play RL的多智能体闭环可扩展性，又减少奖励shaping对启发式的依赖。",
+ "experiment_framework": "在Waymo Open Sim Agents Challenge(WOSAC)上评测真实度与人类相似度，与模仿学习(tokenized/diffusion)及既往self-play RL基线对比；另做闭环ego-planner评估，报告碰撞、反应性、推理时延与参数量。",
+ "takeaways": [
+  "在WOSAC上达到与模仿学习策略有竞争力的真实度，同时推理快约10x、参数小约50x",
+  "相比模仿式基线，self-play智能体在闭环下更少产生误报碰撞，对规划器质量评估更可靠"
+ ],
+ "weaknesses": [
+  "主线相关性低：聚焦自动驾驶仿真智能体，与可靠性/医学影像/多模态大模型推理主线无直接关系",
+  "强依赖一个预训练tokenized参考模型的质量，参考分布偏差会直接锚定策略，缺乏参考失效情形的鲁棒性分析",
+  "仅在Waymo单一驾驶场景验证，跨城市场景与长尾交互的泛化证据不足；前9页尚在related work，完整消融未见"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.65,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "自动驾驶仿真智能体，与可靠性主线无直接关系",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

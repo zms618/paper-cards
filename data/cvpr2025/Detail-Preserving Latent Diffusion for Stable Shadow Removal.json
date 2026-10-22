@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Detail-Preserving Latent Diffusion for Stable Shadow Removal.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Detail-Preserving Latent Diffusion for Stable Shadow Removal.pdf",
+ "title": "Detail-Preserving Latent Diffusion for Stable Shadow Removal",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "两阶段扩散模型微调阴影去除，细节注入保留高频信息",
+ "innovations": [
+  "利用预训练稳定扩散模型的两阶段微调策略",
+  "阴影感知细节注入模块",
+  "在潜在空间进行阴影去除减少计算复杂度"
+ ],
+ "method_framework": "两阶段框架：第一阶段固定VAE，微调LDM在潜在空间去除阴影；第二阶段通过细节注入模块保留高频细节，使用编码器特征调制解码器",
+ "experiment_framework": "在ISTD+、SRD、INS和WSRD+数据集上评估，使用PSNR和SSIM指标，与12种SOTA方法比较，包括跨数据集泛化测试",
+ "takeaways": [
+  "利用预训练模型视觉先验提高泛化能力",
+  "z0-prediction减少随机性提高稳定性",
+  "细节注入模块有效保留非阴影区域细节"
+ ],
+ "weaknesses": [
+  "在高度纹理区域(如沙地和草地)PSNR低于DeS3",
+  "方法依赖预训练稳定扩散模型，可能受限于其固有偏见"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "阴影去除属于图像处理，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

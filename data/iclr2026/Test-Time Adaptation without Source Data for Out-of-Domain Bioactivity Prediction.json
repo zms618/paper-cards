@@ -1,0 +1,41 @@
+{
+ "title": "Test-Time Adaptation without Source Data for Out-of-Domain Bioactivity Prediction",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "组合TTA与对比学习解决生物活性预测无源数据OOD适应问题",
+ "innovations": [
+  "首次提出生物活性预测中无源数据(source-data-free)的 OOD 适应设定，适应保密/隐私/IP 限制下拿不到源数据的现实",
+  "不确定性加权一致性策略：高置信原样本引导其增强对应物最小化特征距离，促使模型聚焦结合相关区域、抑制对伪/非因果子结构的依赖",
+  "结合对比优化目标拉近同一复合物增强视图、推开不同复合物视图，提升判别性并防止特征坍缩，学到不变的、生物活性感知的表征"
+ ],
+ "method_framework": "在拿不到源数据、只能访问 OOD 测试样本的前提下做测试时适应：用模型对原样本的置信度作权重，让高置信样本与其增强视图做特征级一致性对齐；再用对比损失约束同一/不同复合物的视图，从而在不碰源数据的情况下学到对分布漂移不变的表征。",
+ "experiment_framework": "DTIGN、SIU 0.6、DrugOOD 三个基准；scaffold/protein/assay 三种 OOD 设定；指标 Pearson R、Kendall tau；对比 SOTA OOD/无源适应基线；DTIGN 八子集上平均 Pearson R +8.2%、Kendall tau +5.8%。",
+ "takeaways": [
+  "在拿不到源数据的现实约束下，仍可对生物活性模型做有效的 OOD 测试时适应",
+  "用置信度加权一致性把模型注意力引向真正结合相关的相互作用区域，抑制伪相关子结构",
+  "对比目标与一致性结合能避免 TTA 常见的特征坍缩"
+ ],
+ "weaknesses": [
+  "两个组件（置信加权一致性、对比损失）均为既有 TTA/对比学习思路的组合，新意主要在‘无源数据生物活性’这一设定迁移，缺对不确定性权重本身来源的严格讨论",
+  "自适应依赖测试批的置信度估计，当目标域整体高不确定/标签翻转时，一致性会被错误高置信样本带偏（自训练通病），未充分讨论失败情形",
+  "relevance 给 6.5：核心是 OOD 泛化/测试时适应并含不确定性加权，靠近鲁棒性主线；但落地域是分子生物活性/药物发现、非医学影像诊断或多模态大模型推理，故不到 7.5"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Test-Time Adaptation without Source Data for Out-of-Domain Bioactivity Prediction.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Test-Time Adaptation without Source Data for Out-of-Domain Bioactivity Prediction.pdf",
+ "raw_overall": 6.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "OOD泛化与不确定性加权靠近鲁棒性主线，药物发现落地域有实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

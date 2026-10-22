@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Orthosolver_A Neural Proper Orthogonal Decomposition Solver for PDES.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Orthosolver_A Neural Proper Orthogonal Decomposition Solver for PDES.pdf",
+ "title": "OrthoSolver: A Neural Proper Orthogonal Decomposition Solver for PDEs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "信息论解释POD为互信息最大化，提出神经正交分解求解PDE。",
+ "innovations": [
+  "从信息论视角理论证明POD经典能量最大化准则本质上是互信息最大化原理",
+  "提出OrthoSolver神经POD框架，将互信息最大化推广到非线性域，迭代自适应提取紧凑且表达力强的非线性基模态",
+  "引入正交性正则化保持学习模态的多样性，有效缓解模态坍缩问题"
+ ],
+ "method_framework": "OrthoSolver将传统POD的线性投影推广到非线性神经网络表征空间。通过最大化数据场与分解模态之间的互信息来迭代提取非线性基函数，同时施加正交性正则化确保各模态间的判别性。整个框架可端到端训练，自适应提取的基模态比传统snapshot-based POD基泛化到未见场景。",
+ "experiment_framework": "在7个PDE基准数据集上测试，对比SOTA深度学习求解器和传统POD方法。指标包括预测精度和降维效率。",
+ "takeaways": [
+  "信息论视角为POD提供了新的理论解释框架",
+  "OrthoSolver在7个PDE基准上一致优于SOTA深度学习基线",
+  "正交性正则化有效缓解了纯数据驱动分解方法的模态坍缩问题"
+ ],
+ "weaknesses": [
+  "互信息最大化的实际估计依赖变分下界近似，估计误差可能影响模态质量",
+  "实验主要在标准PDE基准上验证，对多物理场耦合和高维问题的扩展性未充分展示",
+  "与传统POD方法相比的计算开销（训练vs在线推理）trade-off分析不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.4,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "PDE求解与可靠性主线无直接关联，属常规数值方法",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

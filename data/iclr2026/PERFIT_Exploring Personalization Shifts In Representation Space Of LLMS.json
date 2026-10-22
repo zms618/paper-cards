@@ -1,0 +1,41 @@
+{
+ "title": "PerFit: Exploring Personalization Shifts in Representation Space of LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "宣称发现LLM个性化信息在低秩子空间，但假设验证不足。",
+ "innovations": [
+  "发现个性化信息嵌入在由向量张成的低秩子空间内。",
+  "揭示该子空间向量同时包含跨用户共享的集体平移与用户特有的个体平移两种成分。",
+  "PerFit两阶段分别建模集体与个体平移，在隐藏表示空间直接微调干预，以极小参数开销精准引导LLM。"
+ ],
+ "method_framework": "先分析用户信息在隐藏表示空间中的分布，定位低秩子空间；再两阶段微调干预向量：一阶段学跨用户集体平移，二阶段学各用户个体平移；推理时把对应平移加到隐藏表示上引导输出贴合用户偏好，仅训极少参数。",
+ "experiment_framework": "在六个个性化LLM数据集上评测；对比RAG/PAG类免调方法与LoRA类微调方法；指标为个性化匹配度/准确率；报告性能强且参数量平均减少92.3%。",
+ "takeaways": [
+  "用户个性化偏好可被低秩、含集体+个体双平移的向量有效刻画。",
+  "直接在隐藏表示空间微调干预比全/LoRA微调或RAG更省参且更有效。",
+  "PerFit在六数据集上性能强于SOTA而参数量大幅下降。"
+ ],
+ "weaknesses": [
+  "低秩+双平移假设是否适用于复杂多峰偏好/长程个性化场景未充分验证。",
+  "仍需为每个用户训练个体平移，多用户部署下的存储/更新开销需说明。",
+  "个性化评测多基于行为/风格数据，对实质性知识类偏好的对齐效果证据有限。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PERFIT_Exploring Personalization Shifts In Representation Space Of LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PERFIT_Exploring Personalization Shifts In Representation Space Of LLMS.pdf",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "仅触及LLM可靠性中的校准，无落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/GraphCL_Graph-based Clustering for Semi-Supervised Medical Segmentation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/GraphCL_Graph-based Clustering for Semi-Supervised Medical Segmentation.pdf",
+ "title": "GraphCL: Graph-based Clustering for Semi-Supervised Medical Image Segmentation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "图聚类半监督医学分割，常规方法组合，可靠性验证不足",
+ "innovations": [
+  "首次在半监督医学图像分割(SSMIS)中显式建模数据结构图结构信息",
+  "用GNN聚类把图样本分组，整合局部图像特征间成对亲和度与原始特征作为输入",
+  "在统一深度模型中联合建模图数据结构，弥补既有SSL方法只重训练策略、忽视图结构的不足"
+ ],
+ "method_framework": "把带/无标注医学图像样本组织为图，以局部特征成对亲和度与原始特征构造图表示，用GNN做聚类得到跨图聚类特征；将该图结构先验注入半监督分割训练，缓解标注稀缺与带/无标注分布偏移。",
+ "experiment_framework": "在三个标准医学图像分割基准（CT/MRI类）上评测；与SoTA半监督医学分割方法比较；指标为Dice/IoU等分割精度；报告在受限标注下超越基线。",
+ "takeaways": [
+  "显式利用数据图结构可改善半监督医学分割，而非仅靠复杂一致性训练策略",
+  "局部特征成对亲和度+原始特征的双输入能更好刻画跨样本结构",
+  "在标注稀缺的医学场景下带来稳定的分割精度增益"
+ ],
+ "weaknesses": [
+  "贡献集中在图结构利用，未触及可靠性主线的不确定性估计/校准/鲁棒性验证",
+  "图构造依赖特征相似度，类别不平衡或噪声特征下聚类可能引入错误监督",
+  "仅三个公开基准，缺乏跨中心/跨设备域偏移的泛化验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

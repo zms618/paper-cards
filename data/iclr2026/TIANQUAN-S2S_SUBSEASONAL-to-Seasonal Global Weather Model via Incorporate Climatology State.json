@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TIANQUAN-S2S_SUBSEASONAL-to-Seasonal Global Weather Model via Incorporate Climatology State.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TIANQUAN-S2S_SUBSEASONAL-to-Seasonal Global Weather Model via Incorporate Climatology State.pdf",
+ "title": "TianQuan-S2S: A Subseasonal-to-Seasonal Global Weather Model via Incorporating Climatology State",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "融合气候态嵌入的Transformer，在S2S预报上小幅超越基线模型。",
+ "innovations": [
+  "将气候态（climatology）信息整合到patch embedding中，弥补初始条件在长预报时效上信息不足的缺陷",
+  "设计不确定性增强Transformer结构，提升对预报变率的捕捉能力，减少过度平滑的预测",
+  "在关键气象变量上超越传统数值方法ECMWF-S2S和先进数据驱动模型Fuxi-S2S"
+ ],
+ "method_framework": "TianQuan-S2S将初始天气状态与气候态均值融合：在patch embedding阶段同时编码初始场和对应的气候态信息，使模型在长时效预报中能参考缓慢变化的气候模式。不确定性增强模块通过建模预测分布来提升变率捕捉能力，缓解确定性模型随预报时效增加而逐渐模糊的问题。支持确定性和集合两种预报模式。",
+ "experiment_framework": "在ERA5再分析数据集上训练和评估；对比基线包括气候态均值、传统数值方法ECMWF-S2S、数据驱动模型Fuxi-S2S；指标包括确定性预报的RMSE/异常相关系数和集合预报的Brier评分等气象标准指标。",
+ "takeaways": [
+  "融合气候态信息可有效缓解数据驱动模型在S2S时间尺度上的预报退化问题",
+  "不确定性增强设计有助于保持预测的细节变率，避免过度平滑",
+  "数据驱动方法在S2S预报上已可超越传统数值模式，特别是在关键变量上"
+ ],
+ "weaknesses": [
+  "气候态信息的引入方式较为简单（嵌入融合），更精细的气候动力学建模可能效果更好",
+  "实验仅在ERA5一个数据集上验证，跨数据集和真实业务场景的泛化性未充分讨论",
+  "不确定性增强模块的理论解释性不足，如何与物理一致性保证结合未探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "天气预测与可靠性主线无实质交点，仅为领域内应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

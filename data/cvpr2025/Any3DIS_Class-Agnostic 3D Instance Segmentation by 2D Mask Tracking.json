@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Any3DIS_Class-Agnostic 3D Instance Segmentation by 2D Mask Tracking.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Any3DIS_Class-Agnostic 3D Instance Segmentation by 2D Mask Tracking.pdf",
+ "title": "Any3DIS: Class-Agnostic 3D Instance Segmentation by 2D Mask Tracking",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4,
+  "relevance": 4.0,
+  "overall": 4.8
+ },
+ "one_line": "用SAM-2追踪2D mask和动态规划优化3D实例分割，抑制过分割",
+ "innovations": [
+  "3D-Aware 2D Mask Tracking：给每个superpoint按'自身投影点数×κ近邻可见比'打分ψ=argmaxt选pivot view，在该帧用3点FPS prompt调SAM-2得到2D mask再沿前向/后向双向序列追踪，并用物体重现视图的投影点补query以对抗SAM-2的7帧memory遗忘",
+  "3D Mask Optimization：把'最终proposal含哪些superpoint'写成二值优化max_θ Σ_t [ρθ_t⊗m_q_t − ρθ_t⊗(1−m_q_t)]（帧内点数与帧外点数之差），NP-hard后用逐视图'保留当前解/并入本帧全部可见superpoint'二选一的动态规划近似",
+  "迭代式物体采样：一轮tracking+优化后仍有未分配superpoint就重复n轮，直到场景内superpoint被完整瓜分，从而覆盖后出现的物体"
+ ],
+ "method_framework": "以superpoint为3D线索，用KNN邻居可见度选pivot view→SAM-2双向追踪2D mask→按投影IoU≥τ=0.5提升为3D候选→DP优化筛出多视图一致superpoint→迭代至无剩余superpoint。",
+ "experiment_framework": "ScanNet++/ScanNet200上class-agnostic、open-vocab、open-ended三设定，AP/AP50/AP25与APhead/com/tail，对照Open3DIS等；正文在定性结果段截断。",
+ "takeaways": [
+  "pivot view打分用'自身可见点数×邻居可见比'的乘积，比只看目标点可见数更能滤掉侧边缘视角，是零成本的可见性质量proxy",
+  "DP只在'保留/整帧并入'两个动作上逐视图决策、不做superpoint级部分包含，用受限候选集换线性时间，工程上很干净但被作者明确承认不保证全局最优"
+ ],
+ "weaknesses": [
+  "DP作者自述'可能得不到全局最优'，而评价的正是最终AP，'优化到什么程度才够'没有敏感度实验，最优性退化成经验解",
+  "同表内Open3DIS换成SAM2-L后AP从20.7掉到17.9、低于SAM-HQ版20.7；ScanNet200上3D分支+SAM-HQ(41.5)与ours(42.5)仅差1.0，说明增益与段元（SAM 2.0/2.1版本）强耦合，缺少固定段元下的同条件完整对照",
+  "'快10倍'只来自Fig.1两幕的488s vs 4226s单点计时，无分布与方差；迭代次数n、近邻数κ、τ=0.5、深度阈值0.1全部无消融，且无任何多种子重复",
+  "正文在§4.2定性结果中途截断，消融表与剩余设定（open-ended）的结果不可见"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.0,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "3D分割技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

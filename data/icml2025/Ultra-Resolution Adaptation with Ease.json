@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Ultra-Resolution Adaptation with Ease.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Ultra-Resolution Adaptation with Ease.pdf",
+ "title": "Ultra-Resolution Adaptation with Ease",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 5.7
+ },
+ "one_line": "经验性高分辨率文生图适配指南，缺乏理论深度与充分验证",
+ "innovations": [
+  "数据效率：理论与实证证明用某些教师模型生成的合成数据可显著促进超高分辨率适配的训练收敛",
+  "参数效率：发现无合成数据时，微调权重矩阵的小分量比广泛使用的低秩适配器(LoRA)更好，增益大且仍高效",
+  "对guidance蒸馏模型(如FLUX)给出关键洞察：适配时把classifier-free guidance scale设为1(关CFG)对满意结果至关重要；仅3K样本2K迭代即匹敌FLUX1.1[Pro] Ultra的2K生成、刷新4K基准"
+ ],
+ "method_framework": "在预训练T2I DiT上做超高分辨率(2K/4K)轻量适配：(1)教师模型造高分辨率合成数据；(2)只微调权重矩阵小分量而非LoRA低秩分解；(3)蒸馏扩散模型适配期间关闭CFG。",
+ "experiment_framework": "文生图2K/4K分辨率生成；对比全量微调、LoRA、有/无合成数据、CFG开/关；指标为图像质量(FID/人类偏好)与分辨率达标度，对标FLUX1.1[Pro] Ultra等闭源模型。",
+ "takeaways": [
+  "高分辨率适配不必堆数据与算力：教师合成数据+小分量微调+关CFG的组合可在极小样本下追平闭源SOTA",
+  "对guidance-distilled模型，适配阶段保持CFG=1是容易被忽视但决定性的技巧"
+ ],
+ "weaknesses": [
+  "核心贡献偏经验性'指南/recipe'，理论分析较浅；小分量微调相对LoRA更优的原因缺乏机理性论证",
+  "依赖强教师模型合成数据，教师质量差时结论是否成立未充分讨论；评估以视觉偏好为主，缺对分布外/长文本等鲁棒性考察"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

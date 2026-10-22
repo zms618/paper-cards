@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/David and Goliath Small One-step Model Beats Large Diffusion with Score Post-training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/David and Goliath Small One-step Model Beats Large Diffusion with Score Post-training.pdf",
+ "title": "David and Goliath: Small One-step Model Beats Large Diffusion with Score Post-training",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.8
+ },
+ "one_line": "小模型用score正则化后训练，在T2I对齐上超越大模型多步扩散",
+ "innovations": [
+  "提出DI*：将one-step T2I模型的人类偏好对齐建模为在线RLHF，优化人类奖励函数同时被正则化约束在参考扩散过程附近",
+  "用新的general score-based散度正则化替代传统KL正则化，显著提升后训练性能与稳定性",
+  "从理论上推导general score-based RLHF目标的严格等价可解损失，并高效计算其梯度"
+ ],
+ "method_framework": "在one-step生成器上定义奖励函数（ImageReward/PickScore等）；以参考扩散过程的score为正则项；推导该不可解目标的等价可微损失；用在线RLHF方式滚动生成-评分-更新。",
+ "experiment_framework": "构建2.6B DI*-SDXL-1step（1024x1024），在Parti Prompts上对比50步12B FLUX-dev，指标含ImageReward/PickScore/CLIP score与推理时间。",
+ "takeaways": [
+  "2.6B one-step模型经后训练在Parti Prompts上超50步12B FLUX-dev，且仅用1.88%推理时间",
+  "score-based散度正则化比KL正则化更稳定、更有效",
+  "小模型经合适后训练可在人类偏好上击败大模型多步扩散"
+ ],
+ "weaknesses": [
+  "属T2I生成对齐，与可靠性/可信AI主线相关性弱",
+  "依赖现成奖励模型（ImageReward/PickScore），奖励模型自身偏差未讨论",
+  "前9页未给出完整数值表，具体得分与FID对比需看实验章节"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

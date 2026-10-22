@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Understanding and Rectifying Safety Perception Distortion in VLMs.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Understanding and Rectifying Safety Perception Distortion in VLMs.pdf",
+ "title": "Understanding and Rectifying Safety Perception Distortion in VLMs",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "发现视觉模态导致VLM安全激活偏移，提出免训练解耦校准方法。",
+ "innovations": [
+  "机制发现：视觉模态相对于纯文本引起modality-induced activation shift，其中safety-relevant shift把激活推向文本LLM安全边界的『安全侧』，导致VLM把有害输入误判为安全而越狱",
+  "提出把激活偏移解耦为safety-relevant与safety-irrelevant两个正交分量，仅在推理时移除前者、保留后者以恢复LLM骨干安全对齐同时保留视觉语义",
+  "ShiftDC为training-free/inference-only方法，仅需少量数据、无需安全微调或防御prompt，在不损伤utility下提升安全对齐"
+ ],
+ "method_framework": "先在激活空间分析VLM，导出文本LLM的安全方向/边界；将视觉-文本输入相对对应纯文本输入的激活偏移分解为安全相关分量（沿安全方向）与安全无关分量（正交视觉语义），推理时减去/校准安全相关偏移，恢复骨干的内在安全防御。",
+ "experiment_framework": "3个VLM安全基准（含MM-SafetyBench）、3个视觉推理utility基准、5个不同VLM；对比安全微调、防御prompt、激活校准、图像转caption等路线；指标为攻击成功率/拒绝率与utility准确率。",
+ "takeaways": [
+  "VLM安全退化根因是视觉模态引入的激活偏移把有害输入推向安全侧，而非骨干本身失去对齐；恢复骨干对齐即可修复",
+  "ShiftDC在5个VLM上显著降低有害请求攻击成功率，同时不损伤视觉推理utility，说明安全与utility可通过解耦而非权衡来缓解",
+  "inference-only、免训练的激活校准可作为安全后处理轻量方案，避免安全微调的数据与算力开销"
+ ],
+ "weaknesses": [
+  "安全方向/边界依赖少量标定数据与线性假设，对更复杂的多步jailbreak与分布外攻击的鲁棒性未充分验证",
+  "仅在激活空间做线性解耦，未论证safety-relevant与irrelevant分量在深层确实正交；对不同VLM架构的迁移性需逐模型标定",
+  "对抗方可利用该推理时偏移做反向攻击（让激活更偏离安全侧），文章未讨论此种自适应攻防"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

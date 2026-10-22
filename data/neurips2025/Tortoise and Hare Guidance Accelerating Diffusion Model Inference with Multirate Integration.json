@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Tortoise and Hare Guidance Accelerating Diffusion Model Inference with Multirate Integration.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Tortoise and Hare Guidance Accelerating Diffusion Model Inference with Multirate Integration.pdf",
+ "title": "Tortoise and Hare Guidance: Accelerating Diffusion Model Inference with Multirate Integration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "多速率积分加速扩散推理，但误差估计与尺度调整缺乏理论支撑",
+ "innovations": [
+  "将CFG ODE重构为多速率系统",
+  "误差边界分析指导的步长自适应采样",
+  "指导尺度调度器稳定大跨度外推"
+ ],
+ "method_framework": "将扩散ODE分解为数值敏感的噪声估计(龟方程)和较不敏感的附加指导(兔方程)，分别在细粒度和粗粒度时间网格上积分",
+ "experiment_framework": "COCO 2014数据集，对比CFG-Cache，使用FID、CMMD、CS、IR等指标评估SD 1.5/3.5 Large和AudioLDM 2",
+ "takeaways": [
+  "多速率方法可有效利用不同组件的数值敏感性差异",
+  "误差边界分析为步长选择提供理论依据"
+ ],
+ "weaknesses": [
+  "误差常数估计可能受特定数据集影响",
+  "指导尺度调整的启发式方法缺乏理论支撑"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

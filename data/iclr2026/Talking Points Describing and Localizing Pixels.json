@@ -1,0 +1,41 @@
+{
+ "title": "Talking Points: Describing and Localizing Pixels",
+ "one_line": "双向像素级grounding框架，依赖合成数据与循环评估",
+ "innovations": [
+  "提出像素级关键点双向grounding框架：Point Descriptor生成上下文丰富的自由形式粗到细描述，Point Localizer从描述回归精确像素坐标",
+  "构建LlamaPointInPart数据集（20K+图像-关键点-描述三元组），由多个VLM合成，覆盖场景级到关键点周围多尺度信息",
+  "用冻结Point Localizer作reward model，在AP-10K上用GRPO优化Descriptor，使描述最大化定位精度；并提出以定位器预测点与真值距离作为新评测协议"
+ ],
+ "method_framework": "两组件互补：Point Descriptor对单个关键点生成自由文本描述（相对场景、物体、局部特征逐级细化）；Point Localizer根据描述回归像素坐标。Descriptor在AP-10K上经GRPO优化，奖励为冻结Localizer的定位精度，从而鼓励可定位性强的描述。评测不用描述与文本真值比对，而用Localizer预测点与真值点距离。",
+ "experiment_framework": "数据集LlamaPointInPart(20K+三元组)；基线含OMG-LLaVA、ChatGPT-5；跨类别泛化在AP-10K；指标为定位距离/命中率；报告性能较基线翻倍且超过ChatGPT-5，人类标注反而差于ChatGPT-5。",
+ "takeaways": [
+  "像素级关键点grounding是一个固有困难的新任务，连人类标注都不如ChatGPT-5",
+  "用冻结Localizer作reward的GRPO可训出既好描述又好定位的Descriptor",
+  "双向框架可同时服务关键点引导的图像理解与语言引导的精确定位"
+ ],
+ "weaknesses": [
+  "依赖多个VLM合成训练数据，描述质量受其上限约束，可能继承合成模型偏差",
+  "评测用Localizer自身定位误差作代理指标，存在与定位器能力耦合的循环评估风险",
+  "主要在AP-10K等动物关键点场景验证，对通用开放世界像素点的泛化性有限"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Talking Points Describing and Localizing Pixels.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Talking Points Describing and Localizing Pixels.pdf",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "像素级定位任务与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

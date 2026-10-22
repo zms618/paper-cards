@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/RepLoRA_Reparameterizing Low-Rank Adaptation via the Perspective of Mixture of Experts.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/RepLoRA_Reparameterizing Low-Rank Adaptation via the Perspective of Mixture of Experts.pdf",
+ "title": "RepLoRA: Reparameterizing Low-Rank Adaptation via the Perspective of Mixture of Experts",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "理论化LoRA为MoE，重参数化提升少数据性能，但增加复杂度",
+ "innovations": [
+  "建立 LoRA 与混合专家(MoE)模型之间的理论联系，为 LoRA 提供新的理解视角。",
+  "证明对 LoRA 矩阵做简单重参数化可显著加速低秩矩阵估计，把数据需求从指数级降到多项式级。",
+  "提出 RepLoRA：用轻量 MLP 以两个对角矩阵为输入重参数化 LoRA 矩阵，实证在少数据下大幅优于 vanilla LoRA。"
+ ],
+ "method_framework": "把 LoRA 的低秩增量矩阵看作 MoE 形式的重参数化：用一个轻量 MLP，输入两个对角矩阵，输出 LoRA 的低秩矩阵；该重参数化改变优化地形，使低秩估计所需样本量按多项式(而非指数)增长，从而在少数据时更快收敛、更稳。",
+ "experiment_framework": "跨多领域/多模型对比 vanilla LoRA 与 RepLoRA；重点报告有限数据场景下的提升(少数据时最高 +40.0%)、以及仅用 30.0% 训练数据即达到 LoRA 同等性能的数据效率。",
+ "takeaways": [
+  "LoRA 与 MoE 存在可利用的理论联系。",
+  "适当重参数化可把 LoRA 数据需求从指数级降到多项式级。",
+  "RepLoRA 尤其在少数据/数据受限场景优势显著。"
+ ],
+ "weaknesses": [
+  "重参数化引入轻量 MLP，相对 vanilla LoRA 增加了少量可训参数与复杂度。",
+  "理论样本复杂度结论基于简化的低秩估计模型，与真实大模型微调的对应需更多实证。",
+  "属参数高效微调方法改进，与可靠性、医学影像、多模态推理主线关联较弱。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

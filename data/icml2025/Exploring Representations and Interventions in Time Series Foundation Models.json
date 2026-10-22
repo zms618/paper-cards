@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Exploring Representations and Interventions in Time Series Foundation Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Exploring Representations and Interventions in Time Series Foundation Models.pdf",
+ "title": "Exploring Representations and Interventions in Time Series Foundation Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.9
+ },
+ "one_line": "分析TSFM表征冗余并剪枝，定位可解释概念但泛化性有限",
+ "innovations": [
+  "首次跨多个TSFM(MOMENT/Chronos/Moirai)与不同尺寸系统刻画表征组织结构，用CKA揭示跨层块状冗余",
+  "利用块状冗余做有依据的块级剪枝，在几乎不掉点下减小模型、加速推理",
+  "定位周期/趋势等人类可解释概念在特定层的线性可分位置，并演示用概念先验干预引导输出"
+ ],
+ "method_framework": "用逐层CKA相似度热图分析层间自相似性与跨模型相似性，识别冗余层块；对冗余块剪枝后做零样本与微调评测；用线性探针定位周期/趋势等概念 emergence 层，并沿概念方向做表征干预。",
+ "experiment_framework": "覆盖 MOMENT/Chronos/Moirai 等TSFM及大中小尺寸；数据集 ETTh1/ETTm1/ETTm2/Exchange/Weather 等；任务含零样本插补(MAE)与预测；对比不同剪枝方法，报告模型尺寸、推理时间、内存与精度变化。",
+ "takeaways": [
+  "大模型(MOMENT-Large/Chronos-Large/Moirai-Large)在特定层组呈现相似表征形成块状模式，规模增大使表征更丰富但也更冗余",
+  "块级剪枝可减小约11%模型、降低5%推理时间，且9个数据集中5个插补MAE反而更低，微调后与未剪枝基线持平",
+  "概念(常数vs正弦等)在特定层线性可分且位置因概念而异，可据此做概念引导干预"
+ ],
+ "weaknesses": [
+  "不同剪枝方法与数据集上表现不一，部分方法性能明显退化，缺乏统一稳健的剪枝准则",
+  "概念定位以合成/直觉概念(周期、趋势)为主，与真实下游业务概念的对应关系未充分验证",
+  "早期层跨模型相似、后期层分歧，跨模型结论的可推广性仍有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

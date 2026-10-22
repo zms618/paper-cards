@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Leveraging Verifier-Based Reinforcement Learning in Editing.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Leveraging Verifier-Based Reinforcement Learning in Editing.pdf",
+ "title": "Leveraging Verifier-Based Reinforcement Learning in Editing",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "验证器奖励模型提升编辑质量，但依赖外部VLM且数据规模有限",
+ "innovations": [
+  "验证器式推理奖励模型(RRM)框架",
+  "组对比偏好优化(GCPO)算法",
+  "指令分解为可验证原则的评估方法"
+ ],
+ "method_framework": "构建基于验证器的推理奖励模型，通过两阶段训练：冷启动SFT阶段构建高质量数据，GCPO阶段使用人类偏好对齐，再应用于下游编辑模型优化。",
+ "experiment_framework": "内部5K样本偏好数据集和公开EditRewardBench，评估奖励模型准确性和编辑模型在GEdit-Bench-EN上的语义一致性(SC)和感知质量(PQ)。",
+ "takeaways": [
+  "指令分解为可验证原则提供细粒度评估",
+  "组对比偏好优化有效对齐点式奖励模型与人类偏好",
+  "推理奖励模型显著提升下游编辑模型性能"
+ ],
+ "weaknesses": [
+  "依赖外部VLM进行质量控制，增加计算开销",
+  "人类偏好数据集规模较小(10K对)，可能限制泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "验证器奖励模型提升编辑质量，但依赖外部VLM且数据规模有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

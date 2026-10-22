@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Statistical Advantage Of Softmax Attention Insights from Single-Location Regression.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Statistical Advantage Of Softmax Attention Insights from Single-Location Regression.pdf",
+ "title": "Statistical Advantage of Softmax Attention: Insights from Single-Location Regression",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "理论分析softmax在简化模型中的统计优势，外推到真实模型存疑",
+ "innovations": [
+  "以单位置回归为受控任务，首次在高维极限下用少量序参量刻画注意力预测子的泛化行为",
+  "证明总体层面软最大化注意力达到贝叶斯风险，而线性注意力(逐元素线性化)从根本上达不到最优",
+  "进一步分析其他激活函数，识别出达到最优性能所必需的激活性质，并给出有限样本测试误差的渐近刻画"
+ ],
+ "method_framework": "借鉴统计物理(高维极限/序参量)方法，把输出依赖随机位置单个token线性变换的单位置回归作为探针，分析注意力预测子的泛化误差；先在总体极限证明softmax=Bayes风险、线性注意力不足，再推广到有限样本，刻画测试误差渐近行为并与梯度优化相联系。",
+ "experiment_framework": "以理论推导为主：总体风险比较与有限样本渐近测试误差刻画；辅以对应激活函数族的对比验证其关于'最优所需性质'的结论，并讨论与梯度优化算法的关联。",
+ "takeaways": [
+  "软最大化相对线性注意力的优势可在单位置回归这一可解模型中从统计上严格刻画",
+  "总体上softmax达到Bayes风险而线性注意力本质次优，说明softmax归一化有不可替代的统计优势",
+  "有限样本下softmax不再Bayes最优但仍一致优于线性注意力"
+ ],
+ "weaknesses": [
+  "结论基于高度简化的单位置回归可解模型，到真实多头/多层Transformer的外推距离较远",
+  "主要为渐近理论，有限维/有限序列长度的定量预测与大规模实证验证有限",
+  "对'哪些激活性质必要'的识别未直接指导线性注意力的实用改进"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "理论分析softmax统计优势，但简化模型外推到真实模型存疑",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

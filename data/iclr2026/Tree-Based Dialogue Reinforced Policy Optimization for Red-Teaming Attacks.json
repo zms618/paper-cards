@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Tree-Based Dialogue Reinforced Policy Optimization for Red-Teaming Attacks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tree-Based Dialogue Reinforced Policy Optimization for Red-Teaming Attacks.pdf",
+ "title": "Tree-Based Dialogue Reinforced Policy Optimization for Red-Teaming Attacks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "RL+树搜索提升红队攻击成功率，但防御讨论薄弱且计算开销大",
+ "innovations": [
+  "将多轮红队攻击形式化为序列决策问题，用在线RL框架自主学习对话攻击策略，无需人工策划的攻击数据",
+  "集成树搜索进行对话空间的系统探索，发现现有方法未覆盖的新型攻击轨迹",
+  "学习长视距自适应策略，每轮对话都为最终越狱目标服务，而非简单重复尝试"
+ ],
+ "method_framework": "DialTree将红队攻击建模为目标导向对话中的战略推理问题。攻击者智能体使用在线RL（策略优化）学习对话策略，同时集成树搜索在对话空间中进行系统探索。智能体根据目标模型的响应动态调整后续攻击策略，逐步侵蚀安全边界，实现多轮越狱。",
+ "experiment_framework": "在12个不同的目标LLM上评估攻击成功率（ASR），对比单轮攻击、多轮模板攻击等现有SOTA红队方法；分析发现的新型攻击策略类型。",
+ "takeaways": [
+  "多轮对话攻击比单轮攻击显著更有效，RL+树搜索可自主发现多样化攻击策略",
+  "DialTree在12个目标模型上平均攻击成功率比现有SOTA高44.2%",
+  "长视距战略对话规划比启发式模板攻击更能系统性地暴露LLM安全漏洞"
+ ],
+ "weaknesses": [
+  "攻击方法的dual-use风险高，论文对防御建议的讨论较为薄弱",
+  "树搜索的计算开销在实际红队场景中的实用性存疑",
+  "仅在英文对话场景下验证，多语言攻击的效果未探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "红队攻击与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

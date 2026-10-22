@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Routing Matters In MOE Scaling Diffusion Transformers with Explicit Routing Guidance.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Routing Matters In MOE Scaling Diffusion Transformers with Explicit Routing Guidance.pdf",
+ "title": "Routing Matters in MoE: Scaling Diffusion Transformers with Explicit Routing Guidance",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "ProMoE两步路由提升DiT专家专业化，但扩展性与开销分析不足。",
+ "innovations": [
+  "量化揭示语言 token 语义密集而视觉 token 弥散(类间/类内距离比 19.283 vs 0.748)，解释视觉 MoE 难专业化的根因。",
+  "提出两步路由：先按功能角色把图像 token 分为条件/无条件集(条件路由)，再基于可学习原型按语义细化条件 token 分配(原型路由)。",
+  "提出路由对比损失，显式增强原型路由过程，促进专家内聚与专家间多样性。"
+ ],
+ "method_framework": "在 DiT 中引入 MoE 层。第一步条件路由依据 token 功能角色(条件/无条件)分区；第二步原型路由在隐空间用可学习语义原型做相似度分配，自然接入显式语义引导；路由对比损失约束同一专家内聚、不同专家分散，从而改善视觉 token 的专家专业化。",
+ "experiment_framework": "在 ImageNet 基准上评测，分别在 Rectified Flow 与 DDPM 两种训练目标下与现有视觉 MoE/SOTA 方法对比；报告生成质量(FID 等)与专家多样性/内聚度量，ProMoE 在两目标下均超 SOTA。",
+ "takeaways": [
+  "视觉 token 的空间冗余与功能异质性是 MoE 难迁移到 DiT 的核心障碍，而非单纯照搬 LLM MoE。",
+  "按功能角色与语义原型的两步显式路由能有效促进视觉专家专业化。",
+  "路由对比损失对专家内聚与多样性起关键作用，是视觉 MoE 有效的必要引导。"
+ ],
+ "weaknesses": [
+  "实验集中在 ImageNet 生成基准，未在高分辨率视频/多模态扩散等更大规模 DiT 上验证可扩展性。",
+  "两步路由与对比损失增加路由复杂度，训练/推理开销与专家负载均衡的失败情形分析有限。",
+  "属视觉生成架构/扩展方向，与视觉可靠性/医学影像/多模态推理主线关联弱。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.18,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "视觉生成架构，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

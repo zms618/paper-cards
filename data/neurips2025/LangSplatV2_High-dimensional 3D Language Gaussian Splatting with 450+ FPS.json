@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/LangSplatV2_High-dimensional 3D Language Gaussian Splatting with 450+ FPS.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/LangSplatV2_High-dimensional 3D Language Gaussian Splatting with 450+ FPS.pdf",
+ "title": "LangSplatV2: High-dimensional 3D Language Gaussian Splatting with 450+ FPS",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "稀疏系数场优化高维CLIP特征渲染，速度提升但泛化性存疑",
+ "innovations": [
+  "将高维CLIP特征表示为稀疏系数场，消除MLP解码器瓶颈",
+  "提出高效稀疏系数splatting方法，实现超低维度渲染高维特征",
+  "通过全局字典和局部稀疏表示实现47倍速度提升"
+ ],
+ "method_framework": "将每个高斯点表示为全局字典的稀疏编码，学习3D稀疏系数场和全局字典，通过CUDA优化实现仅K维特征渲染即可获得D维高质量特征图",
+ "experiment_framework": "LERF/3D-OVS/Mip-NeRF360数据集，与LangSplat/GAGS/GOI等基线比较，评估3D目标定位和语义分割精度及推理速度",
+ "takeaways": [
+  "稀疏表示可有效解决高维特征渲染的计算瓶颈",
+  "CUDA优化可显著提升特定场景下的渲染效率",
+  "全局字典与局部稀疏编码结合可平衡精度与速度"
+ ],
+ "weaknesses": [
+  "仅评估了特定场景下的性能，泛化能力需进一步验证",
+  "代码书大小L和稀疏度K的选择可能影响性能与内存的权衡"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

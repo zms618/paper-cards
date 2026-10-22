@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning Event Completeness for Weakly Supervised Video Anomaly Detection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning Event Completeness for Weakly Supervised Video Anomaly Detection.pdf",
+ "title": "Learning Event Completeness for Weakly Supervised Video Anomaly Detection",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "双结构编码加GMM边界学习，提升弱监督视频异常定位完整性。",
+ "innovations": [
+  "设计视觉-语言双结构编码类别感知和类别无关语义，解决WS-VAD中事件定位不完整问题",
+  "提出异常感知高斯混合模型学习精确事件边界，生成更完整的异常事件实例",
+  "开发记忆库基原型学习机制，丰富与异常事件类别相关的简洁文本描述"
+ ],
+ "method_framework": "LEC-VAD基于视觉-语言框架：双分支架构分别提取类别相关(特定异常类型)和类别无关(通用异常)语义；用异常感知GMM建模异常帧的分布，学习事件边界以确保完整性；记忆库存储各类异常的文本原型，通过对比学习增强文本-视觉对齐；MIL训练范式。",
+ "experiment_framework": "在标准视频异常检测基准(UCF-Crime, XD-Violence等)上评估；对比SOTA WS-VAD方法；指标为帧级AUC、事件级AP；消融实验验证双结构、GMM边界学习和记忆库的作用。",
+ "takeaways": [
+  "类别感知+类别无关的双语义结构能更完整地定位异常事件，避免漏检",
+  "异常感知GMM学习事件边界比帧级分类更能捕获完整事件区间",
+  "记忆库原型学习增强了视觉-语言对齐，提升了文本描述对异常的区分力"
+ ],
+ "weaknesses": [
+  "依赖预训练视觉-语言模型(如CLIP)的特征质量，特征不佳时性能受限",
+  "异常感知GMM的组件数需要预设，自适应机制缺失",
+  "主要在监控视频数据集验证，其他领域(如医疗影像异常)的适用性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

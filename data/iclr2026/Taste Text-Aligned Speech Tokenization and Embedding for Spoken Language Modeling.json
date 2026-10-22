@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Taste Text-Aligned Speech Tokenization and Embedding for Spoken Language Modeling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Taste Text-Aligned Speech Tokenization and Embedding for Spoken Language Modeling.pdf",
+ "title": "TASTE: Text-Aligned Speech Tokenization and Embedding for Spoken Language Modeling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "语音token与文本对齐的分词方法，缓解模态鸿沟但依赖转录",
+ "innovations": [
+  "提出TASTE：在分词阶段即用attention-based聚合将语音token与文本转录对齐，从源头解决语音token冗余编码文本内容",
+  "以语音重构为训练目标，端到端学习面向文本-口语联合建模的联合tokenization与embedding（为首例）",
+  "在保留副语言信息的同时大幅缩短token序列长度，并可通过对预训练文本LLM做LoRA直接实现联合口语建模"
+ ],
+ "method_framework": "传统语音分词仅从语音提取token，与文本token信息重叠且长度失配。TASTE以语音+文本双模态为输入，用attention聚合机制把语音帧聚合到与词对齐的位置，配合语音重构损失训练，使每个语音token与对应文本词在长度和语义上对齐，从而可用LoRA直接在文本LLM上做联合建模。",
+ "experiment_framework": "任务含语音续写(speech continuation)与似然式下一语音选择(next-speech selection)；对比既有预训练SLM(如TWIST及其他语音tokenizer)；评估副语言信息保留与token序列长度压缩效果；用LoRA适配预训练文本LLM。",
+ "takeaways": [
+  "在分词阶段对齐文本可消除语音token与文本token的冗余，免去交织/补帧等额外对齐流程",
+  "TASTE在大幅缩短序列长度的同时保留了关键副语言信息",
+  "对齐后的语音token使得仅用LoRA在预训练文本LLM上即可做联合口语建模，超越其他预训练SLM"
+ ],
+ "weaknesses": [
+  "依赖现成文本转录作为对齐监督，对无转录/低资源语种场景的适用性受限",
+  "主要在语音续写与下一语音选择上验证，对话式口语理解/生成等更复杂任务未充分覆盖",
+  "与最新神经编解码tokenizer的对比及副语言保留的定量指标报告需进一步确认"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "语音分词方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

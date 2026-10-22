@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Simple Path Structural Encoding for Graph Transformers.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Simple Path Structural Encoding for Graph Transformers.pdf",
+ "title": "Simple Path Structural Encoding for Graph Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "SPSE用路径计数替代RRWP改进图变换器边编码，但计算开销大。",
+ "innovations": [
+  "提出简单路径结构编码(SPSE)替代RRWP",
+  "设计基于DAG分解的高效近似路径计数算法",
+  "理论证明SPSE在区分不同图结构特别是循环模式上的优势"
+ ],
+ "method_framework": "SPSE通过计算节点间不同长度的简单路径数量作为边编码，结合DFS和BFS的DAG分解算法解决路径计数计算复杂度问题，使用对数函数映射路径计数到适合神经网络处理的值域。",
+ "experiment_framework": "在ZINC、Peptides、PCQM4Mv2等分子和长程图基准测试上，与GRIT、CSA等图变换器模型对比，使用MAE、AP等指标评估性能。",
+ "takeaways": [
+  "简单路径计数比随机游走概率能更好地区分不同图结构，特别是循环模式",
+  "DAG分解算法有效解决了路径计数的计算复杂度问题"
+ ],
+ "weaknesses": [
+  "SPSE计算复杂度显著高于RRWP，需要更多计算资源",
+  "路径计数算法的近似性可能在某些复杂图结构中影响性能"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

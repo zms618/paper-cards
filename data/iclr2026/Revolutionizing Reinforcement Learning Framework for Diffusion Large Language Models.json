@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Revolutionizing Reinforcement Learning Framework for Diffusion Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Revolutionizing Reinforcement Learning Framework for Diffusion Large Language Models.pdf",
+ "title": "Revolutionizing Reinforcement Learning Framework for Diffusion Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "轨迹感知RL框架提升扩散模型数学推理，但泛化性与奖励分析不足。",
+ "innovations": [
+  "指出扩散语言模型后训练须使其偏好-推理轨迹与后训练目标对齐，提出轨迹感知RL框架TraceRL，同时适用全注意力与块注意力DLM。",
+  "提出扩散式价值模型，用token-wise基线与基于GAE的截断回归目标降方差、稳训练，并天然兼容过程奖励提供更细粒度监督。",
+  "结合课程学习训练出首个8B规模长CoT扩散语言模型，并支持把块扩散模型扩展到更大block size。"
+ ],
+ "method_framework": "把扩散模型的推理轨迹信息引入后训练；用扩散结构的价值网络估计token级baseline并计算GAE目标，结合过程奖励做RL微调；对块注意力DLM可扩展block size，并通过课程学习延长推理链。",
+ "experiment_framework": "在复杂数学与代码任务上评测；TraDo-4B虽小于Qwen2.5-7B-Instruct但在数学推理上更优；TraDo-8B在MATH500上比Qwen2.5-7B-Instruct高4.5%、LiveCodeBench-V2比Llama3.1-8B-Instruct高6.6%；含轨迹/价值模型消融。",
+ "takeaways": [
+  "扩散语言模型的后训练必须利用其推理轨迹结构，轨迹感知RL能显著提升数学/代码推理。",
+  "扩散式价值模型可同时稳定训练并自然承载过程奖励，为DLM的RLHF/RLVR提供可行路径。"
+ ],
+ "weaknesses": [
+  "主要优势集中在数学/代码推理，对通用对话与多模态的推理可靠性未验证。",
+  "过程奖励依赖额外奖励模型，过程奖励质量如何影响上限未做误差传播分析。",
+  "前9页给出与7B/8B自回归模型对比，但与更大规模或最新推理模型的对比、长CoT的成本-收益分析在后续页。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "数学推理提升但未触及可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

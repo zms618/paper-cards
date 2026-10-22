@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/CUPS_Improving Human Pose-Shape Estimators with Conformalized Deep Uncertainty.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CUPS_Improving Human Pose-Shape Estimators with Conformalized Deep Uncertainty.pdf",
+ "title": "CUPS: Improving Human Pose-Shape Estimators with Conformalized Deep Uncertainty",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "elevance": 5.5,
+  "evidence": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "将深度不确定性函数与姿态估计器联合训练，用于共形校准预测集合",
+ "innovations": [
+  "训练时生成并打分多假设，将不确定性量化端到端嵌入3D姿态-形状(SMPL)估计",
+  "把学到的深度不确定性模型直接作为共形预测的nonconformity score，后训练即得带保证的预测集合",
+  "针对人体姿态数据不可交换(序列/分布漂移)给出两个实用覆盖间隙界，为不确定界提供理论支撑",
+  "结合加权分位数应对数据分布漂移"
+ ],
+ "method_framework": "seq2seq模型从RGB视频回归SMPL参数；训练中采样并打分多假设以学习深度不确定性函数；后训练用该函数作nonconformity score校准共形预测器，输出带覆盖保证的姿态-形状集合预测；针对序列不可交换性用加权分位数与覆盖间隙界修正。",
+ "experiment_framework": "在多个in-the-wild人体姿态-形状视频数据集上，与prior uncertainty-aware方法及SOTA估计器比较，报告重建误差(MPJPE等)、覆盖率与预测集合大小等指标，验证共形保证与分布漂移处理。",
+ "takeaways": [
+  "端到端联合训练的深度不确定性可同时提升估计精度与共形校准质量",
+  "对不可交换的视频序列，需用修正覆盖间隙界才能成立共形保证",
+  "共形预测集合可在遮挡/OOD等安全关键场景提供性能保证"
+ ],
+ "weaknesses": [
+  "落地域为人体姿态估计/机器人自动驾驶视觉，非医学影像或多模态大模型推理",
+  "序列不可交换下的覆盖界偏保守，集合大小可能偏大",
+  "多假设采样训练增加训练成本，实时性在安全关键场景的部署可行性讨论有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "title": "The Deleuzian Representation Hypothesis",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.6
+ },
+ "one_line": "聚类激活差异替代SAE提取概念，跨模态质量接近监督基线",
+ "innovations": [
+  "提出以‘激活差异的聚类’提取可解释概念，替代难训练、易产出多义特征的 SAE",
+  "在判别分析(discriminant analysis)框架下为该方法提供形式化依据，并用激活偏度(skewness)加权聚类以增强概念多样性",
+  "跨 5 个模型、视觉/语言/音频 3 模态评测，证明提取概念质量超过此前无监督 SAE 变体、接近监督基线，且可通过操纵这些概念方向因果地 steer 模型行为"
+ ],
+ "method_framework": "把概念视为刻画样本间区分的方向，直接对样本激活之差做聚类得到概念方向；用判别分析视角解释其有效性；再按各激活的偏度对聚类加权以避免概念趋同；最后通过沿概念方向加减来因果干预验证概念含义。",
+ "experiment_framework": "5 个模型、3 模态（视觉/语言/音频）；以概念质量、多样性、一致性为指标；对比多种无监督 SAE 变体与监督基线；用 steer/干预实验验证因果影响。",
+ "takeaways": [
+  "不必训练 SAE，直接聚类激活差异就能拿到可解释概念，且更省事",
+  "按激活偏度加权聚类能提升提取概念的多样性",
+  "提取出的概念方向具有因果性，可用于可控地改变模型内部表征与下游行为"
+ ],
+ "weaknesses": [
+  "方法核心是聚类+判别分析的组合，工程上比 SAE 简单，但相对 SAE 的增益幅度在接近监督基线后未进一步拉开，缺乏对概念 polysemantic 程度的严格量化",
+  "‘Deleuzian’更多是哲学包装，方法的数学本质是判别分析下的差异聚类；跨 3 模态虽广，但每模态实验深度有限",
+  "relevance 给 5：属可解释性/机制特征提取，引言虽提 trustworthy，但主线是可靠性(验证/不确定性/幻觉)×落地域(医学影像/多模态推理任务)，本文为可解释性方法、非多模态推理可靠性，按规则不因其 trustworthy/multimodal 措辞抬分"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/The Deleuzian Representation Hypothesis.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The Deleuzian Representation Hypothesis.pdf",
+ "raw_overall": 5.93,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "可解释性方法，非可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

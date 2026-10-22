@@ -1,0 +1,41 @@
+{
+ "title": "On the Convergence Behavior of Preconditioned Gradient Descent toward the Rich Learning Regime",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "NTK框架下PGD加速谱收敛但可能损害泛化，理论假设限制普适性。",
+ "innovations": [
+  "在NTK框架下推导预条件梯度下降（PGD）能统一加速各频率模态收敛，缓解谱偏置。",
+  "将grokking解释为NTK/lazy regime向rich regime的过渡，并实证PGD可加速这一过渡。",
+  "指出PGD虽能快速探索NTK子空间，但在泛化上反而可能表现不佳，揭示高阶方法的权衡。"
+ ],
+ "method_framework": "以MLP在最小二乘回归下的连续梯度流为对象，定义时变NTK矩阵Kt=JtJt^T；分析普通GD误差动态∂e=-Kt e，再引入预条件Mt（高斯-牛顿/Levenberg-Marquardt近似Fisher）使各特征模态误差被均匀衰减，从而消除模态依赖的收敛差异。",
+ "experiment_framework": "以理论推导为主，辅以数值实验（合成函数拟合、算法类任务grokking设定）对比GD、Adam与高斯-牛顿/LM在不同频率模态收敛速度与测试泛化延迟上的差异，验证谱偏置与grokking的过渡假说。",
+ "takeaways": [
+  "预条件可显著加快lazy/NTK regime下所有频率模态的收敛，抑制谱偏置。",
+  "实验支持grokking是lazy(NTK)到rich regime之间过渡行为的观点。",
+  "PGD加速NTK探索但不必然带来更好泛化，高阶方法存在效率-泛化权衡。"
+ ],
+ "weaknesses": [
+  "理论建立在MLP/最小二乘/连续梯度流的强假设上，对现代Transformer和交叉熵损失的适用性存疑。",
+  "实证多为小规模合成/算法任务，缺乏在大规模真实benchmark上的验证。",
+  "仅用数值现象佐证grokking过渡假说，未给出严格的rich regime收敛证明。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PRECONDITIONED_On the Convergence Behavior Of PRECONDITIONED Gradient Descent toward the Rich Learning Regime.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PRECONDITIONED_On the Convergence Behavior Of PRECONDITIONED Gradient Descent toward the Rich Learning Regime.pdf",
+ "raw_overall": 6.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "纯理论分析，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

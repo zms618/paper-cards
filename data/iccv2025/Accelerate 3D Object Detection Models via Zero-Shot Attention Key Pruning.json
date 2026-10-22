@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Accelerate 3D Object Detection Models via Zero-Shot Attention Key Pruning.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Accelerate 3D Object Detection Models via Zero-Shot Attention Key Pruning.pdf",
+ "title": "Accelerate 3D Object Detection Models via Zero-Shot Attention Key Pruning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "零样本剪枝加速3D检测，但适用有限且需手动调参",
+ "innovations": [
+  "零样本运行时剪枝方法tgGBC，无需重新训练",
+  "利用分类分数和注意力图计算键的重要性",
+  "在边缘设备上部署验证了方法的有效性"
+ ],
+ "method_framework": "tgGBC方法通过将分类分数与注意力图相乘计算键的重要性，在每层transformer后剪除重要性低的键，保持嵌入维度不变，实现模型加速。",
+ "experiment_framework": "nuScenes数据集，8个3D检测模型，mAP/NDS指标，RTX3090和OrangePi设备测试",
+ "takeaways": [
+  "利用模型内部已有信息(分类分数和注意力图)作为剪枝标准",
+  "方法设计简洁，易于集成到现有模型中"
+ ],
+ "weaknesses": [
+  "方法主要针对密集型3D检测模型，不适用于稀疏注意力机制",
+  "参数k和n的选择需要针对不同模型进行调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D检测加速与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

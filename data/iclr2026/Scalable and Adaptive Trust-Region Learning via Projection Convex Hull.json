@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scalable and Adaptive Trust-Region Learning via Projection Convex Hull.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scalable and Adaptive Trust-Region Learning via Projection Convex Hull.pdf",
+ "title": "Scalable and Adaptive Trust-Region Learning via Projection Convex Hull",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.2
+ },
+ "one_line": "凸包优化方法，理论有限且与主线弱相关。",
+ "innovations": [
+  "从精确MINLP公式出发，在合适权重指派下证明其最优超平面可作为替代目标的驻点恢复，给出可信域学习的理论基础。",
+  "提出自适应构造与精炼超平面的流程：子区域划分+策略性加权+梯度更新，迭代剪枝冗余超平面并引入新超平面排除残余负样本。",
+  "将学到的多面体用作几何可信域，支持选择性分类与约束学习，在高维大规模设置下优于QuickHull等几何法与近期优化法。"
+ ],
+ "method_framework": "把复杂非线性边界用局部线性近似：每轮将数据划到各超平面所在子区域，在无约束替代目标上梯度更新超平面使其贴紧正类边界；剪枝冗余、补充新超平面，形成分而治之的凸包构造。",
+ "experiment_framework": "在合成与真实数据集上对比经典几何算法(QuickHull类)与近年基于优化的方法，度量准确率、可扩展性(高维/大规模)、模型紧凑度(超平面数)及选择性分类/约束学习效果。",
+ "takeaways": [
+  "基于MINLP替代目标的PCH能在高维数据上学到紧凑且边界贴合的可信域，克服经典凸包算法维度灾难。",
+  "学到的多面体能同时包住全部正样本并尽量排除负类，可作为安全关键场景下的可靠域/可行性集。"
+ ],
+ "weaknesses": [
+  "为通用几何/优化方法，不涉及LLM、多模态或医学影像，与主线仅在'可信域/选择性预测'概念上间接相关。",
+  "理论保证限于替代目标驻点恢复，对真实高维非凸数据的全局最优性、以及子区域划分稳定性的实证分析有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "可信域学习方法，支持安全关键场景的可靠域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

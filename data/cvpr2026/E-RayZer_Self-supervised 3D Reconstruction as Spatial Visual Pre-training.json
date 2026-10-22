@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/E-RayZer_Self-supervised 3D Reconstruction as Spatial Visual Pre-training.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/E-RayZer_Self-supervised 3D Reconstruction as Spatial Visual Pre-training.pdf",
+ "title": "E-RayZer Self-supervised 3D Reconstruction as Spatial Visual Pre-training",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "自监督3D高斯重建，提升预训练效果但收敛与鲁棒性存疑",
+ "innovations": [
+  "首个真正自监督的前馈3D高斯重建模型",
+  "基于视觉重叠的细粒度学习课程",
+  "显式3D几何建模避免隐式方法的捷径解"
+ ],
+ "method_framework": "E-RayZer预测相机参数和显式3D高斯，通过物理渲染约束进行自监督训练，结合视觉重叠的学习课程提高收敛性和可扩展性",
+ "experiment_framework": "数据集：WildRGB-D、DL3DV、ScanNet++等；基线：RayZer、SPFSplat、VGGT*；指标：姿态估计(RPA)、新视角合成(PSNR)、深度估计(AbsRel)",
+ "takeaways": [
+  "显式3D建模提供几何正则化，产生更基础的姿态估计",
+  "视觉重叠的学习课程有效解决显式3D表示的训练收敛问题",
+  "自监督预训练可提升监督模型的下游任务性能"
+ ],
+ "weaknesses": [
+  "训练复杂度高于隐式方法",
+  "依赖DINOv2等预训练模型计算语义重叠",
+  "未充分验证在极端低纹理场景下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D重建与可靠性主线无关，仅具几何正则化迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

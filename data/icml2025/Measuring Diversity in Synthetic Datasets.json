@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Measuring Diversity in Synthetic Datasets.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Measuring Diversity in Synthetic Datasets.pdf",
+ "title": "Measuring Diversity in Synthetic Datasets",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "将多样性评估建模为分类任务，DCScore满足公理但仅限文本验证",
+ "innovations": [
+  "提出DCScore，将多样性评估建模为样本分类任务，利用样本间相互关系度量多样性",
+  "提供理论验证：DCScore满足多样性相关公理，是有原则的多样性评估方法",
+  "实证证明DCScore与多种多样性伪真值相关性更强，同时计算成本显著低于现有方法"
+ ],
+ "method_framework": "将数据集多样性评估转化为样本分类问题：如果样本间差异大、难以相互分类，则数据集多样性高。利用样本间的相互关系构建分类任务，分类准确率作为多样性的反向指标——分类越难，多样性越高。通过理论推导证明该方法满足多样性度量的基本公理。",
+ "experiment_framework": "在多个合成数据集上评测，与现有多样性度量方法对比。指标为与多样性伪真值的相关性、计算效率。验证不同NLP任务（文本分类、摘要）上的效果。",
+ "takeaways": [
+  "分类视角可有效度量合成数据集的多样性",
+  "DCScore在相关性和计算效率上均优于现有方法",
+  "多样性评估可指导LLM生成器产出更多样的合成数据"
+ ],
+ "weaknesses": [
+  "仅在文本NLP任务上验证，图像和多模态数据的多样性度量未涉及",
+  "分类任务的设计对结果影响较大，最优分类器选择缺乏指导",
+  "多样性与质量的权衡关系未深入分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

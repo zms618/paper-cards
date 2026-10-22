@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Rig Synergizing Reasoning and Imagination In End-to-End Generalist Policy.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rig Synergizing Reasoning and Imagination In End-to-End Generalist Policy.pdf",
+ "title": "RIG: Synergizing Reasoning and Imagination in End-to-End Generalist Policy",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "端到端策略融合推理与想象，但缺乏严格对比与长程分析。",
+ "innovations": [
+  "首次在端到端通用策略中同时融合推理（reasoning-before-action）与想象（世界模型预测动作后果），而非外挂多个专用模型。",
+  "设计渐进式数据管线，在已有agent采集的轨迹中逐步注入并丰富推理与想象内容，实现二者的端到端联合训练。",
+  "推理与下一帧图像生成联合建模显式刻画推理-动作-环境动力学的关联，推理时可先出动作、再想象后果并据此自我修正，支持test-time scaling。"
+ ],
+ "method_framework": "单一通用策略同时输出推理文本、动作与未来图像token；通过在轨迹数据上渐进增补推理链与未来帧标注，联合优化动作预测与下一帧生成；推理时先推理出候选动作，再用世界模型预测后果并回看修正后再执行真实动作。",
+ "experiment_framework": "在开放世界具身任务上评测；对比只含推理或只含想象的先前端到端agent与多专用模型集成系统；报告样本效率（>17×提升）、鲁棒性、泛化、互操作性及测试时扩展带来的性能增益。",
+ "takeaways": [
+  "推理与世界模型想象的联合训练存在协同效应，能同时提升样本效率、泛化与鲁棒性。",
+  "想象环节为agent提供了动作前的审查与自我纠错机会，并支持测试时计算扩展。"
+ ],
+ "weaknesses": [
+  "17×样本效率提升的对照基线多为作者自设的先前系统，缺乏与近期开源具身VLA大模型的严格对比。",
+  "联合生成下一帧图像的世界模型误差会沿轨迹累积，长程想象的漂移问题在前9页未见充分分析。",
+  "与医学影像等可靠性落地域无直接关联，泛化声明多停留在具身仿真/特定 benchmark。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "具身agent的推理-想象协同，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

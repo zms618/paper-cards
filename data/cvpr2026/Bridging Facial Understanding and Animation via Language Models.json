@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Bridging Facial Understanding and Animation via Language Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Bridging Facial Understanding and Animation via Language Models.pdf",
+ "title": "Bridging Facial Understanding and Animation via Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "用几何VQ-VAE和LLM实现面部-语言双向映射，但依赖合成数据",
+ "innovations": [
+  "Open3DFaceVid大规模合成面部行为数据集",
+  "几何VQ-VAE将3D面部参数离散化为紧凑几何token",
+  "双向语言-面部运动对齐框架(Motion2Language和Language2Motion)"
+ ],
+ "method_framework": "基于3DMM参数的几何VQ-VAE编码器，将面部运动离散化为token序列，通过LLM实现双向映射：从几何token生成自然语言描述，或从文本提示生成几何token序列。",
+ "experiment_framework": "数据集：Open3DFaceVid(80小时，50.2K视频)；基线：HumanOmni、Gemini VLM、T2M-X、T2M-GPT；指标：表情正确性(CorE)、运动正确性(CorM)、强度正确性(CorI)、用户评分(USER)、L2距离、Frechet距离(FD)、token准确率(Tok)",
+ "takeaways": [
+  "几何token表示比图像token更高效地捕捉面部细微动态",
+  "合成数据集可解决面部表情不平衡问题",
+  "词级语言条件控制可实现细粒度面部动画生成"
+ ],
+ "weaknesses": [
+  "依赖合成数据集，可能缺乏真实场景的多样性",
+  "未充分探讨模型在真实世界数据上的泛化能力",
+  "计算资源消耗大(400 GPU小时)"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "人脸动画与可靠性主线无交点，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

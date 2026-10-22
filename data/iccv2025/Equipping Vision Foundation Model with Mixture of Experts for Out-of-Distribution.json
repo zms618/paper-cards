@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Equipping Vision Foundation Model with Mixture of Experts for Out-of-Distribution.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Equipping Vision Foundation Model with Mixture of Experts for Out-of-Distribution.pdf",
+ "title": "Equipping Vision Foundation Model with Mixture of Experts for Out-of-Distribution",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "DINOv2加MoFE模块提升OOD检测，但计算开销大且泛化性存疑",
+ "innovations": [
+  "Mixture of Feature Experts (MoFE)模块将复杂语义空间划分为多个子空间",
+  "Dynamic-ω Mixup策略根据类别区分度动态调整混合权重",
+  "发现DINOv2无需微调即可作为强OOD检测基线"
+ ],
+ "method_framework": "MoFE模块通过路由器将特征分配到不同专家，每个专家专注于特定子空间；结合Dynamic-ω Mixup增强特征学习，抑制特征范数增长",
+ "experiment_framework": "ImageNet-1K作为ID数据，iNaturalist18/Places/Sun/Textures等作为OOD数据集，使用FPR95和AUROC作为评估指标",
+ "takeaways": [
+  "利用预训练模型特征空间进行OOD检测的有效性",
+  "特征空间划分对复杂语义空间OOD检测的重要性",
+  "动态数据增强策略对提升模型泛化能力的价值"
+ ],
+ "weaknesses": [
+  "MoFE模块增加了模型复杂度和计算开销",
+  "动态混合策略的参数调整可能需要额外调优",
+  "实验主要在ImageNet数据集上进行，泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "OOD检测与可靠性主线明确交点，但泛化性存疑限制更高分",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

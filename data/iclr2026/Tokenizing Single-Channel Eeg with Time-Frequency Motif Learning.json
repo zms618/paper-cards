@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Tokenizing Single-Channel Eeg with Time-Frequency Motif Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tokenizing Single-Channel Eeg with Time-Frequency Motif Learning.pdf",
+ "title": "Tokenizing Single-Channel EEG with Time-Frequency Motif Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "单通道EEG时频模式tokenizer，提升基础模型性能但创新有限",
+ "innovations": [
+  "提出单通道EEG的时频模式tokenizer，通过双路径架构与时频掩码学习数据驱动的离散token词汇表",
+  "作为即插即用组件可与BIOT、LaBraM等现有EEG基础模型集成，下游任务性能一致提升",
+  "支持跨设备泛化：在与预训练数据信号格式、通道配置、记录设备均不同的耳EEG睡眠分期上仍优于基线14%"
+ ],
+ "method_framework": "TFM-Tokenizer采用双路径架构，分别从时间维度和频率维度提取EEG信号特征，通过时频掩码进行自监督训练，学习一组时频模式词汇表。推理时将单通道EEG信号编码为离散token序列，可输入轻量transformer或现有EEG基础模型。",
+ "experiment_framework": "在四个EEG基准数据集上评估，涵盖单数据集和多数据集预训练设置。基线包括BIOT、LaBraM等EEG基础模型及直接分段tokenization方法。指标采用Cohen's Kappa等。额外在耳EEG睡眠分期数据集上测试跨设备泛化能力。",
+ "takeaways": [
+  "数据驱动的EEG tokenization相比直接连续分段能带来显著性能提升（最高11% Cohen's Kappa）",
+  "单通道tokenizer设计使其具备设备无关性，可在不同EEG采集设备间迁移",
+  "token分析显示学习到的时频模式具有类别判别性、频率感知和一致性结构"
+ ],
+ "weaknesses": [
+  "与主线（多模态大模型推理/医学影像可靠性）关联较弱，仅为医学信号处理领域的tokenization方法",
+  "单通道EEG信号信息有限，多通道场景下的最优策略未充分探讨",
+  "时频模式词汇表大小等超参数的选择依据和敏感性分析不够充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "单通道EEG tokenizer提升基础模型性能，属于医学信号处理",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

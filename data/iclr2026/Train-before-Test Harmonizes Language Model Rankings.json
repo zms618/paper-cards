@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Train-before-Test Harmonizes Language Model Rankings.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Train-before-Test Harmonizes Language Model Rankings.pdf",
+ "title": "Train-before-Test Harmonizes Language Model Rankings",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "微调后评估模型潜力，发现排名跨基准一致且矩阵近似秩一",
+ "innovations": [
+  "提出train-before-test评估范式：先给每个模型相同的任务特定微调，再评估模型潜力，而非直接开箱评估",
+  "发现train-before-test下模型排名跨24个基准高度一致，而直接评估下排名几乎无外部效度",
+  "发现train-before-test将模型-分数矩阵降为近似秩一，表明模型潜力由单一潜在因子主导",
+  "恢复了困惑度与下游任务性能的联系：预微调困惑度可预测微调后下游性能"
+ ],
+ "method_framework": "对每个模型，在每个基准上先进行相同的任务特定微调（train），然后再评估（test）。这样测量的是模型的潜力（achievable performance after adaptation），而非开箱即用性能。通过对比直接评估和train-before-test下的排名一致性、外部效度和矩阵结构，揭示模型比较的本质。",
+ "experiment_framework": "在24个基准和61个模型上进行全面实证评估。对比直接评估和train-before-test下的排名一致性、跨基准迁移性、困惑度-性能相关性，以及模型-分数矩阵的秩结构。",
+ "takeaways": [
+  "直接评估的模型排名相互矛盾，因为训练数据混合差异（训练在测试任务上）混淆了比较",
+  "train-before-test下模型潜力排名跨基准高度一致，可从一个基准迁移到另一个",
+  "模型潜力本质上由单一潜在因子主导（分数矩阵近似秩一），预训练困惑度即可预测"
+ ],
+ "weaknesses": [
+  "train-before-test需要对每个模型在每个基准上微调，计算成本高昂",
+  "微调协议的标准化程度对结果的影响未充分分析",
+  "仅讨论了基础模型，指令微调后模型的train-before-test行为未探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "模型评估方法研究，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

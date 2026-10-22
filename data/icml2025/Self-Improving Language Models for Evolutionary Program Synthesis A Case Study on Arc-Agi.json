@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Self-Improving Language Models for Evolutionary Program Synthesis A Case Study on Arc-Agi.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Self-Improving Language Models for Evolutionary Program Synthesis A Case Study on Arc-Agi.pdf",
+ "title": "Self-Improving Language Models for Evolutionary Program Synthesis: A Case Study on ARC-AGI",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "LLM嵌入进化搜索循环，后见学习微调提升ARC-AGI性能。",
+ "innovations": [
+  "将语言模型纳入自改进的进化程序合成闭环，使采样与精化能力随迭代不断变强。",
+  "提出后见学习(hindsight learning)阶段，把历史搜索尝试(含失败)转化为有效问题-解对来微调LLM。",
+  "在ARC-AGI上跨模型规模与迭代取得显著增益，并观察到采样与精化微调任务间的正迁移，且可迁移到测试时自适应。"
+ ],
+ "method_framework": "两阶段迭代循环：(1)进化搜索阶段用LLM作为智能生成/变异算子采样并精化候选程序解；(2)后见学习阶段将本轮搜索中产生的有效(含从失败中挽救的)问题-解对回注，微调LLM的采样与精化策略，使下一轮搜索更高效，打破固定生成模型能力上限。",
+ "experiment_framework": "在困难基准ARC-AGI上评测，扫描不同模型规模与迭代轮次；基线为固定能力的LLM+进化搜索、单次采样等；指标为任务求解成功率，报告随迭代/规模的增益曲线、采样与精化微调的正迁移消融，以及测试时自适应表现。",
+ "takeaways": [
+  "让进化搜索与LLM微调相互促进，可突破固定生成模型的能力瓶颈。",
+  "后见学习把过往搜索经验转化为训练信号，带来跨模型规模的持续性能增益。",
+  "增益可迁移到测试时自适应设置。"
+ ],
+ "weaknesses": [
+  "仅在ARC-AGI一个基准上做案例研究，通用性证据有限。",
+  "进化搜索+反复微调的计算开销与实际成本较高。",
+  "后见学习如何避免错误/幻觉解被当作正例回注的安全边界讨论不足。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

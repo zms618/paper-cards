@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Feature Importance Metrics in the Presence of Missing Data.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Feature Importance Metrics in the Presence of Missing Data.pdf",
+ "title": "Feature Importance Metrics in the Presence of Missing Data",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "区分全数据与观测特征重要性，提出FMIG量化测量频率对预测的边际提升。",
+ "innovations": [
+  "明确区分全数据特征重要性与观测数据特征重要性两个评估框架，澄清当前实践中estimand定义不清的问题",
+  "提出特征测量重要性梯度(FMIG)，模型无关地量化增加某特征测量概率对预测损失的边际影响",
+  "证明FMIG不需要positivity假设，而全数据特征重要性估计在positivity违反时会产生严重偏差"
+ ],
+ "method_framework": "以LOCO(留一协变量)度量为基础，分别定义全数据LOCO与观测数据LOCO的estimand，分析各自的识别条件与估计方法。进一步通过对测量策略施加扰动干预(odds ratio参数δ)，定义FMIG为负损失对扰动参数的梯度，证明其在SUTVA与MAR序列测量假设下可识别。估计上需要学习各特征的倾向得分模型并采用交叉拟合。",
+ "experiment_framework": "合成时间序列预测任务，使用零插补+时间卷积网络(TCN)分类器。设计4组实验：(1)MCAR下不同缺失率特征的重要性对比；(2)MNAR机制对观测数据重要性的影响；(3)positivity违反时完整案例估计的偏差；(4)FMIG区分已完全测量、可改善测量、无信息常数特征的能力。",
+ "takeaways": [
+  "观测数据特征重要性与全数据特征重要性可能得出完全相反的结论，尤其是在高价值特征测量频率低时",
+  "当positivity假设被违反时(如医疗数据中昂贵检查很少做)，全数据特征重要性估计会产生严重偏差",
+  "FMIG能有效识别哪些特征增加测量频率最能提升预测性能，指导数据采集优化"
+ ],
+ "weaknesses": [
+  "全部实验仅在合成数据上验证，缺乏真实医疗或工业数据集的实证支持，方法实用性存疑",
+  "FMIG估计需要学习每个特征的倾向得分模型，高维特征下计算复杂度和模型误设风险未充分讨论",
+  "论文主要聚焦分类任务，对回归和更复杂的结构化预测场景的推广仅简要提及"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

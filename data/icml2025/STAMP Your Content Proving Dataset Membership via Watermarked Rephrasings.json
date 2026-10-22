@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/STAMP Your Content Proving Dataset Membership via Watermarked Rephrasings.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/STAMP Your Content Proving Dataset Membership via Watermarked Rephrasings.pdf",
+ "title": "STAMP: Proving Dataset Membership via Watermarked Rephrasings",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "改写水印配对统计检测LLM训练数据成员，依赖主动水印且鲁棒性存疑",
+ "innovations": [
+  "提出改写水印思路：对原文生成多条改写、每条嵌入不同秘密密钥的水印，公开一条、保留其余，避免破坏可读性/分词",
+  "用配对统计检验比较目标模型在公开版与私版改写上的似然差异来判定成员归属，无需访问同分布未见验证集",
+  "即使某基准在训练中只出现一次、占比不足0.001% token也能检出，超越多种污染检测/数据集推断基线"
+ ],
+ "method_framework": "内容创作者对原始文本生成多条语义等价改写，每条嵌入一个唯一秘密密钥的水印；对外只发布其中一条(保持语义与效用)，其余私藏；待判定时，以配对统计检验比较目标LLM在公开版与私藏版上的输出似然——若模型训练时见过公开版水印，其对公开版的似然会系统性偏高，据此统计显著地证明数据成员关系。",
+ "experiment_framework": "在四个仅在训练中出现一次、占比<0.001% token的基准上检测污染；对比字符替换/unicode替换、基于验证集的方法、顺序对比等多种污染检测与数据集推断基线；并在论文摘要、博客文章两个真实场景验证；同时检验水印对语义与数据效用的保持。",
+ "takeaways": [
+  "改写式水印可在不损害机器可读性与基准效用的前提下，实现第三方独立的数据归属检测",
+  "配对似然统计检验在极稀疏(<0.001%)、单次出现的训练数据下仍具检测力",
+  "方法可用于版权数据追责与测试集污染核查两个现实场景"
+ ],
+ "weaknesses": [
+  "依赖创作者在发布前主动水印化，对已公开发布、无法回加水印的存量数据无能为力",
+  "公开版与私版改写需由模型生成，改写质量/语义一致性波动可能引入额外似然偏置，正文前9页对该混杂控制讨论有限",
+  "检出率随训练占比上升而增强，但对模型刻意去水印/重写攻击的鲁棒性在前9页未充分评估"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

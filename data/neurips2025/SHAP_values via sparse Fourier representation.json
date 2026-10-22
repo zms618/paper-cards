@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/SHAP_values via sparse Fourier representation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/SHAP_values via sparse Fourier representation.pdf",
+ "title": "SHAP values via sparse Fourier representation",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "稀疏傅里叶表示加速SHAP计算，但特征限制明显",
+ "innovations": [
+  "利用傅里叶表示将SHAP计算转化为线性求和",
+  "为单个傅里叶基函数推导出SHAP值的闭式表达式",
+  "实现可调节精度与效率的权衡"
+ ],
+ "method_framework": "两阶段算法：首先用稀疏傅里叶表示近似预测函数，然后利用推导的闭式公式精确计算SHAP值，实现线性复杂度计算。",
+ "experiment_framework": "在4个真实数据集(Entacmaea, GB1, avGFP, SGEMM)上测试，使用神经网络和树模型作为预测器，比较与KERNELSHAP等方法的性能。",
+ "takeaways": [
+  "利用函数的稀疏傅里叶表示可大幅加速SHAP计算",
+  "闭式表达式避免了指数级求和，支持高效并行化"
+ ],
+ "weaknesses": [
+  "仅适用于二进制特征或可离散化的特征",
+  "傅里叶近似步骤的计算成本可能较高"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

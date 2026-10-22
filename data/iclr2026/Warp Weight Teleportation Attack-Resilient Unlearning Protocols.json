@@ -1,0 +1,37 @@
+{
+ "key": "iclr2026/Warp Weight Teleportation Attack-Resilient Unlearning Protocols.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Warp Weight Teleportation Attack-Resilient Unlearning Protocols.pdf",
+ "title": "WARP: Weight Teleportation for Attack-Resilient Unlearning Protocols",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "eference": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "权重瞬移防御近似遗忘隐私泄露，但LLM适用性未验证",
+ "innovations": [
+  "识别近似遗忘隐私泄露的两个根本原因：遗忘样本梯度范数大、遗忘后参数与原模型过于接近",
+  "提出WARP即插即用防御：利用神经网络对称性进行权重重参数化，降低遗忘集梯度能量并增大参数散布",
+  "在6种遗忘算法上一致提升隐私，黑盒攻击AUC降低64%，白盒降低92%，同时保留效用"
+ ],
+ "method_framework": "基于神经网络对称性（如权重置换对称性）对遗忘后的模型进行权重瞬移：在不改变模型预测的前提下，将参数空间中的\"遗忘信号\"（权重差）打散到对称性等价的新位置。这使得攻击者难以通过对比遗忘前后模型来区分遗忘样本和非成员样本。",
+ "experiment_framework": "在6种主流近似遗忘算法（NGP、SCRUB等）上评估。攻击包括针对遗忘的成员推理攻击和数据重建攻击，分别测试黑盒和白盒设置。指标为攻击AUC和保留数据上的准确率。",
+ "takeaways": [
+  "近似遗忘本身会泄露隐私——对比遗忘前后模型的权重差，攻击者可推断哪些数据被遗忘了",
+  "权重瞬移利用神经网络对称性混淆遗忘信号，是一种通用的即插即用防御",
+  "隐私保护和效用保持可以兼得——WARP在大幅降低攻击成功率的同时几乎不影响保留数据准确率"
+ ],
+ "weaknesses": [
+  "仅在文本分类和图像分类等标准任务上验证，大规模LLM遗忘场景的适用性未知",
+  "权重瞬移的具体对称性选择对防御效果的影响未系统消融",
+  "更强的自适应攻击（知道WARP存在的攻击者）下防御是否仍然有效未评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

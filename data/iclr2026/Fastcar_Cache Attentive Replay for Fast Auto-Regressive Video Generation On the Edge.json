@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Fastcar_Cache Attentive Replay for Fast Auto-Regressive Video Generation On the Edge.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Fastcar_Cache Attentive Replay for Fast Auto-Regressive Video Generation On the Edge.pdf",
+ "title": "Fastcar: Cache Attentive Replay for Fast AUTO-REGRESSIVE Video Generation On the Edge",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "缓存注意力重放加速边缘视频生成，但实验局限明显",
+ "innovations": [
+  "提出时间注意力分数(TAS)指导MLP模块重放策略",
+  "开发基于TAS的动态资源调度硬件加速器",
+  "理论证明TAS与MLP输出相似性的关系"
+ ],
+ "method_framework": "FastCar框架通过缓存前一帧MLP输出，当TAS超过阈值时跳过当前MLP计算，减少冗余计算，加速解码过程。",
+ "experiment_framework": "使用VILA-U模型在8帧256×256视频上测试，对比稀疏注意力方法，使用PSNR、SSIM、LPIPS和VBench评估质量，测量延迟和功耗效率。",
+ "takeaways": [
+  "MLP模块是自回归视频生成的主要计算瓶颈",
+  "相邻帧MLP输出存在高度时间冗余",
+  "硬件加速器中的动态资源调度可有效处理工作负载不平衡"
+ ],
+ "weaknesses": [
+  "仅评估了8帧短视频，未测试长序列视频",
+  "未探索不同视频类型(如高动态内容)的适用性",
+  "理论分析中的假设条件在实际应用中可能不完全成立"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "边缘视频生成与可靠性主线无交点，仅属常规优化工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

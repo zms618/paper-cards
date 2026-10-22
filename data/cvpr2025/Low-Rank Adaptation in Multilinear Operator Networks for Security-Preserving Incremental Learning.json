@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Low-Rank Adaptation in Multilinear Operator Networks for Security-Preserving Incremental Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Low-Rank Adaptation in Multilinear Operator Networks for Security-Preserving Incremental Learning.pdf",
+ "title": "Low-Rank Adaptation in Multilinear Operator Networks for Security-Preserving Incremental Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "PoLoRA结合GPM实现加密增量学习，但实验有限且缺乏理论指导。",
+ "innovations": [
+  "提出针对MONet的Polynomial Low-Rank Adaptation (PoLoRA)",
+  "设计任务无关的PoLoRA分支连接机制",
+  "结合梯度投影内存(GPM)初始化下投影矩阵减少任务干扰"
+ ],
+ "method_framework": "IPoLoRA框架在MONet中集成低秩适应模块，通过GPM初始化下投影矩阵确保新任务学习与旧任务梯度正交，实现安全加密环境下的增量学习。",
+ "experiment_framework": "在CIFAR-100、ImageNet-R和PACS数据集上评估，与Full FT、Classifier FT等基线比较平均准确率和任务间遗忘情况。",
+ "takeaways": [
+  "低秩适应可满足加密网络约束，避免非线性激活",
+  "梯度投影内存能有效减少增量学习中的灾难性遗忘",
+  "任务无关设计增强模型在实际应用中的灵活性"
+ ],
+ "weaknesses": [
+  "实验仅限于图像分类任务，未扩展到其他视觉任务",
+  "未分析计算开销和推理时间增加情况",
+  "GPM缩放因子αGPM的选择缺乏理论指导"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "加密增量学习属于隐私鲁棒，但实验有限且缺乏理论指导",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

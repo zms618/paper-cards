@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Same Content, Different Representations A Controlled Study for Table QA.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Same Content, Different Representations A Controlled Study for Table QA.pdf",
+ "title": "Same Content, Different Representations: A Controlled Study for Table QA",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "控制内容变结构的表格表示对照研究，揭示方法权衡与局限性",
+ "innovations": [
+  "首个固定内容、仅变表格结构的受控研究，用verbalization管线生成配对的结构化与半结构化表格，直接对比不同建模范式。",
+  "提出REPAIRTQA诊断基准，按表格规模、join需求、查询复杂度、schema质量等维度切分，支持细粒度分析。",
+  "揭示一致权衡：SQL法在结构化输入上准但半结构化下降、LLM法灵活但精度低、混合法在噪声schema下取得平衡；且无单一方法在所有条件下最优。"
+ ],
+ "method_framework": "保持表格内容恒定，仅在结构化(规整schema+SQL)与半结构化(不规则列/自由文本单元格)两种表示间切换；在REPAIRTQA各切片上分别评测NL2SQL、LLM-based、混合三类方法，分离表示本身对性能的影响。",
+ "experiment_framework": "在REPAIRTQA上按表格规模/join/查询复杂度/schema质量切片，对比NL2SQL、LLM-based、混合方法的准确率；检验表示偏移与噪声schema下的鲁棒性。",
+ "takeaways": [
+  "表格表示本身是决定Table QA性能的核心因素，而非仅查询领域/复杂度。",
+  "随表格变大、查询变复杂，表示偏移的影响加剧；现实中需按数据格式选择或混合方法。"
+ ],
+ "weaknesses": [
+  "属表格问答/结构化数据方向，与可靠性×医学影像/多模态推理主线关联弱。",
+  "verbalization生成配对表格的真实度有限，结论能否推广到真实异构、含错误的半结构化表格仍需验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "表格QA方法研究，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

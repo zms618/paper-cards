@@ -1,0 +1,41 @@
+{
+ "title": "ECHO: Toward Contextual Seq2Seq Paradigms in Large EEG Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "将EEG建模重构为seq2seq，用支持样本实现零参数多任务适配。",
+ "innovations": [
+  "从编码中心转向解码中心的LEM范式，把EEG建模重述为seq2seq",
+  "在序列空间刻画信号、标签、任务的分层关系，并用离散支持样本构造上下文线索",
+  "赋予EEG模型上下文学习能力，跨异构任务动态适配而无需参数更新"
+ ],
+ "method_framework": "以解码器为中心，将信号-标签-任务的分层关系放入序列空间；引入离散化的支持样本作为上下文示例，使模型在多任务间通过上下文学习动态适配，而非依赖轻量分类头微调。",
+ "experiment_framework": "在多个EEG数据集上做情绪识别、运动想象等多任务评测；对比编码中心预训练+微调的单任务LEM；报告即便用基础组件也在多任务设置下持续超过SOTA单任务LEM。",
+ "takeaways": [
+  "现有LEM缺可比容量的解码器，限制了预训练特征的利用",
+  "解码中心seq2seq+上下文学习可实现跨任务零参数适配",
+  "多任务泛化与适应性优于单任务微调范式"
+ ],
+ "weaknesses": [
+  "属EEG信号而非医学影像，落地域相关但非影像",
+  "依赖支持样本构造，上下文示例质量对性能影响未充分消融",
+  "前9页未见与最新LEM的逐项数值对比"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/SEQ2SEQ_Echo toward Contextual SEQ2SEQ Paradigms In Large Eeg Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SEQ2SEQ_Echo toward Contextual SEQ2SEQ Paradigms In Large Eeg Models.pdf",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "EEG建模非医学影像，但解码中心设计具可靠性迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

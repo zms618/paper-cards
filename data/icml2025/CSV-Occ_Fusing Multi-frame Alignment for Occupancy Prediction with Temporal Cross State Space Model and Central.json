@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/CSV-Occ_Fusing Multi-frame Alignment for Occupancy Prediction with Temporal Cross State Space Model and Central.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CSV-Occ_Fusing Multi-frame Alignment for Occupancy Prediction with Temporal Cross State Space Model and Central.pdf",
+ "title": "CSV-Occ: Fusing Multi-frame Alignment for Occupancy Prediction with Temporal Cross State Space Model and Central Voting Mechanism",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "elevance": 4.0,
+  "evidence": 6.0,
+  "overall": 5.3
+ },
+ "one_line": "线性时序对齐+中心投票解决占据预测空洞，但泛化性有限",
+ "innovations": [
+  "把状态空间模型扩展为多输入序列交互，级联架构做时序建模，将时序融合复杂度由二次降为线性",
+  "提出central voting机制，让体素显式投票所属实例中心，由粗到细利用同实例其他体素特征补全物体内部空洞",
+  "在Occ3D-nuScenes相机占据预测达SOTA，并在nuScenes LiDAR语义分割表现良好"
+ ],
+ "method_framework": "在BEV特征上用扩展的跨输入状态空间模型(级联)做多帧时序对齐以替代高复杂度注意力；再以中心投票机制让各体素聚合所属实例中心特征，从粗到细修正前景物体被误判为空闲的内部空洞(IOV)。",
+ "experiment_framework": "在Occ3D-nuScenes相机3D语义占据基准上与现有时序融合方法比较，报告mIoU等占据指标；并在nuScenes LiDAR点云语义分割上评估泛化。",
+ "takeaways": [
+  "SSM级联可在保持时序对齐效果的同时把复杂度降到线性",
+  "中心投票能有效缓解前景物体中心被预测为空体素的语义歧义问题",
+  "时序信息对遮挡严重/无深度的视觉占据预测至关重要"
+ ],
+ "weaknesses": [
+  "主线为自动驾驶视觉占据感知，与可靠性主线及医学影像/多模态推理落地域无关",
+  "依赖nuScenes类车载数据，跨场景(室内/城市场景外)泛化未验证",
+  "中心投票引入实例归属假设，对密集/遮挡严重场景的投票噪声影响分析有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/SuffixDecoding_Extreme Speculative Decoding for Emerging AI Applications.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/SuffixDecoding_Extreme Speculative Decoding for Emerging AI Applications.pdf",
+ "title": "SuffixDecoding: Extreme Speculative Decoding for Emerging AI Applications",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.75
+ },
+ "one_line": "后缀树缓存实现推测解码，加速代理应用5.3倍，但内存开销大且依赖重复模式。",
+ "innovations": [
+  "利用后缀树缓存长序列实现快速模式匹配",
+  "自适应推测长度机制根据模式匹配长度动态调整",
+  "混合推测方法结合后缀树与模型方法的优点"
+ ],
+ "method_framework": "SuffixDecoding构建全局和请求级后缀树缓存历史输出，通过模式匹配找到可能延续，构建推测树并基于频率统计评分，自适应控制推测长度，最后由LLM验证。",
+ "experiment_framework": "在SWE-Bench和AgenticSQL代理应用上评估，与EAGLE-2/3、PLD和Token Recycling等基线比较，测量加速比和平均接受令牌数。",
+ "takeaways": [
+  "后缀树缓存可有效利用代理应用中的重复序列",
+  "自适应推测长度机制能平衡接受率和计算效率",
+  "混合方法可处理混合工作负载"
+ ],
+ "weaknesses": [
+  "在非代理开放性任务上表现不如专用模型方法",
+  "后缀树构建和维护可能带来额外内存开销",
+  "依赖历史输出中的重复模式，对全新任务效果有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

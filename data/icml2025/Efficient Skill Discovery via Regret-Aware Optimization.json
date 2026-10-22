@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Efficient Skill Discovery via Regret-Aware Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficient Skill Discovery via Regret-Aware Optimization.pdf",
+ "title": "Efficient Skill Discovery via Regret-Aware Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.75
+ },
+ "one_line": "对抗性技能发现框架，在特定环境有提升但依赖环境非对称性",
+ "innovations": [
+  "关键洞见：技能发现与策略学习对抗——弱强度技能应多探索、已收敛技能少探索；用regret(=V_k-V_{k-1}，TD误差估计)量化策略强度收敛程度，指导技能发现而非均匀采样。",
+  "bounded表示学习：把φ约束在[-1,1](tanh)满足Lipschitz，并用zupdated=(z-φ(s))/||z-φ(s)||利用z的模长信息区分障碍物后点，解决METRA只用单位向量无法区分相似技能的问题。",
+  "可更新技能生成器种群Pz(GMM)+双正则：KL到旧种群(避免冗余)+对已见状态缓冲Bk的log π(φseen)(PPO式邻近约束，防生成器跑过智能体能力边界)，避免单生成器的skill forgetting/退化。"
+ ],
+ "method_framework": "条件MDP下，智能体πθ1基于METRA的Wasserstein依赖度量学时序表示φ，内在奖励rφ=||z-φ(s_t)||-||z-φ(s_{t+1})||，SAC优化；regret Reg_k(z)=V_{πθ1^k}(s0|z)-V_{πθ1^{k-1}}(s0|z)。生成器πθ2在潜技能空间策略梯度max E[Reg_k(z)]+α1 d_z(KL到Pz)+α2 d_φ(max log πθ2(φseen))，每阶段优化后πθ2入种群Pz、最旧弹出。",
+ "experiment_framework": "环境dm_control Ant(skill-symmetric)+D4RL Maze2d-large/Antmaze-medium/Antmaze-large(skill-asymmetric)；基线DIAYN/DADS/LSD/METRA-f/d；指标CoverCoords(唯一坐标数=状态覆盖)、zero-shot导航final distance(FD)与success rate(AR)；消融模块、regret/entropy曲线、技能分布contour；另测kitchen离散技能。",
+ "takeaways": [
+  "skill-asymmetric环境(Maze2d/Antmaze)RSD的CoverCoords收敛更快、覆盖更广，尤其高维Antmaze-large上效率显著优于LSD/METRA(后者受PCA式主方向限制探索同质技能)。",
+  "zero-shot导航：Antmaze-large AR 0.507 vs METRA-d 0.435(+16%)、FD 6.42 vs 6.76；Maze2d-large AR 0.811 vs 0.782。",
+  "regret曲线先升(找到能力边界)后降(智能体掌握新技能)到0，熵先升后稳，证明min-max机制收敛；Ant等skill-symmetric环境RSD略低于均匀采样METRA(因需学更广范围)。"
+ ],
+ "weaknesses": [
+  "仅在4个toy导航环境验证，无真实机器人/操作任务；regret用n步TD误差估计含偏置，作者自承对未见z会误导生成器，虽邻近正则缓解但未定量分析。",
+  "skill-symmetric环境(Ant)上RSD反而不如基线，方法收益高度依赖环境非对称性；生成器种群规模/双正则权重α1/α2需手调。",
+  "属无监督RL探索/技能发现，与可靠性主线（鲁棒/泛化/可信AI/不确定性/幻觉抑制在医学影像或多模态大模型推理）无直接关系。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

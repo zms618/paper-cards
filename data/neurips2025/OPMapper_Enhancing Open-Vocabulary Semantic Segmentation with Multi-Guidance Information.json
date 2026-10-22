@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/OPMapper_Enhancing Open-Vocabulary Semantic Segmentation with Multi-Guidance Information.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/OPMapper_Enhancing Open-Vocabulary Semantic Segmentation with Multi-Guidance Information.pdf",
+ "title": "OPMapper: Enhancing Open-Vocabulary Semantic Segmentation with Multi-Guidance Information",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "OPMapper用轻量模块增强CLIP分割，但文本引导潜力受限",
+ "innovations": [
+  "上下文感知注意力注入(CAI)模块，手动设计理想化注意力权重矩阵",
+  "语义注意力对齐(SAA)模块，迭代融合视觉和文本信息",
+  "轻量级即插即用模块，无需修改CLIP参数即可提升性能"
+ ],
+ "method_framework": "OPMapper包含CAI和SAA两个模块，CAI注入局部紧凑性和全局连接性到注意力权重，SAA通过跨模态融合对齐注意力与文本提示，训练后丢弃SAA保留CAI作为最终模块。",
+ "experiment_framework": "在8个开放词汇分割基准上测试，包括VOC-21、VOC-20、Context-60等，集成到11个CLIP-based模型中，平均显著提升性能。",
+ "takeaways": [
+  "手动设计理想化注意力权重矩阵作为引导，平衡局部和全局关系",
+  "轻量级即插即用模块设计，可灵活集成到现有方法中"
+ ],
+ "weaknesses": [
+  "SAA模块仅在训练中使用，推理时被丢弃，可能限制了文本引导的潜力",
+  "CAI模块中λ参数(0.3)是经验设定的，可能不是最优"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

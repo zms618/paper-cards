@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Dark3R_Learning Structure from Motion in the Dark.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Dark3R_Learning Structure from Motion in the Dark.pdf",
+ "title": "Dark3R Learning Structure from Motion in the Dark",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "教师-学生蒸馏将MASt3R适应低光照，但计算资源高且依赖已知相机参数",
+ "innovations": [
+  "教师-学生蒸馏框架将MASt3R适应低光照条件",
+  "直接在原始RAW图像上处理极低信噪比(SNR<-4dB)数据",
+  "无需3D监督，仅使用噪声-清洁原始图像对训练",
+  "粗到细的辐射场优化实现低光照新视图合成"
+ ],
+ "method_framework": "基于MASt3R架构，通过LoRA微调学生网络，在噪声-清洁图像对间对齐特征图，实现低光照鲁棒的特征匹配和姿态估计",
+ "experiment_framework": "新数据集(42,000多视图原始图像)/COLMAP/MASt3R-SfM/VGGT基线/姿态误差(ATE/RPE)和深度一致性(AbsRel)指标",
+ "takeaways": [
+  "教师-学生蒸馏可有效将预训练模型适应极端条件",
+  "直接处理RAW图像保留ISP处理中丢失的信息",
+  "多视图一致性约束对低光照3D重建至关重要"
+ ],
+ "weaknesses": [
+  "计算资源需求高，需要8个RTX A6000 GPU",
+  "仅在有相机内参已知的情况下有效",
+  "未展示在动态场景中的性能"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "低光照SfM与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

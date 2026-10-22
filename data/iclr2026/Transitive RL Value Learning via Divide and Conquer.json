@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Transitive RL Value Learning via Divide and Conquer.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Transitive RL Value Learning via Divide and Conquer.pdf",
+ "title": "Transitive RL: Value Learning via Divide and Conquer",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "利用三角不等式结构实现分治值更新，降低Bellman递归复杂度",
+ "innovations": [
+  "将目标条件RL中值函数的三角不等式结构转化为分治值更新规则，全新的值学习范式",
+  "理论上将处理长度T轨迹所需的Bellman递归次数从O(T)降至O(log T)，大幅减少偏差累积",
+  "结合动态规划降低蒙特卡洛方法的高方差问题，同时规避TD学习的偏差累积问题"
+ ],
+ "method_framework": "TRL是面向离线目标条件RL的值学习算法。利用GCRL中两点间最短路径距离满足的三角不等式，将长轨迹的价值估计分解为两个半程的价值估计之和。这种分治递归使得处理长度T的轨迹仅需O(log T)次递归，而非TD方法的O(T)次，从而指数级减少偏差累积。同时动态规划性质控制了方差。",
+ "experiment_framework": "在高度挑战性的长视距离线GCRL基准任务上评估，对比TD学习、n-step返回、蒙特卡洛等传统值学习方法，测量长视距任务下的成功率和性能。",
+ "takeaways": [
+  "三角不等式结构可被利用来构建分治值更新，从根本上缓解RL的时间诅咒问题",
+  "TRL在长视距离线GCRL任务上优于现有算法，因为偏差累积显著减少",
+  "分治方法同时兼顾了TD方法的低方差和MC方法的低偏差优势"
+ ],
+ "weaknesses": [
+  "仅适用于目标条件RL场景，三角不等式结构在一般RL问题中不存在",
+  "分治更新需要访问中间状态的价值估计，实际实现中如何高效获取这些中间值未详细讨论",
+  "实验验证集中在仿真控制任务，未探讨在LLM决策等更长序列场景的适用性"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "仅适用于特定RL场景，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

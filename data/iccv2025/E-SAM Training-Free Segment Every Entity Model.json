@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/E-SAM Training-Free Segment Every Entity Model.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/E-SAM Training-Free Segment Every Entity Model.pdf",
+ "title": "E-SAM Training-Free Segment Every Entity Model",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "冻结SAM参数，三模块优化实体分割但未验证特定领域",
+ "innovations": [
+  "多级掩码生成(MMG)模块",
+  "实体级掩码精炼(EMR)模块",
+  "欠分割精炼(USR)模块"
+ ],
+ "method_framework": "E-SAM冻结SAM参数，通过MMG分层处理AMG输出，EMR分离重叠并合并相似掩码，USR生成额外高置信度掩码，实现无需训练的实体级分割",
+ "experiment_framework": "在EntitySeg、COCO2017val和SA1B数据集上评估，与Mask2Former、CropFormer等方法比较，使用APe指标",
+ "takeaways": [
+  "无需训练即可显著提升SAM性能",
+  "多级掩码处理策略可有效解决过分割和欠分割问题"
+ ],
+ "weaknesses": [
+  "未在医学影像等特定领域验证",
+  "模块间依赖性强，可能限制灵活性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "医学影像分割无验证，仅通用分割无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

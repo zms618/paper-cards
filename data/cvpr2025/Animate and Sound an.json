@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Animate and Sound an.pdf",
+ "conf": "cvpr2025",
+ "path": "C:\\Users\\James\\Desktop\\study\\paper\\项目记忆\\论文卡片\\精读卡片库\\cvpr2025\\Animate and Sound an.json",
+ "title": "Animate and Sound an Image: Image-to-Sounding-Video Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "拆层统一音视频扩散模型，但机制适用范围不清且实验证据不足",
+ "innovations": [
+  "把已分别预训练的视频扩散模型与音频扩散模型拆成 Input / Expert / Output 三类子层，用 Joint Block 统一，使两套异构参数在同一网络内协作，避免从头联合训练。",
+  "全注意力层改用 Perceiver Joint Attention：视频与音频的 Q、K 各自独立投影到同维、V 与 out-projection 各自独立投影，既做跨模态交互又保留模态独立参数；并用统一时间步 tuni 同时桥接 DDPM（离散）与 EDM（连续）两套训练目标，联合损失为 λ1‖v0−v̂‖²+λ2‖a0−â‖²。",
+  "推理侧提出 JointCFG（用 block-diagonal 注意力屏蔽构造模态隔离负项）与 JointCFG*（额外引入去掉 Full Attention 的「坏版」模型做引导），解决 classifier-free 引导时跨模态互相泄漏的问题。"
+ ],
+ "method_framework": "视频/音频预训练 DM 拆为 Input-Expert-Output 子层，Joint Block 统一；Full Attention 用分离 QK/V 投影的 Perceiver 联合注意力；统一时间步 tuni 桥接 DDPM 与 EDM。",
+ "experiment_framework": "AVSync15 / Landscape(928 视频) / GreatestHits(977) 三基准；对比 SVD+AudioLDM、IM2Wav+AVSyncD、AudioLDM-v+AVSyncD 等级联管线；指标 FVD、FAD/Melception、语义与时序一致性。",
+ "takeaways": [
+  "用「坏版」模型做负向引导（JointCFG*）是低成本替代「再训一个无条件模型」的写法，可推广到其它多模态扩散的 classifier-free 引导。",
+  "统一时间步 tuni 让离散 DDPM 与连续 EDM 目标写进同一个损失，绕开了两套扩散范式参数归一化不同带来的工程鸿沟。"
+ ],
+ "weaknesses": [
+  "「拆层 + Joint Block」的可行性依赖两个预训练模型的层结构可对齐，而 Input/Expert/Output 的划分是人为设定；正文未给出对齐准则，也未说明层错位时的处理，机制的适用范围不清。",
+  "JointCFG* 需要额外训练/保存一个去掉 Full Attention 的「坏版」模型，训练与推理开销都上升，但正文未量化这部分开销，也没有给出 Positive/Negative 项配比 λ 的选取依据（是否为网格搜索未知）。",
+  "对比基线都是「冻结单模态模型 + 已发布条件模块」的级联方案，缺少与端到端联合训练的多模态扩散模型比较；FVD/FAD 无方差、无用户研究佐证「视听同步」这一主观 claim。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "多模态生成技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

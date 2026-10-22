@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Prior Knowledge Guided Neural Architecture Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Prior Knowledge Guided Neural Architecture Generation.pdf",
+ "title": "Prior Knowledge Guided Neural Architecture Generation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "量化组件贡献作先验，扩散模型生成架构，效率高但冷启动问题明显",
+ "innovations": [
+  "量化架构中每个组件对整体性能的贡献，提取有价值先验知识",
+  "提出先验知识引导的扩散模型生成架构，无需搜索和评估过程",
+  "仅0.004 GPU天即在ImageNet上达到76.1% top-1准确率"
+ ],
+ "method_framework": "首先量化神经网络架构中各组件（层类型、连接方式等）对整体性能的贡献，提取为先验知识。然后训练扩散模型，在先验知识引导下直接生成高性能架构，无需NAS中的逐架构评估搜索过程。",
+ "experiment_framework": "在ImageNet和新搜索空间上验证，对比SOTA NAS方法。仅用0.004 GPU天生成架构即达76.1% top-1准确率。",
+ "takeaways": [
+  "架构组件贡献的先验知识可有效指导架构生成",
+  "扩散模型可以高效生成高性能架构，无需昂贵的搜索评估",
+  "先验知识引导的生成式NAS比搜索式NAS效率高数个数量级"
+ ],
+ "weaknesses": [
+  "先验知识提取依赖已有架构评估数据，新任务冷启动困难",
+  "前9页内与最新大模型架构生成方法对比不足",
+  "生成架构的多样性未充分分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

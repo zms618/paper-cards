@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Efficient Prompt Compression with Evaluator Heads for Long-Context Transformer Inference.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Efficient Prompt Compression with Evaluator Heads for Long-Context Transformer Inference.pdf",
+ "title": "Efficient Prompt Compression with Evaluator Heads for Long-Context Transformer Inference",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "训练-free提示压缩，利用评估器头筛选关键token加速长上下文推理",
+ "innovations": [
+  "识别Transformer中的评估器头用于选择关键token",
+  "训练-free的提示压缩方法EHPC",
+  "利用预填充阶段效率实现双阶段推理加速"
+ ],
+ "method_framework": "EHPC方法通过识别特定注意力头(评估器头)计算token重要性分数，在预填充阶段快速筛选重要token，实现提示压缩，支持扩展模型推理(EMI)和原生模型推理(NMI)两种场景。",
+ "experiment_framework": "在LongBench和ZeroSCROLLS基准测试上评估，与RAG、LLMLingua等基线比较，使用压缩后token数量、任务性能和推理延迟作为指标。",
+ "takeaways": [
+  "利用注意力机制中的特定头可以高效识别关键信息",
+  "训练-free的方法在保持性能的同时显著降低计算复杂度"
+ ],
+ "weaknesses": [
+  "评估器头的泛化能力在不同模型间可能存在差异",
+  "方法对特定任务类型的效果可能不一致"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

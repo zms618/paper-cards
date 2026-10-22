@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Risk-Sensitive RL for Alleviating Exploration Dilemmas In Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Risk-Sensitive RL for Alleviating Exploration Dilemmas In Large Language Models.pdf",
+ "title": "Risk-Sensitive RL for Alleviating Exploration Dilemmas in Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "风险敏感RL缓解LLM探索困境，但实验与理论深度不足。",
+ "innovations": [
+  "形式化并诊断 RLVR 的探索困境：初始尖峰策略导致标准 RL 坍缩到局部次优模式、解多样性下降。",
+  "提出风险敏感目标：在奖励均值与最大值之间插值(风险寻求)，替代风险中性的均值优化。",
+  "据此得到 RS-GRPO，实现极简(仅小幅改动代码)，放大从困难提示中学到的信号以驱动更深探索。"
+ ],
+ "method_framework": "把标准 GRPO 的风险中性(均值)目标替换为风险寻求目标——在一批采样的奖励均值与最大奖励之间插值；该目标更看重能否抽到高奖励解，从而鼓励策略离开预训练偏置的局部峰、探索更多推理路径，提升解多样性。",
+ "experiment_framework": "在 6 个数学推理基准、5 个不同 LLM 上评测；对比标准 GRPO/RLVR；报告 pass@1 与 pass@k；RS-GRPO 在保持或提升 pass@1 的同时一致改善 pass@k。",
+ "takeaways": [
+  "标准 RLVR 多是在蒸馏已有能力而非发现新推理策略，根因是初始尖峰+风险中性均值优化。",
+  "风险寻求(均值-最大插值)目标可推动策略逃离预训练偏置的局部最优。",
+  "RS-GRPO 仅需小幅代码改动，即可跨多个模型稳定提升解多样性(pass@k)而不掉 pass@1。"
+ ],
+ "weaknesses": [
+  "风险寻求目标在 reward 噪声大/奖励稀疏时可能放大坏采样，训练稳定性的边界未充分分析。",
+  "实验集中在数学推理基准，对代码、长文与多模态推理任务的迁移验证有限。",
+  "均值-最大插值的超参选择及其与现有 RL trick(标准化、KL 约束)的相互作用未系统消融。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "风险敏感RL缓解LLM探索困境，触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

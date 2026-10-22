@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/ASGO_Adaptive Structured Gradient Optimization.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/ASGO_Adaptive Structured Gradient Optimization.pdf",
+ "title": "ASGO: Adaptive Structured Gradient Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.25
+ },
+ "one_line": "ASGO优化矩阵结构，理论优于Shampoo，但实验局限且计算开销大",
+ "innovations": [
+  "单侧预调节器设计，减少内存需求",
+  "利用梯度低秩和Hessian块对角结构",
+  "与Muon算法的理论联系"
+ ],
+ "method_framework": "ASGO采用单侧预调节器V^{-1/2}_t G_t，保留矩阵结构，利用梯度低秩特性，理论证明收敛速度优于Shampoo和全矩阵AdaGrad",
+ "experiment_framework": "在GPT2预训练任务上评估，与AdamW、Shampoo、Muon对比，使用4 H100 GPU，2400步，约25亿tokens",
+ "takeaways": [
+  "矩阵结构优化可提高效率",
+  "单侧预调节器在内存和计算上更高效",
+  "理论分析与实际应用结合"
+ ],
+ "weaknesses": [
+  "实验仅限于语言模型任务，缺乏医学影像等应用",
+  "未充分验证在非凸问题上的性能",
+  "计算复杂度虽低于Shampoo但仍高于Adam"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

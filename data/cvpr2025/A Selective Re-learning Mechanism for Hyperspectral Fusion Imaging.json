@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/A Selective Re-learning Mechanism for Hyperspectral Fusion Imaging.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Selective Re-learning Mechanism for Hyperspectral Fusion Imaging.pdf",
+ "title": "A Selective Re-learning Mechanism for Hyperspectral Fusion Imaging",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.3
+ },
+ "one_line": "自适应筛选失真点的高光谱融合，但核心假设贡献小且精度提升微弱",
+ "innovations": [
+  "SSG-SRL：用观测模型把初步融合结果退化成 pseudo-MSI（Y'=RZ'）与 pseudo-LRHSI（X'=(Z'*C)↓），再以 SSIM 图/ SAM 图分别定位空间与光谱失真点，只把这些点送去重学习块",
+  "失真点比例 r=λ(1−Avg(Mspa)) 由当前特征质量自适应给出，而不是固定阈值或额外分类器",
+  "多尺度 Mamba 初步融合模块（SS2D → 下采样 → SS2D → PixelShuffle 上采样 → 拼接再 SS2D），弥补单个 SS2D 十字形有效感受野的不足"
+ ],
+ "method_framework": "MSI 与 LRHSI 拼接嵌入 → N 个级联 SRLF：多尺度 Mamba 初步融合 → Spa-RL（SSIM 选点）/Spe-RL（SAM 选点）两个 Spectral Transformer 重学习 → SS2D 再融合 → Refine 卷积输出 HRHSI。",
+ "experiment_framework": "CAVE/Harvard 模拟数据 + Gaofen5 真实数据（无参考 QNR）；对比 Hysure/NSSR/DAEM/FusionMamba/Mog-DCN/LRTN 等；PSNR/SAM/UIQI/SSIM 与 FLOPs/Params。",
+ "takeaways": [
+  "用“观测模型退化 → 与实测量比对”定位失真区域再做定向计算，是把成像物理模型用于算力分配的思路",
+  "以指标图（SSIM/SAM）的统计量自适应决定重学习比例，避免引入额外分类器和固定超参"
+ ],
+ "weaknesses": [
+  "选择机制依赖已知光谱响应 R 与模糊核 C，但表4显示用可学习层替代后 PSNR 仅从 49.3881 降到 49.3412，该先验的实际贡献很小，削弱了核心假设",
+  "去掉 selection 只掉 0.07 dB PSNR 却多耗 5.43 GFLOPs，说明该机制的收益几乎全在算力而非精度，论文对精度的 claim 支撑不足",
+  "全部结果为单次运行、无方差；Harvard 上相对 Mog-DCN 仅高 0.004 dB（47.8954 vs 47.8910），处于噪声量级"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "高光谱融合算力分配，但精度提升微弱且先验贡献小",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

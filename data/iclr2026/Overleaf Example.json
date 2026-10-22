@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Overleaf Example.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Overleaf Example.pdf",
+ "title": "Vision Language Models are Biased",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "诊断VLM偏置基准，但未提供解决方案，证据不足。",
+ "innovations": [
+  "构建VLMBias基准：使用中性提示词配合反事实图像（而非带偏提示词），在7个领域（动物/Logo/国旗/象棋/棋盘/视错觉/图案网格）共1392张图测试VLM偏置",
+  "提出bias rate指标量化VLM依赖记忆先验而非视觉推理的程度，区分偏置错误与真实计数能力不足",
+  "发现背景视觉线索是触发偏置的关键：去除背景后计数准确率近乎翻倍（+21.09点），且思考token存在40%准确率天花板后过度思考反而下降"
+ ],
+ "method_framework": "利用SOTA图像生成器（Gemini-2.0 Flash/GPT-4o）和Python脚本生成反事实图像（如Adidas 4条纹Logo、5腿狗），保持提示词中性。先做sanity check确认VLM认识原图，再测试反事实图像上的计数（Q1/Q2）和Y/N识别（Q3）。控制变量包括3种分辨率、2种提示词措辞，并做背景mask、图像内文本注入、工具使用等消融实验。",
+ "experiment_framework": "测试5个SOTA VLM：Gemini-2.5 Pro、o3、o4-mini（思考型）和Sonnet-3.7、GPT-4.1（非思考型）。7个领域共1392张测试图×3分辨率。指标为计数准确率和bias rate。对比PhD-ccs、VLind-Bench、ViLP、HallusionBench等已有基准。",
+ "takeaways": [
+  "所有SOTA VLM在反事实计数任务上平均仅17.05%准确率，强烈偏向先验知识而非视觉分析",
+  "去除图像背景后准确率提升21.09点，证明背景视觉线索是触发偏置响应的主要因素",
+  "思考型模型的准确率随thinking tokens上升至约40%后反而下降，存在过度思考导致的偏置加剧现象"
+ ],
+ "weaknesses": [
+  "图像生成依赖Gemini-2.0 Flash和GPT-4o，虽然跨模型家族测试一致，但生成图像质量可能引入额外变量",
+  "基准规模1392张图相对有限，每个领域样本量不均（动物91类、Logo/国旗等数量不同），跨领域可比性存疑",
+  "未提出任何缓解偏置的方法，仅做诊断性分析，缺乏解决路径"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "诊断VLM偏置基准，但未提供解决方案，证据不足。",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

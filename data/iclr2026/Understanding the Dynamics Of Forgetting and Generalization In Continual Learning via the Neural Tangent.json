@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Understanding the Dynamics Of Forgetting and Generalization In Continual Learning via the Neural Tangent.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Understanding the Dynamics Of Forgetting and Generalization In Continual Learning via the Neural Tangent.pdf",
+ "title": "Understanding the Dynamics of Forgetting and Generalization in Continual Learning via the Neural Tangent Kernel",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "NTK理论分析CL训练动态，提出正交梯度投影算法但存储代价高",
+ "innovations": [
+  "在NTK机制下刻画CL的中间训练阶段(kernel gradient flow)而非只看收敛态，突破既有理论只分析收敛/简单分布的局限",
+  "用Rademacher复杂度给出各任务population risk的上下界，从而建立遗忘界，证明降低损失Lipschitz常数+最小化跨任务核可同时减遗忘、提泛化",
+  "据理论提出OGD+(把当前任务梯度投影到最近任务在旧样本上梯度张成子空间的正交补)及其增强OPGD(加梯度范数惩罚)"
+ ],
+ "method_framework": "CL理论多限于收敛模型/简单分布，难刻画训练动态且建立遗忘界需各任务population risk双边界。本文在NTK机制下：(1)用kernel gradient flow刻画中间训练阶段；(2)用Rademacher复杂度推population risk上下界。得到结论：减小损失Lipschitz常数、最小化跨任务核可联合降低遗忘、改善泛化。据此OGD+把新任务梯度投影到旧任务梯度子空间正交补，OPGD再加梯度范数惩罚。",
+ "experiment_framework": "在多个持续学习基准上验证理论预测与OPGD有效性；对比Bennani/Doan/Karakida等既有CL理论在遗忘界/泛化误差/训练动态/岭正则上的覆盖度；报告OPGD同时减遗忘、提泛化。",
+ "takeaways": [
+  "NTK下减小损失Lipschitz常数与跨任务核可同时降低遗忘并改善泛化",
+  "训练动态(kernel gradient flow)而非仅收敛态才是理解CL遗忘的关键",
+  "理论洞察可直接转化为正交梯度投影+梯度范数惩罚的OPGD算法"
+ ],
+ "weaknesses": [
+  "落地域为通用持续学习，非医学影像/多模态推理，泛化(可靠性)主线相关但落地域偏离",
+  "结论在NTK机制下成立，对真实深度网络(已脱离NTK)的适用度需谨慎外推",
+  "OPGD需访问全部旧任务样本来算旧梯度子空间，存储/隐私代价高，正文前9页未充分讨论其可扩展性"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "NTK理论分析CL训练动态，提出正交梯度投影算法但存储代价高",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

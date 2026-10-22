@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Analytical Lyapunov Function Discovery An RL-based Generative Approach.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Analytical Lyapunov Function Discovery An RL-based Generative Approach.pdf",
+ "title": "Analytical Lyapunov Function Discovery: An RL-based Generative Approach",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "RL生成符号Lyapunov函数，局部适用性限制全局稳定性证明",
+ "innovations": [
+  "首个纯 RL 框架直接生成解析（符号）Lyapunov 函数，绕过对大规模监督数据集的依赖",
+  "设计「生成式 trainer + 证伪 falsifier」闭环：全局优化做快速证伪、奖励设计评估候选、risk-seeking 策略梯度优化符号 transformer",
+  "从 scratch 训练即可在高维、非多项式系统（区别于预训练求全局函数的低维工作）找到局部 Lyapunov 函数，扩展到 10 维"
+ ],
+ "method_framework": "用 transformer 自回归生成符号化 Lyapunov 表达式候选；训练中以基于全局优化的 Lyapunov 条件校验快速证伪并构造奖励；用 risk-seeking policy gradient 鼓励模型搜索可被正式验证的候选；最终对幸存候选用 SMT 等形式化工具做正式验证。符号形式本身提升可解释性并降低验证成本。",
+ "experiment_framework": "在倒立摆、四旋翼、电力系统频率控制等非多项式非线性系统上验证，规模到 10 维；与神经网络 Lyapunov、SOS/SDP、既有 RL 生成方法对比运行时、可验证性，并报告发现此前控制文献中未记录的 Lyapunov 函数。",
+ "takeaways": [
+  "解析/符号 Lyapunov 函数相比神经网络形式更易形式化验证且可解释",
+  "生成-证伪-RL 闭环无需监督大数据，可在有限算力下训练",
+  "方法可扩展到 10 维非多项式系统并发现新的稳定性证书"
+ ],
+ "weaknesses": [
+  "主线为控制/机器人稳定性验证，与可靠性×医学影像/多模态大模型推理主线无关",
+  "仅求局部 Lyapunov 函数，全局稳定性保证与吸引域大小在前9页讨论有限",
+  "依赖符号表达式可被优化/证伪，对强非光滑/高度复杂动力学的可扩展性仍待验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "控制稳定性验证，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

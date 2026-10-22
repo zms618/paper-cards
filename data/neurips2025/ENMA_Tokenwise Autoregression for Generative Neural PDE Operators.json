@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/ENMA_Tokenwise Autoregression for Generative Neural PDE Operators.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/ENMA_Tokenwise Autoregression for Generative Neural PDE Operators.pdf",
+ "title": "ENMA: Tokenwise Autoregression for Generative Neural PDE Operators",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6.25
+ },
+ "one_line": "ENMA用连续token自回归建模PDE，但计算复杂度高且真实泛化不足",
+ "innovations": [
+  "连续tokenwise自回归生成，避免离散量化限制",
+  "使用Flow Matching建模连续潜在空间中的每token条件分布",
+  "支持基于上下文轨迹的推理时适应，无需重新训练",
+  "结合注意力机制和因果卷积处理不规则时空输入"
+ ],
+ "method_framework": "ENMA采用编码-生成-解码框架，使用因果Transformer提取时空表示，通过掩码空间Transformer和Flow MLP进行token级生成，最后通过连续VAE解码回物理域",
+ "experiment_framework": "在5个动态系统(1D和2D PDE)上评估，比较重建误差、时间步进准确性和压缩率，使用不规则网格采样(20%-100%)测试鲁棒性",
+ "takeaways": [
+  "连续token生成比离散量化更高效且表达能力更强",
+  "因果卷积和注意力机制能有效处理不规则时空输入",
+  "Flow Matching提供了比全帧扩散更高效的替代方案"
+ ],
+ "weaknesses": [
+  "计算复杂度可能随token数量增加而显著提高",
+  "未充分展示在真实物理数据上的泛化能力",
+  "推理时的token生成步骤可能增加计算延迟"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

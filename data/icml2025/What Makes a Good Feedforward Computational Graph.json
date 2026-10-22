@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/What Makes a Good Feedforward Computational Graph.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/What Makes a Good Feedforward Computational Graph.pdf",
+ "title": "What Makes a Good Feedforward Computational Graph?",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.9
+ },
+ "one_line": "提出混合时间与保真度指标，用FunSearch发现次优图结构",
+ "innovations": [
+  "提出混合时间（mixing time）与归一化极小极大保真度（minimax fidelity）两个互补指标，用于评估前馈计算图的信息传播效率",
+  "对多种图生成器（全连接、线图、Erdős-Rényi、扩展图等）进行了渐近行为的理论推导",
+  "利用FunSearch自动发现了FS图，在保持高保真度的同时实现了接近全连接图的混合效率"
+ ],
+ "method_framework": "将前馈计算图建模为有向无环图（节点有序，边只向前），通过随机游走矩阵分析信息向汇点传播的速度（混合时间）和信息锐度保持程度（极小极大保真度）。从理论上推导多种经典图结构的指标渐近行为，并使用FunSearch（进化搜索）在图空间中优化发现新型优质图结构。",
+ "experiment_framework": "理论分析为主，辅以经验验证：在不同节点规模下绘制各图生成器的混合时间-保真度散点图；将对应图结构嵌入神经网络并关联下游任务性能，验证指标与实际性能的相关性。",
+ "takeaways": [
+  "前馈计算图的质量可由混合时间和保真度两个维度共同刻画，二者存在权衡关系",
+  "FunSearch发现的FS图在稀疏度与传播效率之间取得了优于手工设计图的平衡",
+  "现有常用的全连接图和滑动窗口图均非最优，存在更优的图结构空间"
+ ],
+ "weaknesses": [
+  "实验验证较为初步，仅展示了指标与性能的相关性，缺乏在大规模真实模型（如Transformer）上的端到端对比实验",
+  "指标定义（如1/4阈值、L1范数选择）的任意性较强，缺少对不同阈值下结论稳健性的讨论",
+  "未将所提FS图与当前主流的图重连（graph rewiring）方法进行系统对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

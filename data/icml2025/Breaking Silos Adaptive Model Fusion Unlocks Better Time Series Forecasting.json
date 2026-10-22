@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Breaking Silos Adaptive Model Fusion Unlocks Better Time Series Forecasting.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Breaking Silos Adaptive Model Fusion Unlocks Better Time Series Forecasting.pdf",
+ "title": "Breaking Silos: Adaptive Model Fusion Unlocks Better Time Series Forecasting",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "样本级时序模型融合，元特征+fusor提升预测精度。",
+ "innovations": [
+  "细粒度样本级发现：无单一模型在所有测试样本上最优，每个模型只在特定样本上占优。",
+  "提出TIMEFUSE：用元特征刻画输入时序，训练可学习fusor预测给定输入的最优模型融合权重。",
+  "fusor跨数据集联合训练，可泛化到未见数据集的新输入。"
+ ],
+ "method_framework": "观察到各时序模型样本级互补后，对每条输入序列提取元特征(描述其季节性/趋势/突变等时间模式)，训练一个可学习融合器(learnable fusor)输出对多个候选预测模型的加权融合系数；fusor在多数据集样本上联合训练以覆盖多样时间模式，推理时对新样本动态加权融合各模型预测。",
+ "experiment_framework": "长/短期预测多任务多数据集；候选为多个SOTA个体预测模型；指标为预测误差(MSE/MAE类)；报告TIMEFUSE在高达95.1%样本上优于最佳个体模型，且可泛化到未见数据集。",
+ "takeaways": [
+  "样本级自适应融合比挑选单一SOTA模型更稳，在绝大多数样本上超过最佳个体模型。",
+  "元特征+可学习fusor是跨数据集泛化融合的可行路径。",
+  "模型集成应细到样本级而非模型级一刀切。"
+ ],
+ "weaknesses": [
+  "依赖维护多个候选模型，推理成本随候选数增加。",
+  "元特征与fusor的设计对未见领域分布偏移的鲁棒性未充分刻画。",
+  "属时序预测集成方向，与LLM/多模态推理、医学影像主线无直接交集。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.68,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/HMAR_Efficient Hierarchical Masked Auto-Regressive Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/HMAR_Efficient Hierarchical Masked Auto-Regressive Generation.pdf",
+ "title": "HMAR Efficient Hierarchical Masked Auto-Regressive Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "分层掩码自回归提升生成质量，但效率提升有限",
+ "innovations": [
+  "马尔可夫假设的下一尺度预测",
+  "尺度内多步掩码生成",
+  "IO感知块稀疏注意力核",
+  "多尺度训练损失重加权"
+ ],
+ "method_framework": "HMAR结合下一尺度预测和掩码预测，将图像生成分解为粗到细的层次化过程，每个尺度内使用多步掩码生成替代并行生成，提高质量同时保持效率。",
+ "experiment_framework": "ImageNet 256×256和512×512数据集，与VAR、扩散模型和自回归基线比较，使用FID、IS、Precision和Recall指标评估生成质量。",
+ "takeaways": [
+  "马尔可夫假设显著提升效率并减少内存占用",
+  "尺度内多步掩码生成可提高图像质量",
+  "损失重加权可平衡不同尺度的重要性"
+ ],
+ "weaknesses": [
+  "多步掩码生成增加了推理复杂度",
+  "模型参数量较大",
+  "未充分探讨模型在不同域上的泛化能力"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "图像生成与可靠性主线无交点，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

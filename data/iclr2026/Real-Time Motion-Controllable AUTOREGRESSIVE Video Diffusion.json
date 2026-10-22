@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Real-Time Motion-Controllable AUTOREGRESSIVE Video Diffusion.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Real-Time Motion-Controllable AUTOREGRESSIVE Video Diffusion.pdf",
+ "title": "Real-Time Motion-Controllable Autoregressive Video Diffusion",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "AR-Drag：RL增强少步自回归视频扩散，支持实时运动控制",
+ "innovations": [
+  "首个面向实时运动可控的自回归视频扩散模型(AR-Drag)，支持轨迹/包围框等丰富运动控制信号，画质可与双向VDM竞争。",
+  "先用I2V基础模型微调以支持基本运动控制，再用基于轨迹的奖励模型做强化学习提升运动对齐与画质。",
+  "设计Self-Rollout机制保持马尔可夫性，并在去噪步中有选择地引入随机性以加速RL训练，缓解少步AR生成的误差累积与运动伪影。"
+ ],
+ "method_framework": "自回归逐帧生成视频：历史帧+当前控制信号作为输入，少步去噪生成下一帧；先微调获得基本运动控制，再用轨迹奖励模型做RL；Self-Rollout保持马尔可夫性，选择性注入随机性加速训练。",
+ "experiment_framework": "在运动可控图像到视频任务上对比Tora/DragNUWA/DragAnything/Wan2.1等双向VDM，报告FID、运动对齐精度与生成时延，验证实时性与1.3B小参数下的画质。",
+ "takeaways": [
+  "自回归扩散天然适合实时可控生成，配合RL可在少步设定下达到接近双向VDM的画质。",
+  "Self-Rollout与选择性随机性注入能在保持马尔可夫性的同时大幅加速AR视频扩散的RL训练。"
+ ],
+ "weaknesses": [
+  "属视频生成/可控生成方向，与可靠性主线（鲁棒/可信/医学影像）关联弱。",
+  "前9页未见完整FID/对齐数值表，自回归误差累积在长视频上的边界未充分量化。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "视频生成与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

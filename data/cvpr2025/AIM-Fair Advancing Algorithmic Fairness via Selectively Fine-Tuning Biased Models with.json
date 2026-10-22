@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/AIM-Fair Advancing Algorithmic Fairness via Selectively Fine-Tuning Biased Models with.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AIM-Fair Advancing Algorithmic Fairness via Selectively Fine-Tuning Biased Models with.pdf",
+ "title": "AIM-Fair: Advancing Algorithmic Fairness via Selectively Fine-Tuning Biased Models with Contextual Synthetic Data",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "选择性微调+上下文化合成数据提升公平性，但实验严谨性不足",
+ "innovations": [
+  "指出合成数据纠偏的两个独立偏移——期望的偏差偏移与不期望的域偏移，并用逐层冻结实验实证二者落在不同参数上",
+  "选择性掩码：对同一预训练模型分别算真实(有偏)、合成有偏、合成无偏三份数据的参数级梯度，按 ‖gR−gS1‖ 升序（域不敏感）与 ‖gS1−gS2‖ 降序（公平敏感）取 top-k 交集生成掩码，只更新交集参数",
+  "上下文化合成数据生成 CSDG：用 GPT-4 生成含面部特征/发型/配饰/头部姿态的结构化 prompt 驱动 SD v2.1，既提升多样性又无需真实数据的受保护属性标注"
+ ],
+ "method_framework": "先用 GPT-4 上下文 prompt 驱动 SD 生成有偏/无偏两份合成集；对真实有偏预训练模型算三份数据的参数级梯度，取域不敏感与公平敏感 top-k 交集得掩码 M；再用 M 掩住梯度，在无偏合成集上做 ERM 微调。",
+ "experiment_framework": "CelebA(Smiling/Young × Male/Young)与 UTKFace；对比 ERM/CVaR DRO/EIIL/LfF/JTT/MAPLE/DiGA；指标 ACC、WST、EO；10 次种子取均值。",
+ "takeaways": [
+  "把'想要的分布偏移'和'不想要的分布偏移'拆开，用梯度差异定位参数子集再选择性更新——这个思路对域泛化、鲁棒微调同样可迁移",
+  "用 LLM 生成结构化长 prompt 而非属性短句来驱动 T2I，既提升合成数据多样性又降低刻板化，是低成本的数据侧去偏手段"
+ ],
+ "weaknesses": [
+  "10 次随机种子只报均值、无标准差与显著性检验，EO 1–2 个点的提升是否稳定无法判断（量规硬规则下 evidence 上限 6）",
+  "top-k 的 k 与微调学习率(0.4/0.5/0.6)均为网格搜索，缺少自适应选择准则；掩码在微调全程固定，未验证随训练动态更新的效果",
+  "只在 CelebA/UTKFace 的二值属性分类上验证，受保护属性被二值化（性别按出生性别、种族按是否白人），与现代公平性研究对属性连续性和自认同的要求有差距"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "公平性方法可迁移至鲁棒微调，但未触及可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

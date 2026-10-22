@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/FreeSplatter_Pose-free Gaussian Splatting for Sparse-view 3D Reconstruction.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/FreeSplatter_Pose-free Gaussian Splatting for Sparse-view 3D Reconstruction.pdf",
+ "title": "FreeSplatter Pose-free Gaussian Splatting for Sparse-view 3D Reconstruction",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "高斯溅射替代点云，两阶段训练解决无位姿重建问题",
+ "innovations": [
+  "直接预测像素对齐的高斯图而非点云",
+  "两阶段训练策略解决无位姿初始化问题",
+  "针对物体级和场景级分别优化的变体架构"
+ ],
+ "method_framework": "基于transformer的统一框架，将多视图图像token化并通过自注意力块交换信息，解码为高斯图，实现无位姿的3D重建与相机参数估计。",
+ "experiment_framework": "在GSO、OmniObject3D、ScanNet++和CO3Dv2等数据集上评估，与PF-LRM、MASt3R等基线比较重建质量(PSNR/SSIM/LPIPS)和位姿估计精度(RRE/RRA/TE)。",
+ "takeaways": [
+  "像素对齐损失确保高斯分布在相机射线上",
+  "物体级重建中仅对前景区域应用对齐损失以建模遮挡区域",
+  "两阶段训练策略对模型收敛至关重要"
+ ],
+ "weaknesses": [
+  "物体级和场景级需要不同的训练策略和掩码处理",
+  "依赖深度监督进行初始位置训练",
+  "在真实场景中可能难以处理复杂遮挡"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D重建技术，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

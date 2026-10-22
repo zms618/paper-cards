@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/UniDB_A Unified Diffusion Bridge Framework via Stochastic Optimal Control.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/UniDB_A Unified Diffusion Bridge Framework via Stochastic Optimal Control.pdf",
+ "title": "UniDB: A Unified Diffusion Bridge Framework via Stochastic Optimal Control",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.25
+ },
+ "one_line": "SOC统一扩散桥，理论解释模糊问题，图像修复细节提升。",
+ "innovations": [
+  "基于随机最优控制SOC统一扩散桥建模，把两固定端点分布间转换表述为优化问题",
+  "从理论上解释现有扩散桥(Doob h-transform)产生模糊/过平滑的原因",
+  "在SOC框架下导出新的采样动力学，在图像翻译/修复任务上提升细节"
+ ],
+ "method_framework": "将扩散桥建模为SOC最优控制问题，求解最优控制u*_t后导出带控制项的SDE采样动力学；通过最大化对数似然/条件score matching训练，相比标准h-transform给出更锐利的轨迹。",
+ "experiment_framework": "在CelebA-HQ、Rain100H、DIV2K上做图像修复/去雨/超分，对比GOUB(SDE)、IR-SDE等，指标PSNR/SSIM/LPIPS/FID。",
+ "takeaways": [
+  "SOC统一框架为扩散桥提供了比Doob h-transform更完整的理论基础",
+  "新采样动力学在三个数据集上全面优于基线，视觉细节更锐利",
+  "模糊问题可从控制项设计层面缓解，而非仅靠后处理"
+ ],
+ "weaknesses": [
+  "面向图像修复/翻译，与主线(可靠性/医学影像/多模态推理)无直接关联",
+  "实验限于3个256x256自然图像数据集，更大分辨率/视频未验证",
+  "SOC优化引入的额外控制计算在采样时的效率代价未量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

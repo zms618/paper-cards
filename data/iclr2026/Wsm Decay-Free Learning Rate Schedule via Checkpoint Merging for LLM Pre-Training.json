@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Wsm Decay-Free Learning Rate Schedule via Checkpoint Merging for LLM Pre-Training.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Wsm Decay-Free Learning Rate Schedule via Checkpoint Merging for LLM Pre-Training.pdf",
+ "title": "WSM: Decay-Free Learning Rate Schedule via Checkpoint Merging for LLM Pre-Training",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "用检查点合并替代学习率衰减，WSM在LLM预训练中取得边际提升。",
+ "innovations": [
+  "建立LR衰减与模型合并之间的形式化联系，把cosine/linear/inverse-square-root衰减统一表述为有原则的模型平均方案",
+  "提出WSM框架：Warmup-Stable后接合并阶段，兼容多种优化器，无需真实学习率衰减",
+  "实验发现合并时长(检查点聚合的训练窗口)是影响性能的最关键因素，超过检查点间隔与合并数量"
+ ],
+ "method_framework": "预训练采用Warmup-Stable后进入合并阶段：在合并窗口内聚合多个检查点做模型平均，以此等价复现各类衰减策略；通过高质量退火数据驱动合并；因合并时长最关键而集中调它。",
+ "experiment_framework": "在LLM预训练多个规模与基准上评测；基线为广泛使用的Warmup-Stable-Decay(WSD)及cosine等衰减；指标为MATH/HumanEval/MMLU-Pro等；报告MATH+3.5%、HumanEval+2.9%、MMLU-Pro+5.5%，并扩展到SFT场景。",
+ "takeaways": [
+  "学习率衰减可被模型合并/平均等价实现，从而去掉真实衰减阶段",
+  "合并时长是决定性超参，比合并频率/合并个数更重要",
+  "配合高质量退火数据，WSM在预训练与SFT均稳定优于WSD"
+ ],
+ "weaknesses": [
+  "收益依赖高质量退火数据的准备，数据成本与构造过程未充分披露",
+  "合并阶段需保留并聚合多个检查点，存储/工程开销在提取页未量化",
+  "与各类衰减的等价是理论近似，在不同优化器/规模下等价程度的敏感性分析不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM预训练优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

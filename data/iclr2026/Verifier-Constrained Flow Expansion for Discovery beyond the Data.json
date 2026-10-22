@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Verifier-Constrained Flow Expansion for Discovery beyond the Data.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Verifier-Constrained Flow Expansion for Discovery beyond the Data.pdf",
+ "title": "Verifier-Constrained Flow Expansion for Discovery beyond the Data",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "验证器约束的流扩展方法，提升分子设计多样性但计算开销大",
+ "innovations": [
+  "形式化定义强验证器和弱验证器概念，提出全局和局部流扩展的概率空间优化框架",
+  "提出Flow Expander(FE)：可扩展的镜像下降方案，通过验证器约束的熵最大化在流过程噪声状态空间上解决扩展问题",
+  "提供理论收敛保证（理想化和一般假设下），并在分子设计任务上验证了扩展多样性同时保持有效性的能力"
+ ],
+ "method_framework": "预训练流模型的密度集中在高数据可用性区域，无法生成有效但未见的设计。FE方法利用外部验证器（如原子键检查器）的有效性信号，在流模型的噪声状态空间上进行验证器约束的熵最大化。通过镜像下降优化，逐步将模型密度扩展到数据稀缺但有效的区域。区分全局扩展（整体密度扩展）和局部扩展（在特定模式附近扩展）两种场景。",
+ "experiment_framework": "任务：分子构象设计（分子多样性+有效性）。方法：Flow Expander(FE)。基线：预训练流模型、现有流扩展方法。指标：构象多样性、样本有效性。另含可视化可解释的演示设置。",
+ "takeaways": [
+  "外部验证器信号能有效引导流模型密度扩展到训练数据之外的有效区域",
+  "熵最大化+验证器约束的框架在理论上有收敛保证",
+  "在分子设计中，FE在保持有效性的同时显著提升了构象多样性"
+ ],
+ "weaknesses": [
+  "方法依赖外部验证器的质量和准确性，弱验证器情况下的效果未充分验证",
+  "镜像下降优化增加了推理/采样的计算开销",
+  "主要在分子设计任务上验证，其他科学发现领域的适用性未展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "分子设计属于落地域但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

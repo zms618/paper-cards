@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Quantization-Free Autoregressive Action Transformer.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Quantization-Free Autoregressive Action Transformer.pdf",
+ "title": "Quantization-Free Autoregressive Action Transformer",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "消除量化的GMM动作Transformer，模拟环境SOTA但缺乏真实验证",
+ "innovations": [
+  "消除动作量化需求，直接建模连续动作空间",
+  "提出两种采样算法减少轨迹方差",
+  "在多种机器人任务上实现SOTA性能"
+ ],
+ "method_framework": "基于GIVT架构，使用解码器Transformer直接预测GMM参数（均值、方差、混合概率），避免离散化步骤",
+ "experiment_framework": "9个机器人任务，对比BeT、VQ-BeT、Diffusion Policy等基线，使用任务成功率和行为熵评估",
+ "takeaways": [
+  "GMM参数化可有效保留连续动作空间结构",
+  "混合组件数量k对性能影响较小，模型会自动修剪冗余组件",
+  "轻量级解码头显著提升推理速度"
+ ],
+ "weaknesses": [
+  "GMM在高维空间中可能难以捕捉复杂分布",
+  "模式数量J难以理论控制",
+  "仅评估了模拟环境，缺乏真实机器人验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

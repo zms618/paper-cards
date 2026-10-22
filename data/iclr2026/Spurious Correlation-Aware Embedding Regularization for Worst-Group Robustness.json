@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Spurious Correlation-Aware Embedding Regularization for Worst-Group Robustness.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Spurious Correlation-Aware Embedding Regularization for Worst-Group Robustness.pdf",
+ "title": "Spurious Correlation-Aware Embedding Regularization for Worst-Group Robustness",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.5,
+  "overall": 6.8
+ },
+ "one_line": "理论连接嵌入空间与最差组误差，正则抑制虚假相关提升鲁棒性",
+ "innovations": [
+  "建立嵌入空间表示与最差组误差之间的理论联系：最差组误差取决于分类器对虚假方向相对核心方向的依赖强度",
+  "从跨域/跨类的组均值嵌入差异中识别虚假方向与核心方向",
+  "在嵌入层施加理论约束的正则(SCER)，直接抑制对虚假模式的敏感度，鼓励聚焦核心特征"
+ ],
+ "method_framework": "先从各组(域×类)均值嵌入差异中分离出虚假方向与核心方向；理论上证明分类器沿虚假方向的权重越大则最差组误差越高；据此在嵌入层施加正则，惩罚对虚假方向的依赖、保留核心方向，从而在子群体偏移下提升最差组性能。",
+ "experiment_framework": "在多个视觉与语言子群体偏移基准上评测，以最差组准确率为核心指标，对比GroupDRO等既有SOTA方法；报告SCER在最差组准确率上一致超越先前方法。",
+ "takeaways": [
+  "最差组误差可由分类器在嵌入空间对虚假方向vs核心方向的依赖强度解释",
+  "在嵌入层直接正则虚假方向比事后重加权更能从表示根源抑制虚假相关",
+  "SCER在视觉与语言多任务上均提升最差组准确率"
+ ],
+ "weaknesses": [
+  "识别虚假方向依赖组均值嵌入差异，需要一定的组/属性标注或可近似聚类，纯无组标注场景下的可行性未充分讨论",
+  "理论界面对真实深度模型假设较强，经验增益与理论预测的定量对应关系有限",
+  "在极端子群体极度稀缺或属性标注噪声下的鲁棒性未压力测试"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "虚假相关抑制与最差组鲁棒性直接命中可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

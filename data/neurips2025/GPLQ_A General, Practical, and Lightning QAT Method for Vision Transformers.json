@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/GPLQ_A General, Practical, and Lightning QAT Method for Vision Transformers.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/GPLQ_A General, Practical, and Lightning QAT Method for Vision Transformers.pdf",
+ "title": "GPLQ: A General, Practical, and Lightning QAT Method for Vision Transformers",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "两阶段量化ViT，激活优先策略提升泛化，但缺乏医学影像验证",
+ "innovations": [
+  "激活优先的量化策略",
+  "保持原始优化盆以提升泛化能力",
+  "轻量级PCA特征模仿损失"
+ ],
+ "method_framework": "GPLQ采用两阶段量化：第一阶段仅量化激活(Act-QAT)，保持权重FP32并使用PCA特征模仿损失；第二阶段使用PTQ量化权重，形成最终4位模型",
+ "experiment_framework": "ImageNet-1k分类、5个FGVC下游任务、COCO目标检测，对比PTQ和QAT方法，评估准确度和泛化能力",
+ "takeaways": [
+  "激活量化比权重量化对低比特量化影响更大",
+  "保持原始优化盆对模型泛化能力至关重要",
+  "两阶段量化大幅降低训练时间和内存需求"
+ ],
+ "weaknesses": [
+  "未在医学影像等特定领域验证",
+  "PCA特征模仿损失的计算开销未详细分析",
+  "与最先进QAT方法在ImageNet上仍有差距"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

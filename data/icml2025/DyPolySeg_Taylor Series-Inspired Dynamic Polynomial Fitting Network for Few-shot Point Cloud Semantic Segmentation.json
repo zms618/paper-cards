@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DyPolySeg_Taylor Series-Inspired Dynamic Polynomial Fitting Network for Few-shot Point Cloud Semantic Segmentation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DyPolySeg_Taylor Series-Inspired Dynamic Polynomial Fitting Network for Few-shot Point Cloud Semantic Segmentation.pdf",
+ "title": "DyPolySeg: Taylor Series-Inspired Dynamic Polynomial Fitting Network for Few-shot Point Cloud Semantic Segmentation",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "elevance": 4,
+  "evidence": 5,
+  "overall": 4.9
+ },
+ "one_line": "泰勒级数启发多项式拟合，用于点云少样本分割",
+ "innovations": [
+  "将泰勒级数展开思想引入少样本点云分割，用动态多项式拟合表征支撑集与查询点的语义关系",
+  "结合预训练DGCNN特征、分层增广与超相关Transformer，在极少标注下判别新类",
+  "动态参数拟合适配每个支持-查询对，缓解少样本下的类原型估计偏差"
+ ],
+ "method_framework": "以预训练点云骨干(DGCNN)提特征，在少样本设定下用受泰勒级数启发的动态多项式拟合网络对支撑集原型与查询点做逐对拟合，叠加分层增广与超相关Transformer建模点间关系，从而在仅极少量标注下分割未见新类。",
+ "experiment_framework": "在标准少样本点云分割基准(ScanNet/S3DIS等的split设定)上做1-way/5-way少样本评测，指标为mIoU；与少样本点云分割及原型学习基线对比。",
+ "takeaways": [
+  "泰勒式动态多项式拟合可改善少样本下支撑-查询语义匹配",
+  "预训练特征+分层增广对少样本点云分割关键",
+  "动态逐对拟合比固定原型更能应对新类外观变化"
+ ],
+ "weaknesses": [
+  "与主线（可靠性/可信AI/医学影像/多模态大模型推理）无关，属点云少样本分割",
+  "泰勒级数动机与实际多项式阶数/拟合机制的等价性在前9页未见严格论证",
+  "少样本设定下方差大，报告均值之外的稳定性/方差证据需看完整表格"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

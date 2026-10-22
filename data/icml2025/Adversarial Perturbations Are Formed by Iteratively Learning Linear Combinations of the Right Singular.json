@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Adversarial Perturbations Are Formed by Iteratively Learning Linear Combinations of the Right Singular.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adversarial Perturbations Are Formed by Iteratively Learning Linear Combinations of the Right Singular.pdf",
+ "title": "Adversarial Perturbations Are Formed by Iteratively Learning Linear Combinations of the Right Singular Vectors of the Adversarial Jacobian",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "基于雅可比SVD的对抗攻击方法，在ImageNet上优于基线但计算成本高",
+ "innovations": [
+  "发现对抗扰动的几何结构：有序top-K对抗扰动位于对抗雅可比（logit到图像）右奇异向量张成的正交子空间中",
+  "提出RisingAttacK：基于序列二次规划(SQP)的攻击方法，利用上述结构在图像空间直接计算对抗扰动",
+  "提出综合评价指标FoM，结合攻击成功率(ASR)和Lp范数（p=1,2,∞）全面评估攻击效果"
+ ],
+ "method_framework": "将有序top-K定向攻击建模为在目标logit排序约束下的优化问题。利用雅可比矩阵的SVD分解，将扰动表示为右奇异向量的线性组合。通过SQP迭代优化这些组合系数，逐步逼近满足K个目标类排序的最小扰动。",
+ "experiment_framework": "数据集：ImageNet-1k。模型：ResNet-50、DenseNet-121、ViT-B、DEiT-B。攻击级别：K=1,5,10,15,20,25,30。基线：QuadAttacK。指标：攻击成功率(ASR)、Lp范数、综合FoM。",
+ "takeaways": [
+  "对抗扰动的结构可通过雅可比矩阵的右奇异向量很好地解释和建模",
+  "RisingAttacK在6个K级别和4个模型上一致优于SOTA的QuadAttacK",
+  "有序top-K攻击揭示了DNN决策边界在logit子空间层面的深层脆弱性"
+ ],
+ "weaknesses": [
+  "需要白盒访问雅可比矩阵，黑盒迁移攻击的有效性未深入验证",
+  "仅在ImageNet分类任务验证，在检测/分割等任务的适用性未知",
+  "SQP优化的计算复杂度高，实际攻击的时间成本未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "对抗攻击方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/FairPFN_A Tabular Foundation Model for Causal Fairness.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FairPFN_A Tabular Foundation Model for Causal Fairness.pdf",
+ "title": "FairPFN: A Tabular Foundation Model for Causal Fairness",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "基础模型范式引入因果公平，但迁移效果与可解释性存疑。",
+ "innovations": [
+  "首个将基础模型范式引入因果公平领域，训练一个Transformer直接预测因果公平指标",
+  "基于Prior-Data Fitted Network(PFN)架构，在合成数据上训练后可迁移到真实表格数据",
+  "无需用户提供因果图结构即可评估直接和间接歧视，大幅降低因果公平的使用门槛"
+ ],
+ "method_framework": "FairPFN是一个在大量合成因果数据集上预训练的Transformer。训练时：随机生成因果图结构、数据分布和公平度量值。模型输入一个表格数据集，输出预测的因果公平指标(如直接效应、间接效应)。由于训练时见过各种因果结构，模型学会从观测数据中推断因果公平性。推理时无需任何因果知识，只需输入表格数据即可得到公平评估。",
+ "experiment_framework": "在合成数据上验证预测精度，与真实因果值对比。在真实表格数据集上测试迁移效果。评估直接歧视、间接歧视等不同公平度量的预测准确性。对比传统需要已知因果图的方法。",
+ "takeaways": [
+  "FairPFN能在未知因果图的情况下较好地预测因果公平指标，性能接近已知因果图的方法",
+  "基础模型范式可有效解决因果公平中因果结构难以确定的问题",
+  "方法可扩展到多敏感属性和交叉性公平场景"
+ ],
+ "weaknesses": [
+  "仅验证了二值单敏感属性的简单场景，多属性、连续属性的复杂场景未测试",
+  "合成数据训练到真实数据的迁移效果受分布偏移影响，性能下降程度未知",
+  "模型预测的公平度量可解释性不如传统因果推断方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

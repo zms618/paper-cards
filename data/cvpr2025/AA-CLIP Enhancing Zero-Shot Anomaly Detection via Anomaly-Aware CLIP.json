@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/AA-CLIP Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AA-CLIP Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP.pdf",
+ "title": "AA-CLIP: Enhancing Zero-Shot Anomaly Detection via Anomaly-Aware CLIP",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 7.5,
+  "overall": 6.4
+ },
+ "one_line": "冻结CLIP加浅层适配器，文本解纠缠后patch对齐的零样本异常检测",
+ "innovations": [
+  "Stage1只改文本编码器（视觉编码器固定当参考）：TN/TA两个文本锚点配正交正则L_dis=|<T_N,T_A>|²（式5）强制正常/异常语义解纠缠，同时用BCE(p_cls,y)+Dice(p_seg,S)+Focal(p_seg,S)做image/patch双层级对齐，把锚点先雕好再交给视觉端",
+  "Stage2在视觉编码器前6层插Residual Adapter（x^enhanced=λx_residual+(1-λ)x，λ=0.1），把第6/12/18/24层四粒度中间特征各过可训练projector求和得V_patch，再对固定好的TN/TA算余弦相似度出anomaly map",
+  "整条链路CLIP主体全冻结、只用浅层adapter+可学projector，每类2-shot（1正1负）即可训练，且图3 t-SNE显示解纠缠可外推到未见类，保留原CLIP的泛化能力"
+ ],
+ "method_framework": "冻结CLIP→Stage1文本端插残差适配器+正交解纠缠+图文patch对齐→Stage2视觉端插残差适配器按固定锚点对齐多粒度patch→余弦相似度出anomaly map/score。",
+ "experiment_framework": "11个数据集（工业MVTec/VisA/BTAD/MPDD，医学brain MRI/liver CT/retina OCT(BMAD)、4个结肠息肉集）；测VisA用MVTec训、其余用VisA训；2/16/64/full-shot四档；指标image与pixel级AUROC。",
+ "takeaways": [
+  "先在文本空间用正交正则把正常/异常两个语义锚点掰开、再让patch特征对齐，绕开了WinCLIP/VAND一类方法被anomaly-unaware文本embedding限制的上限",
+  "冻结CLIP主体+浅层残差适配器（λ=0.1加权残差），2-shot下即可适配，是极小样本视觉任务的可迁移适配范式"
+ ],
+ "weaknesses": [
+  "正文在表1之后截断：表2（image-level AUROC）及shot-count曲线（图5）、K_T/K_I、λ、γ的消融均不可见，无法核对2/16/64-shot曲线单调性",
+  "L_dis只求<T_N,T_A>²→0的向量正交，不约束范数与到图像特征的空间分布；表1中MPDD 96.3→96.7、BTAD 92.8→96.5仅涨0.2~3点，而brain MRI 95.5反而低于MVFA-AD 95.6，说明文本解纠缠并非全部收益来源",
+  "'zero-shot'与2/16/64-shot设定混用：Ours有4档而基线只有full-shot（表1中后几列实际沿用full-shot数字），同数据档位下的公平对比仅在full-shot一档；正常/异常prompt模板（'A photo of [CLS]' vs 'A photo of broken [CLS]'）手工设计且无prompt蒸馏；每类仅2张图训练文本锚点，是否被单一样本噪声带偏缺对应实验（只有shot-count曲线）"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "零样本异常检测与医学影像落地，文本解纠缠设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

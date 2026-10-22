@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Leveraging Skills from Unlabeled Prior Data for Efficient Online Exploration.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Leveraging Skills from Unlabeled Prior Data for Efficient Online Exploration.pdf",
+ "title": "Leveraging Skills from Unlabeled Prior Data for Efficient Online Exploration",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.0
+ },
+ "one_line": "SUPE从无标签轨迹提取技能库与探索策略，提升RL样本效率",
+ "innovations": [
+  "识别RL预训练的核心挑战不是学习好的表征，而是学习有效的探索策略——这与监督学习的预训练范式有本质区别",
+  "提出SUPE（Skills from Unlabeled Priors for Exploration）：从无标签离线轨迹中同时提取低层技能库和探索引导策略",
+  "将技能预训练和离策略数据利用两种思路有效结合，使在线RL智能体在新任务上探索更高效"
+ ],
+ "method_framework": "SUPE从无标签离线轨迹数据中学习：(1) 低层技能：通过无监督技能发现（skill discovery）从轨迹中提取一组基本动作技能；(2) 探索策略：学习如何在新任务上组合和调用这些技能来高效探索。在线微调时，智能体利用预训练的技能库和探索引导策略，比从头开始的RL智能体更快找到解决方案。",
+ "experiment_framework": "在多个连续控制和机器人操作任务上评测，对比从零训练的RL、仅技能预训练、仅离策略数据利用等方法；指标为样本效率和最终回报。",
+ "takeaways": [
+  "RL预训练的关键是探索策略而非表征学习，这一视角转变指导了方法设计",
+  "SUPE有效结合了技能库和探索引导，在样本效率上显著优于两种单独方案",
+  "无标签先验轨迹数据在RL中是丰富但未充分利用的资源"
+ ],
+ "weaknesses": [
+  "技能库的质量依赖于先验数据的覆盖度，在先验数据分布外的任务上可能效果有限",
+  "主要在仿真机器人任务上验证，真实机器人的sim-to-real迁移未探讨",
+  "技能发现和探索策略学习的联合优化复杂度较高"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

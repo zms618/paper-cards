@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/E2LORA_Efficient and Effective Low-Rank Adaptation Entropy-Guided Adaptive Sharing.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/E2LORA_Efficient and Effective Low-Rank Adaptation Entropy-Guided Adaptive Sharing.pdf",
+ "title": "E2LORA: Efficient and Effective LOW-RANK Adaptation ENTROPY-GUIDED Adaptive Sharing",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "熵引导的双自适应LoRA参数共享，提升效率但机制证据不足",
+ "innovations": [
+  "基于梯度代理熵分析发现局部相似性和层间信息异质性",
+  "自适应共享区间划分算法",
+  "基于熵的异质性驱动的秩分配策略",
+  "双自适应框架整合参数共享与秩分配"
+ ],
+ "method_framework": "E2LORA框架包含两个核心组件：局部相似性共享(LSS)和异质性驱动秩分配(HRA)。LSS通过计算层间相对互信息(RMI)自适应划分共享区间，HRA利用梯度代理熵为每个区间分配秩，实现参数高效利用。",
+ "experiment_framework": "在GLUE基准(NLU)、GSM8K/HumanEval(NLG)和7个图像分类数据集上评估，与LoRA、ShareLoRA等基线比较参数数量和性能指标。",
+ "takeaways": [
+  "梯度代理熵可有效捕捉层间信息相似性和异质性",
+  "自适应共享区间划分优于全局共享或固定块共享",
+  "信息丰富层应分配更高秩以保持模型表达能力"
+ ],
+ "weaknesses": [
+  "依赖梯度计算可能增加计算开销",
+  "未探讨不同模型架构的通用性",
+  "未分析方法在极端资源受限场景的表现"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "参数高效微调方法，与可靠性主线无直接交点但设计模式有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

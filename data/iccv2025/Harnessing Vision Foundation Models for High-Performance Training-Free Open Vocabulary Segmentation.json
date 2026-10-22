@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/Harnessing Vision Foundation Models for High-Performance Training-Free Open Vocabulary Segmentation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Harnessing Vision Foundation Models for High-Performance Training-Free Open Vocabulary Segmentation.pdf",
+ "title": "Harnessing Vision Foundation Models for High-Performance Training-Free Open Vocabulary Segmentation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "拼接CLIP、DINO和SAM实现开放词汇分割，但计算开销大且依赖性强",
+ "innovations": [
+  "提出拼接-分割范式解决CLIP分辨率限制",
+  "利用SAM相关性矩阵实现全局特征聚合",
+  "结合CLIP、DINO和SAM三模型优势",
+  "将分割结果转换为SAM提示进行精细化"
+ ],
+ "method_framework": "Trident框架首先通过滑动窗口提取CLIP和DINO子图像特征，拼接后利用SAM编码器生成的相关性矩阵进行全局聚合，最后将分割结果转换为点、框和掩码提示供SAM精细化",
+ "experiment_framework": "在PASCAL VOC、PASCAL Context、COCO Object、COCO Stuff、Cityscapes和ADE20k六个数据集上评估，使用mIoU指标，与多种训练方法和无训练方法对比",
+ "takeaways": [
+  "拼接-分割范式可有效解决高分辨率图像分割问题",
+  "多模型融合可互补各自优势",
+  "将分割结果转换为提示可显著提升性能"
+ ],
+ "weaknesses": [
+  "方法依赖三个大型模型，计算开销大",
+  "未充分讨论方法在不同分辨率下的计算效率",
+  "对SAM的过度依赖可能限制泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "开放词汇分割与可靠性主线无实质交点，仅为多模型拼接技术",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

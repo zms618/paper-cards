@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Think Twice Test-Time Reasoning for Robust CLIP Zero-Shot Classification.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Think Twice Test-Time Reasoning for Robust CLIP Zero-Shot Classification.pdf",
+ "title": "Think Twice Test-Time Reasoning for Robust CLIP Zero-Shot Classification",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 8.5,
+  "overall": 7.0
+ },
+ "one_line": "利用CLIP自身检测能力进行测试时推理提升零样本鲁棒性",
+ "innovations": [
+  "发现CLIP模型具有无需训练的物体检测能力",
+  "提出测试时推理(TTR)框架隔离物体消除虚假关联",
+  "仅使用测试样本和文本提示实现零样本分类鲁棒化"
+ ],
+ "method_framework": "利用PCA降维和K-means聚类识别核心物体，通过队列机制保持特征连续性，仅对核心物体区域进行零样本分类",
+ "experiment_framework": "在Waterbirds、CelebA、Metashifts等6个基准数据集上评估，对比Orth-Cali、ROBOSHOT等基线，使用最差组准确率(WG)和平均准确率(Avg)作为指标",
+ "takeaways": [
+  "利用CLIP自身语义理解能力进行物体定位",
+  "测试时推理无需额外标注或先验知识",
+  "PCA降维+K-means聚类在性能和效率间取得良好平衡"
+ ],
+ "weaknesses": [
+  "队列长度l作为超参数需要调整",
+  "仅使用3个聚类可能限制复杂场景的分割精度",
+  "未探讨不同文本提示对方法效果的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "CLIP零样本鲁棒性直接命中可靠性主线，测试时推理框架具高迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

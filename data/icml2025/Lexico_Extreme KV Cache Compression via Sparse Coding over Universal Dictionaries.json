@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Lexico_Extreme KV Cache Compression via Sparse Coding over Universal Dictionaries.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Lexico_Extreme KV Cache Compression via Sparse Coding over Universal Dictionaries.pdf",
+ "title": "Lexico: Extreme KV Cache Compression via Sparse Coding over Universal Dictionaries",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "通用字典稀疏编码压缩KV缓存，OMP优化但泛化性受限",
+ "innovations": [
+  "使用通用字典实现跨任务/模型的KV缓存压缩",
+  "OMP算法优化实现高效稀疏分解",
+  "结合缓冲区与稀疏表示的混合压缩策略"
+ ],
+ "method_framework": "通过预训练层特定字典，使用OMP算法将KV向量分解为稀疏线性组合，结合缓冲区存储最近token，实现高效压缩",
+ "experiment_framework": "LongBench/GSM8K/MMLU-Pro数据集，对比KIVI/ZipCache/SnapKV等基线，评估不同压缩比下的性能",
+ "takeaways": [
+  "稀疏编码在低内存场景下优于量化方法",
+  "通用字典具有跨任务/模型泛化能力",
+  "缓冲区设计对保持性能至关重要"
+ ],
+ "weaknesses": [
+  "字典训练依赖特定数据集，可能影响泛化性",
+  "极低压缩比(s=4)时性能显著下降",
+  "未分析不同层字典的差异性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

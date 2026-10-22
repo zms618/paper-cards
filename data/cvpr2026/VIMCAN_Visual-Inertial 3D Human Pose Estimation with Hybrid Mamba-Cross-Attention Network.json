@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/VIMCAN_Visual-Inertial 3D Human Pose Estimation with Hybrid Mamba-Cross-Attention Network.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/VIMCAN_Visual-Inertial 3D Human Pose Estimation with Hybrid Mamba-Cross-Attention Network.pdf",
+ "title": "VIMCAN Visual-Inertial 3D Human Pose Estimation with Hybrid Mamba-Cross-Attention Network",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "混合Mamba-交叉注意力网络用于视觉-惯性3D姿态估计",
+ "innovations": [
+  "首次将Mamba应用于视觉-惯性多模态3D人体姿态估计",
+  "结合Mamba的高效序列处理与交叉注意力的空间推理能力",
+  "提出可变长度训练策略实现实时处理"
+ ],
+ "method_framework": "VIMCAN采用三阶段框架：特征提取（使用骨架感知和部分感知STMamba模块）、多模态特征融合（通过多头交叉注意力模块）、姿态回归。结合Mamba的线性复杂度和交叉注意力的空间建模能力。",
+ "experiment_framework": "在TotalCapture和3DPW数据集上进行评估，使用MPJPE和P-MPJPE作为指标，与多种基线方法比较，包括基于RNN、TCN、CNN-Transformer和GCN-Transformer的方法。",
+ "takeaways": [
+  "混合架构可以平衡计算效率和模型性能",
+  "可变长度训练策略能提高模型对不同序列长度的适应性",
+  "解剖学分组和模态特定扫描机制提升特征提取质量"
+ ],
+ "weaknesses": [
+  "仅使用合成IMU数据进行3DPW实验，可能影响实际应用效果",
+  "模型复杂度较高，参数量达到12.3M"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "姿态估计非可靠性主线，仅多模态融合有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Layer by Layer Uncovering Hidden Representations in Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Layer by Layer Uncovering Hidden Representations in Language Models.pdf",
+ "title": "Layer by Layer Uncovering Hidden Representations in Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "分析LLM中层表示为何优于末层，但缺乏新模型与端到端验证",
+ "innovations": [
+  "提出统一的表示质量度量框架，整合信息论压缩/保留、几何展开、扰动不变性三视角",
+  "证实中间层嵌入跨 transformer/SSM/视觉 transformer 一致优于末层，为架构无关现象",
+  "区分自回归 vs 掩码训练：自回归模型存在明显中层压缩谷，且该效应由训练目标而非模态驱动"
+ ],
+ "method_framework": "以每一层输出作为嵌入，在32个MTEB任务上评测表示质量；用信息熵(压缩/保留)、嵌入几何、对输入扰动的不变性三个透镜解释中层为何更优，并延伸到视觉自回归transformer。",
+ "experiment_framework": "在 Pythia/Mamba/BERT-base 等多架构、多尺度模型上评测32个MTEB嵌入任务，报告各层深度百分比对应的下游分数；并分析CoT微调对中层熵的重塑。",
+ "takeaways": [
+  "末层并非总是最优嵌入，中层常因平衡了特征保留与噪声丢弃而更强",
+  "末层过度特化于下一token/掩码目标，损害了通用表示",
+  "训练目标(自回归vs双向)是中层瓶颈的关键驱动，与模态无关"
+ ],
+ "weaknesses": [
+  "属表示分析/可解释性工作，不提出新模型，落地改进未展开",
+  "扰动不变性度量较为间接，对真正鲁棒性(对抗/OOD)的预测力未充分验证",
+  "前9页未见用中层嵌入改造下游系统的端到端收益实证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

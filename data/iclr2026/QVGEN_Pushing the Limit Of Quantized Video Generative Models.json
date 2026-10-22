@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/QVGEN_Pushing the Limit Of Quantized Video Generative Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/QVGEN_Pushing the Limit Of Quantized Video Generative Models.pdf",
+ "title": "QVGen: Pushing the Limit of Quantized Video Generative Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "QVGen通过辅助模块和秩衰减实现视频扩散模型极低比特量化，但与主线关联弱。",
+ "innovations": [
+  "理论分析指出减小梯度范数是QAT收敛关键，据此引入辅助模块Φ缓解大量化误差",
+  "提出秩衰减策略：反复SVD并配合秩正则γ识别、衰减低贡献分量，渐进消除Φ",
+  "在保持性能的同时把Φ的推理开销清零"
+ ],
+ "method_framework": "QAT中插入辅助模块Φ补偿量化误差、稳定梯度以促进极低比特收敛；训练中用SVD分解Φ并按秩正则惩罚低贡献分量，逐步衰减Φ秩至接近0，使推理时Φ可完全移除而无额外开销。",
+ "experiment_framework": "在4个SOTA视频扩散模型(1.3B~14B)上评测；VBench指标(Dynamic Degree、Scene Consistency等)；对比已有量化方法，报告4-bit下相对全精度质量与3-bit增益。",
+ "takeaways": [
+  "QVGen首次在4-bit下达到与全精度可比的视频生成质量",
+  "3-bit CogVideoX-2B在VBench上Dynamic Degree +25.28、Scene Consistency +8.43",
+  "辅助模块+秩衰减可在极低比特QAT中兼顾收敛与零额外推理成本"
+ ],
+ "weaknesses": [
+  "属视频生成模型量化/QAT方向，与可靠性、不确定性、验证器主线关联弱",
+  "QAT需训练开销，相对PTQ的部署便利性劣势未充分讨论",
+  "秩衰减引入SVD频次与训练超参，跨模型规模的鲁棒性需更多验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.18,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "视频生成量化与可靠性主线关联弱，属常规扎实工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

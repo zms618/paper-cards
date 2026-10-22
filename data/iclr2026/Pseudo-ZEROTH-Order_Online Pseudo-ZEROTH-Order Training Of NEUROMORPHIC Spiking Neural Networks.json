@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Pseudo-ZEROTH-Order_Online Pseudo-ZEROTH-Order Training Of NEUROMORPHIC Spiking Neural Networks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Pseudo-ZEROTH-Order_Online Pseudo-ZEROTH-Order Training Of NEUROMORPHIC Spiking Neural Networks.pdf",
+ "title": "Online Pseudo-Zeroth-Order Training of Neuromorphic Spiking Neural Networks (OPZO)",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "OPZO：单次前向+噪声注入的SNN训练，精度略低于BP但成本更低",
+ "innovations": [
+  "提出OPZO：单次前向+噪声注入+直接自上而下信号完成空间信用分配，避免空间BP的对称权重与分层前反向问题",
+  "用伪零阶公式与动量反馈连接解决零阶方法的大方差，同时比随机反馈更有理论保证",
+  "结合在线训练，为神经形态硬件的片上SNN训练铺路"
+ ],
+ "method_framework": "前向时注入噪声扰动权重，由输出层损失产生自上而下信号直接回传做空间信用分配；动量反馈连接平滑零阶估计的高方差，实现无需对称权重、无需分层BP的在线训练。",
+ "experiment_framework": "在神经形态与静态数据集上、用全连接与卷积SNN评测；对比空间BP的精度与训练成本估计。",
+ "takeaways": [
+  "OPZO在精度上与空间BP有竞争力，且估计训练成本更低",
+  "伪零阶+动量反馈可在避免空间BP硬件不友好问题的同时控制方差",
+  "方法天然在线、硬件友好，利于片上SNN训练"
+ ],
+ "weaknesses": [
+  "属神经形态/脉冲网络训练方向，与可靠性主线(医学影像/多模态推理)无直接关联",
+  "精度'有竞争力'但通常仍略低于空间BP，差距与适用规模需看后续页",
+  "噪声注入与动量反馈的超参敏感、以及大规模深层SNN的可扩展性未充分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "神经形态SNN训练方法，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

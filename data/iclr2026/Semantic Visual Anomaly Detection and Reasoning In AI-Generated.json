@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Semantic Visual Anomaly Detection and Reasoning In AI-Generated.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Semantic Visual Anomaly Detection and Reasoning In AI-Generated.pdf",
+ "title": "Semantic Visual Anomaly Detection and Reasoning in AI-Generated Images (AnomReason)",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "形式化AIGC语义异常检测任务，构建基准与标注流水线，方法创新有限。",
+ "innovations": [
+  "首次形式化AIGC图像的语义级异常检测与推理任务，标注为(Name, Phenomenon, Reasoning, Severity)四元组，覆盖混合语义/物理违反/解剖不合理等。",
+  "提出模块化多智能体标注流水线AnomAgent加轻量human-in-the-loop校验，处理约4.17B GPT-4o token实现规模化标注。",
+  "提出语义匹配指标SemAP/SemF1，并在解释性deepfake检测与生成模型语义合理性评估上验证实用价值。"
+ ],
+ "method_framework": "构建基准AnomReason：由AnomAgent多智能体流水线自动生成结构化异常描述并人工抽检；再用该数据微调VLM，使其能定位并解释AIGC图像中的语义异常；评价采用语义匹配而非字符串匹配的SemAP/SemF1。",
+ "experiment_framework": "在AnomReason上微调模型并与强视觉-语言基线对比，报告SemAP/SemF1增益；下游应用含解释性deepfake检测与图像生成器语义合理性评估；标注规模约4.17B GPT-4o tokens。",
+ "takeaways": [
+  "语义级异常（物理/常识违反）无法被传统低级取证线索捕捉，需专门的结构化检测与推理任务。",
+  "多智能体+人工校验的标注流水线可在保证质量的同时支撑大规模基准构建。"
+ ],
+ "weaknesses": [
+  "任务形式化与基准构建为主，方法创新集中在数据/标注流水线而非新模型架构。",
+  "标注依赖GPT-4o，标注质量与成本/偏差之间的权衡需人工校验规模来约束。",
+  "前9页未给出与最强通用VLM零样本能力的充分对比，微调增益的绝对水平需看完整实验。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "AIGC语义异常检测与可靠性主线部分交织，但方法创新有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

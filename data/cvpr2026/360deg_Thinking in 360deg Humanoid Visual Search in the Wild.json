@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/360deg_Thinking in 360deg Humanoid Visual Search in the Wild.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/360deg_Thinking in 360deg Humanoid Visual Search in the Wild.pdf",
+ "title": "Thinking in 360°: Humanoid Visual Search in the Wild",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "头部旋转+全景模拟器简化人形搜索，但实验不完整且评测有缺陷",
+ "innovations": [
+  "重新定义任务而非设计模块：把人形全身运动抽象成『头部旋转』这一原子动作，单张360°全景充当感知-行动闭环的轻量模拟器，绕开真机与3D仿真器，给出HOS(定位目标并注视)与HPS(找可通行路径并对齐朝向)两类可评测的具身搜索",
+  "策略定义为tool-augmented MLLM：πθ(y_t,a_t|o_t,x,H_t)交错输出CoT与动作，动作空间只含rotate(Δφ,Δγ)与submit两个原语；先SFT(2000条人工校验CoT轨迹)给行为先验，再用GRPO按成功式可验证奖励做多轮RL",
+  "H*Bench约3000任务实例×4初始朝向=12000回合：GT由标注框反投影到全景得到方向(φ*,γ*)；HOS按目标初始可见比例d分Easy/Medium/Hard，HPS按有无文字线索及线索-路径是否对齐分4档；成功判据是提交方向落入以GT方向为中心的τφ/τγ容差(30°/20°)"
+ ],
+ "method_framework": "单张全景→按(φ,γ)裁出窄视场观察o_t→策略输出CoT与旋转/提交动作→提交方向落在GT的τ容差内即成功；后训练两阶段：全参数SFT 3轮加GRPO 70步(VAGEN)微调Qwen2.5-VL-3B。",
+ "experiment_framework": "H*Bench覆盖12国6大类18子类场景(交通枢纽/零售/公共机构/街道)；评GPT-4o、Gemini2.5-Pro、InternVL3.5、Qwen2.5-VL/3-VL、Gemma3、MiMo-Embodied等；指标为按难度分档的成功率%。",
+ "takeaways": [
+  "把导航/操作里『停下来看一眼再决定』的关键决策点抽成单步搜索、用全景图替代仿真器，成本低且可扩展，是真机具身研究的轻量化入口",
+  "以『方向容差内提交』作为可验证奖励直接喂GRPO，天然可做过程奖励式训练，绕开人工偏好奖励设计"
+ ],
+ "weaknesses": [
+  "正文在5.3节(RL对复杂任务的负面影响)处截断：RL在HPS中/极难档反而下降(23.03→20.18、14.81→12.04)，却没有隔离实验说明是奖励稀疏、步数上限还是负样本比例导致",
+  "成功判据用固定τφ=30°/τγ=20°容差，未做敏感性扫描；GT来自人工画框中心，框偏即判失败；全文只报单次成功率，无多种子方差",
+  "多地理自采加YouTube/src360混合，视角、光照与影像质量分布不齐；正文截断还导致in-task/cross-task泛化结果与SFT冷启动数据构建的消融缺失",
+  "评测只覆盖3B/4B/8B开源VLM，与GPT-4o/Gemini等闭源模型在同一硬件步数下对比时，差距里混着推理框架与步数预算差异"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "具身搜索与可靠性主线无实质交点，仅轻量化设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/SPD_Sync-Point Drop for Efficient Tensor Parallelism of Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SPD_Sync-Point Drop for Efficient Tensor Parallelism of Large Language Models.pdf",
+ "title": "SPD: Sync-Point Drop for Efficient Tensor Parallelism of Large Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "选择性丢弃同步点减少LLM通信开销，但依赖额外校准数据",
+ "innovations": [
+  "选择性丢弃自注意力输出同步点",
+  "基于块敏感度的三级分类策略",
+  "SPD感知的注意力头分组初始化"
+ ],
+ "method_framework": "设计SPD块结构减少通信开销，基于块敏感度分类(ISB/SB/ESB)应用不同优化策略，对极敏感块进行头分组初始化和块间蒸馏",
+ "experiment_framework": "LLaMA2/OPT模型在4/8 GPU上测试，零-shot任务评估，高/低带宽环境对比",
+ "takeaways": [
+  "基于敏感度的选择性同步点丢弃策略",
+  "块间蒸馏和头分组初始化恢复精度"
+ ],
+ "weaknesses": [
+  "仅关注推理阶段优化",
+  "敏感度测量依赖额外校准数据",
+  "对极敏感块的处理仍有一定精度损失"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

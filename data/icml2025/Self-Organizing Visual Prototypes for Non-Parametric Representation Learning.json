@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Self-Organizing Visual Prototypes for Non-Parametric Representation Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Self-Organizing Visual Prototypes for Non-Parametric Representation Learning.pdf",
+ "title": "Self-Organizing Visual Prototypes for Non-Parametric Representation Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "多支持嵌入表征原型的非参数SSL方法，检索SOTA但增量有限",
+ "innovations": [
+  "提出以多个支持嵌入(SEs)共同表征一个原型，而非用单一原型编码全部特征，更好刻画特征空间区域。",
+  "给出两种损失的非参数化适配，实现SOP策略；其中SOP-MIM从多个非参数局部SE视角重建被掩码表示。",
+  "在检索、线性评估、微调、目标检测等多基准上验证，多个检索基准达到SOTA。"
+ ],
+ "method_framework": "非参数原型自监督方法。放弃'一个隐藏簇对应单一原型'的假设，改用一组语义相近的支持嵌入共同描述该簇的特征区域；将该思想适配到对比式损失与掩码图像建模损失(SOP-MIM)，使被掩码表示从多个局部非参数SE视角重建，随encoder复杂度提升持续获益。",
+ "experiment_framework": "在ImageNet上预训练，评测覆盖最近邻/线性评估、图像检索、下游微调与目标检测；对比DINO、iBOT、MaSSL等原型式SSL方法，报告k-NN Top-1与多检索基准指标，并随encoder规模(M参数)扫描性能曲线。",
+ "takeaways": [
+  "用多个互补的支持嵌入共同表征原型，比单一原型更充分地刻画特征空间。",
+  "该非参数策略在多个检索基准上取得SOTA，且收益随encoder复杂度增大而增加。"
+ ],
+ "weaknesses": [
+  "本质仍是对原型式SSL(DINO/iBOT系)的改造，方法新颖性增量有限。",
+  "收益主要体现在检索基准，目标检测等密集任务的相对优势不够突出。",
+  "多支持嵌入带来的存储/计算开销与可扩展性未充分量化。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

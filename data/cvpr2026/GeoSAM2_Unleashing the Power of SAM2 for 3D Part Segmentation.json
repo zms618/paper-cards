@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/GeoSAM2_Unleashing the Power of SAM2 for 3D Part Segmentation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/GeoSAM2_Unleashing the Power of SAM2 for 3D Part Segmentation.pdf",
+ "title": "GeoSAM2 Unleashing the Power of SAM2 for 3D Part Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "多视图2D提示控制3D分割，计算开销大且纹理物体性能未知",
+ "innovations": [
+  "将3D部件分割重构为多视图2D掩码预测任务",
+  "几何感知编码器与LoRA参数高效微调",
+  "多视图内存保留机制与帧重复引导策略"
+ ],
+ "method_framework": "渲染12视图法线和点图，通过LoRA增强的SAM2骨干网络处理2D提示，融合法线和点图特征，投影回3D并后处理优化。",
+ "experiment_framework": "PartObjaverse-Tiny和PartNetE数据集，与Find3D、SAMPart3D、SAMesh和PartField比较，使用mIoU指标。",
+ "takeaways": [
+  "多视图2D提示控制提供细粒度3D部件分割",
+  "几何特征融合与内存机制提升跨视图一致性",
+  "参数高效微调保持预训练先验"
+ ],
+ "weaknesses": [
+  "依赖12视图渲染，计算开销较大",
+  "仅适用于无纹理物体，纹理物体表现未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D分割与可靠性主线无实质交点，仅多视图方法有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

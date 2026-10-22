@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Accelerating Diffusion via Hybrid Data-Pipeline Parallelism Based on Conditional Guidance.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Accelerating Diffusion via Hybrid Data-Pipeline Parallelism Based on Conditional Guidance.pdf",
+ "title": "Accelerating Diffusion via Hybrid Data-Pipeline Parallelism Based on Conditional Guidance",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "条件引导的混合并行加速扩散模型，但扩展性受限",
+ "innovations": [
+  "条件引导的数据分区策略",
+  "自适应并行切换机制",
+  "三阶段混合并行框架"
+ ],
+ "method_framework": "结合条件引导的数据分区与自适应并行切换，将扩散过程分为预热、并行和全连接三阶段，根据条件与非条件路径的噪声差异动态切换并行模式。",
+ "experiment_framework": "在SDXL和SD3模型上评估，与DistriFusion、AsyncDiff等方法比较，使用延迟、加速比、通信量、FID、LPIPS和PSNR指标。",
+ "takeaways": [
+  "条件引导的数据分区避免边界伪影",
+  "基于噪声差异的自适应切换机制平衡质量与效率",
+  "框架适用于多种架构包括U-Net和DiT"
+ ],
+ "weaknesses": [
+  "仅适用于偶数GPU配置",
+  "并行阶段长度k需要经验调整",
+  "未探索奇数GPU扩展方案"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型加速与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

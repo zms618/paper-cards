@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Efficient Quantification of Multimodal Interaction at Sample Level.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficient Quantification of Multimodal Interaction at Sample Level.pdf",
+ "title": "Efficient Quantification of Multimodal Interaction at Sample Level",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.6
+ },
+ "one_line": "样本级PID估计器，轻量但依赖预训练模型，非可靠性主线",
+ "innovations": [
+  "首次把PID从分布级推进到样本级用于连续真实多模态数据：既存PID-CVX/Batch只能整数据集估计，LSMI逐样本输出r/u1/u2/s。",
+  "pointwise单调化：因PMI可为负破坏格单调，把i(x;y)拆成正部i+=-log p(x)与负部i-=-log p(x|y)(均正)，在两个分量上分别取min做冗余r+、r-再相减，恢复集合格直觉。",
+  "轻量熵估计：用KNIFE学p(xm)→h(xm)的映射绕开联合分布X1×X2×Y建模，时间不随类别数增长；并落地三个应用——冗余指导数据划分、交互加权蒸馏、交互感知集成。"
+ ],
+ "method_framework": "两模态x1,x2对目标y。三点互信息i(x;y)=log p(x,y)/(p(x)p(y))。方程组：i(x1;y)=r+u1, i(x2;y)=r+u2, i(x1,x2;y)=r+u1+u2+s，四未知需定r。r=min(i+_1,i+_2)-min(i-_1,i-_2)，其中i+_m=-log p(xm)用熵估计器hθm上界(最小化E[hθ]-H=DKL收紧)，i-_m=hθm(xm)-h(y)-log p(y|xm)。判别模型p(y|x1)/p(y|x2)/p(y|x1,x2)提供PMI。",
+ "experiment_framework": "合成：XOR/OR/XOR+NOT电路(有GT)、混合高斯(可调ρ控制s)、预置交互比例；真实：Food-101(图文)/CREMA-D(音视)/Kinetic-Sounds(音视)/UCF-101(RGB+光流)/CMU-MOSEI(视频+文本)/UR-funny(视文)；基线PID-CVX/PID-Batch；指标与GT/人类标注偏差、Pearson相关、时间；应用ImageBind数据划分/蒸馏/集成。",
+ "takeaways": [
+  "合成电路上LSMI几乎复现GT(XOR s=0.691 vs GT 0.693)，PID-CVX/Batch在混合高斯/预置交互上系统性低估synergy。",
+  "真实数据时间：KS上LSMI 501s vs PID-Batch 21928s(44×)，Food-101 504s vs 59679s(118×)；与人类判断Pearson相关0.98(冗余)/0.95(文本唯一)。",
+  "应用：高冗余子集微调ImageBind提升多模态对齐(KS V+A 0.877 vs all 0.854)，低冗余子集改善信息贫乏模态；交互加权蒸馏/集成一致优于直接蒸馏/加权集成。"
+ ],
+ "weaknesses": [
+  "依赖预训练判别模型p(y|·)逼近真实后验，估计精度上限被这些模型限制；real-world无GT，仅靠与PID-Batch/人类标注一致性佐证。",
+  "冗余定义采用min(i+,i+)-min(i-,i-)是一种选择，作者未与其他pointwise PID定义(Bertschinger/BROJA)做理论对比；多模态扩展(>2模态)仅附录一笔带过。",
+  "落地域是多模态交互分析/可解释，非可靠性主线(鲁棒/泛化/不确定性/幻觉抑制)；与多模态大模型推理的可信性无直接关系，故relevance压到5.5。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

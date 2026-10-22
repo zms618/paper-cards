@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Unlocking Post-hoc Dataset Inference with Synthetic Data.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Unlocking Post-hoc Dataset Inference with Synthetic Data.pdf",
+ "title": "Unlocking Post-hoc Dataset Inference with Synthetic Data",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.0
+ },
+ "one_line": "用合成数据替代私有留出集，实现post-hoc数据集推断",
+ "innovations": [
+  "指出现有DI方法需要一份与被怀疑数据集同分布、且已知未参与训练的私有留出集，现实中几乎不可得，严重限制可用性",
+  "提出用生成模型合成数据充当该留出集，使post-hoc DI在无真实in-distribution留出集时仍可行",
+  "在多个文本数据集上以高置信度检测出原始训练集"
+ ],
+ "method_framework": "数据集推断用于判断某可疑数据集是否被用于训练LLM；关键是需要一个同分布held-out集做对照。本文训练生成模型合成与目标分布相近的数据作为held-out集，替代稀缺的真实留出集，进而在post-hoc(仅拿到发布模型)条件下做成员/训练集推断。",
+ "experiment_framework": "在多个文本数据集上评测；对比需要真实in-distribution留出集的DI基线；指标为检测原始训练集的置信度/AUC；强调无需真实私有留出数据。",
+ "takeaways": [
+  "合成数据可替代稀缺的同分布留出集，使post-hoc DI实用化",
+  "数据所有者可在不依赖模型方配合的情况下验证未授权使用",
+  "该方法对文本领域LLM的IP/隐私保护有现实意义"
+ ],
+ "weaknesses": [
+  "合成数据与真实目标分布的差距如何影响检测可靠性未充分量化",
+  "仅在文本数据集验证，对多模态/视觉模型的迁移未涉及",
+  "面对模型方刻意的反取证(如去重/扰动)是否稳健未讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

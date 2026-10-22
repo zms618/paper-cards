@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Structured Reasoning for LLMS A Unified Framework for Efficiency and Explainability.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Structured Reasoning for LLMS A Unified Framework for Efficiency and Explainability.pdf",
+ "title": "Structured Reasoning for LLMs: A Unified Framework for Efficiency and Explainability",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "结构化推理框架提升LLM效率与可解释性，但依赖人工标签且迁移性未验证",
+ "innovations": [
+  "提出结构化推理范式：将推理过程分解为带领域无关标签的推理步骤，建模为有向无环图(DAG)，稀疏图对应高效推理过程",
+  "设计MaxFlow奖励：通过网络流评估单图中各步骤对最终答案的贡献均衡度，奖励冗余步骤少、节点贡献均衡的推理图",
+  "设计LCS奖励：跨多个生成响应寻找最长公共子序列（连续步骤），识别可靠推理路径，实现多图对比择优"
+ ],
+ "method_framework": "首先收集高频领域无关推理步骤标签（如<rephrase>、<assumption>、<verify>等），构建结构化推理数据集。将LLM输出解析为推理DAG（顶点=步骤，边=推理方向）。单图优化用MaxFlow奖励：从所有步骤到最终答案的总流量衡量图质量，奖励节点贡献均衡且冗余少的图。多图对比用LCS奖励：在多个生成序列中找最长公共连续步骤子序列，选择被多次共享的可靠路径。",
+ "experiment_framework": "在DeepSeek-R1-Distill-Qwen-1.5B和7B模型上验证，对比GRPO等RL基线。覆盖多种上下文长度（0.5k-8k）和温度范围（0.1-1.0）。评估指标包括推理准确率、推理步骤数（效率）和稳定性（跨温度方差）。",
+ "takeaways": [
+  "将推理过程结构化为带标签的DAG可以同时提升效率（更少冗余步骤）和可解释性（每步有明确功能）",
+  "MaxFlow奖励和LCS奖励的组合在不同上下文长度下均稳定优于GRPO，说明结构化奖励比token级奖励更有效",
+  "结构化推理在温度0.1-1.0范围内性能稳定，解决了纯token级推理模型在高温下性能崩溃的问题"
+ ],
+ "weaknesses": [
+  "推理步骤标签需要人工收集和标注，标签体系的完备性和通用性依赖人工设计",
+  "DAG解析依赖LLM输出的结构化标签格式，解析错误可能导致奖励计算偏差",
+  "仅在DeepSeek-R1蒸馏模型上验证，对其他推理模型（如o1、QwQ）的迁移性未证明"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "结构化推理提升LLM效率，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

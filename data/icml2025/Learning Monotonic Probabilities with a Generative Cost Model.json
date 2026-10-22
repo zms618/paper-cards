@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning Monotonic Probabilities with a Generative Cost Model.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning Monotonic Probabilities with a Generative Cost Model.pdf",
+ "title": "Learning Monotonic Probabilities with a Generative Cost Model",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.9
+ },
+ "one_line": "生成成本模型重构单调概率问题，但适用性和复杂度存疑。",
+ "innovations": [
+  "从生成视角重新表述单调性问题：单调性等价于收益变量与隐成本变量间的偏序关系",
+  "提出生成成本模型(GCM)：生成隐成本变量，内生保证严格单调性，区别于构造法或正则化法",
+  "扩展为隐式生成成本模型(IGCM)处理隐式单调关系，适用于更广泛的单调学习场景"
+ ],
+ "method_framework": "将p(y|x,r)建模为收益变量r和隐成本变量c的偏序函数：y > c ⟺ 正响应；用生成网络建模隐成本变量的分布；严格单调性由偏序结构内生保证，无需特殊激活函数或正则化；IGCM进一步处理隐式单调关系。",
+ "experiment_framework": "分位数回归数值模拟 + 多个公开数据集实验；对比构造法(正权重/min-max结构)和正则化法单调模型；指标为预测精度、单调误差率、校准性。",
+ "takeaways": [
+  "生成式偏序框架可内生保证单调性，无需修改网络结构或添加正则项",
+  "GCM在严格单调和隐式单调场景下均优于传统单调建模方法",
+  "分位数回归模拟验证了方法在有序概率预测上的准确性"
+ ],
+ "weaknesses": [
+  "生成隐成本变量的引入增加了模型复杂度和训练难度",
+  "仅在表格数据和分位数回归上验证，高维视觉/文本任务适用性未知",
+  "单调性的方向(增/减)需要先验指定，无法从数据自动发现"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.7,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/ADAPTA_Scalable Multi-Task Low-Rank Model ADAPTA.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/ADAPTA_Scalable Multi-Task Low-Rank Model ADAPTA.pdf",
+ "title": "Scalable MULTI-TASK LOW-RANK Model ADAPTA",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "改进LoRA架构解决多任务扩展，但依赖特定架构且开销增加",
+ "innovations": [
+  "谱感知正则化选择性正交化低奇异值组件",
+  "块级适配减少梯度冲突并提高参数效率",
+  "细粒度路由使用维度特定权重提高表达能力"
+ ],
+ "method_framework": "基于HydraLoRA架构，引入共享下投影A和任务特定上投影B，通过谱加权函数w(σ)=exp(-σ/¯σ)实现选择性正交化，块级并行路径避免内部非线性冲突，维度特定路由向量Πi替代标量权重",
+ "experiment_framework": "在四个大规模多任务基准测试(DOTA, iNat2018, Dolly-15k, BBH)上评估，与HydraLoRA、MMoELoRA和LoRAHub比较，使用准确率指标和参数效率",
+ "takeaways": [
+  "奇异值分析揭示共享知识集中在高SV组件",
+  "块级适配比组件级适配减少76%梯度冲突",
+  "谱感知正则化解决正则化-路由权衡问题"
+ ],
+ "weaknesses": [
+  "方法依赖于特定架构(Pre-LN)",
+  "奇异值计算增加训练开销",
+  "未分析不同模型规模下的扩展性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多任务参数高效方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

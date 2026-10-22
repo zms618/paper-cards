@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Sigmadock_Untwisting Molecular Docking with Fragment-Based SE(3) Diffusion.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sigmadock_Untwisting Molecular Docking with Fragment-Based SE(3) Diffusion.pdf",
+ "title": "SigmaDock: Untwisting Molecular Docking with Fragment-Based SE(3) Diffusion",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 4.0,
+  "overall": 5.8
+ },
+ "one_line": "刚体片段SE(3)扩散对接，PoseBusters超越经典方法但适用性有限",
+ "innovations": [
+  "提出利用结构化学归纳偏置的片段化方案，把配体分解为若干刚体片段",
+  "构建SE(3)黎曼扩散模型SigmaDock，学习在结合口袋内重组这些刚体片段生成结合构象",
+  "在SE(3)片段层级操作，既利用成熟几何先验，又避免过度复杂扩散过程与不稳定训练动态"
+ ],
+ "method_framework": "不直接对整个配体做扭转/全局扩散，而是先按化学合理性把配体切成刚体片段；在SE(3)群上对每个片段的位姿做扩散，在口袋内逐步组装，靠刚体片段间的内禀几何约束减少化学不合理输出并稳定训练。",
+ "experiment_framework": "在PoseBusters(PB)划分上以RMSD<2且PB-valid为成功标准，对比近期深度学习对接方法与经典物理对接；报告Top-1成功率与对未见蛋白的泛化。",
+ "takeaways": [
+  "PoseBusters上Top-1成功率>79.9%，远超近期DL方法的12.7-32.8%",
+  "首个在PB训练-测试划分下超越经典物理对接的深度学习方法",
+  "对未见蛋白表现出一致泛化，且比共折叠模型更省推理成本、适合高通量筛选"
+ ],
+ "weaknesses": [
+  "属计算化学/药物分子对接，与可靠性、医学影像、多模态推理主线无关",
+  "刚体片段分解假设某些键不旋转，对高度柔性/变构配体的建模能力受限",
+  "仍依赖预定义口袋与蛋白刚性假设，对共折叠/柔性蛋白场景的适用性未覆盖；PB划分外真实药物筛选的外部效度待验"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "计算化学对接，与可靠性主线无关且无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

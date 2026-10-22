@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/R2-DREAMER Redundancy-Reduced World Models without Decoders Or Augmentation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/R2-DREAMER Redundancy-Reduced World Models without Decoders Or Augmentation.pdf",
+ "title": "R2-Dreamer: Redundancy-Reduced World Models without Decoders or Augmentation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "无解码器MBRL框架，用冗余减少目标替代数据增强，提升微小物体性能。",
+ "innovations": [
+  "在RSSM世界模型中用冗余减少目标替代数据增强作为内部正则化，无需解码器和DA",
+  "新提出DMC-Subtle基准，含微小任务相关物体，测试表征聚焦能力",
+  "训练比DreamerV3快1.59倍，在标准基准上与强基线竞争，在微小物体场景显著提升"
+ ],
+ "method_framework": "R2-Dreamer在Dreamer架构基础上，用图像嵌入和隐状态之间的冗余减少目标（受Barlow Twins启发）替代像素级重建和数据增强。该目标最小化嵌入维度间的冗余相关性，防止表征坍缩，同时将容量集中在任务相关信息上。",
+ "experiment_framework": "在DeepMind Control Suite、Meta-World和新提出的DMC-Subtle上评测；对比DreamerV3、TD-MPC2等基线；报告成功率和训练速度；分析微小物体场景性能。",
+ "takeaways": [
+  "基于重建的世界模型浪费容量在任务无关背景上，无解码器方法更高效",
+  "Barlow Twins式冗余减少可作为完全替代数据增强的内部正则化",
+  "去除解码器和DA后训练更快且在微小物体任务上表现更好"
+ ],
+ "weaknesses": [
+  "与可靠性/多模态推理/医学影像主线完全无关，属于model-based RL领域",
+  "冗余减少目标的超参数选择和在不同任务族上的普适性未充分消融",
+  "仅在DMC/Meta-World等仿真环境验证，真实机器人场景迁移性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "属于model-based RL领域，与可靠性主线完全无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

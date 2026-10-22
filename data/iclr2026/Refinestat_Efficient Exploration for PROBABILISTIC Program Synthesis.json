@@ -1,0 +1,41 @@
+{
+ "title": "RefineStat: Efficient Exploration for Probabilistic Program Synthesis",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "语义约束解码+诊断求精，让小模型生成统计可靠概率程序",
+ "innovations": [
+  "首次证明开源小模型(SLM)可在贝叶斯工作流意义下合成可靠概率程序(满足ESS充足、MCMC发散少、样本外拟合强等检查)。",
+  "提出语义约束解码：强制合法分布、良构参数、类型与变量依赖，低成本消除SLM的语义bug(如把标准差写成方差)。",
+  "提出诊断感知的迭代求精：可靠性检查失败时只重采样先验或似然组件，用单个未改动SLM高效搜索，媲美双GPT-4的BoxLM。"
+ ],
+ "method_framework": "两阶段：(1)语义约束生成——用语法/类型约束解码保证生成的PyMC/NumPyro程序分布合法、参数正确；(2)诊断感知求精——运行后验推断并做贝叶斯诊断(ESS、发散、样本外拟合)，不达标则定向重采样先验或似然组件，循环搜索可靠模型。",
+ "experiment_framework": "5个概率编程数据集、5个开源LLM(≤8B)；对比无约束直接生成、仅语法约束的Syncode、双GPT-4的BoxLM及闭源o3；指标为诊断通过率、样本外拟合与是否匹配人工/大模型程序。",
+ "takeaways": [
+  "SLM生成概率程序的主要问题是语义/统计错误(而非语法)，语义约束解码能低成本消除。",
+  "贝叶斯诊断可作为程序可靠性的自动奖励信号，定向重采样比整体重生成更高效。",
+  "单小模型+诊断求精可达到接近闭源大模型的概率程序质量。"
+ ],
+ "weaknesses": [
+  "落地域为概率编程/统计建模，非医学影像/多模态推理主线。",
+  "诊断通过仅代表统计自洽，不保证模型选择正确或物理意义合理。",
+  "节选前9页未见5数据集的完整诊断/拟合数值表，'匹配o3'的幅度在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Refinestat_Efficient Exploration for PROBABILISTIC Program Synthesis.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Refinestat_Efficient Exploration for PROBABILISTIC Program Synthesis.pdf",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "概率编程可靠性方法扎实，但未触及医学影像或多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VTOOL-R1_VLMS Learn To Think with via Reinforcement Learning On Multimodal Tool Use.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VTOOL-R1_VLMS Learn To Think with via Reinforcement Learning On Multimodal Tool Use.pdf",
+ "title": "VTool-R1: VLMs Learn to Think with Images via Reinforcement Learning on Multimodal Tool Use",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "RL训练VLM生成图文交错思维链，但适用场景有限",
+ "innovations": [
+  "提出VTool-R1：首个RFT框架训练VLM生成多模态思维链——在推理过程中交错生成文本和中间视觉推理步骤",
+  "将Python视觉编辑工具集成到RL训练流程中，让模型学会何时以及如何生成视觉推理步骤来增强输出质量",
+  "仅用结果奖励(outcome-based reward)训练，无需过程监督即可激发策略性视觉工具使用能力"
+ ],
+ "method_framework": "VTool-R1将视觉编辑工具（Python-based）集成到VLM的RL微调中。模型在推理过程中可以选择调用视觉工具生成中间可视化步骤（如裁剪、标注、画图），然后基于更新后的图像继续推理。训练用纯结果奖励（最终答案对错），不提供过程标注。通过RL，模型自发学会了何时需要视觉辅助、何时纯文本推理即可。最终形成图文交错的多模态思维链。",
+ "experiment_framework": "任务：图表和表格的结构化视觉推理。基线：纯文本CoT的VLM、推理时视觉工具方法（无训练）。指标：推理准确率。验证了\"用图像思考\"相比纯文本推理的优势。",
+ "takeaways": [
+  "纯文本主导的多模态推理容易陷入语言捷径（如\"手有5根手指\"的先验偏差），加入视觉推理步骤能显著改善",
+  "仅用结果奖励即可训练出策略性视觉工具使用能力，无需精细的过程监督",
+  "VLM可以学会\"用图像思考\"——在推理过程中主动调用视觉工具辅助复杂推理"
+ ],
+ "weaknesses": [
+  "主要在图表/表格结构化推理任务上验证，更广泛视觉推理场景的适用性未展示",
+  "视觉工具调用增加了推理步骤和延迟",
+  "工具调用的正确性依赖Python代码生成能力，错误代码可能误导后续推理"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态工具使用方法有迁移价值，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

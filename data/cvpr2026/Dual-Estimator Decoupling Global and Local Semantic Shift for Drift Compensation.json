@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Dual-Estimator Decoupling Global and Local Semantic Shift for Drift Compensation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Dual-Estimator Decoupling Global and Local Semantic Shift for Drift Compensation.pdf",
+ "title": "Dual-Estimator Decoupling Global and Local Semantic Shift for Drift Compensation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "双估计器解耦语义偏移，但依赖原型表示和手动调参",
+ "innovations": [
+  "解耦全局与局部语义偏移的双重估计器架构",
+  "混合专家估计器处理任务内非均匀语义分布",
+  "低秩估计器处理任务间非均匀语义偏移",
+  "基于旋转的像素融合策略增强低频语义学习"
+ ],
+ "method_framework": "Dual-E结合MoE-E和LoR-E估计器，前者通过k-means聚类和专家网络建模局部语义偏移，后者通过低秩网络建模全局语义趋势，并通过原型融合机制平衡两者影响。",
+ "experiment_framework": "在CIFAR-100、TinyImageNet等6个数据集上评估，使用Alast和Ainc指标，与LDC、ADC等11种基线方法比较。",
+ "takeaways": [
+  "非均匀语义分布和偏移是漂移补偿的关键挑战",
+  "解析解更新使方法能高效集成到现有无样本增量学习方法中",
+  "任务内和任务间的非均匀性需要不同的补偿策略"
+ ],
+ "weaknesses": [
+  "方法依赖原型表示，可能不适用于所有类型的增量学习场景",
+  "混合专家估计器的聚类数量K需要手动调整",
+  "计算复杂度随任务数量增加而上升"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "解决增量学习中的语义偏移问题，属于可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

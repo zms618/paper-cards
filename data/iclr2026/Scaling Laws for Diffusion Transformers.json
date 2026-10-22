@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Scaling Laws for Diffusion Transformers.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scaling Laws for Diffusion Transformers.pdf",
+ "title": "Scaling Laws for Diffusion Transformers",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 7,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "DiT上验证已知缩放律，外推大模型但与主线关联弱。",
+ "innovations": [
+  "首次在文生图DiT上实证并拟合出预训练损失关于算力的幂律scaling law，覆盖1e17至6e18 FLOPs、模型1M到1B。",
+  "用isoFLOP抛物线方法提取每个算力预算下的最优模型规模与数据量，进而外推到1.5e21 FLOPs(约1B参数)并训练验证损失与预测吻合。",
+  "证明预训练损失趋势与下游生成质量(如FID)一致，且该规律跨数据集(含OOD的COCO)可迁移，可作为低成本评估模型与数据质量的可预测基准。"
+ ],
+ "method_framework": "在固定算力预算下训练多个不同规模模型，对损失拟合抛物线取最优点得到最优模型/数据配比；再用多预算最优点拟合损失、模型规模、数据量关于算力的幂律，外推大算力配置并验证，同时关联损失与FID。",
+ "experiment_framework": "文生图DiT预训练，算力跨度1e17-6e18 FLOPs，验证外推配置(1B/1.5e21)；在COCO验证集上检验FID随算力的幂律及跨数据集可迁移性。",
+ "takeaways": [
+  "DiT预训练损失确实遵循关于算力的幂律，可像LLM一样做资源最优分配。",
+  "生成质量(FID)与预训练损失趋势一致，使合成质量随算力可预测。",
+  "该规律跨数据集可迁移，能以低成本评估模型与数据质量。"
+ ],
+ "weaknesses": [
+  "属图像/视频生成的经验scaling law，与可靠性×医学影像/多模态推理主线关联弱。",
+  "结论基于特定DiT配方与有限算力区间，对视频、多模态或不同归一化/目标函数的迁移性未充分验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.03,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "图像生成缩放律，与可靠性主线关联弱。",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

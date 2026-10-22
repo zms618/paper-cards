@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Beyond One-Hot Labels Semantic Mixing for Model Calibration.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Beyond One-Hot Labels Semantic Mixing for Model Calibration.pdf",
+ "title": "Beyond One-Hot Labels: Semantic Mixing for Model Calibration",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "扩散模型生成混合样本提升校准，但计算成本高且任务局限",
+ "innovations": [
+  "提出Calibration-aware Semantic Mixing (CSM)框架，利用扩散模型生成混合类别语义的训练样本，并赋予对应的置信度真值标注",
+  "提出校准重标注方法，解决扩散逆过程中置信度标注与混合比例不对齐的问题",
+  "探索了适配新数据表示范式的损失函数设计，使模型能学习细粒度置信度区分"
+ ],
+ "method_framework": "利用扩散模型在语义空间中混合不同类别特征，生成既保持物体完整性又带有中间置信度的合成图像；通过校准重标注修正扩散过程中的置信度偏移；结合新损失函数训练模型使其输出准确反映预测正确性概率。",
+ "experiment_framework": "在多个视觉分类数据集上评估；基线：SOTA校准方法（温度缩放、MMCE、mixup-based等）；指标：ECE（期望校准误差）、NLL、Brier Score等校准指标；同时对比分类准确率。",
+ "takeaways": [
+  "one-hot标签隐含假设所有标注完全确定，缺乏不确定性信息是现有校准方法的根本局限",
+  "通过扩散模型生成语义混合样本及其不确定性真值，能有效提升模型校准性能",
+  "校准重标注机制对于弥合扩散混合比例与实际置信度之间的差距至关重要"
+ ],
+ "weaknesses": [
+  "依赖扩散模型生成训练数据，引入了额外的计算成本和扩散模型本身的质量依赖",
+  "仅在图像分类任务上验证，未扩展到检测、分割等更复杂的视觉任务",
+  "合成数据与真实不确定样本之间的分布差距未充分分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

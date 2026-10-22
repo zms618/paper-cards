@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Learning from Noisy Supervision A Denoising-Debiasing Framework for Weakly Supervised.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Learning from Noisy Supervision A Denoising-Debiasing Framework for Weakly Supervised.pdf",
+ "title": "Learning from Noisy Supervision A Denoising-Debiasing Framework for Weakly Supervised",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "D2MIL通过去噪和VLM去偏提升弱监督视频异常检测",
+ "innovations": [
+  "动态阈值去噪模块，自适应过滤高损失噪声样本",
+  "基于视觉语言模型的去偏模块，恢复被误删的困难异常样本",
+  "区分噪声样本和困难异常样本的实证分析"
+ ],
+ "method_framework": "D2MIL框架包含两个模块：动态阈值去噪模块根据损失值过滤噪声样本；VLM去偏模块利用视觉语言模型重新评估被丢弃样本，恢复有价值的困难异常样本。",
+ "experiment_framework": "在ShanghaiTech、UCF-Crime和MSAD三个基准数据集上测试，与多种MIL基线方法对比，使用AUC作为主要评估指标。",
+ "takeaways": [
+  "基于损失值的噪声样本过滤策略可有效提升模型鲁棒性",
+  "利用预训练VLM进行零样本异常判断可恢复有价值的困难样本"
+ ],
+ "weaknesses": [
+  "方法依赖于特定VLM模型(Qwen-VL-Max)的性能",
+  "动态阈值和召回率的调参可能需要针对不同数据集进行调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "弱监督异常检测与可靠性主线交点，VLM去偏具可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

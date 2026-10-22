@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Recurrent Attention-based Token Selection for Efficient Streaming Video-LLMs.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Recurrent Attention-based Token Selection for Efficient Streaming Video-LLMs.pdf",
+ "title": "Recurrent Attention-based Token Selection for Efficient Streaming Video-LLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "LLM引导的视觉token选择与循环处理，提升视频大模型效率",
+ "innovations": [
+  "LLM引导的视觉token选择机制",
+  "循环处理过去选中的token实现时间连贯性",
+  "基于描述的问答实现轻量级响应"
+ ],
+ "method_framework": "将视频分割为短片段，利用LLM注意力分数选择关键视觉token，通过FIFO队列循环处理历史token，生成描述并基于相似性检索回答问题",
+ "experiment_framework": "在Realtime VStream-QA、MovieChat、CG-Bench等基准测试，与ReKV、Flash-VStream等基线比较准确率、延迟和内存使用",
+ "takeaways": [
+  "注意力分数作为token选择的有效指标",
+  "文本描述比原始视觉token更适合长期存储和检索",
+  "轻量级模型结合rLiVS可超越重型模型"
+ ],
+ "weaknesses": [
+  "仅依赖注意力分数可能忽略某些重要但未被注意的信息",
+  "FIFO队列可能导致早期重要信息被丢弃",
+  "未探索不同视频类型的适应性策略"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

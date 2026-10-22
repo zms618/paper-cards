@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/FlashAttention_Representation Shift Unifying Token Compression with FlashAttention.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/FlashAttention_Representation Shift Unifying Token Compression with FlashAttention.pdf",
+ "title": "Representation Shift Unifying Token Compression with FlashAttention",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "简单表示距离度量统一token压缩与FlashAttention，有限加速。",
+ "innovations": [
+  "提出Representation Shift作为训练无关、模型无关的token重要性度量",
+  "首次实现token压缩与FlashAttention的无缝集成",
+  "方法扩展至CNN和SSM等多种架构"
+ ],
+ "method_framework": "通过计算MLP层前后token表示的L2距离作为重要性分数，无需注意力图或重新训练即可进行token压缩。",
+ "experiment_framework": "视频文本检索(MSRVTT等7个数据集)、视频问答(MSRVTT-QA/MSVD-QA)、图像分类(ImageNet1K)，对比基线、注意力分数方法，测量吞吐量和准确率。",
+ "takeaways": [
+  "简单有效的表示变化度量可作为token重要性代理",
+  "MLP层的表示变化比注意力层更具判别力",
+  "L2距离比其他距离度量更稳定"
+ ],
+ "weaknesses": [
+  "仅在前几层进行token压缩，未探索全层压缩",
+  "CNN中的token pruning实现较为复杂",
+  "未分析不同压缩比例下的性能权衡"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "token压缩与FlashAttention集成，无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

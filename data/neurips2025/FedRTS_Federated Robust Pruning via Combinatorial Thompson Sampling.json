@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/FedRTS_Federated Robust Pruning via Combinatorial Thompson Sampling.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/FedRTS_Federated Robust Pruning via Combinatorial Thompson Sampling.pdf",
+ "title": "FedRTS: Federated Robust Pruning via Combinatorial Thompson Sampling",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "联邦学习中的组合汤普森采样剪枝，提升鲁棒性与通信效率",
+ "innovations": [
+  "将联邦剪枝问题建模为组合多臂老虎机问题",
+  "基于汤普森采样的拓扑调整机制(TSAdj)",
+  "融合个体与聚合结果的全面结果计算",
+  "仅上传梯度索引的通信优化策略"
+ ],
+ "method_framework": "FedRTS框架采用双循环训练结构，内循环更新模型权重，外循环通过TSAdj机制基于概率分布进行拓扑调整，使用Beta分布维护每个链接的后验概率，实现鲁棒剪枝。",
+ "experiment_framework": "在CIFAR-10等4个CV数据集和TinyStories NLP数据集上评估，对比FedAVG等7种基线方法，测量准确率、通信成本等指标，分析不同密度和异构性下的表现。",
+ "takeaways": [
+  "将决策问题建模为CMAB可提升联邦剪枝的鲁棒性",
+  "概率决策比确定性剪枝更稳定且能利用历史信息",
+  "通信优化策略显著减少带宽需求而不影响性能"
+ ],
+ "weaknesses": [
+  "理论分析基于简化假设，实际权重独立性可能不成立",
+  "实验主要在中小规模模型上进行，大规模模型上的扩展性未充分验证",
+  "未深入分析不同网络结构下的参数敏感性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

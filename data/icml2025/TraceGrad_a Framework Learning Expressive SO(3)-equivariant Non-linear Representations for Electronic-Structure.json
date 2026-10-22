@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/TraceGrad_a Framework Learning Expressive SO(3)-equivariant Non-linear Representations for Electronic-Structure.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/TraceGrad_a Framework Learning Expressive SO(3)-equivariant Non-linear Representations for Electronic-Structure.pdf",
+ "title": "TraceGrad: a Framework Learning Expressive SO(3)-equivariant Non-linear Representations for Electronic-Structure Hamiltonian Prediction",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "用迹量监督不变特征，梯度诱导等变编码，解决SO(3)等变-非线性冲突。",
+ "innovations": [
+  "揭示SO(3)不变量与等变量的数学关系，用从Hamiltonian导出的理论不变迹量作为监督标签引导高质量不变特征学习",
+  "利用不变量在非线性操作下保持不变的性质，在不变特征上充分使用非线性映射捕获物理系统的非线性模式",
+  "提出基于梯度的机制，从已学不变特征诱导各阶SO(3)等变编码，在保持等变性的同时注入非线性表达力"
+ ],
+ "method_framework": "Hamiltonian预测须严格满足SO(3)旋转等变，但对等变特征(l>=1)直接施加非线性激活会破坏等变性，造成等变性与非线性表达的冲突。TraceGrad先构造Hamiltonian的SO(3)不变迹量作为监督，训练可自由使用非线性映射的不变特征；再通过梯度机制把不变特征映射为与回归目标物理维度对应的各阶等变特征，从而在理论上保持等变性的同时获得强非线性表达。",
+ "experiment_framework": "在八个有挑战性的电子结构Hamiltonian预测基准数据库上，以Hamiltonian预测精度为指标，对比主流SO(3)等变深度学习方法；报告达到SOTA。",
+ "takeaways": [
+  "把非线性表达放在不变特征上、把等变性交给梯度诱导的等变编码，可化解等变-非线性冲突",
+  "用目标导出的不变迹量作监督标签，能有效引导高质量不变表示学习",
+  "该框架在多个Hamiltonian预测基准上达到SOTA"
+ ],
+ "weaknesses": [
+  "主线相关性弱：属等变GNN/电子结构材料预测，与可靠性乘医学影像/多模态推理主线无直接联系",
+  "前9页主要为动机与框架，完整基准数值与消融在后续页",
+  "梯度诱导等变编码的额外计算开销、对更大体系/含杂化体系的外推需后续页验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Videoreasonbench_Can MLLMS Perform Vision-Centric Complex Video REASONING.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Videoreasonbench_Can MLLMS Perform Vision-Centric Complex Video REASONING.pdf",
+ "title": "VideoReasonBench: Can MLLMs Perform Vision-Centric Complex Video Reasoning?",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "构建视频推理基准，发现MLLM多步推理能力差，长思维链关键",
+ "innovations": [
+  "提出VideoReasonBench：以视觉为中心的复杂视频推理基准，视频内容为细粒度操作序列作用于隐状态，要求多步视觉推理",
+  "设计三级递进推理难度：回忆观察到的视觉信息、推断隐状态内容、预测视频外信息",
+  "发现扩展思维链(extended thinking)在本基准上至关重要（Gemini-2.5-Pro 56% vs GPT-4o 6.9%），但在现有视频基准上几乎无收益"
+ ],
+ "method_framework": "VideoReasonBench的每个视频展示一系列对隐状态的细粒度操作，隐状态仅在部分视频中可见。问题分三个难度层级：L1回忆已观察到的视觉信息，L2推断隐状态内容（需要整合多步操作），L3预测视频之外的信息。模型必须精确回忆视频中多个操作并逐步推理才能答对。评测18个SOTA MLLM，并系统分析测试时扩展（test-time scaling）的效果。",
+ "experiment_framework": "数据集：VideoReasonBench（视觉中心复杂视频推理）。基线：18个SOTA多模态大模型（GPT-4o、Gemini-2.5-Pro、各类开源MLLM）。指标：准确率（按三级推理难度分层）。另分析test-time scaling（扩展思考token数）对性能的影响。",
+ "takeaways": [
+  "当前多数MLLM在视觉中心的复杂视频推理上表现极差（GPT-4o仅6.9%），与现有视频基准上的表现形成巨大反差",
+  "长思维链推理能力是复杂视频推理的关键——thinking增强模型显著优于非thinking模型",
+  "现有视频基准缺乏推理深度，无法体现长CoT的优势，VideoReasonBench填补了这一空白"
+ ],
+ "weaknesses": [
+  "视频内容集中在特定类型的操作序列任务上，多样性和场景广度有限",
+  "隐状态设计虽巧妙，但可能过于人工化，与真实世界视频推理场景有差距",
+  "仅评测选择题形式，对开放生成式推理的评测能力不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视频推理基准构建，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

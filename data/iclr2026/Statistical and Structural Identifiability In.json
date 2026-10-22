@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Statistical and Structural Identifiability In.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Statistical and Structural Identifiability In.pdf",
+ "title": "Statistical and Structural Identifiability in Representation Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "拆分表示稳定性为统计与结构可辨识性，理论证明加ICA后处理解耦。",
+ "innovations": [
+  "把以往混为一谈的表示稳定性正式拆分为统计可辨识性与结构可辨识性两个概念",
+  "提出模型无关的ε-近可辨识性定义，放松完美逐点可辨识这一不现实假设",
+  "证明带非线性解码器模型中间表示(含MAE/有监督学习)的统计ε-近可辨识性，超越只谈最后一层表示的既有理论，并给出ICA后处理解耦配方"
+ ],
+ "method_framework": "先区分表示跨运行一致性(统计)与对齐未观测真值(结构)两类目标，定义误差容忍ε下的近可辨识性；据此证明非线性解码器的中间表示在统计意义下近可辨识，残余线性模糊可由ICA消解；在数据生成过程附加假设下，统计可辨识性可升级为结构可辨识性，形成'先学表示再ICA后处理'的解耦流程。",
+ "experiment_framework": "合成基准上用普通自编码器+ICA后处理达到解耦SOTA；在基础模型规模的细胞掩码自编码器(MAE)上，将生物变异与技术批次效应解耦，报告下游泛化提升。",
+ "takeaways": [
+  "统计可辨识性(跨run一致)与结构可辨识性(对齐真值)是应分开刻画的两种稳定性",
+  "对一大类非线性解码器模型，中间表示可在ε容忍下近可辨识，残余线性模糊可由ICA恢复",
+  "ICA后处理能在细胞显微基础模型上把生物信号与批次效应解耦，显著改善下游泛化"
+ ],
+ "weaknesses": [
+  "近可辨识性结论依赖误差容忍ε与若干假设，放松假设后可辨识性随之变弱，实践上ε如何标定未充分讨论",
+  "结构可辨识性需要对数据生成过程的额外假设，现实生物影像是否满足这些假设缺乏验证",
+  "ICA后处理在高维/非高斯混合下的可扩展性与失败模式分析有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "统计可辨识性理论为可靠性提供新视角，但未直接触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/AKiRa_Augmentation Kit on Rays for Optical Video Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AKiRa_Augmentation Kit on Rays for Optical Video Generation.pdf",
+ "title": "AKiRa: Augmentation Kit on Rays for optical video generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "在Plücker射线表示上做光学增广，训练相机适配器",
+ "innovations": [
+  "把相机模型从位姿扩展到光学：在 pinhole 之上加径向畸变 D 与光圈参数 ω/焦点，Plücker 方向图+矩图之外新增同分辨率的光圈图，构成 9 通道相机表示",
+  "AKiRa 增广套件：焦距变化用中心裁剪+缩放同步作用于图像与 Plücker 图；畸变先算安全缩放因子避免非矩形空洞；bokeh 用单目深度估 br=ω|d−d_in| 做虚拟散景渲染，参数经样条插值限变化率以抑制闪烁",
+  "自提 FlowSim（RAFT 光流方向余弦相似，阈值滤噪）与 ZoomSim/DistortSim，绕开对静态一致性有假设的轨迹类指标"
+ ],
+ "method_framework": "在冻结的视频生成骨干上训练相机适配器：每帧按 (P,K,D)+ω 生成 (d,m,a) 三张图拼成 9 通道条件，训练时对帧与相机参数做同步的 zoom/畸变/散景增广（含 dropout 与样条平滑），条件注入适配器。",
+ "experiment_framework": "WebVid 上 AnimateDiff 与 SVD 两个骨干各 1000 样本；对比 MotionCtrl/CameraCtrl；FID/FVD/CD-FVD、RPE-R/RPE-t、FlowSim、VBench 一致性/平滑/闪烁 + 25 人用户研究。",
+ "takeaways": [
+  "把'几何条件的增广'与'图像增广'严格配对同步，是可控生成的通用训练套路——条件变了而图像没变，模型学不到映射",
+  "对采样参数做样条插值限变化率以抑制帧间闪烁，是可迁移到任何逐帧参数控制场景的工程细节"
+ ],
+ "weaknesses": [
+  "核心指标 FlowSim/ZoomSim/DistortSim 均为本文自提且基于光流余弦相似，与训练目标同源，缺少第三方相机姿态估计口径的独立交叉验证，存在自证倾向",
+  "bokeh 增广依赖单目深度估计与虚拟散景渲染，深度误差会直接污染光圈监督，论文未量化该误差传播",
+  "在 SVD 骨干上相对 CameraCtrl 的增益很小（FVD 162.8 vs 173.8，FlowSim 80.11 vs 79.64），主要增量集中在 CameraCtrl 不支持的 bokeh 上，整体提升被平均口径掩盖",
+  "实验仅在 WebVid 单库 1000 样本，无多种子方差与显著性检验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "视频生成与可靠性主线无关，仅工程价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

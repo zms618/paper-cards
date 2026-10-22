@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Flatness Guided Test-Time Adaptation Vision-Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Flatness Guided Test-Time Adaptation Vision-Language Models.pdf",
+ "title": "Flatness Guided TEST-TIME Adaptation VISION-LANGUAGE Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "平坦度引导的测试时自适应，避免参数更新",
+ "innovations": [
+  "平坦度引导的自适应框架(FGA)统一训练和测试过程",
+  "锐度感知提示调优(SAPT)识别训练平坦最小值",
+  "基于锐度的测试样本选择(STSS)确保训练和测试损失景观对齐"
+ ],
+ "method_framework": "FGA框架包含两个协同阶段：训练阶段使用锐度感知提示调优(SAPT)寻找训练平坦最小值；测试阶段采用基于锐度的测试样本选择(STSS)方法，通过数据增强调整测试损失景观，使训练平坦最小值与测试平坦最小值对齐，避免测试时昂贵的参数更新。",
+ "experiment_framework": "在领域泛化和跨数据集基准上评估，使用ImageNet及其四个域外变体作为测试集，CLIP-ViT-B/16作为骨干网络，比较准确率指标。",
+ "takeaways": [
+  "利用损失景观平坦度作为训练和测试阶段的统一指导原则",
+  "通过数据增强而非参数更新实现测试时自适应，显著降低计算开销"
+ ],
+ "weaknesses": [
+  "理论分析中未区分ρ和ρ'的实际影响",
+  "实验部分未充分探讨不同数据增强策略对方法效果的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "测试时自适应与泛化可靠性交点，设计模式可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

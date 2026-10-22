@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Stable Part Diffusion 4D Multi-View RGB and Kinematic Parts Video Generation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Stable Part Diffusion 4D Multi-View RGB and Kinematic Parts Video Generation.pdf",
+ "title": "Stable Part Diffusion 4D: Multi-View RGB and Kinematic Parts Video Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "双分支扩散模型生成多视角RGB与运动部件，依赖外部模型后处理",
+ "innovations": [
+  "双分支扩散模型联合生成RGB和运动学部件",
+  "空间颜色编码实现编码器-解码器共享",
+  "双向扩散融合模块和对比部件一致性损失",
+  "2D到运动学网格的轻量级绑定流程"
+ ],
+ "method_framework": "基于SV4D 2.0的双分支UNet架构，通过BiDiFuse模块实现RGB和部件分支间的双向特征交换，使用空间颜色编码共享VAE编码器/解码器，配合对比部件一致性损失确保跨视图和时间的一致性。",
+ "experiment_framework": "在KinematicParts20K数据集上评估，与SAM2、DeepViT等基线比较，使用mIoU、ARI、F1、mAcc指标，并进行用户研究评估部件清晰度、视图一致性和绑定适用性。",
+ "takeaways": [
+  "空间颜色编码简化架构并灵活支持不同部件数量",
+  "对比损失确保部件特征在时间和空间上的一致性",
+  "两阶段训练策略利用预训练RGB扩散模型并逐步引入结构感知学习"
+ ],
+ "weaknesses": [
+  "依赖外部模型(如SAM)进行后处理",
+  "未明确提供骨骼连接信息",
+  "推理成本可能较高"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

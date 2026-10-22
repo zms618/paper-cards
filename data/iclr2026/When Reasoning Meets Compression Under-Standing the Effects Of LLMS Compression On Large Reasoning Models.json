@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/When Reasoning Meets Compression Under-Standing the Effects Of LLMS Compression On Large Reasoning Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/When Reasoning Meets Compression Under-Standing the Effects Of LLMS Compression On Large Reasoning Models.pdf",
+ "title": "When Reasoning Meets Compression: Understanding the Effects of LLMs Compression on Large Reasoning Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "压缩方法对比与权重保护策略，提升推理精度6.57%",
+ "innovations": [
+  "首次在LRM上同时系统对比量化、蒸馏、剪枝三类压缩并做深度机理解释",
+  "对压缩后LRM每个线性组件用difference-of-means与attribution patching做细粒度因果解释，回答哪些权重对推理最关键",
+  "三条跨R1/非R1通用发现：权重数量对知识记忆影响大于推理(剪枝/蒸馏风险)；蒸馏LRM最后层MLP up-projection最关键；现有量化过度压缩最后层与MLP gate projection"
+ ],
+ "method_framework": "在AIME2024/FOLIO/Temporal Sequences/MuSiQue上评测量化/蒸馏/剪枝的DeepSeek-R1；用均值差与归因修补逐线性组件定位压缩损伤的因果权重；据此发现被过度压缩的模块并仅保护最关键2%权重。",
+ "experiment_framework": "基准为4个推理数据集上的压缩R1变体；方法为attribution patching逐组件定位；报告动态量化2.51-bit R1接近全精度；保护2%被过度压缩权重使平均准确率+6.57%，超过SOTA。",
+ "takeaways": [
+  "知识记忆比推理更依赖权重数量，剪枝/蒸馏主要伤记忆",
+  "最后层MLP up-projection(蒸馏)与gate projection(量化)是推理的关键脆弱点",
+  "针对性保护少量被过度压缩权重即可大幅挽回精度，是更省的压缩策略"
+ ],
+ "weaknesses": [
+  "机理分析主要在R1系模型做，跨架构(MoE/不同位置编码)的可迁移性需更多验证",
+  "仅保护2%权重需事先知道哪些被过度压缩，自动识别流程的通用性待证",
+  "在4个推理数据集上做，对更长链/工具使用推理的压缩损伤覆盖有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "压缩对推理模型可靠性影响，属可靠性主线但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

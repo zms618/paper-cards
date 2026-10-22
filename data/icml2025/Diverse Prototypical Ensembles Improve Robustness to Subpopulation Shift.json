@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Diverse Prototypical Ensembles Improve Robustness to Subpopulation Shift.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Diverse Prototypical Ensembles Improve Robustness to Subpopulation Shift.pdf",
+ "title": "Diverse Prototypical Ensembles Improve Robustness to Subpopulation Shift",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "多样化原型集成提升子分布偏移鲁棒性，但参数开销与极端情况未充分分析。",
+ "innovations": [
+  "提出Diverse Prototypical Ensembles(DPE)，用多样化分类器集成自适应捕捉各子群体风险，无需子群归属标注",
+  "将特征提取器后的标准线性分类层替换为原型分类器的混合，每个成员被训练去关注与其他成员不同的特征与样本",
+  "在9个真实数据集上worst-group准确率常超过此前SOTA，规避了重加权方法对子群数量/标注的依赖"
+ ],
+ "method_framework": "子分布偏移(伪相关/属性不平衡/类不平衡/属性泛化)下单一分类器往往偏向多数子群；本文在固定特征提取器后用一组原型分类器构成混合，通过训练时的多样性约束使各成员分别聚焦不同特征子集与样本子集，推理时集成从而覆盖易被忽略的小子群，无需任何子群标注即可提升worst-group表现。",
+ "experiment_framework": "在9个覆盖不同领域与不同子分布偏移类型的真实数据集上，对比需子群标注的重加权方法(Wilds类)与此前SOTA，以worst-group准确率为主要指标，报告相对提升。",
+ "takeaways": [
+  "不依赖子群标注，仅靠分类器多样化集成即可提升子分布偏移鲁棒性",
+  "让各分类器聚焦不同特征/样本，可自适应覆盖多数方法会忽略的小子群",
+  "在9个真实数据集上worst-group准确率常优于此前SOTA"
+ ],
+ "weaknesses": [
+  "集成引入额外参数与推理开销，成员数/原型数的选择敏感性未充分消融",
+  "仍属ERM改造路线，在极端属性泛化(完全未见属性值)下的退化行为未充分讨论",
+  "多样性约束与标准损失的平衡较经验化"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

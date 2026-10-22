@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TD-MOE Tensor Decomposition for MOE Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TD-MOE Tensor Decomposition for MOE Models.pdf",
+ "title": "TD-MoE: Tensor Decomposition for MoE Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "TD-MoE通过三维张量分解压缩MoE模型，但计算成本高且任务验证有限。",
+ "innovations": [
+  "将同一层所有专家权重统一为一个三维张量进行联合分解，捕捉跨专家共享的结构冗余",
+  "提出多线性白化策略，去相关输入输出特征，实现更平衡和数据自适应的分解",
+  "设计三维秩分配机制，在三个维度上动态分配分解秩，最小化目标压缩比下的重建误差"
+ ],
+ "method_framework": "TD-MoE将MoE层中所有专家的权重矩阵堆叠为一个三维张量（专家数×输入维度×输出维度）。然后对该张量进行三维联合分解，而非逐专家独立SVD。多线性白化在分解前去相关特征维度，使分解更均衡。三维秩分配机制根据各维度的信息重要性动态分配秩，以在给定压缩比下最小化重建误差。",
+ "experiment_framework": "在Qwen2-57B-A14B和Mixtral-8x7B两个MoE模型上评估；7个常识推理基准测试；基线包括MoE-SVD等逐专家分解方法；指标为准确率和压缩比（20%/40%/60%参数减少）。",
+ "takeaways": [
+  "跨专家联合分解比逐专家分解能捕捉更多共享冗余，压缩效率显著提升",
+  "多线性白化使分解更均衡，避免某一维度过度压缩导致精度损失",
+  "三维秩分配机制可自适应地在不同维度间分配压缩预算，优化重建误差"
+ ],
+ "weaknesses": [
+  "联合张量分解的计算复杂度高于逐专家分解，预处理成本增加",
+  "实验主要在常识推理基准上验证，代码生成和数学推理等任务的压缩效果未知",
+  "与量化、剪枝等其他压缩方法的兼容性和组合效果未探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "模型压缩技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

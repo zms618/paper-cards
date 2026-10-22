@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/LVLM_Cross-Modal Attention Calibration for LVLM Hallucination Mitigation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/LVLM_Cross-Modal Attention Calibration for LVLM Hallucination Mitigation.pdf",
+ "title": "Cross-Modal Attention Calibration for LVLM Hallucination Mitigation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "跨模态注意力校准缓解LVLM幻觉，但架构依赖性强",
+ "innovations": [
+  "跨模态解码(IMD)模块选择性掩码高注意力权重值向量",
+  "跨模态位置校准(CMPC)模块缩小图像token位置索引差距",
+  "无需训练的幻觉缓解框架"
+ ],
+ "method_framework": "CMAC框架包含IMD和CMPC两个模块，IMD通过选择性掩码高跨模态注意力权重值向量来缓解单模态过度依赖和虚假跨模态相关性，CMPC通过线性缩小图像token位置索引来缓解位置偏差。",
+ "experiment_framework": "在POPE、CHAIR和MME等幻觉基准上评估，与VCD、ICD、OPERA和PAI等对比方法比较，使用准确率、F1分数等指标。",
+ "takeaways": [
+  "注意力级别的精细干预比全局输入扭曲更有效",
+  "位置偏差是LVLM中未被充分研究的幻觉来源",
+  "跨模态相关性分析对理解幻觉机制至关重要"
+ ],
+ "weaknesses": [
+  "方法依赖特定架构的LVLM，通用性有待验证",
+  "仅关注推理阶段干预，未解决训练阶段的幻觉问题",
+  "计算开销虽低于其他对比方法，但仍增加推理复杂度"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "跨模态注意力校准直接解决LVLM幻觉，属于可靠性主线与多模态落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

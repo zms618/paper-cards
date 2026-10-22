@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Meta-Black-Box-Optimization through Offline Q-function Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Meta-Black-Box-Optimization through Offline Q-function Learning.pdf",
+ "title": "Meta-Black-Box-Optimization through Offline Q-function Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "Q-Mamba将MetaBBO转为序列决策，但离线数据依赖性强且未验证真实场景。",
+ "innovations": [
+  "提出离线学习范式的MetaBBO框架Q-Mamba，解决现有在线RL方法采样效率低的问题",
+  "将动态算法配置转化为长序列决策过程，引入Q函数分解机制降低配置空间的学习难度",
+  "结合Mamba架构处理长序列决策，配合保守Q学习实现稳定的离线策略学习"
+ ],
+ "method_framework": "将黑盒优化中的动态算法配置（DAC）问题建模为长序列决策过程。首先设计离线数据集采集策略，平衡探索与利用。然后提出基于分解的Q损失函数，结合保守Q学习实现稳定的离线学习。使用Mamba架构作为骨干网络处理长序列决策输入。",
+ "experiment_framework": "在多个黑盒优化问题分布上评测，与在线MetaBBO方法和传统进化算法对比。指标为优化性能、样本效率、训练效率。验证离线数据集规模对性能的影响。",
+ "takeaways": [
+  "离线学习可显著提升MetaBBO的训练效率，同时保持优化效果",
+  "Q函数分解有效降低了高维算法配置空间的学习难度",
+  "Mamba架构适合处理算法配置中的长序列决策依赖"
+ ],
+ "weaknesses": [
+  "离线数据集的构建依赖特定的算法配置策略，通用性受限",
+  "仅在合成优化问题分布上验证，真实工程优化问题的效果待验证",
+  "Mamba引入的额外复杂度与收益的权衡未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.38,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

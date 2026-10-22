@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/SparseDiT_Token Sparsification for Efficient Diffusion Transformer.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/SparseDiT_Token Sparsification for Efficient Diffusion Transformer.pdf",
+ "title": "SparseDiT: Token Sparsification for Efficient Diffusion Transformer",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "时空稀疏化提升扩散效率，但鲁棒性和时序处理存疑",
+ "innovations": [
+  "三段式架构设计（Poolingformer+SDTM+标准Transformer）",
+  "时序动态剪枝策略，随去噪进程逐步增加token密度",
+  "稀疏-密集token模块(SDTM)解耦全局结构与局部细节提取"
+ ],
+ "method_framework": "基于DiT模型提出时空稀疏化框架：底层用Poolingformer替代自注意力提取全局特征，中间层通过SDTM模块平衡全局与局部信息，顶层保留密集处理；时序维度上随去噪进程动态调整token密度。",
+ "experiment_framework": "ImageNet(256/512)图像生成、视频生成数据集(FaceForensics等)、PixArt-α文本生成；评估指标包括FID/FVD/吞吐量/IS/PR等",
+ "takeaways": [
+  "基于注意力分布分析确定不同层和阶段的token需求",
+  "空间维度分层处理与时间维度动态调整相结合",
+  "轻量级微调实现高效模型压缩"
+ ],
+ "weaknesses": [
+  "仅关注计算效率，未深入探讨模型鲁棒性和泛化能力",
+  "视频生成实验中FVD提升有限，可能影响时序信息处理"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

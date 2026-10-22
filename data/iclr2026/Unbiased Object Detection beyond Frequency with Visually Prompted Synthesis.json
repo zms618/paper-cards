@@ -1,0 +1,41 @@
+{
+ "title": "Unbiased Object Detection beyond Frequency with Visually Prompted Image Synthesis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "用表征分诊断数据缺口，视觉蓝图生成合成样本提升检测去偏效果。",
+ "innovations": [
+  "提出表征分 RS，同时考虑样本密度与表征多样性，指出实例频率是数据需求的不完备代理(某些高数据组反而更 data-hungry)。",
+  "用精确视觉蓝图替代把 2D 布局压成 1D 文本序列的模糊提示，提升复杂场景/遮挡下的合成保真度与布局控制。",
+  "提出生成器-检测器对齐策略促进二者通信，并在动态去偏引擎中用检测器误差持续精修 RS，自适应补表征缺口。"
+ ],
+ "method_framework": "先用 RS 超越频率地诊断欠表征数据组(样本密度+表征多样性)；偏置感知重校准模块据此构造新的无偏布局；再以视觉蓝图条件+检测器-生成器对齐的 L2I 合成生成高质量新样本，动态引擎用检测误差迭代更新 RS。",
+ "experiment_framework": "在目标检测基准上对比重采样/重加权、copy-paste、朴素 L2I 合成等去偏/增广方法，报告欠表征组(大/稀有实例)的 mAP 及生成图的布局准确率。",
+ "takeaways": [
+  "仅按频率给稀有类多生成数据是次优的，因为频率不能反映模型真实数据需求。",
+  "现有 L2I 合成因布局-文本歧义与保真不足，合成样本仍劣于真实样本。",
+  "视觉蓝图+检测器-生成器对齐显著提升合成布局准确率(+15.9 mAP)并缩小欠表征组的性能差距(大/稀有实例 +4.4/3.6 mAP)。"
+ ],
+ "weaknesses": [
+  "整个去偏依赖检测器误差与 RS 的迭代反馈，闭环的稳定性与误差累积未充分分析。",
+  "合成数据虽较 L2I 提升，但相对真实数据仍存保真差距，生成模型本身偏差可能被继承。",
+  "仅在通用目标检测验证，未涉及医学影像或多模态大模型推理；完整消融与偏差类别(类别/尺寸/位置)的分项归因未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Unbiased Object Detection beyond Frequency with Visually Prompted Synthesis.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unbiased Object Detection beyond Frequency with Visually Prompted Synthesis.pdf",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "数据去偏方法提升检测鲁棒性，可迁移到医学影像诊断",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

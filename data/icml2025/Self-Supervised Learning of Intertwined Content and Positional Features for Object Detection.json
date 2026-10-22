@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Self-Supervised Learning of Intertwined Content and Positional Features for Object Detection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Self-Supervised Learning of Intertwined Content and Positional Features for Object Detection.pdf",
+ "title": "Self-Supervised Learning of Intertwined Content and Positional Features for Object Detection",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "自监督ViT预训练结合位置编码与MIM，提升检测性能有限。",
+ "innovations": [
+  "提出与对比学习多裁剪过程绑定的位置编码，采用新颖的向量场(vector field)表示位置嵌入。",
+  "对图像patch的内容嵌入与位置嵌入并行施加掩码图像建模(MIM)重建，实现二者交织学习。",
+  "在ImageNet-1K预训练、COCO检测上以更少预训练epoch超越多数SOTA自监督方法。"
+ ],
+ "method_framework": "以ViT为backbone的自监督方法，针对密集预测任务需要同时编码局部区域内容与空间位置而设计。对比学习分支配合与多裁剪绑定的向量场位置编码，使随机裁剪不丢失位置信息；MIM分支同时对内容嵌入与位置嵌入做掩码重建，迫使特征同时表征类别内容与位置，服务目标检测与实例分割。",
+ "experiment_framework": "在ImageNet-1K上预训练100 epochs(AdamW，DINO式2全局+8局部多裁剪)，下游在COCO上微调目标检测与实例分割；backbone为ViT-S/16与ViT-B/16，对比OD/IS专用自监督基线(DINO系列、iBOT、FLSL等)，指标为APBox/APMask，并做位置采样、掩码预测损失与超参消融。",
+ "takeaways": [
+  "将位置信息显式交织进自监督表示，可在更少预训练epoch下提升COCO密集预测性能。",
+  "多数backbone下超越OD/IS专用自监督方法，仅ViT-S上略逊于FLSL。"
+ ],
+ "weaknesses": [
+  "仅在ImageNet-1K预训练、COCO单一下游验证，跨数据集/跨域泛化证据不足。",
+  "位置向量场表示依赖DINO式多裁剪蒸馏设定，与非蒸馏框架的兼容性未讨论。",
+  "相对FLSL等强基线增益幅度有限，部分backbone未全面超越。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

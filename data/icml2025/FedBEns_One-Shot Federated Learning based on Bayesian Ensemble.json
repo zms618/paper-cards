@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/FedBEns_One-Shot Federated Learning based on Bayesian Ensemble.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FedBEns_One-Shot Federated Learning based on Bayesian Ensemble.pdf",
+ "title": "FedBEns: One-Shot Federated Learning based on Bayesian Ensemble",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "贝叶斯混合近似处理one-shot FL多峰性，但与主线关联弱",
+ "innovations": [
+  "从贝叶斯推断视角统一分析one-shot FL问题",
+  "指出本地损失函数的多峰性(multimodality),用混合Laplace近似替代以往的单峰近似",
+  "服务器聚合各客户端本地后验的混合近似来推断全局模型,得到更优全局解"
+ ],
+ "method_framework": "One-shot FL只进行一轮客户端-服务器通信。以往方法多用单峰(二次/ Fisher)近似各客户端本地损失。FedBEns用贝叶斯视角:各客户端本地后验(围绕本地损失极小值)用混合Laplace近似刻画多峰结构,服务器聚合这些混合后验推断全局模型,从而更好应对Non-IID下的多峰性。",
+ "experiment_framework": "在多个数据集上验证one-shot FL;基线为知识蒸馏/神经元匹配/优化类one-shot方法;指标为全局模型精度(仅一轮通信)。",
+ "takeaways": [
+  "本地损失多峰性是one-shot FL的关键,单峰近似不够",
+  "混合Laplace近似能捕捉多峰后验,聚合后得到更优全局模型",
+  "FedBEns在one-shot设定下优于单峰近似类基线"
+ ],
+ "weaknesses": [
+  "混合近似的成分数等引入额外选择",
+  "主线为one-shot联邦学习,与可靠性×医学影像、多模态大模型推理主线无关",
+  "仅一轮通信,精度上限仍受one-shot范式限制"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

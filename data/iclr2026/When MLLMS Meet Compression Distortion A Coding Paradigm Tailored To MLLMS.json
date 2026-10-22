@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/When MLLMS Meet Compression Distortion A Coding Paradigm Tailored To MLLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/When MLLMS Meet Compression Distortion A Coding Paradigm Tailored To MLLMS.pdf",
+ "title": "When MLLMs Meet Compression Distortion: A Coding Paradigm Tailored to MLLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "分析压缩失真对MLLM特征影响，提出CLIP注意力引导的图像编解码器",
+ "innovations": [
+  "系统分析压缩伪影对主流MLLM的影响：压缩失真不均衡作用于不同层级图像特征，依任务对特征层级的依赖而不同",
+  "提出CoTAM编解码器：编码器利用CLIP浅层注意力生成重要性图做比特分配，保护关键语义区域",
+  "解码器集成轻量adapter与多层级损失，同时忠实重建低层细节与高层语义，稳健合成跨层特征"
+ ],
+ "method_framework": "先实证压缩失真对不同层级特征的差异化损伤；据此设计编解码：编码端用CLIP浅层注意力重要性图自适应分配比特、优先保护语义区；解码端轻量adapter+多层级损失同时重建低层细节与高层语义，从而在高压缩下保持MLLM下游性能。",
+ "experiment_framework": "在多个主流MLLM的下游任务上评测；基线为传统图像编解码器与此前SOTA神经编解码器；指标为等性能下的码率(bitrate)；报告最多节省35.99%码率而保持MLLM任务性能，优于此前SOTA神经编解码器。",
+ "takeaways": [
+  "面向人类视觉的传统编解码器并不适合MLLM，应按下游任务的特征层级依赖分配比特",
+  "CLIP浅层注意力重要性图是保护MLLM关键语义区的有效比特分配信号",
+  "多层级重建损失是在高压缩下维持跨层特征合成的关键"
+ ],
+ "weaknesses": [
+  "依赖CLIP浅层注意力做重要性图，与下游MLLM视觉编码器不一致时的适配性未充分验证",
+  "主要针对自然图像，对视频/高分辨率医学影像等MLLM输入的迁移未证",
+  "35.99%码率节省的收益随任务/压缩率变化的完整率-失真曲线在提取页不完整"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "压缩优化与MLLM可靠性方法有交点，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

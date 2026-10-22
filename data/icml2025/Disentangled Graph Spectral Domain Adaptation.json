@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Disentangled Graph Spectral Domain Adaptation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Disentangled Graph Spectral Domain Adaptation.pdf",
+ "title": "Disentangled Graph Spectral Domain Adaptation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6.1
+ },
+ "one_line": "解耦属性与拓扑对齐的图域适应，多项式谱滤波器避免特征分解",
+ "innovations": [
+  "指出UGDA中属性与拓扑在表征中纠缠的难点，显式解耦属性对齐与拓扑(模型)对齐两条通路",
+  "采用Bernstein多项式逼近刻画复杂拓扑特征，直接对齐灵活的图谱滤波器，避免昂贵的特征值分解",
+  "给出DGSDA较紧的图域适应(GDA)泛化界，并从理论上论证多项式系数正则化的合理性"
+ ],
+ "method_framework": "将源域(有标签)与目标域(无标签)的表征分解为属性部分与拓扑部分：在属性空间做属性对齐，在谱空间用Bernstein多项式逼近的图谱滤波器做拓扑对齐，二者解耦优化，并对多项式系数加正则，从而在无需特征分解与伪标签的情况下跨域对齐。",
+ "experiment_framework": "在多个无监督图域适应基准数据集上与UDA/UGDA基线(嵌入对齐、拓扑对齐方法)比较，以目标域节点分类准确率等指标定量与定性评估。",
+ "takeaways": [
+  "解耦属性与拓扑对齐可缓解图域适应中二者纠缠导致的性能瓶颈",
+  "Bernstein多项式谱滤波器既能刻画复杂拓扑又免去特征分解，兼顾效果与效率"
+ ],
+ "weaknesses": [
+  "作用于图域适应，与医学影像/多模态大模型推理落地域不直接重叠",
+  "谱滤波器与多项式正则化依赖图拉普拉斯构造，在动态/异构图上的适用性未充分讨论",
+  "仅依据前9页阅读，完整数据集与消融表未完全覆盖"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

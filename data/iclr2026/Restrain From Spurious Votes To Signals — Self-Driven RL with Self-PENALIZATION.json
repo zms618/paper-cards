@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Restrain From Spurious Votes To Signals — Self-Driven RL with Self-PENALIZATION.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Restrain From Spurious Votes To Signals — Self-Driven RL with Self-PENALIZATION.pdf",
+ "title": "RESTRAIN: From Spurious Votes to Signals - Self-Driven RL with Self-Penalization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "自惩罚RL利用答案分布过滤虚假多数，无标提升推理性能。",
+ "innovations": [
+  "把'没有金标'转化为学习信号：不盲从虚假多数投票，而是利用模型答案分布整体信息。",
+  "自惩罚机制：惩罚过自信rollout与低一致性样本，同时保留有前景的推理链，避免自举时强化错误多数。",
+  "该机制可无缝并入GRPO等策略优化，实现无监督下的持续自我改进。"
+ ],
+ "method_framework": "对每个prompt采样多条rollout，观察答案分布；对过度自信但不一致（可能虚假多数）的rollout施加惩罚，对一致性高的良好推理链保留奖励；把这种自惩罚信号作为GRPO的优势估计，从而在无金标下做RL。",
+ "experiment_framework": "在挑战性推理基准上评测；基座Qwen3-4B-Base与OctoThinker Hybrid-8B-Base；仅用无标签数据；Pass@1提升AIME25 +140.7%、MMLU-STEM +36.2%、GPQA-Diamond +19.6%，接近有金标训练。",
+ "takeaways": [
+  "无需金标，仅靠模型答案分布的一致性/自信度信号即可做有效RL自改进。",
+  "盲目跟随多数投票会放大虚假答案，自惩罚过自信/低一致性样本是关键。"
+ ],
+ "weaknesses": [
+  "自举式无标学习可能强化模型自身已有的系统性偏差，对分布外难题的鲁棒性需谨慎。",
+  "惩罚信号依赖答案分布统计，在单一答案主导的极难/极易题目上区分度不足。",
+  "前9页为方法与设定，不同自惩罚权重对偏差放大的敏感性分析在后续页。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "自惩罚RL解决虚假多数投票，提升推理可靠性，符合主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

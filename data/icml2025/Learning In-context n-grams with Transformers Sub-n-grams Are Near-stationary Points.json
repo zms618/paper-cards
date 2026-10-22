@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning In-context n-grams with Transformers Sub-n-grams Are Near-stationary Points.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning In-context n-grams with Transformers Sub-n-grams Are Near-stationary Points.pdf",
+ "title": "Learning In-context n-grams with Transformers: Sub-n-grams Are Near-stationary Points",
+ "scores": {
+  "novelty": 7,
+  "depth": 7.5,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6.5
+ },
+ "one_line": "简化Transformer理论分析n-gram学习驻点，解释训练相变现象",
+ "innovations": [
+  "建立简化Transformer在交叉熵损失下的驻点充分条件，刻画损失景观结构",
+  "构造k-gram估计器(k≤n)的参数配置，证明在无限序列长度和参数范数极限下梯度趋于零",
+  "揭示子n-gram是近驻点的关键性质，为观察到的阶段式学习和涌现相变提供理论解释"
+ ],
+ "method_framework": "在上下文n-gram学习任务下分析简化Transformer的损失景观；构造对应k-gram估计器的参数配置(注意力模式、MLP权重等)；在无限序列长度极限下计算种群交叉熵损失的梯度；证明k-gram配置处梯度趋于零，即近驻点；解释训练为何会依次经过unigram→bigram→...→n-gram阶段。",
+ "experiment_framework": "数值实验验证理论预测：在上下文n-gram任务上训练简化Transformer；观察训练过程中损失的阶段式变化；测量不同k-gram配置处的梯度大小；验证离散相变与近驻点的对应关系。",
+ "takeaways": [
+  "Transformer训练中的平台期和相变不是偶然，而是损失景观中近驻点存在的必然结果",
+  "子n-gram作为近驻点解释了为何学习是分层进行的：先学会低阶统计，再逐步提升阶数",
+  "该理论框架为理解更复杂LLM的训练动力学提供了简化但严格的模型"
+ ],
+ "weaknesses": [
+  "分析基于简化Transformer和n-gram任务，真实LLM的损失景观更复杂",
+  "无限序列长度和参数范数的极限假设在实际训练中不成立，近似程度需验证",
+  "仅解释了训练动力学的现象，未提出改进训练效率的方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

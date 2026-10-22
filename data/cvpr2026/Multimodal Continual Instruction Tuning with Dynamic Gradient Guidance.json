@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Multimodal Continual Instruction Tuning with Dynamic Gradient Guidance.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Multimodal Continual Instruction Tuning with Dynamic Gradient Guidance.pdf",
+ "title": "Multimodal Continual Instruction Tuning with Dynamic Gradient Guidance",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "梯度近似方法缓解多模态持续学习遗忘，但分布偏移下效果有限",
+ "innovations": [
+  "将灾难性遗忘重新表述为旧任务梯度缺失问题",
+  "利用参数空间几何特性近似旧任务梯度",
+  "伯努利采样动态平衡模型稳定性和可塑性"
+ ],
+ "method_framework": "通过当前参数与先前最优参数间的方向向量近似旧任务梯度，结合有限回放缓冲区真实梯度，并通过伯努利采样动态调节梯度更新频率",
+ "experiment_framework": "VQAv2(10子任务)和UCIT(6数据集)数据集，对比CL-MoE、SEFE等基线，使用最终平均准确率(FAA)评估",
+ "takeaways": [
+  "梯度近似方法优于传统回放策略，尤其在分布相似任务中",
+  "动态调节机制有效平衡新旧任务学习"
+ ],
+ "weaknesses": [
+  "在大分布偏移场景下梯度近似效果下降",
+  "伯努利参数α需要针对不同任务进行调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "多模态持续学习与可靠性主线部分交织，但分布偏移下效果有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

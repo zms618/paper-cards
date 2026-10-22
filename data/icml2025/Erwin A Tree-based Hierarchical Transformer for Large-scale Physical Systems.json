@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Erwin A Tree-based Hierarchical Transformer for Large-scale Physical Systems.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Erwin A Tree-based Hierarchical Transformer for Large-scale Physical Systems.pdf",
+ "title": "Erwin: A Tree-based Hierarchical Transformer for Large-scale Physical Systems",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 5,
+  "overall": 6
+ },
+ "one_line": "球树分层Transformer实现物理系统线性注意力，但适用性有限",
+ "innovations": [
+  "用球树(ball tree)组织计算，在固定大小局部邻域内并行计算注意力，实现线性复杂度",
+  "通过球树结构的渐进粗化与精炼兼顾局部细节与全局特征",
+  "提出新的跨球交互(cross-ball interaction)机制以聚合跨局部邻域的信息"
+ ],
+ "method_framework": "Erwin 借鉴计算多体物理的树算法：用球树把节点划分到固定大小局部邻域，在每层局部并行做多头自注意力；随网络加深对球树渐进粗化以扩大感受野学习全局特征，并以跨球交互机制补全局通信。",
+ "experiment_framework": "在宇宙学、分子动力学、PDE求解、粒子流体动力学多领域评测；与成对注意力及基线方法比精度与计算效率(运行时随节点规模 scaling)；报告线性时间优势。",
+ "takeaways": [
+  "球树局部并行注意力把复杂度从O(N^2)降到近似线性，使大规模不规则网格可行",
+  "渐进粗化与跨球交互同时保留局部细节与全局耦合特征",
+  "在四个物理领域Erwin精度与效率均一致优于基线"
+ ],
+ "weaknesses": [
+  "球树划分依赖空间/坐标结构，对非欧或纯拓扑图的适用性未充分讨论",
+  "线性近似在长程精确相互作用上的误差界缺乏理论刻画",
+  "与主线(可靠性/医学影像/多模态大模型推理)无关，属可扩展物理ML"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.55,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

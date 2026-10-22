@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/What Really is a Member Discrediting Membership Inference via Poisoning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/What Really is a Member Discrediting Membership Inference via Poisoning.pdf",
+ "title": "What Really is a Member? Discrediting Membership Inference via Poisoning",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.7
+ },
+ "one_line": "投毒攻击颠覆成员推断可靠性，揭示根本权衡",
+ "innovations": [
+  "提出PoisonM攻击方法，可翻转成员推断预测",
+  "揭示成员推断测试准确率与鲁棒性之间的根本权衡",
+  "针对不同邻域定义(n-gram、嵌入、编辑距离、精确匹配)实现统一攻击框架"
+ ],
+ "method_framework": "定义成员不变数据扰动，构建邻域扩展数据集，通过映射邻居到非邻居(反之亦然)创建投毒样本，使成员推断测试产生错误预测同时保持真实成员标签不变。",
+ "experiment_framework": "在Pythia模型(6.9B/2.7B/12B)上微调，使用Wikitext-103背景和AI4Privacy/AGNews canary数据集，评估5种成员推断测试在自然和投毒情况下的AUC性能。",
+ "takeaways": [
+  "成员推断测试的可靠性存在根本性限制",
+  "攻击方法与具体成员推断测试无关，具有通用性",
+  "需要重新评估成员推断在法律和审计场景中的适用性"
+ ],
+ "weaknesses": [
+  "实验主要针对微调场景，预训练场景的泛化性未充分验证",
+  "攻击效果依赖于邻域定义与测试超水平集之间的不匹配，理论边界不够清晰"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

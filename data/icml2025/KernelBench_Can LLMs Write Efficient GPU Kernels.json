@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/KernelBench_Can LLMs Write Efficient GPU Kernels.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/KernelBench_Can LLMs Write Efficient GPU Kernels.pdf",
+ "title": "KernelBench: Can LLMs Write Efficient GPU Kernels?",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 7,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "构建GPU内核生成基准，发现LLM表现不足20%",
+ "innovations": [
+  "构建首个面向LLM GPU内核生成的真实工程环境基准，含250个精心筛选的PyTorch ML工作负载",
+  "提出fastp评价指标：同时度量生成内核的功能正确性和相对于基线的加速比",
+  "系统评估多种SOTA模型和测试时方法，发现前沿推理模型表现最佳但仍不足20%案例匹配PyTorch基线"
+ ],
+ "method_framework": "构建自动化评估环境：LLM可自主选择优化算子和优化策略，支持编译器反馈、性能剖析、硬件规格等丰富信息；fastp指标衡量功能正确且达到加速阈值p的内核比例。",
+ "experiment_framework": "在250个PyTorch工作负载上评估多种前沿LLM（含推理模型）；对比不同测试时方法（迭代精化、执行反馈）；分析随加速阈值p提升的难度增长曲线。",
+ "takeaways": [
+  "前沿推理模型在GPU内核生成上开箱表现最佳，但整体仍远未达到实用水平",
+  "利用执行和性能剖析反馈的迭代精化可显著改善结果",
+  "随加速阈值提高，任务难度急剧上升，当前LLM距离专家工程师水平差距明显"
+ ],
+ "weaknesses": [
+  "与主线（医学影像/多模态推理）关联弱，属LLM代码生成方向",
+  "仅覆盖PyTorch工作负载，对CUDA C++等底层语言的生成能力未评估",
+  "前9页内未看到对超长上下文kernel生成的扩展性分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

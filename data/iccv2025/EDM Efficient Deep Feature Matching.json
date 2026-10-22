@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/EDM Efficient Deep Feature Matching.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/EDM Efficient Deep Feature Matching.pdf",
+ "title": "EDM Efficient Deep Feature Matching",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "EDM通过特征注入和轻量回归提升匹配效率，但创新有限",
+ "innovations": [
+  "相关性注入模块(CIM)实现高效多尺度特征聚合",
+  "轻量双向轴基回归头(ABRHead)直接预测亚像素级对应关系",
+  "高效匹配选择策略提升粗细阶段匹配精度"
+ ],
+ "method_framework": "采用更深CNN提取多级特征，通过CIM模块从全局到局部渐进注入特征相关性，使用ABRHead直接预测亚像素级匹配，避免高分辨率特征图计算开销",
+ "experiment_framework": "在MegaDepth、ScanNet、HPatches、InLoc和Aachen数据集上评估，与SP+SG、SP+LG、LoFTR、EfficientLoFTR等方法对比，使用AUC@5°/10°/20°和推理时间作为指标",
+ "takeaways": [
+  "特征匹配中过度关注局部细节计算负担过重",
+  "双向轴基回归可高效实现亚像素级匹配",
+  "Top-K匹配选择策略可降低时间复杂度"
+ ],
+ "weaknesses": [
+  "未充分讨论方法在不同光照、尺度变化下的鲁棒性",
+  "未提供模型参数量和计算量分析",
+  "与最新方法如ASpanFormer相比在某些指标上仍有差距"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "特征匹配技术不直接关联可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

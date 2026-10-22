@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MedXpertQA_Benchmarking Expert-Level Medical Reasoning and Understanding.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MedXpertQA_Benchmarking Expert-Level Medical Reasoning and Understanding.pdf",
+ "title": "MedXpertQA: Benchmarking Expert-Level Medical Reasoning and Understanding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 8.0,
+  "overall": 6.9
+ },
+ "one_line": "构建专家级医学推理基准，评估模型在复杂临床场景中的表现",
+ "innovations": [
+  "构建高难度专家级医学推理基准，包含4460道题，覆盖17个专科和11个体系统",
+  "多模态子集包含丰富临床信息（患者病历、检查结果、多样图像），区别于传统简单图像描述生成的医学VQA",
+  "采用数据合成缓解数据泄露风险，经多轮专家审核确保准确性和可靠性，并设计推理导向子集评估o1类模型"
+ ],
+ "method_framework": "从专科委员会考试题源构建初始题库，经严格过滤和增广提升难度。文本子集覆盖广泛医学知识和推理；多模态子集结合医学图像与完整临床病历信息。通过语义相似度去重和AI专家多轮投票筛选确保题目质量。设计推理导向子集专门评估推理型模型。",
+ "experiment_framework": "在18个主流大模型（含GPT-4o、o1-preview、Claude等）上评测。指标为整体准确率、各专科/体系统计准确率、推理子集性能。与MedQA、MedMCQA等现有医学基准对比难度。",
+ "takeaways": [
+  "现有医学基准对SOTA模型已过简单（o1-preview在MedQA上达96%），需要更高难度的专家级基准",
+  "多模态医学推理在结合完整临床信息时难度显著提升，模型性能大幅下降",
+  "推理导向子集显示o1类模型在医学复杂推理上仍有较大提升空间"
+ ],
+ "weaknesses": [
+  "仅覆盖英文医学考试题目，其他语言和地区的医学实践差异未体现",
+  "多模态子集的图像类型有限，未包含所有模态（如超声、内镜等）",
+  "基准以选择题为主，开放式临床推理任务的评估不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.58,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

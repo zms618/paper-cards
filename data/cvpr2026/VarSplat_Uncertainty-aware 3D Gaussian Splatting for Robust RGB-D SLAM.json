@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/VarSplat_Uncertainty-aware 3D Gaussian Splatting for Robust RGB-D SLAM.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/VarSplat_Uncertainty-aware 3D Gaussian Splatting for Robust RGB-D SLAM.pdf",
+ "title": "VarSplat Uncertainty-aware 3D Gaussian Splatting for Robust RGB-D SLAM",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "在3DGS-SLAM中引入外观方差学习，提升低纹理区域鲁棒性",
+ "innovations": [
+  "引入每点外观方差σ²学习",
+  "基于总方差定律和alpha合成实现可微像素级不确定性渲染",
+  "在跟踪、子图配准和回环检测中集成不确定性感知权重"
+ ],
+ "method_framework": "VarSplat在3DGS框架中联合优化位置、外观和方差σ²，通过单通道光栅化渲染像素级不确定性图V，用于跟踪、配准和回环检测，提高SLAM鲁棒性。",
+ "experiment_framework": "在Replica、TUM-RGBD、ScanNet和ScanNet++数据集上评估，与NeRF和3DGS基线比较跟踪精度(ATE RMSE)、重建质量(深度L1和F1分数)和渲染质量(PSNR、SSIM、LPIPS)。",
+ "takeaways": [
+  "不确定性建模可有效提高SLAM在低纹理区域和反射表面的鲁棒性",
+  "端到端学习方差参数比预训练不确定性预测器更有效"
+ ],
+ "weaknesses": [
+  "方差计算增加了计算复杂度",
+  "在极端反射或透明区域的表现仍有提升空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3DGS-SLAM与可靠性主线部分交织，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

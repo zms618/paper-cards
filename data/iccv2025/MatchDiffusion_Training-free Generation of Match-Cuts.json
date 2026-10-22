@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/MatchDiffusion_Training-free Generation of Match-Cuts.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/MatchDiffusion_Training-free Generation of Match-Cuts.pdf",
+ "title": "MatchDiffusion Training-free Generation of Match-Cuts",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "两阶段扩散模型生成匹配转场，但实验覆盖有限",
+ "innovations": [
+  "联合扩散与分离扩散两阶段框架",
+  "利用扩散模型早期阶段定义结构、后期添加特性的特性",
+  "用户干预机制集成到扩散过程中"
+ ],
+ "method_framework": "MatchDiffusion采用两阶段训练免费方法：首先通过联合扩散从共享噪声初始化两个提示，建立共同结构；然后通过分离扩散让视频根据各自提示 diverge，保留结构同时引入语义差异。",
+ "experiment_framework": "使用CogVideoX-5B作为骨干模型，与V2V、SMM和MOFT基线比较，采用CLIPScore、运动一致性和LPIPS指标，并通过用户研究评估质量。",
+ "takeaways": [
+  "利用扩散模型早期和后期阶段的特性分别控制结构和细节",
+  "两阶段扩散框架可应用于需要结构一致但语义不同的视频生成任务",
+  "用户干预机制允许在保持匹配转场的同时进行定制化编辑"
+ ],
+ "weaknesses": [
+  "仅评估了50个提示对，可能缺乏多样性",
+  "未充分讨论方法在不同长度视频上的扩展性",
+  "对参数K的选择过程描述不够详细"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "视频生成技术，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

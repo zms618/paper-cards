@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/FakeRadar_Probing Forgery Outliers to Detect Unknown Deepfake Videos.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/FakeRadar_Probing Forgery Outliers to Detect Unknown Deepfake Videos.pdf",
+ "title": "FakeRadar: Probing Forgery Outliers to Detect Unknown Deepfake Videos",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "基于CLIP的三训练策略提升深度伪造视频跨域检测",
+ "innovations": [
+  "伪造异常探测(FOP)方法，动态子簇建模和簇条件异常生成",
+  "异常引导的三训练策略，结合对比损失和条件交叉熵损失",
+  "将未知伪造类型建模为'异常'类别，提升模型对新兴伪造技术的鲁棒性"
+ ],
+ "method_framework": "基于CLIP ViT-B主干网络，集成ST-Adapter进行时空特征提取，通过伪造异常探测生成边界样本，再使用三训练策略优化模型区分真实、已知伪造和异常三类样本",
+ "experiment_framework": "在FF++(HQ)数据集训练，在CDFv2、DFDCP、DFDC和DFD等跨域数据集评估，使用视频级AUC作为指标",
+ "takeaways": [
+  "特征空间分布分析揭示真实数据紧凑而伪造数据分散，启发异常探测方法",
+  "三分类策略(真实/伪造/异常)能有效提升模型对未知伪造类型的检测能力",
+  "动态子簇建模能更精细地捕捉伪造数据的分布特征"
+ ],
+ "weaknesses": [
+  "方法依赖预训练模型CLIP，可能引入其固有偏见",
+  "异常生成策略的参数ϵ选择可能影响效果",
+  "计算复杂度较高，需要额外的子簇建模和异常生成步骤"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "OOD检测与异常建模的可靠性主线交点，跨域鲁棒性设计",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

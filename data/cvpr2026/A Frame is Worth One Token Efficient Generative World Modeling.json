@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/A Frame is Worth One Token Efficient Generative World Modeling.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Frame is Worth One Token Efficient Generative World Modeling.pdf",
+ "title": "A Frame is Worth One Token: Efficient Generative World Modeling with Delta Tokens",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.0,
+  "relevance": 4.5,
+  "overall": 5.0
+ },
+ "one_line": "DeltaTok压缩帧差为单token，BoM训练退化严重，FLOPs对比口径不一",
+ "innovations": [
+  "DeltaTok 编码器同时吃相邻两帧 VFM patch token，把「变化」压成单个连续 token z_t=g(x_{t-1},x_t,z_init)∈R^D（式8），解码器 h(x_{t-1},z_t) 重建 x_t（式9）MSE 训练（式7），把视频从 H×W×T 三维塌成 T 维（512×512 下 1024× 压缩）",
+  "把 Best-of-Many 目标整体搬到单 token 空间：K 个 q^k∼N(μ,Σ) 噪声 query 共享全部空间位置，只对 Σ_{h,w}ℓ(x,x̂^{k*}) 中离 GT 最近的那一个反传（式4），使 K 个未来假设一次前向全出、训练期无需解码空间特征图",
+  "序列前置黑帧使首个 delta token 直接编码第一帧绝对特征，配合 Δτ 在 [1/25,1/3]s 均匀采样，让同一套 tokenizer 自适应覆盖 near-static 场景与大幅场景切换"
+ ],
+ "method_framework": "冻结 DINOv3(ViT-B) 出 VFM patch token；DeltaTok 用 ViT 编解码把相邻帧差压成一个连续 delta token；预测器在 delta token 序列上以 K 个噪声 query 做 BoM（仅最优假设反传）预测下一 delta token；解码结果接冻结的分割/深度头做下游。",
+ "experiment_framework": "约 4M 视频样本训练；评估 VSPW/Cityscapes 分割与 KITTI 深度，四帧上下文、短时(0.2s)直预测与中时(0.6s)三步自回归、20 次采样取 best/mean；对比判别式 DINO-world 与像素生成 Cosmos；指标 mIoU/RMSE 与 GFLOPs，单 ViT-B 配置。",
+ "takeaways": [
+  "表2 的 step 递进是全篇最有信息量的地方：BoM 让 best mIoU 44.8→47.0 但 mean 崩到 39.4，直到 step(3) delta 压缩才把 mean 拉回 44.4——瓶颈不在效率而在多样性训练的样本退化",
+  "「预测不变即保持上一帧」的 delta 先验确实兑现：step(2) 整帧压缩 mean 反而降（45.7/42.7），step(3) 换 delta 后 mean 追平甚至略超判别式基线（44.4 vs 44.8、45.5 vs 45.4）",
+  "训练代价被显著低估：即便训练只用 K=16，训练时间已是判别式的 4.9×，而推理时 predictor 吃掉总 FLOPs 的 97%，「35× 参数少 / 2000× FLOPs 少」只在与像素级 Cosmos 对比时成立"
+ ],
+ "weaknesses": [
+  "表2 step(1) 显示仅加 BoM（尚无任何 delta 压缩）mean mIoU 就从 45.4 崩到 31.1、VSPW 44.8→39.4，作者归因于整帧单类的退化样本，却没给退化比例、没给过滤退化后的 mean，也没做排除退化后的显著性对照，归因链不完整",
+  "GFLOPs 口径自相矛盾：step(1) 报 12013 而 step(2) 报 6315、step(3) 报 6721，且注释称 (1)-(3) 是生成全部 20 个样本、step(0) 只算单次，可时间/显存却报相对 step(0) 的 0.4×/0.2×；对外宣称的 2000× FLOPs 优势来自与 Cosmos（60000 TFLOPs）对比，与同构判别式基线的真实倍数无法从正文核对",
+  "所有指标都是 best-of-20 与 mean 两个聚合数，无种子方差、无显著性检验；而 best 是「20 个样本里挑最贴 GT 的那个」，用它直接与判别式单预测基线的单值对比天然占便宜，正文未说明在固定采样预算下 best 是否就是决策口径",
+  "正文在 4.4 段中截断：表3 主结果、图5 消融、与 Cosmos 的详细对比与 FLOPs 分解均读不到；且 DINO-world 代码与训练数据不可得只能重实现，训练用约 4M 视频样本来源仅表 A 列出，跨实现的公平性存疑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "视频生成压缩，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

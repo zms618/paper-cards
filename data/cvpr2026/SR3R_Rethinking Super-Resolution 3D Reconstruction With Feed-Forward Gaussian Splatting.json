@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/SR3R_Rethinking Super-Resolution 3D Reconstruction With Feed-Forward Gaussian Splatting.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SR3R_Rethinking Super-Resolution 3D Reconstruction With Feed-Forward Gaussian Splatting.pdf",
+ "title": "SR3R Rethinking Super-Resolution 3D Reconstruction With Feed-Forward Gaussian Splatting",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "前馈映射预测高斯表示，但实验细节不足",
+ "innovations": [
+  "将3D超重构成前馈映射问题，消除2D伪监督和场景级优化",
+  "高斯偏移学习与特征精炼模块，提高学习稳定性和重建保真度",
+  "即插即用框架，支持与任何前馈3DGS重建骨干网络配合使用"
+ ],
+ "method_framework": "SR3R框架首先使用前馈3DGS重建模型从稀疏LR视图获取LR 3DGS，然后通过高斯洗牌分割进行密集化，再通过ViT编码器、特征精炼模块、ViT解码器和Gaussian偏移学习模块预测HR 3DGS",
+ "experiment_framework": "在RE10K、ACID和DTU三个3D基准数据集上进行4×3DSR实验，与NoPoSplat、DepthSplat等前馈方法以及SRGS、FSGS等场景优化方法比较，使用PSNR、SSIM和LPIPS指标",
+ "takeaways": [
+  "高斯偏移学习比直接回归高斯参数更稳定且能恢复高频细节",
+  "特征精炼模块通过双向注意力对齐2D特征与3D几何先验，抑制上采样引起的歧义"
+ ],
+ "weaknesses": [
+  "仅展示了前9页内容，实验细节和消融研究不完整",
+  "未充分讨论方法在不同场景类型和光照条件下的泛化能力"
+ ],
+ "confidence": "medium",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D重建技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SOAL_ICLR2026 Camera Ready Verison.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SOAL_ICLR2026 Camera Ready Verison.pdf",
+ "title": "SOAL: Secure Outlier-Aware Large Language Model Inference",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "利用LLM离群点现象加速MPC协议，但扩展性与精度影响未充分验证",
+ "innovations": [
+  "观察到离群点现象是LLM的普遍性质，可通过处理它缩小输入定义域",
+  "据此为非线性运算设计更快的MPC协议：RMSNorm加速近2x、SiLU 2x、Softmax 5x以上",
+  "无需任何微调即可保持原模型性能"
+ ],
+ "method_framework": "针对MPC下LLM推理因非线性运算导致的高延迟，利用LLM普遍存在的离群点现象缩小输入定义域，进而为RMSNorm、SiLU、Softmax等非线性运算设计更快的安全计算协议，兼顾隐私保护与加速。",
+ "experiment_framework": "在Llama2-7B上经CrypTen等MPC框架评测，报告各非线性运算加速比与保持的模型性能；对比仅改进密码学原语或重训练使模型MPC友好的现有工作。",
+ "takeaways": [
+  "离群点现象可被利用来缩小定义域、加速MPC非线性运算",
+  "Softmax/RMSNorm/SiLU分别获得5x/2x/2x以上加速",
+  "无需微调即可在隐私保护下保持模型性能"
+ ],
+ "weaknesses": [
+  "属隐私计算/系统方向，未触及医学影像/多模态推理落地域",
+  "13页篇幅，加速评估主要在Llama2-7B，更大模型/长序列扩展性未验证",
+  "离群点缩小定义域的近似可能引入精度损失，对敏感任务影响未量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "隐私计算方向，未触及落地域但方法有可靠性价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/When Every Millisecond Counts Real-Time Anomaly Detection via the Multimodal Asynchronous Hybrid Network.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/When Every Millisecond Counts Real-Time Anomaly Detection via the Multimodal Asynchronous Hybrid Network.pdf",
+ "title": "When Every Millisecond Counts Real-Time Anomaly Detection via the Multimodal Asynchronous Hybrid Network",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "多模态异步网络融合事件相机与RGB，实现毫秒级异常检测",
+ "innovations": [
+  "把响应时间(而非只看精度)作为自动驾驶异常检测的核心指标，提出实时AD新设定",
+  "多模态异步混合网络：用异步图神经网络(GNN)利用事件相机的高时间分辨率捕捉时序动态，与CNN提取的RGB空间特征融合",
+  "同时捕获驾驶环境的时间动态与空间细节，实现毫秒级实时异常检测"
+ ],
+ "method_framework": "事件相机输出异步事件流，经异步GNN以高时间分辨率建模快速时序变化；RGB图像经CNN提取空间细节特征；两路特征融合后做异常判定；异步处理避免为等完整帧而引入延迟，从而在保证精度的同时压低端到端响应时间。",
+ "experiment_framework": "在自动驾驶异常检测基准数据集上评测；对比现有AD方法；指标同时报告检测精度与响应延迟(毫秒级)；强调时间敏感场景(如行人突然横穿)下的实时性。",
+ "takeaways": [
+  "方法在精度与响应时间上均优于现有方法，达到毫秒级实时性能",
+  "事件相机的高时间分辨率+异步GNN对快速时序异常(突发障碍)的快速识别至关重要",
+  "精度与延迟可兼得：多模态异步融合打破了'提精度就要加延迟'的权衡"
+ ],
+ "weaknesses": [
+  "依赖事件相机这一专用硬件，普通仅RGB的部署场景无法直接使用",
+  "评测基于公开驾驶基准，对极端corner case与恶劣天气下的鲁棒性未充分验证",
+  "属自动驾驶感知异常检测，与医学影像/多模态大模型推理可靠性主线仅部分相关"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

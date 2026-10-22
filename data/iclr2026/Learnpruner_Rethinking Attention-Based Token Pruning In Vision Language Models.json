@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Learnpruner_Rethinking Attention-Based Token Pruning In Vision Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Learnpruner_Rethinking Attention-Based Token Pruning In Vision Language Models.pdf",
+ "title": "Learnpruner: Rethinking ATTENTION-BASED Token Pruning In Vision Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "LearnPruner用可学习模块和文本引导实现视觉语言模型token剪枝",
+ "innovations": [
+  "可学习剪枝模块替代视觉编码器中的注意力机制",
+  "在LLM中间层进行文本引导的token选择",
+  "结合多样性和重要性的两阶段剪枝策略"
+ ],
+ "method_framework": "LearnPruner采用两阶段剪枝框架：首先在视觉编码器后使用可学习模块预测token重要性并保留多样token；然后在LLM中间层利用文本注意力进一步筛选与查询相关的token。",
+ "experiment_framework": "在LLaVA-v1.5-7B、LLaVA-NeXT-7B等多个模型上评估，使用GQA、VQAv2等8个图像理解基准和视频理解基准，对比多种剪枝方法。",
+ "takeaways": [
+  "可学习模块比传统注意力机制更有效识别重要视觉token",
+  "文本引导的注意力在LLM中间层提供可靠的剪枝指导",
+  "两阶段剪枝策略在不同token预算下均表现优异"
+ ],
+ "weaknesses": [
+  "仅使用10%的LLaVA-665K数据集训练可学习模块",
+  "未分析不同分辨率下的剪枝效果",
+  "未探讨剪枝对模型鲁棒性的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "token剪枝方法与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/SHE Streaming-media Hashing Retrieval.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SHE Streaming-media Hashing Retrieval.pdf",
+ "title": "SHE: Streaming-media Hashing Retrieval",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.25
+ },
+ "one_line": "流式哈希范式解决模态异步到达，但医疗验证不足且知识库膨胀未解。",
+ "innovations": [
+  "提出Streaming-media Hashing rEtrieval(SHE)新范式，支持各模态并行训练而非要求所有模态同时就绪",
+  "设计知识库挖掘模块(KLM)为每个模态抽取原型知识库，揭示各模态样本的共性分布",
+  "设计知识库迁移模块(KLT)利用历史知识库更新对齐新知识，保证流式到达下的语义一致性"
+ ],
+ "method_framework": "现实中模态数据按时间先后到达，传统CMH需全模态数据重训。SHE为每个模态先离线挖掘原型知识库(KLM)以刻画该模态共性分布；当新模态/新批次流式到达时，用KLT借历史知识库迁移对齐新知识，既不重训旧模态又保持跨模态语义一致；最终学习紧凑哈希码做跨模态检索，并增强类内相关、类间可分。",
+ "experiment_framework": "在多个跨模态检索标准数据集上评测；对比既有静态跨模态哈希方法；模拟流式/按时间到达的数据设定；指标为mAP等检索精度，验证并行训练下的效果与可扩展性。",
+ "takeaways": [
+  "把跨模态哈希从静态拓展到流式到达设定，各模态可独立并行训练、无需重训",
+  "原型知识库的挖掘+迁移能在模态异步到达时维持跨模态语义对齐",
+  "SHE在流式场景下兼顾检索精度与可扩展性"
+ ],
+ "weaknesses": [
+  "文中以多模态诊断为应用动机，但实验多在通用图文检索数据集验证，真实医疗流式数据证据有限",
+  "知识库需原型数量/容量超参，长期流式累积下知识库规模膨胀与漂移问题在前9页未讨论",
+  "属跨模态检索方向的范式扩展，方法组件(KLM/KLT)增量性较强，与AI可靠性主线关联弱"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,35 @@
+{
+ "title": "Sketch to Adapt: Fine-Tunable Sketches for Efficient LLM Adaptation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.75
+ },
+ "one_line": "SketchTune用可微sketch参数统一压缩与适配，但理论支撑不足",
+ "innovations": [
+  "指出全量微调权重更新呈高秩模式、低秩适配器假设次优，改用sketching(数据压缩)逼近矩阵类",
+  "把压缩与适配统一：权重压成一小撮共享可微sketched参数并直接更新，消除量化PEFT中高低位宽两路不可合并前向",
+  "给出何类矩阵更适合sketching而非低秩逼近的数学洞察"
+ ],
+ "method_framework": "用学习到的随机投影/sketching算法把冻结大矩阵压缩为小尺寸sketched参数，这些参数全程可微；前向时在sketch域计算，直接对sketched参数做梯度更新完成适配，无需外加低秩适配器。",
+ "experiment_framework": "Llama/Mistral；常识与数学基准；对比LoRA/DoRA/S2FT/LoftQ；用2.6-3.5×更小基座、相当可训参数即超LoRA等，GSM8K上以7.3×更少可训参数超LoftQ 14.48%。",
+ "takeaways": [
+  "权重更新的高秩特性使低秩适配器次优，sketching逼近是替代低秩的一条紧凑路径",
+  "压缩与适配统一到可微sketch参数可省显存并消除双路前向延迟"
+ ],
+ "weaknesses": [
+  "sketching为随机投影，逼近误差与压缩率的理论刻画仍较粗，对极高压缩率的稳健性未充分报告",
+  "relevance偏离可靠性主线，属PEFT效率；评测偏常识/数学，长文本与多模态任务覆盖不足"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Sketch to Adapt Fine-Tunable Sketches for Efficient LLM Adaptation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Sketch to Adapt Fine-Tunable Sketches for Efficient LLM Adaptation.pdf",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

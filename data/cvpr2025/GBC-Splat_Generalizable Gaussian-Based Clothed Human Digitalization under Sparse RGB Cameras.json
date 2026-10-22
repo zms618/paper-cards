@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/GBC-Splat_Generalizable Gaussian-Based Clothed Human Digitalization under Sparse RGB Cameras.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/GBC-Splat_Generalizable Gaussian-Based Clothed Human Digitalization under Sparse RGB Cameras.pdf",
+ "title": "GBC-Splat Generalizable Gaussian-Based Clothed Human Digitalization under Sparse RGB Cameras",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "结合隐式场与高斯溅射的稀疏视图人体数字化方法",
+ "innovations": [
+  "结合隐式占用场回归和显式视差估计的细粒度网格提取",
+  "基于网格锚定的2D高斯基元表示",
+  "基于纹理的高斯细分算法提升渲染质量"
+ ],
+ "method_framework": "采用粗到细策略，先通过神经隐式场重建粗略几何，再通过立体匹配细化几何，然后在重建的网格上生成2D高斯基元，最后通过细分算法提升高频区域渲染质量。",
+ "experiment_framework": "在Twindom和THuman2.0数据集上评估，与NeuS2、DoubleField、GPS-Gaussian等方法比较，使用P2S、Chamfer距离评估几何质量，PSNR、SSIM、LPIPS评估渲染质量。",
+ "takeaways": [
+  "跨视图注意力机制能有效融合多视图特征提升几何重建质量",
+  "基于网格锚定的高斯表示能保持人体完整性并减少噪声",
+  "非学习的细分算法能有效提升高频细节渲染质量"
+ ],
+ "weaknesses": [
+  "依赖双目立体输入，限制了单视图应用场景",
+  "细分算法仅对可见区域有效，对被遮挡区域处理不足",
+  "实验主要在标准数据集上进行，真实场景泛化能力有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "稀疏视图人体数字化，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

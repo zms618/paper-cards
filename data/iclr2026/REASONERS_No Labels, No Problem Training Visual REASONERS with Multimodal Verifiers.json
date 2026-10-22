@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/REASONERS_No Labels, No Problem Training Visual REASONERS with Multimodal Verifiers.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/REASONERS_No Labels, No Problem Training Visual REASONERS with Multimodal Verifiers.pdf",
+ "title": "No Labels, No Problem: Training Visual Reasoners with Multimodal Verifiers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "VALOR用AI验证器替代标注，通过RL和难负例挖掘提升无监督视觉推理",
+ "innovations": [
+  "提出无标注视觉推理训练框架：用AI验证器替代人工标注，LLM验证器作为结构化奖励模型引导推理RL",
+  "用VLM验证器自动挖掘难负例来微调视觉定位模型，无需ground truth标注",
+  "结合纯语言推理模型的任务分解能力和视觉专用模型的定位精度，形成工具使用范式"
+ ],
+ "method_framework": "VALOR用LLM验证器评估推理链的逻辑分解、工具调用和语法正确性，作为RL奖励优化推理LLM。同时用VLM验证器自动挖掘视觉定位的难负例（高置信但定位错误的预测），微调视觉专用模型。两个验证器形成闭环，无需人工标注即可同时提升推理和定位。",
+ "experiment_framework": "在多种空间推理任务上评测；对比开源和商用模型（含GPT-5-Thinking）；报告推理准确率和定位精度；消融验证LLM验证器和VLM验证器各自贡献。",
+ "takeaways": [
+  "AI验证器可替代人工标注作为视觉推理训练的奖励信号",
+  "推理和视觉定位应分别用专门验证器优化，而非统一端到端训练",
+  "工具使用范式（LLM分解+视觉专用模型定位）可在无标注下达到强视觉推理性能"
+ ],
+ "weaknesses": [
+  "验证器本身的错误会被RL放大，形成自我强化的错误循环，文中对验证器偏差的分析不足",
+  "前9页文本量极大（53万字符），但核心方法描述集中在前几页，后续多为附录",
+  "仅在空间推理任务验证，对其他视觉推理类型（如文档理解、医学影像）的迁移性未知"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "无监督视觉推理与可靠性验证器实质交织，可迁移到主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

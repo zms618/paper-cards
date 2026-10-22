@@ -1,0 +1,41 @@
+{
+ "title": "ReFocusEraser: Refocusing for Small Object Removal with Robust Context-Shadow Repair",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "相机变焦+微调解码器修复小物体移除，但与主线无关且实验覆盖不全。",
+ "innovations": [
+  "提出Camera-Adaptive Refocus：用相机标定把远场小掩码区域模拟为近场放大视角，规避VAE固定压缩率对小区域的细节丢失。",
+  "在放大区域上用LoRA微调FLUX.1-dev提升inpainting语义对齐。",
+  "提出Seam- and Shadow-Aware Repair：冻结编码器、微调额外解码器，自动修正未被mask的小物体阴影并消除回贴接缝/色差。"
+ ],
+ "method_framework": "阶段I：对含掩码图做相机自适应变焦放大小区域，LoRA微调扩散模型在放大域精确重建；阶段II：mask-based缝合把放大结果缩回贴回原图，并通过微调的接缝/阴影感知解码器修复VAE上下采样不对称造成的色差、接缝与残留阴影，保持背景一致。",
+ "experiment_framework": "在物体移除/inpainting基准上对比AttentiveEraser、Flux-Fill等；指标PSNR/SSIM/FID；报告PSNR/SSIM/FID 31.26/0.924/21.38，显著优于AttentiveEraser(24.06/0.656/25.39)与Flux-Fill(25.03/0.794/65.22)。",
+ "takeaways": [
+  "VAE固定压缩率对小掩码区域是细节丢失主因，变焦放大可在不改VAE的前提下缓解。",
+  "回贴放大结果时的接缝/色差来自VAE上下采样不对称，需专门解码器修复。",
+  "未被显式mask的物体阴影是物体移除的常见残留，需专门的阴影感知修复。"
+ ],
+ "weaknesses": [
+  "目标是图像编辑质量，与可靠性×医学影像/多模态推理主线无关。",
+  "依赖相机标定/变焦的几何假设，对非远场或非小目标场景收益有限。",
+  "节选前9页未见完整基准数据集与逐方法对照表，'SOTA'结论的覆盖在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Refocuseraser_Refocusing for Small Object Removal with Robust Context-Shadow Repair.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Refocuseraser_Refocusing for Small Object Removal with Robust Context-Shadow Repair.pdf",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "图像编辑与可靠性主线无关，仅技术迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

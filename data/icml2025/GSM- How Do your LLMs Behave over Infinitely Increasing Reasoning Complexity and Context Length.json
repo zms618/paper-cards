@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/GSM- How Do your LLMs Behave over Infinitely Increasing Reasoning Complexity and Context Length.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/GSM- How Do your LLMs Behave over Infinitely Increasing Reasoning Complexity and Context Length.pdf",
+ "title": "GSM-infinity: How Do your LLMs Behave over Infinitely Increasing Reasoning Complexity and Context Length?",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "通过噪声注入构建无限复杂度数学推理基准，揭示LLM性能下降规律",
+ "innovations": [
+  "把GSM-8K题目抽象为计算图，通过注入冗余节点/边实现难度与上下文长度的无限、可控增长",
+  "构建可扩展、可控制的推理测试床GSM-∞",
+  "系统揭示两个规律：随复杂度增加推理性能一致地sigmoid下降；指数级增加推理算力仅带来线性性能提升"
+ ],
+ "method_framework": "将grade-school数学题建模为带节点(运算)和边(数据流)的计算图，通过插入无关节点/边(噪声)在保持正确推理路径的同时可控地拉长上下文、提高难度。用该生成器对10个长上下文LLM做细粒度评测，绘制推理性能-复杂度、推理算力-性能曲线。",
+ "experiment_framework": "评测10个强LLM(GPT-4o-mini、Llama3.1、Qwen2.5、DeepSeek-V3、Gemini-1.5等)，在16K等不同上下文长度下，扫描连续的推理复杂度与噪声水平，报告准确率，并关联API生成成本与零上下文推理能力。",
+ "takeaways": [
+  "现有长上下文LLM的推理性能随问题复杂度升高呈sigmoid式下降",
+  "推理扩展(inference scaling)呈边际递减：指数算力仅换线性收益",
+  "揭示当前长上下文LLM处理稠密复杂多步推理的根本局限"
+ ],
+ "weaknesses": [
+  "任务限于算术计算图，未覆盖多模态/开放域推理",
+  "噪声注入模拟的复杂度与真实数学证明的复杂度存在差距",
+  "前9页内对CoT/检索增强等缓解策略的系统对比展开有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

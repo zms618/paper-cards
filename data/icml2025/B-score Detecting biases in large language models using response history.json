@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/B-score Detecting biases in large language models using response history.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/B-score Detecting biases in large language models using response history.pdf",
+ "title": "B-score: Detecting biases in large language models using response history",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "基于回答分布差异的B-score指标检测LLM偏见，发现多轮对话自我去偏现象。",
+ "innovations": [
+  "提出B-score指标，基于单轮最高概率选项与多轮回答分布的差异量化偏见程度",
+  "发现LLM在多轮对话中观察自身历史回答后，对随机类问题可显著自我去偏（最高选择概率从0.77降至0.29）",
+  "证明B-score可区分真实偏好（主观问题）与 undesired偏见（随机问题），并提升MMLU/HLE/CSQA上的答案验证准确率"
+ ],
+ "method_framework": "B-score计算：对每个选项o，比较单轮查询时模型选择o的概率P_single(o)与多轮对话中观察历史回答后选择o的概率P_multi(o)。B-score = P_single(top) - P_multi(top)，正值表示单轮存在偏见。对随机问题，多轮接近均匀分布时B-score大；对主观问题，B-score小说明偏好真实。",
+ "experiment_framework": "8个LLM(GPT-4o/GPT-4o-mini/Gemini-1.5-Flash/Pro/Llama-3.1-70B/405B/Command R/R+)。问题集覆盖9个主题，分主观/随机/简单/困难四类。每问题10次重复。另在MMLU/HLE/CSQA上验证B-score作为验证器的效果。",
+ "takeaways": [
+  "随机问题上单轮最高选项概率平均0.77，多轮降至0.29，说明LLM可通过自我观察去偏",
+  "主观问题上多轮后偏好仍高（0.68），B-score小，说明是真实偏好而非偏见",
+  "B-score作为答案验证信号，比纯口语置信度更能准确判断LLM答案对错"
+ ],
+ "weaknesses": [
+  "多轮去偏效应可能因提示词设计而异，未系统分析不同对话格式的影响",
+  "B-score需要多次查询，计算成本高，不适合实时验证场景",
+  "仅研究选择题格式，开放式生成中的偏见检测未探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM偏见检测属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

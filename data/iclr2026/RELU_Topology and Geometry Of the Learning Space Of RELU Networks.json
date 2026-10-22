@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RELU_Topology and Geometry Of the Learning Space Of RELU Networks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RELU_Topology and Geometry Of the Learning Space Of RELU Networks.pdf",
+ "title": "Topology and Geometry of the Learning Space of ReLU Networks: Connectivity and Singularities",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 4.5,
+  "relevance": 3.0,
+  "overall": 5.1
+ },
+ "one_line": "纯理论分析DAG ReLU网络梯度流不变集，缺乏实际应用验证",
+ "innovations": [
+  "推导DAG结构ReLU网络梯度流下的守恒律统一表述，将已有层级网络结果推广到一般DAG架构",
+  "基于瓶颈节点和平衡条件给出训练不变集连通性的充要条件",
+  "证明奇点对应于不连通子网络且在标准梯度流下从一般初始化不可达；提出核范数正则化促进收敛到奇点以实现可微结构无关剪枝"
+ ],
+ "method_framework": "利用ReLU正齐次性导致的重标定对称性，将梯度流训练的不变集刻画为二次方程组定义的代数簇。分析该代数簇的连通性（通过瓶颈节点和平衡条件）和奇点结构（对应不连通子网络）。提出核范数正则化引导参数收敛到奇异配置，实现可微剪枝。",
+ "experiment_framework": "纯理论分析为主，简单数值实验验证理论预测（连通性、奇点不可达、L1正则化诱导稀疏）。无大规模基准测试。",
+ "takeaways": [
+  "DAG ReLU网络的训练不变集连通性由瓶颈节点和平衡条件决定",
+  "奇点对应不连通子网络，在标准梯度流下不可达，与可微剪枝有原则性联系",
+  "L1正则化虽不直接 targeting 神经元稀疏，但经验上诱导类似奇异行为，实现无损剪枝"
+ ],
+ "weaknesses": [
+  "与可靠性/多模态推理/医学影像主线完全无关，属于深度学习理论/代数几何领域",
+  "实验仅为简单数值验证，无大规模或真实任务上的剪枝效果评估",
+  "核范数正则化的计算复杂度在实际大规模网络中的可行性未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 3,
+ "relevance_reason": "纯理论分析DAG ReLU网络梯度流不变集，缺乏实际应用验证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

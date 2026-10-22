@@ -1,0 +1,41 @@
+{
+ "title": "Reforming the Mechanism: Editing Reasoning Patterns in LLMs with Circuit Reshaping",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.6
+ },
+ "one_line": "提出REdit框架，通过电路重塑实现LLM推理模式编辑，但开放域迁移性存疑。",
+ "innovations": [
+  "形式化Reasoning Editing问题，揭示Generality(跨任务同模式泛化)与Locality(不损其他推理能力)之间的根本权衡。",
+  "发现Circuit-Interference Law：对某推理模式编辑对另一模式的干扰程度与二者神经电路重叠度成正比。",
+  "提出REdit三组件：对比式电路重塑(解耦重叠电路)、元对比学习(迁移到新模式)、双层保护(软零空间投影约束更新方向+任务预测正则)。"
+ ],
+ "method_framework": "先用对比式电路重塑把重叠的推理电路解耦、把模式特异电路巩固；再用元对比学习扩展到未见模式；在重塑得到的近正交电路上用软零空间投影约束更新方向并正则化其他推理任务预测，最后用常规LoRA编辑完成目标推理模式的改写/注入。",
+ "experiment_framework": "模型Qwen-2.5-3B；以命题逻辑(PL)三个难度层级为主评测，数学任务作扩展验证；对比通用微调与LoRA类编辑基线；指标为Generality(同模式跨域泛化)与Locality(其他推理能力保持)。",
+ "takeaways": [
+  "推理并非单一整体能力，可分解为可定位、可选择性编辑的模式化电路。",
+  "编辑干扰主要来自电路重叠，先解耦电路能同时提升泛化性与局部性。",
+  "针对性纠正错误推理模式(如否定后件误用)比大规模通用训练更高效。"
+ ],
+ "weaknesses": [
+  "主实验限定在可精确定义的命题逻辑上，向开放域自然语言推理的可迁移性证据有限。",
+  "需要能定位各推理模式神经电路，电路识别的准确性直接决定解耦成败。",
+  "节选前9页未见三难度层级的完整Generality/Locality数值表，相对基线的提升幅度在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Reforming the Mechanism Editing Reasoning Patterns In LLMS with Circuit Reshaping.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reforming the Mechanism Editing Reasoning Patterns In LLMS with Circuit Reshaping.pdf",
+ "raw_overall": 6.55,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "LLM推理模式编辑与可靠性主线交织，方法设计具迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

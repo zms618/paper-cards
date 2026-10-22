@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/MULTI-AGENT Design Optimizing Agents with Better Prompts and Topologies.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/MULTI-AGENT Design Optimizing Agents with Better Prompts and Topologies.pdf",
+ "title": "Multi-Agent Design: Optimizing Agents with Better Prompts and Topologies",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "三阶段优化多智能体提示与拓扑，在有限构建块上提升性能",
+ "innovations": [
+  "通过深入分析揭示提示优化比简单扩展智能体数量（自一致性/辩论）在token效率上更优，且有利拓扑仅占搜索空间的一小部分",
+  "提出三阶段交错优化框架MASS：块级提示预热→基于影响力的剪枝拓扑搜索→工作流级联合提示优化",
+  "基于MASS发现的最优系统总结出多智能体设计原则：先优化单个智能体再组合、在有利拓扑子空间中搜索、智能体间依赖需全局联合优化"
+ ],
+ "method_framework": "MASS定义包含Aggregate/Reflect/Debate/Summarize/Tool-use等构建块的搜索空间。Stage 1对每个构建块单独进行块级提示优化（MIPRO联合指令+示例优化），并记录各块相对于基础智能体的增量影响力。Stage 2根据影响力通过softmax加权拒绝采样构建剪枝搜索空间，在预算内随机采样有效拓扑并评估。Stage 3在最优拓扑上进行工作流级全局提示优化，适应智能体间的相互依赖。",
+ "experiment_framework": "在8个任务上评估（MATH/DROP推理、HotpotQA/MuSiQue/2WikiMQA多跳长上下文、MBPP/HumanEval/LCB编码），使用Gemini 1.5 Pro和Flash，对比CoT/SC/Self-Refine/Multi-Agent Debate/ADAS/AFlow等基线，3次运行，控制推理token成本相当，最大智能体数10个。",
+ "takeaways": [
+  "MASS在Gemini 1.5 Pro上平均达78.8%，较Multi-Agent Debate提升8.5%，较ADAS提升9.1%",
+  "块级提示优化贡献最大增益（较单智能体APO提升6%），拓扑搜索贡献3%，全局提示优化贡献2%",
+  "搜索空间剪枝和前期提示优化对拓扑搜索效果至关重要，缺少任一步均显著降低性能"
+ ],
+ "weaknesses": [
+  "搜索空间预定义为有限的几种构建块，无法发现全新的智能体交互模式",
+  "仅使用Gemini和Claude模型验证，未探索开源模型上的泛化性",
+  "优化过程需要在验证集上多次评估，计算开销较大，实际部署的成本效益未充分分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多智能体系统设计，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

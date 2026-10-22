@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/GuardAgent_Safeguard LLM Agents via Knowledge-Enabled Reasoning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/GuardAgent_Safeguard LLM Agents via Knowledge-Enabled Reasoning.pdf",
+ "title": "GuardAgent: Safeguard LLM Agents via Knowledge-Enabled Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "护栏智能体将安全请求编译为代码拦截违规，但代码漏洞与延迟问题显著",
+ "innovations": [
+  "提出首个护栏智能体GuardAgent，动态检查目标智能体动作是否满足安全护栏请求",
+  "两步式：先把护栏请求分析为任务计划，再映射为可执行护栏代码运行，从而确定性遵循安全策略",
+  "引入记忆模块检索过往经验做in-context演示；新建EICU-AC（医疗访问控制）与Mind2Web-SC（网页智能体安全）两个基准"
+ ],
+ "method_framework": "以LLM为推理组件：解析安全护栏请求→生成动作计划→调用一组可执行函数生成护栏代码；通过执行代码对目标智能体的输入输出日志与动作轨迹做确定性检查，命中违规则拒动作；记忆模块检索相似历史案例增强泛化。",
+ "experiment_framework": "在自建EICU-AC（医疗智能体访问控制）与Mind2Web-SC（网页智能体安全策略）两个基准评测；与基线安全过滤方法比较；指标为护栏判定准确率/违规拦截率；报告分别达98%与83%以上护栏准确率。",
+ "takeaways": [
+  "把自然语言安全请求编译为可执行代码可实现确定性护栏，优于黑箱分类过滤",
+  "记忆检索式in-context示例提升对未见护栏请求的泛化",
+  "在医疗EICU访问控制等高风险域也能高精度拦截违规动作"
+ ],
+ "weaknesses": [
+  "护栏代码由LLM生成，代码本身的漏洞/逻辑遗漏可能被绕过，缺乏形式化正确性证明",
+  "两步LLM调用带来延迟与成本，实时性受限",
+  "基准为自建，与真实生产智能体的复杂长程轨迹分布一致性需外部验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

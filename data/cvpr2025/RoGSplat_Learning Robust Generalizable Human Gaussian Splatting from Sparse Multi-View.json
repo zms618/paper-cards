@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/RoGSplat_Learning Robust Generalizable Human Gaussian Splatting from Sparse Multi-View.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/RoGSplat_Learning Robust Generalizable Human Gaussian Splatting from Sparse Multi-View.pdf",
+ "title": "RoGSplat Learning Robust Generalizable Human Gaussian Splatting from Sparse Multi-View",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "改进3DGS人体重建，但局限明显且创新点常规",
+ "innovations": [
+  "将SMPL顶点提升为密集图像对齐的3D先验点",
+  "结合像素级和体素级特征进行自适应错位补偿",
+  "粗到细的像素级高斯回归策略增强高频细节建模"
+ ],
+ "method_framework": "通过SMPL模型拟合和深度细化获取体素特征，结合像素级特征生成图像对齐的先验点，基于此预测粗略高斯，再通过深度图反投影和偏移估计器生成精细高斯参数。",
+ "experiment_framework": "在THuman2.0、RenderPeople和ZJU-MoCap数据集上评估，使用PSNR、SSIM和LPIPS指标，与NeRF和3DGS方法进行域内和跨域泛化比较。",
+ "takeaways": [
+  "像素级和体素级特征结合可有效解决SMPL与图像错位问题",
+  "粗到细的高斯回归策略能从稀疏视图中恢复高频细节"
+ ],
+ "weaknesses": [
+  "无法处理宽松衣物，难以获取足够先验点",
+  "无法对重建的人体模型进行动画或编辑",
+  "在面部和手部的高频细节恢复上存在局限"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D重建技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

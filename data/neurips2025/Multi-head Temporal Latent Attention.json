@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Multi-head Temporal Latent Attention.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Multi-head Temporal Latent Attention.pdf",
+ "title": "Multi-head Temporal Latent Attention",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "时间维度KV压缩提升Transformer效率，但压缩策略与架构局限明显",
+ "innovations": [
+  "首次提出时间维度KV压缩机制",
+  "超网络动态生成相邻KV缓存合并权重",
+  "步长感知因果掩码实现高效并行训练"
+ ],
+ "method_framework": "基于MLA扩展，通过超网络动态合并时间相邻KV向量，结合步长感知因果掩码确保训练与推理一致性",
+ "experiment_framework": "MuST-C En-De/XSum/AMI/SLURP数据集，对比MHA/MLA，指标包括BLEU/ROUGE/WER/准确率/推理速度/GPU内存",
+ "takeaways": [
+  "时间维度压缩可有效提升长序列任务推理效率",
+  "步长感知因果掩码是解决训练-推理不一致的关键"
+ ],
+ "weaknesses": [
+  "压缩比s增大可能导致性能下降",
+  "未探索不同任务的最优压缩策略",
+  "仅关注解码器架构，未考虑编码器-解码器架构"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

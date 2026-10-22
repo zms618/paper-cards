@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Prometheus 3D-Aware Latent Diffusion Models for Feed-Forward Text-to-3D Scene Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Prometheus 3D-Aware Latent Diffusion Models for Feed-Forward Text-to-3D Scene Generation.pdf",
+ "title": "Prometheus 3D-Aware Latent Diffusion Models for Feed-Forward Text-to-3D Scene Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "RGB-D解耦潜在扩散模型实现前馈3D场景生成",
+ "innovations": [
+  "RGB-D潜在空间解耦外观与几何信息",
+  "多视图潜在扩散模型实现前馈3D生成",
+  "混合采样指导平衡多视图一致性和保真度"
+ ],
+ "method_framework": "两阶段训练：第一阶段训练GS-VAE编码多视图RGB-D图像为3D高斯；第二阶段训练MV-LDM在潜在空间中生成多视图RGB-D潜码，最终解码为3D高斯场景",
+ "experiment_framework": "数据集：9个多视图和单视图数据集；基线：pixelSplat、MVSplat、GaussianDreamer、MVDream、Director3D；指标：PSNR、SSIM、LPIPS、AbsRel、δ1、CLIP-Score、BRISQUE、NIQE",
+ "takeaways": [
+  "利用预训练文本到图像模型进行最小调整实现泛化能力",
+  "RGB-D潜在空间解耦提升3D高斯生成质量",
+  "混合采样指导策略平衡多视图一致性和文本对齐"
+ ],
+ "weaknesses": [
+  "依赖单目深度估计器可能引入误差",
+  "未充分讨论模型在不同场景类别上的泛化能力差异",
+  "未提供模型计算效率和资源消耗的详细分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D场景生成与可靠性主线无交点，属纯图形学渲染",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

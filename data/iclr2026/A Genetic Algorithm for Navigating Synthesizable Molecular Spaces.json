@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Genetic Algorithm for Navigating Synthesizable Molecular Spaces.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Genetic Algorithm for Navigating Synthesizable Molecular Spaces.pdf",
+ "title": "A GENETIC ALGORITHM FOR NAVIGATING SYNTHESIZABLE MOLECULAR SPACES",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "遗传算子保证可合成性，但消融不足且评价维度窄",
+ "innovations": [
+  "把可合成性写入遗传算子而非事后投影：交叉枚举满足 R(M(S1),M(S2))≠∅ 的兼容子树对按反应拼接，变异含 Grow/Shrink/Rerun/改反应/改砌块五算子，输出必然带合法合成路线",
+  "Rerun 变异在自底向上执行时保留中间体集合 Mv⊆MS 并随机重选产物，用单程流式重赋值产生同一路线下的替代产物，扩充离散邻域",
+  "用二元分类器 πθ(M,B)→{0,1} 与 NAM 逐砌块加性得分 ρθ=α+(1-α)Σsθ(B)（成对排序损失训练）缩小近 20 万砌块空间，并作为内循环嵌入 SynGBO 的 GP 采集函数"
+ ],
+ "method_framework": "在合成树上做选择、交叉（枚举兼容子树对按反应拼接）与 Grow/Shrink/Rerun/改反应/改砌块五种变异，可合成性由构造保证；模拟物搜索用二分类砌块过滤，属性优化用 NAM 加性打分，SynGBO 把 SynGA 嵌入 GP 采集内循环。",
+ "experiment_framework": "19.7 万 Enamine 砌块 + 91 反应模板；基线 SynNet/SynthesisNet/ChemProjector/SynFormer；模拟物搜索（1k ChEMBL）与 PMO 22 任务属性优化（5 seeds）；指标 Morgan/Scaffold/Gobbi 相似度、重建率、top-10 AUC。",
+ "takeaways": [
+  "把领域约束写进搜索算子而不是事后投影或过滤，是不需训练投影模型、无推理开销即可保证输出合法性的通用思路",
+  "用可解释加性模型（NAM）对离散大空间粗筛打分，再交给昂贵黑盒 oracle 评估，「廉价筛 + 采样高效」的分工值得迁移",
+  "主动量化自身劣势（比自回归方法慢 3 倍、换砌块集更易用）并给出两种范式适用边界，参考价值高于单纯报 SOTA"
+ ],
+ "weaknesses": [
+  "正文在 Table 4 后截断，未见遗传算子层面的消融（交叉/各变异算子单独贡献、随机树初始化是否等价），无法确认算子设计是否必要",
+  "算子概率（Grow/Shrink 各 0.125、其余 0.25）、种群 500、交叉率 0.8 均一次性给定，无敏感性分析，超参选择依据不明",
+  "评价维度偏窄：模拟物搜索只用 Morgan/Scaffold/Gobbi 相似度与重建率，属性优化只用 PMO 的 top-10 AUC 求和，缺多样性与合成复杂度分布"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "分子合成算法与可靠性主线无交点，属常规扎实工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/YOSE_You Only Select Essential Tokens for Efficient DiT-based Video.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/YOSE_You Only Select Essential Tokens for Efficient DiT-based Video.pdf",
+ "title": "YOSE You Only Select Essential Tokens for Efficient DiT-based Video",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "选择性token处理加速视频对象去除，但效率优势有限",
+ "innovations": [
+  "Batch Variable-length Indexing (BVI)可变长度索引",
+  "Diffusion Process Simulator (DiffSim)模块",
+  "基于均值-方差对齐的边界融合策略"
+ ],
+ "method_framework": "YOSE框架通过BVI动态选择标记区域token，DiffSim模拟未标记区域扩散过程影响，最后通过边界融合策略消除伪影，实现计算复杂度与标记区域大小成线性关系。",
+ "experiment_framework": "在DAVIS和YouTube-VOS数据集上评估，使用VBench指标和PSNR/SSIM/LPIPS背景指标，与MiniMax Remover和VACE基线比较。",
+ "takeaways": [
+  "可微分动态索引技术实现高效token选择",
+  "扩散过程模拟保持语义一致性而不增加计算量"
+ ],
+ "weaknesses": [
+  "未标记区域模拟可能无法完全捕捉复杂上下文",
+  "在标记区域较大时效率优势减弱"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频处理效率优化，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

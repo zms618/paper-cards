@@ -1,0 +1,41 @@
+{
+ "title": "Taming Curvature: Architecture Warm-Up for Stable Transformer Training",
+ "one_line": "曲率估计器发现不稳定与深度相关，渐进加深网络提升训练稳定性。",
+ "innovations": [
+  "提出基于warm-started幂迭代+Hessian-vector product的快速在线(预条件)最大Hessian特征值估计器，使十亿参数规模下逐轮曲率跟踪可行且更准",
+  "用该工具发现训练不稳定与预条件曲率激增同步发生，且曲率随网络深度增长",
+  "提出architecture warm-up：渐进式增加网络深度以控制预条件Hessian，在不拖慢收敛的前提下减少不稳定"
+ ],
+ "method_framework": "依据Edge of Stability(EoS)理论，稳定性由eta*lambda_max(预条件Hessian)决定。先用warm-started幂迭代在线跟踪曲率；观察到曲率随深度增长后，采用从浅到深渐进加深网络(architecture warm-up)的方式，在训练初期把预条件Hessian控制在稳定边界内，再逐步加层。",
+ "experiment_framework": "在大规模Transformer上验证；对比logit软截断、QK-norm/clip、LR/batch warmup等既有稳定化技术；指标为loss spike/发散发生频率与收敛速度；并报告曲率在线跟踪的计算开销与精度。",
+ "takeaways": [
+  "大规模Transformer的训练不稳定与预条件曲率的激增在时间上同步",
+  "曲率随深度增长，是深层Transformer易发散的一个结构性原因",
+  "渐进加深(architecture warm-up)可比既有稳定化技术更有效减少不稳定且不拖慢收敛"
+ ],
+ "weaknesses": [
+  "曲率在线估计虽快但仍引入额外HVP计算，大规模训练的实际开销占比需量化",
+  "渐进加深改变了训练动态，对预训练最终质量的影响与超长训练的稳定性证据有限",
+  "与其他正则化/稳定化技巧的正交叠加效应未系统消融"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Taming Curvature Architecture WARM-UP for Stable Transformer Training.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Taming Curvature Architecture WARM-UP for Stable Transformer Training.pdf",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "训练稳定性方法，未直接触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

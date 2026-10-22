@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Vision-Language-Vision Auto-Encoder_Scalable Knowledge Distillation from Diffusion Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Vision-Language-Vision Auto-Encoder_Scalable Knowledge Distillation from Diffusion Models.pdf",
+ "title": "Vision-Language-Vision Auto-Encoder: Scalable Knowledge Distillation from Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "VLV自编码器从扩散模型蒸馏知识，但依赖单一数据源且泛化验证不足",
+ "innovations": [
+  "Vision-Language-Vision自编码器框架",
+  "连续嵌入空间替代离散文本标记",
+  "仅使用单模态图像训练无需大规模图像-文本对",
+  "轻量级LLM解码器生成灵活长度描述"
+ ],
+ "method_framework": "VLV采用两阶段框架：第一阶段使用冻结的T2I扩散模型作为解码器，通过自监督学习将图像编码为连续语义嵌入；第二阶段使用预训练LLM解码器将这些嵌入转换为自然语言描述。",
+ "experiment_framework": "数据集：MS-COCO验证集(30K样本)，指标：FID分数、人类评估(1-6分)、VQA准确率，基线：GPT-4o、Gemini 2.0 Flash、Florence-2等",
+ "takeaways": [
+  "扩散模型可作为强大的视觉-语言知识源",
+  "连续嵌入空间保留细粒度语义信息",
+  "渐进式训练策略提升性能"
+ ],
+ "weaknesses": [
+  "仅使用Gemini生成训练数据可能引入偏差",
+  "未充分探索模型在不同领域泛化能力",
+  "计算效率虽高但推理速度未详细分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

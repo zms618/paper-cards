@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Zero-Shot Offline Imitation Learning via Optimal Transport.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Zero-Shot Offline Imitation Learning via Optimal Transport.pdf",
+ "title": "Zero-Shot Offline Imitation Learning via Optimal Transport",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.25
+ },
+ "one_line": "用OT优化占用匹配，缓解零样本模仿短视，但与主线关联弱且依赖世界模型",
+ "innovations": [
+  "直接优化模仿学习内在的占用匹配目标，缓解goal-selector框架的短视行为",
+  "将目标条件值函数提升为占用分布之间的距离，并用学习到的世界模型近似占用",
+  "支持从离线次优数据学习，实现非短视、零样本模仿"
+ ],
+ "method_framework": "现有零样本IL把专家演示视为目标序列，由高层目标选择器+低层目标条件策略模仿，但易短视。本文用最优传输定义占用分布距离，将值函数提升为该距离，并由世界模型估计占用；直接最小化智能体与演示占用的OT距离，从而非短视地复现行为。",
+ "experiment_framework": "复杂连续控制基准上评测；离线次优数据源；单条无动作演示零样本复现；对比goal-selector类零样本IL方法。",
+ "takeaways": [
+  "占用匹配目标可缓解目标选择框架的短视问题",
+  "世界模型近似占用+OT距离支持非短视零样本模仿",
+  "可从离线次优数据学习复现丰富行为"
+ ],
+ "weaknesses": [
+  "属强化学习/机器人模仿，与主线(可靠性/医学影像/多模态推理)关联弱",
+  "依赖世界模型精度，前9页未见模型误差向占用匹配的误差传播分析",
+  "37页方法重，计算开销与高维状态下的可扩展性需完整附录"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.18,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

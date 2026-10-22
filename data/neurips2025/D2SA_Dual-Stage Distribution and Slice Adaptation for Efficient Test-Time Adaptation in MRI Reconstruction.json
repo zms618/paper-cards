@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/D2SA_Dual-Stage Distribution and Slice Adaptation for Efficient Test-Time Adaptation in MRI Reconstruction.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/D2SA_Dual-Stage Distribution and Slice Adaptation for Efficient Test-Time Adaptation in MRI Reconstruction.pdf",
+ "title": "D2SA: Dual-Stage Distribution and Slice Adaptation for Efficient Test-Time Adaptation in MRI Reconstruction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "双阶段MRI重建，患者级适应后切片细化，效率提升有限",
+ "innovations": [
+  "功能级患者适应：基于MR-INR学习患者特定分布",
+  "结构保留单切片细化：引入各向异性扩散模块防止过平滑",
+  "双阶段框架：先患者级适应再切片级细化，平衡效率与精度"
+ ],
+ "method_framework": "D2SA采用双阶段框架：第一阶段使用MR-INR学习患者级分布偏移，第二阶段冻结主干网络，通过可学习各向异性扩散模块进行单切片细化，实现高效测试时适应。",
+ "experiment_framework": "在5种MRI分布偏移场景(解剖、数据集、模态、加速、采样)上评估，使用fastMRI和Stanford数据集，比较SSIM、PSNR、LPIPS指标和适应时间。",
+ "takeaways": [
+  "功能级表示可有效处理分布偏移",
+  "双阶段框架平衡全局适应与局部细节",
+  "各向异性扩散模块保留结构细节"
+ ],
+ "weaknesses": [
+  "计算效率提升有限，第二阶段仍需较长时间",
+  "方法依赖特定网络架构(如UNet和VarNet)，泛化性待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

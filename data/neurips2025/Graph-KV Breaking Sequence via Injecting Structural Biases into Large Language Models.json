@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Graph-KV Breaking Sequence via Injecting Structural Biases into Large Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Graph-KV Breaking Sequence via Injecting Structural Biases into Large Language Models.pdf",
+ "title": "Graph-KV: Breaking Sequence via Injecting Structural Biases into Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "Graph-KV注入结构偏置提升LLM图数据处理，但依赖外部计算",
+ "innovations": [
+  "结构化KV缓存交互机制",
+  "共享位置编码减少上下文窗口消耗",
+  "图结构块稀疏注意力设计"
+ ],
+ "method_framework": "Graph-KV将文本块KV缓存作为节点表示，通过结构化有向边控制目标节点仅关注源节点KV，实现消息传递式交互，同时采用共享位置编码减少位置偏差",
+ "experiment_framework": "7个RAG基准测试、ARXIV-QA新任务、引文网络主题分类，对比顺序编码、并行编码等基线，使用准确率作为主要指标",
+ "takeaways": [
+  "结构化偏置注入可有效提升多跳推理能力",
+  "共享位置编码设计有效减少上下文窗口消耗",
+  "图结构块稀疏注意力平衡效率与性能"
+ ],
+ "weaknesses": [
+  "未探索多轮迭代更新的潜力",
+  "依赖特定后训练模型(llama-3.1-8B-block-ft)",
+  "图结构构建依赖外部相似度计算"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

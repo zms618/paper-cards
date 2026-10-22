@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Position Graph Matching Systems Deserve Better Benchmarks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Position Graph Matching Systems Deserve Better Benchmarks.pdf",
+ "title": "Position: Graph Matching Systems Deserve Better Benchmarks",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "诊断图匹配基准泄漏问题，提出增广与对抗测试方案",
+ "innovations": [
+  "指出近期图匹配（尤其 GED 神经估计）数据集存在训练-测试泄漏与泛化差，误导了对方法能力的评估",
+  "建立 GED 的若干关键性质，使其支持可扩展的数据增广用于训练",
+  "提出对抗测试集生成方法，并据此给出设计与评估未来图匹配网络的新准则与开放挑战"
+ ],
+ "method_framework": "以 GED 为展示案例：GED 本身 NP 难（数十节点以上不可行），神经方法以两类优势为目标——检索设置中对 QAP 给出快速近似、以及从小图训练泛化到大图推理，二者都依赖对训练分布外图的泛化。论文剖析现有神经 GED 数据集因带标注数据获取昂贵而带来的泄漏/泛化问题，进而利用 GED 的数学性质做可扩展增广与对抗测试构造。",
+ "experiment_framework": "结合 GED 性质分析、数据增广与对抗测试集生成实验，重新评估粗粒度图级表示与细粒度交互模型两类神经 GED 方法的真实泛化能力。",
+ "takeaways": [
+  "现有图匹配基准的训练-测试泄漏系统性高估了方法的泛化能力",
+  "GED 的数学性质可被用来低成本生成带标注的训练增广数据",
+  "对抗生成的测试集是检验图匹配网络真实泛化的更可靠工具"
+ ],
+ "weaknesses": [
+  "立场论文以 GED 为代表，对其他图相似度任务（子图同构、MCS 等）的基准问题覆盖有限",
+  "数据增广与对抗测试集的具体生成算法细节与可复现设置分布在后续页，9页内以问题诊断为主",
+  "对新基准下各类方法应达到的目标水平缺乏统一排名结论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

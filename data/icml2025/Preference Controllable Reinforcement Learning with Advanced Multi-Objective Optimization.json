@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Preference Controllable Reinforcement Learning with Advanced Multi-Objective Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Preference Controllable Reinforcement Learning with Advanced Multi-Objective Optimization.pdf",
+ "title": "Preference Controllable Reinforcement Learning with Advanced Multi-Objective Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "偏好条件元策略+MOO，理论证明但高维扩展性存疑",
+ "innovations": [
+  "提出PCRL框架，训练以用户偏好为输入的偏好条件元策略，把生成轨迹控制在Pareto前沿的指定偏好区域内",
+  "兼容以往MORL很少使用的先进多目标优化(MOO)算法，突破线性标量化只能覆盖部分Pareto解的局限",
+  "专门为PCRL设计偏好正则化MOO算法，并给出收敛性与偏好可控性的理论分析"
+ ],
+ "method_framework": "把多目标RL表述为偏好条件策略学习：元策略以用户偏好权重为输入，配合先进MOO算法在完整Pareto前沿上搜索；新增偏好正则化项约束策略在给定偏好下落到期望权衡区域，理论上保证收敛与可控性，从而替代只能覆盖凸Pareto子集的线性标量化。",
+ "experiment_framework": "在最多含六个目标的挑战性环境中，将PCRL搭配不同MOO算法与SOTA MORL基线对比；指标包括Pareto前沿覆盖度、偏好可控性(按给定偏好达成目标权衡的精度)与最终回报。",
+ "takeaways": [
+  "PCRL的偏好可控性显著优于现有MORL方法，能更精准地按用户权衡需求生成策略",
+  "线性标量化仅覆盖Pareto前沿的凸子集，结合先进MOO可获得更广且更贴合偏好的解",
+  "偏好正则化MOO在理论上保证收敛与可控性，实证上在多目标环境稳定有效"
+ ],
+ "weaknesses": [
+  "理论收敛与可控性证明依赖的假设(如偏好空间平滑、目标结构)在高维真实任务中是否成立未充分验证",
+  "六目标以上的高维多目标问题可扩展性与计算成本未深入讨论",
+  "与最新基于偏好的LLM对齐方法的联系与迁移性未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

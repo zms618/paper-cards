@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/CAD-Editor A Locate-then-Infill Framework with Automated Training Data Synthesis for Text-Based CAD Editing.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CAD-Editor A Locate-then-Infill Framework with Automated Training Data Synthesis for Text-Based CAD Editing.pdf",
+ "title": "CAD-Editor: A Locate-then-Infill Framework with Automated Training Data Synthesis for Text-Based CAD Editing",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "文本驱动CAD编辑框架，自动合成训练数据并分解任务",
+ "innovations": [
+  "提出首个文本驱动CAD编辑框架，区别于设计变化生成与纯文本生成",
+  "自动化数据合成pipeline：设计变化模型生成原/编辑CAD对，LVLM总结差异为编辑指令，解决精确三元对应数据稀缺",
+  "locate-then-infill分解：先定位需修改区域、再在该区域填充编辑，应对复合编辑任务",
+  "LLM同时作为定位与填充子任务骨干，利用语言理解与CAD知识"
+ ],
+ "method_framework": "先用设计变化模型批量生成原CAD与编辑后CAD对，用LVLM把二者差异总结为自然语言编辑指令，自动构造三元训练数据；推理时先由LLM定位需修改的草图/特征区域，再在该区域按指令填充编辑，保持其余模型约束。",
+ "experiment_framework": "在自合成的文本CAD编辑数据集上，与设计变化生成/文本生成方法及locate-then-infill消融比较，报告编辑正确率/几何符合度等定量指标与定性案例。",
+ "takeaways": [
+  "自动三元数据合成可解决文本CAD编辑缺乏精确对应训练数据的问题",
+  "定位-填充分解比一次性生成更适合复合编辑约束",
+  "LVLM可作为差异总结与编辑指令生成的有效工具"
+ ],
+ "weaknesses": [
+  "落地域为CAD设计自动化，与可靠性主线及医学影像、多模态推理落地域无关",
+  "训练数据由设计变化模型合成，与真实用户编辑分布存在差距",
+  "主要在Sketch-and-Extrude类CAD验证，对自由曲面/装配级模型扩展性证据有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

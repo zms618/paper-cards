@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Self-Calibrated Variance-Stabilizing Transformations for Real-World Denoising.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Self-Calibrated Variance-Stabilizing Transformations for Real-World Denoising.pdf",
+ "title": "Self-Calibrated Variance-Stabilizing Transformations for Real-World Denoising",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "自校准VST变换依赖现成去噪器，真实噪声泛化未知",
+ "innovations": [
+  "模型无关的VST学习方法",
+  "仅需单张噪声图像和现成高斯去噪器",
+  "训练时使用盲点去噪器，推理时切换为标准去噪器"
+ ],
+ "method_framework": "提出Noise2VST框架，学习连续分段线性变换fθ及其逆变换f^{-1}_{θ,α,β}，通过自监督盲点策略训练，无需干净/噪声图像对",
+ "experiment_framework": "在KODAK/BSD300/SET14数据集上测试合成泊松噪声，在FMD和W2S数据集上测试真实医学影像噪声，使用PSNR/SSIM评估",
+ "takeaways": [
+  "自监督盲点策略可有效训练方差稳定变换",
+  "训练与推理阶段使用不同去噪器可提升性能",
+  "简单变换函数可复杂化噪声分布"
+ ],
+ "weaknesses": [
+  "依赖现成高斯去噪器的性能",
+  "未探索不同噪声类型的泛化能力",
+  "计算效率未充分分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像去噪属于落地域，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

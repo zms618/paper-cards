@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Is Noise Conditioning Necessary for Denoising Generative Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Is Noise Conditioning Necessary for Denoising Generative Models.pdf",
+ "title": "Is Noise Conditioning Necessary for Denoising Generative Models?",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6.1
+ },
+ "one_line": "挑战噪声条件必要性，提出误差界解释，但外推性与创新架构有限。",
+ "innovations": [
+  "在多种去噪生成模型（扩散、流匹配、一致性模型等）上系统对比有/无噪声条件，发现多数仅优雅退化、部分流类方法反而更优。",
+  "提出无需任何训练、仅依赖噪声调度与数据集即可计算的误差界，刻画去噪不确定性与迭代采样累积误差，并与实证行为（尤其灾难性失败情形）吻合。",
+  "训练出无噪声条件模型，在 CIFAR-10 上取得 FID 2.23，显著缩小与领先噪声条件模型的差距。"
+ ],
+ "method_framework": "受盲图像去噪启发，将网络输入中的噪声水平索引 t 移除，训练单一网络在所有噪声水平上去噪而不显式告知 t；从噪声水平分布的固有不确定性出发，推导去掉噪声条件引入的误差及其在迭代采样器中的累积，形成可计算误差界。",
+ "experiment_framework": "在 CIFAR-10 等基准上系统评测多类去噪生成模型（扩散/流/一致性）去条件前后的生成质量；指标为 FID；以误差界预测与实际退化程度的相关性、灾难性失败情形为验证依据。",
+ "takeaways": [
+  "噪声条件可能并非去噪生成模型成功的必要条件，去条件后多数方法仅小幅退化。",
+  "所提误差界能在不训练的情况下预判哪些模型去条件后会灾难性失败（其误差界高数量级）。"
+ ],
+ "weaknesses": [
+  "实证主要集中在 CIFAR-10 等小规模图像基准，高分辨率/大数据集上的结论外推性未充分展示。",
+  "属于对既有范式的分析与再审视，未提出新的生成架构或训练范式。",
+  "与可靠性主线（鲁棒/可信AI、医学影像、多模态推理）无直接关联。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

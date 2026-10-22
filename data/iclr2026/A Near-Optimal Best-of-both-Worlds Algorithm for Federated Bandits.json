@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Near-Optimal Best-of-both-Worlds Algorithm for Federated Bandits.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Near-Optimal Best-of-both-Worlds Algorithm for Federated Bandits.pdf",
+ "title": "A NEAR-OPTIMAL BEST-OF-BOTH-WORLDS ALGORITHM FOR FEDERATED BANDITS",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "截断估计+偏差记录的联邦老虎机算法，理论O(√T) regret但实验验证不足",
+ "innovations": [
+  "用截断损失估计 ℓ̃_v,t(k)=ℓ·1[k=k_v,t]/max{x_v,t(k), 12V C_t^P γ_t} 替代无偏估计 ℓ̂，避免小概率臂拉动造成单 agent 更新爆炸，从而保证 Lemma 1 的任意两 agent 分布比 x_u,t(k)≤1.5x_v,t(k)",
+  "设计偏差记录集 A_v 的通信方案：截断生效时把偏差 w=ℓ̂−ℓ̃ 写入 A_v 随邻居传播，等 t−s>D（超过图直径）后再补回累计损失，既补偿截断偏差又不破坏各 agent 分布对齐",
+  "先证群体 regret 再借个体≤(3/2V)Σ群体拆出个体界，配合混合正则 F_t(x) 与依赖 C_T^P=min{log(Vt),√V}/(1−σ₂(P))+2+D 的两条学习率 η_t、γ_t，在对抗环境下把 regret 从 O(T^{2/3}) 改进到 O(√T)"
+ ],
+ "method_framework": "每个 agent 用混合正则 F_t 做 FTRL 采样出臂分布，损失估计器按 max{x, 12V C_t^P γ_t} 截断以保持各 agent 分布近对齐；每轮只与邻居交换累计损失估计与偏差记录集 A_v，超过图直径 D 轮的偏差记录再补回累计损失。",
+ "experiment_framework": "合成高斯观测（T=3000、V=16、K=20）与 MovieLens（V=3963 用户作 agent、K=20 影片类型）；三种拓扑完全图/网格/RGG-0.5；基线 FEDEXP3、Gossip UCB、DRBB-bandit、IND-FTRL；50 次重复报平均 regret 曲线。",
+ "takeaways": [
+  "把「跨 agent 信息到达慢」抽象为延迟反馈，是统一联邦通信与在线学习的关键视角，可直接借用单智能体延迟 BOBW 的分析工具",
+  "为维持多 agent 分布一致而主动牺牲估计无偏（截断）并靠偏差记录通信补偿，比强行共享原始观测更贴合隐私约束",
+  "先做群体 regret 再按比例拆成个体 regret 的分析路径，比逐 agent 直接分析更容易得到干净的 1/V 缩放"
+ ],
+ "weaknesses": [
+  "实验只报 50 次重复的平均曲线、无方差带与图内数值，合成与 MovieLens 均只取 T=3000、V=16/K=20 与 V=3963 两档，结论的离散鲁棒性无法判断",
+  "正文在第 6.3 节截断，缺关键组件消融（截断估计器对无偏估计、偏差记录集 A_v 的传播是否必要）与通信开销实测；Theorem 1 声称每轮 O(K) 通信成本在实验中未得到验证",
+  "理论只覆盖唯一最优臂、连通图与双随机通信矩阵，而 Lemma 1 要求任意两 agent 同时刻概率比 ≤3/2 这一近似对齐假设是整个分析的核心，在强异质或延迟抖动下仅有实验曲线支撑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "联邦老虎机算法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

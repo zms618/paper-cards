@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/SliM-LLM Salience-Driven Mixed-Precision Quantization for Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SliM-LLM Salience-Driven Mixed-Precision Quantization for Large Language Models.pdf",
+ "title": "SliM-LLM: Salience-Driven Mixed-Precision Quantization for Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "基于权重显著性的LLM混合精度量化，提升低比特性能与硬件效率",
+ "innovations": [
+  "基于权重显著性的空间聚类观察",
+  "组级显著性确定位宽分配(SBA)",
+  "组内显著性加权量化器校准(SQC)",
+  "硬件友好的结构化混合精度设计"
+ ],
+ "method_framework": "SliM-LLM结合SBA和SQC两个核心组件：SBA根据组级显著性自适应分配位宽，SQC通过校准参数增强对组内局部显著权重的感知，共同提升低比特LLM性能。",
+ "experiment_framework": "在WikiText2和C4数据集上评估OPT、LLaMA、LLaMA-2和LLaMA-3模型，使用困惑度作为主要指标，与GPTQ、AWQ、QuIP等基线方法对比。",
+ "takeaways": [
+  "权重显著性的空间聚类特性可用于设计高效混合精度量化",
+  "组级和元素级显著性感知可同时提升全局和局部信息保留",
+  "结构化混合精度设计可平衡性能与硬件效率"
+ ],
+ "weaknesses": [
+  "仅关注权重量化，未考虑激活量化",
+  "组大小固定为128可能不是最优选择",
+  "实验主要在语言模型上进行，泛化到其他模态需验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

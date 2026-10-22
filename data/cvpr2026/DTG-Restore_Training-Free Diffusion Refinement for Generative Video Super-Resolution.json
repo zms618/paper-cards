@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/DTG-Restore_Training-Free Diffusion Refinement for Generative Video Super-Resolution.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/DTG-Restore_Training-Free Diffusion Refinement for Generative Video Super-Resolution.pdf",
+ "title": "DTG-Restore Training-Free Diffusion Refinement for Generative Video Super-Resolution",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "DTG解耦时间引导提升视频超分辨率，但指标优势有限",
+ "innovations": [
+  "解耦时间引导(DTG)机制，在扩散采样过程中分离条件与非条件分支的时间评估",
+  "理论解释表明DTG隐式调整有效信噪比，产生更清洁稳定的扩散轨迹",
+  "即插即用模块，可应用于任何预训练视频扩散模型并搭配任意恢复或超分辨率网络",
+  "GenWarp480基准数据集，针对生成视频退化特性设计"
+ ],
+ "method_framework": "DTG在扩散采样过程中评估无条件分支于更清洁的时间步，提供几何保持的前瞻先验，同时保持条件分支于当前时间步，通过时间偏移渐进转换去噪过程从结构校正到细节细化。",
+ "experiment_framework": "在SPMCS、UDM10、REDS30等标准VSR基准和GenWarp480生成视频数据集上评估，使用PSNR、SSIM、LPIPS等全参考指标和LAION AP、MUSIQ等无参考感知指标，与RealViformer、SeedVR、VEnhancer等基线方法比较。",
+ "takeaways": [
+  "解耦时间引导机制可有效提升视频超分辨率中的结构保真度与时间一致性",
+  "即插即用设计使方法灵活可扩展，可与任意恢复模块结合",
+  "感知质量评估比像素级重建更适合创意视频增强任务"
+ ],
+ "weaknesses": [
+  "方法在标准VSR数据集上的PSNR和SSIM指标不如专门优化的重建方法",
+  "未详细讨论计算复杂度和推理时间",
+  "对极端严重退化的视频效果可能有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频超分辨率与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

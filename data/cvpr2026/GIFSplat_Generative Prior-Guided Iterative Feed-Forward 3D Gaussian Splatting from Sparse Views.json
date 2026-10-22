@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/GIFSplat_Generative Prior-Guided Iterative Feed-Forward 3D Gaussian Splatting from Sparse Views.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/GIFSplat_Generative Prior-Guided Iterative Feed-Forward 3D Gaussian Splatting from Sparse Views.pdf",
+ "title": "GIFSplat: Generative Prior-Guided Iterative Feed-Forward 3D Gaussian Splatting from Sparse Views",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "前馈高斯溅射加扩散先验，提升稀疏视图重建",
+ "innovations": [
+  "迭代前馈残差更新机制，无需测试时梯度优化",
+  "生成先验融合机制，将冻结扩散模型蒸馏为高斯级线索",
+  "纯前馈框架实现场景自适应细化与可靠先验注入"
+ ],
+ "method_framework": "GIFSplat包含高斯初始化器、迭代高斯头和生成先验融合模块。通过多步前馈残差更新细化3D高斯，结合观察证据和扩散增强的生成先验线索，实现高效且高质量的3D重建。",
+ "experiment_framework": "在DL3DV、RealEstate10K和DTU数据集上评估，使用PSNR、SSIM和LPIPS指标，与PixelSplat、MVSplat、FLARE、AnySplat等基线比较，并在不同视图重叠设置下测试。",
+ "takeaways": [
+  "迭代残差更新可在保持前馈效率的同时提升重建质量",
+  "生成先验可有效注入而不增加视图合成成本",
+  "窗口注意力在3D点空间中建模局部关系有效"
+ ],
+ "weaknesses": [
+  "依赖冻结的扩散模型，可能限制泛化能力",
+  "迭代步骤数需手动调整，缺乏自适应机制",
+  "未充分讨论计算资源需求与实际部署挑战"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D重建技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

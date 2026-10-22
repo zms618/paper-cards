@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/2-Shots in the Dark Low-Light Denoising with Minimal Data Acquisition.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/2-Shots in the Dark Low-Light Denoising with Minimal Data Acquisition.pdf",
+ "title": "2-Shots in the Dark: Low-Light Denoising with Minimal Data Acquisition",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "单暗帧加噪图合成训练，频域相位随机化与直方图匹配交替",
+ "innovations": [
+  "把信号无关噪声当作平稳随机纹理来合成：先在暗帧上做大核高斯估计固定图案 S 并相减去均值得到残差 R，对残差做逐通道 DFT 后保留幅度谱 |R̃|，叠加一个通道间完全复制的随机相位 ε∼U[−π,π] 生成新样本（式5-7），一份暗帧即可产出无穷多样本且天然复现 banding 等通道间相关性",
+  "迭代直方图匹配与频谱校正交替 K=10 次（式9-13）：先用 H(·,·) 把合成噪声的逐像素边际分布对齐到真实残差，再用参考幅度谱重建相位修复被直方图匹配破坏的频谱与通道相关，补上相位随机化只能保谱不能保偏度/峰度的问题",
+  "仅用单张噪图估泊松增益：用小图块均值近似伪干净信号 gx，再由 Var(y)=g·(gx)+Var(n_other)（式15）做线性回归得 g，整个流程不需要平板图、多帧暗场或多参数标定"
+ ],
+ "method_framework": "暗帧去固定图案得残差 R，DFT 保幅度谱做跨通道同相位随机化，K 轮直方图匹配与频谱校正交替，加回 S 与均值；信号相关噪声用单噪图回归估泊松增益。",
+ "experiment_framework": "SID/ELD/LRID 基准（Sony A7S2、Redmi K30），对比 PG/ELD/SFRN/PMN/LRD/NoiseDiff 与真实配对，指标 PSNR/SSIM，含多个曝光比。",
+ "takeaways": [
+  "跨通道复制同一随机相位这一零成本技巧就能复现真实传感器的通道间相关（图4 ICC 从近对角矩阵变回正相关），训练出的去噪器不残留 banding",
+  "合成噪声的高阶统计量（偏度、峰度、长尾）比频谱更能决定下游质量，去掉 IHM 后肉眼相似但去噪结果出现彩色偏移"
+ ],
+ "weaknesses": [
+  "表2/3 只报 PSNR/SSIM 均值，无多种子标准差与显著性检验；表4（ICC 与 IHM 消融的定量结果）在正文中被截断缺失，ICC 消融在 ELD 集上自述差异不明显、只能靠附录图论证，claim 支撑偏弱",
+  "与 PMN/LRD 比较时数据预算不对等：对方用数百张暗帧做 dark shading 校正，本文只用单张暗帧高斯平滑估计 shading，作者自己在 LRID-Outdoor 上承认 PMN 更优且暗帧 prior 更强，这类对比读不出纯粹的方法优劣",
+  "「统一框架建模所有信号无关噪声」说法偏大：banding、FPN、读出噪声被合并成一张幅度谱，各类成分的物理机理（如暗电流随温度漂移）并未分别建模，实际依赖单帧暗场的空间平稳假设"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "低光去噪属于常规图像处理，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Memorization Sinks_Isolating Memorization during LLM Training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Memorization Sinks_Isolating Memorization during LLM Training.pdf",
+ "title": "Memorization Sinks: Isolating Memorization during LLM Training",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6.25
+ },
+ "one_line": "MemSinks隔离记忆神经元，但需序列ID且未在大模型验证",
+ "innovations": [
+  "提出记忆汇流(MemSinks)新范式，通过序列标识符激活特定记忆神经元",
+  "利用记忆与泛化的不同训练动力学特性实现隔离",
+  "证明后遗忘方法因机械纠缠而存在根本限制"
+ ],
+ "method_framework": "在MLP层中划分泛化神经元(70%)和记忆汇流神经元(30%)，通过序列ID选择性激活记忆神经元，防止干扰并隔离记忆",
+ "experiment_framework": "TinyStories和SlimPajama数据集，360M-1.7B SmolLM模型，评估序列遗忘率和模型退化",
+ "takeaways": [
+  "利用训练动力学差异实现记忆隔离的思想",
+  "序列特定激活机制防止记忆与泛化纠缠",
+  "方法对噪声序列ID具有鲁棒性"
+ ],
+ "weaknesses": [
+  "需要序列ID信息，实际应用中可能难以获取",
+  "仅在小规模到中等规模模型上验证，未在超大规模模型上测试"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

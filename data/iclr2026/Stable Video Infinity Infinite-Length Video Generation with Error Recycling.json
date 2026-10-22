@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Stable Video Infinity Infinite-Length Video Generation with Error Recycling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Stable Video Infinity Infinite-Length Video Generation with Error Recycling.pdf",
+ "title": "Stable Video Infinity: Infinite-Length Video Generation with Error Recycling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "错误回收微调缓解视频漂移，但训练复杂度高，极限测试不足。",
+ "innovations": [
+  "将长视频漂移的根因重述为训练(见干净数据)与测试(条件化于自身易错输出)间的假设差距，而非单纯误差累积",
+  "提出错误回收微调：把DiT历史误差注入干净输入、在流匹配中模拟误差累积轨迹，让模型学会主动识别并纠正自身错误",
+  "用一步双向积分高效近似预测、以残差计误差，并按时间步离散动态存入回放记忆再重采样，闭环从错误反馈中学习"
+ ],
+ "method_framework": "在流匹配DiT上闭环回收误差：(i)把历史误差注入干净输入以模拟自回归漂移轨迹；(ii)一步双向积分近似预测并用残差算误差；(iii)跨时间步把误差存入回放记忆并重采样为新训练输入；推理时自回归生成，支持逐片段提示与音频/骨架/文本多模态条件，不增额外推理开销。",
+ "experiment_framework": "在一致性、创意、条件三类基准上评测，对比既有长视频方法(噪声调度改造、帧锚定等手工抗漂移法)；报告可从秒级扩展到无限时长的视觉质量稳定性、逐片段提示控制与多模态条件兼容性，声称达到SOTA。",
+ "takeaways": [
+  "长视频生成的关键瓶颈是训练-测试假设差距，让模型在训练中见过自己的错误能显著缓解漂移",
+  "错误回收微调无需额外推理开销即可把视频从秒级扩展到任意时长并保持画质稳定",
+  "该方法兼容音频/骨架/文本等多模态条件与逐片段提示，避免单提示外推导致的同质重复"
+ ],
+ "weaknesses": [
+  "错误注入/回放机制增加训练流程复杂度，收敛性与超参(注入强度、回放预算)敏感性分析有限",
+  "'无限长'在极长时长下的语义一致性与错误闭环是否真不发散缺乏极限压力测试",
+  "评测基准偏生成质量，缺乏与多模态条件对齐精度的严格量化对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视频生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

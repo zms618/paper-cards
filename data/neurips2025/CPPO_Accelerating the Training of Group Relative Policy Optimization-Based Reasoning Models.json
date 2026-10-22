@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/CPPO_Accelerating the Training of Group Relative Policy Optimization-Based Reasoning Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/CPPO_Accelerating the Training of Group Relative Policy Optimization-Based Reasoning Models.pdf",
+ "title": "CPPO: Accelerating the Training of Group Relative Policy Optimization-Based Reasoning Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "基于优势剪枝加速GRPO训练，但缺乏深入分析与泛化验证",
+ "innovations": [
+  "基于绝对优势的补全剪枝策略",
+  "动态补全分配策略最大化GPU利用率",
+  "发现补全贡献不均现象并理论分析"
+ ],
+ "method_framework": "CPPO通过计算补全的相对优势，剪枝低绝对值优势的补全，仅保留高优势补全进行梯度更新，并结合动态分配策略充分利用GPU资源",
+ "experiment_framework": "在GSM8K和Math数据集上训练Qwen2.5模型，比较不同剪枝率下的准确度和训练加速比，评估Pass@1指标",
+ "takeaways": [
+  "补全贡献不均现象可被利用来加速训练",
+  "剪枝低质量补全可提高训练效率甚至提升性能",
+  "动态分配策略可有效利用GPU资源"
+ ],
+ "weaknesses": [
+  "未探讨不同规模模型的最佳剪枝率",
+  "未分析剪枝策略对模型泛化能力的长期影响",
+  "优势阈值γ的选择依赖经验调参"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

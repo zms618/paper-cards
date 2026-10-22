@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Leveraging Sparsity for Sample-Efficient Preference Learning A Theoretical Perspective.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Leveraging Sparsity for Sample-Efficient Preference Learning A Theoretical Perspective.pdf",
+ "title": "Leveraging Sparsity for Sample-Efficient Preference Learning: A Theoretical Perspective",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 4,
+  "relevance": 7,
+  "overall": 5.8
+ },
+ "one_line": "理论证明稀疏性降低偏好学习样本复杂度，但缺乏实证验证",
+ "innovations": [
+  "利用偏好模型的稀疏性（k-稀疏奖励参数），将偏好学习的最小最大估计误差从经典的Θ(d/n)改进到Θ(k log d/n)",
+  "建立稀疏随机效用模型下偏好学习的sharp样本效率界，连接了稀疏恢复与偏好学习两个领域",
+  "为基于人类偏好的RLHF等实际应用提供了样本效率的理论指导"
+ ],
+ "method_framework": "经典偏好学习的minimax误差率为Θ(d/n)，要求样本数n与维度d线性成正比。本文假设奖励函数参数是k-稀疏的（仅k个维度有非零权重），利用稀疏恢复理论（如Lasso），证明在k≪d时估计误差为Θ(k log d/n)，大幅降低了样本需求。",
+ "experiment_framework": "纯理论论文：minimax上下界推导；辅以合成实验验证稀疏性假设下的样本效率提升。",
+ "takeaways": [
+  "稀疏性假设可以显著降低偏好学习的样本复杂度，从线性依赖维度变为对数依赖",
+  "这一理论结果对RLHF中昂贵的人类标注偏好数据有直接的样本效率指导意义",
+  "稀疏偏好模型比稠密模型更符合实际——人类偏好通常由少数关键因素决定"
+ ],
+ "weaknesses": [
+  "k-稀疏假设在实际偏好数据中是否成立需要验证，高维语义空间中的稀疏性可能不直观",
+  "纯理论分析，缺乏真实偏好数据集的实证验证",
+  "仅考虑线性效用模型，非线性/深度偏好模型的稀疏性分析未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

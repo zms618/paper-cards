@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/DIP Unsupervised Dense In-Context Post-training of Visual Representations.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/DIP Unsupervised Dense In-Context Post-training of Visual Representations.pdf",
+ "title": "DIP Unsupervised Dense In-Context Post-training of Visual Representations",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "DIP用扩散模型生成伪标签进行无监督视觉表示后训练",
+ "innovations": [
+  "基于元学习原理的无监督密集表示后训练方法",
+  "结合扩散模型自动生成上下文伪任务的机制",
+  "简化了自蒸馏框架，提高了计算效率"
+ ],
+ "method_framework": "DIP通过自动生成的伪上下文任务训练视觉编码器，使用DiffCut生成伪分割标签，结合DINOv2R特征进行聚类，构建支持集和查询样本对，通过交叉注意力进行密集预测",
+ "experiment_framework": "在PascalVOC、ADE20K等6个语义分割数据集和NYUv2深度预测数据集上评估，与DINOv2R、NeCo等方法比较，使用mIoU和RMSE指标",
+ "takeaways": [
+  "无监督上下文学习可显著提升低样本场景性能",
+  "结合扩散模型生成高质量伪标签的有效性",
+  "方法设计简洁且计算高效"
+ ],
+ "weaknesses": [
+  "依赖DiffCut生成伪标签的质量",
+  "未充分探索不同扩散模型的影响",
+  "在极端域转移场景下的鲁棒性验证不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "无监督表示学习与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/VA-p Variational Policy Alignment for Pixel-Aware Autoregressive Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/VA-p Variational Policy Alignment for Pixel-Aware Autoregressive Generation.pdf",
+ "title": "VA-p Variational Policy Alignment for Pixel-Aware Autoregressive Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "变分策略对齐解决自回归视觉生成像素对齐，但tokenizer固定限制性能",
+ "innovations": [
+  "提出变分目标函数桥接离散token建模与像素级重建",
+  "基于RL的优化框架，将重建质量作为内在奖励",
+  "高效的后训练框架，仅需少量数据和计算资源"
+ ],
+ "method_framework": "VA-π将生成器-tokenizer对齐视为变分优化，推导出统一像素重建和自回归建模的ELBO，通过基于RL的对齐策略优化AR模型，使用像素空间重建质量作为奖励",
+ "experiment_framework": "ImageNet-1K类条件生成和GenEval文本到图像生成，比较FID、IS等指标，与AR-GRPO等基线对比",
+ "takeaways": [
+  "变分框架提供像素级监督的有效途径",
+  "teacher forcing策略提供稳定的后验近似",
+  "高效的后训练方法无需重新训练tokenizer或外部奖励模型"
+ ],
+ "weaknesses": [
+  "仅更新AR生成器，tokenizer保持固定可能限制性能",
+  "依赖teacher forcing可能影响自由运行时的表现",
+  "实验主要集中在视觉生成任务，泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视觉生成任务与可靠性主线无直接交点，但变分框架有方法借鉴价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

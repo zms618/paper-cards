@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scaling Agents via Continual Pre-Training.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scaling Agents via Continual Pre-Training.pdf",
+ "title": "Scaling Agents via Continual Pre-Training",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "两阶段预训练缓解智能体对齐冲突，但算力依赖与主线关联弱",
+ "innovations": [
+  "指出现有基于通用基座的后训练(SFT/RL)在智能体任务上受限的根因：缺乏智能体归纳偏置，被迫同时学多样行为又对齐专家示范，造成优化张力。",
+  "首次提出Agentic CPT作为智能体对齐的中间缩放层，用两阶段(32K~200B→128K~100B)持续预训练产出预对齐的智能体基座模型。",
+  "基于此开发AgentFounder-30B，在BrowseComp-en/zh、HLE等10个基准取得SOTA(如BrowseComp-en 39.9%、HLE Pass@1 31.5%)并保持工具调用能力。"
+ ],
+ "method_framework": "在Qwen基座上先做 broad、跨域的Agentic CPT(两阶段数据配比与上下文扩展)以注入智能体归纳偏置，得到预对齐基座；再做通用与智能体SFT/RL，使后训练只需对齐而非从零学能力，从而缓解优化冲突。",
+ "experiment_framework": "在10个深度研究/工具使用基准(含BrowseComp-en/zh、HLE等)上对比WebSailor、GLM-4.5、DeepSeek-V3.1及OpenAI Deep Research；报告准确率/Pass@1并检验工具调用保持。",
+ "takeaways": [
+  "引入Agentic CPT这一中间预训练阶段能显著改善开源深度研究智能体的后训练效果。",
+  "先获得预对齐智能体基座再SFT/RL，比直接在通用基座上后训练更能缩小与闭源深度研究的差距。"
+ ],
+ "weaknesses": [
+  "面向网页搜索/代码执行的深度研究智能体，与医学影像/多模态主线关联弱。",
+  "性能提升大量来自大规模Agentic CPT数据与算力，各阶段贡献的消融、以及对工具失败/误导信息的鲁棒性分析不够充分。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "智能体对齐方法与医学影像/多模态主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

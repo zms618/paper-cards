@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Emulating Self-attention with Convolution for Efficient Super-Resolution.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Emulating Self-attention with Convolution for Efficient Super-Resolution.pdf",
+ "title": "Emulating Self-attention with Convolution for Efficient Super-Resolution",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "用卷积模拟自注意力提升超分辨率效率，但鲁棒性和泛化能力未验证",
+ "innovations": [
+  "ConvAttn模块用共享大核和动态核模拟自注意力",
+  "将Flash Attention引入轻量级超分辨率任务",
+  "仅保留每块第一层自注意力，其余用ConvAttn替代"
+ ],
+ "method_framework": "ESC网络结合少量自注意力与ConvAttn模块，共享13×13大核和动态深度卷积核，利用Flash Attention扩大窗口尺寸至32×32",
+ "experiment_framework": "DIV2K数据集，对比CNN/Transformer/SSM模型，指标包括PSNR/SSIM/延迟/内存/FLOPs/参数量",
+ "takeaways": [
+  "自注意力层间特征高度相似(87%)，可被高效替代",
+  "共享大核减少参数同时保持长距离建模能力",
+  "Flash Attention显著降低内存占用"
+ ],
+ "weaknesses": [
+  "仅关注计算效率，未深入探讨模型鲁棒性和泛化能力",
+  "动态核大小固定为3×3可能限制表达能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "超分辨率任务与可靠性主线无交点，仅关注效率",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

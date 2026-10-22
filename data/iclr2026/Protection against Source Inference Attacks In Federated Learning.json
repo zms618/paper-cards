@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Protection against Source Inference Attacks In Federated Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Protection against Source Inference Attacks In Federated Learning.pdf",
+ "title": "Protection against Source Inference Attacks in Federated Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.5
+ },
+ "one_line": "参数级洗牌+RNS防御SIA，但依赖可信中间件且开销未量化",
+ "innovations": [
+  "证明标准的朴素洗牌(shuffle)不足以防御SIA，需要更细粒度的洗牌",
+  "提出参数级洗牌结合余数数制系统(RNS)的新颖组合防御方案",
+  "该防御可无缝集成到其他隐私保护机制中，且不影响联合模型精度"
+ ],
+ "method_framework": "在联邦学习洗牌模型中，通过honest shuffler在客户端和服务器之间做中介。将模型参数分解到余数数制(RNS)的多个通道中，然后在参数级（而非整个模型级）进行洗牌，使得服务器无法将特定数据点与特定客户端关联。",
+ "experiment_framework": "在多种模型和数据集上验证SIA攻击和防御效果，指标为攻击准确率（目标是降到随机猜测水平）和全局模型精度。对比DP等基线方法。",
+ "takeaways": [
+  "标准模型级洗牌无法有效防御源推断攻击",
+  "参数级洗牌+RNS可将SIA攻击准确率降至随机猜测水平",
+  "该方法不损失模型精度，可与DP等其他隐私机制叠加使用"
+ ],
+ "weaknesses": [
+  "依赖honest shuffler假设，若shuffler被攻陷则隐私保护失效",
+  "RNS引入的计算和通信开销未充分量化",
+  "仅考虑honest-but-curious服务器模型，未评估恶意服务器或恶意客户端的更强攻击"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "联邦学习隐私防御与可靠性主线交点，成员推断攻击防御",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

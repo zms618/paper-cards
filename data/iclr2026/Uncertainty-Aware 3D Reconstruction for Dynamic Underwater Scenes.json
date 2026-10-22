@@ -1,0 +1,41 @@
+{
+ "title": "Uncertainty-Aware 3D Reconstruction for Dynamic Underwater Scenes",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "动态水下场景重建，引入不确定性建模与介质场表示。",
+ "innovations": [
+  "构建统一动态水下场，用嵌入体积介质场中的 3D 高斯基元同时表示随时间变化的几何结构与视角相关的水体介质属性。",
+  "提出形变网络与介质偏移网络：前者建模高斯形变，后者建模随场景运动/时间变化的介质属性更新，应对动态非刚体与动态介质。",
+  "提出水下专用异方差不确定性：由表面视角辐射歧义与帧间场景流不一致引导，建模逐像素输入相关不确定度，并写入渲染损失降权低置信观测。"
+ ],
+ "method_framework": "以嵌入体积介质场的 3D 高斯椭球初始化规范化水下表示，映射到 4D 神经体素空间查询时空特征；形变网络与介质偏移网络分别更新高斯变换与时间条件介质属性；再用表面辐射歧义+帧间场景流不一致估计逐像素不确定性，在渲染损失中降权噪声观测。",
+ "experiment_framework": "在受控与野外(in-the-wild)水下数据集上，与忽略不确定性、刚体静态假设的水下重建方法对比，报告重建质量(几何/PSNR 等)与新视角合成指标，并验证对低可见度/随机扰动的稳健性。",
+ "takeaways": [
+  "水下成像中散射/衰减会把几何线索与介质衰减混淆，直接套用 NeRF/3DGS 会退化。",
+  "野外水下观测噪声随视角/帧变化，忽略输入相关不确定性会导致鬼影与时序不一致。",
+  "显式建模表面歧义与运动诱发不确定性并降权低置信观测，可同时提升动态水下重建质量与新视角合成。"
+ ],
+ "weaknesses": [
+  "依赖 3D 高斯体渲染与介质物理建模，计算/存储开销与对浑浊程度的适用边界未充分量化。",
+  "逐像素不确定性由辐射歧义与场景流不一致启发式构造，其校准质量与是否真正降低误差缺乏独立检验。",
+  "仅在水下重建这一特定领域验证，未涉及医学影像或多模态大模型推理；完整消融与定量对比表未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Uncertainty-Aware 3D Reconstruction for Dynamic Underwater Scenes.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Uncertainty-Aware 3D Reconstruction for Dynamic Underwater Scenes.pdf",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "水下重建属非主线领域，不确定性建模有迁移价值但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

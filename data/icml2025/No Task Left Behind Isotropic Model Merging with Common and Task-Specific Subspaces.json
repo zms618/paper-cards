@@ -1,0 +1,37 @@
+{
+ "title": "No Task Left Behind: Isotropic Model Merging with Common and Task-Specific Subspaces",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "谱变换方法提升模型合并性能，但创新性与落地价值有限。",
+ "innovations": [
+  "提出Subspace Alignment Ratio，从SVD视角量化任务矩阵与合并矩阵主子空间的相似性，证明其与合并性能强相关。",
+  "提出Iso-C：把任务矩阵奇异值谱替换为均匀谱（各向同性）以增强对齐，无需改微调流程。",
+  "进一步加入任务特有方向得到Iso-CTS，在任务数多时取得SOTA，并兼容全参数与LoRA微调。"
+ ],
+ "method_framework": "先诊断Task Arithmetic求和导致少数主导奇异分量；通过SVD分析子空间对齐，设计拉平奇异值谱使合并矩阵各向同性(Iso-C)，再以公共子空间为主、任务特有子空间为辅(Iso-CTS)，平衡被多任务放大与被低估的方向，缩小合并模型与单任务专家的性能差。",
+ "experiment_framework": "在视觉与语言多个模型合并基准、多种任务集合与模型规模上评测，对比Task Arithmetic/TIES/梯度对齐/幅度选择等基线；报告合并后多任务平均精度，覆盖全参数与LoRA两种微调范式。",
+ "takeaways": [
+  "任务矩阵奇异谱过于集中是合并性能损失的重要原因，拉平谱即显著提升。",
+  "公共子空间与任务特有子空间结合能避免“遗漏”弱方向任务。",
+  "合并可在零额外训练下达到SOTA。"
+ ],
+ "weaknesses": [
+  "属模型合并这一活跃赛道的方法叠加，核心是对已有任务矩阵做谱变换。",
+  "各向同性拉平与SVD分解带来额外计算，前9页未充分报告合并开销。",
+  "落地为通用视觉/语言多任务合并，与医学影像/多模态大模型推理主线关联弱，relevance受限。"
+ ],
+ "confidence": "high",
+ "key": "icml2025/No Task Left Behind Isotropic Model Merging with Common and Task-Specific Subspaces.pdf",
+ "path": "icml2025/No Task Left Behind Isotropic Model Merging with Common and Task-Specific Subspaces.pdf",
+ "conf": "icml2025",
+ "raw_overall": 6.26,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

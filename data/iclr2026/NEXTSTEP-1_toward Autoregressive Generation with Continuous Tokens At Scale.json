@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/NEXTSTEP-1_toward Autoregressive Generation with Continuous Tokens At Scale.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/NEXTSTEP-1_toward Autoregressive Generation with Continuous Tokens At Scale.pdf",
+ "title": "NEXTSTEP-1: Toward Autoregressive Image Generation with Continuous Tokens at Scale",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "14B自回归模型用连续图像token+流匹配头实现文生图SOTA",
+ "innovations": [
+  "在大规模AR模型中直接生成连续图像token，绕过VQ离散化的信息瓶颈与重建伪影",
+  "配157M流匹配头对连续token做next-token式预测，统一文生图与图像编辑",
+  "14B规模验证连续token自回归路线可行，端到端统一多模态生成而非解耦文本编码器+MMDiT"
+ ],
+ "method_framework": "把图像表示为连续token而非VQ离散token；主干为14B自回归Transformer，与离散文本token一起用next-token预测训练；对连续图像token用一个轻量(157M)流匹配头建模其分布，使AR范式能处理连续输出而不引入量化损失，从而自然支持交错图文序列与图像编辑。",
+ "experiment_framework": "14B模型+157M流匹配头；在文生图基准上对比扩散模型与离散AR模型(如Emu3等)；指标为FID/CLIP评分等SOTA指标；并展示图像编辑能力；开源代码与模型。",
+ "takeaways": [
+  "连续图像token自回归可在14B规模达到自回归文生图SOTA，消除VQ量化损失",
+  "统一AR范式同时支持高保真文生图与图像编辑，避免解耦设计的固定上下文窗限制",
+  "轻量流匹配头是连接AR离散预测与连续图像输出的关键"
+ ],
+ "weaknesses": [
+  "主线是多模态生成质量/架构，与鲁棒性、可信验证、幻觉抑制等可靠性落地主线关联弱",
+  "连续token自回归的采样效率与推理成本相对扩散模型未充分对比",
+  "前9页未报告在分布外/对抗提示下的安全性与幻觉现象"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "多模态生成架构与可靠性主线关联弱，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

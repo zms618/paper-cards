@@ -1,0 +1,41 @@
+{
+ "title": "Uncertainty-Aware Diagnostics for Physics-Informed Machine Learning",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.1
+ },
+ "one_line": "高斯过程下物理信息对数证据准则，解决PIML模型选择不确定性问题。",
+ "innovations": [
+  "指出 PIML 多目标(数据项+物理约束项)使测试损失衡量模型质量产生歧义，并与认知不确定性理解不足相关，会在指标好看时仍出现意外失败。",
+  "提出 PILE(Physics-Informed Log Evidence)分数，绕过测试损失歧义，作为不确定性感知的单值模型选择准则。",
+  "证明最小化 PILE 可同时优选核带宽、最小二乘正则权重乃至核函数选择；其 data-free 特例还能在采集数据前先验选出适配特定 PDE 的核。"
+ ],
+ "method_framework": "在 PIKL(物理信息核学习)的高斯过程框架内，把 PDE 约束作为软正则纳入 GP；推导物理信息对数边缘证据 PILE，对核函数/带宽/正则权重做贝叶斯式模型选择，利用 GP 原生不确定性量化避免过拟合到噪声或物理约束误设。",
+ "experiment_framework": "在多类 PDE 的 GP 求解问题上，以 PILE 最小化挑选核带宽、正则权重与核函数，与经验试错/测试损失选择对比，报告解精度与对约束误设/噪声的稳健性，并给出 data-free 先验核选择案例。",
+ "takeaways": [
+  "PIML 的多目标权衡使测试损失不再是可靠的模型质量指标，需要不确定性感知的选择准则。",
+  "PILE 作为单一对数证据准则可同时指导核/带宽/正则超参，且无需大量验证数据。",
+  "data-free 的 PILE 能在采样前先验匹配 PDE 的核，对数据稀缺的科学计算有价值。"
+ ],
+ "weaknesses": [
+  "整套推导与验证建立在 GP/核方法框架内，作者自己也承认向 PINN/神经算子等大规模 PIML 扩展仍是展望而非已验证。",
+  "仅在相对低维 PDE 与核情形验证，未覆盖高维/非线性 PDE 的可扩展性。",
+  "读到的是准则定义与动机，完整实证对比表、与交叉验证等基线的定量差异未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Uncertainty-Aware Diagnostics for Physics-Informed Machine Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Uncertainty-Aware Diagnostics for Physics-Informed Machine Learning.pdf",
+ "raw_overall": 6.75,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "物理信息机器学习的不确定性量化，直接命中可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

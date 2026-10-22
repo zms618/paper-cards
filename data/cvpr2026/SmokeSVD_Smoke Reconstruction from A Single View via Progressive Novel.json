@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/SmokeSVD_Smoke Reconstruction from A Single View via Progressive Novel.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SmokeSVD_Smoke Reconstruction from A Single View via Progressive Novel.pdf",
+ "title": "SmokeSVD Smoke Reconstruction from A Single View via Progressive Novel",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "物理感知扩散模型实现单视角烟雾重建，但泛化性和效率有限",
+ "innovations": [
+  "物理感知侧视图合成器SvDiff，结合速度场约束",
+  "渐进式多视图细化策略NvRef",
+  "多帧训练方案提升长期稳定性"
+ ],
+ "method_framework": "结合扩散模型生成侧视图，通过物理约束保证时序一致性，渐进式生成多视图并重建3D密度场，最终估计速度场和流入状态",
+ "experiment_framework": "ScalarFlow数据集(5视角)和合成数据集，对比GlobTrans、NGT、PICT、PINF、FluidNexus、NeuSmoke，使用RMSE、SSIM、PSNR、LPIPS等指标",
+ "takeaways": [
+  "物理约束在扩散模型中的有效应用",
+  "渐进式多视图策略平衡效率与质量",
+  "多帧训练提升长期稳定性"
+ ],
+ "weaknesses": [
+  "仅评估烟雾场景，泛化性待验证",
+  "计算效率虽优于GlobTrans但仍需15分钟/120帧"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "烟雾重建与可靠性主线无实质交点，仅属常规视觉任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

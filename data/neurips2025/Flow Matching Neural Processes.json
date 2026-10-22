@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Flow Matching Neural Processes.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Flow Matching Neural Processes.pdf",
+ "title": "Flow Matching Neural Processes",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "FlowNP将flow matching引入神经过程，实现并行采样但似然计算效率低",
+ "innovations": [
+  "将flow matching引入神经过程框架",
+  "实现并行采样而非自回归",
+  "直接生成条件样本无需辅助方法",
+  "通过ODE步数控制精度与速度权衡"
+ ],
+ "method_framework": "FlowNP使用transformer架构，通过预测目标点在概率流中的速度向量，实现从简单分布到目标分布的连续变换，支持并行采样和似然计算。",
+ "experiment_framework": "在1D高斯过程、EMNIST、CelebA和ERA5天气数据集上评估，与CNP、NP、ANP、TNP和NDP基线比较，使用对数似然作为主要指标。",
+ "takeaways": [
+  "flow matching可有效解决神经过程中的全局不确定性建模",
+  "并行采样比自回归方法更高效且结果更平滑",
+  "条件样本可直接生成无需辅助方法"
+ ],
+ "weaknesses": [
+  "似然计算需要多次ODE求解，效率较低",
+  "一致性属性未得到理论保证",
+  "在复杂图像任务上模型规模较小"
+ ],
+ "confidence": "high",
+ "raw_overall": 7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

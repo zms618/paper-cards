@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Multi-Agent Debate with Memory Masking.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Multi-Agent Debate with Memory Masking.pdf",
+ "title": "Multi-Agent Debate with Memory Masking",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "简单记忆过滤提升多智能体辩论，但依赖智能体自身判断能力",
+ "innovations": [
+  "发现多智能体辩论(MAD)中错误记忆会误导原本正确的智能体这一关键问题",
+  "从理论上揭示MAD性能高度依赖于前序辩论记忆的质量",
+  "提出记忆屏蔽(MAD-M2)方法，在每轮辩论开始时过滤错误记忆，保留有价值信息"
+ ],
+ "method_framework": "在传统多智能体辩论基础上，每轮辩论开始前增加记忆屏蔽步骤：智能体先评估上一轮各记忆的正确性，识别并屏蔽错误推理内容，仅基于有价值的正确记忆进行下一轮辩论，从而避免错误记忆的误导。",
+ "experiment_framework": "在主流数学推理和语言理解基准上评估，对比传统MAD等多智能体辩论方法，使用推理准确率衡量性能。",
+ "takeaways": [
+  "错误记忆是MAD性能退化的重要原因，正确智能体也会被错误记忆带偏",
+  "记忆屏蔽能有效过滤错误推理，提升MAD的整体推理准确率",
+  "MAD-M2在数学推理和语言理解任务上均优于传统MAD"
+ ],
+ "weaknesses": [
+  "记忆屏蔽依赖智能体自身判断记忆正确性，若智能体无法识别错误则屏蔽失效",
+  "增加了每轮的判断步骤，提升了推理时的计算成本",
+  "理论分析较浅，仅定性讨论记忆质量影响，缺乏严格的收敛或误差界证明"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多智能体辩论机制设计，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

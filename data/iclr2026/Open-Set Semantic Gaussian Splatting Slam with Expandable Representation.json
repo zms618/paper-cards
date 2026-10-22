@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Open-Set Semantic Gaussian Splatting Slam with Expandable Representation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Open-Set Semantic Gaussian Splatting Slam with Expandable Representation.pdf",
+ "title": "Open-Set Semantic Gaussian Splatting SLAM with Expandable Representation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "解耦3D高斯与语义特征池，降低内存开销的开放集语义SLAM",
+ "innovations": [
+  "提出可扩展语义特征池：将场景级语义与单个3D高斯解耦，高斯通过轻量索引向量引用语义，内存开销降低数量级",
+  "引入一致性感知优化策略和语义稳定性引导机制，增强跨视角长期语义一致性",
+  "支持动态语义更新和开放集识别，可在日常设备（如手机）上实时运行"
+ ],
+ "method_framework": "系统基于3DGS-SLAM框架，解耦几何表征和语义表征。每个3D高斯存储轻量索引向量，指向语义特征池中对应的语义嵌入。语义特征池可动态扩展支持开放集类别。一致性感知优化确保多视角观测到的语义一致，语义稳定性引导减少语义漂移。",
+ "experiment_framework": "在受控环境和真实in-the-wild场景中测试。评估渲染质量、语义识别准确率和内存开销。对比其他语义SLAM系统。支持3D定位和场景编辑应用。",
+ "takeaways": [
+  "语义-高斯解耦设计大幅降低语义SLAM的内存开销",
+  "一致性感知优化有效解决了跨视角语义不一致问题",
+  "系统可在日常设备上运行，推动开放集语义3D重建的实用化"
+ ],
+ "weaknesses": [
+  "开放集识别依赖预训练视觉语言模型的特征，对未见类别泛化能力受限于基础模型",
+  "动态语义更新的实时性和准确性trade-off未充分分析",
+  "实验主要在室内场景验证，大规模室外场景的扩展性未展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D重建与语义SLAM，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

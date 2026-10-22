@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Rhomboid Tiling for Geometric Graph Deep Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Rhomboid Tiling for Geometric Graph Deep Learning.pdf",
+ "title": "Rhomboid Tiling for Geometric Graph Deep Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "菱形铺砌聚类池化，几何图分类SOTA，但适用性有限",
+ "innovations": [
+  "首次将菱形铺砌(rhomboid tiling)结构引入几何图深度学习，作为聚类方法提取高阶几何结构",
+  "设计RTPool层次图池化模型，基于RT聚类进行图粗化，用于图分类任务",
+  "在7个基准数据集上超越21个SOTA方法，包括图核、消息传递和层次聚类池化方法"
+ ],
+ "method_framework": "利用几何图中点的位置信息构建点云的Delaunay三角剖分，再通过菱形铺砌结构对点进行层次聚类。RTPool将RT聚类作为可微池化层嵌入GNN，逐层粗化图结构并聚合节点表示，最终输出图级嵌入用于分类。",
+ "experiment_framework": "在7个真实图分类基准数据集上测试。对比21个SOTA方法，涵盖四类：图核方法(WL)、消息传递(GCN/GAT)、层次聚类池化(DiffPool/MinCutPool等)和其他几何方法。指标为图分类准确率。",
+ "takeaways": [
+  "RTPool在全部7个基准数据集上超越21个SOTA方法，验证了几何结构信息对图学习的重要性",
+  "传统GNN仅利用图连接性，忽略了几何图中点的位置/距离信息，RT聚类弥补了这一缺陷",
+  "步长Δk和池化层数L设为小常数(≤2)，总阶数K=Δk·L+1很小，计算高效"
+ ],
+ "weaknesses": [
+  "菱形铺砌依赖点云的几何位置信息，仅适用于几何图(如分子图)，对纯拓扑图(如社交网络)不适用",
+  "聚类过程基于确定性几何构造，缺乏端到端可学习的聚类分配，灵活性受限",
+  "仅验证图分类任务，未测试节点分类或链接预测等其他图学习任务"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.73,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

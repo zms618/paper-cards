@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/ESPFormer_Doubly-Stochastic Attention with Expected Sliced Transport Plans.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ESPFormer_Doubly-Stochastic Attention with Expected Sliced Transport Plans.pdf",
+ "title": "ESPFormer: Doubly-Stochastic Attention with Expected Sliced Transport Plans",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "双随机注意力改进，用切片传输替代Sinkhorn，但与主线无关且证据不足。",
+ "innovations": [
+  "提出基于期望切片传输计划的双随机注意力，完全可并行化，避免了迭代Sinkhorn归一化",
+  "改善注意力矩阵的双随机约束，缓解注意力过度集中于少数token的问题"
+ ],
+ "method_framework": "将注意力矩阵的双随机约束转化为最优传输问题；用切片Wasserstein距离的期望近似传输计划，得到闭式或近闭式解，无需迭代Sinkhorn；注意力矩阵同时满足行和列的随机约束。",
+ "experiment_framework": "在标准Transformer基准（分类、NLP等）上评估，对比标准softmax注意力和Sinkhorn注意力，指标为精度和速度。",
+ "takeaways": [
+  "期望切片传输计划提供了双随机注意力的高效并行实现",
+  "双随机约束改善了注意力分布的均衡性，缓解信息流动不均问题"
+ ],
+ "weaknesses": [
+  "属于注意力机制改进方向，与鲁棒性/医学影像/多模态推理主线无关",
+  "切片传输的近似精度与切片数量的权衡需更多消融",
+  "前9页仅看到动机和方法概述，具体数学推导和实验结果未充分展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.88,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/ActiveAD_Planning-Oriented Active Learning for End-to-End Autonomous Driving.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ActiveAD_Planning-Oriented Active Learning for End-to-End Autonomous Driving.pdf",
+ "title": "ActiveAD Planning-Oriented Active Learning for End-to-End Autonomous Driving",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "规划导向主动学习，30%数据达全性能，但泛化性存疑",
+ "innovations": [
+  "Ego-Diversity多样性指标解决冷启动问题",
+  "基于规划导向的三个不确定性度量(位移误差、软碰撞、代理不确定性)",
+  "在nuScenes和CARLA上仅用30%数据达到全数据集性能"
+ ],
+ "method_framework": "ActiveAD采用两阶段主动学习：初始阶段基于天气、光照、驾驶命令和速度的Ego-Diversity指标选择样本；迭代阶段结合位移误差、软碰撞和代理不确定性三个规划导向指标选择最有价值的样本进行标注。",
+ "experiment_framework": "在nuScenes和CARLA数据集上评估，使用VAD-Tiny作为基础模型，比较ST-P3、UniAD等基线，采用位移误差和碰撞率作为指标，在10%、20%、30%标注预算下测试。",
+ "takeaways": [
+  "针对自动驾驶长尾分布特性设计特定指标比通用主动学习方法更有效",
+  "结合规划导向的度量能显著提升样本选择效率",
+  "数据质量比数量更重要，精心选择的30%数据可优于全数据集"
+ ],
+ "weaknesses": [
+  "方法依赖于特定端到端框架(VAD)，泛化性有待验证",
+  "软碰撞等指标可能存在计算复杂度问题",
+  "实验主要在nuScenes和CARLA上进行，真实场景泛化能力需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "主动学习方法与自动驾驶规划相关，但泛化性存疑且未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

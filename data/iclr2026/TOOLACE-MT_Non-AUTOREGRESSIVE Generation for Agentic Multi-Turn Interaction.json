@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TOOLACE-MT_Non-AUTOREGRESSIVE Generation for Agentic Multi-Turn Interaction.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TOOLACE-MT_Non-AUTOREGRESSIVE Generation for Agentic Multi-Turn Interaction.pdf",
+ "title": "ToolACE-MT: Non-Autoregressive Generation for Agentic Multi-Turn Interaction",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "非自回归生成工具调用对话，效率提升但依赖模板和验证复杂",
+ "innovations": [
+  "将非自回归生成（NAT）思路引入多轮智能体对话数据构建，打破传统多智能体模拟的逐轮自回归交互模式",
+  "设计掩码-填充（mask-and-fill）迭代精炼策略，逐步注入复杂度并优化合理性，支持按预算灵活缩放数据规模",
+  "离线验证阶段结合规则和模型双重检查，过滤无效样本，保证生成数据的正确性和连贯性"
+ ],
+ "method_framework": "ToolACE-MT分三阶段生成完整对话轨迹：1）粗粒度初始化：一次性生成结构完整但语义粗糙的对话骨架，明确整体任务和动作轨迹；2）迭代精炼：通过掩码-填充操作逐步丰富对话内容，注入真实复杂度并优化合理性；3）离线验证：用规则和模型检查过滤无效样本。整个过程非自回归，可并行生成多轮内容。",
+ "experiment_framework": "在BFCL-v3、τ-Bench、ACEBench等多轮工具调用基准上评估；对比基线为传统多智能体模拟（MAS）自回归数据生成方法；指标包括下游模型在各基准上的任务完成率和函数调用准确率，同时报告生成效率和成本。",
+ "takeaways": [
+  "非自回归方式生成多轮对话数据比传统自回归多智能体模拟效率更高，且数据质量不落下风",
+  "迭代精炼策略可在预算约束下灵活平衡数据规模和质量",
+  "全局视野的非自回归生成有助于提升长程规划中的工具使用一致性和事实准确性"
+ ],
+ "weaknesses": [
+  "方法依赖预定义的工具池和任务模板，对开放式工具使用场景的覆盖能力有限",
+  "离线验证阶段仍需规则和模型双重检查，增加了pipeline复杂度，错误可能在验证环节漏过",
+  "实验主要在英文工具调用基准上验证，多语言和跨领域泛化性未充分探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "工具调用对话生成，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

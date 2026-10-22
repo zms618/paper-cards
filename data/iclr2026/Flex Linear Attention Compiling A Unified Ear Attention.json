@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Flex Linear Attention Compiling A Unified Ear Attention.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Flex Linear Attention Compiling A Unified Ear Attention.pdf",
+ "title": "Flex Linear Attention: Compiling A Unified Ear Attention",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "FlexLA编译器统一线性注意力抽象，提升分布式性能",
+ "innovations": [
+  "线性注意力三阶段统一抽象",
+  "细粒度计算-通信融合",
+  "AOT编译与静态调度器"
+ ],
+ "method_framework": "FlexLA将线性注意力分解为块内计算、块间状态传播和输出合并三阶段，通过编译器自动生成高性能Triton内核",
+ "experiment_framework": "单GPU评估H100上1K-256K序列长度，对比Torch-Compile和FLA；分布式测试128GPU扩展性",
+ "takeaways": [
+  "领域特定编译器可显著提升性能",
+  "三阶段抽象简化线性注意力实现",
+  "细粒度通信优化提升分布式效率"
+ ],
+ "weaknesses": [
+  "仅关注前向传播，未考虑反向传播",
+  "实验主要关注性能，缺乏模型质量评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "编译器优化技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

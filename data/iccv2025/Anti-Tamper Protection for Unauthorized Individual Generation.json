@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Anti-Tamper Protection for Unauthorized Individual Generation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Anti-Tamper Protection for Unauthorized Individual Generation.pdf",
+ "title": "Anti-Tamper Protection for Unauthorized Individual Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "双扰动机制防篡改，但通用性与计算开销存疑。",
+ "innovations": [
+  "首次引入防篡改机制保护个体图像生成",
+  "设计保护与授权双扰动系统，互不干扰但敏感于净化",
+  "频域掩码引导的改进PGD算法确保扰动精确性"
+ ],
+ "method_framework": "ATP结合保护扰动与授权扰动，通过BDCT变换到频域，利用掩码分离两种扰动，再通过BIDCT转换回像素域，实现保护与检测双重功能。",
+ "experiment_framework": "CelebA-HQ/VGGFace2数据集，对比Anti-DB/AdvDM/CAAT/MetaCloak基线，使用CLIP-IQAC/LIQE/ISM/FDFR指标评估保护成功率。",
+ "takeaways": [
+  "频域掩码设计可有效分离不同扰动功能",
+  "授权扰动对净化操作敏感，可作为防篡改检测机制",
+  "改进的频域PGD算法提高扰动精确性"
+ ],
+ "weaknesses": [
+  "方法依赖特定变换(BDCT)，可能限制通用性",
+  "未充分讨论计算开销对服务提供商的影响",
+  "自适应攻击实验不完整"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "防篡改机制与隐私鲁棒主线部分相关，但未深入落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

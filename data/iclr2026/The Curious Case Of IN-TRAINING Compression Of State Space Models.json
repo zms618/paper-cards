@@ -1,0 +1,41 @@
+{
+ "title": "The Curious Case of In-Training Compression of State Space Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "控制理论方法压缩SSM状态维，但理论局限与收益未充分验证",
+ "innovations": [
+  "把控制理论的 Hankel 奇异值分析/平衡截断引入 SSM 训练，按状态能量（影响力）动态裁剪状态维",
+  "提出‘先大后小’的训练范式：SSM 训练初期用大状态维获得表达力，训练中压缩到小维，比一开始就用小维训练保住了任务关键结构",
+  "方法适用于 LRU 等线性时不变 SSM，并可推广到 selective 模型；给出压缩伴随性能保证的视角"
+ ],
+ "method_framework": "训练中周期性地对 SSM 的递推系统做 Hankel 奇异值分解，按各状态维的 Hankel 奇异值（能量/影响力）排序，保留高能量维、截断低能量维（平衡截断），使状态维随训练推进逐步收缩，兼顾表达力与计算开销。",
+ "experiment_framework": "在多个序列建模任务上对比：直接小维训练 vs 大维训练 vs CompressM 训练中压缩；指标为收敛速度/优化时长、最终性能、保留的任务关键结构；覆盖 LRU 及可推广到的 selective SSM。",
+ "takeaways": [
+  "SSM 训练中动态压缩状态维，能同时省计算又保住表达力",
+  "‘先大后小’比‘一开始就小’能保留更多任务关键结构，单纯缩维会损失表达力",
+  "Hankel 奇异值给出了有据的状态重要性判据，而非随意剪枝"
+ ],
+ "weaknesses": [
+  "理论主要针对线性时不变 SSM(LRU)，向 selective/现代 Mamba 的推广是示意性的，缺严格保证",
+  "压缩时点/保留维数的调度如何设定、Hankel 分解的额外计算开销与净收益的权衡未充分量化",
+  "relevance 给 5：属 SSM 训练效率/模型压缩，与可靠性(验证/不确定性/幻觉)×落地域(医学影像/多模态推理)主线无关，按规则给低分"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/The Curious Case Of IN-TRAINING Compression Of State Space Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The Curious Case Of IN-TRAINING Compression Of State Space Models.pdf",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "模型压缩工作与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

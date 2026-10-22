@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/When would Vision-Proprioception Policies Fail In Robotic MANIPULATION.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/When would Vision-Proprioception Policies Fail In Robotic MANIPULATION.pdf",
+ "title": "When would Vision-Proprioception Policies Fail in Robotic Manipulation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "揭示本体感觉压制视觉学习机制，提出梯度调制方法提升泛化性。",
+ "innovations": [
+  "通过时间受控实验发现：在需目标定位的运动转换子阶段，视觉模态作用有限",
+  "揭示机理：本体感觉信号loss下降更快，主导优化并在运动转换阶段压制视觉模态学习",
+  "提出GAP(梯度调整+阶段引导)：用本体感觉估计轨迹每步属于运动转换阶段的概率，据此细粒度降低本体感觉梯度幅度，实现动态协作"
+ ],
+ "method_framework": "训练中先用本体感觉估计每个时间步处于运动转换阶段的概率；在这些阶段按概率降低本体感觉梯度幅度，避免其过早主导优化，迫使视觉模态学习目标定位；仿真+真机、单臂+双臂、常规与VLA模型均兼容。",
+ "experiment_framework": "在仿真与真机、单臂/双臂设置下评测；基线为不加调制的视觉-本体感觉策略及VLA模型；指标为操作成功率与泛化(尤其视觉相关泛化)；报告GAP带来更鲁棒可泛化的策略。",
+ "takeaways": [
+  "多模态训练中本体感觉会因梯度更易下降而压制视觉学习，导致视觉-本体感觉策略泛化不一致",
+  "按阶段概率自适应调制梯度是实现视觉/本体感觉动态协作的有效手段",
+  "GAP与常规策略及VLA模型兼容，适用面广"
+ ],
+ "weaknesses": [
+  "运动转换阶段概率需额外估计，估计误差对梯度调制的影响未充分消融",
+  "结论基于受控实验，对更长horizon/更丰富接触任务的普适性需更多验证",
+  "真机成功率提升幅度在提取页未见明确数值对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "机器人操作与可靠性主线无关，但多模态协作机制有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

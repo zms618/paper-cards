@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Bootstrapping Video Semantic Segmentation Model via Distillation-assisted Test-Time Adaptation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Bootstrapping Video Semantic Segmentation Model via Distillation-assisted Test-Time Adaptation.pdf",
+ "title": "Bootstrapping Video Semantic Segmentation Model via Distillation-assisted Test-Time Adaptation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "蒸馏SAM2时序知识实现视频分割测试时自适应",
+ "innovations": [
+  "利用SAM2的时序知识进行蒸馏辅助的测试时自适应",
+  "轻量级时序融合模块",
+  "基于掩码的对比对齐机制"
+ ],
+ "method_framework": "DiTTA框架包含三个关键组件：轻量级注意力时序融合模块、SAM2蒸馏目标生成、掩码对比对齐，通过单阶段初始化将ISS模型转换为时序感知的VSS模型。",
+ "experiment_framework": "在VSPW和Cityscapes数据集上评估，采用W2F协议（仅使用初始10%/25%/50%帧进行适应），比较mIoU、wIoU和mVC指标。",
+ "takeaways": [
+  "利用基础模型知识进行测试时蒸馏可有效提升视频分割性能",
+  "轻量级时序模块能在保持效率的同时增强时序一致性"
+ ],
+ "weaknesses": [
+  "依赖SAM2作为外部知识源，可能限制在无SAM2环境中的应用",
+  "仅使用初始部分帧进行适应，可能对长视频的后续部分效果有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频分割测试时自适应，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

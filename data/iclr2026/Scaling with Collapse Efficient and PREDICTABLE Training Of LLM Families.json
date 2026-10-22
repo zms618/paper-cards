@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Scaling with Collapse Efficient and PREDICTABLE Training Of LLM Families.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scaling with Collapse Efficient and PREDICTABLE Training Of LLM Families.pdf",
+ "title": "Scaling with Collapse: Efficient and Predictable Training of LLM Families",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "验证LLM训练损失曲线塌缩现象，提出早停与诊断方法",
+ "innovations": [
+  "在宽度、深度、学习率、batch size、weight decay联合缩放的实用训练配方下，验证了整段训练损失曲线(TLC)塌缩现象在LLM家族中依然成立，且塌缩恰在超参最优时出现。",
+  "提出以'偏离塌缩(deviation-from-collapse)'作为对训练病态(如数值问题)敏感的早期诊断信号，可在大规模训练中更早识别并修复问题。",
+  "利用塌缩曲线的可预测性实现大规模超参调优中的早停，并据此训练出具竞争力的Celerity LLM家族。"
+ ],
+ "method_framework": "基于经验scaling laws，在固定tokens-per-parameter(TPP)并为该TPP优化AdamW时间尺度τ的前提下，将不同规模模型的训练损失曲线归一化后观察其塌缩到统一轨迹；以塌缩残差/偏差衡量训练是否高效、是否出现病态。",
+ "experiment_framework": "在Celerity模型家族(300M到70B多档)上验证曲线塌缩；对比Llama-2等家族(超参未最优时不塌缩)；展示塌缩偏差用于诊断1.8B训练数值问题的修复，以及早停在超参调优中的效果。",
+ "takeaways": [
+  "损失曲线塌缩是计算高效训练的标志，仅在超参按数据预算最优设定时才精确出现。",
+  "塌缩偏差能比常规监控更早发现大规模训练中的数值/优化病态，从而提前修复。",
+  "可塌缩曲线的可预测性显著降低了大规模超参搜索的算力开销。"
+ ],
+ "weaknesses": [
+  "核心塌缩现象源于Qiu et al.(2025)，本文更多是在实用配方下的验证与工程应用，原创理论增量有限。",
+  "属于LLM预训练效率与诊断方向，与可靠性×医学影像/多模态推理主线关联较弱。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "LLM训练效率与诊断，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/The Unseen Bias How Norm Discrepancy In Pre-Norm MLLMS Leads To Visual Information Loss.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The Unseen Bias How Norm Discrepancy In Pre-Norm MLLMS Leads To Visual Information Loss.pdf",
+ "title": "The Unseen Bias: How Norm Discrepancy in Pre-Norm MLLMs Leads to Visual Information Loss",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "揭示Pre-Norm MLLM中视觉token高范数导致信息丢失，提出LayerNorm简单修复方案。",
+ "innovations": [
+  "揭示Pre-Norm MLLM中视觉token高范数与文本token低范数的差异导致不对称更新动态",
+  "理论证明高范数视觉token存在表示惯性，语义转换速度远慢于文本token，损害跨模态融合",
+  "提出在视觉投影器后插入精心初始化的LayerNorm的简单解决方案，同时提升多模态和纯文本性能"
+ ],
+ "method_framework": "从理论上分析Pre-Norm架构下视觉和文本token的范数差异如何导致不对称梯度更新：高范数视觉token更新幅度相对较小，产生表示惯性。实证验证主流MLLM中普遍存在此现象。解决方案为在视觉投影器后插入LayerNorm强制范数对齐。",
+ "experiment_framework": "在多个主流MLLM上验证范数差异和不对称更新现象。在LLaVA-1.5架构上测试LayerNorm修复方案。指标包括多模态基准性能和纯文本基准（MMLU）性能。",
+ "takeaways": [
+  "Pre-Norm MLLM中视觉token范数远高于文本token，导致视觉信息在训练中被缓慢更新",
+  "这种不对称更新动态是普遍现象，存在于多种主流MLLM中",
+  "简单插入LayerNorm对齐范数后，不仅提升多模态性能，还意外提升纯文本能力"
+ ],
+ "weaknesses": [
+  "解决方案虽简单但LayerNorm初始化方式对效果的影响分析不够深入",
+  "仅在Pre-Norm架构上验证，Post-Norm架构是否存在类似问题未知",
+  "纯文本性能提升的原因解释不够充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态大模型可靠性问题，但未触及医学影像等落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

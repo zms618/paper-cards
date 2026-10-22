@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning Multi-Level Features with Matryoshka Sparse Autoencoders.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning Multi-Level Features with Matryoshka Sparse Autoencoders.pdf",
+ "title": "Learning Multi-Level Features with Matryoshka Sparse Autoencoders",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "嵌套SAE结构缓解特征吸收，但重建质量下降且仅限语言模型",
+ "innovations": [
+  "嵌套字典结构同时训练多个不同大小的稀疏自编码器",
+  "多尺度重建目标防止特征吸收和分裂",
+  "保持特征层次结构而不增加推理成本"
+ ],
+ "method_framework": "Matryoshka SAEs通过同时训练多个嵌套子SAE，每个子SAE仅使用部分潜在变量重建输入，迫使早期潜在变量捕获通用特征，后期潜在变量可以专业化。",
+ "experiment_framework": "在合成数据、TinyStories和Gemma-2-2B上评估，使用重建质量、下游任务性能、特征吸收率和分裂率作为指标，与多种SAE架构对比。",
+ "takeaways": [
+  "多尺度重建目标可有效缓解特征吸收问题",
+  "层次化特征表示提升模型可解释性",
+  "即使重建质量略低，下游任务性能仍保持良好"
+ ],
+ "weaknesses": [
+  "重建质量略低于传统SAE",
+  "训练时间略有增加",
+  "仅评估了语言模型，未扩展到其他领域"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

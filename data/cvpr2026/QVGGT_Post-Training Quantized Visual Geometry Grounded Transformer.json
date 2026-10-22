@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/QVGGT_Post-Training Quantized Visual Geometry Grounded Transformer.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/QVGGT_Post-Training Quantized Visual Geometry Grounded Transformer.pdf",
+ "title": "QVGGT Post-Training Quantized Visual Geometry Grounded Transformer",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "针对特定架构的混合精度量化，提升3D几何感知性能",
+ "innovations": [
+  "选择性混合精度量化策略",
+  "基于PCA的相机信息补偿机制",
+  "任务感知的量化尺度搜索方法"
+ ],
+ "method_framework": "三阶段量化框架：1)基于块敏感性的混合精度分配；2)相机令牌过滤与信息补偿；3)多任务监督与几何一致性约束的尺度搜索",
+ "experiment_framework": "数据集：CO3Dv2、RealEstate10K、7-Scenes、NRGBD；基线：SmoothQuant、GPTQ、AWQ、QuantVGGT；指标：相机姿态AUC@30、3D重建精度、内存占用、推理延迟",
+ "takeaways": [
+  "几何感知的量化策略对3D重建任务至关重要",
+  "令牌级别的激活不平衡需要特殊处理",
+  "任务一致性约束可提升量化效果"
+ ],
+ "weaknesses": [
+  "仅针对特定架构VGGT设计，泛化性待验证",
+  "相机信息补偿可能丢失部分细节信息",
+  "实验主要在标准数据集上，真实场景泛化能力需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D几何量化技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/LVLM_Fighting Hallucinations with Counterfactuals Diffusion-Guided Perturbations for LVLM Hallucination Suppression.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/LVLM_Fighting Hallucinations with Counterfactuals Diffusion-Guided Perturbations for LVLM Hallucination Suppression.pdf",
+ "title": "Fighting Hallucinations with Counterfactuals Diffusion-Guided Perturbations for LVLM Hallucination Suppression",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "测试时反事实扰动抑制LVLM视觉幻觉，但依赖扩散模型且未解决语言幻觉。",
+ "innovations": [
+  "提出首个针对视觉诱导幻觉的测试时干预方法",
+  "构建OHC-25K反事实数据集，通过扩散模型生成语义冲突但结构保留的图像",
+  "识别并投影特征空间中的幻觉子空间，实现高效幻觉抑制"
+ ],
+ "method_framework": "CIPHER包含离线和推理两阶段：离线阶段通过扩散模型生成反事实图像对，提取幻觉特征差异并构建低秩子空间；推理阶段将中间隐藏状态投影到该子空间的正交补空间。",
+ "experiment_framework": "在CHAIR、OPOPE、MMHal-Bench和LLaVA-Bench上评估，对比多种基线方法，使用CHAIRS/CHAIRI/BLEU等指标。",
+ "takeaways": [
+  "反事实图像扰动能有效提取视觉诱导幻觉的方向",
+  "特征空间中的幻觉子空间具有低秩结构，可通过SVD分解",
+  "测试时特征投影方法高效且不牺牲生成质量"
+ ],
+ "weaknesses": [
+  "依赖扩散模型生成反事实图像，可能引入额外复杂性",
+  "仅针对视觉诱导幻觉，未解决语言诱导幻觉",
+  "子空间维度选择需要针对不同模型调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视觉幻觉抑制与可靠性主线交点，方法设计可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

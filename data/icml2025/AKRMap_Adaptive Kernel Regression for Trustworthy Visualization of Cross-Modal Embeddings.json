@@ -1,0 +1,41 @@
+{
+ "title": "AKRMap: Adaptive Kernel Regression for Trustworthy Visualization of Cross-Modal Embeddings",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "AKRMap将跨模态度量纳入降维，但依赖外部度量且缺乏大规模验证。",
+ "innovations": [
+  "将跨模态度量(如 CLIPScore)显式纳入降维可视化，突破 PCA/t-SNE 只看单模态特征分布的局限",
+  "构建由投影后核回归损失引导的有监督投影网络，使低维投影忠实反映度量地形",
+  "采用可与投影联合优化的自适应广义核，提升跨模态嵌入可视化的准确度"
+ ],
+ "method_framework": "先把跨模态嵌入投影到低维空间，再在投影空间用自适应广义核回归拟合度量(CLIPScore 等)的地形；核回归损失与投影网络联合训练，使低维可视化既保留嵌入结构又可实例级地揭示度量高低分布，而非仅给聚合分数。",
+ "experiment_framework": "在文生图(T2I)等跨模态嵌入上，对比 PCA/t-SNE/UMAP 等传统 DR，以可视化与真实度量地形的一致性/准确度为指标，检验实例级性能揭示能力。",
+ "takeaways": [
+  "把跨模态度量纳入降维可视化，能揭示聚合分数掩盖的实例级性能差异",
+  "投影后核回归+自适应广义核可显著提升可视化对度量地形的忠实度",
+  "可信的跨模态嵌入可视化有助于提升多模态模型评测的透明度"
+ ],
+ "weaknesses": [
+  "依赖已有度量(CLIPScore)作监督，可视化质量受该度量本身偏差影响",
+  "联合优化的投影可能为拟合度量而扭曲原生嵌入几何",
+  "前 9 页未见在大规模/真实评测工作流中的可扩展性与用户研究"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/AKRMap_Adaptive Kernel Regression for Trustworthy Visualization of Cross-Modal Embeddings.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/AKRMap_Adaptive Kernel Regression for Trustworthy Visualization of Cross-Modal Embeddings.pdf",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "跨模态嵌入可视化与可靠性评测透明度交点，但依赖外部度量",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

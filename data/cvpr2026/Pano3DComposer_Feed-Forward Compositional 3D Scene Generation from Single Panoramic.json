@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Pano3DComposer_Feed-Forward Compositional 3D Scene Generation from Single Panoramic.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Pano3DComposer_Feed-Forward Compositional 3D Scene Generation from Single Panoramic.pdf",
+ "title": "Pano3DComposer Feed-Forward Compositional 3D Scene Generation from Single Panoramic",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "前馈式全景3D场景生成，物体布局对齐但局限室内场景",
+ "innovations": [
+  "Object-World Transformation Predictor模块实现物体与场景对齐",
+  "Alignment-VGGT架构处理全景图像的跨坐标几何映射",
+  "Coarse-toFine对齐机制迭代改进物体与场景的一致性",
+  "伪几何监督解决生成物体与真实物体形状差异问题"
+ ],
+ "method_framework": "Pano3DComposer框架包含四个阶段：预处理、物体生成与对齐、背景建模和场景融合。核心是通过Object-World Transformation Predictor将生成的3D物体从局部坐标系转换到世界坐标系，实现与全景场景的对齐。",
+ "experiment_framework": "在3D-FRONT和Structured3D数据集上评估，使用场景级和物体级Chamfer距离、F-Score和IoU-B作为指标，与DeepPanoContext、SceneGen等方法对比。",
+ "takeaways": [
+  "模块化设计允许灵活集成不同的3D物体生成器",
+  "伪几何监督方法解决了生成物体与真实物体形状不一致的监督问题",
+  "前馈式设计确保了高效的推理速度"
+ ],
+ "weaknesses": [
+  "仅限于室内场景的全景图像处理",
+  "C2F机制增加了推理时间",
+  "未充分讨论方法在极端遮挡情况下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "3D场景生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

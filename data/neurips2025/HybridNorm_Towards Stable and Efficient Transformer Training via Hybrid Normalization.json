@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/HybridNorm_Towards Stable and Efficient Transformer Training via Hybrid Normalization.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/HybridNorm_Towards Stable and Efficient Transformer Training via Hybrid Normalization.pdf",
+ "title": "HybridNorm: Towards Stable and Efficient Transformer Training via Hybrid Normalization",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "简单组合归一化策略提升Transformer训练稳定性",
+ "innovations": [
+  "提出HybridNorm混合归一化策略，结合Pre-Norm和Post-Norm优势",
+  "在注意力机制中应用QKV归一化，在FFN中使用Post-Norm",
+  "对第一个transformer块进行特殊处理，进一步稳定训练"
+ ],
+ "method_framework": "HybridNorm在注意力机制中使用QKV归一化，在FFN中使用Post-Norm，第一个transformer块采用特殊处理，结合了两种归一化策略的优势。",
+ "experiment_framework": "在550M-7B密集模型和MoE模型上评估，使用C4、HellaSwag等下游任务指标，比较训练损失、困惑度和任务准确率。",
+ "takeaways": [
+  "混合归一化策略可以有效平衡训练稳定性和最终性能",
+  "QKV归一化能够解耦不同权重矩阵之间的梯度，提高训练稳定性"
+ ],
+ "weaknesses": [
+  "方法设计相对简单，主要是现有归一化策略的组合",
+  "缺乏对计算效率影响的详细分析",
+  "实验主要集中在语言模型任务，泛化到其他领域有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

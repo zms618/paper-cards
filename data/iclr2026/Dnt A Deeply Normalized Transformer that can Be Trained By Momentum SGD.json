@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Dnt A Deeply Normalized Transformer that can Be Trained By Momentum SGD.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Dnt A Deeply Normalized Transformer that can Be Trained By Momentum SGD.pdf",
+ "title": "Dnt: A Deeply Normalized Transformer that can Be Trained By Momentum SGD",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "归一化Transformer架构使mSGD达到AdamW性能，但缺乏深入分析",
+ "innovations": [
+  "提出四种归一化技术(InputNorm/PreNorm/MidNorm/QKNorm)解决Transformer梯度重尾问题",
+  "提供理论证明解释不同归一化位置对Jacobian矩阵的影响",
+  "设计DNT架构使mSGD训练性能与AdamW相当"
+ ],
+ "method_framework": "通过在Transformer关键位置添加归一化层(InputNorm、PreNorm、MidNorm、QKNorm)调制Jacobian矩阵，平衡权重、激活值及其交互影响，使梯度分布集中化。",
+ "experiment_framework": "在ViT和GPT架构上评估，使用ImageNet和OpenWebText数据集，比较AdamW和mSGDW优化器下的性能，验证梯度分布和模型表现。",
+ "takeaways": [
+  "归一化位置对Transformer训练稳定性有决定性影响",
+  "通过理论分析指导架构设计可有效解决优化问题"
+ ],
+ "weaknesses": [
+  "未充分讨论计算开销和推理效率",
+  "缺乏对归一化技术对模型泛化能力影响的深入分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.875,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "优化器改进与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

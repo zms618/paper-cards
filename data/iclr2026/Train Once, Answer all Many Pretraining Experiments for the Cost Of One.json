@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Train Once, Answer all Many Pretraining Experiments for the Cost Of One.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Train Once, Answer all Many Pretraining Experiments for the Cost Of One.pdf",
+ "title": "Train Once, Answer All: Many Pretraining Experiments for the Cost of One",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 7,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "单次训练并行多实验降成本，但规模与灵活性存疑。",
+ "innovations": [
+  "提出单次训练运行中并行进行多个预训练实验的新范式，大幅降低受控预训练研究的计算成本",
+  "提出持续预训练依赖测试（CPDT）技术，检测并量化实验间的交互混淆",
+  "在一次210B token、2.7B参数训练中完成10个实验，复现多项前人结果并开展新研究"
+ ],
+ "method_framework": "在单次预训练运行中，通过在不同时间点或不同数据流中插入多个实验干预（如数据投毒、记忆性测试、知识获取探测等），实现一次训练回答多个科学问题。CPDT技术通过对比连续预训练前后的行为变化来检测实验间的交互效应。",
+ "experiment_framework": "在210B token、高达2.7B参数的单次训练中并行10个实验，复现数据污染、投毒、记忆性等前人结果，并开展知识获取、数学推理、水印等新研究。用CPDT验证实验间交互可忽略。",
+ "takeaways": [
+  "单次训练运行中并行多个实验在计算上可行，且对训练动态和整体性能影响极小",
+  "实验间交互效应在该设置下可忽略，CPDT可有效检测这种交互",
+  "该方法使得在有限计算预算下开展严谨的大规模受控预训练实验成为可能"
+ ],
+ "weaknesses": [
+  "仅在2.7B参数规模验证，更大模型下的实验间交互是否仍可忽略存疑",
+  "实验数量受限于训练时间长度，10个实验的密度是否上限未探讨",
+  "实验设计需要精心规划，事后添加实验的灵活性有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "计算效率提升，但未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

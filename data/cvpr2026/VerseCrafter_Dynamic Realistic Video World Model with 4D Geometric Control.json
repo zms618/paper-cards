@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/VerseCrafter_Dynamic Realistic Video World Model with 4D Geometric Control.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/VerseCrafter_Dynamic Realistic Video World Model with 4D Geometric Control.pdf",
+ "title": "VerseCrafter Dynamic Realistic Video World Model with 4D Geometric Control",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "VerseCrafter用4D几何控制视频生成，但计算成本高且开放词汇控制有限",
+ "innovations": [
+  "4D几何控制表示法",
+  "3D高斯轨迹建模物体运动",
+  "GeoAdapter适配器架构",
+  "VerseControl4D数据集"
+ ],
+ "method_framework": "VerseCrafter结合静态背景点云和每物体3D高斯轨迹构建4D几何控制表示，通过GeoAdapter适配器注入到冻结的Wan2.1-14B视频扩散模型中，实现几何一致的动态视频生成。",
+ "experiment_framework": "VerseControl4D数据集(35K训练样本)，VBench-I2V评估整体视频质量，RotErr/TransErr评估相机控制，ObjMC评估物体运动控制。",
+ "takeaways": [
+  "3D高斯轨迹比传统3D边界框和点轨迹更有效控制物体运动",
+  "适配器架构能高效注入几何信息而保持主干模型强大视觉先验"
+ ],
+ "weaknesses": [
+  "训练计算资源需求高(380小时)",
+  "仅支持预定义物体控制，缺乏开放词汇物体控制能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视频生成与可靠性主线无关，但3D高斯控制有可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

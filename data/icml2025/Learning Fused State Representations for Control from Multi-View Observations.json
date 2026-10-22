@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning Fused State Representations for Control from Multi-View Observations.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning Fused State Representations for Control from Multi-View Observations.pdf",
+ "title": "Learning Fused State Representations for Control from Multi-View Observations",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.0
+ },
+ "one_line": "将双模拟度量引入多视图强化学习，提升缺失视图鲁棒性",
+ "innovations": [
+  "首次将双模拟(bisimulation)度量学习引入MVRL，显式聚焦任务相关特征，抑制冗余和干扰信息",
+  "提出基于多视图的mask和潜重建辅助任务，利用跨视图共享信息提升缺失视图鲁棒性",
+  "引入mask token机制，使模型能显式处理视图缺失场景"
+ ],
+ "method_framework": "MFSC架构：多视图编码器提取各视图表示→双模拟度量学习强制表示间的任务相关性约束→融合模块聚合多视图信息→mask token处理缺失视图→潜重建辅助任务利用跨视图共享信息；最终融合表示输入控制策略。",
+ "experiment_framework": "在多个多视图控制任务(如MuJoCo、DMControl多视角)上评估；对比现有MVRL融合方法；指标为控制性能、缺失视图下的鲁棒性、表示紧凑性；消融实验验证双模拟和mask机制的作用。",
+ "takeaways": [
+  "双模拟度量学习能有效过滤多视图中的任务无关冗余信息，提升表示质量",
+  "Mask token + 潜重建使模型在视图缺失时仍能保持性能，提升了实际部署鲁棒性",
+  "多视图融合表示比单视图表示更精确，且计算量小于3D表示方法"
+ ],
+ "weaknesses": [
+  "双模拟度量的计算需要环境交互数据，离线场景的适用性未知",
+  "视图数量增加时融合模块的复杂度增长，可扩展性存疑",
+  "仅在仿真控制任务验证，真实机器人多视图部署的实用性未检验"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

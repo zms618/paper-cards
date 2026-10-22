@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Doubly Robust Conformalized Survival Analysis with Right-Censored Data.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Doubly Robust Conformalized Survival Analysis with Right-Censored Data.pdf",
+ "title": "Doubly Robust Conformalized Survival Analysis with Right-Censored Data",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "将保形生存推断从I型删失推广至一般右删失，实现双稳健下界预测",
+ "innovations": [
+  "将Candes/Gui的保形生存推断从限制性I型删失推广到一般右删失数据",
+  "用机器学习模型填补未观测删失时间，再用加权保形推断校准生存模型",
+  "证明方法具有渐近双重稳健性，在生存模型不准的困难情形下仍稳健"
+ ],
+ "method_framework": "对右删失生存数据，先用ML模型填补未观测删失时间得到完整化数据，再用加权保形推断校准任意生存模型，输出个体生存时间的下界预测(LPB，以至少1-α概率保证);填补模型或生存模型之一正确即渐近双稳健。",
+ "experiment_framework": "在模拟数据与真实临床数据上评估LPB的覆盖率保证与信息量(区间宽度)，对比既有I型删失保形方法，重点考察生存模型失准/数据有限的困难设定。",
+ "takeaways": [
+  "一般右删失数据也可获得带覆盖保证的生存时间下界预测",
+  "ML填补删失时间+加权保形可在生存模型不准时保持稳健",
+  "个体化不确定性区分高/低生存预期患者，辅助高风险临床决策"
+ ],
+ "weaknesses": [
+  "渐近(而非有限样本)双稳健与覆盖保证，小样本下覆盖偏差需更多验证",
+  "落地域为生存分析统计推断，非医学影像/多模态大模型，主线相关性中上",
+  "填补删失时间引入的额外误差在重删失情形下的影响需完整敏感性分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RESP-AGENT An Agent-Based System for Multi-Modal Respiratory Sound Generation and Dis-Ease Diagnosis.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RESP-AGENT An Agent-Based System for Multi-Modal Respiratory Sound Generation and Dis-Ease Diagnosis.pdf",
+ "title": "Resp-Agent: An Agent-Based System for Multi-Modal Respiratory Sound Generation and Disease Diagnosis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "多模态智能体系统结合呼吸音诊断与生成，发布新基准但临床验证不足。",
+ "innovations": [
+  "发布Resp-229k基准：229k条呼吸录音（约408小时）、16种诊断类别，配对LLM蒸馏的临床叙述文本，源不相交划分测试泛化性",
+  "提出modality-weaving Diagnoser：通过策略性全局注意力和稀疏音频锚点交织临床文本与音频token，同时捕捉长程临床上下文和毫秒级瞬态事件",
+  "设计flow matching Generator：通过模态注入适配纯文本LLM，解耦病理内容与声学风格，合成难诊断样本；Thinker-A2CA智能体闭环调度生成与诊断"
+ ],
+ "method_framework": "Resp-Agent以Active Adversarial Curriculum Agent（Thinker-A2CA）为中央控制器，主动识别诊断弱点并闭环调度针对性合成。Diagnoser模块通过全局注意力+稀疏音频锚点交织文本和音频token，约80ms分辨率解析音频流。Generator模块用条件flow matching解码器重建波形，疾病语义由文本条件、声学风格由BEATs token控制。",
+ "experiment_framework": "Resp-229k数据集：229k录音、16类、源不相交划分；诊断任务：分类/检测；生成任务：可控呼吸音合成；对比PANNs/AST/RespLLM等基线；测试数据稀缺和长尾类别下的鲁棒性。",
+ "takeaways": [
+  "多模态融合（文本+音频）可同时利用临床上下文和声学瞬态证据，优于单模态呼吸音分析",
+  "可控呼吸音合成可作为数据增强手段，缓解类别不平衡和数据稀缺问题",
+  "闭环智能体调度（主动识别弱点→定向合成→再诊断）比静态管线更能持续提升诊断鲁棒性"
+ ],
+ "weaknesses": [
+  "临床叙述文本由LLM从EHR蒸馏生成，其临床准确性和与真实病历的一致性需临床专家验证",
+  "flow matching生成的呼吸音在临床真实性上的评估前9页未详细展开",
+  "仅覆盖呼吸音这一窄模态，对其他医学声音（心音、肠鸣音等）的迁移性未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态智能体系统结合呼吸音诊断与生成，触及医学影像落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

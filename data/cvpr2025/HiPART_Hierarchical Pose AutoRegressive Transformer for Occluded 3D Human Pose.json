@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/HiPART_Hierarchical Pose AutoRegressive Transformer for Occluded 3D Human Pose.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/HiPART_Hierarchical Pose AutoRegressive Transformer for Occluded 3D Human Pose.pdf",
+ "title": "HiPART Hierarchical Pose AutoRegressive Transformer for Occluded 3D Human Pose",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "分层自回归变换器提升遮挡3D姿态估计，但依赖3D网格数据",
+ "innovations": [
+  "分层2D姿态生成方案解决遮挡问题",
+  "多尺度骨架标记化模块与骨架感知对齐",
+  "针对非欧几里得骨架结构的分层自回归建模策略"
+ ],
+ "method_framework": "两阶段生成式密集化方法：多尺度骨架标记化将密集2D姿态量化为分层标记，分层自回归建模生成分层2D姿态，提升2D到3D提升的鲁棒性",
+ "experiment_framework": "数据集：Human3.6M、3DPW、3DPW-Occ；基线：DiffPose、Di2Pose、PoseFormer；指标：MPJPE、PA-MPJPE",
+ "takeaways": [
+  "骨架感知对齐增强标记连接",
+  "中心到外围和稀疏到密集的自回归策略加速生成",
+  "方法与现有时序方法正交可互补"
+ ],
+ "weaknesses": [
+  "依赖3D网格数据生成分层2D姿态训练数据",
+  "仅评估单帧场景，未充分利用时序信息",
+  "模型复杂度虽低于时序方法但仍较高"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "姿态估计非可靠性主线，仅骨架建模方法有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

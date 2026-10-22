@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/ClusterMark_Towards Robust Watermarking for Autoregressive Generators with Visual.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ClusterMark_Towards Robust Watermarking for Autoregressive Generators with Visual.pdf",
+ "title": "ClusterMark Towards Robust Watermarking for Autoregressive Generators with Visual",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "迁移LLM水印到图像生成，用token聚类提高鲁棒性",
+ "innovations": [
+  "将LLM的KGW水印方法迁移到自回归图像生成模型",
+  "提出基于视觉token聚类的水印方法提高鲁棒性",
+  "训练-free和微调token/聚类预测器两种变体"
+ ],
+ "method_framework": "将视觉token聚类为红绿集合，在生成过程中偏向绿色集群，通过重建token的集群分布进行水印检测，提高对图像扰动的鲁棒性。",
+ "experiment_framework": "在LlamaGen和RAR-XL模型上评估，对比基线和最新水印方法，测试图像扰动和再生攻击下的鲁棒性。",
+ "takeaways": [
+  "token聚类层级的水印比token层级更鲁棒",
+  "水印方法需考虑VQ-VAE编码解码不一致问题",
+  "集群级水印在保持图像质量的同时提高检测鲁棒性"
+ ],
+ "weaknesses": [
+  "仅考虑了左到右自回归生成顺序",
+  "未探索不同聚类算法对水印效果的影响",
+  "水印方法可能影响生成多样性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.375,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "水印鲁棒性属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

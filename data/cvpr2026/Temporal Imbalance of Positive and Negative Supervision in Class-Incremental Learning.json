@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Temporal Imbalance of Positive and Negative Supervision in Class-Incremental Learning.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Temporal Imbalance of Positive and Negative Supervision in Class-Incremental Learning.pdf",
+ "title": "Temporal Imbalance of Positive and Negative Supervision in Class-Incremental Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "提出时间不平衡问题，通过TAL损失缓解类增量学习中的灾难性遗忘",
+ "innovations": [
+  "首次定义并分析时间不平衡问题",
+  "提出时间调整损失(TAL)动态调整负监督权重",
+  "理论证明TAL在平衡条件下退化为标准交叉熵"
+ ],
+ "method_framework": "建立时间监督模型，使用时间衰减核函数构建监督强度向量Q，基于Q动态调整交叉熵损失中的负监督权重，缓解早期类别的过度负监督压力",
+ "experiment_framework": "在CIFAR-100、ImageNet-100和Food101数据集上测试，集成TAL到iCaRL、FOSTER、DER、MEMO和TagFex等基线方法，使用准确率和召回率作为评估指标",
+ "takeaways": [
+  "时间不平衡是导致预测偏差的关键因素，独立于类别不平衡",
+  "特征空间可视化显示TAL不仅影响分类器，还影响特征表示",
+  "动态调整负监督权重可有效缓解不同旧类别间的异质遗忘程度"
+ ],
+ "weaknesses": [
+  "方法引入多个超参数(λ、r)，需要仔细调优",
+  "未充分探讨不同模型架构对时间衰减参数λ的影响",
+  "实验主要在标准数据集上进行，缺乏在真实医学影像等领域的验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "类增量学习与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

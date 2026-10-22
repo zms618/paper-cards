@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/THINKV_Thought-Adaptive KV Cache Com-PRESSION for Efficient Reasoning Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/THINKV_Thought-Adaptive KV Cache Com-PRESSION for Efficient Reasoning Models.pdf",
+ "title": "ThinKV: Thought-Adaptive KV Cache Compression for Efficient Reasoning Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "ThinKV利用注意力稀疏性差异化压缩KV缓存，提升推理效率。",
+ "innovations": [
+  "发现思维链中注意力稀疏性呈现不同思考类型（推理思考vs执行思考），重要性各异，据此差异化分配token精度",
+  "提出混合量化-驱逐策略：高重要性思考使用高精度量化，低重要性思考随推理轨迹演进而渐进驱逐",
+  "设计扩展PagedAttention的内核，实现被驱逐token内存槽的高效复用，消除压缩整理开销"
+ ],
+ "method_framework": "ThinKV首先通过注意力稀疏模式分析将CoT中的token分类为不同思考类型。然后对不同重要性的思考分配不同的量化精度（高重要性用高精度，低重要性用低精度）。同时，随着推理进行，渐进式驱逐低重要性思考的token。底层扩展PagedAttention内核，使被驱逐token的内存槽可被新token复用，避免内存整理开销。",
+ "experiment_framework": "在DeepSeek-R1-Distill、GPT-OSS、NVIDIA AceReason三个推理模型上评估；数学和编码基准测试；基线包括SnapKV、RocketKV、H20、RaaS等KV压缩方法；指标包括准确率（近无损）、KV缓存大小（<5%原始）、推理吞吐量（最高5.8x提升）。",
+ "takeaways": [
+  "思维链中不同思考阶段的重要性差异显著，可差异化压缩",
+  "混合量化+渐进驱逐策略在极低KV缓存占用下保持近无损精度",
+  "PagedAttention扩展的内存槽复用设计消除了压缩带来的额外开销"
+ ],
+ "weaknesses": [
+  "思考类型分类依赖注意力稀疏模式的启发式判断，分类错误可能导致关键token被误驱逐",
+  "实验主要在数学和编码任务上验证，开放域推理和多模态推理的适用性未探讨",
+  "渐进驱逐策略的驱逐阈值设置缺乏系统化的自适应方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.98,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "KV压缩提升效率，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

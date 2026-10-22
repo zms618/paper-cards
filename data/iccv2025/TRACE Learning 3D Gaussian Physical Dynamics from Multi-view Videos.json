@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/TRACE Learning 3D Gaussian Physical Dynamics from Multi-view Videos.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/TRACE Learning 3D Gaussian Physical Dynamics from Multi-view Videos.pdf",
+ "title": "TRACE Learning 3D Gaussian Physical Dynamics from Multi-view Videos",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "用3D高斯和简单动力学建模物理动态，外推能力有限",
+ "innovations": [
+  "将3D点建模为具有大小和方向的刚性粒子",
+  "为每个粒子学习独立的平移旋转动力学系统",
+  "直接学习物理参数而非依赖物理约束"
+ ],
+ "method_framework": "结合3D高斯场景表示模块和平移旋转动力学系统，通过MLPs学习物理参数，使用Runge-Kutta方法计算未来运动",
+ "experiment_framework": "在4个数据集(3个现有+1个新合成)上评估，与NVFi、DefGS等7种基线比较，使用PSNR/SSIM/LPIPS指标",
+ "takeaways": [
+  "刚性粒子物理参数建模可显著提升外推能力",
+  "直接学习物理参数比物理约束更有效",
+  "方法可兼容现有变形场"
+ ],
+ "weaknesses": [
+  "仅使用二阶动力学更新可能无法捕捉复杂物理现象",
+  "训练稳定性依赖辅助变形场",
+  "未探讨高阶动力学扩展"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D高斯物理建模与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

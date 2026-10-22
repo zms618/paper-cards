@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning State-Based Node Representations from a Class Hierarchy for Fine-Grained Open-Set Detection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning State-Based Node Representations from a Class Hierarchy for Fine-Grained Open-Set Detection.pdf",
+ "title": "Learning State-Based Node Representations from a Class Hierarchy for Fine-Grained Open-Set Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "状态节点表示解决层次化开集检测次优路径问题，但依赖预定义层次结构。",
+ "innovations": [
+  "理论证明自顶向下逐层训练会导致次优路径概率，揭示了层次化开集检测的训练偏差问题",
+  "提出状态节点表示：将整个层次结构编码为状态空间，而非局部节点检测，保证最大化到真实叶节点的路径概率",
+  "利用类层次中的细粒度父子关系提升近OOD样本的区分能力，在多个层次化数据集上验证"
+ ],
+ "method_framework": "基于类层次树构建状态空间：每个层次节点的表示由其在整个层次中的全局状态决定，而非仅局部子树；通过学习状态节点表示，使开集样本可被分配到最合适的父节点层级；理论证明该表示保证了到真实叶节点路径概率的最大化，避免自顶向下训练的次优问题。",
+ "experiment_framework": "在多个真实层次化数据集(如鸟类细粒度分类数据集)上评估开集检测性能；对比传统开集检测方法和层次化基线；指标包括AUROC、F1等开集检测标准指标，重点关注近OOD样本的识别能力。",
+ "takeaways": [
+  "类层次结构中的细粒度父子关系可显著提升近OOD开集样本的检测性能",
+  "自顶向下的局部节点检测存在理论上的次优性，全局状态空间表示可避免该问题",
+  "状态节点表示在理论上保证了路径概率最优，实验上验证了层次化开集检测的有效性"
+ ],
+ "weaknesses": [
+  "依赖预定义的类层次结构，在无层次信息的数据集上无法应用",
+  "状态空间构建的计算复杂度随层次深度和宽度增长，大规模层次树扩展性存疑",
+  "仅在图像分类任务上验证，未扩展到文本或多模态开集检测场景"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

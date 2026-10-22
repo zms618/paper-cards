@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Premise-Augmented Reasoning Chains Improve Error Identification in Math Reasoning with LLMs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Premise-Augmented Reasoning Chains Improve Error Identification in Math Reasoning with LLMs.pdf",
+ "title": "Premise-Augmented Reasoning Chains Improve Error Identification in Math Reasoning with LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "将线性推理链转为DAG结构，在数学领域提升错误识别准确率6-16%",
+ "innovations": [
+  "提出将线性推理链(LRC)转为前提增强推理链(PARC)：为每步识别其依赖的少量前提，形成以步骤为节点、前提链接为边的DAG",
+  "在Golovneva误差分类基础上新增累积误差类别——步骤本身局部正确但继承了上游错误前提而产生的错误传播",
+  "构建并发布带前提与误差类型标注的PERL数据集，用于评测LLM的前提识别与推理错误定位能力"
+ ],
+ "method_framework": "两步框架：第一步让现成LLM为每个推理步骤识别其推导所依赖的前提（节点的入边），将线性CoT重构成PARC有向无环图；第二步在每个步骤自身的前提子集（而非整条链）条件下做逐步验证，剥离无关上下文，从而抑制LLM在干扰信息下的易出错性，并区分固有错误与累积误差。",
+ "experiment_framework": "在自建PERL数据集上评测，覆盖多个开源与闭源LLM；指标包括前提识别召回率与错误识别准确率；与参考式/免参考式基线及线性链验证对比，报告逐步PARC验证相对提升。",
+ "takeaways": [
+  "开源LLM前提识别召回率可达90%，说明现成模型能可靠地从复杂推理链中识别前提",
+  "在各自前提下做逐步验证时，错误识别准确率绝对提升6%到16%",
+  "以前提为中心的表示有助于区分累积误差与固有数学/逻辑错误，改善推理可追溯性"
+ ],
+ "weaknesses": [
+  "仅在数学推理单一领域验证，跨领域(代码、常识)泛化未验证",
+  "PERL为作者自建数据集，规模与人工标注质量缺乏外部独立评测，提升幅度可能受自评数据集影响",
+  "前提识别本身依赖LLM，前提识别错误会级联影响下游错误定位，论文未充分分析该级联风险"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

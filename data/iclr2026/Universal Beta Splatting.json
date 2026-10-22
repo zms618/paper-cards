@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Universal Beta Splatting.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Universal Beta Splatting.pdf",
+ "title": "Universal Beta Splatting",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 3.0,
+  "overall": 5.3
+ },
+ "one_line": "将3D高斯推广为N维Beta核，统一建模静态/动态/视角相关场景",
+ "innovations": [
+  "将显式辐射场渲染的基元从固定高斯推广为N维各向异性Beta核，实现空间/角度/时间各维度独立的形状控制",
+  "无需辅助网络或球谐颜色编码即可建模各向异性视角相关外观、复杂光照传输与场景动态；Beta参数无监督地分解出surface/texture、diffuse/specular、static/dynamic",
+  "保持向后兼容——Beta核可退化为高斯泼溅作为特例，保证即插即用与不低于原有性能的下界"
+ ],
+ "method_framework": "3DGS用固定bell-shaped高斯，难处理锐边界、视角相关效果需球谐、动态场景需形变网络；6DGS/7DGS虽扩维但仍受高斯对称剖面限制。UBS用N维Beta核，每个维度有可学习形状参数：空间维控制表面(平坦)与纹理(尖峰)的锐度，角度维跨diffuse到specular，时间维从静态(constant support)到快速运动(localized activation)，从而单一表征统一静态/视角相关/动态渲染，CUDA加速实时渲染。",
+ "experiment_framework": "在静态真实场景、视角相关(specular/reflective)、动态体渲染三类基准上对比3DGS、4DGS、6DGS、7DGS与Deformable Beta Splatting；指标为渲染保真度(PSNR/SSIM/LPIPS)与实时帧率；报告在反射/镜面材质与动态时空场景上更优且无模糊伪影。",
+ "takeaways": [
+  "不同场景属性需要不同核行为，N维各向异性Beta核比耦合形状的高斯更适合统一建模",
+  "Beta核可在无辅助网络/形变网络下同时处理静态、视角相关与动态场景",
+  "作为高斯的超集向后兼容，可即插即用替代3DGS且性能下界有保证"
+ ],
+ "weaknesses": [
+  "属3D视觉/图形渲染方向，与本主线(可靠性×多模态推理/医学影像分析)无直接关联(虽有医学影像企业作者，但任务为通用辐射场渲染)",
+  "N维Beta核参数量与优化难度随维度增长，大规模场景下的表示密度与显存开销未充分量化",
+  "对更极端半透明/多次散射的光照传输是否仍优于专用模型，正文前9页未给出边界案例"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯3D渲染工作，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

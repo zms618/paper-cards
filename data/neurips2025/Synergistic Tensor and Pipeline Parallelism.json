@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Synergistic Tensor and Pipeline Parallelism.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Synergistic Tensor and Pipeline Parallelism.pdf",
+ "title": "Synergistic Tensor and Pipeline Parallelism",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "编织计算单元减少通信气泡，但PP=8时提升有限",
+ "innovations": [
+  "将前向和反向解耦为细粒度计算单元并编织形成执行块",
+  "设计V形数据流实现内存平衡和减少流水线气泡",
+  "提出增强变体支持有限内存场景下的激活卸载"
+ ],
+ "method_framework": "解耦PP阶段的前向和反向为细粒度计算单元，编织形成执行块以重叠TP通信，在此基础上设计PP调度策略实现V形数据流。",
+ "experiment_framework": "在Qwen2 LLM和Qwen2-VL MLLM模型上测试，与1F1B-I和ZB-V基线比较吞吐量和内存使用，使用多达32个A800 GPU。",
+ "takeaways": [
+  "细粒度计算单元编织可有效消除TP通信气泡",
+  "V形数据流实现内存平衡和减少PP气泡",
+  "激活卸载策略可缓解内存限制问题"
+ ],
+ "weaknesses": [
+  "在PP=8时性能提升不明显，因为显式流水线通信无法与计算重叠",
+  "理论分析未考虑多模态模型的特殊情况",
+  "内存优化依赖于高速PCIe带宽"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

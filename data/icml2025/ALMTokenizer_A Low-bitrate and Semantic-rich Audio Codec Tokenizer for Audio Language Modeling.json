@@ -1,0 +1,41 @@
+{
+ "title": "ALMTokenizer: A Low-bitrate and Semantic-rich Audio Codec Tokenizer for Audio Language Modeling",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "基于query的音频tokenizer，低码率但语义更丰富，缺乏真实LLM任务验证",
+ "innovations": [
+  "提出 query-based 压缩策略，用可学习 query token 显式建模跨帧上下文，弥补 Encodec 等逐帧编码缺乏上下文的不足",
+  "在更少 token 序列下编码音频，实现低码率同时保留更多语义信息",
+  "面向音频语言建模设计，使自回归语言模型范式可更高效地用于音频生成"
+ ],
+ "method_framework": "不同于逐帧量化的传统 codec，ALMTokenizer 用一组可学习 query token 以注意力方式汇聚整段音频的跨帧上下文，再量化为离散 token 序列；解码端由 codec decoder 从 token 重建音频，从而在更低码率下获得更语义化的离散表示。",
+ "experiment_framework": "在音频重建质量、码率/帧率与下游音频语言建模任务上，与 Encodec/SoundStream 等 codec tokenizer 对比，报告重建保真度与 LM 生成效果。",
+ "takeaways": [
+  "跨帧 query 压缩可比逐帧编码在更低码率下保留更多语义信息",
+  "更语义化的离散音频 token 有利于音频语言模型的建模与生成",
+  "低码率设计降低了音频自回归建模的序列长度成本"
+ ],
+ "weaknesses": [
+  "query token 数量/码率与重建保真度的权衡曲线未充分量化",
+  "前 9 页未见在真实音频 LLM 下游任务(如 TTS/语音对话)的端到端评测",
+  "与神经音频压缩最新 codec(如多码本)方案的对比不完整"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/ALMTokenizer_A Low-bitrate and Semantic-rich Audio Codec Tokenizer for Audio Language Modeling.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ALMTokenizer_A Low-bitrate and Semantic-rich Audio Codec Tokenizer for Audio Language Modeling.pdf",
+ "raw_overall": 6.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "音频语言建模工具，非可靠性主线，无落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

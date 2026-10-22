@@ -1,0 +1,37 @@
+{
+ "key": "cvpr2026/Designing to Forget Deep Semi-parametric Models for Unlearning.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Designing to Forget Deep Semi-parametric Models for Unlearning.pdf",
+ "title": "Designing to Forget Deep Semi-parametric Models for Unlearning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "elevance": 7.0,
+  "evidence": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "半参数模型设计测试时删除，但ImageNet性能不足且计算开销大",
+ "innovations": [
+  "设计半参数模型(SPM)架构，实现测试时数据删除",
+  "融合模块设计使模型显式依赖训练数据",
+  "标签置换增强防止模型忽略输入数据"
+ ],
+ "method_framework": "SPM包含三个模块：融合模块g连接参数和非参数分支，非参数模块h处理训练集为实例嵌入，参数模块f为标准深度网络。通过测试时删除实现高效遗忘。",
+ "experiment_framework": "CIFAR-10和ImageNet分类任务，DDPM生成任务；对比ResNet、KNN等基线；评估准确率、FID、遗忘时间、预测差距等指标。",
+ "takeaways": [
+  "显式依赖训练数据的模型设计可实现高效遗忘",
+  "聚类方法可显著提高SPM效率",
+  "预测差距指标比准确率差距更能衡量模型相似性"
+ ],
+ "weaknesses": [
+  "SPM在ImageNet上性能仍略低于标准ResNet",
+  "非参数模块在大数据集上计算开销大",
+  "未探讨模型大小与遗忘效率的关系"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

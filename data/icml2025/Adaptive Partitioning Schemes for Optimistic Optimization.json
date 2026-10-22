@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Adaptive Partitioning Schemes for Optimistic Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adaptive Partitioning Schemes for Optimistic Optimization.pdf",
+ "title": "Adaptive Partitioning Schemes for Optimistic Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "自适应分区改进乐观优化遗憾界，但理论假设限制与实验覆盖不足。",
+ "innovations": [
+  "证明自适应分区对齐低维子空间可显著降低近优维度，将多指标函数的乐观优化遗憾界从O(n^{-1/η_P})改进为O(n^{-β/η_P})，其中β>1",
+  "提出两阶段算法：先用单隐层神经网络拟合随机采样点，通过SVD提取主方向估计子空间矩阵Â，再在旋转后的低维空间执行SequOOL",
+  "给出子空间估计误差dist(A,Â)对优化可行性影响的严格理论分析与边界条件"
+ ],
+ "method_framework": "假设黑箱函数为多指标函数f(x)=g(Ax)，其中A∈R^{m×d}是行正交基张成m维子空间。算法首先随机采样T个点训练单隐层神经网络，对隐层权重矩阵做SVD取前m个右奇异向量作为子空间估计Â。然后在Â定义的旋转超立方体上执行SequOOL乐观优化。提供两阶段和交错式两种实现，后者可迭代更新子空间估计。",
+ "experiment_framework": "在9个标准测试函数（Sphere、Rastrigin、Rosenbrock、Hartmann-6、Branin等）上验证，构造多指标函数f(x)=g(Ax)。基线包括贝叶斯优化（REMBO、HesBO）、进化算法（CMA-ES）、乐观优化（SOO、SequOOL、RESOO、DiRect）、Dual Annealing、随机搜索。真实应用：OPT-1.3B模型的AWQ权重量化超参数优化。指标为simple regret。",
+ "takeaways": [
+  "对于具有低维结构的多指标函数，自适应分区方法的遗憾收敛速度显著快于默认轴对齐分区的SequOOL",
+  "子空间估计的误差需要控制在阈值内才能保证最优解落在估计的低维搜索空间中",
+  "在AWQ量化优化任务上，方法达到了约10%的性能提升，接近最优未量化模型水平"
+ ],
+ "weaknesses": [
+  "理论分析假设函数为多指标函数（精确低维结构），对近似低维结构或非线性流形的适用性未验证",
+  "子空间学习阶段需要T个随机采样点的预算，在小预算场景下可能不划算",
+  "仅在合成测试函数和单一LLM量化任务上验证，真实工程问题的覆盖不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "优化算法理论，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

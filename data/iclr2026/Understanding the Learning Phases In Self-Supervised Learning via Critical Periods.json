@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Understanding the Learning Phases In Self-Supervised Learning via Critical Periods.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Understanding the Learning Phases In Self-Supervised Learning via Critical Periods.pdf",
+ "title": "Understanding the Learning Phases in Self-Supervised Learning via Critical Periods",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "SSL迁移权衡的实证与关键期解释，但落地域与计算开销存疑",
+ "innovations": [
+  "实证SSL存在迁移ability trade-off：并非越长预训练越好，中间checkpoint的OOD泛化更强，额外预训练主要利好ID性能",
+  "把监督学习的关键期(CP)概念改造到SSL：用注入deficit扰动预训练数据观察对表征的持久影响、用pretext目标上的Fisher Information追踪可塑性",
+  "提出CP-guided checkpoint selection选OOD迁移更强的checkpoint，以及CP-guided self-distillation把中间checkpoint的层表征蒸馏进过度专门化的最终checkpoint以平衡权衡"
+ ],
+ "method_framework": "SSL预训练时长应多久未知。本文观察到OOD/ID迁移权衡并假设SSL经历关键期式学习阶段。为把CP从监督改造到SSL：(1)向预训练数据注入deficit扰动，经下游任务评估其对表征质量的持久影响；(2)在pretext目标上算Fisher Information追踪模型参数对pretext任务的可塑性。发现SSL也有CP，CP闭合恰逢广义迁移甜点；据此做checkpoint选择，并用自蒸馏把中间checkpoint表征融入最终checkpoint平衡ID/OOD。",
+ "experiment_framework": "跨多种SSL设置对比不同预训练时长checkpoint的OOD vs ID下游性能；用deficit注入与Fisher Information刻画CP阶段；验证CP-guided checkpoint selection与self-distillation对OOD迁移的提升。",
+ "takeaways": [
+  "SSL预训练存在OOD/ID权衡，并非越长越好，中间checkpoint常是OOD迁移甜点",
+  "关键期视角(可塑性→巩固)可解释SSL学习阶段，CP闭合标志广义迁移最佳点",
+  "CP引导的checkpoint选择与自蒸馏可在不牺牲ID的前提下改善OOD迁移"
+ ],
+ "weaknesses": [
+  "落地域为通用SSL表征学习，非医学影像/多模态推理，OOD泛化(可靠性)主线相关但落地域偏离",
+  "CP判定依赖deficit注入与Fisher计算，二者的计算开销与自动化实时性正文前9页未量化",
+  "CP闭合='OOD甜点'的对应在不同SSL方法/数据规模下是否稳定，仅经验观察、缺乏普适证明"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "SSL迁移权衡研究，落地域偏离医学影像/多模态推理",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Do We Really Need Message Passing in Brain Network Modeling.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Do We Really Need Message Passing in Brain Network Modeling.pdf",
+ "title": "Do We Really Need Message Passing in Brain Network Modeling?",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 8,
+  "overall": 6.75
+ },
+ "one_line": "质疑脑网络中消息传递必要性，提出哈达玛积二次网络BQN。",
+ "innovations": [
+  "通过模型分析与实验揭示：在由ROIs间Pearson相关构建的脑网络上，GNN/Transformer的消息传递无法被充分利用",
+  "观察到哈达玛积(逐元素乘)相对消息传递的矩阵乘积在脑网络上带来显著性能与效率提升",
+  "提出脑二次网络(BQN)，结合二次网络更好的通用逼近性，并从理论上证明BQN隐式执行社区检测与表示学习"
+ ],
+ "method_framework": "针对用ROIs间两两Pearson相关系数构建的脑功能网络，论证消息传递(矩阵乘积)在此类稠密相关网络上表达受限；转而用逐元素哈达玛积构造二次型网络BQN，利用二次网络更强的通用逼近能力；理论分析表明该二次结构在表示学习过程中隐式完成社区检测，更契合脑网络的模块化结构。",
+ "experiment_framework": "在脑疾病预测/诊断等脑网络基准任务上，与基于消息传递的GNN/Transformer脑网络建模方法对比，以分类性能与计算效率为指标，验证BQN的优越性。",
+ "takeaways": [
+  "脑功能网络的稠密相关结构使消息传递失效，逐元素二次运算反而更合适",
+  "BQN在提升脑疾病诊断性能的同时更高效",
+  "二次网络的隐式社区检测特性与脑网络模块化结构天然契合"
+ ],
+ "weaknesses": [
+  "结论依赖Pearson相关建图方式，对其他建图(偏相关/稀疏化)是否成立未充分验证",
+  "仅在脑网络场景验证，二次网络优势能否推广到一般图未知",
+  "前9页内与主流大GNN/Transformer基线的规模对比有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

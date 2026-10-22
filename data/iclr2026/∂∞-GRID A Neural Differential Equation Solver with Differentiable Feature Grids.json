@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/∂∞-GRID A Neural Differential Equation Solver with Differentiable Feature Grids.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/∂∞-GRID A Neural Differential Equation Solver with Differentiable Feature Grids.pdf",
+ "title": "dInf-Grid: A Neural Differential Equation Solver with Differentiable Feature Grids",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.8
+ },
+ "one_line": "特征网格结合RBF插值加速PDE求解，但缺乏与强基线对比和充分消融",
+ "innovations": [
+  "将Instant-NGP/K-Planes类特征网格与无限可微的径向基函数(RBF)插值结合，克服线性插值无法计算高阶导数的缺陷，使其可用于PDE求解",
+  "提出带共址网格(co-located grids)的多分辨率分解，以捕获高频解并稳定加速全局梯度计算",
+  "以微分方程本身作为损失函数进行隐式训练，无需监督标签即可建模物理场"
+ ],
+ "method_framework": "表示从空间坐标映射到物理场u(x)，用可训练特征网格存储信号并用RBF插值实现任意阶可微；通过多分辨率共址网格捕获高频细节；训练时以PDE残差(Poisson/Helmholtz/Kirchhoff-Love)作为损失隐式优化网格参数。",
+ "experiment_framework": "在三类任务上验证：Poisson方程用于图像重建、Helmholtz方程用于波场、Kirchhoff-Love边值问题用于布料仿真；基线为坐标MLP类正弦网络神经求解器；指标为精度/紧致度与求解耗时，报告5-20倍加速。",
+ "takeaways": [
+  "特征网格+RBF插值可在保持可比精度与紧致性的同时，相比坐标MLP实现5-20倍训练/求解加速",
+  "线性插值网格(Instant-NGP/K-Planes)因不可微高阶导数而不适合PDE求解，RBF插值是使其可用的关键",
+  "PDE作为损失的隐式训练可在秒到分钟级恢复物理场"
+ ],
+ "weaknesses": [
+  "与坐标MLP相比的精度仅声称可比，缺乏在标准PDE基准上与PINN等强基线的定量误差对比表",
+  "实验覆盖的PDE类型有限（仅三类），对更广泛非线性/高维PDE的可扩展性未验证",
+  "加速收益部分来自RBF插值的计算开销权衡，高频精度与网格分辨率的定量消融在提取页内未见完整呈现"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "PDE求解器与可靠性主线无直接关联，仅属方法迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "title": "The Hidden Dimensions of LLM Alignment: A Multi-Dimensional Analysis of Orthogonal Safety Directions",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.75
+ },
+ "one_line": "揭示LLM安全对齐的多维脆弱性，但未提出新加固方法",
+ "innovations": [
+  "突破此前'单方向探针'建模，揭示安全对齐行为由多维正交方向联合控制",
+  "识别出一个主导拒答方向与多个可解释次要方向(如假设叙事、角色扮演)，并量化各方向如何促进/抑制主导方向",
+  "证明删除有害查询中的特定触发词可削弱这些方向、绕过已学安全能力，从多维视角解释安全对齐脆弱性"
+ ],
+ "method_framework": "在 Llama-3-8B 拒越狱安全微调前后构造表示位移的残差空间；在该空间做正交方向分解，分离主导拒答方向与次要可解释特征方向；测量次要方向对主导方向的促进/抑制作用，并验证删除触发词对这些方向的削弱效应。",
+ "experiment_framework": "对象为 Llama-3-8B 拒越狱安全微调；通过成对安全/不安全数据训练探针并对比残差空间分解；分析正交方向的可解释特征及其对主导方向的作用，并用触发词删除实验验证安全能力可被绕过。",
+ "takeaways": [
+  "单一方向探针会混淆多个特征的不同作用，安全行为本质上由多维方向的交互控制",
+  "次要方向(假设叙事、角色扮演)在塑造模型拒答表示中扮演重要角色",
+  "安全对齐存在可被触发词删除绕过的结构性脆弱点，需多维视角加固"
+ ],
+ "weaknesses": [
+  "结论主要基于单一模型(Llama-3-8B)，跨架构/跨规模的普适性未充分验证",
+  "属于机制解释/脆弱性揭示，并未提出新的对齐或加固算法",
+  "正交分解所识别方向的可解释性仍依赖人工标注，存在主观归因风险"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/The Hidden Dimensions of LLM Alignment A Multi-Dimensional Analysis of Orthogonal Safety Directions.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/The Hidden Dimensions of LLM Alignment A Multi-Dimensional Analysis of Orthogonal Safety Directions.pdf",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

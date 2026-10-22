@@ -1,0 +1,41 @@
+{
+ "title": "TetraGT: Tetrahedral Geometry-Driven Explicit Token Interactions with Graph Transformer for Molecular Representation Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.6
+ },
+ "one_line": "显式建模键角/二面角为token，定制四面体注意力提升分子表征",
+ "innovations": [
+  "首次将键角与二面角等高阶几何参数显式建模为结构化 token，而非仅通过原子/键组合间接表示",
+  "基于面角与二面角不等式的空间立体几何理论设计空间四面体注意力，实现结构 token 间高度选择性的直接通信",
+  "在 PCQM4Mv2/OC20 IS2RE 预训练后，迁移到 QM9/PDBBind/Peptides/LIT-PCBA 下游均表现优异，并随分子尺寸增大展现可扩展性"
+ ],
+ "method_framework": "在分子图中除原子/键 token 外，显式引入键角、二面角作为几何 token；用基于四面体立体几何的注意力机制，让这些几何 token 之间直接做选择性交互，从而显式建模决定构象稳定性的高阶空间关系，再经 Graph Transformer 聚合表征。",
+ "experiment_framework": "预训练/基准 PCQM4Mv2、OC20 IS2RE；迁移下游 QM9、PDBBind、Peptides、LIT-PCBA；以分子属性预测精度为指标，对比既有分子图 Transformer/GNN；并检验随分子尺寸的可扩展性。",
+ "takeaways": [
+  "把键角/二面角提升为一等 token，能显式捕获以往被忽略的高阶空间相互作用",
+  "基于立体几何约束设计的注意力使结构 token 通信更有选择性",
+  "该预训练表征在多个分子属性/对接/筛选下游上迁移良好"
+ ],
+ "weaknesses": [
+  "核心是把已有几何信息显式 token 化 + 定制注意力，组件仍属 Graph Transformer 改造，相对强基线的净提升幅度与计算开销需看完整消融",
+  "依赖键角/二面角的显式标注构象，对柔性大分子/多构象体系，单一构象输入的代表性未讨论",
+  "relevance 给 5：属分子表征/药物发现，虽涉及生物活性预测，但非医学影像诊断、非多模态大模型推理，与可靠性主线不直接相关，按规则不因其 bioactivity 措辞抬分"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Tetragt_Tetrahedral Geometry-Driven Explicit Token Interactions with Graph Transformer for Molecular Representation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tetragt_Tetrahedral Geometry-Driven Explicit Token Interactions with Graph Transformer for Molecular Representation.pdf",
+ "raw_overall": 5.93,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "分子表征学习，非医学影像或多模态推理，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

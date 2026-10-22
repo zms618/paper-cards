@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/VideoRoPE_What Makes for Good Video Rotary Position Embedding.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/VideoRoPE_What Makes for Good Video Rotary Position Embedding.pdf",
+ "title": "VideoRoPE: What Makes for Good Video Rotary Position Embedding?",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "系统分析视频RoPE特征，提出改进方案但理论深度不足",
+ "innovations": [
+  "首次系统识别视频RoPE的四大关键特征：2D/3D结构、频率分配、空间对称性、索引缩放",
+  "提出V-NIAH-D（带干扰项的视觉大海捞针）任务，揭示现有RoPE变体在周期性干扰下的脆弱性",
+  "提出VideoRoPE：3D结构保留时空关系、低频时间分配缓解周期振荡、对角布局保持空间对称、可调时间间距解耦时空索引"
+ ],
+ "method_framework": "从四个维度分析视频RoPE的设计原则：1）2D/3D结构：不应将视频展平为1D，而应保留时空三维结构；2）频率分配：时间维度应使用低频，避免周期性振荡导致的混淆；3）空间对称性：对角布局保持图像的平移和旋转对称性；4）索引缩放：可调时间间距解耦时空索引，适应不同帧率。基于这些原则设计VideoRoPE。",
+ "experiment_framework": "在多个视频理解基准上验证（VideoMME、MLVU、LongVideoBench、VideoHallucer）；与Vanilla RoPE、TAD-RoPE、M-RoPE等变体对比；提出V-NIAH-D任务专门测试干扰鲁棒性；评估长视频检索、视频理解、视频幻觉等多种任务。",
+ "takeaways": [
+  "将视频展平为1D序列直接使用文本RoPE是次优的，会丢失时空结构信息",
+  "时间维度的频率分配至关重要，高频时间编码会导致周期性干扰下的性能崩溃",
+  "VideoRoPE在所有视频理解基准上一致优于现有RoPE变体"
+ ],
+ "weaknesses": [
+  "仅在主流Video LLM架构上验证，其他架构（如扩散模型视频生成）的适用性未测试",
+  "四个关键特征的理论分析较为经验化，缺乏严格的形式化推导",
+  "额外的位置编码计算开销与收益的权衡未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

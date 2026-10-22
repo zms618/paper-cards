@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/EvoLM_In Search of Lost Training Dynamics for Language Model Reasoning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/EvoLM_In Search of Lost Training Dynamics for Language Model Reasoning.pdf",
+ "title": "EvoLM: In Search of Lost Training Dynamics for Language Model Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "EvoLM分析训练动态，发现过度训练边际递减，提出数据重放缓解遗忘。",
+ "innovations": [
+  "构建100+模型的完整训练流程，系统分析预训练、持续预训练、监督微调和强化学习各阶段",
+  "揭示过度预训练的边际递减效应及对下游任务的负面影响",
+  "提出持续预训练中的数据重放策略以缓解灾难性遗忘"
+ ],
+ "method_framework": "EvoLM采用LLaMA架构，系统研究预训练(20-320B token)、持续预训练(2-42B token)、监督微调和强化学习四个阶段对模型性能的影响。",
+ "experiment_framework": "上游任务：HellaSwag等5个数据集；下游任务：GSM8K/MATH(域内)和CRUXEval/BGQA等(域外)；指标包括Pass@1/16、Maj@16、RM@16等。",
+ "takeaways": [
+  "过度预训练(>80x模型大小)会导致边际递减甚至降低下游性能",
+  "持续预训练中5%的数据重放可有效缓解灾难性遗忘",
+  "在有限数据预算下，SFT与RL数据分配需权衡域内性能与域外泛化"
+ ],
+ "weaknesses": [
+  "未深入分析模型在不同训练阶段的具体表征变化",
+  "对训练过程中不确定性的量化不足",
+  "未探索不同领域持续预训练的通用策略"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

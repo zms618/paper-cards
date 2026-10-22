@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/OD3_Optimization-Free Dataset Distillation for Object Detection.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/OD3_Optimization-Free Dataset Distillation for Object Detection.pdf",
+ "title": "OD3: Optimization-Free Dataset Distillation for Object Detection",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "免优化检测蒸馏框架，两阶段候选选择与筛选，提升mAP14%",
+ "innovations": [
+  "将数据集蒸馏从图像分类拓展到更复杂的目标检测，并采用免优化/免训练的合成方案。",
+  "两阶段流程：基于最小重叠的迭代候选选择（把对象实例放到合成图合适位置）与预训练观察者模型驱动的候选筛选（剔除低置信对象）。",
+  "提出尺度感知动态上下文扩展（SA-DCE），在实例级标签指导下重构多样化训练图像。"
+ ],
+ "method_framework": "将大型检测数据集压缩为小合成数据集：先做候选选择，迭代地把掩码对象按最小重叠放到合成图像的合适位置；再用预训练观察者模型做候选筛选，移除低置信/不可靠对象；配合尺度感知动态上下文扩展重建图像上下文，全程无需梯度优化合成图像。",
+ "experiment_framework": "在MS COCO（压缩率0.25%-5%）与PASCAL VOC（0.5%-2.0%）上评测，以mAP50等检测精度为指标；与唯一现有检测蒸馏方法DCOD及经典coreset选择方法对比，在1.0%压缩率下COCO mAP50超过先前最佳方法14%以上；代码开源。",
+ "takeaways": [
+  "数据集蒸馏可有效拓展到目标检测这一密集预测任务，且免优化方案更简洁可扩展。",
+  "候选选择加观察者筛选的两阶段流程能在极低压缩率（≤0.5%）下维持检测精度。",
+  "相比需要优化/模型反演的方案，免训练合成在工程上更易落地。"
+ ],
+ "weaknesses": [
+  "仅在COCO/VOC通用目标检测验证，实例分割/开放词汇/遥感医疗等密集场景未涉及。",
+  "强依赖预训练观察者模型与实例级掩码，合成数据的真实分布偏差与可迁移性未充分分析。",
+  "与分类数据集蒸馏主流方法的统一对比、以及对不同检测器架构的通用性报告有限。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "目标蒸馏方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

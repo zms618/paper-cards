@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Quantization-Aware Diffusion Models for Maximum Likelihood Training.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Quantization-Aware Diffusion Models for Maximum Likelihood Training.pdf",
+ "title": "Quantization-Aware Diffusion Models for Maximum Likelihood Training",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "量化感知扩散模型改进似然估计，但与主线关联弱且视觉质量提升不明",
+ "innovations": [
+  "指出既有扩散要么忽略量化、要么加噪凑连续，都不保证采样收敛到有限量化点",
+  "提出特定参数化的量化感知扩散，数学上保证反向扩散采样收敛到量化点",
+  "将其用于最大似然训练，显著提升像素级图像生成的似然估计"
+ ],
+ "method_framework": "在扩散过程中显式建模数据的量化离散性，通过特定参数化使反向SDE采样轨迹收敛到离散量化点，从而对齐真实数字数据分布并改善似然目标。",
+ "experiment_framework": "在图像密度估计/似然评测上对比；报告CIFAR-10负对数似然及与理论下界的距离。",
+ "takeaways": [
+  "CIFAR-10图像生成的负对数似然从2.42大幅改善到0.27，逼近理论下界",
+  "显式量化建模在似然（而非仅采样质量）上带来SOTA",
+  "将数字数据的离散性纳入扩散是改进密度估计的有效正交方向"
+ ],
+ "weaknesses": [
+  "属理论/生成模型似然方向，与可靠性、验证器、医学影像或多模态推理主线无直接关联",
+  "收益集中在似然/密度估计指标，采样视觉质量的提升幅度未在前9页体现",
+  "在高分辨率视频/音频等更大离散空间上的可扩展性与计算开销需后续验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "扩散模型似然估计与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

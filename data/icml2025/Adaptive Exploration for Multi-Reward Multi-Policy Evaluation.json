@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Adaptive Exploration for Multi-Reward Multi-Policy Evaluation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adaptive Exploration for Multi-Reward Multi-Policy Evaluation.pdf",
+ "title": "Adaptive Exploration for Multi-Reward Multi-Policy Evaluation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "形式化多奖励多策略评估问题，提出凸松弛自适应探索算法",
+ "innovations": [
+  "首次形式化多奖励多策略（MR-MPE）在线评估问题，给出(ε,δ)-PAC框架下的样本复杂度分析",
+  "推导基于值偏差ρ的实例相关下界，揭示样本复杂度由最难策略-奖励对决定而非各对之和",
+  "提出MR-NaS算法：通过求解凸优化问题得到最优状态-动作分配ω*，据此自适应引导探索"
+ ],
+ "method_framework": "在tabular MDP中，给定N个确定性策略和每个策略对应的奖励集合（有限或凸），目标是在线收集数据实现(ε,δ)-PAC精度的价值函数估计。方法：每轮根据当前估计的MDP求解凸优化问题inf_ω U_ε(ω;M_t)得到最优分配ω*_t，然后按ω*_t采样状态-动作对。U_ε是特征时间T_ε的凸上界，基于折扣访问次数矩阵Γπ定义。",
+ "experiment_framework": "在tabular环境中验证（合成MDP、Riverswim等）。对比均匀探索、固定策略探索等基线。指标为达到(ε,δ)-PAC精度所需的样本数。",
+ "takeaways": [
+  "多奖励多策略评估的样本复杂度由最难策略-奖励对的特征时间决定，而非简单累加",
+  "凸松弛U_ε在保持理论保证的同时将非凸优化转化为可解的凸问题",
+  "自适应探索比均匀探索显著减少所需样本数"
+ ],
+ "weaknesses": [
+  "仅在tabular小规模MDP上验证，函数逼近场景的可扩展性未探索",
+  "凸优化每轮求解的计算开销在大规模问题上可能过高",
+  "实验部分较薄，仅tabular toy环境，缺乏与实际RL应用的连接"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "多策略评估方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

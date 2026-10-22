@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Rectiﬁed-CFG_++ for Flow Based Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Rectiﬁed-CFG_++ for Flow Based Models.pdf",
+ "title": "Rectiﬁed-CFG++ for Flow Based Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "预测-校正器框架解决流模型离流形漂移，但适用性受限",
+ "innovations": [
+  "预测-校正器引导框架，先沿条件场更新再应用加权插值",
+  "时间调度插值替代外推，保持轨迹在流形邻域内",
+  "理论证明确保生成样本在底层数据流形上的稳定性"
+ ],
+ "method_framework": "Rectiﬁed-CFG++采用预测-校正器采样器，在每个步骤中先执行条件RF更新锚定样本，然后应用加权条件校正插值条件场与无条件场，保持轨迹在流形邻域内。",
+ "experiment_framework": "在MS-COCO、LAION-Aesthetic、T2I-CompBench等数据集上评估，对比CFG、CFG++、APG等方法，使用FID、CLIP-Score、ImageReward等指标。",
+ "takeaways": [
+  "预测-校正器框架可有效解决流模型中的离流形漂移问题",
+  "时间调度插值比传统外推更稳定，能减少伪影并提高文本对齐"
+ ],
+ "weaknesses": [
+  "方法依赖于流模型的确定性特性，可能不适用于扩散模型",
+  "计算效率虽有提升但仍需进一步优化"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

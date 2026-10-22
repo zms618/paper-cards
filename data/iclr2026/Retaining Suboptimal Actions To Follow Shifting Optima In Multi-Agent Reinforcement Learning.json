@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Retaining Suboptimal Actions To Follow Shifting Optima In Multi-Agent Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Retaining Suboptimal Actions To Follow Shifting Optima In Multi-Agent Reinforcement Learning.pdf",
+ "title": "Retaining Suboptimal Actions to Follow Shifting Optima in Multi-Agent Reinforcement Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "S2Q保留次优动作应对MARL最优漂移，但与主线无关且开销大。",
+ "innovations": [
+  "指出现有值分解MARL只依赖单一最优动作，在值函数随训练漂移时易收敛到次优策略。",
+  "提出Successive Sub-value Q-learning(S2Q)：学习多个子值函数以保留备选高价值动作。",
+  "把子值函数融入Softmax行为策略，鼓励持续探索，使联合值Qtot能快速适应变化的最优。"
+ ],
+ "method_framework": "在值分解框架中，除主Q外额外维护若干子值函数记录被舍弃的次优高价值动作；在行为策略中以Softmax方式综合这些子值，使这些备选动作不被永久遗忘，从而在最优漂移时可快速切换。",
+ "experiment_framework": "在挑战性合作MARL benchmark上评测；对比多种MARL算法；指标为回报与适应性，报告S2Q持续优于基线。",
+ "takeaways": [
+  "保留次优高价值动作而非只守单一最优，能让MARL更好应对训练中的最优漂移。",
+  "多子值函数+Softmax行为策略可提升合作MARL的持续探索与适应性。"
+ ],
+ "weaknesses": [
+  "与可靠性/医学影像/多模态推理主线无关，属多智能体强化学习。",
+  "多个子值函数增加了存储与计算开销，子值数量选择未充分讨论。",
+  "前9页为动机与方法概述，具体benchmark数值对比在后续页。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.13,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "多智能体强化学习，与可靠性主线无关且开销大",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

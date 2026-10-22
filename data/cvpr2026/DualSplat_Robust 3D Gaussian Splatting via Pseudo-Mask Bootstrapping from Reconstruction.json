@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/DualSplat_Robust 3D Gaussian Splatting via Pseudo-Mask Bootstrapping from Reconstruction.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/DualSplat_Robust 3D Gaussian Splatting via Pseudo-Mask Bootstrapping from Reconstruction.pdf",
+ "title": "DualSplat Robust 3D Gaussian Splatting via Pseudo-Mask Bootstrapping from Reconstruction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.6
+ },
+ "one_line": "两阶段3DGS解决动态物体检测与重建循环依赖",
+ "innovations": [
+  "Failure-to-Prior范式打破瞬时检测与场景重建的循环依赖",
+  "无监督伪掩码构建整合光度残差、特征不一致性和SAM2实例边界",
+  "轻量级MLP在线掩码细化，监督从伪掩码逐渐转向自一致性"
+ ],
+ "method_framework": "两阶段3D高斯溅射：第一阶段保守重建暴露失败模式，转换为对象级伪掩码；第二阶段伪掩码引导重建，MLP在线细化掩码",
+ "experiment_framework": "RobustNeRF和NeRF On-the-go数据集，与3DGS、WildGaussians、DeSplat等方法对比，使用PSNR、SSIM、LPIPS指标",
+ "takeaways": [
+  "失败模式可作为先验信号而非仅抑制的伪影",
+  "实例级残差筛选比像素级更鲁棒",
+  "渐进式监督策略避免信号丢失"
+ ],
+ "weaknesses": [
+  "两阶段训练增加计算开销",
+  "依赖预训练模型(SAM2、FiT3D)的准确性",
+  "伪掩码可能过度掩码静态区域"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "3D重建技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

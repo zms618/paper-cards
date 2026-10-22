@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Enhancing Numerical Prediction of MLLMs with Soft Labeling.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Enhancing Numerical Prediction of MLLMs with Soft Labeling.pdf",
+ "title": "Enhancing Numerical Prediction of MLLMs with Soft Labeling",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.1
+ },
+ "one_line": "软标签替代硬标签提升MLLM数值预测，但创新有限。",
+ "innovations": [
+  "提出软标签替代硬标签解决数值预测问题",
+  "设计平滑概率分布使损失反映预测与目标的距离",
+  "无需修改模型架构即可提升数值预测性能"
+ ],
+ "method_framework": "将标准交叉熵损失中的one-hot目标分布替换为平滑分布，使数值预测的损失反映预测与目标的距离而非仅关注目标概率。",
+ "experiment_framework": "在RefCOCO/+/g、ChartQA和TallyQA三个数据集上评估，使用准确率和RMSE作为指标，对比硬标签和软标签性能。",
+ "takeaways": [
+  "软标签可应用于任何LLM/MLLM无需架构修改",
+  "数值预测任务中考虑预测与目标的距离比传统分类损失更合理"
+ ],
+ "weaknesses": [
+  "仅针对数字 token 进行软标签，未扩展到文本 token",
+  "未探讨不同数值范围的最佳平滑参数设置"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "数值预测方法可迁移到可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

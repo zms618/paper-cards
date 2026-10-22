@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Compute-Optimal Quantization-Aware Training.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Compute-Optimal Quantization-Aware Training.pdf",
+ "title": "Compute-Optimal Quantization-Aware Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "计算最优QAT比例随计算量增长，提出损失缩放定律与学习率融合方法。",
+ "innovations": [
+  "发现最优QAT比例随tokens-per-parameter-byte增长而增加",
+  "提出跨不同比特宽度的统一损失缩放定律",
+  "提出QAT与学习率冷却融合方法，消除冗余全精度更新"
+ ],
+ "method_framework": "通过实验分析不同模型大小、QAT比特宽度和计算预算下的最优QAT比例，建立基于参数数量、训练token数和QAT比特宽度的损失缩放定律。",
+ "experiment_framework": "使用86M-2.2B参数模型，1-6比特QAT，从2.3B到669B总token进行实验，验证最优QAT比例和损失缩放定律。",
+ "takeaways": [
+  "最优QAT比例随计算量增长而非固定",
+  "损失缩放定律可预测不同QAT比特宽度下的性能",
+  "QAT与学习率冷却融合可节省计算资源"
+ ],
+ "weaknesses": [
+  "损失缩放定律的拟合高度依赖初始化",
+  "未考虑QAT开销对计算预算的影响",
+  "1-2比特QAT的结果不如高比特宽度稳定"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "量化训练优化与可靠性主线无实质交点，仅为计算效率方法",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

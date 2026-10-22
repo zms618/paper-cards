@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Lightweight-Mark Rethinking Deep Learning-Based Watermarking.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Lightweight-Mark Rethinking Deep Learning-Based Watermarking.pdf",
+ "title": "Lightweight-Mark: Rethinking Deep Learning-Based Watermarking",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "诊断损失不匹配问题，设计轻量水印模型，参数少但鲁棒性提升有限。",
+ "innovations": [
+  "诊断出现有深度学习水印框架性能受限的关键原因：常用解码损失与实际提取目标之间的不匹配",
+  "设计Lightweight-Mark轻量水印模型，在大幅减少参数量的同时保持甚至提升鲁棒性和不可见性",
+  "重新思考水印模型的损失函数设计，使训练目标与实际提取任务更好地对齐"
+ ],
+ "method_framework": "Lightweight-Mark是一个轻量级深度水印模型，包含嵌入网络和提取网络。核心改进是重新设计解码损失函数，解决之前损失与目标不匹配的问题。模型在保持小参数量的同时，实现了与大模型相当的不可见性（视觉质量）和鲁棒性（抗各种失真攻击）。",
+ "experiment_framework": "在标准图像水印基准上评测，对比大参数水印模型和现有轻量模型；指标包括PSNR/SSIM（不可见性）、比特准确率（鲁棒性）、参数量/推理速度；测试各种失真攻击（压缩、滤波、几何变换等）。",
+ "takeaways": [
+  "解码损失与提取目标的不匹配是限制轻量水印模型性能的关键瓶颈",
+  "通过修正损失对齐，可以在极少参数下达到甚至超过大模型的水印性能",
+  "轻量级水印模型的实用价值很高，适合移动端和边缘设备部署"
+ ],
+ "weaknesses": [
+  "主要是图像水印，未涉及视频或3D内容的水印",
+  "鲁棒性测试是否包括对抗性攻击（如专门去除水印的攻击）未明确",
+  "前9页未看到完整的定量对比表格"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

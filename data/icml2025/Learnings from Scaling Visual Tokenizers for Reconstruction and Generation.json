@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Learnings from Scaling Visual Tokenizers for Reconstruction and Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learnings from Scaling Visual Tokenizers for Reconstruction and Generation.pdf",
+ "title": "Learnings from Scaling Visual Tokenizers for Reconstruction and Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.0,
+  "overall": 5.6
+ },
+ "one_line": "ViTok视觉tokenizer缩放研究，发现瓶颈大小E是重建关键。",
+ "innovations": [
+  "提出ViTok视觉tokenizer，结合Vision Transformer和Llama架构",
+  "系统研究tokenizer不同组件缩放对重建和生成的影响",
+  "发现瓶颈大小E是重建质量的关键预测因素",
+  "揭示重建质量与生成性能之间的权衡关系"
+ ],
+ "method_framework": "ViTok采用非对称自编码器结构，包含紧凑的Llama编码器和更大的Llama解码器，通过3D卷积将输入嵌入为补丁/管状嵌入，处理为紧凑的潜在表示，然后解码重建输入。",
+ "experiment_framework": "在ImageNet-1K、COCO和UCF-101等数据集上评估，使用rFID、rIS、SSIM、PSNR等重建指标和gFID、gIS等生成指标，与SD-VAE、SDXL-VAE等基线方法比较。",
+ "takeaways": [
+  "瓶颈大小E是重建质量的关键预测因素，而非计算量",
+  "缩放编码器对重建和生成均无益，缩放解码器可改善重建但对生成帮助有限",
+  "重建质量与生成性能之间存在权衡关系，可通过调整损失函数权重来平衡"
+ ],
+ "weaknesses": [
+  "研究主要集中在现有自编码范式的缩放，缺乏对架构创新的深入探索",
+  "对生成性能提升有限，主要贡献在重建质量上",
+  "未充分讨论模型在不同域上的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

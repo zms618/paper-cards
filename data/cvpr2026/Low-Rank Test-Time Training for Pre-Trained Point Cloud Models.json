@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Low-Rank Test-Time Training for Pre-Trained Point Cloud Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Low-Rank Test-Time Training for Pre-Trained Point Cloud Models.pdf",
+ "title": "Low-Rank Test-Time Training for Pre-Trained Point Cloud Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "LoRA与掩码特征对齐的点云测试时训练，提升OOD鲁棒性",
+ "innovations": [
+  "提出LoTT-PC框架，结合LoRA和掩码特征对齐实现参数高效的测试时训练",
+  "发现掩码扰动下的特征不变性是点云模型泛化能力的关键来源",
+  "设计解码器无关的掩码特征对齐机制，消除辅助头依赖",
+  "两阶段训练策略确保主任务与辅助任务强耦合"
+ ],
+ "method_framework": "LoTT-PC包含低秩调制单元和扰动不变对齐机制，通过掩码特征对齐目标实现参数高效的测试时训练，保持预训练模型鲁棒性同时增强OOD适应性。",
+ "experiment_framework": "在ModelNet40-C、ScanObjectNN-C和ShapeNet-C三个基准测试上评估，对比多种TTT方法，使用分类准确率作为主要指标。",
+ "takeaways": [
+  "特征级对齐比像素级重建更能提升模型泛化能力",
+  "参数高效微调可显著降低测试时训练的计算开销",
+  "掩码特征不变性是提升点云模型鲁棒性的关键因素"
+ ],
+ "weaknesses": [
+  "仅关注分类任务，未扩展到更复杂的点云理解任务",
+  "实验主要在合成数据集上进行，真实场景泛化能力有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "点云OOD鲁棒性提升，符合可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/LocateAnything3D_Vision-Language 3D Detection with Chain-of-Sight.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/LocateAnything3D_Vision-Language 3D Detection with Chain-of-Sight.pdf",
+ "title": "LocateAnything3D Vision-Language 3D Detection with Chain-of-Sight",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "将3D检测转化为VLM的next-token预测，依赖相机参数限制泛化。",
+ "innovations": [
+  "Chain-of-Sight(CoS)因子化，将2D检测作为视觉思维链",
+  "近到远的目标间排序和目标内中心→尺寸→旋转的语义排序",
+  "统一的视觉语言模型接口支持开放词汇和视觉提示"
+ ],
+ "method_framework": "LocateAnything3D将3D检测转化为next-token预测问题，通过2D→3D的CoS因子化，结合近到远的目标间排序和目标内中心→尺寸→旋转的语义排序，实现开放词汇3D检测。",
+ "experiment_framework": "Omni3D基准测试，与Cube R-CNN、OVMono3D和DetAny3D对比，使用AP3D指标评估3D检测性能。",
+ "takeaways": [
+  "2D检测作为视觉思维链可提高3D检测可靠性",
+  "自回归解码的难易排序设计(近到远，中心→尺寸→旋转)提升性能",
+  "统一的视觉语言模型接口简化系统设计并保持开放词汇能力"
+ ],
+ "weaknesses": [
+  "依赖相机内参，可能影响跨设备泛化",
+  "仅评估了单目RGB输入，未利用多模态信息"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D检测方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

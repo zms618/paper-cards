@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Leveraging Per-Instance Privacy for Machine Unlearning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Leveraging Per-Instance Privacy for Machine Unlearning.pdf",
+ "title": "Leveraging Per-Instance Privacy for Machine Unlearning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.75
+ },
+ "one_line": "改进DP机器遗忘为逐实例隐私界，提升效用-遗忘权衡",
+ "innovations": [
+  "将DP机器遗忘的worst-case隐私损失界改进为逐实例隐私损失，每个数据点有自己的遗忘难度量化",
+  "改进了噪声梯度下降用于遗忘的分析，获得更好的效用-遗忘权衡曲线",
+  "在SGLD和标准无噪声微调两种设置下验证理论预测的实证有效性"
+ ],
+ "method_framework": "传统DP机器遗忘给出worst-case隐私保证（对所有数据点统一的隐私界）。本文提出逐实例方法：每个数据点有自己的Rényi散度界，衡量\"移除该数据点后模型与重训模型的差异\"。这更符合机器遗忘的数据依赖本质——有些数据点容易遗忘，有些则难。通过逐实例界，可以更精确地知道哪些数据点已被有效遗忘。",
+ "experiment_framework": "在多个数据集上验证，对比worst-case DP遗忘和逐实例方法；指标包括遗忘后的效用保持率和逐实例隐私损失分布；SGLD和标准微调两种设置。",
+ "takeaways": [
+  "Worst-case DP界过于保守，逐实例分析揭示了大部分数据点的遗忘难度远低于worst-case",
+  "逐实例隐私量化可以更好地指导机器遗忘实践——只对难遗忘的数据点施加更多计算",
+  "在标准无噪声微调下也能给出有意义的遗忘保证，降低了DP方法的效用损失"
+ ],
+ "weaknesses": [
+  "逐实例界的计算需要估计每个数据点对模型的影响，计算开销较大",
+  "主要在中等规模模型上验证，大模型（如LLM）的逐实例遗忘分析可能更复杂",
+  "与精确遗忘（如剪枝/标记法）的对比未充分展开"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

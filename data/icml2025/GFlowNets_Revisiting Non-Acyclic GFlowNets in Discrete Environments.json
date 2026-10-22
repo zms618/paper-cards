@@ -1,0 +1,37 @@
+{
+ "title": "Revisiting Non-Acyclic GFlowNets in Discrete Environments",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "简化非有环GFlowNet理论，但实验不足且缺乏实际应用价值。",
+ "innovations": [
+  "从零构建了一套比 Brunswic et al.(2024)更简洁直观的非有环离散 GFlowNet 理论，揭示有环/无环设定在流函数与反向策略本质上的异同",
+  "证明固定反向策略时损失稳定性不影响优化结果，只有反向策略也被训练时才重要；并给出状态流正则化(state flow regularization)求解",
+  "将 GFlowNet 与熵正则化RL等价的核心结论推广到非有环设定，且证明最小化期望轨迹长度等价于最小化总流"
+ ],
+ "method_framework": "放弃可测空间/测度论工具，改用纯离散轨迹框架，在含循环的图(如群/魔方状态空间)上定义前向策略、反向策略与状态/边流，沿用轨迹平衡、详细平衡、流匹配条件；分析固定与可训练反向策略两种情形下的优化等价性，并提出状态流正则化。",
+ "experiment_framework": "在离散含环环境(对称群/魔方类)上做合成实验，重审损失稳定性对训练的影响，验证流误差尺度对稳定性的关键作用，以及状态流正则化配合不稳定损失可提升采样质量。",
+ "takeaways": [
+  "反向策略是否可训练决定了损失稳定性是否重要——固定反向策略时稳定与否不改变最优解",
+  "训练反向策略时，最小期望轨迹长度与最小总流是同一优化问题",
+  "虽然不稳定损失表面有害，但配合状态流正则化反而能得到更好的采样分布"
+ ],
+ "weaknesses": [
+  "实验仅在小规模合成离散环境验证，缺乏分子生成、组合优化等真实GFlowNet应用场景的实证",
+  "证据强度偏弱，多为理论重述与小幅澄清，未与强基线方法做系统量化对比",
+  "与可靠性/医学影像/多模态推理主线无关，实际落地价值未在文中展示"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/GFlowNets_Revisiting Non-Acyclic GFlowNets in Discrete Environments.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/GFlowNets_Revisiting Non-Acyclic GFlowNets in Discrete Environments.pdf",
+ "raw_overall": 5.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

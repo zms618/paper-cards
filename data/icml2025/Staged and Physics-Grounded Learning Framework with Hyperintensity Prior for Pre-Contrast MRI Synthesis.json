@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Staged and Physics-Grounded Learning Framework with Hyperintensity Prior for Pre-Contrast MRI Synthesis.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Staged and Physics-Grounded Learning Framework with Hyperintensity Prior for Pre-Contrast MRI Synthesis.pdf",
+ "title": "Staged and Physics-Grounded Learning Framework with Hyperintensity Prior for Pre-Contrast MRI Synthesis",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "分阶段框架从增强后MRI合成增强前图像，但临床验证不足。",
+ "innovations": [
+  "针对临床中增强前 MRI 常缺失/退化的痛点，提出从增强后图像直接合成增强前图像的任务",
+  "引入高信号（hyperintensity）先验并结合物理约束的分阶段框架",
+  "分阶段设计：先 inpaint 再做伪影去除，训练损失组合 L1/SSIM/perceptual/adversarial"
+ ],
+ "method_framework": "利用钆对比剂增强后组织高信号的物理规律作为先验，分阶段从 post-contrast 反推 pre-contrast：先用带掩膜 M 的 inpainting 网络恢复增强前图像，再做伪影去除模块；损失结合 L1、SSIM、感知与对抗损失，使合成图像符合影像物理。",
+ "experiment_framework": "IRB 批准下回顾性收集 Site A（126 例）与 Site B（159 例）配对 3D T1-weighted MPRAGE（增强前/低剂量/增强后）数据，仿射配准；在两个站点测试集上报告合成增强前图像的重建质量（PSNR/SSIM 等）及对下游诊断的影响。",
+ "takeaways": [
+  "增强前 MRI 缺失可从增强后图像物理约束地合成，避免额外扫描/患者风险",
+  "高信号先验+分阶段修复比端到端合成更符合影像物理",
+  "跨两个对比剂厂商站点验证，泛化性较好"
+ ],
+ "weaknesses": [
+  "样本量偏小（站点各仅 10-13 例测试），统计功效有限",
+  "仅脑 T1 对比，对其他器官/序列/对比剂的外推未验证",
+  "合成图像是否真正满足临床定量诊断的严格精度要求，缺独立医师 reader study"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

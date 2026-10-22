@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/All-atom inverse protein folding through discrete flow matching.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/All-atom inverse protein folding through discrete flow matching.pdf",
+ "title": "All-atom inverse protein folding through discrete flow matching",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "离散流匹配应用于全原子逆折叠，支持复合物设计但缺乏实验验证",
+ "innovations": [
+  "首次将离散流匹配(discrete flow matching)框架应用于全原子逆蛋白折叠，支持含小分子配体、核苷酸、金属离子等非蛋白组分的复合物序列设计",
+  "在序列生成过程中渐进式整合预测的侧链信息作为结构上下文，使侧链-配体/核酸相互作用被显式建模",
+  "支持多结构系综采样（ensemble sampling），可对动态蛋白（如NMR确定的多构象复合物）设计序列；并实现训练free的分类器引导采样以整合预训练属性模型"
+ ],
+ "method_framework": "ADFLIP是条件生成模型p(S|X)，以全原子结构上下文X为条件生成氨基酸序列S。采用多尺度图神经网络（残基级+原子级）作为去噪骨干。前向过程通过离散马尔可夫链逐步corrupt序列，反向过程用流匹配预测每步的转移方向。采样时逐步生成序列并动态更新侧链预测作为上下文。支持无训练分类器引导：在采样中途估计属性预测梯度来优化目标性质。",
+ "experiment_framework": "数据集：含配体、核苷酸、金属离子的蛋白复合物结构（PDB）。基线：ProteinMPNN、PiFold、LigandMPNN。指标：Perplexity（越低越好）和Sequence Recovery Rate（越高越好）。还在NMR动态复合物上验证多结构设计能力。",
+ "takeaways": [
+  "ADFLIP在含配体/核苷酸/金属离子的复合物上Recovery Rate达62.19%，显著优于ProteinMPNN的54.48%和LigandMPNN",
+  "对动态多构象复合物（NMR系综），ADFLIP Recovery Rate达75.73%，远超单结构方法",
+  "渐进式侧链整合+全原子上下文是复合物逆折叠性能提升的关键"
+ ],
+ "weaknesses": [
+  "仅在PDB复合物上验证，缺乏湿实验（湿实验蛋白表达+结构测定）验证设计序列的实际可折叠性",
+  "依赖AlphaFold3预测的复合物结构作为输入，上游结构预测误差会传导至序列设计",
+  "训练数据规模和计算成本未充分讨论，与ProteinMPNN等轻量模型相比效率优势不明"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "蛋白设计方法创新，但与可靠性主线无实质交集",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

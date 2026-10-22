@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/3D-LATTE Latent Space 3D Editing from Textual Instructions.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/3D-LATTE Latent Space 3D Editing from Textual Instructions.pdf",
+ "title": "3D-LATTE: Latent Space 3D Editing from Textual Instructions",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "3D扩散潜空间编辑，用跨/自注意力图锁定几何布局，但评测存疑",
+ "innovations": [
+  "在 DiffSplat 的 3DGS 潜空间内做零样本指令编辑：用 DDPM 式的多视角 splat 反向得到编辑友好的噪声图 η_t=(z_{t-1}−µ_θ(z_t,t))/σ_t，去噪时把编辑提示 p* 步骤的 3D 跨注意力直接替换成源提示 p 的（F^3D_cross：仅在两提示共享 token 且 t≥τ_cross 时注入），从而把布局与组合信息锁回 3D 高斯潜",
+  "3D 自注意力注入用时间步门控（t<τ_self 才注入），并指出其谱分解（3D 自注意力图的归一化 Laplacian 前三个特征向量）恰好把高斯聚成语义部件，说明自注意力确实编码了部分布局而非噪声",
+  "几何感知分类器式引导 + 频域退火 + 迭代 3D 增强三件套：用 L1 噪声差 D_i=‖ε_θ(z_t,t,p*)−ε_θ(z_t,t,p)‖_1 的全局 min-max 归一给每个高斯打软相关权重 R_i，据此对不透明度与协迹加 λ_o R exp(−γ_o o)+λ_Σ R exp(−γ_ΣTr(Σ)) 引导，抑制编辑区半透明与早塌；在 U-Net skip 特征的 FFT 上按半径门控 β_{l,t}（早期放大低频、后期放大高频）避免把源的高频装饰纹理带进新形状；最后用 ControlNet-Tile 迭代增强渲染图再回优化 3DGS"
+ ],
+ "method_framework": "源 3DGS → 多视角 splat grid 编码为 z_0 → DDPM 反向求噪声轨迹得 z_T；从 z_T 起用 p* 去噪，每步用源去噪的 3D 跨/自注意力图替换编辑去噪的注意力，并按 3D mask M 混合 z_{t-1} 与 z*_{t-1}（M 来自 GPT-4o 定位 + GroundingDINO 框 + SAM2 多视 mask 提升 + 跨注意力导出的注意力 mask 求并）；再叠加 L_geo 引导、FFT 频率退火与迭代重渲染增强。",
+ "experiment_framework": "自建基准：Objaverse + Google Scanned Objects 的 25 个 3D 资产配 100 条编辑指令；基线 Vox-E、MVEdit、GaussCTRL、Edit360，另附 InstructGS2GS、PDS；指标 CLIP-dir、CLIP-diff-no-edit、CLIP-Dir-Con（均为 CLIP 嵌入代理指标）+ GPTEval3D（GPT-4V 三维度）+ 57 人用户研究；消融节仅可见 3D 增强一项。",
+ "takeaways": [
+  "「把 2D 注意力编辑的 token 对齐与替换搬到 3D 潜空间」是低风险高回报的迁移路径，关键是源/目标提示 token 索引映射（CT 函数）要显式定义",
+  "用「同一噪声下两提示的噪声预测 L1 差」当逐高斯编辑相关权重（分类器引导式正则），比重建式损失便宜且能精准约束局部区域",
+  "频域退火（早低频晚高频）可直接移植到其他去噪编辑任务，用来抑制源图的纹理残留"
+ ],
+ "weaknesses": [
+  "评测基准是作者自建的 25 资产/100 样本，且三个主指标全是基于 CLIP 嵌入的代理量（CLIP-dir/CLIP-diff/CLIP-Dir-Con），没有任何 3D 几何保真真值指标（如 Chamfer/F-Score）：所谓「形状保持好」其实只在 CLIP 空间成立，无法排除几何形变",
+  "CLIP-diff-no-edit 这一项存在系统性套利：作者自己承认 GaussCTRL 该项更低是因为「经常根本没施加编辑」，但基线中 PDS(0.094)、Vox-E(0.054)、InstructGS2GS(0.082) 的失败样本同样会拉低该值，论文未给出「成功编辑率」对照，无法判断基线低分究竟源于保真差还是源于未编辑",
+  "整套流水线串行依赖 GPT-4o 定位 → GroundingDINO → SAM2 → 跨注意力阈值分割四级模块，任一环节错误直接反映为编辑区域错误，但正文把 mask 生成整体推到补充材料，未做模块级消融与错误率分析；且消融节在 3D 增强一项后被截断，频域退火 τ、τ_cross/τ_self、λ 等超参是否有敏感性分析无法核实"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D编辑技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

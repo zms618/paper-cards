@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SubDyve_Subgraph-Driven Dynamic Propa-gation for Virtual Screening Enhancement Controlling False Positive.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SubDyve_Subgraph-Driven Dynamic Propa-gation for Virtual Screening Enhancement Controlling False Positive.pdf",
+ "title": "SubDyve: Subgraph-Driven Dynamic Propagation for Virtual Screening Enhancement Controlling False Positive",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "子图驱动传播框架降低虚拟筛选假阳性，但零样本可靠性存疑",
+ "innovations": [
+  "构建子图感知相似性网络：用监督子图选择挖掘类别判别性子结构替代通用分子指纹（ECFP），更好地区分活性与非活性化合物",
+  "提出基于局部错误发现率(LFDR)的迭代种子精化策略：逐步将高置信候选化合物提升为新种子，同时控制拓扑偏置导致的假阳性膨胀",
+  "联合训练图神经网络，融合分类、排序和对比嵌入三个目标，与传播框架协同优化"
+ ],
+ "method_framework": "首先通过监督子图选择从已知活性分子中挖掘类别判别性子结构，构建子图指纹相似性网络。然后在网络上进行活性信号传播，并基于LFDR估计进行迭代种子精化：每轮将传播得分高且LFDR低于阈值的化合物加入种子集，动态扩展种子集同时控制假阳性。GNN联合优化分类、排序和对比嵌入损失。",
+ "experiment_framework": "在DUD-E数据集的10个靶点上进行零样本评估，以及在CDK7靶点上与ZINC 1000万化合物库进行大规模筛选。指标包括BEDROC和EF1%，对比基于指纹和嵌入的现有虚拟筛选方法。",
+ "takeaways": [
+  "子结构判别信息对虚拟筛选至关重要，通用分子指纹模糊了活性相关的细微结构差异",
+  "基于LFDR的迭代种子扩展能有效控制网络传播中的拓扑偏置假阳性，在低标签场景下优势尤为明显",
+  "SubDyve在零样本条件下比现有方法最高提升34.0 BEDROC和24.6 EF1%，验证了子图驱动传播的有效性"
+ ],
+ "weaknesses": [
+  "监督子图选择仍需要少量标注数据，真正的零样本场景下子图挖掘的可靠性存疑",
+  "仅在DUD-E和CDK7靶点上验证，跨靶点泛化能力和更广化学空间的适用性未充分证明",
+  "前9页未展示完整的消融实验，各组件（子图选择、LFDR控制、GNN）的独立贡献不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "虚拟筛选属于医学影像/多模态大模型推理的落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

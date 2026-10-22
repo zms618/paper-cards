@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Come Together, But Not Right Now A Progressive Strategy to Boost Low-Rank Adaptation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Come Together, But Not Right Now A Progressive Strategy to Boost Low-Rank Adaptation.pdf",
+ "title": "Come Together, But Not Right Now: A Progressive Strategy to Boost Low-Rank Adaptation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "渐进激活调度提升LoRA性能，但本质是训练技巧而非方法创新",
+ "innovations": [
+  "指出vanilla LoRA因梯度优化的懒惰动力学常收敛到初始化附近的次优极小值，损害泛化与合并/剪枝",
+  "设计渐进激活调度：前75%训练各adapter以线性0→1的概率被随机失活，后25%全开退化为全微调",
+  "给出layer-wise dropout稳定性与线性模式连通性的理论分析，并用合作博弈量化各adapter的边际贡献"
+ ],
+ "method_framework": "CoTo在LoRA微调中对每个低秩adapter施加随时间t递增的激活概率p(t)：前期随机失活促使更平衡优化与更广损失地形探索，后期p=1全开收敛；兼容多种LoRA变体，并提升合并与剪枝鲁棒性。",
+ "experiment_framework": "在多类下游任务上对比vanilla LoRA及多种LoRA变体，评估单任务性能、多任务合并准确率、剪枝鲁棒性与训练开销，报告CoTo一致提升且不增加额外参数。",
+ "takeaways": [
+  "渐进激活可让LoRA跳出初始化附近的次优极小值",
+  "CoTo同时提升单任务、多任务合并与剪枝鲁棒性，并降低训练开销",
+  "layer-wise失活与线性模式连通性相关，合作博弈可定位关键adapter"
+ ],
+ "weaknesses": [
+  "本质是一种训练调度(dropout式)，对LoRA参数化本身无改动，方法新意偏工程",
+  "75%/25%分界与线性调度为经验选择，超参敏感性与跨任务最优调度未系统探讨",
+  "理论分析(稳定性/模式连通性)与实际增益的因果链仍需更多实证支撑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.43,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

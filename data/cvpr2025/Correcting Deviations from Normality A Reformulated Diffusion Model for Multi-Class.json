@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Correcting Deviations from Normality A Reformulated Diffusion Model for Multi-Class.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Correcting Deviations from Normality A Reformulated Diffusion Model for Multi-Class.pdf",
+ "title": "Correcting Deviations from Normality A Reformulated Diffusion Model for Multi-Class",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "重构扩散模型为多类异常检测，选择性修正异常区域。",
+ "innovations": [
+  "将异常建模为潜在空间中的噪声",
+  "引入随机掩码策略保持正常区域细节",
+  "重构DDIM采样实现偏差校正而非传统扩散"
+ ],
+ "method_framework": "DeCo-Diff在潜在空间中建模异常为噪声，通过随机掩码保持正常区域，训练预测偏差方向(DoD)的网络，实现选择性异常区域修正。",
+ "experiment_framework": "在MVTec-AD和VisA数据集上评估，与8种最新方法比较，使用AUROC、AUPRC、f1max等指标。",
+ "takeaways": [
+  "随机掩码策略可有效保持正常区域细节",
+  "多尺度策略结合像素级和潜在级异常检测提升性能"
+ ],
+ "weaknesses": [
+  "仅使用正常图像训练，可能对未见过的异常类型泛化能力有限",
+  "计算复杂度较高，需要预训练VAE和扩散模型"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "异常检测属于可靠性主线，但未触及落地域且方法创新有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

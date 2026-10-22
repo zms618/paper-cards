@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Adaptive Spectral Feature Forecasting for Diffusion Sampling Acceleration.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Adaptive Spectral Feature Forecasting for Diffusion Sampling Acceleration.pdf",
+ "title": "Adaptive Spectral Feature Forecasting for Diffusion Sampling Acceleration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "谱特征预测加速扩散采样，但信息损失与参数调整问题显著",
+ "innovations": [
+  "谱域特征预测替代局部近似",
+  "切比雪夫多项式全局基函数",
+  "误差不随步长增长的理论保证",
+  "自适应调度策略"
+ ],
+ "method_framework": "将去噪器特征视为时间函数，用切比雪夫多项式拟合，通过岭回归计算系数，预测未来特征值，减少网络评估次数",
+ "experiment_framework": "在FLUX.1和Stable Diffusion 3.5-Large图像模型，Wan2.1-14B和HunyuanVideo视频模型上测试，对比PSNR、SSIM、LPIPS和ImageReward指标",
+ "takeaways": [
+  "全局基函数比局部近似更适合长程预测",
+  "特征缓存位置对性能影响显著",
+  "正则化对预测稳定性至关重要"
+ ],
+ "weaknesses": [
+  "仅缓存最终块特征可能丢失中间层信息",
+  "自适应调度策略参数需要精细调整",
+  "理论分析假设函数解析性，实际扩散过程可能不完全满足"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "扩散采样加速属工程优化，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

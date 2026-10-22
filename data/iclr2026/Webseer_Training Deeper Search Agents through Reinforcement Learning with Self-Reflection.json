@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Webseer_Training Deeper Search Agents through Reinforcement Learning with Self-Reflection.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Webseer_Training Deeper Search Agents through Reinforcement Learning with Self-Reflection.pdf",
+ "title": "WebSeer: Training Deeper Search Agents through Reinforcement Learning with Self-Reflection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "自反思RL训练搜索agent，提升多跳推理但标注依赖人工设计",
+ "innovations": [
+  "构建带反思模式标注的大规模数据集，用于训练搜索agent的自反思能力（交叉验证、查询重写、回溯检索）",
+  "设计两阶段训练框架：反思模式冷启动+RL增强，统一在自反思范式下训练真实网页搜索agent",
+  "单14B模型在HotpotQA和SimpleQA上达到SOTA（72.3%和90.0%），且在分布外数据集上泛化良好"
+ ],
+ "method_framework": "两阶段训练：(1)冷启动阶段——在标注了反思模式（交叉验证、关键词精炼、子答案分解、错误回溯）的数据集上监督微调；(2)RL阶段——在真实网页环境中通过强化学习进一步优化，奖励信号鼓励更长的工具调用链和自反思行为。agent可自主决定何时反思、何时回溯、何时给出答案。",
+ "experiment_framework": "在HotpotQA（多跳问答）和SimpleQA（事实性问答）上评估SOTA表现，并在分布外数据集上测试泛化能力。对比基线包括Search-r1等现有搜索agent。指标为准确率。",
+ "takeaways": [
+  "自反思机制（交叉验证、查询重写、回溯）有效延长了工具调用链，解决了过早放弃和浅层搜索问题",
+  "14B参数模型通过专门训练可达到远超更大模型的搜索agent表现",
+  "冷启动+RL的两阶段范式比纯RL或纯SFT更有效"
+ ],
+ "weaknesses": [
+  "反思模式标注数据集的构建依赖人工设计模式，可能限制了反思行为的多样性",
+  "仅在英文问答任务上验证，复杂开放式深度研究场景的适用性未知",
+  "更长的工具调用链意味着更高的API调用成本和延迟，效率权衡未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "搜索agent与可靠性主线无实质交点，仅方法设计有参考价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

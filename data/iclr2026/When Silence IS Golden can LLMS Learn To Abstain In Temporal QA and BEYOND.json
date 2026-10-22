@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/When Silence IS Golden can LLMS Learn To Abstain In Temporal QA and BEYOND.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/When Silence IS Golden can LLMS Learn To Abstain In Temporal QA and BEYOND.pdf",
+ "title": "When Silence is Golden: Can LLMs Learn to Abstain in Temporal QA and Beyond",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "弃权感知RL提升时间QA可靠性，但过度自信风险未解",
+ "innovations": [
+  "首个系统研究在时间QA推理中训练LLM弃权能力(面对不可答问题拒答)",
+  "把弃权框为可教技能，提出CoT监督+弃权感知奖励RL耦合的训练流水线",
+  "系统比较不同信息类型(原始上下文/时间子上下文/知识图谱等隐式线索 vs 显式CoT)对带弃权推理的影响",
+  "发现SFT诱发过度自信损害可靠性，RL提升精度但仍有类似风险"
+ ],
+ "method_framework": "在时间QA中，先CoT监督再用弃权感知奖励做RL：奖励正确作答、惩罚错误作答、奖励对不可答问题的正确弃权；对比隐式信息(上下文/时间子上下文/KG)与显式CoT监督，分析各自对带弃权推理的贡献。",
+ "experiment_framework": "在TimeQA-Easy/Hard等时间QA基准上；基线为SFT、校准方法与GPT-4o；指标为Exact Match与不可答题的真阳性(弃权)率；报告Qwen2.5-1.5B经RL后EM超GPT-4o 3.46%/5.80%，不可答TPR较纯SFT+20%。",
+ "takeaways": [
+  "弃权是可教技能，CoT+弃权感知RL比事后校准更能在复杂推理中捕捉不确定性",
+  "SFT会诱发过度自信、损害可靠性，纯SFT弃权能力差",
+  "隐式信息线索对带弃权推理帮助有限，显式CoT监督更有效"
+ ],
+ "weaknesses": [
+  "RL提升了精度但作者自承仍有类似过度自信风险，未给出完全解决的方案",
+  "主要在时间QA验证，对开放域/多模态弃权的迁移未证",
+  "弃权阈值与奖励权重对准确率-弃权率权衡的敏感性分析在提取页不完整"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "时间QA弃权能力直接提升可靠性，符合主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

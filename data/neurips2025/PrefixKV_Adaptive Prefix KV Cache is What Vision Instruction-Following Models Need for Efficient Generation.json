@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/PrefixKV_Adaptive Prefix KV Cache is What Vision Instruction-Following Models Need for Efficient Generation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/PrefixKV_Adaptive Prefix KV Cache is What Vision Instruction-Following Models Need for Efficient Generation.pdf",
+ "title": "PrefixKV: Adaptive Prefix KV Cache is What Vision Instruction-Following Models Need for Efficient Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "基于层间差异的前缀KV缓存优化，提升视觉指令模型生成效率",
+ "innovations": [
+  "层间KV重要性分布差异分析",
+  "全局前缀配置优化",
+  "基于二分搜索的自适应层保留策略"
+ ],
+ "method_framework": "PrefixKV将KV压缩问题转化为全局前缀配置优化，通过二分搜索找到最优信息保留比例，实现各层最大上下文信息保留。",
+ "experiment_framework": "LLaVA-1.5-7B/13B模型，LLaVA-Description/MM-Vet数据集，PPL/ROUGE指标，对比Elastic/H2O/Local/Pyramid等方法",
+ "takeaways": [
+  "层间KV重要性分布差异显著",
+  "全局前缀配置优于统一缓存策略",
+  "方法可离线配置避免在线计算开销"
+ ],
+ "weaknesses": [
+  "依赖注意力分数作为重要性指标",
+  "仅评估了视觉指令跟随任务",
+  "未探索不同视觉编码器的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

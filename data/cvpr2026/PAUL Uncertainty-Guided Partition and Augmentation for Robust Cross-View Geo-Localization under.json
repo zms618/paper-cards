@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/PAUL Uncertainty-Guided Partition and Augmentation for Robust Cross-View Geo-Localization under.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/PAUL Uncertainty-Guided Partition and Augmentation for Robust Cross-View Geo-Localization under.pdf",
+ "title": "PAUL Uncertainty-Guided Partition and Augmentation for Robust Cross-View Geo-Localization under",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "ViT+EDL双网络协同提升噪声下跨视图定位鲁棒性",
+ "innovations": [
+  "首次系统定义NC-CVGL问题并分析GPS漂移导致的系统对齐偏差",
+  "Co-partition利用损失分布的高斯混合模型区分干净和噪声样本",
+  "Co-augmentation基于证据深度学习进行不确定性感知的区域掩码增强",
+  "Co-training通过证据正则化实现双网络交叉监督的鲁棒学习"
+ ],
+ "method_framework": "PAUL框架包含三个协同机制：Co-partition通过GMM区分干净/噪声样本；Co-augmentation利用EDL生成空间掩码增强高置信区域；Co-training通过证据正则化优化双网络，实现噪声鲁棒学习。",
+ "experiment_framework": "在GTA-UAV和UAV-VisLoc数据集上评估，使用R@1、R@5、AP、SDM@3和Dis@1指标，对比InfoNCE等8种基线方法，测试0%、30%和60%噪声率下的性能。",
+ "takeaways": [
+  "不确定性引导的区域掩码可有效提取噪声样本中的可靠信号",
+  "双网络协同训练与证据正则化相结合可显著提升模型对噪声对应的鲁棒性"
+ ],
+ "weaknesses": [
+  "方法依赖ViT作为编码器，计算开销较大",
+  "证据深度学习的超参数调优较为复杂",
+  "未探索极端噪声情况下的性能表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "跨视图定位鲁棒性直接对接可靠性主线与落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/AutoEdit_Automatic Hyperparameter Tuning for Editing.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/AutoEdit_Automatic Hyperparameter Tuning for Editing.pdf",
+ "title": "AutoEdit: Automatic Hyperparameter Tuning for Editing",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.75
+ },
+ "one_line": "RL优化扩散编辑超参数，但方法局限且泛化验证不足",
+ "innovations": [
+  "将超参数识别建模为马尔可夫决策过程",
+  "两阶段RL策略实现O(T)复杂度搜索",
+  "设计平衡编辑效果与背景保留的奖励函数"
+ ],
+ "method_framework": "将扩散去噪过程构建为MDP，状态为噪声潜变量和步数，动作为超参数配置，奖励结合CLIP对齐和MSE背景保留，通过PPO优化策略",
+ "experiment_framework": "EditBench训练数据，PieBench评估，对比DDIM/DDPM/P2P等7种编辑方法，使用SD/SDXL/DiT等模型，评估结构一致性、背景保留和语义对齐",
+ "takeaways": [
+  "两阶段RL策略有效约束搜索空间",
+  "奖励函数设计平衡编辑效果与背景保留",
+  "方法可泛化到多种编辑框架"
+ ],
+ "weaknesses": [
+  "仅关注超参数优化，未解决编辑方法本身局限性",
+  "实验未充分验证不同编辑任务的泛化能力",
+  "奖励函数中α和β参数敏感性分析不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

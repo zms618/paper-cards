@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/HEAPR_Hessian-Based Efficient Atomic Expert Pruning In Output Space.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/HEAPR_Hessian-Based Efficient Atomic Expert Pruning In Output Space.pdf",
+ "title": "HEAPR: HESSIAN-BASED Efficient Atomic Expert Pruning In Output Space",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "原子专家剪枝方法，降低MoE模型二阶信息计算复杂度",
+ "innovations": [
+  "引入原子专家概念，实现更细粒度的剪枝",
+  "将二阶信息从参数空间转换到输出空间，降低计算复杂度",
+  "设计仅需两次前向和一次反向传播的高效重要性评估算法"
+ ],
+ "method_framework": "将专家分解为原子专家，利用Optimal Brain Surgeon理论，通过Hessian矩阵评估原子专家重要性，并将计算从参数空间转换到输出空间，降低复杂度至O(d²)。",
+ "experiment_framework": "在DeepSeekMoE、Qwen系列模型上评估，使用7个零样本任务作为指标，与7种基线方法比较不同剪枝比例下的性能。",
+ "takeaways": [
+  "原子专家剪枝框架可平衡精度与效率",
+  "输出空间转换显著降低二阶信息计算复杂度",
+  "小校准集即可实现可靠的重要性评估"
+ ],
+ "weaknesses": [
+  "方法依赖MoE特定结构，通用性受限",
+  "未探讨不同规模模型的计算效率差异",
+  "缺乏对剪枝后模型推理速度的实际测量"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "MoE剪枝方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

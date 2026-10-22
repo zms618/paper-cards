@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Sosbench_Benchmarking Safety Alignment On Six Scientific Domains.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sosbench_Benchmarking Safety Alignment On Six Scientific Domains.pdf",
+ "title": "SOSBENCH: Benchmarking Safety Alignment on Six Scientific Domains",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 7.5,
+  "overall": 6.1
+ },
+ "one_line": "构建六高风险科学域安全基准，揭示前沿LLM违规率高企。",
+ "innovations": [
+  "构建regulation-grounded、hazard-focused的六高风险科学域(化学/生物/医学/药理/物理/心理)安全基准，区别于低风险选择题式安全数据",
+  "基于真实法规法条人工种子，用LLM辅助的进化式pipeline系统扩写出知识密集型、现实误用场景提示(含进阶化学式合成步骤)",
+  "在统一框架下评测前沿LLM，量化政策违规率，发现即便宣称对齐的模型在各域仍普遍泄露禁用内容"
+ ],
+ "method_framework": "先从法规/法条库人工收集种子模板与科学术语，拼装初始指令，再通过采样-变异-校验的进化流水线扩充出多样化误用提示，形成3000条跨六域评测集；用统一判定框架测量模型是否拒绝/披露禁用内容。",
+ "experiment_framework": "评测对象为Deepseek-R1、GPT-4.1等前沿LLM；指标为各域政策违规响应率；报告跨六域违规率(如Deepseek-R1 84.9%、GPT-4.1 50.3%)并分析不同能力档位模型的安全缺陷。",
+ "takeaways": [
+  "即便宣称对齐的前沿模型在高风险科学域仍持续泄露禁用内容，违规率显著(Deepseek-R1达84.9%)",
+  "现有安全基准多为低风险或浅知识任务，无法充分评估知识密集型危险场景下的安全对齐",
+  "结果提示强大LLM负责任部署存在紧迫的安全对齐缺口"
+ ],
+ "weaknesses": [
+  "本质是评测基准而非方法改进，未提出新的对齐/拒答机制或不确定性估计",
+  "提示由LLM辅助进化生成，存在标注/判定主观性与自动评估可靠性问题，缺乏人工核验规模的说明",
+  "仅测量是否披露内容这一二元安全维度，未覆盖越界程度、误导性、剂量/条件依赖等更细粒度风险；前9页未见完整分域细分表"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "高风险科学域安全对齐评测，触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

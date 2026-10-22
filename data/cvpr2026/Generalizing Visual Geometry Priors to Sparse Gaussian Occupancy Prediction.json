@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Generalizing Visual Geometry Priors to Sparse Gaussian Occupancy Prediction.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Generalizing Visual Geometry Priors to Sparse Gaussian Occupancy Prediction.pdf",
+ "title": "Generalizing Visual Geometry Priors to Sparse Gaussian Occupancy Prediction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "GPOcc结合几何先验与高斯表示，提升占用预测但参数量大且鲁棒性未验证",
+ "innovations": [
+  "射线体积采样策略将表面点扩展到物体内部",
+  "基于不透明度的剪枝策略减少冗余",
+  "无需训练的增量更新策略处理流式输入",
+  "端到端优化整个几何一致性流程"
+ ],
+ "method_framework": "GPOcc框架结合视觉几何先验与稀疏高斯表示，通过射线采样将表面点扩展到物体内部，预测高斯属性并使用概率公式推断占用，同时支持增量更新以处理流式输入。",
+ "experiment_framework": "在Occ-ScanNet和EmbodiedOcc-ScanNet数据集上评估，使用mIoU和IoU指标，与EmbodiedOcc、ISO等方法比较，并分析不同几何先验、采样点数和不透明度阈值的影响。",
+ "takeaways": [
+  "射线体积采样能有效利用几何先验进行体积推理",
+  "稀疏高斯表示比密集锚点更高效",
+  "增量更新策略能保持场景一致性"
+ ],
+ "weaknesses": [
+  "模型参数量较大(VGGT变体942.31M)",
+  "未充分讨论计算资源需求对实际部署的影响",
+  "未分析方法在极端光照或遮挡条件下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "几何先验与高斯表示结合，但未验证鲁棒性，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Rlp Reinforcement As A Pretraining Objective.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rlp Reinforcement As A Pretraining Objective.pdf",
+ "title": "RLP: Reinforcement as a Pretraining Objective",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "将RL探索引入预训练，用CoT作为探索动作，以似然增益为奖励提升推理能力。",
+ "innovations": [
+  "把强化学习的探索精神提前到预训练末期，而非仅在后训练最后阶段引入 RL。",
+  "将 CoT 生成视为预测下一 token 前的显式探索动作。",
+  "提出免验证器稠密奖励：奖励=在上下文+采样推理链下相对仅上下文的下一 token 对数似然增益，可在完整文档流上按位置分配信用。"
+ ],
+ "method_framework": "预训练时对每个位置：先采样一段内部 thought，再在'上下文+thought'条件下预测观测 token；奖励为该 thought 带来的下一 token 对数似然提升；当 thinking 提升预测时即获得正奖励，从而鼓励模型在预测前先思考，桥接 next-token 预测与有用 CoT 的涌现。",
+ "experiment_framework": "在 QWEN3-1.7B-BASE 上预训练，八基准数学科学套件平均提升 19%，相同后训练下增益叠加(AIME25、MMLU-Pro 提升最大)；推广到混合架构 NEMOTRON-NANO-12B-V2，总分 42.81%→61.32%、科学推理平均 +23%，验证跨架构/规模可扩展。",
+ "takeaways": [
+  "RL 不必等到后训练，可作为预训练目标培养推理行为。",
+  "以信息增益为奖励的免验证器稠密信号可在普通文本上高效训练。",
+  "预训练阶段引入思考能在相同后训练下带来复利式的推理增益。"
+ ],
+ "weaknesses": [
+  "thought 采样与额外前向计算使预训练开销上升，性价比/算力预算的权衡未充分量化。",
+  "奖励基于下一 token 似然增益，可能奖励对拟合语料有用但非真正严谨的'伪推理'，缺乏推理质量审计。",
+  "增益主要在数学/科学基准验证，对开放域知识、长程规划与多模态任务的迁移未展开。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "预训练RL方法与可靠性主线无实质交点，仅提升推理能力",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

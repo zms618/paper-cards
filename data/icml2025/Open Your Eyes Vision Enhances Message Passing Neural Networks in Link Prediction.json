@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Open Your Eyes Vision Enhances Message Passing Neural Networks in Link Prediction.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Open Your Eyes Vision Enhances Message Passing Neural Networks in Link Prediction.pdf",
+ "title": "Open Your Eyes: Vision Enhances Message Passing Neural Networks in Link Prediction",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.4
+ },
+ "one_line": "将图渲染为图像用视觉编码器增强链接预测，但创新性与可靠性有限",
+ "innovations": [
+  "首次将视觉模态引入链接预测，把图结构渲染成图像并用 VGG/ResNet/ViT 等视觉编码器提取视觉结构信息",
+  "提出 GVN 框架，将视觉结构特征与 MPNN/结构特征融合",
+  "提出更高效变体 E-GVN，且增益与现有 SOTA 方法兼容，可即插即用地叠加"
+ ],
+ "method_framework": "链接预测长期依赖 MPNN 消息传递路径与启发式结构特征(SF)，忽略视觉感知。GVN 将目标节点对所在的子图/局部结构渲染为图像，用预训练视觉编码器提取视觉结构特征，再与 MPNN 表示融合以预测链接存在性；E-GVN 通过简化渲染与编码流程降低计算开销。",
+ "experiment_framework": "在七个链接预测数据集（含大规模图）上评测，与结构特征增强 MPNN 等 SOTA 对比 AUC/Reciprocal Rank 等指标；验证视觉增强对不同骨干方法的兼容性与大规模图上的可扩展性。",
+ "takeaways": [
+  "视觉感知能为链接预测提供 MPNN 与启发式结构特征遗漏的互补结构信息",
+  "GVN 与现有 SOTA 兼容、可叠加，开辟图学习中利用视觉模态的新方向"
+ ],
+ "weaknesses": [
+  "与可靠性/可信AI/医学影像/多模态推理主线无关，属图学习新范式探索",
+  "把图渲染成图像引入渲染超参与视觉编码器偏置，可解释性与可复现性受渲染方式影响",
+  "视觉分支带来额外算力开销，E-GVN 的效率-精度权衡在超大规模图上仍需验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

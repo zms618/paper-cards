@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/C-LaV Conditional Latent Velocity Field Denoising for Weather-Robust LiDAR Place.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/C-LaV Conditional Latent Velocity Field Denoising for Weather-Robust LiDAR Place.pdf",
+ "title": "C-LaV Conditional Latent Velocity Field Denoising for Weather-Robust LiDAR Place",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "条件潜在速度场去噪提升恶劣天气激光雷达地点识别",
+ "innovations": [
+  "条件潜在速度场(C-LaV)在BEV潜在空间进行去噪",
+  "基于Flow Matching的DiT实现确定性ODE去噪",
+  "SALAD描述符聚合去噪潜在特征",
+  "统一恶劣天气激光雷达地点识别基准"
+ ],
+ "method_framework": "将激光雷达点云投影为三通道BEV图像，通过冻结的DINOv2编码器获取语义潜在表示，使用条件Flow Matching模型学习速度场，通过ODE求解器将噪声潜在特征传输到晴天分布，最后用SALAD头生成全局描述符。",
+ "experiment_framework": "在KITTI、NCLT和Boreas数据集上评估，使用雨、雾、雪天气条件，比较Recall@1和Recall@5指标，建立统一的3m帧间距和共享评估阈值。",
+ "takeaways": [
+  "潜在空间去噪比信号空间去噪更有效",
+  "Flow Matching在保持几何连续性方面表现优异",
+  "SALAD描述符在强外观变化下保持判别性"
+ ],
+ "weaknesses": [
+  "方法计算复杂度较高，需要50步ODE求解",
+  "在雾天条件下性能提升有限",
+  "依赖成对的晴/恶劣天气数据"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "激光雷达地点识别与可靠性主线交织，恶劣天气处理属落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

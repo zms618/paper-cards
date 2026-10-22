@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Your One-Stop Solution for AI-Generated Video Detection.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Your One-Stop Solution for AI-Generated Video Detection.pdf",
+ "title": "Your One-Stop Solution for AI-Generated Video Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "大规模AIGV基准库与评测，但分析深度与标注覆盖有限",
+ "innovations": [
+  "标准化建库管线：属性平衡+模型选择代表性+与公开基准对齐+严格质控，同时保证representativeness与replicability，回应'数量优先忽视语义多样性'的建库通病",
+  "规模与多样性跃升：440k+视频(1400万+帧)×31模型(20开源+11闭源，T2V/I2V/V2V/真实场景四范式)，开源模型2万/闭源2千每模型，真实条件模拟",
+  "系统分析范式：1500+次评测×33个检测器×4类(整视频vs逐帧、可检测性归因、数据质量影响、技术演进过时性等8维度)，产出4个可执行新发现"
+ ],
+ "method_framework": "真实视频+提示词来源→属性平衡采样→31模型生成(开源2万/闭源2千)→质控与公开基准对齐→标准化评测矩阵(33检测器×多样设置)→8项多视角分析→4项发现与insight总结。",
+ "experiment_framework": "AIGVDBench(440k+视频/31模型/四范式)；33个现有检测器×1500+评测；对比GVD/GVF/GenVideo/GenVidBench/GenBuster-200K等6基准(规模/多样性/模型新旧)；8项分析：整体/逐帧、模型可检测性、样本质量、技术演进过时性等。",
+ "takeaways": [
+  "'基准先于方法'的领域节奏：视频AIGC检测落后于图像/人脸检测，先建可信大基准再谈方法，为社区提供统一裁判",
+  "'属性平衡+公开对齐'的建库方法论：代表性(模型/语义/场景覆盖)与可复现性(对齐已有基准)是两个必须同时写的验收条件，可复制到任何检测类基准",
+  "'问对问题比堆数据重要'：整视频vs逐帧、'更新技术是否必然淘汰旧检测器'这类问题化分析让基准从数据集升级为研究框架"
+ ],
+ "weaknesses": [
+  "闭源模型每类仅2千视频、且其生成过程黑盒，模型覆盖的'代表性'强依赖闭源API可用性，存在选择性偏差风险",
+  "8项分析/4发现的判定标准与统计检验未在前9页给出(如'可检测性'指标口径、显著差异阈值)，结论可复核性待验证",
+  "44万视频标注仅'真实/合成'二分类，压缩/重编码/物理重映射等真实对抗场景(降质传播)未纳入；对检测器族(专用vs通用)的分类标准未明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频检测基准库建设，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

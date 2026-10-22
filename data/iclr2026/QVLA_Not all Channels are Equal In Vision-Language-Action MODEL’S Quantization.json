@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/QVLA_Not all Channels are Equal In Vision-Language-Action MODEL’S Quantization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/QVLA_Not all Channels are Equal In Vision-Language-Action MODEL’S Quantization.pdf",
+ "title": "QVLA: Not All Channels are Equal in Vision-Language-Action Model's Quantization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "VLA量化需考虑动作偏差，QVLA通过通道敏感度分配比特提升压缩效率。",
+ "innovations": [
+  "首个面向具身控制的动作中心量化框架，指出LLM均匀比特量化只重被动数据保真、忽视动作偏差级联",
+  "提出逐通道比特分配：直接测量每通道量化到各比特宽时对最终动作空间的敏感度，得到精确通道重要性",
+  "将量化与剪枝(0-bit)统一进同一全局优化框架"
+ ],
+ "method_framework": "对VLA逐通道量化，以各比特宽下动作输出误差为敏感度度量构建通道重要性；据此做全局比特分配优化，把冗余通道分配到低比特乃至0-bit(剪枝)，在压缩与动作成功率间权衡。",
+ "experiment_framework": "在LIBERO等具身基准上评测；以OpenVLA-OFT量化版为对象；报告VRAM占用、原性能保持率、推理加速，并对比LLM衍生的SmoothQuant。",
+ "takeaways": [
+  "QVLA仅用29.2%原VRAM即保持98.9%原性能并获1.49×加速",
+  "相对SmoothQuant取得22.6%的性能提升",
+  "VLA量化应以动作空间敏感度而非激活分布为依据"
+ ],
+ "weaknesses": [
+  "本质是模型压缩/量化方法，主线中的可靠性维度(不确定性/验证器)仅间接涉及",
+  "逐通道敏感度测量需要动作环境/回放数据，成本与跨任务泛化未充分讨论",
+  "评测集中LIBERO等仿真，真实机器人长尾失败模式下的量化鲁棒性证据有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "模型压缩方法，间接涉及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

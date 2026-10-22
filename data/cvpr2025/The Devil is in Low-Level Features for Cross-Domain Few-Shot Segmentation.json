@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/The Devil is in Low-Level Features for Cross-Domain Few-Shot Segmentation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/The Devil is in Low-Level Features for Cross-Domain Few-Shot Segmentation.pdf",
+ "title": "The Devil is in Low-Level Features for Cross-Domain Few-Shot Segmentation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "通过低层特征锐度感知提升跨域少样本分割泛化性",
+ "innovations": [
+  "发现并解释了跨域少样本分割中早期性能下降现象",
+  "提出低层特征锐度感知最小化方法",
+  "设计测试时低层特征校准模块"
+ ],
+ "method_framework": "训练阶段使用低层增强模块(LEM)通过随机卷积和傅里叶变换平滑损失景观；测试阶段使用低层校准模块(LCM)直接补充目标域低层信息。",
+ "experiment_framework": "数据集：PASCAL VOC为源域，FSS-1000/Deepglobe/ISIC/ChestX-ray为目标域；基线：SSP/FPTrans/APSeg；指标：MIoU。",
+ "takeaways": [
+  "低层特征对域偏移敏感是跨域性能下降的关键",
+  "通过特征域变换可增强模型对域不变信息的关注",
+  "测试时直接补充目标域低层信息可有效提升分割精度"
+ ],
+ "weaknesses": [
+  "方法依赖特定网络结构，通用性有待验证",
+  "随机卷积和傅里叶变换的计算开销较大",
+  "未充分分析不同域距离下的性能差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "跨域泛化属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

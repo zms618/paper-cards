@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/TC-Pade_Trajectory-Consistent Pade Approximation for Diffusion Acceleration.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/TC-Pade_Trajectory-Consistent Pade Approximation for Diffusion Acceleration.pdf",
+ "title": "TC-Pade Trajectory-Consistent Pade Approximation for Diffusion Acceleration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "TC-Padé用Padé近似加速扩散，但极低步数验证不足",
+ "innovations": [
+  "基于Padé近似的残差预测框架",
+  "自适应系数调制机制",
+  "去噪步数感知的预测策略"
+ ],
+ "method_framework": "TC-Padé采用残差预测而非直接特征预测，通过Padé近似建模特征演化，结合轨迹稳定性指示器(TSI)和步数感知策略，在保持轨迹一致性的同时实现加速。",
+ "experiment_framework": "在COCO、ImageNet和VBench-2.0上评估，对比ToCa、Δ-DiT、TeaCache和TaylorSeer等方法，使用FID、CLIP、VBench等指标。",
+ "takeaways": [
+  "残差表示比原始特征具有更高的时间相似性",
+  "Padé近似比多项式外推更适合建模非线性动力学",
+  "去噪不同阶段需要不同的预测策略"
+ ],
+ "weaknesses": [
+  "方法在极低步数(如<10步)的性能未充分验证",
+  "参数λ和θ的选择可能需要针对不同模型调整",
+  "内存开销随缓存历史增加而增大"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "扩散加速方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

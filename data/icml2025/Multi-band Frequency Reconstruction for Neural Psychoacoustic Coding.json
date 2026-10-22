@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Multi-band Frequency Reconstruction for Neural Psychoacoustic Coding.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Multi-band Frequency Reconstruction for Neural Psychoacoustic Coding.pdf",
+ "title": "Multi-band Frequency Reconstruction for Neural Psychoacoustic Coding",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "多频带量化神经音频编码，提升极低码率下的感知质量",
+ "innovations": [
+  "提出多频带谱残差矢量量化（MBS-RVQ）机制：按频率带分别量化，基于心理声学原理优化码率分配",
+  "不同频带使用独立码本，分离内容信息与说话人属性",
+  "结合Transformer启发的卷积架构与改进snake激活函数，精细捕获高频细节"
+ ],
+ "method_framework": "编码器将音频信号映射到隐空间；多频带RVQ将隐空间按频率带拆分，每个频带独立进行残差矢量量化，码率根据心理声学重要性分配（低频重要多分配，高频少分配）；解码器重构音频信号。",
+ "experiment_framework": "在LibriTTS、IEMOCAP、GTZAN、BBC等多领域数据集上验证；对比EnCodec、SoundStream等神经音频编码方法；指标包括PESQ、STOI等感知质量指标；测试12.5Hz等极低码率下的表现；下游生成任务作为tokenizer的效果验证。",
+ "takeaways": [
+  "心理声学原理可有效指导神经音频编码的码率分配，在极低码率下保持感知质量",
+  "多频带独立量化比全频带统一量化更高效，因为不同频带的感知重要性差异大",
+  "MUFFIN作为tokenizer可直接与LLM集成，是语音-语言模型的重要基础设施"
+ ],
+ "weaknesses": [
+  "多频带设计增加了模型复杂度与编解码延迟",
+  "心理声学模型基于人类听觉实验，对非人类声音（如音乐、环境音）的最优性待验证",
+  "12.5Hz极低码率仅为高压缩变体，标准码率下的优势幅度未充分展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

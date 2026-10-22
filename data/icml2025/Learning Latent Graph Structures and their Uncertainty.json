@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning Latent Graph Structures and their Uncertainty.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning Latent Graph Structures and their Uncertainty.pdf",
+ "title": "Learning Latent Graph Structures and their Uncertainty",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "点预测损失导致图结构学习偏差，提出随机损失函数联合优化图分布与预测。",
+ "innovations": [
+  "理论证明最小化点预测损失不能保证正确学习隐式关系信息及其不确定性，揭示了GSL的根本缺陷",
+  "证明合适的随机模型输出损失可同时实现两个目标：学习隐图分布 + 最优预测",
+  "提出基于采样的联合学习方法，解决隐图结构及其不确定性的学习问题"
+ ],
+ "method_framework": "将图结构学习建模为随机图模型：邻接矩阵A是随机变量，其分布待学习；分析点预测损失(如MSE)对图分布学习的偏差；提出合适的损失函数(如基于概率/似然的损失)，使图分布学习和预测任务同时达到最优；用采样方法近似随机图的后验分布。",
+ "experiment_framework": "在多个图学习任务上验证；对比传统点预测GSL方法；指标为预测精度、图结构恢复质量、不确定性估计校准；消融实验验证损失函数设计的作用。",
+ "takeaways": [
+  "点预测损失会导致隐图结构学习偏差，且不确定性估计不准",
+  "合适的随机损失可同时优化图分布和预测性能，两者不矛盾",
+  "采样方法能有效近似隐图的后验分布，给出结构不确定性"
+ ],
+ "weaknesses": [
+  "采样方法的计算开销大，大规模图的扩展性存疑",
+  "隐图分布的表示方式(如参数化)影响灵活性和效率的权衡",
+  "仅在节点分类等标准任务验证，图生成或推理任务的适用性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

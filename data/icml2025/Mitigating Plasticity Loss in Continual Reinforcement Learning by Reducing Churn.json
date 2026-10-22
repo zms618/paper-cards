@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Mitigating Plasticity Loss in Continual Reinforcement Learning by Reducing Churn.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Mitigating Plasticity Loss in Continual Reinforcement Learning by Reducing Churn.pdf",
+ "title": "Mitigating Plasticity Loss in Continual Reinforcement Learning by Reducing Churn",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.75
+ },
+ "one_line": "通过减少churn缓解持续RL中的可塑性丧失，但计算开销和泛化性存疑",
+ "innovations": [
+  "揭示持续RL中可塑性丧失与churn加剧的相关性，并用NTK矩阵秩下降建立形式化联系",
+  "提出C-CHAIN方法，通过最小化训练批次外数据的churn来缓解可塑性丧失",
+  "形式化证明C-CHAIN的双重作用：梯度去相关效应（抑制NTK非对角元）和步长自适应调整效应"
+ ],
+ "method_framework": "将单MDP场景下的churn缩减思想扩展到持续RL场景。C-CHAIN在常规训练损失之外，额外最小化训练批次外数据的网络输出变异性（churn）。通过NTK矩阵分析，证明减少chrain可抑制非对角元素从而实现梯度去相关，并通过批次外数据的梯度投影自适应调整有效步长。",
+ "experiment_framework": "在24个持续RL环境上评测，覆盖OpenAI Gym Control、ProcGen、DeepMind Control Suite、MinAtar四大基准。基线包括重置休眠神经元、正则化、反向传播变体等可塑性缓解方法。指标为各任务序列上的累积回报和渐近性能。",
+ "takeaways": [
+  "可塑性丧失伴随NTK矩阵秩下降和churn加剧，二者高度相关",
+  "减少churn可有效缓解持续RL中的可塑性丧失问题",
+  "C-CHAIN在大多数持续RL环境上优于现有可塑性缓解基线"
+ ],
+ "weaknesses": [
+  "研究聚焦RL控制任务，未验证在更大规模序列建模或语言模型持续学习中的适用性",
+  "churn的近似计算引入额外开销，未详细分析计算成本与收益的权衡",
+  "与最新的参数正则化和优化器重置方法的对比实验不够充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

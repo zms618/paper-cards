@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/3D-LLMS_Scot Teaching 3D-LLMS To Think Spatially with Million-Scale CoT Annotations.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/3D-LLMS_Scot Teaching 3D-LLMS To Think Spatially with Million-Scale CoT Annotations.pdf",
+ "title": "SCOT: TEACHING 3D-LLMS TO THINK SPATIALLY WITH MILLION-SCALE COT ANNOTATIONS",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "分层CoT与<SI>标注提升3D-LLM空间推理，但数据自举与实验不完整",
+ "innovations": [
+  "提出三层任务分类法并据此决定何时不该用 CoT：感知层（物体属性/关系/场景/视觉定位，240K）默认丢弃 CoT 只做答案监督，分析与规划层（460K/390K）才要求逐步 CoT；正文用数据证明感知层硬上 CoT 会让 ScanRefer Acc@0.25 从 58.4 掉到 56.4、Scan2Cap CIDEr 从 87.9 掉到 73.4（约 4.9% 掉点）",
+  "<SI>（Scene Information）标记机制：生成 CoT 时强制每步凡用到场景派生事实（物体属性、空间关系、布局）都必须插入 <SI> 标签，<SI> 使用不足或错误的样本直接丢弃，再用 ChatGPT-4.1 / Qwen / DeepSeek 三个 LLM 交叉复核（任一判有问题即剔除），最后人工抽 500 条校验、接受率约 90%",
+  "问题改写：把原数据集中直接点名目标物体的问题（椅子的颜色是什么）重写成用功能或语境角色指代（靠近书桌的物体的视觉特征是什么），逼模型先做场景感知再推理；场景上下文由场景图 + 序列化文本（Object-3 [chair, at (0.2,0.4,0.5)] is 0.8m to the left of Object-1）+ BEV 图 + 局部/全局图像组成喂给 VLM 生成"
+ ],
+ "method_framework": "两阶段训练：先在 SCoT 感知样本上训，再在分析与规划样本上微调以生成显式推理链；评测模型含 3D VG Transformer、Chat3D v2、Chat Scene、Video3D-LLM 及作者自设计的支持图像/点云多模态输入的 SCoT-Reasoner。",
+ "experiment_framework": "感知：ScanRefer、Multi3DRefer、Scan2Cap、ScanQA、SQA3D（Acc@0.25/0.50、F1、CIDEr、B-4、EM）；分析/规划：自建 SCoT-Analysis/Planning 基准上比较 Chat3D v2、Video3D LLM、Chat Scene 及其 CoT/Answer-Only 变体，指标含 ROUGE-L、METEOR 与 1–10 分制的 Explainability/Faithfulness/Trustworthiness。",
+ "takeaways": [
+  "简单感知任务禁 CoT、复杂推理任务用 CoT 的分层监督是本文最可搬运的经验结论，能直接省掉 3D 任务里无意义的中间步并降幻觉",
+  "<SI> citations 既是过滤噪声样本的判据、也是可解释性指标（Faithfulness 从 5.59 升到 6.15）的抓手，比单纯要求给出理由更可验证",
+  "多 LLM 交叉复核加小样本人工抽检的质检流程，是规模化合成 CoT 数据集的低成本可信方案"
+ ],
+ "weaknesses": [
+  "数据是自举式蒸馏：1.1M 里感知 240K 直接 reuse ScanRefer/ScanQA/SQA3D/Scan2Cap，分析加规划共 850K 全由 VLM 合成（million-scale 中 22% 是旧数据搬运），而用于复核的 ChatGPT-4.1/Qwen/DeepSeek 与生成模型存在家族重叠，事实一致性这一关键维度依赖同一批模型判断，人工校验只有 500 条、接受率 90%；跨扫描数据集泛化也未测（仅 ScanNet 800 场景）",
+  "最需要显著性的地方最弱：Explainability/Faithfulness/Trustworthiness 是人工 1–10 打分且只报单点值，无评分者间一致性与置信区间；Table 2 的掉点对比 CoT 版与 Answer-Only 版时，两者输出长度与推理步数天然不同，长输出更容易刷高 ROUGE/BLEU，真正掉点的准确性指标（Acc@0.25、CIDEr）与文本相似度指标未分开论证",
+  "正文在 Table 4（规划任务）处截断，规划的定量结果与 <SI> 标签、问题改写、两阶段对单阶段的全部消融缺失，confidence 仅 medium；relevance 给 8.0 的理由：论文直接以 CoT 在简单感知任务上诱发 hallucination、需要场景 grounded 的 faithfulness 为 claimed problem，并评测了 Faithfulness/Trustworthiness，属可信 AI 与多模态大模型推理的交点，但正文未涉及不确定性量化、验证器或医学落地域，故不给 9+"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "可信AI与多模态大模型推理交点，但缺乏不确定性量化与医学落地",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

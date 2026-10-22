@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RESCP_Reservoir Conformal Prediction for Time Series Forecasting.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RESCP_Reservoir Conformal Prediction for Time Series Forecasting.pdf",
+ "title": "RESCP: Reservoir Conformal Prediction for Time Series Forecasting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "基于无训练储层计算的自适应重加权共形预测方法",
+ "innovations": [
+  "首次将储层计算引入共形预测领域，用无需训练的随机循环网络状态相似性动态重加权残差",
+  "证明RESCP在合理假设下达到渐近条件覆盖（asymptotic conditional coverage）",
+  "提出处理分布偏移和外生变量的RESCP变体，可在任意点预测模型之上即插即用"
+ ],
+ "method_framework": "RESCP用回声状态网络（ESN）作为随机储层，输入预测残差，在每个时间步计算当前储层状态与历史状态的相似性，据此自适应重加权过去的残差。加权经验分布的分位数即为预测区间边界。ESN无需训练，初始化后即产生稳定动态和信息丰富的时序表示。",
+ "experiment_framework": "在多个真实世界预测任务上评测；对比现有时间序列共形预测方法（如EnbPI、MSC等）；报告经验覆盖误差和区间宽度；测试分布偏移场景和外生变量的变体效果。",
+ "takeaways": [
+  "储层计算的随机状态可有效捕捉时序局部动态，用于自适应重加权共形分数",
+  "无训练的ESN方式比基于Transformer/学习模型的加权方法更高效可扩展",
+  "RESCP可作为任意点预测模型的后处理层，提供分布无关的预测区间"
+ ],
+ "weaknesses": [
+  "仅在时间序列预测任务验证，对分类、多模态等其他任务的共形预测适配性未讨论",
+  "渐近条件覆盖的证明依赖较强假设，有限样本下的覆盖保证精度未充分分析",
+  "储层超参数（谱半径、稀疏度等）的选择对性能的敏感性消融不充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "共形预测方法与可靠性主线直接相关，时间序列预测为落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

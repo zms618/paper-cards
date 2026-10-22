@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Buffer layers for Test-Time Adaptation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Buffer layers for Test-Time Adaptation.pdf",
+ "title": "Buffer layers for Test-Time Adaptation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "轻量Buffer层解决TTA中小批量BN不稳定问题，大批量提升有限",
+ "innovations": [
+  "即插即用的Buffer层设计，隔离适应过程避免灾难性遗忘",
+  "Buffer层可与BN层协同更新，提升大批量下的性能",
+  "在连续变化域中保持稳定性和鲁棒性"
+ ],
+ "method_framework": "在预训练模型中插入轻量级Buffer层，通过1×1和3×3卷积的残差连接实现域适应，保持主干网络参数不变",
+ "experiment_framework": "CIFAR10-C/100-C、CIFAR-10-W、ImageNet-C数据集，对比TENT、EATA等基线方法，评估小批量(2,4,16)和大批量下的性能",
+ "takeaways": [
+  "隔离式适应单元可有效避免灾难性遗忘",
+  "模块化设计可无缝集成到现有TTA框架中",
+  "小批量场景下Buffer层显著优于BN更新"
+ ],
+ "weaknesses": [
+  "大批量下Buffer层单独使用时性能提升有限",
+  "未在医学影像等特定领域验证",
+  "计算开销虽小于全模型更新但仍增加推理时间"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/TAPIP3D_Tracking Any Point in Persistent 3D Geometry.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/TAPIP3D_Tracking Any Point in Persistent 3D Geometry.pdf",
+ "title": "TAPIP3D: Tracking Any Point in Persistent 3D Geometry",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "3D点跟踪方法，结合世界坐标与邻域注意力，但深度依赖限制鲁棒性",
+ "innovations": [
+  "相机稳定3D特征云表示",
+  "3D邻域到邻域(N2N)注意力机制",
+  "世界空间vs相机空间跟踪对比"
+ ],
+ "method_framework": "将RGB-D视频转换为3D特征云，使用k-NN邻域和双向交叉注意力进行轨迹估计，通过迭代Transformer更新3D点位置和可见性",
+ "experiment_framework": "TAPVid3D、DexYCB、LSFOdyssey、Dynamic Replica数据集，对比CoTracker3、SpatialTracker、DELTA，使用APD3D、OA、AJ3D指标",
+ "takeaways": [
+  "世界空间坐标比相机空间坐标更适合长期跟踪",
+  "3D邻域注意力比传统2D相关窗口更有效",
+  "深度质量对3D跟踪性能影响显著"
+ ],
+ "weaknesses": [
+  "依赖深度估计质量，估计深度时性能下降",
+  "计算复杂度较高，仅达到10 FPS",
+  "未充分讨论在极端遮挡情况下的表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

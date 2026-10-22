@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Sinktrack_Attention Sink Based Context Anchoring for Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sinktrack_Attention Sink Based Context Anchoring for Large Language Models.pdf",
+ "title": "SinkTrack: Attention Sink Based Context Anchoring for Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "利用<BOS>作为attention sink锚点注入上下文，抑制幻觉但信息容量有限。",
+ "innovations": [
+  "将LLM的attention sink(持续高注意力指向<BOS>)特性反过来用作信息锚点，对抗导致幻觉/上下文遗忘的注意力漂移",
+  "提出把来自输入图像或指令的关键上下文特征注入<BOS>表示，使生成全程锚定初始上下文",
+  "方法training-free、plug-and-play，引入可忽略的推理开销"
+ ],
+ "method_framework": "观察到生成时注意力从初始关键输入(图像特征/指令)漂移到新生成token，而<BOS>始终获得高注意力(sink)；于是在推理时把关键上下文特征注入<BOS>向量，借sink把这些信息持续保持在注意力中心，避免长生成中遗忘初始约束、抑制与输入不符的幻觉。",
+ "experiment_framework": "文本任务(如SQuAD2.0)与多模态任务(如M3CoT)上，用Llama3.1-8B-Instruct、Qwen2.5-VL-7B-Instruct等评测幻觉率/上下文遗忘指标；跨架构与规模验证鲁棒性，并分析信息传递机制。",
+ "takeaways": [
+  "SQuAD2.0上Llama3.1-8B提升+21.6%，M3CoT上Qwen2.5-VL-7B提升+22.8%",
+  "跨不同架构与规模一致受益，方法鲁棒可泛化",
+  "training-free、零额外训练、推理开销可忽略"
+ ],
+ "weaknesses": [
+  "锚定效果依赖<BOS>确实是稳定attention sink，对不满足该性质的模型/位置编码是否同样有效需逐一验证",
+  "把全部关键特征压入单个<BOS>表示，信息容量有限，对超长/多图复杂上下文可能力不从心",
+  "'+21.6%/+22.8%'是相对特定基线与设置的提升，与最新去偏/长上下文方法的系统对比在前9页未见完整表"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "抑制幻觉的可靠性方法，多模态落地域有实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Selective Rotary Position Embedding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Selective Rotary Position Embedding.pdf",
+ "title": "Selective Rotary Position Embedding (Selective RoPE)",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "将RoPE推广到任意角度并与衰减门控组合，提升序列模型召回率。",
+ "innovations": [
+  "通过softmax与随机傅里叶特征(RFF)的关系论证：softmax注意力隐式做了输入相关的选择性旋转，而线性模型恰好缺这一旋转分量。",
+  "提出Selective RoPE：输入相关、可学习的旋转位置编码，把RoPE推广到任意角度并与衰减门控组合。",
+  "将其装备到门控线性注意力得到可复用RoPE技巧高效实现的复数递归层，在合成基准与370M预训练上提升召回/下游精度。"
+ ],
+ "method_framework": "强召回需两互补机制：(i)旋转在保范下编码相对位置，(ii)衰减选择性丢弃过去KV。Selective RoPE让旋转角度输入相关且可学习，与线性注意力的衰减门控复合，形成复数递归层，用RoPE技巧高效实现，近乎零架构开销。",
+ "experiment_framework": "合成基准MQAR、copying、state tracking及370M参数语言模型预训练；对比标准RoPE与纯门控线性注意力；指标为召回率、下游准确率与表达力；报告架构开销极小。",
+ "takeaways": [
+  "线性序列模型的缺失部件正是softmax注意力隐式执行的旋转。",
+  "输入相关可学习旋转+衰减门控的组合可在近线性复杂度下提升长程召回。"
+ ],
+ "weaknesses": [
+  "属序列模型架构/位置编码方向，与可靠性/医学影像/多模态推理主线无关。",
+  "仅在370M规模预训练验证，更大规模下收益是否保持需确认。",
+  "前9页主要是理论动机，完整下游语言benchmark结果需后续章节。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "序列模型架构与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

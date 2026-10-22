@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Sample-Specific Noise Injection For Diffusion-Based Adversarial Purification.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Sample-Specific Noise Injection For Diffusion-Based Adversarial Purification.pdf",
+ "title": "Sample-Specific Noise Injection For Diffusion-Based Adversarial Purification",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "针对扩散对抗净化中固定噪声水平次优问题，提出样本特定噪声注入方法。",
+ "innovations": [
+  "指出现有DBP对所有样本用同一固定噪声水平t*次优，最优t*应随样本而异",
+  "用预训练score网络的score范数量化样本偏离干净数据分布的程度",
+  "提出SSNI：基于score范数幅度经重权函数逐样本自适应调整注入噪声水平，可即插即用到现有DBP"
+ ],
+ "method_framework": "DBP先向前扩散加高斯噪声再反向去噪以净化对抗样本，加噪量t*决定成败。SSNI用预训练score网络估计每个样本的score范数(偏离干净分布的程度)，再经一个重权函数把该幅度映射为逐样本的t*：越干净注噪越少、越脏注噪越多，实现样本特定的噪声注入。",
+ "experiment_framework": "将SSNI嵌入现有DBP方法(CARP/DiffPurification等)，在标准图像分类(如CIFAR-10/100、ImageNet子集)上与固定t*的基线在多种对抗攻击下对比；指标为净化后的鲁棒精度。",
+ "takeaways": [
+  "最优净化噪声水平是样本相关的，固定t*次优",
+  "score范数可作为样本偏离干净分布的有效信号来自适应定噪",
+  "SSNI即插即用地显著提升现有DBP方法的对抗鲁棒精度"
+ ],
+ "weaknesses": [
+  "依赖预训练score网络的质量，score范数估计偏差会直接影响自适应效果",
+  "重权函数形式与超参选择的理论依据不足，可能需逐数据集调参",
+  "对更强自适应攻击/白盒攻击下净化是否被绕过的评估需加强"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

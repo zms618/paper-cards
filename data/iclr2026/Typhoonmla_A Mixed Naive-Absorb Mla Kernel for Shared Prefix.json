@@ -1,0 +1,41 @@
+{
+ "title": "TyphoonMLA: A Mixed Naive-Absorb MLA Kernel for Shared Prefix",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "混合MLA内核优化，依赖硬件特性，算法创新有限。",
+ "innovations": [
+  "指出现有 MLA 解码内核(FlashMLA)用 absorb 法虽省带宽，但计算受限，无法利用共享前缀的数据复用机会。",
+  "提出混合 naive-absorb 方案：对注意力计算中计算受限部分用 naive 公式以复用共享前缀，对非共享部分用 absorb 降低带宽需求。",
+  "在 NPU/GPU 上最高达 3x/3.24x 注意力吞吐、1.48x 端到端吞吐，HBM 开销仅 3%。"
+ ],
+ "method_framework": "MLA 可等价实现为 naive(计算高效，用于训练/prefill)或 absorb(省带宽，用于 decode)；TyphoonMLA 按注意力各部分是计算受限还是带宽受限动态选择公式，使共享前缀 KV 只读一次并跨多 query 复用，从而同时吃满算力与省带宽。",
+ "experiment_framework": "在 NPU 与 GPU 上，与 naive/absorb 单一 MLA 内核及 FlashMLA 对比，报告注意力计算吞吐、端到端 tokens/s 与 HBM 占用。",
+ "takeaways": [
+  "MLA 解码内核因计算受限而浪费了共享前缀的数据复用潜力。",
+  "混合 naive/absorb 按计算-带宽性质分块，可同时获得复用收益与省带宽收益。",
+  "TyphoonMLA 在几乎不增 HBM 的情况下显著提升 MLA 推理吞吐。"
+ ],
+ "weaknesses": [
+  "属内核/系统优化工作，算法层无新贡献，收益强依赖硬件实现与前缀共享场景占比。",
+  "混合策略的分块阈值需针对具体硬件调优，可移植性受限。",
+  "与可靠性/医学影像/多模态推理主线无关；完整硬件基准与消融表未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Typhoonmla_A Mixed Naive-Absorb Mla Kernel for Shared Prefix.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Typhoonmla_A Mixed Naive-Absorb Mla Kernel for Shared Prefix.pdf",
+ "raw_overall": 6.0,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "系统优化工作，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

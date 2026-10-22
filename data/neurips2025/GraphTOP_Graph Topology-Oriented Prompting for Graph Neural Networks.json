@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/GraphTOP_Graph Topology-Oriented Prompting for Graph Neural Networks.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/GraphTOP_Graph Topology-Oriented Prompting for Graph Neural Networks.pdf",
+ "title": "GraphTOP: Graph Topology-Oriented Prompting for Graph Neural Networks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "拓扑提示框架提升GNN节点分类，但任务局限且超参数敏感",
+ "innovations": [
+  "首次提出图拓扑导向提示框架",
+  "将拓扑提示重构为边重连问题并通过重参数化解决",
+  "子图约束的拓扑提示降低计算复杂度",
+  "熵正则化和稀疏性约束确保紧致松弛"
+ ],
+ "method_framework": "GraphTOP将拓扑提示转化为边重连问题，通过Gumbel-Softmax重参数化到连续概率空间，利用共享投影器生成概率，并在多跳局部子图上实施边重连，同时使用熵正则化和稀疏性约束确保确定性输出和图稀疏性。",
+ "experiment_framework": "在5个数据集(Cora, PubMed, Amazon, Minesweeper, Flickr)上评估，采用4种预训练策略(GraphCL, SimGRACE, LP-GPPT, LP-GraphPrompt)，与6种基线方法(Linear Probe, GPPT, All-in-one, GraphPrompt, GraphPrompt+, ProNoG)比较5-shot节点分类准确率。",
+ "takeaways": [
+  "拓扑信息对图学习任务至关重要，提示设计不应仅关注特征",
+  "边重连问题可通过重参数化转化为可优化问题",
+  "子图约束可有效降低拓扑提示的计算复杂度"
+ ],
+ "weaknesses": [
+  "仅关注节点分类任务，未在其他图任务上验证",
+  "子图大小ρ是超参数，可能影响性能",
+  "未探讨不同图结构类型(如异构图)上的适用性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

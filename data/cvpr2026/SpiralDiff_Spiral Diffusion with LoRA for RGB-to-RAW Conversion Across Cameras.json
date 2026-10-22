@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/SpiralDiff_Spiral Diffusion with LoRA for RGB-to-RAW Conversion Across Cameras.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SpiralDiff_Spiral Diffusion with LoRA for RGB-to-RAW Conversion Across Cameras.pdf",
+ "title": "SpiralDiff Spiral Diffusion with LoRA for RGB-to-RAW Conversion Across Cameras",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "信号相关噪声与相机感知LoRA的扩散模型，用于RGB到RAW转换",
+ "innovations": [
+  "信号相关噪声权重策略，根据像素强度自适应调整重建难度",
+  "CamLoRA相机感知轻量级适配模块，实现多相机统一模型",
+  "螺旋扩散过程，平衡不同强度区域的重建保真度和生成灵活性"
+ ],
+ "method_framework": "基于ResShift的扩散框架，引入信号相关噪声权重和相机感知LoRA模块，通过时间变化权重图实现RAW到RGB的转换",
+ "experiment_framework": "在FiveK和NOD数据集上评估，使用PSNR和SSIM指标，比较单独训练和联合训练设置，并特别测试过曝区域性能",
+ "takeaways": [
+  "信号相关噪声策略可有效处理不同强度区域的重建难度",
+  "轻量级LoRA适配模块可实现多相机统一模型的高效相机特定适应"
+ ],
+ "weaknesses": [
+  "仅使用4个扩散步数可能限制了模型的表达能力",
+  "实验主要在有限数据集上进行，泛化能力有待进一步验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "相机图像转换技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

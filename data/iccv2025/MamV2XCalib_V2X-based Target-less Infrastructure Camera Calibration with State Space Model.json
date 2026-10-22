@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/MamV2XCalib_V2X-based Target-less Infrastructure Camera Calibration with State Space Model.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/MamV2XCalib_V2X-based Target-less Infrastructure Camera Calibration with State Space Model.pdf",
+ "title": "MamV2XCalib V2X-based Target-less Infrastructure Camera Calibration with State Space Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "V2X无目标校准结合Mamba时序建模，但依赖近距离车辆且天气验证不足",
+ "innovations": [
+  "首个V2X无目标基础设施相机校准方法",
+  "结合多尺度特征和4D相关体积的校准网络",
+  "使用Mamba模型建模时序信息估计旋转角度"
+ ],
+ "method_framework": "将车辆LiDAR点云投影到路边相机图像生成深度图，提取多尺度特征形成4D相关体积，通过GRU迭代更新像素级对应关系，最后用Mamba模型融合时空信息回归旋转偏差",
+ "experiment_framework": "V2X-Seq和TUMTraf-V2X数据集，与LCCNet和Calib-anything对比，使用平均角度误差和标准差作为指标",
+ "takeaways": [
+  "时序信息融合能有效解决V2X场景中数据稀疏和视角差异问题",
+  "迭代更新机制和Mamba架构的结合提高了校准的鲁棒性"
+ ],
+ "weaknesses": [
+  "依赖车辆靠近相机进行校准，距离限制在50米内",
+  "未充分讨论不同天气条件下的性能表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "V2X无目标校准结合Mamba时序建模，解决校准可靠性问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

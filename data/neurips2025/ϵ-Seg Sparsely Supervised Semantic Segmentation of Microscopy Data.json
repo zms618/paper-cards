@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/ϵ-Seg Sparsely Supervised Semantic Segmentation of Microscopy Data.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/ϵ-Seg Sparsely Supervised Semantic Segmentation of Microscopy Data.pdf",
+ "title": "ϵ-Seg: Sparsely Supervised Semantic Segmentation of Microscopy Data",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "稀疏分割掩码修复+GMM先验+聚类免除法，0.05%标签下显微图像分割",
+ "innovations": [
+  "以中心区域掩码+修复损失（零掩码自编码）替代整图重建，使特征学习聚焦掩码语义类，支撑0.05%级稀疏标签",
+  "GMM先验与语义类一一对应，并跨所有层级施加监督对比损失（弥补GMM只作用于最顶层），用FiLM调制后验、KL仅对标签对应分量闭式计算",
+  "聚类免除法：Gumbel-Softmax采样的MLP分割头直接从logits预测标签，替代K-Means后处理，兼顾精度与推理速度"
+ ],
+ "method_framework": "HDN式HVAE做中心掩码修复重建；顶层GMM先验（每类一分量），FiLM调制后验，KL只对标签对应分量算；跨层对比损失+Gumbel-Softmax分割头，整体L=LI+α1LCE+α2LKL+α3LCL。",
+ "experiment_framework": "BetaSeg(FIB-SEM)、liver FIBSEM、Aitslab荧光；基线Vanilla HVAE/MAESTER/Labkit/U-Net/ViT/Segmenter；DSC；含组件消融与标签量0.05%→0.0025%缩放。",
+ "takeaways": [
+  "零掩码中心修复是贴合分割目标的代理任务：强迫模型为掩码语义类编码可判别特征，比整图重建更标签高效",
+  "'先验复杂化但KL保持闭式'的取舍：GMM先验仅对标签对应分量算KL，规避了GMM间KL的近似开销",
+  "用可微分割头替代K-Means聚类，把聚类免除法落地为端到端预测，兼顾精度与推理成本"
+ ],
+ "weaknesses": [
+  "无多种子/方差报告，BetaSeg上Avg DSC 0.89 vs U-Net稀疏监督0.83为单次运行，差距稳健性未验证",
+  "对比学习依赖稀疏标签构造正负对，未分析标签降至0.0025%时有效正负对稀缺导致的退化",
+  "组件消融表7未出现在正文9页内，仅文字引用无法核验；Labkit基线按单个体积训练，公平性存疑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

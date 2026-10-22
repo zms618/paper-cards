@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Griffin Towards a Graph-Centric Relational Database Foundation Model.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Griffin Towards a Graph-Centric Relational Database Foundation Model.pdf",
+ "title": "Griffin: Towards a Graph-Centric Relational Database Foundation Model",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "elevance": 4,
+  "evidence": 6,
+  "overall": 5.5
+ },
+ "one_line": "首个图中心RDB基础模型，但与可靠性主线无关且工程门槛高",
+ "innovations": [
+  "提出首个关系型数据库(RDB)基础模型Griffin，跨不同规模/模式/领域RDB统一处理多任务",
+  "以图为中心建模，引入交叉注意力模块与新型聚合器，配合增强MPNN捕捉跨表关系",
+  "在单表与RDB数据上联合预训练，对类别/数值/元数据特征用专门编码器，低数据场景与迁移表现突出"
+ ],
+ "method_framework": "把关系数据库建模为图（表/行为节点、外键关系为边），统一编码器处理类别/数值/元数据特征，任务解码器跨图做预测；交叉注意力对齐多表信息，增强MPNN传播关系，预训练后可迁移到未见RDB的下游任务。",
+ "experiment_framework": "在跨领域、超1.5亿节点的大规模异构/时序图（抽取自RDB）上评测；与逐任务单独训练的模型比较；指标为下游预测精度、低数据场景性能与跨库迁移性；报告优于或匹敌单任务模型。",
+ "takeaways": [
+  "关系数据库可统一抽象为图并训练跨库基础模型",
+  "图中心+交叉注意力避免了把关系数据拍平成单表的信息损失",
+  "预训练带来强迁移性，在低标注数据场景优势明显"
+ ],
+ "weaknesses": [
+  "与可靠性主线（鲁棒性/不确定性/过程奖励/医学影像/多模态推理）无关，属数据库/图学习",
+  "大规模图建模的工程与显存开销大，普通RDB部署门槛高",
+  "对模式漂移/脏数据的鲁棒性与预测不确定性未作为核心评估"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.85,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

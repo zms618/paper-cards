@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Toolweaver_Weaving Collaborative SEMAN-TICS for Scalable Tool Use In Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Toolweaver_Weaving Collaborative SEMAN-TICS for Scalable Tool Use In Large Language Models.pdf",
+ "title": "ToolWeaver: Weaving Collaborative Semantics for Scalable Tool Use in Large Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "层次化工具编码缓解词表爆炸，但冷启动与推理开销未解决",
+ "innovations": [
+  "指出'一工具一新token'导致词表线性爆炸且每个工具语义孤立、难以泛化",
+  "把工具编码为层次化码序列，词表扩展随工具数对数增长，并从共享码的密集共现学习协作模式",
+  "设计新型tokenization把工具内在语义与外在共用模式编织成结构化码，再经生成式对齐微调让LLM产出层次码序列"
+ ],
+ "method_framework": "替代一工具一token：用tokenization把每个工具表示为层次化码序列，既融合其内在语义又反映其与他工具的共用关系；共享码在工具间复现，使模型从密集共现中学习协作；再微调LLM生成这些层次码来完成工具选择与执行。",
+ "experiment_framework": "在近47000个工具的大规模设定下评测；对比检索式(ToolLLM/Gorilla)与生成式(一工具一token)工具使用方法；指标为工具选择/执行准确率、词表规模与泛化；消融验证层次码与语义编织的贡献。",
+ "takeaways": [
+  "一工具一token在大规模工具库下造成词表爆炸与语义孤立泛化危机",
+  "层次化编码把词表扩展降到对数级，并让模型从共享码共现中学习工具协作",
+  "在近47000工具上取得更可扩展、可泛化、语义感知的工具使用"
+ ],
+ "weaknesses": [
+  "层次码的tokenization依赖工具描述与共现统计，新工具冷启动/描述噪声下的鲁棒性未充分讨论",
+  "生成层次码相比直接生成API名，推理时的解码开销与错误传播未量化",
+  "属工具使用agent方向，与可靠性主线及医学影像、多模态推理落地域关联弱"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.43,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "工具使用agent与可靠性主线及落地域关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

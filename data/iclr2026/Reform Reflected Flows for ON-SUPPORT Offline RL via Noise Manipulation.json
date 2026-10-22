@@ -1,0 +1,41 @@
+{
+ "title": "ReFORM: Reflected Flows for On-Support Offline RL via Noise Manipulation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "用flow刻画支撑集，reflected flow生成受限噪声，免正则权重。",
+ "innovations": [
+  "用较弱的支撑集约束(而非KL/MMD等统计距离正则)替代，在latent空间by construction保证动作不越出行为策略支撑集。",
+  "将reflected flow用于为BC flow策略生成约束在支撑集内的多模态噪声，兼顾多模态动作表达与防OOD。",
+  "在OG-Bench 40个不同数据质量任务上用同一套超参，在performance profile曲线上胜过所有手调超参的flow基线。"
+ ],
+ "method_framework": "两阶段：先用行为克隆学一个源分布有界的flow策略以表征动作支撑；再学一个reflected flow噪声生成器，在该有界源分布内重采样噪声并优化Q值最大化性能；由于输出始终由有界源经同一映射生成，动作天然落在支撑集内，无需KL/MMD正则。",
+ "experiment_framework": "基准：OG-Bench 40个高难任务、多样数据质量；基线为KL/MMD/Wasserstein正则及flow/diffusion策略方法(均手调超参)；用固定超参对比；指标为performance profile曲线与累计归一化性能。",
+ "takeaways": [
+  "支撑约束比统计距离约束更宽松，既能防OOD又不过度限制策略提升。",
+  "reflected flow可在保持多模态表达的同时把噪声限制在支撑集内。",
+  "免正则权重使方法对超参与数据质量更鲁棒，跨任务常数超参可行。"
+ ],
+ "weaknesses": [
+  "落地域为离线RL控制/机器人，与医学影像/多模态推理主线无关。",
+  "支撑集由BC flow隐式刻画，其边界估计误差会被reflected flow继承，边界失真时的OOD保证不严格。",
+  "节选前9页未见40任务的逐任务分数表与消融(reflected flow vs 其他受限采样)，证据在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Reform Reflected Flows for ON-SUPPORT Offline RL via Noise Manipulation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reform Reflected Flows for ON-SUPPORT Offline RL via Noise Manipulation.pdf",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "离线RL控制与医学影像/多模态推理主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

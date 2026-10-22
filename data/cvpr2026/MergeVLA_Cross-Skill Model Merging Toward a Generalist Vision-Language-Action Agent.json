@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/MergeVLA_Cross-Skill Model Merging Toward a Generalist Vision-Language-Action Agent.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/MergeVLA_Cross-Skill Model Merging Toward a Generalist Vision-Language-Action Agent.pdf",
+ "title": "MergeVLA Cross-Skill Model Merging Toward a Generalist Vision-Language-Action Agent",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "稀疏LoRA与跨注意力合并VLA模型，参数冲突缓解有限",
+ "innovations": [
+  "任务掩码稀疏激活LoRA适配器减少参数冲突",
+  "移除自注意力层仅保留跨注意力保持模块化",
+  "无监督测试时任务路由机制"
+ ],
+ "method_framework": "MergeVLA通过任务掩码稀疏激活LoRA适配器解决VLM参数冲突，移除自注意力层保持动作专家模块化，并引入测试时任务路由实现无监督任务选择",
+ "experiment_framework": "LIBERO/LIBERO-Plus/RoboTwin/SO101机器人臂数据集，对比TA/TIES/WUDI等基线方法，使用成功率作为主要指标",
+ "takeaways": [
+  "任务掩码可有效缓解多任务参数冲突",
+  "架构设计对模型合并能力至关重要",
+  "无监督任务路由实现灵活多技能切换"
+ ],
+ "weaknesses": [
+  "专家头部仍需保留多个版本增加参数量",
+  "任务路由仅基于初始观测可能不够鲁棒",
+  "未分析计算开销增加情况"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "VLA模型合并与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

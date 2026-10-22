@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Minority-Focused Text-to- Generation via Prompt Optimization.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Minority-Focused Text-to- Generation via Prompt Optimization.pdf",
+ "title": "Minority-Focused Text-to- Generation via Prompt Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "提示优化生成少数群体样本，但质量与对齐有妥协",
+ "innovations": [
+  "基于token的在线提示优化框架，保留原始语义",
+  "针对少数群体采样的新目标函数，近似对数似然",
+  "增强的语义可控性，通过初始词嵌入控制生成方向"
+ ],
+ "method_framework": "在提示中添加可学习token，在推理过程中迭代优化其嵌入，使用重构损失鼓励生成低密度区域样本，同时保持文本对齐",
+ "experiment_framework": "在SDv1.5、SDv2.0和SDXL-Lightning上测试，与DDIM、CADS和SGMS对比，使用CLIPScore、PickScore、ImageReward、Precision/Recall、Density/Coverage和似然评估",
+ "takeaways": [
+  "选择性优化提示token而非整个嵌入，保留语义同时鼓励独特特征",
+  "初始词嵌入选择可增强语义可控性和少数群体生成性能"
+ ],
+ "weaknesses": [
+  "在图像质量和文本对齐方面略有妥协",
+  "计算成本较高，需要间歇性优化步骤"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "文本生成优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

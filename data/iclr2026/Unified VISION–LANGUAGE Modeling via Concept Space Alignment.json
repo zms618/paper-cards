@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unified VISION–LANGUAGE Modeling via Concept Space Alignment.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unified VISION–LANGUAGE Modeling via Concept Space Alignment.pdf",
+ "title": "Unified Vision-Language Modeling via Concept Space Alignment",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "扩展SONAR到视觉，用后验对齐和扩散模型统一多模态建模。",
+ "innovations": [
+  "把仅文本/语音的SONAR嵌入空间后验扩展到图像/视频模态，使OMNISONAR成为覆盖4模态、1500语言的最通用嵌入空间",
+  "提出coarse-to-fine三阶段对齐课程(12M图文粗对齐→2M合成视频caption时间适配→200K人工视频caption细粒度对齐)",
+  "提出V-LCM：把视觉与语言输入编码为统一潜嵌入序列，沿用LCM的latent diffusion next-embedding预测目标做视觉-语言指令微调"
+ ],
+ "method_framework": "现有嵌入空间仅限文本/语音。V-SONAR用teacher-student训练把PERCEPTION ENCODER视觉表征后验映射进SONAR语义空间，按coarse-to-fine三阶段caption数据课程对齐。借助OMNISONAR文本解码器，V-SONAR可做视频caption。进一步扩展LCM(在SONAR空间做diffusion语言建模)为V-LCM：视觉与语言经V-SONAR/SONAR编码成统一潜嵌入序列，用同一latent diffusion目标做next-embedding预测，跨多语多模态指令微调。",
+ "experiment_framework": "评估text-to-video retrieval(PE-VIDEO R@1 73.03 vs SigLIP2-g-opt 63.91)、video captioning(DREAM-1K BLEU 23.9 vs 19.6; PE-VIDEO BLEU 39.0 vs 30.0)；V-LCM在图像/视频caption与QA上匹配SOTA VLM，并在62种语言中61种(富资源到低资源)显著超越。",
+ "takeaways": [
+  "后验对齐可把任意视觉编码器嫁接到已有多语嵌入空间，无需从头训多模态模型",
+  "在连续嵌入空间用latent diffusion做next-embedding预测，可统一视觉-语言生成",
+  "继承SONAR的多语性，V-LCM在低资源语言上显著优于现有VLM"
+ ],
+ "weaknesses": [
+  "属多模态嵌入/检索与caption方向，与本主线(可靠性×多模态推理/医学影像)关联中等偏弱",
+  "后验对齐依赖caption数据课程质量，对齐误差如何向下游生成传播未充分分析",
+  "在连续嵌入空间做diffusion生成的可控性/忠实度，相比离散token VLM在推理类任务上的差距正文前9页未展开"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "多模态嵌入与caption，与可靠性主线关联中等偏弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

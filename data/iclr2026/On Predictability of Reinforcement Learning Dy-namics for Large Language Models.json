@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/On Predictability of Reinforcement Learning Dy-namics for Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/On Predictability of Reinforcement Learning Dy-namics for Large Language Models.pdf",
+ "title": "On Predictability of Reinforcement Learning Dynamics for Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "发现LLM RL更新Rank-1主导，线性外推加速训练，但适用范围有限。",
+ "innovations": [
+  "揭示 RL 诱导参数更新矩阵 ΔW 的最大奇异子空间(Rank-1)几乎完全决定推理提升，保留 Top 1% 分量即可复现绝大部分增益",
+  "发现该主导子空间在整个 RL 训练中线性演化，可由早期 checkpoint 准确预测后续轨迹",
+  "提出即插即用的 AlphaRL 加速框架：用短早期窗口外推最终参数更新，无需额外模块或调参即达最高 2.5 倍加速"
+ ],
+ "method_framework": "对 RL 微调得到的参数更新矩阵 ΔW 做 SVD，验证保留 Rank-1 子空间即可复现推理收益(Rank-1 Dominance)；进一步观测该子空间随训练步线性漂移(Rank-1 Linear Dynamics)；AlphaRL 据此用前若干步拟合线性轨迹并外推到最终更新，跳过大部分 RL 步骤。",
+ "experiment_framework": "跨 8 个 LLM、7 种 RL 算法验证；在 AIME24/25、MATH500、MINERVA、GPQA、GSM8K 等推理基准上评测；对比全量 RL 训练，报告 AlphaRL 的加速倍数与保留性能比例。",
+ "takeaways": [
+  "LLM 推理能力的 RL 提升被压缩在参数更新的低秩（近似 Rank-1）子空间中",
+  "该子空间轨迹线性可预测，使早期外推成为可行加速手段",
+  "AlphaRL 以极低成本获得近全量 RL 的推理性能，可推广到大规模 RL 训练"
+ ],
+ "weaknesses": [
+  "Rank-1 结论主要在推理类 RL(GRPO 等)任务上验证，对非推理/对齐类 RL 是否成立未充分覆盖",
+  "线性外推仅取早期窗口，对长训练后期非线性相变（如涌现/崩塌）的鲁棒性存疑",
+  "偏离可靠性/医学影像主线，属训练效率而非可信推理，相关性中等"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "训练效率优化，偏离可靠性主线，无医学影像落地",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

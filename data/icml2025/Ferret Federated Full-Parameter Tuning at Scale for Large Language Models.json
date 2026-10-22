@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Ferret Federated Full-Parameter Tuning at Scale for Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Ferret Federated Full-Parameter Tuning at Scale for Large Language Models.pdf",
+ "title": "Ferret: Federated Full-Parameter Tuning at Scale for Large Language Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "联邦全参微调替代PEFT,通信效率与精度平衡的常规方案",
+ "innovations": [
+  "提出面向LLM的联邦全参数微调(Ferret),替代以往靠PEFT降低通信开销但损失精度的做法",
+  "在保持数据隐私与通信高效的同时实现全参数更新,避免PEFT的精度损失",
+  "给出可规模化到大模型的联邦训练流程与通信/计算开销数据"
+ ],
+ "method_framework": "联邦设置下LLM微调既要隐私又要通信高效;现有方案多退回PEFT(如LoRA),省通信但损失精度。Ferret设计新的联邦全参数训练机制,使大规模LLM的全部参数可在客户端间高效聚合更新,在通信成本可控下获得接近集中式全参微调的精度。",
+ "experiment_framework": "在多个LLM规模与联邦客户端数据划分上验证;基线为联邦PEFT/LoRA等;指标为通信/计算开销、收敛轮数与下游测试分数。",
+ "takeaways": [
+  "联邦全参数微调在LLM上可行,且精度优于PEFT折中",
+  "Ferret在通信效率与全参精度间取得更好平衡",
+  "给出了规模化联邦LLM训练的实测开销数据"
+ ],
+ "weaknesses": [
+  "全参数通信开销仍随模型规模增长,极端规模下可行性待验证",
+  "主线为联邦学习系统,与可靠性×医学影像、多模态大模型推理主线无关",
+  "异构客户端/ Non-IID下的鲁棒性讨论可更充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

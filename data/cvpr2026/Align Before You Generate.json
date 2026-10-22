@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Align Before You Generate.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Align Before You Generate.pdf",
+ "title": "Align Before You Generate",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "利用扩散模型内部特征构建对应关系提升多图像生成一致性",
+ "innovations": [
+  "发现扩散模型中间特征中存在原生对应关系",
+  "设计原生对应关系构建器和对应区域聚合器",
+  "提出即插即用的训练自由适配器框架",
+  "提供可选训练方案进一步提升性能"
+ ],
+ "method_framework": "CorrAdapter通过构建扩散模型原生对应关系，在transformer块中添加旁路分支，强调对应区域信息聚合，提升多图像生成时空一致性",
+ "experiment_framework": "在静态多视图生成和动态视频生成任务上评估，使用GSO和Objaverse数据集，对比SyncDreamer和MVAdapter基线，采用PSNR、SSIM、LPIPS、cPSNR、cSSIM、cLPIPS、CD、depth、MEt3R等指标",
+ "takeaways": [
+  "利用模型内部特征构建对应关系避免外部依赖",
+  "即插即用设计适配多种扩散模型",
+  "训练自由方案确保广泛适用性"
+ ],
+ "weaknesses": [
+  "对应关系构建可能受噪声特征影响",
+  "计算复杂度随图像数量增加而增长",
+  "训练方案依赖真实对应关系限制应用场景"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多图像生成一致性属于可靠性主线边缘，无明确落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

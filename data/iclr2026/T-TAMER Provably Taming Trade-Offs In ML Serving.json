@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/T-TAMER Provably Taming Trade-Offs In ML Serving.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/T-TAMER Provably Taming Trade-Offs In ML Serving.pdf",
+ "title": "T-Tamer: Provably Taming Trade-Offs in ML Serving",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.6
+ },
+ "one_line": "级联推理理论框架，证明回溯机制对精度-延迟权衡的必要性",
+ "innovations": [
+  "将多级级联推理形式化为多阶段决策过程，统一建模何时退出和选择哪个模型两个决策",
+  "证明无回溯策略无法获得任何常数因子近似，而基于回溯的策略可在多项式时间内达到最优权衡",
+  "为早期退出和级联模型设计提供了理论基础，弥合启发式实践与理论保证之间的差距"
+ ],
+ "method_framework": "T-Tamer将级联服务建模为多阶段决策：每个阶段决定是退出当前模型还是升级到下一个更复杂的模型。核心概念是recall（可回溯性）——即允许在后续阶段重新访问之前的轻量模型。理论分析表明，无recall的策略无法获得常数因子近似，而有recall的策略可在多项式时间内找到最优权衡曲线。",
+ "experiment_framework": "在合成数据集和视觉/NLP基准的早期退出工作负载上验证；对比无回溯启发式策略和基于回溯的策略；指标为精度-延迟权衡曲线。",
+ "takeaways": [
+  "可回溯机制是级联推理获得理论保证的关键，无回溯策略存在根本性能上限",
+  "基于回溯的策略可在多项式时间内实现最优精度-延迟权衡",
+  "理论框架为实际级联系统设计提供了可证明的指导原则"
+ ],
+ "weaknesses": [
+  "理论假设较为理想化，实际系统中模型间相关性和查询分布变化的影响未充分讨论",
+  "实验主要在分类任务上验证，生成式任务的级联服务适用性未知",
+  "回溯机制的实际实现开销和系统复杂度增加未量化评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "级联推理理论框架，证明回溯机制对精度-延迟权衡的必要性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

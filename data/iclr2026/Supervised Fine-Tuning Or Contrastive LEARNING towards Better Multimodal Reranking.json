@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Supervised Fine-Tuning Or Contrastive LEARNING towards Better Multimodal Reranking.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Supervised Fine-Tuning Or Contrastive LEARNING towards Better Multimodal Reranking.pdf",
+ "title": "Supervised Fine-Tuning or Contrastive Learning? Towards Better Multimodal LLM Reranking",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "SFT因更强权重更新优于CL，但结论规模和场景受限",
+ "innovations": [
+  "将训练目标分解为权重（weight）和方向（direction）两个组件，提出统一框架理解CL和SFT的交互机制",
+  "通过探针实验发现SFT提供显著更强的权重更新方案，而评分方向上两者无明显优劣",
+  "基于发现进行大规模SFT训练，在MRB基准上达到新的SOTA重排序性能"
+ ],
+ "method_framework": "将重排序训练目标分解为两个维度：权重（更新幅度）和方向（更新方向）。CL通过对比损失增大相关对分数，SFT通过yes/no token预测进行二分类。通过探针实验分离分析两个维度的差异，发现SFT的优势主要来自更强的权重更新，而非更好的评分方向。",
+ "experiment_framework": "在通用多模态检索（UMR）场景下进行对比分析；在MRB基准上进行大规模训练验证；基线包括CL方法和SFT方法；指标为重排序性能（nDCG等）。",
+ "takeaways": [
+  "对于LLM重排序，SFT consistently 优于对比学习，主要因为SFT提供更强的权重更新",
+  "评分方向上CL和SFT没有明显差异，差异主要来自更新幅度",
+  "SFT与LLM的生成式本质更契合，是重排序训练的更好选择"
+ ],
+ "weaknesses": [
+  "结论基于特定规模的LLM，超大模型上CL和SFT的差异可能不同",
+  "实验主要在多模态检索场景验证，纯文本重排序的结论一致性未充分探讨",
+  "权重和方向的分解是分析性框架，实际训练中两者的交互仍较复杂"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.9,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态重排序方法研究，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

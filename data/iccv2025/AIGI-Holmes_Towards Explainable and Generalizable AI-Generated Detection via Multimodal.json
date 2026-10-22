@@ -1,0 +1,40 @@
+{
+ "key": "AIGI-Holmes: Explainable and Generalizable AI-Generated Detection via MLLMs",
+ "conf": "iccv2025",
+ "path": "AIGI-Holmes_Towards Explainable and Generalizable AI-Generated Detection via Multimodal.pdf",
+ "title": "AIGI-Holmes: Towards Explainable and Generalizable AI-Generated Image Detection via Multimodal Large Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4,
+  "relevance": 7.0,
+  "overall": 5.8
+ },
+ "one_line": "多模型陪审团生成AIGI数据，三阶段训练可解释检测器",
+ "innovations": [
+  "Multi-Expert Jury 自动标注：用 Qwen2VL-72B、InternVL2-76B、InternVL2.5-78B、Pixtral-124B 四模型跑 General Positive / General Negative / Specialist 三类提示，再由 MLLM-as-a-judge 交叉互评、只保留共识分最高的标注；General Negative Prompt 反向拷问 authenticity 自动造正负对，形成 DPO 偏好数据 D1。",
+  "先用一个独立视觉专家把 MLLM 教成侦探：CLIP-ViT-L/14 挂 LoRA(r=4, α=8) 取 CLS 送 MLP、ResNet 前两层（NPR 低层线索）全参数微调送另一 MLP，两路各算二交叉熵 l_clip+l_npr 做视觉专家预训练，再借 projector 把 [f_img, f_npr] 一起喂给 LLM（H=LLM(proj([f_img,f_npr]), f_t)）。",
+  "人类偏好改写闭环：人工对 SFT 模型输出给修正意见（补正确信息、删错误不相关解释），用 Deepseek-V3 按意见改写原响应，把改写前后的配对加入 Holmes-DPOset（另 2K 已知缺陷图），让模型不再机械复制解释模板，推理时再并联视觉专家与语言模型的预测做协作解码。"
+ ],
+ "method_framework": "CLIP 视觉编码器（LoRA r=4）与 NPR-ResNet 前两层并行抽 f_img/f_npr 作双视觉专家，经投影注入 LLaVA 的 LLM；三阶段为视觉专家二分类预训练 → 解释型 SFT → 基于 DPOSet 的人类对齐 DPO，推理走视觉专家与语言模型协作解码。",
+ "experiment_framework": "正文可见部分只有数据管线与定性样例（四类缺陷的 Key Explanation）；正文在 3.4 节 SFT 阶段首句处截断，第四节三个基准的准确率/AP 与解释质量（BLEU/CIDEr/METEOR/ROUGE、MLLM 打分、ELO）表格全部缺失。",
+ "takeaways": [
+  "正文只说明检测分支由 real/fake token 概率算 Accuracy 与 AP，解释分支用 1K 带统一 GT 的样本算 BLEU/CIDEr/METEOR/ROUGE，并做 MLLM 打分与 100 图两两比较的 ELO 人评。",
+  "训练数据里 45K 来自 CNNDetection/GenImage/DRCT 等既有集，另有 20K 由专家小模型按文本、人体、人脸、投影几何、常识、物理规律等缺陷筛出，补 18 种 AIGC 方法（测试集专挑自回归与 SOTA 扩散模型）。"
+ ],
+ "weaknesses": [
+  "可见正文在 3.4 节 SFT Stage 首句处截断，第四节全部实验结果（Tab.3、Tab.4 所引的 SOTA 对比准确率/AP、解释指标、MLLM 打分与 ELO）在正文里完全看不到，论文自称的 SOTA 与「 superiority」结论无正文数据可核验，仅能靠摘要推断。",
+  "人类偏好环节由三位作者加两名由他们培训的标注者完成，缺少标注者间一致性量化（如 Krippendorff's alpha）与第三方复核；DPOSet 的正负对由「反着问真实性」的 General Negative Prompt 自动构造，正负样本存在系统性偏差，DPO 相对 SFT 的真实增益缺少消融量。",
+  "两路视觉特征的融合方式、协作解码的拼接规则与置信度阈值在截断处未给出；视觉专家只用二分类交叉熵训练，未见 LoRA rank、ResNet 层数、双路特征权重的敏感性扫描，也未见推理时延、参数开销与 JPEG 压缩、缩放等后处理鲁棒性、真实 wild 场景漏报率。"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "AI生成图像检测与可靠性主线交织，可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

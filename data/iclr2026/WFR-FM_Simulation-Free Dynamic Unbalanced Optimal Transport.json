@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/WFR-FM_Simulation-Free Dynamic Unbalanced Optimal Transport.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/WFR-FM_Simulation-Free Dynamic Unbalanced Optimal Transport.pdf",
+ "title": "WFR-FM: Simulation-Free Dynamic Unbalanced Optimal Transport",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "扩展流匹配回归双场，实现无模拟WFR测地线学习",
+ "innovations": [
+  "提出WFR-FM：首个无模拟的动态不平衡最优传输训练算法，将流匹配与Wasserstein-Fisher-Rao度量统一",
+  "同时回归位移向量场和标量增长率函数，分别建模空间位移和质量生灭动力学",
+  "理论证明最小化WFR-FM损失精确恢复WFR测地线"
+ ],
+ "method_framework": "将经典流匹配（仅回归传输向量场）扩展为同时回归两个场：(1)位移向量场建模空间运动；(2)标量增长率函数建模质量的生灭（birth-death）。在WFR几何下，这两个场的组合精确对应WFR测地线。无需模拟ODE求解过程，直接通过回归损失训练。",
+ "experiment_framework": "应用于单细胞RNA测序数据的轨迹推断任务。基线包括静态OT方法和动态OT方法。指标为轨迹推断精度、时间变增长场估计准确性、计算效率和稳定性。",
+ "takeaways": [
+  "无模拟训练大幅提升了动态不平衡OT的计算效率和稳定性",
+  "同时建模位移和质量变化比纯位移传输更符合真实生物学过程（细胞增殖和凋亡）",
+  "WFR几何为不平衡快照动力学提供了 principled 的建模框架"
+ ],
+ "weaknesses": [
+  "仅在单细胞生物学数据上验证，其他不平衡动力学场景（如流体、种群动态）的适用性未知",
+  "增长率函数和向量场的网络架构设计对性能的影响未系统消融",
+  "理论保证基于WFR度量的连续假设，离散数据上的近似误差未详细分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "动态OT方法有迁移价值，但未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Annealing Flow Generative Models Towards Sampling High-Dimensional and Multi-Modal Distributions.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Annealing Flow Generative Models Towards Sampling High-Dimensional and Multi-Modal Distributions.pdf",
+ "title": "Annealing Flow Generative Models Towards Sampling High-Dimensional and Multi-Modal Distributions",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "退火流模型结合动态OT，提升高维多模态采样效率",
+ "innovations": [
+  "将退火采样思想与 CNF 结合，沿退火温度路径引导粒子探索高维多模态分布的各模态",
+  "采用含 Wasserstein 正则的动态最优传输 (Benamou-Brenier) 目标训练速度场，提升训练效率与稳定性",
+  "相比近期 NF 方法显著减少对 MC 校正的依赖，并展示其采样「最不利分布」(least favorable distribution) 的潜力"
+ ],
+ "method_framework": "用 Neural ODE 速度场 v(x,t) 把简单基分布 π0 经连续性方程传输到目标 q；训练目标为动态 OT（最小化 ∫E‖v‖²dt）并加 Wasserstein 正则；通过退火（从易采样分布逐步降温到目标）引导流在高维空间中有效发现并平衡各模态，避免模式坍缩与 MCMC 的慢混合。",
+ "experiment_framework": "在多个高维多模态合成分布及真实数据集上与 HMC/PT、SVGD、近期归一化流/路径引导 NF 等对比，报告采样质量、模态覆盖均衡性与训练效率/稳定性；并讨论 BNN 采样与 least favorable distribution 采样的应用。",
+ "takeaways": [
+  "退火引导 + 动态 OT/Wasserstein 正则的 CNF 能缓解高维多模态采样的模式坍缩与模态失衡",
+  "AF 训练更高效稳定，且对 MCMC 辅助依赖最小",
+  "在多项具挑战性分布与真实数据上优于 SOTA 采样方法"
+ ],
+ "weaknesses": [
+  "主线为生成采样方法，与可靠性×医学影像/多模态大模型推理主线无关，relevance 受限",
+  "CNF 的 ODE 积分成本与所需离散时间步仍影响推理效率，前9页内未充分量化",
+  "「采样 least favorable distribution」仅作为潜力提及，缺乏对应的分布鲁棒实验闭环验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "高维多模态采样方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/BLADE Single-view Body Mesh Estimation through Accurate Depth Estimation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/BLADE Single-view Body Mesh Estimation through Accurate Depth Estimation.pdf",
+ "title": "BLADE Single-view Body Mesh Estimation through Accurate Depth Estimation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.6
+ },
+ "one_line": "通过Tz条件化解决单视角人体网格估计的透视失真问题",
+ "innovations": [
+  "识别Z平移Tz对透视失真的关键影响",
+  "提出Tz条件化的人体姿态估计方法",
+  "避免启发式假设直接估计透视投影参数",
+  "构建大规模合成数据集BEDLAM-CC"
+ ],
+ "method_framework": "三阶段框架：1)骨盆深度估计器预测Tz；2)Tz感知的姿态估计器预测SMPL-X参数；3)通过可微分光栅化求解焦距和XY平移",
+ "experiment_framework": "在SPEC-MTP、HUMMAN、PDHUMAN和BEDLAM-CC数据集上评估，使用mIoU、PVE、Ef、ETz、ETxy和E1/Tz指标",
+ "takeaways": [
+  "透视失真主要由Z平移Tz决定而非焦距",
+  "条件化Tz可显著提升近距离人体姿态估计精度",
+  "避免启发式假设直接估计透视投影参数"
+ ],
+ "weaknesses": [
+  "深度估计器在远距离精度有限",
+  "未评估计算效率",
+  "依赖现成的分割方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "单视角人体网格估计与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

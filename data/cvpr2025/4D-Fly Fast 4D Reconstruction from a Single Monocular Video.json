@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/4D-Fly Fast 4D Reconstruction from a Single Monocular Video.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/4D-Fly Fast 4D Reconstruction from a Single Monocular Video.pdf",
+ "title": "4D-Fly: Fast 4D Reconstruction from a Single Monocular Video",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "将2D追踪与深度先验引入3D高斯流式传播，加速4D重建但缺乏充分验证",
+ "innovations": [
+  "anchor-based 传播：把前景像素 p_j 连同深度 D_t(p_j) 反投影为 3D anchor x_j，由 2D track U_{t→t+1} 与 D_{t+1} 得 anchor 运动 a_j，再用 KNN 邻域内 Softmax(-||x_j-µ_i||) 加权求和更新动态高斯位置偏移 Δµ_{i,t+1}^{init}，绕开对渲染 2D 特征图做全局优化的旧范式",
+  "canonical Gaussian map(CGM)：先由反投影初始化像素级高斯，再用 L=Σλ_F L_F + λ_align·Σ||Π(µ_{G_p})-p||² 优化出与像素一一对应的规范状态，解决「动态高斯后加入后只能优化 offset、规范状态过粗导致运动不准」的问题",
+  "快速 4D 优化中的刚体正则：先按空间距离取 k1NN 再按初始速度 v_{i,t+1}^{init}=Δµ^{init}_{i,t+1}-Δµ_{i,t} 取 k2NN(k2<k1) 定义邻居，权重 w_ij=exp(-λ_µ||µ_i-µ_j||-λ_v||v_i^init-v_j^init||)，对空间近但速度相反的点（如交替迈步的腿）降权，另加颜色一致性 L_reg,col"
+ ],
+ "method_framework": "维护全局 4D 场景图 G^{1→t}（动态高斯带位置/颜色 offset + 静态高斯）。新帧到来时先用先验算深度/分割/2D track，依次做 anchor-based 传播、按 Ŝ<λ1 ∧ D̂-D>λ2 的未重建 mask 用 CGM 扩容、再对前景/背景分组件快速优化（每帧 200 步，<2.5s）。",
+ "experiment_framework": "DyCheck iPhone 与 NVIDIA Dynamic Scenes 数据集，对比 T-NeRF、HyperNeRF、4D Gaussians、Dynamic Gaussian Marbles、Shape of Motion；报 mSSIM/mLPIPS/mPSNR、100 帧耗时与渲染 FPS，并在 DyCheck 上做 2D/3D point tracking 评测。",
+ "takeaways": [
+  "把数据先验直接作用到显式 3D 原语上（而非渲染成 2D 特征图再对齐），是绕开非凸优化、换取数量级加速的可迁移思路",
+  "用像素-高斯一一对应的规范图 + 投影对齐损失 L_align 定义「规范状态」，可复用于任何增量式动态原语建图",
+  "用渲染密度图与深度差联合判据（Ŝ<λ1 ∧ D̂-D>λ2）识别未重建区域，是低成本的增量建图触发条件；按「空间近邻再按速度近邻」两级 KNN 定义刚体邻居，比纯空间 KNN 更符合非刚体运动"
+ ],
+ "weaknesses": [
+  "20× 加速的对照全是逐帧全局优化类方法（Dynamic GM 187.6min、Shape of Motion 109.4min），未与同为流式/免优化的高效方案比较，加速倍数含基线选择成分",
+  "超参 λ1、λ2（mask 阈值）、k1/k2、λ_µ/λ_v 均为经验设定，正文未给敏感性分析",
+  "无多种子/多序列方差，两个数据集上的质量指标与耗时均为单次均值",
+  "正文截断：消融表与 point tracking 定量表不可见；质量上仅在部分指标上优于 Shape of Motion（DyCheck 上 mSSIM 0.60 vs 0.62 反而更低），「comparable or superior」的说法需消融支撑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "纯视觉重建技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

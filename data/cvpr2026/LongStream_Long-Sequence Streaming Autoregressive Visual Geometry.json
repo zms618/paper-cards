@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/LongStream_Long-Sequence Streaming Autoregressive Visual Geometry.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/LongStream_Long-Sequence Streaming Autoregressive Visual Geometry.pdf",
+ "title": "LongStream Long-Sequence Streaming Autoregressive Visual Geometry",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "解耦坐标尺度学习实现流式3D重建，但依赖真实尺度标注",
+ "innovations": [
+  "解耦坐标和尺度学习机制",
+  "缓存一致训练策略",
+  "周期性缓存刷新方法"
+ ],
+ "method_framework": "基于ViT编码器和因果Transformer的流式几何框架，预测关键帧相对位姿、深度和点云，通过解耦坐标和尺度学习实现长序列稳定性",
+ "experiment_framework": "在KITTI、vKITTI、Waymo、TUM-RGBD等室内外数据集评估，比较ATE、RPE、CD等指标，对比Stream3R、StreamVGGT等基线",
+ "takeaways": [
+  "解耦坐标和尺度学习可有效解决长序列外推问题",
+  "缓存一致训练和周期性刷新可缓解注意力衰减和缓存污染"
+ ],
+ "weaknesses": [
+  "仅在有真实尺度标注的数据集上训练时才能获得最佳性能",
+  "模型参数量较大(1.3B)，可能限制部署"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D重建与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

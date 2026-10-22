@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Reliably Detecting Model Failures in Deployment Without Labels.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Reliably Detecting Model Failures in Deployment Without Labels.pdf",
+ "title": "Reliably Detecting Model Failures in Deployment Without Labels",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 8,
+  "overall": 7.1
+ },
+ "one_line": "D3M利用模型disagreement实现无标签部署时的性能退化检测",
+ "innovations": [
+  "无需训练数据的部署监控算法",
+  "变分贝叶斯最后一层实现高效 disagreement 采样",
+  "理论保证的退化检测与抗非退化漂移"
+ ],
+ "method_framework": "D3M采用三阶段流程：训练特征提取器和变分贝叶斯最后一层，校准ID最大 disagreement 率分布，部署时通过比较 disagreement 率检测退化",
+ "experiment_framework": "UCI Heart Disease/CIFAR-10/10.1/Camelyon17/GEMINI数据集，对比BBSD/Rel.Mahalanobis/Deep Ensemble等基线，评估TPR/FPR",
+ "takeaways": [
+  "变分贝叶斯最后一层替代全贝叶斯网络提高效率",
+  "温度缩放增强采样多样性",
+  "量化测试控制误报率"
+ ],
+ "weaknesses": [
+  "UCI数据集上TPR方差较大",
+  "小样本部署时检测噪声较高",
+  "VBLL采样多样性不如全贝叶斯网络"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

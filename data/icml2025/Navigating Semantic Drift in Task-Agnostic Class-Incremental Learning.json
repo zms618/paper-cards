@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Navigating Semantic Drift in Task-Agnostic Class-Incremental Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Navigating Semantic Drift in Task-Agnostic Class-Incremental Learning.pdf",
+ "title": "Navigating Semantic Drift in Task-Agnostic Class-Incremental Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "分解语义漂移为均值与协方差变化，提出双校准方法缓解增量学习退化。",
+ "innovations": [
+  "揭示任务无关类增量学习中语义漂移（Semantic Drift）的两个来源：特征均值偏移与协方差变化",
+  "提出均值偏移补偿：基于嵌入与旧均值的近邻度加权估计任务漂移量",
+  "提出协方差校准：通过马哈拉诺比斯距离约束对齐新旧网络的类特定嵌入协方差"
+ ],
+ "method_framework": "在预训练特征提取器基础上，针对新任务学习时旧类特征分布发生漂移的问题，分别对均值（通过加权嵌入变化估计）和协方差（通过马哈拉诺比斯距离约束）进行校准；结合特征级自蒸馏增强泛化能力。",
+ "experiment_framework": "在常用类增量学习数据集（如CIFAR-100、ImageNet-Subset等）上验证；对比SOTA增量学习方法；指标为Top-1准确率。",
+ "takeaways": [
+  "类增量学习中的性能退化可分解为均值漂移与协方差漂移两个独立来源，分别校准更有效",
+  "马哈拉诺比斯距离约束比简单的L2正则更能有效对齐特征协方差",
+  "特征级自蒸馏与漂移校准形成互补，进一步提升稳定性"
+ ],
+ "weaknesses": [
+  "均值漂移估计依赖旧类样本嵌入的存储，存储空间随类数线性增长",
+  "未探索与重放（replay）方法的结合，二者可能互补",
+  "仅在视觉分类任务上验证，NLP等其他模态的适用性未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

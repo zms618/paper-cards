@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Adversarial Robustness via Deformable Convolution with Stochasticity.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adversarial Robustness via Deformable Convolution with Stochasticity.pdf",
+ "title": "Adversarial Robustness via Deformable Convolution with Stochasticity",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.3
+ },
+ "one_line": "随机可变形卷积提升对抗鲁棒性，但超参敏感且仅限分类任务",
+ "innovations": [
+  "将随机性注入网络结构（可变形卷积偏移量）而非数据输入，通过随机掩码替换卷积偏移，促进数据独立性并提升跨数据集泛化",
+  "从梯度余弦相似度和自然推理角度理论分析鲁棒精度与干净精度的折中关系",
+  "基于分析重构对抗训练目标，缓解随机防御中干净精度下降的问题"
+ ],
+ "method_framework": "设计随机可变形卷积(stochastic deformable convolution)：在标准可变形卷积的偏移量上施加随机掩码，使得每次推理的感受野采样位置随机变化。这种结构级随机性使攻击者难以找到固定的脆弱方向。配合重构的对抗训练损失，在提升鲁棒性的同时减少干净精度损失。",
+ "experiment_framework": "数据集：多个图像分类基准（如CIFAR-10/100、ImageNet子集）。基线：传统随机防御（输入加噪）、标准对抗训练。攻击：PGD等白盒攻击。指标：干净精度、鲁棒精度（不同攻击强度下）。",
+ "takeaways": [
+  "结构级随机性（卷积偏移随机化）比输入加噪更易跨数据集泛化，不需要精细调噪点超参",
+  "梯度余弦相似度可作为分析鲁棒-干净精度折中 的有效理论工具",
+  "重构对抗训练可缓解随机防御中常见的干净精度下降问题"
+ ],
+ "weaknesses": [
+  "仅在图像分类任务验证，在检测/分割等复杂视觉任务的适用性未知",
+  "随机掩码的具体设计（掩码比例、分布）仍需针对数据集调整，未完全消除超参敏感性",
+  "前9页未呈现完整的ImageNet大规模实验结果，仅小规模数据集验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "对抗鲁棒性主线，结构随机化设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

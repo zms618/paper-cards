@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/HG-Lane High-Fidelity Generation of Lane Scenes under Adverse Weather and.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/HG-Lane High-Fidelity Generation of Lane Scenes under Adverse Weather and.pdf",
+ "title": "HG-Lane High-Fidelity Generation of Lane Scenes under Adverse Weather and",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "双阶段ControlNet生成车道场景，提升恶劣天气检测20.87%",
+ "innovations": [
+  "双阶段生成策略：Canny-ControlNet保持结构，InstructPix2Pix-ControlNet优化外观",
+  "语义感知预处理融合车道标注、颜色掩码和Canny边缘",
+  "无需重新标注的恶劣天气车道场景生成框架"
+ ],
+ "method_framework": "基于预训练组件的双阶段扩散模型：第一阶段用Canny-ControlNet保持车道结构，第二阶段用InstructPix2Pix-ControlNet优化夜间/黄昏外观，所有组件保持冻结无需微调",
+ "experiment_framework": "30,000图像六类别基准(正常/雪/雨/雾/夜/黄昏)，CLRNet等SOTA模型评估，F1@50为主要指标",
+ "takeaways": [
+  "语义信息融合策略提升生成质量",
+  "双阶段控制策略平衡结构保持与外观优化",
+  "无需重新标注的生成方法降低数据收集成本"
+ ],
+ "weaknesses": [
+  "仅针对车道检测任务设计，泛化性有限",
+  "夜间和黄昏场景需要额外处理步骤",
+  "生成质量仍有提升空间，部分图像存在伪影"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "车道生成与可靠性主线无实质交点，仅数据增强工具",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

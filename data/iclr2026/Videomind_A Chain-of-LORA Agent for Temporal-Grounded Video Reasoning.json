@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Videomind_A Chain-of-LORA Agent for Temporal-Grounded Video Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Videomind_A Chain-of-LORA Agent for Temporal-Grounded Video Reasoning.pdf",
+ "title": "VideoMind: A Chain-of-LoRA Agent for Temporal-Grounded Video Reasoning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "角色分工视频智能体，Chain-of-LoRA实现多角色切换",
+ "innovations": [
+  "定义接地视频推理的四个核心能力角色：规划者(planner)、时间定位者(grounder)、验证者(verifier)、回答者(answerer)，构建角色化智能体工作流",
+  "提出Chain-of-LoRA机制：统一基座模型搭载多个LoRA适配器，实现推理时无缝角色切换，平衡效率与灵活性",
+  "支持时间定位+验证的闭环推理，模型可主动回看和验证关键时间点，提升长视频推理可靠性"
+ ],
+ "method_framework": "VideoMind是一个视频语言智能体，包含四个角色：Planner负责任务分解和协调其他角色；Grounder负责精确定位相关时间片段；Verifier对定位的事件候选进行评估验证；Answerer基于验证后的时间感知信息生成答案。角色间通过Chain-of-LoRA机制切换——同一基座模型加载不同LoRA适配器实现不同角色能力，避免维护多个独立模型。工作流模拟人类推理：先分解问题，定位关键时刻，回看验证，再综合作答。",
+ "experiment_framework": "任务：Grounded VideoQA、Video Temporal Grounding、General VideoQA三大类。数据集：15个基准。基线：现有视频理解模型、单模型CoT方法。指标：各任务标准评测指标。验证了视频智能体、测试时扩展、长视频推理三方面能力。",
+ "takeaways": [
+  "角色分工的智能体工作流比单一模型端到端推理更适合复杂长视频推理任务",
+  "Chain-of-LoRA机制有效解决了多角色能力整合的效率问题，无需维护多个独立模型",
+  "显式的时间定位和验证步骤能显著提升视频推理的接地性和可靠性"
+ ],
+ "weaknesses": [
+  "多角色顺序调用增加了推理步骤和延迟，实时性受限",
+  "四个角色的划分较为固定，对非常规视频推理任务的灵活性不足",
+  "LoRA适配器数量增加带来存储开销，角色扩展时的管理复杂度上升"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视频智能体角色分工，与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

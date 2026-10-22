@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/SIGMA_Refining Large Language Model Reasoning via Sibling-Guided Monte Carlo Augmentation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/SIGMA_Refining Large Language Model Reasoning via Sibling-Guided Monte Carlo Augmentation.pdf",
+ "title": "SIGMA: Refining Large Language Model Reasoning via Sibling-Guided Monte Carlo Augmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "利用MCTS兄弟节点反馈优化LLM推理路径，提升数学推理性能",
+ "innovations": [
+  "引入兄弟节点作为符号反馈源",
+  "两阶段优化框架：批判模型和修订模型",
+  "文本梯度下降(TGD)方法改进推理路径"
+ ],
+ "method_framework": "SIGMA框架结合MCTS搜索与兄弟节点引导的文本梯度下降，通过比较选定节点与兄弟节点生成自然语言反馈，迭代优化推理路径",
+ "experiment_framework": "MATH/GSM8K数据集，DeepSeekMath-7B/LLaMA3-8B/Mistral-7B模型，比较SIGMA与MathFusion/DART-Math等基线",
+ "takeaways": [
+  "利用搜索树中被丢弃的兄弟节点信息",
+  "文本梯度下降方法优化推理路径",
+  "显著减少训练数据需求同时提升性能"
+ ],
+ "weaknesses": [
+  "依赖GPT-4o-mini作为批判和修订模型",
+  "未探索不同批判模型规模的影响",
+  "计算开销增加(需要MCTS+两阶段优化)"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

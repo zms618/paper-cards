@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/LoRA-Gen Specializing Large Language Model via Online LoRA Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/LoRA-Gen Specializing Large Language Model via Online LoRA Generation.pdf",
+ "title": "LoRA-Gen: Specializing Large Language Model via Online LoRA Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "云端生成LoRA参数合并至边缘模型，实现任务特化但依赖云端大模型",
+ "innovations": [
+  "提出云端大模型→边缘小模型的LoRA参数生成范式：云端模型根据任务描述直接输出LoRA权重，边缘模型无需梯度训练即可获得领域特化",
+  "采用重参数化技术将生成的LoRA参数合并进边缘模型权重，推理时不增加额外计算开销，同时减少了上下文输入长度",
+  "在TinyLLaMA-1.1B上实现2.1倍推理加速，在Gemma-2B上实现10.1倍压缩率，同时超过传统LoRA微调的精度"
+ ],
+ "method_framework": "LoRA-Gen包含两个模型：(1) 云端生成模型：输入自然语言任务描述，输出对应任务的LoRA低秩矩阵A,B；(2) 边缘部署模型：接收生成的LoRA参数，通过重参数化合并到基座模型权重中。整个过程无需边缘端的梯度计算，实现了\"描述即特化\"。",
+ "experiment_framework": "在多个NLP推理和智能体任务上评测，对比传统LoRA微调、MixLoRA、LoRAMoE等方法；指标包括准确率、延迟、压缩率；基座模型包括TinyLLaMA-1.1B和Gemma-2B。",
+ "takeaways": [
+  "云端生成LoRA参数的范式使得边缘模型可以动态适配新任务，无需重新训练",
+  "重参数化合并消除了推理时的额外LoRA计算开销，实现了精度与效率的双赢",
+  "在少样本设置下LoRA-Gen优于传统LoRA微调，说明大模型生成的LoRA参数质量很高"
+ ],
+ "weaknesses": [
+  "每次新任务都需要云端生成和合并LoRA参数，离线部署场景受限",
+  "生成的LoRA参数质量依赖云端大模型的能力，小模型生成小模型的参数可能存在知识瓶颈",
+  "仅在英文NLP任务上验证，多语言和多模态场景的适用性未探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

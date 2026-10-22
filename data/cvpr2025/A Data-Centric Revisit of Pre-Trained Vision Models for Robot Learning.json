@@ -1,0 +1,43 @@
+{
+ "key": "cvpr2025/A Data-Centric Revisit of Pre-Trained Vision Models for Robot Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Data-Centric Revisit of Pre-Trained Vision Models for Robot Learning.pdf",
+ "title": "A Data-Centric Revisit of Pre-Trained Vision Models for Robot Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "诊断物体中心表示重要性，但实验严谨性与基线对比公平性存疑。",
+ "innovations": [
+  "诊断性重定义问题：在锁定 241K 数据规模下交叉比较 5 种预训练方法 × 4 类数据源（object/scene/web/ego），发现 DINO/iBOT 优于 MAE 但在场景中心数据上大幅退化，且其 attention 的 objectness 与机器人成功率相关性达 0.72，从而把「选哪个 PVM」重定义为「能否从非物体中心数据学出物体中心表示」。",
+  "语义瓶颈：把 iBOT 的原型数由 C=8192 降至 C=512，用信息瓶颈迫使 patch token 形成组合式物体概念，使 objectness 在没有任何物体标注的 NOC 数据上自发涌现。",
+  "跨视图一致性正则与 slot 级对比：用 ROIAlign 对齐两增强视图的重叠 patch，加 L^cross_patch 使匹配 patch 的聚类分配一致以注入语义与视角不变性；再以原型为 query 对 patch 做 attentive pooling 得到 slot，仅保留至少一个 patch 归属的 slot，施加 MoCo 式对比损失 L_slot（τ=0.2，λ1=0.5、λ2=1）。"
+ ],
+ "method_framework": "在 iBOT 的 patch 级自蒸馏之上叠加三件事：减少原型数 C 形成语义瓶颈使 objectness 涌现；用 ROIAlign 匹配两视图重叠 patch 并约束其聚类分配一致；以原型为 query 对 patch 做 attentive pooling 聚成 slot，再对 slot 做 MoCo 风格物体级对比学习。总损失 λ1(L_within+L_cross)+λ2·L_slot。",
+ "experiment_framework": "预训练用 ImageNet/COCO+/CC12M/Ego4D，统一 241K 与放大到 1.28M 两档；下游 Franka Kitchen、Meta-World、ObjectNav、ImageNav、COCO 检测/实例分割、ADE20K 语义分割；基线 BEiT/SplitMask/MAE/DINO/iBOT 及 MVP/VC-1/V-Cond；指标成功率、mIoU、Jaccard、AP。",
+ "takeaways": [
+  "先校准评测协议再下结论的流程可迁移：锁定数据规模为 241K、统一用可训练 attentive pooling 做 probing（避免 MAE 的 CLS token 无训练信号造成的不公平）、不使用本体感受输入，从而把「方法」这一变量真正隔离出来。",
+  "「压缩离散表示容量以迫使语义涌现」是可迁移的通用技巧：把码本/原型数从 8192 降到 512 就把细粒度纹理簇变成物体级概念，对 VQ、聚类式表示学习同样适用。",
+  "报告的「反向 scaling」现象值得警惕：MAE 随数据量单调提升而 DINO/iBOT 在放大数据时反而退化（表示过压缩），说明预训练方法的可扩展性依赖数据分布，单点数据量下的结论不可外推。",
+  "用可计算的中介指标（objectness / VOC Jaccard）与下游成功率做相关性分析来支撑机制性 claim，是低成本、可迁移的因果论证写法。"
+ ],
+ "weaknesses": [
+  "明确声明每个实验跑 3 个 seed，却只报均值、无标准差或显著性检验；且按「记录每个 run 的最佳表现再平均」的惯例统计，两种选择都会系统性高估并掩盖方差。",
+  "与 MVP/VC-1/V-Cond 的对比非同类可比：这些基线在百万级数据上预训练，而 SlotMIM 用 241K 即宣称超越，收益中混杂了训练配方与数据规模差异，公平性存疑。",
+  "消融表内部存在张力：去掉 L_within（第 3 行）使每图发现区域数 K 从 9.4 升至 20.7 却伴随性能全面下滑，而完整模型相比去掉掩码的变体在 VOC Jaccard 上仅 43.9 vs 42.5，说明「物体发现数量→表示质量」的因果链并未被干净隔离。",
+  "正文 9 页内主结果（图 2、图 6）全部以柱状图给出、无数值表，且公式以 LaTeX 源码乱码形式出现，跨视图匹配阈值与 λ 敏感性等关键设定无法核验。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "机器人学习与预训练模型可靠性交点，但实验公平性存疑",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "title": "Boost-and-Skip: A Simple Guidance-Free Diffusion for Minority Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.75
+ },
+ "one_line": "两处极简改动实现无引导少数类生成，但理论解释与验证不充分。",
+ "innovations": [
+  "提出无引导(guidance-free)的少数类生成框架，仅需两处最小改动：方差增强初始化 + 时间步跳过。",
+  "用理论与实证证据解释这两处看似平凡的改动如何促进低密度少数特征涌现。",
+  "在显著更低计算/显存下匹敌引导式SOTA，超越既有Pareto前沿。"
+ ],
+ "method_framework": "少数类样本位于数据流形低密度区，有数据增广/创意生成价值；既往扩散少数类生成依赖计算昂贵的专门引导。Boost-and-Skip对标准生成过程仅做两处改动：(i)方差增强初始化把采样起点推向低密度区，(ii)时间步跳过跳过特定步；无需额外引导网络，即促进少数特征涌现。",
+ "experiment_framework": "在ImageNet 64x64等数据上评估少数类生成；指标cFID(基于真实少数类数据，越低越真实)、峰值显存与计算量；对比Sehwag等引导式SOTA。报告性能-复杂度Pareto前沿上以更小计算匹敌引导式方法。",
+ "takeaways": [
+  "方差增强初始化+时间步跳过这两个极简改动即可有效生成少数类，无需昂贵引导。",
+  "方法在cFID上匹敌引导式SOTA，而计算/显存显著更低，推高Pareto前沿。",
+  "对数据增广(尤其类别不平衡)场景有实用价值。"
+ ],
+ "weaknesses": [
+  "两处改动的理论解释虽给出，但超参(方差增强幅度、跳过哪些时间步)的选择准则在前9页内不完整。",
+  "主要在ImageNet 64x64等小分辨率验证，高分辨率/真实类别不平衡下游任务增益未充分展示。",
+  "属扩散采样/少数类生成方向，与LLM多模态推理、医学影像主线无直接交集。"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Boost-and-Skip A Simple Guidance-Free Diffusion for Minority Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Boost-and-Skip A Simple Guidance-Free Diffusion for Minority Generation.pdf",
+ "raw_overall": 5.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/ECG-Language_From Token to Rhythm A Multi-Scale Approach for ECG-Language Pretraining.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ECG-Language_From Token to Rhythm A Multi-Scale Approach for ECG-Language Pretraining.pdf",
+ "title": "From Token to Rhythm: A Multi-Scale Approach for ECG-Language Pretraining",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.0
+ },
+ "one_line": "多尺度ECG-语言对齐，但创新有限且鲁棒性存疑",
+ "innovations": [
+  "指出现有ECG-语言对齐方法只在单一尺度建模，忽略ECG的层次(token-beat-rhythm)结构",
+  "提出三尺度(token/beat/rhythm)跨模态监督，从细粒度成分到整条心律逐层对齐文本报告",
+  "先预训练心脏病专科语言模型增强临床文本理解，再做多尺度ECG-Text对齐"
+ ],
+ "method_framework": "先在临床文本上预训练一个心血管专科语言模型；再将ECG信号分解为token(心动周期内成分)、beat(单个心跳)、rhythm(整条记录)三个尺度，分别在各层做跨模态对齐监督，使表征同时编码细粒度波形与整体心律的语义。",
+ "experiment_framework": "在多个公开ECG数据集上做下游诊断任务(零样本/线性探针/微调)，指标AUC等；与单尺度ECG-语言对齐及纯ECG SSL基线对比，消融验证三尺度各层贡献。",
+ "takeaways": [
+  "ECG的层次结构需要多尺度建模，单一尺度难以泛化",
+  "三尺度跨模态对齐比单一对齐获得更通用的ECG表征",
+  "专科预训练语言模型能更好承接临床报告语义"
+ ],
+ "weaknesses": [
+  "与2488等同期ECG-Text工作高度同题，差异化主要在多尺度分解设计",
+  "beat/token切分依赖波形检测精度，对噪声/心律失常样本鲁棒性未在前9页论证",
+  "三尺度监督的实现复杂度与计算开销较大，临床部署可行性存疑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/A Tiny Change A Giant Leap Long-Tailed Class-Incremental Learning via.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Tiny Change A Giant Leap Long-Tailed Class-Incremental Learning via.pdf",
+ "title": "A Tiny Change, A Giant Leap: Long-Tailed Class-Incremental Learning via Geometric Prototype Alignment",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "几何原型对齐缓解长尾增量梯度偏置，但理论假设强且实验证据不足",
+ "innovations": [
+  "把分类器初始化重述为几何问题：新类权重直接取冻结抽取器下的类原型 W_c^(0)=µ_c/||µ_c||₂ 投影到单位超球，配 b_c^(0)=−log(N_c/(N_ref+ε)) 偏置，把幅度失衡与角度可辨性解耦",
+  "动态锚定：每批用当前抽取器重算类质心 µ_c^(t)，加几何锚定正则 L_anchor=Σ_c‖W_c − µ_c^(t)/‖µ_c^(t)‖‖²₂，把分类器权重持续同步到漂移的特征几何",
+  "给出三条理论刻画：收敛加速界 T≤2log(1/ε)/(λ_min(1−sinθ_c))（相对随机初始化加速约 2.7×）、高斯假设下退化为 Fisher 最优方向 W∝Σ⁻¹(µ_c−µ_0)、以及基于最小原型间距 δ_min 的泛化上界"
+ ],
+ "method_framework": "三阶段：冻结上阶段抽取器算新类原型 µ_c；权重初始化为 µ_c/||µ_c|| 并配 −log(N_c/N_ref) 类别偏置；增量训练时每批重算质心，用 L_anchor 把权重持续拉向单位化质心，与 L_ce 及方法专属 Laux 联合优化。",
+ "experiment_framework": "CIFAR-100-LT(ρ=0.01)/ImageNet-Subset-LT/ImageNet-R，50 基类 + 5/10 增量任务，Ordered 与 Shuffled 双协议；接入 LUCIR、PODNET、L2P、DualPrompt、CODA-Prompt、EASE 等 10 法。",
+ "takeaways": [
+  "把新类权重从随机采样换成类原型投影，仅数行代码即可在 10 个 CIL 框架稳定涨点，尾类增益最大（PODNET 少样本类 25.7→38.1）",
+  "动态锚定主要负责抗遗忘：消融去掉它遗忘率从 6.94% 升到 20.6%，最终准确率降 3.3 个点",
+  "长尾增量里的 head-tail 失衡可拆成「幅度失衡（单位化解耦）」与「角度可辨性」两部分分别处理"
+ ],
+ "weaknesses": [
+  "理论假设偏强：Theorem 2 要求类条件分布近似高斯且 Σ=σ²I 的高维退化才得到 Fisher 最优 W∝Σ⁻¹(µ_c−µ_0)，真实深度特征不满足该假设，定理对工程设计的指导力存疑",
+  "所有主表与消融均为单次运行，既无随机种子方差也无显著性检验；且组件级消融只在 LUCIR+CIFAR-100-LT 上做，其余 9 个方法没有 GPA 拆解，无法判断普适增益有多少来自基线本身的初始化缺陷",
+  "Phase 3 每批重算类质心并做 MSE 对齐，训练开销与显存未报告；Algorithm 1 的伪代码写的是 loss_cls+loss_dis+λ·loss_anchor，与正文式(6)的 L_ce+λL_anchor+L_aux 不一致，且正文在消融章节中途截断"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "长尾增量学习触及可靠性主线，但理论假设强且实验证据不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

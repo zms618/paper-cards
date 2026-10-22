@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Less Is More, but Where Dynamic Token Compression via LLM-Guided Keyframe Prior.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Less Is More, but Where Dynamic Token Compression via LLM-Guided Keyframe Prior.pdf",
+ "title": "Less Is More, but Where? Dynamic Token Compression via LLM-Guided Keyframe Prior",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "LLM引导动态token压缩，提升视频处理效率",
+ "innovations": [
+  "揭示VLLM注意力层中隐含的查询条件化关键帧先验",
+  "提出训练-free的DyToK动态压缩框架",
+  "设计轻量级辅助模型提取关键帧先验，避免计算开销"
+ ],
+ "method_framework": "DyToK通过两阶段实现动态压缩：1)轻量级辅助模型提取关键帧先验；2)基于重要性分数动态分配token预算，保留关键帧更多token",
+ "experiment_framework": "在VideoMME、LongVideoBench、MLVU三个基准测试上评估，集成VisionZip、FastV、DyCoke等压缩方法，比较不同压缩比下的性能",
+ "takeaways": [
+  "利用深层注意力提取关键帧先验比浅层更有效",
+  "动态分配token预算比静态压缩更有效，尤其在极端压缩比下",
+  "轻量级辅助模型可提供接近主模型的帧感知能力"
+ ],
+ "weaknesses": [
+  "依赖特定VLLM架构，泛化性有待验证",
+  "未充分探讨不同视频类型下的表现差异",
+  "计算开销虽降低但仍需额外轻量模型推理"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

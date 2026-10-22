@@ -1,0 +1,41 @@
+{
+ "title": "Accelerating Unbiased LLM Evaluation via Synthetic Feedback",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "统计校正合成反馈偏差，减少12-25%人工标注",
+ "innovations": [
+  "提出统计上有原则的融合框架，结合人类与合成(奖励模型/LLM-as-judge)反馈以得到无偏的头对头胜率估计",
+  "将合成反馈的偏差显式建模并校正，从而在不牺牲评测可靠性的前提下减少人工标注",
+  "方法可推广、可扩展、无需超参调节，并给出可预测的标注节省量"
+ ],
+ "method_framework": "把 LLM-as-judge 当作有偏但便宜的评判器，将其与少量金标准人类反馈结合，通过统计校正合成评判器的系统性偏差，使融合后估计的胜率仍无偏；据此在评测流程中用合成反馈替代尽可能多的人工标注。",
+ "experiment_framework": "在多个 LLM 评测基准上，对比所需人工标注量与胜率估计的无偏性；报告使用现成合成评判器可减少人工标注达 12.2%、使用微调变体达 24.8%，并检验对不同任务/基准的可泛化性。",
+ "takeaways": [
+  "合成反馈的偏差可被显式校正，使其与人类反馈融合后仍得到无偏胜率",
+  "无需超参调节即可在现成 LLM-as-judge 上减少约 12% 人工标注，微调后达约 25%",
+  "该统计框架可推广到不同评测任务，而非仅适用于有标准答案的数学题"
+ ],
+ "weaknesses": [
+  "标注节省比例(12%/25%)相对有限，对极廉价大规模评测的边际收益需权衡",
+  "依赖合成评判器偏差结构相对稳定，评判器漂移时校正是否失效未充分讨论",
+  "前 9 页未见在最新多任务/长文本基准上的系统消融"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Accelerating Unbiased LLM Evaluation via Synthetic Feedback.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Accelerating Unbiased LLM Evaluation via Synthetic Feedback.pdf",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "校正LLM评估偏差，提升评测可靠性，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

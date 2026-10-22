@@ -1,0 +1,41 @@
+{
+ "title": "Training-Free Loosely Speculative Decoding: Accepting Semantically Correct Drafts beyond Exact Match",
+ "one_line": "放宽投机解码精确匹配，接受语义正确但词面不同的草稿token。",
+ "innovations": [
+  "指出标准投机解码精确匹配会丢弃许多语义正确的续接，且训练式SPD在OOD任务下降",
+  "提出FLy：利用目标模型自纠正行为判断draft-target不匹配是否仍语义有效，免训练即插即用",
+  "设计两层机制：熵级门控判断当前token是否允许多个合理备选，token级延迟窗口区分真错误与换词但语义正确的变体；并加多级加速同时加速目标与草稿模型"
+ ],
+ "method_framework": "标准SPD仅在草稿token与目标模型预测逐字相同时接受。FLy放宽该准则：先用熵级门控判断当前位置是否近乎确定性还是允许多个合理词；在允许多解的位置用token级延迟窗口，观察后续生成是否自洽，从而接受语义正确但词面不同的草稿token，区分真错误与合理改写。免训练，可与任意draft-target对组合。",
+ "experiment_framework": "在Llama-3.1-70B/405B-Instruct上评测；对比EAGLE-3、REST、Token Recycling、投机采样等；指标为精度保持与加速比；报告保持≥99%精度，70B平均2.81x、405B 5.07x加速，OOD数据集上比EAGLE-3快1.62x。",
+ "takeaways": [
+  "放宽精确匹配、接受语义正确的草稿可在保持目标模型分布的同时显著提速",
+  "免训练设计使其跨模型/跨域无需重调超参即可组合",
+  "在OOD数据上仍优于训练式EAGLE-3"
+ ],
+ "weaknesses": [
+  "放宽精确匹配理论上偏离了标准SPD对目标分布的严格保持，'≥99%精度'的分布一致性需更严格验证",
+  "延迟窗口引入额外校验开销，加速比随窗口长度变化的规律需权衡",
+  "主要在Llama系列验证，对其他架构/解码范式的通用性待确认"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/TRAINING-FREE Loosely Speculative Decoding Accepting Semantically Correct Drafts beyond Exact Match.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TRAINING-FREE Loosely Speculative Decoding Accepting Semantically Correct Drafts beyond Exact Match.pdf",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "解码加速技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

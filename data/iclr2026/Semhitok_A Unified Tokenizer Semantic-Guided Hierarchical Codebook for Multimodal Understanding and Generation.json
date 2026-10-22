@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Semhitok_A Unified Tokenizer Semantic-Guided Hierarchical Codebook for Multimodal Understanding and Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Semhitok_A Unified Tokenizer Semantic-Guided Hierarchical Codebook for Multimodal Understanding and Generation.pdf",
+ "title": "SemHiTok: A Unified Image Tokenizer via Semantic-Guided Hierarchical Codebook for Multimodal Understanding and Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.2
+ },
+ "one_line": "语义-像素解耦的层级码本，统一多模态理解与生成。",
+ "innovations": [
+  "提出语义引导层级码本：在预训练语义码本之上构建像素子码本，从结构与训练策略两方面解耦语义与像素。",
+  "相较SDE/TokenFlow等联合训练方法，该解耦使tokenizer在保留高层语义理解能力的同时捕获低层像素细节，取得更好权衡。",
+  "基于SemHiTok构建统一MLLM，在多模态理解与生成任务上均表现更优。"
+ ],
+ "method_framework": "针对统一图像tokenizer中理解（需高层语义）与生成（需低层像素）特征层次冲突，采用DStruct+DTrain：先有语义码本/编码器，再在其上分层构建像素子码本，使语义与像素在结构和训练上解耦，避免联合训练的互相牵制。",
+ "experiment_framework": "在LLaVA-v1.5设置下评测图像重建质量与多模态理解，并构建统一MLLM在理解+生成任务上对比。基线含VILA-U等联合训练统一tokenizer；指标为重建质量与多模态理解准确率。",
+ "takeaways": [
+  "在预训练语义码本上分层堆叠像素子码本，可有效缓解统一tokenizer中语义与像素特征的权衡冲突。",
+  "结构与训练双重解耦优于单纯联合优化语义蒸馏+像素重建损失。"
+ ],
+ "weaknesses": [
+  "属于统一tokenizer这一较活跃方向的渐进式改进，架构新颖性中等。",
+  "前9页未给出与最新统一MLLM的充分量化对比，增益幅度需看后续实验表。",
+  "聚焦tokenizer本身，对端到端统一MLLM的推理/可靠性影响讨论有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "多模态统一tokenizer与可靠性主线交织，方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

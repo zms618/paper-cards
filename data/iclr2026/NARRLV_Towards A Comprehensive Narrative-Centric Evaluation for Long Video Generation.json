@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/NARRLV_Towards A Comprehensive Narrative-Centric Evaluation for Long Video Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/NARRLV_Towards A Comprehensive Narrative-Centric Evaluation for Long Video Generation.pdf",
+ "title": "NarrLV: Towards a Comprehensive Narrative-Centric Evaluation for Long Video Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4.0,
+  "overall": 5.1
+ },
+ "one_line": "基于电影理论的视频叙事评测基准，但MLLM依赖与简化叙事限制可靠性",
+ "innovations": [
+  "提出时间叙事原子(TNA)作为维持连续视觉呈现的基本叙事单元，用其计数量化长视频叙事丰富度",
+  "基于影响TNA变化的三大电影叙事要素，构建可灵活扩展TNA数量的自动提示生成流水线",
+  "按叙事内容表达的三个递进层次，用MLLM自动生成问题与答题的框架设计评测指标，并验证与人工判断对齐"
+ ],
+ "method_framework": "先定义TNA并据电影叙事要素自动生成含可变数量TNA的评测提示；再让被测长视频模型生成视频；用一个MLLM就该视频按三个叙事递进层次自动生成问题并作答，据此打分。分数聚合为叙事表达能力指标，揭示现有模型在叙事上的能力边界。",
+ "experiment_framework": "在现有长视频生成模型与基础生成模型上广泛评测；指标与人类评分做相关性对齐；对比VBench等简单叙事提示基准；报告各模型在三层次叙事上的详细能力边界。",
+ "takeaways": [
+  "现有长视频模型评测主要靠VBench等简单叙事提示，不足以衡量叙事表达",
+  "TNA计数+MLLM问答可在无人工标注下近似衡量叙事丰富度，且与人工判断一致",
+  "评测揭示当前视频生成模型在长叙事表达上存在明显能力边界"
+ ],
+ "weaknesses": [
+  "指标依赖MLLM问答质量，MLLM自身的幻觉/误判会直接污染自动评分",
+  "主线是视频生成评测，与鲁棒性、可信验证、幻觉抑制等可靠性落地主线关联弱",
+  "TNA计数能否完整刻画复杂叙事(人物弧光/因果)仍属简化，与人工对齐的corr在长视频上幅度需看原文"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.55,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "视频生成评测与可靠性主线关联弱，MLLM依赖限制可靠性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

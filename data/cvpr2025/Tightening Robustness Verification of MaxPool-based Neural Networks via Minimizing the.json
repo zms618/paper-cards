@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Tightening Robustness Verification of MaxPool-based Neural Networks via Minimizing the.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Tightening Robustness Verification of MaxPool-based Neural Networks via Minimizing the.pdf",
+ "title": "Tightening Robustness Verification of MaxPool-based Neural Networks via Minimizing the",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 7.0
+ },
+ "one_line": "针对MaxPool的神经元级线性近似提升验证精度，但扩展性有限",
+ "innovations": [
+  "首次提出MaxPool函数的神经元级最紧线性边界",
+  "设计高效的线性近似算法，时间复杂度为O(pool size×log3)",
+  "Ti-Lin可集成到多种验证框架中，提升整体验证性能"
+ ],
+ "method_framework": "Ti-Lin通过为MaxPool函数提供神经元级最紧线性边界，最小化过度近似区域，从而提高鲁棒性验证的精度。方法基于MaxPool的分段线性特性，通过选择特定点构造上下界。",
+ "experiment_framework": "在MNIST、CIFAR-10、Tiny ImageNet和ModelNet40数据集上评估，与CNN-Cert、DeepPoly、3DCertify等7种SOTA验证器比较，使用认证准确率和平均运行时间作为指标。",
+ "takeaways": [
+  "线性近似技术可通过精心设计边界显著提高验证精度",
+  "针对特定组件(如MaxPool)的优化可大幅提升整体验证性能",
+  "方法的高效性使其可轻松集成到现有验证框架中"
+ ],
+ "weaknesses": [
+  "仅针对MaxPool层优化，未考虑其他非线性函数",
+  "实验主要在标准数据集上进行，未在更复杂的医学影像等安全关键领域验证",
+  "虽然时间效率高，但在超大规模网络上的扩展性未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.875,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "针对MaxPool的鲁棒性验证优化，符合可靠性主线但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/MoECLIP_Patch-Specialized Experts for Zero-shot Anomaly Detection.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/MoECLIP_Patch-Specialized Experts for Zero-shot Anomaly Detection.pdf",
+ "title": "MoECLIP Patch-Specialized Experts for Zero-shot Anomaly Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "MoECLIP通过patch级专家路由提升零样本异常检测，但计算复杂度高且泛化能力有限",
+ "innovations": [
+  "Mixture-of-Experts架构实现patch级自适应",
+  "Frozen Orthogonal Feature Separation(FOFS)正交分离特征空间",
+  "Simplex Equiangular Tight Frame(ETF)损失增强专家差异化"
+ ],
+ "method_framework": "在CLIP视觉编码器中集成MoE模块，动态路由图像块到专门LoRA专家，通过FOFS和ETF损失确保专家专业化，结合Patch Average Aggregation(PAA)多尺度感知",
+ "experiment_framework": "14个跨工业和医学领域基准数据集，WinCLIP/April-GAN/AnomalyCLIP等基线，AUROC和AP指标",
+ "takeaways": [
+  "patch级专家路由可提升零样本异常检测性能",
+  "输入和输出双重约束可有效防止专家功能冗余",
+  "多尺度感知对异常检测至关重要"
+ ],
+ "weaknesses": [
+  "计算复杂度增加，需要路由多个专家",
+  "仅在一个辅助数据集上训练，可能限制泛化能力",
+  "未充分分析不同patch类型的专家分配模式"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像异常检测与可靠性主线交点，但泛化能力有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

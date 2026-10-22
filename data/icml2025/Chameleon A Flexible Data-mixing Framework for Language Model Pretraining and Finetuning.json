@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Chameleon A Flexible Data-mixing Framework for Language Model Pretraining and Finetuning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Chameleon A Flexible Data-mixing Framework for Language Model Pretraining and Finetuning.pdf",
+ "title": "CHAMELEON: A Flexible Data-mixing Framework for Language Model Pretraining and Finetuning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "嵌入空间leverage分数加权数据混合，适配预训练微调但无可靠性主线",
+ "innovations": [
+  "在学习到的嵌入空间中构造域亲和矩阵，用诱导出的leverage scores决定数据混合权重，上抬共享表征的域",
+  "权重可直接迁移到新数据(仅计算新域嵌入)，无需代理模型重训练，应对数据在准备与训练间的演化",
+  "同一框架同时支持预训练与微调阶段的域重加权，统一两个训练阶段"
+ ],
+ "method_framework": "Chameleon先计算各域的嵌入表示并在其上构造域亲和矩阵，利用leverage score这一数值线性代数量刻画每个域对嵌入空间的独特贡献，据此确定域混合权重。新域加入时只需算其嵌入即可平移权重，避免DoReMi/DoGE式昂贵的小代理模型搜索；微调阶段同样用该机制做域重加权。",
+ "experiment_framework": "三类场景验证：(i)以少量算力在预训练域上超越既有方法的性能；(ii)迁移到新数据时提升few-shot推理准确率；(iii)在所有微调域上一致改善测试困惑度。与DoReMi/DoGE等域重加权方法对比，报告下游精度与代理算力开销。",
+ "takeaways": [
+  "leverage scores可作为嵌入空间中域重要性的有效代理，上抬共享表征域能提升泛化",
+  "数据混合权重可随新域嵌入直接迁移，免去昂贵的代理重训练",
+  "统一框架在预训练与微调两阶段都能一致改善下游表现/困惑度"
+ ],
+ "weaknesses": [
+  "属LLM数据配比工程方法，与可靠性/鲁棒性及医学影像、可信推理主线无直接关联",
+  "依赖一个已学好的嵌入空间，其质量与偏置会直接传导到混合权重，论文对该敏感性讨论有限",
+  "前9页以动机与方法为主，各场景的完整数据集、规模与消融需结合全文判断"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.29,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

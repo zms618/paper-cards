@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Neural Compression Meshes Sparse Implicit Representation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Neural Compression Meshes Sparse Implicit Representation.pdf",
+ "title": "Neural Compression of 3D Meshes using Sparse Implicit Representation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "稀疏隐式表示网格压缩，性能优于传统方法但缺乏充分验证。",
+ "innovations": [
+  "提出稀疏隐式表示SIR：仅在表面附近规则网格记录带符号距离场值，用显著更低内存支持高分辨率结构化表示与精确表面恢复。",
+  "构建轻量稀疏神经压缩(SNC)网络，从SIR提取紧凑嵌入特征并编码为比特流。",
+  "相较直接压缩顶点/连通性或点云转换，避免低码率下的几何失真与拓扑破坏。"
+ ],
+ "method_framework": "将网格转换为SIR：仅在表面附近规则网格上采样SDF值；用轻量SNC网络对该稀疏结构提特征、量化并编码为码流；解码后从SIR的SDF规则网格通过Marching Cubes类流程恢复表面。",
+ "experiment_framework": "在多种网格模型上对比Draco、V-DMC等网格压缩与G-PCC/V-PCC等点云压缩方法，报告压缩性能与计算效率均更优，并做消融（具体码率-失真数值表在所提取页之后）；代码开源。",
+ "takeaways": [
+  "稀疏隐式表示以结构化、低冗余方式编码几何，压缩效率优于直接压缩拓扑/顶点的传统方法。",
+  "避免点云-网格转换带来的不连续失真，对任意（含非水密）网格更友好。",
+  "轻量SNC在压缩比与计算效率间取得良好折中。"
+ ],
+ "weaknesses": [
+  "所提取页未给出具体BD-rate/PSNR数值，相对Draco/V-DMC的提升缺乏可核验量化。",
+  "仅在表面附近记录SDF，对薄结构/高频细节的恢复精度依赖网格密度，未充分分析。",
+  "主要在标准网格基准验证，对动态网格/大场景实时流式传输的适用性未涉及。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3D网格压缩与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

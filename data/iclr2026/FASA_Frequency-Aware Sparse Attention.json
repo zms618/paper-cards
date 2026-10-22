@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/FASA_Frequency-Aware Sparse Attention.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/FASA_Frequency-Aware Sparse Attention.pdf",
+ "title": "FASA: FREQUENCY-AWARE Sparse Attention",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "利用RoPE频率块稀疏性设计训练免费稀疏注意力框架",
+ "innovations": [
+  "发现RoPE中频率块的功能稀疏性",
+  "提出基于主导频率块的查询感知令牌重要性预测",
+  "设计FASA-M和FASA-C两种硬件感知变体"
+ ],
+ "method_framework": "FASA采用两阶段框架：首先通过Token Importance Predictor(TIP)利用主导频率块动态估计令牌重要性，然后通过Focused Attention Computation(FAC)仅在选定令牌子集上执行精确注意力计算。",
+ "experiment_framework": "在LongBench-V1、PG-19、WikiText、C4、MATH500和AIME24等数据集上评估，与Stream、SnapKV、Quest等基线方法比较，使用准确率、困惑度等指标。",
+ "takeaways": [
+  "频率块的功能稀疏性是模型内在特性，与任务无关",
+  "主导频率块可作为令牌重要性的高效代理，无需训练"
+ ],
+ "weaknesses": [
+  "依赖RoPE架构，可能不适用于其他位置编码方法",
+  "仅关注KV缓存优化，未解决其他计算瓶颈"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "稀疏注意力优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

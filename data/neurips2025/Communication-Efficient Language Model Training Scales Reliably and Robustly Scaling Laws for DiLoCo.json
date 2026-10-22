@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Communication-Efficient Language Model Training Scales Reliably and Robustly Scaling Laws for DiLoCo.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Communication-Efficient Language Model Training Scales Reliably and Robustly Scaling Laws for DiLoCo.pdf",
+ "title": "Communication-Efficient Language Model Training Scales Reliably and Robustly: Scaling Laws for DiLoCo",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "DiLoCo扩展定律研究，通信效率提升有限且缺乏实际系统验证",
+ "innovations": [
+  "建立了DiLoCo的扩展定律，预测评估损失和最优超参数",
+  "发现DiLoCo在模型规模增大时相对数据并行训练持续改进",
+  "揭示DiLoCo即使在不通信瓶颈情况下也能提升训练效果"
+ ],
+ "method_framework": "通过双级优化框架，在多个模型副本间进行周期性同步，结合内部和外部优化步骤，实现通信高效的分布式训练",
+ "experiment_framework": "C4数据集，9种模型规模(35M-2.4B)，超参数扫描，验证4B和10B模型",
+ "takeaways": [
+  "DiLoCo扩展定律可准确预测大模型性能和超参数",
+  "单副本DiLoCo(M=1)在所有模型规模上均优于数据并行训练",
+  "最优外部学习率与模型规模无关，仅取决于副本数和同步频率"
+ ],
+ "weaknesses": [
+  "未在多模态或MoE等架构上验证扩展定律",
+  "使用理想化 wall-clock 模型而非实际系统运行时间分析",
+  "下游任务评估有限，仅3个零样本任务"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

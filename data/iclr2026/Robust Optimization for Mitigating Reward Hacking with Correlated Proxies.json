@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Robust Optimization for Mitigating Reward Hacking with Correlated Proxies.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Robust Optimization for Mitigating Reward Hacking with Correlated Proxies.pdf",
+ "title": "Robust Optimization for Mitigating Reward Hacking with Correlated Proxies",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "将奖励黑客攻击形式化为相关代理奖励空间的鲁棒优化问题，推导可解的max-min形式。",
+ "innovations": [
+  "将 reward hacking 形式化为对整个 r-相关代理奖励空间的鲁棒策略优化问题，而非只优化单一固定代理。",
+  "推导出可处理的 max-min 形式：智能体在满足相关性约束的最坏代理奖励下最大化性能。",
+  "当奖励为已知特征的线性函数时，引入该先验得到更优策略与可解释的最坏情况奖励。"
+ ],
+ "method_framework": "在参考策略遇到的状态-动作对上约束代理奖励与真实奖励的相关系数 r；据此构造对抗集合，策略优化采用 max-min：先选最不利的 r-相关代理奖励，再最大化策略在其上的回报；当奖励可表为已知特征线性函数时，把该先验纳入以同时改善策略并获得可解释的最坏奖励。",
+ "experiment_framework": "在多个环境中评测；对比 occupancy-regularized policy optimization(ORPO)；报告最坏情况回报、不同代理-真实奖励相关水平下的鲁棒性与稳定性，所提算法在最坏回报上一致优于 ORPO。",
+ "takeaways": [
+  "优化单一固定代理奖励会被 hack，应对所有 r-相关代理做最坏情况优化才稳健。",
+  "max-min 形式可处理，并在不同相关水平下保持鲁棒与稳定。",
+  "纳入线性特征先验可同时提升策略并给出可解释的最坏奖励，利于安全审查。"
+ ],
+ "weaknesses": [
+  "实验环境偏小/偏玩具，在高维真实 RL(如具身/LLM 后训练)上的可扩展性与计算代价未验证。",
+  "r-相关假设与参考策略依赖强，参考策略失配时相关性约束是否仍有意义未充分讨论。",
+  "max-min 保守性可能牺牲平均性能，平均-最坏权衡的量化分析有限。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "奖励黑客攻击形式化为鲁棒优化问题，触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

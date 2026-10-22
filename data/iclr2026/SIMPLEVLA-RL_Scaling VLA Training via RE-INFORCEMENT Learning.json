@@ -1,0 +1,41 @@
+{
+ "title": "SimpleVLA-RL: Scaling VLA Training via Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "将LLM结果奖励RL迁移到VLA，依赖仿真环境，与主线相关性弱",
+ "innovations": [
+  "在veRL上为VLA定制轨迹采样、可扩展并行、多环境渲染与优化损失计算",
+  "提出探索增强策略，使OpenVLA-OFT在LIBERO达99%SoTA、RoboTwin上相对提升80%并超过π0",
+  "发现RL训练中的新现象pushcut：策略自发发现训练中未见的模式"
+ ],
+ "method_framework": "将LLM中结果奖励RL迁移到VLA长时序动作规划；在veRL基础上做VLA特化的采样/并行/多环境渲染/损失优化，配合探索增强策略，以终局结果奖励驱动逐步动作规划，减少对SFT大规模轨迹的依赖。",
+ "experiment_framework": "基座为OpenVLA-OFT；仿真基准LIBERO(达99%SoTA)、RoboTwin 1.0&2.0(相对提升80%)并与π0对比；含真实世界任务验证RL超越SFT；分析pushcut现象。",
+ "takeaways": [
+  "结果驱动RL可显著缓解VLA对大规模示范数据的依赖并提升泛化",
+  "探索增强策略是VLA-RL超过π0等强基线的关键",
+  "RL过程中会出现策略自发跳出训练分布的pushcut现象"
+ ],
+ "weaknesses": [
+  "属机器人操作学习，与医学影像/多模态推理可靠性主线关系较弱",
+  "依赖仿真环境渲染，sim-to-real差距与奖励稀疏问题讨论有限",
+  "前9页未给出与更多VLA方法的逐项消融与误差分析"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/SIMPLEVLA-RL_Scaling VLA Training via RE-INFORCEMENT Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SIMPLEVLA-RL_Scaling VLA Training via RE-INFORCEMENT Learning.pdf",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "机器人操作学习，与医学影像/多模态推理可靠性主线关系弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

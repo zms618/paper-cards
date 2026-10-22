@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/A Closer Look at Generalized BH Algorithm for Out-of-Distribution Detection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/A Closer Look at Generalized BH Algorithm for Out-of-Distribution Detection.pdf",
+ "title": "A Closer Look at Generalized BH Algorithm for Out-of-Distribution Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "分析校准集对g-BH算法影响，提出eg-BH缓解小校准集问题",
+ "innovations": [
+  "首次系统研究校准集对g-BH算法OOD检测性能的影响机制",
+  "理论证明g-BH在校准集上真阳性率(TPR)的条件期望服从beta分布，取决于预设水平与校准集大小",
+  "提出集成g-BH(eg-BH)，融合多种经验p值做决策，缓解小校准集下的性能下降"
+ ],
+ "method_framework": "g-BH把OOD检测与多重假设检验通过经验p值联系起来，校准集用于计算经验p值至关重要；理论上分析校准集上TPR的条件期望，导出其服从依赖预设水平与校准集大小的beta分布，说明小校准集为何劣化性能；为此集成多种经验p值形成eg-BH以提升小校准集下的稳健性。",
+ "experiment_framework": "在多个OOD检测基准上评测；对比g-BH及主流分数函数下的决策规则，以OOD检测指标(FPR@TPR、AUROC等)为衡量；检验校准集大小变化对性能的影响及eg-BH的改进。",
+ "takeaways": [
+  "校准集大小显著影响g-BH性能，小校准集使TPR条件期望偏离设计水平",
+  "TPR条件期望服从可预测的beta分布，可据此理解校准集作用",
+  "集成多种经验p值的eg-BH在小校准集下更稳健"
+ ],
+ "weaknesses": [
+  "beta分布结论依赖经验p值构造与分布假设的近似",
+  "eg-BH的集成方式与p值来源选择缺乏原则性最优",
+  "主要在标准图像OOD基准验证，安全关键场景（如医疗诊断）的实测不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "OOD检测与校准集分析，可靠性主线明确落地",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Softmax Transformers are Turing-Complete.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Softmax Transformers are Turing-Complete.pdf",
+ "title": "Softmax Transformers are Turing-Complete",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 6.0
+ },
+ "one_line": "形式证明softmax CoT Transformer图灵完备，但实证与主线相关性弱",
+ "innovations": [
+  "首次证明softmax(而非hardmax)CoT Transformer图灵完备，填补此前证明依赖不现实hardmax注意力的空白",
+  "借助C-RASP的计数能力模拟Minsky计数机而非直接模拟图灵机，规避softmax难以读出图灵机头位置的难点",
+  "证明带因果掩码的CoT C-RASP在一元字母表/letter-bounded语言上图灵完备；加入相对位置编码后对任意语言图灵完备，并附带长度可泛化(trainability)保证"
+ ],
+ "method_framework": "在Huang et al.的长度可泛化softmax Transformer框架下，以可转译为该框架的声明式语言C-RASP为中介；利用其计数能力构造Minsky计数机的模拟，从而得到图灵完备性；再区分letter-bounded语言与一般语言，后者需相对位置编码。",
+ "experiment_framework": "理论证明为主，辅以实证：训练Transformer在需要复杂非线性算术推理(如质数、指数等数论概念)的语言上验证长度泛化与可学习性。",
+ "takeaways": [
+  "softmax CoT Transformer在长度可泛化条件下具备图灵完备的表达能力",
+  "hardmax并非图灵完备的必要条件，softmax配合计数即可模拟计数机",
+  "相对位置编码是把完备性从letter-bounded语言推广到任意语言的关键"
+ ],
+ "weaknesses": [
+  "属形式语言/表达力理论，与可靠性、医学影像、多模态推理主线相关性低",
+  "结论建立在理想化'理想学习过程收敛'的长度泛化定义上，离真实大模型可训练性仍有距离",
+  "实证仅在合成算术语言上验证，未触及真实NLP任务中的可泛化性；前9页为证明框架，完整证明细节与实验表未全部展开"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "形式语言理论，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

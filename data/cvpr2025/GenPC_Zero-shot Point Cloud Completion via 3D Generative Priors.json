@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/GenPC_Zero-shot Point Cloud Completion via 3D Generative Priors.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/GenPC_Zero-shot Point Cloud Completion via 3D Generative Priors.pdf",
+ "title": "GenPC Zero-shot Point Cloud Completion via 3D Generative Priors",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "用3D生成先验做点云补全，但依赖预训练模型且计算开销大",
+ "innovations": [
+  "深度提示模块 bridging 点云与生成模型模态差距",
+  "几何保持融合模块自适应对齐生成形状与输入",
+  "利用显式3D生成先验替代耗时优化过程"
+ ],
+ "method_framework": "通过深度提示模块将部分点云转换为深度图像，输入3D生成模型生成完整形状，再通过几何保持融合模块对齐并融合原始结构",
+ "experiment_framework": "Redwood/ScanNet/KITTI数据集，CD/EMD指标，与PoinTr/SnowflakeNet/SDS-Complete等基线对比",
+ "takeaways": [
+  "利用预训练3D生成模型可显著提升零样本点云补全质量",
+  "多模态融合与几何保持对真实场景应用至关重要"
+ ],
+ "weaknesses": [
+  "依赖预训练3D生成模型的质量",
+  "计算复杂度仍高于传统方法",
+  "对极稀疏点云的鲁棒性有待提高"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "点云补全与可靠性主线无实质交点，属常规3D视觉任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

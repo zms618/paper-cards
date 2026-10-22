@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Value Flows.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Value Flows.pdf",
+ "title": "Value Flows",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "流匹配建模回报分布，提升RL性能但计算开销大",
+ "innovations": [
+  "提出Value Flows：用流匹配模型估计完整未来回报分布，替代传统离散分箱或分位数方法",
+  "构建满足分布式Bellman方程的流匹配目标——概率密度路径自动服从Bellman更新",
+  "提出流导数ODE方法估计状态回报方差（不确定性），并用不确定性信息优先学习高方差转移"
+ ],
+ "method_framework": "Value Flows用流匹配模型对每个状态-动作的回报分布建模。核心是设计一个流匹配目标，使生成的概率密度路径自动满足分布式Bellman方程。训练后，通过流导数ODE可以高效计算回报分布的方差等统计量。不确定性信息用于重加权流匹配目标，优先学习回报估计不准确的转移。整个框架作为critic嵌入actor-critic RL。",
+ "experiment_framework": "任务：37个基于状态的 + 25个基于图像的RL基准任务。设置：offline和online-to-online。基线：传统分布式RL方法（分箱、分位数）。指标：成功率平均提升1.3倍。",
+ "takeaways": [
+  "流匹配模型比离散分箱/分位数方法能更灵活地建模复杂多峰回报分布",
+  "流导数ODE能高效估计回报不确定性，用于优先级学习",
+  "灵活的回报分布表示带来了更强的学习信号和更好的RL性能"
+ ],
+ "weaknesses": [
+  "流模型比传统critic网络参数更多，计算开销更大",
+  "不确定性估计的准确性依赖流模型拟合质量",
+  "主要在benchmark任务上验证，更复杂真实环境的适用性未展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "RL方法创新，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

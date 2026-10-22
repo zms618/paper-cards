@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/WGFormer_An SE(3)-Transformer Driven by Wasserstein Gradient Flows for Molecular Ground-State Conformation Prediction.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/WGFormer_An SE(3)-Transformer Driven by Wasserstein Gradient Flows for Molecular Ground-State Conformation Prediction.pdf",
+ "title": "WGFormer: An SE(3)-Transformer Driven by Wasserstein Gradient Flows for Molecular Ground-State Conformation Prediction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.25
+ },
+ "one_line": "将SE(3)注意力解释为Wasserstein梯度流，用于分子构象预测",
+ "innovations": [
+  "首次将SE(3)-Transformer的注意力头与Wasserstein梯度流建立理论联系，为注意力机制提供了最优传输视角的解释",
+  "在原子级混合模型上定义能量函数，通过Wasserstein梯度流优化构象，提升了预测的可解释性",
+  "自编码器框架：编码低质量构象，直接解码输出基态构象，避免了两阶段方法的不确定性"
+ ],
+ "method_framework": "将分子表示为原子级分布的混合模型。WGFormer的每个注意力头对应一个Wasserstein梯度流步骤：通过Sinkhorn注意力计算原子间的传输矩阵，然后基于该矩阵更新原子位置表示。整体架构在自编码器框架下，编码器输入低质量构象，MLP解码器直接输出基态构象坐标。",
+ "experiment_framework": "在多个分子构象预测数据集上验证；与ConfVAE、ConfOpt等SOTA方法对比；指标包括构象预测精度、能量相关性等；测试不同分子规模下的泛化能力。",
+ "takeaways": [
+  "SE(3)-Transformer的注意力机制可自然解释为Wasserstein梯度流，这种理论对应关系指导了更好的架构设计",
+  "自编码器框架直接预测基态构象，比两阶段方法（生成+筛选）更可靠",
+  "WGFormer在精度和计算效率之间取得了良好平衡，优于现有学习方法"
+ ],
+ "weaknesses": [
+  "仅在中小分子上验证，大分子（如蛋白质）的适用性未测试",
+  "Wasserstein梯度流的连续理论与离散注意力实现之间的对应关系较为理想化",
+  "与量子化学高精度方法（如DFT）的精度差距未充分讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

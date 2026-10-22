@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Pareto-Conditioned Diffusion Models for Offline Multi-Objective Optimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Pareto-Conditioned Diffusion Models for Offline Multi-Objective Optimization.pdf",
+ "title": "Pareto-Conditioned Diffusion Models for Offline Multi-Objective Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "条件扩散模型直接采样Pareto权衡解，外推可靠性存疑。",
+ "innovations": [
+  "将离线MOO表述为条件扩散采样问题，直接以目标权衡为条件生成解，无需显式代理模型。",
+  "采用聚焦高绩效样本的重加权策略，并引入参考方向机制引导采样向训练数据之外的新区间探索。",
+  "在标准离线MOO基准上取得有竞争力结果，且跨任务一致性优于既有方法。"
+ ],
+ "method_framework": "在静态已评估数据集上训练条件扩散模型，条件为期望的Pareto权衡点；训练时重加权使模型偏向高绩效样本；采样时用参考方向机制引导向未观测但有前景的区域外推，直接生成满足指定权衡的候选解，跳过显式代理建模与逐点优化。",
+ "experiment_framework": "在标准离线MOO基准(含生物序列设计等昂贵评估任务)上评测；对比基于代理/多任务的离线MOO方法；指标为Pareto超体积/HV与跨任务一致性；结果竞争力强且更稳定。",
+ "takeaways": [
+  "条件扩散可直接把离线MOO转为条件采样，省去显式代理模型。",
+  "重加权+参考方向有效引导模型外推到训练数据之外的Pareto区间。",
+  "相比既有离线MOO方法，跨任务表现更一致。"
+ ],
+ "weaknesses": [
+  "外推到训练分布之外的可靠性依赖扩散模型，高风险设计场景下缺乏验证。",
+  "条件权衡点与采样解的对应精度需更多校准分析。",
+  "评测以标准合成/benchmark任务为主，真实昂贵物理实验端到端验证有限。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "离线MOO方法设计有迁移价值，但外推可靠性存疑",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TOKEN-GUARD Towards Token-Level Hallucination Control via Self-Checking Decoding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TOKEN-GUARD Towards Token-Level Hallucination Control via Self-Checking Decoding.pdf",
+ "title": "Token-Guard: Towards Token-Level Hallucination Control via Self-Checking Decoding",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.3
+ },
+ "one_line": "Token级幻觉检测方法，计算开销大且适用性有限。",
+ "innovations": [
+  "在token级别进行幻觉检测，在推理步骤中即时验证候选片段，防止幻觉内容传播到后续生成",
+  "在隐空间对候选片段进行显式幻觉风险评分（结合事实性和自一致性两个维度）",
+  "迭代剪枝与重生成机制，动态纠正检测到的错误，形成多路径探索-校验-修正的闭环"
+ ],
+ "method_framework": "Token-Guard采用多路径并行生成，每个推理步骤生成候选片段后进行自校验：在隐空间评估片段的事实性风险和自一致性风险，给出幻觉风险评分。高风险片段被剪枝并触发重生成，低风险片段保留。多路径最终聚合得到答案。整个过程无需外部检索或大规模微调。",
+ "experiment_framework": "在FinanceBench、RAGTruth、CovidQA、Drop_history、Drop_nfl等幻觉基准数据集上评估；基线包括标准CoT、Tree-of-Thoughts、Guided Decoding、Predictive Decoding等解码方法；指标为F1分数和幻觉率。",
+ "takeaways": [
+  "token级即时校验比整体答案评估更能有效阻断幻觉传播",
+  "隐空间风险评分可作为解码时的筛选信号，无需外部知识库",
+  "迭代剪枝重生成机制在多路径探索中显著提升了事实准确性"
+ ],
+ "weaknesses": [
+  "多路径生成+迭代校验的计算开销较大，推理效率偏低",
+  "幻觉风险评分的训练数据来源和标注方式未在正文中详细说明",
+  "实验主要在英文知识密集型任务上验证，开放域对话和多模态场景的适用性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "幻觉抑制方法，但计算开销大限制落地性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

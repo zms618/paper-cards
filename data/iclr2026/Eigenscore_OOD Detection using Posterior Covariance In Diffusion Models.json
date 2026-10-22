@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Eigenscore_OOD Detection using Posterior Covariance In Diffusion Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Eigenscore_OOD Detection using Posterior Covariance In Diffusion Models.pdf",
+ "title": "Eigenscore: OOD Detection using Posterior Covariance In Diffusion Models",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.3
+ },
+ "one_line": "利用扩散模型后验协方差特征值谱进行OOD检测，但K值选择缺乏理论支持",
+ "innovations": [
+  "利用扩散模型后验协方差特征值谱作为OOD检测信号",
+  "理论分析建立了后验协方差与分布不匹配的直接联系",
+  "提出Jacobian-free子空间迭代方法高效估计特征值"
+ ],
+ "method_framework": "EigenScore通过分析扩散模型去噪器后验协方差的特征值谱来检测分布偏移。OOD样本会导致后验协方差特征值膨胀，特别是前K个特征值，形成可区分的谱签名。",
+ "experiment_framework": "在CIFAR-10/100、SVHN、CelebA、TinyImageNet等数据集上评估，与DDPM-OOD、DiffPath等基线比较AUROC指标，特别关注近OOD场景性能。",
+ "takeaways": [
+  "后验协方差特征值谱比传统似然或分数范数更可靠地检测分布偏移",
+  "保留主导特征值而非标量化误差能保留判别性信息",
+  "Jacobian-free方法使特征值估计在计算上可行"
+ ],
+ "weaknesses": [
+  "特征值数量K的选择依赖经验而非理论",
+  "计算复杂度仍高于传统方法",
+  "未探索在医学影像等特定领域的应用"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "OOD检测与可靠性主线直接交点，方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

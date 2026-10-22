@@ -1,0 +1,41 @@
+{
+ "title": "Task-Aware Data Selection via Proxy-Label Enhanced Distribution Matching for LLM Finetuning",
+ "one_line": "用LLM代理标签对齐P(X,Y)做数据选择，但噪声与成本问题显著",
+ "innovations": [
+  "指出既有任务相关数据选择只对齐P(X)的局限，主张应对齐指令与任务标签的联合分布P(X,Y)",
+  "利用LLM推理能力为无标签源语料推断代理标签，从小目标集传播到大规模无标签源池",
+  "两阶段过滤：先去标签噪声，再做分布对齐，得到比纯X相似度更具语义/任务感知的子集"
+ ],
+ "method_framework": "先用LLM为小目标集推断代理标签并传播到300K源语料；第一阶段过滤掉代理标签噪声样本；第二阶段在(X,Y)联合分布上做分布匹配，从源池选出与目标联合分布对齐的样本用于微调。",
+ "experiment_framework": "从300K源池仅选10K样本微调；对比基于嵌入相似度/梯度相似度的X-only选择方法及SOTA数据选择；指标为下游任务性能，报告10K子集可媲美或超越SOTA。",
+ "takeaways": [
+  "仅按输入X相似度选数据会误选语义近但领域标签不符的样本（如手机合同混入建工合同）",
+  "引入LLM代理标签对齐联合分布可提升选择的任务相关性",
+  "仅10K精选样本即可达到与使用更大数据相当甚至更优的微调效果"
+ ],
+ "weaknesses": [
+  "代理标签由LLM推断，引入标签噪声，两阶段过滤的纠错能力依赖LLM自身准确率",
+  "依赖一个可推断标签的LLM，增加了推理成本，对小模型/低资源任务可能不划算",
+  "联合分布对齐在高维标签空间的难度与代理标签粒度的敏感性分析不足"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Task-Aware Data Selection via Proxy-Label Enhanced Distribution Matching for LLM Finetuning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Task-Aware Data Selection via Proxy-Label Enhanced Distribution Matching for LLM Finetuning.pdf",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "数据选择方法提升LLM微调可靠性，但噪声与成本问题显著",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

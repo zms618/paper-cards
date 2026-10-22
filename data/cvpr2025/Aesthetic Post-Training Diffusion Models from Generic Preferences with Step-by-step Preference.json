@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Aesthetic Post-Training Diffusion Models from Generic Preferences with Step-by-step Preference.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Aesthetic Post-Training Diffusion Models from Generic Preferences with Step-by-step Preference.pdf",
+ "title": "Aesthetic Post-Training Diffusion Models from Generic Preferences with Step-by-step Preference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "SPO优化扩散模型美学质量，但适用性有限且对齐改进不足。",
+ "innovations": [
+  "提出逐步偏好优化(SPO)替代传统DPO的传播策略",
+  "设计步感知偏好模型(SPM)评估细粒度视觉差异",
+  "引入随机选择机制确保比较样本来自同一潜在空间",
+  "扩展为多步偏好优化(MSPO)适应更强模型"
+ ],
+ "method_framework": "SPO在每个去噪步骤生成候选样本池，使用SPM选择最优-最差对，通过修改的DPO损失优化扩散模型，随机选择一个样本进入下一步，专注于细粒度视觉差异而非布局差异。",
+ "experiment_framework": "在Pick-a-Pic数据集上训练SPM，使用PickScore、HPSV2、ImageReward和Aesthetic score评估，与Diffusion-DPO、D3PO等方法比较，并在GenEval上评估图像-文本对齐。",
+ "takeaways": [
+  "从通用偏好数据中提炼美学细节的有效方法",
+  "逐步优化策略能更聚焦于细粒度视觉差异",
+  "随机选择机制确保比较样本的一致性"
+ ],
+ "weaknesses": [
+  "不适用于流动匹配模型如SD3和Flux",
+  "对图像-文本对齐改进有限",
+  "未考虑美学的主观性、政治和历史方面"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "美学优化与可靠性主线无关，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

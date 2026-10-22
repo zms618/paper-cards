@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Robust Reward Alignment via Hypothesis Space Batch Cutting.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Robust Reward Alignment via Hypothesis Space Batch Cutting.pdf",
+ "title": "Robust Reward Alignment via Hypothesis Space Batch Cutting",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "假设空间切割的奖励对齐方法，理论鲁棒性但适用性存疑。",
+ "innovations": [
+  "提出几何可解释的假设空间分批切割视角，从排序轨迹对迭代收紧奖励假设空间。",
+  "基于分歧查询并在批内用投票函数确定切割，保证有界的人类查询复杂度。",
+  "引入保守切割防止错误偏好做出过激切割，无需显式识别错误偏好即可获得可证明鲁棒性。"
+ ],
+ "method_framework": "把奖励学习视为在奖励假设空间中用人类偏好做切割；按分歧主动查询轨迹对，批内用投票聚合偏好确定切割平面收紧假设空间；对错误偏好采用保守切割(不过度切除)，从而在不识别错误样本的情况下保证对假偏好的鲁棒界。",
+ "experiment_framework": "在模型预测控制(MPC)设定、多类任务上评测；对比偏好奖励对齐SOTA(Bradley-Terry系方法)；注入错误偏好测试鲁棒性，报告学到奖励与最终任务表现。",
+ "takeaways": [
+  "该框架在多样MPC任务上达到与SOTA相当或更优的表现。",
+  "保守切割使方法对未知错误人类偏好可证明鲁棒，无需先甄别错误反馈。"
+ ],
+ "weaknesses": [
+  "与主线的医学影像、多模态大模型推理不直接相关，属偏好奖励对齐。",
+  "几何切割假设奖励在假设空间中具有良好结构，对高维复杂奖励的适用性存疑。",
+  "完整理论界与多任务实验多在后文，正文9页内未见全量数值表。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

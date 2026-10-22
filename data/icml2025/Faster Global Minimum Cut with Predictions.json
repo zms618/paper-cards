@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Faster Global Minimum Cut with Predictions.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Faster Global Minimum Cut with Predictions.pdf",
+ "title": "Faster Global Minimum Cut with Predictions",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "将学习增强应用于Karger算法，预测加速最小割但实验有限。",
+ "innovations": [
+  "首次将learning-augmented algorithms框架应用于全局最小割问题，提出Boosted Karger和Boosted Karger-Stein算法",
+  "通过预测概率优先收缩低割概率边，好预测时算法达到近线性时间复杂度",
+  "证明算法对预测错误具有鲁棒性，坏预测时退化到原始算法性能"
+ ],
+ "method_framework": "Karger算法通过随机收缩边寻找最小割。本文用ML预测(b_C)标记每条边是否在最小割中，然后对预测为不在割中的边施加更高收缩概率(prioritized contraction)。预测质量用η(错误率)和ρ(置信度)参数化。算法保持原始Karger的分析框架，仅改变边收缩的概率分布。",
+ "experiment_framework": "在三个真实图数据集(sanr400-0-7, bn-mouse_brain_1, frb30-15-5)上对比Boosted Karger与标准Karger算法的迭代次数。预测通过参数η和ρ控制质量。测量找到最小割所需的重复次数。",
+ "takeaways": [
+  "Boosted Karger在所有测试数据集上均优于标准Karger，难实例上达到数量级的迭代次数减少",
+  "算法同时实现了好预测时的效率提升和坏预测时的鲁棒性，符合learning-augmented算法的设计目标",
+  "Karger-Stein算法的boost版本同样受益于预测加速"
+ ],
+ "weaknesses": [
+  "预测模型本身的训练流程和特征工程未详细描述，实际部署的预测质量难以保证",
+  "实验仅在小规模图上验证，对百万级节点的大图性能未测试",
+  "仅考虑全局最小割，对s-t最小割等变体的推广未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

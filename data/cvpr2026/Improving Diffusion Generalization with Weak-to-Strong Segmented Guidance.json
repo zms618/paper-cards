@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Improving Diffusion Generalization with Weak-to-Strong Segmented Guidance.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Improving Diffusion Generalization with Weak-to-Strong Segmented Guidance.pdf",
+ "title": "Improving Diffusion Generalization with Weak-to-Strong Segmented Guidance",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "分段指导结合条件相关与无关方法提升扩散模型泛化",
+ "innovations": [
+  "从弱到强原则分析指导方法有效区域",
+  "提出分段指导(SGG)结合条件相关和条件无关指导优势",
+  "将弱到强原则迁移到训练目标提升无指导扩散模型泛化能力"
+ ],
+ "method_framework": "基于弱到强原则，将指导方法分为条件相关(CDG)和条件无关(CAG)，SGG在高噪声阶段使用CDG寻找条件流形，低噪声阶段使用CAG细化条件内细节，并进一步将此原则迁移到训练目标中。",
+ "experiment_framework": "推理时在SD3和SD3.5上评估，使用MS-COCO-1K和LAION-1K数据集，比较HPSv2.1和美学分数；训练时在SiT-B/2 ImageNet模型上评估W2S训练目标效果。",
+ "takeaways": [
+  "条件相关指导适合高噪声水平和条件流形寻找，条件无关指导适合低噪声水平和条件内细化",
+  "分段指导策略能有效结合两种指导方法的优势",
+  "将指导原则迁移到训练目标可减少推理时对额外指导的依赖"
+ ],
+ "weaknesses": [
+  "实验主要在标准数据集上进行，缺乏在医学影像等特定领域的验证",
+  "弱模型的构建方法选择有限，未充分探索其他可能的构造方式"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型泛化属于可靠性主线，方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

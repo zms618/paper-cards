@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Automated Benchmark Generation for Repository-Level Coding Tasks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Automated Benchmark Generation for Repository-Level Coding Tasks.pdf",
+ "title": "Automated Benchmark Generation for Repository-Level Coding Tasks",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "自动化构建仓库级基准，揭示现有代码agent高估问题",
+ "innovations": [
+  "提出SETUPAGENT自动解决历史准确执行环境搭建、测试命令识别与结果解析这一构建瓶颈",
+  "生成涵盖数百仓库的SWE-Bench扩展版SWE-Bench，缓解原benchmark仅12仓库的分布失配",
+  "提出聚焦应用(而非库)的SWA-Bench，暴露现有基准的代表性缺陷"
+ ],
+ "method_framework": "以GitHub issue为任务描述、PR为参考解，用SETUPAGENT自动定位issue合并时点、回退依赖到历史准确版本、自动发现并运行测试套件、解析通过/失败结果，从而把原本需大量人工的仓库级benchmark构造自动化、可规模化更新。",
+ "experiment_framework": "对比新生成数据集与原SWE-Bench的特征与代码agent表现；分析维度含issue描述质量、修复复杂度、仓库数量；在现有代码agent上评测解决率。",
+ "takeaways": [
+  "扩展后benchmark分布显著不同：issue描述质量更低、修复复杂度更高",
+  "现有代码agent在新基准上成功率最多下降达60%，说明原SWE-Bench高估了真实能力",
+  "聚焦应用的SWA-Bench进一步暴露泛化问题，静态老基准易导致数据污染与过拟合"
+ ],
+ "weaknesses": [
+  "与可靠性×医学影像/多模态推理主线无直接关联，属代码agent评测方向",
+  "自动环境搭建的失败率、可复现性与环境噪声对指标的影响披露有限",
+  "agent成功率下降60%的归因（更难任务vs更差环境）需更细粒度分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.43,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "代码agent评测与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

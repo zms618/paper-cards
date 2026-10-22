@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/AnimateAnything_Consistent and Controllable Animation for Video Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "C:\\Users\\James\\Desktop\\study\\paper\\项目记忆\\论文卡片\\精读卡片库\\cvpr2025\\AnimateAnything_Consistent and Controllable Animation for Video Generation.json",
+ "title": "AnimateAnything: Consistent and Controllable Animation for Video Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "两阶段解耦光流生成与视频生成，FFT权重抑制闪烁",
+ "innovations": [
+  "两阶段解耦：先做统一流生成——FGM 接收 arrow 稀疏流等显式注入，CRM 用 Plücker embedding 表示相机轨迹做隐式注入，经 camera motion attention + reference attention 引导 FGM 产出统一光流；再由视频生成模块（flow encoder + 单个 ViT block 以 flow latent 作 K/V + Expert AdaLN）消费该光流。",
+  "Frequency Stabilization：对 DiT 权重矩阵做 FFT → 参数化 W → InvFFT，得到频域增强特征抑制生成闪烁，直接从权重域而非损失/数据域下手解决时序抖动。",
+  "显式与隐式双路相机轨迹注入（arrow 稀疏流 vs Plücker 相机射线 embedding），使稀疏人工标注与稠密自动估计共用同一光流接口，控制来源与生成模型解耦。"
+ ],
+ "method_framework": "稀疏箭头流/Plücker 相机轨 → camera motion + reference attention 引导 FGM 出统一光流 → flow encoder + ViT(flow latent 作 K/V) + Expert AdaLN 生成视频；FFT 权重重参数化抑制闪烁。",
+ "experiment_framework": "Real10K / DL3DV10K 训练统一流，OpenVid / WebVid10M 训练视频生成；相机轨迹质量用 DUSt3R/VggSfM/ParticleSfM 评估；指标 T-Err、R-Err 与视频/主体一致性。",
+ "takeaways": [
+  "把相机控制统一成「光流」这一中间表示后，稀疏人工标注与稠密自动轨迹估计可以互换，控制源不再与生成模型耦合。",
+  "从参数域（FFT 频域权重重参数化）而非损失域解决闪烁，是抑制时序不一致里少见且便宜的做法。"
+ ],
+ "weaknesses": [
+  "频域增强的 W 本质是 FFT 后的逐元素频域加权，等价于一种结构化（低/高通）权重正则；正文未说明为何选 FFT 而非 DCT/小波，也没有频带与带宽超参的选取原理或敏感性分析。",
+  "训练语料 Real10K/DL3DV10K 与 WebVid10M/OpenVid 都是互联网视频，CRM 隐式注入的质量直接受相机轨迹估计影响；正文未报告无纹理、大旋转、快速运动等轨迹估计失败情形下的退化个案。",
+  "表 1/2 只报画质与一致性、表 3 报 T-Err/R-Err，缺「控制强度↑导致画质↓」的权衡曲线与方差；两个阶段各自裁剪，跨阶段误差（光流偏差在视频阶段被放大）没有专门消融。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视频生成技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Semantic Voting A Self-Evaluation-Free Approach for Efficient LLM Self-Improvement On Unverifiable Open-Ended.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Semantic Voting A Self-Evaluation-Free Approach for Efficient LLM Self-Improvement On Unverifiable Open-Ended.pdf",
+ "title": "Semantic Voting: A Self-Evaluation-Free Approach for Efficient LLM Self-Improvement on Unverifiable Open-Ended Tasks",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "语义投票：用轻量句向量替代LLM自评估，为开放任务构造伪标签。",
+ "innovations": [
+  "指出多数投票仅适用于闭端可验证任务（依赖精确匹配），而自评估（self-judging/熵最小化）计算开销大且引入过度自信偏差。",
+  "提出semantic voting：用轻量句嵌入模型度量候选回答间语义相似度做软匹配投票，把多数投票推广到翻译等开放不可验证任务。",
+  "在多种模型架构与任务上取得比自评估方法更高的计算效率与更优整体性能。"
+ ],
+ "method_framework": "对同一提示生成多条候选回答，用轻量sentence embedding计算候选间语义相似度（软匹配），聚合得到一致性最高的回答作为伪标签，再用其做自训练；全程不调用LLM做评分/自判，从而规避额外推理开销与自评估固有偏差。",
+ "experiment_framework": "在多个不可验证开放任务（含翻译等）与多种LLM架构上，对比self-judging、熵最小化等自评估式自提升方法；指标为任务性能与计算开销/效率。报告效率显著提升且性能更优。",
+ "takeaways": [
+  "将多数投票从精确匹配松弛为语义软匹配，可在开放不可验证任务上免自评估地获得有效伪标签。",
+  "避免LLM-as-a-Judge自评估既省算力又缓解其过度自信偏差。"
+ ],
+ "weaknesses": [
+  "方法本质是对现有多数投票思路的直接松弛，技术深度中等。",
+  "句向量相似度的阈值/聚类策略对开放任务质量影响大，前9页对其敏感性讨论不足。",
+  "性能增益在'多样架构与任务'上的具体幅度需看后续表格，缺乏与最强方法的算力对等对比。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "开放任务伪标签方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

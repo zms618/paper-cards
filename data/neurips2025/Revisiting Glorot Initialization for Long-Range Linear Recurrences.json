@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Revisiting Glorot Initialization for Long-Range Linear Recurrences.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Revisiting Glorot Initialization for Long-Range Linear Recurrences.pdf",
+ "title": "Revisiting Glorot Initialization for Long-Range Linear Recurrences",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.25
+ },
+ "one_line": "分析Glorot初始化在长序列RNN中的不稳定性并提出修正方案",
+ "innovations": [
+  "发现Glorot初始化的谱半径收敛于1以上导致长序列不稳定",
+  "提出维度感知的Glorot重缩放方案",
+  "证明序列长度t=O(√n)足以引发隐藏状态爆炸"
+ ],
+ "method_framework": "通过随机矩阵理论分析Glorot初始化的谱特性，提出方差重缩放方案，将谱半径移至1以下，确保长序列稳定性。",
+ "experiment_framework": "在模拟数据上验证隐藏状态范数变化，对比Glorot与重缩放初始化的谱分布和信号传播行为。",
+ "takeaways": [
+  "初始化方案需考虑序列长度与网络宽度的双尺度极限",
+  "谱半径微小偏差在长序列中会被指数放大"
+ ],
+ "weaknesses": [
+  "仅考虑线性RNN，未扩展到非线性模型",
+  "实验部分主要基于模拟数据，缺乏真实任务验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

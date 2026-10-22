@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VITSP_A Vision Language Models Guided Framework for Solving Large-Scale Traveling Salesman Problems.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VITSP_A Vision Language Models Guided Framework for Solving Large-Scale Traveling Salesman Problems.pdf",
+ "title": "ViTSP: A Vision Language Models Guided Framework for Solving Large-Scale Traveling Salesman Problems",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "VLM引导子问题识别+现成求解器，TSP上有效但缺乏可解释性与迁移证明",
+ "innovations": [
+  "提出用预训练VLM从可视化TSP实例中视觉识别有前景的小规模子问题，再用现成求解器优化以改进全局解的混合框架",
+  "用户端无需专门训练即可跨多样实例保持有效，绕过了学习方法固定训练数据导致的泛化/可扩展性瓶颈",
+  "探索了预训练生成模型与运筹学求解器在组合优化中的新混合范式"
+ ],
+ "method_framework": "ViTSP将大规模TSP实例可视化，由预训练VLM识别出值得优化的小规模子问题( promising subproblems )，再用现成的OR求解器对这些子问题高效优化并回填以改进全局解；整个过程用户端无需训练，VLM仅承担视觉引导角色。",
+ "experiment_framework": "在1k到88k节点的真实世界TSP实例上评测；对比经典启发式LKH-3与现有学习类神经求解器；指标为最优性间隙(optimality gap)与相同运行时间预算下的间隙；报告平均间隙0.24%、相较LKH-3降低3.57%-100%。",
+ "takeaways": [
+  "在1k到88k节点的真实TSP实例上平均最优性间隙仅0.24%，优于现有学习类方法",
+  "相同运行时间预算下，相较LKH-3将间隙降低3.57%到100%，尤其在1万节点以上超大实例优势明显",
+  "VLM视觉引导+现成求解器的混合路线在大规模CO问题上兼具有效性与可扩展性"
+ ],
+ "weaknesses": [
+  "属于组合优化求解方向，与可靠性/医学影像/多模态推理主线无关，relevance偏低",
+  "VLM识别子问题的判定过程缺乏可解释性与误差分析，误识别对子问题质量的影响未量化",
+  "仅在TSP上验证，推广到VRP等更复杂约束问题的迁移性未在前9页证明"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.03,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "组合优化求解，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

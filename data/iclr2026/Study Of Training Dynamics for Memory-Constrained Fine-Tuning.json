@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Study Of Training Dynamics for Memory-Constrained Fine-Tuning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Study Of Training Dynamics for Memory-Constrained Fine-Tuning.pdf",
+ "title": "Study of Training Dynamics for Memory-Constrained Fine-Tuning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "TraDy通过层选择和动态通道采样实现高稀疏度微调，但收敛稳定性与泛化性存疑。",
+ "innovations": [
+  "发现层重要性是架构相关的且可先验确定，提出离线层选择策略而非逐任务搜索",
+  "提出动态随机通道选择方法：在预筛选层之间跨epoch随机重采样通道，比静态子网络选择提供更好的梯度近似",
+  "实现99%激活稀疏度、95%权重导数稀疏度、97%权重导数计算FLOPs减少，同时达到SOTA微调性能"
+ ],
+ "method_framework": "两阶段方案：(1)离线层选择：基于架构先验识别对更新最重要的层，确定哪些层需要参与微调；(2)在线动态通道选择：在每个epoch内，在预选中的层内随机选择子集通道进行前向和反向传播，下一轮重新采样。通过动态重采样避免静态子网络的偏差，在严格内存预算B_mem内最大化梯度估计质量。",
+ "experiment_framework": "在多种下游任务和网络架构上验证，对比静态子网络更新等内存受限微调基线。指标包括微调准确率和内存/计算开销（激活稀疏度、权重导数稀疏度、FLOPs减少）。",
+ "takeaways": [
+  "动态通道重采样比静态子网络选择能提供更好的梯度近似，在相同内存预算下获得更高的微调精度",
+  "层重要性可通过架构先验离线确定，无需逐任务搜索，大幅降低了方法的应用成本",
+  "TraDy在保持极端内存压缩（99%激活稀疏）的同时性能接近全量微调，使端侧设备上的在线学习成为可能"
+ ],
+ "weaknesses": [
+  "动态通道采样增加了每轮的随机性，训练收敛稳定性可能受影响，方差分析不足",
+  "层重要性的先验确定依赖于对架构的深入理解，对新架构的泛化性未充分验证",
+  "前9页未展示完整的跨架构实验对比表格，具体性能数字不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "内存约束微调与可靠性主线无实质交点，仅为工程优化",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

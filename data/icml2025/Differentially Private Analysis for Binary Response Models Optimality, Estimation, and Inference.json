@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Differentially Private Analysis for Binary Response Models Optimality, Estimation, and Inference.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Differentially Private Analysis for Binary Response Models Optimality, Estimation, and Inference.pdf",
+ "title": "Differentially Private Analysis for Binary Response Models: Optimality, Estimation, and Inference",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6
+ },
+ "one_line": "优化随机响应参数提升二元模型隐私-效用权衡，但应用场景有限。",
+ "innovations": [
+  "把随机响应（RR）从只关注响应标签扩展到考虑协变量影响，针对二元响应模型提出最优 LabelDP 程序。",
+  "在 LabelDP 可行域内以最大化 Fisher 信息矩阵迹来优化 RR 参数，给出 ε 与 (ε,δ) 两种约束下的渐近最优性保证。",
+  "构造了具有名义覆盖率的私密置信区间，支持隐私保护下的统计推断。"
+ ],
+ "method_framework": "设定协变量公开、响应标签敏感；先分析 RR 二元响应模型的渐近行为，再在 ε / (ε,δ)-LabelDP 可行域内以最大化 Fisher 信息矩阵迹为目标优化随机响应参数，从而在隐私预算约束下使估计达最优，并基于渐近分布给出私密置信区间。",
+ "experiment_framework": "大量仿真研究比较所提机制与现有 RR 方法在估计精度、隐私保护与推断（置信区间覆盖率）上的表现；并在真实数据上做应用验证。指标为参数估计误差、覆盖率等统计量，非深度学习基准。",
+ "takeaways": [
+  "在 LabelDP 下考虑协变量并优化 Fisher 信息，可同时改善估计精度与隐私-效用权衡，优于只翻转标签的朴素 RR。",
+  "在温和条件下所提机制可达最优 LabelDP 保证并保持统计精度，且置信区间具备名义覆盖率。",
+  "理论最优设计与实验结果一致，验证了最大化 Fisher 迹作为隐私下最优准则的有效性。"
+ ],
+ "weaknesses": [
+  "假设协变量公开、仅标签敏感，对协变量也需保密的更现实场景未覆盖。",
+  "证据以仿真与常规真实应用为主，缺乏与深度学习/大模型隐私保护管线的结合。",
+  "属于差分隐私统计推断，与鲁棒性/泛化/可信推理主线（医学影像、多模态大模型）关联弱，落地域不匹配。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

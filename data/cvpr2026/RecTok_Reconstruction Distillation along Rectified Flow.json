@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/RecTok_Reconstruction Distillation along Rectified Flow.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/RecTok_Reconstruction Distillation along Rectified Flow.pdf",
+ "title": "RecTok Reconstruction Distillation along Rectified Flow",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "RecTok结合重建与流蒸馏解决高维潜在瓶颈，但泛化性受限",
+ "innovations": [
+  "流语义蒸馏(FSD)增强整个前向流的语义信息",
+  "重建与对齐蒸馏(RAD)进一步强化语义表达",
+  "首次证明高维潜在空间可同时提升重建、生成和语义性能"
+ ],
+ "method_framework": "RecTok通过两个关键创新增强前向流语义：1)流语义蒸馏将VFM语义注入整个前向流轨迹；2)重建与对齐蒸馏引入掩码重建目标。训练后仅保留编码器和像素解码器，确保推理效率。",
+ "experiment_framework": "ImageNet-1K数据集，与VA-VAE、RAE等基线比较，使用rFID、PSNR评估重建，gFID、IS评估生成，线性探测评估语义表达能力。",
+ "takeaways": [
+  "前向流语义一致性对扩散模型训练至关重要",
+  "高维潜在空间可同时提升重建、生成和语义性能",
+  "轻量级语义解码器设计能有效增强编码器语义捕获能力"
+ ],
+ "weaknesses": [
+  "方法依赖特定架构(ViT)和预训练模型(VFM)，泛化性存疑",
+  "解码器微调步骤增加了训练复杂度",
+  "未探索不同分辨率和计算资源下的性能权衡"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "扩散模型训练优化，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

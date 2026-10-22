@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Simplefold_Folding Proteins IS Simpler than You Think.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Simplefold_Folding Proteins IS Simpler than You Think.pdf",
+ "title": "SimpleFold: Folding Proteins is Simpler than You Think",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "通用Transformer+flow matching实现蛋白质折叠，但依赖蒸馏数据且未超越SOTA",
+ "innovations": [
+  "首个flow-matching范式、仅用通用Transformer块(+adaptive layer)的蛋白质折叠模型，挑战AlphaFold式领域专用架构必要性",
+  "把氨基酸序列当作'文本prompt'，生成式输出全原子3D坐标，训练目标为flow matching加一个结构项",
+  "在模型规模与数据规模上大于以往折叠模型，训练于约9M蒸馏结构加实验PDB数据"
+ ],
+ "method_framework": "不做MSA/pair rep/三角形更新，仅用标准带自适应层的Transformer；以序列为条件，用生成式flow matching直接建模全原子坐标分布，外加结构正则项；因是生成式而非确定性重构，天然适合集成预测。",
+ "experiment_framework": "3B参数，约9M蒸馏结构+PDB实验数据训练；在标准蛋白质折叠基准上对比AlphaFold等SOTA，报告TM-score/GDT，并测集成预测。",
+ "takeaways": [
+  "通用Transformer+flow matching即可在折叠基准上达到与SOTA具竞争力的性能",
+  "生成式训练目标使集成预测表现强(这是确定性重构目标模型的难点)",
+  "领域专用架构并非高性能折叠模型的必要条件"
+ ],
+ "weaknesses": [
+  "属计算生物学/蛋白质结构预测，与可靠性、医学影像、多模态推理主线无关",
+  "依赖约9M蒸馏结构(来自强teacher模型)，数据成本与蒸馏偏差未充分讨论",
+  "相对AlphaFold仍为'competitive'而非超越，且前9页未见与最新Evo2等大模型折叠的系统定量对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.73,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "蛋白质折叠与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

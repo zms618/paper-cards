@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/Beyond Blur A Fluid Perspective on Generative Diffusion Models.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Beyond Blur A Fluid Perspective on Generative Diffusion Models.pdf",
+ "title": "Beyond Blur A Fluid Perspective on Generative Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "流体动力学PDE改进扩散模型，但计算高且验证不足",
+ "innovations": [
+  "引入平流项到扩散模型的前向过程，实现方向性纹理变换",
+  "基于谱湍流生成器创建多尺度速度场",
+  "无量纲PDE formulation确保不同分辨率图像间的物理过程一致性",
+  "GPU加速的格子玻尔兹曼方法实现高效数值求解"
+ ],
+ "method_framework": "提出平流-扩散-反应PDE模型，结合速度场驱动的平流、各向同性扩散和高斯噪声，通过LBM数值求解，神经网络学习逆向过程",
+ "experiment_framework": "FFHQ-128和MNIST数据集，对比不同Peclet数(Pe)下的FID、LPIPS和PRDC指标，与IHD基线比较",
+ "takeaways": [
+  "物理启发的PDE框架可提升生成图像的多样性和细节",
+  "无量纲参数设计确保不同分辨率间的公平比较",
+  "湍流速度场生成器可控制多尺度特征位移"
+ ],
+ "weaknesses": [
+  "计算复杂度高于传统扩散模型",
+  "未充分验证在更高分辨率图像上的性能",
+  "缺乏与最新扩散模型的定量比较"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "物理PDE改进扩散模型，但未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

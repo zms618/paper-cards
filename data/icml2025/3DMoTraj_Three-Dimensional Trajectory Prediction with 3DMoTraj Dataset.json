@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/3DMoTraj_Three-Dimensional Trajectory Prediction with 3DMoTraj Dataset.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/3DMoTraj_Three-Dimensional Trajectory Prediction with 3DMoTraj Dataset.pdf",
+ "title": "Three-Dimensional Trajectory Prediction with 3DMoTraj Dataset",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "UUV轨迹数据集+两阶段LSTM方法，创新有限且泛化未知",
+ "innovations": [
+  "采集并发布首个面向3D轨迹预测的数据集3DMoTraj，来源于海洋环境中作业的无人水下航行器（UUV）。",
+  "分析2D→3D轨迹预测的复杂度跃升（每点从5个自由参数增至9个），提出解耦预测：沿三个轴独立预测，把参数降到6个以生成粗预测。",
+  "提出相关细化模块（SCA-LSTM），在粗预测基础上显式建模轴间相关关系做精修。"
+ ],
+ "method_framework": "先解耦：将3D轨迹拆为x/y/z三个一维独立预测以降低复杂度、得到粗轨迹；再细化：用带输出门更新隐状态的SCA-LSTM预测各轴偏移量，重建轴间相关关系对粗预测做精修，两阶段由粗到细。",
+ "experiment_framework": "在自建3DMoTraj上以观测8帧预测未来12帧（关键点3/6/9/12），指标为ADE/FDE；对比SOTA轨迹预测方法；对解耦(DD)/细化(SL)组件、迭代次数与层数做消融。",
+ "takeaways": [
+  "解耦预测显著降低3D预测复杂度，相关细化模块进一步精修，整体超过现有SOTA方法。",
+  "消融显示解耦(DD)与相关细化(SL)组件均带来ADE/FDE下降，二者互补。",
+  "3D轨迹在上下起伏场景远难于2D，专门的3D建模确有必要。"
+ ],
+ "weaknesses": [
+  "核心贡献是单一来源（UUV海洋场景）的新数据集，方法本身为LSTM/MLP级增量，模型创新有限。",
+  "基线与对比方法主要为2D轨迹预测方法，缺乏与近期3D/Transformer轨迹模型的横向比较。",
+  "数据场景单一（水下航行器），方法在行人、自动驾驶等其他3D空间的泛化性未验证。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.88,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "水下轨迹预测与可靠性主线无交点，仅数据集有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

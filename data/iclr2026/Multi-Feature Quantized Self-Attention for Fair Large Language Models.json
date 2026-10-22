@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Multi-Feature Quantized Self-Attention for Fair Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Multi-Feature Quantized Self-Attention for Fair Large Language Models.pdf",
+ "title": "MULTI-FEATURE Quantized SELF-ATTENTION for Fair Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "量化注意力正则化冻结LLM，减少偏见但依赖弱监督",
+ "innovations": [
+  "多特征量化注意力正则化(MQAR)方法",
+  "在冻结的LLM自注意力层注入结构化量化",
+  "判别器引导的自编码正则器联合抑制多个受保护属性"
+ ],
+ "method_framework": "MQAR通过向量量化正则化解耦属性特定激活，使用判别器引导的自编码正则器对抗性抑制受保护属性信息，同时保留任务相关语义，无需修改骨干参数或访问预训练数据。",
+ "experiment_framework": "在5个LLMs(BERT, T5, GPT-Neo, Mixtral, LLaMA 3.2)上评估，使用WinoBias, StereoSet, CrowS-Pairs三个基准测试，并在情感分析、 abusive语言检测和文本生成任务上测试下游性能。",
+ "takeaways": [
+  "注意力层直接干预可有效减少模型偏见",
+  "多特征联合去偏优于单属性方法",
+  "轻量级插件模块适用于黑盒模型"
+ ],
+ "weaknesses": [
+  "依赖弱监督和人工构建的词典",
+  "仅评估了有限数量的受保护属性",
+  "计算开销虽小于微调但仍需额外训练"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "LLM偏见抑制属于可靠性主线，方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

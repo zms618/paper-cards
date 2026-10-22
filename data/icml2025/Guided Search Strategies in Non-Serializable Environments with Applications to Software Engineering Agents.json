@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Guided Search Strategies in Non-Serializable Environments with Applications to Software Engineering Agents.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Guided Search Strategies in Non-Serializable Environments with Applications to Software Engineering Agents.pdf",
+ "title": "Guided Search Strategies in Non-Serializable Environments with Applications to Software Engineering Agents",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "非序列化环境中的1步前瞻与轨迹选择，提升软件工程智能体成功率",
+ "innovations": [
+  "指出MCTS等有效搜索在非可序列化RL环境（Docker容器，中间状态难以存/取）中不可直接使用",
+  "提出两种适配策略：1步前瞻与轨迹选择，均由学到的动作-价值函数估计器引导",
+  "在SWE-bench Verified上把微调Qwen-72B平均成功率翻倍至40.8%，创开放权重SoTA，且可迁移到GPT-4o"
+ ],
+ "method_framework": "用一个学到的动作价值函数作为引导信号；对无法保存/恢复中间状态的环境，以1步前瞻评估候选动作、并在多条完整轨迹间做选择(trajectory selection)，把average-case向best-case(Pass@N)收敛，而无需真·树搜索的状态分支。",
+ "experiment_framework": "在SWE-bench Verified上评测智能体补丁生成；基线为微调Qwen-72B与GPT-4o智能体的随机采样；协议区分Pass@N潜力上限与平均成功率；指标为问题解决率；报告40.8%新SoTA并验证向闭源模型的可迁移性。",
+ "takeaways": [
+  "average-case与best-case(Pass@N)之间存在明显差距，测试时搜索可弥合",
+  "在非可序列化环境中，1步前瞻+轨迹选择是MCTS的可行替代",
+  "引导信号可来自轻量学到的价值估计，收益在开源与闭源模型间均复现"
+ ],
+ "weaknesses": [
+  "仅在SWE-bench单一软件工程基准验证，对其他多步推理域的泛化未覆盖",
+  "轨迹选择依赖价值估计质量，估计偏差导致的搜索误导风险未充分量化",
+  "多次尝试带来显著推理成本，成本-收益曲线与失败案例分析较有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

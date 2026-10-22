@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Persistent Noise-Tolerant Active Learning Of Regular Languages with Class Query.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Persistent Noise-Tolerant Active Learning Of Regular Languages with Class Query.pdf",
+ "title": "Towards Persistent Noise-Tolerant Active Learning of Regular Languages with Class Query",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "pMAT建模LLM噪声，CAPAL算法在DFA学习中减少查询但依赖理想预言机",
+ "innovations": [
+  "用概率MAT(pMAT)刻画LLM作为成员查询预言机(标签可能固定翻转)、模拟器给出反例的人机协作场景",
+  "在经典L*循环上加入类查询(以噪声地板估计η的同状态统计检验+Hoeffding容差)与判别树选近最小判别符，保持核心后缀集小",
+  "用微bootstrap与缓存复用以少量新查询估计η，并在完美等价预言机下证明收敛、实际大幅节省成员查询"
+ ],
+ "method_framework": "把从模糊自然语言对齐到精确形式表示(DFA/奖励机/安全shield)的问题建模为带持久噪声的主动学习。CAPAL在L*基础上：用类查询做同状态检验并与估计噪声地板比较、用判别树选最小判别符、用微bootstrap估计噪声水平，从而在成员标签被噪声翻转时仍收敛到正确DFA。",
+ "experiment_framework": "在RegexLib与KB13等DFA学习基准上评测；指标为成员查询数量与在噪声预言机下的学习正确性/鲁棒性；对比经典L*及其他噪声容忍变体；验证查询节省与噪声地板估计的准确性。",
+ "takeaways": [
+  "LLM可作为易错但有用的成员查询预言机参与可验证形式制品的合成",
+  "持久标签噪声下仍可通过同状态统计检验+噪声地板估计正确学习DFA",
+  "判别树+微bootstrap在保证正确性的同时显著减少成员查询数量"
+ ],
+ "weaknesses": [
+  "收敛性证明依赖完美的语言等价预言机，真实模拟器/LLM反例不完美时的界未给出",
+  "成员查询仍需大量交互，对在线LLM调用成本的实际开销未充分量化",
+  "属形式语言学习/神经符号方向，与医学影像落地域无直接关联"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "可靠性方法扎实但无医学影像落地交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

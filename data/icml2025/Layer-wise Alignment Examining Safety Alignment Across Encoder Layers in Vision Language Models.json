@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Layer-wise Alignment Examining Safety Alignment Across Encoder Layers in Vision Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Layer-wise Alignment Examining Safety Alignment Across Encoder Layers in Vision Language Models.pdf",
+ "title": "Layer-wise Alignment: Examining Safety Alignment Across Encoder Layers in Vision Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "发现VLM层间安全对齐不均漏洞，提出L-PPO方法提升安全性",
+ "innovations": [
+  "发现图像编码器层间安全对齐不均导致的ICET漏洞",
+  "提出层级多模态RLHF方法L-PPO",
+  "理论证明L-PPO能单调降低ICET风险"
+ ],
+ "method_framework": "通过修改Clip-PPO算法，对图像编码器各层嵌入进行针对性RLHF训练，使模型在各层都能保持安全对齐",
+ "experiment_framework": "在LLaVA-1.5/NeXT和Llama 3.2上测试，使用Redteam-2k、AdvBench-COCO等数据集，评估ASR、TR和TS指标",
+ "takeaways": [
+  "层间安全对齐不均是VLM重要安全隐患",
+  "简单修改现有算法可有效提升安全性",
+  "多模态安全需考虑架构变化带来的新风险"
+ ],
+ "weaknesses": [
+  "仅测试了三种VLM模型，泛化性待验证",
+  "L-PPO增加了训练复杂度",
+  "未探索ICET漏洞的根本原因"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

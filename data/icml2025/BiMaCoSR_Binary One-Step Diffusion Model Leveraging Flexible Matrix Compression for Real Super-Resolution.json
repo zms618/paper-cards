@@ -1,0 +1,37 @@
+{
+ "title": "BiMaCoSR: Binary One-Step Diffusion Model Leveraging Flexible Matrix Compression for Real Super-Resolution",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "二值化+单步扩散超分，双分支防崩溃，真实数据领先但消融不足。",
+ "innovations": [
+  "同时做二值化(1-bit)与单步蒸馏，获得极致压缩与加速，面向边缘部署。",
+  "提出稀疏矩阵分支(SMB)与低秩矩阵分支(LRMB)两条辅助分支，以不同方式传递全精度信息，防止二值化灾难性崩塌。",
+  "在RealSR等真实超分上取得二值化方法中一致领先的指标。"
+ ],
+ "method_framework": "扩散模型超分性能强但显存/计算重；二值化减存储、单步蒸馏减步数，但二者结合部署仍难。BiMaCoSR把二值化与单步蒸馏结合；为防二值化崩溃，设计两条辅助分支：稀疏矩阵分支吸收极值、输出高秩携带丰富FP信息；低秩矩阵分支传递低秩FP信息，二者互补维持精度。",
+ "experiment_framework": "在RealSR等真实超分数据集上评估；对比二值化方法与单步蒸馏方法；指标为PSNR/SSIM等超分指标及压缩比/推理速度。报告在RealSR上各指标一致领先。",
+ "takeaways": [
+  "二值化+单步蒸馏结合可把扩散超分压到边缘可部署。",
+  "稀疏/低秩双矩阵分支是防二值化崩塌的有效设计。",
+  "在真实超分上优于其他二值化方案。"
+ ],
+ "weaknesses": [
+  "10页篇幅，方法细节与完整消融(SMB/LRMB各自贡献)有限。",
+  "极致压缩下的视觉质量损失在前9页内缺乏主观评价佐证。",
+  "属低层视觉/模型压缩方向，与LLM多模态推理、医学影像主线无直接交集。"
+ ],
+ "confidence": "low",
+ "key": "icml2025/BiMaCoSR_Binary One-Step Diffusion Model Leveraging Flexible Matrix Compression for Real Super-Resolution.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/BiMaCoSR_Binary One-Step Diffusion Model Leveraging Flexible Matrix Compression for Real Super-Resolution.pdf",
+ "raw_overall": 5.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Overcoming Multi-step Complexity in Multimodal Theory-of-Mind Reasoning A Scalable Bayesian Planner.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Overcoming Multi-step Complexity in Multimodal Theory-of-Mind Reasoning A Scalable Bayesian Planner.pdf",
+ "title": "Overcoming Multi-step Complexity in Multimodal Theory-of-Mind Reasoning: A Scalable Bayesian Planner",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "贝叶斯ToM规划器分解多步推理，弱到强训练提升4.6%但局限仿真环境",
+ "innovations": [
+  "将ToM多步规划复杂性分解为逐步贝叶斯更新，避免组合爆炸",
+  "弱到强控制(weak-to-strong control)：训练小LM专门做ToM似然估计，再迁移到7B-405B大LM整合社会与世界知识",
+  "通过KL散度分析给出理论保证(Theorem 1)，确保贝叶斯一致性"
+ ],
+ "method_framework": "将多步ToM推理建模为贝叶斯滤波：每步观测agent行为后做后验更新；用小LM(经专门微调)估计似然函数，大LM先验分布与世界知识；两者通过贝叶斯规则组合，实现可扩展的多步规划。",
+ "experiment_framework": "基准：多模态ToM基准(VirtualHome仿真环境)。基线：CoT、o1-mini、微调专家模型，覆盖Llama3.1-8B到405B。指标：规划准确率随步数变化。",
+ "takeaways": [
+  "多步规划复杂度下，小模型和推理时扩展(CoT/o1)准确率随步数快速下降，仅405B大模型能维持",
+  "贝叶斯逐步更新+弱到强似然估计使小模型也能在长链规划中保持准确率，4.6%超过SOTA",
+  "方法在未见场景中仍具泛化性"
+ ],
+ "weaknesses": [
+  "仅在VirtualHome仿真环境验证，真实多模态场景的ToM推理效果未知",
+  "弱到强控制依赖小模型似然估计质量，小模型ToM能力上限可能限制整体",
+  "贝叶斯更新的计算开销随步数增长，实时性未考察"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Multimodal Dataset Distillation via Phased Teacher Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Multimodal Dataset Distillation via Phased Teacher Models.pdf",
+ "title": "Multimodal Dataset Distillation via Phased Teacher Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "分阶段教师模型缓解多模态蒸馏后期知识利用不足问题",
+ "innovations": [
+  "发现多模态蒸馏与单模态的关键差异：多模态仅受益于教师训练早期20-30%阶段的指导",
+  "提出分阶段教师建模(PTM)，将蒸馏目标分解为多个子任务，每个阶段匹配特定教师模型",
+  "提出捷径轨迹(ST)策略，构建平滑稳定的学生学习轨迹，缓解后期教师更新的噪声与不稳定"
+ ],
+ "method_framework": "基于MTT双循环架构，引入分阶段教师建模(PTM)将训练过程划分为不同阶段，每个阶段使用适配该阶段语义演化的教师模型；同时通过捷径轨迹(ST)构建平滑化的教师轨迹来指导学生学习，减少后期教师更新的不稳定性和优化振荡。",
+ "experiment_framework": "在Flickr30k和COCO两个图文数据集上进行实验，对比多种数据蒸馏基线方法，使用图文检索指标(TR@k, IR@k)评估学生模型性能，消融实验验证各组件贡献。",
+ "takeaways": [
+  "多模态数据蒸馏中教师模型后期知识对学生反而有害，需分阶段利用",
+  "PTM-ST在Flickr30k上达到最高13.5%绝对提升，平均提升9.53%",
+  "分阶段建模显著缓解了跨阶段性能差距和教师轨迹不稳定问题"
+ ],
+ "weaknesses": [
+  "仅在图像-文本检索任务上验证，未扩展到多模态大模型预训练等更广泛场景",
+  "分阶段策略增加了训练复杂度和超参数调优成本，阶段划分标准缺乏自适应方法",
+  "未与最新的大规模多模态模型(如LLaVA系列)结合验证蒸馏效果"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态蒸馏方法，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

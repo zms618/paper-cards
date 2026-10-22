@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/PrivateEyes_Gaze-Preserving Anonymization for Data Sharing.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/PrivateEyes_Gaze-Preserving Anonymization for Data Sharing.pdf",
+ "title": "PrivateEyes Gaze-Preserving Anonymization for Data Sharing",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "扩散模型实现眼部匿名化，但计算复杂且角膜反射处理不足。",
+ "innovations": [
+  "解剖准确的3D眼部模型结合反向光线追踪生成精确视线标注",
+  "基于ControlNet的条件扩散模型实现身份匿名化同时保持视线信息",
+  "模块化设计提供显式控制，支持针对性改进无需完全重新训练"
+ ],
+ "method_framework": "三阶段管道：眼部分割网络隔离语义区域，基于合成数据训练的视线估计网络(PEN)推断精确眼部姿态，条件扩散模型根据分割和姿态重建真实匿名化眼部图像。",
+ "experiment_framework": "在OpenEDS、EV-Eye和LPW三个基准数据集上评估，比较 gaze 误差、虹膜识别准确率和图像质量指标(FID/KID/LPIPS)。",
+ "takeaways": [
+  "模块化设计提供显式控制，支持针对性改进无需完全重新训练",
+  "合成数据生成策略解决了真实数据中缺乏地面真相姿态标注的挑战"
+ ],
+ "weaknesses": [
+  "计算复杂度高，推理时间较长",
+  "对角膜反射的处理可能影响某些特定视线估计算法的准确性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "隐私鲁棒与医学影像交点，但计算复杂度高且角膜反射处理不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

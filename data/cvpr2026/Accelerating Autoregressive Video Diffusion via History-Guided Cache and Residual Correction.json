@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Accelerating Autoregressive Video Diffusion via History-Guided Cache and Residual Correction.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Accelerating Autoregressive Video Diffusion via History-Guided Cache and Residual Correction.pdf",
+ "title": "Accelerating Autoregressive Video Diffusion via History-Guided Cache and Residual Correction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "ARCache通过缓存和残差校正缓解自回归视频扩散的误差累积",
+ "innovations": [
+  "History-Guided Cache (HGC)自适应调度缓存策略",
+  "Enhanced Residual Correction (ERC)利用首段残差轨迹校正后续段",
+  "首个针对自回归视频扩散模型的训练无关缓存加速框架"
+ ],
+ "method_framework": "ARCache整合HGC和ERC两个模块，HGC通过监控历史token变化确定缓存时机，ERC利用首段稳定残差轨迹校正后续段残差，有效抑制误差累积",
+ "experiment_framework": "在FramePack-F1、SkyReels-V2和Matrix-Game三个数据集上评估，对比PAB、TeaCache和TaylorSeer等基线，使用PSNR、SSIM、LPIPS和任务特定指标",
+ "takeaways": [
+  "历史token变化是判断缓存时机的可靠指标",
+  "利用首段稳定残差轨迹可有效校正后续段误差",
+  "双模式设计(快/慢)提供质量与速度的灵活权衡"
+ ],
+ "weaknesses": [
+  "仅针对自回归扩散模型，不适用于标准扩散模型",
+  "ERC依赖首段质量，首段误差会影响后续校正",
+  "未探索不同长度视频的误差累积模式差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成加速与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

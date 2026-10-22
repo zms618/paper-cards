@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/PairFormer_Matching Every Pair to Track Every Point PairFormer for All-Pairs.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/PairFormer_Matching Every Pair to Track Every Point PairFormer for All-Pairs.pdf",
+ "title": "Matching Every Pair to Track Every Point PairFormer for All-Pairs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "PairFormer实现全对跟踪，但计算复杂度高且仅用合成数据训练",
+ "innovations": [
+  "提出All-Pairs Tracking (APT)问题，预测所有帧对的密集位移和可见性",
+  "设计PairFormer架构，包括时空块编码器、相关库、广播运动混合器和轨迹场解码器",
+  "开发PAIRender平台、π-R10K训练集和APT-Bench基准"
+ ],
+ "method_framework": "PairFormer采用transformer架构，先构建成对对应关系，再 enforcing全局一致性。时空块编码器生成特征，CorrBank构建可学习相关库，广播运动混合器聚合轨迹上下文，轨迹场解码器迭代预测密集位移、可见性和置信度。",
+ "experiment_framework": "在TAP基准(BADJA, CroHD等)和APT基准(CVO, CVO-Extended, APT-Bench)上评估，使用δ-准确率、平均Jaccard、遮挡准确率和跨步端点误差作为指标。",
+ "takeaways": [
+  "广播运动混合器有效聚合长程时空上下文",
+  "多任务损失函数(轨迹、置信度、可见性和对应正则化)提供互补监督",
+  "滑动窗口推理使模型能够处理长视频"
+ ],
+ "weaknesses": [
+  "计算复杂度随序列长度平方增长，可能限制实际应用",
+  "仅使用合成数据训练，在真实场景上的泛化能力需进一步验证",
+  "长视频推理中滑动窗口可能导致边界不一致"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "点跟踪方法与可靠性主线无实质交点，仅属常规视觉任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

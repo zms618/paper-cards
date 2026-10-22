@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Steering Autoregressive Music Generation with Recursive Feature Machines.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Steering Autoregressive Music Generation with Recursive Feature Machines.pdf",
+ "title": "Steering Autoregressive Music Generation with Recursive Feature Machines",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "RFM探针注入冻结MusicGen，提升音符准确率但缺乏创新性对比",
+ "innovations": [
+  "首次将递归特征机器(RFM)的AGOP谱方向方法迁移到文本到音乐自回归模型，在隐藏态中自动定位对应音高/和弦等音乐理论属性的概念方向",
+  "提出在推理时通过前向hook把RFM方向注入残差流的控制机制，无需逐步优化或重训基座模型",
+  "设计了动态时变调度与多属性同时约束机制，权衡控制精度与生成质量"
+ ],
+ "method_framework": "先在SYNTHEORY数据集上为MusicGen逐层训练轻量RFM探针，由平均梯度外积(AGOP)得到按特征值排序的正交概念方向；推理时用前向hook把这些方向注入残差流，引导生成沿音高、和弦性质等轴移动，支持时变调度与多属性联合约束。",
+ "experiment_framework": "在冻结的MUSICGEN-Large上评测；以目标音符生成准确率与文本提示贴合度为主要指标，报告目标音符准确率从0.23提升到0.82而提示贴合度下降仅约0.02；辅以音乐理论属性控制与多属性同时约束的定性/定量分析。",
+ "takeaways": [
+  "RFM谱方向能在冻结音乐自回归模型中找到与人类可解释音乐理论概念对应的激活轴",
+  "激活空间注入可在几乎不损失文本贴合度(约0.02)的前提下把目标音符准确率从0.23提升到0.82",
+  "动态时变调度与多属性联合注入扩展了可控性的粒度"
+ ],
+ "weaknesses": [
+  "方法本质是既有RFM可解释性探针的领域迁移，方法新颖性受限于RFM本身而非新原理",
+  "评测主要围绕音符准确率与提示贴合度，缺乏与重训式/逐步优化式强可控音乐方法的系统对比",
+  "音乐生成质量、听觉伪影与长程和声一致性等主观指标覆盖有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "音乐生成与可靠性主线无实质交点，仅为领域应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/LoRAverse_A Submodular Framework to Retrieve Diverse Adapters for Diffusion.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/LoRAverse_A Submodular Framework to Retrieve Diverse Adapters for Diffusion.pdf",
+ "title": "LoRAverse A Submodular Framework to Retrieve Diverse Adapters for Diffusion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "子模优化检索LoRA适配器提升扩散模型生成多样性",
+ "innovations": [
+  "将LoRA适配器选择问题形式化为组合优化问题",
+  "结合子模优化平衡相关性与多样性",
+  "概念提取器与子模检索器的两阶段架构"
+ ],
+ "method_framework": "LoRAverse包含概念提取器和子模检索器，通过LLM提取提示中的概念，对LoRA适配器进行聚类，并应用子模函数最大化选择多样且相关的适配器子集。",
+ "experiment_framework": "使用StylusDocsv2数据集(75K LoRA模型)，对比Stylus和SD v1.5，通过CLIP、TCE、TIE、I2I等指标评估，并进行用户研究和VLM评估。",
+ "takeaways": [
+  "子模优化可有效解决检索中的多样性-相关性权衡问题",
+  "概念级别的适配器选择比全局提示匹配更能保持多样性"
+ ],
+ "weaknesses": [
+  "推理时间开销较大(平均增加26秒)，主要由于聚类过程",
+  "CLIP分数略有下降(3.1%)，多样性增加导致输出分布更广"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "子模优化提升扩散模型多样性，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

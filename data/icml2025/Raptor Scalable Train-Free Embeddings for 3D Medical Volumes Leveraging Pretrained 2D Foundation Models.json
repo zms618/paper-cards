@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Raptor Scalable Train-Free Embeddings for 3D Medical Volumes Leveraging Pretrained 2D Foundation Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Raptor Scalable Train-Free Embeddings for 3D Medical Volumes Leveraging Pretrained 2D Foundation Models.pdf",
+ "title": "Raptor: Scalable Train-Free Embeddings for 3D Medical Volumes Leveraging Pretrained 2D Foundation Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 8.0,
+  "overall": 6.9
+ },
+ "one_line": "免训练3D医学嵌入，三轴采样+随机投影，依赖2D预训练模型",
+ "innovations": [
+  "免训练方法，无需3D模型训练",
+  "利用随机投影压缩高维特征",
+  "三轴采样保留3D体积信息",
+  "模型无关的通用框架"
+ ],
+ "method_framework": "使用冻结的2D基础模型(DINOv2-L)提取3D体积三个正交切片的特征，通过随机投影压缩高维张量，生成紧凑的嵌入表示",
+ "experiment_framework": "10个医学数据集(3D MedMNIST, CC-CCII, CTRG, UKBB)，对比ResNet、MAE、MISFM、SuPreM等基线，使用AUROC、准确率和r2评估",
+ "takeaways": [
+  "随机投影在保持语义信息的同时大幅降低计算复杂度",
+  "三轴采样有效保留3D体积的空间信息",
+  "轻量级下游预测器可进一步提升性能"
+ ],
+ "weaknesses": [
+  "依赖2D基础模型的质量，可能受限于医学领域知识",
+  "随机投影的理论保证在实际应用中可能不够充分",
+  "未探索不同分辨率体积的扩展性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

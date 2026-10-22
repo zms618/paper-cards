@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Focal-SAM Focal Sharpness-Aware Minimization for Long-Tailed Classification.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Focal-SAM Focal Sharpness-Aware Minimization for Long-Tailed Classification.pdf",
+ "title": "Focal-SAM: Focal Sharpness-Aware Minimization for Long-Tailed Classification",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "Focal-SAM结合焦点权重与SAM优化长尾分类，但超参数选择与领域验证不足",
+ "innovations": [
+  "引入焦点锐度项实现精细粒度的损失景观控制",
+  "设计计算高效的优化算法仅需三次反向传播",
+  "推导出更紧致的一般化边界O(1/n)"
+ ],
+ "method_framework": "将focal机制与SAM结合，通过类别的焦点权重(1-πi)^γ控制锐度惩罚，实现头尾类别的精细平衡，同时保持计算效率。",
+ "experiment_framework": "在CIFAR-LT、ImageNet-LT和iNaturalist数据集上评估，结合多种损失函数和基础模型，使用平衡准确率作为指标，并测试OOD泛化性能。",
+ "takeaways": [
+  "焦点权重设计提供了头尾类别性能的精细平衡",
+  "理论分析提供了超参数选择的指导"
+ ],
+ "weaknesses": [
+  "未讨论超参数γ和λ的具体选择策略",
+  "未在医学影像等特定领域验证方法有效性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

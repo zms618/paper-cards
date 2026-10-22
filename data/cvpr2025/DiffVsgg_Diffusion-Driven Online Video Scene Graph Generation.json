@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/DiffVsgg_Diffusion-Driven Online Video Scene Graph Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/DiffVsgg_Diffusion-Driven Online Video Scene Graph Generation.pdf",
+ "title": "DiffVsgg Diffusion-Driven Online Video Scene Graph Generation",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 6.5,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "扩散模型重构VSGG为迭代去噪，统一特征嵌入处理多任务",
+ "innovations": [
+  "将VSGG任务重构为迭代去噪问题",
+  "统一特征嵌入处理对象分类、边界框回归和图生成",
+  "基于条件提示的连续时序推理机制",
+  "引入运动增强去噪提升关系预测"
+ ],
+ "method_framework": "利用潜在扩散模型(LDM)构建统一特征嵌入，通过空间去噪处理单帧内对象关系，结合前一帧结果作为条件进行时序推理，实现在线场景图更新。",
+ "experiment_framework": "在Action Genome数据集上评估，对比PredCLS/SGCLS/SGDET三种设置下的R@10/R@20/R@50指标，与DSG-DETR等SOTA方法比较。",
+ "takeaways": [
+  "扩散模型可用于判别性任务而不仅限于生成",
+  "统一特征嵌入可简化多任务处理流程",
+  "条件提示机制有效促进时序一致性"
+ ],
+ "weaknesses": [
+  "依赖预训练对象检测器，检测误差可能传播",
+  "计算复杂度较高，实时性可能受限",
+  "新对象出现时的处理机制较为简单"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型重构VSGG为迭代去噪，统一特征嵌入处理多任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/AxBench_Steering LLMs Even Simple BaselinesOutperform Sparse Autoencoders.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/AxBench_Steering LLMs Even Simple BaselinesOutperform Sparse Autoencoders.pdf",
+ "title": "AxBench: Steering LLMs? Even Simple Baselines Outperform Sparse Autoencoders",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "构建LLM引导基准，发现简单方法优于SAE，提出ReFT-r1方法",
+ "innovations": [
+  "构建首个大规模LLM引导基准AxBench，涵盖500个概念、概念检测和模型引导两个任务",
+  "发现 prompting 在模型引导上优于所有表征方法，而DiffMean在概念检测上表现最好，SAE在两项任务中均不具竞争力",
+  "提出Rank-1表示微调方法(ReFT-r1)，在两个任务上均有竞争力且保持可解释性"
+ ],
+ "method_framework": "AxBench定义两类任务：(1)概念检测：给定文本判断特定概念是否存在，用AUROC评估；(2)模型引导：用14个强度因子干预表征，评估生成文本中目标概念的出现程度。比较方法包括Prompting/SFT/LoRA/LoReFT、SAE/SAE-A、DiffMean、PCA、LAT、Probe、I×G、IG、BoW等。ReFT-r1学习单秩干预向量，结合LM损失和L1正则训练。",
+ "experiment_framework": "Gemma-2-2B和9B模型，CONCEPT500数据集（每概念144训练样本，~72检测样本）。引导评估用Alpaca-Eval指令集，每概念10条指令，生成128 token。指标：概念检测AUROC，引导精度0-2评分。",
+ "takeaways": [
+  "Prompting在模型引导上表现最好，其次是微调方法，SAE排在后面",
+  "DiffMean（简单的均值差向量）在概念检测上优于SAE，说明简单方法即可有效",
+  "ReFT-r1在引导和检测上均有竞争力，同时保持表征干预的可解释性优势"
+ ],
+ "weaknesses": [
+  "仅在Gemma-2系列模型上验证，其他架构(Llama/Qwen)上的结论可能不同",
+  "500个概念来自Neuronpedia的SAE概念列表，可能存在选择偏差",
+  "引导评估依赖LLM judge，评分主观性可能影响结论可靠性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM引导基准与可靠性主线无实质交点，仅方法设计有参考价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

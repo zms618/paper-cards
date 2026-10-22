@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Query-Level Uncertainty In Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Query-Level Uncertainty In Large Language Models.pdf",
+ "title": "Query-Level Uncertainty in Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 6.7
+ },
+ "one_line": "免训练内部置信度估计query级不确定性，支持自适应推理降成本",
+ "innovations": [
+  "将不确定性估计从答案级（需生成后采样，如语义熵/pTrue）推进到query级：在生成前判断模型能否回答，避免生成成本",
+  "提出免训练的Internal Confidence，跨层与跨token聚合模型自评估作为可靠不确定性信号",
+  "在自适应推理（RAG按需调用、模型级联）中验证其降低推理成本同时保持整体性能"
+ ],
+ "method_framework": "不采样多个答案，而是在输入阶段读取模型内部多层、多token的自评估信号，聚合成Internal Confidence分数作为query是否在能力边界内的不确定性度量；据此阈值化决定是否调用RAG、级联到更大模型或拒答。",
+ "experiment_framework": "事实问答(TriviaQA)与数学推理(GSM8K)；以AUROC区分可答/不可答query；对比MSP、SAR、Perplexity、PTrue、语义熵、词汇相似度等答案级基线的质量与运行时间；并测RAG与模型级联下的成本-性能权衡。",
+ "takeaways": [
+  "Internal Confidence在置信质量上优于多个答案级不确定性基线，且计算更便宜",
+  "在RAG与模型级联中按query级不确定性自适应调度，可在保持整体性能的同时显著降低推理成本",
+  "生成前的知识边界识别使自适应推理（检索/深思/拒答）成为可能，利于高效可信AI"
+ ],
+ "weaknesses": [
+  "信号来自模型内部自评估，其校准在分布外/对抗性query上的可靠性仍需更多验证",
+  "评测集中于事实QA与数学推理，医学影像、多模态等落地域未覆盖",
+  "跨层/token聚合方式与阈值选择的依据、以及与采样式不确定性的互补性消融在前9页不充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "query级不确定性估计直接服务于可靠性主线，支持自适应推理降成本",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

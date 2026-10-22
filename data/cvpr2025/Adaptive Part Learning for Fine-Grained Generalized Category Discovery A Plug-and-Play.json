@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Adaptive Part Learning for Fine-Grained Generalized Category Discovery A Plug-and-Play.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Adaptive Part Learning for Fine-Grained Generalized Category Discovery A Plug-and-Play.pdf",
+ "title": "Adaptive Part Learning for Fine-Grained Generalized Category Discovery: A Plug-and-Play Enhancement",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "共享部件查询与all-min损失提升细粒度GCD，但实验与消融不足",
+ "innovations": [
+  "以 T 个跨图像共享的 learnable part query Q 为对应桥梁：DINO 多头 part attention 经阈值过滤成 F_prior，cross-attention 得图像专属 Q^I，再用 Gumbel-softmax 近似的硬分配得二值 H_part 与部件特征 P_part；同 query 天然对齐不同图像的部件，空 query 占位处理遮挡/增广造成的缺部件。",
+  "提出 all-min 对比损失：正对（同标签图或同一图的两增广）要求 T 个对应部件全部相似，负对不同类图像只对最不相似的那个对应部件 min_t sim(P_t^a,P_t^b) 施加 dissimilar 约束、其余对应部件不约束，从而只压判别性部件、保留可共享部件用于知识迁移。",
+  "对同一图像内部件加 diversity loss Σ max(0, cos(P_t,P̂_t))，防止随机初始化的 T 个 query 塌缩成同一全局语义。"
+ ],
+ "method_framework": "冻结 DINO 取 part 先验 → 共享 part query 硬分配得部件特征 → all-min 对比 + 部件正交多样性损失 → 把 CLS 特征换成部件池化特征，直接替换 SimGCD/SPTNet/CMS 的表示入口。",
+ "experiment_framework": "4 个细粒度数据集 + CIFAR-10 + ImageNet-100，50% 类作已知类；plug-and-play 接入 SimGCD/SPTNet/CMS；指标 All accuracy（正文在 4.1 数据集描述处截断，具体表不可见）。",
+ "takeaways": [
+  "把'判别性 vs 可共享'写成两个方向相反的约束（负对的 min 项 vs 正对的全量约束），是在无标签设定下同时改善可分性与可迁移性的干净写法。",
+  "用共享 query 做跨图像 correspondence，比单图 K-means/DINO 先验聚类更稳（Fig.3 对比），是无标注部件挖掘的关键手段。",
+  "plug-and-play 只替换表示入口、不动 GCD 框架本身，便于叠加到任意已有方法上，工程复用成本低。"
+ ],
+ "weaknesses": [
+  "正文在 4.1 数据集描述处截断：四个细粒度数据集的实验表、与 SimGCD/SPTNet/CMS 的逐项消融、T / Gumbel 温度 τ / λ 的敏感性、结论全部缺失，confidence 只能给 low。",
+  "all-min 的负样本构造是启发式：无标签图像时从 batch 随机取负例，并以 batch 内所有正对相似度作阈值筛负例，未说明该阈值对 batch 正负比例的依赖强度，也无'随机负例 vs 难负例'的对照。",
+  "plug-in 只把 F_CLS 换成部件池化特征再加 L_all-min+L_div，缺'只加两项损失、不换特征'与'只换特征、不加损失'的隔离消融，3.7/2.9/3.7 的提升无法归因到哪一部分。",
+  "Gumbel-softmax 硬分配用 sg(H_g)+H_g 的 straight-through 近似，梯度只走软分布，分配的离散性带来的误差未在文中刻画。"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "low",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "细粒度GCD方法有可靠性潜力但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

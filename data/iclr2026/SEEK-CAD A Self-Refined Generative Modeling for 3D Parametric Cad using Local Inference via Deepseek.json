@@ -1,0 +1,41 @@
+{
+ "title": "Seek-CAD: A Self-Refined Generative Modeling for 3D Parametric CAD using Local Inference via DeepSeek",
+ "scores": {
+  "novelty": 5,
+  "depth": 5,
+  "evidence": 5,
+  "relevance": 4.0,
+  "overall": 4.7
+ },
+ "one_line": "本地DeepSeek免训练生成CAD，VLM+CoT反馈迭代，工业应用成本高",
+ "innovations": [
+  "首次将本地推理DeepSeek-R1以免训练方法用于CAD参数模型生成",
+  "将初版CAD渲染为分步透视图，由VLM结合DeepSeek-R1的CoT评估并反馈迭代精修",
+  "提出围绕SSR(草图-草图特征-精修)三元范式的3D CAD数据集"
+ ],
+ "method_framework": "免训练地调用本地DeepSeek-R1生成参数化CAD命令序列；将生成模型渲染成分步透视图，VLM结合R1的思维链给出视觉与CoT反馈，驱动下一轮精修；以SSR数据集对齐工业需求。",
+ "experiment_framework": "在自建SSR数据集与多种指标上评测生成质量；对比免训练/微调基线；报告自反馈精修机制的有效性。",
+ "takeaways": [
+  "本地推理LLM可在免训练下做CAD参数生成",
+  "视觉反馈+CoT反馈的自我精修能提升CAD生成正确率",
+  "SSR三元数据集更贴合工业CAD命令需求"
+ ],
+ "weaknesses": [
+  "属工业CAD生成agent，与医学影像/多模态推理可靠性主线无关",
+  "依赖多轮渲染-VLM评估，推理成本高、收敛次数无保证",
+  "前9页未见与专用CAD生成模型的量化对比"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/SEEK-CAD A Self-Refined Generative Modeling for 3D Parametric Cad using Local Inference via Deepseek.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SEEK-CAD A Self-Refined Generative Modeling for 3D Parametric Cad using Local Inference via Deepseek.pdf",
+ "raw_overall": 5.48,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "工业CAD生成与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

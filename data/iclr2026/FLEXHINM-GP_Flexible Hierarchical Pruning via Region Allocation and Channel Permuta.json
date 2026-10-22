@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/FLEXHINM-GP_Flexible Hierarchical Pruning via Region Allocation and Channel Permuta.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/FLEXHINM-GP_Flexible Hierarchical Pruning via Region Allocation and Channel Permuta.pdf",
+ "title": "FLEXHINM-GP: Flexible Hierarchical Pruning via Region Allocation and Channel Permuta",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "三层剪枝+通道重排提升压缩效率，但实现复杂且加速效果验证不足",
+ "innovations": [
+  "三层剪枝策略(密集区、向量剪枝区、N:M稀疏区)",
+  "Gyro-Permutation通道重排算法",
+  "基于Hard Concrete分布的可微分掩码机制",
+  "自适应区域边界搜索算法"
+ ],
+ "method_framework": "FlexHiNM-GP框架结合三层剪枝结构、Gyro-Permutation通道重排和可微分掩码学习，实现硬件兼容的精细粒度模型压缩",
+ "experiment_framework": "在Deit、Bert和LLaMA-2模型上测试，ImageNet-1K和NLP基准数据集，75%-95%稀疏度，与无结构剪枝和基线方法对比",
+ "takeaways": [
+  "区域分配策略能更好地适应不同层的重要性差异",
+  "通道重排算法可有效提升N:M稀疏模式的效率",
+  "可微分掩码机制支持渐进式剪枝"
+ ],
+ "weaknesses": [
+  "方法实现复杂度高，需要定制GPU内核",
+  "通道置换增加了额外的计算开销",
+  "实验主要关注模型精度，对实际加速效果验证不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "模型压缩技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

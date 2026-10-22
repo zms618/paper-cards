@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Manual-PA Learning 3D Part Assembly from Instruction Diagrams.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Manual-PA Learning 3D Part Assembly from Instruction Diagrams.pdf",
+ "title": "Manual-PA Learning 3D Part Assembly from Instruction Diagrams",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "手册引导3D装配，对比学习对齐部件与步骤图，预测顺序与姿态。",
+ "innovations": [
+  "手册引导的3D部件装配新问题设置",
+  "基于对比学习的部件与步骤图语义对齐",
+  "装配顺序作为姿态预测的软指导机制"
+ ],
+ "method_framework": "使用PointNet和DINOv2提取部件和步骤图特征，通过匈牙利算法确定装配顺序，结合位置编码的transformer解码器预测6D姿态。",
+ "experiment_framework": "PartNet数据集(chair/table/storage)和IKEA-Manual零样本测试，评估SCD、PA和SR指标。",
+ "takeaways": [
+  "步骤图差异提取有效识别新增部件",
+  "显式学习装配顺序显著提升性能",
+  "跨类别泛化能力强"
+ ],
+ "weaknesses": [
+  "仅支持单部件每步的装配",
+  "对几何相似部件的区分能力有限",
+  "未考虑装配过程中的物理约束"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D装配任务与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

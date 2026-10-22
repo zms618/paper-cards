@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Symmetry-Robust 3D Orientation Estimation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Symmetry-Robust 3D Orientation Estimation.pdf",
+ "title": "Symmetry-Robust 3D Orientation Estimation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "两阶段3D朝向估计，仅解决八面体对称问题",
+ "innovations": [
+  "两阶段流水线：商朝向器连续回归恢复到八面体对称以内的朝向，翻转器从 24 种八面体翻转中分类出把结果对齐到规范朝向的那一个。",
+  "从理论上描述旋转对称形状朝向估计的根本障碍（如 L2 回归会收敛到对称取向的欧氏均值、球面稠密离散化分类失效），并说明本方法如何规避。",
+  "在整个 Shapenet（而非子集类别）上训练与评测 up-axis 与完整三轴朝向估计。"
+ ],
+ "method_framework": "朴素 L2 直接回归在旋转对称形状上会塌缩到对称取向均值；球面离散分类又在稠密采样时失效。本文将问题分解：第一阶段在商空间（模掉八面体对称 O）做连续回归，得到对对称鲁棒的粗朝向；第二阶段用离散分类从 24 个八面体元素中选出正确翻转，把粗朝向校正到规范坐标系，从而获得完整三轴朝向。",
+ "experiment_framework": "在 Shapenet 全集上评测；对比直接回归、球面分类等方法；指标为 up-axis 估计精度与完整朝向估计精度。",
+ "takeaways": [
+  "up-axis 估计达到 SOTA，并在完整三轴朝向上验证有效。",
+  "两阶段分解规避了旋转对称带来的回归塌缩障碍。",
+  "首次在 Shapenet 全集（而非少量类别）上系统训练评测。"
+ ],
+ "weaknesses": [
+  "属于 3D 形状分析/计算机视觉，与医学影像诊断或多模态推理主线无关。",
+  "仅处理八面体对称范畴，对连续旋转对称（如圆柱）的完整朝向仍本质不可辨识，边界讨论不足。",
+  "依赖大规模规范朝向标注数据集，真实扫描/点云噪声下的鲁棒性未充分评测。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

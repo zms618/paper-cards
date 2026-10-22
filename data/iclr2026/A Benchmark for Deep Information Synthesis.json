@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Benchmark for Deep Information Synthesis.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Benchmark for Deep Information Synthesis.pdf",
+ "title": "A BENCHMARK FOR DEEP INFORMATION SYNTHESIS",
+ "scores": {
+  "novelty": 7,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 5.0,
+  "overall": 5.8
+ },
+ "one_line": "人工构建的深度合成基准，但实验方差缺失且结果量级过低",
+ "innovations": [
+  "提出 DEEPSYNTH 基准：120 道需跨 7 领域、67 国、结构化表格与非结构化文本多源合成的任务，刻意让答案无法逐字检索以抵抗记忆污染",
+  "反常规「先假设后出题」的四阶段流水线：16 位专家从 223 个官方数据源提炼假设、人工验证假设成立后再反推任务，每题平均 7.54 个中间步、需浏览 4.2 个网页、标注耗时约 5.5 小时",
+  "统一 JSON 键值输出便于自动校验，并配套严格 EM 与 LLM-judge（对数值答案容差 1%–5.5%）双指标，以区分结构错误与语义正确"
+ ],
+ "method_framework": "四阶段人工流水线：专家辨识官方数据源(223个)→生成待验证假设→人工数据分析验证假设→据验证结果出题并附中间步骤与证据 URL；两轮独立标注答案完全一致才保留，最终 120 题，另切出 dev 子集。",
+ "experiment_framework": "5 款 SOTA LLM 与 o3-deep-research、smolagents、OWL 三套工具智能体；指标 F1/Precision/Recall/EM + GPT-4.1 judge，含工具消融、中间步消融、Best-of-N、区域与错误类型分析。",
+ "takeaways": [
+  "Best@5 达 25% 而自一致性@5 仅 5%、一致性均值 0.27，说明长链合成正确率靠运气而非稳定，可复用为「agent 高方差」评测范式",
+  "直接把 ground-truth 中间推理步骤（不给中间答案）喂给模型，GPT-4.1 的 F1 从 3.46 升到 9.36，瓶颈在规划而非信息获取",
+  "去掉搜索工具 F1 掉 1.81（最大），但去浏览/文档处理/代码执行各只掉 0.4–0.6，工具重要性排序区分度不足"
+ ],
+ "weaknesses": [
+  "全部结果都是单轮 Pass@1 均值，正文未报任何方差或多次运行标准差，而 Best-of-N 与自一致性只差 20 个百分点，差异很可能落在噪声区间内",
+  "错误分析只随机抽 32 个任务却列出 39 个实例（导航 15 + 无答案 4 + 技术故障 4 + 合成 16），样本量与实例数对不上，且技术故障与导航失败未分离，结论支撑薄弱",
+  "整体 F1 最高仅 8.97、EM 近乎全 0，量级过低使消融与区域分析中 1–3 点的差异难以判读；同时欧洲 38.3%、亚洲 29.2% 占比高而非洲仅 8.3%，「欠代表来源更难」的结论受采样不均衡干扰"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "基准构建与可靠性主线无实质交点，仅工具评测有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

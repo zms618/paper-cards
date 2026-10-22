@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Low-Rank Adapting Models for Sparse Autoencoders.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Low-Rank Adapting Models for Sparse Autoencoders.pdf",
+ "title": "Low-Rank Adapting Models for Sparse Autoencoders",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 5.75
+ },
+ "one_line": "LoRA微调SAE，部分提升性能但存在明显局限性",
+ "innovations": [
+  "首次使用LoRA微调语言模型以优化SAE性能",
+  "提出在多个SAE同时插入时仍能有效降低复合交叉熵损失",
+  "证明LoRA微调不会损害模型通用能力反而可能提升"
+ ],
+ "method_framework": "在SAE插入的模型基础上，使用LoRA微调语言模型参数，最小化原始模型与SAE增强模型之间的KL散度，保持SAE不变",
+ "experiment_framework": "在Gemma和Llama模型上测试不同SAE稀疏度、宽度、模型大小、LoRA秩和层的影响，使用SAEBench、特征引导和MMLU等指标评估",
+ "takeaways": [
+  "参数高效的LoRA微调可显著提高SAE性能，计算效率比端到端SAE高2-20倍",
+  "该方法在更大模型上效果更明显，且可同时适应多个SAE"
+ ],
+ "weaknesses": [
+  "对于JumpReLU SAE，只能微调SAE之后的层",
+  "37%的token在LoRA微调后损失反而增加",
+  "在Llama-3.2-1B上最终CE损失仍高于e2e SAE"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

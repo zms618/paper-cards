@@ -1,0 +1,38 @@
+{
+ "title": "Taming Rectified Flow for Inversion and Editing",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "改进ODE求解器提升反演精度，方法增量有限",
+ "innovations": [
+  "推导rectified flow ODE的精确求解器RF-Solver，减少数值求解误差",
+  "免训练即可提升反演-重建精度，不改动预训练模型",
+  "基于RF-Solver提出RF-Edit，实现图像与视频的零样本编辑"
+ ],
+ "method_framework": "分析rectified flow直线ODE在数值离散化时的截断误差；推导考虑速度场非线性的修正项，得到RF-Solver；反演时用RF-Solver从图像/视频编码回潜变量；编辑时在反演潜空间上沿新提示词方向重新求解ODE。",
+ "experiment_framework": "在FLUX（图像）与OpenSora（视频）上评测反演重建精度与编辑质量，对比Euler等基线求解器；覆盖图像反演、视频反演、图像编辑、视频编辑四类任务。",
+ "takeaways": [
+  "rectified flow的ODE求解误差是反演失真的重要来源",
+  "免训练求解器即可显著改善反演与编辑，无需重训模型",
+  "RF-Edit在高分辨率图像与长视频上仍有效"
+ ],
+ "weaknesses": [
+  "本质是ODE求解器改进，方法增量相对有限",
+  "前9页未给出具体PSNR/FID等数值",
+  "对非常规模态（医学影像）的适用性未验证",
+  "域为生成模型采样/编辑，与主线无关"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Taming Rectified Flow for Inversion and Editing.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Taming Rectified Flow for Inversion and Editing.pdf",
+ "raw_overall": 5.65,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

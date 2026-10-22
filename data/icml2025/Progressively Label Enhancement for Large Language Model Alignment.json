@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Progressively Label Enhancement for Large Language Model Alignment.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Progressively Label Enhancement for Large Language Model Alignment.pdf",
+ "title": "Progressively Label Enhancement for Large Language Model Alignment",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 6.5,
+  "overall": 5.75
+ },
+ "one_line": "动态交互式LLM对齐框架，原则引导查询与自适应阈值调整训练策略。",
+ "innovations": [
+  "提出PLE框架，将模型训练和数据生成视为动态交互过程而非静态分离过程",
+  "设计原则引导查询，让模型同时为原始查询和原则相关查询生成响应",
+  "使用动态阈值根据奖励分数自适应决定训练策略"
+ ],
+ "method_framework": "PLE框架提示模型为原始查询和精心设计的原则引导查询生成响应，然后根据两个响应的奖励分数和动态阈值决定适当的训练方式。动态阈值随训练过程演进，根据生成数据质量调整训练策略，实现数据生成与模型训练的闭环交互。",
+ "experiment_framework": "对比现有LLM对齐方法（LIMA、RAFT等），在对齐基准上验证。指标为对齐成功率和人工评估。",
+ "takeaways": [
+  "将训练和数据生成视为动态交互过程比静态分离更高效",
+  "原则引导查询配合动态阈值能有效提升对齐数据质量",
+  "PLE可作为RLHF的替代或补充方法，无需复杂RL阶段"
+ ],
+ "weaknesses": [
+  "动态阈值的具体设计和更新机制在前9页内不够清晰",
+  "前9页内实验结果不完整，缺乏与最新DPO/ORPO等方法的对比",
+  "原则引导查询的设计依赖人工，可扩展性存疑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

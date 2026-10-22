@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Pixel3DMM_Versatile Screen-Space Priors for Single- 3D Face Reconstruction.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Pixel3DMM_Versatile Screen-Space Priors for Single- 3D Face Reconstruction.pdf",
+ "title": "Pixel3DMM: Versatile Screen-Space Priors for Single-Image 3D Face Reconstruction",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "基于DINOv2的屏幕空间先验提升人脸重建精度，但计算开销大且泛化验证有限。",
+ "innovations": [
+  "提出Pixel3DMM：基于DINOv2预训练特征的两个ViT头，分别预测逐像素表面法线和UV坐标，作为3DMM拟合的几何先验。",
+  "设计基于UV坐标最近邻匹配的2D顶点损失(Luv)与法线损失(Ln)的FLAME能量优化框架，并扩展到单目视频跟踪（共享身份参数+时序平滑项）。",
+  "发布首个同时评估posed与neutral人脸几何的单图重建基准，覆盖强表情、多视角、多种族，含21人441个GT扫描。"
+ ],
+ "method_framework": "先用三个高质量3D人脸数据集(NPHM/FaceScape/Ava256)对齐到FLAME拓扑并扩散模型改光照，训练法线与UV预测头；推理时由预测UV反查每个FLAME顶点的2D位置构造2D顶点损失，配合法线渲染损失与身份正则(MICA先验)联合优化身份/表情/下颌/相机参数；视频场景下冻结身份与内参逐帧时序优化。",
+ "experiment_framework": "数据集为自建基准（21人、neutral+20种表情、多视角），并在NoW、FaceScape等既有基准上评测；基线含DECA、EMOCA、MICA、Metr. Track.、TokenFace、FlowFace等；指标为几何精度（Chamfer距离），posed表情下几何精度超SoTA逾15%。",
+ "takeaways": [
+  "在强表情posed重建上几何精度超现有SoTA逾15%，屏幕空间法线+UV先验优于前馈回归器。",
+  "首个同时评估posed与neutral几何的基准，强调形状-表情解耦能力的评测。",
+  "训练成本低（2张GPU、3天、数据公开），便于后续复现与扩展。"
+ ],
+ "weaknesses": [
+  "方法本质仍是优化式拟合，逐图求解计算开销高于纯前馈回归，实时性受限。",
+  "依赖面部分割网络与法线/UV预测头的质量，遮挡或极端侧脸下对应关系(最近邻匹配)可能退化。",
+  "评测基准人数仅21人，虽表情丰富但GT扫描规模相对有限，泛化结论需更大规模验证。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "人脸重建与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Comprehensive Information-Decomposition Analysis Of Large Vision-Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Comprehensive Information-Decomposition Analysis Of Large Vision-Language Models.pdf",
+ "title": "A COMPREHENSIVE INFORMATION-DECOMPOSITION ANALYSIS OF LARGE VISION-LANGUAGE MODELS",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "将信息论工具引入LVLM分析，但方法启发式且因果证据不足",
+ "innovations": [
+  "把 PID（Williams & Beer）搬进 LVLM 决策分析：视觉/语言嵌入为源、预测为靶，拆出 R 冗余、U1 视觉独有、U2 语言独有、S 协同四原子，用「信息谱」替代准确率描述多模态融合风格",
+  "三项让 BATCH 估计器适配现代 LVLM 的改造：用预计算均值方差的高斯噪声替换另一模态整段嵌入求单模态条件、低置信样本退化为均匀分布防止候选集人为拉高置信、软均值聚合替代 argmax 频率以免把均匀分布伪造成尖峰",
+  "沿广度（26 模型×4 数据集）、深度（logit lens 逐层）、时间（LLaVA-1.5 两阶段 8 个 checkpoint）三维剖析，并用品删图干预的 Dvision 与 S 相关（ρ=0.809）做行为学交叉验证"
+ ],
+ "method_framework": "取视觉与文本的 mean-pooled 嵌入为源变量，跑多模态与单模态（另一模态整段替换为高斯噪声）三路前向得到三个条件分布，送 BATCH 估计器（Sinkhorn 约束边际匹配）解出 R/U1/U2/S 四个原子。",
+ "experiment_framework": "11 家族 26 个 LVLM（0.5B–90B）× MMBench/POPE/Reefknot/PMC-VQA；报告 S 与 U2 份额的 bootstrap 95% CI 及对准确率的 Spearman ρ，另加逐层 logit lens 与训练 checkpoint 时间轨迹。",
+ "takeaways": [
+  "「协同 S 高」而非「总信息量 I(X1,X2;Y) 大」才是好模型在融合型任务上的特征（ρ≈0.75），可直接用作比准确率更低噪声的融合质量指标",
+  "任务天然分两类：融合驱动（MMBench/POPE，S 主导）与知识驱动（Reefknot/PMC-VQA，U2 主导且 S 有上限），做 LVLM 评测时应按体制分别报指标",
+  "品删图干预（Dvision）作为 PID 的行为学锚点，比纯相关性分析更有说服力，成本极低值得在其它可分解表征分析里复用"
+ ],
+ "weaknesses": [
+  "三个适配项本身是启发式：单模态条件用「整段嵌入替换为预计算均值/方差高斯噪声」近似、置信阈值 τ 与 soft 聚合会直接改变 R/S 绝对值，而 τ∈{0.2,0.3,0.4} 与 pooling 消融只放在附录，主结论对 τ 的敏感性无从判断",
+  "Finding 2/3 本质是相关性：PID 只用模型预测算得、不参与标签，Spearman ρ=0.75 只能说明「强模型恰好 S 高」，无法区分 S 驱动表现与表现导致 S 高，缺干预式的因果检验",
+  "只覆盖 26 个开源 MC-VQA 模型与 4 个选择题集，源变量取 mean-pooled token 嵌入粒度较粗且只做选择题（BATCH 需要有限 Y）；正文在 §4.1.2 中途截断，逐层与训练动力学两维结果及「视觉指令微调解锁 S」的关键证据不可见"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "信息论工具与LVLM分析，但因果证据不足且方法启发式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

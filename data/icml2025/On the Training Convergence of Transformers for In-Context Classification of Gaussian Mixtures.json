@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/On the Training Convergence of Transformers for In-Context Classification of Gaussian Mixtures.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/On the Training Convergence of Transformers for In-Context Classification of Gaussian Mixtures.pdf",
+ "title": "On the Training Convergence of Transformers for In-Context Classification of Gaussian Mixtures",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "理论证明单层Transformer在高斯混合分类的线性收敛，但适用场景有限。",
+ "innovations": [
+  "从训练动态角度理论刻画 Transformer 上下文分类(此前多为构造性结果)",
+  "证明高斯混合 ICL 下单层 Transformer 梯度下降线性速率收敛到全局最优",
+  "量化训练/测试 prompt 长度对 ICL 推理误差的影响，给出随长度趋近真实标签分布的结论"
+ ],
+ "method_framework": "将上下文分类(高斯混合)建模为 Transformer 在给定 few-shot prompt 上的预测问题。分析单层 Transformer 经梯度下降的训练动态：在一定假设下证明其收敛到全局最优且为线性速率；进一步刻画 ICL 推理误差如何随训练与测试 prompt 长度增大而趋近真实标签后验分布。",
+ "experiment_framework": "以理论为主：推导收敛速率与 prompt 长度-误差关系；辅以数值实验在高斯混合分类上验证收敛轨迹与长度 scaling 结论。",
+ "takeaways": [
+  "单层 Transformer 做高斯混合 ICL 分类可线性速率收敛到全局最优",
+  "训练/测试 prompt 足够长时，ICL 预测趋近真实标签后验分布"
+ ],
+ "weaknesses": [
+  "与可靠性/医学影像/多模态推理主线无关，属 ICL 机理理论",
+  "结论限于单层 Transformer 与高斯混合假设，深层/真实分布外不直接成立",
+  "实证为合成高斯混合，与真实 LLM 场景差距大"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

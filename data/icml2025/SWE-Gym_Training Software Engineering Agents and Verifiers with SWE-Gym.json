@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/SWE-Gym_Training Software Engineering Agents and Verifiers with SWE-Gym.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SWE-Gym_Training Software Engineering Agents and Verifiers with SWE-Gym.pdf",
+ "title": "SWE-Gym: Training Software Engineering Agents and Verifiers with SWE-Gym",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "构建SWE-Gym训练环境，提升SWE agent性能并训练验证器实现推理缩放。",
+ "innovations": [
+  "构建首个面向训练(而非仅评测)的SWE agent环境SWE-Gym，含2438个带可执行运行时/单测/NL任务的实例",
+  "用SWE-Gym轨迹训练SWE agent，在SWE-Bench Verified/Lite上取得最高19%绝对提升",
+  "用同一环境采样的轨迹训练验证器做推理时缩放，与微调agent结合达开源SWE agent SOTA"
+ ],
+ "method_framework": "现有SWE基准偏评测。SWE-Gym提供可交互、可执行的训练环境：每个实例含Python代码库、可执行运行时、单元测试与NL任务描述。先在其上采样轨迹微调SWE agent，再用这些轨迹训练一个验证器在推理时对多个rollout打分选择，实现训练时与推理时双缩放。",
+ "experiment_framework": "在SWE-Bench Verified与Lite上评估；报告训练轨迹数缩放(至491条未见饱和)与推理时rollout数缩放曲线；最终微调agent+验证器取得32.0%/26.0%；开源环境、模型与轨迹。",
+ "takeaways": [
+  "可执行训练环境使SWE agent性能随训练轨迹数持续提升、未见饱和",
+  "用同环境轨迹训练的验证器可在推理时通过多rollout选择进一步缩放",
+  "训练agent+验证器的组合达开源SWE agent新SOTA"
+ ],
+ "weaknesses": [
+  "任务以Python为主，跨语言/大型真实代码库的覆盖有限",
+  "验证器依赖单元测试作为奖励信号，测试不完备时的选择可靠性存疑",
+  "属SWE agent领域，验证器机制与主线相关但落地域非医学影像/多模态推理"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

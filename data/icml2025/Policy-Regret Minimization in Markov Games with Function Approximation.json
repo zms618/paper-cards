@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Policy-Regret Minimization in Markov Games with Function Approximation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Policy-Regret Minimization in Markov Games with Function Approximation.pdf",
+ "title": "Policy-Regret Minimization in Markov Games with Function Approximation",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 4,
+  "relevance": 6,
+  "overall": 5.8
+ },
+ "one_line": "理论推导BOVL算法在函数逼近下达到最优策略后悔，但缺乏实验验证。",
+ "innovations": [
+  "首个为Markov博弈中策略后悔最小化设计的函数逼近(FA)算法框架BOVL，覆盖由ℓ2型Eluder系数刻画的大范围问题",
+  "证明在FA设定下可达到最优O(√T)策略后悔，把此前仅表格/一致行为假设下的结果推广到大状态空间",
+  "揭示处理反应性对手的简洁有力途径：显式利用对手学习信息是达到最优策略后悔的关键"
+ ],
+ "method_framework": "本文为多智能体RL理论论文。外部regret无法刻画对手适应性(反事实)，故采用policy regret(与采用替代策略本可获得的回报之差)。作者放弃'小离散状态、对手行为仅依赖本状态'的强假设，在ℓ2型Eluder条件下，用函数逼近表示值函数/策略，并把对手的学习动态纳入算法，得到BOVL框架并分析其O(√T)策略后悔。",
+ "experiment_framework": "无(或仅有少量验证性)数值实验。核心贡献是算法框架与遗憾界证明：在Eluder型条件下给出O(√T)策略后悔上界，并与已知下界匹配说明最优；问题类包含此前的表格情形作为特例。",
+ "takeaways": [
+  "在函数逼近下，策略后悔最小化仍可达最优O(√T)，无需局限于表格环境",
+  "面对自适应对手，外部regret会遗漏对手反事实反应，policy regret是更合适的度量",
+  "把对手学习信息显式纳入算法，是取得最优策略后悔的关键设计"
+ ],
+ "weaknesses": [
+  "结果依赖ℓ2型Eluder条件这一较强假设，对一般函数类的可实现性与验证方法讨论有限",
+  "纯理论，缺少在真实游戏/机器人等MARL场景的实验来印证样本复杂度与可运行性",
+  "对'对手如何被建模/其学习动态已知'这一前提的现实性假设较强，弱信息下的退化表现未分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/A Visual Leap in CLIP Compositionality Reasoning through Generation of.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Visual Leap in CLIP Compositionality Reasoning through Generation of.pdf",
+ "title": "A Visual Leap in CLIP Compositionality Reasoning through Generation of Counterfactual Sets",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "分块扩散合成反事实图文集，集合损失微调CLIP组合推理",
+ "innovations": [
+  "分块扩散：LLM 解析稠密描述得到全局场景 T_global、局部实体描述 T_i 与坐标 P_i，去噪时对局部图文跨注意力加空间掩码 M_i，并随步数线性衰减局部权重、同步提升全局权重",
+  "反事实集数据合成：对实体做增/删/改三类重组，用 SDXL 等为每块生成参考图，配合 CLIP 相似度阈值过滤，零人工标注即可得到属性、位置、关系三个维度变化的高保真图文对",
+  "集合级损失：同一反事实集内正负对走按对 Sigmoid 的 L_intra，集合间只取真实对作代表样本做 L_inter，再加词序倒置的 L_neg，替代需全对比较的对比损失"
+ ],
+ "method_framework": "LLM 抽取实体与坐标，逐块生成参考图并在去噪中以空间掩码做局部图文交叉注意力、随步数衰减局部权重；集合内正负用逐对 Sigmoid 损失、集合间以真实对为负，加词序倒置负文本损失后 LoRA 微调。",
+ "experiment_framework": "COCO 稠密描述构造反事实集（10k/300k），LoRA 微调 CLIP ViT-B/32；评 ARO、VL-Checklist、Winoground、sDCI、Elevater；4×V100，三次运行取平均。",
+ "takeaways": [
+  "把反事实样本按「集」组织（集内正负 + 集间拿真实对当负）的集合损失，能用极少负样本高效微调 CLIP，计算量低于全对 Sigmoid 损失",
+  "LLM 抽实体坐标 + 分块扩散 + 动态权重拼图式合成，是低成本批量造空间关系密集图文对的可用模板"
+ ],
+ "weaknesses": [
+  "Table 1 中只用 10k 数据的 GCSgenerate-10k 在 ARO Relation 已达 93.9、VG-R 92.5，逼近 300k 版的 94.6/95.6，说明收益主要来自集合式负样本结构而非生成规模，数据规模论证被稀释",
+  "评测全部落在 CLIP 双编码器的匹配准确率（ARO/VL-Checklist/sDCI/Winoground），未在任何生成式 VLM 或实际多模态推理任务上验证，Table 2 里 Winoground Image 项 10.0 仅比 sDCIp1 高 1.7 点",
+  "正文称指标为三次运行平均却未给标准差；反事实数据质量只靠 CLIP 阈值过滤与 3000 条抽样自动准确率（Table 4 高达 99.6%）自证，缺人类偏好或保真度评测"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "反事实数据合成提升CLIP组合推理，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Generative Video Propagation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Generative Video Propagation.pdf",
+ "title": "Generative Video Propagation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "选择性编码器实现视频编辑传播，但计算成本高且精度有限。",
+ "innovations": [
+  "选择性内容编码器(SCE)设计",
+  "区域感知损失函数",
+  "合成数据生成方案",
+  "无需密集掩码的多任务视频编辑框架"
+ ],
+ "method_framework": "GenProp框架结合选择性内容编码器和图像到视频生成模型，通过区域感知损失和掩码预测解码器头，实现第一帧编辑到整个视频的传播，同时保持其他区域与原始视频一致。",
+ "experiment_framework": "在经典和挑战性测试集上评估，使用PSNRm、CLIP-T和CLIP-I指标，并与InsV2V、AnyV2V、Pika和ReVideo等方法比较，并进行用户研究。",
+ "takeaways": [
+  "选择性内容编码器可有效分离编辑区域和未编辑区域",
+  "合成数据生成方案可扩展到多种视频实例分割数据集",
+  "区域感知损失函数确保编辑区域准确传播和未编辑区域稳定"
+ ],
+ "weaknesses": [
+  "计算成本较高，实时性不如SAM-V2等传统方法",
+  "需要大量训练数据和计算资源",
+  "在复杂场景下的编辑精度仍有提升空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频编辑传播与可靠性主线无交点，属纯生成应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

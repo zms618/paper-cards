@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/ProtoDepth_Unsupervised Continual Depth Completion with Prototypes.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ProtoDepth_Unsupervised Continual Depth Completion with Prototypes.pdf",
+ "title": "ProtoDepth Unsupervised Continual Depth Completion with Prototypes",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "冻结预训练模型+原型注入，缓解深度完成中的灾难性遗忘",
+ "innovations": [
+  "冻结预训练模型，仅学习轻量级原型集",
+  "全局和局部原型机制适应新域",
+  "域描述符实现无域身份识别时的原型选择"
+ ],
+ "method_framework": "冻结预训练深度完成模型，为每个域学习全局(乘性)和局部(加性)原型集，通过注意力机制将原型特征注入到潜在空间",
+ "experiment_framework": "室内(NYUv2→ScanNet→VOID)和室外(KITTI→Waymo→VKITTI)数据集序列，对比EWC、LwF、Replay等方法，使用MAE、RMSE等指标",
+ "takeaways": [
+  "冻结主干模型+轻量级原型是缓解持续学习中遗忘的有效策略",
+  "域描述符机制使模型能在未知域身份时选择适当原型"
+ ],
+ "weaknesses": [
+  "域描述符可能导致某些域间的混淆",
+  "原型数量选择可能影响性能"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "持续学习缓解遗忘，但未触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

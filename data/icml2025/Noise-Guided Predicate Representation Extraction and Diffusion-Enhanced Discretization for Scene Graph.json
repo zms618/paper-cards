@@ -1,0 +1,36 @@
+{
+ "title": "Noise-Guided Predicate Representation Extraction and Diffusion-Enhanced Discretization for Scene Graph Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.75
+ },
+ "one_line": "扩散模型增强谓词特征，离散化映射缓解SGG长尾偏差。",
+ "innovations": [
+  "用条件扩散模型重建同类谓词特征，扩大谓词表示空间、提升稀有谓词的多样性，区别于依赖粗粒度隐特征的VAE/GAN增强。",
+  "提出特征离散化映射模块，把同类谓词聚合到独立表示空间，减小类内方差与相似谓词-决策权重分布差异。",
+  "作为即插即用模块与多种SGG基线结合，在VG/GQA/OpenImage V6上一致提升。"
+ ],
+ "method_framework": "从两方面缓解长尾偏差：一是噪声引导的谓词表示提取，用条件扩散重建同类别特征以增加表示多样性、缓解尾部欠拟合；二是扩散增强的离散化，用可学习离散化编码器把相似谓词映射到一致表示，再训练决策层独立类别分布，降低类间决策模糊。",
+ "experiment_framework": "在Visual Genome、GQA、OpenImage V6三个SGG数据集上，将NoDIS与多种SGG基线结合，报告Predicate Classification/SGGNG等指标下的召回性能，展示对尾部谓词偏差的缓解与整体提升。",
+ "takeaways": [
+  "同时增强头部与尾部谓词、而非仅增强尾部，能更好缓解长尾偏差。",
+  "决策层前统一相似谓词表示可显著降低类内方差与决策歧义。"
+ ],
+ "weaknesses": [
+  "属现有SGG长尾方法（loss/采样/特征增强）路线上的模块叠加，方法新颖性中等。",
+  "引入扩散模型带来额外训练与采样开销，前9页未充分报告效率成本。",
+  "落地域为通用视觉关系抽取，与医学影像/多模态大模型推理主线距离较远，relevance受限。"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Noise-Guided Predicate Representation Extraction and Diffusion-Enhanced Discretization for Scene Graph.pdf",
+ "path": "icml2025/Noise-Guided Predicate Representation Extraction and Diffusion-Enhanced Discretization for Scene Graph.pdf",
+ "conf": "icml2025",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

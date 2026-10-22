@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Policy Newton Algorithm In Reproducing Ker-Nel Hilbert Space.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Policy Newton Algorithm In Reproducing Ker-Nel Hilbert Space.pdf",
+ "title": "Policy Newton Algorithm in Reproducing Kernel Hilbert Space",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "RKHS策略牛顿法理论推导，但扩展性与实际场景验证不足",
+ "innovations": [
+  "首个 RKHS 策略的二阶优化算法，推导二阶Fréchet导数作为Hessian算子",
+  "用三次正则化辅助函数求更新步，避免直接求逆不可解的无穷维Hessian算子",
+  "借表示定理将无穷维优化等价化为欧氏空间有限维问题(维度随轨迹数据量)，并证明收敛到局部最优且具二次收敛率"
+ ],
+ "method_framework": "在RKHS中把期望累积奖励视为泛函，对策略做二阶泰勒展开；不显式求逆Hessian算子，转而优化三次正则化辅助目标得到牛顿步；再由表示定理说明最优更新必落在已观测轨迹张成的有限维子空间内，从而在有限维核矩阵上求解。",
+ "experiment_framework": "在玩具金融资产配置问题上验证二次收敛性质；在标准RL基准上对比一阶 RKHS Policy Gradient 与参数化二阶 Policy Newton，报告收敛速度与回合回报。",
+ "takeaways": [
+  "RKHS策略此前仅有一阶优化，Policy Newton 首次提供二阶收敛加速",
+  "表示定理使无穷维RKHS优化在数据规模维度上可计算",
+  "相比一阶方法收敛更快、更易逃离局部最优、回合回报更高"
+ ],
+ "weaknesses": [
+  "主线为RL优化理论，与可靠性、医学影像、多模态推理主线关联弱",
+  "有限维问题维度随轨迹数据量增长，大规模样本下核矩阵求解的扩展性前9页未充分分析",
+  "前9页实证集中于玩具与标准基准，未见高维真实控制场景验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "RL优化理论，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

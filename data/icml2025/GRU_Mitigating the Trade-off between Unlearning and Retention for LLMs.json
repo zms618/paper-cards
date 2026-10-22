@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/GRU_Mitigating the Trade-off between Unlearning and Retention for LLMs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/GRU_Mitigating the Trade-off between Unlearning and Retention for LLMs.pdf",
+ "title": "GRU: Mitigating the Trade-off between Unlearning and Retention for LLMs",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "梯度矫正遗忘GRU缓解LLM遗忘与保留权衡，但依赖近似界定且扩展性验证不足。",
+ "innovations": [
+  "提出Gradient Rectified Unlearning(GRU)，通过矫正遗忘时梯度更新方向以最小化对无关知识的副作用",
+  "缓解梯度上升(GA)等遗忘方法损害模型通用功能的问题",
+  "方法简单通用，可叠加在既有遗忘流程上并在多个标准遗忘基准验证"
+ ],
+ "method_framework": "LLM遗忘常用梯度上升降低目标数据似然，但会损害无关响应。GRU在遗忘梯度更新时对其方向做矫正/投影，使其主要作用于待遗忘目标知识，同时约束对保留知识方向的影响，从而在彻底遗忘隐私/版权内容与保留通用能力之间取得更好平衡。",
+ "experiment_framework": "在多个成熟LLM遗忘基准上，以遗忘成功率(目标内容概率近零)与保留性能(在通用/保留任务上的精度)为指标，对比GA及主流正则化遗忘方法，验证遗忘-保留权衡的改善。",
+ "takeaways": [
+  "矫正梯度更新方向可在提升遗忘彻底性的同时减少对无关响应的破坏",
+  "GRU实现简单、通用性强，可即插即用",
+  "在多个遗忘基准上缓解了遗忘与保留的权衡"
+ ],
+ "weaknesses": [
+  "梯度矫正依赖如何界定目标/保留方向的近似，近似误差影响效果",
+  "未针对大规模前沿模型做扩展性与遗忘后安全性审计",
+  "前9页内对真实版权/隐私请求场景的端到端验证有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

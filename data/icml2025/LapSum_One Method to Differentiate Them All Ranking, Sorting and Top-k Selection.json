@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/LapSum_One Method to Differentiate Them All Ranking, Sorting and Top-k Selection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/LapSum_One Method to Differentiate Them All Ranking, Sorting and Top-k Selection.pdf",
+ "title": "LapSum_One Method to Differentiate Them All Ranking, Sorting and Top-k Selection",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "LapSum提供可微排序解，但与主线无关且下游验证不足",
+ "innovations": [
+  "基于任意密度的一般理论，用拉普拉斯分布之和(LapSum)的逆闭式统一解决软排序/top-k/排列",
+  "证明并验证 O(n log n) 时间、O(n) 内存复杂度（含导数），与序列排序同阶",
+  "提供易并行的CPU与CUDA实现，在高维向量与大k下优于 NeuralSort/OT/Splitter 等"
+ ],
+ "method_framework": "把排序/top-k/排列的非可微操作建模为拉普拉斯分布之和的逆函数；利用闭式公式计算各元素入选top-k的概率及其导数，避免近似/估计器，数值稳定且可并行。",
+ "experiment_framework": "在不同维度n与k下对比 Bitonic/NeuralSort/Dykstra/PAV/Optimal-Transport/Splitter-Selection，报告运行时、内存与精度，并给出CUDA实现。",
+ "takeaways": [
+  "拉普拉斯分布之和可统一闭式解决多种可微排序问题",
+  "O(n log n)时间与O(n)内存打破既有top-k方法的时空瓶颈",
+  "GPU友好实现使其适用于大规模排序/选择任务"
+ ],
+ "weaknesses": [
+  "属可微算子/基础设施，与鲁棒性/多模态大模型主线无关",
+  "拉普拉斯分布的温度参数需调，前9页未见其敏感性分析",
+  "主要在合成排序任务验证，下游学习任务的端到端收益展示有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Robust Federated Inference.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Robust Federated Inference.pdf",
+ "title": "Robust Federated Inference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "形式化联邦推理鲁棒性，提出DeepSet+对抗训练组合提升聚合防御。",
+ "innovations": [
+  "首次给出联邦推理这一类方法的鲁棒性形式化与分析，定义其失败/攻击模式。",
+  "分析平均类聚合器：误差仅在诚实响应差异小或 top-2 类别间隔大时才小。",
+  "把非线性聚合器的鲁棒联邦推理建模为对抗机器学习问题，提出 DeepSet 聚合模型上对抗训练+测试时鲁棒聚合的新型组合。"
+ ],
+ "method_framework": "在中心服务器聚合多客户端本地模型预测的设定下，先刻画平均聚合器在何种响应分布下鲁棒；再用 DeepSet 神经网络作非线性聚合器，并同时施加对抗训练(使其对被污染客户端输出鲁棒)与测试时鲁棒聚合，二者组合提升面对故障/投毒输出的稳健性。",
+ "experiment_framework": "在多个基准上模拟模型故障/投毒客户端；对比平均聚合、Byzantine-robust 与现有鲁棒聚合方法；报告攻击下准确率，所提组合在多样基准上超越现有方法 4.7–22.2 个百分点。",
+ "takeaways": [
+  "联邦推理的鲁棒性此前被忽视，无防御时即使简单攻击也可致失败。",
+  "平均聚合器的鲁棒性取决于诚实响应的离散度与类别间隔。",
+  "对抗训练与测试时鲁棒聚合组合可大幅提升非线性聚合器对故障/投毒的稳健性。"
+ ],
+ "weaknesses": [
+  "分析主要针对平均聚合与 DeepSet，对更复杂 LLM 集成输出(非概率向量)的聚合适配未充分验证。",
+  "对抗训练假设已知威胁模型，对未知/自适应投毒策略的泛化鲁棒性未充分覆盖。",
+  "属分布式鲁棒聚合方向，与医学影像/多模态推理落地域无直接交集，鲁棒性主线契合度中上。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "联邦推理鲁棒性形式化与防御，可靠性主线明确但落地域未触及",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

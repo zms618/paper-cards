@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/MoGe-2 Accurate Monocular Geometry with Metric Scale and Sharp Details.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/MoGe-2 Accurate Monocular Geometry with Metric Scale and Sharp Details.pdf",
+ "title": "MoGe-2: Accurate Monocular Geometry with Metric Scale and Sharp Details",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "解耦尺度与细节的单目几何估计，依赖合成数据精炼",
+ "innovations": [
+  "解耦的仿射不变点图与全局尺度预测",
+  "基于合成数据的真实数据精炼方法",
+  "多尺度局部几何对齐的过滤策略"
+ ],
+ "method_framework": "基于MoGe框架，添加CLS-token条件MLP头预测全局尺度，结合仿射不变点图与尺度因子实现度量几何估计，并通过数据精炼提升细节恢复能力。",
+ "experiment_framework": "在10个数据集上评估相对几何、度量几何和边界锐度，与UniDepth、Depth Pro、MoGe等基线比较，使用Relp、Reld、δ1和F1等指标。",
+ "takeaways": [
+  "解耦尺度预测可保持相对几何精度",
+  "局部几何对齐能有效过滤真实数据中的不匹配区域",
+  "合成与真实数据结合可同时提高精度和细节"
+ ],
+ "weaknesses": [
+  "仅使用CLS-token预测全局尺度可能限制场景特定尺度的准确性",
+  "数据精炼过程依赖合成模型Gsyn的质量",
+  "未充分讨论计算效率与推理时间"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

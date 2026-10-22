@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Uniflow_A Unified Pixel Flow Tokenizer for Visual Understanding and Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Uniflow_A Unified Pixel Flow Tokenizer for Visual Understanding and Generation.pdf",
+ "title": "UniFlow: A Unified Pixel Flow Tokenizer for Visual Understanding and Generation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "统一视觉tokenizer，自蒸馏+流解码器缓解理解生成冲突",
+ "innovations": [
+  "提出通用统一tokenizer，通过给任意视觉编码器配简洁重建解码器，弥合高层语义抽象(理解)与低层像素重建(生成)的固有冲突",
+  "layer-wise自适应自蒸馏作用于已预训练视觉编码器，使其既继承强语义特征又能适配细粒度生成细节",
+  "轻量patch-wise pixel flow解码器：以语义特征为条件建模从噪声态到patch像素域的条件流，高保真重建同时简化数据分布提升训练效率"
+ ],
+ "method_framework": "现有统一tokenizer在理解与生成间存在权衡冲突(语义抽象 vs 像素重建)。UniFlow对预训练视觉编码器施加layer-wise自适应自蒸馏，让编码器同时承担理解与生成；再用patch-wise pixel flow解码器：把语义特征作为视觉条件，建模从噪声到patch像素域的条件流做高保真重建；patch-wise学习简化数据分布、提升效率，以语义条件缓解理解/生成训练冲突。",
+ "experiment_framework": "跨13个挑战性基准、7类视觉理解与生成任务评估；对比TokenFlow、UniTok等统一tokenizer；指标含理解benchmark平均分、视觉重建rFID、生成gFID(无guidance)。报告7B UniFlow-XL平均理解超14B TokenFlow-XL 6.05%，重建/生成上rFID/gFID分别超UniTok 0.15/0.09。",
+ "takeaways": [
+  "理解与生成的冲突可通过对预训练编码器做layer-wise自蒸馏+流解码器条件重建来缓解，实现win-win",
+  "语义特征作为流解码器的视觉条件，能有效缓解两任务优化目标的相互干扰",
+  "patch-wise策略简化像素分布，既高保真又提升训练效率"
+ ],
+ "weaknesses": [
+  "属视觉tokenizer/统一理解-生成模型方向，与本主线(可靠性×多模态推理/医学影像)关联弱",
+  "统一tokenizer虽理解强、生成'competitive'，但生成质量仍不及专用生成tokenizer，权衡未完全消除",
+  "依赖已预训练视觉编码器底座，方法的增益多大程度来自底座而非自蒸馏/流解码设计，正文前9页消融未完全分离"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "视觉tokenizer与可靠性主线关联弱，无可靠性方法设计",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

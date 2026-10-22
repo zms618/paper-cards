@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Effects of Dropout on Performance in Long-range Graph Learning Tasks.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Effects of Dropout on Performance in Long-range Graph Learning Tasks.pdf",
+ "title": "Effects of Dropout on Performance in Long-range Graph Learning Tasks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "分析Dropout对长距离图学习的影响，提出DropSens缓解过度挤压问题",
+ "innovations": [
+  "首次系统分析DropEdge等Dropout方法对过度挤压的影响",
+  "提出DropSens方法，在保持DropEdge优势的同时增强长距离节点敏感性",
+  "理论证明DropEdge等方法会降低模型对远距离节点的敏感性"
+ ],
+ "method_framework": "DropSens基于GCN的消息传递机制，通过感知敏感度控制边丢弃比例，确保信息在边丢弃后仍能保持对远距离节点的敏感性",
+ "experiment_framework": "在SyntheticZINC和真实世界数据集上评估，使用GCN、GIN和GAT架构，对比DropEdge-variants和Dropout-variants在短程和长程任务上的表现",
+ "takeaways": [
+  "Dropout方法在短程任务上有效但在长程任务上可能有害",
+  "DropSens在长距离任务上优于现有的图重连技术",
+  "需要重新评估和设计深度GNN训练方法以更好地捕捉长距离交互"
+ ],
+ "weaknesses": [
+  "DropSens主要针对GCN设计，扩展到GIN和GAT存在挑战",
+  "实验主要集中在节点分类和图分类任务，其他应用场景验证不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

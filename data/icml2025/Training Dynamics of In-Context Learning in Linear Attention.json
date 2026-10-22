@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Training Dynamics of In-Context Learning in Linear Attention.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Training Dynamics of In-Context Learning in Linear Attention.pdf",
+ "title": "Training Dynamics of In-Context Learning in Linear Attention",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "线性注意力训练动力学理论，缺乏大规模验证与主线相关性",
+ "innovations": [
+  "对合并键查询矩阵(ATTNM)参数化证明训练动力学有两个不动点、损失轨迹呈单次骤降，并对一类数据集与初始化给出解析时程解",
+  "对分离键查询矩阵参数化证明存在指数多个不动点、损失呈鞍到鞍动力学，并将其约化为标量常微分方程",
+  "揭示训练中模型以主成分个数随时间递增的方式在上下文实现主成分回归，参数化方式决定ICL是骤现还是渐进改进"
+ ],
+ "method_framework": "在上下文线性回归（ICL的规范实例）上训练多头线性注意力（去softmax、仍为输入的非线性函数）。分别研究两种参数化：键与查询合并为单一矩阵（理论常用重参数化）与键查询分离（更贴近实际）。通过不动点分析与ODE约化刻画梯度下降轨迹，推导损失演化与所实现的归纳偏置（PCR）。",
+ "experiment_framework": "以理论推导为主，配合线性注意力在上下文回归任务上的训练曲线数值验证；对比合并/分离K/Q参数化与不同秩设置下的损失景观与骤现/渐进行为。",
+ "takeaways": [
+  "ICL能力的涌现形态取决于K/Q参数化：合并参数化骤现（单次损失骤降），分离参数化为渐进的鞍到鞍动力学",
+  "分离参数化有指数多不动点，训练动力学可约化为标量ODE分析",
+  "训练过程中模型实现的上下文PCR所用主成分数随时间递增"
+ ],
+ "weaknesses": [
+  "主线相关性弱：属ICL/线性注意力训练动力学理论，与可靠性乘医学影像/多模态推理主线无直接联系",
+  "证据以解析推导与小规模数值验证为主，未在真实大规模Transformer/LLM上检验",
+  "仅针对上下文线性回归与线性注意力，向softmax注意力/非线性任务的外推未论证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.63,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

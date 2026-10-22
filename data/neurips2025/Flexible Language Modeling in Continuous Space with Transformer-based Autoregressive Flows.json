@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Flexible Language Modeling in Continuous Space with Transformer-based Autoregressive Flows.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Flexible Language Modeling in Continuous Space with Transformer-based Autoregressive Flows.pdf",
+ "title": "Flexible Language Modeling in Continuous Space with Transformer-based Autoregressive Flows",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "将语言建模转向连续空间，但性能与效率未达预期",
+ "innovations": [
+  "基于Transformer的自回归归一化流框架TarFlowLM",
+  "混合耦合变换捕捉离散数据映射到连续空间的复杂依赖",
+  "双向交替方向自回归变换和块状生成能力",
+  "理论证明混合分布与可逆归一化流层的等价性"
+ ],
+ "method_framework": "TarFlowLM使用VAE编码器将离散token映射为连续潜在变量，通过基于Transformer的自回归归一化流建模潜在序列分布，再通过解码器重建文本。提出混合CDF流和Rosenblatt流两种变换方式，支持堆叠多层实现复杂分布建模。",
+ "experiment_framework": "在TEXT8和OpenWebText数据集上评估，使用BPC和困惑度作为指标，与离散自回归模型、扩散模型和其他归一化流方法比较，并进行了消融研究。",
+ "takeaways": [
+  "混合耦合变换对建模离散文本数据至关重要",
+  "连续潜在空间和归一化流提供了传统离散自回归模型不具备的灵活性",
+  "渐进式分层训练提高了深度流模型的优化稳定性"
+ ],
+ "weaknesses": [
+  "在标准语言建模指标上仍落后于最佳离散自回归模型",
+  "块状生成虽然展示了灵活性但实际性能提升有限",
+  "模型复杂度增加，计算效率可能降低"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unleashing Perception-Time Scaling To Multimodal Reasoning Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unleashing Perception-Time Scaling To Multimodal Reasoning Models.pdf",
+ "title": "Unleashing Perception-Time Scaling to Multimodal Reasoning Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "PTS范式提升LVLM视觉感知精度，但基准局限且迁移性存疑",
+ "innovations": [
+  "提出DisTANCE感知中心基准（合成几何图像的长度/周长/面积定量估计），并实证揭示LVLM存在'快速感知'现象——推理时缩放只拉长思维链却不增加感知token、复杂感知任务不分解",
+  "提出Perception-Time Scaling(PTS)范式：感知详述（用符号token序列如<==========> grounding距离而非直接报数）与感知分解（以参考段逐步累加铺满目标段，模拟用尺测量）",
+  "设计冷启动SFT教PTS模式+GRPO可验证奖励微调的训练流程，纯合成PTS数据与数学推理数据混合训练可同时增益推理与真实感知"
+ ],
+ "method_framework": "先构造DisTANCE诊断基准，揭示当前LVLM把视觉理解当作一次性输出（快速感知），复杂目标的相对误差随真值长度单调上升。PTS包含两部分：(1)感知详述把抽象距离用等号符号token串离散编码以增加感知token并强化视觉-语言grounding；(2)感知分解选定1单位参考段，逐步累加铺满目标段把难任务拆成简单局部子步。训练上先用PTS风格合成数据SFT冷启动，再用GRPO以指数型可验证奖励(relative error)做RL。",
+ "experiment_framework": "基准DisTANCE含300个图-问对（长度/周长/面积各100），指标为相对准确率RAavg（阈值0.1~0.5平均）与高精度RA0.1。对比闭源GPT-4o/4.1/5、Gemini-2.5、Claude-3.5及开源Qwen2.5-VL、InternVL3与R1-OneVision、Vision-R1、MM-Eureka等推理型LVLM；另测OOD泛化与合成数据/数学数据混合训练效果。",
+ "takeaways": [
+  "推理时缩放(RLVR)对感知类任务增益甚微，Vision-R1/R1-OneVision基本与基座持平，原因是模型倾向一次性快速感知而非逐步分解",
+  "PTS将DisTANCE高精度RA0.1从8.0%提升到64.7%，并提升对图像token的注意力占比与感知相关token数量",
+  "纯合成PTS数据与数学推理数据混合训练可在推理与真实感知基准上同时获得增益"
+ ],
+ "weaknesses": [
+  "DisTANCE仅300例且全为合成几何图形，与真实世界复杂图像的感知差距大，外部效度有限",
+  "PTS的符号编码(<==========>)与逐步累加是针对'长度定量估计'专门设计，迁移到其他感知任务（如类别识别、细粒度属性）的普适性未充分验证",
+  "高精度提升虽大，但面积估计等子任务在多数模型上仍低于20%，方法在更难子任务上的边界与失败案例分析在正文未展开"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "感知分解设计可迁移到可靠性主线，但外部效度有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

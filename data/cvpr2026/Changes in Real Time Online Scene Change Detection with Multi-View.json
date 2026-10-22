@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Changes in Real Time Online Scene Change Detection with Multi-View.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Changes in Real Time Online Scene Change Detection with Multi-View.pdf",
+ "title": "Changes in Real Time Online Scene Change Detection with Multi-View",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "多视角实时场景变化检测，依赖现有特征提取器",
+ "innovations": [
+  "自监督融合损失实现多视角一致性变化检测",
+  "轻量级PnP姿态估计模块",
+  "变化引导的选择性3D高斯场景表示更新策略"
+ ],
+ "method_framework": "构建参考场景3DGS表示，使用PnP估计新帧姿态，提取像素和特征级变化线索，通过自监督损失融合多视角信息推断变化掩码，最后选择性更新场景表示",
+ "experiment_framework": "PASLCD数据集，对比在线/离线基线，使用mIoU和F1指标评估变化检测性能，报告FPS和运行时间",
+ "takeaways": [
+  "自监督损失避免硬阈值和启发式融合，提升细粒度变化检测",
+  "选择性更新策略高效处理场景变化，保留未变化区域的高保真表示"
+ ],
+ "weaknesses": [
+  "依赖XFeat特征提取器可能存在局限性",
+  "多视角变化线索融合占用大部分计算时间(64.9%)"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多视角变化检测，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

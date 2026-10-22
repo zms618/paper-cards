@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Population Normalization for Federated Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Population Normalization for Federated Learning.pdf",
+ "title": "Population Normalization for Federated Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "将BN统计量转为可训练参数，解决联邦学习中的异质性和小批量问题",
+ "innovations": [
+  "将BN的统计量转化为可训练参数，消除对批大小的依赖",
+  "引入人工噪声增强泛化能力，提出Noisy Population Normalization",
+  "解决了FedBN的冷启动问题，可生成全局模型"
+ ],
+ "method_framework": "将BN的批统计量替换为可学习的全局统计量，通过约束条件确保统计量准确性，并引入数据独立噪声增强泛化能力。",
+ "experiment_framework": "CIFAR-10/100数据集，VGG-16/ResNet模型，对比BN、FedGN、IN等基线，评估不同批大小和非独立程度下的性能",
+ "takeaways": [
+  "将统计量作为可训练参数是解决联邦学习中BN问题的有效思路",
+  "人工噪声可模拟小批量的统计不确定性，提升大批量训练的泛化能力"
+ ],
+ "weaknesses": [
+  "未探讨NPN在BN的其他特性（如学习率自动调节）上的表现",
+  "理论分析不足，缺乏对PN/NPN数学性质的深入证明"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "解决联邦学习异质性，触及可靠性主线但未深入落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

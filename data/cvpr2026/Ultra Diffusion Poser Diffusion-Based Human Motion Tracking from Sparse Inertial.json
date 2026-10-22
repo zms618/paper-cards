@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Ultra Diffusion Poser Diffusion-Based Human Motion Tracking from Sparse Inertial.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Ultra Diffusion Poser Diffusion-Based Human Motion Tracking from Sparse Inertial.pdf",
+ "title": "Ultra Diffusion Poser Diffusion-Based Human Motion Tracking from Sparse Inertial",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "UWB约束扩散模型提升运动跟踪精度，但泛化性存疑。",
+ "innovations": [
+  "空间布局模块从UWB距离重建3D传感器布局",
+  "UWB-扩散引导机制确保预测姿态与测量距离一致",
+  "自回归扩散修复模型实现平滑运动预测"
+ ],
+ "method_framework": "UDP结合空间布局模块和UWB-扩散引导，利用MDS重建3D传感器布局作为先验，通过扩散模型预测SMPL姿态，并在采样过程中通过前向运动学确保与UWB距离一致。",
+ "experiment_framework": "在DIP-IMU、DanceDB、TotalCapture、UIP-DB和GIP-DB数据集上评估，使用SIP、GAE、JPE和Jitter指标，与UIP、UMotion、GIP等SOTA方法比较。",
+ "takeaways": [
+  "将距离约束作为几何信号而非简单特征可显著提升性能",
+  "扩散模型与物理约束的集成可产生更平滑、更真实的运动预测"
+ ],
+ "weaknesses": [
+  "在UWB噪声极高的数据集上性能下降明显",
+  "方法对传感器数量和位置敏感，可能难以泛化到不同配置"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "运动跟踪非可靠性主线，无可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DSBRouter_End-to-end Global Routing via Diffusion Schrödinger Bridge.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DSBRouter_End-to-end Global Routing via Diffusion Schrödinger Bridge.pdf",
+ "title": "DSBRouter: End-to-end Global Routing via Diffusion Schroedinger Bridge",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.4
+ },
+ "one_line": "DSBRouter将DSB引入芯片布线，端到端生成连通路由，但应用领域受限且实验不完整。",
+ "innovations": [
+  "将DSB引入芯片全局布线：不学noise-to-route映射，而在pins与routes间建桥，前向/反向映射同时学习",
+  "提出evaluation-guided采样方案，按overflow等指标引导采样以优化路由质量",
+  "端到端直接生成连通路由，无需第二阶段RL或启发式纠连"
+ ],
+ "method_framework": "把pin分布作为源分布、route分布作为目标分布；用DSB学习两者间的输运桥；推理时从pins出发沿桥反向采样，并按overflow评估引导采样；输出即连通路由。",
+ "experiment_framework": "在ISPD98与ISPD07 global routing benchmark上对比HubRouter、RL-based方法与启发式布线器，指标为overflow与wirelength。",
+ "takeaways": [
+  "DSBRouter端到端生成连通路由，免去后处理纠连",
+  "在ISPD98与部分ISPD07上达SOTA overflow降低，部分case零overflow",
+  "DSB桥接比传统diffusion noise-to-solution更适合pin-to-route这种结构化对应"
+ ],
+ "weaknesses": [
+  "属EDA布线应用，与可靠性/可信AI主线弱相关",
+  "前9页未给出完整数值表，具体overflow/wirelength数字需看实验章节",
+  "仅在标准benchmark验证，工业规模芯片的可扩展性未充分论证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

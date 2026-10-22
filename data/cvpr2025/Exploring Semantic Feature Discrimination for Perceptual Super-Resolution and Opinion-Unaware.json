@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Exploring Semantic Feature Discrimination for Perceptual Super-Resolution and Opinion-Unaware.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Exploring Semantic Feature Discrimination for Perceptual Super-Resolution and Opinion-Unaware.pdf",
+ "title": "Exploring Semantic Feature Discrimination for Perceptual Super-Resolution and Opinion-Unaware",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "CLIP特征判别引导超分，但创新有限且计算开销大",
+ "innovations": [
+  "基于CLIP中间特征的特征判别器(Feat-D)",
+  "基于可学习提示对(LPP)的文本引导判别(TG-D)",
+  "无需额外训练的SFD-IQA质量评估方法"
+ ],
+ "method_framework": "SFD方法结合Feat-D和TG-D两种判别机制，分别在CLIP的多尺度像素级中间特征和抽象输出特征上进行判别，引导超分辨率网络学习更精细的语义特征分布。",
+ "experiment_framework": "在经典SISR(Set5/14/Urban100/DIV2K)、真实世界SISR(RealSR/DRealSR)和无参考IQA(PIPAL/KonIQ-10k等)数据集上评估，使用PSNR/SSIM/LPIPS/DISTS等指标。",
+ "takeaways": [
+  "利用预训练CLIP模型的语义特征进行判别可提升生成图像的语义相关性",
+  "将超分辨率训练过程中学到的判别器直接应用于质量评估任务，无需额外训练"
+ ],
+ "weaknesses": [
+  "方法依赖于CLIP模型，可能受限于CLIP本身的语义理解能力",
+  "计算复杂度较高，需要同时处理特征判别和文本引导判别"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "超分任务与可靠性主线无关，仅CLIP特征判别有可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

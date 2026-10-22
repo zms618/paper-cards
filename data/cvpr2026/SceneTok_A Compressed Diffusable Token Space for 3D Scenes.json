@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/SceneTok_A Compressed Diffusable Token Space for 3D Scenes.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SceneTok_A Compressed Diffusable Token Space for 3D Scenes.pdf",
+ "title": "SceneTok A Compressed Diffusable Token Space for 3D Scenes",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.8
+ },
+ "one_line": "压缩3D场景为token，实现高效渲染与生成，但高频细节不足",
+ "innovations": [
+  "首个将3D场景编码为非结构化压缩token的方法",
+  "解耦视图渲染与场景生成的新范式",
+  "轻量级生成解码器实现32视图/秒渲染"
+ ],
+ "method_framework": "两阶段方法：第一阶段使用VA-VAE编码器和场景Perceiver将视图集压缩为连续token；第二阶段使用基于修正流的轻量级解码器渲染新视图，并在token空间训练扩散模型进行场景生成。",
+ "experiment_framework": "在RealEstate10K、DL3DV和ACID数据集上评估，与MVSplat、LVSM等基线比较，使用PSNR、LPIPS、SSIM、rFVD、rFID等指标评估新视图合成质量。",
+ "takeaways": [
+  "非结构化token表示显著降低表示大小同时保持高质量",
+  "修正流解码器有效处理场景表示中的不确定性",
+  "解耦渲染与生成提高效率并允许扩展生成模型"
+ ],
+ "weaknesses": [
+  "生成的高频细节质量不如像素空间扩散方法",
+  "方法在零-shot泛化上仍有提升空间",
+  "训练计算资源需求较高"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D场景压缩与渲染，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Pixel2Feature Attack (P2FA)_Rethinking the Perturbed Space to Enhance Adversarial Transferability.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Pixel2Feature Attack (P2FA)_Rethinking the Perturbed Space to Enhance Adversarial Transferability.pdf",
+ "title": "Pixel2Feature Attack (P2FA): Rethinking the Perturbed Space to Enhance Adversarial Transferability",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "理论证明特征级攻击低效，特征空间多步扰动提升对抗迁移性",
+ "innovations": [
+  "理论证明现有特征级攻击虽在像素空间多步迭代，效果却等价于沿特征重要性方向的单步特征扰动，指出其低效根源",
+  "将扰动空间从像素空间迁移到特征空间，直接以特征图为优化变量",
+  "在特征空间按特征重要性引导多次扰动关键共享特征，再反演回像素生成更可迁移对抗样本"
+ ],
+ "method_framework": "先理论分析现有特征级攻击(FIA/RPA/NAA等)的低效性；随后把优化目标从对抗图像改为代理模型k层特征图，在特征空间按特征重要性多次迭代最大化分类损失以破坏关键共享特征；最后将扰动后特征反演(pixel2feature的逆过程)回像素空间生成对抗样本。",
+ "experiment_framework": "数据集ImageNet-NIPS(1000图)；17个目标模型(7个正常训练+6个先进防御如Adv-Inc-v3、Ens-Adv、R&P、特征蒸馏等)；与FIA/RPA/NAA/DANAA/SFVA/BFA等SOTA迁移攻击对比，以黑箱攻击成功率为指标。",
+ "takeaways": [
+  "P2FA在正常训练与防御模型上的黑箱迁移成功率均优于现有特征级SOTA攻击",
+  "可视化显示P2FA使目标模型不再关注物体重要特征而转向无关区域，解释了其高迁移性",
+  "将扰动空间置于特征空间可显著提升破坏共享关键特征的效率"
+ ],
+ "weaknesses": [
+  "依赖可反演回像素的假设，反演误差是否影响真实可迁移性缺乏边界分析",
+  "仅在ImageNet分类任务验证，未涉及检测/分割/多模态等现代模型",
+  "攻击为白盒代理模型设定，对真实商用黑箱API的迁移证据有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Pretraining with Hierarchical Memories Separating Long-Tail and Common Knowledge.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Pretraining with Hierarchical Memories Separating Long-Tail and Common Knowledge.pdf",
+ "title": "Pretraining with Hierarchical Memories: Separating Long-Tail and Common Knowledge",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "记忆增强架构分离长尾与通用知识，但可靠性关联弱",
+ "innovations": [
+  "提出记忆增强架构，小语言模型访问大型层次化参数化记忆库编码世界知识",
+  "预训练策略将长尾世界知识存入记忆参数，小模型作为锚点捕获通用知识和推理能力",
+  "160M模型+18M记忆（来自4.6B记忆库）即可达到2倍参数规模模型的性能"
+ ],
+ "method_framework": "将模型参数分为两部分：锚点参数（始终使用，捕获通用知识和推理）和记忆参数（按输入文档获取，存储长尾知识）。层次化前馈记忆通过检索机制从大型记忆库中获取相关参数。",
+ "experiment_framework": "万亿token规模实验，测试不同记忆类型和大小（扩展到21B参数记忆库）。在知识密集型任务和通用任务上评估。验证预训练加入和事后加入两种方式。",
+ "takeaways": [
+  "世界知识可以与推理能力分离存储，长尾知识适合放在外部记忆中",
+  "仅用10%的记忆参数即可显著提升长尾知识任务的性能",
+  "层次化前馈记忆在不同Transformer架构上都能鲁棒工作"
+ ],
+ "weaknesses": [
+  "记忆检索机制的效率和精度对最终性能影响很大",
+  "与可靠性/鲁棒性主线关联较弱，属于模型架构效率方向",
+  "记忆库的更新和维护机制未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "模型架构效率方向，知识分离存储有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

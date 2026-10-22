@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/A Hubness Perspective on Representation Learning for Graph-Based Multi-View Clustering.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Hubness Perspective on Representation Learning for Graph-Based Multi-View Clustering.pdf",
+ "title": "A Hubness Perspective on Representation Learning for Graph-Based Multi-View Clustering",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4,
+  "relevance": 4.5,
+  "overall": 5.0
+ },
+ "one_line": "声称hubness是GMVC根因，但实验缺失且因果链不闭合",
+ "innovations": [
+  "把k-occurrence Nk(x)的偏度SK量化为GMVC的病理指标：输入空间与嵌入空间各用pairwise cosine相似度上的softmax条件分布p_ij/q_ij，优化KL(P||Q)后拆成邻域保持项L_np=-(1-λ)Σκp_ij(f·f)+λ logΣexp(κ f·f)的球面负熵项L_hr，直接压SK同时保住局部结构",
+  "跨视图hub-aware配对损失L_c=||(S^u S^{vT})⊙(H^u H^{uT}-H^v H^{vT})||_F^2，用kNN指针数诱导的hubness分数s(h_j^v)=Σ_i 1[h_j^v∈kNN(h_i^v)]+ε作样本权重，让跨视图结构对齐偏向hub点而非平均对待",
+  "去掉view-specific解码器，编码器输出直接喂图自编码器（同时重建特征与Â=σ(ZZ^T)），整体L=L_grec+αL_s+βL_c，可整体插拔进DMCAG/SAE"
+ ],
+ "method_framework": "每视图参数化编码器f_v(x|Θ)输出球面嵌入→kNN构图→GCN图编码器+特征/邻接双解码器重建→hub-aware跨视图配对→平均融合后K-means。",
+ "experiment_framework": "8个多视图基准（3Sources/BBCSport/BDGP/MNIST-USPS/Hdigit/Reuters/Animal/Noisyminist），指标ACC/NMI，基线含SAE、DMCAG，并做SK与ACC/NMI的Pearson相关分析。",
+ "takeaways": [
+  "把hubness做成可诊断指标（SK）并与性能指标并列报告、配r+p值，是claim隔离式分析的雏形，可直接搬到基于kNN构图的检索/OOD任务",
+  "改'表征质量'（均匀铺开+邻域保真）比继续堆融合机制更底层，且编码器可插拔进现有GMVC"
+ ],
+ "weaknesses": [
+  "正文在5.1节截断：8个数据集的主实验表（ACC/NMI对比）与超参/消融表全部不可见，无法核对α/β/λ与κ的取值敏感性",
+  "L_s只把logΣexp(κ f·f)叫'球面负熵'，与[28]的hubness理论减少量之间仅靠引用衔接、无自身理论刻画且λ靠网格权衡；同时s(·)需每视图一次O(N²)的kNN统计（式6），Noisyminist 15000样本下该开销全文未报告",
+  "SK与ACC仅r=-0.36(p=0.04)、与NMI r=-0.57，无法排除'降维即丢信息'这一混淆（Observation 2本身就证明压低维度会掉点），因果链不闭合"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "多视图聚类方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

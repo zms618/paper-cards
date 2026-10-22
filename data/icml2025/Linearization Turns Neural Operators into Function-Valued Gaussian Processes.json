@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Linearization Turns Neural Operators into Function-Valued Gaussian Processes.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Linearization Turns Neural Operators into Function-Valued Gaussian Processes.pdf",
+ "title": "Linearization Turns Neural Operators into Function-Valued Gaussian Processes",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.7
+ },
+ "one_line": "线性化神经算子为函数值高斯过程，提供PDE求解不确定性量化",
+ "innovations": [
+  "首次将贝叶斯不确定性量化系统地引入神经算子（neural operator）领域，解决PDE求解中预测误差无法可靠量化的问题",
+  "利用模型线性化（linearization）将权重空间的高斯不确定性前向传播到函数空间输出，得到函数值高斯随机过程（Gaussian random process）后验信念",
+  "建立神经算子线性化与函数式编程中currying概念的概率类比，为理解神经算子的贝叶斯解释提供了新视角"
+ ],
+ "method_framework": "LUNO框架步骤：(1) 在训练好的神经算子（如Fourier Neural Operator）权重上施加高斯先验/后验（如线性化Laplace近似得到权重协方差）；(2) 对训练好的算子做一阶Taylor展开（线性化）；(3) 通过线性化映射将权重空间的高斯分布传播到输出函数空间，得到函数值高斯过程后验。该后验可用于预测区间估计和分布偏移检测。",
+ "experiment_framework": "在参数化PDE求解任务上评测（如流体力学、天气预测相关算子学习）；对比点预测的神经算子与LUNO的不确定性校准；评估校准误差（如NLL、coverage）和分布偏移下的不确定性增长。",
+ "takeaways": [
+  "神经算子的预测不确定性可以通过线性化Laplace近似有效量化，且计算开销远重于训练",
+  "函数值高斯过程后验提供了完整的不确定性结构，不仅是逐点置信区间",
+  "在分布偏移场景下，LUNO的不确定性会相应增大，可用于高风险PDE仿真中的可靠性判断"
+ ],
+ "weaknesses": [
+  "线性化近似在强非线性算子上的精度损失未充分量化，复杂PDE可能需要高阶展开",
+  "实验主要在合成PDE数据集上验证，真实工业仿真场景的大规模实测不足",
+  "权重空间高斯假设（Laplace近似）的合理性在深层神经算子中可能存疑"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

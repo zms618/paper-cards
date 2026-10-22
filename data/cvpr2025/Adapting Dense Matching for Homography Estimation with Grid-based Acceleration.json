@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Adapting Dense Matching for Homography Estimation with Grid-based Acceleration.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Adapting Dense Matching for Homography Estimation with Grid-based Acceleration.pdf",
+ "title": "Adapting Dense Matching for Homography Estimation with Grid-based Acceleration",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "网格稀疏化密集匹配，提升精度但实验对比不严谨",
+ "innovations": [
+  "用规整 G×G 网格上的位移场 w 与置信图 m 替代逐像素流：各尺度网格取 H/14、H/14、H/7、2H/7、4H/7，相关体只在粗网格上采样（Eq.2 的 4D 相关半径由 r^l 降为网格步长的局部窗），把 RoMa 式密集匹配的计算瓶颈减下来，448×448 下较 RoMa 的 auc@3 从 45.29 提到 51.44（+13.5%）。",
+  "网格流改为迭代回归（Eq.3，N=2）：w^{l,n}=w^{l,n-1}+Δŵ^{l,n} 每尺度迭代更新，避免直接回归时上层估计脱离下层收敛盆地导致次优；损失用 λ^{N-n} 后向加权（λ=0.85）的 L2 稳健代价函数，置信图用 BCE 另配 α=0.01 加权。",
+  "自监督数据用复合单应 Hs→T=H2H1^{-1}（两张图各自施加一个单应再组合）替代前人 H2=I 的单单应生成，并加动态遮挡增强时同步把 GT 置信图 m_gt 中前景区域置 0，使置信图监督覆盖被遮挡的不可见区域。"
+ ],
+ "method_framework": "DINOv2 patch 特征经线性投影(64维)+可学习位置编码+跨注意力得 F1，接轻量 FPN（通道 8/16/32/64，1/8 尺度融合 DINOv2 上采样）产出 5 个尺度特征；每尺度在粗网格上迭代回归 flow 与 confidence，跨尺度用双线性上采样传递初值；推理时对称交换 IS/IT 双向算流、按置信阈值抽 5000 个匹配交点再送 RANSAC 求单应。",
+ "experiment_framework": "训练用 CityScapes+ADE20K 造 33k 样本，在 GoogleMap(1280)、VIS-IR 上微调；测试为 MSCOCO、VIRAT、VIS-IR、GoogleMap，指标 ACE 的 auc@3/5/10/20 与 MACs、runtime；基线分 Group A（RHWF/MCNet/PRISE）与 Group B（SIFT+LightGlue/LoFTR/Efficient LoFTR/RoMa）。",
+ "takeaways": [
+  "把密集匹配改造为'粗网格流 + DINOv2 patch 级语义匹配做初始化'，可以只用 foundation model 的语义匹配能力下行到几何估计任务，参数量 1.29M 而 RoMa 为 3.86M。",
+  "迭代式网格流（N=2）在模态差大的 VIS-IR/GoogleMap 上收益最大（auc@3 +17.1% / +180.7%），在模态一致的 MSCOCO 上收益很小，说明该机制主要解决表示域偏移而非匹配难度。",
+  "复合单应造数据（两张图各施加一个单应再求逆组合）能消掉输入顺序不对称，是低成本的训练期对称性增强技巧。"
+ ],
+ "weaknesses": [
+  "对比设置含任务设定差异成分：本文 MSCOCO/GoogleMap 测试分辨率取 448×448（前人方法为 128×128）且 GoogleMap 尺度设置也不同，Group A 基线被统一在 448×448 重训才可比，因此 +5.0%/+180.7% 这类提升里混入了分辨率与尺度红利，不能与前方法在同口径下横向比较。",
+  "消融严重不全：正文可见部分只有一张'模型效率表'里列出 w/o iteration 的 0.85M 参数/4.56G MACs，缺少网格化 vs 逐像素、DINOv2 初始化、置信图 BCE、复合单应数据、遮挡增强各自的消融；全文无多种子方差或显著性检验， auc@3 差异 0.1 量级（如 VIRAT 上 47.50 vs 46.92）无法判断显著性。",
+  "算法仅在'单应全局平滑'假设下成立：VIRAT 动态遮挡集上 auc@3 仅 46.92 对 RoMa 的 47.50（−1.2%），说明动态/非平面场景下网格稀疏化无收益甚至劣化；各层网格尺寸是手工设定的固定比例，缺自适应依据（仅实测最优，非原理推导）。正文 4.3 节在'this improvement is largely due to the integratio'处截断，误差分析与失败案例（VIS-IR 上为何低于 RoMa 17.3%）不可见。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "密集匹配加速与可靠性主线无交点，仅属常规优化",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

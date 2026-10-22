@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Probabilistic Discrepancy Learning for Roadside LiDAR Scene Completion.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Probabilistic Discrepancy Learning for Roadside LiDAR Scene Completion.pdf",
+ "title": "Probabilistic Discrepancy Learning for Roadside LiDAR Scene Completion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "概率差异学习结合视觉先验提升LiDAR场景完成，但依赖模板库且计算复杂",
+ "innovations": [
+  "概率姿态差异最小化(PPDM)修正视觉检测器噪声",
+  "场景差异学习(SDL)结合扩散模型完成全场景",
+  "区域和全局采样差异学习损失提升鲁棒性"
+ ],
+ "method_framework": "PDL框架分为概率姿态差异最小化和场景差异学习两阶段，通过最大化ELBO分解问题，利用视觉先验和几何似然修正姿态，生成伪真实信号指导扩散模型完成场景",
+ "experiment_framework": "V2X-Seq和TUMTraf-V2X数据集，对比PVD、MID、LODE、LiDiff、LiDPM等基线，使用CD、JSD、Vox.IoU等指标",
+ "takeaways": [
+  "概率建模处理姿态不确定性",
+  "动态模板选择策略",
+  "基于置信度的动态引导策略"
+ ],
+ "weaknesses": [
+  "依赖ShapeNet模板库",
+  "计算复杂度高，需要迭代优化",
+  "未讨论极端天气条件下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "LiDAR场景完成与可靠性主线无实质交点，仅具知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

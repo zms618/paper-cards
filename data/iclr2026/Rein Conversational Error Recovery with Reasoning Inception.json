@@ -1,0 +1,41 @@
+{
+ "title": "REIN: Conversational Error Recovery with Reasoning Inception",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 7.0,
+  "overall": 6.0
+ },
+ "one_line": "外部模块诊断错误并植入推理块，无需修改模型参数",
+ "innovations": [
+  "聚焦被忽视的'错误恢复'(而非错误预防)问题，针对用户歧义请求与不支持请求两类失败场景。",
+  "提出Reasoning Inception：外部模块识别预定义错误并生成恢复计划，作为初始推理块植入agent内部推理流，无需微调或改system prompt。",
+  "实证REIN显著提升任务成功率并泛化到未见错误类型，且 consistently 优于显式改prompt的方法。"
+ ],
+ "method_framework": "保持已部署task agent参数与系统提示冻结；外部inception模块根据对话上下文、工具列表、已观察错误列表判断是否触发；若识别错误则生成含恢复计划的inception block，在agent首个reasoning block前注入，引导其采取纠正动作；按指令层级分析其作用机制。",
+ "experiment_framework": "改造agentic benchmark为嵌入初始错误的多轮对话环境(用户模拟器)；系统对比多种agent模型与inception模块组合；覆盖用户歧义/不支持请求，并测泛化到未见错误类型；对比prompt-modification基线；指标为任务成功率。",
+ "takeaways": [
+  "在冻结后端模型与系统提示的现实约束下，测试时植入推理种子是低成本提升恢复能力的有效手段。",
+  "把恢复工具与REIN联合定义是兼顾安全与韧性的策略。",
+  "用户侧错误(歧义/不支持请求)是真实对话失败的重要来源，值得专门研究。"
+ ],
+ "weaknesses": [
+  "依赖预定义的错误列表与恢复计划，对未枚举的开放错误类型覆盖有限(泛化证据仅来自少量未见类型)。",
+  "实验在模拟用户环境而非真实用户上进行，生态效度与真实部署的差距未论证。",
+  "节选前9页未见不同inception模块与agent配对的完整成功率数值表，增益幅度在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Rein Conversational Error Recovery with Reasoning Inception.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rein Conversational Error Recovery with Reasoning Inception.pdf",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "错误恢复机制与可靠性主线直接相关，属于防御性设计",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

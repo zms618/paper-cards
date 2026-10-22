@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Kuramoto Orientation Diffusion Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Kuramoto Orientation Diffusion Models.pdf",
+ "title": "Kuramoto Orientation Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "Kuramoto动力学扩散模型，提升指纹纹理生成但适用性有限。",
+ "innovations": [
+  "将Kuramoto同步动力学引入扩散模型，处理周期性方向数据",
+  "全局和局部耦合振荡器机制，实现结构化破坏过程",
+  "周期性感知网络和包装高斯转换，处理圆形几何结构"
+ ],
+ "method_framework": "将像素映射为相位变量，前向过程通过Kuramoto动力学同步相位到von Mises分布，反向过程使用学习到的分数函数去同步生成图像。",
+ "experiment_framework": "在SOCOFing指纹、Brodatz纹理和地面地形数据集上评估，与SGM基线比较FID分数，测试100/300/1000步扩散效果。",
+ "takeaways": [
+  "同步动力学作为归纳偏置可保留方向一致性",
+  "局部耦合机制与空间相关性对齐提升生成质量",
+  "结构化破坏过程使模型在较少步数内收敛"
+ ],
+ "weaknesses": [
+  "在CIFAR10等通用数据集上1000步时表现略逊于SGM",
+  "过度依赖方向先验可能限制非方向性数据的表达"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

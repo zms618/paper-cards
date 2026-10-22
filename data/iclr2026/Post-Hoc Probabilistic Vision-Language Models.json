@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Post-Hoc Probabilistic Vision-Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Post-Hoc Probabilistic Vision-Language Models.pdf",
+ "title": "Post-Hoc Probabilistic Vision-Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.4
+ },
+ "one_line": "贝叶斯适配CLIP余弦空间，改善校准但创新有限",
+ "innovations": [
+  "提出 post-hoc、模型无关、免训练的 VLM 不确定性量化，仅对最后层做拉普拉斯近似",
+  "推导余弦相似度分布的解析表达式，高效传播不确定性而非采样估计",
+  "为每个模态建立独立概率模型(遵循i.i.d.假设)，在零样本分类与不确定性驱动主动微调中均改善校准与样本效率"
+ ],
+ "method_framework": "在不改动架构/目标的前提下，对预训练 VLM(CLIP/SigLIP)最后几层权重拟合贝叶斯后验(拉普拉斯近似)；图像与文本模态分别建模，再解析地计算联合嵌入余弦相似度的分布，从而得到概念级认知不确定性，用于减少过自信预测并指导主动学习样本选择。",
+ "experiment_framework": "在多个零样本分类基准(含 EuroSAT 卫星图像等域移场景)上对比原始确定性 VLM 与校准/TTA/微调等基线，报告预测误差-不确定性相关性、校准度(ECE)；并测不确定性驱动的主动微调样本效率与误差下降。",
+ "takeaways": [
+  "贝叶斯化后显著减少零样本过自信预测，改善误差-不确定性相关性与校准",
+  "post-hoc 拉普拉斯近似可在不重训、低推理开销下获得可解释的认知不确定性",
+  "用该不确定性做主动学习支撑集选择，样本效率更高、自适应后错误率更低"
+ ],
+ "weaknesses": [
+  "核心方法(拉普拉斯近似)成熟，创新性偏于将其适配到 VLM 余弦空间",
+  "i.i.d.模态独立假设与真实跨模态相关性存在偏差，前9页未见系统敏感度分析",
+  "未在医学影像等具体高风险落地域做端到端验证，安全性主张仍偏基准层面"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "校准方法扎实，但未触及医学影像等高风险落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

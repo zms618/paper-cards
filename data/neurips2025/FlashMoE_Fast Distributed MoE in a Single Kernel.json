@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/FlashMoE_Fast Distributed MoE in a Single Kernel.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/FlashMoE_Fast Distributed MoE in a Single Kernel.pdf",
+ "title": "FlashMoE: Fast Distributed MoE in a Single Kernel",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "单核融合MoE提升GPU利用率，但内存开销大且训练未验证",
+ "innovations": [
+  "单核融合设计消除内核启动开销",
+  "设备发起的非阻塞通信和有效负载传输",
+  "基于actor模型的细粒度流水线调度"
+ ],
+ "method_framework": "FlashMoE将MoE计算和通信融合为单个持久GPU内核，采用actor模型将线程块分为处理器、订阅者和调度器角色，实现任务动态分配和非执行。",
+ "experiment_framework": "8 H100 GPU节点，MoE模型最多128专家，16K token序列，与Comet、FasterMoE、Megatron等基线对比延迟、利用率、吞吐量。",
+ "takeaways": [
+  "内核融合是减少分布式系统开销的有效方法",
+  "非对称张量布局可实现非阻塞通信"
+ ],
+ "weaknesses": [
+  "内存开销增加约4倍",
+  "仅评估前向传播，未考虑训练场景",
+  "FP32精度对比基线FP16不公平"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.375,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

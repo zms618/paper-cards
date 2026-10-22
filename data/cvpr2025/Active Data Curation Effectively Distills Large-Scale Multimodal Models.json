@@ -1,0 +1,44 @@
+{
+ "key": "cvpr2025/Active Data Curation Effectively Distills Large-Scale Multimodal Models.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Active Data Curation Effectively Distills Large-Scale Multimodal Models.pdf",
+ "title": "Active Data Curation Effectively Distills Large-Scale Multimodal Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.6
+ },
+ "one_line": "将数据筛选等价于隐式蒸馏，但理论局限与实验完整性不足。",
+ "innovations": [
+  "隐式蒸馏推导：把easy-reference采样分布 a(x)=exp(-L(x|θ_ref))/Z 代回期望，得到 E_easy-ref = (1/Z)·Σ_x KD[p(x)·y(x); q(x)]，即主动筛选在数据分布上等价于「以参考模型预测与真实标签的联合为目标」的蒸馏；两者噪声源独立（标签人工错、模型欠拟合），保留二者一致的目标实现互去噪，从而推翻「选择器必须不大于被训模型」的既有结论（Fig.4左：Ti学生配B参考、S配L、B配g，存在最优容量比）。",
+  "H-ACID 分解：learnability打分 A ∝ exp[L(·|θ)-L(·|θ_ref)] 可因式分解为 a_easy-ref · a_hard-learn，后者 ∝ exp[L(·|θ)] 按学生自身损失加权，即「隐式蒸馏 + 学生侧硬例挖掘」；实现上用n轮blocked Gibbs在超大super-batch（f=0.8→B=163840）里逐块条件打分联合抽样，最终按acquisition选子批。",
+  "统一目标 ACED：L_full = L_contrastive[BCE] + λ·L_dist[BKD]，两个子批可分别用ACID/IID抽样，Tab.1列出IID-Baseline/Softmax-KD/I-ACID/H-ACID/ACED-IIDistill/ACED-ACIDistill六种实例化；并证明二者互补（ACID 与 KD 吸收的知识正交）。",
+  "StableEval：用同一预训练配置重复跑估每个评测的跨种子标准差（0.15%~12.5%），再按「平均波动 std=√(Σvar/N²)」随N递增先降后升的拐点离散选子集，得到27个稳定评测集。"
+ ],
+ "method_framework": "每步从DataComp-1B取super-batch S=|b/(1-f)|；用预训练参考模型（可远大于学生）算easy-ref或learnability分数，blocked Gibbs迭代n轮抽出一个子批既跑对比损失又跑对比蒸馏损失；ACED用两个子批分别承担BCE与KD，λ∈{0.5,1,2}。",
+ "experiment_framework": "学生ViT-Ti/Ti、ViT-S/BERT-S（及B规模），参考/教师扫Ti→g六档、四个预训练数据集（WebLI-curated++/WebLI-1B/LAION-400M/DataComp-1B）；27个zero-shot分类+图文检索（StableEval）基准，测ImageNet zero-shot top-1 vs inference GFLOPs的帕累托前沿。",
+ "takeaways": [
+  "把「数据筛选」的采样权重写成对损失的指数形式后，可以解析地还原成加权重蒸餾目标——这套推导适用于任何对比/分类损失，可迁移到其它蒸馏或数据选择场景。",
+  "「用更大模型当数据选择器」在隐式蒸馏视角下是自然的，且存在最优师生容量比（不是越大越好），给超参选择提供依据。",
+  "StableEval 的「按跨种子标准差从低到高排序、找平均波动最优拐点」的评测集构建方法，可直接复用到任何多指标方法对比，避免拿高方差评测刷分数。"
+ ],
+ "weaknesses": [
+  "核心等式(4)(5)仅在softmax对比损失+easy-reference/learnability分解下成立（正文明说见Appendix C），而他们默认用的是sigmoid(SigLIP)损失，sigmoid变体与feature-matching KD无法套用同一结论，理论通用性受限。",
+  "ACED-IIDistill的effective batch size是2b（Tab.1），意味着同等步数下每步算力与IID/Softmax-KD基线不同；文章靠附录里的归一化和「低7%过滤/预算」来对齐，正文未见完整算力对齐说明，效率结论的公平性存疑。",
+  "f=0.8、λ、学习率、3B samples seen等超参是在单一预算下联合调出来的，Fig.4-5的scaling曲线都跑在同一固定配置上，缺少对过滤比f本身的消融。",
+  "正文截断在Fig.5（ACID vs KD 的三个对比图）之后，ACED在27个下游任务上的最终结果表、以及「ACID+显式KD互补」的完整数值不可复核。",
+  "除StableEval的评测波动分析外，各模型的最终性能没有多种子方差报告，跨方法的小幅领先（多数在1%~3%）无法判断显著性。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "数据筛选方法与可靠性主线有交点，但理论局限与实验完整性不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

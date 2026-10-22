@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/ConceptSplit_Decoupled Multi-Concept Personalization of Diffusion Models via Token-wise Adaptation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/ConceptSplit_Decoupled Multi-Concept Personalization of Diffusion Models via Token-wise Adaptation.pdf",
+ "title": "ConceptSplit Decoupled Multi-Concept Personalization of Diffusion Models via Token-wise Adaptation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "Token值优化与注意力解耦实现扩散模型多概念个性化",
+ "innovations": [
+  "Token-wise Value Adaptation (ToVA)避免合并适配器",
+  "Latent Optimization for Disentangled Attention (LODA)解耦注意力",
+  "保留token-attention绑定能力的同时防止概念混合"
+ ],
+ "method_framework": "ConceptSplit包含ToVA和LODA两个组件：ToVA仅训练交叉注意力中的值投影，避免合并适配器；LOA通过优化潜在空间分离注意力分布，然后固定注意力以保持解耦状态。",
+ "experiment_framework": "使用TA、C-IA、D-IA和GenEval指标，在单对象和多对象场景下与DreamBooth、Textual Inversion等基线比较，评估概念分离和图像质量。",
+ "takeaways": [
+  "仅修改值投影而非键投影可保持token-attention绑定能力",
+  "两阶段潜在优化策略（语义阶段优化+感知阶段固定）平衡了解耦与图像质量"
+ ],
+ "weaknesses": [
+  "多概念场景下GenEval分数仍有提升空间",
+  "LODA的超参数选择可能影响最终效果"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "扩散模型个性化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

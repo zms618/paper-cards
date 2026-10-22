@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RETRO Optimizing LLMS Reasoning-Intensive Document Retrieval.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RETRO Optimizing LLMS Reasoning-Intensive Document Retrieval.pdf",
+ "title": "Retro*: Optimizing LLMs for Reasoning-Intensive Document Retrieval",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "评分规则+分数集成+双奖励RL优化文档检索，但泛化性验证不足",
+ "innovations": [
+  "提出基于评分规则（rubric）的相关性打分机制，实现逐文档点wise推理和可解释的绝对相关性分数",
+  "支持测试时扩展：生成多条推理轨迹并按分数相似性集成，获得更稳定可靠的相关性估计",
+  "设计双复合奖励RL算法：文档内奖励（准确打分）+文档间奖励（有效区分相关/不相关文档）"
+ ],
+ "method_framework": "Retro*对每个查询-文档对进行逐点推理，基于显式定义的评分规则输出细粒度可解释相关性分数。支持并行处理候选文档（pointwise而非listwise）。测试时可生成多条推理轨迹，按分数相似性集成得到更可靠估计。RL训练用文档内和文档间双奖励，分别优化打分准确性和区分能力。",
+ "experiment_framework": "在BRIGHT基准上评测；对比现有推理增强IR方法；报告检索精度和相关性打分准确性；验证测试时扩展和并行处理效率；分析双奖励各自贡献。",
+ "takeaways": [
+  "基于评分规则的点wise相关性打分可同时支持相关性测量和重排序两种应用",
+  "多条推理轨迹的分数集成可提升相关性估计的可靠性",
+  "文档内+文档间双奖励可同时优化打分准确性和区分能力"
+ ],
+ "weaknesses": [
+  "前9页仅提及BRIGHT一个主要基准，跨域泛化性验证不充分",
+  "点wise推理虽支持并行，但对大规模候选集的计算成本仍高于嵌入检索",
+  "评分规则的设计依赖人工定义，其质量和通用性对最终效果的影响未充分消融"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "双奖励RL优化文档检索，但泛化性验证不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

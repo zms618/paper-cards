@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Split Gibbs Discrete Diffusion Posterior Sampling.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Split Gibbs Discrete Diffusion Posterior Sampling.pdf",
+ "title": "Split Gibbs Discrete Diffusion Posterior Sampling",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6,
+  "overall": 6.5
+ },
+ "one_line": "Split Gibbs离散扩散后验采样，解决离散状态空间采样问题",
+ "innovations": [
+  "提出SGDD算法，基于split Gibbs采样解决离散扩散模型后验采样",
+  "设计适合离散扩散模型的正则化势函数，确保收敛到目标后验分布",
+  "提供严格的收敛性理论保证，考虑分数函数不完美和离散化误差"
+ ],
+ "method_framework": "SGDD算法通过交替进行似然采样步骤和先验采样步骤，引入辅助变量z和正则化势函数D(x,z;η)，随着正则化强度η趋近于零，变量x和z收敛到目标后验分布。",
+ "experiment_framework": "在合成数据、DNA序列设计、离散图像逆问题和音乐填充任务上评估，使用Hellinger距离、PSNR、预测活性等指标，与DPS、SVDD-PM、SMC等方法对比。",
+ "takeaways": [
+  "split Gibbs采样框架适用于离散扩散模型的后验采样，无需梯度信息",
+  "正则化势函数的设计对离散空间的后验采样至关重要",
+  "理论分析考虑了分数函数不完美和离散化误差的影响"
+ ],
+ "weaknesses": [
+  "随着维度增加，SGDD也出现轻微偏离真实后验分布的情况",
+  "实验中仅使用了简单的离散扩散模型，未探索更复杂的离散扩散架构"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Boosting Multimodal Learning via Disentangled Gradient Learning.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Boosting Multimodal Learning via Disentangled Gradient Learning.pdf",
+ "title": "Boosting Multimodal Learning via Disentangled Gradient Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "解耦梯度缓解多模态优化冲突，但任务验证有限",
+ "innovations": [
+  "揭示多模态学习中模态编码器与融合模块的优化冲突问题",
+  "提出解耦梯度学习(DGL)框架分离模态编码器和融合模块的优化过程",
+  "通过模态dropout技术实现无参数共享的独立单模态损失计算"
+ ],
+ "method_framework": "DGL通过截断多模态损失向模态编码器的梯度传播，并用独立单模态损失替换，同时移除单模态损失向融合模块的梯度，消除优化冲突",
+ "experiment_framework": "在CREMA-D、Kinetics-Sounds、VGGSound等数据集上与OGM、AGM、PMR等基线方法对比，使用准确率作为指标",
+ "takeaways": [
+  "梯度解耦可有效解决多模态模型中的优化冲突问题",
+  "模态dropout技术是一种简洁有效的实现单模态损失计算的方法"
+ ],
+ "weaknesses": [
+  "仅验证了在分类任务上的有效性，未在更复杂任务上验证",
+  "未充分探讨不同融合策略下DGL的泛化能力"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态优化冲突解决，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

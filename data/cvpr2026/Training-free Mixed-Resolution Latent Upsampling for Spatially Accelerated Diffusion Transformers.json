@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Training-free Mixed-Resolution Latent Upsampling for Spatially Accelerated Diffusion Transformers.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Training-free Mixed-Resolution Latent Upsampling for Spatially Accelerated Diffusion Transformers.pdf",
+ "title": "Training-free Mixed-Resolution Latent Upsampling for Spatially Accelerated Diffusion Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "RALU通过混合分辨率潜在上采样实现DiTs空间加速，但依赖边缘检测且NT-Matching开销大",
+ "innovations": [
+  "区域自适应潜在上采样策略",
+  "噪声和时间步匹配(NT-Matching)技术",
+  "与时间加速方法结合实现15.9倍加速"
+ ],
+ "method_framework": "RALU采用三阶段处理：低分辨率初始去噪、边缘区域早期上采样、全分辨率最终细化，通过NT-Matching解决分布失配问题",
+ "experiment_framework": "在FLUX-1.dev和Stable Diffusion 3上评估，使用ImageReward、CLIP-IQA、NIQE等指标，与Bottleneck等基线对比",
+ "takeaways": [
+  "边缘区域早期上采样可避免混叠伪影",
+  "噪声和时间步匹配对保持生成质量至关重要",
+  "空间与时间加速方法可互补结合"
+ ],
+ "weaknesses": [
+  "方法依赖边缘检测，可能对复杂场景效果有限",
+  "NT-Matching计算开销较大",
+  "仅适用于特定扩散模型架构"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "空间加速技术不直接关联可靠性主线，但方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

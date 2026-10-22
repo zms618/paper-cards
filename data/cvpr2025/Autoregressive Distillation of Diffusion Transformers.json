@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Autoregressive Distillation of Diffusion Transformers.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Autoregressive Distillation of Diffusion Transformers.pdf",
+ "title": "Autoregressive Distillation of Diffusion Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "DiT修改版用历史轨迹预测未来步骤，减少扩散采样步数",
+ "innovations": [
+  "利用ODE历史轨迹预测未来步骤，减少暴露偏差",
+  "在transformer中添加token级时间嵌入和块级因果注意力掩码",
+  "仅在较低层使用历史轨迹引入归纳偏置"
+ ],
+ "method_framework": "修改DiT架构，添加token级时间嵌入标记轨迹历史，使用块级因果注意力掩码，仅在N层使用历史轨迹作为归纳偏置",
+ "experiment_framework": "ImageNet-256类别条件生成和T2I合成，对比FID、IS、Precision/Recall等指标，与基线方法(Step Distillation)和公开模型比较",
+ "takeaways": [
+  "历史轨迹作为粗粒度信息源能有效减少累积误差",
+  "仅在较低层使用历史轨迹可平衡性能与效率",
+  "结合判别器损失可进一步提升细节质量"
+ ],
+ "weaknesses": [
+  "方法计算复杂度略高于基线(1.1% FLOPs增加)",
+  "历史轨迹存储需要更多内存",
+  "对长文本提示的生成质量验证不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型加速技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

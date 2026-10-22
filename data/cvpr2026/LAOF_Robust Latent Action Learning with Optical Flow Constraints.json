@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/LAOF_Robust Latent Action Learning with Optical Flow Constraints.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/LAOF_Robust Latent Action Learning with Optical Flow Constraints.pdf",
+ "title": "LAOF Robust Latent Action Learning with Optical Flow Constraints",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "光流约束增强潜在动作学习，减少标签依赖",
+ "innovations": [
+  "引入光流作为伪监督信号，提供物理运动约束",
+  "设计专门的流解码器直接映射潜在动作为光流",
+  "提出LAOF-Action方法，结合光流约束和稀疏动作监督",
+  "自适应选择全局光流或对象中心光流作为监督信号"
+ ],
+ "method_framework": "LAOF框架结合逆动力学模型、前向动力学模型和流解码器，通过光流约束和状态重建损失联合优化，学习对干扰鲁棒的潜在动作表示",
+ "experiment_framework": "在LIBERO(模仿学习)和PROCGEN(强化学习)上评估，对比连续/离散表示，测试不同动作标签比例下的性能，与LAPO、CoMo、LAOM-Action等方法比较",
+ "takeaways": [
+  "光流约束能有效提升潜在动作表示质量，减少对动作标签的依赖",
+  "连续潜在动作表示在下游任务中表现优于离散表示",
+  "对象中心光流处理动态干扰物场景的有效策略"
+ ],
+ "weaknesses": [
+  "光流估计可能存在误差，影响监督信号质量",
+  "方法依赖预训练的光流模型，增加了系统复杂性",
+  "在极端低标签比例(1%)下，虽然表现良好但仍有提升空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "光流约束增强潜在动作学习，减少标签依赖",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

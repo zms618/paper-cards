@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/GRAM_A Generative Foundation Reward Model for Reward Generalization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/GRAM_A Generative Foundation Reward Model for Reward Generalization.pdf",
+ "title": "GRAM: A Generative Foundation Reward Model for Reward Generalization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "生成式奖励模型预训练+微调，跨任务泛化但依赖代理任务构造",
+ "innovations": [
+  "提出生成式奖励模型：先大规模无监督学习预训练、再监督微调，同时利用无标签与有标签数据",
+  "证明标签平滑实际上等价于优化正则化的成对排序损失，在统一视角下连接生成式与判别式训练目标",
+  "得到基础奖励模型GRAM，几乎无需再微调即可迁移到响应排序、RLHF、任务自适应等多类任务"
+ ],
+ "method_framework": "受LLM生成式预训练启发，把奖励模型建模为生成模型：先用大规模无标签数据做生成式预训练，再用少量有标签偏好数据微调。理论上证明所用标签平滑等价于带正则的成对排序损失，从而把生成式与判别式奖励训练纳入同一目标类，提升奖励模型的跨任务泛化。",
+ "experiment_framework": "在响应排序、RLHF、微调式任务自适应等多类任务上评测GRAM，对比多个强基线奖励模型；报告排序正确率、对齐后生成性能等，验证跨任务泛化。",
+ "takeaways": [
+  "奖励模型可像LLM一样先无监督预训练再微调，显著降低对标注偏好数据的依赖",
+  "标签平滑与正则成对排序损失等价，统一了生成/判别奖励训练视角",
+  "GRAM作为基础奖励模型可少微调甚至零微调迁移到多任务"
+ ],
+ "weaknesses": [
+  "无监督预训练奖励信号的构造依赖代理任务，可能引入偏差",
+  "偏英文/通用对话任务，未覆盖医学影像等高风险域奖励",
+  "前9页内对长推理过程奖励(process-level)与结果奖励的区分分析有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Direct Prediction Set Minimization via Bilevel Conformal Classifier Training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Direct Prediction Set Minimization via Bilevel Conformal Classifier Training.pdf",
+ "title": "Direct Prediction Set Minimization via Bilevel Conformal Classifier Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "双层优化共形分类器，缩小预测集20%但医学验证不足",
+ "innovations": [
+  "将共形原则直接融入深度分类器训练，以双层优化显式最小化预测集大小，而非仅事后校准",
+  "核心洞见：以上层最小化依赖于所学分位数(下层)的预测集大小度量，避免随机性分位数估计的误差",
+  "给出O(1/√n)的学习界，优于既有基于随机近似分位数方法的Ω(1/s)界(s≪√n)"
+ ],
+ "method_framework": "共形预测给出覆盖率保证但预测集常过大；DPSM将其写成双层问题：内层学习一致性分数的分位数阈值，外层直接优化以该分位数为条件的预测集大小度量；用提出的DPSM算法迭代求解，在保持有限样本覆盖率保证的同时收紧预测集，使医生/人机协作时只需在小候选集中抉择。",
+ "experiment_framework": "在多个基准数据集与深度模型上，与最佳共形训练基线比较，以预测集大小下降百分比与覆盖率为准；报告集大小平均降低20.46%并验证理论界。",
+ "takeaways": [
+  "把共形校准纳入训练的双层优化可在不牺牲覆盖率的前提下把预测集缩小约20%",
+  "直接最小化预测集大小并以所学分位数为条件，避免了随机分位数估计的O(1/s)误差，达到O(1/√n)学习界"
+ ],
+ "weaknesses": [
+  "双层优化训练成本与稳定性更高，分位数内层估计的实际收敛需额外工程",
+  "实验以图像/通用分类基准为主，医学等高风险域仅作为动机举例，未做专门医学验证",
+  "仅依据前9页阅读，完整数据集表与覆盖率-效率权衡曲线未完全覆盖"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

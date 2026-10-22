@@ -1,0 +1,41 @@
+{
+ "title": "Task Tokens: A Flexible Approach to Adapting Behavior Foundation Models",
+ "one_line": "冻结BFM训练任务token，参数减至1/125但需专用tokenizer与RL",
+ "innovations": [
+  "提出Task Tokens：在不改动原始BFM的前提下训练任务专用编码器(tokenizer)，将任务目标编码为token注入BFM",
+  "实现混合控制：用户用高层目标提供先验，同时用RL学习任务专用embedding优化稠密奖励，兼顾提示工程与奖励设计",
+  "相比标准基线每任务可训练参数减少至1/125、收敛提速最高6倍，且保留BFM零样本泛化能力"
+ ],
+ "method_framework": "以Goal-Conditioned BFM(如MaskedMimic)为基础。用户高层目标经既有编码器编码为先验token；另训练一个小型任务专用tokenizer，通过RL学习针对稠密奖励的任务embedding，叠加在BFM之上。原始BFM权重冻结，仅训练任务tokenizer。",
+ "experiment_framework": "在人形机器人控制多任务上评测，含分布外(OOD)场景；对比全参数微调/标准适配基线；指标为成功率/奖励收敛速度/可训练参数量；并验证与其他prompting模态的兼容性。",
+ "takeaways": [
+  "冻结BFM仅训练任务tokenizer可极大降低每任务适配成本（参数减少至1/125、收敛快6倍）",
+  "用户目标先验与RL稠密奖励embedding结合，比单独任一方式都能获得更精确有效的行为",
+  "保留原BFM不变使其零样本泛化与既有编码器可复用"
+ ],
+ "weaknesses": [
+  "主要在仿真人形控制任务验证，真实机器人迁移与 sim-to-real 证据缺失",
+  "每任务仍需一个专用tokenizer与RL训练，多任务累积的存储/训练成本未充分讨论",
+  "OOD泛化的定量边界与失败模式分析有限"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Task Tokens A Flexible Approach To Adapting Behavior Foundation Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Task Tokens A Flexible Approach To Adapting Behavior Foundation Models.pdf",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "raw_overall": 5.55,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅占可靠性方法轴，无落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

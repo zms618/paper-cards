@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/TANGO_Clustering with Typicality-Aware Nonlocal Mode-Seeking and Graph-Cut Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/TANGO_Clustering with Typicality-Aware Nonlocal Mode-Seeking and Graph-Cut Optimization.pdf",
+ "title": "TANGO: Clustering with Typicality-Aware Nonlocal Mode-Seeking and Graph-Cut Optimization",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "全局典型性图割聚类，但未解决深度聚类适用性与复杂度问题。",
+ "innovations": [
+  "提出 typicality：把局部定义的密度上升依赖放到全局视角，量化一个点成为模态（聚类中心）的置信度，缓解现有方法过度依赖局部特征、需逐例调阈值的问题。",
+  "设计有效高效的模态识别算法，利用全局视角的典型性检测模态，避免把离群点误判为模态。",
+  "结合改进的路径相似性做图割（graph-cut）聚合最终簇，并给出一定理论分析。"
+ ],
+ "method_framework": "密度上升模式搜寻方法（Mean Shift/Quick Shift/DPC）把每个点连到更高密度近邻，再靠阈值断连找模态。TANGO 先从全局结构计算每点的 typicality 来判断其是否真为模态（而非局部高点/离群点），再在密度上升依赖图上用改进的基于路径的相似性做图割，把点聚成最终簇，减少人工阈值干预。",
+ "experiment_framework": "在若干合成数据集与大量真实数据集上，对比 Mean Shift、Quick Shift、DPC 等密度聚类方法；指标为聚类精度。",
+ "takeaways": [
+  "全局典型性有效纠正了局部方法把离群点误判为模态的问题。",
+  "降低了对逐数据集阈值/人工干预的依赖。",
+  "在合成与真实数据上优于代表性密度聚类方法。"
+ ],
+ "weaknesses": [
+  "属于无监督聚类算法，与医学影像/多模态推理可靠性主线无关，relevance 受限。",
+  "全局 typicality 的计算需遍历依赖结构，大规模高维数据上的复杂度未充分量化。",
+  "与深度表征聚类（深度嵌入+kmeans 类）的对比缺失，现代高维特征场景下的适用性不明。"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

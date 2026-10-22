@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Circumventing Backdoor Space via Weight Symmetry.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Circumventing Backdoor Space via Weight Symmetry.pdf",
+ "title": "Circumventing Backdoor Space via Weight Symmetry",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.75
+ },
+ "one_line": "利用权重对称性绕过后门空间，但依赖少量干净样本且落地域有限。",
+ "innovations": [
+  "提出基于权重对称连通性的后门防御思路，通过连接干净/污染权重路径绕开后门子空间",
+  "设计两阶段TSC算法，可在小比例干净样本下净化模型",
+  "将后门防御从监督学习拓展到SimCLR自监督与图文对比学习等多范式，无需特定训练流程"
+ ],
+ "method_framework": "利用网络权重空间的对称性：后门行为对应权重中被植入的特定连通区域。TSC先在污染模型与少量干净样本间建立权重连通性分析，再两阶段地沿对称路径绕开/切断后门连通分量，保留干净的正常决策路径，从而在不依赖大量标注与专用训练流程下得到净化后的最终模型。",
+ "experiment_framework": "在监督分类、SimCLR自监督、Image-on-Text图文对比等多类范式下植入多种后门攻击，报告攻击成功率(ASR)下降与干净数据准确率(clean accuracy)保持，与现有后门净化/防御方法对比；正文前9页给出方法框架，具体数据集与攻击类型见实验节。",
+ "takeaways": [
+  "后门行为对应权重空间中可被识别的特定连通子区域，可通过权重对称性加以定位",
+  "两阶段对称连通性可在仅用少量干净样本时同时压低ASR并保持干净精度",
+  "该防御范式可跨监督、自监督与图文对比学习迁移，缓解既有防御依赖标注/专用训练流程的局限"
+ ],
+ "weaknesses": [
+  "仅落在安全/鲁棒侧，未涉及医学影像或多模态大模型推理落地域",
+  "依赖小比例干净样本可用性，对完全无干净数据的极难设定未充分评估",
+  "前9页以方法与范式迁移示意为主，攻击强度与消融的完整对比需结合全文(共37页)判断"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.88,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

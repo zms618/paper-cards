@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Counterfactual Contrastive Learning with Normalizing Flows for Robust Treatment Effect Estimation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Counterfactual Contrastive Learning with Normalizing Flows for Robust Treatment Effect Estimation.pdf",
+ "title": "Counterfactual Contrastive Learning with Normalizing Flows for Robust Treatment Effect Estimation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "归一化流生成反事实样本，对比学习提升治疗效应估计稳健性",
+ "innovations": [
+  "用归一化流生成微分同胚反事实：在流形上做最小修改翻转治疗标签，避免对抗样本式的无意义扰动",
+  "推导出ITE估计误差界，将误差分解为factual预测误差和factual-counterfactual表示距离两部分",
+  "对比学习损失实现样本级对齐：同类样本拉近、跨类样本推远，解决边界样本对齐不足的问题"
+ ],
+ "method_framework": "FCCL三模块：(1)编码器提取协变量表示；(2)归一化流将表示映射到隐空间，在隐空间中梯度上升生成反事实（翻转治疗标签且保持语义相似），通过流映射回数据流形；(3)对比学习模块对齐factual-counterfactual对的表示，同时分离不同治疗组的样本。最后用两个独立头估计y1和y0，差值即为ITE。",
+ "experiment_framework": "在IHDP、Jobs、Twins等标准ITE基准上评测；基线包括CFRNet、TARNet、GANGITE、SCIGAN等13个SOTA方法；指标为PEHE(个体效应估计误差)和ATE(平均效应误差)；消融分析各模块贡献。",
+ "takeaways": [
+  "FCCL在IHDP上比CFR类方法误差降低25%，比对抗训练类方法降低33%",
+  "微分同胚反事实比简单噪声注入生成的反事实更真实，显著提升边界样本的估计精度",
+  "样本级对比对齐比全局MMD对齐更能捕捉个体异质性"
+ ],
+ "weaknesses": [
+  "归一化流的训练需要额外计算开销，在大规模数据集上效率未充分验证",
+  "仅在合成/半合成基准上验证，真实临床数据的效果未知",
+  "微分同胚反事实的'最小修改'准则依赖分类器准确性，分类器偏差会传递到反事实生成"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

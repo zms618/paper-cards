@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Strengthen Out-of-Distribution Detection Capability with Progressive Self-Knowledge Distillation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Strengthen Out-of-Distribution Detection Capability with Progressive Self-Knowledge Distillation.pdf",
+ "title": "Strengthen Out-of-Distribution Detection Capability with Progressive Self-Knowledge Distillation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.0
+ },
+ "one_line": "PSKD用历史自教师蒸馏不确定性，提升OOD检测但依赖启发式选择",
+ "innovations": [
+  "针对训练后期记忆非典型样本损害 OOD 检测、直接遗忘又牺牲 ID 泛化的矛盾，提出自知识蒸馏折中框架",
+  "用伪离群点从训练历史中自适应挑选 self-teacher，构造不确定性嵌入的软目标",
+  "在特征与响应两个层级做多级蒸馏，且方法与现有 OOD 方法正交、可作为插件叠加"
+ ],
+ "method_framework": "训练过程中，依据伪离群点从历史 checkpoint 里自适应选出一个 self-teacher；用其输出构造带不确定性信息的蒸馏目标，逐级（特征层+响应层）蒸馏给在线模型，使模型既学习典型样本又获得不确定性知识，从而兼顾 ID 泛化与 OOD 拒识。",
+ "experiment_framework": "以 CIFAR-10/100 为 ID，近邻 OOD（CIFAR-100）与远邻 OOD（SVHN、Textures）为评测集；指标 FPR95、AUROC 与 ID 测试精度；对比 MSP/ODIN/Energy 及训练正则类方法，并验证作为插件与现有方法叠加的增益。",
+ "takeaways": [
+  "对非典型样本应“学习”而非简单遗忘，自知识蒸馏可兼得 ID 精度与不确定性估计",
+  "从训练历史选自教师并做特征+响应多级蒸馏，能有效注入不确定性知识",
+  "方法正交可插拔，便于与主流 OOD 检测方法组合使用"
+ ],
+ "weaknesses": [
+  "实验主要在 CIFAR 系列小图，未见 ImageNet 级或医学影像等安全关键域验证",
+  "依赖伪离群点与历史 checkpoint 的启发式选择，选师失败时的鲁棒性未分析",
+  "相对现有 SOTA 的具体提升幅度在前 9 页内未给出完整数值表"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

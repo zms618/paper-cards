@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Efficient Robust Conformal Prediction via Lipschitz-Bounded Networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficient Robust Conformal Prediction via Lipschitz-Bounded Networks.pdf",
+ "title": "Efficient Robust Conformal Prediction via Lipschitz-Bounded Networks",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 7.0
+ },
+ "one_line": "修正CP定理错误，Lipsch网络实现O(1)鲁棒共形预测，ImageNet上集小9×快660×",
+ "innovations": [
+  "修正既有错误：指出Gendler et al.2022 Thm2与Zargarbashi2024 Prop5.1存在过拟合式数学错误(用同一Dcal既定qα又估覆盖率)，引入独立Deval拆分+二项校正估计量，给出对任意攻击函数h、所有ϵ>0同时成立的1-δ覆盖率界γ^-_m(ϵ)≤γh(ϵ)≤γ^+_m(ϵ)。",
+  "lip-rcp：利用1-Lipschitz网络(正交约束+重参数化)把保守/限制性共形分数界写为s(x,y)±Ln·Ls·ϵ，校准与推理均为O(1)常数时间(对比RSCP/CAS的O(nmc)、VRCP的solver开销)。",
+  "提出LAC-sigmoid分数s=1-σ((f(x)y-b)/T)，其Lipschitz常数Ls=1/(4T)可控；统一鲁棒校准与鲁棒推理(分位数平移等变)，无需VRCP的两套流程。"
+ ],
+ "method_framework": "Split CP：校准集Dcal上算非一致性分数Ri，取qα=分位数，预测集Cα={y:s(x,y)≤qα}。鲁棒CP需保守分数s(x,y)=inf_{x'∈Bϵ(x)}s(x',y)。lip-rcp：若f是Ln-Lipschitz、ψ(·,y)是Ls-Lipschitz，则|s(x',y)-s(x,y)|≤Ln·Ls·||x'-x||≤Ln·Ls·ϵ，故s(x,y)-LnLsϵ≤inf≤s(x,y)+LnLsϵ。用1-Lipschitz特征提取器+分类层使Ln=1。审计路径：在Deval上算保守/限制性集的经验覆盖率γm/γm，二项分布反解(Fm,p)得同时覆盖所有ϵ的界。",
+ "experiment_framework": "数据CIFAR-10/CIFAR-100/TinyImageNet/ImageNet(ResNet50)；模型1-Lipschitz(正交约束)；基线RSCP/CAS/VRCP-I/VRCP-C；指标鲁棒CP集大小、经验覆盖率、单样本时间；ncal=4750-15000、nmc=1024；25次随机拆分；对比CROWN形式验证界。",
+ "takeaways": [
+  "ImageNet@ϵ=0.02,α=0.1：lip-rcp集大小111(覆盖97.4%)、0.012s/样本；CAS集大小1000(覆盖100%)、7.92s/样本——集小9×、快660×，且VRCP因不可扩展无法跑ImageNet。",
+  "CIFAR/TinyImageNet上lip-rcp在同等覆盖(≈1-α)下鲁棒集一致小于RSCP/CAS/VRCP，且校准/推理开销近vanilla CP。",
+  "Lipschitz模型给出比CROWN形式验证更不悲观的最坏情况覆盖率界(因验证法在大网上界松)；对鲁棒网络做CP审计时小集合+错误保证兼得。"
+ ],
+ "weaknesses": [
+  "仅ℓ2扰动保证，作者自承不推广到ℓ∞/ℓ1；且依赖Lipschitz-by-design架构(非完全model-agnostic，需专用训练)，普通预训练模型无法直接用紧界。",
+  "全局Lipschitz界在大ϵ时保守性增大；高维输入下1-Lipschitz网络的干净精度损失未与普通模型对比充分，精度-鲁棒-集合大小权衡报告有限。",
+  "落地域为通用图像分类(CIFAR/ImageNet)，非主线医学影像/多模态大模型推理；但方法本身(鲁棒UQ/共形预测/对抗认证)落在可靠性核心，故relevance给7。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.98,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

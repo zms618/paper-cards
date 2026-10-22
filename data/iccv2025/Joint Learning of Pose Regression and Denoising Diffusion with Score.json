@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Joint Learning of Pose Regression and Denoising Diffusion with Score.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Joint Learning of Pose Regression and Denoising Diffusion with Score.pdf",
+ "title": "Joint Learning of Pose Regression and Denoising Diffusion with Score",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "联合姿态回归与扩散模型，通过时间依赖分数缩放加速训练",
+ "innovations": [
+  "联合学习策略：先预训练回归头再联合训练扩散模型",
+  "时间依赖分数缩放采样：平衡探索与利用，消除额外评估网络",
+  "单姿态推理实现高精度，避免多姿态聚合问题"
+ ],
+ "method_framework": "两阶段训练：先预训练编码器与回归头，再联合训练扩散模型；推理时使用时间依赖分数缩放引导单次采样",
+ "experiment_framework": "在REAL275、HouseCat6D和ROPE数据集上评估，使用mAP和VUS指标，对比训练收敛速度和推理效率",
+ "takeaways": [
+  "联合学习策略显著加速训练收敛",
+  "时间依赖分数缩放有效平衡多模态分布与高质量生成"
+ ],
+ "weaknesses": [
+  "仅依赖深度图像输入，未利用RGB信息",
+  "分数缩放策略的泛化性需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "姿态回归与扩散模型联合训练，无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

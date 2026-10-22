@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/L2DGS_Low-Light Dynamic Gaussian Splatting.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/L2DGS_Low-Light Dynamic Gaussian Splatting.pdf",
+ "title": "L2DGS Low-Light Dynamic Gaussian Splatting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "改进3D-GS处理低光动态场景，但创新性和证据有限",
+ "innovations": [
+  "将场景分解为视图和时间相关的照明与视图时间不变的反射率组件",
+  "提出OCD-Net建模时间强度变化和BAFs特征",
+  "引入BAFE-Net和SASR实现几何和光度感知的域变换",
+  "首个低光动态视频数据集L2DyV"
+ ],
+ "method_framework": "基于3D-GS框架，将每个高斯与照明和反射率关联，通过OCD-Net建模时间依赖性，使用BAFs和BAFE-Net实现域变换，结合SASR和SAR进行自监督训练",
+ "experiment_framework": "在合成和真实L2DyV数据集上评估，与Lumi-GS等基线比较，使用PSNR/SSIM等指标",
+ "takeaways": [
+  "前向建模策略优于逆重建方法",
+  "显式建模时间依赖性对动态场景重建至关重要",
+  "自监督方法无需真实光照参考"
+ ],
+ "weaknesses": [
+  "依赖运动场表示，可能对复杂运动建模不足",
+  "BAFE-Net仅在训练时使用，增加了训练复杂性",
+  "未充分讨论方法在极端低光条件下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "仅是3DGS改进，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

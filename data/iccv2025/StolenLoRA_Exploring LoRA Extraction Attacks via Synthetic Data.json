@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/StolenLoRA_Exploring LoRA Extraction Attacks via Synthetic Data.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/StolenLoRA_Exploring LoRA Extraction Attacks via Synthetic Data.pdf",
+ "title": "StolenLoRA Exploring LoRA Extraction Attacks via Synthetic Data",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "LLM生成数据辅助LoRA提取，防御机制验证不足",
+ "innovations": [
+  "提出LoRA提取攻击新方向",
+  "LLM驱动的Stable Diffusion合成高质量数据",
+  "基于分歧的半监督学习(DSL)策略提高攻击效率"
+ ],
+ "method_framework": "StolenLoRA包含数据合成和高效查询训练两阶段：利用LLM生成多样化提示，指导Stable Diffusion合成任务相关图像；通过DSL策略选择最有信息量的查询，迭代优化伪标签和模型参数。",
+ "experiment_framework": "在5个数据集(CUBS200/Caltech256/Indoor67/Food101/Flowers102)上评估，对比KnockoffNets/ActiveThief/DFME/E3基线，使用准确率和攻击成功率指标，测试相同和不同主干模型场景。",
+ "takeaways": [
+  "LLM驱动的数据合成可有效替代传统GAN和大规模数据集搜索",
+  "DSL策略显著提高攻击效率，特别是在跨主干模型场景下",
+  "LoRA模型的轻量化特性使其更易受到提取攻击"
+ ],
+ "weaknesses": [
+  "依赖LLM和Stable Diffusion的质量，可能受限于生成模型的局限性",
+  "防御机制仅初步探索，未充分验证有效性",
+  "实验主要在标准数据集上进行，实际部署场景的泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "模型攻击与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

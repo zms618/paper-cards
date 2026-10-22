@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unified Scene Understanding through Physical World Modeling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unified Scene Understanding through Physical World Modeling.pdf",
+ "title": "Unified 3D Scene Understanding through Physical World Modeling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "统一3D任务为概率图模型，零样本但计算成本高，与主线关联弱",
+ "innovations": [
+  "把深度估计/新视角合成/物体操作等多样3D任务统一进单一物理世界模型，任务从各自独立训练目标变为不同prompt/推理路径",
+  "将模型形式化为概率图模型，节点表示RGB、光流、相机位姿等多模态场景元素，任务由图上不同推理路径涌现(NVS←RGB+稠密流；操作←RGB+稀疏流；深度←RGB+相机条件)",
+  "支持可组合推理路径(如一边移开物体一边导航)，实现复杂几何推理，零样本超越专用基线"
+ ],
+ "method_framework": "现有3D理解各任务(depth/NVS/操作)孤立训练、无法共享表征。3WM把场景建模为概率图模型，节点是RGB、optical flow、camera pose等多模态元素；联合在所有数据集上训练，使表征扎根于物理场景。不同任务=图上不同条件推理路径：给RGB+稠密流prompt做NVS，RGB+稀疏流做物体操作，RGB+相机条件做深度估计；路径可自由组合，全部零样本无需任务专属微调。",
+ "experiment_framework": "在新视角合成(NVS)与3D物体操作基准上对比专用基线，指标为渲染质量/操作可控性；报告零样本(无需finetune)即达SOTA，并有精确可控性、强几何一致性与真实场景鲁棒性。",
+ "takeaways": [
+  "把多样3D任务统一为概率图上的条件推理路径，可跨任务迁移知识、零样本泛化到未专门优化的任务",
+  "统一联合训练能塑造扎根物理场景的表征，几何一致性优于碎片化专用系统",
+  "可组合推理路径支持复杂几何推理(移物+导航)，是走向通用视觉世界模型的一步"
+ ],
+ "weaknesses": [
+  "属3D视觉/世界模型方向，与本主线(可靠性×多模态推理/医学影像)无直接关联",
+  "概率图的推断(多模态条件)计算成本随节点/路径组合增长，实时性未量化",
+  "零样本超越专用基线的声明主要在NVS/操作，对极稀疏观测/大遮挡下的鲁棒边界正文前9页未展开"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "3D世界模型与可靠性主线无直接关联，属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

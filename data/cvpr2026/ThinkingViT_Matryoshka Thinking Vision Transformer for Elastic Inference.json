@@ -1,0 +1,36 @@
+{
+ "key": "cvpr2026/ThinkingViT_Matryoshka Thinking Vision Transformer for Elastic Inference.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ThinkingViT_Matryoshka Thinking Vision Transformer for Elastic Inference.pdf",
+ "title": "ThinkingViT Matryoshka Thinking Vision Transformer for Elastic Inference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "elevance": 5.5,
+  "evidence": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "嵌套ViT实现渐进式推理，但仅分类任务验证且延迟未解决",
+ "innovations": [
+  "渐进式思考机制动态调整计算量",
+  "Token Recycling特征融合提升后续推理性能",
+  "基于熵的早期终止实现自适应推理"
+ ],
+ "method_framework": "构建嵌套ViT架构，通过逐步激活更多注意力头实现渐进式推理，结合Token Recycling融合特征，基于熵阈值决定是否提前终止推理",
+ "experiment_framework": "ImageNet-1K数据集，对比MatFormer、HydraViT等基线，使用GMACs和吞吐量作为效率指标",
+ "takeaways": [
+  "渐进式推理比固定计算分配更高效",
+  "Token Recycling机制能有效提升后续推理性能",
+  "熵作为不确定性指标能有效指导早期终止"
+ ],
+ "weaknesses": [
+  "仅评估了图像分类任务，未在医学影像等特定领域验证",
+  "多阶段推理可能增加推理延迟，尽管减少了计算量"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

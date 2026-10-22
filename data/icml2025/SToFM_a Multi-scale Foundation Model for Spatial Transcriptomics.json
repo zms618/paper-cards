@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/SToFM_a Multi-scale Foundation Model for Spatial Transcriptomics.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SToFM_a Multi-scale Foundation Model for Spatial Transcriptomics.pdf",
+ "title": "SToFM: a Multi-scale Foundation Model for Spatial Transcriptomics",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "多尺度ST基础模型，迁移视觉方法到空间转录组",
+ "innovations": [
+  "提出多尺度ST建模范式：在同一切片上同时提取宏(组织形态)、微(细胞微环境)、基因(表达谱)三层信息并构造子切片",
+  "用SE(2)等变Transformer从子切片中捕获空间信息，得到高质量细胞表示",
+  "构建SToCorpus-88M——当时最大的高分辨率空间转录组预训练语料，支撑下游区域语义分割与细胞类型注释"
+ ],
+ "method_framework": "先对每个ST切片做多尺度信息抽取：宏尺度聚合组织形态，按细胞坐标切分出多个子切片捕获微尺度细胞间信息流，再叠加基因尺度表达谱；随后以SE(2)Transformer(对平移/旋转等变)从这些子切片学习统一的细胞表示；在自建88M语料上自监督预训练，迁移到组织区域分割、细胞类型注释等下游任务。",
+ "experiment_framework": "在SToCorpus-88M高分辨率ST语料上预训练；下游评估覆盖组织区域语义分割与细胞类型注释等任务；与现有ST/scRNA建模方法对比，验证多尺度建模的综合理解能力。",
+ "takeaways": [
+  "ST数据天然含宏-微-基因多尺度信息，显式分层抽取再融合能显著提升细胞表示质量",
+  "SE(2)等变Transformer适合建模近似2D点云的细胞空间分布",
+  "大规模ST语料预训练可跨组织迁移，在分割与注释上均取得强表现"
+ ],
+ "weaknesses": [
+  "多尺度子切片构造与88M语料构建的计算/存储成本高，复现门槛在正文前9页未量化",
+  "本质是视觉/点云基础模型方法在ST模态的迁移，等变Transformer与多尺度块均为既有构件，概念原创性中等",
+  "下游多为内部基准与自标注任务，跨物种/跨平台真实实验室数据的零样本泛化证据在前9页有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

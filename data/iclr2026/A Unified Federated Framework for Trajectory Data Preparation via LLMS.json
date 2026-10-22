@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Unified Federated Framework for Trajectory Data Preparation via LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Unified Federated Framework for Trajectory Data Preparation via LLMS.pdf",
+ "title": "A Unified Federated Framework for Trajectory Data Preparation via LLMS",
+ "scores": {
+  "novelty": 5,
+  "depth": 5,
+  "evidence": 4,
+  "relevance": 7.0,
+  "overall": 5.4
+ },
+ "one_line": "联邦LLM框架拼装三模块解决轨迹数据准备，隐私机制与实验证据不足。",
+ "innovations": [
+  "形式化「联邦轨迹数据准备 F-TDP」新问题：轨迹按行政区域纵向切分到各数据孤岛，跨域任务（如跨区缺失点填补）既不能共享原始轨迹，也需按匿名用户标识符对齐后由服务端 LLM 完成全局 TDP。",
+  "轨迹隐私自编码器 TPA：用 3 层 MLP（256 隐维、32 嵌入维）把每个时空点独立编码成 32 维嵌入，在保留速度/方向等时空依赖的同时脱敏；再用 Shamir 秘密共享的成对密钥掩码（i<j 加、i>j 减）做无中心聚合，使 Σ̃P=ΣP 成立（Thm 1），以此绕开 DP 加噪对轨迹时空相关性的破坏。",
+  "TKE 把文本 LLM 适配到 TDP：四元组轨迹提示（Task, Data, Information, Format）+ offsite-tuning 将服务端 LLM 尾部适配器分派给客户端 SLM + 按 LoRA 参数变化率分层概率采样只训前 m 比例层（Thm 2）+ 双向 KL（式 8/9）让 LLM 与 SLM 互传轨迹知识；FPO 再用 split learning 与交替冻结把客户端 TPA/SLM 与服务端 LLM 并行训练降通信。"
+ ],
+ "method_framework": "每个区域客户端只持有被行政边界切分的子轨迹：TPA 把每点独立编码为 32 维嵌入并以秘密共享掩码聚合参数（Thm 1）；TKE 用轨迹四元组提示、LLM 尾部适配器下派到客户端 SLM、按 LoRA 变化率概率选层与双向 KL 蒸馏传递轨迹知识；FPO 用分裂学习与交替冻结让客户端（TPA/SLM）与服务端（LLM）并行训练。",
+ "experiment_framework": "6 个真实轨迹数据集（GeoLife、Porto、T-Drive、Tencent、Gowalla、SHL）覆盖 10 类 TDP 任务，并按 seen（GeoLife 训练）/unseen（Porto、T-Drive、Tencent、Gowalla、SHL）区分；13 个 SOTA 基线，按数据清洗/匹配/标注/压缩/增强五类评测。",
+ "takeaways": [
+  "「跨区纵向切分轨迹 + 匿名标识符对齐 + 服务端全局 TDP」的问题设定，可迁移到任何按地理/机构分区的时空数据清洗场景。",
+  "用秘密共享成对掩码（一加一减抵消）替代 DP 加噪来保住时空相关性，是一个干净的做法，但必须自己补上嵌入/梯度反演的实测攻击面评估。",
+  "offsite-tuning 把服务端 LLM 尾部适配器下派到客户端 SLM 再回传聚合，配合按 LoRA 变化率选层，是端侧算力受限时做联邦微调的可复用骨架。"
+ ],
+ "weaknesses": [
+  "三个模块本质都是已知技术的拼装（Shamir 秘密共享、offsite-tuning、LoRA 稀疏化、split learning），Thm 1 只是「成对密钥一加一减抵消」的代数恒等式，Thm 2 的分层采样概率式（式 6）推理链在正文被整段省略（proof 留给附录），训练层选取仍由超参 m 加随机采样决定，全文无收敛性或通信-精度代价分析。",
+  "隐私声明（附录 C.2「解码器保持私有即不可重构原始轨迹」）建立在编码器/解码器不公开这一假设上，而解码器本就在客户端、编码器权重经秘密共享参与聚合；正文只排除 DP、未给出对 TPA 嵌入做嵌入/梯度反演（论文自己引用了 Chen et al. 2024c、Zhu et al. 2019）的实测结果。",
+  "正文在 §4.3 中途截断，第 5 节全部结果表、5.2 节 TPA 开销消融与参数敏感性均不可见，「超过 13 个 SOTA 基线」的幅度、效率、可扩展性及 unseen 任务上的跨分布泛化都没有正文证据；TPA 的 32 维嵌入、LoRA sparse-tuning 的 m 等超参也只见一次取值、无敏感性分析。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "联邦轨迹数据准备触及隐私鲁棒主线，但隐私机制证据不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

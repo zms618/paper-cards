@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning to Quantize for Training Vector-Quantized Networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning to Quantize for Training Vector-Quantized Networks.pdf",
+ "title": "Learning to Quantize for Training Vector-Quantized Networks",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "元量化框架分离码本与网络优化，但计算成本高且验证有限。",
+ "innovations": [
+  "提出元量化（MQ）框架：将码本训练建模为双层优化问题——内层训练编码器-解码器，外层超网络学习码本，实现码本与网络的协同优化",
+  "通过超网络（hyper-net）生成码本，使码本学习不依赖直通估计器（STE）等近似梯度",
+  "在生成任务上展示比传统VQVAE训练方法更优的生成性能"
+ ],
+ "method_framework": "双层优化结构：内层——固定码本ψ，训练编码器φ和解码器θ以最小化重构损失；外层——超网络根据编码器-解码器的状态生成/更新码本ψ，使码本本身也可通过梯度下降优化。这种分离避免了离散量化操作导致的梯度传播问题，让码本学习从启发式（EMA更新）升级为基于元学习的系统化优化。",
+ "experiment_framework": "图像生成任务（基于VQVAE架构）；对比基线包括标准VQVAE（STE+EMA码本更新）及变体；指标为生成质量（FID等）和重构质量。",
+ "takeaways": [
+  "码本优化和自编码器优化可以解耦为双层问题，比端到端联合训练更稳定",
+  "超网络生成码本的方式比EMA更新或STE直通估计更有效",
+  "元学习视角为VQ网络训练提供了新的优化范式"
+ ],
+ "weaknesses": [
+  "双层优化的计算成本约为标准VQVAE的2倍（需要内外层交替）",
+  "仅在图像生成上验证，在语音、文本等其他VQ应用场景的效果未知",
+  "与近期大模型tokenizer（如NeurIPS/ICML 2024的VQ-tokenizer工作）的对比缺失"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.55,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

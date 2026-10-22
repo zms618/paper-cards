@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Widesearch_Benchmarking Agentic Broad Info-Seeking.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Widesearch_Benchmarking Agentic Broad Info-Seeking.pdf",
+ "title": "Widesearch: Benchmarking Agentic Broad Info-Seeking",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "构建广域信息收集基准，发现搜索智能体成功率极低。",
+ "innovations": [
+  "针对长期未被评测的广域信息收集(wide-context collection)任务，构建可靠性基准WideSearch",
+  "200道人工精选题(中英各100)覆盖15+真实用户查询域，每任务需收集大量可逐条客观核验的原子信息并组织成结构化输出",
+  "五阶段质量控制流程保证难度/完整性/可核验性；评测10+SOTA智能体搜索系统(单智能体/多智能体/端到端商用)"
+ ],
+ "method_framework": "每题要求智能体收集一整套可客观逐条验证的原子信息(如某类全部实体的清单)并结构化整理；成功率按完整收集且正确的比例计算；同时给出人工在充分时间下的上限作为对照。",
+ "experiment_framework": "评测10+SOTA agentic search系统；指标为整体成功率(完整正确收集)；报告多数系统近0%、最佳仅7%，而多名人工交叉验证在充分时间下接近100%。",
+ "takeaways": [
+  "现有搜索智能体在大规模广域信息寻求上存在根本性缺陷(最佳仅7%)，远落后于人工",
+  "任务可靠性瓶颈在重复、全面收集而非认知复杂度，是值得专门研究的方向",
+  "人工近100%说明任务可解，差距在于智能体的系统性遗漏/ hallucination"
+ ],
+ "weaknesses": [
+  "成功率按全或无计算，对部分正确(召回了大部分原子信息)缺乏分级度量",
+  "最佳7%的极低分可能与时间/调用预算设置敏感，预算充裕后能否改善未充分扫描",
+  "原子信息清单的标准答案在长尾实体上可能本身不全，可核验性依赖人工标准答案的完备性"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "信息收集可靠性基准，但未触及医学/多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

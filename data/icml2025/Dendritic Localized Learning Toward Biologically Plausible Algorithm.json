@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Dendritic Localized Learning Toward Biologically Plausible Algorithm.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Dendritic Localized Learning Toward Biologically Plausible Algorithm.pdf",
+ "title": "Dendritic Localized Learning: Toward Biologically Plausible Algorithm",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6
+ },
+ "one_line": "树突局部学习算法满足生物可塑三判据，但未在大模型验证。",
+ "innovations": [
+  "系统评估反馈对齐、局部损失、预测编码、Hebbian 等现有生物可塑学习算法在三判据上的不足。",
+  "提出 DLL，借助树突局部计算在单层内同时解决权重对称、全局误差与双阶段三大问题。",
+  "在保持三判据的前提下达到同类生物可塑算法中的最优性能，并跨 MLP/CNN/RNN 泛化。"
+ ],
+ "method_framework": "借鉴锥体神经元树突把近端/远端输入分区处理的生物机制，用局部的树突计算替代全局反向传播：层内仅依据局部信号（前向激活与局部反馈）更新权重，避免精确权重转置、全局误差回传与前后向双阶段，从而在生物可塑条件下完成多层网络训练。",
+ "experiment_framework": "在 MLP、CNN、RNN 上与反馈对齐、预测编码、目标传播、Hebbian 等生物可塑算法对比分类性能；并逐条核验是否满足权重对称/全局误差/双阶段三判据；非大模型基准。",
+ "takeaways": [
+  "DLL 是少数同时满足三判据且性能不显著劣化的生物可塑学习算法。",
+  "树突局部机制为摆脱对全局反向传播的依赖提供了可行路径。",
+  "该类方法跨多种架构通用，有一定可扩展性。"
+ ],
+ "weaknesses": [
+  "与标准反向传播在大规模视觉/语言任务上仍有性能差距，未在大模型规模验证。",
+  "“生物可塑”的判据本身为近似，DLL 的实际神经对应关系仍属建模类比而非严格神经机制。",
+  "属学习算法/类脑方向，与可信推理主线（鲁棒性/泛化/不确定性×医学影像/多模态）无关。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

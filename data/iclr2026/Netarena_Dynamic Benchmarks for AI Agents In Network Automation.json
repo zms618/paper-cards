@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Netarena_Dynamic Benchmarks for AI Agents In Network Automation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Netarena_Dynamic Benchmarks for AI Agents In Network Automation.pdf",
+ "title": "NetArena: Dynamic Benchmarks for AI Agents in Network Automation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "动态网络基准框架，解决静态小基准问题，但推广性与成本未验证",
+ "innovations": [
+  "提出一套跨异构网络任务的统一抽象与接口，使动态基准生成能推广到容量规划、路由、微服务策略等不同网络负载",
+  "运行时与网络仿真器集成，在执行中度量正确性(correctness)、安全(safety)与延迟(latency)，而非仅静态离线判对错",
+  "引入复杂度感知标注(动作类型/难度等级)做细粒度拆解，并暴露安全违例、控制逻辑错误、操作错误等静态基准漏掉的失败类型"
+ ],
+ "method_framework": "NetArena在用户侧维护查询模板与输入配置抽象，运行时按需动态合成无限量网络查询实例；生成的查询送入网络仿真器执行，由仿真器反馈真实执行结果，从而同时评估答案正确性、是否违反生产安全约束及端到端延迟；并对每个查询标注难度层级以支持按复杂度分层统计。",
+ "experiment_framework": "在3个代表应用上验证：数据中心容量规划(CP)、路由(Routing)、K8s微服务策略；被测Agent为GPT+ReAct/Fewshot/CoT与QWen+CoT/Fewshot；查询规模从100/150扩到5000/2250/2000；指标为正确性、安全率、延迟与置信区间重叠度；并展示可用于SFT/RL微调。",
+ "takeaways": [
+  "动态扩样把不同Agent间置信区间重叠从85%降到0，显著提升统计可分辨性(GPT+ReAct在大规模查询下才显出最优)",
+  "Agent在大规模真实查询上平均仅13-38%正确率(最低3%)，且正确性相近时安全率可能差异显著(如K8s:2000下GPT+ReAct安全率明显更低)",
+  "双维度(正确性×安全)与复杂度分层能暴露静态、仅看正确性基准完全漏掉的边缘失败"
+ ],
+ "weaknesses": [
+  "仅在3个网络类任务上验证，统一抽象能否推广到更广的系统运维/其他高风险域仍未证明",
+  "安全判据依赖网络仿真器规则，仿真与真实生产环境的鸿沟、仿真器本身的保真度未充分讨论",
+  "前9页未报告各Agent延迟成本与动态生成查询的算力开销，落地代价不明"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "网络自动化与可靠性主线无实质交点，仅系统运维应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

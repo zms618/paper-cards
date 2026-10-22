@@ -1,0 +1,37 @@
+{
+ "title": "How to set AdamW's weight decay as you scale model and dataset size",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "AdamW权重解读为EMA，提出weight decay缩放法则，但实验规模有限。",
+ "innovations": [
+  "提出将AdamW权重解读为近期更新的EMA，揭示weight decay本质上控制EMA时间尺度",
+  "发现最优EMA时间尺度（以epoch计）在改变模型宽度与数据集大小时近似恒定",
+  "建立给定学习率下EMA时间尺度与weight decay的一一映射，给出从原型实验向大模型迁移weight decay的实用法则"
+ ],
+ "method_framework": "把AdamW更新重写为权重是近期更新的指数滑动平均，关键超参即EMA时间尺度（平均多少轮近期更新）。由于按epoch计的最优时间尺度不随模型/数据规模变化，配合学习率缩放规律即可推出weight decay应如何随宽度与数据量缩放。",
+ "experiment_framework": "在不同模型宽度与数据集大小的训练实验上，扫描weight decay找最优，验证按epoch时间尺度恒定的预测，并与经验调参对比。",
+ "takeaways": [
+  "AdamW的weight decay等价于设定EMA时间尺度，应按epoch而非按step理解",
+  "最优EMA时间尺度近似与模型宽度、数据集大小解耦，可跨规模迁移",
+  "这为大模型预训练中weight decay的缩放提供了可操作的指导原则"
+ ],
+ "weaknesses": [
+  "结论主要基于给定学习率假设，学习率与weight decay的联合缩放耦合未完全解耦",
+  "实验规模是否覆盖最大尺度LLM预训练、以及架构(深度)变化下的恒定性需更多证据",
+  "与主线索（可信多模态推理/医学影像）关系弱，属优化器理论基础研究"
+ ],
+ "confidence": "high",
+ "key": "icml2025/How to set AdamW's weight decay as you scale model and dataset size.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/How to set AdamW's weight decay as you scale model and dataset size.pdf",
+ "raw_overall": 6.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

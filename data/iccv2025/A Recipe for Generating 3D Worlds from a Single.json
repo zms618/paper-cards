@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/A Recipe for Generating 3D Worlds from a Single.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Recipe for Generating 3D Worlds from a Single.pdf",
+ "title": "A Recipe for Generating 3D Worlds From a Single Image",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "单图拆解为全景生成与点云补全，结合3DGS构建可漫游世界",
+ "innovations": [
+  "把单图→可漫游 360° 世界拆成两个子问题：训练自由的全景外扩（把输入图复制到背面做锚定式渐进 outpaint，由 Llama-3.2V 分别产出天空/地面/场景氛围三条 prompt）与点云条件 inpainting",
+  "前向-后向双向扭曲构造训练数据：点云先 warp 到新视角再 warp 回原视角，所得点天然自洽，使 inpainting 模型能可靠遵循条件（Tab.2 PSNR 12.0→15.9）",
+  "给 Splatfacto 加可训练图像扭曲 f(p,c_I;θ)：低分辨率 MLP 网格上采样后双线性重采样，用图像专属 embedding 吸收多视图生成间的局部不一致，训练缩至 5k 步"
+ ],
+ "method_framework": "单图按等距柱状投影铺成全景 canvas，锚定式渐进 outpaint 生成 360° 全景；用 MoGE 深度按 0.2/0.8 分位数对齐到 Metric3D 尺度抬升为点云；fwd-bwd warp 构造条件微调 ControlNet 补遮挡；Splatfacto 5k 步加扭曲 MLP 出 3DGS。",
+ "experiment_framework": "Tanks&Temples Advanced 与 WorldLabs 图测全景；ControlNet 训 DL3DV-10K 测 ScanNet++（有真值位姿/深度）；对比 MVDiffusion/Diffusion360 与 WonderJourney/DimensionX。",
+ "takeaways": [
+  "天空/地面必须先锚定全局上下文（把输入图复制到背面、先生成上下区域再旋转补齐），否则各视角无全局信息，全景必然错缝",
+  "点云条件 inpainting 的关键不在模型而在条件质量：warp 点自洽的 fwd-bwd 策略比只前向 warp 的 PSNR 高约 4dB",
+  "直接用 Metric3D 的 metric 深度抬升点云会畸变（点被拉到相机近处），改用仿射不变的 MoGE 再按分位数对齐尺度更稳"
+ ],
+ "weaknesses": [
+  "定量指标清一色为非参考 IQA（BRISQUE/NIQE/Q-Align）加 CLIP-I，缺 3D 层面的几何与一致性证据（深度 L1、Chamfer、位姿误差），正文对“最锐利”“最一致”的论断没有对应量化支撑",
+  "核心 inpainting 主干因法律原因使用闭源专有模型，虽仅微调 5k 步仍无法换用公开模型复现，且未报告从单图到可漫游场景的端到端耗时与显存",
+  "与 WonderJourney/DimensionX 对比时基线只输出视频，需再用 CUT3R 从生成图反提位姿并重建 3DGS，整条对比链自带误差；且正文在 4.3 节中途截断，Tab.3 与 ViewCrafter 消融结果缺失"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3D世界生成与可靠性主线无关，仅为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

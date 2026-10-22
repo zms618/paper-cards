@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/TAP A Token-Adaptive Predictor Framework for Training-Free Diffusion Acceleration.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/TAP A Token-Adaptive Predictor Framework for Training-Free Diffusion Acceleration.pdf",
+ "title": "TAP A Token-Adaptive Predictor Framework for Training-Free Diffusion Acceleration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "TAP通过token自适应预测器实现扩散模型加速，提升效率-质量权衡。",
+ "innovations": [
+  "token级自适应预测框架",
+  "基于模型第一层轻量探针的预测器选择机制",
+  "无需阈值的泰勒预测器家族设计"
+ ],
+ "method_framework": "TAP在每N步窗口执行一次完整模型评估，缓存特征并构建泰勒预测器家族。通过轻量探针计算各预测器的代理损失，为每个token选择最优预测器，实现无训练加速。",
+ "experiment_framework": "在FLUX.1-dev、Qwen-Image和HunyuanVideo等模型上评估，使用DrawBench和VBench基准，测量ImageReward、CLIP、PSNR、VBench等指标，并报告延迟和FLOPs。",
+ "takeaways": [
+  "token级动态选择预测器可有效提升质量-效率权衡",
+  "轻量探针机制可高效评估预测器质量无需额外训练"
+ ],
+ "weaknesses": [
+  "预测器家族设计依赖于泰勒展开，可能不适用于所有类型的token动态",
+  "实验主要关注图像和视频生成，未探索其他扩散模型应用"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散加速技术不直接关联可靠性主线，仅属效率优化",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

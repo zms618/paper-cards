@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Distributed Nonparametric Estimation from Sparse to Dense Samples per Terminal.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Distributed Nonparametric Estimation from Sparse to Dense Samples per Terminal.pdf",
+ "title": "Distributed Nonparametric Estimation: from Sparse to Dense Samples per Terminal",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 4,
+  "relevance": 6,
+  "overall": 5.8
+ },
+ "one_line": "分布式非参数估计理论扩展，但缺乏实证与实际应用验证",
+ "innovations": [
+  "完整求解此前仅覆盖稠密样本或单样本终端的分布式非参数估计问题，给出从稀疏到稠密样本每终端所有情形的极小imax最优率",
+  "明确刻画最优率对通信预算l的依赖在稀疏与稠密情形间的定性相变",
+  "设计双层估计协议(外层转参数化密度估计、内层求解)并用强数据处理不等式+balls-and-bins模型证明上下界"
+ ],
+ "method_framework": "m个终端各持n个i.i.d.样本、通信预算l bits下估计非参数函数；外层用带稀疏性的小波估计器做截断与量化把原问题转为参数化密度估计，内层用已有参数密度估计协议求解；下界用信息论方法与强数据处理不等式的广义张量化；统一模型使密度估计/Gaussian/二值/Poisson/异方差回归等作为推论。",
+ "experiment_framework": "纯理论工作，给出极小极大上界(双层协议)与匹配下界(信息论/强数据处理不等式)，覆盖密度估计、Gaussian、二值、Poisson、异方差回归等特例，不依赖数值实验。",
+ "takeaways": [
+  "分布式非参数估计的极小极大率对通信预算的依赖随每终端样本从稀疏到稠密发生相变",
+  "双层协议可达最优率，此前稠密/单样本结论均为其特例",
+  "结论对联邦学习等通信受限场景有理论参考价值"
+ ],
+ "weaknesses": [
+  "纯理论，无任何数值或真实数据验证",
+  "结论依赖正则性假设(如Sobolev光滑)，对实际非光滑函数的适用有限",
+  "只给率(up to log factors)，具体常数与工程实现细节未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

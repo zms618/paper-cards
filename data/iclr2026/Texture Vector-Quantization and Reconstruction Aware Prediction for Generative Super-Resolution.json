@@ -1,0 +1,41 @@
+{
+ "title": "Texture Vector-Quantization and Reconstruction Aware Prediction for Generative Super-Resolution",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "针对VQ超分痛点，提出纹理解耦与图像级监督的轻量生成模型",
+ "innovations": [
+  "纹理向量量化(TVQ)：利用超分任务特性，让码本只建模 LR 中本就缺失的纹理先验，把结构从码本空间解耦，减小量化误差",
+  "重建感知预测(RAP)：用直通估计器(straight-through)对索引预测器施加图像级监督，使其直接优化最终重建误差，而非仅 code-level 匹配",
+  "二者结合的 TVQ&RAP 以较小计算代价得到照片级真实的生成式超分结果"
+ ],
+ "method_framework": "把超分先验拆成 LR 已含的结构与需补的纹理：结构直接由 LR 提供，码本只学纹理；索引预测器不再用 code-level 监督，而是经直通估计器把图像级重建/感知损失反传到离散索引上，使预测与最终重建目标对齐。",
+ "experiment_framework": "生成式超分任务；以 FID/ perceptual 等指标与不同码本规模(TVQ-256~8192)对比传统 VQ；报告重建质量与计算成本。",
+ "takeaways": [
+  "让码本只建模缺失纹理、把结构解耦出去，可显著减小 VQ 量化误差",
+  "用直通估计器做图像级监督比 code-level 监督更贴近最终重建目标",
+  "TVQ&RAP 以较小码本/计算即可出照片级超分结果"
+ ],
+ "weaknesses": [
+  "两个改进（纹理解耦、图像级监督）均针对既有 VQ 超分的已知痛点，属组件级改造，相对 SOTA 生成式超分的提升幅度需看完整对比表，前 9 页仅给小表",
+  "‘纹理 vs 结构’的解耦依赖 LR 已含结构这一先验，在退化严重/真实世界模糊下的适用性未验证；直通估计器引入的梯度偏差未讨论",
+  "relevance 给 5：属通用图像生成式超分，非医学影像诊断、非多模态大模型推理，与可靠性主线不直接相关，按规则给低分"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Texture Vector-Quantization and Reconstruction Aware Prediction for Generative Super-Resolution.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Texture Vector-Quantization and Reconstruction Aware Prediction for Generative Super-Resolution.pdf",
+ "raw_overall": 5.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "图像生成超分与可靠性主线无直接交点，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

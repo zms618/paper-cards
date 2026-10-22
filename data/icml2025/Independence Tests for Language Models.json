@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Independence Tests for Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Independence Tests for Language Models.pdf",
+ "title": "Independence Tests for Language Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "统计检验模型权重独立性，但依赖假设且泛化性有限。",
+ "innovations": [
+  "将模型权重关系形式化为假设检验（零假设为两模型独立训练），约束设定下通过模拟置换可交换副本得到精确p值",
+  "提出无约束设定下的隐藏激活匹配检验，对不改变输出的对抗规避攻击、架构变更和逐层重训练具有鲁棒性",
+  "能定位模型间具体的非独立组件（如Llama 3.1-8B剪枝初始化Llama 3.2-3B、Mistral-7B与StripedHyena-7B共享层）"
+ ],
+ "method_framework": "约束设定假设训练算法对隐藏单元置换等变，模拟大量可交换副本并比较权重余弦相似度等统计量与原始模型对的差异以得p值；无约束设定不依赖训练假设，通过匹配两模型间隐藏激活检测非独立性，对对抗变换和架构变化鲁棒。",
+ "experiment_framework": "在21个Llama 2架构开放权重模型（12个微调、9个独立训练，共210对）上评估；约束设定对所有69对非独立模型对得到极小p值；无约束设定测试对抗规避攻击下的检测能力。",
+ "takeaways": [
+  "约束设定的统计检验正确识别所有69对非独立模型对，且对不同微调程度保持低p值",
+  "无约束隐藏激活匹配对不改变输出的对抗规避攻击和架构变更仍可靠区分非独立模型",
+  "检验可定位模型间具体派生组件（剪枝初始化、共享层），对IP审计与模型溯源有实用价值"
+ ],
+ "weaknesses": [
+  "约束设定依赖训练算法对隐藏单元置换等变的假设，无法抵御有意改变权重分布的对抗规避攻击",
+  "无约束设定不再提供精确p值，仅经验性区分，理论保证减弱",
+  "评估集中在Llama 2架构族，对MoE、混合架构等更广泛差异的泛化性未充分验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

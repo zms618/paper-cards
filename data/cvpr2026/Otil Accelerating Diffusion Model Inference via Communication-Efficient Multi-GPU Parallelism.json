@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Otil Accelerating Diffusion Model Inference via Communication-Efficient Multi-GPU Parallelism.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Otil Accelerating Diffusion Model Inference via Communication-Efficient Multi-GPU Parallelism.pdf",
+ "title": "Otil Accelerating Diffusion Model Inference via Communication-Efficient Multi-GPU Parallelism",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "Otil通过选择性子块传输减少GPU通信，加速扩散模型推理。",
+ "innovations": [
+  "信息引导的子块传输机制",
+  "动态轮询机制确保空间覆盖",
+  "即插即用的多GPU并行框架"
+ ],
+ "method_framework": "Otil将潜在激活划分为子块，仅传输变化显著的子块，结合动态轮询机制确保完整覆盖，大幅减少GPU间通信。",
+ "experiment_framework": "COCO数据集，对比DistriFusion、AsyncDiff等方法，评估速度、PSNR、LPIPS、FID和CLIP分数。",
+ "takeaways": [
+  "利用相邻去噪步骤间相似性减少通信",
+  "子块大小与传输数量的权衡设计",
+  "即插即用兼容多种采样器"
+ ],
+ "weaknesses": [
+  "未探索更多GPU规模扩展性",
+  "子块划分策略可能影响某些类型图像质量"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅优化扩散模型推理速度，与可靠性主线无实质交集",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

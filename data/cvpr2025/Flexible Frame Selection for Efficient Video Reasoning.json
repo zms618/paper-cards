@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Flexible Frame Selection for Efficient Video Reasoning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Flexible Frame Selection for Efficient Video Reasoning.pdf",
+ "title": "Flexible Frame Selection for Efficient Video Reasoning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "轻量级帧选择器提升视频问答效率，但任务验证有限",
+ "innovations": [
+  "引入[CTRL]寄存器实现灵活帧选择",
+  "端到端可学习的轻量级选择策略",
+  "自适应确定所需帧数量而非固定值"
+ ],
+ "method_framework": "FFS模型采用双阶段设计：多模态编码器生成帧表示，结合[CTRL]寄存器实现灵活选择，通过Gumbel-Max STE使离散选择可微，由下游VLM任务监督训练。",
+ "experiment_framework": "在IntentQA、NExT-QA和EgoSchema视频问答基准上评估，与均匀采样和固定top-k方法对比，使用准确率和效率指标(帧数/FLOPs)。",
+ "takeaways": [
+  "[CTRL]寄存器设计使固定top-k机制实现灵活选择",
+  "轻量级选择器显著减少计算开销同时保持或提高准确性"
+ ],
+ "weaknesses": [
+  "仅评估视频问答任务，未在其他视频推理任务上验证",
+  "依赖下游VLM监督训练，可能限制在特定模型上的应用"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "视频推理效率提升，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

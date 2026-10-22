@@ -1,0 +1,41 @@
+{
+ "title": "Uni-X: Mitigating Modality Conflict with A Two-End-Separated Architecture for Unified Multimodal Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "X形架构缓解多模态梯度冲突，但跨模态互益与冲突量化不足。",
+ "innovations": [
+  "首次把多任务梯度冲突概念引入统一多模态模型，揭示全共享 transformer 在浅层与深层因图文低层统计差异而梯度冲突严重。",
+  "发现中间层表示已抽象语义对齐、冲突最小，据此提出两端分离、中间共享的 X 形架构：首尾层模态专属、中间层共享做高层语义融合。",
+  "X 形设计既消除两端梯度冲突，又进一步缓解共享层残余冲突，提升训练效率。"
+ ],
+ "method_framework": "浅层(输入)与深层(输出)采用模态专属参数分别处理图文低层统计差异；中间层保持参数共享以做高层语义对齐与融合；据此在统一 AR token 序列上联合训练理解与生成，避免强行全参数共享带来的梯度冲突。",
+ "experiment_framework": "在统一多模态模型(文本/视觉理解+图像生成)上，与全共享及复杂多分支基线对比，相同训练条件下报告训练效率；扩展到 3B 后与 7B AR-UMM 对比 GenEval 与理解指标。",
+ "takeaways": [
+  "全共享 transformer 联合训练图文会在浅/深层产生严重梯度冲突，阻碍收敛。",
+  "冲突源于图文低层统计差异，而中间抽象层冲突最小，应尊重模态差异而非全层强制共享。",
+  "两端分离中间共享使 3B 模型可匹配/超过 7B AR-UMM(GenEval 82)，参数高效且可扩展。"
+ ],
+ "weaknesses": [
+  "两端专属参数降低了参数共享度，跨模态互益是否受损需更多分析。",
+  "梯度冲突的度量与归因较定性，残余冲突如何量化缓解需看完整消融。",
+  "属架构效率型统一模型，与可靠性/不确定性/幻觉抑制主线弱相关；完整理解/生成分项指标表未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/UNI-X Mitigating Modality Conflict with A Two-End-Separated Architecture for Unified Multimodal Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/UNI-X Mitigating Modality Conflict with A Two-End-Separated Architecture for Unified Multimodal Models.pdf",
+ "raw_overall": 6.68,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "多模态架构效率提升，与可靠性主线弱相关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

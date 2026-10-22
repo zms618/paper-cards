@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Removing Reflections from RAW Photos.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Removing Reflections from RAW Photos.pdf",
+ "title": "Removing Reflections from RAW Photos",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "RAW反射去除系统，依赖合成数据与上下文辅助",
+ "innovations": [
+  "物理准确的RAW反射合成方法",
+  "使用上下文照片帮助识别反射",
+  "高质量上采样器实现全分辨率输出",
+  "端到端RAW处理流程"
+ ],
+ "method_framework": "双模型架构：基础模型(256p)处理RAW图像和可选上下文照片，预测反射和透射图像；上采样器使用高斯金字塔和特征匹配将结果提升至全分辨率。",
+ "experiment_framework": "使用MIT5K、RAISE和Laval Indoors数据集合成超过100万训练样本；评估指标包括PSNR和SSIM；与Zhang、DSRNet等方法对比。",
+ "takeaways": [
+  "物理准确的RAW合成数据比模型架构改进更能提升性能",
+  "上下文照片能有效帮助识别反射内容",
+  "上采样过程中特征匹配而非特征上采样能更好保留细节"
+ ],
+ "weaknesses": [
+  "依赖大量合成数据，真实场景泛化能力需进一步验证",
+  "上下文照片的质量和相关性对结果影响较大",
+  "系统计算复杂度较高，实时性有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "图像处理技术，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

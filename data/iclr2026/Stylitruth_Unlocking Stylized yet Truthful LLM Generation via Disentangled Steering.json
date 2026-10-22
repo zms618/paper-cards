@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Stylitruth_Unlocking Stylized yet Truthful LLM Generation via Disentangled Steering.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Stylitruth_Unlocking Stylized yet Truthful LLM Generation via Disentangled Steering.pdf",
+ "title": "StyliTruth: Unlocking Stylized yet Truthful LLM Generation via Disentangled Steering",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "解耦风格与真实性表征，缓解LLM风格化诱导的真实性崩塌问题",
+ "innovations": [
+  "首次提出并系统定义风格化诱导真实性崩塌(stylization-induced truthfulness collapse)问题：表示编辑施加风格时会污染模型核心真实性表征",
+  "揭示问题根源：关键注意力头中风格方向与真实性方向存在潜在耦合，提出正交deflation过程将两者分离到不同子空间",
+  "设计token级自适应引导向量：在风格和真实性子空间内分别动态调整引导强度，实现两者的精确独立控制"
+ ],
+ "method_framework": "首先识别出关键注意力头中同时承载风格和真实性信息的耦合方向。通过正交deflation处理，将风格引导向量投影到与真实性方向正交的子空间，反之亦然，实现两个子空间的解耦。然后在各自子空间内设计token级自适应引导向量，根据当前token的语义类型动态调整风格和真实性的引导强度，在保持风格忠实度的同时不损害事实正确性。",
+ "experiment_framework": "在多种风格（莎士比亚风格、学术风格等）和多种语言上验证。对比现有推理时干预方法（如简单表示编辑），评估风格遵循度与真实性（如TruthfulQA等基准）的平衡。",
+ "takeaways": [
+  "现有风格化表示编辑方法会显著降低LLM的事实真实性，这一问题源于风格与真实性方向在内部表征空间中的耦合",
+  "正交去耦可以有效分离风格和真实性子空间，实现两者的独立控制而不互相干扰",
+  "token级自适应引导比全局固定引导向量更能平衡风格强度和事实准确性"
+ ],
+ "weaknesses": [
+  "正交deflation需要预先知道真实性方向的表示向量，依赖已有的真实性探针/引导方向提取方法",
+  "仅在几种特定风格上验证，对更多样化风格（如幽默、讽刺）的适用性未证明",
+  "前9页未展示完整的定量结果表格，具体的风格-真实性权衡曲线不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅解决LLM风格化问题，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

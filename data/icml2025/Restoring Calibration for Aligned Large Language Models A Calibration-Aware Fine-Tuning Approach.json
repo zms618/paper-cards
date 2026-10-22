@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Restoring Calibration for Aligned Large Language Models A Calibration-Aware Fine-Tuning Approach.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Restoring Calibration for Aligned Large Language Models A Calibration-Aware Fine-Tuning Approach.pdf",
+ "title": "Restoring Calibration for Aligned Large Language Models: A Calibration-Aware Fine-Tuning Approach",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8,
+  "overall": 6.9
+ },
+ "one_line": "揭示偏好坍缩导致LLM失校准，提出差异化校准恢复方法。",
+ "innovations": [
+  "发现对齐中的‘偏好坍缩(preference collapse)’会泛化到校准场景，是对齐后 LLM 过自信、失校准的根因。",
+  "按 ECE 界把模型划分为可校准(calibratable)与不可校准(non-calibratable)两种区间，给出差异化处理策略。",
+  "在可校准区间提出校准感知微调；在不可校准区间开发基于 EM 算法的 ECE 正则项加入微调损失，在不损性能下保持低校准误差。"
+ ],
+ "method_framework": "先用领域专属知识微调缓解过自信；当模型处于可校准区间(ECE 界内)时用校准感知微调直接恢复校准；当进一步追求性能进入不可校准区间时，在微调损失中引入由 EM 算法优化的 ECE 正则项，约束预测概率与实际准确率一致，从而兼顾性能与校准。",
+ "experiment_framework": "在多种经不同对齐方法(RLHF/DPO 等)对齐的 LLM 上验证；指标含 ECE、校准曲线与下游任务性能；对比标准微调 vs 校准感知微调 vs EM-ECE 正则，检验是否在保持性能的同时降低过自信。",
+ "takeaways": [
+  "偏好对齐普遍损害 LLM 校准，且根源是偏好坍缩，而非偶然现象。",
+  "存在可校准/不可校准两区间，需用不同手段应对。",
+  "EM 式 ECE 正则可在追求高性能(进入不可校准区)时仍把校准误差压到较低水平。"
+ ],
+ "weaknesses": [
+  "ECE 本身是分箱近似指标，用其作训练目标可能引入与真实校准的偏差。",
+  "EM 正则带来额外训练流程与超参(ECE 箱数、正则强度)，对不同模型的迁移稳健性需更多验证。",
+  "主要在分类/选择题式概率输出上评估，开放式生成的校准评估覆盖有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.2,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

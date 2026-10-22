@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Fast Reasoning Segmentation for and Videos.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Fast Reasoning Segmentation for and Videos.pdf",
+ "title": "Fast Reasoning Segmentation for and Videos",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "数字孪生表示的两阶段蒸馏框架，提升推理分割效率",
+ "innovations": [
+  "数字孪生表示解耦感知与推理",
+  "两阶段蒸馏方法保留多步推理能力",
+  "联合奖励函数评估分割准确性与推理质量对齐"
+ ],
+ "method_framework": "FastReasonSeg采用数字孪生表示作为中间抽象，通过两阶段蒸馏将大模型推理能力转移到小模型：第一阶段监督微学习教师生成的推理链，第二阶段强化学习结合分割准确性和推理质量奖励",
+ "experiment_framework": "在JiTBench、RVTBench(视频)和ReasonSeg、LLM-Seg40K(图像)数据集上评估，使用区域相似度(J)和轮廓准确度(F)作为指标",
+ "takeaways": [
+  "数字孪生表示可有效解耦感知与推理",
+  "两阶段蒸馏能保留复杂推理能力",
+  "结构化输出格式对推理质量至关重要"
+ ],
+ "weaknesses": [
+  "依赖预训练视觉模型(SAM、DepthAnything2等)构建数字孪生",
+  "推理质量评估使用LLM-as-judge可能引入主观性",
+  "未探讨不同场景下的数字孪生表示效率"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "提升推理分割效率，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

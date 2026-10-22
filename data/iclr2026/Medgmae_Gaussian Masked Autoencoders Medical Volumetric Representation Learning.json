@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Medgmae_Gaussian Masked Autoencoders Medical Volumetric Representation Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Medgmae_Gaussian Masked Autoencoders Medical Volumetric Representation Learning.pdf",
+ "title": "MedGMAE: Gaussian Masked Autoencoders for Medical Volumetric Representation Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "3D高斯替代体素重建的MAE，医学影像预训练与重建双重用途",
+ "innovations": [
+  "提出用 3D 高斯基元参数集合作为 MAE 的重建目标，替代离散体素重建，以建模解剖结构连续性",
+  "从稀疏可见图像块预测完整 3D 高斯参数作为语义抽象，获得更优编码器表征",
+  "高斯解码器可复用预训练解剖先验，加速 3D CT 体积重建收敛，实现表征学习与重建双重用途"
+ ],
+ "method_framework": "对 3D CT/MRI 体积随机遮挡部分体素块，编码器仅见稀疏块，解码器预测对应区域的完整 3D 高斯参数（位置/协方差/颜色/不透明度）；预训练后编码器迁移到分割/分类/配准，解码器亦可初始化加速 CT 重建。",
+ "experiment_framework": "数据：多套医学影像体积（CT/MRI）；任务：下游分割、分类、配准及零样本 CT 体积重建；基线：传统体素重建式 MAE；指标：下游任务精度与重建收敛速度。",
+ "takeaways": [
+  "高斯基元重建作为自监督目标在分割/分类/配准上优于传统体素 MAE 基线",
+  "以语义抽象代替逐体素重建更契合解剖结构连续性，缓解体素目标对局部细节的过度拟合",
+  "预训练解剖先验可零样本迁移以加速 CT 重建，体现双重效用"
+ ],
+ "weaknesses": [
+  "3D 高斯参数的表示能力依赖高斯基数与密度，对精细边界/小病灶的刻画尚不明确",
+  "双重用途中 CT 重建收益是否独立于编码器表征收益缺乏消融剥离",
+  "未在更大规模标注医学数据集上与最新 3D 医学基础模型直接对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像预训练与重建双重用途，触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Return of the Latent Space COWBOYS Re-thinking the use of VAEs for Bayesian Optimisation of Structured Spaces.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Return of the Latent Space COWBOYS Re-thinking the use of VAEs for Bayesian Optimisation of Structured Spaces.pdf",
+ "title": "Return of the Latent Space COWBOYS: Re-thinking the use of VAEs for Bayesian Optimisation of Structured Spaces",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "解耦VAE与GP的贝叶斯优化方法，在分子设计任务表现有限",
+ "innovations": [
+  "提出解耦思路：不再将GP拟合在VAE隐空间，而是将GP直接拟合在结构空间，VAE仅用于解码",
+  "提出COWBOYS方法，通过简单而原则性的贝叶斯更新规则结合独立训练的生成模型和GP代理",
+  "解耦允许各组件独立优化：VAE专注于生成高质量结构化样本，GP专注于代理建模"
+ ],
+ "method_framework": "传统LSBO将GP拟合在VAE隐空间，耦合了代理模型和生成模型。COWBOYS将两者解耦：VAE独立训练学习结构化空间分布，GP直接在结构空间(或其嵌入)上拟合。采集函数选出的候选点通过VAE解码回结构化域。贝叶斯更新规则将GP的不确定性传播到VAE解码中。",
+ "experiment_framework": "在分子设计等结构化优化任务上验证。对比传统LSBO方法。指标为优化目标值和约束满足率，在有限评估预算下测试。",
+ "takeaways": [
+  "解耦VAE和GP比耦合方法在结构化空间贝叶斯优化中表现更好",
+  "VAE隐空间不一定是GP代理建模的最佳空间，直接在结构空间建模更优",
+  "简单的贝叶斯更新规则即可有效结合独立训练的组件"
+ ],
+ "weaknesses": [
+  "GP在结构空间的建模需要定义结构空间上的核函数，对复杂结构化对象(如分子)的核设计困难",
+  "仅在分子设计等少数任务验证，未覆盖其他结构化域",
+  "VAE解码的不可靠性(解码出无效结构)问题未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

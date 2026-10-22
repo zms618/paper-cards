@@ -1,0 +1,37 @@
+{
+ "title": "Textural or Textual: How Vision-Language Models Read Text in Images",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "揭示VLM文本阅读机制，但未解决排版攻击脆弱性",
+ "innovations": [
+  "构建 ToT 数据集：用同义词(同语义异外观)与形近词(同外观异语义)受控词对，解耦正字法形式与语义",
+  "用逐层本征维数(ID)分析刻画 VLM 处理图像文本时正字法/语义表征的演化",
+  "发现清晰语义区分直到最后 block 才出现，质疑多模态预训练模型早期即融合文本语义的假设，关联排版攻击脆弱性"
+ ],
+ "method_framework": "设计受控词对任务(同义 vs 形近)以分离'字形纹理'与'语义含义'；在 VLM 各层测量激活的本征维数(ID)，追踪正字法表征与语义表征的此消彼长；据此判断模型究竟靠纹理视觉特征还是真正的跨模态语义整合来读文字。",
+ "experiment_framework": "在自构 ToT 受控词对数据集上做逐层 ID 分析；对比同义词与形近词在各层的表征分离度；关联到 typographic attack 场景，检验模型是否只对齐低层纹理而非深层语义。",
+ "takeaways": [
+  "VLM 早期层以纹理/正字法为主，语义区分很晚(最后 block)才清晰形成",
+  "后期语义精度提升很大程度来自正字法消歧，而非真正的语义整合",
+  "这一机制解释了 VLM 对排版(typographic)攻击为何脆弱"
+ ],
+ "weaknesses": [
+  "属机制解释，未提出提升文本读取鲁棒性的修复方法",
+  "受控词对与真实场景中复杂文字(招牌/文档)的距离需谨慎外推",
+  "结论基于少量代表性 VLM 架构，跨架构普适性未充分验证"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Textural or Textual How Vision-Language Models Read Text in.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Textural or Textual How Vision-Language Models Read Text in.pdf",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

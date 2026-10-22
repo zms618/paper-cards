@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Diffusion Adaptive Text Embedding for Text-to- Diffusion Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Diffusion Adaptive Text Embedding for Text-to- Diffusion Models.pdf",
+ "title": "Diffusion Adaptive Text Embedding for Text-to- Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "动态更新文本嵌入提升扩散模型对齐，但计算开销大且评估指标权衡不足",
+ "innovations": [
+  "提出扩散自适应文本嵌入(DATE)框架",
+  "在扩散采样过程中动态更新文本嵌入",
+  "理论分析证明优化文本嵌入能提升文本-图像对齐",
+  "支持多种评估函数和扩散模型"
+ ],
+ "method_framework": "通过优化目标函数，在扩散采样每一步更新文本嵌入，使其与当前去噪图像对齐，保持原始语义的同时提高生成质量。",
+ "experiment_framework": "COCO数据集，SD v1.5和PixArt-α模型，DDIM/DDPM/DPM-Solver采样器，评估FID、CLIP分数和ImageReward指标。",
+ "takeaways": [
+  "文本嵌入动态更新可提升文本-图像对齐而不损害生成质量",
+  "方法与模型和采样器无关，具有广泛适用性",
+  "支持多种评估函数组合优化"
+ ],
+ "weaknesses": [
+  "计算开销较大，需在部分步骤更新以平衡效率",
+  "当使用美学评分作为评估函数时，其他指标可能下降",
+  "未充分探索不同文本编码器的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

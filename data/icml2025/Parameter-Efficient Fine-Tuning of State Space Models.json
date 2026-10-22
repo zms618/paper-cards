@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Parameter-Efficient Fine-Tuning of State Space Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Parameter-Efficient Fine-Tuning of State Space Models.pdf",
+ "title": "Parameter-Efficient Fine-Tuning of State Space Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "SDT+LoRA组合微调SSM，常规PEFT评估，缺乏复杂场景验证。",
+ "innovations": [
+  "首次系统评估PEFT方法在SSM模型上的有效性",
+  "提出SDT方法专门针对SSM模块进行参数高效微调",
+  "理论分析证明线性投影矩阵微调可替代部分SSM参数微调"
+ ],
+ "method_framework": "结合LoRA(用于线性投影矩阵)和SDT(用于SSM模块)，SDT通过冻结和修剪特定通道和状态维度，仅训练剩余维度，实现参数高效微调。",
+ "experiment_framework": "在6个数据集(GLUE, DART, SAMSum, Spider, CIFAR-10, CelebA)上评估Mamba和Jamba模型，比较6种PEFT方法性能。",
+ "takeaways": [
+  "LoRA及其变体在SSM模型上表现最佳，但仅适用于线性投影矩阵",
+  "输入注入方法在SSM模型上效果不佳",
+  "SDT专门针对SSM模块设计，与LoRA结合实现SOTA性能"
+ ],
+ "weaknesses": [
+  "仅关注语言模型和简单视觉任务，未探索复杂医学影像应用",
+  "未充分讨论方法在不同规模SSM模型上的扩展性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

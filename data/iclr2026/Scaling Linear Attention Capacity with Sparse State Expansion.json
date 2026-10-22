@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Scaling Linear Attention Capacity with Sparse State Expansion.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scaling Linear Attention Capacity with Sparse State Expansion.pdf",
+ "title": "Scaling Linear Attention Capacity with Sparse State Expansion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5.0,
+  "overall": 6.1
+ },
+ "one_line": "行稀疏更新与状态扩展解耦参数与容量，提升长上下文与数学推理。",
+ "innovations": [
+  "将线性注意力的状态更新重新表述为信息分类过程，用softmax-based top-k行选择实现稀疏状态更新，扩大感受野并降低类别间干扰。",
+  "提出Sparse State Expansion(SSE)：在稀疏框架内把上下文状态扩展为多个共享参数的分区，用write-read门控选分区，从而解耦模型参数量与状态容量。",
+  "给出基于masking与varlen的高效并行实现，并在纯线性(SSE)与混合(SSE-H)架构上验证；2B SSE-H经RL后在AIME24/25取得小模型SOTA。"
+ ],
+ "method_framework": "把上下文状态的每一行视为一个隐类别，key映射即类别分配函数；每步仅更新被top-k选中的状态行。SSE进一步将状态拆成N个共享注意力参数的分区，先经门控选分区再在分区内softmax选行，使状态容量可随分区数扩展而不增加参数。",
+ "experiment_framework": "在语言建模、上下文检索、数学推理三类任务上，对比先进线性注意力(如GLA/RWKV类)与Transformer/混合基线；2B SSE-H经RL训练后报AIME24 64.5、AIME25 50.2，并随状态规模扩展观察检索性能提升。",
+ "takeaways": [
+  "行稀疏更新+状态扩展能让线性注意力在长上下文检索上逼近softmax注意力，同时保持次二次复杂度。",
+  "解耦参数规模与状态容量后，SSE状态具有更低行间相似度与更高奇异值熵，表示更具判别力。",
+  "2B SSE-H经RL在数学推理上显著超越同尺寸开源Transformer。"
+ ],
+ "weaknesses": [
+  "属高效架构/长上下文方向，与可靠性×医学影像主线关联弱；推理优势来自RL而非本文核心机制。",
+  "row-sparse top-k选择引入额外路由/门控开销与实现复杂度，规模化训练的稳定性与端到端吞吐收益需更多实测。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "高效架构与长上下文，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

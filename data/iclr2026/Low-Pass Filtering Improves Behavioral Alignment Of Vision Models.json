@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Low-Pass Filtering Improves Behavioral Alignment Of Vision Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Low-Pass Filtering Improves Behavioral Alignment Of Vision Models.pdf",
+ "title": "LOW-PASS Filtering Improves Behavioral Alignment Of Vision Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "测试时低通滤波提升视觉模型与人类行为一致性，但牺牲OOD性能",
+ "innovations": [
+  "发现低通滤波而非生成目标解释了Imagen模型的高行为对齐",
+  "测试时模糊图像而非训练时过滤实现更好对齐",
+  "直接优化滤波器验证低通滤波的最优性"
+ ],
+ "method_framework": "在测试时对图像应用高斯模糊或下采样操作，模拟人类视觉系统的低通滤波特性，评估模型与人类在错误一致性和形状偏差上的对齐程度。",
+ "experiment_framework": "使用model-vs-human基准测试，包含ImageNet-1k的16个超类和12种图像扭曲，评估OpenCLIP等模型在错误一致性、形状偏差和OOD准确性上的表现。",
+ "takeaways": [
+  "简单测试时图像预处理可大幅提升模型与人类行为对齐",
+  "最优滤波器近似人类对比敏感函数，为模型设计提供生理学依据"
+ ],
+ "weaknesses": [
+  "低通滤波导致OOD准确性下降6个百分点",
+  "未探讨不同任务和领域上的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "仅触及可靠性主线边缘，OOD性能下降是可靠性问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

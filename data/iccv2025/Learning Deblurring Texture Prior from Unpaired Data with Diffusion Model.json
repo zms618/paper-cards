@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/Learning Deblurring Texture Prior from Unpaired Data with Diffusion Model.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Learning Deblurring Texture Prior from Unpaired Data with Diffusion Model.pdf",
+ "title": "Learning Deblurring Texture Prior from Unpaired Data with Diffusion Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "扩散模型学习无配对纹理先验，但组件复杂且极端模糊鲁棒性未验证",
+ "innovations": [
+  "TP-Diff框架首次将扩散模型引入无配对图像重建任务",
+  "TPE引入记忆机制编码图像纹理先验",
+  "TTformer层中的FM-MSA自适应滤波去除空间变化模糊",
+  "基于小波的抗对抗损失保留高频纹理细节"
+ ],
+ "method_framework": "TP-Diff包含TPE、扩散模型、去模糊网络和再模糊网络，分两阶段训练：第一阶段提取纹理先验，第二阶段训练扩散模型生成纹理先验",
+ "experiment_framework": "在GoPro、HIDE、RealBlur-R/J、RB2V Street和RSBlur数据集上评估，使用PSNR和SSIM指标，与监督和无监督方法对比",
+ "takeaways": [
+  "扩散模型可用于生成空间变化的纹理先验而非直接生成图像",
+  "记忆机制能有效编码和检索纹理信息",
+  "自适应滤波可处理空间变化的模糊"
+ ],
+ "weaknesses": [
+  "模型包含多个组件(TPE、TTformer、扩散模型)，增加了复杂度",
+  "未充分讨论模型在极端模糊情况下的鲁棒性",
+  "未提供关于计算资源消耗的详细分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "图像去模糊与可靠性主线无实质交点，仅属常规图像处理",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

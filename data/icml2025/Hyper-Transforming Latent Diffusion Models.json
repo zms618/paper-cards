@@ -1,0 +1,37 @@
+{
+ "title": "Hyper-Transforming Latent Diffusion Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 5.0,
+  "overall": 5.4
+ },
+ "one_line": "Transformer超网络替代MLP生成INR参数，冻结潜空间适配现有模型",
+ "innovations": [
+  "用基于Transformer的解码器替代MLP超网络来生成INR参数，克服MLP超网络在高维INR上的可扩展性与表达力瓶颈",
+  "将潜扩散模型(LDM)扩展到INR生成：用Transformer超网络替换标准解码器，实现任意分辨率的函数生成",
+  "提出hyper-transforming策略：仅微调解码器而冻结预训练潜空间，无需全量重训即可把已有生成模型适配到INR表示"
+ ],
+ "method_framework": "把数据建模为连续函数(INR)，用扩散在隐变量空间学习分布，再由Transformer超网络解码器从隐码生成整个INR的权重/偏置，从而在任意分辨率采样函数。可从头训练或用hyper-transforming只适配解码器。",
+ "experiment_framework": "在多种模态的函数/图像数据上评测，对比已有基于INR的生成模型与MLP超网络方法，指标为多尺度分辨率下的生成质量、可扩展性与泛化。",
+ "takeaways": [
+  "Transformer超网络比MLP超网络更适合生成高维INR参数，兼顾容量与效率",
+  "hyper-transforming可低成本复用预训练潜空间适配INR生成，无需全量重训",
+  "框架统一支持多模态、任意分辨率的函数式生成"
+ ],
+ "weaknesses": [
+  "前9页未见与主流高分辨率图像生成基准(如FID在ImageNet)的强对比，生成质量优势不直观",
+  "生成INR参数仍带来额外计算，实时性/存储开销未充分量化",
+  "与主线索（可信多模态推理/医学影像）无关，属生成式表示学习"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Hyper-Transforming Latent Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Hyper-Transforming Latent Diffusion Models.pdf",
+ "raw_overall": 6.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

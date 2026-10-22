@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Reducing the Probability of Undesirable Outputs in Language Models Using Probabilistic Inference.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Reducing the Probability of Undesirable Outputs in Language Models Using Probabilistic Inference.pdf",
+ "title": "Reducing the Probability of Undesirable Outputs in Language Models Using Probabilistic Inference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "RePULSe通过概率推理减少不良输出，但计算开销大且未在大模型验证",
+ "innovations": [
+  "引入RePULSe方法，结合标准RL损失与额外损失减少低奖励输出概率",
+  "设计自适应目标分布σθ聚焦低奖励区域",
+  "学习提案分布qξ提高低奖励样本采样效率"
+ ],
+ "method_framework": "RePULSe结合标准RL损失与额外损失，通过目标分布σθ引导采样低奖励输出，并减少这些输出的概率，同时学习提案分布qξ提高采样效率",
+ "experiment_framework": "使用DistilGPT2和SmolLM/Llama模型，对比PPO、RLOO等方法，评估平均回报与不良输出概率的权衡及对抗攻击鲁棒性",
+ "takeaways": [
+  "通过概率推理方法可以更有效地减少语言模型的不良输出",
+  "学习提案分布qξ比直接使用pθ作为提案更有效",
+  "RePULSe在保持平均回报的同时降低了不良输出概率"
+ ],
+ "weaknesses": [
+  "计算开销增加约一倍，需要额外的样本生成",
+  "仅在小规模模型上验证，未在大型语言模型上测试",
+  "对奖励模型的依赖可能导致奖励模型过优化问题"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

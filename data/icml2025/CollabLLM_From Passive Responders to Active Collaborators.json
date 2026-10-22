@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/CollabLLM_From Passive Responders to Active Collaborators.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CollabLLM_From Passive Responders to Active Collaborators.pdf",
+ "title": "CollabLLM: From Passive Responders to Active Collaborators",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "用模拟对话估计长期奖励微调LLM，提升用户满意度但泛化性存疑",
+ "innovations": [
+  "指出现有LLM按单轮/下一轮奖励训练，对模糊开放式请求被动应答，难以帮用户达成最终意图",
+  "提出协作模拟：用模拟用户前向采样多轮对话以估计某响应对长期协作的贡献(MR)，结合外在(性能)与内在(交互性/效率)奖励",
+  "用MR做RL微调；201名评审的用户研究显示用户满意度提升17.6%、耗时降低10.4%"
+ ],
+ "method_framework": "给定上下文x生成响应y以最大化多轮感知奖励MR；训练时通过与模拟用户前向采样对话来估计MR(外在+内在奖励)，再以MR做强化微调得到策略π，使LLM主动推进而非被动应答。",
+ "experiment_framework": "以多轮人机协作为设定，对比基线LLM，用LLM评审与201人用户研究评估交互性、效率与满意度，报告满意度+17.6%、耗时-10.4%。",
+ "takeaways": [
+  "用协作模拟估计长期多轮奖励，可让LLM主动引导用户达成模糊意图",
+  "外在+内在奖励结合比单轮奖励更能优化长期协作",
+  "主动协作在真实用户研究中同时提升满意度并降低对话时长"
+ ],
+ "weaknesses": [
+  "MR依赖模拟用户前向采样，模拟用户与真实用户分布的差距会传导到奖励估计",
+  "用户研究样本(201评审)与任务范围有限，跨领域协作的泛化性待验",
+  "RL微调叠加模拟奖励，成本与稳定性(奖励黑客/过拟合模拟用户)未充分讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

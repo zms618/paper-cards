@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/CLOVER_Cross-Layer Orthogonal Vectors Pruning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CLOVER_Cross-Layer Orthogonal Vectors Pruning.pdf",
+ "title": "CLOVER: Cross-Layer Orthogonal Vectors Pruning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.9
+ },
+ "one_line": "SVD指导的注意力头剪枝，高压缩率下保持性能",
+ "innovations": [
+  "将注意力头内Q-K、V-O层对统一视为低秩结构并做SVD",
+  "用所得奇异值指导剪枝，并作为可训练参数高效微调以恢复剪枝前性能",
+  "剪枝微调后把奇异值回插模型而不增加参数量",
+  "在GPT-2 XL等模型上实现远超朴素方法的剪枝率，并与TransMLA组合获高加速"
+ ],
+ "method_framework": "对每个注意力头的Q-K与V-O对做SVD得到正交奇异向量与奇异值；按奇异值大小剪去低能量方向，并用保留的奇异值作可训练参数微调；微调后将奇异值回插恢复满秩等价表示，从而在高剪枝率下保持困惑度。",
+ "experiment_framework": "在GPT-2 XL、LLaMA-2-7B等模型上，与朴素结构化剪枝及TransMLA等低秩方法比较，报告不同剪枝率下的困惑度、加速比，含剪枝-微调可视化与组件消融。",
+ "takeaways": [
+  "注意力头内Q-K/V-O存在显著线性冗余，可跨层正交化后高比例剪枝",
+  "以奇异值为可训练参数微调能几乎完全恢复剪枝损失",
+  "该剪枝可与MLA类低秩注意力正交组合获得更大加速"
+ ],
+ "weaknesses": [
+  "主线为LLM注意力压缩/推理加速，与可靠性主线及医学影像、多模态推理落地域无关",
+  "逐头SVD增加剪枝阶段工程成本，对超长上下文/MoE架构适配未充分展示",
+  "主要在GPT-2/LLaMA-2等较老架构验证，对最新模型的通用性证据有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.43,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Mahalanobis++ Improving OOD Detection via Feature Normalization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Mahalanobis++ Improving OOD Detection via Feature Normalization.pdf",
+ "title": "Mahalanobis++: Improving OOD Detection via Feature Normalization",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "揭示特征范数变化破坏Mahalanobis假设，提出简单L2归一化提升OOD检测",
+ "innovations": [
+  "揭示Mahalanobis距离OOD检测跨模型性能不一致的根因：pre-logit特征的范数剧烈变化，严重违反Mahalanobis距离所基于的高斯分布假设",
+  "提出简单的L2特征归一化（Mahalanobis++）：将特征投影到单位球面上，使其更符合共享协方差矩阵的高斯分布前提",
+  "在44个不同架构/预训练方案的ImageNet模型上验证，L2归一化一致且显著地提升传统Mahalanobis方法的OOD检测性能"
+ ],
+ "method_framework": "Mahalanobis距离OOD检测假设各类别特征服从共享协方差的高斯分布。作者发现实际模型中特征范数在不同样本/类别间变化极大，违反此假设。解决方案：在计算Mahalanobis距离前对pre-logit特征做L2归一化（投影到单位球面）。归一化后特征更集中、更接近高斯假设，从而Mahalanobis距离估计更准确。方法极为简单，无需训练修改，纯post-hoc。",
+ "experiment_framework": "44个ImageNet模型（ diverse architectures and pretraining schemes）。OpenOOD benchmark的5个OOD数据集。指标：FPR@95（TPR=95%时的假阳性率）。对比归一化前后的Mahalanobis方法。与其他post-hoc OOD检测方法对比。",
+ "takeaways": [
+  "Mahalanobis OOD检测跨模型不稳定的根因是特征范数变化违反高斯假设，而非方法本身缺陷",
+  "简单的L2特征归一化即可在44个模型上一致提升OOD检测性能，零额外训练成本",
+  "特征归一化是提升基于密度/距离的OOD检测的通用且廉价的改进方向"
+ ],
+ "weaknesses": [
+  "方法虽然有效但较为简单（仅加L2归一化），理论深度有限",
+  "仅在ImageNet分类任务上验证，未扩展到检测、分割或多模态任务",
+  "与SOTA OOD检测方法（需训练修改的）相比，post-hoc方法的性能上限仍有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

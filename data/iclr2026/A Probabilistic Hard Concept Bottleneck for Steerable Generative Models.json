@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/A Probabilistic Hard Concept Bottleneck for Steerable Generative Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Probabilistic Hard Concept Bottleneck for Steerable Generative Models.pdf",
+ "title": "A Probabilistic Hard Concept Bottleneck for Steerable Generative Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 3.5,
+  "relevance": 6.0,
+  "overall": 5.2
+ },
+ "one_line": "用二元码和纠错机制抑制概念泄漏，但实验缺失且超参未分析。",
+ "innovations": [
+  "把SOTA二元VAE（Coded DVAE）搬进生成模型的概念瓶颈层：概念c∈{0,1}K与无监督旁通道s∈{0,1}L都是二元潜变量，各自套一层均匀重复码形式的ECC（c→v_c∈{0,1}^K′、s→v_s∈{0,1}^L′）拉大汉明距离，推理时取K′/L′维空间中最近合法码word做纠错，再用重复性码结构的soft majority voting细化编码器给出的bit边缘qη(v|w)，从而把编码器出错抵消掉",
+  "训练目标只用重建+对齐三项（式3）：E_{qη}log pθ(w|z)的嵌入重建、用对称KL（Jeffreys散度）把概念后验qη(c|w)对齐到分类器伪标签p(y|x)的concept loss、以及把旁通道后验压向先验的KL，外加x与x̂的MSE；去掉了CB-AE那套干预损失Li1/Li2，并把概念损失从普通交叉熵换成对称KL，理由是保住分布模态、防止后验塌缩到均值以提升干预可控性",
+  "提出面向CBGM的系统评测框架，把‘可控性’拆成可量化任务并刻意区分两类误差来源：指标上按hard/soft分别取accuracy、cosine similarity、TV距离与FID；任务上覆盖概念预测、c与s的解纠缠（交换s1/s2后看概念标签是否被改变）、直接按指定概念配置采样生成（含OOD配置）、单概念双向干预（Target accuracy vs Non-Target accuracy）、以及最小汉明距离干预（把c_target取训练集中最近的概念组合以避免OOD），从而把CB层本身的缺陷与OOD概念配置的锅分开"
+ ],
+ "method_framework": "StyleGAN2/DDPM预训练→采样存中间表示w→分类器取伪标签p(y|x)→VHCB编码器提二元coded bits→重复码soft majority voting纠错→重叠指数平滑变换(式2)得z_c、z_s并拼接→解码器重建w与x；先验用均匀Bernoulli，测试时c、s可自由采样或按位取反干预。",
+ "experiment_framework": "StyleGAN2（CelebA-HQ 256² 的 all-40 不平衡集、8平衡集、自造8低相关集）与CUB-200-2011（10平衡概念）加DDPM，伪标签来源为ResNet18监督分类器与CLIP零样本；每目标概念各取1k条w（概念active/inactive）做双向单概念干预；用独立ResNet50分类器作评测真值。",
+ "takeaways": [
+  "核心卖点是‘硬概念’而非软概率：把二进制潜变量当概念本体，使概念泄漏（软概率里藏任务信息）从根上被限制，且干预退化为翻一个bit，同时因概率形式支持直接按指定概念分布采样生成，突破了既有CBGM只能在已有样本上改概念的局限",
+  "把旁通道s也做成低维二元（5 bit）而非CB-AE的40维连续向量，既补上概念不完全性（纹理、光照、位姿），又便于用‘交换s后概念标签是否变’来量化解纠缠，并可顺带发现新概念",
+  "评测框架强调训练数据里概念间的相关性与偏置会被生成器放大，导致随机概念配置本身是OOD而模型生成失败；最小汉明距离干预子集正是用来把这类失败从CB层缺陷中剥离出来"
+ ],
+ "weaknesses": [
+  "正文在Table 1标题处即中断，所有实验结果数字（概念预测accuracy、cosine、TV、FID）一句都未给出，‘VHCB consistently outperforms’仅为文字断言；正文外只有附录承诺的消融（式3对称KL选择、D节）与DDPM扩展结果，无法核验",
+  "ECC采用均匀重复码、推理靠最近合法码word，但码率/重复次数K′−K、L′−L、平滑温度β、二元旁通道维度5等超参在整个正文里只一句‘细节见附录’带过，没有率-失真权衡曲线或β敏感性曲线，也没有与‘不加ECC的二元VAE’的对照消融",
+  "二元潜变量+离散码的硬性选择在低相关集上有效，但在40概念的大不平衡集（all set）里可信概念标签本就稀缺，伪标签来自ResNet18/CLIP分类器会把分类器自身的偏差带进训练，正文未见对伪标签噪声的鲁棒性分析，也未见与CB-AE在相同干预预算下的计算/样本开销对比",
+  "全文无理论结果：平滑重参数化(式2)的梯度估计偏差、对称KL对齐p(y|x)引入的椭圆分布偏倚（伪标签与真实概念之间的系统性偏移）均无界，且in-hoc训练路径只在正文提一句、实际只做post-hoc，声称的通用CBGM框架未被双向验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "概念瓶颈方法有可靠性价值，但实验缺失且未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/A Diffusion Model for Regular Time Series Generation from Irregular Data with Completion and Masking.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/A Diffusion Model for Regular Time Series Generation from Irregular Data with Completion and Masking.pdf",
+ "title": "A Diffusion Model for Regular Time Series Generation from Irregular Data with Completion and Masking",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "两步框架结合补全与掩蔽扩散模型，提升不规则时间序列生成质量",
+ "innovations": [
+  "提出两步框架：先使用TST补全不规则序列，再使用掩蔽扩散模型生成",
+  "将补全值视为弱条件信号，通过掩蔽最小化降低对补全值的依赖",
+  "改进ImagenTime的逆变换方法，通过聚合所有对应图像索引信息提高性能"
+ ],
+ "method_framework": "首先使用TST-based autoencoder补全不规则时间序列，然后使用基于视觉的扩散模型进行生成，在损失计算中掩蔽补全像素，避免对补全值的过度依赖",
+ "experiment_framework": "在12个数据集上评估，包括Sine、Stock、Energy等，使用30%、50%、70%缺失率，评估指标包括判别分数、预测MAE、Context-FID和相关性分数",
+ "takeaways": [
+  "将时间序列转换为图像表示可有效利用视觉扩散模型的优势",
+  "补全+掩蔽策略比简单零填充更有效，能创建更自然的邻域",
+  "改进的逆变换方法显著提升性能"
+ ],
+ "weaknesses": [
+  "方法依赖TST补全质量，若补全不准确可能影响最终结果",
+  "未充分探讨不同缺失率下方法的理论保证",
+  "对极端长序列(如10k以上)的泛化能力验证有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

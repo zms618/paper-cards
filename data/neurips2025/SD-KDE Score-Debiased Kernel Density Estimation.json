@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/SD-KDE Score-Debiased Kernel Density Estimation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/SD-KDE Score-Debiased Kernel Density Estimation.pdf",
+ "title": "SD-KDE: Score-Debiased Kernel Density Estimation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "分数函数去偏KDE提升密度估计，但真实数据验证不足",
+ "innovations": [
+  "提出SD-KDE方法，利用分数函数去偏KDE",
+  "理论证明达到O(n^{-8/(d+8)})的收敛率",
+  "即使使用带噪声的分数估计也能有效工作"
+ ],
+ "method_framework": "调整每个数据点沿分数函数方向移动一步，然后使用修改后的带宽进行标准KDE，选择特定步长和带宽消除KDE的主要偏差",
+ "experiment_framework": "1D/2D合成数据集和MNIST，与Silverman KDE比较，使用MISE作为评估指标",
+ "takeaways": [
+  "分数函数信息可显著提升密度估计性能",
+  "即使使用估计的分数函数也能获得改进",
+  "迭代应用SD-KDE可进一步提升估计质量"
+ ],
+ "weaknesses": [
+  "实验主要在合成数据上进行，真实世界数据验证有限",
+  "2D实验中使用的扩散模型估计分数性能不稳定",
+  "方法在高维数据上的扩展性未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

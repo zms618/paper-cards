@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Emoji Attack Enhancing Jailbreak Attacks Against Judge LLM Detection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Emoji Attack Enhancing Jailbreak Attacks Against Judge LLM Detection.pdf",
+ "title": "Emoji Attack: Enhancing Jailbreak Attacks Against Judge LLM Detection",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "利用emoji绕过LLM安全检测，揭示token切分漏洞但机制分析不足",
+ "innovations": [
+  "首次系统刻画Judge LLM(而非目标LLM)的token切分偏差：mid-split即可把不安全检出率平均降12%，并用gtr-t5-xl代理模型证明切分前后embedding余弦相似度越低、越易被误判为安全。",
+  "提出Emoji Attack：利用emoji既改变token边界又引入语义歧义/内在语义，通过one-shot上下文学习让目标LLM自然地在每个词中插emoji，黑箱、免梯度、可与现有越狱prompt叠加。",
+  "给出白箱cs-split位置选择策略(j*=argmin余弦相似度)最大化embedding扰动，并在10个Judge LLM、4种越狱方法上与GCG suffix对比，证明黑箱可迁移性优于GCG。"
+ ],
+ "method_framework": "威胁模型为post-hoc：攻击者不直接控Judge输入，而是让目标LLM生成带emoji的有害回复。形式上在token xi的位置j插入emoji E，使BPE把原词拆成子token+emoji token，扭曲上下文embedding。黑箱版用上下文学习的benign示例指示目标LLM插emoji；白箱版用代理embedding选最相似距离最小的插入位。Judge对回复打分超阈值即判unsafe。",
+ "experiment_framework": "Judge LLM：Llama Guard/2、ShieldLM、WildGuard、GPT-3.5/4、Gemini、Claude、DeepSeek、o3-mini；越狱方法Deepinception/ReNellm/Jailbroken/CodeChameleon(EasyJailbreak)；数据402 offensive phrases + 1432 harmful responses(AdvBench/LLM Self Defense/Red Teaming)；指标unsafe prediction ratio(越低越被绕过)；并做不同emoji对比、白箱位置优化、与GCG suffix对比。",
+ "takeaways": [
+  "Emoji Attack使加权平均不安全检出率从62.4%降到50.4%，ShieldLM在Deepinception上从71.9%暴跌到3.5%；WildGuard作为最敏感开源Judge仍降约23%。",
+  "白箱位置优化比随机插入进一步把检出率从59.6%(切分偏差)压到41.3%；开源Judge普遍脆弱，商用(GPT-4等)较鲁棒但面对越狱生成仍被绕过。",
+  "GCG优化的通用suffix在白箱Llama Guard上有效，但跨黑箱Judge迁移差(ShieldLM反弹到90.7%)，而Emoji Attack跨Judge泛化更好。"
+ ],
+ "weaknesses": [
+  "部分Judge/越狱组合下攻击反而升检出率(如Deepinception对LG2/Gemini/Claude)，作者归因于one-shot示例emoji插入不足，方法稳定性不够、依赖手工prompt设计。",
+  "机制分析仅用轻量代理模型gtr-t5-xl近似embedding相似度，未真正打开目标Judge的内部表示，因果解释停留在相关性层面；DeepSeek为何鲁棒也未搞清。",
+  "本质是揭示漏洞的攻击型工作，未提出防御方案；且存在被红队/滥用的现实风险，emoji语义效果因商用模型而异，复现可能随模型更新失效。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

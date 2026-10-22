@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Improving Your Model Ranking on orangeChatbot Arena by Vote Rigging.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Improving Your Model Ranking on orangeChatbot Arena by Vote Rigging.pdf",
+ "title": "Improving Your Model Ranking on Chatbot Arena by Vote Rigging",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 7,
+  "relevance": 8,
+  "overall": 6.5
+ },
+ "one_line": "揭示Chatbot Arena Elo排名可被数百张操纵票显著改变",
+ "innovations": [
+  "提出target-only刷票：通过水印或二分类器识别目标模型并专投其胜，但因目标仅占约1%对局而低效",
+  "提出omnipresent刷票：利用Elo机制，任何新投票即使不涉及目标模型也能影响其排名",
+  "在约170万条历史投票上复现，证明仅刷数百张票即可大幅改变排名，并评估多种防御机制"
+ ],
+ "method_framework": "Chatbot Arena用Elo评级。target-only策略在含目标模型的新对局中识别并投目标胜；omnipresent策略利用Elo中模型间评分传导，在任意对局中按目标模型利益操纵投票（如对目标的强对手投负、对其弱对手投正），从而间接抬升目标Elo。",
+ "experiment_framework": "在Chatbot Arena Notebook约170万条历史投票上模拟刷票；以Phi-3-small-8k-Instruct为目标模型，对比target-only与omnipresent策略的排名提升与所需票数；评估若干防御机制。",
+ "takeaways": [
+  "仅约2.7万张无操纵新票排名几乎不变，而刷票可使目标模型排名上升15位",
+  "omnipresent策略比target-only更高效，仅凭数百张票即可显著改变排名",
+  "现有防御机制不足以完全抵御，凸显持续加固众包排行榜可靠性的重要性"
+ ],
+ "weaknesses": [
+  "论文以攻击揭示为主，所评估防御机制的实际防护效果与落地成本讨论有限",
+  "刷票可行性依赖能在匿名对局中识别目标模型的水印/分类器，对无水印模型的可操作性需假设",
+  "结论针对Chatbot Arena的Elo机制，对其他排名系统（如Bradley-Terry）的迁移性未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Revisiting Diffusion Models From Generative Pre-training to One-Step Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Revisiting Diffusion Models From Generative Pre-training to One-Step Generation.pdf",
+ "title": "Revisiting Diffusion Models: From Generative Pre-training to One-Step Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "指出扩散蒸馏局限，证明纯GAN目标可将扩散模型转为单步生成器",
+ "innovations": [
+  "识别扩散蒸馏的关键局限：师生模型的步长大小和参数数量不匹配导致它们收敛到不同局部极小值，直接模仿是次优的",
+  "证明独立的GAN目标(无需依赖蒸馏损失)足以将预训练扩散模型转换为高效单步生成器",
+  "通过频率响应分析揭示GAN目标在弥合师生差异中的作用机制"
+ ],
+ "method_framework": "分析标准扩散蒸馏失败的原因：teacher和student的ODE步长不同导致它们在损失面上的轨迹不同，直接模仿teacher的输出次优。提出仅用非饱和GAN目标训练单步student，让student从扩散预训练初始化出发，直接学习生成分布，无需蒸馏损失。",
+ "experiment_framework": "在CIFAR-10上作为基线验证。对比标准蒸馏方法(如一致性蒸馏CD)。指标为FID。消融研究蒸馏损失和GAN目标各自的贡献。",
+ "takeaways": [
+  "扩散蒸馏中师生模型的步长和参数量不匹配是性能下降的主因",
+  "纯GAN目标足以将预训练扩散模型转为单步生成器，蒸馏损失非必需",
+  "频率响应分析揭示了GAN目标在弥补师生差距中的作用"
+ ],
+ "weaknesses": [
+  "主要在CIFAR-10小规模数据集验证，未在ImageNet等大规模数据集测试",
+  "纯GAN目标训练的稳定性问题(模式崩溃等)未充分讨论",
+  "仅做了小规模实验，结论的泛化性有待验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

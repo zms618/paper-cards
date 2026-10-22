@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/QLIP_A Dynamic Quadtree Vision Prior ENHANCES MLLM Performance without Retrain.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/QLIP_A Dynamic Quadtree Vision Prior ENHANCES MLLM Performance without Retrain.pdf",
+ "title": "QLIP: A Dynamic Quadtree Vision Prior Enhances MLLM Performance without Retraining",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "四叉树分块缓解CLIP偏置，免重训提升MLLM视觉理解",
+ "innovations": [
+  "识别CLIP视觉编码器受固定分辨率约束、无法对不相似图像产出分离嵌入，归因于介观偏置与插值偏置",
+  "提出图像四叉树的内容感知patch化，替代标准均匀网格patch",
+  "几行代码即可集成到现有MLLM，无需重训视觉编码器或LLM权重"
+ ],
+ "method_framework": "以四叉树对图像做内容感知的动态分块，使感兴趣/细节区域获得更高分辨率表示，而非固定均匀网格；将这些token按原投影喂给既有LLaVA式MLLM，即可在任意大图上做细粒度理解。",
+ "experiment_framework": "在LLaVA-1.5系列不同规模上评测通用VQA与细粒度V*基准；报告相对原模型精度提升，验证免重训增益。",
+ "takeaways": [
+  "QLIP在不重训视觉编码器/LLM下提升LLaVA-1.5各规模的通用VQA精度",
+  "在高难度V*基准上细粒度理解最高提升13.6%",
+  "内容感知动态分块可缓解CLIP固定分辨率与小目标信号不足的问题"
+ ],
+ "weaknesses": [
+  "属视觉编码器/分块增强的工程改进，与可靠性、不确定性、幻觉抑制主线关联弱",
+  "四叉树分块带来token数变化与推理开销，未充分分析成本-精度权衡",
+  "仅在LLaVA-1.5家族验证，对更新MLLM/VFM的兼容性需验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "视觉编码器工程改进，与可靠性主线关联弱但属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

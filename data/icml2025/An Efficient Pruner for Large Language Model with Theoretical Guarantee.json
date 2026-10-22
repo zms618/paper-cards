@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/An Efficient Pruner for Large Language Model with Theoretical Guarantee.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/An Efficient Pruner for Large Language Model with Theoretical Guarantee.pdf",
+ "title": "An Efficient Pruner for Large Language Model with Theoretical Guarantee",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.7
+ },
+ "one_line": "将LLM剪枝形式化为ℓ0优化，提出mAIHT方法并给出理论保证。",
+ "innovations": [
+  "将逐层剪枝形式化为 ℓ0 约束/惩罚优化，提出单调加速 IHT (mAIHT)，加速传统 IHT 收敛并提升解质量",
+  "设计自适应惩罚系数选择，可精确控制解的稀疏度",
+  "给出收敛性、收敛速率与风险上界的完整理论分析，弥合实验与理论差距"
+ ],
+ "method_framework": "在每层用校准数据拟合 XcW≈XW，约束 ‖W‖₀≤k；改用 ℓ0 惩罚拉格朗日形式 min ½‖XcW−XW‖²_F+λ‖W‖₀，用单调加速迭代硬阈值求解：每步做梯度步后按硬阈值投影到 k 稀疏集，并单调化+自适应 λ 控制稀疏度。",
+ "experiment_framework": "在 LLaMA-7B 上与 SparseGPT、Wanda、ADMM/FISTA-based pruning 等对比，在低到中等稀疏度下报告困惑度等评测指标，验证 mAIHT 优势。",
+ "takeaways": [
+  "ℓ0 惩罚优化+单调加速 IHT 可在一次性剪枝中获得有理论保证的解",
+  "自适应 λ 可精确控制稀疏度",
+  "mAIHT 在 LLaMA-7B 低/中稀疏度上优于 SOTA 剪枝方法"
+ ],
+ "weaknesses": [
+  "主线为模型压缩/剪枝，与可靠性×医学影像/多模态大模型推理主线无关",
+  "优势集中在低到中等稀疏度，极高稀疏度下的表现未充分说明",
+  "风险上界多为最坏情形刻画，与实际剪枝效果的定量对应关系较松"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "模型压缩与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

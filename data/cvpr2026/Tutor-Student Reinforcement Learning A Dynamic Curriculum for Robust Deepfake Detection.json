@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Tutor-Student Reinforcement Learning A Dynamic Curriculum for Robust Deepfake Detection.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Tutor-Student Reinforcement Learning A Dynamic Curriculum for Robust Deepfake Detection.pdf",
+ "title": "Tutor-Student Reinforcement Learning A Dynamic Curriculum for Robust Deepfake Detection",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "RL动态课程提升深度伪造检测，但计算开销大且泛化验证有限。",
+ "innovations": [
+  "Tutor-Student强化学习框架动态优化训练课程",
+  "历史感知状态表示包含EMA损失和遗忘计数",
+  "基于状态变化的奖励函数捕捉即时学习进度",
+  "跨数据集和跨方法评估显著提升泛化能力"
+ ],
+ "method_framework": "将训练过程建模为马尔可夫决策过程，Tutor(RL代理)观察样本状态(视觉特征、EMA损失、遗忘计数)，动态分配权重(0-1)给样本损失，通过PPO算法优化策略，奖励基于学生模型预测正确性的即时变化。",
+ "experiment_framework": "在DeepfakeBench和DF40数据集上评估，采用跨数据集(FF++训练，其他4个数据集测试)和跨方法(DF40测试)协议，使用AUC作为主要指标，与6个基线模型和9个SOTA方法比较。",
+ "takeaways": [
+  "动态课程学习优于静态课程，能有效解决困难样本",
+  "历史感知状态表示对理解样本难度至关重要",
+  "基于状态变化的奖励函数提供即时学习信号"
+ ],
+ "weaknesses": [
+  "计算开销增加，需要额外的RL训练阶段",
+  "状态表示设计复杂，可能难以扩展到其他任务",
+  "仅展示了在深度伪造检测任务上的有效性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "深度伪造检测属于可靠性主线，动态课程学习有可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

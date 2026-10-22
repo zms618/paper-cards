@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TreeGRPO_Tree-Advantage GRPO for Online RL Post-Training of Diffusion Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TreeGRPO_Tree-Advantage GRPO for Online RL Post-Training of Diffusion Models.pdf",
+ "title": "TreeGRPO: Tree-Advantage GRPO for Online RL Post-Training of Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "树结构扩散模型RL训练加速，但分支调优与长序列验证不足",
+ "innovations": [
+  "将扩散/流模型的去噪过程重构为搜索树，从共享初始噪声样本策略性分支生成多条候选轨迹，复用公共前缀",
+  "通过奖励反向传播计算步骤级优势，实现细粒度信用分配，克服轨迹级方法均匀信用分配的局限",
+  "多子分支 amortized 计算：单次前向传播支持多次策略更新，大幅提升样本效率"
+ ],
+ "method_framework": "TreeGRPO将去噪过程建模为搜索树结构。从共享初始噪声出发，在关键时间步分支采样多个候选轨迹，复用公共前缀的计算。树结构使得优势可以在树中反向传播，为每个去噪步骤计算特定优势（而非终端奖励均匀分配）。多子分支结构实现了单次前向传播支持多次策略更新的amortized计算。",
+ "experiment_framework": "在扩散模型和流匹配模型上，跨多个基准和奖励模型，对比DDPO、GRPO、DanceGRPO、FlowGRPO、MixGRPO等方法，测量训练速度、奖励值和效率-奖励Pareto前沿。",
+ "takeaways": [
+  "树结构采样和前缀复用显著提升扩散模型RL后训练的样本效率（2.4倍加速）",
+  "步骤级信用分配比轨迹级均匀分配更准确地指导策略更新",
+  "TreeGRPO在效率-奖励权衡空间上建立了更优的Pareto前沿"
+ ],
+ "weaknesses": [
+  "分支策略的时间步选择和分支数设置需要手动调优，自适应分支机制未探讨",
+  "仅在图像生成任务上验证，视频生成等更长序列任务的适用性未验证",
+  "树结构的内存开销在分支数大时可能成为瓶颈，未详细分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型RL训练加速，但未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

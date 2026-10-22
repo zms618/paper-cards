@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RAG4DMC_Retrieval-Augmented Generation for Data-Level Modality Completion.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RAG4DMC_Retrieval-Augmented Generation for Data-Level Modality Completion.pdf",
+ "title": "RAG4DMC: Retrieval-Augmented Generation for Data-Level Modality Completion",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "RAG框架补全多模态数据，双知识库+检索生成，但与主线关联弱",
+ "innovations": [
+  "首个基于RAG的数据级多模态补全方法，直接生成缺失模态的原始数据而非隐层特征插补",
+  "设计内外双知识库（数据集内完整样本+外部公开数据），配特征对齐和聚类过滤缓解模态/域偏移",
+  "提出多模态融合检索（模态内检索+跨模态重排）和候选选择机制，生成语义一致的补全结果"
+ ],
+ "method_framework": "RAG4DMC从数据集内完整样本和外部公开数据构建双知识库。所有样本编码为嵌入后，用特征对齐缓解模态和知识库间的嵌入错位，用聚类过滤裁剪不相关外部样本。多模态融合检索先做模态内检索再跨模态重排，获取相关上下文引导生成。生成多个候选后，用候选选择机制选出语义最连贯的补全结果。",
+ "experiment_framework": "在MSCOCO/Flickr30K（通用域）和RSICD（遥感域）数据集上评测；不同模态缺失率；下游任务评测：图文检索（Avg R@1 +5.0）和图像描述（CIDEr +5.0）；对比直接生成补全方法。",
+ "takeaways": [
+  "RAG可有效解决多模态数据补全问题，无需微调大模型即可利用外部知识",
+  "数据级补全（生成原始模态数据）优于特征级补全，对下游任务更友好",
+  "双知识库设计结合内部域特异性和外部规模性，配合对齐和过滤可有效缓解域偏移"
+ ],
+ "weaknesses": [
+  "与可靠性/医学影像主线关联较弱，属于多模态数据工程领域",
+  "依赖预训练生成模型的质量，补全结果的保真度受生成模型上限约束",
+  "前9页未见与最新多模态大模型直接补全方法的系统对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "多模态数据补全，双知识库设计有可靠性价值但未落地医学影像",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

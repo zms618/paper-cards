@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Wd1_Weighted Policy Optimization for Reasoning In Diffusion Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Wd1_Weighted Policy Optimization for Reasoning In Diffusion Language Models.pdf",
+ "title": "wd1: Weighted Policy Optimization for Reasoning in Diffusion Language Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "无比率策略优化wd1，降低扩散模型RL计算成本，数学推理达SOTA",
+ "innovations": [
+  "提出wd1：首个无比率（ratio-free）的扩散语言模型策略优化方法，避免了重要性采样比率的近似误差放大问题",
+  "理论上证明wd1可解释为能量引导的离散扩散训练结合负样本遗忘，具有理论正确性",
+  "扩展为wd1++（去噪步级加权），仅用20步RL训练即在MATH500达44.2%、GSM8K达84.5%，达到SOTA"
+ ],
+ "method_framework": "将反向KL正则化的策略优化目标重构为结果序列的加权对数似然。权重(−w+ + w−)依赖优势函数A，平衡正优势样本的强化和负优势样本的抑制。仅需当前参数化策略的单次似然近似，无需旧策略和参考策略的多次近似。",
+ "experiment_framework": "在LLaDA-8B扩散语言模型上验证。基线为扩散版GRPO（d1）。评估数学推理任务（MATH500、GSM8K）。对比计算成本和准确率提升。",
+ "takeaways": [
+  "扩散LLM的RL优化中，策略比率的近似误差是主要瓶颈，无比率目标可大幅降低方差和计算量",
+  "仅用20步RL训练即可达到显著的推理能力提升，样本效率极高",
+  "wd1可统一理解为能量引导扩散+负样本遗忘，为理解扩散模型RL提供了新视角"
+ ],
+ "weaknesses": [
+  "仅在LLaDA-8B一个模型上验证，其他扩散LLM架构（如Dream）的效果一致性未知",
+  "仅评估数学推理任务，开放式生成或对话场景的效果未验证",
+  "加权函数的具体设计（w+和w−的形式）对最终性能的影响未系统消融"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "扩散模型RL优化方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

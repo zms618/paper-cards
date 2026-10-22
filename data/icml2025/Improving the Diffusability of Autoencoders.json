@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Improving the Diffusability of Autoencoders.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Improving the Diffusability of Autoencoders.pdf",
+ "title": "Improving the Diffusability of Autoencoders",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "谱分析发现自编码器高频干扰扩散，尺度正则化微调提升生成质量。",
+ "innovations": [
+  "对现代自编码器做谱分析，定位大瓶颈通道自编码器隐空间中异常的高频分量及其对扩散粗到细合成的干扰",
+  "提出解码器尺度等变（scale equivariance）正则化，以极小代码改动与至多20K步微调对齐隐空间与RGB频率",
+  "在图像与视频LDM上同时显著改善FID/FVD"
+ ],
+ "method_framework": "在自编码器解码器中施加尺度等变正则，使不同频率分量在隐空间与像素空间对齐，去除干扰扩散粗到细进程的高频分量；仅需少量微调即可重塑隐空间频率分布。",
+ "experiment_framework": "在ImageNet-1K 256²图像生成与Kinetics-700视频生成上，对比vanilla自编码器与加SE正则的自编码器；指标FID/FVD及训练收敛速度，涵盖FluxAE与CogVideoX-AE。",
+ "takeaways": [
+  "自编码器隐空间的高频分量是扩散生成质量的隐性瓶颈，且在大瓶颈通道下更明显",
+  "尺度等变正则以不到20K步微调即将ImageNet图像FID降低19%",
+  "Kinetics-700视频FVD至少降低44%，并加速DiT骨干收敛"
+ ],
+ "weaknesses": [
+  "方法需微调已训好的自编码器，并非即插即用，仍有额外训练成本",
+  "收益主要在大瓶颈自编码器上验证，小瓶颈/不同架构的收益不明确",
+  "高频干扰的机制解释偏经验性，缺乏严格的频率-扩散理论推导"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

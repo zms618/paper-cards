@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Odesteer_A Unified ODE-BASED Steering Framework for LLM Alignment.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Odesteer_A Unified ODE-BASED Steering Framework for LLM Alignment.pdf",
+ "title": "ODESteer: A Unified ODE-Based Steering Framework for LLM Alignment",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "将激活引导统一为ODE框架，以密度比为障碍函数实现多步自适应引导。",
+ "innovations": [
+  "提出统一 ODE 理论框架：证明激活相加是某 ODE 解的一阶近似，把设计引导方向转化为设计障碍函数",
+  "以正负激活的对数密度比定义障碍函数，构造 ODE 实现多步、自适应引导，突破单步引导局限",
+  "ODESteer 在 TruthfulQA +5.7%、UltraFeedback +2.5%、RealToxicityPrompts +2.4% 上一致超过 SOTA 激活引导方法"
+ ],
+ "method_framework": "将推理时的激活轨迹建模为 ODE；常规 activation addition 是该 ODE 解的一阶欧拉近似；引导方向设计等价于从控制论构造障碍函数。ODESteer 取正/负样本激活的对数密度比为障碍函数，据此构造 ODE 做多步自适应地把激活推向期望区域。",
+ "experiment_framework": "在 LLM 对齐基准上对比 SOTA 激活引导方法；报告 TruthfulQA(真实性)、UltraFeedback(有用性)、RealToxicityPrompts(毒性)上的增益。",
+ "takeaways": [
+  "激活引导可被统一在 ODE 框架下理解，单步引导只是一阶近似",
+  "以对数密度比为障碍函数的多步自适应引导优于单步方法",
+  "该框架同时提升真实性、有用性与毒性抑制"
+ ],
+ "weaknesses": [
+  "需为正负行为各收集一批激活样本估计密度比，数据收集成本仍在",
+  "多步 ODE 引导增加推理开销，正文未报告时延权衡",
+  "属LLM对齐/可信AI但落地非医学影像/多模态推理，相关性中等偏上"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "LLM对齐与可信AI，但非医学影像/多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

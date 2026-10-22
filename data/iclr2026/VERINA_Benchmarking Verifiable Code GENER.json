@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VERINA_Benchmarking Verifiable Code GENER.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VERINA_Benchmarking Verifiable Code GENER.pdf",
+ "title": "VERINA: Benchmarking Verifiable Code Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "构建Lean可验证代码生成基准，发现最强模型证明成功率仅4.9%",
+ "innovations": [
+  "提出VERINA可验证代码生成竞技场，对代码、规约(specification)、证明(proff)及其组合做整体且模块化的评测框架",
+  "构建189个人工遴选的Lean编程任务，含详细问题描述、参考实现、形式化规约与大量测试套件",
+  "填补现有基准只评单一组件、缺乏端到端可验证代码生成整体评测的空白"
+ ],
+ "method_framework": "VERINA将可验证代码生成拆解为代码生成、形式化规约生成、代码-规约对齐证明三个组件及其组合，提供模块化指标；任务均在Lean证明助手中给出参考实现、形式化规约与测试套件，端到端检验代码是否满足规约且可被机器证明。",
+ "experiment_framework": "评测多个SOTA LLM(含OpenAI o3)；指标为代码正确率、规约的健全性与完备性、证明成功率；单试设定；报告o3为72.6%/52.3%/4.9%。",
+ "takeaways": [
+  "当前最强模型OpenAI o3代码正确率72.6%，规约完备性与健全性仅52.3%，证明成功率仅4.9%(单试)",
+  "可验证代码生成的主要瓶颈在证明生成，亟需提升LLM定理证明能力",
+  "代码正确性、规约质量与证明成功率三者差距悬殊，端到端可验证生成远未解决"
+ ],
+ "weaknesses": [
+  "属于代码形式化验证方向，虽属可靠性但落地域为代码而非医学影像/多模态推理，与主线为中相关",
+  "仅单试(one trial)评测证明成功率，未给多次采样/搜索预算下的上限，可能低估模型证明潜力",
+  "189个任务规模偏小且为Lean专用，迁移到其他证明助手/语言的泛化性未评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "代码形式化验证属可靠性主线，但落地域不符",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

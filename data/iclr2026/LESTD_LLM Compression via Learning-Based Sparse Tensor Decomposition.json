@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/LESTD_LLM Compression via Learning-Based Sparse Tensor Decomposition.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/LESTD_LLM Compression via Learning-Based Sparse Tensor Decomposition.pdf",
+ "title": "LESTD: LLM Compression via LEARNING-BASED Sparse Tensor Decomposition",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "稀疏张量分解压缩LLM，仅优化注意力块，缺乏全面评估",
+ "innovations": [
+  "学习共享基元与稀疏核心张量的两阶段压缩框架",
+  "基于闭式重要性评分的核心张量剪枝机制",
+  "直接在压缩域执行推理，避免全权重重构"
+ ],
+ "method_framework": "LeSTD采用两阶段框架：第一阶段学习高质量共享基元，通过迭代优化捕获多头注意力头间的共同结构；第二阶段基于导出的闭式重要性评分对核心张量进行超稀疏化，实现高压缩比同时保持模型性能。",
+ "experiment_framework": "在GPT-J(6B)、Llama2(13B)和OPT(30B)模型上评估，使用WikiText-2、MathQA、GSM8K和TruthfulQA数据集，与SVD、剪枝和量化方法比较压缩率与准确率权衡。",
+ "takeaways": [
+  "利用多头注意力头间的共享子空间结构进行联合压缩",
+  "基于Frobenius重构误差的闭式重要性评分提供理论剪枝依据",
+  "直接在压缩域执行推理避免全权重重构，提升计算效率"
+ ],
+ "weaknesses": [
+  "仅关注多头注意力块，未涉及前馈网络等其他组件",
+  "核心张量稀疏化可能丢失部分模型表达能力",
+  "实验主要在标准硬件上评估，未充分探索特定硬件优化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM压缩技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

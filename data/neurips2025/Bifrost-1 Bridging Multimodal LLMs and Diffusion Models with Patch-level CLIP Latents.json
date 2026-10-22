@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Bifrost-1 Bridging Multimodal LLMs and Diffusion Models with Patch-level CLIP Latents.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Bifrost-1 Bridging Multimodal LLMs and Diffusion Models with Patch-level CLIP Latents.pdf",
+ "title": "Bifrost-1: Bridging Multimodal LLMs and Diffusion Models with Patch-level CLIP Latents",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "用CLIP潜变量桥接MLLM与扩散模型，实现可控图像生成",
+ "innovations": [
+  "使用与MLLM原生对齐的patch级CLIP潜变量作为沟通媒介",
+  "轻量级潜在ControlNet架构",
+  "保留MLLM原始参数的多模态理解能力"
+ ],
+ "method_framework": "BIFROST-1框架通过MLLM的视觉生成分支输出patch级CLIP潜变量，经下采样和2D重塑后输入潜在ControlNet，指导预训练扩散模型生成图像，采用解耦训练策略。",
+ "experiment_framework": "ImageNet数据集上评估FID、sFID、IS指标，与多种基线架构比较，包括2D可查询token、VAE特征、非对齐视觉编码器等变体。",
+ "takeaways": [
+  "利用预训练模型原生对齐的表示可显著提高训练效率",
+  "轻量级ControlNet适配比端到端训练更有效",
+  "patch级表示能更好保留空间信息"
+ ],
+ "weaknesses": [
+  "仅展示ImageNet上的结果，缺乏更复杂场景的泛化能力",
+  "未充分讨论生成图像的可靠性和不确定性估计"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

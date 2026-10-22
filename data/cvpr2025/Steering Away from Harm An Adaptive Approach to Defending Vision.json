@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Steering Away from Harm An Adaptive Approach to Defending Vision.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Steering Away from Harm An Adaptive Approach to Defending Vision.pdf",
+ "title": "Steering Away from Harm An Adaptive Approach to Defending Vision",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "ASTRA用自适应转向防御VLM越狱，但实验覆盖有限",
+ "innovations": [
+  "基于图像归因的转向向量构建",
+  "自适应激活转向机制",
+  "零训练高效防御框架"
+ ],
+ "method_framework": "ASTRA通过随机消除视觉token并关联越狱响应，构建有害特征方向向量；推理时通过投影计算自适应调整激活，移除有害方向",
+ "experiment_framework": "在MiniGPT-4、Qwen2-VL等模型上测试，使用ImageNet生成对抗样本，评估毒性分数和攻击成功率，对比多种基线方法",
+ "takeaways": [
+  "图像归因方法可有效识别关键有害token",
+  "自适应转向机制在保持良性输入性能的同时有效防御攻击",
+  "零训练防御框架显著降低部署成本"
+ ],
+ "weaknesses": [
+  "仅针对视觉-语言模型，未扩展到纯语言模型",
+  "对抗样本生成依赖PGD攻击，可能无法覆盖所有攻击类型"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "自适应转向机制直接解决VLM越狱问题，属于可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

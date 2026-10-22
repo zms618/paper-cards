@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Discrete Markov Probabilistic Models An Improved Discrete Score-Based Framework with sharp convergence bounds.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Discrete Markov Probabilistic Models An Improved Discrete Score-Based Framework with sharp convergence bounds.pdf",
+ "title": "Discrete Markov Probabilistic Models: An Improved Discrete Score-Based Framework with sharp convergence bounds under minimal assumptions",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.25
+ },
+ "one_line": "离散扩散模型理论改进，收敛界证明但实验规模有限",
+ "innovations": [
+  "将前向加噪过程特化为{0,1}^d超立方上的连续时间Markov链，可经Poisson时钟精确采样，标签均匀随机翻转",
+  "证明反向跳过程的强度是前向过程某函数的条件期望，是经典score函数的离散对应，强化与score-based模型的理论对齐",
+  "在最小假设下建立DMPM的收敛界，避免既有离散扩散依赖复杂前向核或不稳定比值估计器的问题"
+ ],
+ "method_framework": "在离散空间上构造前向连续时间Markov链(Poisson时钟均匀翻转标签)加噪；基于时间反演Markov动力学推导出反向去噪跳过程，其跳转强度由离散score(前向函数的条件期望)给出；训练该离散score/denoiser后即可精确采样反向过程生成离散数据，兼具稳健性与效率。",
+ "experiment_framework": "在低维Bernoulli分布数据集与高维binary MNIST上，与既有离散扩散/score-based方法比较，评估生成离散结构的质量(似然/样本质量)。",
+ "takeaways": [
+  "离散score可表达为前向过程函数的条件期望，使离散生成建模获得与连续score模型一致的理论基础",
+  "基于Poisson时钟的CTMC构造训练目标简单稳定，且在最小假设下可证明收敛"
+ ],
+ "weaknesses": [
+  "实验规模偏小(低维Bernoulli与binary MNIST)，未在大规模离散/多模态生成上验证",
+  "纯生成建模理论，与可靠性/验证器/过程奖励等主线无直接关联",
+  "仅依据前9页阅读，完整收敛定理证明与全部实验表未完全覆盖"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

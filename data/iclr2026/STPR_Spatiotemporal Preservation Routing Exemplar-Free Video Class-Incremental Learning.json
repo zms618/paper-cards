@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/STPR_Spatiotemporal Preservation Routing Exemplar-Free Video Class-Incremental Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/STPR_Spatiotemporal Preservation Routing Exemplar-Free Video Class-Incremental Learning.pdf",
+ "title": "StPR: Spatiotemporal Preservation and Routing for Exemplar-Free Video Class-Incremental Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "常规视频增量学习，FSSD与TD-MoE组合提升精度但缺乏主线关联",
+ "innovations": [
+  "提出帧共享语义蒸馏FSSD，联合通道敏感度与分类贡献识别语义稳定通道并选择性正则化",
+  "提出基于时序分解的混合专家TD-MoE，按时序动态路由任务相关专家",
+  "实现免exemplar、推理时无需任务ID的统一视频类增量学习框架"
+ ],
+ "method_framework": "显式解耦并保留时空信息：FSSD通过联合通道敏感度与分类贡献定位语义稳定通道，选择性正则化以保留旧知识；在此语义空间上用TD-MoE根据时序动态路由专家，从而无需存储样本或任务ID即可缓解遗忘并建模时序动态。",
+ "experiment_framework": "在UCF101、HMDB51、SSv2与Kinetics400上评测，对比依赖exemplar或静态图像类方法，以类增量精度、记忆占用与可解释性为指标。",
+ "takeaways": [
+  "选择性蒸馏稳定语义通道可在免样本下缓解遗忘",
+  "时序分解MoE可在无需任务ID下路由到任务相关专家",
+  "在四个视频基准上优于现有VCIL基线并更高效可解释"
+ ],
+ "weaknesses": [
+  "属视频动作识别的持续学习，与主线（LLM可靠性/医学影像/多模态推理）无关联",
+  "免样本设定下旧类精度随任务数增长的退化曲线未充分展示",
+  "FSSD通道选择准则的可迁移性跨数据集消融有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "视频动作识别持续学习，与可靠性主线无关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

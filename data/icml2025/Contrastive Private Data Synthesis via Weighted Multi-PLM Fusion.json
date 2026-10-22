@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Contrastive Private Data Synthesis via Weighted Multi-PLM Fusion.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Contrastive Private Data Synthesis via Weighted Multi-PLM Fusion.pdf",
+ "title": "Contrastive Private Data Synthesis via Weighted Multi-PLM Fusion",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "多PLM融合与对比学习提升差分隐私文本合成，但计算成本高且缺乏理论指导。",
+ "innovations": [
+  "提出Top-Q投票机制，用有限私有样本更准确地估计私有数据分布",
+  "设计动态加权多PLM融合策略，协作利用多个预训练模型的生成能力",
+  "利用低质量合成样本进行对比生成，通过对比学习提升合成数据质量"
+ ],
+ "method_framework": "WASP框架：(1)分布估计——用Top-Q投票机制从有限私有样本中提取关键信息，指导多个PLM的生成方向；(2)多模型融合——动态加权多个开源和闭源PLM的输出，利用不同模型的互补优势；(3)对比生成——将低质量合成样本作为负例，引导生成模型产生更高质量的合成数据；(4)全程在差分隐私约束下进行。",
+ "experiment_framework": "6个标准数据集；6个开源+3个闭源PLM；对比DP微调生成和Private Evolution两类基线；指标为下游任务模型性能；验证不同隐私预算下的效果。",
+ "takeaways": [
+  "多PLM融合比单PLM在差分隐私数据合成中效果更好",
+  "对比生成策略能有效利用低质量合成样本提升最终数据质量",
+  "WASP在数据稀缺场景下显著优于现有PE方法"
+ ],
+ "weaknesses": [
+  "仅在文本数据上验证，图像等其他模态的隐私合成效果未知",
+  "多模型调用增加了计算成本和API费用，实际部署经济性未讨论",
+  "对比生成的负例选择策略缺乏理论指导"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

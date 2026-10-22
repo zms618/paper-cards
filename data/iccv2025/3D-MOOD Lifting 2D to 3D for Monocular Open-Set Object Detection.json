@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/3D-MOOD Lifting 2D to 3D for Monocular Open-Set Object Detection.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/3D-MOOD Lifting 2D to 3D for Monocular Open-Set Object Detection.pdf",
+ "title": "3D-MOOD: Lifting 2D to 3D for Monocular Open-Set Object Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "组合现有方法解决单目开放集3D检测，新指标但实验不充分",
+ "innovations": [
+  "首次把单目开放集 3D 检测定义成完整任务并建出跨数据集基准（Omni3D 训练 → Argoverse 2 / ScanNet 验证集测试），同时覆盖新场景与 novel 类别；提出 ODS，用 3D 欧氏距离按 GT 半径等比阈值 [0.5,1.0] 匹配替代 IoU3D，缓解小/薄物体（sink、picture）在单目设定被 IoU 判死",
+  "3D bbox head 从 2D 查询回归 12 维可微抬升参数（投影 3D 中心偏移 [û,v̂]、缩放对数深度、缩放对数维度、6D 旋转，Eq.2），配辅助度量深度头以相机 embedding 条件化（UniDepth 式），在跨数据集训练时解耦图像分辨率与内参的歧义",
+  "canonical image space：固定 Hc×Wc，resize 到高或宽达 Hc/Wc 后中心 pad 并同步 pad 相机内参（Fig.3），保证训练/推理同一图像内 K 不变也不破坏中心投影假设；geometry-aware 3D query 用深度特征 cross-attention 生成 q_3d 喂 3D head，并对该 cross-attention 断梯度稳定训练（Eq.3-4）"
+ ],
+ "method_framework": "G-DINO 开放集 2D 检测 → canonical 图像空间（同步 pad 内参）→ 辅助度量深度头（FPN+Transformer+cam embedding）→ 几何先验条件化生成 3D 查询 → 12 维 3D bbox head 抬升 2D 框 → L2D+L3D+λ_depth·L_depth 端到端",
+ "experiment_framework": "Omni3D（6 数据集汇总，176,573 训练图/98 类）闭集；开集转 Argoverse 2（4806 图户外）与 ScanNet（6240 图室内）；指标 AP3D / AP3D^dist / ODS（含 mATE/mASE/mAOE）；对比 Cube R-CNN、Uni-MODE、OVM3D-Det（正文截断于 4.3 首段）",
+ "takeaways": [
+  "发现 IoU3D 对单目小/薄物体匹配失效并改用按 GT 半径归一化的距离匹配，先自查评测口径是否偏袒基线，比直接比模型更重要",
+  "跨数据集训练时把图像与相机内参一起规范化到 canonical 空间，比只 resize 再补零 padding 更少破坏中心投影假设，是这类多分辨率数据汇总训练的通解"
+ ],
+ "weaknesses": [
+  "主体是 G-DINO + Metric3D/UniDepth + Cube R-CNN 式抬升头的组合：3D 定位用投影中心偏移+对数深度、维度直接回归、深度头照搬 UniDepth，真正自创的只有 canonical space 与几何感知 3D query；正文在开集结果第一句截断，§4.4 跨域结果与 §4.6 消融（canonical space、几何感知 query、深度头各自贡献）均未进正文",
+  "开集设定是「Omni3D 训练，AV2/ScanNet 评测」，但训练含 6 数据集 98 类、评测只用两集官方类，novel 类的划分标准与 base/novel 在各数据集间的对应关系未交代，novel class 到底测了哪些类无法复核",
+  "所有提升都报在作者新提的 ODS / AP3D^dist 口径上，与 Cube R-CNN、Uni-MODE 在原 Omni3D 的 IoU 匹配口径下不可直接比，换指标等于换了评价基准；开集实验无方差无多次种子，而 120 epoch + batch 128 下数值波动未知"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3D检测任务与可靠性主线无交点，仅工程价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

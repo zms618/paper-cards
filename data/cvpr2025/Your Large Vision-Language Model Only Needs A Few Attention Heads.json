@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Your Large Vision-Language Model Only Needs A Few Attention Heads.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Your Large Vision-Language Model Only Needs A Few Attention Heads.pdf",
+ "title": "Your Large Vision-Language Model Only Needs A Few Attention Heads",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "LVLM中少数注意力头可实现视觉定位，但信息损失严重",
+ "innovations": [
+  "发现LVLM中的定位头(localization heads)",
+  "基于注意力总和和空间熵的定位头选择标准",
+  "无需微调的视觉定位框架"
+ ],
+ "method_framework": "通过分析LVLM中特定注意力头的注意力图，识别出能精确定位文本描述对象的'定位头'，仅用3个定位头的注意力图即可生成边界框或分割掩码",
+ "experiment_framework": "在RefCOCO、RefCOCO+和RefCOCog数据集上评估，与微调LVLM方法和无训练方法对比，使用Acc@0.5和cIoU指标",
+ "takeaways": [
+  "大型视觉语言模型中存在专门负责定位的注意力头",
+  "无需微调即可利用LVLM进行视觉定位",
+  "注意力分析可揭示模型内部工作机制"
+ ],
+ "weaknesses": [
+  "仅使用3个定位头可能丢失部分信息",
+  "未探索不同任务类型下的定位头特性",
+  "对复杂推理场景的定位能力有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "LVLM定位分析，无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

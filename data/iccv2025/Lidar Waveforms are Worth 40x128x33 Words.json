@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/Lidar Waveforms are Worth 40x128x33 Words.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Lidar Waveforms are Worth 40x128x33 Words.pdf",
+ "title": "Lidar Waveforms are Worth 40x128x33 Words",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "Transformer处理LiDAR波形提升点云质量，但泛化性与计算成本存疑",
+ "innovations": [
+  "利用Transformer架构联合处理相邻波形",
+  "将峰值检测转化为分类问题处理多回波",
+  "扩展到超分辨率点云生成",
+  "在真实雾天条件下验证最大范围提升17m"
+ ],
+ "method_framework": "采用U-Net架构的时空Transformer处理波形，先进行匹配滤波，将时间轴分为33个区块，分类区块是否被占用并回归距离偏移，支持多峰值检测",
+ "experiment_framework": "在CARLA合成数据和真实Microvision FWL数据集上评估，使用Chamfer距离和召回率作为指标，对比传统DSP和现有瞬态成像方法",
+ "takeaways": [
+  "波形联合处理可显著提升低SNR和恶劣天气下的点云质量",
+  "将峰值检测转化为分类问题可有效处理多回波场景",
+  "合成数据训练+真实数据微调的有效策略"
+ ],
+ "weaknesses": [
+  "计算复杂度可能高于传统DSP",
+  "仅针对特定LiDAR传感器设计，泛化性有待验证",
+  "超分辨率功能依赖于波形假设，可能不适用于所有场景"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LiDAR处理技术属于传感器工程，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

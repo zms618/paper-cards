@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Adaptive Fission Post-training Encoding for Low-latency Spike Neural Networks.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Adaptive Fission Post-training Encoding for Low-latency Spike Neural Networks.pdf",
+ "title": "Adaptive Fission: Post-training Encoding for Low-latency Spike Neural Networks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "自适应分裂编码降低SNN延迟，但内存开销和校集依赖限制应用",
+ "innovations": [
+  "自适应分裂编码：将高敏感神经元分裂为不同尺度和权重的组",
+  "两阶段迭代管道：敏感度估计和阈值分裂",
+  "理论保证指数级误差减少",
+  "硬件友好的并行实现"
+ ],
+ "method_framework": "基于神经元敏感度分析，将高影响神经元分裂为多个子神经元，通过优化阈值分配实现混合精度推理，无需重新训练",
+ "experiment_framework": "CIFAR-100/ImageNet数据集，ResNet/VGG/Transformer架构，Lynxi HP201神经形态芯片，测量精度/内存/延迟/能耗",
+ "takeaways": [
+  "敏感度度量结合梯度和残留膜电位，精准定位关键神经元",
+  "阈值优化基于膜电位累积分布，实现指数级精度提升",
+  "方法兼容多种SNN架构和转换方法"
+ ],
+ "weaknesses": [
+  "增加神经元数量带来内存开销",
+  "依赖小规模校准集的统计估计",
+  "未探索极端低比特场景下的性能"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

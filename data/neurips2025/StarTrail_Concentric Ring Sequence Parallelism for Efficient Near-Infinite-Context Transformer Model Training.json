@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/StarTrail_Concentric Ring Sequence Parallelism for Efficient Near-Infinite-Context Transformer Model Training.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/StarTrail_Concentric Ring Sequence Parallelism for Efficient Near-Infinite-Context Transformer Model Training.pdf",
+ "title": "StarTrail: Concentric Ring Sequence Parallelism for Efficient Near-Infinite-Context Transformer Model Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "StarTrail通过环并行优化Transformer长序列训练，但内存开销显著",
+ "innovations": [
+  "引入额外并行维度将GPU分组为团队",
+  "将peer-to-peer通信划分为子环结构",
+  "设计预处理、环阶段和后处理三阶段流程"
+ ],
+ "method_framework": "StarTrail将GPU分为团队，在团队内进行all-gather操作，然后在子环中进行P2P通信，最后通过reduce-scatter合并结果，显著减少通信量",
+ "experiment_framework": "在H100和A100集群上测试GPT和DiT模型，对比吞吐量、内存消耗和扩展性，使用不同序列长度和GPU数量",
+ "takeaways": [
+  "通信-计算重叠优化策略",
+  "团队大小C的灵活配置适应不同硬件环境"
+ ],
+ "weaknesses": [
+  "内存消耗增加7.9%-30.79%",
+  "最优配置依赖硬件环境需额外调优"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

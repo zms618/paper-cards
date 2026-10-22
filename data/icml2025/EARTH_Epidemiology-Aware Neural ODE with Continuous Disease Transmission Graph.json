@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/EARTH_Epidemiology-Aware Neural ODE with Continuous Disease Transmission Graph.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/EARTH_Epidemiology-Aware Neural ODE with Continuous Disease Transmission Graph.pdf",
+ "title": "EARTH: Epidemiology-Aware Neural ODE with Continuous Disease Transmission Graph",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.4
+ },
+ "one_line": "流行病机理与神经ODE融合的疫情预测，但泛化性与外推鲁棒性存疑",
+ "innovations": [
+  "提出EANO将神经ODE与流行病传播机理融合，刻画疫情演化中的空间传播过程并处理不规则观测/缺失状态",
+  "提出GLTG建模由封控等外部因素导致的全局感染趋势，用以引导局部传播动力学",
+  "用交叉注意力融合全局趋势与局部区域传播模式，兼顾全局一致性与局部差异"
+ ],
+ "method_framework": "端到端疫情预测框架：以带流行病机理的连续神经ODE(EANO)在区域传播图上演化状态，用GLTG抽取全局趋势信号，再以交叉注意力将全局趋势与局部传播动态融合，输出连续时间的病例预测。",
+ "experiment_framework": "在真实疫情数据集上做短期/中长期病例预测，指标为MAE/RMSE等；与时序深度预测、经典机理模型(SIR类)及其他神经ODE基线对比，消融验证EANO/GLTG/交叉注意力。",
+ "takeaways": [
+  "将流行病机理注入神经ODE比纯数据驱动模型更贴合传播过程",
+  "显式建模全局趋势(如封控)与局部传播的互补可提升预测",
+  "连续时间建模能更好处理不规则观测与缺失状态"
+ ],
+ "weaknesses": [
+  "与主线（可靠性/可信AI/多模态大模型推理/医学影像）关联弱，仅公共卫生时序预测",
+  "依赖区域间移动/关联信号数据，换地区泛化与因果可解释性未充分论证",
+  "前9页未见对疫情外推(训练期后新发毒株/政策突变)鲁棒性的评估"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

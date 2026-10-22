@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Panoptic Pairwise Distortion Graph.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Panoptic Pairwise Distortion Graph.pdf",
+ "title": "Panoptic Pairwise Distortion Graph",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "将图像对表示为区域级拓扑图，评估失真类型与严重度。",
+ "innovations": [
+  "把图内scene graph扩展到图间，提出Distortion Graph(DG)：以区域为节点、结构化编码失真类型/严重度/比较与质量分。",
+  "贡献区域级数据集PANDASET、不同难度的PANDABENCH基准与高效生成DG的PANDA架构。",
+  "证明现有MLLM即使给显式区域提示也难以理解区域级退化，而用DG训练/提示可引出区域级失真理解能力。"
+ ],
+ "method_framework": "将对比图像质量评估从整图分析转为区域级结构化建模：把anchor与target图按区域对齐，在区域间建图，边/节点上标注失真类型、严重度与优劣比较；用PANDA架构直接生成该图，从而把稠密退化信息压缩为可解释图结构。",
+ "experiment_framework": "在PANDABENCH(多难度区域级任务)上评测；测试现有SoTA MLLM在显式区域提示下的表现；对比PANDA架构；发现MLLM区域级失真理解失败，而DG训练/提示可改善。",
+ "takeaways": [
+  "现有MLLM缺乏区域级退化理解能力，即便有显式区域提示。",
+  "Distortion Graph提供了结构化、可解释的成对图像质量评估范式。",
+  "用DG作训练/提示可引出模型的区域级失真理解。"
+ ],
+ "weaknesses": [
+  "新任务+数据集，区域级标注成本高、规模有限。",
+  "PANDA架构为专用模型，泛化到非失真类图像比较的能力未明。",
+  "质量分与主观感知的对齐仍需更多人类研究校准。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "图像质量评估与可靠性主线无实质交点，仅为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

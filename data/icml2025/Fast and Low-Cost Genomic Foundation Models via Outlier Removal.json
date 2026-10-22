@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Fast and Low-Cost Genomic Foundation Models via Outlier Removal.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Fast and Low-Cost Genomic Foundation Models via Outlier Removal.pdf",
+ "title": "Fast and Low-Cost Genomic Foundation Models via Outlier Removal",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "GERM用Hopfield层替代注意力提升基因组模型量化与适配性能",
+ "innovations": [
+  "用无异常值Hopfield层替代传统自注意力层，从架构层面消除激活异常值，提升量化鲁棒性",
+  "提出GERM-T小步持续学习策略，减少预训练到微调之间的分布偏移，提升低秩适配性能",
+  "系统验证了GERM在CPU-only环境和量化部署下的性能优势，适合资源受限的生物医学实验室"
+ ],
+ "method_framework": "GERM模型将DNABERT-2等基因组模型的注意力层替换为无异常值Hopfield关联记忆层。Hopfield层通过联想记忆机制实现序列建模，同时从架构上避免传统注意力中出现的极端激活值(outliers)。异常值会严重损害量化(INT8/INT4)和低秩适配(LoRA/QLoRA)的性能。GERM-T在持续学习阶段采用小步长微调，逐步适应新任务，减少分布偏移。",
+ "experiment_framework": "在多个基因组学基准任务上对比DNABERT-2、GenomeOcean等SOTA模型。评估维度：(1)下游任务MCC指标；(2)量化后性能下降(INT8/INT4)；(3)LoRA/QLoRA/LoftQ适配性能；(4)CPU-only推理速度；(5)持续学习策略对比。",
+ "takeaways": [
+  "消除异常值后，基因组模型的量化性能和LoRA适配性能均显著提升，精度损失可接受",
+  "GERM在CPU-only环境下仍保持实用的推理速度，适合无GPU的生物医学实验室",
+  "小步持续学习(GERM-T)比直接全量微调更有利于后续低秩适配"
+ ],
+ "weaknesses": [
+  "Hopfield层替代注意力的方案在通用大模型中已被提出，本文更多是将已有效率技术迁移到基因组领域",
+  "仅在DNA序列任务上验证，对蛋白质组学、单细胞等其他基因组模态的适用性未知",
+  "与最新的大规模基因组模型(如hyenaDNA)的对比缺失"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

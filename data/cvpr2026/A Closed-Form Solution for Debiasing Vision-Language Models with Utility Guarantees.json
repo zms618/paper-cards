@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/A Closed-Form Solution for Debiasing Vision-Language Models with Utility Guarantees.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Closed-Form Solution for Debiasing Vision-Language Models with Utility Guarantees.pdf",
+ "title": "A Closed-Form Solution for Debiasing Vision-Language Models with Utility Guarantees Across Modalities and Tasks",
+ "scores": {
+  "novelty": 7,
+  "depth": 7.5,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 7.1
+ },
+ "one_line": "闭式解去偏VLM，理论优雅但实验证据不足",
+ "innovations": [
+  "把公平性写成「去偏嵌入与所有组原型等相似」⟨u,p_g1⟩=…=⟨u,p_gn⟩，等价于 u⊥属性子空间 A=span{a_i=p_gi−p_g1}，只投 A 而非像 PRISM-mini/Orth-Proj 那样投整组原型子空间 S，从而不误删 doctor 等内容语义",
+  "由 Lemma 1 把球面搜索降到 span{e_A∥,e_A⊥} 的二维单位圆，再标量化成 min_α w1 L(α)+w2 V(α)（L=属性泄漏、V=自效用在球面单位球上的损失），并用 Chebyshev 最坏情况 min_α sup_{w1+w2=1} 消掉任务相关的权重偏好，得到闭式 α*=(E−‖e_A⊥‖)/√(E²−‖e_A∥‖²)，对所有 w 同时帕累托最优",
+  "用 GPT-5 在上下文内做组原型构造：同一窗口既插入组限定词（male doctor）又生成多套同义改写（man doctor / masculine doctor），取锚点与 m 个改写嵌入的球面均值 p̄_g 作组原型，避免 SANER 那种与输入模板脱钩的词表插入"
+ ],
+ "method_framework": "LLM 生成锚点提示与同义改写→文本编码器取球面均值得各组原型→构造属性方向 a_i 与子空间 A→把原嵌入分解为平行/正交分量→在二维子空间内按 Chebyshev 最坏情况解出闭式 α*→u*=√(1−α*²)e_A⊥/‖e_A⊥‖+α*e_A∥/‖e_A∥‖，图像/文本双模态各求一次，无训练无标注。",
+ "experiment_framework": "零样本分类用 CelebA(发色二分类) 与 FACET，公平性指标 ΔAvg_EO/ΔMax_EO，效用用 macro F1；检索用 Flickr30K 与 COCO2017，指标 MaxSkew@1000 与 R@5/R@10；生图用 34 个职业模板各生成 100 张，统计 SP_t 与 CLIP score、人工性别误配率 AccG；实验以 bootstrap 报均值与方差。",
+ "takeaways": [
+  "「与所有组原型等相似」这一等价改写（转成对 p_g1 的差向量正交）是把公平约束变成可闭式求解的线性投影的钥匙，可整体搬到任何球面嵌入的去偏场景",
+  "用最坏情况（Chebyshev）而非固定 w 去选 α*，让同一个去偏嵌入在未知下游权重下都帕累托最优，避免了为每个任务重新挑偏好权重 w 的复制成本",
+  "只投属性子空间 A 而非组原型张成的 S，是「去偏不毁语义」的关键——往 S 上投会把 doctor、nurse 这类内容信息一起抹掉"
+ ],
+ "weaknesses": [
+  "公平性的度量本身是余弦相似度代理（⟨u,p_g⟩ 相等），正文自承这是文献沿用近似，但定理的帕累托最优性完全建立在这个代理上，代理与实际 Equal Opportunity / MaxSkew / SP 之间的对应关系未做误差界刻画",
+  "去偏强度由单一闭式 α* 全局决定，不随下游任务调整；理论上任务无关，但实验里零样本分类、检索、生图的三套指标（EO 违反、MaxSkew、SP）量纲互不可比，无法证明同一个 α* 在三个任务上都真的取到各自帕累托点，只是各自报告了点估计",
+  "正文前 9 页止于表 2 说明段，表 2/表 3 的具体数值、生图侧的 BLIP-2 性别标注错误率影响、以及 5.2.1 换用其它 LLM 的鲁棒性结果全部缺失；生图公平性依赖自动性别标注器，该标注器误判会直接污染 SP_t 与 AccG"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "闭式去偏VLM方法，触及可靠性主线但实验证据不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

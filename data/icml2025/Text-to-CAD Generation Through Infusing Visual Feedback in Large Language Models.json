@@ -1,0 +1,37 @@
+{
+ "title": "Text-to-CAD Generation Through Infusing Visual Feedback in Large Language Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "LLM骨干交替序列学习与视觉反馈，提升Text-to-CAD生成精度。",
+ "innovations": [
+  "指出 CAD 本质多模态(参数序列+渲染视觉)且渲染为多对一映射，两者信号对有效训练都关键",
+  "提出 CADFusion 框架，以 LLM 为骨干交替 SL(序列学习)与 VF(视觉反馈)两阶段训练",
+  "把渲染得到的视觉对象作为反馈信号回注训练，弥补仅用 ground-truth 参数序列监督的不足"
+ ],
+ "method_framework": "以 LLM 为骨干把文本描述映射为 CAD 参数序列；先在 SL 阶段用 ground-truth 参数序列做序列监督学习；再在 VF 阶段把生成的参数序列渲染为视觉对象、将视觉反馈回注模型，利用多对一渲染特性提供额外训练信号，交替两阶段提升生成精度。",
+ "experiment_framework": "在 Text-to-CAD 参数序列生成基准上评测；对比仅序列监督的方法；指标含生成 CAD 的结构/几何精度与忠实度，验证注入视觉反馈两阶段训练的增益。",
+ "takeaways": [
+  "仅用参数序列监督不够，渲染视觉反馈对 Text-to-CAD 训练至关重要",
+  "交替 SL/VF 两阶段能同时利用多模态特性与多对一渲染信号",
+  "把视觉反馈回注 LLM 是提升 CAD 参数序列生成质量的有效途径"
+ ],
+ "weaknesses": [
+  "属 CAD 生成应用，与可靠性/医学影像/多模态大模型推理主线关联较弱",
+  "依赖可微/可渲染反馈管线，工程链路较重",
+  "对自由形状/复杂装配级 CAD 的可扩展性前9页未验证"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Text-to-CAD Generation Through Infusing Visual Feedback in Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Text-to-CAD Generation Through Infusing Visual Feedback in Large Language Models.pdf",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

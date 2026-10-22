@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/ERICT_Enhancing Robustness by Identifying Concept Tokens in Zero-Shot Vision Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ERICT_Enhancing Robustness by Identifying Concept Tokens in Zero-Shot Vision Language Models.pdf",
+ "title": "ERICT: Enhancing Robustness by Identifying Concept Tokens in Zero-Shot Vision Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "通过token级注意力掩码增强零样本VL模型鲁棒性",
+ "innovations": [
+  "提出ERICT方法在推理阶段直接缓解伪相关问题",
+  "利用辅助提示识别包含不变特征的视觉token",
+  "设计token级注意力掩码引导模型关注相关区域"
+ ],
+ "method_framework": "ERICT包含两步：1)通过辅助提示生成token级掩码识别不变特征；2)将掩码应用于视觉编码器CLS token的注意力权重，使模型关注相关图像区域。ERICT-C通过聚合类别提示嵌入解决辅助提示词获取挑战。",
+ "experiment_framework": "在Waterbirds、CelebA和Urbancars数据集上评估，使用ViT-B/32、ViT-B/16和ViT-L/14作为骨干网络，比较最差组准确率(WG)、平均准确率(AVG)和差距(Gap)。",
+ "takeaways": [
+  "利用视觉token的语义信息进行模型去偏",
+  "通过调整注意力机制而非修改嵌入分布来增强鲁棒性",
+  "理论分析证明了二值掩码能有效降低误差边界"
+ ],
+ "weaknesses": [
+  "辅助提示词选择可能影响性能",
+  "在某些数据集上ERICT-C表现优于ERICT",
+  "方法依赖于预训练模型的注意力机制"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

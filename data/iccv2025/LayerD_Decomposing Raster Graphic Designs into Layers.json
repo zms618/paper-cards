@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/LayerD_Decomposing Raster Graphic Designs into Layers.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/LayerD_Decomposing Raster Graphic Designs into Layers.pdf",
+ "title": "LayerD Decomposing Raster Graphic Designs into Layers",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "LayerD统一图层分解任务，但迭代框架和固定迭代限制限制了复杂设计处理。",
+ "innovations": [
+  "迭代顶层提取和背景完成框架",
+  "基于调色板的前景和背景细化方法",
+  "针对图层分解不一致性的评估协议"
+ ],
+ "method_framework": "LayerD通过迭代提取顶层和背景完成实现图层分解，利用BiRefNet进行顶层抠图，LaMa进行背景修复，并引入基于调色板的细化方法提升质量。",
+ "experiment_framework": "在Crello数据集上评估，与YOLO基线和VLM基线比较，使用RGB L1和Alpha软IoU作为指标，考虑图层对齐和编辑距离。",
+ "takeaways": [
+  "统一子任务可减少误差累积",
+  "利用领域知识（如图层均匀外观）可显著提升质量",
+  "针对评估难题设计的新协议能更好衡量分解质量"
+ ],
+ "weaknesses": [
+  "迭代过程可能导致误差累积",
+  "调色板细化方法可能不适用于复杂纹理设计",
+  "最大迭代次数固定为3可能限制处理复杂设计的能力"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "图形学任务，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

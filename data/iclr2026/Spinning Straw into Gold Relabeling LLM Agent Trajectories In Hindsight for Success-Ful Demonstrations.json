@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Spinning Straw into Gold Relabeling LLM Agent Trajectories In Hindsight for Success-Ful Demonstrations.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Spinning Straw into Gold Relabeling LLM Agent Trajectories In Hindsight for Success-Ful Demonstrations.pdf",
+ "title": "Spinning Straw into Gold: Relabeling LLM Agent Trajectories in Hindsight for Successful Demonstrations",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "用辅助LLM重标agent轨迹达成目标，缓解长程任务监督稀缺",
+ "innovations": [
+  "挖掘被既有后训练方法忽视的监督源：agent rollout中无意间达成的目标，用辅助LLM回溯重标",
+  "将轨迹与其实际达成目标配对用于额外微调，灵活兼容SFT与DPO",
+  "提出无关动作掩码与样本重加权两种技术缓解重标数据的次优性"
+ ],
+ "method_framework": "让辅助LLM审阅每条已完成轨迹，用自然语言列出该轨迹实际达成的所有目标，作为重标目标；把(轨迹,重标目标)对加入微调；为抑制重标数据次优，掩码与达成目标无关的动作、对样本按质量重加权。",
+ "experiment_framework": "在长程agent任务(如ALFWorld)上评测，对比标准SFT/DPO基线；报告HSL同时改进SFT与DPO，在目标空间更丰富的长程任务增益更大；在ALFWorld上仅用1/4真值示范即超越全量数据训练的基线。",
+ "takeaways": [
+  "agent rollout中隐含的'意外成功目标'是可被回收利用的监督信号",
+  "回溯重标既能提升SFT也能提升DPO，且长程/多目标任务增益更明显",
+  "该方法样本高效：ALFWorld上1/4数据即可超过全数据基线"
+ ],
+ "weaknesses": [
+  "重标质量依赖辅助LLM的判断，重标错误会被当作监督反传，缺乏对错标的过滤机制",
+  "评测集中在ALFWorld等仿真器，对真实web/工具调用agent的迁移证据有限",
+  "无关动作掩码与重加权的增益来源与最优配置未充分消融分离"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "缓解长程任务监督稀缺，与可靠性主线交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

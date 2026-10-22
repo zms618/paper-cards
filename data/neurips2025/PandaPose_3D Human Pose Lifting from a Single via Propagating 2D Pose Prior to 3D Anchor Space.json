@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/PandaPose_3D Human Pose Lifting from a Single via Propagating 2D Pose Prior to 3D Anchor Space.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/PandaPose_3D Human Pose Lifting from a Single via Propagating 2D Pose Prior to 3D Anchor Space.pdf",
+ "title": "PandaPose: 3D Human Pose Lifting from a Single via Propagating 2D Pose Prior to 3D Anchor Space",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "3D锚空间缓解单图姿态估计误差传播，但依赖2D预训练器",
+ "innovations": [
+  "联合自适应3D锚点设置，减少输入2D姿态误差传播",
+  "关节级深度分布估计，解决自遮挡和深度模糊问题",
+  "2D姿态先验引导的特征采样，提高计算效率并减少背景噪声"
+ ],
+ "method_framework": "提出3D锚空间作为中间表示，包含关节级3D锚点、深度感知特征提升和锚点-特征交互解码器，通过锚点到关节的集成预测生成鲁棒3D姿态",
+ "experiment_framework": "在Human3.6M、MPI-INF-3DHP和3DPW三个基准数据集上进行评估，使用MPJPE和PA-MPJPE作为主要指标，特别关注遮挡场景下的性能",
+ "takeaways": [
+  "自适应锚点设计可有效减少输入噪声对3D姿态估计的影响",
+  "关节级深度分布预测是解决自遮挡问题的有效方法",
+  "2D姿态先验引导的特征采样可提高计算效率"
+ ],
+ "weaknesses": [
+  "方法依赖预训练的2D姿态估计器，可能引入额外误差",
+  "深度分布估计使用稀疏监督，可能限制精度",
+  "模型参数量较大(15.2M)，可能影响实时应用"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.3,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

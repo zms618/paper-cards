@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Enhancing Rating-Based Reinforcement Learning to Effectively Leverage Feedback from Large Vision-Language.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Enhancing Rating-Based Reinforcement Learning to Effectively Leverage Feedback from Large Vision-Language.pdf",
+ "title": "Enhancing Rating-Based Reinforcement Learning to Effectively Leverage Feedback from Large Vision-Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "改进评分RL以利用VLM反馈，但未解决其固有偏差问题。",
+ "innovations": [
+  "针对VLM评分反馈的噪声/偏置问题改进评分式RL训练",
+  "把VLM作为可扩展的AI反馈源替代人工评分奖励",
+  "系统处理VLM评分与真实奖励间的不对齐以稳定RL训练"
+ ],
+ "method_framework": "ERL-VLM 用大视觉语言模型对智能体行为给出评分作为奖励信号，改进标准评分式RL以更好吸收这类AI反馈(如校准评分、处理评分噪声)，从而在不依赖人工奖励函数的情况下训练对齐智能体。",
+ "experiment_framework": "在采用VLM反馈的RL任务基准上对比标准评分式RL与人工/其他AI奖励方法；指标为任务回报与对齐程度；考察VLM反馈相对人工反馈的可扩展性与性能。",
+ "takeaways": [
+  "VLM评分反馈可作为可扩展奖励信号替代部分人工评分",
+  "直接用VLM评分训练存在不对齐问题，需专门的增强处理",
+  "ERL-VLM在多项任务上有效利用了VLM反馈并逼近人工反馈效果"
+ ],
+ "weaknesses": [
+  "VLM评分本身的偏差/幻觉会被奖励模型继承，未充分审计",
+  "主要在仿真/基准任务验证，真实具身场景证据有限",
+  "评分式RL对奖励尺度敏感，鲁棒性分析不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

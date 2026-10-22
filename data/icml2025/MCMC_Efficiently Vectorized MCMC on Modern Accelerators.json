@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/MCMC_Efficiently Vectorized MCMC on Modern Accelerators.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MCMC_Efficiently Vectorized MCMC on Modern Accelerators.pdf",
+ "title": "Efficiently Vectorized MCMC on Modern Accelerators",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "FSM优化MCMC避免同步，但复杂度高且适用性有限",
+ "innovations": [
+  "将MCMC算法转换为有限状态机(FSM)避免同步开销",
+  "提出理论分析框架量化FSM设计的加速效果",
+  "开发步骤捆绑和成本分摊技术优化FSM实现"
+ ],
+ "method_framework": "将MCMC算法分解为有限状态机，通过vmap实现去同步化并行，避免while循环导致的同步瓶颈",
+ "experiment_framework": "在椭圆切片采样、HMC-NUTS和延迟拒绝MH等算法上测试，展示最高一个数量级的加速",
+ "takeaways": [
+  "FSM框架可有效解决MCMC算法在自动向量化工具中的同步问题",
+  "步骤捆绑和成本分摊技术可显著提升FSM实现效率"
+ ],
+ "weaknesses": [
+  "FSM实现增加了代码复杂度",
+  "理论分析基于简化模型，实际应用中可能存在偏差",
+  "仅适用于特定类型的MCMC算法"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

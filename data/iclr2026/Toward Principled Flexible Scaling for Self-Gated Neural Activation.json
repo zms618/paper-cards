@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Toward Principled Flexible Scaling for Self-Gated Neural Activation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Toward Principled Flexible Scaling for Self-Gated Neural Activation.pdf",
+ "title": "Toward Principled Flexible Scaling for Self-Gated Neural Activation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "提出FleS激活解决Transformer中自门控失效问题，但增益微小且与主线无关",
+ "innovations": [
+  "识别并命名'非局部张力'：自门控激活引入的非局部依赖在已精细建模非局部上下文的Transformer层中反而失效",
+  "从决策视角系统分析非局部张力的成因，提出重思非局部线索如何编码并转化为自适应缩放系数",
+  "据此设计FleS自门控激活模型，用可解释的缩放系数重校准各特征对滤波更新的贡献"
+ ],
+ "method_framework": "把自门控激活ϕ(x̃)=ρ(x̃)·x̃中的门控权重ρ视为对特征贡献的决策。针对非局部张力，重新设计非局部线索的编码与向自适应缩放系数的转化方式，使激活在CNN与Transformer层都能有效发挥作用。",
+ "experiment_framework": "在多个流行基准上验证FleS；对比GELU/SiLU及近期自门控激活在CNN与Transformer层的表现；报告分类精度提升与可解释性分析。",
+ "takeaways": [
+  "自门控激活的非局部依赖在已自带非局部建模的Transformer中产生张力，是其失效主因",
+  "从决策视角重新编码非局部线索可让激活在Transformer层也获益",
+  "FleS以可解释的缩放系数改进特征重校准"
+ ],
+ "weaknesses": [
+  "属激活函数层面的改进，增益通常微小且高度依赖具体架构/调参",
+  "正文前9页未见完整主表，相对强基线的精度提升幅度需看后文确认",
+  "属基础网络组件方向，与可靠性主线及医学影像、多模态推理落地域无关"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "激活函数改进与可靠性主线及落地域无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

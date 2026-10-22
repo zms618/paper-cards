@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Self-Disentanglement and Re-Composition for Cross-Domain Few-Shot Segmentation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Self-Disentanglement and Re-Composition for Cross-Domain Few-Shot Segmentation.pdf",
+ "title": "Self-Disentanglement and Re-Composition for Cross-Domain Few-Shot Segmentation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 6.5,
+  "overall": 6
+ },
+ "one_line": "ViT特征解耦加权重组，CD-FSS任务1.9点增量改进。",
+ "innovations": [
+  "指出现有CD-FSS中'比较训练/测试样本距离'范式存在特征纠缠：合理比较与无意义比较被等权对待。",
+  "基于ViT结构的自然分解解释纠缠成因，并提出对各ViT组件的跨图比较学习权重。",
+  "通过自解耦与重组合特征同时提升泛化与微调，在1-shot/5-shot下分别超SOTA约1.92%/1.88%。"
+ ],
+ "method_framework": "先对ViT特征做自然分解，发现在距离计算中被分解的ViT组件在跨图比较时相互纠缠、合理与无意义比较等权；据此学习对所有组件比较的权重，得到解耦特征后重组合用于掩膜预测，既利于跨域迁移也利于目标域微调。",
+ "experiment_framework": "在跨域少样本分割(CD-FSS)基准上，源域训练后迁移到未见目标域；对比SOTA CD-FSS方法，报告1-shot与5-shot下平均精度，指标为mIoU/平均准确率，并做权重学习与解耦组件的消融。",
+ "takeaways": [
+  "现有距离比较式CD-FSS的性能瓶颈部分来自特征纠缠，而非单纯标注不足。",
+  "对跨图组件比较加权解耦并重组，可稳定带来约1.9个点的跨域增益。"
+ ],
+ "weaknesses": [
+  "增益幅度约1.9点，属增量式改进，未突破CD-FSS范式。",
+  "纠缠的'合理/无意义比较'界定依赖人工分解假设，缺乏更严格的理论刻画。",
+  "仅在分割任务验证，向其他跨域密集任务的迁移未讨论。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

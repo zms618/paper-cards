@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/BPTT_Can Biologically Plausible Temporal Credit Assignment Rules Match BPTT for Neural Similarity E-prop as an.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/BPTT_Can Biologically Plausible Temporal Credit Assignment Rules Match BPTT for Neural Similarity E-prop as an.pdf",
+ "title": "Can Biologically Plausible Temporal Credit Assignment Rules Match BPTT for Neural Similarity? E-prop as an Example",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.0
+ },
+ "one_line": "比较e-prop与BPTT在神经相似度上的表现，发现架构影响大于学习规则",
+ "innovations": [
+  "首次系统比较生物合理学习规则(e-prop)与BPTT在神经数据相似度上的差异，而非仅比较任务性能",
+  "发现模型架构和初始权重条件对神经相似度的影响超过学习规则的选择",
+  "证明在匹配任务精度的条件下，e-prop可达到与BPTT相当的神经数据相似度"
+ ],
+ "method_framework": "在两个灵长类神经科学数据集(Mante 2013, Sussillo 2015)对应的任务上训练RNN，分别使用BPTT、截断BPTT和e-prop等学习规则。训练后用Procrustes距离量化RNN隐状态与真实神经记录的相似度，在精度-距离平面上比较不同学习规则的轨迹。控制初始权重增益和学习率等变量。",
+ "experiment_framework": "两个数据集：Mante 2013（感觉运动决策任务）和Sussillo 2015（延迟反应任务）。学习规则包括BPTT/truncated BPTT/e-prop。指标为Procrustes距离（模型-神经数据相似度）和任务精度。4个随机种子重复。",
+ "takeaways": [
+  "在匹配精度条件下，e-prop与BPTT的Procrustes距离相当，说明生物合理规则可产生类似大脑的表征",
+  "初始权重增益对神经相似度的影响大于学习规则选择，暗示归纳偏置比优化算法更关键",
+  "e-prop可分解为低学习率BPTT加近似误差，两者共享部分低学习率BPTT成分"
+ ],
+ "weaknesses": [
+  "仅在简单RNN和两个灵长类任务上验证，未扩展到现代深度时序模型",
+  "Procrustes距离仅衡量线性对齐后的相似度，可能遗漏非线性神经编码差异",
+  "仅比较e-prop一种生物合理规则，其他规则(DECOLLE, eligibility propagation等)未纳入"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

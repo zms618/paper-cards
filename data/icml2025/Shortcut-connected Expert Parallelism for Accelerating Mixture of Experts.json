@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Shortcut-connected Expert Parallelism for Accelerating Mixture of Experts.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Shortcut-connected Expert Parallelism for Accelerating Mixture of Experts.pdf",
+ "title": "Shortcut-connected Expert Parallelism for Accelerating Mixture of Experts",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "ScMoE通过捷径连接解耦通信计算，但模型质量提升有限且泛化性不足。",
+ "innovations": [
+  "捷径连接MoE架构(ScMoE)打破传统通信与计算依赖",
+  "自适应重叠并行策略实现通信与计算完全重叠",
+  "支持不同MoE放置频率的扩展设计"
+ ],
+ "method_framework": "ScMoE架构结合top-1 MoE处理前层表示和共享专家处理当前层表示，通过捷径连接实现并行处理，配合自适应调度策略最大化通信与计算重叠。",
+ "experiment_framework": "在SwinV2-MoE-S、GPT2-MoE和LLaMA2-MoE模型上评估，使用ImageNet-1K和零样本任务，对比top-1/top-2 MoE和共享专家MoE，测量训练/推理速度和准确率。",
+ "takeaways": [
+  "捷径连接位置选择对性能影响显著，Pos-2在准确率和重叠时长间取得最佳平衡",
+  "自适应调度策略可根据硬件特性动态优化计算位置，最大化重叠效果"
+ ],
+ "weaknesses": [
+  "仅关注效率提升，对模型质量提升有限，仅在特定场景下略微超越基线",
+  "实验主要集中在特定硬件配置，泛化性验证不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/3D Student Splatting and Scooping.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3D Student Splatting and Scooping.pdf",
+ "title": "3D Student Splatting and Scooping",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "Student-t替代高斯溅射，支持负分量减少参数，但实验验证不足",
+ "innovations": [
+  "用自由度ν可学习的Student-t替代高斯作混合分量：ν→1退化为Cauchy、ν→∞退化为高斯，并给出t分布在仿射+投影变换下的闭式2D形式(式4)，保留可解析求导",
+  "允许权重w∈R、opacity经tanh约束到[-1,1]，使分量可'挖减'密度从而用更少分量拟合环面等拓扑；并明确评估平方参数化(式5)会引入O(n²)分量间交互而弃用",
+  "因ν与µ/Σ强耦合，改用SGHMC采样：以能量形式P(θ,r)∝exp(-L-½rᵀr)构造后验，对µ施加由opacity门控的自适应摩擦F与噪声N，并推导含Beta函数的分量回收/搬迁闭式更新(式12)"
+ ],
+ "method_framework": "把3DGS重写为非归一化t混合模型，每分量含µ、Σ、颜色c、可正可负的opacity o与自由度ν；渲染用仿射投影后的2D t分布做alpha混合；优化以SGHMC采样µ、Adam管其余参数，低透明度分量按闭式规则回收并新增5%零透明度分量。",
+ "experiment_framework": "Mip-NeRF360/Tanks&Temples/Deep Blending共11景；对比3DGS、GES、3DHGS、FreGS、Scaffold-GS、3DGS-MCMC、Mip-NeRF；指标PSNR/SSIM/LPIPS，并扫描δ~2.6δ分量数做参数效率实验。",
+ "takeaways": [
+  "'换基元'比'加正则'更能撬动参数效率：把分布族参数ν变成可学习量，让模型自己决定胖尾还是尖峰，这一'让分布族可学习'的思路可迁移到其它混合模型",
+  "负分量的代价要量化：作者先算出平方参数化会带来O(n²)分量间交互再放弃，这种'先评估复杂度再选参数化'的取舍写法值得借鉴",
+  "参数效率用'相对SfM初始点数的倍数'而非绝对数量横扫，规避了不同场景绝对规模差异带来的比较偏差"
+ ],
+ "weaknesses": [
+  "Tab.1基线数值直接摘自各自论文且'需适配后才能比较'，却与本文三次运行均值并列；关键梯度与部分实验细节推到补充材料，正文不可核验",
+  "报三次运行却只给均值无标准差，且正文未见t分布、负分量、SGHMC三个新组件的逐一消融，无法区分'82%分量削减'主要来自哪一处",
+  "多个超参为经验设定：门控k=100/t=0.995、每轮最多搬迁5%、新增5%零透明度分量，均无原理依据或敏感性分析；SGHMC无收敛性分析，采样效率只在补充材料讨论",
+  "只在静态新视角合成上评测，未报告训练/渲染耗时与显存，'更少分量'的实际加速收益只有间接论证；正文在图5处截断"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3D重建技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "title": "FlatQuant: Flatness Matters for LLM Quantization",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 6,
+  "overall": 5.8
+ },
+ "one_line": "从损失曲面平坦度解释LLM量化异常值，提出平坦化变换方法。",
+ "innovations": [
+  "从损失曲面flatness角度重新解释LLM量化outlier问题",
+  "提出flatten权重/激活中outlier的方法，使等间距量化点误差最小",
+  "在多位宽(2/3/4-bit)上均有效"
+ ],
+ "method_framework": "分析LLM中outlier通道导致量化误差大的原因是其flatness特性；在量化前对outlier做flatten变换(如scaling/clipping)使分布更均匀；再做等间距PTQ量化；flatten参数可通过少量校准数据学习。",
+ "experiment_framework": "多个LLM(Llama/Mistral等)；在下游任务评测perplexity与零样本精度；对比GPTQ/SmoothQuant/AWQ/QUIP；bit-width为2/3/4-bit。",
+ "takeaways": [
+  "FlatQuant在2-4-bit量化下perplexity优于SmoothQuant/AWQ等",
+  "flatness视角为outlier处理提供了统一解释",
+  "flatten方法即插即用，不改变推理拓扑"
+ ],
+ "weaknesses": [
+  "属于LLM压缩推理，与可靠性/可信AI主线关联中等",
+  "flatten变换本身引入额外计算，未量化净加速",
+  "在极低bit(2-bit)下仍有精度损失"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/FlatQuant_Flatness Matters for LLM Quantization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FlatQuant_Flatness Matters for LLM Quantization.pdf",
+ "raw_overall": 5.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

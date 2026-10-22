@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/GS-ID Illumination Decomposition on Gaussian Splatting via Adaptive Light Aggregation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/GS-ID Illumination Decomposition on Gaussian Splatting via Adaptive Light Aggregation.pdf",
+ "title": "GS-ID Illumination Decomposition on Gaussian Splatting via Adaptive Light Aggregation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "球面高斯混合模型实现光照分解，但创新有限且依赖预训练模型",
+ "innovations": [
+  "自适应球面高斯混合模型(SGMs)建模局部光照",
+  "每splat的阴影感知向量处理多光源阴影",
+  "扩散模型引导的材质先验优化光照-材质联合优化"
+ ],
+ "method_framework": "结合环境图与自适应优化的球面高斯混合模型表示光照，每splat关联阴影方向向量，使用扩散模型法线与材质先验指导分解",
+ "experiment_framework": "TensoIR合成数据集/ADT真实扫描数据集/Mip-NeRF 360真实场景，PSNR/SSIM/LPIPS/法线MAE指标",
+ "takeaways": [
+  "自适应光照模型有效分离局部高光与全局环境光",
+  "阴影感知向量提升材质估计准确性",
+  "扩散先验解决光照-材质-几何联合优化歧义"
+ ],
+ "weaknesses": [
+  "训练时间比原始3DGS长50%",
+  "依赖预训练扩散模型，可能限制泛化能力",
+  "SGMs数量与位置初始化需要手动调整"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3DGS光照分解，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

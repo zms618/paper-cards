@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/AuroRA_Breaking Low-Rank Bottleneck of LoRA with Nonlinear Mapping.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/AuroRA_Breaking Low-Rank Bottleneck of LoRA with Nonlinear Mapping.pdf",
+ "title": "AuroRA: Breaking Low-Rank Bottleneck of LoRA with Nonlinear Mapping",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "AuroRA在LoRA中插入非线性层提升参数效率，但计算开销增加",
+ "innovations": [
+  "引入自适应非线性层(ANL)突破LoRA低秩瓶颈",
+  "结合固定非线性(tanh)和可学习非线性(B-spline)提升表达能力",
+  "理论证明AuroRA具有更低近似误差和有界梯度"
+ ],
+ "method_framework": "在LoRA的两个线性投影器间插入自适应非线性层，形成MLP-like结构，使用压缩维度(er≪r)实现更高效的参数利用",
+ "experiment_framework": "22个数据集和6个预训练模型，涵盖NLP和CV任务，与LoRA及其他PEFT方法对比，评估参数效率、性能和鲁棒性",
+ "takeaways": [
+  "非线性映射可显著提升LoRA的表达能力而不增加参数",
+  "固定和可学习非线性组件的结合能实现更好的性能",
+  "低秩配置下仍能保持良好性能"
+ ],
+ "weaknesses": [
+  "计算复杂度虽与LoRA相当，但非线性层可能增加训练时间",
+  "未充分探讨不同任务类型的最优配置",
+  "理论分析中的常数c未给出具体值"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

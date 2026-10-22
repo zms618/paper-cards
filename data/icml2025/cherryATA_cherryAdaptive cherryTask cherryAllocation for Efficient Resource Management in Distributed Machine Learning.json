@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/cherryATA_cherryAdaptive cherryTask cherryAllocation for Efficient Resource Management in Distributed Machine Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/cherryATA_cherryAdaptive cherryTask cherryAllocation for Efficient Resource Management in Distributed Machine Learning.pdf",
+ "title": "ATA: Adaptive Task Allocation for Efficient Resource Management in Distributed Machine Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "分布式训练自适应任务分配，理论最优但与主线关联弱",
+ "innovations": [
+  "在计算时间分布未知情形下自适应异构/随机worker分配任务",
+  "理论证明ATA可识别最优任务分配，收敛到与已知分布方法可比的性能",
+  "克服异步方法greedy分配在worker速度不均时的过度计算浪费"
+ ],
+ "method_framework": "异步分布式训练每轮需完成B个任务，各worker计算时间服从未知且各异的随机分布。ATA在线学习各worker速度并自适应分配任务，无需预先知道分布，使期望完成时间最小，接近'若已知分布则最优分配'的性能。",
+ "experiment_framework": "分布式ML异步训练场景，worker计算时间异构随机；对比greedy异步方法与已知分布的Oracle分配；报告训练时间/资源效率。",
+ "takeaways": [
+  "ATA在分布未知下达到与已知分布方法相当的任务分配",
+  "避免了greedy异步分配在速度不均时的计算浪费",
+  "理论上保证收敛到最优分配"
+ ],
+ "weaknesses": [
+  "属分布式系统优化，与主线(可靠性/医学影像/多模态推理)关联弱",
+  "假设任务间无时间依赖、worker一次只做单任务，现实straggler/通信开销建模前9页未展开",
+  "理论最优性在随机分布假设下成立，负载剧烈漂移时的鲁棒性需更多实证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.18,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

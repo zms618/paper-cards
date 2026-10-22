@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/GraphGPT_Generative Pre-trained Graph Eulerian Transformer.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/GraphGPT_Generative Pre-trained Graph Eulerian Transformer.pdf",
+ "title": "GraphGPT: Generative Pre-trained Graph Eulerian Transformer",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "欧拉路径线性化图结构，用GPT预训练统一多粒度图任务。",
+ "innovations": [
+  "提出Graph Eulerian Transformer(GET)，以欧拉路径将图或采样子图可逆地转换为token序列",
+  "用next-token prediction与scheduled masked-token prediction两种自监督任务预训练",
+  "以统一生成式预训练+微调覆盖图级/边级/节点级预测，在OGB大规模基准匹敌或超越SoTA"
+ ],
+ "method_framework": "把图结构经欧拉路径线性化为包含节点、边、属性的可逆token序列，从而复用标准Transformer编/解码器；在序列上做GPT式自监督预训练（NTP/SMTP），再按下游任务微调，规避GNN过平滑/过挤压。",
+ "experiment_framework": "在Open Graph Benchmark等大规模图基准评测；与GNN及图Transformer/图预训练方法比较；覆盖图/边/节点级任务；指标为分类/回归精度；报告简单性下的可比或更优性能。",
+ "takeaways": [
+  "欧拉路径线性化使图可被标准生成式Transformer直接处理",
+  "GPT式自监督预训练可统一多粒度图下游任务",
+  "简单架构在大规模图基准上达到有竞争力的性能"
+ ],
+ "weaknesses": [
+  "与可靠性主线（鲁棒性/不确定性/过程奖励/医学影像/多模态推理）无关，属图学习",
+  "欧拉路径线性化可能破坏长程拓扑结构，大图上序列过长带来效率问题",
+  "对扰动图/分布偏移的鲁棒性与预测不确定性未作核心评估"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

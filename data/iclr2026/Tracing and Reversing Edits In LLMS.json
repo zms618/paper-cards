@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Tracing and Reversing Edits In LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tracing and Reversing Edits In LLMS.pdf",
+ "title": "Tracing and Reversing Edits in LLMs",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "仅从权重变化追踪并逆向LLM编辑，防御恶意攻击。",
+ "innovations": [
+  "形式化定义编辑追踪和编辑逆向两个新任务：仅基于修改后的模型权重，无需访问编辑提示即可推断编辑内容",
+  "提出EditScope方法从修改后的MLP权重中推断被编辑的对象实体，准确率高达99%",
+  "提出训练-free的编辑逆向方法，在无任何编辑信息的情况下恢复94%的编辑，还原原始输出分布"
+ ],
+ "method_framework": "知识编辑通常修改LLM中的MLP投影矩阵。EditScope分析修改后的权重变化模式，推断被编辑的对象实体。编辑逆向方法通过分析权重差异并反向操作，将模型权重恢复到编辑前状态。两种方法都仅需修改后的权重，无需编辑提示或相似查询。",
+ "experiment_framework": "在多个LLM上评估知识编辑的追踪准确率和逆向恢复率，测试OOD泛化性；同时验证区分编辑/未编辑权重的能力。",
+ "takeaways": [
+  "仅从修改后的权重即可高精度推断被编辑的内容，知识编辑并非无痕",
+  "训练-free的权重逆向方法可恢复绝大多数恶意编辑，为防御提供了实用工具",
+  "该方法还可用于区分编辑和未编辑的权重，实现自动化编辑检测"
+ ],
+ "weaknesses": [
+  "主要分析基于FT（全参数微调）类编辑方法，对ROME/MEMIT等定位类编辑的适用性未验证",
+  "同时进行多处编辑时追踪和逆向的效果未探讨",
+  "方法对更隐蔽的编辑攻击（如低幅度修改）的鲁棒性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM编辑防御与可靠性主线交织，但未深入落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

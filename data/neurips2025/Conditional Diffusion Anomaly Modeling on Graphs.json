@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Conditional Diffusion Anomaly Modeling on Graphs.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Conditional Diffusion Anomaly Modeling on Graphs.pdf",
+ "title": "Conditional Diffusion Anomaly Modeling on Graphs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "条件扩散图异常检测，结合先验引导与自适应采样",
+ "innovations": [
+  "先验引导的扩散过程，将预训练条件异常估计器注入前向和反向扩散链",
+  "拓扑引导的降噪网络，通过残差传播防止过平滑",
+  "先验置信度感知机制，自适应确定反向去噪步数"
+ ],
+ "method_framework": "CGADM将图异常检测建模为联合条件分布生成任务，通过先验引导的扩散过程和拓扑引导的降噪网络迭代恢复异常模式，并采用自适应采样策略提高计算效率。",
+ "experiment_framework": "在5个基准数据集(Elliptic, Tolokers, YelpChi, Question, Reddit)上评估，与标准GNN和专门异常检测方法比较，使用AUROC和AUPRC指标。",
+ "takeaways": [
+  "残差传播机制可有效防止GNN过平滑问题",
+  "先验引导的扩散过程能更准确建模异常分布",
+  "自适应采样策略在保持性能的同时显著提高计算效率"
+ ],
+ "weaknesses": [
+  "方法依赖预训练的异常估计器，可能引入额外误差",
+  "计算效率提升依赖于先验置信度估计的准确性",
+  "未充分讨论方法在超大规模图上的扩展性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

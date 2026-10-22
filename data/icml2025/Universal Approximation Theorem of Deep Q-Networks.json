@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Universal Approximation Theorem of Deep Q-Networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Universal Approximation Theorem of Deep Q-Networks.pdf",
+ "title": "Universal Approximation Theorem of Deep Q-Networks",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 3,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "纯理论DQN逼近框架，无实验验证，与主线关联弱",
+ "innovations": [
+  "将DQN与随机最优控制、FBSDE建立严格联系，以平方可积鞅驱动的连续时间MDP为分析对象",
+  "证明在紧集上以高概率任意精度逼近最优Q函数，推广ResNet通用逼近定理",
+  "分析连续时间Q-learning的收敛性，融合随机逼近定理与Bellman算子不动点处理"
+ ],
+ "method_framework": "建立连续时间MDP框架，将残差网络结构的DQN视为FBSDE的数值求解；利用大偏差界刻画状态过程保持在紧集内的概率，再借助ResNet逼近定理证明存在足够深/宽网络以任意误差逼近Q*；随后用Robbins-Monro条件下的随机逼近论证Q-learning收敛到最优Q函数，并讨论粘性解对非光滑Q*的作用。",
+ "experiment_framework": "纯理论论文，前9页内无实验、无数据集与基线对比，主要结果为定理3.1(逼近)与定理3.8(收敛)，证明细节在附录。",
+ "takeaways": [
+  "DQN可在紧集上以高概率任意精度逼近最优Q函数，所需深度/宽度随误差epsilon多项式缩放",
+  "网络层数L与时间步N相等、Delta t=T/L的连接揭示离散化误差与逼近误差的耦合",
+  "连续时间框架为物理系统/高频数据场景下的RL算法设计提供理论基础"
+ ],
+ "weaknesses": [
+  "全文无任何数值实验或仿真验证，理论结论缺乏实证支撑",
+  "仅在Q*连续的最弱假设下证明存在性，未给出普适逼近速率，定量结果依赖额外光滑性假设",
+  "与主线(可靠性/医学影像/多模态推理)无直接关联，工程落地指导性有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.68,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

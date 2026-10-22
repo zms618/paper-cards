@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/FedSVD_Adaptive Orthogonalization for Private Federated Learning with LoRA.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/FedSVD_Adaptive Orthogonalization for Private Federated Learning with LoRA.pdf",
+ "title": "FedSVD: Adaptive Orthogonalization for Private Federated Learning with LoRA",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "FedSVD用SVD重参数化缓解联邦LoRA的DP噪声放大问题",
+ "innovations": [
+  "基于SVD的全局重参数化方法，使A矩阵能自适应更新",
+  "利用A矩阵的正交性约束B矩阵的梯度范数，提高DP-SGD下的信号保留",
+  "理论分析证明正交A矩阵能降低Hessian条件数，优化优化景观"
+ ],
+ "method_framework": "FedSVD在服务器端对聚合的B矩阵和前轮A矩阵进行SVD分解，将正交右奇异向量作为新A矩阵，其余部分作为新B矩阵，客户端仅优化B矩阵，避免噪声二次放大",
+ "experiment_framework": "在6个GLUE任务和HellaSwag数据集上评估，对比FedAvg、FFA-LoRA等基线，在私有(ε=3,6)和非私有设置下测试准确率和收敛速度",
+ "takeaways": [
+  "SVD重参数化能有效解决LoRA与DP-SGD结合的噪声放大问题",
+  "正交矩阵约束可优化优化景观，提高梯度信号保留"
+ ],
+ "weaknesses": [
+  "仅评估了语言模型任务，未扩展到其他领域",
+  "SVD计算可能增加服务器端计算负担"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

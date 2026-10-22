@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/RORE_Rotary Ray Embedding for Generalised Multi-Modal Scene Understanding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RORE_Rotary Ray Embedding for Generalised Multi-Modal Scene Understanding.pdf",
+ "title": "RoRE: Rotary Ray Embedding for Generalised Multi-Modal Scene Understanding",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "将patch参数化为射线并用可学习RoPE编码方向，支持多相机多模态场景理解。",
+ "innovations": [
+  "提出射线式RoPE(RoRE)：不再按索引嵌入patch，而是把每个patch参数化为一条指向场景的射线，直接编码其观测方向。",
+  "将RoPE扩展两处：旋转频率改为可学习、施加非对称旋转打破前向-后向对称以促进注意力在场景上更均匀分布。",
+  "单一网络即可灵活整合任意数量相机与模态，无需为每模态单独设计融合结构。"
+ ],
+ "method_framework": "在已知相机位姿的多相机装置下，把每个图像patch按其内参/外参参数化为三维射线，用可学习频率+非对称旋转的RoPE对射线方向做位置编码，使Transformer对非常规相机几何与多模态输入统一处理。",
+ "experiment_framework": "在常规透视图像、鱼眼相机与RGB-热成像多模态设定上评测新视角合成/场景理解，对比既有相机注入方法，报告跨相机几何与跨模态一致性。",
+ "takeaways": [
+  "把patch表示为射线并用旋转位置编码，比固定索引位置编码对非常规相机几何与多模态更鲁棒、更可泛化。",
+  "单一射线嵌入即可融合RGB与热成像等异构模态，支持分类/异常检测/分割等下游任务。"
+ ],
+ "weaknesses": [
+  "属3D视觉/多相机感知方向，与可靠性主线的医学影像落地域关联较弱。",
+  "依赖已知或易获取的相机位姿，在无标定场景下不可用；前9页未见跨模态完整数值对比表。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "多相机感知与医学影像可靠性落地域关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

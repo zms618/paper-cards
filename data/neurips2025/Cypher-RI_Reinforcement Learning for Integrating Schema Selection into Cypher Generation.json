@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Cypher-RI_Reinforcement Learning for Integrating Schema Selection into Cypher Generation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Cypher-RI_Reinforcement Learning for Integrating Schema Selection into Cypher Generation.pdf",
+ "title": "Cypher-RI: Reinforcement Learning for Integrating Schema Selection into Cypher Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "RL整合模式选择提升Cypher生成，但泛化与奖励设计有限",
+ "innovations": [
+  "将模式选择整合到Cypher生成的推理过程中",
+  "使用GRPO算法训练模型自主优化推理过程",
+  "设计包含模式选择步骤的rollout格式和奖励机制"
+ ],
+ "method_framework": "基于Qwen2.5-Coder-7B模型，通过GRPO强化学习算法训练，将模式选择作为推理过程的关键步骤，使用格式、模式选择和Cypher执行三部分奖励函数优化模型。",
+ "experiment_framework": "在CypherBench和Neo4j-Text2Cypher数据集上评估，使用执行准确率(EX)、证明子图Jaccard相似度(PSJS)、可执行百分比和Google-BLEU作为指标。",
+ "takeaways": [
+  "强化学习可有效提升模型在复杂任务中的推理能力",
+  "模式选择作为中间步骤可显著提高查询生成准确性",
+  "小模型通过针对性训练可超越大模型在特定任务上的表现"
+ ],
+ "weaknesses": [
+  "仅关注Cypher生成任务，泛化性有限",
+  "奖励函数设计相对简单，可能无法捕捉所有质量维度",
+  "实验主要在特定数据集上进行，实际应用场景验证不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

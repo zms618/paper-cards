@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Leap Local Ect-Based Learnable Positional Encodings for Graphs.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Leap Local Ect-Based Learnable Positional Encodings for Graphs.pdf",
+ "title": "Leap: Local ECT-BASED Learnable Positional Encodings for Graphs",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "局部ECT位置编码，计算复杂度高，全局信息不足",
+ "innovations": [
+  "将局部欧拉特征变换(ℓ-ECT)转化为可学习的图位置编码",
+  "提出多种ECT投影策略以保持旋转不变性",
+  "设计实验证明LEAP能独立于节点特征捕获图结构信息"
+ ],
+ "method_framework": "LEAP通过计算节点m-hop邻域的ℓ-ECT，结合可学习的投影策略，生成端到端可训练的图位置编码，同时支持固定或可学习的方向向量。",
+ "experiment_framework": "在TU分类数据集、合成数据集、Alchemy和HIV数据集上评估，与RWPE、LaPE等基线比较，使用GCN、GAT等架构，采用5折交叉验证。",
+ "takeaways": [
+  "局部结构编码(1-hop)在大多数任务上优于全局编码",
+  "可学习的方向向量能提升模型性能",
+  "不同投影策略对性能有显著影响"
+ ],
+ "weaknesses": [
+  "计算复杂度在最坏情况下为O(n^3)，对大图可能不高效",
+  "在HIV数据集上表现不如LaPE，表明全局信息的重要性",
+  "缺乏对模型鲁棒性和泛化能力的充分验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "图位置编码方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

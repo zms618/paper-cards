@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Reconstructing CLIP for Open-Vocabulary Dense Perception.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Reconstructing CLIP for Open-Vocabulary Dense Perception.pdf",
+ "title": "Reconstructing CLIP for Open-Vocabulary Dense Perception",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "重构CLIP实现密集感知，但创新有限且依赖预训练模型。",
+ "innovations": [
+  "多层数值嵌入作为密集特征构建的基础",
+  "空间聚合会放大语义不对齐的理论分析",
+  "轻量级头部选择性门控模块(HSG)自适应加权特征头"
+ ],
+ "method_framework": "DenseRC框架通过分析CLIP的cls令牌内部语义，利用多层数值嵌入构建密集特征，并通过HSG模块自适应加权不同特征头，避免空间聚合带来的语义污染，同时结合特征一致性蒸馏提升特征质量。",
+ "experiment_framework": "在开放词汇密集预测任务上评估，包括区域分类、目标检测和语义分割，使用OV-COCO、OV-LVIS和COCO-Stuff等基准数据集，指标包括mAP、mIoU和Top-1/Top5准确率。",
+ "takeaways": [
+  "多层数值嵌入比单层或最终特征更适合密集语义对齐",
+  "避免空间聚合可以减少无关区域的语义污染",
+  "头部级别的特征异质性建模对密集特征构建至关重要"
+ ],
+ "weaknesses": [
+  "方法依赖于预训练的CLIP模型，可能继承其固有偏见",
+  "HSG模块的参数虽少但增加了计算复杂度",
+  "未充分探讨不同视觉语言模型架构的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "开放词汇密集感知与可靠性主线部分相关，但创新有限且依赖预训练模型",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

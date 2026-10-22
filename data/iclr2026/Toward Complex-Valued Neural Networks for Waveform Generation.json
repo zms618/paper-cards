@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Toward Complex-Valued Neural Networks for Waveform Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Toward Complex-Valued Neural Networks for Waveform Generation.pdf",
+ "title": "Toward Complex-Valued Neural Networks for Waveform Generation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "复值声码器ComVo，相位量化与块矩阵计算提升效率",
+ "innovations": [
+  "指出现有iSTFT声码器用实值网络分离处理实部/虚部，无法刻画复频谱内部结构，ComVo全程用复值运算联合建模",
+  "引入相位量化离散化相位值并正则化训练，以结构化方式引导相位变换",
+  "提出块矩阵计算方案减少冗余运算，训练时间降低25%"
+ ],
+ "method_framework": "基于iSTFT的GAN声码器：生成器/判别器均用复值网络层，把每个频谱系数作为统一复数实体联合建模实虚部耦合；用相位量化正则化相位变换；用块矩阵计算降低复值运算的冗余开销，最后经iSTFT合成波形。",
+ "experiment_framework": "在语音合成基准上评测合成质量(MOS等)；对比实值iSTFT声码器与其他GAN/扩散声码器；报告块矩阵方案带来的训练时间下降(25%)；验证复值建模相对实值分离处理的质量提升。",
+ "takeaways": [
+  "复值网络能更好捕获复频谱实虚部的耦合，提升声码器合成质量",
+  "相位量化可结构化地引导相位变换、稳定训练",
+  "块矩阵计算在保持质量的同时减少约25%训练时间"
+ ],
+ "weaknesses": [
+  "复值运算的工程实现仍有额外开销，25%训练加速是否转化为推理加速未明确",
+  "质量提升幅度相对强实值基线有限，缺乏大规模主观听测人评的统计显著性",
+  "属语音声码器方向，与可靠性主线及医学影像、多模态推理落地域无关"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.83,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "语音声码器与可靠性主线及落地域无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

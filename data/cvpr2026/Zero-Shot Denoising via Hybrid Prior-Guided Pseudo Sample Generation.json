@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Zero-Shot Denoising via Hybrid Prior-Guided Pseudo Sample Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Zero-Shot Denoising via Hybrid Prior-Guided Pseudo Sample Generation.pdf",
+ "title": "Zero-Shot Image Denoising via Hybrid Prior-Guided Pseudo Sample Generation",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.3
+ },
+ "one_line": "双先验伪样本生成零样本去噪，参数少但泛化与消融不足",
+ "innovations": [
+  "双先验伪样本生成范式：局部先验用'梯度合并+小窗分组'下采样器(Sd)利用空间局部性，全局先验用高斯条件随机采样器(Sr)利用非局部自相似性，同一框架兼顾两类先验，避免单先验方法的偏科",
+  "频谱加权损失(SWL)：在傅里叶域对高/低频带施加判别权重(高频更易被噪声污染)，用二值化频带掩码细化监督，同时保护细节与平滑区",
+  "效率-性能折中实证：McMaster18等基准上以极小参数量(150K级)和内存(约1GB级)达到或超过DIP/Self2Self/ZS-N2N/ZS-N2M，解决Self2Self高开销与ZS-N2N低性能的两难"
+ ],
+ "method_framework": "局部下采样器(梯度合并+窗内分组)与全局随机采样器(高斯条件像素匹配)从单张噪声图生成伪样本对→去噪网络训练→频谱加权损失(FFT+频带掩码+除法)监督；仅单图推理。",
+ "experiment_framework": "McMaster18等基准×Gaussian/Poisson噪声(λ=50等)；对比DIP/Self2Self/ZS-N2N/ZS-N2M/Pixel2Pixel；PSNR+峰值内存/参数量双轴报告(圆图展示性能-开销折中)；医学/天文场景动机说明。",
+ "takeaways": [
+  "'伪样本生成可以显式编码先验'：把'局部相似'与'非局部自相似'分别实现为可设计采样器，而非依赖网络隐式学习，采样器设计空间大且可控",
+  "'频带加权损失细化监督'：按频率判别加权(高频多惩罚)比统一像素损失更贴合噪声物理，对任何复原任务可套用FFT加权",
+  "'报告性能-开销双轴'：把PSNR与参数/内存放一张图，让'性价比'成为零样本方法的核心对比维度"
+ ],
+ "weaknesses": [
+  "双采样器参数(窗口大小/高斯方差/分组数)无敏感性消融；'全局随机采样'的候选像素匹配准则(相似度度量)未见形式化定义",
+  "文本示图(图1)显示性能分布分散，逐基准PSNR对比表未在此前9页完整呈现，跨噪声类型(盲噪声/结构化噪声)与真实传感器噪声(非合成)泛化未测",
+  "SWL的频带划分(MLF/MHF二值掩码)与权重取值为启发式；'简单有效'的损失缺乏与自适应权重的对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.43,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "零样本去噪方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/ExLM_Rethinking the Impact of Tokens in Masked Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ExLM_Rethinking the Impact of Tokens in Masked Language Models.pdf",
+ "title": "ExLM: Rethinking the Impact of [MASK] Tokens in Masked Language Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "扩展为多隐状态缓解多义歧义，但计算开销大且适用性有限。",
+ "innovations": [
+  "分析揭示[MASK]会导致被破坏语义问题——损坏上下文传达多种歧义含义，是MLM下游性能受限的关键",
+  "提出ExLM：把输入中每个[MASK]扩展为多个隐状态，扩大语义空间",
+  "用转移矩阵显式建模这些扩展状态间的依赖，提升上下文容量、捕获更丰富语义"
+ ],
+ "method_framework": "在MLM预训练中，把单个[MASK]替换为多个候选隐状态(如[M1,1][M1,2])；用转移矩阵建模这些状态间的依赖；在更大语义空间中重建被mask内容，缓解多义性。",
+ "experiment_framework": "在文本建模与SMILES建模任务上评测；对比标准MLM(BERT类)；指标为下游任务精度；并做表征分析验证语义更丰富。",
+ "takeaways": [
+  "[MASK]引入的多义/被破坏语义是MLM性能瓶颈之一",
+  "扩展[MASK]为多隐状态并建模依赖可同时提升文本与SMILES建模",
+  "ExLM丰富了语义表征，验证了其对多义性的缓解"
+ ],
+ "weaknesses": [
+  "扩展隐状态增加了计算与参数开销，效率权衡未充分量化",
+  "仅在BERT类MLM与SMILES上验证，对现代生成式预训练的适用性未知",
+  "转移矩阵的引入机制相对复杂，与现有MLM预训练管线的兼容性需额外工程"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.43,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

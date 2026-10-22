@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Error Forcing in Recurrent Neural Networks.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Error Forcing in Recurrent Neural Networks.pdf",
+ "title": "Error Forcing in Recurrent Neural Networks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "正交投影改进RNN信用分配，但生物实现与性能提升有限",
+ "innovations": [
+  "提出error forcing机制，将网络活动正交引导至零误差流形",
+  "从贝叶斯视角将EF连接到变分期望最大化算法",
+  "展示EF在生物 plausible 设置下的有效性",
+  "通过几何解释阐明EF与teacher forcing的本质区别"
+ ],
+ "method_framework": "Error forcing通过最小干预将网络状态投影到零误差流形，结合BPTT或RFLO进行权重更新，避免传统teacher forcing的强约束问题。",
+ "experiment_framework": "在延迟XOR、正弦波生成和证据整合任务上评估，比较EF-BPTT/EF-RFLO与BPTT/teacher forcing/RFLO的性能，使用收敛率和MSE作为指标。",
+ "takeaways": [
+  "正交投影比最小范数解更适合引导RNN动态",
+  "EF在生物 plausible 设置下仍有效",
+  "反馈权重与读出权重的对齐不直接预测任务性能"
+ ],
+ "weaknesses": [
+  "EF依赖于精确的伪逆反馈权重，生物实现存在挑战",
+  "随机反馈权重显著降低性能",
+  "对证据整合任务的改进相对 modest"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

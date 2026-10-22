@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Feynman-Kac Correctors in Diffusion Annealing, Guidance, and Product of Experts.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Feynman-Kac Correctors in Diffusion Annealing, Guidance, and Product of Experts.pdf",
+ "title": "Feynman-Kac Correctors in Diffusion: Annealing, Guidance, and Product of Experts",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.25
+ },
+ "one_line": "将Feynman-Kac公式引入扩散模型采样，提供理论框架但计算成本高",
+ "innovations": [
+  "指出CFG等方法只是启发式混合分数,不能精确逼近条件/中间分布,需额外corrector步",
+  "基于Feynman-Kac公式与对应PDE推导加权仿真方案Feynman-Kac Correctors(FKC)",
+  "提出利用推理时扩展(inference-time scaling)的SMC重采样算法,从退火、几何平均或预训练分数模型乘积分布中精确采样"
+ ],
+ "method_framework": "分数/扩散模型推理时缺乏原则性控制手段(如组合多个预训练模型)。现有CFG用启发式混合条件/无条件分数近似条件分布,但不精确。本文从Feynman-Kac公式出发,仔细计入相关PDE各项,得到加权粒子仿真方案;通过SMC重采样按权重修正,从而从退火pt∝qt^β、几何平均或多模型乘积分布中正确采样。",
+ "experiment_framework": "在图像生成与蛋白模拟等任务上验证;对照启发式CFG/产品-of-experts近似;指标为对目标中间分布的采样精度与生成质量,利用SMC粒子数作为推理时扩展轴。",
+ "takeaways": [
+  "CFG等启发式方法不能精确逼近条件/中间分布,存在系统偏差",
+  "Feynman-Kac加权+SMC重采样可原则性修正这一偏差",
+  "推理时扩展(更多SMC粒子)可提升对退火/专家积分布的采样精度"
+ ],
+ "weaknesses": [
+  "SMC重采样带来额外计算开销,采样成本高于启发式CFG",
+  "主线为扩散模型推理控制,与可靠性×医学影像、多模态大模型推理主线不直接相关",
+  "高维图像下粒子数与方差的权衡仍需更多实证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

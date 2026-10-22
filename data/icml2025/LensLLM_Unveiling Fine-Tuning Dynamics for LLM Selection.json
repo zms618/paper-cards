@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/LensLLM_Unveiling Fine-Tuning Dynamics for LLM Selection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/LensLLM_Unveiling Fine-Tuning Dynamics for LLM Selection.pdf",
+ "title": "LensLLM: Unveiling Fine-Tuning Dynamics for LLM Selection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.7
+ },
+ "one_line": "基于PAC-Bayesian和NTK的LLM选型框架，理论推导充分但实验覆盖有限。",
+ "innovations": [
+  "推导了PAC-Bayesian泛化界揭示LLM微调动态规律，从理论上刻画微调过程中模型泛化能力的演化机制",
+  "提出基于神经正切核（NTK）的修正缩放模型（Rectified Scaling Model），统一建模模型容量、数据规模与微调效能之间的关系",
+  "在三个大规模基准上实现LLM选型任务91.1%相对准确率，同时减少88.5%的全量微调计算成本"
+ ],
+ "method_framework": "首先从理论上推导PAC-Bayesian泛化界，将LLM微调过程中的泛化误差与模型参数变化、数据量联系起来；然后基于NTK理论构建修正缩放模型，用少量微调数据点拟合损失曲线，预测完整微调后的测试性能；通过该曲线拟合结果对候选LLM进行排序选型，无需全量微调所有候选模型。",
+ "experiment_framework": "三个基准数据集：FLAN、Wikitext、Gigaword；通过随机采样构建从200到1,638,400的不同规模训练子集；对比5种SOTA LLM选型方法；指标为Pearson相关系数（PearCorr）和相对准确率（RelAcc）；同时计算计算成本节省比例。",
+ "takeaways": [
+  "LLM微调过程的动态损失曲线可以通过少量早期数据点用缩放模型精准预测，无需全量训练",
+  "PAC-Bayesian理论框架为理解微调泛化提供了可解释的透镜，比经验式选型更有理论依据",
+  "LensLLM在排序相关性和选型准确率上均优于现有SOTA方法，且计算开销大幅降低"
+ ],
+ "weaknesses": [
+  "仅在语言建模任务（FLAN/Wikitext/Gigaword）上验证，未覆盖指令微调、多模态等更复杂的下游任务场景",
+  "NTK理论假设在超大规模LLM深度微调下的适用性本身存疑，文中缺乏对该假设成立范围的讨论",
+  "候选模型池的多样性有限，主要在同架构家族（如LLaMA系列不同尺寸）内选型，跨架构选型效果未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

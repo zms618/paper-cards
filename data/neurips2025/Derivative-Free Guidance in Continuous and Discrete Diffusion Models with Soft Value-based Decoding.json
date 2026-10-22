@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Derivative-Free Guidance in Continuous and Discrete Diffusion Models with Soft Value-based Decoding.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Derivative-Free Guidance in Continuous and Discrete Diffusion Models with Soft Value-based Decoding.pdf",
+ "title": "Derivative-Free Guidance in Continuous and Discrete Diffusion Models with Soft Value-based Decoding",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "SVDD通过软值函数实现无需微调的扩散模型奖励优化",
+ "innovations": [
+  "软值函数解码(SVDD)避免微调和可微分模型需求",
+  "支持非可微分奖励反馈和离散扩散模型",
+  "SVDD-R通过替换非有前途样本提高计算效率"
+ ],
+ "method_framework": "SVDD将软值函数整合到预训练扩散模型的推理过程中，通过重要性采样在每个时间步选择最有前途的状态，避免模型微调并支持非可微分奖励。",
+ "experiment_framework": "图像生成(压缩性/美学)、分子生成(QED/SA/对接分数)、DNA/RNA生成(活性水平)，与Best-of-N、DPS、SMC等方法比较奖励和自然性指标。",
+ "takeaways": [
+  "软值函数作为前瞻估计器指导采样过程",
+  "重要性采样在每一步应用而非仅最终选择，显著提升性能",
+  "全局重采样步骤有效分配计算资源"
+ ],
+ "weaknesses": [
+  "计算资源需求增加约M倍",
+  "需要调整超参数α和M",
+  "对某些任务的自然性指标可能下降"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/CAT_Contrastive Adversarial Training for Evaluating the Robustness of Protective Perturbations in Latent.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CAT_Contrastive Adversarial Training for Evaluating the Robustness of Protective Perturbations in Latent.pdf",
+ "title": "CAT: Contrastive Adversarial Training for Evaluating the Robustness of Protective Perturbations in Latent Diffusion Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "CAT揭示保护扰动扭曲潜表示，用轻量适配器攻击削弱其效果",
+ "innovations": [
+  "通过定性/定量实验揭示保护扰动有效的根因是扭曲LDM的潜表示",
+  "提出CAT用轻量适配器作为针对保护扰动的自适应攻击",
+  "系统评估现有保护扰动(IP防护)在自适应攻击下的鲁棒性不足",
+  "实验证明CAT可大幅降低定制化中保护扰动的有效性"
+ ],
+ "method_framework": "先分析保护扰动如何扭曲潜空间表示；再在受保护定制样本上用轻量适配器做对比对抗训练，作为自适应攻击逼近绕过保护；通过比较有无保护下的定制性能，量化保护扰动的真实鲁棒边界。",
+ "experiment_framework": "在Stable Diffusion等LDM定制化场景(如DreamBooth/LoRA)，对多种现有保护扰动方法施加CAT自适应攻击，报告定制保真度/保护成功率，与净化类自适应攻击对比，含潜表示可视化分析。",
+ "takeaways": [
+  "保护扰动主要靠扭曲潜表示起效，这一机制决定了其鲁棒上限",
+  "轻量适配器自适应攻击即可显著突破多数现有保护方法",
+  "现有IP保护扰动普遍缺乏鲁棒性，需更严格的自适应评估"
+ ],
+ "weaknesses": [
+  "落地域为扩散模型图像/IP保护攻防，与医学影像、多模态推理主线关联弱",
+  "以攻击/揭示脆弱性为主，未提出新的更强保护方案",
+  "主要在Stable Diffusion类模型与人物/风格定制验证，对其他生成场景覆盖有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

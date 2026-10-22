@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Uni-VERSAL_Virtue Visual-Interactive TEXT- Uni-VERSAL Embedder.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Uni-VERSAL_Virtue Visual-Interactive TEXT- Uni-VERSAL Embedder.pdf",
+ "title": "VIRTUE: Visual-Interactive Text-Image Universal Embedder",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "将分割模型引入图文嵌入，支持视觉提示区域定位，但机制分析不足",
+ "innovations": [
+  "首次把视觉交互能力(point/box/mask指定ROI)引入通用图文嵌入模型，解锁用户意图的局部grounding并补充全局表征",
+  "结合分割模型(处理视觉提示定位区域)与VLM(任意图文组合进单一嵌入空间)做表示学习",
+  "提出大规模Segmentation-and-Scene Caption Retrieval(SCaR)基准(1M样本)，联合考虑特定实体与图像场景来检索文本caption"
+ ],
+ "method_framework": "现有嵌入模型(CLIP/SigLIP双塔或VLM-based GME/LamRA)主要靠文本交互，缺乏用户用point/box/mask指定感兴趣区域的视觉交互能力。VIRTUE把分割模型与VLM结合：分割模型处理视觉提示在图中精确定位区域，嵌入器据此处理复杂/歧义场景，学习实体级信息补充全局表征，支持image-to-image与image-to-text的视觉交互检索。",
+ "experiment_framework": "在36个通用MMEB任务上(提升3.1%-8.5%)与5个新建视觉交互SCaR任务(提升15.2%-20.3%)评估；对比现有VLM-based嵌入模型；报告在两类任务上均达SOTA。",
+ "takeaways": [
+  "把视觉提示(区域指定)引入嵌入模型可显著提升歧义场景下的检索精度，实体级线索补充全局匹配",
+  "分割+VLM结合的架构能让嵌入同时响应文本与视觉交互输入",
+  "SCaR基准揭示了纯全局嵌入在'特定实体+场景上下文'联合检索上的不足"
+ ],
+ "weaknesses": [
+  "属多模态嵌入/检索方向，与本主线(可靠性×多模态推理/医学影像)关联中等偏弱",
+  "视觉提示依赖分割模型先定位区域，分割误差会直接传导为嵌入错误，二者误差传播未分析",
+  "实体级嵌入与全局表征如何融合的机制、以及对密集小目标的鲁棒性正文前9页未展开"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "多模态嵌入与主线关联中等偏弱，无可靠性机制设计",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

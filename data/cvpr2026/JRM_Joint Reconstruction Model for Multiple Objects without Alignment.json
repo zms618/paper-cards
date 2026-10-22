@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/JRM_Joint Reconstruction Model for Multiple Objects without Alignment.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/JRM_Joint Reconstruction Model for Multiple Objects without Alignment.pdf",
+ "title": "JRM Joint Reconstruction Model for Multiple Objects without Alignment",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "隐式耦合生成模型实现多物体联合重建，但依赖上游估计",
+ "innovations": [
+  "隐式耦合的3D流匹配生成模型",
+  "成对训练策略实现跨物体信息流",
+  "耦合融合块实现潜在空间中的物体交互"
+ ],
+ "method_framework": "基于ShapeR扩展，通过耦合融合块在潜在空间中实现多物体联合重建，使用DiT网络同时去噪多个物体的潜在表示",
+ "experiment_framework": "合成数据集(ObjaverseXL等)和真实数据集(Replica/ScanNet++)，对比FM基线和MORE2/DPRecon，使用CD/NC/F1指标",
+ "takeaways": [
+  "隐式聚合比显式对齐更鲁棒",
+  "注意力机制在潜在空间中实现物体间信息传递",
+  "成对训练策略可扩展到任意数量物体"
+ ],
+ "weaknesses": [
+  "依赖上游分割和位姿估计的准确性",
+  "仅训练成对物体可能限制复杂场景泛化",
+  "未充分分析计算效率"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "多物体重建与可靠性主线无实质交点，仅属常规3D视觉工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

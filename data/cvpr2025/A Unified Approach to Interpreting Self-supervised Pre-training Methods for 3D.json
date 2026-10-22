@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/A Unified Approach to Interpreting Self-supervised Pre-training Methods for 3D.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Unified Approach to Interpreting Self-supervised Pre-training Methods for 3D.pdf",
+ "title": "A Unified Approach to Interpreting Self-supervised Pre-training Methods for 3D Point Clouds via Interactions",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 5.0,
+  "overall": 5.8
+ },
+ "one_line": "博弈交互分解解释点云预训练，但实验不足且结论不完整",
+ "innovations": [
+  "把 Harsanyi 交互 I(S)=Σ_{T⊆S}(-1)^{|S|-|T|}v(x_T) 扩展到点云：FPS 取中心+KDTree 划分 n 个 region，用质心 masking 构造 2^n 个掩码样本，将输出分数 v(x)=log(p/(1-p)) 精确分解为 2^n 个交互效应之和",
+  "提出表示复杂度度量 κ^(m)=E_x E_{|S|=m}[|I(S)|]/Z（Z 为跨模型归一化项），并用阶数区间 Ω_high=⌈2n/3⌉<m≤n、Ω_low=m≤⌈n/3⌉ 定义 κ^high/κ^low 两个标量指标",
+  "由“预训练抬高 κ^high、压低 κ^low”这一发现反推出免预训练的训练法：直接优化高/低阶交互强度"
+ ],
+ "method_framework": "先按通用匹配性质（Theorem 1）证明任意掩码下代理逻辑模型与 DNN 输出一致；再量化 scratch 与 5 种预训练（OcCo/Jigsaw/IAE/STRL/CrossPoint）编码的交互阶分布，据此设计直接增强高阶交互的目标。",
+ "experiment_framework": "DGCNN/PointNet/PCN × ModelNet40/ShapeNet/ScanObjectNN；对比 scratch 与 5 种预训练、4 种 Transformer 模型；含预训练进度与微调数据量扫描。",
+ "takeaways": [
+  "“预训练收益 = 高阶交互增强 + 低阶交互抑制”是可迁移的诊断视角：任何表示学习方法都可用 κ^high/κ^low 做归因",
+  "结论 3（预训练会损伤跨数据集可迁移性、零样本精度反低于 scratch）提示预训练的收益与 OOD 风险需分开度量"
+ ],
+ "weaknesses": [
+  "交互分解的计算随 2^n 指数增长，实验中每类仅随机抽 10 个样本、n 取小值，统计代表性不足且无方差/显著性检验",
+  "阶数阈值 ⌈2n/3⌉ 与 ⌈n/3⌉ 是拍定的超参，未做敏感性分析，κ^high/κ^low 结论可能随阈值改变",
+  "正文在第 9 页截断：由其结论导出的“免预训练新方法”的实验表、消融与结论 3 的完整数据均不可见，无法核实该 claim",
+  "相关工作是纯相关性分析：Fig.3(b) 只显示 κ^high 与精度正相关，未给出因果或干预性证据"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "点云表示方法研究，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

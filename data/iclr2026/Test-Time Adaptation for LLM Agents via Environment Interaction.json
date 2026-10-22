@@ -1,0 +1,41 @@
+{
+ "title": "Test-Time Adaptation for LLM Agents via Environment Interaction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "轻量语法对齐与动态接地提升LLM智能体跨环境成功率，但成本与泛化性存疑",
+ "innovations": [
+  "把 LLM 智能体部署失败操作地分为两类：环境特定观察格式的语法误解、与只能在测试时暴露的状态转移动态的语义误解",
+  "在线语法对齐(SA)：学一个轻量适配向量偏置模型输出分布，快速对齐环境响应格式",
+  "部署时动态接地(DG)：任务执行前用人格化探索阶段系统探测环境因果动态，得到上下文内世界模型；在动态不可预测的复杂环境尤其有效"
+ ],
+ "method_framework": "部署时利用与环境交互可得的信息做两类适应：SA 用少量交互学一个轻量适配向量校正输出格式；DG 在正式任务前先做探索性交互，把学到的环境因果规律写成上下文笔记(in-context world model)，再据此执行任务。",
+ "experiment_framework": "函数调用与网页导航等智能体基准（含 WebArena 多站点 split）；对比无适应基线；指标为任务成功率；SA 与 DG 分别验证，并报告计算开销。WebArena 多站点成功率从 2% 提至 23%。",
+ "takeaways": [
+  "语法与动态两类失配需不同的测试时适应手段，不能混为一谈",
+  "轻量适配向量即可快速矫正环境响应格式",
+  "在动态不可预测的复杂环境，执行前主动探索、构建上下文内世界模型收益最大"
+ ],
+ "weaknesses": [
+  "SA 的适配向量与 DG 的探索都依赖额外交互/成本，论文前 9 页对探索步数与失败探索的容错未充分量化",
+  "DG 学到的‘世界模型’是上下文笔记形式的脆弱记录，对探索未覆盖的动态分支仍会失效；两类策略的结合方式与上限未系统消融",
+  "relevance 给 5.5：涉及对新环境的泛化/鲁棒适应，但落地域为网页导航/函数调用智能体、非医学影像或多模态大模型推理任务，与可靠性主线不直接对应，按规则不因其 generalization 措辞抬分"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Test-Time Adaptation for LLM Agents via Environment Interaction.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Test-Time Adaptation for LLM Agents via Environment Interaction.pdf",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "网页智能体适应与可靠性主线有间接关联，但非医学或多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

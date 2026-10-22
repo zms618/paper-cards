@@ -1,0 +1,41 @@
+{
+ "title": "sleep2vec: Unified Cross-Modal Alignment for Heterogeneous Nocturnal Biosignals",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "跨模态对比学习夜间生物信号基础模型，对传感器缺失鲁棒",
+ "innovations": [
+  "提出结合人口学/年龄/站点/病史的 InfoNCE 目标，用元信息动态加权负样本以抑制队列捷径",
+  "在42249条过夜录音、9种模态上做跨模态对比预训练，得到对任意模态子集与传感器缺失都鲁棒的统一表征",
+  "首次刻画夜间生物信号随模态多样性与模型容量的 scaling law"
+ ],
+ "method_framework": "将并发夜间信号视为同一潜在生理状态的多视角，用带元信息加权的 InfoNCE 跨模态对比预训练得到共享表征；下游线性/轻量微调用于睡眠分期与临床结局评估；对缺失通道做模态子集鲁棒性评估。",
+ "experiment_framework": "预训练42249条过夜录音、9种模态；下游睡眠分期与临床结局评估对比强基线；系统评测在任意模态子集/传感器 drop 下的鲁棒性；并做模态多样性与模型容量的 scaling law 分析。",
+ "takeaways": [
+  "跨模态对齐+原则化扩展可在极少标注下得到通用夜间生理表征",
+  "元信息加权负样本能有效抑制站点/队列带来的捷径学习",
+  "模型对传感器缺失与异构设备保持稳定，适配可穿戴真实场景"
+ ],
+ "weaknesses": [
+  "属生理信号而非医学影像，模态主线匹配度略低于影像",
+  "前9页未给出与最新生理基础模型(如Text2Phys)的逐项数值对比",
+  "临床结局评估的标签规模与外部验证集规模描述有限"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/SLEEP2VEC_Unified Cross-Modal Alignment for Heterogeneous Nocturnal Biosignals.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SLEEP2VEC_Unified Cross-Modal Alignment for Heterogeneous Nocturnal Biosignals.pdf",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "跨模态生物信号对齐与传感器鲁棒性，可靠性主线落地医疗可穿戴",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

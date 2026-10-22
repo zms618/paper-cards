@@ -1,0 +1,41 @@
+{
+ "title": "TABLET: A Large-Scale Dataset for Robust Visual Table Understanding",
+ "one_line": "发布大规模视觉表格数据集，微调现有模型提升鲁棒性",
+ "innovations": [
+  "构建TABLET：4M样本、21任务、基于2M个唯一表格，88%保留原始可视化（而非合成渲染）",
+  "保持示例可追溯到底层序列化数据，支持问题重构",
+  "引入VisualTableQA基准，要求模型联合视觉感知与表格理解推理"
+ ],
+ "method_framework": "针对现有VTU数据集用合成渲染、缺乏真实视觉多样性的问题，TABLET直接保留真实表格的原始可视化样式，并提供21类任务的大规模像素级训练数据。用TABLET微调VLM使其同时在见过与未见VTU任务上提升，并增强对真实世界表格可视化的鲁棒性。",
+ "experiment_framework": "在TABLET上微调Qwen2.5-VL-7B与Gemma3-4B；评测seen/unseen VTU任务性能与对真实表格可视化的鲁棒性；对比MMTab等合成渲染数据集；VisualTableQA作为联合视觉+表格推理基准。",
+ "takeaways": [
+  "保留原始可视化的真实表格数据可提升VLM在真实世界表格上的鲁棒性",
+  "大规模统一TABLET数据使VLM在见过与未见过的VTU任务上均提升",
+  "可追溯到底层序列化数据为问题重构与可扩展评测提供基础"
+ ],
+ "weaknesses": [
+  "核心贡献为数据集，未提出新的表格理解模型架构",
+  "88%保留原始可视化，剩余12%合成渲染的一致性可能引入分布混合",
+  "对极不规则/扫描件表格与跨语言表格的覆盖与泛化未充分报告"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Tablet A Large-Scale Dataset for Robust Visual Table Understanding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tablet A Large-Scale Dataset for Robust Visual Table Understanding.pdf",
+ "scores": {
+  "novelty": 5,
+  "depth": 4,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 5.6
+ },
+ "raw_overall": 6.23,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "数据集构建提升表格理解鲁棒性，符合可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

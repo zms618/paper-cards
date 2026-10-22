@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Seeing WHAT’S Wrong A Trajectory-Guided Approach To Caption Error Detection.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Seeing WHAT’S Wrong A Trajectory-Guided Approach To Caption Error Detection.pdf",
+ "title": "Seeing What's Wrong: A Trajectory-Guided Approach to Caption Error Detection (TRACED)",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "基于caption轨迹的错误检测方法，提升有限且成本较高。",
+ "innovations": [
+  "指出现有错误过滤只用单张图文相似度分数，无法抓微妙错误（错对象/颜色/否定）；提出caption轨迹概念。",
+  "正确caption经小修改后趋于稳定，错误caption则经编辑大幅提升，利用这一差异做检测。",
+  "TRACED成本低、模型无关，且能定位token级错误来源，该信息可反馈给VLM提升caption对齐分。"
+ ],
+ "method_framework": "对每个图文对，迭代编辑caption（按最大化图文相关性）得到有序轨迹；统计轨迹特征（正确者稳定、错误者大幅提升）训练检测；轨迹统计同时提供token级可解释错误定位，用于错误修正。",
+ "experiment_framework": "MS COCO与Flickr30k；三种噪声类型；对比基于单相似度分数的错误检测基线；指标错误检测准确率；报告最高提升2.8%。",
+ "takeaways": [
+  "caption迭代编辑轨迹携带比单相似度分数更丰富的错误信号。",
+  "轨迹统计既提升检测精度又提供可解释的错误来源，可反馈修正。"
+ ],
+ "weaknesses": [
+  "需迭代编辑caption多次，推理成本高于单分数方法。",
+  "增益仅~2.8%，相对现有强基线提升幅度有限。",
+  "落地为多模态数据清洗，与核心可靠性/医学影像主线相关性中等。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.88,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "多模态数据清洗，与可靠性主线相关性中等",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

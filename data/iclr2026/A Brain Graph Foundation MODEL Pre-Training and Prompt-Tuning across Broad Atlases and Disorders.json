@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Brain Graph Foundation MODEL Pre-Training and Prompt-Tuning across Broad Atlases and Disorders.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Brain Graph Foundation MODEL Pre-Training and Prompt-Tuning across Broad Atlases and Disorders.pdf",
+ "title": "A BRAIN GRAPH FOUNDATION MODEL:PRE-TRAINING AND PROMPT-TUNING ACROSS BROAD ATLASES AND DISORDERS",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 7.5,
+  "overall": 6.1
+ },
+ "one_line": "图结构fMRI基础模型：多图谱预训练+图prompt+语言token零样本迁移",
+ "innovations": [
+  "首个基于图的 fMRI 基础模型：Graph Transformer 以 ROI 为节点、二值化 Pearson 相关为边直接建模脑图，配 RWSE 图位置编码，兼得 FC 类方法的效率与时序类方法的性能",
+  "用 8 种 parcellation（Schaefer100/200/300、AAL116、AAL3v1、SHEN268、Power264、Gordon333）联合预训练 27 个数据集、40 万图样本，强制模型学出跨模板而非单一模板的脑表征",
+  "两阶段 prompt：few-shot 用元学习只优化与输入同构的可学习节点/边 graph prompt（冻结骨干）；zero-shot 冻结 graph prompt，改由 BioClinicalBERT 编码的 [T/D] 疾病与 [A/P] 图谱文本 token 提供语义先验，零梯度更新即可迁移"
+ ],
+ "method_framework": "27 个 fMRI 数据集按 8 种 parcellation 建图（ROI 为节点、二值化 Pearson 相关为边），Graph Transformer 加 RWSE 位置编码，联合图对比学习与掩码自编码预训练；下游用元学习图 prompt 做 few-shot、用 BERT 语言 token 做 zero-shot。",
+ "experiment_framework": "10 类神经/精神疾病、6 个数据集（ABIDE II、ADHD200、ADNI2、HBN、SubMex、UCLA CNP），指标 AUC/ACC/SEN/SPE；6 类基线在同源预训练语料重训，并在 100%/10%/1%/0% 四种数据 regime 下消融。",
+ "takeaways": [
+  "「多 parcellation 联合预训练 + [A/P] token 标注图谱来源」是把异构脑影像统一到一个基础模型里的实用范式，可直接复用到其它神经影像模态",
+  "把 prompt 与「图谱/疾病」解耦：图 prompt 存few-shot 结构先验、语言 token 存语义先验，零样本时冻结 prompt 仅换 token，避免为新疾病重新训练",
+  "主表给出 mean±std 且横向对比 6 类非预训练/预训练基线，作为医学基础模型的评测模板可直接照搬"
+ ],
+ "weaknesses": [
+  "Table 1 在正文中被截断，且主表只给 AUC/ACC/SEN/SPE 四类无校准/不确定度指标；BrainGFM 相对最强基线 Brain-JEPA 在 ADHD200 上仅 +0.5 AUC（70.3 vs 69.8），优势落在噪声范围内，缺少跨扫描协议的外部独立验证",
+  "方法实为既有模块的组合（GCL + GMAE + graph prompt + BioClinicalBERT token + 元学习），无新损失或理论推导；多图谱预训练与语言 token 各自的增益没有隔离式消融，无法判断提升来自数据规模还是 prompt 设计",
+  "所有预训练基线（BrainMass/BrainLM/BrainNPT/Brain-JEPA）都需在自建的 27 数据集、40 万图上重新预训练，复现成本极高而论文未披露计算预算；zero-shot 只在 3 个数据集的 Figure 10 上展示，跨站点与跨队列的稳健性证据不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "脑图基础模型与医学影像落地域交点，方法设计可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

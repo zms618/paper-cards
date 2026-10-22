@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/SPMDM_Enhancing Masked Diffusion Models through Simplifying Sampling Path.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/SPMDM_Enhancing Masked Diffusion Models through Simplifying Sampling Path.pdf",
+ "title": "SPMDM: Enhancing Masked Diffusion Models through Simplifying Sampling Path",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.8
+ },
+ "one_line": "简化扩散采样路径提升推理，但子序列长度选择缺乏系统优化",
+ "innovations": [
+  "将序列划分为固定长度子序列并应用不同噪声尺度",
+  "优先解掩近未掩码 tokens 和早期推理子序列",
+  "子序列级别的正向和反向扩散过程",
+  "兼容自适应采样策略"
+ ],
+ "method_framework": "将输入序列划分为非重叠子序列，为每个子序列分配不同噪声尺度，鼓励模型捕获子序列内和子序列间的依赖关系",
+ "experiment_framework": "合成数据集/Countdown/Sudoku/推理基准测试，与MDLM、BDLM、GPT-2、LLaMA等对比，使用准确率等指标",
+ "takeaways": [
+  "子序列长度对性能有显著影响",
+  "噪声尺度分配策略能有效提升模型推理能力",
+  "方法与自适应采样策略兼容"
+ ],
+ "weaknesses": [
+  "子序列长度选择对性能影响大，缺乏系统优化方法",
+  "在PIQA等特定知识任务上表现不如GPT-2",
+  "未充分探讨模型在不同长度序列上的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

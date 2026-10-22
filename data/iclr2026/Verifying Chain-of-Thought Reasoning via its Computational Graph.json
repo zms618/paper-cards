@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Verifying Chain-of-Thought Reasoning via its Computational Graph.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Verifying Chain-of-Thought Reasoning via its Computational Graph.pdf",
+ "title": "Verifying Chain-of-Thought Reasoning via its Computational Graph",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "基于计算图结构指纹的白盒CoT验证方法，工程复杂度高",
+ "innovations": [
+  "提出Circuit-based Reasoning Verification(CRV)：白盒方法，将正确/错误CoT步骤的归因图视为模型潜在推理电路的执行轨迹，发现二者具有可区分的结构指纹",
+  "证明错误的结构特征高度可预测，且不同推理任务的错误模式具有领域特异性——不同任务的失败表现为不同的计算模式",
+  "通过分析指导针对单个transcoder特征的定向干预，成功修正模型的错误推理——证明结构特征不仅是相关性，而是因果性的"
+ ],
+ "method_framework": "CRV方法流程：(1)构建可解释代理模型——将标准MLP替换为训练好的transcoder，得到稀疏可解释特征；(2)为每个CoT步骤构建归因图(attribution graph)，表示模型组件间的因果信息流；(3)在归因图的结构特征上训练分类器，检测推理错误。核心假设是：正确步骤和错误步骤的计算图具有不同的结构指纹。进一步通过定向干预实验验证因果性。",
+ "experiment_framework": "模型：可解释代理模型（MLP替换为transcoder）。任务：多种CoT推理任务。方法：在归因图结构特征上训练错误检测分类器。分析：跨任务错误模式对比。验证：定向干预transcoder特征修正错误推理。",
+ "takeaways": [
+  "CoT推理的计算图结构包含强大的错误检测信号，白盒方法比黑盒/灰盒方法提供更深的因果洞察",
+  "不同推理任务的错误模式具有领域特异性，通用验证器可能不是最优解",
+  "对计算图结构的理解不仅能检测错误，还能指导定向干预修正错误——实现从检测到修复的跨越"
+ ],
+ "weaknesses": [
+  "依赖transcoder构建可解释代理模型，工程复杂度高，对模型架构有要求",
+  "归因图构建计算开销大，实时验证的实用性受限",
+  "仅在特定规模模型上验证，更大规模推理模型的可扩展性未展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "CoT验证器直接关联可靠性主线，方法设计有防守力",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

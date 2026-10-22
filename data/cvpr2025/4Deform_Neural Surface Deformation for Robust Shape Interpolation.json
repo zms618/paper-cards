@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/4Deform_Neural Surface Deformation for Robust Shape Interpolation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/4Deform_Neural Surface Deformation for Robust Shape Interpolation.pdf",
+ "title": "4Deform: Neural Surface Deformation for Robust Shape Interpolation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "隐式SDF与速度场耦合实现点云形变，物理损失提升插值质量",
+ "innovations": [
+  "以欧氏空间连续速度场 V(x,t) 驱动隐式 SDF 形变，用改进 level-set 方程 ∂tφ+V·∇φ=−λlφR(x,t) 把 Implicit Net 与 Velocity Net 双向耦合，摆脱网格顶点对应与固定拓扑依赖",
+  "由连续介质力学形变率张量 D=1/2(∇V+∇V^T) 取偏量部分构造 distortion loss，在无连接结构的无序点云上抑制剪切/挤压畸变，替代难以施加的 ARAP",
+  "用投影算子 P=I−∇φ∇φ^T 把 Green 应变 F^T F−I 投影到切平面构造 stretching loss，只约束沿表面拉伸而允许法向运动",
+  "AutoDecoder 为序列中每个点云配可学 latent 向量 z0⊕z1，使同一模型支持序列插值与时序外推而非逐对过拟合"
+ ],
+ "method_framework": "functional map 求稀疏噪声对应 → 拼接 latent 的隐式场 φz(x,t) 与速度场 Vz(x,t) 联合优化，损失 L=λiLi+λsLs+λvLv+λstLst+λmLm，推理时按 t 取零水平集得到中间形状。",
+ "experiment_framework": "FAUST/SMAL/SHREC16/4D-DRESS/BeHave；基线 LIMP、NFGP、LipMLP、NISE、[45]；CD/HD/SAσ/P-RMSE；三设定 Pairs S/S、Seq. S/S、Pairs S/R。",
+ "takeaways": [
+  "把物理约束（偏量形变率、切向应变）写成对速度场的可微分正则，是在无连接结构上替代 ARAP 的通用做法，可迁移到任意隐式形变任务",
+  "训练用配准合成数据、测试直接喂真实 Kinect 噪声点云的 Pairs S/R 协议，是低成本检验方法对噪声与部分观测耐受度的评测设计",
+  "用 SAσ（表面积标准差）作为无中间帧真值时的等距性代理指标，可在缺 GT 的场景下量化形变合理性"
+ ],
+ "weaknesses": [
+  "消融表（Tab. 4）在正文中被截断，仅能看到文字结论称两 loss 在 Pairs S/S 下影响很小，无法核对 distortion/stretching 各自的独立贡献与是否出现去掉反而更好的矛盾",
+  "所有实验均为单点数值，无多种子方差或显著性检验，CD/HD 的相对优势（如 0.269 vs 0.279）幅度过小难以判断是否显著",
+  "推理仍需为每对形状优化 latent 向量（8–10 分钟/对），与同样逐对优化的 [45] 属同类计算预算，'数据驱动'优势主要体现在序列而非单对场景"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "点云形变方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

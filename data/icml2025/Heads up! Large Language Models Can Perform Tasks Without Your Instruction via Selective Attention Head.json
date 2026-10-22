@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Heads up! Large Language Models Can Perform Tasks Without Your Instruction via Selective Attention Head.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Heads up! Large Language Models Can Perform Tasks Without Your Instruction via Selective Attention Head.pdf",
+ "title": "Heads up! Large Language Models Can Perform Tasks Without Your Instruction via Selective Attention Head Masking",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "冻结参数训练注意力掩码，使LLMs无指令执行任务",
+ "innovations": [
+  "发现LLMs中存在功能性注意力头通路",
+  "提出简单有效的注意力头选择方法",
+  "证明无需修改模型参数即可触发特定任务功能"
+ ],
+ "method_framework": "冻结原始模型参数，训练二进制注意力头掩码，通过Gumbel trick实现离散掩码的可微分优化，直接使用任务数据训练掩码无需指令提示。",
+ "experiment_framework": "在多种LLMs（Llama、Qwen等）和任务（翻译、分类、提取等）上验证，使用困惑度、ROUGE-L和准确率作为指标，对比原始模型、带指令模型和随机掩码模型。",
+ "takeaways": [
+  "注意力头形成相互依赖的功能性通路",
+  "移除通路外注意力头可提升模型性能",
+  "大模型在注意力头功能上表现更好"
+ ],
+ "weaknesses": [
+  "小模型难以准确区分和触发不同注意力头功能",
+  "未深入探索功能通路的具体形成机制",
+  "实验主要集中在对齐任务，缺乏对更复杂任务的验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

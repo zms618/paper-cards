@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Conical Visual Concentration for Efficient Large Vision-Language Models.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Conical Visual Concentration for Efficient Large Vision-Language Models.pdf",
+ "title": "Conical Visual Concentration for Efficient Large Vision-Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "PyramidDrop渐进减少视觉token提升LVLM效率，但机制分析不足",
+ "innovations": [
+  "发现LVLM浅层需要全部视觉token而深层冗余增加",
+  "提出PyramidDrop多阶段渐进式token减少策略",
+  "设计轻量注意力计算实现高效token选择"
+ ],
+ "method_framework": "将LVLM分为多个阶段，在每个阶段结束时基于轻量注意力计算按预设比例丢弃部分图像token，保留与指令相关的重要视觉信息。",
+ "experiment_framework": "在LLaVA-1.5和LLaVA-NeXT上测试，16个多模态基准评估，包括训练时间、推理FLOPs和性能指标对比。",
+ "takeaways": [
+  "基于层间冗余差异的渐进式token减少策略",
+  "轻量注意力计算实现高效token选择",
+  "方法可扩展到视频LVLM"
+ ],
+ "weaknesses": [
+  "未深入分析不同类型图像的token冗余差异",
+  "未探索动态调整丢弃比例的机制"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "仅提升LVLM效率，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

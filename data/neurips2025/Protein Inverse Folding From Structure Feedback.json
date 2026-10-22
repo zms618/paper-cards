@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Protein Inverse Folding From Structure Feedback.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Protein Inverse Folding From Structure Feedback.pdf",
+ "title": "Protein Inverse Folding From Structure Feedback",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "将DPO引入蛋白质逆向折叠，用折叠模型反馈优化结构相似度",
+ "innovations": [
+  "将DPO应用于蛋白质逆向折叠任务",
+  "使用折叠模型反馈生成偏好标签",
+  "多轮DPO迭代优化设计"
+ ],
+ "method_framework": "通过逆向折叠模型生成候选序列，用折叠模型预测结构并计算TM-Score，构建偏好数据对，用DPO优化逆向折叠模型",
+ "experiment_framework": "CATH 4.2/TS50/TS500数据集，对比ProteinMPNN/InstructPLM基线，使用TM-Score和序列恢复率评估",
+ "takeaways": [
+  "偏好优化能提升结构相似度而不牺牲序列恢复率",
+  "数据质量比数量更重要，低质量样本会稀释训练信号"
+ ],
+ "weaknesses": [
+  "ProteinMPNN在小模型上难以收敛",
+  "多轮DPO计算成本高",
+  "对特别困难的蛋白质结构仍有挑战"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

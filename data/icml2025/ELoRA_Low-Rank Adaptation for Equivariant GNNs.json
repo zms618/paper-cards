@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/ELoRA_Low-Rank Adaptation for Equivariant GNNs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ELoRA_Low-Rank Adaptation for Equivariant GNNs.pdf",
+ "title": "ELoRA: Low-Rank Adaptation for Equivariant GNNs",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.25
+ },
+ "one_line": "LoRA在等变GNN上的定制化迁移，方法创新有限",
+ "innovations": [
+  "将LoRA式参数高效微调引入SO(3)等变GNN，指出传统PEFT在等变骨干上会破坏等变性这一关键性质",
+  "提出路径依赖(path-dependent)的权重更新分解，从理论上证明微调全程保持SO(3)等变性",
+  "在保等变的同时利用低秩适配显著提升少数据微调的数据效率"
+ ],
+ "method_framework": "针对预训练等变图神经网络（如MACE/Equiformer类原子势），用路径依赖的权重分解构造低秩更新支路，使微调后的网络在旋转/反射变换下输出仍随输入协变，从而既冻结主干又高效适配新化学体系。",
+ "experiment_framework": "在多个预训练原子间势骨干上，于小分子/晶体等第一性原理数据集上做少样本微调，与全参数微调、传统PEFT对比能量/力误差（MAE），并验证等变性保持与数据效率。",
+ "takeaways": [
+  "直接套用NLP/CV的LoRA会破坏等变性，ELoRA在微调中严格保持SO(3)等变",
+  "低秩适配在少标注数据下可接近全参数微调精度，显著提升数据效率",
+  "等变性质的保持对预测的物理一致性至关重要"
+ ],
+ "weaknesses": [
+  "与主线（可靠性/可信AI/医学影像/多模态大模型推理）无关，属材料物理ML方向",
+  "本质是LoRA在等变架构上的定制化迁移，方法新意受LoRA框架约束",
+  "前9页内未见与近期同类高效微调（如 adapLin、等变微调）的直接对比细节"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.85,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Samples are not Equal A Sample Selection Approach for Deep Clustering.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Samples are not Equal A Sample Selection Approach for Deep Clustering.pdf",
+ "title": "Samples are not Equal: A Sample Selection Approach for Deep Clustering",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "密度加权聚类头与动态样本选择，提升深度聚类性能与效率。",
+ "innovations": [
+  "提出密度Aware聚类头初始化：按样本在特征空间的局部密度自适应调整其对聚类原型的贡献，缓解对高密度区域的偏向、加强对中低密度区域的关注。",
+  "设计动态样本选择策略：基于特征一致性与伪标签稳定性评估样本学习状态，剔除已学透样本、优先不稳定样本，动态重配训练资源。",
+  "作为插件可接入多种深度聚类架构，在多个基准上聚类准确率提升最高6.1%、训练效率提升最高1.3×。"
+ ],
+ "method_framework": "先用kNN距离分析特征局部密度，据此初始化聚类头并按密度加权样本对原型的贡献；训练过程中按特征一致性/伪标签稳定性判定样本是否学透，动态筛选出仍欠学习的样本重点优化。",
+ "experiment_framework": "在多个深度聚类基准数据集上，将该插件接入多种深度聚类架构，对比随机/密度/CDC等采样策略，报告聚类准确率(ACC)与训练效率。",
+ "takeaways": [
+  "深度聚类中样本并不等价，按局部密度与学习状态差异化对待可显著提升对复杂多样模式的捕捉。",
+  "动态剔除已学透、聚焦不稳定样本能在不牺牲精度的同时提升训练效率。"
+ ],
+ "weaknesses": [
+  "属深度聚类/表示学习方向，与可靠性×医学影像/多模态推理主线无关联。",
+  "密度阈值与稳定性判定依赖超参，在簇结构复杂/密度分布不均数据上的鲁棒性与跨架构一致性需更多验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "深度聚类与可靠性主线无关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

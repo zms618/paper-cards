@@ -1,0 +1,41 @@
+{
+ "title": "AKORN: Adaptive Knots generated Online for RegressioN splines",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "AKORN：在线变点选择的无参数样条回归，逼近Trend Filtering性能",
+ "innovations": [
+  "提出无需按真值光滑度调正则化超参的无参数非参回归算法",
+  "借鉴在线去噪(Baby et al. 2021)，用变点(changepoints)自适应地为样条选择节点",
+  "结合数据的前向/后向遍历，使估计器经验性能接近拥有真值 oracle 知识的 Trend Filtering"
+ ],
+ "method_framework": "针对 k 阶全变差(TVk)有界函数的非参回归，将离线数据当作在线序列送入最优在线去噪算法；由在线过程产生的变点位置自适应确定样条节点，从而无需先知 TVk 上界即可逼近最优统计速率；前后向两遍处理进一步提升估计精度。",
+ "experiment_framework": "在合成 TV-有界回归函数与真实数据上，对比无参数 AKORN 与需 oracle 调参的 Trend Filtering，以估计误差/拟合优度与是否依赖超参为先验为指标。",
+ "takeaways": [
+  "在线去噪的变点可转化为离线样条的自适应节点，实现无参数回归",
+  "即便不给超参 oracle，AKORN 也能逼近带 oracle 先验方法的经验性能",
+  "前后向两遍遍历有助于更好地匹配真值的局部几何"
+ ],
+ "weaknesses": [
+  "前 9 页未见高维/多元协变量下的扩展，方法主要面向 1D 有序协变量",
+  "与现代深度非参回归/保边去噪方法的对比缺失",
+  "实际变点检测对噪声水平的敏感性未充分讨论"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/AKORN_Adaptive Knots generated Online for RegressioN splines.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/AKORN_Adaptive Knots generated Online for RegressioN splines.pdf",
+ "raw_overall": 5.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "无参数回归方法，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

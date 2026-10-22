@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/TimeStep Master_Asymmetrical Mixture of Timestep LoRA Experts for Versatile and Efficient Diffusion Models in Vision.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/TimeStep Master_Asymmetrical Mixture of Timestep LoRA Experts for Versatile and Efficient Diffusion Models in Vision.pdf",
+ "title": "TimeStep Master: Asymmetrical Mixture of Timestep LoRA Experts for Versatile and Efficient Diffusion Models in Vision",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "非对称时间步LoRA专家混合，提升扩散模型多任务效率",
+ "innovations": [
+  "观察到扩散模型不同时间步需要不同的微调策略，提出timestep LoRA专家混合",
+  "非对称设计——不同时间步分配不同数量/容量的专家，而非均匀分配",
+  "在域适配、后训练、模型蒸馏三类任务上统一验证SOTA"
+ ],
+ "method_framework": "TimeStep Master将LoRA参数按扩散时间步分配给不同专家，采用非对称混合——根据不同时间步的重要性和需求分配不同容量的LoRA专家。这样可在参数量受限的情况下，在多个下游任务(域适配、后训练、蒸馏)上取得好效果。",
+ "experiment_framework": "在UNet、DiT、MM-DiT等多种扩散模型架构上验证，覆盖域适配、后预训练、模型蒸馏三类任务。",
+ "takeaways": [
+  "不同扩散时间步对微调的需求不同，非对称LoRA专家混合比均匀分配更高效",
+  "统一框架可覆盖多种扩散模型下游适配任务"
+ ],
+ "weaknesses": [
+  "与可靠性/多模态推理主线完全无关，属于扩散模型效率方向",
+  "专家路由的设计可能引入额外计算开销",
+  "实验主要在视觉生成任务上验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.38,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

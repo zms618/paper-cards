@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Robust TEST-TIME VIDEO-TEXT Retrieval Benchmarking and Adapting for Query Shifts.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Robust TEST-TIME VIDEO-TEXT Retrieval Benchmarking and Adapting for Query Shifts.pdf",
+ "title": "Robust Test-Time Video-Text Retrieval: Benchmarking and Adapting for Query Shifts",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "构建视频扰动基准，提出hubness抑制记忆提升检索鲁棒性",
+ "innovations": [
+  "首个面向视频-文本检索的 query shift 鲁棒性基准，含 12 类视频扰动、5 级强度，刻画时空域移。",
+  "发现 query shift 会放大 hubness 现象：少数画廊样本成为吸引大量查询的'枢纽'，导致性能崩溃。",
+  "提出 HAT-VTR 测试时适应框架：hubness 抑制记忆细化相似度分数 + 多粒度损失强制时序特征一致。"
+ ],
+ "method_framework": "在推理时对分布偏移的视频查询做在线适应：用 Hubness Suppression Memory 在相似度空间抑制被过度吸引的枢纽样本得分；同时引入多粒度时序一致性损失，保持帧间特征稳定；无需重训练即可在 query shift 下提升检索鲁棒性。",
+ "experiment_framework": "在自建视频扰动基准(12 类扰动×5 级强度)上评测现有 VTR 模型；与图像域 TTA 方法(如 TCR)对比；报告各类 query shift 下的检索召回与鲁棒提升，HAT-VTR 在多场景下一致优于 prior TTA。",
+ "takeaways": [
+  "视频-文本检索对真实 query shift(雾、遮挡等时空扰动)高度敏感，性能急剧下降。",
+  "query shift 通过放大 hubness 恶化检索，而非单纯表观变化。",
+  "测试时在线抑制 hubness 并保持时序一致，可显著提升真实场景下检索可靠性。"
+ ],
+ "weaknesses": [
+  "扰动为受控合成类型，真实开放世界复杂/复合 query shift 的覆盖度有限。",
+  "测试时适应依赖在线无标签数据，分布骤变时适应误差累积与稳定性未充分分析。",
+  "hubness 抑制记忆的存储开销与长画廊规模下的可扩展性未量化。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频检索鲁棒性基准与hubness抑制方法，落地域明确",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

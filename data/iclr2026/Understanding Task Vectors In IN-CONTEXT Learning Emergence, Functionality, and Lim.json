@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Understanding Task Vectors In IN-CONTEXT Learning Emergence, Functionality, and Lim.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Understanding Task Vectors In IN-CONTEXT Learning Emergence, Functionality, and Lim.pdf",
+ "title": "Understanding Task Vectors in In-Context Learning: Emergence, Functionality, and Limitations",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "任务向量即代表性演示猜想，机制分析局限于linear transformer。",
+ "innovations": [
+  "提出Task Vectors as Representative Demonstrations猜想：任务向量编码的是从原始演示蒸馏出的单个代表性in-context演示",
+  "通过损失景观分析，证明任务向量在triplet格式prompt训练的linear transformer中自然涌现",
+  "预测任务向量在表示高秩映射时会失败并在实际LLM上验证；据此提出向few-shot prompt注入多个任务向量的改进"
+ ],
+ "method_framework": "任务向量把ICL演示的任务信息蒸馏成单个可复用向量，注入zero-shot prompt即可零样本泛化，但机制不明。本文猜想任务向量=蒸馏自原演示的单个代表性演示：(1)在linear transformer上用损失景观分析看其涌现；(2)推导出它只能表示低秩映射、高秩会失败；(3)用saliency分析与参数可视化佐证；据此建议注入多个任务向量到few-shot prompt增强。",
+ "experiment_framework": "在linear transformer(从scratch训练)与实际LLM上验证：损失景观分析任务向量涌现、高秩/低秩映射上的表示失败、saliency与参数可视化；对比注入单个vs多个任务向量的zero-shot/few-shot表现。",
+ "takeaways": [
+  "任务向量本质是被蒸馏出的单个代表性ICL演示，可注入zero-shot prompt加速推理",
+  "任务向量有结构性上限：难以表示高秩映射，这决定了它的失败边界",
+  "向few-shot prompt注入多个任务向量可弥补单向量表达力不足"
+ ],
+ "weaknesses": [
+  "属ICL机制可解释方向，与本主线(可靠性×多模态推理/医学影像)无直接关联",
+  "'代表性演示'以conjecture形式提出，损失景观证据多在linear transformer，到真实LLM的机制外推仍有限",
+  "注入多个任务向量的改进带来的提示长度/算力代价未量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "ICL机制分析无可靠性主线关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

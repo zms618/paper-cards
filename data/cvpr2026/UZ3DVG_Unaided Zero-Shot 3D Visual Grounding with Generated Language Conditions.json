@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/UZ3DVG_Unaided Zero-Shot 3D Visual Grounding with Generated Language Conditions.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/UZ3DVG_Unaided Zero-Shot 3D Visual Grounding with Generated Language Conditions.pdf",
+ "title": "UZ3DVG Unaided Zero-Shot 3D Visual Grounding with Generated Language Conditions",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "纯点云零样本3D定位，但依赖RGB-D伪标签和室内场景",
+ "innovations": [
+  "仅使用3D点云进行推理的零样本3D视觉定位新范式",
+  "多源空间标注与推理链生成器(MSAG-RC)解决2D与3D表示差距",
+  "推理链蒸馏(RCD)将大模型知识转移到轻量网络",
+  "几何感知空间建模(GeoSM)增强全局上下文和局部几何关系"
+ ],
+ "method_framework": "训练阶段使用MSAG-RC生成伪标签和推理链，通过RCD将教师网络知识蒸馏到轻量学生网络，结合GeoSM模块建模空间关系；推理阶段仅使用3D点云和文本描述，无需外部模型。",
+ "experiment_framework": "在ScanRefer和NR3D数据集评估，与ZSVG3D、SeeGround等零样本方法比较，使用Acc@0.25/0.5指标，并测量推理速度。",
+ "takeaways": [
+  "推理链蒸馏可有效将大模型知识转移到轻量网络",
+  "几何感知空间建模对空间关系推理至关重要",
+  "多源空间标注可有效解决3D视觉定位的标注稀缺问题"
+ ],
+ "weaknesses": [
+  "依赖RGB-D图像生成伪标签，可能限制在纯点云场景的应用",
+  "推理链蒸馏过程可能引入噪声，影响最终性能",
+  "实验主要在室内场景进行，泛化能力有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "室内3D定位与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Improving Model Alignment Through Collective Intelligence of Open-Source Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Improving Model Alignment Through Collective Intelligence of Open-Source Models.pdf",
+ "title": "Improving Model Alignment Through Collective Intelligence of Open-Source Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "开源LLM混合生成对齐数据，提升胜率但成本高且评估不全面",
+ "innovations": [
+  "提出MoAA：用多个LLM集体生成对齐数据，替代单一强模型（如GPT-4o）蒸馏",
+  "同时增强SFT与偏好优化两阶段，数据多样性与质量提升",
+  "实现自我改进流水线：用MoA数据微调后的模型超越自身初始能力，无需更强外部监督"
+ ],
+ "method_framework": "对每个指令，让多个开源LLM分别作答/标注偏好，再通过聚合（如取共识/精选）形成高质量SFT样本与偏好对；用这些混合智能体数据做SFT与DPO/偏好优化。",
+ "experiment_framework": "以LLaMA-3.1-8B-Instruct为基座，对比单一教师蒸馏、随机教师、混合教师；指标为Arena-Hard与AlpacaEval2胜率。",
+ "takeaways": [
+  "MoAA将LLaMA-3.1-8B在Arena-Hard胜率从19.5提升到48.3，AlpacaEval2从22.33到57.23",
+  "多模型集体生成的对齐数据优于单一强模型蒸馏",
+  "该自我改进流水线可在不依赖更强外部模型的情况下推动开源LLM前沿"
+ ],
+ "weaknesses": [
+  "多模型集体生成的推理成本显著高于单一教师，规模化训练代价高",
+  "聚合策略对最终数据质量影响大，缺乏系统的聚合方式消融",
+  "评估以对话胜率为主，对安全性/幻觉抑制等对齐维度的提升未充分报告"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

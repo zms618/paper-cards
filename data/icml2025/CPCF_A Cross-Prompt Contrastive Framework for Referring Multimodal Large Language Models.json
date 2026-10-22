@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/CPCF_A Cross-Prompt Contrastive Framework for Referring Multimodal Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CPCF_A Cross-Prompt Contrastive Framework for Referring Multimodal Large Language Models.pdf",
+ "title": "CPCF: A Cross-Prompt Contrastive Framework for Referring Multimodal Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "跨提示对比框架抑制MLLM指代错误，但依赖误导区域采样且开放世界证据有限",
+ "innovations": [
+  "提出跨提示对比框架：对比目标提示与误导区域对比提示的输出分布，抑制邻近/相似区域造成的错误回答",
+  "设计prompt extraction网络自动识别合适的对比提示，免去人工构造",
+  "利用无标注数据的自训练方法提升训练质量，并通过蒸馏降低对比解码的额外计算开销",
+  "在多个指代MLLM基准取得SOTA"
+ ],
+ "method_framework": "在指代MLLM推理时，除目标视觉提示外，由prompt extraction网络从易混淆的邻近/相似区域采样对比提示；通过对比解码拉低误导区域所支持的错误token概率，使回答聚焦目标区域；并用自训练扩无标注数据、蒸馏在部署时去掉对比分支以省算力。",
+ "experiment_framework": "在多个referring MLLM基准(如RefCOCO系列/GRef等区域理解与VQA)上与现有MLLM/指代方法对比，报告区域相关回答准确率，含对比提示提取、自训练、蒸馏的消融与效率分析。",
+ "takeaways": [
+  "指代MLLM常被邻近/相似区域误导，跨提示对比可显著抑制这类错误",
+  "自动对比提示提取+自训练+蒸馏使该思路既有效又可高效部署",
+  "对比解码思想可迁移到其他易受上下文干扰的多模态推理任务"
+ ],
+ "weaknesses": [
+  "对比提示依赖从图像中采样误导区域，对无明显邻近干扰的简单样本可能引入不必要噪声",
+  "蒸馏后是否仍保留全部对比收益需更充分的精度-效率权衡报告",
+  "主要在 Referring/VQA 类基准验证，对开放世界复杂多步多模态推理的鲁棒性证据有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

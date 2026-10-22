@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Balancing Model Efficiency and Performance Adaptive Pruner for Long-tailed Data.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Balancing Model Efficiency and Performance Adaptive Pruner for Long-tailed Data.pdf",
+ "title": "Balancing Model Efficiency and Performance: Adaptive Pruner for Long-tailed Data",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "常规剪枝方法加长尾适配，理论分析不足，实验未超越未剪枝基线",
+ "innovations": [
+  "提出LT-Vote机制，基于各类别分类准确率动态调整不同剪枝准则的权重，使剪枝过程针对性优化尾类学习性能",
+  "提出多阶段渐进剪枝策略，将整体剪枝率分配到多个阶段，每阶段根据当前模型性能动态调整剪枝策略",
+  "从理论上证明长尾分布中尾类需要更高的过参数化程度，并据此提出尾类偏置剪枝命题和参数分配策略"
+ ],
+ "method_framework": "LTAP将模型参数分组，综合幅值（绝对幅值、归一化幅值）和梯度（余弦相似度、一阶Taylor、二阶Taylor）两类共5种重要性准则计算参数组重要性得分。通过类-准则交互矩阵D建模不同准则对不同类别的有效性，并基于验证集各类别准确率变化动态更新权重D，再经softmax得到当前准则权重。采用渐进式多阶段剪枝，每阶段计算得分、选择冗余参数组、置零权重、更新剩余参数。",
+ "experiment_framework": "在CIFAR-100-LT（IR=50/100，ResNet-32）、ImageNet-LT和iNaturalist 2018（ResNet-50）上测试。基线包括Balanced Softmax、LDAM-DRW、DBLP等长尾方法以及ATO、RReg等剪枝方法。报告头/中/尾类及整体准确率，并以FLOPs压缩率F和准确率比C的乘积CF作为效率-性能综合指标。",
+ "takeaways": [
+  "LTAP在CIFAR-100-LT IR=50上将FLOPs压缩至22.6%的同时尾类准确率达34.1%，远超RReg的23.8%",
+  "尾类偏置剪枝策略在多种长尾基线（BS/LDAM-DRW/DBLP）上均能保持较高CF值（3.5-4.1），验证了方法的通用性",
+  "理论分析表明尾类对过参数化的需求与样本数的1/Nc·log(1/Nc)成正比，指导参数差异化分配"
+ ],
+ "weaknesses": [
+  "整体准确率在剪枝后仍低于未剪枝基线（如BS+LTAP整体47.8% vs BS基线51.2%），说明剪枝代价仍不可忽视",
+  "理论部分的假设（性能与有效参数数成对数关系）缺乏实证验证，参数分配策略的最优性证明较为简化",
+  "仅在图像分类任务上验证，未探讨在NLP或其他模态长尾场景的适用性"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "长尾剪枝方法，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Improving Vision-language Models with Perception-centric Process Reward Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Improving Vision-language Models with Perception-centric Process Reward Models.pdf",
+ "title": "Improving Vision-language Models with Perception-centric Process Reward Models",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 7.2
+ },
+ "one_line": "感知中心PRM提供token级监督，但依赖LLM标注且计算开销未充分分析",
+ "innovations": [
+  "感知中心过程奖励模型(PRM)实现token级错误定位",
+  "token级优势重分配框架集成GRPO",
+  "测试时截断-再生成迭代策略"
+ ],
+ "method_framework": "Perceval PRM提取响应中的视觉相关声明并与图像证据逐一比较，识别感知错误；在训练中通过token级优势重分配提供细粒度监督；在推理时通过截断-再生成循环主动检测和纠正感知错误",
+ "experiment_framework": "在V*、MME-RealWorld、BLINK、MMStar、RealWorldQA、MathVista、MATH-Vision、ChartQA等8个基准测试上评估，与12个基线模型比较",
+ "takeaways": [
+  "感知能力提升可迁移到复杂推理任务",
+  "细粒度过程监督解决稀疏奖励问题",
+  "测试时截断策略优于多数投票"
+ ],
+ "weaknesses": [
+  "依赖强LLM进行自动标注和验证",
+  "反思策略(Truncate-Thinking)效果不如简单截断",
+  "未充分分析计算开销与性能提升的权衡"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "感知错误检测与可靠性主线交织，但依赖LLM标注限制落地性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

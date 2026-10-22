@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Provable and Practical In-Context Policy Optimization for Self-Improvement.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Provable and Practical In-Context Policy Optimization for Self-Improvement.pdf",
+ "title": "Provable and Practical In-Context Policy Optimization for Self-Improvement",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "ICPO框架将自反思形式化为策略优化，但理论局限大且实验单一。",
+ "innovations": [
+  "提出ICPO概念，将大模型测试时多轮自反思形式化为上下文内策略优化问题",
+  "理论证明：在Fisher加权logit匹配目标充分预训练下，单层线性自注意力可provably模仿线性赌博机的策略优化算法",
+  "提出ME-ICPO实用算法，通过最小熵选择和多数投票确保自评估奖励的鲁棒性"
+ ],
+ "method_framework": "ICPO在推理时不更新参数，而是通过上下文信息优化响应：生成多个候选响应→自评估奖励→按最小熵选择可靠响应→迭代改进。理论部分将该过程建模为线性bandit上的策略优化，分析Transformer的上下文学习能力。",
+ "experiment_framework": "在标准数学推理任务（如GSM8K、MATH等）上对比其他测试时扩展算法（如自一致性、ToT等），指标为准确率和推理成本。",
+ "takeaways": [
+  "大模型的上下文自改进能力可通过策略优化理论解释",
+  "ME-ICPO在数学推理任务上达到顶级性能，同时保持可负担的推理成本",
+  "最小熵选择+多数投票可有效提升自评估奖励的鲁棒性"
+ ],
+ "weaknesses": [
+  "理论仅在单层线性自注意力和线性bandit场景下证明，与真实大模型的复杂度差距大",
+  "自评估奖励的准确性仍依赖模型自身能力，存在自反馈循环偏差风险",
+  "实验主要集中在数学推理，未验证在更广泛任务上的通用性"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "策略优化理论解释自改进，但理论局限大且实验单一",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

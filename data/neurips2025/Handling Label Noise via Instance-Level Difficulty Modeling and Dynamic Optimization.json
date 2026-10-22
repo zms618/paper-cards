@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Handling Label Noise via Instance-Level Difficulty Modeling and Dynamic Optimization.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Handling Label Noise via Instance-Level Difficulty Modeling and Dynamic Optimization.pdf",
+ "title": "Handling Label Noise via Instance-Level Difficulty Modeling and Dynamic Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "提出wrong event指标和动态优化框架处理标签噪声",
+ "innovations": [
+  "wrong event指标，可靠区分噪声样本和困难样本",
+  "基于beta混合模型的样本清洁度和难度度量",
+  "两阶段动态优化框架，无需超参数调优"
+ ],
+ "method_framework": "IDO框架分为两阶段：第一阶段收集wrong event信息并构建基础模型；第二阶段基于wrong event信息，使用动态加权损失函数进行噪声鲁棒训练",
+ "experiment_framework": "在CIFAR-100、Tiny-ImageNet等合成数据集和CIFAR-100N、Clothing1M等真实数据集上评估，与SCE、ELR、DMix等SOTA方法比较准确率和计算效率",
+ "takeaways": [
+  "wrong event指标比传统损失函数更稳定有效",
+  "beta混合模型能准确建模样本的清洁度和难度",
+  "动态优化框架避免了超参数调优，提高了计算效率"
+ ],
+ "weaknesses": [
+  "方法依赖预训练模型，可能限制在无预训练场景的应用",
+  "两阶段训练增加了整体训练时间",
+  "对某些特定噪声类型的处理能力有待进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

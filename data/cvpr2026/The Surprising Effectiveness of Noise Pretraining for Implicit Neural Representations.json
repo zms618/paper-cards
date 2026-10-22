@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/The Surprising Effectiveness of Noise Pretraining for Implicit Neural Representations.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/The Surprising Effectiveness of Noise Pretraining for Implicit Neural Representations.pdf",
+ "title": "The Surprising Effectiveness of Noise Pretraining for Implicit Neural Representations",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "噪声预训练提升INR信号拟合，但损害去噪能力，泛化性验证不足。",
+ "innovations": [
+  "提出SNP方法，利用噪声预训练初始化INR参数",
+  "发现无结构噪声(Uniform/Gaussian)显著提升信号拟合能力",
+  "揭示1/|fω|谱结构噪声在信号拟合与逆成像任务间的平衡"
+ ],
+ "method_framework": "基于STRAINER框架，将MLP分为共享编码器和特定解码器头，在噪声样本上预训练，测试时冻结编码器并随机初始化解码器头。",
+ "experiment_framework": "图像(CelebA-HQ/AFHQ/OASIS-MRI)和视频数据集，对比SIREN/STRAINER等基线，使用PSNR/SSIM/LPIPS指标评估信号拟合和去噪性能。",
+ "takeaways": [
+  "噪声预训练可作为数据稀缺场景的有效初始化策略",
+  "NTK分析和局部复杂度可视化揭示了不同噪声类型影响INR行为的机制"
+ ],
+ "weaknesses": [
+  "无结构噪声虽提升信号拟合但损害去噪能力",
+  "未充分探讨方法在医学影像等特定领域的泛化性",
+  "实验主要在自然图像和视频上进行，缺乏更广泛的应用验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "INR拟合方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Self-Evolving Pseudo-Rehearsal for Catastrophic Forgetting with Task Similarity in LLMs.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Self-Evolving Pseudo-Rehearsal for Catastrophic Forgetting with Task Similarity in LLMs.pdf",
+ "title": "Self-Evolving Pseudo-Rehearsal for Catastrophic Forgetting with Task Similarity in LLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "SERS用伪样本和动态正则化缓解LLMs遗忘，但参数依赖和扩展性存疑",
+ "innovations": [
+  "语义引导的伪输入生成与标签自进化解耦",
+  "基于任务相似性的动态正则化机制",
+  "高效数据利用策略(1%真实样本生成10%伪样本)"
+ ],
+ "method_framework": "SERS框架包含三个核心组件：语义引导伪输入生成、标签自进化、基于任务相似性的正则化重放，通过模板引导和语义掩码生成多样化伪样本，结合基础模型和微调模型知识生成标签，并根据任务相似性动态调整正则化强度。",
+ "experiment_framework": "在SuperNI数据集上使用LLaMA2-7B和ChatGLM-6B评估，采用Rouge-L指标和平均性能(AR)、向后转移(BWT)衡量持续学习效果，对比MTL、KMeansSel、SSR等基线方法。",
+ "takeaways": [
+  "伪样本生成与标签创建解耦可提高样本质量",
+  "任务相似性驱动的动态正则化能有效平衡稳定性和可塑性",
+  "少量真实样本可高效生成高质量伪样本"
+ ],
+ "weaknesses": [
+  "参数k和α的选择依赖经验调整",
+  "未探讨不同规模LLMs上的扩展性",
+  "任务相似度计算可能增加计算开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

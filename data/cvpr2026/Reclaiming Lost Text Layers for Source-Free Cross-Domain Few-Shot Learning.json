@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Reclaiming Lost Text Layers for Source-Free Cross-Domain Few-Shot Learning.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Reclaiming Lost Text Layers for Source-Free Cross-Domain Few-Shot Learning.pdf",
+ "title": "Reclaiming Lost Text Layers for Source-Free Cross-Domain Few-Shot Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "利用CLIP文本编码器被忽视层提升跨域少样本学习",
+ "innovations": [
+  "发现并解释了CLIP文本编码器中的'丢失层'现象",
+  "提出VtT模型教导视觉编码器像文本编码器一样思考",
+  "设计V-T Fusion、TIA和DGSO三个模块解决信息利用问题",
+  "通过梯度信号动态平衡分类任务和文本信息吸收"
+ ],
+ "method_framework": "VtT模型包含三个模块：V-T Fusion在层级别融合视觉和文本特征，TIA将视觉特征转换为吸收令牌输入文本编码器，DGSO动态平衡分类任务和文本信息吸收。",
+ "experiment_framework": "在4个跨域数据集(CropDisease、EuroSAT、ISIC、ChestX)上进行5-way 1-shot和5-way 5-shot实验，与多种基线方法(Maple、CLIP-LoRA等)比较准确率。",
+ "takeaways": [
+  "跨域场景下视觉分支的变化导致文本编码器中有用信息未被充分利用",
+  "通过层级别和编码级别的信息融合可以有效解决'丢失层'问题",
+  "动态梯度监督优化可以平衡主任务和辅助任务的训练"
+ ],
+ "weaknesses": [
+  "方法需要额外的超参数调优(β和λ)",
+  "实验主要集中在医学和农业领域，泛化性有待进一步验证",
+  "方法依赖于CLIP等预训练模型，对其他架构的适用性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅占可靠性方法一头，无落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

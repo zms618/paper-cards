@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/FlowPrune_Accelerating Attention Flow Calculation by Pruning Flow Network.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/FlowPrune_Accelerating Attention Flow Calculation by Pruning Flow Network.pdf",
+ "title": "FlowPrune: Accelerating Attention Flow Calculation by Pruning Flow Network",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "基于最大流剪枝加速注意力计算，但理论保证不足",
+ "innovations": [
+  "基于最大流最小割定理的图剪枝策略",
+  "边剪枝和层压缩两阶段优化",
+  "采样式最小割边识别算法"
+ ],
+ "method_framework": "利用Transformer的softmax特性和严格分层结构，通过边剪枝移除低容量边，结合层压缩移除贡献小的层，重建层间连接，显著降低计算复杂度",
+ "experiment_framework": "在LLaMA、LLaVA等模型上评估，使用GSM8K和OKVQA数据集，测量计算时间、绝对/相对误差、Top-K token保留率和首次排名偏差",
+ "takeaways": [
+  "基于最大流最小割理论的图剪枝可有效降低计算复杂度",
+  "采样式最小割边识别在分层结构中表现良好"
+ ],
+ "weaknesses": [
+  "层压缩的采样式最小割边识别是启发式方法而非保证准则",
+  "不同模型表现差异较大，理论预测与实际结果不完全一致"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

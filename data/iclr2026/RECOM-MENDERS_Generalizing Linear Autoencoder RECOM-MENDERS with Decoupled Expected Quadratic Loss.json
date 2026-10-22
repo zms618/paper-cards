@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RECOM-MENDERS_Generalizing Linear Autoencoder RECOM-MENDERS with Decoupled Expected Quadratic Loss.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RECOM-MENDERS_Generalizing Linear Autoencoder RECOM-MENDERS with Decoupled Expected Quadratic Loss.pdf",
+ "title": "Generalizing Linear Autoencoder Recommenders with Decoupled Expected Quadratic Loss",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "推广EDLAE二次损失至完整超参数范围，降低计算复杂度",
+ "innovations": [
+  "将EDLAE目标推广为Decoupled Expected Quadratic Loss（DEQL），揭示b=0时解不唯一（对角任意）而b>0时解唯一",
+  "发现并验证b>a区间的解性能优于原EDLAE假设的a≥b约束",
+  "基于Miller矩阵逆定理开发高效算法，将b>0解的计算复杂度从O(n^4)降至O(n^3)"
+ ],
+ "method_framework": "将EDLAE的dropout+强调权重目标重新表述为期望形式，解耦为强调矩阵参数a和b。推导完整超参数范围b≥0下的闭式解。用Miller矩阵逆定理实现高效计算。",
+ "experiment_framework": "在真实推荐基准数据集上评测；对比b=0 EDLAE基线、其他LAE模型和深度学习推荐模型；报告推荐准确率指标。",
+ "takeaways": [
+  "EDLAE的b>0区间存在更优解，扩展超参数空间可提升推荐性能",
+  "原EDLAE假设的a≥b约束并非普适最优，某些数据集上b>a效果更好",
+  "Miller矩阵逆定理可使大规模推荐场景下b>0解的计算变得可行"
+ ],
+ "weaknesses": [
+  "与可靠性/多模态推理/医学影像主线完全无关，属于推荐系统领域",
+  "仅在隐式反馈协同过滤场景验证，对其他推荐设定的迁移性未知",
+  "b>0解的O(n^3)复杂度在超大规模商品集上仍可能较高"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.33,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "推荐系统与可靠性主线无交点，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

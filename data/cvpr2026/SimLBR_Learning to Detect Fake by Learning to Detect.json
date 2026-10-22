@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/SimLBR_Learning to Detect Fake by Learning to Detect.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SimLBR_Learning to Detect Fake by Learning to Detect.pdf",
+ "title": "SimLBR Learning to Detect Fake by Learning to Detect",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "潜在空间混合正则化提升生成图像检测泛化，但实验证据不足",
+ "innovations": [
+  "将假图像检测重构为学习真实图像分布的紧密边界",
+  "潜在空间混合正则化(LBR)技术",
+  "引入可靠性和风险调整指标评估模型鲁棒性"
+ ],
+ "method_framework": "SimLBR框架通过在DINOv3潜在空间中混合真实和假图像特征，训练模型区分真实图像与混合样本，强制学习围绕真实图像分布的紧密决策边界，使假类别作为吸收类。",
+ "experiment_framework": "在GenImage和AIGC数据集上评估，训练于单一生成器，测试于多个未见生成器，使用准确率、标准差和可靠性分数作为指标。",
+ "takeaways": [
+  "潜在空间混合比像素空间混合更有效",
+  "学习真实图像边界比学习假图像边界更具泛化性",
+  "可靠性指标比单纯准确率更能反映模型实际价值"
+ ],
+ "weaknesses": [
+  "依赖预训练特征提取器(DINOv3)的质量",
+  "混合参数ε的选择可能影响性能",
+  "未探讨不同潜在空间的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "假图像检测与可靠性主线有交点但实验证据不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

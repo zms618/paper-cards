@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/RandAR_Decoder-only Autoregressive Visual Generation in Random Orders.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/RandAR_Decoder-only Autoregressive Visual Generation in Random Orders.pdf",
+ "title": "RandAR Decoder-only Autoregressive Visual Generation in Random Orders",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "随机顺序生成消除光栅偏置，但训练复杂度高且领域验证不足",
+ "innovations": [
+  "位置指令令牌设计实现随机顺序生成",
+  "并行解码加速推理2.5倍",
+  "零样本支持图像修复、外推和双向特征提取"
+ ],
+ "method_framework": "在图像令牌前插入位置指令令牌，使用标准解码器进行随机顺序自回归预测，训练时随机排列序列顺序",
+ "experiment_framework": "ImageNet 256×256数据集，与光栅顺序模型对比FID、IS等指标，评估并行解码、图像修复等零样本能力",
+ "takeaways": [
+  "位置指令令牌设计简洁有效",
+  "随机顺序训练增强模型泛化能力",
+  "并行解码显著提升推理效率"
+ ],
+ "weaknesses": [
+  "训练复杂度增加(256!可能顺序)",
+  "位置指令令牌设计可能限制更高分辨率扩展",
+  "未充分验证在医学影像等特定领域表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视觉生成方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

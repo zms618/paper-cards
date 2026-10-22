@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Resplat_Degradation-Agnostic Feed-Forward Gaussian Splatting via Self-Guided Residual Diffusion.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Resplat_Degradation-Agnostic Feed-Forward Gaussian Splatting via Self-Guided Residual Diffusion.pdf",
+ "title": "ReSplat: Degradation-Agnostic Feed-Forward Gaussian Splatting via Self-Guided Residual Diffusion",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "前馈高斯泼溅处理未知退化，扩散自引导多视图一致复原。",
+ "innovations": [
+  "提出退化无关的前馈Gaussian Splatting框架，无需事先知道具体退化类型即可处理多种真实退化。",
+  "联合估计复原图像与3D高斯，用扩散采样过程中生成的3D高斯作为自引导实现多视图一致的通用图像复原。",
+  "自引导残差扩散带来更清晰可靠的新视图合成。"
+ ],
+ "method_framework": "以前馈扩散模型从退化多视图输入同时复原清晰图像并回归3D高斯；在扩散采样中用当前估计的3D高斯渲染回各视图作为自引导信号，约束复原在多视图间几何一致。",
+ "experiment_framework": "在模糊、低光、雾、雨、雪等退化条件下的新视图合成任务上评测；对比针对特定退化的NVS方法；指标为新视图质量(PSNR/SSIM/LPIPS)与鲁棒性。",
+ "takeaways": [
+  "前馈GS可在不知退化类型的情况下统一处理多种真实退化，优于逐退化定制方法。",
+  "把3D高斯作为扩散自引导能促进多视图一致复原，得到更可靠的新视图。"
+ ],
+ "weaknesses": [
+  "鲁棒性体现在视觉退化，与医学影像/多模态推理等主线落地域仍有距离。",
+  "前馈模型的泛化限于训练见过的退化组合，极端/复合退化未充分评估。",
+  "前9页为方法与动机，具体退化下的定量对比表在后续页。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "3D重建技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

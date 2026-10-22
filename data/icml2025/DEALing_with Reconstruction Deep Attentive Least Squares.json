@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DEALing_with Reconstruction Deep Attentive Least Squares.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DEALing_with Reconstruction Deep Attentive Least Squares.pdf",
+ "title": "DEAL: Deep Attentive Least Squares for Image Reconstruction",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "将注意力融入Tikhonov正则化，迭代求解二次问题实现图像重建。",
+ "innovations": [
+  "将注意力机制引入Tikhonov正则化框架，用学习到的掩码M(z)局部调整滤波器响应的惩罚权重，实现空间自适应正则化",
+  "迭代精化方案：每步求解二次问题(线性系统)并更新注意力掩码M(xk)，在重建质量和可解释性之间取得平衡",
+  "建立了更新唯一性、不动点存在性、收敛条件和重建算子稳定性的完整理论分析"
+ ],
+ "method_framework": "DEAL迭代执行两步：(1)重建块：给定注意力掩码M(xk)，求解线性系统(H^T H + λ W^T M^2 W) x_{k+1} = H^T y，用共轭梯度法求解；(2)掩码生成块：轻量CNN从当前重建xk提取多尺度特征，生成空间自适应的正则化权重M。滤波器W为多层无非线性卷积(大感受野25x25)，M由样条非线性函数参数化，在平坦区域接近1(弱正则)，在边缘区域接近0(强正则)。",
+ "experiment_framework": "训练仅用AWGN去噪任务；测试覆盖去噪、超分辨率、MRI重建等逆问题；基线包括PnP方法(DRUNNN)和学习正则化方法(ARA-Dynamics、Score-DRUNet)；指标为PSNR/SSIM；额外验证收敛性、鲁棒性和注意力可视化。",
+ "takeaways": [
+  "在多种逆问题上达到与SOTA PnP和学习正则化方法相当的性能",
+  "迭代精化注意力权重比单次生成M效果更好，且收敛到稳定不动点",
+  "注意力权重可视化显示模型自动在边缘/纹理区域增强正则，在平坦区域减弱，具有良好可解释性"
+ ],
+ "weaknesses": [
+  "训练仅在去噪任务上进行，迁移到其他逆问题时的泛化能力依赖'通用先验'假设，未充分验证域偏移下的鲁棒性",
+  "迭代CG求解的计算开销较大，相比前馈网络方法速度较慢",
+  "仅在标准测试集上评估，未涉及真实医学成像数据或临床场景验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

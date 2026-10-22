@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/D2iT_Dynamic Diffusion Transformer for Accurate Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/D2iT_Dynamic Diffusion Transformer for Accurate Generation.pdf",
+ "title": "D2iT Dynamic Diffusion Transformer for Accurate Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "动态扩散变压器通过信息密度感知提升生成质量，但分辨率限制明显",
+ "innovations": [
+  "动态VAE(DVAE)根据区域信息密度采用不同下采样率",
+  "多粒度噪声预测策略结合全局一致性与局部细节",
+  "动态内容变压器与动态粒度变压器的双阶段框架"
+ ],
+ "method_framework": "D2iT采用两阶段框架：DVAE通过分层编码器为不同区域分配不同粒度的潜在表示；D2iT结合动态粒度变压器和动态内容变压器，预测多粒度噪声实现全局一致与局部细节的统一。",
+ "experiment_framework": "在FFHQ和ImageNet数据集上评估，使用FID、IS等指标，与DiT等SOTA模型比较，参数量相近但训练资源减少57.1%，质量提升23.8%。",
+ "takeaways": [
+  "信息密度感知的动态压缩策略可有效提升生成质量",
+  "多粒度噪声预测框架平衡全局一致性与局部细节"
+ ],
+ "weaknesses": [
+  "仅评估256×256分辨率，未测试更高分辨率",
+  "动态粒度分配策略依赖预定义的熵阈值，可能限制泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "生成模型与可靠性主线无实质交点，仅信息密度感知策略有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

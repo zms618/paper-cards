@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Near-Optimal Second-Order Guarantees for Model-Based Adversarial Imitation Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Near-Optimal Second-Order Guarantees for Model-Based Adversarial Imitation Learning.pdf",
+ "title": "Near-Optimal Second-Order Guarantees for Model-Based Adversarial Imitation Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.8
+ },
+ "one_line": "理论分析MB-AIL样本复杂度，实验规模有限且与主流可靠性研究脱节",
+ "innovations": [
+  "提出MB-AIL算法并建立无horizon、二阶、一般函数近似下的样本复杂度保证，上界随相关策略回报方差缩放、系统越趋近确定性越紧",
+  "构造新的硬实例族给出二阶信息论下界，证明MB-AIL在线交互样本复杂度达极小极大最优(至log因子)",
+  "同时刻画有限专家演示与在线无奖励交互两部分的样本代价，匹配下界在H、ε、策略方差σ²上的依赖"
+ ],
+ "method_framework": "智能体从离线专家演示学习，并在线无奖励地与环境交互；MB-AIL先学环境动力学模型，再在模型上做对抗式状态-动作分布对齐(模仿专家分布)。分析用二阶(方差依赖)而非一阶的偏差-方差分解，给出随回报方差收紧的样本复杂度，并配硬实例下界证明最优性。",
+ "experiment_framework": "理论为主，辅以实验验证；在控制环境上验证二阶上界关于方差/horizon/精度的依赖；实现一个MB-AIL实用版本，与现有AIL/BC方法对比样本效率，报告匹配或超越的结果。",
+ "takeaways": [
+  "在线无奖励交互对AIL的收益可被严格量化，且样本复杂度是二阶(方差依赖)而非一阶",
+  "MB-AIL在有限专家演示下达极小极大最优样本复杂度，关闭了AIL理论的若干gap",
+  "实用实现的样本效率匹配或超过现有AIL方法，理论与实证一致"
+ ],
+ "weaknesses": [
+  "主线是模仿学习理论分析，与LLM/多模态可靠性、验证器、幻觉抑制等落地主线无关",
+  "实验规模与环境复杂度有限，二阶界在高维真实机器人/驾驶任务的实际紧致度未验证",
+  "一般函数近似假设下的常数与可实现性条件较强，落地实现未必满足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "模仿学习理论分析，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

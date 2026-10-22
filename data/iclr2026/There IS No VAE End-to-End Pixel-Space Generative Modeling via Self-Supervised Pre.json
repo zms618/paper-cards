@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/There IS No VAE End-to-End Pixel-Space Generative Modeling via Self-Supervised Pre.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/There IS No VAE End-to-End Pixel-Space Generative Modeling via Self-Supervised Pre.pdf",
+ "title": "There is No VAE: End-to-End Pixel-Space Generative Modeling via Self-Supervised Pre-Training",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "两阶段像素生成框架，ImageNet上SOTA但与主线无关",
+ "innovations": [
+  "提出两阶段像素空间生成框架，无需预训练VAE即可实现端到端高分辨率生成",
+  "第一阶段自监督预训练编码器，将干净图像与确定性采样轨迹上的点对齐",
+  "首次在高分辨率图像上直接训练一致性模型，FID达8.82，显著优于潜空间对应方法"
+ ],
+ "method_framework": "两阶段训练：(1)预训练编码器，从干净图像中捕获语义，同时将其与确定性采样轨迹上的点（从先验到数据分布）对齐；(2)将预训练编码器与随机初始化解码器集成，端到端微调完整模型，支持扩散模型和一致性模型两种范式。",
+ "experiment_framework": "在ImageNet上评估生成质量。扩散模型FID 1.58(256)/2.35(512)，75 NFE。一致性模型FID 8.82(256)。基线包括DiT等潜空间模型和现有像素空间方法。指标为FID和训练计算量对比。",
+ "takeaways": [
+  "像素空间生成模型可以达到甚至超过潜空间方法的性能，关键在于正确的预训练策略",
+  "自监督预训练+端到端微调的两阶段范式有效弥合了像素空间与潜空间的差距",
+  "仅用DiT约30%的训练计算量即可超越其性能，大幅提升训练效率"
+ ],
+ "weaknesses": [
+  "与主线（医学影像/多模态大模型推理可靠性）完全无关，属于生成模型效率研究",
+  "仅在ImageNet上验证，其他数据集和任务的适用性未知",
+  "两阶段训练的复杂度和超参数敏感性讨论不够"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.55,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "像素空间生成效率研究，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

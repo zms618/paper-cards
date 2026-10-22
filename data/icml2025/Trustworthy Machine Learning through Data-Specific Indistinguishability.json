@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Trustworthy Machine Learning through Data-Specific Indistinguishability.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Trustworthy Machine Learning through Data-Specific Indistinguishability.pdf",
+ "title": "Trustworthy Machine Learning through Data-Specific Indistinguishability",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "统一框架解决信任问题，但应用细节与扩展性存疑",
+ "innovations": [
+  "提出Differential Trust(DT)统一框架：把记忆化、数据投毒(后门)、版权保护建模为'目标输入U输出与参考数据集R_i输出间差异'的约束",
+  "提出DSI作为经典Input-Independent Indistinguishability(III)的松弛，选择与目标结果差异紧密对齐的保信任随机化，既放松又更高效",
+  "建立DSI的理论与算法基础，给出最优多元高斯噪声机制，并展示其与黑盒优化器结合做可信深度学习"
+ ],
+ "method_framework": "给定处理函数F、目标输入U与一组安全参考数据集R_i，要求F(U)与F(R_i)输出不可区分；DSI按目标与参考的结果差异自适应地加噪，用最优多元高斯机制实现可证的信任保证。",
+ "experiment_framework": "在记忆化缓解、后门(投毒)防御、版权保护三类任务上验证DSI噪声机制；对比经典III/差分隐私类方法；指标为信任保证强度与精度/效用损失的权衡。",
+ "takeaways": [
+  "记忆化、后门、版权看似不同问题，本质都是'数据对模型输出影响'的约束，可用统一的不可区分性框架刻画",
+  "相对一刀切的III，DSI按目标结果差异自适应加噪，在同等信任保证下效用损失更小"
+ ],
+ "weaknesses": [
+  "框架普适性强但每个应用(记忆化/后门/版权)的参考集R构造仍需专门设计，落地细节分散",
+  "实证多在受控/中小规模设置，对大模型全量训练的可扩展性与噪声开销未充分压测；'可证保证'的紧致性缺乏与SOTA专用防御的系统对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

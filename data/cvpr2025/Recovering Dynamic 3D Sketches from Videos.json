@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Recovering Dynamic 3D Sketches from Videos.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Recovering Dynamic 3D Sketches from Videos.pdf",
+ "title": "Recovering Dynamic 3D Sketches from Videos",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "首个视频到动态3D草图方法，但性能提升有限",
+ "innovations": [
+  "提出Liv3Stroke，首个从视频中恢复动态3D草图的方法",
+  "使用可变形3D贝塞尔曲线表示物体运动",
+  "通过感知空间渲染损失优化运动引导，实现视图一致的动态草图重建"
+ ],
+ "method_framework": "从视频中提取3D点云运动引导，使用MLP变形网络估计运动；基于此初始化3D笔画位置，通过旋转、平移和调整控制点来表示运动；采用粗到细的优化方法捕获全局和局部特征。",
+ "experiment_framework": "合成数据集(100帧，相机轨迹一致)和真实世界场景；基线包括CLIPasso、Sketch Video Synthesis和Suggestive Contours；指标包括结构对齐、运动提示相似度和3D引导准确性。",
+ "takeaways": [
+  "使用感知空间损失(LPIPS)而非像素级损失提高结构完整性",
+  "将运动表示为可变形3D笔画，实现紧凑抽象和视图一致性"
+ ],
+ "weaknesses": [
+  "在结构对齐指标上不如Suggestive Contours",
+  "运动引导的定量结果与专业动态场景重建方法相当但未超越",
+  "未充分讨论方法在不同物体类别上的泛化能力"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3D重建与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

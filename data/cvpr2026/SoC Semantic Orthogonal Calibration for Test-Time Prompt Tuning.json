@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/SoC Semantic Orthogonal Calibration for Test-Time Prompt Tuning.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SoC Semantic Orthogonal Calibration for Test-Time Prompt Tuning.pdf",
+ "title": "SoC Semantic Orthogonal Calibration for Test-Time Prompt Tuning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.1
+ },
+ "one_line": "SoC用Huber正则化改进VLM提示调校校准，但创新有限",
+ "innovations": [
+  "提出语义正交校准(SoC)替代全正交约束",
+  "建立置信度下界与类相似性的理论联系",
+  "Huber正则化保持语义邻近性同时改善校准"
+ ],
+ "method_framework": "基于Huber损失的正则化方法，在保持语义相关类邻近性的同时实现更平滑的原型分离，避免全正交约束导致的过度自信问题。",
+ "experiment_framework": "11个细粒度分类数据集和4个ImageNet变体，比较TPT/C-TPT/O-TPT基线，使用准确率和ECE指标评估。",
+ "takeaways": [
+  "Huber正则化在保持分类性能的同时显著改善校准",
+  "多步梯度更新下SoC比O-TPT更稳定",
+  "理论分析与实验结果一致验证了全正交约束导致过度自信"
+ ],
+ "weaknesses": [
+  "仅在一个数据集上ECE略逊于O-TPT",
+  "多步梯度更新下所有方法性能均下降",
+  "未探索不同阈值ς的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "校准方法与VLM推理可靠性主线直接相关，且实验设计扎实",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

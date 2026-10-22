@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Sublinear Time Quantum Algorithm for ATTENTION Approximation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sublinear Time Quantum Algorithm for ATTENTION Approximation.pdf",
+ "title": "Sublinear Time Quantum Algorithm for Attention Approximation",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 3,
+  "relevance": 3.0,
+  "overall": 5.2
+ },
+ "one_line": "纯理论量子数据结构实现Attention行近似，但实际应用距离遥远",
+ "innovations": [
+  "提出首个量子数据结构，在仅行查询访问Q/K/V矩阵的条件下，实现Attention行近似的亚线性时间查询",
+  "预处理复杂度Õ(ε^{-1}n^{0.5}·s_λ^{2.5}+s_λ^{1.5}d+α^{0.5}d)，单条行查询Õ(s_λ²+s_λd)，突破经典Ω(nd)下界",
+  "组合三种量子技术：量子Nyström近似指数核、量子多元均值估计计算归一化因子D、量子杠杆分数采样实现与V的乘法"
+ ],
+ "method_framework": "将Attention分解为三个子问题分别用量子算法加速：(1)用指数核的量子Nyström近似将QK^T核矩阵降维到s_λ维；(2)用量子多元均值估计高效计算softmax归一化因子D的对角元；(3)用量子杠杆分数采样近似Attention矩阵与V的乘法。预处理阶段构建量子数据结构，查询阶段并行执行三个子任务输出近似行。",
+ "experiment_framework": "纯理论论文，无实验。分析围绕近似误差ε、指数核统计维度s_λ、V矩阵行畸变α三个参数展开复杂度分析。",
+ "takeaways": [
+  "量子计算可以在Attention近似问题上突破经典计算的Ω(nd)下界，实现亚线性时间行查询",
+  "算法复杂度的关键瓶颈是指数核的统计维度s_λ，当s_λ较小时量子加速效果显著",
+  "行查询模型特别适配LLM推理场景（逐token生成时只需查询当前query对应的attention行）"
+ ],
+ "weaknesses": [
+  "纯理论量子算法，当前量子硬件远未达到实现条件，距离实际应用非常遥远",
+  "复杂度中s_λ的实际取值不明确，对于典型Transformer的指数核s_λ可能很大，加速效果存疑",
+  "量子数据结构的构建需要量子内存访问模型假设，实际工程可行性极低"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.83,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "纯理论量子算法，与可靠性主线无实质关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

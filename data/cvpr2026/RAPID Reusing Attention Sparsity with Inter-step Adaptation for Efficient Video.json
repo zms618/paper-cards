@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/RAPID Reusing Attention Sparsity with Inter-step Adaptation for Efficient Video.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/RAPID Reusing Attention Sparsity with Inter-step Adaptation for Efficient Video.pdf",
+ "title": "RAPID Reusing Attention Sparsity with Inter-step Adaptation for Efficient Video",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "注意力缓存加速视频生成，但未解决其他计算瓶颈",
+ "innovations": [
+  "单次注意力估计与缓存机制",
+  "多阶段自适应剪枝策略",
+  "混合块选择策略"
+ ],
+ "method_framework": "RAPID采用三阶段策略：预热阶段使用密集注意力，单次评分与缓存阶段计算并存储重要性分数和掩码，缓存重用阶段通过固定掩码或自适应剪枝加速推理。",
+ "experiment_framework": "在Wan2.1-14B和HunyuanVideo模型上评估，使用PSNR、SSIM、LPIPS指标，与X-Attention、SVG、Radial Attention等基线比较。",
+ "takeaways": [
+  "注意力模式在视频扩散中具有强时间稳定性",
+  "计算密度随去噪过程逐渐衰减",
+  "混合块选择策略优于单一方法"
+ ],
+ "weaknesses": [
+  "仅关注注意力计算效率，未考虑其他计算瓶颈",
+  "Turbo模式在后期阶段可能损失部分细节"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "视频生成效率优化，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/PMA_Towards Parameter-Efficient Point Cloud Understanding via Point Mamba Adapter.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/PMA_Towards Parameter-Efficient Point Cloud Understanding via Point Mamba Adapter.pdf",
+ "title": "PMA Towards Parameter-Efficient Point Cloud Understanding via Point Mamba Adapter",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "Point Mamba Adapter融合多层级特征提升点云理解，但创新有限",
+ "innovations": [
+  "提出PMA框架融合预训练模型所有中间层特征",
+  "设计几何约束门提示生成器(G2PG)解决3D空间各向同性",
+  "利用Mamba架构高效融合多层级互补语义"
+ ],
+ "method_framework": "PMA包含冻结的Transformer主干网络、共享的G2PG模块和正交的Mamba适配器，通过G2PG生成几何提示并重新排序各层特征，再由Mamba融合所有层特征",
+ "experiment_framework": "在ScanObjectNN、ModelNet40和ShapeNetPart数据集上评估分类、少样本学习和部件分割任务，与FFT、IDPT、DAPT等方法对比",
+ "takeaways": [
+  "利用预训练模型中间层特征可显著提升性能",
+  "几何约束门提示生成器有效解决3D空间各向同性问题",
+  "参数高效微调方法在资源受限场景具有优势"
+ ],
+ "weaknesses": [
+  "仅关注点云分类和分割任务，未扩展到其他3D任务",
+  "G2PG模块的计算复杂度可能随点云规模增加而上升"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "点云理解方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Multi-modal Test-time Adaptation via Adaptive Probabilistic Gaussian Calibration.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Multi-modal Test-time Adaptation via Adaptive Probabilistic Gaussian Calibration.pdf",
+ "title": "Multi-modal Test-time Adaptation via Adaptive Probabilistic Gaussian Calibration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "高斯校准处理多模态分布不对称，但实验有限且计算开销大",
+ "innovations": [
+  "显式建模类别条件分布解决多模态TTA问题",
+  "自适应对比不对称校正技术处理模态分布不对称",
+  "概率高斯预测校准模块无需监督或源数据"
+ ],
+ "method_framework": "AdaPGC包含概率高斯预测校准和自适应对比不对称校正两个模块，通过流式目标数据逐步更新类别均值、协方差矩阵和先验，并检测受损模态进行特征对齐。",
+ "experiment_framework": "在Kinetics50-C和VGGSound-C数据集上评估，与TENT、EATA、READ、SuMi等基线比较，在视频和音频模态损坏场景下预测准确率。",
+ "takeaways": [
+  "显式建模类别条件分布对可靠决策边界至关重要",
+  "模态分布不对称是多模态TTA中的关键挑战",
+  "增量更新GDA参数能有效适应目标分布变化"
+ ],
+ "weaknesses": [
+  "方法依赖预训练模型初始化参数",
+  "仅评估了两个数据集的有限类型扰动",
+  "计算复杂度较高需要双GPU处理"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态TTA校准方法直接关联可靠性主线与落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

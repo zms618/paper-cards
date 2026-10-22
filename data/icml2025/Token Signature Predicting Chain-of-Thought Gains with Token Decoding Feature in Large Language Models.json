@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Token Signature Predicting Chain-of-Thought Gains with Token Decoding Feature in Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Token Signature Predicting Chain-of-Thought Gains with Token Decoding Feature in Large Language Models.pdf",
+ "title": "Token Signature: Predicting Chain-of-Thought Gains with Token Decoding Feature in Large Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "elevance": 5.5,
+  "evidence": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "Token Signature预测CoT增益，但关联主线弱且证据不足。",
+ "innovations": [
+  "提出token signature概念，从解码过程中提取特征预测CoT增益",
+  "解决CoT在不同任务上效果不一致的问题，实现按需触发CoT",
+  "无需额外标注即可预测CoT是否对特定样本有效"
+ ],
+ "method_framework": "通过分析LLM解码过程中每个token的特征分布(token signature)，训练预测器判断CoT推理对该样本是否有效，从而动态决定是否触发CoT，避免无效CoT带来的额外计算和潜在错误。",
+ "experiment_framework": "在多个推理数据集上验证token signature预测CoT增益的准确性，对比始终CoT、始终直接回答的策略。",
+ "takeaways": [
+  "token级解码特征可有效预测CoT是否对样本有效",
+  "按需触发CoT可在保持推理性能的同时减少计算开销"
+ ],
+ "weaknesses": [
+  "与幻觉抑制关联中等，属于LLM推理效率方向",
+  "预测器本身可能需要额外训练数据",
+  "预测错误时（该用CoT没用/不该用却用了）的影响未充分分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

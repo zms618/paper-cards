@@ -1,0 +1,41 @@
+{
+ "title": "SCOPED: Score-Curvature Out-of-Distribution Proximity Evaluator for Diffusion",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.3
+ },
+ "one_line": "扩散模型score曲率统计量做OOD检测，计算高效但SOTA对比不足",
+ "innovations": [
+  "将score函数的Jacobian trace与平方范数结合为单一无监督检验统计量",
+  "用Hutchinson迹估计只需一次前向+一次JVP，相比现有扩散OOD方法快一个数量级",
+  "用核密度估计估计in-dist分数密度自适应阈值，免固定阈值；并迁移到机器人/RL分布漂移检测"
+ ],
+ "method_framework": "仅训练一次扩散模型，对输入计算score-curvature统计量(Jacobian trace + 平方范数)；以KDE估计in-dist分数密度做无监督阈值判定；用Hutchinson迹估计把成本压到单次前向+JVP。",
+ "experiment_framework": "在4个视觉基准上达竞争性或SOTA的precision-recall，尽管计算成本低；并在共享状态/动作空间的机器人控制任务上检测跨奖励/训练机制的分布漂移。",
+ "takeaways": [
+  "扩散模型的score曲率信息是廉价而有效的OOD信号",
+  "无监督KDE阈值避免了固定阈值在不同域失效",
+  "该方法可跨视觉与机器人/RL迁移"
+ ],
+ "weaknesses": [
+  "依赖扩散模型一次训练成本，极低资源场景仍偏重",
+  "前9页未见与最新SOTA OOD检测器的全面ROC对比",
+  "在自回归模型异常/RL探索的扩展仍属初步演示"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/SCOPED_SCORE–CURVATURE Out-of-Distribution Proximity Evaluator for Diffusion.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SCOPED_SCORE–CURVATURE Out-of-Distribution Proximity Evaluator for Diffusion.pdf",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "OOD检测与可靠性主线明确交点，跨视觉与机器人迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

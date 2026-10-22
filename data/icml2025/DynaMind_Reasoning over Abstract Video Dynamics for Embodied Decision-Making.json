@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DynaMind_Reasoning over Abstract Video Dynamics for Embodied Decision-Making.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DynaMind_Reasoning over Abstract Video Dynamics for Embodied Decision-Making.pdf",
+ "title": "DynaMind: Reasoning over Abstract Video Dynamics for Embodied Decision-Making",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "动态表征抽取与预测，提升具身决策连贯性",
+ "innovations": [
+  "提出从视频中抽取捕捉视觉显著性与时序演化的动态表征，避免语言与原始视频内容的直接映射失配",
+  "设计自适应FrameScorer，基于语义一致性与视觉显著性给帧打分、过滤冗余帧并合成紧凑动态表征",
+  "预测关键未来动态并以动态引导的策略生成连贯、上下文感知的动作"
+ ],
+ "method_framework": "VLA框架：先用FrameScorer按语义一致性与视觉显著性对历史视频帧打分，过滤冗余得到紧凑动态表征；基于该表征预测未来关键动态，再由动态引导策略网络生成动作，实现从语言指令到具身动作的高层动态推理。",
+ "experiment_framework": "在多个具身仿真基准及真实机器人场景上评测任务成功率，与端到端VLA及其他动态建模基线对比，消融验证FrameScorer与动态预测模块。",
+ "takeaways": [
+  "将视频抽象为动态表征比直接映射语言到像素更利于具身推理",
+  "帧重要性打分可过滤冗余、压缩序列并提升决策上下文质量",
+  "预测未来动态能引导策略产生更连贯的长程动作"
+ ],
+ "weaknesses": [
+  "主线相关性中等：属具身VLA方法而非可靠性/可信AI/医学影像",
+  "FrameScorer依赖语义一致性与显著性启发式，对长视频/遮挡场景的鲁棒性未在前9页论证",
+  "真实世界增益相对仿真是否可复现，需看完整真机对比表"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

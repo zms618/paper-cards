@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Self-Supervised Monocular 4D Scene Reconstruction for Egocentric Videos.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Self-Supervised Monocular 4D Scene Reconstruction for Egocentric Videos.pdf",
+ "title": "Self-Supervised Monocular 4D Scene Reconstruction for Egocentric Videos",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "扩展UniDepth做自监督4D重建，依赖预训练先验",
+ "innovations": [
+  "统一相机内参、位姿和视频深度估计的自监督框架",
+  "基于深度对齐的相机位姿估计方法",
+  "利用大规模无标记第一人称视频数据集进行训练"
+ ],
+ "method_framework": "基于UniDepth扩展，添加视频适配器和置信度掩码解码器，通过光流和跟踪先验的光度损失以及深度和HOI先验的正则化损失进行自监督训练",
+ "experiment_framework": "在H2O、HOI4D数据集上评估，使用3D Chamfer距离和点云F-score作为指标，并在POV-Surgery和ARCTIC-HOI上进行零样本泛化测试",
+ "takeaways": [
+  "自监督方法可解决第一人称视频中标记数据稀缺问题",
+  "深度对齐方法可有效估计相机位姿",
+  "大规模无标记数据可提升模型泛化能力"
+ ],
+ "weaknesses": [
+  "依赖预训练模型(UniDepth、EgoHOS)作为正则化先验",
+  "未充分讨论模型在极端动态场景下的局限性",
+  "实验主要在合成数据集上进行，真实场景验证不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "纯视觉重建工作，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

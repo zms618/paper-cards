@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/AC-LORA_(Almost) Training-Free Access Control-Aware Multi-Modal LLMs.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/AC-LORA_(Almost) Training-Free Access Control-Aware Multi-Modal LLMs.pdf",
+ "title": "AC-LORA: (Almost) Training-Free Access Control-Aware Multi-Modal LLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "训练自由多模态LLM访问控制，通过LoRA检索与混合实现信息隔离。",
+ "innovations": [
+  "基于用户权限和查询相似性的LoRA检索机制",
+  "无需额外训练的LoRA混合方法",
+  "多模态访问控制扩展",
+  "提示用户申请权限的hint机制"
+ ],
+ "method_framework": "AC-LORA维护两个向量数据库：LoRA-DOC EMBED（存储LoRA与文档嵌入映射）和LoRA-PERMISSION（存储用户权限）。根据查询相似度和用户权限检索相关LoRA，使用相似度分数进行混合，无需额外训练。",
+ "experiment_framework": "在FlanV2（10个任务领域）、RepLiQA（17个主题）和WikiArts（27种艺术风格）数据集上评估，使用LLAMA2/3、STABLE-DIFFUSION-V1-4和QWEN2-VL作为基础模型，比较现有LoRA混合技术性能。",
+ "takeaways": [
+  "LoRA可有效注入领域特定知识",
+  "基于相似度的LoRA混合可跨权限区域组合知识",
+  "多模态访问控制的扩展方法"
+ ],
+ "weaknesses": [
+  "高权限用户可能需要同时加载多个LoRA导致GPU内存瓶颈",
+  "hint机制可能泄露信息存在性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

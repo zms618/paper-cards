@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Reidentify_Context-Aware Identity Generation for Contextual Multi-Agent Reinforcement Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Reidentify_Context-Aware Identity Generation for Contextual Multi-Agent Reinforcement Learning.pdf",
+ "title": "Reidentify: Context-Aware Identity Generation for Contextual Multi-Agent Reinforcement Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "因果Transformer身份解码器提升多智能体RL跨任务泛化，但缺乏稳定性验证",
+ "innovations": [
+  "用因果 Transformer 架构的身份解码器为不同上下文变体动态生成唯一智能体身份，提供对齐跨问题变体智能体的上下文化表征",
+  "设计动作调节器将智能体身份纳入动作-价值空间，实现对变化上下文的无缝适配",
+  "通过策略复用而非为每个变体重训，提升 CMARL 的样本效率"
+ ],
+ "method_framework": "在 CMARL 设定下，先用基于因果 Transformer 的智能体身份解码器，依据上下文动态生成每个智能体的唯一身份嵌入；这些身份把相似任务变体中对应的智能体对齐起来以支持策略复用；动作调节器再将身份嵌入融合进动作-价值网络，使同一策略能适应不同上下文配置。",
+ "experiment_framework": "在 CMARL 基准（含 predator-prey 等带上下文变体的任务）上评测；对比已有元学习/迁移/大策略网络等泛化方法；指标为样本效率与跨上下文变体的泛化回报。",
+ "takeaways": [
+  "动态生成上下文感知身份可有效对齐任务变体中的智能体，促进策略复用",
+  "将身份嵌入动作-价值空间使单策略适应多变上下文",
+  "CAID 在样本效率与跨变体泛化上均显著优于现有方法"
+ ],
+ "weaknesses": [
+  "主线偏离可靠性/医学影像/多模态推理",
+  "身份依赖因果 Transformer 解码，智能体数量大幅变化时身份对齐是否稳定缺乏证据",
+  "前 9 页未见与最近 CMARL 专用基线在统一协议下的完整数值表"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

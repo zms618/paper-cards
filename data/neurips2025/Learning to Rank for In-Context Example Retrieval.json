@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Learning to Rank for In-Context Example Retrieval.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Learning to Rank for In-Context Example Retrieval.pdf",
+ "title": "Learning to Rank for In-Context Example Retrieval",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "将ICL检索转为排序问题，用SeDPO训练提升NLP任务性能",
+ "innovations": [
+  "将分类目标改为排序目标，解决训练与推理不一致问题",
+  "提出SeDPO算法，扩展DPO用于训练检索器",
+  "通过LLM生成正确答案的可能性构建偏好排序数据"
+ ],
+ "method_framework": "将ICL示例检索形式化为排序问题，使用LLM评分构建偏好数据，通过扩展DPO算法训练检索器，学习示例间的相对排序而非绝对分类",
+ "experiment_framework": "9个NLP任务(MRPC,PAWS,QQP,WSC,MultiRC,BoolQ,AGNews,MNLI-m/mm)，与Se2等基线比较，使用准确率/F1等指标",
+ "takeaways": [
+  "排序目标比分类目标更适合ICL示例检索",
+  "偏好排序数据构建方法有效提升检索性能",
+  "SeDPO与Se2具有互补性"
+ ],
+ "weaknesses": [
+  "方法主要针对多选题任务，泛化性有待验证",
+  "计算开销较大，需要多次LLM评分",
+  "未探索与医学影像等领域的结合"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

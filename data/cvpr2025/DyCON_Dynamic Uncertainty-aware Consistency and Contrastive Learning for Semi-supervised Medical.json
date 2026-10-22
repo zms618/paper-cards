@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/DyCON_Dynamic Uncertainty-aware Consistency and Contrastive Learning for Semi-supervised Medical.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/DyCON_Dynamic Uncertainty-aware Consistency and Contrastive Learning for Semi-supervised Medical.pdf",
+ "title": "DyCON Dynamic Uncertainty-aware Consistency and Contrastive Learning for Semi-supervised Medical",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "动态加权一致性+焦点对比学习，提升半监督医学分割",
+ "innovations": [
+  "动态不确定性感知一致性损失(UnCL)根据训练阶段调整不确定性区域的学习权重",
+  "焦点熵感知对比损失(FeCL)结合双焦点机制和自适应置信度调整，处理类别不平衡",
+  "无需多模型预测或双解码器，直接在单次前向传播中整合不确定性信息"
+ ],
+ "method_framework": "DyCON框架结合Mean-Teacher架构，引入UnCL和FeCL两个互补损失函数。UnCL动态加权体素贡献，FeCL通过双焦点机制和自适应置信度调整增强局部特征判别性，共同处理医学图像中的类别不平衡和病变变异性问题。",
+ "experiment_framework": "在ISLES'22、BraTS'19、LA和Pancreas四个医学图像分割数据集上评估，使用5%、10%和20%标记数据，比较Dice、IoU、HD95和ASD指标，与多种SOTA半监督方法进行对比。",
+ "takeaways": [
+  "动态调整不确定性权重的方法可有效平衡探索与利用，提升模型对不确定区域的处理能力",
+  "结合全局一致性和局部对比学习的双路径方法能有效处理医学图像中的类别不平衡问题"
+ ],
+ "weaknesses": [
+  "方法引入了多个超参数(β、γ、λ等)，需要针对不同数据集进行调整",
+  "计算复杂度较高，训练时间略长于部分基线方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "半监督医学分割+不确定性感知，可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

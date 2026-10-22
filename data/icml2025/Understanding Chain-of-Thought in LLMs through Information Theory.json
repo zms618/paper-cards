@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Understanding Chain-of-Thought in LLMs through Information Theory.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Understanding Chain-of-Thought in LLMs through Information Theory.pdf",
+ "title": "Understanding Chain-of-Thought in LLMs through Information Theory",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "用条件互信息定义CoT信息增益，检测不可识别子任务失败，降低假阳性",
+ "innovations": [
+  "将CoT推理形式化为可组合原始任务序列，提出任务'不可识别性(unidentifiability)'概念并证明(Thm 3.3)：一旦在第k步遇到训练任务span外的子任务，其后所有步骤对正确输出Y不再提供信息",
+  "以条件互信息I(Y;X_j^M|X_{j-1}^M)定义每步信息增益，并用Proposition 3.4将其等价为supervisor模型预测Y的交叉熵下降量，从而无需人工步级标注即可估计",
+  "指出outcome reward/Math-Shepherd类方法对错误步检测不健全(高假阳性)，给出基于信息增益的step-wise评估算法，可适应线性与分支/探索式推理轨迹"
+ ],
+ "method_framework": "把任务分解λ=λ1∘..∘λT为状态转移；假设模型执行受限于训练原始任务span。训练一个supervisor LLM gsup(以CoT前缀预测最终正确答案Y)近似p(Y|X_t^M)，相邻步交叉熵之差即信息增益；增益≈0的步骤即不可识别/无效步。",
+ "experiment_framework": "在toy arithmetic、GSM8K、PRM800k(及MATH/PRM轨迹)上验证；对比outcome reward modelling、Math-Shepherd等outcome-based方法；指标为对人类标注为uninformative/irrelevant步的识别准确率、假阳性率与与人工步级标注的一致性。",
+ "takeaways": [
+  "正确推理步应对最终答案提供正信息增益，遇到训练分布外子任务后增益应归零——该信号无需步级标注即可定位推理失败",
+  "outcome-based PRM会把'碰巧答对的错误推理步'误判为好步，信息增益指标能更可靠地暴露这类虚假正确"
+ ],
+ "weaknesses": [
+  "信息增益的估计依赖另训supervisor模型近似条件分布，估计偏差与supervisor本身能力会污染IG数值；关键结论建立在组合一致性等较强假设上",
+  "仅在数学算术推理域验证，未扩展到代码/多步决策等更宽推理任务；IG=0的判定阈值如何定、对真实LLM分布外触发的鲁棒性讨论有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

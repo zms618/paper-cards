@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Unextractable Protocol Models_Collaborative Training and Inference without Weight Materialization.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Unextractable Protocol Models_Collaborative Training and Inference without Weight Materialization.pdf",
+ "title": "Unextractable Protocol Models: Collaborative Training and Inference without Weight Materialization",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6.25
+ },
+ "one_line": "时间依赖变换使模型权重不可提取，但仅限语言模型验证",
+ "innovations": [
+  "引入时间依赖的随机可逆变换，使模型权重在不同时间步不兼容",
+  "设计适用于多种神经网络架构的变换机制，包括Transformer层",
+  "提出高精度权重存储方案解决推理时的数值精度问题",
+  "证明模型拼接攻击需要与从头训练相当的计算成本"
+ ],
+ "method_framework": "将模型分片为子函数，在分片边界注入随机可逆变换，使权重在不同时间步不兼容，同时保持端到端网络功能不变。",
+ "experiment_framework": "在Qwen-2.5-0.5B和Llama-3.2-1B上测试，使用WikiText验证集评估困惑度和Jensen-Shannon距离，测量训练和推理开销。",
+ "takeaways": [
+  "利用模型并行结构本身实现权重不可提取性，而非依赖密码学方法",
+  "变换矩阵的选择和控制对数值稳定性和安全性至关重要"
+ ],
+ "weaknesses": [
+  "仅验证了语言模型，未在其他领域如医学影像测试",
+  "变换频率增加可能导致长期训练中的累积误差"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/SAT-RRG_LLM-Guided Self-Adaptive Training for Radiology Report Generation with Token-Level.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SAT-RRG_LLM-Guided Self-Adaptive Training for Radiology Report Generation with Token-Level.pdf",
+ "title": "SAT-RRG LLM-Guided Self-Adaptive Training for Radiology Report Generation with Token-Level",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "冻结LLM检测语义冲突，token级推拉优化放射报告生成",
+ "innovations": [
+  "冻结LLM作为语义冲突检测器提供弱监督",
+  "token级推拉优化机制(ETAPL+CTAL)",
+  "熵-置信度自适应权重设计"
+ ],
+ "method_framework": "结合视觉编码器、视觉映射器和LLM解码器，通过冻结LLM识别预测与参考报告间的语义冲突，应用自适应权重对错误和正确token分别进行惩罚和强化",
+ "experiment_framework": "MIMIC-CXR和IU-Xray数据集，对比SOTA方法，使用BLEU、METEOR、ROUGE等语言指标和RadGraph F1、BERTScore等临床指标",
+ "takeaways": [
+  "冻结LLM作为语义冲突检测器提供弱监督的创新思路",
+  "token级推拉优化机制可应用于其他医疗文本生成任务"
+ ],
+ "weaknesses": [
+  "依赖LLM进行错误标记可能引入额外噪声",
+  "方法在计算效率上可能存在额外开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像报告生成与可靠性主线交点，token级优化有防守力",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

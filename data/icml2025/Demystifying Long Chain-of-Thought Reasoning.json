@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Demystifying Long Chain-of-Thought Reasoning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Demystifying Long Chain-of-Thought Reasoning.pdf",
+ "title": "Demystifying Long Chain-of-Thought Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 7.5,
+  "overall": 6.75
+ },
+ "one_line": "系统实证分析长CoT训练配方，但缺乏机理解释与多模态验证。",
+ "innovations": [
+  "系统研究长 CoT 的涌现条件，而非直接提出新 SOTA 方法，厘清 SFT/RL 各自作用。",
+  "揭示推理能力随训练算力增加而涌现但不被保证，强调奖励塑造对稳定 CoT 长度增长的必要性。",
+  "证明可验证奖励信号的规模化是 RL 关键，并发现用带过滤的噪声网络解在 OOD STEM 推理上潜力显著。"
+ ],
+ "method_framework": "以 o1 式长 CoT 复现为目标，控制变量地做 SFT 与 RL 实验：对比有无 SFT、不同奖励塑造方式、不同规模/来源（含可验证答案奖励与噪声网络解+过滤）的奖励，观察 CoT 长度增长与推理精度（尤其 OOD STEM）的关系，归纳长 CoT 训练的可行配方。",
+ "experiment_framework": "在数学/STEM/竞赛推理任务上做大规模 SFT+RL 实验；指标为推理精度、CoT 长度分布、训练稳定性与 OOD 泛化；对比可验证奖励 vs 噪声网络解+过滤、有无奖励塑造。",
+ "takeaways": [
+  "SFT 对长 CoT 非严格必需，但显著简化训练并提升效率。",
+  "仅靠堆训练算力不保证涌现长 CoT，奖励塑造是稳定 CoT 长度增长的关键。",
+  "规模化可验证奖励至关重要；带过滤的噪声网络解对 OOD STEM 推理特别有效。"
+ ],
+ "weaknesses": [
+  "属系统性实证分析而非提出新方法，结论是经验性配方，缺乏对“为何涌现”的机理级解释。",
+  "奖励塑造与过滤的工程细节对最终性能影响大，可复现门槛与超参敏感性交代有限。",
+  "实验偏数学/STEM 文本推理，对多模态（视觉+推理）与医学影像等具体落地域未直接覆盖。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

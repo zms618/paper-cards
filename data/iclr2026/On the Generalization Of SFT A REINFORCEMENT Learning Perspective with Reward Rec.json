@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/On the Generalization Of SFT A REINFORCEMENT Learning Perspective with Reward Rec.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/On the Generalization Of SFT A REINFORCEMENT Learning Perspective with Reward Rec.pdf",
+ "title": "On the Generalization of SFT: A Reinforcement Learning Perspective with Reward Rectification",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "理论分析SFT隐式奖励缺陷，提出简单缩放改进，数学/多模态提升有限。",
+ "innovations": [
+  "理论上将 SFT 梯度解释为某种隐式奖励下的策略梯度，指出该奖励稀疏且与专家动作概率成反比，导致低概率 token 梯度过大、优化不稳",
+  "提出 Dynamic Fine-Tuning (DFT)，按 token 概率动态重标定损失以抵消逆概率加权失真，使 SFT 更新更接近稳定的 RL 式均匀加权",
+  "在仅需正例、无奖励模型的设定下，DFT 在离线 RL 中匹敌甚至超过 DPO/RAFT/GRPO/PPO"
+ ],
+ "method_framework": "数学分析标准 SFT 的交叉熵梯度，将其改写为带隐式奖励 r=-log p 的策略梯度形式；发现该奖励与 p(expert action) 成反比造成梯度尺度失衡，遂在每个 token 上用其概率 p_t 对损失动态缩放，消除逆概率畸变，得到稳定、均匀加权的更新规则。",
+ "experiment_framework": "底座为 Qwen2.5-Math 系列，数据 NuminaMath-CoT；评测 OlympiadBench、AIME2024、AMC2023 等数学推理，并扩展到代码生成与多模态推理；离线 RL 对比 DPO、RAFT，在线对比 GRPO、PPO；跨模型规模与数据规模验证。",
+ "takeaways": [
+  "SFT 泛化受限的根源在于其隐式奖励的逆概率结构，而非 SFT 范式本身",
+  "仅一行改动的 DFT 在多个困难数学基准上持续提升，而标准 SFT 常使这些基准退化",
+  "DFT 无需参考模型与大 batch，在离线 RL 设定下以更低资源达到与在线 RL 竞争的性能"
+ ],
+ "weaknesses": [
+  "核心改动仅是按 token 概率缩放损失，机制新颖性有限，更像是对已有 SFT 加权技巧的理论重述",
+  "理论推导依赖若干简化假设（特定策略梯度形式），正文未充分讨论假设不成立时的鲁棒性",
+  "前 9 页内主表多为相对提升幅度，缺少与更强 RLVR 基线（如大规模 GRPO 复现）的严格对照与统计显著性说明"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "SFT改进与可靠性主线弱相关，多模态实验有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

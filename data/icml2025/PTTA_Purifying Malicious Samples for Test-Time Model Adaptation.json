@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/PTTA_Purifying Malicious Samples for Test-Time Model Adaptation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/PTTA_Purifying Malicious Samples for Test-Time Model Adaptation.pdf",
+ "title": "PTTA: Purifying Malicious Samples for Test-Time Model Adaptation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "用Mixup净化恶意样本，而非丢弃，提升TTA性能",
+ "innovations": [
+  "提出净化而非丢弃恶意测试样本的思路，减少TTA数据浪费",
+  "设计编码良性/恶意数据的显著性指标，检索对目标函数作用相反的良性样本做Mixup",
+  "净化损失可直接加到现有TTA算法上，免去精细调节样本选择阈值"
+ ],
+ "method_framework": "先用显著性指标区分良性与恶意测试样本；对恶意样本，检索在目标函数上作用相反的良性样本进行Mixup‘净化’，使其从破坏优化转为提供有效信息；净化损失作为即插即用模块叠加到现有熵最小化/一致性等TTA方法。",
+ "experiment_framework": "覆盖四类TTA任务，含分类、分割与对抗防御；在标准TTA基准上对比多种主流TTA方法；指标为在线测试准确率/分割mIoU及对抗鲁棒性。",
+ "takeaways": [
+  "被传统方法丢弃的恶意样本经净化后仍能为TTA提供有用信息",
+  "即插即用模块免调选择阈值，兼容多种现有TTA",
+  "在分类、分割、对抗防御多类任务上均带来在线性能提升"
+ ],
+ "weaknesses": [
+  "显著性指标与相反作用样本检索依赖经验，缺乏误净化的误差界",
+  "实验偏视觉任务，未涉及多模态/LLM测试时适配",
+  "净化强度随Mixup比例的敏感性在正文前9页未充分消融"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

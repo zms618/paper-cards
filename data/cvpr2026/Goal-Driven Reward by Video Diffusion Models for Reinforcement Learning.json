@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Goal-Driven Reward by Video Diffusion Models for Reinforcement Learning.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Goal-Driven Reward by Video Diffusion Models for Reinforcement Learning.pdf",
+ "title": "Goal-Driven Reward by Video Diffusion Models for Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "视频扩散模型生成目标视频提供双重奖励，但计算开销大且依赖预训练模型",
+ "innovations": [
+  "利用预训练视频扩散模型生成目标视频作为奖励信号",
+  "结合视频级和帧级目标的双重奖励机制",
+  "引入前向-后向表示实现细粒度目标达成"
+ ],
+ "method_framework": "通过微调视频扩散模型生成目标视频，使用视频编码器计算轨迹与目标视频的相似度作为视频级奖励，并利用CLIP选择关键帧，通过前向-后向网络计算帧级奖励",
+ "experiment_framework": "在Meta-World和Distracting Control Suite上评估，与Dense Reward、RoboCLIP、Diffusion Reward和TADPoLe等基线比较，使用episode return作为指标",
+ "takeaways": [
+  "利用生成模型的世界知识提供奖励信号无需手工设计",
+  "结合多粒度目标(视频级和帧级)可提升强化学习性能"
+ ],
+ "weaknesses": [
+  "计算视频级和帧级奖励引入额外计算开销",
+  "依赖预训练视频扩散模型的质量和泛化能力"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.375,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频扩散模型生成奖励与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

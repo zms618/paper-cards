@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Scaling Diffusion Transformers Efﬁciently via µP.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Scaling Diffusion Transformers Efﬁciently via µP.pdf",
+ "title": "Scaling Diffusion Transformers Efﬁciently via µP",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "将µP理论扩展到扩散Transformer，实现超参数迁移与模型缩放。",
+ "innovations": [
+  "证明主流扩散Transformer(DiT,U-ViT,PixArt-α,MMDiT)与标准Transformer共享相同的µP形式",
+  "系统验证扩散Transformer在µP下的超参数迁移性",
+  "实现从0.04B到0.61B的PixArt-α和0.18B到18B的MMDiT高效缩放"
+ ],
+ "method_framework": "通过Tensor Programs技术证明扩散Transformer的µP形式与标准Transformer一致，实现超参数从小模型到大模型的高效迁移，显著减少调参成本。",
+ "experiment_framework": "ImageNet数据集验证DiT-µP的HP迁移性；SA-1B数据集上PixArt-α从0.04B缩放到0.61B；820亿图文对数据集上MMDiT从0.18B缩放到18B，使用FID、CLIP Score、GenEval等指标评估。",
+ "takeaways": [
+  "µP为扩散Transformer提供了高效缩放框架，显著减少调参成本",
+  "扩散Transformer在µP下展现出跨宽度、批大小和训练步数的强超参数迁移性"
+ ],
+ "weaknesses": [
+  "仅关注了学习率和权重乘数的迁移性，其他超参数的迁移性验证不足",
+  "实验主要在图像生成任务上验证，缺乏对其他视觉生成任务的验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

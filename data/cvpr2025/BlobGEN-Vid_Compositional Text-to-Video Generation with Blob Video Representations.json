@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/BlobGEN-Vid_Compositional Text-to-Video Generation with Blob Video Representations.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/BlobGEN-Vid_Compositional Text-to-Video Generation with Blob Video Representations.pdf",
+ "title": "BlobGEN-Vid Compositional Text-to-Video Generation with Blob Video Representations",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "基于blob的视频生成，提升对象控制与一致性但依赖预训练分割",
+ "innovations": [
+  "blob视频表示作为视觉基元",
+  "掩码3D注意力模块提升跨帧一致性",
+  "上下文插值模块实现平滑语义过渡"
+ ],
+ "method_framework": "将视频分解为blob参数和描述，通过掩码空间交叉注意力和掩码3D自注意力融合到扩散模型，支持U-Net和DiT架构",
+ "experiment_framework": "YoutubeVIS-2021/T2V-CompBench/TC-Bench/ScanNet++，评估mIOU/rCLIP/FVD等指标",
+ "takeaways": [
+  "blob表示提供比边界框更细粒度的控制",
+  "掩码注意力机制有效提升对象级一致性",
+  "与LLM结合可自动生成布局"
+ ],
+ "weaknesses": [
+  "blob参数提取依赖预训练分割模型",
+  "非锚帧描述采用简单线性插值",
+  "实验主要在开放域视频生成，医学影像应用未探索"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成与可靠性主线无关，仅对象控制机制有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

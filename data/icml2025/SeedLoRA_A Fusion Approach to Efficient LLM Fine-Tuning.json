@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/SeedLoRA_A Fusion Approach to Efficient LLM Fine-Tuning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SeedLoRA_A Fusion Approach to Efficient LLM Fine-Tuning.pdf",
+ "title": "SeedLoRA: A Fusion Approach to Efficient LLM Fine-Tuning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "融合不同种子LoRA模型，但泛化性和计算开销存疑。",
+ "innovations": [
+  "提出单任务模型融合的新场景，区别于传统的多任务合并",
+  "两阶段融合策略：处理极端参数值和基于SVD的子空间融合",
+  "利用不同随机种子模型间的互补性提升性能"
+ ],
+ "method_framework": "SeedLoRA采用两阶段融合策略：第一阶段识别并处理一致性强和冲突的参数维度；第二阶段对剩余维度进行基于SVD的子空间融合，有效结合互补信息并消除冗余。",
+ "experiment_framework": "在LLaMA2-7B和Mistral-7B上评估，使用GSM8K、MATH、HumanEval等基准，与LoRA、LoRA+、DoRA及Model Soup、TIES、DARE等方法对比。",
+ "takeaways": [
+  "不同随机种子的模型在同一任务的不同子领域表现互补",
+  "单任务模型合并与多任务合并有本质区别，需要专门方法",
+  "两阶段融合策略能有效处理模型间的冗余和互补信息"
+ ],
+ "weaknesses": [
+  "方法仅针对特定任务（数学推理和代码生成）验证，泛化性有待进一步验证",
+  "融合过程增加了计算复杂度，虽然保持了推理效率但训练阶段开销增加"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

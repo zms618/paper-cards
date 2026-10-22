@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Percept-WAM_Perception-Enhanced World-Awareness-Action Model for Robust End-to-End Autonomous Driving.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Percept-WAM_Perception-Enhanced World-Awareness-Action Model for Robust End-to-End Autonomous Driving.pdf",
+ "title": "Percept-WAM Perception-Enhanced World-Awareness-Action Model for Robust End-to-End Autonomous Driving",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "VLM统一2D/3D感知，IoU评分提升置信度，但长尾鲁棒性不足",
+ "innovations": [
+  "World-PV和World-BEV tokens统一2D/3D感知",
+  "IoU感知评分机制提升置信度校准",
+  "并行自回归解码保持稳定性和效率"
+ ],
+ "method_framework": "基于预训练VLM(InternVL2-8B)，引入World-PV和World-BEV tokens编码空间坐标和置信度，通过网格条件预测头和IoU感知评分实现密集目标感知，最后通过World-Action tokens对齐感知信息进行轨迹预测。",
+ "experiment_framework": "在nuImages、nuScenes、COCO等数据集评估2D/3D检测和分割性能，在NAVSIM评估规划性能，与Mask R-CNN、FCOS3D、LMM-Det等基线比较。",
+ "takeaways": [
+  "IoU感知评分机制可有效提升置信度校准",
+  "统一2D/3D感知于单一VLM框架可提升性能",
+  "并行解码可保持高吞吐量同时提升稳定性"
+ ],
+ "weaknesses": [
+  "依赖预训练VLM，可能继承其空间推理局限性",
+  "未充分展示在极端长尾场景下的鲁棒性",
+  "计算复杂度较高，实时性挑战"
+ ],
+ "confidence": "medium",
+ "raw_overall": 8.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "统一2D/3D感知与置信度校准，但长尾鲁棒性不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

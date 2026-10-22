@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Contradiction Retrieval via Contrastive Learning with Sparsity.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Contradiction Retrieval via Contrastive Learning with Sparsity.pdf",
+ "title": "Contradiction Retrieval via Contrastive Learning with Sparsity",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "SparseCL用稀疏函数补充余弦相似度，加速矛盾检索但理论支撑不足。",
+ "innovations": [
+  "指出余弦相似度的传递性本质使其无法建模矛盾关系，提出用稀疏函数补充度量",
+  "提出SparseCL方法：对比学习训练句向量，结合余弦相似度和稀疏函数识别矛盾文档",
+  "将矛盾检索从需要穷举对比的cross-encoder方法加速为向量计算，大幅提升效率"
+ ],
+ "method_framework": "(1)分析现有余弦相似度检索的局限——其传递性使其无法区分'矛盾于同一原文的两个表述彼此不矛盾'的情况；(2)训练特殊句向量嵌入，使用结合余弦相似度和稀疏函数的组合度量来捕获矛盾关系；(3)稀疏函数使得只有在特定维度上的差异才算矛盾，避免传递性问题；(4)通过对比学习训练嵌入空间。",
+ "experiment_framework": "三个数据集：Arguana、MSMARCO、HotpotQA；对比bi-encoder余弦检索和cross-encoder方法；指标为矛盾检索准确率，平均提升11.0%；下游验证NLI和语料清洗任务。",
+ "takeaways": [
+  "余弦相似度的传递性使其本质上不适合矛盾检索，需要引入稀疏度量",
+  "SparseCL在三个数据集上平均提升11%，同时将cross-encoder的穷举对比加速为向量计算",
+  "非相似性检索（如矛盾检索）是信息检索中被低估的方向"
+ ],
+ "weaknesses": [
+  "稀疏函数的设计和稀疏度超参数选择缺乏理论指导",
+  "主要在英文文本上验证，其他语言效果未知",
+  "与大模型时代的NLI方法直接对比不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

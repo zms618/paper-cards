@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Policy Regularization on Globally Accessible States in Cross-Dynamics Reinforcement Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Policy Regularization on Globally Accessible States in Cross-Dynamics Reinforcement Learning.pdf",
+ "title": "Policy Regularization on Globally Accessible States in Cross-Dynamics Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "ASOR用F-散度正则约束全局可达状态，解决跨动力学模仿中的误导问题。",
+ "innovations": [
+  "识别IfO(Imitation from Observation)的关键局限：动力学变化后某些专家状态变为不可达，其状态分布不再相似、反而误导模仿",
+  "定义'全局可达状态'(在所有考虑动力学下均有非零访问频率)，将模仿正则约束只施加于这类状态，规避不可达状态的误导",
+  "提出F-距离正则化策略优化框架，统一奖励最大化与IfO；以不同F-散度实例化得到两条理论分析并导出实用算法ASOR，可作为add-on接入离线/off-policy RL"
+ ],
+ "method_framework": "本文为跨域策略迁移算法论文。核心：跨动力学下专家状态分布相似性不成立(如自动驾驶低流量下的'高速安全'状态在拥堵动力学中不可达)。ASOR把模仿损失从全体状态收缩到全局可达状态集合上，用F-散度度量策略与专家状态分布差异并作为正则项，与奖励最大化联合优化，从而在保留有用专家轨迹的同时剔除不可达状态的误导。",
+ "experiment_framework": "在多个跨动力学/跨域策略迁移benchmark上评测；ASOR作为add-on模块叠加到SOTA跨域迁移算法上；对比基线为既有IfO/离线RL方法；指标为目标动力学下的策略性能，显示显著提升。",
+ "takeaways": [
+  "跨动力学中并非所有专家状态都仍可达，盲目模仿全体状态分布会引入误导",
+  "只在全局可达状态上施加模仿正则，可安全复用多动力学专家数据而不被不可达状态拖累",
+  "ASOR是通用即插即用模块，可叠加到多种RL方法上稳定提升跨域迁移效果"
+ ],
+ "weaknesses": [
+  "'全局可达状态'需已知所有目标动力学才能判定，实际部署中若动力学空间未知或连续，如何界定可达集合不清晰",
+  "把不可达状态完全排除可能丢失其部分有用信息，硬阈值取舍缺乏消融支撑",
+  "F-散度实例化仅给出两种，对一般散度的统一理论与计算成本讨论有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

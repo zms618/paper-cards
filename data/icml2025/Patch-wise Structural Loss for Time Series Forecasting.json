@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Patch-wise Structural Loss for Time Series Forecasting.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Patch-wise Structural Loss for Time Series Forecasting.pdf",
+ "title": "Patch-wise Structural Loss for Time Series Forecasting",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "傅里叶分块+多损失加权，提升时间序列预测结构对齐",
+ "innovations": [
+  "基于傅里叶自适应分块的时间序列分割方法",
+  "整合相关性、方差和均值的补丁级结构损失",
+  "基于梯度的动态加权策略平衡不同损失项"
+ ],
+ "method_framework": "通过傅里叶变换确定主导周期自适应分块，计算每个补丁的相关性、方差和均值损失，并使用梯度动态加权策略平衡各损失项，最后与MSE损失结合优化模型。",
+ "experiment_framework": "在7个真实世界数据集上测试5种SOTA模型和2种LLM模型，比较MSE和MAE指标，并与TILDE-Q和FreDF等先进损失函数对比。",
+ "takeaways": [
+  "局部结构相似性度量比全局点对点损失更能捕捉时间序列的本质特征",
+  "多损失项动态平衡策略能有效提升模型性能"
+ ],
+ "weaknesses": [
+  "补丁长度选择依赖主导频率，可能不适合所有类型的时间序列",
+  "计算复杂度高于传统MSE损失"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

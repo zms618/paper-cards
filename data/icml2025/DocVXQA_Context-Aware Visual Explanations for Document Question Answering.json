@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DocVXQA_Context-Aware Visual Explanations for Document Question Answering.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DocVXQA_Context-Aware Visual Explanations for Document Question Answering.pdf",
+ "title": "DocVXQA: Context-Aware Visual Explanations for Document Question Answering",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.0
+ },
+ "one_line": "将可解释性作为信息瓶颈目标嵌入DocVQA，生成上下文充分的热图解释。",
+ "innovations": [
+  "提出自解释的DocVQA框架，在预测答案的同时生成上下文关键区域的相关性热图作为决策依据",
+  "将可解释性原则形式化为显式学习目标，借助信息瓶颈原则约束解释既要上下文充分又要表示高效",
+  "设计为模型无关、轻量，仅需极小改动即可嫁接现有预训练DocVQA模型"
+ ],
+ "method_framework": "在现有DocVQA模型上附加可学习的视觉解释分支，把'解释应覆盖回答问题所需的全部上下文、同时不冗余'这一可解释性原则转成基于信息瓶颈的训练目标，使模型在训练时联合优化答案预测与热图质量；相比只高亮答案出现位置的注意力图，得到上下文充分、定位精确的解释。",
+ "experiment_framework": "在标准DocVQA基准上对比仅注意力可视化等解释方法，指标含答案准确率与解释质量(定位精确度)，并补充人类评测评估解释的可理解性与可信度，验证对现有预训练模型的兼容性。",
+ "takeaways": [
+  "把可解释性写成显式信息瓶颈目标，可在不牺牲答案精度的前提下得到上下文充分的视觉解释",
+  "自解释热图比原始注意力图更干净、更能说明'为何选该区域'",
+  "方法模型无关、轻量，易嵌入现有DocVQA系统以提升高风险场景(金融/医疗/法律)的可信度"
+ ],
+ "weaknesses": [
+  "解释质量依赖热图标注/弱监督信号，缺真实像素级ground truth时的客观度量仍不充分",
+  "仅在文档VQA验证，迁移到通用图文VQA的效果未知",
+  "信息瓶颈目标引入的额外开销与超参(瓶颈强度)敏感性前9页内未充分消融"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

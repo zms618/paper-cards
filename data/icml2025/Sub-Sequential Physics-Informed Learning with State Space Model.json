@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Sub-Sequential Physics-Informed Learning with State Space Model.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Sub-Sequential Physics-Informed Learning with State Space Model.pdf",
+ "title": "Sub-Sequential Physics-Informed Learning with State Space Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.9
+ },
+ "one_line": "用Mamba替代MLP解决PINN初值传播问题，但适用范围有限。",
+ "innovations": [
+  "诊断 PINN 失效模式（时间上逐渐扭曲）的根因：神经网络的简单性偏置 + PDE 连续性与 PINN 离散采样的失配。",
+  "指出状态空间模型（SSM）可作为一种连续-离散衔接机制，支持初始条件模式的传播。",
+  "提出 PINNMamba：以 SSM/Mamba 引入子序列建模，通过对齐一系列中等粒度序列消除简单性偏置。"
+ ],
+ "method_framework": "MLP 骨干缺乏时序归纳偏置，无法把初值模式沿时间传播，导致对流方程等随时间逐渐扭曲。PINNMamba 用 SSM（Mamba）替换 MLP 作为骨干：SSM 的连续-离散衔接天然适合沿时间积分 PDE，并以中等粒度的子序列建模，使初值模式能被逐步传播而非被简单性偏置抹平。",
+ "experiment_framework": "在多个 PDE（如对流方程等）上，对比 MLP-PINN 及既有 sequence-to-sequence PINN 架构；指标为 PDE 解的相对误差。",
+ "takeaways": [
+  "相对 SOTA 架构误差最高降低 86.3%。",
+  "SSM 的连续-离散衔接有效解决了初值模式传播问题。",
+  "中等粒度子序列对齐可消除简单性偏置。"
+ ],
+ "weaknesses": [
+  "属科学计算/PDE 求解方向，与医学影像/多模态推理主线无关。",
+  "改进主要在时间演化型 PDE，对高维稳态/非线性强耦合 PDE 的有效性未充分展示。",
+  "'简单性偏置被消除'的论断缺乏与现有 sequence-to-sequence 方法的机理对照消融。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.93,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

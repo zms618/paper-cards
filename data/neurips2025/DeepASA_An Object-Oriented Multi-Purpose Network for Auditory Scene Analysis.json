@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/DeepASA_An Object-Oriented Multi-Purpose Network for Auditory Scene Analysis.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/DeepASA_An Object-Oriented Multi-Purpose Network for Auditory Scene Analysis.pdf",
+ "title": "DeepASA: An Object-Oriented Multi-Purpose Network for Auditory Scene Analysis",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "OOP封装听觉特征，CoI迭代精化，多任务统一框架",
+ "innovations": [
+  "面向对象处理(OOP)：将 diverse 听觉特征封装为object-centric表示，避免track-wise参数关联歧义",
+  "推理链(CoI)：用时间一致性匹配(TCM)融合各子解码器输出，迭代精化object特征",
+  "统一MIMO框架同时处理分离/去混响/SED/分类/DoAE多任务"
+ ],
+ "method_framework": "动态时频特征提取器+transformer聚合器+object分离器产出per-object特征；多任务解码器分别估计类别/DoA/激活；CoI用TCM注意力融合解码器输出反向精化object特征。",
+ "experiment_framework": "ASA2/MC-FUSS/STARSS23空间音频基准；指标SI-SDRi/SELD score；报告SI-SDRi 18.5dB、SELD 0.253等SOTA结果。",
+ "takeaways": [
+  "面向对象表示自然解决多任务参数关联歧义",
+  "推理链可在 cues 缺失时利用互补信息恢复",
+  "多任务共享object特征带来互增益"
+ ],
+ "weaknesses": [
+  "object数量需预设或自适应估计，动态场景下object分离失败会级联影响下游",
+  "仅在空间音频基准验证，非语音/音乐的真实复杂场景泛化未知",
+  "多任务联合训练的任务间梯度冲突未充分分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

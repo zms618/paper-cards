@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Cross-Modal Alignment via Variational Copula Modelling.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Cross-Modal Alignment via Variational Copula Modelling.pdf",
+ "title": "Cross-Modal Alignment via Variational Copula Modelling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "Copula理论引入多模态，GMM建模边缘分布，医疗数据验证",
+ "innovations": [
+  "首次将Copula理论引入多模态学习，基于Sklar定理将联合分布分解为边缘分布+Copula依赖结构",
+  "用高斯混合模型(GMM)灵活建模各模态边缘特征分布，解决高维模态分布的非高斯性问题",
+  "缺失模态时从学习到的GMM边缘分布采样补全，比零填充/均值填充更符合数据真实分布"
+ ],
+ "method_framework": "CM2框架：(1)各模态编码器提取嵌入zm；(2)对每个模态嵌入拟合K分量GMM，得到边缘密度fm(zm)；(3)用Copula族(如Gumbel/Clayton/Gaussian)建模模态间依赖结构，Copula参数α可训练；(4)缺失模态时从其GMM采样生成嵌入；(5)拼接后经LSTM融合+MLP分类；(6)训练目标为ELBO=任务损失+Copula对数似然+边缘密度项。",
+ "experiment_framework": "在MIMIC医疗多模态数据集上评测(电子病历+医学影像+临床文本)；基线包括拼接融合、Kronecker积、晚期融合、缺失模态简单填充；指标为下游预测AUC/准确率；消融分析不同Copula族、GMM分量数、缺失率。",
+ "takeaways": [
+  "Copula建模的模态间依赖结构比简单拼接或Kronecker积更准确地捕捉了高阶交互",
+  "GMM边缘分布采样补全比零填充/均值填充在缺失模态场景下显著提升性能",
+  "不同Copula族适合不同模态依赖模式，Gumbel对尾部依赖建模效果最好"
+ ],
+ "weaknesses": [
+  "Copula族选择和GMM分量数K需要人工调优，自适应策略不足",
+  "仅在医疗多模态数据上验证，对其他模态组合(如视觉-语言)的通用性未涉及",
+  "高维模态下GMM的对角协方差假设可能限制表达能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Deep Think with Confidence.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Deep Think with Confidence.pdf",
+ "title": "Deep Think with Confidence",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "基于置信度的推理过滤，提升效率但阈值依赖离线预热",
+ "innovations": [
+  "局部置信度测量（组置信度、底部10%置信度、尾部置信度）",
+  "在线-离线双模式推理框架",
+  "自适应采样与早期停止机制"
+ ],
+ "method_framework": "DeepConf利用模型内部置信信号动态过滤低质量推理轨迹，通过组置信度测量实现早期停止，结合置信度加权投票提升推理准确性",
+ "experiment_framework": "AIME24/25、HMMT25、BRUMO25、GPQA-D数据集，DeepSeek-8B、Qwen3-32B、GPT-OSS-120B模型，对比pass@1、cons@K等方法",
+ "takeaways": [
+  "局部置信度测量优于全局置信度",
+  "保守过滤策略(η=90%)比激进过滤(η=10%)更稳定",
+  "在线模式可显著减少计算开销"
+ ],
+ "weaknesses": [
+  "置信度阈值设置依赖离线预热阶段",
+  "未探讨不同任务类型的置信度测量适用性",
+  "未分析计算开销与准确性的精确权衡关系"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "置信度校准与不确定性过滤，明确触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

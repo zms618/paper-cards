@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Spatial Reasoning with Denoising Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Spatial Reasoning with Denoising Models.pdf",
+ "title": "Spatial Reasoning with Denoising Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "SRM框架通过序列化生成提升空间推理准确率，但绝对性能与实用性有限。",
+ "innovations": [
+  "提出Spatial Reasoning Models(SRM)框架，让去噪生成模型在给定观测变量下推断未观测连续变量的表示，系统研究空间域推理能力",
+  "引入一组可量化复杂推理质量与幻觉程度的基准任务(如MNIST图像数独)",
+  "证明生成顺序可由去噪网络自身预测，序列化生成及其顺序能大幅降低幻觉，特定任务准确率从<1%升到>50%"
+ ],
+ "method_framework": "把生成式推理建模为在连续变量集合上给定部分观测推断其余变量；对扩散/流匹配模型施加显式序列化(按某顺序逐变量去噪生成)，并研究人工与自动序列化方案、顺序选择与训练采样策略对推理正确性/幻觉的影响。",
+ "experiment_framework": "在自构的多变量空间推理基准(含MNIST数独等)上，对比标准扩散模型与SRM(人工/自动序列化)，指标为推理准确率与幻觉量化；标准DDPM失败而SRM可解。",
+ "takeaways": [
+  "扩散/流模型在复杂多变量分布上会塌缩为幻觉，显式序列化生成可显著抑制",
+  "生成顺序本身是可学习且关键的推理变量，让去噪网络预测生成顺序比固定顺序更能减少幻觉",
+  "‘像LLM做自回归推理那样对连续变量序列化’是提升生成模型推理/抗幻觉的可迁移思路"
+ ],
+ "weaknesses": [
+  "提升虽从<1%到>50%，但绝对准确率仍不过半，距可实用推理尚远",
+  "基准偏合成/受控(MNIST数独等)，对真实高分辨率图像/物理世界模型的推理增益外推未验证",
+  "序列化逐变量生成增加采样步数，推理开销与并行性的权衡前9页未量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

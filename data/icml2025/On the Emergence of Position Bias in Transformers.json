@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/On the Emergence of Position Bias in Transformers.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/On the Emergence of Position Bias in Transformers.pdf",
+ "title": "On the Emergence of Position Bias in Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "图论分析Transformer位置偏置，揭示因果mask与位置编码的竞争效应",
+ "innovations": [
+  "将注意力mask建模为有向图，建立分析多层注意力位置偏置的图论框架，量化token如何按序列位置交互上下文",
+  "揭示因果mask内在地使注意力偏向更早位置——深层token attend到越来越上下文化的早期token表示",
+  "刻画因果mask与相对位置编码(decay mask、RoPE)的竞争效应：单层内距离衰减与跨层累积早期位置重要性之间的权衡，并在受控实验中复现真实LLM位置偏置"
+ ],
+ "method_framework": "把因果/注意力mask视为有向图上的信息流，用图传播刻画表示随层的上下文化；结合相对位置编码引入的距离衰减，解析跨层累积下早期位置与中间位置的注意力权重分配，解释位置偏置如何涌现。",
+ "experiment_framework": "以图论推导为主，辅以受控数值实验验证理论预测，并复现真实LLM中观察到的lost-in-the-middle与attention sink等位置偏置现象。",
+ "takeaways": [
+  "因果mask本身就会把注意力系统性引向序列早期位置，这是深层上下文化累积的结果",
+  "RoPE/decay mask的距离衰减与因果mask的早期累积相互竞争，共同决定中间位置被忽视的程度",
+  "该框架为设计更位置均衡、更可靠的Transformer架构提供原则性依据"
+ ],
+ "weaknesses": [
+  "图论分析在简化注意力(无数据依赖的固定模式)下成立，真实学习到的注意力分布与此理想模型有差距",
+  "复现实验为受控小规模设置，未在大规模现代LLM上做架构改造干预验证",
+  "对如何在不损害性能的前提下缓解位置偏置，仅给出方向性建议而无系统方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

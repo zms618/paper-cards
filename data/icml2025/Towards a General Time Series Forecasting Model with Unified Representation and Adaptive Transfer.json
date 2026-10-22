@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Towards a General Time Series Forecasting Model with Unified Representation and Adaptive Transfer.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Towards a General Time Series Forecasting Model with Unified Representation and Adaptive Transfer.pdf",
+ "title": "Towards a General Time Series Forecasting Model with Unified Representation and Adaptive Transfer",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "频率分解预训练加register迁移，七基准SOTA但主线相关性弱",
+ "innovations": [
+  "提出Decomposed Frequency Learning预训练任务，用频率域掩码与重构解耦时序中耦合的语义信息，得到跨异质域的统一表示",
+  "引入Time Series Register，在预训练中捕获域特异表示，增强到下游任务的自适应迁移能力",
+  "在7个真实世界基准上取得SOTA预测性能，展现出色的少样本与零样本能力"
+ ],
+ "method_framework": "既有时序基础模型多靠堆数据/堆模型规模，忽视异质时序的频率多样性（低频趋势/高频急变、各域频率分布不同）。本文从两方面改进：(1)用频率掩码+重构的分解频率学习作预训练任务，解耦耦合语义以学跨域统一表示；(2)用Time Series Register显式保存域特异表示，下游时做自适应迁移而非直接硬迁移。",
+ "experiment_framework": "在7个真实世界多域时序预测基准上，对比主流时序基础模型与从头训练方法；评估零样本/少样本迁移精度，指标为预测误差(MSE/MAE类)。",
+ "takeaways": [
+  "频率分解预训练可缓解异质时序频率多样性带来的统一表示难题",
+  "Time Series Register使域特异信息可携带，提升下游自适应迁移",
+  "不依赖单纯扩大规模，通过预训练任务与迁移设计即可取得七基准SOTA"
+ ],
+ "weaknesses": [
+  "主线相关性弱：属时序预测基础模型，与可靠性乘医学影像/多模态推理主线无直接联系",
+  "前9页主要为动机与框架，完整基准数值与消融在后续页",
+  "频率分解与register的计算开销、对超长序列/强噪声序列的鲁棒性需后续页"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

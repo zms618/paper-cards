@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Semantic Parallelism Redefining Efficient MOE Inference via Model-Data Co-Scheduling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Semantic Parallelism Redefining Efficient MOE Inference via Model-Data Co-Scheduling.pdf",
+ "title": "Semantic Parallelism: Redefining Efficient MoE Inference via Model-Data Co-Scheduling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.7
+ },
+ "one_line": "模型-数据协同调度减少MoE通信，但与可靠性主线无关且实验不完整。",
+ "innovations": [
+  "指出现有MoE serving把专家设备放置与请求/token设备调度割裂处理，导致过度all-to-all通信；提出模型-数据协同调度范式。",
+  "三项关键技术：离线模型调度（按专家共激活倾向聚类共置）、Attention-DP下跨请求数据调度（按激活可能性重排batch）、Attention-TP下请求内token重排融合。",
+  "将Sem-MoE落地进主流serving引擎SGLang，实测提升吞吐。"
+ ],
+ "method_framework": "主动建模专家-输入间的激活似然，离线按共激活倾向把专家聚类共置到设备；在线按请求最常激活的专家所在设备重排请求batch（DP），并在TP设置下把token重排融合进推理流水线以减少远程路由，从而最小化EP的all-to-all通信。",
+ "experiment_framework": "基于SGLang在多GPU服务器上评测（如DeepSeek-V2-Lite），对比现有EP推理方案；指标为all-to-all通信量与推理吞吐；给出MoE层延迟分解（通信vs group GEMM）。",
+ "takeaways": [
+  "将专家放置与请求/token调度联合优化、最大化专家-激活token共置，可有效削减EP通信并提升吞吐。",
+  "通信是专家并行的主要瓶颈，协同调度比单纯割裂放置更高效。"
+ ],
+ "weaknesses": [
+  "属推理系统/效率优化，与可靠性/鲁棒/幻觉主线无关。",
+  "激活似然预测的准确性直接决定共置收益，跨负载泛化性需更多真实流量验证。",
+  "前9页主要是系统设计，具体吞吐提升幅度与硬件敏感性需看完整实验。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "MoE系统优化，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

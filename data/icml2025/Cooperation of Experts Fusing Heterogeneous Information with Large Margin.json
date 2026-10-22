@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Cooperation of Experts Fusing Heterogeneous Information with Large Margin.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Cooperation of Experts Fusing Heterogeneous Information with Large Margin.pdf",
+ "title": "Cooperation of Experts: Fusing Heterogeneous Information with Large Margin",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "异构网络专用专家+大间隔协作，但验证有限且缺乏与大模型对比",
+ "innovations": [
+  "提出Cooperation of Experts框架，用多个专用编码器分别学习多路网络不同层的关系模式",
+  "设计大间隔协作机制，让各专家输出保持互补性而非竞争性，区别于传统MoE的门控选择",
+  "提供理论分析保证框架的可行性和稳定性"
+ ],
+ "method_framework": "将多类型异构信息编码为统一的异构多路网络，每层代表一种关系类型。每层配备一个专属编码器（专家），专门学习该层的关系模式。专家间通过大间隔机制协作：鼓励不同专家的输出在特征空间中保持一定间隔，从而提取互补知识而非重叠信息。优化策略针对大间隔目标函数专门设计。",
+ "experiment_framework": "在多个异构网络基准数据集上评测；对比GNN类方法和MoE类方法；指标为节点分类等下游任务准确率；验证大间隔机制各组件的消融效果。",
+ "takeaways": [
+  "异构数据中不同关系层的模式差异显著，专用专家比单一共享模型更有效",
+  "大间隔协作机制能促进专家间互补，优于传统门控式MoE的竞争模式",
+  "理论分析保证了框架的收敛性和稳定性"
+ ],
+ "weaknesses": [
+  "仅在多路网络/图数据上验证，多模态视觉-文本等异构数据场景未涉及",
+  "专家数量和层数的最优配置缺乏系统指导，可能需要人工调参",
+  "与近年大模型时代的异构信息融合方法（如跨模态注意力）对比不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.75,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

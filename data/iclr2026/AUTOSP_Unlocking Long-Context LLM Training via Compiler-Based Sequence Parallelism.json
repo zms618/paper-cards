@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/AUTOSP_Unlocking Long-Context LLM Training via Compiler-Based Sequence Parallelism.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/AUTOSP_Unlocking Long-Context LLM Training via Compiler-Based Sequence Parallelism.pdf",
+ "title": "AUTOSP: Unlocking LONG-CONTEXT LLM TRAIN-ING via COMPILER-BASED Sequence Parallelism",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "编译器优化序列并行，提升长上下文LLM训练内存效率",
+ "innovations": [
+  "将序列并行(SP)提升为PyTorch编译器中的编译优化通道",
+  "序列感知的激活检查点(SAC)策略，允许重新计算计算密集型操作",
+  "自动化的SP转换，插入通信集合并调整缓冲区大小"
+ ],
+ "method_framework": "AutoSP包含两个关键组件：序列并行转换通道和序列感知激活检查点通道，在Torch-IR级别分析并转换模型，实现自动化的长上下文优化。",
+ "experiment_framework": "在NVIDIA GH200/A100和AMD MI250 GPU上测试，比较ZeRO-3、DeepSpeed-Ulysses和RingAttention，测量最大可训练序列长度和训练迭代时间。",
+ "takeaways": [
+  "编译器优化是提升分布式训练效率的有效途径",
+  "长上下文训练中计算密集型操作的比例随序列长度增加而降低，可重新计算以节省内存"
+ ],
+ "weaknesses": [
+  "仅关注序列并行优化，未与其他并行策略(如张量并行)进行深入集成",
+  "实验主要关注内存效率，对计算效率的改进有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "编译器优化分布式训练，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

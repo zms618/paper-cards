@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/JULI_Jailbreak Large Language Models By Self-Introspection.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/JULI_Jailbreak Large Language Models By Self-Introspection.pdf",
+ "title": "JULI: Jailbreak Large Language Models By Self-Introspection",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "轻量插件偏置token概率，API越狱商用LLM",
+ "innovations": [
+  "设计名为BiasNet的极小插件块，直接偏置目标模型下一token的对数概率分布以诱导越狱",
+  "在无需访问模型权重或生成过程的前提下，仅经API调用攻击专有模型",
+  "相较依赖提示改写或加密的API攻击，显著提升攻击成功率与生成质量"
+ ],
+ "method_framework": "JULI利用目标模型API返回的下一token对数概率，用一个小型可训练插件(BiasNet)在推理时对该分布施加偏置，把高概率的安全拒绝词(如Sorry)向有害应允词(如Sure)推移，从而在无权重访问下诱导模型输出有害内容。",
+ "experiment_framework": "以GPT评判的有害性评分(1–5)为指标，在Gemini-2.5-Pro等API专有模型上评测；报告有害性达4.19/5，显著超过现有SOTA的API越狱方法；代码开源。",
+ "takeaways": [
+  "仅靠API返回的token对数概率即可被轻量插件操纵，专有模型安全存在新攻击面",
+  "无权重访问下的越狱攻击可达到远超提示改写类方法的效果",
+  "攻击面集中在下一token分布偏置，提示未来应在API侧监控对数概率异常"
+ ],
+ "weaknesses": [
+  "插件是否需要访问对数概率接口，对不返回logprob的API适用性受限",
+  "攻击有效性随模型更新/对数概率接口收紧可能快速失效",
+  "为攻击方法，未配套防御，且评测规模与有害提示类别有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "越狱攻击与可靠性主线无关，无迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

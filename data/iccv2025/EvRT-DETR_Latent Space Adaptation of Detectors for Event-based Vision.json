@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/EvRT-DETR_Latent Space Adaptation of Detectors for Event-based Vision.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/EvRT-DETR_Latent Space Adaptation of Detectors for Event-based Vision.pdf",
+ "title": "EvRT-DETR Latent Space Adaptation of Detectors for Event-based Vision",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "轻量RNN适配RT-DETR潜在空间，提升事件检测性能",
+ "innovations": [
+  "I2EvDet框架：通过最小架构修改将图像检测器转换为视频处理模型",
+  "在冻结的RT-DETR潜在空间中插入轻量级RNN模块",
+  "两阶段训练策略：先在事件图像上训练，再添加时序记忆"
+ ],
+ "method_framework": "EvRT-DETR框架采用两阶段方法：首先在简单图像化事件表示上训练RT-DETR，然后冻结其参数并在潜在空间中插入轻量级RNN模块，通过残差连接整合时序信息，保持原始空间表示完整性。",
+ "experiment_framework": "在Gen1和1Mpx事件相机数据集上评估，使用COCO mAP指标，与多种专门的事件检测方法比较，展示在保持竞争力的推理速度下达到SOTA性能。",
+ "takeaways": [
+  "潜在空间适配是高效迁移主流模型到时序数据的有效方法",
+  "轻量级时序模块设计可显著提升性能而不过度增加计算负担"
+ ],
+ "weaknesses": [
+  "方法依赖于特定的堆叠2D直方图表示，可能无法充分利用事件数据的全部信息",
+  "仅展示了在RT-DETR和YOLOX上的应用，通用性验证有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "事件检测方法，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

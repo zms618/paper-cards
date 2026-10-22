@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Data-Centric Meta-Learning for Robust Few-Shot Generalization.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Data-Centric Meta-Learning for Robust Few-Shot Generalization.pdf",
+ "title": "Data-Centric Meta-Learning for Robust Few-Shot Generalization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "元学习视觉提示缓解梯度差异，提升少样本跨域泛化",
+ "innovations": [
+  "提出数据中心元学习框架(DCML)，通过元学习视觉提示对齐任务特定输入分布与共享先验知识",
+  "重新定义视觉提示角色，使其作为获取可泛化先验知识的核心机制而非仅作为测试时辅助工具",
+  "在元训练和元测试阶段全程集成视觉提示，与传统仅用于测试时适应的提示方法形成鲜明对比"
+ ],
+ "method_framework": "DCML框架通过元学习视觉提示，在元训练阶段对齐各任务输入分布与共享先验知识，减少梯度差异；在元测试阶段仅更新轻量级提示和分类器，保持骨干网络冻结，实现参数高效的快速适应。",
+ "experiment_framework": "在miniImageNet、tieredImageNet、CIFAR-FS等五个少分类基准上评估，包括域内和跨域设置，使用4-CONV和ResNet-12骨干网络，对比MAML、ANIL、BOIL等基线方法。",
+ "takeaways": [
+  "数据空间对齐是解决元学习中梯度差异的有效途径",
+  "将提示集成到整个元学习过程中而不仅是测试阶段，能显著提升模型的可泛化性",
+  "冻结骨干网络并仅更新提示和分类器可提高计算效率同时保持性能"
+ ],
+ "weaknesses": [
+  "未详细分析视觉提示的具体形式和大小对性能的影响",
+  "缺乏在真实医学影像等特定领域的验证，限制了方法在实际应用中的可靠性评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "元学习提升少样本跨域泛化，明确触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

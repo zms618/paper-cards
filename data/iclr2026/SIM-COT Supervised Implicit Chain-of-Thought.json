@@ -1,0 +1,41 @@
+{
+ "title": "SIM-CoT: Supervised Implicit Chain-of-Thought",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "辅助解码器缓解隐式CoT同质化，小模型提升显著，大模型差距未闭。",
+ "innovations": [
+  "指出隐式CoT扩展计算预算时的潜在不稳定：隐表征同质化、丧失语义多样性导致训练崩溃",
+  "提出即插即用SIM-CoT：训练期用辅助解码器将每个隐式token对齐到对应显式推理步",
+  "推理期移除辅助解码器，零额外开销；并可将隐token投射到显式词表实现逐步可视化诊断"
+ ],
+ "method_framework": "在隐式CoT训练中引入辅助解码器，逐隐式token监督其与对应显式推理步对齐，保证隐状态承载区分性语义；推理时摘除解码器，保留隐式CoT的token效率；投射提供可解释性。",
+ "experiment_framework": "在GPT-2上使Coconut提升8.2%、在LLaMA-3.1 8B上使CODI提升3.0%；在GPT-2上以2.3倍token效率超过显式CoT基线2.1%；同时评估域内精度与域外稳定性。",
+ "takeaways": [
+  "隐式CoT的不稳定根源是步级监督不足导致的潜表征同质化",
+  "步级对齐监督可同时提升域内精度与域外稳定性，且推理零开销",
+  "隐式推理可通过投射逐步可视化，兼具效率与可解释性"
+ ],
+ "weaknesses": [
+  "为文本LLM隐式推理，非多模态/医学影像主线",
+  "增益主要在小模型显著，LLaMA-3.1 8B上差距仍未完全闭合",
+  "前9页未给出崩溃案例的定量消融与辅助解码器规模敏感性分析"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/SIM-COT Supervised Implicit Chain-of-Thought.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SIM-COT Supervised Implicit Chain-of-Thought.pdf",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "文本LLM隐式推理，未触及可靠性主线与落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

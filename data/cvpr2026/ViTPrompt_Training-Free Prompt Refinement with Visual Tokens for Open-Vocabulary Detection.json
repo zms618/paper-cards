@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/ViTPrompt_Training-Free Prompt Refinement with Visual Tokens for Open-Vocabulary Detection.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ViTPrompt_Training-Free Prompt Refinement with Visual Tokens for Open-Vocabulary Detection.pdf",
+ "title": "ViTPrompt Training-Free Prompt Refinement with Visual Tokens for Open-Vocabulary Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "视觉token增强提示，实现开放词汇检测的测试时自适应优化。",
+ "innovations": [
+  "首个联合优化边界框和分类分数的测试时自适应开放词汇检测框架",
+  "使用自生成的视觉token增强文本提示，无需反向传播或参数更新",
+  "实例级视觉提示机制，解决现有方法仅关注分类置信度而忽略定位精度的问题"
+ ],
+ "method_framework": "ViTPrompt采用两阶段推理：第一阶段从初始检测中提取高置信度区域的视觉token；第二阶段将视觉token与原始文本嵌入融合，增强语义上下文，通过跨模态解码器更新边界框坐标和分类logits。",
+ "experiment_framework": "在FoggyCityscapes、PASCAL-C和COCO-C三个域偏移基准上评估，使用Swin-T和Swin-B作为视觉主干，比较mAP50指标与BCA+等基线方法。",
+ "takeaways": [
+  "视觉token增强提示可有效解决域偏移下的语义对齐问题",
+  "训练-free方法可实现实时部署的测试时自适应检测",
+  "实例级自适应比类别级方法更能处理模糊或损坏的提案"
+ ],
+ "weaknesses": [
+  "依赖初始检测质量，若初始检测严重错误则可能影响后续优化",
+  "仅使用固定数量的高置信度提案(K=5)，可能遗漏重要但低置信度的目标"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "开放词汇检测与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

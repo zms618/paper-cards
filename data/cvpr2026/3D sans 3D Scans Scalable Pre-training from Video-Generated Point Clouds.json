@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/3D sans 3D Scans Scalable Pre-training from Video-Generated Point Clouds.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/3D sans 3D Scans Scalable Pre-training from Video-Generated Point Clouds.pdf",
+ "title": "3D sans 3D Scans: Scalable Pre-training from Video-Generated Point Clouds",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "视频重建点云预训练，依赖扫描尺度统计，正则增益有限",
+ "innovations": [
+  "提出 RoomTours：从 YouTube 真实房产漫游视频（3462 条自采 + RealEstate10k/HouseTours 等）用 CLIP 逐帧做室内/室外与粗粒度场景分类并按类型跳变切序列，再用前馈模型 ω3 一次性重建出 49,219 个带色点云，真正脱离真实 3D 扫描做 3D-SSL",
+  "针对 VGPC 含噪声与空洞的痛点加两项正则：Laplacian 平滑项 R_Lap=Σ_(i,j)∈E w_ij·‖z_i−z_j‖² 在 kNN 图上用距离权重 w_ij=exp(‖p_i−p_j‖²/ϑ²)（ϑ 取点云 kNN 距离中位数自适应估计、边远阈值截断、平方项换 Huber）约束邻点嵌入一致；噪声一致性项 R_cons 约束同一场景加噪声全局视图与掩码全局视图在 EMA 教师与学生间的嵌入相等",
+  "指出并修正了 3D-SSL 评测的公平性漏洞：Sonata 等在预训练时混入了下游评测集（ScanNet 等）的 val/test 分割，本文在重训 Sonata 基线时把这些分割剔除，使「无真实扫描」的成绩对比是干净的"
+ ],
+ "method_framework": "Sonata 式 teacher-student（教师为学生权重 EMA）Sinkhorn-Knopp 聚类预训练：L_clust=w_u L_unmask + w_m L_mask + w_r L_roll（4:2:2），叠加 R_Lap 与 R_cons，总目标 L=L_clust+ϖR_Lap+µR_cons（ϖ 从 2e-4 线性升到 3e-3，µ=0.05）；数据侧做 SOR 去离群、主平面 Z-up 对齐、按 ScanNet 估出的尺度分布缩放到目标尺度。",
+ "experiment_framework": "RoomTours-1k/16k/49k 预训练 PTv3（Base/Large，H200×8，batch 16，145.6k→437k 步）；下游 ScanNet、ScanNet200、ScanNet++、S3DIS Area5 的语义分割（mIoU）与实例分割（mAP），各测 linear probing 与 full fine-tuning 两种协议；消融 6 张小表。",
+ "takeaways": [
+  "「用便宜的代理数据（网络视频重建点云）换昂贵的真值扫描」这条数据路线对任何受制于标注/采集成本的模态都可借鉴",
+  "在自蒸馏聚类上加 Laplacian 平滑（沿 kNN 几何平滑特征）+ 跨视图噪声一致性，是把 SSL 用到真实含噪数据上的通用配方",
+  "评测公平性自查（检查基线预训练是否偷用了下游 val/test）值得作为自己论文的固定动作"
+ ],
+ "weaknesses": [
+  "全部指标均为单次运行均值，正文与消融表都未给标准差或多种子结果，1k/16k 与 49k 之间的差距（LP 57.1→65.9）无法判断是否落在训练噪声内",
+  "「免真实扫描」的宣称有隐性回环：场景缩放用「从 ScanNet 预先估出的尺度分布」作为 s_target，即仍依赖真实扫描统计；且 Z-up 对齐依赖主平面检测，文中自承天花板/墙面误检会导致坐标系翻转并仍保留这些场景",
+  "正则项增益有限（去掉 R_Lap/去掉 Rcons 分别只让 LP 从 57.1 掉到 55.0/55.3），且 RoomTours 质量完全由第三方重建模型决定，消融 (f) 显示换 VGGT/MapAnything 时 LP 会从 57.1 掉到 49.3–50.1，说明方法对重建器质量高度绑定而作者未给出解耦分析",
+  "正文在此处截断（实例分割结果与结论缺失），实例分割对比的完整性无法核实"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3D重建与可靠性主线无关，仅数据路线有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/PDCR_Perception-Decomposed Confidence Reward for Vision-Language Reasoning.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/PDCR_Perception-Decomposed Confidence Reward for Vision-Language Reasoning.pdf",
+ "title": "PDCR Perception-Decomposed Confidence Reward for Vision-Language Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "分解多模态奖励信号，解决视觉-文本推理退化问题",
+ "innovations": [
+  "视觉依赖分数量化步骤对视觉输入的依赖",
+  "无监督技能分解使用Otsu方法自动分离感知和推理步骤",
+  "感知分解优势计算解决混合信号退化问题"
+ ],
+ "method_framework": "PDCR框架通过视觉依赖分数和聚类算法将推理步骤分为视觉感知和文本推理两类，然后在各自簇内归一化置信度增益，提供稳定、正确缩放的训练信号。",
+ "experiment_framework": "在Qwen2.5-VL-3B/7B模型上训练，使用Vision-SR1数据集，在MMMU、MathVerse等7个V-L推理基准测试，与GRPO、DAPO、PACR基线比较",
+ "takeaways": [
+  "多模态任务中不同技能需要独立归一化",
+  "无监督技能分解方法可有效分离视觉感知和文本推理步骤",
+  "分解奖励信号可解决混合技能导致的信号退化问题"
+ ],
+ "weaknesses": [
+  "计算成本高于基线方法",
+  "视觉依赖分数可能无法完全捕捉所有视觉感知步骤的细微差别"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态奖励分解，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

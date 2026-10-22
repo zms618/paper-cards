@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/CSG-ODE_ControlSynth Graph ODE for Modeling Complex Evolution of Dynamic Graphs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CSG-ODE_ControlSynth Graph ODE for Modeling Complex Evolution of Dynamic Graphs.pdf",
+ "title": "CSG-ODE: ControlSynth Graph ODE for Modeling Complex Evolution of Dynamic Graphs",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "elevance": 4.0,
+  "evidence": 5.5,
+  "overall": 5.25
+ },
+ "one_line": "改进GODE的图ODE模型，添加节点加权与反对称约束",
+ "innovations": [
+  "编码阶段引入基于信息传输的节点间重要性加权机制，融合潜在相关以自适应引导图卷积循环网络做时序节点嵌入",
+  "解码阶段用带非线性激活子网络的ODE建模节点非线性动力学演化",
+  "通过约束权重矩阵为可学习反对称形式得到SCSG-ODE，理论增强稳定性",
+  "在交通、动捕、仿真物理系统数据上优于SOTA GODE，SCSG-ODE兼顾性能与最优稳定性"
+ ],
+ "method_framework": "在VAE编码中用节点间重要性加权+潜在相关自适应指导图卷积循环网络生成时序节点嵌入；解码用非线性ODE刻画连续动力学；对需要稳定性的任务将权重约束为反对称形式得到SCSG-ODE以保证稳定演化。",
+ "experiment_framework": "在交通流、动捕、仿真物理系统等动态图数据集上与SOTA GODE类方法比较，报告节点预测/重建误差等指标，并评估SCSG-ODE的稳定性。",
+ "takeaways": [
+  "节点间重要性加权能更好捕捉时变关系与非线性节点状态演化",
+  "反对称权重约束可在不显著牺牲精度的前提下理论保证动力学稳定",
+  "GODE在复杂动态图建模上仍有提升空间"
+ ],
+ "weaknesses": [
+  "主线为动态图表示学习/时序预测，与可靠性主线及医学影像、多模态推理落地域无关",
+  "稳定性仅由反对称约束间接保证，对真实分布漂移的鲁棒性未实证",
+  "主要在小规模/仿真数据集验证，大规模真实动态图扩展性证据有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

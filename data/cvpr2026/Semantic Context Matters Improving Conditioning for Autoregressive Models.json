@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Semantic Context Matters Improving Conditioning for Autoregressive Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Semantic Context Matters Improving Conditioning for Autoregressive Models.pdf",
+ "title": "Semantic Context Matters Improving Conditioning for Autoregressive Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "SCAR用语义压缩和对齐提升自回归图像编辑，但依赖预训练模型",
+ "innovations": [
+  "压缩语义预填充，用紧凑语义特征替代低效VQ标记",
+  "语义对齐引导，将自回归模型最后视觉隐藏状态与目标语义对齐",
+  "统一框架支持next-token和next-set自回归范式"
+ ],
+ "method_framework": "SCAR结合压缩语义预填充和语义对齐引导，使用冻结视觉基础模型提取源图像语义特征，通过可学习压缩模块减少序列长度，并在训练时对齐源图像内部表示与目标语义表示。",
+ "experiment_framework": "在ImageNet-256和MultiGen-20M数据集上评估C2I、T2I可控生成，在PIE-Bench上评估指令编辑，使用FID、RMSE、SSIM等指标对比扩散模型和自回归方法。",
+ "takeaways": [
+  "语义预填充比VQ标记更有效，能更好保留高层语义",
+  "语义对齐引导提供密集上下文学习信号，增强指令遵循能力"
+ ],
+ "weaknesses": [
+  "依赖预训练视觉基础模型，增加计算开销",
+  "未充分讨论方法在不同图像分辨率和复杂度下的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "自回归图像编辑与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Waterdrum_Watermark-Based Data-Centric Unlearning Metric.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Waterdrum_Watermark-Based Data-Centric Unlearning Metric.pdf",
+ "title": "WaterDrum: Watermark-Based Data-Centric Unlearning Metric",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 7.5,
+  "overall": 6.1
+ },
+ "one_line": "水印度量解决LLM遗忘评估失效，但水印鲁棒性与泛化性存疑",
+ "innovations": [
+  "提出首个数据中心的LLM遗忘度量WaterDrum，利用鲁棒文本水印直接衡量训练数据的影响是否被移除",
+  "解决了效用中心指标的根本缺陷：当遗忘集和保留集语义相似时，下游性能变化无法区分是遗忘了目标数据还是误伤了保留数据",
+  "引入具有不同数据相似度水平的新遗忘基准数据集，支持严格的遗忘算法评估"
+ ],
+ "method_framework": "在训练数据中嵌入水印信号，遗忘后通过检测模型生成文本中水印信号的残留程度来直接衡量数据影响是否被移除。不同于效用指标通过下游性能间接推断，WaterDrum直接测量数据本身的可提取性。",
+ "experiment_framework": "在新构建的具有不同遗忘-保留相似度水平的基准上评估多种现有遗忘算法。对比WaterDrum与传统效用中心指标的评估一致性和区分度。",
+ "takeaways": [
+  "传统效用中心遗忘指标在遗忘集与保留集语义相似时不可靠，可能高估或低估遗忘效果",
+  "水印化数据直接测量方法不受语义相似性干扰，能更准确地反映遗忘程度",
+  "遗忘评估需要数据中心视角，不能仅依赖下游性能变化"
+ ],
+ "weaknesses": [
+  "水印嵌入需要在训练前对数据进行修改，对于已训练完成的模型无法回溯应用",
+  "水印的鲁棒性与可检测性之间的权衡对度量准确性的影响未充分分析",
+  "仅在文本LLM上验证，视觉或多模态模型的遗忘度量适用性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "数据中心的遗忘度量直接解决可靠性主线中的隐私鲁棒问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

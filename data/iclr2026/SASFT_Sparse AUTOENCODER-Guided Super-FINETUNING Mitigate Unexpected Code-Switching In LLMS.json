@@ -1,0 +1,41 @@
+{
+ "title": "SASFT: Sparse Autoencoder-guided Supervised Finetuning to Mitigate Unexpected Code-Switching in LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "SAE分析语码切换源于特征过预激活，引导微调降50%切换率",
+ "innovations": [
+  "首次用稀疏自编码器对意外语码切换做机理分析，发现切换时该语言特征预激活值过高",
+  "提出SAE引导的监督微调SASFT，训练中教模型维持特定语言特征的合适预激活值",
+  "在5个模型、3种语言上将意外语码切换降超50%(一例完全消除)，且不损6个多语基准"
+ ],
+ "method_framework": "先用SAE定位导致意外语言切换的语言特征及其过预激活现象；再在SFT时引导这些特征维持恰当预激活水平，从机制上抑制误入其他语言，而非表层约束。",
+ "experiment_framework": "5个模型跨3种语言评测意外语码切换率；对比标准SFT降低超50%；并在6个多语基准上验证能力保持或提升。",
+ "takeaways": [
+  "意外语码切换对应可定位的语言特征过预激活",
+  "机制引导微调比表层约束更有效地抑制语码切换",
+  "抑制切换不必以牺牲多语能力为代价"
+ ],
+ "weaknesses": [
+  "为多语行为可靠性，非医学影像或多模态推理主线",
+  "SAE特征需逐语言/逐模型定位，可迁移性成本较高",
+  "前9页未见对长文本/对抗多语输入的鲁棒性评测"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/SASFT_Sparse AUTOENCODER-Guided Super-FINETUNING Mitigate Unexpected Code-Switching In LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SASFT_Sparse AUTOENCODER-Guided Super-FINETUNING Mitigate Unexpected Code-Switching In LLMS.pdf",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "语码切换可靠性研究，非医学或多模态主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

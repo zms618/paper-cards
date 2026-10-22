@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Non-Asymptotic Analysis Of Efficiency In Conformalized Regression.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Non-Asymptotic Analysis Of Efficiency In Conformalized Regression.pdf",
+ "title": "Non-Asymptotic Analysis of Efficiency in Conformalized Regression",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "共形回归非渐近界分析，理论贡献为主但实证支撑不足。",
+ "innovations": [
+  "突破以往把误覆盖率α当固定常数的做法，建立预测区间长度相对oracle区间偏差的非渐近界。",
+  "给出O(1/√n + 1/(α²n) + 1/√m + exp(-α²m))形式的界，显式刻画效率对训练集n、校准集m、误覆盖率α的联合依赖。",
+  "识别不同α区间下收敛速率的相变，为如何分配数据以控制多余预测区间长度提供指导。"
+ ],
+ "method_framework": "在随机设计i.i.d.假设下，将数据分为训练集与校准集；用SGD训练条件分位数/中位数回归模型，计算非一致性分数与样本分位数得到split conformal预测区间；分析预测区间长度与oracle区间长度之差的非渐近偏差，分解为训练估计误差与校准分位数误差两部分。",
+ "experiment_framework": "理论推导为主，给出非渐近界与相变分析；并辅以数值实验验证理论结论的一致性（具体数据集/实验在所提取页之后）。",
+ "takeaways": [
+  "共形预测效率同时受训练集与校准集规模及误覆盖率α影响，不能只调α。",
+  "存在由α决定的收敛相变，指导在训练/校准间分配数据以最小化多余区间长度。",
+  "该界不绑定特定优化器，替换对应估计误差率即可推广到其他算法。"
+ ],
+ "weaknesses": [
+  "依赖有界协变量/响应空间与i.i.d.等温和假设，对分布漂移与重尾的适用性未讨论。",
+  "相变与数据分配建议多为渐近/常数阶描述，对有限样本的工程操作指导不够具体。",
+  "数值实验规模与所对比方法描述有限，实证支撑相对理论偏弱。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "共形回归效率分析属于校准主线，方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

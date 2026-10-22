@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/PermLLM_Learnable Channel Permutation for N M Sparse Large Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/PermLLM_Learnable Channel Permutation for N M Sparse Large Language Models.pdf",
+ "title": "PermLLM: Learnable Channel Permutation for N:M Sparse Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "可学习通道置换提升稀疏LLM性能，但训练时间长且块大小需权衡",
+ "innovations": [
+  "可学习通道置换(LCP)直接最小化稀疏模型与原始模型输出差异",
+  "使用Sinkhorn归一化将离散置换矩阵转化为可微软置换矩阵",
+  "高效的块状通道置换策略减少可学习参数和计算复杂度"
+ ],
+ "method_framework": "PermLLM框架结合现有one-shot剪枝方法与可学习通道置换，通过Sinkhorn归一化实现端到端优化，使用STE近似梯度，块状策略降低计算复杂度",
+ "experiment_framework": "在LLaMA、Qwen、OPT等模型上评估，使用C4数据集校准，Wikitext2和5个零样本任务评估性能，与SparseGPT、Wanda、RIA等基线比较",
+ "takeaways": [
+  "可学习通道置换作为插件提升现有剪枝方法性能",
+  "块状策略在保持性能的同时显著降低计算复杂度"
+ ],
+ "weaknesses": [
+  "训练时间较长(7B模型需2.5小时)",
+  "块大小选择需权衡性能与效率"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

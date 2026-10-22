@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SAM-PLING_Asynchronous Matching with Dynamic SAM-PLING for Multimodal Dataset Distillation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SAM-PLING_Asynchronous Matching with Dynamic SAM-PLING for Multimodal Dataset Distillation.pdf",
+ "title": "Asynchronous Matching with Dynamic Sampling for Multimodal Dataset Distillation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.3
+ },
+ "one_line": "异步匹配提升多模态蒸馏，但验证有限且与主线关联弱。",
+ "innovations": [
+  "指出以往同步轨迹匹配只配对相同时刻专家参数，提出异步轨迹匹配，解耦图像与文本轨迹的起点选择，探索更丰富的跨模态专家参数组合。",
+  "提出语义感知原型挖掘模块：用特征空间聚类替代随机初始化，识别代表性原型，提升合成样本的分布覆盖与代表性。",
+  "系统刻画多模态数据集蒸馏的两大挑战(异质知识蒸馏的特征错位/异步动态、无离散类别引导)并给出统一框架。"
+ ],
+ "method_framework": "异步匹配框架 AMD：训练合成图文对时，图像与文本优化轨迹不再要求同步对齐，而是灵活选择不同时刻的专家参数做匹配；同时用特征聚类挖掘语义原型作为合成样本初始化，覆盖连续语义空间。计算开销可忽略。",
+ "experiment_framework": "在 Flickr30k 与 COCO 上评测多模态数据集蒸馏，以图文检索指标 IR@1/IR@5/IR@10 衡量；Flickr30k 200 pairs 上 IR@1/5/10 分别提升 4.5%/9.6%/10.9%；与 Wu et al. 2023、Xu et al. 2024 等同步匹配方法对比。",
+ "takeaways": [
+  "解耦图文轨迹的异步匹配比传统同步匹配能捕获更精确的跨模态相关性。",
+  "聚类原型初始化相比随机初始化显著提升合成样本的覆盖度与代表性。",
+  "AMD 蒸馏出的小样本集可高效训练 VLM，且附加计算开销极小。"
+ ],
+ "weaknesses": [
+  "仅在 Flickr30k/COCO 两个检索型数据集上验证，面向更大 VLM 与下游任务的蒸馏效果未验证。",
+  "提升主要在小 pair 规模(200)下报告，更大蒸馏预算下的边际收益与可扩展性未充分说明。",
+  "属数据蒸馏效率方向，与视觉可靠性/推理可信主线关联弱，relevance 偏低。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.85,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "多模态蒸馏效率提升，但与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Training Dynamics Impact Post-Training.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Training Dynamics Impact Post-Training.pdf",
+ "title": "Training Dynamics Impact Post-Training Quantization Robustness",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "分析训练动态对量化鲁棒性影响，发现学习率衰减是关键因素。",
+ "innovations": [
+  "在高达32B参数和15T训练token的开源模型训练轨迹上，首次系统分析量化退化与训练动态的关系",
+  "发现学习率衰减后验证损失和量化误差开始发散，且 largely 独立于训练数据规模",
+  "通过控制实验（高达100B token）证明策略性的训练超参数干预可改善大规模训练下的量化质量"
+ ],
+ "method_framework": "系统分析开源LLM训练轨迹中量化误差的演变，关联学习率调度、损失曲率和量化鲁棒性。通过控制实验训练自己的模型（高达100B token），分析损失曲率在训练中的演化及其与学习率的交互如何影响量化鲁棒性。",
+ "experiment_framework": "分析多个开源模型训练轨迹（高达32B参数、15T token）的量化误差变化；控制实验训练自有的小模型高达100B token，分析学习率、数据规模、损失曲率对量化鲁棒性的影响。",
+ "takeaways": [
+  "量化误差主要由学习率等训练超参数的复杂交互驱动，而非单纯的数据规模",
+  "学习率衰减后验证损失和量化误差开始发散，这是量化鲁棒性下降的关键节点",
+  "策略性训练超参数干预可以改善大规模模型的量化质量，无需牺牲性能"
+ ],
+ "weaknesses": [
+  "主要分析权重-only量化，权激活量化的结论可能不同",
+  "控制实验最大仅100B token，与前沿模型的训练规模差距较大",
+  "具体的超参数干预最佳实践缺乏详细指南"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "量化鲁棒性属于可靠性主线，且触及大模型落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

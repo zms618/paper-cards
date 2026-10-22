@@ -1,0 +1,41 @@
+{
+ "title": "Uncertainty-Driven Embedding Convolution",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "后验概率化嵌入集成，按查询不确定性加权提升检索鲁棒性。",
+ "innovations": [
+  "提出后验(post-hoc)机制，把任意已有预训练确定性嵌入转为带均值与方差的概率嵌入，无需重训即可做不确定性量化。",
+  "基于有原则的代理损失推导查询相关的自适应集成系数，对低可靠嵌入降权，替代均匀平均。",
+  "提出不确定性感知相似度函数，同时纳入距离与方差，作为分布间距离的高效理论代理。"
+ ],
+ "method_framework": "先将每个预训练嵌入模型的确定性输出估计为概率分布(均值+不确定度)；再以代理损失推导按查询不确定性动态加权的集成系数；最后用融合均值距离与方差的不确定性感知相似度替代昂贵的分布间距离来打分检索。",
+ "experiment_framework": "在多个跨域文本嵌入/检索与分类基准上，与均匀平均、确定性融合等嵌入集成方法对比，报告相似度/检索性能以及在嵌入失配/冲突下的鲁棒性。",
+ "takeaways": [
+  "不建模不确定性的均匀嵌入集成会在模型冲突(如 jaguar 的动物/汽车歧义)时导致检索失败。",
+  "按查询级不确定性自适应加权并把方差纳入相似度，能同时提升性能与鲁棒性。",
+  "后验概率化使现成嵌入模型无需重训即可获得不确定性，工程上易落地。"
+ ],
+ "weaknesses": [
+  "不确定性估计本身的校准质量缺乏独立检验，估计方差是否真反映可靠度未充分验证。",
+  "后验概率化方法依赖若干建模假设与额外拟合过程，其对嵌入维度/模型规模的扩展性未读完。",
+  "仅在通用 NLP 嵌入检索验证，未涉及医学影像或多模态大模型推理等目标落地域；完整基准表与统计显著性未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Uncertainty-Driven Embedding Convolution.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Uncertainty-Driven Embedding Convolution.pdf",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "不确定性量化提升检索鲁棒性，符合可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

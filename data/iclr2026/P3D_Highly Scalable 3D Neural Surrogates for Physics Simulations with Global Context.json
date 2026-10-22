@@ -1,0 +1,41 @@
+{
+ "title": "P3D: Highly Scalable 3D Neural Surrogates for Physics Simulations with Global Context",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "混合CNN-Transformer做3D物理仿真，patch预训练+全局融合，支持确定性与概率预测。",
+ "innovations": [
+  "面向3D物理仿真的混合CNN-Transformer骨干P3D，速度与精度优于现有架构。",
+  "在仿真域小patch上预训练再融合成全局解，降低高分辨率训练的显存/算力。",
+  "可选可扩展seq2seq模型注入长程依赖；并可训练为扩散模型做高湍流3D槽道流的概率采样。"
+ ],
+ "method_framework": "CNN做局部3D特征、Transformer补全局/长程依赖；先在仿真域小块patch上预训练，再把patch解融合成全局解；需要长程时叠加seq2seq模块；同一骨干既可做确定性下一步状态预测，也可改造成扩散模型做概率采样。",
+ "experiment_framework": "同时学习14类3D PDE动力学；对比大量基线；扩展到512^3高分辨率各向同性湍流；并训练扩散模型在不同Re数下生成高湍流3D槽道流样本并校验流场统计；指标为精度/速度/统计量匹配。",
+ "takeaways": [
+  "patch预训练+全局融合使高分辨率3D神经代理在有限显存下可扩展。",
+  "混合CNN-Transformer在14类PDE上速度精度均优于现有架构。",
+  "同一骨干可扩展到概率扩散建模，正确捕捉湍流统计。"
+ ],
+ "weaknesses": [
+  "SciML/流体仿真方向，与可靠性×医学影像主线无直接关联。",
+  "patch融合的边界一致性/拼接误差在强湍流梯度下的影响需更多分析。",
+  "512^3已很高，但对工程级真实几何(复杂边界/多物理耦合)的适用性仍有限。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/P3D_Highly Scalable 3D Neural Surrogates for Physics Simulations with Global Context.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/P3D_Highly Scalable 3D Neural Surrogates for Physics Simulations with Global Context.pdf",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "纯物理仿真，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

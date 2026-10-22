@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Streaming Autoregressive Video Generation via Diagonal Distillation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Streaming Autoregressive Video Generation via Diagonal Distillation.pdf",
+ "title": "Streaming Autoregressive Video Generation via Diagonal Distillation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "非对称步数分配的对角蒸馏加速视频生成，但迁移性和长序列验证不足",
+ "innovations": [
+  "提出对角蒸馏方法：同时利用视频chunk间和去噪步间的时间信息，正交于现有蒸馏方法",
+  "设计非对称生成策略：早期chunk多去噪步、后期chunk少步，后期chunk继承早期充分处理的外观信息，同时用部分去噪chunk作为后续条件输入",
+  "对齐chunk生成时的隐式噪声级别预测与实际推理条件，缓解暴露偏差和长序列误差累积；结合隐式光流建模保持运动质量"
+ ],
+ "method_framework": "将自回归视频生成的chunk-by-chunk过程与扩散去噪步联合优化。对角蒸馏的核心是在时间-去噪步二维平面上做非对称压缩：早期chunk分配更多去噪步以充分建立外观，后期chunk分配更少步但以部分去噪的前一chunk为条件。训练时对齐隐式噪声预测与实际推理分布，避免exposure bias。额外加入隐式光流建模保持严格步数限制下的运动连贯性。",
+ "experiment_framework": "在自回归视频扩散模型上验证，对比CausVid、Self Forcing等基线。指标包括生成质量（FID等）、运动连贯性、推理速度（FPS）、长序列误差累积。",
+ "takeaways": [
+  "现有视频蒸馏方法忽略时间依赖，将图像蒸馏方法直接迁移会导致运动连贯性下降和长序列误差累积",
+  "非对称步数分配（早期多步、后期少步）是平衡生成质量和流式延迟的关键设计",
+  "对角蒸馏实现5秒视频2.61秒生成（31 FPS），277倍加速，同时保持竞争力的视频质量"
+ ],
+ "weaknesses": [
+  "仅在特定自回归视频扩散模型上验证，对其他视频生成架构的迁移性未证明",
+  "非对称步数分配需要手动设计步数调度，不同视频长度可能需要不同调度",
+  "前9页未展示完整的长序列误差累积定量分析，超长视频的稳定性未验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成加速，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

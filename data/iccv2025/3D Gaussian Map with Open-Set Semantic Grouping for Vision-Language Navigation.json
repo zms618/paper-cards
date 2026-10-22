@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/3D Gaussian Map with Open-Set Semantic Grouping for Vision-Language Navigation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/3D Gaussian Map with Open-Set Semantic Grouping for Vision-Language Navigation.pdf",
+ "title": "3D Gaussian Map with Open-Set Semantic Grouping for Vision-Language Navigation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "3D高斯地图替代体素，开放集语义分组，VLN决策增益有限",
+ "innovations": [
+  "把导航地图表示成稀疏可微 3D 高斯而非稠密均匀体素：RGB-D 反投影成伪 lidar 点云（Eq.1）初始化 Gaussians，再以 tile-based 渲染同时监督 RGB、深度与一个额外语义标量 σ 的 α-blending（Eq.4-8），单次优化即把几何先验与开放集语义焊进同一张地图",
+  "OSG 用 SAM2 everything 掩码 + CLIP 嵌入免去手工 3D 标注；把每个 region 的 CLIP 512 维向量 global average pool 压成一个标量 σ_i 存进每个 Gaussian，再在渲染端对齐目标 CLIP 向量（L_sem = |F^s − F^s|1，Eq.14）实现开放集语义分组",
+  "MAP 决策在 scene/view/instance 三级分别用 global avg pooling 或实例内高斯聚合成特征后过 FMLT 打分，再用最近邻映射 N(·,V) 把三级 score 投到候选点直接相加（Eq.12）"
+ ],
+ "method_framework": "每导航节点用多视角 RGB-D 建 ESM（点云初始化 3DGS + RGB/深度/语义可微渲染）→ SAM2+CLIP 做开放集语义分组给每个 Gaussian 赋 σ → scene/view/instance 三级 FMLT 打分叠加得动作概率 → 拓扑记忆 + DAgger 微调",
+ "experiment_framework": "R2R（7189 轨迹/61 场景）、R4R、REVERIE 三个公开基准，对比 DUET/GridMM/BEVBert/HAMT/RecBERT 等；指标 TL/NE/SR/SPL 与 RGS/RGSPL，覆盖 val seen、val unseen、test unseen（正文截断于 R4R 表后，§4.3 消融表未进正文）",
+ "takeaways": [
+  "把语义压成每个高斯一个标量（CLIP 向量全局平均后对齐）而非存完整 512 维嵌入，用极小内存换取开放集语义，量级上足够 VLN 决策",
+  "一套地图同时承担几何先验与开放集语义，规避 NeRF 稠密均匀采样在自由空域大量浪费体素的老问题"
+ ],
+ "weaknesses": [
+  "σ 是 512 维 CLIP 向量 global average pooling 压成的单个标量，CLIP 空间中不同语义的向量平均后大量语义互相抹平；论文只宣称「开放集语义」却无类间可分性或检索准确率量化，open-set claim 缺对应实验",
+  "增益很小（R2R val unseen 相对 BEVBert 仅 +2% SR/+2% SPL，R4R SDTW +3%），且落在单 epoch 噪声量级；正文截断使 §4.3 的组件消融（σ 语义、三级打分权重、ESM 渲染迭代数）不可见",
+  "3DGS 地图优化（15 次离线预训练、每节点 0.07s 建图）与导航策略是两个独立优化目标，正文未提供地图重建误差如何传导到导航失误的分析；topological memory 与 2D action score 直接沿用 DUET，方法增量实际只在地图表示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "VLN导航与可靠性主线无实质交点，仅地图表示创新",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

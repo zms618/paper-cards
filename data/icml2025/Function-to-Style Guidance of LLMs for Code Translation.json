@@ -1,0 +1,37 @@
+{
+ "title": "Function-to-Style Guidance of LLMs for Code Translation",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "两阶段代码翻译范式，功能正确后优化风格，依赖高成本数据",
+ "innovations": [
+  "提出function-to-style两阶段引导范式，解耦'正确性'与'风格可读性'两个目标",
+  "风格学习阶段同时引入正例与负例，显式纠正变量命名不一致、冗余变量、函数封装错配等可读性问题",
+  "构建含最新源码、丰富测试用例与人工标注真值翻译的代码翻译新基准，支持功能与风格双向评估"
+ ],
+ "method_framework": "两阶段微调LLM：(1)功能学习——用从在线编程平台挖掘的高质量source-target代码对优化翻译正确性；(2)风格学习——通过正负风格样例引导模型产出可读、符合惯例的代码。配套基准从正确性与可读性两方面评测。",
+ "experiment_framework": "在自建新基准(最新源码、大量测试、人工标注翻译)上，与Qwen-7B等基线对比，指标含功能正确性(测试通过率)与可读性(人工/自动风格评估)。",
+ "takeaways": [
+  "LLM代码翻译常在正确性之外牺牲可读性(命名、冗余变量、封装错配)",
+  "先保功能正确性、再单独做风格引导，比端到端联合优化更有效",
+  "正负样例对比是提升代码可读性的高效信号"
+ ],
+ "weaknesses": [
+  "方法本质是数据/训练流程设计，算法新颖性有限",
+  "依赖从在线平台挖掘的数据与人工标注，成本高且分布偏编程题库",
+  "与可靠性/医学影像/多模态推理主线无关"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Function-to-Style Guidance of LLMs for Code Translation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Function-to-Style Guidance of LLMs for Code Translation.pdf",
+ "raw_overall": 5.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

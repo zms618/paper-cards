@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Emergence in Non-Neural Models Grokking Modular Arithmetic via Average Gradient Outer Product.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Emergence in Non-Neural Models Grokking Modular Arithmetic via Average Gradient Outer Product.pdf",
+ "title": "Emergence in Non-Neural Models: Grokking Modular Arithmetic via Average Gradient Outer Product",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6.25
+ },
+ "one_line": "核机器复现神经网络grokking，揭示循环特征矩阵与FMA算法连接。",
+ "innovations": [
+  "首次在非神经、非梯度的模型(RFM核机器)上复现grokking模块化算术，证明该现象独立于神经网络架构与SGD优化，本质来自特征学习。",
+  "揭示RFM与NN都学到块循环(block-circulant)特征矩阵(乘/除经离散对数重排后显形)，且NN的Neural Feature Matrix与AGOP平方根Pearson相关>0.92，二者学到同一算法。",
+  "给出理论连接(Theorem 5.1)：带块循环Mahalanobis特征的核机器恰好实现FMA；并提出circulant deviation与AGOP alignment两个'隐藏进度度量'，显示泛化在准确率/损失不变时已在渐进发生。"
+ ],
+ "method_framework": "RFM迭代三步：(i)用当前M^t训练核机器拟合数据；(ii)算该预测器的AGOP矩阵G；(iii)以矩阵幂M^{t+1}=G^{1/2}变换输入特征。因做ridgeless回归训练损失恒为0，但前若干迭代测试准确率/损失不变，之后骤升到100%。块循环特征经DFT对角化即等价于FMA：对one-hot输入做DFT、逐元相乘、再内积即得(a+b) mod p。",
+ "experiment_framework": "模数p=61，四运算(加/减/乘/除)；RFM用quadratic与Gaussian核；对比标准核机器、随机循环特征变换后的核机器；神经网络为单隐层quadratic激活MLP；训练分数17.5%-50%；指标测试准确率/损失、circulant deviation、AGOP alignment、NFM与AGOP相关性、随机循环特征加速grokking。",
+ "takeaways": [
+  "RFM在训练损失恒为0的情况下，前~10迭代测试指标不动、之后骤升到100%，且correct-class损失与总损失同步，非平均假象。",
+  "circulant deviation与AGOP alignment在测试损失不变期间已近线性渐进改善，说明涌现是特征质量渐进累积的结果，而非'懒→富'两阶段相变。",
+  "用随机块循环矩阵变换输入可使NN在17.5%训练分数下几百epoch即达100%，而未变换者3000epoch仍不收敛，证实循环结构是泛化关键。"
+ ],
+ "weaknesses": [
+  "仅在p=61的合成模块化算术玩具任务上验证，作者自承为何归纳偏置偏向循环特征并无简单解释，外推到真实任务无保证。",
+  "进度度量(circulant deviation需先验知道循环结构、AGOP alignment需访问训练好的最终模型)均为a posteriori指标，无法在训练中实时预测涌现点。",
+  "属涌现/grokking的机制可解释性研究，与可靠性主线（鲁棒/泛化/可信AI/不确定性量化在医学影像或多模态大模型推理）无直接关系。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

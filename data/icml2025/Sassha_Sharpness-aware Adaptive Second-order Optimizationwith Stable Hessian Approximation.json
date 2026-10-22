@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Sassha_Sharpness-aware Adaptive Second-order Optimizationwith Stable Hessian Approximation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Sassha_Sharpness-aware Adaptive Second-order Optimizationwith Stable Hessian Approximation.pdf",
+ "title": "SASSHA: Sharpness-aware Adaptive Second-order Optimization with Stable Hessian Approximation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.75
+ },
+ "one_line": "SASSHA通过锐度惩罚和稳定Hessian近似提升二阶优化泛化，但成本高且迁移性存疑。",
+ "innovations": [
+  "通过损失景观视角指出现有二阶方法收敛到比SGD更尖锐的极小值，是其泛化较差的原因",
+  "提出SASSHA：显式最小化解锐度以提升泛化，同时稳定近似Hessian的计算",
+  "锐度最小化方案兼容惰性Hessian更新，在平坦性之外保证效率"
+ ],
+ "method_framework": "用多种锐度度量测量不同二阶方法收敛点，发现其二尖锐度显著高于SGD。SASSHA在自适应二阶更新中显式加入锐度惩罚以推向平坦极小，并用稳定的近似Hessian估计控制数值不稳定；为效率采用惰性(低频)Hessian更新。",
+ "experiment_framework": "在一系列标准深度学习实验上与SGD、AdaHessian、Sophia-H等对比；指标为泛化性能，并配套收敛性、鲁棒性、稳定性、效率与成本的综合分析。",
+ "takeaways": [
+  "二阶方法泛化差源于收敛到更尖锐极小值",
+  "显式锐度最小化+稳定Hessian近似可让二阶方法同时获得平坦极小与效率",
+  "SASSHA泛化性能与现有方法相当、多数更优"
+ ],
+ "weaknesses": [
+  "锐度最小化引入额外超参与计算开销，成本权衡量化有限",
+  "收益主要在标准DL基准，对大模型/预训练规模的迁移未充分验证",
+  "属优化器层面方法，虽涉及泛化但与医学影像、多模态推理落地域无直接对应"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.85,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Mixture of Style Experts for Diverse Stylization.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Mixture of Style Experts for Diverse Stylization.pdf",
+ "title": "Mixture of Style Experts for Diverse Stylization",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "MoE风格专家实现语义感知图像风格化，但创新有限",
+ "innovations": [
+  "构建语义多样化的风格数据集StyleExpert-500K",
+  "使用InfoNCE损失训练风格编码器并集成到MoE路由器",
+  "动态路由风格到专门专家的MoE架构"
+ ],
+ "method_framework": "两阶段训练：首先用InfoNCE损失训练风格编码器，然后将其集成到MoE路由器中指导LoRA专家选择，实现多样化风格的语义感知转换。",
+ "experiment_framework": "对比OmniStyle、CSGO等基线，使用CLIP、DINO等指标评估内容保真度，CSD、DreamSim评估风格相似度，Qwen语义分数评估语义转换质量。",
+ "takeaways": [
+  "风格编码器预训练可加速MoE收敛并提高泛化能力",
+  "专家路由机制能有效处理不同语义级别的风格"
+ ],
+ "weaknesses": [
+  "仅关注图像风格化任务，未涉及可靠性验证",
+  "计算效率虽优于标准LoRA但参数量增加"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.875,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "图像风格化任务与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

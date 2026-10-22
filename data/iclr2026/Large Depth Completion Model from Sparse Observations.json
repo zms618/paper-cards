@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Large Depth Completion Model from Sparse Observations.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Large Depth Completion Model from Sparse Observations.pdf",
+ "title": "Large Depth Completion Model from Sparse Observations",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "双阶段深度补全框架，泊松重建与点图回归提升跨域泛化。",
+ "innovations": [
+  "泊松重建的粗深度对齐策略",
+  "点图回归替代传统深度回归头",
+  "无需相机内参的度量级3D点图预测"
+ ],
+ "method_framework": "LDCM采用双阶段框架：首先利用单目深度基础模型和泊松重建生成粗深度图，然后通过ViT网络直接预测度量级3D点图，从中提取深度信息。",
+ "experiment_framework": "在KITTI、ETH3D、iBims-1和DIODE等6个数据集上评估，使用多种稀疏采样策略，比较RMSE、MAE、REL和δ1指标。",
+ "takeaways": [
+  "点图回归提供更结构化的监督信号",
+  "泊松重建能有效整合稀疏观测和基础模型预测"
+ ],
+ "weaknesses": [
+  "依赖预训练深度基础模型",
+  "计算复杂度较高，训练时间长"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "深度补全属于3D重建，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

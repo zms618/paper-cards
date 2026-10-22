@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/M2SFormer_Multi-Spectral and Multi-Scale Attention with Edge-Aware Difficulty Guidance for.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/M2SFormer_Multi-Spectral and Multi-Scale Attention with Edge-Aware Difficulty Guidance for.pdf",
+ "title": "M2SFormer Multi-Spectral and Multi-Scale Attention with Edge-Aware Difficulty Guidance for",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "多光谱多尺度注意力与边缘引导的伪造定位，参数量大且阈值依赖泛化存疑",
+ "innovations": [
+  "多光谱多尺度注意力模块(M2S)在跳跃连接中统一空间和频率域信息",
+  "边缘感知难度计算器量化样本难度",
+  "难度引导注意力模块(DGA)指导模型关注复杂区域"
+ ],
+ "method_framework": "基于PVT-v2编码器的Transformer架构，通过M2S注意力模块和边缘感知DGA解码器实现伪造定位，利用全局先验图和曲率度量量化难度并指导注意力分配。",
+ "experiment_framework": "在CASIAv2和DIS25k训练集上训练，在6个未见域数据集(CASIAv1, Columbia, IMD2020, CoMoFoD, In the Wild, MISD)上评估，使用DSC和mIoU指标。",
+ "takeaways": [
+  "频率域和空间域信息统一可有效提升伪造定位性能",
+  "基于曲率的难度量化可指导模型关注复杂区域",
+  "Transformer架构在全局依赖建模上优于传统CNN"
+ ],
+ "weaknesses": [
+  "方法复杂度较高，参数量和计算量大",
+  "难度计算依赖阈值设定，可能影响泛化能力",
+  "未充分分析不同伪造类型的性能差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "伪造定位与可靠性主线无实质交点，仅多光谱处理有医学影像关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

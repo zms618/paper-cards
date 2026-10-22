@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/FDGen_A Fairness-Aware Graph Generation Model.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FDGen_A Fairness-Aware Graph Generation Model.pdf",
+ "title": "FDGen: A Fairness-Aware Graph Generation Model",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "扩散图生成中同时缓解特征与结构偏差，但多值敏感属性扩展不足",
+ "innovations": [
+  "首次在图生成中同时形式化并缓解结构偏差（同敏感属性过度连边）与特征偏差（非敏感属性在子群间分布失衡），填补现有工作只处理结构偏差的空白",
+  "提出可分解表征通道的公平正则化项：鼓励节点加权聚合不同敏感属性邻居、扣减同属性邻居，抑制表征与敏感属性的过度关联",
+  "结合理论偏差来源分析设计扩散式生成框架，在逆扩散每步施加特征/结构/解耦多重公平约束损失"
+ ],
+ "method_framework": "以扩散模型为生成骨架，将节点表征拆分为多通道以隔离敏感属性；在似然重构损失上叠加特征偏差项Lf、结构偏差项Lg、解耦项Ld与LD，逆扩散过程中逐步约束子群间连接与特征分布差异。",
+ "experiment_framework": "数据集为 Cora、Citeseer、Photo、Computer 四个真实图；基线含 GraphARM、FairAdj、FG2AN、FairGen、FairWire；指标为节点分类准确率/F1、公平性 ΔDP 与 ΔEO，以及用 MMD 度量的度分布/聚类系数图质量与子群差异，并做消融。",
+ "takeaways": [
+  "FDGen 在四个真实数据集上相对现有公平图生成方法取得更好的公平性（ΔDP/ΔEO 下降）同时保持分类效用与图生成质量",
+  "特征偏差与结构偏差在图中相互耦合，必须联合约束，单独处理结构偏差不足以生成真正公平的图"
+ ],
+ "weaknesses": [
+  "仅在二值敏感属性假设下展开理论与方法，对多值/连续敏感属性与异构特征的可扩展性未验证",
+  "公平性度量与 MMD 对比集中在引文/商品共购图，缺乏信用评分、医疗等高风险宣称场景的真实下游评估",
+  "消融仅对比两个变体，公平性-效用权衡曲线与超参 λ 的敏感性分析不够充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

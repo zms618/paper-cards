@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Rank Gradient Lost NON-STATIONARITY_Sample Weight Decay for Mit-Plasticity Loss Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rank Gradient Lost NON-STATIONARITY_Sample Weight Decay for Mit-Plasticity Loss Reinforcement Learning.pdf",
+ "title": "The Rank and Gradient Lost in Non-Stationarity: Sample Weight Decay for Mitigating Plasticity Loss in Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "NTK理论解释RL可塑性损失，提出轻量SWD缓解梯度衰减。",
+ "innovations": [
+  "从网络优化视角形式化在线RL的两个非平稳源(数据分布非平稳、自举目标非平稳)，把可塑性损失归因于NTK Gram矩阵秩坍塌与梯度幅值Θ(1/k)衰减两机制。",
+  "秩坍塌机制从理论上解释了网络重置/神经元回收/噪声注入等既有方法的有效性。",
+  "提出与既有方法正交的轻量Sample Weight Decay(SWD)，针对梯度衰减恢复梯度幅值，作为经验回放式深度RL的通用补救。"
+ ],
+ "method_framework": "分析非平稳优化下NTK秩与梯度幅值的演化，针对梯度幅值随时间1/k衰减的机制，在经验回放中对样本施加权重衰减(SWD)以恢复有效梯度幅值，从而缓解可塑性损失。",
+ "experiment_framework": "在TD3、Double DQN、SAC(SimBa架构)上、MuJoCo/ALE/DeepMind Control Suite任务评测，对比多种UTD/架构/环境配置，报告DMC Humanoid上的SOTA。",
+ "takeaways": [
+  "可塑性损失可由NTK秩坍塌与梯度幅值衰减两机制解释，后者与既有补救方法正交。",
+  "轻量SWD跨多种深度RL算法与环境稳定缓解可塑性损失，在DMC Humanoid上达SOTA。"
+ ],
+ "weaknesses": [
+  "属深度RL优化理论方向，与可靠性主线（鲁棒/可信/医学影像）关联弱。",
+  "理论结论基于NTK线性化假设，对大模型规模与超参偏离线性区时的解释力未充分讨论。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "深度RL优化理论，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

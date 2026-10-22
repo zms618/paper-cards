@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/ConfTuner_Training Large Language Models to Express Their Confidence Verbally.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/ConfTuner_Training Large Language Models to Express Their Confidence Verbally.pdf",
+ "title": "ConfTuner: Training Large Language Models to Express Their Confidence Verbally",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "ConfTuner用tokenized Brier score校准LLM置信度表达，无需真实标签。",
+ "innovations": [
+  "tokenized Brier score作为proper scoring rule",
+  "无需真实置信度标签的校准方法",
+  "支持多种置信度表达格式和隐式置信度"
+ ],
+ "method_framework": "ConfTuner计算模型在置信度token上的概率分布，使用tokenized Brier score作为损失函数进行微调，使模型生成与真实正确概率匹配的置信度表达。",
+ "experiment_framework": "在HotpotQA训练，GSM8K/TriviaQA/StrategyQA/TruthfulQA测试，比较ECE和AUROC指标，评估自纠错和模型级联性能。",
+ "takeaways": [
+  "proper scoring rule理论可应用于语言模型置信度校准",
+  "校准后的置信度可提升LLM自纠错和级联系统性能"
+ ],
+ "weaknesses": [
+  "仅评估了问答任务，未覆盖更复杂场景",
+  "未分析不同领域知识对置信度校准的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

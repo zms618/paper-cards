@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/CAP-Net A Unified Network for 6D Pose and Size Estimation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/CAP-Net A Unified Network for 6D Pose and Size Estimation.pdf",
+ "title": "CAP-Net A Unified Network for 6D Pose and Size Estimation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "CAP-Net统一网络预测6D姿态与尺寸，依赖预训练模型",
+ "innovations": [
+  "单阶段端到端网络同时预测语义标签、质心偏移和NPCS表示",
+  "引入RGBD-Art数据集解决仿真到现实的域差距",
+  "利用RGB语义特征提升小部件感知精度"
+ ],
+ "method_framework": "结合SAM2和FeatUp提取RGB特征，与点云融合，通过PointNet++处理，并行预测语义标签、质心偏移和NPCS映射，聚类后对齐恢复姿态和尺寸",
+ "experiment_framework": "RGBD-Art数据集(63K图像)，对比PointGroup、SoftGroup、AutoGPart和GAPartNet，评估AP50、AP、旋转误差、平移误差和尺度误差",
+ "takeaways": [
+  "RGB语义特征对提升小部件感知精度至关重要",
+  "全局上下文信息有助于解决视觉歧义",
+  "仿真到现实迁移需要考虑真实传感器噪声"
+ ],
+ "weaknesses": [
+  "方法依赖预训练模型(SAM2和FeatUp)，增加计算复杂度",
+  "未充分讨论方法在极端光照条件下的鲁棒性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "姿态估计与可靠性主线无实质交点，仅工程应用价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

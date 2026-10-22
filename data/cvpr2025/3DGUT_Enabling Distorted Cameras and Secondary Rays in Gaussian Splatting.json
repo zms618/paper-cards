@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/3DGUT_Enabling Distorted Cameras and Secondary Rays in Gaussian Splatting.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3DGUT_Enabling Distorted Cameras and Secondary Rays in Gaussian Splatting.pdf",
+ "title": "3DGUT: Enabling Distorted Cameras and Secondary Rays in Gaussian Splatting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 5.4
+ },
+ "one_line": "用无迹变换替代EWA线性化，支持畸变相机与二次光线，但速度代价大且证据不足",
+ "innovations": [
+  "不再对非线性投影函数做一阶泰勒近似（EWA splatting），而是用 2N+1=7 个 sigma 点近似 3D 高斯本身：每个 sigma 点可被任意投影 g(·) 精确投影，再由加权样本均值与协方差重估 2D 圆锥，从而免于为每种相机模型推导 Jacobian，且天然支持鱼眼与逐点不同外参的滚动快门",
+  "把粒子响应从 2D 圆锥求值改为 3D 沿射线的最大响应点求值：τ_max = argmax_τ ρ(o+τd) 有闭式解 (µ−o)^T Σ⁻¹d / (d^T Σ⁻¹d)，避免梯度穿过（近似的）投影函数，从而与 3DGRT 的渲染公式逐项对齐",
+  "用 MLAB k-buffer（k=16）近似 per-ray 的 τ_max 排序：存 k 个最远命中并逐步混合最近命中，使同一套表示既能光栅化又能光线追踪，可在已重建场景内插入反射/折射物体的二次光线，同时保持 200+ FPS"
+ ],
+ "method_framework": "用 7 个 sigma 点近似每个 3D 高斯并逐个用任意非线性投影 g 精确投影，重估出的 2D 圆锥仅作 tile 级加速结构；粒子响应改在 3D 最大响应点闭式求值，配 MLAB k-buffer 排序，与 3DGRT 公式对齐以支持二次光线",
+ "experiment_framework": "MipNeRF360、Tanks&Temples、Scannet++（鱼眼）、Waymo（畸变+滚动快门）；基线 3DGS、StopThePop、3DGRT、EVER、FisheyeGS、ZipNeRF；指标 PSNR/SSIM/LPIPS 加 FPS 与分阶段耗时",
+ "takeaways": [
+  "「近似被变换的分布、而非变换本身」是可复用的建模原则：凡是需要为每种相机/算子手推 Jacobian 的地方，都可考虑 sigma 点/无迹变换这一免导数替代",
+  "用统一的渲染公式把光栅化与光线追踪两种后端对齐，让同一表示按需求在速度与效果间切换，比二选一的方案更具工程韧性",
+  "在畸变数据集上同时报告 N.Gaussians（0.38M vs FisheyeGS 1.07M），说明收益来自表示效率而非单纯堆粒子，是有说服力的归因方式"
+ ],
+ "weaknesses": [
+  "在理想针孔的 MipNeRF360 上 PSNR 与 3DGS 持平（27.26），T&T 上 Ours 23.21 反而低于 3DGS 23.64；正文用 LPIPS 优势把结果概括为 comparable，有选择性表述之嫌，核心收益只在畸变相机数据集上体现",
+  "Ours 单帧 3.77ms 对比 3DGS 2.88ms（sorted 版 4.98ms），速度代价约 30%-70%，但摘要与引言强调保留光栅化效率，未充分量化这一 trade-off",
+  "关键消融全部放补充材料且本文截断；UT 超参 α=1.0、β=2.0、κ=0.0 直接沿用 UKF 默认值，未做敏感性分析；二次光线（反射/折射）只有合成球体与雕像的定性展示，无任何量化指标",
+  "本质是高完成度的图形学渲染工作，与可靠性主线无交集，也未触及医学影像或多模态推理任一落地域"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "纯图形学渲染，与可靠性主线及落地域均无交集",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

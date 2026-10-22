@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Mom Linear Sequence Modeling with Mixture-of-Memories.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mom Linear Sequence Modeling with Mixture-of-Memories.pdf",
+ "title": "Mom: Linear Sequence Modeling with MIXTURE-OF-MEMORIES",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "MoM通过内存混合与路由机制提升线性序列模型记忆能力。",
+ "innovations": [
+  "多内存状态混合架构(Mixture-of-Memories)",
+  "基于top-k的路由网络减少内存干扰",
+  "共享内存机制增强长期依赖捕获",
+  "硬件高效实现保持线性复杂度"
+ ],
+ "method_framework": "MoM采用多个独立内存状态，通过路由网络将输入token定向到特定内存状态，每个内存状态独立更新，最终通过加权混合生成输出，同时引入共享内存捕获长期依赖。",
+ "experiment_framework": "在SlimPajama数据集上训练380M和1.3B参数模型，对比RetNet、GLA、Gated DeltaNet等线性模型和Transformer++，在FDA、SWDE等回忆密集型任务和LongBench长上下文任务上评估。",
+ "takeaways": [
+  "多内存分离机制比单纯扩大单内存容量更有效",
+  "路由网络实现了内存专业化分工",
+  "线性复杂度下显著提升长序列处理能力"
+ ],
+ "weaknesses": [
+  "内存路由机制增加了模型复杂度",
+  "未充分验证在非语言模态的泛化能力",
+  "内存专业化分析仍较初步"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "线性序列建模与可靠性主线无直接交点，仅方法设计有参考价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/DI-PCG_Diffusion-based Efficient Inverse Procedural Content Generation for High-quality 3D.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/DI-PCG_Diffusion-based Efficient Inverse Procedural Content Generation for High-quality 3D.pdf",
+ "title": "DI-PCG Diffusion-based Efficient Inverse Procedural Content Generation for High-quality 3D",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "轻量扩散模型逆向PCG参数，生成特定类别3D资产",
+ "innovations": [
+  "将PCG参数直接作为扩散模型的去噪目标",
+  "轻量级扩散Transformer模型(仅7.6M参数)",
+  "自训练数据生成，无需外部数据收集"
+ ],
+ "method_framework": "DI-PCG使用扩散Transformer模型，将PCG参数作为去噪目标，条件图像通过DINOv2特征提取和交叉注意力控制参数生成，实现高效逆向PCG。",
+ "experiment_framework": "在6个程序生成器(椅子、桌子、花瓶等)上训练，使用ShapeNet和自建数据集评估，对比Shap-E、Michelangelo等基线，使用CD、EMD、F-Score等指标。",
+ "takeaways": [
+  "扩散模型可高效学习PCG参数分布",
+  "轻量级模型适合特定类别3D生成",
+  "参数表示支持便捷的3D编辑"
+ ],
+ "weaknesses": [
+  "仅适用于特定类别的程序生成器",
+  "对复杂纹理和细节的处理仍有局限",
+  "模型泛化能力在真实世界数据上仍需验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "3D生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

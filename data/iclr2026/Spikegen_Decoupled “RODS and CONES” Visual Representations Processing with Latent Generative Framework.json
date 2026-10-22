@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Spikegen_Decoupled “RODS and CONES” Visual Representations Processing with Latent Generative Framework.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Spikegen_Decoupled “RODS and CONES” Visual Representations Processing with Latent Generative Framework.pdf",
+ "title": "SpikeGen: Decoupled Rods and Cones Visual Representations Processing with Latent Generative Framework",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "模仿人眼双通道，用潜空间融合RGB与脉冲相机互补信息",
+ "innovations": [
+  "受视杆/视锥解耦机制启发，把RGB(颜色,类比视锥)与脉冲相机(运动/光强变化,类比视杆)作为两路解耦模态融合处理",
+  "用潜空间生成框架统一处理多类spike-RGB任务，借助潜空间操纵实现模态间协同增强",
+  "针对性弥补脉冲输入的空间稀疏与RGB输入的时间稀疏"
+ ],
+ "method_framework": "把RGB相机与脉冲相机视作对应视锥/视杆的两路互补模态，将解耦后的多模态视觉输入送入潜空间生成框架；在潜空间操纵两路特征以协同增强，从而同时缓解脉冲数据的空间稀疏与RGB的时间稀疏，统一服务于去模糊/帧重建/新视角合成等任务。",
+ "experiment_framework": "在条件图像/视频去模糊、从脉冲流重建稠密帧、高速场景新视角合成等多类spike-RGB任务上评测；对比单模态与既有融合方法，报告潜空间生成框架带来的协同增强效果。",
+ "takeaways": [
+  "RGB与脉冲相机在颜色与运动上天然互补，类似视锥/视杆分工",
+  "潜空间生成操纵能有效融合两路模态、互相填补各自稀疏",
+  "统一框架可覆盖去模糊/稠密帧重建/新视角合成等多任务"
+ ],
+ "weaknesses": [
+  "依赖脉冲相机硬件，数据获取与配对标定成本高，泛化到普通RGB场景受限",
+  "生物类比(视杆/视锥)与网络设计的对应偏启发式，缺少机制层面的严格论证",
+  "评测任务较分散，单任务上相对强专用方法的增益量级需更清晰对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "多模态融合方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/DiffPCI_Large Motion Point Cloud frame Interpolation with Diffusion Model.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/DiffPCI_Large Motion Point Cloud frame Interpolation with Diffusion Model.pdf",
+ "title": "DiffPCI Large Motion Point Cloud frame Interpolation with Diffusion Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "扩散模型应用于点云帧插值，但计算开销大且应用局限",
+ "innovations": [
+  "首次将扩散模型引入点云帧插值领域",
+  "全尺度双分支去噪网络设计",
+  "自适应选择和点融合模块"
+ ],
+ "method_framework": "DiffPCI通过前向扩散过程和反向去噪过程实现点云帧插值，前向过程将真实中间帧逐步转换为噪声帧，反向过程训练去噪器将噪声帧逐步恢复为真实帧，并采用点云插值特定的变分下界作为优化目标。",
+ "experiment_framework": "在KITTI、Argoverse 2和Nuscenes三个自动驾驶数据集上评估，使用CD和EMD作为指标，与PointINet、FastPCI等SOTA方法对比。",
+ "takeaways": [
+  "扩散模型可有效处理点云序列中的大运动插值问题",
+  "全尺度特征融合和双分支运动估计能提升几何表示能力"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，推理步骤较多",
+  "仅限于点云帧插值任务，未探索其他时序点云应用"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "点云帧插值与可靠性主线无交点，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

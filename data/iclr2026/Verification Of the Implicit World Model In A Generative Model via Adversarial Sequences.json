@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Verification Of the Implicit World Model In A Generative Model via Adversarial Sequences.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Verification Of the Implicit World Model In A Generative Model via Adversarial Sequences.pdf",
+ "title": "Verification of the Implicit World Model in a Generative Model via Adversarial Sequences",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "对抗序列暴露国际象棋模型世界模型漏洞，探针可读但非因果",
+ "innovations": [
+  "提出对抗序列生成框架验证生成模型隐式世界模型的健全性(soundness)：对抗者生成合法序列，迫使模型预测出非法下一步",
+  "大规模实证研究：在多种训练配方（随机vs高质量数据、不同规模）下训练大量国际象棋模型，系统评估健全性",
+  "发现棋盘状态探针(board state probes)提取的表示对next token预测没有因果作用——探针可读但模型不真正使用它"
+ ],
+ "method_framework": "以国际象棋为测试域（规则简单但复杂度足够）。方法核心是对抗序列生成：对抗者构造合法的棋局序列，专门设计来诱使目标模型生成非法走法。通过攻击成功率衡量模型隐式世界模型的健全性。系统比较不同训练数据（随机棋局vs高质量棋局）、不同训练配方下的模型健全性差异。另研究棋盘状态探针在训练和攻击中的作用。",
+ "experiment_framework": "测试域：国际象棋。模型：大量不同训练配方和数据规模的序列模型。方法：多种对抗序列生成策略。指标：对抗攻击成功率（衡量健全性）。分析：不同训练选择对健全性的影响、棋盘状态探针的因果作用。",
+ "takeaways": [
+  "所有测试的序列模型都不完全健全——隐式世界模型总有漏洞可被对抗序列利用",
+  "训练数据质量（高质量棋局vs随机棋局）和训练配方对健全性有显著影响",
+  "可线性读出的棋盘状态表示不代表模型真正使用它进行预测——探针的因果作用有限"
+ ],
+ "weaknesses": [
+  "仅在国际象棋单一域验证，更广泛语言模型的世界模型健全性是否适用未展示",
+  "对抗生成方法的覆盖率有限，可能存在未被发现的漏洞",
+  "模型规模较小（chess专用），大规模LLM的世界模型是否类似未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "世界模型验证与可靠性主线交织，但仅限单一域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Scenethesis_A Language and Vision Agentic Framework for 3D Scene Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scenethesis_A Language and Vision Agentic Framework for 3D Scene Generation.pdf",
+ "title": "Scenethesis: A Language and Vision Agentic Framework for 3D Scene Generation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "免训练agent框架生成3D场景，但与主线无关且证据不足。",
+ "innovations": [
+  "指出现有方法过拟合室内数据集、布局多样性差，而LLM布局规划缺视觉落地导致违反物理常识。",
+  "免训练地耦合LLM场景规划与视觉引导的布局精炼。",
+  "新颖优化阶段强制位姿对齐与物理合理性，并设judge校验空间连贯性、必要时触发定向修复。"
+ ],
+ "method_framework": "给定文本prompt：LLM先出粗布局→视觉模块精炼布局并提取对象间关系结构→优化阶段做位姿对齐与物理合理性约束→judge校验空间连贯，不通过则定向修复；全程免训练、多agent协作。",
+ "experiment_framework": "室内与室外prompt；对比SOTA 3D场景生成/布局方法；指标为场景真实感、关系丰富度、物理合理性，重点报告碰撞与稳定性失败率下降；面向虚拟内容/仿真/具身AI。",
+ "takeaways": [
+  "LLM语义规划+视觉落地+物理约束+judge修复的闭环，可生成关系丰富且物理合理的3D交互场景。",
+  "免训练即可改善OOD布局（室外、小对象支撑关系）的泛化。"
+ ],
+ "weaknesses": [
+  "属3D场景生成方向，与可靠性/医学影像/多模态推理主线无关。",
+  "多阶段agent流水线的延迟/成本与错误累积需权衡。",
+  "前9页主要讲设计动机，具体碰撞率/合理性指标需后续表格确认。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "3D场景生成与可靠性主线无关，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

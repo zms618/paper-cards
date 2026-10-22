@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/InfoSAM_Fine-Tuning the Segment Anything Model from An Information-Theoretic Perspective.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/InfoSAM_Fine-Tuning the Segment Anything Model from An Information-Theoretic Perspective.pdf",
+ "title": "InfoSAM: Fine-Tuning the Segment Anything Model from An Information-Theoretic Perspective",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "互信息目标微调SAM，压缩关系知识并蒸馏，分割精度提升有限。",
+ "innovations": [
+  "将 SAM 的 PEFT 知识迁移形式化为互信息目标，弥补既有 PEFT 忽视跨模块关系信息的不足。",
+  "目标一：压缩从预训练 SAM 提取的领域不变关系，尽可能排除伪不变信息。",
+  "目标二：最大化教师(预训练 SAM)与学生(微调模型)所学关系知识之间的互信息，构建鲁棒蒸馏框架。"
+ ],
+ "method_framework": "把预训练 SAM 编码的跨模块‘关系信息’作为蒸馏对象；一个 MI 目标压缩并纯化领域不变关系、剔除伪不变成分，另一个 MI 目标对齐师生关系表征；仅训练少量适配器即可迁移该关系知识。",
+ "experiment_framework": "在多个领域分割基准上评测 SAM 家族；基线为既有 SAM 的 PEFT 与传统蒸馏方法；指标为各域分割精度，检验在专用/真实任务上的适配性。",
+ "takeaways": [
+  "保留并蒸馏预训练 SAM 的领域不变关系，比逐模块调参更能在专用域泛化。",
+  "显式剔除伪不变信息有助于避免微调损害通用零先验。"
+ ],
+ "weaknesses": [
+  "关系信息的提取与 MI 估计依赖近似，估计误差对最终微调的影响未充分分析。",
+  "主要为视觉分割 PEFT，未直接涉及不确定性/校准等可靠性主线核心要素。",
+  "若专用域与预训练域差异极大，‘领域不变关系’的可迁移性边界未界定。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

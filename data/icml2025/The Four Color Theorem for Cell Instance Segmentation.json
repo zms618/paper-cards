@@ -1,0 +1,37 @@
+{
+ "title": "The Four Color Theorem for Cell Instance Segmentation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "四色编码简化细胞分割，但未解决医学影像可靠性核心问题",
+ "innovations": [
+  "提出四色编码方案：细胞为国家、组织为海洋，保证相邻实例被赋予不同标签，避免接触细胞粘连",
+  "将实例分割重述为仅四类的约束语义分割，大幅简化实例区分流程，规避检测法不适应长细胞、轮廓法依赖阈值、距离法需后处理等痛点",
+  "针对四色编码非唯一性导致的训练不稳定，设计渐近训练策略与编码变换方法"
+ ],
+ "method_framework": "把组织切片视为地图：细胞是国家、背景组织是海洋；用四色定理确保任意相邻国家颜色不同，网络只需预测四个颜色类别；通过约束语义分割+四色解码即可分离相邻细胞；用渐近训练逐步逼近稳定编码以解决颜色指派非唯一问题。",
+ "experiment_framework": "在多种显微成像模式(病理、荧光等)的细胞实例分割数据集上评测；对比检测式、轮廓预测、距离映射三类主流框架；指标为实例分割精度，报告达到 SOTA。",
+ "takeaways": [
+  "四色编码把相邻细胞区分问题转化为简单的四类语义分割，兼顾性能与效率",
+  "渐近训练策略有效缓解了四色指派非唯一带来的训练不稳定",
+  "在多种显微模式下均取得 SOTA，说明该重述方式的普适性"
+ ],
+ "weaknesses": [
+  "属分割方法创新，未直接针对医学影像中的鲁棒性/泛化/可信等可靠性主线",
+  "四色解码对重度重叠或三维堆叠细胞的边界恢复能力在前9页证据有限",
+  "临床级泛化(跨染色/跨设备)未做系统验证"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/The Four Color Theorem for Cell Instance Segmentation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/The Four Color Theorem for Cell Instance Segmentation.pdf",
+ "raw_overall": 6.63,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

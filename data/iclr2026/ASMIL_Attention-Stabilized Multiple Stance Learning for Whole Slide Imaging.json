@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/ASMIL_Attention-Stabilized Multiple Stance Learning for Whole Slide Imaging.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/ASMIL_Attention-Stabilized Multiple Stance Learning for Whole Slide Imaging.pdf",
+ "title": "ASMIL: ATTENTION-STABILIZED Multiple Stance Learning for Whole Slide Imaging",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "解决WSI注意力不稳定问题，但方法组合常规且扩展性存疑",
+ "innovations": [
+  "首次识别并系统分析注意力不稳定问题",
+  "引入锚定模型稳定注意力分布",
+  "用归一化sigmoid函数替代softmax缓解注意力过度集中",
+  "设计token随机丢弃策略减轻过拟合"
+ ],
+ "method_framework": "ASMIL框架结合锚定模型(EMA更新)、归一化sigmoid函数和token随机丢弃，通过KL散度对齐在线模型与锚定模型的注意力分布，同时保持分类性能。",
+ "experiment_framework": "在CAMELYON-16/17和BRACS三个WSI数据集上评估，与ABMIL、TransMIL等基线比较，使用F1分数和AUC作为指标。",
+ "takeaways": [
+  "注意力稳定性对WSI分析至关重要",
+  "归一化sigmoid函数能有效缓解softmax的过度集中问题",
+  "锚定模型可作为稳定注意力的有效机制"
+ ],
+ "weaknesses": [
+  "方法组件较多，增加了实现复杂度",
+  "token随机丢弃策略可能丢失部分有用信息",
+  "未充分讨论方法在不同规模WSI上的扩展性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "解决医学影像注意力稳定性问题，符合可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

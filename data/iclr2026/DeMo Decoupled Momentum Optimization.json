@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/DeMo Decoupled Momentum Optimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/DeMo Decoupled Momentum Optimization.pdf",
+ "title": "DeMo: Decoupled Momentum Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "DeMo解耦动量更新与压缩，减少分布式训练通信开销",
+ "innovations": [
+  "将动量项作为可压缩的梯度替代品",
+  "利用动量缓冲区作为内置误差反馈机制",
+  "块状变换和top-k稀疏化保持精度"
+ ],
+ "method_framework": "解耦本地动量更新，应用DCT变换和top-k稀疏化，通过动量减法作为误差反馈，减少通信量达两个数量级",
+ "experiment_framework": "OLMo-300M/1B模型在Dolma v1.5语料上预训练，与AdamW-DDP、Muon-DDP、DiLoCo和PowerSGD对比，评估训练损失和零样本下游任务准确率",
+ "takeaways": [
+  "动量减法机制确保每次迭代传递新信息",
+  "DCT变换比随机投影和恒等映射更有效且计算效率高"
+ ],
+ "weaknesses": [
+  "未探索不同网络拓扑结构下的性能",
+  "理论分析假设较强，实际应用可能有额外限制"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "分布式训练优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

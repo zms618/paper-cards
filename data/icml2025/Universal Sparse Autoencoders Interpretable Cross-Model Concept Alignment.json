@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Universal Sparse Autoencoders Interpretable Cross-Model Concept Alignment.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Universal Sparse Autoencoders Interpretable Cross-Model Concept Alignment.pdf",
+ "title": "Universal Sparse Autoencoders: Interpretable Cross-Model Concept Alignment",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "跨模型共享SAE字典，但单模型特异性与下游效果证据不足",
+ "innovations": [
+  "区别于单个模型内的概念发现，USAEs跨多个不同DNN同时训练并共享对齐的可解释概念字典",
+  "字典被约束为捕捉跨任务/架构/数据集的共同变化因素(通用概念)",
+  "提出配套应用Coordinated Activation Maximization：优化多模型输入激活同一概念，揭示不同模型如何编码同一概念"
+ ],
+ "method_framework": "每个模型配一个UAE编码器把其激活映射到共享概念空间；通过在多模型激活上联合训练并施加共享字典约束，使学出的稀疏字典同时对多个模型可解释；据此对齐跨模型概念并做协同激活最大化可视化。",
+ "experiment_framework": "在多个预训练视觉模型上评测；先定性分析发现的通用概念(从低层颜色纹理到高层部件/结构)，再做定量评估；指标为概念的语义一致性与重要性。",
+ "takeaways": [
+  "不同视觉模型确实共享可被显式对齐的通用概念",
+  "共享字典式SAE可跨模型发现可解释概念，而不仅限于单模型",
+  "协同激活最大化可直观对比不同模型对同一概念的编码方式"
+ ],
+ "weaknesses": [
+  "共享字典是否会牺牲单模型特异性概念来换取对齐，权衡未充分分析",
+  "定性可视化偏主观，定量评估与下游干预/控制效果证据有限",
+  "实验限于视觉模型，对LLM激活的跨模型对齐未验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

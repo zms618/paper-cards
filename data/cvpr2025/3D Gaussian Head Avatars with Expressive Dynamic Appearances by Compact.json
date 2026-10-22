@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/3D Gaussian Head Avatars with Expressive Dynamic Appearances by Compact.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3D Gaussian Head Avatars with Expressive Dynamic Appearances by Compact.pdf",
+ "title": "3D Gaussian Head Avatars with Expressive Dynamic Appearances by Compact Tensorial Representations",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 3.0,
+  "overall": 4.7
+ },
+ "one_line": "压缩3DGS头部avatar纹理，但实验矛盾且泛化提升未隔离",
+ "innovations": [
+  "用 canonical 空间的 triplane 替代每 splat 48 维球谐系数：先由 vc = Rc·Rd^-1·vd 把形变空间的视线方向变换回规范空间，再与三平面双线性插值得到的拼接特征一起过两层MLP解码RGB；并按正视信息量给 Txy 更高维度32、Txz/Tyz 仅16维以压存储",
+  "给每个 FLAME blendshape 存一条轻量一维特征线而非二维/三维张量，按表情系数 β 线性插值；下颌的非线性四元数旋转用最远点采样取若干旋转基，并以四元数内积距离做反距离加权插值，与线性部分统一进同一套表示",
+  "自适应截断 opacity 惩罚：按三角形位移 |t| 与阈值 τ 判定静态三角形，只对静态区 splat 的 Δα 施惩罚迫其趋于0，显式解耦静态外观与动态细节"
+ ],
+ "method_framework": "Gaussian splat 绑定到 FLAME mesh 三角形局部坐标系随网格运动；规范表情外观存 triplane（小MLP解码RGB），动态细节存每条blendshape的一维特征线（插值后解码为 opacity offset 叠加到 canonical opacity），联合图像 L1+D-SSIM、位置/尺度几何损失与上述 opacity 惩罚训练。",
+ "experiment_framework": "Nersemble 9人×11段多视角视频；3个任务（新视角合成/自驱动重现/跨身份驱动）对比 GA/GHA/GBS；指标 PSNR/SSIM/LPIPS 并附存储与FPS；消融在单一对象 #306 上做4种组件组合。",
+ "takeaways": [
+  "把「紧凑即正则」做成显式动机：参数越少越不易过拟合训练表情，使存储压缩同时被论证为提升新表情泛化的手段，这套论证可迁移到其他显式表示压缩工作",
+  "类均衡重采样针对「大幅表情样本天然稀少」的分布偏斜：以 FLAME 顶点位移加权距离做相似度、谱聚类成16类后类内均匀采样，是轻量且可迁移的训练配方"
+ ],
+ "weaknesses": [
+  "消融表自相矛盾：新视角合成任务上完整模型 PSNR 35.1644 / LPIPS 0.02605 反而不如去掉某组件的配置（35.5509、35.3876、35.2652，LPIPS 0.02497），完整模型仅在自驱动重现任务上取胜，论文未解释该反转",
+  "主实验表未说明是否为9名对象的平均值，且全程无多次运行方差/显著性检验；消融只在单一对象 #306 上进行，难以支撑「改善新表情泛化」这一主张",
+  "泛化提升未被隔离：收益究竟来自「更紧凑的张量表示」还是来自 opacity 惩罚与重采样这两个训练技巧，文中缺少把三者分开的对照实验",
+  "τ 阈值、眼部顶点权重 w=2、λop=1 等均为经验取值且无敏感性实验；相对 GA 的优势主要在新视角 PSNR(+1.5) 与存储(10M vs 21M/2GB)，自驱动重现 PSNR 仅高约0.8，SSIM 略低于 GBS"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "纯3DGS压缩与渲染，与可靠性主线完全无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

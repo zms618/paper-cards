@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DISCO_learning to DISCover an evolution Operator for multi-physics-agnostic prediction.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DISCO_learning to DISCover an evolution Operator for multi-physics-agnostic prediction.pdf",
+ "title": "DISCO: learning to DISCover an evolution Operator for multi-physics-agnostic prediction",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "Transformer超网络生成小算子网络参数，实现多物理PDE预测",
+ "innovations": [
+  "首次将Transformer超网络与神经PDE求解器结合，由超网络从上下文帧生成低维算子网络参数，解耦动力学估计与状态预测",
+  "算子网络采用U-Net卷积结构保持空间平移等变性，参数空间仅384维形成信息瓶颈，迫使模型聚焦核心动力学而非初始条件",
+  "可处理1D/2D/3D多物理类型、高达512x512分辨率的PDE预测，远超同类方法的2D 128x128限制"
+ ],
+ "method_framework": "DISCO由两部分组成：(1)超网络ψα处理T帧上下文轨迹，输出算子网络参数θ；(2)小型算子网络fθ基于θ，通过时间积分从当前状态ut预测下一帧ut+1=ut+∫fθ(us)ds。算子网络为卷积U-Net结构，天然近似空间导数并保持平移等变性，避免了Transformer需要学习编解码器的重构误差。",
+ "experiment_framework": "在PDEBench和The Well两个数据集上评测，覆盖1D(Burgers)、2D(浅水波、反应扩散、Navier-Stokes、Gray-Scott等)、3D(MHD、Rayleigh-Taylor、超新星)共14类PDE；基线包括标准Transformer(MPP)、神经算子、元学习方法；指标为单步预测误差和多步rollout误差；测试不同初始条件和PDE系数的泛化能力。",
+ "takeaways": [
+  "在PDEBench上达到SOTA单步预测性能，且所需训练epoch远少于Transformer基线",
+  "多步rollout精度优于标准Transformer和元学习框架，因算子结构保持了连续时间演化特性",
+  "预训练后在下游任务微调效果好，对未见初始条件泛化能力强"
+ ],
+ "weaknesses": [
+  "核心思想（超网络生成小网络参数）在元学习领域已有类似工作，PDE场景的新颖性需进一步论证",
+  "仅在固定均匀网格数据上验证，未讨论非结构化网格或不规则域的适应性",
+  "对PDE阶数的扩展（高阶时间导数）依赖状态增广，实际效果未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

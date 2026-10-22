@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Sonicmoe_Accelerating MOE with Io Tile-Aware Optimizations.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sonicmoe_Accelerating MOE with Io Tile-Aware Optimizations.pdf",
+ "title": "SonicMoE: Accelerating MoE with IO and Tile-Aware Optimizations",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "硬件特定MoE工程优化，缺乏模型质量验证与泛化性",
+ "innovations": [
+  "提出最小化反向激活缓存的省显存前/反向计算算法，降低细粒度MoE的activation memory footprint",
+  "设计将内存IO与计算重叠的GPU kernel，对各类MoE架构普遍加速",
+  "提出token rounding方法，减小Grouped GEMM中padding导致的无效计算浪费"
+ ],
+ "method_framework": "针对现代MoE走向高专家粒度与高稀疏带来的激活显存大、算术强度低、grouped GEMM tile量化padding浪费三大问题：用激活重计算减少缓存，用IO/compute overlap算子提升硬件利用率，用tile-aware的token rounding重排专家分配以对齐tile、减少padding空算。",
+ "experiment_framework": "在Hopper(H100)与Blackwell GPU上，以ScatterMoE BF16 kernel、DeepGEMM为基线，评测细粒度7B MoE的激活显存、前向/反向吞吐、端到端训练tokens/day(lm-engine/FSDP-2)；并在高稀疏设置下对比vanilla top-K路由。",
+ "takeaways": [
+  "激活显存降低约45%，Hopper上对细粒度7B MoE取得1.86x计算吞吐提升",
+  "64块H100达213B tokens/天，可对标ScatterMoE在96块H100上的225B tokens/天",
+  "Blackwell上前/反向相对优化后的DeepGEMM再提速28.7%/22.1%；高稀疏下token rounding额外1.16x且下游性能基本持平"
+ ],
+ "weaknesses": [
+  "属系统/算子工程优化，与可靠性、医学影像、多模态推理主线无关",
+  "收益高度依赖特定硬件(Hopper/Blackwell)与grouped GEMM栈，泛化到其他设备/软件栈证据有限",
+  "性能提升主要为工程指标，未系统报告对下游模型最终质量/收敛的长期影响，部分结论依赖其开源代码栈"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯硬件工程优化，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

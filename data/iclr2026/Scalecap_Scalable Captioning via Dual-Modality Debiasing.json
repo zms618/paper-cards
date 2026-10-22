@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scalecap_Scalable Captioning via Dual-Modality Debiasing.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scalecap_Scalable Captioning via Dual-Modality Debiasing.pdf",
+ "title": "ScaleCap: Scalable Image Captioning via Dual-Modality Debiasing",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "双模态去偏打标缓解LVLM幻觉，但成本高且缺乏高危域验证。",
+ "innovations": [
+  "诊断高质量打标的两类固有偏置：多模态偏置(对不同元素描述详略不均)与语言偏置(幻觉出不存在的物体)，并提出双模态去偏思路。",
+  "提出启发式问答(heuristic QA)：基于图像生成内容相关问题并作答，逐步向caption注入缺失视觉细节。",
+  "提出对比式句子打分(contrastive sentence rating)：用句级离线对比解码识别并剔除由语言偏置引发的幻觉句，随推理预算增加而更均衡准确。"
+ ],
+ "method_framework": "迭代式打标：每轮生成内容特定问题并回答以补充视觉信息(对抗多模态偏置)；同时对候选句做句级对比解码打分，剔除受语言先验主导、缺乏视觉支撑的句子(对抗幻觉)；推理预算越大则问题越多、caption越丰富均衡。",
+ "experiment_framework": "用ScaleCap标注450K图像做LVLM预训练，在11个常用基准上验证一致性增益；另用VQA中以caption替代图像、以及由caption重建图像两任务检验caption的丰富度与语义覆盖/保真。",
+ "takeaways": [
+  "启发式QA+对比式句子打分可在开源LVLM上产出更准确、均衡、信息丰富的caption，有效抑制幻觉。",
+  "用ScaleCap标注的数据做预训练能在11个多模态基准上一致提升，说明打标去偏可规模化落地。"
+ ],
+ "weaknesses": [
+  "去偏依赖启发式问题生成与对比解码的额外推理成本，大规模标注的吞吐/成本需权衡。",
+  "评测多为通用图像caption/VQA，未在医学影像等高危域验证幻觉抑制的有效性与安全性。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "双模态去偏缓解LVLM幻觉，但未触及医学影像等高危域可靠性验证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

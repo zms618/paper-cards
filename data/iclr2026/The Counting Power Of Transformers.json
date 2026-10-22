@@ -1,0 +1,41 @@
+{
+ "title": "The Counting Power of Transformers",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 6.2
+ },
+ "one_line": "证明Transformer能表达全部半代数计数性质，但实现代价与实际应用不明确",
+ "innovations": [
+  "指出既有结果只证明了 Transformer 对(半)线性计数性质的表达力，并首次证明 Transformer 能表达高度非线性的全部半代数计数性质",
+  "给出一个自然子类的 softmax Transformer，恰好完全刻画半代数计数性质",
+  "借与希尔伯特第十问题的联系，推出对极简 Transformer（无位置编码 NoPE、无 masking）分析的新不可判定性结果，并实验验证此类计数性质可被训练学到"
+ ],
+ "method_framework": "把输入中各 token 的计数向量视为实数，计数性质即该向量上的谓词；用 Transformer 的注意力/FFN 代数运算能力，证明其可计算任意多元多项式的布尔组合（半代数集）；再通过与丢番图方程(希尔伯特第十问题)的归约得到不可判定性。",
+ "experiment_framework": "以形式语言/可计算性理论证明为主；辅以小规模训练实验，验证具有半代数计数性质的任务确能被 Transformer 学会，呼应理论表达力。",
+ "takeaways": [
+  "Transformer 的计数表达力不止线性，而是全部半代数性质，比 C-RASP 刻画的线性类大得多",
+  "存在一个自然 softmax Transformer 子类恰好对应半代数计数性质，给出精确边界",
+  "即便无位置编码、无 masking 的极简 Transformer，其行为分析也是不可判定的"
+ ],
+ "weaknesses": [
+  "表达力结果是存在性/构造性的，未讨论所需的隐层宽度/层数随多项式次数与维数的膨胀程度，可实现性代价不明确",
+  "‘计数性质’是经高度抽象的形式语言对象，与真实 NLP 任务的对应为类比，实验仅做最小可学习性验证",
+  "relevance 给 4.5：属 Transformer 表达力/可计算性理论，与可靠性(验证/不确定性/幻觉)×落地域(医学影像/多模态推理)主线无关，按规则给低分"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/The Counting Power Of Transformers.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The Counting Power Of Transformers.pdf",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.5,
+ "relevance_reason": "纯理论工作，与可靠性主线和落地域无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

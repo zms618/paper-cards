@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unifying Stable Optimization and Reference Regularization In RLHF.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unifying Stable Optimization and Reference Regularization In RLHF.pdf",
+ "title": "Unifying Stable Optimization and Reference Regularization in RLHF",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "统一RLHF中冲突的双重信任域，简化为带权SFT损失。",
+ "innovations": [
+  "揭示现有RLHF两套正则的隐式冲突：独立惩罚+裁剪迫使策略同时靠近π0与πt，系统性排除了虽高回报但落在两信任域交集之外的策略",
+  "提出统一正则框架，显式权衡'防reward hacking'与'稳定策略更新'两个目标，刻画reward-KL Pareto前沿",
+  "把原则性对齐目标化简为带权重的监督微调损失，在提升对齐性能的同时降低实现复杂度"
+ ],
+ "method_framework": "PPO-based RLHF用KL惩罚到π0防reward hacking、用ratio clipping到πt保稳定，但二者沿对齐过程逐渐冲突，构成过于受限的优化。本文提出统一(dual-KL)正则：不再把两套约束独立施加，而是显式平衡，使学习策略既能探索超出参考支撑(π0)的行为又保持稳定更新；该目标经推导得到一个带权重的SFT损失，trade-off更优。",
+ "experiment_framework": "在多个对齐基准上对比PPO-based RLHF与在线偏好学习(DPO类)方法，指标为对齐奖励/胜率与训练稳定性；报告一致优于RLHF与在线偏好学习，对齐性能与稳定性同时提升。",
+ "takeaways": [
+  "KL-to-π0与clipping-to-πt的独立正则会随训练冲突，把可行策略空间压缩到两信任域交集，损害对齐",
+  "统一dual-KL显式平衡防reward hacking与稳定更新，可探索超越参考支撑的高回报策略",
+  "统一目标退化为带权SFT损失，既更好对齐又简化实现"
+ ],
+ "weaknesses": [
+  "落地域为文本LLM对齐，非多模态推理/医学影像，reward hacking虽属可信AI主线但落地域偏离",
+  "统一目标的权重选择如何随训练自适应、与reward model不确定性的耦合正文前9页未充分刻画",
+  "结论基于在线RLHF设定，对DPO等离线偏好学习的适用性仅作为对比，统一框架在离线范式下的延伸未展开"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "reward hacking属可信AI主线但落地域偏离多模态/医学影像",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

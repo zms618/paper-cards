@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Multi-Scale Local Speculative Decoding for Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Multi-Scale Local Speculative Decoding for Generation.pdf",
+ "title": "Multi-Scale Local Speculative Decoding for Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "多尺度推测解码加速图像生成，但高分辨率质量下降且架构依赖性强",
+ "innovations": [
+  "多尺度草稿设计：低分辨率模型生成候选图像标记",
+  "局部验证机制：基于空间邻域的拒绝和重采样",
+  "与并行解码集成：在草稿和重采样阶段减少顺序步骤"
+ ],
+ "method_framework": "结合多分辨率草稿与空间感知验证，使用低分辨率草稿模型生成候选标记，高分辨率目标模型并行验证，并通过局部拒绝和重采样机制高效修正错误。",
+ "experiment_framework": "MS-COCO 5k验证集，对比ZipAR、EAGLE-2和LANTERN基线，使用GenEval、DPG-Bench、FID/HPSv2评估加速、语义对齐和感知质量。",
+ "takeaways": [
+  "利用图像的多尺度特性加速自回归生成",
+  "局部重采样机制比光栅扫描更高效",
+  "并行解码与推测解码结合可显著降低延迟"
+ ],
+ "weaknesses": [
+  "高分辨率下指标略有下降",
+  "方法依赖于特定的模型架构和标记空间",
+  "局部验证的参数选择可能影响性能"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "加速生成技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

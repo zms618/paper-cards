@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Improving Value Estimation Critically Enhances Vanilla Policy Gradient.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Improving Value Estimation Critically Enhances Vanilla Policy Gradient.pdf",
+ "title": "Improving Value Estimation Critically Enhances Vanilla Policy Gradient",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 6.5,
+  "overall": 6
+ },
+ "one_line": "质疑PPO优势来源，证明价值更新步数提升才是关键",
+ "innovations": [
+  "重新解释PPO优于VPG的原因：并非信任域约束，而是更多价值更新步带来的价值估计精度提升",
+  "证明在VPG中仅增加每迭代价值更新步数，即可在标准连续控制基准上达到或超过PPO",
+  "该简单改动对超参选择显著更鲁棒，简化了深度策略梯度算法的使用"
+ ],
+ "method_framework": "在actor-critic框架中保持VPG的策略更新，仅增加critic每迭代的梯度更新次数以减小价值函数估计偏差；通过对比实验分离信任域与价值估计精度两个因素的作用。",
+ "experiment_framework": "在标准连续控制基准环境上对比VPG、加价值更新的VPG、TRPO与PPO；考察性能与超参（学习率、更新步数）敏感性。",
+ "takeaways": [
+  "PPO的经验优势主要来自其较多的价值更新步所带来的准确价值估计，而非信任域剪裁",
+  "增加VPG的critic更新步数即可在多数连续控制任务上追平或超过PPO",
+  "改良后的VPG对超参更鲁棒，可能催生更简单易用的深度RL算法"
+ ],
+ "weaknesses": [
+  "结论基于连续控制基准，对离散控制/大模型RLHF等场景的适用性未验证",
+  "增加critic更新步数会提高每迭代开销，样本与计算效率的权衡未充分量化",
+  "论证以经验对比为主，缺乏对价值估计偏差如何具体影响策略梯度的严格理论分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

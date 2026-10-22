@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/6DoF_Ultra-Precision 6DoF Pose Estimation Using 2-D Interpolated Discrete Fourier Transform.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/6DoF_Ultra-Precision 6DoF Pose Estimation Using 2-D Interpolated Discrete Fourier Transform.pdf",
+ "title": "Ultra-Precision 6DoF Pose Estimation Using 2-D Interpolated Discrete Fourier Transform",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "用插值DFT解析反解6DoF，但面外精度与实验完整性存疑",
+ "innovations": [
+  "在准正交投影假设下解析导出「图案频率/相位 → 6DoF 位姿」的闭式链：面内转角 tanα=(ωx2−ωx1)/(ωy1+ωy2)；由 ω 组合解出 η=4πtz/f（η 来自四次方程 ρ1η⁴−ρ2η²+1=0）得 β、γ；再由 φ1、φ2 的线性组合给出 tx、ty，tz=ηf/4π，正交与准正交成像共用同一套公式",
+  "2D-IpDFT 参数提取：对加最高旁瓣衰减窗的图像做 2D DFT，在谱峰邻域取 k−1/k/k+1（l 维同理）构线性方程组 Ad=b，令 det(A)=0 解出归一化频率（式 9），相位取 angle(G(λ,μ)/W(0,0))；同时显式计入正负频率分量以消除频谱泄露带来的偏置",
+  "把普通蚀刻棋盘格（含高次谐波）建模成两个非共线基频余弦的叠加（式 2），从而不必使用昂贵的正弦光栅，用一块蚀刻棋盘 + 普通工业相机即可达纳米级位移、微弧度级转角"
+ ],
+ "method_framework": "固定相机对准贴于六轴纳米平台的周期图案 → 对单帧加窗后做 2D DFT，在谱峰邻域解 det(A)=0 的插值方程得到归一化频率 λ、μ 与相位 φ1、φ2 → 代入闭式依次反解 α、β、γ 与 tx、ty、tz（η 先由 ω 组合解四次方程取根）→ 实时输出位姿，可再接 P 控制器闭环驱动平台。",
+ "experiment_framework": "仿真：640×480、9.9µm 像素、f=28mm、SNR 10–50dB、1000 次独立试验、图像内约 10 个周期；实测：Balluff mvBlueCOUGAR 工业相机 + PI P-562.6CD 六轴纳米平台（1nm 位移 / 0.1µrad 角分辨率作真值），棋盘格节距 150/450/750µm；基线为 QSE、线性回归 [2]、零填充 4×/8×；指标为各自由度 RMSE（nm 与 µrad）。",
+ "takeaways": [
+  "频谱泄露才是频域法的精度天花板而非噪声：QSE、线性回归与零填充的误差几乎不随 SNR 变化，只有 IpDFT 随 SNR 上升持续下降，说明应先治偏差再谈降噪",
+  "面内与面外精度差一到两个量级（tx/ty 二十至三十几 nm，tz 单轴 244nm、螺旋 1664nm），超精密测量方案必须把 tz 单独评估，不能被「纳米级平移」的统称带过",
+  "defocus 工作区间值得直接标定出来当部署规范：本文在 ±1.5mm 全散焦范围内 etxy<500nm、±0.4mm 内约 10nm，这条曲线比继续改算法更实用"
+ ],
+ "weaknesses": [
+  "面外自由度精度远低于宣传口径：单轴运动 tz 的 RMSE 达 244nm、螺旋轨迹 1664nm，比 tx/ty 的 21/34nm 高 1–2 个数量级，而摘要与两条 contribution 只用「nanometer-level translation」笼统带过，未区分面内面外",
+  "所有实验表只报单次轨迹的 RMSE，未说明重复试验次数与方差；Table 2/3/4/7 中有若干行仅填了 3–4 个自由度（零填充 4×、8× 缺 Rz/Ry/Rx），缺值是失败、未收敛还是干脆没测，正文没有交代；表 6 的三列表头（32、10.7、6.4 periods）与正文叙述的 150/450/750µm 节距对应关系也容易误读",
+  "闭环控制实验以 PI 纳米平台自身的开环指令位姿为真值，而平台开环存在自身定位误差，这会系统性低估视觉估计的真实误差；另外 10/20/30ms 三档曝光下本文误差为 38/37/35nm、其余方法同样几乎不变，「曝光时间影响」这一消融几乎没有区分度"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "纯视觉定位技术，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

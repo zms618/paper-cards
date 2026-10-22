@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/GMAIL_Generative Modality Alignment for generated Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/GMAIL_Generative Modality Alignment for generated Learning.pdf",
+ "title": "GMAIL: Generative Modality Alignment for generated Image Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.75
+ },
+ "one_line": "将生成图视为独立模态，在隐空间对齐后训练VLM缓解模式崩塌",
+ "innovations": [
+  "明确将生成图像与真实图像视为两种不同模态，而非在像素空间 indiscriminately 混用",
+  "在共享隐空间用跨模态对齐损失对齐生成与真实两域",
+  "先在生成图上对齐微调，再用对齐后模型训练各类视觉语言模型，避免模式崩塌"
+ ],
+ "method_framework": "直接把生成图当真实图训练会因模态错位导致模式崩塌。GMAIL先仅在生成图像上用跨模态对齐损失微调，把生成/真实两模态在隐空间对齐；再用该对齐模型作为基础，进一步训练视觉语言模型，从而安全地利用生成数据增强。",
+ "experiment_framework": "在视觉语言模型训练中，对比直接混入生成图与GMAIL对齐后再训练，报告下游视觉任务精度与对真实域的泛化，验证模态对齐缓解模式崩塌的效果。",
+ "takeaways": [
+  "把生成图当独立模态并在隐空间对齐，可避免real-synthetic错位导致的模式崩塌",
+  "先对齐再训练VLM能更安全地利用生成数据增强",
+  "该框架可迁移到多种视觉语言模型"
+ ],
+ "weaknesses": [
+  "模态对齐依赖配对的生成-真实数据与对齐损失设计",
+  "与医学影像等具体落地域无直接关联",
+  "前9页内对极端生成分布偏移下对齐失效的分析有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "title": "UniLIP: Adapting CLIP for Unified Multimodal Understanding, Generation and Editing",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "CLIP扩展统一多模态，但训练复杂且与可靠性主线无关。",
+ "innovations": [
+  "指出现有 CLIP 系统一方法要么量化 CLIP 特征损失语义、要么冻结 CLIP 用扩散解码导致重建不一致，难以平衡理解与重建。",
+  "提出带自蒸馏的两阶段训练，渐进赋予 CLIP 高保真重建能力同时保留原有理解性能。",
+  "在 MetaQuery 框架上构建双条件架构，联合利用多模态隐状态(丰富上下文)与可学习查询(调用 MLLM 推理力)，增强生成/编辑的推理与一致性。"
+ ],
+ "method_framework": "两阶段训练：先以自蒸馏约束让 CLIP 连续特征具备像素级重建能力而不退化语义；再以扩散 DiT 解码器+双条件(MLLM 隐状态+MetaQuery 可学习查询)做统一生成/编辑，使 CLIP 特征既保持理解语义又支撑高保真重建与指令编辑。",
+ "experiment_framework": "在指令遵循与图像编辑基准(GenEval、WISE、ImgEdit)上，与 BAGEL(7B)、Uniworld-V1(12B)等统一模型对比，报告质量指标与参数效率。",
+ "takeaways": [
+  "CLIP 特征语义强但缺像素细节，直接量化或冻结配扩散解码都会在语义与重建间失衡。",
+  "自蒸馏两阶段训练可在保留 CLIP 理解力的同时补齐重建能力。",
+  "仅 1B/3B 参数即可超过 7B/12B 级统一模型(GenEval 0.90/WISE 0.63/ImgEdit 3.94)。"
+ ],
+ "weaknesses": [
+  "两阶段训练流程复杂，自蒸馏与重建引入的额外训练成本/数据需求未充分透明。",
+  "双条件依赖 MLLM 推理能力，整体仍为大模型且推理开销不小。",
+  "属能力型统一生成模型，与可靠性/不确定性/幻觉抑制主线无关；未涉及医学影像；完整消融未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/UNILIP_Adapting CLIP for Unified Multimodal Understanding, Generation and Editing.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/UNILIP_Adapting CLIP for Unified Multimodal Understanding, Generation and Editing.pdf",
+ "raw_overall": 6.55,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "多模态统一模型，无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "title": "Remotely Detectable Robot Policy Watermarking",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "elevance": 5.5,
+  "evidence": 6.0,
+  "overall": 6.25
+ },
+ "one_line": "远程观测机器人策略水印，彩色噪声注入谱相干检测",
+ "innovations": [
+  "用glimpse sequence形式化远程可检测策略水印问题，刻画物理观测鸿沟带来的同步不确定、未知动力学滤波、行为干扰三大挑战(C1-C3)。",
+  "提出CoNoCo频域方法：在策略固有随机性中注入彩色噪声，用谱相干性检测，并证明其抵消未知系统动力学滤波(Theorem 5.2)且保持边际动作分布不降级。",
+  "在仿真与真实机器人上、以运动捕捉和侧视/俯视视频等困难模态验证鲁棒检测，并对刻意对抗噪声具有稳健性。"
+ ],
+ "method_framework": "策略所有者训练后在动作分布的随机项中注入特定频带的彩色噪声作为水印；远程审计者从视频等外部估计速度信号，用谱相干性在频域计算检测分数；相干性对未知动力学的滤波不变性使得扭矩层注入的水印可在视频观测层被检出，并辅以显式同步处理。",
+ "experiment_framework": "任务：仿真与真实机器人运动/导航；检测模态：运动捕捉、侧视视频、俯视视频；基线为既有水印方法的改造变体；指标为检测率/虚警率，并评估对不同噪声、干扰与刻意对抗噪声的鲁棒性及策略性能是否受损。",
+ "takeaways": [
+  "物理策略水印的核心难点是只能看到动作后果而非动作本身，频域相干性可在不知动力学的前提下保留并检出水印。",
+  "水印被设计为不改变边际动作分布，因此不牺牲机器人任务性能。",
+  "远程可检测性为自主系统的合规审计与事故溯源提供了独立、抗篡改的来源验证手段。"
+ ],
+ "weaknesses": [
+  "与主线落地域(医学影像/多模态推理)无关，属机器人IP与安全，relevance受限。",
+  "谱相干检测依赖足够长、稳态的行为片段，对短时长或强非平稳运动的可检测性在节选页中未充分讨论。",
+  "节选前9页未见完整检测率-虚警率曲线与对抗攻击定量结果，鲁棒性结论的证据在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Remotely Detectable Robot Policy Watermark.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Remotely Detectable Robot Policy Watermark.pdf",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

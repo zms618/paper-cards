@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Arc2Avatar_Generating Expressive 3D Avatars from a Single via.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Arc2Avatar_Generating Expressive 3D Avatars from a Single via.pdf",
+ "title": "Arc2Avatar: Generating Expressive 3D Avatars from a Single Image via ID Guidance",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.0,
+  "overall": 4.8
+ },
+ "one_line": "ArcFace ID引导+掩码3DGS，工程编排单图生成可驱动头像",
+ "innovations": [
+  "ID 引导替代文本引导做蒸馏：把 ArcFace 嵌入 v 补零到 768 维替换 “photo of a id person” 的占位 token 得 cdefault，再与冻结 SD 文本编码器出的视角嵌入 cview=ESD(“type view”) 加权 cd = b·cdefault+(1−b)·cview（b=0.85），使同一身份在 front/side/back 视角下恒定；因为条件本身就是强身份先验，蒸馏时可用极低的扩散引导尺度而不产生 SDS 常见的过饱和配色",
+  "掩码 3DGS + 模板正则保住稠密对应：FLAME 每个顶点挂一个 splat，面部区域全程禁用 densification/pruning/opacity reset（非面部放开以容纳头发），并用 L2（splat 位置→对应模板顶点）+ 拉普拉斯正则（splat 位置拉普拉斯 ≈ 模板顶点拉普拉斯，借 [52]）约束，从而保住 blendshape 可变形性",
+  "两阶段 ISM 蒸馏与表达式修正：先用「仅渲染面部区域的高斯」与「同一批点用可微 mesh 渲染 + FLAME 默认纹理」之间的 L1 拟合出初始化 Ginit，再先跑若干「放大视角、只优化面部 splat」的迭代（直接放大会破坏面部纹理对齐），之后放开全部 splat；表达式阶段用 ISM（DDIM 反演轨迹 + 多步去噪的 pseudo-GT）而非 SDS，500 步修正张嘴等极端表情的缺齿舌问题"
+ ],
+ "method_framework": "LoRA 在 PanoHead 合成图上微调 Arc2Face 得引导模型；FLAME 顶点初始化 3DGS 加掩码，ISM 蒸馏加两项正则",
+ "experiment_framework": "45 位名人各 20 图，单一身份相似度指标；与 ID-to-3D、DreamFace、Magic123、DreamCraft3D 对比",
+ "takeaways": [
+  "在 3DGS 里「按区域禁用 densify/pruning」是保住与参数化模板一一对应的最小改动，可复用到任何需要 splat 与骨骼/形变绑定一致的 3D 角色流程",
+  "用零均值 ID 嵌入（而非文本嵌入）作蒸馏条件能压低扩散引导尺度，这一条可作为 SDS 色彩过饱和问题的通用解"
+ ],
+ "weaknesses": [
+  "主体是既有组件的任务化排列：Arc2Face + LoRA + FLAME + ISM（直接引用 [43]）+ 3DGS 掩码 + 两项正则 + 可选修正步，没有新 3D 表征、没有新蒸馏目标，novelty 集中在「人脸这一具体任务的工程编排」上",
+  "定量评估过薄：45 人×20 图、单一 ISD 指标、无身份相似度方差、无几何定量指标（仅 Fig.5 深度图定性）、无用户研究；正文在 4.2 段首截断，ISD 数值表、对照实现细节、分辨率/视角设置全缺，「SOTA」不可复核",
+  "训练数据完全自建（PanoHead 合成 360° 头像是循环自证），合成-真实域差只靠 r=16、sL=0.45、b=0.85 三个经验值缓解，无对应消融；PanoHead 已知在非正面秃头/长发有伪影，而「curated 10,000 个高质量 ID」的筛选判据未在正文给出"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3D头像生成与可靠性主线无交点，仅为工程编排",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

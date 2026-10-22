@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/SplitFlux_Learning to Decouple Content and Style from a Single.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SplitFlux_Learning to Decouple Content and Style from a Single.pdf",
+ "title": "SplitFlux Learning to Decouple Content and Style from a Single",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "分析Flux结构实现内容风格解耦，但实验规模有限",
+ "innovations": [
+  "Flux模型结构分析发现早期单流块控制内容，后期块控制风格",
+  "Rank-Constrained Adaptation防止内容泄漏到风格块",
+  "Visual-Gated LoRA实现解耦内容到新场景的无缝重嵌入"
+ ],
+ "method_framework": "基于Flux模型分析，通过LoRA微调单流块实现内容-风格解耦，结合秩约束适应性和视觉门控LoRA保持身份特征并支持重嵌入。",
+ "experiment_framework": "使用40张图像数据集，与B-LoRA、UnZipLoRA等方法对比，采用CLIP、DINO和VLM指标评估内容与风格解耦效果。",
+ "takeaways": [
+  "模型结构分析对理解扩散模型功能分区有重要价值",
+  "秩约束和视觉门控机制能有效解决内容泄漏和过拟合问题"
+ ],
+ "weaknesses": [
+  "仅使用40张图像进行实验，数据规模较小",
+  "未充分探讨方法在不同分辨率和复杂场景下的泛化能力"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "内容风格解耦与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

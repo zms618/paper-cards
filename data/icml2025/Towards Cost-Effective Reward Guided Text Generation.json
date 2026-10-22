@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Towards Cost-Effective Reward Guided Text Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Towards Cost-Effective Reward Guided Text Generation.pdf",
+ "title": "Towards Cost-Effective Reward Guided Text Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "FaRMA架构减少奖励模型调用次数，但大模型扩展性存疑。",
+ "innovations": [
+  "提出新的奖励模型架构FaRMA，使用Bradley-Terry损失训练，在每步生成时仅需一次奖励模型调用即可同时为所有候选token生成分数",
+  "理论分析表明此前RGTG技术在推理时偏好次优序列，而FaRMA的设计避免了这一问题",
+  "在摘要、对话生成和细粒度文本生成三类任务上验证FaRMA推理速度显著快于其他RGTG方法，且性能与RLHF相当"
+ ],
+ "method_framework": "FaRMA将奖励模型设计为在单次前向传播中同时输出词表维度上所有候选token的偏好分数，而非逐token调用奖励模型。使用Bradley-Terry损失训练奖励模型使其偏好序列的最优扩展。这样将RGTG的内循环多次RM调用压缩为每步一次调用，同时解决了全序列奖励模型打分部分序列的次优问题。",
+ "experiment_framework": "在Reddit TL;DR摘要、HH-RLHF对话生成和Ultra-Feedback细粒度文本生成三类任务上评估，基线包括πref top-k采样、PPO/DPO RLHF模型、ARGS、CD、PARGS、CARDS等RGTG方法，使用Zephyr-7B基座模型，指标为奖励分数、推理调用次数、生成多样性(Rouge-L两两相似度)。",
+ "takeaways": [
+  "FaRMA相比其他RGTG方法需要更少的奖励模型调用，推理速度显著提升，同时性能与离线RLHF(PPO/DPO)相当",
+  "理论分析揭示了此前RGTG方法因部分序列打分不准而偏好次优序列的问题",
+  "FaRMA在保持生成多样性的同时实现了更高的奖励分数"
+ ],
+ "weaknesses": [
+  "实验仅在7B规模模型上验证，更大规模模型上的扩展性未验证",
+  "奖励模型单次输出全词表分数可能受词表大小限制，对大词表模型的工程可行性未充分讨论",
+  "与最先进RLHF方法的对比实验可能不充分——部分对比仅在特定阈值设置下进行"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

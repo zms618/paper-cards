@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Navigating the MIL Trade-Off Flexible Pooling for Whole Slide Classification.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Navigating the MIL Trade-Off Flexible Pooling for Whole Slide Classification.pdf",
+ "title": "Navigating the MIL Trade-Off: Flexible Pooling for Whole Slide Classification",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "改进池化方法与patch增强提升WSI分类，但创新与证据有限",
+ "innovations": [
+  "Maxsoft pooling方法：前向使用max，后向使用LSE梯度",
+  "PerPatch增强技术：独立对每个patch进行增强",
+  "LSE池化的理论分析：β参数在O(log N)处有相变"
+ ],
+ "method_framework": "基于预训练编码器提取patch特征，使用Maxsoft池化函数聚合，结合PerPatch增强提升鲁棒性",
+ "experiment_framework": "CAMELYON16/17、TCGA-Lung、SICAP-MIL数据集，对比max/mean/LSE/ABMIL等基线，评估slide/patch级AUC/F1/ECE",
+ "takeaways": [
+  "简单池化方法在低数据医学影像任务中优于复杂Transformer",
+  "理论指导的β参数选择平衡泛化与敏感性",
+  "patch级独立增强比slide级增强更有效"
+ ],
+ "weaknesses": [
+  "未探索OOD泛化能力",
+  "计算效率分析不足",
+  "理论假设在实际数据上的验证有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

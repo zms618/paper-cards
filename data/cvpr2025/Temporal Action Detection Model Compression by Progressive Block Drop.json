@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Temporal Action Detection Model Compression by Progressive Block Drop.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Temporal Action Detection Model Compression by Progressive Block Drop.pdf",
+ "title": "Temporal Action Detection Model Compression by Progressive Block Drop",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "渐进式块压缩TAD模型，计算减25%但性能提升机制不明",
+ "innovations": [
+  "从深度而非宽度压缩TAD模型",
+  "渐进式块选择与移除策略",
+  "跨深度对齐技术恢复性能"
+ ],
+ "method_framework": "通过评估器选择最不重要块，移除后使用LoRA和跨深度对齐技术恢复性能，迭代进行直到性能无法恢复",
+ "experiment_framework": "THUMOS14/ActivityNet-1.3数据集，VideoMAE-S/L特征提取器，mAP@tIoU=0.5和平均mAP指标",
+ "takeaways": [
+  "块级压缩比通道剪枝更适合GPU并行计算",
+  "跨深度对齐可有效恢复被移除块的信息"
+ ],
+ "weaknesses": [
+  "未探索与其他压缩方法的组合效果",
+  "未分析不同视频长度下的性能变化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "模型压缩技术不涉及可靠性主线，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

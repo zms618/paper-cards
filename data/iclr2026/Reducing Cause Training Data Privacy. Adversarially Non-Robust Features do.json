@@ -1,0 +1,41 @@
+{
+ "title": "Reducing Information Dependency Does Not Cause Training Data Privacy: Adversarially Non-Robust Features Do",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.6
+ },
+ "one_line": "挑战信息依赖导致隐私泄漏观点，提出反直觉AT-AT防御方法。",
+ "innovations": [
+  "给出三个反直觉结果：抑制MIA的防御并不降低HSIC信息依赖；最大化记忆训练集的模型反而对MIA鲁棒；未见过97%像素的模型仍被灾难性重建。",
+  "提供因果证据表明MIA隐私漏洞来自对抗样本文献中的'非鲁棒特征'(可泛化但不可感知、不稳定)，且现有MIA防御是无意中把模型推向这类特征。",
+  "提出Anti Adversarial Training(AT-AT)：有意学习非鲁棒特征，获得比SOTA防御更强的重建防护与更高精度，揭示隐私-鲁棒性新权衡。"
+ ],
+ "method_framework": "先系统证伪信息依赖假说(HSIC不随防御下降、记忆型模型抗MIA、盲化像素仍被重建)；再将漏洞归因到非鲁棒特征；据此设计AT-AT，主动让模型依赖非鲁棒特征以降低MIA可重建性，同时保持甚至提升精度。",
+ "experiment_framework": "高分辨率图像分类下的模型反演攻击(MIA)设定；对比MID、BiDO、SCA、TL-DMI等SOTA MIA防御；指标为重建质量、HSIC信息依赖近似值、分类精度；用反例与因果干预验证假说。",
+ "takeaways": [
+  "降低信息依赖/互信息并不能真正带来训练数据隐私。",
+  "对MIA的脆弱性本质上与对抗非鲁棒特征相关，而非是否记忆训练数据。",
+  "有意学习非鲁棒特征(AT-AT)比现有防御更能防重建且更准，颠覆常规鲁棒性直觉。"
+ ],
+ "weaknesses": [
+  "结论反直觉且建立在一系列反例上，因果归因到'非鲁棒特征'的识别在其他攻击族(成员推理、LLM)是否成立未充分验证。",
+  "落地域为图像分类的隐私/对抗，非医学影像或多模态推理主线。",
+  "节选前9页未见AT-AT与SOTA防御的完整重建质量/精度数值表，防护幅度在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Reducing Cause Training Data Privacy. Adversarially Non-Robust Features do.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reducing Cause Training Data Privacy. Adversarially Non-Robust Features do.pdf",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "成员推断隐私防御与鲁棒性权衡，属于可靠性主线但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

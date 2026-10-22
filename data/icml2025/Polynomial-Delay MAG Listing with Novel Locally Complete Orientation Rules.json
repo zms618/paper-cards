@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Polynomial-Delay MAG Listing with Novel Locally Complete Orientation Rules.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Polynomial-Delay MAG Listing with Novel Locally Complete Orientation Rules.pdf",
+ "title": "Polynomial-Delay MAG Listing with Novel Locally Complete Orientation Rules",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6
+ },
+ "one_line": "首个多项式延迟MAG枚举方法，但规则对一般背景知识不完备且缺乏高维验证",
+ "innovations": [
+  "提出首个polynomial-delay的MAG枚举方法(延迟指输出每个MAG的时间)，解决此前枚举复杂度高的问题",
+  "提出可靠且局部完备(sound and locally complete)的定向规则，用以融入单例形式的背景知识(singleton BK)",
+  "给出两个反例说明包括本文规则在内的现有规则在融入一般BK时仍不完备，据此推动再补充两条规则；实验验证枚举效率"
+ ],
+ "method_framework": "本文为因果发现算法理论论文。背景：隐变量/选择变量下观测数据只能确定一个Markov等价类(MEC)，由PAG表示，含未确定结构；下游任务需枚举MEC内所有MAG。方法是递归引入单例背景知识并施加局部完备定向规则，逐一枚举；同时用反例刻画规则对一般BK的不完备边界。",
+ "experiment_framework": "理论给出polynomial-delay保证与(sound+locally complete)规则；实验侧通过合成/基准图验证MAG枚举的效率(相比既有枚举方法的时间开销)，对比其在含BK时的完整性与速度。",
+ "takeaways": [
+  "在单例BK下，新规则是可靠且局部完备的，可保证输出MEC内全部且仅全部MAG，且枚举延迟为多项式",
+  "融入一般BK时现有规则(含本文)仍不完备，反例为后续补全规则指明方向",
+  "多项式延迟枚举使不确定因果结构的下游分析在更大图上变得可行"
+ ],
+ "weaknesses": [
+  "局部完备/对单例BK完备不等于对一般BK完备，作者自己以反例指出规则仍未闭，理论完整性留缺口",
+  "仅在理论与小规模图上验证效率，未报告在高维真实因果发现benchmark上的可扩展性",
+  "对'背景知识从何而来、错误BK如何影响枚举正确性'缺乏容错讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

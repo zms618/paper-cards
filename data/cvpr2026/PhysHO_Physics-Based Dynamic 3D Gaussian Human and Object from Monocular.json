@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/PhysHO_Physics-Based Dynamic 3D Gaussian Human and Object from Monocular.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/PhysHO_Physics-Based Dynamic 3D Gaussian Human and Object from Monocular.pdf",
+ "title": "PhysHO Physics-Based Dynamic 3D Gaussian Human and Object from Monocular",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 6.1
+ },
+ "one_line": "物理引导的3D高斯重建，但依赖SMPL且数据集有限",
+ "innovations": [
+  "LBS与MPM模拟器紧密耦合，实现人体内部驱动物理建模",
+  "PD控制器与LBS-影响因子相结合的靶向驱动机制",
+  "基于专家模型的神经残余本构定律，捕捉异质性和各向异性材料"
+ ],
+ "method_framework": "结合SMPL驱动的LBS与MPM模拟器，使用LBS作为人体内部驱动的先验，MPM作为物理引擎传播力到物体，通过神经残余本构定律建模真实材料特性",
+ "experiment_framework": "自建数据集(8序列，6物体)，与GART和4D-Gaussian对比，评估重建和未来预测的PSNR、SSIM和LPIPS指标",
+ "takeaways": [
+  "靶向驱动机制有效防止物体上的虚假力",
+  "神经残余本构定律在保持物理稳定性的同时增强材料建模能力",
+  "结构保持的3D流监督和渐进式损失平衡优化提升单目训练稳定性"
+ ],
+ "weaknesses": [
+  "依赖预训练的SMPL姿态估计器",
+  "仅处理静态相机场景",
+  "实验数据集规模较小(仅8个序列)"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "3D重建与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

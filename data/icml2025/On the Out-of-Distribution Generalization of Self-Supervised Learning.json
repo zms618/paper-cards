@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/On the Out-of-Distribution Generalization of Self-Supervised Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/On the Out-of-Distribution Generalization of Self-Supervised Learning.pdf",
+ "title": "On the Out-of-Distribution Generalization of Self-Supervised Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "从因果分析SSL虚假相关，提出PID批采样提升OOD泛化",
+ "innovations": [
+  "通过分析SSL训练中的mini-batch构造，从数据生成与因果推断视角指出SSL会学到虚假(spurious)相关，从而降低OOD泛化",
+  "提出基于结构因果模型(SCM)的后干预分布(PID)，使虚假变量与标签变量相互独立；证明每批满足PID时SSL模型可达最优最坏情形OOD性能",
+  "设计通过潜变量模型学习来强制PID约束的批采样策略，并证明该潜变量模型的可辨识性"
+ ],
+ "method_framework": "把SSL的判别式(D-SSL)与生成式(G-SSL)的锚点对视为多类任务，用SCM刻画虚假变量与标签变量的依赖；构造后干预分布PID切断二者依赖，再用潜变量模型学习实现满足PID的批采样。",
+ "experiment_framework": "在多个下游OOD任务上验证PID批采样策略；理论给出潜变量模型可辨识性与最坏情形OOD最优性；对比标准SSL批构造的OOD表现。",
+ "takeaways": [
+  "SSL的OOD泛化部分来自把mini-batch当作离散任务分布学习，但虚假相关会侵蚀这种泛化",
+  "强制每批满足后干预分布(虚假变量与标签独立)可获得最优最坏情形OOD性能",
+  "潜变量学习的批采样可在不改动SSL骨干的前提下缓解虚假相关、提升OOD"
+ ],
+ "weaknesses": [
+  "SCM中虚假变量与因果结构为人工假设，真实图像/文本中因果图未知，PID可操作性依赖先验",
+  "潜变量模型的可辨识性在温和假设下成立，实际批采样的计算开销与稳定性未充分讨论",
+  "OOD任务多为常见基准，跨域医学影像等高偏移落地场景的增益未展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

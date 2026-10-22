@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Evidential Transformation Network Turning Pretrained Models into Evidential Models for.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Evidential Transformation Network Turning Pretrained Models into Evidential Models for.pdf",
+ "title": "Evidential Transformation Network Turning Pretrained Models into Evidential Models for",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "ETN轻量模块将预训练模型转为证据模型，不确定性估计有限泛化验证。",
+ "innovations": [
+  "提出ETN轻量级后验模块，在logit空间进行样本依赖的仿射变换",
+  "设计变分分布建模变换参数，避免重新训练整个网络",
+  "在logit空间直接连接不确定性建模，控制不确定性而不扰动特征空间"
+ ],
+ "method_framework": "ETN通过MLP学习样本特定的变换参数，将预训练模型的logit转换为Dirichlet分布参数，实现不确定性估计，同时保持原始模型精度和计算效率。",
+ "experiment_framework": "在CIFAR-10、ImageNet图像分类和LLM问答任务上评估，使用SVHN、CIFAR-100等OOD数据集，比较MP、UM、MI、DE等不确定性指标。",
+ "takeaways": [
+  "logit空间变换可有效保留预训练特征同时添加不确定性估计",
+  "变分分布建模比确定性变换更能捕捉样本间不确定性差异",
+  "softplus函数作为f比指数函数更稳定"
+ ],
+ "weaknesses": [
+  "仅在小规模适应数据集上验证，大规模场景泛化性未充分验证",
+  "变换参数维度选择对性能影响较大，缺乏统一指导原则"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "证据模型不确定性估计与可靠性主线交点，OOD验证扎实",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

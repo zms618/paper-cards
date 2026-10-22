@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Stochastic Neural Networks for Causal In-ference with Missing Confounders.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Stochastic Neural Networks for Causal In-ference with Missing Confounders.pdf",
+ "title": "Stochastic Neural Networks for Causal Inference with Missing Confounders",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.9
+ },
+ "one_line": "随机神经网络参数化DAG，SG-HMC插补混杂因子，理论保证存疑",
+ "innovations": [
+  "提出CI-StoNet：用随机神经网络参数化有向无环图(DAG)的条件结构，通过自适应随机梯度HMC插补潜在混杂因子",
+  "在容量受控的稀疏深度神经网络类下，建立模型识别和平均潜在结果一致估计的理论保证",
+  "框架自然扩展到代理变量和多原因设置，支持重叠诊断和bootstrap不确定性量化"
+ ],
+ "method_framework": "将未观测混杂因子建模为潜变量，用随机神经网络参数化因果DAG中各节点的条件分布。通过自适应随机梯度哈密顿蒙特卡洛(SG-HMC)方法对潜在混杂因子进行后验采样和插补。在SUTVA和重叠假设下，证明因果估计量（平均潜在结果）在观测等价类中是不变的，尽管潜变量本身仅可识别到重参数化。",
+ "experiment_framework": "在模拟数据集和标准基准数据集上验证，对比其他未观测混杂因子校正方法。评估因果效应估计的偏差和均方误差。额外测试代理变量设置和多原因设置下的性能。",
+ "takeaways": [
+  "随机神经网络可以灵活参数化复杂的因果DAG结构，同时通过贝叶斯推断处理未观测混杂因子的不确定性",
+  "虽然潜在混杂因子本身不可唯一识别，但因果估计量在观测等价类中是不变的，这为实践中的因果推断提供了理论依据",
+  "重叠(overlap)条件对估计精度有显著影响，框架内置的重叠诊断可帮助评估因果分析的可靠性"
+ ],
+ "weaknesses": [
+  "SG-HMC采样的计算成本较高，对大规模数据集的可扩展性存疑",
+  "理论保证依赖于稀疏深度神经网络类的容量受控假设，实际中该假设是否成立难以验证",
+  "前9页未展示完整的基准实验定量对比表格，具体性能提升幅度不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.43,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "因果推断与可靠性主线交点，混杂因子处理方法可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

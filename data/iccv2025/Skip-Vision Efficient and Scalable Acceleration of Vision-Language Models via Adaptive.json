@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Skip-Vision Efficient and Scalable Acceleration of Vision-Language Models via Adaptive.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Skip-Vision Efficient and Scalable Acceleration of Vision-Language Models via Adaptive.pdf",
+ "title": "Skip-Vision Efficient and Scalable Acceleration of Vision-Language Models via Adaptive",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "跳过FFN和KV缓存加速视觉语言模型，但鲁棒性和泛化分析不足",
+ "innovations": [
+  "跳过FFN策略减少视觉token冗余计算",
+  "自适应摘要token整合视觉信息",
+  "推理阶段跳过KV缓存机制"
+ ],
+ "method_framework": "Skip-Vision框架在训练阶段对视觉token进行分类，保留关键token通过FFN，跳过冗余token；推理阶段移除跳过token的KV缓存，结合自适应摘要token保持性能",
+ "experiment_framework": "在8个基准测试(MME, TextVQA等)评估，比较LLaVA, LLaVA-HD和CoS三种框架，测量训练时间、推理FLOPs和延迟",
+ "takeaways": [
+  "视觉token的FFN更新幅度显著小于文本token，可选择性跳过",
+  "相似度高的视觉token可通过合并减少冗余",
+  "自适应摘要token有效整合跳过token信息"
+ ],
+ "weaknesses": [
+  "仅关注计算效率，未深入探讨模型鲁棒性和泛化能力",
+  "理论分析中的Lipschitz常数假设在实际模型中可能过于简化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "计算效率优化未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

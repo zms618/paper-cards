@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/PureProof_Diffusion-Resistant Black-box Targeted Attack on Large Vision-Language Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/PureProof_Diffusion-Resistant Black-box Targeted Attack on Large Vision-Language Models.pdf",
+ "title": "PureProof Diffusion-Resistant Black-box Targeted Attack on Large Vision-Language Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "PureProof：扩散防御下VLM黑盒攻击，三组件提升效率与稳定性",
+ "innovations": [
+  "随机反向对齐(SRA)避免全链反向传播",
+  "自适应重噪增强(ARA)处理扩散随机性",
+  "自一致性正则化(SCR)提升优化稳定性"
+ ],
+ "method_framework": "PureProof通过SRA、ARA和SCR三个组件，在扩散模型代理指导下生成能抵抗DBP防御的对抗样本，避免全链反向传播并处理扩散过程的随机性。",
+ "experiment_framework": "ImageNet-1K数据集，对比DiffPure/GDMP/LM等防御，使用CLIP分数和ASR评估开源(LLaVA-1.5等)和商业(GPT-5/Gemini)VLM。",
+ "takeaways": [
+  "扩散模型防御下的对抗攻击需考虑随机性和计算效率",
+  "单步反向预测可避免全链反向传播的梯度不稳定问题",
+  "自适应重噪可作为曲率感知正则器稳定优化"
+ ],
+ "weaknesses": [
+  "仅评估了扩散净化防御，未考虑其他防御机制",
+  "计算效率虽优于全链方法，但仍需多次扩散模型前向传播"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "黑盒攻击提升VLM鲁棒性，符合可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/S4S_Solving for a Fast Diffusion Model Solver.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/S4S_Solving for a Fast Diffusion Model Solver.pdf",
+ "title": "S4S: Solving for a Fast Diffusion Model Solver",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "优化扩散求解器提升低NFE采样质量，但依赖教师模型",
+ "innovations": [
+  "放弃传统ODE求解器近似路径，直接优化求解器提升整体性能",
+  "提出S4S-Alt联合优化求解器系数和离散化时间步",
+  "设计时间相关系数和放松目标函数提高优化效率"
+ ],
+ "method_framework": "S4S采用教师-学生框架，通过匹配高质量教师求解器输出来学习学生求解器系数；S4S-Alt交替优化求解器系数和离散化时间步",
+ "experiment_framework": "在6种预训练扩散模型上评估，包括像素空间和潜在空间的条件/无条件采样，使用FID作为主要指标",
+ "takeaways": [
+  "直接优化全局误差而非局部误差可显著提升低NFE下的采样质量",
+  "求解器优化与离散化时间步优化是互补的，可结合使用"
+ ],
+ "weaknesses": [
+  "方法依赖于教师求解器的高质量输出",
+  "S4S-Alt的交替优化可能陷入局部最优",
+  "计算开销虽小但仍需额外训练过程"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

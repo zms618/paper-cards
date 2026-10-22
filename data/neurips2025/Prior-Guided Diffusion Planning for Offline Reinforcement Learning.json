@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Prior-Guided Diffusion Planning for Offline Reinforcement Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Prior-Guided Diffusion Planning for Offline Reinforcement Learning.pdf",
+ "title": "Prior-Guided Diffusion Planning for Offline Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "参数化先验+潜在空间优化提升扩散模型在离线RL中的效率",
+ "innovations": [
+  "将标准高斯先验替换为可学习的参数化先验分布",
+  "在潜在空间中应用行为正则化，避免反向传播整个去噪过程",
+  "引入潜在空间价值函数，直接在先验噪声空间评估价值"
+ ],
+ "method_framework": "Prior Guidance在行为克隆的扩散模型基础上，用可学习的参数化高斯先验替换标准高斯先验，通过行为正则化目标优化先验分布，生成高价值轨迹，同时保持与数据集分布的接近。",
+ "experiment_framework": "在D4RL离线RL基准测试上评估，包括MuJoCo、Kitchen、Antmaze和Maze2D任务，与BC、CQL、IQL、SfBC、DQL、IDQL、QGPO、SRPO、Diffuser、AD、DD、HD和DV等方法比较。",
+ "takeaways": [
+  "在潜在空间进行优化可有效避免反向传播整个去噪过程的计算开销",
+  "行为正则化在潜在空间中更易于实现和计算，能更有效地防止分布漂移"
+ ],
+ "weaknesses": [
+  "潜在空间价值函数与真实价值函数之间存在近似误差",
+  "方法依赖于扩散模型本身的质量，如果基础扩散模型学习不佳，先验优化的效果可能有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

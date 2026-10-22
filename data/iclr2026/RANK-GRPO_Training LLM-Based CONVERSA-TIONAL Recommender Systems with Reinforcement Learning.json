@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RANK-GRPO_Training LLM-Based CONVERSA-TIONAL Recommender Systems with Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RANK-GRPO_Training LLM-Based CONVERSA-TIONAL Recommender Systems with Reinforcement Learning.pdf",
+ "title": "Rank-GRPO: Training LLM-Based Conversational Recommender Systems with Reinforcement Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "将GRPO扩展到排名式输出，改进对话推荐系统训练。",
+ "innovations": [
+  "提出Remap-Reflect-Adjust蒸馏管线，从黑盒教师LLM生成目录grounded的高质量推荐示范用于SFT热启动",
+  "提出Rank-GRPO：将GRPO的更新单元从token或序列改为每个排名位置，引入奖励掩码消除非因果信用分配",
+  "定义排名级重要性比率（物品token概率的几何平均）稳定策略更新"
+ ],
+ "method_framework": "Stage 1: Remap-Reflect-Adjust管线将教师LLM的零样本推荐投影到目标目录、精炼排名质量、校正流行度偏差，生成SFT示范。Stage 2: Rank-GRPO以每个排名位置为单元估计优势，用奖励掩码防止后续排名的奖励影响前面排名的更新，用排名级重要性比率稳定训练。",
+ "experiment_framework": "在REDDIT-V2和REDIAL数据集上评测；对比GRPO基线；报告Recall和NDCG；分析收敛速度和推荐列表尾部质量。",
+ "takeaways": [
+  "GRPO的token级或序列级更新与排名式输出任务不匹配，需要排名级信用分配",
+  "Remap-Reflect-Adjust可有效从黑盒教师构建目录grounded的SFT数据",
+  "排名级重要性比率和奖励掩码可稳定RL训练并提升推荐质量"
+ ],
+ "weaknesses": [
+  "与可靠性/医学影像/多模态推理主线完全无关，属于推荐系统领域",
+  "仅在对话推荐数据集验证，对其他排名式输出任务的迁移性未讨论",
+  "依赖黑盒教师LLM生成初始示范，蒸馏质量上限受教师能力约束"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "推荐系统与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/AG-VAS Anchor-Guided Zero-Shot Visual Anomaly Segmentation with Large Multimodal Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/AG-VAS Anchor-Guided Zero-Shot Visual Anomaly Segmentation with Large Multimodal Models.pdf",
+ "title": "AG-VAS Anchor-Guided Zero-Shot Visual Anomaly Segmentation with Large Multimodal Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "锚点引导零样本分割，依赖LMM与自建数据集",
+ "innovations": [
+  "引入绝对和相对语义锚点桥接LMM与分割器",
+  "设计语义-像素对齐模块(SPAM)增强跨模态对应",
+  "构建Anomaly-Instruct20K指令数据集注入异常知识"
+ ],
+ "method_framework": "AG-VAS框架结合语义锚点[NOR]/[ANO]/[SEG]，通过SPAM模块对齐高层语义与像素特征，AGMD解码器生成二值分割掩码，支持直接分割和描述-分割等多种模式。",
+ "experiment_framework": "在6个工业和医学数据集(MVTec-AD, KSDD2, RSDD, ISIC, ColonDB, ClinicDB)评估，使用像素级AP、F1-Max、IoUano和IoUnor指标。",
+ "takeaways": [
+  "语义锚点设计有效桥接高层语义与像素级特征",
+  "指令数据集构建方法可迁移到其他视觉任务"
+ ],
+ "weaknesses": [
+  "依赖预训练LMM，计算资源需求高",
+  "锚点设计可能限制对全新异常类型的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像异常分割，可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

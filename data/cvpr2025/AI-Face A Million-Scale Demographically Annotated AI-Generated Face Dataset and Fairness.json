@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/AI-Face A Million-Scale Demographically Annotated AI-Generated Face Dataset and Fairness.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AI-Face A Million-Scale Demographically Annotated AI-Generated Face Dataset and Fairness.pdf",
+ "title": "AI-Face: A Million-Scale Demographically Annotated AI-Generated Face Dataset and Fairness Benchmark",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "整合数据集与自动标注，检测器公平性基准但标注质量存疑",
+ "innovations": [
+  "用 Mediapipe FaceMesh 掩膜 + K-Means 主色 + Monk Skin Tone 色卡映射做肤色标注，绕开对真实脸训练的判别器的分布偏移",
+  "性别/年龄标注器：冻结 CLIP ViT-L/14 + 3 层 MLP，训练目标为 Vector Scaling 不平衡损失 + Sinkhorn 距离公平损失，并用 SAM 平坦化损失景观提升对合成脸的泛化",
+  "首次把公平性可靠性（后处理/分布变换下的公平性一致性）纳入基准，与通用公平性、效用三类指标并列评估 12 个检测器"
+ ],
+ "method_framework": "先汇聚 4 个 Deepfake 视频库 + 10 个 GAN + 8 个 DM 共 37 种生成方式的 124.6 万假脸与 40 万真脸；肤色走 landmarks 掩膜-KMeans-MST 映射，性别/年龄走 CLIP 标注器；再在 80/20 划分上评估 12 个检测器的 5 项公平性 + 5 项效用指标。",
+ "experiment_framework": "AI-Face(40 万真/124.6 万假，28 子集)；12 个检测器四类(朴素/频域/空域/公平增强)；FMEO/FDP/FOAE/FEO/FIND 与 AUC/ACC/AP/EER/FPR。",
+ "takeaways": [
+  "把'公平性可靠性'单列为一类指标（后处理后公平性是否还在），是对'只在默认设置下报一次公平性'这一普遍做法的直接纠偏",
+  "标注器本身也要去偏（不平衡损失 + Sinkhorn 公平损失 + SAM），否则自动标注会把上游模型的偏置固化进数据集"
+ ],
+ "weaknesses": [
+  "数据集是公开数据整合 + 自动标注，标注质量仅靠 3 名参与者的用户研究验证，样本量与标注者数都偏少",
+  "肤色分布极端不均衡（Tone1-3 仅占 0.97%），在浅色/深色组上的公平性结论统计功效不足，却与中等肤色组同表并列",
+  "只在单一 80/20 划分上评测，无多种子方差或显著性检验；未给出任何新的去偏方法，贡献止于数据集与诊断"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "公平性可靠性属于可靠性主线，但数据集构建方法存疑",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

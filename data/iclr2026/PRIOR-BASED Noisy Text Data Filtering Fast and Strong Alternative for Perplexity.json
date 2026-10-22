@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/PRIOR-BASED Noisy Text Data Filtering Fast and Strong Alternative for Perplexity.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PRIOR-BASED Noisy Text Data Filtering Fast and Strong Alternative for Perplexity.pdf",
+ "title": "Prior-Based Noisy Text Data Filtering: Fast and Strong Alternative for Perplexity",
+ "scores": {
+  "novelty": 5,
+  "depth": 4,
+  "evidence": 6,
+  "relevance": 5.0,
+  "overall": 5.0
+ },
+ "one_line": "基于词频统计的无模型文本过滤，替代PPL但语义噪声识别弱。",
+ "innovations": [
+  "用语料级词频统计(受词类/词汇密度语言学启发)估计token先验，替代PPL做数据过滤。",
+  "按文档token先验的均值与标准差做过滤，无需任何模型推理。",
+  "在20个下游基准平均性能最高，比PPL过滤提速逾1000倍；并适用于代码/数学等符号语言与多语语料的无监督自适应。"
+ ],
+ "method_framework": "预计算整个语料的token级频率作为先验；对每篇文档计算其token先验分布的均值与标准差作为质量信号；均值/标准差落入阈值区间则保留，否则视为噪声过滤掉；整个过程只查词表统计，无需跑LM推理。",
+ "experiment_framework": "在大规模预训练语料上对比PPL过滤与其他过滤方法；用过滤后语料预训练后在20个下游基准评测；指标为下游平均性能与过滤耗时；prior过滤平均最优且提速>1000倍，并验证代码/数学/多语适用性。",
+ "takeaways": [
+  "简单的词频先验统计可作为PPL的强快速代理。",
+  "无模型推理即可过滤，成本降低三个数量级。",
+  "方法跨语言/符号语言无需监督自适应。"
+ ],
+ "weaknesses": [
+  "基于词频，对语义层面的低质量但词频正常的文本(如通顺但无关内容)识别力弱。",
+  "阈值选择仍需调，跨域语料迁移的阈值鲁棒性未充分分析。",
+  "本质是启发式统计过滤，对深层语义噪声的刻画有限。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "文本过滤方法与可靠性主线无实质交点，仅属常规数据处理",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Detecting High-Stakes Interactions with Activation Probes.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Detecting High-Stakes Interactions with Activation Probes.pdf",
+ "title": "Detecting High-Stakes Interactions with Activation Probes",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "轻量激活探针检测高风险交互，计算成本低但精度有限",
+ "innovations": [
+  "激活探针架构设计（Attention/Softmax/Max of Rolling Means）",
+  "分层监控系统（探针作为初始过滤器）",
+  "合成数据集与真实数据集的评估框架"
+ ],
+ "method_framework": "基于LLM内部激活的轻量级探针，通过不同聚合方式（平均/最大/注意力加权等）检测高风险交互，与LLM基线结合形成两级监控系统",
+ "experiment_framework": "合成训练数据+多个真实评估数据集（Anthropic HH-RLHF、ToolACE、医疗对话等），AUROC和TPR@1%FPR为指标，对比不同规模LLM基线",
+ "takeaways": [
+  "激活探针可作为高效初始过滤器，显著降低计算成本",
+  "少量领域特定样本可大幅提升探针性能",
+  "分层监控结合探针与LLM优势"
+ ],
+ "weaknesses": [
+  "探针对幽默和特定关键词敏感，可能误判",
+  "在1% FPR下TPR较低(43%)，不适合作为独立监控器",
+  "依赖被监控模型的激活可用性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

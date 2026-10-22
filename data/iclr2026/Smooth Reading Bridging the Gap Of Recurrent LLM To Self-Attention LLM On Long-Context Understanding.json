@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Smooth Reading Bridging the Gap Of Recurrent LLM To Self-Attention LLM On Long-Context Understanding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Smooth Reading Bridging the Gap Of Recurrent LLM To Self-Attention LLM On Long-Context Understanding.pdf",
+ "title": "Smooth Reading: Bridging the Gap of Recurrent LLM to Self-Attention LLM on Long-Context Understanding",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "循环LLM分块渐进阅读法，在有限基准上接近自注意力模型性能",
+ "innovations": [
+  "指出循环LLM长上下文落后的根因是'一次性处理整段上下文'而非单纯记忆容量不足，强调架构-推理交互的重要性",
+  "提出Smooth Reading端到端多轮推理：把上下文分块增量处理、迭代式摘要并回喂，降低对固定大小记忆的压力",
+  "展示架构与推理方法协同设计对性能/效率/可扩展性的影响，为循环LLM设计提供新视角"
+ ],
+ "method_framework": "不让循环模型一次性吞下全部文本，而是把长文切成chunk，逐块读入并在固定记忆上生成/更新摘要，摘要回喂作为下一轮上下文，多轮后再作答；该推理方式与循环记忆架构协同，使线性复杂度模型也能处理超长上下文。",
+ "experiment_framework": "LongBench等长上下文理解基准，以SWA-3B-4k循环模型与自注意力LLM对比；报告相对性能差距、训练速度、64k上下文下推理速度。",
+ "takeaways": [
+  "Smooth Reading使SWA-3B-4k从比自注意力LLM低5.68%反超为高3.61%(LongBench)",
+  "保持2.5x更快训练、64k下2x更快推理",
+  "架构-推理协同可作为提升循环LLM长上下文能力的关键，而非仅靠改架构"
+ ],
+ "weaknesses": [
+  "落地为LLM长上下文效率，与可靠性、医学影像、多模态推理主线无关",
+  "多轮渐进阅读本质是反复前向，虽常数记忆但端到端延迟随轮次增加，实际吞吐收益需仔细算",
+  "仅在LongBench等有限基准与特定循环架构(SWA)上验证，跨模型族与真实长文档任务的普适性待证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.0,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "LLM长上下文效率与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

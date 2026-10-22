@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/ArcPro_Architectural Programs for Structured 3D Abstraction of Sparse Points.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ArcPro_Architectural Programs for Structured 3D Abstraction of Sparse Points.pdf",
+ "title": "ArcPro: Architectural Programs for Structured 3D Abstraction of Sparse Points",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "程序化DSL中间表示限制解空间，但实验设计有缺陷",
+ "innovations": [
+  "用 DSL 当作有容量上限的中间表示：一条 SetGround(z=zΦ) 定地面高度，建筑结构建成一棵根树，每层节点 Li=(hi, ci)（层高 + 2D 轮廓多边形）编译为语句 Li = CreateLayer(parent = Lj, h = hi, c = ci)，树按广度优先序列化成线性程序再转成网格；把解空间限制成「紧凑且受控」，正是它在 200 点输入上不过拟合噪声的原因",
+  "用前馈程序化生成来训练逆映射（bridging forward and inverse procedural modeling）：程序可无限合成，从合成网格采样点云即得「点-程序」对；根层轮廓从 Bing Maps 872,487 个真实建筑 footprint 采样，子层轮廓由父轮廓内缩若干边（M=1）或做平面二分割后取样相邻单元（M>1，带面积/距离约束），训练数据完全不依赖真实建筑标注",
+  "语法约束解码 + 后处理几何精修：用有限状态机（FSM）按前文 token 遮蔽非法候选（如 ⟨SetGround⟩ 之后只允许数字 token），可与 top-K/top-P/beam 无冲突叠加；推理后递归把每层轮廓点吸附到父轮廓的最近点/边，弥补离散坐标 token 的取整误差，同时把父子空间关系显式编码进结构便于编辑"
+ ],
+ "method_framework": "稀疏 3D 卷积编码器加 12 层 Transformer 自回归 next-token 解码；FSM 掩码保证语法合法；无学习的编译器把程序转成网格；训练数据由程序化前馈合成",
+ "experiment_framework": "SfM 270 栋加 UrbanBIS 1038 栋；对比 5 法；面数、Hausdorff、LFD、成功率加用户研究",
+ "takeaways": [
+  "把输出空间从「自由网格」换成「受控 DSL 程序」，同时压低了对噪声的敏感度和输出面数（64 顶点/36 面 vs PolyFit 的 84/72），是稀疏输入下做结构化抽象的一条干净路径",
+  "FSM 遮蔽做语法约束解码且能叠加在 top-K/beam 上，可迁移到任何「程序化/组合式输出」的生成任务（CAD 命令、场景图、公式构造成分）"
+ ],
+ "weaknesses": [
+  "学习基线不公平：CA 与 BSP-Net 是在作者自己的合成数据上训练的，而传统方法（PolyFit/KSR/ProxyRecon）没有同样的训练数据/复现设置；同时 KSR/PolyFit 在稀疏输入下「computation exceeding 40 minutes」或平面检测失败被计为低 Rs，均值里混进了超时/失败项——文中自己也承认 Rs 低的指标只覆盖更简单样本",
+  "训练/测试域偏移无对应分析：训练程序全部由合成器经 validator（内角 20°–160°、最长/最短边比<10、面积 15%–85% 父轮廓）生成，测试是真实 SfM / UrbanBIS 点云；作者把鲁棒性归因于训练时独立注入的非均匀/缺失/Perlin 噪声与 200–2000 点稀疏采样，但没测真实 SfM 特有的地面点、倾斜、多栋楼混片等情形，Fig.7 的 raw SfM 示例也未给量化性能",
+  "无方差、无显著性且失败判据缺位：Table 2 全为单次数值（HD/LFD/Rs），用户研究 110 人只报偏好比例（ArcPro 76.7%、ProxyRecon 21%、KSR 1.1%）无置信区间与配对检验；作者在第 5 章自己承认「严重不完整会引发结构歧义、方法退化成贴着输入点云而不补全」，这类失败既没判据也没进指标。此外 token 化把数值（层高、轮廓坐标）与结构 token 混在同一序列，CE 对数值回归的误差靠后处理吸附掩盖，程序输出的几何精度上限从未被指标量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "3D重建与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

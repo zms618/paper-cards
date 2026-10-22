@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Towards Robust Parameter-Efficient Fine-Tuning for Federated Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Towards Robust Parameter-Efficient Fine-Tuning for Federated Learning.pdf",
+ "title": "Towards Robust Parameter-Efficient Fine-Tuning for Federated Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "敏感度感知与自适应聚合提升联邦LoRA鲁棒性，但依赖清洁数据",
+ "innovations": [
+  "敏感度感知鲁棒调优(SRT)识别并选择性更新噪声敏感参数",
+  "自适应联邦LoRA聚合(AFLA)动态权重聚合LoRA更新",
+  "解决LoRA在联邦学习中聚合差异和噪声放大问题"
+ ],
+ "method_framework": "RFedLR包含两个核心组件：1)敏感度感知鲁棒调优(SRT)通过对比清洁和噪声数据梯度差异识别噪声敏感参数；2)自适应联邦LoRA聚合(AFLA)基于参数重要性和稳定性动态权重聚合LoRA更新。",
+ "experiment_framework": "在CIFAR-100数据集上评估，使用ViT-B作为骨干网络，比较多种联邦PEFT方法，测试不同噪声率(20%和40% pairflip和symmetric噪声)下的性能。",
+ "takeaways": [
+  "参数敏感度分析可有效提升模型对噪声标签的鲁棒性",
+  "基于Fisher信息的重要性测量可指导联邦聚合策略",
+  "选择性更新和聚合可减少通信开销并提高模型性能"
+ ],
+ "weaknesses": [
+  "依赖公共清洁数据集作为代理数据集，在实际应用中可能受限",
+  "方法增加了额外的计算复杂度，特别是在敏感度估计阶段"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Aligning Spoken Dialogue Models from User Interactions.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Aligning Spoken Dialogue Models from User Interactions.pdf",
+ "title": "Aligning Spoken Dialogue Models from User Interactions",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "AI标注偏好对齐语音模型，但数据真实性和评估深度不足",
+ "innovations": [
+  "构建首个大规模语音对话偏好数据集（15万+对），覆盖语言内容偏好和时间上下文（打断、插入、停顿等）偏好",
+  "设计实用的数据pipeline：原始语音对话→转录→LLM judge检测问题轮次并生成更好回复→TTS重合成→离线偏好对齐",
+  "在全双工(full-duplex)端到端语音对话模型上验证离线对齐方法，证明通用对话反馈可 consistently 改善语音对话的安全性和自然度"
+ ],
+ "method_framework": "从已部署模型的真实用户对话日志中收集数据：转录对话文本，用LLM作为judge识别问题回复轮次并生成替代回复，再用TTS将用户和模型的语音重新合成。用构建的偏好数据对全双工自回归语音到语音模型做离线对齐（类似DPO的偏好优化）。部署后进行整体人工评估。",
+ "experiment_framework": "数据集：150,000+偏好对，来自真实用户与语音对话模型的多轮交互。基线：原始未对齐模型。评估：人工评估在事实性、安全性、上下文对齐、自然度等维度，以及多轮对话整体体验。部署后做holistic human evaluation。",
+ "takeaways": [
+  "离线偏好对齐可显著改善端到端语音对话模型的安全性和事实性，无需在线RLHF",
+  "语音对话的对齐需要平衡多种动态（打断、插入、停顿），不能只优化文本质量",
+  "从真实用户交互中挖掘偏好数据比人工标注更 scalable"
+ ],
+ "weaknesses": [
+  "偏好标签来自AI judge而非人类标注，存在LLM judge偏差，与人类真实偏好的一致性未充分验证",
+  "TTS重合成引入合成语音的分布偏移，对齐效果在真实自然语音上是否同等有效存疑",
+  "仅报告人工评估的整体印象分，缺乏对错误类型的细粒度量化分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "语音对齐方法扎实，但未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

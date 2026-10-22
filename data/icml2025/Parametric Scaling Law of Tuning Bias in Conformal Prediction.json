@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Parametric Scaling Law of Tuning Bias in Conformal Prediction.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Parametric Scaling Law of Tuning Bias in Conformal Prediction.pdf",
+ "title": "Parametric Scaling Law of Tuning Bias in Conformal Prediction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "分析共形预测中调参与校准的覆盖偏差，提出参数标度律上界。",
+ "innovations": [
+  "发现简单参数调参下tuning bias往往可忽略，仅vector scaling、ConfTr微调等少数方法明显掉覆盖",
+  "提出参数标度律：偏差随参数空间复杂度增大、随校准集规模减小",
+  "把tuning bias建模为带约束ERM问题，用扩展参数空间的经验过程给出严格上界证明"
+ ],
+ "method_framework": "将‘用同一hold-out集调参再校准’造成的覆盖缺口定义为tuning bias，形式化为特定约束ERM；通过扩展参数空间上的经验过程分析推导其上界，得到偏差关于参数量与校准样本量的标度律，并据此讨论降偏差方法。",
+ "experiment_framework": "在多种共形预测方法(RAPS/SAPS、分数聚合、置信校准、训练类方法)上做覆盖率实证；对比调参与严格分离校准两种设置；指标为经验覆盖率与理论上界的吻合程度。",
+ "takeaways": [
+  "多数轻量调参即便破坏可交换性，覆盖损失仍可忽略，实践中不必过度担心",
+  "参数空间越复杂、校准集越小，tuning bias越值得警惕",
+  "理论上界可指导如何通过扩大校准集或精简参数空间来降低偏差"
+ ],
+ "weaknesses": [
+  "主要针对图像分类等标准共形场景，未覆盖分布偏移/时序等更现实的失交换情形",
+  "标度律上界较松，对vector scaling等大偏差方法的定量预测能力有限",
+  "与医学影像、多模态推理落地域的直接结合未展开"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

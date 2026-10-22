@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Proofbridge_Auto-Formalization Of Natural Language Proofs In Lean via Joint Embeddings.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Proofbridge_Auto-Formalization Of Natural Language Proofs In Lean via Joint Embeddings.pdf",
+ "title": "ProofBridge: Auto-Formalization of Natural Language Proofs in Lean via Joint Embeddings",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "联合嵌入+检索增强实现NL到Lean4自动形式化，但通用性和效率存疑。",
+ "innovations": [
+  "提出统一框架同时实现定理和证明的自动形式化（现有方法多分开处理）",
+  "构建NL-FL联合嵌入模型，对齐定理+证明对的语义空间，跨模态检索质量提升3.28倍Recall@1",
+  "结合检索增强微调与迭代证明修复，利用Lean类型检查器和语义等价反馈保证正确性"
+ ],
+ "method_framework": "ProofBridge先训练联合嵌入模型对齐NL和FL的定理+证明对，再通过跨模态检索获取相关FL示例引导翻译。微调后进行迭代证明修复，利用Lean类型检查器反馈修正语法错误，用语义等价反馈修正语义偏差。",
+ "experiment_framework": "在自建MiniF2F-Test-PF数据集上评估，对比GPT-5、Gemini-2.5、Kimina-Prover、DeepSeek-Prover等强基线。指标为类型正确性(TC)和语义正确性(SC)，pass@k。",
+ "takeaways": [
+  "联合嵌入+检索增强显著提升自动形式化的语义正确性(+31.14% SC vs Kimina-Prover)",
+  "迭代证明修复有效结合类型检查器反馈提升语法正确性",
+  "自动形式化不再需要人工翻译问题陈述，向端到端证明自动化迈进"
+ ],
+ "weaknesses": [
+  "仅在Lean 4上验证，未验证Isabelle等其他证明助手的通用性",
+  "自建数据集MiniF2F-Test-PF规模可能有限",
+  "迭代修复的计算成本较高，实际可用性待评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "形式化验证与可靠性主线无实质交点，属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

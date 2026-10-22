@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Plan then Act Bi-Level Cad Command Sequence Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Plan then Act Bi-Level Cad Command Sequence Generation.pdf",
+ "title": "Plan then Act: Bi-Level CAD Command Sequence Generation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "双层CAD生成法：LLM计划+需求感知命令生成",
+ "innovations": [
+  "提出双层生成范式：不让LLM直接输出CAD命令，先分解为链式操作计划再生成命令",
+  "需求感知机制：以高层操作步骤为query做交叉注意力检索最相关需求信息，自注意力建模步骤间上下文关系",
+  "用Qwen3-8B作Planner，融合高层计划与具体需求约束提升命令与用户意图对齐"
+ ],
+ "method_framework": "高层 Planner 将文本指令解析为链式操作计划(如建坐标系、画矩形、拉伸、倒圆角等)；低层 Actioner 以操作步骤为query从用户指令交叉注意抽取该步最相关的尺寸/几何约束，并用自注意捕捉步骤间上下文，融合后由Transformer解码生成带参数的CAD命令序列。",
+ "experiment_framework": "在文本到CAD命令生成任务上对比直接生成式与既有LLM/CAD方法，做定量(命令/几何准确率)与定性评价，评估对复杂约束描述的还原。",
+ "takeaways": [
+  "通用预训练LLM不擅长直接输出任务相关的CAD控制序列",
+  "链式操作计划作为中间表示可显著提升命令序列生成精度",
+  "需求感知交叉注意使每步聚焦最相关约束，改善生成与意图对齐"
+ ],
+ "weaknesses": [
+  "主线为CAD参数化建模生成，与可靠性、医学影像、多模态推理主线关联弱",
+  "依赖Planner先验分解质量，计划错误会沿双层流程传导放大，前9页未见错误传播分析",
+  "前9页未见在复杂装配体/多部件CAD上的可扩展性验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "CAD命令生成与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Veritrail_Closed-Domain Hallucination Detection with Traceability.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Veritrail_Closed-Domain Hallucination Detection with Traceability.pdf",
+ "title": "VeriTrail: Closed-Domain Hallucination Detection with Traceability",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "闭域幻觉检测方法，支持多步生成过程溯源，但依赖中间输出可获取性",
+ "innovations": [
+  "提出VeriTrail：首个支持可追溯性(traceability)的闭域幻觉检测方法，同时适用于单步(SGS)和多步(MGS)生成过程",
+  "定义可追溯性的两个维度：provenance（内容来源路径）和error localization（错误引入位置），弥补现有方法只检测不溯源的不足",
+  "构建首个包含完整中间输出和人工忠实度标注的MGS数据集，支持幻觉溯源研究"
+ ],
+ "method_framework": "VeriTrail针对多步生成过程(MGS)的幻觉检测与溯源问题。传统方法只对比最终输出与源材料，无法定位错误在哪一步引入。VeriTrail利用中间输出信息，构建从最终输出→中间输出→源材料的层级追溯链，实现：(1)provenance追踪——最终内容可追溯到哪些中间步骤和源材料片段；(2)error localization——定位幻觉最可能在哪一步引入。方法在保证检测准确率的同时提供可解释的溯源路径。",
+ "experiment_framework": "数据集：两个新构建的MGS数据集（含全部中间输出+人工忠实度标注）。基线：现有闭域幻觉检测方法（仅对比最终输出与源文本）。指标：幻觉检测准确率、溯源准确性。验证了VeriTrail在检测性能和可追溯性上均优于基线。",
+ "takeaways": [
+  "多步生成过程(MGS)比单步过程更容易产生幻觉，且错误会在步骤间传播放大",
+  "仅检测最终输出是否幻觉是不够的，溯源到具体错误步骤对修复和信任建立至关重要",
+  "利用中间输出信息能同时提升检测准确率和提供可解释的溯源路径"
+ ],
+ "weaknesses": [
+  "方法依赖中间输出的可获取性，对黑盒端到端MGS流水线不适用",
+  "数据集规模可能有限（论文43页但核心实验部分待确认），统计显著性需进一步验证",
+  "在中间输出数量极多（如>10万条）时，追溯计算成本可能较高"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "幻觉检测与溯源直接关联可靠性主线，方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

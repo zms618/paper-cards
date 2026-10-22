@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/On-the-Fly Adaptive Distillation of Transformer to Dual-State Linear Attention for Long-Context LLM Serving.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/On-the-Fly Adaptive Distillation of Transformer to Dual-State Linear Attention for Long-Context LLM Serving.pdf",
+ "title": "On-the-Fly Adaptive Distillation of Transformer to Dual-State Linear Attention for Long-Context LLM Serving",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "双态注意力缓解偏置，在线蒸馏加速长上下文LLM推理",
+ "innovations": [
+  "提出双态线性注意力 DSLA，分别保存历史上下文与追踪近期，缓解线性注意力短程偏置",
+  "提出推理时在线自适应蒸馏 DSLA-Serve，按敏感性对层排序、逐步替换 Transformer 层",
+  "用链式微调保证新替换 DSLA 层与已替换层一致，保持整体质量"
+ ],
+ "method_framework": "线性注意力以固定大小隐状态 O(T) 更新但容量瓶颈、偏重近期 token。DSLA 维护两个隐状态：一个存历史上下文、一个追踪近期，缓解短程偏置。DSLA-Serve 在推理时按层敏感性排序，逐步把 Transformer 层替换为 DSLA 层，并以链式微调使每新换层与已换层一致，动态负载下平衡效率与精度。",
+ "experiment_framework": "在常识推理、长上下文 QA、文本摘要上评测，对比 Llama2-7B 与混合架构基线；报告推理加速(较 Llama2-7B 2.3×、较混合架构 3.0×)与精度保持。",
+ "takeaways": [
+  "双态隐状态可缓解线性注意力的短程偏置",
+  "推理时按敏感性逐层蒸馏替换可在保持质量的同时显著加速长上下文服务"
+ ],
+ "weaknesses": [
+  "与可靠性/医学影像/多模态推理主线无关，属 LLM 推理效率",
+  "在线逐层蒸馏/微调增加系统复杂度，动态负载下的稳定性在已读部分披露有限",
+  "仅在 Llama2 类模型验证，跨架构泛化待考"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

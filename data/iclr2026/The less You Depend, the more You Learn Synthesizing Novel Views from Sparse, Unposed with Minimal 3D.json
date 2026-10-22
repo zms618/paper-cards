@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/The less You Depend, the more You Learn Synthesizing Novel Views from Sparse, Unposed with Minimal 3D.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The less You Depend, the more You Learn Synthesizing Novel Views from Sparse, Unposed with Minimal 3D.pdf",
+ "title": "The Less You Depend, the More You Learn: Synthesizing Novel Views from Sparse, Unposed Images with Minimal 3D Knowledge",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "用Transformer替代显式3D知识，在稀疏图像上做新视角合成",
+ "innovations": [
+  "系统对比偏置驱动（依赖显式3D知识）和数据驱动（从大规模图像隐式学习3D）两种NVS设计范式",
+  "提出减少显式3D依赖的方法：用可学习潜位姿替代SfM标注位姿，用Transformer可学习渲染替代预定义3DGS渲染",
+  "证明在稀疏无位姿图像设置下，减少3D知识依赖、更多从数据学习的范式更具可扩展性"
+ ],
+ "method_framework": "采用数据驱动的前馈NVS方法：不显式依赖SfM位姿标注和手工3D表示，而是用Transformer从稀疏输入图像中隐式学习3D结构和相机位姿。通过减少对显式3D知识的依赖，模型能更好地从大规模数据中学习。",
+ "experiment_framework": "在多个NVS基准数据集上评估，对比偏置驱动方法（3DGS+SfM）和数据驱动方法（纯Transformer）。指标包括新视角合成质量和稀疏/无位姿设置下的性能。",
+ "takeaways": [
+  "减少对显式3D知识的依赖，更多从数据中学习3D结构，在大规模数据时代更具可扩展性",
+  "稀疏无位姿图像设置下，纯数据驱动方法可以达到甚至超过依赖显式3D先验的方法",
+  "可学习潜位姿可以替代SfM标注，消除对外部位姿估计的依赖"
+ ],
+ "weaknesses": [
+  "与主线（医学影像/多模态大模型推理可靠性）完全无关，属于新视角合成/3D视觉",
+  "纯数据驱动方法依赖大规模训练数据，小数据场景下的优势未知",
+  "生成的3D结构可解释性和可控性不如显式3D表示"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "新视角合成与可靠性主线完全无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

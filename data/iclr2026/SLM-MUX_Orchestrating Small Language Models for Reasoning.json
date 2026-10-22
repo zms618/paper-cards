@@ -1,0 +1,41 @@
+{
+ "title": "SLM-MUX: Orchestrating Small Language Models for Reasoning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "SLM-MUX通过互补编排而非辩论提升小模型推理，但算力开销与主线相关性不足",
+ "innovations": [
+  "发现面向前沿模型的讨论式编排(辩论/多智能体)在小模型上引发群体思维、反降准确率超5%",
+  "提出避免模型间显式文本交换的多模型架构SLM-MUX，利用互补能力",
+  "配套两阶段优化：互补SLM选择搜索 + 面向SLM-MUX的测试时扩展，并给出理论分析"
+ ],
+ "method_framework": "三阶段：先用SLM-MUX多模型架构协调多个小模型且不做自然语言互答；再通过模型选择搜索从池中挑最互补的SLM组合；最后做适配该架构的测试时扩展，聚合互补能力而非辩论纠错。",
+ "experiment_framework": "在MATH/GPQA/GSM8K上对比既有编排方法；相对提升最高MATH 13.4%、GPQA 8.8%、GSM8K 7.0%；仅2个SLM即在GPQA/GSM8K上超过Qwen2.5-72B、MATH上持平；并扩展到HumanEval及前沿/领域微调模型。",
+ "takeaways": [
+  "小模型不具备可靠互纠能力，讨论式编排会放大错误而非纠错",
+  "通过架构化互补组合而非文本辩论，2个小模型即可匹敌72B级模型",
+  "编排核心原理可迁移到开放式生成与其他模型类别"
+ ],
+ "weaknesses": [
+  "仍属文本推理系统编排，未涉及多模态/医学影像或过程奖励、不确定性等可靠性主线",
+  "多模型推理带来额外的算力与调度开销，边缘部署的效率收益需重新核算",
+  "互补模型选择搜索的组合复杂度与可复现性在正文中描述有限"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/SLM-MUX_Orchestrating Small Language Models for Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SLM-MUX_Orchestrating Small Language Models for Reasoning.pdf",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "小模型互补编排提升推理，但未触及可靠性主线与落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

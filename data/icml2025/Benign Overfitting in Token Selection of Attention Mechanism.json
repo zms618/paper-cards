@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Benign Overfitting in Token Selection of Attention Mechanism.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Benign Overfitting in Token Selection of Attention Mechanism.pdf",
+ "title": "Benign Overfitting in Token Selection of Attention Mechanism",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "简化注意力模型下token选择拟合噪声仍泛化的现象，缺乏大规模验证。",
+ "innovations": [
+  "首次从良性过拟合视角分析注意力机制中的token选择行为",
+  "用信噪比(SNR)刻画token选择的良性过拟合现象，证明即使拟合标签噪声仍保持高泛化性能",
+  "发现泛化能力的延迟获取现象：注意力先拟合噪声token再逐步学习真实信号"
+ ],
+ "method_framework": "在带标签噪声的分类问题中分析注意力机制的token选择过程；通过SNR（信号噪声比）刻画训练动态；分析干净样本和噪声样本中token选择的差异及其对泛化的影响。",
+ "experiment_framework": "合成数据+真实数据；分析：训练动态追踪、SNR演化曲线；指标：泛化精度、token选择准确率；对比干净标签和噪声标签设置。",
+ "takeaways": [
+  "注意力机制的token选择实现良性过拟合，能拟合标签噪声同时保持良好泛化",
+  "SNR是刻画token选择学习过程的有效指标",
+  "泛化能力延迟获取：模型先记住噪声token，再逐步转向真实信号token"
+ ],
+ "weaknesses": [
+  "分析基于简化的注意力模型假设，真实Transformer中的复杂度更高",
+  "实证实验规模较小，未在大规模LLM上验证",
+  "噪声标签下的防御机制或改进方向未探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

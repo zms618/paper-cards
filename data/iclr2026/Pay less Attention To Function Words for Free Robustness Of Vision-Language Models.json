@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Pay less Attention To Function Words for Free Robustness Of Vision-Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Pay less Attention To Function Words for Free Robustness Of Vision-Language Models.pdf",
+ "title": "Pay Less Attention to Function Words for Free Robustness of Vision-Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 8.0,
+  "overall": 6.9
+ },
+ "one_line": "通过削弱功能词注意力提升VLM鲁棒性，几乎零性能代价。",
+ "innovations": [
+  "揭示功能词(语义稀疏但高频)因与图像语义间隙小而成为跨模态对抗扰动的易攻击目标，是VLM脆弱性来源。",
+  "提出FDA：受差分Transformer启发，在注意力头内计算原始与功能词跨模态注意力并差分相减，实现更鲁棒的跨模态对齐。",
+  "近乎零代价(检索仅0.2-0.6%性能下降)获得大幅鲁棒性提升，且可扩展/泛化/零样本。"
+ ],
+ "method_framework": "假设跨模态对抗扰动倾向被引向语义间隙更小的近邻token(即高频低语义的功能词)；在交叉注意力头内分别计算含全部token与仅功能词的注意力图，将后者差分减去，削弱图像对功能词的错误关注，从而提升图文对齐鲁棒性；无需对抗训练。",
+ "experiment_framework": "2个SoTA VLM基线、6种跨模态攻击、2个下游任务(检索/视觉定位)、3个数据集、3个模型；指标为攻击成功率ASR与干净性能；检索平均ASR降18/13/53%而性能仅降0.2/0.3/0.6%，视觉定位ASR降90%且性能反升0.3%；含消融与可扩展性/零样本分析。",
+ "takeaways": [
+  "功能词关注是VLM跨模态对抗脆弱性的关键且被忽视的通道。",
+  "FDA几乎无性能损失即可大幅降低ASR，规避了对抗训练的鲁棒-精度权衡。",
+  "方法可即插即用地迁移到多种VLM且支持零样本。"
+ ],
+ "weaknesses": [
+  "功能词列表需预先定义，跨语言/领域(如含专业术语的query)下功能词集合的迁移性未充分验证。",
+  "仅评估跨模态文本/词级攻击，对纯图像对抗扰动与物理世界攻击的覆盖有限。",
+  "差分相减的几何解释较直观，理论上为何不损害干净对齐的论证偏经验。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "提升VLM鲁棒性，明确触及可靠性主线与多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

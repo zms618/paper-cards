@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Show and Segment Universal Medical Segmentation via In-Context Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Show and Segment Universal Medical Segmentation via In-Context Learning.pdf",
+ "title": "Show and Segment Universal Medical Segmentation via In-Context Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "轻量级任务编码实现医学分割无微调适应，但机制深度不足。",
+ "innovations": [
+  "轻量级任务编码模块，从参考图像-标签对中提取任务特定信息",
+  "解耦任务编码与推理，支持多种灵活推理策略",
+  "对象级上下文选择机制，实现细粒度类别特定参考选择"
+ ],
+ "method_framework": "Iris框架包含任务编码模块和掩码解码模块。任务编码模块通过前景特征编码和上下文特征编码提取紧凑任务嵌入，掩码解码模块利用这些嵌入引导查询图像分割，支持单次推理、上下文集成、对象级上下文检索和上下文调优等多种策略。",
+ "experiment_framework": "在12个训练数据集和7个保留数据集上评估，包括分布内性能、分布外泛化和新类别适应性。基线包括任务特定模型、多任务通用模型、SAM及其医学变体以及上下文学习方法。指标为平均Dice分数。",
+ "takeaways": [
+  "解耦任务编码与推理的设计大幅提高计算效率",
+  "对象级上下文选择优于传统图像级检索，特别适合医学图像中多结构共存场景"
+ ],
+ "weaknesses": [
+  "任务编码模块可能无法捕捉非常复杂的解剖关系",
+  "在极端域移位场景下的性能仍有提升空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "医学分割无微调适应符合可靠性主线，但机制深度不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

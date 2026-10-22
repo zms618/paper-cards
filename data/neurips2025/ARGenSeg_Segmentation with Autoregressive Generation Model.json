@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/ARGenSeg_Segmentation with Autoregressive Generation Model.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/ARGenSeg_Segmentation with Autoregressive Generation Model.pdf",
+ "title": "ARGenSeg: Segmentation with Autoregressive Generation Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "自回归分割框架，多模态理解与像素级感知",
+ "innovations": [
+  "基于图像生成的分割框架，无需专用分割头",
+  "通用图像标记器实现像素级理解",
+  "多尺度并行预测策略提升推理速度"
+ ],
+ "method_framework": "ARGenSeg采用自回归图像生成范式，通过VQ-VAE将图像离散化为视觉标记，MLLM直接预测这些标记，实现分割任务。多尺度预测策略并行生成视觉标记，提升效率。",
+ "experiment_framework": "在RefCOCO/+/g、gRefCOCO等数据集上评估，使用cIoU/gIoU指标，与HiMTok、LISA等SOTA方法对比，并验证多模态理解和功能扩展能力。",
+ "takeaways": [
+  "统一框架可同时支持理解与生成任务",
+  "直接预测图像标记对像素级准确性至关重要",
+  "多尺度预测提升效率与鲁棒性"
+ ],
+ "weaknesses": [
+  "仅使用256×256分辨率输出",
+  "未充分验证在医学影像等特定领域的表现",
+  "依赖预训练模型，训练数据量仍较大"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

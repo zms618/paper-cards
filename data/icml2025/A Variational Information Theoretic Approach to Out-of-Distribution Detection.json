@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/A Variational Information Theoretic Approach to Out-of-Distribution Detection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/A Variational Information Theoretic Approach to Out-of-Distribution Detection.pdf",
+ "title": "A Variational Information Theoretic Approach to Out-of-Distribution Detection",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.3
+ },
+ "one_line": "变分信息论框架推导OOD特征塑形，理论解释现有方法并预测新函数。",
+ "innovations": [
+  "提出信息论损失泛函（KL散度分离ID/OOD分布 + 信息瓶颈压缩保留OOD信息）来构造OOD随机特征",
+  "用变分法推导优化过程，得到一维情形下可计算的OOD特征塑形函数",
+  "从理论上解释ReAct、FS-OPT等现有SoA方法的隐含假设，并预测出新的分段线性塑形函数"
+ ],
+ "method_framework": "将OOD特征建模为随机变量Z̃，定义条件分布p(z̃|z)。损失泛函包含两项：对称KL散度最大化以分离ID和OOD特征分布，信息瓶颈（IB）正则化以压缩特征同时保留OOD相关信息。用变分法求解无穷维优化问题，在一维情形下推导出解析解和分段线性塑形函数族。",
+ "experiment_framework": "在ImageNet-1k（8个OOD数据集）和CIFAR-10/100（8个OOD数据集）上测试，模型包括ResNet-50、MobileNet-v2、ViT-B-16、ViT-L-16、MLP-Mixer-Nano。基线包括Energy、ReAct、BFAct、VRA-P、FS-OPT、MSP、ODIN、ASH系列、DICE等。指标为FPR95。",
+ "takeaways": [
+  "基于信息论的变分框架可以统一解释多种现有OOD特征塑形方法，并揭示其隐含的OOD分布假设",
+  "理论预测的新分段线性塑形函数在ViT架构上取得SoA级别的OOD检测性能",
+  "IB正则化强度应随OOD数据噪声程度调整，更噪声的OOD数据集需要更高的IB正则化"
+ ],
+ "weaknesses": [
+  "理论推导目前仅适用于逐元素特征塑形，无法处理向量级或跨层方法如ASH",
+  "需要验证集来拟合ID/OOD分布参数，实际部署中OOD分布往往未知",
+  "在ResNet-50和MobileNet上的提升幅度相对有限，主要优势体现在ViT架构上"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.43,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "OOD检测与可靠性主线强交点，信息论框架具方法论价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

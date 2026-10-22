@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/IF-GUIDE Influence Function-Guided Detoxification of LLMs.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/IF-GUIDE Influence Function-Guided Detoxification of LLMs.pdf",
+ "title": "IF-GUIDE: Influence Function-Guided Detoxification of LLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "基于影响函数的LLM去毒，但依赖外部分类器且计算成本高",
+ "innovations": [
+  "提出影响函数引导的主动去毒框架IF-GUIDE",
+  "设计token级差异影响评分机制",
+  "开发基于惩罚的训练目标抑制有毒token",
+  "引入高效计算方法降低复杂度"
+ ],
+ "method_framework": "IF-GUIDE通过计算训练数据对模型毒性的影响分数，识别有毒token，并在训练过程中添加惩罚项抑制这些token的学习，实现主动去毒。",
+ "experiment_framework": "在Pythia和Llama-3.2系列模型上测试，使用RealToxicityPrompts、BOLD和AttaQ评估毒性，同时测量困惑度和LAMBADA准确率评估性能。",
+ "takeaways": [
+  "影响函数可用于识别训练数据中的有毒内容",
+  "token级差异评分比文档级过滤更有效",
+  "主动去毒比后处理方法更高效且鲁棒"
+ ],
+ "weaknesses": [
+  "依赖外部毒性分类器作为伪标签",
+  "计算复杂度仍然较高，尽管已有优化",
+  "仅在小规模数据集上验证，大规模训练效果未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

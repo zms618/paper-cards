@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/2nd_Online Curvature-Aware Replay Leveraging 2nd Order Information for Online Continual Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/2nd_Online Curvature-Aware Replay Leveraging 2nd Order Information for Online Continual Learning.pdf",
+ "title": "Online Curvature-Aware Replay: Leveraging 2nd Order Information for Online Continual Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "将OCL形式化为KL约束的二阶优化，用K-FAC预条件缓解遗忘并加速学习。",
+ "innovations": [
+  "把基于回放的OCL形式化为对回放数据施加显式KL散度约束的二阶在线联合优化问题。",
+  "提出OCAR，用K-FAC近似Fisher信息矩阵预条件梯度：FIM既作稳定器防遗忘，又在无干扰方向加速优化。",
+  "将FIM估计改造为适合非独立同分布数据流的持续学习设置，并揭示Tikhonov阻尼在稳定性-可塑性权衡中的作用。"
+ ],
+ "method_framework": "在每一步把当前数据流损失与回放数据上的KL约束联合优化；用K-FAC分解近似FIM作为预条件子对梯度做二阶修正，使参数在会引发遗忘的方向上更新被抑制、在不冲突方向上更新被加速；通过阻尼项调节稳定性与可塑性。",
+ "experiment_framework": "在Split-Cifar100(20任务)、Split-TinyImageNet(20任务)与CLEAR上评测；指标为WC-Acc(最坏精度/稳定性)、Acc、AAA、Probed Acc；对比ER、EWC、NGD等大量CL基线，并在凸设置下比较EWC/NGD/OCAR。",
+ "takeaways": [
+  "OCAR在WC-Acc等稳定性指标上优于现有SOTA在线持续学习方法，缓解任务边界处的稳定性缺口。",
+  "FIM预条件在抑制遗忘的同时于非干扰方向加速收敛，兼顾稳定性与可塑性。",
+  "Tikhonov阻尼的取值直接控制稳定性-可塑性权衡，为超参选择提供了理论指导。"
+ ],
+ "weaknesses": [
+  "K-FAC近似FIM带来额外的存储与计算开销，在大模型上的可扩展性未充分论证。",
+  "实验集中在Split-CIFAR/TinyImageNet/CLEAR等学术基准，未验证在真实大规模非平稳流上的效果。",
+  "二阶预条件对网络结构（如卷积/归一化层）的适用性与实现复杂度在正文着墨较少。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "在线持续学习属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

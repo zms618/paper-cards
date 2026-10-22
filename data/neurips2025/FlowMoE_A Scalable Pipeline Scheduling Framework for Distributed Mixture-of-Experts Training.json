@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/FlowMoE_A Scalable Pipeline Scheduling Framework for Distributed Mixture-of-Experts Training.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/FlowMoE_A Scalable Pipeline Scheduling Framework for Distributed Mixture-of-Experts Training.pdf",
+ "title": "FlowMoE: A Scalable Pipeline Scheduling Framework for Distributed Mixture-of-Experts Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "FlowMoE统一调度MoE任务，优化通信计算重叠",
+ "innovations": [
+  "统一调度MHA计算、门控计算、专家计算和A2A通信",
+  "基于张量分块的优先级调度机制重叠all-reduce通信",
+  "使用贝叶斯优化自动调整all-reduce张量分块大小"
+ ],
+ "method_framework": "FlowMoE构建统一管道调度多类型任务，将输入张量分割为R个子任务，通过优先级调度机制重叠计算与通信，并使用贝叶斯优化自动调整all-reduce张量分块大小",
+ "experiment_framework": "在两个GPU集群上测试675种典型MoE层配置和四种真实MoE模型，与ScheMoE、FSMoE、Tutel、FasterMoE和vanillaEP对比",
+ "takeaways": [
+  "多任务统一管道调度可显著提升效率",
+  "优先级调度机制有效重叠计算与通信",
+  "自适应参数调优框架减少人工调参"
+ ],
+ "weaknesses": [
+  "依赖特定硬件环境进行参数优化",
+  "与现有优化框架的兼容性需要进一步验证",
+  "在超大规模集群上的扩展性未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

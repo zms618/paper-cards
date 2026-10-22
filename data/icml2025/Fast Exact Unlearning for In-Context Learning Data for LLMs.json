@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Fast Exact Unlearning for In-Context Learning Data for LLMs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Fast Exact Unlearning for In-Context Learning Data for LLMs.pdf",
+ "title": "Fast Exact Unlearning for In-Context Learning Data for LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "用ICL替代SGD微调实现LLM精确遗忘，但性能与适用性受限",
+ "innovations": [
+  "揭示用ICL替代SGD微调可以实现高效精确遗忘：移除ICL示例即等价于精确遗忘",
+  "提出量化k-means方法压缩ICL示例，使遗忘操作接近常数时间",
+  "系统对比了ERASE与SISA等精确遗忘方法的整体成本，证明ICL方法在多数场景下更具成本效益"
+ ],
+ "method_framework": "传统LLM微调使用SGD更新模型权重，导致遗忘需要重训练(SISA等方法)。ERASE改用ICL来适配下游任务：将微调数据作为上下文示例放入prompt中。此时遗忘某条数据只需从示例集中移除该条，因为模型权重本身未改变。为减少上下文长度，用量化k-means将示例压缩为少量代表性原型。精确遗忘的定义：模型输出分布等价于从未见过该数据的模型。",
+ "experiment_framework": "在15个NLP任务上用LLaMA模型评估。对比方法：全量微调、SISA(sharded training)、ERASE(2-shot/3-shot/4-shot)。评估维度：(1)测试准确率；(2)遗忘成本(所需推理次数)；(3)整体成本效益分析。",
+ "takeaways": [
+  "ICL适配的精确遗忘成本几乎为零，远低于SGD微调后的遗忘成本",
+  "3-4-shot ERASE在超过一半任务上与SISA性能相当，但遗忘成本低得多",
+  "ICL方法的整体成本效益在大多数实际场景下优于SISA"
+ ],
+ "weaknesses": [
+  "ICL的性能通常低于全量SGD微调，在复杂任务上差距明显",
+  "仅验证了小规模任务(分类等)，对指令微调、RLHF等大规模对齐场景的适用性未知",
+  "上下文长度限制了可适配的数据量，不适合需要大量微调数据的任务"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

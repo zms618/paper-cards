@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/On Powerful Ways to Generate Autoregression, Diffusion, and Beyond.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/On Powerful Ways to Generate Autoregression, Diffusion, and Beyond.pdf",
+ "title": "On Powerful Ways to Generate: Autoregression, Diffusion, and Beyond",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "理论证明MDM通用性，提出any-process生成但实际增益未充分验证",
+ "innovations": [
+  "证明足够长上下文的 MDM 计算通用，解码步数达 PRAM 最优并行时间复杂度",
+  "证伪'任意序生成即更强'：控制其他因素后 MDM 的任意序灵活性并不扩大 ARM 已能求解的问题类",
+  "提出 any-process generation：在 MDM 上加入重掩蔽、插入、删除 token 的能力，支持自纠正、变长编辑与自适应并行"
+ ],
+ "method_framework": "从计算复杂性角度刻画非自回归生成：用 PRAM 并行时间界定 MDM 解码步数，证明其通用性；论证任意序生成相对 ARM 不增表达力；据此扩展 MDM 为 any-process generation，允许 remask/insert/delete，使生成过程可回溯修正而非单向。",
+ "experiment_framework": "理论为主，辅以在更难推理/结构化生成任务（代码、科学/分子等组合对象）上的经验验证；对比 ARM、vanilla MDM 与 any-process generation 在难题可解性上的差异。",
+ "takeaways": [
+  "MDM 的真正优势来自并行效率与计算通用性，而非任意序本身",
+  "重掩蔽/插入/删除等编辑能力是生成模型求解 ARM/vanilla MDM 难解推理问题的关键",
+  "面向代码/科学等天然非顺序演化对象的域，any-process generation 比单向自回归更合适"
+ ],
+ "weaknesses": [
+  "通用性结论依赖足够大上下文长度这一前提，实际有限上下文下的增益未充分量化",
+  "any-process generation 增加了训练与采样复杂度，正文未报告与 ARM 的效率对比常数",
+  "偏离可靠性/医学影像主线，属生成范式而非可信推理，相关性中等"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "生成范式与可靠性主线无关，仅理论贡献有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

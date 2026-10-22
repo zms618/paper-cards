@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Large Displacement Motion Transfer with Unsupervised Anytime Interpolation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Large Displacement Motion Transfer with Unsupervised Anytime Interpolation.pdf",
+ "title": "Large Displacement Motion Transfer with Unsupervised Anytime Interpolation",
+ "scores": {
+  "novelty": 4,
+  "depth": 5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 4.5
+ },
+ "one_line": "无监督插值分解大位移，但方法常规且与主线无关",
+ "innovations": [
+  "提出无监督anytime插值，在源图与驱动图间生成任意时刻的插值图，将大位移分解为小位移",
+  "设计选择器挑选兼顾身份保持与小驱动位移的最优插值图",
+  "双向训练策略为无真实标签的插值过程施加约束，并用预训练ViT设计约束损失保证图像质量"
+ ],
+ "method_framework": "在源图与驱动图间插值出中间帧序列以分解大位移；用选择器选最优插值图；以该图为新起点做小位移运动迁移；双向训练+ViT约束损失在无监督下生成合理插值图。",
+ "experiment_framework": "在运动迁移数据集上对比 FOMM/MRAA/TPSMM/CPABMM/CoP 等，报告运动相关指标与身份保持指标。",
+ "takeaways": [
+  "大位移运动可通过插值分解为小位移，降低估计难度",
+  "选择兼顾身份与小位移的插值图能显著改善迁移精度",
+  "无监督插值需双向训练与质量约束才能生成合理中间图"
+ ],
+ "weaknesses": [
+  "属视频运动迁移常规改进，与鲁棒性/多模态大模型主线无关",
+  "插值增加推理链路，前9页未见运行开销与时长分析",
+  "10页短文，方法细节与消融在正文中可能不完整"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

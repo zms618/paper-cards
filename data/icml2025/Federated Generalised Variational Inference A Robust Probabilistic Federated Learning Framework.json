@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Federated Generalised Variational Inference A Robust Probabilistic Federated Learning Framework.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Federated Generalised Variational Inference A Robust Probabilistic Federated Learning Framework.pdf",
+ "title": "Federated Generalised Variational Inference: A Robust Probabilistic Federated Learning Framework",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.75
+ },
+ "one_line": "FEDGVI扩展变分推断以处理误设，但计算开销高且与主线关联弱。",
+ "innovations": [
+  "提出对先验与似然误设均鲁棒的概率联邦学习框架FEDGVI",
+  "在模型误设下提供无偏预测,并给出校准的不确定性量化,弥补频率派/贝叶斯FL只给点估计的不足",
+  "将以往的分区变分推断(Partitioned VI)推广为允许鲁棒误设的一般化形式"
+ ],
+ "method_framework": "现有FL多在服务器平均更新,只给点估计,缺乏原则性不确定性量化,且对模型误设敏感。FEDGVI从广义变分推断出发,在联邦设定下融合各客户端后验/似然,使其对先验与似然误设都鲁棒,从而在误设仍给出无偏预测与校准良好的不确定度。",
+ "experiment_framework": "在多个联邦数据集上验证;基线为频率派FL与贝叶斯FL(含Partitioned VI);指标为预测精度、不确定性校准(如校准误差)与误设设定下的鲁棒性。",
+ "takeaways": [
+  "FEDGVI在先验/似然误设下仍保持预测无偏",
+  "提供校准的不确定性量化,优于只给点估计的FL",
+  "是对Partitioned VI在鲁棒误设方向的一般化推广"
+ ],
+ "weaknesses": [
+  "概率框架的计算/通信开销通常高于点估计FL",
+  "主线为概率联邦学习,与医学影像、多模态大模型推理主线不直接相关",
+  "校准收益在大模型/高维下的可扩展性需更多验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

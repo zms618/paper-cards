@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Zoo3D_Zero-Shot 3D Object Detection at Scene Level.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Zoo3D_Zero-Shot 3D Object Detection at Scene Level.pdf",
+ "title": "Zoo3D: Zero-Shot 3D Object Detection at Scene Level",
+ "scores": {
+  "novelty": 7,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "拼基础模型做零样本3D检测，但依赖封闭集且收益有限",
+ "innovations": [
+  "定义并首个解决零样本室内场景级3D目标检测：完全training-free(Zoo3D0)，只需冻结的SAM+CLIP，无需点云监督/图片标注/场景训练，且Zoo3D0超过所有自监督方法",
+  "新颖开放词汇命名模块：best-view selection+view-consensus mask生成，用多视图一致性消除CLIP单视图误判，而非朴素CLIP特征平均",
+  "输入模态降级：用DUSt3R从(有/无位姿)多视图图像桥接2D→3D，检测可直跑无位姿图片，比点云输入方法更易部署"
+ ],
+ "method_framework": "SAM多视图2D实例掩码→图聚类(跨视图掩码建图，连通分量/聚类)得3D框候选；CLIP在最佳视图打分+视图共识掩码聚合做开放词汇分类；Zoo3D1用Zoo3D0伪标签自监督训练class-agnostic检测器微调框。",
+ "experiment_framework": "ScanNet200/ARKitScenes四基准(mAP25等)×三模态(点云/posed图/unposed图)；对比OV-Uni3DETR/OpenM3D/自监督与LLM方法；Zoo3D0(训练无关)vs Zoo3D1(自监督)两级报告。",
+ "takeaways": [
+  "'组装基础模型即新能力'：SAM(分割)+CLIP(对齐)+DUSt3R(几何)三件套零训练拼出3D检测，'training-free'直接成为对比表中的新档次，范式对3D场景理解通用",
+  "'多视图共识消除单视图噪声'：开放词汇命名用best-view+consensus而非简单平均，对任何'多视图投票'型识别模块是稳健性改进",
+  "'监督降级谱系'：从全监督→自监督→零样本→无位姿的逐级放松框架，把'我们能多不要标注'变成可量化研究问题"
+ ],
+ "weaknesses": [
+  "依赖SAM/CLIP/DUSt3R的封闭集假设：未见类别(基础模型也不认识的物体/领域外场景)失败模式未分析；图聚类在遮挡/多物体粘连时的框质量无失败案例",
+  "自监督Zoo3D1的收益有限(ScanNet20 mAP25 27.9 vs 24.2)，'改进'在跨基准不总一致；无多种子/方差与统计检验",
+  "未与zero-shot单目3D检测(如GroundingDINO类2D改3D路线)对比边界；unposed模式的位姿由DUSt3R估计，误差传播对最终mAP的影响未量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D检测与可靠性主线无关，但多视图共识设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

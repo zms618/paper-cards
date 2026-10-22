@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/WOW-SEG_A Word-Free Open World Segmentation Model.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/WOW-SEG_A Word-Free Open World Segmentation Model.pdf",
+ "title": "WOW-Seg: A Word-Free Open World Segmentation Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "无词开放世界分割：掩码转视觉token对齐VLLM，级联注意力解耦实例干扰",
+ "innovations": [
+  "提出无词（word-free）开放世界分割范式：不依赖文本提示，直接接受任意形式视觉提示输出掩码和类别",
+  "Mask2Token模块：将输入掩码转换为与VLLM特征空间对齐的视觉token，实现分割与语义理解的统一",
+  "级联注意力掩码：解耦多掩码特征间的信息干扰，支持高效并行训练多实例分割"
+ ],
+ "method_framework": "VLM架构下，Mask2Token将图像掩码编码为视觉token并与VLLM特征空间对齐。级联注意力掩码在多实例场景下逐步解耦不同实例的特征，避免实例间干扰。模型可接受任意视觉提示（点、框、掩码），输出对应分割掩码和类别语义。",
+ "experiment_framework": "在LVIS开放世界分割基准上评估。对比基线包括SAM等基础分割模型和之前SOTA方法。指标为语义相似度和语义IoU。新构建RR-7K基准（7662类）评估区域识别能力。",
+ "takeaways": [
+  "无词范式消除了文本提示的依赖，使开放世界分割更通用",
+  "实例间特征干扰是开放世界分割的主要瓶颈之一，级联注意力掩码有效缓解",
+  "参数效率显著——1/8参数量即可超越之前SOTA"
+ ],
+ "weaknesses": [
+  "无词范式下类别标签如何生成和对齐到人类可理解的语义空间未充分讨论",
+  "仅在自然图像上验证，医学影像等专业领域的开放世界分割适用性未知",
+  "RR-7K为新构建数据集，其质量和与真实场景的代表性需社区进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.65,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "开放世界分割方法，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

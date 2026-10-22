@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/ClusterFusion_Expanding Operator Fusion Scope for LLM Inference via Cluster-Level Collective Primitive.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/ClusterFusion_Expanding Operator Fusion Scope for LLM Inference via Cluster-Level Collective Primitive.pdf",
+ "title": "ClusterFusion: Expanding Operator Fusion Scope for LLM Inference via Cluster-Level Collective Primitive",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "集群级通信原语优化LLM推理，但适用场景有限",
+ "innovations": [
+  "ClusterReduce和ClusterGather集群级通信原语",
+  "集群为中心的数据流设计",
+  "QKV投影、注意力和输出投影的融合执行"
+ ],
+ "method_framework": "提出集群级通信原语抽象，将线程块集群作为基本并行单元，联合调度计算和通信，实现多阶段算子融合",
+ "experiment_framework": "H100 GPU评估，对比SGLang、vLLM等基线，使用TPOT指标，测试Llama2-7B和DeepSeek-V2-Lite模型",
+ "takeaways": [
+  "集群级通信可显著减少内存访问",
+  "算子融合需考虑硬件特性优化",
+  "集群大小需根据工作负载调优"
+ ],
+ "weaknesses": [
+  "仅适用于支持集群架构的GPU",
+  "集群大小配置影响性能",
+  "未评估多batch场景"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

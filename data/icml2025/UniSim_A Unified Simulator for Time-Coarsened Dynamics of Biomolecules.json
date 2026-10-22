@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/UniSim_A Unified Simulator for Time-Coarsened Dynamics of Biomolecules.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/UniSim_A Unified Simulator for Time-Coarsened Dynamics of Biomolecules.pdf",
+ "title": "UniSim: A Unified Simulator for Time-Coarsened Dynamics of Biomolecules",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.25
+ },
+ "one_line": "跨分子模拟器，预训练+插值+力引导，但与主线关联弱",
+ "innovations": [
+  "多头预训练从大规模多样分子数据学习统一原子表示，实现跨域迁移",
+  "基于随机插值框架从MD轨迹学习长时步(tau)状态转移模式",
+  "引入力引导模块快速适配不同化学环境"
+ ],
+ "method_framework": "先多任务多头预训练统一原子表示；再以stochastic interpolant学习从当前分子态到长时步tau后状态的转移；力引导模块按化学环境快速校正，使大时步tau下仍保持物理约束稳定。",
+ "experiment_framework": "在小分子、肽、蛋白三类分子体系上评测时间粗粒度动力学模拟，对比F3low、MDGen等深度学习MD方法，指标为轨迹精度/效率，评估对未见分子体系的可迁移性。",
+ "takeaways": [
+  "跨域预训练统一原子表示提升了对不熟悉分子体系的可迁移性",
+  "随机插值+力引导实现比经典MD大得多的时间步，兼顾效率与精度",
+  "单一模型可覆盖小分子到蛋白多尺度体系"
+ ],
+ "weaknesses": [
+  "面向计算化学/MD，与主线(可靠性/医学影像/多模态推理)无直接关联",
+  "力引导模块依赖外部力场估计，引入额外计算与误差源",
+  "对超大蛋白/溶剂环境的长时稳定性与能量守恒未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Seeing through Deception Uncovering Mis-Leading Creator Intent In Multimodal News with Vision-Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Seeing through Deception Uncovering Mis-Leading Creator Intent In Multimodal News with Vision-Language Models.pdf",
+ "title": "Seeing through Deception: Uncovering Misleading Creator Intent in Multimodal News with Vision-Language Models (DeceptionDecoded)",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "构建意图引导的图文欺骗基准，评测VLM深层推理能力。",
+ "innovations": [
+  "指出现有MMD基准只抓表层跨模态错配、忽视创作者误导意图；形式化以意图为中心的多模态错误信息检测。",
+  "用意图引导仿真框架建模创作者的期望影响与执行计划，生成1.2万图文对（含误导/非误导、跨图文模态操纵）。",
+  "支持三任务：误导意图检测、误导来源归因、创作者欲望推断；发现14个SOTA VLM依赖表层线索、意图推理脆弱。"
+ ],
+ "method_framework": "以可信参考文章为基底，用意图引导仿真框架按'期望影响+执行计划'合成图文操纵案例；据此训练/评测VLM做蕴含层(implication-level)意图推理，而非表层跨模态对齐判断。",
+ "experiment_framework": "DeceptionDecoded含12000图文对；评测14个SOTA VLM；三意图中心任务；并验证在其上训练的模型向真实世界MMD的可迁移性。",
+ "takeaways": [
+  "现有VLM在多模态错误信息上依赖表层对齐/风格润色等浅层线索，意图推理能力脆弱。",
+  "意图导向的合成数据可提升模型在真实MMD上的鲁棒性。"
+ ],
+ "weaknesses": [
+  "以基准+数据合成框架为主，检测模型本身无新架构。",
+  "意图仿真依赖人工预设操纵模板，对新型话术的覆盖有限。",
+  "合成数据与真实误导之间的域差需更多真实案例验证。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态错误信息检测与可靠性主线相交，但未深入落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

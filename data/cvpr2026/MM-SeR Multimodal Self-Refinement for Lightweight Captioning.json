@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/MM-SeR Multimodal Self-Refinement for Lightweight Captioning.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/MM-SeR Multimodal Self-Refinement for Lightweight Captioning.pdf",
+ "title": "MM-SeR Multimodal Self-Refinement for Lightweight Captioning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "轻量多模态自优化框架，增加参数提升描述质量",
+ "innovations": [
+  "多模态自优化(MM-SeR)框架",
+  "伪初始 caption 训练策略",
+  "利用多层视觉特征进行细化"
+ ],
+ "method_framework": "MM-SeR框架采用两阶段生成：初始粗略描述后，利用初始caption引导注意力提取更精细视觉特征，通过SeR-Connector整合多层视觉特征进行自优化 refinement。",
+ "experiment_framework": "MS COCO/DCI/ShareGPT4V数据集，对比小型描述模型与MLLMs，使用CIDEr、MET、BERT、CLAIR、GPT-as-Judge等指标评估。",
+ "takeaways": [
+  "轻量模型(125M参数)在事实性描述任务中可媲美大型MLLM",
+  "伪初始caption训练策略有效引导模型自修正",
+  "多阶段人类视觉感知过程可提升模型可靠性"
+ ],
+ "weaknesses": [
+  "SeR-Connector增加50M参数和额外推理步骤",
+  "伪初始caption生成依赖GPT-4o-mini可能引入偏差",
+  "未充分探索不同视觉编码器的泛化能力"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "轻量多模态自优化框架，增加参数提升描述质量",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

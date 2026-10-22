@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MuseControlLite_Multifunctional Music Generation with Lightweight Conditioners.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MuseControlLite_Multifunctional Music Generation with Lightweight Conditioners.pdf",
+ "title": "MuseControlLite: Multifunctional Music Generation with Lightweight Conditioners",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.4
+ },
+ "one_line": "轻量条件器提升音乐控制精度，但适用性与交互性不足",
+ "innovations": [
+  "揭示位置编码在时变条件控制中的关键作用：仅添加旋转位置编码即可将旋律控制准确率从56.6%提升至61.1%",
+  "提出基于解耦交叉注意力的轻量微调机制，仅需85M可训练参数",
+  "支持多种时变音乐属性控制与参考音频信号的联合条件"
+ ],
+ "method_framework": "在预训练Stable Audio Open扩散Transformer基础上，在解耦交叉注意力层中添加轻量条件编码器；条件编码器接收时变音乐属性（旋律、节奏等）或参考音频信号；引入旋转位置编码使条件器感知时间序列结构。",
+ "experiment_framework": "在Stable Audio Open基础模型上验证；对比Music ControlNet、Stable Audio Open ControlNet等；指标为控制准确率、音乐质量、可训练参数量；覆盖旋律控制、音频修复（inpainting/outpainting）等任务。",
+ "takeaways": [
+  "位置编码是时变条件控制中被忽视的关键因素，简单添加即可显著提升控制精度",
+  "解耦交叉注意力比ControlNet的完整模型复制更高效，参数量减少6.75倍",
+  "轻量条件器设计降低了音乐生成模型可控性微调的门槛"
+ ],
+ "weaknesses": [
+  "仅在Stable Audio Open基础模型上验证，其他架构（如U-Net扩散）的适用性未讨论",
+  "控制精度（61.1%）仍有提升空间，与人工作曲的可控性差距较大",
+  "多种条件同时使用时的相互干扰未充分分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

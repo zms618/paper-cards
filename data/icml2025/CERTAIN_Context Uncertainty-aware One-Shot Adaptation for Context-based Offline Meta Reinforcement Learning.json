@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/CERTAIN_Context Uncertainty-aware One-Shot Adaptation for Context-based Offline Meta Reinforcement Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CERTAIN_Context Uncertainty-aware One-Shot Adaptation for Context-based Offline Meta Reinforcement Learning.pdf",
+ "title": "CERTAIN: Context Uncertainty-aware One-Shot Adaptation for Context-based Offline Meta Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "elevance": 5.5,
+  "evidence": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "解决COMRL上下文歧义/OOD问题，不确定性感知采集策略提升one-shot适应",
+ "innovations": [
+  "指出COMRL被忽视的上下文歧义与OOD会导致任务表示不可靠",
+  "在表示学习中引入异方差不确定性以识别歧义/OOD上下文",
+  "训练不确定性感知的上下文采集策略，主动采集更有信息量的上下文",
+  "可嵌入分类器/重建/对比等多种COMRL框架，one-shot提升36%、zero-shot提升34%"
+ ],
+ "method_framework": "在离线元训练中用异方差不确定性估计上下文任务表示的可靠性；在线适应时由不确定性感知的采集策略主动收集可降低歧义/规避OOD的上下文；据此推断更可靠任务表示以适配新任务，可叠加在不同COMRL骨干上。",
+ "experiment_framework": "在标准COMRL基准任务上，作为插件嵌入多种COMRL方法，与基线比较one-shot/zero-shot适应回报，含歧义/OOD上下文的不确定性估计与采集策略消融。",
+ "takeaways": [
+  "上下文歧义与OOD是one-shot适应性能瓶颈的常被忽视来源",
+  "显式不确定性估计与主动采集可显著改善适应可靠性",
+  "该思路与COMRL骨干正交，通用性强"
+ ],
+ "weaknesses": [
+  "落地域为离线元RL/机器人控制，非医学影像或多模态大模型推理",
+  "异方差不确定性的校准质量依赖离线数据集覆盖，极端OOD仍可能失效",
+  "主动采集策略引入额外在线交互，与‘纯离线/安全’设定存在张力"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

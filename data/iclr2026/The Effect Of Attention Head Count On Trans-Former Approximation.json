@@ -1,0 +1,41 @@
+{
+ "title": "The Effect of Attention Head Count on Transformer Approximation",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "人工函数类上证明头数不足导致参数指数膨胀，实验有限。",
+ "innovations": [
+  "引入广义 D-检索任务并证明其在连续函数空间中稠密，作为逼近理论的基础",
+  "建立 ε-逼近参数量的上下界：头数足够多时可高效逼近；头太少时参数量须至少按 O(1/ε^{cT}) 增长——据作者称是首个非线性且贴近实际设定下的此类严格下界",
+  "分析单头情形：嵌入维数需达 O(T) 才能完整记忆输入，此时逼近完全由前馈块承担"
+ ],
+ "method_framework": "以广义 D-检索任务为测试函数类，构造 Transformer 逼近给出上界；用信息论/计数论证证明头数不足时的参数量下界；再以单头极限情形说明记忆式逼近的代价；最后用合成与真实实验验证理论趋势。",
+ "experiment_framework": "理论给出上下界；辅以合成数据与真实任务实验，观察头数变化对逼近误差/参数效率的影响，验证头少导致参数代价膨胀的理论预测。",
+ "takeaways": [
+  "注意力头数是 Transformer 逼近效率的关键结构超参，头太少会带来指数级的参数代价",
+  "单头 Transformer 主要靠前馈块记忆输入来逼近，与多头注意力的机制不同",
+  "该上下界为‘为什么需要多头’提供了首个严格的非线性理论解释"
+ ],
+ "weaknesses": [
+  "理论建立在广义 D-检索这一人工函数类上，与真实 NLP/CV 任务的逼近难度之间的对应是类比性的，未直接桥接",
+  "实验仅用于定性印证理论趋势，规模有限，未与主流 Transformer 训练设定下的头数消融直接对接",
+  "relevance 给 4.5：属 Transformer 逼近论/表达力理论，与可靠性(验证/不确定性/幻觉)×落地域(医学影像/多模态推理)主线无关，按规则给低分"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/The Effect Of Attention Head Count On Trans-Former Approximation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The Effect Of Attention Head Count On Trans-Former Approximation.pdf",
+ "raw_overall": 5.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.5,
+ "relevance_reason": "Transformer逼近理论，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

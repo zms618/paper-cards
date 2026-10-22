@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Im a Map Interpretable Motion-Attentive Maps Spatio-Temporally Localizing Concepts in.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Im a Map Interpretable Motion-Attentive Maps Spatio-Temporally Localizing Concepts in.pdf",
+ "title": "Im a Map Interpretable Motion-Attentive Maps Spatio-Temporally Localizing Concepts in",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "IMAP在双流架构中实现运动概念时空定位，但泛化性有限",
+ "innovations": [
+  "GramCol空间定位方法",
+  "运动注意力头选择算法",
+  "IMAP时空定位图"
+ ],
+ "method_framework": "利用视频扩散模型的注意力机制，通过查询键匹配选择文本代理token，结合Gram矩阵生成空间定位图，并通过帧间分离分数选择运动注意力头实现时空定位",
+ "experiment_framework": "MeViS数据集(504视频，150种运动类型)，使用OpenAI o3-pro评估运动定位分数(MLS)，比较ViCLIP、VideoCrafter2+DAAM、CogVideoX+ConceptAttention等基线",
+ "takeaways": [
+  "利用注意力头分离分数选择运动相关注意力头",
+  "文本代理token避免跨模态特征相似计算问题",
+  "无需梯度计算或参数更新的训练自由方法"
+ ],
+ "weaknesses": [
+  "仅针对双流MM-DiT架构，未考虑交叉注意力模型",
+  "运动头选择可能遗漏某些重要运动特征",
+  "评估依赖LLM主观评分"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.375,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "运动概念定位与可靠性主线部分交织，但泛化性有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

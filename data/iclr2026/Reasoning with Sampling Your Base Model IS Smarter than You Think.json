@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Reasoning with Sampling Your Base Model IS Smarter than You Think.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reasoning with Sampling Your Base Model IS Smarter than You Think.pdf",
+ "title": "Reasoning with Sampling: Your Base Model is Smarter than You Think",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 7.0,
+  "overall": 6.0
+ },
+ "one_line": "MCMC启发采样免训练提升推理，但算力代价高且缺乏消融分析。",
+ "innovations": [
+  "提出纯推理时、免训练/免数据/免验证器的迭代采样算法，借鉴MCMC从锐化分布采样的思想，利用基座模型自身似然迭代细化。",
+  "实证表明该采样在MATH500、HumanEval、GPQA等单样本任务上接近甚至超过RL后训练(GRPO)，并在分布外任务上更优。",
+  "指出该采样避免了RL后训练在多样本上的多样性坍缩，且不依赖可验证奖励域，适用面更广。"
+ ],
+ "method_framework": "不做任何后训练，仅在推理时利用基座模型自身的token似然做迭代采样，类似MCMC对分布做锐化采样，把额外计算转化为单样本推理能力，无需验证器或标注数据。",
+ "experiment_framework": "在MATH500、HumanEval、GPQA等可验证推理任务与AlpacaEval2.0一般任务上，对比Base、GRPO(RL)与本文免训练采样，跨多个基座模型报告单样本精度与多样性。",
+ "takeaways": [
+  "基座模型在推理时经迭代锐化采样即可获得接近RL后训练的单样本推理能力，说明RL的收益很大程度是分布锐化而非全新能力。",
+  "该采样在分布外任务与保持多样性上优于RL后训练，且无需验证器，可用于难以自动验证的领域。"
+ ],
+ "weaknesses": [
+  "以额外推理算力换取性能，未报告与RL后训练相当的端到端算力/时延权衡。",
+  "前9页只见主结果图，缺少对采样步数、接受率等关键超参的消融与失败案例分析。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "免训练采样提升推理可靠性，但算力代价高且缺乏消融分析。",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

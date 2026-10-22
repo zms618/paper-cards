@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/LARGO_Latent Adversarial Reflection through Gradient Optimization for Jailbreaking LLMs.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/LARGO_Latent Adversarial Reflection through Gradient Optimization for Jailbreaking LLMs.pdf",
+ "title": "LARGO: Latent Adversarial Reflection through Gradient Optimization for Jailbreaking LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "潜空间梯度优化生成越狱提示，攻击成功率提升但缺乏防御方案。",
+ "innovations": [
+  "回到基于梯度的优化路线，但绕开离散语言空间不可导问题：在LLM连续潜空间优化对抗隐向量。",
+  "潜空间自反思：优化好的对抗隐向量再递归调用同一LLM解码成自然语言提示，兼顾梯度优化的高效与语言的流畅/隐蔽。",
+  "在AdvBench、JailbreakBench上攻击成功率比AutoDAN等领先方法高44点，且攻击可迁移、提示流畅隐蔽。"
+ ],
+ "method_framework": "把越狱目标(让模型输出有害内容)对连续潜表示求梯度，直接优化一个对抗隐向量使其诱导有害输出；再用同一LLM将该潜向量自回归解码为流畅自然语言提示；该提示既保持潜空间学到的攻击性，又对基于困惑度的检测隐蔽。",
+ "experiment_framework": "在AdvBench、JailbreakBench等标准越狱基准评测，对比GCG对抗后缀、AutoDAN遗传攻击、PAIR/AdvPrompter等LLM攻击；指标为攻击成功率(ASR)、提示流畅度/隐蔽性、跨模型可迁移性；报告比AutoDAN高44点ASR。",
+ "takeaways": [
+  "在连续潜空间做梯度优化、再解码为语言，可兼得梯度法的高效与LLM攻击的流畅，且提示更隐蔽。",
+  "LARGO在多个基准上大幅超过AutoDAN等主流越狱方法，是agentic LLM提示之外的强替代路线。"
+ ],
+ "weaknesses": [
+  "属攻击/红队工作，单边揭示漏洞而未提出对应防御方案，对安全加固的直接指导有限。",
+  "依赖白盒梯度访问，对仅API访问的黑盒场景不适用，实际可利用性受限。",
+  "对新提出的隐蔽性防御(如潜空间检测)是否同样绕过未充分评估。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.68,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

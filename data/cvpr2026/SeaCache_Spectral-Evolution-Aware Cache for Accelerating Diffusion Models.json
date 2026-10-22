@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/SeaCache_Spectral-Evolution-Aware Cache for Accelerating Diffusion Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SeaCache_Spectral-Evolution-Aware Cache for Accelerating Diffusion Models.pdf",
+ "title": "SeaCache Spectral-Evolution-Aware Cache for Accelerating Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "频谱演化缓存加速扩散模型，但计算开销与泛化性存疑",
+ "innovations": [
+  "提出频谱演化感知(SEA)滤波器",
+  "设计频谱感知的缓存决策机制",
+  "无需训练即插即用的加速方案"
+ ],
+ "method_framework": "通过FFT将特征转换到频域，应用时步依赖的SEA滤波器增强内容相关信号并抑制噪声，再通过iFFT返回空间域计算特征距离，实现动态缓存调度。",
+ "experiment_framework": "在FLUX.1-dev、HunyuanVideo和Wan2.1上与TeaCache、TaylorSeer等基线比较，使用PSNR、LPIPS、SSIM和CycleReward评估质量，测量延迟和TFLOPs。",
+ "takeaways": [
+  "频谱演化可作为扩散模型的重要先验",
+  "特征空间的选择对缓存效果至关重要",
+  "简单滤波操作可显著提升缓存策略效果"
+ ],
+ "weaknesses": [
+  "未探讨不同图像/视频类型的频谱演化差异",
+  "SEA滤波器的计算开销未充分分析",
+  "未在医学影像等特定领域验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型加速与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

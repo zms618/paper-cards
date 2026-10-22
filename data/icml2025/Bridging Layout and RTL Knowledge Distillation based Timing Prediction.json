@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Bridging Layout and RTL Knowledge Distillation based Timing Prediction.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Bridging Layout and RTL Knowledge Distillation based Timing Prediction.pdf",
+ "title": "Bridging Layout and RTL: Knowledge Distillation based Timing Prediction",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "跨阶段GNN蒸馏时序预测，依赖高成本教师，量化不足。",
+ "innovations": [
+  "提出跨阶段知识蒸馏框架RTLDistil，用布局感知GNN教师向RTL级GNN学生传递精确物理时序特征，弥合RTL表征与布局表征鸿沟。",
+  "多粒度蒸馏策略：在节点、子图、全局三个层次捕获时序关键特征。",
+  "在RTL级即可预测到达时间(AT)等关键时序指标，显著降低预测误差。"
+ ],
+ "method_framework": "将芯片设计中慢而准的布局级STA与时早但不准的RTL级建模统一为图神经网络：教师GNN在布局图上学习精确物理时序，学生GNN在RTL网表图上预测时序；通过节点/子图/全局多粒度特征对齐做知识蒸馏，使学生无需寄生参数即可获得接近教师的精度。",
+ "experiment_framework": "在公开RTL/布局电路数据集上训练，教师为布局级GNN、学生为RTL级GNN；基线为现有RTL级时序预测SOTA模型；指标为到达时间等关键时序指标的预测误差(相对降低)。报告RTLDistil相对SOTA的显著误差下降。",
+ "takeaways": [
+  "布局级物理时序知识可通过蒸馏迁移到RTL级，兼顾早设计阶段的速度与精度。",
+  "节点/子图/全局多粒度蒸馏对捕捉时序关键特征有效。",
+  "为EDA早期快速迭代提供了比完整STA更轻量的时序估计手段。"
+ ],
+ "weaknesses": [
+  "数据集与具体误差提升幅度在前9页内未给出完整数值表，结论量化不足。",
+  "蒸馏依赖强教师(布局级GNN/STA)，教师本身成本高，端到端收益需权衡。",
+  "属EDA芯片设计时序预测，与LLM/多模态推理、医学影像主线无交集。"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.43,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

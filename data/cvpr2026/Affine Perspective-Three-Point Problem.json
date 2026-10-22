@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Affine Perspective-Three-Point Problem.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Affine Perspective-Three-Point Problem.pdf",
+ "title": "Affine Perspective-Three-Point Problem",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "将仿射P3P转化为双二次方程，迭代修正提升精度但计算复杂度增加。",
+ "innovations": [
+  "统一弱透视和仿射透视P3P问题推导为双二次方程",
+  "轻量级迭代修正方法将仿射解升级为精确P3P解",
+  "在深度偏差小的情况下提供更简单稳定的计算方案"
+ ],
+ "method_framework": "通过质心偏移和零空间参数化统一弱透视和仿射透视P3P问题，推导出双二次方程求解，再通过迭代修正升级到精确P3P解。",
+ "experiment_framework": "合成数据评估深度偏差敏感性和图像噪声鲁棒性，RANSAC场景测试，EPOS和IMC2023数据集验证6D物体姿态估计和相机定位性能。",
+ "takeaways": [
+  "双二次方程求解比传统四次方程更简单稳定",
+  "两步迭代修正即可达到精确P3P解的性能",
+  "在深度偏差小的场景中，仿射近似可作为有效初始化"
+ ],
+ "weaknesses": [
+  "仿射近似在深度变化大的场景下性能显著下降",
+  "方法仅适用于已标定相机，未考虑未标定情况",
+  "迭代修正增加了计算复杂度，虽然仍比精确解快"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.875,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "纯计算机视觉几何问题，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Training-free Detection of Generated Videos via Spatial-Temporal Likelihoods.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Training-free Detection of Generated Videos via Spatial-Temporal Likelihoods.pdf",
+ "title": "Training-free Detection of Generated Videos via Spatial-Temporal Likelihoods",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "零样本视频检测方法，时空联合似然但静态视频受限",
+ "innovations": [
+  "时空联合似然模型，同时考虑帧内和帧间特征",
+  "基于高斯分布理论的零样本检测框架",
+  "引入归一化帧间差异处理时序信息",
+  "创建ComGenVid基准测试最新生成模型"
+ ],
+ "method_framework": "STALL使用DINOv3编码器提取帧嵌入，通过白化变换计算空间似然；归一化帧间差异并计算时序似然；最后通过百分位数归一化和融合得到最终视频级检测分数。",
+ "experiment_framework": "在VideoFeedback、GenVideo和ComGenVid三个基准测试上评估，对比6种基线方法（3种图像检测器和3种视频检测器），使用AUC和AP指标。",
+ "takeaways": [
+  "零样本检测框架避免了对生成数据的依赖，提高了泛化能力",
+  "时空联合建模比单独使用空间或时序信息更鲁棒"
+ ],
+ "weaknesses": [
+  "对完全静态视频的检测能力有限（退化为图像检测）",
+  "未探索不同编码器对性能的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频检测与可靠性主线无实质交点，仅零样本泛化有微弱迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

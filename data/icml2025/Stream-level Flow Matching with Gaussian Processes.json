@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Stream-level Flow Matching with Gaussian Processes.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Stream-level Flow Matching with Gaussian Processes.pdf",
+ "title": "Stream-level Flow Matching with Gaussian Processes",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "将高斯过程引入流匹配以降低向量场估计方差，但计算开销大且与主线无关。",
+ "innovations": [
+  "在流匹配中对连接源/目标端点的潜在随机路径（stream）施加高斯过程分布假设，做贝叶斯层级建模",
+  "利用 GP 的分布性质保持 CFM 的 simulation-free 训练特性",
+  "以中等计算代价降低所估计边缘向量场的方差，提升生成样本质量，并可灵活链接时间序列等多相关数据点"
+ ],
+ "method_framework": "把 CFM 的概率路径从单条确定性插值推广为端点间的潜在随机流，该流由 GP 分布建模；训练时从 GP stream 采样条件路径，回归其条件向量场，借 GP 的协方差结构降低 Monte Carlo 估计方差，同时避免昂贵的仿真求解。",
+ "experiment_framework": "通过模拟、图像生成与神经时间序列数据三类实验验证；对比标准 CFM/多边缘随机插值，报告样本质量（如 FID/NLL 类指标）与估计方差随 GP 设定的变化。",
+ "takeaways": [
+  "对“流”加 GP 先验能在不破坏 simulation-free 的前提下降低向量场估计方差",
+  "GP 层级建模让流匹配自然适配时间序列等多相关观测结构",
+  "方差降低直接转化为下游生成质量提升"
+ ],
+ "weaknesses": [
+  "与主线（鲁棒性/可信AI/医学影像/多模态推理）无关，属生成建模方法",
+  "GP 引入额外核函数超参与采样开销，计算复杂度增加需权衡",
+  "实证以图像与时间序列为主，未在大规模高分辨率生成上验证可扩展性"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

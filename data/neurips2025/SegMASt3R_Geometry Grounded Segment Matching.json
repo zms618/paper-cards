@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/SegMASt3R_Geometry Grounded Segment Matching.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/SegMASt3R_Geometry Grounded Segment Matching.pdf",
+ "title": "SegMASt3R: Geometry Grounded Segment Matching",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "基于MASt3R的分割匹配方法，室内场景几何一致性提升",
+ "innovations": [
+  "利用MASt3R的3D几何先验进行分割匹配",
+  "轻量级分割特征头将像素级特征转换为分割级描述符",
+  "可微分割匹配层处理极端视角变化"
+ ],
+ "method_framework": "基于冻结的MASt3R骨干网络，添加分割特征头将块级特征转换为分割级描述符，通过可微最优传输层建立跨图像分割对应关系",
+ "experiment_framework": "ScanNet++/Replica/MapFree数据集，对比局部特征匹配和分割匹配方法，使用AUPRC和Recall@k指标",
+ "takeaways": [
+  "3D几何先验对宽基线分割匹配至关重要",
+  "可微匹配层和dustbin机制处理无对应分割",
+  "模型对噪声分割具有鲁棒性"
+ ],
+ "weaknesses": [
+  "仅在室内场景训练，户外泛化能力有限",
+  "依赖外部分割器提供掩码，增加系统复杂性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

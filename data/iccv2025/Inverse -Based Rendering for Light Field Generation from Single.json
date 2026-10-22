@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/Inverse -Based Rendering for Light Field Generation from Single.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Inverse -Based Rendering for Light Field Generation from Single.pdf",
+ "title": "Inverse -Based Rendering for Light Field Generation from Single",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "iIBR通过逆渲染从单图像生成光场，但依赖深度估计且未测试真实到真实泛化",
+ "innovations": [
+  "逆图像渲染(iIBR)概念，从单图像重建光流",
+  "基于EPI的2D射线重建与亚像素精度处理",
+  "迭代式遮挡处理与更新机制",
+  "仅使用合成数据训练即可在真实数据上零样本工作"
+ ],
+ "method_framework": "iIBRnet采用光线变换器计算不同视角光线关系，结合深度估计和位置编码，通过加权聚合预测目标射线颜色，并迭代更新遮挡区域",
+ "experiment_framework": "在Pov-ray、Stanford、4DLF和LLFF数据集上评估，使用PSNR、SSIM和LPIPS指标，与SinMPI、TMPI、ZeroMVS和NViST等方法比较",
+ "takeaways": [
+  "EPI的斜率表示视差，可用于重建连续光线",
+  "光线坐标的表示和位置编码对几何一致性至关重要",
+  "迭代式更新机制确保多视角一致性"
+ ],
+ "weaknesses": [
+  "依赖深度估计模型，可能引入误差",
+  "遮挡处理使用潜在扩散模型，增加了计算复杂度",
+  "仅评估了合成到真实和合成到合成的泛化，未测试真实到真实"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "光场生成与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

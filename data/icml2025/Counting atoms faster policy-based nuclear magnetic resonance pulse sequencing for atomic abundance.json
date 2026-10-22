@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Counting atoms faster policy-based nuclear magnetic resonance pulse sequencing for atomic abundance.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Counting atoms faster policy-based nuclear magnetic resonance pulse sequencing for atomic abundance.pdf",
+ "title": "Counting atoms faster: policy-based nuclear magnetic resonance pulse sequencing for atomic abundance measurement",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "RL三智能体协作NMR脉冲序列设计，加速碳-13丰度测量",
+ "innovations": [
+  "首次将现代RL应用于NMR脉冲序列设计以加速原子丰度测量，区别于GRAPE的梯度优化",
+  "三智能体协作架构：(1)快速对齐自旋；(2)加速弛豫回平衡；(3)智能切换两者以最小化总测量时间",
+  "基于真实实验室咖啡因NMR光谱构建模拟器，Bloch方程建模+仪器噪声模拟"
+ ],
+ "method_framework": "NMR环境基于Bloch方程模拟核自旋动力学，状态为观测到的横向磁化(Mx,My)和仪器温度。三个智能体分工：对齐智能体施加脉冲将自旋翻到横向平面以最大化信号；弛豫智能体施加脉冲加速自旋回到平衡态；切换智能体在两者间切换时机。目标是在最短时间内获得足够信噪比的丰度测量信号。",
+ "experiment_framework": "在低场NMR模拟器上评测；基线为传统脉冲序列(如π/2单脉冲)；任务为咖啡因水中碳-13丰度定量；指标为达到目标信噪比所需时间；消融分析各智能体贡献。",
+ "takeaways": [
+  "RL优化的脉冲序列比传统固定脉冲序列显著缩短测量时间",
+  "多智能体分工(对齐+弛豫+切换)比单智能体端到端策略更有效",
+  "方法不依赖精确物理模型，可直接在真实样本上训练"
+ ],
+ "weaknesses": [
+  "仅在模拟环境验证，真实NMR硬件上的效果未涉及",
+  "简化为2D Bloch方程，忽略了化学位移和耦合等复杂效应",
+  "仅在碳-13单一核素上验证，对多核素同时测量的扩展性未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

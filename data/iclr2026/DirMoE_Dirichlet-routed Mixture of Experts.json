@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/DirMoE_Dirichlet-routed Mixture of Experts.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/DirMoE_Dirichlet-routed Mixture of Experts.pdf",
+ "title": "DirMoE: Dirichlet-routed Mixture of Experts",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "解耦MoE路由的常规方法，语言模型实验有限。",
+ "innovations": [
+  "将专家选择与贡献分配解耦为伯努利和狄利克雷两个组件",
+  "引入可调节稀疏性控制参数λ",
+  "使用Gumbel-Sigmoid和隐式重参数化实现端到端可微分"
+ ],
+ "method_framework": "基于变分自编码框架，将路由分解为专家选择(伯努利)和专家贡献(狄利克雷)两个组件，通过归一化Hadamard积组合，实现端到端可微分路由。",
+ "experiment_framework": "在Pile数据集上训练LLaMA-185M模型，评估零样本准确率和专家专业化程度，与Switch MoE、ReMoE等方法对比。",
+ "takeaways": [
+  "解耦专家选择与贡献分配可提升专家专业化",
+  "狄利克雷分布提供可解释的稀疏性控制",
+  "无需显式负载均衡损失即可实现专家专业化"
+ ],
+ "weaknesses": [
+  "实验主要在语言模型上进行，未涉及医学影像或多模态大模型推理",
+  "理论分析与实验验证的深度有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "MoE解耦设计有可靠性价值，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

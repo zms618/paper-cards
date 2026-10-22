@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Invariance Makes LLM Unlearning Resilient Even to Unanticipated Downstream Fine-Tuning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Invariance Makes LLM Unlearning Resilient Even to Unanticipated Downstream Fine-Tuning.pdf",
+ "title": "Invariance Makes LLM Unlearning Resilient Even to Unanticipated Downstream Fine-Tuning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "将IRM原理引入LLM遗忘，提出ILU框架抵抗下游微调复活知识。",
+ "innovations": [
+  "首次把不变性原理引入机器遗忘，针对现有遗忘会被下游微调‘复活’这一脆弱性设计鲁棒优化目标。",
+  "提出 ILU 正则化框架，仅用单一训练数据集即可泛化到多种下游微调任务（数学、改写检测、情感分析）。",
+  "提供任务向量(task vector)分析解释 ILU 为何有效，并在 WMDP/MUSE 上全面超越 NPO、RMU 等 SOTA。"
+ ],
+ "method_framework": "受不变风险最小化(IRM)启发，在遗忘目标上加入不变性正则，迫使被擦除知识对应的方向在跨‘域’（模拟下游微调扰动）下保持一致地不可恢复；相较元学习避免了梯度展开的高代价，得到轻量正则方案；用任务向量分解剖析机制。",
+ "experiment_framework": "在 WMDP 与 MUSE 遗忘基准上评测；基线为 NPO、RMU 等 SOTA 遗忘方法；协议为遗忘后再做多种下游微调（数学、改写检测、情感分析），度量遗忘鲁棒性（知识是否复活）与下游效用保留。",
+ "takeaways": [
+  "现有遗忘方法对下游微调极脆弱，即使无关任务也能让被擦除知识复活。",
+  "引入不变性正则可让遗忘在多种未见过的微调场景下保持永久且不损下游效用。"
+ ],
+ "weaknesses": [
+  "‘域’的构造如何真实反映工业流水线中不可预知的微调分布，缺乏直接刻画。",
+  "不变性正则引入的额外训练代价与超参敏感度未充分量化。",
+  "对版权/安全等真实高风险场景的端到端合规有效性未直接验证。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

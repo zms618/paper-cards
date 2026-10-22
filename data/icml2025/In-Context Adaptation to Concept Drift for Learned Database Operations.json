@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/In-Context Adaptation to Concept Drift for Learned Database Operations.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/In-Context Adaptation to Concept Drift for Learned Database Operations.pdf",
+ "title": "In-Context Adaptation to Concept Drift for Learned Database Operations",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "FLAIR利用数据库即时反馈做动态上下文记忆，避免重训练以应对概念漂移。",
+ "innovations": [
+  "为学习型数据库操作提出in-context适配新范式：把适配形式化为 f(x|Ct)->y，Ct为动态上下文记忆，运行时不做参数优化",
+  "利用数据库执行结果立即可得的天然特性构造动态上下文，避免传统重训练/微调的延迟与开销",
+  "设计任务特征化模块与经贝叶斯元训练预训练的动态决策引擎，运行时凭上下文信息无缝适配"
+ ],
+ "method_framework": "FLAIR由两模块组成：任务特征化模块将特定数据库任务编码为标准表示；动态决策引擎经贝叶斯元训练预训练，运行时把近期可得的执行结果组织成动态上下文记忆Ct，对新输入条件化预测，无需运行时参数更新。",
+ "experiment_framework": "在多种学习型数据库操作（查询优化、索引、负载预测等）上与重训练/迁移学习/主动学习等漂移适配基线对比；考察漂移下的预测精度与运行时开销。",
+ "takeaways": [
+  "利用执行结果即时构造上下文可在不重训练的前提下让学习型数据库模型跟上概念漂移",
+  "贝叶斯元训练预训练的决策引擎可仅凭运行时上下文实现无缝适配，显著降低运行时开销",
+  "FLAIR在漂移下持续优于依赖静态映射与延迟重训练的传统适配方法"
+ ],
+ "weaknesses": [
+  "方法依赖执行结果能即时回流的数据库设定，对离线/批处理场景适用性受限",
+  "动态上下文记忆Ct的容量与过期策略对长期漂移的影响未充分分析",
+  "系统复杂度较高，在真实生产数据库中的部署成本与稳定性缺乏长期验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

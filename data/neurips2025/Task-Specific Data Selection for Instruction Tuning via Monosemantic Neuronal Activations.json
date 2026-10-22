@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Task-Specific Data Selection for Instruction Tuning via Monosemantic Neuronal Activations.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Task-Specific Data Selection for Instruction Tuning via Monosemantic Neuronal Activations.pdf",
+ "title": "Task-Specific Data Selection for Instruction Tuning via Monosemantic Neuronal Activations",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "基于单义神经元激活的数据选择方法，提升指令微调性能",
+ "innovations": [
+  "使用稀疏自编码器将多义神经元激活解耦为单义表示",
+  "提出针对单义激活空间的专用相似度度量",
+  "模型中心的数据选择策略直接反映内部计算动态"
+ ],
+ "method_framework": "MONA方法通过稀疏自编码器将多义神经元激活转换为单义表示，聚合token级激活形成样本嵌入，使用广义Jaccard相似度度量样本与任务原型相似度进行数据选择。",
+ "experiment_framework": "在OPENHERMES-2.5和LESS数据集上评估，使用LLaMA3.1-8B和OLMo-7B模型，在MMLU、GSM8K等6个任务上测试，与多种基线方法比较。",
+ "takeaways": [
+  "单义神经元激活能有效提升数据选择质量和下游任务性能",
+  "模型中心的数据选择策略优于传统数据中心方法",
+  "稀疏参数K和层选择对性能有显著影响"
+ ],
+ "weaknesses": [
+  "计算开销较大，需要训练和部署稀疏自编码器",
+  "仅关注语言模型，未扩展到多模态场景",
+  "对特定任务(如TydiQA)的提升有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

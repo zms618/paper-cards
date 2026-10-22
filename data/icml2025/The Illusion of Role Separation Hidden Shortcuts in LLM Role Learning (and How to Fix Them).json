@@ -1,0 +1,37 @@
+{
+ "title": "The Illusion of Role Separation: Hidden Shortcuts in LLM Role Learning (and How to Fix Them)",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 6.5,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "揭示LLM角色学习依赖捷径而非真正区分，提出position ID修复方案",
+ "innovations": [
+  "区分两个假设(真角色区分 vs 仅对攻击特征做模式匹配)，并设计仅用 benign 数据训练、对抗样本测试的受控框架来证伪'真正学会角色'",
+  "识别出模型用于角色识别的两个隐藏捷径代理：任务类型利用(task type exploitation)与靠近文本起始位置(proximity to BOS)",
+  "提出在输入编码层调整 token 级线索(修改 position IDs)以强化角色边界不变信号，缓解对表面代理的依赖"
+ ],
+ "method_framework": "聚焦闭域设定(system 为指令、user 为数据)，仅在 benign 数据上训练、用对抗样本评测，从而剥离攻击特征匹配这一混淆因素；通过系统扰动任务类型与 token 位置，定位模型依赖的代理信号，并通过修改 position IDs 增强角色边界的不变表示。",
+ "experiment_framework": "闭域角色分离设定；训练仅用 benign 数据、测试用对抗样例以防止靠攻击 token 过拟合；对比数据增广(被证明只能迭代式打补丁)与修改 position ID 两种修复路径，考察跨角色边界的泛化表现。",
+ "takeaways": [
+  "现有 prompt injection 防御很大程度是记忆已知触发器，而非真正学会角色区分",
+  "数据增广只能带来迭代式打补丁，不能从根本上修复角色混淆",
+  "在输入编码层调整 position IDs 能帮助模型学到更清晰的角色边界、减少对表面代理的依赖"
+ ],
+ "weaknesses": [
+  "仅聚焦闭域两角色设定，显式排除了 open-domain，覆盖范围受限",
+  "修复手段(改 position ID)的跨模型/跨规模普适性证据在前9页有限",
+  "缺少对真实工业级多角色系统(含 tool output)的端到端安全评测"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/The Illusion of Role Separation Hidden Shortcuts in LLM Role Learning (and How to Fix Them).pdf",
+ "conf": "icml2025",
+ "path": "icml2025/The Illusion of Role Separation Hidden Shortcuts in LLM Role Learning (and How to Fix Them).pdf",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

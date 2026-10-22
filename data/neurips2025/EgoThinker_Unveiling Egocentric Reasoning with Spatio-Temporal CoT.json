@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/EgoThinker_Unveiling Egocentric Reasoning with Spatio-Temporal CoT.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/EgoThinker_Unveiling Egocentric Reasoning with Spatio-Temporal CoT.pdf",
+ "title": "EgoThinker: Unveiling Egocentric Reasoning with Spatio-Temporal CoT",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "构建数据集与两阶段训练提升MLLM以推理能力",
+ "innovations": [
+  "构建EgoRe-5M大规模以QA数据集，包含CoT和细粒度时空标注",
+  "两阶段训练范式：SFT建立基础推理能力，RFT增强时空定位能力",
+  "设计基于GRPO的强化微调方法，结合格式奖励和IoU奖励提升模型性能"
+ ],
+ "method_framework": "EgoThinker框架通过构建EgoRe-5M数据集和两阶段训练范式，使MLLM具备以推理能力。首先使用SFT在混合数据上建立基础能力，然后通过GRPO方法在细粒度定位数据上进行RFT，增强时空推理和因果推断能力。",
+ "experiment_framework": "在多个以视频基准(EgoTaskQA、QAEgo4D等)、跨视角技能转移(RES)、细粒度时空定位(EK-Visor、EgoExoLearn)和通用视频理解(MVBench等)上评估，并与多个基线模型比较。",
+ "takeaways": [
+  "大规模数据集构建方法：多阶段过滤管道从网络视频中提取高质量以视频",
+  "两阶段训练策略：结合SFT和RFT有效耦合高层推理与低层定位",
+  "基于规则的可验证奖励设计：格式奖励和IoU奖励提升模型输出质量"
+ ],
+ "weaknesses": [
+  "数据集依赖自动标注，可能存在噪声和偏差",
+  "实验主要基于7B模型，未展示更大规模模型的性能",
+  "未充分分析模型在不同以场景下的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

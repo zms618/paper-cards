@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Galileo Learning Global & Local Features of Many Remote Sensing Modalities.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Galileo Learning Global & Local Features of Many Remote Sensing Modalities.pdf",
+ "title": "Galileo: Learning Global & Local Features of Many Remote Sensing Modalities",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "多模态Transformer统一遥感，双对比损失提升多任务性能",
+ "innovations": [
+  "用单一自监督算法统一多种遥感模态与输入形态(影像时序与像素时序)",
+  "设计全局与局部双对比损失：目标分别针对深层表示与浅层输入投影，掩码策略分别为结构化与非结构化",
+  "Galileo单通用模型同时处理多尺度对象(从1像素小船到千米级冰川)，在11个基准多任务上超越专用模型"
+ ],
+ "method_framework": "用掩码建模从灵活的多模态输入中提取多尺度特征。全局对比学习对齐深层表示(结构化掩码)，局部对比学习对齐浅层输入投影(非结构化掩码)，二者分别捕捉大尺度与小尺度对象特征，统一多光谱光学、SAR、高程、气象、伪标签等模态。",
+ "experiment_framework": "在11个遥感基准、多任务(作物制图、洪水检测等)上，将Galileo作为预训练特征/微调，对比此前各模态专用SSL模型与SOTA专用模型，报告下游精度。",
+ "takeaways": [
+  "统一多模态掩码建模可得到跨遥感模态的通用表示",
+  "全局+局部双对比损失分别捕捉大/小尺度对象",
+  "单通用模型Galileo在11个基准上超越专用SOTA"
+ ],
+ "weaknesses": [
+  "面向遥感，与医学影像、多模态大模型推理主线关联较弱",
+  "多模态对齐依赖模态共现，缺失模态场景鲁棒性需进一步验证",
+  "前9页内对极端尺度对象(单像素目标)的检测失效分析有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

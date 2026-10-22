@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Fine-structure Preserved Real-world Super-resolution via Transfer VAE Training.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Fine-structure Preserved Real-world Super-resolution via Transfer VAE Training.pdf",
+ "title": "Fine-structure Preserved Real-world Super-resolution via Transfer VAE Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "迁移VAE训练提升扩散模型超分辨率的细结构保留",
+ "innovations": [
+  "Transfer VAE Training (TVT)策略将8×下采样VAE转换为4×下采样VAE",
+  "紧凑型VAE-D4设计减少参数量和计算量",
+  "计算高效的UNet设计处理高分辨率特征"
+ ],
+ "method_framework": "TVT采用两阶段训练：先训练VAE-D4解码器基于原始VAE-D8编码器输出，再固定解码器训练VAE-D4编码器，保持与原始潜在空间对齐的同时增强图像细节",
+ "experiment_framework": "在DIV2K-val、RealSR、DRealSR和RealCE数据集上与StableSR、DiffBIR、SeeSR、PASD、S3Diff、OSEDiff等方法对比，使用PSNR、SSIM、LPIPS、ACC、NED等指标",
+ "takeaways": [
+  "两阶段VAE迁移训练策略可有效保留细结构",
+  "通过复制UNet首尾层并集成到原始UNet中可高效处理高分辨率特征"
+ ],
+ "weaknesses": [
+  "仅针对扩散模型在超分辨率任务中的细结构问题，方法适用范围有限",
+  "未充分讨论方法在不同压缩比下的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "超分辨率任务与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

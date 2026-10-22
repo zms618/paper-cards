@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Generative Video Bi-flow.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Generative Video Bi-flow.pdf",
+ "title": "Generative Video Bi-flow",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "双流ODE框架提升视频生成效率，但复杂度与泛化性存疑",
+ "innovations": [
+  "双线性流匹配目标函数，结合时间推进与去噪",
+  "联合采样模式解决误差累积问题",
+  "从前一帧直接生成下一帧而非从噪声开始，提高效率"
+ ],
+ "method_framework": "基于神经ODE流，结合时间预测流f_v和去噪流f_n，通过双线性插值扩大训练空间覆盖，实现稳定的长视频流式生成。",
+ "experiment_framework": "在6个视频数据集上评估，对比条件扩散模型和单一流模型，使用FVD和计算步数作为指标，测试不同噪声水平下的性能。",
+ "takeaways": [
+  "双流框架有效解决视频生成中的误差累积问题",
+  "联合采样模式提供质量与计算效率的灵活权衡"
+ ],
+ "weaknesses": [
+  "方法复杂度较高，需要同时训练两个流场",
+  "噪声水平ϵ需要针对不同数据集调整，缺乏自适应机制"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

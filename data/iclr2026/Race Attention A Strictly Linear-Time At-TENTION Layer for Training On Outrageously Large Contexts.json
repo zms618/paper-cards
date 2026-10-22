@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Race Attention A Strictly Linear-Time At-TENTION Layer for Training On Outrageously Large Contexts.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Race Attention A Strictly Linear-Time At-TENTION Layer for Training On Outrageously Large Contexts.pdf",
+ "title": "Race Attention: A Strictly Linear-Time Attention Layer for Training on Outrageously Large Contexts",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "线性注意力机制，精度提升有限，与可靠性主线关联弱。",
+ "innovations": [
+  "提出RACE Attention：以锐化角相似替代softmax的指数核，用高斯随机投影+软(可微)LSH估计注意力输出，无需构建完整注意力矩阵。",
+  "对序列长度与嵌入维严格线性，突破FlashAttention在约400万token即无法单步前向反向的瓶颈。",
+  "在单注意力层受控扩展研究中，GH200上单步处理1200万token、CPU上处理7500万token。"
+ ],
+ "method_framework": "把softmax注意力改写为角相似核形式，用高斯随机投影近似核特征，再用软LSH把query/key分到桶内统计碰撞概率聚合输出，全程不显式展开O(n^2)注意力矩阵，得到线性复杂度。",
+ "experiment_framework": "在语言建模、掩码语言建模与文本/图像分类上对比强基线(含FlashAttention)，报告至64K序列的精度、墙钟时间与显存，并做单层层的超长上下文(12M/75M token)扩展研究。",
+ "takeaways": [
+  "软LSH+高斯随机投影可在保持精度(至64K匹配/超过强基线)的同时把注意力复杂度降到线性。",
+  "RACE在单步前向反向中可处理千万级token，为超长上下文训练提供了现有硬件上可行的注意力机制。"
+ ],
+ "weaknesses": [
+  "属高效注意力/长上下文机制方向，与可靠性主线（鲁棒/可信/医学影像）关联弱。",
+  "线性注意力在精确检索/近邻复制任务上的固有劣势未在正文充分讨论，精度提升主要体现在64K以内。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "高效注意力机制，与可靠性主线关联弱但方法有价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

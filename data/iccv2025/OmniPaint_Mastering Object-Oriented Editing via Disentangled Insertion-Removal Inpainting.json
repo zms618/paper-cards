@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/OmniPaint_Mastering Object-Oriented Editing via Disentangled Insertion-Removal Inpainting.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/OmniPaint_Mastering Object-Oriented Editing via Disentangled Insertion-Removal Inpainting.pdf",
+ "title": "OmniPaint Mastering Object-Oriented Editing via Disentangled Insertion-Removal Inpainting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "基于FLUX的扩散模型实现物体移除与插入，但配对数据有限",
+ "innovations": [
+  "将物体移除与插入重构为相互依赖的过程",
+  "CycleFlow机制利用未配对数据训练",
+  "CFD无参考评估指标"
+ ],
+ "method_framework": "基于FLUX扩散模型，通过LoRA参数高效微调，采用三阶段训练：预训练、配对预热和CycleFlow未配对后训练",
+ "experiment_framework": "300样本移除测试集，对比LaMa、MAT、SD-Inpainting等方法，使用FID、CMMD、CFD、ReMOVE等指标",
+ "takeaways": [
+  "移除与插入作为互补逆问题可相互增强",
+  "利用已训练的移除参数作为插入预处理步骤",
+  "无参考评估指标对物体移除质量更有效"
+ ],
+ "weaknesses": [
+  "仅使用3K真实配对样本，可能限制泛化能力",
+  "未充分讨论计算效率与推理时间",
+  "CFD指标依赖SAM分割，可能受分割质量影响"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "图像编辑技术，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

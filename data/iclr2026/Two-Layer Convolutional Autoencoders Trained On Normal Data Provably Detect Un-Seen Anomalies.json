@@ -1,0 +1,41 @@
+{
+ "title": "Two-Layer Convolutional Autoencoders Trained On Normal Data Provably Detect Un-Seen Anomalies",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.4
+ },
+ "one_line": "理论解释2层卷积自编码器为何重建正常数据优于异常",
+ "innovations": [
+  "针对实证成功但理论匮乏的重建式异常检测(RBAD)，首次给出 2 层卷积自编码器的训练动态理论分析。",
+  "引入特征的锥集(cone set)概念，证明训练过程中卷积核被正常特征的锥集吸收、并逐渐对齐到正常特征方向。",
+  "据此解释正常与异常之间重建误差差别的成因，回答模型如何学特征、特征在重建中的作用、为何异常更难重建三问。"
+ ],
+ "method_framework": "把图像建模为 patch 阵列，patch=特征+噪声；正常数据 patch 服从某分布，异常=把部分正常 patch 替换为异常 patch。分析带 max-pool 的 2 层卷积自编码器梯度下降训练动态，用锥集刻画随迭代变尖、核被吸收并对齐正常特征，进而异常 patch 无法被对齐的核良好重建。",
+ "experiment_framework": "以合成实验验证理论发现，并在真实数据上可视化自编码器训练动态以佐证锥集直觉。",
+ "takeaways": [
+  "重建式异常检测之所以有效，源于训练中卷积核被正常特征的锥集吸收并对齐。",
+  "被吸收的核高度对齐正常特征方向，故异常 patch 重建误差更大、可被阈值检出。",
+  "锥集随迭代变尖，提供了解释 RBAD 重建误差鸿沟的机制。"
+ ],
+ "weaknesses": [
+  "理论限于 2 层卷积自编码器与信号-噪声简化数据模型，到深层/真实架构的可推广性未证。",
+  "实证以合成实验为主，真实数据仅做可视化，缺乏与 SOTA 异常检测方法的定量对比。",
+  "属纯理论分析，未涉及医学影像/多模态大模型推理，与目标落地主线相关性有限；完整证明细节在附录未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Two-Layer Convolutional Autoencoders Trained On Normal Data Provably Detect Un-Seen Anomalies.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Two-Layer Convolutional Autoencoders Trained On Normal Data Provably Detect Un-Seen Anomalies.pdf",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "异常检测属可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

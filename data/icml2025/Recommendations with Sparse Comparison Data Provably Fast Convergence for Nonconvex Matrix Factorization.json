@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Recommendations with Sparse Comparison Data Provably Fast Convergence for Nonconvex Matrix Factorization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Recommendations with Sparse Comparison Data Provably Fast Convergence for Nonconvex Matrix Factorization.pdf",
+ "title": "Recommendations with Sparse Comparison Data: Provably Fast Convergence for Nonconvex Matrix Factorization",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "理论分析非凸矩阵分解在稀疏比较数据下的收敛性，缺乏实证验证。",
+ "innovations": [
+  "把协同推荐扩展到成对比较反馈：用户-物品效用由低维隐向量内积给出，比较结果由离散选择模型决定，据此构造 MLE",
+  "证明该非凸优化在热启动下梯度方法可指数收敛到真实潜在特征，且在每用户仅比较少数对的稀疏 regime 下成立",
+  "将矩阵补全中常用的集中不等式结果扩展到比较数据模型，是主要技术贡献"
+ ],
+ "method_framework": "设效用矩阵 X=UV^T，用户对两物品的比较概率为 g(x_ui-x_uj)（已知链接函数）；在比较数据集上最大化似然；用热启动初始化后跑梯度方法，借助扩展到比较模型的集中结果证明非凸景观在真解附近具有良性性质，从而保证指数收敛。",
+ "experiment_framework": "以仿真为主验证收敛性与样本效率；在每用户比较对数很少的稀疏设定下测量恢复精度与收敛轮数；报告经验表现好于理论预测，即使部分假设被放松仍有效。",
+ "takeaways": [
+  "从成对比较数据做个性化推荐在计算与统计上都高效",
+  "非凸矩阵分解在比较反馈下仍可被证明快速收敛",
+  "比较反馈天然消除用户评分偏差并避免评分离散化问题"
+ ],
+ "weaknesses": [
+  "主线偏离可靠性/医学影像/多模态推理，属推荐系统理论",
+  "证据以仿真为主，缺乏真实大规模比较反馈数据验证",
+  "热启动假设与已知链接函数 g(·) 在实践中不易满足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

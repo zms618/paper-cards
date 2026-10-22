@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TIME-TO-MOVE Training-Free Motion Con-Trolled Video Generation via Dual-Clock De.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TIME-TO-MOVE Training-Free Motion Con-Trolled Video Generation via Dual-Clock De.pdf",
+ "title": "Time-to-Move: Training-Free Motion Controlled Video Generation via Dual-Clock Denoising",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "无训练双时钟去噪实现视频运动与外观控制，但依赖粗参考和手动标注",
+ "innovations": [
+  "提出双时钟去噪（dual-clock denoising）机制，对用户指定运动区域和未约束区域分配不同SDE时间步，实现空间可变的条件强度",
+  "将SDEdit的粗布局引导思路扩展到视频领域，用粗动画参考（剪切拖拽或深度重投影）作为运动提示",
+  "像素级外观控制能力，超越纯文本提示的局限，可精确控制生成视频中的物体外观"
+ ],
+ "method_framework": "TTM首先通过用户简单操作（剪切拖拽或深度重投影）生成粗动画参考视频。然后将该参考视频加噪到运动结构形成的时间步，作为运动引导。同时利用图像条件保持外观一致性。核心创新是双时钟去噪：用户指定运动区域使用强对齐时间步，未约束区域使用弱对齐时间步，允许自然动态适应。整个过程无需训练，兼容任意视频扩散模型骨干。",
+ "experiment_framework": "在物体运动和相机运动基准上评估；对比基线包括需要微调的运动控制方法；指标包括运动控制精度、视觉真实感、时间一致性，同时报告推理效率。",
+ "takeaways": [
+  "粗动画参考作为运动提示在无训练条件下即可有效引导视频扩散模型",
+  "区域差异化的去噪时间表平衡了用户意图保真度和自然动态的灵活性",
+  "无训练方法可在运动控制效果上匹配甚至超过需要微调的基线方法"
+ ],
+ "weaknesses": [
+  "粗动画参考的质量直接影响最终结果，用户操作的门槛和一致性未充分讨论",
+  "双时钟去噪的边界划分依赖手动或启发式区域标注，自动化程度有限",
+  "实验主要在I2V模型上验证，纯文本到视频模型的适用性未探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "视频生成与可靠性主线无关，无迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

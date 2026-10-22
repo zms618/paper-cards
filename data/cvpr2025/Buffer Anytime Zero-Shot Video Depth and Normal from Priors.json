@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Buffer Anytime Zero-Shot Video Depth and Normal from Priors.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Buffer Anytime Zero-Shot Video Depth and Normal from Priors.pdf",
+ "title": "Buffer Anytime Zero-Shot Video Depth and Normal from Priors",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "拼合图像模型与光流，零样本视频深度法线估计",
+ "innovations": [
+  "零样本训练策略，结合图像模型先验与光流平滑",
+  "混合训练监督，包含图像模型正则化和光流平滑损失",
+  "轻量级时序注意力架构，确保视频时序一致性"
+ ],
+ "method_framework": "基于现有图像模型（Depth Anything V2和Marigold-E2E-FT），通过光流引导的时序平滑损失和图像模型正则化损失进行微调，注入轻量级时序模块",
+ "experiment_framework": "在ScanNet、KITTI和Bonn数据集上评估深度估计，在Sintel和ScanNet上评估法线估计，使用AbsRel、δ1、OPW等指标",
+ "takeaways": [
+  "利用图像模型先验可显著提升视频时序一致性",
+  "光流平滑与边缘掩码结合能有效处理动态场景",
+  "单帧正则化足以保持与图像模型的对齐"
+ ],
+ "weaknesses": [
+  "在极端情况下，当基础图像模型完全失败时可能表现不佳",
+  "光流仅能处理连续帧间的相关性，难以处理暂时离开和重新进入场景的对象"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频深度估计与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

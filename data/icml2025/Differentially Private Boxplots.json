@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Differentially Private Boxplots.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Differentially Private Boxplots.pdf",
+ "title": "Differentially Private Boxplots",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 6
+ },
+ "one_line": "组合不同隐私分位数算法构建差分隐私箱线图，理论分析充分但实验验证有限。",
+ "innovations": [
+  "证明 JointExp/PrivateQuantile/ApproxQuantile 等主流私密分位数算法对极端分位数几乎总不一致，因而不适合画须线；证明 unbounded 算法对极端分位数一致。",
+  "提出 DPBoxplot：用 JointExp 估计四分位与中位数构箱、用 unbounded 确定极值画须线、用 Laplace 机制只私密披露离群点计数而非位置。",
+  "在一般分布假设（密度在分位数邻域为正、全局有界）下给出内层分位数样本复杂度的上下界（含新的下界），突破以往仅假设有界支撑的限制。"
+ ],
+ "method_framework": "把箱线图拆解为五个汇总统计量，分别选用最适合的私密估计器：箱（位置/尺度）用样本复杂度最优的 JointExp，须线与尾部（偏度）用一致的 unbounded 算法，离群点只暴露计数（Laplace 机制）以节省隐私预算；理论上证明位置尺度达最优、极端分位数一致。",
+ "experiment_framework": "仿真实验在多种常见分布上对比 DPBoxplot 与用单一现有私密分位数算法构造的朴素箱线图，评估位置、尺度、偏度、尾部的还原；并在真实 Airbnb 房源数据上做差分隐私探索性数据分析（EDA）案例。指标为统计量估计误差/可视化效用，非标准 ML 基准。",
+ "takeaways": [
+  "朴素地把某一个私密分位数算法套用到整个箱线图会因极端分位数不一致而在常见分布族上失真，DPBoxplot 的分部件组合明显更准确。",
+  "位置与尺度可达到最优样本复杂度，而偏度与尾部只能保证一致估计，理论上区分了两类部件的可达性。",
+  "真实 Airbnb 数据表明差分隐私箱线图可支撑与非隐私近似的探索性比较。"
+ ],
+ "weaknesses": [
+  "实验以仿真与单个真实案例为主，缺乏大规模真实数据集和与 DP 可视化系统（如 DPVisCreator）的横向对比。",
+  "离群点只披露计数不披露位置，对多类别/分组箱线图的可扩展性与隐私预算分配未充分讨论。",
+  "工作落在差分隐私可视化，与鲁棒性/泛化/可信推理主线（医学影像、多模态大模型）关联有限，落地价值偏窄。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

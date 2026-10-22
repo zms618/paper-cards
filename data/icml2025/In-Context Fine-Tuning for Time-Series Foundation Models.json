@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/In-Context Fine-Tuning for Time-Series Foundation Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/In-Context Fine-Tuning for Time-Series Foundation Models.pdf",
+ "title": "In-Context Fine-Tuning for Time-Series Foundation Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "将NLP上下文微调简单迁移到时间序列，性能提升有限",
+ "innovations": [
+  "引入上下文微调概念，将NLP中的few-shot学习迁移到时间序列",
+  "设计带分隔符和跨示例注意力的架构，处理多时间序列示例",
+  "通过持续预训练使模型能利用相关时间序列示例适应目标分布"
+ ],
+ "method_framework": "基于TimesFM基础模型，添加分隔符和跨示例注意力机制，通过包含多个相关时间序列示例的上下窗口进行持续预训练",
+ "experiment_framework": "Chronos零样本基准(23个数据集)和ETT数据集滚动窗口评估，与监督学习、统计模型和其他基础模型比较",
+ "takeaways": [
+  "上下文微调可替代传统微调保持零样本特性",
+  "简单示例选择策略(如历史和随机)即可获得显著提升",
+  "分隔符设计对防止模型混淆至关重要"
+ ],
+ "weaknesses": [
+  "上下文示例数量受最大窗口限制",
+  "示例选择策略较为简单，未充分利用时间序列相关性",
+  "计算开销大于基础模型"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Bi-directional Autoregressive Diffusion for Large Complex Motion Interpolation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Bi-directional Autoregressive Diffusion for Large Complex Motion Interpolation.pdf",
+ "title": "Bi-directional Autoregressive Diffusion for Large Complex Motion Interpolation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "双向自回归扩散模型提升运动插值，但计算效率与特征开销存疑",
+ "innovations": [
+  "双向自回归插值策略",
+  "DINOv3特征作为运动表示",
+  "运动引导的帧生成机制"
+ ],
+ "method_framework": "两阶段框架：先插值DINOv3特征作为运动表示，再基于此条件生成中间帧，采用双向自回归扩散采样确保时序一致性。",
+ "experiment_framework": "在DAVIS-7、[42]评估集和Pixels数据集上与8种SOTA方法比较，使用LPIPS、FID和FVD指标评估。",
+ "takeaways": [
+  "自回归策略能缓解远离输入帧的误差累积",
+  "高级语义特征比像素级表示更适合复杂运动建模"
+ ],
+ "weaknesses": [
+  "未充分讨论计算效率与质量的权衡",
+  "DINOv3特征提取的计算开销未详细分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "运动插值与可靠性主线无交点，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

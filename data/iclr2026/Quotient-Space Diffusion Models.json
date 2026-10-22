@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Quotient-Space Diffusion Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Quotient-Space Diffusion Models.pdf",
+ "title": "Quotient-Space Diffusion Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "商空间扩散简化分子生成，但缺乏大规模实验与主线关联",
+ "innovations": [
+  "提出商空间扩散模型：将生成过程定义在去除对称冗余的商空间上，模型可在等价类内部任意移动却仍保证正确的对称目标分布",
+  "指出等变扩散虽保证对称分布却未简化学习，而基于对齐的简化又无法保持目标分布，商空间框架同时解决二者",
+  "针对遵循SE(3)刚体运动对称的分子结构生成给出具体实现"
+ ],
+ "method_framework": "把内在生成过程放在商空间（去除对称冗余后的空间）上进行SDE采样，采样仅沿跨等价类方向移动、不在等价类内部做抖动，从而简化数值仿真；数学上保证生成分布与群对称目标分布一致。",
+ "experiment_framework": "在小分子与蛋白质结构生成上评测；与等变扩散模型及基于对齐的简化方法对比生成质量/似然。",
+ "takeaways": [
+  "商空间扩散比等变扩散更易学习，且在小分子与蛋白质上普遍优于基于对齐的方法",
+  "在商空间构造生成过程可同时获得分布正确性与学习简化，是对生成模型中对称处理的新范式",
+  "框架对一般李群对称（此处SE(3)）具有通用性"
+ ],
+ "weaknesses": [
+  "属理论/生成模型方向，与可靠性、验证器、医学影像或多模态推理主线无直接关联",
+  "前9页主要为动机与原理，大规模基准数值与消融需看后续页",
+  "商空间构造对一般群（尤其非交换/高维群）的可实现性与计算开销未充分讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "分子生成与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

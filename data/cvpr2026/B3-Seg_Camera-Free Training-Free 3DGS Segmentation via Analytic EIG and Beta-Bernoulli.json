@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/B3-Seg_Camera-Free Training-Free 3DGS Segmentation via Analytic EIG and Beta-Bernoulli.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/B3-Seg_Camera-Free Training-Free 3DGS Segmentation via Analytic EIG and Beta-Bernoulli.pdf",
+ "title": "B3-Seg Camera-Free Training-Free 3DGS Segmentation via Analytic EIG and Beta-Bernoulli",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 6.3
+ },
+ "one_line": "贝叶斯公式化3D分割，解析EIG选视图，但多类扩展未验证",
+ "innovations": [
+  "Beta-Bernoulli贝叶斯重新公式化3D分割",
+  "解析式期望信息增益(EIG)进行主动视图选择",
+  "无相机、无训练、开放词汇的3D高斯分割框架",
+  "理论保证自适应单调性和子模性"
+ ],
+ "method_framework": "将3D高斯分割重新公式化为Beta-Bernoulli贝叶斯序列更新，通过解析式EIG主动选择下一个视图，结合Grounding DINO、SAM2和CLIP进行开放词汇分割",
+ "experiment_framework": "在LERF-Mask和3D-OVS数据集上评估，与FlashSplat等方法比较，使用mIoU/mBIoU指标，在20次迭代内完成",
+ "takeaways": [
+  "贝叶斯框架提供了理论保证和鲁棒性",
+  "解析式EIG避免了昂贵的掩码推理，提高了信息效率",
+  "CLIP重排序和SAM2掩码输入增强了分割质量"
+ ],
+ "weaknesses": [
+  "仅限于二元前景-背景决策，多类扩展未验证",
+  "在大型环境中的扩展性需要更广泛的视图探索策略"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3DGS分割与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

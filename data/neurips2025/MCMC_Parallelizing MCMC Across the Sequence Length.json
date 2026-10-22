@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/MCMC_Parallelizing MCMC Across the Sequence Length.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/MCMC_Parallelizing MCMC Across the Sequence Length.pdf",
+ "title": "Parallelizing MCMC Across the Sequence Length",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "并行牛顿方法加速MCMC，但未解决自适应算法与高维问题。",
+ "innovations": [
+  "将并行牛顿方法应用于MCMC算法",
+  "提出块拟DEER算法优化leapfrog积分",
+  "开发随机拟DEER降低内存需求",
+  "早期停止策略生成高质量近似样本"
+ ],
+ "method_framework": "将MCMC采样序列视为固定点问题，使用并行形式的牛顿方法求解，支持Gibbs、MALA和HMC采样器的并行化。",
+ "experiment_framework": "在分层高斯模型、贝叶斯逻辑回归等任务上评估，比较DEER、拟DEER与顺序采样的迭代次数、计算时间和样本质量。",
+ "takeaways": [
+  "并行牛顿方法可显著加速MCMC采样",
+  "随机拟DEER在保持收敛性的同时大幅降低内存需求",
+  "早期停止策略可在保证样本质量的同时减少计算时间"
+ ],
+ "weaknesses": [
+  "大批量尺寸时GPU资源饱和导致性能下降",
+  "未考虑自适应MCMC算法如NUTS的并行化",
+  "高维问题中可能需要滑动窗口技术"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

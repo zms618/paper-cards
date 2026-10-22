@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/REPA-E_Unlocking VAE for End-to-End Tuning of Latent Diffusion Transformers.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/REPA-E_Unlocking VAE for End-to-End Tuning of Latent Diffusion Transformers.pdf",
+ "title": "REPA-E Unlocking VAE for End-to-End Tuning of Latent Diffusion Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "REPA-E用表示对齐损失连接VAE与扩散模型，提升生成质量。",
+ "innovations": [
+  "提出REPA-E训练方法，实现VAE与扩散模型端到端联合优化",
+  "发现扩散损失直接回传会导致潜在空间结构退化，而表示对齐损失可有效解决",
+  "端到端训练自动改善不同VAE架构的潜在空间结构"
+ ],
+ "method_framework": "REPA-E通过表示对齐损失替代传统扩散损失，结合批归一化层和停止梯度操作，实现VAE与扩散模型端到端联合优化，同时加入VAE正则化损失保持重建能力。",
+ "experiment_framework": "ImageNet 256×256数据集，对比SiT-B/L/XL等模型，使用gFID、sFID、IS等指标评估生成质量，测试不同VAE架构和表示编码器的泛化性。",
+ "takeaways": [
+  "表示对齐可作为生成性能的有效代理指标",
+  "端到端训练能自适应改善不同VAE的潜在空间结构",
+  "批归一化层有效解决端到端训练中的统计更新问题"
+ ],
+ "weaknesses": [
+  "方法依赖预训练感知模型(DINOv2)作为表示对齐基础",
+  "未充分探讨不同任务域的泛化能力",
+  "计算开销增加，虽然训练步数减少但每步计算更复杂"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型训练方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/DiskVPS_Vanishing Point Detector via Hough Transform in a Disk.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/DiskVPS_Vanishing Point Detector via Hough Transform in a Disk.pdf",
+ "title": "DiskVPS Vanishing Point Detector via Hough Transform in a Disk",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "圆盘映射Hough变换实现消失点检测，但适用场景受限",
+ "innovations": [
+  "将图像平面映射到圆盘区域解决无界空间问题",
+  "使用单个边缘而非边缘对作为投票者提高效率",
+  "无需校准参数即可处理未校准图像"
+ ],
+ "method_framework": "将图像平面映射到圆盘区域，划分为同心环形子空间，再划分为近似等概率Hough单元，通过边缘投票检测消失点",
+ "experiment_framework": "在YUD、SVVP和SU3三个基准数据集上评估，与6种SOTA算法比较处理速度和角度准确度(AA@3°/5°/10°)",
+ "takeaways": [
+  "概率均等划分Hough空间提高检测准确性",
+  "迭代检测和内点移除减少误检",
+  "无需校准参数增强算法适用性"
+ ],
+ "weaknesses": [
+  "仅针对满足曼哈顿世界假设的场景",
+  "在少数图像中可能需要额外步骤检测第三个正交消失点",
+  "未探讨在极端噪声或复杂场景下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "消失点检测与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

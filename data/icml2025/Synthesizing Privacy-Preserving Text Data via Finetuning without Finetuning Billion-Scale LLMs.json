@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Synthesizing Privacy-Preserving Text Data via Finetuning without Finetuning Billion-Scale LLMs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Synthesizing Privacy-Preserving Text Data via Finetuning without Finetuning Billion-Scale LLMs.pdf",
+ "title": "Synthesizing Privacy-Preserving Text Data via Finetuning without Finetuning Billion-Scale LLMs",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "轻量生成器+DP微调替代大模型，合成隐私文本但容量有限",
+ "innovations": [
+  "避免对十亿级 LLM 做 DP 微调（其逐样本梯度+大批量导致高算力/内存成本），改用轻量 140M 条件生成器。",
+  "分工捕捉信息：生成器经 DP 微调吸收细粒度文本信息，聚类主题模型输出一个 DP 直方图表示分布/主题信息。",
+  "按 DP 直方图驱动生成器采样出指定数量的合成样本，可控地平衡隐私-效用。"
+ ],
+ "method_framework": "先在大规模公开数据上预训练轻量条件生成器与聚类主题模型。适配私有域时：对生成器做 DP 微调以学习细粒度文本特性；对主题数据做 DP 聚合得到主题直方图。合成时按 DP 直方图指定各主题/类别的目标数量，再让 DP 微调后的生成器条件采样，从而在强隐私约束下生成既有分布贴合又含细粒度信息的合成文本，且无需中心化收集或微调大模型。",
+ "experiment_framework": "在 5 个不同领域上评测合成数据训练下游模型的效用；对比 DP 微调 LLM、private evolution 等方法；重点报告强隐私（小 ε）区间的隐私-效用权衡，并做组件级消融。",
+ "takeaways": [
+  "在强隐私体制下尤其有效，弥合了轻量模型与 DP-LLM 方法的差距。",
+  "细粒度信息（生成器）与分布信息（DP 直方图）分工互补。",
+  "避免了十亿级 LLM 的昂贵 DP 微调，展现良好可扩展性，适配端侧资源受限场景。"
+ ],
+ "weaknesses": [
+  "落地面为通用文本隐私合成，未深入医学记录等具体高敏感域的效用。",
+  "140M 生成器的容量上限限制了合成文本的复杂/长文本质量。",
+  "DP 直方图离散化粒度与主题数的选择对效用的影响在前9页缺乏系统敏感性曲线。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

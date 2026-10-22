@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Summaries As Centroids for Interpretable and Scalable Text Clustering.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Summaries As Centroids for Interpretable and Scalable Text Clustering.pdf",
+ "title": "Summaries As Centroids for Interpretable and Scalable Text Clustering",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "k-means周期性替换文本摘要为质心，提升可解释性但理论深度有限",
+ "innovations": [
+  "提出summary-as-centroid核心思想：在k-means循环中周期性地将数值质心替换为聚类的文本摘要再重新嵌入，获得人类可读的聚类原型",
+  "设计LLM-optional双版本：k-NLPmeans用经典NLP抽取式摘要（质心法/TextRank）实现零成本离线运行，k-LLMmeans用LLM摘要但每轮预算固定不随数据集增长",
+  "扩展mini-batch k-means支持流式文本在线聚类，并发布StackExchange流式聚类基准数据集"
+ ],
+ "method_framework": "在标准k-means迭代循环中，每隔l次迭代将数值质心更新替换为摘要步骤：对每个聚类的所有文档句子进行摘要，得到文本原型后用同一编码器重新嵌入作为新质心。其余迭代保持标准均值更新。摘要器可插拔：经典NLP方法(k-NLPmeans)或LLM方法(k-LLMmeans)。mini-batch版本将摘要步骤插入mini-batch更新规则。",
+ "experiment_framework": "在多个文本聚类数据集上，跨不同嵌入模型和摘要策略，对比经典k-means基线及近期LLM-based聚类方法。指标包括聚类准确率等。额外做流式文本聚类案例研究，使用发布的StackExchange基准。",
+ "takeaways": [
+  "周期性用文本摘要替换数值质心既能提升聚类语义连贯性，又能产出人类可读的聚类原型，显著增强可解释性",
+  "k-LLMmeans在LLM调用量与数据集大小无关的固定预算下，即可接近近期LLM-based聚类的准确率",
+  "摘要质量较弱时方法会优雅退化为带次优初始化的标准k-means，保持局部收敛行为"
+ ],
+ "weaknesses": [
+  "方法本质是对k-means的简单修改，理论深度有限，缺乏收敛性的严格证明",
+  "摘要步骤引入额外超参数（摘要间隔l、摘要句数q），调参成本未充分讨论",
+  "前9页未展示完整的定量结果表格，跨数据集的具体提升幅度不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.88,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "文本聚类方法与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

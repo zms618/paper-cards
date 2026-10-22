@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Align Your Flow Scaling Continuous-Time Flow Map Distillation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Align Your Flow Scaling Continuous-Time Flow Map Distillation.pdf",
+ "title": "Align Your Flow: Scaling Continuous-Time Flow Map Distillation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "改进流图蒸馏解决一致性模型多步退化，但创新有限",
+ "innovations": [
+  "证明一致性模型在多步采样中存在固有误差累积问题",
+  "提出两种新的连续时间目标函数(AYF-EMD和AYF-LMD)",
+  "首次将自引导技术应用于流图蒸馏",
+  "结合对抗微调提升质量同时保持多样性"
+ ],
+ "method_framework": "Align Your Flow框架通过训练神经网络fθ(xt,t,s)直接映射任意噪声级别，克服一致性模型在多步采样中的退化问题，并引入自指导和对抗微调提升性能。",
+ "experiment_framework": "在ImageNet 64x64和512x512上评估，使用FID和Recall指标，与EDM2、sCD等基线比较，并在文本到图像任务中蒸馏FLUX.1模型。",
+ "takeaways": [
+  "流图框架统一了扩散、流匹配和一致性模型",
+  "自指导技术可有效提升蒸馏模型质量",
+  "时间嵌入参数化和正切归一化对稳定训练至关重要"
+ ],
+ "weaknesses": [
+  "AYF-LMD目标函数在图像生成中导致过度平滑",
+  "实验主要关注ImageNet和文本到图像，缺乏其他领域的验证",
+  "对抗微调虽保持多样性但仍可能引入额外复杂性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Streamline Without Sacrifice - Squeeze out Computation Redundancy in LMM.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Streamline Without Sacrifice - Squeeze out Computation Redundancy in LMM.pdf",
+ "title": "Streamline Without Sacrifice - Squeeze out Computation Redundancy in LMM",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "ProxyV代理视觉token分担计算冗余，但与主线无关且效率提升有限",
+ "innovations": [
+  "区别于 token 级冗余削减（剪枝/合并有信息损失风险），提出并实证视觉 token 的计算级冗余这一新维度",
+  "发现预训练视觉编码器输出的 token 在 decoder-only LMM 中不必都经过完整自注意力与 FFN",
+  "提出 ProxyV：用代理视觉 token 承担重计算，原始视觉 token 轻量处理，且可与 token 削减方法叠加"
+ ],
+ "method_framework": "在 LLaVA 式 decoder-only LMM 中，从某层起引入 proxy vision token 承担重计算（自注意力/FFN），原始视觉 token 以更轻量方式流过；通过系列实验渐进挤压视觉相关计算冗余，保持视觉 token 数量不削减从而无信息损失。",
+ "experiment_framework": "在多个细粒度多模态 benchmark 上评测 ProxyV（含从 L12/L16 层起插 ProxyV 的变体），对比原始 LMM 与 token 削减方法，报告精度变化与 FLOPs/时延节省，并验证与 token reduction 叠加的额外加速。",
+ "takeaways": [
+  "视觉 token 的计算冗余与 token 数量冗余是两个独立维度，削减计算级冗余可做到“无信息损失”",
+  "用代理 token 分担重计算，能在保持或提升细粒度精度的同时显著降低算力",
+  "ProxyV 与既有 token 削减正交，二者叠加可进一步提速"
+ ],
+ "weaknesses": [
+  "与主线（鲁棒性/可信AI/不确定性/幻觉抑制）无关，属推理效率优化",
+  "代理 token 增加了额外参数/设计，实际部署的显存与通信开销未充分量化",
+  "效率-精度权衡的边界（插层位置）仍需逐任务调参，缺乏统一自动选择准则"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

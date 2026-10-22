@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Breaking the Illusion When Positive Meets Negative in Multimodal Decoding.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Breaking the Illusion When Positive Meets Negative in Multimodal Decoding.pdf",
+ "title": "Breaking the Illusion When Positive Meets Negative in Multimodal Decoding",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "双路径解码框架通过贝叶斯调整减少多模态幻觉",
+ "innovations": [
+  "双路径解码框架，同时增强视觉证据和隔离语言先验",
+  "基于多层注意力的证据区域识别与增强",
+  "使用DDPM前向过程构建负向反事实表示"
+ ],
+ "method_framework": "PND框架通过正负两条路径调整解码过程：正路径通过多层注意力放大视觉证据，负路径通过DDPM降解核心证据区域，通过对比两条路径输出来平衡语言先验和视觉似然，实现训练时的幻觉抑制。",
+ "experiment_framework": "在POPE、MME、CHAIR和GCCCE四个基准上评估，覆盖LLaVA、InstructBLIP、InternVL和Qwen-VL等多种模型，使用准确率、F1分数、召回率等指标。",
+ "takeaways": [
+  "基于注意力的证据区域识别可作为视觉-语言模型中幻觉问题的有效代理",
+  "双路径对比方法比单路径扰动更能有效平衡语言先验和视觉证据"
+ ],
+ "weaknesses": [
+  "方法依赖于外部视觉-语言模型提取注意力图，增加了计算开销",
+  "未充分探讨不同类型视觉任务中参数λ和τ的最优设置"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态幻觉抑制直接对接可靠性主线，方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

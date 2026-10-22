@@ -1,0 +1,41 @@
+{
+ "title": "RedCodeAgent: Automatic Red-Teaming Agent against Diverse Code Agents",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "自动化红队工具组合攻击代码智能体，沙箱验证执行结果。",
+ "innovations": [
+  "首个系统挖掘多样代码智能体漏洞的自动化红队智能体，针对代码agent需'生成并正确执行风险代码'而非仅不拒答的特点。",
+  "提出自适应记忆模块：检索top-K相似历史条目，为给定查询动态定制最有效的红队工具与工具组合。",
+  "构建模拟沙箱环境，以代码执行结果(而非仅静态代码/LLM裁判)判定攻击成败，缓解纯LLM评判偏差。"
+ ],
+ "method_framework": "以红队函数调用为策略：先从记忆库检索与风险场景相似的历史越狱条目，据此为目标查询动态选择/组合红队工具产出攻击prompt；查询目标代码agent生成代码，在沙箱中执行并检查风险效果(如文件是否被删除)，据成败更新记忆以自适应优化。",
+ "experiment_framework": "多个SOTA代码智能体、多样风险场景、多编程语言；对比既有静态安全基准与手工/自动红队方法；指标为攻击成功率、拒绝率与效率；并在真实助手Cursor、Codeium上验证。",
+ "takeaways": [
+  "代码agent的风险评估必须看执行结果，静态代码分析或LLM裁判会遗漏真执行漏洞(如os.remove被path.unlink绕过)。",
+  "动态组合红队工具比单一固定越狱模板能持续发现被规避的漏洞。",
+  "自动化红队可对快速演进的代码助手做可扩展、自适应的安全评估。"
+ ],
+ "weaknesses": [
+  "落地域为代码智能体安全/越狱攻防，非医学影像或多模态推理主线。",
+  "红队目标是触发风险代码，本身为攻击能力，防御含义与误伤评估在节选页中未充分讨论。",
+  "节选前9页未见各目标agent的完整攻击成功率/拒绝率对照表，相对既有红队的增益在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/RedCodeAgent_Automatic Red-Teaming Agent against Diverse Code Agents.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RedCodeAgent_Automatic Red-Teaming Agent against Diverse Code Agents.pdf",
+ "raw_overall": 6.23,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "代码agent安全评估，非医学/多模态主线但方法扎实",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Non-stationary Diffusion For Probabilistic Time Series Forecasting.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Non-stationary Diffusion For Probabilistic Time Series Forecasting.pdf",
+ "title": "Non-stationary Diffusion For Probabilistic Time Series Forecasting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "将LSNM引入DDPM时序预测，设计UANS噪声schedule，高不确定场景优势明显",
+ "innovations": [
+  "首次将LSNM引入概率时间序列扩散预测：联合预训练条件均值f(X)与条件方差g(X)，端点由N(0,I)/N(f,I)推广到N(f(X),g(X))，显式建模随上下文变化的不确定性",
+  "不确定性感知噪声schedule(UANS)：前向q(Yt|Y0)方差从真实方差σY0线性插值过渡到端点g(X)，使扩散每步噪声水平准确反映数据不确定性",
+  "推理时通过把后验(11)展开成关于σY0的二次方程求正根估计σY0，把去噪过程反向用于不确定性估计，而非直接用g(X)"
+ ],
+ "method_framework": "预训练fϕ(非平稳Transformer)预测E[Y|X]、gψ(3层MLP+softplus)由滑窗方差监督预测Var(Y|X)；端点p(YT)=N(fϕ(X),gψ(X))；前向q(Yt)=N(√ᾱtY0+(1-√ᾱt)f, (β̄t-β̃t)gψ+β̃tσY0)；噪声/方差网络ξθ输出ηθ,σθ匹配后验，损失=噪声匹配+σ̃/σθ对数高斯项；推理从端点采样、逐步去噪并解二次方程得σY0。",
+ "experiment_framework": "9真实数据(ETTh1/h2/m1/m2/ECL/EXG/ILI/Solar/Traffic)+2合成(线性/二次增长方差)；基线TimeGrad/CSDI/TimeDiff/DiffusionTS/TMDM；指标CRPS与QICE(越小越好)；输入168、预测192、T=20、3种子；消融w/o LSNM(恒方差)与w/o UANS(假设完美gψ)。",
+ "takeaways": [
+  "NsDiff在9数据中8个QICE最优，相对次优TMDM在Traffic(不确定比181.83)QICE降66.3%，高不确定漂移时增益最大",
+  "合成二次增长方差数据QICE较TMDM降88.3%，验证LSNM捕获时变方差的核心主张",
+  "消融显示w/o UANS虽引入变方差却过依赖gψ、QICE反而高于w/o LSNM，说明可控噪声schedule比盲目用完美方差估计更关键"
+ ],
+ "weaknesses": [
+  "落点为交通/能源/流感等通用时序预测，虽涉及不确定性建模但非主任务指定的医学影像或多模态大模型推理；未在医疗时序(如心电/ICU)验证",
+  "依赖预训练fϕ与gψ的质量，gψ由滑窗方差监督本身是粗代理；σY0二次方程可解性靠βt范围假设兜底，理论上界未给",
+  "Solar(不确定比0.92低)上未超越基线，说明方法增益主要来自高非平稳场景，平稳数据上无优势；仍需采样100次估计分布，推理成本高于点预测基线"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

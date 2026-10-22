@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/TRCE_Towards Reliable Malicious Concept Erasure in Text-to- Diffusion Models.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/TRCE_Towards Reliable Malicious Concept Erasure in Text-to- Diffusion Models.pdf",
+ "title": "TRCE Towards Reliable Malicious Concept Erasure in Text-to- Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "两阶段策略擦除扩散模型中的恶意概念，但验证范围有限",
+ "innovations": [
+  "识别[EoT]嵌入作为关键映射目标",
+  "文本语义擦除与去噪轨迹 steering 的两阶段协作策略",
+  "对比学习引导早期去噪预测朝安全方向"
+ ],
+ "method_framework": "TRCE包含两个阶段：首先通过闭式解优化交叉注意力矩阵，将恶意概念的[EoT]嵌入映射到安全概念；然后通过对比学习微调模型早期去噪预测，引导采样轨迹远离不安全内容。",
+ "experiment_framework": "在性内容擦除任务上评估I2P数据集和4种对抗提示数据集，使用NudeNet检测攻击成功率(ASR)，并通过FID和CLIP-S评估知识保留能力。",
+ "takeaways": [
+  "特殊嵌入[EoT]在概念生成中的关键作用",
+  "扩散模型采样轨迹的确定性可用于安全引导",
+  "两阶段策略平衡了擦除效果与知识保留"
+ ],
+ "weaknesses": [
+  "仅评估了性内容擦除，缺乏其他恶意概念的验证",
+  "第二阶段需要缓存轨迹，增加了计算复杂度"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "恶意概念擦除直接关联可靠性主线，但验证范围有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

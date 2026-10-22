@@ -1,0 +1,41 @@
+{
+ "title": "Uncovering Conceptual Blindspots in Generative Image Models using Sparse Autoencoders",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "用SAE分析生成模型概念分布偏差，发现系统性盲点但评估有局限。",
+ "innovations": [
+  "形式化定义概念盲点(conceptual blindspots)：训练数据中存在但模型生成中缺失/失真的概念，并用 δ(k) 量化模型相对自然数据过/欠生成某概念的倾向。",
+  "训练迄今最大的 3.2 万概念原型 SAE(RA-SAE)于 DINOv2 特征上，实现细粒度概念分布对齐评估。",
+  "在 Stable Diffusion 1.5/2.1、PixArt、Kandinsky 四个模型上识别出被抑制盲点(鸟食器/DVD 碟/文档空白)与被放大盲点(木质背景纹理/棕榈树)，并定位记忆化样本。"
+ ],
+ "method_framework": "在 DINOv2 特征上训练原型稀疏自编码器 RA-SAE 提取可解释概念嵌入；分别在真实数据与模型生成图像上统计每个概念的出现频率，计算偏差 δ(k)，将 δ<0.1 判为被抑制盲点、δ>0.9 判为被放大盲点，并在单样本层分离记忆化模板。",
+ "experiment_framework": "在 4 个主流扩散生成模型上，以自然图像概念频率为基准，定量报告各模型的概念盲点清单、偏差分布及记忆化样本，替代 FID/CLIPScore 等粗粒度指标做概念级保真度评估。",
+ "takeaways": [
+  "生成模型的概念失败并非个别怪癖，而是广泛存在的系统性分布错配：大量概念被抑制或被放大。",
+  "现有 FID/CLIPScore 等粗粒度指标无法捕捉这类概念级分布失败，需要概念级评估。",
+  "模型会无提示地以远超自然数据的频率放大某些概念，并复现高度特定的训练视觉模板。"
+ ],
+ "weaknesses": [
+  "结论依赖 DINOv2 特征与 SAE 字典的概念完整性，未覆盖到的概念无法被检测，存在评估盲区。",
+  "δ(k) 阈值(0.1/0.9)与概念频率统计对 prompt/采样设置敏感，跨模型可比性需更多控制。",
+  "评估对象仅限 4 个扩散模型，未扩展到视频/3D 或最新 DiT，且读到的是框架与发现概述，完整统计检验与消融未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Uncovering Conceptual Blindspots In Genera-Tive Models using Sparse Autoencoders.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Uncovering Conceptual Blindspots In Genera-Tive Models using Sparse Autoencoders.pdf",
+ "raw_overall": 6.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "生成模型评估方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

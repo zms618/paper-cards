@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Rigidity-Aware Geometric Pretraining for Protein Design and Conformational Ensembles.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rigidity-Aware Geometric Pretraining for Protein Design and Conformational Ensembles.pdf",
+ "title": "Rigidity-Aware Geometric Pretraining for Protein Design and Conformational Ensembles",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.7
+ },
+ "one_line": "刚性感知几何预训练提升蛋白质生成，但与AI可靠性主线无关",
+ "innovations": [
+  "提出两阶段几何预训练：RigidSSL-Perturb在432K个AFDB结构上用模拟扰动学习几何先验，RigidSSL-MD在1.3K条分子动力学轨迹上提炼物理真实的构象跃迁。",
+  "设计双向刚性感知flow matching目标，联合优化平移与旋转动力学以最大化不同构象间互信息，弥补现有方法只用局部非刚性原子表示的缺陷。",
+  "把几何预训练前置到生成式微调之前，可即插即用地提升FrameDiff、FoldFlow-2等基于IPA的生成模型。"
+ ],
+ "method_framework": "在IPA模块上做自监督预训练：阶段一对刚体施加SE(3)扰动构造正样本对并做互信息最大化；阶段二在分子动力学轨迹上学习真实构象跃迁；得到的表示再作为FrameDiff/FoldFlow-2生成模型的初始化。",
+ "experiment_framework": "下游任务为无条件蛋白质骨架结构生成；基线为随机初始化与三种坐标感知几何SSL方法（GeoSSL-InfoNCE、GeoSSL-EBM-NCE、GeoSSL-RR）；骨干用FrameDiff与FoldFlow-2；指标为可设计性（提升最高43%）、新颖性、多样性及zero-shot成功率（+5.8%）。",
+ "takeaways": [
+  "前置几何预训练（尤其刚性感知）可显著提升蛋白质生成模型的可设计性、新颖性与多样性。",
+  "结合模拟扰动与真实分子动力学轨迹的两阶段策略比单一几何SSL更能捕捉动态构象信息。"
+ ],
+ "weaknesses": [
+  "与可靠性/可信AI主线无关，属计算生物学，跨域迁移价值有限。",
+  "MD轨迹仅1.3K条，规模较小，对构象系综的覆盖代表性存疑。",
+  "前9页未给出与最先进专门蛋白设计方法的端到端结构/功能指标对比，主要增益体现在预训练模块替换上。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "蛋白质生成与几何预训练，无可靠性主线迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

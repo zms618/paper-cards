@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Rfs Reinforcement Learning with Residual Flow Steering for Dexterous Manipulation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rfs Reinforcement Learning with Residual Flow Steering for Dexterous Manipulation.pdf",
+ "title": "RFS: Reinforcement Learning with Residual Flow Steering for Dexterous Manipulation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 3.5,
+  "overall": 5.0
+ },
+ "one_line": "残差流引导微调预训练策略，提升灵巧抓取数据效率。",
+ "innovations": [
+  "提出残差流引导RFS：在预训练flow-matching策略上同时优化一个残差动作与一个隐噪声分布，提供局部残差修正与全局隐空间探索两种互补探索。",
+  "在保留预训练策略表达结构与全局探索能力的同时，支持部署期快速纠正局部执行误差。",
+  "验证在仿真与真实世界多指灵巧抓取上的数据高效微调能力。"
+ ],
+ "method_framework": "以预训练flow-matching行为克隆策略为底座，RL微调时不直接改动作分布，而是学习残差动作做局部精修、并调制flow匹配的初始隐噪声分布做全局探索，二者联合优化以兼顾探索与稳定微调。",
+ "experiment_framework": "围绕三个研究问题设计：仿真中残差精修是否提升成功率、各设计选择在仿真/真实世界的效果、隐噪声调制对真实自适应的影响；任务以多指灵巧抓取为主，含仿真数据生成与在线RL及真实机器人微调。",
+ "takeaways": [
+  "对预训练生成式策略，残差动作+隐噪声调制的联合引导比直接全量微调更数据高效且更稳。",
+  "局部残差修正与全局隐空间探索互补，能在保留预训练结构的同时快速适配部署误差。"
+ ],
+ "weaknesses": [
+  "与可靠性/医学影像/多模态推理主线无关，属机器人操作。",
+  "任务聚焦灵巧抓取，对更宽泛操作任务的泛化仅为定性声明。",
+  "真实世界微调的样本量、与通用VLA策略的对比在前9页未充分量化。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "机器人操作与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

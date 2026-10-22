@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Uncertainty-Aware Diffusion-Guided Refinement of 3D Scenes.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Uncertainty-Aware Diffusion-Guided Refinement of 3D Scenes.pdf",
+ "title": "Uncertainty-Aware Diffusion-Guided Refinement of 3D Scenes",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "扩散模型引导3D高斯优化，不确定性加权提升未见区域重建。",
+ "innovations": [
+  "不确定性感知的高斯优化框架",
+  "MLLM引导的语义不确定性量化",
+  "傅里叶风格对齐的纹理一致性"
+ ],
+ "method_framework": "基于预训练单图到3D模型(如Flash3D)生成初始高斯表示，利用相机控制的LVDM生成伪视图，通过不确定性加权损失和自适应密度优化 refine 高斯参数。",
+ "experiment_framework": "RealEstate-10K(同域)和KITTI-v2(跨域)数据集，PSNR/SSIM/LPIPS/FID指标，小/中/大基线评估。",
+ "takeaways": [
+  "不确定性引导的像素级优化策略",
+  "傅里叶风格传输解决纹理不一致问题",
+  "自适应密度控制防止模式崩溃"
+ ],
+ "weaknesses": [
+  "计算开销大(1000步优化)",
+  "依赖预训练LVDM质量",
+  "未充分讨论不确定性量化模块的局限性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "不确定性方法扎实但3D重建非主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

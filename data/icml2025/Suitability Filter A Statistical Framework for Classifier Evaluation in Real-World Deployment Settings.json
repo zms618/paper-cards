@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Suitability Filter A Statistical Framework for Classifier Evaluation in Real-World Deployment Settings.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Suitability Filter A Statistical Framework for Classifier Evaluation in Real-World Deployment Settings.pdf",
+ "title": "Suitability Filter: A Statistical Framework for Classifier Evaluation in Real-World Deployment Settings",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "无标签场景下统计检验分类器退化，但依赖假设且未验证高风险域。",
+ "innovations": [
+  "面向安全关键部署场景，在无法获得用户数据真实标签时检测性能退化这一核心难题。",
+  "定义'适合度信号'——对协变量漂移敏感、且能预示潜在预测错误的模型输出特征。",
+  "通过比较测试集与用户数据上逐样本预测正确概率分布的统计非劣效检验，判定精度退化是否超过预设容差 m。"
+ ],
+ "method_framework": "部署后无标签，无法直接算准确率。Suitability Filter：先从模型输出中提取对 covariate shift 敏感的适合度信号，据此估计每个样本'预测正确的概率'；在标注测试集与无标签用户数据上分别得到正确概率分布，再做统计非劣效检验——若用户数据准确率估计不低于测试集准确率减容差 m，则判定该模型对用户数据'可用（suitable）'，否则标记'不适用（unsuitable）'。",
+ "experiment_framework": "在多个分类任务上，注入不同程度协变量漂移构造用户数据；对比既有无标签性能估计/OOD 检测方法；指标为能否正确触发退化告警、统计检验的 I/II 类错误控制。",
+ "takeaways": [
+  "无需用户数据标签即可统计性地判定模型是否仍适合当前部署。",
+  "适合度信号+逐样本正确概率分布比对可量化精度退化。",
+  "预设容差 m 让'可接受退化'可显式、可调。"
+ ],
+ "weaknesses": [
+  "落地面为通用分类器部署监控，未深入医学影像等具体高风险域验证。",
+  "'适合度信号对漂移敏感'的有效性依赖模型/数据，极端无特征漂移（label shift）下可能失效。",
+  "非劣效检验的功效随用户数据量变化，小流量部署下的检出时延/效力未充分刻画。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

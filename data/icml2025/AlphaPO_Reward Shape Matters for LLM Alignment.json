@@ -1,0 +1,39 @@
+{
+ "key": "icml2025/AlphaPO_Reward Shape Matters for LLM Alignment.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/AlphaPO_Reward Shape Matters for LLM Alignment.pdf",
+ "title": "AlphaPO: Reward Shape Matters for LLM Alignment",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "参数化奖励函数形状缓解LLM过度优化，但泛化性验证不足。",
+ "innovations": [
+  "引入α参数化奖励函数，改变奖励形状",
+  "结合长度归一化的α-散度奖励函数",
+  "通过梯度分析揭示奖励形状对训练动态的影响"
+ ],
+ "method_framework": "基于α-散度设计奖励函数rα(y; x) = β(1-πθ(y|x)^(-α)/|y|)/α，通过调整α控制偏好响应概率和边界行为，缓解似然位移问题。",
+ "experiment_framework": "在UltraFeedback数据集上对Llama3-8B、Mistral-7B和Gemma2-9B进行实验，使用PairRM和ArmoRM排序，评估AlpacaEval 2.0和Arena-Hard指标。",
+ "takeaways": [
+  "奖励函数形状对LLM对齐性能有显著影响",
+  "通过α参数可系统控制似然位移和过度优化问题"
+ ],
+ "weaknesses": [
+  "对Gemma2-9B模型提升有限",
+  "未充分探索α参数在不同模型规模上的泛化性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "奖励函数设计属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

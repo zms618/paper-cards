@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/VCT_Training Consistency Models with Variational Noise Coupling.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/VCT_Training Consistency Models with Variational Noise Coupling.pdf",
+ "title": "VCT: Training Consistency Models with Variational Noise Coupling",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "VCT用VAE编码器学习噪声-数据耦合，降低一致性训练方差",
+ "innovations": [
+  "指出现有非蒸馏一致性训练因固定、未排序的噪声-数据配对而高方差、训练不稳定",
+  "提出变分一致性训练(VCT)：受VAE启发，用数据相关编码器建模噪声发射，学习自适应的噪声-数据配对",
+  "框架兼容多种前向核(含flow matching)，在CIFAR-10取得非蒸馏CT的SOTA FID，ImageNet 64x64仅两步采样即匹配SOTA"
+ ],
+ "method_framework": "在一致性训练中引入可学习的噪声-数据耦合：用一个数据相关的编码器把样本映射到噪声后验p(z|x)，从而自适应地决定噪声与数据如何配对，替代经典CT中固定随机配对；编码器学出的后验累积近似恢复先验，使两步/一步采样更稳定、方差更低。",
+ "experiment_framework": "在多个图像数据集上评测；CIFAR-10报告FID并对比非蒸馏一致性训练方法；ImageNet 64x64报告两步采样性能；与扩散/一致性基线对比；细节在附录E。",
+ "takeaways": [
+  "一致性训练的高方差部分源于固定噪声-数据配对，可学习耦合能有效缓解",
+  "VAE式数据相关编码器为一致性模型提供了更稳的训练信号",
+  "VCT在少步采样下达到SOTA，且兼容flow matching等多种前向核"
+ ],
+ "weaknesses": [
+  "引入编码器增加了训练参数与复杂度，收敛成本未充分权衡",
+  "主实验细节多在附录E，正文证据强度受限",
+  "对更大分辨率/文本条件生成的扩展性未验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

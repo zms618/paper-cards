@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Towards a 3D Transfer-based Black-box Attack via Critical Feature Guidance.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Towards a 3D Transfer-based Black-box Attack via Critical Feature Guidance.pdf",
+ "title": "Towards a 3D Transfer-based Black-box Attack via Critical Feature Guidance",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "点云黑盒攻击：利用特征一致性提升迁移性",
+ "innovations": [
+  "发现不同DNN架构在点云识别中关注的关键特征具有一致性",
+  "提出关键特征引导策略(CFG)优先破坏共享脆弱区域",
+  "设计包含迁移性、不可感知性和分类错误的多目标损失函数"
+ ],
+ "method_framework": "通过梯度回传评估特征重要性，对关键特征赋予高权重，在中间层进行破坏，结合l∞范数和Chamfer距离约束生成对抗点云",
+ "experiment_framework": "ModelNet40和ScanObjectNN数据集，PointNet/PointNet++/DGCNN等作为源模型和目标模型，攻击成功率(ASR)和迁移性分数作为指标",
+ "takeaways": [
+  "利用不同模型对关键特征的共同依赖性可提升对抗样本迁移性",
+  "针对中间层而非softmax层的攻击能更好地保留高级语义信息"
+ ],
+ "weaknesses": [
+  "仅关注点云分类任务，未涉及更复杂的3D视觉任务",
+  "对对抗训练(AT)防御方法的抵抗力有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "点云攻击与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

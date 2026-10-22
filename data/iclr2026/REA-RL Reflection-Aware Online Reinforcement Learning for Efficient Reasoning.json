@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/REA-RL Reflection-Aware Online Reinforcement Learning for Efficient Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/REA-RL Reflection-Aware Online Reinforcement Learning for Efficient Reasoning.pdf",
+ "title": "REA-RL: Reflection-Aware Online Reinforcement Learning for Efficient Reasoning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5.0,
+  "overall": 5.7
+ },
+ "one_line": "反思模型并行采样+顺序修正，防长度奖励压缩反思能力",
+ "innovations": [
+  "引入小型反思模型实现高效在线训练，支持并行采样和顺序修正两种模式",
+  "设计反思奖励，防止长度奖励RL将模型压缩为朴素CoT而丢失反思/自检能力",
+  "实现难题保留反思频率、易题适当减少反思的自适应效率优化"
+ ],
+ "method_framework": "REA-RL在在线RL训练中引入小型反思模型。并行采样模式：一次采样多条推理路径。顺序修正模式：基于小模型的反思信号逐步修正。反思奖励额外激励模型保留自检和修正行为，避免纯长度奖励导致的反思能力退化。",
+ "experiment_framework": "在多种推理基准上评测；对比长度奖励RL基线；报告准确率和推理长度/成本；分析反思频率在不同难度题目上的分布；消融反思模型和反思奖励各自贡献。",
+ "takeaways": [
+  "纯长度奖励的在线RL会导致模型丢失反思能力，退化为朴素CoT",
+  "小反思模型可高效实现在线训练的并行采样和顺序修正",
+  "反思奖励可使模型自适应调整：难题保留反思、易题减少冗余，实现性能与效率的平衡"
+ ],
+ "weaknesses": [
+  "与可靠性/医学影像/多模态推理主线关联较弱，属于推理效率优化",
+  "小反思模型本身的质量上限对最终效果的约束未充分分析",
+  "前9页未见与静态短推理SFT方法的系统对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "推理效率优化，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

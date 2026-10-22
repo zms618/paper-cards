@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Ringmaster ASGD_The First Asynchronous SGD with Optimal Time Complexity.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Ringmaster ASGD_The First Asynchronous SGD with Optimal Time Complexity.pdf",
+ "title": "Ringmaster ASGD: The First Asynchronous SGD with Optimal Time Complexity",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 4.5,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "理论证明最优m值选择策略，但缺乏真实场景验证",
+ "innovations": [
+  "首次证明并实现了在任意异构、动态波动工作者计算时间下达到最优时间复杂度的异步SGD方法Ringmaster ASGD",
+  "核心洞察：不使用所有n个工作者，而是选择最快的m个工作者运行ASGD，通过优化m消除延迟梯度更新导致的复杂度瓶颈",
+  "在固定计算时间模型下给出严格收敛性证明，时间复杂度匹配理论下界，并推广到任意动态计算时间场景"
+ ],
+ "method_framework": "在n个计算速度异构的工作者中，按计算时间排序τ1≤τ2≤…≤τn，选择最快的m个工作者运行标准异步SGD。通过理论分析找到最优m值，使得总时间复杂度(达到ε-驻点所需时间)最小化。关键是通过排除慢工作者消除陈旧梯度(stale gradients)导致的迭代次数膨胀。",
+ "experiment_framework": "论文主要为理论贡献，数值实验在附录G中，对比现有ASGD变体(如Hogwild!、缓冲ASGD等)在合成优化问题上的表现。理论分析涵盖固定计算时间模型和动态波动模型。",
+ "takeaways": [
+  "现有所有ASGD变体在异构工作者下均无法达到最优时间复杂度，Ringmaster ASGD是首个匹配下界的方法",
+  "主动忽略慢工作者(只选最快m个)比使用所有工作者更高效，因慢节点引入的陈旧梯度抵消了并行收益",
+  "最优工作者数m存在解析表达式，与梯度方差和计算时间分布相关"
+ ],
+ "weaknesses": [
+  "数值实验在附录且主要为合成问题，未在真实深度学习训练(如ImageNet预训练)上验证实际加速效果",
+  "需要预先知道各工作者计算时间τi来选择最快m个，实际动态环境中如何在线估计和选择未充分讨论",
+  "仅考虑非凸光滑优化的ε-驻点收敛，未分析有限和、方差缩减等现代SGD变体的适配"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

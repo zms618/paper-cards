@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Structure Matters Dynamic Policy Gradient.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Structure Matters Dynamic Policy Gradient.pdf",
+ "title": "Structure Matters: Dynamic Policy Gradient",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "动态策略梯度整合动态规划解决MDP收敛，但内存与梯度估计受限",
+ "innovations": [
+  "将动态规划与策略梯度直接整合为DynPG框架",
+  "动态调整问题时间跨度，分解为上下文bandit序列",
+  "证明softmax DynPG多项式收敛率(1-γ)^{-4}",
+  "避免传统策略梯度的指数依赖问题"
+ ],
+ "method_framework": "DynPG迭代求解上下文bandit问题，每次扩展时间跨度，使用策略梯度优化新epoch策略，固定先前策略生成轨迹，降低方差并提高收敛性。",
+ "experiment_framework": "数值实验对比DynPG与vanilla PG在MDP上的表现，评估成功概率达到次优性间隙ε=0.01所需的环境交互次数。",
+ "takeaways": [
+  "利用马尔可夫性质可显著改善策略梯度收敛性",
+  "误差分解框架可指导算法设计，控制近似、截断、优化和策略误差"
+ ],
+ "weaknesses": [
+  "需要存储策略序列，大问题可能导致内存问题",
+  "实际应用中需要估计梯度，增加了复杂性",
+  "仅针对表格MDP和softmax参数化进行了理论分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

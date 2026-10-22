@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Make LoRA Great Again Boosting LoRA with Adaptive Singular Values and Mixture-of-Experts Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Make LoRA Great Again Boosting LoRA with Adaptive Singular Values and Mixture-of-Experts Optimization.pdf",
+ "title": "Make LoRA Great Again: Boosting LoRA with Adaptive Singular Values and Mixture-of-Experts Optimization Alignment",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "改进LoRA MoE的SVD初始化与缩放，缩小与全微调差距。",
+ "innovations": [
+  "SVD结构的MoE框架自适应集成预训练知识",
+  "理论推导的权重对齐和缩放方案",
+  "无需修改架构或算法即可提升LoRA MoE效率"
+ ],
+ "method_framework": "GOAT采用SVD结构初始化MoE专家，通过路由器选择不同奇异值段，并推导理论缩放因子对齐优化过程，使低秩专家逼近全秩性能。",
+ "experiment_framework": "25个数据集评估，包括图像分类、自然语言生成、常识推理和自然语言理解，与Full FT、单LoRA和LoRA MoE基线比较。",
+ "takeaways": [
+  "奇异值段选择具有任务特异性，MoE架构可有效利用不同段信息",
+  "适当的缩放因子可补偿低秩导致的梯度差距，特别适用于MoE场景"
+ ],
+ "weaknesses": [
+  "方法依赖预训练权重的SVD分解，可能对某些架构不适用",
+  "专家数量和激活比例的选择需要权衡性能与效率"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/World Model Implanting for Test-time Adaptation of Embodied Agents.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/World Model Implanting for Test-time Adaptation of Embodied Agents.pdf",
+ "title": "World Model Implanting for Test-time Adaptation of Embodied Agents",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "将预训练世界模型植入LLM智能体，实现测试时跨域适应",
+ "innovations": [
+  "提出世界模型植入(implant/remove)框架WorMI，将LLM推理能力与独立学习的领域世界模型在测试时组合融合",
+  "采用基于原型的世界模型检索：用基于轨迹的抽象表示匹配，把相关世界模型纳入测试时组合",
+  "设计world-wise复合注意力，既融合检索到的世界模型知识，又将其中间表示与智能体推理模型表示对齐"
+ ],
+ "method_framework": "两阶段融合：先world-to-world整合检索到的多个领域世界模型，再world-to-LLM对齐；用基于轨迹的抽象表示做原型检索得到相关世界模型集合，把其隐状态作为cross-attention的KV，以LLM策略隐状态为Q，自适应加权融合相关世界模型；世界模型可在测试时插入/移除。",
+ "experiment_framework": "两个具身环境：VirtualHome(3D家务任务,1023集,78任务/20场景，含seen/unseen任务与场景)与ALFWorld(文本交互,3554集)；把任务与场景作为不同适应域；对比zero-shot、in-context、model integration等范式，报告跨域任务成功率。",
+ "takeaways": [
+  "WorMI在无需大规模重采数据或重训的情况下实现并维持跨域适应能力",
+  "可插拔的世界模型植入让智能体在新域既能调用领域知识又不损失LLM通用推理",
+  "基于轨迹抽象的原型检索能精准挑选相关世界模型，复合注意力有效对齐了世界模型与推理模型表示"
+ ],
+ "weaknesses": [
+  "依赖预训练好的独立领域世界模型作为可插拔组件，新域若无对应世界模型则框架无法起效",
+  "评测局限于VirtualHome/ALFWorld等仿真具身环境，真实机器人/开放世界的迁移性未验证",
+  "检索-组合机制增加测试时计算开销，多世界模型叠加时的扩展性与干扰问题讨论有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

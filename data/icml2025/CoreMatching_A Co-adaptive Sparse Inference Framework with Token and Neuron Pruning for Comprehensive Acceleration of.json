@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/CoreMatching_A Co-adaptive Sparse Inference Framework with Token and Neuron Pruning for Comprehensive Acceleration of.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CoreMatching_A Co-adaptive Sparse Inference Framework with Token and Neuron Pruning for Comprehensive Acceleration of.pdf",
+ "title": "CoreMatching: A Co-adaptive Sparse Inference Framework with Token and Neuron Pruning for Comprehensive Acceleration of Vision-Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "探索VLM中token与神经元稀疏协同效应，提出联合剪枝框架实现加速",
+ "innovations": [
+  "首次系统研究VLM中token稀疏与神经元稀疏的交互作用，发现核心神经元与核心token相互强化",
+  "提出CoreMatching框架，联合进行token剪枝和神经元剪枝，利用两者协同效应提升推理效率",
+  "在10个图像理解任务和3种硬件设备上验证，NVIDIA Titan Xp上实现5倍FLOPs减少和10倍整体加速"
+ ],
+ "method_framework": "CoreMatching是一个共自适应稀疏推理框架：(1)识别核心token——基于注意力等指标筛选重要图像token；(2)识别核心神经元——基于FFN层激活预测识别重要神经元；(3)匹配机制——利用核心token和核心神经元的协同关系，让两者互相指导选择，实现联合优化。核心发现是：保留核心token时，激活的神经元集合也更集中，反之亦然，因此联合剪枝比单独剪枝效果更好。",
+ "experiment_framework": "评测10个图像理解任务（如VQA、COCO等）；对比SOTA token稀疏方法（FastV、PruMerge等）和神经元稀疏方法（Dejavu、PowerInfer等）；在3种硬件设备上测试效率（NVIDIA Titan Xp等）；指标包括FLOPs减少、推理加速比、任务准确率保留率。",
+ "takeaways": [
+  "Token稀疏与神经元稀疏并非独立运作，而是存在协同互增强效应，联合剪枝优于单独剪枝",
+  "CoreMatching在10个VLM任务上超越SOTA基线，准确率损失极小",
+  "在边缘硬件Titan Xp上实现10倍整体加速，展示了边缘部署VLM的可行性"
+ ],
+ "weaknesses": [
+  "仅在视觉理解任务上评测，图像生成、视频理解等多模态任务未验证",
+  "核心token和核心神经元的匹配规则依赖启发式设计，缺乏理论最优性保证",
+  "联合剪枝的调度开销在实际部署中是否抵消部分加速收益未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/LightningDrag_Lightning Fast and Accurate Drag-based Editing Emerging from Videos.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/LightningDrag_Lightning Fast and Accurate Drag-based Editing Emerging from Videos.pdf",
+ "title": "LightningDrag: Lightning Fast and Accurate Drag-based Image Editing Emerging from Videos",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.75
+ },
+ "one_line": "将拖拽编辑转为条件生成，用视频数据加速，但复杂编辑能力有限。",
+ "innovations": [
+  "将拖拽式编辑从隐空间优化问题重新定义为条件生成任务，消除了耗时的迭代优化过程",
+  "利用视频数据（物体自然运动轨迹）训练编辑模型，使模型学会语义一致的物体移动",
+  "实现约1秒完成编辑的速度，同时保持高编辑成功率和图像质量，解决了现有方法\"慢且不准\"的痛点"
+ ],
+ "method_framework": "LightningDrag将拖拽编辑建模为条件生成：输入原始图像+handle点+target点+mask，直接输出编辑后图像。模型在视频数据上训练（视频中物体的自然运动轨迹提供了监督信号），学习语义一致的物体变形和移动。推理时一步前向传播即可完成编辑，无需迭代优化。",
+ "experiment_framework": "在标准拖拽编辑基准上评测，对比DragGAN、DragDiffusion等方法；指标包括编辑成功率、图像质量（FID）、推理时间；在通用图像和人脸等场景验证。",
+ "takeaways": [
+  "条件生成范式比隐空间迭代优化快得多，从分钟级缩短到秒级",
+  "视频数据提供了丰富的物体运动监督，使编辑在语义上更一致",
+  "速度和精度的同时提升使拖拽编辑具备了实际交互式使用的可行性"
+ ],
+ "weaknesses": [
+  "一步生成的方式可能在需要精细控制的复杂编辑上不如迭代优化灵活",
+  "视频训练数据的分布可能限制了模型对罕见物体/姿态的编辑能力",
+  "主要在自然图像上验证，医学影像或专业设计场景的适用性未探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

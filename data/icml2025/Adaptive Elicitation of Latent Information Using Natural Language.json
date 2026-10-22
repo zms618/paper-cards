@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Adaptive Elicitation of Latent Information Using Natural Language.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adaptive Elicitation of Latent Information Using Natural Language.pdf",
+ "title": "Adaptive Elicitation of Latent Information Using Natural Language",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "基于EIG的自适应问题选择，元训练LLM预测未来观测分布",
+ "innovations": [
+  "采用预测视角的不确定性量化：不显式建模潜在变量U，而是直接建模未来观测Y_{t+1:∞}|X_{1:t},Y_{1:t}的分布",
+  "元训练自回归语言模型（Llama-3.1-8B + LoRA）在多实体问答历史数据上学得通用的不确定性估计能力",
+  "通过自回归前向模拟计算候选问题的期望信息增益，实现贪婪式自适应问题选择"
+ ],
+ "method_framework": "核心思路：认知不确定性等于缺失数据的熵H(Y_{t+1:∞}|X_{1:t},Y_{1:t})。(1)元训练阶段：在多个潜在实体的问答历史数据上微调LLM，使其学会条件预测未来答案分布；(2)在线提取阶段：对每个候选问题，模拟多个可能答案并计算后验熵的期望减少量（EIG），选择EIG最大的问题提问；(3)将问答对追加到上下文，迭代进行。",
+ "experiment_framework": "三个数据集：Twenty Questions（800物体×1200问题，基于THINGS数据库）、OpinionQA（动态意见投票）、EEDI（学生数学能力评估，938题）。基线：Base LLM（随机选问）、ICT（In-Context Tuning + 嵌入相似度选问）。指标：准确率、困惑度、ECE校准误差、Brier分数。每实验10000次模拟。",
+ "takeaways": [
+  "自适应EIG选问在三个数据集上均优于随机选问和嵌入相似度选问，目标问题预测准确率显著提升",
+  "元训练后的模型能提供良好校准的不确定性估计，ECE随问答轮次增加而降低",
+  "贪婪EIG策略已足够有效，MCTS式规划在简单场景下增益有限"
+ ],
+ "weaknesses": [
+  "EIG计算需要自回归模拟多个可能答案，计算开销较大",
+  "仅在文本问答场景验证，未扩展到多模态或更复杂的交互形式",
+  "元训练需要大量历史实体问答数据，冷启动场景适用性未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "不确定性量化方法扎实，但未触及可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

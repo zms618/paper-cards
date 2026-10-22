@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Purge-Gate Backpropagation-Free Test-Time Adaptation for Point Clouds Classification via Token.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Purge-Gate Backpropagation-Free Test-Time Adaptation for Point Clouds Classification via Token.pdf",
+ "title": "Purge-Gate Backpropagation-Free Test-Time Adaptation for Point Clouds Classification via Token",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "Token过滤机制提升点云分类鲁棒性，但超参依赖和真实场景验证不足",
+ "innovations": [
+  "提出Token Purging机制，在token级别过滤受域偏移影响的token",
+  "设计PG-SP和PG-SF两种变体，分别基于源统计和CLS-token驱动的原型",
+  "首次将Mamba架构应用于点云TTA场景"
+ ],
+ "method_framework": "通过分析域偏移对注意力机制的影响，提出Purge-Gate机制，在注意力层前移除高度受域偏移影响的token，无需迭代更新参数",
+ "experiment_framework": "在ModelNet40-C、ShapeNet-C和ScanObjectNN-C三个数据集上评估，与多种基线方法比较，包括基于反传和无反传方法",
+ "takeaways": [
+  "token级别过滤可有效提升点云分类在域偏移下的鲁棒性",
+  "无反传方法在保持计算效率的同时能达到与有反传方法相当的性能"
+ ],
+ "weaknesses": [
+  "需要预先确定purging size超参数，虽然通过并行选择策略缓解但仍需额外计算",
+  "仅在合成数据集上验证，缺乏真实场景的广泛验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "点云分类鲁棒性方法，符合可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

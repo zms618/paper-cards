@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Generalized Category Discovery via Reciprocal Learning and Class-Wise Distribution Regularization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Generalized Category Discovery via Reciprocal Learning and Class-Wise Distribution Regularization.pdf",
+ "title": "Generalized Category Discovery via Reciprocal Learning and Class-Wise Distribution Regularization",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "互惠学习与分布正则提升GCD基础类判别，但与可靠性主线关联弱",
+ "innovations": [
+  "提出互惠学习框架RLF：主分支过滤伪基础类样本给辅助分支，辅助分支再回馈更可靠软标签，形成良性循环",
+  "引入类间分布正则CDR，缓解对基础类的学习偏置，提高无标签数据预测置信度并提升新类性能",
+  "以极小额外计算代价在所有类上取得更优表现"
+ ],
+ "method_framework": "参数化GCD方法因自监督不可靠导致基础类判别力弱。RLCD增设一个专做基础类分类的辅助分支：训练中主分支把筛选后的伪基础类样本送入辅助分支，辅助分支输出更可靠的基础类logits/软标签回馈主分支；CDR进一步约束类预测分布以纠偏。两者协同增强基础类与新类判别。",
+ "experiment_framework": "在7个标准GCD数据集上与现有参数化/聚类方法对比，报告所有类(含基础类与新类)的聚类/分类指标(如NMI、ACC、Hungarian匹配后准确率)，并做消融验证RLF与CDR各自贡献。",
+ "takeaways": [
+  "辅助分支回馈的可靠软标签显著改善参数化GCD的基础类判别力",
+  "CDR缓解基础类偏置并提升新类性能",
+  "RLCD在7个GCD数据集上整体优于既有方法且额外计算可忽略"
+ ],
+ "weaknesses": [
+  "仍属视觉识别/聚类方法，与可靠性主线及医学影像、多模态推理落地域关联弱",
+  "互惠依赖伪标签质量，错误伪标签可能在两分支间放大",
+  "前9页内与最新基于大模型特征的GCD方法对比有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.68,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

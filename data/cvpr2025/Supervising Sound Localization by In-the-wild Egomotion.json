@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Supervising Sound Localization by In-the-wild Egomotion.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Supervising Sound Localization by In-the-wild Egomotion.pdf",
+ "title": "Supervising Sound Localization by In-the-wild Egomotion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "利用相机运动弱监督声音定位，但场景受限且未解决前后混淆。",
+ "innovations": [
+  "利用自然视频中的相机运动作为声音定位的弱监督信号",
+  "提出StereoWalks数据集，包含真实世界音频-视频数据和相机运动",
+  "结合相机旋转和前-后平移的视觉监督与双耳线索进行声音定位"
+ ],
+ "method_framework": "通过多视图几何方法估计相机运动，训练音频模型预测与视觉相机运动一致的声音方向，结合旋转损失、平移损失和双耳线索损失进行优化。",
+ "experiment_framework": "在YT-Stereo、Stereo-Fountain等真实数据集和HM3D-SS 2.0模拟数据集上评估，使用MAE和2/8分类准确率作为指标。",
+ "takeaways": [
+  "利用自然视频中的相机运动作为弱监督信号可学习声音定位",
+  "结合多种视觉线索(旋转、平移)和双耳线索可提高定位性能",
+  "真实世界数据与模拟数据之间存在显著差距，需在真实数据上训练"
+ ],
+ "weaknesses": [
+  "假设所有声音源在相机一侧，限制了应用场景",
+  "未解决立体声音频中的前后混淆问题",
+  "模型在复杂重叠声音场景下的性能下降明显"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅利用相机运动监督声音定位，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

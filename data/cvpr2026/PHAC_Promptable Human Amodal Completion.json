@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/PHAC_Promptable Human Amodal Completion.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/PHAC_Promptable Human Amodal Completion.pdf",
+ "title": "PHAC Promptable Human Amodal Completion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "PHAC结合姿态和区域提示完成人体非模态，但依赖预训练模型",
+ "innovations": [
+  "引入可提示人体非模态完成(PHAC)新任务",
+  "基于修复的细化模块保持可见区域和边界连续性",
+  "仅微调交叉注意力块保持预训练扩散模型先验"
+ ],
+ "method_framework": "结合ControlNet处理多种用户提示(姿态和边界框)，通过扩散模型生成粗略完成，再使用修复网络细化保持可见外观",
+ "experiment_framework": "OccThuman2.0合成数据集和AHP真实测试集，与PIDM、MCLD、pix2gestalt和SDHDO对比，使用LPIPS、SSIM、KID等指标",
+ "takeaways": [
+  "修复网络作为即插即用组件可提升其他扩散模型性能",
+  "仅微调交叉注意力块可有效保持预训练先验"
+ ],
+ "weaknesses": [
+  "依赖预训练模型和特定组件(SAM、OpenPose)",
+  "实验主要在合成数据集上进行，真实场景泛化能力需进一步验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "人体非模态完成与可靠性主线无直接交点，仅具知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

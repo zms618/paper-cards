@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/A Combination of Noise and Bilateral Filters Achieve Supralinear and.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Combination of Noise and Bilateral Filters Achieve Supralinear and.pdf",
+ "title": "A Combination of Noise and Bilateral Filters Achieve Supralinear and Scalable Adversarial Robustness in CNNs",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 8.0,
+  "overall": 6.2
+ },
+ "one_line": "噪声与滤波组合防御的理论分析与实验验证不足",
+ "innovations": [
+  "用对抗体积 Va(x)=∫_{B(x,r)}1[f(z)≠h(z)=f(x)]dz 统一刻画防御：证明最坏决策边界是一根细圆柱，滤波器能通过雅可比最小特征值 λ_min^{ϕ(x)} 把对抗体积压到 r·(1−λ_min)^{D−1}S_{D−1}(c−1/2) 以下（Eq.2），即滤波的有效性取决于攻击簇离图像流形有多远",
+  "证明噪声的机制恰好互补：给定 Va(x) 时最坏情况是边界呈球形，此时成功概率上界为 1−2erf(−ρ_D(Va(x))/σ)（Eq.3）；噪声克「细丝状」分布的攻击、滤波克「贴边大球状」攻击，二者叠加覆盖的攻击族比任一个都宽，这是超线性鲁棒性的理论来源",
+  "工程上得到一个训练/推理同用的极简前置器：逐像素零均值高斯噪声（方差 0.032）+ 多轮双边滤波（训练 20/推理 100 轮），零参数零可学习模块，直接接到 WRN 的对抗训练（TRADES + EDM 合成数据）上即可在 RobustBench 上比无后置处理的 SOTA 还高 0.6%"
+ ],
+ "method_framework": "对输入同时施加零均值高斯噪声与多轮双边滤波（先加噪后滤波，噪声使噪声量在训练与推理阶段均生效，滤波把扰动拉回图像流形），再把处理后的样本送入原网络；训练用 TRADES 对抗训练并配 EDM 合成数据，推理期保留同一前置器。",
+ "experiment_framework": "CIFAR-10 为主、ImageNet10 做短消融；EficientNet-B0 做 6 种攻击（FGSM/L-inf/EoT/L2/C&W）消融并报 ±std；WRN-28-4/28-10/82-12 用 TRADES 对抗训练 + AutoAttack/EoT/APGD/TABPDA 评测，与 RobustBench 上 SOTA 比鲁棒精度与训练 FLOPs 缩放曲线。",
+ "takeaways": [
+  "「噪声 + 滤波」互补的几何直觉（噪声毁细丝状攻击、滤波毁贴边球状攻击）可以推广到任何对抗/分布扰动防御：先判断单一手段失效的攻击形状，再找互补手段补齐，比盲目堆叠防御模块有依据",
+  "防御前置器放在数据端而非网络端，可在不增加参数、不改骨干的前提下叠加到任何已有对抗训练流程，且推理开销只有几轮双边滤波",
+  "针对自己的防御定制攻击（TABPDA 只过双边滤波、绕开噪声）仍被提升 5.5% 以上，说明纯前处理防御能被 BPDA 类绕过的问题在同款攻击下被部分规避"
+ ],
+ "weaknesses": [
+  "论文自己承认：由于对抗训练算力开销太大，WRN 上所有关键实验（表 2、图 2、图 3）都无法报标准差，只有前 5.1 节 EficientNet-B0 的消融带 ±std；而 +0.6% 超过 SOTA 的结论正落在无方差的 WRN-82-12 行上，显著性无从判断",
+  "理论部分把滤波建模成「对图像无扰动处恒等、对偏差整体压缩」的理想滤波器，并用雅可比最小特征值的下界给条件，这个界随维度 D 指数放大（r·(1−λ_min)^{D−1}），在高维 CIFAR 图像上基本退化为弱保证；附录里的联合界也只做到「anticommutative 但未定序」，序的选择是经验拍定",
+  "表 2 中对比用的 WRN-82-12（无前置器）与 WRN-94-16 直接从文献 [4] 引用而非自行复现，且合成数据量、epochs、WRN 尺寸三者同时变化（50M/3000ep vs 150M/3000ep），「用 1/3 epoch、1/15 数据达到同精度」的算力节省与消融实验并非同一控制变量下的结论",
+  "评测只在 CIFAR-10 / ImageNet-10 的普通图像分类上做，正文前 9 页在研究结论后即截断，缺 Limitations 与 failure case 讨论：前置器对人脸等高频纹理图像的清度损失、以及对非图像域（如医学影像、多模态）的迁移均未验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "对抗防御与可靠性主线明确交点，设计模式可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

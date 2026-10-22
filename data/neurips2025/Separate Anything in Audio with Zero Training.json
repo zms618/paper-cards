@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Separate Anything in Audio with Zero Training.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Separate Anything in Audio with Zero Training.pdf",
+ "title": "Separate Anything in Audio with Zero Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 5.5,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "零训练音频分离框架，依赖预训练扩散模型和特定权重设置",
+ "innovations": [
+  "零训练音频分离框架ZeroSep",
+  "利用预训练文本引导扩散模型进行分离",
+  "通过潜空间反转和文本条件去噪实现分离",
+  "发现分类器自由引导权重ω≤1的关键作用"
+ ],
+ "method_framework": "ZeroSep通过两步实现零训练音频分离：1)将混合音频反转到扩散模型的潜空间；2)使用文本条件引导去噪过程恢复单个源。关键发现是设置分类器自由引导权重ω=1可实现高质量分离。",
+ "experiment_framework": "在AVE和MUSIC数据集上评估，与训练方法(LASS-Net, AudioSep, FlowSep)和无训练方法(NMF-MFCC, AudioEdit)比较，使用FAD、LPAPS、CLAP-A和CLAP-T指标。",
+ "takeaways": [
+  "扩散模型在适当配置下可实现零训练音频分离",
+  "分类器自由引导权重ω=1是分离的关键",
+  "预训练扩散模型的生成质量与分离性能正相关"
+ ],
+ "weaknesses": [
+  "依赖预训练扩散模型的质量",
+  "文本提示选择影响分离效果",
+  "未探索不同类型音频混合的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

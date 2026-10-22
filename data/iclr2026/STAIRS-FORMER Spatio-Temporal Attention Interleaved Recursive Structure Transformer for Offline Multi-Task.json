@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/STAIRS-FORMER Spatio-Temporal Attention Interleaved Recursive Structure Transformer for Offline Multi-Task.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/STAIRS-FORMER Spatio-Temporal Attention Interleaved Recursive Structure Transformer for Offline Multi-Task.pdf",
+ "title": "STAIRS-Former: Spatio-Temporal Attention with Interleaved Recursive Structure Transformer for Offline Multi-Task Multi-Agent Reinforcement Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "时空层次Transformer+token dropout提升多智能体鲁棒性，但与主线关联弱",
+ "innovations": [
+  "在Transformer中引入空间与时间层次结构，增强智能体间协作注意力",
+  "交错递归结构以捕获部分可观测下的长程时序依赖，替代单一历史token",
+  "提出token dropout增强对不同智能体数量的鲁棒性与泛化"
+ ],
+ "method_framework": "针对离线多任务MARL中智能体数变化与泛化难题，构建带空间与时间层次的Transformer：空间层次建模智能体间协作，时间层次递归捕获长交互历史；用token dropout在训练时随机丢弃token以提升对可变智能体规模的鲁棒性。",
+ "experiment_framework": "在SMAC、SMAC-v2、MPE、MaMuJoCo等多智能体基准的多任务数据集上评测，对比此前用观测token化/层次技能学习的离线MARL方法，报告新SOTA。",
+ "takeaways": [
+  "显式时空层次注意力比单一历史token更能建模长程协作",
+  "token dropout可提升对可变智能体数量的泛化",
+  "在多个离线多任务MARL基准上达到SOTA"
+ ],
+ "weaknesses": [
+  "属离线MARL控制方向，与主线（LLM可靠性/医学影像/多模态推理）无关联",
+  "token dropout的正则化效果与数据规模耦合，消融不够分离",
+  "多任务跨场景泛化的边界（域外任务）未充分压力测试"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "离线MARL控制方向，与主线无关联但方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

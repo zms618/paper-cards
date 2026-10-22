@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Parallelized Autoregressive Visual Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Parallelized Autoregressive Visual Generation.pdf",
+ "title": "Parallelized Autoregressive Visual Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "并行视觉生成加速3.6-9.5倍，但未解决时间维度并行与参数量问题",
+ "innovations": [
+  "基于视觉token依赖性的非局部并行生成策略",
+  "区域初始序列生成+跨区域并行生成两阶段设计",
+  "组内双向注意力与全局自回归结合的架构"
+ ],
+ "method_framework": "将图像划分为区域，先顺序生成各区域初始token建立全局结构，再并行生成对应位置的跨区域弱依赖token，通过可学习token和组内双向注意力实现",
+ "experiment_framework": "ImageNet(256×256)和UCF-101视频数据集，与LlamaGen等基线比较FID/FVD指标，评估生成步骤和推理时间",
+ "takeaways": [
+  "基于空间距离的token依赖性分析可指导并行策略设计",
+  "初始token顺序生成对保持全局结构至关重要",
+  "简单架构修改可实现显著加速"
+ ],
+ "weaknesses": [
+  "未探索时间维度的并行策略",
+  "大模型参数量增加可能影响部署",
+  "未充分分析不同分辨率下的性能"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "纯视觉生成加速，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

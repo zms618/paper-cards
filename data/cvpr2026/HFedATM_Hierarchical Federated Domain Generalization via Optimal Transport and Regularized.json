@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/HFedATM_Hierarchical Federated Domain Generalization via Optimal Transport and Regularized.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/HFedATM_Hierarchical Federated Domain Generalization via Optimal Transport and Regularized.pdf",
+ "title": "HFedATM Hierarchical Federated Domain Generalization via Optimal Transport and Regularized",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 7.0
+ },
+ "one_line": "分层联邦域泛化方法，通过最优传输和正则化聚合提升性能",
+ "innovations": [
+  "首次形式化分层联邦域泛化(HFedDG)场景并推导分层误差边界",
+  "提出FOT对齐卷积滤波器和RegMean聚合线性层的分层聚合方法",
+  "理论证明HFedATM比简单加权平均产生更紧的目标域误差边界"
+ ],
+ "method_framework": "HFedATM结合滤波级最优传输(FOT)对齐和收缩感知正则化均值(RegMean)聚合，先对齐不同站点的卷积滤波器确保语义一致性，再在特征空间中融合线性层权重，完全数据保护且无需修改客户端训练。",
+ "experiment_framework": "在PACS、Office-Home、TerraInc视觉任务和Amazon Reviews NLP任务上评估，对比FedAvg、FedProx、FedSR、FedIIR基线，使用异质性参数λ控制域偏移，测试不同架构鲁棒性。",
+ "takeaways": [
+  "FOT对齐解决卷积滤波器语义不匹配问题，RegMean聚合处理线性层相关性差异",
+  "HFedATM作为即插即用聚合层，在保持数据隐私的同时显著提升性能，训练开销增加仅10%以内"
+ ],
+ "weaknesses": [
+  "依赖Gram矩阵计算和存储，在高维特征空间可能增加计算负担",
+  "理论分析假设客户端训练已达到低风险，实际应用中可能需要额外调优"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "联邦域泛化与可靠性主线交点，方法设计可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

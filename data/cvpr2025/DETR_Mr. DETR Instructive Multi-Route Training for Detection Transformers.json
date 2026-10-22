@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/DETR_Mr. DETR Instructive Multi-Route Training for Detection Transformers.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/DETR_Mr. DETR Instructive Multi-Route Training for Detection Transformers.pdf",
+ "title": "Mr. DETR Instructive Multi-Route Training for Detection Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "多路径训练提升DETR，但仅限检测且训练复杂度高",
+ "innovations": [
+  "多路径训练机制，同时处理一对一和一对多预测",
+  "指导性自注意力机制，动态引导对象查询",
+  "独立组件实验揭示解码器各组件功能"
+ ],
+ "method_framework": "构建三条训练路径：主路径一对一预测，两条辅助路径一对多预测，其中一条使用独立FFN，另一条使用指导性自注意力，推理时丢弃辅助路径",
+ "experiment_framework": "COCO 2017数据集，多个基线模型(Deformable-DETR++, H-DETR, DINO等)，mAP指标",
+ "takeaways": [
+  "独立组件可有效解决一对一对一对多任务冲突",
+  "指导性自注意力机制实现参数共享与任务区分",
+  "多路径训练可提升检测器收敛速度和性能"
+ ],
+ "weaknesses": [
+  "仅关注检测任务，未探索其他应用场景",
+  "辅助路径增加训练复杂度，可能影响大规模部署"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅限检测任务，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

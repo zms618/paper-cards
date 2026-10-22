@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning with Exact Invariances in Polynomial Time.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning with Exact Invariances in Polynomial Time.pdf",
+ "title": "Learning with Exact Invariances in Polynomial Time",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 6.25
+ },
+ "one_line": "核回归框架下多项式时间精确群不变学习算法，理论贡献大于实用价值",
+ "innovations": [
+  "首个多项式时间算法实现核回归下的精确群不变学习，突破了传统方法（数据增广、群平均、正则化）要么非多项式时间要么仅近似不变的局限",
+  "证明所提算法达到与原始核回归问题相同的超额风险/泛化误差，同时保证精确不变性",
+  "建立了统计-计算权衡视角下精确不变学习的理论刻画"
+ ],
+ "method_framework": "在核岭回归（KRR）框架下，利用对输入空间群作用几何性质的oracle访问，通过谱平均（Spec-Avg）方式构造估计器：将核函数投影到群表示的不变子空间，使得估计器在群作用下严格不变；算法的时间复杂度为多项式，且泛化误差率与无约束KRR一致。",
+ "experiment_framework": "合成流形数据（Td = [-1,1)^d）上验证；对比标准KRR（非不变）；指标包括不变性偏差（ID，度量估计器在群作用下的不一致程度）和总体风险。",
+ "takeaways": [
+  "标准KRR估计器实际上不具备严格的群不变性，数据增广等方法只能近似",
+  "在oracle辅助下，精确不变学习可以在多项式时间内完成，且不损失泛化性能",
+  "不变性偏差ID为零是Spec-Avg的设计保证，而非实验结果"
+ ],
+ "weaknesses": [
+  "依赖oracle访问输入空间的几何性质，实际中如何高效获取该oracle信息未讨论",
+  "实验仅在合成数据上验证，未展示在真实分子/物理系统等不变学习典型场景的效果",
+  "与现代深度学习中的等变网络（如SE(3)-Transformer）的对比缺失"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

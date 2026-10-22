@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Zero-shot Meta-learning for Tabular Prediction Taskswith Adversarially Pre-trained Transformer.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Zero-shot Meta-learning for Tabular Prediction Taskswith Adversarially Pre-trained Transformer.pdf",
+ "title": "Zero-shot Meta-learning for Tabular Prediction Tasks with Adversarially Pre-trained Transformer",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "elevance": 4.5,
+  "evidence": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "对抗预训练Transformer实现表格零样本元学习，但与主线关联弱且验证不足",
+ "innovations": [
+  "用对抗合成数据生成分布预训练，刻意以不同合成数据挑战模型",
+  "在PFN/TabPFN路线上实现不预训练于任何真实数据集的表格零样本元学习",
+  "提出mixture block架构处理任意类别数分类，突破既有深度表格零样本方法的类别数限制"
+ ],
+ "method_framework": "延续Prior-Data Fitted Networks(PFN)/TabPFN思路，用Transformer在合成数据上学习'如何学习'；采用对抗合成数据分布让生成器持续漂移数据以挑战模型；mixture block使模型可应对任意类别数，摆脱类别规模限制。",
+ "experiment_framework": "在多个表格预测任务上评测零样本/少样本元学习；对比TabPFN等PFN系方法与专用表格模型；报告分类/回归精度。",
+ "takeaways": [
+  "对抗合成预训练可提升表格零样本元学习的鲁棒性",
+  "mixture block解除了类别数限制这一关键弱点",
+  "无需真实数据预训练即可适配新表格任务"
+ ],
+ "weaknesses": [
+  "属表格预测PFN方向，与主线(可靠性/医学影像/多模态推理)关联弱",
+  "合成数据分布与真实表格分布的鸿沟，在高维/异构表格上的表现前9页未充分验证",
+  "仅17页，对抗训练的稳定性与计算成本需完整附录确认"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

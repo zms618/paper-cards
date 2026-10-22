@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RLVR_Controllable Exploration In Hybrid-Policy RLVR for Multi-Modal Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RLVR_Controllable Exploration In Hybrid-Policy RLVR for Multi-Modal Reasoning.pdf",
+ "title": "Controllable Exploration in Hybrid-Policy RLVR for Multi-Modal Reasoning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "改造现有RLVR组件，混合策略缓解多模态RL训练熵坍缩问题。",
+ "innovations": [
+  "提出将专家监督重新定义为分布校准基线的混合策略RLVR框架CalibRL，使专家知识从刚性模仿信号转变为引导性校准机制",
+  "设计分布感知优势加权（按组内稀有度缩放更新），选择性强化欠表征但正确的推理路径，保留稀有但有信息量的探索信号",
+  "引入基于LeakyReLU的非对称激活函数，以专家知识为校准基线调节过度自信的更新，同时保留其纠正方向"
+ ],
+ "method_framework": "CalibRL在混合策略RLVR训练中，将专家轨迹作为分布校准基线。一方面通过优势加权按回复在组内的稀有度缩放更新幅度，使稀有正确路径获得更多强化以维持探索；另一方面用LeakyReLU非对称激活对过度自信的更新进行衰减但保留纠正方向，避免误导性收敛。框架在线采样估计on-policy分布，使更新由有信息量的行为驱动，缓解模型策略与专家轨迹间的分布失配。",
+ "experiment_framework": "在8个推理基准上进行实验，涵盖域内和域外设置；与GRPO基线及已有混合策略方法对比；报告策略熵、准确率等指标，验证可控探索的稳定性和性能提升。",
+ "takeaways": [
+  "混合策略RLVR中专家监督可作为分布校准基线而非模仿目标，在维持策略熵的同时引导有效探索",
+  "按稀有度加权优势能选择性保留有信息量的稀有推理路径，避免探索坍缩到次优行为",
+  "LeakyReLU非对称激活可在不改变更新方向的前提下抑制过度自信，提升训练稳定性"
+ ],
+ "weaknesses": [
+  "核心机制均为对现有RLVR组件的改造组合，缺乏罕见的理论突破，novel性有限",
+  "仅在前9页可见8个基准的设置描述，具体消融实验和域外泛化的完整数据需后续页面确认",
+  "与SFT-then-RL标准管线的对比不够充分，未充分论证混合策略相比简单管线的额外收益"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "混合策略RLVR缓解熵坍缩，与可靠性主线探索控制相关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

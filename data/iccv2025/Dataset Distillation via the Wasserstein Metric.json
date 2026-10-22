@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Dataset Distillation via the Wasserstein Metric.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Dataset Distillation via the Wasserstein Metric.pdf",
+ "title": "Dataset Distillation via the Wasserstein Metric",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "Wasserstein蒸馏提升合成数据质量，但计算复杂与扩展性存疑。",
+ "innovations": [
+  "引入Wasserstein barycenter进行分布匹配",
+  "提出Per-Class BatchNorm (PCBN)正则化方法",
+  "在特征空间中进行分布对齐而非原始像素空间"
+ ],
+ "method_framework": "通过预训练分类器提取特征，计算Wasserstein barycenter作为真实数据分布的紧凑表示，优化合成数据使其与barycenter对齐，同时使用PCBN保持类内变化。",
+ "experiment_framework": "在ImageNette、Tiny ImageNet和ImageNet-1K数据集上评估，使用ResNet-18模型，比较不同合成图像数量(1/10/50/100 IPC)下的top-1准确率。",
+ "takeaways": [
+  "Wasserstein距离能更好地保留数据分布的几何结构",
+  "类特定的BatchNorm统计量能有效提升合成数据质量",
+  "特征空间中的分布对齐优于原始像素空间"
+ ],
+ "weaknesses": [
+  "未充分讨论计算复杂度与大规模数据集的扩展性",
+  "对视觉变换器的泛化性能相对有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "数据蒸馏方法与可靠性主线无直接交点，仅具知识补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

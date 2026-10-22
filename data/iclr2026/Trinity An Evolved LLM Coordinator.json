@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Trinity An Evolved LLM Coordinator.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Trinity An Evolved LLM Coordinator.pdf",
+ "title": "Trinity: An Evolved LLM Coordinator",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "轻量协调器进化训练编排多模型角色分工，但推理成本高且角色切换不灵活",
+ "innovations": [
+  "提出测试时模型组合方法：用轻量级协调器编排多个LLM协作，无需修改模型权重或解决架构不匹配问题",
+  "使用可分离CMA进化策略优化协调器，利用块ε可分性在高维预算约束下优于RL和模仿学习",
+  "三角色分工（Thinker思考、Worker执行、Verifier验证）的多轮交互机制，将复杂技能获取从协调器转移到大模型"
+ ],
+ "method_framework": "Trinity由约0.6B参数的紧凑语言模型和约10K参数的轻量级头组成。协调器从紧凑LM的隐藏状态提取输入上下文表示，在多轮交互中为每个LLM分配Thinker/Worker/Verifier三种角色之一。协调器的参数使用可分离CMA-ES进化策略优化，而非RL或IL，以在严格预算下高效训练。",
+ "experiment_framework": "在编码（LiveCodeBench新纪录86.2%）、数学、推理、领域知识等任务上评估，对比单个模型、模型合并、现有协调方法；同时测试OOD任务的泛化性。",
+ "takeaways": [
+  "轻量级协调器通过进化策略优化可有效编排多个大模型，实现超越任何单一模型的性能",
+  "在高维和严格预算约束下，可分离CMA-ES比RL/模仿学习/随机搜索有显著优势",
+  "隐藏状态表示为协调器提供了丰富的输入上下文化信息，是成功的关键因素之一"
+ ],
+ "weaknesses": [
+  "协调器需要多次调用不同LLM，推理成本和延迟显著高于单模型",
+  "进化策略训练需要大量并行评估，训练成本可能被低估",
+  "三角色固定分配机制可能不够灵活，复杂任务中的动态角色切换未探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模型协调方法与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

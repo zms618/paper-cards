@@ -1,0 +1,41 @@
+{
+ "title": "Action-Minimization Meets Generative Modeling: Efficient Transition Path Sampling with the Onsager-Machlup Functional",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "将过渡路径采样转化为生成模型动力学下的OM作用量最小化问题",
+ "innovations": [
+  "将候选过渡路径视为预训练生成模型(去噪扩散/流匹配)分数函数诱导随机动力学下的采样轨迹",
+  "证明在该动力学下寻找高似然过渡路径等价于最小化 Onsager-Machlup(OM)作用泛函",
+  "实现零样本复用预训练生成模型做 TPS，区别于以往需专门、任务特定、无数据训练的 TPS 模型"
+ ],
+ "method_framework": "不再为 TPS 单独训练控制漂移模型，而是取预训练生成模型学到的 score 作为随机动力学的漂移/扩散项；在该动力学下，高似然过渡路径对应 OM 作用量的极小路径，于是通过最小化 OM 作用函数高效采样连接两稳定构型的稀有事件路径。",
+ "experiment_framework": "在真实原子尺度体系(化学反应/蛋白折叠类稀有事件)上验证；对比以往任务特定 TPS 模型，考察能否零样本复用已有原子数据预训练模型，以采样到的过渡路径概率与稀有事件采样效率为指标。",
+ "takeaways": [
+  "OM 作用量最小化与 score 生成动力学的对应，使 TPS 可零样本复用预训练生成模型",
+  "该路线避免了以往 TPS 方法昂贵、任务特定、无法利用大规模原子数据的训练流程",
+  "生成式建模的进展可直接迁移到计算物理的稀有事件采样"
+ ],
+ "weaknesses": [
+  "依赖预训练生成模型质量，对未覆盖体系/能量地貌外推性未充分验证",
+  "前 9 页仅见摘要与引言，具体原子体系、基线与加速倍数表在后半部分",
+  "与增强采样/专门 TPS 方法的系统精度-效率权衡消融不足"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Action-Minimization Meets Generative Modeling Efficient Transition Path Sampling with the Onsager-Machlup.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Action-Minimization Meets Generative Modeling Efficient Transition Path Sampling with the Onsager-Machlup.pdf",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "计算物理稀有事件采样，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

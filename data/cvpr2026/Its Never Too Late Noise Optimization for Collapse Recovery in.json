@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Its Never Too Late Noise Optimization for Collapse Recovery in.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Its Never Too Late Noise Optimization for Collapse Recovery in.pdf",
+ "title": "Its Never Too Late Noise Optimization for Collapse Recovery in",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "噪声优化缓解扩散模型崩溃，但计算开销大且复杂提示效果有限",
+ "innovations": [
+  "端到端噪声优化框架解决模式崩溃",
+  "分析噪声频率特性并引入粉红噪声初始化",
+  "支持多种多样性目标函数和批量/顺序优化"
+ ],
+ "method_framework": "优化初始噪声以最大化生成图像多样性，同时保持质量。通过最小化成对相似性指标使样本分离，支持多种多样性目标函数如DINOv2、LPIPS、DPP和Vendi Score。",
+ "experiment_framework": "在GenEval和DPG-Bench数据集上评估SDXL-Turbo和Flux.1模型，使用DINOv2、DreamSim、LPIPS、Vendi等指标衡量多样性，CLIPScore和HPSv2衡量质量",
+ "takeaways": [
+  "低频噪声成分是驱动多样化图像生成的关键",
+  "集合级多样性目标(DPP、Vendi)比成对目标更有效",
+  "粉红噪声初始化可提升生成多样性"
+ ],
+ "weaknesses": [
+  "计算开销较大，需要多次迭代优化",
+  "对复杂提示词的多样性提升仍有局限",
+  "Flux.1模型对超参数选择较为敏感"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "扩散模型崩溃缓解属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

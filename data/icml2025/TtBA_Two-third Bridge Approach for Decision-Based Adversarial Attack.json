@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/TtBA_Two-third Bridge Approach for Decision-Based Adversarial Attack.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/TtBA_Two-third Bridge Approach for Decision-Based Adversarial Attack.pdf",
+ "title": "TtBA: Two-third Bridge Approach for Decision-Based Adversarial Attack",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "桥接方向加权组合扰动与法向量，2/3经验值降低黑盒攻击查询复杂度",
+ "innovations": [
+  "提出normal-vector型桥接方向：当前单位扰动方向与其单位法向量按权重k组合；用二分搜索找到与当前方向同决策边界的kbridge",
+  "关键发现k=2/3·kbridge给出近最优扰动方向，兼顾攻击隐蔽性(小扰动)",
+  "指出扰动方向优化中局部最优的关键危害，提出简单有效的检测与逃逸局部最优方法"
+ ],
+ "method_framework": "仅可访问top-1标签的决策黑盒；沿桥接方向(扰动方向+法向量加权)做步长搜索，二分定位kbridge，取2/3处方向使扰动边界与当前一致又更优；辅以局部最优逃逸机制。",
+ "experiment_framework": "MNIST/FASHION-MNIST/CIFAR10/CIFAR100/ImageNet多数据集与多种DNN；对比Brendel-Bethge、Sign-OPT等SOTA decision-based攻击；指标为查询复杂度、扰动幅度与攻击成功率。",
+ "takeaways": [
+  "decision-based攻击中在当前方向与其法向量间取2/3桥接点，可在低查询数下得到近最优、隐蔽的扰动方向",
+  "局部最优会显著拖慢hard-label攻击，主动检测并逃逸它比盲目随机重启更高效"
+ ],
+ "weaknesses": [
+  "实证集中在标准图像分类基准，未评估于大模型/多模态或安全敏感的医学影像场景",
+  "2/3 kbridge的'近最优'仅经验观察，缺乏严格最优性证明；局部最优逃逸策略较启发式，超参敏感度未充分消融"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

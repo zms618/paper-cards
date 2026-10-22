@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Adversarial Reasoning at Jailbreaking Time.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adversarial Reasoning at Jailbreaking Time.pdf",
+ "title": "Adversarial Reasoning at Jailbreaking Time",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "利用损失信号引导的越狱搜索，在白盒设置下提升攻击成功率",
+ "innovations": [
+  "将测试时计算优化范式（reason-verify-search）引入自动越狱攻击，从仅用二元反馈升级为利用连续损失信号引导搜索",
+  "提出对抗推理三步框架：推理（生成候选越狱思路）、验证（用损失信号评估）、搜索（迭代优化），在语义空间高效导航",
+  "即使对以推理时计算换取鲁棒性的模型（如R1类推理模型）也能保持高攻击成功率，揭示了此类防御的根本局限"
+ ],
+ "method_framework": "Adversarial Reasoning框架：(1) Reason：用一个攻击LLM生成越狱思路和候选prompt；(2) Verify：用目标模型的损失值（而非仅是否拒绝的二元信号）作为细粒度反馈评估候选；(3) Search：根据损失反馈迭代优化prompt。核心创新是将连续损失信号融入推理过程，引导搜索高效收敛。",
+ "experiment_framework": "目标模型：多个对齐LLM（包括标准对齐和对抗训练的鲁棒模型）。基线：现有token-space和semantic-space越狱方法。指标：攻击成功率（ASR）。测试场景：包括对推理时计算增强的鲁棒模型的攻击。",
+ "takeaways": [
+  "利用连续损失信号比仅用二元反馈能更高效地搜索越狱prompt空间",
+  "以推理时计算换取鲁棒性的防御策略存在根本局限——攻击者也可以用更多推理时计算来攻破",
+  "对抗推理范式为理解LLM安全脆弱性提供了新视角，有助于构建更鲁棒的对齐方法"
+ ],
+ "weaknesses": [
+  "需要访问目标模型的损失值（白盒/灰盒设置），纯黑盒场景的适用性有限",
+  "攻击成本高（多轮推理+搜索），实际部署中的检测和缓解讨论不足",
+  "仅评估英文LLM，多语言场景的越狱效果未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "越狱攻击与可靠性主线无关，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

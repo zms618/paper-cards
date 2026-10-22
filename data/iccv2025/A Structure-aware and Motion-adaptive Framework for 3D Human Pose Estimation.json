@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/A Structure-aware and Motion-adaptive Framework for 3D Human Pose Estimation with Mamba.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Structure-aware and Motion-adaptive Framework for 3D Human Pose Estimation with Mamba.pdf",
+ "title": "A Structure-aware and Motion-adaptive Framework for 3D Human Pose Estimation with Mamba",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.0
+ },
+ "one_line": "Mamba结构融合与关节自适应步长，3D姿态估计小幅提升",
+ "innovations": [
+  "在 Mamba2 的 SSD 状态空间里用可学习邻接矩阵 M=softmax(D^{−1/2}(M_o+I)D^{−1/2}) 同时聚合关节特征与隐藏状态（x′_a=x_a+Σ_k M_ak x_k、H_a=h_a+Σ_k M_ak h_k），用拓扑感知融合替代多轮 1D 扫描",
+  "把 Mamba 的步长 Δ 从 token 级改为关节级运动自适应：以相邻帧同关节特征 S_Δ(x_t,x_{t−1}) 动态决定当前输入与历史状态之间的权重，四肢大 Δ 跟当前帧、躯干小 Δ 保状态连续",
+  "省掉空间/时间位置编码（SSM 本身已编码顺序），交替堆叠 SSI 与 MSM 块，SAMA-B 仅 3.3M 参数、54M MACs/frame 即达 37.4mm MPJPE"
+ ],
+ "method_framework": "线性投影后交替堆叠 K 层 SSI 与 MSM：SSI 用归一化可学习邻接矩阵在关节特征与隐藏状态两级做结构聚合；MSM 由相邻帧特征预测关节专属步长 Δ 调节输入/历史状态权重；加权 MPJPE+MPJVE+归一化 MPJPE 端到端训练。",
+ "experiment_framework": "Human3.6M（S1/5/6/7/8 训练、S9/11 测试）与 MPI-INF-3DHP；对比 MHFormer、MotionBERT、PoseMamba-S/B/X、PoseMagic 等；指标 MPJPE、P-MPJPE、PCK、AUC。",
+ "takeaways": [
+  "把人体拓扑直接注入状态转移与隐藏状态两级聚合，比多轮 1D 扫描省算力，参数与 MACs 不到 PoseMamba-L 的一半",
+  "关节专属步长 Δ（四肢大 Δ 跟当前帧、躯干小 Δ 保连续）是低成本且可解释的运动建模改动",
+  "SSM 已内在编码序列顺序，可直接去掉空间/时间位置编码，减少冗余参数"
+ ],
+ "weaknesses": [
+  "提升幅度接近噪声：SAMA-L 相对 PoseMamba-X 只降 0.6mm MPJPE（36.9 vs 37.1）、P-MPJPE 仅降 0.2mm，正文却以 “↓11.2 / ↓27.8” 的降幅行概括，口径不一致",
+  "全部实验以 Human3.6M 真值或单一 SHNet 检测器输出的 2D 姿态为输入，未见管线级（2D 检测噪声→3D 误差）评测，也未见遮挡、低分辨率、域外动作等鲁棒性测试",
+  "正文在 §4.2 效率对比处截断：MPI-INF-3DHP 主表（§4.3）与 SSI/MSM 的消融（§4.4）均缺失，无法核对两个模块各自的贡献；且 MSM 到底采用逐点卷积还是线性变换实现，正文语焉不详"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3D姿态估计与可靠性主线无实质交点，仅为领域内技术改进",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

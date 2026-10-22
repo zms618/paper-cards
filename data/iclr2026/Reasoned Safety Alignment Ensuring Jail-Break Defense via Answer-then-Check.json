@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Reasoned Safety Alignment Ensuring Jail-Break Defense via Answer-then-Check.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Reasoned Safety Alignment Ensuring Jail-Break Defense via Answer-then-Check.pdf",
+ "title": "Reasoned Safety Alignment: Ensuring Jail-Break Defense via Answer-then-Check",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "Answer-Then-Check安全对齐策略，先草拟回答再审查安全性。",
+ "innovations": [
+  "提出Answer-Then-Check策略：模型先在CoT中直接草拟回答摘要，再据安全政策审查其安全性后才决定最终输出，利用'生成回答时有害意图更易暴露'这一洞察对抗越狱混淆。",
+  "构建80K样本的ReSA数据集，教模型先推理直接回答再分析其安全性，支持SFT与RL。",
+  "发现仅500样本即可达到全量数据相当的效果，具数据高效性；并赋予模型'安全补全'能力，优于只能直接拒答的事后检测。"
+ ],
+ "method_framework": "面对恶意prompt时，模型在CoT中先生成预期回答摘要，再基于安全政策对该摘要做安全分析，据分析决定输出安全回答或拒绝；用ReSA数据做SFT/RL训练该'先答后查'流程。",
+ "experiment_framework": "在主流越狱攻击基准上评测攻击成功率与过度拒绝率，报告安全/有用性Pareto前沿，并验证MMLU/MATH500/HumanEval等通用推理能力保持；做数据量消融(500样本 vs 80K)。",
+ "takeaways": [
+  "推理时策略单独不足以防御越狱，安全训练仍必要；先答后查可在提升安全性的同时降低过度拒绝率。",
+  "安全对齐可高度数据高效——约500条ReSA样本即可逼近80K全量效果。"
+ ],
+ "weaknesses": [
+  "数据集含对抗性有害样本，方法本身可能被更强自适应攻击绕过，正文对自适应攻击的评测覆盖有限。",
+  "前9页只见动机与框架，未见完整攻击成功率对比表与SFT/RL两种实现的差异消融。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "安全对齐策略直接关联可靠性主线，且针对越狱防御这一落地域痛点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

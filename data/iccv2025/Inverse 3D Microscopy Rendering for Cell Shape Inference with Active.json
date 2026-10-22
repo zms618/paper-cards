@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Inverse 3D Microscopy Rendering for Cell Shape Inference with Active.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Inverse 3D Microscopy Rendering for Cell Shape Inference with Active.pdf",
+ "title": "Inverse 3D Microscopy Rendering for Cell Shape Inference with Active",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "可微分渲染3D细胞形状，但PSF简化限制应用范围",
+ "innovations": [
+  "可微分3D荧光显微镜渲染器deltaMic",
+  "三角形网格的傅里叶变换GPU加速实现",
+  "联合优化细胞形状和光学PSF参数",
+  "无需显式形状正则化的物理约束方法"
+ ],
+ "method_framework": "将细胞表示为三角形网格，结合参数化点扩散函数(PSF)，通过可微分卷积模拟图像形成过程，直接优化网格顶点和PSF参数以匹配真实显微镜图像。",
+ "experiment_framework": "合成图像和真实3D显微镜数据集，与深度学习和活动轮廓方法对比，评估几何重建精度和鲁棒性。",
+ "takeaways": [
+  "物理约束的可微分渲染框架减少对大量标注数据的依赖",
+  "GPU加速的网格傅里叶变换提高计算效率",
+  "加权L2损失函数优化聚焦于信息丰富区域"
+ ],
+ "weaknesses": [
+  "仅限于细胞膜等表面结构，未扩展到点、丝状体和体积",
+  "PSF模型简化为高斯核，可能无法完全捕捉复杂光学特性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.8,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "细胞形状推断属于医学影像落地域，但PSF简化限制可靠性应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

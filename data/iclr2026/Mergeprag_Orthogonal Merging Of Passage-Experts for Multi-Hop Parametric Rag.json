@@ -1,0 +1,37 @@
+{
+ "key": "iclr2026/Mergeprag_Orthogonal Merging Of Passage-Experts for Multi-Hop Parametric Rag.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mergeprag_Orthogonal Merging Of Passage-Experts for Multi-Hop Parametric Rag.pdf",
+ "title": "MergePRAG: Orthogonal Merging of Passage-Experts for Multi-Hop Parametric RAG",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "elevance": 5.0,
+  "evidence": 6.0,
+  "overall": 5.5
+ },
+ "one_line": "正交合并passage-experts扩展parametric RAG至多跳QA",
+ "innovations": [
+  "把parametric RAG扩展到多跳迭代检索推理设定",
+  "用Gram-Schmidt正交合并passage-experts以最小化专家间冲突",
+  "提出critical-layer参数化高效编码in-context passage"
+ ],
+ "method_framework": "把每个检索passage转为一个passage-expert参数更新，用Gram-Schmidt正交化顺序合并以最小化专家冲突；配合critical-layer参数化，仅在关键层编码in-context passage以高效支持多跳迭代。",
+ "experiment_framework": "在多跳开放域QA与推理感知知识编辑任务评测，对比标准/SOTA RAG与既有参数适配方法；指标为QA准确率与知识编辑效果；MergePRAG在效果与效率上均领先。",
+ "takeaways": [
+  "正交合并可顺序集成多跳passage而不相互冲突",
+  "critical-layer参数化兼顾效率与效果",
+  "PRAG能缓解传统RAG的低效与噪声敏感"
+ ],
+ "weaknesses": [
+  "relevance为文本RAG/知识编辑，非医疗影像或多模态推理主线",
+  "依赖passage-expert训练成本，实际部署效率需权衡",
+  "多跳设定仍以开放域QA为主，复杂推理覆盖有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.85,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

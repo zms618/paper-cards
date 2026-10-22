@@ -1,0 +1,37 @@
+{
+ "title": "Test-time Correlation Alignment",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "通用TTA方法，相关性对齐在隐私约束下表现平平",
+ "innovations": [
+  "在源数据不可得(隐私约束)的 TTA 设定下，提出测试时相关性对齐方法",
+  "仅利用无标签测试数据即可在推理阶段对齐特征相关性，缓解分布偏移导致的性能退化",
+  "在多种损坏/偏移等级下与主流 TTA 方法(BN/TEA/TENT/EATA 等)系统对比，展现稳定性与效率权衡"
+ ],
+ "method_framework": "在仅有无标签测试数据、无源数据的设定下，于推理阶段对齐源域与测试域特征之间的相关性统计(二阶/相关结构)，使模型在不访问私有源数据的情况下适应测试分布偏移，兼顾内存与时间开销。",
+ "experiment_framework": "在图像损坏/分布偏移基准上，跨不同损坏等级评测；与 TENT/EATA/BN/PL/CSAR 等多种 TTA 方法对比；报告精度退化、内存占用与推理时间。",
+ "takeaways": [
+  "测试时对齐特征相关性是源数据不可得下应对分布偏移的有效手段",
+  "TCA 在精度鲁棒性与时间/内存开销之间取得良好权衡",
+  "隐私约束下的 TTA 需避免访问源数据，相关性对齐可作为轻量适应信号"
+ ],
+ "weaknesses": [
+  "属通用 TTA 方法，未专门针对医学影像或多模态大模型推理域",
+  "相关性对齐假设偏移主要作用于二阶统计，对更复杂协变量偏移的覆盖有限",
+  "在流式/快速变化分布上的稳定性与错误恢复机制前9页交代有限"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Test-time Correlation Alignment.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Test-time Correlation Alignment.pdf",
+ "raw_overall": 6.75,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Maximizing Incremental Information Entropy for Contrastive Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Maximizing Incremental Information Entropy for Contrastive Learning.pdf",
+ "title": "Maximizing Incremental Information Entropy for Contrastive Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "增量熵视角改进小批量对比学习，但理论近似有限且与主线无关",
+ "innovations": [
+  "提出增量信息熵视角，量化对比学习中表征空间的扩张，主张最大化正对视图间的条件熵增益同时保留互信息",
+  "将编码器视为信息瓶颈，联合优化'熵生成的可学习变换'与'熵保留的编码器正则项'",
+  "核心模块可无缝嵌入 SimCLR/MoCo 等现有框架，在小批量设置下稳定提升性能"
+ ],
+ "method_framework": "在对比学习正视图之间显式建模熵增益：用可学习变换主动增加可控不确定性（生成熵），再用编码器正则项防止该增量熵在深层被压缩（保留熵），在保持语义一致的前提下扩大表征容量。",
+ "experiment_framework": "数据：CIFAR-10/100、STL-10、ImageNet；基线：SimCLR/MoCo 等对比方法；指标：小批量设置下的线性评估/下游分类准确率。",
+ "takeaways": [
+  "静态增广+大批量的刚性不变约束在小批量下受限，主动调控增量熵可缓解",
+  "增量熵需在编码器中被保留才能转化为表征多样性，单纯增加视图不确定性不够",
+  "模块即插即用，可在不改变主体对比框架的情况下获得稳定增益"
+ ],
+ "weaknesses": [
+  "增量熵的理论分解与互信息/条件熵的可计算近似之间存在近似鸿沟",
+  "增益主要在小批量设置下体现，ImageNet 全量大批量场景收益幅度有限",
+  "与医学影像/多模态推理等可靠性主线无关，属自监督表征学习"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "对比学习表征扩展，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

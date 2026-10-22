@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Language-Guided One-Step Diffusion Model for Nighttime Flare Removal.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Language-Guided One-Step Diffusion Model for Nighttime Flare Removal.pdf",
+ "title": "Language-Guided One-Step Diffusion Model for Nighttime Flare Removal",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "语言引导单步扩散去除夜间眩光，但依赖特定模型且泛化验证不足",
+ "innovations": [
+  "Flare-VLM特定视觉语言模型提取眩光描述",
+  "语义感知分布蒸馏(SADD)约束噪声分布",
+  "指令驱动数据合成管道生成几何语义对齐的夜间眩光样本"
+ ],
+ "method_framework": "两阶段框架：语言引导单步扩散模型进行核心眩光去除，高频细化阶段恢复细节；Flare-VLM生成结构化眩光描述，指导扩散模型重建被遮挡区域",
+ "experiment_framework": "在Flare7K++和合成测试集上评估，使用PSNR、SSIM、LPIPS、FID等指标；在三个真实世界非配对数据集上测试鲁棒性",
+ "takeaways": [
+  "语义引导的扩散模型能有效处理严重退化区域",
+  "语义感知分布蒸馏可提高蒸馏稳定性",
+  "数据合成方法需考虑场景几何和语义信息"
+ ],
+ "weaknesses": [
+  "方法依赖特定于眩光的视觉语言模型",
+  "未考虑反射性眩光(如鬼影)",
+  "实验主要在合成数据上进行，真实场景泛化能力需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "眩光去除属图像修复，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

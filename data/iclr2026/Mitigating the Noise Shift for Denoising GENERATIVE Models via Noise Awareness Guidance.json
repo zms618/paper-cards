@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mitigating the Noise Shift for Denoising GENERATIVE Models via Noise Awareness Guidance.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mitigating the Noise Shift for Denoising GENERATIVE Models via Noise Awareness Guidance.pdf",
+ "title": "Mitigating the Noise Shift for Denoising Generative Models via Noise Awareness Guidance",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "修正噪声漂移的采样轨迹，但偏离可靠性主线",
+ "innovations": [
+  "识别并实证扩散模型中普遍存在的noise shift(预定义与实际噪声等级错位)",
+  "提出Noise Awareness Guidance显式校正采样轨迹回到预定义噪声时间表",
+  "提出分类器无关变体，通过噪声条件dropout联合训练噪声条件/无条件模型，免外部分类器"
+ ],
+ "method_framework": "采样中估计中间态实际噪声等级，检测其与预定义schedule的系统性偏差，用guidance项把轨迹拉回与预定义噪声一致的方向，缓解OOD泛化与去噪更新不准；CFG变体免外部分类器。",
+ "experiment_framework": "在ImageNet生成与多个监督微调任务上评测主流扩散模型；指标为生成质量(FID等)；NAG一致缓解noise shift并显著提升生成质量，代码开源。",
+ "takeaways": [
+  "噪声漂移是被长期忽视的扩散采样误差累积来源",
+  "显式噪声意识引导可系统性校正采样轨迹",
+  "分类器无关NAG使其易嵌入现有扩散管线"
+ ],
+ "weaknesses": [
+  "relevance偏离主线(扩散采样质量，非可靠性/医疗影像)",
+  "实际噪声等级估计方式引入额外计算与超参",
+  "对大规模文生图/视频扩散的增益幅度未充分报告"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.55,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "扩散采样质量优化，偏离可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

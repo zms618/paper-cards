@@ -1,0 +1,37 @@
+{
+ "key": "iclr2026/Songecho_Towards Cover Song Generation via Instance-Adaptive Element-Wise Linear Modulation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Songecho_Towards Cover Song Generation via Instance-Adaptive Element-Wise Linear Modulation.pdf",
+ "title": "SongEcho: Towards Cover Song Generation via Instance-Adaptive Element-wise Linear Modulation",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4.0,
+  "overall": 4.8
+ },
+ "one_line": "改造FiLM实现翻唱生成，但与主线无关且实验证据不足。",
+ "innovations": [
+  "将翻唱生成重构为以原 vocal 旋律+文本提示为条件、同时生成新人声与伴奏的全局风格迁移任务",
+  "提出EiLM(把FiLM扩展为逐元素线性调制)以实现旋律的精确时间对齐控制",
+  "提出Instance-Adaptive Condition Refinement(IACR)，通过与生成模型隐状态交互做实例自适应条件细化；并构建Suno70k全曲标注数据集"
+ ],
+ "method_framework": "在预训练文生歌/音乐模型上，用EiLM把旋律条件以逐元素线性调制方式注入以保证时间对齐，再用IACR让条件特征与生成网络隐状态交互得到实例自适应条件，从而解耦人声、保证歌词同步与整曲伴奏连贯。",
+ "experiment_framework": "在多个数据集上与现有旋律可控文生音乐方法对比，评测翻唱质量(旋律保留、歌词同步、音质)与可训练参数量；人工/指标结合主观评测。",
+ "takeaways": "['在多数据集上生成优于现有方法的翻唱歌曲，且可训练参数少于30%','把FiLM推广到逐元素线性调制可改善旋律控制的时间对齐','Suno70k缓解了大规模开源全曲数据稀缺问题']",
+ "weaknesses": [
+  "属音频/音乐生成，与可靠性、医学影像、多模态推理主线基本无关",
+  "核心为条件注入机制改造，方法增量性较强，理论分析有限",
+  "Suno70k基于Suno生成，存在AI生成数据自带偏差与版权/标注质量隐患；前9页未见完整主观评测表与消融"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "音频生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

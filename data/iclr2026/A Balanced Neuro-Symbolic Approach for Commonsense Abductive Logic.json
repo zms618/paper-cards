@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Balanced Neuro-Symbolic Approach for Commonsense Abductive Logic.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Balanced Neuro-Symbolic Approach for Commonsense Abductive Logic.pdf",
+ "title": "A BALANCED NEURO-SYMBOLIC APPROACH FOR COMMONSENSE ABDUCTIVE LOGIC (ARGOS)",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "SAT约束LLM生成backbone命题，双打分过滤，但数据与消融不足",
+ "innovations": [
+  "以 backbone 生长为硬约束来约束 LLM 的自由生成：求解器失败时返回 backbone B={L∈L | P⊢L}，算法只在 B 中取前件 L1、L2（允许 L1=L2 退化为单字面量 L→Lright，允许 ∅→Lright 覆盖零前件形式），令 LLM 生成右端新字面量 Lright 构成 L1∧L2→Lright，保证加入的命题必然放进 backbone 而不是改动原前提；图 4 的冬季狐狸例子演示三代推到 ¬absorbs(white,sun)，从而得到 P∧C⊢¬Q",
+  "双打分 + 双求解路径的循环收敛机制：先用 sat_solve 判 (P∧C)⊢Q 或 (P∧C)⊢¬Q，再用 k=5 次自一致性投票，票占比超过 γ 就直接下结论；每轮无进展则 γ←γ−α（α=0.1，γ 初值 1），由于二分类投票在 γ≤0.5 时必过阈，COT 调用次数被上界锁在 k(γ−0.5)/α，作者据此把 ARGOS 的预算对齐到 20-shot SC 以便公平比较",
+  "backbone 字面量按共享实体数排序的启发式：scoreB(L)=#{L′∈B | L′ 与 L 共享实体}，优先展开与最多其他 backbone 字面量相连的实体（正文解释为多数信息集中在该实体），配合 τ=0.3 的常识分与相关性分双阈值过滤，只在两条都过时才把新命题并入 C 并重启求解"
+ ],
+ "method_framework": "输入是带文本与逻辑双重形式的 abductive 命题逻辑问题（一步 ground 化把一阶公式展开为命题变量），含 4 个人工标注 few-shot 例；循环三步：(1) sat_solve 求 (P∧C)⊢Q/¬Q，失败则保留 backbone B；(2) k=5 次自一致性投票，票比过 γ 则终止，否则 γ←γ−α；(3) 从 B 中按 scoreB 排序取字面量对 (L1,L2)（含允许多重 antecedent），提示 LLM 生成 Lright，再用 llm_commonsense_score 与 llm_relevance_score 各判一次（返回 0-1 概率），双过 τ 才将 L1∧L2→Lright 并入 C 并回到 (1)；否则退化为自一致性估计输出。全程 inference-only，无训练。",
+ "experiment_framework": "LLM：Llama3-8B/70B、Mistral-7B（因需 logit 级输出排除闭源），求解器 Cadical（1-2 张 V100）。数据集为 abductive 化改造的 ProntoQA、CLUTRR（多选改随机 True/False）、FOLIO，外加非严格逻辑的 CosmosQA、QUAIL（论坛/维基抓取）、ESNLI。基线：COT、SC20、SAT-LM、Logic-of-Thoughts(LoT-20)、LLM-Tres。指标：二元分类准确率 + bootstrap 95% CI，显著标 Wilcoxon 配对秩检验 p<0.005；另有 Fig 5 的翻转分析与迭代次数分箱。",
+ "takeaways": [
+  "真正把搜索空间 controllable 与信息增量兼容的一步是'只在 backbone 里取前件'：LLM-Tres 只在问题已有命题上穷举单前提 modus ponens 所以几乎找不到必要规则，LoT 生成的子句都可推演因此不增加信息，而 ARGOS 允许 LLM 引入新变量（reflects(fox,sun)）同时又被 backbone 约束，这是它能解 CLUTRR/ESNLI 的原因",
+  "把自一致性的阈值做成随迭代线性衰减 γ←γ−α，并指出 γ=0.5 时二分类投票必过阈，等价于给 LLM 循环上了可计算的调用上界（k(γ−0.5)/α），这是把概率式投票接进符号循环而不失控的实用收敛设计",
+  "收益的真实形态是'不崩塌 + 无需常识库'：在 ProntoQA/ESNLI/CosmosQA 上 SC20 已饱和（L70B 上 93%/99%/99%）而 ARGOS 只是持平（作者原话 comparable），纯符号方法却掉到 50% 甚至 35%；FOLIO/CLUTRR/QUAIL 上 +3~13% 的提升主要出现在 M7B/L8B 弱模型上，说明混合的价值是补足弱模型而非 SOTA。且新命题的引入靠 LLM 自打分（常识分 + 相关性分）而非外部常识知识库，形成'符号定结论、LLM 补常识、LLM 再置信'的三段式闭环"
+ ],
+ "weaknesses": [
+  "数据与基线均不自明：CLUTRR 原本多选被随机改成 True/False（随机问正确或错误选项是否为真），CosmosQA/QUAIL 也照此转换，QUAIL 更是由论坛与维基抓取而来格式怪异，而正文自认这些强逻辑数据集'不具代表性、不能反映真实应用与泛化性'；同一张表里符号基线 SAT-LM（43%/50%/35%）、LLM-Tres（63%/51%/51%）与 ARGOS 不同类且本就极弱，ARGOS 与 SC20 的差距随模型变大而消失（FOLIO L70B 上 97% vs 95%），把 +3~13% 归功于混合架构其实混淆了模型能力差异",
+  "消融与统计双重缺失：正文在 Table 2（RQ1：打分模块与 backbone 追踪）首行处截断，commonsense/relevance 两个 LLM 打分、scoreB 排序、τ=0.3、γ 与 α、k=5 全部无消融表，无法分离三条 contribution；统计上只有 95% bootstrap CI 与 Wilcoxon、没有多种子均值±标准差，SAT-LM 的 35% 对应 CI [34.8, 37.5] 与 ARGOS 的高分区几乎不重叠，FOLIO 上 +3% 落在噪声带内不可判定，抽取出的表内数字列归属也无法核对，confidence 只能 medium",
+  "两处 claim 缺实验、一处设计掩盖失败：摘要强调可以 abduce 输入中未实例化过的命题，正文只在图 4 的假想执行里演示，没有新谓词生成量/被 τ 过滤量/token 成本的量化；方案的成本分析、prompt 细节（Appendix F.1-F.4）与 human evaluation 全在附录不可验；而打分不过阈或多轮无进展就直接'退回自一致性估计'，等于该方法失效时必然输出一个神经基线结果，若计入这些样本会人为抬高对 SC20 的相对稳定性。relevance 中：问题设定是命题逻辑溯因，不是鲁棒性/不确定性/验证器/幻觉抑制主线，也无医学或多模态落地域；给 5.5 的依据是可迁移的三点结构（SAT 求解器作硬验证器只接受能进入 backbone 的命题、LLM 双打分作可信度与相关性过滤、阈值不过即 abstain 退回弱估计）与'极简机制替换不可控搜索'的设计取向"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "可迁移的SAT验证器与LLM双打分过滤机制，但非可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

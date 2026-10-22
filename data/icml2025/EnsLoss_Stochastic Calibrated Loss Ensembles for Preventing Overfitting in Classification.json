@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/EnsLoss_Stochastic Calibrated Loss Ensembles for Preventing Overfitting in Classification.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/EnsLoss_Stochastic Calibrated Loss Ensembles for Preventing Overfitting in Classification.pdf",
+ "title": "EnsLoss: Stochastic Calibrated Loss Ensembles for Preventing Overfitting in Classification",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "ENSLOSS通过随机损失导数集成防过拟合，计算开销增加",
+ "innovations": [
+  "将集成学习概念扩展到损失函数组合",
+  "通过损失导数而非显式损失函数生成校准损失",
+  "双随机梯度下降实现单训练过程损失集成"
+ ],
+ "method_framework": "ENSLOSS将凸性和校准条件转化为损失导数条件，通过随机生成校准损失导数实现损失集成，使用双随机梯度下降（随机批样本和随机校准损失导数）进行训练。",
+ "experiment_framework": "在45对CIFAR10数据集、PCam图像数据集和14个OpenML表格数据集上测试，使用多种深度学习架构评估与固定损失方法的性能差异。",
+ "takeaways": [
+  "损失导数的超线性上升尾部条件对确保损失函数有界性至关重要",
+  "逆Box-Cox变换可增强损失函数多样性"
+ ],
+ "weaknesses": [
+  "方法依赖于特定假设（如损失空间有限），可能限制其泛化能力",
+  "计算复杂度虽低于多训练过程，但仍比标准SGD高"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Improving Rationality in the Reasoning Process of Language Models through Self-playing Game.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Improving Rationality in the Reasoning Process of Language Models through Self-playing Game.pdf",
+ "title": "Improving Rationality in the Reasoning Process of Language Models through Self-playing Game",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "自博弈训练prover应对误导与纠错，提升LLM推理理性但泛化性存疑",
+ "innovations": [
+  "设计三角色自博弈CDG：prover、helpful critic、misleading critic，在语言讨论中训练prover的推理辨析能力",
+  "无需人工标注或强模型监督即可提升推理过程理性，规避PRM依赖人工步标注的扩展性瓶颈",
+  "prover需在误导性批评面前维持正确答案、在建设性反馈下纠正错误，兼具抗干扰与自纠"
+ ],
+ "method_framework": "构造prover-critic自博弈数据：prover先给带CoT解答；helpful critic指出错误、misleading critic故意误导；训练prover在两类批评下辨析真伪、修正推理，从而增强对中间错误的检测与纠正。",
+ "experiment_framework": "在数学推理、逐步错误检测、自纠正、长链推理任务上评估；对比未经CDG训练的对齐LLM；指标为准确率、错误检测率与自纠正成功率。",
+ "takeaways": [
+  "CDG自博弈可显著提升已对齐LLM对自身推理过程的理解与理性",
+  "在抗误导与接受建设性纠错两端同时获益，长链推理中错误累积得到缓解",
+  "无需人工/强模型监督即可扩展过程监督信号，规避PRM标注成本"
+ ],
+ "weaknesses": [
+  "自博弈可能陷入模式坍塌或自我强化偏见，缺乏外部真值锚定",
+  "实验主要在数学/推理类任务，对开放域长文本推理的泛化未充分验证",
+  "misleading critic的难度与prover能力均衡缺乏自适应机制"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

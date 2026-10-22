@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/An End-to-End Robust Point Cloud Semantic Segmentation Network with Single-Step.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/An End-to-End Robust Point Cloud Semantic Segmentation Network with Single-Step.pdf",
+ "title": "An End-to-End Robust Point Cloud Semantic Segmentation Network with Single-Step",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "条件噪声框架提升点云分割鲁棒性，但计算开销大且极端场景验证不足",
+ "innovations": [
+  "条件噪声框架(CNF)重新定义DDPM在点云分割中的角色",
+  "将噪声网络作为辅助特征增强分支，避免直接拟合分数",
+  "单步推理实现DDPM的鲁棒性，克服传统DDPM迭代次数多的限制"
+ ],
+ "method_framework": "CDSegNet采用条件噪声框架，将噪声网络作为可学习的噪声特征生成器，通过特征融合模块对条件网络特征进行合理扰动，实现单步推理的同时保持DDPM的鲁棒性。",
+ "experiment_framework": "在ScanNet、ScanNet200和nuScenes数据集上评估，与PTv3等先进方法比较mIoU等指标，并通过噪声和稀疏性实验验证鲁棒性。",
+ "takeaways": [
+  "将DDPM噪声系统作为特征增强而非直接拟合目标可提升模型鲁棒性",
+  "重新设计网络框架角色分配可平衡性能与效率",
+  "特征融合模块控制噪声信息流向是关键设计"
+ ],
+ "weaknesses": [
+  "对不同噪声分布的鲁棒性差异较大，特别是与训练分布差异大的Poisson噪声",
+  "方法在计算复杂度上相比基线有所增加",
+  "未充分探讨方法在极端稀疏场景下的性能边界"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.2,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "点云分割鲁棒性方法，符合可靠性主线但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/TensoFlow_Tensorial Flow-based Sampler for Inverse Rendering.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/TensoFlow_Tensorial Flow-based Sampler for Inverse Rendering.pdf",
+ "title": "TensoFlow Tensorial Flow-based Sampler for Inverse Rendering",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "学习采样器替代预定义采样，提升逆渲染性能但训练耗时",
+ "innovations": [
+  "提出学习重要性采样器概念替代预定义采样器",
+  "基于归一化流的可学习采样器TensoFlow",
+  "张量表示的场景空间建模实现空间和方向感知采样"
+ ],
+ "method_framework": "TensoFlow包含两阶段：第一阶段重建场景几何，第二阶段建模材质和光照。核心是使用归一化流参数化重要性采样器，结合张量编码器实现空间和方向感知的采样分布。",
+ "experiment_framework": "在TensoSDF合成数据集和Stanford-ORB真实数据集上评估，与TensoIR、NeRO、NeILF++和TensoSDF比较，使用PSNR、SSIM和LPIPS指标。",
+ "takeaways": [
+  "可学习的重要性采样器能有效降低蒙特卡洛采样方差",
+  "张量表示能很好地捕捉场景的空间特性",
+  "归一化流框架适合作为可学习的采样器"
+ ],
+ "weaknesses": [
+  "训练过程分为两阶段且耗时较长",
+  "方法复杂度较高，需要额外的网络参数",
+  "在真实数据集上的提升不如合成数据集明显"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "逆渲染与可靠性主线无关，仅常规扎实无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

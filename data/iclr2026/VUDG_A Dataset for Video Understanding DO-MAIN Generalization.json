@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VUDG_A Dataset for Video Understanding DO-MAIN Generalization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VUDG_A Dataset for Video Understanding DO-MAIN Generalization.pdf",
+ "title": "VUDG: A Dataset for Video Understanding Domain Generalization",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "构建视频理解领域泛化数据集，基准测试显示模型跨域性能显著下降。",
+ "innovations": [
+  "提出VUDG：首个专门评测视频理解领域泛化的数据集，包含11个不同域的视频，覆盖3种域偏移类型",
+  "保持跨域语义一致性——不同域问同样的问题，确保性能下降纯粹来自域偏移而非语义空间差异",
+  "提出多专家渐进标注框架，高效标注面向域泛化的结构化问答对"
+ ],
+ "method_framework": "VUDG数据集设计核心：跨域语义一致——同样的动作/事件在不同视觉域（如真实视频、动画、第一人称视角等）中出现，用相同的问题评测。这样性能下降就可以纯粹归因于域偏移而非任务难度差异。包含3种域偏移类型：外观偏移、视角偏移、风格偏移。标注采用多专家渐进框架提升效率。",
+ "experiment_framework": "数据集：VUDG（11个域，3种偏移类型）。基线：9个代表性LVLM + 传统VideoQA方法。指标：源域→目标域的性能下降幅度（域泛化能力）。发现：大多数模型（包括SOTA LVLMs）在域偏移下性能显著下降。",
+ "takeaways": [
+  "现有视频理解模型在域偏移下普遍性能下降，即使是SOTA LVLMs也不例外",
+  "跨域语义一致的设计使得域泛化评测更公平、更有意义",
+  "不同类型的域偏移对模型的影响程度不同，需要针对性研究"
+ ],
+ "weaknesses": [
+  "11个域的具体数量和多样性可能仍有限，更广泛的真实世界域偏移未完全覆盖",
+  "仅做了基准评测和初步分析，未提出系统性的域泛化改进方法",
+  "标注质量和规模的详细说明可能不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视频理解领域泛化数据集，与可靠性主线部分相关但未深入落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

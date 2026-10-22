@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Understanding High-Dimensional Bayesian Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Understanding High-Dimensional Bayesian Optimization.pdf",
+ "title": "Understanding High-Dimensional Bayesian Optimization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "分析高维贝叶斯优化梯度消失问题，提出简单MSR方法。",
+ "innovations": [
+  "解释近期简单HDBO方法在高维真实基准上成功的原因，挑战GP-BO仅限约20维的旧认知",
+  "指出GP初始化方案导致的梯度消失是高维BO失败的主要原因",
+  "发现促进局部搜索行为的方法更优，提出基于MLE的更简单MSR方法",
+  "分析维度诅咒(COD)如何恶化GP拟合与优化"
+ ],
+ "method_framework": "从维度诅咒(COD)出发分析高维下GP surrogate拟合与采集函数优化的困难；归因到GP长度尺度初始化造成梯度消失；据此论证促进局部搜索的方法(如TuRBO式)为何更优，并提出用MLE初始化的更简单MSR方案。",
+ "experiment_framework": "在多个高维BO基准上对比不同GP初始化/采集优化策略，度量后悔值(regret)随维度变化，验证梯度消失归因与MSR的性能。",
+ "takeaways": [
+  "GP初始化导致的梯度消失是高维BO失败主因",
+  "促进局部搜索行为的方法在高维更稳健",
+  "简单MLE初始化的MSR即可在高维基准取得竞争力"
+ ],
+ "weaknesses": [
+  "与主线(可靠性/医学影像/多模态推理)无直接关联",
+  "结论部分依赖特定基准结构，普适性存疑",
+  "MSR为更简方法，相对SOTA的增益不突出"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

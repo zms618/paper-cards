@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VIDEO-AS-PROMPT Unified Semantic Control for Video Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VIDEO-AS-PROMPT Unified Semantic Control for Video Generation.pdf",
+ "title": "Video-As-Prompt: Unified Semantic Control for Video Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "Video提示控制生成，MoT专家引导冻结DiT，零样本泛化但用户偏好率低",
+ "innovations": [
+  "提出Video-As-Prompt新范式，将参考视频直接作为语义提示，把语义可控生成重构为上下文生成问题",
+  "用插拔式Mixture-of-Transformers(MoT)专家引导冻结的Video DiT，避免灾难性遗忘",
+  "设计时间偏置的位置编码消除虚假映射先验以实现鲁棒上下文检索，并构建10万对、100种语义条件的VAP-Data数据集"
+ ],
+ "method_framework": "把带有所需语义的参考视频直接当作视频提示，通过即插即用的Mixture-of-Transformers专家在冻结的Video DiT上做上下文生成；用时间偏置位置编码消除参考与目标间的虚假映射先验，实现鲁棒的上下文语义检索，从而无需逐条件微调即可统一控制概念、风格、运动、相机等语义。",
+ "experiment_framework": "构建10万对、100种语义条件的VAP-Data；对比结构控制类与条件专用商用模型；指标为用户偏好率与生成质量；报告开源SOTA、用户偏好38.7%并对未见语义零样本泛化。",
+ "takeaways": [
+  "VAP作为单一统一模型取得开源SOTA，用户偏好率38.7%，可对标条件专用的商用模型",
+  "对未见语义展现出强零样本泛化，支持概念/风格/运动/相机等多种控制",
+  "参考视频作提示的范式摆脱了对逐条件微调或任务专用架构的依赖"
+ ],
+ "weaknesses": [
+  "属于可控视频生成方向，与可靠性、医学影像、多模态推理主线无关，relevance偏低",
+  "用户偏好率38.7%仍意味着多数情况偏好其他模型，未真正超越商用专用模型",
+  "参考视频与目标语义的对齐质量依赖配对数据，复杂组合语义下的可控性偏差前9页未充分量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "可控视频生成与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

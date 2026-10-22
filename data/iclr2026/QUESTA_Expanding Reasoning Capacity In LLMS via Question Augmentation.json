@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/QUESTA_Expanding Reasoning Capacity In LLMS via Question Augmentation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/QUESTA_Expanding Reasoning Capacity In LLMS via Question Augmentation.pdf",
+ "title": "QuestA: Expanding Reasoning Capacity in LLMs via Question Augmentation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "问题增强RL训练提升数学推理，但机制解释浅且落地域单一",
+ "innovations": [
+  "提出问题增强：在RL训练时给题目注入部分解，降低当前难度并提供更有信息量的学习信号",
+  "在标准RL难有进展的难题上同时改善pass@1与pass@k",
+  "作为即插即用策略，可在DeepSCALER、OpenMath Nemotron等强开源模型上持续提升"
+ ],
+ "method_framework": "数学推理RL训练中，对采样到的难题构造带部分解的增强题目（给定中间步骤），使模型在较易过渡态上学习，再逐步去除部分解；配合RL(GRPO类)优化，把能力迁移回原始难题。",
+ "experiment_framework": "1.5B规模模型；AIME24/AIME25/HMMT25等数学基准；报告pass@1与pass@k，对比DeepSeek-R1-Distill等。",
+ "takeaways": [
+  "1.5B模型在AIME24达72.50%(+10.73)、AIME25达62.29%(+12.79)、HMMT25达41.67%(+10.11)",
+  "部分解增强能在强开源模型上继续提升推理能力",
+  "降低任务难度的课程式RL可帮助模型攻克原本RL停滞的难题"
+ ],
+ "weaknesses": [
+  "依赖优质部分解/中间步骤的获取，开放域无可靠推理链时的可行性存疑",
+  "本质是训练数据/课程增强，对RL'只复刻base能力'的机制性解释较浅",
+  "落地域为数学竞赛，医学影像/多模态等主线落地域未覆盖"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.33,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "数学推理训练方法，未触及可靠性主线与落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

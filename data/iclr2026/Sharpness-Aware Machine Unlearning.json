@@ -1,0 +1,37 @@
+{
+ "key": "iclr2026/Sharpness-Aware Machine Unlearning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sharpness-Aware Machine Unlearning.pdf",
+ "title": "Sharpness-Aware Machine Unlearning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "elevance": 4.5,
+  "evidence": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "拆分模型用SAM学保留、锐度最大化去遗忘，增强机器遗忘效果。",
+ "innovations": [
+  "刻画SAM在拟合forget集时会放弃其原有的去噪性质，导致泛化随信号强度改变",
+  "按信号强度刻画SAM的'信号盈余'，使得可用更少保留信号维持性能、把更多权重用于遗忘",
+  "提出Sharp MinMax：把模型拆成两部分，一部分用SAM学保留信号、一部分用锐度最大化去遗忘信号，取得最佳性能"
+ ],
+ "method_framework": "从信号-噪声视角分析unlearning中retain与forget信号的冲突；利用SAM寻求平坦极小、抑制记忆的特性，并通过模型拆分让保留与遗忘在不同子模型上分别优化(前者SAM下降、后者锐度上升)，减少信号相互抵消。",
+ "experiment_framework": "在不同记忆难度的遗忘任务上，对比SGD/SAM作预训练或遗忘算法，测retain精度、forget成功率、特征纠缠、成员推断攻击(MIA)抗性与损失面平坦度；跨噪声/优化器/架构泛化。",
+ "takeaways": [
+  "SAM在放宽对保留信号要求下优于SGD，可作预训练或遗忘算法增强多种unlearning方法",
+  "Sharp MinMax在多种遗忘难度下取得最佳，retain/forget特征纠缠更低、抗MIA更强",
+  "结论在加噪数据、不同优化器与架构上泛化"
+ ],
+ "weaknesses": [
+  "落地为隐私/机器遗忘，与医学影像、多模态推理主线仅在'可信/鲁棒'概念上沾边",
+  "理论刻画(信号盈余)较定性，量化界面前9页未见",
+  "拆分模型带来额外参数量与训练开销；抗MIA提升的幅度与最新遗忘基线的系统对比在前9页不完整"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

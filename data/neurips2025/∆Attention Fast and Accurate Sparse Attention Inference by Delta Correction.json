@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/∆Attention Fast and Accurate Sparse Attention Inference by Delta Correction.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/∆Attention Fast and Accurate Sparse Attention Inference by Delta Correction.pdf",
+ "title": "∆Attention: Fast and Accurate Sparse Attention Inference by Delta Correction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "Delta校正缓解稀疏注意力分布偏移，提升性能但适用场景有限",
+ "innovations": [
+  "识别稀疏注意力导致的分布偏移问题",
+  "提出简单的Delta校正方法，无需修改现有稀疏注意力内核",
+  "在保持98.5%稀疏度的同时显著提升性能"
+ ],
+ "method_framework": "通过计算全注意力与稀疏注意力的差异，并周期性应用此差异校正稀疏输出，使分布接近全注意力计算结果",
+ "experiment_framework": "RULER基准测试、PG19长上下文QA、Infinite-Bench，对比Flash Attention 2、Streaming LLM、HiP等方法",
+ "takeaways": [
+  "分布偏移是稀疏注意力性能下降的关键因素",
+  "简单校正方法可显著提升稀疏注意力性能而增加少量计算开销",
+  "方法可兼容现有稀疏注意力实现"
+ ],
+ "weaknesses": [
+  "校正假设在γ窗口内相似，可能不适用于所有场景",
+  "仅关注注意力输出空间，未解决注意力矩阵本身的稀疏性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/KTAE_A Model-Free Algorithm to Key-Tokens Advantage Estimation in Mathematical Reasoning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/KTAE_A Model-Free Algorithm to Key-Tokens Advantage Estimation in Mathematical Reasoning.pdf",
+ "title": "KTAE: A Model-Free Algorithm to Key-Tokens Advantage Estimation in Mathematical Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 5.5,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "统计方法实现token级优势估计，提升数学推理性能但计算效率低。",
+ "innovations": [
+  "无模型的token级优势估计方法",
+  "结合统计测试和信息增益量化token重要性",
+  "方向性评分机制区分正负关联",
+  "与GRPO/DAPO兼容的即插即用算法"
+ ],
+ "method_framework": "KTAE构建token列联表，使用Fisher精确检验和信息增益量化token与正确答案的关联强度，结合标准化频率评分确定关联方向，最终生成key-token值并添加到GRPO的优势估计中。",
+ "experiment_framework": "在Qwen2.5-Math-1.5B/7B模型上，使用math12k数据集，与GRPO、DAPO等基线方法比较，在MATH500、AMC等5个数学推理基准测试上评估准确率和响应长度。",
+ "takeaways": [
+  "统计方法可提供细粒度的学习信号而不增加模型复杂度",
+  "token级优势估计能有效减少冗余生成并提高推理效率"
+ ],
+ "weaknesses": [
+  "计算效率较低，当前实现GPU利用率低于1%",
+  "对小模型(1.5B)的训练时间开销相对较大"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

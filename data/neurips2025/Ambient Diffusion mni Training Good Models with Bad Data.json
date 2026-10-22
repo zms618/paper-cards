@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Ambient Diffusion mni Training Good Models with Bad Data.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Ambient Diffusion mni Training Good Models with Bad Data.pdf",
+ "title": "Ambient Diffusion mni: Training Good Models with Bad Data",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "利用噪声和局部性原理从低质量数据中提取信号训练扩散模型",
+ "innovations": [
+  "提出Ambient Diffusion Omni框架，利用低质量数据训练扩散模型",
+  "基于光谱功率律衰减和局部性原理，区分高低噪声 regimes",
+  "设计时间依赖分类器确定噪声阈值，实现样本自适应标注",
+  "理论分析噪声对分布距离的收缩效应，建立偏差-方差权衡框架"
+ ],
+ "method_framework": "通过训练时间依赖分类器确定样本可用的最小噪声阈值，在低噪声阶段利用局部区域匹配原理，实现从混合质量数据中提取信号",
+ "experiment_framework": "CIFAR-10/FFHQ/ImageNet数据集，对比基线EDM，使用FID指标评估生成质量，测试高斯模糊/JPEG压缩/运动模糊等退化类型",
+ "takeaways": [
+  "噪声可收缩分布差异，使低质量数据在高噪声阶段可用",
+  "扩散时间与所需感受野大小直接相关，低噪声阶段可利用局部区域匹配"
+ ],
+ "weaknesses": [
+  "方法对影响低频内容的退化(如颜色偏移)效果有限",
+  "存在'donut paradox'中间噪声区域数据利用率低",
+  "需要额外训练分类器增加计算开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

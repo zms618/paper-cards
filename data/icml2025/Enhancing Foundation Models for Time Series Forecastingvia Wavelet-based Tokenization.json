@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Enhancing Foundation Models for Time Series Forecastingvia Wavelet-based Tokenization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Enhancing Foundation Models for Time Series Forecastingvia Wavelet-based Tokenization.pdf",
+ "title": "Enhancing Foundation Models for Time Series Forecasting via Wavelet-based Tokenization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.0
+ },
+ "one_line": "WaveToken小波分词器提升时序预测，但超参选择与误差累积问题未解",
+ "innovations": [
+  "提出基于小波的时间序列分词器WaveToken",
+  "先尺度分解再阈值化量化小波系数，分离粗/细结构",
+  "自回归预训练预测预测时域内的小波系数，在时-频局部空间学习表示"
+ ],
+ "method_framework": "WaveToken 对输入时间序列做小波多尺度分解，对小波系数阈值化并量化成离散词表，再预训练自回归模型直接预测未来时域的小波系数；借小波把粗粒度趋势与细粒度细节解耦。",
+ "experiment_framework": "在多个时间序列预测基准上对比现有时间序列基础模型/分词方法；指标为预测误差(MSE/MAE等)；考察在多频率、长程预测上的表现。",
+ "takeaways": [
+  "小波分解为实数时间序列提供了更合适的离散词表",
+  "分离粗细结构使模型在时-频局部空间学到更好的表示",
+  "WaveToken在时间序列预测基准上提升了基础模型性能"
+ ],
+ "weaknesses": [
+  "小波基与阈值的选择引入超参，缺乏自动选择",
+  "自回归预测系数的误差沿预测时域累积，未充分分析",
+  "主要在标准时序预测基准验证，对含突变/非平稳场景的鲁棒性待验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.55,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

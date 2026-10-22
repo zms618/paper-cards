@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Attention! Your Vision Language Model Could Be Maliciously Manipulated.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Attention! Your Vision Language Model Could Be Maliciously Manipulated.pdf",
+ "title": "Attention! Your Vision Language Model Could Be Maliciously Manipulated",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "VMA攻击方法通过视觉扰动操控VLM输出，但理论分析与黑盒验证不足。",
+ "innovations": [
+  "首次证明视觉扰动比文本扰动对VLM输出影响更大",
+  "提出VMA攻击方法，结合一阶和二阶动量优化与可变换机制",
+  "VMA可作为双刃剑，实现多种攻击同时支持版权保护水印"
+ ],
+ "method_framework": "VMA通过优化对抗扰动，使VLM生成预定输出序列。结合Adam优化策略和可微分变换机制，解决PGD在VLM上的收敛问题，实现对每个输出token的精确操控。",
+ "experiment_framework": "在4个VLM(Llava/Phi3/Qwen2-VL/DeepSeek-VL)上评估，使用8个任务和多个基准数据集，测量攻击成功率(ASR)。",
+ "takeaways": [
+  "视觉连续表示比文本离散表示更易受扰动影响",
+  "可微分变换机制有效解决投影梯度下降的梯度不连续问题",
+  "同一对抗图像可跨提示转移，暴露VLM脆弱性"
+ ],
+ "weaknesses": [
+  "理论分析主要基于简化模型，实际VLM架构更复杂",
+  "实验主要在白盒设置下进行，黑盒场景泛化性未充分验证",
+  "未探讨防御机制的有效性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

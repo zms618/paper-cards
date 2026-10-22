@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VIDEO-STAR Reinforcing Open-Vocabulary Action Recognition with Tools.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VIDEO-STAR Reinforcing Open-Vocabulary Action Recognition with Tools.pdf",
+ "title": "Video-STAR: Reinforcing Open-Vocabulary Action Recognition with Tools",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "工具增强RL分解子动作做视频动作识别，SOTA但依赖外部模型",
+ "innovations": [
+  "提出将动作分解为具判别力的子动作(sub-motion)做细粒度匹配，而非把动作当作整体实体",
+  "动态调用姿态估计、动作解释等领域专用工具做跨模态交错推理，实现类别专属推理并减少跨模态幻觉",
+  "设计分层奖励，平衡工具使用效率、子动作相关性与推理结构一致性，无需显式监督即可自主调用工具，从文本中心推理转向视觉接地推理"
+ ],
+ "method_framework": "将视频动作分解为具判别力的子动作用于细粒度匹配；推理时按思考过程动态调用姿态估计、动作解释等外部工具做跨模态交错；训练以分层奖励(工具使用效率、子动作相关性、推理结构一致性)做RL，引导模型无需显式监督即自主调用工具，从文本中心先验转向视觉接地推理。",
+ "experiment_framework": "在HMDB-51、UCF-101、SSv2、Kinetics-400、Kinetics-600五个开放词表动作识别数据集上评测；对比现有MLLM式与专用动作识别方法；指标为分类准确率；报告细粒度动作区分与跨模态幻觉抑制上的SOTA。",
+ "takeaways": [
+  "在HMDB-51、UCF-101、SSv2、Kinetics-400/600上均取得SOTA，尤擅区分细粒度相似动作",
+  "工具增强RL有效降低跨模态幻觉，提升鲁棒性与泛化",
+  "子动作分解加动态工具调用比整体动作建模更能破解开放词表下语义相近动作的混淆"
+ ],
+ "weaknesses": [
+  "属于视频动作识别方向，虽涉及跨模态幻觉抑制但落地域为动作识别而非医学影像，与主线为中相关",
+  "工具调用依赖姿态估计/YOLO等外部模型，引入额外误差传播与推理开销，前9页未见工具失败的级联影响分析",
+  "分层奖励各权重的设计偏启发式，缺乏对奖励被钻空子(过调用/不调用工具)的实证检查"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "动作识别非主线落地域，跨模态幻觉抑制有可靠性价值但未达医学影像",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

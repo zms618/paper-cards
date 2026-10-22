@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/AGO Adaptive Grounding for Open World 3D Occupancy Prediction.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/AGO Adaptive Grounding for Open World 3D Occupancy Prediction.pdf",
+ "title": "AGO: Adaptive Grounding for Open World 3D Occupancy Prediction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "开放世界3D占据：文本/噪声提示配VLM对齐，按最小熵逐体素选路。",
+ "innovations": [
+  "抛弃固定 Softmax 分类器，把 3D 体素特征与「类别文本嵌入 + 随机噪声提示嵌入 + 可学习 free 嵌入」点乘当广义 logits（S3D=F3D·F^T_{T+noise+free}），噪声提示直接充当负样本，使标签空间不被伪标签封死。",
+  "用两层 MLP 适配器把 3D 嵌入映射到与 VLM（MaskCLIP+，FeatUp 上采样）图像嵌入对齐的空间，仅在相机可见的非空体素上算 1−cos 对齐损失；3D 伪标则由 Grounded SAM 的 2D mask 经多帧聚合、LiDAR 射线投射、语义投票后处理得到。",
+  "推理时按「最小信息熵」逐体素在两路之间选路：P_final=c_v·P+(1−c_v)·P̃，c_v=I(H(P)≤H(P̃))，让 grounding 与图像嵌入对齐各自在最擅长的区域生效，缓解两路训练目标导致的模态冲突。"
+ ],
+ "method_framework": "TPVFormer 提 3D 体素嵌入；与「类别文本+随机噪声提示+free 嵌入」点乘做 grounding（CE+Lovasz）；MLP 适配器把体素嵌入对齐到 VLM 图像嵌入；推理按逐体素最小熵在两路结果中择一融合。",
+ "experiment_framework": "Occ3D-nuScenes（六相机 + 32 线 LiDAR）；自监督与开放世界（预训练→零样本→少样本微调）两设置；基线含 POP-3D、SelfOcc、GaussTR、VEON 等；指标 per-class IoU 与 mIoU。",
+ "takeaways": [
+  "把伪标签监督与图像嵌入蒸馏拆成两路并显式用熵做逐体素开关，比无脑相加两路 loss 更可控（正文称朴素联合会退化）。",
+  "用随机噪声文本提示当负样本做 grounding，成本极低却提升同类判别力，比 hard negative mining 省事得多。",
+  "「多帧聚合 + 射线投射 + 语义投票」把 2D 伪标抬成 3D 占据伪标，是低成本提升自监督占据质量的通用后处理。"
+ ],
+ "weaknesses": [
+  "表 2 中 POP-3D、SelfOcc、GaussTR 三个基线全部标 †「由我们自行重训」，原始配置不可复现；而表 1 里这些基线又用原文数值，前后基线口径不一致，公平性存疑。",
+  "正文在 Figure 4 后截断，验证熵准则的 Table 4 与验证「朴素联合两路损失会退化」的 Table 3 缺失，adaptive grounding 相对「两路 loss 直接相加」究竟好多少无法核验。",
+  "全部结果为单次训练、无多 seed 方差；总体 +4.09 mIoU 虽大，但部分类别差距极小（construction vehicle 1.53 vs VEON 0.90 仅 +0.63），是否被切分波动吞掉无从判断。",
+  "熵准则的计算位置（softmax 前 logits 还是后概率）、噪声提示字典规模与采样比例均未在可见正文给出，可复现性依赖被截断的补充材料。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "开放世界3D占据预测，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

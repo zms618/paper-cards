@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/GraphODE_Rethink GraphODE Generalization within Coupled Dynamical System.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/GraphODE_Rethink GraphODE Generalization within Coupled Dynamical System.pdf",
+ "title": "GraphODE: Rethink GraphODE Generalization within Coupled Dynamical Systems",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 6,
+  "overall": 6.5
+ },
+ "one_line": "用因果模型解耦GraphODE静态动态纠缠，提升少观测下跨场景泛化。",
+ "innovations": [
+  "指出GraphODE泛化退化的两个根因：初始化中静态属性与动态状态纠缠、训练时依赖上下文特定耦合模式",
+  "提出DyStaED，用正交子空间投影解耦静态属性与动态状态以实现稳健初始化",
+  "提出CMCD，用变分推断估计潜在因果因子、抑制虚假相关，提升通用耦合动力学；以结构因果模型识别后门路径"
+ ],
+ "method_framework": "把耦合动力系统建模为结构因果模型，追溯破坏泛化的后门路径；DyStaED将静态（材料/环境属性）与动态（演化状态）投到正交子空间，避免静态属性污染ODE演化；CMCD以变分推断解出潜在因果耦合因子，使交互模式跨场景可迁移。",
+ "experiment_framework": "在多类耦合动力系统（物理/生物/工程）上评测；与既有GraphODE/神经算子方法比较；指标为在分布内与未见场景(OOD)轨迹预测精度；含消融验证解耦与因果中介各自贡献。",
+ "takeaways": [
+  "静态/动态纠缠与上下文特定耦合是GraphODE泛化的主要障碍",
+  "正交解耦+因果中介可在少观测下显著提升跨场景泛化",
+  "结构因果模型为诊断动力学模型泛化失败提供了可操作框架"
+ ],
+ "weaknesses": [
+  "落地域为一般动力系统仿真，非医学影像/多模态推理，主线相关性中等",
+  "因果假设依赖正确SCM设定，模型误设时解耦可能引入新偏差",
+  "变分推断带来额外复杂度与不确定性估计开销，大规模系统扩展性未充分验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

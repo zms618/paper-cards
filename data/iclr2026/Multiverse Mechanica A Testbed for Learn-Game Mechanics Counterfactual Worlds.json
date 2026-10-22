@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Multiverse Mechanica A Testbed for Learn-Game Mechanics Counterfactual Worlds.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Multiverse Mechanica A Testbed for Learn-Game Mechanics Counterfactual Worlds.pdf",
+ "title": "Multiverse Mechanica: A Testbed for Learning Game Mechanics via Counterfactual Worlds",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "因果反事实游戏机制学习测试床，概念验证有限",
+ "innovations": [
+  "把游戏机制(game mechanics)学习形式化为因果反事实推理任务，用因果一致性原则约束世界模型不违反游戏规则",
+  "提出可玩游戏测试床Multiverse Mechanica，实现一组带ground truth的机制",
+  "游戏原生输出训练数据，每个样本配一组编码因果/一致性/反事实依赖的因果DAG，供机制学习实验使用"
+ ],
+ "method_framework": "把游戏规则视为模块化因果机制；机制学习即给定观测后做反事实推断(若改某输入，状态如何因果变化)。测试床按此因果形式化实现可玩游戏，自动为每个训练样本附带刻画当前机制因果结构的DAG。再以微调预训练世界模型做概念验证，检验其能否在反事实世界中保持因果一致。",
+ "experiment_framework": "作为测试床发布；提供概念验证：微调一个面向机制学习的预训练模型；指标为反事实一致性/是否违反游戏规则；用于对比不同世界模型学机制的能力。",
+ "takeaways": [
+  "现有游戏世界模型多停留在复现视觉，缺乏对机制(因果规则)的评测",
+  "把机制学习操作化为反事实因果推理并用因果DAG作监督信号，是可复现低成本路径",
+  "因果一致性原则可用来检测生成是否违反游戏规则"
+ ],
+ "weaknesses": [
+  "主线是游戏世界模型/因果测试床，与LLM/多模态可靠性、验证器、幻觉抑制等落地主线关联弱",
+  "仅概念验证微调，未系统对比多种世界模型方法",
+  "测试床机制复杂度受控，能否扩展到商业游戏级复杂因果结构未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "游戏机制测试床，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Libra-Merging Importance-redundancy and Pruning-merging Trade-off for Acceleration Plug-in in Large.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Libra-Merging Importance-redundancy and Pruning-merging Trade-off for Acceleration Plug-in in Large.pdf",
+ "title": "Libra-Merging Importance-redundancy and Pruning-merging Trade-off for Acceleration Plug-in in Large",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "视觉token压缩方法，解决重要性与冗余、剪枝与合并两难问题",
+ "innovations": [
+  "位置驱动的token识别方法，解决重要性与冗余的权衡问题",
+  "重要性感知的分组合并方法，解决剪枝与合并的权衡问题",
+  "分层合并策略，在不同层应用不同压缩比例提高效率"
+ ],
+ "method_framework": "Libra-Merging包含两个核心模块：位置驱动的token识别和重要性感知的分组合并。前者通过空间离散化选择重要非冗余token，后者将非目标token分为相似与不相似两组，分别处理以保留重要信息。",
+ "experiment_framework": "在LLaVA-1.5-7B/13B和LLaVA-NeXT-8B模型上测试，使用GQA、ScienceQA等六个基准评估，与FastV和Turbo基线比较Flops和性能。",
+ "takeaways": [
+  "空间离散化选择token可有效避免冗余",
+  "基于相似度分组处理非目标token可保留重要信息",
+  "分层合并策略可进一步提高压缩效率"
+ ],
+ "weaknesses": [
+  "方法依赖输出注意力分数，可能不适用于所有模型架构",
+  "相似度阈值τ的选择可能需要针对不同任务调整",
+  "实验主要在图像模型上验证，视频模型结果相对有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "模型压缩技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Mastering Multiple-Expert Routing Realizable H-Consistency and Strong Guarantees for Learning to Defer.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Mastering Multiple-Expert Routing Realizable H-Consistency and Strong Guarantees for Learning to Defer.pdf",
+ "title": "Mastering Multiple-Expert Routing: Realizable H-Consistency and Strong Guarantees for Learning to Defer",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "多专家路由代理损失理论，实验验证有限。",
+ "innovations": [
+  "提出一族新的realizable H-consistent代理损失函数，解决了多专家defer学习中realizable H-consistency的开放问题",
+  "为单阶段（联合学习预测器和defer函数）和两阶段（固定专家仅学defer函数）场景分别给出H-consistency界和Bayes-consistency证明",
+  "设计了高效算法实现多专家路由，平衡预测准确率和专家计算成本"
+ ],
+ "method_framework": "多专家defer学习：给定多个具有不同准确率和计算成本的专家，学习将输入实例分配给最合适的专家。本文系统研究该问题的代理损失一致性：单阶段场景联合学习预测器和路由函数；两阶段场景专家已固定，仅学习路由。作者构造新的代理损失（基于Hamming损失/0-1损失的推广），证明其在realizable和非realizable条件下的一致性，并给出泛化界。",
+ "experiment_framework": "理论分析为主，给出一致性证明和泛化界。配套实验在标准分类基准上验证多专家defer效果，对比不同代理损失的收敛性和最终性能。应用场景提及NLG（减少幻觉）、医学诊断、图像标注。",
+ "takeaways": [
+  "多专家defer学习的代理损失一致性是可严格保证的，本文给出了首个realizable H-consistent的损失函数族",
+  "单阶段联合学习预测器和路由 vs 两阶段固定专家学路由，需要不同的一致性分析框架，本文分别解决",
+  "该理论框架可应用于LLM中路由到更大模型以减少幻觉、医学诊断中路由到专科医生等场景"
+ ],
+ "weaknesses": [
+  "理论分析为主，实验规模和应用场景验证有限，未在LLM路由或医学诊断实际场景做实证",
+  "H-consistency界的紧度和实际收敛速度之间的gap未充分讨论",
+  "多专家成本模型假设简单（固定成本），未考虑动态成本或专家间交互"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.43,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

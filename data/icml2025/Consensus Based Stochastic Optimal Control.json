@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Consensus Based Stochastic Optimal Control.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Consensus Based Stochastic Optimal Control.pdf",
+ "title": "Consensus Based Stochastic Optimal Control",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "将CBO引入随机控制，蒙特卡洛估计替代梯度，数值实验有限",
+ "innovations": [
+  "将动量共识优化(CBO)引入随机最优控制，用价值函数蒙特卡洛估计替代策略梯度以降低方差",
+  "提出自适应动量版本Adam-CBO，引入可调高斯噪声支持高效探索",
+  "理论证明M-CBO在一定假设下收敛到最优策略"
+ ],
+ "method_framework": "M-CBO将策略参数化为神经网络，通过粒子系统的共识动态优化策略。不直接估计策略梯度，而是用蒙特卡洛估计价值函数，粒子间通过共识项汇聚到高价值区域。可调高斯噪声注入粒子动态以探索非凸环境。Adam-CBO用自适应动量调整粒子步长。",
+ "experiment_framework": "在不同维度的有限水平随机控制问题上数值验证；与传统有限体积法/Galerkin方法和深度BSDE方法比较；指标为精度和可扩展性。",
+ "takeaways": [
+  "无梯度方法避免了策略梯度的高方差问题",
+  "在高维控制问题上相比传统HJB求解方法可扩展",
+  "数值结果显示M-CBO在非凸环境中收敛到最优策略"
+ ],
+ "weaknesses": [
+  "纯控制理论方法，与可靠性/医学影像/多模态推理主线无关",
+  "实验为数值算例，缺乏真实应用场景验证",
+  "前9页内消融实验细节有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

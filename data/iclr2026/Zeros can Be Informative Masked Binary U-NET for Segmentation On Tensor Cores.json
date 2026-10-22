@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Zeros can Be Informative Masked Binary U-NET for Segmentation On Tensor Cores.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Zeros can Be Informative Masked Binary U-NET for Segmentation On Tensor Cores.pdf",
+ "title": "Zeros can be Informative: Masked Binary U-Net for Image Segmentation on Tensor Cores",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "部分二值U-Net映射到Tensor Core，精度-效率折中方案",
+ "innovations": [
+  "两点经验发现：显式零状态(零掩码训练二值U-Net)带来可观稀疏性；各层量化敏感度较均匀",
+  "提出代价感知掩码策略(cost-aware masking)，优先在准确率/代价比最高处掩码，平衡精度与近二值效率",
+  "开发将掩码二值权重映射到Tensor Core的GPU执行框架，用减法位编码配合二值激活，直接利用原生BMMA指令"
+ ],
+ "method_framework": "在二值U-Net基础上按代价感知策略选择性保留(掩码)部分权重为非二值，得到MBU-Net；推理时用减法位编码把掩码二值权重+二值激活映射到Tensor Core原生BMMA指令，兼顾高吞吐与低能耗。",
+ "experiment_framework": "在3个分割基准上验证，基线为16-bit浮点U-Net及其他二值/量化分割网络；指标为mIoU精度、延迟加速比与能耗；报告近全精度(平均下降3%)、2.04倍加速、3.54倍节能。",
+ "takeaways": [
+  "并非全部二化最优，代价感知保留少量非二值权重可在近二值硬件效率下把精度损失压到平均3%",
+  "减法位编码+BMMA使掩码二值网络能在通用GPU Tensor Core上真正跑起来，而非仅纸面加速",
+  "边缘实时分割(AR/无人机)对精度-延迟-能耗三角的约束下，MBU-Net给出了可部署折中"
+ ],
+ "weaknesses": [
+  "掩码策略仍保留部分非二值权重，并非真正全二值，硬件利用的完全二值化优势被部分让渡",
+  "3%精度下降在医学/高精度分割等敏感场景可能不可接受，任务覆盖偏通用视觉",
+  "加速/能耗实测绑定特定GPU代次(BMMA)，跨硬件可移植性与框架 overhead 在提取页未充分量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "效率优化与可靠性主线无实质交点，仅硬件适配",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

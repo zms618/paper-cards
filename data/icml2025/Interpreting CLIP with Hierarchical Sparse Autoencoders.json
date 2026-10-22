@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Interpreting CLIP with Hierarchical Sparse Autoencoders.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Interpreting CLIP with Hierarchical Sparse Autoencoders.pdf",
+ "title": "Interpreting CLIP with Hierarchical Sparse Autoencoders",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "分层稀疏自编码器优化CLIP表示，提取概念但缺乏自动化验证。",
+ "innovations": [
+  "提出 MSAE 架构，用多个 top-k 值在不同粒度联合训练，避免 TopK 的刚性稀疏约束与 ReLU-SAE 的激活收缩问题。",
+  "在 CLIP 上建立重建质量与稀疏性的新 SOTA Pareto 前沿：0.99 余弦相似、FVU<0.1、稀疏度约 80%。",
+  "从 CLIP 表示提取 120+ 语义概念，用于基于概念的相似度搜索与 CelebA 等下游偏差分析。"
+ ],
+ "method_framework": "以多层级(Matryoshka)方式同时学习从粗到细的概念表示：训练时对多个 top-k 粒度组合损失，推理时使用完整 d 维表示；在 CLIP/SigLIP 的多模态嵌入空间中验证并挖掘可解释、可编辑的概念。",
+ "experiment_framework": "在 CLIP/SigLIP 上训练 SAE；基线为 TopK-SAE、ReLU-SAE；指标为重建余弦相似/FVU 与稀疏度的 Pareto 权衡；下游做概念相似度搜索与 CelebA 偏差分析。",
+ "takeaways": [
+  "分层 SAE 可在不牺牲重建质量的前提下获得高稀疏度的可解释多模态特征。",
+  "MSAE 提取的概念可用于多模态表示的精准编辑与偏差审计。"
+ ],
+ "weaknesses": [
+  "概念的‘可解释性’仍需人工语义标注，自动化验证概念真实性的流程偏弱。",
+  "结论集中在 CLIP/SigLIP 对比嵌入，对生成式多模态模型（如扩散文本编码器）未验证。",
+  "未直接度量对下游任务可靠性/幻觉抑制的改善，偏解释性工具。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

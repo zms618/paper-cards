@@ -1,0 +1,41 @@
+{
+ "title": "UniEdit-Flow: Unleashing Inversion and Editing in the Era of Flow Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "针对流模型轨迹特性设计预测-校正框架实现反演与编辑",
+ "innovations": [
+  "指出现为扩散设计的反演/编辑方法移植到流模型(SD3/Flux)常失效，因其直线不交叉轨迹与 DiT 架构带来新挑战。",
+  "提出 Uni-Inv：面向精确重建的流模型反演方法，在杂乱场景下实现精确重建。",
+  "把 delayed injection 概念推广到流模型，提出区域感知、鲁棒的 Uni-Edit 编辑；整体免调参、模型无关、高效，且强保编辑无关区域。"
+ ],
+ "method_framework": "基于预测-校正采样框架：Uni-Inv 利用流模型 PF-ODE 的确定性直线轨迹设计反演过程实现精确重建；Uni-Edit 将 delayed injection 移植到流模型并做区域感知采样，在编辑目标区域的同时保持编辑无关区域不变。",
+ "experiment_framework": "在多种生成模型(SD3/Flux 等)上，与扩散式反演/编辑及已有流模型编辑方法对比，报告重建精度与编辑后背景保持/编辑成功率。",
+ "takeaways": [
+  "流模型的直线轨迹与 DiT 架构使扩散时代的反演/编辑方法直接套用失效。",
+  "针对流模型轨迹特性重设计的预测-校正框架可在免训练下实现精确反演与干净编辑。",
+  "区域感知采样能在成功编辑的同时强保未编辑区域，方法模型无关、低成本可用。"
+ ],
+ "weaknesses": [
+  "方法针对生成模型反演/编辑这一应用，属采样技巧，理论深度相对有限。",
+  "依赖对预训练流模型轨迹的假设，对非直线/多步流模型的适用性需进一步验证。",
+  "与可靠性/医学影像/多模态推理主线无关；完整定量编辑基准与效率对比表未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/UNIEDIT-FLOW_Unleashing Inversion and Editing In the Era Of Flow Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/UNIEDIT-FLOW_Unleashing Inversion and Editing In the Era Of Flow Models.pdf",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "生成模型反演/编辑属采样技巧，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "iclr2026/SSD-GS Scattering and Shadow Decomposition for Relightable 3D Gaussian Splatting.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SSD-GS Scattering and Shadow Decomposition for Relightable 3D Gaussian Splatting.pdf",
+ "title": "SSD-GS: Scattering and Shadow Decomposition for Relightable 3D Gaussian Splatting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "elevance": 4,
+  "evidence": 6,
+  "overall": 5.9
+ },
+ "one_line": "四分量分解3DGS实现可重光照，但泛化性与主线关联弱",
+ "innovations": [
+  "将反射率分解为漫反射、镜面、阴影、次表面散射四个物理分量",
+  "引入可学习偶极子次表面散射模块与融合可见性估计的遮挡感知阴影公式",
+  "各向异性Fresnel增强镜面分量，配合渐进式训练逐步解耦光照与材质"
+ ],
+ "method_framework": "在3DGS上构建基于物理的重光照框架：将光照-材质相互作用显式分解为漫反射、镜面、阴影与次表面散射；用偶极子模型建模次表面传输，用可见性估计+细化网络建模阴影，用各向异性Fresnel建模镜面；训练中渐进引入各分量以稳定解耦。",
+ "experiment_framework": "在具挑战性的OLAT数据集上评测，对比此前仅分解漫反射/镜面或用NN近似阴影散射的3DGS重光照方法，报告定量与感知重光照质量。",
+ "takeaways": [
+  "显式四分量分解比粗糙二分分解更适合各向异性金属与半透明材质",
+  "渐进式引入分量有助于稳定解耦光照与材质",
+  "支持新光照下的可控光源编辑与交互式场景重光照"
+ ],
+ "weaknesses": [
+  "属图形学重光照方向，与主线（LLM可靠性/医学影像/多模态推理）无关联",
+  "主要在OLAT单数据集验证，泛化到复杂真实室内光照未充分",
+  "14页篇幅，与更强基于NN的重光照方法对比规模有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

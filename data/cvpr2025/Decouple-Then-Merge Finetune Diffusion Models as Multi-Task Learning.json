@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Decouple-Then-Merge Finetune Diffusion Models as Multi-Task Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Decouple-Then-Merge Finetune Diffusion Models as Multi-Task Learning.pdf",
+ "title": "Decouple-Then-Merge Finetune Diffusion Models as Multi-Task Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "解耦时间步训练扩散模型，合并提升生成质量但计算开销大",
+ "innovations": [
+  "解耦不同时间步训练避免梯度冲突",
+  "一致性损失、概率采样和通道投影技术促进知识共享",
+  "参数空间合并多个模型保持推理效率"
+ ],
+ "method_framework": "将时间步划分为多个区间，分别训练专用模型，通过一致性损失、概率采样和通道投影技术保留知识，最后合并为单一模型。",
+ "experiment_framework": "在CIFAR10、LSUN、ImageNet、COCO等6个数据集上评估，与SNR+1、Min-SNR-γ等基线比较，使用FID和CLIP指标。",
+ "takeaways": [
+  "时间步梯度冲突分析为多任务学习提供新视角",
+  "模型合并技术可扩展到其他多任务场景"
+ ],
+ "weaknesses": [
+  "合并权重需网格搜索，计算开销大",
+  "未分析不同N值对性能的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "扩散模型训练方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

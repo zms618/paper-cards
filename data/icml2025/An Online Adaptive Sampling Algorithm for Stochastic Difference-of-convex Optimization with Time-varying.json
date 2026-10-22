@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/An Online Adaptive Sampling Algorithm for Stochastic Difference-of-convex Optimization with Time-varying.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/An Online Adaptive Sampling Algorithm for Stochastic Difference-of-convex Optimization with Time-varying.pdf",
+ "title": "An Online Adaptive Sampling Algorithm for Stochastic Difference-of-convex Optimization with Time-varying Distributions",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "在线DC优化自适应采样，理论贡献为主，实验有限且与主线无关",
+ "innovations": [
+  "提出只依赖当前分布数据、丢弃历史样本的在线自适应采样策略，对迭代过程中的分布漂移更鲁棒",
+  "对 DC 的凸分量与凹（线性化）分量采用不同自适应采样率，远离临界点时省样本、逼近时提高精度",
+  "推导次微分映射 SAA 误差的 O(√(p/n))（忽略对数因子）点态收敛率，与光滑情形单值梯度映射的收敛率匹配，属独立理论贡献"
+ ],
+ "method_framework": "把目标写成 g(x)-h(x)（g、h 均凸但非必光滑）。每轮用当前时变分布采样估计 g 与 ∂h 的经验逼近，再做线性化的凸子问题；采样规模沿优化路径自适应：迭代点远离临界点时用较低精度估计，逼近临界点时提高精度以保证收敛到 DC 临界点。",
+ "experiment_framework": "在多个在线随机非光滑问题上验证算法效率，与固定采样率/聚合历史样本的随机 DCA 对比，报告随分布时变下的目标值收敛与计算开销。",
+ "takeaways": [
+  "在线自适应采样（弃用历史）使算法对时变分布/分布漂移更鲁棒",
+  "凸凹分量差异化采样率可在保证收敛的同时节省样本",
+  "次微分映射 SAA 的点态收敛率达 O(√(p/n))，与光滑梯度情形相当"
+ ],
+ "weaknesses": [
+  "主线为优化理论，与可靠性×医学影像/多模态大模型推理主线无关",
+  "收敛到 DC 临界点仅为次优平稳点保证，且依赖分布收敛的较强条件",
+  "前9页实验规模有限，自适应采样率的实际开销与调参敏感性未充分量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.13,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "优化理论工作，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

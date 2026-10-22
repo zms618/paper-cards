@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/A Simple Data Augmentation for Feature Distribution Skewed Federated Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Simple Data Augmentation for Feature Distribution Skewed Federated Learning.pdf",
+ "title": "A Simple Data Augmentation for Feature Distribution Skewed Federated Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 7.0,
+  "overall": 5.6
+ },
+ "one_line": "随机注入全局统计量做归一化，缓解联邦特征分布偏移",
+ "innovations": [
+  "FedRDN：训练时每张图每轮从全联邦统计集 {(µk,σk)} 随机采样 (µ^j,σ^j) 做归一化 x̂=(x−µ^j)/σ^j，把其它客户端的分布信息注入本地训练",
+  "只共享数据集级通道均值/标准差而非样本，相比 FedMix 共享平均图，在输入层实现无额外隐私代价、免改网络结构的增强",
+  "测试阶段切回本地统计量（x̂=(x−µ^k)/σ^k），保证训练随机化与测试分布的一致性"
+ ],
+ "method_framework": "客户端本地算通道级 µk,σk 上传服务器汇总共享 → 训练时随机抽一组统计量归一化当前图像（每 epoch 重抽）→ 本地训练后按 FedAvg 类方法聚合；测试时只用本地统计量。",
+ "experiment_framework": "Office-Caltech-10、DomainNet 分类（AlexNet）与 ProstateMRI 分割（U-Net，6 个站点）；8 种 FL 方法 × 4 种增强流；Top-1 / Dice，另含 source-site→target-site 跨站泛化表。",
+ "takeaways": [
+  "把“分布统计量”当作可共享的全局知识载体，是联邦场景下通信成本极低的输入级对齐手段",
+  "训练随机化、测试固定到本地统计量的两段式设计，值得在任何分布随机化增强中借鉴"
+ ],
+ "weaknesses": [
+  "所有数字为单次运行，无方差/显著性检验；Office-Caltech-10 上 +7~11% 的大幅提升缺少误差棒支撑",
+  "只用一阶/二阶统计刻画分布，对强风格差异（DomainNet 的 Quickdraw/Sketch）刻画有限，DomainNet 平均仅 +1.2~3.3%",
+  "骨干为 AlexNet/U-Net，未验证更强骨干与更多客户端（>6）下的表现；选择概率、与 FedFA 叠加方式等无消融"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "联邦学习特征分布对齐，符合可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

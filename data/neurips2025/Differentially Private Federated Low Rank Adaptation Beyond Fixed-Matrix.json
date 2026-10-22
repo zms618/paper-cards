@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Differentially Private Federated Low Rank Adaptation Beyond Fixed-Matrix.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Differentially Private Federated Low Rank Adaptation Beyond Fixed-Matrix.pdf",
+ "title": "Differentially Private Federated Low Rank Adaptation Beyond Fixed-Matrix",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "FedASK通过双阶段sketching解决DP-LoRA噪声放大问题",
+ "innovations": [
+  "双阶段sketching管道解决DP-LoRA噪声放大问题",
+  "理论证明FedASK的差分隐私保证和精确聚合特性",
+  "在强隐私约束下实现A和B矩阵的同步更新"
+ ],
+ "method_framework": "FedASK采用两阶段投影管道：首先聚合隐私保护的本地更新，然后在服务器上重建全局矩阵，实现A和B矩阵的有效更新，同时保证差分隐私。",
+ "experiment_framework": "在Llama-2-7B/13B模型上测试，使用MMLU、GSM8K等基准，对比FedAvg、FFA-LoRA等基线，评估不同隐私预算和数据异构性下的性能。",
+ "takeaways": [
+  "双阶段sketching技术可有效解决联邦LoRA中的噪声放大问题",
+  "在隐私保护下同时更新A和B矩阵可提升模型适应能力"
+ ],
+ "weaknesses": [
+  "DP模式下仅更新B矩阵可能限制局部学习能力",
+  "理论分析中的over-sketching参数p在实际应用中的最优选择需要进一步探索"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

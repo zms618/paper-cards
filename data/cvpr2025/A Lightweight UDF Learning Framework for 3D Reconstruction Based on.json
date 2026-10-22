@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/A Lightweight UDF Learning Framework for 3D Reconstruction Based on.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Lightweight UDF Learning Framework for 3D Reconstruction Based on.pdf",
+ "title": "A Lightweight UDF Learning Framework for 3D Reconstruction Based on Local Shape Functions",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "用局部形状函数合成训练patch，轻量UDF网络替代大规模3D形状训练",
+ "innovations": [
+  "合成与具体物体无关的训练集：可微点由主曲率Taylor展开得二次曲面z=½(κ1u²+κ2v²)（planar/parabolic/ellipsoid/hyperbolic四类），非可微点统一用z=1-h·g(x,y)（g取|kx-y|/√(1+k²)、√(x²+y²)、max(|x|,|y|)、(|x|+|y|)·sgn对应crease/cusp/corner/v-saddle），每个query点的GT UDF可解析写出，训练一次迁到任意形状",
+  "网络只吃query点半径内的局部patch：PointNet编码patch得f_p，patch点到query的相对向量V={p_i-q}过第二PointNet得f_v，CrossAttn(f_p作KV, f_v作Q)得f_G，拼距离d过FC输出softplus(UDF)；两PointNet各4个ResNet block，共167127参数(653KB)",
+  "去噪模块输出位移Δd加回距离d并用L1正则L_r=|Δd|稀疏化（λ_d=0.01）以抵抗噪声；训练时对30% batch注入N(0,0.1)，patch点不足5个的query直接赋大常数再交DCUDF提mesh"
+ ],
+ "method_framework": "局部形状函数合成{query, patch, UDF}三元组→PointNet(A对patch与相对向量)+cross-attention+FC输出UDF→DCUDF提网格；可再与CAP-UDF/LevelSetUDF拼成α_t衰减的联合损失作warm init。",
+ "experiment_framework": "ShapeNet-Car、DeepFashion3D、ScanNet、真实range scan；基线CAP-UDF/LevelSetUDF/DUDF/GeoUDF；指标L1-Chamfer、F1@0.005/0.01、NC，统一DCUDF提网格。",
+ "takeaways": [
+  "用可解析合成数据替代真实形状合集做预训练，把监督式UDF学习的参数与数据成本压到653KB/0.5GB且无需shape-specific训练",
+  "'合成局部patch预训 + 无监督迭代精修'的两层训练，比单靠一端更稳，可迁移到法向/曲率/SDF符号等其它几何回归量"
+ ],
+ "weaknesses": [
+  "正文在4.2节末截断：噪声/离群点结论、表2/表3之后的完整量化与效率表不可见，缺去噪模块、半径r0、cross-attention vs 拼接、λ_d的消融",
+  "'局部形状可二次近似'在高频细节与薄壁/开边界结构上不成立（失效界未给），且CAP-UDF/LevelSetUDF/DUDF是无监督逐形状迭代、GeoUDF须在测试形状上重训，而本方法一次性训完即迁移——表1中'Noise/Outlier ✓'含设定差异成分，公平性存疑",
+  "与无监督方法集成时α_t在前10000步从1线性降到0、总约20000步，是纯启发式时间表"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D重建与可靠性主线无关，仅工程价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

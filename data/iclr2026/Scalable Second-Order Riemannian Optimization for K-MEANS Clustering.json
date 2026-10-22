@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scalable Second-Order Riemannian Optimization for K-MEANS Clustering.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scalable Second-Order Riemannian Optimization for K-MEANS Clustering.pdf",
+ "title": "Scalable Second-Order Riemannian Optimization for K-Means Clustering",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.7
+ },
+ "one_line": "黎曼优化加速K-means，但依赖假设且与主线无关",
+ "innovations": [
+  "把K-means的低秩SDP松弛改写为子流形上的光滑无约束优化问题并刻画其黎曼几何结构，从而可用二阶方法求二阶临界点。",
+  "利用'良性非凸性'(所有二阶临界点即全局最优)假设，将三次正则黎曼牛顿法用于该流形。",
+  "通过把K-means流形分解为乘积流形，使每个牛顿子问题可在线性时间内求解，得到可扩展的二阶方法。"
+ ],
+ "method_framework": "对Z=UU^T的非凸分解在乘积流形上优化，用黎曼梯度与(三次正则)牛顿步更新因子U；乘积流形结构使Hessian相关子问题解耦并线性时间求解，快速收敛到二阶临界点。",
+ "experiment_framework": "在聚类任务上对比SOTA一阶非负低秩分解方法，比较收敛速度(达到同等精度所需迭代/时间)与聚类恢复/统计精度。",
+ "takeaways": [
+  "在良性非凸假设下，二阶黎曼牛顿法能比一阶方法快得多地收敛到K-means的最优聚类解。",
+  "乘积流形分解把二阶方法的子问题降到线性时间，使二阶优化在大规模聚类上可扩展。"
+ ],
+ "weaknesses": [
+  "纯优化/聚类理论方向，与可靠性×医学影像/多模态推理主线无关联。",
+  "二阶临界点即全局最优依赖'良性非凸性'假设，在簇间距不足或GMM假设不成立时的有效性缺乏保证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯优化理论，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

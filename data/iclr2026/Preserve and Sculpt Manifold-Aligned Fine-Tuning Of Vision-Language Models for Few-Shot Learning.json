@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Preserve and Sculpt Manifold-Aligned Fine-Tuning Of Vision-Language Models for Few-Shot Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Preserve and Sculpt Manifold-Aligned Fine-Tuning Of Vision-Language Models for Few-Shot Learning.pdf",
+ "title": "Preserve and Sculpt: Manifold-Aligned Fine-Tuning of Vision-Language Models for Few-Shot Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "流形保持与雕刻微调，约束Gram矩阵提升VLM少样本分类",
+ "innovations": [
+  "提出流形保持与雕刻微调(MPS-Tuning)，同时约束语义流形的固有几何结构并增强类可分性",
+  "通过对齐微调前后特征的Gram矩阵，同时保持宏观和微观拓扑结构",
+  "理论证明该约束近似Gromov-Wasserstein距离的上界"
+ ],
+ "method_framework": "MPS-Tuning将特征空间的数据分布视为语义流形：(1)保持——对齐微调前后的Gram矩阵，保留流形的宏观和微观拓扑结构；(2)雕刻——配对图像和文本模态特征，优化成对相似性以增强类判别性。",
+ "experiment_framework": "在多个少样本图像分类基准上验证，对比PEFT方法和一致性驱动方法。指标为少样本分类准确率。",
+ "takeaways": [
+  "现有VLM微调方法忽略数据分布的几何结构，导致语义表示扭曲",
+  "Gram矩阵对齐有效保持预训练语义流形的拓扑结构",
+  "保持与雕刻相结合，在不破坏预训练知识的同时提升下游任务性能"
+ ],
+ "weaknesses": [
+  "Gram矩阵对齐的计算复杂度随样本数平方增长",
+  "理论分析基于GW距离上界，实际紧性未充分验证",
+  "与可靠性/鲁棒性主线关联中等，属于VLM微调方向"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "VLM微调方法，与可靠性主线关联中等",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

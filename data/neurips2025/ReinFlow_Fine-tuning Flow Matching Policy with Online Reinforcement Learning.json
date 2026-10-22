@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/ReinFlow_Fine-tuning Flow Matching Policy with Online Reinforcement Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/ReinFlow_Fine-tuning Flow Matching Policy with Online Reinforcement Learning.pdf",
+ "title": "ReinFlow: Fine-tuning Flow Matching Policy with Online Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "将流匹配转为马尔可夫过程，用噪声注入实现RL微调",
+ "innovations": [
+  "将流匹配策略转换为离散时间马尔可夫过程，实现精确似然计算",
+  "设计轻量级噪声注入网络自动平衡探索与利用",
+  "首次实现流匹配策略在极少甚至单步去噪情况下的稳定在线强化学习微调"
+ ],
+ "method_framework": "ReinFlow通过在流策略的确定性路径中注入可学习噪声，将流转换为离散时间马尔可夫过程，结合策略梯度定理实现稳定高效的在线强化学习微调。",
+ "experiment_framework": "在OpenAI Gym、Franka Kitchen和Robomimic等机器人运动和操作任务上进行评估，与DPPO和FQL等基线方法比较成功率、奖励和计算时间。",
+ "takeaways": [
+  "噪声注入网络的设计为流匹配策略提供了有效的探索机制",
+  "方法适用于多种流模型变体，包括Rectified Flow和Shortcut Models"
+ ],
+ "weaknesses": [
+  "仅关注模拟环境，未在真实机器人上验证",
+  "主要采用PPO实现，未探索更样本高效的RL算法"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

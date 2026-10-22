@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Tracing the Traces Latent Temporal Signals for Efficient and Accurate Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tracing the Traces Latent Temporal Signals for Efficient and Accurate Reasoning.pdf",
+ "title": "Tracing the Traces: Latent Temporal Signals for Efficient and Accurate Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "利用推理过程内部表示演化预测答案正确性，减少70%计算量",
+ "innovations": [
+  "提出潜在轨迹信号：分析推理中间token生成过程中模型内部表示的时间演化，作为解正确性的预测器",
+  "证明潜在时间信号（表示变化程度、时间过程、与最终状态对齐度）优于传统基于输出的置信度度量",
+  "发现信号在推理轨迹早期即涌现，可实现早期选择和计算分配",
+  "用潜在信号引导多采样答案选择，比多数投票减少70% token使用同时保持/提升准确率"
+ ],
+ "method_framework": "在LLM生成推理中间token时，监控内部表示的时间演化。提取两类信号：(1)表示变化的程度和时间过程，(2)中间表示与最终表示的对齐度。这些信号作为推理轨迹质量的预测器，用于在多个采样中选择最可能正确的答案，或提前终止低质量轨迹。",
+ "experiment_framework": "在数学推理等任务上，对比潜在轨迹信号与输出-based置信度（如语义熵、logprob）的准确率预测能力；用信号引导答案选择对比多数投票的效率-准确率权衡。",
+ "takeaways": [
+  "LLM内部表示的时间演化是推理质量的强预测器，优于输出文本或logprob-based置信度",
+  "早期信号涌现使得可以在推理过程中提前选择最有希望的答案，大幅节省计算",
+  "基于潜在信号的答案选择比多数投票效率高70%且准确率不降反升"
+ ],
+ "weaknesses": [
+  "需要访问模型内部表示，对API-only的闭源模型不可用",
+  "信号的具体计算方式（哪些层、哪些维度）选择较多，最优配置未确定",
+  "主要在数学推理任务上验证，其他推理类型的适用性未探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "推理质量预测器属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

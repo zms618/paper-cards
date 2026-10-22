@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/RHYTHM_Reasoning with Hierarchical Temporal Tokenization for Human Mobility.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/RHYTHM_Reasoning with Hierarchical Temporal Tokenization for Human Mobility.pdf",
+ "title": "RHYTHM: Reasoning with Hierarchical Temporal Tokenization for Human Mobility",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "冻结LLM加时间分块的人体移动预测，泛化验证不足",
+ "innovations": [
+  "分层时间分块机制减少序列长度并保留周期性信息",
+  "预计算提示嵌入增强轨迹段表示",
+  "冻结LLM骨干实现参数高效适应"
+ ],
+ "method_framework": "RHYTHM将轨迹分割为日段作为分块，通过分层注意力捕捉日和周依赖，结合预计算语义嵌入，输入冻结LLM进行推理，实现高效移动预测。",
+ "experiment_framework": "在三个真实世界数据集(Kumamoto, Sapporo, Hiroshima)上评估，对比LSTM、Transformer和LLM基线，使用Accuracy@k、DTW、BLEU和MRR指标。",
+ "takeaways": [
+  "冻结LLM结合语义嵌入可提升移动预测效率",
+  "分层时间分块能有效处理多尺度周期性行为"
+ ],
+ "weaknesses": [
+  "未充分验证模型在不同城市规模和密度下的泛化能力",
+  "BLEU指标表现不如COLA，序列匹配能力有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/RAST_Reasoning Activation in LLMs via Small-model Transfer.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/RAST_Reasoning Activation in LLMs via Small-model Transfer.pdf",
+ "title": "RAST: Reasoning Activation in LLMs via Small-model Transfer",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "小模型RL训练激活信号转移至大模型，提升推理能力并降低计算成本。",
+ "innovations": [
+  "提出RAST方法，通过小模型RL训练转移推理激活信号",
+  "发现RL主要调整关键推理token的概率分布而非全局改变输出",
+  "证明推理激活信号可跨模型规模迁移",
+  "RAST在推理多样性上超越直接RL训练"
+ ],
+ "method_framework": "RAST通过计算小RL模型与基础模型的logit差异(ΔR)，在解码时将此差异注入大模型，选择性增强推理相关token概率，激活潜在推理能力。",
+ "experiment_framework": "在MATH500、AIME24、AMC、Minerva、OlympiadBench、GSM8K等数学推理基准测试，以及HumanEval+、MBPP+、LiveCodeBench等代码推理任务上评估，使用Pass@k和恢复率作为指标。",
+ "takeaways": [
+  "推理激活信号具有跨模型规模的可迁移性",
+  "RAST在保持推理能力的同时显著降低计算成本",
+  "大模型作为基础时对转移信号更敏感"
+ ],
+ "weaknesses": [
+  "RAST效果依赖于小RL模型的质量，能力差距过大可能降低转移效果",
+  "未探讨不同推理任务的最优ΔR强度λ",
+  "方法在非数学推理领域的泛化性还需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

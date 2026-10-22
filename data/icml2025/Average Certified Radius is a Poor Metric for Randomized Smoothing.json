@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Average Certified Radius is a Poor Metric for Randomized Smoothing.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Average Certified Radius is a Poor Metric for Randomized Smoothing.pdf",
+ "title": "Average Certified Radius is a Poor Metric for Randomized Smoothing",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 7.5,
+  "overall": 7.0
+ },
+ "one_line": "揭示ACR指标缺陷，证明SOTA方法牺牲困难样本鲁棒性提升简单样本",
+ "innovations": [
+  "理论证明平凡分类器（一半样本pA=1，一半pA=0）可获得任意大ACR，且ACR对简单样本的改善极度敏感",
+  "实证发现SOTA随机平滑训练策略（CAT-RS等）相比Gaussian训练，在pA分布上更集中于0和1两端，即牺牲困难样本鲁棒性提升简单样本",
+  "提出直接丢弃困难样本、按认证半径重加权数据、极端优化简单样本等策略，复现SOTA的ACR提升，证明ACR指标存在强选择偏差"
+ ],
+ "method_framework": "分析认证半径r=Φ^{-1}(pA)与pA的非线性关系：当pA接近1时r增长极快（pA从0.99→0.999，r从2.3→3.0），而pA<0.5的样本对ACR无贡献。因此优化ACR等价于优先优化简单样本。通过ECDF分布和梯度l2范数量化各算法对简单/困难样本的权重差异。建议用pA经验分布替代ACR作为评估指标。",
+ "experiment_framework": "CIFAR-10和ImageNet上，σ=0.25/0.5/1.0三种噪声水平。基线包括Gaussian/SmoothAdv/Consistency/SmoothMix/CAT-RS。指标为pA的ECDF分布、梯度l2范数比、ACR。",
+ "takeaways": [
+  "SOTA RS训练算法的简单/困难样本梯度权重比达4.28，而Gaussian训练仅0.45，说明前者严重偏向简单样本",
+  "仅丢弃困难样本+重加权即可复现SOTA的ACR，无需真正训练鲁棒模型",
+  "ACR应被废弃，推荐使用pA的经验分布（如P(pA≥0.5)即clean accuracy）作为更公平的评估指标"
+ ],
+ "weaknesses": [
+  "仅在图像分类(CIFAR-10/ImageNet)上验证，其他模态的RS评估未探讨",
+  "提出的替代指标pA分布缺乏单数值汇总，不便于方法间快速比较",
+  "未提出新的RS训练方法，仅批判现有指标和训练策略"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.15,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "鲁棒性指标批判，触及可靠性主线痛点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

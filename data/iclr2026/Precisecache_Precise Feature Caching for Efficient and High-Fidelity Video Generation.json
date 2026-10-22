@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Precisecache_Precise Feature Caching for Efficient and High-Fidelity Video Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Precisecache_Precise Feature Caching for Efficient and High-Fidelity Video Generation.pdf",
+ "title": "PreciseCache: Precise Feature Caching for Efficient and High-Fidelity Video Generation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "特征缓存加速框架，用LFD判据跳过冗余计算，2.6倍加速但创新有限",
+ "innovations": [
+  "揭示现有特征缓存质量退化源于无法区分真正冗余特征，提出低频频差(LFD)作为步级冗余度量",
+  "LFCache：用降采样隐变量做轻量'试推理'估计 LFD 来决定是否复用缓存，附加开销可忽略",
+  "BlockCache：在未跳过步内按 transformer 块输入/输出差异识别非关键块，缓存复用其输出做块级加速"
+ ],
+ "method_framework": "在去噪每步，先用降采样 noisy latent 做快速试推理，与缓存预测算低频频差(LFD)判断该步是否高度冗余可整步跳过；在非跳过步内，进一步逐 transformer 块比较输入输出特征，仅保留关键块计算、缓存并复用非关键块输出，两级配合在 Wan2.1-14B 等骨干上实现约2.6倍加速。",
+ "experiment_framework": "在 OpenSora、HunyuanVideo、CogVideoX、Wan2.1 等多种视频扩散骨干上评测，对比 TeaCache 等缓存加速方法，报告加速比与画质保持(无明显质量损失)。",
+ "takeaways": [
+  "PreciseCache 在多个 SOTA 视频扩散模型上平均约2.6倍加速且画质无明显下降",
+  "高噪声步承载低频结构信息不可跳，低噪声步高频细节可安全跳过",
+  "LFD 对隐变量分辨率不敏感，可用降采样试推理低成本在线估计冗余"
+ ],
+ "weaknesses": [
+  "主线为视频生成推理加速，与可靠性/医学影像/多模态推理主线关联弱",
+  "属工程优化，方法新颖性有限，是在既有特征缓存范式上改进判据",
+  "前9页未见对极端运动/长视频等困难样本的鲁棒性与质量退化边界分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.55,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "视频生成加速工程，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

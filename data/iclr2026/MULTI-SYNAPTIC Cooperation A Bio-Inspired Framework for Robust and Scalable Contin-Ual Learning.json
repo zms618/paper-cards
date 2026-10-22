@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/MULTI-SYNAPTIC Cooperation A Bio-Inspired Framework for Robust and Scalable Contin-Ual Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/MULTI-SYNAPTIC Cooperation A Bio-Inspired Framework for Robust and Scalable Contin-Ual Learning.pdf",
+ "title": "Multi-Synaptic Cooperation: A Bio-Inspired Framework for Robust and Scalable Continual Learning",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "多突触连接提升持续学习容量，但生物可解释性验证不足",
+ "innovations": [
+  "首次将多突触合作机制引入持续学习，在每条神经元连接上设置P条并行突触通路（不同衰减时间常数），在不增加网络深度/宽度的前提下提升表示容量",
+  "设计基于 eligibility trace 的局部突触活动调制机制，通过分段二次函数 f_mod 实现活动依赖的突触可塑性增强或抑制",
+  "将多突触机制与架构类持续学习方法（掩码/子网络分配）结合，实现零遗忘(BWT=0)且显著提升任务顺序鲁棒性"
+ ],
+ "method_framework": "MSCN在标准LIF神经元基础上为每条突触连接引入P条并行通路，各通路有独立且不可训练的衰减时间常数以增强时空表示多样性。突触可塑性由 eligibility trace 驱动：局部脉冲累积形成资格迹，经分段二次调制函数 f_mod 调整梯度更新的大小和方向。训练时结合二进制掩码进行子网络分配：新任务仅在未占用的突触上更新，已占用突触冻结。多突触结构使得固定容量网络能存储更多任务知识。",
+ "experiment_framework": "在4个持续学习基准上评估（Permuted MNIST、10-split CIFAR-100、TinyImageNet、5-Datasets），同时测试SNN和ANN架构，对比EWC/HAT/GPM/HLOP/PackNet/SupSup/WSN/TAMiL/SPG/DFGP/Bayesian等基线，5个随机种子，指标为平均准确率(ACC)和后向迁移(BWT)，另测任务顺序鲁棒性(AOPD)和容量效率(CAP)。",
+ "takeaways": [
+  "MSCN在所有4个数据集上均达到最优ACC和零遗忘(BWT=0)，TinyImageNet上ANN准确率达75.03%，超出次优方法1.1%",
+  "多突触连接和 eligibility trace 调制缺一不可，同时消融两个组件性能下降最大",
+  "MSCN在相同参数预算下训练时间更短、任务顺序方差更小，证明多突触机制的容量效率优势"
+ ],
+ "weaknesses": [
+  "多突触连接P=3虽参数量翻倍，但与简单增加网络宽度/深度相比的理论优势缺乏严格的容量分析",
+  "仅在task-incremental多头设定下验证，未探索class-incremental或任务ID未知的通用设定",
+  "生物可解释性论证较浅，多突触并行通路与真实生物多突触的对应关系未深入验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "生物启发的持续学习机制提升鲁棒性，符合可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

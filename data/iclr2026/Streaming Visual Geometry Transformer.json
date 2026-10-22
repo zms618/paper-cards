@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Streaming Visual Geometry Transformer.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Streaming Visual Geometry Transformer.pdf",
+ "title": "Streaming Visual Geometry Transformer",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "因果Transformer实现流式3D重建，但精度和迁移性存疑。",
+ "innovations": [
+  "将自回归LLM的因果Transformer设计引入3D几何重建，实现逐帧在线增量重建而非离线全序列处理",
+  "利用时序因果注意力和历史KV缓存作为隐式记忆，高效整合历史信息同时保持空间一致性",
+  "通过知识蒸馏从双向VGGT模型训练因果模型，并支持FlashAttention等高效注意力算子迁移"
+ ],
+ "method_framework": "采用因果Transformer架构处理视频帧序列：每来一帧新图像，通过时序因果注意力仅与历史帧的KV缓存交互，增量更新3D几何重建结果。训练时从双向VGGT（全序列可见）蒸馏知识到因果模型（仅历史可见），弥补因果限制带来的性能损失。推理时利用KV缓存避免重复计算历史帧。",
+ "experiment_framework": "在多个3D几何感知基准上验证，对比离线VGGT和其他在线方法。指标包括重建精度和推理速度/内存开销。重点测试在线场景下的低延迟和时序一致性。",
+ "takeaways": [
+  "因果Transformer可以有效实现流式3D重建，在线推理速度显著提升且重建质量保持竞争力",
+  "从双向模型蒸馏是弥补因果注意力信息损失的有效手段",
+  "KV缓存机制使流式3D重建的内存和时间开销随序列长度近似线性增长"
+ ],
+ "weaknesses": [
+  "因果注意力只能利用历史帧信息，无法利用未来帧的几何约束，重建精度可能低于双向方法",
+  "知识蒸馏的效果依赖教师模型VGGT的质量，对其他3D重建架构的迁移性未证明",
+  "前9页未展示完整的定量对比表格，具体精度和速度数值不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.75,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D重建与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

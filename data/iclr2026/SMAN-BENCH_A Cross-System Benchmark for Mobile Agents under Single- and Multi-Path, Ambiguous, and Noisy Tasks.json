@@ -1,0 +1,41 @@
+{
+ "title": "SMAN-Bench: A Cross-System Benchmark for Mobile Agents under Single- and Multi-Path, Ambiguous, and Noisy Tasks",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "构建移动端GUI智能体四类环境评测基准，技术新颖性有限。",
+ "innovations": [
+  "用基于槽位的指令生成方法(GIAS)将模板与已有图结构无标注移动端语料的轨迹匹配，构建约1.2万条中英指令",
+  "首次在离线评测中引入多路径轨迹的分步奖励评估，而非仅单路径黄金轨迹",
+  "构建噪声 split(弹窗/广告应用)与歧义指令 split(预设问答交互)以模拟真实嘈杂环境与主动交互能力"
+ ],
+ "method_framework": "基于现有图结构无标注移动端操作语料，用槽位模板自动生成指令并关联多条轨迹；划分普通 split(离线多路径分步奖励)、噪声 split(广告/弹窗干扰)、受污染 split 与歧义指令 split；在静态 GUI 页面上让智能体逐步动作并按步给奖励。",
+ "experiment_framework": "评测 AppAgent-v1、Mobile-Agent-v2/E 等框架及开源/闭源移动端基础模型与多模态思考模型；规模约1.28万指令、平均7.28步、约4.8万截图；以任务成功率与分步奖励为指标，与PIXELHELP/AMEX/AndroidWorld等基准做规模与特性对比。",
+ "takeaways": [
+  "现有离线基准多为单路径且页面过于干净，导致高分智能体在真实多路径/嘈杂环境表现骤降",
+  "多路径分步奖励比单一终局成功率更能区分不同智能体的完成进度",
+  "歧义指令与噪声显著拉低各VLM移动端智能体表现，主动交互能力普遍薄弱"
+ ],
+ "weaknesses": [
+  "本质是评测基准而非新方法，技术新颖性有限，多路径与噪声设定多为对已有思路的组合",
+  "离线静态评测仍与真机在线环境存在差距，分步奖励的自动判定可靠性依赖模板匹配，可能有标注噪声",
+  "正文前9页未展开各智能体的具体分数表与消融，结论强度受限"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/SMAN-BENCH_A Cross-System Benchmark for Mobile Agents under Single- and Multi-Path, Ambiguous, and Noisy Tasks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SMAN-BENCH_A Cross-System Benchmark for Mobile Agents under Single- and Multi-Path, Ambiguous, and Noisy Tasks.pdf",
+ "raw_overall": 5.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "移动端GUI智能体与可靠性主线无直接交点，仅为评测基准工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

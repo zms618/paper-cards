@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Safety Mirage How Spurious Correlations Undermine VLM Safety Fine-Tuning and can Be Mitigated By Machine.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Safety Mirage How Spurious Correlations Undermine VLM Safety Fine-Tuning and can Be Mitigated By Machine.pdf",
+ "title": "Safety Mirage: How Spurious Correlations Undermine VLM Safety Fine-Tuning and can be Mitigated by Machine Unlearning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "揭示VLM安全SFT的伪相关问题，提出机器遗忘替代方案。",
+ "innovations": [
+  "识别'安全幻影'现象：VLM安全SFT强化表层文本模式与安全回复的伪相关，而非真正内在地抑制有害内容。",
+  "证明这种伪相关使微调VLM在一词替换攻击下极易被越狱，并造成过度审慎(无据拒绝良性query)。",
+  "提出以机器遗忘(MU)作为安全SFT的替代：避免有偏特征-标签映射，直接从VLM移除有害知识同时保留通用能力；攻击成功率降最多60.27%、过度拒绝降84.20%以上。"
+ ],
+ "method_framework": "先诊断安全SFT学到的是伪相关(表层词↔拒绝)；再用机器遗忘直接移除有害知识，不建立有偏特征-标签映射，从而既抗一词替换越狱又减少过度审慎，保持通用能力。",
+ "experiment_framework": "在多个VLM安全基准上，对比安全SFT(及NPO等)与MU对齐；用一词替换攻击测越狱成功率、用良性query测过度审慎率，并检验通用能力保持。",
+ "takeaways": [
+  "VLM安全SFT的'安全'部分是幻影：依赖表层伪相关，一词替换即可绕过。",
+  "机器遗忘比监督安全微调更能内在去害，同时大幅降低越狱率与过度拒绝率。"
+ ],
+ "weaknesses": [
+  "落地域为通用VLM安全而非医学影像，但在多模态×可信安全维度高度相关。",
+  "MU对齐对未见过的新型越狱攻击、以及对VLM多模态(图像侧)越狱的覆盖仍需扩展；泛化到更大闭源VLM不可得。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "VLM安全伪相关与机器遗忘解决越狱问题，直接对接可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

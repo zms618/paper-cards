@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Topological Anomaly Quantification Semi-Supervised Graph Anomaly Detection.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Topological Anomaly Quantification Semi-Supervised Graph Anomaly Detection.pdf",
+ "title": "Topological Anomaly Quantification for Semi-Supervised Graph Anomaly Detection",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "拓扑度量筛选伪异常，生成虚拟中心提升半监督图异常检测",
+ "innovations": [
+  "针对生成式方法合成异常缺乏定量评估、不可靠的问题，设计拓扑异常量化(TAQ)模块",
+  "提出两个拓扑度量：节点边界分(NBS)量化节点相对已标正常邻居的边界性、节点孤立分(NIS)量化节点在同类内的结构孤立性",
+  "用拓扑异常增强(TAE)生成虚拟异常中心节点并构造其与他节点的拓扑关系，整合正常与伪异常节点训练"
+ ],
+ "method_framework": "在仅有正常标签的半监督设定下：先用NBS(对正常邻居的连接)与NIS(同类内连接强度)两个拓扑度量量化节点异常度，动态筛出高异常分节点作伪异常；再生成虚拟异常中心并建拓扑关系；最后在增强图上整合正常/伪异常节点训练检测器。",
+ "experiment_framework": "在图异常检测基准数据集上评测；对比仅有正常标签设定下的生成式GAD与其他SOTA；指标为AUC等异常检测性能；消融验证NBS/NIS与TAE模块的贡献。",
+ "takeaways": [
+  "合成异常需有定量拓扑评估，否则合成样本不可靠",
+  "边界性与孤立性两个拓扑度量可有效筛出伪异常节点",
+  "拓扑异常增强生成虚拟异常中心提升了仅有正常标签下的检测性能"
+ ],
+ "weaknesses": [
+  "伪异常筛选依赖启发式拓扑度量阈值，在高度伪装异常下是否稳健需更多验证",
+  "仅在公开图基准评测，金融欺诈等真实高风险场景的可靠性未验证",
+  "属图异常检测方向，与医学影像、多模态推理落地域无直接关联"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.13,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "图异常检测方法有可靠性机制但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Feature out! Let Raw as Your Condition for Blind Face Restoration.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Feature out! Let Raw as Your Condition for Blind Face Restoration.pdf",
+ "title": "Feature out! Let Raw Image as Your Condition for Blind Face Restoration",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "理论最优传输框架用于人脸复原，但计算成本高且泛化验证不足。",
+ "innovations": [
+  "主张直接用原始低质量(LQ)图像作为反向扩散起点(理论最优),而非以往用LQ特征提取器做引导",
+  "提出Pseudo-Hashing Image-to-image Schrödinger Bridge(P-I2SB),修正数据分布以强化SB复原能力",
+  "基于最优质量传输/桥接建模LQ→HQ的传输路径"
+ ],
+ "method_framework": "盲人脸复原(BFR)需在未知复杂退化下把LQ图恢复为HQ图;以往扩散法用LQ特征提取器做引导,但直接以原始LQ图为反向扩散起点理论上更优。P-I2SB用Schrödinger Bridge建模任意LQ/HQ分布间的最优传输路径,通过伪哈希修正数据分布,充分发挥SB的复原潜力。",
+ "experiment_framework": "在盲人脸复原benchmark(如真实退化人脸)上验证;基线为扩散BFR方法;指标为复原质量(FID/PSNR/LPIPS)与真实感。",
+ "takeaways": [
+  "直接用原始LQ图作条件比特征引导在理论上更优",
+  "P-I2SB通过修正数据分布提升了Schrödinger Bridge的复原效果",
+  "桥接式最优传输适合任意退化下的盲复原"
+ ],
+ "weaknesses": [
+  "Schrödinger Bridge采样计算成本通常高于普通扩散",
+  "主线为人脸复原(通用视觉复原),与医学影像主线不直接相关",
+  "桥接训练稳定性与多退化泛化需更多验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

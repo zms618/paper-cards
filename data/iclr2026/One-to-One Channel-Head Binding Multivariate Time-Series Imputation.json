@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/One-to-One Channel-Head Binding Multivariate Time-Series Imputation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/One-to-One Channel-Head Binding Multivariate Time-Series Imputation.pdf",
+ "title": "T1: One-to-One Channel-Head Binding for Multivariate Time-Series Imputation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "CNN-Transformer混合架构通过通道-头绑定实现时间序列插补，但创新有限。",
+ "innovations": [
+  "提出Channel-Head Binding机制：CNN通道与注意力头一对一对应，实现选择性跨变量信息传递",
+  "注意力通路根据可观测模式自适应调整，降低损坏通道权重的同时保持可靠跨变量连接",
+  "CNN-Transformer混合架构在11个基准上达到SOTA，MSE平均降低46%"
+ ],
+ "method_framework": "T1是CNN-Transformer混合架构。CNN通道与注意力头一一绑定：每个CNN通道对应一个注意力头，注意力头仅关注对应通道的信息。这种一对一绑定使得模型可以自适应地下调损坏通道的注意力权重，同时保持可靠的跨变量信息传递。解决了现有方法在时序模式提取和跨变量信息传递之间的trade-off。",
+ "experiment_framework": "在11个时间序列插补基准数据集上测试，对比SOTA方法。指标为MSE。特别测试极端稀疏（70%缺失率）场景。验证对未见缺失模式的泛化能力。",
+ "takeaways": [
+  "Channel-Head Binding机制有效解决了缺失时间序列中损坏特征干扰跨变量传递的问题",
+  "T1在11个基准上MSE平均降低46%，极端稀疏场景优势尤为明显",
+  "模型可泛化到训练时未见的缺失模式"
+ ],
+ "weaknesses": [
+  "一对一绑定限制了通道间的灵活性，对高度耦合的多变量系统可能不是最优",
+  "CNN-Transformer混合架构的计算开销比纯Transformer方法更高",
+  "实验主要在标准基准上验证，对实际工业时间序列的适用性未展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "时间序列插补方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

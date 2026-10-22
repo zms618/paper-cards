@@ -1,0 +1,37 @@
+{
+ "title": "The Best of Both Worlds: Bridging Quality and Diversity in Data Selection with Bipartite Graph",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "将SFT数据选择建模为集合覆盖问题，用二分图平衡质量与多样性",
+ "innovations": [
+  "将 SFT 数据选择形式化为集合覆盖问题，显式同时优化质量与多样性",
+  "用句子与其构成 n-gram 的二分图建模数据集，刻画数据覆盖/多样性结构",
+  "设计质量与多样性指标相乘的优先级函数，迭代选取优先级最高的句子"
+ ],
+ "method_framework": "把候选 SFT 数据集建成二分图(句子节点连接到其 n-gram 节点)；为每句计算质量分与多样性分(已覆盖 n-gram 增量)；以二者相乘作为优先级，迭代挑选优先级最高、且对覆盖贡献最大的句子，实现质量与多样性的平衡选择。",
+ "experiment_framework": "在 LLM 监督微调数据选择任务上评测；对比偏质量或偏多样性的现有选择方法；指标为微调后模型在基准上的下游表现，验证同等数据预算下兼顾二者带来的增益。",
+ "takeaways": [
+  "只偏质量或只偏多样性的数据选择都会导致次优微调",
+  "二分图+集合覆盖能把质量与多样性显式统一到一个选择过程中",
+  "相乘式优先级在同等预算下比单目标选择更优"
+ ],
+ "weaknesses": [
+  "属数据选择/效率方法，与可靠性/医学影像/多模态大模型推理主线关联较弱",
+  "质量分的获取仍依赖外部打分模型，引入额外依赖与噪声",
+  "n-gram 二分图的构造在大规模语料上的计算开销前9页未充分讨论"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/The Best of Both Worlds Bridging Quality and Diversity inData Selection with Bipartite Graph.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/The Best of Both Worlds Bridging Quality and Diversity inData Selection with Bipartite Graph.pdf",
+ "raw_overall": 5.83,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

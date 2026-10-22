@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Trajectory-Aware Shifted State Space Models for Online Video Super-Resolution.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Trajectory-Aware Shifted State Space Models for Online Video Super-Resolution.pdf",
+ "title": "Trajectory-Aware Shifted State Space Models for Online Video Super-Resolution",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "TS-Mamba结合轨迹与移位SSM提升在线视频超分效率，但理论解释不足",
+ "innovations": [
+  "将轨迹建模与Mamba状态空间模型结合，实现高效在线视频超分的时空信息聚合",
+  "提出基于Hilbert扫描和移位操作的移位SSM块，补偿扫描损失并增强Mamba的空间连续性",
+  "提出轨迹感知损失函数监督轨迹生成，确保token选择的准确性"
+ ],
+ "method_framework": "TS-Mamba首先构建视频内轨迹，从之前帧中选择最相似的token；然后使用轨迹感知移位Mamba聚合（TSMA）模块聚合选中的token。移位SSM块基于Hilbert扫描和对应移位操作设计，增强Mamba的空间建模能力。",
+ "experiment_framework": "在3个广泛使用的VSR测试数据集上，对比6个在线VSR基准模型，测量PSNR/SSIM指标和MACs复杂度。",
+ "takeaways": [
+  "轨迹感知+Mamba的组合可在线视频超分中同时提升性能和效率",
+  "Hilbert扫描移位SSM有效补偿了Mamba行优先扫描的空间连续性损失",
+  "轨迹感知损失确保了token选择的准确性，是轨迹建模成功的关键"
+ ],
+ "weaknesses": [
+  "仅在标准VSR基准上验证，真实在线视频场景（直播、会议）的效果未验证",
+  "轨迹构建本身的计算开销未纳入复杂度分析",
+  "Mamba在视频超分中的优势相比注意力机制的理论解释不够深入"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "视频超分与可靠性主线无实质交点，仅属常规图像处理",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TABPFN_Based On TABPFN Foundation Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TABPFN_Based On TABPFN Foundation Models.pdf",
+ "title": "Using Maximal Information Auxiliary Variables to Improve Synthetic Data Generation Based on TabPFN Foundation Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.3
+ },
+ "one_line": "秩匹配噪声辅助变量提升TabPFN弱关联变量生成质量",
+ "innovations": [
+  "提出MIAV策略，将随机噪声变量与真实数据秩匹配构造辅助变量，增加上下文信息以改善弱关联变量的生成",
+  "建立MIAV方法的理论性质，解释其在弱关联变量场景下良好表现的原因",
+  "MIAV还带来计算效率提升和变量顺序不变性等实用优势"
+ ],
+ "method_framework": "TabPFN等表格基础模型通过上下文学习生成合成数据，但当变量间关联较弱时，上下文样本提供的预测信号不足。MIAV策略：构造与真实变量秩匹配的随机噪声辅助变量，将这些辅助变量加入上下文。由于秩匹配保持了变量间的依赖结构，辅助变量能提供额外的预测信号，帮助模型更好地捕捉弱关联变量的分布。",
+ "experiment_framework": "在模拟数据集和真实表格数据集上评估；基线包括直接使用TabPFN合成和其他专用合成数据生成方法；指标为合成数据的统计保真度和下游ML任务性能。",
+ "takeaways": [
+  "秩匹配辅助变量能有效增强基础模型在弱关联变量上的合成数据生成能力",
+  "MIAV方法同时提升了计算效率和对变量顺序的不变性",
+  "基于基础模型的合成数据生成是定制化生成器的可行替代方案"
+ ],
+ "weaknesses": [
+  "MIAV引入额外的辅助变量，增加了上下文长度和计算开销",
+  "实验主要在中小规模表格数据集上验证，超大规模表格数据的可扩展性未知",
+  "与差分隐私等隐私保护机制的结合效果未探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.5,
+ "relevance_reason": "表格数据生成与可靠性主线无直接交点，但方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

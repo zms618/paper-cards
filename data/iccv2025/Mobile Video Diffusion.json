@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Mobile Video Diffusion.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Mobile Video Diffusion.pdf",
+ "title": "Mobile Video Diffusion",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "移动端视频扩散模型，常规优化组合，有限泛化性",
+ "innovations": [
+  "通道漏斗(channel funneling)技术减少参数",
+  "时间块剪枝(temporal block pruning)优化计算",
+  "优化交叉注意力机制降低移动端内存需求"
+ ],
+ "method_framework": "基于Stable Video Diffusion，通过降低分辨率、多尺度时间表示、通道漏斗和时间块剪枝优化UNet，结合对抗微调实现单步生成",
+ "experiment_framework": "UCF-101数据集，FVD指标，与SVD、AnimateLCM等基线比较，Xiaomi-14 Pro移动端测试",
+ "takeaways": [
+  "移动端部署需同时优化模型结构和推理步骤",
+  "交叉注意力优化对移动端性能提升显著",
+  "时间块剪枝可有效减少计算量而保持质量"
+ ],
+ "weaknesses": [
+  "仅针对特定分辨率优化，泛化性有限",
+  "未充分讨论模型在不同移动设备上的性能差异",
+  "FVD指标提升空间有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "移动端视频生成，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/SLARM_Streaming and Language-Aligned Reconstruction Model for Dynamic Scenes.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SLARM_Streaming and Language-Aligned Reconstruction Model for Dynamic Scenes.pdf",
+ "title": "SLARM Streaming and Language-Aligned Reconstruction Model for Dynamic Scenes",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "SLARM统一动态重建与语义理解，提升运动精度21%",
+ "innovations": [
+  "高阶运动建模（速度、加速度、加加速度）",
+  "语言对齐的4D语义特征蒸馏",
+  "基于窗口注意力的流式推理架构",
+  "统一的多任务学习框架"
+ ],
+ "method_framework": "SLARM使用Vision Transformer提取特征，结合几何先验和时序上下文，通过交替注意力机制处理，输出4D高斯表示，包含几何、运动和语义信息。",
+ "experiment_framework": "Waymo Open Dataset (1000序列)，PSNR/SSIM/深度RMSE评估重建质量，EPE3D/角度误差评估运动估计，mIoU/准确率评估语义分割。",
+ "takeaways": [
+  "高阶运动建模能更好捕捉复杂非均匀运动",
+  "语义一致性作为时间正则化器提升动态重建质量",
+  "流式推理架构实现低延迟和稳定内存使用"
+ ],
+ "weaknesses": [
+  "仅依赖2D渲染监督，缺乏3D流真值监督",
+  "语义特征蒸馏可能受限于2D基础模型能力",
+  "运动阈值分割静态和动态区域可能存在误差"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.6,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "动态重建与语义理解，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

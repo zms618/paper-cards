@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Scaling Laws for Pre-training Agents and World Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Scaling Laws for Pre-training Agents and World Models.pdf",
+ "title": "Scaling Laws for Pre-training Agents and World Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "将LLM缩放律简单迁移到具身智能体预训练，下游性能预测性弱。",
+ "innovations": [
+  "首次为具身智能体预训练建立精确缩放律，弥合与LLM缩放律的认知差距。",
+  "证明行为克隆与世界建模中同样出现类语言模型的幂律关系。",
+  "量化缩放律系数如何受tokenizer、任务与架构影响，并给出给定算力下的最优模型尺寸。"
+ ],
+ "method_framework": "仿照LLM缩放律方法，系统扫描模型参数、数据量与算力，测量行为克隆(模仿学习)与世界建模两种预训练目标下的损失；拟合损失关于规模与数据的幂律，分离tokenizer/任务/架构对系数的影响，并据此推导固定算力预算下模型与数据的最优配比(compute-optimal)。",
+ "experiment_framework": "在机器人/游戏等具身离线数据集上，扫描模型规模与数据量分别训练BC与世界模型；以预训练损失与下游智能体性能为指标拟合幂律，对比不同tokenizer、任务与架构的系数差异，验证给定算力下最优尺寸的预测精度。",
+ "takeaways": [
+  "具身智能体预训练也遵循幂律，性能可按规模准确预测。",
+  "缩放律系数随tokenizer/任务/架构变化，需据此在给定算力下选择最优模型尺寸。"
+ ],
+ "weaknesses": [
+  "幂律多基于预训练损失拟合，下游具身任务性能的可预测性较弱。",
+  "系数对tokenizer/任务敏感，跨场景迁移缩放律常数需重新拟合。",
+  "属具身AI/预训练效率方向，与可靠性/可信AI主线关系较弱。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

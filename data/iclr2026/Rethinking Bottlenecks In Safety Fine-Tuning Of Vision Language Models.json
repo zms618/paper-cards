@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Rethinking Bottlenecks In Safety Fine-Tuning Of Vision Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rethinking Bottlenecks In Safety Fine-Tuning Of Vision Language Models.pdf",
+ "title": "Rethinking Bottlenecks in Safety Fine-Tuning of Vision Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.5
+ },
+ "one_line": "诊断安全微调瓶颈，构建多图安全数据集提升VLM安全推理能力。",
+ "innovations": [
+  "诊断现有安全微调存在'安全推理鸿沟'：只做文本/多模态内容对齐而缺乏安全视觉推理能力。",
+  "提出MIS数据集：面向多图安全场景的指令跟随数据，引入多图输入与安全Chain-of-Thought细粒度推理标签。",
+  "微调后显著降低多个安全基准的攻击成功率(ASR)，同时五个通用基准平均反升0.83%，实现无害-有益无权衡。"
+ ],
+ "method_framework": "构建带安全CoT推理链的多图安全指令数据集MIS，对InternVL2.5-8B做指令微调，使模型在处理多图安全场景时先做细粒度视觉安全推理再作答，而非仅依赖文本安全对齐。",
+ "experiment_framework": "微调InternVL2.5-8B；在挑战性多图安全视觉推理任务上对比强开源模型与API模型；指标为安全任务准确率、多基准ASR下降幅度，以及五个通用基准平均精度（+0.83%）。",
+ "takeaways": [
+  "VLM安全微调的瓶颈是缺乏安全视觉推理，而非内容对齐不够。",
+  "多图+安全CoT指令数据可同时提升安全防护与通用能力，避免helpfulness-harmlessness权衡。"
+ ],
+ "weaknesses": [
+  "MIS数据规模与覆盖的安全威胁类型有限，对未见新型多图攻击的泛化需后续验证。",
+  "安全CoT标签的生成依赖现有模型/人工，标注本身可能引入偏差。",
+  "主要在InternVL2.5-8B上验证，跨不同VLM架构的迁移未充分展示。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "解决VLM安全推理鸿沟，触及可靠性主线与多模态落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

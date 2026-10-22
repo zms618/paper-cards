@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Compute Or Load KV Cache Why not Both.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Compute Or Load KV Cache Why not Both.pdf",
+ "title": "Compute Or Load KV Cache? Why not Both?",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "Cake系统双向调度并行计算与加载KV缓存，优化长上下文LLM推理延迟。",
+ "innovations": [
+  "双向调度策略并行计算和加载KV缓存",
+  "自适应调度机制与非前缀缓存请求共享资源",
+  "动态适应计算和I/O资源波动"
+ ],
+ "method_framework": "Cake将序列分块，从序列开始计算KV缓存，从末尾加载KV缓存，双向并行处理并在中间合并，优化资源利用。",
+ "experiment_framework": "在多种硬件配置(A100/H100/2×A100)、I/O带宽(7-100Gbps)和GPU利用率(12.5%-100%)下评估，使用LongAlpaca和LLaMA 3.1模型。",
+ "takeaways": [
+  "计算和I/O资源在典型场景下吞吐量相当，可并行利用",
+  "双向调度策略有效平衡计算和I/O资源",
+  "自适应调度机制提高系统吞吐量26%"
+ ],
+ "weaknesses": [
+  "在序列长度较短时性能提升有限",
+  "在极端资源不平衡情况下优势不明显",
+  "未考虑KV缓存压缩方法的集成影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

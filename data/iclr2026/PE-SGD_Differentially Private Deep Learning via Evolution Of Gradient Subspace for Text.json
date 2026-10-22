@@ -1,0 +1,41 @@
+{
+ "title": "PE-SGD: Differentially Private Deep Learning via Evolution of Gradient Subspace for Text",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "动态梯度子空间演化提升小数据DP学习，但DP严格性与扩展性存疑。",
+ "innovations": [
+  "用进化策略在训练过程中动态更新梯度投影子空间，克服前人固定子空间的局限。",
+  "识别出更有效的噪声注入点，使DP近似梯度与真实私有梯度更好对齐。",
+  "在私有数据有限、隐私预算小的设定下显著优于DP-SGD及子空间投影基线。"
+ ],
+ "method_framework": "先用公共数据学一个梯度子空间；训练中用进化策略动态演化该子空间；把带噪私有样本梯度投影到(动态)子空间；并在新定位的点注入噪声以更好对齐近似梯度与真实私有梯度，从而在有限私有数据下保持DP保证并提精度。",
+ "experiment_framework": "文本任务(分类/生成)DP训练；在有限私有数据与小隐私预算(ε)设定下评测；对比DP-SGD、DP-Adam及静态子空间投影方法；指标为下游准确率/困惑度与隐私预算(ε)曲线。",
+ "takeaways": [
+  "固定梯度子空间是DP小数据性能瓶颈，动态演化子空间可改善。",
+  "噪声注入点的选择显著影响近似梯度与真实梯度的对齐。",
+  "PE-SGD在有限私有数据/小预算下一致优于DP-SGD类方法。"
+ ],
+ "weaknesses": [
+  "DP隐私保证基于梯度裁剪/加噪框架，子空间演化是否破坏严格DP会计需仔细论证。",
+  "依赖公共数据学子空间，公共数据与私有数据分布差异大时的退化未充分讨论。",
+  "进化策略引入额外训练开销，在大规模LLM上的可扩展性证据有限。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PE-SGD_Differentially Private Deep Learning via Evolution Of Gradient Subspace for Text.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PE-SGD_Differentially Private Deep Learning via Evolution Of Gradient Subspace for Text.pdf",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "DP方法设计有迁移价值，但未触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

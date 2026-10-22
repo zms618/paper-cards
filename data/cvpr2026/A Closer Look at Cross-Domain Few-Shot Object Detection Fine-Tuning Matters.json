@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/A Closer Look at Cross-Domain Few-Shot Object Detection Fine-Tuning Matters.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Closer Look at Cross-Domain Few-Shot Object Detection Fine-Tuning Matters.pdf",
+ "title": "A Closer Look at Cross-Domain Few-Shot Object Detection: Fine-Tuning Matters and Parallel Decoder Helps",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.2
+ },
+ "one_line": "并行解码器+渐进微调，但集成简单且实验不完整",
+ "innovations": [
+  "混合集成解码器 HED：把 L 层解码器前 K 层保持层级细化、后 L−K 层并行，均取第 K 层输出 Q_K 为输入（Q_{K+m}=DecoderLayer_{K+m}(Q_K,E)），复用预训练权重做隐式 deep ensemble，参数与推理开销都不增加",
+  "随机去噪查询初始化：以概率 τ∈[0,1] 把第 K 层的去噪查询重新随机初始化后再送入各并行分支（Q^{dn}_{K+m}=RandInit w.p. τ，否则 Q^{dn}_K），而对象查询保持干净，用来打破并行分支同输入导致的解塌缩、人为制造预测多样性",
+  "统一渐进式微调：第一阶段冻结编码器、第二阶段全量微调，切换时机由 plateau 学习率调度器在验证集性能停滞后自动触发；配合随机翻转/颜色抖动/mixup 与随机去噪查询，做到免逐数据集超参搜索"
+ ],
+ "method_framework": "以 MMGroundingDINO 为基模型，少样本微调时先用平台感知调度按验证性能降学习率并冻结编码器，收敛后解冻全部参数；解码器改为前 K 层层级 + 后 L−K 层并行并注入随机化去噪查询，训练期各分支去噪损失取平均，推理期把 L 层的框与分类输出简单平均作为集成结果。",
+ "experiment_framework": "CD-FSOD（6 个跨域数据集，1/5/10-shot）、ODinW-13（1/3/5/10-shot，三官方种子报均值±方差）、RF100-VL（100 个域数据集，0/10-shot）三个基准；指标 mAP，对比 Domain-RAG、ETS、CDFormer、VFMDETR、MQ-GLIP、SAM3、GDINO 1.5 Pro 等。",
+ "takeaways": [
+  "「复用已有预训练解码层做并行分支 + 随机重启去噪查询注入多样性」是在不加参数、不加推理成本的前提下拿到集成收益的廉价路径，对任意 DETR 系开放词汇检测器可直接套用",
+  "K=0 纯并行反而更差，说明并行分支需要前段层级层提供稳定的类感知查询特征，稳定性与多样性必须同时存在",
+  "用平台感知学习率调度自动决定「冻结编码器→全量微调」的切换点，比逐数据集调超参更省算力，且在 RF100-VL 这种 100 域混合 setting 下仍可一致复现"
+ ],
+ "weaknesses": [
+  "集成是朴素平均（Eq.6 的 1/L 求和），既无权重学习也无 logits 校准，把「并行分支多样性」当作黑盒提升；而表 4 显示 HED 单独在 CD-FSOD 10-shot 只从 47.1 到 47.2（+0.1）、ODinW-13 10-shot 从 67.2 到 67.0（反而下降），主要增益实际来自渐进式微调而非架构本身",
+  "与 SAM3、GroundingDINO 1.5 Pro 的比较不公平：正文自己承认对方用更大骨干和更多预训练数据、且 SAM3 未使用专门少样本验证集选模型，我们只用 MMGDINO-L，因此 RF100-VL 上 41.9 vs 35.7 的领先里含有模型规模与预训练数据的成分，并非纯粹方法增益",
+  "正文前 9 页止于表 4 消融表头，Sec.4.3（K 取值与集成方式消融）、4.4（去噪初始化概率 τ 与多样性分析）以及摘要承诺的 OOD 混合测试集实验全部缺失；且全文未见 OOD 情形下「过置信预测」的定量度量（如置信度分布、ECE、阈值漂移），仅作了定性描述"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "跨域检测方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

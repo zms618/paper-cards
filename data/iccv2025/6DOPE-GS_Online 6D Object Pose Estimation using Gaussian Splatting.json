@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/6DOPE-GS_Online 6D Object Pose Estimation using Gaussian Splatting.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/6DOPE-GS_Online 6D Object Pose Estimation using Gaussian Splatting.pdf",
+ "title": "6DOPE-GS: Online 6D Object Pose Estimation using Gaussian Splatting",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "2D高斯盘建物体场并发优化位姿，速度提升但精度消融缺失",
+ "innovations": [
+  "用 2D Gaussian Splatting 构建「Gaussian Object Field」并与关键帧位姿图并发联合优化：把 2D 高斯盘投影到各关键帧图像平面的梯度通过 PyTorch 自动微分直接回传到关键帧位姿，一次同时精化物体模型与 6D 位姿，绕开 BundleSDF 神经场每轮约 6.7s 的训练开销",
+  "动态关键帧选择：用二十面体顶点与面心构造多分辨率「锚点」把粗位姿估计聚类，每个锚点只保留物体掩膜面积最大的那一帧，在稀疏视下手仍保证物体空间覆盖；联合优化时按重建损失的 MAD（中位绝对偏差）逐 iterations 估计典型离散度，绝对偏差超过 3×MAD 的视图判为外点剔除",
+  "不透明度百分位自适应密度控制：每固定步数剪掉不透明度处于最低 5% 分位的高斯，直到 95 分位不透明度超过阈值才停止，替代 3DGS 原生密度控制里需要手调剪枝/ densification 间隔与不透明度阈值的做法；位置梯度超阈时仍沿用分裂与克隆"
+ ],
+ "method_framework": "首帧 SAM2 分割并跨帧跟踪 → LoFTR 求邻帧稠密对应 → 非线性最小二乘加 RANSAC 得粗位姿 → 按二十面体锚点聚类选关键帧（每锚点取掩膜最大帧）并用 MAD 剔除重建误差异常视 → 并发线程联合优化 2D 高斯与关键帧位姿 → 收敛后冻结高斯，用 RGB/深度/法线重精化全部关键帧位姿 → 在线位姿图优化逐帧输出物体 6D 位姿。",
+ "experiment_framework": "YCBInEOAT（5 个 YCB 物体 9 段视频 7449 帧）与 HO3D v3 官方测试集（4 个物体 13 条序列）；基线含 NICE-SLAM、SDF-2-SDF、DROID-SLAM、KinectFusion、MaskFusion、MonoGS(RGB-D)、Endo-2DTAM、BundleTrack、BundleSDF；指标 ADD / ADD-S 的 AUC（0 至 0.1m）、Chamfer 距离、每帧平均处理时间 ATPF，且所有方法共用 XMem 预生成的分割掩膜",
+ "takeaways": [
+  "2D 高斯盘比 3DGS 更适合做「位姿 + 几何」联合优化：YCBInEOAT 上重建 Chamfer 仅 0.15cm、ADD-S 93.79%，同为高斯的 MonoGS 只有 ADD-S 20.16%、Chamfer 2.43cm",
+  "稀疏视角下「每个方位锚点只留掩膜最大的视 + 3×MAD 剔异常视」是控制关键帧数量同时保覆盖的低成本套路，可直接搬到其他在线重建管线",
+  "卖点是速度-精度权衡而非精度：ATPF 0.22s 对 BundleSDF 的 2.10s 是近 9 倍快，代价是 HO3D 上 ADD 从 89.56 掉到 84.33，选型时按场景遮挡程度决定"
+ ],
+ "weaknesses": [
+  "正文在第 4.4 节中途截断：动态关键帧选择（锚点分辨率、3×MAD 阈值）与不透明度百分位剪枝两项设计的消融表完全缺失，这两个「 novel 机制」的净贡献无法核验；速度对比（BundleSDF 的两个降配版本、3.5Hz 实测数字）在正文只剩定性描述",
+  "表 1/2 里塞进 NICE-SLAM、KinectFusion、SDF-2-SDF、DROID-SLAM 这些场景级 SLAM，与本文的物体级 6D 位姿不是同一任务，真正可比基线只有 BundleTrack 与 BundleSDF；但在这两者上 ADD-S 仅从 92.82/93.96 提到 93.79/95.07（不到 1 个点），却以「matches SOTA with 5× speedup」整体包装",
+  "表 2 中本文 ADD 84.33 反而低于 BundleSDF 的 89.56，作者自己在正文承认 HO3D 上绝对精度落后于最强基线，收尾仍以「更优的速度-精度权衡」定性收束，结论与数据不完全一致；且全部指标单次运行无方差，HO3D 仅 4 物体 13 条序列、YCBInEOAT 仅 5 物体 9 段，可信区间未给出"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "物体级位姿估计与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

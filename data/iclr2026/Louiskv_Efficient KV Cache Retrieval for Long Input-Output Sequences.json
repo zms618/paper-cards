@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Louiskv_Efficient KV Cache Retrieval for Long Input-Output Sequences.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Louiskv_Efficient KV Cache Retrieval for Long Input-Output Sequences.pdf",
+ "title": "Louiskv: Efficient KV Cache Retrieval for Long INPUT-OUTPUT Sequences",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "优化KV缓存检索效率，但架构局限与泛化性存疑",
+ "innovations": [
+  "语义感知检索策略，利用时间局部性减少检索频率",
+  "解耦的细粒度管理方案，针对输入和输出序列采用不同策略",
+  "内核级优化加速KV聚类和检索"
+ ],
+ "method_framework": "LouisKV结合语义边界触发检索和解耦管理：输入序列使用K-means聚类，输出序列使用动态边界分割，配合Triton和CUDA内核优化",
+ "experiment_framework": "在长输入理解(NarrativeQA等)和长输出推理(MATH500等)任务上评估，对比FullCache、ClusterKV、Arkvale等基线",
+ "takeaways": [
+  "利用时间局部性减少检索频率是提高效率的有效方法",
+  "针对不同序列分布模式采用差异化KV管理策略"
+ ],
+ "weaknesses": [
+  "仅关注KV缓存优化，未考虑模型架构改进",
+  "实验主要在特定模型上验证，泛化性有待进一步确认"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "KV缓存优化与可靠性主线无实质交点，仅属系统优化工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

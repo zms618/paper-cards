@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Specialization after Generalization Towards Understanding Test-Time Training In Foundation Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Specialization after Generalization Towards Understanding Test-Time Training In Foundation Models.pdf",
+ "title": "Specialization after Generalization: Towards Understanding Test-Time Training in Foundation Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "用线性假设解释TTT为泛化后特化，但依赖强假设且外推有限。",
+ "innovations": [
+  "挑战'TTT仅对OOD/特权数据有效'的旧解释，提出基础模型全局欠参数化、TTT是泛化后的特化机制",
+  "在线性表示假设下构建模型，证明TTT可达比全局训练更小的分布内测试误差",
+  "用ImageNet上训练稀疏自编码器验证'语义相关样本仅由少数共享概念解释'的关键假设，并跨图像/语言做缩放研究定位特化最有效的区间"
+ ],
+ "method_framework": "以线性表示假设为基础建模：把基础模型视为全局欠参数化，测试时训练相当于把有限容量聚焦到测试任务相关的少数概念方向；用稀疏自编码器在ImageNet上验证相关样本由少量共享概念解释；再通过图像与语言任务的缩放研究刻画特化增益随规模/数据分布变化的区间。",
+ "experiment_framework": "先在ImageNet上训稀疏自编码器验证概念稀疏性假设；再跨图像与语言任务做TTT缩放研究，对比全局训练，报告TTT在分布内也能降低误差，并识别特化最有效的regime。",
+ "takeaways": [
+  "TTT的有效性不止于OOD适应，在分布内测试数据上也来自'泛化后特化'",
+  "基础模型的全局欠参数化使测试时聚焦相关概念方向能降低测试误差",
+  "结果为线性表示假设提供了额外强证据"
+ ],
+ "weaknesses": [
+  "结论依赖线性表示假设与稀疏概念解释，深层/非线性表示下是否成立未充分放松检验",
+  "'全局欠参数化'的可操作判据模糊，实践上何时TTT有效仍需经验判断",
+  "缩放研究主要在图像与若干语言任务，对超大规模前沿模型的外推仍有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅触及泛化理论，未与可靠性主线或落地域实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

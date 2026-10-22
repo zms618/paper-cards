@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Aside Architectural Separation Of Instructions and Data In Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Aside Architectural Separation Of Instructions and Data In Language Models.pdf",
+ "title": "Aside: Architectural Separation Of Instructions and Data In Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "ASIDE架构分离指令与数据嵌入，提升安全性但应用场景受限",
+ "innovations": [
+  "引入ASIDE架构元素，通过正交旋转分离指令和数据token嵌入",
+  "无需额外参数即可实现指令-数据分离",
+  "在标准指令微调下显著提高模型对提示注入的鲁棒性"
+ ],
+ "method_framework": "ASIDE通过固定正交旋转数据token嵌入，创建指令和数据token的明确不同表示，无需额外参数即可集成到现有LLM中。",
+ "experiment_framework": "在Qwen、Llama、Mistral等模型上评估，使用SEP数据集测量指令-数据分离，BIPIA和StruQ评估提示注入鲁棒性，AlpacaEval评估效用。",
+ "takeaways": [
+  "架构级分离比提示工程更有效，无需专门安全训练即可提高安全性",
+  "正交旋转比线性偏置(如ISE)更能保持深层表示的分离性"
+ ],
+ "weaknesses": [
+  "假设token功能角色在输入时已知，限制了通用聊天助手场景的应用",
+  "未探索多级指令层次结构的扩展"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "提升模型安全性但应用场景受限，属于可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

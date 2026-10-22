@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Feed-Forward One-Shot Animatable Textured Mesh Avatar Reconstruction.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Feed-Forward One-Shot Animatable Textured Mesh Avatar Reconstruction.pdf",
+ "title": "Feed-Forward One-Shot Animatable Textured Mesh Avatar Reconstruction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "双分支transformer实现单次前向传播的头像重建，但泛化性有限",
+ "innovations": [
+  "双分支形状和纹理映射架构",
+  "迭代GRU解码机制防止网格坍塌",
+  "基于重投影的纹理引导机制"
+ ],
+ "method_framework": "基于双分支transformer架构，分别预测顶点变形和UV纹理图，通过迭代GRU解码器逐步优化，结合拓扑校正和重投影引导",
+ "experiment_framework": "VFHQ数据集，与LAM等基线比较，使用PSNR、SSIM、LPIPS、FID、CSIM和AKD指标评估",
+ "takeaways": [
+  "双分支架构有效分离几何和外观学习",
+  "迭代解码机制保持网格拓扑完整性",
+  "重投影机制提供强视觉监督"
+ ],
+ "weaknesses": [
+  "仅限于头部重建，未扩展到全身",
+  "依赖FLAME模板可能限制几何表达",
+  "实验主要在VFHQ数据集上进行，泛化性需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "头像重建与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

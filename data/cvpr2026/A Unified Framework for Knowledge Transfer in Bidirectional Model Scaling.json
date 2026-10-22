@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/A Unified Framework for Knowledge Transfer in Bidirectional Model Scaling.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Unified Framework for Knowledge Transfer in Bidirectional Model Scaling.pdf",
+ "title": "A Unified Framework for Knowledge Transfer in Bidirectional Model Scaling",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "用小波变换统一模型缩放，但核心假设缺乏理论支撑",
+ "innovations": [
+  "提出统一视角：把模型权重视为连续可迁移知识信号的离散化，小模型=低分辨率模糊缩略图、大模型=在同一信号上补高频细节，从而把 S2L/L2S 两个被认为不相容的问题分别归约为上采样/下采样，第一次给出 size-agnostic 的双向统一框架",
+  "L2S 侧的参数聚合 + 3D-DWT：把 L_src 层的 W_qkv/W_o/W_f1/W_f2 按功能堆成 3D 模块（式3），对模块做低通/高通三轴滤波取低频近似子带 cA 直接作为小目标模块的初值（W_tgt=cA），用分解层数当动态缩放因子匹配目标尺寸",
+  "S2L 侧把小模型权重直接当作 IDWT 的近似系数（cA=W_src）、七个高频细节子带全部置零再反变换（式4），一步合成任意更大尺寸的权重张量，整个迁移过程无任何可学习参数、无额外训练开销"
+ ],
+ "method_framework": "按功能把 Transformer 各层同类型权重堆叠成 3D 模块 → 对模块做 3D-DWT 得到 1 个低频子带 cA + 7 个高频细节子带；L2S 时取源模型 cA 直接作为小目标模块初值，S2L 时令 cA=源模型权重、细节子带置零后做 3D-IDWT 重建大模块；分解层数 f 作为唯一尺寸旋钮，全部参数冻结。",
+ "experiment_framework": "DeiT-B↔S（ImageNet-1K，150 epoch）、BERT-B↔S（Wikipedia 400K steps，下游 GLUE/SQuAD）、GPT-B↔S（GEN loss）；基线 KD/WS/bert2BERT/LiGO/Mango；指标 FLOPs 节省率 r、7 个视觉分类数据集精度、GLUE/SQuAD 平均分。",
+ "takeaways": [
+  "「低频子带=可迁移的通用知识、高频=任务/架构专属细节」这个映射，让跨架构初始化变成一次标准信号处理而非可学习映射，是极简设计的典范，可直接借鉴到跨模态/跨编码器权重的对齐",
+  "按功能（W_qkv/W_o/W_f1/W_f2）而非按层做权重聚合再进 DWT，是把 Transformer 参数整理成规则张量的通用做法，也是处理非 Square 维度模块的必要前提",
+  "用「达到同一目标性能 M 的 FLOPs 比」r 作为效率指标来对比初始化方法，比单纯报最终精度更能体现加速效果，值得在其它加速类工作中复用"
+ ],
+ "weaknesses": [
+  "「低频子带即 learngene」是假设而非结论：W_tgt=cA 等价于对源权重做低通平滑加维度压缩，凭什么低通后的权重反而保留可迁移知识、没有收敛性/最优性刻画，文中只用「可视化保留了结构模式」支撑，属于表象分析",
+  "维度对齐绑定固定的 2 倍下采样 f=2，只能覆盖尺寸成 2^k 倍的配置（恰好 12↔6 层），对非 2 倍比（12→10 层、d 为奇数、非 Square 矩阵）如何选层数完全未验证；L2S/S2L 都只做了 6↔12 这一组配置，L2S 方向除 DeiT 外无跨架构（如 BERT→DeiT）实验",
+  "正文在 4.3 节表格中途截断，GPT 的 GEN 实验、小波族/滤波器选择、分解层数、高频置零 vs 随机补噪的消融全部缺失；图 3(a) 中 KD(33.6%) 明显弱于 WS(36.3%)，正文却把 KD 当作可对比的强基线来叙述，与图内数据不符",
+  "全部曲线与表格均为单次运行、无种子方差，且效率指标 r 由 FLOPs 曲线等值点读出，对采样密度敏感；Tab.2 中 DeiT-B 的 Mango/LiGO 平均 68.0 左右而 BoT 75.1，差距看似大但无方差、无法判断是初始化质量还是超参差异"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "模型缩放方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

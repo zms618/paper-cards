@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/3PT_3D-Object Perception Transformer 3PT.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/3PT_3D-Object Perception Transformer 3PT.pdf",
+ "title": "3D-Object Perception Transformer (3PT)",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "双塔Transformer融合CAD先验，零样本3D感知但实验证据不足",
+ "innovations": [
+  "3PT-D 采用双塔早期融合：把物体 CAD 在 12 个预定义视角渲染得到的 prior embedding 直接拼到输入图像 token 上 jointly 条件化图像编码器，再用 Nt=5140 个稠密覆盖旋转空间的模板 render 编码成 query cache，以单次矩阵乘的余弦距离出朝向分布与检测分",
+  "多视图旋转融合改用 SO(3) 上的各向同性 von Mises-Fisher 核 KDE 重加权各视姿态 proposals 后取 top-K，替代逐视图硬投票；单视图下则以 bbox 对角与 CAD 对角之比估 z、投影质心得 x,y，完全不引入深度",
+  "3PT-R 单次前向同时输出分割掩码、稠密特征匹配图与假设置信分：仅在渲染图边缘做 reciprocal matching 得到稀疏 2D-3D 对应，用 MV-PnP 更新位姿，并按置信分每轮砍掉后 50% 假设，形成 3 轮 render-and-compare 收敛"
+ ],
+ "method_framework": "检测塔把渲染物体视角先验与图像 token 早期融合，用 sigmoid focal cross-entropy 对比对齐假设嵌入与朝向模板，配 bbox 的 L1+GiOU 与随 IoU 反比降权近失假设的软匹配损失；生成阶段用极线三角化跨 ≥3 视图融合出 K 个 SE(3) 假设；精修阶段以 DINOv2 嵌入真图与渲染图做交叉注意力+DPT 解码，匹配/分类/分割三损失联合训练。",
+ "experiment_framework": "BOP 13 个数据集（H3/Industrial/Classic 三套件，工业与 H3 为隐藏测试集）；基线 CNOS、SAM-6D、MUSE、Co-Op、GigaPose、FoundationPose、FreeZeV2.2、FRTPose-WAPRv2；指标统一用 AP/AP-mm（刻意排除只报 AR 的方法），另加自采 DIMM 插入与钣金 bin picking 实机演示。",
+ "takeaways": [
+  "把零样本方法从「冻结foundation模型+相似度 late-fusion」改为直接用渲染 CAD 做 3D 条件化训练，是在域外（日常 Web 预训练模型遇工业件）提升鲁棒性的可行路径",
+  "用 AP 而非 AR 评测零样本位姿，会强制检测与位姿整条链路对假阳性负责，这一 claim 隔离式的指标选择对任何'端到端可靠性'评测都适用",
+  "深度依赖是零样本位姿管线最脆弱的一环：用逐轮置信分剪枝配合渲染比较替代 ICP/深度配准，能同时省掉深度估计误差传播"
+ ],
+ "weaknesses": [
+  "表 1 所有基线数字直接摘自 BOP Online Leaderboard 而非同机重训，而 3PT 的主要提升（BOP-Industrial +23.6 AP）恰恰来自隐藏测试集与自采工业场景，提交间评测协议与分辨率差异使得这些幅度无法在论文内复算",
+  "3PT-R 的输入明确是「V calibrated images」，多视图融合仍以相机标定为前提，与摘要强调的免深度实用部署并不完全对齐；且正文只在 AR 眼镜场景演示多视图，工业 bin-picking 展示的是单视图路径",
+  "无方差/显著性且缺代价-精度曲线：IPD 上 52.8 对 MUSE 的 49.4、T-LESS 上 37.1 对 Co-Op 的 46.7（△ −9.6）这类起伏只以 △ 一行带过，未解释；实机的 100+ 次成功尝试也只算演示，无失败样本统计与置信区间，而 3 轮迭代、S=3 深度覆盖、K 假设剪枝的推理成本从未量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D感知与可靠性主线无实质交点，仅工业落地有可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

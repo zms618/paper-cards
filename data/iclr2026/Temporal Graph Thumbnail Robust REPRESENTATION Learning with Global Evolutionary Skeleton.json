@@ -1,0 +1,41 @@
+{
+ "title": "Temporal Graph Thumbnail: Robust Representation Learning with Global Evolutionary Skeleton",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "用全局演化骨架约束邻居聚合，提升时序图鲁棒性",
+ "innovations": [
+  "指出邻居噪声传播失败的根因是忽视全局演化规律，提出把时序图全局演化骨架封装为‘缩略图(thumbnail)’来刻画时间规律性",
+  "用 von Neumann 图熵与节点互信息从原始时序图中提取本质演化骨架",
+  "用该骨架引导模型优化，并给出理论推导；实验显示在快速演化与高噪环境下优于基线"
+ ],
+ "method_framework": "从时序图整体计算 von Neumann 图熵与节点互信息，提炼出代表全局演化规律的骨架(缩略图)；用这一全局骨架作为先验/引导去约束邻居消息聚合，抑制噪声邻居的不可靠传播，使模型在局部采样受限也能利用全局时间正则。",
+ "experiment_framework": "多个时序图基准（快速演化/高噪设定）；对比自适应邻居采样、时序依赖建模等鲁棒基线；指标为下游预测精度与噪声/快变环境下的鲁棒性。",
+ "takeaways": [
+  "只做局部邻居采样难以应对强噪声与长程依赖，引入全局演化骨架能补回被忽视的时间规律性",
+  "von Neumann 图熵+节点互信息可有效提炼出全局演化骨架",
+  "用全局骨架引导优化在快变高噪时序图上带来更鲁棒的表征"
+ ],
+ "weaknesses": [
+  "‘缩略图/演化骨架’的提取基于 von Neumann 熵与互信息，计算随图规模增长，大规模时序图的可扩展性未量化",
+  "鲁棒性提升在人工注入噪声的基准上验证，真实噪声结构（非均匀/相关噪声）下是否成立未讨论；与更强的注意力/全局聚合基线对比有限",
+  "relevance 给 6：主题是对噪声邻居的鲁棒表征学习，靠近鲁棒性主线；但落地域为时序图推荐/交通/社交网络、非医学影像或多模态大模型推理任务，故不到 7"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Temporal Graph Thumbnail Robust REPRESENTATION Learning with Global Evolutionary Skeleton.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Temporal Graph Thumbnail Robust REPRESENTATION Learning with Global Evolutionary Skeleton.pdf",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "时序图鲁棒性方法，非医学或多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

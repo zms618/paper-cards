@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Satori_Reinforcement Learning with Chain-of-Action-Thought Enhances LLM Reasoning via Autoregressive Search.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Satori_Reinforcement Learning with Chain-of-Action-Thought Enhances LLM Reasoning via Autoregressive Search.pdf",
+ "title": "Satori: Reinforcement Learning with Chain-of-Action-Thought Enhances LLM Reasoning via Autoregressive Search",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "将搜索内化为单个LLM的自回归推理，数学推理SOTA但泛化存疑",
+ "innovations": [
+  "提出将原本依赖外部verifier/双人系统的测试时搜索能力内化进单个LLM的新问题方向",
+  "设计Chain-of-Action-Thought(COAT)推理格式，把自反思与自探索新策略扩展进自回归推理",
+  "提出两阶段训练范式：小规模格式微调内化COAT格式，再用大规模强化学习做自改进"
+ ],
+ "method_framework": "现有测试时扩展多靠外部奖励模型/verifier引导双人采样系统。Satori后训练单个开源7B模型：先用小规模format tuning让模型学会按COAT格式生成带动作/反思的扩展推理轨迹；再用大规模RL(无外部verifier的自改进)内化搜索能力，使单一模型即可自回归地搜索/反思。",
+ "experiment_framework": "基于开源模型与数据训练7B模型；在数学推理基准上评估并与SOTA(含外部verifier的测试时扩展方法)对比；报告数学推理SOTA，同时展示特定效率特性。",
+ "takeaways": [
+  "搜索/反思能力可被内化进单个LLM，不必依赖外部verifier双人系统",
+  "COAT格式+两阶段(格式微调→RL自改进)是有效的内化搜索路线",
+  "7B的Satori在数学推理基准上达到SOTA"
+ ],
+ "weaknesses": [
+  "评估集中于数学推理，对开放域/多步工具使用等更广义推理的迁移未充分验证",
+  "RL自改进的奖励来源与是否仍隐式依赖规则可验证答案，对开放性问题的泛化存疑",
+  "前9页正文后续的消融(两阶段各自贡献、COAT动作设计)细节未完全展开"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

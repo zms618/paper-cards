@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/A Semantic Knowledge Complementarity based Decoupling Framework for Semi-supervised Class-imbalanced.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Semantic Knowledge Complementarity based Decoupling Framework for Semi-supervised Class-imbalanced.pdf",
+ "title": "A Semantic Knowledge Complementarity based Decoupling Framework for Semi-supervised Class-imbalanced Medical Image Segmentation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 7.5,
+  "overall": 6.1
+ },
+ "one_line": "解耦数据流做半监督分割，但实验证据不足",
+ "innovations": [
+  "数据流解耦：编码器吃全部数据，伪标签 Ŷ_U 由标注解码器 Dl 生成、无标注解码器 Du 学习（L_unsup=DiceCE(Du(E(XU)),Dl(E(XU)))），使伪标签不污染标注侧分割决策",
+  "语义互补模块的局部/全局通道级交叉注意力：ql 配 ku/vu、qu 配 kl/vl 双向交叉，用标注特征指导伪标签生成、用无标注特征丰富标注特征",
+  "辅助平衡分割头：按 M(XL)~B(NL/NC) 的伯努利掩码加权平衡损失，无标注侧掩码参数随 epoch 从 1 退火到 NL/NC"
+ ],
+ "method_framework": "共享编码器 + 标注/无标注双解码器；监督损失走 Dl，无监督损失用 Dl 生成的伪标签监督 Du；中间插入局部+全局通道交叉注意力做双向语义互补；用 ω_ema=0.99 的 EMA 把 Dl 参数迁到 Du。",
+ "experiment_framework": "Synapse（20% 标注，13 类）与 AMOS（5% 标注）；对比 UA-MT/CPS/SS-Net/DHC/GenericSSL 等 13 种方法；Dice/ASD，Synapse 跑 3 个种子给 ±std，并报逐类 Dice。",
+ "takeaways": [
+  "“编码器可以吃全部数据、解码器只吃准标签”的职责解耦，是处理伪标签噪声可迁移的训练范式",
+  "小器官用伯努利逆频率掩码做辅助分割头，比整网重加权更不易牺牲大类精度"
+ ],
+ "weaknesses": [
+  "消融基线是自身构造的朴素伪标签框架，解耦一项就带来 +12.74% Dice，增益中含基线偏弱的成分",
+  "AMOS 只报单次结果，Synapse 的 ±1.36 仅 3 个种子且无显著性检验；与 GenericSSL 的差距部分来自不同的解码器迁移策略而非本文机制",
+  "辅助平衡头沿用 ABC 思路，语义互补模块中局部/全局两路注意力的独立贡献未在正文中单独消融"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像分割+半监督解耦范式，可靠性主线明确落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Discrete Neural Algorithmic Reasoning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Discrete Neural Algorithmic Reasoning.pdf",
+ "title": "Discrete Neural Algorithmic Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "强制离散状态对齐算法，CLRS满分但依赖人工定义",
+ "innovations": [
+  "提出让神经推理器把执行轨迹维持为有限个预定义离散状态，从而避免连续隐状态在分布漂移下失稳",
+  "在架构上分离离散数据流(状态)与连续数据流(特征)并显式建模二者交互，在算法状态转移上做监督",
+  "在所选架构下可对学到的算法证明正确性，在CLRS多算法问题上单任务/多任务均取得满分测试成绩"
+ ],
+ "method_framework": "将经典算法拆解为离散状态转移；网络维护一个由有限预定义状态构成的执行轨迹(离散流)，同时保留连续特征流，二者交互更新；用算法hint/状态转移做监督训练，使网络的离散状态序列与真实算法执行逐步对齐，进而可据此证明其对任意输入规模/分布的正确性。",
+ "experiment_framework": "在CLRS-30算法推理基准上，单任务与多任务设置下于更大/不同分布的图上测试，与既有神经推理器比较测试准确率(报告是否达到perfect score)及OOD泛化。",
+ "takeaways": [
+  "强制以有限离散状态维持执行轨迹，可让神经算法推理器在OOD(更大/不同输入)上取得完美测试成绩",
+  "该架构使学到的算法可被证明正确，为可信的神经推理提供了可验证路径"
+ ],
+ "weaknesses": [
+  "依赖人工预定义离散状态集合与算法hint，对无明确状态分解的复杂算法适用性受限",
+  "实验集中在CLRS教科书算法，未拓展到现代大规模推理任务",
+  "仅依据前9页阅读，完整证明与全部算法实验表未完全覆盖"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

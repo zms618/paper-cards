@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/How Stable IS the Next TOKEN A Geometric View Of LLM Prediction Stability.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/How Stable IS the Next TOKEN A Geometric View Of LLM Prediction Stability.pdf",
+ "title": "How Stable IS the Next TOKEN? A Geometric View Of LLM Prediction Stability",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 7.0
+ },
+ "one_line": "提出δTCB指标量化LLM预测稳定性，连接嵌入空间几何与鲁棒性",
+ "innovations": [
+  "引入Token Constraint Bound(δTCB)作为预测稳定性新指标",
+  "建立δTCB与输出嵌入空间几何的数学联系",
+  "揭示不同置信度 regime 下稳定性的不同决定因素"
+ ],
+ "method_framework": "通过Jacobian矩阵量化内部状态扰动对输出的影响，定义δTCB为模型内部状态能承受的最大扰动而不改变主导预测，并与输出嵌入几何分布建立数学联系。",
+ "experiment_framework": "在LLaMA-3.1-8B上测试，使用MMLU和GSM8K数据集，通过嵌入几何操纵和不同置信度数据集验证δTCB特性。",
+ "takeaways": [
+  "δTCB能有效评估提示工程质量，识别准确性与稳定性冲突",
+  "高置信度下δTCB主要取决于top token分离度，不确定情况下取决于整体分布形状",
+  "δTCB可作为传统指标如困惑度的补充，评估局部预测鲁棒性"
+ ],
+ "weaknesses": [
+  "δTCB计算依赖于模型权重矩阵W，可能难以应用于黑盒模型",
+  "实验主要在LLaMA模型上进行，泛化性有待验证",
+  "δTCB与实际应用场景中的性能关系需要进一步探索"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.6,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "LLM预测稳定性与鲁棒性主线交织，方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

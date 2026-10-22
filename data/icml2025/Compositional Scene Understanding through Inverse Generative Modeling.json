@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Compositional Scene Understanding through Inverse Generative Modeling.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Compositional Scene Understanding through Inverse Generative Modeling.pdf",
+ "title": "Compositional Scene Understanding through Inverse Generative Modeling",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "逆生成建模组合场景理解，计算开销大且依赖组件质量",
+ "innovations": [
+  "将场景理解表述为逆生成建模：寻找视觉生成模型的条件参数以拟合给定图像",
+  "从场景片段的小模型组合构建生成模型，实现对训练外新场景的泛化",
+  "直接应用于预训练text-to-image模型实现零样本多目标感知"
+ ],
+ "method_framework": "不直接从图像预测属性，而是找到生成模型的条件参数使模型生成该图像。组合式构建：用物体级小模型组合成场景生成模型，推理时反向求解条件参数(物体位置、属性、类别)。这种组合性使其能泛化到物体数量/形状超出训练分布的新场景。",
+ "experiment_framework": "在CLEVR(训练3-5物体测试6-8)、CelebA(训练女脸测试男脸)、Stable Diffusion零样本多目标感知上实验；与基线比较OOD泛化。",
+ "takeaways": [
+  "逆生成建模+组合性使场景理解泛化到训练分布外的物体数量/属性",
+  "可直接用预训练text-to-image模型零样本推理多目标属性",
+  "组合模型避免了重新训练，环境友好"
+ ],
+ "weaknesses": [
+  "优化逆问题的计算开销大",
+  "组合模型的构建依赖物体级模型质量",
+  "与可靠性/医学影像/多模态推理主线相关性一般"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

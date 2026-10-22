@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Adversarial Inputs for Linear Algebra Backends.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adversarial Inputs for Linear Algebra Backends.pdf",
+ "title": "Adversarial Inputs for Linear Algebra Backends",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "揭示线性代数后端浮点差异可构造跨平台冲突样本",
+ "innovations": [
+  "首次揭示线性代数后端浮点实现差异可被对抗性利用：Chimera样本使同一模型在不同后端上做出冲突预测",
+  "证明该攻击可在真实输入域（整数值）上构造，而非仅在无限精度的理论空间",
+  "系统分析攻击面的广度和深度，并提出对应的防御措施"
+ ],
+ "method_framework": "利用浮点运算的非结合性——不同线性代数后端（Intel MKL、Nvidia CUDA、Apple Accelerate、BLIS）对相同矩阵乘法的计算顺序不同，导致微小数值差异。通过优化输入，将这些微小差异放大到足以翻转模型预测的程度。Chimera样本就是这样的输入：在后端A上预测为类别X，在后端B上预测为类别Y。",
+ "experiment_framework": "后端：Intel MKL、Nvidia CUDA、Apple Accelerate、BLIS。模型：标准图像分类CNN。任务：构造Chimera样本使不同后端给出不同预测。分析：攻击面的普遍性、跨平台差异程度、防御效果。",
+ "takeaways": [
+  "同一模型在不同部署后端上可能给出不一致预测，这是被忽视的可靠性风险",
+  "Chimera样本可用整数值构造，说明该威胁在真实输入域中可行",
+  "浮点非结合性是跨后端不一致的根本原因，需要在部署层面加以考虑"
+ ],
+ "weaknesses": [
+  "仅在图像分类CNN上验证，LLM或其他模型架构的跨后端一致性问题未研究",
+  "Chimera样本的构造可能需要白盒访问模型和后端内部细节，实际威胁模型设定较窄",
+  "防御措施的具体实现和性能开销未充分评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "跨平台浮点差异研究，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

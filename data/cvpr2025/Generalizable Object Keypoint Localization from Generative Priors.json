@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Generalizable Object Keypoint Localization from Generative Priors.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Generalizable Object Keypoint Localization from Generative Priors.pdf",
+ "title": "Generalizable Object Keypoint Localization from Generative Priors",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "冻结生成模型参数，优化少量LoRA实现关键点定位",
+ "innovations": [
+  "条件引导的关键点热图提取(CKHE)模块",
+  "热图期望损失(HEL)",
+  "利用生成模型先验实现少样本和零样本关键点定位"
+ ],
+ "method_framework": "GenLoc通过冻结预训练LDM的VAE编码器和U-Net，优化关键点条件嵌入和少量LoRA参数，利用CKHE提取图像潜在特征与条件的相关图，通过HEL损失函数进行端到端优化。",
+ "experiment_framework": "在COCO Keypoint、Human-Art和AP-10K数据集上评估，使用AP、AP50、AP75、APM、APL作为指标，进行消融实验和跨域、少样本、零样本设置下的性能对比。",
+ "takeaways": [
+  "利用生成模型先验可提升关键点定位的泛化能力",
+  "改变注意力计算方式(CKHE)比直接优化交叉注意力更适合关键点定位任务",
+  "HEL损失函数比传统MSE损失更有效"
+ ],
+ "weaknesses": [
+  "仅优化条件嵌入和少量LoRA参数可能限制了模型性能的上限",
+  "方法依赖于预训练生成模型的质量，生成模型本身的局限性会影响GenLoc的表现",
+  "实验部分缺少与最新方法的详细对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "关键点定位与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

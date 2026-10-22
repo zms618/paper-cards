@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/CG-Floor Centroid-Guided Diffusion for Large-Scale Floorplan Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/CG-Floor Centroid-Guided Diffusion for Large-Scale Floorplan Generation.pdf",
+ "title": "CG-Floor Centroid-Guided Diffusion for Large-Scale Floorplan Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "解耦拓扑与几何的扩散模型生成平面图，但计算效率与3D转换存疑",
+ "innovations": [
+  "显式解耦拓扑与几何生成",
+  "尺寸感知语义质心热图(SASCH)",
+  "VQ-VAE离散码本建模复杂房间形状"
+ ],
+ "method_framework": "分层框架：先预测房间质心与尺寸生成SASCH，再用VQ-VAE压缩平面图，最后通过扩散transformer生成最终平面图",
+ "experiment_framework": "MSD数据集，对比Graph2Plan/HouseGAN++/UN/MHD，使用FID/KID/Shape-Sim/Consistency指标",
+ "takeaways": [
+  "解耦拓扑与几何复杂度有效解决大规模平面图生成",
+  "SASCH确保语义对齐与结构一致性"
+ ],
+ "weaknesses": [
+  "未充分讨论计算效率与内存消耗",
+  "3D转换依赖外部LLM可能引入不确定性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "平面图生成与可靠性主线无实质交点，仅属常规生成任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

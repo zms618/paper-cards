@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Learning What Matters Prioritized Concept Learning via Relative Error-driven Sample.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Learning What Matters Prioritized Concept Learning via Relative Error-driven Sample.pdf",
+ "title": "Learning What Matters Prioritized Concept Learning via Relative Error-driven Sample",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "动态样本选择机制提升VLM训练效率，但概念聚类依赖质量存疑。",
+ "innovations": [
+  "基于模型自身学习进度的动态样本选择机制",
+  "无需预先标注和辅助VLM的多模态概念聚类",
+  "平衡信息量和多样性的温度控制采样策略",
+  "仅需20%标注数据即可达到接近全数据性能"
+ ],
+ "method_framework": "两阶段框架：1)无监督多模态概念聚类，将未标注数据分为不同技能簇；2)基于相对误差的优先概念学习，模型定期自我评估并选择进步最快的技能簇进行训练。",
+ "experiment_framework": "在LLaVA-665K和Vision-Flan数据集上测试，使用LLaVA-v1.5-7B/13B和Qwen2-VL模型，对比14个基准指标，评估20%和16.7%采样比下的性能。",
+ "takeaways": [
+  "模型自身学习进度可作为有效信号指导数据选择",
+  "平衡信息量和多样性对防止技能崩溃至关重要",
+  "动态适应模型状态的方法比静态选择更有效"
+ ],
+ "weaknesses": [
+  "概念聚类质量可能影响整体性能",
+  "温度参数τ的选择可能需要针对不同任务调整",
+  "未讨论方法在极端数据不平衡情况下的表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "提升VLM训练效率，但未直接触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

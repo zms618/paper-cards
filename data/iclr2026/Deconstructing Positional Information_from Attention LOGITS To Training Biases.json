@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Deconstructing Positional Information_from Attention LOGITS To Training Biases.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Deconstructing Positional Information_from Attention LOGITS To Training Biases.pdf",
+ "title": "Deconstructing Positional Information: from Attention LOGITS To Training Biases",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "通过Toeplitz矩阵分析RoPE单头集中现象，但缺乏真实任务验证。",
+ "innovations": [
+  "提出基于Toeplitz矩阵的统一位置编码分析框架",
+  "发现RoPE的单头集中模式现象",
+  "通过合成任务验证不同位置编码机制的性能差异"
+ ],
+ "method_framework": "将位置编码分为加性和乘性两类，通过理论分析和合成任务研究它们在注意力计算中的不同机制，特别关注RoPE的乘性耦合如何导致位置信息集中到单个注意力头。",
+ "experiment_framework": "设计位置敏感和位置无关两个合成任务，评估6种位置编码方法，通过头部消融实验验证单头集中模式，并探索混合架构的改进效果。",
+ "takeaways": [
+  "位置编码的乘性机制(如RoPE)在需要内容-位置耦合的任务中表现优异但会导致位置信息集中",
+  "加性和乘性位置编码具有不同的归纳偏置，影响模型的学习动态",
+  "混合架构(如MLA)可以缓解单头集中模式的效率问题"
+ ],
+ "weaknesses": [
+  "仅在合成任务上验证，缺乏在真实自然语言任务上的验证",
+  "未深入探讨单头集中模式对模型泛化能力的长期影响",
+  "对RoPE与其他位置编码方法的比较不够全面"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "位置编码理论分析，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/3D Aware Region Prompted Vision Language Model.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/3D Aware Region Prompted Vision Language Model.pdf",
+ "title": "3D AWARE REGION PROMPTED VISION LANGUAGE MODEL",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "整合3D位置嵌入与动态拼贴的区域提取器，但创新性与实验深度不足",
+ "innovations": [
+  "用 DepthAnythingV2 估单图深度并反投影成相机系 3D 位置图，经正弦编码 + 逐点 MLP 得位置嵌入后直接加到视觉 token 上；多视角时用 GT 深度位姿（或 MAST3R、CUT3R 重建点云）把所有帧反投影到同一规范世界系，使单视图预训练与多视图微调共享一套规范位置表征",
+  "tile-then-stitch 区域提取器：先按最优长宽比（1:1,1:2,…,2:6 取最近者）把图像与掩码一起切成 448×448 拼贴分别过编码器再拼回高分辨率，随后 mask-pooling 得区域特征；区域特征直接来自高分辨率特征而非编码器后的 deconv 上采样，避免放大再失真的细节损失，且把一帧等于一片自然推广到多视角视频输入",
+  "单/多视角走同一条流水线（而非以往分设通路）：视觉编码器冻结、只训 3D 位置编码模块 + 投影器 + LLM，区域 token 在单视图预训练与多视图微调两阶段一致训练，使只在单视图数据上训的 2D-VLM 对多视角零样本空间推理仍可用"
+ ],
+ "method_framework": "以 NVILA-Lite-8B 为 backbone：动态拼贴视觉编码器输出 token，叠加规范 3D 位置嵌入；区域 token 由拼贴-缝合的高分辨率掩码池化得到，与文本 token 一起进 LLM；多视角训时统一采样 32 帧并把点图按同一拼贴流程处理。",
+ "experiment_framework": "COCO-2017 区域分类（mAP/Acc）、BLINKDepth、通用 VQA（RealWorldQA/SAT/EmbSpat/MathVista/GQA/POPE 等）、Scan2Cap/ScanQA/SQA3D 与自建 SR-3D-Bench 区域空间基准；基线含 DynRefer 同分辨率 RoIAlign、SpatialRGPT、LLaVA-Video、NaVILA、Video-3D-LLM 等。",
+ "takeaways": [
+  "把几何信息以加到视觉 token 的方式而非独立分支注入基座 VLM，能最大程度保留 2D 预训练先验，且通用 VQA/OCR 不掉点",
+  "区域提示统一到单视图与多视图一条通路，比双分支更省数据，值得在其它多视角任务复用",
+  "用 off-the-shelf MAST3R/CUT3R 点云替代 GT 深度做推理，说明规范 3D 空间归一化能吸收重建误差，对无 3D 标注的真实视频很关键"
+ ],
+ "weaknesses": [
+  "方法本质是把位置编码 + 拼贴区域提取器 + 多视角 SFT 的组合，核心组件（动态拼贴、掩码池化、深度反投影）均来自先前工作，缺对位置嵌入加在哪些层、加在 patch token 还是区域 token 的消融，novelty 只在架构整合层面",
+  "3D 位置嵌入对深度估计误差敏感，却只在多视角训练/推理处对比 GT 深度与重建点图，未量化单视图阶段深度误差到空间关系（尤其距离回归这类数值级输出）的传递，缺 claim 隔离式实验；所有数字又是单一 checkpoint 点估计，无多种子方差/显著性，跨 8 个基准的 +=X 提升幅度难判显著",
+  "表 1 中 SR-3D 在 MMMUp(24.6 vs 25.1)、TextVQA(77.3 vs 78.1)、DocVQA(91.0 vs 91.7) 等通用指标上实际略低于 NVILA-Lite，正文把它表述成不 degrade，属包装性表述；正文又在第 3.3 节末尾截断，第 3.4 节（预训练与 3D 位置编码的消融）缺失，confidence 仅 medium。relevance 给 6.5 而非更高：主题是多模态空间推理，虽涉及区域级 grounding 保真度，但未把可靠性/幻觉/不确定性作为研究对象，按防污染规则不因 generalization、capability 一类措辞抬分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "多模态空间推理未触及可靠性主线，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

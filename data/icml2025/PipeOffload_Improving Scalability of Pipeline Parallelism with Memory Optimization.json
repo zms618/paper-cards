@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/PipeOffload_Improving Scalability of Pipeline Parallelism with Memory Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/PipeOffload_Improving Scalability of Pipeline Parallelism with Memory Optimization.pdf",
+ "title": "PipeOffload: Improving Scalability of Pipeline Parallelism with Memory Optimization",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "利用PP空窗offload激活值，提升扩展性但依赖带宽且非主线优化",
+ "innovations": [
+  "实证发现多数标准PP配置下至少一半甚至全部激活值可近乎零开销地offload到主机内存",
+  "提出选择性offload策略，在无法全量offload时以优于线性的方式降低峰值激活显存",
+  "将offload与其他技术联合调度，综合权衡吞吐与显存上限"
+ ],
+ "method_framework": "利用PP中前向与反向之间的时间窗做D2H/H2D激活搬运并与计算重叠；以k=To/Tc(往返搬运时间/前后向计算时间)判断可offload比例；能全量则全量offload，否则用选择性offload按优于线性关系削减峰值显存，并与重计算等技术联合调度。",
+ "experiment_framework": "在多GPU环境训练LLM的流水线并行；与张量并行(TP)、激活重计算、DP offload等对比；以per-device峰值激活显存、端到端吞吐/加速比为指标，报告相对TP最高19%加速且显存更低。",
+ "takeaways": [
+  "PP的per-device激活显存随stage总数有效下降，使PP成为比TP更强的扩展选择",
+  "内存offload在PP中可近乎免费地降低显存(因前向/反向天然空窗)",
+  "选择性offload在显存带宽受限时仍能优于线性地削减峰值显存"
+ ],
+ "weaknesses": [
+  "收益高度依赖k=To/Tc即主机-设备带宽比，在带宽受限环境结论是否成立存疑",
+  "前9页未见完整规模扩展曲线与失败配置分析",
+  "纯系统优化，对模型效果/精度无贡献，与主线可靠性无关"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.55,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

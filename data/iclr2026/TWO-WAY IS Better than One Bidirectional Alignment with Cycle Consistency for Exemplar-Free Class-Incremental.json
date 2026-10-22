@@ -1,0 +1,41 @@
+{
+ "title": "Two-Way is Better than One: Bidirectional Alignment with Cycle Consistency for Exemplar-Free Class-Incremental Learning",
+ "one_line": "双向投影+循环一致性缓解EFCIL中的表征漂移与遗忘",
+ "innovations": [
+  "揭示现有单向投影在EFCIL中引入系统性偏差：要么扭曲当前特征几何，要么仅局部对齐旧类，留下跨任务累积的循环不一致",
+  "提出BiCyc：old→new与new→old两个映射用stop-gradient门控优化，使传输与表示协同演化",
+  "理论证明循环损失在白化空间中将奇异谱收缩到1，改进的类均值/协方差传输使分类log-odds扰动更小"
+ ],
+ "method_framework": "面向prototype-based无样本类增量学习，缓存旧类均值/协方差但随backbone漂移而过时。BiCyc学习双向投影：把旧统计投影到新空间、把新空间投影回旧空间，加循环一致性约束与stop-gradient门控，使传输映射与表示协同演化，从而在不存储旧样本下补偿漂移、保持旧类决策边界。",
+ "experiment_framework": "在标准EFCIL基准上评测；对比FeTrIL/FeCAM等prototype方法及单向投影漂移补偿；指标为平均准确率与遗忘度；从头训练设定下大幅降低遗忘并提升精度，预训练微调细粒度设定下仍具竞争力。",
+ "takeaways": [
+  "单向投影补偿漂移会引入循环不一致并跨任务累积，双向对齐可避免",
+  "循环一致性在白化空间收缩奇异谱到1，直接减小旧类log-odds扰动，抑制灾难性遗忘",
+  "从头训练设定下BiCyc在降遗忘与提精度上均优于现有prototype方法"
+ ],
+ "weaknesses": [
+  "理论收缩证明建立在白化空间假设上，真实特征分布的偏离程度未充分量化",
+  "预训练微调细粒度设定下仅'具竞争力'而非最优，优势不明显",
+  "双向投影增加了额外映射学习开销与超参（门控、循环权重）"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/TWO-WAY IS Better than One Bidirectional Alignment with Cycle Consistency for Exemplar-Free Class-Incremental.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TWO-WAY IS Better than One Bidirectional Alignment with Cycle Consistency for Exemplar-Free Class-Incremental.pdf",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "类增量学习方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

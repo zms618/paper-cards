@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Law Of Data Reconstruction for Random Features (and beyond).pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Law Of Data Reconstruction for Random Features (and beyond).pdf",
+ "title": "A LAW OF DATA RECONSTRUCTION FOR RANDOM FEATURES (AND BEYOND)",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "证明随机特征需p≫dn才能重建训练集，但理论完备性有限",
+ "innovations": [
+  "给出「数据可重建」区别于「标签可拟合」的参数阈值律：拟合标签只需 p≫n，而复原训练输入需 p≫dn，并指出该区间与对抗平滑插值所需过度参数化一致",
+  "Theorem 1：p≫dn 时若每个 φ(x_i) 都落在 span{rows(Φ̂)}，则 Φ̂ 的每行必在输入空间接近某训练样本（距离 o(√d)），证明靠 ε-net 均匀一致集中 + Hermite 基展开，用两个奇偶相反的高阶非零 Hermite 系数消解符号歧义",
+  "把理论落成算法：因 θ*=Φ⁺Y∈span{rows(Φ)}，直接最小化 L(X̂)=∥P⊥Φ̂ θ*∥²（到重建特征的正交补投影），用带动量梯度下降并把每行归一化到 √d 球面，在 RF、两层 FC 与深度残差网上均可跑通"
+ ],
+ "method_framework": "随机特征 f=φ(x)⊤θ 以无正则平方损失训练得 θ*=Φ⁺Y；当 p≫dn 时 span{φ(x_i)} 唯一决定输入样本集合。算法最小化 L(X̂)=∥P⊥Φ̂ θ*∥²，每步更新后把行重投影到 √d 球面，收敛到 0 即完成重建。",
+ "experiment_framework": "合成球面均匀数据（d∈{30,100}、n∈{20,100}，10 个 seeds）与 CIFAR-10 二分类（n=100，4 seeds）；模型为随机特征、两层全连接与深度残差网；指标为匈牙利匹配后的平均重建误差 ρ(X,X̂*)，并报正交残差 r(Φ̂)。",
+ "takeaways": [
+  "「记住标签」与「复现数据」的过参数化起点不同，为大模型训练数据泄漏风险提供了可量化的参数层面判据",
+  "重建目标不必比对输出差异，而是要求模型参数落在重建特征的张成空间内（投影残差为零），这种子空间包含判据可迁移到其他记忆泄漏分析",
+  "激活函数的高阶 Hermite 系数奇偶性决定符号是否可辨，ReLU 只能复原到符号翻转，评估重建质量时必须显式处理该歧义"
+ ],
+ "weaknesses": [
+  "完备性只覆盖 n=2：Theorem 2 排除重复解的情形仅证明到两点，作者自述 n≥3 时情形组合爆炸、只「suspect」可推广，因此「整个训练集均可重建」在一般 n 上无定理支撑",
+  "结果强依赖理想设定：Assumption 1 要求数据次高斯且 ‖x‖=√d、Assumption 3 要求 n=O(d) 且 p≫ndlog²d、训练无正则，作者虽预期可推广到 n≫d 但正文未给对应实验",
+  "正文在 §5.1 截断，未见 RF 之外的两层/残差网定量重建误差表，也未报优化步数与收敛阈值；且 ReLU 下需对每张图做符号最大化才可比，说明实际复原并不干净"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "理论贡献扎实但与可靠性主线无实质交集",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

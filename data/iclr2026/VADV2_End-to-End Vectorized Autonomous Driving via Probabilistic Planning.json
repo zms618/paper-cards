@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VADV2_End-to-End Vectorized Autonomous Driving via Probabilistic Planning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VADV2_End-to-End Vectorized Autonomous Driving via Probabilistic Planning.pdf",
+ "title": "VADv2: End-to-End Vectorized Autonomous Driving via Probabilistic Planning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "概率规划token化自动驾驶模型，仿真SOTA但真实场景验证不足",
+ "innovations": [
+  "提出概率规划模型VADv2，用概率场函数建模动作空间到概率分布的映射，应对驾驶规划的不确定性与非确定性",
+  "将高维连续时空动作空间离散化为大型规划词表并tokenize为规划token，与场景token交互输出动作分布",
+  "用大规模驾驶示范监督该分布，替代现有确定性直接回归动作的范式"
+ ],
+ "method_framework": "针对确定性回归动作无法应对驾驶规划不确定性的问题，VADv2用概率场函数建模动作空间到分布的映射；先把高维连续时空动作空间离散化为大型规划词表并tokenize，规划token与场景token交互输出动作概率分布，再用大规模驾驶示范监督该分布。",
+ "experiment_framework": "在CARLA Town05闭环、Bench2Drive、NAVSIM及大规模3DGS基准上评测；对比现有确定性端到端规划方法；指标为闭环成功率等；报告CARLA Town05 SOTA并领先Bench2Drive。",
+ "takeaways": [
+  "VADv2在CARLA Town05闭环基准达SOTA并显著优于现有方法，同时领先Bench2Drive",
+  "在NAVSIM与大规模3DGS基准上也验证有效，贴近真实应用",
+  "概率分布建模比确定性回归更能刻画多模态合理驾驶动作"
+ ],
+ "weaknesses": [
+  "属于自动驾驶规划方向，虽涉及不确定性建模但落地域为驾驶而非医学影像/多模态推理，与主线无关",
+  "概率场的采样/推理开销与闭环安全性前9页未充分权衡",
+  "仅在仿真与3DGS基准验证，真实道路长尾场景的鲁棒性证据有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "自动驾驶规划与可靠性主线无交点，但概率分布建模有可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/A Simple yet Mighty Hartley Diffusion Versatilist for Generalizable Dense Vision Tasks.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Simple yet Mighty Hartley Diffusion Versatilist for Generalizable Dense Vision Tasks.pdf",
+ "title": "A Simple yet Mighty Hartley Diffusion Versatilist for Generalizable Dense Vision Tasks",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.4
+ },
+ "one_line": "固定频带分割的扩散跨域泛化，实验不完整且缺乏消融",
+ "innovations": [
+  "把离散 Hartley 变换（核 cas(wt)=cos(wt)+sin(wt)、全实域）引入扩散式稠密预测的跨域泛化，相较 FFT 省去复数运算且频带残差可直接相加回空间域",
+  "低频训练：把源域特征的低 Hartley 频带 V[90%,100%) 作为结构先验注入前向噪声均值 q(z_t|z_0)=N(√ᾱ_t(z_0+V), (1−ᾱ_t)I)，让任务相关形状主导噪声→真值映射",
+  "高频采样：推理时在条件上叠加目标域特征的高 Hartley 频带 V[0,10%)，配合 DDIM 非对称时间区间逐步重建，为未见域补齐细节导向引导"
+ ],
+ "method_framework": "ConvNeXt+FPN 提取特征 F，DHT 拆成 10 个频带并选低频段；训练时把低频带加进前向噪声均值作结构先验，六层可变形注意力 map decoder 去噪；推理时把目标域高频带注入采样条件，按 DDIM 重建稠密图。",
+ "experiment_framework": "分割 GTA5/SYNTHIA→CityScapes/BDD100K/Mapillary(mIoU)；深度 NYU→VirtualKITTI2/DIML/DIODE/Ibims；去雾 RESIDE→NTIRE19/20/SOTS，共 12 个基准。",
+ "takeaways": [
+  "训练与采样采用不对称频带注入（训练偏内容、推理偏细节），比统一做频域增强更贴合跨域稠密预测",
+  "DHT 全实域核使频带可直接作为残差相加，是能低成本插进 DepthFormer 等既有稠密头的实用选择",
+  "把扩散过程与图像编码器解耦、编码器仅前向一次并共享特征，可把训练迭代压到 16 万步量级"
+ ],
+ "weaknesses": [
+  "高低频切点固定取 V[0,10%) 与 V[90%,100%)，正文只靠 Fig.3 一次二分类配准实验论证，缺少对 10%/90% 阈值本身的敏感性消融",
+  "高频引导取自目标域图像自身的 V[0,10%)，而该图像本身就是扩散条件 x，实质是目标图的高频自偏置；正文未见“去掉目标域图像、仅留高频带”的对照来隔离其真实贡献",
+  "全部主表只报单次运行值、无方差或显著性；且正文在去雾章节（5.3）截断，HarDiff 在深度与去雾任务上的完整主表与消融缺失"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "跨域泛化方法与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

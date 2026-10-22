@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scalable Offline Model-Based RL with Action Chunks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scalable Offline Model-Based RL with Action Chunks.pdf",
+ "title": "Scalable Offline Model-Based RL with Action Chunks",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "动作块模型减少误差累积，flow策略拒绝采样防OOD，长时域离线RL性能提升。",
+ "innovations": [
+  "用动作块动力学模型p(s_{t+n}|s_t, a_{t:t+n-1})替代单步模型，大幅减少递归模型调用次数、抑制长时域滚动的复合误差，支持100步以上虚拟rollout。",
+  "不对策略直接做奖励最大化，而是从表达型flow行为动作块策略中按价值做拒绝采样，既建模多模态动作分布又防止模型被OOD动作利用。",
+  "在高达1亿transition的离线数据集、长时域任务上，取得离线MBRL中最佳性能。"
+ ],
+ "method_framework": "先训动作块动力学模型；在模型内用当前策略长时域虚拟rollout拟合同策略价值函数；策略定义为flow行为动作块样本中使价值最大者(拒绝采样)，从而在降低bootstrapping偏差的同时控制模型误差与OOD利用。",
+ "experiment_framework": "在大规模(最高100M transitions)离线RL基准的长时域任务上，对比model-free与model-based离线RL方法，报告长时域任务下的回报/成功率。",
+ "takeaways": [
+  "动作块模型能打破'增大rollout步数降偏差'与'累积模型误差'之间的权衡，支撑长时域虚拟展开。",
+  "基于flow行为策略的拒绝采样可在离线MBRL中兼顾多模态动作建模与OOD防利用。"
+ ],
+ "weaknesses": [
+  "属离线强化学习方向，与可靠性×医学影像/多模态推理主线无关联。",
+  "依赖高质量离线数据集与动力学模型精度，在分布偏移大、多模态动作极复杂时的稳定性证据有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.38,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "离线RL与可靠性主线无关联，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Temporal Concept Dynamics In Diffusion Mod-Els via Prompt-Conditioned Interventions.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Temporal Concept Dynamics In Diffusion Mod-Els via Prompt-Conditioned Interventions.pdf",
+ "title": "Temporal Concept Dynamics in Diffusion Models via Prompt-Conditioned Interventions",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "PCI框架通过时间步提示切换探测扩散模型中的概念动态锁定时机",
+ "innovations": [
+  "提出Prompt-Conditioned Intervention(PCI)：在扩散/流匹配去噪轨迹的指定时间步切换文本提示，无需访问模型内部或训练即可探测概念动态",
+  "定义Concept Insertion Success(CIS)曲线，量化某时间步插入的概念被保留并反映到最终图像的概率",
+  "扩展到概念插入/删除/多概念交互三类分析，并据此给出图像编辑的可操作时机，取得语义准确与内容保持的更好平衡"
+ ],
+ "method_framework": "从基础提示生成图像，在选定时间步将提示替换为基础提示+目标概念，继续去噪。若最终图像成功包含目标概念则该时间步为高CIS。跨多种子、多提示统计得到CIS曲线，刻画概念在轨迹中何时可插入、何时已锁定，并分析全局因子与人类属性等不同概念的锁定时机差异。",
+ "experiment_framework": "在5个SOTA文生图/流匹配模型上评测，覆盖800样本、广泛概念分类法（年龄、性别、天气、季节、颜色等）；对比概念瓶颈模型、稀疏自编码、归因图等分析方法；下游应用为text-driven image editing，对比强编辑基线，指标为语义准确率与内容保持度。",
+ "takeaways": [
+  "全局因子（时间、天气、季节、颜色）在轨迹早期即锁定，人类属性（年龄、性别）锁定时机不同",
+  "即便同一概念类型内，不同概念在轨迹中最易干预的相位也不同",
+  "根据CIS曲线选择干预时机可在无需训练的情况下获得比强基线更强、更平衡的编辑效果"
+ ],
+ "weaknesses": [
+  "CIS依赖外部分类器/检测器判断概念是否成功插入，探测结果受该判据自身准确率影响，忠实性未严格证明",
+  "主要在文生图与人脸/属性概念上验证，对复杂场景、多对象纠缠概念的可扩展性有限",
+  "800样本规模相对有限，跨模型结论的统计稳定性与显著性报告需进一步确认"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "扩散模型概念动态分析，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

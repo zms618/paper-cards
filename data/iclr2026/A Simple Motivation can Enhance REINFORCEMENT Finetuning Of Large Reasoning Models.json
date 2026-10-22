@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Simple Motivation can Enhance REINFORCEMENT Finetuning Of Large Reasoning Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Simple Motivation can Enhance REINFORCEMENT Finetuning Of Large Reasoning Models.pdf",
+ "title": "A SIMPLE \"MOTIVATION\" CAN ENHANCE REINFORCEMENT FINETUNING OF LARGE REASONING MODELS",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.4
+ },
+ "one_line": "将奖励规则注入prompt作为动机引导RLVR训练，加速推理能力收敛",
+ "innovations": [
+  "把可验证奖励函数以自然语言写成 motivation 段随 system prompt 在 RLVR 训练全程注入，使策略在 rollout 时就知晓评分细则（correctness ±2/−1.5 与 format ±1），把奖励信号从「事后稀疏反馈」提前为「行动前目标」",
+  "用 pass@1/2/4/8 与生成熵的动态曲线把收益归因到探索能力：RLVR 的 pass@4/8 在 140 步后基本停滞，而 MeRF 在 140 步就已超过 RLVR 最终步（280 步）的 pass@4/8",
+  "把「动机与奖励的一致性」做成可控实验（一致/不一致 motivation 对照、误导性 motivation 下 RL 能否自适应），并用 Q1/Q2 把 prompt 注入的收益与 in-context 推理本身的收益分离"
+ ],
+ "method_framework": "RLVR 训练（GRPO）流程与奖励计算完全不变，仅在 system prompt 中追加一段自然语言描述的评分规则（motivation），使策略生成时即 aware of 优化目标；rollout 组内 advantage 仍由环境按同一套规则打分得到，再走 GRPO 更新 θ。",
+ "experiment_framework": "6 个起点模型（Qwen2.5-7B-Base/Instruct/Instruct-1M、14B-Instruct、R1-Distill-Qwen-1.5B、R1-Distill-Llama-8B）与 GRPO（组大小 8）；数据为 K&K（3–7 人训练、2 与 8 人作 OOD）及 AIME24&25、AMC23、MATH500、CountDown，报 pass@1/2/4/8 与熵、正确率曲线。",
+ "takeaways": [
+  "动机注入主要作用在训练期而非推理期：base 模型加 motivation 无提升，RLVR 模型加 motivation 只涨 2–4%，相对 RLVR 的 25–27% 增益几乎全部来自训练流程本身",
+  "pass@k（尤其 pass@8）与生成熵随训练的动态比 pass@1 更能解释 RLVR 的低效——RLVR 的 pass@4/8 在 140 步后停滞，说明瓶颈是探索而非优化",
+  "K&K 用 2 人与 8 人难度做 OOD 评测（如 7B-Instruct 8 人 0.28→0.39），可作为「小模型 RL 训练外泛化」的低成本评测设置"
+ ],
+ "weaknesses": [
+  "所有表格数字都没有随机种子与方差信息，而 K&K 每个难度只有 100 条评测样本、AIME24/25 各 30 题（一题即 3.3 个百分点），pass@1 上 6–8 个百分点的提升在如此小的评测集上难以排除偶然",
+  "收益随模型变强迅速缩水：Qwen2.5-14B-Instruct 上 MeRF 仅比 RLVR 高 0.08（0.75→0.83），R1-Distill-Qwen-1.5B 在 5 人难度反而从 0.16 掉到 0.12；正文统一把增益归到 pass@k 与熵，没有解释强模型上收益饱和与个别指标回退",
+  "motivation 可写的前提是奖励本身规则可验证（答案匹配、格式打分）；一旦奖励需语义判定，动机与真实奖励不一致（钻动机描述、reward hacking）会怎样，正文除 K&K 一组误导性动机外没有讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "RLVR训练方法改进，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

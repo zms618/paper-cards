@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Guided Structural Inference Leveraging Priors with Soft Gating Mechanisms.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Guided Structural Inference Leveraging Priors with Soft Gating Mechanisms.pdf",
+ "title": "Guided Structural Inference: Leveraging Priors with Soft Gating Mechanisms",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "软门控整合先验的VAE结构推断，提升AUROC但鲁棒性验证不足",
+ "innovations": [
+  "用带可学习边掩码的软门控整合已知边/度数/稀疏等先验，保持梯度可流",
+  "对确定性已知边做克隆-钳制，避免与VAE概率分布假设冲突",
+  "自适应正则在数据驱动学习与领域约束间平衡，把容量重配给不确定交互"
+ ],
+ "method_framework": "将隐关系结构推断建模为VAE；不再强行覆写或硬钳制已知边，而是用软门控掩码让已知边以可微方式参与，确定性边通过克隆-钳制排除出随机推断，自适应正则约束稀疏/度数，从而优化信息瓶颈权衡。",
+ "experiment_framework": "在16个数据集（含生化网络、多智能体运动约束等结构恢复任务）上评测；与忽略先验或硬约束的VAE/结构学习基线比较；指标为边恢复AUROC；报告相对基线最高提升9% AUROC。",
+ "takeaways": [
+  "软门控比硬覆写/硬钳制更能在利用专家先验的同时维持训练稳定",
+  "把已知边排除出随机推断可将模型容量释放给真正不确定的交互",
+  "先验融入在多类结构恢复任务上带来一致的AUROC增益"
+ ],
+ "weaknesses": [
+  "虽涉及生化网络，但属通用关系结构学习，与可靠性主线落地域（医学影像/多模态推理）关联有限",
+  "先验质量依赖性强，错误先验下的鲁棒性与退化行为未充分分析",
+  "软门控引入额外可学习参数与调参（自适应正则），敏感性报告有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.93,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

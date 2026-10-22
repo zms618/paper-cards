@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/ZeroIDIR_Zero-Reference Illumination Degradation Restoration with Perturbed Consistency Diffusion.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ZeroIDIR_Zero-Reference Illumination Degradation Restoration with Perturbed Consistency Diffusion.pdf",
+ "title": "ZeroIDIR: Zero-Reference Illumination Degradation Image Restoration with Perturbed Consistency Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "零参考光照复原：两阶段解耦+扰动一致性扩散，免配对但证据不足",
+ "innovations": [
+  "零参考训练范式：只用低质量退化图(低光/背光/过曝)训练，无配对GT/外部参考，把'照度校正'与'扩散重建'解耦为两阶段，规避配对数据的分布约束",
+  "自适应gamma校正模块(AGCM)+直方图引导损失：空间可变曝光校正保留结构不放大噪声，直方图损失把校正后照度分布推向自然场景分布",
+  "扰动一致性扩散(PCDM)+扰动扩散一致性损失：校正图作为中间噪声态进入扩散，一致性损失约束最终复原图的前向轨迹与扰动态对齐，无监督下提升保真与稳定"
+ ],
+ "method_framework": "退化图→AGCM空间可变gamma校正→校正图(中间噪声态)→PCDM扩散重建细节/抑噪→扰动一致性损失对齐轨迹；仅退化图自监督训练。",
+ "experiment_framework": "公开基准(低光/背光/过曝多数据集)；对比监督(UHDFour/CoTF/SLOT/Reti-Diff)与无监督(CLIP-LIT/PSENet/UEC/LightenDiff/AGLLDiff)；定性图1+定量指标；泛化性跨场景评测。",
+ "takeaways": [
+  "'解耦难任务为可监督子任务'：曝光校正(有直方图先验)与细节重建(有扩散先验)分开，各自用最便宜的先验监督，比端到端更可控——任务拆解策略可复用",
+  "'中间态设计'：把校正结果当扩散的中间噪声态而非直接目标，让生成式先验补细节，'把确定性输出接进随机过程'的接口设计巧妙",
+  "'一致性损失做零参考约束'：轨迹一致性(复原图↔输入状态)替代配对GT，是无监督扩散的通用约束形式"
+ ],
+ "weaknesses": [
+  "'与监督方法可比'的量化差距未在前9页给表(仅定性图1)；AGCM与直方图损失各自的消融贡献未呈现",
+  "零参考训练对极端退化(严重欠曝噪声主导)的稳定性未测；校正-扩散两阶段误差累积(校正失误是否被扩散放大)未讨论",
+  "扰动一致性损失的扰动参数/权重敏感性未报告；跨传感器与真实噪声(非合成退化)泛化证据薄弱"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "零参考图像复原，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

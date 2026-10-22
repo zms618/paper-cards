@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/PlanU_Large Language Model Reasoning through Planning under Uncertainty.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/PlanU_Large Language Model Reasoning through Planning under Uncertainty.pdf",
+ "title": "PlanU: Large Language Model Reasoning through Planning under Uncertainty",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.7
+ },
+ "one_line": "PlanU用MCTS分位数分布处理LLM不确定性，计算成本高且泛化未验证",
+ "innovations": [
+  "将MCTS节点回报建模为分位数分布而非期望值",
+  "引入基于好奇心的上置信界(UCC)分数平衡探索与利用",
+  "使用文本编码减少LLM不确定性对状态表示的影响"
+ ],
+ "method_framework": "PlanU基于MCTS构建，将状态-动作对的回报建模为分位数分布，通过UCC分数选择动作，使用分位数回归更新分布，同时结合状态好奇心鼓励探索",
+ "experiment_framework": "在Blocksworld、Overcooked、VirtualHome、Travelplanner和Webshop五个基准测试上评估，与CoT、ToT、RAP、DeLLMa等方法对比，添加环境不确定性失败率",
+ "takeaways": [
+  "分位数分布能有效捕获决策过程中的不确定性",
+  "简单集成不确定性估计与决策方法效果不佳",
+  "文本编码可减少LLM不确定性对状态表示的影响"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，需要多次模拟和更新",
+  "未充分讨论分位数数量选择对性能的影响",
+  "在真实世界环境中的泛化能力有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/unMORE_Unsupervised Multi-Object Segmentation via Center-Boundary Reasoning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/unMORE_Unsupervised Multi-Object Segmentation via Center-Boundary Reasoning.pdf",
+ "title": "unMORE: Unsupervised Multi-Object Segmentation via Center-Boundary Reasoning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.3
+ },
+ "one_line": "两阶段无监督分割，中心-边界先验在COCO上SOTA，但与主线关联弱",
+ "innovations": [
+  "显式学习三个层次的object-centric表征（中心/边界等）作为物体先验",
+  "提出完全无网络(network-free)、无需人工标注的多物体推理模块，利用先验发现物体",
+  "将无监督多物体分割从合成数据推进到含COCO在内的真实复杂图像"
+ ],
+ "method_framework": "两阶段：第一阶段显式学习中心、边界等多层次object-centric表征作为物体先验；第二阶段多物体推理模块（无网络、免标注）基于这些先验对像素分组推理，发现并分割多个物体。",
+ "experiment_framework": "在6个真实世界基准数据集上评测（含挑战型COCO），与slot-based(SlotAtt系列)与自监督特征蒸馏(TokenCut/DINOSAUR/CutLER)类无监督方法对比，报告分割/发现精度SOTA。",
+ "takeaways": [
+  "在6个真实世界基准上显著超过所有现有无监督多物体分割方法",
+  "network-free推理模块避免了额外标注与训练开销",
+  "方法可扩展到复杂真实图像而非仅合成物体"
+ ],
+ "weaknesses": [
+  "仍属无监督物体分割赛道，与主线（可靠性/医学影像/多模态推理）关联弱",
+  "依赖预训练特征与精心设计的中心-边界先验，两阶段误差是否累积未充分论证",
+  "前9页未见与全监督/弱监督上限的差距分析及失败案例系统剖析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

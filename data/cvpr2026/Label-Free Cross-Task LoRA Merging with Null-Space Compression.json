@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Label-Free Cross-Task LoRA Merging with Null-Space Compression.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Label-Free Cross-Task LoRA Merging with Null-Space Compression.pdf",
+ "title": "Label-Free Cross-Task LoRA Merging with Null-Space Compression",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "基于零空间压缩的LoRA跨任务合并，无需标签但计算开销存疑",
+ "innovations": [
+  "发现LoRA微调过程中下投影矩阵的零空间压缩与任务性能呈强负相关",
+  "提出零空间压缩(NSC)合并方法，适用于分类和回归等多种任务",
+  "设计高效的零空间比计算方法，避免显式构造零空间投影矩阵"
+ ],
+ "method_framework": "NSC合并利用LoRA下投影矩阵A的零空间压缩作为优化信号，通过最小化零空间比确定合并权重，无需标签且适用于长序列生成。",
+ "experiment_framework": "在20个异构视觉任务、6个NLI基准和VQA/图像描述任务上评估，与11种基线方法比较，使用标准化性能指标。",
+ "takeaways": [
+  "零空间压缩可作为通用任务性能指标，适用于多种任务类型",
+  "仅使用最后四分之一transformer块计算零空间比可平衡效率与性能"
+ ],
+ "weaknesses": [
+  "未明确讨论方法在极端异构任务上的表现",
+  "零空间比计算虽高效但仍需额外计算开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "零空间压缩方法与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

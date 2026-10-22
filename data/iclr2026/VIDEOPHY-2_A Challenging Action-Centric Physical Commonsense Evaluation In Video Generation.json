@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VIDEOPHY-2_A Challenging Action-Centric Physical Commonsense Evaluation In Video Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VIDEOPHY-2_A Challenging Action-Centric Physical Commonsense Evaluation In Video Generation.pdf",
+ "title": "VideoPhy-2: A Challenging Action-Centric Physical Commonsense Evaluation in Video Generation",
+ "scores": {
+  "novelty": 5,
+  "depth": 5,
+  "evidence": 6,
+  "relevance": 3.0,
+  "overall": 4.6
+ },
+ "one_line": "评测基准揭示视频生成物理常识缺陷，但无方法创新。",
+ "innovations": [
+  "提出以动作为中心的视频生成物理常识评测数据集VideoPhy-2，精心整理4000条多样且细节丰富的合成提示",
+  "开展人工评测，从语义遵循、物理常识与物理规则落地三个维度评估生成视频，并做细粒度物理规则分析",
+  "构建VideoPhy-2-AUTOEVAL自动评测器，实现快速可靠的自动化评估"
+ ],
+ "method_framework": "整理4000条覆盖真实动作的高质量提示，用现代视频生成模型合成视频，再由人工从语义遵循、物理常识、物理规则落地三维度打分，并细粒度分析各类物理规则(尤其守恒律)的违反情况；同时训练自动评测器逼近人工评判。",
+ "experiment_framework": "评测Sora、Luma、HunyuanVideo、Wan2.1/2.2、CogVideoX、Cosmos等多个视频生成模型；指标为语义遵循率、物理常识正确率与二者联合表现；人工评测为主，并验证VideoPhy-2-AUTOEVAL与人工的一致性；报告最佳模型困难子集联合表现47.7%。",
+ "takeaways": [
+  "即便最佳模型Wan2.2-27B在困难子集上联合表现也仅47.7%，现有视频生成模型物理常识严重不足",
+  "模型在质量守恒、动量等守恒律上尤其薄弱",
+  "自动评测器与人工评测一致性良好，可支撑后续快速迭代"
+ ],
+ "weaknesses": [
+  "属于视频生成物理真实性评测方向，与可靠性、医学影像、多模态推理主线无关，relevance偏低",
+  "物理常识判定依赖人工标注，跨标注者一致性与主观偏差前9页未充分报告",
+  "仅评测现有模型并揭示缺陷，未提出改善物理真实性的生成方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "视频生成物理评测，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

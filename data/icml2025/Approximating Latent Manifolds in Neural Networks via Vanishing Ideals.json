@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Approximating Latent Manifolds in Neural Networks via Vanishing Ideals.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Approximating Latent Manifolds in Neural Networks via Vanishing Ideals.pdf",
+ "title": "Approximating Latent Manifolds in Neural Networks via Vanishing Ideals",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "用代数几何简化网络，但扩展性与实验证据不足",
+ "innovations": [
+  "首次将消失理想算法引入神经网络高维隐空间，通过降维与数据重缩放使其可在 NN 隐表征上运行",
+  "提出 VI-Net 架构：截断预训练网络、按类构造稀疏多项式生成元、再用单层多项式层把隐空间映射为线性可分特征",
+  "结合谱复杂度分析给出比标准深度网络更紧的泛化界理论保证"
+ ],
+ "method_framework": "先截断预训练网络到中间层 L'，对每一类的隐样本点用随机化消失理想算法求多项式生成元，并做剪枝以减少生成元数量与单项式项数；将这些多项式作为单层特征变换，使原本线性不可分的隐数据变得线性可分，再接简单分类器。相比基线丢弃了 L' 之后的所有层。",
+ "experiment_framework": "在图像分类数据集上与原预训练基线网络对比精度、吞吐量与参数量（正文含 toy/cat/car/dog 可视化与 Calabi-Yau 示意图），并用谱复杂度分析做泛化界对比；具体数据集与基线细节在前9页内未完全展开。",
+ "takeaways": [
+  "用消失理想生成元刻画 NN 隐流形可行，截断后仅靠单层多项式特征变换即可保持有竞争力的精度",
+  "截断网络显著减少层数与参数量，同时提升吞吐量",
+  "理论上该构造可给出比标准深度网络更紧的泛化界"
+ ],
+ "weaknesses": [
+  "与主线（可靠性/鲁棒性×医学影像/多模态大模型推理）无关，relevance 受限",
+  "消失理想生成元数量与单项式项数的扩展性仍是瓶颈，作者靠降维与剪枝缓解但未给出高维真实大规模任务的充分验证",
+  "前9页内具体数据集规模、主表数值与完整消融尚未展开，实验证据强度存疑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.38,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯代数几何方法，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

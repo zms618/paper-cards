@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unveiling Downstream Performance Scaling Of LLMS A Clustering-Based Perspective.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unveiling Downstream Performance Scaling Of LLMS A Clustering-Based Perspective.pdf",
+ "title": "Unveiling Downstream Performance Scaling of LLMs: A Clustering-Based Perspective",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "COD聚类任务难度预测LLM性能，误差1.55%但与主线无关",
+ "innovations": [
+  "提出Clustering-On-Difficulty(COD)下游性能预测框架，按任务难度缩放特征聚类出表现稳定可预测的任务子集",
+  "用有理论支撑的性能缩放定律预测各簇表现，并以可预测子集作为全集的中间预测器",
+  "推导映射函数将子集性能精确外推到全集"
+ ],
+ "method_framework": "针对下游性能预测受涌现现象与任务难度不均困扰的问题，COD先按各任务的难度缩放特征聚类，挑出随算力表现行为良好的可预测任务子集；用有理论支撑的性能缩放定律预测各簇表现，再推导映射函数把子集性能外推到完整评测集。",
+ "experiment_framework": "在70B参数LLM预训练过程中验证；8个关键下游基准；对比直接外推的现有预测方法；指标为下游性能预测的平均误差；报告平均预测误差1.55%。",
+ "takeaways": [
+  "在70B参数LLM上，COD在8个关键基准上平均预测误差仅1.55%",
+  "按难度聚类可规避涌现现象与任务难度不均导致的指标高方差，使缩放曲线更行为良好",
+  "可预测子集加映射函数为预训练阶段的缩放监测提供可操作洞察"
+ ],
+ "weaknesses": [
+  "属于LLM缩放律/预训练监测方向，与可靠性、医学影像、多模态推理主线无关，relevance偏低",
+  "1.55%误差在8个基准上的波动、以及对涌现任务(不可预测)的失效边界前9页披露有限",
+  "映射函数与聚类阈值的可迁移性在不同规模/架构LLM上未系统验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "LLM缩放律与可靠性主线无关，仅为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

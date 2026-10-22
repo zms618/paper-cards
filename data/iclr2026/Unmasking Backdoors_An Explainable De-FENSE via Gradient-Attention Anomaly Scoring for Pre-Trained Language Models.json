@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unmasking Backdoors_An Explainable De-FENSE via Gradient-Attention Anomaly Scoring for Pre-Trained Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unmasking Backdoors_An Explainable De-FENSE via Gradient-Attention Anomaly Scoring for Pre-Trained Language Models.pdf",
+ "title": "Unmasking Backdoors: An Explainable Defense via Gradient-Attention Anomaly Scoring for Pre-Trained Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "融合注意力与梯度的后门检测，文本分类有效但推理开销与自适应攻击鲁棒性存疑",
+ "innovations": [
+  "揭示被后门污染的预训练编码器模型在处理投毒输入时，触发token会同时主导注意力与梯度归因、压制上下文的一致偏移现象",
+  "提出推理时防御，融合token级注意力与梯度信息构造异常打分以检测投毒输入",
+  "提供可解释性驱动的打分机制分析，支撑触发词定位与防御鲁棒性说明"
+ ],
+ "method_framework": "作者观察到被后门污染的编码器模型处理投毒输入时，触发token会同时主导注意力分布与梯度归因、压制周围上下文；据此在推理时融合token级注意力与梯度信息构造异常打分来识别投毒输入，并结合可解释性分析定位触发词。",
+ "experiment_framework": "在文本分类任务上、多种后门攻击场景下评测；对比现有后门防御基线；指标为攻击成功率(ASR)下降幅度与干净样本保持率；报告显著降低ASR并给出触发词定位分析。",
+ "takeaways": [
+  "在多种后门攻击场景的文本分类任务上，该方法相较现有基线显著降低攻击成功率",
+  "触发token在注意力与梯度上的异常主导是可被利用的检测信号",
+  "融合注意力与梯度的异常打分兼具检测效果与可解释性"
+ ],
+ "weaknesses": [
+  "属于NLP后门防御/安全方向，虽属鲁棒性但为纯文本，未涉及医学影像或多模态推理，与主线为中相关",
+  "推理时防御需对输入做梯度/注意力计算，推理开销前9页未充分权衡",
+  "评测集中在文本分类与已知触发模式，对自适应攻击者(规避该异常信号)的鲁棒性前9页证据有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "文本后门防御属鲁棒性主线，但未触及医学或多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

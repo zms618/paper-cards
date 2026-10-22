@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Patchrefiner V2_Fast and Lightweight Real-Domain High-Resolution Metric Depth ESTI.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Patchrefiner V2_Fast and Lightweight Real-Domain High-Resolution Metric Depth ESTI.pdf",
+ "title": "PatchRefiner V2: Fast and Lightweight Real-Domain High-Resolution Metric Depth Estimation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "轻量编码器替代refiner加速4K深度估计，但增量创新明显。",
+ "innovations": [
+  "以轻量编码器替代重型refiner模型，降低模型大小与推理时间。",
+  "提出带Guided Denoising Unit的Coarse-to-Fine模块refine去噪refiner特征，并提出Noisy Pretraining预训练轻量refiner分支。",
+  "在局部窗口内采用Scale-and-Shift Invariant Gradient Matching(SSIGM)损失提升合成到真实的域迁移。"
+ ],
+ "method_framework": "沿用分块(tile)策略处理4K高分辨率，但用轻量编码器做patch级refine；C2F模块先粗后细并用引导去噪单元消除轻量编码器引入的噪声；带噪预训练让轻量分支鲁棒；局部窗SSIGM损失强化合成数据到真实场景的迁移。",
+ "experiment_framework": "在UnrealStereo4K上评测精度与速度并对比SoTA深度方法；在CityScapes等真实数据集上看深度边界刻画；报告参数量与推理时间，精度与速度同时领先。",
+ "takeaways": [
+  "轻量refiner配合去噪与带噪预训练可在精度不掉的前提下大幅提速。",
+  "局部窗SSIGM损失改善了合成到真实的域泛化与边界。",
+  "4K深度估计可用更少参数实现更快推理。"
+ ],
+ "weaknesses": [
+  "增量改进为主(PRV1的轻量化升级)，概念新颖度有限。",
+  "轻量编码器引入噪声需额外模块补救，端到端简洁性下降。",
+  "真实数据集上主要报告边界定性效果，定量泛化证据有限。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "轻量深度估计与可靠性主线无实质交点，仅属落地域工具",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

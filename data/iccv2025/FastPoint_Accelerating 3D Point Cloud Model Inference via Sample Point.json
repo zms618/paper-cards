@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/FastPoint_Accelerating 3D Point Cloud Model Inference via Sample Point.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/FastPoint_Accelerating 3D Point Cloud Model Inference via Sample Point.pdf",
+ "title": "FastPoint Accelerating 3D Point Cloud Model Inference via Sample Point",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "基于距离预测的FPS加速，但适用性和泛化性受限",
+ "innovations": [
+  "最小距离预测采样(MDPS)算法",
+  "距离曲线分段技术",
+  "无冗余邻居搜索优化"
+ ],
+ "method_framework": "利用FPS中采样点距离的可预测趋势，通过MLP预测距离曲线，结合分段采样和排除列表加速FPS和邻居搜索",
+ "experiment_framework": "在S3DIS、ScanNet和SemanticKITTI数据集上测试PointMetaBase和PointVector模型，评估mIoU和端到端延迟",
+ "takeaways": [
+  "距离预测可显著减少计算量",
+  "排除列表可复用于邻居搜索",
+  "早期结构捕获特性是算法基础"
+ ],
+ "weaknesses": [
+  "仅适用于基于PointNet++的模型",
+  "早期终止机制可能影响采样质量",
+  "MLP预测在不同数据集上表现不一致"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D点云加速与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

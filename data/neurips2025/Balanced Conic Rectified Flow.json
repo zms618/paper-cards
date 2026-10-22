@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Balanced Conic Rectified Flow.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Balanced Conic Rectified Flow.pdf",
+ "title": "Balanced Conic Rectified Flow",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "锥形重流缓解分布漂移，但训练复杂且泛化存疑",
+ "innovations": [
+  "揭示并解决rectified flow中的分布漂移问题",
+  "提出锥形重流方法，结合真实样本和球面线性插值",
+  "设计平衡的混合训练策略，交替使用真实样本和生成样本"
+ ],
+ "method_framework": "通过真实样本及其反向噪声构建锥形邻域监督，结合原始重流步骤，交替使用真实对和生成对进行训练，减少分布漂移并提高生成质量。",
+ "experiment_framework": "CIFAR-10、LSUN Bedroom、ImageNet数据集，对比FID、IS、曲率、初始速度差等指标，评估1步、少步和完整步生成质量。",
+ "takeaways": [
+  "使用真实样本及其反向噪声可有效缓解分布漂移",
+  "球面线性插值作为几何感知正则化器能改善轨迹对齐",
+  "平衡真实样本和生成样本的监督可提高生成质量"
+ ],
+ "weaknesses": [
+  "方法增加了训练复杂度，需要额外的超参数调优",
+  "仅在小规模数据集上验证，大规模高分辨率图像的泛化能力有待进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

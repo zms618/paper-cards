@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/VGGT-ohm_VGGT-ohm.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/VGGT-ohm_VGGT-ohm.pdf",
+ "title": "VGGT-ohm",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "场景令牌注意力+多任务监督提升3D重建，但动态场景处理有限",
+ "innovations": [
+  "场景令牌注意力机制替代全局注意力",
+  "单一密集预测头配合多任务监督",
+  "高质量动态场景数据标注管道",
+  "自监督训练协议利用未标记视频"
+ ],
+ "method_framework": "基于Transformer的前馈3D重建模型，使用场景令牌进行高效特征聚合，结合深度图和相机参数预测，支持静态和动态场景重建。",
+ "experiment_framework": "在7个静态和动态数据集上评估相机姿态和深度估计，与MegaSaM、VGGT等基线比较，使用AUC和δ1.25等指标。",
+ "takeaways": [
+  "场景令牌注意力可显著降低计算复杂度",
+  "大规模数据和模型容量对3D重建性能有可预测的提升",
+  "多任务监督可通过单一预测头实现"
+ ],
+ "weaknesses": [
+  "动态场景处理仍受限于标注质量",
+  "自监督训练中相机和深度头被冻结可能限制性能提升",
+  "对极端运动场景的鲁棒性不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D重建与可靠性主线无实质交点，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

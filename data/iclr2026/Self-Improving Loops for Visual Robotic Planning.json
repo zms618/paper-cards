@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Self-Improving Loops for Visual Robotic Planning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Self-Improving Loops for Visual Robotic Planning.pdf",
+ "title": "Self-Improving Loops for Visual Robotic Planning (SILVR)",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "自举式视觉规划器在自产生轨迹上迭代更新，无人工奖励。",
+ "innovations": [
+  "面向视频生成式视觉规划器的在线自改进：让模型在自产生轨迹上迭代更新自身，突破离线数据局限。",
+  "证明SILVR在无人工ground-truth奖励函数、无专家质量演示下仍稳健提升。",
+  "在MetaWorld多任务与真机机械臂操作上，相比其他利用在线经验的方法在性能与样本效率上更优。"
+ ],
+ "method_framework": "以在专家演示上训练的视频生成模型作为text-conditioned视觉规划器，经逆动力学模型(IDM)转成动作。SILVR闭环：模型自行rollout产生轨迹→用其迭代更新视频模型→反复多轮，使规划器对新任务持续改进，无需外部奖励/专家数据。",
+ "experiment_framework": "评测MetaWorld多样任务套件及两个真机机械臂操作任务；对比利用在线经验的替代方法；指标为任务成功率随迭代轮次的提升与样本效率。",
+ "takeaways": [
+  "视觉规划器可在自产生轨迹上在线迭代自改进，对初始未见过的新任务持续涨点。",
+  "无需人工奖励或专家演示即可闭环自提升，且样本效率优于其他在线经验方法。"
+ ],
+ "weaknesses": [
+  "属机器人视觉规划/自改进方向，与可靠性/医学影像/多模态推理主线不符。",
+  "自举式自改进存在误差累积/模式崩塌风险，前9页对失败模式讨论有限。",
+  "真机仅两个操作任务，泛化到更多真实场景的证据仍偏少。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "机器人视觉规划与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

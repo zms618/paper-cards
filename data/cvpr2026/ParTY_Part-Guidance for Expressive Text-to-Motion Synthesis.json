@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/ParTY_Part-Guidance for Expressive Text-to-Motion Synthesis.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ParTY_Part-Guidance for Expressive Text-to-Motion Synthesis.pdf",
+ "title": "ParTY Part-Guidance for Expressive Text-to-Motion Synthesis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "部分引导网络解决文本到运动生成的表达与连贯性权衡",
+ "innovations": [
+  "部分感知文本接地模块，增强文本与身体部分的细粒度对齐",
+  "部分引导网络，通过先生成部分运动再作为指导生成整体运动，解决部分间连贯性问题",
+  "整体-部分融合模块，在生成过程中持续整合部分运动信息",
+  "新的部分级和连贯性评估指标"
+ ],
+ "method_framework": "ParTY包含三个核心组件：部分感知文本接地模块将文本嵌入多样化并适配各身体部分；部分引导网络先生成部分运动作为指导，再生成整体运动；整体-部分融合模块在生成过程中持续整合部分信息。",
+ "experiment_framework": "在HumanML3D和KIT-ML数据集上评估，采用传统指标(R-Precision, FID, MM-Dist)和新提出的部分级指标(部分R-Precision, FID, MM-Dist)以及连贯性指标(TC, SC)。",
+ "takeaways": [
+  "部分级文本对齐对提高特定身体部位的运动表达至关重要",
+  "通过部分指导生成整体运动的方法能有效解决部分间连贯性问题",
+  "新的评估指标对评估部分表达和运动连贯性非常有价值"
+ ],
+ "weaknesses": [
+  "方法依赖LLM生成部分描述作为辅助监督，增加了训练复杂性",
+  "部分引导网络可能限制了生成运动的多样性",
+  "方法在KIT-ML数据集上的提升相对较小"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "文本到运动生成与可靠性主线无交点，属常规生成工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

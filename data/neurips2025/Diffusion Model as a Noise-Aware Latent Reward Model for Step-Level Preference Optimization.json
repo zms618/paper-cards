@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Diffusion Model as a Noise-Aware Latent Reward Model for Step-Level Preference Optimization.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Diffusion Model as a Noise-Aware Latent Reward Model for Step-Level Preference Optimization.pdf",
+ "title": "Diffusion Model as a Noise-Aware Latent Reward Model for Step-Level Preference Optimization",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.7
+ },
+ "one_line": "扩散模型作噪声感知奖励，潜在空间优化提升生成效率",
+ "innovations": [
+  "噪声感知的潜在奖励模型(LRM)直接在潜在空间处理不同噪声级别的图像",
+  "多偏好一致性过滤(MPCF)策略优化训练数据质量",
+  "潜在偏好优化(LPO)直接在潜在空间进行步骤级优化，避免复杂转换"
+ ],
+ "method_framework": "利用扩散模型的U-Net和文本编码器特征构建LRM，通过视觉特征增强模块提升文本-图像对齐能力，结合动态阈值策略在潜在空间进行偏好优化",
+ "experiment_framework": "在SD1.5和SDXL上评估，使用Pick-a-Pic数据集，对比DDPO、D3PO、Diffusion-DPO、SPO等方法，指标包括PickScore、ImageReward、HPSv2、Aesthetic Score和GenEval",
+ "takeaways": [
+  "扩散模型本身可作为有效的奖励模型，直接处理潜在空间图像避免分布偏移",
+  "多维度偏好一致性过滤可提升奖励模型训练效果",
+  "在潜在空间直接优化可显著提升训练效率(2.5-28倍)"
+ ],
+ "weaknesses": [
+  "LRM依赖于VAE编码器，不同模型间可能存在潜在空间不匹配",
+  "MPCF策略的阈值选择需要大量实验验证",
+  "未充分探索LRM在不同噪声级别下的具体工作机制"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

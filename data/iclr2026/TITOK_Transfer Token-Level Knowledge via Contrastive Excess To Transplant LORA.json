@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TITOK_Transfer Token-Level Knowledge via Contrastive Excess To Transplant LORA.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TITOK_Transfer Token-Level Knowledge via Contrastive Excess To Transplant LORA.pdf",
+ "title": "TITOK: Transfer Token-Level Knowledge via Contrastive Excess to Transplant LoRA",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "Token级对比过滤LoRA移植，依赖种子提示，理论解释不足。",
+ "innovations": [
+  "提出token级对比超额（contrastive excess）概念，通过比较源模型加LoRA与不加LoRA的预测差异，定位包含任务知识的关键token",
+  "利用对比超额信号进行样本过滤和token选择，从合成数据中筛选高信息量样本，无需训练额外判别器",
+  "设计分词器不匹配对齐机制，解决源模型与目标模型分词器差异导致的知识迁移障碍"
+ ],
+ "method_framework": "TITOK从少量种子提示出发，用源专家模型（源基座+LoRA）生成合成数据。然后计算每个token的对比超额分数（源+LoRA vs 源基座的预测差异），高分token为信息丰富token。基于超额分数先做样本级过滤（保留整体超额高的样本），再做token级选择（只保留高信息量token）。分词器不同时先对齐掩码。最终用过滤后的数据训练目标模型的新LoRA。",
+ "experiment_framework": "在三个基准数据集上评估多种跨模型迁移设置（不同基座模型间的LoRA移植）；基线包括直接知识蒸馏、TransLoRA等；指标为下游任务准确率，报告平均性能提升4-10%。",
+ "takeaways": [
+  "token级对比超额信号能有效识别合成数据中的高信息量内容，比整体样本评估更精准",
+  "无需额外判别器即可实现高质量合成数据过滤，降低了LoRA移植的复杂度",
+  "分词器对齐机制使跨架构LoRA移植更加实用可行"
+ ],
+ "weaknesses": [
+  "合成数据质量受限于源模型能力，种子提示的设计对最终效果影响较大",
+  "对比超额信号的理论解释性不足，为何该信号能反映任务知识缺乏严格论证",
+  "实验主要在英文NLP任务上验证，多语言和代码等领域的移植效果未探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "LoRA移植方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

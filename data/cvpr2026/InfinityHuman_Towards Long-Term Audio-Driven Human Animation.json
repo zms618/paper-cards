@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/InfinityHuman_Towards Long-Term Audio-Driven Human Animation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/InfinityHuman_Towards Long-Term Audio-Driven Human Animation.pdf",
+ "title": "InfinityHuman Towards Long-Term Audio-Driven Human Animation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "粗到细框架+手部奖励，依赖预训练模型解决长时动画漂移",
+ "innovations": [
+  "姿态引导精修器解决长序列视觉漂移",
+  "手部特定奖励反馈机制提升手势真实性",
+  "粗到细两阶段生成框架保持身份一致性"
+ ],
+ "method_framework": "采用粗到细策略，先生成低分辨率音频同步视频，再通过姿态引导精修器生成高分辨率长视频，结合初始帧作为视觉锚点",
+ "experiment_framework": "EMTD和HDTF数据集，对比FID、FVD、FaceSIM、HKC等指标，消融实验验证各模块有效性",
+ "takeaways": [
+  "姿态序列作为条件信号抵抗时间退化",
+  "多模态条件注意力增强音频与视觉对齐",
+  "手部特定奖励无需额外标注提升质量"
+ ],
+ "weaknesses": [
+  "依赖预训练模型Goku-I2V作为基础",
+  "手部奖励模型仅基于图像评估而非视频",
+  "训练数据量大且需要专业标注"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "长时动画生成与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

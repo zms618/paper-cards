@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/FFN Fusion_Rethinking Sequential Computation in Large Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/FFN Fusion_Rethinking Sequential Computation in Large Language Models.pdf",
+ "title": "FFN Fusion: Rethinking Sequential Computation in Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "FFN融合技术提升LLM并行计算，但适用受限且需额外训练",
+ "innovations": [
+  "发现FFN层可并行化而非必须顺序处理",
+  "提出FFN Fusion架构优化技术",
+  "创建Ultra-253B-Base模型实现1.71倍加速"
+ ],
+ "method_framework": "通过Puzzle算法移除注意力层后，将连续FFN层融合为单个宽层，减少同步点并提高GPU利用率",
+ "experiment_framework": "Llama-3.1-405B-Instruct数据集，对比Llama-405B和Llama-3.3-70B，使用MMLU、MT-Bench等指标",
+ "takeaways": [
+  "FFN层间依赖性低，可并行化",
+  "融合而非删除FFN层能更好保持模型性能",
+  "最后FFN层对融合敏感"
+ ],
+ "weaknesses": [
+  "仅适用于特定架构和模型规模",
+  "融合后需要额外训练恢复性能",
+  "对最终FFN层融合敏感"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

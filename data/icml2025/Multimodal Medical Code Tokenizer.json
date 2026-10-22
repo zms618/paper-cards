@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Multimodal Medical Code Tokenizer.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Multimodal Medical Code Tokenizer.pdf",
+ "title": "Multimodal Medical Code Tokenizer",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "多模态医学代码分词器，融合文本与图关系提升EHR模型性能。",
+ "innovations": [
+  "提出MedTok多模态医学代码分词器：同时利用代码的文本描述（LM编码器）与本体层次/共现关系（图编码器）",
+  "将两种模态量化到统一token空间，保留模态特定信息与跨模态关联",
+  "作为通用分词器替换标准EHR分词器，在5个EHR模型上全面提升AUPRC（MIMIC-III +4.10%，MIMIC-IV +4.78%，EHRShot +11.32%）"
+ ],
+ "method_framework": "对每个医学代码，文本分支通过语言模型编码器提取描述语义；关系分支通过图编码器（基于ICD/ATC/CPT等本体的层次结构与疾病共现、药物-治疗关联）提取关系结构；两分支输出经量化层映射到统一token空间；最终token可输入任意Transformer模型。",
+ "experiment_framework": "在MIMIC-III、MIMIC-IV、EHRShot等住院/门诊数据集上验证；覆盖结局预测、诊断分类、药物推荐、风险分层等临床任务；5个不同架构的EHR模型上替换分词器；指标为AUPRC；额外验证医学QA系统中的效果。",
+ "takeaways": [
+  "医学代码不仅仅是孤立的文本token，其本体关系与共现结构包含重要临床信息",
+  "多模态分词器作为即插即用组件，无需修改模型架构即可全面提升性能",
+  "药物推荐任务提升最大（11.32%），说明关系结构对治疗类代码的语义理解尤为重要"
+ ],
+ "weaknesses": [
+  "图编码器依赖预定义的医学本体结构，本体的覆盖度与质量直接影响效果",
+  "分词器预训练需要大量医学文本与图数据，冷启动成本高",
+  "仅在结构化EHR代码上验证，医学影像文本（如放射学报告）的适用性未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

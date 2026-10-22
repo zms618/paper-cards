@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Beyond Length Quantifying Long-Range In-Formation for Long-Context LLM Pretraining Data.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Beyond Length Quantifying Long-Range In-Formation for Long-Context LLM Pretraining Data.pdf",
+ "title": "Beyond Length: Quantifying LONG-RANGE IN-FORMATION for LONG-CONTEXT LLM Pretraining Data",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "LongFilter用KL散度量化长距离信息增益筛选数据，提升长上下文模型性能。",
+ "innovations": [
+  "提出长距离信息增益量化方法",
+  "基于KL散度的上下文信息增益评分函数",
+  "仅通过数据选择提升长上下文模型性能"
+ ],
+ "method_framework": "LongFilter通过比较模型在长上下文与短上下文下的预测分布差异，计算每个token的信息增益分数，聚合后筛选高质量长上下文数据。",
+ "experiment_framework": "在SlimPajama数据集上评估，使用LLaMA-3-8B从8K扩展到64K上下文，对比ProLong和LongWanjuan，在HELMET、LongBench和RULER基准上测试。",
+ "takeaways": [
+  "信息增益评分可有效识别真正需要长上下文的数据",
+  "数据质量比数量对长上下文训练更重要",
+  "token级评分可解释数据选择过程"
+ ],
+ "weaknesses": [
+  "依赖预训练模型评分可能引入偏差",
+  "未探索不同领域数据的最佳评分阈值",
+  "计算开销较大需32个H100 GPU"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "长上下文数据筛选与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

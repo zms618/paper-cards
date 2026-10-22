@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Zebra In-Context Generative Pretraining for Solving Parametric PDEs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Zebra In-Context Generative Pretraining for Solving Parametric PDEs.pdf",
+ "title": "Zebra: In-Context Generative Pretraining for Solving Parametric PDEs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.4
+ },
+ "one_line": "自回归Transformer生成求解参数化PDE，免梯度适配但与主线关联弱",
+ "innovations": [
+  "用自回归生成Transformer做参数化PDE求解，推理时无需梯度适配/元学习",
+  "在预训练与推理两阶段都利用上下文信息，动态适配新PDE任务",
+  "摆脱SOTA神经代理依赖梯度优化适配带来的推理复杂度"
+ ],
+ "method_framework": "将PDE求解建模为序列生成：把含系数/强迫项/初始条件变化的PDE实例作为输入序列，自回归Transformer在上下文内基于观测序列动态条件化，直接输出新参数实例的解，无需在推理时做梯度微调。",
+ "experiment_framework": "在时间依赖参数化PDE上评测；对比基于梯度优化/元学习适配的神经代理；报告对未见PDE参数实例的泛化精度与推理复杂度。",
+ "takeaways": [
+  "上下文学习可让PDE代理在推理时零梯度适配新参数实例",
+  "避免了梯度/元学习适配带来的额外推理复杂度",
+  "纯数据驱动即可泛化到不同系数/强迫/初值"
+ ],
+ "weaknesses": [
+  "属科学计算/神经PDE求解，与主线(可靠性/医学影像/多模态推理)关联弱",
+  "49页，前9页未见与FNO/Transformer神经算子的严格量化对比",
+  "上下文窗口长度对长时序/高维PDE的扩展限制需完整实验确认"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

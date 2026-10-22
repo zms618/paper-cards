@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Lynx Towards High-Fidelity Personalized Video Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Lynx Towards High-Fidelity Personalized Video Generation.pdf",
+ "title": "Lynx Towards High-Fidelity Personalized Video Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "双适配器改进DiT实现视频生成，身份一致性机制存疑",
+ "innovations": [
+  "ID-adapter使用Perceiver Resampler将面部嵌入转换为紧凑身份令牌",
+  "Ref-adapter集成VAE特征通过交叉注意力注入细节",
+  "时空帧打包机制处理不同分辨率和时长的数据"
+ ],
+ "method_framework": "基于开源DiT基础模型，引入ID-adapter和Ref-adapter两个轻量级适配器，通过交叉注意力注入身份特征，采用渐进式训练策略。",
+ "experiment_framework": "40个主体和20个无偏文本提示构建800个测试案例，使用三种面部识别模型评估身份相似度，基于Gemini-2.5-Pro评估提示跟随和视频质量。",
+ "takeaways": [
+  "适配器设计在保持身份一致性的同时确保视频质量",
+  "渐进式训练策略有效平衡静态和动态内容学习"
+ ],
+ "weaknesses": [
+  "身份注入可能导致不合理动态或交互",
+  "对训练数据的依赖性较强"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成与可靠性主线无交点，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

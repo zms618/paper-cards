@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Retraining-Free Merging of Sparse MoE via Hierarchical Clustering.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Retraining-Free Merging of Sparse MoE via Hierarchical Clustering.pdf",
+ "title": "Retraining-Free Merging of Sparse MoE via Hierarchical Clustering",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "基于专家输出聚类的SMoE参数合并，无需重训练",
+ "innovations": [
+  "基于专家输出的相似性度量而非路由器logits",
+  "分层聚类方法实现渐进式专家分组",
+  "频率加权合并策略保持任务无关性"
+ ],
+ "method_framework": "通过专家输出的分层聚类将专家分组，然后在每组内进行频率加权合并，实现SMoE模型参数减少而不需重训练",
+ "experiment_framework": "在Qwen和Mixtral模型上评估，8个零样本语言任务，25%和50%专家减少率，与O-prune、S-prune、F-prune和M-SMoE基线比较",
+ "takeaways": [
+  "专家输出作为相似性度量比路由器logits更有效",
+  "分层聚类比单次分组方法保持更好的簇间多样性和簇内相似性",
+  "合并策略选择对性能影响相对较小"
+ ],
+ "weaknesses": [
+  "仅评估了语言模型，未扩展到医学影像等特定领域",
+  "未充分探讨不同规模数据集上的计算效率",
+  "未分析合并后模型的不确定性估计"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

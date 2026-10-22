@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Stereo Any Video Temporally Consistent Stereo Matching.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Stereo Any Video Temporally Consistent Stereo Matching.pdf",
+ "title": "Stereo Any Video Temporally Consistent Stereo Matching",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "结合单目深度先验的立体匹配，提升时空一致性",
+ "innovations": [
+  "集成单目视频深度先验的特征提取",
+  "全对相关模块提升匹配鲁棒性",
+  "时间凸上采样机制增强时序一致性"
+ ],
+ "method_framework": "结合冻结的单目视频深度模型与可训练卷积编码器提取特征，通过全对相关构建匹配代价体，利用3D-GRU进行时序代价聚合，最后通过时间凸上采样生成高分辨率视差图。",
+ "experiment_framework": "在Sintel、Dynamic Replica等5个合成数据集和KITTI Depth等2个真实数据集上评估，使用EPE和TEPE作为主要指标，进行零样本泛化和消融实验。",
+ "takeaways": [
+  "利用冻结的单目视频深度模型提供时序稳定特征",
+  "全对相关比传统单向相关更鲁棒",
+  "时间凸上采样显著提升时序一致性"
+ ],
+ "weaknesses": [
+  "仅依赖单目视频深度先验，未充分利用多模态信息",
+  "模型复杂度较高，训练时间长",
+  "在极端动态场景下仍存在不一致问题"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "时空一致性提升与可靠性主线部分相关但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

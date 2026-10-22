@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Tino Latent Video Consistency Inverse Solver for High Definition Video Restoration.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tino Latent Video Consistency Inverse Solver for High Definition Video Restoration.pdf",
+ "title": "LATINO: Latent Video Consistency Inverse Solver for High Definition Video Restoration",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "首个VCM先验零样本视频逆求解器，但与主线无关且证据不足",
+ "innovations": [
+  "首次将视频一致性模型（VCM）作为先验引入零样本视频逆问题求解，利用其时间因果性捕获帧间依赖",
+  "设计无需自动微分的条件化机制，仅需少量神经网络函数评估即可实现强测量一致性和时间平滑过渡",
+  "实现高清视频重建质量和计算效率的新基准，优于逐帧应用图像LDM的方法"
+ ],
+ "method_framework": "基于贝叶斯逆问题框架，将预训练视频一致性模型作为视频先验分布。通过条件化机制将测量约束注入VCM的去噪过程，无需自动微分即可实现数据一致性。利用VCM的快速采样特性，仅需少量函数评估即可完成高清视频重建。",
+ "experiment_framework": "在多种视频逆问题上评估，包括联合时空超分辨率、去噪、去模糊等。基线为逐帧应用图像LDM的零样本逆求解方法。指标包括重建保真度（PSNR/SSIM）、感知质量和时间一致性指标。",
+ "takeaways": [
+  "视频一致性模型作为先验能有效捕获时间依赖，解决逐帧方法的时间不一致问题",
+  "无需自动微分的条件化机制在保持测量一致性的同时大幅提升计算效率",
+  "在多种高清视频逆问题上同时提升重建保真度和感知质量"
+ ],
+ "weaknesses": [
+  "与主线（医学影像/多模态大模型推理可靠性）完全无关，属于计算成像/视频处理领域",
+  "依赖预训练VCM的质量，VCM在特定场景的泛化性未充分讨论",
+  "计算效率提升的定量分析（相比扩散模型的具体加速比）不够详细"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯视频处理，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

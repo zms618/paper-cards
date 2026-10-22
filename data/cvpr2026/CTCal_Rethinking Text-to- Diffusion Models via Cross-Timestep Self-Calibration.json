@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/CTCal_Rethinking Text-to- Diffusion Models via Cross-Timestep Self-Calibration.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/CTCal_Rethinking Text-to- Diffusion Models via Cross-Timestep Self-Calibration.pdf",
+ "title": "CTCal Rethinking Text-to- Diffusion Models via Cross-Timestep Self-Calibration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.4
+ },
+ "one_line": "跨时间步校准提升扩散模型文本对齐，但词类选择局限",
+ "innovations": [
+  "跨时间步自校准(CTCAL)机制",
+  "基于词性的交叉注意力图选择策略",
+  "像素-语义空间联合优化",
+  "主体响应对齐正则化"
+ ],
+ "method_framework": "利用小时间步可靠的文本-图像对齐(交叉注意力图)校准大时间步的表示学习，结合时间步感知自适应权重整合CTCAL与扩散损失",
+ "experiment_framework": "T2I-Compbench++和GenEval基准测试，与SD 2.1、SD 3等模型对比，评估属性绑定、对象关系、计数等指标",
+ "takeaways": [
+  "小时间步的交叉注意力图更可靠，可用于校准大时间步学习",
+  "名词 token 的注意力图包含更多空间语义信息",
+  "时间步感知自适应权重能有效平衡两种损失"
+ ],
+ "weaknesses": [
+  "仅关注名词 token 可能忽略其他重要词类",
+  "未充分探讨不同文本复杂度下的性能差异",
+  "计算开销增加(需要提取和存储交叉注意力图)"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型校准属于可靠性方法，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

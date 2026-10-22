@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/VISION-R1 Incentivizing Reasoning Capability In Multimodal Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VISION-R1 Incentivizing Reasoning Capability In Multimodal Large Language Models.pdf",
+ "title": "Vision-R1: Incentivizing Reasoning Capability in Multimodal Large Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "将DeepSeek-R1迁移至多模态，用蒸馏数据与GRPO提升数学推理性能。",
+ "innovations": [
+  "通过模态桥接(modality bridging)与数据过滤，利用现有MLLM和DeepSeek-R1自动构建20万条无人工标注的多模态CoT冷启动数据集Vision-R1-cold",
+  "提出渐进式思维抑制训练(PTST)策略，缓解冷启动后过度思考(overthinking)导致的优化困难",
+  "采用GRPO配合硬格式结果奖励函数，在仅1万条多模态数学数据上做RL训练，逐步习得正确复杂推理过程"
+ ],
+ "method_framework": "先用现有MLLM经模态桥接调用DeepSeek-R1生成并过滤，得到20万条无人工标注的多模态CoT冷启动数据做SFT初始化；再针对冷启动后过度思考问题，提出PTST渐进抑制无效长思维，并用GRPO配硬格式结果奖励函数在小规模多模态数学数据上做RL，逐步精炼正确复杂推理过程。",
+ "experiment_framework": "在多个多模态数学推理基准上评测；对比主流MLLM与推理模型(含OpenAI o1)；指标为准确率；报告RL仅用1万数据即平均提升约6%，Vision-R1-7B MathVista 73.5%(仅低于o1 0.4%)，32B/72B为76.4%/78.2%。",
+ "takeaways": [
+  "仅用1万条多模态数学RL数据即在多个多模态数学推理基准上平均提升约6%",
+  "Vision-R1-7B在MathVista达73.5%，仅比OpenAI o1低0.4%；32B/72B分别达76.4%/78.2%",
+  "冷启动CoT数据+PTST+GRPO可在无需人工标注的前提下激活MLLM的质疑与反思式推理"
+ ],
+ "weaknesses": [
+  "方法主要是将DeepSeek-R1/ZerO式RL范式迁移到多模态，算法创新相对有限",
+  "冷启动CoT数据由DeepSeek-R1蒸馏而来，存在教师模型错误与风格偏置的传递，前9页未见错误率量化",
+  "过度思考(overthinking)问题仅靠PTST缓解，未报告推理长度/推理成本的系统权衡",
+  "聚焦数学推理，对幻觉抑制、不确定性等可靠性维度及医学影像域未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态数学推理，未触及可靠性主线与医学影像域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

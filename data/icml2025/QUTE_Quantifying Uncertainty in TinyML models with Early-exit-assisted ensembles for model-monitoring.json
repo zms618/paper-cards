@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/QUTE_Quantifying Uncertainty in TinyML models with Early-exit-assisted ensembles for model-monitoring.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/QUTE_Quantifying Uncertainty in TinyML models with Early-exit-assisted ensembles for model-monitoring.pdf",
+ "title": "QUTE: Quantifying Uncertainty in TinyML models with Early-exit-assisted ensembles for model-monitoring",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "早期退出辅助集成实现TinyML不确定性量化，但方法深度与证据不足",
+ "innovations": [
+  "早期退出辅助集成架构，在训练时利用早期退出知识促进多样性",
+  "推理时移除资源密集型早期退出，仅保留轻量级输出块",
+  "针对CID数据的不确定性量化优化，提高模型可靠性"
+ ],
+ "method_framework": "QUTE在基础网络最终出口添加K个轻量级分类头，通过早期退出块辅助训练促进多样性，推理时仅保留这些分类头形成集成",
+ "experiment_framework": "在MNIST、SpeechCommands、CIFAR10和TinyImagenet数据集上评估，使用CID和OOD数据集，测量准确率下降检测、失败检测和不确定性量化质量",
+ "takeaways": [
+  "早期退出辅助集成可有效提升TinyML模型的不确定性量化能力",
+  "小模型在CID数据上表现更少过度自信，更适合不确定性估计",
+  "模型大小与不确定性估计质量存在权衡关系"
+ ],
+ "weaknesses": [
+  "早期退出位置选择依赖经验策略，缺乏自适应方法",
+  "仅评估了有限的数据集和模型，泛化能力需进一步验证",
+  "未详细分析不同类型不确定性(认知/偶然)的分离效果"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

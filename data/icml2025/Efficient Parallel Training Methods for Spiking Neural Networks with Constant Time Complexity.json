@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Efficient Parallel Training Methods for Spiking Neural Networks with Constant Time Complexity.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficient Parallel Training Methods for Spiking Neural Networks with Constant Time Complexity.pdf",
+ "title": "Efficient Parallel Training Methods for Spiking Neural Networks with Constant Time Complexity",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "FPT方法将SNN训练复杂度从O(T)降至O(K)，但收敛条件受限且实验覆盖不足。",
+ "innovations": [
+  "提出固定点并行训练(FPT)方法，将SNN训练时间复杂度从O(T)降至O(K)",
+  "提供FPT的理论收敛分析，证明现有并行脉冲神经元模型是FPT的特例",
+  "FPT保留LIF神经元动态特性，包括重置机制，同时实现高效并行计算"
+ ],
+ "method_framework": "FPT将LIF神经元动力学转化为固定点迭代框架，通过K次迭代(K为小常数)收敛到平衡点，同时保留神经元动态特性，实现时间复杂度从O(T)到O(K)的降低。",
+ "experiment_framework": "在DVS-CIFAR10、DVS-Gesture和ImageNet-100数据集上评估，与OTTT、SLTT、T-RevSNN和LocalZO等方法比较准确性和训练速度。",
+ "takeaways": [
+  "固定点迭代框架可有效解决SNN训练的顺序依赖问题",
+  "保留完整神经元动态特性对保持模型性能至关重要"
+ ],
+ "weaknesses": [
+  "FPT的收敛条件依赖于特定参数设置，可能需要调整",
+  "实验主要在标准数据集上进行，缺乏在更复杂或特定领域应用的验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

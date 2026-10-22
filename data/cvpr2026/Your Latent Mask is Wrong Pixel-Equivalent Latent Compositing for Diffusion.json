@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Your Latent Mask is Wrong Pixel-Equivalent Latent Compositing for Diffusion.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Your Latent Mask is Wrong Pixel-Equivalent Latent Compositing for Diffusion.pdf",
+ "title": "Your Latent Mask is Wrong: Pixel-Equivalent Latent Compositing for Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "形式化像素等价潜在合成原则，诊断线性插值失效，轻量修正器提升边缘合成质量",
+ "innovations": [
+  "原则形式化：提出Pixel-Equivalent Latent Compositing(PELC)——潜在算子应在解码后与像素算子等价(decoder/encoder equivalence两条等式)，把'潜在里怎么混'从启发式变成可验证准则",
+  "诊断式洞察：实证现代VAE(非线性+宽感受野全局上下文)使线性潜在插值不满足像素等价，单一降采样mask广播会致边界泄漏、全局色漂与离流形接缝",
+  "轻量实现：DecFormer(7.7M, 3.5% FLOP)预测逐通道混合权重+流形外残差修正，支持真软边缘alpha合成，即插即用免微调主骨干；同一PE配方推广到颜色校正等一般像素算子"
+ ],
+ "method_framework": "冻结编码器E/解码器D，像素空间算子F→合成监督；训练Cθ最小化解码等价与编码等价误差：D(Cθ(zA,zB,M))≈(1-M)⊙D(zA)+M⊙D(zB)；7.7M transformer逐通道权重+非线性残差修正，drop-in替换启发式潜在插值。",
+ "experiment_framework": "FLUX.1族(Dev VAE)上：边缘误差最高降53%、软/二值/结构化mask四象限定性+表2(线性插值失效实证)；inpainting LoRA(FLUX.1-Dev+DecFormer)对比FLUX.1-Fill；颜色校正任务扩展；COCO/withoutBG验证(训练外)。",
+ "takeaways": [
+  "'把启发式写成可验证性质'：DE/EE等价把'潜在混合'抽象成代数条件，任何潜在空间算子都能先验证再设计——形式化先行的方法论可复制",
+  "'小修正器+冻结骨干'：7.7M网络+3.5% FLOP修正一个广泛使用的错误操作，性价比远高于全量微调专用模型，'错误操作补丁'是一个被低估的研究品类",
+  "'全局熵缠结的副作用'：潜在空间修正收益会波及远离mask的区域(全局色一致性)，说明评测不能只看局部mask区"
+ ],
+ "weaknesses": [
+  "原理仅在FLUX VAE族验证，'现代VAE普遍非线性'结论的单架构证据弱；逐通道权重+残差修正的消融(权重vs残差各自贡献)未量化呈现",
+  "LoRA版'接近FLUX.1-Fill'的比较指标/统计口径未完整给出(9页内只见描述)；软mask的alpha取值范围与极端mask(全0/全1)退化行为未测",
+  "PE训练监督完全依赖像素合成标签，复合/嵌套算子(多次合成叠加)的误差累积与推理时多步编辑的稳定性未讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "像素级合成方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Diverging Preferences When do Annotators Disagree and do Models Know.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Diverging Preferences When do Annotators Disagree and do Models Know.pdf",
+ "title": "Diverging Preferences: When do Annotators Disagree and do Models Know?",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "分析偏好标注分歧来源，挑战奖励建模假设，但方法创新有限。",
+ "innovations": [
+  "提出偏好标注分歧来源的分类法，覆盖4个高层类、10个类别",
+  "发布MultiPref-Disagreements与HelpSteer2-Disagreements个体标注数据集",
+  "实证发现超30%样本存在标注分歧、超75%分歧源于响应复杂度/冗长/提示欠规范等个人偏好而非标注错误，并指出标准Bradley-Terry奖励建模与LLM-as-Judge无法区分分歧"
+ ],
+ "method_framework": "先对偏好标注分歧做人工归类建立分类法；再统计分歧频率与来源；进而分析标准奖励建模(多数投票聚合+Bradley-Terry)与LLM裁判在分歧样本上的失效模式——它们会在本应发散的偏好上强行预测单一偏好，破坏多元对齐；最后提出识别发散偏好的方法以缓解其对训练与评测的影响。",
+ "experiment_framework": "在MultiPref与HelpSteer2两个偏好数据集上做分歧标注与统计；对比标准Bradley-Terry奖励模型与LLM-as-Judge在高一致vs分歧样本上的行为，报告其无法区分发散偏好的问题。",
+ "takeaways": [
+  "偏好标注分歧大多是真实个人偏好差异，不应简单当噪声通过多数投票抹平",
+  "标准奖励建模会在偏好发散时仍给出决定性单一偏好，导致多元对齐崩坏",
+  "响应风格/冗长/提示欠规范等是分歧主因，应在评测与训练中显式识别发散样本"
+ ],
+ "weaknesses": [
+  "主要分析英文助手对话偏好，对其他模态/任务偏好的分歧规律未知",
+  "提出的缓解方法(识别发散偏好)的实际对齐增益在前9页内展示有限",
+  "分类法依赖人工标注，类别间边界与标注者一致性未充分量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

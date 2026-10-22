@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/A Unified -Dense Annotation Generation Model for Underwater Scenes.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Unified -Dense Annotation Generation Model for Underwater Scenes.pdf",
+ "title": "A Unified Image-Dense Annotation Generation Model for Underwater Scenes",
+ "scores": {
+  "novelty": 4.5,
+  "depth": 5.0,
+  "evidence": 4.0,
+  "relevance": 5.0,
+  "overall": 4.7
+ },
+ "one_line": "水下图像密集标注生成，复用布局与时间调制，实验证据不足",
+ "innovations": [
+  "Implicit Layout Sharing：把 T2I 分支的 cross-attention map M_i=softmax(QK^T/√c) 直接复用给 T2D/T2M 分支，使注意力退化为 M_i×V，从机制上强制多模态标注共享同一布局",
+  "Time Adaptive Normalization：用跨模态特征经 MLP 生成 γ/β 调制参数，再由时间嵌入经 linear+sigmoid 得到门控 α 控制归一化强度，实现 depth/mask/image 三分支的双向特征交互",
+  "仅微调 TAN 与 LoRA（rank 32/64/64）、主干冻结，把 14K 四元组训练数据蒸馏成 5K caption×10 样本的 SynTIDE 合成集"
+ ],
+ "method_framework": "PixArt-α 作 T2I 主干，两个 mini-transformer（取前 10 层初始化）作 T2D/T2M；ILS 共享隐式布局，TAN 做跨模态调制，三分支 MSE 去噪损失等权相加，推理时仅文本驱动。",
+ "experiment_framework": "Sea-thru(D3/D5)/SQUID 深度 + UIIS/USIS10K 分割；微调 AdaBins/NewCRFs/PixelFormer/MIM 与 Segformer/Mask2former/ViT-Adapter；SIlog/δ1/mIoU。",
+ "takeaways": [
+  "共享 cross-attention map 作为跨模态布局约束，是比再训练一个对齐模块便宜得多的一致性方案",
+  "用基础模型（Depth Anything/BLIP2）补齐缺失模态以构造四元组训练数据，可复用到其他标注稀缺域"
+ ],
+ "weaknesses": [
+  "本质是通用可控生成迁移到水下降 + ILS/TAN 两个正则式模块，未提出新问题，符合量规“跟风搬领域”上限",
+  "消融表（Tab.4/5/6）的 mIoU 只有 36-42，主表为 74-76，二者不同设定却未说明，消融结论无法与主结果对齐",
+  "位置消融 {15,27} 使 SIlog 从 22 崩到 44.86、mIoU 跌到 8.6，论文未给任何解释",
+  "无任何多种子方差或显著性检验；合成数据提升幅度中未剥离“SynTIDE 与真实集分布差异”的成分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "水下标注生成，未触及可靠性主线，仅知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

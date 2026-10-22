@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/ReFrame_Layer Caching for Accelerated Inference in Real-Time Rendering.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ReFrame_Layer Caching for Accelerated Inference in Real-Time Rendering.pdf",
+ "title": "ReFrame: Layer Caching for Accelerated Inference in Real-Time Rendering",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "将扩散模型层缓存扩展至实时渲染，提升1.4倍速度但架构受限",
+ "innovations": [
+  "将扩散模型的层缓存技术扩展到实时渲染的编码器-解码器网络",
+  "提出多种缓存策略优化质量与性能的权衡",
+  "利用帧差异和运动向量实现自适应缓存更新"
+ ],
+ "method_framework": "ReFrame在编码器-解码器网络中缓存中间层特征，通过跳过计算并重用缓存结果来加速推理，支持U-Net和U-Net++架构",
+ "experiment_framework": "在帧外推、超采样和图像合成三种实时渲染任务上评估，使用FLIP、SSIM、PSNR和LPIPS指标，在NVIDIA RTX 2080 Ti GPU上测量速度提升",
+ "takeaways": [
+  "层缓存技术可有效利用帧间相似性减少计算量",
+  "自适应缓存策略比固定周期刷新更适合实时渲染场景"
+ ],
+ "weaknesses": [
+  "缓存策略对场景变化敏感，可能导致质量波动",
+  "仅适用于特定架构的网络(如U-Net和U-Net++)"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

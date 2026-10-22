@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Postercraft_Rethinking High-Quality AEs-THETIC Poster Generation In A Unified Frame.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Postercraft_Rethinking High-Quality AEs-THETIC Poster Generation In A Unified Frame.pdf",
+ "title": "PosterCraft: Rethinking High-Quality Aesthetic Poster Generation in a Unified Framework",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "端到端海报生成框架，四阶段级联优化逼近商用质量",
+ "innovations": [
+  "放弃模块化/预定义版式管线，探索端到端统一生成以保证审美与风格一致性",
+  "设计四阶段级联优化流程：大规模文字渲染优化、HQ-Poster区域感知微调、审美-文本强化学习(best-of-n偏好优化)、联合视觉-语言反馈精修",
+  "构建各阶段专用数据集 Text-Render-2M 与 HQ-Poster-100K 等，自动化数据构造管线支持鲁棒训练"
+ ],
+ "method_framework": "在基础生成模型上依次做：(i)用Text-Render-2M优化多实例精确文字渲染；(ii)在HQ-Poster-100K上做区域感知监督微调；(iii)best-of-n偏好优化做审美-文本RL；(iv)视觉-语言反馈做联合精修，无需复杂架构改动即可从文本直接生成背景、版式、排版一体的海报。",
+ "experiment_framework": "在渲染准确率、版式连贯、整体美观等维度对比开源基线与商用闭源系统；用 HPS 等打分与人工/ MLLM 评分评估，并报告数据集过滤与偏好对的效果。",
+ "takeaways": [
+  "端到端统一框架在渲染精度、版式连贯与视觉吸引力上显著超过开源模块化基线",
+  "四阶段级联优化使生成质量逼近 SOTA 商用海报系统",
+  "逐阶段自动化数据构造可在不改动架构的前提下支撑高质量训练"
+ ],
+ "weaknesses": [
+  "主线为海报美学生成，与可靠性/医学影像/多模态推理主线关联弱",
+  "强依赖商用打分器(Gemini/HPS)做反馈与偏好，评测主观性与评分器偏差存疑",
+  "前9页未见对极端文字密度/长文本渲染失败模式的系统分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.68,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "海报生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

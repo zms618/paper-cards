@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Marigold-DC_Zero-Shot Monocular Depth Completion with Guided Diffusion.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Marigold-DC_Zero-Shot Monocular Depth Completion with Guided Diffusion.pdf",
+ "title": "Marigold-DC Zero-Shot Monocular Depth Completion with Guided Diffusion",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "扩散模型引导零样本深度完成，测试时优化整合稀疏观测",
+ "innovations": [
+  "将深度完成重新定义为受稀疏深度引导的单目深度估计",
+  "提出测试时优化方案，将稀疏深度观测整合到扩散去噪过程中",
+  "设计仿射不变预测在潜在空间与度量空间稀疏深度之间的锚定策略"
+ ],
+ "method_framework": "基于预训练的潜在扩散模型(LDM)，通过测试时优化将稀疏深度观测作为引导信号注入扩散过程，动态调整尺度和平移参数，使预测与可用深度测量对齐",
+ "experiment_framework": "在6个真实世界数据集(NYU-Depth V2, ScanNet, VOID, iBims-1, KITTI DC, DDAD)上进行零样本评估，使用MAE和RMSE指标，与8种基线方法比较",
+ "takeaways": [
+  "利用单目深度估计的强视觉先验可显著提升深度完成的泛化能力",
+  "测试时优化框架可作为即插即用解决方案，无需针对特定任务训练或修改架构"
+ ],
+ "weaknesses": [
+  "计算开销较大，需要多次推理和优化步骤",
+  "对极端稀疏深度输入的性能提升有限，特别是在远距离区域"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "深度完成属于视觉任务，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

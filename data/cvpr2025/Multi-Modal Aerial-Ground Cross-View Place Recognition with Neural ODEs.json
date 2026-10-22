@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Multi-Modal Aerial-Ground Cross-View Place Recognition with Neural ODEs.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Multi-Modal Aerial-Ground Cross-View Place Recognition with Neural ODEs.pdf",
+ "title": "Multi-Modal Aerial-Ground Cross-View Place Recognition with Neural ODEs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "神经ODE融合多模态空地跨视角，但计算开销大且鲁棒性验证不足",
+ "innovations": [
+  "基于流形的神经ODE框架进行多模态信息融合",
+  "多域对齐损失函数解决跨视角域差异",
+  "构建KITTI360-AG和nuScenes-AG新基准数据集"
+ ],
+ "method_framework": "AGPlace采用两阶段融合策略：首先通过流形上的神经ODE构建融合嵌入，然后将该嵌入映射回各模态空间进行模态级融合，最终结合多域对齐损失实现空地跨视角匹配。",
+ "experiment_framework": "在KITTI360-AG和nuScenes-AG数据集上评估，使用R@K、AR@%1和AR@1指标，与MinkLoc++、AdaFusion等基线比较，并测试传感器失效场景。",
+ "takeaways": [
+  "流形上的神经ODE能有效保持特征差异并生成区分性表示",
+  "语义地图作为数据库可提供足够信息用于实际PR任务",
+  "多域对齐损失同时优化跨域和同域特征关系"
+ ],
+ "weaknesses": [
+  "方法复杂度高，计算开销大",
+  "依赖Google Maps API获取航拍数据，可能存在数据偏差",
+  "未充分讨论模型在极端天气或光照条件下的鲁棒性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态跨视角匹配与可靠性主线交织，但计算开销大",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

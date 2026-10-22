@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/An Online Statistical Framework for Out-of-Distribution Detection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/An Online Statistical Framework for Out-of-Distribution Detection.pdf",
+ "title": "An Online Statistical Framework for Out-of-Distribution Detection",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 7.0
+ },
+ "one_line": "将OOD检测建模为在线多重假设检验，提供FDR统计保证但理论假设受限",
+ "innovations": [
+  "指出现有 OOD 方法只堆 score 函数、却沿用经验性阈值决策规则，缺乏严格统计保证",
+  "提出 g-LOND：将流式 OOD 检测纳入在线多重假设检验，摆脱 LOND 对 p 值相互独立的要求",
+  "理论上证明 g-LOND 可在预设水平控制 FDR，且在广义类高斯分布族下 FPR 依概率收敛到零"
+ ],
+ "method_framework": "对流式到达的样本逐个做假设检验，把 OOD 分数转为 p 值；用 g-LOND 序贯决策规则在不依赖 p 值独立性的前提下控制 FDR，分布无关且不需要 OOD 训练数据。决策不再依赖固定阈值，而是在线序贯地控制错误发现比例。",
+ "experiment_framework": "在标准 OOD 检测基准（ID 网络 + 多种 OOD 集）上与基于 score+阈值的方法对比 TPR-FPR 权衡，报告不同 FDR 预设水平下的检测性能；覆盖分布无关设定。",
+ "takeaways": [
+  "OOD 检测可被严谨地建模为在线多重假设检验，从而获得 FDR 统计保证",
+  "g-LOND 无需 p 值独立假设即可控制 FDR，更贴近真实流式场景",
+  "在广义类高斯分布下 FPR 依概率收敛到零，并取得更好的 TPR-FPR 权衡"
+ ],
+ "weaknesses": [
+  "落地域为通用 CV/安全关键场景，非指定的医学影像或多模态大模型推理，relevance 受限",
+  "p 值从 score 函数的转化方式对 FDR 实际控制效果的影响在前9页讨论有限",
+  "FPR→0 的理论建立在广义类高斯分布族假设上，对重尾/非高斯真实分数分布的适用性需验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "OOD检测方法创新，但未触及指定落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Optimization Proxies using Limited Labeled Data and Training Time – A Semi-Supervised Bayesian Neural Network.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Optimization Proxies using Limited Labeled Data and Training Time – A Semi-Supervised Bayesian Neural Network.pdf",
+ "title": "Optimization Proxies using Limited Labeled Data and Training Time – A Semi-Supervised Bayesian Neural Network Approach",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "半监督BNN优化代理，三明治训练降低电网约束间隙10倍",
+ "innovations": [
+  "将半监督学习与BNN结合用于优化代理，解决标注数据稀缺问题",
+  "三明治式训练：交替监督步(最小化成本)和无监督步(强制约束可行)",
+  "利用BNN后验采样构建概率置信界，仅需少量验证数据"
+ ],
+ "method_framework": "BNN同时接受少量标注数据(监督步最小化成本损失)和大量无标注数据(无监督步惩罚约束违反)；交替训练；利用BNN后验分布估计输出不确定性，构建性能置信界。",
+ "experiment_framework": "任务：电网非凸约束优化问题。基线：标准DNN代理、纯无监督方法。指标：等式约束间隙、不等式约束间隙、置信界覆盖。",
+ "takeaways": [
+  "标注数据稀缺时，半监督BNN显著优于纯DNN代理",
+  "三明治式监督/无监督交替训练兼顾精度和可行性",
+  "BNN后验可提供有意义的概率置信界，无需大量验证数据"
+ ],
+ "weaknesses": [
+  "仅在电网优化验证，其他工程优化问题的泛化性未知",
+  "BNN推理时需后验采样，在线推理开销未量化",
+  "无监督步的约束惩罚权重需手动调节"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

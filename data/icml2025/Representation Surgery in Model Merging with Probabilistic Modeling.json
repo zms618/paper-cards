@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Representation Surgery in Model Merging with Probabilistic Modeling.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Representation Surgery in Model Merging with Probabilistic Modeling.pdf",
+ "title": "Representation Surgery in Model Merging with Probabilistic Modeling",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.25
+ },
+ "one_line": "概率模型合并方法，采样建模表示偏置，但与主线关联弱。",
+ "innovations": [
+  "指出现有确定性 Surgery(task-specific MLP)建模合并表示偏置能力有限。",
+  "提出 ProbSurgery：为每个样本生成嵌入分布，经采样过程输出表示偏置，以自然处理多模型参数干扰带来的不确定性。",
+  "给出概率方式相对确定性方式优越性的理论分析，并提出适配任务共享(task-sharing)设定的扩展。"
+ ],
+ "method_framework": "在合并模型表示上叠加一个概率‘手术’模块：为每个样本预测嵌入分布(均值+方差)，通过重参数化采样得到表示偏置并施加于合并表示之上，从而以随机化方式吸收多专家参数相互干扰造成的分布偏移与不确定性。",
+ "experiment_framework": "在多任务/模型合并基准上对比 Surgery 等确定性偏置校正方法及常见合并策略(Task-Arithmetic/TIES 等)；指标为各任务精度与多任务平均性能，并在真实场景检验泛化能力。",
+ "takeaways": [
+  "用概率采样建模表示偏置优于确定性 MLP。",
+  "概率方式自然吸收多模型参数干扰的不确定性。",
+  "ProbSurgery 在保持合并免训练优势的同时提升多任务性能。"
+ ],
+ "weaknesses": [
+  "采样模块引入随机性与额外方差，推理稳定性/开销需权衡。",
+  "概率分布假设(通常高斯)的合理性与偏离时的鲁棒性论证有限。",
+  "属模型合并方法改进，与可靠性、医学影像、多模态推理主线关联较弱。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

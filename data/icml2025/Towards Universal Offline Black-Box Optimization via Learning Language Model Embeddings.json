@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Towards Universal Offline Black-Box Optimization via Learning Language Model Embeddings.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Towards Universal Offline Black-Box Optimization via Learning Language Model Embeddings.pdf",
+ "title": "Towards Universal Offline Black-Box Optimization via Learning Language Model Embeddings",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "用LM嵌入统一异构数值空间，实现离线BBO跨域泛化",
+ "innovations": [
+  "指出离线BBO跨域泛化的核心障碍是异构搜索空间缺乏统一参数表示，提出借LM嵌入统一数值空间",
+  "讨论多种可行路径：以next-token预测形式的端到端学习框架，以及优先学习强表示潜空间",
+  "从开源学术工作收集离线BBO任务与数据用于训练，实验验证通用离线BBO的有效性"
+ ],
+ "method_framework": "传统离线BBO仅限单任务/固定维、同变量类型，且依赖每任务充足历史数据。本文把数值参数tokenize成字符串序列，利用LM嵌入以统一方式捕获不同数据类型的潜在关系，从而跨异构空间迁移；既尝试端到端next-token预测优化器，也尝试显式学习强表示潜空间，以突破跨任务关系利用的壁垒。",
+ "experiment_framework": "从开源工作收集多任务离线BBO数据训练；在跨域/跨维离线BBO任务上评估最优值/遗憾，对比传统贝叶优化/进化方法与专用离线BBO，验证通用性与有效性。",
+ "takeaways": [
+  "LM字符串嵌入可作为异构数值空间的统一表示，使跨域离线BBO成为可能",
+  "端到端next-token优化与潜空间学习是两条可行技术路径",
+  "统一LM先验+字符串嵌入可克服通用BBO的传统障碍"
+ ],
+ "weaknesses": [
+  "主线相关性弱：属离线黑箱优化/贝叶优化，与可靠性乘医学影像/多模态推理主线无直接联系",
+  "前9页主要为问题梳理与方法路线讨论，具体模型设计与完整结果在后续页",
+  "把数值tokenize为字符串可能损失精度/数值结构，对高精度优化任务的影响需后续页"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

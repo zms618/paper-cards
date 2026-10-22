@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Anchor-Aware Similarity Cohesion in Target Frames Enables Predicting Temporal Moment.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Anchor-Aware Similarity Cohesion in Target Frames Enables Predicting Temporal Moment.pdf",
+ "title": "Anchor-Aware Similarity Cohesion in Target Frames Enables Predicting Temporal Moment Boundaries in 2D",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "锚点掩码对齐查询，在2D相似度矩阵上检测边界",
+ "innovations": [
+  "发现 CLIP 相似度下最相关帧几乎总落在真值区间内，据此取 A=argmax_i cos(v_i^e,q) 为锚点，在 [1,A] 与 [A,N] 各用 DTW 最大化锚点两侧段内余弦和求语义转折点 b_L/b_R，生成锚感知掩码只让区间内帧参与查询对齐",
+  "两段式对齐：先以 q 为 query 的 cross-attention 聚合出查询增强视觉特征 g=Ag(VgV)ᵀ，再用 tanh 打分 r_i 逐帧重加权得 v_i^r=r_i v_i，最后 v_i^a=α_i q+(1-α_i)v_i^r 把查询信息选择性注入相关帧",
+  "把边界预测从\"帧特征回归到时间坐标\"改造成在 N×N 帧-帧相似度矩阵上做单点检测：对齐后匹配区间帧自相似聚成高值块，其上右上角坐标即 (s,e)，用 CNN+MLP 出顶点分数矩阵 P、MSE 监督、top-k 取候选，天然耦合起止时间、免后处理"
+ ],
+ "method_framework": "CLIP 抽帧特征与句特征；锚点由查询相似度 argmax 定，DTW 求语义转折点生成锚掩码；交叉注意力聚合查询增强特征、逐帧 tanh 重加权、再按 α 混合查询与帧特征得对齐帧表示；对齐帧余弦构成 N×N 相似度矩阵，CNN+MLP 出顶点分数矩阵，top-k 解边界。",
+ "experiment_framework": "QVHighlights、ActivityNet Captions、Charades-STA 三个 VMR 基准，对比 MomentDETR/QD-DETR/EaTR/TR-DETR/UVCOM/CG-DETR/QD-VMR/BAM-DETR/R2-Tuning/Mr.BLIP 等，指标 R1@.5/.7、mAP@.75、mAP@Avg。",
+ "takeaways": [
+  "对齐后\"匹配帧自相似会聚成块\"这一性质，可把检索-定位一步化为 2D 峰值检测，天然耦合起止时间、免后处理",
+  "用锚点+DTW 生成软掩码过滤无关帧参与对齐，优于对所有帧无差别注入文本特征",
+  "把坐标回归换成在高维相似度图上找\"结构顶点\"，能顺带把起止的联合约束编码进网络"
+ ],
+ "weaknesses": [
+  "锚点与转折点全部在测试时在线由 argmax 与 DTW 求解（Eq.2-4），无阈值也无置信度；锚点若落在错误语义段，b_L/b_R 会系统性带偏整个对齐，正文没有锚点失效率与失败案例量化",
+  "对比口径可疑：R1@.7 达 64.3 相对同期 CLIP 基线（BAM-DETR 48.6）高 15.7 点，ActivityNet R1@.5 71.1 vs UnLoc-L 48.3，这类超大差距更像采样帧率/候选数（k=10）/骨干差异而非对齐机制带来的",
+  "所有对比只报单次 R1/mAP、无方差与多种子；表 4/5 的消融（不同 VLM 的 A2M、粗区间 refinement）在正文被截断，A2FA 与 F2SGD 各自贡献量无法核验",
+  "推理需构造并卷积 N×N 相似度矩阵，论文称免后处理但未给长视频下的延迟与显存对比；top-k 候选在 k=1 与 k=10 两种设定下的行为差异也只在实现细节里一句带过"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "视频边界检测与可靠性主线无交点，仅属常规任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "title": "PMark: Towards Robust and Distortion-Free Semantic-Level Watermarking with Channel Constraints",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "代理函数框架的语义水印，多通道约束增强鲁棒性但开销未量化",
+ "innovations": [
+  "提出基于代理函数(将句子映射为标量)的语义水印统一理论框架，给出鲁棒性理论保证。",
+  "PMark通过采样动态估计下一句的PF中位数，并施加多个PF约束(称channels)增强水印证据。",
+  "实现无失真(distortion-free)性质；另给出去掉动态中位数估计、提升采样效率的经验优化版。"
+ ],
+ "method_framework": "把句子作为基本水印单元；定义若干代理函数(句子→标量)作为通道；生成时动态采样估计下一候选句的PF中位数，沿中位数一侧选择以埋入水印，同时满足多通道约束以累积证据；检测侧对句子PF分布做统计检验。",
+ "experiment_framework": "在多个文本生成设置下对比token级(Green-Red)及语义级SWM基线；指标为文本质量(困惑度/人类或裁判分)与抗paraphrase攻击的鲁棒性(检测AUC/TPR)；报告在text quality与robustness上一致优于现有SWM基线。",
+ "takeaways": [
+  "多通道PF约束能在不引入采样分布失真的前提下增强水印证据与抗改写鲁棒性。",
+  "代理函数框架为语义水印鲁棒性提供了可证明的理论基础。",
+  "经验优化版去除动态中位数估计后采样效率提升且性能保持。"
+ ],
+ "weaknesses": [
+  "鲁棒性主要针对paraphrase类攻击，对摘要、翻译、大段删改等更强攻击的韧性需更多评测。",
+  "动态中位数估计需额外采样，生成吞吐开销在正文前9页内未量化清楚。",
+  "与最新密码学类无失真水印(Gumbel/PRC)在长文本、低token预算下的系统对比不足。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PMARK_Towards Robust and Distortion-Free Semantic-Level Watermarking with Channel Constraints.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PMARK_Towards Robust and Distortion-Free Semantic-Level Watermarking with Channel Constraints.pdf",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "语义水印与鲁棒性主线交点，多通道约束增强抗改写鲁棒性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

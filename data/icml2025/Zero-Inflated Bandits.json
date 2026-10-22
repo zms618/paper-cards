@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Zero-Inflated Bandits.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Zero-Inflated Bandits.pdf",
+ "title": "Zero-Inflated Bandits",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.3
+ },
+ "one_line": "针对零膨胀奖励的UCB算法，但与主线关联弱且缺乏大规模验证",
+ "innovations": [
+  "针对零膨胀/稀疏奖励结构建模，设计专门的bandit算法",
+  "提出基于产品(product-based)的UCB，区分'是否为零'与'非零部分'两段",
+  "利用问题特定分布结构改进稀疏奖励下的估计与探索效率"
+ ],
+ "method_framework": "现实老虎机奖励常大量为零(稀疏)，破坏传统UCB的高斯/均值假设。本文将奖励分解为'是否为零'的伯努利部分与'非零值'部分，分别建模并据此构造UCB置信上界，在零膨胀分布下更高效地权衡探索与利用。",
+ "experiment_framework": "合成与真实稀疏奖励场景上；对比Monte Carlo分位数UCB、非零部分UCB、方差估计代理UCB等；报告后悔(regret)与置信区间校准。",
+ "takeaways": [
+  "显式建模零膨胀结构显著提升稀疏奖励bandit的学习效率",
+  "product-based UCB较均值类UCB更适配稀疏奖励",
+  "问题特定分布建模对稀疏奖励决策至关重要"
+ ],
+ "weaknesses": [
+  "属bandit/随机决策理论，与主线(可靠性/医学影像/多模态推理)关联弱",
+  "依赖零膨胀分布假设，前9页见摘要即止，混合分布/重尾下的稳健性需正文",
+  "65页长文，前9页未见真实大规模在线系统的端到端验证"
+ ],
+ "confidence": "low",
+ "raw_overall": 6.18,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

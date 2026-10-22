@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Shoot First, Ask Questions LATER Building Rational Agents that Explore and Act Like People.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Shoot First, Ask Questions LATER Building Rational Agents that Explore and Act Like People.pdf",
+ "title": "Shoot First, Ask Questions Later? Building Rational Agents that Explore and Act Like People",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "桌游任务上用贝叶斯推理提升LM决策能力，但迁移性存疑",
+ "innovations": [
+  "构建双人对话决策任务Collaborative Battleship：Captain在提问探索与开火行动间权衡，Spotter给出基于上下文的准确回答，并以真人(N=42)为对照",
+  "针对Spotter与Captain分别设计受贝叶斯实验设计(BED)启发的蒙特卡洛推理策略",
+  "把LM与近似假设空间上的贝叶斯推断结合，实现理性的探索/利用权衡"
+ ],
+ "method_framework": "Captain维护近似假设空间上的后验，用蒙特卡洛估计每个候选问题的期望信息增益(EIG)来决定提问或行动；Spotter则用MC推理给出上下文准确回答；二者组合即把朴素LM升级为资源理性的信息寻求agent。",
+ "experiment_framework": "Collaborative Battleship与Guess Who?两任务；对比LM-only基线、人类玩家与前沿模型(GPT-5)；指标为Spotter准确率、Captain EIG、命中F1、胜率与成本。",
+ "takeaways": [
+  "Spotter准确率较LM-only基线绝对提升最高14.7%；Captain EIG提升0.227比特(达可达噪声上限的94.2%)",
+  "组合后弱模型Llama-4-Scout胜率从8%→82%胜人类、0%→67%胜GPT-5，成本仅约GPT-5的1%",
+  "Guess Who?上准确率提升28.3-42.4个百分点，方法具普适性"
+ ],
+ "weaknesses": [
+  "落地为决策博弈/信息寻求，虽提及医学诊断但未在医学上验证，主线相关度中等",
+  "EIG依赖近似假设空间与MC采样，假设空间建模质量决定上限",
+  "'反超GPT-5'仅在这两个受控桌游式任务上，向真实高风险信息寻求(如真实医学诊断)的迁移未论证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "信息寻求方法有价值但未在医学落地，主线相关度中等",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

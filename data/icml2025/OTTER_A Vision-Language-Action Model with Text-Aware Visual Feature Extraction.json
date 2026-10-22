@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/OTTER_A Vision-Language-Action Model with Text-Aware Visual Feature Extraction.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/OTTER_A Vision-Language-Action Model with Text-Aware Visual Feature Extraction.pdf",
+ "title": "OTTER: A Vision-Language-Action Model with Text-Aware Visual Feature Extraction",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "冻结CLIP加注意力选择，提升VLA零样本泛化",
+ "innovations": [
+  "冻结预训练VLM并提取文本感知视觉特征",
+  "使用CLIP注意力特征而非输出特征增强语义对齐",
+  "轻量级选择机制保持预训练语义理解"
+ ],
+ "method_framework": "OTTER利用预训练CLIP提取与语言指令语义对齐的视觉特征，通过温度加权注意力机制选择任务相关视觉区域，与文本特征和本体感受特征共同输入冻结的Transformer策略网络。",
+ "experiment_framework": "LIBERO模拟环境(30个训练任务+10个未见任务)和Franka机器人现实环境(19个训练任务+15个未见任务)，对比Octo、OpenVLA等基线，使用成功率作为指标。",
+ "takeaways": [
+  "冻结预训练VLM比微调更能保持零样本泛化能力",
+  "文本感知特征选择比直接传递所有视觉特征更有效"
+ ],
+ "weaknesses": [
+  "仅评估了特定机器人任务，泛化到其他领域未知",
+  "方法依赖于CLIP模型，可能限制在特定视觉语言对齐上"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

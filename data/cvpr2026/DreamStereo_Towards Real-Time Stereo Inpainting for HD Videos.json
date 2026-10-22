@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/DreamStereo_Towards Real-Time Stereo Inpainting for HD Videos.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/DreamStereo_Towards Real-Time Stereo Inpainting for HD Videos.pdf",
+ "title": "DreamStereo Towards Real-Time Stereo Inpainting for HD Videos",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "三组件立体修复方法，加速10.7倍但依赖深度估计",
+ "innovations": [
+  "梯度感知视差变换(GAPW)解决前向变换的像素散射问题",
+  "基于视差的双投影(PBDP)无需立体视频即可构建高质量数据集",
+  "稀疏感知立体修复(SASI)减少70%冗余计算实现10.7倍加速"
+ ],
+ "method_framework": "结合GAPW、PBDP和SASI三组件：GAPW生成平滑遮挡区域，PBDP从单目视频构建立体修复数据，SASI通过稀疏选择实现实时处理",
+ "experiment_framework": "HD-100、Dynamic Replica和SVD数据集，对比StereoCrafter、ZeroStereo等基线，使用PSNR、SSIM和LPIPS指标",
+ "takeaways": [
+  "基于梯度的视差变换可生成更精确的遮挡掩码",
+  "稀疏感知的token选择可大幅提升扩散模型推理速度而质量损失微小"
+ ],
+ "weaknesses": [
+  "依赖深度估计器的准确性",
+  "最大视差增大时性能有所下降",
+  "未讨论模型在不同硬件上的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "立体修复技术属于视频生成领域，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

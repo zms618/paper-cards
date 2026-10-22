@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Efficient Logit-based Knowledge Distillation of Deep Spiking Neural Networks for Full-Range Timestep.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficient Logit-based Knowledge Distillation of Deep Spiking Neural Networks for Full-Range Timestep.pdf",
+ "title": "Efficient Logit-based Knowledge Distillation of Deep Spiking Neural Networks for Full-Range Timestep Deployment",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "时空解耦logit蒸馏使SNN单模型适配全时间步部署",
+ "innovations": [
+  "提出时空解耦的logit蒸馏框架，利用SNN的时空特性优化蒸馏目标，实现单模型全时间步范围部署",
+  "给出理论分析证明训练可保证所有隐式时间步模型的收敛性",
+  "在CIFAR-10/100、CIFAR10-DVS、ImageNet上达到蒸馏类SNN训练方法的SOTA性能"
+ ],
+ "method_framework": "基于SNN的spatio-temporal特性设计蒸馏损失，将教师ANN的logit信息在时间维度上解耦传递给学生SNN；通过优化跨时间步的一致性，使得训练后的单个SNN模型在任意推理时间步数下都能保持良好性能，无需为每个目标时间步单独训练。",
+ "experiment_framework": "在CIFAR-10、CIFAR-100、CIFAR10-DVS和ImageNet上评估，与现有SNN蒸馏方法对比，指标为不同时间步下的分类精度；验证单模型在全时间步范围内的性能保持。",
+ "takeaways": [
+  "时空解耦蒸馏使单个SNN模型可灵活适配不同推理时间步，无需重训练，提升部署适应性",
+  "在多个基准上达到蒸馏类SNN方法的SOTA精度",
+  "理论分析保证了全时间步范围内的收敛性"
+ ],
+ "weaknesses": [
+  "属于SNN知识蒸馏方向，与鲁棒性/医学影像/多模态推理主线无关",
+  "方法依赖教师ANN的预训练logit，蒸馏过程的计算开销仍较大",
+  "前9页仅看到动机和框架概述，具体的时空解耦损失设计细节未充分展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

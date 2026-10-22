@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Understanding the Role Of Training Data In Test-Time Scaling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Understanding the Role Of Training Data In Test-Time Scaling.pdf",
+ "title": "Understanding the Role of Training Data in Test-Time Scaling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "简化模型理论分析测试时扩展，外推到真实LLM推理受限",
+ "innovations": [
+  "给出测试时扩展的可解释理论框架(transformer在in-context weight prediction上)，解释o1/R1式长CoT涌现的训练数据条件",
+  "证明反直觉结论：当下游任务所需技能未充分出现在训练数据中时，增加测试时算力会损害性能(而非总是有益)",
+  "用特征协方差矩阵最小特征值刻画任务难度，并证明在多样/相关/困难任务上训练最利于测试时扩展"
+ ],
+ "method_framework": "测试时扩展靠多分配算力生成长CoT提升推理，但训练数据何种性质支持长CoT、何时有益不清。本文在transformer做线性回归in-context权重预测任务上做理论分析：训练时直接ICL输出权重，测试时做CoT多步推理。由此推出三点：(1)固定测试误差，测试时算力↑可降低训练prompt所需上下文长度；(2)技能不在训练数据时加测试时算力反而有害；(3)任务难度由特征协方差最小特征值刻画，多样+相关+困难训练集最佳。",
+ "experiment_framework": "理论结论在large nonlinear transformer架构上做实验验证；以in-context weight prediction/线性回归任务为主，考察测试时算力、训练上下文长度、任务难度(最小特征值)与训练数据多样性的关系。",
+ "takeaways": [
+  "测试时算力与训练上下文长度在固定误差下可相互替代",
+  "测试时扩展并非免费午餐：技能不在训练分布内时，加算力会损害性能",
+  "训练数据需多样、相关且足够困难(由特征协方差最小特征值度量)，才能最好地支持测试时扩展"
+ ],
+ "weaknesses": [
+  "理论基于线性回归in-context任务这一简化模型，到真实多步数学/代码推理的外推距离较远",
+  "落地为文本LLM推理理论，非多模态/医学影像，虽属推理主线但落地域偏离",
+  "仅在nonlinear transformer上定性验证，缺乏在o1/R1量级真实推理模型上的定量印证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "推理主线但落地域偏离，理论简化模型外推受限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

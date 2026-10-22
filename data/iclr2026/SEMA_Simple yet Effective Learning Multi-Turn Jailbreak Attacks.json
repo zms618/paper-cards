@@ -1,0 +1,41 @@
+{
+ "title": "SEMA: Simple yet Effective Learning for Multi-Turn Jailbreak Attacks",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "两阶段自训练多轮越狱攻击者，ASR@1达80.1%但属攻击研究",
+ "innovations": [
+  "无需已有攻击策略或外部数据，两阶段自训练多轮攻击者",
+  "预填充自调优：用极小前缀自生成非拒答、结构化多轮对抗提示以稳定后续学习",
+  "意图漂移感知奖励(意图对齐+合规风险+细节程度)+开放-loop机制统一单/多轮并降探索复杂度"
+ ],
+ "method_framework": "先用自生成的非拒答多轮对抗提示SFT得到可用rollout；再以结合意图对齐、合规风险与细节程度的奖励做RL，训练攻击者在保持同一有害目标下逐步诱导受害模型；开放-loop不依赖受害反馈。",
+ "experiment_framework": "跨多个数据集、受害模型与越狱裁判评测攻击成功率；AdvBench上对3个闭/开源受害模型平均ASR@1达80.1%，较前SOTA高33.9%；优于单轮基线、人工/模板多轮基线及SFT/DPO变体。",
+ "takeaways": [
+  "多轮越狱是真实威胁模型，单轮只是其特例",
+  "意图漂移是多轮攻击成功的关键，需显式奖励锚定",
+  "开放-loop训练可大幅降低多轮攻击的组合探索复杂度"
+ ],
+ "weaknesses": [
+  "属攻击/红队而非提升模型可靠性本身，主线相关性有限",
+  "依赖受害模型不拒答的自生成提示，对强防御模型的可迁移性存疑",
+  "前9页未给出各受害模型的逐项ASR与误报分析"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/SEMA_Simple yet Effective Learning Multi-Turn Jailbreak Attacks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SEMA_Simple yet Effective Learning Multi-Turn Jailbreak Attacks.pdf",
+ "raw_overall": 6.43,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "攻击研究而非提升可靠性，主线相关性有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

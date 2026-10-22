@@ -1,0 +1,39 @@
+{
+ "key": "icml2025/Looking Beyond the Top-1 Transformers Determine Top Tokens in Order.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Looking Beyond the Top-1 Transformers Determine Top Tokens in Order.pdf",
+ "title": "Looking Beyond the Top-1: Transformers Determine Top Tokens in Order",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "Transformer按顺序确定top-k标记，提出任务转换机制。",
+ "innovations": [
+  "扩展top-1饱和事件到top-k标记",
+  "发现标记按顺序饱和的现象",
+  "提出任务转换机制解释这一现象",
+  "通过干预实验验证任务转换机制",
+  "基于发现提出新的标记级早退策略"
+ ],
+ "method_framework": "通过logit lens分析不同模态Transformer模型的隐藏状态，定义k-th饱和层，使用Kendall's τ系数验证饱和顺序，训练分类器预测任务，并通过干预实验验证任务转换机制。",
+ "experiment_framework": "在文本(GPT2-XL, Llama3-8B等)、视觉(ViT-L/16)和语音(Whisper-large)模型上验证，使用MMLU、ImageNet、LibriSpeech等数据集，对比随机初始化模型。",
+ "takeaways": [
+  "标记级早退策略可平衡性能与效率",
+  "任务转换信息编码在隐藏层中",
+  "干预实验可控制模型任务转换"
+ ],
+ "weaknesses": [
+  "语音模型中高排名标记的顺序饱和性较弱",
+  "未深入分析任务转换的神经机制",
+  "早退策略仅在文本生成上验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

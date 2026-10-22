@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/FonTS_Text Rendering With Typography and Style Controls.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/FonTS_Text Rendering With Typography and Style Controls.pdf",
+ "title": "FonTS Text Rendering With Typography and Style Controls",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "基于DiT的两阶段文本渲染，实现字级排版控制",
+ "innovations": [
+  "字级排版控制标记(ETC-tokens)",
+  "参数高效的排版控制微调(TC-FT)",
+  "文本无关的风格控制适配器(SCA)",
+  "首个字级可控文本渲染数据集"
+ ],
+ "method_framework": "两阶段DiT管道：第一阶段使用TC-FT和ETC-tokens实现字级排版控制；第二阶段训练SCA增强风格一致性，同时防止内容泄露",
+ "experiment_framework": "BTR-bench和ATR-bench评估基准，对比Glyph-ByT5、TextDiffuser-2、SD3和Flux，使用FontCLIP、CLIP-I、OCR准确率和用户研究评估",
+ "takeaways": [
+  "HTML渲染数据合成管道可高效生成排版控制数据",
+  "解耦联合注意力机制可有效分离内容和风格",
+  "字级控制标记可精确定位文本样式应用位置"
+ ],
+ "weaknesses": [
+  "数据集规模相对较小(仅50k基础文本图像)",
+  "风格控制适配器在简单文本提示下仍存在内容泄露问题",
+  "未充分讨论方法在多语言场景下的表现"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "文本渲染与可靠性主线无交点，仅属常规图形学工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

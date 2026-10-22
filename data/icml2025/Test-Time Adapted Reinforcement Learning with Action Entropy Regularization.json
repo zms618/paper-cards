@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Test-Time Adapted Reinforcement Learning with Action Entropy Regularization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Test-Time Adapted Reinforcement Learning with Action Entropy Regularization.pdf",
+ "title": "Test-Time Adapted Reinforcement Learning with Action Entropy Regularization",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.4
+ },
+ "one_line": "测试时轻量微调RL策略，用熵约束防过拟合，但多任务证据不足。",
+ "innovations": [
+  "为离线RL提出测试时优化范式：不依赖环境奖励，只用测试数据构造无监督目标",
+  "离散任务最小化预测动作概率熵以降低不确定性、避开OOD动作；连续任务基于策略网络输出的正态分布建模并最小化动作方差",
+  "对微调后策略与原策略施加KL散度约束，且测试时只更新LayerNorm层以提升效率并抑制过拟合"
+ ],
+ "method_framework": "离线训练得到初始策略后，部署阶段在线收集测试状态；对离散动作空间，最小化softmax动作分布的熵使策略趋于自信；对连续动作空间，最小化策略输出高斯分布的方差；两个目标都附加与原策略的KL正则以防止漂移过大；参数更新仅作用于LayerNorm层，降低计算量并抑制误差累积。",
+ "experiment_framework": "在Atari离散游戏基准与D4RL连续控制数据集上评测，主对比基线CQL。报告hopper-expert-v2相对CQL提升13.6% episode return；其余任务以表格形式报告（前9页未完整列出全部数值）。",
+ "takeaways": [
+  "离线RL策略在测试时可用无监督熵/方差正则做轻量适配，无需在线奖励",
+  "仅更新LayerNorm即可在不破坏原策略的前提下获得提升，工程上代价小",
+  "KL约束对防止测试时过拟合与误差累积是必要的"
+ ],
+ "weaknesses": [
+  "前9页仅强调hopper-expert-v2单任务+13.6%，多任务平均增益与统计显著性未充分展示",
+  "动作熵最小化在探索与利用之间可能过于激进，反而损害需要随机化的任务，缺少分析",
+  "方法本质是对保守RL的轻量补丁，与现有TTA-RL方法的差异仅在熵目标形式，新意有限",
+  "域为RL控制，与医学影像/多模态大模型推理主线无关，仅OOD鲁棒性维度沾边"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

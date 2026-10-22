@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Graph-Supported Dynamic Algorithm Configuration for Multi-Objective Combinatorial Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Graph-Supported Dynamic Algorithm Configuration for Multi-Objective Combinatorial Optimization.pdf",
+ "title": "Graph-Supported Dynamic Algorithm Configuration for Multi-Objective Combinatorial Optimization",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "GNN增强DRL状态表示，实时配置多目标进化算法求解组合优化",
+ "innovations": [
+  "将DRL动态算法配置(DAC)拓展到较少被研究的多目标组合优化(MOCO)",
+  "把解在目标空间的收敛建模为图，用GNN学习嵌入增强状态表示",
+  "把DAC建模为上下文MDP，自适应调整多目标进化算法在搜索各阶段的参数"
+ ],
+ "method_framework": "将多目标进化算法的执行视为MDP：以目标空间中解的分布/收敛结构构图，GNN编码该图作为状态，DRL策略据此输出下一阶段算法配置（变异/交叉等参数），实现搜索过程中的实时自适应。",
+ "experiment_framework": "在多类MOCO挑战（不同问题实例）上评测；与固定参数及单目标DAC方法配置的多目标进化算法比较；指标为帕累托超体积等多目标性能；报告GNN图状态表示的增益。",
+ "takeaways": [
+  "GNN图状态表示能更好刻画多目标解的收敛结构，服务于DAC",
+  "DRL可在多目标组合优化中实时调整进化算法参数",
+  "图结构化状态优于扁平特征状态表示"
+ ],
+ "weaknesses": [
+  "与可靠性主线（鲁棒性/不确定性/过程奖励/医学影像/多模态推理）无关，属超启发式优化",
+  "GNN+DRL训练成本高，跨问题族泛化的稳健性未充分验证",
+  "奖励/超体积评估依赖帕累托参考，不同问题上的配置可迁移性有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

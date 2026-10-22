@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Enhancing Spatial Understanding in Generation via Reward Modeling.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Enhancing Spatial Understanding in Generation via Reward Modeling.pdf",
+ "title": "Enhancing Spatial Understanding in Generation via Reward Modeling",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "构建空间奖励数据集与模型，提升图像生成空间关系准确性",
+ "innovations": [
+  "构建80K对抗偏好对数据集SpatialReward-Dataset",
+  "开发专门评估空间关系的奖励模型SpatialScore",
+  "提出top-k过滤策略优化在线强化学习训练"
+ ],
+ "method_framework": "基于Qwen2.5-VL-7B构建奖励模型，使用LoRA微调，通过Bradley-Terry模型训练，评估图像与文本中空间关系的准确性",
+ "experiment_framework": "在自建评估基准和DPG-Bench、TIIF-Bench、UnigenBench++等数据集上测试，与多个专有和开源模型对比",
+ "takeaways": [
+  "对抗偏好对数据构建方法可推广到其他关系理解任务",
+  "top-k过滤策略可有效缓解不同难度提示的优势偏差"
+ ],
+ "weaknesses": [
+  "仅关注空间关系，未考虑其他维度的图像质量",
+  "依赖特定图像生成模型(FLUX.1-dev)进行强化学习"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅关注空间关系，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

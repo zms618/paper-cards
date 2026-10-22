@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Adaptive Classifier-Free Guidance via Dynamic Low-Confidence Masking.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Adaptive Classifier-Free Guidance via Dynamic Low-Confidence Masking.pdf",
+ "title": "Adaptive Classifier-Free Guidance via Dynamic Low-Confidence Masking",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "动态掩码改进扩散模型引导，但固定参数限制泛化",
+ "innovations": [
+  "基于模型瞬时预测置信度的动态无条件输入构建",
+  "针对低置信度token的临时重新掩码机制",
+  "在迭代扩散语言模型中实现更精确的引导"
+ ],
+ "method_framework": "A-CFG通过评估当前序列中非掩码token的置信度，动态选择低置信度token进行重新掩码，构建局部化的无条件输入，使引导机制专注于模型不确定区域。",
+ "experiment_framework": "在MMLU、BBH、GPQA等语言生成基准上评估，与LLaDA无引导、标准CFG及AR模型对比，使用256步采样和0.7重新掩码比例。",
+ "takeaways": [
+  "利用模型自身不确定性信号改进引导机制",
+  "动态调整无条件输入比静态方法更有效"
+ ],
+ "weaknesses": [
+  "重新掩码比例ρ为固定值，未自适应调整",
+  "仅评估了语言生成任务，未探索多模态场景"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

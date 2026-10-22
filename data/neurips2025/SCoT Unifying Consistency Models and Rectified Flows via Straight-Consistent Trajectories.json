@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/SCoT Unifying Consistency Models and Rectified Flows via Straight-Consistent Trajectories.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/SCoT Unifying Consistency Models and Rectified Flows via Straight-Consistent Trajectories.pdf",
+ "title": "SCoT: Unifying Consistency Models and Rectified Flows via Straight-Consistent Trajectories",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "SCoT统一两种生成模型，通过双损失实现快速采样，但质量仍有差距。",
+ "innovations": [
+  "提出直且一致的轨迹(SCoT)统一一致性模型与修正流",
+  "通过恒定速度损失和轨迹一致性损失双重优化",
+  "避免ODE求解器近似误差，实现单步高质量生成"
+ ],
+ "method_framework": "SCoT通过恒定速度损失确保轨迹直线性，通过轨迹一致性损失确保不同时间点映射到相同未来值，统一了一致性模型和修正流的优点。",
+ "experiment_framework": "在CIFAR-10和ImageNet上评估，使用FID、Recall和IS指标，与DDIM、DPM-solver、CTM等基线比较，展示2步甚至1步生成的高质量结果。",
+ "takeaways": [
+  "双重损失函数设计平衡轨迹直线性与一致性",
+  "避免数值ODE求解器引入的近似误差",
+  "在保持模型紧凑的同时实现高效采样"
+ ],
+ "weaknesses": [
+  "未采用GAN损失可能导致样本质量略低于CTM",
+  "训练配置和资源限制限制了从零开始训练的探索",
+  "与CTM相比，在某些指标上仍有差距"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

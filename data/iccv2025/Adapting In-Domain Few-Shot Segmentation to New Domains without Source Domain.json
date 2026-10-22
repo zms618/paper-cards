@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Adapting In-Domain Few-Shot Segmentation to New Domains without Source Domain.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Adapting In-Domain Few-Shot Segmentation to New Domains without Source Domain.pdf",
+ "title": "Adapting In-Domain Few-Shot Segmentation to New Domains without Source Domain",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "有限更新层实现跨域少样本分割，计算开销与表达能力存疑",
+ "innovations": [
+  "提出信息结构适应(ISA)框架，无需源域重训练即可将域内少样本分割模型适应到新域",
+  "设计信息结构识别(ISI)模块，通过结构Fisher分数动态选择域敏感模型结构",
+  "提出渐进式结构适应(PSA)模块，通过层次化训练样本逐步增加支持样本数量以缓解域差异"
+ ],
+ "method_framework": "ISA方法包含两个核心模块：ISI模块通过计算结构Fisher分数从少样本标记支持数据中识别域敏感模型结构；PSA模块通过层次化构建训练样本，从少到多逐步增加支持样本数量，渐进式调整选定结构。",
+ "experiment_framework": "在Pascal VOC源域数据集上训练SSP模型，在Deepglobe、ISIC2018、Chest X-Ray和FSS-1000四个目标域数据集上评估，使用mIoU指标，1-shot和5-shot设置。",
+ "takeaways": [
+  "基于Fisher信息的参数重要性评估可有效识别域敏感模型结构",
+  "渐进式增加支持样本数量的训练策略能有效利用有限数据缓解域差异",
+  "方法具有通用性，可轻松集成到现有少样本分割模型中"
+ ],
+ "weaknesses": [
+  "仅更新单个模型层可能限制模型的表达能力",
+  "方法在计算结构Fisher分数时可能存在计算开销",
+  "未充分探讨方法在不同模型架构上的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "少样本分割方法，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

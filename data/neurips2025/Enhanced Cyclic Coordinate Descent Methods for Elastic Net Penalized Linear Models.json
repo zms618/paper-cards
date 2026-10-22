@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Enhanced Cyclic Coordinate Descent Methods for Elastic Net Penalized Linear Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Enhanced Cyclic Coordinate Descent Methods for Elastic Net Penalized Linear Models.pdf",
+ "title": "Enhanced Cyclic Coordinate Descent Methods for Elastic Net Penalized Linear Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "改进坐标下降加速弹性网，但样本主导场景改进有限。",
+ "innovations": [
+  "泰勒展开近似梯度计算避免非线性操作",
+  "循环展开实现批量计算",
+  "结合二阶校正提高块坐标下降稳定性"
+ ],
+ "method_framework": "ECCD通过泰勒展开近似梯度计算，将循环展开为批量计算，结合二阶校正提高块坐标下降稳定性，避免数值不稳定问题。",
+ "experiment_framework": "在LIBSVM基准数据集上与glmnet、ncvreg、biglasso对比，测量运行时间、预测误差和相对差异，评估不同块大小s的性能。",
+ "takeaways": [
+  "块大小s=8-16在保持稳定性的同时提供最佳加速",
+  "泰勒展开近似控制误差积累，保持数值稳定性",
+  "在高维强正则化问题中加速效果更明显"
+ ],
+ "weaknesses": [
+  "在样本主导场景(n≫p)中改进有限",
+  "大λ值在某些数据集上可能变慢",
+  "方法主要针对线性模型，扩展性受限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.625,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

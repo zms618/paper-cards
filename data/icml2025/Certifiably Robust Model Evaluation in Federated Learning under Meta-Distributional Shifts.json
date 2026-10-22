@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Certifiably Robust Model Evaluation in Federated Learning under Meta-Distributional Shifts.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Certifiably Robust Model Evaluation in Federated Learning under Meta-Distributional Shifts.pdf",
+ "title": "Certifiably Robust Model Evaluation in Federated Learning under Meta-Distributional Shifts",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6.5
+ },
+ "one_line": "联邦学习元分布偏移下的理论认证评估，无实验验证",
+ "innovations": [
+  "将评估问题建模为元分布μ到μ'的偏移(Wasserstein或f散度有界)，给出跨网络最坏情况一致保证",
+  "提出对抗鲁棒版的Dvoretzky-Kiefer-Wolfowitz(DKW)不等式，用于风险CDF的认证",
+  "证明所给界渐近极小极大最优、计算高效且保护客户端隐私，并给出随K增长收敛到零的非渐近泛化界(每客户端样本量需超过O(log K))"
+ ],
+ "method_framework": "服务器只收集K个客户端的本地损失值而不接触原始数据。作者把各客户端分布视为来自元分布μ的样本，对平均损失与风险分布(CDF)建立聚合估计；当目标网络元分布与源网络偏移在Wasserstein/f散度下有界时，用对抗DKW不等式与集中不等式给出风险CDF与平均损失的最坏情况一致上界，从而在不访问隐私数据的前提下认证模型在未见客户端/网络的真实表现。",
+ "experiment_framework": "在真实世界任务上验证所给界的紧致度与实用性，对比经验风险与认证界，报告不同客户端数K与每客户端样本量下的界随收敛行为；正文前9页以理论推导为主，具体数据集见后续实验节。",
+ "takeaways": [
+  "仅凭源网络的K个本地损失值即可对未见目标网络的平均损失与风险CDF给出有认证保证的估计",
+  "对抗鲁棒DKW不等式为分布偏移下风险CDF认证提供了新工具",
+  "界渐近极小极大最优且隐私保护，随客户端数K增大而收紧"
+ ],
+ "weaknesses": [
+  "属分布偏移认证的纯理论工作，未涉及医学影像或多模态大模型推理落地域",
+  "界的实用紧致度依赖偏移有界假设的松紧，真实客户端异质性远超有界偏移时可能保守",
+  "前9页以推导为主，真实任务上的界紧致度与基线对比需结合全文(共36页)判断"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.97,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/GECO_Geometrically Consistent Embedding with Lightspeed Inference.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/GECO_Geometrically Consistent Embedding with Lightspeed Inference.pdf",
+ "title": "GECO Geometrically Consistent Embedding with Lightspeed Inference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "基于最优传输的轻量嵌入，但依赖预训练且泛化验证不足",
+ "innovations": [
+  "基于最优传输的软分配损失函数",
+  "处理遮挡和不完全分配的灰尘箱机制",
+  "无参数可学习的最优传输层",
+  "PGCK几何感知评估指标"
+ ],
+ "method_framework": "使用DINOv2-B主干网络和LoRA适配器，通过余弦相似度计算特征匹配，应用Sinkhorn算法进行最优传输分配，使用二元交叉熵损失进行训练",
+ "experiment_framework": "在PFPascal、APK、Spair和CUB数据集上评估PCK指标，提出PGCK指标分析几何理解能力，并在特征空间分割任务上验证",
+ "takeaways": [
+  "最优传输方法能有效处理遮挡和不完全分配问题",
+  "轻量级架构可实现实时推理(30fps)同时保持高性能",
+  "PCK指标不足以评估几何质量，需要更细粒度的评估方法"
+ ],
+ "weaknesses": [
+  "依赖预训练模型(DINOv2)，可能限制泛化能力",
+  "仅在特定数据集上验证，缺乏更广泛的医学影像或多模态大模型推理应用",
+  "未充分分析计算资源消耗与模型大小的权衡"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "几何嵌入方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

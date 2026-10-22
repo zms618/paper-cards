@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/3D Prior Is All You Need Cross-Task Few-shot 2D Gaze.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3D Prior Is All You Need Cross-Task Few-shot 2D Gaze.pdf",
+ "title": "3D Prior is All You Need: Cross-Task Few-shot 2D Gaze Estimation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "可微投影适配3D模型到2D视线估计，但基线公平性与泛化验证不足",
+ "innovations": [
+  "把2D视线估计分解为3D视线估计+可微投影：用6个可学习参数r,t经Rodrigues公式构SO(3)屏幕位姿，闭式求视线与平面交点(式2-3)并转回屏幕坐标，无需屏幕标定即可接入任意3D视线网络",
+  "动态伪标签：用可学习屏幕参数反投影把2D标签变回3D方向再翻转；针对微调中坐标系漂移，用初始模型与当前模型在同一批图上的输出作两组锚点，SVD求解可逆旋转T对齐相机坐标系，修掉式6导致的训练崩塌",
+  "对K次颜色抖动样本最小化预测到质心的方差L_unc，并配随时间增大的权重τ=(t-1)/t，避免训练初期方差项过大导致不稳定"
+ ],
+ "method_framework": "复用预训练3D视线网络H3D，后接可微投影模块P(g,o;r,t)输出屏幕坐标；训练时对翻转图像用P^{-1}把2D标签回投3D空间做翻转再投回，生成动态伪标签；另对颜色抖动样本最小化预测方差；目标为L1主损失+伪标签损失+方差损失。",
+ "experiment_framework": "MPIIGaze/EVE/GazeCapture(笔记本/台式/手机)；每人仅10张训练样本；与作者重实现的EFE、IVGaze对比；指标为预测与GT的欧氏距离(mm)；消融投影/伪标签/方差损失三项。",
+ "takeaways": [
+  "先按物理模型把任务拆成'已解决部分+可解释残差部分'，只在残差部分学极少参数(6个)，是少样本适配的高效范式",
+  "从训练崩塌现象反推根因(坐标系漂移)再给出修正，比直接换损失更有说服力——把失败分析写进方法动机值得借鉴",
+  "用'给定真实屏幕位姿'作上界参照做claim隔离(Table 3)，能说清方法离理论上限还差多少，而不是只跟弱基线比"
+ ],
+ "weaknesses": [
+  "两个基线均由作者自己重实现：EFE原本依赖屏幕标定，被改成可学习参数并初始化为本文同值；IVGaze含transformer在10样本下欠拟合属任务设定不利而非方法劣势，公平性部分依赖作者善意",
+  "无不确定性度量：10样本如何抽取、随机种子、跨受试者方差全未报告，只报跨受试者均值，无法判断'25%以上提升'是否显著",
+  "只用GazeTR一个3D骨干、只在person-specific设定下评测，未验证跨人/跨设备泛化，也未分析3D先验强弱对最终结果的影响",
+  "正文在图4处截断，'Ours w/o T'等伪标签变体的具体数值与完整消融表不可见"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视线估计与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

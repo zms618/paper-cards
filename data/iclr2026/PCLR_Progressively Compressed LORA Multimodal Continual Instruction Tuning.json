@@ -1,0 +1,41 @@
+{
+ "title": "PCLR: Progressively Compressed LoRA for Multimodal Continual Instruction Tuning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "压缩-整合-学习流水线与渐进式LoRA压缩缓解多模态持续学习遗忘与显存问题。",
+ "innovations": [
+  "压缩-整合-学习(CIL)流水线：压缩旧参数释放容量、整合相似任务知识补偿压缩损失、再把释放容量分配给新任务。",
+  "依据LMM不同学习阶段特点建立渐进学习过程，进一步降低遗忘。",
+  "把LoRA分解为一组秩向量，提出极细粒度架构LoRA Rank Pool(LRP)，灵活调用与编辑知识。"
+ ],
+ "method_framework": "持续指令微调时：先压缩旧LoRA参数释放容量；再把相似任务知识整合以恢复压缩带来的性能损失；再将释放容量用于新任务参数；按学习阶段渐进执行；底层用可分解的秩向量池(LRP)做细粒度知识存取与编辑。",
+ "experiment_framework": "基于LLaVA-7B做多模态持续指令微调；对比扩展式(add branch)与非扩展方法；指标为灾难性遗忘(平均遗忘度)、任务性能与显存占用；报告遗忘由11.29降至3.39、内存接近非扩展方法而性能超扩展方法。",
+ "takeaways": [
+  "压缩+整合+学习可同时抑制遗忘与显存增长。",
+  "渐进式按学习阶段调整进一步把遗忘从5.09降到3.39。",
+  "LoRA秩向量池实现极细粒度知识调用与编辑。"
+ ],
+ "weaknesses": [
+  "整合阶段需判断‘相似任务’，任务相似度度量的准确性与误差传播未充分分析。",
+  "压缩-整合反复进行是否长期损害旧任务知识保真度，长任务序列下的漂移需更多证据。",
+  "主要在LLaVA-7B验证，更大LMM与跨模态(图文到视频)持续学习的迁移性有限。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PCLR_Progressively Compressed LORA Multimodal Continual Instruction Tuning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PCLR_Progressively Compressed LORA Multimodal Continual Instruction Tuning.pdf",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态持续学习缓解遗忘，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

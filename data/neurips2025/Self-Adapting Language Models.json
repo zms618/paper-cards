@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Self-Adapting Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Self-Adapting Language Models.pdf",
+ "title": "Self-Adapting Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "SEAL框架通过RL优化自编辑策略提升LLM少样本学习，但实验规模有限。",
+ "innovations": [
+  "自编辑(self-edit)生成机制",
+  "强化学习优化自编辑策略",
+  "双循环训练框架(外层RL+内层SFT)",
+  "工具选择与超参数配置的自适应"
+ ],
+ "method_framework": "SEAL采用双循环结构：外层RL优化自编辑生成策略，内层SFT应用自编辑更新模型参数。模型生成自编辑指令(数据重构、超参数配置或工具调用)，通过梯度更新实现持续适应。",
+ "experiment_framework": "知识整合任务：SQuAD无上下文问答；少样本学习：ARC-AGI子集。基线包括ICL、TTT+自编辑(无RL)、Oracle TTT和GPT-4.1合成数据。指标：准确率和成功率。",
+ "takeaways": [
+  "自编辑数据格式对知识整合效果至关重要",
+  "RL优化自编辑策略显著优于静态方法",
+  "工具选择与超参数配置的自适应提升少样本学习性能"
+ ],
+ "weaknesses": [
+  "实验规模有限，ARC仅使用19个任务",
+  "未充分探索不同模型规模的影响",
+  "自编辑生成过程计算开销较大"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

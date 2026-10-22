@@ -1,0 +1,43 @@
+{
+ "key": "cvpr2025/Accurate Scene Text Recognition with Efficient Model Scaling and Cloze.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Accurate Scene Text Recognition with Efficient Model Scaling and Cloze.pdf",
+ "title": "Accurate Scene Text Recognition with Efficient Model Scaling and Cloze Self-Distillation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.4
+ },
+ "one_line": "解码器放大与cloze蒸馏，但机制创新不足且实验证据薄弱。",
+ "innovations": [
+  "Cloze Self-Distillation：教师先在带噪真值上训完，再对每个位置t用 y\\y_t 全体其它字符做 cloze 重预测（Eq.7），得到全上下文伪标签+软logits；学生以教师伪标签替代真值做NLL，并加 KD=DKL(p_T^τ(·|y_{≠t},x) ‖ p_S^τ(·|y_{<t},x))（τ=2.0、λ_KD=0.1），让学生只在PLM的受限上下文下被迫学全上下文知识。",
+  "编码器/解码器解耦缩放分析：ViT-T/S/B × PLD-T/S/B/L 共12组、在Real(3.3M)与RBU(6.5M)两种数据下做12基准平均词准确率，结论是解码器缩放增益始终超过编码器，且仅靠缩放（不用CLIP预训练、不加跨模态分支）即可整体超过CLIP4STR。",
+  "PLD decoder：把两路多头cross-attention（第一路是已预测字符的kv流，第二路是视觉token）+SwiGLU MLP 组成置换语言解码块；并用 Differential Cross-Attention（两路softmax注意力相减、层内共享标量λ再参数化）替换普通cross-attention。"
+ ],
+ "method_framework": "ViT编码器提视觉token→PLD按PLM(正反序+每batch 4随机置换)并行解码字符；CSD阶段教师产出cloze伪标签与软概率，学生用「NLL(伪标签)+KL(全上下文软概率‖PLM上下文输出)」训练；最后可选把cross-attention换成差分交叉注意力+SwGLU。",
+ "experiment_framework": "训练用Real(3.3M,9个公开集)与RBU(6.5M,含Union14M子集)；11个测试基准（IC13/IIIT5K/SVT/C80/IC15/SVT-P/HOST/WOST/COCO-Text/ArT/Uber-Text）；指标word accuracy，报AVG11与wAVG6；对比CLIP4STR等SOTA。",
+ "takeaways": [
+  "「用模型自身的全上下文预测当伪标签、再在受限上下文下蒸馏」是抗标签噪声的低成本配方，可直接搬到其它有标注噪声的序列任务。",
+  "编码器与解码器分开做缩放曲线并画成参数-FLOPs-精度图（而不是只报一个最终模型），是做架构选型分析最省算力的方式。",
+  "差分注意力是现成的「相减消公共噪声模态」算子，跨到cross-attention只需拆q/k两路再相减。"
+ ],
+ "weaknesses": [
+  "Differential Cross-Attention基本是Differential Transformer自注意力公式的直接迁移（连λ的再参数化都照抄[50]），只把self换成cross，属于组件迁移而非新机制；Tab.5显示PLD-D相对PLD-B只涨0.2(AVG11)/0.1(wAVG6)，而参数从104.9M涨到110.2M，性价比存疑。",
+  "CSD的成本没被摊开：教师要完整训一遍（同 schedule 110K steps），叠加学生再训一遍，论文只把CSD当作一次蒸馏，未报告相对Sup.的总训练开销。",
+  "Tab.3 中P与KD各列的数值在91.6~92.5之间来回波动（同配置下不同列互有高低），又没有方差/多次运行，无法判断伪标签与KD各自是否真的单正贡献。",
+  "Tab.4显示100%数据时CSD相对Sup.仅+0.7（92.0→92.5），收益几乎全在低数据（10%:86.9→89.1）段，说明该方法本质是补数据不足而非通用提升。",
+  "正文截断在4.3节开头，与全部SOTA在11个基准上的完整对比主表（正文只说「10/11 SOTA」）以及消融细节都不可见；全篇无多种子方差。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "文本识别任务与可靠性主线无实质交点，仅为领域内常规工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Weak-to-Strong Generalization with Failure Trajectories.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Weak-to-Strong Generalization with Failure Trajectories.pdf",
+ "title": "Weak-to-Strong Generalization with Failure Trajectories",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "扩展W2SG到交互决策，用轨迹树整合失败经验提升强模型",
+ "innovations": [
+  "首次将W2SG从简单分类任务扩展到复杂交互式决策环境，利用弱模型的完整轨迹（含失败）微调强模型",
+  "提出\"轨迹树\"层次化表示，组织弱模型生成的动作轨迹，结合蒙特卡洛树搜索优化强模型策略",
+  "从理论上为该方法提升W2SG效果提供形式化保证"
+ ],
+ "method_framework": "人类学习过程启发：强模型不仅从弱模型的成功轨迹学习，也从失败轨迹中吸取教训。将弱模型生成的所有轨迹组织为轨迹树，用MCTS在树中搜索最优决策路径，作为强模型微调的监督信号。",
+ "experiment_framework": "在多种推理和决策任务领域评估W2SG效果。对比仅用成功轨迹的基线方法。测试不同强弱模型组合下的泛化能力。",
+ "takeaways": [
+  "失败轨迹包含可迁移的监督信号，利用失败经验比仅用成功轨迹更能激发强模型潜力",
+  "轨迹树+MCTS的结构有效组织了弱模型的探索经验，避免了失败轨迹的噪声干扰",
+  "W2SG在复杂决策任务中同样可行，弱模型可作为人类监督的替代方案"
+ ],
+ "weaknesses": [
+  "实验仅在有限任务域验证，超大规模复杂决策环境（如真实网页agent）中的效果未知",
+  "轨迹树的构建依赖弱模型的探索多样性，弱模型探索不足时树的信息量有限",
+  "理论保证基于较强假设，实际场景中假设的满足程度未充分讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.88,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "交互决策与可靠性主线有交点，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

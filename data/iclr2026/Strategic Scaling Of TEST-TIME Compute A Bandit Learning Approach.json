@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Strategic Scaling Of TEST-TIME Compute A Bandit Learning Approach.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Strategic Scaling Of TEST-TIME Compute A Bandit Learning Approach.pdf",
+ "title": "Strategic Scaling of Test-Time Compute: A Bandit Learning Approach",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "将测试时计算分配建模为bandit问题，自适应调整计算资源分配。",
+ "innovations": [
+  "首次将跨查询的测试时计算分配形式化为纯探索式bandit学习问题，提出strategic scaling新范式",
+  "设计自适应算法在线估计查询难度，动态调整每个查询的计算量：简单查询少分配、困难查询多分配",
+  "在困难查询中进一步学习优先处理可解实例，有效减少不可解查询上的过度计算浪费"
+ ],
+ "method_framework": "将一批查询的测试时计算分配建模为bandit问题：每个查询是一个臂，拉一次臂对应分配一定计算量（如一次采样）。算法通过纯探索方式在线估计每个查询的难度（通过已采样结果的正确率估计），自适应地将计算预算从简单查询转移到困难查询。同时学习区分可解和不可解的困难查询，避免在完全不可解的问题上浪费计算。",
+ "experiment_framework": "在数学推理(MATH-500, AIME25)和代码生成(LiveCodeBench)基准上验证。对比均匀Best-of-N分配策略，在固定总计算预算下评估准确率提升。理论上证明bandit分配比均匀分配有更好的计算效率。",
+ "takeaways": [
+  "查询难度差异很大，均匀分配测试时计算是低效的，bandit自适应分配在相同预算下可提升11%以上准确率",
+  "算法不仅能区分简单/困难查询，还能在困难查询中识别可解实例，进一步优化计算利用效率",
+  "理论分析证明bandit分配策略的计算效率优于均匀分配，为自适应测试时计算提供了理论基础"
+ ],
+ "weaknesses": [
+  "bandit算法需要在线探索过程，初期的随机探索可能浪费部分预算",
+  "仅在数学和代码推理任务上验证，对开放生成类任务的适用性未证明",
+  "难度估计依赖少量初始采样，极难或极简单的查询可能被误分类"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "测试时计算资源优化属于可靠性主线，提升推理效率",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

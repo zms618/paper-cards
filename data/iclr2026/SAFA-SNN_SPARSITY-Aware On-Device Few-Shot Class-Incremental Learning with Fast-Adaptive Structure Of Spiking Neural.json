@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SAFA-SNN_SPARSITY-Aware On-Device Few-Shot Class-Incremental Learning with Fast-Adaptive Structure Of Spiking Neural.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SAFA-SNN_SPARSITY-Aware On-Device Few-Shot Class-Incremental Learning with Fast-Adaptive Structure Of Spiking Neural.pdf",
+ "title": "SAFA-SNN: Sparsity-Aware On-Device Few-Shot Class-Incremental Learning with Fast-Adaptive Structure of Spiking Neural Network",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "拼凑SNN模块做边缘FSCIL，消融不足，与主线关联弱。",
+ "innovations": [
+  "提出稀疏感知神经元动态：通过阈值调节使多数神经元稳定放电、少数自适应放电，自然保留编码基类知识的突触痕迹，缓解灾难性遗忘。",
+  "针对脉冲不可微问题采用无梯度的零阶优化做反向传播，并以快速自适应结构适配设备端。",
+  "用正交子空间投影增强类原型判别性，在限制少样本过拟合的同时缓解原型引入的偏差。"
+ ],
+ "method_framework": "SNN 基础上做设备端 FSCIL。阈值调节产生稳定/自适应两类神经元，稳定部分保留基类突触痕迹以抗遗忘；新增少样本类用零阶优化(免可微)更新；类原型经正交子空间投影增强判别。利用 SNN 事件驱动单比特稀疏矩阵降低设备端显存与能耗。",
+ "experiment_framework": "在两个标准基准(CIFAR-100、Mini-ImageNet)与三个神经形态数据集(CIFAR10-DVS、DVS128 Gesture、N-Caltech101)上评测；对比参数高效 ANN-FSCIL 基线，报告增量会话精度，Mini-ImageNet 最后会话提升至少 4.01%，CIFAR-100 能耗降低 20%。",
+ "takeaways": [
+  "稀疏感知脉冲动态可在少样本类增量设定下有效保留旧类知识、缓解灾难性遗忘。",
+  "零阶优化可绕过脉冲不可微障碍，实现设备端无梯度增量更新。",
+  "SNN 相比 ANN 在保持精度的同时显著降低能耗，适合资源受限边缘场景。"
+ ],
+ "weaknesses": [
+  "组件较多(阈值调节+零阶优化+正交投影)，各模块独立贡献与相互作用缺乏充分消融。",
+  "零阶优化训练效率与可扩展性未量化，大规模/多会话增量下是否仍高效存疑。",
+  "属边缘持续学习效率方向，与视觉可靠性/医学影像/多模态推理主线关联弱。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "边缘FSCIL方法与可靠性主线关联弱，仅少样本增量学习有微弱迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

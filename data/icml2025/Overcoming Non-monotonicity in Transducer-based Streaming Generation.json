@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Overcoming Non-monotonicity in Transducer-based Streaming Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Overcoming Non-monotonicity in Transducer-based Streaming Generation.pdf",
+ "title": "Overcoming Non-monotonicity in Transducer-based Streaming Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "单调注意力改进Transducer流式生成，但仅在同传任务验证",
+ "innovations": [
+  "将可学习单调注意力集成到Transducer的预测器状态中，使其能关注输入流历史",
+  "利用前后向算法推断预测器状态与输入时间戳之间对齐的后验概率，避免枚举指数级对齐空间",
+  "基于后验概率估计单调上下文表示，实现端到端训练"
+ ],
+ "method_framework": "在Transducer的predictor与encoder之间加入单调注意力模块；训练时用前后向算法在READ/WRITE格点上计算对齐后验，按后验加权聚合encoder历史得到上下文表示；推理时用贪心单调采样确定对齐路径。",
+ "experiment_framework": "任务：同声传译(simultaneous translation)。基线：Wait-k等AED方法、现有Transducer流式方法。指标：BLEU与翻译延迟(AL/AP)。数据集：标准同传基准。",
+ "takeaways": [
+  "Transducer的输入同步解码在非单调对齐任务(同传)中表现受限，引入历史注意力可显著改善",
+  "前后向算法使注意力后验计算无需枚举对齐路径，保持了Transducer端到端联合优化的优势",
+  "MonoAttn-Transducer在同传任务上兼顾翻译质量与延迟"
+ ],
+ "weaknesses": [
+  "仅在同传任务验证，语音识别/语音合成等其他流式场景未考察",
+  "单调注意力假设对齐仍大致单调，对高度重排序任务的适用性存疑",
+  "前后向算法引入额外计算开销，流式推理延迟影响未充分量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

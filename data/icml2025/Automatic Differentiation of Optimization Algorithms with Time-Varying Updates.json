@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Automatic Differentiation of Optimization Algorithms with Time-Varying Updates.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Automatic Differentiation of Optimization Algorithms with Time-Varying Updates.pdf",
+ "title": "Automatic Differentiation of Optimization Algorithms with Time-Varying Updates",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.0
+ },
+ "one_line": "为时变优化算法提供AD导数迭代的收敛率保证，但实验与相关性不足。",
+ "innovations": [
+  "将Beck(1994)关于时变更新序列Ak的结果强化为收敛率保证，而非仅收敛性",
+  "把收敛结果适配到变步长近端梯度下降与FISTA在部分光滑(partly-smooth)问题上",
+  "证明算法本身的线性收敛率会被其导数迭代镜像反映"
+ ],
+ "method_framework": "在双层优化框架下，对参数化迭代过程x(k+1)=Ak(x(k),u)做前向自动微分得到导数迭代Dx(k+1)=DxAk·Dx(k)+DuAk；在收缩性质与DAk一致有界等假设下，推导Dx(k)收敛到解映射导数Dψ(u)的速率。",
+ "experiment_framework": "数值实验在三个玩具问题上验证：l2正则逻辑回归、lasso、多类多项式逻辑回归；对比四种步长选择的PGD与固定步长APG，以迭代误差与导数误差随迭代步数的衰减曲线为指标，验证导数误差与算法误差同速衰减。",
+ "takeaways": [
+  "导数迭代的收敛率与原算法迭代的收敛率一致",
+  "APG以及特定PGDki在lasso上的线性收敛行为只能由本文理论解释",
+  "时变更新下AD仍能准确估计解映射导数，且收敛速率可控"
+ ],
+ "weaknesses": [
+  "实验仅为玩具优化问题，未在真实深度学习/超参优化任务上验证",
+  "证据强度弱：仅误差衰减曲线，无与隐式微分(ID)等基线的精度/效率定量对比",
+  "与可靠性、医学影像或多模态大模型推理主线无直接关联"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.63,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "优化算法理论，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

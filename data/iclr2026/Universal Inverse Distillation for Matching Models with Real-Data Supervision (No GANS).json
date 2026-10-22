@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Universal Inverse Distillation for Matching Models with Real-Data Supervision (No GANS).pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Universal Inverse Distillation for Matching Models with Real-Data Supervision (No GANS).pdf",
+ "title": "Universal Inverse Distillation for Matching Models with Real-Data Supervision (No GANs)",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "通用逆蒸馏框架，无GAN条件下将真实数据监督融入一步生成器",
+ "innovations": [
+  "提出universal逆蒸馏框架，统一覆盖Flow Matching、Diffusion及其扩展Bridge Matching、Stochastic Interpolant，打破以往蒸馏方法只绑定单一框架的局限",
+  "在无额外判别器/GAN对抗训练的条件下把真实数据监督引入蒸馏，避免以往data-free蒸馏需复杂对抗才能利用真实数据的问题",
+  "给出简单理论基础，把以往FM/DM蒸馏方法作为其特例统一起来"
+ ],
+ "method_framework": "matching模型(DM/FM/Bridge/Stochastic Interpolant)都优化条件匹配目标恢复ODE/SDE做生成，但采样需多步积分而慢。逆蒸馏把多步动态压成一步/少步生成器。RealUID提出统一的逆蒸馏理论：把真实数据以监督形式纳入蒸馏目标而不引入GAN判别器，从而既保留matching框架通用性，又能利用真实数据提升一步生成质量；理论上覆盖并统一先前FM/DM蒸馏方法。",
+ "experiment_framework": "在图像生成等基准上把多步matching教师蒸成一步/少步学生，对比data-free蒸馏与需GAN的真实数据蒸馏方法；指标为一步生成质量(FID等)与采样步数/开销；跨DM/FM/Bridge等多框架验证通用性。",
+ "takeaways": [
+  "逆蒸馏可在统一matching框架下推导，DM/FM/Bridge/Stochastic Interpolant共享同一蒸馏理论",
+  "真实数据监督可在无GAN的情况下融入蒸馏，免去额外判别器与不稳定对抗训练",
+  "统一框架使同一蒸馏 recipe 可迁移到多种matching模型变体"
+ ],
+ "weaknesses": [
+  "属生成模型蒸馏/加速方向，与本主线(可靠性×多模态推理/医学影像)无直接关联",
+  "正文前9页未给出完整定量结果表，一步生成质量相对SOTA蒸馏的提升幅度需查实验节确认",
+  "通用性理论覆盖广，但在每种matching变体上的实证强度是否均衡、对大规模图像/视频模型的可扩展性未在正文充分展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "生成模型加速与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

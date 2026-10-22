@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Proregen_Progressive Residual Generation under Attribute Correlations.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Proregen_Progressive Residual Generation under Attribute Correlations.pdf",
+ "title": "ProReGen: Progressive Residual Generation under Attribute Correlations",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "引入Robinson变换的渐进残差生成，解决属性相关性的少数类生成问题。",
+ "innovations": [
+  "将计量经济学中的Robinson偏化变换引入深度生成模型，实现输入属性的正交化",
+  "提出渐进残差学习：先用多数样本学习g(x1, gamma=0)，再用少数样本通过残差层学习gamma相关差异",
+  "在多个具有不同属性相关强度的基准数据集上验证少数类生成正确性的提升"
+ ],
+ "method_framework": "ProReGen首先将属性x2分解为可由x1预测的部分m(x1)和残差gamma=x2-m(x1)，将条件生成问题g(x1,x2)转化为正交输入下的g~(x1,gamma)。然后渐进学习：先用多数样本学习g~(x1,gamma=0)，再用少数样本通过额外残差层解决gamma相关差异。",
+ "experiment_framework": "在3个人为控制属性相关强度的基准数据集和1个自然相关数据集上验证，指标为少数类组合生成的正确率。对比重采样、分类器伪监督等基线方法。",
+ "takeaways": [
+  "属性正交化可有效解耦生成模型中相关属性的纠缠",
+  "渐进残差学习充分利用多数样本知识，减少对少数样本的依赖",
+  "ProReGen在少数类图像生成正确性上优于现有方法"
+ ],
+ "weaknesses": [
+  "Robinson变换需要预先知道哪些属性是相关的，实际场景中属性关系可能复杂",
+  "残差函数m(x1)的估计方法和精度对最终效果影响未充分讨论",
+  "与可靠性/鲁棒性主线关联较弱，属于生成模型去偏方向"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "少数类生成属于可靠性主线，但与落地域无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

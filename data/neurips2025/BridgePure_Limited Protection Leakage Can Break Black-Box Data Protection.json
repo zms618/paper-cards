@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/BridgePure_Limited Protection Leakage Can Break Black-Box Data Protection.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/BridgePure_Limited Protection Leakage Can Break Black-Box Data Protection.pdf",
+ "title": "BridgePure: Limited Protection Leakage Can Break Black-Box Data Protection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "BridgePure利用少量泄露数据通过扩散桥模型破解黑盒保护",
+ "innovations": [
+  "提出保护泄露威胁模型，揭示黑盒数据保护的关键漏洞",
+  "设计BridgePure方法，利用扩散桥模型从少量(unprotected, protected)对学习逆向映射",
+  "在分类和风格模仿任务上展示卓越的净化性能，接近完全恢复原始数据可用性"
+ ],
+ "method_framework": "BridgePure基于扩散桥模型(DDBM)，通过最小化分数匹配目标学习从保护数据到原始数据的映射。采用混合采样策略结合Euler-Maruyama和Heun方法，并通过高斯噪声预处理增强泛化能力。",
+ "experiment_framework": "在CIFAR-10/100、ImageNet-Subset等数据集上评估9种可用性攻击，与PGD-AT、D-VAE、AVATAR、LE-JCDP等基线比较，使用准确率作为主要指标。",
+ "takeaways": [
+  "扩散桥模型能有效利用有限泄露数据破解保护，无需大量预训练数据",
+  "保护泄露是黑盒数据保护的严重威胁，即使少量泄露数据也能大幅降低保护效果",
+  "方法设计简洁，仅需要少量保护-未保护对即可训练有效的净化模型"
+ ],
+ "weaknesses": [
+  "假设攻击者可以访问黑盒保护API和少量未保护数据，实际场景中可能受限",
+  "未充分探讨不同类型数据分布下的泛化能力",
+  "对保护机制P的假设较为理想化，未考虑更复杂的保护策略"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

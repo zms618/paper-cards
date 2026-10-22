@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/A2D_Any-Order, Any-Step Safety Alignment for Diffusion Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A2D_Any-Order, Any-Step Safety Alignment for Diffusion Language Models.pdf",
+ "title": "A2D: ANY-ORDER, ANY-STEP Safety Alignment for Diffusion Language Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 7.5,
+  "overall": 7.0
+ },
+ "one_line": "Token级安全对齐方法，在扩散模型中实现任意位置有害内容拦截。",
+ "innovations": [
+  "token-level对齐方法，在任意有害内容位置插入[EOS]拒绝信号",
+  "随机掩码训练确保任意解码步骤的安全性",
+  "早期拒绝机制实现19.3倍快速安全终止"
+ ],
+ "method_framework": "A2D通过构建有害集(Dharm)和保留集(Dretain)数据集，在掩码扩散模型训练中监督有害位置的token输出[EOS]，实现token级别的安全对齐。",
+ "experiment_framework": "在LLaDA、LLaDA-1.5和Dream三个dLLMs上评估，使用HarmBench攻击(Zeroshot/PAIR/ReNeLLM/Prefilling/DIJA)和FITS攻击，测量攻击成功率(ASR)和能力指标(MMLU/GSM8K/HumanEval)。",
+ "takeaways": [
+  "token-level对齐比传统response-level对齐更有效，能处理任意位置的有害内容",
+  "早期拒绝机制结合[EOS]概率阈值可实现高效安全监控"
+ ],
+ "weaknesses": [
+  "仅作为附加对齐机制应用，未集成到初始对齐流程",
+  "对数学能力有一定影响(虽然保持竞争力)"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "token级安全对齐直接关联可靠性主线，但未深入落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

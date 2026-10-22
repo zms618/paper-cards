@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mora Missing Modality Low-Rank Adaptation for Visual Recognition.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mora Missing Modality Low-Rank Adaptation for Visual Recognition.pdf",
+ "title": "MoRA: Missing Modality Low-Rank Adaptation for Visual Recognition",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "双结构低秩适配解决视觉语言模型缺失模态问题，参数效率高但扩展性有限。",
+ "innovations": [
+  "提出模态共享参数模块，通过Gram矩阵实现模态间双向知识迁移",
+  "结合模态特定适配组件，在保持跨模态交互的同时保留各模态独特特性",
+  "仅需0.11%可训练参数，推理时间仅为SOTA方法的25.9%"
+ ],
+ "method_framework": "双结构低秩适配设计：(1)共享跨模态参数：在文本和视觉编码器之间引入共享低秩参数，通过Gram矩阵建模跨模态交互实现知识迁移；(2)模态特定参数：各模态独立的低秩适配模块，保留模态内灵活性。缺失模态时可利用另一模态通过共享参数迁移知识。",
+ "experiment_framework": "在标准视觉识别基准上评估，对比多种prompt-based和参数高效微调方法，测试不同缺失模态组合下的性能，同时衡量参数量和推理效率。",
+ "takeaways": [
+  "共享跨模态参数能有效实现模态间知识迁移，提升缺失模态场景下的性能",
+  "MoRA在缺失模态场景下平均提升5.24%，同时保持极高的参数和推理效率",
+  "跨模态对齐与模态特定特性的平衡是缺失模态鲁棒性的关键"
+ ],
+ "weaknesses": [
+  "仅在视觉-文本双模态上验证，更多模态(音频、视频)的扩展性未探索",
+  "共享低秩参数的维度选择和跨层交互方式缺乏系统消融",
+  "极端缺失场景(如完全缺失某一模态)下的性能边界未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "解决多模态模型缺失模态问题，属于可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

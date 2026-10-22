@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Point Prompting Counterfactual Tracking with Video Diffusion Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Point Prompting Counterfactual Tracking with Video Diffusion Models.pdf",
+ "title": "Point Prompting: Counterfactual Tracking with Video Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "扩散模型零样本点跟踪，但推理慢且与主线关联弱",
+ "innovations": [
+  "揭示视频扩散模型的物体恒存能力可涌现为零样本点跟踪，无需专门训练",
+  "用未编辑初始帧作负提示，解决反事实标记在自然视频中不自然而被模型忽略的问题",
+  "将生成模型产生的轨迹蒸馏为快速跟踪器，作有效监督信号达到可比性能"
+ ],
+ "method_framework": "在首帧查询点放置独特色点，用 SDEdit 从中间噪声水平重生成视频其余部分，使标记随被跟踪点在各帧传播；以未改动首帧为负提示引导模型保留标记；再用图像处理在每帧定位标记得到轨迹，并可用修复式迭代精化。",
+ "experiment_framework": "在 TAP-Vid 基准上评测多种图像条件视频扩散模型，对比既有零样本对应/跟踪方法与自监督专门跟踪器，报告遮挡下的点跟踪精度与蒸馏后快速跟踪器性能。",
+ "takeaways": [
+  "现成视频扩散模型可直接作零样本视觉跟踪器",
+  "生成模型的物体恒存能力使其能穿过遮挡传播点轨迹",
+  "涌现轨迹蒸馏出的快速跟踪器性能与专门模型相当"
+ ],
+ "weaknesses": [
+  "主线为视频点跟踪/生成模型能力挖掘，与可靠性、医学影像、多模态推理主线关联弱",
+  "依赖扩散重生成，推理开销远大于专门跟踪器，实时性差",
+  "前9页未见对快速运动/大遮挡等困难场景的失败模式系统分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "零样本跟踪有可迁移机制，但与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

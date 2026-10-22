@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Towards Straggler-Resilient Split Federated Learning An Unbalanced Update Approach.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Towards Straggler-Resilient Split Federated Learning An Unbalanced Update Approach.pdf",
+ "title": "Towards Straggler-Resilient Split Federated Learning: An Unbalanced Update Approach",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "非平衡更新减少通信轮次，但误差增加与异构性问题未充分解决",
+ "innovations": [
+  "非平衡更新机制使服务器在等待慢速客户端时进行τ次本地更新",
+  "结合零阶优化减少边缘设备内存需求",
+  "理论分析证明线性加速效果O(√d/(τT))"
+ ],
+ "method_framework": "MU-SplitFed将模型分割为客户端和服务器端，客户端发送嵌入向量，服务器进行τ次本地更新而不等待所有客户端完成，减少通信轮次并提高系统效率",
+ "experiment_framework": "在CIFAR-10、Fashion-MNIST等数据集上测试，与GAS和Vanilla SplitFed基线比较，评估不同τ值下的准确性和通信效率",
+ "takeaways": [
+  "模型分割策略与非平衡更新比率τ的匹配对收敛至关重要",
+  "零阶优化可有效减少边缘设备资源需求"
+ ],
+ "weaknesses": [
+  "随着τ增大，服务器端随机误差增加，需要更小的学习率",
+  "客户端异构性误差不受τ加速影响"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/REVIVE 3D Refinement via Encoded Voluminous Inflated prior for Volume.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/REVIVE 3D Refinement via Encoded Voluminous Inflated prior for Volume.pdf",
+ "title": "REVIVE 3D Refinement via Encoded Voluminous Inflated prior for Volume",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "两阶段3D生成，膨胀先验+扩散细化，依赖预训练模型",
+ "innovations": [
+  "膨胀先验生成阶段，结合全局轮廓和局部部件",
+  "3D潜在空间扩散模型细化，解决凸几何问题",
+  "提出紧凑度和法线各向异性指标评估体积感"
+ ],
+ "method_framework": "两阶段框架：第一阶段通过膨胀轮廓和叠加部件信息生成膨胀先验；第二阶段在3D潜在空间注入高斯噪声并去噪，利用预训练3D知识细化几何结构",
+ "experiment_framework": "在2322张平面图像测试集上评估，对比Trellis、DrawingSpinUp等基线，使用Uni3D、ULIP、Compactness和Normal Anisotropy指标，并进行用户研究",
+ "takeaways": [
+  "膨胀先验提供直接3D几何线索，优于2D引导方法",
+  "初始噪声水平t0控制保真度与合理性的权衡",
+  "部件叠加对局部细节恢复至关重要"
+ ],
+ "weaknesses": [
+  "依赖预训练骨干模型，可能导致卡通输入风格向照片现实风格偏移",
+  "膨胀先验的加性方法仍存在凸几何限制"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "3D生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

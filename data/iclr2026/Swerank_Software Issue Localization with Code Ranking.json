@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Swerank_Software Issue Localization with Code Ranking.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Swerank_Software Issue Localization with Code Ranking.pdf",
+ "title": "Swerank: Software Issue Localization with Code Ranking",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "检索-重排序框架定位软件问题，构建SWELOC数据集，性能优于智能体系统。",
+ "innovations": [
+  "提出高效的检索-重排序框架用于问题定位，在成本远低于智能体系统的同时达到SOTA性能",
+  "构建SWELOC大规模数据集，从公开GitHub仓库收集真实问题描述与对应代码修改的配对",
+  "证明SWELOC数据集可用于增强现有的检索器和重排序器模型"
+ ],
+ "method_framework": "SweRank采用两阶段检索-重排序框架：第一阶段从代码库中检索与问题描述相关的候选代码位置；第二阶段对候选进行精细重排序，确定最相关的文件/类/函数。训练数据来自SWELOC数据集，包含真实GitHub issue与对应代码修改的配对。",
+ "experiment_framework": "在SWE-Bench-Lite和LocBench上评估；基线包括传统代码检索模型和基于LLM智能体的系统（如Claude-3.5）；指标为问题定位准确率。",
+ "takeaways": [
+  "高效的检索-重排序方法可以在问题定位任务上超越昂贵的多步推理智能体系统",
+  "SWELOC数据集为问题定位研究提供了有价值的训练资源",
+  "传统检索模型在问题定位上的瓶颈在于问题描述的冗长和失败描述特性"
+ ],
+ "weaknesses": [
+  "方法是两阶段pipeline，第一阶段的检索召回率上限会影响最终性能",
+  "实验主要在英文GitHub项目上验证，多语言代码库的适用性未知",
+  "与补丁生成等下游任务的端到端集成效果未充分评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "软件工程问题定位与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

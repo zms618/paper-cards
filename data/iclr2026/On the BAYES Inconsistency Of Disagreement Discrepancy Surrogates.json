@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/On the BAYES Inconsistency Of Disagreement Discrepancy Surrogates.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/On the BAYES Inconsistency Of Disagreement Discrepancy Surrogates.pdf",
+ "title": "On the Bayes Inconsistency of Disagreement Discrepancy Surrogates",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 8.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 7.5
+ },
+ "one_line": "证明分歧差异代理损失贝叶斯不一致，提出首个可证一致的替代方案。",
+ "innovations": [
+  "证明现有分歧差异代理损失不满足贝叶斯一致性：最大化代理可能无法最大化基于 0-1 损失的真实分歧差异",
+  "将经典代理损失一致性框架（Zhang 2004）推广到风险之差(difference of risks)这一新目标，给出最优性差距的上下界",
+  "设计与交叉熵配对的新型分歧损失，成为首个对最大化分歧差异可证贝叶斯一致的代理"
+ ],
+ "method_framework": "在分布偏移下，分歧差异衡量可训练模型与参考模型间分歧从源分布到目标分布的变化；因真目标含不可微 0-1 损失需用代理。本文把分类代理一致性理论扩展到风险之差目标，推导最优性差距上下界，据此证明旧代理不一致，并构造 CE+新分歧损失使其渐近收敛到真目标最优。",
+ "experiment_framework": "在多个分布偏移基准上评测；对比现有分歧差异估计方法；重点考察对抗/困难偏移条件下，新方法对真实分歧差异估计的准确度与鲁棒性。",
+ "takeaways": [
+  "此前用于误差上界、有害偏移检验、鲁棒训练的分歧差异方法，其代理目标存在根本性贝叶斯不一致",
+  "优化代理在渐近极限就偏离真目标，解释了已有报告的训练不稳定现象",
+  "新 CE+分歧损失给出更准确、更鲁棒的分歧差异估计，尤其在对抗条件下"
+ ],
+ "weaknesses": [
+  "仅证明贝叶斯一致性（渐近），更强的 H-一致性对复杂深度模型仍开放，有限样本保证有限",
+  "落地域为通用分布偏移，未涉及医学影像或多模态推理，相关性中等",
+  "前 9 页内实证多为估计精度对比，缺少在误差上界/鲁棒训练下游任务上的端到端收益量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.0,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "分歧差异代理一致性直接关联鲁棒训练与分布偏移可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

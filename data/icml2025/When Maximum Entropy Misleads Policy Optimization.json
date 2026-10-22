@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/When Maximum Entropy Misleads Policy Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/When Maximum Entropy Misleads Policy Optimization.pdf",
+ "title": "When Maximum Entropy Misleads Policy Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.0,
+  "overall": 6.1
+ },
+ "one_line": "揭示MaxEnt RL在精确控制任务中因熵最大化导致不可恢复失败的机制",
+ "innovations": [
+  "揭示MaxEnt RL在性能关键控制问题上失效的机制：熵最大化鼓励在平庸状态采取高熵鲁棒策略，导向不可逆失败",
+  "刻画'鲁棒性-最优性'权衡：关键状态天然需要低熵策略，而MaxEnt偏向低回报但高熵的安全策略",
+  "通过多类控制问题(如四旋翼)具体展示SAC在简化动力学下可学、在真实动力学下失败而PPO可学的现象"
+ ],
+ "method_framework": "从目标函数层面剖析MaxEnt RL：熵奖励项鼓励策略保持随机性，在需要精确、低熵动作的临界状态上会引导策略走向'看似鲁棒实则不可恢复'的分支；对比SAC(MaxEnt)与PPO(non-MaxEnt)在简化vs真实动力学下的学习行为，论证误导效应。",
+ "experiment_framework": "多种连续控制问题(含四旋翼控制环境)；对比SAC(MaxEnt)与PPO在简化vs真实动力学模型下的学习表现；以任务成功率/收敛性说明MaxEnt在精确控制任务中的失败。",
+ "takeaways": [
+  "MaxEnt RL并非在所有控制任务上都优，在需要精确低熵策略的任务上会被熵项误导",
+  "SAC在简化动力学下可学、真实动力学下失败，而PPO等non-MaxEnt算法反而能学",
+  "在具挑战的控制问题中需平衡奖励设计与熵最大化强度，不能一味追求熵正则"
+ ],
+ "weaknesses": [
+  "属RL控制/目标函数分析，与鲁棒性主线(可信AI/多模态推理)及医学影像落地域关系较弱",
+  "虽诊断了问题，但未提出可操作的自适应熵调度/新算法来真正解决误导",
+  "实验以连续控制/四旋翼为主，对Atari/决策类或大规模RL任务的普适性需更多验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.55,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

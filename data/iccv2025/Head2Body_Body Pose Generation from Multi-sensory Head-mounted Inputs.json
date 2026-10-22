@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Head2Body_Body Pose Generation from Multi-sensory Head-mounted Inputs.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Head2Body_Body Pose Generation from Multi-sensory Head-mounted Inputs.pdf",
+ "title": "Head2Body Body Pose Generation from Multi-sensory Head-mounted Inputs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "头戴设备生成全身姿态，VQ-VAE提升时序一致性",
+ "innovations": [
+  "IMU编码器自监督预训练",
+  "LVLM提取可见身体部位",
+  "残差VQ-VAE表示姿态为离散token"
+ ],
+ "method_framework": "结合头IMU和视觉输入，通过预训练IMU编码器和LVLM提取特征，使用VQ-Poser生成离散姿态token",
+ "experiment_framework": "AMASS、KinPoly、EgoExo4D数据集，MPJPE、ACCER、FS等指标，与EgoEgo、MocapEvery等基线对比",
+ "takeaways": [
+  "自监督预训练解决标注数据稀缺",
+  "离散token表示提升时序一致性",
+  "多模态融合减少姿态歧义"
+ ],
+ "weaknesses": [
+  "LVLM可能误识别非目标人物身体部位",
+  "仅使用头戴设备，在极端动作下可能受限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "姿态生成与可靠性主线无实质交点，仅多模态融合有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

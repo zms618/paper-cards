@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Dataset Ownership Verification for Pre-trained Masked Models.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Dataset Ownership Verification for Pre-trained Masked Models.pdf",
+ "title": "Dataset Ownership Verification for Pre-trained Masked Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 5.5,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "提出DOV4MM方法，通过嵌入重建难度验证掩码模型数据集所有权。",
+ "innovations": [
+  "首次针对掩码预训练模型提出数据集所有权验证方法",
+  "引入相对嵌入重建难度概念作为核心验证指标",
+  "无需后门水印即可有效验证数据集所有权"
+ ],
+ "method_framework": "DOV4MM包含三个关键步骤：1)分割公共数据集并训练解码器；2)计算训练集、验证集和私有集的相对嵌入重建难度；3)通过单边成对t-test验证假设。",
+ "experiment_framework": "在ImageNet-1K和WikiText-103上测试，对比DI4SSL、CTRL和PartCrop基线，使用敏感性、特异性和AUROC作为评估指标。",
+ "takeaways": [
+  "从高维表示中提取最关键的相对嵌入重建难度信息可有效提高验证效率",
+  "无需修改原始数据集的水印方法可避免水印移除风险"
+ ],
+ "weaknesses": [
+  "方法依赖于特定解码器与预训练模型的一对一对应关系",
+  "计算嵌入重建难度可能对大规模数据集仍有一定计算开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.375,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "数据集所有权验证属于隐私鲁棒主线，方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

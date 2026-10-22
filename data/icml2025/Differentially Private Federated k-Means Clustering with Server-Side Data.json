@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Differentially Private Federated k-Means Clustering with Server-Side Data.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Differentially Private Federated k-Means Clustering with Server-Side Data.pdf",
+ "title": "Differentially Private Federated k-Means Clustering with Server-Side Data",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "FedDP-KMeans用服务器端数据解决DP聚类初始化，但与主线关联弱且依赖数据相关性",
+ "innovations": [
+  "提出全联邦+差分隐私的k-means算法FedDP-KMeans，保护客户端数据不被从簇中心反推",
+  "关键创新：用服务器端少量、分布外的公开数据克服DP聚类对好初始化的依赖这一主要难题",
+  "结合该初始化与简单的联邦DP-Lloyds算法，并给出收敛速度与簇识别成功率的理论界"
+ ],
+ "method_framework": "FL单独不足以保护隐私(簇中心可能反推单点)，需叠加DP；而DP聚类的核心难点是需要好初始化。本文用服务器端少量OOD数据先做初始化，再在联邦客户端上跑DP-Lloyds迭代更新簇中心，既保持全联邦与DP保证，又借助服务器端数据弥补客户端隐私噪声下的初始化不足。",
+ "experiment_framework": "在合成与真实基准聚类任务上，与DP/联邦聚类基线比较，以聚类质量(如ARI)与隐私预算下的性能评估，并验证理论界。",
+ "takeaways": [
+  "服务器端少量OOD数据可有效解决DP联邦聚类的初始化难题",
+  "FedDP-KMeans在保持全联邦与DP保证的同时取得接近非隐私聚类的良好结果"
+ ],
+ "weaknesses": [
+  "面向联邦学习/差分隐私聚类，与可靠性/验证器/多模态推理主线无直接关联",
+  "效果依赖服务器端数据与客户端分布的相关性，OOD过远时初始化收益下降",
+  "仅依据前9页阅读，完整基准与隐私预算扫描表未完全覆盖"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

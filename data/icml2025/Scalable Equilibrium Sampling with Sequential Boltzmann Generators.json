@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Scalable Equilibrium Sampling with Sequential Boltzmann Generators.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Scalable Equilibrium Sampling with Sequential Boltzmann Generators.pdf",
+ "title": "Scalable Equilibrium Sampling with Sequential Boltzmann Generators",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.8
+ },
+ "one_line": "非等变Transformer流+SMC采样多肽，但扩展性与效率存疑",
+ "innovations": [
+  "用严格可逆的非等变Transformer流直接在全原子笛卡尔坐标上建模，相比等变连续流在采样与似然计算上都更高效",
+  "用连续时间序贯蒙特卡洛(SMC)在推理时缩放流样本，以退火Langevin dynamics将样本输运到目标分布",
+  "首次实现三、四、六肽在笛卡尔坐标下的平衡采样(此前Boltzmann generators难以处理)"
+ ],
+ "method_framework": "Boltzmann generator用normalizing flow+重要性采样从目标平衡分布采无相关样本。SBG先以高效可逆非等变Transformer流在笛卡尔坐标上产生提议样本，再以连续时间SMC(退火Langevin)逐步把这些样本输运到真实玻尔兹曼目标分布，摆脱对等变连续流与纯重要性采样的依赖。",
+ "experiment_framework": "多肽(peptide)体系上评估平衡采样质量；与先前Boltzmann generators及MCMC/MD基线在多项指标上对比；报告三/四/六肽体系上所有指标SOTA。",
+ "takeaways": [
+  "非等变可逆流在笛卡尔坐标上比等变连续流更高效，且可支持更复杂推理策略",
+  "推理时SMC+退火Langevin能把流提议样本有效输运到目标平衡分布",
+  "SBG在多肽体系上取得SOTA，并首次采样更长肽链的平衡态"
+ ],
+ "weaknesses": [
+  "仅在多肽体系验证，向蛋白、分子晶体等更大体系的可扩展性未充分证明",
+  "推理时SMC/Langevin引入额外采样成本，端到端效率与MD的对比有限",
+  "属统计物理/分子采样，与可靠性/鲁棒性及医学影像、多模态推理主线无关"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/MosaicDiff_Training-free Structural Pruning for Diffusion Model Acceleration Reflecting Pretraining.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/MosaicDiff_Training-free Structural Pruning for Diffusion Model Acceleration Reflecting Pretraining.pdf",
+ "title": "MosaicDiff Training-free Structural Pruning for Diffusion Model Acceleration Reflecting Pretraining",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "基于预训练动力学的三阶段剪枝加速扩散模型采样",
+ "innovations": [
+  "基于预训练慢-快-慢三阶段动力学的自适应剪枝策略",
+  "SNR感知校准数据集构建",
+  "二阶结构剪枝方法应用于扩散模型"
+ ],
+ "method_framework": "将推理过程分为三阶段，每阶段使用SNR感知校准数据进行二阶结构剪枝，获得不同稀疏度的子网络，最后合并实现高效推理。",
+ "experiment_framework": "在DiT-XL/2和SDXL-base-1.0上评估，使用ImageNet-1K和MS COCO数据集，比较FID、IS、CLIP-Score等指标，与Diff-Pruning、DeepCache等方法对比。",
+ "takeaways": [
+  "利用预训练动力学指导剪枝策略可显著提升加速效果",
+  "SNR感知校准数据能有效指导不同阶段的剪枝决策"
+ ],
+ "weaknesses": [
+  "方法依赖于特定的噪声调度策略",
+  "未探讨不同架构的通用性",
+  "计算Hessian矩阵可能带来额外开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "加速扩散模型采样与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

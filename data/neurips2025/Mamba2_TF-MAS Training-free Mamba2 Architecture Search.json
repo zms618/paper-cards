@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Mamba2_TF-MAS Training-free Mamba2 Architecture Search.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Mamba2_TF-MAS Training-free Mamba2 Architecture Search.pdf",
+ "title": "TF-MAS: Training-free Mamba2 Architecture Search",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "无训练Mamba2架构搜索，基于秩塌陷代理指标排序",
+ "innovations": [
+  "首个针对Mamba型架构的无训练NAS方法",
+  "基于SSD模块秩塌陷现象设计代理指标",
+  "通过计算开销确定超参数范围的自适应搜索空间",
+  "针对不同输入张量形状设计变换矩阵计算方法"
+ ],
+ "method_framework": "基于Mamba2中SSD模块的秩塌陷现象，设计仅依赖变换矩阵及其梯度的代理指标，通过计算不同架构的代理值进行排序，无需训练候选网络。",
+ "experiment_framework": "构建基于预训练Mamba2模型的NASBenches，包含500种架构及其在不同数据集上的性能指标，使用Kendall's Tau评估排序相关性，并在参数限制下进行架构搜索。",
+ "takeaways": [
+  "基于秩塌陷的代理设计可迁移至其他状态空间模型",
+  "自适应搜索空间设计方法可扩展到其他模型架构"
+ ],
+ "weaknesses": [
+  "代理计算仍需一定计算资源，时间复杂度随模型规模线性增长",
+  "实验主要在语言任务上进行，未验证在视觉任务上的有效性",
+  "权重纠缠方法可能影响性能评估的准确性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/VI3NR_Variance Informed Initialization for Implicit Neural Representations.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/VI3NR_Variance Informed Initialization for Implicit Neural Representations.pdf",
+ "title": "VI3NR Variance Informed Initialization for Implicit Neural Representations",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "方差感知INR初始化，提升多信号重建但缺乏医学验证",
+ "innovations": [
+  "推导保持层间预激活分布稳定的初始化方法",
+  "提出梯度方差稳定的条件，指导深度网络分布选择",
+  "通过蒙特卡洛估计高效计算激活统计量，优于近似方法"
+ ],
+ "method_framework": "基于中心极限定理推导预激活分布，通过控制权重方差保持层间分布稳定，同时考虑前向和后向传播的方差条件，适用于任意激活函数",
+ "experiment_framework": "在图像、音频和3D表面重建任务上评估，对比Xavier、Kaiming等初始化方法，使用SMAPE测量前向和后向传播误差",
+ "takeaways": [
+  "激活函数统计量的蒙特卡洛估计高效准确",
+  "σp的选择对性能影响显著，可通过理论条件指导",
+  "方法可推广到多种INR激活函数"
+ ],
+ "weaknesses": [
+  "实验主要在标准数据集上进行，缺乏在复杂医学影像上的验证",
+  "方法计算开销虽小但仍需额外的超参数搜索"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "INR初始化方法，未触及可靠性主线或医学落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

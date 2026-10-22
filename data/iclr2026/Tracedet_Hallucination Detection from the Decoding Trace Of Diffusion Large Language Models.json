@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Tracedet_Hallucination Detection from the Decoding Trace Of Diffusion Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tracedet_Hallucination Detection from the Decoding Trace Of Diffusion Large Language Models.pdf",
+ "title": "TraceDet: Hallucination Detection from the Decoding Trace of Diffusion Large Language Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "利用D-LLM去噪轨迹的幻觉检测，AUROC提升15.2%但计算开销大",
+ "innovations": [
+  "首次研究扩散大语言模型（D-LLM）的幻觉检测问题，指出现有AR-LLM幻觉检测方法不适用于D-LLM的多步去噪特性",
+  "将D-LLM的去噪过程建模为动作轨迹，每步动作为模型在之前中间输出条件下对干净响应的预测",
+  "识别对幻觉响应最具信息量的子轨迹，利用多步去噪过程中的关键幻觉信号进行检测"
+ ],
+ "method_framework": "TraceDet利用D-LLM去噪过程中的中间步骤进行幻觉检测。将完整去噪序列建模为动作轨迹，每步动作是模型基于当前中间状态对最终答案的预测。通过识别轨迹中对幻觉最具判别力的子序列，提取关键信号进行幻觉分类。",
+ "experiment_framework": "在多个开源D-LLM上评估幻觉检测性能，对比基于单步生成的AR-LLM幻觉检测基线，测量AUROC指标的平均提升。",
+ "takeaways": [
+  "D-LLM的幻觉信号在多步去噪过程中逐步涌现，而非仅存在于最终输出",
+  "利用完整解码轨迹的TraceDet比单步检测基线平均提升15.2% AUROC",
+  "最具信息量的去噪子轨迹集中了幻觉的关键信号，而非所有步骤同等重要"
+ ],
+ "weaknesses": [
+  "需要访问D-LLM的完整去噪轨迹，计算开销较大",
+  "主要在事实性QA类幻觉上验证，其他类型幻觉（逻辑、一致性）的检测效果未探讨",
+  "最有信息量子轨迹的自动识别方法较复杂，实际部署便利性存疑"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "幻觉检测属于可靠性主线，且针对D-LLM新特性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

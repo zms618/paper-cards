@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Graph Diffusion for Robust Multi-Agent Coordination.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Graph Diffusion for Robust Multi-Agent Coordination.pdf",
+ "title": "Graph Diffusion for Robust Multi-Agent Coordination",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.8
+ },
+ "one_line": "图扩散建模多智能体交互，提升离线MARL的OOD鲁棒性",
+ "innovations": [
+  "指出既有扩散式离线MARL对各智能体历史轨迹独立扩散，忽视多智能体协调动态",
+  "构建带连续节点属性与离散边的稀疏协调图，用图扩散联合建模智能体交互",
+  "在离线MARL中提升协作策略在动态/分布外环境下的有效性与鲁棒性"
+ ],
+ "method_framework": "把多智能体交互显式建模为稀疏协调图（节点=智能体连续属性，边=离散关系）；在图上做扩散以联合生成/去噪协调动作，替代对单智能体轨迹的独立扩散，从而捕捉跨智能体依赖、改善OOD泛化。",
+ "experiment_framework": "在离线多智能体协作基准上评测；与独立扩散及既有离线MARL方法比较；指标为协作回报、对未见状态/动作的OOD泛化与动态环境鲁棒性；含消融验证图协调结构的作用。",
+ "takeaways": [
+  "独立扩散忽略多智能体协调动态，图扩散可更好建模交互结构",
+  "稀疏协调图在离线设定下改善对OOD状态的泛化",
+  "图扩散提升协作策略在动态环境中的鲁棒性"
+ ],
+ "weaknesses": [
+  "鲁棒性主题相关但落地域为多智能体RL，非医学影像/多模态推理",
+  "图构造与扩散带来额外推理开销，大规模智能体扩展性未充分量化",
+  "鲁棒性评估集中在OOD回报，缺乏对失效模式/安全约束的定量分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

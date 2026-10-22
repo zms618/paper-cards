@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Evaluating Judges as Evaluators The Jetts Benchmark of LLM-as-Judges as Test-Time Scaling Evaluators.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Evaluating Judges as Evaluators The Jetts Benchmark of LLM-as-Judges as Test-Time Scaling Evaluators.pdf",
+ "title": "Evaluating Judges as Evaluators: The JETTS Benchmark of LLM-as-Judges as Test-Time Scaling Evaluators",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "JETTS基准揭示LLM-judge在测试时扩展场景下的实际增益有限",
+ "innovations": [
+  "专门面向测试时扩展场景的LLM-judge评估基准JETTS，而非普通成对打分一致性",
+  "三维度(数学推理/代码生成/指令遵循)×三任务设定(响应重排序/步级束搜索/基于批评的精修)的评测设计",
+  "横向评测10个7B-70B judge模型×8个基座生成器，量化judge作为扩展信号的实际增益"
+ ],
+ "method_framework": "把LLM-judge嵌入测试时扩展流水线：重排序(对多条候选打分选top-K)、步级束搜索(步级评分引导)、批评式精修(生成批评再改写)；以最终生成质量增益作为judge是否有效的直接度量，而非与人工的打分一致性。",
+ "experiment_framework": "评测Prometheus-2、SFR-Judge、Skywork-Critic、Themis等10个judge(7B-70B)搭配8个基座生成器；领域为数学推理/代码/指令遵循；指标为三种设定下的质量变化(judge reranking/beam search/refinement 的增量)，并与最佳奖励模型(Best RM)对比。",
+ "takeaways": [
+  "许多常用LLM-judge在响应重排序与步级束搜索上不仅无益甚至为负增益(如Prometheus-2 7B约-0.1)",
+  "只有70B级judge在重排序/束搜索上取得正增益(约+0.13~0.18)",
+  "基于批评的精修增益普遍为正且高(0.94-0.99)，是judge更可靠的用法"
+ ],
+ "weaknesses": [
+  "judge有效主要体现在critique-refinement，重排序类结论可能受候选生成分布影响",
+  "评测领域为数学/代码/指令遵循，对开放生成/医学场景的外推待验证",
+  "结论偏揭示性，未给出改造judge使其在重排序上有效的方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

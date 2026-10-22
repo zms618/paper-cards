@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Adjustment for Confounding using Pre-Trained Representations.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adjustment for Confounding using Pre-Trained Representations.pdf",
+ "title": "Adjustment for Confounding using Pre-Trained Representations",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.8
+ },
+ "one_line": "预训练表示用于因果推断的理论分析，但实验验证有限。",
+ "innovations": [
+  "首次形式化了预训练表示用于DML混杂调整的充分信息论条件（P-ODS等）",
+  "证明了稀疏性和可加性假设在可逆线性变换（ILT）下不保持，揭示了Lasso/RF等方法在预训练特征上失效的理论根源",
+  "提出基于低内在维度+流形上结构稀疏性的收敛率分析框架，证明DNN可自适应内在维度获得快速收敛"
+ ],
+ "method_framework": "将预训练神经网络提取的潜在表示Z=φ(W)作为混杂调整变量纳入双重机器学习（DML）框架。核心理论贡献：(1)定义P-ODS（Outcome Distribution Sufficient）条件刻画表示的充分性；(2)证明光滑性在ILT下保持但稀疏性/可加性不保持；(3)结合低内在维度假设与流形结构稀疏性，推导出 nuisance 函数估计的收敛率条件，从而保证ATE估计的√n渐近正态性。",
+ "experiment_framework": "在两个数据集上验证：IMDb影评（文本，BERT提取768维特征）和儿童胸片图像（DenseNet-121提取1024维特征）。模拟标签混杂设置，比较Naive、Oracle、S-Learner、DML（分别用Linear/Lasso/RF/NN作为nuisance估计器）。指标为ATE点估计偏差和95%置信区间覆盖率。",
+ "takeaways": [
+  "DML使用线性或神经网络nuisance估计器可获得无偏ATE估计和良好置信区间覆盖，而Lasso和随机森林因ILT非不变性导致严重偏差",
+  "预训练表示的内在维度远低于环境维度（胸片数据约12维 vs 1024维），支持流形假设",
+  " doubly robust估计的有效性依赖于nuisance估计器的收敛速度，而后者受限于表示的非可辨识性"
+ ],
+ "weaknesses": [
+  "实验仅使用模拟混杂（人为构造治疗/结果），缺乏真实观测数据上的因果效应验证",
+  "仅测试两个数据集（IMDb和胸片），外部效度和泛化性证据不足",
+  "理论分析假设预训练表示固定不微调，未探索端到端微调对混杂调整的影响"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "因果去混杂方法设计，可靠性主线硬工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

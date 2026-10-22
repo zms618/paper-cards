@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Posh using Scene Graphs To Guide LLMS-AS-A-JUDGE for Detailed Descriptions.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Posh using Scene Graphs To Guide LLMS-AS-A-JUDGE for Detailed Descriptions.pdf",
+ "title": "POSH: Using Scene Graphs to Guide LLMs-as-a-Judge for Detailed Image Descriptions",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "场景图引导LLM裁判定位描述错误，艺术领域评测指标优于基线。",
+ "innovations": [
+  "用场景图作为结构化评分细则引导 LLM 裁判，把错误定位到具体文本span(属性/关系错附、遗漏)",
+  "细粒度错误聚合为错误/遗漏/总体的粗分数，使指标可解释且可复现(全开放权重)",
+  "构建 DOCENT 艺术作品详细描述基准(1750条专家描述+900条细粒度/粗粒度人评)，并验证 POSH 作奖励函数优于SFT"
+ ],
+ "method_framework": "对生成描述与参考分别抽取场景图作为结构化 rubric，引导 LLM 逐项比对，识别并定位组合理解错误(谁倒水、相对位置、朝向、眼神等)与遗漏；将这些局部错误聚合为粗粒度质量分，既给出模型排序又归因到具体问题，可作可复现的奖励信号。",
+ "experiment_framework": "在 DOCENT 上与 SPICE、CAPTURE、LLaVa-Critic、GPT4o-as-Judge 等对比，报告与人工判断的 Spearman 相关与排序一致率；用 CapArena 验证跨图像类型鲁棒；并用 POSH 作奖励函数对比 SFT。",
+ "takeaways": [
+  "POSH 与 DOCENT 人评相关性比最强开放权重基线高+0.05 Spearman ρ，并超过 GPT4o-as-Judge",
+  "传统 CIDEr/SPICE 面向短文本，对长描述的属性/关系错附不敏感",
+  "用 POSH 作奖励函数训练，描述质量优于纯SFT；基础模型在丰富动态场景上仍难做到无错全覆盖"
+ ],
+ "weaknesses": [
+  "依赖场景图抽取质量，抽取错误会直接传导为评分误差，前9页未见对场景图错误的敏感性分析",
+  "主线为详细描述评测/裁判，属验证器方向但非鲁棒性/不确定性核心",
+  "DOCENT 聚焦艺术领域，向自然图像/医学影像等域的迁移证据有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "验证器方向但非鲁棒性核心，艺术领域迁移证据有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

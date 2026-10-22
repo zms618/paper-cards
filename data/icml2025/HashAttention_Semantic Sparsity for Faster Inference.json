@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/HashAttention_Semantic Sparsity for Faster Inference.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/HashAttention_Semantic Sparsity for Faster Inference.pdf",
+ "title": "HashAttention: Semantic Sparsity for Faster Inference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "HashAttention用哈希签名实现语义稀疏，提升长上下文效率",
+ "innovations": [
+  "将关键token识别问题转化为推荐问题",
+  "使用汉明空间编码实现高效MIPS",
+  "独立映射函数解决查询和键分布分离问题",
+  "仅32位辅助内存实现高稀疏度"
+ ],
+ "method_framework": "将关键token识别转化为推荐问题，使用独立映射函数将键值和查询编码到汉明空间，通过汉明距离识别关键token，实现高效注意力计算",
+ "experiment_framework": "LongBench和RULER数据集，Llama-3.1-8B-Instruct和Mistral-7B-v0.3-Instruct模型，与H2O、InfLLM、DoubleSparsity和Quest等基线比较",
+ "takeaways": [
+  "将注意力稀疏问题转化为推荐问题的思路",
+  "使用独立映射函数解决查询和键分布分离问题",
+  "任务特定微调可进一步提升稀疏度"
+ ],
+ "weaknesses": [
+  "需要针对不同上下文长度重新训练",
+  "未探索值向量在映射函数中的作用",
+  "理论分析与实践效果之间的差距"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

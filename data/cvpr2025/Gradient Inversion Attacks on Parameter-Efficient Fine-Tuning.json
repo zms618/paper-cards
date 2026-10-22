@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Gradient Inversion Attacks on Parameter-Efficient Fine-Tuning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Gradient Inversion Attacks on Parameter-Efficient Fine-Tuning.pdf",
+ "title": "Gradient Inversion Attacks on Parameter-Efficient Fine-Tuning",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "针对PEFT的梯度反演攻击，依赖统计估计且实施复杂",
+ "innovations": [
+  "针对PEFT的梯度反演攻击PEFTLeak",
+  "通过恶意设计预训练模型和适配器模块实现数据重构",
+  "利用多适配器层解决维度限制问题"
+ ],
+ "method_framework": "通过恶意设计预训练模型和适配器模块，使目标图像嵌入在适配器层中留下痕迹，利用适配器梯度重构原始图像数据。",
+ "experiment_framework": "在CIFAR-10、CIFAR-100和TinyImageNet数据集上评估，使用MSE、LPIPS和SSIM指标衡量重构质量。",
+ "takeaways": [
+  "PEFT不应被视为防御反演攻击的安全措施",
+  "适配器维度减小不保证隐私安全",
+  "需要更强的防御机制如差分私有PEFT"
+ ],
+ "weaknesses": [
+  "攻击依赖于对公共数据集的统计估计",
+  "需要多轮攻击才能重构大量图像",
+  "攻击方法设计复杂，实施难度较高"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "隐私鲁棒性主线，但攻击方法复杂且依赖统计估计",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

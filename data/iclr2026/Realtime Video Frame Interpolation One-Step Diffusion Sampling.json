@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Realtime Video Frame Interpolation One-Step Diffusion Sampling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Realtime Video Frame Interpolation One-Step Diffusion Sampling.pdf",
+ "title": "Realtime Video Frame Interpolation Using One-Step Diffusion Sampling",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "潜空间扩散生成关键帧，光流扭曲实现实时视频插帧。",
+ "innovations": [
+  "用潜空间视频扩散模型生成稀疏潜关键帧，由其定义高阶连续像素轨迹，相比传统低阶(线性/二次)运动近似更准确建模复杂运动。",
+  "将序列运动生成与高分辨率渲染解耦：在固定低分辨率、少扩散步数下估计轨迹，再生成光流扭曲输入像素到任意时间戳，带来显著效率收益。",
+  "首个基于LVDM的实时VFI方法(1024x576下17FPS)，较SOTA加速约44倍，并提供UNet(RDVFI-U)与DiT(RDVFI-D)两种实现。"
+ ],
+ "method_framework": "输入两端帧，扩散模型在低分辨率潜空间生成稀疏关键帧以参数化连续像素轨迹；由轨迹在任意时间戳索引像素运动得到光流，再用光流将输入像素warp成目标帧，避免逐帧高分辨率直接生成。",
+ "experiment_framework": "在标准VFI基准上以FVD等指标对比SOTA(GI/Wan/FCVG等)，报告运行时延与加速比，并做用户研究(75%观看者选其为最佳)，测试大运动场景鲁棒性。",
+ "takeaways": [
+  "高阶连续像素轨迹比低阶运动近似与直接逐帧生成更能兼顾运动一致性与像素质量。",
+  "把运动估计放到低分辨率潜空间可在保持SOTA画质的同时实现实时插帧，较此前SOTA提速约44倍。"
+ ],
+ "weaknesses": [
+  "属视频生成/插帧方向，与可靠性主线（鲁棒/可信/医学影像）关联弱。",
+  "前9页未见完整运动基准数值表与失败案例，对极端遮挡与极长运动尾迹的鲁棒性论证有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "视频插帧与可靠性主线关联弱，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

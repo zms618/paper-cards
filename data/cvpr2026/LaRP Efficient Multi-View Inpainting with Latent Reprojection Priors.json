@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/LaRP Efficient Multi-View Inpainting with Latent Reprojection Priors.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/LaRP Efficient Multi-View Inpainting with Latent Reprojection Priors.pdf",
+ "title": "LaRP Efficient Multi-View Inpainting with Latent Reprojection Priors",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "结合3D先验的扩散模型跨视角修复，速度提升但依赖相机精度",
+ "innovations": [
+  "跨视角条件架构LaRP结合3D几何先验与扩散模型生成先验",
+  "可扩展的数据管道生成训练用的双视角图像对",
+  "仅使用标准重建损失即可训练NeRF，无需专门设计的损失函数"
+ ],
+ "method_framework": "LaRP通过克隆UNet编码器处理参考视图，利用3D基础模型估计的相机姿态重投影多尺度外观特征，注入到目标视图的扩散模型中，实现3D一致的图像修复。",
+ "experiment_framework": "在SPIn-NeRF和360-USID数据集上评估，与LaMa、LDM、MVInpainter-F等基线比较，使用MEt3R、LPIPS、FID等指标衡量多视角一致性和新视角合成质量。",
+ "takeaways": [
+  "利用3D基础模型提供显式几何指导而非隐式运动线索",
+  "设计简洁的跨视角条件架构比复杂优化更高效",
+  "可扩展数据管道解决了多视角训练数据缺乏的问题"
+ ],
+ "weaknesses": [
+  "依赖3D基础模型估计的相机姿态精度",
+  "仅处理双视角场景，扩展到多视角可能增加复杂度",
+  "实验主要在室内场景进行，泛化到复杂室外场景需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多视角修复属于常规视觉任务，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

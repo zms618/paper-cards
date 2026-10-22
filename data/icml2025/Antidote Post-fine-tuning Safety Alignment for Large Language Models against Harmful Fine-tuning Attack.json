@@ -1,0 +1,39 @@
+{
+ "key": "icml2025/Antidote Post-fine-tuning Safety Alignment for Large Language Models against Harmful Fine-tuning Attack.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Antidote Post-fine-tuning Safety Alignment for Large Language Models against Harmful Fine-tuning Attack.pdf",
+ "title": "Antidote: Post-fine-tuning Safety Alignment for Large Language Models against Harmful Fine-tuning Attack",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.4
+ },
+ "one_line": "后微调剪枝防御有害攻击，但需有害数据集且影响性能",
+ "innovations": [
+  "提出后微调阶段的安全对齐方法",
+  "识别并移除有害参数",
+  "对微调阶段超参数不敏感"
+ ],
+ "method_framework": "三阶段流程：安全对齐、用户微调、一次性剪枝。使用Wanda评分识别有害参数，通过掩码移除这些参数恢复模型安全性。",
+ "experiment_framework": "Llama2-7B/Mistral-7B/Gemma-7B模型，SST2/AGNEWS/GSM8K/AlpacaEval任务，有害比例0.05-0.5，学习率和训练epoch变化",
+ "takeaways": [
+  "后处理方法比防御性微调更鲁棒",
+  "剪枝策略可有效移除有害参数"
+ ],
+ "weaknesses": [
+  "需要有害数据集进行重新对齐",
+  "在GSM8K任务上微调准确率下降明显"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "有害参数剪枝直接解决可靠性主线中的安全对齐问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

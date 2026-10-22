@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Generative Intervention Models for Causal Perturbation Modeling.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Generative Intervention Models for Causal Perturbation Modeling.pdf",
+ "title": "Generative Intervention Models for Causal Perturbation Modeling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "GIM将扰动映射到因果模型预测分布偏移，但依赖结构估计准确性",
+ "innovations": [
+  "提出生成干预模型(GIM)，将扰动特征映射为因果模型上的原子干预分布",
+  "可预测未见扰动特征的分布偏移，同时揭示底层机制效应",
+  "在scRNA-seq药物扰动数据上实现OOD预测的同时推断扰动机制"
+ ],
+ "method_framework": "首先从观测数据联合估计一个因果结构模型(如SCM)。然后训练生成模型，输入扰动特征(如药物分子性质)，输出在因果模型上的干预分布(do算子)。通过采样干预并在因果模型上传播，预测扰动下的数据分布。",
+ "experiment_framework": "合成数据+scRNA-seq药物扰动数据评估；对比非结构化预测方法和因果推断方法；指标为OOD分布预测精度和机制推断准确性；报告GIM两者兼优。",
+ "takeaways": [
+  "因果结构先验使扰动预测具有OOD泛化能力",
+  "干预分布生成同时提供了机制可解释性",
+  "药物扰动效应预测可从因果建模中受益"
+ ],
+ "weaknesses": [
+  "依赖因果结构估计的准确性，结构错误会传播",
+  "原子干预的假设可能过于简化复杂扰动",
+  "前9页内未看到与因果表示学习方法的对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

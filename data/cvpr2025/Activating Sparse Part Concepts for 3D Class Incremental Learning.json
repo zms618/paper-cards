@@ -1,0 +1,43 @@
+{
+ "key": "cvpr2025/Activating Sparse Part Concepts for 3D Class Incremental Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Activating Sparse Part Concepts for 3D Class Incremental Learning.pdf",
+ "title": "Activating Sparse Part Concepts for 3D Class Incremental Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "稀疏part概念激活与伪部件损失，3D类增量学习中的有限改进。",
+ "innovations": [
+  "稀疏激活part概念：在DNIK的双曲空间概念码本上，把部件激活图 S_i=Softmax(φ(z_l^i,P^i)) 换成 one-hot 的 TopK(S_i)，只让top-k个概念参与构造部件合成特征 z_p^i=TopK(S_i)·P_i+z_l^i（Tab.3显示k=0.6最优，全码本反而降0.6~1.0），抑制旧任务学到的概念在新类上互相干扰。",
+  "伪部件损失 L_pp：按激活图余弦相似>0.7判♢(S_i,S_j)=1，对「同构部件」拉近其合成特征余弦、对「异构」推远（Eq.3），在对比损失之外显式约束概念层面的几何一致性。",
+  "可学习affinity多任务头融合：把旧任务head的logits乘上 Π_{k=i+1}^{t}α_{k,i}（Eq.6），用少量标量重标定新旧任务预测的相对权重，解决仅存少量exemplar时融合偏向当前任务的问题（Fig.4的bench→chair偏置）。"
+ ],
+ "method_framework": "PointNet提点特征→FPS取样N_p个点、K邻域聚合部件级特征z_l；DNIK码本投影得稀疏激活S与合成特征z_p；每个任务一个轻量3层Transformer分类头(MSA+MLP+class token)建模部件关系；冻结旧头与新头，学α融合所有头输出。",
+ "experiment_framework": "Co3D(50类/6任务)、ShapeNetCore(55类/7任务)、nuScenes(23类/5状态)三个3D CIL基准；基线ER、iCaRL、DER、FOSTER、MEMO、DS-AL、DGR；统一PointNet骨干；指标last accuracy与avg accuracy，另做不同骨干/不同增量设置/few-shot消融。",
+ "takeaways": [
+  "「稀疏激活共享原型（TopK one-hot）」是把通用捷径特征（如只看桌腿）转成跨任务可复用的组合表示的最小改动，思路可平移到任何prototype-based增量场景。",
+  "多任务head融合时给旧头加可学习权重重标定，比简单归一化更抗exemplar不均衡；这个思路等价于轻量版logit校准。",
+  "换bone（PointNet++ / DGCNN / PointNeXt）仍保持领先，说明收益来自表示结构而非骨干规模。"
+ ],
+ "weaknesses": [
+  " ablation 归因不合理：Tab.2 中「PC（part codebook）」单独加只涨last 5.1/avg 3.9，而「Transformer分类头」单独加涨7.5/10.1，说明真实主力是用MSA建模部件关系，稀疏part concept的贡献被混在里面对冲，论文结论过度偏向PC。",
+  "Eq.6 的连乘affinity没有任何优化/稳定性分析，α随任务数线性增长且无约束（范围、初始化、过拟合都没说），本质上把「任务平衡」这个已知的校准问题换成了可学习标量，缺与logit校准/collaborative training类正规方法的对比。",
+  "Lc(+1.04)、L_pp(+1.43%)的提升幅度与测试集规模(25+25类)相比是否显著未知，全文无多种子方差或置信区间。",
+  "Tab.4 换骨干的结果波动明显（PointNeXt下DER 80.48超过本文82.79的差距仅2.3，而DGCNN下DER 79.56 vs 本文82.58），结论对骨干依赖，且文章用「骨干不重要所以遗忘不是骨干问题」来辩解，论证站不住。",
+  "正文截断在4.4混淆矩阵分析处，few-shot设置、以及Co3D/nuScenes上完整消融表不可见。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3D类增量学习与可靠性主线无实质交点，仅属常规表示学习",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

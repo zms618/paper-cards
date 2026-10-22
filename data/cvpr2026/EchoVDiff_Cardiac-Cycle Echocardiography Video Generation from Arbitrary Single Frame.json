@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/EchoVDiff_Cardiac-Cycle Echocardiography Video Generation from Arbitrary Single Frame.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/EchoVDiff_Cardiac-Cycle Echocardiography Video Generation from Arbitrary Single Frame.pdf",
+ "title": "EchoVDiff Cardiac-Cycle Echocardiography Video Generation from Arbitrary Single Frame",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 7.2
+ },
+ "one_line": "相位感知扩散模型从单帧生成心脏周期超声视频",
+ "innovations": [
+  "相位感知心脏动力学模块(PCDM)学习生理一致的视频表示",
+  "相位条件化表示扩散模型(Echo-VRDM)实现特征级时序-生理一致性",
+  "双条件视频生成模型(Echo-LVDM)解耦解剖内容与心脏运动"
+ ],
+ "method_framework": "EchoVDiff包含三阶段：1)PCDM多任务学习相位感知表示；2)Echo-VRDM在表示空间进行相位条件化去噪；3)Echo-LVDM在像素空间实现双条件控制",
+ "experiment_framework": "EchoNet-Dynamic和EchoNet-Pediatric数据集，FVD、FID、tLPIPS、tSSIM指标，与FOMM、TPS、DynamiCrafter等基线比较",
+ "takeaways": [
+  "生理一致性约束(单调性、ED/ES对齐、面积-相位映射)确保生成视频的医学合理性",
+  "相位轴作为显式可学习的时间表示，连接视觉动态与生理状态"
+ ],
+ "weaknesses": [
+  "依赖MedSAM2进行左心室分割，可能引入额外误差",
+  "仅评估了生成视频的质量，未验证下游诊断任务的实用性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "医学影像生成与可靠性主线交点，但未触及不确定性校准",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

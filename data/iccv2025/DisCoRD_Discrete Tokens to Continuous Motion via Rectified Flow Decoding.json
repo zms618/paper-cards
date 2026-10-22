@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/DisCoRD_Discrete Tokens to Continuous Motion via Rectified Flow Decoding.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/DisCoRD_Discrete Tokens to Continuous Motion via Rectified Flow Decoding.pdf",
+ "title": "DisCoRD Discrete Tokens to Continuous Motion via Rectified Flow Decoding",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "修正流解码离散token提升运动自然度，但MPJPE未改善且依赖预训练模型",
+ "innovations": [
+  "修正流解码离散token到连续运动空间",
+  "条件投影模块提取帧级特征",
+  "对称急动百分比误差(sJPE)评估指标"
+ ],
+ "method_framework": "将离散token投影为连续特征，通过条件修正流模型从高斯噪声逐步解码为自然运动，保持保真度的同时提升自然度",
+ "experiment_framework": "HumanML3D/KIT-ML数据集，对比MLD/T2M-GPT/MoMask等方法，使用FID/sJPE/R-Precision等指标",
+ "takeaways": [
+  "修正流模型能有效减少离散token的帧级噪声",
+  "滑动窗口训练提升泛化能力",
+  "sJPE指标能更好评估运动自然度"
+ ],
+ "weaknesses": [
+  "MPJPE指标未显著改善",
+  "方法复杂度增加",
+  "仅作为解码器需依赖预训练离散模型"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "运动生成与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

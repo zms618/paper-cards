@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/One Diffusion Step to Real-World Super-Resolution via Flow Trajectory Distillation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/One Diffusion Step to Real-World Super-Resolution via Flow Trajectory Distillation.pdf",
+ "title": "One Diffusion Step to Real-World Super-Resolution via Flow Trajectory Distillation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "单步扩散超分，流轨迹蒸馏但仅合成数据训练",
+ "innovations": [
+  "流轨迹蒸馏(FTD)方法保持T2I流不变",
+  "大模型友好训练策略避免额外教师模型",
+  "TV-LPIPS感知损失和注意力多样性损失(ADL)减少高频伪影"
+ ],
+ "method_framework": "基于FLUX.1-dev构建单步超分辨率模型，通过流轨迹蒸馏建立噪声到图像流与低分辨率到高分辨率流的关系，保持原始T2I流不变，同时学习SR流轨迹。",
+ "experiment_framework": "在DIV2K-val、RealSR和RealSet65数据集上评估，与多步和单步扩散方法比较，使用PSNR、SSIM、LPIPS等全参考指标和MUSIQ、MANIQA等无参考指标。",
+ "takeaways": [
+  "流轨迹蒸馏可有效解决生成分布偏移问题",
+  "预计算噪声-图像对可显著降低大模型训练成本"
+ ],
+ "weaknesses": [
+  "仅使用合成数据进行训练，可能限制真实场景泛化能力",
+  "未充分探讨模型在不同退化类型下的鲁棒性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

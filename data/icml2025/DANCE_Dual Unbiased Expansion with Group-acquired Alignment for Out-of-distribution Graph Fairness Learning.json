@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DANCE_Dual Unbiased Expansion with Group-acquired Alignment for Out-of-distribution Graph Fairness Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DANCE_Dual Unbiased Expansion with Group-acquired Alignment for Out-of-distribution Graph Fairness Learning.pdf",
+ "title": "DANCE: Dual Unbiased Expansion with Group-acquired Alignment for Out-of-distribution Graph Fairness Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "双空间扩展与群组对齐解决图公平学习中的分布偏移问题",
+ "innovations": [
+  "首次研究分布偏移下的图公平学习问题，提出数据中心视角：在图结构和隐藏空间双维度合成无偏虚拟数据",
+  "提出无偏Mixup策略：优先选择少数敏感群组的难样本作为锚点，扩展少数群组边界而不退化其他群组",
+  "提出群组获取对齐目标：优先惩罚敏感标签相同的负样本对，解耦敏感属性与任务表示"
+ ],
+ "method_framework": "DANCE三模块：(1)双图扩展：隐藏空间用无偏Mixup合成少数群组难样本；图空间用公平感知对抗学习生成挑战性样本；(2)群组获取对齐：将原图和扩展图作为两个视图，对比学习中拉近同敏感群组对、推远不同敏感群组对；(3)表示解耦：通过对抗训练去除敏感属性信息，保持任务相关表示在分布偏移下不变。",
+ "experiment_framework": "在多个真实图数据集上评测；基线包括传统公平方法和OOD泛化方法；指标为节点分类准确率、ΔDP(人口 parity差距)、ΔEO(均等赔率差距)；按环境分组评估OOD性能。",
+ "takeaways": [
+  "现有图公平方法在分布偏移下性能和公平性同时下降，敏感群组不平衡是主因之一",
+  "双空间数据扩展能有效模拟分布偏移，提升跨域公平泛化能力",
+  "群组对齐比标准对比学习更适合公平场景，因为它显式考虑敏感属性分组"
+ ],
+ "weaknesses": [
+  "方法模块较多(Mixup+对抗+对齐+解耦)，超参数组合复杂，实用性受限",
+  "仅在二分类和二元敏感属性上验证，多分类/多敏感属性场景的扩展性未涉及",
+  "数据扩展的合成节点如何与真实图结构融合的理论基础不够扎实"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

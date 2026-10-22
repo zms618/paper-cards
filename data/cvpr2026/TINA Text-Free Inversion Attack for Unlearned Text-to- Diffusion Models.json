@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/TINA Text-Free Inversion Attack for Unlearned Text-to- Diffusion Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/TINA Text-Free Inversion Attack for Unlearned Text-to- Diffusion Models.pdf",
+ "title": "TINA Text-Free Inversion Attack for Unlearned Text-to- Diffusion Models",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 6.5,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.7
+ },
+ "one_line": "无文本逆向攻击揭示扩散模型概念擦除仅断开文本映射",
+ "innovations": [
+  "提出首个完全绕过文本条件机制的无文本逆向攻击",
+  "优化-based DDIM逆向方法解决无文本条件下的累积误差",
+  "证明现有概念擦除方法仅掩盖概念而非消除底层视觉知识"
+ ],
+ "method_framework": "TINA采用两阶段攻击：1)基于优化的无文本DDIM逆向找到目标图像对应的初始噪声；2)使用该噪声在无文本条件下确定性再生被擦除概念，证明视觉知识持久存在。",
+ "experiment_framework": "评估12种主流概念擦除方法(ESD/FMN/AC等)和5种基线攻击(MMA/P4D/UDA等)，在裸体、艺术风格和物体三类擦除任务上测量攻击成功率(ASR)。",
+ "takeaways": [
+  "优化-based逆向方法可有效解决无文本条件下的累积误差问题",
+  "概念擦除需直接操作内部视觉知识而非仅断开文本映射"
+ ],
+ "weaknesses": [
+  "仅针对扩散模型，未扩展到其他生成架构",
+  "计算开销较大，每个时间步需25次优化迭代"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型可靠性研究，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

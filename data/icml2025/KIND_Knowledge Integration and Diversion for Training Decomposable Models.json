@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/KIND_Knowledge Integration and Diversion for Training Decomposable Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/KIND_Knowledge Integration and Diversion for Training Decomposable Models.pdf",
+ "title": "KIND: Knowledge Integration and Diversion for Training Decomposable Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "SVD约束预训练实现模型分解，但与主线关联弱且验证有限",
+ "innovations": [
+  "将SVD作为结构约束引入预训练，使模型自然分解为列向量、奇异值、行向量组件",
+  "将组件分为learnogenes（类无关知识）和tailors（类特定知识），通过类别门控机制促进知识分流",
+  "仅迁移learnogenes加随机tailors可有效缓解域偏移问题"
+ ],
+ "method_framework": "在预训练目标中加入SVD结构约束，使权重矩阵自然分解为UΣV^T形式；通过类别门控机制引导类无关知识和类特定知识分别存储在不同组件中。",
+ "experiment_framework": "验证多种资源受限部署场景下的自适应重组效果；测试域偏移场景下的迁移性能；对比标准预训练和LoRA等PEFT方法。",
+ "takeaways": [
+  "SVD结构约束预训练使模型天然具有可分解性和可重组性",
+  "类无关知识与类特定知识的分离提升了跨域迁移鲁棒性",
+  "自适应重组可灵活适配不同算力和内存限制的部署环境"
+ ],
+ "weaknesses": [
+  "与主线（医学影像/多模态推理/鲁棒性）关联弱，属模型压缩部署方向",
+  "SVD分解的秩选择对模型容量和可分解性的权衡缺乏系统分析",
+  "仅在视觉分类任务验证，大语言模型上的适用性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

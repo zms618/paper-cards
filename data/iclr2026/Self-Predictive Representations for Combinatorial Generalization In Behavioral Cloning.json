@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Self-Predictive Representations for Combinatorial Generalization In Behavioral Cloning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Self-Predictive Representations for Combinatorial Generalization In Behavioral Cloning.pdf",
+ "title": "Self-Predictive Representations for Combinatorial Generalization in Behavioral Cloning",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "BYOL-γ近似后继表示，提升行为克隆组合泛化，但与主线相关性弱。",
+ "innovations": [
+  "指出GCBC缺乏时间一致性是组合泛化/ stitching失败的原因，并论证后继表示(SR)的长程时间一致性可缩小OOD state-goal对的差距。",
+  "提出简单有效的BYOL-γ目标，在有限MDP下理论上近似后继表示，把自监督自预测引入行为克隆。",
+  "在一系列需要组合泛化的挑战性任务上取得有竞争力的零样本性能。"
+ ],
+ "method_framework": "目标条件行为克隆(GCBC)策略缺乏MDP结构归纳偏置，难以stitch新路径。BYOL-γ在BC基础上加自预测表示学习，鼓励时间相关状态映射到相近隐表示，从而近似SR，无需不稳定的offline RL bootstrapping即可获得时间一致性。",
+ "experiment_framework": "在多个需组合泛化/stitching的机器人/网格任务套件上评测，对比GCBC基线与offline RL方法；指标为零样本到达新state-goal对的成功率；含有限MDP下的理论近似论证。",
+ "takeaways": [
+  "鼓励长程时间一致性（后继表示）可缓解GCBC对新state-goal组合的零样本泛化失败。",
+  "BYOL式自预测目标能在不引入offline RL不稳定性的前提下近似SR。"
+ ],
+ "weaknesses": [
+  "属机器人行为克隆/泛化方向，与可靠性/医学影像/多模态推理主线不符。",
+  "方法基于BYOL的目标网络，调参与表示坍缩风险需更多讨论。",
+  "前9页未见具体数值，'competitive'的幅度需后续实验表确认。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "行为克隆泛化与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

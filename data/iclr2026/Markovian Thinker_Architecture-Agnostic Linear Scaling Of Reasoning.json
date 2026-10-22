@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Markovian Thinker_Architecture-Agnostic Linear Scaling Of Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Markovian Thinker_Architecture-Agnostic Linear Scaling Of Reasoning.pdf",
+ "title": "Markovian Thinker: ARCHITECTURE-AGNOSTIC Linear Scaling Of Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.6
+ },
+ "one_line": "马尔可夫块分解实现LLM推理线性扩展，但状态限制影响复杂任务",
+ "innovations": [
+  "马尔可夫思维范式，将长推理链分解为固定大小的块",
+  "Delethink推理算法，零应用于现有LLM",
+  "Delethink训练算法，使RL过程计算效率显著提高"
+ ],
+ "method_framework": "Delethink将推理分解为序列块，每块仅基于原始提示和前一块的最后m个token（马尔可夫状态）生成新内容，删除其余历史，保持推理连续性同时避免二次计算增长。",
+ "experiment_framework": "在AIME、GPQA-Diamond、LiveCodeBench等基准测试R1DistillQwen1.5B-30B和Qwen3模型，使用DeepScaleR数据集进行RL训练，比较LongCoT基线。",
+ "takeaways": [
+  "固定大小的马尔可夫状态足以维持复杂推理任务",
+  "计算线性扩展使百万token推理成为可能",
+  "零-shot应用Delethink可显著提升现有模型性能"
+ ],
+ "weaknesses": [
+  "在需要维护大量状态的任务（如填字游戏）中表现受限",
+  "较小的块大小可能导致推理线索丢失",
+  "未探索不同模型架构的最佳块大小"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "LLM推理效率提升，但未直接解决可靠性主线问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

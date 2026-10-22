@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Towards Balanced Multi-Modal Learning in 3D Human Pose Estimation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Towards Balanced Multi-Modal Learning in 3D Human Pose Estimation.pdf",
+ "title": "Towards Balanced Multi-Modal Learning in 3D Human Pose Estimation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "Shapley值与FIM约束缓解多模态3D姿态估计不平衡",
+ "innovations": [
+  "将Shapley值贡献评估扩展到回归任务，使用Pearson相关系数替代交叉熵",
+  "基于Fisher信息矩阵的自适应权重约束(AWC)损失，无需额外参数",
+  "在早期训练阶段动态平衡模态优化，抑制主导模态"
+ ],
+ "method_framework": "通过模态特定编码器提取特征，融合后进行姿态回归。使用Shapley值计算各模态贡献分数，基于FIM设计AWC损失，在早期训练阶段对主导模态施加更强约束。",
+ "experiment_framework": "在MM-Fi多模态3D姿态估计数据集上评估，比较MPJPE和PA-MPJPE指标，与多种平衡方法对比，包括Concatenation、MLP和Attention融合策略。",
+ "takeaways": [
+  "Shapley值可有效量化回归任务中模态贡献，Pearson相关系数比MSE更适合作为评估指标",
+  "基于FIM的权重约束可有效平衡多模态学习，且计算开销小",
+  "早期训练阶段对主导模态进行约束是解决模态不平衡的关键"
+ ],
+ "weaknesses": [
+  "Shapley值计算随模态数量增加呈指数增长，可能影响扩展性",
+  "未充分分析不同场景下模态不平衡的具体表现和原因",
+  "实验主要在单一数据集上进行，泛化能力有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态姿态估计与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

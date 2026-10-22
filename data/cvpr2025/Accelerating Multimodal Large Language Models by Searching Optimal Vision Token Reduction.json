@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Accelerating Multimodal Large Language Models by Searching Optimal Vision Token.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Accelerating Multimodal Large Language Models by Searching Optimal Vision Token.pdf",
+ "title": "Accelerating Multimodal Large Language Models by Searching Optimal Vision Token Reduction",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "贝叶斯搜索视觉token保持率，P-Sigmoid控制预算，跨层排序一致性假设支撑",
+ "innovations": [
+  "G-Search：以第i-1层视觉token对指令token的注意力分数排序，在约束 r_i<=r_{i-1} 下最大化 f(r_i)=E(r_i)-λ·r_i（λ=0.01，E为12个基准平均准确率），逐层自浅入深搜索保持率，并给出「深层必需token是浅层必需token子集」假设下贪心解等于最优解的构造性证明。",
+  "P-Sigmoid：拟合G-Search得到的保持率曲线为参数化sigmoid r̂(i)=2b/(1+e^{k(i-α)})，利用其在[3,L]上的积分恒等于(L-2)·b，把总视觉token预算直接由b控制，再用贝叶斯优化（GP拟合+Expected Improvement采集）搜k以最大化性能。",
+  "实证发现跨层排序一致性：逐层算视觉token排序的Kendall's Tau，除第一二层的 pair 外均>=0.7（LLaVA-1.5-7B与InternVL2-8B），据此把FastV/VTW/PDrop式的手工裁剪规则变成可自动搜索、可跨MLLM迁移的策略。"
+ ],
+ "method_framework": "预训练MLLM推理时在每个LLM层前插入Sort&Reduce：按上一层注意力分数排序视觉token，只保留top r_i·N个；搜索阶段用贝叶斯优化（EI采集+GP）在LLaVA训练集小切分上逐层求r_i，或用P-Sigmoid曲线按预算b拟合全层保持率。",
+ "experiment_framework": "12个基准（MME/MMBench/GQA/MMMU/MathVista/AI2D/TextVQA/ChartQA/DocVQA/POPE/RealWorldQA/HalusionBench）×LLaVA-1.5-7B与InternVL2 1B/2B/4B/8B；基线VTW/PDrop/FastV/TokenPacker/DeCo；指标为平均准确率、TFLOPs、KV显存比与prefill耗时。",
+ "takeaways": [
+  "把「效率」直接写进目标函数（E(r)-λr）而不是事后挑阈值，这个约束项写法可迁移到任何逐层预算分配问题。",
+  "用积分守恒的参数化（P-Sigmoid）让预算b成为显式可控量，比逐层独立搜索省T次搜索，可借鉴用于推理加速类超参。",
+  "Kendall's Tau 做「跨层相对重要性是否稳定」的先验检验，是判断能否在深层复用浅层打分的最小成本诊断。"
+ ],
+ "weaknesses": [
+  "正文在前9页截断，Fig.4的budget-accuracy曲线、与PDrop在不同预算下的完整对比、以及补充材料里给出的TFLOPs理论分析均不可见，+3.38%~+7.69%的Scenario II增益无法复核。",
+  "全表只报均值，没有任何多种子方差或显著性检验；λ=0.01、每三层搜一次等设定均为经验值，论文未给出选择依据。",
+  "「最优性」证明完全依赖Assumption(2)（深层必需token集合是浅层的子集），而该假设本身由Kendall's Tau的图（无置信区间）推出，因此最优性只在经验假设成立时成立。",
+  "与FastV同属attention-score裁剪，核心增量在「自动搜索」而非新算子；搜索本身在小训练集上跑，搜出来的策略在新分布的泛化未做跨数据集验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "效率优化与可靠性主线无实质交点，仅为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

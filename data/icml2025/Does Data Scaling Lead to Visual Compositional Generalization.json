@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Does Data Scaling Lead to Visual Compositional Generalization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Does Data Scaling Lead to Visual Compositional Generalization.pdf",
+ "title": "Does Data Scaling Lead to Visual Compositional Generalization?",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "数据多样性而非规模驱动视觉组合泛化，合成实验证明线性可分解表示是关键。",
+ "innovations": [
+  "系统可控地同时改变数据规模、概念多样性与组合覆盖，分离三者对组合泛化的独立作用",
+  "证明组合泛化由数据多样性(尤其组合覆盖)而非单纯数据规模驱动",
+  "证明充分组合覆盖迫使模型学到线性可分解(可加性)表示结构，该结构是从少量观测组合完美泛化的关键"
+ ],
+ "method_framework": "在受控合成设置下分别操控数据规模、概念多样性与名词-形容词组合覆盖度，训练视觉模型并测其对未见组合的泛化；通过表示分析证明高组合覆盖诱导出概念可分解为可加成分的线性因子结构，并从理论上说明该结构如何实现少样本组合泛化；再在DINO、CLIP等预训练模型上检验该结构是否真实存在。",
+ "experiment_framework": "受控合成数据集上做消融式变量控制实验；在LAION-400M上量化概念组合共现稀疏性(5000x5000指示矩阵)；在DINO、CLIP等预训练视觉/视觉-语言模型上测组合泛化准确率，对比随机基线。",
+ "takeaways": [
+  "单纯堆数据规模不会自动带来组合泛化，真正起作用的是组合覆盖/多样性",
+  "组合泛化依赖线性可分解表示结构，大规模真实数据中该结构仅部分存在(DINO/CLIP表现高于随机但不完美)",
+  "应更重视构建多样化、组合覆盖充分的数据集而非无差别扩规模"
+ ],
+ "weaknesses": [
+  "受控合成设置与真实图像分布差距较大，结论迁移到大规模真实模型需谨慎",
+  "线性可分解假设较理想化，对层级/非线性组合的解释力有限",
+  "对DINO/CLIP仅测到'部分存在'，未给出如何在预训练中主动诱导该结构的方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

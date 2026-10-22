@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Comparing Few to Rank Many Active Human Preference Learning Using Randomized Frank-Wolfe Method.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Comparing Few to Rank Many Active Human Preference Learning Using Randomized Frank-Wolfe Method.pdf",
+ "title": "Comparing Few to Rank Many: Active Human Preference Learning Using Randomized Frank-Wolfe Method",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "随机Frank-Wolfe解决K-子集比较的D-最优设计，但未在真实RLHF中验证",
+ "innovations": [
+  "将主动人类偏好学习建模为在N个item上选K-子集(K≪N)以最小化排名错误，并采用D-最优设计最小化最坏情况排名损失",
+  "针对指数级K-子集导致已有Frank-Wolfe算法不可行的问题，提出带记忆化与稀疏更新的随机FW，把每步复杂度降至O(N^2+K^2)",
+  "对算法进行理论分析并在合成与开源NLP数据集上验证其经验优越性"
+ ],
+ "method_framework": "学习Plackett-Luce(PL)排序模型下，用D-最优设计选取信息量最大的K元比较问题；随机Frank-Wolfe在指数子集空间上做坐标下降式优化，配合记忆化与稀疏更新避免显式枚举所有子集，每步O(N^2+K^2)。",
+ "experiment_framework": "在合成数据与开源NLP数据集上，对比已有(不可行或次优)的主动偏好采集策略，以预算内排名错误/悔恨评估，验证随机FW的统计效率与计算可行性。",
+ "takeaways": [
+  "K-way比较(K≪N)下D-最优设计可有效降低主动偏好学习的预算需求",
+  "随机FW+记忆化+稀疏更新使原本指数不可行的最优设计在大N下变得可扩展",
+  "该框架可直接服务于RLHF/reward model的反馈采集"
+ ],
+ "weaknesses": [
+  "验证主要在合成与小规模NLP排序数据，未在真实大规模RLHF管线中闭环验证",
+  "仍假设Plackett-LuceBradley-Terry偏好模型正确，对人类偏好噪声/不一致的鲁棒性讨论不足",
+  "O(N^2)复杂度在N极大时仍偏高，超大规模item池的可扩展性存疑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

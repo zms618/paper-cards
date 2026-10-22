@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scalable Spatio-Temporal SE(3) Diffusion for Long-Horizon Protein Dynamics.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scalable Spatio-Temporal SE(3) Diffusion for Long-Horizon Protein Dynamics.pdf",
+ "title": "Scalable Spatio-Temporal SE(3) Diffusion for Long-Horizon Protein Dynamics",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "因果扩散Transformer做SE(3)等变，生成微秒级蛋白质轨迹。",
+ "innovations": [
+  "提出因果扩散Transformer配联合(而非交错)时空注意力，在扩散过程中对历史上下文动态计算注意力，高效捕捉耦合的时空依赖并避免二次显存瓶颈。",
+  "引入训练/推理时对历史上下文加噪、block-diffusion式因果训练等关键技巧，实现可扩展训练与稳定长程展开。",
+  "在ATLAS基准上全部指标达SOTA(构象覆盖、结构有效性、动态保真)，并能外推到基线方法灾难性失败的微秒级稳定轨迹。"
+ ],
+ "method_framework": "SE(3)等变自回归扩散模型：将蛋白轨迹按时间块因果展开，每块用联合时空注意力在历史构象上下文上做扩散去噪；历史上下文在训练与推理时加噪以模拟分布漂移，从而抑制长程展开的误差累积。",
+ "experiment_framework": "在标准ATLAS基准上对比现有构象动力学生成方法，报告构象覆盖、结构有效性、动态保真等指标；并做长程外推实验(微秒级)检验展开稳定性与结构质量保持。",
+ "takeaways": [
+  "联合时空注意力比交错式时空模块更能建模耦合动力学，支撑长程时域稳定生成。",
+  "现有模型在长时域生成上存在严重缺陷，STAR-MD的联合时空建模可在生物相关时域实现鲁棒动力学模拟。"
+ ],
+ "weaknesses": [
+  "属计算生物/分子动力学方向，与可靠性×医学影像/多模态推理主线无直接关联。",
+  "评测集中于ATLAS标准蛋白，对更大蛋白与更复杂热力学过程的保真度、以及与真实MD的定量对齐仍需扩展。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "蛋白质动力学模拟与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

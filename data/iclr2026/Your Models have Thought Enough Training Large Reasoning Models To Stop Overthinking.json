@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Your Models have Thought Enough Training Large Reasoning Models To Stop Overthinking.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Your Models have Thought Enough Training Large Reasoning Models To Stop Overthinking.pdf",
+ "title": "Your Models have Thought Enough: Training Large Reasoning Models to Stop Overthinking",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "JET通过轨迹截断和质量控制奖励，训练LRM主动终止冗余推理。",
+ "innovations": [
+  "基于证据累积模型的观察：LRM在推理早期已累积充分信息，后续步骤冗余",
+  "JET在rollout阶段做轨迹截断，使模型见到分布一致的短推理路径，解决现有RL难在rollout阶段构造短路径的问题",
+  "采用质量控制的长度奖励，在保持正确性的同时鼓励简洁推理"
+ ],
+ "method_framework": "rollout时对长轨迹在信息累积充分处截断，构造与原分布一致的短路径供RL学习；奖励中引入质量控制的长度奖励，仅在答案正确时按长度给予奖励，避免以牺牲正确率换短；使模型学会在已足够时主动终止。",
+ "experiment_framework": "基于DeepSeek-R1-Distill-Qwen-1.5B等LRM，在数学竞赛/Olympiad等推理基准上；基线为现有RL推理(如GRPO)及其他长度惩罚方法；指标为准确率与输出长度，报告Olympiad上准确率+4.6%且输出长度-46.3%。",
+ "takeaways": [
+  "LRM存在系统性过度思考，主动提前终止可同时提升准确率与降低长度",
+  "rollout期轨迹截断是让RL学到短路径的关键，单纯加长度惩罚不够",
+  "质量控制(仅正确时奖励短)是避免简洁化以牺牲正确性的保障"
+ ],
+ "weaknesses": [
+  "轨迹截断依赖一个截断点判定准则，其自动判定的可靠性(在真正难题上是否过早截断)缺乏系统分析",
+  "主要在数学/竞赛推理验证，对开放式多步工具调用长链的适用性未证",
+  "仅在1.5B蒸馏模型上展示主结果，规模模型上是否仍保效率-精度双赢未充分报告"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "推理效率提升与可靠性主线交织，方法设计具迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

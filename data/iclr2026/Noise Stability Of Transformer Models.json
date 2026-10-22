@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Noise Stability Of Transformer Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Noise Stability Of Transformer Models.pdf",
+ "title": "Noise Stability of Transformer Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "噪声稳定性作为简洁性度量，理论分析与小规模实验加速训练。",
+ "innovations": [
+  "指出平均敏感度缺乏实值域自然推广、且无法解释现代LLM中类junta的输入依赖，提出噪声稳定性作为更全面的简洁性/鲁棒性度量。",
+  "对单层注意力与ReLU MLP层的噪声稳定性做理论分析，并用协方差区间传播方法处理多层传播问题。",
+  "基于该理论设计噪声稳定性正则化，在算法任务与next-token预测上分别催化grokking约35%、加速训练约75%。"
+ ],
+ "method_framework": "把噪声稳定性定义为模型对所有输入坐标同时施加相关噪声时的响应相关性；将其作为简洁性偏置的度量；通过协方差区间传播逐层推导噪声稳定性经注意力/MLP层后的变化，进而设计正则项引导模型趋向更稳定（更简洁）的函数。",
+ "experiment_framework": "在算法任务与next-token预测任务上评测噪声稳定性正则化；报告grokking催化约35%、训练加速约75%，并与信号传播/临界性理论结果相互印证。",
+ "takeaways": [
+  "噪声稳定性可作为连接简洁性偏置与信号传播理论的统一工具。",
+  "正则化噪声稳定性能在不损失性能的前提下催化grokking并加速Transformer训练。",
+  "该度量解释了平均敏感度无法刻画的类junta输入依赖现象。"
+ ],
+ "weaknesses": [
+  "理论分析多针对单层/初始化与简化架构，对大规模预训练Transformer的拟合度未充分验证。",
+  "35%/75%的加速在小规模算法与toy next-token任务测得，对真实大模型训练的可迁移性存疑。",
+  "噪声稳定性与最终鲁棒性/泛化的因果联系仍偏解释性，缺乏与标准鲁棒评测的系统对比。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "噪声稳定性作为鲁棒性度量，连接简洁性与信号传播理论",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

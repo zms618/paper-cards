@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Efficient Data Selection at Scale via Influence Distillation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Efficient Data Selection at Scale via Influence Distillation.pdf",
+ "title": "Efficient Data Selection at Scale via Influence Distillation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "影响蒸馏框架优化数据选择，实现3.5倍加速但参数敏感。",
+ "innovations": [
+  "基于二阶近似的数学框架优化数据权重",
+  "地标样本近似方法降低计算复杂度",
+  "JVP嵌入空间提升梯度传播效率",
+  "针对Adam优化器的理论推导"
+ ],
+ "method_framework": "通过计算训练样本对目标分布的影响，构建二次优化目标函数，结合地标样本近似和JVP嵌入空间，高效计算最优数据权重。",
+ "experiment_framework": "Tulu V2数据集，Llama/Qwen模型，MMLU/GSM8k等6个任务，对比Uniform/RDS+/Mid-PPL基线，评估准确率和计算效率。",
+ "takeaways": [
+  "二阶近似在低学习率下可简化为一阶近似",
+  "地标样本近似方法在高维空间中能有效恢复正确权重",
+  "JVP嵌入比传统嵌入方法与真实梯度相关性更强"
+ ],
+ "weaknesses": [
+  "方法对正则化系数λ敏感，需要仔细调参",
+  "地标样本数量和选择策略对性能有重要影响",
+  "未充分验证方法在不同规模数据集上的扩展性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

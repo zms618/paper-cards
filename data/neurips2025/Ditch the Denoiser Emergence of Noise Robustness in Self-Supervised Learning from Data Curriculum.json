@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Ditch the Denoiser Emergence of Noise Robustness in Self-Supervised Learning from Data Curriculum.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Ditch the Denoiser Emergence of Noise Robustness in Self-Supervised Learning from Data Curriculum.pdf",
+ "title": "Ditch the Denoiser: Emergence of Noise Robustness in Self-Supervised Learning from Data Curriculum",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "课程学习与教师正则化提升自监督噪声鲁棒性",
+ "innovations": [
+  "去噪器无关的噪声鲁棒自监督学习框架",
+  "去噪到噪声的课程学习策略",
+  "基于去噪教师模型的正则化方法"
+ ],
+ "method_framework": "先训练自监督去噪器生成去噪数据，然后在去噪数据上预训练DINOv2，再通过课程学习过渡到噪声数据，并引入去噪教师模型作为锚点进行正则化，最终实现无需去噪器的下游任务",
+ "experiment_framework": "ImageNet-100/1k数据集，高斯/散斑/Shot噪声，线性探测评估，对比DINOv2基线和N2N+DINOv2去噪管道",
+ "takeaways": [
+  "课程学习能有效提升模型对噪声的鲁棒性",
+  "去噪教师模型作为锚点可显著提升极端噪声下的性能",
+  "方法可扩展到其他自监督模型"
+ ],
+ "weaknesses": [
+  "需要额外的去噪器预训练阶段",
+  "极端噪声下性能仍低于理想去噪管道",
+  "正则化参数需要仔细调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

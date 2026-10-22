@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/From Complex to Atomic Enhancing Augmented Generation via Knowledge-Aware Dual Rewriting and Reasoning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/From Complex to Atomic Enhancing Augmented Generation via Knowledge-Aware Dual Rewriting and Reasoning.pdf",
+ "title": "From Complex to Atomic: Enhancing Augmented Generation via Knowledge-Aware Dual Rewriting and Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "KAR3-RAG通过知识原子化与双向改写提升多跳问答，但依赖强模型且成本高",
+ "innovations": [
+  "提出知识原子化(knowledge atomizer)，将原始chunk改写为可由该chunk回答的原子问题标签，建立多粒度知识对齐",
+  "设计dual rewriting机制：同时对query和chunk进行原子化改写，缩小问题与知识库schema之间的语义鸿沟",
+  "提出proposal-first-then-select的动态分解路径：query proposer生成多个候选子问题，由atomic selector基于检索结果动态选择，替代固定链式/树形分解"
+ ],
+ "method_framework": "系统包含四个组件：(1)知识原子器离线将每个chunk改写为原子标签；(2)查询提议器基于当前上下文生成后续子问题候选；(3)原子检索器用原子标签与改写后query做对齐检索；(4)原子选择器从候选原子对中选最相关者加入参考上下文，迭代直至无新信息再生成最终答案。",
+ "experiment_framework": "数据集为HotpotQA、2WikiMultihopQA、MuSiQue三个多跳问答基准；基线包括Zero-Shot CoT、Naive RAG、Self-Ask w/ Retrieval、IRCoT、Iter-RetGen、ProbTree；在GPT-4与Llama 3两种模型上评测F1与Answer Accuracy；并对四个组件分别做消融。",
+ "takeaways": [
+  "GPT-4上KAR3在MuSiQue上达F1 57.86/Acc 62.60，比次优Iter-RetGen提升约+10.1 F1(20.4%)",
+  "消融显示替换任一组件(原子器/提议器/检索器/选择器)在三数据集上Acc下降15.1%-16.6%",
+  "方法对模型推理能力敏感：GPT-3.5上KAR3相对IRCoT/Self-Ask优势不明显，依赖强指令遵循能力"
+ ],
+ "weaknesses": [
+  "依赖强LLM(GPT-4/Llama3)的复杂指令遵循能力，在GPT-3.5等较弱模型上增益不稳定甚至被基线反超",
+  "需要多轮迭代检索与多次LLM调用，推理成本与延迟显著高于单轮RAG，论文未在主表中给出成本对比",
+  "原子标签离线构造需额外LLM调用与存储，对知识库规模与更新频率的可扩展性未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

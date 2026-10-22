@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Mind the Time Temporally-Controlled Multi-Event Video Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Mind the Time Temporally-Controlled Multi-Event Video Generation.pdf",
+ "title": "Mind the Time Temporally-Controlled Multi-Event Video Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "MinT实现时间控制多事件视频生成，但评估局限且依赖人工标注。",
+ "innovations": [
+  "首个支持时间控制的多事件视频生成模型",
+  "提出ReRoPE时间感知位置编码方法",
+  "引入场景切变条件训练增强视频连贯性",
+  "设计LLM提示增强器简化多事件视频生成"
+ ],
+ "method_framework": "基于预训练视频DiT，添加时间感知交叉注意力层，通过全局和时序字幕分解内容与运动，使用ReRoPE将事件绑定到特定时间范围。",
+ "experiment_framework": "HoldOut(2k)和StoryBench(3k)数据集，对比CogVideoX、Mochi、MEVG等基线，使用FID、FVD、CLIP-score和VideoScore评估。",
+ "takeaways": [
+  "事件时间绑定是解决多事件视频生成的关键",
+  "ReRoPE有效处理不同持续时间事件的注意力分配",
+  "场景切变条件训练提升视频连贯性"
+ ],
+ "weaknesses": [
+  "仅评估了固定分辨率(512×288)和较短时长(12秒)的视频",
+  "依赖手动标注的时间事件数据集，规模有限",
+  "未充分探索不同事件间复杂过渡的处理能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

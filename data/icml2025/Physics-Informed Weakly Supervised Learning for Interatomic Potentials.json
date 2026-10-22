@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Physics-Informed Weakly Supervised Learning for Interatomic Potentials.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Physics-Informed Weakly Supervised Learning for Interatomic Potentials.pdf",
+ "title": "Physics-Informed Weakly Supervised Learning for Interatomic Potentials",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "物理约束损失提升MLIP小样本性能，但创新性与普适性有限。",
+ "innovations": [
+  "引入基于势能泰勒展开的新损失函数，利用势能光滑性做弱监督",
+  "引入保守力约束损失，强制预测力为势能梯度以保证物理一致",
+  "在低数据区提升精度，降低对昂贵第一性原理数据集的依赖，并利于ML基础模型在稀疏高精度数据上微调"
+ ],
+ "method_framework": "MLIP常因数据稀疏而给出非物理的能量/力预测、MD不稳定；本文在训练损失中加入两项物理信息弱监督：势能关于构型的泰勒展开约束(利用势能光滑性)与保守力约束(力=势能负梯度)。二者不依赖额外标注数据即注入物理先验，改善小样本泛化与分子动力学稳定性。",
+ "experiment_framework": "跨多个MLIP基准数据集评测；在多个基线模型上验证，报告能量/力误差最高降低2倍；考察MD模拟稳定性，以及对ML原子势基础模型在稀疏高精度第一性原理数据上的微调效果。",
+ "takeaways": [
+  "两项物理信息损失在多个基线上带来能量/力误差最高2倍的下降，低数据区收益尤著",
+  "提升了分子动力学模拟的稳定性，减少非物理预测",
+  "可有效微调ML原子势基础模型于稀疏高精度数据"
+ ],
+ "weaknesses": [
+  "损失函数较为通用(泰勒展开+保守力)，创新性增量有限",
+  "2倍误差下降依赖特定低数据设定，数据充足时增益是否保留存疑",
+  "属材料/化学ML，与主线落地域(医学影像/多模态LLM推理)不直接相关"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

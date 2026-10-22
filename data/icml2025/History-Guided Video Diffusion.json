@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/History-Guided Video Diffusion.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/History-Guided Video Diffusion.pdf",
+ "title": "History-Guided Video Diffusion",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.75
+ },
+ "one_line": "DFoT用历史帧引导视频生成，但计算开销大且长视频稳定性存疑",
+ "innovations": [
+  "提出Diffusion Forcing Transformer，对每帧施加独立噪声实现灵活历史条件",
+  "提出History Guidance引导族，将历史帧作为CFG条件变量",
+  "跨时间/频率的高级历史引导支持OOD历史组合泛化与超长视频稳定rollout"
+ ],
+ "method_framework": "将noising-as-masking范式扩展到非因果Transformer，对各帧独立加噪；采样时选择性地用噪声遮蔽部分历史以实现灵活条件与引导，兼容DiT/U-ViT并可微调预训练模型。",
+ "experiment_framework": "在视频扩散模型上对比CFG等基线，以视频生成质量、时序一致性、运动动态、OOD历史泛化与超长视频rollout稳定性为指标。",
+ "takeaways": [
+  "可变长度历史可作为一种引导信号显著改善视频生成",
+  "DFoT兼容现有架构，仅需微调预训练视频扩散模型即可获得"
+ ],
+ "weaknesses": [
+  "每帧独立加噪增加采样计算量",
+  "长视频rollout的累积误差与漂移未充分量化",
+  "收益高度依赖预训练视频扩散基座，跨基座迁移性未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.55,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

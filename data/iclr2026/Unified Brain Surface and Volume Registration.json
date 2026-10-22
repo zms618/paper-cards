@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unified Brain Surface and Volume Registration.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unified Brain Surface and Volume Registration.pdf",
+ "title": "Unified Brain Surface and Volume Registration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "统一体积-表面配准框架，桥接拓扑与解剖，但泛化机制与鲁棒性存疑",
+ "innovations": [
+  "提出统一体积+表面的联合配准框架，把皮层表面与皮层下体积对齐放进单一学习问题，替代传统先表面后体积(弹性PDE传播)的ad-hoc两步法",
+  "引入中间球面坐标空间桥接皮层表面拓扑与体积解剖，并在学习中融入球面配准，保证体积域与表面域间的几何一致性",
+  "无需MRI之外的额外输入即端到端配准，比该任务标准方法快数个数量级，同时保持正则化形变场"
+ ],
+ "method_framework": "脑MRI配准需同时对齐皮层(薄而高曲率、折叠模式个体差异大，欧氏体积配准常失败)与皮层下结构。传统方法体积与表面分开处理，再用弹性PDE把表面配准传播到内部，二者不一致。NeurAlign用统一volume-surface表征，通过中间球面坐标空间连接表面拓扑与体积解剖，把球面配准纳入学习目标，使单一形变场同时满足皮层与皮层下对齐，几何上自洽。",
+ "experiment_framework": "在in-domain与out-of-domain脑MRI数据集上对比经典配准(如ANTS/FSL类)与学习型配准方法；指标为结构Dice分数与形变场正则性；报告Dice最高提升7点、保持规则形变场、推理快数个数量级。",
+ "takeaways": [
+  "统一体积-表面联合配准可消除传统两步法的跨域不一致，显著提升皮层与皮层下对齐精度",
+  "中间球面空间桥接表面拓扑与体积解剖，是实现几何一致配准的关键",
+  "在OOD数据上仍一致优于经典与学习型方法，且只需MRI单输入、推理极快"
+ ],
+ "weaknesses": [
+  "主线可靠性成分主要体现在OOD泛化测试，并未直接建模不确定性/校准，泛化提升的机制归因有限",
+  "依赖表面球面参数化的前提是皮层表面已可提取，对病变/缺失脑区的鲁棒配准未充分验证",
+  "OOD提升7点的分解(多少来自统一表征 vs 学习范式 vs 数据)正文前9页消融未完全拆开"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "脑医学影像配准，但泛化机制与鲁棒性未充分验证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

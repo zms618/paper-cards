@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Strictly Constrained Generative Modeling via Split Augmented Langevin Sampling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Strictly Constrained Generative Modeling via Split Augmented Langevin Sampling.pdf",
+ "title": "Strictly Constrained Generative Modeling via Split Augmented Langevin Sampling",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "CASAL算法通过变量分裂和拉格朗日对偶实现Langevin动力学中的严格约束采样",
+ "innovations": [
+  "提出CASAL（Constrained Alternated Split Augmented Langevin）算法：基于Langevin动力学变分形式和拉格朗日对偶，通过变量分裂逐步强制执行约束",
+  "在Wasserstein空间中分析算法收敛性，推导显式混合时间速率，兼顾严格约束满足和无偏探索",
+  "方法可应用于预训练扩散模型的零样本约束采样，在物理数据同化和最优控制问题中验证效果"
+ ],
+ "method_framework": "将约束采样问题建模为带约束的Langevin采样。引入变量分裂：将原始变量x拆分为自由变量y和约束变量z，通过交替优化：(1)在y上做无约束Langevin更新探索采样空间；(2)在z上做约束投影满足等式约束；(3)通过拉格朗日乘子对偶更新协调两者。逐步收紧分裂惩罚项，使y→z从而在严格满足约束的同时保持采样多样性。",
+ "experiment_framework": "在扩散模型数据同化（复杂物理系统）和最优控制（非凸可行性问题）上验证。对比投影Langevin和软约束惩罚方法，评估约束满足严格度、采样无偏性和预测精度。",
+ "takeaways": [
+  "投影方法在非凸约束集上会导致采样偏差和探索不足，软约束方法无法严格满足物理定律，CASAL通过变量分裂同时解决两个问题",
+  "CASAL在物理数据同化中显著提升预测精度并保持守恒量，说明严格约束对科学应用至关重要",
+  "算法的Wasserstein混合时间分析为约束采样提供了理论保证，填补了该领域的理论空白"
+ ],
+ "weaknesses": [
+  "变量分裂引入额外的对偶变量和超参数（惩罚强度调度），实际调参成本未充分讨论",
+  "虽然理论上适用于扩散模型，但在高维图像生成上的可行性未验证",
+  "前9页未展示完整的定量对比表格，物理系统上的具体提升幅度不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "约束采样方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

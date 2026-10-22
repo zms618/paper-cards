@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Priorguide_Test-Time Prior Adaptation for Simulation-Based Inference.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Priorguide_Test-Time Prior Adaptation for Simulation-Based Inference.pdf",
+ "title": "PriorGuide: Test-Time Prior Adaptation for Simulation-Based Inference",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "测试时先验适配扩散模型，避免重训但适用性有限。",
+ "innovations": [
+  "提出测试时先验适配方法，使训练好的SBI扩散模型可灵活适应新的先验分布",
+  "设计新颖的引导近似(guidance approximation)实现先验调整，避免昂贵的重训练",
+  "支持用户在训练后融入更新信息或专家知识，提升预训练推理模型的通用性"
+ ],
+ "method_framework": "PriorGuide基于扩散模型的引导机制，推导出先验调整的近似引导项。在不重训的情况下，通过在去噪过程中施加先验梯度引导，将训练时的宽先验调整为用户指定的新先验。",
+ "experiment_framework": "在多个SBI基准问题上验证先验适配的效果，对比重训方法和原始固定先验方法。指标为后验估计精度。",
+ "takeaways": [
+  "amortized SBI的固定训练先验是实际应用的重要限制",
+  "测试时引导近似可有效适配新先验，无需重训",
+  "先验敏感性分析变得更加便捷"
+ ],
+ "weaknesses": [
+  "引导近似的精度损失未充分量化，新先验与训练先验差异大时效果可能下降",
+  "仅适用于扩散模型类SBI，其他生成模型架构不适用",
+  "与可靠性/鲁棒性主线关联较弱，属于贝叶斯推断方向"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.98,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "贝叶斯推断方法，与可靠性主线关联较弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

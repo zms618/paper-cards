@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/SPAR Single-Pass Any-Resolution ViT for Open-vocabulary Segmentation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SPAR Single-Pass Any-Resolution ViT for Open-vocabulary Segmentation.pdf",
+ "title": "SPAR Single-Pass Any-Resolution ViT for Open-vocabulary Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "特征蒸馏实现单次前向ViT，提升开放词汇分割分辨率适应性。",
+ "innovations": [
+  "滑动窗口教师模型到单次前向传播学生的特征蒸馏",
+  "无需架构修改或像素级监督的分辨率无关特征提取",
+  "步长不可被补大小整除的滑动窗口策略提升性能"
+ ],
+ "method_framework": "SPAR通过特征回归损失将滑动窗口教师模型的空间推理能力转移到单次前向传播的学生模型，保持相同架构和特征空间，兼容多种ViT主干网络。",
+ "experiment_framework": "在6个开放词汇语义分割数据集上评估，使用SigLIP2、OpenCLIP和DINOv3.txt作为主干网络，比较单次前向传播、滑动窗口和NaFlex方法的mIoU性能。",
+ "takeaways": [
+  "特征蒸馏可有效提升ViT在密集预测任务中的分辨率适应性",
+  "仅微调ViT最后几层即可获得强分辨率容忍性",
+  "SPAR与其他方法如AnyUp和LPOSS互补"
+ ],
+ "weaknesses": [
+  "对DINOv3.txt等已有分辨率鲁棒性的模型提升有限",
+  "训练时需要预计算和存储教师特征图，增加内存需求",
+  "未探索不同补大小对性能的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "开放词汇分割与可靠性主线无直接交点，仅分辨率适应性设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

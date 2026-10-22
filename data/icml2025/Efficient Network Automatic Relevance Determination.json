@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Efficient Network Automatic Relevance Determination.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficient Network Automatic Relevance Determination.pdf",
+ "title": "Efficient Network Automatic Relevance Determination",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "矩阵正态先验多输出回归，三种近似算法降复杂度",
+ "innovations": [
+  "提出NARD模型，在多输出线性概率模型中用矩阵正态先验同时建模输入特征稀疏性和输出变量间的精度矩阵（相关网络结构）",
+  "提出Sequential NARD算法，逐特征评估以避免全维度更新，将每步复杂度从O(m³+d³)降至O(m³+d²)",
+  "提出Surrogate Function Method，对边际似然和行列式/逆计算进行高效近似，进一步将复杂度降至O(m³+p²)（p为保留特征数）"
+ ],
+ "method_framework": "对多输出回归Y=WX+E，在W上施加带稀疏诱导参数的矩阵正态先验（ARD先验），同时在输出协方差上施加精度矩阵先验；通过迭代更新稀疏参数（特征选择）和精度矩阵（输出相关结构）进行推理；Sequential版本逐特征加入/剔除，Surrogate版本用近似边际似然简化行列式和矩阵逆计算。",
+ "experiment_framework": "在合成数据集和真实生物/基因表达数据集上评估，与LASSO、标准ARD等基线对比，指标包括特征选择准确率、预测精度和运行时间。",
+ "takeaways": [
+  "NARD可同时识别稀疏输入特征和输出间的相关网络结构，适用于高维生物数据",
+  "三种高效近似算法在保持可比性能的同时显著降低了计算复杂度",
+  "Sequential+Surrogate组合在特征数远小于总维度时效率提升最明显"
+ ],
+ "weaknesses": [
+  "属于概率稀疏回归/特征选择方向，与鲁棒性/医学影像/多模态推理主线无关",
+  "方法假设线性模型，在非线性关系普遍存在的生物数据上表达能力受限",
+  "前9页仅看到方法框架，真实数据集的详细实验结果和基线对比未充分展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.18,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

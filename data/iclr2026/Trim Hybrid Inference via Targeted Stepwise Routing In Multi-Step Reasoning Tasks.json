@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Trim Hybrid Inference via Targeted Stepwise Routing In Multi-Step Reasoning Tasks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Trim Hybrid Inference via Targeted Stepwise Routing In Multi-Step Reasoning Tasks.pdf",
+ "title": "TRIM: Hybrid Inference via Targeted Stepwise Routing in Multi-Step Reasoning Tasks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "步骤级路由降低大模型调用成本，但PRM依赖和泛化性存疑。",
+ "innovations": [
+  "提出步骤级（而非查询级）路由框架，仅将可能导致级联失败的关键步骤分配给大模型，常规步骤由小模型处理",
+  "利用过程奖励模型识别错误步骤，基于步骤级不确定性和预算约束做出路由决策",
+  "开发多种路由策略：从简单阈值策略到考虑长期精度-成本权衡和步骤正确性估计不确定性的表达性策略"
+ ],
+ "method_framework": "TRIM在多步推理任务中实现混合推理。首先用过程奖励模型（PRM）评估每个推理步骤的正确性和不确定性，然后根据步骤级不确定性和全局预算约束，决定哪些步骤需要切换到大模型处理。支持从简单阈值到长视距成本-收益优化的多种路由策略。",
+ "experiment_framework": "在MATH-500和AIME等数学推理基准上评估，对比查询级路由方法和单一模型，测量成本效率（token消耗 vs 准确率），验证跨数学推理任务的泛化性。",
+ "takeaways": [
+  "步骤级针对性干预比查询级全量路由更高效：MATH-500上简单阈值策略即比现有路由方法高5倍成本效率",
+  "高级路由策略用80%更少的昂贵模型token即可匹配强模型性能，AIME上达6倍成本效率",
+  "步骤级难度是推理任务的基本特征，可跨任务泛化"
+ ],
+ "weaknesses": [
+  "依赖过程奖励模型（PRM）的步骤正确性评估质量，PRM误差会直接影响路由决策",
+  "仅在数学推理任务上验证，代码生成等其他多步推理任务的适用性未探讨",
+  "路由决策本身的计算开销（调用PRM+决策）在文中未详细量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "步骤级路由降低成本，但PRM依赖和泛化性存疑",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

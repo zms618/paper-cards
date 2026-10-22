@@ -1,0 +1,36 @@
+{
+ "key": "iclr2026/Semantic Uncertainty Quantification Of Hallucinations In LLMS A Quantum Tensor Net-Work Based Method.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Semantic Uncertainty Quantification Of Hallucinations In LLMS A Quantum Tensor Net-Work Based Method.pdf",
+ "title": "Semantic Uncertainty Quantification of Hallucinations in LLMs: A Quantum Tensor Network Based Method",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "elevance": 7.0,
+  "evidence": 5.5,
+  "overall": 6.25
+ },
+ "one_line": "量子张量网络聚类LLM生成，检测幻觉并触发人工监督。",
+ "innovations": [
+  "提出量子张量网络启发的不确定性量化框架，刻画token序列概率中的偶然(aleatoric)不确定性，并按语义等价对LLM多次生成做聚类。",
+  "引入熵最大化策略，优先选高确信、语义一致输出，并标出LLM决策不可靠的熵区域以指导何时需人工复核。",
+  "评测覆盖不同生成长度与量化等级这一以往被忽视的维度，证明资源受限部署下仍可靠。"
+ ],
+ "method_framework": "对同一提示多次采样生成，用语义等价聚类归并答案；用量子张量网络建模token序列概率分布的不确定性，计算熵等指标识别语义分歧/高不确定区域，据此判定幻觉并给出需要人工监督的阈值准则。",
+ "experiment_framework": "数据集TriviaQA、NaturalQuestions、SVAMP、SQuAD；模型含Mistral-7B(-instruct)、Falcon-rw-1b、LLaMA-3.2-1b、LLaMA-2-7b/13b(-chat)共8个架构；共116组实验；指标AUROC与AURAC，对比SOTA基线，覆盖不同生成长度与量化等级。",
+ "takeaways": [
+  "基于语义等价聚类+张量网络不确定性的轻量方案，在多架构多数据集上一致改进幻觉检测AUROC/AURAC。",
+  "该方法在量化/资源受限部署下仍稳健，可实时触发人工监督。"
+ ],
+ "weaknesses": [
+  "量子张量网络与幻觉检测的适配是否本质必要、还是可用经典概率模型替代，前9页缺乏充分消融论证。",
+  "8个架构均为1B-13B中等规模，未在前沿超大模型上验证。",
+  "计算开销/延迟的定量对比相对监督式检测方法仍需更明确。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

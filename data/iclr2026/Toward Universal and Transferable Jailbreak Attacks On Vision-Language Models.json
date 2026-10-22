@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Toward Universal and Transferable Jailbreak Attacks On Vision-Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Toward Universal and Transferable Jailbreak Attacks On Vision-Language Models.pdf",
+ "title": "Toward Universal and Transferable Jailbreak Attacks on Vision-Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "改进VLM越狱攻击的通用可迁移性，但防御讨论不足",
+ "innovations": [
+  "针对既有梯度VLM越狱图样过拟合白盒代理、跨模型迁移差的问题，同时追求通用性(跨目标)与可迁移性(跨模型)",
+  "视觉侧用随机变换+正则把优化约束到变换不变子空间，文本侧用基于语义的目标放松硬目标",
+  "在目标LLM的文本嵌入空间定义损失，并分析指出用语义目标平滑损失地貌是实现通用可迁移越狱的关键"
+ ],
+ "method_framework": "为VLM生成通用对抗图样：训练时施加随机变换以约束优化到变换不变子空间(缓解代理过拟合)；文本目标用语义嵌入相似替代逐token硬匹配；损失定义在目标LLM文本嵌入空间，使图样跨不同有害目标与不同受害模型通用迁移。",
+ "experiment_framework": "在多个VLM上评测越狱成功率(ASR)；对比既有梯度越狱方法；同时报告跨目标(通用性)与跨模型黑盒(可迁移性)；含损失地貌分析解释先前方法为何不可迁移。",
+ "takeaways": [
+  "既有VLM梯度越狱图样主要因过拟合单一白盒代理而无法跨模型迁移",
+  "视觉变换正则+语义文本目标的组合可显著提升跨模型、跨目标迁移性",
+  "平滑损失地貌是实现通用可迁移越狱的关键机制，对VLM安全对齐评估有现实意义"
+ ],
+ "weaknesses": [
+  "属攻击方法，对真实部署VLM(强对齐+系统提示)的攻击成功率是否仍高需更贴近现实的威胁模型验证",
+  "视觉变换正则带来的图像可见性/自然度约束未充分讨论，隐蔽性不足",
+  "工作本身暴露安全弱点，缓解/防御讨论较弱"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "攻击方法与可靠性主线间接相关，防御讨论不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

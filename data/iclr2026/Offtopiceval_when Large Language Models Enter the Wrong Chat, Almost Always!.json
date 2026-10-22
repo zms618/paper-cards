@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Offtopiceval_when Large Language Models Enter the Wrong Chat, Almost Always!.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Offtopiceval_when Large Language Models Enter the Wrong Chat, Almost Always!.pdf",
+ "title": "OffTopicEval: When Large Language Models Enter the Wrong Chat, Almost Always!",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "定义操作安全并提示引导，但未解决根本对齐问题",
+ "innovations": [
+  "定义 operational safety：LLM 被赋予特定目的时对域内/域外查询恰当接受或拒绝的能力，区别于通用有害安全",
+  "发布 OffTopicEval 评测套件与基准，覆盖通用与具体 agent 用途",
+  "提出 query grounding(Q-ground) 与 system-prompt grounding(P-ground) 两种提示引导，Q-ground 稳定提升最高 23%，P-ground 提升更大（Llama-3.3-70B +41%、Qwen-3-30B +27%）"
+ ],
+ "method_framework": "给定策略（域内/域外边界）与响应风格，评测 LLM 是否对越界(OOD)查询正确拒绝；构建 OffTopicEval 基准覆盖多种企业级 agent 用途；用 Q-ground（在查询上接地）与 P-ground（在系统提示上接地）两种提示引导压缩越界行为。",
+ "experiment_framework": "评测 6 个模型族共 20 个开源 LLM：Qwen-3-235B 77.77%、Mistral-24B 79.96%、GPT 62-73%、Phi 48-70%、Gemma 39.53%、Llama-3 仅 23.84%；并测 Q-ground/P-ground 引导的提升幅度。",
+ "takeaways": [
+  "所有受测 LLM 在操作安全上都远未达标，即便最强模型也远非可靠",
+  "越界服务(enter wrong chat)是企业部署的关键风险，OWASP/EU AI Act/NIST 均已点名",
+  "简单的提示式接地(Q/P-ground)可作为提升操作安全的低成本第一步"
+ ],
+ "weaknesses": [
+  "Q-ground/P-ground 仅为提示层引导，未从根本上解决对齐问题，面对强攻击可能失效",
+  "操作安全的评测依赖策略/边界标注，不同组织边界定义差异大",
+  "属 LLM 安全/可信AI但落地非医学影像/多模态推理，相关性中等偏上"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "操作安全属可靠性主线，但非医学/多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

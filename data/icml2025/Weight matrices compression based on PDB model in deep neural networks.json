@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Weight matrices compression based on PDB model in deep neural networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Weight matrices compression based on PDB model in deep neural networks.pdf",
+ "title": "Weight matrices compression based on PDB model in deep neural networks",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.75
+ },
+ "one_line": "扩展PUB模型为双体结构，实现无超参数的权重矩阵压缩。",
+ "innovations": [
+  "提出种群双体（PDB）模型，将原有PUB模型的单体扩展为双体结构，更准确拟合权重矩阵特征值分布",
+  "设计PDBLS算法确定噪声特征值与信息特征值的边界，无需依赖超参数",
+  "在相同测试精度下实现比PUB方法更低的权重矩阵秩，标签含噪时甚至能提升泛化性能"
+ ],
+ "method_framework": "基于随机矩阵理论（RMT），将DNN权重矩阵的特征值分布建模为种群双体模型：少数尖峰特征值（信息）+ 两个不同方差的体特征值（噪声）。通过渐近谱分析推导PDB模型参数的估计方法（PDBLS算法），进而确定噪声-信息边界，移除噪声特征值实现压缩。",
+ "experiment_framework": "在FCNN（MNIST）、VGG16（CIFAR10）、ResNet18（ImageNet/CIFAR10）等多种架构和数据集上验证；与PUB模型的BEMA和Kernel估计方法对比谱矩拟合度；测试压缩后的模型精度与秩的权衡关系。",
+ "takeaways": [
+  "权重矩阵的体特征值实际由两个不同方差的群体组成，而非单一群体，PDB模型拟合更准确",
+  "PDBLS算法能无超参数地确定噪声-信息边界，压缩后在相同精度下秩更低",
+  "标签噪声场景下，基于PDB的压缩甚至能提升泛化性能"
+ ],
+ "weaknesses": [
+  "仅在小规模模型和数据集上验证，未在现代大模型（如Transformer、LLM）上测试",
+  "压缩率与现有SVD剪枝方法相比优势不明确，缺乏与主流压缩方法的系统对比",
+  "PDB模型的双体假设缺乏严格的理论推导，更多是经验拟合"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

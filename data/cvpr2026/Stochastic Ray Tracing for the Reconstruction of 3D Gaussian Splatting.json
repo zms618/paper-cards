@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Stochastic Ray Tracing for the Reconstruction of 3D Gaussian Splatting.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Stochastic Ray Tracing for the Reconstruction of 3D Gaussian Splatting.pdf",
+ "title": "Stochastic Ray Tracing for the Reconstruction of 3D Gaussian Splatting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 5.1
+ },
+ "one_line": "随机采样加速3DGS渲染，但方差问题限制实际应用",
+ "innovations": [
+  "无排序的随机蒙特卡洛估计器用于像素颜色梯度",
+  "扩展到可重照明3D高斯场景，支持精确的光线追踪阴影和环境光照",
+  "双阶段采样算法同时处理前向和后向传播"
+ ],
+ "method_framework": "提出基于蒙特卡洛采样的无排序光线追踪算法，通过随机选择高斯体素并计算颜色梯度，避免传统排序操作，同时支持标准3DGS和可重照明场景的重建。",
+ "experiment_framework": "在MipNeRF360、Tanks & Temples等数据集上评估，与3DGS、3DGRT和StochasticSplats对比，使用PSNR、SSIM、LPIPS和渲染时间作为指标。",
+ "takeaways": [
+  "随机采样方法可显著加速光线追踪3DGS的优化过程",
+  "无排序算法在保持质量的同时大幅提升效率",
+  "可重照明场景中精确的光线追踪阴影优于近似方法"
+ ],
+ "weaknesses": [
+  "随机梯度估计引入方差，影响高斯分裂和修剪策略",
+  "未充分探讨 densification 方案与随机方差的交互作用",
+  "实验主要在合成数据上进行，真实场景泛化能力需进一步验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3D重建与渲染，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

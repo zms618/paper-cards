@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Deng_Open-World_Skill_Discovery_from_Unsegmented_Demonstration_Videos_ICCV_2025_paper.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Open-World Skill Discovery from Unsegmented Demonstration Videos.pdf",
+ "title": "Open-World Skill Discovery from Unsegmented Demonstration Videos",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "用预测误差尖峰切分视频提升Minecraft智能体，但环境单一且理论假设理想化",
+ "innovations": [
+  "提出SBD：用预训练无条件动作预测模型的预测误差尖峰做免标注技能边界检测，将视频分割从随机/规则/奖励/人工监督范式转为学习式方法",
+  "基于认知事件分割理论(EST)给出技能一致性、置信度、转换偏离三假设及定理3.4，证明技能转换时相对预测概率上下界可分离，为误差尖峰判据提供理论支撑",
+  "证明分割质量可直接迁移为下游收益：同一GROOT/STEVE-1仅更换分割方式即获63.7%/52.1%相对提升，并带动JARVIS-1/OmniJARVIS长程任务提升20.8%/11.3%"
+ ],
+ "method_framework": "先用逆动力学模型标注动作并训练无条件Transformer-XL策略；推理时对长视频逐步计算动作预测NLL，超过滑动均值GAP即判为技能边界（可选融合游戏事件等外部信息）；用切分后数据重训条件策略，再接VLM规划器构成分层智能体。",
+ "experiment_framework": "Minecraft合同工数据集68M帧切出130k子轨迹；重训GROOT/STEVE-1在12项原子任务各测100次，集成OmniJARVIS/JARVIS-1测长程任务各30次；含人评与组件/长度分布/GAP消融。",
+ "takeaways": [
+  "预测误差/不确定性尖峰可作为免标注的事件与阶段边界信号，可迁移到过程监控、数据切分等可靠性相关场景",
+  "消融中的good dist.对照组（按SBD段长分布做随机切分）是干净的claim隔离设计，证明收益来自边界语义而非段长分布",
+  "上游数据切分质量这一单一因素即可大幅放大下游策略与智能体性能，数据工程值得优先投入"
+ ],
+ "weaknesses": [
+  "仅在Minecraft单一环境验证；Tab.1所列bottom-up/BPE等替代分割方法未做实证对比，GAP=18超参靠经验设定",
+  "定理依赖技能切换率<1/K、动作置信度c、转换偏离1/2^m等强理想化假设，实际中更像直觉性支撑而非可用保证",
+  "分层智能体层面提升相对温和(11.3%/20.8%)，部分任务仅10次人评；9页截断处Sec4.4段长分布分析不可见"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "仅占可靠性方法一头，无落地域交点，知识面补全价值有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

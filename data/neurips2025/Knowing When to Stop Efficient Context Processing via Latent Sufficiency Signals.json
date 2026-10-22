@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Knowing When to Stop Efficient Context Processing via Latent Sufficiency Signals.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Knowing When to Stop Efficient Context Processing via Latent Sufficiency Signals.pdf",
+ "title": "Knowing When to Stop: Efficient Context Processing via Latent Sufficiency Signals",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "探测注意力头信号实现动态截断，提升效率但泛化性存疑",
+ "innovations": [
+  "发现并利用模型内部注意力头的充分性信号",
+  "提出动态上下文截断方法，无需预设压缩率",
+  "揭示大模型规模与自我评估能力的关系"
+ ],
+ "method_framework": "通过探测特定注意力头的激活模式训练轻量分类器，识别充分性信号，实现动态上下文截断，同时缓存激活避免重复计算。",
+ "experiment_framework": "6个QA数据集(SQuAD/Natural Questions等)，3个模型家族(LLaMA/Qwen/Mistral)，对比RAG和LLMLingua等方法，评估F1分数和准确率。",
+ "takeaways": [
+  "模型内部激活比表面输出包含更可靠的充分性信号",
+  "大模型(14B+)通过提示可实现自我评估，小模型需要探测",
+  "动态截断可缓解'lost-in-the-middle'问题"
+ ],
+ "weaknesses": [
+  "方法在不同模型架构上的泛化能力需进一步验证",
+  "分类阈值τ的选择对性能影响较大",
+  "长上下文场景下的计算效率优化不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

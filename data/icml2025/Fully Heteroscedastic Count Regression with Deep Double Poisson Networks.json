@@ -1,0 +1,37 @@
+{
+ "title": "Fully Heteroscedastic Count Regression with Deep Double Poisson Networks",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "将Double Poisson网络引入计数回归，实现异方差不确定性估计",
+ "innovations": [
+  "指出计数回归没有可类比连续回归中高斯深度集成的灵活异方差不确定性建模方法",
+  "提出DDPN，直接输出Double Poisson分布参数，允许计数上的完全异方差(方差随输入自由变化)",
+  "使计数回归也能通过深度集成准确估计认知不确定性，拓展不确定性量化到离散计数任务"
+ ],
+ "method_framework": "让神经网络输出Double Poisson分布的参数(均值与刻画过度/不足离散的形状参数)，从而对计数响应做完全异方差的概率回归；配合深度集成同时得到任意不确定性(数据噪声)与认知不确定性(模型不确定性)估计。",
+ "experiment_framework": "在人群计数、车流、停车场车辆数等计数任务数据集上，与Poisson/Negative Binomial等计数模型及高斯式集成对比，指标含对数似然、校准与不确定性估计质量(OOD检测等)。",
+ "takeaways": [
+  "Double Poisson比标准Poisson/NB更灵活地拟合计数的异质离散度",
+  "深度集成+DDPN使计数任务也能可靠估计认知不确定性",
+  "良好的不确定性量化可惠及OOD检测、主动学习等下游"
+ ],
+ "weaknesses": [
+  "Double Poisson在计数上并非严格离散分布(连续近似)，理论一致性有折衷",
+  "收益多为填补空白式，方法新颖性中等",
+  "实验集中于常规计数数据集，未在医学/高风险决策场景验证校准收益"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Fully Heteroscedastic Count Regression with Deep Double Poisson Networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Fully Heteroscedastic Count Regression with Deep Double Poisson Networks.pdf",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

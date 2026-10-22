@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Hidden No More Attacking and Defending Private Third-Party LLM Inference.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Hidden No More Attacking and Defending Private Third-Party LLM Inference.pdf",
+ "title": "Hidden No More: Attacking and Defending Private Third-Party LLM Inference",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 8,
+  "overall": 6.7
+ },
+ "one_line": "从LLM隐藏状态重构prompt的攻击与序列分片防御方案",
+ "innovations": [
+  "提出可从隐藏状态近乎完美还原原始prompt的重构攻击",
+  "证明该攻击对多种置换/加噪防御仍有效，挑战已有方案安全性",
+  "提出序列维度分片的多方推理方案Cascade保护用户输入隐私"
+ ],
+ "method_framework": "攻击者利用第三方推理服务暴露的中间隐藏状态重构原始prompt；防御方Cascade将序列维度分片到多方，使单方无法拼回完整prompt，在保护隐私同时降低SMPC开销。",
+ "experiment_framework": "在多个开源权重SOTA LLM上评估攻击还原准确率，并在置换/加噪等已有防御下测试攻击有效性，再评估Cascade的隐私与性能权衡。",
+ "takeaways": [
+  "隐藏状态本身即可泄露原始prompt，现有隐私推理方案假设过强",
+  "序列维度分片是兼顾隐私与效率的实用防御方向"
+ ],
+ "weaknesses": [
+  "攻击主要在开源权重设定验证，闭源API是否暴露隐藏状态不明",
+  "Cascade的安全保证依赖半诚实攻击者模型",
+  "分片带来的通信/计算开销未充分量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

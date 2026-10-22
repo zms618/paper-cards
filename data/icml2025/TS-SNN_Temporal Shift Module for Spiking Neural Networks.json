@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/TS-SNN_Temporal Shift Module for Spiking Neural Networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/TS-SNN_Temporal Shift Module for Spiking Neural Networks.pdf",
+ "title": "TS-SNN: Temporal Shift Module for Spiking Neural Networks",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "将视频TSM简单引入SNN，轻量但创新有限",
+ "innovations": [
+  "将视频领域的时间移位（Temporal Shift）操作引入 SNN，在单时间步内融合过去、现在与未来脉冲特征。",
+  "用残差组合方式整合移位特征与原始特征，防止信息损失。",
+  "TS 模块仅需一个额外可学习参数、计算开销极小，可无缝嵌入现有 SNN 架构。"
+ ],
+ "method_framework": "在 SNN 时序维度上对脉冲特征做方向性移位，使单个时间步即可聚合跨时间步的脉冲信息；再将移位后特征与原特征残差融合。模块极轻量，无需显著增加时间步或算力即可增强时序建模。",
+ "experiment_framework": "在 CIFAR-10、CIFAR-100、ImageNet 等图像分类基准上评测；对比既有 SNN 方法，指标为分类精度、所需时间步数与能耗。",
+ "takeaways": [
+  "以更少时间步取得 SOTA：CIFAR-10 96.72%、CIFAR-100 80.28%、ImageNet 70.61%。",
+  "保持低能耗，同时提升了对时序信息的利用。",
+  "轻量模块可即插即用到现有 SNN 架构。"
+ ],
+ "weaknesses": [
+  "属于神经形态/能效方向，与可靠性主线无关，relevance 受限。",
+  "思路直接借鉴自视频识别的 TSM，方法新颖性偏增量。",
+  "移位比例/方向的设计选择在前9页缺乏充分消融，对非视觉时序任务（如 NLP）的泛化未验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.78,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

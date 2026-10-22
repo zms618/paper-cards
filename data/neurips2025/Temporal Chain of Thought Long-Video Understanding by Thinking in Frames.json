@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Temporal Chain of Thought Long-Video Understanding by Thinking in Frames.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Temporal Chain of Thought Long-Video Understanding by Thinking in Frames.pdf",
+ "title": "Temporal Chain of Thought: Long-Video Understanding by Thinking in Frames",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "用VLM迭代选帧提升长视频QA，但计算开销大且策略未优化",
+ "innovations": [
+  "使用单一VLM进行帧选择和问答，无需外部模型",
+  "动态分段处理长视频，突破上下文窗口限制",
+  "推理时计算扩展策略，提升视频理解准确性"
+ ],
+ "method_framework": "Temporal Chain of Thought将视频问答分解为两阶段：首先使用VLM迭代选择与问题相关的关键帧，然后仅用这些帧进行问答，有效去除干扰信息。",
+ "experiment_framework": "在4个视频QA数据集(Egoschema、LVBench、OpenEQA、NExT-QA)上评估，使用Gemini 1.5 Flash、Qwen-2.5-VL和GPT-4o-mini作为基线模型。",
+ "takeaways": [
+  "使用单一VLM进行帧选择比基于特征相似性的方法更有效",
+  "动态分段策略能更好地处理长视频，避免粗采样中遗漏短事件",
+  "推理时计算扩展对视频理解比语言任务更有效"
+ ],
+ "weaknesses": [
+  "方法在极长视频上仍需大量计算资源",
+  "未探索不同类型问题的最佳帧选择策略",
+  "依赖VLM的帧选择能力，可能受限于模型本身的理解能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

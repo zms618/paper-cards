@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/One-Step Flow for Super-Resolution with Tunable Fidelity-Realism Trade-Offs.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/One-Step Flow for Super-Resolution with Tunable Fidelity-Realism Trade-Offs.pdf",
+ "title": "OFTSR: One-Step Flow for Image Super-Resolution with Tunable Fidelity-Realism Trade-Offs",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "单步流超分框架，轨迹对齐蒸馏实现保真度-真实度trade-off",
+ "innovations": [
+  "提出一步流超分辨率框架OFTSR，单步生成达到SOTA感知质量",
+  "通过强制学生模型预测与教师模型ODE轨迹对齐的蒸馏方法，保持可调保真度-真实度trade-off",
+  "解决了传统蒸馏方法固定trade-off缺乏灵活性的问题"
+ ],
+ "method_framework": "先训练条件流模型作为教师。蒸馏时强制单步学生模型对相同输入的预测落在教师模型的同一条采样ODE轨迹上。这种轨迹对齐确保学生从初始状态的单步预测匹配教师从更近中间状态的预测，从而保留可调的保真度-真实度平衡。",
+ "experiment_framework": "在FFHQ(256x256)、DIV2K、ImageNet(256x256)和真实世界SR数据集上测试。对比扩散模型和其他一步生成方法。指标为PSNR、FID等。",
+ "takeaways": [
+  "轨迹对齐蒸馏实现了单步生成同时保持可调保真度-真实度trade-off",
+  "OFTSR在多个数据集上达到SOTA感知质量",
+  "一步推理大幅降低超分辨率计算开销"
+ ],
+ "weaknesses": [
+  "蒸馏过程依赖教师模型质量，对教师模型要求高",
+  "可调trade-off的实际调节粒度和用户友好性未详细讨论",
+  "实验主要在256x256分辨率验证，高分辨率扩展性未展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.78,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "超分与可靠性主线无关，仅是图像生成优化",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/SKALD_Learning-Based Shot Assembly for Coherent Multi-Shot Video Creation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/SKALD_Learning-Based Shot Assembly for Coherent Multi-Shot Video Creation.pdf",
+ "title": "SKALD Learning-Based Shot Assembly for Coherent Multi-Shot Video Creation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "常规视频组装方法，LCA评分与束搜索提升连贯性有限",
+ "innovations": [
+  "LCA评分：专门设计用于评估多镜头连贯性的学习指标",
+  "两阶段训练：对比学习区分连贯与非连贯序列，特征回归对齐人类评分",
+  "序列长度解耦的束搜索算法，高效处理组合爆炸问题"
+ ],
+ "method_framework": "使用Transformer编码器处理镜头嵌入，通过对比学习区分连贯/非连贯序列，再通过回归层将特征转换为连贯评分，结合束搜索选择最优镜头序列",
+ "experiment_framework": "VSPD和MSV3C数据集，对比RATV、Transcript-to-Video等方法，使用IoU、SMS和推理时间作为指标",
+ "takeaways": [
+  "两阶段训练减少标注需求，提高模型效率",
+  "序列长度解耦使评分跨不同长度序列保持一致"
+ ],
+ "weaknesses": [
+  "依赖预训练视觉特征，可能限制特定领域应用",
+  "文本信息仅在SKALD-text中集成，基础版本不利用文本线索"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "视频组装与可靠性主线无交点，仅常规视频处理方法",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

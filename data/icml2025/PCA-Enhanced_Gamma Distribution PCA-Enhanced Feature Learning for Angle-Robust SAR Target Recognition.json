@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/PCA-Enhanced_Gamma Distribution PCA-Enhanced Feature Learning for Angle-Robust SAR Target Recognition.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/PCA-Enhanced_Gamma Distribution PCA-Enhanced Feature Learning for Angle-Robust SAR Target Recognition.pdf",
+ "title": "Gamma Distribution PCA-Enhanced Feature Learning for Angle-Robust SAR Target Recognition",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "Gamma分布PCA拟合SAR统计特性推导固定卷积核，提升角度鲁棒性",
+ "innovations": [
+  "提出Gamma分布PCA(ΓPCA)，完整刻画SAR数据统计特性",
+  "由ΓPCA推导一致卷积核，捕捉不同姿态角下同目标的角度不变特征",
+  "ΓPCA卷积核无需参数更新、不增加网络额外计算负担"
+ ],
+ "method_framework": "针对SAR散射随观察角剧烈变化、各角度训练样本不足的问题，用Gamma分布建模SAR数据统计分布并做PCA；据此导出在不同角度下保持一致的卷积核，注入ResNet/ViT骨干以增强角度不变性、降低角度分布偏移带来的掉点。",
+ "experiment_framework": "在MSTAR基准上、基于ResNet与ViT两种骨干验证；设置多种角度变化/分布偏移的鲁棒性实验；指标为跨角度识别准确率。",
+ "takeaways": [
+  "角度是SAR识别鲁棒性的主要干扰源，可用分布建模的卷积核缓解",
+  "ΓPCA核不需训练更新即插即用，几乎无额外成本",
+  "在ResNet与ViT上均能提升跨角度识别鲁棒性"
+ ],
+ "weaknesses": [
+  "与多模态大模型推理等主线关联弱",
+  "ΓPCA核设计依赖Gamma分布假设，复杂杂波/干扰下适应性待验",
+  "仅在MSTAR单数据集验证，跨传感器/场景泛化不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

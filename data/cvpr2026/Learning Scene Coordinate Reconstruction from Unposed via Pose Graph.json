@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Learning Scene Coordinate Reconstruction from Unposed via Pose Graph.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Learning Scene Coordinate Reconstruction from Unposed via Pose Graph.pdf",
+ "title": "Learning Scene Coordinate Reconstruction from Unposed via Pose Graph",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "姿态图优化集成到ACE-Zero，提升全局一致性但计算开销增加",
+ "innovations": [
+  "将姿态图优化与ACE-Zero结合，解决全局一致性问题",
+  "从ACE-Zero输出构建姿态图而不需要显式几何监督",
+  "引入不确定性感知优化策略，利用几何先验估计置信度"
+ ],
+ "method_framework": "通过预测场景坐标提取相对姿态约束构建姿态图，结合极线和光流一致性估计不确定性，进行加权姿态图优化",
+ "experiment_framework": "在7-Scenes、Mip-NeRF 360和Tanks and Temples数据集上评估，使用COLMAP作为伪基准，对比ACE-Zero、DRIOD-SLAM和VGGT-SLAM",
+ "takeaways": [
+  "学习与优化方法的结合可提升全局一致性",
+  "不确定性感知优化能提高复杂场景的鲁棒性",
+  "几何先验可用于估计预测置信度"
+ ],
+ "weaknesses": [
+  "不确定性估计依赖于初始姿态质量",
+  "姿态图构建可能受场景复杂度影响",
+  "计算开销相比原始ACE-Zero增加"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "SLAM方法与可靠性主线无实质交点，仅常规扎实",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

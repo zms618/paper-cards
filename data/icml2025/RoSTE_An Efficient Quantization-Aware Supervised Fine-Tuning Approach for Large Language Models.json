@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/RoSTE_An Efficient Quantization-Aware Supervised Fine-Tuning Approach for Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/RoSTE_An Efficient Quantization-Aware Supervised Fine-Tuning Approach for Large Language Models.pdf",
+ "title": "RoSTE: An Efficient Quantization-Aware Supervised Fine-Tuning Approach for Large Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "旋转STE与量化微调结合，提升4bit LLM性能但任务覆盖有限。",
+ "innovations": [
+  "首次将量化监督微调(QA-SFT)与旋转矩阵自适应选择统一为双层优化问题，上层优化权重、下层用代理损失引导旋转矩阵选择",
+  "提出RoSTE算法，交替执行带旋转的STE量化训练子例程和基于随机Walsh-Hadamard矩阵的低复杂度旋转选择启发式",
+  "在过参数化最小二乘量化训练模型上证明预测误差正比于收敛权重的量化误差，为旋转策略提供理论依据"
+ ],
+ "method_framework": "将4bit权重量化、激活量化和KV cache量化融入SFT单阶段训练。通过双层优化同时学习量化权重和旋转矩阵：外层用STE更新量化权重，内层根据当前权重的量化误差在H(旋转)和I(恒等)之间自适应选择是否施加Walsh-Hadamard旋转，以消除激活离群值。",
+ "experiment_framework": "在Pythia-6.9B、Qwen2.5-7B、Llama-3.1-8B三个模型上用Reddit TL;DR摘要数据集进行微调实验。基线包括RTN、GPTQ、QuaRot、SpinQuant和朴素STE。指标为ROUGE-1/2/L/LSum及平均值，对比FP16/BF16全精度基线与W4A4KV4量化设置。",
+ "takeaways": [
+  "RoSTE在4bit量化微调下 consistently 优于SFT后再PTQ的两步流程，在Pythia和Qwen模型上ROUGE均值提升约1-3分",
+  "自适应旋转策略优于无旋转(ROUGE降0.70)和全模块强制旋转(ROUGE降9.98)，说明需根据量化误差选择性旋转",
+  "RoSTE收敛后激活分布无离群值，而朴素STE在收敛后仍存在激活离群值"
+ ],
+ "weaknesses": [
+  "仅在摘要生成任务(TL;DR)上验证，未覆盖通用对话、数学推理等更广泛SFT任务，任务覆盖偏窄",
+  "实验对比的PTQ方法(QuaRot/SpinQuant)均为离线PTQ，未与最新的QAT全量微调方法直接对比",
+  "双层优化的内层旋转选择仅在H和I之间二选一，探索空间有限，理论分析基于简化的最小二乘模型，与真实LLM差距较大"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

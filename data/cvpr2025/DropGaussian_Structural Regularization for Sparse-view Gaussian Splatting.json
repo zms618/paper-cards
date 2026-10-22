@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/DropGaussian_Structural Regularization for Sparse-view Gaussian Splatting.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/DropGaussian_Structural Regularization for Sparse-view Gaussian Splatting.pdf",
+ "title": "DropGaussian Structural Regularization for Sparse-view Gaussian Splatting",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "DropGaussian随机丢弃高斯元缓解3DGS过拟合，但超参数需调整",
+ "innovations": [
+  "提出DropGaussian结构正则化方法，随机丢弃高斯元提高剩余高斯可见性",
+  "发现过拟合主要发生在训练后期，提出渐进式增加丢弃率的策略",
+  "无需额外先验信息，仅通过简单修改3DGS框架实现"
+ ],
+ "method_framework": "在训练过程中随机丢弃高斯元，通过补偿因子维持总贡献，渐进式增加丢弃率以缓解后期过拟合",
+ "experiment_framework": "LLFF/Mip-NeRF360/Blender数据集，3/6/9/12/24视图设置，PSNR/SSIM/LPIPS指标",
+ "takeaways": [
+  "简单有效的结构正则化方法可缓解稀疏视图过拟合",
+  "渐进式调整策略比固定丢弃率更有效"
+ ],
+ "weaknesses": [
+  "超参数γ需要针对不同数据集进行调整",
+  "随机丢弃可能丢失关键高斯元"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3DGS稀疏视图优化，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

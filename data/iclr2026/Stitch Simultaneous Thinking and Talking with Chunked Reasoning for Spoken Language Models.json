@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Stitch Simultaneous Thinking and Talking with Chunked Reasoning for Spoken Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Stitch Simultaneous Thinking and Talking with Chunked Reasoning for Spoken Language Models.pdf",
+ "title": "STITCH: Simultaneous Thinking and Talking with Chunked Reasoning for Spoken Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "分块交替推理机制，利用音频播放时间并行思考，提升数学推理15%",
+ "innovations": [
+  "提出分块推理-说话交替机制：不可见推理块和口语响应块交替生成，利用音频播放的空闲时间进行思考",
+  "实现思考与说话的并行：当一段口语音频播放给用户时，模型利用这段时间继续生成下一个推理块，隐藏思考延迟",
+  "在不增加口语响应延迟的前提下，为口语语言模型引入内部CoT推理能力"
+ ],
+ "method_framework": "将推理过程和口语响应都分成小块(chunk)。交替生成：先生成一小段不可见的推理块，然后生成一小段口语响应块。当口语块的音频播放给用户时（音频持续时间远长于生成这些token的计算时间），模型利用这个空闲时间窗口生成下一个推理块。这样用户感知到的延迟与无CoT的基线相同，但模型实际上在持续进行内部推理。",
+ "experiment_framework": "在口语语言模型上验证，对比无CoT基线和先完整CoT后说话的方法。评估：(1)数学推理数据集上的准确率（+15%）；(2)非推理数据集上的性能（保持相当）；(3)端到端延迟（与无CoT基线相同）。",
+ "takeaways": [
+  "口语对话中可以通过分块交替的方式在用户感知不到延迟的情况下进行内部思考，解决了CoT增加口语响应延迟的问题",
+  "STITCH在数学推理上提升15%，在非推理任务上性能不降，说明分块CoT对口语模型是通用有效的",
+  "音频播放时间远长于token生成时间，这个时间差可以被有效利用来并行进行推理"
+ ],
+ "weaknesses": [
+  "推理块和口语块的大小比例需要精心设计，比例不当会导致思考不足或说话延迟",
+  "仅在特定SLM架构上验证，对其他口语模型的迁移性未证明",
+  "前9页未展示完整的多任务定量对比表格，具体性能数字不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "口语模型并行思考机制，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

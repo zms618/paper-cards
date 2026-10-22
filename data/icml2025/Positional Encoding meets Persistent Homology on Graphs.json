@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Positional Encoding meets Persistent Homology on Graphs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Positional Encoding meets Persistent Homology on Graphs.pdf",
+ "title": "Positional Encoding meets Persistent Homology on Graphs",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 6,
+  "overall": 6.5
+ },
+ "one_line": "证明PE与PH表达力互不占优，提出融合二者的PiPE方法。",
+ "innovations": [
+  "首次严格刻画PE与PH在图上的相对表达力：证明两者互不占优，并分别构造一方失败而另一方成功的图",
+  "基于上述互补性提出Persistence-informed Positional Encoding(PiPE)可学习方法",
+  "证明PiPE在表达力上严格强于单独的PE与PH，并在多类任务上取得强性能"
+ ],
+ "method_framework": "以图同构区分(超越1-WL的表达力)为标尺，分别分析PE(位置/谱编码提供全局位置信息)与PH(多尺度拓扑特征，捕获连通性/环)能区分哪些图；通过构造互补反例证明二者表达力互不包含；PiPE把持续同调拓扑信息注入位置编码，融合两类信号，得到比单范式更强的可学习图编码。",
+ "experiment_framework": "在图分类/回归任务(含分子性质预测等)上评测PiPE；对比纯PE、纯PH及其它表达力增强GNN；指标为预测精度；同时以构造性反例展示PE与PH各自的失败模式。",
+ "takeaways": [
+  "位置编码与持续同调在图表达力上互不占优，各有对方无法区分的图",
+  "融合拓扑信息的可学习位置编码PiPE在表达力上严格强于单范式",
+  "PiPE在分子性质预测等多类图任务上表现优异"
+ ],
+ "weaknesses": [
+  "持续同调特征的计算成本随图规模增长，对大图的可扩展性有限",
+  "理论表达力优势未必等比转化为下游任务增益，二者的量化联系未充分建立",
+  "实验以标准图benchmark为主，对超大规模真实图(如社交/分子库)验证不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

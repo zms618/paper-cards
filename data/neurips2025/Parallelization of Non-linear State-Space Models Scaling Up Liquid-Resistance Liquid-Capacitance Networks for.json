@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Parallelization of Non-linear State-Space Models Scaling Up Liquid-Resistance Liquid-Capacitance Networks for.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Parallelization of Non-linear State-Space Models Scaling Up Liquid-Resistance Liquid-Capacitance Networks for.pdf",
+ "title": "Parallelization of Non-linear State-Space Models: Scaling Up Liquid-Resistance Liquid-Capacitance Networks for Efficient Sequence Modeling",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "Jacobian对角化实现非线性状态空间模型并行化，但短序列表现一般",
+ "innovations": [
+  "强制Jacobian矩阵对角化，实现精确并行计算",
+  "提出LrcSSM模型，结合生物启发的液体电阻液体电容网络",
+  "提供形式化的梯度稳定性保证",
+  "方法可推广到其他非线性循环模型"
+ ],
+ "method_framework": "通过修改LRC网络方程，使状态矩阵A(x,u)仅依赖于自状态而非所有状态，同时保持输入依赖性，从而实现Jacobian矩阵对角化，使序列计算可并行化。",
+ "experiment_framework": "在UEA-MTSCA数据集(Heartbeat, SelfRegulationSCP1/2, EthanolConcentration, MotorImagery, EigenWorms)上测试，与NRDE, NCDE, Log-NCDE, LRU, S5, S6, Mamba, LinOSS-IM/EX, Transformer等模型比较准确率。",
+ "takeaways": [
+  "对角化Jacobian矩阵可实现精确并行计算，无需近似",
+  "生物启发的非线性模型在长序列任务中表现优异",
+  "方法可推广到其他非线性循环模型如MGU, GRU, LSTM"
+ ],
+ "weaknesses": [
+  "在短序列任务上表现一般，可能缺乏有趣的输入相关性",
+  "使用显式欧拉积分，可能不如隐式积分方案有效",
+  "与LinOSS-IM模型相比在某些任务上仍有差距"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/A Differentiable Wave Optics Model for End-to-End Computational Imaging System.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Differentiable Wave Optics Model for End-to-End Computational Imaging System.pdf",
+ "title": "A Differentiable Wave Optics Model for End-to-End Computational Imaging System Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "可微分波光仿真器用参考球采样与插值优化端到端光学设计",
+ "innovations": [
+  "在出瞳参考球上取复场 v(ρ_i)=a_i e^{jkδ_i}（振幅取孔径挡光透过率的平方根，相位由光程 δ=∫n(s)ds 决定），再用 Rayleigh-Sommerfeld 积分以 N 条相干光线蒙特卡洛传播到传感器，支持离网格波前采样",
+  "用球面参考球而非平面 pupil 承载波前误差图，文中论证这能压低 pupil 上的相位变化幅度从而降低采样密度，是与角谱法（ASM）方法抗离焦能力差距的关键设计",
+  "在局部等晕假设下把未采样 PSF 写成邻近采样 PSF 的平移加权和（式5），把叠加积分重排为 I(u)=Σ_i b''_i * h_i 的多卷积求和（式6-7），得到全程可微且只需少量 PSF 的大视场渲染"
+ ],
+ "method_framework": "光线追迹在出瞳参考球取复场(相位=光程)，Monte-Carlo 光线按 Rayleigh-Sommerfeld 积分传播成 PSF；采样子集后用局部等晕插值拆成加权图与多次卷积(式6-7)得测量；整链可微，梯度回传透镜参数。",
+ "experiment_framework": "PSF 渲染与 Zemax-Huygens/ASM 类法比 SSIM 与耗时；单透镜/库克三片/六非球面 × 光圈 0.1/0.3mm 做 ray 与 wave 联合优化，DIV2K+U-Net；指标 RMSE/LPIPS/MF/RRMSE，另加真实透镜 PSF 实测校验。",
+ "takeaways": [
+  "把 shift-varying PSF 的叠加积分改写成「少量采样 PSF + 加权潜像」的多次卷积求和，是让波光仿真真正能进端到端梯度训练的核心工程折中",
+  "物理保真度会直接固化到设计里：只按几何光学优化的透镜有更小的弥散圆却因忽略衍射而重建更差，wave 训练会自动缩短焦距来压衍射，这一「目标-模型失配」范式可迁移到其他鲁棒优化场景",
+  "光学仿真类工作的双层校验组合值得照搬：先对齐 Zemax-Huygens 参考算 SSIM，再用真实单色平行光实测 PSF 对齐 on/off-axis"
+ ],
+ "weaknesses": [
+  "全文未报方差与多次随机初始化，PSF 渲染与端到端优化各只跑单次；结论建立在单一 DIV2K 子集与单一 U-Net 上，未做镜头初始化或数据拆分的稳定性检验",
+  "插值表显示 30° 视场下 SSIM 从 9 个 PSF 的 0.815 升至 289 个的 0.981，耗时却从 7.66s 涨到 96.5s，误差与成本同时随 PSF 数膨胀，文中未给出定点准则，也缺与「全量渲染」在同等显存预算下的对等对比",
+  "真实实验仅一组合单色平行光入射的单透镜实测 PSF（on-axis 与 15° off-axis），无真实成像下的重建质量对比；声称可用于 Fizeau 干涉仪与自由曲面元件，但对应实验在正文截断处之后，无数值结果支撑该可移植性 claim"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "波光仿真器优化光学设计，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

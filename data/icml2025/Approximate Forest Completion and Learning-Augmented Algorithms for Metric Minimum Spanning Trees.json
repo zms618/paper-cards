@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Approximate Forest Completion and Learning-Augmented Algorithms for Metric Minimum Spanning Trees.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Approximate Forest Completion and Learning-Augmented Algorithms for Metric Minimum Spanning Trees.pdf",
+ "title": "Approximate Forest Completion and Learning-Augmented Algorithms for Metric Minimum Spanning Trees",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "MST近似算法，理论保证弱，与主线无关",
+ "innovations": [
+  "提出 Metric Forest Completion (MFC) 框架：先用实用启发式求森林，再补少量权重小的边把森林连成生成树",
+  "证明最优求解 MFC 仍需 Ω(n²) 边查询，但给出子二次复杂度、近似因子 ≈2.62 的补全算法",
+  "在学习增强范式下证明：若初始森林与最优 MST 的 γ-overlap 良好，则得到 (2γ+1)-近似，γ=1 时即森林边全在最优 MST 中"
+ ],
+ "method_framework": "第一步用启发式（近邻图/剪枝等）得到一棵由多棵树组成的森林，避免 O(n²) 全距离计算；第二步把「补少量边连接各分量」建模为 MFC，通过子二次查询的近似算法选出补全边集，使总生成树权重逼近最优。理论上将近似因子绑定到启发式森林与最优解的重叠度 γ。",
+ "experiment_framework": "在合成数据与多个真实数据集、多种（含非欧如 Levenshtein、图核）度量上验证可扩展性与树权质量，报告与精确算法相比的加速倍数及各启发式初始森林的 γ-overlap（实测多 <2）。",
+ "takeaways": [
+  "任意度量空间下 MFC 最优求解仍有 Ω(n²) 下界，但可在子二次查询下取得 2.62 近似",
+  "简单启发式初始森林的 γ-overlap 通常小于 2，从而在实践中接近最优生成树",
+  "该方法比精确算法快数量级，且对复杂/非欧度量和高维特征同样适用"
+ ],
+ "weaknesses": [
+  "与主线（可靠性/鲁棒性×医学影像/多模态大模型推理）无关，relevance 受限",
+  "近似因子 2.62 离常数 1 较远，理论保证的实用精度依赖启发式森林质量，最坏情形退化",
+  "距离查询中的不确定性仅作为动机提及，未在算法中建模或给出鲁棒性分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.48,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "MST近似算法，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

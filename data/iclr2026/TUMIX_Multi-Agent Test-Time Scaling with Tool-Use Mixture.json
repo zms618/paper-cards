@@ -1,0 +1,41 @@
+{
+ "title": "TUMIX: Multi-Agent Test-Time Scaling with Tool-Use Mixture",
+ "one_line": "多智能体并行工具使用框架，迭代共享答案并提前停止以降成本",
+ "innovations": [
+  "提出Tool-Use Mixture(TUMIX)：并行运行多个各采用不同工具策略（文本推理/编码/搜索）与答案路径的agent",
+  "agent间基于问题与前序答案迭代共享并精炼回答，并用LLM自动优化agent设计以增强多样性与质量",
+  "支持达到足够置信即停止精炼，仅用49%推理成本保持性能；可进一步扩展换取更高性能"
+ ],
+ "method_framework": "并行启动多个工具使用策略各异的agent，各自走文本推理/代码/搜索等不同答案路径；各agent迭代地读取问题与其他agent前序答案并精炼自身回答。通过LLM自动优化agent设计提升多样性与质量；当集成置信足够时提前停止迭代以省算力。",
+ "experiment_framework": "在HLE、GPQA-Diamond、AIME等关键推理基准上，基于Gemini-2.5-Pro/Flash评测；对比TTSSelf-MoE、Symbolic-MoE、SciMaster、DEI、GSA等工具增强与test-time scaling方法；指标为准确率与推理成本。",
+ "takeaways": [
+  "并行多样化工具使用策略并迭代互鉴，可在相近推理成本下比最强基线平均提升最多3.55%",
+  "agent多样性与质量是关键，可用LLM自动优化agent设计来增强",
+  "达到足够置信即停止可在仅49%推理成本下保持性能"
+ ],
+ "weaknesses": [
+  "并行多agent本质上增加推理时算力，'近等成本'依赖提前停止策略，满配成本仍高",
+  "agent多样性靠启发式+LLM自动优化，多样性与冗余的边界缺乏理论刻画",
+  "主要在Gemini-2.5闭源模型上验证，开源模型上的收益未报告"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/TUMIX_Multi-Agent Test-Time Scaling with Tool-Use Mixture.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TUMIX_Multi-Agent Test-Time Scaling with Tool-Use Mixture.pdf",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多智能体工具使用框架，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

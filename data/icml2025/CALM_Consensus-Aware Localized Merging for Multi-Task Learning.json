@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/CALM_Consensus-Aware Localized Merging for Multi-Task Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CALM_Consensus-Aware Localized Merging for Multi-Task Learning.pdf",
+ "title": "CALM: Consensus-Aware Localized Merging for Multi-Task Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "局部合并与全局共识对齐，多任务学习参数干扰缓解方案",
+ "innovations": [
+  "提出共识感知局部合并，兼顾全局任务共识与局部任务细节，缓解全局合并参数干扰",
+  "类平衡熵最小化采样，更灵活可靠地利用无标注数据",
+  "高效感知框架选取少量任务做序列合并，可扩展性高",
+  "共识感知掩码优化使局部二值掩码与全局共识对齐、无冲突合并"
+ ],
+ "method_framework": "以任务向量为基础，用类平衡熵采样选无标注样本估计任务方向；高效感知框架挑任务子集序列合并；共识感知掩码优化在局部二值掩码与全局任务共识间对齐，实现无冲突局部合并。",
+ "experiment_framework": "在视觉/NLP多任务合并基准上与Task Arithmetic及global/local合并方法比较，报告平均任务精度与对任务数的可扩展性，含三组件消融。",
+ "takeaways": [
+  "纯全局合并引入参数干扰，纯局部合并损失任务细节，需二者对齐",
+  "共识感知掩码可在局部合并中保持无冲突",
+  "无重训合并可接近传统集中式多任务学习"
+ ],
+ "weaknesses": [
+  "主线为模型合并/多任务学习，与可靠性主线及医学影像、多模态推理落地域无关",
+  "依赖无标注数据采样估计任务方向，数据分布偏移时采样有效性受影响",
+  "主要在ViT/BERT类中小模型验证，对超大基础模型的扩展证据有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Splitting & Integrating Out-of-Distribution Detection via Adversarial Gradient Attribution.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Splitting & Integrating Out-of-Distribution Detection via Adversarial Gradient Attribution.pdf",
+ "title": "Splitting & Integrating: Out-of-Distribution Detection via Adversarial Gradient Attribution",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "梯度归因方法改进，计算开销高，对非梯度方法增益不明",
+ "innovations": [
+  "指出梯度类OOD方法(如GAIA)在ID样本受随机扰动时梯度非零行为区分度不足这一缺陷",
+  "提出layer splitting：将模型中间层切分并逐层迭代更新对抗样本",
+  "沿对抗样本到输入的归因路径积分各中间层归因梯度，得到ID/OOD的真实解释模式表征"
+ ],
+ "method_framework": "后验OOD检测：把预训练网络中间层切分，逐层迭代生成对抗样本，再把对抗样本到真实输入路径上各层的归因梯度积分聚合，形成区分ID/OOD的解释模式表征作为判别分数。",
+ "experiment_framework": "在标准OOD检测基准(ID为CIFAR类、OOD为若干数据集)上对比输出型/特征型/梯度型OOD方法(含GAIA)，指标为AUROC/FPR95等OOD检测指标。",
+ "takeaways": [
+  "直接用输出对输入梯度区分ID/OOD在高维随机扰动下不够稳健，需沿层切分+路径积分归因梯度以获得更可分表征",
+  "对抗样本逐层构造与归因路径积分的结合，可作为梯度型可解释OOD检测的改进范式"
+ ],
+ "weaknesses": [
+  "需逐层迭代构造对抗样本并反传积分梯度，推理期计算开销显著高于普通后验打分，实时部署存疑",
+  "改进针对GAIA类梯度方法，对SOTA的energy/Mahalanobis等强后验方法的增益幅度前9页未见完整表",
+  "‘解释模式表征’的可分性提升是否可迁移到视觉大模型/多模态OOD未验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Pruning Long Chain-of-Thought Large Reasoning Models via Small-Scale Preference Optimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Pruning Long Chain-of-Thought Large Reasoning Models via Small-Scale Preference Optimization.pdf",
+ "title": "Pruning Long Chain-of-Thought of Large Reasoning Models via Small-Scale Preference Optimization (LCPO)",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "用偏好优化缩短CoT，但方法与可靠性主线关联弱",
+ "innovations": [
+  "分析生成路径分布并按难度估计过滤生成轨迹，构造短推理偏好数据",
+  "在统一Bradley-Terry损失框架下分析多种偏好优化目标的收敛特性",
+  "提出LCPO：直接平衡与NLL损失相关的隐式奖励，用小数据小训练学到长度偏好"
+ ],
+ "method_framework": "先按难度估计从采样轨迹中筛选短而正确的CoT；在统一BT框架下比较偏好目标后，用LCPO在隐式奖励中显式加入长度项，在不牺牲正确性的偏好对上学到更短推理，有限微调即可。",
+ "experiment_framework": "多个推理基准上评测；报告平均输出长度缩短比例与推理性能保持；对比直接长度惩罚/现有去思考方法。",
+ "takeaways": [
+  "LCPO跨多基准将LRM平均输出长度缩短50%以上，同时保持推理性能",
+  "在统一BT框架下，平衡NLL隐式奖励是学到长度偏好的关键",
+  "小规模偏好优化即可缓解过度思考，无需大规模再训练"
+ ],
+ "weaknesses": [
+  "属推理长度压缩/效率方向，与可靠性、不确定性、验证器主线关联弱",
+  "难度估计与轨迹过滤依赖启发式，在开放式/无标准答案任务的适用性存疑",
+  "短推理在极难问题上的长尾失败风险、以及相对更强去思考方法的对比需后续页"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "推理效率优化与可靠性主线弱相关，但方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

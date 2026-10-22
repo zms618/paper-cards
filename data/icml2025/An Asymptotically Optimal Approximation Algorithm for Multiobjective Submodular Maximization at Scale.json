@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/An Asymptotically Optimal Approximation Algorithm for Multiobjective Submodular Maximization at Scale.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/An Asymptotically Optimal Approximation Algorithm for Multiobjective Submodular Maximization at Scale.pdf",
+ "title": "An Asymptotically Optimal Approximation Algorithm for Multiobjective Submodular Maximization at Scale",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.9
+ },
+ "one_line": "离散算法解决多目标子模最大化，渐近达(1-1/e)近似比，但应用结合较浅",
+ "innovations": [
+  "首次给出不依赖 multilinear extension 连续松弛、却（渐近）达到 (1-1/e) 最优近似比的可扩展离散算法，解决 Udwani(2018) 遗留问题",
+  "用新颖的集中(concentration)论证代替连续松弛+舍入来获得近似保证",
+  "引入乘法权重 (MWU) 更新减少函数求值数，得到多目标版的 lazy greedy；并提出 fair centrality maximization 新应用"
+ ],
+ "method_framework": "多目标子模=最大化多个子模目标的最小者。算法在离散解上迭代维护各目标权重，每轮求加权组合子模函数的贪心解，用 MWU 更新权重；通过集中论证证明其解 (渐近) 达到单目标最优的 (1-1/e) 近似，而无需对 multilinear extension 做昂贵采样。",
+ "experiment_framework": "在大规模问题实例上与 (1-1/e)²≈0.40 的离散算法及基于 multilinear extension 的连续松弛算法对比目标值与运行时间，验证可扩展性与近优性；并在 fair centrality/影响力最大化场景应用。",
+ "takeaways": [
+  "多目标子模最大化可在离散侧、不靠 multilinear extension 达到近 (1-1/e) 近似",
+  "MWU 更新等价于多目标 lazy greedy，显著减少函数求值",
+  "方法在目标值与运行时间上均优于已知算法"
+ ],
+ "weaknesses": [
+  "主线为组合优化理论，与可靠性×医学影像/多模态大模型推理主线无关",
+  "近似比为「渐近/几乎」达到 (1-1/e)，有限预算下的精确常数与退化情形需细看",
+  "前9页实验以合成/图规模为主，与公平性应用端到端效果的结合较初步"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "组合优化理论，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

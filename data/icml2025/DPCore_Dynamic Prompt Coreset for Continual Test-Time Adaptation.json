@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DPCore_Dynamic Prompt Coreset for Continual Test-Time Adaptation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DPCore_Dynamic Prompt Coreset for Continual Test-Time Adaptation.pdf",
+ "title": "DPCore: Dynamic Prompt Coreset for Continual Test-Time Adaptation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "动态prompt coreset解决CTTA现实域变化问题，参数减99%",
+ "innovations": [
+  "指出现有CTTA假设结构化、等长域变化（CSC）与现实不符，提出更贴近现实的Continual Dynamic Change(CDC)设置：域以变长/变频复现",
+  "提出DPCore三合一：visual prompt adaptation做高效域对齐、prompt coreset保存已学知识、dynamic update对相似域复用/微调prompt而对新域新建prompt",
+  "在四个benchmark的CSC与CDC设置下均达SOTA，相比前方法可训练参数减99%、计算时间减64%"
+ ],
+ "method_framework": "在ViT上插入visual prompts；为每个见过的域维护一个prompt coreset；遇到新样本时动态判定与已知域的相似度：相似则复用/微调已有prompt，差异大则新建；保持backbone冻结。",
+ "experiment_framework": "四个CTTA benchmark（含ImageNet-to-ImageNet-C with ViT-B）；在CSC（传统等长域）与CDC（变长变频域）两种设置下对比ViDA等SOTA CTTA方法，报告错误率、可训练参数量与计算时间。",
+ "takeaways": [
+  "传统CTTA方法在CDC动态域设置下错误率从43.4%恶化到52.1%，DPCore从39.9%仅到42.1%，鲁棒性显著",
+  "prompt coreset有效防止对短时暴露域的不收敛与对旧域的遗忘",
+  "dynamic update避免了对所有域统一调参导致的误适配"
+ ],
+ "weaknesses": [
+  "前9页未给出完整数值表，四个benchmark的具体错误率需看实验章节",
+  "prompt coreset规模随域数增长，长期运行的存储开销未充分讨论",
+  "仅在视觉分类/ViT上验证，未扩展到多模态或LLM TTA"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

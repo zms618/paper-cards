@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Bridging the Gap between Large-Scale Pretraining and Efficient Finetuning for Humanoid Control.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Bridging the Gap between Large-Scale Pretraining and Efficient Finetuning for Humanoid Control.pdf",
+ "title": "Towards Bridging the Gap between Large-Scale Pretraining and Efficient Finetuning for Humanoid Control",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 4.9
+ },
+ "one_line": "LIFT框架：大batch SAC预训练+世界模型安全微调人形控制",
+ "innovations": [
+  "发现off-policy SAC配合大batch更新与高UTD比，可可靠支持人形运动策略的大规模预训练并真机零样本部署",
+  "微调阶段在真实环境只执行确定性策略，随机探索被限制在物理信息世界模型内，规避人形随机探索的跌倒风险",
+  "物理信息世界模型结合Lagrangian动力学与残差预测器捕捉接触力等未建模效应，减少模型偏差"
+ ],
+ "method_framework": "三阶段：(i)JAX实现的SAC大batch高UTD在大规模并行仿真预训练人形运动策略；(ii)在SAC数据上预训练物理信息世界模型(Lagrangian动力学+残差预测接触力)；(iii)在新环境只在真实环境跑确定性动作、把随机探索放到世界模型rollout中，联合微调策略与世界模型。",
+ "experiment_framework": "在大规模并行仿真训练人形locomotion策略并真机户外零样本部署；对比PPO等on-policy方法；在新环境/OOD任务上微调，对比直接随机探索的安全性与样本效率；报告速度跟踪/执行精度等指标。",
+ "takeaways": [
+  "off-policy SAC经大batch高UTD改造可兼具大规模预训练的墙钟效率与微调的样本效率",
+  "把随机探索限制在物理信息世界模型内，可在微调中规避人形随机动作的不安全跌倒风险",
+  "物理信息世界模型降低了合成rollout的模型偏差，使微调更稳"
+ ],
+ "weaknesses": [
+  "真机零样本部署案例与OOD任务种类有限，跨复杂地形/载荷的稳健性证据不足",
+  "世界模型在接触丰富场景下的误差累积可能限制微调极限",
+  "属人形机器人控制方向，与可靠性主线及医学影像、多模态推理落地域无关"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "人形机器人控制与可靠性主线及医学影像、多模态推理落地域无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

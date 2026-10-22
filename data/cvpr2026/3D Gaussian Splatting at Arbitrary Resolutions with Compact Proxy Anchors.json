@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/3D Gaussian Splatting at Arbitrary Resolutions with Compact Proxy Anchors.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/3D Gaussian Splatting at Arbitrary Resolutions with Compact Proxy Anchors.pdf",
+ "title": "3D Gaussian Splatting at Arbitrary Resolutions with Compact Proxy Anchors",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.0,
+  "overall": 4.8
+ },
+ "one_line": "堆叠FiLM、覆盖门和proxy锚的3D-GS变分辨率方案，实验覆盖有限",
+ "innovations": [
+  "锚点特征由分辨率嵌入FiLM条件化：[γ,β]=MLP(PE(x_v,ξ))、f̂=(1+γ)⊙f+β，配合不透明度阈值τ=1/255，使同一锚点在不同分辨率下自动只激活合适的子高斯子集(消融中FiLM的ξ比直接相加的Eξ高约0.15dB)",
+  "像素覆盖门按投影2D高斯的覆盖面积A=πρ²√det(Σ2D)与像素尺寸比较，以sigmoid(κ(A-η))乘到不透明度上抑制覆盖不足的小高斯，从抗锯齿而非单纯阈值过滤的角度处理变分辨率走样(附录给17-20式的反向梯度)",
+  "锚集按密度感知随机抽30%作proxy锚，残差锚点预测器输入(proxy特征,距离方向PE)输出Δf，由f^k+Δf重建被丢弃的leaf锚；两阶段训练，Stage 2加L_recon=‖Δf‖²+0.1(1−cos)约束重建目标"
+ ],
+ "method_framework": "训练时每轮把输入随机缩到10%-100%：锚特征经FiLM成分辨率自适应→像素覆盖门按A=π√det(Σ2D)调不透明度→残差锚预测器重建30%以外的leaf锚；两阶段先Lbase渲染再加Lrecon。",
+ "experiment_framework": "Mip-NeRF360/Tanks&Temples/DeepBlending/NeRF-Synthetic共21场景，在10/40/70/100%四档分辨率评PSNR/SSIM/LPIPS与#GS、存储MB；基线为3D-GS、Mip-splat、Analytic-splat、Scaffold-GS、Context-GS、TC-GS。",
+ "takeaways": [
+  "用投影覆盖面积A=πρ²√det(Σ2D)与像素大小比较做sigmoid门，比单纯不透明度阈值更贴近抗锯齿的连续性判据",
+  "FiLM条件化让一组锚点服务连续分辨率、避免多分辨率存多套高斯，是AR/数字孪生变焦渲染的实用取舍"
+ ],
+ "weaknesses": [
+  "本质是既有模块堆叠：FiLM条件化来自视觉自适应文献、像素覆盖门来自走样/抗锯齿、proxy锚+残差预测来自Scaffold-GS，论文的新贡献只是把它们接到高斯锚点上，问题层增量有限",
+  "实验只在10%-100%的离散整齐采样分辨率上评估，未测连续插值分辨率或真实变焦序列，『任意分辨率』claim的外推面被采样整齐度掩盖；proxy抽30%、κ、η、λ_recon与20k跳变点均无非敏感性分析",
+  "所有指标为单值、21场景无方差/多种子；压缩靠自研预测器重建自己丢弃的leaf锚，且只在『平均#GS相同』的受控条件下比存储，预测器自身的推理开销未计入端到端成本"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3DGS变分辨率技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

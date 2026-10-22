@@ -1,0 +1,41 @@
+{
+ "title": "Peng's Q(λ) for Conservative Value Estimation in Offline Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "改造Peng's Q(λ)为离线RL保守估计器，隐式正则缓解过度悲观。",
+ "innovations": [
+  "首个在离线RL中用多步算子(PQL)做保守值估计并理论+实证验证的工作，充分利用离线轨迹。",
+  "PQL算子在离线RL中的不动点更接近行为策略值函数，自然诱导隐式行为正则。",
+  "同时缓解过度悲观值估计、达到不劣于行为策略的性能并给出近最优保证；其预训练Q函数还可缓解offline-to-online微调初期的性能跌落。"
+ ],
+ "method_framework": "用Peng's Q(λ)多步回报算子替代标准Bellman算子做保守值估计；多步回报的折扣截断使OOD动作被自然惩罚、不动点靠近行为策略值，从而无需显式正则即实现保守估计；配合策略提升算子得到离线策略，且预训练Q可迁移到在线PQL。",
+ "experiment_framework": "在D4RL benchmark上评测；对比CQL等单步保守离线RL基线；指标为归一化回报；报告一致显著超过单步基线；并展示offline-to-online微调时避免初始性能跌落。",
+ "takeaways": [
+  "多步保守值估计比单步保守方法更充分利用离线轨迹、缓解外推误差。",
+  "PQL算子的隐式行为正则使离线策略不劣于行为策略并有近最优保证。",
+  "CPQL预训练Q函数可平滑过渡到在线微调。"
+ ],
+ "weaknesses": [
+  "离线RL主题，与可靠性/可信AI×落地域主线关联弱。",
+  "多步算子方差/计算复杂度与对长轨迹截断λ的敏感性需更多消融。",
+  "理论保证依赖函数逼近/数据覆盖假设，高维真实控制任务上的实际收益幅度需谨慎外推。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PENG’S Q(λ) for Conservative Value Estimation In Offline Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PENG’S Q(λ) for Conservative Value Estimation In Offline Reinforcement Learning.pdf",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "离线RL方法，与可靠性主线弱关联但设计模式有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

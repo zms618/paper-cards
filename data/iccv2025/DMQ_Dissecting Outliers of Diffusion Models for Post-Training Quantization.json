@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/DMQ_Dissecting Outliers of Diffusion Models for Post-Training Quantization.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/DMQ_Dissecting Outliers of Diffusion Models for Post-Training Quantization.pdf",
+ "title": "DMQ Dissecting Outliers of Diffusion Models for Post-Training Quantization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "LES和PTS解决扩散模型量化异常值，但适用性和开销存疑",
+ "innovations": [
+  "Learned Equivalent Scaling (LES)优化通道缩放因子",
+  "自适应时间步加权方案优先处理关键步骤",
+  "通道级Power-of-Two Scaling (PTS)处理极端异常值",
+  "投票算法增强PTS因子选择的鲁棒性"
+ ],
+ "method_framework": "DMQ结合LES和PTS技术，LES优化通道缩放因子重新分配权重和激活的量化难度，PTS通过2的幂次缩放直接消除激活异常值，并引入自适应时间步加权和投票算法提升性能",
+ "experiment_framework": "数据集：FFHQ、LSUN-Bedroom、LSUN-Church；基线：Q-Diffusion、PTQD、EDA-DM、TFMQ-DM；指标：FID、sFID",
+ "takeaways": [
+  "早期去噪步骤对最终输出质量影响显著，需优先处理",
+  "通道级缩放比传统方法更适合处理扩散模型中的异常值",
+  "投票算法可有效提升小校准集上的鲁棒性"
+ ],
+ "weaknesses": [
+  "方法主要针对图像生成扩散模型，可能不适用于其他类型扩散模型",
+  "PTS引入了额外的位运算开销，虽然小但非零"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "扩散模型量化技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

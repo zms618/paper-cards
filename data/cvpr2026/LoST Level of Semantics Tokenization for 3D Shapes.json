@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/LoST Level of Semantics Tokenization for 3D Shapes.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/LoST Level of Semantics Tokenization for 3D Shapes.pdf",
+ "title": "LoST Level of Semantics Tokenization for 3D Shapes",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "语义分词3D形状生成，前缀解码完整但泛化受限",
+ "innovations": [
+  "按语义重要性排序的3D形状分词方法",
+  "关系间距离对齐(RIDA)损失函数",
+  "早期前缀即可解码为完整语义形状的表示"
+ ],
+ "method_framework": "LoST通过ViT编码器将3D形状三平面特征转换为语义有序的标记序列，结合扩散模型解码器实现任意前缀的形状重建，并通过RIDA损失对齐3D潜在空间与DINO语义空间的关系。",
+ "experiment_framework": "在1k个复杂3D形状测试集上评估，与OctGPT和VertexRegen对比，使用Chamfer距离、FID和DINO相似度作为指标。",
+ "takeaways": [
+  "语义有序分词显著提升早期解码质量",
+  "关系间距离对齐有效提供3D语义监督",
+  "少量标记即可实现高质量3D生成"
+ ],
+ "weaknesses": [
+  "依赖特定3D表示(三平面)，泛化性受限",
+  "计算复杂度较高，训练资源需求大"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3D形状生成与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

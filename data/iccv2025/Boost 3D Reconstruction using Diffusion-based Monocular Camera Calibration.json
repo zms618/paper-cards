@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Boost 3D Reconstruction using Diffusion-based Monocular Camera Calibration.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Boost 3D Reconstruction using Diffusion-based Monocular Camera Calibration.pdf",
+ "title": "Boost 3D Reconstruction using Diffusion-based Monocular Camera Calibration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "扩散模型编码相机参数提升3D重建，但泛化与效率存疑",
+ "innovations": [
+  "Camera Image表示法",
+  "扩散模型用于相机内参估计",
+  "与下游3D任务的无缝集成"
+ ],
+ "method_framework": "提出Camera Image表示法，将相机内参编码为图像，通过微调扩散模型生成Camera Image，再通过RANSAC提取相机参数",
+ "experiment_framework": "多个公共数据集评估，包括Waymo、RGBD、ScanNet等，比较 focal length 和 optical center 的相对误差",
+ "takeaways": [
+  "扩散模型可隐式学习不同焦距的成像特性",
+  "图像表示法对扩散模型性能至关重要",
+  "相机标定可显著提升下游3D任务性能"
+ ],
+ "weaknesses": [
+  "依赖预训练扩散模型",
+  "未讨论计算效率",
+  "未分析不同场景下的泛化能力限制"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D重建与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

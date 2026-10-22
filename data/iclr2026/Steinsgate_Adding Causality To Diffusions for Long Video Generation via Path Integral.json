@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Steinsgate_Adding Causality To Diffusions for Long Video Generation via Path Integral.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Steinsgate_Adding Causality To Diffusions for Long Video Generation via Path Integral.pdf",
+ "title": "SteinsGate: Adding Causality to Diffusions for Long Video Generation via Path Integral",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "因果视频生成框架，用路径积分强制动作连贯性",
+ "innovations": [
+  "提出时序动作绑定(Temporal Action Binding)：将复杂长视频按时序因果分解为场景描述和带预测时长的动作序列，实现细粒度时序控制",
+  "提出因果视频延续(Causal Video Continuation)：自回归地从文本故事生成连贯视频叙事，保持长期时间一致性",
+  "SteinsGate推理时实例：用MLLM做时序动作绑定，视频路径积分(Video Path Integral)强制动作间因果性，将预训练TI2V扩散模型转为自回归视频延续模型"
+ ],
+ "method_framework": "两阶段框架：(1)时序动作绑定：用MLLM将复杂长提示分解为场景描述和动作序列，每个动作预测持续时间；(2)因果视频延续：逐动作自回归生成视频片段，通过视频路径积分在相邻动作之间施加因果约束，确保动作转换自然连贯而不矛盾。整个方法是推理时方案，不需要重新训练预训练扩散模型。",
+ "experiment_framework": "在长视频生成基准上验证，对比直接扩展时长和共享帧拼接等方法。评估指标包括时序控制精度、动作连贯性、视频流畅度和多动作叙事自然度。",
+ "takeaways": [
+  "现有长视频生成方法缺乏时序因果建模，导致动作不连续甚至矛盾，路径积分可以有效强制动作间因果性",
+  "将复杂长视频分解为动作序列+场景描述的结构化方式，比直接生成超长视频更可控、更连贯",
+  "SteinsGate作为推理时方案，可以即插即用地将预训练TI2V模型转为自回归长视频生成器，无需重新训练"
+ ],
+ "weaknesses": [
+  "依赖MLLM做时序动作绑定，绑定质量直接影响最终视频效果，MLLM的错误会传播到视频生成",
+  "自回归逐动作生成可能导致长序列误差累积，超长视频的一致性存疑",
+  "前9页未展示完整的定量对比表格，具体视频质量提升幅度不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "因果视频生成，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unveiling Super Experts Mixture-of-Experts Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unveiling Super Experts Mixture-of-Experts Large Language Models.pdf",
+ "title": "Unveiling Super Experts in Mixture-of-Experts Large Language Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "发现MoE中极少数关键专家，剪枝3/6144即致模型崩溃。",
+ "innovations": [
+  "首次发现并系统研究MoE LLM中极少数起关键作用的超级专家(SEs)，仅剪枝3/6144个即可致Qwen3-30B输出重复无信息",
+  "揭示SE的本质是down proj输出中罕见但极端的激活离群点，并在解码器层间引发大规模激活",
+  "阐明SE是Transformer系统离群机制的主要来源，压缩SE会破坏注意力汇(attention sink)导致模型崩溃"
+ ],
+ "method_framework": "作者系统剖析MoE LLM，发现一类数量极少但关键的超级专家；通过激活分析定位其为down proj输出中罕见极端离群点，这些离群点在层间引发大规模激活；进一步证明SE是Transformer系统离群机制的主要来源，压缩SE会瓦解注意力汇、导致模型输出崩溃。",
+ "experiment_framework": "在多个开源MoE LLM(如Qwen3-30B-A3B)上做剪枝/压缩受控实验；跨多任务评测性能变化；指标为剪枝后准确率与输出质量；报告仅剪3/6144个SE即致重复无信息输出，且对数学推理影响尤甚。",
+ "takeaways": [
+  "SE数量极少却对前向推理起关键作用，且分布是模型特定、数据无关、不受后训练影响",
+  "SE被剪枝后对整体性能尤其数学推理影响巨大",
+  "SE是Transformer离群机制的主要来源，压缩会瓦解注意力汇"
+ ],
+ "weaknesses": [
+  "属于MoE可解释性/机制分析方向，为纯文本LLM，未涉及多模态或医学影像，与主线为中相关",
+  "SE发现主要基于Qwen3等少数开源MoE模型，跨架构(如GPT类)普适性前9页未验证",
+  "聚焦现象与机制刻画，未提出利用SE的压缩/加速方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "纯文本LLM机制分析，未触及可靠性主线与落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

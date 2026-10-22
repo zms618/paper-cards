@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/TTFSFormer_A TTFS-based Lossless Conversion of Spiking Transformer.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/TTFSFormer_A TTFS-based Lossless Conversion of Spiking Transformer.pdf",
+ "title": "TTFSFormer: A TTFS-based Lossless Conversion of Spiking Transformer",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.75
+ },
+ "one_line": "TTFS编码实现Transformer到SNN的无损转换，但与AI可靠性主线无关。",
+ "innovations": [
+  "首次专注于用 TTFS 编码（每个神经元至多发放一次脉冲）将 Transformer 转换为 SNN，区别于此前依赖速率编码的转换方法。",
+  "设计扩展表征范围、增强非线性函数处理能力的新 TTFS 神经元结构，并针对 Transformer 不同层（注意力/非线性层）给出详细的非线性神经元设计。",
+  "免重训练的无损转换，保留预训练 ANN 精度，消除 SNN 直接训练的高算力成本。"
+ ],
+ "method_framework": "采用 ANN-to-SNN 转换范式，把预训练 Transformer 参数映射到 SNN。核心是改造 TTFS 神经元：扩大可表征的数值动态范围、使其能拟合 Transformer 中的注意力机制与非线性激活层，从而在每个神经元最多发放一次脉冲的极低脉冲预算下完成无损转换。",
+ "experiment_framework": "在多种模型架构上验证（视觉 Transformer 等），对比速率编码的既有转换方法；指标为分类精度与能耗（脉冲数/能效），目标是在保持或接近 ANN 精度的同时显著降低能耗。",
+ "takeaways": [
+  "首次实现基于 TTFS 编码的 Transformer→SNN 转换，每个神经元至多一次脉冲即可达到高精度。",
+  "相比速率编码（需多次脉冲精确表征数值），TTFS 在能耗上显著更优。",
+  "新神经元结构解决了注意力与非线性层在 TTFS 编码下难以转换的问题。"
+ ],
+ "weaknesses": [
+  "属于神经形态/能效方向，与可靠性、鲁棒、可信 AI 主线无关，relevance 受限。",
+  "实验主要集中在视觉分类等基准，在大规模/多模态或 NLP Transformer 上的可迁移性未充分验证。",
+  "'无损'精度声称在前9页缺乏与 ANN 精度差距的定量逐任务对比，能耗收益随模型规模的 scaling 关系不明确。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

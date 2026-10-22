@@ -1,0 +1,43 @@
+{
+ "key": "cvpr2026/NS-Diff Fluid Navier-Stokes Guided Video Diffusion via Reinforcement Learning.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/NS-Diff Fluid Navier-Stokes Guided Video Diffusion via Reinforcement Learning.pdf",
+ "title": "NS-Diff Fluid Navier-Stokes Guided Video Diffusion via Reinforcement Learning",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.9
+ },
+ "one_line": "将流体力学约束融入视频扩散模型，提升物理真实性但计算开销大。",
+ "innovations": [
+  "噪声鲁棒的物理属性检测器",
+  "物理条件化的潜在注入模块",
+  "基于强化学习的物理约束优化",
+  "自适应物理激活调度器",
+  "PhysVideoBench物理评估基准"
+ ],
+ "method_framework": "NS-Diff框架包含三个核心组件：1)物理属性检测器从噪声潜在帧中识别刚性和流体区域；2)物理条件化潜在注入模块将速度场、变形梯度和材料掩码编码并注入DiT去噪器；3)强化学习优化模块通过策略梯度强制执行流体简化的Navier-Stokes约束和刚体的最小抖动原则。",
+ "experiment_framework": "在PhysVideoBench、UCF和MSR-VTT数据集上评估，使用刚性IoU、流体F1、抖动一致性(ΔJ)、流体散度误差(Ldiv)和FVD作为指标，与VideoJam、PhysGen等基线方法比较。",
+ "takeaways": [
+  "噪声鲁棒的物理估计是关键挑战，需要自适应激活机制",
+  "将物理约束直接融入扩散过程的潜在空间比显式模拟更高效",
+  "物理引导的强化学习可有效提升视频生成的物理真实性"
+ ],
+ "weaknesses": [
+  "物理估计在高噪声水平下性能显著下降",
+  "方法主要关注流体和刚体运动，对其他物理现象覆盖有限",
+  "计算开销虽小于显式模拟但仍增加训练复杂度"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "物理约束视频生成，非可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Synthesizing Near-Boundary OOD Samples for Out-of-Distribution Detection.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Synthesizing Near-Boundary OOD Samples for Out-of-Distribution Detection.pdf",
+ "title": "Synthesizing Near-Boundary OOD Samples for Out-of-Distribution Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "用MLLM和扩散模型生成近边界OOD样本微调CLIP提升OOD检测",
+ "innovations": [
+  "利用MLLM和扩散模型迭代生成近边界OOD样本",
+  "基于OOD分数梯度的噪声调整机制",
+  "分别微调CLIP图像编码器和文本编码器特征"
+ ],
+ "method_framework": "SynOOD包含三步：1)MLLM提取上下文元素，扩散模型迭代生成近边界OOD样本；2)微调CLIP图像编码器投影层；3)微调文本编码器负标签特征",
+ "experiment_framework": "ImageNet-1k作为InD，iNaturalist/SUN/Places/Texture作为OOD，比较AUROC和FPR95指标",
+ "takeaways": [
+  "利用基础模型生成高质量边界OOD样本提升检测性能",
+  "分别微调图像和文本编码器保持训练稳定性"
+ ],
+ "weaknesses": [
+  "计算开销较大，需要多次迭代生成样本",
+  "依赖预训练模型性能，可能受限于基础模型能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "OOD检测与可靠性主线明确交点，方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

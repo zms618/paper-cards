@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/LORA_LD-MOLE Learnable Dynamic Routing Mixture Of LORA Experts.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/LORA_LD-MOLE Learnable Dynamic Routing Mixture Of LORA Experts.pdf",
+ "title": "LD-MOLE: Learnable Dynamic Routing Mixture Of LORA Experts",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "LoRA与MoE结合的可学习动态路由，NLP任务上优于基线。",
+ "innovations": [
+  "可学习的动态路由机制替代非可微的TopK选择",
+  "引入分析性稀疏控制目标来调节激活专家数量",
+  "基于Sparsegen的闭式解确保路由的可微性和稳定性"
+ ],
+ "method_framework": "LD-MoLE结合LoRA与MoE架构，通过共享MLP预测稀疏因子λ，控制专家分配，实现token和层级的自适应专家选择。",
+ "experiment_framework": "在Llama-3.2-3B/8B和Qwen3-1.7B模型上测试，对比MoLA和ReMoLE基线，使用MMLU-Pro、ARC等NLP基准评估。",
+ "takeaways": [
+  "可学习动态路由在推理密集型任务上显著优于固定路由",
+  "稀疏控制损失可有效减少激活专家数量而不损害性能"
+ ],
+ "weaknesses": [
+  "实验主要关注NLP任务，未涉及医学影像或多模态大模型推理",
+  "缺乏对模型鲁棒性和泛化能力的深入分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "NLP任务上的MoE改进，未触及可靠性主线与落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

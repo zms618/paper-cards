@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/WDRO_WILD-DIFFUSION A WDRO Inspired Training Method for Diffusion Models under Limited Data.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/WDRO_WILD-DIFFUSION A WDRO Inspired Training Method for Diffusion Models under Limited Data.pdf",
+ "title": "WILD-Diffusion: A WDRO Inspired Training Method for Diffusion Models under Limited Data",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "WDRO引入扩散模型，小数据下迭代生成样本降低FID",
+ "innovations": [
+  "首次将Wasserstein分布鲁棒优化（WDRO）引入扩散模型训练，在Wasserstein距离不确定集中迭代生成新训练样本",
+  "训练过程中渐进式增强训练集，有效克服小数据过拟合问题",
+  "建立了扩散过程与WDRO混合算法的收敛性保证"
+ ],
+ "method_framework": "以有限数据分布为中心构建Wasserstein不确定集，在训练过程中迭代地从该不确定集中生成新样本作为数据增强。随着训练进行，生成的样本逐步扩展训练分布的覆盖范围，同时保持与真实数据分布的Wasserstein距离在可控范围内。",
+ "experiment_framework": "在多个图像生成数据集上评估。对比基线为标准扩散模型训练和其他小数据方法。指标为FID。测试不同数据量设置（20%数据、仅100张图像）下的生成质量。",
+ "takeaways": [
+  "Wasserstein不确定集是一种 principled 的数据增强方式，比传统随机增强更有理论保证",
+  "仅用20%的训练数据即可达到标准训练超过10%的FID改进",
+  "仅用100张图像即可达到SOTA FID，大幅降低了扩散模型的数据门槛"
+ ],
+ "weaknesses": [
+  "仅在自然图像数据集上验证，医学影像等专业小数据领域的适用性未知",
+  "Wasserstein不确定集的半径选择对性能的影响未系统消融",
+  "迭代生成样本的计算开销随训练步数增长，效率权衡未详细分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "WDRO方法有可靠性价值，但未触及医学影像落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

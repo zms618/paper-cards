@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Survival Analysis via Density Estimation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Survival Analysis via Density Estimation.pdf",
+ "title": "Survival Analysis via Density Estimation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.9
+ },
+ "one_line": "将生存分析重构为密度估计问题，后处理任意密度估计器输出生存函数。",
+ "innovations": [
+  "将生存分析统一重构为密度估计，使任意密度估计模型都能经后处理直接用于估计生存函数，无需为每种新密度方法定制扩展。",
+  "框架兼容多种生存场景，包括多事件类型的竞争风险模型。",
+  "支持已知事件时间与删失时间相依关系（以 copula 形式给出）时处理相依删失；无此信息时仍能估计生存函数的上下界并刻画相关不确定性。"
+ ],
+ "method_framework": "既有用密度估计做生存分析的方法多逐案定制、且依赖条件独立甚至比例风险假设。本文把（删失）观测视作带缺失的密度样本，先任意训练一个密度估计器拟合联合/条件密度，再通过后处理（积分/截断）从密度输出反解出生存函数 S(t)；当删失与事件时间相依时，用已知 copula 修正；无 copula 信息时，则给出由可辨识性约束决定的生存函数上下界区间，量化不确定性。",
+ "experiment_framework": "在多个生存分析场景（含竞争风险、相依删失）上，对比 DeepHit、随机生存森林等专用方法；指标为生存函数估计精度、 proper scoring / D-calibration 校准与边界有效性。",
+ "takeaways": [
+  "统一框架让任意密度估计器都可复用为生存分析工具，拓宽了方法库。",
+  "放松了条件独立/比例风险等强假设。",
+  "在信息缺失时仍可输出带不确定性的生存函数区间，对医疗决策稳健。"
+ ],
+ "weaknesses": [
+  "属于统计生存分析框架，非深度多模态模型；落地为通用生存建模而非影像诊断。",
+  "上下界在强相依/信息匮乏时可能过宽，实际决策可用性在前9页缺乏定量评估。",
+  "后处理推导依赖密度估计器质量，密度估计误差向生存函数传递的误差传播未充分分析。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

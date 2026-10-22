@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/3D-IDE 3D Implicit Depth Emergent.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/3D-IDE 3D Implicit Depth Emergent.pdf",
+ "title": "3D-IDE: 3D Implicit Depth Emergent",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "用训练期特权监督和弱验证器诱导RGB编码器隐式学习3D结构",
+ "innovations": [
+  "提出 Implicit Geometric Emergence Principle：直接把 3D-aware 特征定义为 F^3D_t ≡ F_t（统一表征而非 2D/3D 双流拼接），把深度/位姿降级为只训练期可用的特权监督，推理时完全只需 RGB，消除显式坐标注入（Eq.1）与双编码器融合（Eq.2）的两难",
+  "刻意把 Auxiliary Geometric Validator f_P 做成「弱」的：用从零训练的轻量 DPT 式解码器预测稠密深度 Σ̂_D,p 与逐像素不确定性图，且用容量论证——强预训练验证器会自己吃掉大部分 3D 推理并削弱对编码器的压力（min_{θE,θP} L_geo(f_P(f_E),D_gt), f_P∈P_weak），消融证实从零版略优于 vggt 预训练版",
+  "三路几何目标：逐像素 l_p=‖Σ̂⊙(D̂−D_gt)‖+‖Σ̂⊙(∇D̂−∇D_gt)‖−αlogΣ̂（深度+梯度+不确定性正则）约束细粒度几何；邻帧按已知相对位姿 warp 后求 L1 的 L_cross-view 保证跨视一致；与冻结 3D 基础模型（VGGT）做余弦距离的 L_global 做场景级约束；验证器与教师模型推理时全部丢弃，零延迟"
+ ],
+ "method_framework": "SigLIP 视觉编码器端到端微调出 token F_t，既喂 LLaVA-Next-Video(Qwen2-7B) 作软视觉提示，又接训练期专用几何验证器出 (D̂,Σ̂)；总损失 L=L_ce+L_geometry+L_cross-view+L_global；验证器从零训练、推理时与教师模型一并摘除，仅用 RGB 视频推理。",
+ "experiment_framework": "5 个 ScanNet 系基准：ScanRefer(Acc@.25/.5)、Multi3DRefer(F1)、Scan2Cap(C@0.5/B-4)、ScanQA 与 SQA3D(EM)；同时与单任务专家模型和多任务通用模型（Chat-3D v2、LEO、Inst3D-LLM、Video-3D LLM、3DRS 等 20+）比较，核心基线为去掉几何注入的 Video-3D LLM*；另用 NAVI 探查隐式表征的几何对应与法向，并做验证器初始化等消融。",
+ "takeaways": [
+  "「特权信息只在训练期注入、推理期丢弃」是把外部先验塞进模型内部而不增加部署依赖的通用范式",
+  "辅助头容量要刻意压低（弱验证器），否则它会自己接管任务、削弱主干学到表征——这是设计 auxiliary head 时容易被忽略的反直觉点",
+  "按相对位姿 warp 邻帧深度做 L1 一致性，比全帧对稠密交叉监督便宜得多，是视频/多视场景下性价比高的几何约束"
+ ],
+ "weaknesses": [
+  "所有评测基准（ScanRefer、Multi3DRefer、Scan2Cap、ScanQA、SQA3D）与训练数据全部来自 ScanNet，且验证器监督的深度也是 ScanNet 的真值深度：所谓「免 3D 依赖」的鲁棒性是同分布内的，论文未提供跨数据集或零样本迁移到 3D 之外场景的评测",
+  "核心基线 Video-3D LLM* 是作者自己「去掉显式几何注入后的复现」，比原版（含 3D 输入）弱很多（ScanRefer 53.7 vs 58.1），因此「不靠 3D 还能赢」的说服力部分建立在自造弱基线上，与真正可部署的 Video-3D LLM 原版未被同条件比较",
+  "文中把「12.86% 更少参数」与「55% 推理延迟降低」并列作为效率卖点，但参数量与延迟降幅没有因果链接，且验证器容量消融只对比了同一架构的两种初始化（Tab.3），缺少验证器容量逐级递增、L_global 权重、α 等超参的消融",
+  "结论节前的分析部分被截断（正文止于评测指标定义），「3D 意识真的隐式涌现」这一核心 claim 的探针式证据（不接验证器时编码器自身的深度/几何误差）无法核实"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3D重建技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

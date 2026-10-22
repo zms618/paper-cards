@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/MergeOcc_Bridge the Domain Gap between Different LiDARs for Robust.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/MergeOcc_Bridge the Domain Gap between Different LiDARs for Robust.pdf",
+ "title": "MergeOcc Bridge the Domain Gap between Different LiDARs for Robust",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "跨LiDAR占用预测框架，几何重对齐与语义映射解决域差异",
+ "innovations": [
+  "首个跨LiDAR数据集的3D占用预测框架",
+  "几何重对齐模块处理不同LiDAR的几何差异",
+  "语义标签映射模块自动统一不同数据集的标签空间"
+ ],
+ "method_framework": "MergeOcc包含几何重对齐和语义标签映射模块，通过点云范围对齐和数据集特定归一化处理几何差异，通过组合优化自动构建统一标签空间，实现多数据集训练。",
+ "experiment_framework": "在OpenOccupancy-nuScenes和SemanticKITTI数据集上评估，使用L-CoNet和PointOcc作为基线，比较IoU和mIoU指标。",
+ "takeaways": [
+  "几何重对齐中采用最小点云范围比最大范围更适合占用预测任务",
+  "数据集特定归一化能有效捕获不同LiDAR的统计特性",
+  "组合优化的语义标签映射方法减少了人工干预"
+ ],
+ "weaknesses": [
+  "语义标签映射的优化问题随数据集数量增加呈指数级复杂度",
+  "仅验证了两种LiDAR类型(32束和64束)的泛化能力",
+  "未充分探讨方法在更多样化LiDAR类型上的表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "跨LiDAR域适应解决鲁棒性痛点，几何重对齐与语义映射有防守力",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

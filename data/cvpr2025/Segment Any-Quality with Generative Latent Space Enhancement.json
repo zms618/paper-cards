@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Segment Any-Quality with Generative Latent Space Enhancement.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Segment Any-Quality with Generative Latent Space Enhancement.pdf",
+ "title": "Segment Any-Quality with Generative Latent Space Enhancement",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "在SAM潜在空间添加单步去噪提升低质量图像分割",
+ "innovations": [
+  "生成式潜在空间增强(GLE)框架",
+  "特征分布对齐(FDA)技术",
+  "通道复制与扩展(CRE)方法",
+  "构建LQSeg多级退化数据集"
+ ],
+ "method_framework": "在SAM潜在空间中引入单步去噪扩散过程，通过预训练U-Net增强低质量特征，结合FDA和CRE技术解决特征分布和结构差异问题",
+ "experiment_framework": "LQSeg数据集(ThinObject-5K/LVIS/ECSSD/COCO)，IoU/Dice/PA指标，对比SAM/RobustSAM/PromptIR-SAM/DiffBIR-SAM等方法",
+ "takeaways": [
+  "生成模型可增强分割模型的鲁棒性",
+  "特征分布对齐是跨模型融合的关键",
+  "轻量级LoRA适配可保持预训练模型泛化能力"
+ ],
+ "weaknesses": [
+  "仅处理图像质量问题，未考虑其他鲁棒性挑战",
+  "单步去噪可能限制复杂退化场景的恢复能力",
+  "计算开销虽低于多步扩散但仍显著增加"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅处理图像质量鲁棒性，未触及可靠性主线核心问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

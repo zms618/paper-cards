@@ -1,0 +1,41 @@
+{
+ "title": "Tucker-FNO: Tensor Tucker-Fourier Neural Operator and its Universal Approximation Theory",
+ "one_line": "Tucker分解降维FNO，理论证明但超参与扩展性不足",
+ "innovations": [
+  "提出Tucker-FNO：通过Tucker分解把高维Fourier神经算子分解为多个一维FNO，显著降低高维Fourier/卷积算子的计算开销",
+  "用Sobolev空间泛函分解工具严格建立Tucker-FNO的万能逼近定理",
+  "借助紧致Tucker分解无缝推广到高维视觉信号，学习从位置编码空间到信号INR的映射，用于连续信号恢复"
+ ],
+ "method_framework": "FNO在高维函数空间下因高维Fourier/卷积计算昂贵而低效。Tucker-FNO用Tucker分解把高维算子张量分解为低维核乘多个一维算子，使高维FNO退化为一系列一维FNO，在保持表达力的同时降复杂度。理论上在Sobolev空间用泛函分解证明万能逼近。",
+ "experiment_framework": "在Navier-Stokes、Plasticity、Burgers等高维PDE上评测；对比原始FNO；指标为执行时间与精度；并在operator-INR框架下做连续信号恢复，对比传统INR方法的效率与精度。",
+ "takeaways": [
+  "Tucker分解可在保持表达力的同时把高维FNO的计算复杂度大幅降低",
+  "Tucker-FNO有严格的Sobolev空间万能逼近理论保证",
+  "同一框架可推广到高维视觉信号的INR式连续恢复，效率与精度均优于传统INR"
+ ],
+ "weaknesses": [
+  "Tucker分解引入rank超参，rank-性能权衡与最优秩选择未充分刻画",
+  "主要在标准低维PDE与小规模视觉信号验证，超高维工程PDE的扩展性证据有限",
+  "万能逼近是存在性结论，有限样本下的逼近误差上界与实践收敛速度未深入"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/TUCKER-FNO_Tensor Tucker-Fourier Neural Operator its Universal Approximation Theory.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TUCKER-FNO_Tensor Tucker-Fourier Neural Operator its Universal Approximation Theory.pdf",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "raw_overall": 6.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "仅是计算优化方法，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

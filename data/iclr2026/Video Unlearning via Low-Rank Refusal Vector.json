@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Video Unlearning via Low-Rank Refusal Vector.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Video Unlearning via Low-Rank Refusal Vector.pdf",
+ "title": "Video Unlearning via Low-Rank Refusal Vector",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "视频扩散模型免训练遗忘，5对提示降不安全生成36-58%",
+ "innovations": [
+  "提出首个视频扩散模型的免训练权重更新遗忘框架：从5对安全/不安全提示估计拒绝向量，通过闭式更新直接修改模型权重",
+  "引入对比低秩分解(contrastive low-rank factorization)将目标有害概念与无关语义解耦，实现选择性抑制而非粗暴擦除",
+  "在两个视频生成模型上验证，不安全生成平均降低36.3%-58.2%，同时保持提示对齐和视频质量，无推理开销"
+ ],
+ "method_framework": "给定预训练视频扩散模型，仅需5对安全/不安全提示对，方法即可：(1)计算每对提示在模型中的激活差异，估计出指向有害概念的拒绝向量方向；(2)通过对比低秩分解将该方向与无关语义解耦，得到干净的概念抑制方向；(3)以闭式解形式将拒绝向量整合进模型权重。整个过程无需训练、无需额外数据，权重修改是永久性的，且不增加推理计算量。",
+ "experiment_framework": "模型：Open-Sora、ZeroScopeT2V。基准：T2VSafetyBench、SafeSora。基线：过滤方法、微调遗忘方法、图像扩散遗忘方法迁移。指标：不安全生成率降低幅度、提示对齐保持度、视频生成质量。",
+ "takeaways": [
+  "免训练权重更新方法能有效从视频扩散模型中永久移除有害概念，效果优于过滤式方法",
+  "对比低秩分解保证了概念移除的选择性，不会损害其他正常语义的生成质量",
+  "仅需5对提示即可实现概念移除，方法极简且可扩展到多个概念"
+ ],
+ "weaknesses": [
+  "仅验证了nudity、暴力等少数概念的移除，更广泛的概念（如版权角色、特定风格）遗忘效果未展示",
+  "低秩假设可能限制了对复杂概念方向的建模能力",
+  "权重修改的不可逆性意味着如果移除方向有误，难以恢复"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视频扩散模型安全遗忘，符合可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

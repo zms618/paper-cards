@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/SAIDO_Generalizable Detection of AI-Generated via Scene-Aware and Importance-Guided.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SAIDO_Generalizable Detection of AI-Generated via Scene-Aware and Importance-Guided.pdf",
+ "title": "SAIDO Generalizable Detection of AI-Generated via Scene-Aware and Importance-Guided",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "场景感知与重要性引导的动态优化框架提升AI生成图像检测泛化能力",
+ "innovations": [
+  "场景感知专家模块(SAEM)动态识别新场景并分配独立LoRA专家",
+  "重要性引导动态优化机制(IDOM)实现神经元级精细控制",
+  "无需回放缓冲区即可平衡模型塑性与稳定性"
+ ],
+ "method_framework": "结合VLLM场景识别与CLIP骨干网络，为不同场景分配独立LoRA专家，通过IDOM机制基于神经元重要性进行梯度投影优化，实现新旧知识的动态平衡。",
+ "experiment_framework": "9种生成模型的连续学习任务(Protocol 1)和6种新模型的开放世界评估(Protocol 2)，使用AA、AF、New.ACC等指标评估稳定性和泛化能力。",
+ "takeaways": [
+  "神经元级重要性分析可有效缓解灾难性遗忘",
+  "场景专家模块设计提升跨场景泛化能力",
+  "梯度投影策略在无回放场景下保持知识稳定性"
+ ],
+ "weaknesses": [
+  "依赖VLLM进行场景识别可能引入额外计算开销",
+  "未充分探讨不同场景分布对模型性能的影响",
+  "方法在极端低资源场景下的表现未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "AI生成检测与可靠性主线交织，场景专家设计具可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

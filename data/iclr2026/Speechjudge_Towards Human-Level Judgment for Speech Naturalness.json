@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Speechjudge_Towards Human-Level Judgment for Speech Naturalness.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Speechjudge_Towards Human-Level Judgment for Speech Naturalness.pdf",
+ "title": "SpeechJudge: Towards Human-Level Judgment for Speech Naturalness",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "构建语音自然度偏好数据集与生成式奖励模型，提升与人类判断一致性",
+ "innovations": [
+  "构建大规模语音人偏好语料SpeechJudge-Data(99K对，跨多TTS模型/风格/语言)，含可懂度与自然度偏好标注",
+  "建立SpeechJudge-Eval困难基准，揭示现有指标与音频LLM在自然度判断上与人类一致率不足70%",
+  "训练生成式奖励模型SpeechJudge-GRM(SFT带CoT理由+GRPO强化学习困难样本)，并可作奖励函数对齐语音生成模型"
+ ],
+ "method_framework": "先用多样零样本TTS模型在多风格/多语言上生成语音对并做人偏好标注；基于Qwen2.5-Omni-7B做两阶段后训练：带思维链理由的SFT，再用GRPO在困难样本上RL；得到的GRM输出语音自然度判断，推理时可扩展@10，并可作为语音生成模型后训练的奖励函数。",
+ "experiment_framework": "在SpeechJudge-Eval上以与人判断一致率/准确率为指标，对比经典Bradley-Terry奖励模型(72.7%)与现有音频LLM/Gemini-2.5-Flash(<70%)；报告GRM达77.2%(@10达79.4%)，并验证其作为奖励函数提升语音生成对齐的效果。",
+ "takeaways": [
+  "现有指标与音频LLM在语音自然度判断上距人类仍有明显差距(最好<70%)",
+  "生成式奖励模型(CoT-SFT+GRPO)比经典BT奖励模型更贴近人类偏好",
+  "该GRM既可作评测器，也可作奖励函数对齐语音生成模型"
+ ],
+ "weaknesses": [
+  "自然度判断的人类标注本身存在主观噪声，标注者间一致性上限未充分报告",
+  "GRM训练与评测可能同源偏置，在未见过的TTS架构/语言上的外推鲁棒性需验证",
+  "推理时扩展@10带来额外成本，与单样本判断的性价比权衡需量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "语音自然度评估与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

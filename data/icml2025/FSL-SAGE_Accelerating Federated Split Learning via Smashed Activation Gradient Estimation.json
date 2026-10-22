@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/FSL-SAGE_Accelerating Federated Split Learning via Smashed Activation Gradient Estimation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FSL-SAGE_Accelerating Federated Split Learning via Smashed Activation Gradient Estimation.pdf",
+ "title": "FSL-SAGE: Accelerating Federated Split Learning via Smashed Activation Gradient Estimation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "并行联邦拆分学习通过梯度估计减少通信延迟，但精度损失与初期收敛慢。",
+ "innovations": [
+  "提出smashed激活梯度估计方法，使客户端无需等待服务器反馈即可并行训练",
+  "结合联邦学习与拆分学习的优势：客户端内存友好+并行训练效率",
+  "系统验证了在大规模CV和NLP模型上的效果和通信成本节约"
+ ],
+ "method_framework": "传统拆分学习(SL)中客户端和服务器串行计算：客户端发送激活到服务器，服务器计算梯度后返回。这导致通信延迟大。FSL-SAGE：客户端本地估计smashed激活的梯度(无需服务器反馈)，从而并行执行所有客户端的前向和反向传播。梯度估计基于本地信息和历史服务器反馈统计。服务器聚合各客户端的更新。",
+ "experiment_framework": "在大规模计算机视觉和自然语言模型上验证。对比基线：纯FL、纯SL、其他并行SL方法。评估指标：训练准确率、通信开销、收敛速度。测试不同客户端数量和模型大小。",
+ "takeaways": [
+  "梯度估计使客户端并行训练成为可能，大幅减少端到端训练时间",
+  "方法在保持模型精度的同时显著降低通信成本",
+  "结合了FL和SL的优势，适合大模型的联邦训练场景"
+ ],
+ "weaknesses": [
+  "梯度估计引入近似误差，在某些任务上可能损失精度",
+  "估计质量依赖历史统计，训练初期收敛可能较慢",
+  "仅在标准benchmark上验证，真实跨机构联邦场景的适用性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.78,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

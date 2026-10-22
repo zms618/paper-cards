@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Residual TPP A Unified Lightweight Approach for Event Stream Data Analysis.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Residual TPP A Unified Lightweight Approach for Event Stream Data Analysis.pdf",
+ "title": "Residual TPP: A Unified Lightweight Approach for Event Stream Data Analysis",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.75
+ },
+ "one_line": "RED模块拆分事件流，Hawkes主干加神经残差，计算轻量但适用性受限",
+ "innovations": [
+  "提出残差事件分解(RED)：定义权重函数量化强度函数对事件特征的拟合程度，识别拟合差的‘残差事件’。",
+  "RED 为可插拔模块，可与任意 TPP 模型集成。",
+  "以 Hawkes 过程捕获数据自激励本性、再用任意神经 TPP 专责残差事件，兼顾可解释统计性质与神经表达力，并带来计算优势。"
+ ],
+ "method_framework": "先用带参数的 Hawkes 强度函数刻画事件流的自激励主干；通过 RED 权重函数找出强度函数拟合不佳的残差事件；再用一个轻量神经 TPP 专门对残差事件建模，二者叠加得到最终强度，从而在保持统计模型简洁性的同时补足神经模型对复杂依赖的表达。",
+ "experiment_framework": "在多领域事件流数据(金融、神经科学、社交媒体等)上对比经典统计 TPP 与各类神经 TPP；指标含 goodness-of-fit(拟合优度)与下一步事件时间/类型预测精度，并对比参数量与计算开销。",
+ "takeaways": [
+  "把事件拆为主干(Hawkes)与残差(神经)可兼得简洁性与表达力。",
+  "Residual TPP 在多领域取得 SOTA 拟合优度与预测性能。",
+  "相较纯神经 TPP 具备显著计算/轻量优势。"
+ ],
+ "weaknesses": [
+  "两阶段(主干+残差)的分解依赖 RED 权重函数的阈值/权重设计，其选择启发式较强。",
+  "Hawkes 主干假设自激励结构，对非自激励/抑制性事件流的适用性受限。",
+  "属事件流建模方法改进，与可靠性/可信AI/多模态推理主线关联较弱。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

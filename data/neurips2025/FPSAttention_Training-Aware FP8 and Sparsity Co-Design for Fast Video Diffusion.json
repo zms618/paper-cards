@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/FPSAttention_Training-Aware FP8 and Sparsity Co-Design for Fast Video Diffusion.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/FPSAttention_Training-Aware FP8 and Sparsity Co-Design for Fast Video Diffusion.pdf",
+ "title": "FPSAttention: Training-Aware FP8 and Sparsity Co-Design for Fast Video Diffusion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "FP8与稀疏注意力联合优化，实现视频扩散模型加速",
+ "innovations": [
+  "统一的3D tile-wise粒度同时支持量化和稀疏",
+  "去噪步感知的自适应策略",
+  "硬件友好的FlashAttention融合内核"
+ ],
+ "method_framework": "FPSAttention通过联合优化FP8量化和结构化稀疏，在3D注意力机制中实现训练感知的协同设计，结合去噪步自适应策略和硬件优化内核。",
+ "experiment_framework": "在Wan2.1的1.3B和14B模型上训练，VBench评估，对比PSNR、SSIM、LPIPS等指标，测试480p和720p分辨率下的加速效果。",
+ "takeaways": [
+  "扩散模型对不同去噪步的误差容忍度不同，可据此设计自适应压缩策略",
+  "tile-wise粒度与硬件架构对齐是高效实现的关键"
+ ],
+ "weaknesses": [
+  "仅关注视频生成任务，未探索其他扩散模型应用",
+  "训练过程需要大量计算资源，7天64节点训练"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "title": "Hyperband-based Bayesian Optimization for Black-box Prompt Selection",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.7
+ },
+ "one_line": "组合Hyperband与高斯过程做黑盒提示选择，提升样本效率但应用有限",
+ "innovations": [
+  "提出HbBoPs：用结构感知深度核高斯过程做代理模型，捕捉提示中模块化组件（指令+few-shot示例）的结构",
+  "引入Hyperband作为多保真调度器，跨保真级别自适应分配验证实例资源，提升查询效率",
+  "将指令与示例的嵌入作为提示内可组合模块，增强代理模型对下一步该评估哪个提示的预测能力"
+ ],
+ "method_framework": "针对黑盒提示选择（组合搜索空间大、无梯度、验证评估昂贵）：以结构化深度核GP建模提示嵌入作为代理，用Hyperband在不同保真（不同验证实例子集）上自适应投入资源，及早淘汰差提示，把昂贵的全保真评估留给有希望的候选。",
+ "experiment_framework": "在多个黑盒LLM下游任务（分类等）上，对比已有提示优化/选择方法，指标为达到目标性能所需验证查询数（样本效率）与最终任务准确率。",
+ "takeaways": [
+  "多保真Hyperband调度可显著减少黑盒提示搜索所需的验证实例数",
+  "把提示视作指令+示例的模块化组合并用嵌入结构建模，能提升GP代理的预测质量",
+  "方法适用于仅API可访问、无梯度的现实黑盒LLM场景"
+ ],
+ "weaknesses": [
+  "仅处理静态单提示选择，未涉及动态/推理时多提示或过程式优化",
+  "依赖预训练嵌入作为模块特征，嵌入质量与提示可组合性假设在开放式指令上未必成立",
+  "与主线索（可信/鲁棒推理、医学影像）关系较弱，属LLM超参优化工具"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Hyperband-based Bayesian Optimization for Black-box Prompt Selection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Hyperband-based Bayesian Optimization for Black-box Prompt Selection.pdf",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/NAF_Zero-Shot Feature Upsampling via Neighborhood Attention Filtering.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/NAF_Zero-Shot Feature Upsampling via Neighborhood Attention Filtering.pdf",
+ "title": "NAF Zero-Shot Feature Upsampling via Neighborhood Attention Filtering",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.6
+ },
+ "one_line": "NAF通过邻域过滤实现零样本特征上采样，但依赖输入图像限制性能。",
+ "innovations": [
+  "基于输入图像的VFM无关上采样架构",
+  "跨尺度邻域注意力机制与RoPE位置编码",
+  "频域系数预测实现自适应滤波",
+  "双分支引导编码器设计"
+ ],
+ "method_framework": "NAF使用双分支编码器处理输入图像，通过RoPE编码位置信息，结合跨尺度邻域注意力机制计算查询和键，实现零样本特征上采样，无需针对特定VFM重新训练。",
+ "experiment_framework": "数据集：Pascal VOC、NYUv2、COCO、ADE20K、Cityscapes；基线：FeatUp、JAFAR、AnyUp、双线性插值；指标：mIoU、δ1、J&F Mean",
+ "takeaways": [
+  "基于输入图像的引导可实现VFM无关的高质量特征上采样",
+  "局部注意力机制在保持性能的同时大幅提升效率",
+  "频域系数预测提供可解释性与灵活性"
+ ],
+ "weaknesses": [
+  "仅依赖输入图像可能丢失部分语义信息",
+  "未探索极端上采样比例(>16x)的性能",
+  "计算效率虽优于全注意力但仍有优化空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "特征上采样方法与可靠性主线无直接交点，仅属常规扎实工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

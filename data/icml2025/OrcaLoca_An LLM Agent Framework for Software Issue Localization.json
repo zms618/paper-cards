@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/OrcaLoca_An LLM Agent Framework for Software Issue Localization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/OrcaLoca_An LLM Agent Framework for Software Issue Localization.pdf",
+ "title": "OrcaLoca: An LLM Agent Framework for Software Issue Localization",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 5.9
+ },
+ "one_line": "LLM agent框架优化代码探索效率，提升SWE-bench解决率6.33pp",
+ "innovations": [
+  "优先级调度(priority-based scheduling)替代纯LLM引导的探索，减少冗余搜索",
+  "动作分解+相关性评分：将复杂探索动作分解为子步骤并按相关性排序",
+  "距离感知上下文剪枝：在大代码库中平衡上下文简洁性与搜索空间完整性"
+ ],
+ "method_framework": "LLM agent在代码库中导航定位issue对应代码；优先级调度决定探索顺序；将高层探索动作分解为带相关性评分的子动作；根据文件/函数间距离剪枝无关上下文，保持prompt简洁。",
+ "experiment_framework": "基准：SWE-bench Lite。基线：AutoCodeRover、SWE-agent等开源agent。指标：函数匹配率、文件匹配率、最终解决率。",
+ "takeaways": [
+  "LLM agent定位的瓶颈在于探索效率和上下文管理，而非LLM推理能力",
+  "优先级调度+动作分解显著减少无效探索，函数匹配率达65.33%",
+  "更好的定位直接提升最终patch解决率6.33pp"
+ ],
+ "weaknesses": [
+  "仅在SWE-bench Lite验证，大规模企业级代码库的泛化性未知",
+  "依赖代码库结构信息(文件/函数调用图)，对无类型语言或松散结构代码库效果存疑",
+  "与最新闭源agent(Claude等)的系统性对比未展开"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

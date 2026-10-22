@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Think then Embed Generative Context IM-PROVES Multimodal Embedding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Think then Embed Generative Context IM-PROVES Multimodal Embedding.pdf",
+ "title": "Think Then Embed: Generative Context Improves Multimodal Embedding",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "MLLM生成推理路径提升多模态嵌入，但效率与深度分析不足",
+ "innovations": [
+  "提出Think-Then-Embed框架，将MLLM的生成能力（而非仅作为编码器）用于通用多模态嵌入，先推理再嵌入",
+  "用高质量嵌入中心推理轨迹微调小型MLLM推理器，开源模型中比近期模型提升7%绝对值",
+  "探索将推理器和嵌入器整合为统一模型的策略，在不牺牲性能的前提下提升效率"
+ ],
+ "method_framework": "TTE框架包含推理器和嵌入器两部分：推理器MLLM针对复杂查询生成推理轨迹（解释查询意图），嵌入器基于原始查询和中间推理共同生成嵌入表示。显式推理步骤使模型能更细致地理解复杂多模态指令。可将推理器蒸馏到更小模型，或与嵌入器统一。",
+ "experiment_framework": "在MMEB-V2通用多模态嵌入基准上评估。基线包括现有UME模型和专有模型。指标为多任务平均检索/分类性能。对比不同规模推理器和统一模型方案。",
+ "takeaways": [
+  "MLLM的生成推理能力能显著提升复杂多模态指令下的嵌入质量",
+  "将大型推理器蒸馏到小型模型后，开源模型仍能达到SOTA水平",
+  "推理器+嵌入器的两阶段范式比纯编码范式更适合复杂指令"
+ ],
+ "weaknesses": [
+  "与主线（医学影像/多模态推理可靠性）关联中等，主要是多模态嵌入/检索任务",
+  "两阶段推理增加了推理延迟，实际部署效率未充分讨论",
+  "推理轨迹质量对嵌入结果的影响分析不够深入"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态嵌入质量提升，但未触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

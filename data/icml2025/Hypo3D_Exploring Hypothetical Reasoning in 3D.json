@@ -1,0 +1,37 @@
+{
+ "title": "Hypo3D: Exploring Hypothetical Reasoning in 3D",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "构建3D假设推理基准，评测模型在无实时场景下的想象能力",
+ "innovations": [
+  "提出假设性3D推理(Hypo3D)这一新设定：模型在无实时场景数据下，需先根据变化描述想象场景新状态再作答，弥补现有3D基准假设实时可访问的不现实前提",
+  "构建大规模3D VQA基准：700个室内场景、7727个上下文变化、14885个QA对",
+  "建立anchor-based世界坐标系，确保上下文变化与问答中方向词的全局参考一致"
+ ],
+ "method_framework": "将假设性3D推理形式化为3D VQA：给定原场景与一段变化描述，模型需在脑中想象变化后的场景状态，再回答关于新状态的问题。用anchor-based世界框架统一各场景的方向参考，避免坐标系不一致带来的歧义。",
+ "experiment_framework": "在Hypo3D上评测多个SOTA视觉-语言基础模型，考察其在假设变化场景下的3D VQA准确率，对比有/无实时场景访问的差异。",
+ "takeaways": [
+  "SOTA视觉-语言基础模型在假设变化后的场景中难以有效推理，假设性推理是明显短板",
+  "实时3D场景采集成本高昂，假设性推理能力对动态真实场景部署至关重要",
+  "anchor-based世界框架为方向词指代提供了一致参考，是可靠3D VQA的基础"
+ ],
+ "weaknesses": [
+  "仅室内场景700个，场景多样性与变化描述的自然度有限，外推到户外/大规模场景未知",
+  "基准为QA对形式，答案是否唯一、标注一致性未充分量化",
+  "论文主要是基准与评测，未提出相应改进方法，'如何提升假设性推理'缺乏机制性答案"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Hypo3D_Exploring Hypothetical Reasoning in 3D.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Hypo3D_Exploring Hypothetical Reasoning in 3D.pdf",
+ "raw_overall": 6.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

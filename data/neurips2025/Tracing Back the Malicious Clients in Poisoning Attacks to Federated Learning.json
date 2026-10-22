@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Tracing Back the Malicious Clients in Poisoning Attacks to Federated Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Tracing Back the Malicious Clients in Poisoning Attacks to Federated Learning.pdf",
+ "title": "Tracing Back the Malicious Clients in Poisoning Attacks to Federated Learning",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 8,
+  "overall": 7
+ },
+ "one_line": "FLForensics实现联邦学习投毒攻击溯源，但存储开销大且依赖非目标输入选择。",
+ "innovations": [
+  "首个联邦学习投毒攻击溯源方法FLForensics",
+  "双维度影响分数计算区分恶意客户端与类别I良性客户端",
+  "基于HDBSCAN和缩放欧氏距离的恶意客户端检测算法"
+ ],
+ "method_framework": "FLForensics包含两步：计算影响分数和检测恶意客户端。通过目标输入和非目标输入计算二维影响分数，利用HDBSCAN聚类并基于影响分数差距区分恶意客户端。",
+ "experiment_framework": "在5个基准数据集(CIFAR-10, Fashion-MNIST, MNIST, ImageNet-Fruits, Sentiment140)上评估，使用DACC/FPR/FNR指标，对比PF、FLForensics-G和FLForensics-A方法。",
+ "takeaways": [
+  "影响分数差距s′i−si可有效区分恶意客户端与类别I良性客户端",
+  "方法在非IID数据和多种攻击类型下表现鲁棒",
+  "训练阶段防御在高度非IID或大量恶意客户端情况下效果有限"
+ ],
+ "weaknesses": [
+  "需要存储检查点增加存储开销",
+  "非目标输入的选择可能影响性能",
+  "对违反形式化定义的攻击可能降低检测效果"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.6,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

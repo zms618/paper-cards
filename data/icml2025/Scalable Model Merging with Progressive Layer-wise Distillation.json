@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Scalable Model Merging with Progressive Layer-wise Distillation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Scalable Model Merging with Progressive Layer-wise Distillation.pdf",
+ "title": "Scalable Model Merging with Progressive Layer-wise Distillation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "理论证明无数据合并缺陷，提出逐层蒸馏合并法，需领域数据且成本未量化。",
+ "innovations": [
+  "从理论上证明data-agnostic模型合并算法最坏情况性能可任意差，指出领域特定数据对合并的必要性",
+  "建立模型合并与蒸馏的联系，提出Progressive Layer-wise Distillation(ProDistill)少样本合并算法",
+  "反惯例地表明逐层teacher-student蒸馏既提升可扩展性又改善合并性能"
+ ],
+ "method_framework": "基于任务向量/权重平均的模型合并框架；引入少量领域数据，以逐层渐进的teacher-student蒸馏方式把多个微调模型的能力蒸馏进单个学生模型，逐层训练而非整网联合训练，从而降低显存开销并提升可扩展性与合并效果。",
+ "experiment_framework": "视觉与NLU任务上与现有few-shot模型合并方法(TIES、任务向量算术等)对比；指标为各任务归一化性能，ProDistill相对提升最高6.14%(视觉)与6.61%(NLU)；并扩展到10B+参数模型验证可扩展性。",
+ "takeaways": [
+  "无数据合并存在任意坏的最坏情形，少样本领域数据对高质量合并不可或缺",
+  "逐层蒸馏不仅不伤性能，反而同时提升可扩展性与合并表现",
+  "ProDistill在近所有任务上优于现有少样本合并方法，并可扩展到10B以上规模"
+ ],
+ "weaknesses": [
+  "仍需少量领域数据，与真正零样本/无数据合并目标存在差距",
+  "逐层蒸馏引入额外蒸馏训练开销，相对纯权重平均方法的端到端成本未充分量化",
+  "属模型合并/知识整合，与可靠性/鲁棒性及医学影像、多模态推理主线无直接关联"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.65,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

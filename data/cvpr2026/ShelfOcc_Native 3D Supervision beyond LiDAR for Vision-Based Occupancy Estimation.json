@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/ShelfOcc_Native 3D Supervision beyond LiDAR for Vision-Based Occupancy Estimation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ShelfOcc_Native 3D Supervision beyond LiDAR for Vision-Based Occupancy Estimation.pdf",
+ "title": "ShelfOcc Native 3D Supervision beyond LiDAR for Vision-Based Occupancy Estimation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "纯视觉3D占用估计，用基础模型生成伪标签",
+ "innovations": [
+  "原生3D监督范式，避免2D渲染的深度出血问题",
+  "静态-动态场景分离与累积的伪标签生成管道",
+  "仅使用图像输入即可生成高保真3D语义体素伪标签"
+ ],
+ "method_framework": "结合MapAnything和GroundedSAM，分离静态与动态场景，过滤并累积静态几何，逐帧引入动态对象，生成高质量3D体素伪标签",
+ "experiment_framework": "Occ3D-nuScenes数据集，对比SelfOcc、OccNeRF等基线，使用mIoU和IoU指标",
+ "takeaways": [
+  "数据中心方法可显著提升性能，无需修改网络架构",
+  "静态-动态分离策略有效解决动态场景伪标签生成问题"
+ ],
+ "weaknesses": [
+  "依赖基础模型的准确性，错误可能累积",
+  "未展示在极端天气或低光照条件下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视觉占用估计与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Transformers Learn Latent Mixture Models IN-CONTEXT via Mirror Descent.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Transformers Learn Latent Mixture Models IN-CONTEXT via Mirror Descent.pdf",
+ "title": "Transformers Learn Latent Mixture Models In-Context via Mirror Descent",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.6
+ },
+ "one_line": "理论证明Transformer实现镜像下降，但实验局限于合成数据",
+ "innovations": [
+  "将token重要性估计形式化为上下文学习问题，引入混合转移分布框架，隐变量决定过去token对下一步的影响",
+  "给出三层Transformer的显式构造，精确实现一步镜像下降来学习混合权重",
+  "证明所得估计器是贝叶斯最优预测器的一阶近似，并通过实验验证从零训练的Transformer学到的解与理论一致"
+ ],
+ "method_framework": "在混合转移分布模型中，每个序列由一个隐变量（决定因果结构）生成，该隐变量的分布由不可观测的混合权重参数化。Transformer需要从上下文中推断这些混合权重。本文证明三层Transformer可精确实现一步镜像下降：注意力层对应镜像下降的对偶更新，MLP对应映射回原空间。更深的模型实现多步镜像下降。",
+ "experiment_framework": "在合成的混合转移分布数据上，从零训练不同深度的Transformer，对比预测分布、注意力模式和学习到的转移矩阵与理论构造的匹配程度；验证更深模型等价于多步镜像下降。",
+ "takeaways": [
+  "Transformer的上下文学习可解释为在隐变量模型上执行镜像下降优化",
+  "三层Transformer的显式构造为理解注意力机制提供了机制性见解",
+  "从零训练的Transformer自发收敛到与理论预测一致的解，验证了构造的可学习性"
+ ],
+ "weaknesses": [
+  "仅在理想化的混合转移分布合成数据上验证，真实语言数据的复杂性远超该模型",
+  "显式构造仅针对一步镜像下降，多步和深层模型的理论分析不够严格",
+  "混合转移分布模型是否能捕捉真实语言的动态因果结构存疑"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "理论证明Transformer实现镜像下降，但实验局限于合成数据",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

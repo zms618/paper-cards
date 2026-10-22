@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Understanding Synthetic Context Extension via Retrieval Heads.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Understanding Synthetic Context Extension via Retrieval Heads.pdf",
+ "title": "Understanding Synthetic Context Extension via Retrieval Heads",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.0
+ },
+ "one_line": "检索头视角解释合成上下文扩展机制，但因果性验证不足",
+ "innovations": [
+  "用retrieval heads视角解释合成上下文扩展的作用机理",
+  "系统改变needle真实性与haystack多样性(LLM合成文档vs模板关系vs符号数据集)",
+  "发现差的合成数据学到的检索头仍与真实数据检索头高重叠"
+ ],
+ "method_framework": "在三类长上下文检索推理任务上，分别用不同真实性/多样性的合成长上下文数据微调；定位retrieval heads并比较合成数据vs真实数据学到的检索头在注意力/检索分数上的重叠，解释合成扩展为何有效。",
+ "experiment_framework": "在MuSiQue等长上下文QA上评测，对比LLM合成文档、模板关系、符号数据集三种合成设定与真实数据微调，指标为下游任务准确率与检索头重叠度。",
+ "takeaways": [
+  "合成上下文扩展主要通过塑造retrieval heads赋予长上下文能力",
+  "即使合成数据下游表现较差，其学到的检索头仍与真实数据高重叠",
+  "needle真实性与haystack多样性都影响迁移效果"
+ ],
+ "weaknesses": [
+  "检索头重叠为相关证据，因果性仍需更强干预验证",
+  "分析基于特定模型规模与检索头定义，跨模型普适性未证",
+  "合成数据下游仍逊于真实数据，扩展非完全替代"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

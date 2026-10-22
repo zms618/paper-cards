@@ -1,0 +1,41 @@
+{
+ "title": "Uncertainty As Feature Gaps: Epistemic Uncertainty Quantification of LLMs in Contextual Question-Answering",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.1
+ },
+ "one_line": "将LLM不确定性量化为特征差距，用少量标注集成三特征提升UQ性能。",
+ "innovations": [
+  "提出任务无关的 token 级不确定性度量(模型分布与未知真分布的交叉熵)，并分解出认知分量，用完美提示的理想化模型近似真分布。",
+  "推导认知不确定性上界，并将其解释为给定模型相对理想模型隐层表示的语义特征差距(feature gaps)，可分解为线性无关特征之和。",
+  "针对上下文问答假设并用 top-down 可解释性提取三特征：上下文依赖(用上下文而非参数记忆)、上下文理解(抽取相关信息)、诚实性(避免故意说谎)，少量标注集成成稳健 UQ 分数。"
+ ],
+ "method_framework": "以交叉熵定义总不确定性并分解认知/偶然分量；用理想提示模型近似真分布，证明认知不确定度上界≈给定模型与理想模型最后层隐状态距离；在上下文问答中用 top-down 探针仅靠少量标注抽取上下文依赖、上下文理解、诚实性三特征，集成得到不确定性分。",
+ "experiment_framework": "在多个上下文/检索增强 QA 基准上，分分布内(ID)与分布外(OOD)设置，与无监督(免采样/采样式)及有监督 UQ SOTA 对比，指标为 PRR 等 UQ 检测指标，并报告推理开销。",
+ "takeaways": [
+  "既有 UQ 多在闭卷事实 QA 上评估，忽略了 RAG 时代的上下文 QA；本文给出理论化而非启发式的 UQ。",
+  "认知不确定性可由隐层相对理想模型的特征差距近似，且能拆成可探针的可解释特征。",
+  "仅用少量标注集成三特征，即可在 ID/OOD 上大幅超过 SOTA(最高 +13 PRR)且开销可忽略。"
+ ],
+ "weaknesses": [
+  "依赖一个理想化理想模型作为真分布代理，该代理本身的可获得性与近似质量会影响上界紧度。",
+  "三特征的选取与探针仍需少量标注，并非完全免标注；特征定义较定性，可复现性依赖探针实现。",
+  "仅在 QA/RAG 场景验证，未直接在医学影像或多模态推理上落地；完整消融与各特征贡献分解未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Uncertainty As Feature Gaps Epistemic Uncertainty Quantification Of LLMS In Contextual Question-Answering.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Uncertainty As Feature Gaps Epistemic Uncertainty Quantification Of LLMS In Contextual Question-Answering.pdf",
+ "raw_overall": 7.8,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "LLM不确定性量化与可靠性主线交点，方法设计可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

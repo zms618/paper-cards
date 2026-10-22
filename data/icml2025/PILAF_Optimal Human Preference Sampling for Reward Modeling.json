@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/PILAF_Optimal Human Preference Sampling for Reward Modeling.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/PILAF_Optimal Human Preference Sampling for Reward Modeling.pdf",
+ "title": "PILAF: Optimal Human Preference Sampling for Reward Modeling",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "理论采样策略解决RLHF目标不一致，但计算成本高且依赖假设",
+ "innovations": [
+  "提出T-PILAF理论采样方案，实现奖励模型梯度与真实目标梯度对齐",
+  "设计PILAF算法，通过策略插值平衡探索与利用",
+  "从优化和统计两个角度证明方法的理论最优性"
+ ],
+ "method_framework": "PILAF通过在当前策略与参考策略间插值生成响应对，以50%概率从当前策略采样，50%概率从乐观策略π+θ和保守策略π-θ采样，使偏好学习与真实价值优化对齐。",
+ "experiment_framework": "在HH-RLHF数据集上评估Llama-3.1-8B模型，对比Vanilla、Best-of-N、Hybrid等方法，使用Skywork-Llama-3.1-8B作为代理奖励模型模拟人类反馈。",
+ "takeaways": [
+  "策略采样设计对RLHF性能有决定性影响",
+  "理论指导的采样方法可显著提升数据效率和模型性能"
+ ],
+ "weaknesses": [
+  "计算成本增加50%，需权衡收益与开销",
+  "理论分析依赖于Bradley-Terry模型假设，实际人类偏好可能更复杂"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

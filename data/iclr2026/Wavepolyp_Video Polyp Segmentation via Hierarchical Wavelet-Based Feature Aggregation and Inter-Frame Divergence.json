@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Wavepolyp_Video Polyp Segmentation via Hierarchical Wavelet-Based Feature Aggregation and Inter-Frame Divergence.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Wavepolyp_Video Polyp Segmentation via Hierarchical Wavelet-Based Feature Aggregation and Inter-Frame Divergence.pdf",
+ "title": "WavePolyp: Video Polyp Segmentation via Hierarchical Wavelet-Based Feature Aggregation and Inter-Frame Divergence Perception",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "小波特征聚合+帧间差异模块提升结肠镜视频息肉分割",
+ "innovations": [
+  "提出分层小波特征聚合（HWFA）模块：利用小波变换分解高低频特征，挖掘并放大息肉与背景的判别信息，解决息肉高伪装问题",
+  "提出帧间差异感知（IDP）模块：通过时间差异感知机制捕捉帧间息肉变化，在精准跟踪的同时缓解帧间剧烈变化导致的时间不一致性",
+  "在SUN-SEG和CVC-612两个视频息肉分割基准上均超越现有SOTA方法"
+ ],
+ "method_framework": "双模块分割网络：(1)HWFA——对每帧特征进行小波变换分解为高低频子带，分层聚合后得到精炼的空间表征，增强对伪装息肉的识别能力；(2)IDP——建模相邻帧之间的息肉位置、形状、大小差异，在时序维度上实现一致且准确的息肉跟踪。",
+ "experiment_framework": "在SUN-SEG和CVC-612两个公开视频息肉分割数据集上评估。对比基线包括2D/3D混合CNN、归一化注意力等现有VPS方法。指标为Dice、IoU等标准分割指标及实时性能。",
+ "takeaways": [
+  "小波变换的多尺度分解特性有助于提取息肉与正常组织之间的细微差异，提升高伪装息肉的分割精度",
+  "帧间差异感知比简单的时间平滑更有效，能够适应结肠镜视频中息肉大小/形状/位置的剧烈变化",
+  "视频息肉分割需要同时解决帧内判别力和帧间一致性两个核心难题"
+ ],
+ "weaknesses": [
+  "仅在两个公开数据集上验证，不同品牌内镜、不同患者群体的泛化性未充分测试",
+  "小波变换的计算开销对实时临床部署的影响未详细分析",
+  "仅评估传统分割指标，临床层面的漏诊率/误诊率等关键指标未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.55,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像落地扎实但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

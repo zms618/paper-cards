@@ -1,0 +1,41 @@
+{
+ "title": "SFBD-OMNI: Bridge Models for Lossy Measurement Restoration with Limited Clean Samples",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "黑盒测量恢复的桥模型，但缺乏具体数值提升与可扩展性验证",
+ "innovations": [
+  "将含噪样本丰富、干净样本稀缺下的分布恢复建模为单侧熵最优传输问题并用EM式算法求解",
+  "给出可识别性判据：判断逐样本信息损失下真值分布是否可恢复，以及少量干净样本如何使其近似可恢复",
+  "提出SFBD-OMNI桥模型框架，将SFBD从高斯损坏推广到任意黑盒测量模型"
+ ],
+ "method_framework": "在损坏过程可作黑盒生成器时，把损坏分布到干净分布的恢复写成单侧熵最优传输，用类EM算法迭代逼近；以桥模型(随机前向后向)实现任意测量算子下的映射；理论上刻画逐样本损失下的可恢复条件。",
+ "experiment_framework": "在多个基准数据集与多种测量设置(含医学影像低剂量X射线噪声、天文湍流等退化)上评测定性与定量恢复；对比含纯损坏样本训练的基线，报告显著改进。",
+ "takeaways": [
+  "在有损测量下真值分布并非总可恢复，少量干净样本可打破不可恢复性",
+  "单侧熵最优传输框架可统一处理任意黑盒测量而非仅限高斯",
+  "桥模型能在干净样本稀缺时从大量含噪样本恢复干净分布"
+ ],
+ "weaknesses": [
+  "前9页未见具体数值提升幅度表与 ablation",
+  "依赖损坏过程作为已知黑盒生成器，实际医学退化未必精确已知",
+  "EM式算法的计算开销与收敛性在高维图像上的可扩展性讨论有限"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/SFBD-OMNI_Bridge Models for Lossy Measure.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SFBD-OMNI_Bridge Models for Lossy Measure.pdf",
+ "raw_overall": 7.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像退化恢复与可靠性主线交点，桥模型设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

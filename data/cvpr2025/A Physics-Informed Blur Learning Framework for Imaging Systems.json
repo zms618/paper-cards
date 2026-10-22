@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/A Physics-Informed Blur Learning Framework for Imaging Systems.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Physics-Informed Blur Learning Framework for Imaging Systems.pdf",
+ "title": "A Physics-Informed Blur Learning Framework for Imaging Systems",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 6.0,
+  "overall": 5.6
+ },
+ "one_line": "波前基替换与两阶段优化估计成像系统PSF",
+ "innovations": [
+  "把 Seidel 像差基替换为每个基只影响单一 SFR 方向的波前基 W=ΣW_pqr·ρ^p(sinθ)^q(cosθ)^r（Q 为 9 个三元组），从基础上解除多方向 SFR 同时拟合时的梯度冲突",
+  "用 MLP 输出波前系数作代理模型，配合从中心到边缘的课程学习（视场区间 ΔH∈(0.03,0.1) 逐步外推），把病态逆问题拆成窄视场逐段求解",
+  "两阶段估计：先拟合单色像差匹配实测 SFR 曲线，再用第二个 MLP 预测通道间 PSF 位移以匹配实测色差面积差 ΔCA"
+ ],
+ "method_framework": "标定棋盘图测 SFR→MLP GΘ1 输出波前系数→经傅里叶变换得 PSF→MTF→SFR 与实测比对优化→GΘ2 预测通道位移匹配色差面积差",
+ "experiment_framework": "Zemax 仿真镜头(#63762/#89752)棋盘图测 PSF 精度(PSNR/SSIM±)；Flickr2K 合成模糊训练 MPRNet/Restormer/FFTFormer 去模糊；实拍用 MUSIQ/MANIQA",
+ "takeaways": [
+  "把“每个基只影响一个观测方向”作为基函数设计约束来消除梯度冲突，可迁移到任何物理参数反演问题",
+  "用工业界已有的 SFR 测量作为监督信号，绕开镜头设计文件依赖，是低成本通用标定的可行路径"
+ ],
+ "weaknesses": [
+  "基线只比 Degradation Transfer 与 Fast Two-step 两家，未与依赖镜头设计文件的光学仿真方法对照，“免镜头先验”的核心卖点缺少直接对照",
+  "Table 1 中 H=0 配置下本文 PSNR 反而低于 Fast Two-step（#63762: 41.981 vs 42.240；#89752: 42.073 vs 43.511），论文未解释这一不利数据",
+  "正文 9 页内消融表（Tab. 2）被截断，课程学习区间与波前基集合 Q 的选取依据无法核实；去模糊主表仅报单次结果、无方差"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "成像系统标定方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

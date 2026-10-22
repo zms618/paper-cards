@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Picabench_How Far are We from PHYSI-Cally Realistic EDITING.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Picabench_How Far are We from PHYSI-Cally Realistic EDITING.pdf",
+ "title": "PICABench: How Far are We from Physically Realistic Image Editing?",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "构建物理真实感评测基准，诊断编辑模型缺陷，但方案创新有限。",
+ "innovations": [
+  "提出PICABench：跨光学、力学、状态转移八个子维度系统评测常见编辑操作(add/remove/属性变更)的物理真实感。",
+  "提出PICAEval：基于逐样本区域级人工标注与问题、以VLM-as-a-judge的可靠评测协议。",
+  "探索从视频学习物理的解决方案并构建PICA-100K训练数据集。"
+ ],
+ "method_framework": "针对现有编辑模型只关注指令完成而忽略阴影/反射/物体交互等物理效应的问题，构建覆盖八类物理子维度的评测基准；用区域级人工标注构造问题集，以VLM作为裁判按区域判断物理一致性；并从视频中自动挖掘物理交互样本构建PICA-100K用于训练更物理一致的编辑模型。",
+ "experiment_framework": "在主流指令式图像编辑模型上评测八维物理真实感；以VLM-as-judge配合人工标注做指标；结论是各模型在物理真实感上仍差距明显、提升空间大。",
+ "takeaways": [
+  "现有图像编辑模型指令完成度高但物理真实感普遍不足（移除物体后阴影/反射残留等）。",
+  "PICAEval的VLM评测经区域级人工标注校准，可作为可靠的物理真实感指标。",
+  "从视频学习物理(PICA-100K)是迈向物理一致编辑的有效方向。"
+ ],
+ "weaknesses": [
+  "VLM-as-judge本身可能存在判断偏差，虽有人工标注校准但大规模评测的一致性仍需进一步验证。",
+  "物理真实感八维度的覆盖仍以常见物体交互为主，复杂场景(流体/布料/多体碰撞)覆盖有限。",
+  "论文主要做基准与诊断，所提PICA-100K训练方案的定量提升幅度在摘要前9页内未充分展开。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "图像编辑物理真实感评测，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

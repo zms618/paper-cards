@@ -1,0 +1,37 @@
+{
+ "key": "iclr2026/Mesh Memory-as-State-Highways for Recursive Transformers.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mesh Memory-as-State-Highways for Recursive Transformers.pdf",
+ "title": "MeSH: Memory-as-State-Highways for Recursive Transformers",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "elevance": 4,
+  "evidence": 6,
+  "overall": 5.5
+ },
+ "one_line": "外置记忆缓冲与路由器解决递归transformer计算瓶颈，但偏离可靠性主线",
+ "innovations": [
+  "诊断递归transformer在等算力下落后的两大瓶颈：无差别计算与信息过载",
+  "提出Memory-as-State-Highways(MeSH)把状态管理外置到显式记忆缓冲",
+  "用轻量路由器动态跨迭代分化计算，诱导功能特化"
+ ],
+ "method_framework": "把隐式单隐藏态中的状态管理外置到显式记忆缓冲，分离长驻与瞬态信息；用轻量路由器在每次迭代动态选择计算路径，使不同迭代承担不同功能，破解每轮计算模式雷同的问题。",
+ "experiment_framework": "在Pythia套件(160M-6.9B)评测，对比递归基线与更大非递归模型；1.4B规模下以少33%非嵌入参数超过更大非递归对手，下游平均准确率+1.06%。",
+ "takeaways": [
+  "外置记忆缓冲可分离长驻与瞬态信息",
+  "轻量路由使递归迭代承担不同功能，弥合与非递归模型差距",
+  "递归架构在更少参数下可超过更大非递归模型"
+ ],
+ "weaknesses": [
+  "relevance偏离主线，属模型架构而非可靠性或医疗影像",
+  "增益为平均+1.06%，在更大规模/多模态是否保持未验证",
+  "路由器与记忆缓冲的工程开销与推理延迟权衡未报告"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.55,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

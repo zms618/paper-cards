@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/3DGS-LM_Faster Gaussian-Splatting Optimization with Levenberg-Marquardt.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/3DGS-LM_Faster Gaussian-Splatting Optimization with Levenberg-Marquardt.pdf",
+ "title": "3DGS-LM: Faster Gaussian-Splatting Optimization with Levenberg-Marquardt",
+ "scores": {
+  "novelty": 4.5,
+  "depth": 5.0,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 4.4
+ },
+ "one_line": "用LM/PCG替换3DGS优化器，提速20%但显存暴涨5-8倍",
+ "innovations": [
+  "把 3DGS 的 L1+SSIM 渲染损失（λ1=0.8/λ2=0.2）逐项开平方根改写成残差平方和 E(x)（Eq.3），用 LM 解正规方程 (JᵀJ + λ_reg·diag(JᵀJ))Δ = −JᵀF（Eq.4），并采用两阶段：先用 ADAM 跑到 densification 结束得初始化，再 LM 收尾（LM 从 SfM 初值直接起步反而更慢，Fig.4）",
+  "cache-driven 并行化：把 3DGS 原有的 per-pixel（沿射线回溯全部 splat）改成 per-pixel-per-splat，buildCache 一次性缓存 T_s、∂c/∂α_s、∂c/∂c_s 等 α-blending 中间量并按 Gaussian 重排序以获得合并访存，PCG 内只从缓存读做 Jp 与 Jᵀu，避免同一批中间态被重复算 up to 18 次",
+  "大场景分图批：每次 LM 迭代在 n_b 个子集各解一次正规方程，用 PCG 预条件子 M_i = diag(J_iᵀJ_i) 作权重做加权均值合并（Eq.8，权重即各高斯对该批图像渲染色的贡献），把 cache 显存限制在单批内；行搜索在 30% 子集估步长 γ，并按 ρ（Eq.6）自适应升降 λ_reg"
+ ],
+ "method_framework": "ADAM 跑 20K 步完成 densification 得初值 → 每 LM 迭代：3–4 批图像建梯度缓存并按 Gaussian 排序 → PCG(≤8 次) 解正规方程得 Δ → 30% 子集行搜索估 γ → 更新高斯参数 → 5–10 个 LM 迭代收尾，全程自定义 CUDA kernel 做 J/Jᵀ",
+ "experiment_framework": "Tanks&Temples / Deep Blending / MipNeRF360 共 13 场景，同一 A100 上比 ADAM 版 3DGS、gsplat、DISTWAR、Taming-3DGS；指标 PSNR/SSIM/LPIPS + 优化耗时 + 峰值显存；消融含 L2 vs L1+SSIM、每批图像数、ADAM 初始化迭代数（正文截止于 Table 1）",
+ "takeaways": [
+  "仅换优化器（ADAM→LM/PCG）就给 3DGS 训练带来平均 20% 提速，同时诚实报告显存从 6–11GB 涨到 53GB 的代价，这种 speed/mem 权衡披露比隐藏更有参考价值",
+  "用 ρ 自适应升降 LM 正则（成功则 λ_reg←1−(2ρ−1)³、失败回滚并倍增）＋按预条件子加权的分批梯度合并，是把经典非线性最小二乘搬到 over-parameterized 大规模渲染的稳妥工程化路径"
+ ],
+ "weaknesses": [
+  "显存代价只用一句「runtime-memory tradeoff」带过：53GB 对基线 6–11GB 是 5–8 倍而收益仅平均 20% 训练时间；高分辨率/超大规模场景是否仍可运行未验证，λ_reg 区间按数据集分别取 [1e−4,1e4] 与 [1e−4,1e−2] 也无选择依据",
+  "最有说服力的证据（Fig.1 收敛曲线、Fig.4 初始化迭代数）是图而非表，13 场景逐场景数值与方差只在补充材料；PSNR 差异全在小数点后两位（如 27.40→27.39），「相同质量」的 claim 无统计支撑，只有耗时差是硬的",
+  "方法外壳是把 CERES 式 LM 搬到 3DGS，真正的增量（cache 结构、CUDA kernel 切分）属系统实现而非方法学；且 LM 只在 5–10 个迭代内介入、第一阶段 ADAM 仍占绝大部分耗时，20% 提速上限受制于这个两阶段切分，正文未给最优切分点消融"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "纯3DGS优化加速工程，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

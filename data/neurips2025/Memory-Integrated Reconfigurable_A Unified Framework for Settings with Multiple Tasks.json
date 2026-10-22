@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Memory-Integrated Reconfigurable_A Unified Framework for Settings with Multiple Tasks.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Memory-Integrated Reconfigurable_A Unified Framework for Settings with Multiple Tasks.pdf",
+ "title": "Memory-Integrated Reconfigurable Adapters: A Unified Framework for Settings with Multiple Tasks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "Hopfield网络与LoRA结合的多任务适配器，计算开销大且未验证记忆容量极限。",
+ "innovations": [
+  "将Hopfield网络集成到ViT每一层实现动态键对齐",
+  "使用关联记忆存储和检索任务特定适配器",
+  "统一框架同时处理DG、CIL和DIL场景"
+ ],
+ "method_framework": "MIRA在冻结主干网络上添加LoRA适配器，存储于关联记忆中，通过后学习的键动态检索任务特定适配器组合，实现快速任务切换和知识保留。",
+ "experiment_framework": "在iDigits、CORe50、DomainNet等基准上评估CIL/DIL性能，在PACS、VLCS等评估DG性能，对比EWC、LwF、ICON等基线。",
+ "takeaways": [
+  "关联记忆可作为任务特定参数的有效存储和检索机制",
+  "两阶段训练策略(适配器训练+键优化)能有效解决灾难性遗忘"
+ ],
+ "weaknesses": [
+  "计算复杂度随任务数量线性增长",
+  "未探讨关联记忆容量极限对性能的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

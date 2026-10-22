@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Rethinking Visual Autoregressive Models via Generator-Tokenizer Consistency Regularization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rethinking Visual Autoregressive Models via Generator-Tokenizer Consistency Regularization.pdf",
+ "title": "reAR: Rethinking Visual Autoregressive Models via Generator-Tokenizer Consistency Regularization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "简单正则提升视觉AR生成质量，但缺乏机制分析与迁移验证",
+ "innovations": [
+  "从generator-tokenizer不一致角度定位视觉AR瓶颈：AR生成的token未必能被tokenizer良好解码，而非以往归因的tokenizer或光栅化顺序。",
+  "提出简单的token-wise正则：预测下一token时，causal transformer还要在含噪上下文下恢复当前token视觉嵌入并预测目标token嵌入。",
+  "无需改动tokenizer、生成顺序、推理管线或外部模型，即显著缩小视觉AR与扩散模型的差距。"
+ ],
+ "method_framework": "在标准视觉AR训练目标之外，增加一条一致性辅助任务：让预测token对应的视觉嵌入与tokenizer重构的嵌入在含噪上下文下对齐，迫使AR生成的token落在tokenizer可良好解码的区域。",
+ "experiment_framework": "ImageNet类条件生成；用标准光栅化tokenizer与TiTok、AliTok等先进tokenizer；对比MAR、VAR等范式；指标gFID/IS（gFID 3.02→1.86，IS 316.9，先进tokenizer下177M达gFID 1.42匹配675M扩散）。",
+ "takeaways": [
+  "视觉AR落后于扩散模型的关键不在tokenizer或顺序，而在生成器- tokenizer的解码一致性。",
+  "一个轻量的嵌入一致性正则即可在不改变推理管线的前提下大幅提升视觉AR生成质量。"
+ ],
+ "weaknesses": [
+  "与可靠性/医学影像/多模态推理主线无关，属视觉生成。",
+  "正文前9页文本提取较短，具体消融与大规模对比表是否完整需以后续页为准。",
+  "增益主要在ImageNet类条件生成，向高分辨率/文本条件生成的迁移未在前9页展示。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.68,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "纯视觉生成工作，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

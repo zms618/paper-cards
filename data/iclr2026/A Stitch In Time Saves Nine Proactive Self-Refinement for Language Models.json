@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/A Stitch In Time Saves Nine Proactive Self-Refinement for Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Stitch In Time Saves Nine Proactive Self-Refinement for Language Models.pdf",
+ "title": "A Stitch In Time Saves Nine: Proactive SELF-REFINEMENT for Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 7.0,
+  "overall": 6.6
+ },
+ "one_line": "强化学习驱动的主动自我精炼，减少token消耗并提升准确性。",
+ "innovations": [
+  "主动自我精炼(PASR)框架，在生成过程中而非事后进行精炼",
+  "基于比较的奖励机制，鼓励及时、必要且上下文适当的精炼",
+  "结构化输出格式，明确区分推理、精炼和最终响应阶段"
+ ],
+ "method_framework": "PASR使用强化学习(GRPO算法)训练模型，通过结构化输出格式( reasoning, <refine>, <answer>标签)实现生成过程中的主动精炼决策。",
+ "experiment_framework": "10个任务数据集(MMLU, DROP, GSM8K等)，Qwen2.5-7B和Qwen3-8B模型，对比多种基线方法(Self-Refine, PTR等)，使用准确率和token消耗作为指标。",
+ "takeaways": [
+  "主动精炼机制显著减少token消耗(41.6%)同时提高准确性(8.2%)",
+  "基于比较的奖励机制可有效引导模型进行必要且适当的精炼"
+ ],
+ "weaknesses": [
+  "仅在通用指令数据上训练，在特定领域任务上表现可能受限",
+  "对基础模型能力有依赖，较弱模型可能无法充分利用精炼机制"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "主动自我精炼提升可靠性，但未明确触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

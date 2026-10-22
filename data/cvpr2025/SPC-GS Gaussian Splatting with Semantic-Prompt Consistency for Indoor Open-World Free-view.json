@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/SPC-GS Gaussian Splatting with Semantic-Prompt Consistency for Indoor Open-World Free-view.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/SPC-GS Gaussian Splatting with Semantic-Prompt Consistency for Indoor Open-World Free-view.pdf",
+ "title": "SPC-GS Gaussian Splatting with Semantic-Prompt Consistency for Indoor Open-World Free-view",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "结合视频生成与SAM2提升稀疏室内场景重建与分割",
+ "innovations": [
+  "场景布局高斯初始化(SGI)解决稀疏分布问题",
+  "语义提示一致性(SPC)正则化缓解视图监督不足",
+  "结合视频生成模型和SAM2增强语义一致性约束"
+ ],
+ "method_framework": "SPC-GS结合场景布局高斯初始化和语义提示一致性正则化，通过视频生成模型创建相邻视图，生成密集场景布局点，并利用SAM2建立区域对应关系，实现2D和3D语义一致性约束。",
+ "experiment_framework": "在Replica和ScanNet数据集上评估，使用12张稀疏输入图像，比较PSNR、SSIM、LPIPS、mIoU和mAcc指标，与3DOVS、Feature 3DGS、LangSplat等方法对比。",
+ "takeaways": [
+  "利用视频生成模型增强SfM点密度提升初始化质量",
+  "SAM2区域对应建立可有效增强稀疏视图下的语义一致性",
+  "边界腐蚀技术可提高3D约束的可靠性"
+ ],
+ "weaknesses": [
+  "依赖视频生成模型的质量，可能引入误差",
+  "计算复杂度较高，需要额外的SAM2处理",
+  "仅针对室内场景，泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "室内场景重建与分割，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

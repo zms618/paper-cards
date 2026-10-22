@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Sortformer_A Novel Approach for Permutation-Resolved Speaker Supervision in Speech-to-Text Systems.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Sortformer_A Novel Approach for Permutation-Resolved Speaker Supervision in Speech-to-Text Systems.pdf",
+ "title": "Sortformer: A Novel Approach for Permutation-Resolved Speaker Supervision in Speech-to-Text Systems",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "Sortformer用时间排序损失和正弦核嵌入解决多人语音转写中的说话人置换问题",
+ "innovations": [
+  "在置换不变损失(PIL)之外引入Sort Loss，按语音段到达时间顺序独立或协同地解决置换问题",
+  "提出精简的多人STT架构，用正弦核函数把说话人标签嵌入编码器，桥接时间戳与token做说话人监督",
+  "Sort Loss提升说话人分离(diarization)，且Sortformer的说话人监督改善多人转写精度"
+ ],
+ "method_framework": "encoder式说话人分离模型：以Sort Loss按语音段到达顺序为各段分配固定说话人槽位从而消解置换歧义；在STT编码器中用正弦核把说话人标签作为条件嵌入，使转写输出同时带上说话人标注。",
+ "experiment_framework": "在多人语音转写/说话人分离基准上，对比PIL类方法，指标为说话人分离错误(DER)与多人转写词错误率(WER)；模型经NVIDIA NeMo开源。",
+ "takeaways": [
+  "用到达时间顺序显式定序(Sort Loss)比纯置换不变损失更能消解说话人置换歧义",
+  "把说话人标签以正弦核嵌入编码器，可直接在端到端STT里监督说话人，便于集成到基础STT/多模态LLM"
+ ],
+ "weaknesses": [
+  "按到达时间定序对说话人频繁交替/重叠语音的鲁棒性前9页未分析，可能定序失败",
+  "增益相对PIL基线幅度、重叠语音(overlapped speech)这一难点场景的表现未充分量化",
+  "偏语音工程落地，与可靠性/可信AI主线无关，评测多为英文多人对话"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.93,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

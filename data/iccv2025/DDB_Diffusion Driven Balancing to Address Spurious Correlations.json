@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/DDB_Diffusion Driven Balancing to Address Spurious Correlations.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/DDB_Diffusion Driven Balancing to Address Spurious Correlations.pdf",
+ "title": "DDB Diffusion Driven Balancing to Address Spurious Correlations",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "扩散模型平衡样本，缓解虚假相关性，但计算成本高且机制不完善",
+ "innovations": [
+  "文本反转机制学习因果特征标记",
+  "语言分割与扩散模型结合生成新样本",
+  "基于预测概率和归因分数的样本剪枝策略"
+ ],
+ "method_framework": "三阶段方法：1)通过文本反转学习因果特征标记；2)利用语言分割和扩散模型生成新样本；3)基于ERM模型预测概率和归因分数剪枝后重新训练模型",
+ "experiment_framework": "在Waterbirds、CelebA和MetaShift数据集上评估，与DFR、JTT、MaskTune、AFR、DISC、LISA和DaC等方法比较，使用worst-group accuracy作为主要指标",
+ "takeaways": [
+  "扩散模型可用于解决数据不平衡问题",
+  "因果特征识别与生成是解决虚假相关性的关键",
+  "基于模型输出的样本剪枝可提高生成质量"
+ ],
+ "weaknesses": [
+  "方法依赖预训练扩散模型，计算成本高",
+  "文本反转过程可能不稳定",
+  "剪枝策略的阈值选择可能影响效果"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "因果去混杂设计解决虚假相关性，符合可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

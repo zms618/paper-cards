@@ -1,0 +1,41 @@
+{
+ "title": "Hierarchy Decoding: A Training-Free Parallel Decoding Strategy for Diffusion Large Language Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "分治递归分层解码加速扩散LLM，但与可靠性主线无关且消融不足。",
+ "innovations": [
+  "分治式递归分层解码：递归把掩码span切成更小子解码区域。",
+  "按token置信度决定解码顺序/范围，提高单遍前向生成token数与信息利用率。",
+  "完全免训练，兼容现有扩散LLM，无需重训。"
+ ],
+ "method_framework": "在离散扩散LLM的迭代去噪中：把当前待解掩码span递归切分为子区域；按模型对各位置token的置信度决定优先解码高置信token并锁定，剩余低置信区域继续递归切分；从而单遍前向并行产出更多token。",
+ "experiment_framework": "在多个文本生成benchmark上评测；对比vanilla扩散解码与Fast-dLLM；指标为生成质量(准确率/困惑度)与推理速度；报告质量持平或更优，最高比vanilla快17×、比Fast-dLLM约快1.5×。",
+ "takeaways": [
+  "递归分层+置信度调度可显著提升扩散LLM并行解码效率。",
+  "免训练即可加速，对现有dLLM即插即用。",
+  "在保持甚至提升生成质量的同时大幅缩短推理时延。"
+ ],
+ "weaknesses": [
+  "属推理加速，与可靠性/可信AI主线无直接关联。",
+  "置信度切分阈值/递归深度的超参对不同任务的敏感性需更多消融。",
+  "主要在离散扩散LLM(中等规模)验证，对超长序列/大模型的加速曲线需补充。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PARAL-Lel_Hierarchy Decoding A Training-Free PARAL-Lel Decoding Strategy for Diffusion Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PARAL-Lel_Hierarchy Decoding A Training-Free PARAL-Lel Decoding Strategy for Diffusion Large Language Models.pdf",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "推理加速与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

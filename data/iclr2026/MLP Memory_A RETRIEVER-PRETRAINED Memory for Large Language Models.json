@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/MLP Memory_A RETRIEVER-PRETRAINED Memory for Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/MLP Memory_A RETRIEVER-PRETRAINED Memory for Large Language Models.pdf",
+ "title": "MLP Memory: A RETRIEVER-PRETRAINED Memory for Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "预训练MLP模仿检索器，参数化记忆提升LLM知识利用",
+ "innovations": [
+  "预训练MLP模仿kNN检索器行为",
+  "端到端可微分参数化记忆模块",
+  "概率插值实现高效推理",
+  "混合损失函数优化检索模式学习"
+ ],
+ "method_framework": "MLP Memory作为外部模块，预训练时学习模仿kNN检索器的分布，推理时通过概率插值与LLM输出结合，无需显式检索操作。",
+ "experiment_framework": "在5个QA基准和9个NLP任务上评估，对比RAG、kNN-LM、CPT和LoRA，使用HaluEval评估幻觉减少，并进行了消融研究。",
+ "takeaways": [
+  "参数化压缩检索模式可平衡效率与知识访问",
+  "外部记忆模块可增强LLM事实准确性而不损害泛化能力",
+  "混合损失函数(KL+CE)能有效优化检索行为学习"
+ ],
+ "weaknesses": [
+  "仅基于Wikipedia-2021语料训练，可能限制知识广度",
+  "未探讨不同规模数据集上的扩展性",
+  "未分析MLP Memory与不同LLM架构的兼容性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "LLM记忆模块与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

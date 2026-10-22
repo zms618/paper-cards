@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Ad Hoc Teamwork via Offline Goal-Based Decision Transformers.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Ad Hoc Teamwork via Offline Goal-Based Decision Transformers.pdf",
+ "title": "Ad Hoc Teamwork via Offline Goal-Based Decision Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "离线即兴团队合作框架，通过队友感知预测提升协作策略",
+ "innovations": [
+  "首次将即兴团队合作（AHT）扩展到离线设置：智能体策略完全从多智能体交互数据集中学习，无需在线环境交互",
+  "提出TAGET分层序列建模框架：高层预测队友感知的回报（TA-RTG）和子目标（TA-Goal），低层用Goal-conditioned Decision Transformer生成动作",
+  "设计轨迹镜像策略：每条多智能体轨迹中各智能体轮流作为自我智能体，最大化有限离线数据的利用效率"
+ ],
+ "method_framework": "三模块：(1)离线数据预处理——轨迹镜像增强，每个智能体轮流作为ego agent；(2)高层建模——从局部观测编码队友动态隐变量z_i，预测队友感知的RTG和未来全局状态作为TA-Goal；(3)低层动作生成——基于TA-Goal和历史观测-动作序列，用Decision Transformer预测下一步动作。",
+ "experiment_framework": "在多个多智能体环境中验证。每个环境训练4组MARL策略（3组用于离线数据收集，1组用于测试队友）。基线包括在线AHT方法（ODITS、LIAM等）和离线RL方法。指标：团队平均回报、协作成功率。",
+ "takeaways": [
+  "TAGET在所有环境中平均提升37.83%，显著优于离线基线和在线AHT迁移方法",
+  "队友感知的RTG和子目标预测比传统单智能体RTG更能捕捉队友行为变化",
+  "轨迹镜像策略有效缓解了离线多智能体数据有限的问题"
+ ],
+ "weaknesses": [
+  "仅在benchmark环境验证，真实复杂多智能体系统的适用性未验证",
+  "依赖预收集的多智能体交互数据，数据质量和多样性对性能影响大",
+  "部分可观测设置下的队友动态建模仍较粗糙，隐变量表示能力有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.98,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "离线多智能体协作方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

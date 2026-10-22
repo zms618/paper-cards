@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Spectral-Grassmann Wasserstein.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Spectral-Grassmann Wasserstein.pdf",
+ "title": "A Spectral-Grassmann Wasserstein Metric for Operator Representations of Dynamical Systems",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "谱Grassmann-Wasserstein度量动力系统，采样不变但可扩展性存疑",
+ "innovations": [
+  "将每个动力系统表示为其算子联合特征值与谱投影构成的分布，在Grassmann流形上做最优传输",
+  "所得度量对轨迹采样频率不变，且计算高效",
+  "给出有限样本收敛保证，并支持Fréchet均值计算从而实现动力系统间插值"
+ ],
+ "method_framework": "对每个从轨迹数据估计的Koopman/转移算子，取其谱分解：特征值与对应谱投影张成的Grassmann点；把系统表示为这些谱对象上的分布，用Wasserstein(最优传输)距离比较两系统；该度量对采样频率不变，可计算Fréchet均值实现系统插值。",
+ "experiment_framework": "在仿真与真实数据集上，用于降维与分类等机器学习任务，对比标准算子距离；报告一致更优，并能在动力系统间给出有意义的插值。",
+ "takeaways": [
+  "把特征值+Grassmann谱投影作为系统表示，用OT度量可得到对采样频率鲁棒的系统距离",
+  "该度量有有限样本收敛保证且计算高效",
+  "Fréchet均值支持动力系统间插值，区别于纯判别性距离"
+ ],
+ "weaknesses": [
+  "谱分解质量受数据长度/噪声与算子回归误差影响，谱退化/近重特征值下的稳定性未充分讨论",
+  "Grassmann流形上的OT计算复杂度随保留模态数增长，大规模系统可扩展性有限",
+  "评测偏下游分类/降维，对高维混沌系统/随机系统的适用性证据不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "动力系统表示方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

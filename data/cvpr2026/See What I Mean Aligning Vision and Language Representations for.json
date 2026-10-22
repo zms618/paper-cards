@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/See What I Mean Aligning Vision and Language Representations for.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/See What I Mean Aligning Vision and Language Representations for.pdf",
+ "title": "See What I Mean Aligning Vision and Language Representations for",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.4
+ },
+ "one_line": "跨注意力对齐文本提示实现物体定位，但词汇覆盖有限",
+ "innovations": [
+  "发现多模态大模型中物体名词与属性词的注意力模式差异",
+  "构建NL-Refer数据集实现物体名词与视觉区域的精确对齐",
+  "提出SWIM训练策略仅通过文本提示实现细粒度物体理解"
+ ],
+ "method_framework": "SWIM在训练时提取物体名词的跨注意力图，与真实物体掩码进行空间一致性对齐，通过BCE损失函数监督，使模型在推理时仅通过文本提示即可精确定位物体。",
+ "experiment_framework": "在VideoRefer-Bench-D/Q、MVBench、VideoMME和ActivityNet-QA等基准上评估，与Qwen2.5-VL、VideoRefer-7B等基线比较，使用准确率、描述质量等指标。",
+ "takeaways": [
+  "跨注意力对齐是提升文本-视觉对齐的有效方法",
+  "简单而明确的监督信号可以显著提升模型性能"
+ ],
+ "weaknesses": [
+  "仅关注物体名词的对齐，可能忽略其他重要词汇",
+  "依赖GPT-4o进行数据增强，可能引入偏差"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态对齐方法有可靠性价值但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

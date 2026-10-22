@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/DeltaQuant_4-bit Video Diffusion Models with Spatiotemporal Delta Smoothing.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/DeltaQuant_4-bit Video Diffusion Models with Spatiotemporal Delta Smoothing.pdf",
+ "title": "DeltaQuant 4-bit Video Diffusion Models with Spatiotemporal Delta Smoothing",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "时空平滑混合量化视频扩散模型，提升4位压缩效率",
+ "innovations": [
+  "利用视频时空相关性分解激活为核心和差值",
+  "混合精度量化核心FP8+差值FP4",
+  "与SVDQuant结合优化权重量化",
+  "高效CUDA内核实现实际加速"
+ ],
+ "method_framework": "将激活划分为时空立方体，计算核心token保持高精度，量化差值token为4位，结合SVD分解优化权重量化",
+ "experiment_framework": "Wan2.2 I2V/T2V和LTX-Video T2V，对比SVDQuant/GGUF等基线，指标包括Vision Reward/LPIPS/PSNR/SSIM/VBench",
+ "takeaways": [
+  "时空相关性可显著降低量化难度",
+  "混合精度策略在保持质量的同时实现高效压缩",
+  "方法与现有加速技术兼容性好"
+ ],
+ "weaknesses": [
+  "时空立方体大小选择可能影响效果",
+  "仅评估了特定模型和任务，泛化性待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频压缩技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

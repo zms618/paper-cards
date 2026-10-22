@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Improving Model-Based Reinforcement Learning by Converging to Flatter Minima.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Improving Model-Based Reinforcement Learning by Converging to Flatter Minima.pdf",
+ "title": "Improving Model-Based Reinforcement Learning by Converging to Flatter Minima",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "将SAM引入MBRL世界模型训练，提升鲁棒性但需调参",
+ "innovations": [
+  "将SAM作为即插即用组件集成到MBRL世界模型训练中",
+  "推导了连接一阶锐度与值估计误差和性能差距的PAC-Bayesian界",
+  "展示了平坦最小值训练在不同算法、模态和高DoF任务中的泛化能力"
+ ],
+ "method_framework": "将Sharpness-Aware Minimization(SAM)集成到MBRL世界模型训练中，通过修改动力学模型损失函数，鼓励优化收敛到更平坦的最小值，同时保持规划器和策略组件不变。",
+ "experiment_framework": "在HumanoidBench(11任务)、Atari-100k(19游戏)和高DoF DMC环境上评估，比较TD-MPC2和TWISTER算法的基线与SAM增强版本，测量回报、锐度值预测误差和计算开销。",
+ "takeaways": [
+  "平坦最小值训练可作为即插即用机制提高MBRL鲁棒性",
+  "SAM对动力学模型改进最显著，对策略也有帮助，但对值/奖励预测头有害"
+ ],
+ "weaknesses": [
+  "SAM半径ρ需要针对不同任务和环境进行调整",
+  "未充分探讨计算开销对实际应用的影响",
+  "对值预测头的影响机制未深入分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/AG2aussian_Anchor-Graph Structured Gaussian Splatting for Instance-Level 3D Scene Understanding.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/AG2aussian_Anchor-Graph Structured Gaussian Splatting for Instance-Level 3D Scene Understanding.pdf",
+ "title": "AG2aussian: Anchor-Graph Structured Gaussian Splatting for Instance-Level 3D Scene Understanding and Editing",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "3DGS加锚点约束与图传播，但评测存在标签泄漏风险",
+ "innovations": [
+  "用三层多分辨率体素（顶层 200³，逐层放大 4 倍）把 SfM 稀疏点云体素化，每个锚点 x、l 下挂 k=5 个子高斯，且把高斯的均值与缩放硬约束为 µ=x+o·l、s=sigmoid(ŝ)·l，从表示层杜绝自由高斯跨视图过度膨胀导致的语义噪声。",
+  "在锚图上做高斯核加权图拉普拉斯传播：只建体内 / 相邻体间稀疏边，用 Dirichlet 能量 L_prop=2Tr(FᵀLF)=Σ_ij w_ij‖F_i−F_j‖²（w_ij=exp(−‖F_i−F_j‖²/τ²), τ=0.05）平滑同类锚特征、保留物体边界锐利变化。",
+  "用 Union-Find 在锚图上聚类得到实例，再以匹配分 S=IoU·(1−‖F̄−F̄_i‖¹) 把 CLIP 语言特征挂到锚上；查询改为区域生长（w_ij>0.90 且建边体素阈值翻倍），把三维邻接约束显式加进检索，抑制纯特征相似误选邻近物体。"
+ ],
+ "method_framework": "体素化 SfM 点云得锚，每锚挂 5 个尺度被体素约束的子高斯；SAM mask 对比蒸馏语义后，在锚图（体内/体间边）上用高斯核 Dirichlet 能量传播特征；Union-Find 聚类挂 CLIP 特征，查询用边权重区域生长。",
+ "experiment_framework": "LERF-OVS 四场景（SAM 手工标 mask）主评测，另在 Mip-NeRF360、LLFF 上查询；基线 SAGA、GsGrouping、OpenGaussian；指标 mIoU 与 mBIoU，另有删除编辑与物理仿真。",
+ "takeaways": [
+  "把「自由高斯」换成「锚点 + 体素尺度内的少量子高斯基元」并硬约束缩放，既压缩冗余又让实例选择干净，是 3DGS 语义化的低成本结构改造。",
+  "用边权重阈值的图扩散做区域生长，替代纯余弦相似度检索，可迁移到任意 3D 点/高斯的实例检索。",
+  "用 Dirichlet 能量而非显式构造拉普拉斯矩阵做图特征平滑，只需稀疏非零 w_ij，工程开销极低。"
+ ],
+ "weaknesses": [
+  "评测 GT mask 是人工用 SAM 标的，而训练时正是用 SAM 的多视角实例 mask 做语义蒸馏与掩码过滤——监督源与评测标签同源，点击查询 88.33 对 OpenGaussian 73.46 的大幅提升存在标签泄漏嫌疑。",
+  "主评测只有 LERF-OVS 四个场景、每场景单帧点击与单条文本查询，无多 seed 方差，mIoU 提升是否稳定无从判断。",
+  "正文在 5.3 节截断，可见的唯一表格是主表 Table 1；锚点数 k=5、τ=0.05、区域生长阈值 0.90 全是直接给定的经验值，无敏感性分析。",
+  "主体机制复用明显：自述 closest works 是 Scaffold-GS 的锚点机制，对比学习目标与 Eq8 匹配式明写「Similar to [39]」，图约束 + 传播的结构创新幅度有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "3D重建与编辑，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

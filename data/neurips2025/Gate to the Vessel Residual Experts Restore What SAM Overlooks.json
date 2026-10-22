@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Gate to the Vessel Residual Experts Restore What SAM Overlooks.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Gate to the Vessel Residual Experts Restore What SAM Overlooks.pdf",
+ "title": "Gate to the Vessel: Residual Experts Restore What SAM Overlooks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "SAM+LoRA专家修复血管分割局部缺陷，但泛化性有限",
+ "innovations": [
+  "结构感知的稀疏专家框架",
+  "空间感知软路由机制",
+  "残差专家的扰动输入多样化",
+  "两阶段自适应训练策略"
+ ],
+ "method_framework": "冻结SAM主干，引入LoRA专家进行域适应，通过不确定性感知的门控模块激活残差专家对结构不确定区域进行局部修正，实现高效'重于重训练'",
+ "experiment_framework": "五个公共血管数据集(DRIVE, DCAI, CHUAC, ROSE, FIVES)，覆盖三种成像模态，对比CNN和Transformer基线及SAM变体方法，使用Dice、ACC、AUC、SE、SP及拓扑一致性指标",
+ "takeaways": [
+  "稀疏专家路由可有效解决基础模型在医学图像中的局部结构缺陷",
+  "不确定性驱动的选择性修正比全局重训练更高效",
+  "扰动输入的残差专家设计促进专业化"
+ ],
+ "weaknesses": [
+  "仅限于血管分割任务，泛化性验证有限",
+  "门控模块阈值δ的选择可能影响性能"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

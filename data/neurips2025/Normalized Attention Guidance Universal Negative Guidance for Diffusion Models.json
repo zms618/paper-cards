@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Normalized Attention Guidance Universal Negative Guidance for Diffusion Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Normalized Attention Guidance Universal Negative Guidance for Diffusion Models.pdf",
+ "title": "Normalized Attention Guidance: Universal Negative Guidance for Diffusion Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "归一化注意力外推实现扩散模型负引导，但机制深度不足。",
+ "innovations": [
+  "注意力空间外推而非输出空间外推",
+  "L1归一化与特征精炼双重稳定机制",
+  "跨架构、跨采样步数、跨模态的通用负引导"
+ ],
+ "method_framework": "在注意力特征空间进行外推eZ = Z+ + ϕ·(Z+ - Z−)，通过L1归一化约束特征幅度，再与正特征混合进行精炼，实现稳定负引导。",
+ "experiment_framework": "COCO-5K数据集，CLIP/FID/PFID/ImageReward指标，对比SANA-Sprint/Flux-Schnell等模型，用户研究验证偏好。",
+ "takeaways": [
+  "特征空间操作比输出空间更稳定",
+  "L1归一化保留低幅值语义信息",
+  "轻量级插件可集成到现有框架"
+ ],
+ "weaknesses": [
+  "极端引导尺度仍可能引入失真",
+  "未分析不同文本编码器的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Video Depth without Video Models.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Video Depth without Video Models.pdf",
+ "title": "Video Depth without Video Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "滑动窗口扩散模型实现视频深度估计，时序一致性有限",
+ "innovations": [
+  "将单图像LDM扩展为多帧深度估计器",
+  "使用不同时间分辨率的滑动窗口推理方案",
+  "基于鲁棒优化的全局深度对齐算法",
+  "可选的扩散细化步骤增强细节"
+ ],
+ "method_framework": "RollingDepth将单图像Marigold模型扩展为处理短片段的多帧LDM，通过不同时间分辨率的滑动窗口采样片段，利用修改的自注意力机制捕获帧间信息，最后通过全局对齐算法将片段重组为一致的深度视频。",
+ "experiment_framework": "在PointOdyssey、ScanNet、Bonn和DyDToF数据集上评估，与Marigold、DepthAnything、NVDS、ChronoDepth和DepthCrafter等方法比较，使用AbsRel和δ1指标。",
+ "takeaways": [
+  "利用单图像模型处理视频任务的有效方法",
+  "全局对齐算法解决深度范围变化问题",
+  "扩散模型在视频深度估计中的新应用范式"
+ ],
+ "weaknesses": [
+  "推理时间较长，特别是细化步骤",
+  "对极端深度范围变化的场景仍有挑战",
+  "依赖预训练的单图像模型"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频深度估计与可靠性主线无直接交点，仅属常规扎实工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

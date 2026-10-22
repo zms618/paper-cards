@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/On The Expressive Power of GNN Derivatives.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/On The Expressive Power of GNN Derivatives.pdf",
+ "title": "On The Expressive Power of GNN Derivatives",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "HOD-GNN利用GNN导数增强表达力，但计算开销大且相关性低。",
+ "innovations": [
+  "首次将 GNN 对节点特征的（此前仅用于过压缩/过平滑/可解释性分析的）导数作为增强表达力的信号",
+  "提出端到端可训的 HOD-GNN：高阶节点导数生成结构感知嵌入，再由第二个 GNN 处理，理论上对齐 WL 层级",
+  "设计利用图稀疏性与并行的消息传递算法高效计算 MPNN 高阶导数，并与子图 GNN、结构编码方案建立深层联系"
+ ],
+ "method_framework": "先证明把基础 MPNN 输出对初始特征 X_v 的高阶偏导数作为附加输入可打破 1-WL 上限；将这些导数视为结构标记，由第二个 MPNN 处理；推导其表达力随导数阶数沿 WL 层级提升；并给出稀疏高效的高阶导数消息传递实现。",
+ "experiment_framework": "在多个图学习基准（图分类/节点任务）上评测 HOD-GNN；与 1-WL MPNN、子图 GNN、结构编码类方法对比；验证表达力提升带来的任务性能增益。",
+ "takeaways": [
+  "GNN 导数本身编码了有价值的结构信息，可作为一种自然的表达力增强手段",
+  "HOD-GNN 表达力随所用导数阶数沿 WL 层级逐级对齐",
+  "该机制与子图 GNN、标记/结构编码殊途同归，提供了统一视角"
+ ],
+ "weaknesses": [
+  "高阶导数计算开销随阶数增长，尽管有稀疏算法，大规模图的可扩展性仍存疑",
+  "理论对齐 WL 层级但未给出相对 k-WL 的严格复杂度/代价权衡",
+  "偏离可靠性/医学影像/多模态推理主线，相关性低"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "GNN导数增强表达力，但偏离可靠性主线且无落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

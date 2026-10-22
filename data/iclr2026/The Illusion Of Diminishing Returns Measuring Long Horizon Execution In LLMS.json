@@ -1,0 +1,41 @@
+{
+ "title": "The Illusion of Diminishing Returns: Measuring Long Horizon Execution in LLMs",
+ "scores": {
+  "novelty": 7,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.6
+ },
+ "one_line": "隔离执行能力，证明单步准确率提升指数级影响任务长度，揭示自强化错误",
+ "innovations": [
+  "提出隔离‘执行’能力的评测法：显式提供解题所需知识与计划，把执行错误与推理错误解耦，证明长任务失败主要是执行失误而非不会推理",
+  "量化关键现象：单步准确率的微小提升会复合为可成功执行任务长度的指数级增长，说明短任务基准造成了收益递减的错觉",
+  "发现自强化错误(self-conditioning)：上下文里混入先前步骤的错误会使模型更易继续出错，且仅靠放大模型规模无法消除；而 thinking 既缓解自强化错误，又让单轮可执行更长任务"
+ ],
+ "method_framework": "构造‘只考执行’的长程任务：预先给定知识与计划，模型只需逐步正确执行；以此测量可可靠执行的最大步数；通过在上下文中注入/不注入先前错误来分离自强化错误；对比不同规模与是否 thinking 的 frontier 模型。",
+ "experiment_framework": "多步长程执行任务（把简单任务拉长）；对比小/大模型、有无 thinking、上下文是否含历史错误；指标为可可靠执行的步数/轮数、per-step 准确率随步数的衰减；最后在 frontier thinking 模型上做单轮可执行长度基准。",
+ "takeaways": [
+  "短任务准确率接近饱和时，长程可执行长度仍在快速提升，scaling 与顺序 test-time compute 对长任务价值巨大",
+  "长任务失败主因是执行错误的累积放大，而非推理能力不足",
+  "自强化错误是长程可靠性的核心障碍，thinking（链式思考）比单纯放大模型规模更能缓解它"
+ ],
+ "weaknesses": [
+  "‘给知识+计划’的隔离设定虽巧妙，但与真实开放式 agent 任务有差距，结论外推到需要自主规划的场景需谨慎",
+  "自强化错误的机制只做了现象描述与对照实验，未从内部表征/注意力层面定位错误为何会被复制，因果解释较浅",
+  "relevance 给 7：核心是长程执行的可靠性、错误传播与步级准确率衰减，正落在可靠性主线；但落地域是通用 LLM agent、非医学影像或多模态大模型推理，故不到 8+"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/The Illusion Of Diminishing Returns Measuring Long Horizon Execution In LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The Illusion Of Diminishing Returns Measuring Long Horizon Execution In LLMS.pdf",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "长程执行可靠性在主线，但落地域不符",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Audio Super-Resolution with Latent Bridge Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Audio Super-Resolution with Latent Bridge Models.pdf",
+ "title": "Audio Super-Resolution with Latent Bridge Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "潜在桥模型实现音频超分，参数量大且级联误差未充分分析",
+ "innovations": [
+  "潜在空间到潜在空间的桥模型生成框架",
+  "频率感知的LBM训练策略",
+  "级联LBM实现48kHz以上音频超分辨率",
+  "先验增强策略减少级联误差"
+ ],
+ "method_framework": "通过VAE将音频波形压缩到连续潜在空间，设计桥模型实现LR到HR的潜在到潜在生成过程，结合频率感知和级联设计提升超分辨率质量。",
+ "experiment_framework": "在VCTK、ESC-50、Song-Describer等数据集上评估，使用LSD、SSIM、ViSQOL、SigMOS等指标，与AudioSR、Bridge-SR等基线对比。",
+ "takeaways": [
+  "潜在空间桥模型比扩散模型更适合音频超任务",
+  "频率感知策略有效缓解数据稀缺问题",
+  "级联设计配合先验增强可突破48kHz限制"
+ ],
+ "weaknesses": [
+  "模型参数量大(0.5B)",
+  "级联过程可能引入累积误差",
+  "未充分讨论计算复杂度和推理速度"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

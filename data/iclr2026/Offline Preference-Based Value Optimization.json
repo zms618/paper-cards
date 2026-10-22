@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Offline Preference-Based Value Optimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Offline Preference-Based Value Optimization.pdf",
+ "title": "Offline Preference-Based Value Optimization",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.5,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "PVO用价值对齐损失替代不可行的分布鲁棒优化，理论保证但实验局限",
+ "innovations": [
+  "提出 value alignment loss，直接优化与偏好反馈一致的价值函数，替代不可行的分布鲁棒内层最小化",
+  "证明 PVO 达 rate-optimal 样本复杂度 O(ε^-2)，且 value alignment loss 同时适用于 value-based 与 actor-critic",
+  "无需额外偏好学习超参，训练稳定、性能方差低"
+ ],
+ "method_framework": "离线 PbRL 从预采集轨迹对偏好数据学习；PVO 不求解不可行的分布鲁棒内层最小化，而是最小化 value alignment loss 使价值函数与偏好反馈一致；据此直接优化价值，可插入 value-based 或 actor-critic 框架，并推导 O(ε^-2) 样本复杂度。",
+ "experiment_framework": "多个连续控制离线 PbRL 基准；对比有/无理论保证的强基线；消融显示用 value alignment loss 替换标准 TD loss 显著改善偏好学习；报告稳定性与均值性能。",
+ "takeaways": [
+  "value alignment loss 可在不牺牲理论保证的前提下获得稳定实用的离线 PbRL",
+  "该损失不依赖不可行的分布鲁棒优化，计算可行",
+  "用偏好对齐损失替换 TD 损失是从偏好数据学习的关键改进"
+ ],
+ "weaknesses": [
+  "验证限于连续控制 benchmark，未扩展到 LLM 偏好对齐(RLHF)等更受关注的场景",
+  "离线 PbRL 的 OOD 问题在价值函数上的处理描述较简",
+  "偏离可靠性/医学影像/多模态推理主线，相关性低"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "离线强化学习理论保证但未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

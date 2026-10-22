@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Guardalign_Test-Time Safety Alignment In Large Vision-Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Guardalign_Test-Time Safety Alignment In Large Vision-Language Models.pdf",
+ "title": "Guardalign: TEST-TIME Safety Alignment In Large VISION-LANGUAGE Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "测试时安全对齐框架，OT与注意力校准提升LVLM安全性",
+ "innovations": [
+  "OT增强安全检测：利用最优传输测量图像块与不安全语义间的分布距离",
+  "跨模态注意力校准：自适应重新分配各层注意力，确保安全信号持续激活",
+  "无需训练的安全防御框架，同时提升安全性和模型效用"
+ ],
+ "method_framework": "GuardAlign结合两个策略：1) OT增强安全检测通过最优传输识别恶意区域；2) 跨模态注意力校准强化安全前缀影响，确保安全信号在整个生成过程中保持激活。",
+ "experiment_framework": "在6个代表性LVLM上评估，使用SPA-VL、MM-SafetyBench等安全基准和VQAv2等通用任务指标，测量不响应率(USR)和帮助性分数。",
+ "takeaways": [
+  "最优传输方法比余弦相似度能更好地区分安全与不安全图像块",
+  "细粒度图像分区分析能提高恶意语义检测而不损害模型效用",
+  "安全前缀的注意力校准能有效防止模型在生成过程中被过渡词覆盖安全信号"
+ ],
+ "weaknesses": [
+  "方法依赖于预定义的不安全提示类别，可能无法覆盖所有潜在风险",
+  "虽然比ETA更高效，但仍增加了额外的推理时间(42分钟vs 37分钟)"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "测试时安全对齐直接提升LVLM可靠性，符合主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

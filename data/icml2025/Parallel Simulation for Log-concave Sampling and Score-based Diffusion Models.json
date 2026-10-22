@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Parallel Simulation for Log-concave Sampling and Score-based Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Parallel Simulation for Log-concave Sampling and Score-based Diffusion Models.pdf",
+ "title": "Parallel Simulation for Log-concave Sampling and Score-based Diffusion Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "理论改进并行采样复杂度，但缺乏实验验证与主线关联",
+ "innovations": [
+  "将并行仿真思路引入对数凹采样，自适应复杂度由O(log^2 d)改进到O(log d)",
+  "收敛速率更贴近最新下界，优于已有并行化技术",
+  "同一框架同时覆盖对数凹采样与分数生成模型(SGM)两类ODE仿真"
+ ],
+ "method_framework": "把采样视为对收敛到目标分布π的初值微分方程的数值仿真；改用科学计算中的并行离散/仿真技巧，将原本高度串行的过程并行化，在理论上证明迭代轮次(自适应复杂度)对维度d的依赖由O(log^2 d)降至O(log d)。",
+ "experiment_framework": "以理论收敛保证为主，针对对数凹采样与SGM仿真两类问题分析非渐近误差；与已有Langevin/并行方法比较自适应复杂度与收敛速率。",
+ "takeaways": [
+  "并行仿真可显著降低采样的串行轮次维度依赖",
+  "改进后的复杂度更接近下界，缩小与理论极限的差距",
+  "采样与扩散仿真可共用同一并行数值框架"
+ ],
+ "weaknesses": [
+  "纯理论/算法工作，与可靠性、多模态推理主线关联弱",
+  "前9页未见大规模数值实验验证实际并行加速比",
+  "O(log d)常数项与并行度的工程代价未充分讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.48,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Linearly Constrained Diffusion Implicit Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Linearly Constrained Diffusion Implicit Models.pdf",
+ "title": "Linearly Constrained Diffusion Implicit Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "CDIM通过自适应投影加速扩散模型解决线性逆问题，提升10-50倍速度",
+ "innovations": [
+  "利用前向扩散过程中残差能量的χ²分布指导投影步骤",
+  "动态调整投影步骤数量和大小，减少10-50倍计算量",
+  "扩展到泊松噪声处理，支持非高斯噪声场景"
+ ],
+ "method_framework": "CDIM交替无条件DDIM步骤与自适应投影步骤，通过代理残差Rt的分布边界控制投影过程，确保测量一致性同时加速推理",
+ "experiment_framework": "FFHQ和ImageNet数据集上的超分辨率、修复、去模糊任务，对比DPS、FPS-SMC等方法，使用FID、LPIPS指标评估",
+ "takeaways": [
+  "利用前向过程统计特性指导反向过程优化",
+  "代理残差Rt与目标残差Lt的相关性分析",
+  "泊松噪声下的Pearson残差处理方法"
+ ],
+ "weaknesses": [
+  "泊松噪声处理在极端噪声水平下可能失效",
+  "算法复杂度增加，实现难度较高",
+  "对扩散模型质量依赖性强"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

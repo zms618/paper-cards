@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Language Confusion Gate Language-Aware Decoding through Model Self-Distillation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Language Confusion Gate Language-Aware Decoding through Model Self-Distillation.pdf",
+ "title": "Language Confusion Gate: LANGUAGE-AWARE Decoding through Model SELF-DISTILLATION",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "轻量级语言混淆门通过自蒸馏减少多语言解码偏差",
+ "innovations": [
+  "语言混淆门(LCG)轻量级插解方案",
+  "范数调整自蒸馏训练方法",
+  "动态语言家族预测与过滤机制"
+ ],
+ "method_framework": "LCG是一个两层MLP，接收LLM隐藏状态，预测允许的语言家族，在解码时动态屏蔽不适当token，使用范数调整消除高资源语言偏差。",
+ "experiment_framework": "在FLORES+和INCLUDE数据集上评估，测量CJ和拉丁混淆率及BLEU/准确率，对比Qwen3、Llama3.1等模型。",
+ "takeaways": [
+  "语言混淆点处正确语言token通常在前5候选",
+  "输出token嵌入范数不平衡导致高资源语言偏差",
+  "轻量级干预可有效减少语言混淆而不影响任务性能"
+ ],
+ "weaknesses": [
+  "未充分验证在低资源语言上的表现",
+  "对自然代码切换的区分机制可能不够完善",
+  "实验主要在翻译任务上进行，其他任务泛化性待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "轻量级语言混淆门解决多语言解码偏差，属于可靠性主线中的幻觉抑制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Omnivinci_Enhancing Architecture and Data for Omni-Modal Understanding LLM.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Omnivinci_Enhancing Architecture and Data for Omni-Modal Understanding LLM.pdf",
+ "title": "OmniVinci: Enhancing Architecture and Data for Omni-Modal Understanding LLM",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "工程组合的全模态LLM，数据策划降低训练需求，下游应用演示不足",
+ "innovations": [
+  "OmniAlignNet：在共享全模态隐空间中加强视觉与音频嵌入的对齐（对比损失）",
+  "Temporal Embedding Grouping：捕捉视觉与音频信号间的相对时间对齐；Constrained Rotary Time Embedding：编码绝对时间信息",
+  "构建 24M 单模态与全模态对话的策划/合成流水线，发现模态间在感知与推理上相互增强"
+ ],
+ "method_framework": "视觉/音频/文本编码器各自出嵌入，经下采样投影后用 OmniAlignNet（对比损失）对齐视-音嵌入；用时间嵌入分组编码相对时序、约束旋转时间嵌入编码绝对时序；统一送入 LLM；数据侧用策划+合成生成 24M 全模态对话。",
+ "experiment_framework": "对比 Qwen2.5-Omni 等；全模态 DailyOmni(+19.05)、音频 MMAU/MMAR(+1.7)、视觉 MVBench/Video-MME(+3.9)；仅用 0.2T token（Qwen2.5-Omni 1.2T 的 1/6）；下游演示机器人、医学 AI、智能工厂。",
+ "takeaways": [
+  "在全模态对齐中，相对+绝对时间信息的显式编码对跨模态理解至关重要",
+  "模态之间在感知与推理上可相互增强，高质量数据策划可显著降低训练 token 需求",
+  "全模态模型在医学 AI 等下游展现出应用潜力"
+ ],
+ "weaknesses": [
+  "核心多为工程组合与数据流水线，理论新颖性有限",
+  "医学 AI 等下游仅为演示，缺少医学影像上的严格对照与临床指标",
+  "0.2T token 的高效率声明依赖其特定数据策划，复现门槛高"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "多模态LLM工程组合，医学应用仅为演示无严格验证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

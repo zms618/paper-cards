@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VIDBRIDGE-R1_Bridging QA and Captioning for RL-BASED Video Understanding Models with Intermediate Proxy Tasks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VIDBRIDGE-R1_Bridging QA and Captioning for RL-BASED Video Understanding Models with Intermediate Proxy Tasks.pdf",
+ "title": "VidBridge-R1: Bridging QA and Captioning for RL-Based Video Understanding Models with Intermediate Proxy Tasks",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "人工设计代理任务缓解QA与描述冲突，但机制分析不足",
+ "innovations": [
+  "针对Reason-Then-Respond范式下视频QA与描述(captioning)任务 reward 直接合并会相互退化的冲突，提出用两个中间代理任务桥接",
+  "设计DarkEventInfer：给出事件片段被遮蔽的视频，要求模型据上下文线索推断被遮蔽内容",
+  "设计MixVidQA：给出由两个不同片段交错组成的视频，要求模型只隔离并推理其中一个、忽略另一个，同时培养整体发散理解与精确收敛推理"
+ ],
+ "method_framework": "观察到直接合并QA与描述的reward会因二者任务性质对立(收敛式精准 vs 发散式整体)而互损；转而引入两个中间代理任务——DarkEventInfer(根据上下文推断被遮蔽事件片段)与MixVidQA(在交错双片段中隔离推理目标片段)——用GRPO做RL，强制模型同时发展整体发散理解与精确收敛推理，从而桥接范式冲突。",
+ "experiment_framework": "在视频QA与视频描述两类基准上评测，对比单一专精模型与直接合并reward的做法；指标为两类任务的准确率/质量；报告VidBridge-R1在一个模型内对QA与描述同时显著提升。",
+ "takeaways": [
+  "两个代理任务使单一模型同时获得整体发散理解与精确收敛推理能力，缓解QA与描述的范式冲突",
+  "VidBridge-R1在QA与描述两类任务上同时显著提升，是首个桥接该冲突的通用视频推理模型",
+  "中间代理任务是化解多任务奖励冲突的有效手段"
+ ],
+ "weaknesses": [
+  "属于视频理解RL方向，虽属多模态推理但不聚焦鲁棒性/幻觉/医学影像，与主线为中相关",
+  "代理任务为人工设计，其为何能同时培养两种推理能力的因果机制前9页论证偏现象描述",
+  "直接合并reward导致冲突的根因分析缺乏控制实验，提升幅度的量化与基准细节前9页披露有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "多模态推理但未聚焦可靠性主线，机制分析不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

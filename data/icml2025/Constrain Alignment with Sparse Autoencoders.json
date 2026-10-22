@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Constrain Alignment with Sparse Autoencoders.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Constrain Alignment with Sparse Autoencoders.pdf",
+ "title": "Constrain Alignment with Sparse Autoencoders",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "用SAE特征约束替代DPO的序列级KL，提升胜率5%但依赖预训练SAE质量",
+ "innovations": [
+  "首次将SAE稀疏特征引入偏好优化，用特征级离线参考近似KL散度",
+  "通过β系数对单个特征通道进行精确控制(如JSON格式、法语能力、安全性)",
+  "相比DPO/SimPO等基线在胜率上提升5%以上且计算成本更低"
+ ],
+ "method_framework": "FPO在DPO框架基础上，用预训练SAE将模型表示投影到稀疏特征空间，在特征空间中计算KL约束而非在原始序列log-prob空间。SAE提供离线特征级参考，避免维护参考模型。通过调整特征级β可单独控制特定能力(格式、多语言、安全性)。",
+ "experiment_framework": "在标准偏好对齐benchmark上与DPO、SimPO、ORPO等比较；指标为win rate；并测试对JSON格式、多语言(法语/德语/意大利语)、安全性的可控性。",
+ "takeaways": [
+  "SAE特征级约束比序列级KL更高效，胜率提升>5%且内存更低",
+  "可通过β对单个特征通道精确控制：设β=1关闭JSON格式能力而不影响大小写",
+  "安全性特征设β=1时攻击成功率升至80%，证明特征解耦可控性"
+ ],
+ "weaknesses": [
+  "依赖预训练SAE的质量，SAE特征覆盖不全时可能遗漏对齐信号",
+  "实验主要在对话/格式控制场景，缺乏通用推理能力评估",
+  "特征级β的自动调参未涉及，实际使用需人工指定特征"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

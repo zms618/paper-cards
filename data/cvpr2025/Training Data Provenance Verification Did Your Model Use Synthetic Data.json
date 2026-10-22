@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Training Data Provenance Verification Did Your Model Use Synthetic Data.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Training Data Provenance Verification Did Your Model Use Synthetic Data.pdf",
+ "title": "Training Data Provenance Verification Did Your Model Use Synthetic Data",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "基于泛化误差界的黑盒方法验证生成数据是否被用于训练",
+ "innovations": [
+  "首次解决生成模型合成数据被用于训练特定任务模型的知识产权保护问题",
+  "基于泛化误差界理论提出训练数据溯源验证方法TrainProVe",
+  "在黑盒设置下实现99%以上的验证准确率"
+ ],
+ "method_framework": "TrainProVe包含三个阶段：1)使用生成模型创建阴影数据集和验证数据集；2)训练阴影模型；3)通过假设检验比较可疑模型与阴影模型在验证集上的性能差异。",
+ "experiment_framework": "在CIFAR10/100和ImageNet-100数据集上测试，使用Stable Diffusion等四种生成模型，比较准确率、F1分数和AUROC指标，与随机分类和Han等方法对比。",
+ "takeaways": [
+  "基于泛化误差界的理论框架可应用于模型训练数据溯源",
+  "黑盒设置下的验证方法具有实用价值",
+  "假设检验方法能有效区分不同数据源训练的模型"
+ ],
+ "weaknesses": [
+  "在ImageNet-100上性能下降至78.6%，表明方法可能受数据集复杂度影响",
+  "仅验证了图像分类任务，未扩展到其他任务类型"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "训练数据溯源验证属于可靠性主线中的知识产权保护与模型验证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

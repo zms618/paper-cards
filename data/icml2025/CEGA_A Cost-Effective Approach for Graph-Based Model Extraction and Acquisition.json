@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/CEGA_A Cost-Effective Approach for Graph-Based Model Extraction and Acquisition.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CEGA_A Cost-Effective Approach for Graph-Based Model Extraction and Acquisition.pdf",
+ "title": "CEGA: A Cost-Effective Approach for Graph-Based Model Extraction and Acquisition",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.8
+ },
+ "one_line": "CEGA在有限查询约束下提升GNN提取效率，但与主线关联弱且防御不足",
+ "innovations": [
+  "研究被忽视的现实场景：禁止批量查询、仅有有限初始节点下的GNN模型提取",
+  "提出迭代精炼的节点查询策略，跨多个学习周期利用历史反馈改进选择",
+  "将自适应节点查询同时用于伦理化、低成本的模型获取(低标注资源场景)",
+  "在严格查询预算下报告精度/保真度/F1，量化GNN部署的提取脆弱性"
+ ],
+ "method_framework": "在仅能查询少量初始节点、禁止批量查询的约束下，迭代地基于已查节点的历史反馈选择信息量最大的节点查询API，逐步蒸馏出部署GNN的高保真副本；同一策略也用于低资源下的模型获取。",
+ "experiment_framework": "在标准图基准数据集上，与节点查询/主动学习及模型提取基线比较，在严格查询规模约束下报告提取精度、模型保真度与F1，含查询策略迭代精炼的消融。",
+ "takeaways": [
+  "即使禁止批量查询，自适应节点选择仍可高效提取部署GNN",
+  "历史反馈驱动的节点选择显著提升查询预算效率",
+  "该方法既暴露GNN-MLaaS安全风险，也支持低资源伦理获取"
+ ],
+ "weaknesses": [
+  "落地域为图模型MLaaS安全/提取，与医学影像、多模态推理主线关联弱",
+  "主要在公共图基准验证，对大规模/动态图服务的现实威胁量化不足",
+  "防御侧讨论较少，攻防闭环与实际部署缓解措施不充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

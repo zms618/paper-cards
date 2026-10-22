@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/LipsNet++_Unifying Filter and Controller into a Policy Network.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/LipsNet++_Unifying Filter and Controller into a Policy Network.pdf",
+ "title": "LipsNet++: Unifying Filter and Controller into a Policy Network",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "LipsNet++通过滤波层和控制器层解决RL动作波动问题，但适用性和证据有限。",
+ "innovations": [
+  "将RL策略的动作波动问题分解为两个独立根因：观测噪声导致的高频扰动和策略网络本身的非光滑性",
+  "设计傅里叶滤波层：可训练的滤波矩阵自动提取重要频率分量、抑制噪声频率，实现观测域的去噪",
+  "设计Lipschitz控制器层：约束策略输出的Lipschitz常数，保证相邻观测产生相似动作，从策略域保证平滑性"
+ ],
+ "method_framework": "LipsNet++在策略网络中串联两个功能层：(1) 傅里叶滤波层：对输入观测做可学习的频域滤波，自动保留重要频率、抑制噪声频率；(2) Lipschitz控制器层：通过谱归一化或Lipschitz约束保证策略函数的Lipschitz连续性。两层分别针对观测噪声和策略非光滑性两个根因，统一在一个策略网络中训练。",
+ "experiment_framework": "在多个RL控制基准上评测，对比标准RL策略网络（PPO/SAC等）和其他平滑化方法；指标包括任务回报、动作波动幅度、 actuator磨损指标。",
+ "takeaways": [
+  "动作波动的双根因分解（观测噪声+策略非光滑）为策略平滑化提供了清晰的设计框架",
+  "傅里叶滤波层自动学习频率选择，比手动设计的低通滤波器更自适应",
+  "Lipschitz约束从理论上保证了策略平滑性，减少了真实部署中的执行器磨损和安全风险"
+ ],
+ "weaknesses": [
+  "傅里叶滤波在时序状态空间中的适用性有限，部分任务的状态变量并非频域信号",
+  "Lipschitz约束可能过于保守，在需要快速响应的高动态任务中可能损害性能",
+  "前9页未看到完整实验表格，具体提升幅度和基线对比不够清晰"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

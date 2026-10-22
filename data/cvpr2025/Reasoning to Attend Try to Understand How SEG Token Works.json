@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Reasoning to Attend Try to Understand How SEG Token Works.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Reasoning to Attend Try to Understand How SEG Token Works.pdf",
+ "title": "Reasoning to Attend Try to Understand How SEG Token Works",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.2
+ },
+ "one_line": "可视化<SEG> token并设计SasP模块，提升多模态推理与注意力。",
+ "innovations": [
+  "可视化<SEG> token的工作机制",
+  "提出Similarity as Points模块(SasP)",
+  "实现'reason to attend'和'attend to reason'的双向推理"
+ ],
+ "method_framework": "READ包含LLaVA编码器、SasP模块和SAM解码器。SasP计算<SEG> token与图像patch的相似度图，将高激活区域转换为连续可微分的点坐标，引导模型注意力。",
+ "experiment_framework": "在ReasonSeg和RefCOCO(+/g)数据集上进行实验，评估cIoU指标，并在FP-RefCOCO(+/g)上评估灾难性遗忘问题。",
+ "takeaways": [
+  "可视化技术有助于理解多模态模型内部机制",
+  "相似度图可作为有效引导模型注意力的信号",
+  "离散点转连续可微分的方法设计简洁有效"
+ ],
+ "weaknesses": [
+  "相似度计算方法较为简单，未探索更复杂的策略",
+  "实验主要在特定任务上进行，泛化能力有待验证",
+  "未充分分析模型在不同复杂度推理任务上的表现差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "多模态推理与注意力机制设计，触及可靠性主线中的可解释性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

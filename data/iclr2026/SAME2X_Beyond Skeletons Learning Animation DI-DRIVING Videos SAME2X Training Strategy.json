@@ -1,0 +1,41 @@
+{
+ "title": "Beyond Skeletons: Learning Animation Directly from Driving Videos with Same2X Training Strategy",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "原始像素驱动动画，跨ID训练加速，但缺乏可靠性主线支持",
+ "innovations": [
+  "绕过姿态提取步骤，直接从驱动视频原始像素学习动画，避免骨架在遮挡/复杂姿态下的前后混淆与肢体丢失",
+  "提出由姿态、人脸、位置构成的Driving Cue Triplet，经CueFusion DiT块在去噪中可靠控制",
+  "设计Same2X训练策略把跨ID特征对齐到同ID所学，正则化并加速收敛(快6.7倍)"
+ ],
+ "method_framework": "不依赖DWPose等骨架中间表示，而以原始驱动视频 cues(姿态/人脸/位置三联)在扩散去噪中融合控制；用Same2X策略在跨ID场景下对齐到同ID特征，使学习更稳更快。",
+ "experiment_framework": "在人像动画基准上对比StableAnimator/DirectAnimator等；报告达SOTA质量，Same2X在跨ID第二阶段达同等损失快6.7倍。",
+ "takeaways": [
+  "骨架信号在遮挡与复杂姿态下易出错并造成伪影",
+  "原始像素驱动cue可更鲁棒地表达复杂运动与自遮挡",
+  "Same2X跨ID对齐显著提升训练效率"
+ ],
+ "weaknesses": [
+  "为图像/视频动画生成，与医学影像或多模态推理可靠性主线无关",
+  "依赖参考-驱动身份解耦，极端外观差异仍可能失败",
+  "前9页未见定量FID/人工评分表"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/SAME2X_Beyond Skeletons Learning Animation DI-DRIVING Videos SAME2X Training Strategy.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SAME2X_Beyond Skeletons Learning Animation DI-DRIVING Videos SAME2X Training Strategy.pdf",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯动画生成，无可靠性主线或落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

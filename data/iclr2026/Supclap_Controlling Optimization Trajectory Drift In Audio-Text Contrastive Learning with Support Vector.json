@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Supclap_Controlling Optimization Trajectory Drift In Audio-Text Contrastive Learning with Support Vector.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Supclap_Controlling Optimization Trajectory Drift In Audio-Text Contrastive Learning with Support Vector.pdf",
+ "title": "SupCLAP: Controlling Optimization Trajectory Drift in Audio-Text Contrastive Learning with Support Vector Regularization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "分解对比学习梯度推力，用支持向量正则化抑制垂直分量漂移",
+ "innovations": [
+  "发现并分析对比学习中的优化轨迹漂移问题：负样本推力的垂直分量既包含负样本补充信息又导致优化方向不稳定",
+  "提出支持向量正则化(SVR)方法：通过构造位移后的文本支持向量作为辅助对比项，自适应抑制垂直分量同时保留负样本信息",
+  "探索两种无监督语义半径建模策略：StaticSVR（可学习参数）和DynamicSVR（自适应半径预测器模块），并提出预测约束提升半径精度"
+ ],
+ "method_framework": "将对比学习梯度分解为正样本拉力(Fpull)和负样本推力(Fpush)，进一步将推力分解为平行分量和垂直分量。提出SVR正则项：将文本嵌入向正音频嵌入方向位移语义半径R距离构造支持向量，与原始文本嵌入共同计算对比损失，从而重塑梯度空间、抑制垂直分量漂移。DynamicSVR利用batch内嵌入相似度信息预测每个样本的语义半径。",
+ "experiment_framework": "在标准音文数据集上进行分类、单语检索和多语检索实验，对比InfoNCE和SigLIP loss等基线方法。通过梯度更新向量与拉力方向的余弦相似度量化轨迹漂移程度，验证SVR对漂移的控制效果。",
+ "takeaways": [
+  "对比学习中负样本推力的垂直分量是导致优化轨迹漂移的核心原因，同时蕴含丰富的负样本补充信息",
+  "SVR方法在不增加额外训练数据和推理开销的前提下，显著提升音文对比学习在分类和检索任务上的性能",
+  "更精确的语义半径建模（DynamicSVR vs StaticSVR）能更好地控制垂直分量，验证了半径精度对SVR效果的关键作用"
+ ],
+ "weaknesses": [
+  "仅在音文对比学习场景验证，是否能推广到图文等其他对比学习模态尚未证明",
+  "语义半径的预测依赖batch内统计信息，在batch size较小或分布不均时可能不稳定",
+  "前9页未展示完整的多语检索定量结果表格，部分实验结论缺乏具体数值支撑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "对比学习优化轨迹控制，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

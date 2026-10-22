@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/HALF-ORDER FINE-TUNING for Diffusion Model A Recursive Likelihood Ratio Optimizer.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/HALF-ORDER FINE-TUNING for Diffusion Model A Recursive Likelihood Ratio Optimizer.pdf",
+ "title": "HALF-ORDER FINE-TUNING for Diffusion Model: A Recursive Likelihood Ratio Optimizer",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "半阶梯度估计器解决扩散模型微调偏差-方差权衡",
+ "innovations": [
+  "提出半阶(HO)梯度估计器，结合了FO的低方差和ZO的低内存优势",
+  "设计递似然比(RLR)优化器，通过局部计算图重排实现无偏低方差梯度估计",
+  "提出扩散思维链(DCoT)提示技术，利用RLR的多尺度信息捕获能力"
+ ],
+ "method_framework": "RLR优化器结合一阶(FO)、半阶(HO)和零阶(ZO)梯度估计，通过在扩散链中选择性地应用HO子链实现无偏低方差梯度估计，同时优化子链长度h和起始位置j以平衡方差与内存消耗。",
+ "experiment_framework": "在Text2Image(Stable Diffusion 1.4/2.1)和Text2Video任务上评估，使用Pick-a-Pic、HPD v2等人类偏好奖励模型和VBench基准，与DDPO、Alignprop等基线比较。",
+ "takeaways": [
+  "梯度估计器的无偏性比低方差更重要，实验显示无偏但略高方差的HO优于有偏的低方差方法",
+  "扩散模型的多尺度特性可通过针对特定时间步的梯度更新来增强，DCoT技术有效利用了这一特性"
+ ],
+ "weaknesses": [
+  "RLR优化器的理论分析较为完善，但实际应用中h和j的选择仍依赖经验",
+  "实验主要关注生成质量，对计算效率和内存节省的定量分析不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型微调的方差-权衡问题属于可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

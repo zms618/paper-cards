@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/TaxaDiffusion_Progressively Trained Diffusion Model for Fine-Grained Species Generation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/TaxaDiffusion_Progressively Trained Diffusion Model for Fine-Grained Species Generation.pdf",
+ "title": "TaxaDiffusion Progressively Trained Diffusion Model for Fine-Grained Species Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "渐进式扩散模型利用分类学层次结构生成细粒度物种图像",
+ "innovations": [
+  "利用生物分类学层次结构进行渐进式训练",
+  "多级条件编码模块设计",
+  "改进的分类器自由引导策略"
+ ],
+ "method_framework": "基于预训练扩散模型，通过LoRA适应生物数据，再引入分类学条件编码模块，从高阶分类层次(如界、门)逐步训练到物种层次，每层训练后冻结参数并累积知识",
+ "experiment_framework": "在FishNet、BIOSCAN-1M和iNaturalist三个数据集上评估，使用FID、LPIPS和BioCLIP作为指标，与零样本SD、LoRA微调SD、全微调SD和FineDiffusion对比",
+ "takeaways": [
+  "利用领域知识(如生物分类学)可显著提升细粒度生成任务性能",
+  "渐进式训练策略能有效解决少样本细粒度生成问题"
+ ],
+ "weaknesses": [
+  "方法依赖完整的分类学标签，在标签不完整场景可能受限",
+  "未充分探讨模型在不同分类学层次间的知识传递机制"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "纯图像生成任务，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

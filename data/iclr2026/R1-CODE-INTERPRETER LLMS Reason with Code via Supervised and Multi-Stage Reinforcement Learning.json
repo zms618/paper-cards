@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/R1-CODE-INTERPRETER LLMS Reason with Code via Supervised and Multi-Stage Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/R1-CODE-INTERPRETER LLMS Reason with Code via Supervised and Multi-Stage Reinforcement Learning.pdf",
+ "title": "R1-Code-Interpreter: LLMs Reason with Code via Supervised and Multi-Stage Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "多阶段课程RL训练LLM使用代码解释器，在144个任务上超越GPT-4o",
+ "innovations": [
+  "提出基于测量改进潜力的多阶段课程RL：按不同agent策略回答的准确率差异估计样本改进潜力，分四阶段从高潜力到低潜力训练",
+  "在144个多样推理规划任务上训练通用代码解释器，而非局限于数学或检索等窄域",
+  "R1-CI-14B在37个测试任务上从44.1%提升至72.4%，超越GPT-4o纯文本（58.6%）和GPT-4o+代码解释器（70.9%）"
+ ],
+ "method_framework": "SFT阶段：合成6.5k多轮文本/代码轨迹进行监督微调。RL阶段：先用不同agent策略（纯文本/纯代码/混合）回答同一问题，用准确率差异估计每个样本的改进潜力。GRPO训练分四阶段：高潜力→中潜力→新兴潜力→低潜力，逐步扩大样本池。",
+ "experiment_framework": "144个推理规划任务（107训练+37测试）；Qwen-2.5 3/7/14B；对比GPT-4o纯文本和GPT-4o+Code Interpreter；报告平均准确率和 emergent self-checking行为；分析课程学习各阶段收益。",
+ "takeaways": [
+  "传统DeepSeek式RL在多样代码解释器任务上仅边际提升（+3.4%），需课程学习才能充分发挥（+9.3%）",
+  "改进潜力估计可有效指导RL样本选择，优先训练高潜力样本",
+  "代码解释器训练可涌现出自检行为，通过代码生成验证推理"
+ ],
+ "weaknesses": [
+  "与可靠性/医学影像/多模态推理主线关联较弱，属于工具使用/代码推理领域",
+  "改进潜力估计需要多次采样不同agent策略，计算成本较高",
+  "144个任务的多样性和37个测试任务的代表性可能有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "代码解释器工具使用，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

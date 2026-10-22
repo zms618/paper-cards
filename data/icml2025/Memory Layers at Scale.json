@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Memory Layers at Scale.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Memory Layers at Scale.pdf",
+ "title": "Memory Layers at Scale",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.3
+ },
+ "one_line": "内存层替换FFN提升事实性，但长文本与泛化分析不足",
+ "innovations": [
+  "产品量化键实现大规模内存检索",
+  "并行内存实现支持128B参数",
+  "共享内存池架构",
+  "Memory+块设计增加门控和非线性"
+ ],
+ "method_framework": "通过替换Transformer中的FFN层实现内存增强，使用可训练的键值查找机制，结合产品量化键和并行处理实现高效内存访问",
+ "experiment_framework": "多规模模型(134m-8B)对比，QA/知识/编码任务，与密集模型和MoE/PEER基线比较，使用NQ/TQA等指标",
+ "takeaways": [
+  "内存层在解码阶段比MoE更高效",
+  "共享内存池的多层架构优于单层",
+  "内存增强模型在事实性任务上提升显著"
+ ],
+ "weaknesses": [
+  "未探索长文本生成任务",
+  "内存层放置的最佳位置依赖于模型规模",
+  "未充分分析内存层对模型泛化能力的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

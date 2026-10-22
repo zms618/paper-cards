@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MoMa Modulating Mamba for Adapting Foundation Models to Video Recognition.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MoMa Modulating Mamba for Adapting Foundation Models to Video Recognition.pdf",
+ "title": "MoMa: Modulating Mamba for Adapting Image Foundation Models to Video Recognition",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "冻结图像模型，用Mamba调制特征做视频分类，参数少但验证不足。",
+ "innovations": [
+  "将Mamba状态空间模型引入图像基础模型的视频适配，高效建模时空动态",
+  "调制(modulation)机制：用Mamba捕捉时序信息后调制图像骨干的特征",
+  "以极少量可训练参数实现图像基础模型到视频识别的迁移"
+ ],
+ "method_framework": "MoMa的核心思想：不从零训练视频模型，而是利用成熟的图像基础模型(IFM)，通过Mamba模块补充时序建模能力。(1)冻结IFM骨干，提取每帧图像特征；(2)Mamba模块处理帧序列，捕捉时空动态；(3)调制机制：将Mamba输出作为调制信号调整IFM特征，实现时空融合。",
+ "experiment_framework": "在多个视频识别基准(Kinetics/SSV2等)上评估。基线包括从头训练的视频模型和其他IFM适配方法。指标为分类准确率。",
+ "takeaways": [
+  "Mamba状态空间模型适合高效建模视频时序动态",
+  "调制机制可有效将时序信息注入静态图像特征",
+  "图像基础模型可高效适配到视频任务，无需大规模视频预训练"
+ ],
+ "weaknesses": [
+  "Mamba的长序列建模能力在视频帧序列上的优势未充分论证",
+  "仅在分类任务上验证，检测/分割等 dense 预测任务适用性未知",
+  "与VideoMAE等视频预训练方法的对比不够全面"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.65,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

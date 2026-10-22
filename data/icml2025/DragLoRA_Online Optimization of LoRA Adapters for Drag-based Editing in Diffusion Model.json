@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DragLoRA_Online Optimization of LoRA Adapters for Drag-based Editing in Diffusion Model.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DragLoRA_Online Optimization of LoRA Adapters for Drag-based Editing in Diffusion Model.pdf",
+ "title": "DragLoRA: Online Optimization of LoRA Adapters for Drag-based Editing in Diffusion Model",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "DragLoRA优化LoRA适配器提升扩散模型拖拽编辑效率，但与主线研究关联弱。",
+ "innovations": [
+  "把LoRA适配器集成进拖拽式编辑流水线，在线优化而非直接迭代输入特征",
+  "引入额外去噪分数蒸馏损失，用原模型输出正则在线模型，保持源图保真",
+  "用更新后的LoRA适配输入特征(ILFA)提升运动监督一致性，并设计双模式自适应优化在精度与效率间切换"
+ ],
+ "method_framework": "在DDIM反演拖拽编辑中，不直接优化输入特征，而是在线训练一个LoRA适配器：以双目标优化+输入潜特征适配更新LoRA，并用去噪分数蒸馏把在线模型对齐原模型以保细节；自适应地在两种优化模式间切换，减少达到目标所需步数。",
+ "experiment_framework": "在拖拽式图像编辑任务上对比DragDiffusion等方法，指标为点跟踪精度(minD)、编辑保真度与达到目标所需步数/耗时，含用户请求样例可视化。",
+ "takeaways": [
+  "在线LoRA优化比直接迭代输入特征更精准且步数更少",
+  "去噪分数蒸馏正则可在编辑时保持源图细节",
+  "双模式自适应在不掉精度前提下显著提速"
+ ],
+ "weaknesses": [
+  "与主线（可靠性/可信AI/医学影像/多模态大模型推理）无关，属生成式图像编辑",
+  "在线训练LoRA的额外显存与实现复杂度在前9页未充分量化",
+  "对复杂遮挡/多物体同时拖拽的鲁棒性需更多样例验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Adapting Self-Supervised Representations As A Latent Space for Efficient Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Adapting Self-Supervised Representations As A Latent Space for Efficient Generation.pdf",
+ "title": "Adapting SELF-SUPERVISED Representations As A Latent Space for Efficient Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "微调SSL的[cls]token作为紧凑潜在空间实现高效生成",
+ "innovations": [
+  "仅微调SSL模型的[cls]token作为紧凑潜在表示",
+  "结合flow matching与余弦相似度损失保持潜在空间结构",
+  "单token表示实现高效无注意力生成架构"
+ ],
+ "method_framework": "基于预训练SSL编码器，仅微调[cls]token嵌入，与生成解码器联合训练，使用flow matching目标函数和余弦相似度正则化",
+ "experiment_framework": "ImageNet-1K类条件生成和MS-COCO文本到图像，使用rFID/gFID/PSNR/SSIM/LPIPS指标，与DiT/SiT/TiTok等基线比较",
+ "takeaways": [
+  "自监督表示的[cls]token可作为有效的紧凑潜在空间",
+  "微调策略对保持潜在空间结构至关重要",
+  "单token表示可大幅降低计算复杂度"
+ ],
+ "weaknesses": [
+  "仅微调[cls]token可能限制模型对某些复杂场景的表示能力",
+  "文本到图像任务中性能虽好但与大型模型仍有差距",
+  "未充分探讨不同SSL架构的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅微调SSL token作为生成空间，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

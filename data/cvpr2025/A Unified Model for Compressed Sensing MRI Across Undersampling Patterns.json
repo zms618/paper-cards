@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/A Unified Model for Compressed Sensing MRI Across Undersampling Patterns.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Unified Model for Compressed Sensing MRI Across Undersampling Patterns.pdf",
+ "title": "A Unified Model for Compressed Sensing MRI Across Undersampling Patterns",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 7.5,
+  "overall": 6.1
+ },
+ "one_line": "神经算子替代CNN的MRI重建，非规则模式小幅增益",
+ "innovations": [
+  "把 unrolled 网络中的 CNN 先验替换为 DISCO 局部积分算子：核 κ=Σ_ℓ θ_ℓ κ_ℓ 定义在函数空间、核尺寸随分辨率缩放，避免标准卷积在高分辨率下退化为逐点算子（Fig.1c）",
+  "利用傅里叶对偶性：在 k 空间做局部积分等价于图像空间全局卷积，故 NO_k 用 DISCO 而非 FNO，既获全局感受野又不截断高频（FNO 会截断，对 MRI 致命）",
+  "分辨率无关设计直接解锁 zero-shot 超分：k 空间加密扩大 FOV、图像空间加密提升细节，无需重训练"
+ ],
+ "method_framework": "x^0=F^{-1}(NO_k(k̃))，随后级联 x^{t+1}=x^t-η^t A^*(A(x^t)-k̃)+λ^t NO_i^t(x^t)；NO_k/NO_i 均为 U 形 UDNO，损失用 -SSIM。",
+ "experiment_framework": "fastMRI knee/brain 多线圈；6 种欠采样模式 × 2×/4×/6×/8×/16× 加速；对比 Zero-filled、ℓ1-Wavelet、U-Net、E2E-VN、E2E-VN++、3 种扩散法；NMSE/PSNR/SSIM。",
+ "takeaways": [
+  "“训练-测试分辨率/采样模式不一致”是医学影像真实部署的核心痛点，本文的跨模式零样本评测协议可直接照搬",
+  "为公平比较而自行重训 E2E-VN++（同数据、同模式）的做法，值得在需要改基线的论文中推广"
+ ],
+ "weaknesses": [
+  "摘要“SSIM+11%、PSNR+4dB”是与未匹配的 E2E-VN 比较；与公平基线 E2E-VN++ 相比，规则模式（equispaced/magic/random）仅高 0.3 dB，增益集中在非规则模式",
+  "brain 上 SSIM 0.9621 vs E2E-VN 0.9620 基本持平， headline 幅度含基线设定差异成分",
+  "给出的 ±std 是测试切片间分布，不是多种子运行方差，无显著性检验；正文 9 页截断，组件消融（NO_k / NO_i / UDNO 各自贡献）不可见",
+  "方法本质是把神经算子迁移到 MRI 重建，理论部分（DISCO 收敛性）来自 [26,31]，本文无新证明"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像重建方法，解决MRI欠采样痛点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

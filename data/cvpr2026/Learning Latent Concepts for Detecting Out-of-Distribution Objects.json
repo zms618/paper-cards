@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Learning Latent Concepts for Detecting Out-of-Distribution Objects.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Learning Latent Concepts for Detecting Out-of-Distribution Objects.pdf",
+ "title": "Learning Latent Concepts for Detecting Out-of-Distribution Objects",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "槽位建模与神经概念绑定改进OOD检测，但固定槽位限制灵活性。",
+ "innovations": [
+  "无监督概念发现模块(UCD)提取稀疏槽位表示",
+  "神经概念绑定器(NCB)融合全局概念与局部特征",
+  "图像引导的OOD评分机制增强ID-OOD区分"
+ ],
+ "method_framework": "UNO-Adapter包含三部分：无监督概念发现(UCD)提取槽位表示并应用关系正则化和信息瓶颈压缩；神经概念绑定器(NCB)将槽位与检测器查询融合；推理时OOD评分结合图像级相似度和分位数阈值策略。",
+ "experiment_framework": "数据集：PASCAL VOC和BDD-100K作为ID数据，MS-COCO和OpenImages作为OOD数据；基线：MSP、MaxLogit、Energy、VOS、SIREN等；指标：AUROC、FPR95、mAP。",
+ "takeaways": [
+  "槽位建模可捕捉全局概念关系而不需修改检测器架构",
+  "信息瓶颈原理可用于压缩槽位表示并保留关键信息",
+  "图像级一致性检查可增强OOD检测的鲁棒性"
+ ],
+ "weaknesses": [
+  "槽位数量固定可能限制处理不同场景中物体数量的灵活性",
+  "方法依赖于预训练的DINO特征提取器，增加了计算复杂度",
+  "在单一小物体占主导的图像中，OOD评分可能不够准确"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "OOD检测与可靠性主线明确交点，槽位建模提升泛化能力",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

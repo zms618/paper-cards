@@ -1,0 +1,41 @@
+{
+ "title": "Parameterization-Based Dataset Distillation of 3D Point Clouds through Learnable Shape Morphing",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "参数化点云蒸馏：粗锚点+morphing增多样，但结构细节丢失",
+ "innovations": [
+  "首次将参数化数据集蒸馏引入不规则/无序的3D点云。",
+  "用多个粗分辨率锚点样本，经可学习权重morphing其形状生成新样本，同显存下提供更多样合成数据。",
+  "设计均匀性感知匹配损失，在比较原始与合成数据集时保持结构一致性。"
+ ],
+ "method_framework": "先构造比原始样本粗分辨率、含多个锚点样本的初始合成集；再用可学习权重对锚点形状做morphing衍生新样本以增多样；蒸馏优化时用均匀性感知匹配损失对齐原始与合成分布，同时优化合成点与morphing权重。",
+ "experiment_framework": "在ModelNet10/40、ShapeNet、ScanObjectNN、OmniObject3D五个点云benchmark上；对比现有数据集蒸馏方法；指标为用蒸馏合成集训练后的分类准确率与显存预算；报告优于既有方法。",
+ "takeaways": [
+  "参数化(锚点+morphing)可在固定显存下扩大多样合成样本数。",
+  "均匀性感知匹配损失缓解无序点云分布对齐的结构失配。",
+  "在五个3D点云基准上超过现有蒸馏方法。"
+ ],
+ "weaknesses": [
+  "数据集蒸馏方向，与可靠性×医学影像主线无直接关联。",
+  "粗分辨率锚点+morphing可能丢失细粒度结构，对类别边界细微的物体影响未充分分析。",
+  "主要在物体分类点云数据验证，对室内/室外大场景点云的可迁移性未展示。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PARAMETERIZATION-BASED Dataset Distillation Of 3D Point Clouds through Learnable Shape Morphing.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PARAMETERIZATION-BASED Dataset Distillation Of 3D Point Clouds through Learnable Shape Morphing.pdf",
+ "raw_overall": 5.98,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "3D点云蒸馏，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

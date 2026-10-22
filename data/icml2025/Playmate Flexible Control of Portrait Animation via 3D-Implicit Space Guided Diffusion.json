@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Playmate Flexible Control of Portrait Animation via 3D-Implicit Space Guided Diffusion.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Playmate Flexible Control of Portrait Animation via 3D-Implicit Space Guided Diffusion.pdf",
+ "title": "Playmate: Flexible Control of Portrait Animation via 3D-Implicit Space Guided Diffusion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "两阶段扩散框架在3D隐式空间实现说话人脸的精细控制",
+ "innovations": [
+  "提出基于3D-Implicit Space Guided Diffusion的说话人脸生成框架，在解耦隐式3D表示空间中做扩散生成",
+  "设计motion-decoupled模块实现表情/唇动/头部姿态等属性的更精确解耦，直接从音频 cues 生成富表情说话视频",
+  "引入emotion-control模块用DiT块编码情绪条件融入音频条件扩散，实现情绪的细粒度可控编辑"
+ ],
+ "method_framework": "本文为生成模型方法论文。针对现有audio-driven talking face唇同步不准、头部姿态与表情缺乏细粒度控制的问题：先采用face-vid2vid/LivePortrait式解耦隐式3D表示分解表情/唇动/姿态；再训练音频条件扩散Transformer并加motion-decoupled模块做属性解耦；第二阶段用emotion-control模块把指定情绪条件编码进潜空间，实现情绪可控。",
+ "experiment_framework": "在说话人脸生成基准上评测；基线为GAN/NeRF式与扩散式既有方法；指标为视频质量(FID等)、唇同步精度(lip-sync指标)与表情/姿态/情绪可控性；报告在画质上超SOTA、唇同步具竞争力。",
+ "takeaways": [
+  "在解耦隐式3D表示空间做扩散，可同时获得高画质与对唇动/姿态/情绪的细粒度控制",
+  "motion-decoupled模块显著改善属性解耦，使音频驱动的表情更生动",
+  "emotion-control模块让同一音频可生成不同情绪的说话脸，提升可编辑性"
+ ],
+ "weaknesses": [
+  "主要面向正脸/近景说话人，对侧脸、极端表情与多人场景的泛化未充分展示",
+  "扩散两阶段训练的推理延迟与实时性(实时avatar场景)未量化",
+  "唇同步'具竞争力'而非全面领先，绝对口型精度的边界案例缺少消融"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

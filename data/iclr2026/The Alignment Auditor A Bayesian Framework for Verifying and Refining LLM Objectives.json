@@ -1,0 +1,41 @@
+{
+ "title": "The Alignment Auditor: A Bayesian Framework for Verifying and Refining LLM Objectives",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "贝叶斯IRL重构奖励推断为可验证过程，但计算成本与假设存疑",
+ "innovations": [
+  "把奖励推断重新框架为审计/验证过程，用 Bayesian IRL 恢复目标的后验分布而非单一过定点奖励估计，正面处理 IRL 的非可辨识性",
+  "实现三类审计能力：逐轮证据下展示后验收缩以系统缩小非可辨识性；输出不确定性感知诊断，暴露伪捷径并标记推断目标不可信的 OOD 提示；证明精炼后的低不确定性奖励可直接用于 RLHF",
+  "在解毒(detox)LLM 上审计成功，并泛化到有用性偏好设定，得到校准良好、可解释的目标"
+ ],
+ "method_framework": "以 Bayesian IRL 建模观测行为对应的奖励后验；随多轮证据采集观察后验收缩以降低非可辨识性；用后验不确定性识别模型依赖的伪捷径与外推不可信的 OOD 提示；将低不确定性奖励回代 RLHF 检验策略层效用与毒性下降。",
+ "experiment_framework": "审计一个已解毒 LLM，并在有用性偏好设定上泛化；指标为后验收缩(非可辨识性降低)、不确定性诊断能否暴露捷径/OOD、以及用精炼奖励做 RLHF 后训练动态与毒性下降是否媲美 ground-truth 对齐。",
+ "takeaways": [
+  "LLM 隐含目标是模糊不可辨识的，必须以后验分布而非单点估计来对待，才能诚实审计",
+  "后验不确定性可直接当作诊断信号，指出哪些提示上推断出的目标不可信、模型在走哪些捷径",
+  "经审计精炼的低不确定性奖励可直接喂回 RLHF，取得接近真值对齐的毒性下降"
+ ],
+ "weaknesses": [
+  "Bayesian IRL 的计算成本随状态/动作空间增长，在真实 LLM 行为上如何采样后验、近似精度如何论文前 9 页未充分展开",
+  "审计结论依赖‘行为=偏好’的 IRL 假设，而 LLM 行为还受训练分布与安全约束影响，归因到单一目标本身就存疑；OOD 标记的校准性缺严格量化",
+  "relevance 给 7.5：核心是不确定性量化、非可辨识性处理、OOD 不可信提示识别与目标可验证性，正落在可靠性/可信AI主线；虽提医学建议但未做医学影像或多模态推理任务，故不到 8"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/The Alignment Auditor A Bayesian Framework for Verifying and Refining LLM Objectives.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The Alignment Auditor A Bayesian Framework for Verifying and Refining LLM Objectives.pdf",
+ "raw_overall": 6.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "不确定性量化与目标可验证性，可靠性主线但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

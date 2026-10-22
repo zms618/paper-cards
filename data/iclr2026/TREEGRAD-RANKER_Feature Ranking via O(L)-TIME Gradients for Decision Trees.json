@@ -1,0 +1,41 @@
+{
+ "title": "TreeGrad-Ranker: Feature Ranking via O(L)-Time Gradients for Decision Trees",
+ "one_line": "理论证明概率值不可靠，提出O(L)梯度优化决策树特征排序",
+ "innovations": [
+  "从理论上证明概率值（含Shapley、Banzhaf）一般不可靠地求解插入/删除指标所对应的联合优化",
+  "提出TreeGrad：对决策树联合目标的多线性扩展在O(L)时间内计算梯度（含加权Banzhaf值），L为叶子数",
+  "基于TreeGrad提出TreeGrad-Ranker（聚合梯度做特征排序）与TreeGrad-Shap（数值稳定的Beta Shapley计算，误差比Linear TreeShap小最多10^15倍）"
+ ],
+ "method_framework": "特征排序质量常用插入/删除指标，二者的联合优化等价于选一个特征子集最大化局部预测值、同时最小化补集。TreeGrad在O(L)时间计算该联合目标多线性扩展的梯度；TreeGrad-Ranker在优化联合目标时聚合梯度生成排序，其特征分数满足概率值除线性性外的全部公理（而线性性正是导致概率值不可靠的根源）。",
+ "experiment_framework": "在决策树/梯度提升树的局部预测解释上评测；基线为Linear TreeShap、Banzhaf等；指标为插入/删除指标与Shapley值数值误差；报告TreeGrad-Ranker在插入/删除上显著更优，TreeGrad-Shap数值误差远小于Linear TreeShap。",
+ "takeaways": [
+  "Shapley/Banzhaf等概率值因其线性性，对插入/删除特征排序本质上不可靠",
+  "直接优化插入/删除联合目标的O(L)梯度可得到更优的特征排序",
+  "TreeGrad-Shap把Linear TreeShap的数值误差最多降低10^15倍"
+ ],
+ "weaknesses": [
+  "主要针对决策树/GBT，对深度神经网络等其他模型的可迁移性未涉及",
+  "插入/删除指标本身需大量模型前向，整体解释成本仍较高",
+  "放弃线性性公理换取排序可靠性，这一权衡的实用边界需更多场景验证"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/TREEGRAD-RANKER_Feature Ranking via O(L)-TIME Gradients for Decision Trees.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TREEGRAD-RANKER_Feature Ranking via O(L)-TIME Gradients for Decision Trees.pdf",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "决策树特征排序方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

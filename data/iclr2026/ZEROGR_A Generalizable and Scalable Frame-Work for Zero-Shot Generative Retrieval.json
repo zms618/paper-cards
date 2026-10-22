@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/ZEROGR_A Generalizable and Scalable Frame-Work for Zero-Shot Generative Retrieval.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/ZEROGR_A Generalizable and Scalable Frame-Work for Zero-Shot Generative Retrieval.pdf",
+ "title": "ZeroGR: A Generalizable and Scalable Framework for Zero-Shot Generative Retrieval",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "三组件框架实现零样本生成式检索，但优势与局限并存",
+ "innovations": [
+  "LM-based docid生成器，把文本/表格/代码等异构文档统一编码为语义有意义的docid",
+  "指令微调的query生成器从自然语言任务描述生成多样query以增强语料索引",
+  "提出反向退火(reverse annealing)解码策略，在docid生成时平衡精确率与召回率；并开源目前最多样的OpenInstIR指令检索数据集"
+ ],
+ "method_framework": "三组件：(1)用LM把异构文档映射为语义化docid；(2)用指令微调query生成器从任务描述造多类型query以改善索引；(3)反向退火解码在生成docid时动态权衡precision/recall；整体以指令方式跨多种IR任务零样本迁移。",
+ "experiment_framework": "在BEIR与MAIR基准上评估跨多种IR任务的零样本/有监督检索；基线为稠密检索与其他生成式检索方法；指标为nDCG等检索指标；报告GR方法中SOTA，并分析指令微调任务规模与性能的关系。",
+ "takeaways": [
+  "语义化docid+指令化query可让生成式检索零样本泛化到未见IR任务",
+  "训练中遇到的IR任务越多，性能持续提升，提示指令覆盖规模是关键",
+  "反向退火解码是生成docid时调和精确/召回的有效手段"
+ ],
+ "weaknesses": [
+  "生成式检索在大规模语料上的docid冲突/歧义与检索延迟问题未充分讨论",
+  "新SOTA限定在GR方法内部，与强稠密检索基线(如成熟dense retriever)的相对优势未明确拉开",
+  "OpenInstIR的构建依赖LM生成query，其引入的噪声/偏差对零样本泛化的影响未做隔离分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "零样本检索方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

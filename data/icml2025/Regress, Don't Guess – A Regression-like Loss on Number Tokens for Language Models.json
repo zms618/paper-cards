@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Regress, Don't Guess – A Regression-like Loss on Number Tokens for Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Regress, Don't Guess – A Regression-like Loss on Number Tokens for Language Models.pdf",
+ "title": "Regress, Don't Guess – A Regression-like Loss on Number Tokens for Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.0
+ },
+ "one_line": "为数字token添加类回归损失，提升LLM数学推理能力但幅度有限。",
+ "innovations": [
+  "指出交叉熵为名义尺度损失，对错误数字 token 一视同仁、无法编码数值邻近性，是 LLM 算术能力弱的根因之一",
+  "提出两种 token 级数字损失：LNTL-MSE（数字 token 取值与概率的点积）与 LNTL-WAS（标签与预测分布间的 Wasserstein-1 距离）",
+  "NTL 可即插即用地叠加在 CE 目标上、无运行时开销，并在回归任务上匹配专用回归头，可扩展到 3B 模型"
+ ],
+ "method_framework": "在语言建模头对数字 token 构造类回归目标：以数字 token 的数值为权重、用其预测概率分布计算 MSE 形式损失或与 one-hot 标签分布间的 Wasserstein 距离；将其作为辅助项 λ·LNTL 与标准 CE 联合训练，推理时无需改动、无额外计算图开销。",
+ "experiment_framework": "在多个数学/定量数据集上评测，对比纯 CE 与回归头方案；指标为数学任务准确率与回归任务误差；验证 NTL 可匹配专用回归头，并在 3B 参数模型上规模化仍带来稳定提升。",
+ "takeaways": [
+  "让损失感知数字的数值邻近性可低成本提升 LLM 的定量推理",
+  "token 级类回归损失在效果上可替代专门的回归头",
+  "该方法易于集成进现有预训练目标，是提升 LLM 可靠性的轻量补丁"
+ ],
+ "weaknesses": [
+  "仅作用于数字 token，对符号推理、多步推理链的整体可靠性提升有限",
+  "增益为稳定但幅度有限，前 9 页未见与强推理模型(如 RL 训练推理模型)在难度数学基准上的正面对比",
+  "两种损失的数值尺度/权重 λ 需调参，跨 tokenizer(多字节数字)的兼容性未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

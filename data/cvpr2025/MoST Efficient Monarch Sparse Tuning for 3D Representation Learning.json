@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/MoST Efficient Monarch Sparse Tuning for 3D Representation Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/MoST Efficient Monarch Sparse Tuning for 3D Representation Learning.pdf",
+ "title": "MoST Efficient Monarch Sparse Tuning for 3D Representation Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "Point Monarch矩阵实现3D点云稀疏调优，但超参数依赖与任务泛化有限。",
+ "innovations": [
+  "Point Monarch矩阵专为3D点云设计，能捕获局部几何特征",
+  "MoST作为首个基于重参数化的3D PEFT方法，避免推理开销",
+  "多层级特征融合策略增强骨干网络到任务头的知识传递"
+ ],
+ "method_framework": "MoST将密集更新权重矩阵替换为稀疏的Point Monarch矩阵(KLRK)，通过KNN局部分组、新中心点插值和修正来捕获点云局部特征，同时保持高表达能力和硬件效率。",
+ "experiment_framework": "在ScanObjectNN、ModelNet40、ShapeNetPart和S3DIS等数据集上评估，比较多种PEFT方法(如LoRA、IDPT、DAPT等)在不同骨干网络(Transformer、Mamba、层次结构)上的性能。",
+ "takeaways": [
+  "结构化矩阵设计需考虑特定数据特性(如点云局部几何特征)",
+  "重参数化方法在保持推理效率的同时能有效提升性能",
+  "多层级特征融合可增强知识传递而不增加参数"
+ ],
+ "weaknesses": [
+  "Point Monarch矩阵的块大小b需要根据任务调整，可能增加超参数调优复杂度",
+  "实验主要集中在分类任务，分割任务提升相对有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D点云稀疏调优，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

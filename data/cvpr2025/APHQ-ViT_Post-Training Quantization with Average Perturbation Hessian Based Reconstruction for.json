@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/APHQ-ViT_Post-Training Quantization with Average Perturbation Hessian Based Reconstruction for.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/APHQ-ViT_Post-Training Quantization with Average Perturbation Hessian Based Reconstruction for.pdf",
+ "title": "APHQ-ViT: Post-Training Quantization with Average Perturbation Hessian Based Reconstruction for Vision Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 4.5,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "改进Hessian估计与激活重建，ViT量化在3bit有提升但4bit优势微弱",
+ "innovations": [
+  "APH损失：不再用Fisher信息矩阵近似Hessian，而是对输出加ΔO=1e-6扰动做O±、用(置J(O+)−置J(O−))/(2ΔO)由均值定理直接估对角线Hessian（Eq.6），再在N个校准样本上取均值H̄，只多一次前向反向、训练复杂度不变",
+  "Theorem 3.1/3.2 给出E[L_APH]=E[L_PH]且Var(∂L_APH/∂θ)≤Var(∂L_PH/∂θ)，说明APH梯度无偏且方差更低；同时把量化重述为小无标注集上的蒸馏（分类用KL、两阶段检测分割用KL+smooth L1），使Hessian推导不再依赖预测分布≈真实分布",
+  "MLP Reconstruction：把MLP里的GELU整体换成ReLU以消除后GELU激活在(−0.17,0]的极端不平衡分布，并叠加按p=0.99分位数截断的O_clamp=FC2(clamp(ReLU(FC1(X)),Quantile_p))约束激活值域，最终L_distill=L_Direct+2·L_Clamp，用L_direct避免硬截断区梯度消失"
+ ],
+ "method_framework": "逐block：先MLP Reconstruction（GELU→ReLU、分位截断、APH加权重建），再基于QDrop做量化重建、以AdaRound调权重，两阶段统一用平均扰动Hessian损失按输出重要性加权，权重逐通道均匀、激活逐层均匀量化。",
+ "experiment_framework": "ImageNet上ViT-S/B、DeiT-T/S/B、Swin-S/B的3/4bit，基线含PTQ4ViT/RepQ-ViT/ERQ/IGQ-ViT/AdaLog/I&S-ViT/DopQ-ViT/QDrop/OASQ（QDrop用官方码复现）；COCO上Mask R-CNN与Cascade的4/4bit；标定集仅1024/256张无标注图；消融章节缺失。",
+ "takeaways": [
+  "用ΔO=1e-6的二次前向反向有限差分直接估对角线Hessian替代Fisher近似，只多一次fwd+bwd且复杂度不变，是任何Taylor型压缩重建损失都可替换的更稳版本",
+  "重建损失乘以Hessian对角等价于按输出重要性加权（class token与关键通道单独加权），比MSE等权更贴合ViT的重建目标",
+  "把蒸馏损失从CE换成KL/smooth L1，使Hessian推导脱离‘预测分布=真实分布’前提，同一套重建框架得以跨分类/检测/分割复用"
+ ],
+ "weaknesses": [
+  "增益高度集中在3bit：表1中4bit下APHQ相对DopQ-ViT在七个backbone上仅+0.38/+1.46/+1.12/+0.56/+0.08/+0.10/+0.08，除ViT-B与DeiT-T外几乎在0.1个百分点内，对Swin-S/B几乎无差异，所谓大幅领先主要由3bit场景贡献",
+  "即便在APHQ下3bit的绝对精度仍远低于全精度（ViT-S 63.17 vs 81.39、DeiT-T 55.42 vs 72.21），方法只是相对同类更好，并未弥合极低比特下的精度鸿沟；3bit下标定类方法普遍0.1%的现象也说明该bits档本身仍在不可用区间",
+  "正文止于4.3节开头，4.4消融（APH vs BRECQ Hessian vs MSE、L_direct与L_clamp各自贡献、ΔO=1e-6与样本数N、α=2与p=0.99敏感性）与多种子方差全部缺失；Theorem 3.1/3.2的证明被推到补充材料，‘certain independence assumptions’未做检验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "ViT量化方法，仅触及可靠性主线边缘，无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

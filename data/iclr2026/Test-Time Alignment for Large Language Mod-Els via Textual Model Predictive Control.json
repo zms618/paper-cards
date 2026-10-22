@@ -1,0 +1,41 @@
+{
+ "title": "Test-Time Alignment for Large Language Models via Textual Model Predictive Control",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "用MPC解决测试时对齐的视界与维数诅咒，但依赖奖励模型且通用性存疑",
+ "innovations": [
+  "用序贯决策视角统一两类测试时对齐：token 级(引导解码)的视界诅咒与响应级(迭代精修)的维数诅咒，并将其形式化为权衡",
+  "受分层 RL 启发提出事后子目标识别(Hindsight Subgoal Identification)：从生成中回溯找出高奖励中间产物作为子目标（如 MT 中的一句、代码修复中的一处），克服 MPC 依赖硬分段的缺陷",
+  "提出子目标条件再生成(Subgoal-Conditioned Re-Generation)：以已验证的高质量子目标为条件规划后续迭代，在既有成功上累积改进"
+ ],
+ "method_framework": "把文本生成看作序贯决策，在推理时做滚动预测控制：先采样若干候选片段，用奖励模型评估，回溯识别其中高奖励片段作为子目标，再以该子目标为条件引导后续规划迭代；无需重训模型，仅在推理时做规划。",
+ "experiment_framework": "三个分段特性不同的任务：语篇级机器翻译、长文本生成、程序合成；对比引导解码与响应级迭代精修；指标为对齐/任务性能，验证 TMPC 的一致性提升与通用性。",
+ "takeaways": [
+  "token 级与响应级对齐各有视界/维数诅咒，需在中间粒度（子目标）上做规划",
+  "事后识别高奖励子目标，再以其为条件再生成，能稳定累积改进",
+  "MPC+分层RL 思想可在不重训的前提下做轻量测试时对齐"
+ ],
+ "weaknesses": [
+  "依赖一个能评估中间片段奖励的奖励模型，其判断偏差会被子目标识别放大；子目标如何切分、回溯成本对长文本的开销未充分量化",
+  "只在三个任务上验证，任务分段特性差异大但样本规模有限，跨其它对齐场景的通用性未证",
+  "relevance 给 5.5：属测试时对齐/迭代规划，虽用奖励引导，但非不确定性量化/幻觉抑制，落地域为通用 NLP、非医学影像或多模态大模型推理，按规则不抬分"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Test-Time Alignment for Large Language Mod-Els via Textual Model Predictive Control.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Test-Time Alignment for Large Language Mod-Els via Textual Model Predictive Control.pdf",
+ "raw_overall": 5.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "测试时对齐非可靠性主线，落地域不符",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

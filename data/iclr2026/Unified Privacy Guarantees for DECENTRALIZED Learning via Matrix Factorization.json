@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unified Privacy Guarantees for DECENTRALIZED Learning via Matrix Factorization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unified Privacy Guarantees for DECENTRALIZED Learning via Matrix Factorization.pdf",
+ "title": "Unified Privacy Guarantees for Decentralized Learning via Matrix Factorization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.6
+ },
+ "one_line": "将中心化MF隐私分析扩展至DL，统一框架与算法设计。",
+ "innovations": [
+  "将中心化基于矩阵分解(MF)分析时间噪声相关性的DP账户技术推广到去中心化学习(DL)",
+  "把标准DL算法与常见信任模型(PNDP/SecLDP等)统一进同一表述，为不同算法/信任模型提供统一而非ad-hoc的隐私证明框架",
+  "提出MAFALDA-SGD：带用户级相关噪声的gossip式DL算法，在合成与真实图上优于现有DP-DL方法"
+ ],
+ "method_framework": "DL靠P2P平均局部更新训练，但需DP保证隐私；现有DP-DL证明ad-hoc且账户偏松，导致隐私-效用权衡差。本文把中心化MF账户(刻画时间噪声相关性)推广到DL：用矩阵分解统一表示标准DL算法与信任模型，更紧地account跨P2P通信传播的噪声相关性，从而既给现有算法更紧保证，又指导设计新算法；MAFALDA-SGD即据此设计，注入用户级相关噪声。",
+ "experiment_framework": "在合成图与真实世界通信图上对比现有DP-DL算法与(中心化/本地DP)基线，指标为隐私-效用权衡(给定隐私预算下的模型效用)；报告MAFALDA-SGD更优。",
+ "takeaways": [
+  "中心化MF噪声相关性账户可迁移到DL，把DL算法与信任模型统一在一个框架内分析",
+  "更紧的隐私账户能改善DL的隐私-效用权衡，解释为何实测DL常看似不如中心化",
+  "统一框架可原则性地指导设计新的DP-DL算法，而非逐个ad-hoc证明"
+ ],
+ "weaknesses": [
+  "落地域为去中心化学习隐私理论，非多模态推理/医学影像，隐私(可信AI)主线相关但落地域偏离",
+  "MF账户的紧性优势在大图/高通信轮数下的可扩展性与计算成本正文前9页未充分量化",
+  "新算法MAFALDA-SGD的验证在合成+小规模真实图，对大规模异构网络的结论外推需更多证据"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "隐私(可信AI)主线相关，但落地域偏离多模态推理/医学影像",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

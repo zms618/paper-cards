@@ -1,0 +1,37 @@
+{
+ "title": "Fragments to Facts: Partial-Information Fragment Inference from LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "PIFI威胁模型：无序片段可推断医疗/法律LLM隐私，攻击方法需强假设",
+ "innovations": [
+  "提出PIFI威胁模型，放宽既有memorization/membership inference要求攻击者持有有序完整前缀的强假设，仅需无序、部分、公开可得的片段",
+  "提出PRISM攻击：用外部world-model概率p_world对似然比p_D/p_D'做正则，在data-blind条件下逼近需要标注样本的Classifier基线",
+  "系统比较full fine-tune vs LoRA、1 epoch vs收敛epoch、多种模型族(Llama/Qwen/Mistral)在医疗与法律两域的脆弱性"
+ ],
+ "method_framework": "攻击者对目标LLM查询p_D(y*|S)、对shadow模型查询p_D'(y*|S)、对未fine-tuned的world model查询p_world(y*|S)；LR-Attack用似然比p_D/p_D'判定y*是否在训练集中；PRISM用贝叶斯展开Pr(y* in D|S)并以world-model先验Pr(s in D)正则，去除p_D'项带来的偏差。",
+ "experiment_framework": "医疗对话摘要(SciSpacy NER抽取实体片段，948/69/312训练/验证/测试)与法律量刑摘要(Free Law Project，748/188/235)；目标模型Llama-3.1-8B/Qwen-2-7B/Mistral-7B，含Llama-3.2-3B与FP8 LoRA变体；指标为ROC-AUC与TPR@2%/5%FPR。",
+ "takeaways": [
+  "三种攻击在医疗域ROC-AUC达0.63-0.73，TPR@2%FPR约4-8%，显著高于随机猜测，证明单epoch fine-tune即可泄露隐私片段",
+  "重复epoch(到收敛)持续提升攻击成功率；LoRA-fine-tune脆弱性低于full FT但仍有非平凡泄露",
+  "PRISM在data-blind条件下接近data-aware Classifier基线，且跨模型族稳定"
+ ],
+ "weaknesses": [
+  "数据集规模较小(医疗312/法律235测试样本)，AUC置信区间未报告",
+  "攻击需要访问shadow模型(D')与多个world model，实际黑盒可获得性仍依赖较强假设",
+  "仅评估片段级泄露，未量化端到端可被攻击者利用的具体隐私危害，也未提出防御机制"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Fragments to Facts Partial-Information Fragment Inference from LLMs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Fragments to Facts Partial-Information Fragment Inference from LLMs.pdf",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

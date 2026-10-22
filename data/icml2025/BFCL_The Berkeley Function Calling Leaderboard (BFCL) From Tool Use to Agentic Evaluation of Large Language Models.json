@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/BFCL_The Berkeley Function Calling Leaderboard (BFCL) From Tool Use to Agentic Evaluation of Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/BFCL_The Berkeley Function Calling Leaderboard (BFCL) From Tool Use to Agentic Evaluation of Large Language Models.pdf",
+ "title": "The Berkeley Function Calling Leaderboard (BFCL): From Tool Use to Agentic Evaluation of Large Language Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 7,
+  "relevance": 8,
+  "overall": 6.5
+ },
+ "one_line": "构建AST函数调用评测基准，揭示模型在多轮记忆和长程推理上的显著短板。",
+ "innovations": [
+  "提出基于抽象语法树(AST)的函数调用评估方法，可扩展到数千函数且与执行评估高度相关",
+  "构建涵盖单轮调用、并行调用、多轮对话、状态管理、幻觉检测、智能体推理的综合评测体系",
+  "引入众包函数集和真实世界用户贡献的函数，弥补专家构建数据的分布偏差"
+ ],
+ "method_framework": "BFCL分为五大类：(1)Single Turn：简单/多函数/并行调用的AST和执行评估；(2)Crowd Sourced：众包贡献的函数；(3)Hallucination：无关性/相关性测试模型是否拒绝调用不相关函数；(4)Multi Turn：多轮对话中的状态管理和参数跟踪；(5)Agentic：长程推理、Web搜索、记忆、SQL等复杂任务。AST匹配将函数调用解析为语法树结构进行比较，忽略语义等价但形式不同的变体。",
+ "experiment_framework": "评测GPT-4o/GPT-4-turbo/GPT-4o-mini/o1/Qwen2.5/Gemini-2.0/ToolACE/BitAgent等20+模型。每个类别细分多个子任务，报告各类别准确率和总体准确率。区分Prompt-based和Fine-tuned(FC)两种调用模式。",
+ "takeaways": [
+  "SOTA模型在单轮调用上表现优异(>90%)，但多轮记忆和长程推理仍是短板(记忆任务仅6%)",
+  "AST评估与执行评估高度相关，可作为低成本替代方案",
+  "模型在幻觉检测上表现参差，部分模型容易被诱导调用不相关函数"
+ ],
+ "weaknesses": [
+  "AST匹配无法检测语义正确但语法形式不同的函数调用变体",
+  "智能体类任务的评估相对简单，未涵盖真实工具调用的复杂错误恢复场景",
+  "基准本身是评测工具而非方法创新，缺乏对如何改进函数调用能力的指导"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

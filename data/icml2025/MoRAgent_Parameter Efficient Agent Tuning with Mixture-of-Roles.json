@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MoRAgent_Parameter Efficient Agent Tuning with Mixture-of-Roles.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MoRAgent_Parameter Efficient Agent Tuning with Mixture-of-Roles.pdf",
+ "title": "MoRAgent: Parameter Efficient Agent Tuning with Mixture-of-Roles",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "角色分解的LoRA微调，工具调用和数学任务有提升",
+ "innovations": [
+  "将智能体能力分解为推理者、执行者和总结者三种角色",
+  "提出Mixture-of-Roles框架，使用专门化的LoRA组处理不同角色",
+  "开发多角色数据生成管道，包含角色特定内容完成和可靠性验证"
+ ],
+ "method_framework": "MoR框架包含三个专门化的LoRA组，每个组负责一个角色，通过基于规则的门控和可学习的令牌感知路由器合理分配LoRAs，引入辅助平衡损失和正交损失优化训练过程。",
+ "experiment_framework": "在StableToolBench、BFCL、GSM8K和MATH基准上评估，使用Llama3.2-1B-Instruct和Phi-3.5-mini-Instruct等模型，通过DFS通过率和胜率衡量性能。",
+ "takeaways": [
+  "角色分解方法可有效处理智能体的多能力需求",
+  "参数高效微调可在保持模型性能的同时显著减少计算资源需求",
+  "数据质量验证对智能体微调至关重要"
+ ],
+ "weaknesses": [
+  "角色划分可能过于简化，实际智能体任务可能需要更复杂的交互模式",
+  "实验主要关注工具调用和数学问题，缺乏对更复杂推理任务的评估",
+  "可靠性验证过程依赖人工检查，可能存在主观偏差"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

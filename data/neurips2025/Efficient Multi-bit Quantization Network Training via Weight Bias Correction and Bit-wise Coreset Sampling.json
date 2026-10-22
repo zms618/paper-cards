@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Efficient Multi-bit Quantization Network Training via Weight Bias Correction and Bit-wise Coreset Sampling.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Efficient Multi-bit Quantization Network Training via Weight Bias Correction and Bit-wise Coreset Sampling.pdf",
+ "title": "Efficient Multi-bit Quantization Network Training via Weight Bias Correction and Bit-wise Coreset Sampling",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "常规量化训练优化，偏置校正与核心集采样提升效率",
+ "innovations": [
+  "权重偏置校正技术消除跨比特宽度的激活分布不匹配",
+  "位级核心集采样策略利用跨比特宽度梯度对齐现象",
+  "混合训练方案结合批处理和位级训练的优势"
+ ],
+ "method_framework": "通过权重偏置校正对齐量化权重分布，使不同比特宽度模型共享BN参数；结合位级核心集采样，为每个比特宽度选择信息量丰富的子集，减少训练数据量。",
+ "experiment_framework": "在CIFAR-10/100、TinyImageNet和ImageNet-1K数据集上评估ResNet和ViT架构，对比Dedicated、Any-Precision基线，使用准确率和GPU小时数作为指标。",
+ "takeaways": [
+  "权重空间校正比激活空间校正更高效",
+  "跨比特宽度梯度对齐现象可被利用来减少训练冗余",
+  "动态核心集采样能适应样本重要性的时间变化"
+ ],
+ "weaknesses": [
+  "权重偏置校正可能无法完全解决所有激活分布不匹配问题",
+  "位级训练方案增加了实现复杂度",
+  "核心集采样策略在不同架构上的泛化能力需要进一步验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

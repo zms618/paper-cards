@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Qwen- -Layered Towards Inherent Editability via Layer Decomposition.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Qwen- -Layered Towards Inherent Editability via Layer Decomposition.pdf",
+ "title": "Qwen- -Layered Towards Inherent Editability via Layer Decomposition",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "扩散模型分解图像为多层RGBA，解决编辑一致性问题",
+ "innovations": [
+  "RGBA-VAE统一RGB和RGBA图像的潜在表示",
+  "VLD-MMDiT架构支持可变数量的层分解",
+  "多阶段训练策略将预训练生成模型适配为多层图像分解器",
+  "从PSD文件提取和标注多层图像的数据处理管道"
+ ],
+ "method_framework": "基于扩散模型的端到端框架，将RGB图像分解为多个语义解耦的RGBA层，通过RGBA-VAE统一潜在空间，VLD-MMDiT支持可变层分解，多阶段训练逐步适应新任务。",
+ "experiment_framework": "Crello数据集评估分解质量，RGB L1和Alpha soft IoU指标；AIM-500数据集评估RGBA图像重建，PSNR、SSIM、rFID和LPIPS指标；与LayerD和Qwen-Image-Edit对比。",
+ "takeaways": [
+  "层表示方法从根本上解决图像编辑一致性问题",
+  "多阶段训练策略有效适应预训练模型到新任务",
+  "从真实PSD文件提取的多层数据集提升模型性能"
+ ],
+ "weaknesses": [
+  "依赖高质量PSD文件，数据获取可能受限",
+  "模型复杂度高，训练资源需求大",
+  "未充分探讨在复杂场景下的层分解边界问题"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "图像编辑方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

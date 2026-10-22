@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Diffusion Prior.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Diffusion Prior.pdf",
+ "title": "Diffusion Prior",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "扩散模型先验用于盲修复，但计算复杂且复杂退化提升有限",
+ "innovations": [
+  "发现预训练扩散模型具有比DIP更广泛的隐式先验特性",
+  "提出针对高低频退化的两种自监督停止准则",
+  "实现完全无需退化模型知识的盲图像修复"
+ ],
+ "method_framework": "通过优化预训练扩散模型的输入噪声，利用其隐式先验特性在优化过程中先重建干净图像后拟合退化图像，通过早期停止获得最佳修复结果",
+ "experiment_framework": "在CelebA和ImageNet上评估去噪、超分辨率、JPEG伪影去除等任务，与DIP、DreamClean等方法比较PSNR、SSIM和LPIPS指标",
+ "takeaways": [
+  "扩散模型在图像重建中表现出与DIP类似的先验特性但适用范围更广",
+  "自监督停止准则能有效确定优化停止点无需真实标签"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，优化过程需要较多迭代",
+  "对于某些复杂退化类型，性能提升有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "图像修复方法有可迁移机制但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

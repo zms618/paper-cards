@@ -1,0 +1,41 @@
+{
+ "title": "Accelerating Spectral Clustering under Fairness Constraints",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "将公平谱聚类重构为DC优化问题，用ADMM加速求解",
+ "innovations": [
+  "把 Fair SC 重述为差凸(DC)框架下的 trace 最大化问题",
+  "提出新颖的变量增广策略，并采用适配 DC 问题的 ADMM 型算法，使每个子问题可高效求解",
+  "免除以往方法所需的对公平约束图拉普拉斯的昂贵特征分解，随问题规模扩大获得显著加速"
+ ],
+ "method_framework": "公平谱聚类要求每个簇内各人口群体比例与总体一致。本文将其写成 DC 规划，通过变量增广把不可微的非凸项拆为两个凸函数之差，再用面向 DC 的 ADMM 交替优化；各子问题有闭式/高效解，从而以迭代优化替代全图特征分解。",
+ "experiment_framework": "在合成与真实基准数据集上，对比既有 Fair SC 方法的计算时间与聚类/公平性指标，重点验证随问题规模增大的加速比。",
+ "takeaways": [
+  "DC 重构 + ADMM 可在保持群体公平约束的同时显著加速谱聚类",
+  "免去昂贵特征分解后，方法更能扩展到大规模真实问题",
+  "该优化路线是公平聚类走向实际应用的重要一步"
+ ],
+ "weaknesses": [
+  "公平性收益主要沿用既有定义，方法贡献集中在优化加速而非新公平概念",
+  "迭代 ADMM 的收敛性/初始化敏感性在前 9 页未见充分讨论",
+  "与近似谱方法/Nyström 等其他加速路线的对比缺失"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Accelerating Spectral Clustering under Fairness Constraints.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Accelerating Spectral Clustering under Fairness Constraints.pdf",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "公平聚类优化加速，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

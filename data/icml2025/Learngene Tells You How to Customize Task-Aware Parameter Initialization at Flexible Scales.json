@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learngene Tells You How to Customize Task-Aware Parameter Initialization at Flexible Scales.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learngene Tells You How to Customize Task-Aware Parameter Initialization at Flexible Scales.pdf",
+ "title": "Learngene Tells You How to Customize: Task-Aware Parameter Initialization at Flexible Scales",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "组合Learngene与GHN，实现多任务参数初始化，但创新有限且与主线无关",
+ "innovations": [
+  "将 Learngene 思想引入 GHN 参数初始化，让初始化预测同时依赖架构与任务特性",
+  "多任务调优得到单一共享 TAL 模型，避免 GHN 每任务重训的计算/存储开销",
+  "支持灵活尺度：从 ancestry 模型凝练 learngene 再扩展到 tiny/small/base 等不同规模模型初始化"
+ ],
+ "method_framework": "用已训练 ancestry 模型指导预训练 TAL 模型，再在多任务上协同调优；learngene decoder 根据计算图架构与任务条件信息预测各尺度网络参数，作为下游模型初始化。",
+ "experiment_framework": "在 Decathlon 等多数据集上对比 GHN/LoGAH 等初始化方法，报告初始化后准确率（较 GHN 平均 +24.39%）及不同规模模型初始化效果。",
+ "takeaways": [
+  "GHN 初始化可受益于任务特性条件，跨尺度/跨任务共享一个生成模型",
+  "Learngene 的凝练-扩展范式可缓解 GHN 大模型初始化失效与小数据集性能差问题",
+  "任务感知初始化显著降低下游训练成本"
+ ],
+ "weaknesses": [
+  "属初始化/GHN 方向的增量改进，框架组合痕迹明显",
+  "应用域为通用视觉模型初始化，与鲁棒性/可信AI/多模态大模型主线无关",
+  "前9页未见对 ViT-base 等真正大模型初始化失效的定量缓解与消融"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

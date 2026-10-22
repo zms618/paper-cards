@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Agent Workflow Memory.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Agent Workflow Memory.pdf",
+ "title": "Agent Workflow Memory",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "工作流记忆机制提升web agent性能，但依赖LLM能力且泛化性存疑",
+ "innovations": [
+  "提出agent工作流记忆机制：从过往成功轨迹中归纳出通用可复用的任务工作流(routine)，而非简单存储原始轨迹",
+  "支持离线和在线两种模式：离线从训练集预归纳工作流，在线从测试查询中实时归纳并积累",
+  "选择性工作流检索：根据当前任务动态选择最相关的工作流来引导行动，而非无差别拼接示例"
+ ],
+ "method_framework": "AWM将agent的过往成功轨迹归纳为抽象工作流（步骤序列+条件）。遇到新任务时，检索最相关的已有工作流作为上下文引导。离线模式：从训练集批量归纳工作流；在线模式：每解决一个任务后即时归纳新工作流并加入记忆库。工作流以自然语言伪代码形式存储和检索。",
+ "experiment_framework": "数据集：Mind2Web（跨网站web导航）和WebArena（完整网站模拟环境），共1000+任务，200+领域。基线：标准LLM agent（无工作流记忆）。指标：任务成功率、完成步数。还测试了跨任务/跨网站/跨领域泛化能力。",
+ "takeaways": [
+  "AWM在Mind2Web和WebArena上分别相对提升24.6%和51.1%成功率，同时减少完成任务所需步数",
+  "在线AWM在分布偏移增大时优势扩大（8.9→14.0绝对点），说明工作流记忆能增强泛化鲁棒性",
+  "从经验中归纳抽象工作流比简单存储示例更有效，因为工作流可跨任务迁移"
+ ],
+ "weaknesses": [
+  "工作流归纳和检索的质量高度依赖底层LLM的能力，弱模型可能归纳出错误的工作流",
+  "仅在web导航任务验证，其他agent场景（如桌面操作、代码生成）的适用性未知",
+  "工作流记忆库增长后的检索效率和噪声问题未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "web agent工作流记忆与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

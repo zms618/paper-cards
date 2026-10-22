@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Latent Diffusion Planning for Imitation Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Latent Diffusion Planning for Imitation Learning.pdf",
+ "title": "Latent Diffusion Planning for Imitation Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "elevance": 4.0,
+  "evidence": 5.5,
+  "overall": 5.3
+ },
+ "one_line": "模块化潜空间扩散规划，在仿真机器人任务中利用异构数据",
+ "innovations": [
+  "模块化分离规划与动作预测：规划器用无动作数据、IDM用次优数据，分别从异构数据获益",
+  "在紧凑VAE潜空间上而非图像像素上做扩散规划，避免视频生成的高成本并支持闭环重规划",
+  "用扩散模型同时做潜状态轨迹预测与动作提取，预测稠密时序潜状态序列"
+ ],
+ "method_framework": "先训练VAE得到压缩潜嵌入；规划器在潜空间用扩散预测未来状态轨迹（可用无动作数据训练），IDM用扩散从潜状态预测动作（可用次优数据训练），闭环组合成反应式策略。",
+ "experiment_framework": "在仿真视觉机器人操作任务上对比 Diffusion Policy/ACT 等SOTA，报告可利用无动作/次优数据后的任务成功率。",
+ "takeaways": [
+  "模块化设计让规划与IDM分别消化不同质量数据，突破仅依赖专家演示的限制",
+  "潜空间扩散规划比视频生成更高效，且支持闭环重规划",
+  "稠密潜状态预测优于仅预测子目标，可扩展到视觉域"
+ ],
+ "weaknesses": [
+  "应用域为机器人模仿学习，与鲁棒性/多模态大模型主线无关",
+  "仅在仿真任务验证，真实机器人泛化未展开",
+  "VAE重构误差与扩散采样步数的权衡需进一步分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

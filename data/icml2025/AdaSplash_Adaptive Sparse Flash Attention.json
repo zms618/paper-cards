@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/AdaSplash_Adaptive Sparse Flash Attention.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/AdaSplash_Adaptive Sparse Flash Attention.pdf",
+ "title": "AdaSplash: Adaptive Sparse Flash Attention",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "优化α-entmax注意力，但硬件限制与落地区域局限明显",
+ "innovations": [
+  "混合Halley-bisection算法减少迭代次数",
+  "自定义Triton内核处理自适应稀疏性",
+  "块掩码机制跳过零块计算"
+ ],
+ "method_framework": "结合硬件优化算法与α-entmax稀疏优势，通过分块计算和重计算策略减少内存访问，实现高效注意力计算。",
+ "experiment_framework": "RoBERTa/ModernBERT文本分类和单向量检索，GPT-2语言建模，比较运行时和内存效率。",
+ "takeaways": [
+  "混合算法显著加速α-entmax计算",
+  "块掩码机制有效利用稀疏性",
+  "长上下文任务中性能与效率平衡"
+ ],
+ "weaknesses": [
+  "额外HBM读取使前向传播始终慢于FlashAttention",
+  "块掩码增加内存开销",
+  "仅评估NLP任务未涉及医学影像等落地区域"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "注意力优化方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

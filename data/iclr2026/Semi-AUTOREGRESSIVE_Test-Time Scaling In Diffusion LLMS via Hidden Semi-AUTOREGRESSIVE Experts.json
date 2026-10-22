@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Semi-AUTOREGRESSIVE_Test-Time Scaling In Diffusion LLMS via Hidden Semi-AUTOREGRESSIVE Experts.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Semi-AUTOREGRESSIVE_Test-Time Scaling In Diffusion LLMS via Hidden Semi-AUTOREGRESSIVE Experts.pdf",
+ "title": "Test-Time Scaling in Diffusion LLMs via Hidden Semi-Autoregressive Experts",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "通过集成不同块大小生成路径实现扩散LLM测试时扩展，但缺乏大规模验证。",
+ "innovations": [
+  "揭示dLLM在文本上训练后隐式学到半自回归专家的混合，不同生成顺序揭示不同专门化行为，而固定单一推理schedule会因未利用该隐式集成而坍缩性能。",
+  "提出HEX：免训练推理方法，跨异构block schedule做集成，对多种块尺寸生成路径多数投票，规避任一固定schedule的失败模式。",
+  "无需额外训练即在GSM8K/MATH/ARC-C/TruthfulQA上大幅提升，超过top-K margin与GRPO微调方法。"
+ ],
+ "method_framework": "扩散LLM通过迭代mask/unmask生成文本、可任意顺序解码。HEX不修改模型，而是在推理时用多种不同block schedule（生成顺序）产生多条候选生成路径，将其视为不同隐藏专家的输出，经聚合（多数投票）得到最终答案，从而把mask顺序转化为测试时扩展维度。",
+ "experiment_framework": "基准：GSM8K、MATH（数学推理）、ARC-C（科学推理）、TruthfulQA（真实性）。基线：top-K margin、Random unmask、专门微调的GRPO方法。指标：准确率。报告GSM8K 24.72%→88.10%、MATH 16.40%→40.00%、ARC-C 54.18%→87.80%、TruthfulQA 28.36%→57.46%。",
+ "takeaways": [
+  "masking/生成顺序是dLLM测试时扩展的关键维度，跨异构schedule集成可显著且免训练地提升推理与真实性。",
+  "固定单一推理schedule会坍缩性能，而隐式半自回归专家集成可规避失败模式。"
+ ],
+ "weaknesses": [
+  "巨大增益（GSM8K 24.72→88.10）依赖特定弱基座模型，未在大规模强dLLM上验证可扩展性。",
+  "多数投票集成增加多次推理开销，缺乏与算力/延迟对等的更公平对比。",
+  "对'hidden experts'的机理解释偏现象描述，前9页缺乏更深入的可视化或因果验证。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "扩散模型推理优化，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

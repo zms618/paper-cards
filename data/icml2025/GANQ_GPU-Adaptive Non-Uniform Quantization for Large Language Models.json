@@ -1,0 +1,37 @@
+{
+ "title": "GANQ: GPU-Adaptive Non-Uniform Quantization for Large Language Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "硬件适配的非均匀量化框架，工程改进为主，算法创新有限。",
+ "innovations": [
+  "提出面向硬件高效查表式mpGEMM的逐层PTQ非均匀量化框架，缓解GPU无原生混合精度GEMM导致的反量化低效",
+  "设计免训练、GPU自适应的逐层量化误差优化算法，替代均匀量化以更好拟合权重分布",
+  "在单张RTX 4090上实证量化模型最高2.57×加速并缩小相对FP16的困惑度差距"
+ ],
+ "method_framework": "属weight-only逐层PTQ：对每层权重做非均匀量化码本设计，采用免训练、GPU自适应的优化算法逐层最小化量化误差；部署时用基于查找表的mpGEMM避免反量化开销，兼顾显存与推理效率。",
+ "experiment_framework": "在主流LLM上做3-bit与4-bit权重量化，以困惑度相对FP16基线的差距为主要指标对比SOTA PTQ方法，并在单张RTX 4090上实测端到端推理加速比。",
+ "takeaways": [
+  "均匀量化无法充分拟合权重分布是非均匀PTQ收益的核心来源",
+  "硬件感知(查表式mpGEMM)与算法优化结合，才能同时拿到精度与真实GPU加速",
+  "免训练逐层优化使大模型量化部署成本可控"
+ ],
+ "weaknesses": [
+  "属系统与量化工程改进，算法新颖性有限，多为现有PTQ技术的硬件适配组合",
+  "加速比绑定特定GPU(RTX 4090)与查表实现，跨硬件可迁移性未充分验证",
+  "聚焦部署效率而非可靠性主线，与医学影像/可信推理的关联弱"
+ ],
+ "confidence": "high",
+ "key": "icml2025/GANQ_GPU-Adaptive Non-Uniform Quantization for Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/GANQ_GPU-Adaptive Non-Uniform Quantization for Large Language Models.pdf",
+ "raw_overall": 5.65,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

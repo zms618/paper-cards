@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/MOLM_Mixture Of LORA Markers.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/MOLM_Mixture Of LORA Markers.pdf",
+ "title": "MOLM: Mixture Of LORA Markers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "LoRA标记混合水印，参数扰动实现可验证鲁棒性",
+ "innovations": [
+  "将水印编码问题转化为生成模型参数的密钥相关扰动",
+  "提出MOLM框架，使用二进制密钥激活轻量级LoRA适配器",
+  "避免密钥特定重训练，同时实现不可感知性、保真度、可验证性和鲁棒性"
+ ],
+ "method_framework": "MOLM将水印编码视为密钥相关的参数扰动，通过二进制密钥激活残差和注意力块中的轻量级LoRA适配器，实现水印嵌入而不修改主干网络。",
+ "experiment_framework": "在Stable Diffusion和FLUX上测试，使用MS-COCO和LAION-Aesthetics数据集，评估保真度、提取准确度、容量扩展性和鲁棒性。",
+ "takeaways": [
+  "LoRA适配器作为水印载体的高效实现",
+  "分布式路由使水印更难被移除或伪造",
+  "密钥容量与路由层数和适配器选择自然扩展"
+ ],
+ "weaknesses": [
+  "仅扰动VAE解码器参数，未探索U-Net参数扰动",
+  "在较大密钥尺寸时可能导致生成质量下降"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "水印鲁棒性设计，但未触及医学影像/VLA落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

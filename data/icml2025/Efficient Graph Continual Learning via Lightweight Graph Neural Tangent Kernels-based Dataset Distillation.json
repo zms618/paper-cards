@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Efficient Graph Continual Learning via Lightweight Graph Neural Tangent Kernels-based Dataset Distillation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficient Graph Continual Learning via Lightweight Graph Neural Tangent Kernels-based Dataset Distillation.pdf",
+ "title": "Efficient Graph Continual Learning via Lightweight Graph Neural Tangent Kernels-based Dataset Distillation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "轻量GNTK方法通过低秩近似实现图持续学习数据集蒸馏",
+ "innovations": [
+  "提出LIGHTGNTK，通过Bernoulli采样对Laplacian矩阵做低秩近似，在GNTK内高效捕获结构和特征关系，支持基于梯度的数据集蒸馏",
+  "设计统一的子图锚定策略，使方法在图级、节点级和边级任务的多样输入结构下均可工作",
+  "在图持续学习场景中达到SOTA性能，推动大规模图模型的自适应和可扩展发展"
+ ],
+ "method_framework": "基于图神经正切核（GNTK）框架进行数据集蒸馏；用Bernoulli采样对图Laplacian矩阵做低秩近似以降低GNTK计算复杂度；在蒸馏的小种子数据集上训练GNN以适应新任务；统一子图锚定策略将不同层级的任务（图/节点/边）转化为统一的子图蒸馏问题。",
+ "experiment_framework": "在多个图持续学习基准数据集上评估，对比现有图持续学习和数据集蒸馏方法，指标为各任务的平均精度和后向迁移（遗忘度量）。",
+ "takeaways": [
+  "LIGHTGNTK在图持续学习中达到SOTA，同时显著降低了数据集蒸馏的计算开销",
+  "低秩近似在保持核方法表达能力的同时大幅提升了效率",
+  "统一子图锚定策略使框架可灵活处理不同层级的图学习任务"
+ ],
+ "weaknesses": [
+  "属于图学习/持续学习方向，与鲁棒性/医学影像/多模态推理主线无关",
+  "低秩近似的精度损失随图规模增大可能累积，大稀疏图上的效果未充分验证",
+  "前9页仅看到框架概述，Bernoulli采样的具体实现和蒸馏种子大小的选择未充分展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

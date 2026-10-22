@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Stealthy Backdoor Attack in Self-Supervised Learning Vision Encoders for Large.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Stealthy Backdoor Attack in Self-Supervised Learning Vision Encoders for Large.pdf",
+ "title": "Stealthy Backdoor Attack in Self-Supervised Learning Vision Encoders for Large",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 6.5,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 7.0
+ },
+ "one_line": "针对自监督视觉编码器的隐蔽后门攻击方法，可诱导大视觉语言模型产生幻觉",
+ "innovations": [
+  "双阶段触发器优化技术，最小化模型参数修改",
+  "触发器聚焦机制，抵抗现有后门检测方法",
+  "适用于多种自监督学习视觉编码器的统一攻击框架"
+ ],
+ "method_framework": "BADVISION采用双层优化：首先优化不可感知的触发器，使触发图像特征接近目标特征；然后通过触发器聚焦机制训练编码器，确保仅当遇到特定触发器时激活后门，同时保持对其他扰动的鲁棒性。",
+ "experiment_framework": "在CLIP ViT-L-336px和EVA ViT-G/14两种编码器上测试，使用LLaVA-1.5和MiniGPT-4构建LVLM，在8个基准任务上评估攻击成功率、特征相似度和检测规避能力。",
+ "takeaways": [
+  "触发器聚焦机制可有效分散特征分布，避免被检测方法发现",
+  "双阶段优化平衡了攻击有效性和隐蔽性"
+ ],
+ "weaknesses": [
+  "仅针对视觉编码器，未考虑语言模型部分",
+  "未探索不同规模LVLM的迁移性",
+  "未分析计算复杂度对实际部署的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "针对自监督视觉编码器的隐蔽后门攻击，触及可靠性主线中的幻觉抑制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

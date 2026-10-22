@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/MUON_How MUON’S Spectral Design Benefits Generalization A Study On Imbalanced Data.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/MUON_How MUON’S Spectral Design Benefits Generalization A Study On Imbalanced Data.pdf",
+ "title": "How MUON's Spectral Design Benefits Generalization: A Study on Imbalanced Data",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "谱优化器等速率学习所有分量，在不平衡数据上优于GD的理论与实验验证。",
+ "innovations": [
+  "首次给出SpecGD在线性模型上的闭式训练动力学，证明其以等速率学习所有谱分量，区别于GD按s_xxc比例优先学习主导分量",
+  "证明在类不平衡高斯混合模型下，早停时SpecGF在少数类损失和类平衡损失上严格优于GF和NGF，且差距随时间线性增长",
+  "推导深层线性模型中SpecGD的动力学，证明深度压缩不同谱分量饱和时间的差距(Delta T随L增大而减小)"
+ ],
+ "method_framework": "以谱梯度下降(SpecGD，即Muon/Shampoo的无累积规范形式)为研究对象，在高斯混合不平衡数据模型下推导闭式训练轨迹。核心发现：GD按s_xxc比例学习分量(主导分量先学)，SpecGD以ηt等速率学习所有分量直至各自饱和。理论在平方损失、联合对角化条件下成立，并扩展到双线性和深层线性模型。实验在Colored-MNIST、CIFAR、Dominoes、MultiNLI、CelebA等不平衡数据集上验证Muon/Shampoo相对SGD/Adam的worst-group优势。",
+ "experiment_framework": "理论实验：20类重尾不平衡线性模型，NGD/SignGD/SpecGD对比。真实数据：Colored-MNIST(MLP)、CIFAR-10/100 step-imbalance(ResNet-18/50)、Dominoes(ResNet-34)、MultiNLI(BERT微调)、CelebA(ResNet-50微调)，对比SGD/Adam/Shampoo/Muon，指标为worst-group accuracy和类平衡损失。",
+ "takeaways": [
+  "SpecGD等速率学习所有谱分量的特性，使其在不平衡数据早停时少数类/类平衡损失显著低于GD和NGD",
+  "深度对SpecGD有加速效应：深层模型中不同谱分量饱和时间的差距缩小，进一步提升少数类学习速度",
+  "Muon/Shampoo在多个真实不平衡基准上worst-group性能优于SGD，与理论预测的谱分量均衡学习机制一致"
+ ],
+ "weaknesses": [
+  "理论分析依赖联合对角化条件和高斯混合数据模型，与真实深度网络的差距未充分量化",
+  "在MultiNLI上Muon不如Adam，说明谱优化器的优势并非普遍成立，适用边界不够清晰",
+  "实验主要关注图像和NLP分类任务，未探索不平衡回归或生成任务中的表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.83,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "不平衡数据优化方法，与可靠性主线有明确交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

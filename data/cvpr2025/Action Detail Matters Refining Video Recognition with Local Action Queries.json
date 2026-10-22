@@ -1,0 +1,43 @@
+{
+ "key": "cvpr2025/Action Detail Matters Refining Video Recognition with Local Action Queries.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Action Detail Matters Refining Video Recognition with Local Action Queries.pdf",
+ "title": "Action Detail Matters: Refining Video Recognition with Local Action Queries",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.3
+ },
+ "one_line": "零参数拼接action query到MHSA，组合现有技术提升视频识别精度。",
+ "innovations": [
+  "参数免费特征交互：把可学习action query A拼到视频token前面组成Q=[X̂W_Q, ÂW_Q]、而K/V仍只用视频特征 X̂W_K/X̂W_V，完全复用原MHSA的投影矩阵；利用softmax分块恒等式把输出拆成 [SA(X̂), CA(Â,X̂)]，一次前向同时完成视频自增强与query-视频的跨注意力交互，不引入任何新参数。",
+  "Local action query streaming：QP层以 A_j 为query、A_j^FI 为key/value做跨注意力再加FFN（Eq.12-13），且该QP层参数在全部L层间共享、以自回归方式迭代传播，最后在 T·K 维展开上做时空自注意力（Eq.14-15）增强query间时空依赖。",
+  "Lrecon：把传播后的query特征经线性层得AR、与视频特征XR做batch内异类视频为负样本池的对比重建损失（Eq.16-18），专门监督action query对齐到全局视频表示而不只是被分类损失顺带带出。"
+ ],
+ "method_framework": "冻结CLIP，只在全局分支插入时空适配器(ST-AD)；每层的MHSA改成「query维拼接action query」的参数复用cross-attention；另开一条共享QP层逐层传播8个action query，末尾做TK维时空自注意力；分类头把全局token时序均值池化与局部query双维均值池化相加后线性分类，总损失λ1L_cls+λ2L_recon。",
+ "experiment_framework": "Kinetics-400与Something-Something-V2；骨干CLIP ViT-B/16与ViT-L/14冻结，仅训练ST-Adapter+局部分支；对比MViTv2、EVL、ST-Adapter、AIM、ActionCLIP、X-CLIP、STAN、M2-CLIP、MoTE、OST、DUALPATH等；指标Top-1/Top-5与每view GFLOPs。",
+ "takeaways": [
+  "「把额外token拼进Q、K/V只给主模态」是把cross-attention零成本塞进已有self-attention的标准手法，可复用到任意Transformer主干。",
+  "辅助query分支用「跨层共享同一组参数+自回归迭代」来压参数量，比每层堆新层更适合小算力场景。",
+  "用一个与分类解耦的对比重建损失单独监督query特征，能避免query只被分类 Loss 拉去退化成类别投影。"
+ ],
+ "weaknesses": [
+  "核心的「参数免费交互」本质是代数恒等式（Eq.8-10 的拆分只是softmax按列分块的相等），被写成看似新的机制；而Query Propagation本质上仍是DETR式learnable query + 跨注意力，整体是既有积木的组合（5.5分档）。",
+  "Tab.3c 比较shared vs non-shared QP时，non-shared并不增加几个数量级参数（L层小模块），论文把性能下降归因于overfitting，但没做同参数预算下的严格对齐对照，归因不可靠。",
+  "主提升是相对ST-Adapter基线（K400 +2.1/+2.0，SSv2 +1.3/+1.0），而对外SOTA的领先幅度很小且无方差：如K400 32帧84.7 vs M2-CLIP 84.1、SSv2 70.5 vs DUALPATH 70.3，均在噪声级。",
+  "Tab.3d 显示「只复用注意力」最佳，加T-AD或FFN反而掉点，说明该交互对模块细节很敏感，缺乏稳定性分析；全文无多种子方差。",
+  "正文截断在4.3节消融「Design of Feature Interaction」段落中间，缺少对K=8以外的query设置、以及推理时延/TFLOPs随query数变化的完整消融。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "视频识别精度提升，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

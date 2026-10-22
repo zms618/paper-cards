@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Winter Soldier Backdooring Language Models At Pre-Training with Indirect Data Poisoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Winter Soldier Backdooring Language Models At Pre-Training with Indirect Data Poisoning.pdf",
+ "title": "Winter Soldier: Backdooring Language Models at Pre-Training with Indirect Data Poisoning",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "梯度优化prompt-tuning投毒，使LM学会未出现过的秘密问答。",
+ "innovations": [
+  "证明间接数据投毒(目标行为完全不出现在训练数据中)对LLM可行，不同于依赖记忆/复述训练数据的canary/MIA",
+  "用基于梯度优化的prompt-tuning构造投毒样本，使模型学会对秘密提示输出秘密应答，而秘密本身不在语料中",
+  "给出理论可证明的检测方案，p<1e-55极高置信识别是否使用了该数据；少于0.005%投毒token即生效，且不损LM基准性能",
+  "将其用作数据集所有权验证(DOV)/数据溯源，规避厂商限制复述训练数据的防御"
+ ],
+ "method_framework": "在数据集中植入少量经梯度优化的prompt-tuning式投毒样本；模型预训练后，对秘密提示触发后门得到秘密应答；检测时统计秘密应答出现的统计量，用可证明的显著性方案判定是否训练自该数据。秘密/秘密应答本身均不在语料中。",
+ "experiment_framework": "在从零预训练的语言模型上验证；指标为投毒token比例、检测置信度(p值)与LM基准性能变化；报告<0.005%投毒token即可隐蔽植入秘密、p<1e-55检测、无性能退化。",
+ "takeaways": [
+  "间接投毒可让LM记住从未见过的秘密序列，数据投毒的隐蔽性比以往认识更强",
+  "可证明的统计检测使该后门既可作攻击、也可作数据集所有权验证/溯源工具",
+  "极少投毒比例且无性能损失，意味着现有数据过滤难以察觉"
+ ],
+ "weaknesses": [
+  "可证明检测的p值依赖对空分布的假设，真实预训练规模/数据混杂下的虚警率需更多实证",
+  "攻击与防御(检测)同源，防御方若针对性过滤prompt-tuning痕迹是否可削弱攻击未讨论",
+  "主要在从零预训练的中小规模模型验证，对万亿token工业级预训练的迁移成本/隐蔽性未充分展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "数据投毒方法与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

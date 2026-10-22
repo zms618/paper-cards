@@ -1,0 +1,35 @@
+{
+ "key": "iclr2026/Safempo_Constrained Reinforcement Learning with Probabilistic Incremental Improvement.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Safempo_Constrained Reinforcement Learning with Probabilistic Incremental Improvement.pdf",
+ "title": "SafeMPO: Constrained Reinforcement Learning with Probabilistic Incremental Improvement",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "elevance": 4.0,
+  "evidence": 6.0,
+  "overall": 5.3
+ },
+ "one_line": "SafeMPO通过非参数替代问题与概率增量改善策略安全，避免直接投影的局部最优。",
+ "innovations": [
+  "以增量改善策略安全(而非直接投影到可行域)为核心，先解一个保证向可行集收缩的非参数替代问题，再克隆为神经网络策略。",
+  "改善早期训练稳定性(此时策略尚不知约束边界)，避免贪婪投影/恢复陷入'安全但零奖励'的局部最优。",
+  "给出这类增量系统收敛到安全集的一般性理论结果；即便最简算法也在难约束环境中与高度调优的CRL基线相当或更优。"
+ ],
+ "method_framework": "在CMDP下先求解非参数替代问题使其概率性向可行集收缩，再将该解克隆进神经网络策略；通过KL球约束下的增量更新逐步逼近既安全又高奖励的策略，而非一次性投影。",
+ "experiment_framework": "在挑战性约束RL环境(如抛球到分隔平台等)上，对比基于投影/贪婪恢复的高度调优CRL基线(CVPO等)，报告奖励、约束违反与早期训练稳定性。",
+ "takeaways": [
+  "概率增量式改善安全比直接投影到可行域更能兼顾安全与奖励，避免安全却零奖励的局部最优。",
+  "非参数替代+克隆的范式可在无需精细调参下收敛到安全集。"
+ ],
+ "weaknesses": [
+  "属安全/约束强化学习控制方向，与可靠性×医学影像/多模态推理主线无直接关联。",
+  "理论保证依赖替代问题可解与收缩假设，在高维真实控制中克隆误差与可行集极难到达时的有效性未充分验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.18,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

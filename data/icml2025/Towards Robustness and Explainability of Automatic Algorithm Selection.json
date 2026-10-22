@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Towards Robustness and Explainability of Automatic Algorithm Selection.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Towards Robustness and Explainability of Automatic Algorithm Selection.pdf",
+ "title": "Towards Robustness and Explainability of Automatic Algorithm Selection",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "DAG建模算法选择条件分布，反事实重构提升鲁棒性，但与主线相关性弱",
+ "innovations": [
+  "引入DAG描述算法选择的内在机制（算法需具备何种特征才能解特定问题），超越基于元特征边际相关的经验建模",
+  "主张建模问题特征条件下算法特征的条件分布，从而对边际分布变化更鲁棒",
+  "通过重构最优算法特征与拒绝特征之差做决策，并借反事实计算提供模型级与实例级可解释性"
+ ],
+ "method_framework": "现有算法选择模型只拟合算法性能与元特征的观测相关，忽略‘算法需具备何种特征才能解特定问题’的机制，因而对边际分布漂移脆弱、不可解释。本文用DAG显式建模问题特征到算法特征条件分布的因果结构；决策基于重构出的最优算法特征与被拒算法特征的差异，反事实计算同时给出可解释性。",
+ "experiment_framework": "在算法选择基准上，对比传统元特征相关模型与本文DAG条件建模方法；重点评估边际分布漂移下的鲁棒性、选择精度，以及模型级/实例级可解释性。",
+ "takeaways": [
+  "算法选择应建模问题-算法特征的条件(因果)关系，而非仅边际相关",
+  "条件分布建模对部署时边际分布动态变化更鲁棒",
+  "反事实重构可同时提升鲁棒性与可解释性"
+ ],
+ "weaknesses": [
+  "主线相关性弱：属自动算法选择/元学习，与可靠性乘医学影像/多模态推理主线无直接联系",
+  "DAG结构需预设/学习，结构误设对鲁棒性收益的影响需后续页",
+  "前9页主要为框架，完整基准数值与消融在后续页"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

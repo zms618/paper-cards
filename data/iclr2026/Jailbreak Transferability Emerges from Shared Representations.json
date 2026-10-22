@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Jailbreak Transferability Emerges from Shared Representations.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Jailbreak Transferability Emerges from Shared Representations.pdf",
+ "title": "Jailbreak Transferability Emerges from Shared Representations",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "表征相似度决定越狱迁移，良性蒸馏可人为提升迁移性",
+ "innovations": [
+  "以因果证据将越狱可迁移性重新界定为表征对齐的结果，而非安全微调的脆弱副产品",
+  "识别出塑造可迁移性的两个系统性因素：良性提示下的表征相似度、源模型上的越狱强度",
+  "设计仅用目标模型良性回复做蒸馏的因果实验，人为增大表征相似度即系统性提升迁移，且学生从未见过越狱回复"
+ ],
+ "method_framework": "在20个开源模型上对313条有害提示施加33种越狱攻击，测量跨模型迁移率，并将其与良性提示下的表征相似度、源模型越狱强度关联；进而用仅良性蒸馏主动增大两模型表征相似度做因果干预，观察迁移率变化，并区分persona式与cipher式攻击的迁移模式。",
+ "experiment_framework": "覆盖20个开源权重模型、33种越狱攻击、313条有害提示；指标为跨模型攻击迁移率；辅以良性蒸馏的因果干预实验与persona/cipher攻击的定性对比分析。",
+ "takeaways": [
+  "越狱迁移由表征相似度与源攻击强度系统性决定，是结构化现象而非偶然",
+  "persona式自然语言攻击远较cipher式易迁移，因为前者利用共享表征空间",
+  "仅良性蒸馏即可提升迁移，说明安全性与表征对齐深度耦合"
+ ],
+ "weaknesses": [
+  "仅在开源权重模型上验证，闭源/商业模型的可迁移性结论外推受限",
+  "良性蒸馏增大相似度的机制虽为因果，但蒸馏深度与迁移增益的定量关系仍初步",
+  "为机理解释性研究，未据此提出新的防御方法"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "越狱迁移研究属于安全鲁棒性，但未触及医学影像或VLA落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

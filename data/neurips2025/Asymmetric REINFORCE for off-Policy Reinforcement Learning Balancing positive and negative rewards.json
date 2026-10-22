@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Asymmetric REINFORCE for off-Policy Reinforcement Learning Balancing positive and negative rewards.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Asymmetric REINFORCE for off-Policy Reinforcement Learning Balancing positive and negative rewards.pdf",
+ "title": "Asymmetric REINFORCE for off-Policy Reinforcement Learning: Balancing positive and negative rewards",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "非对称REINFORCE调整基线平衡正负奖励，提升离策略RL性能",
+ "innovations": [
+  "提出非对称REINFORCE(AsymRE)算法，通过基线V控制正负奖励的权重",
+  "理论证明当V小于行为策略期望奖励时算法保证策略改进",
+  "发现离策略RL中应更关注正奖励而非负奖励的核心洞见"
+ ],
+ "method_framework": "AsymRE算法通过梯度上升优化J(π)=E~μ[logπ(y)(r(y)-V)]，其中V为可调基线，控制对高/低奖励轨迹的重视程度",
+ "experiment_framework": "多臂老虎机实验验证理论预测，Llama和Qwen模型在MATH和NuminaMath数据集上训练，测试不同基线δV对性能的影响",
+ "takeaways": [
+  "离策略RL中应选择较小的基线V以避免过早收敛到次优策略",
+  "基线V的选择存在速度与风险的权衡，过小会导致收敛慢，过大会导致多样性丧失"
+ ],
+ "weaknesses": [
+  "理论分析局限于表格环境，扩展到复杂LLM环境的普适性有待验证",
+  "实验中模型性能上限仍低于最优值，表明算法仍有改进空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

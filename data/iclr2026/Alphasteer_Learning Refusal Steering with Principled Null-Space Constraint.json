@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Alphasteer_Learning Refusal Steering with Principled Null-Space Constraint.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Alphasteer_Learning Refusal Steering with Principled Null-Space Constraint.pdf",
+ "title": "AlphaSteer: Learning Refusal Steering with Principled Null-Space Constraint",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "零空间约束激活引导，平衡安全与效用，但泛化性与理论深度有限。",
+ "innovations": [
+  "将激活引导建模为带两个原则化目标的可学习过程：效用保持与安全增强",
+  "效用保持上用零空间约束学习对良性数据近乎为零的引导向量，避免过度拒绝",
+  "安全增强上用线性回归为恶意数据学习拒绝方向向量，相比 Surgical/条件引导有理论依据"
+ ],
+ "method_framework": "推理时激活引导：对良性样本在零空间约束下学到≈0的引导向量(不扰动良性激活)，对恶意样本用线性回归拟合出拒绝方向；二者共用可学习引导过程，从机制上解耦安全增强与效用保持。",
+ "experiment_framework": "在多种越狱攻击与多个效用基准上，与 conventional activation steering、Surgical、向量校准/条件引导等对比；指标为攻击成功率(安全性)与良性任务性能(效用)；报告安全性提升且不损通用能力。",
+ "takeaways": [
+  "安全-效用权衡的根源是同一引导向量无差别地扰动了良性激活",
+  "零空间约束使良性输入引导近零，可显著缓解过度拒绝",
+  "给激活引导建立理论目标(而非启发式调权)能同时提升鲁棒性与效果"
+ ],
+ "weaknesses": [
+  "仍属推理时引导，依赖恶意/良性标注数据学习方向，对全新攻击范式的泛化需更多验证",
+  "零空间约束的近似程度与超参对结果敏感度在正文前9页披露有限",
+  "主要在英文主流越狱上评测，多语种与真实用户 prompt 覆盖不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "安全增强与效用保持的零空间约束设计，直接解决可靠性主线痛点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

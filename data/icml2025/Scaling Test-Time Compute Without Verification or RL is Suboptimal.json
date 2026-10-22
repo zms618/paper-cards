@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Scaling Test-Time Compute Without Verification or RL is Suboptimal.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Scaling Test-Time Compute Without Verification or RL is Suboptimal.pdf",
+ "title": "Scaling Test-Time Compute Without Verification or RL is Suboptimal",
+ "scores": {
+  "novelty": 7,
+  "depth": 7.5,
+  "evidence": 6.5,
+  "relevance": 8,
+  "overall": 7.2
+ },
+ "one_line": "证明无验证器扩展测试计算次优，需Ω(H)数据才能追平验证器方法",
+ "innovations": [
+  "形式化区分扩展测试时计算的两类路线：无验证器(VF,蒸馏专家搜索轨迹/SFT)与基于验证器(VB,真值奖励RL+测试时搜索)。",
+  "证明VF方法与VB方法的性能差距随测试时计算量H以√H增长，即无验证扩展是次优的。",
+  "给出VF路线要跟上VB所需的训练数据量级下界n=Ω(H)，量化了纯蒸馏路线的数据代价。"
+ ],
+ "method_framework": "把测试时计算H(推理时采样/搜索的预算)纳入分析框架。无验证器方法直接把专家在大搜索预算下的成功轨迹蒸馏进模型；基于验证器方法则用0/1结果奖励/验证器做RL并在测试时搜索。本文刻画二者在H增大时的渐近行为：VF只能被动记住专家轨迹，无法在测试时主动纠错，故与VB的差距随H扩大；要弥补需随H线性增长的训练数据。",
+ "experiment_framework": "在可验证正确性的推理任务上，对比VF(专家轨迹SFT)与VB(RL+真值奖励+测试时搜索)随测试时计算H与训练数据n的扩展曲线；测量准确率随H的增长斜率、二者差距与√H的关系，以及达到VB性能所需的VF训练数据量。",
+ "takeaways": [
+  "仅蒸馏专家搜索轨迹而不引入验证/RL，随测试时计算扩大将越来越落后。",
+  "无验证路线要追平基于验证器的方法，需要随测试时计算量线性增长的训练数据。",
+  "测试时计算的高效扩展离不开某种形式的验证信号或RL反馈。"
+ ],
+ "weaknesses": [
+  "结论依赖'可自动验证对错'的任务设定，对开放式无明确答案的生成任务适用性需重新审视。",
+  "理论差距√H的常数与假设在真实大规模LLM上的紧致性需更多实证。",
+  "主要给'为什么无验证次优'的诊断，未提出可直接落地的新验证/RL算法。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Distinguishing Cause from Effect with Causal Velocity Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Distinguishing Cause from Effect with Causal Velocity Models.pdf",
+ "title": "Distinguishing Cause from Effect with Causal Velocity Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "用因果速度参数化SCM，通过最优传输与score回归做因果发现",
+ "innovations": [
+  "用因果速度(causal velocity)参数化二元SCM：把原因变量视作动力系统时间，速度通过初值问题定义反事实曲线",
+  "用最优传输建立SCM与所生成分布score函数之间经因果速度的唯一对应，导出直接把速度对score回归的目标函数",
+  "扩展到ANM/位置-尺度噪声等已知模型类之外，且对噪声分布不作假设；score估计良好时还可用于检测模型不可辨识与误设"
+ ],
+ "method_framework": "把二元因果方向判别视为在两个方向上拟合SCM并比较拟合优度；本文不指定机制与噪声分布，而是把SCM写成以原因变量为'时间'的常微分动力系统(因果速度)，用测度论传输结果证明该速度与联合/边缘score函数一一对应；于是只需非参数地从观测数据估计score，再回归速度即可评估某方向的拟合优度，无需建模噪声。",
+ "experiment_framework": "在仿真与因果发现基准(Tuebingen类)上，对比ANM/LSNM等现有方法，报告在许多现有方法失败场景上的正向结果，并做消融考察对score估计精度的敏感性。",
+ "takeaways": [
+  "因果速度提供了无需指定噪声分布即可做二元因果方向判别的新参数化",
+  "方法可超出ANM/LSNM等受限模型类，减少模型误设风险",
+  "score估计质量是该方法成败的关键"
+ ],
+ "weaknesses": [
+  "方法成败高度依赖score函数的非参数估计精度，高维/小样本下不稳定",
+  "目前仅限二元因果发现，扩展到多变量未讨论",
+  "因果方向判别的识别性仍依赖隐含的结构假设，适用边界需更多实证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/Seal Your Backdoor with Variational Defense.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Seal Your Backdoor with Variational Defense.pdf",
+ "title": "Seal Your Backdoor with Variational Defense",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 7.0
+ },
+ "one_line": "变分推断处理后门攻击，但计算复杂且对特定攻击防御弱。",
+ "innovations": [
+  "将干净标签视为潜在变量，通过变分推断恢复后门攻击数据",
+  "使用熵正则化最优传输问题推断干净伪标签",
+  "模块化设计可集成自监督表示学习增强防御能力",
+  "针对干净标签攻击的预处理技术"
+ ],
+ "method_framework": "VIBE框架将干净标签视为潜在变量，通过EM算法交替执行：E-step通过熵正则化最优传输问题推断干净伪标签，M-step使用梯度下降更新分类器参数，可集成自监督预训练提升性能。",
+ "experiment_framework": "在CIFAR-10/100、ImageNet-30和完整ImageNet上评估，对比5种基线防御方法，使用ACC和ASR指标，测试8种后门攻击类型。",
+ "takeaways": [
+  "变分推断框架能有效处理后门攻击而不依赖启发式方法",
+  "自监督预训练可显著提升EM算法收敛速度和泛化能力",
+  "模块化设计允许集成大规模预训练模型"
+ ],
+ "weaknesses": [
+  "对Adap-Patch和Adap-Blend攻击防御效果相对较弱",
+  "计算复杂度较高，E-step需要解决最优传输问题",
+  "预处理技术对阈值δ选择敏感"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "后门防御属于可靠性主线，方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

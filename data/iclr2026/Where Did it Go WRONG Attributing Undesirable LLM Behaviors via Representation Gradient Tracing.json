@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Where Did it Go WRONG Attributing Undesirable LLM Behaviors via Representation Gradient Tracing.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Where Did it Go WRONG Attributing Undesirable LLM Behaviors via Representation Gradient Tracing.pdf",
+ "title": "Where Did it Go Wrong: Attributing Undesirable LLM Behaviors via Representation Gradient Tracing",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.6
+ },
+ "one_line": "激活空间梯度归因LLM不良行为，但因果验证不足",
+ "innovations": [
+  "提出在模型激活空间直接分析表征及其梯度来做数据归因，规避参数梯度信号嘈杂与计算复杂度高的问题",
+  "给出语义有意义的信号，把输出与其训练数据关联，可扩展到现代大LLM",
+  "同时支持样本级与细粒度token级归因，精确定位因果影响行为的具体样本与短语",
+  "统一应用于追踪有害内容、检测后门投毒、识别知识污染三类任务"
+ ],
+ "method_framework": "对不良输出，在激活空间中分析中间表征及其对目标输出的梯度方向，用表征-梯度相似度在训练语料中检索因果相关样本；不做leave-one-out/Shapley(需重训)，而是单次前向+梯度即得到样本级与token级归因。",
+ "experiment_framework": "在三类任务上评测：有害内容追踪、后门投毒检测、知识污染识别；基线为参数梯度类数据归因方法；指标为归因的样本/token定位精度；报告在样本级与token级均精确定位因果样本与短语。",
+ "takeaways": [
+  "激活空间的表征梯度比参数梯度信噪比更高且可扩展，适合给大LLM做数据归因",
+  "token级归因可定位到具体致病短语，支持从源头剪污染数据/缓解偏见",
+  "该归因框架是审计与缓解LLM风险的实用诊断工具"
+ ],
+ "weaknesses": [
+  "归因仍为相关性/相似度检索，真正的因果(删除该样本是否消除行为)缺乏反事实验证",
+  "激活空间选择(层/位置)对结果敏感，超参稳健性需更多消融",
+  "在万亿token级语料上做全库相似度检索的计算成本与误报率在提取页未充分量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "LLM风险诊断与溯源，直接服务于可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/IndoorGS_Geometric Cues Guided Gaussian Splatting for Indoor Scene Reconstruction.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/IndoorGS_Geometric Cues Guided Gaussian Splatting for Indoor Scene Reconstruction.pdf",
+ "title": "IndoorGS Geometric Cues Guided Gaussian Splatting for Indoor Scene Reconstruction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 6.0
+ },
+ "one_line": "几何线索引导高斯溅射，提升室内重建质量但依赖深度估计",
+ "innovations": [
+  "提取三种几何线索(线、平面、SfM点)指导初始化",
+  "基于几何线索分类高斯元并设计自适应密度控制策略",
+  "切线空间密度化方法抑制浮动物体"
+ ],
+ "method_framework": "提取2D线段并匹配为3D线线索，过滤SfM点作为纹理丰富区域线索，结合单目深度估计提取平面线索，基于线索分类高斯元并设计不同密度控制策略。",
+ "experiment_framework": "在Replica、Scannet++和Deep Blending数据集上评估，与3DGS、GOF、RaDeGS和PGSR比较，使用PSNR、SSIM、LPIPS、Chamfer距离、F分数和法线一致性作为指标。",
+ "takeaways": [
+  "几何线索提取可有效解决纹理稀少区域重建问题",
+  "针对不同几何特征设计差异化优化策略提升重建质量"
+ ],
+ "weaknesses": [
+  "依赖单目深度估计和法线估计的准确性",
+  "计算复杂度较高，训练时间较长"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "纯3D重建工作，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

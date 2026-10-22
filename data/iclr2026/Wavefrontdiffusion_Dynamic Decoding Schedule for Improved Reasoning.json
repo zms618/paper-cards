@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Wavefrontdiffusion_Dynamic Decoding Schedule for Improved Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Wavefrontdiffusion_Dynamic Decoding Schedule for Improved Reasoning.pdf",
+ "title": "WavefrontDiffusion: Dynamic Decoding Schedule for Improved Reasoning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "波前扩散解码调度：动态扩展活跃token波前，提升推理和代码生成质量。",
+ "innovations": [
+  "提出波前扩散（WavefrontDiffusion）动态解码调度：从已确定的token位置向外扩展活跃token波前，自适应跟随语义结构自然流动",
+  "解决了Standard Diffusion过早终止和BlockDiffusion破坏语义连贯性的双重问题",
+  "计算成本与块基方法相当，但在推理和代码生成4个基准上达到SOTA"
+ ],
+ "method_framework": "每步解码时，已确定token作为波前起点，活跃token（待去噪）在波前边界上动态选择。波前沿语义结构自然扩展，而非固定块或全局均匀更新。实现了与块方法相同的并行度，但调度更灵活。",
+ "experiment_framework": "在4个推理和代码生成基准上评估。对比Standard Diffusion和BlockDiffusion等主流调度策略。指标为准确率和语义保真度。",
+ "takeaways": [
+  "扩散语言模型的去噪调度策略对推理和代码生成质量有显著影响",
+  "自适应波前扩展比固定块或全局均匀更新更符合自然语言的语义结构",
+  "动态调度在不增加计算成本的前提下即可提升生成质量"
+ ],
+ "weaknesses": [
+  "仅在推理和代码生成任务上验证，开放式对话或长文本生成的效果未知",
+  "波前扩展的具体规则（哪些token优先）对性能的影响未充分消融",
+  "仅在小规模扩散LLM上验证，大规模模型上的效果和效率 scaling 未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "仅优化解码调度，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

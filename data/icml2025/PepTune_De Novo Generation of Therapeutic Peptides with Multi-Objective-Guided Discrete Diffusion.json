@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/PepTune_De Novo Generation of Therapeutic Peptides with Multi-Objective-Guided Discrete Diffusion.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/PepTune_De Novo Generation of Therapeutic Peptides with Multi-Objective-Guided Discrete Diffusion.pdf",
+ "title": "PepTune: De Novo Generation of Therapeutic Peptides with Multi-Objective-Guided Discrete Diffusion",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5,
+  "relevance": 5,
+  "overall": 5.6
+ },
+ "one_line": "多目标离散扩散生成肽，但缺乏生物学验证与可靠性分析",
+ "innovations": [
+  "在Masked Discrete LM上引入键依赖掩码调度与无效损失函数，保证生成肽结构有效",
+  "提出Monte Carlo Tree Guidance(MCTG)：推理时多目标引导算法，平衡探索/利用迭代精炼Pareto最优序列",
+  "MCTG结合分类器奖励与搜索树扩展，克服梯度估计困难与数据稀疏"
+ ],
+ "method_framework": "基于Masked Discrete Language Model做肽SMILES离散扩散；设计键依赖掩码与无效损失以保证化学有效结构；推理时用MCTG——以分类器给出的多目标奖励驱动蒙特卡洛树搜索扩展，在生成过程中迭代精炼出在多个治疗属性间Pareto最优的化学修饰肽序列。",
+ "experiment_framework": "面向治疗肽de novo设计；生成含非天然氨基酸的化学修饰肽；评估结构有效性、多目标(活性/稳定性/膜通透性)Pareto最优性与多样性；与基于结构的生成模型对比。",
+ "takeaways": [
+  "MCTG把分类器奖励与树搜索结合，无需可微梯度即可多目标引导离散扩散",
+  "键依赖掩码+无效损失提升了生成肽的化学有效性",
+  "可在多个治疗属性间生成Pareto最优的多样候选肽"
+ ],
+ "weaknesses": [
+  "前9页未见完整生成质量/生物学验证结果，实际成药性证据不足",
+  "依赖分类器奖励模型精度，奖励偏差会被搜索放大",
+  "属计算药物设计，与主线(可靠性/医学影像诊断/多模态LLM推理)不直接相关"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

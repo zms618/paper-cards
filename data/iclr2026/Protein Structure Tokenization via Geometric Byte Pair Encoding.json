@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Protein Structure Tokenization via Geometric Byte Pair Encoding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Protein Structure Tokenization via Geometric Byte Pair Encoding.pdf",
+ "title": "Protein Structure Tokenization via Geometric Byte Pair Encoding",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "将BPE扩展到几何空间，实现蛋白质结构层次化分词",
+ "innovations": [
+  "提出几何BPE(GEOBPE)，首次将字节对编码思想扩展到连续几何结构的离散化",
+  "通过k-medoids聚类生成分辨率可控的层次化几何词表，结合可微逆运动学优化边界角点减少漂移",
+  "实现架构无关的蛋白质结构分词，压缩率>10x、数据效率>10x，在12项任务24个测试集上优于现有PST"
+ ],
+ "method_framework": "GEOBPE类比NLP中的BPE，迭代地：(1)用k-medoids聚类Geo-Pair出现频次生成层次化词表；(2)将每个Geo-Pair量化到最近medoid原型；(3)通过可微逆运动学在SE(3)端帧损失下优化边界粘合角，减少累积漂移。",
+ "experiment_framework": "在12项蛋白质结构相关任务、24个测试划分上对比现有蛋白质结构分词器(如VQ-VAE类方法)，指标包括压缩率、重建失真、下游任务性能、泛化性(test/train失真比)。",
+ "takeaways": [
+  "几何BPE可有效将连续蛋白质骨架构象离散化为层次化的几何句子",
+  "GEOBPE在压缩率、数据效率和泛化性上全面优于现有VQ-VAE类PST",
+  "分词token与CATH功能家族对齐，具有可解释的功能意义"
+ ],
+ "weaknesses": [
+  "仅处理骨架构象，未包含侧链和氨基酸信息，与真实多模态蛋白质模型有差距",
+  "与可靠性/鲁棒性主线关联较弱，属于生物信息学应用方向",
+  "k-medoids聚类的计算复杂度在大规模蛋白质数据库上可能较高"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "蛋白质结构分词属于生物信息学应用，与可靠性主线关联较弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

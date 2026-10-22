@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Synthetic-Powered Predictive Inference.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Synthetic-Powered Predictive Inference.pdf",
+ "title": "Synthetic-Powered Predictive Inference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "分数传输器对齐真实与合成数据分数，提升小样本预测集质量",
+ "innovations": [
+  "分数传输器(score transporter)将真实数据分数与合成数据分数对齐",
+  "无需假设真实与合成数据分布相似性，提供有限样本覆盖保证",
+  "支持标签条件覆盖保证，适用于医学影像等多场景"
+ ],
+ "method_framework": "构建分数传输器映射真实分数到合成分数空间，在合成分数上进行校准，再映射回真实空间形成预测集，保证理论覆盖概率。",
+ "experiment_framework": "ImageNet图像分类(Stable Diffusion生成图像)和表格回归任务，对比标准conformal预测，评估覆盖率和预测集大小。",
+ "takeaways": [
+  "分数传输器设计简洁有效，可扩展到其他不确定性量化方法",
+  "合成数据质量可通过分数分布对齐度评估，提供数据筛选指导"
+ ],
+ "weaknesses": [
+  "依赖预训练模型(如CLIP)作为黑盒预测器，可能限制泛化能力",
+  "计算复杂度随合成数据量增加而提高，实际部署需优化"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

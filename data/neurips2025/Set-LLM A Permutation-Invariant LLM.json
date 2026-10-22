@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Set-LLM A Permutation-Invariant LLM.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Set-LLM A Permutation-Invariant LLM.pdf",
+ "title": "Set-LLM: A Permutation-Invariant LLM",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "修改LLM架构实现排列不变性，提升对抗顺序鲁棒性",
+ "innovations": [
+  "移除位置编码和因果掩码，引入集合位置编码(SetPE)",
+  "设计集合注意力掩码(SetMask)区分不同集合元素",
+  "提供排列不变性的理论证明",
+  "在多种模型和数据集上验证有效性"
+ ],
+ "method_framework": "通过四步修改LLM架构：移除位置编码、移除因果掩码、添加集合位置编码、添加集合注意力掩码，实现输入集合的排列不变性",
+ "experiment_framework": "在4个多选数据集(PIQA, ARC-Challenge, CommonsenseQA, SIQA)和2个多文档任务上测试5种不同模型，比较随机顺序和对抗顺序下的性能",
+ "takeaways": [
+  "注意力机制本身具有排列不变性，可通过修改位置编码和掩码实现特定不变性",
+  "排列不变性设计可显著提升模型在对抗输入下的鲁棒性",
+  "方法设计简洁且通用，适用于多种LLM架构"
+ ],
+ "weaknesses": [
+  "仅关注排列不变性，未考虑其他类型的对抗攻击",
+  "在标准语言任务上的性能影响未充分评估",
+  "32位浮点精度对保证排列不变性至关重要，可能增加计算成本"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

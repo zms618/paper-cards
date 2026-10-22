@@ -1,0 +1,41 @@
+{
+ "title": "Regulating Internal Alignment Flows for Robust Learning under Spurious Correlations",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.3
+ },
+ "one_line": "轻量插件AGS抑制神经元shortcut通路，提升worst-group精度与校准。",
+ "innovations": [
+  "定义on-batch、类别条件、softmax加权的神经元对齐能量，实现无需组标签的训练时归因。",
+  "提出带EMA平滑的百分位门控抑制规则：对对齐最负(最强shortcut支撑)尾部神经元乘性衰减，<5%训练开销、可即插用于ERM。",
+  "理论上将AGS联系到少数类边际提升、path-norm式容量控制与EMA带来的稳定性/校准改善。"
+ ],
+ "method_framework": "在标准交叉熵训练中，为每个神经元-类别维护对齐能量的EMA；对平滑后落在最负百分位的连接做乘性衰减(其余仅轻微全局衰减稳定训练)，从而压低过自信的shortcut通路、相对强化鲁棒特征；与ERM无缝集成，不需组/环境标签。",
+ "experiment_framework": "基准：Waterbirds、CelebA、BAR、COCO等伪相关基准；对比需组标签的GroupDRO/IRM与组无关方法；指标为平均组精度、worst-group精度与校准误差；辅以神经元级对齐分布与表示分析。",
+ "takeaways": [
+  "直接在网络内部抑制shortcut神经元通路，是无需组标签即可改善worst-group与校准的可扩展路线。",
+  "内部对齐能量的EMA平滑对稳定性与减少过自信logits有实际作用。",
+  "该方法与基于数据/损失的鲁棒方法互补，而非替代。"
+ ],
+ "weaknesses": [
+  "方法基于'最负对齐尾部=shortcut'的假设，该对应关系在节选页中以启发式论证为主，缺乏严格的shortcut标识。",
+  "落地域为自然图像分类基准，非医学影像/多模态推理主线。",
+  "节选前9页未见各基准worst-group的完整数值表，与SOTA的'competitive'差距幅度在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Regulating Internal Alignment Flows for Robust Learning under Spurious Correlations.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Regulating Internal Alignment Flows for Robust Learning under Spurious Correlations.pdf",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "抑制神经元通路提升worst-group精度与校准，明确触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

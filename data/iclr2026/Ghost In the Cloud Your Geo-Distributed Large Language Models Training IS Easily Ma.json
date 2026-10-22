@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Ghost In the Cloud Your Geo-Distributed Large Language Models Training IS Easily Ma.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Ghost In the Cloud Your Geo-Distributed Large Language Models Training IS Easily Ma.pdf",
+ "title": "Ghost in the Cloud: Your Geo-Distributed Large Language Models Training is Easily Manipulated",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.3
+ },
+ "one_line": "CloudGhost攻击利用数据异构性绕过分布式LLM训练的双重防御，植入隐蔽后门。",
+ "innovations": [
+  "揭示地理分布式训练中单个恶意客户端即可显著破坏LLM安全对齐：由于数据异构性，现有鲁棒聚合和信任框架等防御失效",
+  "设计触发词越狱变体：通过正则化限制恶意数据集上的模型更新幅度，在保持下游任务性能的同时植入后门，绕过任务性能检查(TPC)",
+  "用伪对比安全对齐答案混合恶意数据集来隐藏触发词，保持原始安全对齐表现，绕过恶意输出审查(MOS)，攻击成功率74-93%，检测率低于5%"
+ ],
+ "method_framework": "CloudGhost攻击流程：(1) 恶意客户端在本地用恶意数据集（含触发词的越狱样本）微调模型；(2) 正则化约束：限制恶意更新的幅度，使下游任务性能不显著下降，绕过TPC；(3) 伪装安全对齐：在恶意数据集中混入伪对比安全回答（对同一问题的安全拒绝回答），使模型在没有触发词时仍表现出安全对齐，绕过MOS；(4) 上传模型更新到服务器，聚合后全局模型获得后门能力。",
+ "experiment_framework": "在多个广泛使用的安全对齐LLM上评估（如Llama-2-Chat、Mistral等）。攻击成功率(ASR)：有触发词时模型输出有害内容的比例。检测率(DTR)：防御系统识别恶意更新的比例。对比基线：朴素越狱攻击、无正则化攻击等。还测试了不同恶意客户端比例、不同聚合策略下的攻击效果。",
+ "takeaways": [
+  "地理分布式训练的安全性比集中式训练更脆弱：数据异构性使传统鲁棒聚合防御失效，单个恶意参与者即可植入有效后门",
+  "任务性能检查(TPC)和恶意输出审查(MOS)这两种看似有效的服务器端防御，可以被精心设计的正则化和伪装策略同时绕过",
+  "在分布式LLM训练中，仅靠服务器端更新检测不足以保证安全对齐，需要更细粒度的数据级或训练过程级防御"
+ ],
+ "weaknesses": [
+  "攻击需要预先知道触发词设计和目标防御策略的细节，在实际场景中攻击者可能不了解服务器端具体用了哪种防御",
+  "伪对比安全答案的设计依赖于对安全对齐模式的先验了解，对于不断演进的安全对齐方法，伪装效果可能下降",
+  "仅评估了TPC和MOS两种防御，对其他可能的防御方法（如基于更新异常检测的防御）的抗性未测试"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.85,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "分布式LLM安全对齐攻击触及可靠性主线，但未深入落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

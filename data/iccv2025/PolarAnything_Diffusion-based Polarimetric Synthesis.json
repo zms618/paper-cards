@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/PolarAnything_Diffusion-based Polarimetric Synthesis.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/PolarAnything_Diffusion-based Polarimetric Synthesis.pdf",
+ "title": "PolarAnything Diffusion-based Polarimetric Synthesis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "扩散模型从RGB生成偏振图像，但依赖大量真实数据且计算成本高",
+ "innovations": [
+  "首个基于RGB输入的偏振图像合成框架",
+  "在AoLP和DoLP空间而非原始偏振图像上进行扩散，更好保留偏振信息",
+  "创建PolarStanford-ORB数据集促进偏振视觉任务"
+ ],
+ "method_framework": "基于Stable Diffusion微调，条件编码RGB图像生成AoLP和DoLP，通过物理模型生成任意角度偏振图像",
+ "experiment_framework": "自建1148张真实偏振图像数据集，与Mitsuba对比，在PISR和DeepSfP上评估形状恢复性能",
+ "takeaways": [
+  "在物理属性空间而非原始图像空间进行扩散可保留更多物理特性",
+  "合成数据可有效扩展训练集提升下游任务泛化能力"
+ ],
+ "weaknesses": [
+  "依赖大量真实偏振图像进行微调",
+  "未提供模型在极端光照条件下的鲁棒性评估",
+  "计算资源需求较高"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.375,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "偏振图像合成属工具性工作，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

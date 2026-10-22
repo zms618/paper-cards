@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Process-Verified Reinforcement Learning for Theorem Proving via Lean.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Process-Verified Reinforcement Learning for Theorem Proving via Lean.pdf",
+ "title": "Process-Verified Reinforcement Learning for Theorem Proving via Lean",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.4
+ },
+ "one_line": "将Lean证明助手作为RL过程奖励，但验证范围有限且计算开销大。",
+ "innovations": [
+  "首次将Lean的elaboration标记作为过程级奖励信号，提供局部正确步骤和最早失败步的细粒度反馈",
+  "提出first-error传播和first-token信用分配方法，平衡结果级和过程级优势",
+  "在GRPO框架中融入结构化奖励，实现语言模型可扩展性与符号验证可靠性的结合"
+ ],
+ "method_framework": "将证明尝试解析为策略序列，利用Lean的类型检查标记每个策略的局部正确性和最早失败位置。在GRPO风格RL目标中，结合结果级（证明是否完成）和过程级（哪些策略正确/失败）奖励，通过first-error传播和first-token信用分配实现稠密且可靠的信用分配。",
+ "experiment_framework": "在STP-Lean和DeepSeek-Prover-V1.5模型上验证，基准为MiniF2F和ProofNet。对比仅用二元结果奖励的RLVR基线。",
+ "takeaways": [
+  "策略级细粒度监督在大多数设置下优于仅结果奖励的方法",
+  "符号证明助手不仅是评估时的验证器，也可作为训练时的过程级奖励预言机",
+  "过程验证RL结合了语言模型的可扩展性和符号验证的可靠性"
+ ],
+ "weaknesses": [
+  "仅在Lean上验证，未探索Isabelle/Coq等其他证明助手的通用性",
+  "first-error传播的具体实现可能依赖Lean的特定语法结构",
+  "过程级奖励的计算开销相比二元验证显著增加"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "符号验证方法有可靠性价值，但未触及落地域且计算开销大",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

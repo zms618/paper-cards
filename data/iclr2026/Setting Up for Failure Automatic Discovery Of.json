@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Setting Up for Failure Automatic Discovery Of.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Setting Up for Failure Automatic Discovery Of.pdf",
+ "title": "Setting Up for Failure: Automatic Discovery of the Neural Mechanisms of Cognitive Errors",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 5.0
+ },
+ "one_line": "训练RNN复现认知错误，用扩散模型拟合响应分布预测神经数据。",
+ "innovations": [
+  "提出直接训练RNN复现行为(含特征性错误/次优性)而非只优化任务正确率，以自动发现神经机制",
+  "用非参数行为响应生成模型在实验数据有限时产生代理数据供RNN训练",
+  "用扩散模型方法拟合完整响应分布(而非既往的少量手工低阶矩)，以捕捉全部相关统计特征"
+ ],
+ "method_framework": "先用非参数生成模型从有限实验行为数据采样代理响应；再用扩散模型式训练让RNN的输出响应分布匹配真实(代理)响应分布，包括多模态的swap error等；如此拟合出的RNN动力学可作为对真实神经回路机制的可检验假设。",
+ "experiment_framework": "以视觉工作记忆任务(响应多模态、有swap error)为测试床；对比'只拟合少量行为特征'与'只训练任务最优'两种传统做法，检验能否预测猕猴已报道的神经数据定性特征。",
+ "takeaways": [
+  "拟合丰富行为模式(含错误)的RNN正确预测了猕猴神经数据的先前定性特征",
+  "只拟合少量行为特征或只优化任务正确率都得不到这些结果",
+  "方法给出关于swap error机制的新可实验验证预测"
+ ],
+ "weaknesses": [
+  "属计算神经科学，与可靠性、医学影像、多模态推理主线无关",
+  "仅在视觉工作记忆单一任务验证，跨认知范式的普适性待证",
+  "'预测神经数据'为定性吻合，定量匹配程度与代理数据生成模型的偏差影响在前9页未充分展开"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "计算神经科学，与可靠性主线和落地域无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

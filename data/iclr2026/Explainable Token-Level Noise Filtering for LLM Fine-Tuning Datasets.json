@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Explainable Token-Level Noise Filtering for LLM Fine-Tuning Datasets.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Explainable Token-Level Noise Filtering for LLM Fine-Tuning Datasets.pdf",
+ "title": "Explainable TOKEN-LEVEL Noise Filtering for LLM FINE-TUNING Datasets",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "可解释token分解过滤LLM微调噪声，计算开销大且泛化影响未明",
+ "innovations": [
+  "提出token级数据优化问题，揭示现有微调数据与LLM token级优化机制的不匹配",
+  "将token贡献分解为推理重要性、知识新颖性和任务相关性三个可解释属性",
+  "设计保守过滤策略和多维度互补机制，有效识别并过滤噪声token"
+ ],
+ "method_framework": "XTF框架包含三阶段：1)将token贡献分解为三个属性；2)基于注意力分数、PCP分数和语义距离分别评估各属性；3)通过统计方法识别噪声token并在训练中屏蔽其梯度",
+ "experiment_framework": "在数学、代码和医学三个任务上评估7种主流LLM，使用准确率和pass@1/5/10指标，与基线和4种数据增强方法对比",
+ "takeaways": [
+  "可解释属性分解方法能有效解决复杂训练机制中的噪声问题",
+  "多维度互补过滤策略可提高噪声识别的全面性"
+ ],
+ "weaknesses": [
+  "计算开销较大，需要为每个token计算三种分数",
+  "过滤策略的阈值设定可能需要针对不同任务进行调整",
+  "未充分探讨过滤后对模型泛化能力的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "token级噪声过滤直接关联LLM可靠性主线，方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

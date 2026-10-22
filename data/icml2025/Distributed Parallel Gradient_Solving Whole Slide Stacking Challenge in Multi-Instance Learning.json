@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Distributed Parallel Gradient_Solving Whole Slide Stacking Challenge in Multi-Instance Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Distributed Parallel Gradient_Solving Whole Slide Stacking Challenge in Multi-Instance Learning.pdf",
+ "title": "Distributed Parallel Gradient Stacking(DPGS): Solving Whole Slide Image Stacking Challenge in Multi-Instance Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "分布式梯度堆叠解决病理MIL变长bag堆批问题，工程创新为主",
+ "innovations": [
+  "提出DPGS，首个实现MIL数据无损堆叠的算法：把变长bag分给子模型并行算梯度、再聚合梯度来模拟批量堆叠，无需改架构",
+  "提出DMGC联合压缩梯度与参数，利用稀疏性只更新稀疏参数，在99.99%丢弃率下通信量降99.2%仍收敛",
+  "在Camelyon16与TCGA-Lung上训练最快提速31倍、精度最高提升9.3%"
+ ],
+ "method_framework": "MIL中各bag实例数从数百到数千不等，无法堆批导致只能逐bag串行：GPU利用率低且单bag梯度估计偏(非IID)。DPGS把不同变长bag分发到子模型并行计算梯度，再聚合梯度以模拟批量堆叠；DMGC在聚合时联合压缩梯度与参数(稀疏更新)，大幅降低多GPU/多节点通信，同时稳定梯度估计、改善收敛。",
+ "experiment_framework": "在Camelyon16与TCGA-Lung两个病理WSI-MIL数据集上，对比未堆叠MIL基线，以训练加速比、通信量与分类准确率为指标，报告最高31倍加速与9.3%精度提升。",
+ "takeaways": [
+  "MIL的变长bag无法堆批是效率与梯度估计不稳定的根源",
+  "通过并行算梯度再聚合，可无损模拟批量堆叠",
+  "联合稀疏压缩可在极高丢弃率下保持收敛，同时提速与提精度"
+ ],
+ "weaknesses": [
+  "核心贡献在分布式训练工程，方法新颖性相对有限",
+  "仅两个病理WSI数据集，跨癌种/跨中心的泛化未验证",
+  "稀疏丢弃率99.99%下收敛性的敏感性与超参选择交代有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

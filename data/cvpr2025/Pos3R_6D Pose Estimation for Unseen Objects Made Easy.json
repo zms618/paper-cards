@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Pos3R_6D Pose Estimation for Unseen Objects Made Easy.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Pos3R_6D Pose Estimation for Unseen Objects Made Easy.pdf",
+ "title": "Pos3R 6D Pose Estimation for Unseen Objects Made Easy",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "基于MASt3R的两阶段无训练姿态估计，减少模板数量",
+ "innovations": [
+  "利用3D基础模型MASt3R替代2D模型处理平面外旋转",
+  "仅使用40个模板覆盖所有旋转角度，大幅减少模板数量",
+  "基于匹配质量的简单模板选择策略"
+ ],
+ "method_framework": "Pos3R采用两阶段流程：首先使用CNOS进行目标检测，然后利用MASt3R建立测试图像与渲染模板间的2D-2D对应关系，通过PnP-RANSAC算法计算6D姿态。",
+ "experiment_framework": "在BOP挑战赛的7个核心数据集上评估，使用VSD、MSSD和MSPD指标，与训练方法和无训练方法对比，并测试了与MegaPose精炼方法的集成效果。",
+ "takeaways": [
+  "3D基础模型在处理平面外旋转时表现优于2D模型",
+  "精心设计的少量模板可以替代大量模板库，提高效率"
+ ],
+ "weaknesses": [
+  "仅使用RGB输入，未利用深度信息",
+  "在部分数据集上性能仍有提升空间",
+  "依赖外部检测器CNOS进行目标分割"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "无训练姿态估计与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

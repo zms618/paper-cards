@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/SigLino_Efficient Multi-Teacher Distillation for Agglomerative Vision Foundation Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SigLino_Efficient Multi-Teacher Distillation for Agglomerative Vision Foundation Models.pdf",
+ "title": "SigLino: Efficient Multi-Teacher Distillation for Agglomerative Vision Foundation Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "MoE架构整合多教师模型，但创新点有限且存在明显缺陷",
+ "innovations": [
+  "非对称关系知识蒸馏(ARKD)损失函数",
+  "token平衡批处理技术",
+  "分层聚类和采样训练数据",
+  "早期融合Grounding-VLM初始化"
+ ],
+ "method_framework": "基于MoE架构的学生模型，从SigLIP2和DINOv3两个教师模型同时蒸馏知识，通过ARKD损失和token平衡批处理实现高效知识转移",
+ "experiment_framework": "ImageNet/CUB-200等分类任务，MSCOCO/Flickr30k检索任务，ADE20k/PASCAL-VOC分割任务，RefCOCO grounding任务",
+ "takeaways": [
+  "token平衡批处理稳定多分辨率训练",
+  "分层聚类采样提升样本效率",
+  "Gram锚定保持密集特征质量"
+ ],
+ "weaknesses": [
+  "ARKD损失对kNN性能有负面影响",
+  "PHI-S变换对DINOv3的register特征估计不准确",
+  "高分辨率训练可能导致低分辨率特征遗忘"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多教师蒸馏方法与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

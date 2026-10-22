@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Exploring Landscapes for Better Minima along Valleys.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Exploring Landscapes for Better Minima along Valleys.pdf",
+ "title": "Exploring Landscapes for Better Minima along Valleys",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.9
+ },
+ "one_line": "梯度历史平均修改更新规则，提升大批量训练泛化",
+ "innovations": [
+  "提出梯度优化器适配器E，使优化器在达到局部最小值后仍能沿谷地探索",
+  "设计ALTO算法，结合历史梯度信息实现更平坦最小值的收敛",
+  "在大批量训练场景下显著提升模型泛化性能"
+ ],
+ "method_framework": "通过修改梯度更新规则gk + αak →gk，其中ak是梯度变化的指数移动平均，使优化器能够逃离尖锐最小值并沿谷地探索更平坦区域",
+ "experiment_framework": "在CV(CIFAR/ImageNet)和NLP(GPT-2/BERT)任务上测试，与SGD/Adam/Lamb等基线比较，使用top-1准确率和困惑度作为指标",
+ "takeaways": [
+  "利用梯度历史信息指导优化方向可有效提升模型泛化性能",
+  "大批量训练场景下，ALTO能显著减少训练时间并提升性能",
+  "优化器设计应考虑损失景观的几何特性"
+ ],
+ "weaknesses": [
+  "引入额外超参数增加调参复杂度",
+  "在小批量训练场景下提升有限",
+  "理论分析中某些假设在实际场景中可能不成立"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

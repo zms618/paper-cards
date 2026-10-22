@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Diff2I2P_Differentiable -to-Point Cloud Registration with Diffusion Prior.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Diff2I2P_Differentiable -to-Point Cloud Registration with Diffusion Prior.pdf",
+ "title": "Diff2I2P Differentiable -to-Point Cloud Registration with Diffusion Prior",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.9
+ },
+ "one_line": "可微分扩散先验提升图像到点云配准，但泛化验证不足",
+ "innovations": [
+  "Control-Side Score Distillation (CSD)技术利用扩散模型先验桥接模态差距",
+  "Deformable Correspondence Tuning (DCT)模块实现可微分的特征匹配",
+  "完整的可微分图像到点云配准框架，显著提升配准精度"
+ ],
+ "method_framework": "构建端到端可微分配准流程，通过DCT模块优化对应点，利用BPnP求解器估计变换，再通过CSD损失利用深度条件扩散模型蒸馏跨模态知识",
+ "experiment_framework": "在7-Scenes和RGB-D Scenes V2基准上评估，与FCGF、P2Net、Predator和2D3D-MATR等基线方法比较，使用内点比、特征匹配召回率和配准召回率等指标",
+ "takeaways": [
+  "扩散模型先验可有效解决跨模态配准中的模态差距问题",
+  "可微分设计使梯度能够回传到特征提取网络，实现端到端优化"
+ ],
+ "weaknesses": [
+  "依赖预训练扩散模型，训练成本较高",
+  "未在更多样化的场景（如室外动态场景）充分验证方法的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "跨模态配准方法，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

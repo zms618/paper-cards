@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/SDFit_3D Object Pose and Shape by Fitting a Morphable.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/SDFit_3D Object Pose and Shape by Fitting a Morphable.pdf",
+ "title": "SDFit 3D Object Pose and Shape by Fitting a Morphable",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "可变形SDF拟合单图3D姿态形状，计算复杂且泛化存疑",
+ "innovations": [
+  "使用可变形SDF(mSDF)模型作为强形状先验",
+  "基于基础模型的2D-3D对应关系建立姿态初始化",
+  "结合渲染比较的优化框架同时优化形状和姿态"
+ ],
+ "method_framework": "SDFit框架使用mSDF模型，通过形状检索初始化，利用基础模型建立2D-3D对应关系初始化姿态，然后通过渲染比较优化联合优化形状和姿态。",
+ "experiment_framework": "在Pix3D、Pascal3D+和COMIC数据集上评估，使用CD、F-Score、IoU和CLIP相似度作为指标，与ZeroShape、TripoSR和SDFusion等基线比较。",
+ "takeaways": [
+  "可变形SDF模型作为形状先验能有效处理遮挡和非常规姿态",
+  "结合基础模型建立2D-3D对应关系是有效的姿态初始化方法",
+  "渲染比较的优化框架能同时改善形状和姿态估计"
+ ],
+ "weaknesses": [
+  "方法计算复杂度较高，需要多次迭代优化",
+  "形状初始化依赖于检索方法，可能受限于数据库大小",
+  "实验主要在标准数据集上进行，真实场景泛化能力有待进一步验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D重建与可靠性主线无关，仅为图形学任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

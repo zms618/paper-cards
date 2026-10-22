@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Stabilizing Streaming Video Geometry via Dynamic Feature Normalization.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Stabilizing Streaming Video Geometry via Dynamic Feature Normalization.pdf",
+ "title": "Stabilizing Streaming Video Geometry via Dynamic Feature Normalization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "DyFN通过轻量级特征调制缓解视频几何尺度漂移",
+ "innovations": [
+  "识别潜在特征统计波动是时序不一致的根本原因",
+  "提出轻量级DyFN模块动态调制特征统计",
+  "仅微调2%参数实现时序一致性而不牺牲单帧精度"
+ ],
+ "method_framework": "DyFN模块使用ConvGRU维护历史上下文，预测并调制特征均值和方差，生成时序一致的几何特征，输入冻结的预训练解码器",
+ "experiment_framework": "在Sintel、ScanNet、KITTI、Bonn四个数据集上评估，使用AbsRel和ω<1.25指标，对比六类方法",
+ "takeaways": [
+  "特征统计与尺度/漂移直接相关但与几何精度解耦",
+  "参数高效微调策略可保留预训练模型泛化能力"
+ ],
+ "weaknesses": [
+  "仅解决尺度漂移问题，未处理几何结构不一致",
+  "依赖预训练模型性能，可能受限于基础模型能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "视频几何处理与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

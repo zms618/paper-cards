@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Panorama Generation From NFoV Done Right.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Panorama Generation From NFoV Done Right.pdf",
+ "title": "Panorama Generation From NFoV Done Right",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "解耦扩散模型解决全景畸变，但数据量小且效率未评估",
+ "innovations": [
+  "提出Distort-CLIP评估全景畸变",
+  "解耦全景生成任务为畸变引导与内容完成",
+  "修改ControlNet条件注册机制适应畸变图"
+ ],
+ "method_framework": "PanoDecouple解耦扩散模型，包含DistortNet(畸变引导)和ContentNet(内容完成)，结合Distort-CLIP的畸变校正损失",
+ "experiment_framework": "SUN360和Laval Indoor数据集，对比FID、CLIP-FID、Distort-FID和IS指标",
+ "takeaways": [
+  "解耦任务提升泛化能力",
+  "评估指标对畸变感知不足导致视觉欺骗现象",
+  "修改条件注册机制提升位置编码类输入效果"
+ ],
+ "weaknesses": [
+  "仅使用3K训练数据，可能限制在更复杂场景的表现",
+  "未充分讨论计算效率与推理时间"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "全景生成与可靠性主线无实质交点，仅常规视觉任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

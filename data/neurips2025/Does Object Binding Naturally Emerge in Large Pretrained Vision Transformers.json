@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Does Object Binding Naturally Emerge in Large Pretrained Vision Transformers.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Does Object Binding Naturally Emerge in Large Pretrained Vision Transformers.pdf",
+ "title": "Does Object Binding Naturally Emerge in Large Pretrained Vision Transformers?",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "二次探针解码ViT patch同物体信号，发现预训练目标依赖性",
+ "innovations": [
+  "提出IsSameObject概念：用二次相似度探针从patch嵌入解码两patch是否属于同一物体，准确率超90%",
+  "发现目标绑定在DINO/CLIP/ImageNet监督ViT中可靠涌现，但在MAE中显著弱，说明绑定非架构副产物而是特定预训练目标习得",
+  "进一步发现IsSameObject编码在物体特征之上的低维子空间，且该信号主动门控自注意力"
+ ],
+ "method_framework": "受自注意力二次特性启发，假设ViT会表示两patch是否同物体(IsSameObject)；用二次相似度探针在各ViT层解码该信号；对比DINO/CLIP/监督/MAE等预训练目标下的涌现程度；分析其编码子空间与对注意力的门控作用。",
+ "experiment_framework": "在多种预训练ViT(DINO/CLIP/监督/MAE)上用二次探针解码IsSameObject；报告探针准确率、跨层涌现模式与子空间分析。",
+ "takeaways": [
+  "目标绑定能力随预训练目标不同而涌现，非通用架构属性",
+  "对比学习类目标(DINO/CLIP)比纯重建(MAE)更利于绑定",
+  "IsSameObject以低维子空间形式编码并门控注意力"
+ ],
+ "weaknesses": [
+  "探针准确率受标注物体分割质量影响，同物体定义在遮挡/边界处模糊",
+  "相关性分析为主，绑定信号对下游任务的因果作用未严格验证",
+  "属ViT可解释性研究，与可靠性/医学影像/多模态推理主线无直接关联"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

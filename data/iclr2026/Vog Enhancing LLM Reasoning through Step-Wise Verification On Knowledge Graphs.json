@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Vog Enhancing LLM Reasoning through Step-Wise Verification On Knowledge Graphs.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Vog Enhancing LLM Reasoning through Step-Wise Verification On Knowledge Graphs.pdf",
+ "title": "VoG: Enhancing LLM Reasoning through Step-Wise Verification on Knowledge Graphs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "三智能体迭代验证KG推理，但计算开销大且依赖KG质量",
+ "innovations": [
+  "提出VoG框架，将逐步验证机制引入KG增强的LLM推理，在每步检测推理不一致并即时修正，缓解错误传播",
+  "设计KG感知的多臂老虎机(MAB)上下文选择机制，动态选择最具信息量的KG反馈子集与推理历史，增强事实一致性",
+  "三个专用LLM智能体（规划/检索/验证修正）协同迭代，实现模型无关的可扩展推理增强"
+ ],
+ "method_framework": "VoG包含三个协作智能体：Plan Agent先生成初始推理计划作为全局路线图；Retrieve Agent根据计划引导KG检索；Verify Agent逐步验证推理步骤与KG证据的一致性，检测中间错误。当发现不一致时，Revision Agent利用上下文感知的多臂老虎机(MAB)策略，结合不确定性和语义一致性奖励信号，自适应选择最有价值的KG反馈和历史上下文来修正推理计划。整个过程迭代进行直到得出最终答案。",
+ "experiment_framework": "数据集：三个KGQA基准数据集。基线：Plan-only、Retrieval-only、Retrieval+Plan等现有KG增强推理框架。指标：推理准确率、检索效率。测试覆盖开源和闭源多种LLM骨干模型，验证框架的通用性和跨骨干泛化能力。",
+ "takeaways": [
+  "逐步验证机制能有效检测并修正多跳推理中的中间错误，避免错误传播到最终答案",
+  "MAB上下文选择机制比静态上下文利用更高效，在保持准确率的同时提升检索效率",
+  "VoG框架在多种开源和闭源LLM上均有效，具有良好的模型无关性和泛化能力"
+ ],
+ "weaknesses": [
+  "依赖外部知识图谱质量和覆盖度，在KG稀疏或实体链接困难的场景下性能可能显著下降",
+  "三智能体迭代流程增加了推理时的计算开销和延迟，实际部署成本较高",
+  "验证机制主要基于KG三元组的事实一致性，对推理逻辑本身的合理性验证能力有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "KG验证机制与可靠性主线交织，但计算开销大且依赖KG质量",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

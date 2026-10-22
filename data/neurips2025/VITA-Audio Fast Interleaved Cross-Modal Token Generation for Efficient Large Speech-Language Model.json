@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/VITA-Audio Fast Interleaved Cross-Modal Token Generation for Efficient Large Speech-Language Model.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/VITA-Audio Fast Interleaved Cross-Modal Token Generation for Efficient Large Speech-Language Model.pdf",
+ "title": "VITA-Audio: Fast Interleaved Cross-Modal Token Generation for Efficient Large Speech-Language Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "轻量MCTP模块实现零音频延迟的跨模态生成，但鲁棒性与部署验证不足",
+ "innovations": [
+  "首个能在首次前向传播中生成音频输出的端到端语音模型",
+  "轻量级多模态令牌预测(MCTP)模块实现单次前向传播生成多个音频令牌",
+  "四阶段渐进式训练策略确保模型加速同时保持语音质量"
+ ],
+ "method_framework": "VITA-Audio包含音频编码器、音频解码器、大语言模型主干和多个MCTP模块，通过交替生成文本和音频令牌，利用LLM隐藏状态直接映射到音频令牌",
+ "experiment_framework": "在ASR、TTS和SQA任务上评估，使用Web-Questions、Llama-Question、TriviaQA等数据集，与MinMo、Moshi、GLM-4-Voice等模型对比",
+ "takeaways": [
+  "利用文本隐藏状态到音频令牌的简单映射关系可避免复杂语义建模",
+  "多模态任务中关注模态间单调对齐模式可简化模型设计"
+ ],
+ "weaknesses": [
+  "未充分验证模型在不同噪声环境下的鲁棒性",
+  "未详细分析模型在低资源设备上的部署可行性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

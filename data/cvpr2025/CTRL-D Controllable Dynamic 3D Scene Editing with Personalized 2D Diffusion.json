@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/CTRL-D Controllable Dynamic 3D Scene Editing with Personalized 2D Diffusion.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/CTRL-D Controllable Dynamic 3D Scene Editing with Personalized 2D Diffusion.pdf",
+ "title": "CTRL-D Controllable Dynamic 3D Scene Editing with Personalized 2D Diffusion",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "微调IP2P实现单图驱动的3D场景动态编辑",
+ "innovations": [
+  "基于单张编辑图像微调InstructPix2Pix模型",
+  "两阶段动态3D高斯优化框架",
+  "编辑图像缓冲区加速收敛"
+ ],
+ "method_framework": "先微调IP2P模型学习编辑能力，再通过两阶段优化动态3D高斯场景：第一阶段优化规范空间并增加高斯密度，第二阶段优化变形场和高斯参数",
+ "experiment_framework": "DyCheck和N3DV数据集，与Instruct 4D-to-4D和AnyV2V对比，使用CLIP分数和一致性指标评估",
+ "takeaways": [
+  "单张参考图像实现个性化编辑能力",
+  "数据增强防止过拟合",
+  "编辑图像缓冲区提高效率"
+ ],
+ "weaknesses": [
+  "仅依赖单张编辑图像可能限制编辑多样性",
+  "未充分讨论方法在不同场景类型上的泛化能力",
+  "计算效率虽有提升但仍需优化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3D场景编辑与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

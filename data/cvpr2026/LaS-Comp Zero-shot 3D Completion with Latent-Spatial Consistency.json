@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/LaS-Comp Zero-shot 3D Completion with Latent-Spatial Consistency.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/LaS-Comp Zero-shot 3D Completion with Latent-Spatial Consistency.pdf",
+ "title": "LaS-Comp Zero-shot 3D Completion with Latent-Spatial Consistency",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "两阶段零样本3D补全，依赖预训练模型，边界改进有限",
+ "innovations": [
+  "显式替换阶段(ERS)确保对部分输入的忠实度",
+  "隐式对齐阶段(IAS)改善边界连贯性",
+  "Omni-Comp基准测试提供更全面的评估"
+ ],
+ "method_framework": "两阶段框架：ERS将部分几何信息注入潜在表示，IAS通过几何对齐损失优化边界连贯性，无需训练即可适配不同3D基础模型。",
+ "experiment_framework": "在Redwood、合成数据、KITTI、ScanNet和自建Omni-Comp基准上评估，使用CD/EMD/UCD/UHD/MMD/TMD指标，与监督/无监督/生成先验方法对比。",
+ "takeaways": [
+  "潜在-空间一致性机制解决3D基础模型在形状补全中的域差距",
+  "部分感知噪声调度(PNS)平衡观察区域的稳定性和缺失区域的探索性",
+  "训练免费框架兼容多种3D基础模型并高效"
+ ],
+ "weaknesses": [
+  "仅依赖预训练3D基础模型，未探索端到端训练的可能性",
+  "对极端稀疏输入的鲁棒性未充分验证",
+  "计算效率虽比现有零样本方法快3倍，但仍有优化空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D补全与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

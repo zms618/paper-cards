@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Πnet Optimizing Hard-Constrained.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Πnet Optimizing Hard-Constrained.pdf",
+ "title": "Pinet: Optimizing Hard-Constrained Neural Networks with Orthogonal Projection Layers",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "投影层保证凸约束满足，但非凸约束保证性不足",
+ "innovations": [
+  "提出Πnet输出层，通过算子分裂(operator splitting)在前向传播中将网络不可行输出快速投影到凸可行集，实现可行即设计",
+  "利用隐函数定理(implicit function theorem)穿透投影层进行反向传播，端到端训练骨干网络",
+  "作为参数化约束优化的学习代理，批量问题求解时显著快于传统求解器，且训练时间/解质量/超参鲁棒性较SOTA学习方法提升数个量级"
+ ],
+ "method_framework": "骨干网络输出不可行解f(x)，经算子分裂投影层正交投影到凸可行集C(x)得到y；前向用快速可靠投影，反向用隐函数定理将损失梯度回传；针对多车运动规划等含非凸轨迹偏好的问题部署，提供JAX实现。",
+ "experiment_framework": "在参数化凸约束优化问题上验证，基线为传统数值求解器与已有学习型优化代理；指标为单问题/批量问题求解速度、解质量(精度)、训练时间与超参鲁棒性；并在多车运动规划任务上演示。",
+ "takeaways": [
+  "硬约束投影层可使网络输出天然满足凸约束，免去后处理不可行修复",
+  "在批量约束优化上相比传统求解器可显著加速，相比学习型SOTA在训练时间/解质量/鲁棒性上提升数个量级且推理时间相近",
+  "算子分裂+隐函数定理是兼顾快速前向投影与可训练反向传播的可行组合"
+ ],
+ "weaknesses": [
+  "凸约束这一前提较强，文中仅用非凸轨迹偏好作为案例，对一般非凸约束的保证性未展开",
+  "解精度被自述为modest-accuracy，与传统求解器的最优性差距缺乏系统性定量对比",
+  "提取页内未给出与最新神经优化/MPC基线的完整对比表，鲁棒性结论依赖自述"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "凸约束优化方法，非凸保证不足，与可靠性主线部分相关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

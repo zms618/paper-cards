@@ -1,0 +1,41 @@
+{
+ "title": "Uni-DPO: A Unified Paradigm for Dynamic Preference Optimization of LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "动态重加权偏好数据，提升DPO效率但依赖在线估计。",
+ "innovations": [
+  "指出现有 DPO 对所有偏好对等对待，忽略数据质量与学习难度差异，导致数据利用低效。",
+  "联合两个因子：偏好对的固有质量、以及训练过程中模型的动态表现，自适应重加权样本。",
+  "统一动态重加权框架，在文本、数学、多模态任务上均优于基线 DPO 类方法。"
+ ],
+ "method_framework": "在 DPO 目标基础上，为每个偏好对动态计算权重：既考虑该偏好对本身的质量(去噪/难度)，又根据训练中模型对该样本的当前掌握程度动态调整；据此高效分配梯度，避免被低质/已学会样本主导。",
+ "experiment_framework": "在文本(Arena-Hard/AlpacaEval2/IFEval)、数学推理(GSM8K/MATH/AIME/AMC 等)与多模态基准上，与标准 DPO 及各类改进 DPO 对比，报告胜率/准确率。",
+ "takeaways": [
+  "等权 DPO 忽视偏好数据质量与样本学习难度差异，限制了数据利用效率。",
+  "同时按数据质量与模型动态表现自适应重加权，能显著提升 DPO 效果。",
+  "Gemma-2-9B-IT 经 Uni-DPO 后在 Arena-Hard 上超 Claude 3 Opus 6.7 分，数学/多模态一致领先。"
+ ],
+ "weaknesses": [
+  "动态重加权依赖对样本质量与模型状态的在线估计，估计误差与训练稳定性需更多消融。",
+  "超参(两因子权衡)随任务/模型敏感，文中未充分讨论其选择准则。",
+  "属对齐/偏好优化方法，虽提升 LLM 表现但不直接针对幻觉/不确定性等可信主线；完整多模态结果表未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/UNI-DPO_A Unified Paradigm for Dynamic Preference Optimization Of LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/UNI-DPO_A Unified Paradigm for Dynamic Preference Optimization Of LLMS.pdf",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "提升DPO效率但属对齐方法，不直接针对可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

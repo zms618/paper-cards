@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Projected Coupled Diffusion for Test-Time Constrained Joint Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Projected Coupled Diffusion for Test-Time Constrained Joint Generation.pdf",
+ "title": "Projected Coupled Diffusion for Test-Time Constrained Joint Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "测试时耦合扩散模型加投影，实现约束联合生成",
+ "innovations": [
+  "提出耦合引导项，在生成动态中鼓励多个扩散模型之间的协调",
+  "在每个扩散步引入投影步骤，强制执行硬约束（如安全协议、物理限制）",
+  "无需重训即可组合多个边际预训练模型得到联合分布"
+ ],
+ "method_framework": "PCD在标准Langevin动态基础上：(1)添加耦合引导项，鼓励多个扩散模型的生成结果相互协调；(2)在每个去噪步后投影到约束可行域，确保硬约束满足。两个预训练的边际模型在测试时通过这两个机制耦合为联合生成。",
+ "experiment_framework": "在三个应用场景验证：图像对生成、物体操作、多机器人运动规划。指标包括耦合效果和约束满足率。",
+ "takeaways": [
+  "测试时耦合可有效组合多个独立预训练的扩散模型",
+  "投影步骤确保硬约束在整个生成过程中被满足",
+  "PCD无需重训即可实现约束联合生成，计算成本可控"
+ ],
+ "weaknesses": [
+  "投影步骤的具体实现依赖约束的类型，通用性有限",
+  "耦合引导项的权重选择可能需要针对不同场景调优",
+  "与可靠性/鲁棒性主线关联较弱，属于扩散模型测试时方法方向"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "测试时扩散模型耦合方法，与可靠性主线关联较弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

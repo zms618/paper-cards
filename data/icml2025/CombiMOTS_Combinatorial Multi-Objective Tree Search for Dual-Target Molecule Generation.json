@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/CombiMOTS_Combinatorial Multi-Objective Tree Search for Dual-Target Molecule Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CombiMOTS_Combinatorial Multi-Objective Tree Search for Dual-Target Molecule Generation.pdf",
+ "title": "CombiMOTS: Combinatorial Multi-Objective Tree Search for Dual-Target Molecule Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "Pareto MCTS框架在双靶点分子生成中权衡活性与合成性，但依赖预测模型且缺乏验证",
+ "innovations": [
+  "指出现有双靶点分子生成把多目标标量化，忽略靶点结合与分子性质间的重要权衡，且未融入合成规划",
+  "提出Pareto MCTS(PMCTS)框架，以Pareto前沿方式处理组合多目标优化",
+  "在可合成片段空间中搜索，使生成分子兼具双靶点活性与合成可达性"
+ ],
+ "method_framework": "CombiMOTS以Pareto MCTS在可合成片段空间上做组合搜索，显式维护双靶点结合能力与分子成药性质(如ADMET)间的Pareto权衡，并将合成规划(synthesis-aware)纳入生成过程，而非事后过滤。",
+ "experiment_framework": "在双靶点分子生成任务上，对比标量化多目标生成方法，以Pareto前沿质量、靶点结合活性、分子性质与合成可达性等指标评估。",
+ "takeaways": [
+  "Pareto多目标搜索能更好呈现双靶点-成药性之间的真实权衡，避免标量化丢失折中解",
+  "把合成规划前置进生成过程比事后过滤更能得到可合成分子",
+  "可合成片段空间限制了搜索范围并提升产出实用性"
+ ],
+ "weaknesses": [
+  "MCTS搜索开销大，生成速度与高通量药物筛选需求间的平衡未充分量化",
+  "靶点结合/成药性预测均依赖代理模型(oracle)，代理误差如何传导到生成结果讨论不足",
+  "缺乏湿实验验证，生成分子的真实生物活性仅由预测模型背书"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

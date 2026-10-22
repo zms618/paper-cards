@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Efficient and Separate Authentication Steganography Network.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficient and Separate Authentication Steganography Network.pdf",
+ "title": "Efficient and Separate Authentication Image Steganography Network",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.25
+ },
+ "one_line": "工程集成INN与认证，图像隐写效率提升但创新有限",
+ "innovations": [
+  "论证图像隐写中嵌入认证信息(lock)会因分布不一致占用隐藏空间、降质；提出两阶段分布适配：IAN先把lock与秘密图融合再进IHN，缓解分布冲突。",
+  "IAN提取秘密图的3通道主信息(降信息熵1.85)减少需隐藏数据；配合Redundancy Prediction Module保证可逆，reveal PSNR提升。",
+  "分离认证使多秘密图可并行隐藏进单一IHN(而非串行多网络)，N=5时仅6.15M参数 vs DeepMIH 33.48M/IIS 55.62M。"
+ ],
+ "method_framework": "条件normalizing flow框架z=fθ(x,c)/fθ(x,c')，lock c、key c'。IAN：秘密图经Haar小波分高低频，认证可逆块把lock L拼入DenseNet映射α/β/γ做仿射耦合，输出3通道提取信息Sc+冗余Rh；reveal时用key K做逆仿射解耦，错误key致输出发散(triplet loss)。IHN：封面DWT后与Sc拼接进隐藏可逆块出stego+Ro，RPM用stego预测Ro保证可逆。损失=隐藏+reveal+key(L1)+triplet+冗余。",
+ "experiment_framework": "数据DIV2K/ImageNet；藏2/3/4/5张秘密图；基线ISN/DeepMIH/IIS；指标cover-stego与secret-reveal的PSNR/SSIM/LPIPS、参数量/FLOPs/时间；安全性：SRNet/ZhuNet/LWENet隐写分析检测率、ManTraNet秘密定位；消融提取通道数/分布适配/主信息提取。",
+ "takeaways": [
+  "DIV2K藏2图时stego PSNR 42.14dB(+5.06 vs IIS)、secret reveal PSNR 38.09；N=5时参数量仅6.15M(IIS 55.62M)且FLOPs最低。",
+  "隐写分析检测率较基线降8-10%(SRNet 52.8% vs ISN 73.5%)，ManTraNet几乎检测不到秘密轮廓；错误key(全0/高斯/他人key)reveal图严重失真。",
+  "消融：3通道提取最优；两阶段分布适配比one-stage的JS散度更低、PSNR/SSIM更高；提取主信息降熵1.85同时reveal PSNR升2.09dB。"
+ ],
+ "weaknesses": [
+  "工作为工程集成(条件INN+lock-key+小波)，方法新意有限；认证安全性仅靠key-lock匹配，未做抗共谋/密钥泄漏等更严威胁模型。",
+  "ImageNet上藏多图时secret-reveal PSNR仍仅30-32dB、LPIPS偏高，大容量下恢复质量一般；无真实信道/噪声鲁棒性测试。",
+  "属图像隐写/数字安全，与可靠性主线（鲁棒/泛化/可信AI/不确定性/幻觉抑制在医学影像或多模态大模型推理）无直接关系。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.43,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

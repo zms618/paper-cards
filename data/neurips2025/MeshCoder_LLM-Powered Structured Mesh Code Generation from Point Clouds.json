@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/MeshCoder_LLM-Powered Structured Mesh Code Generation from Point Clouds.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/MeshCoder_LLM-Powered Structured Mesh Code Generation from Point Clouds.pdf",
+ "title": "MeshCoder: LLM-Powered Structured Mesh Code Generation from Point Clouds",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "LLM将点云转为Blender脚本生成结构化网格，但泛化性受限",
+ "innovations": [
+  "设计了一套表达丰富的Blender Python API，能合成复杂几何形状",
+  "构建了大规模成对对象-代码数据集，包含41类、100万个对象",
+  "开发了多模态LLM框架，将点云转换为可执行Blender脚本"
+ ],
+ "method_framework": "MeshCoder采用两阶段训练：先训练部件到代码的模型，再训练对象到代码的模型。使用三平面tokenizer将点云转换为固定长度token，输入LLM生成Blender Python脚本。",
+ "experiment_framework": "在Infinigen Indoor数据集上评估，使用IoU和L2 Chamfer Distance作为指标，与Shape2Prog和PLAD基线比较，并进行了形状编辑和形状理解实验。",
+ "takeaways": [
+  "将3D形状表示为可执行代码，便于几何和拓扑编辑",
+  "代码表示增强了LLM对3D形状的理解能力"
+ ],
+ "weaknesses": [
+  "主要针对人造物体，对有机形状（如动物和人类）的适用性有限",
+  "依赖Blender生态系统，可能限制在其他软件中的通用性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

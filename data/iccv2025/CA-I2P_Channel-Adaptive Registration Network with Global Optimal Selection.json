@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/CA-I2P_Channel-Adaptive Registration Network with Global Optimal Selection.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/CA-I2P_Channel-Adaptive Registration Network with Global Optimal Selection.pdf",
+ "title": "CA-I2P Channel-Adaptive Registration Network with Global Optimal Selection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "通道自适应与全局优化提升室内跨模态配准",
+ "innovations": [
+  "通道自适应调整模块(CAA)增强模内特征并抑制跨模态敏感",
+  "全局最优选择模块(GOS)替代局部选择减少多对一匹配错误",
+  "跨模态通道过滤阶段(CMCF)通过协方差矩阵识别并屏蔽不兼容通道"
+ ],
+ "method_framework": "基于特征提取器，通过CAA模块优化图像和点云特征，计算相似度得分图后，由GOS模块进行全局优化获得粗匹配，再提取密集匹配，最后用PnP+RANSAC估计刚性变换。",
+ "experiment_framework": "在RGB-D Scenes V2和7-Scenes数据集上评估，使用内点比例(IR)、特征匹配召回率(FMR)和配准召回率(RR)作为指标，与2D3D-MATR等方法对比。",
+ "takeaways": [
+  "通道级特征处理可有效减少跨模态差异",
+  "全局优化策略优于局部top-k选择方法",
+  "实例归一化和协方差矩阵过滤增强跨域一致性"
+ ],
+ "weaknesses": [
+  "方法主要针对室内场景，对户外场景的泛化能力有限",
+  "计算复杂度较高，特别是GOS模块中的最优传输计算"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "室内跨模态配准与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

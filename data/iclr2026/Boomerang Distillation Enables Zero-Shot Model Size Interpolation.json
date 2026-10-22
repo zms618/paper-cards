@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Boomerang Distillation Enables Zero-Shot Model Size Interpolation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Boomerang Distillation Enables Zero-Shot Model Size Interpolation.pdf",
+ "title": "Boomerang Distillation Enables ZERO-SHOT Model Size Interpolation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "Boomerang蒸馏实现零样本模型大小插值，但生成任务性能不理想",
+ "innovations": [
+  "Boomerang distillation现象的发现",
+  "零样本模型大小插值方法",
+  "通过学生模型打补丁实现中间模型",
+  "无需额外训练即可生成细粒度模型族"
+ ],
+ "method_framework": "从大教师模型蒸馏到小学生模型，然后通过将教师层块重新整合到学生模型中，无需额外训练即可创建中间大小的模型。",
+ "experiment_framework": "使用Qwen3-4B-Base作为教师模型，在分类和生成任务上评估，与朴素层剪枝和随机初始化蒸馏模型比较。",
+ "takeaways": [
+  "教师-学生对齐是Boomerang distillation成功的关键",
+  "余弦距离损失对插值模型的稳定性至关重要",
+  "该方法可推广到现有预训练模型"
+ ],
+ "weaknesses": [
+  "生成任务上的插值性能不如分类任务平滑",
+  "需要保留教师权重在内存中",
+  "对初始层和最后层的对齐特别敏感"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "模型压缩技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

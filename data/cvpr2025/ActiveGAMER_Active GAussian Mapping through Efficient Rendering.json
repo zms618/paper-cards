@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/ActiveGAMER_Active GAussian Mapping through Efficient Rendering.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ActiveGAMER_Active GAussian Mapping through Efficient Rendering.pdf",
+ "title": "ActiveGAMER: Active GAussian Mapping through Efficient Rendering",
+ "scores": {
+  "novelty": 4.5,
+  "depth": 5.0,
+  "evidence": 4.0,
+  "relevance": 4.5,
+  "overall": 4.5
+ },
+ "one_line": "3DGS替换NeRF做NBV规划，信息增益公式与阈值无原理支撑",
+ "innovations": [
+  "信息增益定义为 I=(1-σ(l_i))·σ(log N_Si)，N_Si 为候选视角下 3DGS 渲染剪影 mask 中未覆盖像素数，用 softmax 同时归一化 travelled L2 距离与缺失像素数，一次前向即可得到下一个最优视角，无需额外策略网络",
+  "候选池维护：对增量 occupancy grid 只在新增自由体素上按 v1 米间隔、Fibonacci  lattices 取 v2 个视向生成候选，并把 N_Si 低于总像素 0.5% 的视角直接剔除，避免候选反复堆积",
+  "针对 SplaTAM 局部关键帧+Gaussian opacity 求补导致主表面背后冗余高斯被剪掉、局部过拟合的问题，按「轮廓揭开 >10% 新像素」和「渲染质量低于阈值」两条标准选全局关键帧，并与局部重叠关键帧各占一半参与优化"
+ ],
+ "method_framework": "以 SplaTAM 为建图骨架（各向同性高斯 + 颜色/深度 alpha 合成 + 按 MDE 阈值加密），增量维护候选视角池与 occupancy 探索图，每步对候选渲染剪影算信息增益选目标位姿并做 RRT 路径规划，结束后用全局关键帧做一轮渲染向后细化。",
+ "experiment_framework": "Habitat 仿真器，Replica 8 场景、MP3D 5 场景，各跑 2000/5000 步，poses RGB-D 680×1200；基线 FBE/UPEN/OccAnt/ANM/NARUTO；指标 Accuracy、Completion、Completion ratio、PSNR/SSIM/LPIPS、Depth L1。",
+ "takeaways": [
+  "「用已建好的可微渲染结果本身当信息增益的探针」——不训练任何策略网络，直接拿渲染出的 silhouette 覆盖缺口选下一视角，这类零训练量的主动感知设计成本极低，可迁移到任意可实时渲染的表征。",
+  "主动建图里几何与 photometric 目标存在真实冲突（为渲染质量剪高斯会破坏几何完整性），论文诚实地分开放这两种模型来评测，这种「按指标分开汇报」的评测协议值得照搬。",
+  "NARUTO 在表中Completion 90.18 对 95.32、Acc 6.31 对 1.66 交出明显差距，说明高斯显式表示相比神经场在主动重建的完整性上确有优势，这个对照可以复用。"
+ ],
+ "weaknesses": [
+  "方法主体是既有模块的堆装：SplaTAM 的建图+加密、NARUTO 的 RRT/局部规划、模型平均式的全局-局部关键帧、后细化，创新性主要来自「用 3DGS 替代 NeRF 做渲染式 NBV」这一替换；信息增益公式的 softmax 温度、v1/v2、λ=50×MDE、10%/half-keyframe 等阈值均无原理支撑。",
+  "表格里 MA 的 Acc/Comp 一栏大量基线（FBE/UPEN/OccAnt/ANM/NARUTO）没有 accuracy，只有 completeness，不同基线的评测口径不一致，主表可比性受限；且 Table 1 只给了每类聚合数字，无方差、无单次轨迹的鲁棒性统计。",
+  "正文在渲染指标表（NARU…）中途截断，缺少 Replica 的完整结果表、信息增益模块的消融（去掉距离项/去掉候选池）、以及真实机器人上的实机实验； simulator-only 的 6DoF 自由移动在实际有动力学约束的平台上不成立。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.4,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "3DGS重建与可靠性主线无关，仅是工程实现改进",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

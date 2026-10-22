@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Deep Sturm–Liouville_From Sample-Based to 1D Regularization with Learnable Orthogonal Basis Functions.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Deep Sturm–Liouville_From Sample-Based to 1D Regularization with Learnable Orthogonal Basis Functions.pdf",
+ "title": "Deep Sturm-Liouville: From Sample-Based to 1D Regularization with Learnable Orthogonal Basis Functions",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6.3
+ },
+ "one_line": "将Sturm-Liouville定理引入深度学习，实现从样本级到连续正则化的提升。",
+ "innovations": [
+  "提出DSL函数逼近器：把Sturm-Liouville定理引入深度学习，沿输入空间场线求解本征值问题生成正交基函数",
+  "首次将正则化从传统0D（样本级）提升为1D（沿场线连续），利用正交基的内蕴性质施加隐式正则化",
+  "场与基函数均由神经网络参数化并联合学习，可通过隐式微分用SGD高效训练，自然对应Rank-1抛物本征问题"
+ ],
+ "method_framework": "学习一个向量场，其场线遍历输入空间；沿每条场线求解Sturm-Liouville本征问题得到正交本征函数，作为基；DSL逼近器为这些基的线性组合；向量场与基系数均由NN参数化，通过隐式微分端到端训练。",
+ "experiment_framework": "在多个多变量数据集及高维图像数据集（MNIST、CIFAR-10）上评测，报告竞争性性能与改进的样本效率。",
+ "takeaways": [
+  "DSL在MNIST/CIFAR-10上达到竞争性性能并表现出更好的样本效率",
+  "沿场线的1D连续正则化可缓解传统样本级正则化带来的泛化限制",
+  "正交基函数的内蕴性质为NN提供了可解释的正则化归纳偏置"
+ ],
+ "weaknesses": [
+  "前9页未给出完整数值表，具体精度提升幅度与baseline对比需看实验章节",
+  "1D正则化在场线构造与求解上计算开销较大，可扩展性未充分论证",
+  "理论新颖但实证证据规模偏小（仅MNIST/CIFAR级别），未在大规模分类/检测任务验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

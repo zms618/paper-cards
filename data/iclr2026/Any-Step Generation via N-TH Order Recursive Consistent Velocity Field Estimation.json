@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Any-Step Generation via N-TH Order Recursive Consistent Velocity Field Estimation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Any-Step Generation via N-TH Order Recursive Consistent Velocity Field Estimation.pdf",
+ "title": "ANY-STEP Generation via N-TH Order Recursive Consistent Velocity Field Estimation",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5.0,
+  "overall": 6.2
+ },
+ "one_line": "RCGM通过N阶递归速度场估计统一生成模型，解决EMA兼容性问题。",
+ "innovations": [
+  "提出N阶递归一致性速度场估计框架(RCGM)，统一现有生成模型",
+  "揭示一阶自目标学习与EMA的不兼容性悖论",
+  "通过高阶公式(N≥2)打破这一悖论，实现稳定的大规模模型训练"
+ ],
+ "method_framework": "RCGM通过分段积分PF-ODE轨迹，构建N阶递归速度场估计器，仅需单次前向传播和N次无梯度前向传播，避免JVP计算，提高训练效率。",
+ "experiment_framework": "ImageNet-1K(256×256/512×512)，675M参数DiT模型，FID作为主要指标，对比一阶方法(一致性模型、MeanFlow)。",
+ "takeaways": [
+  "高阶递归公式(N≥2)能有效解决一阶方法与EMA的不兼容性问题",
+  "RCGM框架统一了现有生成模型，并扩展到任意阶数，提升训练稳定性"
+ ],
+ "weaknesses": [
+  "仅展示了图像生成任务，未验证在其他模态的泛化能力",
+  "高阶计算可能增加推理时间，实际部署效率需进一步评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "生成模型训练效率提升，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Gradient Multi-Normalization for Efficient LLM Training.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Gradient Multi-Normalization for Efficient LLM Training.pdf",
+ "title": "Gradient Multi-Normalization for Efficient LLM Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.5
+ },
+ "one_line": "梯度多归一化框架SinkGD提升LLM训练效率，但应用受限。",
+ "innovations": [
+  "梯度多归一化框架统一无状态优化器设计",
+  "SinkGD算法基于Sinkhorn迭代实现高效矩阵预处理",
+  "理论证明多归一化算法收敛到固定点解"
+ ],
+ "method_framework": "提出多归一化梯度下降(MNGD)框架，通过交替投影实现梯度在多个范数下的归一化，SinkGD作为特例应用行和列的ℓ2范数归一化。",
+ "experiment_framework": "在LLaMA模型(60M-1.3B)上测试，使用C4数据集，比较Adam、SWAN等基线，测试困惑度和训练吞吐量。",
+ "takeaways": [
+  "多范数归一化框架可统一设计无状态优化器",
+  "Sinkhorn迭代提供高效矩阵预处理方法"
+ ],
+ "weaknesses": [
+  "仅应用于线性模块，其他模块仍需Adam",
+  "理论分析基于特定假设，一般情况收敛性未证明"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Efficiently Serving Large Multimodal Models Using EPD Disaggregation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Efficiently Serving Large Multimodal Models Using EPD Disaggregation.pdf",
+ "title": "Efficiently Serving Large Multimodal Models Using EPD Disaggregation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "EPD分离架构优化多模态模型推理效率，但工程创新为主，理论贡献有限。",
+ "innovations": [
+  "首次把分离(serving disaggregation)从LLM的PD(预填充-解码)扩展到LMM的EPD三阶段，单独隔离编码阶段，消除编码与prefill在同GPU上的互相干扰。",
+  "请求内并行IRP：把单个请求的图像patch分到多个编码worker并行处理再异步合并，降低首token延迟；MMBlockManager管理多媒体token缓存。",
+  "动态角色切换：实例可在E/P/D三阶段间<0.7秒切换(offload/migration/onload)，在线应对工作负载变化；黑盒贝叶斯优化离线配置batch/scheduling/并行度。"
+ ],
+ "method_framework": "流水线：编码E(MME出vision token)→EP-migration(异步NVLink/IB传MM缓存)→Prefill P(出KV cache和首token)→PD-migration→Decode D(自回归)。每阶段独立DP实例+TP/PP worker，E只载MME不需LLM/KV缓存从而省显存；资源配置用扩展自DistServe的simulator+贝叶斯优化max f(p,b,s)-βcost。",
+ "experiment_framework": "模型MiniCPM-V2.6/InternVL2-8B/26B；数据集synthetic workload/NextQA/Video-MME；基线DistServe(PD分离)/vLLM(单体)；指标TTFT/TPOT/SLO Attainment/Goodput/显存/最大batch/每请求图片数；消融IRP/optimizer/role-switching；扩展到华为Ascend NPU。",
+ "takeaways": [
+  "EPD显存节省最高15×(E worker不需LLM权重+KV缓存)，InternVL2-26B@787×444编码batch从1到22(22×)，每请求图片数最高10×。",
+  "TTFT较DistServe降最高71.9%(MiniCPM-V2.6)，Video-MME上随视频变长收益扩大(64帧降67.5%)；SLO attainment提升90-100%。",
+  "消融：去IRP使多图TTFT恶化最多2.9×，去optimizer goodput降2.2×，去role-switching TPOT恶化2.4×——三组件各自关键。"
+ ],
+ "weaknesses": [
+  "系统工程工作，贡献多为架构直觉+工程集成，理论新意有限；跨机EP/PD传输依赖NVLink/InfiniBand高速互连，普通云GPU网络下收益存疑。",
+  "评估仅3个模型、100样本级QA，goodput/SLO数字强依赖手工设定的SLO阈值(TTFT/TPOT)；无真实生产流量长期验证。",
+  "落地域虽是多模态大模型，但内容是推理服务效率(TTFT/显存)，与可靠性主线（鲁棒/泛化/可信AI/不确定性/幻觉抑制在医学影像或多模态推理）无直接关系。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.03,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

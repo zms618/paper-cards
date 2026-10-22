@@ -1,0 +1,37 @@
+{
+ "title": "How to Synthesize Text Data without Model Collapse?",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "揭示合成数据比例与性能负相关，提出token编辑半合成数据缓解模型崩溃",
+ "innovations": [
+  "系统预训练不同合成数据比例的语言模型，定量揭示合成数据比例与下游性能的负相关",
+  "统计分析定位模型崩溃的成因：分布漂移与n-gram特征过度集中(over-concentration)",
+  "提出在人工生产数据上做token编辑得到半合成数据，在扩充数据的同时避免模型崩溃"
+ ],
+ "method_framework": "模型崩溃源于迭代自训练使生成数据污染后代训练集，丢失人类数据的长尾复杂度。本文先用实验刻画崩溃与分布漂移/n-gram集中的关系，再用token编辑在真实人工数据上做局部改动生成半合成数据，既扩充语料又保留真实分布，避免纯自生成导致的崩溃。",
+ "experiment_framework": "预训练不同合成/人工数据比例的语言模型，报告下游性能随比例变化；对合成数据做n-gram与分布统计分析；验证token编辑半合成数据能否在扩充数据的同时维持性能不崩溃。",
+ "takeaways": [
+  "合成数据比例越高，模型性能越差，模型崩溃是LLM训练必须面对的问题",
+  "崩溃的统计表征是分布漂移与n-gram特征过度集中",
+  "在人工数据上token编辑得到的半合成数据可兼顾数据扩充与不崩溃"
+ ],
+ "weaknesses": [
+  "token编辑的操作空间与编辑幅度对'半合成'质量的影响缺乏系统消融",
+  "实验规模可能非满尺度LLM，在超大规模预训练上的崩溃缓解效果待验证",
+  "与纯人工数据的混合最优配比、以及与其它去偏/重采样方法的对比不充分"
+ ],
+ "confidence": "high",
+ "key": "icml2025/How to Synthesize Text Data without Model Collapse.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/How to Synthesize Text Data without Model Collapse.pdf",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

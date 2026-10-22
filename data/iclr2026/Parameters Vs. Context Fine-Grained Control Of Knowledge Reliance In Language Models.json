@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Parameters Vs. Context Fine-Grained Control Of Knowledge Reliance In Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Parameters Vs. Context Fine-Grained Control Of Knowledge Reliance In Language Models.pdf",
+ "title": "Parameters vs. Context: Fine-Grained Control of Knowledge Reliance in Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "用熵移检测知识冲突，单一参数微调控制LLM知识依赖偏好。",
+ "innovations": [
+  "提出知识一致性指标Confidence Gain：通过插入上下文前后token概率分布的熵移检测知识冲突。",
+  "提出CK-PLUG：用单一可调参数微调负置信增益token的概率分布，即插即用地控制对参数/上下文知识的偏好。",
+  "支持基于模型对内外知识置信度的自适应控制，在反事实RAG与通用RAG任务上一致提升。"
+ ],
+ "method_framework": "比较上下文插入前后每个token概率分布的熵移得到Confidence Gain：增益为负表示上下文与参数知识冲突；用一个标量参数对这些负增益token的logits重新加权，从而在推理时无需训练地把生成推向更依赖参数或更依赖上下文；并可按模型置信度自适应调节强度。",
+ "experiment_framework": "在LLaMA3-8B等模型上做反事实RAG与通用RAG任务；指标为记忆召回率MR(反事实下)、生成流畅度与知识准确性；MR可在9.9%-71.9%宽范围调节(基线42.1%)，并在多个通用RAG基准上一致提升。",
+ "takeaways": [
+  "熵移可有效度量参数知识与检索上下文的冲突。",
+  "单一标量即可在推理时细粒度、无训练地调控知识依赖。",
+  "在反事实(不可靠上下文)场景能显著控制模型盲从检索内容。"
+ ],
+ "weaknesses": [
+  "基于熵移的冲突检测对细微/分布外冲突的灵敏度未充分分析。",
+  "只在若干开源模型上验证，闭源商用LLM(无法改logits)不适用。",
+  "自适应控制依赖模型自身置信度校准，模型过度自信时可能误判。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "知识依赖控制与可靠性主线交织，反事实RAG提升鲁棒性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

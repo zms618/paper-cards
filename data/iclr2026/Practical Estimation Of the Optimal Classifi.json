@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Practical Estimation Of the Optimal Classifi.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Practical Estimation Of the Optimal Classifi.pdf",
+ "title": "Practical Estimation of the Optimal Classification Error with Soft Labels and Calibration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.9
+ },
+ "one_line": "分析硬标签Bayes误差估计偏差衰减，提出等渗校准解决软标签污染问题",
+ "innovations": [
+  "揭示硬标签 Bayes 误差估计的偏差衰减速率自适应于两类条件分布的可分性，远快于已有界",
+  "指出仅'校准'不足以保证估计准确：即使完美校准的软标签也会给出严重偏差的估计",
+  "提出等渗校准在比先前工作更弱的假设下给出统计一致的估计器，且实例无关(无需访问输入特征)"
+ ],
+ "method_framework": "在软标签估计 Bayes 误差框架下，分析每实例 m 个硬标签平均得到的经验软标签的偏差行为；面对被标注分布偏移/标注者主观性/LLM标注偏差污染的软标签，证明校准不能直接修复，改用等渗校准将扭曲的软标签映射回后验一致估计，全过程仅依赖标签不依赖样本，便于隐私受限(如医疗诊断)场景。",
+ "experiment_framework": "合成数据与真实数据集(CIFAR-10H 等)上验证偏差衰减与等渗校准的一致性；对比 Ishida et al. 估计器在直接插入受污染软标签时高估 Bayes 误差的现象。",
+ "takeaways": [
+  "Bayes 误差可被实例无关地估计，适合医疗等样本不可得的隐私场景",
+  "随每实例硬标签数 m 增大，偏差按类别可分性自适应地快速趋于零",
+  "等渗校正在较弱假设下可得到对受污染软标签一致的 Bayes 误差估计"
+ ],
+ "weaknesses": [
+  "理论主要针对二分类，多分类扩展的可行性前9页未充分展开",
+  "实例无关方法忽略了特征分布，对复杂高维任务的估计精度证据有限",
+  "等渗校准一致性所依赖的较弱假设的具体条件与可检验性说明偏理论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "校准与评估协议，直击医疗等隐私受限场景痛点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

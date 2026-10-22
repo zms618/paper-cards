@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Rewriting Pre-Training Data Boosts LLM Per-FORMANCE In Math and Code.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rewriting Pre-Training Data Boosts LLM Per-FORMANCE In Math and Code.pdf",
+ "title": "Rewriting Pre-Training Data Boosts LLM Performance in Math and Code",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "改写而非过滤数据提升LLM数学代码能力，但依赖LLM且缺乏可靠性评估。",
+ "innovations": [
+  "提出transform-and-retain路线：不丢弃低质量样本而是改写为自包含、算法高效的示例，最大化数据效用，区别于以往只做排他过滤的做法。",
+  "SwallowCode四阶段管线：语法校验、pylint风格过滤、两阶段LLM改写以统一风格并改造为自包含高效示例。",
+  "SwallowMath对FineMath-4+去样板、恢复上下文、重排为简洁分步解答；并在固定50B token预算下做系统数据消融验证每阶段贡献。"
+ ],
+ "method_framework": "代码侧对The-Stack-v2的Python片段做语法校验+风格过滤+两阶段LLM改写，得到自包含高效代码；数学侧对FineMath-4+清洗并重写为分步解答；在同一基座上仅替换对应数据子集做continual pretraining消融。",
+ "experiment_framework": "固定50B token训练预算与同一基线模型，逐阶段开闭数据管线做消融；SwallowCode约16.1B token、SwallowMath约2.3B token；评测数学推理与代码生成基准上的提升。",
+ "takeaways": [
+  "对预训练语料做系统性改写（transform-and-retain）比单纯过滤更能提升LLM数学/代码性能。",
+  "每阶段数据处理都应通过受控continual pretraining消融来验证是否保留，避免凭直觉保留无效环节。"
+ ],
+ "weaknesses": [
+  "改写依赖LLM自身，可能引入模型偏好偏差或错误，对改写错误率缺乏量化审计。",
+  "增益主要在数学/代码两类能力，对通用指令与可靠性（幻觉/鲁棒）的影响未评估。",
+  "前9页主要为数据管线与消融设定，最终模型在主流榜单上的绝对水平与对比开源强模型的结果在后续页。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "数据改写提升数学代码能力，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

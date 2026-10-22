@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Weak-to-Strong Jailbreaking on Large Language Models Content warning This paper contains examples of harmful.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Weak-to-Strong Jailbreaking on Large Language Models Content warning This paper contains examples of harmful.pdf",
+ "title": "Weak-to-Strong Jailbreaking on Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 8,
+  "overall": 6.9
+ },
+ "one_line": "白盒下修改解码分布实现高效越狱，但防御探索不足",
+ "innovations": [
+  "发现越狱模型与对齐模型的差异主要体现在初始解码分布上，而非模型权重的深层差异",
+  "提出弱到强攻击方法：用小型不安全模型的logits按比例放大，修改大型安全模型的解码概率，实现推理时越狱",
+  "系统比较了各种越狱威胁模型的计算成本，证明该方法是计算效率最高的（1次前向传播，0次反向传播）"
+ ],
+ "method_framework": "目标是大型安全模型M+。使用一个小型安全参考模型M-和一个从小型安全模型微调而来的小型不安全模型M-hat。在解码时，将M+的token分布与M-hat/M-的比值按温度α缩放相乘，从而将不安全的解码偏好注入到大型安全模型的生成过程中。整个过程仅需一次前向传播，无需修改模型权重或系统提示。",
+ "experiment_framework": "在来自3个组织的5个开源LLM上评估；使用2个安全基准数据集；指标为失准率（misalignment rate）。与自动提示攻击、对抗微调、对抗解码等方法对比计算成本和效果。初步探索了基于过滤的防御策略。",
+ "takeaways": [
+  "LLM的安全对齐在解码层面是脆弱的，仅通过修改输出分布就能高效绕过",
+  "小型不安全模型可作为\"领航船\"引导大型安全模型生成有害内容，攻击成本极低",
+  "现有对齐方法主要针对训练阶段和输入提示设计，对推理时的分布篡改防御不足"
+ ],
+ "weaknesses": [
+  "需要获取目标模型的token logits（白盒访问），对完全黑盒的闭源模型适用性有限",
+  "仅提出了初步的防御策略，未深入研究有效的防护方法",
+  "攻击效果在不同安全数据集上的稳定性和可迁移性未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

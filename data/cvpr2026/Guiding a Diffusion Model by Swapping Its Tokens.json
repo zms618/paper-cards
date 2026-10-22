@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Guiding a Diffusion Model by Swapping Its Tokens.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Guiding a Diffusion Model by Swapping Its Tokens.pdf",
+ "title": "Guiding a Diffusion Model by Swapping Its Tokens",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.4
+ },
+ "one_line": "通过token交换实现扩散模型的自引导，提升生成质量与鲁棒性。",
+ "innovations": [
+  "提出Self-Swap Guidance (SSG)方法，通过交换语义差异化的token实现扰动",
+  "在空间和通道维度上进行细粒度的token交换，而非全局扰动",
+  "设计对抗性token交换策略，选择语义差异最大的token对进行交换"
+ ],
+ "method_framework": "SSG在扩散模型中维护两个并行分支：原始分支和通过token交换生成的扰动分支。通过计算token间的余弦相似性，选择最语义不相似的token对进行交换，生成扰动预测，并与原始预测结合指导采样过程。",
+ "experiment_framework": "在MS-COCO 2014/2017和ImageNet数据集上评估，使用SDXL和SD1.5作为基础模型。评估指标包括FID、IS、AES、CLIP Score、PickScore和ImageReward，并与SAG、SEG、PAG等基线方法比较。",
+ "takeaways": [
+  "细粒度的token交换比全局噪声注入更有效，能提供更可控的扰动",
+  "对抗性token选择策略（交换最不相似token）显著提升生成质量",
+  "SSG在较广的引导尺度范围内保持稳定性能，减少过饱和和细节丢失问题"
+ ],
+ "weaknesses": [
+  "方法依赖于token相似度计算，计算开销可能较大",
+  "未探讨在不同架构扩散模型上的泛化能力",
+  "对交换比例和引导尺度的选择仍需调参，缺乏完全自适应机制"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "提升生成质量与鲁棒性，但未深入可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

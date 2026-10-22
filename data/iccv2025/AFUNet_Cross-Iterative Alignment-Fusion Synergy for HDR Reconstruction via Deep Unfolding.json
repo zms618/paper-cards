@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/AFUNet_Cross-Iterative Alignment-Fusion Synergy for HDR Reconstruction via Deep Unfolding.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/AFUNet_Cross-Iterative Alignment-Fusion Synergy for HDR Reconstruction via Deep Unfolding.pdf",
+ "title": "AFUNet: Cross-Iterative Alignment-Fusion Synergy for HDR Reconstruction via Deep Unfolding Paradigm",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "MAP估计展开网络，对齐与融合交替优化，但提升微弱且实验不足。",
+ "innovations": [
+  "把多曝光 HDR 重建写成 MAP 估计 min‖y2−D2x‖²+λ1p1(D1x,α1)+λ3p3(D3x,α3)，用两个空间对应先验 p1、p3 显式区分「对齐」与「融合」两个子问题并交替优化，而不是先对齐后融合的两阶段流水。",
+  "对齐子问题用梯度下降算子 α_i^t=G_i(α_i^{t-1})=α_i^{t-1}−ς_i∇_{α_i}p_i 解，融合子问题用半二次分裂 + 近端算子 u^t=prox_{λ1/β1 p1(·,α1^t)}(x^{t-1}) 解，x 的更新有闭式 x^t=(D2^T D2+(β1+β3)I)^{-1}(D2^T y2+β1u^t+β3v^t)。",
+  "把上述迭代展开成 4 阶段堆叠的 AFM：每阶段 2 个窗口交叉注意力 SAM（K/V 里注入 MLP_D 学退化 D1/D3）+ 1 个空间融合 SFM + 2 个通道注意力 CFM；D1、D3、D2^T、B^{-1} 全部用独立 MLP 学习，避免显式矩阵求逆。"
+ ],
+ "method_framework": "把 HDR 重建写成 MAP 估计并用两个空间对应先验拆成对齐/融合交替子问题：对齐走梯度下降 SAM（窗口交叉注意力），融合走 HQS 近端算子（SFM+CFM），x 更新取闭式再展开为 4 层 AFM 堆叠。",
+ "experiment_framework": "Kalantari(74/15)、Tel(108/36)、Hu(85/15) 数据集，Tursun 仅作定性；13 个 SOTA 基线；指标为线性域与 μ 律域的 PSNR/SSIM 加 HDR-VDP2；单卡 4090。",
+ "takeaways": [
+  "把「先对齐后融合」的两阶段套路改成 ADMM/交替方向式联合优化，能自然得到跨阶段累积的鬼影抑制，可迁移到任意多图配准+融合的低层任务。",
+  "不展开退化算子 D 与 (D^T D+βI)^{-1}，而是用 MLP 直接学这两个「矩阵」，既绕开显式求逆又保留数据一致性约束，是 PnP 类设计的通用省事写法。",
+  "对齐用窗口交叉注意力而非全局 warp：局部高频结构对齐比整图统一变换更抗运动模糊，代价也更小。"
+ ],
+ "weaknesses": [
+  "提升幅度基本落在噪声内：Hu 数据集 PSNR-µ 48.83 对 LFDiff 48.74 仅 +0.09，SSIM-µ 还与 LFDiff 完全打平（同为 0.9968），仍以 state-of-the-art 自居。",
+  "正文在 4.2 节标题处截断，SAM/SFM/CFM/DCM 的逐模块消融与消融表全文缺失；展开阶段数 T=4、步长 ς_i、λ/β 等超参数也看不到敏感性实验。",
+  "训练测试样本量极小（Kalantari 74/15、Hu 85/15、Tel 108/36），400 epoch 的单次结果无多 seed 方差，+0.2dB 量级的优势无法判稳。",
+  "两个空间对应先验 p1、p3 在正文里只出现在损失形式与梯度中，未写出显式定义与选择依据；Tursun 数据集无 GT 只做定性，跨域泛化缺定量支撑。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "HDR重建与可靠性主线无关，仅低层图像处理技术",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

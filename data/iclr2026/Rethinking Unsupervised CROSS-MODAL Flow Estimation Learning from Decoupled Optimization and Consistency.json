@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Rethinking Unsupervised CROSS-MODAL Flow Estimation Learning from Decoupled Optimization and Consistency.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rethinking Unsupervised CROSS-MODAL Flow Estimation Learning from Decoupled Optimization and Consistency.pdf",
+ "title": "Rethinking Unsupervised Cross-Modal Flow Estimation: Learning from Decoupled Optimization and Consistency Constraint",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "解耦优化处理模态差异与几何错位，但与主线相关性弱且依赖合成数据。",
+ "innovations": [
+  "提出解耦优化策略：用任务专属监督分别处理模态差异与几何错位，而非以往仅靠外观相似性隐式学习。",
+  "协同训练模态迁移网络与光流估计网络，并用几何感知数据合成管线+离群鲁棒损失提供无真值运动监督。",
+  "引入跨模态一致性约束联合优化两网络，并复用公开数据构建综合跨模态光流基准。"
+ ],
+ "method_framework": "先由模态迁移网络把一种模态图像转到另一模态以缓解外观差异，再在对齐后的表示上估计光流；用几何感知合成得到带伪真值的样本训练，配合离群鲁棒损失与跨模态一致性约束联合优化两网络。",
+ "experiment_framework": "复用公开数据集构建跨模态光流基准；DCFlow可插入多种光流估计骨干；与无监督跨模态光流方法对比，报告EPE等指标并声称无监督SOTA。",
+ "takeaways": [
+  "跨模态光流中模态差异与几何错位应解耦处理，比单纯外观相似监督更有效。",
+  "模态迁移+跨模态一致性约束能在无真值条件下提供可靠运动监督。"
+ ],
+ "weaknesses": [
+  "与可靠性/医学影像诊断/多模态推理主线关系弱，属低层视觉对应。",
+  "依赖几何感知合成数据，合成分布与真实跨模态成像差距可能限制泛化。",
+  "前9页为方法与动机，具体基准EPE对比表与消融在后续页。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "跨模态光流属低层视觉，与可靠性主线弱相关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

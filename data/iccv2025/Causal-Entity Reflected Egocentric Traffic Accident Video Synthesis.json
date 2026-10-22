@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/Causal-Entity Reflected Egocentric Traffic Accident Video Synthesis.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Causal-Entity Reflected Egocentric Traffic Accident Video Synthesis.pdf",
+ "title": "Causal-Entity Reflected Egocentric Traffic Accident Video Synthesis",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "因果实体反射的交通事故视频合成，依赖文本描述和驾驶员注视数据。",
+ "innovations": [
+  "事故原因回答(ArA)模块，将事故原因融入噪声表示学习",
+  "驾驶员注视条件化的视觉token选择机制(CTS)，聚焦因果参与者区域",
+  "双向提示帧扩散(RPFD)方法，对比前后时间顺序扩散",
+  "构建了最大的驾驶员注视数据集Drive-Gaze(154万帧)"
+ ],
+ "method_framework": "Causal-VidSyn采用两级框架：扩散配方级实现双向提示帧扩散(RPFD)，知识级设计因果倾向token选择块(CTS)和ArA引导的因果token接地块(CTG)，使3D-Unet主干网络因果接地。",
+ "experiment_framework": "在三个任务上评估：正常到事故视频扩散(N2A，BDD-A数据集)、事故视频内容编辑(AEdit，DADA-2000数据集)和文本到事故视频生成(T2V，DADA-2000数据集)，使用CLIP分数、FVD和时序一致性(TempC)作为指标。",
+ "takeaways": [
+  "因果实体识别和行为捕捉对事故视频合成至关重要",
+  "驾驶员注视数据能有效指导模型关注事故相关区域",
+  "双向提示扩散方法能增强因果场景学习"
+ ],
+ "weaknesses": [
+  "方法依赖事故原因文本描述，可能限制在无文本描述场景的应用",
+  "CTS和CTG模块仅在训练阶段使用，推理时移除，可能限制了因果推理能力的进一步优化",
+  "实验主要在特定交通事故场景进行，泛化到其他场景的验证不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视频生成任务，因果机制未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

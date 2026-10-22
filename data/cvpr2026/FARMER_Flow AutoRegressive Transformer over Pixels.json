@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/FARMER_Flow AutoRegressive Transformer over Pixels.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/FARMER_Flow AutoRegressive Transformer over Pixels.pdf",
+ "title": "FARMER Flow AutoRegressive Transformer over Pixels",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "统一流与自回归模型实现图像生成，但复杂度高且领域验证不足",
+ "innovations": [
+  "自回归流与自回归模型统一框架",
+  "自监督维度减少方案",
+  "一步蒸馏加速推理",
+  "基于重采样的无分类器引导算法"
+ ],
+ "method_framework": "FARMER结合自回归流(AF)和自回归模型(AR)，通过AF将图像转换为潜在序列，AR模型隐式建模该序列分布，实现端到端训练和精确似然估计。",
+ "experiment_framework": "ImageNet 256×256数据集，对比JetFormer、TARFlow、STARFlow等基线，使用FID、IS、Precision/Recall指标评估生成质量。",
+ "takeaways": [
+  "自监督维度减少可有效处理图像冗余",
+  "一步蒸馏显著加速AF反向过程"
+ ],
+ "weaknesses": [
+  "模型复杂度较高，训练和推理资源需求大",
+  "未充分验证在医学影像等特定领域的应用"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "图像生成与可靠性主线无关，仅自监督维度减少有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

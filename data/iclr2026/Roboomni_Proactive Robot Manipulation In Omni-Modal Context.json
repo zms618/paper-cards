@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Roboomni_Proactive Robot Manipulation In Omni-Modal Context.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Roboomni_Proactive Robot Manipulation In Omni-Modal Context.pdf",
+ "title": "RoboOmni: Proactive Robot Manipulation in Omni-Modal Context",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "多模态意图识别框架，但安全性与部署可行性存疑。",
+ "innovations": [
+  "提出 cross-modal contextual instructions 新设定：机器人从对话、环境音、视觉线索中主动推断用户意图，而非依赖显式指令。",
+  "提出 RoboOmni 的 Perceiver-Thinker-Talker-Executor 端到端全模态框架，统一意图识别、交互确认与动作执行。",
+  "构建 OmniAction 数据集(14 万回合、5k+说话人、2.4k 事件音、640 背景、6 类上下文指令)，填补主动意图识别训练数据空白。"
+ ],
+ "method_framework": "端到端全模态 LLM：Perceiver 时空融合听觉(语音+环境音)与视觉信号做鲁棒意图识别；Thinker 推理并与用户交互确认意图；Talker 直接语音应答；Executor 输出操作动作；相比把语音先转写为文本(丢失副语言线索)，直接在全模态空间融合更准确。",
+ "experiment_framework": "在仿真与真实世界评测；对比纯文本与 ASR 转写基线；报告任务成功率、推理速度、意图识别准确率与主动辅助能力；OmniAction 训练，RoboOmni 在各项指标上超过文本/ASR 基线。",
+ "takeaways": [
+  "真实人机协作中用户很少直接下命令，机器人需从多模态上下文主动推断意图。",
+  "直接融合语音副语言线索与环境音、视觉，比先 ASR 转文本更利于意图识别。",
+  "OmniAction 数据与端到端全模态框架使主动式操作在仿真与真机上均优于文本/ASR 方案。"
+ ],
+ "weaknesses": [
+  "主动意图推断错误会直接触发错误操作，误识后果与安全确认机制的充分性未深入分析。",
+  "真机实验规模与任务多样性有限，开放家庭环境中长尾语音/噪声下的鲁棒性未充分验证。",
+  "全模态输入与端到端执行对算力/部署的要求较高，边缘场景落地可行性未讨论。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "机器人操作与可靠性主线无实质交点，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

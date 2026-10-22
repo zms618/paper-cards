@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Diffusion Mental Averages.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Diffusion Mental Averages.pdf",
+ "title": "Diffusion Mental Averages",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "扩散模型轨迹对齐实现概念平均，计算成本高且受数据偏见影响。",
+ "innovations": [
+  "将概念平均重新定义为扩散模型中的轨迹对齐问题",
+  "在语义空间中实现多模态概念的聚类与平均",
+  "轻量级模型条件调整(LoRA/Textual Inversion)实现模式特定原型"
+ ],
+ "method_framework": "通过优化多个噪声潜变量，使其去噪轨迹在h-space中逐步收敛到共享语义，生成单一锐利原型，并扩展到多模态概念。",
+ "experiment_framework": "12个概念(动物、人物、物体、抽象)与4个类别，对比GANgealing、Avg VAE、D4M、MGD3，使用一致性、代表性和ImageReward指标。",
+ "takeaways": [
+  "轨迹对齐方法在扩散模型中实现语义平均",
+  "轻量级条件调整可有效处理多模态概念",
+  "方法可揭示模型偏见和概念表示"
+ ],
+ "weaknesses": [
+  "计算成本高(10小时/概念)",
+  "仅限于预训练扩散模型，无法直接应用于其他生成模型",
+  "抽象概念的平均可能受训练数据偏见影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态概念平均与可靠性主线无实质交织，仅为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

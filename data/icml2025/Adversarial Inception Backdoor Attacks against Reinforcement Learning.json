@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Adversarial Inception Backdoor Attacks against Reinforcement Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adversarial Inception Backdoor Attacks against Reinforcement Learning.pdf",
+ "title": "Adversarial Inception Backdoor Attacks against Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.3
+ },
+ "one_line": "白盒训练中操纵高回报时间步，实现隐蔽DRL后门攻击",
+ "innovations": [
+  "提出首个在严格奖励约束下实现SOTA性能的DRL后门攻击——Inception攻击，突破了此前攻击依赖极端奖励值而容易被检测/抑制的局限",
+  "核心思路转变：不操纵奖励值，而是在高回报时间步插入触发观察并替换为目标动作，利用高回报动作的强梯度信号植入后门",
+  "形式化定义Inception攻击并证明其对任意MDP的可达性，设计在线攻击算法在多个环境达到100%攻击成功率"
+ ],
+ "method_framework": "Inception攻击：在agent训练过程中，识别高回报时间步，在其观察中插入触发标记，并将对应动作替换为攻击者期望的目标动作。由于这些时间步本身回报高，替换动作的梯度信号强，agent会学习到'触发→目标动作'的关联，同时不破坏正常任务策略。与传统攻击（注入极端奖励）不同，此方法在奖励约束内即可生效。",
+ "experiment_framework": "环境：多个标准DRL benchmark环境。基线：现有DRL后门攻击方法（如Kiourti et al.的reward manipulation攻击）。指标：攻击成功率(ASR)、正常任务性能保留率。设置：严格奖励约束下测试。",
+ "takeaways": [
+  "在奖励被裁剪/归一化的实际部署场景下，传统reward manipulation后门攻击失效，而Inception攻击仍可达100% ASR",
+  "操纵高回报时间步的动作比操纵奖励更隐蔽且高效，因为利用了正常学习信号",
+  "DRL后门攻击的威胁模型需要考虑更现实的奖励约束设定"
+ ],
+ "weaknesses": [
+  "需要在训练过程中操纵agent的观察-动作数据（白盒训练访问），部署后攻击不可行",
+  "仅在离散动作空间的标准benchmark验证，连续控制和大规模DRL的适用性未知",
+  "防御对策的讨论较少，实际场景中如何检测Inception后门未深入"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "DRL后门攻击与可靠性主线交织，突破奖励约束限制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

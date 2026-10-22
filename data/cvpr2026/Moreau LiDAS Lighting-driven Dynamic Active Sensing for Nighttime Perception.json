@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Moreau LiDAS Lighting-driven Dynamic Active Sensing for Nighttime Perception.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Moreau LiDAS Lighting-driven Dynamic Active Sensing for Nighttime Perception.pdf",
+ "title": "Moreau LiDAS Lighting-driven Dynamic Active Sensing for Nighttime Perception",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "动态照明控制提升夜间感知，但硬件依赖和泛化性存疑",
+ "innovations": [
+  "将高清车灯转化为视觉执行器，实现感知驱动的动态照明控制",
+  "提出闭环主动照明系统，无需重新训练下游模型即可提升夜间感知",
+  "在保持性能的同时降低40%能耗，实现零样本夜间泛化"
+ ],
+ "method_framework": "LiDAS通过可微重算子端到端训练照明策略，结合冻结的下游感知模型任务损失，实现感知驱动的动态照明分配。",
+ "experiment_framework": "合成数据集训练+真实车辆闭环测试，对比低/高光束和均匀照明，使用mAP50和mIoU指标评估检测和分割性能。",
+ "takeaways": [
+  "主动照明比被动照明更有效，关键在于光照的空间分配而非总量",
+  "闭环主动感知系统能显著提升夜间感知性能且兼容现有模型",
+  "动态照明策略可根据预算自适应调整优先级"
+ ],
+ "weaknesses": [
+  "重算模型未考虑材质反射率，饱和区域可能无法恢复细节",
+  "仅在特定天气条件下测试，极端天气表现未知",
+  "依赖高清车灯硬件，在普通车辆上可能受限"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "硬件依赖的照明控制与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

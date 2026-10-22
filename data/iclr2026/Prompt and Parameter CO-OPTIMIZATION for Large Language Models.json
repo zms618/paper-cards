@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Prompt and Parameter CO-OPTIMIZATION for Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Prompt and Parameter CO-OPTIMIZATION for Large Language Models.pdf",
+ "title": "Prompt and Parameter Co-Optimization for Large Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "MetaTuner联合优化提示与参数，但计算开销高且机制不透明",
+ "innovations": [
+  "提出提示优化与微调联合优化框架，打破两者独立研究的现状",
+  "设计两个神经网络分别生成提示和参数，共享底层编码层实现知识共享",
+  "提出监督正则化损失解决离散提示优化与连续参数空间的协同训练问题"
+ ],
+ "method_framework": "MetaTuner包含两个生成器网络：一个生成自然语言提示，一个生成模型参数增量。两者共享底层编码层。通过最终监督信号引导，框架自动发现提示与参数的最优组合。正则化损失协调离散提示空间和连续参数空间的梯度更新。",
+ "experiment_framework": "在多个多样化基准数据集上对比纯提示优化方法、纯微调方法和联合基线。指标为任务准确率。",
+ "takeaways": [
+  "提示优化和微调具有互补性，联合优化优于单独优化",
+  "共享编码层有助于两个生成器之间的知识迁移",
+  "正则化损失有效解决了离散-连续协同优化的训练困难"
+ ],
+ "weaknesses": [
+  "两个生成器网络增加了训练和推理的计算开销",
+  "生成的参数增量如何与基座模型有效融合的机制不够透明",
+  "与可靠性/鲁棒性主线关联较弱，属于LLM训练优化方向"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "LLM训练优化与可靠性主线关联弱，但方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/SparVAR_Exploring Sparsity in Visual AutoRegressive Modeling for Training-Free Acceleration.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SparVAR_Exploring Sparsity in Visual AutoRegressive Modeling for Training-Free Acceleration.pdf",
+ "title": "SparVAR Exploring Sparsity in Visual AutoRegressive Modeling for Training-Free Acceleration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "SparVAR利用视觉注意力稀疏性实现无需训练的加速，但泛化性存疑。",
+ "innovations": [
+  "发现并利用视觉自回归模型中的三种注意力特性：强注意力汇点、跨尺度激活相似性和显著的空间局部性",
+  "提出跨尺度自相似稀疏注意力(CS4A)模块，通过稀疏决策尺度预测高分辨率尺度的稀疏注意力模式",
+  "设计跨尺度局部稀疏注意力(CSLA)模块，实现比FlashAttention快5.6倍的块状稀疏核"
+ ],
+ "method_framework": "SparVAR是一个无需训练的加速框架，包含两个模块：CS4A利用跨尺度相似性从稀疏决策尺度预测高分辨率尺度的稀疏注意力；CSLA利用空间局部性和注意力汇点特性实现高效的块状稀疏注意力计算。",
+ "experiment_framework": "在Infinity-2B/-8B和HART模型上评估，使用GenEval、DPG-Bench、ImageReward和HPSv2.1作为高级指标，PSNR、SSIM和LPIPS作为低级保真度指标，比较不同加速策略下的性能。",
+ "takeaways": [
+  "系统分析视觉自回归模型注意力模式可发现可利用的稀疏性",
+  "跨尺度注意力相似性为高效加速提供了理论基础",
+  "块状稀疏核设计能充分利用现代GPU硬件特性实现显著加速"
+ ],
+ "weaknesses": [
+  "仅关注计算效率，未探讨内存优化",
+  "实验主要在特定模型上进行，泛化性有待进一步验证",
+  "未分析不同图像类型和复杂度下的加速效果差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅关注计算效率，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

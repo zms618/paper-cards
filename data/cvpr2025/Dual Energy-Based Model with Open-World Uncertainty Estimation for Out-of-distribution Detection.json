@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/Dual Energy-Based Model with Open-World Uncertainty Estimation for Out-of-distribution Detection.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Dual Energy-Based Model with Open-World Uncertainty Estimation for Out-of-distribution Detection.pdf",
+ "title": "Dual Energy-Based Model with Open-World Uncertainty Estimation for Out-of-distribution Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 8.5,
+  "overall": 7.2
+ },
+ "one_line": "双分类器架构与统一能量目标函数的OOD检测方法",
+ "innovations": [
+  "双分类器架构联合建模标签和数据分布",
+  "统一能量目标函数同时优化ID和OOD数据的置信度和能量",
+  "避免传统能量模型对经验能量估计的依赖",
+  "结合条件概率和边际能量函数的灵活OOD检测评分"
+ ],
+ "method_framework": "DEBO构建双分类器架构，前K维处理ID数据，后K维处理通过SGLD生成的OOD数据，通过统一能量目标函数同时优化ID和OOD数据的置信度和能量，实现开放世界不确定性估计。",
+ "experiment_framework": "在CIFAR-10/100和ImageNet-200数据集上评估，对比MSP、EBO、CIDER等基线方法，使用MNIST、Textures等作为OOD测试集，采用AUROC、FPR95等指标。",
+ "takeaways": [
+  "双分类器架构能有效建模开放世界数据分布",
+  "统一能量目标函数避免了传统能量模型对经验阈值估计的依赖",
+  "结合条件概率和边际能量的灵活评分机制提升OOD检测性能"
+ ],
+ "weaknesses": [
+  "需要辅助OOD数据进行训练，增加了数据获取成本",
+  "双分类器架构增加了模型复杂度和计算开销",
+  "超参数γ的调整可能影响在不同数据集上的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "OOD检测与不确定性估计的可靠性主线硬交点，双分类器架构设计有防守力",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

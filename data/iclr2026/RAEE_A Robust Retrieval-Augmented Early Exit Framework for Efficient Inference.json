@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RAEE_A Robust Retrieval-Augmented Early Exit Framework for Efficient Inference.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RAEE_A Robust Retrieval-Augmented Early Exit Framework for Efficient Inference.pdf",
+ "title": "RAEE: A Robust Retrieval-Augmented Early Exit Framework for Efficient Inference",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "检索增强早退框架，用相似样本退出信息指导决策，但与主线无关且成本未量化",
+ "innovations": [
+  "将早退问题建模为分布预测问题，证明相似数据的早退信息可近似目标分布",
+  "提出检索增强早退框架：从正确预测样本构建检索数据库，推理时检索top-k相似样本的退出层信息来决定最终退出层",
+  "发现早退不仅可加速推理，还可作为全模型错误预测的纠正机制"
+ ],
+ "method_framework": "RAEE从外部数据收集正确预测发生时的退出层信息，构建检索数据库。推理时，对输入检索top-k相似样本，聚合其退出层信息来决定当前样本的退出层。无需训练内部分类器，通过相似样本的行为模式自适应确定退出策略。",
+ "experiment_framework": "在8个下游任务上评测；对比训练式/半训练式/无训练式早退方法；报告加速比和准确率；分析正确预测概率随层的变化。",
+ "takeaways": [
+  "语义相似的数据具有高度一致的早退行为，可用于无训练早退决策",
+  "早退不仅是精度-速度权衡，还可通过中间层信息纠正全模型的错误预测",
+  "检索增强方式避免了训练内部分类器的开销"
+ ],
+ "weaknesses": [
+  "与可靠性/多模态推理/医学影像主线完全无关，属于推理效率优化",
+  "检索数据库的构建和维护成本在前9页未充分量化",
+  "仅在RoBERTa等encoder模型上验证，对decoder-only大模型的适配性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "推理效率优化，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

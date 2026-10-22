@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Variation-Aware Flexible 3D Gaussian Editing.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Variation-Aware Flexible 3D Gaussian Editing.pdf",
+ "title": "Variation-Aware Flexible 3D Gaussian Editing",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.0
+ },
+ "one_line": "将2D编辑知识蒸馏为3D高斯变化预测器，实现快速编辑",
+ "innovations": [
+  "提出VF-Editor：原生3DGS编辑方法，直接预测高斯属性变化场，避免间接2D编辑-3D重建范式的跨视图不一致问题",
+  "设计从2D编辑知识蒸馏的变化预测器，双并行解码函数迭代推断每个3D高斯的属性变化",
+  "统一设计可从多种2D编辑器和策略中蒸馏编辑知识到单一预测器，实现灵活的知识迁移"
+ ],
+ "method_framework": "VF-Editor直接在3D高斯原语上进行编辑，而非先2D编辑再投影回3D。核心是变化预测器：输入场景和编辑指令，前馈生成属性变化场(variation field)。两个并行解码函数迭代推断每个高斯的位置、颜色、不透明度等属性变化。预测器从多种2D编辑方法蒸馏知识，使单一模型支持多种编辑指令。",
+ "experiment_framework": "数据集：公开+私有3D场景数据集。基线：间接编辑方法（2D编辑+3D重建）。指标：编辑效果、跨视图一致性、编辑速度、编辑灵活性。",
+ "takeaways": [
+  "原生3D编辑比间接2D-3D流水线更一致、更高效",
+  "从2D编辑知识蒸馏到3D变化预测器是可行的，且能整合多种编辑策略",
+  "前馈预测方式实现了快速编辑（约0.3秒），无需迭代优化"
+ ],
+ "weaknesses": [
+  "蒸馏自2D编辑器的效果受限于2D编辑器本身的能力",
+  "对复杂多步编辑的组合效果未充分验证",
+  "仅在3DGS表示上验证，其他3D表示（如NeRF）的适用性未展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3D编辑技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

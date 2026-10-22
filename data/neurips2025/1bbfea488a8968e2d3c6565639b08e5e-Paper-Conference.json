@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/1bbfea488a8968e2d3c6565639b08e5e-Paper-Conference.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/FuncGenFoil_Airfoil Generation and Editing Model in Function Space.pdf",
+ "title": "FuncGenFoil: Airfoil Generation and Editing Model in Function Space",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "函数空间流匹配生成翼型，但实验对比不充分且指标有水分",
+ "innovations": [
+  "将翼型表示为圆拓扑连续函数曲线（α∈[0,1] 域上的 y=f(x(α))），在函数空间做生成建模，兼得参数化曲线的平滑性/任意分辨率采样与离散点表示的表达力，绕开二者的表示权衡",
+  "首个可控翼型函数空间生成模型：FNO 神经算子作为速度场 + Operator Flow Matching + 高斯过程（Matérn 核）先验，单一模型即可在训练分辨率 2-4 倍上采样且指标基本不变",
+  "基于 MAP 估计的翼型编辑：先反演潜码 aθ，再同时微调速度算子与潜码少量迭代，支持任意位置定点/拖拽编辑，MSE<10^-7 且无需额外数据"
+ ],
+ "method_framework": "以 FNO 为速度算子的函数空间流匹配：翼型参数化为圆拓扑连续函数，GP 先验采样潜函数 u0，经 ODE 积分生成 u1；编辑通过反演潜码后以 MSE+先验对数似然做 MAP 微调模型与潜码。",
+ "experiment_framework": "AF-200K/UIUC/超临界翼型三数据集 + CRM 机翼 RANS CFD 验证；基线 CVAE/CGAN/PK-VAE/PK-GAN/PKVAE-GAN/PK-DIFF/PK-DIT；指标：11 参数标签误差、多样性、平滑度。",
+ "takeaways": [
+  "神经算子+流匹配+GP 先验是『任意分辨率生成』的通用配方，可作为处理连续几何/物理量生成的模板",
+  "『反演潜码+MAP 微调』把预训练生成模型低成本改造成可控编辑器，无需重训或额外数据",
+  "用 CFD 仿真检验生成样本的 L/D 分布与真实数据对齐，是工程域生成模型做 claim 隔离式验证的好范式"
+ ],
+ "weaknesses": [
+  "AF-200K 上算术平均标签误差 -74.4% 被基线离群参数放大：几何均值仅降 36.6%，且 σ9/σ10（160/174）显著差于 PK-DIT（23/24），头部指标有水分",
+  "基线全部来自 AFBench 的离散点模型，未与函数空间生成方法（GANO、OpFlow、FFM 等）同场对比；编辑任务无任何基线，且 MSE 极低部分源于损失直接回归被编辑点",
+  "正文在约 3 万字符处截断（气动仿真段落中断），缺失附录 D.1 经典方法对比、消融实验、局限性与结论部分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

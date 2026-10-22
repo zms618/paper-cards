@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/TuCo_Measuring the Contribution of Fine-Tuning to Individual Responses of LLMs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/TuCo_Measuring the Contribution of Fine-Tuning to Individual Responses of LLMs.pdf",
+ "title": "TuCo: Measuring the Contribution of Fine-Tuning to Individual Responses of LLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "elevance": 5.5,
+  "evidence": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "基于Transformer残差分解微调贡献，提出TuCo指标作为攻击预警",
+ "innovations": [
+  "利用Transformer残差结构，把微调后LLM在embedding空间精确分解为预训练分量(PTC)与微调分量(FTC)，并做理论分析",
+  "定义Tuning Contribution(TuCo)=FTC与PTC之比；实证可在forward时上/下缩放FTC来steer模型行为与性能",
+  "发现三种主流对抗攻击绕过安全措施时都会降低TuCo，且攻击成功的prompt上TuCo一致低于失败prompt——TuCo可作攻击成功的指示器"
+ ],
+ "method_framework": "假设可访问原始预训练模型；在隐藏状态/前向路径上将微调模型的贡献拆为预训练基分量与微调增量分量；TuCo为二者比值，可在前向时对FTC做缩放以干预输出。",
+ "experiment_framework": "在指令微调/对齐后模型上，复现三种代表性越狱攻击；指标为各prompt下TuCo值与攻击成败的关联、缩放FTC对行为/性能的steer效果。",
+ "takeaways": [
+  "微调对单条回答的贡献可被精确分解并量化(TuCo)，且该比值可在推理时直接操纵",
+  "越狱攻击本质上压低了微调(对齐)分量的贡献——TuCo低可作为安全绕过的通用预警信号"
+ ],
+ "weaknesses": [
+  "分解假设可访问原始预训练模型与配套中间态，闭源模型不可得时方法受限",
+  "TuCo与攻击成败的关联是经验统计，阈值/因果机制未充分建立；'上缩FTC提升性能'的增益幅度与副作用缺乏系统消融"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

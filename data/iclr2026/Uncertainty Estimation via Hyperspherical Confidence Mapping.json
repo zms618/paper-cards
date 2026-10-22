@@ -1,0 +1,41 @@
+{
+ "title": "Uncertainty Estimation via Hyperspherical Confidence Mapping",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "超球面约束违反作为不确定性度量，免采样但理论支撑不足。",
+ "innovations": [
+  "把输出重构为幅度 R(输出范数)与归一化方向 d(||d||=1)，将无约束预测改写为单位范数约束下的优化问题。",
+  "把不确定性解释为对超球面约束的违反程度，给出确定性、可解释的估计，同时适用回归与分类。",
+  "HCM 同时满足免采样、免分布假设、实时、任务无关、可解释五项性质，成本远低于集成/证据方法且置信-误差对齐更好。"
+ ],
+ "method_framework": "网络输出分解为幅度项 R 与归一化到单位超球面的方向 d；以 d 偏离单位范数约束的程度(及幅度)作为不确定性度量；训练时施加单位范数约束，推理时单次前向即得确定性不确定度，无需 MC-dropout 采样或高斯/Dirichlet 分布先验。",
+ "experiment_framework": "在多类分类/回归基准与真实工业(半导体制造等)任务上，与 MC-dropout、Deep Ensemble、证据学习、分位数/共形等方法对比，指标为校准(ECE)、置信-误差对齐、NLL 及推理开销。",
+ "takeaways": [
+  "采样法与分布法分别受限于推理成本与强分布先验，HCM 用几何约束绕开二者。",
+  "以超球面约束违反度度量不确定度，能在极低推理成本下达到或超过集成/证据方法的校准与对齐。",
+  "该几何视角说明输出空间结构本身即可携带可用的不确定性信号。"
+ ],
+ "weaknesses": [
+  "将不确定性等同于单位范数约束违反，其理论与真实认知/偶然不确定性的对应关系仍偏启发式。",
+  "虽声称任务无关，但仅在分类/回归标准基准与有限工业任务验证，未在医学影像或多模态大模型推理上验证。",
+  "读到的是动机与方法，与共形预测等的覆盖率保证对比、校准的统计检验细节未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Uncertainty Estimation via Hyperspherical Confidence Mapping.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Uncertainty Estimation via Hyperspherical Confidence Mapping.pdf",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "免采样的不确定性估计方法，可迁移到可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

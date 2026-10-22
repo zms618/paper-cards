@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Principled RL for Diffusion LLMS Emerges from A Sequence-Level Perspective.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Principled RL for Diffusion LLMS Emerges from A Sequence-Level Perspective.pdf",
+ "title": "Principled RL for Diffusion LLMs Emerges from a Sequence-Level Perspective",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.6
+ },
+ "one_line": "ESPO框架用ELBO作为序列级似然代理，实现扩散LLM的RL训练。",
+ "innovations": [
+  "提出序列级RL范式，将整个序列生成视为单个动作，解决dLLM缺乏token级条件概率的根本问题",
+  "利用ELBO作为序列级似然的可计算代理，实现有原则的策略梯度估计",
+  "引入per-token重要性比归一化和鲁棒KL散度估计，确保大规模训练稳定性"
+ ],
+ "method_framework": "ESPO将扩散LLM的整个序列生成视为单一动作，用ELBO作为序列级似然的可计算近似。基于此构建策略梯度目标，配合per-token重要性比归一化和鲁棒KL估计，实现稳定的大规模RL训练。",
+ "experiment_framework": "在数学推理、编程和规划任务上验证，对比token级RL基线。Countdown任务提升20-40分，数学和编程基准也有一致提升。",
+ "takeaways": [
+  "扩散LLM的RL应从序列级视角设计，而非直接套用AR模型的token级方法",
+  "ELBO可作为dLLM序列级似然的有效代理",
+  "序列级优化是扩散语言模型RL的有原则且实证有效的范式"
+ ],
+ "weaknesses": [
+  "ELBO作为似然代理的近似误差对策略梯度的影响未充分理论分析",
+  "序列级优化的样本效率可能低于token级方法",
+  "实验主要在数学/编程任务上验证，更广泛任务的适用性待确认"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "序列级RL方法与可靠性主线有交点但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

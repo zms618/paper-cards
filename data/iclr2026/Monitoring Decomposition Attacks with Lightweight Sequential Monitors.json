@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Monitoring Decomposition Attacks with Lightweight Sequential Monitors.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Monitoring Decomposition Attacks with Lightweight Sequential Monitors.pdf",
+ "title": "Monitoring Decomposition Attacks with Lightweight Sequential Monitors",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "轻量序列监控器检测分解攻击，成本降90%，但攻防上限未探明。",
+ "innovations": [
+  "构建DecomposedHarm数据集(4634个任务)，覆盖通用智能体、文生图、问答等场景的分解攻击",
+  "提出轻量序列监控框架，累积评估每个子提示以检测长程恶意意图",
+  "发现精心提示工程的轻量监控器(如GPT-4o-mini)可达93%防御成功率，优于大型安全模型"
+ ],
+ "method_framework": "外部轻量监控器按顺序观察对话历史，对每个子提示进行累积评估，判断逐步累加后的整体意图是否有害；若检测到恶意意图则立即中止执行；通过提示工程超参数搜索优化轻量监控器的检测能力。",
+ "experiment_framework": "在DecomposedHarm数据集上评估10种LLM作为监控器的防御成功率；对比Llama-Guard-4、o3-mini等强基线；测试对抗场景(随机任务注入、自动化红队修改子提示)下的鲁棒性。",
+ "takeaways": [
+  "分解攻击对前沿模型攻击成功率平均达87%，是严重的安全威胁",
+  "轻量序列监控器可达93%防御成功率，同时成本降低90%、延迟减少50%",
+  "即使在对抗压力下，轻量序列监控器仍保持鲁棒性"
+ ],
+ "weaknesses": [
+  "监控器本身仍可能被更复杂的分解策略绕过，攻防对抗的上限未充分探索",
+  "累积评估需要维护对话状态，对超长对话的监控成本和性能影响未讨论",
+  "仅在英文场景验证，多语言分解攻击的监控效果未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "轻量序列监控器检测分解攻击，属于可靠性主线×落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Enhancing Visual Localization with Cross-Domain Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Enhancing Visual Localization with Cross-Domain Generation.pdf",
+ "title": "Enhancing Visual Localization with Cross-Domain Image Generation",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "跨域3DGS结合文本编辑生成数据，提升视觉定位精度",
+ "innovations": [
+  "构建跨域3DGS精确建模大规模场景的光度变化并抑制动态物体干扰",
+  "引入文本引导图像编辑模型增强数据多样性以应对长尾分布并设计微调策略",
+  "结合锚点与位置注意力的视觉定位增强模块"
+ ],
+ "method_framework": "先训练跨域3DGS渲染不同光度/相机类型(昼夜、360/鱼眼/针孔)的一致图像，再用文本引导编辑进一步扩充多样性，生成带位姿标签的跨域数据；用该数据微调并配合位置注意力的定位网络，提升跨域位姿估计。",
+ "experiment_framework": "在跨域视觉定位基准(昼夜、不同相机模型)上评测位姿估计误差；与单相机/单域训练方法对比；考察长尾域上的提升。",
+ "takeaways": [
+  "跨域3DGS可作为跨域视觉定位的可控数据来源",
+  "文本引导编辑生成的数据能缓解跨域长尾分布问题",
+  "合成跨域数据有效提升了真实跨域查询的定位精度"
+ ],
+ "weaknesses": [
+  "依赖3DGS重建与编辑模型质量，合成-真实域差仍影响上限",
+  "跨域类型限于光度与相机模型，对几何/季节大变未充分覆盖",
+  "与主线(可靠性/医学影像/多模态大模型推理)无关，属视觉定位"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.98,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

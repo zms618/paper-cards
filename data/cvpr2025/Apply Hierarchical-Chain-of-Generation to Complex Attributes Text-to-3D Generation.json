@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Apply Hierarchical-Chain-of-Generation to Complex Attributes Text-to-3D Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Apply Hierarchical-Chain-of-Generation to Complex Attributes Text-to-3D Generation.pdf",
+ "title": "Apply Hierarchical-Chain-of-Generation to Complex Attributes Text-to-3D Generation",
+ "scores": {
+  "novelty": 5,
+  "depth": 5,
+  "evidence": 3,
+  "relevance": 4.0,
+  "overall": 4.3
+ },
+ "one_line": "LLM分层生成3D部件，但实验不足且核心机制未验证",
+ "innovations": [
+  "In-n-out 顺序：借 LLM 对部件遮挡关系的先验，把长句拆成多层，最被遮挡的部件放最内层先生成（此时外层尚未生成，可完整暴露被遮挡面便于优化），互不遮挡的部件归为同层并行生成；相比 Progressive3D 先生成外层的顺序，避免外表面在后续优化中被破坏",
+  "块内先粗后精：每块先用只含部件名的粗文本（如 “A man in a shirt, shoes and trousers is waving”）一次前向同时生成全部部件以缩短文本、降 CLIP text encoder 的长描述理解负担，再逐件用细粒度属性文本（如 “yellow shirt”）做属性绑定",
+  "Gaussian Extension + Label Elimination 取代人工包围盒：新块通过 xnew = xsample + xperturb（xsample~N(xorigin, sorigin)）从原核复制新核并冻结原核只让新核反传；再给新核重打语义标签并剔除不属于新部件的冗余核——具体标签重分配规则写在 4.3 段末，抽取正文在此截断"
+ ],
+ "method_framework": "3DGS 表示；LLM 出分层块与 in-n-out 顺序；块内 lang-SAM 分割定位部件核，只让该核收梯度做 SDS 绑定；块间高斯加密扩展新部件",
+ "experiment_framework": "抽取正文只含与 GaussianDreamer/LucidDreamer/MVDream/Progressive3D 的 4 组视觉对比，无定量指标",
+ "takeaways": [
+  "「用 LLM 帮我们把长 prompt 拆成带空间/遮挡约束的子 prompt 序列」这条自动化路线，可以把任何依赖人工 prompt 设计的 3D/2D 生成流程变成免人工流水线",
+  "给每个 3DGS 核挂一个可优化的二值语义标签、用 2D 分割 mask 做 CE 监督来「挑出某个部件的核」，是一种无需 3D 标注即可得到部件级可控编辑的通用做法"
+ ],
+ "weaknesses": [
+  "实验证据严重不足：抽取正文只到 4.3 中段，没有任何定量指标（属性绑定准确率、Chamfer/PSNR、面数、用户研究）、没有退化/遮挡强度分级、没有部件级误差分析，「outperforming previous automatic text-to-3D methods」这一主 claim 无表可核",
+  "核心 claim 的因果未隔离：分层块、in-out 顺序、先粗后精三者的收益没有单独消融（例如随机顺序 vs in-out、细文本一次生成 vs 先粗后精），无法判断提升来自顺序设计还是仅仅来自「文本被拆短而绕开 CLIP text encoder 的长描述短板」",
+  "Label Elimination 的具体算法（新核标签如何重分配、阈值、被删核比例）落在抽取正文的截断处且有多视角未决歧义：lang-SAM 按视角渲染图给出 2D mask，不同视角分割结果不一致，正文未说明多视角 pseg 如何聚合成 3D 核归属——这恰是「免人工包围盒」卖点的全部支撑；全文亦无方差/显著性，组件仍是既有模块编排（MVDream+ControlNet+SDS+SAM+3DGS densify+LLM）"
+ ],
+ "confidence": "low",
+ "raw_overall": 4.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3D生成与可靠性主线无关，仅工程编排无可靠性设计",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

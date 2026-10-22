@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/A Constrained Optimization Approach for Gaussian Splatting from Coarsely-posed.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Constrained Optimization Approach for Gaussian Splatting from Coarsely-posed.pdf",
+ "title": "A Constrained Optimization Approach for Gaussian Splatting from Coarsely-posed Images and Noisy Lidar Point Clouds",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.0
+ },
+ "one_line": "改进3DGS位姿优化，但核心位姿精度缺乏直接验证",
+ "innovations": [
+  "把多相机位姿分解为 P^(j,t)=P̂^t×E^j（device-to-world 与 camera-to-device 两段），旋转误差改为右乘 SE(3) 增量而非左乘，避免相机绕远离自身初始位姿的世界原点旋转导致优化震荡",
+  "对投影方程分别对 φ_rot/φ_trans/ρ_rot/ρ_trans 求 Jacobian（式5-6），取 (JᵀJ)^(-1/2) 对角线比值逐组缩放学习率，按 Levenberg-Marquardt 思路做灵敏度预条件以缓解联合优化的病态条件数",
+  "为相机参数加 log-barrier 惩罚 L_barrier=(1/T)Σlog(-h_i(x))，可行域取经验界（焦距±2%、φ_rot±0.625°、φ_trans±0.125m），温度 T 由小到大逐步放松惩罚，把解锁在 SLAM 初始估计附近"
+ ],
+ "method_framework": "以 P^(j,t)=P̂^t×E^j 分解位姿并用右乘增量精化；投影式对四组参数求 Jacobian 得 (JᵀJ)^-1/2 学习率预条件；加 log-barrier 锁可行域，辅以软极线(Sampson 距离)与深度重投影两项几何约束，联合训练 3DGS。",
+ "experiment_framework": "自建 4 鱼眼+IMU+Lidar 数据集（4 场景）加 Waymo、GarageWorld；对比 direct/pose-opt/3DGS-COLMAP/CF-3DGS/MonoGS/InstantSplat 等；指标 PSNR/SSIM/LPIPS，无真值位姿故自监督评测。",
+ "takeaways": [
+  "多相机 BA 的自由度爆炸可以靠「设备位姿 + 相机到设备外参」的层级分解解决：4 相机 10 图从 6 万自由度降到 1.5 万，共享参数显著提升联合优化稳定性",
+  "对敏感参数组用灵敏度矩阵逐组设学习率、再用可行域 barrier 限制位移量，这套「学习率预条件 + 可行域约束」的组合可直接搬到其他噪声初始化的联合优化问题",
+  "3DGS 渲染深度用光线求交而非沿相机 z 轴的 alpha-blending 近似，文中指出后者在优化中不稳定，是可直接复用的工程细节"
+ ],
+ "weaknesses": [
+  "全文未报告相机位姿的绝对误差（ATE/RPE），只用新视角合成的 PSNR/SSIM/LPIPS 间接佐证；正文自己承认 COLMAP 位姿偶发灾难性失败不能当真值，而自建集又无真值位姿，位姿精度这一核心 claim 缺乏直接证据",
+  "实验章节止于表1/表2 的定性解读，消融部分（log-barrier、灵敏度预条件、软极线与重投影各自贡献）在截断处之后；λ_ssim/λ_barrier/λ_epi/λ_reproj 全部凭经验设定，正文无敏感性曲线",
+  "主数据集为自建且明确说明缺少工业级硬件同步与标定，SLAM 噪声水平由采集协议（快速扫描、人手持设备）人为放大；Waymo/GarageWorld 噪声远小于自建集，跨数据集上「无需 SfM 即可追平 COLMAP」的结论缺少对采集设置差异的分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3DGS优化技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

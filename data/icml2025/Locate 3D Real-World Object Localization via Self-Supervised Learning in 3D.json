@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Locate 3D Real-World Object Localization via Self-Supervised Learning in 3D.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Locate 3D Real-World Object Localization via Self-Supervised Learning in 3D.pdf",
+ "title": "LOCATE 3D: Real-World Object Localization via Self-Supervised Learning in 3D",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "结合3D-JEPA与语言解码器实现指代表达定位，但依赖2D特征且证据不足",
+ "innovations": [
+  "提出3D-JEPA：首个将联合嵌入预测架构（JEPA）应用于3D点云自监督学习的方法，在潜空间做masked prediction学习上下文场景表征",
+  "设计语言条件3D定位解码器，将2D基础模型（CLIP/DINO）提取的点云特征与文本指代表对齐，直接从RGB-D传感器流预测3D bounding box",
+  "实现真实世界机器人/AR设备上的端到端部署，无需推理时的3D mesh或物体分割标注"
+ ],
+ "method_framework": "LOCATE 3D由两部分组成：(1) 3D-JEPA编码器：对由2D foundation model（CLIP/DINO）特征化的点云做masked latent prediction自监督预训练，学习上下文感知的3D场景表征；(2) 语言条件解码器：将预训练编码器与文本编码器联合微调，根据输入的指代表达文本直接回归3D物体的边界框。模型直接消费pose对齐的RGB-D帧流，可在线部署。",
+ "experiment_framework": "在标准3D指代表 grounding基准上评测，对比专门训练的3D-REFEXP模型和基于2D VLM的方法；验证真实世界机器人/AR设备上的零样本迁移和鲁棒泛化能力。",
+ "takeaways": [
+  "LOCATE 3D在标准referential grounding基准上达到新SOTA，展现出强泛化能力",
+  "3D-JEPA自监督预训练有效提升了点云表征质量，减少了对3D标注数据的依赖",
+  "直接从传感器流操作的设计使模型可部署在真实机器人和AR设备上，无需推理时人工标注"
+ ],
+ "weaknesses": [
+  "依赖2D foundation model（CLIP/DINO）提取点云特征，在遮挡严重或低纹理3D场景中性能可能下降",
+  "前9页未看到完整的定量对比表格和具体指标数值，方法的实际提升幅度不明确",
+  "仅讨论英语指代表达，多语言或复杂空间关系表达的泛化性未验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

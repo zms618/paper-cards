@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Modulated Diffusion Accelerating Generative Modeling with Modulated Quantization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Modulated Diffusion Accelerating Generative Modeling with Modulated Quantization.pdf",
+ "title": "Modulated Diffusion: Accelerating Generative Modeling with Modulated Quantization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "调制量化加速扩散模型，3位量化无损失但内存开销大",
+ "innovations": [
+  "调制量化方法利用时间步间计算冗余",
+  "误差补偿调制机制防止误差累积",
+  "理论分析量化误差与误差补偿机制"
+ ],
+ "method_framework": "MoDiff通过计算时间步间差异并量化，结合误差补偿机制，显著降低激活量化误差，实现3位量化无性能损失",
+ "experiment_framework": "CIFAR-10和LSUN数据集，对比Q-Diff和LCQ基线，使用IS、FID、sFID和GBOPs指标",
+ "takeaways": [
+  "时间步间差异比原始激活范围更小且分布更集中",
+  "误差补偿机制能有效防止误差累积",
+  "方法与量化算法无关，具有通用性"
+ ],
+ "weaknesses": [
+  "需要额外内存存储中间变量",
+  "在极低比特(2位)时性能下降明显",
+  "仅针对线性层优化，未涉及整个网络架构"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

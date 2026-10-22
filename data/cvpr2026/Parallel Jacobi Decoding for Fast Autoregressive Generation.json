@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Parallel Jacobi Decoding for Fast Autoregressive Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Parallel Jacobi Decoding for Fast Autoregressive Generation.pdf",
+ "title": "Parallel Jacobi Decoding for Fast Autoregressive Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "二维并行雅可比解码加速图像生成，但上下文权衡与分辨率依赖明显",
+ "innovations": [
+  "将一维雅可比解码扩展为二维空间并行解码",
+  "行因果注意力掩码保持空间局部性",
+  "概率性收敛准则兼容随机采样"
+ ],
+ "method_framework": "PJD通过动态令牌准备、并行自回归预测和概率性令牌验证三个阶段，在图像空间中实现并行雅可比解码，利用图像的空间局部性加速生成过程。",
+ "experiment_framework": "在Lumina-mGPT和LlamaGen模型上评估，使用MS-COCO和PartiPrompt数据集，比较FID、CLIP-Score和IS指标，测量加速比和延迟。",
+ "takeaways": [
+  "利用图像空间局部性设计并行解码策略",
+  "概率性收敛准则适用于随机采样场景"
+ ],
+ "weaknesses": [
+  "上下文令牌计数与加速比之间存在权衡",
+  "方法在不同分辨率上的加速效果差异较大"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "加速图像生成与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

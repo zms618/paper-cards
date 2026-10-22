@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/A Debiased Reconstruction-based Framework for Training-Free Detection of AI-Generated.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Debiased Reconstruction-based Framework for Training-Free Detection of AI-Generated.pdf",
+ "title": "A Debiased Reconstruction-based Framework for Training-Free Detection of AI-Generated Images",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 6.0,
+  "overall": 5.6
+ },
+ "one_line": "重建误差去偏框架，但图像级失效且实验证据不足",
+ "innovations": [
+  "用通用去偏形式 S_{f,T,λ}(x)=f(x)−λf(T(x))（式1）刻画背景偏置：T 保留偏置因子但破坏取证信息，于是归一化掉 fAE 对背景简洁度的依赖",
+  "图像级把低通滤波 F 与 90°旋转 R 递归组合成 Simage=fAE(x)−fAE(F(x))−λR fAE(R(x))+λR fAE(F(R(x)))（式4），λF 恒为 1、无额外调参；latent 级改用旋转 latent 做 OOD 归一化（式6）来抵消 latent-norm 偏置",
+  "首次把 pixel 级与 latent 级训练无访问信号统一为 SRDD=Simage×Slatent²（式7），并对比加法/乘法与不同 λA/λM 证明乘性聚合是唯一可行选择（表4）"
+ ],
+ "method_framework": "以 LDM 的 AE 重建误差 fAE 与 latent 去噪损失 flatent 为原始分数，施加低通滤波与 90° 旋转两类增强作归一化基准，再按 Simage×Slatent² 融合成一个无训练、无分类头的 AUROC 打分函数。",
+ "experiment_framework": "GenImage（ImageNet vs ADM/BigGAN/GLIDE/MJ/SD1.4/1.5/VQDM/Wukong）与 LSUN-Bedroom（vs 各类 GAN/图扩散）；基线 AEROBLADE、Manifold Bias、RIGID、MINDER、WaRPAD 复现，加 AIDE/FatFormer 作参照，指标 AUROC，单卡 A100。",
+ "takeaways": [
+  "表3 把两个分量的互补性讲透：GenImage 上 Simage 0.969 而 Slatent 仅 0.667，LSUN-Bedroom 上正好反过来（Slatent 0.963 vs Simage 0.464），说明「只做一级重建」跨生成器必塌",
+  "图4/图5 的频域证据链可直接复用：真实图与 AE(x) 之差在高频带更偏离，而旋转后再重建时生成数据的偏差放大更明显，这是选 F 与 R 的依据而非拍脑袋",
+  "图9 的 JPEG 与中心裁剪两条鲁棒曲线对比 AEROBLADE/RIGID，比主表更有说服力；表6 表明仅用 Simage 就能把 LDM 生成图归因到生成模型"
+ ],
+ "weaknesses": [
+  "表3 里 Simage 在 LSUN-Bedroom 上 AUROC 仅 0.464，既低于原始 fAE 的 0.476 也逼近随机，表2 的 0.940 几乎全靠 Slatent 单腿撑起，图像级去偏在该基准实为失效项",
+  "主表与全部消融只报 AUROC 这一个聚合指标且为单次结果，无种子标准差、无 EER/AP 等操作点指标，表4 中乘法 λM=2/3 的 0.981/0.971 这类 1 个点差无从判显著",
+  "变换 T 的选择缺原理性依据与搜索：表5 中 σ≥1.1 后 AUROC 全部饱和在 0.98 附近、核尺寸几乎无影响，说明对该分支无关紧要的参数被当作设计要点；且正文在 'Alternative Augmenta' 处截断，附录的替代变换实验读不到",
+  "Figure 6 用 t=0.025 而实验设置统一取 t=0.05，同文两套取值未交代；λR 与 t 联合敏感（图8a 小 λR 时崩盘）却只画各自单独曲线，因果归因不清"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "图像级去偏失效且证据不足，仅latent级触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Locality Preserving Markovian Transition for Instance Retrieval.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Locality Preserving Markovian Transition for Instance Retrieval.pdf",
+ "title": "Locality Preserving Markovian Transition for Instance Retrieval",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.4
+ },
+ "one_line": "LPMT框架通过马尔可夫转移解决扩散重排序信号衰减问题",
+ "innovations": [
+  "提出双向协同扩散（BCD）：在独立图间交叉传播相似度，建立更强的跨图相似关系",
+  "设计局部状态嵌入（LSE）：将每个实例编码为流形上的分布而非单点，增强局部一致性",
+  "引入热力学马尔可夫转移（TMT）：通过多中间状态的最小转移代价度量全局流形距离，同时保持局部有效性"
+ ],
+ "method_framework": "LPMT框架分三步：(1) BCD在多个相似度图间双向扩散传播，强化跨图相似关系；(2) LSE将每个实例嵌入为流形上的概率分布，编码局部邻域结构；(3) TMT将不同实例的分布通过热力学主方程互连，计算最小转移流作为全局距离度量。最终用该距离做重排序。",
+ "experiment_framework": "在多个实例检索任务上评测，对比基于扩散的重排序方法和传统QE方法；验证不同数据集上的mAP等指标。",
+ "takeaways": [
+  "热力学马尔可夫转移过程有效缓解了扩散传播中正向信号随步数衰减的问题",
+  "将实例表示为分布而非单点的方式更好地捕捉了流形局部结构",
+  "在多个检索任务上相比基线扩散方法取得稳定提升"
+ ],
+ "weaknesses": [
+  "方法计算复杂度较高，热力学转移过程的多步迭代在大规模检索场景下可能效率受限",
+  "前9页未看到具体数据集名称和定量提升幅度，实验说服力不足",
+  "仅在实例检索（图像检索）这一较窄领域验证，未探讨在其他流形学习任务中的适用性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.65,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

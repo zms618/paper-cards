@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Avoiding spurious sharpness minimization broadens applicability of SAM.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Avoiding spurious sharpness minimization broadens applicability of SAM.pdf",
+ "title": "Avoiding spurious sharpness minimization broadens applicability of SAM",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "修正SAM在NLP中的虚假锐度问题，但任务验证有限。",
+ "innovations": [
+  "揭示SAM在NLP中性能退化的根本原因：锐度最小化被logit统计量正则化主导，而非改善函数损失曲面几何",
+  "提出FUNCTIONAL-SAM，仅扰动雅可比矩阵（函数路径）而非完整参数空间，避免通过logit操纵产生的虚假锐度最小化",
+  "提出预条件SAM(Precond-SAM)，通过预条件扰动减少不同模块间梯度异质性，进一步提升效果"
+ ],
+ "method_framework": "标准SAM在参数空间扰动θ+ρ·g/||g||，在NLP中这主要改变了logit统计量分布。FUNCTIONAL-SAM改为扰动雅可比J=∂f/∂θ，即仅在函数输出层面施加扰动，避免通过参数路径间接影响logit。结合ADAMW预条件，扰动方向用预条件矩阵P调整。实现上与SAM使用相同的向量-雅可比乘积操作，额外代码仅几行。",
+ "experiment_framework": "C4数据集上训练decoder-only Transformer，模型规模从2M到1.2B非嵌入参数。两种训练设置：固定长度10K步和Chinchilla风格20×过训练。基线为AdamW和标准SAM。指标为评估loss。",
+ "takeaways": [
+  "标准SAM在NLP中验证loss比AdamW更差，FUNCTIONAL-SAM则显著优于两者",
+  "预条件+FUNCTIONAL-SAM组合在1.2B参数模型上仍保持优势，说明方法可扩展到大模型",
+  "锐度正则化需要区分函数路径和参数路径，后者在NLP中可能产生虚假最小化"
+ ],
+ "weaknesses": [
+  "仅在语言建模(自回归)任务上验证，未测试分类/翻译等其他NLP任务",
+  "每个模型规模都需重新调学习率和ρ，超参数成本较高",
+  "对logit统计量正则化为何在视觉任务中不占主导缺乏深入分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "NLP优化方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

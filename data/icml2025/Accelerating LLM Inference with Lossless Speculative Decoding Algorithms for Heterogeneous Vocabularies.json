@@ -1,0 +1,41 @@
+{
+ "title": "Accelerating LLM Inference with Lossless Speculative Decoding Algorithms for Heterogeneous Vocabularies",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "异构词表无损投机解码，解除模型共享词表限制，加速比最高2.8×",
+ "innovations": [
+  "放松投机解码(SD)的核心约束——草稿器与目标模型必须同词表，支持异构词表",
+  "提出三种均保持目标分布无损(lossless)、无需额外训练或修改的 SD 算法",
+  "使任意现成模型可作草稿器，在摘要/编程/长上下文任务上较标准自回归解码最高加速 2.8×"
+ ],
+ "method_framework": "传统 SD 要求草稿器与目标模型共享词表以对齐 token 概率；本文在异构词表下设计跨词表的投机-接受机制，保证接受/拒绝后输出分布与目标模型严格一致(无损)，从而无需从零训练草稿器即可利用任意现成小模型加速。",
+ "experiment_framework": "在摘要、代码生成与长上下文任务上，用不同词表的现成模型作草稿器，对比标准自回归解码与传统同词表 SD，报告加速比与输出分布一致性。",
+ "takeaways": [
+  "共享词表并非 SD 的必要条件，异构词表下仍可实现无损投机解码",
+  "任意现成模型都能作草稿器，甚至可找到比同族草稿器更有效的选择",
+  "无需重训草稿器即可在多任务上获得最高约 2.8× 推理加速"
+ ],
+ "weaknesses": [
+  "异构词表对齐引入额外接受率损失，极端词表差异下加速比可能明显回落",
+  "前 9 页未见对三种方法各自适用场景/开销的清晰取舍对比",
+  "超长上下文下跨词表草稿的验证开销未充分量化"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Accelerating LLM Inference with Lossless Speculative Decoding Algorithms for Heterogeneous Vocabularies.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Accelerating LLM Inference with Lossless Speculative Decoding Algorithms for Heterogeneous Vocabularies.pdf",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "LLM推理加速与可靠性主线无实质交点，属工程优化",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

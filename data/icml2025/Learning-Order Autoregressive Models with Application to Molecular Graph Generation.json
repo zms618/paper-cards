@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning-Order Autoregressive Models with Application to Molecular Graph Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning-Order Autoregressive Models with Application to Molecular Graph Generation.pdf",
+ "title": "Learning-Order Autoregressive Models with Application to Molecular Graph Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "可学习顺序的自回归模型在分子图生成上达到SOTA，但优化难度和扩展性存疑。",
+ "innovations": [
+  "将自回归生成顺序从固定预设扩展为可学习的随机变量，提出state-dependent的order-policy网络动态决定下一步生成哪个维度",
+  "推导了包含顺序策略的对数似然变分下界，用随机梯度估计端到端训练order-policy和条件生成网络",
+  "在分子图生成这一缺乏自然顺序的任务上实现SOTA，在分布相似性和药物类性指标上全面超越固定顺序和均匀顺序的ARM"
+ ],
+ "method_framework": "模型包含两部分：条件生成网络（给定已生成维度预测下一维度的值）和顺序策略网络（给定已生成状态预测下一个要生成的维度的概率分布）。训练时构造变分证据下界（ELBO），同时优化生成网络参数和顺序策略参数；顺序策略随生成状态动态演化，不同数据点甚至同一点的不同生成阶段可采用不同顺序。",
+ "experiment_framework": "任务包括图像生成和分子图生成；分子图基准为QM9和ZINC250k；评估指标包括分布相似性（MMD等）和药物类性（QED、penalized logP等）；基线包括固定顺序ARM、均匀顺序AO-ARM、掩码扩散模型等。",
+ "takeaways": [
+  "对于缺乏自然顺序的数据类型（如图、图像），可学习的动态生成顺序显著优于固定预设顺序",
+  "order-policy可以学到有意义的生成顺序，且该顺序是数据相关的而非全局统一",
+  "变分训练框架能同时优化生成质量和顺序策略，无需人工设计顺序归纳偏置"
+ ],
+ "weaknesses": [
+  "order-policy的训练引入了额外的方差和优化难度，变分推断的紧性未充分讨论",
+  "仅在小分子图生成上验证，在更大规模的蛋白质图或社交网络图上的扩展性未知",
+  "推理时需要逐步采样order-policy，生成速度比固定顺序ARM更慢"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

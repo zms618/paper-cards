@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unlearning During Training_Domain-Specific Gradient Ascent for Domain Generalization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unlearning During Training_Domain-Specific Gradient Ascent for Domain Generalization.pdf",
+ "title": "Unlearning During Training: Domain-Specific Gradient Ascent for Domain Generalization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "训练后干预模块IU通过梯度上升选择性移除域特定特征提升泛化",
+ "innovations": [
+  "提出'训练中遗忘'范式：现有DG只在训练目标里预防域特定特征，缺乏一旦出现就纠正的机制；IU在post-epoch持续干预",
+  "设计unlearning score(基于influence function与泛化视角)识别'增复杂度却不贡献泛化'的样本，提出Inter-Domain Variance(IDV)替代聚合方差AV以正确区分域特定/域不变通道",
+  "提出Domain-Specific Gradient-Ascent(DSGA)对识别样本在域特定通道上反向梯度，选择性移除域特定特征同时保留域不变特征"
+ ],
+ "method_framework": "IU是模型无关模块，依附于任意DG训练流程。(1)用unlearning score基于influence functions找出过度增加模型复杂度却对泛化贡献小的样本构成遗忘集；(2)用IDV(跨域激活方差)定位域特定通道——AV按样本池化方差会把纹理敏感通道误判为域特定，IDV按域间方差纠正；(3)对遗忘集样本在域特定通道上做梯度上升(DSGA)，反转其对域特定特征的贡献而不动域不变特征，每epoch后持续执行。",
+ "experiment_framework": "在7个域泛化基准上与16个DG基线对比，指标为 unseen target domain上的OOD准确率，报告平均提升(最高达3.0%)；考察不同epoch干预、unlearning set大小等消融，模型无关性体现在可叠加于不同骨干/已有DG方法。",
+ "takeaways": [
+  "域特定依赖会在训练不同阶段动态出现，需要post-epoch的自适应纠正机制而非仅靠训练目标预防",
+  "IDV比AV更准确区分域特定与域不变通道，避免把跨域共享的纹理敏感通道误删",
+  "IU在7基准上一致提升OOD泛化，平均准确率增益最高达3.0%且可作为即插即模块叠加"
+ ],
+ "weaknesses": [
+  "落地域为标准图像分类DG(PACS/VLCS类)，非医学影像/多模态推理，泛化主线相关但落地域偏离",
+  "DSGA对每个遗忘集样本逐样本反传梯度，post-epoch重复干预带来额外训练开销，正文前9页未给成本量化",
+  "unlearning score依赖influence function估计，在大模型上的可扩展性与近似误差影响未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "域泛化方法设计可迁移到可靠性主线，但落地域非医学/多模态",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

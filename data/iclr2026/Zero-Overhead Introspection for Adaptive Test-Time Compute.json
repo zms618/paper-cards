@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Zero-Overhead Introspection for Adaptive Test-Time Compute.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Zero-Overhead Introspection for Adaptive Test-Time Compute.pdf",
+ "title": "Zero-Overhead Introspection for Adaptive Test-Time Compute",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "复用logits预测奖励-长度分布，零开销自适应采样决策",
+ "innovations": [
+  "在生成每个token时复用同一次前向传播中预留/未用的logits，输出最终奖励与剩余长度的联合分布，无需额外模型/架构改动/推理开销",
+  "用该联合分布计算采样效用=期望最大奖励、总算力与样本集延迟的线性组合，以元动作(继续哪个前缀/新开采样)最大化效用",
+  "实现对固定预算Best-of-N的自适应替代，按边际收益动态分配采样，并提供实时置信/成功信号以增强可信度"
+ ],
+ "method_framework": "训练时在next-token预测同一次前向中增设内探头，输出(奖励,剩余长度)联合分布；推理时逐token用该分布估计若把当前前缀采样到结束的期望最大奖励/算力/延迟，构造效用函数，通过元动作选择继续或新开采样，实现质量-算力-延迟的自适应权衡。",
+ "experiment_framework": "在混合难度数学基准上评估；基线为多数投票/固定预算Best-of-N及需额外前向的学习型验证器/奖励模型；指标为等/更低平均成本下的准确率与质量-算力-延迟Pareto前沿，报告相对多数投票最高+12%。",
+ "takeaways": [
+  "零开销内省(复用空闲logits)即可让模型预测自身成功概率与所需算力，免去独立验证器",
+  "按联合分布计算采样效用并做元动作选择，可在等/更低成本下把数学推理准确率提升最多12%",
+  "实时奖励-成本信号能平滑质量-算力-延迟Pareto前沿并支撑何时升级工具的元认知决策"
+ ],
+ "weaknesses": [
+  "内省预测的准确性依赖预留logits与训练信号，奖励/长度估计的校准误差在长链推理下如何累积未充分分析",
+  "仅在数学基准验证，对开放域/代码/多步工具调用的自适应策略外推未证",
+  "元动作搜索与效用计算的实现复杂度高，工程复现门槛在提取页内未见充分说明"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "零开销内省提升推理可靠性，但未触及医学/多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

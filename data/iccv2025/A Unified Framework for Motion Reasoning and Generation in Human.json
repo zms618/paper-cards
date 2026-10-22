@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/A Unified Framework for Motion Reasoning and Generation in Human.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Unified Framework for Motion Reasoning and Generation in Human.pdf",
+ "title": "A Unified Framework for Motion Reasoning and Generation in Human Interaction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "统一token表实现双人交互运动与文本多模态对话，但实验证据不足",
+ "innovations": [
+  "首个把双人交互运动与文本同时作为输入/输出、并在单框架内做多轮对话的模型：RQ-VAE 将配对交互运动编码成 D 层离散码并与文本词表合并为统一词表，LLM 自回归地联合生成运动 token 与文本 token",
+  "交互运动采用非规范双人表示 {m_a,m_b}，单个时间步特征含全局关节位置、全局关节速度、6D 局部旋转与足部地面接触四元组，使两人在对话里可被分别指定角色与编辑",
+  "三阶段训练范式：训好 RQ-VAE 分词器后全程冻结，用 Inter-X/InterHuman 与部分 Motion-X 以 LoRA 做 next-token 跨模态对齐预训（再合并回主干），最后用 82.7K 多轮指令数据做指令微调"
+ ],
+ "method_framework": "RQ-VAE 将双人交互运动压成 D 层离散 token 并入 LLaMA-3.1-8B 词表；三阶段训练——训分词器并冻结、以 LoRA 做 next-token 跨模态对齐预训、再用 82.7K 多轮指令数据指令微调；生成端用 RQ-VAE 解码器还原运动。",
+ "experiment_framework": "InterHuman/Inter-X 与自建 Inter-MT2；与 ComMDM、InterGEN、MoMask* 比传统任务，与 MotionGPT*、TM2T+LLM 两阶段比推理与编辑；指标 top-3 检索、FID、MPJPE、METEOR/MAUVE、30 人用户研究。",
+ "takeaways": [
+  "统一词表加自回归 next-token 训练让运动与文本可互换输入输出，比「运动转文本再交给 LLM」少一次误差累积与单一描述的语义歧义",
+  "双人运动编辑需同时评估内容相似性与指令对齐，二者互相拉扯——改动一人的动作会连带改变另一人的反应",
+  "InterGEN 合成运动在文-动匹配上天生弱于真实数据（top-3 检索 0.645 对 0.870），真实/合成数据的混合比例直接决定模型最终质量"
+ ],
+ "weaknesses": [
+  "运动编辑的用户研究只覆盖 1445 个测试里随机抽出的 30 个，由 30 名被试各评 5 个样本，统计效力太弱；且正文只报了总体 Likert 均值，未给配对检验或置信区间",
+  "推理类指标主要由 GPT-4o 打 10 分制分（Coh./Align./Nat.），而最强两阶段基线 TM2T+GPT-4o 本身就用 GPT-4o 作答，评测模型与作答模型同源存在偏向风险；MAUVE 一项 MoLaM 0.794 对 MotionGPT* 加 Inter-MT2 的 0.417，波动过大说明该指标不稳",
+  "Inter-MT2 里 15.3 万条运动有 9.6 万条是 InterGEN 合成（表 1 显示合成数据 top-3 检索仅 0.645、源数据 0.870），模型实际主要拟合合成分布；且正文在 §5.3 中途截断，M2T/T2M/反应生成三张传统任务主表均缺失"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "双人交互运动生成与文本对话，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

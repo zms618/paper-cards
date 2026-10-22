@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Distributed Conformal Prediction via Message Passing.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Distributed Conformal Prediction via Message Passing.pdf",
+ "title": "Distributed Conformal Prediction via Message Passing",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "elevance": 7.0,
+  "evidence": 5.5,
+  "overall": 6.25
+ },
+ "one_line": "分布式共形预测方法，在有限校准数据下提供覆盖保证",
+ "innovations": [
+  "研究任意图拓扑下、各设备仅持有限校准数据的分布式共形预测(CP)问题",
+  "提出Q-DCP：用带专门平滑与正则项的分布式分位数回归加速收敛",
+  "提出H-DCP：用基于一致性(consensus)的直方图估计实现分布式CP，并系统分析二者在超参调优/通信量/覆盖保证/预测集大小上的权衡"
+ ],
+ "method_framework": "CP需要校准数据来获得边缘覆盖保证，但去中心化时各设备本地校准数据太少会使预测集过大；本文让设备沿任意图拓扑邻居间做消息传递：Q-DCP通过分布式分位数回归(带平滑/正则)协同估计分位数，H-DCP通过一致性直方图聚合校准分数分布，从而在无需汇聚到中心的情况下得到满足目标覆盖的预测集。",
+ "experiment_framework": "在多种网络拓扑下对比Q-DCP与H-DCP及集中式CP，以经验覆盖率(是否达目标覆盖)、预测集大小、通信开销与超参敏感度为指标，系统刻画权衡。",
+ "takeaways": [
+  "去中心化有限校准数据下，可用消息传递实现带覆盖保证的共形预测",
+  "Q-DCP与H-DCP在收敛速度、通信量与覆盖精度上各有取舍",
+  "对医疗等校准数据分散在多设备的安全关键场景有实用价值"
+ ],
+ "weaknesses": [
+  "消息传递需图连通且迭代多轮，动态/断连网络下的鲁棒性未讨论",
+  "分布自由覆盖保证在去中心化近似下是否严格保持，理论松弛交代有限",
+  "仅在常规分类/回归验证，未在LLM/真实医疗流式部署上检验"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

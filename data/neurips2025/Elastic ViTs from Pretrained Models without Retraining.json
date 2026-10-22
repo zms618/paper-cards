@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Elastic ViTs from Pretrained Models without Retraining.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Elastic ViTs from Pretrained Models without Retraining.pdf",
+ "title": "Elastic ViTs from Pretrained Models without Retraining",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "单次剪枝生成弹性ViT，但大规模模型剪枝效果存疑",
+ "innovations": [
+  "基于自监督梯度的局部Hessian近似",
+  "使用进化算法建模跨网络相关性",
+  "统一的可剪枝分数实现单次剪枝生成任意稀疏度模型"
+ ],
+ "method_framework": "将Hessian分解为局部和全局组件：局部Hessian通过自监督梯度近似，全局Hessian通过进化算法学习跨块相关性，结合两者生成统一剪枝分数，实现单次生成任意稀疏度子网络。",
+ "experiment_framework": "在DINO、SigLIPv2、DeIT和AugReg模型上评估，使用k-NN分类、线性探测和线性语义分割，比较LAMP、LLM Surgeon、FPTP等基线方法。",
+ "takeaways": [
+  "自监督重要性评分机制无需标签即可保持强性能",
+  "进化算法有效近似Hessian非对角结构，捕捉跨层依赖"
+ ],
+ "weaknesses": [
+  "大规模预训练模型(如DINOv3、SigLIPv2)剪枝难度更大",
+  "深层块被过度剪枝可能影响模型性能"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

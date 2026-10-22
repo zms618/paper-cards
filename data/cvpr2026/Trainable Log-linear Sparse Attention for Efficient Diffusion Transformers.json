@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Trainable Log-linear Sparse Attention for Efficient Diffusion Transformers.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Trainable Log-linear Sparse Attention for Efficient Diffusion Transformers.pdf",
+ "title": "Trainable Log-linear Sparse Attention for Efficient Diffusion Transformers",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "稀疏注意力机制提升扩散模型效率，但验证有限",
+ "innovations": [
+  "层次化Top-K选择降低复杂度至O(N log N)",
+  "层次化KV增强机制保留全局上下文",
+  "高效GPU实现避免密集掩码构建"
+ ],
+ "method_framework": "通过多层次压缩和递归Top-K选择实现对数线性复杂度，结合KV增强机制保持全局上下文，显著降低扩散模型训练计算量。",
+ "experiment_framework": "在FFHQ数据集上训练Pixel DiT，比较FID和吞吐量，与VSA、SLA等基线方法对比不同K值和块大小的影响。",
+ "takeaways": [
+  "层次化设计可有效解决长序列二次复杂度问题",
+  "小K值配合KV增强可保持高质量生成"
+ ],
+ "weaknesses": [
+  "仅验证了图像生成任务，未扩展到多模态或医学影像",
+  "实验主要在FFHQ数据集上进行，缺乏更广泛的数据集验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "效率优化与可靠性主线无实质交点，仅属常规方法改进",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

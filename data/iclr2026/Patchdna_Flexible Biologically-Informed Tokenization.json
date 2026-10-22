@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Patchdna_Flexible Biologically-Informed Tokenization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Patchdna_Flexible Biologically-Informed Tokenization.pdf",
+ "title": "PatchDNA: A Flexible and Biologically-Informed Alternative to Tokenization for DNA",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "用进化保守度引导的patching替代DNA固定tokenization，小模型超SoTA。",
+ "innovations": [
+  "提出用patching替代固定tokenization处理DNA序列，消除固定词表、避免单核苷酸过长序列问题。",
+  "用进化保守度(conservation score)引导patch边界，把计算资源优先投向功能相关的保守区域。",
+  "支持不重训即可更换patching策略，克服现有tokenization固定词表的根本局限；小一个数量级模型即在DNA基准超SoTA。"
+ ],
+ "method_framework": "受Byte Latent Transformer启发，将连续核苷酸打包成可变长patch而非BPE固定词表token；patch边界用进化保守信号引导，在保守功能区切得更细、非保守区合并；模型在patch级操作，从而缩短序列长度并可事后调整patch划分而无需重训。",
+ "experiment_framework": "在现有DNA语言模型下游基准(调控元件识别/变异效应等)上评测；对比固定tokenization的DNA LM；指标为下游任务精度；模型规模小一个数量级仍超SoTA，并做patch策略灵活性/保守度引导的消融。",
+ "takeaways": [
+  "Patching对DNA是比固定tokenization更高效且灵活的方案。",
+  "进化保守度引导patch边界可把算力聚焦功能相关区域。",
+  "可在不重训前提下更换patch策略，是对固定词表方法的根本改进。"
+ ],
+ "weaknesses": [
+  "依赖进化保守度注释，对缺乏保守信号的物种/区域不适用。",
+  "本质是架构/分词层改进，生物机制层面的方法创新较有限。",
+  "评测集中于公开基准，临床/药物发现端到端任务验证有限。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "DNA tokenization改进，无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

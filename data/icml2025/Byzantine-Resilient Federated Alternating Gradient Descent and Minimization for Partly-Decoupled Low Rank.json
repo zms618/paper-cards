@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Byzantine-Resilient Federated Alternating Gradient Descent and Minimization for Partly-Decoupled Low Rank.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Byzantine-Resilient Federated Alternating Gradient Descent and Minimization for Partly-Decoupled Low Rank.pdf",
+ "title": "Byzantine-Resilient Federated Alternating Gradient Descent and Minimization for Partly-Decoupled Low Rank Matrix Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.5,
+  "evidence": 5,
+  "relevance": 4,
+  "overall": 5.25
+ },
+ "one_line": "拜占庭鲁棒联邦交替梯度算法，仅理论分析，实验单一且缺乏医学影像验证。",
+ "innovations": [
+  "提出可证拜占庭鲁棒、样本与通信高效的交替GD与最小化算法（Byz-AltGDmin）求解联邦低秩矩阵补全(LRMC)。",
+  "将思路扩展到另外两个纵向联邦部分解耦问题：列向感知LRCS（多任务线性表征学习）及其无相位推广LR相位恢复(LRPR)。",
+  "针对异构数据（纵向联邦更难的场景）给出收敛性分析，对比Krum/几何中位数/坐标Wise中位数等聚合规则。"
+ ],
+ "method_framework": "问题为从各节点观测的不相交列子矩阵条目恢复全局n×q秩r矩阵X*。算法为带谱初始化的交替最小化/梯度下降，中心节点采用拜占庭鲁棒聚合（几何中位数/CWMedian类）抵御合谋恶意节点的Reverse Gradient攻击；从LRMC推广到y=Akxk与y=|Akxk|两类测量模型，纵向联邦异构设定下证明收敛。",
+ "experiment_framework": "合成实验：随机高斯生成μ=O(1)不相关矩阵，20节点中8个拜占庭节点施加Reverse Gradient Attack，指标为平均子空间距离SDF随时间，100次蒙特卡洛；真实数据MovieLens 1M（约100万评分、6040用户、3900电影），指标相对补全误差。对比Krum-AltGDmin、GM-AltGDmin、CWMedian-AltGDmin。",
+ "takeaways": [
+  "在40%拜占庭节点（Lbyz=8,L=20）下Byz-AltGDmin-LRMC仍能在MovieLens 1M上收敛。",
+  "Reverse Gradient攻击下，朴素GD会被反向推动，鲁棒聚合是收敛的关键。",
+  "方法可统一覆盖LRMC、LRCS、LRPR三类部分解耦纵向联邦问题。"
+ ],
+ "weaknesses": [
+  "实证仅合成+MovieLens一个真实数据集，规模与任务多样性不足，缺乏与近年联邦鲁棒SOTA的系统对比。",
+  "拜占庭节点比例、异构程度等关键因素的系统消融在前9页内不完整。",
+  "属低秩矩阵补全理论范畴，与LLM/多模态大模型推理主线距离较远，落地到医学影像仅在引言提及dynamic MRI而未实验。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.13,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

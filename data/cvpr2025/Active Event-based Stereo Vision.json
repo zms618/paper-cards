@@ -1,0 +1,43 @@
+{
+ "key": "cvpr2025/Active Event-based Stereo Vision.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Active Event-based Stereo Vision.pdf",
+ "title": "Active Event-based Stereo Vision",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "结构光增强事件双目视觉，轻量网络但机制验证不足",
+ "innovations": [
+  "新问题设定与系统：把事件流建模为 Sl=G(W_t·[I(t)+P(t)]+N)（Eq.1），红外图案项P(t)让相机在静态场景与极暗条件下仍由结构光驱动产生事件；据此搭出双目DAVIS346(346×260)+850nm红外图案投影器+RealSense D455的原型，并发布真实Active-Event-Stereo（21.5k标签/15Hz）与RealSense-Event-Sim合成（23.8k标签/20Hz）两个数据集。",
+  "动态交互代价体：用BN层缩放因子γ_{m,c}<θ_γ(设1e-2)判断通道不重要，把该通道直接换成另一视的对应通道 F'_r,m,c=γ_{r,m,c}(F_r,m,c-μ)/√(σ²+ε)+β，再把左右交互后的特征concat构造3D cost volume（Eq.6-7），在保持拼接式聚合计算量下让两视特征互相借道。",
+  "ActiveEventNet：用MobileNetV2 inverted residual块（depthwise+pointwise，扩展因子t）替换特征提取与encoder-decoder的标准卷积，参数2.23M、单帧6.5ms，在真实集上EPE 1.995 / D1-all 0.083、150 FPS。"
+ ],
+ "method_framework": "事件流分时间窗打成event tensor（或event image/voxel grid）→MobileNet块提特征+通道压缩→按γ阈值做跨视通道替换的动态交互构造3D代价体→轻量encoder-decoder（MobileNet卷积堆）回归稠密视差+mask。",
+ "experiment_framework": "真实Active-Event-Stero(85段/室内外/常光与低光)与合成RealSense-Event-Sim(119段红外转事件)；对比SGM、PSMNet、DeepPruner-Fast、AANet、Unimatch、DDES；指标EPE/RMSE/D1-all/>1px/>2px/>3px、参数量与运行时间；还与同场景RGB帧被动立体做对照。",
+ "takeaways": [
+  "把「结构化光+事件相机」从单目补到双目，直接补上事件立体在低纹理/暗光下无对应关系的缺口，是做高速深度的方案级参考。",
+  "用BN的γ做通道重要性判据来触发跨视特征替换，是很轻量的cost volume 简化手段（不需要新算子）。",
+  "同一场景同时录事件与RGB两套数据、用同一套指标对齐比较，是验证新传感范式性价比的最省事实验设计。"
+ ],
+ "weaknesses": [
+  "「动态交互」本质是按BN缩放阈值做的通道级cross-view特征替换，θ_γ=1e-2手设且只触发单侧通道替换，缺ablation（改θ_γ、去掉替换、随机替换的对照），机制解释很弱（5.0分档）。",
+  "Table 2 的事件 vs RGB 对比里，事件侧同时拥有投影器带来的额外纹理，增益无法拆分给「事件相机的时间分辨率」与「结构光增强纹理」，文章直接把两者混在一起归因。",
+  "真实集GT来自RealSense D455（15Hz、640×480）而事件是微秒级异步流，GT的时间分辨率与视角对齐误差构成评测上限，真实精度claim受制于廉价GT；正文也未报告GT噪声对EPE的影响。",
+  "Table 3 中本文对我们自己的三种输入表示只差0.0x（event image 1.995 / voxel 1.987 / reconstructed 1.972），说明表示选择几乎不敏感，方法本身的区分度很弱；与Unimatch(EPE 1.902)也只差0.09。",
+  "正文截断在Table 4，合成集RealSense-Event-Sim上与SOTA的完整对比、以及MobileNet/动态交互/代价体这三块各自的消融全部不可见；也无多种子方差。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "事件立体视觉在低光场景有应用，但机制验证不足且与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

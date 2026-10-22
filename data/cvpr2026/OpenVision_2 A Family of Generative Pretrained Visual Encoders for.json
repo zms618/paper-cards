@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/OpenVision_2 A Family of Generative Pretrained Visual Encoders for.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/OpenVision_2 A Family of Generative Pretrained Visual Encoders for.pdf",
+ "title": "OpenVision 2 A Family of Generative Pretrained Visual Encoders for",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "简化OpenVision，仅用生成预训练实现高效视觉编码",
+ "innovations": [
+  "移除文本编码器和对比损失，仅保留生成式训练信号",
+  "随机掩码约2/3视觉token以提高效率",
+  "使用高质量合成字幕(ReCap-DataComp-1B v2)作为监督信号"
+ ],
+ "method_framework": "OpenVision 2采用双模块架构：图像编码器+文本解码器，通过生成字幕损失进行预训练，无需对比学习，并引入视觉token掩码策略减少计算量。",
+ "experiment_framework": "在LLaVA-1.5和Open-LLaVA-Next框架下评估，使用TextVQA、ChartQA、OCR、MME等8个多模态基准测试，对比训练时间和内存消耗。",
+ "takeaways": [
+  "生成式预训练可媲美对比学习效果，同时大幅提升效率",
+  "高质量合成字幕和适度视觉token掩码策略对OCR等细粒度任务特别有效"
+ ],
+ "weaknesses": [
+  "未探索模型在不同数据分布上的鲁棒性",
+  "未提供模型在极端情况下的不确定性估计"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "仅生成预训练，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/SDMatte_Grafting Diffusion Models for Interactive Matting.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/SDMatte_Grafting Diffusion Models for Interactive Matting.pdf",
+ "title": "SDMatte Grafting Diffusion Models for Interactive Matting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "扩散模型改造用于交互式抠图，计算开销大且依赖预训练",
+ "innovations": [
+  "视觉提示驱动的交叉注意力机制",
+  "坐标嵌入和透明度嵌入整合到U-Net",
+  "掩码自注意力机制聚焦提示区域"
+ ],
+ "method_framework": "基于Stable Diffusion v2，通过VAE编码器将输入图像和视觉提示映射到潜在空间，结合视觉提示交叉注意力和掩码自注意力机制，生成精确的alpha matte",
+ "experiment_framework": "在AIM-500、AM-2k、P3M和RefMatte数据集上评估，使用MSE、MAD、SAD、Grad和Conn指标，与MAM、MatAny、SmartMatting和SEMat等方法对比",
+ "takeaways": [
+  "扩散模型的强先验知识可用于视觉感知任务",
+  "将文本交互能力转化为视觉提示交互的有效方法",
+  "轻量级版本可平衡性能与计算效率"
+ ],
+ "weaknesses": [
+  "计算复杂度高，推理延迟大",
+  "依赖预训练扩散模型，训练资源需求高"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "交互式抠图与可靠性主线无交点，仅属常规视觉任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

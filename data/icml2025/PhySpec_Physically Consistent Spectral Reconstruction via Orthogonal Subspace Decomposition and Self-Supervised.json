@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/PhySpec_Physically Consistent Spectral Reconstruction via Orthogonal Subspace Decomposition and Self-Supervised.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/PhySpec_Physically Consistent Spectral Reconstruction via Orthogonal Subspace Decomposition and Self-Supervised.pdf",
+ "title": "PhySpec: Physically Consistent Spectral Reconstruction via Orthogonal Subspace Decomposition and Self-Supervised Meta-Auxiliary Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "解决HSI重建色度困境，但泛化性与主线相关性弱",
+ "innovations": [
+  "指出现有HSI重建的色度困境：预测HSI无法一致复现ground-truth RGB，破坏物理完整性",
+  "用正交子空间分解刻画RGB流形与光谱流形之间的物理关系，引入CSS先验",
+  "提出自监督元辅助学习(meta-auxiliary learning)实现物理一致的鲁棒重建"
+ ],
+ "method_framework": "现有方法重建的HSI经相机响应函数投影回RGB时无法复现输入RGB(色度困境)；PhySpec将HSI与RGB间的物理关系做正交子空间分解，分离出色度(colorimetry)相关子空间并施加CSS先验；再用自监督元辅助学习同时优化光谱重建与RGB复现一致性，得到物理一致的鲁棒HSI。",
+ "experiment_framework": "从RGB重建HSI任务；在公开HSI数据集上与现有学习式重建方法对比；指标含重建精度(RMSE/PSNR)与复现RGB的色度一致性(color reproduction error)。",
+ "takeaways": [
+  "正交子空间分解+CSS先验使重建HSI可一致复现输入RGB，修复物理一致性",
+  "元辅助学习以自监督方式联合优化光谱与色度双重目标",
+  "物理一致的重建提升了实际应用中的可靠性"
+ ],
+ "weaknesses": [
+  "前9页未见完整数值表，相对现有方法的量化增益不清晰",
+  "CSS先验依赖相机响应函数已知，实际未知标定情形下的泛化未讨论",
+  "属计算成像，与主线落地域(医学影像诊断/多模态LLM推理)不直接相关"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.85,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

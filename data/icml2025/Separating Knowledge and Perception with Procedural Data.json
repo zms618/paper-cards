@@ -1,0 +1,35 @@
+{
+ "title": "Separating Knowledge and Perception with Procedural Data",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 7,
+  "overall": 5.9
+ },
+ "one_line": "程序化数据训练embedding+KNN记忆，实现隐私隔离但性能有差距",
+ "innovations": [
+  "把感知(embedding)与知识(视觉记忆)分离：embedding在无隐私/偏见风险的程序化数据上训练，真实数据只进记忆库",
+  "实现对真实数据的完全compartmentalization：增删样本仅动记忆、无需重训权重，带来完美数据遗忘与隐私保证",
+  "提出新程序化数据Masked Shaders(KML/Mixup)，多样性更高、下游更优"
+ ],
+ "method_framework": "用SSL在程序化图像上训embedding模型；推理时建参考图embedding记忆库，分类=查记忆KNN多数投票，分割=零样本相似度查询；真实数据只存在于记忆库，故遗忘=删库条目。",
+ "experiment_framework": "NIGHTS/CUB200/Flowers102/ImageNet-1K分类、COCO零样本分割；对比Places/ImageNet训练模型；报告NIGHTS差<1%、CUB/Flowers反超8%/15%、ImageNet差<10%、COCO R2差<10%。",
+ "takeaways": [
+  "程序化数据训embedding+显式记忆，可在逼近真实数据性能的同时获得对真实数据的可控遗忘与隐私隔离",
+  "程序化模型对同一物体不同部位表征不相似，导致记忆检索错误，是剩余性能差距的主因"
+ ],
+ "weaknesses": [
+  "性能仍与真实数据训练有10%差距，尤其细粒度识别受限于程序化数据语义贫乏",
+  "记忆库KNN方式在大规模真实部署下的检索成本与存储开销未充分量化"
+ ],
+ "confidence": "high",
+ "key": "icml2025/Separating Knowledge and Perception with Procedural Data.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Separating Knowledge and Perception with Procedural Data.pdf",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

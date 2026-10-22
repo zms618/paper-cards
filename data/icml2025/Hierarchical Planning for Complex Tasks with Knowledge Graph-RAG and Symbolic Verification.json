@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Hierarchical Planning for Complex Tasks with Knowledge Graph-RAG and Symbolic Verification.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Hierarchical Planning for Complex Tasks with Knowledge Graph-RAG and Symbolic Verification.pdf",
+ "title": "Hierarchical Planning for Complex Tasks with Knowledge Graph-RAG and Symbolic Verification",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "神经符号LLM规划器结合KG-RAG与符号验证器提升复杂任务可靠性",
+ "innovations": [
+  "将知识图谱RAG集成到层次规划以获取外部专业知识",
+  "将复杂任务分解为子任务再展开为可执行原子动作序列",
+  "引入符号验证器同时承担规划正确性校验与失败检测"
+ ],
+ "method_framework": "LLM作为规划器，先经知识图谱RAG检索相关知识做层次化子任务分解，再展开为原子动作；符号验证器对分解与动作序列做形式校验并在执行中检测失败、触发重试。",
+ "experiment_framework": "在长程复杂任务/机器人规划环境上对比纯LLM规划与普通RAG，以任务成功率、规划正确性、失败检测率为指标。",
+ "takeaways": [
+  "KG-RAG与符号验证需深度集成才能提升LLM长程规划可靠性",
+  "符号验证器可同时做离线校验与在线失败检测"
+ ],
+ "weaknesses": [
+  "依赖预建知识图谱与符号域模型，迁移到新环境成本高",
+  "符号验证器的覆盖边界外错误可能漏检",
+  "三层(子任务/动作/验证) pipeline增加推理开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

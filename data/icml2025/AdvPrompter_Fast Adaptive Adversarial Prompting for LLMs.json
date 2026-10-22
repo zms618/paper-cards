@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/AdvPrompter_Fast Adaptive Adversarial Prompting for LLMs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/AdvPrompter_Fast Adaptive Adversarial Prompting for LLMs.pdf",
+ "title": "AdvPrompter: Fast Adaptive Adversarial Prompting for LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "用LLM快速生成语义对抗prompt，提升越狱攻击速度与迁移性。",
+ "innovations": [
+  "提出用LLM（AdvPrompter）直接生成语义连贯的对抗性prompt，替代传统梯度优化token后缀的方法，速度从分钟级降到秒级",
+  "设计交替优化训练算法：AdvPrompter生成攻击→目标模型响应→更新AdvPrompter，实现自适应对抗提示生成",
+  "证明用AdvPrompter生成的对抗样本做训练数据可有效提升LLM对越狱攻击的鲁棒性"
+ ],
+ "method_framework": "训练一个小型LLM（AdvPrompter），输入恶意指令，输出对抗性后缀。训练采用交替优化：(1) 固定目标LLM，优化AdvPrompter生成更有效的对抗后缀；(2) 固定AdvPrompter，用生成的对抗样本微调目标LLM提升鲁棒性。AdvPrompter生成的后缀语义自然（如'这是炸弹拆除讲座的一部分'），而非无意义token串。",
+ "experiment_framework": "数据集：AdvBench、HarmBench。目标模型：多个开源对齐LLM。基线：现有的自动越狱方法（如GCG梯度优化攻击）。指标：攻击成功率(ASR)、生成速度、黑盒迁移性。还测试了用AdvPrompter攻击样本做防御训练的效果。",
+ "takeaways": [
+  "LLM生成的对抗prompt比梯度优化的token后缀更语义化、迁移性更好，且生成速度快数个数量级",
+  "AdvPrompter攻击可迁移到闭源黑盒LLM，说明该方法不依赖白盒梯度",
+  "用AdvPrompter生成的对抗数据做训练是提升LLM安全鲁棒性的有效途径"
+ ],
+ "weaknesses": [
+  "AdvPrompter需要针对每个目标模型交替优化训练，跨模型泛化仍需进一步验证",
+  "仅在英文安全基准测试，多语言场景的攻击效果未知",
+  "AdvPrompter本身可能被滥用，伦理风险和访问控制讨论不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "攻击方法研究，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/An Error Analysis of Flow Matching for Deep Generative Modeling.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/An Error Analysis of Flow Matching for Deep Generative Modeling.pdf",
+ "title": "An Error Analysis of Flow Matching for Deep Generative Modeling",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "Flow Matching端到端误差分析，理论为主，实证不足",
+ "innovations": [
+  "首个对基于 FM 的深度生成模型做端到端误差分析（从有限样本学速度场到生成样本全链路）",
+  "在温和假设下证明 FM 生成分布在 W2 距离下收敛到目标分布",
+  "由目标势函数的 Hessian 界推出最优速度场的 Lipschitz 常数，附加 score Lipschitz 条件时收敛率显著改进，放松了以往对速度场的强假设"
+ ],
+ "method_framework": "把 FM 视为通过深度最小二乘回归学构造速度场，再解 ODE 传输先验到目标；端到端误差=速度场估计误差+ODE 积分误差在 W2 下的累积。从目标分布的有界支撑与势函数 Hessian 界推出 v* 的 Lipschitz 性，进而界出生成分布与目标的 W2 距离。",
+ "experiment_framework": "以前9页理论推导与引理为主（v* Lipschitz 常数随 α、d 的多项式标度），辅以数值验证收敛率；端到端实证在前9页内尚未充分展开。",
+ "takeaways": [
+  "FM 的生成质量可在 W2 下给出收敛保证，而非仅凭经验",
+  "温和假设（有界支撑）下即有收敛，附加 score Lipschitz 可显著加速",
+  "速度场的 Lipschitz 性可由目标分布性质推出，无需直接假设"
+ ],
+ "weaknesses": [
+  "主线为生成模型理论，与可靠性×医学影像/多模态大模型推理主线不直接对应",
+  "收敛保证建立在有界支撑 [0,1]^d 与势函数 Hessian 上下界等较强假设上，对真实无界/重尾分布的适用性受限",
+  "前9页以理论为主，端到端大规模数值验证不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "生成模型理论，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

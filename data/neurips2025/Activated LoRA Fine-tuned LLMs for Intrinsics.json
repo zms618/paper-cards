@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Activated LoRA Fine-tuned LLMs for Intrinsics.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Activated LoRA Fine-tuned LLMs for Intrinsics.pdf",
+ "title": "Activated LoRA: Fine-tuned LLMs for Intrinsics",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "修改LoRA仅激活token，提升多任务切换效率但MLP层适配不足",
+ "innovations": [
+  "仅对激活后的token应用LoRA权重",
+  "实现KV缓存复用，避免重新计算",
+  "定义LLM内在特性概念，支持模块化任务切换"
+ ],
+ "method_framework": "修改LoRA框架，仅在aLoRA激活后应用低秩矩阵，保持前序token的KV缓存不变，实现无缝切换",
+ "experiment_framework": "7个小模型测试，基准SFT任务和真实intrinsics任务，比较LoRA与aLoRA的准确性和推理效率",
+ "takeaways": [
+  "KV缓存复用可显著提升多任务切换效率",
+  "aLoRA在保持与LoRA相当准确性的同时提升推理速度"
+ ],
+ "weaknesses": [
+  "aLoRA有时需要更高秩的矩阵",
+  "未探索RL训练场景",
+  "MLP层的适配未充分探索"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

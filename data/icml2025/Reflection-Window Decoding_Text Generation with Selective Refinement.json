@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Reflection-Window Decoding_Text Generation with Selective Refinement.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Reflection-Window Decoding_Text Generation with Selective Refinement.pdf",
+ "title": "Reflection-Window Decoding: Text Generation with Selective Refinement",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "理论刻画自回归偏差，设计滑动窗选择性精化解码方法",
+ "innovations": [
+  "从联合概率角度理论刻画自回归逐 token 贪心解偏离同长全局最优序列的内在偏差，指出生成中出现明显不确定性即提示历史可能次优",
+  "设计滑动反射窗口与停顿准则，使精化与生成在解码过程中可交替进行而非一次性整段重写",
+  "提出选择性精化框架，仅在不确定性触发处局部回看修正，平衡解码效率与全局最优性"
+ ],
+ "method_framework": "将自回归解码类比坐标下降，理论说明逐 token 最优不保证同长联合概率最优；解码时维护滑动反射窗口，当停顿准则检测到显著不确定性时暂停生成、对窗口内已生成内容做选择性精化后再继续，从而在不重写全文的前提下修正早期次优决策。",
+ "experiment_framework": "在多项文本生成任务上评测；对比贪心/beam/top-p 等传统解码与自校正类方法；指标为生成质量与联合概率/困惑度等最优性度量及解码效率；报告选择性精化在效率与最优性间的折中。",
+ "takeaways": [
+  "自回归解码的次优性可被理论刻画，不确定性是有效触发信号",
+  "局部滑动精化比整段重写更高效地逼近全局最优",
+  "解码时按需反射修正可作为提升生成可靠性的轻量手段"
+ ],
+ "weaknesses": [
+  "停顿准则与窗口大小带来额外超参，跨任务鲁棒性需调",
+  "精化仍依赖同一模型自身能力，对模型系统性错误的纠正有限",
+  "前 9 页未见与推测解码/多智能体自校正方法在同算力预算下的严格对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

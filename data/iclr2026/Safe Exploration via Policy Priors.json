@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Safe Exploration via Policy Priors.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Safe Exploration via Policy Priors.pdf",
+ "title": "Safe Exploration via Policy Priors",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "保守先验策略引导的乐观探索与悲观回退，理论安全但依赖先验获取",
+ "innovations": [
+  "将次优但保守的先验策略（来自离线数据/仿真）同时用作安全兜底与探索引导",
+  "乐观探索+悲观回退设计：信息增益最大化地探索，一旦危险即调用保守先验策略",
+  "证明学习全程安全性并通过累积遗憾界建立收敛到近最优策略的理论保证，且可扩展到真实硬件"
+ ],
+ "method_framework": "在约束MDP下提出基于模型的RL算法SOOPER：用概率动力学模型乐观收集rollout以最大化世界模型信息，遇到风险时悲观地回退到保守先验策略；利用该模型构建仿真环境用于规划，轨迹一旦触发先验策略即终止，从而激励智能体在安全前提下找到更高回报区域。",
+ "experiment_framework": "在多个关键安全RL基准上对比SOTA方法，并在真实机器人硬件上验证；指标包含学习全程安全性、累积回报/遗憾，以及理论保证在实践中的兑现。",
+ "takeaways": [
+  "保守策略先验不仅能维持安全，还能引导探索向高回报区域，从而可证明地学到近最优策略",
+  "乐观探索+悲观回退的组合可兼得理论安全保证与可扩展性",
+  "方法在真实硬件上优于现有SOTA且兑现了理论安全保证"
+ ],
+ "weaknesses": [
+  "依赖一个可用的保守先验策略，在难以获取先验的纯在线场景下适用性受限",
+  "基于概率动力学模型的误差随任务复杂度累积，长程任务的安全裕度未充分讨论",
+  "与主线（LLM可靠性/医学影像/多模态推理）距离较远，落地域偏机器人控制"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "机器人控制与可靠性主线距离较远，无可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

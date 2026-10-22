@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Memory-Efficient Fine-Tuning Diffusion Transformers via Dynamic Patch Sampling and Block.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Memory-Efficient Fine-Tuning Diffusion Transformers via Dynamic Patch Sampling and Block.pdf",
+ "title": "Memory-Efficient Fine-Tuning Diffusion Transformers via Dynamic Patch Sampling and Block",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "动态块采样与残差预计算实现DiT高效微调，但依赖额外预训练模型",
+ "innovations": [
+  "基于扩散时间步的动态块采样策略",
+  "基于交叉注意力掩码的关键块选择机制",
+  "残差特征预计算与块跳过相结合的微调框架"
+ ],
+ "method_framework": "DiT-BlockSkip结合动态块采样和块跳过机制，通过时间步感知的图像块采样减少前向/反向内存，利用交叉注意力掩码识别关键块并预计算残差特征，实现高效个性化微调。",
+ "experiment_framework": "在FLUX和SANA模型上测试，使用DreamBooth数据集，通过DINO、CLIP-I和CLIP-T指标评估，比较LoRA、DreamBooth等基线方法。",
+ "takeaways": [
+  "时间步感知的动态采样可平衡全局结构与细节学习",
+  "交叉注意力掩码可有效识别对个性化关键的中层块",
+  "残差特征预计算可显著减少内存同时保持性能"
+ ],
+ "weaknesses": [
+  "块选择策略依赖于预训练LoRA模型，增加额外计算",
+  "动态采样可能导致某些场景下的细节丢失",
+  "方法在超大规模模型上的扩展性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "高效微调技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

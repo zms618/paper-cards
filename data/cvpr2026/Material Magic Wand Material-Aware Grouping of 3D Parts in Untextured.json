@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Material Magic Wand Material-Aware Grouping of 3D Parts in Untextured.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Material Magic Wand Material-Aware Grouping of 3D Parts in Untextured.pdf",
+ "title": "Material Magic Wand Material-Aware Grouping of 3D Parts in Untextured",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "材质感知部件分组方法，多视图渲染与对比学习加速材质分配。",
+ "innovations": [
+  "材质感知部件分组任务定义",
+  "多视图渲染的部件编码器设计",
+  "监督对比学习训练材质一致性嵌入",
+  "材质分组数据集和基准构建"
+ ],
+ "method_framework": "通过三种渲染视图(孤立部件、带上下文部件、完整物体)提取特征，使用DINO-v3编码器生成嵌入，通过监督对比学习训练材质一致性嵌入空间，实现相似材质部件的检索分组。",
+ "experiment_framework": "100个形状的基准数据集，241个部件级查询，对比几何描述符、视觉基础模型和部件分割基线，使用AUC PR、R-Precision、mAP、Recall@k和F1分数评估。",
+ "takeaways": [
+  "多视图渲染策略有效捕捉局部几何和全局上下文",
+  "监督对比学习适合材质一致性嵌入学习",
+  "阈值参数提供细粒度控制和分层选择"
+ ],
+ "weaknesses": [
+  "方法对自遮挡部件的渲染效果有限",
+  "未明确建模分组中的多种有效选择",
+  "依赖预分割部件，未解决初始分解问题"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D部件分组与可靠性主线无关，仅几何处理无迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,43 @@
+{
+ "key": "cvpr2025/ARKit_LabelMaker A New Scale for Indoor 3D Scene Understanding.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ARKit_LabelMaker A New Scale for Indoor 3D Scene Understanding.pdf",
+ "title": "ARKit LabelMaker: A New Scale for Indoor 3D Scene Understanding",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.0
+ },
+ "one_line": "大规模3D自动标注流水线，但质量验证不足且分析浅",
+ "innovations": [
+  "LabelMakerV2 在原有 base model 集成外补入 Grounded-SAM（Grounding DINO 出框 + SAM 出掩膜），并把其输出适配到 WordNet 统一标签空间后作为一个独立投票者参与逐帧共识投票",
+  "重力对齐：把 IMU（ARKit pose 的 z 轴）给出的天空方向投影到每帧2D图，算与竖直方向夹角α后按 k·π/2（k=argmin_s|s·π/2−α|）旋转图像再送 base model，推理后把预测旋转回原朝向，修掉 ARKitScenes 手机翻转导致 floor/ceiling 互判的退化",
+  "为大规模分布式处理改造流水线：去掉每场景训练 NeuS 隐式表面（成本高且在 inside-out 扫描下几何约束弱、点标签不再是简单坐标查表），保留逐点投票；给出 docker/SLURM 部署脚本与依赖图失败恢复策略（先查未完成任务再提交新作业）",
+  "自动标注整表 ARKitScenes 耗费 48000 GPU 小时（3090），产出 186 类 WordNet 空间、4471 train / 548 val 场景的稠密点级标注，规模为此前最大真实3D数据集三倍以上"
+ ],
+ "method_framework": "以 LabelMaker 流水线为主体：多种 base model 各自输出2D像素级语义→映射到统一 WordNet 标签空间→逐帧共识投票→把2D预测抬升到3D点做逐点投票去噪。本工作改三点：加入 Grounded-SAM、按 IMU 天空方向 k·π/2 重力对齐、去掉 NeuS 以适配集群扩展。",
+ "experiment_framework": "在 ScanNet/ScanNet200/ScanNet++ 上做 pre-train→fine-tune、co-train 与 PTv3+PPT 多数据集 joint-train，对比 PonderV2 自监督、Mix3D 增强与 Structured3D 合成数据；另测 Matterport3D 零样本长尾与 5 场景人工标注重合度。",
+ "takeaways": [
+  "大规模自动标签预训练优于自监督（PonderV2）与强增广（Mix3D），也优于同规模合成数据：真实数据在小数据量（10%）时就开始反超，合成数据在有限规模甚至掉点",
+  "把标签空间本身当作可缩放维度——WordNet 186 类空间直接进 PTv3+PPT 的归一化层与分类头，比先映射到 ScanNet200（ARKit LabelMakerSN200）拿到更高 tail 增益",
+  "长尾收益高度依赖架构：PTv3+PPT 加 ARKit LabelMaker 在 ScanNet200 test 达 41.4 mIoU（tail 27.1），但对 tail 增益 +5.5，而 MinkowskiNet 在 val 上反而略降且零样本增益随 Top-40→Top-160 递减"
+ ],
+ "weaknesses": [
+  "自动标注质量只靠 5 个 ScanNet 场景与 3 个 ARKitScenes 场景的两张小表（Table 5/6）佐证，绝对 mIoU 仅 7.1~18.5，且未报告方差、多次运行或 per-class 混淆矩阵，1~2 分的消融差距无法与噪声区分",
+  "全文没有任何自动标签噪声率的量化：186 个 WordNet 类里有多少类因 base model 标签空间缺位而全被吞成背景、共识投票的置信阈值与参与投票的最小票数、过滤后各类的保留比例均未报告",
+  "与合成数据对照只有‘把 Structured3D resample 到同规模’一个配置、只跑 PTv3 一个架构，且未见随机种子重复，据此主张‘真实数据优于合成’的 claim 证据面偏窄",
+  "正文止于 4.5 节（Table 7 的 Matterport3D 数值仅被叙述引用、结论与局限缺失），MinkowskiNet 对长尾增益为负这一架构依赖原因未作分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "3D场景理解与可靠性主线无关，仅为知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

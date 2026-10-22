@@ -1,0 +1,43 @@
+{
+ "key": "cvpr2026/FontCrafter_High-Fidelity Element-Driven Artistic Font Creation with Visual In-Context Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/FontCrafter_High-Fidelity Element-Driven Artistic Font Creation with Visual In-Context Generation.pdf",
+ "title": "FontCrafter High-Fidelity Element-Driven Artistic Font Creation with Visual In-Context Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "基于修复模型的元素驱动字体生成，边缘重绘增加计算开销",
+ "innovations": [
+  "元素驱动框架，区分有形与无形元素",
+  "视觉上下文生成策略，利用修复模型进行像素级风格迁移",
+  "上下文感知掩码适配器(CMA)注入形状信息",
+  "注意力重定向机制抑制笔画幻觉",
+  "边缘重绘技术优化边界自然度"
+ ],
+ "method_framework": "基于FLUX.1-Fill修复模型，将元素图像与空白画布拼接作为输入，通过CMA模块融合上下文特征与字形掩码，结合注意力重定向机制实现元素风格到字形的精确迁移。",
+ "experiment_framework": "ElementFont数据集(14000个无形元素+5000个有形元素)，对比FontStudio和StyleAligned基线，使用FID、CLIP相似度、FIDp和用户研究评估生成质量。",
+ "takeaways": [
+  "元素驱动方法提供细粒度视觉控制",
+  "上下文生成策略有效解决纹理和结构保真度问题",
+  "轻量级适配器设计实现参数高效微调"
+ ],
+ "weaknesses": [
+  "依赖预训练修复模型，领域适应性受限",
+  "边缘重绘作为后处理步骤增加计算开销",
+  "复杂字形(如中文)的泛化能力未充分验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "字体生成与可靠性主线无关，仅具视觉控制迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

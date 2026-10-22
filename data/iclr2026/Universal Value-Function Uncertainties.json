@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Universal Value-Function Uncertainties.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Universal Value-Function Uncertainties.pdf",
+ "title": "Universal Value-Function Uncertainties",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "UVU用单模型估计策略条件值不确定性，NTK理论支持但有限宽偏差未量化",
+ "innovations": [
+  "提出单模型UVU直接估计策略依赖的value uncertainty，区别于RND等单模型方法只给myopic不确定性、需额外传播机制",
+  "关键训练设计：用固定随机目标网络g生成合成奖励rg，在线网络u以TD学习恢复g，从而预测误差反映'该策略未来将遭遇的不确定性'",
+  "用NTK理论证明无限宽极限下UVU误差恰好等价于独立universal value functions集成的方差，赋予单模型方法严格理论基础"
+ ],
+ "method_framework": "RL中值函数不确定性对探索/安全/offline RL关键，但深度集成计算昂贵、单模型方法(RND/pseudo count/ curiosity)缺乏理论且需额外传播。UVU设在线网络u与固定随机初始化目标网络g；与RND的回归目标不同，UVU让g生成合成奖励rg(使g自身成为该MDP的解)，u以TD学习最小化TD损失去恢复g；最终u与g的平方预测误差即policy-conditional value uncertainty，无需多网络。",
+ "experiment_framework": "在挑战性多任务offline RL设置上对比深度集成(large ensembles)与RND等单模型方法，指标为利用不确定性做探索/offline策略选择的性能；报告UVU与大集成性能持平同时大幅节省计算与显存。",
+ "takeaways": [
+  "单模型UVU可达到与大集成相当的值不确定性估计质量，同时显著降低计算开销",
+  "通过合成奖励+TD学习，UVU误差是策略条件的、包含未来不确定性，而非仅myopic",
+  "NTK分析为该类单模型不确定性方法提供了与集成方差等价的理论保证"
+ ],
+ "weaknesses": [
+  "落地域为offline/多任务RL，非医学影像/多模态推理，虽属不确定性(可靠性)主线但落地域偏离",
+  "NTK等价性在无限宽极限成立，有限宽网络上的近似误差与偏差未充分量化",
+  "合成奖励rg由随机网络g生成，其与真实任务不确定性的相关性在更稀疏/长程任务上是否保持需更多验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "不确定性主线方法，但落地域偏离医学影像/多模态推理",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

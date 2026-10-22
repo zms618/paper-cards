@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Learning to Drive is a Free Gift Large-Scale Label-Free Autonomy.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Learning to Drive is a Free Gift Large-Scale Label-Free Autonomy.pdf",
+ "title": "Learning to Drive is a Free Gift Large-Scale Label-Free Autonomy",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "LFG用无标注视频训练单目模型，在规划上超越多模态基线。",
+ "innovations": [
+  "多模态教师引导的标签-free预训练框架",
+  "轻量级自回归Transformer实现短期未来预测",
+  "动态与静态场景解耦的运动掩模生成"
+ ],
+ "method_framework": "基于π3编码器添加因果自回归Transformer，联合预测点云、相机姿态、语义分割、置信度和运动掩模，通过多模态教师提供伪监督。",
+ "experiment_framework": "数据集：OpenDV/NAVSIM/KITTI-360/Waymo；基线：SegFormer/π3/MaskFormer/UniAD；指标：语义分割mIoU/深度估计AbsRel/规划PDMS",
+ "takeaways": [
+  "教师-学生蒸馏框架有效利用无标注视频",
+  "未来帧加权提升时序预测能力",
+  "单目相机在规划任务上超越多模态基线"
+ ],
+ "weaknesses": [
+  "伪标签生成可能引入噪声(图7失败案例)",
+  "自回归模块增加计算复杂度",
+  "仅评估短期预测能力"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "自动驾驶规划与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/CTBench_A Library and Benchmark for Certified Training.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CTBench_A Library and Benchmark for Certified Training.pdf",
+ "title": "CTBench: A Library and Benchmark for Certified Training",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 7,
+  "relevance": 5.5,
+  "overall": 6.25
+ },
+ "one_line": "统一库与基准揭示认证训练算法调参后性能提升，但领域局限性强",
+ "innovations": [
+  "构建统一的认证训练库与基准，消除训练调度/认证方法/超参调优不一致导致的不可比",
+  "系统调参后几乎所有算法都超越文献报告的性能幅度，确立新SOTA",
+  "给出对认证训练现状的五点新洞察：认证模型损失面更不碎片化、共享错误、激活更稀疏、巧妙减弱正则对大半径关键、认证训练可改善OOD泛化",
+  "揭示近期算法声称的优势在强化旧基线后显著下降"
+ ],
+ "method_framework": "统一接口复现各类确定性认证训练(鲁棒损失上界训练/不健全代理损失训练)，在相同训练调度、相同认证器下公平比较并系统调参；基于公平结果分析认证模型的损失面、错误结构、激活稀疏度、正则与OOD泛化。",
+ "experiment_framework": "在标准认证训练基准(如MNIST/CIFAR等)上，对所有主流认证训练算法用相同调度与调参重新训练，与文献报告值及强化基线对比，报告已认证准确率/半径，并做机制性分析。",
+ "takeaways": [
+  "多数认证训练论文的优势来自欠调参的旧基线，公平调参后优势大幅缩水",
+  "认证模型具有可解释的共性：更稀疏激活、共享错误、损失面更光滑",
+  "巧妙减弱正则对大半径认证尤其关键，且认证训练有改善OOD泛化的潜力"
+ ],
+ "weaknesses": [
+  "主要面向图像分类的确定性认证，未覆盖随机认证/扩散模型或多模态推理",
+  "落地域非医学影像，与指定落地域(医学影像、多模态大模型推理)不直接对应",
+  "作为基准库，新算法贡献有限，洞察多为实证性、机制因果仍需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Segment then Splat Unified 3D Open-Vocabulary Segmentation via Gaussian Splatting.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Segment then Splat Unified 3D Open-Vocabulary Segmentation via Gaussian Splatting.pdf",
+ "title": "Segment then Splat: Unified 3D Open-Vocabulary Segmentation via Gaussian Splatting",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 6.5,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "分割高斯元组再重建，实现3D开放词汇分割",
+ "innovations": [
+  "颠覆传统'先重建后分割'范式，提出'先分割后重建'新方法",
+  "设计鲁棒物体跟踪模块处理动态场景",
+  "消除几何和语义歧义，无需额外语言场"
+ ],
+ "method_framework": "基于高斯溅射的3D开放词汇分割方法，先通过鲁棒跟踪模块提取多视图掩码，将高斯元组分割为物体特定集合，再进行重建，最后关联CLIP嵌入实现开放词汇查询。",
+ "experiment_framework": "在3DOVS、LERF_OVS(静态)和HyperNeRF、Neu3D(动态)数据集上评估，使用mIoU指标和优化时间作为训练效率指标，与2D像素分割和3D分割基线对比。",
+ "takeaways": [
+  "物体特定高斯初始化可消除几何和语义歧义",
+  "多粒度优化顺序对重建质量有重要影响",
+  "部分掩码过滤策略可提高3D物体几何保真度"
+ ],
+ "weaknesses": [
+  "新物体检测间隔Δt固定为10可能不够灵活",
+  "几何-外观距离权重λd设为0.5可能需要针对不同场景调整",
+  "未讨论方法在极端遮挡情况下的表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

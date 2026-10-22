@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/`Who experiences large model decay and why ''A Hierarchical Framework for Diagnosing Heterogeneous.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/`Who experiences large model decay and why ''A Hierarchical Framework for Diagnosing Heterogeneous.pdf",
+ "title": "Who experiences large model decay and why? A Hierarchical Framework for Diagnosing Heterogeneous Performance Drift",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "分层框架定位性能衰减子群，但医疗案例局限性与统计严谨性存疑",
+ "innovations": [
+  "Subgroup-scanning分层推断框架，先问Where(哪个子群衰减)再问Why(哪组变量导致)",
+  "区分协变量漂移与结果漂移对性能衰减的贡献",
+  "支持子群层面的定向纠偏，避免'don't fix what ain't broke'的 unintended effects"
+ ],
+ "method_framework": "面对部署后性能衰减的异质性，SHIFT第一步检验是否存在因协变量/结果漂移导致衰减过大的子群；若存在，再用更细粒度的变量(子集)解释该子群衰减来源，从而把平均性能漂移分解到受影响子群与具体驱动变量。",
+ "experiment_framework": "以部署ML模型(如住院再入院预测)为案例，对比整体性能转移解释方法与仅识别受损子群的方法；报告子群定位与变量级归因，验证分层诊断的可解释性。",
+ "takeaways": [
+  "性能衰减通常非均匀，需定位受损最严重的子群",
+  "SHIFT同时给出受影响子群与衰减的变量级原因",
+  "子群诊断支持定向纠偏，最小化对未受影响群体的副作用"
+ ],
+ "weaknesses": [
+  "31页方法偏统计推断，前9页未见在大规模真实漂移事件上的假阳性/假阴性率",
+  "子群搜索的多重比较校正与可解释性权衡需完整理论/实验附录",
+  "案例以医疗预测模型为主，向大模型/多模态系统的可迁移性未验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

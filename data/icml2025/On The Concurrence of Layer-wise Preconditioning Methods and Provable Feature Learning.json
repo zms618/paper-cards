@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/On The Concurrence of Layer-wise Preconditioning Methods and Provable Feature Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/On The Concurrence of Layer-wise Preconditioning Methods and Provable Feature Learning.pdf",
+ "title": "On The Concurrence of Layer-wise Preconditioning Methods and Provable Feature Learning",
+ "scores": {
+  "novelty": 7,
+  "depth": 7.5,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6.5
+ },
+ "one_line": "理论证明SGD在非各向同性输入下次优，逐层预条件必要但扩展性存疑",
+ "innovations": [
+  "证明逐层预条件(Shampoo/Kronecker-Factored族)在统计意义上是特征学习所必需，而非单纯工程技巧",
+  "在线性表示学习与单指标学习两个原型问题上证明：超出各向同性输入x~N(0,I)与良条件假设后SGD是次优的特征学习器",
+  "理论与数值表明该次优是根本性的，而Adam逐元素预条件与batch-norm只能轻微缓解，凸显逐层预条件的独特价值"
+ ],
+ "method_framework": "在特征学习可解的原型模型中比较不同预条件器的特征恢复误差；把逐层Kronecker预条件近似为对每层权重张量曲率(二阶/Fisher)的分解近似，解析其在非各向同性输入下为何能纠正SGD的次优方向。",
+ "experiment_framework": "理论给出SGD次优与逐层预条件最优的对比界；辅以数值实验在表示学习/单指标问题上对照SGD、Adam、batch-norm与逐层预条件的特征恢复效果。",
+ "takeaways": [
+  "在非各向同性、不良条件输入下，SGD作为特征学习器本质次优",
+  "逐层Kronecker预条件自然恢复有效特征，统计学习上有必要性",
+  "Adam逐元素预条件与batch-norm只能部分缓解，无法替代逐层预条件"
+ ],
+ "weaknesses": [
+  "结论基于线性表示/单指标等原型模型，深度非线性网络下的必要性未严格证明",
+  "逐层预条件的二阶近似计算与内存开销虽被论证可扩展，但实际大模型上的成本-收益未充分量化",
+  "数值实验在受控原型问题，与AlgoPerf等真实大规模基准的对应性需更多证据"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

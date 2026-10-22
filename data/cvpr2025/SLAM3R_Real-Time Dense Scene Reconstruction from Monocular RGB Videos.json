@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/SLAM3R_Real-Time Dense Scene Reconstruction from Monocular RGB Videos.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/SLAM3R_Real-Time Dense Scene Reconstruction from Monocular RGB Videos.pdf",
+ "title": "SLAM3R Real-Time Dense Scene Reconstruction from Monocular RGB Videos",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "双层次网络实现实时点云重建，但缺乏鲁棒性验证和不确定性估计。",
+ "innovations": [
+  "双层次框架(I2P和L2W)直接预测3D点云",
+  "多视图交叉注意力机制扩展DUSt3R到多视图",
+  "基于蓄采样的场景帧检索机制减少累积漂移"
+ ],
+ "method_framework": "SLAM3R采用滑动窗口将视频分割为片段，通过I2P网络进行局部重建，再由L2W网络将局部点云对齐到全局坐标系，全程不显式估计相机参数。",
+ "experiment_framework": "在7 Scenes和Replica数据集上评估，使用准确度和完整性指标(cm)，与DUSt3R、MASt3R、Spann3R等方法对比，并报告FPS性能。",
+ "takeaways": [
+  "多视图交叉注意力可有效扩展双视图重建方法",
+  "蓄采样机制在长视频中保持重建质量",
+  "端到端点云预测可避免传统SLAM的相机参数估计步骤"
+ ],
+ "weaknesses": [
+  "仅适用于静态场景",
+  "未明确讨论模型在极端光照或纹理缺失情况下的鲁棒性",
+  "与主线相关性较弱，未深入探讨不确定性估计或可靠性验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "纯SLAM重建工作，缺乏可靠性主线要素",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

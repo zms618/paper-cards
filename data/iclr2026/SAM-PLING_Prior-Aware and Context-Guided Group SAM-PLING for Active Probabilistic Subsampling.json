@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SAM-PLING_Prior-Aware and Context-Guided Group SAM-PLING for Active Probabilistic Subsampling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SAM-PLING_Prior-Aware and Context-Guided Group SAM-PLING for Active Probabilistic Subsampling.pdf",
+ "title": "Prior-Aware and Context-Guided Group Sampling for Active Probabilistic Subsampling",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "改进A-DPS采样方法，在有限数据上小幅提升性能。",
+ "innovations": [
+  "指出 A-DPS 未充分利用数据集先验且依赖 top-1 采样会阻碍优化，提出融合确定性(固定)先验信息采样模式。",
+  "提出基于分组的 top-k 采样替代 top-1，使优化更稳健，并给出分组采样改善优化的理论分析。",
+  "在分类、图像重建、分割三类下游任务上统一验证 PGA-DPS 的实例自适应采样轨迹。"
+ ],
+ "method_framework": "在 A-DPS 的联合优化子采样模式与下游任务模型框架上，叠加一个由训练数据得到的固定先验采样模式，并将迭代式 top-1 主动采样改为 top-k 分组采样；推理时仍按实例动态自适应选择采样点，兼顾数据集先验与个体差异(如患者生理条件)。",
+ "experiment_framework": "三个任务、四个数据集：MNIST 与 CIFAR-10(分类)、fastMRI knee(医学影像重建)、高光谱 AeroRIT(分割)；对比 A-DPS、DPS 及其他采样方法，报告各任务指标，PGA-DPS 在每个设置下均优于基线。",
+ "takeaways": [
+  "引入训练集先验采样模式与 top-k 分组采样可在所有任务上稳定超越 A-DPS。",
+  "分组采样相比 top-1 提供了更稳健的优化，并有理论分析支撑。",
+  "主动子采样能在 MRI 等医学成像中实现患者个体化采集轨迹、缩短采集时间。"
+ ],
+ "weaknesses": [
+  "本质是对已有 A-DPS 的两点增量改进，方法新颖性有限，未见与更强/更新的压缩感知或学习采样方法对比。",
+  "数据集偏小(MNIST/CIFAR-10)，医学仅 fastMRI knee，大规模临床影像上的有效性与采集加速实际收益未充分验证。",
+  "与视觉可靠性主线(鲁棒/泛化/不确定性/幻觉抑制)关联弱，医学影像仅为落地域而非核心命题。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.88,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "医学影像应用与采样方法改进，但未触及可靠性主线核心问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

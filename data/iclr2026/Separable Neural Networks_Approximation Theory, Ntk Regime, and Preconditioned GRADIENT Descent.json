@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Separable Neural Networks_Approximation Theory, Ntk Regime, and Preconditioned GRADIENT Descent.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Separable Neural Networks_Approximation Theory, Ntk Regime, and Preconditioned GRADIENT Descent.pdf",
+ "title": "Separable Neural Networks: Approximation Theory, NTK Regime, and Preconditioned Gradient Descent",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 6.2
+ },
+ "one_line": "理论分析SepNN完备性与谱偏置，提出O(nD)预条件梯度下降缓解问题。",
+ "innovations": [
+  "基于Weierstrass逼近与万能逼近理论证明SepNN可任意精度逼近任意多元函数，确认表示完备性",
+  "推导SepNN的NTK区间：无限分解秩下NTK收敛到确定核、固定秩下收敛到随机核，并刻画谱偏置",
+  "提出可分离预条件梯度下降SepPGD，可证明地调整NTK谱以缓解谱偏置，复杂度O(nD)远优于既往神经网络PGD"
+ ],
+ "method_framework": "SepNN把多元函数分解为若干一元函数的线性组合、各自由轻量因子网参数化；本文从逼近论证明其完备性，从NTK角度分析其核极限与谱偏置，再设计预条件子在训练时显式校正NTK谱，使优化更快学到高频成分。",
+ "experiment_framework": "在核岭回归、INR(图像/曲面表示)、PINN(数值PDE)三类任务上验证SepNN效率与SepPGD缓解谱偏置的效果。",
+ "takeaways": [
+  "SepNN表示完备性得到理论保证",
+  "SepNN的NTK行为随分解秩(无限/固定)分别收敛到确定/随机核",
+  "SepPGD以O(nD)高效复杂度在多类INR/PINN任务上缓解谱偏置"
+ ],
+ "weaknesses": [
+  "属网络架构理论(INR/PINN)，与可靠性、医学影像、多模态推理主线无关",
+  "NTK分析基于无限宽假设，向有限宽实际训练的迁移为近似",
+  "谱偏置缓解的定量提升在图像/PDE上的具体数值在前9页不完整"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯网络架构理论，与可靠性主线和落地域无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

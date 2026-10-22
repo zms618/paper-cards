@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/VQToken_Neural Discrete Token Representation Learning for Extreme Token Reduction in Video Large Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/VQToken_Neural Discrete Token Representation Learning for Extreme Token Reduction in Video Large Language Models.pdf",
+ "title": "VQToken: Neural Discrete Token Representation Learning for Extreme Token Reduction in Video Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "VQToken用向量量化压缩视频token，但仅在小模型验证且分析不足。",
+ "innovations": [
+  "提出极短token减少任务，将视频压缩至0.07%原始长度",
+  "自适应向量量化与token哈希函数结合，保留时空信息",
+  "引入Token Information Density (TokDense)评估指标"
+ ],
+ "method_framework": "VQToken框架通过自适应向量量化将连续ViT嵌入聚类为紧凑离散码本，结合token哈希函数保留时空位置，通过VQ-Attention机制生成压缩token序列。",
+ "experiment_framework": "在NextQA-MC、ActNet-QA、LongVideo Bench和VideoMME等基准测试，与Token Pruning、ToMe、VidToMe等方法对比，评估准确率、token数量、吞吐量和计算复杂度。",
+ "takeaways": [
+  "向量量化方法在极简token压缩中保持高信息密度",
+  "token哈希函数有效保留时空信息而不增加计算开销",
+  "自适应长度压缩比固定长度压缩更有效"
+ ],
+ "weaknesses": [
+  "仅在小规模模型(0.5B)上验证，未在大规模模型测试",
+  "未充分分析不同视频类型和复杂度的压缩效果差异",
+  "token哈希函数在高分辨率视频中的计算效率未充分评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

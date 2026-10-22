@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unified Diffusion VLA_Vision-Language-Action Model via Joint Discrete Denoising Diffusion Process.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unified Diffusion VLA_Vision-Language-Action Model via Joint Discrete Denoising Diffusion Process.pdf",
+ "title": "Unified Diffusion VLA: Vision-Language-Action Model via Joint Discrete Denoising Diffusion Process",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "将图像生成与动作预测纳入同一扩散轨迹，提升机器人VLA效率",
+ "innovations": [
+  "提出Joint Discrete Denoising Diffusion Process(JD3P)：将多模态整合进单条去噪轨迹，让未来图像生成与动作预测同步迭代精修，而非作为分离过程",
+  "核心思想——动作在恒定充分的视觉引导下从初始化逐步演化，把动作预测转为在生成未来图像指导下的逆运动学问题",
+  "基于全模态统一tokenized空间与混合注意力，配两阶段训练流水线与若干推理期技术优化性能与效率"
+ ],
+ "method_framework": "统一VLA需把未来图像纳入理解-动作闭环。现有范式要么靠外部专家编/解码(模块割裂、错位耦合弱)，要么图像生成与动作预测仍分离。JD3P在统一token空间内，用混合注意力把图像与动作token放进同一条离散扩散去噪轨迹同步精修：动作随去噪逐步生成，同时持续获得正在生成的未来图像作为视觉引导，实现内在协同；两阶段训练+推理技术提效。",
+ "experiment_framework": "在CALVIN、LIBERO、SimplerEnv等机器人操作benchmark上对比自回归VLA与分模块VLA；指标为任务成功率与推理速度；报告SOTA且比自回归方法快4倍，含真实世界评估与深入分析。",
+ "takeaways": [
+  "把图像生成与动作预测放进同一条去噪轨迹同步精修，比分离处理更能利用未来视觉信息指导动作",
+  "动作在持续视觉引导下迭代演化，可获得比一次性预测更鲁棒的策略",
+  "离散扩散范式相比自回归在VLA上同时提升性能与4倍推理速度"
+ ],
+ "weaknesses": [
+  "落地域为机器人VLA，与本主线(可靠性×多模态推理/医学影像)无直接关联",
+  "联合去噪轨迹的多模态调度(各模态去噪步数配比)如何最优设定，正文前9页未给统一原则",
+  "优势主要在仿真benchmark，真实世界仅做定性评估，真机成功率与稳定性需更多证据"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "机器人操作与可靠性主线无直接关联，但方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

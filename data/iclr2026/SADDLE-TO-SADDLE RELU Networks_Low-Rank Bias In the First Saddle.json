@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SADDLE-TO-SADDLE RELU Networks_Low-Rank Bias In the First Saddle.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SADDLE-TO-SADDLE RELU Networks_Low-Rank Bias In the First Saddle.pdf",
+ "title": "Saddle-to-Saddle Dynamics in Deep ReLU Networks: Low-Rank Bias in the First Saddle Escape",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 4,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "纯理论分析小初始化ReLU网络鞍点逃逸的低秩特性，缺乏实验验证。",
+ "innovations": [
+  "严格刻画小初始化深度 ReLU 网络在原点鞍点附近的逃逸方向(类比严格鞍点的 Hessian 特征向量)。",
+  "证明最优逃逸方向在深层具有低秩偏差：第 l 层权重矩阵首个奇异值至少比其他奇异值大 l/14。",
+  "提出深度 ReLU 网络呈鞍到鞍动力学，梯度下降依次访问瓶颈秩递增的一系列鞍点。"
+ ],
+ "method_framework": "理论分析：在小权重初始化导致 GD 受原点鞍点主导的设定下，分析沿何种方向离开原点(escape directions)；用奇异值分解刻画各层权重在逃逸方向上的结构，证明首奇异值与其余奇异值间的间隔，并把结果与已有 NTK/active regime、mean-field、saddle-to-saddle 理论联系起来。",
+ "experiment_framework": "理论论文，以证明与命题为主，仅辅以说明性数值验证；无大规模基准/数据集/深度学习基线，证据为解析结论与少量图示。",
+ "takeaways": [
+  "小初始化深度 ReLU 的首个鞍点逃逸方向在深层呈强低秩结构。",
+  "逃逸方向的奇异值间隔随深度增大(l/14)，支持低秩偏差的主动学习机制。",
+  "训练可理解为访问一系列瓶颈秩递增的鞍点，即鞍到鞍动力学。"
+ ],
+ "weaknesses": [
+  "纯理论结果，缺乏对真实训练任务/现代架构(卷积、注意力)的可验证实验支撑。",
+  "结论建立在小权重初始化等受限假设下，对常规初始化与大模型的解释力未说明。",
+  "与视觉可靠性/医学影像/多模态推理主线几乎无关，relevance 低。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 3,
+ "relevance_reason": "理论分析ReLU网络鞍点逃逸，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

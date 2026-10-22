@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/4DSegStreamer_Streaming 4D Panoptic Segmentation via Dual Threads.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/4DSegStreamer_Streaming 4D Panoptic Segmentation via Dual Threads.pdf",
+ "title": "4DSegStreamer: Streaming 4D Panoptic Segmentation via Dual Threads",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "双线程拆分延迟，但实验缺失与基线公平性存疑",
+ "innovations": [
+  "提出 streaming 4D panoptic segmentation 这一新任务：在严格时间预算内逐帧在线输出全景分割，并把 sPQ 按动态/静态、thing/stuff 四个维度拆成 sPQd、sPQs、sPQth、sPQst 分项评测，把「能否感知运动目标」显式变成评测维度",
+  "双线程系统：预测线程在关键帧用稀疏 ConvGRU 做几何记忆更新（门控 z_t 与重置门 r_t 由稀疏 3D 卷积块算，h_t = ĥ_t·z_t + ĥ_{t→k}·(1−z_t)）并外推未来相机位姿与流场；推理线程只做对齐后的轻量查询，因此整体延迟由推理线程决定，可插拔地套到 P3Former / Mask4Former 上",
+  "提出逆前向流迭代（Inverse Forward Flow Iteration）：不直接预测后向流（未来点数量与位置未知会掉点），而是把「为当前查询点 y 在历史记忆中找对应点 x」化为求不动点 x = y − flow(x) 的迭代，靠假设 |flow′(x)|<1 使 g(x) 为压缩映射保证收敛，最多 10 次迭代命中 ε 阈值即可"
+ ],
+ "method_framework": "关键帧到时先做运动对齐把上一时刻记忆变换到当前坐标系（ego-pose 变换乘动态流变换），再用稀疏 ConvGRU 门控更新几何记忆；推理帧用外推的位姿与流对齐后，经哈希体素记忆按索引直接取特征、仅空体素走 KNN，再过轻量预测头出结果；位姿未知时用 Suma++ 估帧间相对位姿、LSTM 维护并外推位姿与关键流。",
+ "experiment_framework": "SemanticKITTI（23201 帧 10fps，在 19 类上扩出 6 个移动类共 25 类）、nuScenes（2fps，18 thing + 6 stuff）、HOI4D（3865 序列、15fps）；基线 StreamYOLO、LongShortNet、DAMO-StreamNet、Mask4Former、Eq-4D-StOP、PTv3；主指标 sPQ 与 sLSTQ，且分 known / unknown pose 两种设置。",
+ "takeaways": [
+  "把「补偿延迟」拆成 ego-pose 内推与动态目标流外推两条线后，记忆可复用成流式系统：SemanticKITTI 上 Mask4Former 骨干的 sLSTQ 从 0.515 提到 0.688（unknown pose 设置）",
+  "反前向流迭代比直接 forecast 后向流更稳且省：后者要每帧重建最近邻树，前者用不动点迭代绕开销，代价只是多几次局部流查询",
+  "有/无位姿必须分开报告——户外可直取里程计，室内要靠 Suma++ 估计相对位姿再外推，两套设置的结论不应混为一谈"
+ ],
+ "weaknesses": [
+  "正文在 nuScenes known pose 的 Tab. 4 中途截断：HOI4D 室内序列（3865 条、每条 300 帧 15fps）的全部结果，以及正文引用过的消融表（Tab.9 后向流预测掉点、迭代容差 ε 与 Nmax 选取）均缺失，双线程各模块的真实贡献无法核验",
+  "基线公平性存疑：StreamYOLO / LongShortNet / DAMO-StreamNet 本是 2D 流目标检测模型，是「把骨干换成 P3Former」这种作者自行改造后才纳入比较的，天然对本文的对齐与记忆方案更有利；同时全文未报告任何方法的实测推理延迟或 FPS，仅声称延迟由轻量推理线程决定，实时性结论没有数字支撑",
+  "所有实验均单次运行、无种子方差与显著性检验；关键超参（关键帧间隔 m、外推帧数、收敛容差 ε、哈希体素尺寸、记忆容量）正文只透露 Nmax=10，其余全押在补充材料里，复现与调参成本高；未知位姿设置还额外依赖 Suma++ 与 zeroFlow 两个外部模块的精度，误差未被单独剥离"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "流式分割任务与可靠性主线无实质交点，仅工程优化价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

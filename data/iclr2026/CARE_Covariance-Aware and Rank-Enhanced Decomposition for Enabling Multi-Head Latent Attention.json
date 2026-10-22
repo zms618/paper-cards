@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/CARE_Covariance-Aware and Rank-Enhanced Decomposition for Enabling Multi-Head Latent Attention.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/CARE_Covariance-Aware and Rank-Enhanced Decomposition for Enabling Multi-Head Latent Attention.pdf",
+ "title": "CARE: Covariance-Aware and Rank-Enhanced Decomposition for Enabling Multi-Head Latent Attention",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "CARE优化MLA转换，但计算开销大且长上下文提升有限",
+ "innovations": [
+  "激活保持分解，最小化激活空间误差而非权重空间误差",
+  "自适应秩分配，根据层间异质性分配固定KV预算",
+  "KV等价映射，保持KV缓存大小不变的同时提升注意力保真度"
+ ],
+ "method_framework": "CARE提出三步MLA转换流程：激活保持分解、自适应秩分配和KV等价映射，通过协加权SVD和奇异值引导的预算分配优化转换质量。",
+ "experiment_framework": "在Qwen3-4B/30B和Llama-3.1-8B/70B模型上评估，使用LM Harness任务集，比较困惑度和准确率指标，并进行了消融研究。",
+ "takeaways": [
+  "激活空间优化比权重空间优化更有效",
+  "层间异质性需要非均匀秩分配",
+  "小规模校准数据即可获得良好性能"
+ ],
+ "weaknesses": [
+  "计算复杂度增加，需要估计协方差矩阵",
+  "对不同模型架构的泛化能力未充分验证",
+  "长上下文场景下的性能提升有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "注意力机制优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

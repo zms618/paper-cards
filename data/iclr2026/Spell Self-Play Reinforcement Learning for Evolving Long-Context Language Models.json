@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Spell Self-Play Reinforcement Learning for Evolving Long-Context Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Spell Self-Play Reinforcement Learning for Evolving Long-Context Language Models.pdf",
+ "title": "SPELL: Self-Play Reinforcement Learning for Evolving Long-Context Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "自弈三角色框架实现长上下文模型免标注自改进，但存在奖励黑客风险",
+ "innovations": [
+  "在单一模型内集成questioner/responder/verifier三个循环角色，实现无标注的长上下文推理持续自改进",
+  "由verifier判定应答输出与参考答案的语义等价性，自动产出可编程验证的奖励信号",
+  "引入自动课程(逐步增加文档长度)与随模型能力自适应问题难度的奖励函数以稳定训练"
+ ],
+ "method_framework": "同一模型轮换三角色：questioner从原始文档生成问题及参考答案；responder基于文档解题；verifier比较responder输出与参考答案的语义等价性并给奖励，反传训练。配合文档长度递增课程与难度自适应奖励，稳定自弈RL训练。",
+ "experiment_framework": "在6个长上下文基准上评测，覆盖多种LLM；对比同规模大规模标注数据微调的模型，报告一致提升；在强推理模型Qwen3-30B-A3B-Thinking上pass@8平均提升7.6分。",
+ "takeaways": [
+  "自弈三角色可绕过长上下文推理中可靠人工标注/可验证奖励稀缺的瓶颈",
+  "语义等价verifier能自动产出有效奖励信号，免标注即可持续自改进",
+  "长度递增课程+难度自适应奖励对稳定自弈RL至关重要"
+ ],
+ "weaknesses": [
+  "奖励由同一模型的verifier角色给出，存在自我偏好/奖励黑客风险，缺乏外部独立校验",
+  "verifier对长文档中细微事实错误的语义等价判定精度直接决定奖励质量，错误会被RL放大",
+  "评测集中在长上下文QA/推理benchmark，对复杂工具调用/多跳外部知识任务的迁移未展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "长上下文自改进方法与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

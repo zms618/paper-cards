@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Demystifying Catastrophic Forgetting in Two-Stage Incremental Object Detector.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Demystifying Catastrophic Forgetting in Two-Stage Incremental Object Detector.pdf",
+ "title": "Demystifying Catastrophic Forgetting in Two-Stage Incremental Object Detector",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6,
+  "overall": 6.1
+ },
+ "one_line": "解剖检测器遗忘源，提出原型回放与梯度投影缓解增量学习遗忘。",
+ "innovations": [
+  "解剖两阶段检测器，揭示遗忘主要来自 RoI Head 分类器而非整体，挑战把检测器当黑箱的既有假设。",
+  "提出区域原型回放 RePRE：粗原型表示类级语义中心、细原型建模类内变化以缓解分类器遗忘。",
+  "提出零空间梯度投影 NSGP，把特征提取器更新限制在旧输入子空间的正交方向，消除原型-特征错位。"
+ ],
+ "method_framework": "先做组件级遗忘剖析定位问题在分类器；再用原型回放保存旧类知识：粗原型稳住类中心、细原型刻画类内分布；最后用 NSGP 在更新特征提取器时向旧样本特征子空间的零空间投影梯度，避免破坏旧表示，使原型与增量学习动态对齐。",
+ "experiment_framework": "在 Pascal VOC 与 MS COCO 的多种增量设定（不同初始类/增量步数）下评测；指标为 mAP（尤其旧类 AP），对比主流增量检测方法并报告 SOTA。",
+ "takeaways": [
+  "两阶段增量检测的灾难性遗忘高度集中于 RoI 分类器，回归器跨阶段稳健。",
+  "针对性的原型回放比通用蒸馏/全量回放更高效。",
+  "NSGP 梯度投影可消除原型-特征错位，进一步提升旧类保持。"
+ ],
+ "weaknesses": [
+  "结论基于两阶段（Faster R-CNN）架构，对单阶段/Transformer 检测器是否成立未验证。",
+  "原型仍需存储旧类特征，对类数极多/长期增量的存储与漂移缺乏系统分析。",
+  "属通用目标检测增量学习，非医学影像/多模态大模型推理落地域，relevance 中等。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

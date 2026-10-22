@@ -1,0 +1,41 @@
+{
+ "title": "Textual Equilibrium Propagation for Deep Compound AI Systems",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "诊断文本梯度失效，提出局部均衡传播优化复合AI系统",
+ "innovations": [
+  "诊断出深层长程 agentic 工作流的两种深度缩放失效：文本梯度爆炸(反馈随深度指数膨胀、放大评估偏差)与消失(长上下文受限致过度关注局部反馈、多跳后丢失特异性)",
+  "提出受能量基模型平衡传播启发的局部学习原理 TEP：自由阶段局部 LLM critic 迭代精修 prompt 至均衡，推动阶段用任务级目标做有界近端编辑，以前向信号而非反向反馈链传播",
+  "在保留黑箱 LLM 组件的前提下，随系统深度增加相对 TextGrad 持续提升准确率与效率"
+ ],
+ "method_framework": "把复合系统(检索器/工具/验证器多模块长程流程)的优化视为局部能量最小化：自由阶段各模块本地 critic 反复改进 prompt 直到无新改进(均衡)；推动阶段对 prompt 施加强度有界的近端修改以朝全局任务目标调整，避免全局文本反传的信号退化。",
+ "experiment_framework": "长程 QA 基准与多智能体工具使用数据集；对比 TextGrad 等全局文本传播方法；指标为准确率、效率、随系统深度增加的性能增益；保持黑箱组件可用性。",
+ "takeaways": [
+  "全局文本反传会随系统深度出现爆炸与消失，不能简单堆深",
+  "把优化拆成本地收敛 + 有界全局推动，可在深层复合系统中稳定提升且增益随深度放大",
+  "该局部原理无需白改模型权重，兼容黑箱 LLM 组件"
+ ],
+ "weaknesses": [
+  "自由阶段多轮迭代调用 critic 带来额外推理开销，论文前 9 页对‘收敛到均衡’所需轮数与成本权衡量化不足",
+  "‘有界近端编辑’的强度如何设定、任务级目标如何定义，在多模块冲突时仍需人工设计；相对 TextGrad 的提升在更大深度的外推未充分展示",
+  "relevance 给 6：复合系统含验证器模块、涉及长程多跳推理，但核心是 pipeline 优化方法，未把可靠性/不确定性/幻觉抑制作为研究对象，按防污染规则不因 verifier/reasoning 措辞抬分"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/Textual Equilibrium Propagation for Deep Compound AI Systems.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Textual Equilibrium Propagation for Deep Compound AI Systems.pdf",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "pipeline优化方法未直接研究可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

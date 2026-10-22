@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Uniform Discrete Diffusion with Metric Path for Video Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Uniform Discrete Diffusion with Metric Path for Video Generation.pdf",
+ "title": "Uniform Discrete Diffusion with Metric Path for Video Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 3.5,
+  "overall": 5.0
+ },
+ "one_line": "离散视频生成改进，但与主线无关且未解决根本缺陷。",
+ "innovations": [
+  "把离散视频生成重构为离散时空token的迭代全局精修，缓解离散方法的误差累积与长上下文不一致",
+  "提出Linearized Metric Path与Resolution-dependent Timestep Shifting两个关键设计，高效扩展到高分辨率与长时长视频且所需推理步数显著减少",
+  "引入异步时间微调策略，在单一模型内统一文生视频、视频插值、图生视频等多任务"
+ ],
+ "method_framework": "连续空间视频生成进展快，离散方法因误差累积与长上下文不一致而落后。URSA把视频生成视为对离散时空token的迭代全局精修。核心设计：(1)Linearized Metric Path定义离散空间的线性度量路径；(2)Resolution-dependent Timestep Shifting使时间步随分辨率自适应偏移；二者共同支持少步推理与高分辨率/长视频扩展。异步时间微调统一多任务。",
+ "experiment_framework": "在挑战性视频与图像生成基准上对比已有离散扩散方法并对标SOTA连续扩散方法；指标为生成质量(FID等)与推理步数；覆盖文生视频、视频插值、图生视频、长视频(~40s)等任务。",
+ "takeaways": [
+  "离散空间迭代全局精修可显著缩小与连续扩散在视频生成上的质量差距",
+  "Linearized Metric Path + 分辨率相关时间步偏移使离散扩散能高效扩展到高分辨率与长时长",
+  "异步时间微调可在单模型内统一多种视频生成任务"
+ ],
+ "weaknesses": [
+  "属视频/图像生成方向，与本主线(可靠性×多模态推理/医学影像)无直接关联",
+  "离散token化本身引入量化损失，URSA在极高保真度上是否真正追平连续扩散仍属'comparable'而非超越",
+  "长视频一致性虽改善，但分钟级以上时长的误差累积与计算开销正文前9页未给系统量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "纯视频生成工作，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

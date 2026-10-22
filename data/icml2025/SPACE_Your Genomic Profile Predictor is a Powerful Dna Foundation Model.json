@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/SPACE_Your Genomic Profile Predictor is a Powerful Dna Foundation Model.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SPACE_Your Genomic Profile Predictor is a Powerful Dna Foundation Model.pdf",
+ "title": "SPACE: Your Genomic Profile Predictor is a Powerful DNA Foundation Model",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "用基因组profile监督预训练DNA模型，MoE适配跨物种差异",
+ "innovations": [
+  "提出观点：纯DNA序列缺乏足够信息，监督式基因组profile预测是比纯序列预训练更有效的表示学习目标",
+  "设计物种-profile自适应协同专家(SPACE)，用MoE建模跨物种、跨基因组profile间的关系",
+  "在多种下游任务上取得SOTA，证明以监督profile预测训练的DNA模型是强表示学习器"
+ ],
+ "method_framework": "不再对纯DNA序列做MLM/NTP式无监督预训练，转而以可观测的基因组profile(染色质可及性、表观修饰、转录因子结合等)作为监督信号训练；鉴于profile具多物种、多cell-type、多profile类型的结构，用Mixture-of-Experts让不同专家适配不同物种-profile组合，从而捕捉DNA序列在不同调控语境下的语义，学到更可迁移的DNA表示。",
+ "experiment_framework": "在调控元件识别、剪接位点识别、表观修饰预测等多种DNA下游任务上评测；对比仅序列预训练的既有DNA基础模型；验证MoE对多物种多profile的建模增益，报告SOTA。",
+ "takeaways": [
+  "引入基因组profile作为监督信号，比纯序列无监督预训练能学到更可泛化的DNA表示",
+  "MoE可有效解耦跨物种、跨profile类型的差异",
+  "基因组profile预测器本身即可充当强DNA基础模型"
+ ],
+ "weaknesses": [
+  "监督式profile预训练依赖大规模高质量profile标注数据，对缺乏profile测量的物种/细胞类型适用性受限",
+  "MoE专家数/路由的设计多为经验选择，正文前9页未见其可解释性与负载均衡的深入分析",
+  "本质是生物信息预训练范式迁移到DNA，与AI可靠性主线关联弱，下游多为序列标注任务"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.73,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

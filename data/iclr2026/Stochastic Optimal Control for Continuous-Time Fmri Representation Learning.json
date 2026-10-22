@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Stochastic Optimal Control for Continuous-Time Fmri Representation Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Stochastic Optimal Control for Continuous-Time Fmri Representation Learning.pdf",
+ "title": "Stochastic Optimal Control for Continuous-Time fMRI Representation Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 8.0,
+  "overall": 6.9
+ },
+ "one_line": "将fMRI自监督学习建模为随机最优控制问题，提取时间鲁棒脑表示。",
+ "innovations": [
+  "首次将fMRI自监督学习重新表述为随机最优控制(SOC)问题，建模脑活动为连续时间潜动力学",
+  "SOC框架自然统一掩码自编码(MAE)和联合嵌入预测(JEPA)两种SSL范式，提取紧凑的控制派生表示",
+  "设计无仿真(simulation-free)推理策略，确保大规模fMRI数据集的计算效率和可扩展性"
+ ],
+ "method_framework": "将fMRI信号建模为连续时间随机动力学系统，自监督学习转化为最优控制问题：学习一个控制策略使得潜动态轨迹能够重构/预测观测到的fMRI信号。控制策略对采样时间的不规则性不敏感，从而学习到时间鲁棒的脑动力学表示。框架同时包含MAE式的重构损失和JEPA式的预测损失，通过控制目标自然统一。推理时无需仿真过程，直接从控制策略提取表示。",
+ "experiment_framework": "在大规模fMRI数据集上预训练，在多个下游任务（年龄回归、疾病分类等）上线性探针评估。对比MoCo、BYOL、BrainLM、BrainMass等自监督方法。同时测试不同模型规模和计算效率的权衡。",
+ "takeaways": [
+  "fMRI数据的时间不规则性是自监督学习的核心挑战，连续时间建模比离散化处理更能保留时序信息",
+  "随机最优控制框架统一了MAE和JEPA两种SSL范式，为脑动力学表示学习提供了新的理论视角",
+  "SOC-based方法在多个下游任务上达到SOTA，同时具有良好的计算效率和可扩展性"
+ ],
+ "weaknesses": [
+  "最优控制框架的数学复杂度较高，实际实现和调参成本可能高于简单SSL方法",
+  "仅在fMRI脑数据上验证，框架是否能推广到其他时序医学信号（如EEG、ECG）未证明",
+  "前9页未展示完整的下游任务定量对比表格，具体性能提升幅度不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "fMRI时间鲁棒表示学习直接落可靠性主线与医学影像域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

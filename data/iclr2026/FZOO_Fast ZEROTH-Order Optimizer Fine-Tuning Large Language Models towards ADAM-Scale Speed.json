@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/FZOO_Fast ZEROTH-Order Optimizer Fine-Tuning Large Language Models towards ADAM-Scale Speed.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/FZOO_Fast ZEROTH-Order Optimizer Fine-Tuning Large Language Models towards ADAM-Scale Speed.pdf",
+ "title": "FZOO: Fast ZEROTH-ORDER Optimizer FINE-TUNING Large Language Models towards ADAM-SCALE Speed",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "FZOO通过自适应步长和Rademacher扰动实现零阶优化Adam级速度",
+ "innovations": [
+  "基于批损失标准差的自适应步长策略",
+  "使用Rademacher随机向量(±1)的扰动方法",
+  "与归一化SGD的理论等价性证明"
+ ],
+ "method_framework": "FZOO结合批处理单边估计和自适应步长，通过Rademacher随机向量加速每批次计算，实现内存高效的优化",
+ "experiment_framework": "在RoBERTa-large、OPT、Phi-2和Llama3等模型上11个下游任务测试，与MeZO、Adam等基线比较准确性和前向传递次数",
+ "takeaways": [
+  "自适应步长策略可显著提升零阶优化效率",
+  "Rademacher随机向量可实现高效的并行计算",
+  "零阶优化可与PEFT技术无缝集成"
+ ],
+ "weaknesses": [
+  "实际计算时间仍略高于Adam",
+  "对某些特定任务(如ReCoRD)提升有限",
+  "理论分析中的高阶项可能影响收敛性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "优化方法与可靠性主线无直接交点，仅属工具类工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

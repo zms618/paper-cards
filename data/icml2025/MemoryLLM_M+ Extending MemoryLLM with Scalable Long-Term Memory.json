@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MemoryLLM_M+ Extending MemoryLLM with Scalable Long-Term Memory.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MemoryLLM_M+ Extending MemoryLLM with Scalable Long-Term Memory.pdf",
+ "title": "M+: Extending MemoryLLM with Scalable Long-Term Memory",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "MemoryLLM加检索器扩展记忆，但验证不足且创新有限。",
+ "innovations": [
+  "提出M+架构，在MemoryLLM的隐空间记忆基础上集成协同训练的检索器",
+  "生成过程中动态检索相关长期记忆，解决长距离信息保留问题",
+  "在相似GPU显存开销下，将知识保留能力从20k以下扩展到160k以上"
+ ],
+ "method_framework": "在MemoryLLM的全层隐藏状态记忆池基础上，增加一个协同训练的检索器。检索器根据当前生成上下文从记忆池中动态检索相关的历史信息，注入到当前生成过程中。记忆池存储过去序列的压缩隐藏状态，检索器学习判断哪些记忆片段与当前任务相关。",
+ "experiment_framework": "在长上下文理解和知识保留基准上评测，与MemoryLLM、最新长上下文方法对比。指标为不同上下文长度下的知识保留准确率、长文档理解性能。验证GPU显存开销。",
+ "takeaways": [
+  "动态检索机制可显著扩展隐空间记忆的有效上下文长度",
+  "协同训练的检索器比固定记忆访问更高效",
+  "M+在显存开销几乎不变的情况下实现了8倍以上的知识保留扩展"
+ ],
+ "weaknesses": [
+  "仅在英文长文本上验证，多语言和多模态场景未涉及",
+  "检索器引入的推理延迟未详细分析",
+  "记忆池的大小与性能的缩放规律未系统研究"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

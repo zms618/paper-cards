@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Automatically Interpreting Millions of Features in Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Automatically Interpreting Millions of Features in Large Language Models.pdf",
+ "title": "Automatically Interpreting Millions of Features in Large Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "自动化流水线为SAE特征生成解释，五种评分方法揭示新特征",
+ "innovations": [
+  "提出五种新的解释质量评分方法：detection、fuzzing、surprisal、embedding、intervention scoring",
+  "干预评分通过测量特征干预对模型输出反事实影响来评估可解释性，发现能揭示现有方法遗漏的特征",
+  "系统比较不同评分方法的相关性，提出生成更通用解释的指导原则"
+ ],
+ "method_framework": "流水线分三步：(1)Explainer LLM根据特征激活的上下文片段生成自然语言解释；(2)五种评分方法验证解释质量：detection（分类激活/非激活上下文）、fuzzing（token级标记识别）、surprisal（解释降低scorer困惑度的程度）、embedding（解释作为查询检索激活上下文）、intervention（特征干预后scorer对解释的惊讶度变化）；(3)输出带质量分数的解释。",
+ "experiment_framework": "在两个开源LLM上测试多种尺寸/激活函数/损失的SAE。对比五种评分方法与传统simulation scoring的相关性。分析不同SAE架构的解释质量差异。",
+ "takeaways": [
+  "fuzzing与simulation scoring相关性最高，可作为低成本替代",
+  "干预评分揭示了其他方法无法识别的有意义特征，特别是反事实效果显著的特征",
+  "top-and-random采样分布引入偏差，影响评分方法的可靠性"
+ ],
+ "weaknesses": [
+  "解释质量依赖explainer LLM的能力，小模型生成的解释质量可能受限",
+  "干预评分计算成本高，需要生成干预和干净两组文本",
+  "仅在SAE特征上验证，神经元层面的自动解释未探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "特征解释方法与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

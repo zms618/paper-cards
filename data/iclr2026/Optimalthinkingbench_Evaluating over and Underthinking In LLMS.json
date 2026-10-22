@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Optimalthinkingbench_Evaluating over and Underthinking In LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Optimalthinkingbench_Evaluating over and Underthinking In LLMS.pdf",
+ "title": "OptimalThinkingBench: Evaluating Over- and Under-thinking in LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "提出LLM思考不足与过度思考统一基准，揭示当前模型无法实现最优思考",
+ "innovations": [
+  "提出OptimalThinkingBench：首个联合评估过度思考和思考不足的统一LLM基准，包含OverthinkingBench（72领域简单查询）和UnderthinkingBench（11个推理任务）两个子基准",
+  "设计思考调整后准确率（thinking-adjusted accuracy）新指标，平衡性能与计算效率",
+  "系统评估33个思考/非思考模型，发现无模型能达到最优思考，探索多种方法均存在trade-off"
+ ],
+ "method_framework": "基准分为两部分：OverthinkingBench包含简单数学和通用查询（72个领域），测试模型是否在简单问题上浪费思考token；UnderthinkingBench包含11个挑战性推理任务和较难数学题，测试模型是否因思考不足而犯错。思考调整后准确率根据思考token数对准确率进行加权，惩罚不必要的长思考。",
+ "experiment_framework": "评估33个思考型和非思考型LLM（包括o1/o3、DeepSeek-R1、Llama系列等）。在两个子基准上分别测量overthinking和underthinking程度。探索多种最优思考引导方法（如动态思考长度控制等）。",
+ "takeaways": [
+  "当前无模型能实现最优思考：思考模型在简单问题上过度思考数百token而无性能提升，大非思考模型在难问题上思考不足",
+  "现有方法改善一个子基准往往以牺牲另一个为代价，最优思考仍是开放问题",
+  "思考调整后准确率揭示了纯准确率指标无法反映的效率-性能trade-off"
+ ],
+ "weaknesses": [
+  "OverthinkingBench的简单问题可能无法完全代表真实用户查询分布",
+  "思考调整准确率的加权方式主观，不同加权方案可能改变结论",
+  "探索的最优思考引导方法有限，可能存在更有效的方案未被测试"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "评估LLM思考不足与过度思考，属于可靠性主线中的不确定性评估",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/icml2025 fig logo logo3.png2ex2ex FloE_On-the-Fly MoE Inference on Memory-constrained GPU.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/icml2025 fig logo logo3.png2ex2ex FloE_On-the-Fly MoE Inference on Memory-constrained GPU.pdf",
+ "title": "FloE: On-the-Fly MoE Inference on Memory-constrained GPU",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5
+ },
+ "one_line": "PCIe瓶颈下压缩专家参数+稀疏预测，加速受限MoE推理",
+ "innovations": [
+  "发现稀疏激活专家内部存在大量未利用冗余，作为压缩切入点",
+  "对专家内部参数矩阵施加多种压缩技术以降低数据搬运量",
+  "结合低成本稀疏预测，在资源受限设备上获得可感知的墙钟推理加速"
+ ],
+ "method_framework": "将未激活专家卸载到CPU显存、按需加载激活专家；针对offloading把瓶颈从memory-bound转为I/O-bound的问题，对专家参数矩阵做压缩以减少PCIe传输数据量，并配低成本稀疏预测挑选需加载内容，从而在显存受限GPU上加速MoE解码。",
+ "experiment_framework": "在Mixtral-8×7B等MoE模型、显存受限GPU上评测；报告墙钟推理延迟/吞吐加速与精度保持；对比CPU offloading类方法。",
+ "takeaways": [
+  "专家参数压缩可有效缓解offloading下PCIe带宽瓶颈",
+  "低成本稀疏预测进一步减少需加载的专家数据量",
+  "FloE在资源受限设备上实现可感知的端到端推理加速"
+ ],
+ "weaknesses": [
+  "属推理系统优化，与主线(可靠性/医学影像/多模态推理)关联弱",
+  "压缩引入的精度损失幅度与不同压缩率-延迟权衡需完整实验表确认",
+  "依赖专家冗余假设，前9页未见对非稀疏/稠密专家或更大MoE模型的扩展性验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

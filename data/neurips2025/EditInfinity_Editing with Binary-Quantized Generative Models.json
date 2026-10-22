@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/EditInfinity_Editing with Binary-Quantized Generative Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/EditInfinity_Editing with Binary-Quantized Generative Models.pdf",
+ "title": "EditInfinity: Editing with Binary-Quantized Generative Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "二值量化模型实现图像编辑，但依赖掩码且初始反转慢",
+ "innovations": [
+  "利用二值量化模型精确中间表示实现图像反转",
+  "文本提示修正与图像风格保持的反转机制",
+  "整体平滑策略实现高质量编辑"
+ ],
+ "method_framework": "基于Infinity二值量化模型，通过精确监督实现图像反转，结合文本提示修正和LoRA风格保持，再利用多尺度自回归编辑和分段线性平滑核实现高质量图像编辑",
+ "experiment_framework": "PIE-Bench基准测试，涵盖9种编辑类型，使用PSNR、LPIPS、SSIM等背景指标和CLIP分数、IR等文本对齐指标，与多种扩散模型基线对比",
+ "takeaways": [
+  "二值量化模型提供精确中间表示监督",
+  "多尺度自回归编辑结合平滑策略实现高质量编辑",
+  "计算前置设计支持高效多编辑场景"
+ ],
+ "weaknesses": [
+  "初始反转时间较长(107秒)",
+  "依赖用户提供的编辑掩码，缺乏自动定位能力",
+  "未探索模型规模扩展性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

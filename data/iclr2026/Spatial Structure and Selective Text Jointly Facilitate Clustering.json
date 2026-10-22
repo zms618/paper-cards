@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Spatial Structure and Selective Text Jointly Facilitate Clustering.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Spatial Structure and Selective Text Jointly Facilitate Clustering.pdf",
+ "title": "Spatial Structure and Selective Text Jointly Facilitate Image Clustering",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.2
+ },
+ "one_line": "GAT提取空间结构，按文本紧密度选择性融合，三模态互蒸馏聚类",
+ "innovations": [
+  "用基于GAT的编码器捕捉图像块间关系依赖，提取利于聚类的空间结构特征",
+  "指出现有方法假设文本特征普适有益，提出以文本特征潜在聚类紧密度为准则的文本特征选择器，自适应整合文本",
+  "通过三模态互蒸馏产出最终聚类分配，并为选择器提供理论依据"
+ ],
+ "method_framework": "用GAT在图像块上建模关系依赖以得到空间结构特征；对CLIP文本特征不盲目使用，而是以其潜在聚类紧密度为判据经文本特征选择器决定是否整合；空间特征、视觉特征、选择后的文本特征三模态间互蒸馏，产出聚类分配。",
+ "experiment_framework": "在18个图像聚类基准上评测聚类指标(ACC/NMI等)，对比无文本/直接用CLIP文本等方法；报告SATC更优，并消融验证文本特征选择器的合理性。",
+ "takeaways": [
+  "CLIP文本特征并非对所有数据集都有益，应按其聚类紧密度自适应选择",
+  "图像块间空间结构关系是利于聚类的补充信号",
+  "三模态互蒸馏能融合空间/视觉/选择性文本信息"
+ ],
+ "weaknesses": [
+  "GAT在高分辨率/大量图像块上的计算开销随块数增长",
+  "文本特征紧密度选择准则与真聚类质量的因果关系仍偏经验，理论保证较粗",
+  "评测集中在标准物体聚类基准，向细粒度/场景聚类的迁移未展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "文本特征选择器提升聚类可靠性，方法设计可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

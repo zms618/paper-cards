@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/……………………… …………………….pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/……………………… …………………….pdf",
+ "title": "DynamicVerse: A Physically-Aware Multimodal Framework for 4D World Modeling",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 5.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.5
+ },
+ "one_line": "组合现有模型构建4D数据集，方法创新有限，实验展示不充分。",
+ "innovations": [
+  "构建大规模真实世界4D多模态数据集：10万+视频、80万+掩码、1000万+帧，包含度量级深度图、相机位姿、实例掩码、物体/场景/相机多粒度caption",
+  "提出结合窗口式Bundle Adjustment与全局优化的流水线，从单目网络视频中恢复度量级静态几何和真实世界动态运动",
+  "在视频深度估计、相机位姿估计、相机内参估计三个基准任务上验证4D建模的物理尺度测量精度"
+ ],
+ "method_framework": "采用多模型协同流水线：首先用大规模视觉模型提取特征，几何模型做窗口式Bundle Adjustment获取局部稀疏重建，再通过全局优化对齐得到度量级相机位姿和深度；动态物体分割得到实例掩码；多模态大模型生成物体级、场景级、相机运动级三层caption。最终将长视频序列转换为统一的4D多模态格式。",
+ "experiment_framework": "三个基准任务：(1)视频深度估计——Sintel和KITTI数据集，对比Metric3Dv2、Depth-Pro、DepthCrafter、Unidepth、MonST3R、RCVD等，指标Abs Rel和δ<1.25；(2)相机位姿估计——Sintel和TUM-dynamics，对比LEAP-VO、DPVO、Robust-CVD、CasualSAM、MonST3R等，指标ATE、RPE trans、RPE rot；(3)相机内参估计。",
+ "takeaways": [
+  "DynamicVerse数据集在规模和标注丰富度上超越已有4D场景数据集（如CoP3D、Stereo4D、PointOdyssey）",
+  "其DynamicGen流水线在视频深度估计和相机位姿估计上达到或超过现有方法，动态场景重建质量优于MonST3R和Uni4D",
+  "多模态4D标注格式为世界模型和具身智能研究提供了物理尺度对齐的真实数据基础"
+ ],
+ "weaknesses": [
+  "核心贡献是数据集和标注流水线，方法层面的技术创新有限，主要是现有模型（BA、SAM、VLM）的组合编排",
+  "论文正文仅展示有限的实验结果，大量消融和细节放在附录，前9页内方法描述不够完整",
+  "与主线（可靠性/鲁棒性/可信AI）关联较弱，数据集的质量控制和标注噪声分析未充分讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.18,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

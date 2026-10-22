@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/HoPE Hybrid of Position Embedding for Long Context Vision-Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/HoPE Hybrid of Position Embedding for Long Context Vision-Language Models.pdf",
+ "title": "HoPE: Hybrid of Position Embedding for Long Context Vision-Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "混合位置编码提升长视频理解，但多模态泛化不足",
+ "innovations": [
+  "混合频率分配策略，将最低频率设为零以增强长程语义建模",
+  "动态时间缩放机制，适应不同视频速度和信息密度",
+  "首次对多模态RoPE频率分配策略进行理论分析"
+ ],
+ "method_framework": "HoPE结合混合频率分配(HFA)和动态时间缩放(DTS)策略，HFA将高频率用于空间建模，零频率用于时间建模；DTS引入多尺度缩放因子增强模型对不同视频速度的鲁棒性。",
+ "experiment_framework": "在LongVideoBench、Video-MME、MLVU和V-NIAH四个视频基准上测试，对比Vanilla RoPE、M-RoPE和VideoRoPE基线，评估8k到64k上下文长度下的性能。",
+ "takeaways": [
+  "理论分析指导位置编码设计，零频率分配可保证语义偏好性质",
+  "动态缩放机制比固定缩放更能适应不同视频速度",
+  "长视频理解任务中，模型规模越大，HoPE优势越明显"
+ ],
+ "weaknesses": [
+  "仅关注视频任务，未扩展到其他多模态长上下文场景",
+  "极端长上下文(64k以上)性能仍有显著下降空间",
+  "动态缩放机制增加了计算复杂度"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

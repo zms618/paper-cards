@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/When Bias Meets Trainability Connecting Theories Of Initialization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/When Bias Meets Trainability Connecting Theories Of Initialization.pdf",
+ "title": "When Bias Meets Trainability: Connecting Theories of Initialization",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "理论证明最优初始化必然有偏，挑战中性初始化直觉。",
+ "innovations": [
+  "首次建立初始猜测偏差（IGB）与均场（MF）初始化理论之间的理论联系，统一了两个原本独立的研究方向",
+  "证明反直觉结论：最优可训练状态（混沌边缘）对应系统性类别偏差，而非中性无偏状态",
+  "将IGB框架推广到含非零偏置项和多节点激活函数（如最大池化）的一般架构，并修正了ReLU等激活函数的MF相图"
+ ],
+ "method_framework": "在无限宽网络极限下，从理论上推导初始预测行为（IGB状态）与前向/反向信号传播条件（MF相）之间的解析关系。证明可训练性边界与类别偏差的出现是同一现象的两个方面。通过逐层分析每类输出的梯度传播来揭示类别依赖的梯度爆炸/消失行为。",
+ "experiment_framework": "在多种架构（MLP、CNN等）上的二分类和多分类任务上验证理论预测。比较不同初始化方差下的训练动态，检验混沌边缘处的初始偏差及其在训练初期被吸收的过程。",
+ "takeaways": [
+  "最优可训练初始化必然带有系统性类别偏差，\"中性初始化即最优\"的直觉是错误的",
+  "梯度爆炸/消失是类别依赖的：部分类别梯度爆炸同时另一部分梯度消失，导致类别间学习不平衡",
+  "基于短训练运行的超参调优可能因残留偏差而偏向特定类别，误导模型选择"
+ ],
+ "weaknesses": [
+  "理论基于无限宽网络极限假设，有限宽度的真实架构中结论的定量偏差程度未充分讨论",
+  "仅验证了分类任务，回归或生成任务中初始偏差与可训练性的关系未知",
+  "缺乏对现代大模型（如Transformer数十亿参数规模）中该理论效应大小的实证检验"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "初始化理论属基础研究，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

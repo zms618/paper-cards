@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Training-Free Reward-Guided Editing via Trajectory Optimal Control.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Training-Free Reward-Guided Editing via Trajectory Optimal Control.pdf",
+ "title": "Training-Free Reward-Guided Image Editing via Trajectory Optimal Control",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "将扩散逆过程建模为轨迹最优控制，实现训练-free奖励引导图像编辑。",
+ "innovations": [
+  "将图像编辑形式化为轨迹最优控制问题，把扩散/流匹配模型的逆过程视为从源图像出发的可控轨迹",
+  "通过迭代更新伴随状态来引导编辑轨迹，在保持源图像语义内容的同时最大化目标奖励",
+  "在奖励最大化和源图像保真度间取得更优平衡，且无奖励黑客问题"
+ ],
+ "method_framework": "将扩散模型的反向过程建模为轨迹最优控制问题。从源图像出发生成初始轨迹，然后通过求解奖励引导的最优控制问题逐步优化轨迹，利用伴随状态（adjoint states）的迭代更新来引导编辑方向。终点即为编辑后的图像。",
+ "experiment_framework": "在多种编辑任务上评估：人类偏好对齐、风格迁移、反事实生成、文本引导编辑；对比基于反转的训练-free引导基线，测量奖励值和源图像保真度。",
+ "takeaways": [
+  "轨迹最优控制视角为奖励引导图像编辑提供了 principled 的数学框架",
+  "伴随状态迭代更新比简单的梯度引导更能平衡奖励最大化和内容保持",
+  "方法在多种编辑任务上超越基于反转的训练-free基线，且无奖励黑客"
+ ],
+ "weaknesses": [
+  "需要可微奖励函数，限制了在不可微奖励上的应用",
+  "伴随状态迭代优化的计算开销较大，推理速度可能较慢",
+  "仅在图像编辑上验证，视频编辑的扩展未探讨"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.25,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "图像编辑与可靠性主线无实质交点，仅为工具性应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "title": "SE-Diff: Simulator and Experience Enhanced Diffusion Model for Comprehensive ECG Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "轻量ODE模拟器与LLM-RAG注入扩散模型，提升ECG生成质量",
+ "innovations": [
+  "通过beat decoder与模拟器一致性约束把轻量ODE心电模拟器嵌入扩散过程，注入机制先验",
+  "设计LLM驱动的经验检索增强策略，注入真实临床实践知识",
+  "证明两类知识不仅提升生成保真/对齐，还惠及下游ECG分类"
+ ],
+ "method_framework": "在text-to-ECG扩散中并行引入两类先验：生理学(ODE模拟器经beat解码器与一致性约束约束波形)与临床经验(LLM-RAG检索真实临床知识指导生成)；目标是从临床上下文生成逼真、隐私友好的ECG。",
+ "experiment_framework": "在真实ECG数据集上评测信号保真度与文本-ECG语义对齐，对比既有text-to-ECG扩散基线；并验证生成数据对下游ECG分类的增益。",
+ "takeaways": [
+  "大规模标注ECG稀缺且受隐私限制，生成可缓解并支持隐私共享",
+  "机制(ODE模拟器)与经验(LLM-RAG)先验互补提升生成合理性",
+  "生成的ECG还能反哺下游分类"
+ ],
+ "weaknesses": [
+  "属心电信号生成而非医学影像，落地域相关但非影像",
+  "ODE模拟器的保真度与临床经验RAG的噪声对生成质量影响需更多消融",
+  "前9页未见与最新医学时序生成模型的逐项数值对比"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/SE-DIFF Simulator and Experience Enhanced Diffusion Model for Comprehensive Ecg Gen.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SE-DIFF Simulator and Experience Enhanced Diffusion Model for Comprehensive Ecg Gen.pdf",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "ECG生成属医学时序，非影像，可靠性主线弱交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

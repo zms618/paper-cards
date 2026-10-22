@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mathesis_towards Formal Theorem Proving from Natural Languages.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mathesis_towards Formal Theorem Proving from Natural Languages.pdf",
+ "title": "Mathesis: Towards Formal Theorem Proving from Natural Languages",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.6
+ },
+ "one_line": "RL训练的形式化器+证明器流水线，在数学证明基准上显著提升",
+ "innovations": [
+  "提出首个系统性的自然语言→形式化定理证明流水线 Mathesis，打通 autoformalization 与证明生成",
+  "首个用强化学习训练的自动形式化器，融合句法、语义与证明器反馈作为奖励信号，产出可验证的准确形式化",
+  "提出 LeanScorer 评估形式化语义正确性，并构建 Gaokao-Formal（495 道高考级复杂证明题）基准"
+ ],
+ "method_framework": "自然语言问题先经 RL 训练的自动形式化器翻译为 Lean 形式语句（奖励=句法合法+语义匹配+证明器可证明），再交由现成证明器生成证明；LeanScorer 从语义层面评估形式化是否忠实于原问题。",
+ "experiment_framework": "基准：Gaokao-Formal(495 题)、MiniF2F；证明器：DeepSeek-Prover-V2 等；指标：形式化 pass rate 与配对证明准确率；对比 SOTA 自动形式化基线。",
+ "takeaways": [
+  "在 Gaokao-Formal 上 pass rate 提升 45%、MiniF2F 提升 6%，显著优于基线",
+  "自动形式化器与证明器配对后一致提升证明准确率，DeepSeek-Prover-V2 在 Gaokao-Formal 上提升 42%",
+  "句法+语义+证明器三源奖励是产出可验证形式化的关键"
+ ],
+ "weaknesses": [
+  "形式化仍依赖 Lean/mathlib 生态，对更一般的自然语言数学问题覆盖面有限",
+  "证明器反馈作为奖励可能放大'可证即正确'的捷径，与原命题语义忠实度存在张力",
+  "与医学影像/多模态推理落地域无直接结合，属形式推理"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.95,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "形式推理与可靠性主线无直接交点，无可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

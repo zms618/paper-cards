@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Shortcutting Pre-trained Flow Matching Diffusion Models is Almost Free Lunch.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Shortcutting Pre-trained Flow Matching Diffusion Models is Almost Free Lunch.pdf",
+ "title": "Shortcutting Pre-trained Flow Matching Diffusion Models is Almost Free Lunch",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "SCFM通过速度场自蒸馏压缩扩散模型，但实验与分析不足",
+ "innovations": [
+  "速度场自蒸馏机制，消除步长嵌入需求",
+  "首次实现十亿参数扩散模型的少样本蒸馏",
+  "端到端训练方案自动拉直速度轨迹"
+ ],
+ "method_framework": "SCFM在速度空间操作，通过双目标蒸馏目标强制所有时间步保持线性一致性，无需显式渐进蒸馏，使用LoRA高效微预训练模型",
+ "experiment_framework": "在LAION-POP数据集上蒸馏Flux(12B)和SD3.5(8B)，评估指标包括师生FID、标准FID和CLIP分数，与TeaCache、HyperSD等基线比较",
+ "takeaways": [
+  "速度场一致性比样本空间更有效",
+  "少样本蒸馏在大模型上可行",
+  "端到端训练优于渐进式方法"
+ ],
+ "weaknesses": [
+  "未进行CFG嵌入蒸馏，推理时需额外无条件前向传播",
+  "实验主要在图像生成领域，未验证其他模态",
+  "未充分分析计算效率与模型大小的关系"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

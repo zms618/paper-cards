@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Symmetry-Driven Discovery of Dynamical Variables in Molecular Simulations.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Symmetry-Driven Discovery of Dynamical Variables in Molecular Simulations.pdf",
+ "title": "Symmetry-Driven Discovery of Dynamical Variables in Molecular Simulations",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "elevance": 4.0,
+  "evidence": 5.5,
+  "overall": 5.75
+ },
+ "one_line": "基于能量地形对称性发现反应坐标，无需轨迹数据但验证有限。",
+ "innovations": [
+  "核心洞见：低能量有效自由度与能量地形的近似对称性相关联，据此把发现集体变量转化为寻找能量地形近似对称的问题。",
+  "数据-free：与多数依赖轨迹的方法不同，仅需初始态附近的力场（能量函数）知识，无需昂贵轨迹采样。",
+  "给出可扩展的对称损失函数（兼容现有力场框架）以及面向小系统的高效 Hessian 方法。"
+ ],
+ "method_framework": "关键观察是：沿低能量流形运动的有效自由度对应能量地形在该方向上近似对称（能量近似不变）。于是优化一组自由度使其方向上能量函数近似对称（对称损失），或在小系统直接用 Hessian 分析初始态附近曲率，从而识别出能连接不同构象态、沿低能量流形移动的反应坐标，指导后续增强采样。",
+ "experiment_framework": "在两个经典分子体系（丙氨酸二肽 Alanine dipeptide、Chignolin）上验证；指标为能否恢复已知的重要构象/反应坐标。",
+ "takeaways": [
+  "成功恢复 Alanine dipeptide 与 Chignolin 的已知重要构象。",
+  "无需轨迹数据即可发现反应坐标，是 metadynamics/REMD 等增强采样的互补手段。",
+  "把结构动力学与能量地形对称性联系起来，为构象空间系统探索提供新视角。"
+ ],
+ "weaknesses": [
+  "属于计算化学/分子模拟，与医学影像/多模态推理主线无关。",
+  "仅在两个小分子体系验证，对大蛋白/柔性体系的可扩展性未证实。",
+  "依赖'初始态附近力场'信息，远离初始态的高能/过渡态区域能否被发现存疑。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

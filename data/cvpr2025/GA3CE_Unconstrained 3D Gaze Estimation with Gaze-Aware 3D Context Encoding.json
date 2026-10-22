@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/GA3CE_Unconstrained 3D Gaze Estimation with Gaze-Aware 3D Context Encoding.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/GA3CE_Unconstrained 3D Gaze Estimation with Gaze-Aware 3D Context Encoding.pdf",
+ "title": "GA3CE Unconstrained 3D Gaze Estimation with Gaze-Aware 3D Context Encoding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "GA3CE结合3D上下文编码与自注意力提升无约束视线估计",
+ "innovations": [
+  "Gaze-Aware 3D Context Encoding (GA3CE)",
+  "D3位置编码分解方向和距离",
+  "基于自注意力的3D视线变换器",
+  "使用MobileSAM进行物体位置采样"
+ ],
+ "method_framework": "提取3D姿态和物体位置作为上下文表示，通过GA3CE将其转换到以自我为中心的空间，使用D3位置编码，最后通过3D视线变换器学习空间关系",
+ "experiment_framework": "在GFIE、CAD-120和GAFA三个基准数据集上评估，与GFIE和GAFA等基线比较，使用3D平均角度误差等指标",
+ "takeaways": [
+  "3D上下文表示对视线估计至关重要",
+  "以自我为中心的空间转换有效减少视角变化",
+  "方向-距离分解的位置编码能更好捕捉空间关系"
+ ],
+ "weaknesses": [
+  "依赖预训练模型(3D姿态估计器、SAM等)",
+  "未考虑物体类别信息",
+  "在GAFA数据集上仅展示了部分结果"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视线估计与可靠性主线无实质交点，仅3D表示方法有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

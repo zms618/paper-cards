@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Trojanto_Action-Level Backdoor Attacks against Trajectory Optimization Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Trojanto_Action-Level Backdoor Attacks against Trajectory Optimization Models.pdf",
+ "title": "Trojanto: Action-Level Backdoor Attacks against Trajectory Optimization Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "首个针对轨迹优化模型的后门攻击，需模型访问权限，仿真验证有限。",
+ "innovations": [
+  "首次揭示轨迹优化模型（DT/GDT/DC）的后门攻击脆弱性，指出传统奖励操纵类攻击对TO模型无效",
+  "提出训练后攻击方法Trojanto，使用交替训练在触发器与目标动作间建立强连接",
+  "结合轨迹过滤保持良性性能和批量投毒确保触发器一致性，实现高隐蔽性攻击"
+ ],
+ "method_framework": "Trojanto是针对TO模型的训练后门攻击。首先识别TO模型（如Decision Transformer）基于序列建模而非奖励最大化的特性，导致传统奖励操纵攻击失效。攻击采用交替训练强化触发器-目标动作关联，同时通过轨迹过滤保留良性性能、批量投毒保证触发器一致性，在高维连续动作空间实现精确后门注入。",
+ "experiment_framework": "在多种离线RL任务和攻击目标上评估Trojanto，对比DT、GDT、DC等多种TO模型架构，测试投毒率仅0.3%轨迹下的攻击成功率和良性性能保持率。",
+ "takeaways": [
+  "现有基于奖励操纵的RL后门攻击对TO模型基本无效，因为TO模型直接拟合动作而非优化奖励",
+  "Trojanto仅需0.3%轨迹投毒即可在多种TO模型上实现高效后门注入",
+  "动作级后门在高维连续动作空间中同样可行，对具身智能系统安全构成威胁"
+ ],
+ "weaknesses": [
+  "攻击需要访问模型进行训练后微调，实际威胁场景中攻击者是否有此权限存疑",
+  "仅在仿真环境的离线RL任务上验证，真实机器人场景下的攻击效果未验证",
+  "缺乏对现有后门防御方法的系统性评估，不清楚攻击对防御的鲁棒性如何"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.55,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "后门攻击属于安全研究，与可靠性主线有间接关联但非核心",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

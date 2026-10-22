@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/An Expressive and Self-Adaptive Dynamical System for Efficient Function Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/An Expressive and Self-Adaptive Dynamical System for Efficient Function Learning.pdf",
+ "title": "An Expressive and Self-Adaptive Dynamical System for Efficient Function Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "层级异构电子动力系统实现函数学习加速，但缺乏大规模验证",
+ "innovations": [
+  "针对现有电子动力系统表达力低（节点相互作用简单）的问题，引入层级架构与异构动力学增强复杂函数表示能力",
+  "提出片上 (on-device) 训练方法：用器件本征电信号直接更新参数，使训练与推理同位，摆脱「数字端训练+片上推理」的高成本解耦",
+  "在多领域函数学习上精度高于现有方法，推理与训练均比 GPU 传统 NN 快约 10^3 倍"
+ ],
+ "method_framework": "把函数学习建模为在能量势面上经自然退火演化到平衡态：EADS 用分层、异构节点动力学逐步精炼信息以增强表达力；训练时不脱离硬件，直接用内部电信号驱动参数更新，使系统自适应地塑造所需能量势面，完成片上推理与训练。",
+ "experiment_framework": "在多种函数学习任务（含多领域回归/分类）上与现有电子动力系统及 GPU 上传统神经网络对比精度与训练/推理速度，报告约 10^3× 加速与精度提升。",
+ "takeaways": [
+  "层级+异构动力学可显著提升电子动力系统的函数表达力",
+  "片上电信号训练使训练推理同位，大幅降低训练成本",
+  "EADS 在多领域任务上精度更高且比 GPU NN 快三个数量级"
+ ],
+ "weaknesses": [
+  "主线为神经形态/电子动力系统计算范式，与可靠性×医学影像/多模态大模型推理主线无关",
+  "「10^3×加速」依赖专用可编程电子硬件，软件仿真复现性与规模上限未充分说明",
+  "前9页实验限于相对简单的函数学习任务，未验证在大规模深度模型任务上的可扩展性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "电子动力系统计算范式与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

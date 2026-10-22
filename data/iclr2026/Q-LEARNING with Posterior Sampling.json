@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Q-LEARNING with Posterior Sampling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Q-LEARNING with Posterior Sampling.pdf",
+ "title": "Q-Learning with Posterior Sampling (PSQL)",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "理论RL工作，将后验采样引入Q-learning，仅限表格MDP",
+ "innovations": [
+  "提出PSQL：在Q值上用高斯后验做探索，类比多臂老虎机中的Thompson Sampling",
+  "在表格episodic MDP中证明遗憾界Õ(H²√SAT)，紧密匹配已知下界Ω(H√SAT)",
+  "给出将后验采样与动态规划/TD学习结合所遇核心困难及解决思路"
+ ],
+ "method_framework": "维护Q值的高斯后验；每步从后验采样Q̃并按贪心动作执行(后验采样探索)；用TD更新递归更新后验均值与方差，在Bellman递归下保持后验一致性。",
+ "experiment_framework": "以理论推导为主，证明表格episodic MDP的遗憾界并与下界对比。",
+ "takeaways": [
+  "PSQL达到近最优遗憾界Õ(H²√SAT)，与下界Ω(H√SAT)同阶",
+  "后验采样可与Q-learning/TD类算法有效结合并获得理论保证",
+  "为在更复杂RL中分析后验采样提供起点"
+ ],
+ "weaknesses": [
+  "属RL理论/遗憾界方向，与可靠性、验证器、医学影像或多模态推理主线无直接关联",
+  "结果限于表格型MDP，函数逼近/大规模连续控制下的可扩展性未触及",
+  "经验验证较少，主要价值在理论，缺乏与实用后验采样RL方法的实证对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.63,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "RL理论工作，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

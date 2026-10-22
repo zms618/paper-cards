@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Provably Denoises Nearest Neighbor Data.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Provably Denoises Nearest Neighbor Data.pdf",
+ "title": "SVD Provably Denoises Nearest Neighbor Data",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "理论证明SVD在特定噪声下恢复最近邻，但模型假设强且实验简略。",
+ "innovations": [
+  "证明了当噪声方差 sigma ∈ O(1/k^{1/4}) 时，SVD可 provably 恢复未损坏数据的最近邻",
+  "给出匹配下界：当 sigma ≫ 1/k^{1/4} 时，从噪声数据中无法识别原始最近邻",
+  "揭示了SVD在噪声数据最近邻搜索中优于随机投影的理论原因"
+ ],
+ "method_framework": "在半随机模型下（n个点来自未知k维子空间，被d维高斯噪声扰动），分析SVD截断对奇异空间的扰动界，结合高斯分布的集中度和球对称性，证明SVD去噪后最近邻的正确性。",
+ "experiment_framework": "理论证明为主，辅以真实数据集上的实证结果验证SVD去噪效果。对比随机投影方法。",
+ "takeaways": [
+  "SVD在噪声水平 sigma ≤ O(1/k^{1/4}) 时可 provably 恢复正确的最近邻",
+  "存在明确的噪声阈值，超过后最近邻从噪声数据中不可识别",
+  "数据自适应投影(SVD)在噪声场景下理论上优于随机投影"
+ ],
+ "weaknesses": [
+  "半随机模型假设较强（数据严格在低维子空间+高斯噪声），实际数据未必满足",
+  "实证部分较简略，仅作为理论结果的补充验证",
+  "与可靠性/鲁棒性主线关联较弱，属于理论数据结构方向"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "理论数据结构工作，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scaling Generalist Data-Analytic Agents.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scaling Generalist Data-Analytic Agents.pdf",
+ "title": "Scaling Generalist Data-Analytic Agents",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "常规数据合成配方训练的表格分析智能体，超越闭源模型但泛化有限。",
+ "innovations": [
+  "构建18类细粒度数据分析任务分类与递归'由易到难'任务组合机制，提升合成查询的多样性与难度。",
+  "知识增强的轨迹采样配合模型基+规则基过滤，形成高质量轨迹集DataMind-12K；并采用动态可调的SFT+RL联合训练目标。",
+  "设计省显存且稳定的基于代码的多轮rollout框架；DataMind-14B在多个数据分析基准平均71.16%，超过DeepSeek-V3.1与GPT-5。"
+ ],
+ "method_framework": "先按细粒度分类递归合成多样化难例查询，再用知识增强方式采样解轨迹并做模型/规则过滤得到DataMind-12K；训练时混合SFT与RL损失动态调节，配合稳定的代码多轮rollout，使开源模型胜任长程多步数据分析。",
+ "experiment_framework": "在多个公开数据分析/表格推理基准上对比闭源(GPT-5、o4-mini、GPT-4o等)与开源(Qwen2.5系列、DeepSeek-R1等)模型；DataMind-7B/14B在12K轨迹上训练，报告平均answer score与分任务表现。",
+ "takeaways": [
+  "开源模型在真实多格式大规模数据分析上的瓶颈主要是数据与训练配方，而非单纯规模；良好的合成+SFT+RL配方可让14B超越闭源强模型。",
+  "动态SFT+RL目标与稳定多轮代码rollout是提升长程数据分析智能体可靠性的关键。"
+ ],
+ "weaknesses": [
+  "面向表格/代码数据分析智能体，与医学影像/多模态主线关联弱。",
+  "基准与轨迹多围绕结构化数据，对真实脏数据、长上下文大规模文件的鲁棒性与错误归因分析仍有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "表格分析智能体与医学影像/多模态主线关联弱，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Directional Textual Inversion for Personalized TEXT-TO- Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Directional Textual Inversion for Personalized TEXT-TO- Generation.pdf",
+ "title": "Directional Textual Inversion for Personalized TEXT-TO- Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "方向性文本反转通过超球面优化提升生成保真度",
+ "innovations": [
+  "将嵌入分解为方向和幅度，仅优化方向",
+  "引入vMF先验作为方向正则化",
+  "使用Riemannian SGD在超球面上优化"
+ ],
+ "method_framework": "DTI将嵌入表示为固定幅度与单位超球面上的方向，通过Riemannian SGD优化方向，并引入vMF先验保持语义一致性。",
+ "experiment_framework": "DreamBooth数据集，SDXL和SANA模型，对比TI和CrossInit，使用DINOv2和SigLIP评估主体保真度和文本对齐。",
+ "takeaways": [
+  "方向而非幅度编码语义信息",
+  "大嵌入幅度损害Transformer的上下文处理能力",
+  "超球面参数化实现概念间平滑插值"
+ ],
+ "weaknesses": [
+  "仅适用于预归一化Transformer架构",
+  "vMF参数选择依赖网格搜索",
+  "未探索不同文本编码器的泛化性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "文本生成保真度提升与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

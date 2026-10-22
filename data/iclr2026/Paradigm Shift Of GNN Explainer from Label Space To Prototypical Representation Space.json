@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Paradigm Shift Of GNN Explainer from Label Space To Prototypical Representation Space.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Paradigm Shift Of GNN Explainer from Label Space To Prototypical Representation Space.pdf",
+ "title": "Paradigm Shift of GNN Explainer from Label Space to Prototypical Representation Space",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "IDEA将GNN解释器优化从标签空间移到原型表示空间，提升解释质量。",
+ "innovations": [
+  "首次将GNN解释器优化目标从标签空间移到图表示空间，利用向量化图表示更强的结构表达力。",
+  "设计两阶段框架IDEA：结构信息解耦(带结构感知解耦目标的graph tokenizer把解释性子结构封装为解释原型)+解释原型对齐。",
+  "框架通用，可嫁接到多种现有GNN解释器架构，缓解解释/非解释子结构纠缠与分布差异。"
+ ],
+ "method_framework": "现有方法在标签空间对齐原图与解释子图的预测，但标签空间表达力弱；IDEA先用graph tokenizer以结构感知解耦目标把解释性子结构从非解释部分分离并封装为原型；再在原型表示空间对齐原图与解释子图的表示，从而在更富表达力的空间优化解释。",
+ "experiment_framework": "在多个图分类基准上评测实例级GNN解释质量；对比多种post-hoc解释器；IDEA作为通用插件提升不同解释器；指标含解释子图对预测的保真度/紧凑性等。",
+ "takeaways": [
+  "在表示空间而非标签空间优化解释器能更好利用结构信息。",
+  "结构解耦+原型对齐可缓解解释/非解释子结构纠缠。",
+  "框架可即插即用地提升现有多种GNN解释器。"
+ ],
+ "weaknesses": [
+  "两阶段+graph tokenizer增加了解释流程复杂度与开销。",
+  "主要在图分类任务验证，节点/边级解释的适用性未明。",
+  "解释'忠实度'评估仍依赖代理指标，缺乏更多人工验证。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "GNN解释器可靠性提升，属于方法设计研习轴",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

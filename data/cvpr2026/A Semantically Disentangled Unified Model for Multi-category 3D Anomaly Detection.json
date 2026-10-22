@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/A Semantically Disentangled Unified Model for Multi-category 3D Anomaly Detection.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A Semantically Disentangled Unified Model for Multi-category 3D Anomaly Detection.pdf",
+ "title": "A Semantically Disentangled Unified Model for Multi-category 3D Anomaly Detection",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "解缠语义身份缓解3D异常检测类间纠缠，但实验证据不足",
+ "innovations": [
+  "指出统一版 3D-AD 的失败模式 ICE（类间纠缠）：t-SNE 显示同类类别簇重叠，且低分类得分样本在正常数据上重建误差显著偏高，把「重建失败」重新归因于「身份未定」而非异常本身",
+  "CFGT 用对称分辨率集合 {k/2, k, 2k} 的邻域编码 + 可学习 Adaptive Context Token 经共享 transformer 编码，再拼合三级 GAP 池化与 ACT 得到 f_global，并加交叉尺度余弦对齐损失式(4)与辅助分类交叉熵式(6)",
+  "C3L 以 L=64 的动态缓冲区构造同类正例/异类负例做监督对比损失式(8)，与分类、余弦对齐项加权成 L_C3L；GGD 令全局 token z 作 query、局部特征作 K/V，并把由法向/曲率差构成的几何偏置 B_geo 以系数 beta 直接加到注意力 logits 上做软性几何引导"
+ ],
+ "method_framework": "共享局部编码器取多分辨率邻域特征 → CFGT 拼全局 token 得类别感知 f_global → C3L 用监督对比损失解缠类别语义 → GGD 以 z 为 query、几何偏置加在 logits 上重建 token → 逐 token L2 误差经 min-max 归一化和一维高斯池化得逐点分，物体级分数取 max。总损失 L_C3L + L_rec。",
+ "experiment_framework": "Real3D-AD（12 类、每类 4 _normal 训练样本）与 Anomaly-ShapeNet（40 类 1600 样本）；基线含 BTF/M3DM/PatchCore/CPMF/IMRNet/Reg3D-AD/Group3AD/R3D-AD/ISMP/PO3AD/MC3D-AD；指标 O-AUROC 与 P-AUROC。",
+ "takeaways": [
+  "「先诊断失败模式再设计模块」的行文方式值得借鉴：用一个冻结模型 + 轻量 MLP 分类头把 ICE 现象量化成「分类得分 vs 重建误差」的相关性证据，比直接堆模块更有说服力",
+  "把类别标签监督（辅助分类损失 + 监督对比）引入只存正常数据的无人异常检测，使 latent 空间可分，从而让重建条件化——这条思路可迁移到跨设备/跨中心的医学异常检测",
+  "几何偏置直接加在注意力 logits 上（而非单独编码几何模块）是低成本让重建遵循输入几何的手段，实现简单"
+ ],
+ "weaknesses": [
+  "正文在第 4.2 节末尾被截断，Tab.3（点级 P-AUROC）具体数值、以及针对 CFGT/C3L/GGD 三模块的消融表均未出现；分辨率集合、缓冲区大小 L、温度 tau、几何偏置系数 beta、各 lambda 权重全部推给补充材料，核心超参不可核验",
+  "主表只报单次 AUROC 数值，无随机种子或多划分方差，Real3D-AD 上 12 类中 9 类提升仅 1-3 个点（如 Diamond 94.8 甚至低于 MC3D-AD 的 95.5），在缺乏方差的情况下「一致提升」的说法难以站住",
+  "对比损失与辅助分类项本是 2D 异常检测/对比学习的既有套路，本文主要是把它们按 3D 点云多类别场景重新组合；且消融里去掉哪一块、性能掉多少无法从正文判断，无法确认 C3L 到底贡献了多少",
+  "统一设置下每类训练样本极少（Real3D-AD 每类仅 4 个正常样本），多类别联合训练的分布偏斜对类感知表征的影响未做讨论，跨类别不均衡是否造成提升来源存疑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3D异常检测与可靠性主线无实质交点，仅方法迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

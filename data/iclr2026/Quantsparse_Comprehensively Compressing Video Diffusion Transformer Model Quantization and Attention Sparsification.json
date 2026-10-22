@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Quantsparse_Comprehensively Compressing Video Diffusion Transformer Model Quantization and Attention Sparsification.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Quantsparse_Comprehensively Compressing Video Diffusion Transformer Model Quantization and Attention Sparsification.pdf",
+ "title": "QuantSparse: Comprehensively Compressing Video Diffusion Transformer with Model Quantization and Attention Sparsification",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "视频扩散Transformer压缩框架，量化与稀疏协同设计",
+ "innovations": [
+  "指出量化与稀疏朴素结合会放大注意力偏移，提出统一框架联合二者",
+  "提出多尺度显著注意力蒸馏，用全局结构引导与局域显著监督缓解量化偏置",
+  "提出二阶稀疏注意力重参数化，利用二阶残差的时序稳定性恢复稀疏下损失的信息"
+ ],
+ "method_framework": "在W4A8量化与15%注意力密度的激进压缩下：多尺度蒸馏提供结构与显著监督以抑制量化噪声；二阶残差重参数化恢复稀疏丢失信息，二者协同保持生成质量。",
+ "experiment_framework": "在HunyuanVideo-13B（及Wan2.1-14B）上评测；与SOTA量化基线Q-VDiT比PSNR；报告存储压缩倍数、端到端加速比与VQA-Score。",
+ "takeaways": [
+  "QuantSparse在HunyuanVideo-13B上达20.88 PSNR，显著优于Q-VDiT的16.85",
+  "同时实现3.68×存储缩减与1.88×端到端加速，且视觉质量几乎不损",
+  "量化与稀疏需协同设计，朴素叠加会因误差耦合严重掉点"
+ ],
+ "weaknesses": [
+  "属模型压缩/效率方向，与可靠性、不确定性、验证器主线关联弱",
+  "仅在两大视频扩散模型上验证，跨扩散架构与更极端压缩的泛化未充分",
+  "蒸馏教师依赖完整精度模型，压缩自身训练成本与部署闭环收益未量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "模型压缩工作，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Unposed-to-3D Learning Simulation-Ready Vehicles from Real-World.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Unposed-to-3D Learning Simulation-Ready Vehicles from Real-World.pdf",
+ "title": "Unposed-to-3D Learning Simulation-Ready Vehicles from Real-World",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 6.0
+ },
+ "one_line": "无位姿监督的3D车辆重建，实现真实到仿真转换",
+ "innovations": [
+  "相机预测自监督学习策略",
+  "尺度感知重建管道",
+  "轻量级调制模块实现场景适应"
+ ],
+ "method_framework": "两阶段训练框架：第一阶段使用带位姿标注的图像预训练，第二阶段移除位姿监督，通过可微渲染实现自监督学习，结合尺度感知模块和场景调制模块生成仿真就绪的3D资产。",
+ "experiment_framework": "在3DRealCar和CFV数据集上进行定量和定性比较，使用SSIM、PSNR、LPIPS、CD和F-score作为评估指标，验证单视图和多视图重建效果。",
+ "takeaways": [
+  "渐进式优化策略解决几何-相机模糊性问题",
+  "梯度过滤策略确保跨数据集训练稳定性",
+  "球形坐标变换简化空间学习"
+ ],
+ "weaknesses": [
+  "依赖预训练DINOv2特征提取器",
+  "未充分讨论计算效率",
+  "未验证在极端光照条件下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "3D重建与可靠性主线无关，无可靠性方法迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

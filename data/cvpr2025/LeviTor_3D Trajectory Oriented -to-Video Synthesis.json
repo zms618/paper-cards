@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/LeviTor_3D Trajectory Oriented -to-Video Synthesis.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/LeviTor_3D Trajectory Oriented -to-Video Synthesis.pdf",
+ "title": "LeviTor 3D Trajectory Oriented -to-Video Synthesis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "3D轨迹控制的视频生成，但深度依赖与泛化能力存疑。",
+ "innovations": [
+  "将深度维度引入拖拽交互，解决2D轨迹在3D空间中的歧义问题",
+  "提出结合深度信息与K-means聚类点的控制信号表示方法",
+  "设计用户友好的3D轨迹输入管道，降低非专业用户使用门槛"
+ ],
+ "method_framework": "通过K-means聚类将对象掩码抽象为控制点，结合深度信息和实例信息作为控制信号，注入到视频扩散模型中实现3D轨迹控制。",
+ "experiment_framework": "在SA-V数据集上训练，在DAVIS数据集评估，使用FID、FVD和ObjMC指标与DragAnything和DragNUWA对比。",
+ "takeaways": [
+  "深度信息与对象掩码聚类点结合可有效表示3D运动",
+  "用户交互式3D轨迹输入系统降低了视频生成控制门槛",
+  "多控制点设置能更好地捕捉对象运动变化和遮挡关系"
+ ],
+ "weaknesses": [
+  "依赖深度估计网络的准确性，可能影响3D轨迹表示",
+  "控制点数量需要手动调整，缺乏自适应机制",
+  "未充分评估模型在复杂场景下的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D轨迹视频生成，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

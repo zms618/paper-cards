@@ -1,0 +1,39 @@
+{
+ "key": "icml2025/Auto-reconfiguration for Latency Minimization in CPU-based DNN Serving.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Auto-reconfiguration for Latency Minimization in CPU-based DNN Serving.pdf",
+ "title": "Auto-reconfiguration for Latency Minimization in CPU-based DNN Serving",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "Packrat通过动态配置优化CPU DNN服务延迟，但依赖离线配置",
+ "innovations": [
+  "多实例小批量并行替代单实例大批量",
+  "基于动态规划的资源配置优化算法",
+  "在线重配置机制避免服务中断"
+ ],
+ "method_framework": "Packrat作为TorchServe扩展，通过批大小估计器、优化器、资源分配器和调度器动态确定⟨i,t,b⟩配置，使用动态规划解决二维背包问题最小化延迟",
+ "experiment_framework": "在ResNet-50、Inception-v3、GPT-2和BERT上测试，比较不同线程数和批大小的延迟，平均提升1.43×-1.83×",
+ "takeaways": [
+  "利用多实例小批量并行解决算子并行收益递减问题",
+  "轻量级配置文件与动态规划结合实现高效优化"
+ ],
+ "weaknesses": [
+  "依赖离线配置文件，未考虑运行时资源竞争",
+  "批大小估计和重配置保守策略可能限制适应性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "CPU DNN服务优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

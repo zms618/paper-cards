@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SAM-PLING_Beyond Speedup - Utilizing KV Cache for SAM-PLING and Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SAM-PLING_Beyond Speedup - Utilizing KV Cache for SAM-PLING and Reasoning.pdf",
+ "title": "Beyond Speedup: Utilizing KV Cache for Sampling and Reasoning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "复用KV cache为轻量表征，用于推理路径选择与快慢思考切换。",
+ "innovations": [
+  "提出把仅用于加速解码的 KV cache 重新视为可复用的上下文表征，并给出简单有效的聚合技术使其直接可用作 embedding。",
+  "在 Chain-of-Embedding 中用 KV-Embedding 选择最优推理路径，性能媲美甚至超过使用完整 hidden states。",
+  "基于 KV cache 实现快速/慢速思考的自适应切换机制，在 Qwen3-8B、DeepSeek-R1-Distil-Qwen-14B 上大幅减少生成 token。"
+ ],
+ "method_framework": "推理时 KV cache 已被计算并存储，无需额外成本即可聚合为 KV-Embedding，替代昂贵的完整 hidden states。下游两类用法：一是 Chain-of-Embedding 分类器挑选推理路径；二是用 KV-Embedding 判定样本复杂度，在快速低算力与慢速深思推理间自适应切换。",
+ "experiment_framework": "在 Llama-3.1-8B-Instruct、Qwen2-7B-Instruct 上做 Chain-of-Embedding 对比；在 Qwen3-8B、DeepSeek-R1-Distil-Qwen-14B 上做快慢思考切换，报告 VRAM 占用(最高 1.86x 更小)、token 生成减少(最高 5.7x)与精度损失。",
+ "takeaways": [
+  "KV cache 虽未被训练为通用 embedding，仍编码了足够上下文信息用于下游分类与路由。",
+  "复用 KV cache 相比存储完整 hidden states 显著节省显存，长上下文优势更大。",
+  "快慢思考切换可在几乎不掉点的前提下将 token 生成最多减少 5.7 倍。"
+ ],
+ "weaknesses": [
+  "KV-Embedding 未经过表征训练，作者亦承认弱于专用 embedding，在更难/更长推理任务上的稳健性未充分验证。",
+  "快慢切换的判定阈值/策略对精度-效率权衡的敏感性，以及切换错误导致的错误推理未深入分析。",
+  "本质是推理效率与表征复用的工程技巧，与可靠性/不确定性/幻觉抑制主线关联中等偏弱。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "KV cache复用为推理路径选择，与可靠性主线关联中等偏弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

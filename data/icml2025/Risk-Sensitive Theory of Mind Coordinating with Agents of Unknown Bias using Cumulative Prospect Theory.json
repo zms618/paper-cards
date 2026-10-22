@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Risk-Sensitive Theory of Mind Coordinating with Agents of Unknown Bias using Cumulative Prospect Theory.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Risk-Sensitive Theory of Mind Coordinating with Agents of Unknown Bias using Cumulative Prospect Theory.pdf",
+ "title": "Risk-Sensitive Theory of Mind: Coordinating with Agents of Unknown Bias using Cumulative Prospect Theory",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "将CPT引入多智能体RL，使智能体适应未知风险偏好的伙伴",
+ "innovations": [
+  "首次将累积前景理论(CPT)集成到深度多智能体风险敏感强化学习(MARSRL)中，建模伙伴的风险偏置行为",
+  "提出RS-ToM框架，包含CPT风险度量、参数自适应推断和策略学习三部分，能在零样本下适应未知风险敏感度的伙伴",
+  "在Risky Overcooked仿真基准上验证，相比假设伙伴理性的基线，团队绩效、协调流畅度和风险偏好遵从度均显著提升"
+ ],
+ "method_framework": "将CPT作为风险度量引入多智能体协调问题。智能体维护对伙伴CPT参数(损失厌恶系数、概率变换函数形状)的信念分布，通过贝叶斯更新推断伙伴是风险寻求还是风险厌恶。基于CPT期望重写Q函数，使智能体在规划时考虑伙伴的偏置效用，从而选择与伙伴风险偏好对齐的动作。",
+ "experiment_framework": "在自建的Risky Overcooked基准任务上进行仿真实验，对比假设伙伴理性(noisy-rational)的基线。指标包括团队绩效(完成菜品数)、协调流畅度、对伙伴风险偏好的遵从度和行为可预测性。仿真中预设不同CPT参数的伙伴模型测试适应性。",
+ "takeaways": [
+  "RS-ToM在与未知风险偏好伙伴协作时，团队绩效和协调流畅度显著优于假设伙伴理性的基线",
+  "CPT能同时建模风险寻求(乐观)和风险厌恶(悲观)两类偏置，而现有方法仅覆盖中位数风险厌恶情形",
+  "自适应推断伙伴风险参数比固定参数策略更能提升对伙伴偏好的遵从度"
+ ],
+ "weaknesses": [
+  "仅在仿真Overcooked环境验证，无真实人类被试实验，人在回路的外部效度未验证",
+  "缺乏可对比的强基线，作者声称因问题新颖无现成基线，仅对比noisy-rational基线",
+  "CPT参数空间推断依赖离散化网格，状态空间稍大时计算开销未充分讨论；理论收敛性基于保守上界假设，实际松驰程度不明"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.18,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

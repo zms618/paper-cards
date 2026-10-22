@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MIRROR_Make Your Object-Level Multi-View Generation More Consistent with Training-Free Rectification.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MIRROR_Make Your Object-Level Multi-View Generation More Consistent with Training-Free Rectification.pdf",
+ "title": "MIRROR: Make Your Object-Level Multi-View Generation More Consistent with Training-Free Rectification",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "即插即用多视角校正方法，解决Janus问题但依赖深度估计",
+ "innovations": [
+  "提出免训练、即插即用的多视角生成一致性校正框架，可直接集成到现有多视角扩散模型中",
+  "设计轨迹追踪模块（TTM）进行像素级跨视角运动轨迹追踪，以及特征校正模块（FRM）显式调整噪声嵌入",
+  "通过忽略UNet雅可比项近似推导，在保持校正效果的同时实现近2倍加速"
+ ],
+ "method_framework": "MIRROR在推理阶段对多视角扩散模型进行校正：首先用深度估计引导的TTM模块追踪相邻视角间相同物理点的像素级轨迹，然后通过FRM模块最小化当前视角像素嵌入与相邻视角对应块特征的距离，对扩散噪声预测进行校正。采用两阶段采样策略，在stage1和stage2分别进行校正。",
+ "experiment_framework": "在图像基和文本基两类多视角生成任务上评估；基线模型包括SyncDreamer、MVD-Fusion、VideoMV；数据集使用GSO（图像基）和T3Bench（文本基）；指标包括PSNR、SSIM、LPIPS、Clip-Score；使用Depth-Anything-V2-Small提供深度引导。",
+ "takeaways": [
+  "在VideoMV文本基任务上，MIRROR将PSNR从21.67提升至24.82，LPIPS从0.206降至0.115，提升幅度显著",
+  "MVD-Fusion图像基任务上PSNR从18.90提升至20.15，SSIM从0.785提升至0.801",
+  "两阶段校正策略比单阶段校正更有效，能更好地解决Janus问题和严重伪影"
+ ],
+ "weaknesses": [
+  "与主线研究方向（可靠性/鲁棒性/医学影像/多模态大模型推理）关联较弱，属于3D生成领域内部改进",
+  "依赖预训练单目深度估计模型（Depth-Anything-V2），深度估计误差会传导至校正效果",
+  "仅在物体级多视角生成上验证，未扩展到场景级或动态物体生成；推理时间虽有加速但仍增加额外开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

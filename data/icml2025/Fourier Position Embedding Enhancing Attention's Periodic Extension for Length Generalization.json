@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Fourier Position Embedding Enhancing Attention's Periodic Extension for Length Generalization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Fourier Position Embedding Enhancing Attention's Periodic Extension for Length Generalization.pdf",
+ "title": "Fourier Position Embedding:Enhancing Attention's Periodic Extension for Length Generalization",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.7
+ },
+ "one_line": "傅里叶位置嵌入增强注意力周期性，提升长度泛化但计算开销增加。",
+ "innovations": [
+  "将RoPE的单一频率模型扩展为傅里叶级数，更好地处理频谱损伤",
+  "零值处理低频未充分训练的频率成分，保持周期性扩展",
+  "首次从信号处理角度系统分析位置嵌入对长度泛化的影响"
+ ],
+ "method_framework": "FoPE将每个维度建模为傅里叶级数，包含主导频率和谐波成分，并截断低于基频的频率成分，增强注意力周期性扩展。",
+ "experiment_framework": "在60M-1.2B模型上评估，使用C4和Gutenberg数据集，通过困惑度和Passkey检索任务测试长度泛化能力，并在摘要和问答任务上验证。",
+ "takeaways": [
+  "频谱损伤是限制RoPE长度泛化的关键因素",
+  "将维度视为多频率函数而非单一频率可显著提升模型鲁棒性",
+  "零频率成分对长期依赖建模至关重要"
+ ],
+ "weaknesses": [
+  "在TriviaQA短上下文任务上表现略差",
+  "增加注意力头维度会带来额外计算开销",
+  "超参数选择对性能有一定影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

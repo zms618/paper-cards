@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Event6D_Event-based Novel Object 6D Pose Tracking.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Event6D_Event-based Novel Object 6D Pose Tracking.pdf",
+ "title": "Event6D Event-based Novel Object 6D Pose Tracking",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "事件相机双模态重建实现新物体6D跟踪，依赖CAD模型限制泛化。",
+ "innovations": [
+  "双模态重建模块，在深度帧之间重建强度和深度",
+  "仅使用合成数据训练即可在真实场景中有效泛化",
+  "构建了大规模事件相机6D姿态跟踪数据集"
+ ],
+ "method_framework": "EventTrack6D包含双模态重建和姿态精炼模块，通过事件流在深度帧之间重建强度和深度，采用渲染比较范式进行6D姿态跟踪。",
+ "experiment_framework": "在Event6D(真实)和EventHO3D(模拟)数据集上评估，使用ADD-S、ADD和AR指标，与多种基线方法比较。",
+ "takeaways": [
+  "事件相机的高时间分辨率适合高速动态场景的6D姿态跟踪",
+  "双模态重建解决了事件数据稀疏性问题",
+  "合成到真实的泛化能力验证了方法的鲁棒性"
+ ],
+ "weaknesses": [
+  "仅依赖CAD模型，无法处理未知形状物体",
+  "计算复杂度较高，虽然优化后可达120FPS但仍有提升空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "事件相机跟踪与可靠性主线无实质交点，仅属常规视觉任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

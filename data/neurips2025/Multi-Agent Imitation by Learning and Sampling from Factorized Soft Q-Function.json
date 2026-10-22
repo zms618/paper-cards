@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Multi-Agent Imitation by Learning and Sampling from Factorized Soft Q-Function.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Multi-Agent Imitation by Learning and Sampling from Factorized Soft Q-Function.pdf",
+ "title": "Multi-Agent Imitation by Learning and Sampling from Factorized Soft Q-Function",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "分解Q函数与能量采样提升多智能体模仿稳定性，但超参敏感且收益有限。",
+ "innovations": [
+  "将软Q函数分解为个体Q函数的加权和",
+  "将最优策略表示为能量模型并使用随机梯度朗之万动力学采样",
+  "避免了对抗训练的不稳定性，支持连续和离散控制任务"
+ ],
+ "method_framework": "基于IQ-Learn框架，引入值分解网络将全局软Q函数分解为个体Q函数的加权和，通过能量模型采样策略，实现非对抗训练和去中心化执行。",
+ "experiment_framework": "在SMACv2、MPE、Gold Miner和MaMuJoCo基准上与BC、MA-GAIL和MIFQ对比，使用回报作为评估指标。",
+ "takeaways": [
+  "值分解方法可有效扩展单智能体算法到多智能体场景",
+  "能量模型采样策略可解决连续控制中难以计算logsumexp的问题",
+  "非对抗训练框架提高了多智能体模仿学习的稳定性"
+ ],
+ "weaknesses": [
+  "需要调整采样次数N和熵权重α等超参数",
+  "在部分任务上性能提升有限，如MPE中的simple_spread",
+  "去中心化执行时需要额外的采样步骤来选择最佳动作"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

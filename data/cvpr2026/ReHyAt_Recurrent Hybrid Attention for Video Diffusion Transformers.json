@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/ReHyAt_Recurrent Hybrid Attention for Video Diffusion Transformers.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ReHyAt_Recurrent Hybrid Attention for Video Diffusion Transformers.pdf",
+ "title": "ReHyAt Recurrent Hybrid Attention for Video Diffusion Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "混合注意力机制优化视频扩散模型长序列生成，但通用性有限。",
+ "innovations": [
+  "ReHyAt混合注意力机制，结合局部softmax与全局线性注意力",
+  "分块递归 reformulation 实现线性复杂度和常量内存",
+  "两阶段训练流程：注意力蒸馏+轻量微调，显著降低训练成本"
+ ],
+ "method_framework": "ReHyAt将视频分块处理，每块内使用softmax注意力保证局部细节，块间使用线性注意力实现全局依赖，通过重叠分块保持时序连贯性，并转化为RNN实现高效长视频生成。",
+ "experiment_framework": "VBench和VBench-2.0评估，人类偏好研究，与SANA-Video等基线比较，计算复杂度和移动端性能测试。",
+ "takeaways": [
+  "混合注意力机制在保持质量的同时显著降低计算复杂度",
+  "两阶段训练流程可高效将现有模型转化为高效版本"
+ ],
+ "weaknesses": [
+  "仅针对视频扩散模型优化，通用性有限",
+  "分块大小和重叠参数需要针对不同任务调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "视频生成非可靠性主线，混合注意力机制无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Closest Neighbors are Harmful for Lightweight Masked Auto-encoders.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Closest Neighbors are Harmful for Lightweight Masked Auto-encoders.pdf",
+ "title": "Closest Neighbors are Harmful for Lightweight Masked Auto-encoders",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "轻量MAE通过邻居排斥损失缓解语义混淆，提升性能有限",
+ "innovations": [
+  "引入最近邻补丁(CNP)概念表征局部语义",
+  "设计邻居排斥损失(NNoR-Loss)解决语义混淆",
+  "无需教师模型的轻量MAE训练方法"
+ ],
+ "method_framework": "NoR-MAE通过惩罚未遮蔽补丁与CNP的相似性，解决轻量模型无法区分不同局部语义的问题，仅增加最小训练开销。",
+ "experiment_framework": "ImageNet-100/1K分类，下游任务迁移学习，与MAE、DMAE等基线对比，使用top-1准确率评估。",
+ "takeaways": [
+  "语义混淆是轻量MAE性能瓶颈的关键",
+  "简单有效的正则化可显著提升模型性能而不增加复杂度"
+ ],
+ "weaknesses": [
+  "CNP概念可能不适用于所有视觉任务",
+  "未探索不同图像分辨率下的方法有效性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "轻量MAE邻居排斥解决语义混淆，属常规正则化设计",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

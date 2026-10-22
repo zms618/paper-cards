@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Optimizing Test-Time Compute via Meta Reinforcement Finetuning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Optimizing Test-Time Compute via Meta Reinforcement Finetuning.pdf",
+ "title": "Optimizing Test-Time Compute via Meta Reinforcement Finetuning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "元RL优化测试计算，数学推理性能提升但依赖额外价值模型",
+ "innovations": [
+  "将测试时计算优化形式化为元RL问题：输出流切分为多个episode，用累积后悔度量token效率",
+  "指出现有SOTA模型不最小化后悔(在简单问题上浪费过多token)，提出稠密进度奖励修正",
+  "MRT方法：在结果奖励RL基础上增加每块输出的成功似然变化作为稠密奖励bonus"
+ ],
+ "method_framework": "将LLM输出流按语义块切分为多个episode；每块的进度奖励定义为后续成功似然的增量；在0/1结果奖励RL上叠加该稠密bonus，训练模型学会在必要时探索(多episode)、简单时直接利用(快速作答)。",
+ "experiment_framework": "任务：数学推理。基线：结果奖励RL(0/1)、SFT搜索轨迹。指标：准确率、token效率、不同测试时token预算下的性能曲线。",
+ "takeaways": [
+  "现有测试时计算方法不高效：模型在简单问题上浪费token，且训练时预算外泛化差",
+  "稠密进度奖励使模型学会自适应分配计算量——难题多探索、易题快作答",
+  "MRT带来2-3倍相对性能提升和1.5倍token效率提升"
+ ],
+ "weaknesses": [
+  "成功似然的估计依赖单独训练的价值模型，引入额外误差源",
+  "仅在数学推理验证，代码/科学推理等其他领域的效果未考察",
+  "episode切分的粒度对性能的影响未系统消融"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

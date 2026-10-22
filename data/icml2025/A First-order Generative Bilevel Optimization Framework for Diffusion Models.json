@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/A First-order Generative Bilevel Optimization Framework for Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/A First-order Generative Bilevel Optimization Framework for Diffusion Models.pdf",
+ "title": "A First-order Generative Bilevel Optimization Framework for Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "将扩散模型调优形式化为双层优化，提出一阶框架处理无穷维空间与采样成本。",
+ "innovations": [
+  "把扩散模型的下游调优（如奖励微调、噪声调度）形式化为生成式双层优化问题",
+  "场景一：以仅推理下层求解器配合样本高效梯度估计器做预训练模型微调",
+  "场景二：通过重参数化下层问题设计可计算梯度估计器，从零训练时优化噪声调度"
+ ],
+ "method_framework": "双层优化上层目标涉及无穷维分布且下层是昂贵采样过程，传统双层方法不适用；该一阶框架将扩散采样过程纳入双层结构，对上、下层分别设计可计算的梯度估计——微调时下层仅做推理、上层用样本高效估计梯度；噪声调度优化时重参数化下层使梯度可追踪，从而把不可行的嵌套优化变为可解的一阶问题。",
+ "experiment_framework": "在扩散模型下游任务（审美质量微调、噪声调度设计）上评测；对比现有微调与超参搜索基线，以生成质量/样本质量与计算成本为指标；验证两种场景下一阶框架的有效性。",
+ "takeaways": [
+  "生成式双层优化可统一刻画扩散模型的微调与噪声调度优化",
+  "一阶梯度估计克服了无穷维概率空间与采样成本的障碍",
+  "所提方法在微调与超参搜索上优于现有基线"
+ ],
+ "weaknesses": [
+  "一阶梯度估计存在偏置，其偏差对最终质量的影响缺乏严格刻画",
+  "样本高效估计器在复杂奖励场景的方差与稳定性未充分分析",
+  "主要在图像扩散验证，视频/生物序列等其他扩散域未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "扩散模型优化方法，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

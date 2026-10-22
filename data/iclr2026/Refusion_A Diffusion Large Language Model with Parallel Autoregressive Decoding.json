@@ -1,0 +1,41 @@
+{
+ "title": "ReFusion: A Diffusion Large Language Model with Parallel Autoregressive Decoding",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "Slot级并行解码提升LLM速度，但与可靠性主线关联弱",
+ "innovations": [
+  "将掩码序列分成长度固定的slot，每步先做slot级扩散选择再在slot内并行自回归填充，缓解MDM条件独立假设失效导致的不连贯。",
+  "把新生成slot重排到剩余掩码之前，在因果注意力框架内同时解锁完整KV缓存复用，并把学习复杂度从不可处理的token组合空间降到可控的slot排列空间。",
+  "混合目标(permuted clean slots的AR损失 + masked slots的去噪损失)监督每个token，提升数据效率。"
+ ],
+ "method_framework": "训练时随机mask若干slot、打乱clean slots并使clean在前；对clean slots用AR损失、对masked slots用去噪损失；推理时每迭代先扩散式选择要填的slot、再在slot内自回归infill并行展开，随后把新slot前移；因slot间用因果注意力，已生成token的KV可全程复用。",
+ "experiment_framework": "7个覆盖数学/代码/通用理解推理的基准；对比LLaDA、Dream等MDM及Qwen3系列ARM；指标为pass@1与吞吐(tokens/sec)；报告较先前MDM平均+34%性能且18×以上提速，并以2.33×提速在GSM8K/MBPP上超Qwen3-8B约3.68绝对点。",
+ "takeaways": [
+  "MDM慢的根因是双向注意力无法KV缓存，slot级重排+因果框架可在保持并行的同时复用KV。",
+  "把相邻token在slot内串行化，能有效缓解并行采样相邻token时的'right once'类不连贯。",
+  "ReFusion把性能-吞吐边界显著推向右上，兼顾性能与速度。"
+ ],
+ "weaknesses": [
+  "目标是LLM生成速度/架构，与可靠性×医学影像/多模态推理主线关联弱。",
+  "slot长度为超参，其对连贯性与并行度的权衡在节选页中消融有限。",
+  "节选前9页未见7基准的完整逐项数值表，'平均34%/18×'的逐任务分布不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Refusion_A Diffusion Large Language Model with Parallel Autoregressive Decoding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Refusion_A Diffusion Large Language Model with Parallel Autoregressive Decoding.pdf",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "LLM速度优化，与可靠性主线关联弱但方法设计有启发性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

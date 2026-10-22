@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Probing Visual Language Priors in VLMs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Probing Visual Language Priors in VLMs.pdf",
+ "title": "Probing Visual Language Priors in VLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "ViLP基准揭示VLM过度依赖语言先验，Image-DPO缓解但证据不足。",
+ "innovations": [
+  "提出ViLP基准：用DALL·E-3/Flux合成OOD图像-问答三元组，刻意偏离训练分布以探测VLM的视觉语言先验依赖",
+  "设计干扰事实(distractor fact)增强问题中的语言先验，区分纯文本先验可解 vs 需视觉推理的答案",
+  "提出Image-DPO自改进框架：模型自生成VQA数据，通过像素级和语义损坏构建good-bad图像对进行DPO训练"
+ ],
+ "method_framework": "ViLP基准包含300个问题，每题配3个答案和对应图像：1个先验答案（纯文本可解）和2个测试答案（需视觉推理）。用图像生成模型合成OOD图像。缓解方法：自生成VQA数据，对图像施加像素级和语义损坏形成good-bad对，用Image-DPO目标训练VLM聚焦真实视觉输入。",
+ "experiment_framework": "ViLP基准：人类接近完美准确率，GPT-4o仅66.17%。在LLaVA-v1.5和Cambrian上验证Image-DPO的改进效果。",
+ "takeaways": [
+  "现代VLM仍严重过度依赖视觉语言先验，在OOD视觉场景下性能大幅下降",
+  "GPT-4o在ViLP上仅66.17%，远低于人类水平，说明视觉推理能力仍不足",
+  "Image-DPO自训练有效促使VLM关注真实视觉输入而非语言先验"
+ ],
+ "weaknesses": [
+  "基准规模较小（300题/900三元组），统计显著性有限",
+  "图像生成模型本身的偏差可能影响基准有效性",
+  "前9页内Image-DPO的定量改进幅度未完整展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

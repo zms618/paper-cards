@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/DINOv3_Teaching DINOv3 About Partial 3D Geometry A Self-Supervised Geometry-Aware Approach.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/DINOv3_Teaching DINOv3 About Partial 3D Geometry A Self-Supervised Geometry-Aware Approach.pdf",
+ "title": "Teaching DINOv3 About Partial 3D Geometry A Self-Supervised Geometry-Aware Approach",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "LoRA注入3D几何到DINOv3，提升部分形状匹配，但泛化受限",
+ "innovations": [
+  "GeoLoRA框架：将3D几何信息注入2D基础特征",
+  "基于测地距离的对比损失函数",
+  "部分形状生成与全形状配对的自监督训练方法"
+ ],
+ "method_framework": "GeoLoRA通过生成部分形状与全形状配对，使用冻结的DINOv3骨干网络和LoRA模块，结合测地距离感知的对比损失进行自监督训练，生成对部分形状鲁棒的特征表示。",
+ "experiment_framework": "在SHREC16、PFAUST、BECOS等数据集上评估，与WKS、HKS、Diff3f、DINOv2/v3等方法比较，使用测地误差、IoU、左右区分准确率等指标。",
+ "takeaways": [
+  "轻量级LoRA模块有效提升基础模型的几何理解能力",
+  "测地距离加权对比损失能更好处理几何模糊性如左右区分"
+ ],
+ "weaknesses": [
+  "仅使用合成数据进行训练，可能限制在真实场景的泛化能力",
+  "计算开销较大，需要多视角渲染和特征提取"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D几何自监督与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

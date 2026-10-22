@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MUDDFormer_Breaking Residual Bottlenecks in Transformers via Multiway Dynamic Dense Connections.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MUDDFormer_Breaking Residual Bottlenecks in Transformers via Multiway Dynamic Dense Connections.pdf",
+ "title": "MUDDFormer: Breaking Residual Bottlenecks in Transformers via Multiway Dynamic Dense Connections",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "动态残差连接提升Transformer效率，但计算开销分析不足且应用领域有限。",
+ "innovations": [
+  "提出多路径动态稠密连接（MUDD）：连接权重根据每个序列位置的隐藏状态动态生成，且对Q/K/V/残差各解耦输入流分别计算",
+  "解决标准残差连接的信息瓶颈问题，增强跨层信息流",
+  "在Pythia各规模（1.4B~12B）上达到4.2倍等精度计算收益（即同等计算量下精度更高）"
+ ],
+ "method_framework": "标准Transformer残差连接是静态的（直接相加），存在信息瓶颈。MUDD将残差连接替换为动态稠密连接：连接权重由小型网络根据当前隐藏状态、序列位置动态生成，且对Q、K、V、残差各输入流分别计算连接权重。可无缝插入任意Transformer架构。",
+ "experiment_framework": "在Pythia系列（1.4B~12B参数，300B token）上预训练。对比标准Transformer vs MUDDFormer。指标：下游任务0-shot/5-shot平均精度、计算效率-精度权衡曲线。消融验证动态性、多路径、解耦各流各自贡献。",
+ "takeaways": [
+  "标准残差连接确实存在信息瓶颈，动态稠密连接可显著增强跨层信息流",
+  "MUDD连接在多种模型规模上均带来等精度计算收益，具有良好的scaling特性",
+  "动态连接权重（依位置和输入流变化）比静态连接更有效"
+ ],
+ "weaknesses": [
+  "动态连接权重生成增加了少量计算开销，虽净收益为正但分析不够细致",
+  "仅在语言模型上验证，未涉及视觉/多模态Transformer",
+  "与主线（鲁棒性/可信AI/医学影像/多模态推理）无直接关联，属于架构效率方向"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/TinyFusion_Diffusion Transformers Learned Shallow.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/TinyFusion_Diffusion Transformers Learned Shallow.pdf",
+ "title": "TinyFusion Diffusion Transformers Learned Shallow",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "可学习深度剪枝优化扩散Transformer恢复能力，但依赖预训练模型",
+ "innovations": [
+  "可学习的深度剪枝框架，直接优化剪枝后模型的恢复能力",
+  "引入可微分采样技术使剪枝过程可学习",
+  "联合优化层掩码和权重更新以模拟未来微调",
+  "提出MaskedKD变体增强恢复能力"
+ ],
+ "method_framework": "TinyFusion将深度剪枝建模为可微分采样过程，结合LoRA权重更新来估计恢复能力，通过局部块结构优化剪枝决策，使高恢复能力的模型更有可能被采样。",
+ "experiment_framework": "在ImageNet 256×256上评估DiT-XL/2、MAR和SiT模型，使用FID、IS、Precision和Recall作为指标，与ShortGPT、Flux-Lite等基线方法比较。",
+ "takeaways": [
+  "直接最小化校准损失不一定能获得最优解，优化恢复能力更有效",
+  "深度剪枝能实现接近理论线性加速比，优于宽度剪枝",
+  "可学习框架能在少量训练步骤内识别有效剪枝模式"
+ ],
+ "weaknesses": [
+  "方法依赖于预训练模型，无法从头开始训练高效模型",
+  "仅评估了图像生成任务，未在其他领域验证",
+  "恢复能力评估依赖于LoRA等参数高效微调方法"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "模型压缩技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/TimeRipples_Accelerating vDiTs by Understanding the Spatio-Temporal Correlations in Latent Space.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/TimeRipples_Accelerating vDiTs by Understanding the Spatio-Temporal Correlations in Latent Space.pdf",
+ "title": "TimeRipples: Accelerating vDiTs by Understanding the Spatio-Temporal Correlations in Latent Space",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "通过重用潜在空间时空相关token加速vDiT自注意力计算",
+ "innovations": [
+  "识别vDiT中注意力模式源于token通道级别的时空相关性",
+  "提出轻量级自适应重用策略，通过重用空间或时间相关token的部分注意力分数来近似计算",
+  "构建分析模型自适应选择每个去噪步骤的重用阈值，确保引入一致可控的误差"
+ ],
+ "method_framework": "通过分析Q和K在时间、x和y三个维度上的相似性，标记可重用token，仅计算非重用token的部分注意力分数，最后聚合形成完整注意力图",
+ "experiment_framework": "在4个vDiT模型(HunyuanVideo、Wan2.1、CogVideoX、Open-Sora-Plan)上评估，与MINFERENCE、SPARSE VIDEOGEN等基线比较，使用VBench、PSNR、SSIM、LPIPS指标",
+ "takeaways": [
+  "利用潜在空间中的时空相关性比直接移植LLM的稀疏模式更有效",
+  "自适应阈值策略能确保不同去噪步骤中引入一致可控的误差",
+  "重用策略比传统掩码方法低一个数量级的MSE"
+ ],
+ "weaknesses": [
+  "未与flash-attention等现代注意力加速技术集成",
+  "自适应阈值策略需要针对不同模型进行调优",
+  "仅关注自注意力加速，未考虑整个vDiT的端到端优化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "加速vDiT计算与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

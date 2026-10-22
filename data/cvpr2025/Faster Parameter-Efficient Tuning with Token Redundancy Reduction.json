@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Faster Parameter-Efficient Tuning with Token Redundancy Reduction.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Faster Parameter-Efficient Tuning with Token Redundancy Reduction.pdf",
+ "title": "Faster Parameter-Efficient Tuning with Token Redundancy Reduction",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "可微分令牌合并加速PET，但优化空间有限且泛化验证不足",
+ "innovations": [
+  "引入可微分双部分匹配算法替代非可微操作",
+  "在中间层而非早期层进行令牌合并以优化PET性能",
+  "使用直通估计器实现完全可微分的令牌减少策略"
+ ],
+ "method_framework": "FPET在ViT中间层插入令牌冗余减少模块，通过适配器精炼令牌相似度，使用可微分匹配矩阵和直通估计器实现高效令牌合并",
+ "experiment_framework": "VTAB-1K数据集(19个分类任务)，对比5种SOTA PET方法，评估精度、推理时间、FLOPs和GPU内存使用",
+ "takeaways": [
+  "可微分令牌合并策略显著提升推理速度和内存效率",
+  "轻量级适配器设计最小化参数增加"
+ ],
+ "weaknesses": [
+  "仅在中间层进行令牌合并可能限制某些场景的优化空间",
+  "未充分探索不同架构和规模的模型适应性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "参数高效调优方法与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

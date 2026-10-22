@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/DYNAM-Ics_Cfo Learning Continuous-Time PDE DYNAM-Ics via Flow-Matched Neural Operators.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/DYNAM-Ics_Cfo Learning Continuous-Time PDE DYNAM-Ics via Flow-Matched Neural Operators.pdf",
+ "title": "Cfo: Learning CONTINUOUS-TIME PDE DYNAM-ICS via FLOW-MATCHED Neural Operators",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "流匹配学习PDE动力学，支持任意时间分辨率，但计算开销大",
+ "innovations": [
+  "将流匹配重新用于直接学习PDE的右侧动力学，避免通过ODE求解器反向传播",
+  "时间分辨率不变性：训练接受非均匀时间网格，推理支持任意时间分辨率",
+  "仅使用25%不规则采样数据训练，性能超过全数据训练的自回归基线"
+ ],
+ "method_framework": "CFO框架通过拟合时间样条轨迹，使用有限差分估计时间导数，构建概率路径，其速度近似真实PDE动力学。然后通过流匹配训练神经算子预测这些解析速度场。",
+ "experiment_framework": "四个基准测试(Lorenz, 1D Burgers, 2D扩散反应, 2D浅水方程)，比较自回归基线，评估不规则子采样下的长时稳定性，使用相对L2误差作为指标。",
+ "takeaways": [
+  "高阶样条(如五次样条)能更准确近似PDE动力学，提高长期精度和训练稳定性",
+  "连续时间框架支持灵活的推理时间分辨率和反向时间推理，仅需50%的AR NFE预算即可超越AR性能"
+ ],
+ "weaknesses": [
+  "需要数值积分进行推理，虽然效率高但仍有计算开销",
+  "噪声调度对性能有影响，需要仔细调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "PDE动力学建模与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

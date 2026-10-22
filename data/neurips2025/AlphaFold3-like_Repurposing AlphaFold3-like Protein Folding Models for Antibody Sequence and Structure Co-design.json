@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/AlphaFold3-like_Repurposing AlphaFold3-like Protein Folding Models for Antibody Sequence and Structure Co-design.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/AlphaFold3-like_Repurposing AlphaFold3-like Protein Folding Models for Antibody Sequence and Structure Co-design.pdf",
+ "title": "Repurposing AlphaFold3-like Protein Folding Models for Antibody Sequence and Structure Co-design",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "改造AlphaFold3做抗体设计，仅CDR骨架生成，不确定性未量化",
+ "innovations": [
+  "利用AlphaFold3-like模型通用蛋白质相互作用知识解决抗体-抗原复合物数据稀缺问题",
+  "扩展结构扩散模块添加序列扩散头实现序列-结构协同扩散",
+  "四阶段训练策略保持结构预测能力同时获得抗体设计能力"
+ ],
+ "method_framework": "基于Boltz-1模型，添加序列扩散头实现序列-结构协同扩散，采用D3PM-absorbing方法处理离散序列数据，通过替换采样技术实现基于共晶结构的条件生成",
+ "experiment_framework": "SAbDab数据集，按发布日期划分训练/验证/测试集(5843/187/204)，对比DiffAb和dyMEAN基线，使用AAR和RMSD指标",
+ "takeaways": [
+  "利用预训练蛋白质折叠模型知识解决特定领域数据稀缺问题",
+  "多阶段训练策略可有效平衡新能力获取与原有能力保持"
+ ],
+ "weaknesses": [
+  "仅生成CDR区域骨架原子，需额外侧链包装和结构松弛",
+  "未充分讨论模型在抗体设计任务中的不确定性量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

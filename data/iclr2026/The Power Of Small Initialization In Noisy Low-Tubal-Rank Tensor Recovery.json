@@ -1,0 +1,41 @@
+{
+ "title": "The Power of Small Initialization in Noisy Low-Tubal-Rank Tensor Recovery",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "小初始化解决过估管秩张量恢复误差膨胀问题，但实验不足。",
+ "innovations": [
+  "指出稠密高斯噪声下常用谱初始化会使分解梯度下降(FGD)的恢复误差随过估管秩 R 线性膨胀，而改用小初始化即可规避该问题，得到与 R 无关的近极小极大误差界",
+  "提出四阶段分析框架，刻画小初始化 FGD 的动态并建立迄今最 sharp 的误差界",
+  "从理论上证明一个易实现的早停策略即可在实践中复现该最优误差，工程可直接部署"
+ ],
+ "method_framework": "在 t-product 框架下将低管秩张量分解为 UU^T，对分解变量做梯度下降(FGD)；关键在于用小初始化而非谱初始化。用四阶段分析框架（初始化邻域、局部进展、误差递推与收敛）推导恢复误差，证明其与过估秩 R 解耦，并据此给出早停准则。",
+ "experiment_framework": "合成高斯噪声仿真（变化过估秩 R、噪声水平、维数）对比谱初始化与小初始化 FGD 的恢复误差曲线，验证误差是否随 R 线性增长及早停效果；辅以真实数据实验佐证理论。",
+ "takeaways": [
+  "小初始化是过参数化噪声张量恢复中让误差不随过估秩 R 膨胀的关键设计",
+  "四阶段框架给出与 R 无关的近极小极大界，是该方向当前最 sharp 的理论结果",
+  "无需精细调参，早停即可在实践中复现理论最优误差"
+ ],
+ "weaknesses": [
+  "以理论与仿真为主，真实数据仅作定性佐证，缺少与当前张量恢复 SOTA 算法（其它分解/正则化）的横向量化对比",
+  "依赖 t-product 傅里叶域假设与高斯稠密噪声模型，对稀疏/结构化噪声及其它张量模型是否成立未讨论",
+  "与可靠性/可信AI/多模态推理主线无关，属低秩逆问题优化理论，relevance 给低分；前 9 页未展示完整真实数据结果表，confidence 取 medium"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/The Power Of Small Initialization In Noisy Low-Tubal-Rank Tensor Recovery.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The Power Of Small Initialization In Noisy Low-Tubal-Rank Tensor Recovery.pdf",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "张量恢复优化理论，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

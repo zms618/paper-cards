@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/There and Back Again On the Relation between Noise and Inversions In Diffusion Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/There and Back Again On the Relation between Noise and Inversions In Diffusion Models.pdf",
+ "title": "There and Back Again: On the Relation between Noise and Image Inversions in Diffusion Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "分析DDIM反演噪声缺陷，提出前向扩散修复，但与主线无关",
+ "innovations": [
+  "揭示DDIM反演潜空间存在结构模式：平滑图像区域（如天空）预测的噪声多样性更低",
+  "追溯问题根源到前几步反演未能提供准确且多样的噪声，导致反演潜空间操纵性远低于原始噪声",
+  "提出简单修复：用前向扩散过程替代前几步DDIM反演，成功去相关潜编码并提升编辑和插值质量"
+ ],
+ "method_framework": "系统分析DDIM反演过程，比较原始噪声空间与反演潜空间的特性。通过控制实验定位问题出在前几步反演。提出修复方案：反演时前几步直接使用前向扩散过程（添加真实噪声），后续步骤再用DDIM反演。",
+ "experiment_framework": "在多个图像编辑和插值任务上评估。基线为现有反演方法。指标包括编辑质量和插值平滑度。分析实验包括噪声多样性测量和空间分布对比。",
+ "takeaways": [
+  "DDIM反演并非完美的可逆过程，前几步的误差会累积并影响潜空间的操纵性",
+  "平滑区域的反演噪声多样性更低，是反演潜空间结构模式的主要来源",
+  "用前向扩散替代前几步反演是简单有效的修复，显著提升编辑和插值质量"
+ ],
+ "weaknesses": [
+  "与主线（医学影像/多模态大模型推理可靠性）完全无关，属于扩散模型可编辑性研究",
+  "修复方法虽简单但可能增加额外采样成本",
+  "仅在自然图像上验证，其他模态的适用性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "扩散模型反演研究，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

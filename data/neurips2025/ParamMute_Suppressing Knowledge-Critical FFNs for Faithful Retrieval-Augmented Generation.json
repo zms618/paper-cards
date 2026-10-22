@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/ParamMute_Suppressing Knowledge-Critical FFNs for Faithful Retrieval-Augmented Generation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/ParamMute_Suppressing Knowledge-Critical FFNs for Faithful Retrieval-Augmented Generation.pdf",
+ "title": "ParamMute: Suppressing Knowledge-Critical FFNs for Faithful Retrieval-Augmented Generation",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "抑制特定FFN层提升RAG忠实度，但泛化性与全面性不足",
+ "innovations": [
+  "识别与不忠实生成相关的特定FFN层(UA-FFNs)",
+  "提出FFN抑制与知识偏好校准的双阶段框架",
+  "构建CoFaithfulQA基准数据集评估忠实度"
+ ],
+ "method_framework": "ParamMute通过抑制与不忠实生成相关的FFN层减少内部知识依赖，并应用知识偏好优化模块增强对外部证据的利用，提升RAG系统的忠实度。",
+ "experiment_framework": "在CoFaithfulQA和ConFiQA基准上评估，使用ConR(上下文召回率)和MemR(记忆召回率)作为主要指标，对比多种基线方法。",
+ "takeaways": [
+  "FFN层是模型内部知识存储的关键载体",
+  "选择性抑制特定FFN层可有效减少内部知识干扰",
+  "双阶段框架(抑制+校准)比单一方法更有效"
+ ],
+ "weaknesses": [
+  "仅关注FFN层，可能忽略其他组件的影响",
+  "抑制系数λ的选择可能影响模型性能",
+  "实验主要在LLaMA3-8B模型上进行，泛化性有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

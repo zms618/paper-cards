@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MILP_Large Language Model-driven Large Neighborhood Search for Large-Scale MILP Problems.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MILP_Large Language Model-driven Large Neighborhood Search for Large-Scale MILP Problems.pdf",
+ "title": "Large Language Model-driven Large Neighborhood Search for Large-Scale MILP Problems",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 5.9
+ },
+ "one_line": "双层LLM智能体驱动LNS求解MILP，但与主线关联弱且计算开销大",
+ "innovations": [
+  "提出双层自进化LLM智能体：内层进化启发式策略保证收敛性，外层进化提示策略维持多样性",
+  "将LLM自动设计邻域选择策略与自适应大邻域搜索（ALNS）结合，仅需少量小规模训练数据即可泛化到大规模MILP",
+  "在组合优化启发式生成和大规模MILP求解两个层面均验证了方法有效性"
+ ],
+ "method_framework": "LLM-LNS框架包含两个核心组件：(1)双层自进化LLM智能体——内层通过进化过程迭代改进启发式策略，外层通过进化提示策略维护策略多样性；(2)自适应大邻域搜索（ALNS）——LLM智能体对决策变量打分，选择top-k变量构建邻域，求解子问题并更新解。整个过程为迭代式的破坏-修复循环，LLM自动发现有效的邻域搜索策略。",
+ "experiment_framework": "两组实验：(1)组合优化启发式生成任务（在线装箱问题、旅行商问题），对比FunSearch、EOH等自动启发式设计方法；(2)大规模MILP问题求解，对比传统LNS方法（ACP）、ML-based LNS（CL-LNS）、商业求解器（Gurobi、SCIP）和ML优化框架（GNN&GBDT、Light-MILPopt）。",
+ "takeaways": [
+  "双层自进化LLM智能体在启发式生成任务上超越FunSearch和EOH等SOTA智能体方法",
+  "完整LLM-LNS框架在大规模MILP问题上超越Gurobi、SCIP等商业求解器和ML-based优化方法",
+  "仅需少量小规模训练数据，LLM即可自动发现有效的邻域搜索策略并泛化到大规模问题"
+ ],
+ "weaknesses": [
+  "与主线研究方向（可靠性×医学影像/多模态大模型推理）关联较弱，属于运筹优化领域",
+  "LLM调用带来额外的计算开销和延迟，实际工业部署成本需进一步评估",
+  "论文未分析LLM生成策略的可解释性和可靠性，在关键场景下策略错误可能导致求解失败"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/PointTruss_K-Truss for Point Cloud Registration.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/PointTruss_K-Truss for Point Cloud Registration.pdf",
+ "title": "PointTruss: K-Truss for Point Cloud Registration",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "k-truss引入点云配准，三角形约束提升鲁棒性",
+ "innovations": [
+  "将k-truss概念引入点云配准，利用三角形约束提高鲁棒性",
+  "基于共识投票的低尺度采样策略提取点云结构骨架",
+  "空间分布评分平衡内点覆盖和均匀性"
+ ],
+ "method_framework": "构建兼容性图，应用k-truss分解识别三角形支持的子图，通过加权SVD生成变换假设，使用空间分布评分选择最优变换",
+ "experiment_framework": "在KITTI、3DMatch和3DLoMatch数据集上评估，使用FPFH和FCGF描述符，比较旋转误差、平移误差和配准召回率",
+ "takeaways": [
+  "三角形结构作为内点指示器能有效过滤离群点",
+  "k-truss分解在多项式时间内实现，比团方法更高效",
+  "空间分布评分函数能有效避免选择集中在稀疏局部聚类的变换"
+ ],
+ "weaknesses": [
+  "方法依赖于初始对应质量，在特征提取失败时性能下降",
+  "k-truss参数k的选择可能需要针对不同场景调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

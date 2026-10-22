@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Stopping Computation for Converged Tokens In Masked DIFFUSION-LM Decoding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Stopping Computation for Converged Tokens In Masked DIFFUSION-LM Decoding.pdf",
+ "title": "Stopping Computation for Converged Tokens in Masked Diffusion-LM Decoding",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "SureLock锁定收敛token减少30-50%计算，但阈值调节和泛化性存疑。",
+ "innovations": [
+  "提出SureLock：在掩码扩散LM迭代解码中，一旦某位置的后验跨步骤稳定（满足sure condition），就永久锁定该位置",
+  "锁定后跳过该位置的query projection和feed-forward子层，同时缓存其attention K/V供其他位置继续attend",
+  "将每步计算复杂度从O(N²d)降至O(MNd)，其中M为未锁定token数，随迭代推进M单调递减",
+  "理论证明：仅监控锁定步的局部KL散度即可界定最终token概率的偏差"
+ ],
+ "method_framework": "在掩码扩散LM的逐步去掩码过程中，监控每个未掩码位置的后验分布变化。当某位置的后验在连续步骤间足够稳定（局部KL散度低于阈值），判定为已收敛并锁定该位置。锁定后：(1)该位置不再计算query投影和FFN；(2)缓存其K/V向量，其他未锁定位置仍可正常attend到它。这样每步只需对M个未锁定位置做完整计算，M随迭代推进逐渐减少。",
+ "experiment_framework": "在LLaDA-8B掩码扩散语言模型上验证，对比无锁定的标准采样器。指标包括：(1)算法FLOPs减少比例（30-50%）；(2)生成质量（困惑度等）与基线的对比。",
+ "takeaways": [
+  "掩码扩散LM中大量token在迭代早期就已收敛，继续对它们做完整计算是严重的资源浪费",
+  "SureLock通过逐步锁定收敛token，在不损失生成质量的前提下减少30-50%计算量",
+  "局部KL散度是判断token收敛性的充分指标，理论上可保证最终输出概率的偏差有界"
+ ],
+ "weaknesses": [
+  "锁定阈值需要手动调节，不同任务和模型可能需要不同的最优阈值",
+  "仅在LLaDA-8B一个模型上验证，对其他掩码扩散LM的适用性未证明",
+  "理论保证是偏差有界而非零偏差，极端情况下仍可能影响最终生成质量"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "计算优化与可靠性主线无实质交点，仅为工程效率提升",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

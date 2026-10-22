@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Zero-Shot Generalization of GNNs over Distinct Attribute Domains.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Zero-Shot Generalization of GNNs over Distinct Attribute Domains.pdf",
+ "title": "Zero-Shot Generalization of GNNs over Distinct Attribute Domains (STAGE)",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "STAGE假设属性依赖跨域不变，实现GNN零样本泛化，但假设验证不足",
+ "innovations": [
+  "编码属性间统计依赖而非单个属性值，绕开测试图属性类型/名称/语义/基数变化",
+  "假设属性依赖在域变化下不变，为一族域漂移给出可证明的泛化保证",
+  "在属性空间各异的多图数据集上训练后，可零样本迁移到全新属性图"
+ ],
+ "method_framework": "传统GNN无法泛化到属性不同的新图。STAGE不显式依赖具体属性值，而是建模属性之间的统计依赖结构；假设该依赖在节点属性类型/命名/语义/基数变化下保持不变，从而实现跨属性域的零样本泛化。",
+ "experiment_framework": "在多个属性空间(类型与数量各异)的图数据集上训练，在属性全新的图上评测零样本表现；对比忽略属性/依赖预训练特征的方法；报告相对提升。",
+ "takeaways": [
+  "属性间统计依赖比属性值本身更具跨域不变性",
+  "STAGE对一族属性域漂移有可证明泛化保证",
+  "在中等规模数据上实现强零样本跨域GNN表现"
+ ],
+ "weaknesses": [
+  "属图机器学习泛化，与主线(医学影像/多模态推理)关联有限，仅沾边鲁棒/泛化",
+  "依赖'属性依赖跨域不变'假设，强语义漂移下是否成立前9页未充分检验",
+  "仅中等规模数据集，大规模工业图上的零样本收益需完整实验确认"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Vowelprompt_Hearing Speech Emotions from Text via Vowel-Level Prosodic Augmentation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Vowelprompt_Hearing Speech Emotions from Text via Vowel-Level Prosodic Augmentation.pdf",
+ "title": "VowelPrompt: Hearing Speech Emotions from Text via Vowel-Level Prosodic Augmentation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "元音韵律提示增强LLM情感识别，但依赖对齐且信息利用不完整",
+ "innovations": [
+  "基于语音学证据提出元音级韵律特征提取框架，从时间对齐的元音片段中提取基频、能量、时长描述符并离散化为自然语言提示",
+  "设计SFT+RLVR(GRPO)两阶段训练流程，提升结构化输出遵循度与跨域跨说话人泛化能力",
+  "在文本-only LLM架构下实现可解释的情感推理，无需推理时加载音频编码器"
+ ],
+ "method_framework": "首先通过强制对齐获取元音时间片段，提取每个元音的F0水平/斜率/变异性、强度水平/变异性、片段时长等低层描述符；经说话人和元音类型归一化后，用分位数分箱离散化并转换为自然语言描述（如high F0, rising, loud, lengthened）；将这些描述符附加到转录文本后供LLM联合推理。模型适配采用两阶段：SFT冷启动对齐 + RLVR(GRPO)强化优化推理质量与格式遵循。",
+ "experiment_framework": "数据集：IEMOCAP、MELD、CaFE、EmoDB、ASVP-ESD共5个基准。基线：wav2vec2.0类自监督方法、AudioPaLM等音频-语言LLM、文本提示增强方法。指标：情感分类准确率。评测条件覆盖zero-shot、few-shot、fine-tuned、cross-domain、cross-linguistic。",
+ "takeaways": [
+  "元音级细粒度韵律描述相比话语级粗粒度描述能显著提升LLM情感识别性能",
+  "SFT+RLVR两阶段训练比纯SFT在结构化输出和鲁棒性上有进一步提升",
+  "方法在跨域和跨语言条件下均保持优势，说明元音韵律特征具有较好的泛化性"
+ ],
+ "weaknesses": [
+  "依赖强制对齐步骤，在噪声严重或发音不清晰的语音上对齐质量可能下降，影响特征提取可靠性",
+  "仅利用元音片段的韵律特征，未充分利用辅音区域的频谱情绪线索，信息利用不完整",
+  "两阶段训练流程较复杂，RLVR阶段的可验证奖励设计细节在正文中披露有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "情感识别与可靠性主线无实质交点，仅文本处理方法有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

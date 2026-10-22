@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Compositional Causal Reasoning Evaluation in Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Compositional Causal Reasoning Evaluation in Language Models.pdf",
+ "title": "Compositional Causal Reasoning Evaluation in Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "玩具问题上的组合因果推理评估，证据有限且缺乏敏感性分析",
+ "innovations": [
+  "提出组合因果推理(CCR)概念，统一因果推理与组合推理，度量因果量(ATE、PNS)在图上的组合/分解与传播",
+  "构建可穷尽评估组合一致性的框架，同时度量外部有效性(对照真值)与内部一致性(不同问法答案是否自洽)",
+  "在CandyParty数学题上揭示随因果路径复杂度上升的分类化错误模式，发现仅o1正确识别交换性"
+ ],
+ "method_framework": "基于结构因果模型(SCM/DAG)定义CCR任务，用相对绝对误差(RAE)阈值(0.1)判定推理是否外部有效/内部一致，对每个模型采样1000次PNS估计，按VC/VI/IC/II四象限刻画推理画像。",
+ "experiment_framework": "在单一CandyParty二值逻辑或SCM玩具问题上，测试Llama2/3/3.1/3.1-Math、Phi-3-Mini、GPT-4o、o1共7个架构；以RAE≤0.1占比≥90%判定有效，按模型与路径复杂度分析错误 taxonomy。",
+ "takeaways": [
+  "模型越大或越新，CCR错误并不单调下降，o1是唯一正确推断组合交换性的模型",
+  "内部一致性与外部有效性需分开评估：回答自洽不等于回答正确",
+  "错误随因果路径复杂度增加而增加（o1除外），暴露组合泛化短板"
+ ],
+ "weaknesses": [
+  "作者明确声明仅为proof-of-concept，只在一个玩具二值问题上验证，未系统benchmark真实任务",
+  "证据广度有限(单任务、1000次采样)，结论的普适性与统计显著性存疑",
+  "阈值(RAE≤0.1、90%)先验设定缺乏敏感性分析，可能影响画像划分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.33,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

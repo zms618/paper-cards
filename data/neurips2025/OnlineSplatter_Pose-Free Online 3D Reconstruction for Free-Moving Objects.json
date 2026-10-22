@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/OnlineSplatter_Pose-Free Online 3D Reconstruction for Free-Moving Objects.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/OnlineSplatter_Pose-Free Online 3D Reconstruction for Free-Moving Objects.pdf",
+ "title": "OnlineSplatter: Pose-Free Online 3D Reconstruction for Free-Moving Objects",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "双键记忆模块实现无姿态在线3D重建，但依赖外部分割且泛化性存疑",
+ "innovations": [
+  "双键3D物体记忆模块结合潜在特征与空间方向键",
+  "在线前馈框架实现恒定计算复杂度",
+  "空间引导的记忆读取机制与稀疏化策略"
+ ],
+ "method_framework": "基于第一帧锚定坐标系，通过Transformer处理参考帧、当前帧和记忆读取三种token，解码为3D高斯表示，双键记忆模块存储和检索物体特征",
+ "experiment_framework": "在GSO和HO3D数据集上评估，分早中晚三阶段测试，使用PSNR、SSIM和LPIPS指标比较基线",
+ "takeaways": [
+  "双键记忆机制有效平衡视觉几何特征与空间覆盖",
+  "在线前馈设计避免全局优化，适合实时应用",
+  "分阶段训练策略提高模型收敛质量"
+ ],
+ "weaknesses": [
+  "依赖外部视频分割模型获取物体掩码",
+  "需要物体运动相对自由且部分可见",
+  "实验主要在合成数据上进行，真实场景泛化性待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

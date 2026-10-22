@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Function-Centric Graph Neural Network Approach for Predicting Electron Densities.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Function-Centric Graph Neural Network Approach for Predicting Electron Densities.pdf",
+ "title": "A FUNCTION-CENTRIC GRAPH NEURAL NETWORK APPROACH FOR PREDICTING ELECTRON DENSITIES",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "BOA用基函数重叠矩阵实现跨原子基变换，预测电子密度低秩矩阵展开。",
+ "innovations": [
+  "提出 Basis Overlap Architecture：消息传递时先用重叠矩阵 W^ab_{μν}=∫ω^μ_a ω^ν_b 把发送端特征投影到接收端基上，再乘 (W^aa)^{-1} 得接收端基下的最小二乘最佳拟合系数，实现真正的跨原子基变换",
+  "密度改用二次（低秩密度矩阵块 Γ^{ab}_{μν}）展开 ρ(r)=Σ_a ĝ^l_aĝ^r_a+Σ_{(a,b),o} g^{l,ab}_o g^{r,ab}_o，全程不显式构造全密度矩阵与所有基函数对乘积，也不需要 floating basis 或 virtual nodes",
+  "围绕「特征是被视为函数的系数」这一语义重设算子：用 Coulomb 矩阵 C^{aa}_{μν}=∫∫ω^μ(r)ω^ν(r′)/|r−r′| 算标量门控做非线性，用 n^m_a=√(h^T W^aa h) 做 L2 归一化，注意力权重亦由两节点特征重叠 α^{abmn}=∫h^m_a h^n_b 经 MLP 得到"
+ ],
+ "method_framework": "节点/边特征被解释为以 def2-QZVPPD 全未收缩 GTO 基展开的函数；消息传递用基函数重叠矩阵把发送端特征投影并逆变换到接收端基（最小二乘最佳拟合），再以重叠量经 MLP 得到的注意力加权聚合；密度按低秩密度矩阵块二次展开输出。",
+ "experiment_framework": "QM9（VASP 与 PySCF 两套参考密度）与 MD 六分子数据集，指标为 NMAE；对比 eqDeepDFT/InfGCN/ChargE3Net/SCDP/ELECTRA/ResNet，并在 QMugs 至近 200 原子未见分子上测外推。",
+ "takeaways": [
+  "把「消息」看作函数、把坐标系变换看作基变换，可以自然获得几何与基组双重归纳偏置，比单纯堆 MLP 更省参数也更稳",
+  "用重叠/库仑矩阵等预先算好、与数据无关的物理积分矩阵来构造注意力和归一化，是向等变网络里注入先验的低成本手段",
+  "低秩密度矩阵块表示让模型能外推到近 200 原子（仅在 9 重原子 QM9 上训练），说明物理启发的参数化本身就是最好的外推增强"
+ ],
+ "weaknesses": [
+  "评测只有归一化平均绝对误差 NMAE 一个标量，且是全空间积分度量，会掩盖成键区与核附近的局部误差；大分子外推也只报整体 NMAE，缺分尺寸的误差分解",
+  "表 1 中 eqDeepDFT/InfGCN/ChargE3Net/SCDP/ELECTRA 的误差是转引自 Fu et al. (2024) 与 Li et al. (2025)、非同设备复现，且 VASP 与 PySCF 两套参考密度下只有部分方法可比，跨参考的优劣无法直接对齐",
+  "「换到 MD 无需超参调优」只验证了一次且未说明训练步数从多少降到 20 万；初始密度预训练、Coulomb 门控非线性、双 cutoff re/rmp 等模块各自贡献全无隔离消融；正文在表 2 处截断，QMugs 大分子泛化表不可见"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "量子化学计算方法，与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

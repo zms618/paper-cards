@@ -1,0 +1,38 @@
+{
+ "key": "icml2025/Teaching Language Models to Critique via Reinforcement Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Teaching Language Models to Critique via Reinforcement Learning.pdf",
+ "title": "Teaching Language Models to Critique via Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "RL训练代码批评者直接优化纠正效果，支持迭代修正但成本高",
+ "innovations": [
+  "用RL直接优化批评者的反馈对生成器纠正效果，而非模仿人类反馈或用成对偏好",
+  "证明RL训练的批评者可跨生成器迁移（与GPT-4o生成器配对仍有效）",
+  "批评者同时充当生成式奖励模型，支持迭代critique-revision的测试时扩展，缓解复合错误"
+ ],
+ "method_framework": "冻结一个代码生成器；训练一个critic模型接收生成器输出并产出反馈文本；RL奖励定义为生成器根据critic反馈修正后代码的pass@1提升；通过PPO类方法优化critic；推理时多轮迭代：生成器出代码→critic给反馈→生成器修正，逐步提升通过率。",
+ "experiment_framework": "在CodeContests上评测，critic基于Qwen2.5-Coder-32B微调；对比基线critic（GPT-4o critic、base模型critic等）；相对提升最高106.1%；跨生成器测试（与GPT-4o生成器配对）；报告多轮迭代下pass@1随轮次的扩展曲线与5 seeds标准误。",
+ "takeaways": [
+  "critic应直接以纠正效果为奖励目标，而非模仿人类评分或偏好对",
+  "RL训练的critic可跨生成器迁移，不局限于训练时配对的base model",
+  "迭代critique-revision是有效的测试时扩展方式，能持续缓解复合错误"
+ ],
+ "weaknesses": [
+  "奖励信号依赖代码可执行性（单元测试），在不可执行/开放式任务上如何获得奖励未讨论",
+  "多轮迭代的推理成本高，性价比随轮次衰减的曲线需权衡",
+  "critic与generator的协同优化是否比联合RL更优未充分对比",
+  "仅在代码生成域验证，迁移到数学推理/多模态任务的证据缺失"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Tell Me Habibi, IS it Real Or FAKE.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tell Me Habibi, IS it Real Or FAKE.pdf",
+ "title": "Tell Me Habibi, Is it Real or FAKE?",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "构建首个阿英语码转换深伪数据集，检测难度高但方法创新有限",
+ "innovations": [
+  "构建首个大规模阿-英视听深伪数据集ArEnAV，含话内语码转换、方言变异（MSA/埃及/黎凡特/海湾方言）及纯阿语内容",
+  "设计针对英阿双语的生成pipeline，集成4个TTS与2个lip-sync模型，用GPT-4.1-mini做few-shot语码转换文本改写",
+  "与现有单语/多语数据集、SOTA深伪检测模型及人类评估进行全面对比，揭示其对模型和人类均更难检测"
+ ],
+ "method_framework": "从真实视频提取音频/人脸/文本，用few-shot提示驱动GPT-4.1-mini进行语码转换式文本改写，再经TTS生成语音、lip-sync生成口型，产出真实/伪造视听对。数据集覆盖387k视频、765小时，含双语切换与双言（MSA↔方言）切换。",
+ "experiment_framework": "对比现有单语与多语深伪数据集；在SOTA深伪检测模型上benchmark；辅以人类用户研究；指标为检测AUC/准确率等，分析语码转换与方言变异对检测性能的影响。",
+ "takeaways": [
+  "语码转换会显著迷惑以单语数据训练的深伪检测模型，构成被既有数据集忽视的真实挑战",
+  "阿拉伯语的双言性（MSA与多方言）进一步加大了多语言深伪检测难度",
+  "ArEnAV对模型与人类都更难检测，可推动多语言多模态深伪检测研究"
+ ],
+ "weaknesses": [
+  "数据集伪造由固定4个TTS+2个lip-sync生成，攻击模型种类有限，对未来未知伪造方法的泛化性未知",
+  "侧重阿英双语场景，对其他语码转换组合（如中英）的外推性未验证",
+  "核心贡献为数据集+pipeline，未提出新的检测模型，检测方法层面的技术增量有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "深伪检测与可靠性主线无实质交点，仅数据集构建有方法论价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

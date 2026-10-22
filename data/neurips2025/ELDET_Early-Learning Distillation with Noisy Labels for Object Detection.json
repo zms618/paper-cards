@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/ELDET_Early-Learning Distillation with Noisy Labels for Object Detection.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/ELDET_Early-Learning Distillation with Noisy Labels for Object Detection.pdf",
+ "title": "ELDET: Early-Learning Distillation with Noisy Labels for Object Detection",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "利用早期学习现象处理检测噪声，但需手动确定终止点",
+ "innovations": [
+  "发现定位噪声先于分类噪声被模型记忆",
+  "任务特定的早期学习阶段检测方法",
+  "结合知识蒸馏和EMA的混合训练框架"
+ ],
+ "method_framework": "利用早期学习现象，在模型开始记忆噪声标签前冻结模型作为教师，通过知识蒸馏和EMA更新指导学生模型，同时处理分类和定位噪声",
+ "experiment_framework": "PASCAL VOC/MS COCO/VinDr-CXR数据集，模拟定位/分类/组合噪声，与ORSOD/ADELE对比，使用AP@50指标",
+ "takeaways": [
+  "任务特定指标监测早期学习阶段",
+  "不同任务使用不同EMA更新策略",
+  "方法兼容多种检测架构"
+ ],
+ "weaknesses": [
+  "需要确定两个不同的早期学习终止点",
+  "计算开销增加（EMA更新）",
+  "未探索噪声类型比例变化的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

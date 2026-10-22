@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/SPOT Spatiotemporal Prompt Optimization for Motion-Stabilized MLLM-Guided Video Segmentation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SPOT Spatiotemporal Prompt Optimization for Motion-Stabilized MLLM-Guided Video Segmentation.pdf",
+ "title": "SPOT Spatiotemporal Prompt Optimization for Motion-Stabilized MLLM-Guided Video Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.4
+ },
+ "one_line": "提示点优化实现视频分割，但依赖端点信息且泛化受限",
+ "innovations": [
+  "布朗桥损失建模物体运动轨迹",
+  "几何感知提示质量损失确保空间一致性",
+  "仅通过约束MLLM输出行为实现时序一致性"
+ ],
+ "method_framework": "SPOT框架结合MLLM与SAM，通过布朗桥损失和提示质量损失优化提示点时空行为，无需视频预训练或复杂架构修改",
+ "experiment_framework": "在Ref-YouTubeVOS、Ref-DAVIS-2017、MeVIS等数据集上评估，与SAMWISE、VISA等SOTA方法对比J&F、J、F指标",
+ "takeaways": [
+  "物理约束可激活静态预训练模型的时空推理能力",
+  "提示点优化比模型架构修改更高效",
+  "方差加权机制平衡端点精确性与中间帧运动容差"
+ ],
+ "weaknesses": [
+  "依赖端点位置信息，对无标注视频片段适应性有限",
+  "仅优化提示点而非模型本身，可能限制泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频分割方法，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

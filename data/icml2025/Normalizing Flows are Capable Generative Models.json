@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Normalizing Flows are Capable Generative Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Normalizing Flows are Capable Generative Models.pdf",
+ "title": "Normalizing Flows are Capable Generative Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 4,
+  "overall": 5.9
+ },
+ "one_line": "改进归一化流架构提升ImageNet生成质量，但与可靠性主线无关",
+ "innovations": [
+  "把MAF逐维自回归推广为块自回归(D=CS^2)并用因果ViT在image patch上实现，层间交替置换方向，模块化可扩展、训练像标准Transformer一样稳定",
+  "发现用σ≈0.05的高斯噪声(而非传统dequantize的0.002均匀噪声)增广训练是高质量采样关键：拓宽逆模型f^{-1}的支撑以缓解采样OOD",
+  "用Tweedie公式做训练后score-based去噪x=y+σ²∇_y log p(y)恢复干净样本，并首次把CFG引导(µ/α在条件与无条件间插值)移植到归一化流"
+ ],
+ "method_framework": "T个flow block堆叠：每block先按π_t置换(除π_0恒等外取逆序)，再过因果Transformer输出µ_t,α_t，对置换后隐变量做z^{t+1}_i=(z̃^t_i-µ)⊙exp(-α)；逆过程逐block解出x；训练MLE损失0.5||z^T||²+ΣΣα；采样时z~N(0,I)→y=f^{-1}(z)→去噪；条件/无条件引导按(1+w)·cond-w·uncond调整。",
+ "experiment_framework": "无条件与类条件ImageNet 64×64、类条件ImageNet 128×128、AFHQ 256×256；指标BPD(似然)与FID(50K样本)；基线Glow/Flow++/PixelCNN/SPN/Sparse Transformer、Improved DDPM/VDM/Flow Matching/NFDM、EDM/ADM/BigGAN；消融噪声σ与去噪、引导权重w、深度T×K缩放、VP与channel耦合对照。",
+ "takeaways": [
+  "无条件ImageNet 64 BPD达2.99，首次sub-3，大幅超越此前最佳NF(Flow++3.69)与扩散类(VDM3.40/NFDM3.20)",
+  "类条件ImageNet 64 FID 2.66(配引导)优于BigGAN 4.06、接近iCT 3.25；128 FID 5.03——首次证明纯NF生成质量可与扩散/GAN比肩",
+  "去噪与噪声增广有机配合：表面看小σ原始样本FID更好，去噪后中等σ最优；似然损失与FID强正相关，T=K时容量分配最佳"
+ ],
+ "weaknesses": [
+  "落点为通用图像生成/密度估计，与主任务的医学影像/多模态大模型推理可靠性完全无关；似然与样本质量的权衡未在医学/安全场景验证",
+  "采样仍需逐block自回归逆变换，作者未报告与扩散/自回归模型在推理时延上的系统对比；FID虽改善但128(5.03)/类条件仍落后EDM(1.55)",
+  "关键技术(高斯噪声σ≈0.05、去噪、引导)多为经验发现，缺乏为何窄均匀噪声导致病态的严格证明；最佳配置靠网格搜索P-Ch-T-K，超参敏感"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

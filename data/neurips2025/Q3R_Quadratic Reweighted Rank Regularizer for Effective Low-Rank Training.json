@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Q3R_Quadratic Reweighted Rank Regularizer for Effective Low-Rank Training.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Q3R_Quadratic Reweighted Rank Regularizer for Effective Low-Rank Training.pdf",
+ "title": "Q3R: Quadratic Reweighted Rank Regularizer for Effective Low-Rank Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "Q3R二次重加权秩正则化减少参数，但计算复杂度仍与目标秩相关",
+ "innovations": [
+  "基于IRLS框架的二次重加权秩正则化Q3R",
+  "AdamQ3R优化器专门处理Q3R正则化损失",
+  "平滑对数行列式作为秩代理目标，避免直接计算SVD"
+ ],
+ "method_framework": "Q3R通过重加权算子实现平滑对数行列式的二次近似，周期性更新重加权算子和平滑参数，直接优化低秩结构而非后处理截断",
+ "experiment_framework": "ViT-Tiny/CIFAR-10预训练，ViT-Base/CIFAR-100预训练，BERT/GLUE微调，与LoRA、LoRITa对比参数保留率与性能",
+ "takeaways": [
+  "重加权算子设计避免每步完整SVD计算，降低计算开销",
+  "平滑参数与目标秩关联机制控制期望秩",
+  "AdamQ3R分离正则化项与网络损失提升泛化"
+ ],
+ "weaknesses": [
+  "计算复杂度仍与目标秩相关，大模型可能仍有负担",
+  "实验主要在标准数据集，缺乏真实医学影像等落地区域验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

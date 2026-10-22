@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Resolving Lexical Bias in Model Editing.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Resolving Lexical Bias in Model Editing.pdf",
+ "title": "Resolving Lexical Bias in Model Editing",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "解耦表示空间缓解编辑词汇偏置，但未解决根本问题。",
+ "innovations": [
+  "指出现有权重保持型(adapter)编辑方法依赖表示空间距离做范围判定，却受强词汇偏置支配，会对含重叠词的无关prompt施加编辑。",
+  "提出用学习到的投影网络把表示空间解耦：让无关prompt彼此远离、同义改写彼此靠近。",
+  "PENME 在保持 SOTA 编辑效果的同时推理更高效、且可跨不同架构迁移。"
+ ],
+ "method_framework": "在 adapter/键值码本编辑之上引入一个可学习投影网络，在其上训练距离度量：最小化同义改写对的距离、最大化词面相似但语义无关样本对的距离，从而构造解耦的表示空间；scoping 机制据此更准确判断是否触发编辑，避免词汇偏置导致的误改。",
+ "experiment_framework": "在标准模型编辑基准(如 CounterFact/zsRE 类)上对比 ROME、GRACE、MELO 等；指标含编辑准确率、泛化(对改写prompt)、保留(对无关prompt不被误改)、推理效率与跨架构适配性；并量化投影前后‘无关词汇相似近于语义改写’的样本比例下降。",
+ "takeaways": [
+  "词汇偏置是 adapter 式模型编辑被误触发的关键隐患。",
+  "学习投影能显著拉开无关prompt、拉近同义改写，使编辑定位更精确。",
+  "PENME 在 SOTA 编辑质量下兼顾推理效率与跨架构通用性。"
+ ],
+ "weaknesses": [
+  "仅在表示空间加投影/度量，未从根本上解决编辑对模型其他知识的潜在干扰。",
+  "学习投影需要额外训练数据与训练流程，新增依赖与维护成本。",
+  "对大规模、多次连续编辑的累积稳定性与灾难性遗忘控制在正文中着墨有限。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Gradual Transition from Bellman Optimality Operator to Bellman Operator in Online Reinforcement Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Gradual Transition from Bellman Optimality Operator to Bellman Operator in Online Reinforcement Learning.pdf",
+ "title": "Gradual Transition from Bellman Optimality Operator to Bellman Operator in Online Reinforcement Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "简单退火方案插值两个Bellman算子，缺乏理论深度和充分实验验证",
+ "innovations": [
+  "提出将critic学习目标从Bellman最优算子渐进退火到Bellman算子的框架，早期加速学习后期抑制偏差",
+  "利用expectile loss参数τ(从接近1退火到0.5)实现两个算子间的平滑连续插值",
+  "将该方法与TD3和SAC结合，在连续动作任务上显著优于基线且对最优性超参更鲁棒"
+ ],
+ "method_framework": "连续动作空间中maxQ(s,a)不可计算，actor-critic通常用Bellman期望算子估计当前策略Q值导致学习慢。本文用expectile loss构造介于最优算子和期望算子之间的目标，退火参数τ从近1(接近最优)线性降到0.5(等价期望)，实现早期快速逼近最优Q值、后期减小过估计偏差。",
+ "experiment_framework": "在多种locomotion和manipulation连续控制任务上评估，分别与TD3和SAC结合，对比原始TD3/SAC及其他连续动作RL算法；指标为最终性能、样本效率和对最优性相关超参的鲁棒性；报告显著优于现有方法。",
+ "takeaways": [
+  "Bellman最优算子加速Q值学习但引入过估计偏差，Bellman算子反之，退火结合两者可兼得",
+  "expectile loss参数τ可实现最优/期望算子间的连续平滑插值，且易于嵌入现有actor-critic",
+  "早期过估计偏差反而促进探索，后期切换到低偏差算子有利于策略收敛"
+ ],
+ "weaknesses": [
+  "退火schedule(线性τ)较为简单，缺乏自适应或理论最优schedule分析",
+  "方法本质是两个已有算子的插值组合，理论新意有限",
+  "前9页内未看到完整的消融实验表和与SOTA方法的详细数值对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

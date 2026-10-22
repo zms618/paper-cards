@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Progressive Test Time Energy Adaptation for Medical Segmentation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Progressive Test Time Energy Adaptation for Medical Segmentation.pdf",
+ "title": "Progressive Test Time Energy Adaptation for Medical Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "能量模型用于医学分割测试时适应，但扰动策略有局限",
+ "innovations": [
+  "首个能量模型用于医学图像分割测试时适应",
+  "基于对抗扰动探索能量空间并强制形状先验",
+  "区域能量模型实现92%以上异常检测准确率"
+ ],
+ "method_framework": "训练阶段：使用源数据和对抗扰动训练区域能量模型；测试阶段：通过最小化能量分数渐进更新分割模型，使其与目标分布对齐。",
+ "experiment_framework": "8个公共MRI和X射线数据集(心脏、脊髓、肺分割)，三种分割网络(UNet、MedNeXt、SwinUNETR)，对比TENT、CoTTA、TEA等方法，使用DSC和ASD指标。",
+ "takeaways": [
+  "能量模型作为形状分类器可有效识别异常分割区域",
+  "对抗扰动策略有效生成负样本用于训练能量模型",
+  "渐进式更新机制提升模型在目标域的泛化能力"
+ ],
+ "weaknesses": [
+  "对抗扰动可能引入不相关噪声",
+  "能量模型训练依赖源域数据分布",
+  "未探索不同能量模型架构的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "医学分割测试时适应，触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

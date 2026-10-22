@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/AntiStyler_Defending Object Detection Models Against Adversarial Patch Attacks Using.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/AntiStyler_Defending Object Detection Models Against Adversarial Patch Attacks Using.pdf",
+ "title": "AntiStyler Defending Object Detection Models Against Adversarial Patch Attacks Using",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "风格移除技术实现零样本对抗补丁防御，但泛化性和效率存疑。",
+ "innovations": [
+  "将风格转换(ST)改造为风格移除(SR)技术",
+  "完全无训练、零样本的防御方法，模型/补丁/攻击无关",
+  "四阶段处理管道实现高效实时防御(10-12 FPS)"
+ ],
+ "method_framework": "AntiStyler包含四个阶段：风格移除(使用随机值填充和AntiStyle模型)、过滤(识别差异最大的像素)、增强(应用空间滤波器优化掩码)、掩码(应用负掩码到输入图像)。",
+ "experiment_framework": "在COCO、INRIA(数字)和Superstore、APRICOT(物理)数据集上评估，对比5种SOTA防御方法，使用多种攻击方法，测量mAP和处理时间。",
+ "takeaways": [
+  "风格移除技术可有效识别对抗补丁而不影响良性图像性能",
+  "空间滤波器增强阶段对提高掩码质量至关重要",
+  "VGG19作为风格移除骨干网络效果最佳"
+ ],
+ "weaknesses": [
+  "处理时间(92.7ms)虽满足实时要求但略高于无防御模型(43.2ms)",
+  "仅针对对抗补丁攻击，对其他类型的对抗攻击防御效果未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "对抗防御属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

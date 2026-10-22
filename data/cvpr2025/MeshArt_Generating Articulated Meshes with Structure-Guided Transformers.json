@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/MeshArt_Generating Articulated Meshes with Structure-Guided Transformers.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/MeshArt_Generating Articulated Meshes with Structure-Guided Transformers.pdf",
+ "title": "MeshArt Generating Articulated Meshes with Structure-Guided Transformers",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "分层transformer生成带关节3D网格，结构覆盖提升57.1%",
+ "innovations": [
+  "分层transformer框架统一结构生成与网格生成",
+  "结构引导的连接面机制确保部分间平滑过渡",
+  "扩展PartNet数据集增加6倍带关节标注的3D对象"
+ ],
+ "method_framework": "MeshArt采用两级生成：首先用transformer生成带关节属性的对象结构，然后基于结构和连接面信息生成各部分的三角形网格，统一表示为三角形序列预测任务。",
+ "experiment_framework": "在扩展的Articulated PartNet数据集上评估，对比NAP和CAGE基线，使用AID、ID、FID等指标衡量结构和几何质量。",
+ "takeaways": [
+  "将结构生成与几何生成解耦的分层方法",
+  "连接面机制确保部分间平滑过渡",
+  "扩展数据集对关节物体生成的重要性"
+ ],
+ "weaknesses": [
+  "仅支持三种关节类型(固定、旋转、平移)",
+  "训练计算成本高，需要多个GPU和多天训练",
+  "部分数量限制在700个面以内"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3D网格生成与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

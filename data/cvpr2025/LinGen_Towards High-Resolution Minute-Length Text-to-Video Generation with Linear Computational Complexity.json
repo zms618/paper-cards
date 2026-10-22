@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/LinGen_Towards High-Resolution Minute-Length Text-to-Video Generation with Linear Computational Complexity.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/LinGen_Towards High-Resolution Minute-Length Text-to-Video Generation with Linear Computational Complexity.pdf",
+ "title": "LinGen Towards High-Resolution Minute-Length Text-to-Video Generation with Linear Computational Complexity",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 6.0
+ },
+ "one_line": "线性复杂度视频生成，效率提升但泛化性存疑",
+ "innovations": [
+  "MATE块替代自注意力机制",
+  "Rotary Major Scan解决邻域保持问题",
+  "Review Tokens校准长程相关性",
+  "TEmporal Swin Attention增强时序一致性"
+ ],
+ "method_framework": "LinGen使用MATE块（MA-branch和TE-branch）替代DiT中的自注意力层，实现线性计算复杂度。MA-branch结合双向Mamba2、RMS和review tokens处理短到长程相关性；TE-branch使用TESA块处理时空邻域相关性。",
+ "experiment_framework": "对比DiT-4B和LinGen-4B在不同分辨率(256p-1024p)和长度(17s-68s)下的计算效率；使用VBench-Long评估与Gen-3、Kling等SOTA模型的视频质量；人类评估A/B比较和消融实验验证各组件有效性。",
+ "takeaways": [
+  "线性计算复杂度架构可显著提升长视频生成效率",
+  "结合SSM与窗口注意力可有效解决邻域保持问题",
+  "渐进式训练和混合训练策略提升视频一致性"
+ ],
+ "weaknesses": [
+  "未充分讨论模型在不同类型视频上的泛化能力",
+  "review tokens的计算开销虽小但未分析其对内存的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成与可靠性主线无关，仅效率提升无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

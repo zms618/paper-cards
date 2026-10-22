@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/SOFT-DI O Improving One-Step Discrete Im-Age Generation with Soft Embeddings.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/SOFT-DI O Improving One-Step Discrete Im-Age Generation with Soft Embeddings.pdf",
+ "title": "Soft-Di[M]O: Improving One-Step Discrete Image Generation with Soft Embeddings",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "软嵌入替代离散token，使单步生成器可微，但与主线关联弱",
+ "innovations": [
+  "提出软嵌入：以输出分布下的期望嵌入替代离散token，兼顾表示保真与全可微",
+  "软嵌入兼容教师骨干与tokenizer解码器且引入最小偏差",
+  "使单步生成器端到端可训练，直接支持GAN细化、可微奖励微调与TTEO"
+ ],
+ "method_framework": "针对单步离散生成器离散token阻断梯度流的问题，用软嵌入（输出分布下的期望嵌入）作为连续可微替代，既保持表示保真又打通梯度；整合进DiMO蒸馏框架后使单步生成器可端到端训练。",
+ "experiment_framework": "在多个MDM教师(MaskBit/MaskGen)上评测；类到图ImageNet-256单步FID达1.56；文本到图经奖励微调后GenEval/HPS高于教师，并可叠加TTEO增益。",
+ "takeaways": [
+  "软嵌入以最小偏差打通了离散单步生成器的梯度流",
+  "可微性使GAN细化/奖励微调/TTEO等后蒸馏改进得以直接应用",
+  "在多教师上取得单步生成SOTA"
+ ],
+ "weaknesses": [
+  "属图像生成蒸馏方向，与主线（LLM可靠性/医学影像/多模态推理）无关联",
+  "期望嵌入近似的偏差随温度/tokenizer变化的敏感性未充分消融",
+  "奖励微调所用奖励模型与医学/多模态推理主线无关"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "图像生成蒸馏与可靠性主线无关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

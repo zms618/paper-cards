@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Learning Representations of Instruments for Partial Identification of Treatment Effects.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Learning Representations of Instruments for Partial Identification of Treatment Effects.pdf",
+ "title": "Learning Representations of Instruments for Partial Identification of Treatment Effects",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "高维工具变量离散映射实现CATE部分识别，但方法局限明显。",
+ "innovations": [
+  "提出将任意高维工具变量映射到离散表示空间的方法，得到有效的CATE边界，无需无混淆性假设",
+  "设计两步法：先学工具表示，再用神经划分紧化边界，避免了数值近似和对抗训练的不稳定性",
+  "理论证明该过程在保证边界有效性的同时降低有限样本估计方差"
+ ],
+ "method_framework": "将工具变量Z通过映射函数投影到离散表示空间；在离散空间上构建部分识别的CATE边界(下界/上界)；两步法：(1)学习工具表示的离散化；(2)对潜在工具空间进行神经划分，逐步紧化边界；通过最小化边界宽度同时保证有效性，降低估计方差。",
+ "experiment_framework": "在合成数据和真实观察性医疗数据上评估；对比传统IV方法和部分识别基线；指标为边界宽度、覆盖概率、估计方差；重点检验有限样本下的可靠性。",
+ "takeaways": [
+  "高维工具变量可通过离散表示映射实现CATE的有效边界估计，适用于无混淆性不成立的场景",
+  "神经划分方法比对抗训练或数值近似更稳定，且能得到更紧的边界",
+  "在医疗决策等需要可靠因果推断的场景中，部分识别边界比点估计更具实用价值"
+ ],
+ "weaknesses": [
+  "离散表示空间的基数选择影响边界紧度和方差的权衡，缺乏自动确定方法",
+  "工具变量的有效性假设(排他性约束)仍需先验保证，方法本身不检验工具有效性",
+  "两步法的误差传播机制未充分讨论，第一步的表示误差如何影响第二步边界宽度"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

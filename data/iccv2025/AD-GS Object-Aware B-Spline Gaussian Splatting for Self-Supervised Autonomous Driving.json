@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/AD-GS Object-Aware B-Spline Gaussian Splatting for Self-Supervised Autonomous Driving.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/AD-GS Object-Aware B-Spline Gaussian Splatting for Self-Supervised Autonomous Driving.pdf",
+ "title": "AD-GS: Object-Aware B-Spline Gaussian Splatting for Self-Supervised Autonomous Driving",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "B样条局部+三角函数全局建模，自监督驾驶场景渲染",
+ "innovations": [
+  "用可学习均匀 B-spline 曲线（矩阵形式，k=6）只优化邻近控制点拟合高斯位移的局部细节，再叠加三角函数全局项 mu(t)=mu+p(t)+Σ a_l sin(lθt)+b_l cos(lθt) 抑制自监督噪声，兼顾局部精度与全局平滑。",
+  "旋转用 B-spline 四元数曲线 R=q(t)=q_{i-k+1}⊙exp(Σ_j w_j B_{j,k}) 建模，绕开普通 B-spline 对单位四元数插值不均匀的问题。",
+  "以 SAM 二值伪分割把场景只拆成 objects/background 两类（不做实例级分割），物体高斯加双向时间可见性掩 ω(t)=ω·exp(-(t-µ_t)²/2s²) 处理突然显隐，并用 Ls=‖s0+s1/Δt̄‖₁ 防止掩模收窄；再用 KNN 近邻 8 个高斯的参数方差做 Lr 刚性正则。"
+ ],
+ "method_framework": "LiDAR 初始化高斯并按 SAM 二值分割分物体/背景；物体用可学习 B-spline（位置）+B-spline 四元数（旋转）+三角函数全局项形变，叠双向时间可见性掩模，背景静止；渲染后以 L1+SSIM、逆深度、光流、分割 BCE 自监督，加 KNN 方差刚性与掩模展开正则。",
+ "experiment_framework": "KITTI（75/50/25% 训练视角）、Waymo、nuScenes；基线含自监督 SUDS/EmerNeRF/PVG/Grid4D 与标注辅助 StreetGS/ML-NSG/4DGF；指标 PSNR/SSIM/LPIPS，单卡 3090。",
+ "takeaways": [
+  "「局部控制点拟合 + 全局函数拟合」的双尺度显式形变设计，可直接迁移到其他用显式函数建模形变的动态场景。",
+  "把伪分割从实例级降为「动/静」二分类、并只监督物体区域光流，用降采样监督粒度来换噪声伪标签下的鲁棒性，思路值得借鉴。",
+  "逆深度直接渲染期望图 1/d̂=Σ(1/d_i)ε_i∏(1-ε_j) 而非先渲染深度再取倒数，规避无高斯射线上的数值不稳定。"
+ ],
+ "weaknesses": [
+  "所给正文缺 Table 2/3/5 的具体数值，Waymo、nuScenes 上的主表与各模块消融表无法核验，消融结论只能凭文字推断。",
+  "全部主表与消融只给单一训练结果，无多种子标准差或显著性检验，KITTI-75% 相对 PVG 的 PSNR +2.03 无法排除训练波动。",
+  "k=6、K=L=6、控制点数取帧数 1/3 等超参数在全数据集上固定，正文未见对序列长度或帧率的扫描，方法在不同序列尺度下的取值依据不足。",
+  "KITTI-25% 极稀疏视角下 PSNR 从 29.16 掉到 24.12，且相对 PVG 的领先幅度明显收窄，正文对此缺定量解释，稀疏观测下的稳定性论证不足。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "自监督驾驶渲染，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

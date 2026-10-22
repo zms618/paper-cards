@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Unlocking the Power of SAM 2 for Few-Shot Segmentation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Unlocking the Power of SAM 2 for Few-Shot Segmentation.pdf",
+ "title": "Unlocking the Power of SAM 2 for Few-Shot Segmentation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "改造SAM 2记忆机制用于小样本分割，提升4.2% mIoU",
+ "innovations": [
+  "指出SAM 2的类无关匹配能力对FSS有用，但直接把支持前景编码为记忆存在支持/查询物体不同的不匹配问题",
+  "生成先验掩码并编码为伪query记忆，使FSS中的同类匹配得以进行",
+  "在PASCAL-5i/COCO-20i上1-shot mIoU提升4.2%"
+ ],
+ "method_framework": "复用SAM 2的记忆-注意力机制：不再仅把支持前景特征作为记忆，而是先生成先验掩码、构造伪query记忆，使支持与查询在同一物体匹配空间中对齐；融合更多query记忆以增强匹配，缓解小样本下的过拟合。",
+ "experiment_framework": "在PASCAL-5i与COCO-20i两个FSS基准上评测；对比朴素SAM 2直接迁移与其他FSS方法；指标为1-shot mIoU(提升约4.2%)。",
+ "takeaways": [
+  "SAM 2的视频记忆机制经改造可有效服务于小样本分割",
+  "伪query记忆解决了FSS中支持/查询物体不一致的匹配难题",
+  "借助基础模型先验可缓解FSS过拟合"
+ ],
+ "weaknesses": [
+  "依赖先验掩码的生成质量，先验不准时误差如何传导未充分分析",
+  "实验限于PASCAL-5i/COCO-20i，对医学/遥感等垂类分割未验证",
+  "推理时记忆机制带来的计算开销未量化"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/A Two-Stage Learning-to-Defer Approach for Multi-Task Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/A Two-Stage Learning-to-Defer Approach for Multi-Task Learning.pdf",
+ "title": "A Two-Stage Learning-to-Defer Approach for Multi-Task Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "将学习延迟扩展至多任务场景，提出两阶段代理损失并证明一致性。",
+ "innovations": [
+  "首次将Learning-to-Defer框架扩展到多任务学习场景，同时处理分类和回归任务的统一延迟机制",
+  "提出两阶段代理损失族，证明其Bayes一致性和(G,R)一致性，收敛到Bayes最优拒绝器",
+  "推导与交叉熵和L1范数agent成本相关的显式一致性界，并将可最小化间隙分析扩展到多专家两阶段情形"
+ ],
+ "method_framework": "多任务L2D框架：模型同时输出分类和回归结果，并通过延迟函数决定是否将决策转给人类专家。两阶段代理损失：第一阶段训练基础预测模型，第二阶段训练延迟器。共享表示学习对一致性保证的影响被显式分析。",
+ "experiment_framework": "两个任务：(1) Pascal VOC目标检测（分类+边界框回归），对比现有L2D方法；(2) 电子健康记录（EHR）分析，联合预测死亡率（分类）和住院时长（回归）。指标包括mAP、延迟分配比例、专家成本权衡。4次独立试验取均值标准差。",
+ "takeaways": [
+  "现有单任务L2D方法在多任务场景下存在显著局限，联合延迟机制效果更好",
+  "多任务L2D在目标检测和EHR两个应用上均验证了有效性",
+  "共享表示学习会影响一致性保证，需要谨慎设计多任务架构"
+ ],
+ "weaknesses": [
+  "仅考虑分类+回归两种任务组合，更复杂的多任务场景未验证",
+  "实验基线对比主要是同一作者团队的前作，缺乏与其他L2D方法的广泛对比",
+  "延迟决策的可解释性和公平性问题未讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多任务延迟决策与可靠性主线交织，方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

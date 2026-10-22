@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/CoT-lized Diffusion_Let’s Reinforce T2I Generation Step-by-step.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/CoT-lized Diffusion_Let’s Reinforce T2I Generation Step-by-step.pdf",
+ "title": "CoT-lized Diffusion: Let’s Reinforce T2I Generation Step-by-step",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.7
+ },
+ "one_line": "MLLM与扩散模型耦合实现3D场景逐步推理，但长期一致性和泛化性存疑",
+ "innovations": [
+  "MLLM与扩散模型紧密耦合的CoT式推理框架",
+  "每步去噪过程中的动态3D布局更新机制",
+  "条件感知注意力机制实现语义和深度条件的解耦注入"
+ ],
+ "method_framework": "CoT-Diff将MLLM驱动的3D布局规划与扩散过程紧密集成，在单个扩散轮次内实现内联场景推理：MLLM评估中间预测，动态更新3D场景布局，并转换为语义条件和深度图，通过条件感知注意力机制注入扩散模型。",
+ "experiment_framework": "3DSceneBench(800个复杂空间关系提示)、DVMP和T2I-CompBench数据集，与FLUX、RPG、EliGen等基线比较，评估空间对齐准确性和3D一致性。",
+ "takeaways": [
+  "MLLM与扩散模型的紧密耦合可显著提升空间控制能力",
+  "条件感知注意力机制能有效处理多模态条件注入",
+  "动态布局更新机制优于静态预规划方法"
+ ],
+ "weaknesses": [
+  "仅评估了5步内的优化，可能限制长期一致性",
+  "依赖特定MLLM(Gemini 2.5 Pro)，泛化性有待验证",
+  "计算开销较大，推理效率较低"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

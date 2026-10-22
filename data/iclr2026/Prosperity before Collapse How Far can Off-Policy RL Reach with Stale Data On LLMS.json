@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Prosperity before Collapse How Far can Off-Policy RL Reach with Stale Data On LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Prosperity before Collapse How Far can Off-Policy RL Reach with Stale Data On LLMS.pdf",
+ "title": "Prosperity before Collapse: How Far can Off-Policy RL Reach with Stale Data on LLMs?",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "提出二阶矩约束缓解陈旧数据导致的离策略RL崩溃现象",
+ "innovations": [
+  "揭示离策略RL中存在繁荣-崩溃(prosperity-before-collapse)现象：适当利用陈旧数据可与在线数据等效",
+  "提出M2PO算法，通过约束重要性权重的二阶矩来抑制极端离群值同时保留有信息更新",
+  "M2PO在256步陈旧度下仍匹配在线策略性能，clip token比例从1.22%降至0.06%"
+ ],
+ "method_framework": "M2PO在PPO类目标中引入二阶矩约束，不同于传统clip仅截断极端重要性权重，M2PO通过约束重要性采样权重的方差（二阶矩），精准屏蔽高方差token的更新，同时保留低方差但有信息的更新。",
+ "experiment_framework": "在6个模型规模(1.7B-32B)、8个数学推理基准和1个编程基准上评估，对比GRPO等基线在不同陈旧度下的性能。指标为准确率和训练稳定性。",
+ "takeaways": [
+  "陈旧rollout数据并非完全无用，可通过适当的策略优化方法充分利用",
+  "二阶矩约束比传统clip更精准地处理离策略偏差",
+  "M2PO支持异步RL训练系统，显著提升LLM推理训练的可扩展性"
+ ],
+ "weaknesses": [
+  "二阶矩约束的理论分析可能不够充分，缺乏收敛性证明",
+  "实验主要在数学推理和编程任务上验证，未覆盖更广泛的RLHF场景",
+  "256步陈旧度的阈值边界在哪里未充分探索"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "离策略RL方法设计有可靠性价值，但未直接触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

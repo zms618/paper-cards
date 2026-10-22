@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Triangle Multiplication IS all You Need for Biomolecular Structure Representations.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Triangle Multiplication IS all You Need for Biomolecular Structure Representations.pdf",
+ "title": "Triangle Multiplication is All You Need for Biomolecular Structure Representations",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.4
+ },
+ "one_line": "简化Pairformer仅保留三角形乘法，生物结构预测SOTA但效率提升有限",
+ "innovations": [
+  "发现仅三角形乘法即可保留高阶几何推理能力，消除三角形注意力和序列注意力仍能匹配SOTA结构预测精度",
+  "设计Streamlined Pairformer（Pairmixer），大幅降低计算和内存开销",
+  "验证在多种生物分子结构类型（蛋白-配体、抗体-抗原、蛋白-核酸、RNA）上的通用性"
+ ],
+ "method_framework": "Pairmixer是AlphaFold3风格Pairformer的简化替代。保留三角形乘法和前馈网络以维持高阶几何交互推理能力，但消除了计算昂贵的三角形注意力和序列注意力。三角形乘法通过矩阵乘法高效实现，而三角形注意力需要L次注意力操作，是主要计算瓶颈。",
+ "experiment_framework": "在RCSB和CASP15测试集上评估蛋白质折叠和对接性能，对比AlphaFold、Chai-1、Boltz-1等SOTA模型；测试蛋白-配体、抗体-抗原、蛋白-核酸、RNA等多种结构类型；测量长序列推理速度和训练成本。",
+ "takeaways": [
+  "三角形注意力对结构预测并非必需，三角形乘法 alone 足以捕捉高阶几何交互",
+  "Pairmixer在保持SOTA精度的同时，长序列推理快4倍，训练成本降低34%",
+  "效率提升使得大规模虚拟筛选和从头结合剂设计等下游应用成为可能"
+ ],
+ "weaknesses": [
+  "仅验证了生物分子结构预测场景，架构简化的通用性未在其他领域探索",
+  "消除注意力后，模型对超长序列（>2048 token）的外推能力未充分验证",
+  "为什么三角形乘法足够而三角形注意力不必要，理论解释不够深入"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "生物结构预测与可靠性主线交点，效率提升具可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Influence Guided Context Selection for Effective Retrieval-Augmented Generation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Influence Guided Context Selection for Effective Retrieval-Augmented Generation.pdf",
+ "title": "Influence Guided Context Selection for Effective Retrieval-Augmented Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "CI代理模型解决RAG上下文选择，依赖标签且计算开销大",
+ "innovations": [
+  "引入上下文影响值(CI)作为综合质量评估指标",
+  "设计分层架构的CI代理模型(CSM)预测CI值",
+  "开发监督训练和端到端训练两种训练策略",
+  "通过数据干预和双损失策略解决CI值分布不平衡问题"
+ ],
+ "method_framework": "将上下文质量评估重新定义为推理时数据估值问题，通过测量移除每个上下文时的性能下降来量化其质量，设计分层架构的CSM模型预测CI值，实现无需复杂超参数调优的上下文选择。",
+ "experiment_framework": "在8个NLP任务和2个LLM主干上评估，包括开放域QA、多跳QA、事实检查、多项选择和长篇QA，使用EM、F1和准确率作为指标，与10个基线方法进行比较。",
+ "takeaways": [
+  "将数据估值思想引入RAG上下文选择，综合查询感知、列表感知和生成器感知",
+  "通过数据干预和双损失策略解决CI值分布不平衡问题",
+  "软上下文选择机制实现端到端训练"
+ ],
+ "weaknesses": [
+  "CI值计算依赖真实标签，推理时需要代理模型近似",
+  "实验主要在通用NLP任务上验证，缺乏在医学影像等特定领域的应用",
+  "计算复杂度较高，虽然比暴力搜索优化但仍需额外计算资源"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

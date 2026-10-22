@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Spark Transformer Reactivating Sparsity in Transformer FFN and Attention.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Spark Transformer Reactivating Sparsity in Transformer FFN and Attention.pdf",
+ "title": "Spark Transformer: Reactivating Sparsity in Transformer FFN and Attention",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "统计top-k与参数重用实现Transformer稀疏化，但泛化性存疑",
+ "innovations": [
+  "统计top-k算法，避免排序实现线性时间复杂度",
+  "重用FFN和注意力键嵌入作为低成本预测器",
+  "统一框架实现FFN和注意力机制的高效稀疏化"
+ ],
+ "method_framework": "Spark Transformer包含Spark FFN和Spark Attention，通过分割输入维度和统计top-k实现稀疏化，保持参数数量不变，显著降低计算量",
+ "experiment_framework": "基于Gemma-2 2B模型，在标准基准测试上评估质量，测量CPU/GPU推理速度，对比ReLU、ReLU2和Top-k方法",
+ "takeaways": [
+  "统计top-k算法可高效实现近似top-k选择",
+  "参数重用策略可在不增加参数的情况下实现高效预测",
+  "稀疏化设计需平衡计算效率和模型质量"
+ ],
+ "weaknesses": [
+  "统计top-k依赖于高斯分布假设，可能不适用于所有场景",
+  "实验主要在语言模型上进行，泛化到其他领域需进一步验证",
+  "实现细节如分片约束可能影响性能"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

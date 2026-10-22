@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/AdaSPEC_Selective Knowledge Distillation for Efficient Speculative Decoders.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/AdaSPEC_Selective Knowledge Distillation for Efficient Speculative Decoders.pdf",
+ "title": "AdaSPEC: Selective Knowledge Distillation for Efficient Speculative Decoders",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "选择性蒸馏提高推测解码接受率，但生成质量验证不足",
+ "innovations": [
+  "选择性token过滤机制",
+  "参考模型作为token过滤器",
+  "针对推测解码优化的知识蒸馏方法"
+ ],
+ "method_framework": "两阶段方法：1)使用目标模型训练参考模型并识别难拟合token；2)仅对易学习token进行知识蒸馏，提高draft-target模型对齐",
+ "experiment_framework": "Pythia-31M/1.4B和CodeGen-350M/Phi-2模型配置，在GSM8K、Alpaca、MBPP等任务上评估，接受率作为主要指标",
+ "takeaways": [
+  "token选择策略优于传统KL散度最小化",
+  "选择性蒸馏可显著提高接受率",
+  "方法与先进推测解码方法兼容"
+ ],
+ "weaknesses": [
+  "仅评估了接受率，未充分验证生成质量",
+  "token选择比例k的确定依赖经验",
+  "跨模型家族的泛化能力有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.375,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

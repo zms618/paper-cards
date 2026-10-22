@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/OpenWorldSAM_Extending SAM2 for Universal Segmentation with Language Prompts.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/OpenWorldSAM_Extending SAM2 for Universal Segmentation with Language Prompts.pdf",
+ "title": "OpenWorldSAM: Extending SAM2 for Universal Segmentation with Language Prompts",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "轻量语言适配器扩展SAM2，开放词汇分割性能有限",
+ "innovations": [
+  "位置解向量机制解决多实例歧义",
+  "软提示Transformer对齐文本-图像特征",
+  "统一接口支持多种分割任务",
+  "仅训练4.5M参数实现零样本性能"
+ ],
+ "method_framework": "冻结SAM2和BEiT-3编码器，通过MLP投影器、位置解向量和软提示Transformer将语言提示注入SAM2掩码解码器",
+ "experiment_framework": "COCO-Stuff训练，在ADE20K、PASCAL VOC等8个任务上评估，引入Oracle-Prompts协议解决词汇歧义",
+ "takeaways": [
+  "轻量级架构干预可解锁零样本分割能力",
+  "提示条件解码机制直接利用语言输入指导掩码预测",
+  "位置解向量是解决多实例分割的关键创新"
+ ],
+ "weaknesses": [
+  "AP性能不及使用额外检测数据集训练的模型",
+  "两阶段推理对指标提升有限",
+  "在小数据集上可能受益于类别记忆"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

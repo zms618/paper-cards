@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/SUICA117,184,85219,97,97_Learning Super-high Dimensional Sparse Implicit Neural Representations for Spatial Transcriptomics.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SUICA117,184,85219,97,97_Learning Super-high Dimensional Sparse Implicit Neural Representations for Spatial Transcriptomics.pdf",
+ "title": "SUICA: Learning Super-high Dimensional Sparse Implicit Neural Representations for Spatial Transcriptomics",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "组合INR与图AE处理ST数据，无显著创新与充分验证",
+ "innovations": [
+  "将INR引入空间转录组，把离散采样spot建模为连续函数，实现无需预知退化类型即可恢复并补全整片切片",
+  "设计图增强自编码器建模非结构化spot上下文，得到结构感知嵌入用于空间映射",
+  "对极度偏斜的基因表达分布采用回归即分类(regression-by-classification)方式，用分类损失优化高维稀疏回归"
+ ],
+ "method_framework": "SUICA以INR为骨架把(空间坐标)->基因表达映射为连续函数；内嵌图增强自编码器聚合邻近spot上下文得到结构感知嵌入；面对超高维且dropout严重、分布极偏的表达向量，将回归重构转化为分类问题并施加基于分类的损失；在多种ST平台、多种退化下联合优化，同时提升空间密度与基因表达保真。",
+ "experiment_framework": "在多种常见ST平台(不同空间分布、测序深度、dropout率)下施加不同退化，对比传统INR变体与SOTA插补/建模方法；指标涵盖数值保真度、统计相关性与生物保守性(bio-conservation)，并评估下游细胞类型聚类的改善。",
+ "takeaways": [
+  "INR可将离散稀疏ST数据连续化，同时完成超分辨重建与退化插补",
+  "图增强上下文+回归即分类损失有效缓解超高维稀疏偏斜表达的建模难题",
+  "SUICA预测放大了基因特征信号，下游细胞类型聚类更完整、生物保守性增强"
+ ],
+ "weaknesses": [
+  "属生物信息学方法迁移到ST领域，方法组件(INR/图AE/分类化回归)均为现有技术组合，概念原创性中等",
+  "跨平台泛化依赖对退化分布的假设，正文前9页未见与近年专用ST插补SOTA(如cGDN、SpatialGene)的逐项数值对比细节",
+  "无湿实验/生物学新发现的因果验证，生物保守性提升多为计算层面自证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

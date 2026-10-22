@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/SILO Solving Inverse Problems with Latent Operators.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/SILO Solving Inverse Problems with Latent Operators.pdf",
+ "title": "SILO Solving Inverse Problems with Latent Operators",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "潜在空间退化算子提升逆问题效率，但依赖编码器泛化性",
+ "innovations": [
+  "提出'latent plug-and-play'新范式，完全在潜在空间中解决逆问题",
+  "设计潜在退化算子Hθ，消除重建过程中对Autoencoder的需求",
+  "显著提升感知质量并加速推理速度2.6-10倍"
+ ],
+ "method_framework": "SILO通过学习潜在空间退化算子Hθ，将像素空间退化操作迁移到潜在空间，避免反复使用编码器-解码器，仅在最终重建时使用一次解码器。",
+ "experiment_framework": "FFHQ和COCO数据集，对比LDPS、GML-DPS、PSLD和ReSample方法，使用LPIPS、FID、KID指标评估感知质量和失真，并测量运行时间。",
+ "takeaways": [
+  "潜在空间操作可避免像素空间转换带来的计算开销和质量损失",
+  "设计域特定算子来模拟跨空间操作是提高效率的有效方法"
+ ],
+ "weaknesses": [
+  "依赖Autoencoder对退化图像的编码能力，对显著偏离自然图像的退化类型可能效果不佳",
+  "潜在算子Hθ的训练可能需要针对不同退化类型分别进行"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "逆问题解决方法与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

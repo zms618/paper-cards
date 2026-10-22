@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/STROKE3D_Lifting 2D Strokes into Rigged 3D.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/STROKE3D_Lifting 2D Strokes into Rigged 3D.pdf",
+ "title": "Stroke3D: Lifting 2D Strokes into Rigged 3D Model via Latent Diffusion Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "两阶段扩散模型从2D笔画生成带绑定骨骼的3D网格",
+ "innovations": [
+  "据作者所知首次以用户手绘2D笔画为条件生成带绑定(rigged)的3D网格",
+  "两阶段流程：骨骼图VAE(Sk-VAE)+骨骼图DiT(Sk-DiT)做可控骨架生成，文本给语义、笔画给结构控制",
+  "构建TextuRig数据集并用骨架-网格对齐分数引导的SKA-DPO偏好优化提升几何保真度"
+ ],
+ "method_framework": "阶段一：用Sk-VAE将骨架图结构编码到隐空间，Sk-DiT在文本语义与2D笔画结构条件下生成骨骼嵌入，VAE解码器重建高质量3D骨架；阶段二：用Objaverse-XL构建的TextuRig数据增强骨架转网格模型，并用SKA-DPO按骨架-网格对齐分数做偏好优化。",
+ "experiment_framework": "在Objaverse-XL衍生数据集上训练，对比已有3D生成/绑定方法；指标含骨架合理性、网格质量与骨架-网格对齐；展示从笔画到可动画3D内容的流程。",
+ "takeaways": [
+  "2D笔画可作为3D骨骼的细粒度结构控制信号",
+  "骨骼图DiT+DPO对齐可提升生成网格的几何保真度",
+  "实现从简笔画到可直接动画的rigged 3D资产生成"
+ ],
+ "weaknesses": [
+  "属3D内容生成方向，与主线（LLM可靠性/医学影像/多模态推理）无关联",
+  "证据偏定性（'合理骨架/高质量网格'），定量对比与人工评测规模有限",
+  "SKA-DPO仅为小组件，其对齐分数是否可靠未充分消融"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.83,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "3D内容生成与可靠性主线无关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

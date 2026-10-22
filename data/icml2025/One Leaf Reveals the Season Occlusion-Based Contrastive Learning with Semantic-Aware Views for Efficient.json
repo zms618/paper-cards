@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/One Leaf Reveals the Season Occlusion-Based Contrastive Learning with Semantic-Aware Views for Efficient.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/One Leaf Reveals the Season Occlusion-Based Contrastive Learning with Semantic-Aware Views for Efficient.pdf",
+ "title": "One Leaf Reveals the Season: Occlusion-Based Contrastive Learning with Semantic-Aware Views for Efficient Visual Representation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.25
+ },
+ "one_line": "遮挡对比学习替代数据增广，但与可靠性主线无关且提升有限。",
+ "innovations": [
+  "用随机遮挡 patch 在单图内生成视图、mini-batch 内对比，替代手工数据增广",
+  "指出遮挡 token 可显著降低图像概念冗余、制造语义概念级细粒度差异",
+  "结合对比学习提取高层语义，绕开 MIM 的像素级重建开销"
+ ],
+ "method_framework": "MIM 偏重像素重建、CL 受概念冗余困扰。OCL 在每张图上随机遮挡若干 patch 生成不同视图，再在 mini-batch 内做对比学习；遮挡既降低概念冗余又在语义概念层面制造视图差异，对比学习则擅长抽取高层语义，从而无需手工增广或重建辅助模块即高效学到语义概念表示。",
+ "experiment_framework": "在 ImageNet 上预训练 ViT，以微调精度与预训练算力为指标；ViT-L/16 仅用 4 张 A100、133 小时完成预训练，下游微调达 85.8%；对比 MAE 等 MIM 与既有 CL 方法。",
+ "takeaways": [
+  "随机遮挡+对比学习可高效学到语义概念表示，无需手工增广",
+  "OCL 在大幅降低预训练算力的同时保持有竞争力的下游精度"
+ ],
+ "weaknesses": [
+  "与可靠性/医学影像/多模态推理主线无关，属视觉自监督预训练",
+  "虽作者含医学影像团队，本文本身为通用视觉 SSL，未涉及医学影像",
+  "提升幅度相对 MAE 等强基线的净增益在已读部分披露有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

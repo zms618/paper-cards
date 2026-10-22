@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Adversary Aware Optimization for Robust Defense.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Adversary Aware Optimization for Robust Defense.pdf",
+ "title": "Adversary Aware Optimization for Robust Defense",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "贝叶斯优化结合扩散模型进行对抗防御，增加计算开销",
+ "innovations": [
+  "将对抗扰动显式整合到目标函数中，而非视为通用噪声",
+  "设计轻量级扰动扩散模型学习对抗模式",
+  "提出MAP估计框架结合先验与似然项进行优化"
+ ],
+ "method_framework": "AAOpt框架结合预训练扩散先验与对抗扰动似然，通过迭代梯度更新最大化后验概率，使用stop-gradient操作提高效率",
+ "experiment_framework": "CIFAR-10/CIFAR-100数据集，PGD-EOT/BPDA-EOT攻击，对比AT与扩散净化方法，评估鲁棒准确率",
+ "takeaways": [
+  "对抗扰动具有可学习的全局结构，可被显式建模",
+  "优化框架比完整扩散采样更高效且鲁棒",
+  "结合先验与对抗似然能显著提升防御性能"
+ ],
+ "weaknesses": [
+  "需要额外训练对抗扰动模型，增加计算开销",
+  "仅评估了标准数据集，缺乏在真实医学影像等领域的验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

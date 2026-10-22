@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Rpg A Repository Planning Graph for Unified and Scalable Codebase Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rpg A Repository Planning Graph for Unified and Scalable Codebase Generation.pdf",
+ "title": "RPG: A Repository Planning Graph for Unified and Scalable Codebase Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "结构化图规划替代自然语言，自建基准上提升代码生成规模与测试通过率。",
+ "innovations": [
+  "提出 Repository Planning Graph：以显式图统一编码能力、文件结构、数据流与函数，替代自由文本规划，解决自然语言歧义与依赖追踪难。",
+  "构建 ZeroRepo 图驱动框架，分提案级规划、实现级构建、图引导代码生成+测试验证三阶段。",
+  "构建 RepoCraft 基准(6 个真实项目、1052 任务)，并给出 RPG 近似线性扩展与改善 agent 仓库理解/定位的分析。"
+ ],
+ "method_framework": "先用 RPG 在提案级规划出要构建的能力模块，再在实现级落为文件结构/接口/依赖/数据流图；随后按图引导逐节点生成代码并用测试校验反馈；图作为贯穿全程的结构化中间表示，支持长程一致规划与近线性扩展。",
+ "experiment_framework": "在自建 RepoCraft(6 真实项目、1052 任务)评测；对比 Claude Code、MetaGPT/ChatDev、Paper2Code、OpenHands 等；报告代码行数(平均约 3.9 万行、比 Claude Code 大 3.9x)、覆盖率 81.5%、测试准确率 69.7%(比 Claude Code 提升 27.3/35.8 个点)。",
+ "takeaways": [
+  "结构化规划图比自然语言蓝图更能支撑长程、大规模仓库生成的一致性。",
+  "图引导+测试验证使生成规模与测试通过率显著超过现有终端 agent。",
+  "RPG 随规模近似线性扩展，且能提升 agent 对仓库的理解与定位速度。"
+ ],
+ "weaknesses": [
+  "基准 RepoCraft 由作者自建，仅 6 个项目，外部独立基准与跨语言/跨规模泛化未验证。",
+  "强依赖测试作为校验信号，测试覆盖不足或验收标准模糊的项目上表现未知。",
+  "属软件工程 agent/代码生成方向，与视觉可靠性/医学影像/多模态推理主线关联弱。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "软件工程代码生成，与视觉可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

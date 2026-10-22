@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Neodragon_Mobile Video Generation using Diffusion Transformer.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Neodragon_Mobile Video Generation using Diffusion Transformer.pdf",
+ "title": "Neodragon: Mobile Video Generation using Diffusion Transformer",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "四项优化压缩视频DiT到手机NPU，但与可靠性主线无关且评估不充分",
+ "innovations": [
+  "无需任何图像/视频数据的文本编码器蒸馏框架，用小文本编码器替换大编码器且质量损失极小",
+  "非对称解码器蒸馏：在不扰动视频生成潜空间的前提下，把原生codec-latent-VAE解码器换成更高效解码器",
+  "基于相对重要性的MMDiT去噪器整块剪枝+两阶段蒸馏恢复性能；并提出面向金字塔流匹配目标的扩展DMD以降低采样步数"
+ ],
+ "method_framework": "以一个视频DiT(MMDiT去噪器)为基座，沿四个维度联合压缩：(1)离线蒸馏小文本编码器；(2)用非对称蒸馏把VAE解码器替换为高效版而保持生成潜空间不变；(3)按重要性整块剪除MMDiT块后两阶段蒸馏恢复；(4)把分布匹配蒸馏(DMD)扩展到金字塔流匹配目标以减少采样ODE步数。整体适配Hexagon NPU的低显存低算力约束。",
+ "experiment_framework": "目标在高通Hexagon手机/笔记本NPU上运行；生成49帧640x1024分辨率；主指标VBench总分81.61，端到端约6.7秒；对比移动视频生成基线报告VBench与延迟/内存开销；消融各压缩组件。",
+ "takeaways": [
+  "视频扩散Transformer虽显存算力巨大，经系统优化后可在手机低功耗NPU实时运行，创下移动视频生成SOTA(VBench 81.61)",
+  "四项优化需协同：单独替换解码器/剪枝都会扰动生成潜空间，蒸馏是恢复质量的关键",
+  "无数据文本编码器蒸馏避免了对大规模图文视频数据的依赖，降低了移动端适配成本"
+ ],
+ "weaknesses": [
+  "主线是端侧效率与部署优化，与鲁棒性、可信验证、幻觉抑制等可靠性落地主线基本无关",
+  "质量评估仅VBench自动指标，缺少人工主观评分与在真实移动App场景下的语义对齐/时序一致性评测",
+  "压缩后模型在复杂长时序、高运动场景下的退化边界未充分刻画"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.53,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯工程优化，与可靠性主线无关且无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

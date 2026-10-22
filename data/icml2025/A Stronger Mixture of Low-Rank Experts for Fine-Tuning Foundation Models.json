@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/A Stronger Mixture of Low-Rank Experts for Fine-Tuning Foundation Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/A Stronger Mixture of Low-Rank Experts for Fine-Tuning Foundation Models.pdf",
+ "title": "A Stronger Mixture of Low-Rank Experts for Fine-Tuning Foundation Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "黎曼预条件子视角的MoE-LoRA改进，稳定性提升但创新有限",
+ "innovations": [
+  "从黎曼预条件子视角重新审视LoRA训练，提出门控重缩放多空间投影策略来改进MoE-LoRA",
+  "同时提供理论解和工程替代方案，分别适用于SGD和AdamW优化器",
+  "解决MoE-LoRA训练和推理中的不稳定性问题，提升低秩适配器的鲁棒性"
+ ],
+ "method_framework": "将LoRA视为子空间投影器，基于黎曼预条件子理论分析MoE-LoRA的梯度次优性。提出门控重缩放（gate-rescaled）机制，对每个低秩专家的投影空间进行重缩放，使得多空间投影的特征学习更加稳定和高效。",
+ "experiment_framework": "在多个下游任务上评估（具体数据集前9页未完全列出），对比标准MoE-LoRA、LoRA、全量微调等基线。在SGD和AdamW两种优化器上验证方法有效性。代码已开源。",
+ "takeaways": [
+  "黎曼预条件子视角可以解释MoE-LoRA训练中的不稳定性来源",
+  "门控重缩放多空间投影策略可以同时提升MoE-LoRA的训练稳定性和最终性能",
+  "该方法对SGD和AdamW优化器均有效，具有较好的通用性"
+ ],
+ "weaknesses": [
+  "改进幅度在前9页展示的实验中看起来较为温和，缺乏与最新MoE-LoRA变体（如MoLA、HydraLoRA）的全面对比",
+  "理论分析基于较简化的假设，对实际深度模型的解释力有限",
+  "额外的门控重缩放计算开销未充分讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "改进MoE-LoRA稳定性但未触及可靠性主线落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

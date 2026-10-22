@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/AniMo_Species-Aware Model for Text-Driven Animal Motion Generation.pdf",
+ "conf": "cvpr2025",
+ "path": "C:\\Users\\James\\Desktop\\study\\paper\\项目记忆\\论文卡片\\精读卡片库\\cvpr2025\\AniMo_Species-Aware Model for Text-Driven Animal Motion Generation.json",
+ "title": "AniMo: Species-Aware Model for Text-Driven Animal Motion Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "组合成熟模块适配动物动作生成，缺乏机制分析与定量评估",
+ "innovations": [
+  "Joint-Aware Spatiotemporal Encoder：把关节分成 root/non-root/foot 三类分别投影，用「同一肢体才可见」的注意力掩码 MA,B 屏蔽跨肢体可见性，再由空间 Transformer + TCN 显式建模动物骨架邻接，而不是直接套用人体骨架先验。",
+  "Species-Aware Feature Modulation：把 CLIP 文本对 [attribute, species] 拼成条件，过 MLP 生成 FiLM 的 γ、β 去缩放/偏移时空特征 hst，让同一运动编码器按物种与属性做特征调制，而非靠文本 token 隐式条件化。",
+  "两阶段 RVQ 分词 + 分解式 Transformer：6 层 codebook（每层 512×512），Base Transformer 预测 base token、Residual Transformer 预测残差层，把长序列动作压成可自回归生成的离散码。"
+ ],
+ "method_framework": "关节掩码空间 Transformer+TCN 编码 → FiLM(CLIP 物种/属性) 调制 → 6 层 RVQ(512×512) 分词 → Base/Residual 双 Transformer 自回归生成。",
+ "experiment_framework": "AniMo4D（78,149 motion / 185,435 text / 114 物种）；基线 T2M/MDM/T2M-GPT/AttT2M/MMM/MoMask（改造成动物输入）；指标 FID 并报 95% 置信区间；OOD 用 AnimalML3D。",
+ "takeaways": [
+  "把物种信息从文本分支搬到特征调制分支（FiLM 的 γ、β）后，跨物种文本→运动可以由单一代码本覆盖，不必每物种单独训练一个模型。",
+  "FID 报 95% 置信区间是这批论文里少见的方差处理，说明提升不是单点噪声；在 AnimalML3D 上仍保持，跨数据集稳定性有实据。"
+ ],
+ "weaknesses": [
+  "三大组件（关节掩码注意力、FiLM 条件化、RVQ 分词）分别来自人体动作/音频/VQ-VAE 的成熟模块，论文给的是组合与适配而非新机制；表 1 数据集统计与表 2 FID 分离看，看不出 FiLM 具体贡献了多少。",
+  "基线（T2M/MDM/MMM/MoMask）都是文本→人体运动模型，需改造成动物输入，改造代价与不公平性未在正文量化；同时 Zoo-300K 扩展数据由 MoMask 生成，训练语料本身把他人模型的偏差带了进来。",
+  "FID 是分布级指标，无法回答「同一句描述下不同物种的动作是否符合语义」；正文缺少步态周期、足底接触、物理合理性这类动作准确性的定量评测，只有定性图。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "动物动作生成与可靠性主线无实质交点，仅为领域适配工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Sampling Data Structures for Tensor Products In Turnstile Streams.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Sampling Data Structures for Tensor Products In Turnstile Streams.pdf",
+ "title": "Towards Sampling Data Structures for Tensor Products in Turnstile Streams",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 3,
+  "relevance": 3.0,
+  "overall": 4.2
+ },
+ "one_line": "理论框架设计attention sampler，但缺乏实证验证",
+ "innovations": [
+  "提出attention sampler定义：以概率正比于注意力函数g((Ax)_i)采样重要坐标，绕开计算完整注意力矩阵的二次开销",
+  "用张量积构造(A=A1⊗A2)把线性(cross-)注意力QK^T的向量化写成矩阵-向量乘，纳入流式采样框架",
+  "在turnstile流设定下给出attention sampler的空间与更新时间理论界，并强调对多种模型架构/领域的可扩展性"
+ ],
+ "method_framework": "把注意力矩阵计算转化为张量积形式的矩阵-向量乘，借鉴经典l2采样器思想定义按注意力权重概率采样坐标的attention sampler；在turnstile流式更新下维护采样数据结构，只采样/恢复最重要坐标而非全部注意力项，从而降低二次复杂度。",
+ "experiment_framework": "纯理论工作：给出attention sampler在流式设定下的空间复杂度与每次更新时间复杂度分析，论证对多种注意力架构与领域的适用性；正文未见大规模实证实验。",
+ "takeaways": [
+  "可在流模型下以次线性空间采样注意力中的重要坐标，避免全量注意力矩阵的二次计算",
+  "张量积构造使线性注意力的采样可统一到成熟的流式采样理论框架",
+  "该采样器具备跨架构/领域的潜在通用性"
+ ],
+ "weaknesses": [
+  "正文仅给空间/更新时间理论界，无任何在真实LLM上的精度-加速实证验证",
+  "采样近似对下游任务精度的影响、与已有近似注意力(如Mamba/稀疏注意力)的对比均未涉及",
+  "属理论算法/流式数据结构方向，与可靠性主线及医学影像、多模态推理落地域无关"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.63,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "纯理论算法工作，与可靠性主线及落地域无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

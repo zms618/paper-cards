@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Safety At One Shot Patching Fine-Tuned LLMS with A Single Instance.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Safety At One Shot Patching Fine-Tuned LLMS with A Single Instance.pdf",
+ "title": "Safety at One Shot: Patching Fine-Tuned LLMs with a Single Instance",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "单样本安全微调可修复LLM对齐，揭示梯度低秩结构。",
+ "innovations": [
+  "反直觉地证明：单个精选安全样本即可中和有害更新、完全恢复安全对齐，无需大量安全样本或校准集。",
+  "该恢复与微调中使用的有害样本数量、底层模型规模无关，仅需少数epoch即收敛。",
+  "揭示安全梯度的低秩结构，从机制上解释为何单样本高效修正可行；在五个安全对齐LLM与多数据集上验证普适性。"
+ ],
+ "method_framework": "识别恢复对齐所需的最小信号=单个精选安全实例；以该样本对被微调攻击的模型做少轮微调即可回补安全；并用安全梯度的低秩分解解释修正为何如此高效且不伤效用。",
+ "experiment_framework": "在5个安全对齐LLM上制造微调攻击(插入有害样本)，检验用单安全样本修复后的安全恢复率与效用保持；对比需大量样本/校准集的既有防御，报告安全性-效用-效率权衡。",
+ "takeaways": [
+  "安全对齐修复的最小信号极小，单个精选安全样本即可在LMaaS场景低成本回补被攻击模型。",
+  "安全梯度的低秩结构是单样本高效修成为可能的机制根源。"
+ ],
+ "weaknesses": [
+  "为通用LLM安全修复方向，落地域非医学影像/多模态，与主线在'可信AI/鲁棒'概念上强相关。",
+  "'单个精选样本'的选择准则(如何挑到这个实例)与对自适应/更隐蔽微调攻击的鲁棒性仍需更多验证。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "LLM安全对齐修复与可信AI主线强相关，方法设计具迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

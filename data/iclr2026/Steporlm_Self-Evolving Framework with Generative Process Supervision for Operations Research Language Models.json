@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Steporlm_Self-Evolving Framework with Generative Process Supervision for Operations Research Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Steporlm_Self-Evolving Framework with Generative Process Supervision for Operations Research Language Models.pdf",
+ "title": "StepORLM: A Self-Evolving Framework with Generative Process Supervision for Operations Research Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "协同进化框架结合生成式过程奖励，在OR基准上超越大模型",
+ "innovations": [
+  "提出生成式过程奖励模型(GenPRM)：区别于传统判别式PRM，生成式地整体评估OR建模步骤的相互依赖关系，解决判别式PRM短视问题",
+  "设计协同进化闭环：策略模型与GenPRM互相迭代改进，双重反馈机制——外部求解器给出确定性结果验证，GenPRM给出细致整体过程评估",
+  "提出加权DPO(W-DPO)利用组合信号对齐策略模型，同时精炼GenPRM；协同进化的GenPRM可作为通用过程验证器提升其他LLM的推理缩放性能"
+ ],
+ "method_framework": "协同进化循环：(1)策略模型生成OR问题的求解过程；(2)外部求解器验证最终答案正确性（确定性结果奖励）；(3)GenPRM生成式地整体评估整个推理过程的质量（过程奖励）；(4)用加权DPO结合两种信号对齐策略模型；(5)用对齐后的策略模型新生成的数据进一步精炼GenPRM。循环往复，两者共同进化。",
+ "experiment_framework": "在6个运筹学基准上验证8B参数StepORLM，对比更大的通用模型、agentic方法和专用基线。指标为解题准确率。额外测试：协同进化的GenPRM作为通用验证器，对其他现有LLM推理缩放性能的提升效果。",
+ "takeaways": [
+  "运筹问题需要长程相互依赖的推理，结果奖励的credit assignment问题和判别式过程奖励的短视问题都很严重",
+  "生成式过程奖励模型能整体评估推理步骤的相互依赖关系，比逐步判别式PRM更适合OR这类结构化推理任务",
+  "策略模型与GenPRM的协同进化形成正反馈，8B小模型即可在6个OR基准上超越大得多的通用模型"
+ ],
+ "weaknesses": [
+  "依赖外部求解器提供结果验证，这在没有现成求解器的复杂OR问题上可能不可行",
+  "协同进化循环的训练成本较高，GenPRM和策略模型需要多轮交替训练",
+  "仅在运筹学问题上验证，生成式过程奖励是否对其他领域（数学、代码）同样有效未证明"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "运筹学方法与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

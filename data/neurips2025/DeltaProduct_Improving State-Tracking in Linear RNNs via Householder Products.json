@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/DeltaProduct_Improving State-Tracking in Linear RNNs via Householder Products.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/DeltaProduct_Improving State-Tracking in Linear RNNs via Householder Products.pdf",
+ "title": "DeltaProduct: Improving State-Tracking in Linear RNNs via Householder Products",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "Householder乘积改进线性RNN状态跟踪，理论证明但训练效率低",
+ "innovations": [
+  "提出DeltaProduct，使用多个Householder变换乘积作为状态转移矩阵",
+  "通过增加梯度步数nh提高模型表达能力，同时保持稳定性",
+  "理论证明DeltaProduct可解决任意群字问题并识别正则语言"
+ ],
+ "method_framework": "DeltaProduct通过每个token执行nh步梯度下降，形成由nh个广义Householder变换乘积构成的状态转移矩阵，实现表达能力与效率的可控平衡。",
+ "experiment_framework": "在置换群S3-S5状态跟踪任务和语言建模任务上评估，比较不同nh值和层数的性能，测量准确度和长度外推能力。",
+ "takeaways": [
+  "Householder乘积提供了稳定且可扩展的状态转移矩阵设计",
+  "通过理论分析指导模型设计，证明nh值与表达能力的关系"
+ ],
+ "weaknesses": [
+  "训练吞吐量随nh线性下降",
+  "参数匹配时头维度非2的幂次会导致效率损失",
+  "理论构造中的查找表可能在实际应用中过大"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

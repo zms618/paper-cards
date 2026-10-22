@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/SynTag_Enhancing the Geometric Robustness of Inversion-based Generative Watermarking.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/SynTag_Enhancing the Geometric Robustness of Inversion-based Generative Watermarking.pdf",
+ "title": "SynTag Enhancing the Geometric Robustness of Inversion-based Generative Watermarking",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "SynTag通过标签注入提升水印几何鲁棒性，但计算开销大且净化攻击下性能下降",
+ "innovations": [
+  "同步标签(SynTag)注入方法，而非寻找不变特征",
+  "VAE解码器微调与预测网络联合优化",
+  "抖动补偿机制提升校正精度"
+ ],
+ "method_framework": "三阶段框架：初始化(微调VAE解码器和预测网络)、注入(生成带水印和SynTag的图像)、提取(校正和抖动补偿后提取水印)",
+ "experiment_framework": "MS COCO数据集，对比9种基线方法，评估几何和非几何扭曲下的TPR和比特准确率，FID和CLIP分数",
+ "takeaways": [
+  "几何敏感特征而非不变特征的设计思路",
+  "与现有逆框架方法的无缝集成",
+  "像素和潜在空间的双重抖动补偿"
+ ],
+ "weaknesses": [
+  "计算开销增加(抖动补偿的穷举搜索)",
+  "强净化攻击下性能下降(强度>0.3时)",
+  "仅评估了特定类型的几何变换"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "提升水印几何鲁棒性，属于可靠性主线但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

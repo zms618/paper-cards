@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Re-Imagine Symbolic Benchmark Synthesis for Reasoning Evaluation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Re-Imagine Symbolic Benchmark Synthesis for Reasoning Evaluation.pdf",
+ "title": "Re-Imagine: Symbolic Benchmark Synthesis for Reasoning Evaluation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "符号层改造问题暴露LLM推理依赖记忆，诊断工具新颖但提升有限",
+ "innovations": [
+  "在中间符号表示层而非文本层改造问题，生成任意多且无法被训练集记忆覆盖的推理变体",
+  "借鉴 Pearl 因果阶梯三层（关联、干预、反事实）构建推理能力层级",
+  "框架通用，跨数学、代码、逻辑等推理域工作，并在四个常用基准上刻画多族 LLM"
+ ],
+ "method_framework": "先把基准问题解析为中间符号表示（如因果图/函数模板/结构），在该符号层做受控改造生成新问题变体；按因果层级组织变体难度；用这些变体查询模型，若性能相对原题下降，则说明其原有成绩依赖统计记忆而非真推理。",
+ "experiment_framework": "在四个广泛使用的推理基准上对多族 LLM 评测；对比原题与符号变体上的准确率；指标为各层级变体的性能下降幅度；报告在问题被改造成变体后模型性能明显下降，揭示对统计回忆的依赖。",
+ "takeaways": [
+  "在符号层改造问题可有效剥离记忆、暴露真实推理能力",
+  "LLM 在符号变体上的掉分说明其高分部分来自训练集记忆",
+  "该层级化评估为跨推理域的能力诊断提供可扩展工具"
+ ],
+ "weaknesses": [
+  "符号解析/模板质量决定变体有效性，对结构不规则问题覆盖有限",
+  "主要是诊断性评测，未提出提升推理能力的方法",
+  "层级与因果阶梯的对应关系偏类比，心理测量学效度需更多验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

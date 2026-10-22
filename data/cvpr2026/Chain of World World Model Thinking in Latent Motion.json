@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Chain of World World Model Thinking in Latent Motion.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Chain of World World Model Thinking in Latent Motion.pdf",
+ "title": "Chain of World World Model Thinking in Latent Motion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "解耦潜在运动表示与动作预测，模拟环境实验",
+ "innovations": [
+  "结构-运动解耦的潜在运动表示",
+  "连续潜在运动链与终端关键帧预测的'Chain-of-World'范式",
+  "统一自回归解码器对齐潜在动态与离散动作预测"
+ ],
+ "method_framework": "使用预训练视频VAE作为潜在运动提取器，将视频段解构为结构和运动潜在表示，通过预训练学习从指令和初始帧推断潜在运动链并预测终端帧，然后在共同微调阶段将潜在动态与离散动作预测对齐。",
+ "experiment_framework": "在LIBERO和SimplerEnv-WidowX基准上评估，与VLA基线、潜在动作方法和世界模型方法比较，使用任务成功率作为指标。",
+ "takeaways": [
+  "结构-运动解耦的潜在表示提供更可解释的动态表示",
+  "单一查询标记设计用于整个时间窗口的潜在动态聚合",
+  "共同微调阶段对齐潜在动态与离散动作预测"
+ ],
+ "weaknesses": [
+  "潜在运动提取器需要预训练视频VAE，增加了系统复杂性",
+  "实验主要在模拟环境中进行，真实机器人部署的泛化能力有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅触及世界模型知识面，未与可靠性主线实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

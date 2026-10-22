@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Train with Perturbation, Infer after Merging A Two-Stage Framework for Continual Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Train with Perturbation, Infer after Merging A Two-Stage Framework for Continual Learning.pdf",
+ "title": "Train with Perturbation, Infer after Merging: A Two-Stage Framework for Continual Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "扰动训练与模型合并的两阶段持续学习框架",
+ "innovations": [
+  "Infer after Merging：将模型合并引入持续学习范式",
+  "Train with Perturbation：任务向量方向扰动近似正则化项",
+  "理论推导的最优合并系数闭式解",
+  "与LoRA结合降低内存开销"
+ ],
+ "method_framework": "两阶段框架：训练阶段在任务向量方向添加随机扰动，推理阶段通过凸组合合并新旧模型，使用Fisher矩阵近似Hessian计算最优合并系数",
+ "experiment_framework": "在ImageNet-R/A、DomainNet、CIFAR100、CUB200等5个基准数据集上评估，比较准确度(Acc)和任意时间准确度(AAA)，与SD-LoRA等基线对比",
+ "takeaways": [
+  "任务向量缩放策略能在保持模型塑性的同时显著减少遗忘",
+  "凸组合合并策略位于低损失区域",
+  "全局合并系数与细粒度系数性能相当"
+ ],
+ "weaknesses": [
+  "需要存储所有任务的最优参数和Fisher矩阵，随任务增加内存开销大",
+  "扰动策略增加了训练复杂度",
+  "仅在小规模ViT模型上验证，扩展性存疑"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

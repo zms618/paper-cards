@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/PropFly_Learning to Propagate via On-the-Fly Supervision from Pre-trained Video.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/PropFly_Learning to Propagate via On-the-Fly Supervision from Pre-trained Video.pdf",
+ "title": "PropFly Learning to Propagate via On-the-Fly Supervision from Pre-trained Video",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "基于CFG的VDM适配器实现视频编辑传播，但效率与泛化存疑",
+ "innovations": [
+  "基于CFG调节的即时监督信号生成",
+  "一步干净潜估计替代完整扩散采样",
+  "引导调制流匹配(GMFM)损失函数",
+  "随机风格提示融合(RSPF)增强训练多样性"
+ ],
+ "method_framework": "冻结预训练VDM主干，添加可训练适配器，通过低CFG和高CFG生成结构对齐但语义不同的潜对，学习从源视频到编辑视频的传播变换",
+ "experiment_framework": "EditVerseBench-Appearance和TGVE基准，评估视频质量(Pick)、文本对齐(Frame/Video/ViCLIP)和时间一致性(CLIP/DINO)",
+ "takeaways": [
+  "利用预训练模型能力生成训练数据，避免配对数据收集成本",
+  "CFG调节可控制编辑强度，提供灵活的监督信号"
+ ],
+ "weaknesses": [
+  "推理时间较长(120秒/14B模型)",
+  "依赖预训练VDM的质量和泛化能力",
+  "未充分讨论计算效率与性能的权衡"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频编辑传播与可靠性主线无直接交点，仅方法设计有借鉴价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

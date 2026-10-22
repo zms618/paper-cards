@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unite Universal Knowledge Integration from Task-Specific Experts.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unite Universal Knowledge Integration from Task-Specific Experts.pdf",
+ "title": "UNITE: Universal Knowledge Integration from Task-Specific Experts",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "MoE专家知识压缩方法，缺乏可靠性主线支撑与跨域验证",
+ "innovations": [
+  "提出把MoE中碎片化、跨层冗余的专家知识转化为可复用通用知识的机制，超越以往只诊断冗余/参数重要性而无法复用的局限",
+  "Fisher加权融合各专家后用Tucker分解解耦shared低秩input/output子空间(通用知识)与layer-specific变化",
+  "通用分量作为紧凑basis支持once-for-all抽取与灵活深度的目标模型构建，实现跨域轻量适配"
+ ],
+ "method_framework": "MoE-LLM专家知识碎片化且跨层冗余，以往工作只诊断重叠却无复用机制。UNITE先按Fisher信息对各专家加权融合，再对融合后的权重做Tucker分解：把共享的低秩输入/输出子空间分离为'通用知识'，剩余为层特定变化；该通用分量作为紧凑基，可重构出不同深度的轻量目标模型，用于数据高效、快收敛、跨域的适配。",
+ "experiment_framework": "在多个MoE-based LLM与多样数据集上，评估数据效率、收敛速度与泛化；对比直接合并专家/剪枝等做法，验证UNITE抽取的通用知识能否支撑once-for-all抽取与灵活深度目标模型构建并跨域泛化。",
+ "takeaways": [
+  "MoE专家中确实存在可系统提取、跨专家跨任务复用的通用低秩知识",
+  "Fisher加权+Tucker分解能解耦通用分量与层特定分量，得到紧凑可复用basis",
+  "通用basis支持灵活深度重构目标模型，以更少数据/更快收敛达到有竞争力性能"
+ ],
+ "weaknesses": [
+  "属MoE模型压缩/知识抽取方向，与本主线(可靠性×多模态推理/医学影像)关联弱",
+  "Tucker分解的秩选择与Fisher估计在大MoE上的计算成本与稳定性未充分量化",
+  "'通用知识'是否真的task-agnostic还是仍受源专家任务分布约束，正文前9页缺严格跨域证伪实验"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "MoE知识压缩，可迁移设计模式但无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

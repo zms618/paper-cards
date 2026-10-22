@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Integration Matters for Learning PDEs with Backward SDEs.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Integration Matters for Learning PDEs with Backward SDEs.pdf",
+ "title": "Integration Matters for Learning PDEs with Backward SDEs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "改进BSDE积分方案以减少PDE求解偏差，但可微性要求更高",
+ "innovations": [
+  "识别EM积分方案导致BSDE性能偏差的根本原因",
+  "提出基于Stratonovich的BSDE公式和Heun积分方案",
+  "证明Heun积分完全消除EM积分的偏差问题",
+  "实现与PINNs相当的高维PDE求解性能"
+ ],
+ "method_framework": "将PDE转化为前向-后向随机微分方程，采用Stratonovich解释和Heun积分方案，通过单步自一致性损失函数优化",
+ "experiment_framework": "在HJB、BSB和BZ三个高维PDE基准问题上比较PINNs、EM-BSDE和Heun-BSDE方法，使用相对L2误差作为评估指标",
+ "takeaways": [
+  "积分方案选择对BSDE方法性能至关重要",
+  "Heun积分方案能有效解决EM积分的偏差问题",
+  "单步自一致性损失在Heun框架下优于多步方案"
+ ],
+ "weaknesses": [
+  "方法需要更高阶的可微性假设(C3,1 vs C2,1)",
+  "实验主要集中在特定类型的PDE问题",
+  "未充分探讨计算效率与精度的权衡"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

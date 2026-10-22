@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Signal Structure-Aware Gaussian Splatting for Large-Scale Scene Reconstruction.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Signal Structure-Aware Gaussian Splatting for Large-Scale Scene Reconstruction.pdf",
+ "title": "Signal Structure-Aware Gaussian Splatting for Large-Scale Scene Reconstruction",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5,
+  "relevance": 3.0,
+  "overall": 5.0
+ },
+ "one_line": "信号结构感知的高斯泼溅，频率同步调度与球约束防冗余",
+ "innovations": [
+  "从信号结构恢复视角统一渲染分辨率调度与致密化调度，而非硬编码",
+  "提出SIG：推导3D表示的平均采样频率与带宽，按场景频率收敛动态调节训练图像分辨率与高斯致密化",
+  "引入Sphere-Constrained Gaussians，利用初始点云空间先验约束高斯优化，实现频率一致、几何感知、无floater训练"
+ ],
+ "method_framework": "大规模场景稀疏点区域用高频图像监督低频初始化高斯会致失控致密化与冗余；SIG按场景频率收敛情况，先低分辨率/低频监督逐步提升，同步提升渲染分辨率与触发致密化；球约束高斯用初始点云先验限制高斯生长范围，避免floaters。",
+ "experiment_framework": "大规模/城市场景重建基准上，与3DGS及其致密化/分辨率调度变体对比，报告渲染质量(PSNR/SSIM/LPIPS)、效率(训练时间/高斯数)。",
+ "takeaways": [
+  "使图像监督频率与高斯频率同步可抑制过度致密化与冗余原语",
+  "球约束高斯有效消除floaters、保持几何",
+  "在大规模场景上效率与渲染质量均以较大幅度达SOTA"
+ ],
+ "weaknesses": [
+  "属3D视觉/图形重建，与可靠性、医学影像、多模态推理主线无关",
+  "频率/带宽推导依赖对3D表示的理想化假设，向一般(非城市场景)的迁移需验证",
+  "前9页未见具体数值表，'SOTA with margin'缺乏量化细节；计算频率/带宽的额外开销未量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "3D视觉重建与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

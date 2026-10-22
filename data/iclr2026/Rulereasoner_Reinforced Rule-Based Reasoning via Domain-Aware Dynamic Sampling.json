@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Rulereasoner_Reinforced Rule-Based Reasoning via Domain-Aware Dynamic Sampling.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rulereasoner_Reinforced Rule-Based Reasoning via Domain-Aware Dynamic Sampling.pdf",
+ "title": "RuleReasoner: Reinforced Rule-Based Reasoning via Domain-Aware Dynamic Sampling",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "动态采样提升规则推理，但缺乏真实场景验证与敏感性分析。",
+ "innovations": [
+  "提出域感知动态采样：在 RL 训练中根据历史奖励更新各域权重并据此重采样训练批次，实现域平衡与主动学习式课程，省去人工静态配比。",
+  "构建广泛 curated 的规则推理任务集，覆盖不同规则格式、类型与复杂度。",
+  "在 on-policy RL 框架下同时缓解样本低效与动态上下文下规则僵化应用的问题，提升长依赖规则遵循。"
+ ],
+ "method_framework": "对语言模型做 on-policy RL 训练为规则推理器；每个 batch 依据各域历史奖励动态更新采样权重(奖励低/欠拟合域多采样)，自动达成域平衡与课程调度；用任务奖励估计域难度并驱动主动学习，避免人工混合配比。",
+ "experiment_framework": "评测分布内(8 个 ID 任务)与分布外(3 个 OOD 基准)规则推理；对比 OpenAI-o1、o3-mini、Claude-3.7-Sonnet、DeepSeek-R1；RuleReasoner-8B/4B 在 ID 上 +4.1%、OOD 上 +10.4%(相对 o1)，并报告 Pass@1 与计算效率。",
+ "takeaways": [
+  "按历史奖励动态调整域采样权重，可有效提升 RL 在多域规则推理上的 ID 与 OOD 表现。",
+  "该方法 OOD 增益(+10.4%)大于 ID(+4.1%)，说明动态采样改善了跨规则格式/复杂度的泛化。",
+  "在更小的 4B/8B 模型上即可超过 o1 等前沿模型，且计算效率更高。"
+ ],
+ "weaknesses": [
+  "证据集中在规则推理基准(BigBench 等)，对真实法律/金融/医疗诊断等规则落地场景的可迁移性未验证。",
+  "域权重更新依赖历史奖励估计，奖励稀疏或噪声较大时采样策略可能失稳，缺少敏感性分析。",
+  "curated 任务集的构成与规模、与开源模型权重的可得性影响复现与外部效度。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "规则推理方法与可靠性主线无实质交点，仅知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RL Squeezes, SFT Expands_A Comparative Study Of Reasoning LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RL Squeezes, SFT Expands_A Comparative Study Of Reasoning LLMS.pdf",
+ "title": "RL Squeezes, SFT Expands: A Comparative Study of Reasoning LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "分析RL与SFT对推理路径的互补效应，但无方法创新",
+ "innovations": [
+  "提出轨迹级+步骤级双层分析框架，对Base/RL/SFT/SFT+RL模型的推理过程进行定量比较",
+  "发现轨迹级互补效应：RL减少唯一错误轨迹，SFT增加唯一正确轨迹，SFT单独训练保留错误轨迹",
+  "步骤级发现：RL使推理图中节点访问频率/度/介数中心性分布的衰减率陡增约2.5倍（集中功能到少数步骤），SFT则将衰减率降至约1/3（均匀分散到多步骤）"
+ ],
+ "method_framework": "在1.5B/7B/14B模型上，对数学和代码域采样多条推理输出。轨迹级：聚类唯一推理轨迹，比较各模型的正确/错误轨迹数量变化。步骤级：将每条推理拆分为逻辑步骤节点构建推理图，分析节点访问频率、度、介数中心性的分布衰减率，刻画推理功能集中或分散的程度。",
+ "experiment_framework": "模型规模1.5B/7B/14B；数学和代码两个领域；对比Base/RL(GRPO)/SFT/SFT+RL四种模型；使用轨迹聚类和推理图拓扑度量（频率、度、介数中心性衰减率）进行分析。",
+ "takeaways": [
+  "RL和SFT在塑造推理路径上具有互补性：RL压缩错误路径，SFT扩展正确路径，这解释了SFT→RL两阶段训练的成功",
+  "RL将推理功能集中到少数关键步骤，SFT将功能均匀分散到更多步骤，两者对推理图拓扑的影响方向相反",
+  "SFT单独训练虽扩展正确轨迹但保留错误轨迹，因此需要后续RL来压缩错误路径"
+ ],
+ "weaknesses": [
+  "纯分析性论文，未提出新方法或训练策略改进，仅提供解释性见解",
+  "步骤级推理图的构建依赖句子切分和节点聚类，其粒度选择对结论的敏感性未充分消融",
+  "仅在数学和代码域验证，对多模态或开放域推理的迁移性未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.48,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "分析推理路径但未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

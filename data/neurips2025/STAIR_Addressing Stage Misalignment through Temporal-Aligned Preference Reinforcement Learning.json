@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/STAIR_Addressing Stage Misalignment through Temporal-Aligned Preference Reinforcement Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/STAIR_Addressing Stage Misalignment through Temporal-Aligned Preference Reinforcement Learning.pdf",
+ "title": "STAIR: Addressing Stage Misalignment through Temporal-Aligned Preference Reinforcement Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "解决多阶段PbRL阶段错位问题，用对比学习自动划分阶段并做偏好比较。",
+ "innovations": [
+  "从理论与实证两方面形式化多阶段PbRL的阶段错位(stage misalignment)问题：跨阶段对比给出无信息反馈、阻碍策略学习。",
+  "提出STAIR：先用对比学习学时序距离，把时间相近状态聚成连贯阶段(无需预定义任务知识、随策略变化自适应)，再优先在同阶段内做偏好比较。",
+  "人类研究表明STAIR近似的阶段与人类认知一致，确证其缓解阶段错位的有效性。"
+ ],
+ "method_framework": "多阶段任务(如导航-抓取-搬运)中，现有PbRL随机对比不同阶段片段，比较移动段与抓取段的好坏对学习无指导意义。STAIR先用对比学习在状态空间学出时序距离表示，把轨迹自动切分为语义连贯阶段；收集偏好时只在同阶段内选取片段对比较，使奖励信号对齐到子任务内部，从而消除跨阶段无信息反馈。",
+ "experiment_framework": "在多阶段机器人任务上对比标准PbRL方法；指标为任务成功率；在单阶段任务上验证不损失竞争力；人类研究评估自动阶段划分与人类认知的一致性。",
+ "takeaways": [
+  "多阶段任务中跨阶段偏好对比是无效甚至有害的，应按阶段对齐反馈。",
+  "对比学习学时序距离可在无任务先验下自动发现阶段结构并随策略自适应。",
+  "阶段对齐的偏好查询选择能显著提升多阶段PbRL的学习效率。"
+ ],
+ "weaknesses": [
+  "阶段划分基于时序距离，对阶段边界模糊/可逆的任务(探索性行为)适用性未充分论证。",
+  "需要额外训练阶段表示的对比学习，引入计算与超参成本。",
+  "评测集中在机器人导航-操作类多阶段任务，对其他长时序结构化任务的泛化未展示。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mobileipl_Enhancing Mobile Agents Thinking Process via Iterative Preference Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mobileipl_Enhancing Mobile Agents Thinking Process via Iterative Preference Learning.pdf",
+ "title": "MobileIPL: Enhancing Mobile Agents Thinking Process via Iterative Preference Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "用规则奖励替代PRM标注的移动GUI智能体思考优化",
+ "innovations": [
+  "基于MCTS迭代采样构造CoaT树，用规则奖励对叶节点打分并反传反馈，得到思考级T-DPO偏好对",
+  "以规则化过程反馈替代昂贵的过程奖励模型(PRM)人工标注",
+  "三阶段指令演化，借GPT-4o基于真实UI截图生成多样Q&A以防止热身SFT过拟合并增强版面理解"
+ ],
+ "method_framework": "迭代采样形成动作规划思维树，对叶节点用规则奖励评分并沿树反传，构造Thinking-level DPO偏好对做偏好优化；热身阶段用三阶段指令演化扩充多样UI问答数据，避免SFT陷入固定推理模式。",
+ "experiment_framework": "在三个标准移动GUI智能体基准上评测，对比OS-ATLAS、UI-TARS等持续预训练模型；指标为任务成功率；取得SOTA并展示对域外场景的强泛化。",
+ "takeaways": [
+  "规则化树搜索反传可替代昂贵PRM标注来提供过程监督",
+  "思考级DPO比仅用最终答案奖励更能避免奖励作弊、改善中间推理",
+  "指令演化扩充UI数据能同时提升通用性与版面理解"
+ ],
+ "weaknesses": [
+  "relevance虽涉及过程奖励但落地域为移动GUI而非医疗影像",
+  "规则奖励质量受限于GUI环境可验证性，复杂开放任务难定义规则",
+  "对域外泛化仅定性展示，缺乏与PRM路线的系统消融对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "移动GUI智能体思考优化，非医疗影像可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

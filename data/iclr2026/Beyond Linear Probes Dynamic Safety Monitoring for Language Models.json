@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Beyond Linear Probes Dynamic Safety Monitoring for Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Beyond Linear Probes Dynamic Safety Monitoring for Language Models.pdf",
+ "title": "Beyond Linear Probes: Dynamic Safety Monitoring for Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "截断多项式分类器实现LLM安全监控，但参数量与泛化性存疑",
+ "innovations": [
+  "截断多项式分类器(TPCs)扩展线性探针",
+  "渐进式训练策略产生嵌套子分类器",
+  "级联防御模式实现输入自适应计算",
+  "对称CP分解减少多项式参数量"
+ ],
+ "method_framework": "基于LLM激活空间构建N阶多项式分类器，通过截断实现动态计算预算，支持两种评估模式：用户驱动的安全预算调整和输入驱动的自适应级联防御。",
+ "experiment_framework": "WildGuardMix数据集，4种LLMs(最大30B参数)，对比线性探针、双线性探针和MLP基线，使用F1指标评估有害提示分类性能。",
+ "takeaways": [
+  "多项式交互建模提升安全监控性能",
+  "渐进式训练确保各阶子模型有效性",
+  "级联防御显著降低计算成本"
+ ],
+ "weaknesses": [
+  "多项式参数量随阶数指数增长",
+  "仅评估了特定层激活，未探索全层信息",
+  "跨数据集泛化能力未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "LLM安全监控直接关联可靠性主线，方法设计有创新性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

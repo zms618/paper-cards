@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Improving the Scaling Laws of Synthetic Data with Deliberate Practice.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Improving the Scaling Laws of Synthetic Data with Deliberate Practice.pdf",
+ "title": "Improving the Scaling Laws of Synthetic Data with Deliberate Practice",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "动态合成数据框架通过熵引导采样提升样本效率",
+ "innovations": [
+  "动态合成数据生成框架DP，基于模型性能停滞添加新数据",
+  "熵引导采样直接生成高信息量样本，避免后期修剪",
+  "理论分析证明选择困难样本能改善缩放定律"
+ ],
+ "method_framework": "DP框架通过动态循环连接扩散模型和下游学习器，当验证准确率停滞时，利用模型预测熵引导生成新的挑战性样本，添加到训练集中",
+ "experiment_framework": "ImageNet-100和ImageNet-1k数据集，与静态数据生成基线对比，使用ViT-B分类器，评估验证准确率和真实数据集性能",
+ "takeaways": [
+  "动态数据生成比静态数据生成更高效，显著减少所需样本数量",
+  "熵引导采样近似于从修剪后的分布直接采样，计算成本更低"
+ ],
+ "weaknesses": [
+  "理论分析基于简化的线性模型，与实际复杂模型存在差距",
+  "未充分探讨不同任务类型上DP的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

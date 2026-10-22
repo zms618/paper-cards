@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Mean-Field Sampling for Cooperative Multi-Agent Reinforcement Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Mean-Field Sampling for Cooperative Multi-Agent Reinforcement Learning.pdf",
+ "title": "Mean-Field Sampling for Cooperative Multi-Agent Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 4.5,
+  "relevance": 6,
+  "overall": 5.8
+ },
+ "one_line": "子采样均值场Q学习降低MARL复杂度，但缺乏实证与异质场景验证",
+ "innovations": [
+  "提出Subsample-MFQ：在n个智能体中每次均匀子采样k个做均值场Q学习，Q表规模随k而非n多项式增长",
+  "给出去中心化随机策略：全局/局部智能体各采样k个智能体后按学到的策略行动",
+  "证明与最优策略的性能隙高概率为O(1/√k)且与n无关；取k=O(log n)时首个实现polylog(n)运行时的集中式MARL算法"
+ ],
+ "method_framework": "把系统建模为一个全局agent+n个局部agent的MDP；在k个局部agent子系统上用均值场价值迭代学小Q函数；部署时每步随机采样k个agent按该策略行动，用新的MDP采样结果控制子采样带来的性能隙。",
+ "experiment_framework": "以理论证明为主：分析Q表规模随k的复杂度、次优隙O(1/√k)与n无关，并讨论k对Q表大小与策略最优性的权衡；实证较少。",
+ "takeaways": [
+  "协作MARL可用子采样把复杂度从随n增长降到随k增长，突破均值场MARL对n的依赖",
+  "k的选择构成Q表规模与最优性之间的基本权衡",
+  "k=O(log n)可获得相对此前均值场方法的指数级时间加速"
+ ],
+ "weaknesses": [
+  "理论结果为主，缺乏在大规模多智能体仿真中的实证验证",
+  "同质性/均值场假设在异质智能体系统下可能不成立",
+  "O(1/√k)隙意味着要高精度仍需较大k，实践中k的选取指导有限"
+ ],
+ "confidence": "low",
+ "raw_overall": 5.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/PillarHist_A Quantization-aware Pillar Feature Encoder based on Height-aware Histogram.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/PillarHist_A Quantization-aware Pillar Feature Encoder based on Height-aware Histogram.pdf",
+ "title": "PillarHist A Quantization-aware Pillar Feature Encoder based on Height-aware Histogram",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "高度感知直方图编码提升3D检测量化友好性，但机制分析不足。",
+ "innovations": [
+  "高度感知直方图编码方法",
+  "加权强度直方图增强高度信息",
+  "柱级别线性投影减少计算开销",
+  "量化友好的特征分布约束"
+ ],
+ "method_framework": "PillarHist通过统计柱内不同高度区间的点分布直方图，结合LiDAR反射强度加权直方图和柱中心坐标，经线性投影生成柱特征，保留高度信息同时减少计算量。",
+ "experiment_framework": "在KITTI、nuScenes和Waymo数据集上评估，与PointPillars、CenterPoint-Pillar、PillarNet和FastPillars等基线比较，使用NDS、mAP和延迟指标，并测试量化效果。",
+ "takeaways": [
+  "高度维度信息对3D检测性能至关重要",
+  "直方图编码可有效保留几何信息并减少计算开销",
+  "插件式设计可无缝集成到现有方法"
+ ],
+ "weaknesses": [
+  "仅关注柱特征编码模块，未设计完整的检测器",
+  "高度分箱策略可能影响极端高度场景的表现",
+  "未充分分析不同LiDAR传感器的影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D检测技术不在可靠性主线，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

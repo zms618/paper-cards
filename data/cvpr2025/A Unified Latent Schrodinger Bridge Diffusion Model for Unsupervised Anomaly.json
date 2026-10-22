@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/A Unified Latent Schrodinger Bridge Diffusion Model for Unsupervised Anomaly.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Unified Latent Schrodinger Bridge Diffusion Model for Unsupervised Anomaly.pdf",
+ "title": "A Unified Latent Schrödinger Bridge Diffusion Model for Unsupervised Anomaly Detection and Localization",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 6.0,
+  "overall": 5.6
+ },
+ "one_line": "薛定谔桥扩散模型用于异常检测，但实验数据矛盾且缺乏消融",
+ "innovations": [
+  "把 anomaly→normal 建模为两个边际分布间的 Schrödinger Bridge（min KL(Q||P)）而非高斯扩散，边界条件用 Dirac delta p_A(·)=δ_κ(·) 使最优后向漂移恒定指向正常样本 κ，与 p_B 无关",
+  "给出隐空间解析后验 q(z_t|z_0,z_1)=N(μ_t(z_0,z_1),Σ_t)，μ_t 与 Σ_t 由累积方差 σ_t^2=∫_0^t β 与 σ̄_t^2=∫_t^1 β 闭式给出，据此构造训练目标 ||ε_θ(z_t,t)-(z_t-z_0)/σ_t||",
+  "VQ-VAE 感知压缩后在 64×64×3 隐空间做半退化（semi-degradation）前向，保留结构信息并省去判别式子网络"
+ ],
+ "method_framework": "冻结 Stable Diffusion 的 VQ-VAE，训练 U-Net 拟合线性 SB 的去噪目标；训练时对正常图施加异常增广，推理时把测试异常图还原为正常图，再用 ImageNet 预训练特征的多尺度差分 (p_B-p_A) 定位 ROI。",
+ "experiment_framework": "MVTec-AD 与 VisA；对比 SimpleNet/PatchCore/DRAEM/RD4AD/DDPM/DDAD/GLAD/DiAD 等；AUROC_cls/seg、AP、F1max。",
+ "takeaways": [
+  "“异常→正常”的分布传输视角比“从噪声重建”更适合结构敏感的重建式检测，可迁移到医学重建式异常检测",
+  "类基与统一（multi-class）方法分开列表比较，是异常检测领域值得沿用的公平评测约定"
+ ],
+ "weaknesses": [
+  "自述“LASB 在 VisA 上超 DDAD 0.38%”，但 Tab.1 中 LASB 98.52 < DDAD 98.9，为低于 0.38%，正文结论与表格自相矛盾",
+  "摘要报 MVTec 99.2%/99.3%，Tab.1 报 99.66/99.15，Tab.2 报 99.2，三个数字口径不一致，未说明差异来源",
+  "给定正文内无任何组件消融（Dirac 边界、隐空间 vs 像素空间、半退化策略的贡献）与多种子方差，仅有与基线对比和效率图",
+  "理论部分大量照搬已有 SB/PDE/Nelson 对偶结果，本文新增的可证成分有限；公式提取混乱也影响可复核性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "异常检测方法与可靠性主线有交点但实验数据矛盾且缺乏消融",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

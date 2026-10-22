@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/PHD Personalized 3D Human Body Fitting with Point Diffusion.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/PHD Personalized 3D Human Body Fitting with Point Diffusion.pdf",
+ "title": "PHD Personalized 3D Human Body Fitting with Point Diffusion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "点扩散模型实现个性化3D人体拟合，但泛化能力受限",
+ "innovations": [
+  "个性化身体形状校准方法SHAPify",
+  "基于点扩散模型的3D姿态先验PointDiT",
+  "点蒸馏采样引导的姿态优化框架"
+ ],
+ "method_framework": "PHD分为两阶段：首先通过SHAPify校准用户身体形状，然后利用PointDiT点扩散模型作为3D姿态先验，通过点蒸馏采样引导姿态优化过程",
+ "experiment_framework": "在EMDB和3DPW数据集上评估，与ScoreHMR、CameraHMR等基线比较，使用MPJPE、MVE、Pelvis Error等指标",
+ "takeaways": [
+  "个性化形状信息可显著提升3D姿态估计精度",
+  "点扩散模型作为3D先验可有效纠正错误初始化",
+  "绝对姿态精度评估对实际应用至关重要"
+ ],
+ "weaknesses": [
+  "仅使用合成数据训练PointDiT，可能限制真实场景泛化能力",
+  "需要额外的校准帧获取用户形状信息"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D人体拟合与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

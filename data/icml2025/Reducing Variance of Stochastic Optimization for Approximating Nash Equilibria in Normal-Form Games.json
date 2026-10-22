@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Reducing Variance of Stochastic Optimization for Approximating Nash Equilibria in Normal-Form Games.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Reducing Variance of Stochastic Optimization for Approximating Nash Equilibria in Normal-Form Games.pdf",
+ "title": "Reducing Variance of Stochastic Optimization for Approximating Nash Equilibria in Normal-Form Games",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.5,
+  "evidence": 6.0,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "NAL降低随机优化方差，但偏离主流研究方向且扩展性未验证",
+ "innovations": [
+  "洞察非凸随机优化只需梯度无偏而非损失本身无偏，据此设计 NAL 避免引入高方差的独立随机变量内积",
+  "从理论上证明 NAL 的一阶梯度无偏且方差显著低于既有唯一无偏损失",
+  "最小化 NAL 的算法经验收敛更快，并将估计损失方差降低数个数量级"
+ ],
+ "method_framework": "既有可无偏估计的损失需对两个独立同分布随机变量取内积，方差为单变量估计的平方；NAL 改而直接获得一阶梯度的无偏估计，构造纳什优势这一替代目标，使随机优化器在采样博弈矩阵局部条目的低内存设定下仍能无偏地逼近 NE。",
+ "experiment_framework": "在正规型博弈 NE 近似任务上评测；对比 Nikaido-Isoda、Gemp 等既有损失函数；指标为收敛速率、估计损失方差与逼近 NE 的精度；报告方差降低数个数量级且收敛更快。",
+ "takeaways": [
+  "只要梯度无偏即可随机优化，不必追求损失函数本身无偏",
+  "NAL 同时兼顾无偏性与低方差，缓解了此前无偏损失高方差的痛点",
+  "随机优化可扩展到大规格博弈的 NE 近似而无需载入完整支付矩阵"
+ ],
+ "weaknesses": [
+  "主线偏离可靠性/医学影像/多模态推理，属博弈优化",
+  "结论集中在正规型博弈，扩展到扩展式/连续博弈未论证",
+  "前 9 页未见与深度强化学习博弈求解方法在大规模基准上的系统对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Zero-Shot Adaptation of Parameter-Efficient Fine-Tuning in Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Zero-Shot Adaptation of Parameter-Efficient Fine-Tuning in Diffusion Models.pdf",
+ "title": "Zero-Shot Adaptation of Parameter-Efficient Fine-Tuning in Diffusion Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "ProLoRA实现扩散模型LoRA零样本迁移，但跨架构效果有限",
+ "innovations": [
+  "将源LoRA分解为子空间和零空间分量",
+  "通过投影将源适配器转移到目标模型",
+  "保留原始适配器的风格和功能特性"
+ ],
+ "method_framework": "ProLoRA通过三步实现零样本迁移：识别相似模块对，分解源LoRA为子空间和零空间分量，然后将分解后的LoRA投影到目标模型的相应空间。",
+ "experiment_framework": "在文本到图像生成任务上评估，使用BlueFire、Origami和Paintings等数据集，比较HPSv2、LPIPS和CSD-MMD指标。",
+ "takeaways": [
+  "子空间和零空间投影对保持LoRA特性至关重要",
+  "ProLoRA在跨模型架构迁移中表现优异，包括不同采样配置的模型"
+ ],
+ "weaknesses": [
+  "低秩LoRA迁移时性能下降明显",
+  "跨模型架构差异较大时效果降低",
+  "初始SVD计算成本较高"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

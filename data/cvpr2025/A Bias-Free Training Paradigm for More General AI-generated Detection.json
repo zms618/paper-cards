@@ -1,0 +1,43 @@
+{
+ "key": "cvpr2025/A Bias-Free Training Paradigm for More General AI-generated Detection.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Bias-Free Training Paradigm for More General AI-generated Detection.pdf",
+ "title": "A Bias-Free Training Paradigm for More General AI-generated Image Detection",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "SD2.1自条件重生成+内容增广训练，但多生成器泛化性存疑",
+ "innovations": [
+  "用 SD2.1 inpainting 模型以空 mask 对真实图做 self-conditioned 重生成，使真假样本在内容与编码格式上逐像素对齐，迫使检测器只能依赖生成过程的取证痕迹而非语义/格式偏差",
+  "功率谱分析证明走完扩散步的 self-conditioned 生成相比仅过自编码器的重建，在更低频段也留下伪影，从频域解释了其泛化优势",
+  "内容增广用 inpainting 把物体替换为同类/异类新物体，并给出保留原始背景的局部合成版本（前景合成 + 原背景），配合不 resize 的 504×504 大 crop，避免缩放洗掉低频取证线索",
+  "评测侧主动剥离偏差：用 raw 格式的 Synthbuster 消除 JPEG 偏差、把 GenImage 假图按真实类 JPEG 质量压缩得到 unbiased 版，并引入 ECE 与 balanced NLL 替代单一 AUC"
+ ],
+ "method_framework": "以 COCO 51,517 张真实图为源，SD2.1 自条件重生成 + 三类 inpainting 增广得 309,102 张假图；DINOv2+registers 端到端微调，训练不缩放、推理多 crop 平均。",
+ "experiment_framework": "Synthbuster、GenImage-unbiased、FakeInversion、WildRF、SynthWildX 及 FLUX/SD3.5 等 27 个生成器；指标 AUC/bAcc/NLL/ECE，外加 JPEG/缩放/模糊鲁棒曲线。",
+ "takeaways": [
+  "把研究对象从'新算法'移到'训练数据构造'，并用隔离式消融（固定方法换训练集、固定训练集换增广、固定数据换架构）分离各类贡献，是可直接借鉴的实验设计",
+  "用 ECE/NLL 而非仅 AUC 衡量取证检测器，能暴露阈值未校准导致的'实验室高分、实网近乎随机'问题（表 2 中 AUC 99 而 bAcc 仅 50–78 的行即为证据）",
+  "主动改造评测集以剔除已知偏差（统一格式、统一压缩质量），比沿用现成 benchmark 更能支撑泛化 claim"
+ ],
+ "weaknesses": [
+  "全部假样本由单一生成器 SD2.1 产出，方法实质是'单一生成器取证痕迹能否泛化'，未验证多生成器混合训练集下的表现上限，也未报告对 SD2.1 家族之外生成器的失败案例",
+  "正文在与 CNNDetect 等 SOTA 检测器的主对比表处截断，无法核对 27 个生成器上的完整数值；且无多种子方差/置信区间",
+  "inpainted++ 混合了缩放、cut-out、噪声、抖动等多种增广，未逐个隔离各自贡献，无法判断增益主要来自内容增广还是常规增广",
+  "真实图源仅限 COCO，内容分布受限；WildRF/Reddit 上 bAcc 仍明显低于 Synthbuster，说明实网分布仍有明显差距，'更校准'结论主要建立在受控数据集上"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "单一生成器取证痕迹泛化性存疑，未触及多模态大模型可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/PAD-Hand Physics-Aware Diffusion for Hand Motion Recovery.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/PAD-Hand Physics-Aware Diffusion for Hand Motion Recovery.pdf",
+ "title": "PAD-Hand Physics-Aware Diffusion for Hand Motion Recovery",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "物理感知扩散模型用于手部运动恢复，依赖外部图像估计器",
+ "innovations": [
+  "将欧拉-拉格朗日残差作为虚拟观测值引入扩散模型",
+  "通过最后一层拉普拉斯近似估计动态残差方差",
+  "概率性物理集成而非确定性约束"
+ ],
+ "method_framework": "基于MeshCNN-Transformer骨干网络，构建条件扩散模型，将欧拉-拉格朗日动力学残差作为虚拟观测值，通过反向扩散过程优化手部运动轨迹",
+ "experiment_framework": "在DexYCB和HO3D数据集上评估，使用PA-MPJPE、MPJPE和加速度误差作为指标，与WiLoR等基线方法比较",
+ "takeaways": [
+  "物理残差作为虚拟观测值而非硬约束的集成方式",
+  "动态方差估计能有效识别不可靠的运动估计区域"
+ ],
+ "weaknesses": [
+  "方法依赖于外部图像估计器作为初始输入",
+  "物理模型是简化的，未考虑接触力等复杂因素"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "物理残差作为虚拟观测值有可靠性价值，但依赖外部估计器限制落地性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

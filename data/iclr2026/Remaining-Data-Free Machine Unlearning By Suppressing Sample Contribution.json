@@ -1,0 +1,41 @@
+{
+ "title": "Remaining-Data-Free Machine Unlearning By Suppressing Sample Contribution",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.8
+ },
+ "one_line": "近似敏感度抑制样本贡献，无需剩余数据的机器遗忘方法。",
+ "innovations": [
+  "理论与实证揭示样本在训练中的贡献体现为其对该样本目标logit相对无关logit被放大的输入敏感度差异，从而仅用预训练模型即可定位贡献。",
+  "提出MU-Mis：直接抑制遗忘数据的贡献(缩小目标/非目标logit敏感度差距)，避免随机打标签/蒸馏等启发式混淆导致的过遗忘。",
+  "据作者称是首个无需访问剩余数据即可达到依赖剩余数据的顶级方法水平的MU方法，并在序列遗忘中行为稳定。"
+ ],
+ "method_framework": "把训练看作映射f=A(D)，样本xi的贡献对应∂A/∂xi；论证可用学习模型对输入的敏感度∂f/∂x近似；进一步发现贡献表现为目标logit相对无关logit的敏感度偏高，于是通过优化缩小该敏感度差距来撤回遗忘样本贡献，全程不触碰剩余数据。",
+ "experiment_framework": "在3类标准遗忘任务、6个数据集上评测；对比6个依赖剩余数据的方法与4个无需剩余数据基线；指标为遗忘有效性(攻击/成员推理)与剩余数据上的效用保持、计算效率及序列遗忘稳定性。",
+ "takeaways": [
+  "样本贡献可由模型对其输入的敏感度差异刻画，无需重训或历史梯度即可近似。",
+  "直接抑制贡献比随机重标签/蒸馏类混淆更能同时做到有效遗忘与效用保持。",
+  "无需剩余数据的遗忘在实际部署中(剩余数据不可得)更具可行性。"
+ ],
+ "weaknesses": [
+  "贡献体现为输入敏感度的刻画基于近似与启发式logit敏感度分析，理论近似的严格性在节选页中论证有限。",
+  "主线落地域(医学影像/多模态推理)不匹配，仅为通用分类的隐私遗忘。",
+  "节选前9页未见完整6数据集结果表与攻击曲线，'与SOTA相当'的量化证据在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Remaining-Data-Free Machine Unlearning By Suppressing Sample Contribution.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Remaining-Data-Free Machine Unlearning By Suppressing Sample Contribution.pdf",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "隐私遗忘方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

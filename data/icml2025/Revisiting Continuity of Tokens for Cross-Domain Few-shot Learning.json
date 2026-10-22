@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Revisiting Continuity of Tokens for Cross-Domain Few-shot Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Revisiting Continuity of Tokens for Cross-Domain Few-shot Learning.pdf",
+ "title": "Revisiting Continuity of Tokens for Cross-Domain Few-shot Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "发现ViT连续性在源域重要但跨域有害，简单打乱token提升少样本跨域性能。",
+ "innovations": [
+  "发现有趣现象：破坏图像token连续性在源域(通用域)显著降低ViT性能，但在跨域目标域影响极小",
+  "解释该现象：token连续性帮助ViT学习大空间模式，而这些大模式更难跨域迁移，反而拉大了域间距离",
+  "基于此发现提出简单有效的CDFSL方法：主动破坏token连续性以减少大空间模式的依赖，缩小域间差距"
+ ],
+ "method_framework": "从自注意力对token顺序不敏感出发，研究patch间像素连续性对ViT泛化的影响。发现连续性帮助学习的大空间模式在跨域时不迁移，导致域差。提出在CDFSL中主动打乱/破坏token连续性，强制模型学习更小的、更易迁移的局部模式。",
+ "experiment_framework": "在标准CDFSL基准(miniImageNet源域，多个目标域如CropDisease、EuroSAT等)上测试。对比现有CDFSL方法。指标为few-shot准确率。消融研究不同连续性破坏方式的影响。",
+ "takeaways": [
+  "ViT中的图像token连续性在源域有用但在跨域时成为负担，大空间模式难以跨域迁移",
+  "主动破坏token连续性可以缩小域间差距，提升CDFSL性能",
+  "该发现为理解ViT的跨域泛化提供了新的可解释性视角"
+ ],
+ "weaknesses": [
+  "方法较简单(打乱token顺序)，技术创新增量有限",
+  "仅在ViT架构上验证，未讨论CNN或其他架构",
+  "破坏连续性的最优程度缺乏系统指导"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

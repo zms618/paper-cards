@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/GRO-RAG Gradient-Aware Re-Rank Optimization for Multi-Source Retrieval-Augmented Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/GRO-RAG Gradient-Aware Re-Rank Optimization for Multi-Source Retrieval-Augmented Generation.pdf",
+ "title": "GRO-RAG: GRADIENT-AWARE RE-RANK OPTIMIZA-TION for MULTI-SOURCE RETRIEVAL-AUGMENTED Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "梯度重排序优化多源检索，但实验不完整且计算复杂",
+ "innovations": [
+  "基于梯度的文档重排序，直接利用LLM生成目标反馈",
+  "源选择优化，平衡相关性与冗余性",
+  "理论证明梯度选择近似最优子集"
+ ],
+ "method_framework": "两级选择框架：源级选择优化相关性与冗余性，文档级通过单次反向传播计算梯度分数进行重排序",
+ "experiment_framework": "HotpotQA/2WikiMultihopQA/MuSiQue数据集，对比w/o Retrieval/Vanilla RAG/Single-Source RAG/Multi-Source RAG基线，使用F1/EM指标",
+ "takeaways": [
+  "利用LLM内部梯度作为文档效用信号，无需额外训练",
+  "源选择中的冗余性考虑可减少上下文浪费",
+  "梯度分数可作为leave-one-out损失的代理指标"
+ ],
+ "weaknesses": [
+  "仅在前9页内容中，实验细节和消融研究不完整",
+  "方法计算复杂度随候选文档数量增加而增加"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多源检索优化与可靠性主线无实质交点，仅方法设计有参考价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

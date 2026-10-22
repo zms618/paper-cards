@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Inducing, Detecting and Characterising Neural Modules A Pipeline for Functional Interpretability in.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Inducing, Detecting and Characterising Neural Modules A Pipeline for Functional Interpretability in.pdf",
+ "title": "Inducing, Detecting and Characterising Neural Modules: A Pipeline for Functional Interpretability in Reinforcement Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.9
+ },
+ "one_line": "通过正则诱导模块化，用扩展Louvain检测，权重干预验证RL策略功能",
+ "innovations": [
+  "从神经元级解释转向功能模块化解释，通过鼓励权重稀疏与局部性诱导 RL 策略网络涌现功能模块。",
+  "提出带‘相关性对齐’度量的扩展 Louvain 算法，克服标准网络分析技术在神经架构上的局限以检测模块。",
+  "在推理前直接对网络权重做干预来验证所检测模块的功能（如不同导航轴模块）。"
+ ],
+ "method_framework": "训练时施加稀疏+局部正则以诱导模块化结构；在学到的权重/激活相关图上用扩展 Louvain(相关性对齐)聚类出功能模块；通过消融/篡改特定模块权重做因果干预以刻画其功能。",
+ "experiment_framework": "在 2D 与 3D MiniGrid 环境上训练 RL 策略并运行流水线；指标为模块涌现的一致性、不同导航轴模块的可分离性，以及权重干预对行为的因果影响。",
+ "takeaways": [
+  "稀疏+局部性正则可诱导 RL 策略网络涌现可检测的功能模块，而非孤立神经元。",
+  "直接权重干预能验证模块功能，为 RL 系统的安全审计提供可解释抓手。"
+ ],
+ "weaknesses": [
+  "验证集中在 MiniGrid 等小规模导航任务，复杂高维 RL 任务上模块是否仍涌现未验证。",
+  "诱导模块依赖稀疏/局部正则，可能与性能存在权衡，定量报告不足。",
+  "落地域为 RL 可解释性，与医学影像/多模态推理等主线落地域不直接对应。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

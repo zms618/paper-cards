@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/LILO_Learning to Reason at the Frontier of Learnability.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/LILO_Learning to Reason at the Frontier of Learnability.pdf",
+ "title": "LILO: Learning to Reason at the Frontier of Learnability",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "LILO通过采样高可学习性问题提升LLM训练效率，但后期效果下降",
+ "innovations": [
+  "提出可学习性(Learnability)概念作为训练问题选择标准",
+  "证明策略改进与可学习性之间的理论关系",
+  "设计简单高效的LILO算法，可无缝集成到现有训练框架",
+  "实验验证LILO在多种算法和数据集上提升训练速度3倍"
+ ],
+ "method_framework": "LILO算法通过拒绝采样选择高可学习性问题(成功概率约50%)进行训练，仅需少量额外计算开销，即可显著提升训练效率。",
+ "experiment_framework": "在PPO、VinePPO、GRPO三种算法，MATH、GSM8K、ORZ57K三种数据集，Rho-1B、Qwen-2.5-1.5B两种模型上验证，使用准确率作为主要指标。",
+ "takeaways": [
+  "可学习性作为训练问题选择标准具有理论依据和实践价值",
+  "训练过程中高可学习性问题逐渐减少，需动态调整采样策略",
+  "即使在高可学习性问题上训练，LLM仍存在显著的训练-测试泛化差距"
+ ],
+ "weaknesses": [
+  "LILO在训练后期难以找到高可学习性问题",
+  "对已进行大量RL训练的模型提升有限",
+  "计算可学习性的开销在某些情况下可能成为瓶颈"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

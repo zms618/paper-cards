@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Sample, Scrutinize and Scale Effective Inference-Time Search by Scaling Verification.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Sample, Scrutinize and Scale Effective Inference-Time Search by Scaling Verification.pdf",
+ "title": "Sample, Scrutinize and Scale: Effective Inference-Time Search by Scaling Verification",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "采样池扩大隐式提升验证精度，但结论外推性有限",
+ "innovations": [
+  "揭示'隐式缩放'现象：扩大候选响应池本身就会提升自验证精度",
+  "提出两条用测试时算力提升自验证能力的原则：跨响应比较可定位错误/幻觉；不同输出风格适配不同场景(CoT利于推理但难验证)",
+  "证明极简采样+自验证实现充分放大即可匹敌强推理模型"
+ ],
+ "method_framework": "采样式搜索=并行生成多个候选再选最优，其效用受验证能力制约。本文系统改变采样池规模与自验证方式，剖析验证瓶颈如何随测试时算力演化；通过实验提炼提升自验证(跨响应比较、输出风格选择)的原则。",
+ "experiment_framework": "以Gemini v1.5 Pro为底座，在热门推理基准上对比不同采样池规模、自验证方式与输出风格；报告极简采样+自验证放大后超过o1-Preview；分析Pass@k与验证精度随规模的变化。",
+ "takeaways": [
+  "采样池扩大本身隐式提升自验证精度，是采样搜索可扩展的关键原因",
+  "跨响应比较能提供错误/幻觉位置信号；CoT利于推理但更难验证",
+  "准确验证虽可被引出，但仍受验证能力限制"
+ ],
+ "weaknesses": [
+  "结论基于Gemini系列与数学/推理基准，对开放域/生成任务的验证缩放规律外推有限",
+  "自验证在规则不可验证的开放性问题上是否仍成立未充分展开",
+  "算力-精度权衡的最优配置依赖具体模型，普适性边界需更多验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

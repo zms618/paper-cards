@@ -1,0 +1,42 @@
+{
+ "key": "iccv2025/Open-Vocabulary Octree-Graph for 3D Scene Understanding.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Open-Vocabulary Octree-Graph for 3D Scene Understanding.pdf",
+ "title": "Open-Vocabulary Octree-Graph for 3D Scene Understanding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "Octree-Graph结合VLM提升3D理解，但依赖外部工具且泛化有限",
+ "innovations": [
+  "自适应八叉树结构表示物体占用信息",
+  "时间分组分段合并策略(CGSM)",
+  "实例特征聚合算法(IFA)",
+  "Octree-Graph场景表示结构"
+ ],
+ "method_framework": "基于RGB-D序列，利用VLM提取2D掩码和特征，投影到3D空间，通过CGSM合并段，IFA聚合特征，构建Octree-Graph表示场景",
+ "experiment_framework": "在Replica、ScanNet、ScanNet200、Sr3D和HM3DSem数据集上评估语义分割、实例分割、物体检索和路径规划任务",
+ "takeaways": [
+  "自适应八叉树显著减少存储空间并保持占用信息准确性",
+  "时间分组分段合并策略有效解决噪声和冗余问题",
+  "实例特征聚合算法提升特征表示质量"
+ ],
+ "weaknesses": [
+  "方法依赖外部2D分割器和VLM，可能引入误差",
+  "自适应八叉树的最大深度固定为4，可能不适合所有场景",
+  "实验主要在室内场景进行，泛化能力有待验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D场景理解与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

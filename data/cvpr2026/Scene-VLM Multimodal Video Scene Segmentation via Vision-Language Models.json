@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Scene-VLM Multimodal Video Scene Segmentation via Vision-Language Models.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Scene-VLM Multimodal Video Scene Segmentation via Vision-Language Models.pdf",
+ "title": "Scene-VLM Multimodal Video Scene Segmentation via Vision-Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.3
+ },
+ "one_line": "将VLM应用于视频场景分割，性能提升但依赖外部数据",
+ "innovations": [
+  "首个VLM框架用于视频场景分割",
+  "顺序预测与因果依赖设计",
+  "从VLM令牌级logits提取置信分数",
+  "多模态镜头表示融合视觉、对话和元数据"
+ ],
+ "method_framework": "Scene-VLM使用Qwen2.5-VL-7B作为基础模型，通过上下文-焦点窗口设计处理连续镜头，联合处理视觉帧、字幕和角色信息，顺序预测场景边界并生成置信分数。",
+ "experiment_framework": "MovieNet-318/BBC Planet Earth/VidChapters-7M数据集，与BaSSL/TranS4mer/MEGA/Chapter-LLaMA等基线比较，使用F1/AP指标评估。",
+ "takeaways": [
+  "多模态融合对场景边界检测至关重要",
+  "顺序预测比独立点预测更有效",
+  "置信分数提取方案可扩展到其他VLM任务"
+ ],
+ "weaknesses": [
+  "计算复杂度高，推理速度慢",
+  "依赖外部字幕和元数据，在无字幕视频上性能可能下降"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态视频分割与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

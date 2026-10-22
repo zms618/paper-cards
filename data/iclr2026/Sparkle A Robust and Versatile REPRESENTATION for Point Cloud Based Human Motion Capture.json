@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Sparkle A Robust and Versatile REPRESENTATION for Point Cloud Based Human Motion Capture.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sparkle A Robust and Versatile REPRESENTATION for Point Cloud Based Human Motion Capture.pdf",
+ "title": "Sparkle: A Robust and Versatile Representation for Point Cloud Based Human Motion Capture",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "结构化点云表示解耦运动学与几何，提升鲁棒性但复杂度增加",
+ "innovations": [
+  "提出Sparkle结构化表示，以显式运动学-几何分解统一骨架关节与表面锚点，兼顾点法(几何细但噪)与骨架法(鲁棒但过简)的权衡",
+  "通过层次化模块嵌入几何连续性与运动学约束来学习该表示",
+  "显式解耦内部运动学结构与外部表面几何，在精度外还提升域偏移/噪声/遮挡下的鲁棒性与泛化"
+ ],
+ "method_framework": "定义Sparkle表示同时包含骨架关节(内部运动学)与表面锚点(外部几何)；用层次化模块分别嵌入几何连续性与运动学约束，把内部运动学从外部表面几何中显式解耦；输入含噪非结构化点云即可恢复兼具运动学与表面细节的人体表示。",
+ "experiment_framework": "在11个数据集、多种传感器类型与真实复杂场景(暗光多人足球、异构点云、紧密人际篮球交互)上评测；以网格顶点误差等为指标，报告在精度与严重域偏移/噪声/遮挡下的鲁棒性均优于SOTA。",
+ "takeaways": [
+  "把骨架关节与表面锚点统一为结构化表示可同时获得几何细节与鲁棒性",
+  "显式运动学-几何分解提升了域偏移/噪声/遮挡下的泛化",
+  "该表示跨传感器类型与真实复杂场景具有强通用性"
+ ],
+ "weaknesses": [
+  "表面锚点+骨架的表示冗余增加建模与推理复杂度，实时效率的净收益需核算",
+  "紧密人际交互下的骨架歧义(互相遮挡)仍可能失败，极限场景覆盖有限",
+  "跨11数据集的优势多以网格误差衡量，下游动作识别等任务收益未充分展示"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "点云运动捕捉与可靠性主线交点，鲁棒性提升明确",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

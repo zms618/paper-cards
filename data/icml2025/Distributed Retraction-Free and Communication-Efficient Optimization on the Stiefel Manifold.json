@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Distributed Retraction-Free and Communication-Efficient Optimization on the Stiefel Manifold.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Distributed Retraction-Free and Communication-Efficient Optimization on the Stiefel Manifold.pdf",
+ "title": "Distributed Retraction-Free and Communication-Efficient Optimization on the Stiefel Manifold",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "分布式Stiefel优化算法，通信压缩但与鲁棒任务关联弱",
+ "innovations": [
+  "提出EF-Landing，首个无回缩(retraction-free)且通信高效的Stiefel流形分布式随机优化算法",
+  "结合通信压缩与误差反馈，在降低通信开销的同时保证收敛与约束可行性",
+  "给出尖锐收敛保证，证明达到与无通信压缩方法相同的渐近线性加速率；分析同时适用于确定性/随机、梯度/动量设置，并推广到分块Stiefel流形"
+ ],
+ "method_framework": "Landing算法靠矩阵乘避免昂贵回缩(QR/矩阵指数)，但原工作是单机；本文将其扩展到多节点分布式，并引入通信压缩(梯度量化)与误差反馈(error feedback)以补偿压缩误差，从而在各节点本地数据分布下最小化Stiefel约束X^TX=I的目标，保持约束可行并维持线性加速收敛。",
+ "experiment_framework": "在PCA/CCA及带正交约束的深度学习等任务上做分布式数值实验，对比无压缩Landing与其他Stiefel优化方法，以收敛速度、约束可行性与通信量为指标验证理论。",
+ "takeaways": [
+  "无回缩Landing思路可推广到分布式，并通过误差反馈实现通信压缩而不掉收敛率",
+  "EF-Landing达到与无压缩方法相同的渐近线性加速",
+  "框架可推广到分块Stiefel流形，支持结构化正交约束"
+ ],
+ "weaknesses": [
+  "纯优化理论与算法，与下游鲁棒/可信任务的实际收益关系较弱",
+  "通信压缩比与收敛率的权衡未在大规模真实训练中充分实证",
+  "依赖Landing的迭代不严格在流形上，约束可行性误差的实际容忍度需结合任务"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

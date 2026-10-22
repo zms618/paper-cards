@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DocKS-RAG Optimizing Document-Level Relation Extraction through LLM-Enhanced Hybrid Prompt Tuning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DocKS-RAG Optimizing Document-Level Relation Extraction through LLM-Enhanced Hybrid Prompt Tuning.pdf",
+ "title": "DocKS-RAG: Optimizing Document-Level Relation Extraction through LLM-Enhanced Hybrid Prompt Tuning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "文档级RE：知识图谱+检索增强+混合提示调优的常规组合",
+ "innovations": [
+  "从可观测文档数据构建文档级知识图谱，显式引入实体-实体交互等结构知识弥补PLM的不足",
+  "设计句级语义检索增强生成(Sentence-level Semantic RAG)机制，按句子相似度检索相关上下文语义以辅助跨句关系推理",
+  "在LLM上提出面向文档级RE的混合提示调优方法，结合结构与语义信息"
+ ],
+ "method_framework": "先从文档抽取实体并构建文档级知识图谱，显式建模实体间结构关系；再设计句级语义检索增强生成机制，针对目标实体对检索相似句子的相关上下文语义；最后在LLM上做混合提示调优，把结构知识与检索到的语义信息一并注入，完成跨句文档级关系抽取。",
+ "experiment_framework": "在两个文档级关系抽取基准数据集上与SOTA PLM-based方法对比，报告Precision/Recall/F1等全部指标，验证所提框架在各项指标上的提升。",
+ "takeaways": [
+  "显式引入文档级知识图谱的结构知识可弥补PLM在实体交互建模上的不足",
+  "句级语义检索能有效补充跨句隐式关系推理所需的上下文",
+  "在两个基准上各项指标均超过现有SOTA方法"
+ ],
+ "weaknesses": [
+  "多个模块(KG/RAG/提示调优)堆叠，各组件独立贡献的消融不充分",
+  "KG构建本身依赖抽取质量，误差会向关系抽取传播，未讨论级联误差",
+  "仅两个数据集，规模与领域多样性有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

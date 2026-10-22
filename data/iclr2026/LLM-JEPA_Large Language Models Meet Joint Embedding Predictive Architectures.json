@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/LLM-JEPA_Large Language Models Meet Joint Embedding Predictive Architectures.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/LLM-JEPA_Large Language Models Meet Joint Embedding Predictive Architectures.pdf",
+ "title": "LLM-JEPA: Large Language Models Meet Joint Embedding Predictive Architectures",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 7.0,
+  "overall": 6.0
+ },
+ "one_line": "将视觉JEPA嫁接LLM，双视图预测提升推理但计算开销大",
+ "innovations": [
+  "首次将JEPA架构引入LLM训练",
+  "设计Text-Code双视图JEPA目标函数",
+  "保持LLM生成能力的同时提升推理能力"
+ ],
+ "method_framework": "结合传统LLM生成损失与JEPA嵌入预测损失，使用特殊[PRED] token实现预测器，通过自定义注意力掩码隔离不同视图",
+ "experiment_framework": "多模型家族(Llama3, Gemma2, OpenELM, Olmo)和多数据集(NL-RX, GSM8K, Spider, RottenTomatoes)的微调和预训练实验",
+ "takeaways": [
+  "JEPA目标能诱导LLM表示空间形成结构化表示",
+  "添加JEPA损失不损害LLM的生成能力",
+  "双视图数据对JEPA效果至关重要"
+ ],
+ "weaknesses": [
+  "仅适用于具有自然双视图结构的数据集",
+  "计算开销较大(需要额外前向传播)",
+  "缺乏对模型鲁棒性和泛化能力的直接评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "双视图JEPA提升推理能力，触及可靠性主线中的推理增强",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

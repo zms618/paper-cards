@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/AnyMoLe_Any Character Motion In-betweening Leveraging Video Diffusion Models.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/AnyMoLe_Any Character Motion In-betweening Leveraging Video Diffusion Models.pdf",
+ "title": "AnyMoLe: Any Character Motion In-betweening Leveraging Video Diffusion Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "视频扩散模型微调生成中间帧，再倒推为任意角色3D运动",
+ "innovations": [
+  "ICAdapt：只用待插值场景渲染出的2秒上下文运动（4视角、16帧滑窗、抽成30/15/10fps片段）微调DynamiCrafter的空间模块与image projector，时间模块与fps embedding冻结，避免单运动微调的灾难性遗忘",
+  "两阶段隐空间修复式生成：把'带上下文帧的插值'重述为latent inpainting——去噪到t步时用E_vae(I_m)+ε_t替换对应latent并迭代重建guidance帧，先自回归出5fps粗帧、再把粗帧当监督补15fps细帧",
+  "motion-video mimicking：从两个关键帧向中心逐帧优化根位置P与每关节旋转R，目标为关节投影残差(Escene)+可微渲染图像L2+位置/旋转正则三项，用生成视频倒逼出3D运动"
+ ],
+ "method_framework": "渲染2秒上下文与关键帧多视角图→ICAdapt微调空间模块、Escene估计关节点→两阶段（粗5fps自回归+细15fps）生成中间视频→逐帧向中心顺序优化P/R对齐生成视频→上采样30fps。",
+ "experiment_framework": "20组角色（Mixamo人形+Truebones Zoo鸟/蛇/恐龙等）运动，HL2Q/L2Q/L2P/NPSS/LPIPS/CLIP/SSIM；对照ERD-QV/TST/SinMDM；Table 3含4项消融；正文在§4.4末截断。",
+ "takeaways": [
+  "冻结时间模块、只微调空间模块，用2秒（极短）上下文做domain adaptation，是把通用视频生成模型搬到渲染动画域最省力的姿势，代价只训500步",
+  "先用视频生成'伪监督'再逐帧优化回3D运动（motion-video mimicking），比直接拟合关节点更稳，因为渲染残差能抓住关节损失漏掉的细微位移",
+  "对生成视频里的物体重新估关节（而非复用生成模型的中间表示）是绕开绑定结构差异（任意骨架）的关键"
+ ],
+ "weaknesses": [
+  "基线ERD-QV/TST是单角色模型，必须用MotionBuilder重定位到目标角色才能比，属不同类且被劣化的对照；它们还完全跑不了非人形角色，非人形列整列空缺——'任意角色'实际上只跟SinMDM一家比过",
+  "λimg=50、λpos=7000、λrot=30000 三个权重量级差2个数量级却只给了一次定值，'从关键帧向中心逐帧优化'的推进步数也无敏感度分析；20个motion各跑一次、无方差",
+  "Escene只用30fps上下文帧+1fps关键帧训练，靠权重w=3加重关键帧来防过拟合（作者自述的启发式），且直接剔除back view绕开了左右歧义难题而非正面解决；过早停止/迭代次数未见消融",
+  "正文在§4.4消融段中途截断，Table 3之后的分析与结论、运行时长与失败案例均不可见"
+ ],
+ "confidence": "medium",
+ "raw_overall": 4.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "角色运动插值与可靠性主线无关，属纯视频生成工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

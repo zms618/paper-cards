@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Forecast the Principal Stabilize the Residual Subspace-Aware Feature Caching for.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Forecast the Principal Stabilize the Residual Subspace-Aware Feature Caching for.pdf",
+ "title": "Forecast the Principal Stabilize the Residual Subspace-Aware Feature Caching for",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "SVD分解DiT特征空间，预测主成分复用残差，实现近无损加速",
+ "innovations": [
+  "揭示DiT特征空间存在主子空间和残差子空间的异构动态",
+  "提出'一次SVD，全程分解'的高效特征缓存框架",
+  "主子空间用EMA预测，残差子空间直接复用，实现近无损加速"
+ ],
+ "method_framework": "通过SVD分解特征空间为低秩主子空间和高频残差子空间，对主子空间应用EMA预测，残差子空间直接复用，结合'一次SVD，全程分解'策略实现高效特征缓存。",
+ "experiment_framework": "在FLUX和HunyuanVideo上测试，使用ImageReward、CLIP、VBench等指标，并与TaylorSeer、ToCa等基线对比，同时验证与量化、蒸馏、稀疏注意力的兼容性。",
+ "takeaways": [
+  "特征空间分解可有效处理高维特征的异构动态",
+  "残差子空间的高频振荡特性使其更适合直接复用而非预测"
+ ],
+ "weaknesses": [
+  "奇异值分解的计算开销可能限制某些实时应用场景",
+  "对极端不合理的提示词效果仍有提升空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "特征加速技术不触及可靠性主线，仅属常规优化",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

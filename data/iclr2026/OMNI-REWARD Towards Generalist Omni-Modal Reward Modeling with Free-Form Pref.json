@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/OMNI-REWARD Towards Generalist Omni-Modal Reward Modeling with Free-Form Pref.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/OMNI-REWARD Towards Generalist Omni-Modal Reward Modeling with Free-Form Pref.pdf",
+ "title": "Omni-Reward: Towards Generalist Omni-Modal Reward Modeling with Free-Form Preferences",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 7,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "构建全模态奖励基准与数据集，方法创新有限但实验充分。",
+ "innovations": [
+  "构建首个覆盖文/图/视频/音频/3D五模态九任务、支持自由形式偏好准则的奖励模型基准Omni-RewardBench，并区分w/o Ties与w/ Ties两种评测设置。",
+  "构建Omni-RewardData：248K通用偏好对加69K带自由形式偏好描述的指令微调对，用于训练跨模态通用奖励模型。",
+  "同时给出判别式（Omni-RewardModel-BT）与生成式（Omni-RewardModel-R1）奖励模型，验证指令微调能缓解偏好刚性、按自由准则动态打分。"
+ ],
+ "method_framework": "将奖励建模样本表示为(x,y1,y2,c,p)：给定输入x、两个候选响应y1/y2与自由形式偏好准则c，奖励模型需预测偏好p；在w/o Ties（二选一）与w/ Ties（含平局）两设置下评测；基于多模态偏好数据训练判别式Bradley-Terry奖励模型与生成式奖励模型，并用带自由准则的指令微调使其按用户给定准则动态调整奖励分。",
+ "experiment_framework": "自建Omni-RewardBench（9任务/5模态/3725高质量偏好对）评测，Omni-RewardModel达73.68%（w/o Ties）与65.36%（w/ Ties）准确率、较基座提升约20%；并在VL-RewardBench、Multimodal RewardBench等公开奖励基准上达到或超过SOTA；数据/代码/基准均开源。",
+ "takeaways": [
+  "奖励模型存在模态失衡与偏好刚性两大问题，全模态加自由形式准则是可行的改进方向。",
+  "指令微调对奖励模型关键，使其能根据自由形式用户偏好动态调整奖励分。",
+  "判别式与生成式两条路线在全模态奖励建模上均有效，生成式奖励模型具备竞争力。"
+ ],
+ "weaknesses": [
+  "核心贡献以基准/数据集/系统集成为主，奖励建模方法本身的算法新颖性有限。",
+  "自由形式偏好标注依赖人工/模型标注，准则主观性与标注一致性未充分量化。",
+  "跨模态奖励模型在3D、音频等模态上样本量与任务多样性仍偏少，泛化结论偏乐观。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "多模态奖励模型与可靠性主线有交点但未深入落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

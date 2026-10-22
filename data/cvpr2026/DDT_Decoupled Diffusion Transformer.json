@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/DDT_Decoupled Diffusion Transformer.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/DDT_Decoupled Diffusion Transformer.pdf",
+ "title": "DDT Decoupled Diffusion Transformer",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "解耦扩散变换器加速训练但参数量大，高频细节生成存疑",
+ "innovations": [
+  "条件编码器与速度解码器的解耦设计",
+  "统计动态编程优化自条件共享策略",
+  "4倍训练加速并达到SOTA FID指标"
+ ],
+ "method_framework": "DDT采用条件编码器提取语义自条件特征，速度解码器处理噪声潜变量回归高频速度，通过表示对齐保持相邻步骤特征一致性",
+ "experiment_framework": "ImageNet 256×256和512×512数据集，FID、sFID、IS、Precision和Recall指标，与REPA、SiT等基线对比",
+ "takeaways": [
+  "解耦架构解决传统扩散模型的优化困境",
+  "表示对齐技术增强特征一致性并支持推理加速",
+  "动态编程策略优化自条件共享"
+ ],
+ "weaknesses": [
+  "模型参数量较大(675M)，计算资源需求高",
+  "未充分分析不同分辨率下的泛化能力",
+  "自条件共享策略在高频步骤可能影响细节生成"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型加速技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

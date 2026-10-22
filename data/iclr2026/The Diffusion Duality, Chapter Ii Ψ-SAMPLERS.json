@@ -1,0 +1,41 @@
+{
+ "title": "The Diffusion Duality, Chapter II: Ψ-Samplers",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.7
+ },
+ "one_line": "离散扩散PC采样器统一框架，小规模实验验证，工程优化为主",
+ "innovations": [
+  "提出一族预测-校正(PC)离散扩散采样器，泛化此前方法并适用于任意噪声过程",
+  "证明配合 uniform-state 扩散时，该采样器不像祖先采样那样随步数增加而质量平台化，而是持续改进，质疑‘masked 扩散是必然未来’的假设",
+  "为 Gaussian relaxation 训练阶段设计省显存课程，相比 Duo 训练时间降 25%、显存降 33%，同时保持 OpenWebText/LM1B 困惑度与下游性能"
+ ],
+ "method_framework": "把离散扩散采样建模为预测-校正两阶段：预测步估计下一状态、校正步在 uniform-state 扩散的自纠正能力上精修；该框架统一已有采样器并推广到任意噪声过程；训练侧设计渐进式 Gaussian relaxation 课程以降显存与时间。",
+ "experiment_framework": "语言建模 OpenWebText/LM1B（生成困惑度、unigram entropy 匹配下对比）；图像 CIFAR10（FID/IS）；对比祖先采样、MDLM、Duo 等；指标含随采样步数增加的质量曲线、训练时间与显存占用。",
+ "takeaways": [
+  "离散扩散的采样质量瓶颈不在步数，祖先采样会平台化，而 PC 采样器随步数持续变好",
+  "uniform-state 扩散凭借自纠正能力在少步/引导场景优于自回归与 masked 扩散，masked 扩散并非唯一出路",
+  "Gaussian relaxation 训练可通过课程化进一步省显存省时间而不掉点"
+ ],
+ "weaknesses": [
+  "PC 采样器相对祖先采样的增益在语言/图像上虽显著，但实验集中在 OpenWebText/CIFAR10 等小规模基准，未在大规模 LLM 或复杂图像生成上验证",
+  "方法是已有预测-校正框架在离散扩散上的系统化推广，核心组件（预测/校正、uniform-state）来自前作，新意主要在统一与工程优化",
+  "relevance 给 5：属离散扩散生成模型的采样与训练效率，与可靠性(验证/不确定性/幻觉)×落地域(医学影像/多模态推理)主线无关，按规则给低分"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/The Diffusion Duality, Chapter Ii Ψ-SAMPLERS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The Diffusion Duality, Chapter Ii Ψ-SAMPLERS.pdf",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "离散扩散生成模型采样效率，与可靠性主线无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

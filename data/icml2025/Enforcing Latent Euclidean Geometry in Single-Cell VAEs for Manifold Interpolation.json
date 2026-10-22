@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Enforcing Latent Euclidean Geometry in Single-Cell VAEs for Manifold Interpolation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Enforcing Latent Euclidean Geometry in Single-Cell VAEs for Manifold Interpolation.pdf",
+ "title": "Enforcing Latent Euclidean Geometry in Single-Cell VAEs for Manifold Interpolation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.9
+ },
+ "one_line": "FlatVI拉平单细胞VAE潜空间几何，改善轨迹重构但普适性受限。",
+ "innovations": [
+  "将针对连续/AE的潜空间拉平正则推广到离散似然（负二项）VAE：显式推导负二项统计流形的pullback度量M(z)=Σ_g [θg/(hg(z)(hg(z)+θg))] ∇zhg(z)⊗∇zhg(z)，并定义flattening损失Lflat=E||M(z)-αId||_F^2。",
+  "在ELBO上加λ·Lflat，α为可训练的对角缩放参数，使直线潜路径近似解码统计流形上的测地线，同时保持负二项似然重构能力。",
+  "与线性动态OT（OT-CFM）耦合，证明欧氏化潜空间为下游轨迹推断提供更好表征。"
+ ],
+ "method_framework": "把VAE解码器视为潜空间到负二项参数统计流形的映射，其局部几何由Fisher信息度量(FIM)经雅可比pullback得到；通过Frobenius正则把pullback度量拉向缩放单位阵Id，使潜流形局部欧氏、测地线与直线重合；再与标准ELBO加权相加训练。",
+ "experiment_framework": "合成多变量负二项数据（测VoR/CN/3-NN重叠、µ/θ重构MSE）；真实数据EB(18,203细胞)、MEF(165,892细胞重编程)、Pancreas(16,206细胞内分泌发生)；基线NB-VAE、GAE、GAGA；下游OT-CFM动态OT，指标2-Wasserstein、L2、MMD、CellRank终端状态数与速度一致性。",
+ "takeaways": [
+  "随λ增大，3-NN重叠从0.66升至0.80而µ/θ重构MSE基本不退化，证实拉平与似然重构可兼得。",
+  "在EB/MEF上FlatVI潜空间2-Wasserstein(EB 1.54 vs NB-VAE 2.07/GAE 2.16)与解码MMD均优于基线，提升留出时间点轨迹重构。",
+  "Pancreas上FlatVI识别出全部6个已知终端状态，而GAE/NB-VAE仅4/5个，且速度一致性更平滑。"
+ ],
+ "weaknesses": [
+  "前提假设过强：要求流形测地凸且局部约束可外推到全局，作者自承对细胞周期等循环过程不适用，普适性受限。",
+  "与拉平-重构存在权衡，作者自认未来需提升对生物数据重构损失的鲁棒性；超参λ需逐数据集调（EB用1、MEF用0.1），缺统一选择准则。",
+  "属于表征几何/计算生物方向，与可靠性（鲁棒/泛化/可信AI/不确定性）主线无直接关系，落地也非医学影像或多模态大模型推理。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

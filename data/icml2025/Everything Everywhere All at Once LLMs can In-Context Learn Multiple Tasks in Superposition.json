@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Everything Everywhere All at Once LLMs can In-Context Learn Multiple Tasks in Superposition.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Everything Everywhere All at Once LLMs can In-Context Learn Multiple Tasks in Superposition.pdf",
+ "title": "Everything Everywhere All at Once: LLMs can In-Context Learn Multiple Tasks in Superposition",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.9
+ },
+ "one_line": "观察LLM任务叠加现象，但机理与可控性验证不足",
+ "innovations": [
+  "命名并实证提出任务叠加现象：LLM在单条prompt中混合不同任务示例可并行正确求解",
+  "理论解释该能力在Transformer表达力范围内，即使一次只训练学一个任务也会涌现",
+  "研究内部任务向量如何叠加组合，并发现模型越大能并行解越多任务且输出分布校准更好"
+ ],
+ "method_framework": "在多种LLM族与规模上构造混合多任务prompt(如加法+翻译)，观察模型是否同时给出各任务答案及其组合；从Transformer表达力角度给出理论解释，并通过内部表示分析任务向量的组合方式。",
+ "experiment_framework": "跨多个LLM家族与规模(Llama、GPT-3.5等)做受控ICL实验；混合不同任务示例(加法、翻译等)于同一prompt；考察并行任务数随模型规模变化及输出分布校准。",
+ "takeaways": [
+  "预训练自回归LLM可纯上下文地叠加执行多个不同任务，甚至给出任务组合结果",
+  "该现象即使逐任务训练也会涌现，且落在Transformer表达力范围内",
+  "模型规模越大，可并行求解的ICL任务越多、输出分布校准越好，支持LLM即模拟器叠加的观点"
+ ],
+ "weaknesses": [
+  "现象机理(注意力如何路由不同任务)仍未被完全打开，主要是描述性观察",
+  "任务组合的复杂度上限与失败模式缺乏系统刻画",
+  "主要是现象学加理论可行性论证，缺少对该能力的可控干预与因果验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

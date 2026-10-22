@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Tree Search for LLM Agent Reinforcement Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tree Search for LLM Agent Reinforcement Learning.pdf",
+ "title": "Tree Search for LLM Agent Reinforcement Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "树搜索采样LLM智能体RL，共享前缀降成本，结果奖励构建过程监督",
+ "innovations": [
+  "将树搜索引入LLM智能体RL，每个树节点代表完整的智能体交互步骤，通过共享公共前缀增加固定预算内的rollout数量",
+  "发现树结构轨迹可仅用结果奖励自然构建步骤级过程监督信号，无需额外过程标注",
+  "在树内和树间两个层级估计分组相对优势，理论证明树内层级目标等价于步骤级直接偏好学习"
+ ],
+ "method_framework": "Tree-GRPO是基于树搜索的分组智能体RL方法。与传统链式采样不同，智能体交互轨迹以树结构组织，共享前缀以减少token和工具调用开销。树结构使得可以在树内构建步骤级偏好信号（基于子节点的结果奖励差异），同时在树间计算分组相对优势。",
+ "experiment_framework": "在11个数据集和3类QA任务上评估，对比链式RL方法（GRPO等）在多轮智能体任务上的性能和样本效率。",
+ "takeaways": [
+  "树结构采样在固定token/工具调用预算内显著增加有效rollout数量",
+  "仅用结果奖励即可从树结构中自动构建步骤级过程监督信号，缓解稀疏监督问题",
+  "树内分组相对优化目标理论上等价于步骤级DPO，为方法提供了理论依据"
+ ],
+ "weaknesses": [
+  "与扩散模型中的TreeGRPO思路高度相似（树结构+前缀复用），跨领域的新意有限",
+  "仅在QA类任务上验证，工具调用密集型智能体任务的效果未充分探讨",
+  "树搜索的分支策略和深度限制需要手动调优"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "LLM智能体RL方法设计有可迁移价值，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

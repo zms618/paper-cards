@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Federated Disentangled Tuning with Textual Prior Decoupling and Visual Dynamic Adaptation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Federated Disentangled Tuning with Textual Prior Decoupling and Visual Dynamic Adaptation.pdf",
+ "title": "Federated Disentangled Tuning with Textual Prior Decoupling and Visual Dynamic Adaptation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "联邦VLM微调中解耦文本先验与视觉适配，缓解数据异构问题。",
+ "innovations": [
+  "在联邦VLM微调中解耦文本先验(可跨客户端共享)与视觉表示(需个性化适配)",
+  "文本先验解耦实现全局可迁移知识聚合,视觉动态适配应对各客户端不同数据分布",
+  "兼顾联邦协同与个性化,缓解异构数据对VLM协同微调的阻碍"
+ ],
+ "method_framework": "联邦PEFT适配VLM时,客户端数据异构妨碍协同。作者把VLM表示拆为文本侧与视觉侧:文本先验作为通用知识跨客户端聚合共享,视觉部分则做动态、个性化适配,使各客户端既能共享通用语义先验又能适配本地视觉分布。",
+ "experiment_framework": "在多个联邦VLM下游任务(跨异构客户端)上验证;基线为联邦PEFT/解耦微调方法;指标为个性化任务精度与通信效率。",
+ "takeaways": [
+  "解耦文本先验与视觉适配能同时兼顾联邦共享与个性化",
+  "文本先验作为通用知识可有效跨客户端聚合",
+  "视觉动态适配更好地覆盖各客户端不同数据分布"
+ ],
+ "weaknesses": [
+  "解耦依赖文本/视觉可分离假设,强耦合模态任务上受限",
+  "主线为联邦VLM微调效率,与医学影像、多模态推理可靠性主线不直接相关",
+  "在大规模异构客户端下的收敛与通信代价需更多验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.85,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/Yggdrasil_Bridging Dynamic Speculation and Static Runtime for Latency-Optimal Tree-Based LLM Decoding.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Yggdrasil_Bridging Dynamic Speculation and Static Runtime for Latency-Optimal Tree-Based LLM Decoding.pdf",
+ "title": "Yggdrasil: Bridging Dynamic Speculation and Static Runtime for Latency-Optimal Tree-Based LLM Decoding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "EGT树结构优化LLM推测解码延迟，但深度预测器泛化性存疑",
+ "innovations": [
+  "等增长树结构(EGT)实现动态推测与静态编译兼容",
+  "延迟感知优化目标替代传统AAL指标",
+  "阶段调度框架减少CPU-GPU协调开销"
+ ],
+ "method_framework": "基于TorchInductor编译器，通过深度预测器确定树深度，宽度选择和剪枝优化树结构，实现静态图兼容的动态推测解码。",
+ "experiment_framework": "在A100/A40 GPU上测试Llama-2-7B/13B模型，对比SpecInfer、Sequoia、vLLM-Spec基线，测量每token生成延迟。",
+ "takeaways": [
+  "延迟感知优化比单纯追求AAL更有效",
+  "静态图编译与动态推测可通过等增长树结构协调"
+ ],
+ "weaknesses": [
+  "深度预测器需要离线训练，可能影响泛化性",
+  "阶段调度搜索空间随硬件配置变化，需要重新校准"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

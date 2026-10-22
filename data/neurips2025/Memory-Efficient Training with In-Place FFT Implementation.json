@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Memory-Efficient Training with In-Place FFT Implementation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Memory-Efficient Training with In-Place FFT Implementation.pdf",
+ "title": "Memory-Efficient Training with In-Place FFT Implementation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.75
+ },
+ "one_line": "原地FFT框架降低内存，但适用性有限且未评估计算效率",
+ "innovations": [
+  "实域完全原地FFT框架(rdFFT)",
+  "利用蝴蝶操作对称性和共轭特性消除中间缓存",
+  "支持bfloat16数据类型的内存布局设计"
+ ],
+ "method_framework": "通过利用蝴蝶操作对称性和频域共轭特性，设计隐式复数编码方案，实现实域输入输出的完全原地FFT计算，消除中间内存分配。",
+ "experiment_framework": "在单层和全模型训练中评估内存效率，对比标准FFT、rFFT和LoRA方法，使用RoBERTa-large和LLaMA2-7B模型。",
+ "takeaways": [
+  "利用对称性设计内存布局可显著减少内存消耗",
+  "原地操作对内存受限环境训练至关重要"
+ ],
+ "weaknesses": [
+  "仅适用于循环矩阵结构参数",
+  "未讨论计算效率与内存节省的权衡",
+  "实验主要关注内存而非模型性能"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

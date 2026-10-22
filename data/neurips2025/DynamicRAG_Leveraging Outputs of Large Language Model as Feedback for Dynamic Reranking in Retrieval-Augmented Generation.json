@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/DynamicRAG_Leveraging Outputs of Large Language Model as Feedback for Dynamic Reranking in Retrieval-Augmented Generation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/DynamicRAG_Leveraging Outputs of Large Language Model as Feedback for Dynamic Reranking in Retrieval-Augmented Generation.pdf",
+ "title": "DynamicRAG: Leveraging Outputs of Large Language Model as Feedback for Dynamic Reranking in Retrieval-Augmented Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "用LLM输出反馈训练RL重排序器，动态调整检索结果",
+ "innovations": [
+  "将重排序器建模为强化学习智能体，动态调整文档数量和顺序",
+  "利用LLM生成质量作为奖励信号指导重排序优化",
+  "结合行为克隆和直接偏好优化的两阶段训练方法"
+ ],
+ "method_framework": "DynamicRAG框架包含冻结检索器、可训练动态重排序器和生成器。重排序器通过强化学习优化，使用LLM输出质量作为奖励，动态选择文档数量和顺序。",
+ "experiment_framework": "在7个知识密集型数据集(NQ, TriviaQA, HotpotQA等)上评估，与多种基线模型比较，使用精确匹配、准确率等指标。",
+ "takeaways": [
+  "利用下游任务质量作为反馈信号可有效指导检索优化",
+  "动态调整文档数量比固定阈值更能适应不同查询需求",
+  "参数共享可提升重排序器和生成器的互补性"
+ ],
+ "weaknesses": [
+  "奖励函数设计依赖多个人工设定的权重系数",
+  "实验主要关注性能，对鲁棒性和泛化能力的分析不足",
+  "计算效率优势依赖于特定实现，可能难以推广"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

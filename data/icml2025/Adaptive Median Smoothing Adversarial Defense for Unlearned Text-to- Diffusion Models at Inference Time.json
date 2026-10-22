@@ -1,0 +1,42 @@
+{
+ "key": "icml2025/Adaptive Median Smoothing Adversarial Defense for Unlearned Text-to- Diffusion Models at Inference Time.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adaptive Median Smoothing Adversarial Defense for Unlearned Text-to- Diffusion Models at Inference Time.pdf",
+ "title": "Adaptive Median Smoothing: Adversarial Defense for Unlearned Text-to- Diffusion Models at Inference Time",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "将中值平滑扩展到扩散模型，依赖特定提示收集",
+ "innovations": [
+  "将鲁棒未学习模型重新表述为鲁棒回归问题",
+  "引入各向异性噪声扩展中值平滑框架",
+  "基于token相关性的自适应噪声注入策略",
+  "在文本编码阶段实现高效推理"
+ ],
+ "method_framework": "将对抗鲁棒性问题转化为回归问题，扩展中值平滑框架使用各向异性噪声，通过计算token与目标概念的相关性确定噪声强度，在文本编码阶段实现高效自适应中值平滑。",
+ "experiment_framework": "使用Stable Diffusion v1.4，比较ESD和UCE两种未学习方法，评估6种对抗攻击下的成功率(FID↓和CLIP↑)，并测量推理时间。",
+ "takeaways": [
+  "各向异性噪声可平衡鲁棒性与模型效用",
+  "token级相关性计算实现针对性防御",
+  "在文本编码阶段进行中值计算可提高效率"
+ ],
+ "weaknesses": [
+  "依赖目标概念的正面和负面提示收集",
+  "未探索不同未学习方法间的泛化能力",
+  "仅评估了nudity和violence两种概念"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "对抗防御属于可靠性主线，扩散模型落地域明确",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Parrot Multilingual Visual Instruction Tuning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Parrot Multilingual Visual Instruction Tuning.pdf",
+ "title": "Parrot: Multilingual Visual Instruction Tuning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "英文中心SFT损害多语言能力，用MoE对齐视觉token，发布MMMB基准",
+ "innovations": [
+  "观察到英文中心的不平衡SFT数据会损害MLLM的非语言处理能力",
+  "提出PARROT：在语言级用文本引导视觉token对齐，条件于多样语言输入",
+  "用MoE对齐多语言token——通过初始视觉特征与文本嵌入的cross-attention选最相关专家，把视觉token转为语言特定表示；并发布MMMB基准(6语言/15类/1.2万题)"
+ ],
+ "method_framework": "MLLM经英文中心SFT后多语言能力退化(中英文混淆)；PARROT让视觉token条件于多样语言输入，用cross-attention在初始视觉特征与文本嵌入间计算、选出最相关专家，以MoE将视觉token转为各语言特定表示，从而在视觉指令微调中保持多语言能力。",
+ "experiment_framework": "提出MMMB基准(6语言、15类别、12000题)评测多语言多模态能力；PARROT在多语言多模态与纯文本多语言任务上对比现有MLLM，报告SOTA。",
+ "takeaways": [
+  "MoE语言级视觉token对齐缓解了英文中心SFT对多语言能力的损害",
+  "MMMB为多语言多模态MLLM提供了统一评测",
+  "PARROT在多语言多模态与文本多语言上均达SOTA"
+ ],
+ "weaknesses": [
+  "MoE引入额外参数/路由开销，实际推理成本未充分量化",
+  "多语言覆盖仅6种，低资源语言表现未验证",
+  "前9页未见完整MMMB分项表，相对基线的具体增益需正文确认"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

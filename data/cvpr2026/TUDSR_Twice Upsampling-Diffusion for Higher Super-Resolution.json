@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/TUDSR_Twice Upsampling-Diffusion for Higher Super-Resolution.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/TUDSR_Twice Upsampling-Diffusion for Higher Super-Resolution.pdf",
+ "title": "TUDSR Twice Upsampling-Diffusion for Higher Super-Resolution",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "两阶段扩散上采样框架，计算效率与质量权衡",
+ "innovations": [
+  "两次上采样-扩散框架分解高倍率上采样任务",
+  "分阶段训练策略降低高分辨率计算开销",
+  "基于预训练模型的GAN架构提升训练稳定性"
+ ],
+ "method_framework": "TUDSR采用两阶段训练：第一阶段在R分辨率训练LoRA-1，第二阶段冻结LoRA-1，对其中间结果×N上采样后分块训练LoRA-2，推理时两LoRA顺序处理实现MN倍上采样。",
+ "experiment_framework": "在RealSR、DrealSR、RealLQ250和RealLR200数据集上评估，对比多步和单步超分辨率模型，使用LPIPS、FID、CLIPIQA等感知质量指标。",
+ "takeaways": [
+  "分阶段训练可有效解决高倍率上采样问题",
+  "利用预训练模型作为GAN生成器可提升训练稳定性",
+  "分块训练策略降低高分辨率计算开销"
+ ],
+ "weaknesses": [
+  "推理时间仍较长，特别是×8任务",
+  "未充分讨论模型在不同类型退化下的泛化能力",
+  "分块训练可能引入边界效应"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.5,
+ "relevance_reason": "图像超分辨率与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

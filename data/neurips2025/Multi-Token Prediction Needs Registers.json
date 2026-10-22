@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Multi-Token Prediction Needs Registers.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Multi-Token Prediction Needs Registers.pdf",
+ "title": "Multi-Token Prediction Needs Registers",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "寄存器令牌多令牌预测，训练时扩展，推理时不变",
+ "innovations": [
+  "引入可学习寄存器令牌进行多令牌预测",
+  "无需架构修改即可扩展预测范围",
+  "2D偏移采样适应视觉数据空间依赖"
+ ],
+ "method_framework": "MuToR在输入序列中交错插入寄存器令牌，每个寄存器预测未来d个令牌，通过特殊注意力掩码和位置编码实现，保持标准自回归推理不变。",
+ "experiment_framework": "语言模型：GSM8K/MATH500/AQUA-RAT数学推理和SAMSum/DialogSum摘要任务；视觉模型：ImageNet 256×256图像生成，评估FID/IS/Precision/Recall。",
+ "takeaways": [
+  "寄存器令牌提供丰富监督信号而不增加推理开销",
+  "方法在参数高效微调(LoRA)中有效",
+  "2D偏移采样能更好捕捉视觉数据空间依赖"
+ ],
+ "weaknesses": [
+  "寄存器令牌仅用于训练，增加训练序列长度",
+  "最优预测范围dmax需针对不同任务调整",
+  "与现有多令牌预测方法相比参数效率优势有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

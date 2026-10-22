@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Misaligned Roles, Misplaced_STRUC-TURAL Input Perturbations Expose Multimodal Alignment Blind Spots.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Misaligned Roles, Misplaced_STRUC-TURAL Input Perturbations Expose Multimodal Alignment Blind Spots.pdf",
+ "title": "Misaligned Roles, Misplaced Images: Structural Input Perturbations Expose Multimodal Alignment Blind Spots",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "结构攻击暴露多模态对齐盲区，但缓解方案泛化存疑。",
+ "innovations": [
+  "揭示多模态对齐只对齐assistant角色、user角色未对齐且依赖固定prompt结构的盲区",
+  "提出不改查询内容、仅操纵输入结构(角色混淆+图像token移位)的RMA攻击类",
+  "用残差流中负拒绝方向投影解释攻击成功机制，并提出结构扰动对抗训练缓解"
+ ],
+ "method_framework": "对齐阶段沿用固定chat模板，攻击通过把user/assistant角色混淆、移动图像token位置来绕过安全对齐，无需修改有害查询本身；缓解方案是在含/不含害prompt上施加多种RMA结构扰动做对抗训练，使模型只关注查询内容。",
+ "experiment_framework": "在多个VLM上、8种设置系统评测攻击与组合攻击，指标为攻击成功率ASR；并用残差流负拒绝方向投影验证；对抗训练降低ASR同时保持通用效用。",
+ "takeaways": [
+  "多模态模型对输入结构(角色/token位置)过度敏感是安全盲区",
+  "结构扰动攻击可组合增强",
+  "结构对抗训练可在保效用下提升鲁棒性"
+ ],
+ "weaknesses": [
+  "攻击针对chat模板结构，缓解可能依赖模板固定性",
+  "对抗训练的计算成本与对未见新扰动的泛化未充分评估",
+  "主要测有害输出，对幻觉/可靠性其他维度覆盖有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态对齐盲区与可靠性主线交点，角色混淆攻击具可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

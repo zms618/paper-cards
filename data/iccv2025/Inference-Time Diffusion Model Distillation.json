@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Inference-Time Diffusion Model Distillation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Inference-Time Diffusion Model Distillation.pdf",
+ "title": "Inference-Time Diffusion Model Distillation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.5
+ },
+ "one_line": "推理时扩散蒸馏框架，优化采样轨迹提升生成质量。",
+ "innovations": [
+  "提出推理时蒸馏框架Distillation++，在采样过程中而非仅训练阶段进行知识蒸馏",
+  "将学生模型采样重新表述为近端优化问题，使用分数蒸馏采样损失(SDS)进行正则化",
+  "设计教师引导的采样过程，利用预训练扩散模型评估学生模型的去噪估计",
+  "采用递减时间步的重新噪声化策略，有效指导采样轨迹"
+ ],
+ "method_framework": "Distillation++框架将学生模型采样重新表述为近端优化问题，通过最小化分数蒸馏采样损失(SDS)实现教师模型指导下的采样轨迹优化，在早期采样阶段(如前1-2步)引入教师模型评估学生估计，无需额外数据或微调。",
+ "experiment_framework": "在MS-COCO数据集上评估，使用FID、ImageReward和PickScore指标，比较LCM、LCM-LoRA、SDXL-Lightning、DMD2和SDXL-Turbo等基线模型，采用4步采样+1步推理时蒸馏的设置。",
+ "takeaways": [
+  "推理时蒸馏可有效提升扩散模型蒸馏后的生成质量，特别是在早期采样阶段",
+  "方法设计简洁，与多种学生模型兼容，计算开销小"
+ ],
+ "weaknesses": [
+  "仅验证了图像生成任务，未扩展到视频等多模态领域",
+  "教师模型仅在早期采样阶段提供指导，可能限制长期采样轨迹的优化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "扩散模型蒸馏方法，未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

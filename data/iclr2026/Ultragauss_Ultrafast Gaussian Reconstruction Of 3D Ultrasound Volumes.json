@@ -1,0 +1,41 @@
+{
+ "title": "UltraGauss: Ultrafast Gaussian Reconstruction of 3D Ultrasound Volumes",
+ "scores": {
+  "novelty": 7,
+  "depth": 7.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.5
+ },
+ "one_line": "超声专用高斯泼溅，替代相机投影实现分钟级3D重建。",
+ "innovations": [
+  "提出超声专用的探头平面相交+面内聚合渲染，替代相机式投影/遮挡合成，匹配超声在探头平面内回波采样的物理几何。",
+  "用三角逆协方差(精度)分解保证正定与良好条件梯度，支撑稳定重建与高斯加密。",
+  "设计计算感知光栅化：探头坐标下闭式 chi2 椭球边界给出紧的逐平面 2D 包围盒，两阶段负载均衡 CUDA 流水线剔除不相交高斯；并以轻量 Beer-Lambert 项建模声影。"
+ ],
+ "method_framework": "把体表示为各向异性 3D 高斯基元；不在像面投影，而是在探头平面与高斯求交并面内聚合回波强度，保留平面采样与主导衰减行为，避免昂贵波动仿真；配合稳定参数化与 CUDA 光栅化实现可任意方向无分辨率限制地切片。",
+ "experiment_framework": "在临床胎儿超声与自由hand cinesweep 数据上，与 NeRF 式隐式场/体素网格等方法对比，报告 2D-to-3D 重建保真(SSIM)、单 GPU 耗时，并由临床专家主观调查评价真实感。",
+ "takeaways": [
+  "超声成像非透视渲染，相机式 GS 的投影/遮挡范式与超声物理根本不匹配。",
+  "探头平面相交渲染可在近似波动成像的同时做到分钟级、单 GPU、内存高效(约 20 分钟达 0.99 SSIM)。",
+  "临床专家评价其重建真实感在对比方法中最佳，软件路线可让常规 2D 采集获得标准化 3D 评估。"
+ ],
+ "weaknesses": [
+  "渲染是对波动成像的近似，忽略了复杂多次散射/斑点物理，在强衰减/伪影区域保真度存疑。",
+  "依赖探头几何与(部分)位姿标定，freehand 扫描的位姿误差如何传播到重建未充分分析。",
+  "临床验证以 SSIM 与主观真实感为主，缺与诊断准确性/可重复性(阅片一致性)直接挂钩的临床终点；完整定量对比表未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Ultragauss_Ultrafast Gaussian Reconstruction Of 3D Ultrasound Volumes.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Ultragauss_Ultrafast Gaussian Reconstruction Of 3D Ultrasound Volumes.pdf",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "医学影像重建但未触及可靠性主线，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

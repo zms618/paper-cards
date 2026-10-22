@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Splitlora_Balancing Stability and Plasticity In Continual Learning through Gradient Space Splitting.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Splitlora_Balancing Stability and Plasticity In Continual Learning through Gradient Space Splitting.pdf",
+ "title": "SplitLoRA: Balancing Stability and Plasticity in Continual Learning through Gradient Space Splitting",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "SplitLoRA通过梯度空间划分优化LoRA持续学习的稳定性-可塑性权衡",
+ "innovations": [
+  "在LoRA持续学习范式下理论分析主/次子空间划分如何影响稳定性(保旧)与可塑性(学新)",
+  "基于理论推导得到先前任务梯度空间的最优划分方法，替代经验式划分",
+  "把梯度投影与LoRA低秩适配结合，以高效方式平衡稳定性-可塑性权衡"
+ ],
+ "method_framework": "延续梯度投影范式，把先前任务梯度空间划分为主/次正交子空间，新任务在次子空间内更新以减少对旧知识干扰；SplitLoRA先理论分析划分点对稳定性/可塑性的影响，再推导最优划分阈值，并在LoRA参数上实施该梯度空间分裂。",
+ "experiment_framework": "在多个持续学习数据集(图像/分类序列任务)上评测，以平均任务精度/后向迁移为指标，对比既有梯度投影类与正则化类CL方法，报告达到SOTA并验证最优划分的作用。",
+ "takeaways": [
+  "梯度投影类CL的稳定性-可塑性瓶颈在于子空间划分不当，而非划分本身",
+  "理论可指导推导出梯度空间的最优划分，避免经验调参",
+  "LoRA与梯度投影结合可在低参数量下实现SOTA持续学习"
+ ],
+ "weaknesses": [
+  "需要存储先前任务梯度子空间，任务数增多时显存/存储开销随任务线性增长",
+  "最优划分的理论假设在真实分布漂移/任务高度重叠时是否成立未充分验证",
+  "评测主要在标准图像分类序列，向大规模预训练模型/语言流式任务迁移证据有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.85,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "持续学习稳定性-可塑性权衡与可靠性主线有交点但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

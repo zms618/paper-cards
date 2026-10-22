@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Tractable Multinomial Logit Contextual Bandits with Non-Linear Utilities.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Tractable Multinomial Logit Contextual Bandits with Non-Linear Utilities.pdf",
+ "title": "Tractable Multinomial Logit Contextual Bandits with Non-Linear Utilities",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6.25
+ },
+ "one_line": "非线性效用MNL bandit算法，但后悔界依赖实例因子且实验不充分",
+ "innovations": [
+  "提出ONL-MNL算法，首个可计算的非线性效用MNL上下文bandit算法",
+  "引入广义几何条件，放宽了传统强凸性假设",
+  "设计两阶段探索策略，结合均匀探索和乐观估计",
+  "不依赖神经切线核假设，适用于更广泛的神经网络架构"
+ ],
+ "method_framework": "ONL-MNL算法采用两阶段策略：第一阶段均匀探索获得初始估计，第二阶段构建置信集并使用乐观效用估计进行 assortment 选择，通过正则化负对数似然优化参数。",
+ "experiment_framework": "数据集/基线/指标：在可实现和模型错误设定场景下进行数值实验，与Zhang和Luo[41]的方法比较，验证算法在非线性效用场景下的鲁棒性和有效性。",
+ "takeaways": [
+  "广义几何条件允许非凸损失景观和多个全局最小值，适用于神经网络",
+  "两阶段探索策略平衡了计算效率和统计效率",
+  "乐观估计方法适用于非线性和非凸效用函数"
+ ],
+ "weaknesses": [
+  "后悔界依赖于问题特定的实例因子κ，在最坏情况下可能达到O(K²)",
+  "算法需要满足有界性、Lipschitz连续性和平滑性假设",
+  "实验部分未详细展示与最新基线的比较结果"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

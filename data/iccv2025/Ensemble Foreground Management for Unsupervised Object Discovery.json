@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Ensemble Foreground Management for Unsupervised Object Discovery.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Ensemble Foreground Management for Unsupervised Object Discovery.pdf",
+ "title": "Ensemble Foreground Management for Unsupervised Object Discovery",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.1
+ },
+ "one_line": "集成前景管理提升无监督目标发现，但计算开销大且未改进核心算法",
+ "innovations": [
+  "基于min-cut和集成方法的UnionCut前景先验",
+  "蒸馏模型UnionSeg提高效率",
+  "数学统计理论证明前景先验的鲁棒性"
+ ],
+ "method_framework": "UnionCut使用784个单元投票器(UV)并行处理图像，每个UV基于种子patch构建图模型并应用min-cut，聚合所有UV输出生成前景并集热图；UnionSeg是蒸馏的ViT模型直接预测前景并集。",
+ "experiment_framework": "在PASCAL VOC、COCO等数据集上评估单目标发现、显著性检测和自监督实例分割任务，使用CorLoc、Accuracy、IoU和maxFβ等指标，与LOST、TokenCut、FOUND和CutLER等方法对比。",
+ "takeaways": [
+  "集成方法可提供更鲁棒的前景先验",
+  "蒸馏技术可显著提高计算效率",
+  "前景先验设计对UOD性能至关重要"
+ ],
+ "weaknesses": [
+  "UnionCut计算开销大(784个UV并行)",
+  "仅关注前景先验而未改进核心UOD算法",
+  "对前景区域大于背景的情况依赖特定假设"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "前景先验设计有可靠性价值但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Occult Optimizing Collaborative Communications across Experts for Accelerated Parallel MoE Training and.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Occult Optimizing Collaborative Communications across Experts for Accelerated Parallel MoE Training and.pdf",
+ "title": "Occult: Optimizing Collaborative Communications across Experts for Accelerated Parallel MoE Training and Inference",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6
+ },
+ "one_line": "MoE通信优化：协作通信划分+BRIM核+专家重排，单节点加速1.5-20×",
+ "innovations": [
+  "首次用协作通信刻画all-to-all：按共激活专家是否同设备分intra/inter协作，以平均token副本数CT作为与runtime强线性相关的任务无关通信预算指标，并给出CT上下界",
+  "BRIM双向重索引数据结构+定制SMM核：把all-to-all与专家计算分两阶段聚合(intra先本地加、inter再all-to-all)，用Triton实现ORI/SFD/EPD三态张量的紧凑索引，避免额外显存",
+  "算法-系统协同：profiling协作图P后做farthest-point式专家放置重排(CT降约20%)，再用路由分/专家相似度两种协作剪枝把路由限制在Nd设备内，剪枝后质量可超原top-k"
+ ],
+ "method_framework": "先在少量profiling数据上统计专家共激活频次图P；按算法1把P均匀划成Nd子图以最大化intra协作做专家放置；运行时Dispatch阶段对同设备共激活专家只发一份副本，两阶段merge/scatter经BRIM在HBM上紧凑管理；协作剪枝时按路由分或专家相似度把超出Nd设备范围的专家替换为合法替代，达到可控最小CT。",
+ "experiment_framework": "3个开源MoE(OLMoE-1B-7B/Qwen1.5-MoE-A2.7B/DeepSeek-MoE)，单节点4×A6000(另测8/16 GPU)；推理对比vllm/HF/Tutel/MegaBlocks，训练对比FSDP/DeepSpeed；质量在Alpaca微调后评Winogrande/WSC/PIQA/RACE/MathQA/RTE；指标prefill/decode/training延迟与accuracy。",
+ "takeaways": [
+  "prefill(214 prompt tokens)上OLMoE较Tutel快8.66×、较vllm快1.86×；训练batch=8较MegaBlocks/FSDP/DeepSpeed/Tutel分别快约9/2.65/…/20×",
+  "2设备协作剪枝在保持甚至超过标准top-k质量的同时达高效，1设备剪枝最快但略损质量；相似度剪枝稳定优于路由分剪枝",
+  "重排后CT从3.68降到1.98(约46%)，验证CT与延迟强线性相关；decode小batch下因通信非瓶颈加速有限"
+ ],
+ "weaknesses": [
+  "与主任务主线(可信AI/鲁棒性/医学影像/多模态推理)无关，属MoE分布式训练/推理系统优化",
+  "实验在单节点PCIe A6000上做，未验证NVLink跨节点/千卡集群下的扩展性；作者自陈workload balancing未解决，是遗留问题",
+  "协作剪枝本质是近似(限制路由范围)，1设备剪枝质量下降的代价量化有限；质量仅评6个小型NLP任务，未测代码/数学/长文等MoE关键能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

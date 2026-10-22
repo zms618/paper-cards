@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/End-to-End Learning Framework for Solving Non-Markovian Optimal Control.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/End-to-End Learning Framework for Solving Non-Markovian Optimal Control.pdf",
+ "title": "End-to-End Learning Framework for Solving Non-Markovian Optimal Control",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6.25
+ },
+ "one_line": "将LQR推广至分数阶系统，提供解析解与端到端框架，但理论假设强且与主线相关性弱。",
+ "innovations": [
+  "首次为分数阶(非马尔可夫)LQR给出解析解：分别用最小二乘与拉格朗日乘子推导出U=-(G^T Q̄G+R̄)^{-1}G^T Q̄Hx0与U=-R^{-1}B^T⊗(I-Gλ)^{-1}Hλx0两种最优控制律。",
+  "推导FOLTI系统辨识与控制的样本复杂度界（Theorem 3.3/Corollary 3.4），证明两种解的收敛率均为O(1/√N)，仅常数因子不同。",
+  "设计端到端FOLOC：RNN+MLP从轨迹估计(A,B,α)，再用Sequence Encoder+Fourier Neural Operator学习块Toeplitz线性系统映射直接输出最优控制序列，联合最小化辨识损失Ls与控制损失Lo。"
+ ],
+ "method_framework": "用Grünwald-Letnikov差分算子离散分数阶导数，把FOLTI系统写成含记忆项ΣD(α,j)x_{k+1-j}的递推。先在已知A对角元下用最小二乘从多条噪声轨迹辨识系统参数，再代入拉格朗日乘子法解LQR；深度版用RNN辨识参数、FNO绕开大规模矩阵求逆实现实时控制，并以物理约束损失Ls防止误差传播。",
+ "experiment_framework": "合成数据系统变化分数阶α(0.1-0.9)、状态维n(1-128)、时域T(8-128)、噪声类型(Cauchy/Gamma/Sinc²/Uniform/Poisson/Gaussian)与噪声尺度、训练样本数；真实系统cart-pole与quadrotor；基线MBRL、CMA-ES、MPC、PID、iLQR；指标MSE/MAE与运行时间。",
+ "takeaways": [
+  "FOLOC对分数阶α、状态维、噪声类型均鲁棒：换Cauchy/Sinc²噪声MSE/MAE最大仅升24.42%/6.67%，且随T增大(T=128 vs T=8)MSE降97.37%。",
+  "真实系统上FOLOC在cart-pole与quadrotor均取得最低MSE/MAE且运行时间极短(quadrotor 0.00027s vs MPC 71.9s、CMA-ES 115s)，比基线MSE最多降99.99%。",
+  "样本效率高：N=1000相对N=8000 MSE仅高1.65%；理论样本复杂度仿真验证了O(1/√N)收敛率。"
+ ],
+ "weaknesses": [
+  "理论辨识假设系统矩阵A的对角元已知（作者自承为强假设），放宽到一般情形无保证；真实系统实验仅仿真(cart-pole/quadrotor)，未在真实硬件闭环部署验证。",
+  "深度模块中学到的参数与理论参数并非一一对应（作者在Remark中承认），端到端学习更像黑箱拟合，理论指导与实际架构之间存在缝隙。",
+  "属分数阶控制/系统辨识方向，与可靠性主线（鲁棒/泛化/可信AI/不确定性量化在医学影像或多模态大模型）无直接关系，'鲁棒'仅指对非高斯噪声，非可信AI意义上的可靠性。"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

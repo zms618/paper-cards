@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Reducing Tool Hallucination via Reliability Alignment.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Reducing Tool Hallucination via Reliability Alignment.pdf",
+ "title": "Reducing Tool Hallucination via Reliability Alignment",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "扩展工具动作空间加入犹豫动作，降低幻觉但增加交互成本",
+ "innovations": [
+  "将工具幻觉系统分为工具选择幻觉与工具使用幻觉两大类共四子类，并建立规则+LLM 评测器混合的自动检测框架",
+  "提出幻觉感知任务指标 RePR（Reliable Pass Rate），对受幻觉影响的任务结果打折，并定义 benefit-cost utility 度量效率",
+  "Relign 扩展工具使用动作空间，加入犹豫动作：允许模型延迟调用、请求澄清或动态调整工具选择，从对齐层面抑制幻觉"
+ ],
+ "method_framework": "先构建工具幻觉分类与自动评测；在训练/对齐阶段把动作空间从直接调用扩展为含犹豫动作（defer/ask-clarification/re-select），使模型在不确定时不强行调用；用 RePR 与效益-成本效用同时衡量任务可靠性与计算开销，引导模型在准确与效率间权衡。",
+ "experiment_framework": "在自建 RelyToolBench（含专项测试用例）上评测；对比基线工具学习模型；指标为 RePR 任务成功率、幻觉发生率、工具调用效率与计算成本；报告 Relign 显著降低工具幻觉、提升任务可靠性与交互效率。",
+ "takeaways": [
+  "工具幻觉可被系统分类并自动检测，任务成功率需做幻觉感知修正",
+  "允许模型在不确定时延迟/澄清而非强行调用，能有效降低错误工具调用",
+  "可靠性对齐应同时优化正确率与调用成本，而非只看任务是否完成"
+ ],
+ "weaknesses": [
+  "犹豫动作引入额外交互轮次，对全自动实时场景的延迟成本需权衡",
+  "RePR 依赖 LLM 评测器，其自身判分偏差可能影响结论",
+  "前 9 页未见与外部校验器/过程奖励类方法在同工具集上的严格对照"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

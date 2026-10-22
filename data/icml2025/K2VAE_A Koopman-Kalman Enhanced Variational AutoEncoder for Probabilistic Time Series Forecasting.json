@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/K2VAE_A Koopman-Kalman Enhanced Variational AutoEncoder for Probabilistic Time Series Forecasting.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/K2VAE_A Koopman-Kalman Enhanced Variational AutoEncoder for Probabilistic Time Series Forecasting.pdf",
+ "title": "K2VAE: A Koopman-Kalman Enhanced Variational AutoEncoder for Probabilistic Time Series Forecasting",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "K2VAE结合Koopman与Kalman改进VAE，但与主线关联弱且效率低",
+ "innovations": [
+  "利用KoopmanNet将非线性时序转换为线性动力系统，降低长期预测误差累积",
+  "设计KalmanNet在线性系统中精化预测结果和模型不确定性估计",
+  "在短期和长期概率时序预测上均优于现有SOTA方法"
+ ],
+ "method_framework": "VAE生成框架：KoopmanNet将观测空间映射到Koopman线性空间；在该线性空间中用KalmanNet做状态预测和不确定性估计；再映射回观测空间生成预测分布。",
+ "experiment_framework": "在多个概率时序预测基准上评估；对比GRU-MAF、TimeGrad、CSDI等原生概率模型和带分布头的点预测模型；覆盖不同预测时域长度。",
+ "takeaways": [
+  "Koopman线性化有效缓解了长期概率预测的误差累积问题",
+  "KalmanNet的不确定性精化提升了预测区间的覆盖率",
+  "K2VAE在短中长期预测上均优于现有方法"
+ ],
+ "weaknesses": [
+  "与主线关联弱，属概率时序预测方向",
+  "Koopman线性化的精度损失边界未充分讨论",
+  "计算效率相比点预测模型仍有差距"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.0,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

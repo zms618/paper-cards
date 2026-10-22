@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Stronger Neyman Regret Guarantees for Adaptive Experimental Design.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Stronger Neyman Regret Guarantees for Adaptive Experimental Design.pdf",
+ "title": "Stronger Neyman Regret Guarantees for Adaptive Experimental Design",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "改进ClipOGD算法实现序贯实验O(log T)遗憾，但缺乏真实数据验证",
+ "innovations": [
+  "将 ClipOGD 的期望 Neyman 遗憾从 O(√T) 改进到有界假设下的 anytime O(log T)",
+  "提出基于协变量的重叠“多组”Neyman 遗憾新概念，使自适应设计对任意组都优于该组最优非自适应设计",
+  "在有限总体（非超总体）框架下开发带效率保证的 IPW 型自适应设计，对处理效应异质与时间漂移更稳健"
+ ],
+ "method_framework": "在序贯 RCT 中按到达单元自适应分配处理/对照，用逆概率加权（IPW）型估计量估计 ATE；通过对 ClipOGD 的修改实现 anytime 对数级遗憾，并结合预处理协变量定义多组重叠子群，要求设计在每组上都不劣于该组事后最优的非自适应 Neyman 分配。",
+ "experiment_framework": "理论为主，给出 regret 上界定理；辅以多组合成实验与模拟验证所提自适应设计相对固定/非自适应设计在 ATE 估计方差上的效率增益。",
+ "takeaways": [
+  "在温和有界假设下，序贯自适应实验可达 anytime O(log T) 次线性 Neyman 遗憾，效率逼近事后最优非自适应设计",
+  "有限总体设定使 ATE 估计对处理效应异质和时间漂移更稳健",
+  "引入多组重叠子群遗憾，可让自适应设计同时在多个协变量子群上都优于其最优固定分配"
+ ],
+ "weaknesses": [
+  "实证仅为模拟/合成实验，无真实临床或大规模 RCT 落地证据",
+  "与主线（视觉鲁棒性/医学影像/多模态推理）关联弱，属因果统计理论",
+  "O(log T) 依赖较强的有界性假设，实际尾部/异常值场景下的退化未充分讨论"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.78,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

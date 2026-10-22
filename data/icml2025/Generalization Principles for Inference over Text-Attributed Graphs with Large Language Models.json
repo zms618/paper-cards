@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Generalization Principles for Inference over Text-Attributed Graphs with Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Generalization Principles for Inference over Text-Attributed Graphs with Large Language Models.pdf",
+ "title": "Generalization Principles for Inference over Text-Attributed Graphs with Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "elevance": 5.5,
+  "evidence": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "LLM-BP框架为TAG零样本泛化提供任务嵌入与自适应聚合原则",
+ "innovations": [
+  "提出LLM在TAG上泛化的两条原则：用任务自适应嵌入统一属性空间，用可跨图泛化的图信息聚合机制",
+  "用LLM编码器+任务感知提示增强文本属性嵌入的跨图泛化",
+  "采用LLM估计参数的置信传播(BP)做图聚合，参数可跨图自适应，突破LLM上下文长度限制处理大邻域"
+ ],
+ "method_framework": "针对TAG上LLM推理的两大障碍（上下文长度限制大邻域、节点嵌入与LLM token空间错位）：原则(1)用任务自适应嵌入统一属性空间，借助LLM编码器与任务提示增强文本属性嵌入泛化；原则(2)采用带LLM估计参数的置信传播做图聚合，参数随图自适应，避免一次性塞入超大邻域。二者构成LLM-BP框架。",
+ "experiment_framework": "在11个真实世界TAG基准上做零样本节点标注评估，对比既有LM编码器/GNN+LM方法；报告任务条件嵌入带来8.10%提升、自适应聚合再增1.71%，并做消融分解两原则贡献。",
+ "takeaways": [
+  "统一属性空间的任务自适应嵌入是TAG零样本泛化的关键，带来8.10%提升",
+  "LLM估计参数的置信传播聚合可跨图泛化并额外提升1.71%",
+  "LLM-BP在11个TAG基准上显著优于现有方法"
+ ],
+ "weaknesses": [
+  "面向图推理场景，与医学影像、多模态大模型推理主线的直接关联有限",
+  "依赖LLM估计BP参数，参数估计误差可能沿图传播累积",
+  "前9页内在极大规模图上的可扩展性与推理开销分析有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

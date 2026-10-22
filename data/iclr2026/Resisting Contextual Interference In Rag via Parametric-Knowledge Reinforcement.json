@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Resisting Contextual Interference In Rag via Parametric-Knowledge Reinforcement.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Resisting Contextual Interference In Rag via Parametric-Knowledge Reinforcement.pdf",
+ "title": "Resisting Contextual Interference in RAG via Parametric-Knowledge Reinforcement",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "RL训练LLM在RAG中用参数知识抵抗干扰，成对采样提升鲁棒性。",
+ "innovations": [
+  "提出RL框架显式训练模型用参数化知识抵抗上下文干扰，同时在外部上下文可靠时仍善加利用。",
+  "设计联合采样：对同一输入生成带检索/不带检索的成对响应，并同时学习局部优势（各解码模态内）与全局优势（同输入跨模态），量化何时忽略误导上下文、何时采纳。",
+  "用非对称优势变换放大朝向参数化知识的探索行为。"
+ ],
+ "method_framework": "对每个query同时采样带检索与不带检索两路响应；在GRPO式RL中既算路内局部优势，又算同输入下两路间的全局优势，并用非对称变换奖励'在检索误导时坚持参数化知识、在检索有用时采纳'的行为。",
+ "experiment_framework": "在知识冲突/反事实场景与通用RAG场景评测；对比RAG-RL SOTA基线；反事实场景+22.89%，且当检索上下文完全准确时性能不降；报告鲁棒性与推理准确率。",
+ "takeaways": [
+  "RAG会被错误/冲突检索带偏，用RL让模型学会何时信任参数化知识、何时信任检索可显著抗干扰。",
+  "成对采样带/不带检索并学习跨模态全局优势，是教会模型判断上下文可信度的有效信号。"
+ ],
+ "weaknesses": [
+  "依赖参数化知识本身正确，当模型参数知识也错时无法纠偏。",
+  "联合采样带/不带检索使训练采样成本翻倍，大规模训练效率需权衡。",
+  "主要在英文知识密集QA验证，对长文档/多跳RAG与领域知识库的迁移未充分展示。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "RAG鲁棒性提升，明确触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

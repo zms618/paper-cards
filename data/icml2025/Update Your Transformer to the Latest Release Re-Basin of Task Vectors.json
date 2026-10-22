@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Update Your Transformer to the Latest Release Re-Basin of Task Vectors.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Update Your Transformer to the Latest Release Re-Basin of Task Vectors.pdf",
+ "title": "Update Your Transformer to the Latest Release: Re-Basin of Task Vectors",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "elevance": 7.0,
+  "evidence": 5.5,
+  "overall": 6.25
+ },
+ "one_line": "零数据迁移任务向量到新基座，但精度与计算成本存疑",
+ "innovations": [
+  "提出问题：基座模型更新/重训后旧微调模型作废，能否把微调以data-free方式迁移到新检查点",
+  "借鉴模型re-basin，给出基于权重置换的recipe，把任务向量(task vector)重新对齐到新基座",
+  "针对Transformer的残差连接与多头注意力定制re-basin方法，在视觉与文本任务上实现零训练步骤、零数据的无缝迁移"
+ ],
+ "method_framework": "把微调视为任务向量τ=θ_A+τ−θ_A；当基座从θ_A更新为θ_B时，用模型re-basin求一组权重置换π，使π重对齐后的任务向量可直接叠加到新基座θ_B上；针对Transformer的残差与多头结构定制置换方案，从而data-free地迁移微调知识。",
+ "experiment_framework": "在视觉与文本任务上，将基于旧基座微调的任务向量迁移到新预训练基座；对比直接叠加/重新微调等基线；指标为下游任务精度，强调无需任何训练步骤或数据点。",
+ "takeaways": [
+  "任务向量可通过re-basin权重置换跨模型发布迁移，无需重训或数据",
+  "Transformer的残差与多头结构需要专门定制的置换方案",
+  "该方法为基座模型频繁迭代下复用已有微调提供了廉价途径"
+ ],
+ "weaknesses": [
+  "迁移精度相对真正重训的差距未充分量化",
+  "仅在架构不变、仅权重更新的发布间验证，跨架构迁移未涉及",
+  "置换求解的计算成本与对超大规模模型的可扩展性证据有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

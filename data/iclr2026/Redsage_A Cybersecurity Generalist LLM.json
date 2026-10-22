@@ -1,0 +1,41 @@
+{
+ "title": "RedSage: A Cybersecurity Generalist LLM",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4.0,
+  "overall": 4.8
+ },
+ "one_line": "领域数据工程+模型发布，方法创新有限，评估可靠性不足。",
+ "innovations": [
+  "构建11.8B token、28.6K文档的安全领域持续预训练语料(框架/攻击技术/安全工具)。",
+  "设计智能体增强管线模拟专家工作流，生成266K多轮安全SFT样本，再用开源数据做偏好对齐。",
+  "提出RedSage-Bench：30K选择题+240道开放式问答，覆盖知识、实操技能与工具(CLI/Kali)熟练度，弥补既有基准缺工具与质量评分的空白。"
+ ],
+ "method_framework": "先在网络过滤+人工收集的安全语料上做领域持续预训练；再用智能体管线模拟专家工作流产出多轮对话做SFT，并结合通用开源数据对齐；最终在安全基准与通用LLM基准上评估领域专才与泛化。",
+ "experiment_framework": "8B规模RedSage；对比既有安全/开源基线；基准为自建RedSage-Bench及CTI-Bench、CyberMetric、SECURE与Open LLM Leaderboard；报告安全基准最高+5.59、通用任务最高+5.05。",
+ "takeaways": [
+  "领域持续预训练与后训练结合，既能增强安全专才也能顺带提升通用推理/指令遵循。",
+  "现有安全基准多只考知识、缺工具熟练度与开放式质量评估。",
+  "本地可部署的开源安全LLM可规避专有API的数据隐私风险。"
+ ],
+ "weaknesses": [
+  "本质是领域数据工程+模型发布，方法创新有限，与可靠性×医学影像/多模态推理主线无关。",
+  "开放式问答仅240题且依赖GPT评分，质量评估的统计稳定性与可靠性不足。",
+  "节选前9页未见RedSage-Bench各细分项的完整得分表，'SOTA'的逐任务证据在所选范围内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Redsage_A Cybersecurity Generalist LLM.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Redsage_A Cybersecurity Generalist LLM.pdf",
+ "raw_overall": 5.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "安全领域数据工程，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

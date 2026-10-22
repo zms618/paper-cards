@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Elucidating Flow Matching ODE Dynamics via Data Geometry and Denoisers.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Elucidating Flow Matching ODE Dynamics via Data Geometry and Denoisers.pdf",
+ "title": "Elucidating Flow Matching ODE Dynamics via Data Geometry and Denoisers",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 6
+ },
+ "one_line": "理论分析FM ODE三阶段轨迹，但实证有限且与可靠性主线无关。",
+ "innovations": [
+  "提出attracting/absorbing元定理(Thm 3.1/3.2)：去噪器决定的轨迹会被吸引并约束在某些闭合集(数据凸包/局部簇Voronoi胞)附近，统一解释初始→中间→终端三阶段。",
+  "首次在弱假设(仅有限2阶矩、允许支撑于子空间/子流形)下证明FM ODE在[0,1)适定(Thm 4.1)且t→1收敛(Thm 5.3)，补上Gao2024等排除低维支撑的空白；给出流形O(√σ)、离散O(σ)收敛率。",
+  "建立流映射对相似变换的等变性(Prop 5.7)，并用Voronoi胞/σ0定量刻画离散经验分布下的终端吸引与memorization现象(Prop 5.9/5.10)。"
+ ],
+ "method_framework": "用noise-to-signal比σ=βt/αt把FM ODE改写为dxσ/dσ=-(1/σ)(mσ(xσ)-xσ)，其中mσ=E[X|Xσ=x]为去噪器。轨迹本质是向mσ移动；通过分析mσ与投影projΩ的夹角(锐角条件)判定吸引，用邻域Br(Ω)是否吸收传播该条件。初始阶段趋均值、中间被局部簇凸包吸收、终端在正reach/正则假设下收敛到数据支撑。",
+ "experiment_framework": "以理论推导为主(证明在附录，64页)；合成数据(circle/clusters)可视化三阶段轨迹验证Prop 4.2/4.4；CIFAR-10上用ε-Voronoi胞估计σ0≈0.17对应EDM采样最后四分之一步，佐证终端阶段memorization风险；并讨论latent空间几何与采样步资源重分配的实践含义。",
+ "takeaways": [
+  "FM ODE轨迹三阶段由数据几何驱动：初始趋全局均值、中间锁定到局部簇(‘locking’解释mode coverage)、终端收敛到最近数据点。",
+  "首个覆盖低维子流形支撑的ODE收敛保证；流形O(√σ)、离散O(σ)收敛率提示终端阶段可稀疏采样。",
+  "经验分布下重复/孤立样本的σ0更大→memorization风险更高，应在终端训练阶段避免过度优化去噪器以防记忆。"
+ ],
+ "weaknesses": [
+  "理论常数不紧(作者自承worst-case bound)，局部簇假设现实数据并不严格满足，结论主要靠合成实验佐证；实证仅合成+少量CIFAR估计。",
+  "假设X与Z独立、X~p有有限2阶矩且支撑有正reach，rectified flow/known coupling等X-Z耦合情形留作未来；未给可直接落地的采样/正则算法。",
+  "属生成模型动力学理论，与可靠性主线（鲁棒/泛化/可信AI/不确定性量化在医学影像或多模态大模型推理）无直接关系。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

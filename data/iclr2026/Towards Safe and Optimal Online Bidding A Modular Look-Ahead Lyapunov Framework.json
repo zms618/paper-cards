@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards Safe and Optimal Online Bidding A Modular Look-Ahead Lyapunov Framework.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards Safe and Optimal Online Bidding A Modular Look-Ahead Lyapunov Framework.pdf",
+ "title": "Towards Safe and Optimal Online Bidding: A Modular Look-Ahead Lyapunov Framework",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 5.2
+ },
+ "one_line": "模块化Lyapunov框架处理双约束竞价，理论保证但实验规模有限",
+ "innovations": [
+  "提出统一模块化的约束在线学习框架，可适配一价/二价拍卖、完全/部分信息等多种竞价设定",
+  "结合乐观奖励与悲观成本估计，配合前瞻虚拟队列机制(Lyapunov)，在不需Slater条件下给出自适应regret与任意时刻ROI违约保证",
+  "前瞻设计+Lyapunov稳定性分析使其在多种竞价设定下匹配或改进已知最优结果"
+ ],
+ "method_framework": "把同时受预算与ROI约束的在线竞价建模为通用约束在线学习；L2FOB用Lyapunov优化引入前瞻虚拟队列平衡打包/覆盖型约束，对奖励做乐观估计、对成本做悲观估计以控制风险，从而在长期horizon上兼顾收益与约束安全。",
+ "experiment_framework": "理论推导O(E_r(T,p)+(ν*/ρ)E_c(T,p)) regret与O(E_r+E_c)任意时刻ROI违约的自适应界；在多种在线竞价设定(一价/二价、bandit/凸优化)实例化并与已知最优结果对比；数值实验验证理论保证。",
+ "takeaways": [
+  "预算+ROI双约束可在统一Lyapunov框架下处理，且无需难以验证的Slater条件",
+  "前瞻虚拟队列能同时控制收益损失与ROI违约量，而非仅数违约次数",
+  "模块化设计使同一框架跨拍卖形式与反馈体制复用"
+ ],
+ "weaknesses": [
+  "保证以累计估计误差E_r/E_c表示，对真实分布偏移下估计误差累积的实际可控性未充分讨论",
+  "数值实验规模有限，缺乏在大规模真实广告流量上的端到端收益对比",
+  "属在线广告竞价/在线学习方向，与可靠性主线及医学影像、多模态推理落地域无关"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "在线竞价与可靠性主线及落地域无关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Mitigating the Safety Alignment Tax with Null-Space Constrained Policy Optimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Mitigating the Safety Alignment Tax with Null-Space Constrained Policy Optimization.pdf",
+ "title": "Mitigating the Safety Alignment Tax with Null-Space Constrained Policy Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "零空间约束RL安全对齐，理论保能力但依赖子空间估计精度",
+ "innovations": [
+  "用零空间几何投影把安全梯度约束在不损害通用能力的方向上",
+  "理论证明NSPO既保持模型原有核心能力，又给出安全对齐的下降方向",
+  "数据高效：仅用40% PKU-SafeRLHF安全标注即达SOTA安全，无需大量混合通用数据"
+ ],
+ "method_framework": "在RL安全对齐中，估计通用任务梯度张成的子空间，把安全梯度投影到其正交补(零空间)，使参数更新只在不影响数学/代码/指令遵循等核心能力的方向上优化安全性，从而消除对齐税。",
+ "experiment_framework": "在安全基准与通用能力基准(数学、代码、指令遵循)评测，对比现有安全对齐方法；指标为安全通过率与通用任务准确率；NSPO大幅领先，安全SOTA且不牺牲通用准确率，仅用40%安全数据。",
+ "takeaways": [
+  "零空间投影可几何化解耦安全对齐与通用能力",
+  "安全对齐税来自安全梯度对能力子空间的侵入",
+  "少量安全数据经零空间约束即可高效对齐"
+ ],
+ "weaknesses": [
+  "通用任务子空间需预先估计，估计误差会削弱理论保证",
+  "安全性为LLM对话拒答，非医疗影像/多模态推理落地域",
+  "对越狱/对抗prompt下的鲁棒性是否随零空间退化未充分检验"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "安全对齐方法与可靠性主线有交点但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

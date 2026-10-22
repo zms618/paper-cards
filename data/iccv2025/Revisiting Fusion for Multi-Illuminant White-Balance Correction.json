@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Revisiting Fusion for Multi-Illuminant White-Balance Correction.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Revisiting Fusion for Multi-Illuminant White-Balance Correction.pdf",
+ "title": "Revisiting Fusion for Multi-Illuminant White-Balance Correction",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "Transformer融合五种预设白平衡，提升多光源校正效果",
+ "innovations": [
+  "基于Transformer的非线性融合策略",
+  "大规模多光源sRGB数据集",
+  "解决sRGB空间中凸包限制问题"
+ ],
+ "method_framework": "将五种白平衡预设图像拼接，通过3×3卷积提取特征，使用多头转置注意力机制捕获跨预设的空间依赖，最后通过前馈网络和卷积层输出校正后的图像。",
+ "experiment_framework": "在自建多光源数据集(16,284图像)、Cube+和合成测试集上评估，使用ΔE2000、MSE和MAE指标，并与WBFlow、SWBNet、DeepWB等方法比较。",
+ "takeaways": [
+  "转置注意力机制有效处理多光源场景",
+  "大规模真实数据集对多光源白平衡至关重要",
+  "轻量级模型(7.9K参数)实现高效推理"
+ ],
+ "weaknesses": [
+  "仅依赖五种预设白平衡设置",
+  "亮度调整假设朗伯反射模型可能不适用于所有场景",
+  "未分析计算复杂度与图像尺寸的关系"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多光源白平衡校正属于医学影像预处理，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

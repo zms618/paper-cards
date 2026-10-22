@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Score-Based Diffusion Policy Compatible with Reinforcement Learning via Optimal Transport.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Score-Based Diffusion Policy Compatible with Reinforcement Learning via Optimal Transport.pdf",
+ "title": "Score-Based Diffusion Policy Compatible with Reinforcement Learning via Optimal Transport",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "OTPR用最优传输连接扩散策略与RL，但Q函数偏差与计算开销限制实用性。",
+ "innovations": [
+  "用最优传输框架统一扩散策略与RL微调，把策略建模为传输映射。",
+  "将Q函数作为最优传输代价，引导去噪/score匹配沿高价值方向更新，避免扩散策略与RL目标不兼容。",
+  "引入掩码最优传输(masked OT)做高效稳定的策略微调，缓解扩散策略对分布偏移的脆弱。"
+ ],
+ "method_framework": "扩散策略作为行为克隆在分布偏移下易复合误差。OTPR把扩散策略的去噪过程解释为从噪声动作分布到高价值动作分布的最优传输：以RL中学到的Q函数定义传输代价，在去噪每步引导动作向高Q区域移动；掩码OT则只在相关动作维度上计算传输，使扩散策略可被在线RL高效、稳定微调。",
+ "experiment_framework": "在机器人操作/控制基准上，先用离线数据训练扩散策略再做在线RL微调；对比原生扩散策略、BC+RL、其他扩散-RL结合方法，指标为任务成功率与对分布偏移/扰动的鲁棒性，做掩码OT与Q代价的消融。",
+ "takeaways": [
+  "最优传输可作为扩散策略与RL之间的兼容桥梁，使Q函数自然引导去噪。",
+  "OTPR在线微调可改善扩散策略在分布偏移下的复合误差问题。"
+ ],
+ "weaknesses": [
+  "依赖已训练的Q函数，Q估计偏差会经OT传播到动作。",
+  "OT每步求解带来额外规划/计算开销。",
+  "鲁棒性主要在机器人控制验证，向通用决策任务的迁移证据有限。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

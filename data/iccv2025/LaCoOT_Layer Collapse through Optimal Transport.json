@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/LaCoOT_Layer Collapse through Optimal Transport.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/LaCoOT_Layer Collapse through Optimal Transport.pdf",
+ "title": "LaCoOT Layer Collapse through Optimal Transport",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "基于最优传输的层压缩方法，移除冗余层但性能下降",
+ "innovations": [
+  "基于Max-Sliced Wasserstein距离的正则化策略",
+  "后训练阶段完全移除中间层而非简单合并",
+  "适用于多种架构和生成模型的通用框架"
+ ],
+ "method_framework": "通过最小化网络块间特征分布的Max-Sliced Wasserstein距离作为正则化项，使网络学习更直接的路径，从而识别并移除冗余层。",
+ "experiment_framework": "在ResNet-18、MobileNet-V2、Swin-T和DiT-XL/2上测试，使用CIFAR-10、Tiny-ImageNet和ImageNet数据集，比较Layer Folding、EGP、NEPENTHE和EASIER基线。",
+ "takeaways": [
+  "最优传输可用于量化层间特征分布差异",
+  "直接关注关键路径长度比参数减少更有效",
+  "正则化参数λ对性能-复杂度权衡至关重要"
+ ],
+ "weaknesses": [
+  "层移除后未重新训练导致性能下降",
+  "仅适用于维度相同的连续块",
+  "对某些架构如MobileNetV2的提升有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "模型压缩技术，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

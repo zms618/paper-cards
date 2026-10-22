@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Spatial-SAM Spatially Consistent 3D Electron Microscopy Segmentation with SDF Memory.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Spatial-SAM Spatially Consistent 3D Electron Microscopy Segmentation with SDF Memory.pdf",
+ "title": "Spatial-SAM Spatially Consistent 3D Electron Microscopy Segmentation with SDF Memory",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "SDF内存与双轨训练提升3D电镜分割一致性，但依赖SAM2且计算开销大",
+ "innovations": [
+  "SDF内存机制替代传统logit内存，提供几何感知的体积结构指导",
+  "双轨半监督训练策略交替优化SDF回归和掩模学习",
+  "结合SAM2少样本能力与体积结构指导，实现高精度3D电镜分割"
+ ],
+ "method_framework": "Spatial-SAM框架引入SDF内存机制，用3D U-Net预计算符号距离场作为内存表示，结合SAM2的少样本能力，通过双轨半监督训练策略交替优化SDF回归和掩模预测。",
+ "experiment_framework": "在OOMLM、OOMLN、MitoEM-R和MitoEM-H四个3D电镜数据集上评估，使用Dice和mIoU指标，与半监督、全监督和SAM-based方法对比，仅使用1/64标注切片。",
+ "takeaways": [
+  "SDF内存机制能有效提升跨切片空间一致性，避免误差累积",
+  "双轨训练策略可充分利用未标注数据，实现几何与语义的一致性"
+ ],
+ "weaknesses": [
+  "方法依赖SAM2基础模型，计算开销较大",
+  "SDF内存的预计算可能限制对动态变化的适应性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D电镜分割属于医学影像落地域，但可靠性主线交织不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VISCODER2_Building Multi-Language Visualization Coding Agents.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VISCODER2_Building Multi-Language Visualization Coding Agents.pdf",
+ "title": "VisCoder2: Building Multi-Language Visualization Coding Agents",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 4.8
+ },
+ "one_line": "多语言可视化代码生成器，依赖大规模合成数据，语义正确性验证不足",
+ "innovations": [
+  "构建VisCode-Multi-679K数据集，含67.9万条经验证可执行的可视化样本与多轮纠错对话，覆盖12种编程语言",
+  "构建VisPlotBench基准，覆盖8种语言，含可执行任务、渲染输出以及首轮生成与多轮自调试的评测协议",
+  "训练VisCoder2可视化代码智能体家族，具备执行-渲染-自调试的迭代纠错能力"
+ ],
+ "method_framework": "先构建大规模且经验证可执行的多语言可视化样本与多轮纠错对话数据集用于监督训练，再训练模型按生成代码、执行、渲染、根据运行时反馈自调试的循环迭代修正，配套基准同时评测首轮生成与多轮自调试。",
+ "experiment_framework": "在VisPlotBench(8种语言)上评测，含首轮生成与多轮自调试协议；对比强开源基线与GPT-4.1等专有模型；指标为可执行通过率与渲染成功率；报告32B规模整体执行通过率82.4%并逼近专有模型。",
+ "takeaways": [
+  "VisCoder2在32B规模整体执行通过率达82.4%，逼近GPT-4.1等专有模型",
+  "迭代自调试(self-debug)带来进一步增益，在符号化或编译器依赖语言上尤其明显",
+  "多语言可执行数据加多轮纠错对话是提升可视化代码智能体实用工作流能力的关键"
+ ],
+ "weaknesses": [
+  "属于可视化代码生成与智能体方向，与可靠性、医学影像、多模态推理主线无关，relevance偏低",
+  "数据集以代码可执行为质量信号，渲染结果的语义正确性即是否正确表达数据关系仍需评判，前9页未见相关验证",
+  "成功依赖大规模合成样本，真实复杂业务可视化场景的泛化性证据不足"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.28,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "可视化代码生成与可靠性主线无关，无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

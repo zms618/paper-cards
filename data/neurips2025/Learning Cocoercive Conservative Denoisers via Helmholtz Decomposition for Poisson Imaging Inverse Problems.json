@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Learning Cocoercive Conservative Denoisers via Helmholtz Decomposition for Poisson Imaging Inverse Problems.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Learning Cocoercive Conservative Denoisers via Helmholtz Decomposition for Poisson Imaging Inverse Problems.pdf",
+ "title": "Learning Cocoercive Conservative Denoisers via Helmholtz Decomposition for Poisson Imaging Inverse Problems",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.75
+ },
+ "one_line": "基于Helmholtz分解的cocoercive保守去噪器，解决Poisson逆问题收敛与性能矛盾",
+ "innovations": [
+  "提出cocoercive保守(CoCo)去噪器假设，比非扩张性假设更宽松",
+  "利用广义Helmholtz分解将去噪器分解为保守部分和Hamiltonian部分",
+  "设计Hamiltonian正则化和谱正则化相结合的训练策略",
+  "证明CoCo去噪器是弱凸函数的近端算子，建立PnP方法的全局收敛性"
+ ],
+ "method_framework": "基于DRUNet架构，结合Hamiltonian正则化(∥J-J⊤∥∗)和谱正则化(max{∥2γJ-I∥∗,1-ϵ})训练CoCo去噪器，确保保守性和cocoerciveness特性",
+ "experiment_framework": "在CBSD68数据集评估去噪性能，在Levin核和Mayo数据集评估Poisson去卷积和低剂量CT重建，与SPC-DRUNet、Prox-DRUNet等方法对比PSNR和SSIM",
+ "takeaways": [
+  "通过几何视角分析去噪器的保守性，Hamiltonian部分对去噪无贡献",
+  "cocoercive假设允许去噪器具有扩张性，提升去噪性能同时保证收敛性",
+  "弱凸先验的隐式建模为非凸优化问题提供新思路"
+ ],
+ "weaknesses": [
+  "实验主要在标准数据集进行，缺乏在真实医学影像上的充分验证",
+  "收敛性证明依赖于KL性质，对一般函数的适用性有待进一步验证",
+  "参数选择(如γ, α1, α2)对性能影响较大，缺乏系统的参数选择指导"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

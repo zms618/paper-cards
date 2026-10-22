@@ -1,0 +1,41 @@
+{
+ "title": "Point2RBox-v3: Self-Bootstrapping from Point Annotations via Integrated Pseudo-Label Refinement and Utilization",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "点标注旋转检测的渐进式改进，依赖SAM生成伪标签。",
+ "innovations": [
+  "渐进式标签分配(PLA)：训练各阶段动态粗略估计实例尺寸，使旋转框检测器可用常规标签分配策略。",
+  "先验引导动态掩码损失(PGDM-Loss)：在Point2RBox-v2的Voronoi分水岭损失上改进，互补分水岭(擅长稀疏场景)与SAM(擅长密集场景)的优劣。",
+  "首个将动态伪标签用于标签分配的点监督旋转检测模型，稀疏/密集场景均表现良好。"
+ ],
+ "method_framework": "仅用点标注训练旋转目标检测器：先由点提示SAM+分水岭生成旋转框伪标签；PLA在不同训练阶段动态估计实例尺度以做标签分配；PGDM-Loss按场景疏密动态融合分水岭与SAM的掩码监督，迭代精修并利用伪标签。",
+ "experiment_framework": "在DOTA-v1.0/v1.5/v2.0、DIOR、STAR、RSAR等航拍/遥感旋转检测benchmark上测mAP；对比点监督弱监督方法(v2及MIL类)；报告66.09/56.86/41.28/46.40/19.60/45.96% mAP。",
+ "takeaways": [
+  "动态伪标签用于标签分配显著提升点监督旋转检测在尺寸差异大、稀疏目标场景的性能。",
+  "融合SAM与分水岭可同时覆盖稀疏与密集场景，弥补各自短板。",
+  "弱监督点标注方案在多个遥感基准上取得具竞争力mAP。"
+ ],
+ "weaknesses": [
+  "为v2的渐进式改进，方法创新偏增量，两大模块均为对前作的修补。",
+  "依赖SAM大模型生成伪标签，推理/训练成本与对SAM分布外场景的鲁棒性未充分讨论。",
+  "与全监督RBox上界及HBox弱监督方法的差距分析在正文前9页内不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/POINT2RBOX-V3_Self-Bootstrapping from Point Annotations via Integrated Pseudo-Label Refinement and Utilization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/POINT2RBOX-V3_Self-Bootstrapping from Point Annotations via Integrated Pseudo-Label Refinement and Utilization.pdf",
+ "raw_overall": 5.83,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "点标注旋转检测改进，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

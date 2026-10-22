@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Pose-guided Enriched Feature Learning for Federated-by-camera Person Re-identification.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Pose-guided Enriched Feature Learning for Federated-by-camera Person Re-identification.pdf",
+ "title": "Pose-guided Enriched Feature Learning for Federated-by-camera Person Re-identification",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "姿态解耦与知识蒸馏的联邦ReID，解决单相机姿态多样性不足。",
+ "innovations": [
+  "姿态提取模块(PEM)解耦姿态相关和无关特征",
+  "姿态关系知识蒸馏(PKD)和语义一致性维护(SCM)训练PEM",
+  "兼容性正则化(CR)确保PEM与全局模型特征空间兼容"
+ ],
+ "method_framework": "三阶段框架：1)本地专家模型训练 2)PEM训练(解耦特征并合成姿态交换特征) 3)本地-全局模型训练(使用合成特征增强对比学习)",
+ "experiment_framework": "Market1501(6客户端)和MSMT17(15客户端)数据集，对比特征增强、联邦学习和联邦ReID方法，使用mAP和Rank-1指标",
+ "takeaways": [
+  "姿态多样性不足是联邦相机ReID的关键瓶颈",
+  "特征解耦与合成可有效生成有意义的困难样本",
+  "兼容性正则化防止PEM过拟合到局部分布"
+ ],
+ "weaknesses": [
+  "依赖现成姿态检测器，可能引入额外误差",
+  "仅解决姿态多样性问题，未考虑其他因素如光照变化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "联邦学习ReID解决姿态多样性，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

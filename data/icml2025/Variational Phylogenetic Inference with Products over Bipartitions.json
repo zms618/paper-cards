@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Variational Phylogenetic Inference with Products over Bipartitions.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Variational Phylogenetic Inference with Products over Bipartitions.pdf",
+ "title": "Variational Phylogenetic Inference with Products over Bipartitions",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.75
+ },
+ "one_line": "基于单链接聚类的变分贝叶斯系统发育树推断，避免MCMC但表达能力和适用性受限",
+ "innovations": [
+  "提出基于单链接聚类聚结时间的新变分族，并推得该树上分布的闭式密度",
+  "与既有超度量树方法不同，可在整个树空间上做推断，且不依赖任何MCMC子程序",
+  "在保持精度有竞争力的同时，所需梯度评估次数显著少于现有SOTA"
+ ],
+ "method_framework": "针对超度量系统发育树的后验推断，构造以单链接聚类聚结时间为参数的变分分布族，将树拓扑概率表示为二分裂(bipartition)上乘积的闭式形式，从而用变分推断直接近似后验，避免MCMC在组合树上的昂贵采样。",
+ "experiment_framework": "在基准基因组数据集上评测，并应用于SARS-CoV-2病毒RNA；与现有变分贝叶斯系统发育方法(如SBN、normalizing flow等)对比；指标为后验精度与达到相近精度所需的梯度评估次数。",
+ "takeaways": [
+  "系统发育树的后验推断可摆脱MCMC，用闭式变分族在全树空间完成",
+  "基于聚结时间的变分族在精度有竞争力的同时大幅减少梯度评估",
+  "闭式密度使树空间VI更易扩展到较大数据集"
+ ],
+ "weaknesses": [
+  "变分族对树拓扑的表达能力是否足够丰富，证据限于基准与病毒RNA数据",
+  "精度\"有竞争力\"但未报告相对MCMC金标准的系统性偏差量化",
+  "超度量假设在非超度量(分子钟不成立)场景下的适用性受限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

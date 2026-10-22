@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/External Knowledge Injection for CLIP-Based Class-Incremental Learning.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/External Knowledge Injection for CLIP-Based Class-Incremental Learning.pdf",
+ "title": "External Knowledge Injection for CLIP-Based Class-Incremental Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "双分支知识注入提升CLIP增量学习，但依赖GPT-4且计算开销大",
+ "innovations": [
+  "双分支知识注入框架（视觉和文本）",
+  "使用GPT-4生成判别性描述符",
+  "推理时的后调优知识注入",
+  "增量任务特定注入单元设计"
+ ],
+ "method_framework": "ENGINE采用双分支知识注入框架，视觉分支通过数据增强丰富特征，文本分支利用GPT-4生成判别性描述符，并通过注入单元编码外部知识，同时使用原型回放策略防止遗忘。",
+ "experiment_framework": "在9个基准数据集（CIFAR100、CUB200等）上评估，与CoOp、L2P、DualPrompt等基线方法比较，使用平均准确率和最终准确率作为指标。",
+ "takeaways": [
+  "利用大语言模型生成细粒度特征描述增强CLIP表示能力",
+  "设计轻量级注入单元而非修改主干网络，保持模型泛化能力"
+ ],
+ "weaknesses": [
+  "依赖GPT-4生成描述符，可能引入外部知识偏差",
+  "方法在计算资源消耗上可能较高，特别是推理时的后调优步骤"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "增量学习与可靠性主线部分交织，但依赖外部模型且计算开销大",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

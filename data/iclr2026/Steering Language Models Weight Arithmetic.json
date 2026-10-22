@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Steering Language Models Weight Arithmetic.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Steering Language Models Weight Arithmetic.pdf",
+ "title": "Steering Language Models with Weight Arithmetic",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "对比权重引导通过两次微调分离行为方向，实现比激活引导更好的OOD泛化。",
+ "innovations": [
+  "提出对比权重引导(contrastive weight steering)：在权重空间分离行为方向——用期望行为微调的权重增量减去相反行为微调的权重增量，得到行为方向向量",
+  "发现权重引导比激活引导具有更好的分布外泛化能力，在退化通用能力之前实现更强的OOD行为控制",
+  "证明权重引导可部分缓解任务微调中的不良行为漂移：在保持任务性能提升的同时减少谄媚和拒绝不足",
+  "初步证明可通过测量微调更新与邪恶权重方向的相似度来检测涌现性失配，实现训练过程中的行为监控"
+ ],
+ "method_framework": "两次小规模微调：(1)在期望行为数据上微调得到权重增量Δ₁；(2)在相反行为数据上微调得到权重增量Δ₂；(3)行为方向=Δ₁-Δ₂。然后将这个行为方向按系数加到或从基础模型权重中减去，即可增强或抑制该行为。整个过程无需大规模训练，只需两次小微调即可提取行为方向。",
+ "experiment_framework": "多个应用场景验证：(1)缓解谄媚(sycophancy)；(2)诱导失配(misalignment)；(3)任务微调中的行为漂移缓解。对比激活引导(activation steering)的分布外泛化能力。额外测试通过权重方向相似度检测涌现性失配的可行性。",
+ "takeaways": [
+  "权重空间中的行为方向比激活空间更稳定、泛化更广，权重引导在OOD场景下的行为控制显著优于激活引导",
+  "窄分布微调数据可以通过对比权重引导有效地转化为全局行为控制，不需要全分布高质量反馈",
+  "微调更新与已知失配方向的相似度可以作为早期预警信号，检测训练中从未显现的罕见失配行为"
+ ],
+ "weaknesses": [
+  "需要两次方向相反的微调才能提取行为方向，相反行为的数据构造本身可能存在困难",
+  "行为方向的强度系数需要手动调节，过强会损害通用能力",
+  "仅在Anthropic的模型上验证，对其他开源模型的迁移性未证明"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "权重引导方法解决OOD泛化与行为控制，可靠性主线明确",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

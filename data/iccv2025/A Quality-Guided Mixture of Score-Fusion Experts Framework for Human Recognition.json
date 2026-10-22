@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/A Quality-Guided Mixture of Score-Fusion Experts Framework for Human Recognition.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/A Quality-Guided Mixture of Score-Fusion Experts Framework for Human Recognition.pdf",
+ "title": "A Quality-Guided Mixture of Score-Fusion Experts Framework for Human Recognition",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.2
+ },
+ "one_line": "伪质量标签加权MoE融合，生物识别小幅提升",
+ "innovations": [
+  "伪质量监督：用预训练模型中查询特征与谱库特征的排序名次 r，经 ReLU(δ−r)/(δ−1) 归一化为目标值，以 MSE 训练模态专属 Quality Estimator（QE），彻底免去人工质量标注",
+  "以 QE 输出的模态质量权重 wn 作为 MoE 路由输入，各 MLP 专家输出分数矩阵按 pz 加权求和 S′=Σ pz Sz，按输入质量动态迁移模态贡献权重",
+  "score triplet loss L=ReLU(S′_nm)+ReLU(m−S′_mat) 同时压低非匹配分绝对值并保底匹配分，直接对齐 TAR@FAR 的阈值判定"
+ ],
+ "method_framework": "两阶段训练：先用骨干中间层特征的均值/标准差编码训 QE 输出模态质量权重 wn（伪排名 MSE 监督）；再冻结 QE，把各模态相似度矩阵经 BatchNorm 拼接送入 Z=2 个 MLP 专家加权融合，辅以 score triplet loss。",
+ "experiment_framework": "CCVID/MEVID/LTCC/BRIAR 四库；对比 Min/Max、Z-score、RHE、BSSF、Farsight、AsymA、SapiensID；指标 CMC rank1/mAP、TAR@1%FAR、FNIR@1%FPIR。",
+ "takeaways": [
+  "质量估计可从预训练识别模型的排名监督中蒸馏出来，零标注即可跨骨干、跨数据集迁移",
+  "直接对融合后分数幅值做正则（而非只约束相对距离）能更贴近验证阈值类指标",
+  "分数级融合无需重训生物特征主干、也不要求配对多模态训练数据，缺失模态时更鲁棒"
+ ],
+ "weaknesses": [
+  "正文前九页缺失 BRIAR 主表（Tab.4）与消融实验章节，最大规模数据集上的结论无法从给定正文复核",
+  "设 Z=2 且 p1=wn、p2=1−p1，MoE 实际退化为由 QE 单点控制的标量加权，路由器并无可学习分配能力，专家差异化未获实验支撑",
+  "收益幅度小：CCVID/MEVID 相对 BSSF、Farsight 仅约 0.5–1 个 mAP；且 rank1/mAP 只报单值，标准差仅出现在 FNIR 上"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "生物识别技术，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

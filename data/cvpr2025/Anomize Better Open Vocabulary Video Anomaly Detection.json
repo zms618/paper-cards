@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Anomize Better Open Vocabulary Video Anomaly Detection.pdf",
+ "conf": "cvpr2025",
+ "path": "C:\\Users\\James\\Desktop\\study\\paper\\项目记忆\\论文卡片\\精读卡片库\\cvpr2025\\Anomize Better Open Vocabulary Video Anomaly Detection.json",
+ "title": "Anomize: Better Open Vocabulary Video Anomaly Detection",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 7.0,
+  "overall": 5.9
+ },
+ "one_line": "双流文本增强+GPT分组提异常检测，但超参调优与实验分析不足",
+ "innovations": [
+  "Text-Augmented Dual Stream：静态流用 CLIP 原图特征配概念库 ConceptLib（Φtext 编码的一组异常名词，取 TopK 相似度加权得 hnew_f）增强，动态流用轻量 LSTM 时序特征配标签描述 tdesc 增强；两路经统一 Augmenter（MHA 以视觉为 Q、文本为 K/V 得 erefine，再与 FC(evisual) 拼接过 MLP）各出分数，s = β·sdyn + (1−β)·ssta。",
+  "Group-Guided Text Encoding：先用 GPT-4 按视觉相似性把标签分组（promptgroup），再对每组生成「组内共享 + 组内区分」的描述（promptdesc），喂冻结的 CLIP text encoder 得 tdesc，在标签编码阶段显式建立 base 与 novel 标签的连接。",
+  "两阶段目标：先以 Lcat = Lce + Lsep 只训 LSTM，其中 Lsep = −Σ|max(pavg[1:]) − pavg[0]| + 1 强制正常类概率与异常类概率分离；再对静态/动态流用带 wi 权重（正比于正常/异常样本比）加权的 MIL 二分类损失 LD-MIL + LS-MIL。"
+ ],
+ "method_framework": "CLIP 图像编码器冻结提特征 → 轻量 LSTM 得时序特征；双流各配 ConceptLib/标签描述经统一 Augmenter 增强后出异常分并加权；分类用 GPT-4 分组描述经冻结 CLIP 文本编码做对齐。",
+ "experiment_framework": "XD-VIOLENCE（3954 训练 / 800 测试）与 UCF-CRIME（1610 / 290）；对比 Zhu et al./Sultani/RTFM/Wu et al./VadCLIP 等；指标 AP/APb/APn、AUC/AUCb/AUCn 与 Top-1 ACC。",
+ "takeaways": [
+  "分类分支的 Group-Guided 文本编码把 XD-VIOLENCE 的 Top-1 从 64.68 提到 90.29、novel 类从 30.90 提到 87.43：novel 类错分主要是文本编码问题而非视觉表征问题，改动集中在 text encoder 一侧。",
+  "检测分支 novel 类 AP 从 76.03 提到 84.24（+8.21）而 base 类只 +0.27（57.10→57.37），增益几乎全部落在 novel 上，对 open-vocabulary 设定是较干净的证据。"
+ ],
+ "weaknesses": [
+  "β 是逐数据集、逐 base/novel 手调的推理超参（XD-VIOLENCE 取 1、UCF-CRIME 取 0.5，并在 novel/base 子设定上取 0），等于把 novel/base 的权衡直接写进推理配置；正文未给出 β 的估计量或敏感性分析，评测公平性依赖划分方式。",
+  "消融表存在与结论悬空的巨大落差：表 3 中「只有 loss 权重 wi、无双流」的配置在 UCF-CRIME 上 AUC 只有 26.93、AUCn 只有 17.39，而全开配置为 84.49，相差近 58 个点；正文只以「噪声」带过，未解释崩塌原因，也不报方差。",
+  "表 4 里 novel 类 Top-1 出现 0（仅加轻量时序编码器时 ACCn=0），而最终模型靠 ST（分段训练）从 56.51/4.19 跳到 90.29/87.43；但 ST 只在最后两行出现且这两行仅差 Lsep，缺少「ST 单独消融」，无法把 ST 与 Lsep 的收益分开。",
+  "标签分组完全由 GPT-4 的 promptgroup 决定，分组质量、分组数、以及 novel 标签被误并入 base 组的情况都无评测；LLM 输出本身不可复现，却直接流入文本编码与最终分类。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "视频异常检测与可靠性主线交点，open-vocabulary提升novel类检测",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

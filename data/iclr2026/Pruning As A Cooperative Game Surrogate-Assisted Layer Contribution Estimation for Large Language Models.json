@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Pruning As A Cooperative Game Surrogate-Assisted Layer Contribution Estimation for Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Pruning As A Cooperative Game Surrogate-Assisted Layer Contribution Estimation for Large Language Models.pdf",
+ "title": "Pruning as a Cooperative Game: Surrogate-Assisted Layer Contribution Estimation for Large Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "合作博弈框架+代理网络估计LLM层Shapley贡献，但剪枝成本高且与主线关联弱",
+ "innovations": [
+  "将逐层剪枝形式化为合作博弈，显式建模层间相互依赖，突破静态启发式局限",
+  "用轻量代理网络预测任意层组合下的LLM性能，低成本估计Shapley边际贡献",
+  "采用分层蒙特卡洛掩码采样进一步降低Shapley值估计成本"
+ ],
+ "method_framework": "训练代理网络以层组合为输入、预测剪枝后性能；据此按合作博弈Shapley值估计每层边际贡献；用分层MC采样加速，再按贡献动态识别关键层与可剪层。",
+ "experiment_framework": "在多个LLM上做逐层剪枝；报告困惑度与zero-shot精度；对比静态启发式剪枝方法。",
+ "takeaways": [
+  "合作博弈/Shapley层贡献在困惑度与zero-shot精度上一致优于静态启发式剪枝",
+  "代理网络+分层MC使Shapley估计在大模型上可行",
+  "建模层间依赖能更有效识别该保留的关键层"
+ ],
+ "weaknesses": [
+  "属模型剪枝/压缩方向，与可靠性、不确定性、验证器主线关联弱",
+  "需训练代理网络与多次掩码采样，剪枝流程本身成本较高",
+  "Shapley估计误差对最终剪枝质量的敏感度、跨任务泛化的稳健性需后续页"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "模型压缩方法，与可靠性主线关联弱但设计模式有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

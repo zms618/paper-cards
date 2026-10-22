@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Inverse Flow and Consistency Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Inverse Flow and Consistency Models.pdf",
+ "title": "Inverse Flow and Consistency Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.5,
+  "overall": 6.5
+ },
+ "one_line": "反转扩散模型依赖，从含噪观测直接映射到真值分布，但噪声模型设定影响稳健性。",
+ "innovations": [
+  "提出 Inverse Flow(IF)，反转生成模型对干净数据的依赖，直接学习从含噪观测分布到真值分布的映射。",
+  "给出 Inverse Flow Matching(IFM) 与 Inverse Consistency Model(ICM) 两种学习算法，其中 ICM 提出无 ODE 求解器、仿真无关的高效目标。",
+  "将一致性训练目标推广到任意前向扩散过程/条件流，并在荧光显微成像与单细胞基因组学上验证。"
+ ],
+ "method_framework": "指定一个反映噪声分布知识的 ODE/SDE，把前向过程改为从噪声分布到真值分布的逆向流；IFM 用条件流匹配学习向量场，ICM 用推广后的一致性训练做仿真无关的一步映射，支持几乎任意连续、含复杂依赖的噪声分布。",
+ "experiment_framework": "合成数据 + 真实荧光显微成像与单细胞基因组学数据；基线为已有无真值去噪方法；指标为去噪/逆生成质量；重点考察此前方法无法支持的复杂噪声分布。",
+ "takeaways": [
+  "无需干净真值也能训练扩散类生成模型完成去噪，扩展了生成模型在测量受限科学问题中的用途。",
+  "IF 对噪声分布最灵活，可处理含复杂依赖/变换的噪声，且 ICM 目标仿真无关、计算高效。"
+ ],
+ "weaknesses": [
+  "去噪质量依赖对噪声分布/前向过程的先验设定，噪声模型误设时的稳健性未充分分析。",
+  "与 SOTA 有真值监督方法的定量差距未明确讨论。",
+  "可靠性维度上属去噪/逆问题方法，未涉及不确定性校准或幻觉抑制等主线更核心的可信AI要素。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.98,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

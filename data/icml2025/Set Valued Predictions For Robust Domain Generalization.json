@@ -1,0 +1,35 @@
+{
+ "title": "Set Valued Predictions For Robust Domain Generalization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "集值预测框架提升域泛化召回，但单标签决策路由未解",
+ "innovations": [
+  "论证DG中单值预测固有局限(无跨域通用最优)，改用集值输出捕获训练域学到的多种X-Y关系",
+  "定义DG下成功的集预测理论框架：以最小化预测集大小为约束、覆盖预定性能为目标，给出可达条件",
+  "提出与现代架构兼容的优化方法，平衡未见域鲁棒性能与小预测集"
+ ],
+ "method_framework": "把集值预测分解为逐标签二分类器，损失以每标签召回(避免漏诊)为核心；在WILDS式多域训练下，优化目标为在达到预定召回门槛的同时最小化平均/最坏预测集大小，允许在不确定时输出多标签。",
+ "experiment_framework": "WILDS多个真实世界域泛化基准；对比单值稳健DG方法；指标为跨域最差/平均召回与预测集大小权衡；展示作为鲁棒DG方向的潜力。",
+ "takeaways": [
+  "高 stakes DG(如疾病诊断)下，集值输出以‘宁多报不漏诊’换取跨域最差性能，比强求单值最优更务实",
+  "预测集大小应作为显式优化目标而非副作用，否则退化为全标签输出"
+ ],
+ "weaknesses": [
+  "集值输出在下游要求单标签决策的场景如何路由未充分讨论",
+  "需预设性能门槛，门槛设定对结果敏感；WILDS上仅展示潜力，相对强基线的稳健增益幅度需细看"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Set Valued Predictions For Robust Domain Generalization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Set Valued Predictions For Robust Domain Generalization.pdf",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

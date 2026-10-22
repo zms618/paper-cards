@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/ACCO_Accumulate While You Communicate for Communication-Overlapped Sharded LLM Training.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/ACCO_Accumulate While You Communicate for Communication-Overlapped Sharded LLM Training.pdf",
+ "title": "ACCO: Accumulate While You Communicate for Communication-Overlapped Sharded LLM Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "ACCO通过梯度分阶段实现通信计算重叠，提升LLM训练效率。",
+ "innovations": [
+  "梯度计算与参数更新的重叠执行机制",
+  "延迟更新的补偿技术",
+  "无需预热阶段的训练方法"
+ ],
+ "method_framework": "ACCO将mini-batch梯度计算分为两个阶段，第一阶段用后半批次梯度估计下一参数，第二阶段用前半批次梯度更新当前参数，实现通信与计算重叠。",
+ "experiment_framework": "TinyStories数据集上的36M模型，OpenWebText上的125M GPT-Neo预训练，以及2.7B模型的指令微调，与DDP和ZeRO-1对比。",
+ "takeaways": [
+  "延迟更新对LLM训练收敛性有显著影响",
+  "通信-计算重叠可显著提高GPU利用率"
+ ],
+ "weaknesses": [
+  "仅在小规模模型上进行了理论分析",
+  "在异构硬件上的实验规模有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

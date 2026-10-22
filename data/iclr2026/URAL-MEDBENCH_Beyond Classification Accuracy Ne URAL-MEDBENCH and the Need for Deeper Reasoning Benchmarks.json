@@ -1,0 +1,41 @@
+{
+ "title": "Beyond Classification Accuracy: Neural-MedBench and the Need for Deeper Reasoning Benchmarks",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "揭示医疗VLM分类准确率假象，提出神经科深度推理基准。",
+ "innovations": [
+  "指出现有医疗基准偏重分类准确率造成评估幻觉(模型看似熟练却在高 stakes 诊断推理上失败)。",
+  "构建紧凑但推理密集的神经科基准，融合多序列 MRI、结构化电子病历与临床笔记，涵盖鉴别诊断、病灶识别、理由生成三类任务。",
+  "提出双轴评估框架(广度=统计泛化 / 深度=推理保真)，并设计 LLM 评分器+临床医生校验+语义相似度的混合打分管线以保证可靠评测。"
+ ],
+ "method_framework": "整合多序列 MRI 影像、结构化 EHR 与临床笔记构成多模态输入；任务要求模型做鉴别诊断、病灶识别并生成符合临床逻辑的理由；用 LLM 自动打分+临床医生抽检校验+语义相似度的混合管线评分，测量模型在不确定性下多模态综合与论证能力。",
+ "experiment_framework": "系统评测 GPT-4o、Claude-4、MedGemma 等 SOTA 医疗 VLM，与 MedMNIST/MultiMedQA 等广度基准对比，报告准确率骤降与错误归因(感知错误 vs 推理失败)。",
+ "takeaways": [
+  "强模型在浅层分类基准近超人，但在深度推理基准上性能骤降，广度与深度两轴基本不相关。",
+  "错误分析显示模型短板主要是推理失败而非感知错误。",
+  "临床可信 AI 需要广度大数据集与紧凑深度基准互补，二者不可互相替代。"
+ ],
+ "weaknesses": [
+  "基准聚焦神经科且规模紧凑，跨科室/跨病种外推性与统计功效有限。",
+  "混合打分依赖 LLM 评分器，其与临床金标准的一致性/偏差需更多校验(虽有医生验证)。",
+  "作为评测集而非方法，不直接改进模型；读到的是设计与主要发现，各任务详细分数表与失败 taxonomy 未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/URAL-MEDBENCH_Beyond Classification Accuracy Ne URAL-MEDBENCH and the Need for Deeper Reasoning Benchmarks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/URAL-MEDBENCH_Beyond Classification Accuracy Ne URAL-MEDBENCH and the Need for Deeper Reasoning Benchmarks.pdf",
+ "raw_overall": 7.45,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "医疗VLM可靠性评估基准，直指诊断推理核心痛点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Self-Aug Query and Entropy Adaptive Decoding for Large Vision-Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Self-Aug Query and Entropy Adaptive Decoding for Large Vision-Language Models.pdf",
+ "title": "Self-Aug: Query and Entropy Adaptive Decoding for Large Vision-Language Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "改进VCD的自适应解码，提升LVLM事实一致性但增量有限。",
+ "innovations": [
+  "指出现有视觉对比解码(VCD)用通用视觉增强、忽视文本query所指定的相关方面；提出self-augmentation prompting，用模型内在知识动态对齐query语义与视觉增强。",
+  "提出自适应阈值算法，按输出稀疏性基于完整logit分布调整next-token候选集大小，实现熵感知解码。",
+  "跨5个LVLM、7个基准显著提升事实一致性，超过SOTA解码方法。"
+ ],
+ "method_framework": "免训练解码：针对每个文本query动态生成与其相关的视觉增强（而非通用噪声退化图像）作为amateur分布，做对比解码；同时在每步按logit分布的稀疏性/熵自适应裁剪候选token集合，兼顾忠实度与流畅度。",
+ "experiment_framework": "跨5个LVLM、7个幻觉/事实一致性基准；基线含VCD、VACoDe、contrastive decoding等SOTA解码；指标为事实一致性/幻觉率；免训练、不改模型权重。",
+ "takeaways": [
+  "视觉增强应与输入query相关，通用退化图像限制了对比解码的有效性。",
+  "结合query-dependent增强与熵自适应候选集裁剪，可在免训练条件下提升LVLM事实一致性。"
+ ],
+ "weaknesses": [
+  "在VCD/VACoDe等既有解码框架上做改进，方法增量而非范式突破。",
+  "自增强prompt的质量依赖模型自身，弱模型下可能引入新偏差。",
+  "前9页未给出具体幻觉率数值，相对SOTA的增益幅度需后续表格确认。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.93,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "提升LVLM事实一致性，属于可靠性主线但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

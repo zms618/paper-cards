@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Planning with An Embodied Learnable Memory.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Planning with An Embodied Learnable Memory.pdf",
+ "title": "Planning with an Embodied Learnable Memory",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "单一VLM维护文本记忆，配合模仿与RL提升室内操作成功率",
+ "innovations": [
+  "EPM：单一VLM端到端执行场景信息的增/删/更新，输出带3D坐标与自然语言状态的对象中心文本记忆，替代多模型启发式管线",
+  "用人类演示做模仿训练以改善探索与交互",
+  "DDAFT：无价值函数的在线RL，按难度感知采样构造课程，样本高效地改进LLM规划器"
+ ],
+ "method_framework": "EPM 从第一视角观测维护一份对象中心文本场景表征(每对象含3D坐标与状态描述)，动态增删对象；LLM规划器直接读取该文本记忆生成动作而无需显式查询；先用人类演示模仿训练，再用 DDAFT 在困难指令上在线采样做课程式RL改进。",
+ "experiment_framework": "在 PARTNR 仿真基准上评测语言指定的长程移动操作任务，对比 Liu et al. 与 Chang et al. 等强基线(含提供真值感知的零样本规划器)；并在仿真与真实第一视角数据上测环境跟踪能力。",
+ "takeaways": [
+  "EPM+规划方法在 PARTNR 上相对强基线最高提升55%成功率",
+  "即使基线规划器拥有真值感知，本文经演示训练的规划器仍更优",
+  "DDAFT 在各设置下一致提升规划性能"
+ ],
+ "weaknesses": [
+  "落地域为具身室内操作，与医学影像等指定落地域关联弱",
+  "文本记忆的精度受VLM感知与语言描述歧义影响，对小/稀有物体的跟踪误差前9页未充分分析",
+  "前9页未见在真实机器人闭环中的大规模长程任务验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "具身室内操作与可靠性主线弱关联，但方法设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/SubspaceAD_Training-Free Few-Shot Anomaly Detection via Subspace Modeling.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SubspaceAD_Training-Free Few-Shot Anomaly Detection via Subspace Modeling.pdf",
+ "title": "SubspaceAD Training-Free Few-Shot Anomaly Detection via Subspace Modeling",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "PCA建模DINOv2特征子空间，训练-free少样本异常检测",
+ "innovations": [
+  "利用冻结DINOv2特征与PCA建模正常变化子空间",
+  "训练-free方法，无需内存库或提示调优",
+  "多层级特征融合增强对细微异常的敏感性"
+ ],
+ "method_framework": "从少量正常图像提取DINOv2特征，通过PCA建模正常变化子空间，测试时通过重构残差检测异常",
+ "experiment_framework": "MVTec-AD和VisA数据集，1/2/4-shot设置，对比内存库、重建和VLM方法，使用AUROC和PRO指标",
+ "takeaways": [
+  "强基础模型特征使简单统计方法足够有效",
+  "多层级特征融合平衡语义与细节",
+  "PCA子空间建模提供可解释性"
+ ],
+ "weaknesses": [
+  "对旋转敏感，需要特殊处理",
+  "未探索不同工业场景的泛化能力",
+  "未分析计算效率与实时性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "OOD检测方法扎实，但未触及医学影像或多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

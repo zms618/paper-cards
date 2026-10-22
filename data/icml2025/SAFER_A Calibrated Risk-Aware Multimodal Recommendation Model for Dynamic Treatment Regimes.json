@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/SAFER_A Calibrated Risk-Aware Multimodal Recommendation Model for Dynamic Treatment Regimes.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SAFER_A Calibrated Risk-Aware Multimodal Recommendation Model for Dynamic Treatment Regimes.pdf",
+ "title": "SAFER: A Calibrated Risk-Aware Multimodal Recommendation Model for Dynamic Treatment Regimes",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "多模态DTR框架处理死亡标签模糊，共形预测提供统计保证。",
+ "innovations": [
+  "在DTR中同时利用结构化EHR与临床文本，让两种模态相互学习，突破以往仅用结构化EHR的局限。",
+  "针对死亡患者结局不能可靠指示最优治疗这一标签不确定性，显式假设其最优治疗解为模糊(ambiguous)。",
+  "引入共形预测为治疗推荐提供统计保证，过滤掉不确定预测，实现风险感知的安全推荐。"
+ ],
+ "method_framework": "表格-语言多模态框架联合编码结构化EHR与临床文本；训练时对死亡患者不强行绑定单一最优治疗，而是建模其治疗解的模糊性；在推荐端用共形预测给出带保证的预测集，对不确定/高风险样本予以拒绝或过滤，从而在高风险临床场景安全推荐。",
+ "experiment_framework": "在两个公开脓毒症(sepsis)数据集上评测，对比SOTA DTR基线；指标含多项推荐指标与反事实死亡率(counterfactual mortality)；并报告共形预测的错误率控制等形式化保证。",
+ "takeaways": [
+  "SAFER在两个脓毒症数据集上多项推荐指标与反事实死亡率均优于SOTA基线。",
+  "共形预测为高风险DTR提供可过滤不确定预测的形式化保证，提升临床可信度。"
+ ],
+ "weaknesses": [
+  "标签不确定性仅对死亡患者建模，其他模糊亚群(如好转出院但治疗非最优)未覆盖。",
+  "两个数据集均为脓毒症，对其他病种/科室的外推性未验证。",
+  "完整共成预测集构造与覆盖率公式多在后文，正文9页内未见完整数值表。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

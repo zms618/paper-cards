@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/What Limits Bidirectional Model's Generative Capabilities A Uni-Bi-Directional Mixture-of-Expert Method For.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/What Limits Bidirectional Model's Generative Capabilities A Uni-Bi-Directional Mixture-of-Expert Method For.pdf",
+ "title": "What Limits Bidirectional Model's Generative Capabilities? A Uni-Bi-Directional Mixture-of-Expert Method For Bidirectional Fine-tuning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "通过FFN专家混合平衡双向与单向注意力，提升嵌入能力。",
+ "innovations": [
+  "提出注意力依赖指标解释双向训练导致生成性能下降的原因",
+  "发现FFN层在双向训练中最少受后续依赖影响",
+  "设计Uni-Bi-Directional Mixture-of-Expert架构融合双向与单向能力"
+ ],
+ "method_framework": "UBMoE-LLM结合单向生成专家和双向嵌入专家，通过门控机制选择激活的FFN层，使用对比学习训练双向专家，保持生成能力的同时提升嵌入性能。",
+ "experiment_framework": "在Qwen1.5-0.5B到7B模型上验证，使用MTEB的STS任务评估嵌入性能，MMLU、Winogrande和TruthfulQA评估生成性能，并分析不同token长度下的注意力依赖。",
+ "takeaways": [
+  "注意力依赖分析可作为解释模型行为的有力工具",
+  "模块化设计是平衡多种能力的关键策略",
+  "门控机制可有效整合不同专家的优势"
+ ],
+ "weaknesses": [
+  "未充分探索不同任务类型下的专家选择策略",
+  "门控层的训练数据量较小可能影响泛化能力",
+  "未分析计算效率与性能提升的权衡"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

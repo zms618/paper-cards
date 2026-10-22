@@ -1,0 +1,41 @@
+{
+ "title": "TS2: Training with Sparsemax+, Testing with Softmax for Accurate and Diverse LLM Fine-Tuning",
+ "one_line": "Sparsemax+训练抑制长尾，测试用softmax，提升LLM微调精度与多样性。",
+ "innovations": [
+  "指出交叉熵SFT把概率压向one-hot目标、忽视合理备选，限制了采样式生成的多样性",
+  "提出Sparsemax+：在sparsemax损失上增加抑制项，惩罚支撑集外概率，解决sparsemax在softmax评测时尾部残留多余概率质量的问题",
+  "训练用Sparsemax+、测试用softmax解码，得到校准、非退化且保留合理近邻平局概率的分布"
+ ],
+ "method_framework": "CE驱动后验过自信、压低合理备选。TS2训练时用Sparsemax+：sparsemax只保留支撑集内token的梯度，再用抑制项惩罚支撑集外概率，使概率集中在少数语义合理的候选token上、把明显错误的长尾压向零。测试时改用softmax解码，得到校准且保留合理近邻的概率分布。",
+ "experiment_framework": "用TS2微调Llama-3.1-8B与Qwen-2.5-7B；对比CE SFT及GEM等反KL+熵正则方法；指标为聊天/代码/开放域基准的准确率与输出多样性；报告精度与多样性一致提升。",
+ "takeaways": [
+  "有用的多样性应集中在合理候选集合内，而非在整个词表上无差别散布概率",
+  "Sparsemax+的抑制项可解决sparsemax与softmax解码间的尾部失配",
+  "TS2是即插即用的微调损失，可同时提升精度与生成多样性"
+ ],
+ "weaknesses": [
+  "训练-测试激活函数不一致引入额外设计复杂度，其校准理论保证较弱",
+  "多样性提升主要在采样式生成任务体现，对贪心解码/精度敏感任务增益有限",
+  "抑制项权重等超参需调，对不同规模模型的敏感度未充分消融"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/TS2_Training with SPARSEMAX+, Testing with Softmax for Accurate and Diverse LLM Fine-Tuning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TS2_Training with SPARSEMAX+, Testing with Softmax for Accurate and Diverse LLM Fine-Tuning.pdf",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "提升LLM微调校准与多样性，触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Adapting to Linear Separable Subsets with Large-Margin in Differentially Private Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Adapting to Linear Separable Subsets with Large-Margin in Differentially Private Learning.pdf",
+ "title": "Adapting to Linear Separable Subsets with Large-Margin in Differentially Private Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 4.5,
+  "relevance": 7.5,
+  "overall": 6.4
+ },
+ "one_line": "自适应DP算法实现大间隔分类，但实验验证不足",
+ "innovations": [
+  "提出无需调参的自适应DP算法，经验零一风险界为Õ(1/(γ²εn) + |S_out|/(γn))，维度无关",
+  "定义间隔内点/外点（margin inliers/outliers）框架，将数据分为γ可分子集和异常点分别分析",
+  "结合JL随机投影和隐私超参数调优，实现对最优间隔γ的自动选择"
+ ],
+ "method_framework": "核心思路：数据集中移除少量异常点S_out后，剩余数据S\\S_out可能具有较大线性可分间隔γ。算法：(1)在倍增网格{1/n, 2/n, 4/n, ...}上离散化候选间隔γ；(2)对每个γ构造JL投影矩阵Φ_γ将数据映射到Õ(1/γ²)维空间以保持间隔；(3)运行带噪梯度下降（AJLGD）优化γ/3-hinge损失；(4)用AIter算法（高斯机制+加噪评分）私有选择最优γ。全程无需知道真实γ或|S_out|。",
+ "experiment_framework": "理论分析为主，辅以CIFAR-10特征空间实验验证大间隔假设。对比方法包括Bassily et al. (2022)的置信间隔方法、Bun et al. (2020)和Ghazi et al. (2021)的大间隔halfspace算法。指标为经验零一风险和多余风险。",
+ "takeaways": [
+  "预训练特征（ViT）在移除少量边界点后可获得显著大间隔，支持方法的实际假设",
+  "算法的风险界不依赖维度d，优于此前维度相关的DP-ERM结果",
+  "间隔内点/外点的对偶视角避免了直接枚举S_out的组合爆炸"
+ ],
+ "weaknesses": [
+  "实验部分较弱，仅在CIFAR-10特征空间做了验证，缺乏广泛的实证比较",
+  "JL投影维度Õ(1/γ²)在γ很小时计算开销大",
+  "仅讨论二分类线性分类，多分类或非线性核的扩展未涉及"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.78,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "隐私鲁棒主线+大间隔设计模式可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

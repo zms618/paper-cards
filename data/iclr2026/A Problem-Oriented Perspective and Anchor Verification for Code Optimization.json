@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Problem-Oriented Perspective and Anchor Verification for Code Optimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Problem-Oriented Perspective and Anchor Verification for Code Optimization.pdf",
+ "title": "A PROBLEM-ORIENTED PERSPECTIVE AND ANCHOR VERIFICATION FOR CODE OPTIMIZATION",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 5.0,
+  "overall": 5.5
+ },
+ "one_line": "重排用户解为优化对，用慢码锚点验证修正优化结果",
+ "innovations": [
+  "把同一问题的全部用户有效提交按实测运行时间重排成一条全局轨迹、跨用户连边构造 PCO 优化对，打破单用户认知惯性，使优化对中全局算法型改动占比从 14% 升到 78%",
+  "给出问题导向相对用户导向的优化对数增长公式，并配 PCO-Random 与 PCO-Top-Speedup 三数据集对照，把「视角」与「top-speedup 采样」的贡献分离",
+  "提出 anchor verification：先让 LLM 解读慢码功能并生成测试输入，再把慢码本身当测试锚点实跑得到权威输出，拼成已验证测试集后用执行反馈迭代修正优化结果"
+ ],
+ "method_framework": "问题导向：同题全部用户解按运行时间排序成全局轨迹构成 PCO 对，配 PCO-Random/PCO-Top-Speedup 对照；锚点验证三阶段：LLM 解读慢码生成测试输入→慢码实跑产出权威输出拼已验证测试集→执行反馈迭代修正优化码与正确性。",
+ "experiment_framework": "PIE 与重建的 PCO 各 78K 对，微调 GPT-4/GPT-4O/CodeLlama/DeepSeek/Qwen2.5-Coder；gem5 仿真 + GCC9.4 -O3 下测 %OPT/SPEEDUP/CORRECT，BEST@1 与 BEST@8，含数据效率与实机验证。",
+ "takeaways": [
+  "仅把同题多用户解按运行时间重排，QWEN2.5-CODER-32B 的 %OPT 从 31.24% 提到 58.90%、SPEEDUP 2.95×→5.22×，且只用 30% 的 PCO 数据即可超过全量 PIE",
+  "锚点验证复用「慢码虽慢但必然正确」这一任务固有性质，比直接合成完整测试用例少一层错误传播，可作低成本正确性兜底",
+  "PCO 训练下 %OPT 与 CORRECT 数值接近（58.90% vs 61.55%），瓶颈已从「能否优化」转移到「优化后是否仍正确」"
+ ],
+ "weaknesses": [
+  "PCO 按运行时间排序后取 top-speedup 构造，而 PIE 取用户轨迹上的时间相邻对，两者快慢比分布本就不同；消融只加 PCO-Random，缺「随机用户相邻对」对照，27 个百分点提升里选择偏差占比无法判读",
+  "Finding 1 自认 PCO 在 BEST@8 下 CORRECT 反而低于 PIE，但 anchor verification 是否真把该正确性权衡推回帕累托前沿，正文只给 BEST@1 孤立数字，无 correctness–speedup 前沿对比",
+  "全部指标均为 BEST@1/8（温度 0.7 采样取最快）的均值，未报多次运行方差；且第 9 页处 anchor 主表被截断，58.90%→71.06% 等声明缺完整三模型对照行"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "代码优化与可靠性主线无实质交点，仅为可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

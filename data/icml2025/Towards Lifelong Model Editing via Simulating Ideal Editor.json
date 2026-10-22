@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Towards Lifelong Model Editing via Simulating Ideal Editor.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Towards Lifelong Model Editing via Simulating Ideal Editor.pdf",
+ "title": "Towards Lifelong Model Editing via Simulating Ideal Editor",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "SimIE通过矩阵近似提升终身编辑性能，但依赖强假设且忽略层间依赖。",
+ "innovations": [
+  "提出SimIE框架桥接标准模型编辑与终身模型编辑",
+  "利用Moore-Penrose逆实现理想编辑器的递归近似",
+  "理论分析假设不满足时的最优性与稳定性权衡"
+ ],
+ "method_framework": "SimIE将标准编辑算法的参数更新调整为最小范数解，通过递归更新矩阵P实现理想编辑器的近似，仅需一行代码修改即可应用于任何参数修改类编辑算法。",
+ "experiment_framework": "在GPT2-XL、Llama-2和Mistral等模型上测试，使用ZsRE数据集，比较MEND、ROME、MEMIT和AlphaEdit等基线方法在Rel、Gen、Loc和Avg指标上的表现。",
+ "takeaways": [
+  "简洁的框架设计可显著提升标准方法在终身编辑场景的性能",
+  "理论分析提供了假设不满足时的性能保证和调参指导"
+ ],
+ "weaknesses": [
+  "依赖过参数化和键值不变性假设，实际场景中可能不成立",
+  "多层编辑时忽略层间依赖关系，可能影响性能"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

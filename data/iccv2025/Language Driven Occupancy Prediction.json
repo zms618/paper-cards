@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Language Driven Occupancy Prediction.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Language Driven Occupancy Prediction.pdf",
+ "title": "Language Driven Occupancy Prediction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "语言伪标签提升占用预测零样本性能，但依赖精确标定",
+ "innovations": [
+  "语义传递标注管道生成密集细粒度3D语言占用伪标签",
+  "语言自编码器降低CLIP特征维度计算成本",
+  "多帧词汇集成和多数投票体素化提高标注准确性"
+ ],
+ "method_framework": "LOcc框架结合LVLM和OV-Seg实现图像到文本的语义传递，通过LiDAR点投影将文本标签传递到点云，重建场景并生成密集体素-文本对应关系，替换传统预测头为几何头和语言头。",
+ "experiment_framework": "在Occ3D-nuScenes数据集上评估，使用mIoU指标比较零样本和开放词汇设置下的性能，与多种基线方法对比，包括BEVFormer、BEVDet等。",
+ "takeaways": [
+  "语义传递标注管道可有效减少人工标注工作量",
+  "语言自编码器显著降低计算成本同时保持性能",
+  "多数投票体素化比最近点体素化更鲁棒"
+ ],
+ "weaknesses": [
+  "LVLM偶尔会遗漏重要类别，需要多帧集成",
+  "方法依赖于相机和LiDAR的精确标定",
+  "未充分讨论方法在极端天气条件下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "语言辅助3D占用预测，仅触及落地域无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

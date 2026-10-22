@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/NCFOLD_NC-BENCH and NCFOLD A Benchmark Closed-Loop Framework Non-Canonical Base-Pair Prediction.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/NCFOLD_NC-BENCH and NCFOLD A Benchmark Closed-Loop Framework Non-Canonical Base-Pair Prediction.pdf",
+ "title": "NC-Bench and NCfold: A Benchmark and Closed-Loop Framework for RNA Non-Canonical Base-Pair Prediction",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "构建RNA非规范碱基对基准与闭环框架，但与主流可靠性研究关联弱",
+ "innovations": [
+  "提出首个面向RNA非规范碱基对预测的标准化基准NC-Bench，含925条精选序列、6708条高质量NC标注与细粒度边/方向分类任务",
+  "提出双分支框架NCfold：通过代表性嵌入融合(REF)与REF加权自注意力耦合序列特征与RNA基础模型(RFM)结构先验",
+  "闭环设计迭代精化序列与结构表示，缓解NC标注数据稀疏问题"
+ ],
+ "method_framework": "一条分支编码序列特征，另一分支从RNA基础模型抽取结构先验嵌入；用代表性嵌入融合(REF)把两支对齐融合，并用REF加权自注意力让结构先验引导序列表示；闭环地反复精化两支表示以提升NC碱基对预测。评测在NC-Bench上做边/方向分类与IsoScore嵌入评估。",
+ "experiment_framework": "自建NC-Bench(925序列/6708 NC标注)；对比现有RNA结构预测方法；指标为细粒度边预测/方向分类精度与嵌入IsoScore；含零样本与消融研究验证RFM先验与闭环的作用。",
+ "takeaways": [
+  "缺乏标准化基准是NC碱基对预测的主要瓶颈，NC-Bench填补该空白",
+  "RNA基础模型的结构先验经REF融合可有效缓解NC标注稀疏并提升精度",
+  "闭环精化相对单分支在NC-Bench上优于现有方法"
+ ],
+ "weaknesses": [
+  "主线是RNA结构预测/生物ML，与LLM/多模态可靠性、验证器、幻觉抑制等落地主线关联弱",
+  "NC标注量(6708)仍偏小，基准多样性与跨物种泛化待扩充",
+  "预测为结构分类，未输出置信度/不确定性，临床/药物设计高风险使用的可信度不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "RNA结构预测与可靠性主线关联弱，无不确定性输出",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

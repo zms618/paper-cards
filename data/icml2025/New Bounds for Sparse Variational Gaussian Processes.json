@@ -1,0 +1,36 @@
+{
+ "title": "New Bounds for Sparse Variational Gaussian Processes",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.5,
+  "evidence": 6.0,
+  "relevance": 5.0,
+  "overall": 5.75
+ },
+ "one_line": "放松SVGP变分分解，解析优化更紧ELBO，但增益温和且落地有限。",
+ "innovations": [
+  "指出现有SVGP把后验近似限定为p(f|u)q(u)这一特殊形式并非必要，训练时可放松为一般q(f|u)。",
+  "在GP回归中对N个额外参数解析优化，得到比原界更紧的塌陷证据下界(collapsed bound)。",
+  "新界便于随机优化，且只需对现有稀疏GP代码做小幅改动，并给出非高斯似然扩展。"
+ ],
+ "method_framework": "把SVGP变分分布中的条件GP先验p(f|u)替换为可学习的一般条件q(f|u)，使其能更好逼近真实因子p(f|u,y)的协方差结构；对N个逐样本额外参数做解析积分/优化，得到闭合的更紧ELBO，再以随机梯度优化超参与诱导点。",
+ "experiment_framework": "在多个数据集上与标准SVGP对比，报告超参学习偏差的降低与预测性能改善；覆盖GP回归并讨论非高斯似然扩展，强调实现只需小幅改动现有稀疏GP代码。",
+ "takeaways": [
+  "SVGP的特殊变分形式在训练时可被放松而不损失可扩展性。",
+  "更一般的q(f|u)给出更紧下界，减少超参学习偏差、提升预测。"
+ ],
+ "weaknesses": [
+  "为基础方法改进，增益主要体现为更紧界与偏差降低，幅度温和。",
+  "逐样本额外参数在大数据下的存储/实现代价前9页讨论有限。",
+  "落地为通用GP推理，与医学影像/多模态大模型推理主线关联弱，relevance有限。"
+ ],
+ "confidence": "high",
+ "key": "icml2025/New Bounds for Sparse Variational Gaussian Processes.pdf",
+ "path": "icml2025/New Bounds for Sparse Variational Gaussian Processes.pdf",
+ "conf": "icml2025",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

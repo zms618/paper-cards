@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/Diversity-Enhanced Reasoning for Subjective Questions.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Diversity-Enhanced Reasoning for Subjective Questions.pdf",
+ "title": "DIVERSITY-ENHANCED Reasoning for Subjective Questions",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "角色多样性增强主观推理，但训练局限且复现存疑",
+ "innovations": [
+  "提出首个针对主观推理任务的多样性增强训练框架",
+  "引入角色多样性和令牌级多样性两个层次的多样性",
+  "设计无监督数据构建流程合成包含多种角色视角的推理链",
+  "使用GRPO结合多样性奖励和可验证奖励进行强化学习"
+ ],
+ "method_framework": "MultiRole-R1包含两个阶段：多角色推理路径合成与微调，以及多样性增强的强化学习。第一阶段通过自一致性过滤和角色意见一致性过滤生成高质量训练数据；第二阶段使用GRPO结合可验证奖励和多样性奖励进行优化。",
+ "experiment_framework": "在BBQ、GLOQA和ETHICS三个主观任务上训练，在CALI、CSQA、GSM8K和AIME 2024等任务上测试。使用准确率和多样性作为评估指标，与多种基线方法进行比较。",
+ "takeaways": [
+  "多样性是准确性的更一致指标，与准确性的相关性(r=0.74)高于推理长度(r=0.55)",
+  "角色多样性是性能提升的主要驱动力，占10.6%平均性能提升中的7.5%",
+  "在保持高准确性的同时，推理长度反而减少，提高了推理效率"
+ ],
+ "weaknesses": [
+  "仅使用主观问题进行训练，可能限制了模型在纯客观任务上的表现",
+  "角色选择依赖于提示工程，可能引入偏见",
+  "多样性奖励的设计可能过于复杂，难以复现"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "主观推理多样性增强，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

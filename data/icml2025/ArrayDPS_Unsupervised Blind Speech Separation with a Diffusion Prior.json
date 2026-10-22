@@ -1,0 +1,42 @@
+{
+ "key": "icml2025/ArrayDPS_Unsupervised Blind Speech Separation with a Diffusion Prior.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ArrayDPS_Unsupervised Blind Speech Separation with a Diffusion Prior.pdf",
+ "title": "ArrayDPS: Unsupervised Blind Speech Separation with a Diffusion Prior",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "将扩散模型扩展到麦克风阵列语音分离，计算复杂且依赖预训练模型",
+ "innovations": [
+  "将扩散后验采样(DPS)扩展到多通道阵列逆问题",
+  "提出相对RIR估计和似然近似方法",
+  "IVA初始化提高采样稳定性",
+  "参考通道引导增强鲁棒性"
+ ],
+ "method_framework": "ArrayDPS将盲语音分离视为逆问题，通过扩散后验采样从p(s|x)采样。核心创新是近似不可处理的似然p(x|s)，通过估计相对RIR和FCP方法实现，结合扩散先验进行分离。",
+ "experiment_framework": "SMS-WSJ(固定阵列)和Spatialized WSJ0-2Mix(任意阵列)数据集，与UNSSOR、IVA等无监督方法及TF-GridNet等监督方法比较，使用SDR、SI-SDR、PESQ和eSTOI指标。",
+ "takeaways": [
+  "扩散先验可有效解决频率置换和空间混叠问题",
+  "相对RIR模型提供了灵活的系统配置能力",
+  "IVA初始化和参考通道引导显著提高性能"
+ ],
+ "weaknesses": [
+  "计算复杂度高，需要多次迭代估计RIR",
+  "依赖预训练的单通道扩散模型",
+  "在极端混响条件下性能下降明显"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "语音分离技术无可靠性主线交点，仅属常规信号处理",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

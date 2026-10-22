@@ -1,0 +1,39 @@
+{
+ "key": "neurips2025/Language Models Can Predict Their Own Behavior.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Language Models Can Predict Their Own Behavior.pdf",
+ "title": "Language Models Can Predict Their Own Behavior",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "基于内部探针预测模型行为，提供早期预警和推理加速。",
+ "innovations": [
+  "仅使用输入token的内部状态预测整个输出序列行为",
+  "结合conformal prediction提供可证明的误差边界",
+  "在CoT推理中实现65%推理成本降低",
+  "检测无法从输出文本直接衡量的模型行为"
+ ],
+ "method_framework": "训练线性探针预测语言模型行为，使用conformal prediction校准探针，在推理时仅当探针有足够置信度时进行早期干预。",
+ "experiment_framework": "多个QA和安全数据集，对比BERT基线，使用估计一致性和覆盖率作为指标，在27个分类数据集上测试CoT加速效果。",
+ "takeaways": [
+  "内部状态包含预测未来行为的信息",
+  "conformal探针提供可信赖的早期预警系统",
+  "方法在更大模型上表现更好",
+  "仅需少量训练数据即可有效"
+ ],
+ "weaknesses": [
+  "探针仅能检测模型已编码的模式",
+  "对产生长输出的输入预测效果较差",
+  "无法检测模型自身无法识别的输出属性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

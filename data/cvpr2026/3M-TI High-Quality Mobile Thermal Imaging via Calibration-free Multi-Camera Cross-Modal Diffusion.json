@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/3M-TI High-Quality Mobile Thermal Imaging via Calibration-free Multi-Camera Cross-Modal Diffusion.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/3M-TI High-Quality Mobile Thermal Imaging via Calibration-free Multi-Camera Cross-Modal Diffusion.pdf",
+ "title": "3M-TI: High-Quality Mobile Thermal Imaging via Calibration-free Multi-Camera Cross-Modal Diffusion",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.4
+ },
+ "one_line": "跨模态扩散提升手机热成像，但保真度未全面领先且消融不足",
+ "innovations": [
+  "把视频/多视扩散里的 concatenated latent 做法搬到 RGB-thermal：在 VAE 隐空间把两种模态拼成 M=2 的张量，进入 transformer block 前把 (M×H×W) 展成单条序列做跨模态自注意力，输出后再还原，从而不需要任何像素级标定",
+  "对被当作参考的 RGB 图施加可控平移/缩放/旋转/透视形变构成的错位增强，用训练期的人为失配替代物理仿真，迫使跨模态注意力学鲁棒对应而非套住某个已标定配置",
+  "在 SD-Turbo 一步扩散的 UNet 与 VAE decoder 上挂 LoRA（rank 16/4）配合零初始化 1×1 卷积的跳连接，把解码器特征与低分辨率热隐空间相加以缓解几何畸变，用 L2+LPIPS 混合损失端到端重建 64×64→512×512 热图"
+ ],
+ "method_framework": "冻结 VAE 编码器把 64×64 热图与 512×512 RGB 编为隐特征，用跨模态自注意力模块在扩散 UNet 的各 transformer block 内做模态间像素级交互并把 M 折回 batch 维处理非 transformer 块；训练时随机形变 RGB 制造视差与时延失配，RAM 从 RGB 生成文本提示；UNet 与 VAE decoder 用 LoRA 微调后一步生成高分辨率热图。",
+ "experiment_framework": "IRVI/LLVIP/M3FD/PBVS2025 混合训练 10,922 对、测试 1,176 对，并人为加错位与高斯噪声；真机为小米 15 + 海康 P09（96×96 降到 64×64）自采 300 对 100 场景；基线 CoReFusion/CoRPLE/SwinFuSR/SwinPaste/SeeSR/OSEDiff/DifIISR；指标 PSNR、SSIM、LPIPS、MUSIQ、MANIQA 及 Grounded-SAM 零样本检测/分割。",
+ "takeaways": [
+  "以数据侧的人为错位（而非显式配准或光流）换来对未标定双目的鲁棒性，是低成本跨模态融合里性价比很高的思路",
+  "重建类工作必须同时报有参考（PSNR/SSIM/LPIPS）与无参考（MUSIQ/MANIQA）指标，否则扩散式生成方法只在高感知分上比较会掩盖保真度问题",
+  "自采真机数据 + 下游零样本检测器对比，是证明'图像增强有用'最直接的闭环，比单纯 PSNR 更能说服工程落地"
+ ],
+ "weaknesses": [
+  "表 1 中保真度指标并未全面领先：PSNR 最高是 CoRPLE 的 30.47，本方法 w/ Augment 仅 30.09，正文所谓 'better structural preservation' 只在 SSIM 单项成立；1,176 对测试集上的 0.4dB 差距又无任何标准差或显著性检验",
+  "消融只有 'w/o Augment' 一项，跨模态自注意力模块、零初始化跳连接、LoRA rank（UNet 16 / VAE 4）、以及选用 SD-Turbo 一步扩散而非多步骨架都无对照，无法把收益归因到 CSM 本身",
+  "对比公平性存疑：DifIISR 因训练码未开源直接移植现成结果，其余六条基线则在作者整理的数据上重训；且测试错位是用固定几档平移/缩放/旋转/透视近似手部持握偏差，而真实视差随场景深度连续变化，该代理设置与真机系统的泛化差距未量化；真机 300 对只报无参考 MUSIQ/MANIQA，无 GT 因而算不出保真度"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "手机热成像应用与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

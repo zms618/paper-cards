@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/LORA-S An Efficient Low Rank Adaptation Scheme via Sylvester Equation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/LORA-S An Efficient Low Rank Adaptation Scheme via Sylvester Equation.pdf",
+ "title": "LORA-S: An Efficient Low Rank Adaptation Scheme via Sylvester Equation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "微分几何驱动的LoRA优化，Sylvester方程替代权重衰减",
+ "innovations": [
+  "利用微分几何的水平提升理论构建LoRA的商流形迭代方案",
+  "提出Sylvester矩阵替代权重衰减参数，移除关键超参数",
+  "设计AdamS和LRACS两种高效优化器，实现变换不变性和高效特征学习"
+ ],
+ "method_framework": "通过水平提升理论在商流形R^{m×r*}×R^{n×r*}/∼上建立一般迭代方案，利用Sylvester方程计算提升向量，确保变换不变性和高效特征学习。",
+ "experiment_framework": "Mix-of-show图像生成模型和GPT-2语言模型，CLIP/FID和BLEU/NIST/MET/ROUGE-L/CIDEr指标，对比SGD/Adam/Scaled GD/Quotient GD/AdamW/LoRA-Rite等基线",
+ "takeaways": [
+  "微分几何理论可应用于PEFT方法设计",
+  "Sylvester矩阵可替代权重衰减参数并提升性能",
+  "变换不变性是高效特征学习的充分条件"
+ ],
+ "weaknesses": [
+  "Sylvester矩阵计算复杂度为O(r^3)，在r较大时可能影响效率",
+  "实验主要在图像生成和语言模型上验证，缺乏更广泛的泛化性验证",
+  "未充分讨论方法在极端情况下的鲁棒性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "PEFT方法设计，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

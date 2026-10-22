@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/LogCD_Local-to-global Consistency Distillation for Few-step Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/LogCD_Local-to-global Consistency Distillation for Few-step Generation.pdf",
+ "title": "LogCD Local-to-global Consistency Distillation for Few-step Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "两阶段一致性蒸馏实现少步生成，但通用性和调参敏感性问题明显",
+ "innovations": [
+  "局部到全局两阶段一致性蒸馏框架",
+  "无图像训练数据的蒸馏策略",
+  "潜在空间感知一致性损失L-LPIPS"
+ ],
+ "method_framework": "LogCD先进行局部一致性蒸馏将时间范围分段，再进行全局一致性蒸馏确保跨区间一致性，结合L-LPIPS增强感知一致性，实现2-4步统一模型。",
+ "experiment_framework": "MSCOCO-2017 5K和MJHQ-5K数据集，对比LCM、Lightning、PCM、DMD2、HyperSD等基线，使用CLIP分数、FID和ImageReward指标评估。",
+ "takeaways": [
+  "两阶段蒸馏可有效降低训练成本同时保持高质量",
+  "无图像训练策略显著减少资源需求",
+  "多步求解器在大步长时减少离散化误差"
+ ],
+ "weaknesses": [
+  "仅针对LDMs/RFMs模型，通用性有限",
+  "全局一致性蒸馏阶段GAN和DMD损失权重调参敏感"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "少步生成技术不在可靠性主线，无迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

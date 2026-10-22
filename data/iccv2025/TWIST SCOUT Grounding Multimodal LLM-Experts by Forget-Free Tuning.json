@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/TWIST SCOUT Grounding Multimodal LLM-Experts by Forget-Free Tuning.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/TWIST SCOUT Grounding Multimodal LLM-Experts by Forget-Free Tuning.pdf",
+ "title": "TWIST SCOUT Grounding Multimodal LLM-Experts by Forget-Free Tuning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "冻结图像专家+训练定位专家，防遗忘调优视觉定位",
+ "innovations": [
+  "双专家模块设计，冻结图像理解模块同时训练视觉定位模块",
+  "SCOUT合成数据集，提供带空间关系的逐步推理链",
+  "任务自适应的α门控机制，动态平衡图像理解和视觉定位"
+ ],
+ "method_framework": "TWIST框架采用双专家MoE结构，一个冻结的图像理解模块和一个可训练的视觉定位模块，通过可学习的α系数融合，配合逐步损失函数进行训练",
+ "experiment_framework": "在RefCOCO、COCO等数据集上评估，对比PIN、LoRA等方法，使用mIoU、AP等指标，并保留图像理解能力验证",
+ "takeaways": [
+  "双专家模块设计有效防止灾难性遗忘",
+  "逐步损失函数简化复杂视觉定位任务学习",
+  "合成数据集SCOUT提供高质量空间关系监督"
+ ],
+ "weaknesses": [
+  "依赖CogVLM生成训练数据，性能上限受限于该模型",
+  "仅评估了单目标定位，多目标复杂场景泛化能力未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "冻结图像专家+训练定位专家，防遗忘调优视觉定位",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

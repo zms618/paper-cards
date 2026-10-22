@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Operator Learning with Domain Decomposition for Geometry Generalization In PDE Solving.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Operator Learning with Domain Decomposition for Geometry Generalization In PDE Solving.pdf",
+ "title": "Operator Learning with Domain Decomposition for Geometry Generalization in PDE Solving",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "区域分解神经算子框架SNI实现几何泛化，但计算开销大且3D扩展性未验证",
+ "innovations": [
+  "提出区域分解算子学习框架：将任意几何问题分解为小子域上的局部问题，用神经算子求解后拼接全局解",
+  "设计Schwarz Neural Inference(SNI)迭代格式，实现局部解到全局解的收敛",
+  "提供收敛速率和误差界的理论分析"
+ ],
+ "method_framework": "SNI将求解域划分为小子域，每个子域上用预训练的神经算子求解局部PDE问题。通过Schwarz交替迭代方式，子域间交换边界条件信息，逐步收敛到全局解。由于神经算子只需在简单几何的子域上训练，从而获得对任意复杂几何的泛化能力。",
+ "experiment_framework": "在多个线性和非线性PDE上测试，对比不同边界条件。指标为解的精度和几何泛化能力。对比直接在完整域上训练的神经算子。",
+ "takeaways": [
+  "区域分解框架使神经算子获得对任意几何的泛化能力",
+  "SNI迭代格式可收敛到全局解，理论上有收敛速率保证",
+  "数据效率显著提升：子域训练数据远少于直接在完整域上训练"
+ ],
+ "weaknesses": [
+  "迭代求解带来额外计算开销，相比单次前向推理加速比降低",
+  "子域划分策略对收敛速度的影响未系统分析",
+  "实验主要在2D PDE上验证，3D问题的扩展性未展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "PDE求解方法与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

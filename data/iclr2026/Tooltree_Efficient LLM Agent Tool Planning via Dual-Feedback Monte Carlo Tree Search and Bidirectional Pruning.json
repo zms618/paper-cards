@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Tooltree_Efficient LLM Agent Tool Planning via Dual-Feedback Monte Carlo Tree Search and Bidirectional Pruning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Tooltree_Efficient LLM Agent Tool Planning via Dual-Feedback Monte Carlo Tree Search and Bidirectional Pruning.pdf",
+ "title": "ToolTree: Efficient LLM Agent Tool Planning via Dual-Feedback Monte Carlo Tree Search and Bidirectional Pruning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "双反馈MCTS工具规划，双向剪枝提升10%性能但LLM开销未量化",
+ "innovations": [
+  "指出现有贪心工具规划缺乏远见、搜索法则因分支指数膨胀且排序脱离真实工具效用",
+  "双反馈：执行前打分预测工具效用作选择先验，执行后打分基于观察结果评估实际贡献作rollout奖励",
+  "双向剪枝在工具执行前后都剪除较不优分支，在保持高效率的同时平均较SOTA规划范式提升约10%"
+ ],
+ "method_framework": "把工具规划建模为搜索问题：MCTS树展开候选工具轨迹；执行前用快速LLM先验预测效用、执行后用真实结果给效用反馈；双向剪枝在执行前(分支)与执行后(结果)剪除劣分支，使计算自适应分配并可从早期失误恢复，无需任务特定重训。",
+ "experiment_framework": "在4个工具规划基准(开集/闭集)上评测；对比贪心与搜索式工具规划方法；指标为任务成功率/性能与效率(调用数/延迟)；报告相对SOTA平均约10%提升。",
+ "takeaways": [
+  "贪心工具规划早期次优选择会不可逆地传播错误",
+  "执行前先验+执行后效用的双反馈让搜索既前瞻又结果接地",
+  "双向剪枝在固定预算下同时取得约10%性能提升与高效率"
+ ],
+ "weaknesses": [
+  "双阶段LLM评估引入额外调用开销，虽声称高效但实际token成本需与基线同口径量化",
+  "MCTS在分支因子极大的开放工具库上的扩展性仍可能受限",
+  "属工具规划agent方向，与可靠性主线及医学影像、多模态推理落地域关联弱"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "工具规划agent与可靠性主线及落地域关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

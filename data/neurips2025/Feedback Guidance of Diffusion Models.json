@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/Feedback Guidance of Diffusion Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Feedback Guidance of Diffusion Models.pdf",
+ "title": "Feedback Guidance of Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "误差模型引导扩散生成，但超参多且理论假设理想化",
+ "innovations": [
+  "提出基于误差模型的动态反馈引导(FBG)机制",
+  "从第一原理推导状态依赖的引导尺度",
+  "通过马尔可夫链跟踪实现后验概率估计",
+  "设计可解释的时间参数化控制引导行为"
+ ],
+ "method_framework": "FBG将引导视为控制问题，通过估计条件信号信息量动态调整引导强度，基于假设条件分布被无条件分布线性污染，而非CFG的乘性假设，实现自适应引导。",
+ "experiment_framework": "在ImageNet512×512和MS-COCO上评估，使用FID、FDDinoV2、精确度/召回率等指标，与CFG、LIG等基线比较，验证FBG在质量和多样性上的优势。",
+ "takeaways": [
+  "状态依赖的动态引导比固定引导更有效",
+  "通过马尔可夫链跟踪实现后验估计的计算高效方法",
+  "FBG可与现有引导方法如CFG、LIG结合使用"
+ ],
+ "weaknesses": [
+  "引入多个超参数(π, τ, δ)增加调参复杂度",
+  "文本到图像实验中仅使用简单MS-COCO提示，未充分验证复杂场景",
+  "理论分析主要基于理想化假设，实际应用中的鲁棒性有待进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

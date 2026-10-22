@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/ONE-PROMPT Strikes Back Sparse Mixture Of Experts for Prompt-Based Continual Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/ONE-PROMPT Strikes Back Sparse Mixture Of Experts for Prompt-Based Continual Learning.pdf",
+ "title": "One-Prompt Strikes Back: Sparse Mixture of Experts for Prompt-Based Continual Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "稀疏MoE共享prompt缓解任务干扰，但路由复杂且主线相关性弱",
+ "innovations": [
+  "受 Prefix Tuning 与 MoE 关系启发，将共享 prompt 拆为多个 prompt expert，按输入稀疏激活",
+  "提出 prompt-attention score aggregation 为每个专家计算统一代理分以动态稀疏选择",
+  "提出自适应噪声机制鼓励专家均衡利用并保留旧知识，并用基于原型的损失(prefix key 作隐式记忆)增强专家专业化"
+ ],
+ "method_framework": "把一个共享 prompt 组织成稀疏 MoE 中的多个 prompt expert；用 prompt-attention 聚合分选择激活子集专家；自适应噪声平衡专家利用率、保护旧任务知识；基于前缀 key 原型的损失强化专家专业化，从而在不随任务数线性增长参数的前提下抗遗忘。",
+ "experiment_framework": "多个持续学习 benchmark；对比任务专属 prompt 方法与单共享 prompt 方法及 SOTA；报告平均精度、参数量与计算开销。",
+ "takeaways": [
+  "任务专属 prompt 性能好但参数随任务数线性膨胀，单共享 prompt 高效但干扰大",
+  "把共享 prompt 做成稀疏 MoE 可兼得两者：稀疏激活缓解干扰",
+  "SMoPE 在显著降参的同时超过任务专属 prompt、匹敌 SOTA"
+ ],
+ "weaknesses": [
+  "稀疏路由仍需门控/注意力打分，引入额外路由参数与负载均衡复杂度",
+  "验证集中在标准 CL 图像/文本 benchmark，未涉及医学或多模态长序列",
+  "属持续学习抗遗忘，与可靠性×医学影像主线仅弱相关，相关性中等偏低"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "持续学习抗遗忘与可靠性主线弱相关，未触及医学或多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

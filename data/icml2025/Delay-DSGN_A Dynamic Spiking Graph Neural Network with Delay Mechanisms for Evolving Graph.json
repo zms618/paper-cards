@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Delay-DSGN_A Dynamic Spiking Graph Neural Network with Delay Mechanisms for Evolving Graph.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Delay-DSGN_A Dynamic Spiking Graph Neural Network with Delay Mechanisms for Evolving Graph.pdf",
+ "title": "Delay-DSGN: A Dynamic Spiking Graph Neural Network with Delay Mechanisms for Evolving Graph",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "脉冲图神经网络引入高斯延迟核缓解动态图信息遗忘，但实验验证有限。",
+ "innovations": [
+  "在动态 SNN-GNN 的邻域聚合中引入可学习高斯延迟核，显式建模信息传播时延。",
+  "利用突触可塑性动态调整连接权重与传播速度，增强历史-未来的时间相关性。",
+  "从理论上推导高斯核标准差与尺寸的约束条件，避免梯度爆炸/消失。"
+ ],
+ "method_framework": "在每个时间步的邻域聚合中插入高斯延迟核，将历史节点信息按时延权重延迟传播到未来表示；结合脉冲神经元的稀疏发放与突触可塑性调整权重/传播速度，从而在低功耗下捕捉演化图的时间依赖并缓解遗忘。",
+ "experiment_framework": "在三个大规模动态图数据集上做节点分类/链接预测，对比 8 个 SOTA 动态图方法；报告节点分类最优结果及训练稳定性。",
+ "takeaways": [
+  "显式的可学习延迟核能有效缓解动态图 GNN 的历史信息遗忘。",
+  "基于突触可塑性的权重/速度自适应提升了时间相关性建模。",
+  "高斯核标准差与尺寸满足约束时可稳定训练、抑制梯度问题。"
+ ],
+ "weaknesses": [
+  "主要在节点分类上验证，链接预测与时延建模的定量收益报告有限。",
+  "高斯延迟核为手工先验，对时延分布非高斯的真实图适应性未充分讨论。",
+  "属脉冲/动态图网络，与可信推理主线（鲁棒性/泛化/不确定性×医学影像/多模态）无关，relevance 低。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

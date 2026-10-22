@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/seq-JEPA_Autoregressive Predictive Learning of Invariant-Equivariant World Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/seq-JEPA_Autoregressive Predictive Learning of Invariant-Equivariant World Models.pdf",
+ "title": "seq-JEPA: Autoregressive Predictive Learning of Invariant-Equivariant World Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "seq-JEPA通过序列预测学习不变性与等变性表示的权衡",
+ "innovations": [
+  "引入架构偏置实现不变性和等变性表示的自动分离",
+  "基于动作-观察序列的自监督世界模型",
+  "无需显式等变性损失或双预测器",
+  "支持序列观察整合任务如扫视预测和路径积分"
+ ],
+ "method_framework": "seq-JEPA处理输入的变换视图序列，将每个视图编码并与相对变换(动作)嵌入连接，通过transformer编码器聚合这些动作-观察对，然后基于即将到来的动作预测下一个观察的表示",
+ "experiment_framework": "3DIEBench(旋转预测和分类)、手工增强数据集(裁剪/颜色抖动/模糊)、扫视预测学习(STL-10)",
+ "takeaways": [
+  "动作条件在促进等变性表示学习中起关键作用",
+  "序列聚合表示对不变性任务有效，单个编码视图对等变性任务有效"
+ ],
+ "weaknesses": [
+  "在CIFAR100上分类性能略低于最佳基线",
+  "依赖生物启发技术(如显著性图和IoR)选择观察序列"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

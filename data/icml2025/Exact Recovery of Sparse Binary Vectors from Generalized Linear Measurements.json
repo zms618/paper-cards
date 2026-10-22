@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Exact Recovery of Sparse Binary Vectors from Generalized Linear Measurements.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Exact Recovery of Sparse Binary Vectors from Generalized Linear Measurements.pdf",
+ "title": "Exact Recovery of Sparse Binary Vectors from Generalized Linear Measurements",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 6
+ },
+ "one_line": "理论分析广义线性测量下稀疏二元向量恢复的样本复杂度，缺乏实证验证。",
+ "innovations": [
+  "分析线性估计算法(Plan-Vershynin-Yudovina)在广义线性测量下恢复k-稀疏二元向量的性能",
+  "给出所需测量数的信息论下界，与上界匹配",
+  "对含噪1比特量化测量(1bCSbinary)得到最优样本复杂度O((k+σ²)log n)，并给出逻辑回归的紧样本复杂度刻画"
+ ],
+ "method_framework": "观测y=Ax+z(A为传感矩阵、x为k-稀疏二元向量、z高斯噪声)；用线性估计算法恢复支撑与幅值；通过Fano/信息论方法建立测量数下界，与算法上界比对得到最优样本复杂度。",
+ "experiment_framework": "以理论分析为主：推导上界(线性估计)与下界(信息论)并证明匹配；对比Lasso与线性估计的计算效率；覆盖SparseLinearReg与1bCSbinary两类测量。",
+ "takeaways": [
+  "1bCSbinary的最优样本复杂度为O((k+σ²)log n)，与信息论下界匹配",
+  "因1bCSbinary比SparseLinearReg更难(多了量化)，同一复杂度对后者也可达",
+  "Lasso可达该复杂度，但线性估计在计算上更高效"
+ ],
+ "weaknesses": [
+  "以理论为主，缺乏在真实高维数据集上的实证验证",
+  "假设二元稀疏信号与高斯噪声，对一般稀疏信号的推广未展开",
+  "功率约束下的传感矩阵设计细节对实际部署的指导有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

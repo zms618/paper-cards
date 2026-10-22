@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/LV-XAttn_Distributed Cross-Attention for Long Visual Inputs in Multimodal Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/LV-XAttn_Distributed Cross-Attention for Long Visual Inputs in Multimodal Large Language Models.pdf",
+ "title": "LV-XAttn: Distributed Cross-Attention for Long Visual Inputs in Multimodal Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "分布式交叉注意力减少多模态长视觉输入通信开销",
+ "innovations": [
+  "保持大型键值块本地存储，仅交换小型查询块",
+  "计算与通信重叠技术消除通信开销",
+  "针对多模态大模型的激活重计算技术"
+ ],
+ "method_framework": "LV-XAttn采用序列并行策略，在多GPU间保持大型键值块本地存储，仅交换小型查询块、输出块和必要的softmax统计量，并通过计算与通信重叠消除通信开销。",
+ "experiment_framework": "在Llama 3-V、mPLUG-Owl3和OpenFlamingo模型上评估，使用A100和A30 GPU集群，与Ring Attention和DeepSpeed-Ulysses比较端到端速度和通信开销。",
+ "takeaways": [
+  "针对多模态大模型中查询块远小于键值块的特点优化分布式计算",
+  "激活重计算技术可处理1.6倍更长的视觉输入且仅增加不到8%的时间开销"
+ ],
+ "weaknesses": [
+  "仅在特定多模态架构上验证，通用性有待进一步检验",
+  "对于查询块与键值块大小相近的场景优势不明显"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.3,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

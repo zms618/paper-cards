@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Compressed Generation with Denoising Diffusion Codebook Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Compressed Generation with Denoising Diffusion Codebook Models.pdf",
+ "title": "Compressed Image Generation with Denoising Diffusion Codebook Models",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 5.3
+ },
+ "one_line": "用离散码本替代高斯噪声采样，实现图像生成与压缩。",
+ "innovations": [
+  "将反向扩散中的连续高斯噪声采样替换为离散码本选择，保留生成质量和多样性",
+  "将码本中最匹配图像的噪声编码为高效图像压缩编解码器",
+  "扩展到条件图像生成(修复等)联合生成图像和压缩比特流"
+ ],
+ "method_framework": "标准DDM在每步从连续高斯分布采样，作者假设该空间高度冗余。DDCM预定义固定i.i.d.高斯向量码本，反向过程每步从码本中选一个向量。编码时选最匹配给定图像的噪声序列，生成压缩比特流。码本极小仍保持质量。",
+ "experiment_framework": "在图像生成benchmark上验证质量/多样性；在感知图像压缩上与SOTA压缩方法比较(BD-rate等)；扩展到图像修复条件生成。",
+ "takeaways": [
+  "极小码本即可保持DDM生成质量和多样性",
+  "DDCM作为有损图像编解码器达到SOTA感知压缩",
+  "压缩条件生成框架可扩展到任意条件图像生成任务"
+ ],
+ "weaknesses": [
+  "纯图像生成/压缩，与可靠性/医学影像/多模态推理主线无关",
+  "码本大小与压缩率/质量权衡未充分理论化",
+  "条件生成的压缩效率在修复等任务上未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.9,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

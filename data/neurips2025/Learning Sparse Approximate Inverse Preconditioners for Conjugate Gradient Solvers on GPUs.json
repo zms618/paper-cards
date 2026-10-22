@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Learning Sparse Approximate Inverse Preconditioners for Conjugate Gradient Solvers on GPUs.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Learning Sparse Approximate Inverse Preconditioners for Conjugate Gradient Solvers on GPUs.pdf",
+ "title": "Learning Sparse Approximate Inverse Preconditioners for Conjugate Gradient Solvers on GPUs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.75
+ },
+ "one_line": "GNN构建SPAI预处理器加速CG求解，但适用范围有限",
+ "innovations": [
+  "使用GNN构建SPAI预 conditioner避免三角求解",
+  "提出尺度不变对齐恒等损失函数(SAI loss)",
+  "稀疏矩阵向量乘法与GNN局部传播机制自然对齐"
+ ],
+ "method_framework": "将预 conditioner构造转化为图学习问题，GNN输出稀疏矩阵G，构造M^{-1}=GG^T+εI，避免三角求解，仅需两个矩阵向量乘法",
+ "experiment_framework": "在三个PDE衍生数据集和一个合成数据集上评估，与传统预 conditioner(Diag, IC, AINV)和基于学习的方法比较，测量总求解时间、迭代次数和条件数",
+ "takeaways": [
+  "SpMV的局部性自然与GNN的局部传播机制兼容",
+  "尺度不变损失函数与CG求解器的尺度不变收敛特性对齐",
+  "GPU友好设计显著提升性能"
+ ],
+ "weaknesses": [
+  "方法主要针对对称正定矩阵，适用范围有限",
+  "实验主要在PDE问题上验证，对更广泛问题的泛化能力有待进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

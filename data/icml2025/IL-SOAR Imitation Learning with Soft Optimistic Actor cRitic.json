@@ -1,0 +1,37 @@
+{
+ "title": "IL-SOAR : Imitation Learning with Soft Optimistic Actor cRitic",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.1
+ },
+ "one_line": "SOAR集成评论家实现乐观探索，理论保证与实践提升有限",
+ "innovations": [
+  "提出SOAR算法模板：在SAC块内用多个评论家集成替代单一评论家，构造乐观Q估计（低估期望代价）以实现面对不确定性的探索",
+  "理论上证明在表格MDP下基于集成的探索可获得O(eps^-2)专家轨迹与O(eps^-2)交互的可证明保证，匹配已知最优",
+  "实践上作为即插即用模块一致提升f-IRL、ML-IRL、CSIL等SAC式模仿学习算法性能，在MuJoCo上所需回合数减半"
+ ],
+ "method_framework": "SOAR是原对偶式元算法，交替更新代价函数与策略。策略更新阶段维护L个Q估计器，通过聚合例程得到乐观Q（低估真实代价以鼓励访问未访问状态-动作对），再用在线镜像下降（表格）或SAC损失梯度下降（连续）更新策略。集成数L>1是保证乐观性的关键（L=1即普通SAC不满足）。",
+ "experiment_framework": "实验在MuJoCo连续控制环境上进行，使用16条专家轨迹，对比f-IRL/RKL、ML-IRL、CSIL等基线及其SOAR增强版本，指标为平均归一化回报。理论部分在表格MDP分析样本复杂度。",
+ "takeaways": [
+  "集成式乐观估计可作为即插即用模块嵌入任意SAC式模仿学习算法，一致提升性能",
+  "达到同等性能所需回合数约减半，说明熵正则化探索本身低效，乐观探索显著加速",
+  "L=1（标准SAC双评论家）不足以保证乐观性，需更大集成规模"
+ ],
+ "weaknesses": [
+  "实验仅在MuJoCo连续控制环境验证，场景与任务多样性有限，缺乏更具挑战性的真实机器人或高维基准",
+  "乐观聚合例程在连续状态动作下如何严格保证乐观性未充分理论化，仅靠经验调参L",
+  "与已有探索bonus/内在动机方法的系统对比不足，难以判断集成乐观相对其他探索手段的增量价值"
+ ],
+ "confidence": "high",
+ "key": "icml2025/IL-SOAR Imitation Learning with Soft Optimistic Actor cRitic.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/IL-SOAR Imitation Learning with Soft Optimistic Actor cRitic.pdf",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

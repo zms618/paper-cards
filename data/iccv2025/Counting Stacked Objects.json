@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Counting Stacked Objects.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Counting Stacked Objects.pdf",
+ "title": "Counting Stacked Objects",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "堆叠物体计数方法，通过体积占用率估计解决隐藏物体计数难题",
+ "innovations": [
+  "将堆叠物体计数分解为体积估计和占用率估计两个子问题",
+  "设计深度网络从深度图中预测体积占用率",
+  "构建大规模合成数据集和真实世界数据集验证方法"
+ ],
+ "method_framework": "通过多视图图像进行3D重建估计总体积，从关键视图深度图预测体积占用率，结合单位物体体积计算总数",
+ "experiment_framework": "合成数据集(100个未见场景)和真实世界数据集(45个场景，2381张图像)，对比基线方法，使用NAE、SRE、MAE、sMAPE指标",
+ "takeaways": [
+  "问题分解策略能有效解决复杂视觉计数任务",
+  "深度图包含足够信息预测体积占用率",
+  "人类在此任务上表现不佳，验证了问题难度"
+ ],
+ "weaknesses": [
+  "方法假设物体堆叠均匀且大致相同，限制了应用场景",
+  "在真实世界数据集上表现不如合成数据集",
+  "依赖准确的深度估计和3D重建"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "3D重建与计数任务，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A General Framework for Black-Box Attacks under Cost Asymmetry.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A General Framework for Black-Box Attacks under Cost Asymmetry.pdf",
+ "title": "A GENERAL FRAMEWORK FOR BLACK-BOX ATTACKS UNDER COST ASYMMETRY",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "非对称二分与过冲采样降低黑盒攻击成本，但理论假设局限且实验不完整。",
+ "innovations": [
+  "把代价统一写成 cost=Q_non-flagged+c*·Q_flagged（c*=c_flagged/c_0），指出 vanilla 攻击只在 c*=1、stealthy 攻击只在 c*=∞ 下成立，其余成本比完全无方法可用",
+  "Asymmetric Search：二分时按 1:c* 的 1:(c*) 不等比例切分区间（Alg.1）而非对半切，把期望代价从 Θ(c*log(1/τ)) 降到 O(c*log(c*+1)/τ)；c*=1 退化为标准二分、c*=∞ 退化为 line search",
+  "AGREST：把采样中心从边界点沿 x_t−x* 过冲 ω_t 移入低代价区 x′_t，并用重要性权重 β_t 重加权（Thm.3 证明最优 β*=p_t 恰等于低代价查询概率），在给定代价预算 c_t 下最大化与真梯度的余弦相似度 J"
+ ],
+ "method_framework": "沿路径的二分改为按 1:c* 配比的非对称搜索（AS）以减少高代价查询；梯度估计把采样中心从边界点沿 x_t−x* 过冲 ω_t 移入低代价区（AGREST），用重要性权重 β_t 重加权，并在代价预算约束下用 QUADPACK+Nelder-Mead 数值求解最优点。",
+ "experiment_framework": "ImageNet 及 CLIP / ViT / ResNet 等模型；代价比 c* 取多个取值，对比 vanilla（OPT/BOUNDARY/SIGN-OPT/HSJA）与 stealthy 攻击，报告 flagged 与 total 查询数及 ℓ2 扰动范数。",
+ "takeaways": [
+  "「不等比例二分」是把带权代价写进搜索算法的极简改造，二分的最优性结论在加负代价假设失效后需要重写，值得推广到其它带权搜索场景",
+  "主动把采样中心移出决策边界（过冲）来调节查询预算，比事后过滤高代价查询更高效，且过冲量可直接由球冠概率 p_t(ω) 反解",
+  "审视已有方法时先问它隐含了什么代价假设（stealthy 假设 benign 查询零成本），这类隐含假设往往是新方法最便宜的切入点"
+ ],
+ "weaknesses": [
+  "全部理论依赖 S 在 x_t 附近局部线性（Eq.8）与 Θ* 均匀分布的 Assumption A1，而真实高维决策面上二者都不严格成立；Thm.2 的 O(d^{−z}) 界还是 n_t、d 同时趋于无穷的渐近结论",
+  "α_t 在黑盒设定中不可真值获取，只能启发式外推 â_{t+1}=arccos(1−(1−cos α_1)(t+1)^{−m})（Alg.2 引入新超参 m），且 Thm.4 的 ⟨x_1−x*,g_1⟩≥0 前提只在「沿该方向已找到最近边界点」时才可证明成立",
+  "实验章节完全不在所提供正文内（截断于 Alg.3 中段），Figure 1 只报中位数无方差与显著性检验，「扰动范数最多降 40%」的对照设置、c* 取值网格与超参 m 的搜索范围均不可核查"
+ ],
+ "confidence": "low",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "黑盒攻击方法与可靠性主线无直接交点，但带权搜索设计有迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

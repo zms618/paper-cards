@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Neuro-PYTHONIC_Neptune A Neuro-PYTHONIC Framework Tunable Compositional Reasoning Vision-Language.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Neuro-PYTHONIC_Neptune A Neuro-PYTHONIC Framework Tunable Compositional Reasoning Vision-Language.pdf",
+ "title": "NePTune: A Neuro-PYTHONIC Framework for Tunable Compositional Reasoning on Vision-Language",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "神经-Pythonic框架将VLM不确定性融入软逻辑推理，但缺乏真实世界验证。",
+ "innovations": [
+  "提出神经-Pythonic混合执行模型：动态将自然语言查询翻译为融合命令式控制流与软逻辑算子的可执行Python程序。",
+  "软逻辑算子能在VLM感知不确定性上推理，突破以往神经符号方法硬性逻辑/预定义谓词的局限。",
+  "模块化解耦感知与推理，训练-free即可零样本泛化，同时其可微组合运算支持神经符号微调做领域适配。"
+ ],
+ "method_framework": "查询经分解器转为组合式推理结构；概念打分模块调用基础视觉模型对物体/关系等谓词输出带不确定性的分数；组合器用软组合逻辑（基于不确定度的逻辑算子）聚合各子概念结果；整个过程以可执行Python程序动态生成与执行。",
+ "experiment_framework": "在多个视觉推理基准（如CLEVR、ReaSCAN类）与多领域上评测，含对抗测试与域迁移测试；相较基座模型显著提升，并展示组合泛化与新环境适配能力（具体数值表在所提取页之后）。",
+ "takeaways": [
+  "将命令式代码与软逻辑结合，可在感知不确定性下做全局组合推理，避免硬决策序列的脆弱性。",
+  "模块化解耦感知与推理使系统既能零样本泛化又可针对领域微调。",
+  "软组合逻辑在域迁移/对抗条件下比纯神经方法更鲁棒。"
+ ],
+ "weaknesses": [
+  "所提取页未给出具体精度数值与统计对比，改进幅度缺乏可核验量化证据。",
+  "依赖LLM动态生成正确可执行程序，程序生成错误时的失败模式与恢复机制分析不足。",
+  "在真实开放世界图像（非合成CLEVR式场景）上的感知误差累积与可扩展性未充分验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "软逻辑算子处理VLM不确定性，但缺乏真实世界验证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

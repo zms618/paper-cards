@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/DP-LLM_Runtime Model Adaptation with Dynamic Layer-wise Precision Assignment.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/DP-LLM_Runtime Model Adaptation with Dynamic Layer-wise Precision Assignment.pdf",
+ "title": "DP-LLM: Runtime Model Adaptation with Dynamic Layer-wise Precision Assignment",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "动态层精度分配提升LLM推理效率，但内存开销大且适用性有限",
+ "innovations": [
+  "发现层敏感度随解码步骤动态变化",
+  "基于相对误差的动态精度选择机制",
+  "轻量级异步相对误差估计器"
+ ],
+ "method_framework": "DP-LLM通过离线确定候选精度集和阈值，运行时根据输入动态选择层精度，结合线性回归和随机投影估计相对误差",
+ "experiment_framework": "Llama-3-8B和Phi-3-Medium模型，Wikitext2和C4数据集 perplexity，GSM8K等下游任务解码性能",
+ "takeaways": [
+  "层敏感度动态变化可被利用优化精度分配",
+  "混合估计方法平衡精度与效率",
+  "异步估计减少关键路径延迟"
+ ],
+ "weaknesses": [
+  "GPU内存开销增加4.3%，最坏情况",
+  "仅适用于特定层类型，依赖残差连接",
+  "未讨论极端资源约束下的表现"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

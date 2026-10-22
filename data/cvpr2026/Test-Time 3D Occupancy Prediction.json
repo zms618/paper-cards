@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Test-Time 3D Occupancy Prediction.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Test-Time 3D Occupancy Prediction.pdf",
+ "title": "Test-Time 3D Occupancy Prediction",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "测试时3D占用预测框架，集成VFM实现自适应体素化",
+ "innovations": [
+  "基于3D高斯的测试时占用预测框架",
+  "集成视觉基础模型实现开放词汇语义识别",
+  "动态高斯跟踪与静态累积机制",
+  "三向径向基函数平滑优化"
+ ],
+ "method_framework": "TT-Occ采用'提升-跟踪-体素化'三阶段流程：1)利用VFM将几何和语义信息提升为时感知3D高斯；2)通过运动流跟踪动态高斯并累积静态高斯；3)按需体素化为任意分辨率占用网格。",
+ "experiment_framework": "数据集：Occ3D-nuScenes(0.4m)和nuCraft(0.2m)；基线：SelfOcc、OccNeRF等自监督方法；指标：mIoU、RayIoU、类别IoU",
+ "takeaways": [
+  "无需预训练的测试时3D占用预测范式",
+  "多模态融合策略提升泛化能力",
+  "动态物体跟踪机制减少拖尾伪影"
+ ],
+ "weaknesses": [
+  "相机版本在远距离区域表现受限",
+  "依赖VFM精度，存在噪声传播问题",
+  "未充分讨论计算复杂度与实时性权衡"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D占用预测与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

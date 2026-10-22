@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/Importance-Based Token Merging for Efficient and Video Generation.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Importance-Based Token Merging for Efficient and Video Generation.pdf",
+ "title": "Importance-Based Token Merging for Efficient and Video Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "基于CFG的token合并提升生成效率，但视频层效果有限",
+ "innovations": [
+  "利用classifier-free guidance作为token重要性指标",
+  "构建重要token池进行动态资源分配",
+  "设计基于重要性的token分区策略"
+ ],
+ "method_framework": "通过classifier-free guidance计算token重要性分数，构建重要token池，从中随机选择目标token，使用双路软匹配合并相似token，确保重要区域细节保留。",
+ "experiment_framework": "在文本到图像、多视图生成和视频生成任务上测试，使用Stable Diffusion、Zero123++和AnimateDiff作为基线模型，评估FID、CLIP、PSNR、SSIM、LPIPS和VBench指标。",
+ "takeaways": [
+  "利用现有信号(如CFG)作为重要性指标无需额外计算",
+  "动态调整重要token池大小可平衡质量与效率"
+ ],
+ "weaknesses": [
+  "方法在视频生成的时间层上效果有限",
+  "依赖CFG可能限制在某些场景的应用"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成与可靠性主线无关，仅效率优化无可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

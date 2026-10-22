@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/CIGMA_Causal Information-Gain Mechanistic Attribution of Attention Heads in Vision.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/CIGMA_Causal Information-Gain Mechanistic Attribution of Attention Heads in Vision.pdf",
+ "title": "CIGMA Causal Information-Gain Mechanistic Attribution of Attention Heads in Vision",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "因果信息增益机制移除背景依赖注意力头，提升视觉Transformer可靠性",
+ "innovations": [
+  "提出CIGMA框架，通过因果信息增益机制识别并移除背景依赖的注意力头",
+  "引入背景影响比(BIR)量化模型对背景与前景的依赖程度",
+  "自优化前景掩码技术，无需标注即可发现模型决策区域"
+ ],
+ "method_framework": "CIGMA通过三步流程：1)自优化前景掩 preserving预测分布；2)基于Jensen-Shannon散度计算前景/背景信息增益；3)因果干预注意力头，计算CIGMA分数并移除高分数的背景依赖头",
+ "experiment_framework": "在CIFAR-10/100和Tiny-ImageNet上评估InternVL2-26B、LLaVA-1.6和LLaVA-1.5-13B，比较准确率、NLL、ECE和BIR指标",
+ "takeaways": [
+  "注意力头级因果干预可有效减少模型对背景的依赖",
+  "自优化前景掩码技术可揭示模型实际决策过程",
+  "无需训练即可显著提升模型可靠性和准确性"
+ ],
+ "weaknesses": [
+  "方法仅关注注意力头，未探索其他层级的组件",
+  "实验主要在标准数据集上进行，缺乏对真实世界场景的验证",
+  "计算CIGMA分数需要多次前向传播，可能增加推理开销"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "因果干预注意力头提升视觉Transformer可靠性，符合主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

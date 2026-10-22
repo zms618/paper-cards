@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/A Hierarchical Circuit Symbolic Discovery Framework for Efficient Logic Optimization.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A Hierarchical Circuit Symbolic Discovery Framework for Efficient Logic Optimization.pdf",
+ "title": "A HIERARCHICAL CIRCUIT SYMBOLIC DISCOVERY FRAMEWORK FOR EFFICIENT LOGIC OPTIMIZATION",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.0
+ },
+ "one_line": "分层符号树替代GNN做电路优化，但实验矛盾且缺乏消融",
+ "innovations": [
+  "分层电路符号树：每层用 {+,−,×,÷,log,exp} 数学算子配合 {min,max,mean,sum} 聚合算子按边连通从层 i 聚到 i−1，末层直接输出打分，可解释且可在纯 CPU 上轻量推理",
+  "用 L 个 encoder-only Transformer 逐层生成符号子树，生成 token τ_k 时把父/兄节点编码为 βp、βs 并与表示平均做树感知聚合，缓解标准 Transformer 捕捉树结构依赖不足的问题",
+  "把整棵分层符号树当作一个 RL episode，用组内均值/标准差归一化优势 A=(r−r̄)/σr 取代 critic 网络，奖励取 focal loss 负值做 PPO 策略梯度，无需任何过程标签"
+ ],
+ "method_framework": "把电路计算树逐层用符号算子聚合成分级符号树：Fi 以数学算子与 min/max/mean/sum 更新各层特征、末层输出打分；用 L 个树感知 Transformer 逐层采样符号子树，PPO 加组归一化优势以 focal-loss 奖励端到端优化。",
+ "experiment_framework": "EPFL(20 电路)+IWLS(21 电路) 基准，ABC 为后端、Mfs2 为耗时启发式，单台 32 核 Xeon；离线看 top-k 预测召回，在线测六个困难电路接入后的运行时间与优化节点数/层级；基线 COG、CMO、Effisyn、Random。",
+ "takeaways": [
+  "把不可微的符号表达式生成建模成 RL episode、用组内归一化优势替代 critic，是低成本符号蒸馏的可复用套路且不依赖过程标签",
+  "EDA 这类纯 CPU 工业场景里可解释轻符号函数比 GNN 更易落地，distill GNN → symbolic 是兼顾精度与部署成本的路径",
+  "剪枝式打分函数必须做 QoR 端到端验证，只报离线召回会掩盖「剪得准但整体更慢」；本文 0.4 设置在 Multiplier/DesPerf 上反而慢 21.83%/10.03%"
+ ],
+ "weaknesses": [
+  "Table 2 自身结果矛盾：HIS-Mfs2(0.4) 在 Multiplier 耗时反而 +21.83%、DesPerf +10.03%，而 HIS-Mfs2(0.5) 在 Hyp 的层级提升为 0.00、Multiplier 与 Conmax 优化节点数为 −0.59%/−1.52%，标题里的平均提速 27.22% 掩盖了个别电路退化",
+  "离线阶段只报 top-k 预测召回这一单个数字且无方差，在线只在六个困难电路上测，k 取 30%/40%/50% 三个点也无敏感性曲线，阈值与外推性无法判断",
+  "正文在实验设置段截断，未见组大小 m、PPO clip ε、符号树深度 L=2、特征维数 d=10 等超参消融，也未见与 GNN 基线的纯 CPU 推理延迟对照"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "电路优化与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

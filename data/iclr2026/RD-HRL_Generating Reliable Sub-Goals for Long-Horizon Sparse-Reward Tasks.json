@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/RD-HRL_Generating Reliable Sub-Goals for Long-Horizon Sparse-Reward Tasks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/RD-HRL_Generating Reliable Sub-Goals for Long-Horizon Sparse-Reward Tasks.pdf",
+ "title": "RD-HRL: Generating Reliable Sub-Goals for Long-Horizon Sparse-Reward Tasks",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.2
+ },
+ "one_line": "可靠性驱动的分层强化学习，解决子目标选择不可靠问题",
+ "innovations": [
+  "揭示HRL中子目标选择不可靠的根因：值函数受泛化噪声影响，误导子目标选择",
+  "提出可靠性驱动决策机制，从离线数据的过渡区域提取决策级目标，将高层策略决策空间限制在无需跨轨迹泛化的区域",
+  "将子目标规划分解为两个可靠子问题：提供决策级目标（TRE/TI/TE模块）和条件化生成动作级目标"
+ ],
+ "method_framework": "RD-HRL包含三个模块：(1)过渡区域提取（TRE）从离线数据集筛选过渡区域作为决策级目标候选；(2)目标评估（TE）估计过渡区域的低噪声值；(3)目标识别（TI）在TE辅助下选择合适的过渡区域作为决策级目标。高层策略基于决策级目标生成动作级目标（子目标），低层策略执行。",
+ "experiment_framework": "在多个长程稀疏奖励离线RL基准上评测；对比标准HRL方法；报告任务成功率；消融TRE/TI/TE各模块贡献。",
+ "takeaways": [
+  "HRL子目标选择的不可靠性源于值函数泛化误差而非规划结构本身",
+  "将高层决策空间限制在局部过渡区域可有效免疫泛化噪声",
+  "子目标规划可分解为决策级和动作级两个层次，分别保证可靠性"
+ ],
+ "weaknesses": [
+  "与可靠性/医学影像/多模态推理主线完全无关，属于离线RL/机器人控制领域",
+  "过渡区域的提取依赖离线数据集质量，在数据覆盖不足时效果可能下降",
+  "前9页未见与最新大模型驱动HRL方法的对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.63,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "离线RL/机器人控制，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

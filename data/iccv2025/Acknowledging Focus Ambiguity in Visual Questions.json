@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/Acknowledging Focus Ambiguity in Visual Questions.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Acknowledging Focus Ambiguity in Visual Questions.pdf",
+ "title": "Acknowledging Focus Ambiguity in Visual Questions",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "构建VQA焦点歧义数据集，但标注方法与实验设计存在明显缺陷",
+ "innovations": [
+  "首个面向 VQA「焦点歧义」（问题中被指代的短语可以同时落到多个图像区域）的数据集 VQ-FocusAmbiguity：5,500 个问题配 12,880 个实例分割，逐条视觉定位问题语言所有可能的指代区域，歧义/无歧义近乎各半（2,437 / 3,063）。",
+  "把继承分割（PACO、MSRA-B）与自家标注的问题落区解耦，并量化指出「问题落区」与「答案落区」在 79%（131/165）的歧义问题上并不重合，从而把「先定位问题焦点」确立为独立于答案生成的中间步骤。",
+  "提出「该问题是否有焦点歧义」与「定位全部可能焦点区域」两个新任务，用 Acc、weighted F1、positive rate、undecided rate 四个指标刻画预测偏置；对 GPT-4o、InternVL2-76B、Qwen2.5-VL-7B、Molmo-7B 的 20 个提示变体细粒度评测，发现 CoT 提示可把 7B 模型推到 76B 模型水平。"
+ ],
+ "method_framework": "从 PACO、MSRA-B、VizWiz-VQA、VQAv2 四源扩充问题并标注可指代的候选区域分割与歧义标签；据此定义歧义判别与全焦点定位两任务，评测现成 VLM 的零样本/少样本表现。",
+ "experiment_framework": "VQ-FocusAmbiguity 5,500 题（训练 70/验证 70/测试 5,360）；歧义判别测 4 个 VLM × 5 种提示；指标 Acc、weighted F1、positive rate、undecided rate，另有分数据源与答案长度的细粒度分析。",
+ "takeaways": [
+  "多模态模型「答不出就乱答」的一个根源是输入本身歧义；给 VQA 加一层「这问题有歧义吗」的显式拒判，比单纯堆精度更贴近真实可用性（文中举了盲人误用清洁剂去做饭碗的后果）。",
+  "评测 VLM 可靠性时不能只看 accuracy，positive rate 暴露的是系统性偏置（Molmo 零样本 positive rate 达 99.5%，等于恒判歧义），这类偏置指标必须和准确率一起报。",
+  "提示设计对结论影响极大（Molmo 从 ZS 到 ZS-CoT 涨 18.4pp），做可靠性评测要把提示策略当变量扫一遍，否则无法区分是模型能力不足还是提示没写好。"
+ ],
+ "weaknesses": [
+  "二值「是否有歧义」标签是从分割数量反推的（原文脚注：binary flag for ambiguity is inferred from the number of segmentations），标签与定位任务循环依赖——能标出多个候选区域的样本天然被标为有歧义，两项任务的评估并不独立。",
+  "划分极度失衡：训练集仅 70 条、验证集 70 条，测试集 5,360 条占全库 97.5%，导致所有评测只能走零样本/少样本，几乎没有可监督跟进与方差估计的空间；也没给人类基线来界定任务还剩多少可改进空间。",
+  "只测了闭源/开源 VLM 的零样本与少样本提示（20 个变体），没有在训练集微调、也没有与「是否有复数名词」「是否只有唯一同类别实例」这类纯语言学启发式对照；因此「现代模型很差」无法剥离出是模型能力、提示设计还是标签噪声（标注来自 workers）造成的；另外 MSRA-B 来源 100% 为无歧义样本、模板固定为「What is this?」，其上的模型排序不能当作通用结论。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态歧义处理与可靠性主线有交点，但实验设计缺陷严重",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

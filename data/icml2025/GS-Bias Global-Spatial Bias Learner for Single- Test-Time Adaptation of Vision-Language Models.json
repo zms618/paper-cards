@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/GS-Bias Global-Spatial Bias Learner for Single- Test-Time Adaptation of Vision-Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/GS-Bias Global-Spatial Bias Learner for Single- Test-Time Adaptation of Vision-Language Models.pdf",
+ "title": "GS-Bias: Global-Spatial Bias Learner for Single- Test-Time Adaptation of Vision-Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "双偏置机制提升VLM测试时适应，但创新有限且实验深度不足",
+ "innovations": [
+  "全局偏置与空间偏置双机制设计",
+  "在logits层面直接优化避免全网络反向传播",
+  "空间区域选择策略增强局部语义一致性"
+ ],
+ "method_framework": "通过全局偏置捕获跨增强视图的语义一致性，空间偏置学习图像区域间的语义连贯性，两者直接添加到预训练VLM的logits输出上，实现轻量级测试时适应。",
+ "experiment_framework": "在10个跨数据集和4个ImageNet变体OOD数据集上评估，与CLIP、TPT、MTA等方法比较top-1准确率",
+ "takeaways": [
+  "在输出层添加可学习偏置可有效平衡效率与性能",
+  "空间区域选择策略能增强模型对局部信息的利用"
+ ],
+ "weaknesses": [
+  "空间区域选择策略的K值固定可能限制灵活性",
+  "未探讨不同视觉编码器架构下的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

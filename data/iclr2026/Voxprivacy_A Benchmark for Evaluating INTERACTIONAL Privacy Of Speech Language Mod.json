@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Voxprivacy_A Benchmark for Evaluating INTERACTIONAL Privacy Of Speech Language Mod.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Voxprivacy_A Benchmark for Evaluating INTERACTIONAL Privacy Of Speech Language Mod.pdf",
+ "title": "VoxPrivacy: A Benchmark for Evaluating Interactional Privacy of Speech Language Models",
+ "scores": {
+  "novelty": 7,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.4
+ },
+ "one_line": "构建语音模型交互隐私三级基准，揭示主流SLM隐私保护严重不足。",
+ "innovations": [
+  "提出交互隐私（interactional privacy）新概念，聚焦多用户共享场景下语音模型是否会将一个用户的私密信息泄露给另一用户",
+  "构建三级递进难度基准：直接保密命令、说话人验证保密、主动隐私推断，覆盖从被动服从到主动判断的认知层次",
+  "发布32小时中英双语合成数据集+人工录制验证子集，并配套4000小时训练集与微调模型作为可行改进路径"
+ ],
+ "method_framework": "构建三级递进的交互隐私评测框架：Tier1测试模型是否遵守直接保密指令；Tier2测试模型是否以说话人声纹为密钥进行条件访问；Tier3测试模型是否能主动推断哪些信息属于隐私并保护。数据集为7107条样本、32小时双语音频，另含18人人工录制的Real-VoxPrivacy验证子集。评测9个主流SLM，并通过4000小时数据微调验证改进路径。",
+ "experiment_framework": "数据集：VoxPrivacy（7107条样本，32小时中英双语）+ Real-VoxPrivacy（人工录制验证子集）。基线：9个主流语音语言模型（含开源与闭源）。指标：条件隐私决策准确率（二分类）、主动隐私保护正确率。另通过消融实验分析失败原因，并测试4000小时微调后的改进效果。",
+ "takeaways": [
+  "多数开源SLM在条件隐私决策上接近随机水平（约50%准确率），闭源强模型在主动隐私推断层面仍有显著不足",
+  "合成数据上观察到的隐私失败在真实语音数据中同样存在，说明问题真实而非合成数据伪影",
+  "通过大规模隐私数据微调可提升模型隐私保护能力并保持公平鲁棒性，证明问题可解"
+ ],
+ "weaknesses": [
+  "数据集以合成对话为主，人工录制验证子集规模较小（仅18人），真实场景多样性覆盖不足",
+  "隐私泄露的评判标准较依赖人工设计的规则，未充分探索边缘案例与模糊语境下的隐私边界判断",
+  "微调改进方案仅展示了可行性，未系统比较不同隐私增强策略（如专用解码器、提示工程）的优劣"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "隐私保护属于可靠性主线，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

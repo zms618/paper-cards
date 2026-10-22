@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/DriveVLN_Towards Mapless Vision-and-Language Navigation in Autonomous Driving.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/DriveVLN_Towards Mapless Vision-and-Language Navigation in Autonomous Driving.pdf",
+ "title": "DriveVLN Towards Mapless Vision-and-Language Navigation in Autonomous Driving",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "DriveVLN提出无地图视觉语言导航任务，但模拟验证与复杂度问题限制其价值",
+ "innovations": [
+  "提出DriveVLN新任务，实现无地图条件下的视觉语言导航",
+  "构建基于CARLA的200个真实场景数据集和评估基准",
+  "设计规划模块与导航选择器的两阶段模型架构",
+  "开发策略退火方法解决多路径歧义问题"
+ ],
+ "method_framework": "DriveVLN模型包含规划模块和导航选择器。规划模块基于DiffusionDrive生成可行轨迹，导航选择器使用Qwen2.5-VL-3B模型从候选轨迹中选择最优路径，通过强化学习训练策略。",
+ "experiment_framework": "基于CARLA模拟器构建200个真实场景数据集，结合L2误差、碰撞率、到达成功率等指标评估模型性能，采用两阶段训练策略：监督微调+强化学习。",
+ "takeaways": [
+  "Topo2Sim数据生成pipeline可复用于其他自动驾驶任务",
+  "策略退火方法有效解决多路径歧义问题",
+  "结合视觉和语言线索的导航选择器设计可迁移到其他场景"
+ ],
+ "weaknesses": [
+  "仅基于模拟器验证，缺乏真实道路测试",
+  "模型复杂度较高，计算资源需求大",
+  "未充分讨论模型在极端天气或复杂交通条件下的鲁棒性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "自动驾驶导航任务与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

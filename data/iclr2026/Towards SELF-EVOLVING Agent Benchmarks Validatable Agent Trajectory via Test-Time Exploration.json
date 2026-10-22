@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Towards SELF-EVOLVING Agent Benchmarks Validatable Agent Trajectory via Test-Time Exploration.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Towards SELF-EVOLVING Agent Benchmarks Validatable Agent Trajectory via Test-Time Exploration.pdf",
+ "title": "Towards Self-Evolving Agent Benchmarks: Validatable Agent Trajectory via Test-Time Exploration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "自演化智能体评测框架，依赖模型探索生成新任务",
+ "innovations": [
+  "提出三阶段任务演化框架：演化提案挖掘→自由探索构造问题实例(记录执行轨迹)→多级验证，保证演化任务伴随可复现、逻辑自洽的轨迹",
+  "用轨迹级验证提升演化后任务的正确性可靠性，而非仅生成更难但可能有错的题目",
+  "从静态人工基准转向动态自进化评测，在GAIA上持续提升任务难度，并可迁移改进AIME等推理基准"
+ ],
+ "method_framework": "以现有基准原始任务为种子，先通过初步探索与发散思维生成任务演化提案；再让智能体自由探索把提案实例化为具体新问题并记录执行轨迹；最后做多级验证确保轨迹可复现、逻辑自洽，从而产出更高难度且可信的新评测样本。",
+ "experiment_framework": "在GAIA上做多轮演化，以Pass@1为指标观察Deepseek-v3.1/Gemini-2.5-flash/KIMI-K2/GPT-5-Mini等模型在各轮的表现是否随演化轮次下降(验证难度上升)；并迁移到AIME-2024推理基准验证通用性。",
+ "takeaways": [
+  "现有智能体基准快速饱和，需要可扩展的自动化任务演化机制",
+  "TRACE使多模型Pass@1随演化轮次下降，证明成功生成更具区分度的难题",
+  "轨迹级验证是让自演化任务保持正确可靠的关键，避免演化出错误样本"
+ ],
+ "weaknesses": [
+  "演化任务依赖智能体自身探索，可能把基准推向特定模型族熟悉的难度方向，而非真实泛化能力",
+  "轨迹可复现性在工具/网络环境变化下是否稳定未充分讨论",
+  "属评测方法论，与医学影像等具体落地域无直接关联"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "评测方法论创新，提升智能体轨迹可靠性验证",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

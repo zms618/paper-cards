@@ -1,0 +1,41 @@
+{
+ "title": "Repurposing Synthetic Data for Fine-Grained Search Agent Supervision",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "用实体匹配奖励改进GRPO，提升搜索智能体准确率与效率。",
+ "innovations": [
+  "实证发现智能体推理中识别出的ground-truth实体数量与最终答案准确率强正相关，可作为事实正确性的廉价代理信号。",
+  "提出Entity-aware GRPO(E-GRPO)：按实体匹配率给负样本分配部分奖励，区分推理基本正确但答案错的near-miss与完全失败。",
+  "证明E-GRPO不仅提升准确率，还诱导出工具调用更少、更样本高效的高效推理策略。"
+ ],
+ "method_framework": "在实体中心合成QA数据上，GRPO仅用最终答案的稀疏结果奖励；本文复用合成时嵌入的关键实体作为事实骨架，定义实体匹配率，并据此构造密集实体奖励，对未答对样本按匹配率给部分bonus，从而保留中间正确推理的学习信号。",
+ "experiment_framework": "在11个问答与深研基准、多种模型与环境上评测；基线为标准GRPO及其变体；指标为答案准确率，并分析工具调用次数与样本效率；报告E-GRPO一致且显著优于GRPO基线。",
+ "takeaways": [
+  "GRPO式结果奖励会把near-miss与完全失败同等惩罚，浪费了部分正确推理中的学习信号。",
+  "实体匹配率是几乎零成本的细粒度奖励代理，能有效缓解搜索智能体的奖励稀疏问题。",
+  "密集实体奖励同时带来更高准确率和更少的工具调用，说明它改善了推理过程而非仅调答案。"
+ ],
+ "weaknesses": [
+  "方法依赖实体中心的合成数据结构，对非实体密集或真实(非合成)任务的可迁移性未充分论证。",
+  "实体匹配率作为事实正确性代理较粗粒度，无法区分实体正确但推理链路错误的样本，奖励设计的精度有限。",
+  "节选前9页刚进入综合评测，未看到11个基准的完整数值表与消融，增益幅度与统计显著性证据不完整。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Repurposing Synthetic Data for Fine-Grained Search Agent Supervision.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Repurposing Synthetic Data for Fine-Grained Search Agent Supervision.pdf",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "改进搜索智能体奖励机制，提升推理效率与准确率",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

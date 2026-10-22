@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/4D Local Modeling Toward Dynamic Global Perception for Ambiguity-free Rotation-Invariant.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/4D Local Modeling Toward Dynamic Global Perception for Ambiguity-free Rotation-Invariant.pdf",
+ "title": "4D Local Modeling Toward Dynamic Global Perception for Ambiguity-free Rotation-Invariant Point Cloud Analysis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.6
+ },
+ "one_line": "4D点云建模与Bingham全局锚点，理论保证不足，提升有限",
+ "innovations": [
+  "用可学习的可转向球面神经元把 3D 点经滤波器组 B(S) 抬升到 R⁴，得等变输出 P′=ST(P;S)，并在 4D 中定义 4DPPF=(‖d‖², cos∠(∆r,d), cos∠(∆j,d), cos∠(∆r,∆j))，使对称点对因 p′ 一般不是 VR(θ) 特征向量而不再产生同一描述",
+  "给出定理 1 的消歧保证：绕局部轴 ∂1r 旋转邻居时 3D PPF 因 ⟨R(θ)pj,pr⟩=⟨pr,pj⟩ 不变，而 4D 下 ⟨VR(θ)p′j,p′r⟩ 随 θ 变化，故 4DPPF(θ)≠4DPPF(0)（除零测集）",
+  "用 S³ 上的 Bingham 分布 B(q|V,Λ) 建模全局旋转的不确定性，采样 Ns=10 个四元数并以主导特征向量作代表 Rg=Rot(qg)，生成随点云自适应变化的锚点 p†=ST(prRg;S)，把全局位姿注入局部感受野以打破 Γ(pr)=Γ(pr)Rsym 的对称歧义"
+ ],
+ "method_framework": "先按 Gram-Schmidt 由法向与近邻重心得局部参考系，再用可转向球面神经元滤波器组把点与 LRF 基向量等变映射到 4D，构造 4D 点对特征；随后以 Bingham 参数与任务损失联合优化（Ltotal=Ltask+δ(Lbingham−0.1Ltask)²，δ=0.8）求出动态全局旋转 Rg，锚点再抬升为 4D 并与局部 4DPPF 拼接成 8 维 Ga4DPF，喂入 PaRI-Conv 聚合。",
+ "experiment_framework": "ModelNet40（1024 点）分类、ShapeNetPart（2048 点）部件分割、ScanObjectNN OBJ_BG（仅坐标）分类；统一用 z/z、z/SO(3)、SO(3)/SO(3) 三种旋转协议；骨干 DGCNN（分类，k=20）与 AdaptConv 式五层 PaRI-Conv（分割，k=40）。",
+ "takeaways": [
+  "把等变表示先抬升再导出不变量（equivariance→invariance）的路线比直接堆 RI 模块更能保住结构化信息，4D 只是为该路线选的一个更高维度的等变载体",
+  "局部感受野无法区分全局对称（飞机左右翼），用一个全局锚点扩展感受野即可破局，这类'局部歧义靠全局先验消解'的思路可迁移到其他对称性强的任务",
+  "z/z 与 SO(3)/SO(3) 双协议对照是检验真旋转不变性的低成本设计，比只用随机旋转增广更能暴露伪不变"
+ ],
+ "weaknesses": [
+  "定理 1 只在'参考点位于旋转轴上、邻居绕该轴旋转'这一特设配置下证明，且结论是除零测集外不等，是弱保证；而正文自己举的失效模式（飞机双翼 pleft/pright 由 Rsym 关联）并不满足该前提，定理与真实对称歧义之间存在缺口",
+  "Bingham 全局旋转用 Ns=10 次采样近似（代表四元数取 Σqiqi⊤ 的主导特征向量）属于高方差估计，Ns 与平衡系数 δ=0.8 均无消融，而 Ltotal 中 (Lbingham−0.1·Ltask)² 这一自适应项也只说'经验设为 0.8'，缺原理说明",
+  "提升幅度小且无方差：ModelNet40 仅坐标输入 91.9 对最强基线 PaRot 90.9（+1.0），ScanObjectNN 87.4 对 LocoTrans 85.0（+2.4），而 z/SO(3) 与 SO(3)/SO(3) 两列几乎相同（87.4/87.3、91.9/91.9）说明 hardest 协议区分力有限；另表 3 在正文被截断，PaRI-Conv 的实例级 mIoU 与本文 82.2% 类 mIoU 缺完整对照"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "旋转不变性建模与不确定性量化，触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

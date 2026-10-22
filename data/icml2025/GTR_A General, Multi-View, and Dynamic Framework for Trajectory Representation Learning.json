@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/GTR_A General, Multi-View, and Dynamic Framework for Trajectory Representation Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/GTR_A General, Multi-View, and Dynamic Framework for Trajectory Representation Learning.pdf",
+ "title": "GTR: A General, Multi-View, and Dynamic Framework for Trajectory Representation Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "elevance": 4,
+  "evidence": 5.5,
+  "overall": 5
+ },
+ "one_line": "多视图轨迹框架，预训练-微调提升多任务泛化",
+ "innovations": [
+  "统一以往仅用free-space或road-network单一视图的局限，设计多视图编码器捕捉内在多视图时空特征",
+  "采用预训练-微调架构提升对多样下游任务的泛化",
+  "引入时空混合专家(MoE)动态融合空间与时间特征做时空融合预训练"
+ ],
+ "method_framework": "GTR先做多视图时空融合预训练：多视图编码器同时编码free-space与road-network视图，用时空MoE动态组合空间与时间特征；预训练得到通用轨迹嵌入后，再针对相似性检索、交通方式分类等下游任务微调。",
+ "experiment_framework": "在多个轨迹数据集上，于相似性搜索、交通方式分类等下游任务对比单视图及任务专用方法，报告检索/分类精度，验证多视图与MoE的贡献。",
+ "takeaways": [
+  "多视图统一建模比单视图更能捕捉轨迹时空特征",
+  "预训练-微调范式提升轨迹表示对多任务的泛化",
+  "时空MoE动态融合空间与时间特征有效"
+ ],
+ "weaknesses": [
+  "轨迹挖掘方向，与可靠性主线及医学影像、多模态推理落地域无直接关联",
+  "依赖路网数据可用性，free-only场景需退化",
+  "前9页内对大规模真实轨迹的效率与鲁棒性分析有限"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.65,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/GeoRemover_Removing Objects and Their Causal Visual Artifacts.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/GeoRemover_Removing Objects and Their Causal Visual Artifacts.pdf",
+ "title": "GeoRemover: Removing Objects and Their Causal Visual Artifacts",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "双阶段框架解耦几何与外观，但计算开销大且深度估计错误风险高",
+ "innovations": [
+  "几何与外观解耦的双阶段框架",
+  "基于DPO的偏好引导几何完成",
+  "深度图变换指导的外观渲染"
+ ],
+ "method_framework": "两阶段框架：第一阶段使用严格掩码对齐的扩散模型移除几何表示（深度图），引入DPO偏好损失防止结构插入；第二阶段基于几何变换条件化渲染RGB图像，隐式移除因果视觉伪影。",
+ "experiment_framework": "在RORD-Val和RemovalBench上评估，使用FID、CMMD、LPIPS、PSNR和AS指标，与严格掩码对齐和宽松掩码对齐方法对比，并消融研究两阶段设计和DPO效果。",
+ "takeaways": [
+  "几何与外观解耦可提高编辑可控性",
+  "偏好引导学习可有效抑制语义幻觉"
+ ],
+ "weaknesses": [
+  "两阶段设计增加计算开销",
+  "深度估计错误可能导致移除失败",
+  "未充分评估医学影像等特定领域应用"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

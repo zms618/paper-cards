@@ -1,0 +1,41 @@
+{
+ "title": "Understanding Cross-Layer Contributions to Mixture-of-Experts Routing in LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "递归分解MoE路由贡献，揭示跨层纠缠机制，但缺乏下游验证。",
+ "innovations": [
+  "将 Transformer 各层(注意力头/注意力层/单个专家/整个 MoE)递归分解为路由赋值分的子贡献，首次从跨层机制可解释性角度剖析 MoE 路由。",
+  "发现 MoE 层输出对后续层路由影响最大、存在跨层 MoE 纠缠(某些层专家激活与后续层激活一致相关)、少数组件可长期影响后续多层路由。",
+  "对比 4 个常用开源 MoE 模型，刻画组件对后续 MoE 的长程/短程促进与抑制效应差异。"
+ ],
+ "method_framework": "基于残差流分解 x_out=x_in+a_out+m_out，把路由器输入逐层递归分解为各注意力头、注意力层、专家与 MoE 层输出的贡献，再将路由门控分拆为各子贡献之和，统计不同组件在不同层对路由决策的贡献占比与长程影响。",
+ "experiment_framework": "在 4 个公开开源 MoE-LLM 上做归因分析，指标为各模型组件对后续层路由赋值分的贡献占比、相关性与长短程促进/抑制效应分布；无下游任务精度提升目标，属纯机制剖析研究。",
+ "takeaways": [
+  "MoE 路由不是局部过程，而是由跨层组件相互作用涌现，挑战了路由主要由局部计算决定的假设。",
+  "除首尾少数层外，MoE 层输出对后续路由影响通常强于注意力层输出；少数专家对路由有显著影响。",
+  "不同模型的跨层纠缠模式(长程/短程促进抑制)存在差异。"
+ ],
+ "weaknesses": [
+  "纯机制剖析，未将发现转化为可验证的路由改进、压缩或可信性干预，缺下游收益闭环。",
+  "仅在 4 个开源模型上验证，跨架构/规模的普适性以及结论是否依赖具体训练数据未充分讨论。",
+  "递归分解贡献度强依赖归因基线与选择项的设定，读到的是方法与初步发现，完整定量图表与敏感性分析未读完。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Understanding Cross-Layer Contributions To Mixture-of-Experts Routing In LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Understanding Cross-Layer Contributions To Mixture-of-Experts Routing In LLMS.pdf",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "纯机制剖析，未与可靠性主线交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Adapter Merging with Centroid Prototype Mapping for Scalable Class-Incremental Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Adapter Merging with Centroid Prototype Mapping for Scalable Class-Incremental Learning.pdf",
+ "title": "Adapter Merging with Centroid Prototype Mapping for Scalable Class-Incremental Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 7.0,
+  "overall": 6.0
+ },
+ "one_line": "平均adapter合并+质心映射解决CIL原型漂移，但创新有限且实验不严谨",
+ "innovations": [
+  "Adapter merging 采用增量平均 ω̄_t=(1-1/t)ω̄_{t-1}+(1/t)ω_t，并加 initial weight replacement：首个任务训完后把 ω_init 直接换成 ω_1，后续任务都从 ω_1 出发，借此让各任务训练轨迹落在同一低损盆地（用 ω=uω_{t-1}+vω_t+(1-u-v)ω_{t+1} 的插值误差图佐证）",
+  "质心原型映射解决原型不可算问题：旧类原型 P_i(Ā_t) 在现子空间内算不出来，改用可算的当前任务原型差估计一个全局平移 P̂ = E[P_t(Ā_t)-P_t(Ā_i)]，对所有 i<t 做仿射修正 P̂_i(Ā_t)=P_i(Ā_i)+P̃，把跨子空间的测试时漂移变成一个共享偏移向量",
+  "早停策略：利用 1/t→0 后 ω_t 与 ω̄_t 趋同、且远处旧任务原型（如 P_5(Ā_5)）替代时余弦相似度仍高这一观察（Fig.4），超过阈值 L 后停止合并，把训练重算成本压住"
+ ],
+ "method_framework": "逐任务训独立 LoRA 式 bottleneck adapter（MLP 残差并联，ReLU 夹在上下投影间）；首任务后把 ω_init 替换为 ω_1；每任务结束用平均合并更新融合 adapter 作为共享子空间；在该子空间用验证集算当前任务类原型，用当前任务在两个子空间的质心差作为仿射偏移去映射旧类原型，配余弦分类器；L 步后早停。",
+ "experiment_framework": "CIFAR-100、CUB、ImageNet-R、ImageNet-A、VTAB，ViT-B/16(IN-21K) 骨干，exemplar-free 设定，B-m Inc-n 切分；基线 Finetune/Finetune Adapter/L2P/DualPrompt/CODA-Prompt/SimpleCIL/APER/EASE；指标 Ā、A_T 与推理耗时（Task 40 的 IN-R）。",
+ "takeaways": [
+  "「首任务训完把 adapter 初值换成首任务权重再让后续任务从它出发」这个小改动（initial weight replacement）是让平均合并成立的必要条件，成本几乎为零，却直接影响跨任务低损盆地是否形成——很干净的工程洞见。",
+  "「旧类原型在当前子空间算不出来 → 用当前任务在两个子空间的质心差当共享仿射偏移去映射」是针对无样例 CIL 里原型漂移的实用解法，思路可迁移到任何「表征空间随任务漂移但旧统计量需复用」的场景。",
+  "把推理时间做成与任务数无关的硬指标（Table 2 报 23.5s vs EASE 916.5s，39×）并用同一张表同时给 Ā/A_T，让「精度-时延」折中可复核，这种双轴评测值得沿用。"
+ ],
+ "weaknesses": [
+  "合并方式就是 model soup 的平均（引 [51]），早期停止阈值 L 的选择依据是「1/t 系数已趋零」+ 远处原型余弦相似度仍高，两者都是启发式；整篇没有 loss 或界来支撑「平均后的 adapter 为何不遗忘」， novelty 主要是把已有 merging 用到 exemplar-free CIL 并补上一个 prototype 映射。",
+  "Table 1 里 ACMap 相对 EASE 的优势集中在 IN-R(+0.79 Ā)、IN-A(+0.10/+1.15)、VTAB(-2.4) 等小数位波动范围内，CUB B0 Inc10 上 91.59 对 EASE 92.23 反而更低；也就是说主 claim「matches SOTA」实质是持平，真正稳定的收益在推理时延而非精度，但摘要把 accuracy 与 speed 并列为同等贡献。",
+  "Table 1 的对比方法数值直接抄自 [59]（EASE 论文）而 ACMap 自己跑 5 次取平均（且未报标准差），两边种子/超参不完全对齐，可比性存疑；VTAB 上第四任务数据量大导致第四任务后掉点这一失败原因只在正文口述、无对应消融；正文在 5.4 消融节中途截断，去掉 initial weight replacement / 关掉质心映射的对照表与 L 敏感性曲线均未完整呈现。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "适配器合并解决CIL原型漂移，方法可迁移到可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

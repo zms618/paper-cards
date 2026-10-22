@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Subquadratic Algorithms and Hardness for Attention with any Temperature.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Subquadratic Algorithms and Hardness for Attention with any Temperature.pdf",
+ "title": "Subquadratic Algorithms and Hardness for Attention with any Temperature",
+ "scores": {
+  "novelty": 7,
+  "depth": 8,
+  "evidence": 4,
+  "relevance": 4.0,
+  "overall": 5.8
+ },
+ "one_line": "理论证明Attention在常数头维度下次平方可解，大维度下条件最优",
+ "innovations": [
+  "给出常数头维度d=O(1)下首个真次平方Attention算法：Õ(n^{2-1/d}·polylog(B/ε))，运行时间随输入值大小B多项式级而非指数级缩放",
+  "将Attention梯度计算归约为Attention计算的O(d)次调用，结合主算法得到完整LLM训练过程的次平方算法",
+  "在SETH假设下证明强下界：即使d=2^{Ω(log*n)}，Attention仍需n^{2-o(1)}时间，并在d=poly(n)时证明标准O(n²d)算法最优"
+ ],
+ "method_framework": "上界方面：基于Max-IP（最大内积）问题的经典近似算法，将Attention计算分解为多个维度子问题，通过分级网格划分和邻域搜索实现次平方时间。下界方面：将Bichromatic Max-IP问题归约到Attention计算，利用已知的Max-IP在SETH下的难度结果推导Attention的复杂度下界。",
+ "experiment_framework": "纯理论论文，无实验。证明覆盖三种regime：(1)常数d的上界算法；(2)超常数d=2^{Ω(log*n)}的SETH下界；(3)d=poly(n)时标准算法的最优性证明。",
+ "takeaways": [
+  "在常数头维度下，任意温度的Attention都可以在次平方时间内近似计算，且运行时间仅随输入值大小多对数增长",
+  "当头维度超过2^{Ω(log*n)}时，在SETH假设下不存在真正的次平方Attention算法，界定了快速Attention的能力边界",
+  "大维度场景下标准O(n²d)算法是条件最优的，关闭了此前n²下界与n²d上界之间的gap"
+ ],
+ "weaknesses": [
+  "纯理论工作，算法的实际工程可行性和常数因子未讨论，距离实用快速Attention有较大差距",
+  "次平方算法的指数依赖1/d在d略大时（如d=8）收益已有限，对实际Transformer头维度（通常d=64或128）无直接指导意义",
+  "SETH等细粒度复杂度假设的实际可信度存在争议，下界结论的绝对意义有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "纯理论复杂度分析，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

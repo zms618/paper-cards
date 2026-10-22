@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/TSP-Mamba_The Travelling Salesman Problem Meets Mamba for Super-resolution.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/TSP-Mamba_The Travelling Salesman Problem Meets Mamba for Super-resolution.pdf",
+ "title": "TSP-Mamba The Travelling Salesman Problem Meets Mamba for Super-resolution",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "TSP优化Mamba扫描路径提升超分，但泛化与鲁棒性验证不足",
+ "innovations": [
+  "将TSP问题引入Mamba框架，实现局部最优扫描路径",
+  "设计TSP-LSTM模块进行内容自适应传播",
+  "简化TSP算法提高计算效率"
+ ],
+ "method_framework": "TSP-Mamba通过TSP-LSTM模块为每个图像块寻找最优扫描路径，结合双向LSTM进行局部信息聚合，再通过2D-SSM进行全局Mamba风格聚合",
+ "experiment_framework": "在DIV2K训练，Set5/14/BSD100/Urban100/Manga109测试，PSNR/SSIM指标，与MambaIR等SOTA方法对比",
+ "takeaways": [
+  "局部结构感知对Mamba性能提升显著",
+  "简化TSP算法能在保证效果的同时大幅降低计算复杂度",
+  "轻量级模型设计对实际应用至关重要"
+ ],
+ "weaknesses": [
+  "TSP路径搜索计算复杂度仍较高",
+  "仅验证了超分辨率任务，泛化能力有限",
+  "未充分探讨模型在不同噪声和退化类型下的鲁棒性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "超分任务与可靠性主线无交点，仅是方法迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

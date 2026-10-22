@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/FEDRACE_A Hierarchical and Statistical Framework for Robust Federated Learning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/FEDRACE_A Hierarchical and Statistical Framework for Robust Federated Learning.pdf",
+ "title": "FEDRACE: A Hierarchical and Statistical Framework for Robust Federated Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "分层统计网络与偏差检测提升联邦学习鲁棒性，但计算复杂度高",
+ "innovations": [
+  "HStat-Net分层网络将冻结特征转化为紧凑线性可分表示",
+  "DevGuard基于广义线性模型的统计偏差检测机制",
+  "自适应阈值与随机多数投票增强检测可靠性"
+ ],
+ "method_framework": "FEDRACE包含HStat-Net和DevGuard两部分：HStat-Net通过冻结预训练特征提取器、可训练统计投影层和轻量任务头构建；DevGuard在服务器端使用GLM分析客户端预测偏差检测恶意客户端。",
+ "experiment_framework": "在CIFAR-100、Food-101和Tiny ImageNet数据集上评估，对比多种防御方法，使用准确率、攻击成功率、后门准确率等指标。",
+ "takeaways": [
+  "分层表示学习可增强特征可分离性，提高模型鲁棒性",
+  "基于统计偏差的检测方法能有效识别语义不一致的恶意客户端"
+ ],
+ "weaknesses": [
+  "方法计算复杂度较高，每轮复杂度为O(KN(C + log N))",
+  "仅针对部分冻结模型场景，未考虑全模型训练情况"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.0,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

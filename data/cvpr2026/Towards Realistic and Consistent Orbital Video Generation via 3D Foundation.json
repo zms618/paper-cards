@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/Towards Realistic and Consistent Orbital Video Generation via 3D Foundation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Towards Realistic and Consistent Orbital Video Generation via 3D Foundation.pdf",
+ "title": "Towards Realistic and Consistent Orbital Video Generation via 3D Foundation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "3D先验注入SVD模型提升轨道视频一致性，但泛化性存疑",
+ "innovations": [
+  "引入3D基础模型先验作为视频生成的辅助约束",
+  "设计多尺度3D适配器注入形状特征",
+  "使用双尺度潜在特征提供全局结构指导和局部几何细节"
+ ],
+ "method_framework": "基于SVD视频扩散模型，通过3D基础模型提取全局潜在向量和体积特征，利用多尺度3D适配器通过交叉注意力注入到视频生成模型中",
+ "experiment_framework": "在Objaverse-XL和GSO数据集上评估，与SV3D、Hi3D等基线比较PSNR、SSIM、LPIPS、CLIP-S和MEt3R指标",
+ "takeaways": [
+  "3D先验能有效提升多视图一致性和形状真实感",
+  "注意力机制适配器能保留预训练模型的时间先验"
+ ],
+ "weaknesses": [
+  "依赖特定3D基础模型(Hunyuan3D)的泛化能力",
+  "未充分评估在真实场景中的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频生成与可靠性主线无关，仅3D先验注入有可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

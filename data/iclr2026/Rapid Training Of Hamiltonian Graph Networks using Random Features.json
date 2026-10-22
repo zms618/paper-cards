@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Rapid Training Of Hamiltonian Graph Networks using Random Features.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rapid Training Of Hamiltonian Graph Networks using Random Features.pdf",
+ "title": "Rapid Training of Hamiltonian Graph Networks using Random Features",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.9
+ },
+ "one_line": "随机特征加速HGN训练，但非线性系统精度损失未充分量化。",
+ "innovations": [
+  "提出用随机特征-based参数构造替代Adam/RMSProp/L-BFGS等迭代优化来训练哈密顿图网络(HGN)。",
+  "通过随机特征采样与线性求解器分层训练，保持置换、旋转、平移等物理不变性。",
+  "实证8节点小系统训练即可零样本泛化到4096节点大系统，无需重训。"
+ ],
+ "method_framework": "对HGN各层先用随机特征采样固定部分参数，再用最小二乘线性求解训练其余线性部分，完全避免迭代梯度下降，从而大幅加速物理系统图网络的训练。",
+ "experiment_framework": "对比15种优化器，在N-body弹簧/分子等多至3维、10000粒子系统上评测精度与训练速度；用NeurIPS2022基准验证通用性，并测8→4096节点零样本泛化。",
+ "takeaways": [
+  "对物理HGN，随机特征+线性求解可在精度相当时比15种迭代优化器快150-600倍。",
+  "小系统训练的HGN可零样本扩展到大系统，挑战了梯度下降在物理网络训练中的主导地位。"
+ ],
+ "weaknesses": [
+  "属物理信息GNN/训练效率方向，与可靠性主线（鲁棒/可信/医学影像）关联弱。",
+  "随机特征表示能力有上限，对强非线性/复杂多体系统的精度损失边界在前9页未充分量化。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "物理系统训练效率与可靠性主线关联弱，无可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

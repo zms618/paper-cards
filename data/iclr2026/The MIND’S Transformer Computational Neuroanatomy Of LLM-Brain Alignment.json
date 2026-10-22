@@ -1,0 +1,41 @@
+{
+ "title": "The MIND's Transformer: Computational Neuroanatomy of LLM-Brain Alignment",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.0,
+  "overall": 6.0
+ },
+ "one_line": "LLM中间态与脑区对齐分析，发现次优表征并提出新框架",
+ "innovations": [
+  "首次对 transformer block 内部（从 LayerNorm、注意力到 FFN 的 13 种中间态）做系统的‘计算神经解剖学’分析，跨 5 个模型族 21 个 SOTA LLM",
+  "三个发现：常用 hidden state 竟次优（>90% 感觉/语言脑 voxels 由未被研究的中间态更好解释）；block 内早期注意力态对应感觉皮层、后期 FFN 态对应联合皮层，镜像皮层加工层级；RoPE 特异增强听觉流对齐（带 RoPE 的 per-head query 解释 74% 听觉皮层 vs 不带 RoPE 8%）",
+  "提出 MindTransformer1 特征选择框架，从全部中间态学习脑对齐表征，在初级听觉皮层的相关性提升超过 456 倍模型缩放带来的增益"
+ ],
+ "method_framework": "对每个 transformer block 逐层抽取 13 种中间计算态表征，用编码/回归模型预测人类 fMRI 体素活动，比较各中间态对不同脑区的解释力；据此做特征选择得到脑对齐表征 MindTransformer1。",
+ "experiment_framework": "21 个 SOTA LLM、5 个模型族；人 fMRI 语言加工数据；以脑活动预测相关性(r)为指标；对比不同中间态、是否带 RoPE、有无 MindTransformer 特征选择的对齐度，并与模型 scaling 的增益做对照。",
+ "takeaways": [
+  "直接拿最后一层 hidden state 做脑对齐是次优的，block 内部更细粒度的中间态能解释远更多脑区",
+  "transformer block 内部存在与皮层层级对应的加工顺序：注意力→感觉、FFN→联合皮层",
+  "RoPE 获得首个神经生物学层面的验证——它特异增强听觉加工流的对齐"
+ ],
+ "weaknesses": [
+  "对齐/相关性是观测性的，无法证明 LLM 与脑‘用相同机制加工’，高相关仍可能是巧合；跨 21 模型的一致性虽强，但 fMRI 数据来源单一、被试量有限",
+  "MindTransformer1 的增益主要在初级听觉皮层，其它脑区提升幅度未充分展示；特征选择框架本身未与已有脑对齐特征工程做消融对比",
+  "relevance 给 5：主题是 LLM-脑对齐的可解释性/认知神经科学，与可靠性(鲁棒/验证/不确定性/幻觉)×落地域(医学影像/多模态推理)主线不直接相关，虽用 fMRI 但非医学影像诊断任务，按规则不抬分"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/The MIND’S Transformer Computational Neuroanatomy Of LLM-Brain Alignment.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/The MIND’S Transformer Computational Neuroanatomy Of LLM-Brain Alignment.pdf",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "LLM-脑对齐分析，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Neural Attention Search.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Neural Attention Search.pdf",
+ "title": "Neural Attention Search",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "可学习注意力掩码分配token角色，减少KV缓存但计算开销增加。",
+ "innovations": [
+  "引入三种可学习的token类型（全局、局部、滑动窗口）",
+  "将token角色分配视为神经架构搜索问题",
+  "端到端联合优化token类型和模型权重"
+ ],
+ "method_framework": "设计搜索空间包含三种token类型，使用Gumbel-Softmax采样和注意力分数层，构建可学习的乘法注意力掩码，通过正则化控制稀疏度。",
+ "experiment_framework": "PG-19语言建模基准测试，对比全Transformer、StreamingLLM和H2O，评估困惑度与KV缓存大小的关系。",
+ "takeaways": [
+  "将token角色分配视为优化问题而非预定义规则",
+  "联合优化token类型和模型权重的方法",
+  "正则化参数λ控制稀疏度的有效性"
+ ],
+ "weaknesses": [
+  "实验仅限于语言模型，未验证多模态场景",
+  "未充分探讨方法在不同模型架构上的泛化能力",
+  "计算开销增加（注意力分数层）"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

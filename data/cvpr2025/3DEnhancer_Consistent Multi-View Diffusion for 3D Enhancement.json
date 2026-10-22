@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/3DEnhancer_Consistent Multi-View Diffusion for 3D Enhancement.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/3DEnhancer_Consistent Multi-View Diffusion for 3D Enhancement.pdf",
+ "title": "3DENHANCER: Consistent Multi-View Diffusion for 3D Enhancement",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "多视角DiT增强，组合现有方法，一致性证据不足",
+ "innovations": [
+  "位姿感知编码器：把每视角的 Plücker 坐标 (d, o×d) 与加噪后的 LQ 图沿通道拼接，送入可训练多视角编码器 E_ψ，再以 learnable copy 注入冻结的 PixArt-Σ DiT，实现条件化多视角增强",
+  "近视角极线聚合：对相邻两视角 k∈{v−1,v+1} 用基础矩阵约束 j^T F i = 0 在极线上做余弦距离最近邻匹配得到对应图 M，再按物理相机距离与 token 特征相似度混合的权重 w 线性聚合，并用 straight-through estimator 绕过匹配不可导",
+  "以可控噪声等级 δ 作为增强强度旋钮，配合纹理退化（下采样/模糊/噪声/JPEG）、网格畸变、相机抖动、色偏、半透明遮挡五类增广，把 2D 真实退化管线迁移到多视角域，并支持区域 inpainting 与文本驱动的纹理级编辑"
+ ],
+ "method_framework": "以 PixArt-Σ DiT 为骨干，LQ 多视角图连同 Plücker 位姿与可控噪声经位姿感知编码器注入；DiT 块内用多视角 row attention 做隐式跨视角交互、近视角极线聚合做显式 token 传播，两者按 0.5 融合输出增强视角",
+ "experiment_framework": "训练用 G-buffer Objaverse 约 400K 物体，测 500 合成物体 + 400 in-the-wild 实例(GSO/SD/网络)；基线 RealESRGAN/StableSR/RealBasicVSR/Upscale-A-Video（均在 Objaverse 微调）；指标 PSNR/SSIM/LPIPS 与 FID/IS/MUSIQ",
+ "takeaways": [
+  "把对比基线统一在 Objaverse 上微调后再比，是消除数据域差异造成的伪增益的标准做法，值得照搬",
+  "显式几何约束（极线 + 最近邻匹配）叠加隐式 attention 的双通道跨视角一致性设计，比单纯堆 dense multi-view attention 更省显存，也更容易定位失效原因",
+  "用退化增广去模拟「上游生成器会犯的错」而非只模拟物理退化，是把真实世界超分经验迁移到生成式 pipeline 的关键改造"
+ ],
+ "weaknesses": [
+  "in-the-wild 表中 RealBasicVSR 的 MUSIQ(74.07) 高于本文(73.32)，作者以定性图反驳，但未提供针对性的跨视角一致性量化指标（如重投影误差）来支撑「一致性更好」这一核心 claim",
+  "row attention 依赖「水平行≈极线」的近似，成立前提是仰角在 −5°~30°、相机 Y 轴对齐重力且视角近水平，对大俯仰或环绕视角的适用性正文未验证",
+  "只报 IS 的 ± 标准差，PSNR/SSIM/LPIPS 主表无方差；Tab.4 消融在本文截断处缺失；3D 重建质量的提升仅由 FID/IS/MUSIQ 等非参考指标间接体现，缺少与 GT 3D 资产的几何对比",
+  "核心组件（RealESRGAN 退化管线、multi-view row attention、极线 attention、DiT backbone）均直接取自已有工作，本文贡献主要是针对 3D 增强场景的组合与改造"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "3D增强与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

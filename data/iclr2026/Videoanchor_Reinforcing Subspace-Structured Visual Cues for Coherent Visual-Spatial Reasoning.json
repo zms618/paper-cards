@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Videoanchor_Reinforcing Subspace-Structured Visual Cues for Coherent Visual-Spatial Reasoning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Videoanchor_Reinforcing Subspace-Structured Visual Cues for Coherent Visual-Spatial Reasoning.pdf",
+ "title": "VideoAnchor: Reinforcing Subspace-Structured Visual Cues for Coherent Visual-Spatial Reasoning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "解决MLLM跨帧注意力不一致，强化视觉子空间线索提升空间推理",
+ "innovations": [
+  "识别当前MLLM在视觉-空间推理中的核心问题：文本到图像注意力在跨帧共享区域上不一致，导致空间关系判断错误",
+  "提出VideoAnchor方法，强化子空间结构化视觉线索，使模型在跨帧推理时保持一致的视觉锚点",
+  "在VSI-Bench等视觉空间推理基准上显著提升多种MLLM基线的性能"
+ ],
+ "method_framework": "VideoAnchor通过分析发现，现有MLLM在视觉-空间推理时，对跨帧共享视觉区域（如同一场景中的沙发）的注意力分配不一致，导致空间关系判断混乱。方法通过强化子空间结构化视觉线索，为模型提供稳定的视觉锚点，使其在多帧推理中保持一致的空间理解。具体包括：识别并强化具有空间结构意义的视觉子空间，引导注意力在跨帧间对相同场景元素保持一致激活。",
+ "experiment_framework": "任务：视频视觉-空间推理。基准：VSI-Bench。基线：InternVL2、LLaVA-Video、Qwen2.5-VL等多种MLLM。指标：空间关系判断准确率。另通过注意力可视化分析改进机制。",
+ "takeaways": [
+  "跨帧视觉注意力不一致是MLLM空间推理错误的重要原因",
+  "强化子空间结构化视觉线索能有效提升视觉-空间推理的一致性和准确率",
+  "方法可作为即插即用模块增强多种现有MLLM的空间推理能力"
+ ],
+ "weaknesses": [
+  "方法主要在室内场景的空间关系任务上验证，更复杂的3D空间推理未充分测试",
+  "子空间结构的识别和强化机制较依赖人工设计，自适应能力有限",
+  "仅在视频场景下验证，单帧图像的空间推理是否受益未展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "提升MLLM空间推理一致性，触及可靠性主线与多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

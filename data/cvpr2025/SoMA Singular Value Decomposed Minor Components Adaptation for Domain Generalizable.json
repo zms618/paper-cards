@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/SoMA Singular Value Decomposed Minor Components Adaptation for Domain Generalizable.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/SoMA Singular Value Decomposed Minor Components Adaptation for Domain Generalizable.pdf",
+ "title": "SoMA Singular Value Decomposed Minor Components Adaptation for Domain Generalizable",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "SVD分解小分量微调提升域泛化，但特征级对齐不足",
+ "innovations": [
+  "基于SVD分解预训练权重，仅微调小奇异分量保留通用知识",
+  "冻结早期块保持域不变特征",
+  "退火权重 decay 平衡泛化与判别性"
+ ],
+ "method_framework": "对预训练权重进行SVD分解，冻结主要奇异分量，仅微调小奇异分量对应的LoRA适配器，结合冻结早期块和退火权重 decay策略",
+ "experiment_framework": "在DGSS和DGOD任务上评估，使用GTAV、SYNTHIA等合成数据集训练，在Cityscapes等真实数据集测试，比较mIoU/mAP指标",
+ "takeaways": [
+  "奇异值分析揭示预训练权重中通用知识与特定特征的分布",
+  "早期块冻结策略有效保留域不变特征",
+  "参数高效微调方法在域泛化任务中的重要性"
+ ],
+ "weaknesses": [
+  "仅关注权重级和块级的域不变性，未考虑特征级的对齐",
+  "退火权重 decay策略的参数选择可能影响性能",
+  "实验主要在视觉任务上验证，泛化性有待进一步探索"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "域泛化方法触及可靠性主线，但特征级对齐不足",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

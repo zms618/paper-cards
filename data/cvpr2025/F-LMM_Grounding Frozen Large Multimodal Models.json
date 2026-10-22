@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2025/F-LMM_Grounding Frozen Large Multimodal Models.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/F-LMM_Grounding Frozen Large Multimodal Models.pdf",
+ "title": "F-LMM Grounding Frozen Large Multimodal Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "冻结LMM参数实现视觉定位，保留对话能力",
+ "innovations": [
+  "冻结LMM参数避免对话能力下降",
+  "利用注意力图作为分割先验",
+  "轻量级mask解码器与优化器",
+  "关键词选择器自动化定位过程"
+ ],
+ "method_framework": "冻结LMM参数，提取词-图像注意力图作为分割先验，通过轻量级CNN解码器和SAM优化器生成掩码，线性层选择关键词",
+ "experiment_framework": "RefCOCO(+/g)和PNG数据集训练，MME/MMBench/LLaVA-In-the-Wild/MMVet评估对话能力，cIoU和mIoU评估定位能力",
+ "takeaways": [
+  "冻结模型参数可保留原始对话能力",
+  "注意力图包含有意义的分割先验信息",
+  "轻量级修改可实现有效视觉定位"
+ ],
+ "weaknesses": [
+  "仅使用基础定位数据集训练",
+  "复杂场景下性能仍有提升空间",
+  "未充分讨论计算效率"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "轻量视觉定位与多模态模型可靠性方法有交点但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

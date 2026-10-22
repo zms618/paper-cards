@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Defending LVLMs Against Vision Attacks Through Partial-Perception Supervision.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Defending LVLMs Against Vision Attacks Through Partial-Perception Supervision.pdf",
+ "title": "Defending LVLMs Against Vision Attacks Through Partial-Perception Supervision",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "黑盒提示策略用局部感知监督LVLM响应，抗攻击但依赖经验假设。",
+ "innovations": [
+  "指出裁剪式多数投票在干净样本上会因局部图像语义失真而损害响应质量这一痛点。",
+  "提出用局部感知响应作为监督信号引导原图响应，而非直接投票，兼顾抗攻击与干净性能。",
+  "方法黑盒、免训练、几乎零部署成本，跨 3 个流行 LVLM、6 个数据集平均降低攻击成功率 76.3%。"
+ ],
+ "method_framework": "利用被攻击图像对裁剪/局部修改敏感这一特性：让模型先对多个局部裁剪图像生成响应，把这些响应作为引导（提示）去监督模型对完整原图的响应；攻击存在时局部感知能给出“去攻击化”的信号从而纠偏，干净输入时模型自信地维持原响应。全程推理期、黑盒、无需训练。",
+ "experiment_framework": "在 3 个主流 LVLM、6 个视觉攻击数据集上评测；对比 SmoothVLM 等多数投票基线；指标为攻击成功率下降幅度与干净样本响应质量，报告平均 ASR 降低 76.3%。",
+ "takeaways": [
+  "把局部感知从“投票素材”改为“监督信号”，在强抗攻击的同时避免破坏干净样本性能。",
+  "黑盒免训练使其部署成本极低、可跨多个 LVLM 直接套用。",
+  "裁剪/局部修改对攻击的敏感性可被进一步利用为推理期防御信号。"
+ ],
+ "weaknesses": [
+  "防御依赖“攻击对局部裁剪敏感”这一经验假设，对未来专为绕过裁剪而设计的攻击的稳健性未充分评估。",
+  "本质为推理期提示策略，对多图/高分辨率/长文档场景的额外推理开销与稳定性交代有限。",
+  "虽为多模态 LLM 视觉防御，但未直接在医学影像等高风险落地域上做实测验证。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

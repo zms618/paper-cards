@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Adaptive Keyframe Sampling for Long Video Understanding.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Adaptive Keyframe Sampling for Long Video Understanding.pdf",
+ "title": "Adaptive Keyframe Sampling for Long Video Understanding",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "将关键帧选择优化为相关性+覆盖度，但收益小且缺乏理论支撑",
+ "innovations": [
+  "关键帧选择形式化为 argmax_{|I|=M} Σ_{t∈I} r(Q,F_t)+λ·c(I)：r 用 BLIP/CLIP 的 image-text matching 打（与提示的相关性），c(I) 借 Ripley's K 函数用递归二分割近似（每层对各区间数关键帧数 m1/m2 加 |m1−m2| 惩罚，深度 L≤⌈log2 M⌉），把'选帧要覆盖时间轴'变成可优化项而非均匀采样的隐含假设。",
+  "ADA 自适应分配算法：比较'全帧均分得分 s_all'与'top-M 均分得分 s_top'，若 s_top−s_all 超过阈值 s_thr 就切到 top-M 分支（相关性主导），否则把预算均分给两个子段递归；以此隐式替代难以调的 λ，并自然退化出 TOP（λ=0）、BIN（λ→∞）与 UNI（r 为常数）三个基线。",
+  "免训练即插即用：只替换送入 MLLM 的帧、完全冻结 Qwen2-VL/LLaVA-OV/LLaVA-Video（含 LLaVA-Video-72B 对照），LLaVA-Video-7B+AKS 在 LongVideoBench 达 62.7%，超过无 AKS 的 LLaVA-Video-72B（61.9 量级）与用 256 帧的 GPT-4V；并用候选帧 1→0.5/0.25/0.125/0.1 fps 降采样（表 3）与三种 VL 打分模型（BLIP/Sevila/CLIP，表 4）做诊断，指出 AKS 更接近'带相关性的近似均匀重采样'。"
+ ],
+ "method_framework": "视频按 1 fps 抽候选帧 → CLIP/BLIP 视觉编码器取 F_t、与文本提示 Q 算 ITM 相似分 r(Q,F_t) → ADA 递归二分割（判据 s_top−s_all vs s_thr）决定每子段分几帧 → 选中 M 帧送 MLLM 的视觉编码器+线性投影+LLM（冻结）→ 输出答案；全程不训练任何参数。",
+ "experiment_framework": "LongVideoBench val 与 VideoMME（时长可超 1 小时，选择题，不启用字幕）；三个 7B 帧基 MLLM 作基线（Qwen2-VL 32 帧、LLaVA-OV 32 帧、LLaVA-Video 64 帧）；指标 VQA 准确率；另与 GPT-4V/Gemini-1.5、PLLaVA、MiniCPM-V 等对比。",
+ "takeaways": [
+  "'相关性 + 覆盖度'的双目标 + 递归二分割预算分配，是给固定 token 预算做输入筛选最简洁的公式化写法，lambda 换成可判定的 s_thr 更实用。",
+  "把 UNI/TOP/BIN 作为特例纳入同一目标，可以在论文与工程里都直接比较三种采样风格，作者用它解释了两个基准的题型差异（LVB 偏单点 → TOP 好；VideoMME 偏多次出现 → BIN 好）。",
+  "冻结 MLLM 只改输入帧的策略，能在 7B 上追平/超过 72B 与闭源 256 帧模型，属低成本的'输入侧 pre-filtering'路线。"
+ ],
+ "weaknesses": [
+  "r(Q,F_t) 用独立的 BLIP/CLIP ITM 打分，与目标 MLLM 的视觉-语言空间并不对齐，作者自陈可用 CLIP 替换；s_thr 与停止深度 L 的判据没有任何理论依据（只是 s_top−s_all 的阈值），覆盖度 c(I) 是 Ripley's K 的松弛近似（近似成'是否同 bin'），目标函数的近似质量未被量化。",
+  "收益幅度小且不稳定：表 2 中 ADA 在 VideoMME 65.3 只比 BIN 65.2 高 0.1、比 UNI 64.4 高 0.9，而 TOP 在 LVB 已达 62.4（ADA 62.7）；表 3 显示候选帧降到 0.1 fps 仍高于基线（LVB 上 61.x/57.9/58.9 对照基线的 57.4/…/64.4），说明打分器可能只是在做近似均匀重采样，额外 ITM 计算量的收益-成本没有显著性检验（无方差、无 seed）。",
+  "缺少与'token merge/token pooling'类压缩方法的定量交叉比较（正文说放补充材料），也缺少同一预算下随机选帧 vs AKS 的重复试验分布；此外 r 的打分模型在不同基准上最优选不同（BLIP 在 LVB、CLIP 在 V-MME）,等于为两个评测集各选了一套配置，泛化声明存疑；正文在 4.4 节'LongVideoBench val 16 61.'处截断，表 3、表 4 完整数值与 token 压缩类方法的交叉比较均无法核对。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "视频帧采样优化，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

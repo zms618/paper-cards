@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/VULNER_Toward Safer Diffusion Language Models Discovery and Mitigation Of Priming VULNER.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/VULNER_Toward Safer Diffusion Language Models Discovery and Mitigation Of Priming VULNER.pdf",
+ "title": "Toward Safer Diffusion Language Models: Discovery and Mitigation of Priming Vulnerability",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "揭示扩散模型中间token启动漏洞，提出恢复对齐缓解方法。",
+ "innovations": [
+  "首次发现扩散语言模型(DLM)的启动漏洞(priming vulnerability)：中间去噪步骤中出现肯定性token即可引导后续生成转向有害响应，即使对齐过的模型也会被绕过",
+  "证明该漏洞使现有的基于优化的越狱攻击能在DLM上成功，而此前DLM被认为更安全",
+  "提出恢复对齐(Recovery Alignment)方法：训练模型从含肯定性token的污染中间状态中生成安全响应，显著缓解漏洞且几乎不影响任务性能"
+ ],
+ "method_framework": "DLM采用并行迭代去噪生成token。作者发现：如果在中间步骤注入对有害查询的肯定性token（如\"Sure\"），后续去噪过程会被推向有害方向，即使模型经过安全对齐。这与自回归模型的prefilling攻击不同——DLM的并行机制使中间肯定token通过双向注意力影响所有其他token。缓解方法Recovery Alignment：在训练时主动构造含肯定token的污染中间状态，训练模型从中恢复到安全响应。",
+ "experiment_framework": "模型：对齐后的扩散语言模型。攻击：注入肯定性token、基于优化的越狱攻击。基线：标准对齐DLM。缓解：Recovery Alignment。指标：越狱成功率、任务性能保持度。",
+ "takeaways": [
+  "扩散语言模型并非天然更安全——其并行去噪机制引入了自回归模型没有的启动漏洞",
+  "仅注入几个肯定性中间token即可绕过安全护栏，攻击成本极低",
+  "恢复对齐方法能有效缓解该漏洞，同时提升对传统越狱攻击的鲁棒性"
+ ],
+ "weaknesses": [
+  "仅在特定DLM架构上验证，不同masking策略的DLM漏洞严重程度可能不同",
+  "恢复对齐需要额外训练数据和步骤，增加了安全对齐成本",
+  "缓解方法是否完全消除漏洞还是仅提升了攻击门槛需进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.78,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "扩散模型漏洞缓解直接关联可靠性主线，方法设计具可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

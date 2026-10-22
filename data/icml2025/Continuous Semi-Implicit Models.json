@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Continuous Semi-Implicit Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Continuous Semi-Implicit Models.pdf",
+ "title": "Continuous Semi-Implicit Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "连续半隐式模型实现免仿真训练，但核设计依赖经验，蒸馏加速分析不足",
+ "innovations": [
+  "提出CoSIM连续半隐式模型，将堆叠半隐式层扩展为连续时间框架",
+  "设计连续转移核实现免仿真(simulation-free)高效训练，解决序贯训练收敛慢的问题",
+  "证明CoSIM在精心设计的转移核下具有一致性，提供分布层面的生成模型多步蒸馏新方法"
+ ],
+ "method_framework": "(1)将离散堆叠的半隐式层扩展为连续时间过程，用连续转移核描述状态演化；(2)通过设计转移核使得连续模型免仿真可训练——无需逐步模拟即可优化；(3)利用CoSIM的一致性性质实现扩散模型的多步蒸馏——在分布层面将多步扩散蒸馏为少步采样。",
+ "experiment_framework": "ImageNet 512x512图像生成；对比现有扩散模型加速方法；指标包括FD-DINOv2等生成质量指标；验证蒸馏后的采样加速比。",
+ "takeaways": [
+  "连续半隐式模型比离散堆叠版本训练更高效，收敛更快",
+  "CoSIM的一致性性质提供了分布层面的扩散模型蒸馏新途径",
+  "在FD-DINOv2指标上优于现有扩散加速方法"
+ ],
+ "weaknesses": [
+  "仅在图像生成上验证，其他模态的半隐式建模效果未知",
+  "转移核的设计依赖人工经验，缺乏系统性的最优设计方法",
+  "蒸馏后的采样加速比与质量权衡的分析不够充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.75,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

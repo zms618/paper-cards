@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/FedClean_A General Robust Label Noise Correction for Federated Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/FedClean_A General Robust Label Noise Correction for Federated Learning.pdf",
+ "title": "FedClean: A General Robust Label Noise Correction for Federated Learning",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.1
+ },
+ "one_line": "FedClean结合两阶段校正与加权聚合提升联邦学习鲁棒性",
+ "innovations": [
+  "两阶段标签校正方案（本地推断标签和全局模型主导）",
+  "协作样本级损失函数评估标签校正置信度",
+  "自适应样本大小加权聚合方法(ASSA)"
+ ],
+ "method_framework": "FedClean首先使用本地集中式噪声标签学习选择干净样本训练全局模型，然后通过两阶段校正方案从本地噪声学习和全局模型两个角度校正噪声标签，并采用ASSA方法减少噪声标签影响。",
+ "experiment_framework": "在CIFAR-10/100和Clothing1M数据集上评估，使用ResNet架构，对比基线方法包括FedNoiL、FedCorr等，准确率作为主要指标。",
+ "takeaways": [
+  "协作样本级损失函数可有效评估标签校正置信度",
+  "自适应样本加权聚合能减少噪声客户端对全局模型的影响"
+ ],
+ "weaknesses": [
+  "方法依赖Mixup技术，可能影响模型对原始数据的理解",
+  "校正率参数σ1和σ2需要仔细调整，可能影响性能"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

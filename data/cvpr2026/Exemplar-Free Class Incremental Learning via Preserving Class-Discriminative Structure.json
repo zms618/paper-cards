@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Exemplar-Free Class Incremental Learning via Preserving Class-Discriminative Structure.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Exemplar-Free Class Incremental Learning via Preserving Class-Discriminative Structure.pdf",
+ "title": "Exemplar-Free Class Incremental Learning via Preserving Class-Discriminative Structure",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "增量学习通过保持类判别结构缓解遗忘，但依赖预训练模型",
+ "innovations": [
+  "提出类判别结构概念，包含类内结构和类间结构",
+  "自适应原型校正(APR)机制保持类内结构",
+  "结构一致性约束(SCC)机制保持类间结构",
+  "统一框架同时解决两种结构退化问题"
+ ],
+ "method_framework": "基于预训练ViT模型，结合LoRA参数高效微调，通过APR校正旧类原型分布，SCC保持新样本与旧原型间的角度关系，形成统一框架。",
+ "experiment_framework": "在ImageNet-A、Cars-196等6个数据集上评估，使用Last-Acc和Inc-Acc指标，与多种基线方法对比，并进行消融实验。",
+ "takeaways": [
+  "类判别结构(类内+类间)是灾难性遗忘的关键原因",
+  "不同场景下类内/类间结构的重要性不同",
+  "新类位移模式可用于推断旧类位移"
+ ],
+ "weaknesses": [
+  "依赖预训练模型，从零开始训练效果未知",
+  "计算复杂度较高，需要维护原型分布",
+  "未探索不同类别数量下的性能变化"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "增量学习缓解遗忘，但依赖预训练模型，可靠性主线部分相关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

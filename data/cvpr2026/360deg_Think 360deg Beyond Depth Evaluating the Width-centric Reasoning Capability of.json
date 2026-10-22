@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/360deg_Think 360deg Beyond Depth Evaluating the Width-centric Reasoning Capability of.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/360deg_Think 360deg Beyond Depth Evaluating the Width-centric Reasoning Capability of.pdf",
+ "title": "Think360° Beyond Depth: Evaluating the Width-centric Reasoning Capability of MLLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "将推理拆为width/depth维度，用ToT节点评分MLLM横向探索能力",
+ "innovations": [
+  "把推理重新拆成depth(单链连续推进)与width(分支-剪枝-回溯的横向探索)两个正交维度，并用skip connection、dropout、反向传播分别对应到剪枝、随机丢弃与回传修正，给『宽度』一个可操作定义而不是形容词",
+  "ToT-Eval两阶段过程打分：先让GPT-4o从模型响应中逐句抽出推理节点建层级树，再逐节点判其逻辑正确/事实正确/与父节点一致，width=同层兄弟节点平均通过率、depth=最长路径平均通过率，与pass@1并行上报",
+  "数据构建走规则关键词粗筛→GPT-4o按认知技能(试错/假设检验/分治/分支限界)提示细筛→人工复核三步；把证明类题重写成可数值验证题、把谜题/游戏的枚举状态改成选择题，让非标准答案源也能客观评分"
+ ],
+ "method_framework": "正则先抽可验证答案、失败再交LLM-judge；GPT-4o从响应里抽推理节点建树，逐节点判对错，width取同层兄弟平均通过率、depth取最深路径通过率，同时记录耗时与token。",
+ "experiment_framework": "1225题(testmini 740)，5难度档×5认知技能×6题型；评12系列30+模型(GPT-4o/4.1/o1/o3、Gemini2.5、Claude4、Qwen、InternVL、Kimi等)；指标为pass@1加ToT的width/depth准确率与耗时、token。",
+ "takeaways": [
+  "在pass@1之外加一层『过程树评分』是值得借鉴的claim隔离式设计：能把『推理链推错』与『探索没铺开』两类失败分开归因",
+  "width/depth双指标与耗时、token同表呈现，直接刻画test-time scaling下效率与能力的可交换关系"
+ ],
+ "weaknesses": [
+  "ToT的建树与节点判定全交给GPT-4o自评，没有人类标注的一致性/Kappa检验，评分器自身偏差会被当成模型能力差异直接写进结论",
+  "只用740题的testmini子集且每个模型单次运行，主表没有任何置信区间或方差；题源集中在数学竞赛与谜题网站，向真实视觉任务的迁移完全没验证",
+  "『width』的判定靠关键词筛出分支句后再判通过率，没有硬判据(分支数、剪枝率、回溯次数的可验证公式)，width事实上仍是评分器的主观读数",
+  "正文在Table 3的MiMo行处截断，失败模式分析与width-depth相关性结论缺失，『模型不会横向探索』这一核心归因缺隔离实验(如固定depth只变width)"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "推理维度拆解与MLLM评估，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

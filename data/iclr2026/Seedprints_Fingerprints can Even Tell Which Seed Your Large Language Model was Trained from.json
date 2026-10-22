@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Seedprints_Fingerprints can Even Tell Which Seed Your Large Language Model was Trained from.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Seedprints_Fingerprints can Even Tell Which Seed Your Large Language Model was Trained from.pdf",
+ "title": "SeedPrints: Fingerprints Can Even Tell Which Seed Your LLM was Trained From",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "利用初始化偏置作为LLM持久指纹，实现从训练开始的谱系验证。",
+ "innovations": [
+  "指出现有指纹方法依赖训练后才涌现的post-hoc签名，在大规模预训练早期不可靠；提出初始化偏置这一更内在的指纹。",
+  "证明未训练模型即有由初始化seed诱导的可复现预测偏置，且弱信号在整个训练过程中统计可检测。",
+  "在训练全程（初始化→大规模预训练→下游适配）有效，对长时训练、域漂移、参数修改鲁棒，支持seed级区分。"
+ ],
+ "method_framework": "以随机初始化产生的预测偏置为指纹信号：不同seed初始化的未训练模型在特定输入上有可复现的偏置差异，该弱信号贯穿训练保持可检测；据此做高置信谱系验证，区别于依赖后期涌现签名的方法。",
+ "experiment_framework": "OLMo-2-7B检查点轨迹(5B-3.9T tokens)、LLA风格与Qwen风格模型；对比5个现有指纹方法；指标相似度/检测率与p值；在大规模预训练轨迹与真实指纹基准上验证对域漂移/参数修改的鲁棒性。",
+ "takeaways": [
+  "初始化本身即给LLM刻下唯一且持久的身份，是真正'Galtonian'指纹。",
+  "现有方法在预训练早期失效，而SeedPrints从初始化起即完美检测谱系。"
+ ],
+ "weaknesses": [
+  "指纹/谱系验证属模型安全/溯源方向，与幻觉抑制/推理/医学影像主线相关性中等。",
+  "依赖可访问模型前向输出与特定探针输入，对API黑盒/蒸馏攻击的防御强度需更多讨论。",
+  "前9页主要是概念与早期检测曲线，对参数修改攻击的完整鲁棒性分析需后续章节。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "模型溯源属安全方向，与可靠性主线中等相关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

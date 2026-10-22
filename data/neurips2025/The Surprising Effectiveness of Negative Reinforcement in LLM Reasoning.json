@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/The Surprising Effectiveness of Negative Reinforcement in LLM Reasoning.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/The Surprising Effectiveness of Negative Reinforcement in LLM Reasoning.pdf",
+ "title": "The Surprising Effectiveness of Negative Reinforcement in LLM Reasoning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "负强化在LLM数学推理中意外有效，但领域验证不足。",
+ "innovations": [
+  "将RLVR分解为正样本强化(PSR)和负样本强化(NSR)",
+  "发现仅使用NSR就能显著提升Pass@k性能",
+  "提出加权REINFORCE方法，增加NSR权重",
+  "通过梯度分析揭示NSR保留模型先验知识的工作机制"
+ ],
+ "method_framework": "将RLVR目标分解为PSR和NSR两个子目标，通过实验对比不同训练方法对模型行为的影响，提出加权REINFORCE方法增加NSR权重。",
+ "experiment_framework": "在MATH、AIME2025和AMC23数据集上评估Qwen2.5-Math-7B、Qwen3-4B和Llama-3.1-8B-Instruct模型，使用Pass@k指标(1-256)评估推理性能。",
+ "takeaways": [
+  "负强化(NSR)通过抑制错误响应并重新分配概率质量来保留模型多样性",
+  "仅使用NSR训练可达到与PPO和GRPO相当或更好的性能",
+  "加权REINFORCE方法简单有效，可提升复杂推理基准的整体性能"
+ ],
+ "weaknesses": [
+  "实验主要在数学推理任务上进行，未在其他领域验证",
+  "未深入探讨不同模型架构对NSR效果的影响",
+  "Llama模型在RL训练后性能下降，NSR虽缓解但未完全解决"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.625,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

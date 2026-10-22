@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Optimizing Distributional Geometry Alignment with Optimal Transport for Generative Dataset Distillation.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Optimizing Distributional Geometry Alignment with Optimal Transport for Generative Dataset Distillation.pdf",
+ "title": "Optimizing Distributional Geometry Alignment with Optimal Transport for Generative Dataset Distillation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.8
+ },
+ "one_line": "OT引导的三阶段蒸馏框架，计算复杂度高且依赖预训练模型",
+ "innovations": [
+  "将数据集蒸馏重构为最优传输距离最小化问题",
+  "OT引导的扩散采样、标签-图像对齐软重标记、基于OT的logit匹配三阶段框架",
+  "在低/高IPC regimes下自适应调整软标签复杂度"
+ ],
+ "method_framework": "将数据集蒸馏分解为三个OT距离最小化组件：1)潜在空间OT引导扩散采样，2)标签-图像对齐软重标记，3)批量级logit OT对齐，实现全局和局部分布几何结构对齐。",
+ "experiment_framework": "ImageNet-1K/ImageNette/ImageNet-100/CIFAR-100数据集，ResNet/MobileNet/EfficientNet/Swin Transformer/ConvNeXt架构，对比生成模型和模型反转方法，使用top-1准确率指标。",
+ "takeaways": [
+  "最优传输提供几何忠实框架，保留局部模式和类内变化",
+  "软标签与蒸馏图像分布复杂度匹配可减少分布不匹配",
+  "批量级OT对齐捕获样本间关系，优于逐样本匹配"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，需要多次Sinkhorn迭代",
+  "依赖预训练生成模型，可能限制泛化能力",
+  "未充分探讨不同OT距离度量的敏感性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

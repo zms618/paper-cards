@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/PICO Reconstructing 3D People In Contact with Objects.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/PICO Reconstructing 3D People In Contact with Objects.pdf",
+ "title": "PICO Reconstructing 3D People In Contact with Objects",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "PICO框架利用接触投影优化3D人-物交互重建，但依赖外部模型",
+ "innovations": [
+  "PICO-db数据集：首个包含自然图像与3D人-物接触对应关系的数据集",
+  "接触投影方法：仅需两次点击即可将人体接触投影到物体上",
+  "PICO-fit方法：利用接触对应关系优化3D人-物交互重建，支持野外图像和新物体类别"
+ ],
+ "method_framework": "PICO-fit采用三阶段优化：1)利用接触对应关系将物体注册到人体；2)对齐物体到图像；3)优化人体姿态。结合OSX人体模型、OpenShape物体检索和PICO-db接触数据。",
+ "experiment_framework": "在InterCap和BEHAVE数据集上评估，使用Procrustes对齐的Chamfer距离指标，并通过感知研究比较重建质量。",
+ "takeaways": [
+  "利用基础模型(OpenShape)进行物体检索，支持新物体类别",
+  "接触对应关系作为关键约束，解决3D人-物交互重建中的深度歧义问题"
+ ],
+ "weaknesses": [
+  "依赖外部模型(OSX, OpenShape, DECO)的准确性",
+  "接触投影方法在精细和高度非凸区域(如手指)可能存在问题"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "3D重建与可靠性主线无关，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

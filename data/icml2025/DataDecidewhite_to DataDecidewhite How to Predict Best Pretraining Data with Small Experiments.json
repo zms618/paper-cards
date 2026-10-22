@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DataDecidewhite_to DataDecidewhite How to Predict Best Pretraining Data with Small Experiments.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DataDecidewhite_to DataDecidewhite How to Predict Best Pretraining Data with Small Experiments.pdf",
+ "title": "DataDecide: How to Predict Best Pretraining Data with Small Experiments",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 7,
+  "relevance": 5,
+  "overall": 6
+ },
+ "one_line": "小实验预测大模型最优数据，但外推性和风险未量化",
+ "innovations": [
+  "发布DataDecide：迄今最完整的开放预训练模型套件，覆盖25个语料、14种模型规模（4M-1B）、3个随机种子，>30K checkpoint",
+  "实证发现单尺度小实验（如150M）的模型排序在~80%比较中能正确预测1B目标规模的最优数据",
+  "证明8种主流scaling law方法均未超越单尺度预测的compute-decision frontier；且用连续likelihood proxy即可让MMLU/ARC/HellaSwag/MBPP/HumanEval等benchmark在0.01%计算量下>80%可预测"
+ ],
+ "method_framework": "在25个语料（不同来源/去重/过滤）上做controlled预训练，跨14种规模评测10个下游任务；比较不同决策方法（单尺度排序 vs scaling law外推）在多大程度上正确预测大尺度最优语料。",
+ "experiment_framework": "3 random seeds up to 100B tokens, 25 corpora, 4M-1B params；下游10个任务（MMLU/ARC/HellaSwag/MBPP/HumanEval等）；评估各决策方法的top-k语料预测准确率与compute-decision frontier。",
+ "takeaways": [
+  "单尺度小实验排序已是强baseline（~80%），scaling law外推在数据选择上无显著增益",
+  "用连续likelihood proxy而非下游评测，可在0.01%计算量下高保真预测1B规模的下游benchmark排序",
+  "DataDecide为未来scaling law方法提供了可测量改进的开放测试床"
+ ],
+ "weaknesses": [
+  "与可靠性/可信AI主线弱相关，属预训练数据决策",
+  "最大规模仅1B参数，外推到70B+ LLM的结论待验证",
+  "80%预测准确率仍意味着~20%数据选择会选错，实际决策风险未量化"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.73,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

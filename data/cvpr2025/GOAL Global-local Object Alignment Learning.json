@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/GOAL Global-local Object Alignment Learning.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/GOAL Global-local Object Alignment Learning.pdf",
+ "title": "GOAL Global-local Object Alignment Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.1
+ },
+ "one_line": "CLIP微调增强长文本理解，局部对齐提升细粒度检索",
+ "innovations": [
+  "Local Image-Sentence Matching (LISM)生成伪局部对",
+  "Token Similarity-based Learning (TSL)传播局部元素注意力",
+  "结合全局和局部语义对齐的统一框架"
+ ],
+ "method_framework": "GOAL包含LISM和TSL两个组件：LISM使用SAM分割图像并匹配句子，TSL通过局部对齐增强CLIP的细粒度理解能力，结合全局和局部对比学习优化嵌入表示。",
+ "experiment_framework": "在DOCCI、DCI和Urban1k三个图像-长文本检索基准上评估，使用Recall@k和mAP@10指标，与CLIP、Long-CLIP等基线比较，并进行消融研究。",
+ "takeaways": [
+  "局部语义对齐能有效提升模型对长文本细粒度信息的理解",
+  "结合全局和局部信息的混合学习策略优于单一策略",
+  "轻量级微调方法可显著提升CLIP处理长文本的能力"
+ ],
+ "weaknesses": [
+  "依赖SAM进行图像分割，可能引入额外误差",
+  "未充分讨论方法在不同长度文本上的泛化能力",
+  "计算效率分析不足，未与大规模预训练方法进行资源消耗对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅提升CLIP细粒度检索，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

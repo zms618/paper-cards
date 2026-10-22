@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Modeling Cross-vision Synergy for Unified Large Vision Model.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Modeling Cross-vision Synergy for Unified Large Vision Model.pdf",
+ "title": "Modeling Cross-vision Synergy for Unified Large Vision Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "MoE架构与协同训练实现跨视觉模态统一，但计算开销大且依赖外部模型",
+ "innovations": [
+  "稀疏MoE架构与动态模态路由器",
+  "协同感知训练策略",
+  "细粒度跨模态对齐机制",
+  "<synergy>令牌作为认知中介"
+ ],
+ "method_framework": "PolyV采用稀疏MoE架构，由动态路由器协调多个专家，每个专家专注于特定模态先验，同时实现跨模态双向交互。训练分为模态特定预训练和协同感知微调两阶段，后者包含粗粒度知识蒸馏和细粒度对象/关系级对齐。",
+ "experiment_framework": "在10个跨图像、视频和3D理解的基准测试上评估，包括MMStar、3DSRBench、MMSI-Bench、VSI-Bench、CVBench、VideoMME、ScanQA、SQA3D和Open-EQA，并与多个先进模型对比。",
+ "takeaways": [
+  "MoE架构能有效实现跨模态知识共享与互补",
+  "细粒度对象/关系级对齐比粗粒度实例级对齐更能促进跨模态推理",
+  "动态路由器提供了可解释的专家分配机制"
+ ],
+ "weaknesses": [
+  "计算开销增加，需要激活多个专家",
+  "依赖外部基础模型进行知识蒸馏",
+  "细粒度协同训练数据集规模有限(20K)"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "跨视觉模态统一与多模态大模型推理相关，但未直接触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

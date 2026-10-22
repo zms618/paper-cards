@@ -1,0 +1,35 @@
+{
+ "key": "neurips2025/PoseCrafter_Extreme Pose Estimation with Hybrid Video Synthesis.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/PoseCrafter_Extreme Pose Estimation with Hybrid Video Synthesis.pdf",
+ "title": "PoseCrafter: Extreme Pose Estimation with Hybrid Video Synthesis",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "混合视频生成与特征选择提升极端姿态估计，但内存消耗高且泛化性存疑",
+ "innovations": [
+  "混合视频生成(HVG)结合视频插值与姿态条件新视图合成",
+  "特征匹配选择器(FMS)基于特征对应关系选择中间帧",
+  "仅选择起始/结束帧的相邻帧作为可靠中继帧"
+ ],
+ "method_framework": "PoseCrafter包含混合视频生成和特征匹配选择两个模块，先使用DynamiCrafter生成初始插值帧并选择可靠中继帧，再通过ViewCrafter生成高质量中间帧，最后基于特征匹配选择最适合姿态估计的帧。",
+ "experiment_framework": "在Cambridge Landmarks、ScanNet、DL3DV-10K和NAVI数据集上评估，使用MRE、MTE、R(θ)、T(θ)和AUC30作为指标，与DUSt3R和InterPose对比。",
+ "takeaways": [
+  "混合视频生成可有效减少中间帧模糊和几何漂移",
+  "基于特征匹配的确定性选择策略比自一致性评分更高效且更适合姿态估计"
+ ],
+ "weaknesses": [
+  "混合视频生成阶段内存消耗较高(22.8GB)",
+  "仅评估了特定场景下的极端姿态估计，泛化性有待进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

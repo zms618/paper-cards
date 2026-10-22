@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Regret-Free Reinforcement Learning for Temporal Logic Specifications.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Regret-Free Reinforcement Learning for Temporal Logic Specifications.pdf",
+ "title": "Regret-Free Reinforcement Learning for Temporal Logic Specifications",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.8
+ },
+ "one_line": "理论贡献为主，LTL规约归约与次线性遗憾证明，但实证不足",
+ "innovations": [
+  "首个证明次线性遗憾（R(K)/K→0）的 LTL 控制器综合在线学习算法，超越此前仅有渐近收敛保证的工作",
+  "基于区间 MDP(iMDP) 与乐观策略求解 reach-avoid，并引入 reset 机制在非通信 MDP 上系统平衡探索与利用",
+  "证明一般 LTL 规约在图结构已知时可归约为 reach-avoid 问题，并给出在最小转移概率先验下独立学习图结构的算法"
+ ],
+ "method_framework": "每回合依据观测构建区间 MDP，在其上求乐观最优策略求解 reach-avoid，并在该回合截止前执行；通过 reset 机制权衡探索利用以保证遗憾次线性；一般 LTL 经自动机图结构归约为多个 reach-avoid 子问题；图结构未知时以最小转移概率假设下的独立算法先行识别。",
+ "experiment_framework": "以理论推导为主，给出经过有限回合后距最优行为接近程度的sharp界；配合小规模 MDP 数值验证算法流程与遗憾增长趋势；对比 Tarbouriech 等此前仅适用于正代价、满足概率为 1 情形的方法。",
+ "takeaways": [
+  "LTL 控制器综合可从渐近保证升级为有限回合的次线性遗憾保证",
+  "乐观 iMDP+reset 机制在非通信 MDP 上即可实现探索利用的系统权衡",
+  "一般 LTL 可统一归约到 reach-avoid 后用同一无遗憾框架处理"
+ ],
+ "weaknesses": [
+  "主线偏离可靠性/医学影像/多模态推理，属形式化控制/RL理论",
+  "假设有限状态/动作 MDP 且已知最小转移概率，对大规模连续系统不直接适用",
+  "证据以理论与小规模示例为主，前 9 页未见与强基线在大规模问题上的实证对比"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

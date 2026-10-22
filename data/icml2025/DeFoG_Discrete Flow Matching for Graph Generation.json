@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DeFoG_Discrete Flow Matching for Graph Generation.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DeFoG_Discrete Flow Matching for Graph Generation.pdf",
+ "title": "DeFoG: Discrete Flow Matching for Graph Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.8
+ },
+ "one_line": "离散flow matching解耦图扩散训练采样，5-10%步数超SOTA但与可靠性主线弱相关",
+ "innovations": [
+  "提出离散flow matching图生成框架DeFoG，将训练与采样解耦，噪声schedule/rate matrix可调而无需重训",
+  "采用线性插值加噪+CTMC去噪，并显式保证节点置换等变，克服图模态表达力限制",
+  "理论上建立训练损失与采样算法的对应关系，证明DeFoG忠实复制真实图分布；并设计新采样方法在合成/分子/数字病理数据集上以5-10%步数超扩散模型"
+ ],
+ "method_framework": "对图的离散结构定义线性插值noising过程；去噪用连续时间Markov链(CTMC)；网络设计保证permutation equivariance；训练损失对应最优transport向量场；采样时可自由选择CTMC速率矩阵与步数。",
+ "experiment_framework": "在合成图、分子（如分子生成）、数字病理图数据集上评测，含无条件与条件生成；对比扩散类图生成模型，指标含分布匹配度与采样步数。",
+ "takeaways": [
+  "训练-采样解耦让噪声schedule/速率矩阵可在采样阶段优化，避免反复重训",
+  "DeFoG在多种图生成数据集上达SOTA，且仅需扩散模型5-10%的采样步数",
+  "理论证明flow matching损失与图分布复制之间的对应，提供了可信的生成保证"
+ ],
+ "weaknesses": [
+  "属图生成模型，与可靠性/可信AI主线相关性弱",
+  "前9页未给出完整数值表，具体分子/病理数据集指标需看实验章节",
+  "CTMC速率矩阵在大图上的构造与求解成本未充分讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.28,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

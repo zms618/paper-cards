@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Learning from Algorithm Feedback One-Shot Sat Solver Guidance with GNNS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Learning from Algorithm Feedback One-Shot Sat Solver Guidance with GNNS.pdf",
+ "title": "Learning from Algorithm Feedback: ONE-SHOT Sat Solver Guidance with GNNS",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "RLAF训练GNN指导SAT求解器，但计算开销大且改进有限",
+ "innovations": [
+  "RLAF训练范式，直接使用求解器计算成本作为奖励信号",
+  "单次前向传播为所有变量分配权重和极性",
+  "通用机制将推断的变量权重和极性注入现有SAT求解器分支策略"
+ ],
+ "method_framework": "将SAT问题建模为图，通过GNN输出变量权重和极性分布，使用GRPO进行强化学习优化，最小化求解器决策次数",
+ "experiment_framework": "在3SAT、图着色和密码学问题测试Glucose和March求解器，比较决策次数和运行时间",
+ "takeaways": [
+  "使用相对容易的训练问题不影响模型对更复杂问题的泛化能力",
+  "RLAF训练的策略在多种问题分布上优于监督学习方法"
+ ],
+ "weaknesses": [
+  "训练需要大量求解器调用，计算开销大",
+  "在March求解器上UNSAT 3SAT实例改进有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "SAT求解优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

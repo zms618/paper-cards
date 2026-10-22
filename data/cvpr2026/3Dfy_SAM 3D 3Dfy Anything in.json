@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/3Dfy_SAM 3D 3Dfy Anything in.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/3Dfy_SAM 3D 3Dfy Anything in.pdf",
+ "title": "SAM 3D: 3Dfy Anything in Images",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "两阶段流匹配3D生成，数据引擎创新但指标选择性呈现",
+ "innovations": [
+  "在两阶段隐空间流匹配骨架上新增布局输出：1.2B 参数 MoT 几何模型联合预测 64³ 粗体素形状与相机系下 (R,t,s)，再由 600M 稀疏流 Transformer 做纹理与细节精修，可解码为 mesh 或 3DGS",
+  "同时编码裁剪物体视图与整图视图两套 DINOv2 条件 token，使模型在遮挡/杂乱的自然场景中能借助上下文识别线索而非仅靠物体裁剪局部",
+  "把 LLM 式 pretrain-midtrain-posttrain + DPO 流程搬进 3D：合成孤立资产预训 (Iso-3DO) → 半合成 render-paste 中段训练 (RP-3DO，6100 万样本) → MITL 人工筛选的 N=8 候选 best-of-N 标注 + 偏好对齐的飞轮迭代"
+ ],
+ "method_framework": "以 (I, M, 可选 pointmap) 为条件，几何模型先出粗形状与场景布局，纹理精修模型在活跃体素上补细节与贴图，VAE 双解码器输出 mesh/高斯；训练分 Iso-3DO 预训、RP-3DO 中段训练与 MITL 数据驱动的 SFT/DPO 后训练；最后蒸馏把推理 NFE 从 25 降到 4 以实现亚秒级生成。",
+ "experiment_framework": "新基准 SA-3DAO（1000 个专业 3D 艺术家据真实图建的网格）+ ISO3D + Aria Digital Twin；形状基线 Trellis/HY3D-2.0/2.1/Direct3D-S2/TripoSG/Hi3DGen，指标 F1@0.01、vIoU、Chamfer、EMD、ULIP、Uni3D；布局比 Megapose/FoundationPose/MIDI，指标 3D IoU、ICP-Rot、ADD-S；另做场景级/物体级人类偏好与 Elo 评测。",
+ "takeaways": [
+  "3D 标注无法像分割那样直接外包给众包，MITL 三级拆任务（选目标→模型排序→位姿摆放）+ 困难例转交专业艺术家的分层标注设计，是可复制的低成本扩数据范式",
+  "把渲染结果送回评价（render-and-compare）的 sample-then-optimize 后处理能继续拉高布局指标，说明生成式布局本身仍有可优化空间",
+  "偏好对齐阶段用 off-policy 的 D+/D− 对（含被拒候选）能压掉对称缺失、悬空块、无底网格等流匹配目标抓不住的结构性缺陷"
+ ],
+ "weaknesses": [
+  "在 SA-3DAO 形状表上感知类指标几乎没拉开：ULIP 项 SAM 3D 0.1488 低于 TripoSG 的 0.1529、仅略高于 Trellis，而 '显著优于所有基线' 的印象主要来自 Chamfer/EMD，存在按有利指标呈现的嫌疑",
+  "布局表存在反例：ADD-S 项 SAM 3D 为 0.3848，低于 HY3D-2.0+Megapose 的 0.7146 与 HY3D-2.0+FoundationPose 的 0.3705 相当但低于 0.5396 的后者，正文 'ADD-S@0.1 提升 77%' 是相对联合模型 MIDI 而非最强 pipeline 基线得出的，容易误导",
+  "所有结论依托 Elo 与人类偏好（5:1/6:1）及 2.5T/2.7T/0.5T token 量级训练，无方差报告、偏好测试的样本人数与 rubric 细则未给，外部研究者基本无法复现该结果"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "纯3D生成技术，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

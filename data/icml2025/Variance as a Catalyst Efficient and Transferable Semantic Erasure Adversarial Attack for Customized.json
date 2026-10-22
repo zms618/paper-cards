@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Variance as a Catalyst Efficient and Transferable Semantic Erasure Adversarial Attack for Customized.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Variance as a Catalyst Efficient and Transferable Semantic Erasure Adversarial Attack for Customized.pdf",
+ "title": "Variance as a Catalyst: Efficient and Transferable Semantic Erasure Adversarial Attack for Customized Diffusion Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "利用VAE方差特性设计LA损失，实现高效可迁移的身份语义擦除。",
+ "innovations": [
+  "识别出VAE潜码方差是决定图像扰动强度的关键因素：方差越大扰动越强，最终擦除身份语义",
+  "提出Laplace-based(LA)损失，沿最快方差增长方向优化，使每步局部最优",
+  "分析指出现有方法(如MSE/PID)的损失常存在梯度对齐失败、陷入局部陷阱，无法有效放大所需方差分量"
+ ],
+ "method_framework": "以扰动参考图使定制微调后的扩散模型无法再生成目标身份；通过分析VAE潜码方差-扰动关系，设计LA损失沿方差增长最快方向迭代，既加速收敛又保证可迁移性，从而彻底擦除身份语义而非仅加噪声。",
+ "experiment_framework": "在CelebA-HQ与VGGFace2上评测，每数据集选50个身份、每身份4张参考图；对比多种代表性语义擦除/对抗方法；指标为语义擦除效果(身份不可再生成)、效率与可迁移性。",
+ "takeaways": [
+  "VAE潜码方差是语义擦除强度的催化剂，针对性放大它比单纯加噪更有效",
+  "现有MSE类损失会陷入局部陷阱，梯度对齐失败导致擦除不彻底",
+  "LA损失可在更少优化步内实现高效、可迁移的身份语义擦除"
+ ],
+ "weaknesses": [
+  "评测聚焦人脸身份(CelebA-HQ/VGGFace2)，对风格/物体概念的擦除迁移性未验证",
+  "擦除有效性依赖下游定制微调流程，对不同微调方法的通用性证据有限",
+  "对生成质量与擦除之间权衡、以及对非目标身份的误伤缺少量化分析"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

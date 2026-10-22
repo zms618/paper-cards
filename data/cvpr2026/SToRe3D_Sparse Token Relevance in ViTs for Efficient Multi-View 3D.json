@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/SToRe3D_Sparse Token Relevance in ViTs for Efficient Multi-View 3D.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/SToRe3D_Sparse Token Relevance in ViTs for Efficient Multi-View 3D.pdf",
+ "title": "SToRe3D Sparse Token Relevance in ViTs for Efficient Multi-View 3D",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 6.0
+ },
+ "one_line": "稀疏化ViT实现多视图3D检测，但依赖超参且验证有限",
+ "innovations": [
+  "统一端到端稀疏化框架，联合处理2D图像token和3D对象查询",
+  "规划对齐的相关性监督，基于未来交互走廊定义规划关键对象",
+  "存储-重新激活缓冲区设计，避免不可逆修剪并保持高稀疏度下的稳定性",
+  "nuScenes-R相关性评估基准，专注于规划关键对象的准确性"
+ ],
+ "method_framework": "SToRe3D通过轻量级2D-3D相关性头为图像token和3D对象查询分配相关性分数，采用分层稀疏化策略，高相关性内容继续处理，低相关性内容存储在缓冲区中供后续重新激活，实现计算资源的智能分配。",
+ "experiment_framework": "在nuScenes和nuScenes-R基准上评估，与StreamPETR、ToC3D等方法比较，使用mAP、NDS和相关性过滤指标(NDS-RM、NDS-RA)，测量不同稀疏度下的准确率-延迟权衡。",
+ "takeaways": [
+  "相关性引导的稀疏化可有效减少计算量同时保持规划关键对象的准确性",
+  "存储-重新激活机制比硬修剪更适合高稀疏度场景，避免信息丢失"
+ ],
+ "weaknesses": [
+  "依赖未来交互走廊的超参数选择(H, dmin)，可能需要针对不同场景调整",
+  "仅评估了在nuScenes数据集上的性能，缺乏在其他场景或真实闭环系统中的验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "多视图3D检测与可靠性主线无交点，属常规优化工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

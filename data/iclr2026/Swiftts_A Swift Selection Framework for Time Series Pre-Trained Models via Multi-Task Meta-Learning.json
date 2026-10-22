@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Swiftts_A Swift Selection Framework for Time Series Pre-Trained Models via Multi-Task Meta-Learning.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Swiftts_A Swift Selection Framework for Time Series Pre-Trained Models via Multi-Task Meta-Learning.pdf",
+ "title": "SwiftTS: A Swift Selection Framework for Time Series Pre-Trained Models via Multi-Task Meta-Learning",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 7.0,
+  "overall": 5.7
+ },
+ "one_line": "双编码器元学习选时间序列模型，但泛化与实际应用存疑。",
+ "innovations": [
+  "采用轻量级双编码器架构，分别嵌入时间序列数据和候选模型特征，计算patch级兼容性分数实现高效选择",
+  "提出时间范围自适应专家组合模块，动态调整专家权重以增强跨数据集泛化",
+  "引入跨数据集和跨时间范围的任务采样，增强分布外（OOD）鲁棒性"
+ ],
+ "method_framework": "SwiftTS学习历史数据集-模型性能对，预测新数据集上各候选模型的性能。双编码器分别编码时间序列数据特征和候选模型特征，计算patch级兼容性分数。时间范围自适应专家组合模块根据不同预测范围动态调整专家权重。跨任务学习通过跨数据集和跨时间范围的采样策略增强泛化能力。",
+ "experiment_framework": "在14个下游数据集和8个预训练模型上评估；基线包括随机选择、全微调选择等；指标为选择准确率和下游预测性能。",
+ "takeaways": [
+  "元学习方法可在不逐一微调的情况下快速选择最佳预训练模型",
+  "双编码器的patch级兼容性计算比全前向传播高效得多",
+  "跨任务采样策略显著提升了模型选择的OOD鲁棒性"
+ ],
+ "weaknesses": [
+  "选择质量受限于历史数据集-模型性能对的覆盖范围",
+  "实验主要在标准时间序列基准上验证，实际业务数据的适用性未知",
+  "新发布的预训练模型需要重新编码才能纳入选择框架"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.35,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "时间序列模型选择与OOD鲁棒性，符合可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

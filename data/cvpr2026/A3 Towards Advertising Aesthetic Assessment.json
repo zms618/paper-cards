@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/A3 Towards Advertising Aesthetic Assessment.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/A3 Towards Advertising Aesthetic Assessment.pdf",
+ "title": "A3: Towards Advertising Aesthetic Assessment",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "将营销理论拆解为三级判据，构建广告审美评估数据集与多信号奖励模型",
+ "innovations": [
+  "A3-Law 层级范式：受 AIDA 启发把广告审美拆成 Perceptual Attention（保真度/整合真实感/专业抛光，基于信号检测与感知流畅性理论）、Formal Interest（色彩构建含色相适应性、色彩协调，空间构建含布局适应性）、Desire Impact（文案调性、促销图标符号学、审美属性与广告属性两类连续评分）三级判据，把抽象营销理论变成可标注可训练的原子规则",
+  "A3-Dataset 的三级质检流水线：人工标注按「客观规则准确率>0.93、检测批次平均 IoU>0.92、主观评分批次 SRCC>0.85」过滤，MLLM 生成的 CoT 再由 5 人专家小组多数票（≥3/5）判定、并迭代到整批接受率>85%；另设工具调用子集，用色相分析工具、Hasler 色彩度工具、DeepSeek-OCR 三条有明确计算代理的规则提供可验证证据（特意排除外部检测以逼模型自主识别促销符号）",
+  "A3-Align 的多信号 GRPO 奖励：格式奖励 R_format=1{tags valid} 与非重复奖励（句级 1-d/N 与 n-gram 去重率各半加权）保结构，再按规则类型分派准确率奖励 R_acc=1{ŷ=y}、工具调用奖励、匈牙利匹配后 IoU>0.5 的检测奖励、以及高斯形连续分奖励 R_score=exp(-(s-ŝ)²/2σ²) 对齐人类主观分，总奖励按归一化加权和避免规模漂移"
+ ],
+ "method_framework": "以 Qwen3-VL-8B-Instruct 为基模，先在 A3-Dataset 上 SFT 学规则、结构化输出、工具调用与 CoT（token 级交叉熵），再用 GRPO 按上节多信号奖励做偏好对齐；标注集按 8:1:1 划分训练/内部验证/held-out 测试，评测覆盖 A3-Bench 上 20+ 开源与闭源 MLLM 的 thinking / non-thinking 两种模式。",
+ "experiment_framework": "A3-Bench 评测 20+ 主流 MLLM（开源/闭源 × thinking/non-thinking）；判据含 Image Fidelity、Integration Realism、Professional Polish、Hue Adaptability、Color Harmonization、Layout Adaptability、Copywriting Tone、Promotional Iconography、Aesthetic/Advertising Attribute；指标 Acc、mAP@0.5、SRCC、PLCC；8×H200 训练。",
+ "takeaways": [
+  "把营销/心理学的成熟理论（AIDA、Gestalt、appraisal theory、semiotics）翻译成「原子规则 + 可计算代理」的做法，是给 LLM 做垂直领域 judge 最实用的脚手架，规则本身就是可解释的评测接口",
+  "多信号奖励按任务类型分派（分类用 0/1、定位用 IoU、主观分用连续高斯、需要证据的规则用工具调用奖励）的思路，比单一 accuracy 奖励更能同时稳住格式、 groundedness 与细粒度对齐",
+  "「工具只给有明确计算代理的规则用、且刻意不外包感知」这条设计原则，可避免评测模型把 perception 外包给外部检测器而导致跨模型 mAP 不可比"
+ ],
+ "weaknesses": [
+  "表 1 中 Promotional Iconography 的 mAP 存在设置不对称：通用 MLLM 只输出判定不吐检测框（mAP 普遍 0.000~0.361），而 A3-Align 在该规则上专门训练过直接产出框，因此 0.701 相对 0.283「翻倍」的收益很大程度来自输出格式适配而非定位能力本身，跨设定对比把基线的格式劣势算成了自己的强项",
+  "正文止于 A3-Bench 表 1 中部，第 4.3 节「质量广告选择」「规范性广告点评」两个真实应用实验，以及 SFT / GRPO / 各奖励项（格式、非重复、工具调用、IoU、连续分）消融全部缺失；RL 超参仅给 n=4、σ=1.237 两个固定值且无敏感性分析，全部指标均为单次运行、无方差",
+  "A3-Law 的八条规则是人工从 AIDA 推出来的清单，却没有可用性验证——删掉任意一条规则性能掉多少、规则之间是否冗余、跨品类（电子 vs 美妆）判据是否一致均未检验；作者自陈把文化校准留待未来工作，说明判据的通用性主张缺少支撑",
+  "地面真值本身是 1-5 分主观打分，标注者经过训练但仍带群体偏好；模型 SRCC 0.880 的提升有多少来自真实审美判断、多少只是对齐了这批标注者的偏好，无法区分，且 30K 广告图取自电商/社媒/网页横幅涉及版权与商标，正文未见来源与授权说明"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "广告审美评估与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

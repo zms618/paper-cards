@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Large Continual Instruction Assistant.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Large Continual Instruction Assistant.pdf",
+ "title": "Large Continual Instruction Assistant",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "EMA+泰勒展开平衡参数，按语义相似度决定重训或扩参缓解MLLM遗忘。",
+ "innovations": [
+  "指出梯度更新是CIT遗忘根源，改用EMA加权新旧参数以保留旧知识",
+  "从损失泰勒展开推出最优平衡权重可由梯度与已学参数自动确定，给出稳定-塑性平衡系数",
+  "按指令语义相似度判断重训还是扩展参数，并为测试实例分配最合适参数"
+ ],
+ "method_framework": "在EMA更新基础上，用损失对参数的泰勒展开推导自动平衡新旧知识的系数；依指令语义相似度决定对新指令重训还是扩分支，避免模型膨胀同时抑制旧知识干扰。",
+ "experiment_framework": "在多个持续指令微调基准(ScienceQA/OCRVQA/TextVQA/VQAv2/ImageNet等)上对比 EProj/FwT/CoIN 等，报告抗遗忘与整体持续调优性能。",
+ "takeaways": [
+  "梯度更新直接优化新数据是CIT遗忘的主因，EMA更利于保留旧知识",
+  "稳定-塑性平衡权重可由梯度/参数自动确定，无需固定超参",
+  "按语义相似度决定重训/扩参兼顾抗遗忘与整体性能"
+ ],
+ "weaknesses": [
+  "EMA+自动系数与既有持续学习方法思路相近，新颖性中等",
+  "语义相似度判据的阈值引入新超参",
+  "前9页未见对超长指令流/多模态对抗扰动下的抗遗忘验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

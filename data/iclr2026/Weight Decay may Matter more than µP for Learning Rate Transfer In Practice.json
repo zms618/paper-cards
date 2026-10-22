@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Weight Decay may Matter more than µP for Learning Rate Transfer In Practice.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Weight Decay may Matter more than µP for Learning Rate Transfer In Practice.pdf",
+ "title": "Weight Decay may Matter more than µP for Learning Rate Transfer in Practice",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "挑战µP核心假设，揭示权重衰减才是学习率迁移的关键",
+ "innovations": [
+  "提出相对更新统一框架，将µP和权重衰减纳入同一分析视角，揭示两者在训练全过程中的动态交互",
+  "实证+分析证明µP的几何对齐假设在训练早期即失效，后续训练中是独立权重衰减而非µP稳定特征学习的跨宽度一致性",
+  "重新诠释µP的实际作用：其益处主要来自隐式学习率预热效应，可用更强的显式预热调度大幅替代"
+ ],
+ "method_framework": "基于单层全连接网络的相对更新分析框架，将权重更新幅度与表征变化幅度联系起来。推导µP更新缩放和权重衰减在训练过程中的叠加效应。通过大规模LLM预训练实验（20B tokens级）验证不同宽度、不同权重衰减变体下的学习率迁移效果。",
+ "experiment_framework": "在LLaMA架构上进行大规模预训练实验，测试多种模型宽度（128到2048）和token量。对比三种权重衰减方案（独立WD、标准WD、无WD）与µP的组合效果。评估指标为不同宽度下最优学习率的可迁移性和最终验证损失。",
+ "takeaways": [
+  "独立权重衰减不是µP的辅助组件，而是实际实现学习率迁移的核心机制——它抵消了µP在训练后期失效的更新缩放",
+  "µP的实际价值可被更强的显式学习率预热调度大幅替代，无需µP参数化也能获得相近的迁移效果",
+  "大batch size（相对于模型宽度）会加速µP对齐假设的失效，这正是LLM预训练中的常见场景"
+ ],
+ "weaknesses": [
+  "分析主要基于单层线性网络推导，深层非线性Transformer中相对更新框架的定量适用性未严格证明",
+  "仅在LLaMA架构和AdamW优化器上验证，其他架构（如Mamba）或优化器（如Lion）结论是否一致未知",
+  "µP被重诠释为隐式预热，但完全替代所需的预热调度具体如何设计最优，缺乏系统的实践指南"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "优化方法研究，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

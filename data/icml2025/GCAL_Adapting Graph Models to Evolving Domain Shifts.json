@@ -1,0 +1,37 @@
+{
+ "title": "GCAL: Adapting Graph Models to Evolving Domain Shifts",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "双层优化图持续学习，信息最大化防遗忘，但效率与场景验证不足",
+ "innovations": [
+  "把图域适配从单步扩展到连续演化OOD图序列的持续自适应设定，显式应对灾难性遗忘",
+  "设计双层优化：'适配'阶段用信息最大化微调新域并回适配旧记忆，'生成记忆'阶段压缩原图为记忆",
+  "由信息瓶颈理论推导下界，引导变分记忆图生成模块，为记忆压缩提供理论依据"
+ ],
+ "method_framework": "采用双层优化策略：adapt阶段用信息最大化在新图域上微调同时重新适配历史记忆以缓解遗忘；generate memory阶段依据信息瓶颈理论导出的下界，用变分记忆图生成模块将原图浓缩为紧凑记忆图。",
+ "experiment_framework": "在四个OOD图数据集上的持续自适应设定下，与SOTA图适配方法对比，以适应性(adaptability)与知识保留(防遗忘)为主要指标评估。",
+ "takeaways": [
+  "现有SOTA图适配方法在持续多步域偏移下显著退化，说明单步适配范式不够",
+  "信息瓶颈引导的变分记忆压缩能同时提升新域适配与旧域知识保留",
+  "双层优化把'学新'与'存旧'解耦，是图持续学习的有效范式"
+ ],
+ "weaknesses": [
+  "双层优化与变分记忆生成带来额外训练与存储开销，未充分报告与基线的效率权衡",
+  "实验限于通用图数据集，未验证于生物医学图等真实关键场景",
+  "与可靠性/医学影像/多模态推理主线无关，relevance偏低"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/GCAL_Adapting Graph Models to Evolving Domain Shifts.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/GCAL_Adapting Graph Models to Evolving Domain Shifts.pdf",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

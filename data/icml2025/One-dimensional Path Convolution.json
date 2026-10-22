@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/One-dimensional Path Convolution.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/One-dimensional Path Convolution.pdf",
+ "title": "One-dimensional Path Convolution",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "1D卷积通过路径重排保持局部性，参数减半但仅分类验证",
+ "innovations": [
+  "提出纯 1D 算子的视觉骨干 PathConv，解决 1D 卷积破坏图像局部性的问题",
+  "分析 Hilbert/Z-order 路径的邻近性权衡，提出 path shifting 重排被牺牲像素",
+  "用随机舍入证明三条移位路径优于朴素光栅扫描，并设计路径感知通道注意力融合路径内/路径间依赖"
+ ],
+ "method_framework": "把 2D 图像展平为 1D 序列后只能用 1D 卷积，但朴素光栅扫描破坏空间局部性。PathConv 选 Hilbert/Z-order 类遍历路径以保持邻近性，再用 path shifting 重排那些在路径上距离过远的像素；随机舍入分析表明三条移位路径即可提供比光栅扫描更好的局部保持；路径感知通道注意力捕捉路径内局部与路径间全局依赖。",
+ "experiment_framework": "在图像分类(ImageNet 类)上评测，以 Top-1 精度与参数量为指标，与 ResNet 等 2D CNN 对比；验证 1/3 参数下达到 ResNet 级精度，并消融路径数、path shifting 与注意力的作用。",
+ "takeaways": [
+  "纯 1D 卷积也能通过合理遍历路径+path shifting 保持图像局部性",
+  "PathConv 以约 1/3 参数达到 ResNet 级精度，利于硬件流水化加速"
+ ],
+ "weaknesses": [
+  "与可靠性/医学影像/多模态推理主线无关，属高效视觉骨干架构",
+  "路径展平-重排的工程实现与硬件收益在已读部分披露有限",
+  "仅分类任务验证，检测/分割等下游迁移未充分展开"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

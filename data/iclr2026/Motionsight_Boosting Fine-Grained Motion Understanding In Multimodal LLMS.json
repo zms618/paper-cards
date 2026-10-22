@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Motionsight_Boosting Fine-Grained Motion Understanding In Multimodal LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Motionsight_Boosting Fine-Grained Motion Understanding In Multimodal LLMS.pdf",
+ "title": "MotionSight: Boosting Fine-Grained Motion Understanding in Multimodal LLMs",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "视觉提示增强MLLM运动理解，但需边界框且参数自适应不足。",
+ "innovations": [
+  "提出物体中心聚光视觉提示，增强MLLM对目标物体运动的感知能力",
+  "提出合成运动模糊提示，帮助MLLM区分相机运动与物体运动",
+  "构建MotionVid-QA大规模细粒度视频运动理解数据集(40K视频片段，87K问答)"
+ ],
+ "method_framework": "零样本视觉提示方法：对物体运动，在查询相关的边界框上施加聚光效果引导模型注意力；对相机运动，在帧中合成运动模糊以增强对 subtle 场景变化的感知；同时构建层级标注的运动理解数据集用于微调模型。",
+ "experiment_framework": "在MotionBench和FAVOR-Bench上评估，对比InternVL3、Gemini等MLLM；使用MotionVid-QA微调Qwen2.5VL-7B得到MotionChat，衡量细粒度运动理解准确率。",
+ "takeaways": [
+  "视觉提示可在零样本情况下显著提升MLLM的细粒度运动理解能力",
+  "物体聚光与运动模糊分别有效提升物体运动和相机运动的识别",
+  "MotionChat(7B)在FAVOR-Bench上达到48.3%，与72B级模型性能相当"
+ ],
+ "weaknesses": [
+  "物体聚光需要已知运动相关的边界框，实际应用中需要额外检测步骤",
+  "运动模糊的合成参数(强度、方向)选择缺乏自适应方法",
+  "仅在英文视频和问答上验证，跨语言/跨文化场景的适用性未探索"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多模态大模型推理中的细粒度运动理解，属于落地域但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

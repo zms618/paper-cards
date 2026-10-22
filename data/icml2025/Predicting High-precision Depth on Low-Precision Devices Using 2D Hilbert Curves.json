@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Predicting High-precision Depth on Low-Precision Devices Using 2D Hilbert Curves.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Predicting High-precision Depth on Low-Precision Devices Using 2D Hilbert Curves.pdf",
+ "title": "Predicting High-precision Depth on Low-Precision Devices Using 2D Hilbert Curves",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.0
+ },
+ "one_line": "用Hilbert曲线分解HDR深度，INT8网络预测分量重建高精度深度",
+ "innovations": [
+  "将HDR深度分解为2D Hilbert曲线上的两个LDR分量，使低比特网络可间接表达高精度深度",
+  "训练全精度DNN直接预测Hilbert分量，部署时用标准量化+轻量后处理重建深度",
+  "在几乎无额外计算开销下把预测深度比特精度提升多达3位，并把量化误差降低多达4.6倍"
+ ],
+ "method_framework": "核心观察是低比特精度不足以表示高动态范围深度；改用2D Hilbert曲线把标量深度映射到二维平面的两个低动态分量，网络在INT8下直接回归这两个分量，推理后再由后处理步沿Hilbert曲线反解出高精度深度，从而在端侧低比特硬件上恢复深度精度。",
+ "experiment_framework": "在单/双目稠密深度预测网络上(如DispNet)做W8A8量化部署，在Qualcomm Hexagon DSP等端侧硬件上验证；指标为深度精度损失、量化误差与重建精度；对比直接量化与Hilbert分量重建。",
+ "takeaways": [
+  "用Hilbert曲线拆分HDR深度可让INT8网络表达更高精度深度",
+  "在几乎无开销下深度比特精度提升最多3位、量化误差降低最多4.6倍",
+  "该方法使稠密深度网络可在8bit量化下端侧高效准确部署"
+ ],
+ "weaknesses": [
+  "Hilbert曲线的空间填充连续性假设对真实深度分布的逼近程度缺乏系统分析",
+  "后处理重建引入的额外步骤与端侧延迟实测开销报告较简略",
+  "主要在经典深度网络验证，对现代大模型级深度估计(如多视图/基础模型)的适配未涉及"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

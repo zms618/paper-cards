@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/SupportAbstract_Emergent Symbolic Mechanisms SupportAbstract Reasoning in Large Language Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SupportAbstract_Emergent Symbolic Mechanisms SupportAbstract Reasoning in Large Language Models.pdf",
+ "title": "Emergent Symbolic Mechanisms Support Abstract Reasoning in Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.25
+ },
+ "one_line": "LLM 抽象推理依赖三层符号架构，但因果证据有限",
+ "innovations": [
+  "识别出 LLM 内部一个涌现的符号架构，由三类计算/头协同实现抽象推理。",
+  "分层定位：早期层'符号抽象头'基于 token 间关系把输入转成抽象变量；中层'符号归纳头'在抽象变量上做序列归纳；后期'检索头'按预测的抽象变量检索对应值来预测下一 token。",
+  "为'符号 vs 神经网络'长期争论提供机制层面的答案：神经网络的涌现推理依赖符号机制的涌现。"
+ ],
+ "method_framework": "在 Transformer LLM 中用归因/注意力分析与因果干预定位支撑抽象推理（如类比、规则归纳）的电路：低层把具体 token 抽象为关系变量，中层在抽象层面执行序列归纳（类 induction heads），高层把抽象变量映射回具体取值做预测。通过逐层头消融/激活操纵验证这些头对推理行为的因果作用。",
+ "experiment_framework": "在受控抽象推理/类比任务与若干 LLM 上做机制剖析；通过头识别、注意力模式分析与因果干预验证三类头的功能分工。",
+ "takeaways": [
+  "LLM 内部确实涌现出类符号的分层计算结构，而非纯统计模仿。",
+  "符号抽象→符号归纳→值检索的三层分工清晰可辨。",
+  "支持'神经网络可涌现符号机制'的立场，调和符号主义与连接主义之争。"
+ ],
+ "weaknesses": [
+  "属机制可解释性分析，实验多在受控抽象任务，未涉及医学/多模态落地域。",
+  "所识别头的因果证据依赖人工干预，是否同一机制普遍存在于更大/更多样模型中未充分覆盖。",
+  "对'涌现符号机制'与'鲁棒泛化能力'之间因果联系的实证仍偏弱（仅相关+局部干预）。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/ASAP Advancing Semantic Alignment Promotes Multi-Modal Manipulation Detecting and Grounding.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ASAP Advancing Semantic Alignment Promotes Multi-Modal Manipulation Detecting and Grounding.pdf",
+ "title": "ASAP: Advancing Semantic Alignment Promotes Multi-Modal Manipulation Detecting and Grounding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "大模型辅助图文对齐与标注引导注意力，提升跨模态篡改检测与定位",
+ "innovations": [
+  "Large Model-assisted Alignment (LMA)：用 off-the-shelf MLLM(VisCPM) 给图像生成 caption、LLM(Mistral-7B) 按“Refer to the following text to describe ...”模板给文本生成 explanation text，把操纵样本构造成 image-caption 正对；对 explanation 只在 I(I,T)=1（图文均未篡改）的样本上做对比学习（Eq.2），绕开操纵图文天然不配对、无法用常规对比学习的困境。",
+  "Manipulation-Guided Cross Attention (MGCA)：用训练标注构造指示矩阵 G(i,j)=1（Ii 或 Tj 被操纵即置 1），以 L_MGCA = -1/|A| Σ_{i,j} G(i,j) log A(i,j) 直接最大化被操纵词对被操纵图像区域的交叉注意力权重，纠正常规 cross-attention 下操纵词与失配区域相似度低、反而给低注意力的失效模式。",
+  "Patch Manipulation Modeling + Hard Negative Patch：在 bbox 回归前先用 patch 指示 P_i∈{1,0,-1}（被操纵=1、相邻=0、远处-1 忽略）做 patch 级二分类，只取被操纵 patch 的邻接 patch 作 hard negative（HNP），为最终的 region 级定位提供局部先验。"
+ ],
+ "method_framework": "MLLM/LLM 造 caption 与 explanation text 作配对辅助；LMA 做图文对比学习并把操纵对当假样本进检测头；视觉/文本两偏置编码器带 MGCA（标注引导矩阵最大化被操纵词-区域注意力）；多任务头输出检测、类型与区/词级定位。",
+ "experiment_framework": "DGM4（23 万图文对，含 face swap / face attribute / text swap / text attribute 四类操纵）；ViT-B/16 + BERT-base；基线 CLIP/VILT/HAMMER/HAMMER++/VIKI/UFAFormer；指标 AUC、EER、ACC、mAP、CF1、OF1、IoU、P/R/F1。",
+ "takeaways": [
+  "在图文不一致检测任务上把跨模态对齐显式建模为独立可训练目标（而非只在共享特征上挂多任务头）效果最明显：Table 2 中仅 +LMA 就把文本定位 F1 从 71.83 抬到 76.28。",
+  "用外部大模型合成配对辅助文本作为训练期对齐信号，成本极低且推理期零开销（正文声明 LMA/MGCA 仅训练期使用），是可直接移植的廉价技巧。",
+  "MGCA 这种“用定位标注直接改写 cross-attention 目标分布”的写法，可作为把区域/词级标注注入多模态编码器的通用小改造。"
+ ],
+ "weaknesses": [
+  "MGCA 的引导掩码 G(i,j) 完全由训练期 gold 标注构建，推理时不存在这套标注，正文也未给出无标注时的退化设计或训练/推理监督不一致的讨论，L_MGCA 的实际可迁移性存疑。",
+  "Table 4 中去掉 HNP 的对照在 mAP 上反而 88.59 > 88.53、IoU50 84.24 < 84.75 但 IoU75 76.15 < 76.54，收益幅度都在 0.05 量级，却全表无多种子方差与显著性检验，无法判断哪个设计真的有效。",
+  "辅助 caption/explanation 由 VisCPM、Mistral-7B 生成的文本本身可能带噪声，正文只比较了 C / E / C&E 三种组合（Table 3），未做“换成真值 caption”的上界对照，LMA 的增益有多少来自真对齐无从拆分。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "跨模态篡改检测与定位属于可靠性主线，且方法设计有可迁移价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

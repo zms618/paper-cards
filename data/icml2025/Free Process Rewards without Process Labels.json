@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Free Process Rewards without Process Labels.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Free Process Rewards without Process Labels.pdf",
+ "title": "Free Process Rewards without Process Labels",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.8
+ },
+ "one_line": "将outcome reward参数化为log-ratio，隐式获得step级过程奖励，无需MCTS标注",
+ "innovations": [
+  "提出Proposition 3.1：当r_φ(y)=β log π_ref(y)/π_φ(y)时，累积log-ratio q_t^φ恰为outcome reward在给定前缀下的指数期望(Q值)，步差r_t=β log π_φ(y_t|y<t)/π_ref(y_t|y<t)即过程奖励",
+  "证明该结论与具体ORM损失无关，可在DPO/KTO/NCA/CE等多种目标上实例化，把现成ORM训练流水线直接转为implicit PRM",
+  "系统比较数据规模、responses-per-instruction、balanced策略，发现CE损失在单response/指令的极端稀缺设定下仍能带来有意义增益"
+ ],
+ "method_framework": "不做MCTS rollout、不标注step label；仅用response级outcome标签(正确/错误)训练一个把r_φ参数化为策略/参考模型对数似然比的奖励模型；推理时对部分响应累加log-ratio得Q值，相邻Q值差即为step/token级过程奖励，可用于best-of-N重排或加权采样。",
+ "experiment_framework": "在MATH测试集上用Mistral-7B-Inst-v0.2、Llama-3.1-8B-Inst、Llama-3.1-70B-Inst三种生成模型，temperature=0.5采样，报告pass@1与best-of-4/16/64；基线包括EurusRM/SkyworkRM/ArmoRM等开源ORM、Math-Shepherd-7B/RLHFlow PRM，以及自实现的Math-Shepherd/AutoPSV；并以FLOPs对比数据收集与训练开销。",
+ "takeaways": [
+  "Implicit PRM在平均best-of-64上接近或超过Math-Shepherd，而数据收集+训练FLOPs仅为其1/38.6~1/38.8",
+  "CE损失比DPO更数据高效：在每指令仅1条response的极端不平衡设定下仍显著优于pass@1基线",
+  "扩展response数比扩展instruction数对implicit PRM增益更大，且与损失类型共同决定scaling曲线"
+ ],
+ "weaknesses": [
+  "仅在MATH单一数学推理基准上验证，未扩展到代码、多跳知识、视觉推理等其他需要PRM的领域",
+  "Q值解释依赖β为常数且π_ref固定的假设，当策略与参考模型差距大时log-ratio尺度不稳定，论文未给出β选择的鲁棒性分析",
+  "与70B生成模型搭配时部分配置(如CE best-of-64=67.2)反而低于开源PRM RLHFlow(73.0)，说明强模型下implicit PRM增益不一致"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.43,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

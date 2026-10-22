@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Smarter not Harder Generative Process Evaluation with Intrinsic-Signal Driving and Ability-Adaptive Reward.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Smarter not Harder Generative Process Evaluation with Intrinsic-Signal Driving and Ability-Adaptive Reward.pdf",
+ "title": "Smarter not Harder: Generative Process Evaluation with Intrinsic-Signal Driving and Ability-Adaptive Reward Shaping",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "改进GenPRM三大缺陷，但数学推理局限且证据不足",
+ "innovations": [
+  "指出现有GenPRM的关键缺陷：正确性判断高度依赖GenPRM自身推理能力、过密步奖励抑制探索、奖励分配易被reward hacking",
+  "提出内在信号驱动评估机制：借解答本身的语义线索判断推理步，而非依赖GenPRM推理能力，缓解对其能力的过度依赖",
+  "采用thought级(而非step级)奖励粒度缓解过密奖励，并设计难度感知奖励动态平衡探索/利用、锁定关键token优化目标以抑制reward hacking；集成得TP-GRPO"
+ ],
+ "method_framework": "在基于过程奖励的GRPO框架内，用解答内在语义信号作为判断依据来评估每步推理质量；奖励粒度从step放宽到thought以避免过密；再按题目难度自适应调整探索-利用权衡，并对关键token保持优化目标稳定，从而既用满轨迹语义信号又防止奖励被钻空子。",
+ "experiment_framework": "在1.5B与7B大推理模型(LRM)上，以仅结果奖励GRPO与现有GenPRM奖励为基线，在数学推理任务上比较训练样本效率与最终准确率；并做过程评估机制的分析实验。",
+ "takeaways": [
+  "TP-GRPO在1.5B/7B上以显著更少训练样本取得更高提升",
+  "内在信号驱动的过程评估降低了对GenPRM自身推理能力的依赖",
+  "thought级粒度+难度自适应奖励可同时缓解探索被压制与reward hacking"
+ ],
+ "weaknesses": [
+  "仍聚焦纯数学推理，未涉及医学影像/多模态，主线相关但落地域偏窄",
+  "内在信号依赖解答本身的语义线索，对开放式、无唯一参考解的推理任务如何迁移未论证",
+  "'fewer samples/higher improvements'在前9页未见完整表格与具体数字支撑；与最新PRM/GRPO变体的系统对比不够充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "数学推理可靠性主线，方法设计可迁移",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

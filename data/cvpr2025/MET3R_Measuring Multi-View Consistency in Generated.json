@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/MET3R_Measuring Multi-View Consistency in Generated.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/MET3R_Measuring Multi-View Consistency in Generated.pdf",
+ "title": "MET3R Measuring Multi-View Consistency in Generated",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "基于特征投影的多视角一致性指标，依赖重建质量",
+ "innovations": [
+  "无相机姿态需求的多视角一致性度量",
+  "基于DUSt3R和DINO特征的特征投影相似性计算",
+  "开源多视角潜在扩散模型MV-LDM"
+ ],
+ "method_framework": "使用DUSt3R获取图像对的密集3D点云，投影DINO特征到同一视角，计算特征相似性作为一致性指标",
+ "experiment_framework": "RealEstate10K和GSO数据集，对比GenWarp、PhotoNVS、DFM等基线，使用MEt3R、TSED、SED、FID、FVD等指标",
+ "takeaways": [
+  "特征投影方法可有效避免视角相关影响",
+  "多视角同时生成比单视图生成具有更好的3D一致性",
+  "一致性指标应独立于图像质量评估"
+ ],
+ "weaknesses": [
+  "依赖DUSt3R点云重建质量",
+  "未探索不同场景类型下的泛化能力",
+  "计算复杂度较高"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "多视角一致性度量，非可靠性主线，无落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

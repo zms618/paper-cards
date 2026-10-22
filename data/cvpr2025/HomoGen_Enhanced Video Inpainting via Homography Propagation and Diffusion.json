@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/HomoGen_Enhanced Video Inpainting via Homography Propagation and Diffusion.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/HomoGen_Enhanced Video Inpainting via Homography Propagation and Diffusion.pdf",
+ "title": "HomoGen Enhanced Video Inpainting via Homography Propagation and Diffusion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "单应性传播+扩散模型改进视频修复，但计算效率未验证",
+ "innovations": [
+  "单应性传播替代光流传播保留语义完整性",
+  "内容自适应控制机制注入先验信息",
+  "扩散模型过滤传播伪影"
+ ],
+ "method_framework": "两阶段框架：单应性像素传播(HPP)和先验控制视频扩散模型(PCVDM)，HPP通过单应性矩阵传播像素作为先验，PCVDM利用扩散模型生成内容并过滤伪影。",
+ "experiment_framework": "YouTube-VOS、DAVIS和RORD数据集，PSNR、SSIM、VFID和Ewarp指标，与ProPainter等SOTA方法比较。",
+ "takeaways": [
+  "单应性传播比光流传播保留更多像素且保持语义完整性",
+  "扩散模型能过滤传播伪影而保留语义信息"
+ ],
+ "weaknesses": [
+  "未详细讨论计算复杂度和推理时间",
+  "长视频处理依赖重叠GoP可能引入边界不一致"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频修复与可靠性主线无关，仅常规图像处理",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

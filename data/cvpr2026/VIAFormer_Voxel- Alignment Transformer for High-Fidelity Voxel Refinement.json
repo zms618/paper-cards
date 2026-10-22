@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2026/VIAFormer_Voxel- Alignment Transformer for High-Fidelity Voxel Refinement.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/VIAFormer_Voxel- Alignment Transformer for High-Fidelity Voxel Refinement.pdf",
+ "title": "VIAFormer Voxel- Alignment Transformer for High-Fidelity Voxel Refinement",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "体素-图像对齐Transformer修复体素，计算开销大且视图数受限",
+ "innovations": [
+  "Image Index提供2D图像token的3D空间定位",
+  "Correctional Flow目标学习直接体素修复轨迹",
+  "Hybrid Stream Transformer实现鲁棒跨模态融合"
+ ],
+ "method_framework": "VIAFormer结合Image Index建立体素-图像Union-Space，通过Hybrid Stream Transformer实现跨模态融合，采用Correctional Flow目标学习从噪声到干净体素的直接修复路径。",
+ "experiment_framework": "在Toys4k和Dora数据集上评估，与DiffComplete、PatchComplete、WSSC等基线比较，使用IoU和Chamfer Distance作为指标。",
+ "takeaways": [
+  "显式空间对齐机制解决跨模态注意力崩溃问题",
+  "修正流目标比从零生成更适合体素修复任务"
+ ],
+ "weaknesses": [
+  "计算开销较大，单样本推理需14.5秒",
+  "视图数量增加超过4个后性能略有下降"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "体素修复属于3D重建，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

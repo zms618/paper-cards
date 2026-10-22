@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Morse Dual-Sampling for Lossless Acceleration of Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Morse Dual-Sampling for Lossless Acceleration of Diffusion Models.pdf",
+ "title": "Morse: Dual-Sampling for Lossless Acceleration of Diffusion Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "双模型交互框架实现扩散模型加速，但依赖额外数据且效果不稳定",
+ "innovations": [
+  "双模型交互框架(Dash和Dot)",
+  "自适应残差反馈策略",
+  "权重共享机制"
+ ],
+ "method_framework": "Morse通过Dash模型进行跳跃采样，Dot模型生成残差反馈，两者时间交错运行，在相同计算预算下增加采样步数，实现无损加速。",
+ "experiment_framework": "6个图像生成任务，9个基线扩散模型，使用FID指标评估，平均加速1.78-3.31倍",
+ "takeaways": [
+  "跳跃采样与残差反馈结合可有效减少信息损失",
+  "权重共享机制降低训练成本",
+  "方法适用于多种采样器和网络架构"
+ ],
+ "weaknesses": [
+  "Dot模型训练依赖额外数据",
+  "加速效果在不同模型上存在差异",
+  "未充分探索计算资源消耗与性能的关系"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

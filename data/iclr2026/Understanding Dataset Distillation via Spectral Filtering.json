@@ -1,0 +1,41 @@
+{
+ "title": "Understanding Dataset Distillation via Spectral Filtering",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "谱滤波统一数据集蒸馏目标，课程匹配提升跨架构泛化。",
+ "innovations": [
+  "将 DM/DC/MTT/FrePo 等蒸馏目标统一解释为对特征-特征相关(FFC)矩阵特征值施加不同滤波函数，以提取特征-标签相关(FLC)矩阵的特定频率成分。",
+  "按滤波行为把现有方法分为低频匹配(产生模糊色块)与高频匹配(偏好细粒度纹理、多样性更好)，并刻画各自角色。",
+  "提出课程频率匹配 CFM，动态调整滤波参数同时覆盖低/高频信息，突破固定滤波器只能学单频的局限。"
+ ],
+ "method_framework": "用预训练蒸馏网络提取特征，构造 FFC(X^T X) 与 FLC(X^T Y) 矩阵；对 FFC 做特征分解 X^T X=UΛU^T，将各蒸馏目标重写为作用于特征值的滤波器 f(Λ)，从而把蒸馏统一为频率匹配问题；CFM 在训练中逐步增大高频成分比例实现课程式覆盖。",
+ "experiment_framework": "在 CIFAR-10/100、Tiny-ImageNet、ImageNet-1K 上与 DM、DC、MTT、FrePo 等基线对比，指标为合成数据训练后的分类准确率，并报告跨架构(ConvNet/ResNet)泛化能力。",
+ "takeaways": [
+  "现有 DD 方法本质是对 FFC 矩阵施加固定滤波器做单频匹配，低频法偏模糊色块、高频法纹理更细。",
+  "动态课程式覆盖高低频的 CFM 在多个基准上一致超过固定滤波基线，跨架构泛化更好。",
+  "谱滤波视角把蒸馏目标设计从凭直觉转为可解释的滤波器设计。"
+ ],
+ "weaknesses": [
+  "统一框架主要基于 DM/DC/MTT/FrePo 少数代表方法推导，对统计匹配类与 kernel 方法的覆盖与证明完整性未充分展开。",
+  "结论高度依赖预训练蒸馏网络与特征空间选择，谱解释在图/时序等其他模态是否成立未验证。",
+  "仅读到引言与方法，缺少 CFM 课程调度、滤波参数敏感性等细致消融的具体数值。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/Understanding Dataset Distillation via Spectral Filtering.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Understanding Dataset Distillation via Spectral Filtering.pdf",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "数据蒸馏方法研究，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

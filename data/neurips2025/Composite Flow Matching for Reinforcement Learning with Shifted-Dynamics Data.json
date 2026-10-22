@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Composite Flow Matching for Reinforcement Learning with Shifted-Dynamics Data.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Composite Flow Matching for Reinforcement Learning with Shifted-Dynamics Data.pdf",
+ "title": "Composite Flow Matching for Reinforcement Learning with Shifted-Dynamics Data",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.25
+ },
+ "one_line": "复合流匹配强化学习，用Wasserstein估计动力学差异指导探索",
+ "innovations": [
+  "复合流匹配架构，利用离线数据结构知识提升在线泛化",
+  "基于Wasserstein距离的动力学差异估计器，解决支持集不匹配问题",
+  "针对高动力学差异区域的乐观探索策略，理论证明可缩小性能差距"
+ ],
+ "method_framework": "构建复合流模型：先学习离线流，再在其基础上学习在线流；通过最优传输流匹配计算Wasserstein距离估计动力学差异；结合行为克隆和乐观探索策略进行在线学习",
+ "experiment_framework": "在Gym-MuJoCo三个任务上测试三种动力学偏移类型（形态、运动学、摩擦），使用三种D4RL数据集，与SAC、BC-SAC等基线对比",
+ "takeaways": [
+  "利用最优传输理论解决动力学差异估计问题",
+  "复合流架构能有效提升有限在线数据下的泛化能力",
+  "高动力学差异区域的探索对缩小性能差距至关重要"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，需要训练两个流模型",
+  "Wasserstein距离计算可能在高维状态空间中效率低下",
+  "实验部分未充分展示在真实医学影像或多模态大模型推理场景的应用"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

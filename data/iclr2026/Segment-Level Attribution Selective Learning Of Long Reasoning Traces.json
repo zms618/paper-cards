@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Segment-Level Attribution Selective Learning Of Long Reasoning Traces.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Segment-Level Attribution Selective Learning Of Long Reasoning Traces.pdf",
+ "title": "Segment-Level Attribution for Selective Learning of Long Reasoning Traces",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.3
+ },
+ "one_line": "段级归因选择性SFT，提升长CoT效率与准确率",
+ "innovations": [
+  "指出长推理trace中仅小部分对答案有实质贡献，冗余/截断内容在SFT中被模仿而劣化性能。",
+  "提出两个段级指标：归因强度（归因幅值总和）与方向一致性（段内归因是否同号）；高强度但中等一致性=反思性而非浅层推理。",
+  "提出段级选择性学习框架，对重要段做选择性SFT、对不重要段掩盖损失，提升准确率与输出效率。"
+ ],
+ "method_framework": "对长CoT每token用积分梯度计算其对最终答案logit的影响，按语义段聚合得到强度与一致性两指标；筛选高强度+中等一致性的段（真正反思性推理），在SFT时仅对这些段反传损失、其余段mask，避免模仿verbose无信息模式。",
+ "experiment_framework": "跨多个大推理模型与多个数据集评测；基线含全段SFT、token级/困惑度/熵选段方法；指标为推理准确率与输出效率（token长度）。",
+ "takeaways": [
+  "长CoT中大量内容是重复/截断的冗余，仅在高归因强度且方向中等一致的段上做选择性SFT更有效。",
+  "段级归因比token级或困惑度/熵等间接指标更能识别真正有信息的推理单元。"
+ ],
+ "weaknesses": [
+  "积分梯度归因本身计算开销大，训练时逐段归因的成本需权衡。",
+  "'方向一致性中等=反思性推理'的判据在不同任务上的稳健性需更多验证。",
+  "前9页未给出具体准确率数值，增益幅度需后续表格确认。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.53,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "长CoT选择性SFT提升推理效率，触及可靠性主线中的效率优化",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

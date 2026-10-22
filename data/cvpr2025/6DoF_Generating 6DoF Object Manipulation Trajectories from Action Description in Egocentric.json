@@ -1,0 +1,43 @@
+{
+ "key": "cvpr2025/6DoF_Generating 6DoF Object Manipulation Trajectories from Action Description in Egocentric.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/6DoF_Generating 6DoF Object Manipulation Trajectories from Action Description in Egocentric.pdf",
+ "title": "Generating 6DoF Object Manipulation Trajectories from Action Description in Egocentric Vision",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.1
+ },
+ "one_line": "流水线抽取6DoF轨迹，VLM生成，但数据噪声与实验严谨性不足",
+ "innovations": [
+  "无需预录相机外参的 6DoF 轨迹抽取流水线：GPT-4o 定位动作起止并判定刚体 → Grounded SAM 开词汇分割 → Depth Anything + SpaTracker 三维点跟踪 → FPFH+RANSAC 初配准与彩色 ICP 精化逐帧投回首帧相机系",
+  "用 SVD 从起始帧与后续帧物体点云的协方差矩阵 H=UΣV^T 取 R=VU^T 得到旋转序列，不依赖 CAD 模型或参考图像即可获得姿态变换",
+  "把 6DoF 位姿每维均匀离散为 256 bin 的 trajectory token 注入 BLIP-2/VILA/PointLLM/MiniGPT-3D 词表，将文本到操作轨迹生成形式化为下一 token 预测",
+  "构建 EgoTraj（28,497 条轨迹、228 个动词、4,158 类物体），规模与动作/物体多样性远超 H2O、EgoPAT3D、HOT3D 等动捕数据集"
+ ],
+ "method_framework": "四阶段从 Ego-Exo4D 抽取 6DoF 轨迹与动作描述；模型侧冻结视觉/点云编码器与 LLM，经 projector 接入图像/深度/点云特征，自回归预测离散位姿 token，交叉熵训练。",
+ "experiment_framework": "训练 EgoTraj（27,788/709），测试 HOT3D 986 条动捕级样本；基线 Seq2Seq、USST；指标 3D/2D 的 ADE、FDE 与旋转 GD；对比 BLIP-2、VILA、PointLLM、MiniGPT-3D。",
+ "takeaways": [
+  "用现成基础模型（分割/单目深度/点跟踪/LLM）拼接出大规模 3D 标注流水线，是绕开动捕数据稀缺的可复制路径，代价是真值噪声上界未知",
+  "训练集自动抽取（Ego-Exo4D）与测试集动捕级（HOT3D）天然跨分布，比同源划分更能暴露轨迹质量与泛化问题",
+  "离散化位姿为 token 直接复用 VLM 词表，是把连续控制量接入自回归多模态模型的低成本接口设计"
+ ],
+ "weaknesses": [
+  "EgoTraj 真值完全由模型流水线产出，单目深度与逐帧点云配准误差会累积，正文未给出与人工标注或动捕真值的精度对照，数据噪声上界与筛选阈值均未报告",
+  "基线仅 Seq2Seq 与 USST，且 USST 是手部 3DoF、不使用动作描述，与本文设定不同类，需改造才能比，公平性存疑；新任务缺少同类方法的横向对照",
+  "无多种子方差与显著性检验；正文在概率采样与后续分析处截断，未见离散 bin 数、轨迹长度裁剪（>20 帧截断）等因素的完整消融",
+  "VILA(3B) 显著劣于 BLIP-2(2.7B)、VILA(8B) 又回升，'更大多模态模型更好'的 scaling 假设被推翻但正文只描述现象未给机制解释"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.1,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "机器人操作与可靠性主线无关，无可迁移设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

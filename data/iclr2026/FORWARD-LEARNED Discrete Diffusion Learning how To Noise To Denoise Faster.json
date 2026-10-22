@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/FORWARD-LEARNED Discrete Diffusion Learning how To Noise To Denoise Faster.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/FORWARD-LEARNED Discrete Diffusion Learning how To Noise To Denoise Faster.pdf",
+ "title": "FORWARD-LEARNED Discrete Diffusion: Learning how To Noise To Denoise Faster",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "学习前向过程加速离散扩散采样，但训练不稳定且文本生成性能不足",
+ "innovations": [
+  "引入可学习的前向过程，使目标分布与生成过程更好对齐",
+  "非马尔可夫前向过程参数化，保持计算效率",
+  "端到端训练前向和反向过程，无需修改采样过程"
+ ],
+ "method_framework": "FLDD框架通过可学习的前向边际和后验分布，使目标分布与因子化生成过程对齐，实现少步生成。使用REINFORCE和连续松弛进行优化，保持标准变分目标。",
+ "experiment_framework": "在合成数据、ROCStories文本、QM9/ZINC250k分子生成和MNIST图像上评估，比较T=100和T=10步的性能，使用MAUVE、PPL、Div、Valid、Unique、FCD等指标。",
+ "takeaways": [
+  "学习前向过程可显著减少离散扩散模型所需步数",
+  "数据感知的掩码策略可改善图像生成质量"
+ ],
+ "weaknesses": [
+  "依赖REINFORCE可能导致训练不稳定",
+  "前向过程参数化增加了模型参数量",
+  "在文本生成任务上性能略低于最先进方法"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "扩散模型加速方法，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

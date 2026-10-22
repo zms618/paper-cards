@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/mat.pngMATS An Audio Language Model under Text-only Supervision.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/mat.pngMATS An Audio Language Model under Text-only Supervision.pdf",
+ "title": "MATS: An Audio Language Model under Text-only Supervision",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.5
+ },
+ "one_line": "文本监督训练音频LLM，CLAP投影+Santa机制，零样本竞争但缺乏消融",
+ "innovations": [
+  "提出纯文本监督的音频多模态训练策略，将CLAP共享音-语隐空间投影到LLM隐空间",
+  "设计Santa(Strongly-related noisy text with audio)机制，在保留音频关键信息的同时弥合CLAP内音-语嵌入模态差",
+  "训练全程不使用音频数据即可让LLM获得音频理解能力"
+ ],
+ "method_framework": "基于预训练音频-语言对齐模型(CLAP)，设计text-only训练策略：把CLAP的共享音频-语言隐空间投影到LLM隐空间；Santa机制将音频嵌入映射进CLAP语言嵌入空间并保留音频信息，从而在无音频配对数据训练下赋予LLM音频理解。",
+ "experiment_framework": "在ESC-50/FSD50K/CASED/TUT/VGG/US8K/GTZAN等分类任务及AudioCaps/Clotho/MusicCaps/ClothoAQA等描述/问答任务上评测；zero-shot下与需大规模音频-语对训练的LALM(Qwen-Audio等)对比。",
+ "takeaways": [
+  "纯文本监督训练的MATS在zero-shot闭集音频任务上可比肩用大规模音频-语对训练的近期LALM",
+  "Santa机制有效弥合CLAP内音频与语言嵌入的模态鸿沟",
+  "大幅降低音频语言模型对昂贵音频-语料配对的依赖"
+ ],
+ "weaknesses": [
+  "音频模态而非视觉，与主线(医学影像/视觉多模态推理/可靠性)关联有限",
+  "zero-shot竞争力强但近域微调/密集推理任务上是否仍领先未充分展示",
+  "性能上限受CLAP对齐质量约束，前9页未见投影模块各组件的逐项消融"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.58,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

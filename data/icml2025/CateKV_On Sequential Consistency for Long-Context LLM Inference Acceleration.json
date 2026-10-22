@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/CateKV_On Sequential Consistency for Long-Context LLM Inference Acceleration.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/CateKV_On Sequential Consistency for Long-Context LLM Inference Acceleration.pdf",
+ "title": "CateKV: On Sequential Consistency for Long-Context LLM Inference Acceleration",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "基于注意力头分类的混合KV缓存，加速长上下文LLM推理",
+ "innovations": [
+  "识别注意力头序列一致性与动态激活特性",
+  "基于变异系数的注意力头分类方法",
+  "混合KV缓存策略，保留关键token"
+ ],
+ "method_framework": "CateKV通过观察窗口识别关键token，使用变异系数分数将注意力头分为一致性和适应性两类，对一致性头保留少量关键KV对，适应性头保留大部分KV对，实现内存和计算加速。",
+ "experiment_framework": "在RULER、LongBench和NIAH基准上测试，使用Llama-3、Phi-3等模型，与StreamingLLM、SnapKV、Quest等方法对比，评估内存使用、解码延迟和吞吐量。",
+ "takeaways": [
+  "注意力头序列一致性可作为加速LLM推理的有效特性",
+  "混合KV缓存策略平衡了内存效率和模型性能",
+  "方法可与其他加速技术结合使用"
+ ],
+ "weaknesses": [
+  "依赖参考数据集进行头类型识别，可能影响泛化能力",
+  "未充分讨论在不同模型架构上的适用性",
+  "理论分析较为抽象，缺乏更深入的数学证明"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

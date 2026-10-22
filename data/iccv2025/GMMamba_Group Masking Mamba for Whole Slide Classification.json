@@ -1,0 +1,39 @@
+{
+ "key": "iccv2025/GMMamba_Group Masking Mamba for Whole Slide Classification.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/GMMamba_Group Masking Mamba for Whole Slide Classification.pdf",
+ "title": "GMMamba Group Masking Mamba for Whole Slide Classification",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.5,
+  "overall": 6.6
+ },
+ "one_line": "位置分组掩码Mamba提升WSI分类，但依赖预训练特征",
+ "innovations": [
+  "位置导向的分组策略减少局部冗余",
+  "组内掩码Mamba(IMM)模块自适应过滤非信息性实例",
+  "跨组超特征采样(CSS)模块聚合分散的肿瘤特征"
+ ],
+ "method_framework": "基于位置聚类将WSI分组，IMM模块通过双向Mamba和注意力掩码过滤冗余实例，CSS模块通过最大池化和交叉注意力提取跨组特征，最终通过多头注意力生成袋级预测",
+ "experiment_framework": "在TCGA-BRCA、TCGA-ESCA、BRACS和TCGA-Lung四个数据集上评估，使用ResNet18和ViT-S/16-SSL特征提取器，比较ACMIL、MambaMIL等基线方法，指标包括准确率、AUC和F1分数",
+ "takeaways": [
+  "位置导向的分组策略比随机分组更有效",
+  "CSS模块可集成到现有MIL框架中提升性能"
+ ],
+ "weaknesses": [
+  "依赖预训练特征提取器，端到端训练可能影响性能",
+  "组大小和掩码比等超参数可能需要针对不同数据集调整"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像分类+可靠性方法设计，但依赖预训练特征",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

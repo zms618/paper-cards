@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/ASIGN_An Anatomy-aware Spatial Imputation Graphic Network for 3D Spatial.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ASIGN_An Anatomy-aware Spatial Imputation Graphic Network for 3D Spatial.pdf",
+ "title": "ASIGN: An Anatomy-aware Spatial Imputation Graphic Network for 3D Spatial Transcriptomics",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.0,
+  "relevance": 7.0,
+  "overall": 6.2
+ },
+ "one_line": "用2D切片锚定3D转录组，图传播补全但基线对比不足",
+ "innovations": [
+  "新任务设定：以 3D WSI 组织学切片 + 仅一张 2D ST 切片为输入做 3D ST 填补（partial-known），绕开整层 3D ST 测序成本（正文指出 2D ST 已比 WSI 贵 50 倍以上、10 层 3D 再高一量级），并把评测从全未知的 2D WSI 级转到部分已知的 3D 样本级。",
+  "WSI 级配准后的跨层 3D 图构建：XFeat 提特征、ANTs 以中层为参考做整图配准，再用 spot 圆的 IoU 与该 spot 特征的余弦相似度之和作为跨层连边权重 e_ij（Eq.1）取 Top-k（层间 8、层内 12），在 WSI 层面而非 spot 层面对齐，规避切片形变造成的 spot 级错位。",
+  "Cross-layer Imputation (CLI)：在 3D 图上按 p_i^(t+1)=Σ_{j∈N(i)} α_j e_ij p_j^(t)/Σ_{j∈N(i)} e_ij 迭代传播已知层标签（已知节点固定不变），再与 MSAGNet 的预测按可学习权重 α 融合（Eq.6），把锚定层的真实表达扩散到未知层。"
+ ],
+ "method_framework": "ANTs 配准后按 spot 圆 IoU + 特征余弦相似度建跨层 Top-k 3D 图；MSAGNet 以交叉注意力融 spot/region/global 三分辨率特征，再叠 GAT+Transformer 聚合；CLI 在图上传播已知层标签并与预测自适应加权；损失为多分辨率 PCC/MSE 加跨分辨率一致性。",
+ "experiment_framework": "HER2（8 样本、6/3 层）、DLPFC（3 样本 4 层）、ST-Data（16 样本 3 层）；基线 ST-Net/EGN/BLEEP/HisToGene/His2ST 及自造 Overlap、Similarity 两个 3D 启发式；样本级 4/3 折交叉验证；指标 MSE/MAE/PCC 含 Welch t 检验。",
+ "takeaways": [
+  "把跨层对齐放在 WSI 图像级（配准 + IoU/相似度建边）而非 spot 表达级，可明显缓解切片形变与位移导致的三维错位，比 PASTE/Stitch3D 的 spot 级思路更稳。",
+  "“已知层标签在图上传播 + 与模型预测做可学习加权融合”是低成本提升跨样本泛化的插件，可平移到任何只有部分标注的图结构医学任务。",
+  "样本级（一层已知进训练、其余层进测试）交叉验证是 ST 预测中避免同患者层间信息泄漏的干净评测口径，值得直接沿用。"
+ ],
+ "weaknesses": [
+  "3D 侧的两个基线 Overlap、Similarity 是作者自造的启发式（按 IoU+余弦相似度做 Top-k 连边），并非 PASTE/Stitch3D 等已发表 3D ST 方法的完整复现，Table 1 中 ASIGN 3D 的 PCC 0.693 对 0.649 的 4 点优势因此缺少同类强基线支撑，可比性存疑。",
+  "CLI 依赖已知层标签作锚点，实现里把已知比例设为 0.2（Sec 4），而评测时恰好是“一层已知进训练、其余层测试”——这套 0.2 的观测设置与真实场景（仅一张 ST 切片时的跨层扩散）是否等价，正文未做比例敏感性分析。",
+  "Sec 5.3 消融只在 HER2 单数据集、固定超参下做，且正文在第三组消融（CLI 与已知标签比例）结论处被截断，跨分辨率一致性损失 Lc、交叉注意力与 GAT“收益正交”等说法均缺完整数值表支撑。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "医学影像空间转录组填补，可靠性主线落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

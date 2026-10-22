@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/4D-Bench Benchmarking Multi-modal Large Language Models for 4D Object Understanding.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/4D-Bench Benchmarking Multi-modal Large Language Models for 4D Object Understanding.pdf",
+ "title": "4D-Bench: Benchmarking Multi-modal Large Language Models for 4D Object Understanding",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.4
+ },
+ "one_line": "首个4D物体理解基准，但规模小且结论缺乏统计支撑",
+ "innovations": [
+  "首个面向 MLLM 的 4D 物体（动态 3D）语言理解基准，同时要求多视角空间理解与时序理解：4D 物体 QA 含 751 题 / 736 个物体、分 Appearance / Action / Object Counting / Spatial / Temporal Relationship 五个子任务，4D 物体描述覆盖 580 个物体、每物体 5 条独立人工描述，补上 3D 基准只做静态场景、2D 视频基准只做单视角的缺口",
+  "以反事实合成数字资产构造 OOD 评测：全部数据渲染自 Objaverse-XL，含违背物理与常识的设定（如 6 条腿的蜘蛛）专门检验 MLLM 是真在理解输入还是调用世界先验——实测 GPT-4o、Gemini 1.5 pro、Qwen2-VL-7B、LLaVA-Video-7B 在反事实例上仍一致选「8 条腿」的真实世界答案",
+  "标注管线内置「盲过滤」去捷径：只把 QA 文本（不含视觉）喂 Qwen2.5 与 Llama 3.1，两者都答对的题目直接丢弃，逼迫每道题必须真正看到 4D 内容才能答对；配合像素变化检测切运动段、人工标注后微调 CLIP 当视觉质量分类器"
+ ],
+ "method_framework": "Objaverse-XL 动态 3D 资产渲染多视角视频 → 像素变化检测切运动段 + 微调 CLIP 质量分类器滤掉低质/静态 → GPT-4o 与 Qwen2-VL 用 CoT 生题 → Qwen2.5/Llama3.1 盲过滤剔除无视觉必要性的题 → 人工复核；评测统一取 K=3 视角各采样 N=6 帧组 18 帧输入，QA 报四选一 accuracy，描述任务用 n-gram/嵌入指标加 GPT-Appearance、GPT-Action（0-5）综合打分。",
+ "experiment_framework": "13 个 MLLM：闭源 GPT-4o、Gemini 1.5 Pro / Flash 与开源 MiniGPT4-Video、VideoChat2、InternVL2、Qwen2-VL、LLaVA-OneVision / LLaVA-Video（7B 与 72B）；4D 物体 QA 报五子任务与 Overall accuracy，4D 物体描述报 CIDEr / BLEU@4 / METEOR / ROUGE / BERT / SBERT 与 GPT 打分的 GPT-Eval，均附人类基线（Overall 91.08%）。",
+ "takeaways": [
+  "反事实 / 合成资产是检验「模型在看还是在背先验」的最省事设计：4 条腿的蜘蛛题上所有强模型都选 8 条腿，先验压过视觉证据，这类题可直接当幻觉探针复用到别的评测上",
+  "盲过滤（只看文本能否答对、能答对就删题）是构造视觉必要性评测的通用配方，比逐题人工判难度便宜得多",
+  "子任务应把 counting 单列：它平均仅 37.29%，只比四选一随机的 25% 高 12 个点，是掉得最狠且与其余任务差距最大的维度"
+ ],
+ "weaknesses": [
+  "规模小且全无方差：751 道 QA 摊到五类子任务后每类仅 127-214 题，所有指标都是单次运行、无种子方差或置信区间；Object Counting 平均 37.29% 仅比随机的 25% 高 12 个点，而 MiniGPT4-Video 22.05%、InternVL2-8B 18.11% 甚至低于随机，说明存在多标签或无标准答案的题，这一隐患被平均值掩盖",
+  "评测配置是单点固定的 K=3 视角、N=6 帧且理由仅为显存约束，未做视角数/帧数敏感性分析；表 1 中 Qwen2-VL-72B(58.72) 反而低于 LLaVA-Video-72B(62.32)、InternVL2-76B(43.94) 又明显掉队，这类模型间排序与采样设置强耦合的结论缺少稳健性支撑",
+  "最吸引人的「MLLM 依赖先验而非理解」结论只在图 6 的一个反事实例上展示，未统计反事实子集与常规子集间的准确率差；描述任务主指标 GPT-Eval 由 GPT-4o 自己打分（被测模型之一，3.382/5 vs 人类 3.826/5），且与 n-gram 指标排序相悖（GPT-4o CIDEr 仅 69.0 而 LLaVA-Video-72B 达 106.2），裁判偏差与两套指标的不一致均未说明"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态大模型评测，与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

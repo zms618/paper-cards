@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/KVzip_Query-Agnostic KV Cache Compression with Context Reconstruction.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/KVzip_Query-Agnostic KV Cache Compression with Context Reconstruction.pdf",
+ "title": "KVzip: Query-Agnostic KV Cache Compression with Context Reconstruction",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "查询无关KV压缩方法，通过重建评分机制提升多查询效率",
+ "innovations": [
+  "查询无关的KV缓存压缩策略",
+  "基于上下文重建的重要性评分机制",
+  "分块计算方法解决长上下文计算复杂度问题"
+ ],
+ "method_framework": "通过重复提示模拟上下文重建，计算KV对的最大注意力得分作为重要性指标，保留高重要性KV对实现压缩",
+ "experiment_framework": "12个基准数据集(SQuAD, GSM8K等)，多种模型(LLaMA3.1, Qwen2.5等)，对比H2O/SnapKV/PyramidKV等方法",
+ "takeaways": [
+  "上下文重建注意力模式比预填充注意力更稀疏，更适合压缩",
+  "重建关键KV对在不同任务间有高度重叠，支持泛化",
+  "支持上下文无关压缩，消除部署开销"
+ ],
+ "weaknesses": [
+  "压缩过程引入约2倍计算开销",
+  "重复提示设计可能影响某些任务性能",
+  "上下文重建与实际任务间仍存在差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.6,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

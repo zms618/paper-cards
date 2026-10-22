@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Zero-Shot Reconstruction of Animatable 3D Avatars with Cloth Dynamics from.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Zero-Shot Reconstruction of Animatable 3D Avatars with Cloth Dynamics from.pdf",
+ "title": "Zero-Shot Reconstruction of Animatable 3D Avatars with Cloth Dynamics from a Single Image",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.4
+ },
+ "one_line": "单图零样本动态3D人像：静态Transformer+LoRA迁移+光流损失",
+ "innovations": [
+  "任务定位：首个'单图输入+零样本(无主体级优化)+布料动力学'三条件同时满足的动画化3D人像框架，Transformer前馈直接预测动态3D高斯形变",
+  "静态→动态知识迁移：静态Transformer在大规模静态数据预训练提供几何/外观先验，动态Transformer从零训练专攻运动形变，LoRA轻量适配静态权重，缓解动态捕捉数据稀缺",
+  "DynaFlow损失：渲染xy图+光流(LightGlue)建立跨帧对应，提供像素级运动方向几何线索，避免颜色-几何歧义，支持快/大形变"
+ ],
+ "method_framework": "单图→(静态预训练Transformer+动态Transformer,LoRA适配)预测动态3DGS形变→渲染；DynaFlow:渲染RGB+xy图→光流匹配→几何监督；配套重标注SMPL-X管线(DWPose+多视2D关键点优化+时序平滑)产出11M监督。",
+ "experiment_framework": "训练DNA-Rendering/4D-Dress(虚拟相机渲染、测试新主体)，跨域测试Actors-HQ(14序列39相机未参与训练)；PSNR/SSIM/LPIPS对比IDOL/LHM；消融Dynamic Transformer(+1.05 PSNR)/transfer+LoRA/DynaFlow。",
+ "takeaways": [
+  "'数据稀缺用迁移补'：静态→动态的LoRA迁移把大规模静态先验引入动态学习，'先验主体+专项支线'的双Transformer设计可推广到任何动态生成任务",
+  "'重标注数据即贡献'：公开动态数据集SMPL-X标注缺失/噪声(约20%帧)被系统性重标注并人工核验，数据工程质量本身构成可复用资产",
+  "'几何监督避开颜色歧义'：xy图+光流把'颜色相似'换成'几何对应'，解决快速形变下的重建模糊，损失设计角度值得借鉴"
+ ],
+ "weaknesses": [
+  "消融定量仅Dynamic Transformer一项(表2)，transfer/LoRA/DynaFlow以定性图为主，无定量消融表与统计检验；对比表3缺失(截断处未见完整对比数值)",
+  "零样本泛化限定于3DGS-avatar类方法同源设定，宽松衣物(被遮挡主体)被显式排除出训练，'布料动力学'覆盖的服装多样性有限",
+  "光流(LightGlue)在极端遮挡/快速运动的错误匹配误差传播未量化；重标注依赖DWPose可见性假设(置信度>0.3)，低置信度帧占比未报告"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D重建与布料动力学，与可靠性主线无交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

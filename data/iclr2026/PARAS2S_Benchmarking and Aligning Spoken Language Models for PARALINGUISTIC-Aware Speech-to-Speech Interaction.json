@@ -1,0 +1,41 @@
+{
+ "title": "ParaS2S: Benchmarking and Aligning Spoken Language Models for Paralinguistic-Aware Speech-to-Speech Interaction",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "构建语音副语言基准与RL对齐，但与主线关联弱且证据不足。",
+ "innovations": [
+  "构建ParaS2SBench基准，用富表现力/高难度查询评测输入输出对在内容与说话风格上的自然度。",
+  "提出PolyTone训练策略与多阶段自动裁判框架，抑制端到端音频LLM裁判的风格幻觉，与人类偏好高度相关且可扩展。",
+  "ParaS2SAlign用RL直接在波形层优化内容与风格，较SFT内容/风格恰当性相对提升10%，且所需配对样本远少于纯SFT。"
+ ],
+ "method_framework": "先建基准与可靠自动裁判(PolyTone多阶段，避免风格幻觉)；再以该裁判为奖励做RL，直接在波形级同时奖励响应内容恰当与风格匹配，使S2S模型对副语言线索做出合适回应；可用无标注语音交互学习。",
+ "experiment_framework": "在ParaS2SBench上评测现有S2S模型与pipeline基线；对比SFT与RL对齐；自动裁判与人类偏好做相关性验证；指标为内容/风格恰当性(win rate)；报告RL较SFT相对提升10%、超先前所有模型且配对样本更少。",
+ "takeaways": [
+  "现有S2S模型对副语言属性响应不当，并不优于pipeline基线。",
+  "可靠可扩展的自动裁判是S2S对齐的关键瓶颈。",
+  "RL对齐在少配对样本下即可同时改善内容与风格恰当性。"
+ ],
+ "weaknesses": [
+  "语音方向，与可靠性×医学影像/多模态推理主线无直接关联。",
+  "自动裁判虽与人类相关，但风格幻觉抑制是否覆盖极端情绪/口音仍需更广验证。",
+  "RL奖励直接在波形层，奖励噪声与训练稳定性的代价在正文前9页量化不足。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PARAS2S_Benchmarking and Aligning Spoken Language Models for PARALINGUISTIC-Aware Speech-to-Speech Interaction.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PARAS2S_Benchmarking and Aligning Spoken Language Models for PARALINGUISTIC-Aware Speech-to-Speech Interaction.pdf",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "语音副语言对齐与可靠性主线无直接关联，无可迁移机制",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

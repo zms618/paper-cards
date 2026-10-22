@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Adapting Pre-trained 3D Models for Point Cloud Video Understanding via.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Adapting Pre-trained 3D Models for Point Cloud Video Understanding via.pdf",
+ "title": "Adapting Pre-trained 3D Models for Point Cloud Video Understanding via Cross-frame Spatio-temporal Perception",
+ "scores": {
+  "novelty": 4.5,
+  "depth": 5.5,
+  "evidence": 4.0,
+  "relevance": 4.5,
+  "overall": 4.6
+ },
+ "one_line": "冻结静态模型，用tube与KNN图适配器补时间信息做4D理解",
+ "innovations": [
+  "用 point tube 替换静态点云的 FPS+KNN patch 做 embedding 层：每隔两帧取锚帧、在锚点周围空间半径 rs=0.3、时间长度 l=3 内搜邻域成 tube，特征用相对位移 (δx,δy,δz,δt) 经扩展 4D PointNet maxpool 得到 Te 注入冻结 backbone。",
+  "GCTA（Geometric Constraint Temporal Adapter）：按 tube 锚点坐标在全视频建 KNN 图，边特征 e_ij=φ(concat(f_j−f_i, f_i))、maxpool 聚合后 f'_i=ξ(maxpool e_ij)（Eq.2/3），显式把跨时段的结构变化（f_j−f_i 即全局形变）注入冻结编码器，突破单条 tube 只能看短时窗口的限制。",
+  "冻结所有预训练 Attention/FFN 参数，只训 tube embedding、GCTA 与分类头（Eq.4：F_{i+1}=FFN(Attn(F_i))+GCTA(F_i)+PE(F_i)），实现参数高效的时间维适配。"
+ ],
+ "method_framework": "点云视频沿时间维切 point tube（锚帧 FPS 取 64 个锚点，每 tube 采样 32 点）→ 相对时空位移经 4D PointNet 得 tube embedding 作冻结编码器输入 → 跨帧 KNN 图上 EdgeConv 式聚合补长时动态 → 逐层与冻结 FFN/Attention 相加 → task head 分类；微调阶段只更新 embedding/GCTA/head。",
+ "experiment_framework": "MSR-Action3D（270 训练/297 测试，20 类）在 8/12/16/24 帧四种时间粒度、SHREC'17（70%/30% 划分，28 类）；基线含监督（MeteorNet/PSTNet/P4Transformer/Kinet/PPTr/LeaF/PST-Transformer/X4D-SceneFormer）与自监督端到端（CPR/C2P/PointCMP/PointCPSC/MaST-Pre）；指标分类准确率。",
+ "takeaways": [
+  "冻结 Point-BERT/Point-MAE/PointGPT-S + tube embedding + GCTA 的适配器路线，在 8~24 帧四种时间分辨率上一致超过已有自监督 4D 预训练方法，说明静态↔动态的语义知识是可迁移的。",
+  "跨帧 KNN 图（而非延长 tube 长度）来扩大时间感受野，是把 EdgeConv 用到点云视频的最短路径，代码复用成本低。",
+  "消融可以按 PTA/PE/GCTA 三元组拆（A0 head-only 77.35 → A1 83.97 → A2 87.11 → A3 94.08 → A4 95.12），能定位每个部件的独立贡献。"
+ ],
+ "weaknesses": [
+  "组件复用为主：Point Tube Adapter 直接继承 [9,11]（P4Transformer/PSTNet）的 tube 定义，GCTA 本质是 EdgeConv 的 edge feature 换成 concat(f_j−f_i, f_i) 再 maxpool，配合 SE 式 position encoder，属既有模块组合式迁移，无新问题定义。",
+  "消融表自相矛盾：A2（PTA+PE，87.11）在仅有 PE 时反而不如 A3（PTA+GCTA，94.08），且 A4 全模块只比 A3 高 1.04，说明 PE 与 GCTA 的作用高度重叠、 Ablation 无法分离二者贡献；k（邻居数）消融图在正文中不完整（k=1 即无聚合，k=5 掉到 91.99），无误差条/方差；且正文在 4.4.3 段截断，不同 k 的完整曲线、四种帧数下的完整对照表与效率分析均不可见。",
+  "数据集份量与设定存疑且 SOTA 声明含选择成分：仅在 MSR-Action3D 与 SHREC'17 两个视频级小数据集上评（<300 训练视频 / 2064 训练视频），50 epoch SGD；表 1 中 PointGPT-S+CSA 在 24 帧为 94.42，低于 C2P 的 94.76，所谓 SOTA 只在多数配置成立,且是比较时剔除了部分自监督方法的配置。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.0,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5.0,
+ "relevance_reason": "点云视频理解与可靠性主线无实质交点，仅属知识面补全",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Think Twice, Act Once A Co-Evolution Framework of LLM and RL for Large-Scale Decision Making.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Think Twice, Act Once A Co-Evolution Framework of LLM and RL for Large-Scale Decision Making.pdf",
+ "title": "Think Twice, Act Once: A Co-Evolution Framework of LLM and RL for Large-Scale Decision Making",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "LLM双角色协同RL框架提升电网决策，但泛化性与成本未验证",
+ "innovations": [
+  "提出双角色轨迹精炼机制：LLM既作为Policy Actor通过多步推理精炼次优动作，又作为Value Critic进行轨迹级奖励塑形的时间信用分配",
+  "构建LLM与RL的协同进化闭环：RL智能体通过优先经验回放生成高质量微调数据反哺LLM，LLM又指导RL训练",
+  "在动作空间超过6万的电网调度场景验证了框架的可扩展性"
+ ],
+ "method_framework": "ACE框架包含三个核心模块：(1)Actor角色：LLM对RL生成的次优动作进行多步推理和环境验证来精炼动作；(2)Critic角色：LLM对完整轨迹进行评估并生成奖励塑形信号，解决时间信用分配问题；(3)优先经验回放：RL收集的高质量轨迹经筛选后用于微调LLM，提升其特定领域决策能力。三者形成双向增强的协同进化循环。",
+ "experiment_framework": "在多个电网调度操作任务上评估，动作空间超过6万离散动作。对比基线包括纯RL方法、纯LLM方法和LFD方法。评估指标为任务成功率、累积奖励和样本效率。",
+ "takeaways": [
+  "LLM作为Actor和Critic双重角色可同时改善RL的动作质量和信用分配，显著提升大规模决策性能",
+  "RL生成的高质量决策数据可有效反哺LLM微调，形成正向协同进化循环",
+  "在超高维动作空间(60K+)的工业场景中，LLM-RL协同框架优于纯RL和纯LLM方法"
+ ],
+ "weaknesses": [
+  "仅在电网调度单一领域验证，框架的通用性和跨领域迁移能力未充分检验",
+  "LLM作为Critic的奖励信号质量依赖LLM对任务的理解程度，缺乏对奖励偏差的量化分析",
+  "双角色LLM调用的推理成本较高，未讨论整体框架的计算开销和实时性"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

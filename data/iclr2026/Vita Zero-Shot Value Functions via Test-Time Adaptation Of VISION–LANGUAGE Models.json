@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Vita Zero-Shot Value Functions via Test-Time Adaptation Of VISION–LANGUAGE Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Vita Zero-Shot Value Functions via Test-Time Adaptation Of VISION–LANGUAGE Models.pdf",
+ "title": "VITA: Zero-Shot Value Functions via Test-Time Adaptation of Vision-Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "测试时微调VLM为值函数，解决时序状态区分问题",
+ "innovations": [
+  "提出将测试时自适应(TTA)引入对比型VLM值函数估计，通过元学习自监督损失在推理时逐步更新轻量模块，同时提升泛化性和时序推理能力",
+  "通过沿轨迹顺序更新参数，将历史信息编码进模型参数，解决了冻结VLM无法区分视觉相似但阶段不同状态的问题",
+  "提出基于差异度的采样策略，在训练时选择语义多样的轨迹片段，缓解捷径学习问题"
+ ],
+ "method_framework": "VITA在对比型VLM上附加轻量自适应模块，推理时通过元学习的自监督损失进行单步梯度更新。沿测试轨迹顺序逐步更新，使参数逐步编码轨迹历史，从而获得时序推理能力。训练阶段采用基于差异度的采样策略，从轨迹中选取语义上多样化的片段，迫使模型依赖语义线索而非视觉捷径。仅从单一训练环境学习，即可泛化到多种OOD任务、环境和机器人本体。",
+ "experiment_framework": "任务：真实世界机器人操作任务 + Meta-World离线RL多任务学习(MT10)。基线：最先进零样本方法（自回归VLM值函数）、模糊逻辑密集奖励。指标：值估计准确率、专家/非专家轨迹区分度、离线RL策略性能。测试覆盖多种OOD任务、环境和机器人本体。",
+ "takeaways": [
+  "测试时自适应能显著增强冻结VLM值函数的泛化能力，从单一训练环境即可泛化到多样OOD场景",
+  "沿轨迹逐步更新参数的方式有效解决了时序推理问题，能区分视觉相似但任务阶段不同的状态",
+  "VITA的零样本值估计用于离线RL奖励塑形时，在Meta-World MT1上甚至超过仿真自带模糊逻辑密集奖励的训练效果"
+ ],
+ "weaknesses": [
+  "测试时逐步梯度更新增加了推理延迟，对实时机器人控制场景可能构成瓶颈",
+  "元学习训练仅在单一环境进行，虽然展示了OOD泛化，但训练环境多样性有限",
+  "自监督损失的设计依赖轨迹顺序假设，对随机顺序或分支式任务轨迹的适应性未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "测试时微调VLM解决时序状态区分，触及可靠性主线泛化性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

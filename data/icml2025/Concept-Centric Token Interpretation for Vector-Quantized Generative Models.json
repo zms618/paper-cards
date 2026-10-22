@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Concept-Centric Token Interpretation for Vector-Quantized Generative Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Concept-Centric Token Interpretation for Vector-Quantized Generative Models.pdf",
+ "title": "Concept-Centric Token Interpretation for Vector-Quantized Generative Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "CORTEX解释VQ模型token，但依赖标注且因果性不足",
+ "innovations": [
+  "提出样本级解释方法分析单张图像中token重要性得分",
+  "提出码本级解释方法在整个码本中搜索全局概念相关token",
+  "应用于目标图像编辑和shortcut特征检测，可量化生成模型中的种族偏见"
+ ],
+ "method_framework": "VQ生成模型(VQGM)的码本离散token缺乏解释。CORTEX通过两种方法解释：(1)样本级——对单张图像分析各token对概念的重要性；(2)码本级——遍历整个码本找到与概念全局相关的token。可用于检测偏见(如白/黑医生相关token频率差异)和定向图像编辑。",
+ "experiment_framework": "在多个预训练VQGM上与基线解释方法比较；演示偏见检测(白医生token 8.55 vs 黑医生2.32)和目标编辑应用。",
+ "takeaways": [
+  "CORTEX能清晰解释VQGM中token如何参与概念生成",
+  "样本级和码本级解释互补，优于单尺度基线",
+  "可量化生成模型中的系统性偏见(种族token频率差异近4倍)"
+ ],
+ "weaknesses": [
+  "解释质量依赖概念标注的准确性",
+  "仅在图像VQGM上验证，文本/多模态生成模型未涉及",
+  "token重要性得分的因果性未严格证明"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

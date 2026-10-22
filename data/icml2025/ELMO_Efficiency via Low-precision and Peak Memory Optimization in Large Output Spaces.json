@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/ELMO_Efficiency via Low-precision and Peak Memory Optimization in Large Output Spaces.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ELMO_Efficiency via Low-precision and Peak Memory Optimization in Large Output Spaces.pdf",
+ "title": "ELMO: Efficiency via Low-precision and Peak Memory Optimization in Large Output Spaces",
+ "scores": {
+  "novelty": 4,
+  "depth": 5,
+  "evidence": 6,
+  "relevance": 4,
+  "overall": 4.5
+ },
+ "one_line": "纯低精度训练XMC分类头，工程优化为主，理论贡献有限",
+ "innovations": [
+  "指出XMC中分类头是计算/显存主瓶颈，且现有FP16-FP32混合精度训练不稳定且低效",
+  "提出纯低精度训练框架，分类层也用Float8而非保留高精度，配合Kahan求和补偿误差",
+  "用随机舍入(stochastic rounding)保证全Float8训练收敛，同时优化峰值显存"
+ ],
+ "method_framework": "针对极端多标签分类(标签数达百万级)中巨大线性分类头的瓶颈，用BFloat16/Float8低精度存储与计算权重，以Kahan求和做误差补偿、随机舍入维持梯度无偏，实现整个XMC模型（含分类头）的纯低精度训练，降低显存与算力开销。",
+ "experiment_framework": "在多个标准XMC基准(如Wiki/Amazon类大规模标签集)上与FP16-FP32混合精度、其他低精度方案对比，报告精度(P@k/nDCG)、显存占用与训练吞吐。",
+ "takeaways": [
+  "XMC分类头可用纯Float8训练而不显著掉点，Kahan求和+随机舍入是关键",
+  "放弃混合精度中分类头保留高精度的惯例可进一步省显存与算力",
+  "峰值显存优化对百万级标签训练的可扩展性至关重要"
+ ],
+ "weaknesses": [
+  "与主线（可靠性/可信AI/医学影像/多模态大模型推理）无关，属系统效率方向",
+  "低精度训练的工程改进性质，理论新意有限",
+  "前9页内未见到对大规模Transformer编码器端低精度兼容性的充分讨论"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.45,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

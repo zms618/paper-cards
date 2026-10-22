@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/A Theory of Learning Unified Model via Knowledge Integration from.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/A Theory of Learning Unified Model via Knowledge Integration from.pdf",
+ "title": "A Theory of Learning Unified Model via Knowledge Integration from Label Space Varying Domains",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "新设MSODA但理论假设强，AFG方法有创新但实验证据不足",
+ "innovations": [
+  "新设定MSODA（多源半监督开放集DA，各源域标签空间可不重叠、目标域含未知类、仅少量标注目标），并给出该设定下的目标误差界（Thm 2.1，含DSi,V,T六项跨域项）与基于VC覆盖数的泛化界（Thm 2.3），用log-sum-exp把源域组合系数取λ_i=softmax(ν Û_i)以替代启发式权重",
+  "用PU学习把源域误差从不可及的完整源域换成已知子类域与未知预测差异的线性组合（Lemma 3.4：ε_Si=η[ε_{S^¬K}-Å_{S^¬K}]+Å_T），并用标注目标域近似V上的期望，使理论界可算",
+  "面向source-free的注意力特征生成AFG：Bayesian线性分类器把源特征表成μ_i+Σ_iξ（重参数化采样），softmax(w_q(g_i(Ŝ'))·w_k(g_i(T̂'))^T/√F')把目标特征加权成带标签锚点g(Ŝ')，只加L_rec/L_cyc两个损失，不恢复源图像；配渐进式未知拒绝PUR（按p(y=K|x_t)升序剔底(1-η)样本，η按指数ramp-up）"
+ ],
+ "method_framework": "多源Bayes线性分类器存源特征统计→AFG用query/key映射把目标特征加权成带标签源锚点→梯度反转层算L_dis→最小化½[L_V+1/ν logΣexp(ν(L_S+L_H-λL_D)]。",
+ "experiment_framework": "Office-Home（每源10类不重叠，30已知/其余未知）与DomainNet（每源20类不重叠，60已知）；1-shot/3-shot；基线的OSBP/PGL/ANNA/PUJE/MOSDANET/HyMOS/MPU；指标HOS与OS*。",
+ "takeaways": [
+  "把多源+开放集+标签空间不一致合起来定义新setting并给出可算界，比只堆模块更值得跟进；log-sum-exp自动组合多源梯度可复用到其它多源理论",
+  "用Bayesian线性分类器把源模型当'特征采样器'、只在目标侧做注意力加权生成锚点，绕开source-free恢复源图像的隐私与算力问题"
+ ],
+ "weaknesses": [
+  "正文在4.1节截断：特征空间可视化与鲁棒性分析不可见；主表只有HOS一个指标、仅1-shot/3-shot两档，无方差、无AUROC/校准类指标",
+  "Thm 2.3泛化界含inf_q的覆盖数项与未知量级O(·)余项；Assumption 2.2直接假设近似标注函数使Σλ_i û_i可忽略，这是强假设，未量化真实训练下的松弛程度",
+  "AFG生成的带标签锚点本质是含未知类目标特征的相似度加权平均（式14），只有PUR完全剔净未知才纯净，而PUR的ramp-up阈值、ν=0.1、η=0.3均为经验设定且无消融；基线可比性存疑：source-combine类基线把所有源域标签拼成单域用同一网络，而UM为每个源域各用一个Bayes线性分类器再联合，HOS提升3.6%/6.7%含有设定差异成分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.0,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "多源开放域迁移与可靠性主线交点，理论设计有防守力",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

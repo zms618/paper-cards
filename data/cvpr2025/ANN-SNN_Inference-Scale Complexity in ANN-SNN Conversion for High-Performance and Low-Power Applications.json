@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/ANN-SNN_Inference-Scale Complexity in ANN-SNN Conversion for High-Performance and Low-Power Applications.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/ANN-SNN_Inference-Scale Complexity in ANN-SNN Conversion for High-Performance and Low-Power Applications.pdf",
+ "title": "Inference-Scale Complexity in ANN-SNN Conversion for High-Performance and Low-Power Applications",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 4.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "ANN-SNN转换误差上界与局部阈值平衡，但核心实验缺失且收敛性未证",
+ "innovations": [
+  "Theorem 1 把层间转换误差拆成层内误差+∥w_{k}∥ Spectral norm 加权的层间误差，得e_L≤Σ_l(Π_{k>l}∥w_k∥₂)∥S(ẑ_l;θ_l)−A(ẑ_l)∥₂，据此把需全网反向的误差最小化降为逐层闭式可解的阈值优化",
+  "局部阈值平衡：逐层贪心+用clipping函数C(x;θ)=clip(0,x,θ)代替IF神经元时间动力学，导出增量更新Δθ_l=−Σ_i 2(ẑ_i−θ_l)H(ẑ_i−θ_l)、θ_l←θ_l−ηΔθ_l，每次迭代成本≈一次ANN前向，可只用训练数据小批量在线收敛",
+  "通道级阈值可吸收进对应卷积核/全连接权重通道使IF神经元行为不变；Theorem 2 证明max pool与ReLU可交换，把max pooling整体前移到pre-neuron浮点端用比较器实现；延迟评估按e_{t0}=Σ_l(θ_l−v_l(0))/max_i R(z_l)估计末层首个尖峰时刻后再统计输出"
+ ],
+ "method_framework": "先把ANN的ReLU换成clip、阈值初始化为0，用训练数据小批量在线前向、按Δθ公式逐层局部更新阈值直到收敛；转换后阈值吸收进权重通道；推理时末层跳过前t0步再平均尖峰数输出。",
+ "experiment_framework": "以ImageNet+ResNet-34为主：plug-and-play与LCP/ACP/QCFS对比，消融RN/LTB/CLTB/CLTB+DE，图3b给1K–5K迭代、图4给延迟步；分割/检测/视频分类主表与能耗实测在正文缺失。",
+ "takeaways": [
+  "把转换误差写成含谱范数加权的闭合上界再逐层贪心优化，是把‘需全网反向’的校准问题压到推理级算力的通用套路，可迁移到任何量化/二值化后处理",
+  "用clipping函数代替IF神经元的时间动力学做阈值搜索，且优化完的阈值直接吸收进权重，转换后尖峰神经元行为完全不变，比额外加偏置项更干净",
+  "Theorem 2的max-pool与ReLU可交换，说明把某些非线性整体挪到浮点端用比较器实现，是在神经形态硬件上省浮点乘法的低代价工程改造"
+ ],
+ "weaknesses": [
+  "正文止于5.2节消融讨论（图3a之后），5.3及之后的分任务主表（语义分割、目标检测、视频分类精度与SNN能量实测）全部缺失，声称可扩展到四类视觉任务的核心证据无法核验",
+  "局部阈值平衡把IF的时间动力学近似为clipping函数并做逐层贪心，误差上界只是上界而非紧界，收敛性仅由图3b的1K–5K迭代曲线间接体现，正文（含附录）未见收敛性证明或界紧致性分析",
+  "延迟步估计式(19)用数据集期望而非分位数、用ReLU强行截掉负值，常数4纯经验且图4未做敏感性分析；表1与图3a只在ResNet-34/ImageNet单一架构单一数据集上评估，无多种子方差与标准差分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "ANN-SNN转换方法扎实但未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Rethinking Causal Mask Attention for Vision-Language Inference.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rethinking Causal Mask Attention for Vision-Language Inference.pdf",
+ "title": "Rethinking Causal Mask Attention for Vision-Language Inference",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "质疑LLM因果掩码在VLM中的适用性，提出有限放松方案提升推理。",
+ "innovations": [
+  "实证分析严格因果掩码对视觉query的负面影响：刚性屏蔽未来位置使其难以利用含关键语义线索的未来上下文。",
+  "实证研究让视觉query预览未来token的效果，证明刚性掩码损害上下文语义表征。",
+  "提出一族面向VLM的轻量future-aware attention，针对性放松视觉query的因果约束。"
+ ],
+ "method_framework": "在VLM prefill阶段，对视觉query不再严格屏蔽未来位置，而是允许其有限度地注意到后续视觉/文本token（future-aware），从而在不破坏文本自回归生成的前提下让视觉token获得完整上下文语义。",
+ "experiment_framework": "在多个VLM推理基准上评测；对比严格因果掩码与不同future-aware策略；报告下游视觉问答/推理精度及轻量改动的额外开销。",
+ "takeaways": [
+  "文本LLM的严格因果掩码不能直接套用到视觉token，视觉query需要可见未来上下文。",
+  "轻量future-aware attention能以很小代价提升VLM的上下文语义利用与推理精度。"
+ ],
+ "weaknesses": [
+  "放松因果掩码可能破坏VLM训练-推理一致性，对训练策略的影响需配套说明。",
+  "主要是推理期掩码改动，对长视频/高分辨率视觉token的效率影响未充分量化。",
+  "与可靠性主线（鲁棒/幻觉抑制）关系弱，主要是VLM推理精度改进。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.38,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "VLM推理精度改进，与可靠性主线弱相关",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

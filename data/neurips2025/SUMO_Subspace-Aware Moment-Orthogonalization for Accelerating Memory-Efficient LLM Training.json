@@ -1,0 +1,38 @@
+{
+ "key": "neurips2025/SUMO_Subspace-Aware Moment-Orthogonalization for Accelerating Memory-Efficient LLM Training.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/SUMO_Subspace-Aware Moment-Orthogonalization for Accelerating Memory-Efficient LLM Training.pdf",
+ "title": "SUMO: Subspace-Aware Moment-Orthogonalization for Accelerating Memory-Efficient LLM Training",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "子空间正交化加速LLM训练，但大型模型验证不足",
+ "innovations": [
+  "在低维子空间中应用精确SVD进行矩正交化",
+  "分析了Newton-Schulz正交化误差与条件数的关系",
+  "结合低秩优化与几何感知的优化步骤",
+  "利用子空间外梯度信息提升训练效率"
+ ],
+ "method_framework": "SUMO通过自适应子空间选择、矩子空间变换、低秩最陡下降优化和原始空间更新四个块，在低维子空间中应用精确SVD进行矩正交化，同时利用子空间外梯度信息提升训练效率。",
+ "experiment_framework": "在GLUE数据集的RTE任务上评估Roberta-base模型，比较条件数和奇异值衰减，验证方法在低秩优化中的优势。",
+ "takeaways": [
+  "矩矩阵在训练过程中趋向低秩结构，可利用精确SVD替代近似正交化",
+  "子空间感知的正交化方法可减少误差并加速收敛",
+  "利用子空间外梯度信息可提升训练效率而不增加内存需求"
+ ],
+ "weaknesses": [
+  "方法在大型模型上的计算效率优势需要更多实验验证",
+  "子空间更新频率K的选择可能影响性能",
+  "方法在非可逆层上的表现未充分探讨"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

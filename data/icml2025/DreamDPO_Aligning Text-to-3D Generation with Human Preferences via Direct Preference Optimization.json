@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DreamDPO_Aligning Text-to-3D Generation with Human Preferences via Direct Preference Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DreamDPO_Aligning Text-to-3D Generation with Human Preferences via Direct Preference Optimization.pdf",
+ "title": "DreamDPO: Aligning Text-to-3D Generation with Human Preferences via Direct Preference Optimization",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6
+ },
+ "one_line": "将DPO从LLM迁移到text-to-3D，用成对偏好提升可控性",
+ "innovations": [
+  "把DPO对齐范式从LLM迁移到text-to-3D生成，用成对比较替代逐点质量打分",
+  "用奖励模型/大多模态模型构造成对偏好样本，降低对精确逐点评分的依赖",
+  "偏好驱动损失在对齐人类偏好的同时提供细粒度可控性"
+ ],
+ "method_framework": "先对同一提示生成多个3D结果构造成对样本，用奖励模型或大多模态模型评判哪一个更符合人类偏好；再以DPO式偏好损失优化3D表征/生成参数，使生成结果在偏好排序上对齐人类判断，而非仅逼近逐点奖励分。",
+ "experiment_framework": "在text-to-3D基准上评测生成质量与人类偏好一致度、可控性，与基于奖励模型的逐点优化方法及其他3D生成方法对比，辅以人工评测。",
+ "takeaways": [
+  "成对偏好优化比逐点奖励打分更稳健地对齐人类偏好",
+  "大多模态模型可作为偏好评判器降低标注成本",
+  "偏好优化同时带来更好可控性"
+ ],
+ "weaknesses": [
+  "落地域为3D生成而非医学影像/多模态大模型推理，主线相关性中等",
+  "偏好评判依赖奖励/LMM本身的偏差，可能被其误导",
+  "DPO到3D的迁移是否引入新的模式坍缩/多样性下降需完整消融"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

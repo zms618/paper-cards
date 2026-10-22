@@ -1,0 +1,41 @@
+{
+ "title": "PaAno: Patch-Based Representation Learning for Time-Series Anomaly Detection",
+ "scores": {
+  "novelty": 5,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 5.5
+ },
+ "one_line": "轻量1D CNN+度量学习时序异常检测，在TSB-AD上超越重型模型。",
+ "innovations": [
+  "轻量patch表示：从训练时序抽取短时间patch，用1D CNN嵌入为向量。",
+  "三元组损失+pretext损失联合训练，使嵌入捕捉有判别力的时序模式。",
+  "推理时用周边patch嵌入与训练正常patch嵌入比对打分，无需重型架构即实时高效检测。"
+ ],
+ "method_framework": "训练阶段：把正常时序切短patch，1D CNN编码；用三元组(拉近同类正常/推远异常假设)+pretext自监督目标训练嵌入。推理阶段：对每时刻取周边patch嵌入，与训练集正常patch库比对距离作为异常分。",
+ "experiment_framework": "在TSB-AD基准上评测；对比Transformer/基础模型等重型方法及轻量基线；指标含range-wise与point-wise多档AUROC/VUS-PR等；单变量与多变量均测；报告SOTA且显著优于重型架构。",
+ "takeaways": [
+  "轻量patch表示在严格评测下可超过昂贵Transformer/基础模型异常检测。",
+  "三元组+pretext联合训练提升patch嵌入的判别力。",
+  "PaAno兼顾实时性与资源受限场景下的检测精度。"
+ ],
+ "weaknesses": [
+  "方法较朴素(1D CNN+度量)，技术新颖性偏工程。",
+  "异常分依赖正常patch库覆盖，对训练集中完全未见的新模式可能失效。",
+  "TSB-AD评测协议虽严格，但对真实工业/医疗长序列的漂移鲁棒性未单独验证。"
+ ],
+ "confidence": "medium",
+ "key": "iclr2026/PAANO_Patch-Based Representation Learning for Time-Series Anomaly Detection.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PAANO_Patch-Based Representation Learning for Time-Series Anomaly Detection.pdf",
+ "raw_overall": 5.98,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6,
+ "relevance_reason": "时序异常检测方法，未触及可靠性主线与落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

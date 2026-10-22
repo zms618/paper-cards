@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Layered Motion Fusion Lifting Motion Segmentation to 3D in Egocentric.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Layered Motion Fusion Lifting Motion Segmentation to 3D in Egocentric.pdf",
+ "title": "Layered Motion Fusion Lifting Motion Segmentation to 3D in Egocentric",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "分层融合2D运动分割到3D辐射场，但依赖外部模型且计算成本高",
+ "innovations": [
+  "Layered Motion Fusion技术将2D运动分割预测融合到分层辐射场",
+  "测试时优化方法聚焦特定帧降低场景复杂度",
+  "首次实现动态物体分割中3D方法超越2D基线"
+ ],
+ "method_framework": "基于分层辐射场(静态、半静态、动态层)，融合2D运动分割预测，通过正负运动融合损失增强3D分割能力，结合测试时优化提升性能",
+ "experiment_framework": "EPIC Fields数据集，UDOS任务，对比NeuralDiff、NeRF-W、NeRF-T等基线，使用mAP指标评估动态和半静态物体分割",
+ "takeaways": [
+  "2D模型知识可蒸馏到3D动态场景表示",
+  "测试时优化能有效处理复杂视频场景",
+  "分层融合策略可同时提升动态和半静态物体分割"
+ ],
+ "weaknesses": [
+  "测试时优化需要额外计算时间(约22分钟/100帧)",
+  "方法依赖于2D运动分割模型的准确性",
+  "仅针对第一人称视角视频优化，泛化性有待验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "仅第一人称视频分割，无可靠性主线交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

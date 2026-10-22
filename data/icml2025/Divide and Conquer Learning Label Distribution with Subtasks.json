@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Divide and Conquer Learning Label Distribution with Subtasks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Divide and Conquer Learning Label Distribution with Subtasks.pdf",
+ "title": "Divide and Conquer: Learning Label Distribution with Subtasks",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.75
+ },
+ "one_line": "数据驱动子任务划分解决LDL监督缺失，但理论支撑不足",
+ "innovations": [
+  "首次用子任务(subtask)思路解决LDL问题，调和辅助任务泛化性与额外监督信息之间的矛盾",
+  "提出无需任何先验/专家知识即可自动生成子任务标签分布的算法",
+  "设计即插即用框架，可无缝兼容现有LDL方法及其衍生任务"
+ ],
+ "method_framework": "把标签空间划分成子空间并在子空间上构造子任务，为每个子任务生成其标签分布作为额外监督信号：子任务划分不依赖领域知识，纯由数据驱动；训练时在主任务之外并行学习这些子任务分布，作为辅助监督改善表示学习，再插回主LDL方法的损失中，即插即用。",
+ "experiment_framework": "在多个LDL数据集上对比带/不带辅助任务的LDL方法，将S-LDL作为插件加到不同LDL基线上，以分布距离/正确率等指标验证有效性与效率。",
+ "takeaways": [
+  "无需专家知识即可自动构造子任务标签分布，从而获得额外监督信息",
+  "S-LDL即插即用地兼容现有LDL方法及其衍生任务",
+  "在不牺牲效率的前提下提升LDL性能"
+ ],
+ "weaknesses": [
+  "子任务划分的最优策略缺乏理论指导，划分粒度敏感性未充分消融",
+  "仍属通用LDL方法，未在医学/多模态等高价值场景验证",
+  "与已有多标签子空间划分方法的关系厘清不够，增量贡献边界模糊"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

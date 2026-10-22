@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Provably Explaining Neural Additive Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Provably Explaining Neural Additive Models.pdf",
+ "title": "Provably Explaining Neural Additive Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "针对特定模型结构的最小解释算法，适用范围有限。",
+ "innovations": [
+  "首次证明对神经加性模型(NAMs)可高效计算基数最小(cardinally-minimal)的充分解释",
+  "提出模型特定算法，仅需对数级验证查询即可生成最小解释，优于现有子集最小解释算法",
+  "通过并行预处理步骤对每个单变量NAM组件做对数精度级别的预计算，实现整体效率提升"
+ ],
+ "method_framework": "利用NAM的可加结构，将整体解释问题分解为各单变量组件的独立验证问题。先对每个univariate NAM组件进行并行预处理（精度相关的对数级运行时间），再通过二分搜索式验证查询在对数时间内找到基数最小的特征子集。",
+ "experiment_framework": "在多个表格数据集上对比现有子集最小解释算法（如SIS、Anchors）和采样方法，指标包括解释大小、计算时间、可证明性。",
+ "takeaways": [
+  "NAM的可加结构使得基数最小解释从不可计算变为可高效计算",
+  "所提算法在解释更小的同时计算时间也显著少于现有子集最小方法",
+  "可证明解释相比采样方法具有不可替代的可靠性保证"
+ ],
+ "weaknesses": [
+  "仅适用于NAM架构，无法推广到一般深度神经网络",
+  "实验数据集可能较小，未验证在大规模高维特征场景下的可扩展性",
+  "与主流大模型/多模态场景关联较弱，实际落地范围有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.78,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "模型特定解释算法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

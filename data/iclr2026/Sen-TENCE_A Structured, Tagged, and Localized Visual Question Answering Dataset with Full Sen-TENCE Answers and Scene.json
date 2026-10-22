@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Sen-TENCE_A Structured, Tagged, and Localized Visual Question Answering Dataset with Full Sen-TENCE Answers and Scene.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Sen-TENCE_A Structured, Tagged, and Localized Visual Question Answering Dataset with Full Sen-TENCE Answers and Scene.pdf",
+ "title": "A Structured, Tagged, and Localized Visual Question Answering Dataset with Full Sentence Answers and Scene Graphs for Chest X-Ray Images (CXR-QBA)",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 4.5,
+  "relevance": 6.0,
+  "overall": 5.6
+ },
+ "one_line": "LLM自动生成大规模胸片VQA数据集，但缺乏下游验证与人工核验",
+ "innovations": [
+  "构建迄今最大胸片VQA数据集，QA对含完整句、多粒度多部分答案，而非既往简短答案",
+  "每个QA附详细边界框定位与结构化标签(区域/发现-疾病)及不确定性标注，增强可解释性",
+  "用LLM从放射报告抽取并构建场景图，再由场景图自动生成QA对；经自动质量评估筛出31M预训练级与7.5M微调级QA"
+ ],
+ "method_framework": "先从MIMIC-CXR报告用LLM做信息抽取构建医学场景图(区域-发现-关系)，再按场景图模板程序化生成多粒度QA；答案写成放射报告风格完整句，并附发现的定位框、结构化标签与确定性/不确定性标注；自动质量评估分级出预训练与微调可用子集。",
+ "experiment_framework": "数据集本身；在MIMIC-CXR基础上统计QA对规模(42M总/31M预训练/7.5M微调)，提供构建pipeline与使用工具；前9页以数据集介绍与示例为主，未见在其上训练模型的下游基准结果。",
+ "takeaways": [
+  "为胸片VQA提供含定位+结构化标签+不确定性的完整句答案，填补现有数据集只给短答案、无定位、无结构化标注的空白",
+  "场景图+自动生成pipeline可大规模产出高质量医学VQA数据",
+  "31M预训练级+7.5M微调级QA为训练更透明、可解释的医学VQA模型提供基础"
+ ],
+ "weaknesses": [
+  "QA对由LLM从报告自动抽取/生成，标签错误与报告本身偏差会被继承，自动质量评估不能完全替代人工核验",
+  "前9页未见在该数据上训练模型的下游性能/与既有CXR-VQA数据集的定量对比，价值尚需下游验证",
+  "边界框标注为自动推断而非医师手工标注，定位精度未在正文给出独立评估"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "医学影像数据集构建，但缺乏可靠性验证与下游应用",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

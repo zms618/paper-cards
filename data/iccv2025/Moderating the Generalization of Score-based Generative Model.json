@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/Moderating the Generalization of Score-based Generative Model.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/Moderating the Generalization of Score-based Generative Model.pdf",
+ "title": "Moderating the Generalization of Score-based Generative Model",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "修改得分函数实现生成模型有效遗忘，但计算开销与高维重叠问题未解",
+ "innovations": [
+  "发现传统机器遗忘方法在得分生成模型中的无效性",
+  "提出MSGM框架通过调整得分函数实现有效遗忘",
+  "设计正交和钝角两种变体适应不同场景"
+ ],
+ "method_framework": "MSGM通过修改原始得分函数，使模型在采样过程中避开不适合生成(NSFG)数据，同时保持适合生成(SFG)数据的质量。包含正交-MSGM和钝角-MSGM两种变体。",
+ "experiment_framework": "在MNIST、CIFAR-10、STL-10、CelebA和Imagenette五个数据集上评估，使用SGM、DDPM和潜在扩散模型，比较Unseen by Re-training、EraseDiff和ESD基线方法。",
+ "takeaways": [
+  "得分函数分析揭示了传统机器遗忘方法在SGM中的失效原因",
+  "MSGM框架可扩展到多种扩散模型架构和下游任务",
+  "正交和钝角变体分别适用于类别和特征遗忘场景"
+ ],
+ "weaknesses": [
+  "未充分讨论计算复杂度和训练时间增加",
+  "对高维数据中NSFG和SFG分布高度重叠的情况处理不足"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "生成模型遗忘与可靠性主线无直接交点，仅具知识面补全价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

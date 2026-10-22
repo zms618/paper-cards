@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/PENCIL_Long Thoughts with Short Memory.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/PENCIL_Long Thoughts with Short Memory.pdf",
+ "title": "PENCIL: Long Thoughts with Short Memory",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6.1
+ },
+ "one_line": "递归归约机制让小模型用短上下文做长推理，但泛化性与扩展性存疑",
+ "innovations": [
+  "在自回归生成中加入递归reduction规则，交替生成与擦除中间思考",
+  "从理论上证明PENCIL可在最优时间与空间复杂度下模拟任意图灵机",
+  "以25M小模型+2048上下文解决爱因斯坦谜题，超越大得多的模型"
+ ],
+ "method_framework": "将next-token生成器与可学习的reduction规则结合；在迭代CoT中一旦满足归约模式就清理不再需要的中间思考，回收上下文空间；通过‘生成-擦除’交替维持短上下文，从而能在有限上下文内推进超长推理链。",
+ "experiment_framework": "以小参数(25M)Transformer在短上下文(2048)上评测组合/硬推理任务(如爱因斯坦谜题)；对比原生长CoT；指标为可解任务难度、所需上下文长度与计算量。",
+ "takeaways": [
+  "CoT的‘只写不清’是硬推理任务上下文爆炸的根因",
+  "可学习归约机制让小模型用短上下文解决原本需大模型的难题",
+  "理论上PENCIL具备与图灵机相当的通用高效计算能力"
+ ],
+ "weaknesses": [
+  "reduction规则需专门训练，冷启动与泛化到新推理类型的鲁棒性待验",
+  "与医学影像等落地域直接结合弱",
+  "前9页未见在主流LLM规模/基准上的系统扩展性验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.88,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

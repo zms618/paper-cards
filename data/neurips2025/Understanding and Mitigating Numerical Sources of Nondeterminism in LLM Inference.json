@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Understanding and Mitigating Numerical Sources of Nondeterminism in LLM Inference.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Understanding and Mitigating Numerical Sources of Nondeterminism in LLM Inference.pdf",
+ "title": "Understanding and Mitigating Numerical Sources of Nondeterminism in LLM Inference",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 7,
+  "overall": 6.6
+ },
+ "one_line": "研究LLM推理数值非确定性，提出LayerCast解决方案",
+ "innovations": [
+  "首次系统研究数值精度对LLM推理可复现性的影响",
+  "发现浮点数非结合性是导致推理结果差异的根本原因",
+  "提出LayerCast方法平衡内存效率与数值稳定性"
+ ],
+ "method_framework": "LayerCast将权重存储在16位精度但所有计算在FP32进行，通过优化推理管道解决数值精度问题",
+ "experiment_framework": "在4个模型和5个基准测试上评估12种运行配置，测量精度标准差、输出长度标准差和发散指数",
+ "takeaways": [
+  "推理模型对数值精度极其敏感，BF16可导致9%准确率差异",
+  "使用FP32精度可显著提高可复现性",
+  "随机采样同样受数值精度影响"
+ ],
+ "weaknesses": [
+  "未探讨不同模型架构对数值敏感性的差异",
+  "LayerCast的内存开销和计算效率未充分分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

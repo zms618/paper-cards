@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/StreamBP_Memory-Efficient Exact Backpropagation for Long Sequence Training of LLMs.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/StreamBP_Memory-Efficient Exact Backpropagation for Long Sequence Training of LLMs.pdf",
+ "title": "StreamBP: Memory-Efficient Exact Backpropagation for Long Sequence Training of LLMs",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "one_line": "StreamBP分解链式规则减少LLM长序列训练内存，但适用性有限",
+ "innovations": [
+  "序列维度链式规则的线性分解方法",
+  "针对语言模型头和Transformer层的特殊设计",
+  "分布式训练中的梯度与参数通信优化"
+ ],
+ "method_framework": "StreamBP沿序列维度对链式规则进行线性分解，分块计算并累积梯度，显著减少激活值存储，同时利用LLM的因果结构减少计算量",
+ "experiment_framework": "基于Qwen 3模型系列(4B/8B/14B/32B)，在A800-80GB GPU上测试内存和时间成本，对比梯度检查点和MsT基线，验证SFT/GRPO/DPO目标下的有效性",
+ "takeaways": [
+  "序列维度分块计算可大幅减少内存消耗",
+  "利用因果结构可减少计算量，加速反向传播",
+  "分布式训练中优化通信可进一步提升效率"
+ ],
+ "weaknesses": [
+  "分块数量D增加会引入额外的HBM开销",
+  "仅适用于因果语言模型，不适用于非自回归模型"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.7,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

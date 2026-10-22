@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Commute Graph Neural Networks.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Commute Graph Neural Networks.pdf",
+ "title": "Commute Graph Neural Networks",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 7.0,
+  "overall": 6.3
+ },
+ "one_line": "CGNN用通勤时间加权消息传递，改进有向图GNN的非对称关系建模。",
+ "innovations": [
+  "指出现有GNN在有向图上仅捕捉单向关系，无法编码节点间相互路径依赖(非对称最短路径)",
+  "构造新的有向图拉普拉斯以高效计算节点级通勤时间",
+  "将通勤时间作为邻居贡献权重融入消息传递，使CGNN直接建模有向图的相互非对称关系"
+ ],
+ "method_framework": "CGNN基于新构造的有向图拉普拉斯求解节点间通勤时间；在每层邻居聚合中，按邻居到中心节点的通勤时间距离对其消息加权，从而在消息传递中显式编码有向图的双向路径依赖。",
+ "experiment_framework": "在8个有向图基准数据集上，对比13个SOTA有向图/图神经网络方法，以节点分类等标准指标评估，报告CGNN的优越性。",
+ "takeaways": [
+  "通勤时间能刻画有向图中不对称的相互可达关系，优于单纯区分入/出边",
+  "基于有向图拉普拉斯的通勤时间计算可高效嵌入消息传递",
+  "在8个基准上相对13个SOTA一致提升"
+ ],
+ "weaknesses": [
+  "需额外计算(有向图拉普拉斯求逆/特征分解)通勤时间，大图上的计算与存储开销需讨论",
+  "通勤时间是全局结构量，随图更新的增量计算与动态图适用性未充分说明",
+  "方法为消息传递的结构改造，理论新意相对增量"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

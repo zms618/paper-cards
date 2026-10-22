@@ -1,0 +1,42 @@
+{
+ "key": "iclr2026/A PHYSICS-INSPIRED Optimizer Velocity Regularized ADAM.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/A PHYSICS-INSPIRED Optimizer Velocity Regularized ADAM.pdf",
+ "title": "A PHYSICS-INSPIRED Optimizer Velocity Regularized ADAM",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 4.5,
+  "relevance": 4.5,
+  "overall": 5.6
+ },
+ "one_line": "物理启发的速度正则化Adam，理论证明与实验提升均有限",
+ "innovations": [
+  "将势能-动能拉格朗日量L(x,v)=m/2‖v‖²+β3/4‖v‖⁴−V(x)对速度项作四次动能正则，经Euler–Lagrange方程解出一维共线情形的动力学1/(m+3β3‖v‖²)，再把它离散化为一个标量动态学习率门η_t←α0/(1+min(β3‖v_t‖²,α1))塞进AdamW第10步更新（Alg.1第221行），只改一行而不需要为不同积分器重设步长形式",
+  "在二次模型上把含时变门η_t的VRMomentum写成2d状态z_t=(x_t,v_t)的更新矩阵A(η)，用曲率无关的共同二次李雅普诺夫函数V(z)=z⊤Pz（P=diag(p1I,p2I)）证明任意标量门序列下的全局一致指数稳定，条件为Schur判据α0L<2(1+β)/(1−β)（或裁剪生效时用ηminL），并用矩阵凸性把端点η=ηmin、α0处的结论推广到整个区间",
+  "从标量全局门与逐参数逐坐标缩放的对比中给出设计正当性：逐坐标变化等价于时变对角A(D_t)切换系统，各A(D)不交换、收缩方向逐步旋转，A(D2)A(D1)可不稳定；标量η_t各方向同倍缩放并保有CQLF，从而消除切换各向异性失稳，且得到与维数无关的步长上界‖θ_t−θ_{t−1}‖≤α0/(2√β3)"
+ ],
+ "method_framework": "从L(x,v)=m/2‖v‖²+β3/4‖v‖⁴−V(x)导出四维正则动能，1-D共线简化得η门；Alg.1在AdamW循环内引入v_t一阶动量、m_t二阶矩、η_t=α0/(1+min(β3‖v_t‖²,α1))动态学习率与解耦权重衰减λ；Theorem 4.1证VRMomentum一致指数稳定，定理4.2仿Défossez推非凸收敛界。",
+ "experiment_framework": "ResNet-32/CIFAR-10与GPT-2/WebText-like三图分析（损失、精度、Hessian最大特征值锐度、有效学习率曲线）；Table 1在WikiText-2、CIFAR-10、GridWorld GFlowNet三任务对比VRAdam/AdamW/RAdam/SGD+Nesterov/RMSProp；Table 2 GPT-2 124M在FineWebEdu-10B的时长与val loss；Table 3 4-bit QLoRA LLaMA-2-7B（OASST2）与GPT-2 Large（GSM8K）PPL对比AdamW/Lion。",
+ "takeaways": [
+  "四次动能正则把‘速度过大’翻译成门控式的小步长，初始25步自适应压低学习率后迅速回到α0，同时把预处理Hessian的最大特征值（锐度）压低，与平坦极小值更好的泛化相呼应",
+  "理论侧给出的是充分非必要稳定条件且只覆盖λ=0的二次/轨迹级曲率模型，收敛定理同样把λ置0、省掉v_t偏差校正，因此定理覆盖的算法与实现中完整VRAdam并非同一对象",
+  "实测提升在主任务上是很小的一致性差距（WikiText val 5.99 vs 6.47、CIFAR-10 0.476 vs 0.522、GPT-2 val 3.447 vs 3.511），主要收益体现在原先会发散的RMSProp/SGD+Nesterov基线（NaN）和被AdamW显著落后的GridWorld流匹配（1.25 vs 2.41）"
+ ],
+ "weaknesses": [
+  "正文在Table 3之后截断，缺结论与讨论段，也没有超参敏感性（α0、α1、β3）消融表，α1裁剪门在Table 1的三组设置里从未被触发（文中自述‘bound on the minimal LR is not active’），该关键超参实际未被验证",
+  "Theorem 4.2证明中把权重衰减置λ=0且去掉v_t偏差校正，与Alg.1第8、10行的完整更新不等价，得到的O(ln N/√N)是‘warm-up版VRAdam’的界而非实现版VRAdam的界，且常数E含αmax³、d、R等因子，主项被常数淹没",
+  "证据强度不足：Table 2的GPT-2训练只有一次运行（48522.40s / val 3.447 vs 3.511）无方差，与AdamW差距远小于随机种子波动；GFlowNet超参因算力限制随机选取（正文明说）未做贝叶斯优化，与另两任务的调参口径不可比；误差条全放附录、正文只报贝叶斯优化找到的最优值",
+  "动力学门源自1-D共线近似（正文自述‘derived for the 1-D case, where the dynamics v̇ is collinear with v’），高维下‖v‖²与方向解耦的假设未被检验，所谓物理启发对环境张量维度、非各向同性梯度结构是否仍成立没有实验断言"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "优化器改进与可靠性主线无实质交点，仅属常规方法工作",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

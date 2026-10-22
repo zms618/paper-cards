@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Unicalli_A Unified Diffusion Framework for Column-Level Generation and Recognition Of Chinese Calligraphy.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Unicalli_A Unified Diffusion Framework for Column-Level Generation and Recognition Of Chinese Calligraphy.pdf",
+ "title": "UniCalli: A Unified Diffusion Framework for Column-Level Generation and Recognition of Chinese Calligraphy",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 3.0,
+  "overall": 5.1
+ },
+ "one_line": "书法生成识别联合框架，跨古文字演示但缺乏主线关联",
+ "innovations": [
+  "在单一扩散框架内联合做列级书法生成与识别，利用二者协同(识别约束字形正确、生成提供风格/布局先验)在有限数据下互相增益",
+  "提出asymmetric noising与rasterized box map提供空间先验，在合成/标注/未标注混合数据上训练",
+  "整理8000+件数字化书法作品(4000件密集标注)数据集，并把框架扩展到甲骨文与埃及象形文字"
+ ],
+ "method_framework": "现有书法方法要么只做单字高质量生成却忽略列级美学(连笔、间距)，要么做列级合成却牺牲字形正确性。UniCalli联合训练生成与识别：识别任务约束生成器保持字符结构，生成任务为识别提供风格与布局先验，二者协同形成concept-level抽象；用asymmetric noising与rasterized box map注入空间先验，混合合成/标注/未标注数据训练。",
+ "experiment_framework": "在自建8000件书法数据集(4000密集标注)上，对比单字生成、字体迁移、通用图像生成与VLM-based列级合成；指标为生成质量(连笔连续性/布局保真)与识别准确率；报告生成达SOTA且识别更强，并成功迁移到甲骨文/埃及象形文字。",
+ "takeaways": [
+  "联合训练生成与识别可在数据稀缺的书法任务上互相增益，识别保字形、生成给风格",
+  "列级(整幅)生成需兼顾连笔/间距美学与字形正确性，单一目标难以同时满足",
+  "框架可跨到甲骨文/埃及象形文字，显示一定跨古文字种的通用性"
+ ],
+ "weaknesses": [
+  "属书法/OCR与古文字生成识别方向，与本主线(可靠性×多模态推理/医学影像)无直接关联",
+  "字形正确性仍依赖识别任务约束，对极度草书/罕见字的结构保真度未给出定量错误分析",
+  "扩展到甲骨文/象形文字仅作演示，未见系统量化基准与对比"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.8,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "书法生成识别与可靠性主线无直接关联",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

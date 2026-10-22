@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/SING_Spatial Context in Large Language Model for Next-Gen Wearables.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/SING_Spatial Context in Large Language Model for Next-Gen Wearables.pdf",
+ "title": "SING: Spatial Context in Large Language Model for Next-Gen Wearables",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 5.9
+ },
+ "one_line": "单麦克风DoA与Whisper嵌入融合LLaMA，提升可穿戴设备空间语音理解",
+ "innovations": [
+  "提出SING系统架构：将微结构(microstructure)空间传感得到的DoA信息与语言嵌入融合进LLM，支持空间语音理解",
+  "用单声道麦克风提取精确DoA(无需麦克风阵列)，并以LibriSpeech合成空间语音数据集弥补数据空缺",
+  "空间信息与Whisper嵌入融合后对齐LLaMA-3.2 3B输入空间，用LoRA轻量微调支持端侧部署"
+ ],
+ "method_framework": "通过耳塞等可穿戴设备外壳的微结构声学效应，从单麦克风信号中估计声源到达角(DoA)；将LibriSpeech合成成空间语音数据集；用Whisper提取语言嵌入，与DoA等空间特征融合，再映射对齐到LLaMA-3.2 3B的输入嵌入空间，用LoRA轻量微调，使LLM同时利用语义与空间线索完成空间ASR与声源场景解析(几人说话、各自方向)。",
+ "experiment_framework": "合成空间语音数据集；任务含空间感知ASR(DoA误差与词错率WER)与声源场景解析(说话人数与方向)；对比BAT等既有工作；报告DoA均值误差25.72°(既有工作中位88.52°)、WER 5.3、至多5人、中位DoA误差16°。",
+ "takeaways": [
+  "单麦克风+微结构传感即可获得可用的DoA，无需阵列，适合可穿戴形态",
+  "把空间特征与语言嵌入融合进LLM，可让LLM在语义之外同时利用方向线索",
+  "LoRA对齐LLaMA输入空间使空间语音理解可在端侧轻量部署"
+ ],
+ "weaknesses": [
+  "空间语音数据集由LibriSpeech合成而来，与真实可穿戴场景(混响、多说话人重叠、噪声)分布差距需实测验证",
+  "DoA误差25.72°仍不算高，远场/强混响环境下精度退化在前9页未充分评估",
+  "属音频-LLM系统集成工作，方法创新偏工程，与AI可靠性主线(鲁棒/可信推理)关联中等"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

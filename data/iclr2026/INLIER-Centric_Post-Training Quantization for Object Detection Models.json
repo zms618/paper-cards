@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/INLIER-Centric_Post-Training Quantization for Object Detection Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/INLIER-Centric_Post-Training Quantization for Object Detection Models.pdf",
+ "title": "INLIER-CENTRIC POST-TRAINING Quantization for Object Detection Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "梯度感知显著性分离内点提升目标检测量化性能",
+ "innovations": [
+  "梯度感知体积显著性评分",
+  "EM算法建模内点-异常值分布",
+  "基于热图top-K的损失函数设计",
+  "内点中心量化框架"
+ ],
+ "method_framework": "InlierQ计算梯度感知体积显著性分数，使用EM算法建模内点与异常值的概率分布，定义内点集合，并仅在内点上优化量化参数，压缩激活范围同时保留任务相关信息。",
+ "experiment_framework": "COCO和nuScenes数据集，对比BRECQ和LiDAR-PTQ基线，评估2D/3D目标检测在W8A8/W4A8/W4A4设置下的mAP等指标。",
+ "takeaways": [
+  "任务无关异常值会扩大激活范围并扭曲分布，影响量化性能",
+  "梯度感知显著性可有效区分内点与异常值",
+  "低比特量化下内点中心方法优势更明显"
+ ],
+ "weaknesses": [
+  "依赖热图top-K参数选择，可能影响不同场景的泛化性",
+  "仅考虑激活值分布，未充分利用模型结构信息"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "内点中心量化提升检测鲁棒性，方法设计可迁移到可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

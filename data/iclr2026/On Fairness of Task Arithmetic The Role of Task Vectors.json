@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/On Fairness of Task Arithmetic The Role of Task Vectors.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/On Fairness of Task Arithmetic The Role of Task Vectors.pdf",
+ "title": "On Fairness of Task Arithmetic: The Role of Task Vectors",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "任务向量缩放可权衡精度与公平性，但受限于二分类场景",
+ "innovations": [
+  "首个系统研究任务算术的群体公平性，对比全参微调(FFT)与 LoRA，用 Demographic Parity/Equalized Odds 量化",
+  "证明子群专用 task vector 合并可作为可控机制引导公平结果，在保持竞争力精度的同时降低群体差距",
+  "给出连接 task vector 缩放与公平指标的理论界，解释观测到的精度-公平权衡"
+ ],
+ "method_framework": "把 task vector 定义为微调模型减基座模型的差，通过加/减/缩放编辑行为；在二分类制度下系统扫描缩放系数，测 DPD/EOD；将子群专用 task vector 合并进 FFT 模型以定向校正偏差；用理论界刻画缩放系数对公平指标的影响。",
+ "experiment_framework": "NLP：仇恨言论检测(LLaMA-7B)、毒性检测(Civil Comments, DistilBERT/Qwen2.5-0.5B)；CV：年龄分类(UTKFace, ViT-Base/16)；对比 FFT、LoRA、task vector，报告精度与 DPD/EOD。",
+ "takeaways": [
+  "task arithmetic 不只是省算力的编辑手段，也可作为公平感知的微调替代",
+  "子群专用 task vector 合并提供了不重训即可定向调节公平结果的实用旋钮",
+  "缩放 task vector 可在精度与群体公平性之间连续权衡"
+ ],
+ "weaknesses": [
+  "仅在二分类、群体公平制度下研究，多分类/排序等场景的公平性结论未覆盖",
+  "子群专用 task vector 需要子群标注，实际部署中子群划分与可得性受限",
+  "属公平可信AI但落地非医学影像/多模态推理，相关性中等"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.58,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "公平可信AI但非医学影像/多模态推理，仅占一头",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

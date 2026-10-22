@@ -1,0 +1,37 @@
+{
+ "title": "NeuralCohort: Cohort-aware Neural Representation Learning for Healthcare Analytics",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6
+ },
+ "one_line": "队列感知EHR表征插件，双尺度信息提升预测性能",
+ "innovations": [
+  "指出现有EHR表征学习普遍忽视患者队列信息这一关键要素。",
+  "Pre-context队列合成模块：用伪患者相似度建模时序EHR，自动构建细粒度队列。",
+  "Biscale队列学习模块：同时从局部队列内与全局队列间视角蒸馏队列信息，融合增强表征。"
+ ],
+ "method_framework": "先在时序EHR上以伪患者相似度做队列合成，得到细粒度队列；再用双尺度队列学习模块分别聚合队列内局部与队列间全局信息，编码为增强表征；整体作为插件无缝接入现有backbone，注入队列洞察。",
+ "experiment_framework": "在多个真实世界EHR数据集上验证，作为插件加到多种backbone；指标为下游预测AUROC，报告最高8.1%的AUROC提升，并展示跨数据集泛化性。",
+ "takeaways": [
+  "显式建模患者队列能显著提升EHR表征质量。",
+  "队列内局部与队列间全局信息需双尺度联合利用。",
+  "NeuralCohort即插即用地一致提升多种backbone的预测性能。"
+ ],
+ "weaknesses": [
+  "为EHR表征的插件式增强，核心是队列建模，方法新颖性中等。",
+  "队列由伪相似度自动推导，临床可解释性与金标准队列的一致性需外部验证。",
+  "属医疗分析但非医学影像、亦不聚焦鲁棒/不确定性，与可靠性主线只是弱相关。"
+ ],
+ "confidence": "high",
+ "key": "icml2025/NeuralCohort_Cohort-aware Neural Representation Learning for Healthcare Analytics.pdf",
+ "path": "icml2025/NeuralCohort_Cohort-aware Neural Representation Learning for Healthcare Analytics.pdf",
+ "conf": "icml2025",
+ "raw_overall": 6.31,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Quadruple Attention in Many-body Systems for Accurate Molecular Property Predictions.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Quadruple Attention in Many-body Systems for Accurate Molecular Property Predictions.pdf",
+ "title": "Quadruple Attention in Many-body Systems for Accurate Molecular Property Predictions",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 4.0,
+  "overall": 5.75
+ },
+ "one_line": "四体注意力建模分子性质，计算效率与精度权衡",
+ "innovations": [
+  "设计可直接在原子四元组间通信的四体几何注意力机制，显式建模扭转势等四体项，而非通过pairwise消息传递间接近似",
+  "提出绕过传统triplet注意力计算瓶颈的高效四体交互方案，使高阶多体相互作用在大分子上可扩展计算",
+  "在MD22与SPICE等基准上达到SOTA，统一严格多体物理与计算效率"
+ ],
+ "method_framework": "以原子四元组为注意力基本单元构建几何注意力MABNet，直接建模四体相互作用(键角/扭转/电子离域)，避免pairwise/triplet消息传递对高阶量子效应的系统误差，同时保持等变几何表达与可扩展计算。",
+ "experiment_framework": "在MD22、SPICE等分子动力学/量子化学基准上评测，对比GNN(ViSNet等)与超图多体方法(SE3Set)；指标为分子能量与力等属性预测误差。",
+ "takeaways": [
+  "直接建模四体相互作用比pairwise/triplet近似能更准确捕捉大分子中协同多原子量子效应",
+  "将高阶多体物理项与可扩展注意力结合，可在不牺牲效率的前提下提升分子性质预测精度"
+ ],
+ "weaknesses": [
+  "四元组注意力计算量仍随原子组合数增长，对超大分子的可扩展性在正文前9页未见充分验证",
+  "与主线(可信AI/医学影像/多模态推理)关联弱，属科学计算分子ML方向",
+  "SOTA增益主要在MD22/SPICE等动力学数据集，泛化到通用药物分子性质预测的外部效度需更多任务验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

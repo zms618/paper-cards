@@ -1,0 +1,36 @@
+{
+ "key": "icml2025/Inference-Time Alignment of Diffusion Models with Direct Noise Optimization.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Inference-Time Alignment of Diffusion Models with Direct Noise Optimization.pdf",
+ "title": "Inference-Time Alignment of Diffusion Models with Direct Noise Optimization",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 6.3
+ },
+ "one_line": "推理时优化噪声对齐扩散模型，防OOD reward hacking但效率与真实偏好存疑。",
+ "innovations": [
+  "提出在推理时直接优化注入噪声来对齐扩散模型，免调参、提示无关、在线进行。",
+  "严格分析 DNO 的理论性质，并给出处理不可微奖励函数的变体。",
+  "识别朴素 DNO 会出现 OOD reward hacking（高奖励但落在预训练分布支撑外），借高维统计理论设计概率正则加以抑制。"
+ ],
+ "method_framework": "把对齐目标转化为对采样起点/注入噪声的优化，使生成样本在扩散反向采样过程中朝高奖励方向移动；对不可微奖励用梯度估计变体；用概率正则约束优化后的样本仍落在预训练分布支撑内以防 reward hacking。",
+ "experiment_framework": "在多个连续奖励函数（如美观度、亮度、压缩率）上评测；基线为既有扩散对齐方法；指标为奖励分数与生成质量，约束在合理生成时间预算内达到 SOTA 奖励。",
+ "takeaways": [
+  "推理时优化注入噪声可在不重训模型的前提下对齐到任意连续奖励。",
+  "朴素实现会 reward hacking 到分布外，概率正则可在保奖励的同时维持在分布内。"
+ ],
+ "weaknesses": [
+  "逐样本优化噪声带来额外推理时间，相对一步对齐方法的效率权衡需权衡。",
+  "奖励函数多为图像美学/亮度等代理奖励，与真实用户偏好的一致性未验证。",
+  "落地域为图像生成对齐，与医学影像/多模态推理等主线落地域不直接对应。"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.13,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

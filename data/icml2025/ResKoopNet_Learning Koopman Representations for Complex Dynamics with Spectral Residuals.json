@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/ResKoopNet_Learning Koopman Representations for Complex Dynamics with Spectral Residuals.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/ResKoopNet_Learning Koopman Representations for Complex Dynamics with Spectral Residuals.pdf",
+ "title": "ResKoopNet: Learning Koopman Representations for Complex Dynamics with Spectral Residuals",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5,
+  "overall": 5.5
+ },
+ "one_line": "ResKoopNet用神经网络最小化谱残差，解决ResDMD的谱包含问题。",
+ "innovations": [
+  "指出 ResDMD 仅过滤预计算谱的做法无法发现完整谱信息，即‘谱包含(spectral inclusion)’问题。",
+  "提出以最小化谱残差为目标直接计算 Koopman 特征对，识别更精确、完整的谱。",
+  "用神经网络实现该目标，在给出理论保证的同时保持计算适应性(免预定义字典)。"
+ ],
+ "method_framework": "以谱残差(特征方程残差)为可微损失，训练神经网络学习可观测量与 Koopman 特征对；通过端到端最小化谱残差直接逼近本征值/本征函数，而非在固定字典上的 EDMD/ResDMD 过滤，从而补全被字典遗漏的谱分量。",
+ "experiment_framework": "在多种物理与生物动力系统上对比 EDMD、ResDMD 等 Koopman 近似方法；以谱(特征值)准确性、长期预测/状态重构精度为指标，验证更完整谱的识别效果。",
+ "takeaways": [
+  "直接最小化谱残差可突破预定义字典的谱包含限制。",
+  "ResKoopNet 能识别更精确、完整的 Koopman 谱。",
+  "神经网络化带来理论保证的同时免去人工字典设计。"
+ ],
+ "weaknesses": [
+  "以神经网络直接求谱可能引入不稳定/收敛性问题，谱的可辨识性与正交性保证在正文中着墨有限。",
+  "面向低维动力系统示例，向高维/含噪声真实数据的可扩展性论证不足。",
+  "属动力系统建模方法，与可靠性、医学影像、多模态推理主线关联较弱。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.2,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

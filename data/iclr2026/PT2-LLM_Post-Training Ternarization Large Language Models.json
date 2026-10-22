@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/PT2-LLM_Post-Training Ternarization Large Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/PT2-LLM_Post-Training Ternarization Large Language Models.pdf",
+ "title": "PT2-LLM: Post-Training Ternarization for Large Language Models",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 5.7
+ },
+ "one_line": "三值量化框架逼近2-bit精度，但概念新颖度有限。",
+ "innovations": [
+  "提出非对称三值量化器与两阶段精修：迭代三值拟合(ITF)交替构造最优三值网格与灵活取整，最小化量化误差。",
+  "提出激活感知网格对齐(AGA)进一步精修三值网格以匹配全精度输出。",
+  "提出可插拔的结构相似性重排(SSR)，利用列间结构相似性缓解离群值影响。"
+ ],
+ "method_framework": "针对LLM三值化中离群值与权重分散导致的量化困难，用非对称三值量化器；ITF迭代优化网格与取整；AGA让网格对齐全精度激活输出；SSR按列间结构相似性重排权重列以平滑离群值；训练-free完成PTQ。",
+ "experiment_framework": "在多个主流LLM上做三值PTQ；对比SOTA 2-bit PTQ方法；指标为零样本/下游任务精度、显存占用与prefill/decode端到端速度；PT2-LLM以更低内存媲美2-bit方法并取得端到端加速。",
+ "takeaways": [
+  "训练-free三值化可在LLM上逼近2-bit PTQ精度且内存更省。",
+  "激活感知网格对齐与结构重排有效缓解离群值。",
+  "三值化同时加速prefill与decode，端到端提速。"
+ ],
+ "weaknesses": [
+  "三值化在推理密集任务/大模型上的精度损失仍可能偏大。",
+  "SSR重排需配合硬件友好布局，实际部署kernel支持未充分讨论。",
+  "方法属量化工程改进，概念新颖度中等。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "量化工程改进，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

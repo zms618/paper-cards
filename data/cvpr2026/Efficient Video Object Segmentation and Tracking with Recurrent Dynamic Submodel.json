@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Efficient Video Object Segmentation and Tracking with Recurrent Dynamic Submodel.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Efficient Video Object Segmentation and Tracking with Recurrent Dynamic Submodel.pdf",
+ "title": "Efficient Video Object Segmentation and Tracking with Recurrent Dynamic Submodel",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 4.5,
+  "overall": 5.8
+ },
+ "one_line": "动态路由与LoRA适配提升视频分割效率，但时序建模有限",
+ "innovations": [
+  "预测感知路由(PAR)利用前一帧分割掩码和当前帧视觉特征进行动态子模型选择",
+  "单路由器设计显著降低动态路由开销",
+  "重要性感知LoRA(I-LoRA)仅对关键块进行参数适配"
+ ],
+ "method_framework": "RDS框架包含预测感知路由和重要性感知LoRA两部分，前者融合时序先验和视觉特征动态选择子模型，后者通过全局和局部重要性指标识别关键块并选择性插入LoRA适配器",
+ "experiment_framework": "在DAVIS、SA-V、YouTube-VOS等VOS数据集和LaSOT、TrackingNet、GOT-10k等VOT数据集上评估，与SlimSAM、PBD、DyT、AdaViT等方法对比，使用J&F、AUC、FPS等指标",
+ "takeaways": [
+  "单路由器设计能有效将理论计算节省转化为实际加速",
+  "融合时序先验(前一帧掩码)和视觉特征的路由决策优于仅使用单一信息源",
+  "重要性感知的参数分配策略能显著降低训练成本"
+ ],
+ "weaknesses": [
+  "仅使用前一帧掩码作为时序先验，可能无法处理更复杂的时序依赖",
+  "在极低帧率(4FPS)下性能略有下降",
+  "实验主要基于SAM2模型，对其他基础模型的泛化能力需要进一步验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视频分割跟踪与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

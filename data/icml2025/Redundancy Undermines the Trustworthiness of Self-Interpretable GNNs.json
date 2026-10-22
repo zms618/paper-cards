@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Redundancy Undermines the Trustworthiness of Self-Interpretable GNNs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Redundancy Undermines the Trustworthiness of Self-Interpretable GNNs.pdf",
+ "title": "Redundancy Undermines the Trustworthiness of Self-Interpretable GNNs",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6.5,
+  "relevance": 7,
+  "overall": 6.3
+ },
+ "one_line": "揭示自解释GNN冗余导致解释不一致，集成缓解但未根治。",
+ "innovations": [
+  "识别出冗余（因简洁性约束超参设置过松）是自解释 GNN 解释不一致与解释不准的共同根因",
+  "给出理论分析说明为何冗余难以单纯靠调约束消除",
+  "提出简单的模型集成策略缓解冗余对解释可信度的损害，并跨数据集/架构/自解释框架做系统验证，形成基准"
+ ],
+ "method_framework": "将自解释 GNN 的解释一致性问题归因于：模型在正确识别关键特征之外还过度强调无关特征，源于解释简洁性正则过弱；通过在多种数据集、模型结构与自解释 GNN 框架上对比不同种子的解释权重分布来验证该机制，并用集成多个种子模型的解释来平均掉冗余分配，提升解释稳定性。",
+ "experiment_framework": "在分子化学（如苯环检测）等多数据集、多种 GNN 架构与多种自解释 GNN 框架上评测；指标为预测准确率相同下解释的一致性与对真实关键子结构的定位精度；报告不同简洁性约束强度下的冗余程度及集成缓解效果。",
+ "takeaways": [
+  "高预测准确率不等于解释可信，自解释 GNN 会把高权重错配给无关特征",
+  "解释不一致主要来自冗余而非随机噪声，集成可有效缓解",
+  "简洁性约束需更严格并配合系统评测才能支撑高风险场景部署"
+ ],
+ "weaknesses": [
+  "缓解手段仅为集成，未提出从训练目标上根除冗余的新方法",
+  "集成增加推理开销，且未给出解释可信度的量化置信度",
+  "结论集中在图节点/子图解释，对其他模态自解释模型的外推未验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.65,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

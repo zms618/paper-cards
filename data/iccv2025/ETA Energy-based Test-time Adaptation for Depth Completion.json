@@ -1,0 +1,41 @@
+{
+ "key": "iccv2025/ETA Energy-based Test-time Adaptation for Depth Completion.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/ETA Energy-based Test-time Adaptation for Depth Completion.pdf",
+ "title": "ETA Energy-based Test-time Adaptation for Depth Completion",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 6.2
+ },
+ "one_line": "能量模型引导深度完成测试时自适应，跨域性能提升有限",
+ "innovations": [
+  "利用能量模型量化深度预测属于源分布的可能性",
+  "使用对抗扰动作为探索数据空间的机制",
+  "提出基于区域的能量模型以定位异常预测区域"
+ ],
+ "method_framework": "ETA框架包含能量模型训练和测试时自适应两部分。能量模型通过对抗扰动生成OOD样本训练，测试时通过最小化能量值引导深度完成模型参数更新，使预测与源分布对齐。",
+ "experiment_framework": "在3个室内和3个室外数据集上评估，包括KITTI、VOID、NYUv2等，使用MAE和RMSE指标，与TENT、CoTTA、TEA和ProxyTTA等方法比较。",
+ "takeaways": [
+  "能量模型可有效识别深度预测中的异常区域",
+  "对抗扰动作为OOD样本生成方法具有通用性",
+  "区域级能量计算可实现局部自适应更新"
+ ],
+ "weaknesses": [
+  "能量模型训练依赖于特定深度完成模型",
+  "对抗扰动的生成可能引入额外计算开销",
+  "方法在极端域偏移场景下的鲁棒性未充分验证"
+ ],
+ "confidence": "high",
+ "raw_overall": 8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "深度完成与可靠性主线部分交织，但跨域性能提升有限",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

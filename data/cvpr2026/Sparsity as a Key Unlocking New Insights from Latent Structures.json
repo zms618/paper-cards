@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Sparsity as a Key Unlocking New Insights from Latent Structures.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Sparsity as a Key Unlocking New Insights from Latent Structures.pdf",
+ "title": "Sparsity as a Key Unlocking New Insights from Latent Structures",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.9
+ },
+ "one_line": "Top-k稀疏自编码器解耦ViT特征实现OOD检测，但依赖预训练模型",
+ "innovations": [
+  "首次将Top-k稀疏自编码器应用于ViT[CLS]标记进行OOD检测",
+  "提出类激活轮廓(CAPs)作为可解释的结构不变量",
+  "设计基于能量轮廓散度(EPD)的评分机制量化OOD样本的结构偏离"
+ ],
+ "method_framework": "训练Top-k SAE解耦ViT[CLS]特征为稀疏潜在空间，构建类激活轮廓(CAPs)，通过能量轮廓散度(EPD)量化测试样本与预测类CAP的结构差异进行OOD检测",
+ "experiment_framework": "ImageNet-1k作为ID数据，SSB-hard/NINCO(近OOD)和iNaturalist/Textures/OpenImage-O(远OOD)作为OOD测试集，评估FPR95和AUROC指标",
+ "takeaways": [
+  "硬稀疏约束能揭示更清晰的结构模式",
+  "能量轮廓散度能有效捕捉OOD样本的结构性偏离",
+  "类激活轮廓可作为可解释的OOD检测基准"
+ ],
+ "weaknesses": [
+  "方法依赖于预训练ViT模型",
+  "仅评估了ViT-B/16架构，其他架构泛化性待验证",
+  "计算效率虽高但需要额外的SAE训练步骤"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "OOD检测属于可靠性主线，但依赖预训练模型限制落地性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

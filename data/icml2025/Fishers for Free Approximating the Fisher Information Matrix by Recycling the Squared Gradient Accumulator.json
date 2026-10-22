@@ -1,0 +1,35 @@
+{
+ "key": "icml2025/Fishers for Free Approximating the Fisher Information Matrix by Recycling the Squared Gradient Accumulator.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Fishers for Free Approximating the Fisher Information Matrix by Recycling the Squared Gradient Accumulator.pdf",
+ "title": "Fishers for Free? Approximating the Fisher Information Matrix by Recycling the Squared Gradient Accumulator",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.25
+ },
+ "one_line": "利用优化器已有梯度累加器近似Fisher，零成本但理论差异明显",
+ "innovations": [
+  "提出Squisher方法，利用优化器已有的平方梯度累加器近似Fisher对角线",
+  "系统分析Squisher与Fisher的理论差异与联系",
+  "在多种应用场景验证Squisher的有效性"
+ ],
+ "method_framework": "将Adam等优化器中的平方梯度累加器作为Fisher对角线的近似，通过缩放和调整时间尺度使其更接近理论Fisher值",
+ "experiment_framework": "在模型合并、UBGM合并、Fisher剪枝、FISH Mask、任务嵌入和持续学习六个场景评估，使用准确率等指标对比Squisher、Fisher和基线方法",
+ "takeaways": [
+  "优化器中的平方梯度累加器可作为Fisher的有效替代，无需额外计算",
+  "Squisher在大多数应用中表现与Fisher相当，显著优于随机基线"
+ ],
+ "weaknesses": [
+  "Squisher在模型合并中表现不稳定，依赖于充分训练",
+  "理论分析表明Squisher与Fisher存在系统性差异，特别是在小批量训练场景"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

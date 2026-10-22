@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Imitation Learning from a Single Temporally Misaligned Video.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Imitation Learning from a Single Temporally Misaligned Video.pdf",
+ "title": "Imitation Learning from a Single Temporally Misaligned Video",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.7
+ },
+ "one_line": "ORCA奖励函数解决时间错位视频的顺序匹配问题，提升模仿学习性能。",
+ "innovations": [
+  "提出有序覆盖对齐(ORCA)奖励函数，解决时间错位视频的顺序匹配问题",
+  "证明现有帧级匹配算法(OT、DTW、TemporalOT)在子目标顺序和覆盖方面的缺陷",
+  "设计两阶段训练策略，先假设时间对齐进行预训练，再用ORCA奖励优化"
+ ],
+ "method_framework": "ORCA通过动态规划计算学习者轨迹与演示视频的有序覆盖概率，奖励函数衡量学习者以正确顺序覆盖所有子目标的概率，确保时间顺序和完整覆盖。",
+ "experiment_framework": "在Meta-world(10个任务)和Humanoid-v4(4个任务)上评估，与OT、DTW、TemporalOT等基线比较，使用归一化返回值和累积奖励作为指标。",
+ "takeaways": [
+  "序列匹配任务应关注轨迹级而非帧级对齐",
+  "奖励函数设计需考虑非马尔可夫性质，确保子目标顺序和完整覆盖",
+  "两阶段训练策略可有效提升ORCA性能"
+ ],
+ "weaknesses": [
+  "ORCA在目标物体较小的任务(如Push)上表现不佳",
+  "当演示视频明显变慢时，ORCA性能下降明显",
+  "依赖帧级距离度量，可能忽略细节对齐"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

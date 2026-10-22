@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Nonparametric Teaching for Graph Property Learners.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Nonparametric Teaching for Graph Property Learners.pdf",
+ "title": "Nonparametric Teaching for Graph Property Learners",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 5,
+  "overall": 6
+ },
+ "one_line": "非参数教学视角解释GCN训练，加速训练但需真实标签且与主线任务无关",
+ "innovations": [
+  "解析图邻接矩阵A如何主导GCN参数梯度(结构感知更新)，并证明该梯度形式不随图规模n缩放；揭示κ=1时退化为batch-MLP",
+  "证明动态GNTK(由参数梯度下降导出)逐点收敛到函数梯度下降所用的结构感知canonical kernel(Theorem 5)，首次打通非参数教学理论与GCN训练",
+  "据此给出贪婪教学算法：每步选|fθ(Gi)-f*(Gi)|最大的m个图(B按批次/S按图)，并给Lipschitz光滑+有界核下的充分损失下降保证(Proposition 6)"
+ ],
+ "method_framework": "在flexible GCN(多层卷积阶A[κ]=[I,A,...,A^{κ-1}]拼接、各阶独立权重)上展开参数梯度；用Taylor把fθ随θ的演化转成函数空间微分，识别出其中的对称正定核即动态GNTK；教师每轮计算候选图的残差范数，选top-m组成教学集，GCN在其上做参数梯度下降，迭代到残差低于阈值。",
+ "experiment_framework": "图级：QM9(130k分子回归)、ZINC(250k回归)、ogbg-molhiv(41k二分类)、ogbg-molpcba(438k多任务)；节点级：graphon生成gen-reg/gen-cls各50k；基线without-GraNT与AL-3DGraph/GDeR等高效方法；指标训练墙钟时间、Loss/MAE/ROC-AUC/AP，保持泛化前提下报时间节省百分比。",
+ "takeaways": [
+  "图级回归省36.62%、图级分类省38.19%、节点级回归省30.97%、节点级分类省47.30%，测试性能与不选样基本持平",
+  "GraNT(B)在ogbg-molhiv上1457s达ROC-AUC 0.7676，优于GCN+Virtual Node(3083s/0.7608)等近期高效方法",
+  "理论上参数梯度下降的GCN演化与函数梯度下降一致，使得原本为非参数目标设计的贪婪教学可直接用于GCN"
+ ],
+ "weaknesses": [
+  "落点为图属性学习(分子性质/合成图)的训练加速，与主任务的医学影像/多模态大模型推理可靠性无关；分子预测属化学而非医学影像",
+  "残差选样需要访问真实属性f*(Gi)来算误差，即假设教师知道目标映射——在无标注的真实主动学习场景中该假设未必成立",
+  "理论结论基于flexible GCN与凸损失、Lipschitz/有界核等假设，ReLU等非凸情形仅靠一阶近似；节点级实验用合成graphon数据，真实大图规模验证有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.05,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

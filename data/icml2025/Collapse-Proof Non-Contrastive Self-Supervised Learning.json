@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Collapse-Proof Non-Contrastive Self-Supervised Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Collapse-Proof Non-Contrastive Self-Supervised Learning.pdf",
+ "title": "Collapse-Proof Non-Contrastive Self-Supervised Learning",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.25
+ },
+ "one_line": "超维计算简化非对比SSL设计，理论证明避免坍缩但验证不足。",
+ "innovations": [
+  "基于超维计算(hyperdimensional computing)设计projector与损失，引入不显式约束即鼓励表示同时去相关与聚类的归纳偏置",
+  "给出避免表征坍缩、维度坍缩、簇坍缩与簇内坍缩的充分条件并从理论上证明",
+  "证明最小化增广不变性+先验匹配即可避免表征/簇坍缩，而正交冻结超维权重与大投影输出是避免维度/簇内坍缩的关键"
+ ],
+ "method_framework": "用超维计算中的正交冻结权重构造投影头，通过匹配先验与增广不变性构成损失；该设计无需显式计算协方差矩阵即可促使embedding去相关，无需显式聚类约束即可促使聚类，从原理上规避各类训练坍缩失败模式。",
+ "experiment_framework": "在SVHN、CIFAR-10、CIFAR-100、ImageNet-100上验证，以线性分类与聚类任务的泛化性能对比现有非对比SSL方法(MoCo/BYOL类)，并实证各坍缩模式被避免。",
+ "takeaways": [
+  "非对比SSL的坍缩可用原理化设计而非启发式(momentum encoder/stop-grad)来规避",
+  "去相关与聚类可由同一归纳偏置隐式实现，无需显式协方差/聚类约束",
+  "该设计在保持强泛化的同时克服了多种训练失败模式"
+ ],
+ "weaknesses": [
+  "验证数据集偏小(CIFAR/ImageNet-100)，未在大规模ImageNet-1K等主流SSL基准上充分验证",
+  "超维计算的正交冻结权重设计对现有SSL架构的兼容性与训练效率需更多实证",
+  "理论充分条件较严格，与实际超参选择(大投影输出等)的对应关系仍有经验成分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.3,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

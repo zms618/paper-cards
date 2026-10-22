@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/Gated Attention for Large Language Models Non-linearity, Sparsity, and Attention-Sink-Free.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Gated Attention for Large Language Models Non-linearity, Sparsity, and Attention-Sink-Free.pdf",
+ "title": "Gated Attention for Large Language Models: Non-linearity, Sparsity, and Attention-Sink-Free",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "门控注意力引入非线性稀疏性，提升模型性能与训练稳定性",
+ "innovations": [
+  "在SDPA输出后引入头特定的sigmoid门控",
+  "揭示门控有效性的两个关键因素：非线性和稀疏性",
+  "发现门控机制能消除注意力sink现象并提升长上下文泛化能力"
+ ],
+ "method_framework": "在自注意力层的不同位置（Q、K、V投影后、SDPA输出后、最终输出层后）引入门控机制，比较不同粒度（元素级/头级）、特定/共享和乘性/加性变体",
+ "experiment_framework": "在15B MoE和1.7B密集模型上测试30种门变体，使用3.5T token数据集，评估PPL和MMLU等指标",
+ "takeaways": [
+  "门控机制能增强训练稳定性，允许更大学习率",
+  "头特定稀疏门控能有效消除注意力sink现象",
+  "简单修改（SDPA输出门控）能带来显著性能提升"
+ ],
+ "weaknesses": [
+  "未深入探讨门控机制对模型推理效率的影响",
+  "对门控机制如何具体改善长上下文泛化的解释不够充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Rethinking LLM-AS-A-JUDGE REPRESENTATION-AS-A-JUDGE with Small Language Models via Semantic Capacity Asymmetry.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Rethinking LLM-AS-A-JUDGE REPRESENTATION-AS-A-JUDGE with Small Language Models via Semantic Capacity Asymmetry.pdf",
+ "title": "Rethinking LLM-as-a-Judge: Representation-as-a-Judge with Small Language Models via Semantic Capacity Asymmetry",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "用小模型隐藏态替代LLM-as-Judge，依赖大模型金标签训练探针。",
+ "innovations": [
+  "提出语义容量不对称假说：评估所需语义容量远小于生成，可基于中间表征而非大规模生成模型。",
+  "把LLM-as-a-Judge转为Representation-as-a-Judge：不依赖prompt生成输出，而是探测小模型内部结构做无解码评估。",
+  "实例化INSPECTOR：从0-10B小模型隐藏态逐层选择最具预测力的层，探针预测维度级评估分数。"
+ ],
+ "method_framework": "先验证小LM隐藏态中线性可恢复的评估信号；逐层分析隐藏态与大模型金标准评分的相关性，选最预测层；训练轻量探针从该层表征回归出方面级评分，避免prompt生成的高成本与不透明。",
+ "experiment_framework": "在推理基准GSM8K、MATH、GPQA上评测；以大模型评分(gold)为目标，对比小模型prompt式judge；指标为探针评分与金标准的一致性/相关性；报告解码-free评估的成本优势。",
+ "takeaways": [
+  "小模型即便生成能力弱，其隐藏态也编码了丰富的评估信号，可作为高效judge。",
+  "评估与生成存在语义容量不对称，评估不必依赖大模型生成，可用小模型内部表征完成。"
+ ],
+ "weaknesses": [
+  "探针需大模型金标签做监督，冷启动/跨任务迁移时金标签获取成本未充分讨论。",
+  "主要在数学推理基准验证，对开放域长文本、多模态judge的适用性未展示。",
+  "探针与被评答案分布强耦合，对分布外答案的鲁棒性/偏差分析在前9页不足。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.03,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "评估方法创新，与可靠性主线交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

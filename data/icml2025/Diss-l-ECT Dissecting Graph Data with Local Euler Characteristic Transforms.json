@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Diss-l-ECT Dissecting Graph Data with Local Euler Characteristic Transforms.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Diss-l-ECT Dissecting Graph Data with Local Euler Characteristic Transforms.pdf",
+ "title": "Diss-l-ECT: Dissecting Graph Data with Local Euler Characteristic Transforms",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6,
+  "overall": 6
+ },
+ "one_line": "局部ECT改进GNN，但计算开销大，任务验证有限。",
+ "innovations": [
+  "将欧拉特征变换(ECT)推广到局部邻域，提出ℓ-ECT，兼顾局部结构保留与全局可解释性",
+  "理论研究ℓ-ECT的表达能力，证明其对局部节点邻域的无损表示，克服GNN聚合丢失局部细节的问题",
+  "构造基于ℓ-ECT的旋转不变度量用于几何图的空间对齐，并在高异配图等任务上展现优势"
+ ],
+ "method_framework": "GNN消息传递聚合会弥散并掩盖节点原始特征、丢失局部细节；本文对嵌入单纯复形/图中每个节点的局部邻域计算局部ECT，得到同时刻画拓扑(结构)与几何(空间)信息的'局部指纹'；该指纹是天然向量表示、无损且可解释，直接用作节点特征输入下游分类器，并可作为旋转不变度量对齐几何图。",
+ "experiment_framework": "在多个节点分类基准上对比标准GNN(含针对异配图的方法)，在高异配图等易因聚合模糊差异的任务上报告性能，并验证ℓ-ECT指纹与旋转不变度量的可用性。",
+ "takeaways": [
+  "局部ECT可无损保留邻域结构，弥补GNN聚合模糊局部信息的缺陷",
+  "ℓ-ECT在节点分类、尤其高异配图上常优于标准GNN",
+  "其天然向量表示使其可解释且易接入各类下游模型"
+ ],
+ "weaknesses": [
+  "依赖图嵌入/单纯复形构造，计算开销随邻域规模增长",
+  "主要在节点分类验证，图分类/生成等任务迁移未知",
+  "与现代大表达能力GNN(如深度集/消息传递增强)的系统对比有限"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.33,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

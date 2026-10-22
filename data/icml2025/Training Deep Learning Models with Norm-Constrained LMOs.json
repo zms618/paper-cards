@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Training Deep Learning Models with Norm-Constrained LMOs.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Training Deep Learning Models with Norm-Constrained LMOs.pdf",
+ "title": "Training Deep Learning Models with Norm-Constrained LMOs",
+ "scores": {
+  "novelty": 6,
+  "depth": 7,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.5
+ },
+ "one_line": "将约束优化LMO推广到无约束DL，统一多种优化器但实验局限语言模型",
+ "innovations": [
+  "将经典约束优化中的LMO/条件梯度方法推广到无约束深度学习问题(uSCG)，用范数球几何先验替代on-the-fly自适应",
+  "证明该更新规则在统一框架下复现Normalized SGD、Momentum Normalized SGD、SignSGD、Signum、Muon等已有方法",
+  "为深度架构提出显式范数选择，附带收益是超参数可跨模型尺寸迁移；Scion在nanoGPT上取得显著加速且不依赖Adam"
+ ],
+ "method_framework": "区别于Adam类on-the-fly自适应，本文主张a priori按网络结构选择参数空间的距离范数。基于随机条件梯度(SCG)，在范数球上调用线性最小化算子LMO(如欧氏球给出归一化梯度、max-norm球给出sign、谱范数球给出UV^T)生成更新方向；经典上CG用于约束问题，本文展示其即使无约束也有效，并通过显式范数选择实现跨尺寸超参迁移。内存高效，仅需一份权重与梯度且可半精度存储。",
+ "experiment_framework": "在nanoGPT训练上对比Scion与Adam/Muon等优化器，报告显著加速；论证超参数跨模型尺寸迁移能力；分析内存占用（单份权重+梯度、半精度）。",
+ "takeaways": [
+  "LMO+范数球几何可作为无约束DL优化的统一视角，复现多种现代优化器",
+  "按网络结构a priori选择范数可实现超参跨尺寸迁移，减少tune开销",
+  "Scion内存高效且在nanoGPT上不依赖Adam即可加速"
+ ],
+ "weaknesses": [
+  "主线相关性弱：属深度学习优化器，与可靠性乘医学影像/多模态推理主线无直接联系",
+  "实验主要集中在nanoGPT/小规模语言建模，跨模态、医学影像等场景未验证",
+  "LMO计算（如谱范数下的SVD/Newton-Schulz）在极大模型上的实际开销与收敛证明的假设需结合后续页"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.6,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

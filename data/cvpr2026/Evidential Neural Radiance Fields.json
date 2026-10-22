@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Evidential Neural Radiance Fields.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Evidential Neural Radiance Fields.pdf",
+ "title": "Evidential Neural Radiance Fields",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 7.2
+ },
+ "one_line": "证据推理NeRF分离不确定性，提升重建可靠性但依赖点独立性假设",
+ "innovations": [
+  "将证据推理与NeRF体积渲染范式结合，直接预测两种不确定性",
+  "建立标准化基准隔离评估UQ方法",
+  "点级不确定性到像素级不确定性的传播机制"
+ ],
+ "method_framework": "通过将像素颜色的均值和方差建模为服从NIG分布的随机变量，实现单次前向传播同时量化 aleatoric 和 epistemic 不确定性",
+ "experiment_framework": "在LF、LLFF和RobustNeRF三个数据集上对比7种UQ方法，使用PSNR、SSIM、LPIPS评估重建质量，NLL和AUSE评估不确定性质量",
+ "takeaways": [
+  "不确定性量化不必以牺牲渲染保真度为代价",
+  "标准化基准对公平比较UQ方法至关重要",
+  "联合建模数据噪声和模型知识 gap 对准确识别预测不准确区域至关重要"
+ ],
+ "weaknesses": [
+  "方法假设点间独立性，实际相邻点可能存在统计依赖",
+  "未充分探讨方法在极端数据稀疏情况下的表现",
+  "形状参数α的引入增加了模型复杂度"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "证据推理提升NeRF可靠性，但点独立性假设限制落地域防御力",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

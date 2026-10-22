@@ -1,0 +1,39 @@
+{
+ "key": "cvpr2025/Parameter Efficient Mamba Tuning via Projector-targeted Diagonal-centric Linear Transformation.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Parameter Efficient Mamba Tuning via Projector-targeted Diagonal-centric Linear Transformation.pdf",
+ "title": "Parameter Efficient Mamba Tuning via Projector-targeted Diagonal-centric Linear Transformation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "ProDiaL优化Mamba投影器，参数效率高但泛化性存疑",
+ "innovations": [
+  "发现Mamba架构中投影器而非SSM是迁移学习的主要贡献者",
+  "提出基于对角中心线性变换的ProDiaL方法",
+  "将变换矩阵分解为块对角矩阵和非对角矩阵实现高效参数优化"
+ ],
+ "method_framework": "ProDiaL通过冻结预训练投影器权重W，仅训练块对角矩阵Db和非对角矩阵ϵ，间接优化投影器。Db使用块对角结构增强灵活性，ϵ采用LoRA实现参数效率，总参数量不到1%。",
+ "experiment_framework": "在Mamba LLM和Vision Mamba模型上评估，使用HellaSwag、Winogrande等推理任务和StanfordCars、Caltech等视觉分类任务，与Full-FT、LoRA、DoRA等方法对比准确率和参数量。",
+ "takeaways": [
+  "组件级分析对架构特定PEFT方法设计的重要性",
+  "对角矩阵在投影器微调中的关键作用"
+ ],
+ "weaknesses": [
+  "实验主要关注准确率，缺乏对鲁棒性和泛化能力的评估",
+  "未深入分析ProDiaL在不同规模模型上的扩展性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "参数高效调优方法，未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

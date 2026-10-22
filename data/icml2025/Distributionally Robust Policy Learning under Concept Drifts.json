@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Distributionally Robust Policy Learning under Concept Drifts.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Distributionally Robust Policy Learning under Concept Drifts.pdf",
+ "title": "Distributionally Robust Policy Learning under Concept Drifts",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "条件偏移下的分布鲁棒策略学习，理论贡献为主，实证不足。",
+ "innovations": [
+  "区分协变量偏移与条件关系偏移(概念漂移)，研究仅条件Y|X变化这一更精细的鲁棒策略学习问题，避免联合建模过保守",
+  "提出在扰动条件分布集下评估给定策略最坏情况平均奖励的双重稳健估计量，证明即使扰动参数估计慢于root-n仍渐近正态",
+  "给出次优间隙为κ(Π)n^-1/2的学习算法并证明匹配下界，确立该问题的极小极大最优率"
+ ],
+ "method_framework": "把分布偏移仅限定为条件分布Y|X的扰动而非(X,Y)联合分布的扰动；构造双重稳健的最坏情况平均奖励估计量(结合倾向得分与结果回归)，证明其渐近正态性与弱扰动参数鲁棒性；再在给定策略类Π内最大化该估计量，借助Hamming距离下的熵积分κ(Π)给出次优率与匹配下界。",
+ "experiment_framework": "数值研究中与现有联合分布鲁棒策略学习基线对比，报告在概念漂移场景下最坏情况平均奖励的提升，验证理论率。",
+ "takeaways": [
+  "已知偏移来源仅为条件关系变化时，联合分布鲁棒会过保守，应做条件偏移鲁棒",
+  "双重稳健估计量在扰动参数慢收敛时仍渐近正态",
+  "所提算法达到κ(Π)n^-1/2的极小极大最优率"
+ ],
+ "weaknesses": [
+  "以理论与数值实验为主，缺少真实离线决策数据(如EHR)上的实证",
+  "依赖对'仅条件偏移'这一偏移类型已知的假设，实际混合偏移下适用性未讨论",
+  "κ(Π)随策略类复杂度增长，复杂策略下样本代价大"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.38,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Motion 3-to-4 3D Motion Reconstruction for 4D Synthesis.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Motion 3-to-4 3D Motion Reconstruction for 4D Synthesis.pdf",
+ "title": "Motion 3-to-4 3D Motion Reconstruction for 4D Synthesis",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.5
+ },
+ "one_line": "单目视频到4D物体的前馈框架，依赖预训练3D模型",
+ "innovations": [
+  "将4D合成解构为静态3D形状生成和动态运动重建",
+  "可扩展的帧级Transformer架构支持任意长度视频",
+  "引入具有真实几何和渲染的新Motion-80基准"
+ ],
+ "method_framework": "通过静态参考网格和单目视频输入，学习紧凑的运动潜在表示，预测每帧顶点轨迹，恢复完整且时间连贯的几何形状",
+ "experiment_framework": "Motion-80基准(80个物体，含真实几何)和Consistent4D基准，对比L4GM、GVFD、V2M4等方法，使用CD、F-Score、LPIPS、CLIP等指标",
+ "takeaways": [
+  "解耦的网格表示和基于场景流的运动建模能将静态3D网格转换为动态4D序列",
+  "交替注意力架构能有效处理不同长度视频序列"
+ ],
+ "weaknesses": [
+  "依赖预训练3D生成模型作为初始网格",
+  "在长序列上性能仍有提升空间",
+  "未充分讨论模型在极端运动情况下的鲁棒性"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "3D重建与4D合成，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

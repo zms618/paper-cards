@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/SparseVILA_Decoupling Visual Sparsity for Efficient VLM Inference.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/SparseVILA_Decoupling Visual Sparsity for Efficient VLM Inference.pdf",
+ "title": "SparseVILA Decoupling Visual Sparsity for Efficient VLM Inference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.6
+ },
+ "one_line": "解耦视觉稀疏性提升VLM效率，但架构依赖与部署复杂度存疑",
+ "innovations": [
+  "解耦上下文与生成阶段的视觉稀疏性",
+  "查询感知的解码阶段检索机制",
+  "迁移稀疏性到生成阶段提升多轮对话性能"
+ ],
+ "method_framework": "SparseVILA采用两阶段稀疏框架：上下文阶段使用查询无关的视觉编码器注意力分数进行剪枝，生成阶段使用查询感知的KV缓存检索，实现高效多轮对话",
+ "experiment_framework": "数据集：ChartQA/DocVQA/GQA等8个图像基准和MLVU/Video-MME等视频基准；基线：FastV/SparseVLM/PruMerge等；指标：准确率/速度up/多轮对话性能",
+ "takeaways": [
+  "解耦稀疏性可有效迁移计算负载到生成阶段",
+  "查询感知的解码阶段检索支持多轮对话而不损失性能",
+  "高效实现支持长上下文和长生成任务"
+ ],
+ "weaknesses": [
+  "仅评估了特定模型架构(LLaVA-NeXT等)，通用性待验证",
+  "实现细节中Triton内核优化可能增加部署复杂度"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.2,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "提升VLM效率但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

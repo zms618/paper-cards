@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Can We Build Scene Graphs Not Classify Them FlowSG Progressive.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Can We Build Scene Graphs Not Classify Them FlowSG Progressive.pdf",
+ "title": "Can We Build Scene Graphs Not Classify Them FlowSG Progressive",
+ "scores": {
+  "novelty": 7,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 5.5,
+  "overall": 6.2
+ },
+ "one_line": "FlowSG将SGG重构为渐进式生成，提升关系预测但计算复杂度高。",
+ "innovations": [
+  "将SGG从分类任务重构为渐进式生成任务",
+  "混合离散-连续流匹配方法",
+  "关系调制自注意力和流条件消息聚合模块"
+ ],
+ "method_framework": "FlowSG通过VQ-VAE将视觉特征离散化为紧凑token，使用图Transformer结合连续流匹配处理几何属性，离散流处理语义属性，通过迭代细化生成场景图。",
+ "experiment_framework": "在VG和PSG数据集上评估，采用PredCls和SGDet两种协议，在闭集和开放词汇设置下比较R/mR@50/100指标。",
+ "takeaways": [
+  "渐进式生成框架可提升全局一致性",
+  "混合离散-连续流匹配能有效处理不同类型属性",
+  "开放词汇设置下表现优异"
+ ],
+ "weaknesses": [
+  "计算复杂度较高，需要多步迭代",
+  "依赖预训练检测器，可能引入误差",
+  "未充分讨论模型在不同场景下的鲁棒性"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.4,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "场景图生成与可靠性主线无直接交点，属常规视觉任务",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/WeGeFT_Weight‑Generative Fine‑Tuning for Multi‑Faceted Efficient Adaptation of Large Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/WeGeFT_Weight‑Generative Fine‑Tuning for Multi‑Faceted Efficient Adaptation of Large Models.pdf",
+ "title": "WeGeFT: Weight-Generative Fine-Tuning for Multi-Faceted Efficient Adaptation of Large Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7,
+  "overall": 6.25
+ },
+ "one_line": "权重生成式微调统一PEFT与ReFT，但线性形式限制大模型潜力",
+ "innovations": [
+  "提出权重生成式微调范式：用预训练权重本身作为条件，通过低秩线性层生成微调权重残差",
+  "实现了乘法形式的权重更新 W*(I+phi*psi)，比LoRA的加法更新更结构化",
+  "统一了参数高效微调（PEFT）和表示高效微调（ReFT）两个方向，在多维度效率上取得平衡"
+ ],
+ "method_framework": "不直接学习权重残差，而是学习两个共享的低秩矩阵phi和psi，用预训练权重Wl与这两个矩阵相乘生成各层的微调残差。即W_hat_l = Wl * (I + phi * psi)。这种设计使得跨层共享参数成为可能，因为生成过程依赖于预训练权重本身的信息（weight-awareness）。",
+ "experiment_framework": "在常识推理、算术推理、指令遵循、代码生成、视觉识别等多类任务上验证；与LoRA、DoRA、VeRA、ReFT等多种PEFT方法对比；评估参数量、训练时间、GPU内存占用和下游任务性能。",
+ "takeaways": [
+  "从预训练权重生成微调权重的方式能实现跨层参数共享，大幅减少可训练参数量",
+  "乘法形式的权重更新比加法更新能更好地保留预训练知识",
+  "WeGeFT在保持LoRA级计算和内存效率的同时，显著减少了可训练参数量"
+ ],
+ "weaknesses": [
+  "仅在中等规模模型（如7B级别）上验证，更大模型的缩放效应未测试",
+  "权重生成的线性形式表达能力有限，与非线性超网络的对比不充分",
+  "在专业领域（如医疗、法律）的微调效果未验证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

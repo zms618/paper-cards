@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/ZOO-Prune_Training-Free Token Pruning via Zeroth-Order Gradient Estimation in Vision-Language.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ZOO-Prune_Training-Free Token Pruning via Zeroth-Order Gradient Estimation in Vision-Language.pdf",
+ "title": "ZOO-Prune: Training-Free Token Pruning via Zeroth-Order Gradient Estimation in Vision-Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "零阶梯度估计VLM视觉token敏感性，训练无关剪枝但参数选择缺乏理论",
+ "innovations": [
+  "零阶敏感性估计：对投影层特征注入高斯扰动、仅前向传播测输出变化作为token重要性，无需反向传播/GT损失/校准数据——解决'注意力分不可靠'与'梯度代价高'两头",
+  "投影层代理发现：实证投影层(轻量、已与LLM对齐)的敏感性排序与完整vision-encoder排序强相关，把昂贵估计降到投影层，几乎零开销",
+  "敏感性×多样性融合打分：既保任务相关敏感token(注意力法丢的)又不牺牲覆盖(多样性法丢的)，LLaVA-NeXT-7B等9个基准优于VisionZip/DivPrune"
+ ],
+ "method_framework": "对每个视觉token在投影层施加N个随机扰动→测嵌入变化量→零阶估计敏感性(无需反传)；敏感性分数与多样性分数结合选出K个token；推断时只保留这些token输入LLM。",
+ "experiment_framework": "多VLM(LLaVA-NeXT-7B等)×9个视觉问答/推理基准；剪枝率扫描(至94.4%token保留准确率)；端到端推理速度(至2.30×)；对比attention型(VisionZip)与diversity型(DivPrune)；投影层vs编码器排序一致性分析。",
+ "takeaways": [
+  "'敏感性比注意力可靠'：用'扰动→输出变化'直接测token影响力，绕开注意力分数与真实影响脱节的问题，适用于任何token级剪枝/稀疏化",
+  "'中间层当廉价代理'：轻量投影层可代理深层敏感性排序，'在哪层算'比'怎么算'更决定开销，可迁移到其他VLM/扩散token筛选",
+  "'敏感+多样双目标'：任务相关与覆盖度两个互补信号融合，比单一准则更稳——多目标打分的组合范式可复用"
+ ],
+ "weaknesses": [
+  "扰动数N/噪声尺度/敏感性与多样性融合权重均为经验选择，未见参数敏感性分析与理论保证(为何投影层代理可靠只有相关性分析)",
+  "主实验聚焦LLaVA-NeXT-7B单一架构，Qwen2-VL/InternVL等多架构与长视频/高分辨率场景未覆盖；94.4%剪枝在部分基准的准确率下降幅度未逐基准列出",
+  "端到端2.30×含剪枝自身开销，纯模型加速口径未单独给；与训练型剪枝方法(如FastV微调版)的公平对比缺失"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.15,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "VLM剪枝方法，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

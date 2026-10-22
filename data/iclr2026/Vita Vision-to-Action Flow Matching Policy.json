@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Vita Vision-to-Action Flow Matching Policy.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Vita Vision-to-Action Flow Matching Policy.pdf",
+ "title": "VITA: Vision-to-Action Flow Matching Policy",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "视觉-动作流匹配加速推理，但依赖预训练编码器且缺乏多条件支持",
+ "innovations": [
+  "提出无噪声(noise-free)、无条件注入(conditioning-free)的流匹配策略框架，直接从视觉潜表示流向动作潜表示，消除传统方法中每步去噪的视觉条件注入开销",
+  "引入动作自编码器将原始动作映射到与视觉潜空间对齐的结构化潜空间，解决流匹配要求源/目标维度一致的问题",
+  "提出流潜解码(flow latent decoding)机制，通过动作重建损失沿流匹配ODE步骤反向传播，防止端到端训练中动作潜空间坍缩"
+ ],
+ "method_framework": "VITA将流匹配的源分布从标准高斯改为视觉编码器输出的潜表示，直接建立视觉潜空间到动作潜空间的连续流。训练时联合优化动作自编码器（将原始动作编码到与视觉对齐的潜空间）和流匹配ODE。为防止潜空间坍缩，流潜解码将动作重建损失沿ODE求解步骤反向传播，锚定潜生成过程。推理时无需重复注入视觉条件，直接从视觉潜表示出发沿ODE积分得到动作潜表示，再解码为原始动作。",
+ "experiment_framework": "任务：9个仿真任务 + 5个真实世界任务，覆盖ALOHA和Robomimic两大基准。基线：传统流匹配/扩散策略（带条件注入模块）、最先进策略方法。指标：任务成功率、推理速度。结果：推理速度提升1.5-2倍，性能达到或超过SOTA策略。",
+ "takeaways": [
+  "将视觉表示直接作为流匹配源分布可完全消除推理时的条件注入模块，大幅降低时间和空间开销",
+  "动作自编码器与流匹配联合训练能有效弥合视觉与动作两种模态的维度和结构差异",
+  "流潜解码机制对防止端到端训练中的潜空间坍缩至关重要，是训练稳定收敛的关键"
+ ],
+ "weaknesses": [
+  "方法依赖预训练视觉编码器的质量，视觉表示的局限会直接传导到动作生成",
+  "动作自编码器引入了额外的重建误差，可能损失精细动作细节",
+  "无条件注入设计虽然加速，但可能限制了多条件输入（如语言指令、历史轨迹）的灵活整合"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "视觉-动作流匹配与可靠性主线无实质交点，仅属方法研习轴",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

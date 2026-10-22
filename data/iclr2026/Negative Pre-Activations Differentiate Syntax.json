@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Negative Pre-Activations Differentiate Syntax.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Negative Pre-Activations Differentiate Syntax.pdf",
+ "title": "Negative Pre-Activations Differentiate Syntax",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.5,
+  "overall": 5.7
+ },
+ "one_line": "负预激活区域承载句法，零化破坏语法能力而不损其他。",
+ "innovations": [
+  "识别出一类输出分布显著偏离高斯基线、能功能区分相似输入的稀疏Wasserstein神经元",
+  "设计符号特异干预：只零化少量Wasserstein神经元的负预激活，发现困惑度上升且BLiMP/TSE语法性能急剧下降",
+  "用随机与困惑度匹配的对照消融证明该效应是双向分离(double dissociation)：句法专属，而其他非句法基准上对照消融损伤更大"
+ ],
+ "method_framework": "在平滑激活LLM中筛选输出分布偏离高斯的稀疏Wasserstein神经元；对其做仅作用于负预激活区域的符号特异干预(zeroing)，与随机神经元、困惑度匹配神经元的等量消融做对照；结合词性分析定位超额惊讶度到句法支架词，逐层干预看局部退化如何随深度累积，并追踪训练动态中该神经元出现稳定后干预危害如何变化。",
+ "experiment_framework": "语法基准BLiMP与TSE，配非句法基准做对照；干预方式为零化负预激活，对照含随机消融与困惑度匹配消融；报告困惑度变化、语法任务准确率、词性级超额惊讶度、分层干预与训练动态曲线。",
+ "takeaways": [
+  "负预激活区域在平滑激活模型中并非梯度优化副产物，而是被主动使用的句法承载基底",
+  "Wasserstein神经元负预激活与句法能力形成双向分离，区别于一般正激活神经元分析",
+  "小的局部退化沿网络深度累积，且随Wasserstein神经元在训练中出现稳定而干预危害增大"
+ ],
+ "weaknesses": [
+  "属机理可解释性/句法分析，与鲁棒性、可信验证、幻觉抑制等可靠性落地主线关联弱",
+  "结论基于特定模型族(平滑激活Transformer)，是否在MoE/其他架构上复现未验证",
+  "前9页未报告Wasserstein神经元的可复现识别阈值与跨模型规模的一致性"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "句法分析，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "title": "Tug-of-War No More: Harmonizing Accuracy and Robustness in Vision-Language Models via Stability-Aware Task Vector Merging",
+ "one_line": "任务向量合并加稳定性掩码，调和VLM精度与鲁棒性但依赖预训练模型。",
+ "innovations": [
+  "揭示朴素任务向量合并因等权所有坐标而只能给出近似线性的干净-鲁棒权衡，无甜点",
+  "提出以预测稳定性作为跨目标兼容性的代理：从两目标梯度估计逐参数稳定性，构建互补掩码保留联合稳定坐标、抑制目标敏感坐标",
+  "沿对抗参数轨迹用预测敏感度指数加权精化掩码；理论证明掩码可收缩一阶跨目标干扰，临界性指数跟踪曲率偏向平坦极小值"
+ ],
+ "method_framework": "合并现成自然微调与鲁棒微调VLM的任务向量（相对预训练的参数偏移），但不做等权合并。从两目标梯度估计每个参数的预测稳定性，保留对两目标都稳定的坐标、抑制只对单一目标敏感的坐标；再沿对抗轨迹按预测敏感度加权精化掩码，使合并偏向平坦极小值。",
+ "experiment_framework": "在CLIP等VLM及多个鲁棒/干净基准上评测；对比对抗微调与朴素任务向量合并；指标为干净精度与对抗精度的权衡；验证学到的权衡可迁移到下游任务，且免重训、超参搜索成本低。",
+ "takeaways": [
+  "朴素任务向量合并在精度-鲁棒间只能给出近线性权衡，无帕累托甜点",
+  "以预测稳定性区分兼容/冲突参数，可在免重训下获得更优的干净-鲁棒权衡",
+  "学到的权衡可有效迁移到下游任务，无需昂贵的多次重训搜超参"
+ ],
+ "weaknesses": [
+  "依赖已有现成的自然/鲁棒微调两个模型，未解决鲁棒微调本身的数据/成本问题",
+  "逐参数稳定性估计需在两目标下算梯度，引入额外计算",
+  "理论收缩是一阶近似，对高阶跨目标干扰与强攻击的有效性边界需更多验证"
+ ],
+ "confidence": "high",
+ "key": "iclr2026/TUG-OF-WAR No more Harmonizing Accuracy and Robustness In Vision-Language Models via Stability-Aware Task.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TUG-OF-WAR No more Harmonizing Accuracy and Robustness In Vision-Language Models via Stability-Aware Task.pdf",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 7.0
+ },
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "任务向量稳定性合并直接解决VLM鲁棒性-精度权衡，符合可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

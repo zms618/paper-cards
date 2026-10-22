@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2025/Efficient Diffusion as Low Light Enhancer.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Efficient Diffusion as Low Light Enhancer.pdf",
+ "title": "Efficient Diffusion as Low Light Enhancer",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 6.0,
+  "overall": 6.3
+ },
+ "one_line": "ReDDiT通过反射感知轨迹蒸馏实现2步低光增强，但泛化能力有限。",
+ "innovations": [
+  "识别并解决了扩散模型加速中的拟合误差和推理差距两个关键问题",
+  "提出反射感知轨迹 refinement (RATR)模块",
+  "设计ReDDiT蒸馏框架，实现2步高质量低光图像增强"
+ ],
+ "method_framework": "ReDDiT框架结合轨迹蒸馏和反射感知轨迹 refinement，通过线性外推分数函数缓解拟合误差，并将高斯流转移到反射感知残差空间减少推理差距。",
+ "experiment_framework": "在10个基准数据集上评估，包括LOLv1、LOLv2、SID等，使用PSNR、SSIM、LPIPS和NIQE指标，与多种SOTA方法比较。",
+ "takeaways": [
+  "反射成分作为确定性先验可有效优化扩散轨迹",
+  "蒸馏策略在减少采样步骤的同时保持高质量输出",
+  "残差空间转移能有效解决扩散模型在低光增强中的推理差距"
+ ],
+ "weaknesses": [
+  "依赖非学习型去噪操作估计噪声图，可能限制泛化能力",
+  "反射估计的准确性直接影响性能，在极端低光条件下可能不稳定"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.5,
+ "relevance_reason": "低光增强属于视觉处理，与可靠性主线无直接交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

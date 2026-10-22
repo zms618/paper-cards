@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/Seeking Consistent Flat Minima for Better Domain Generalization via Refining.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/Seeking Consistent Flat Minima for Better Domain Generalization via Refining.pdf",
+ "title": "Seeking Consistent Flat Minima for Better Domain Generalization via Refining",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "自反馈训练优化损失景观一致性提升域泛化，但计算开销大且未大规模验证。",
+ "innovations": [
+  "提出自反馈训练(SFT)框架迭代优化损失景观一致性",
+  "设计景观优化器通过生成软标签改进损失几何结构",
+  "引入训练域分割方案确保损失景观一致性可迁移到未见域"
+ ],
+ "method_framework": "SFT框架包含反馈和优化两阶段：反馈阶段测量不同域损失景观不一致性生成反馈信号；优化阶段利用反馈信号通过景观优化器生成软标签，改进损失景观一致性和平坦性。",
+ "experiment_framework": "在DomainBed的5个DG基准数据集(PACS、VLCS、OfficeHome、TerraIncognita、DomainNet)上评估，使用ResNet-50和ViT-B/16作为骨干网络，与锐度感知方法和其他DG基线比较。",
+ "takeaways": [
+  "损失景观一致性是域泛化的关键因素",
+  "通过软标签生成优化损失几何结构是一种高效方法",
+  "训练域分割方案可有效提升模型在未见域的泛化能力"
+ ],
+ "weaknesses": [
+  "计算复杂度增加，需要额外的优化器参数",
+  "超参数λ1和λ2的调优可能影响性能",
+  "仅在小规模和中等规模数据集上验证，大规模数据集上的表现未知"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "域泛化方法与可靠性主线明确交点，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

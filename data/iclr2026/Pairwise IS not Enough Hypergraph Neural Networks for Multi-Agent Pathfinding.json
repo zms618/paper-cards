@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Pairwise IS not Enough Hypergraph Neural Networks for Multi-Agent Pathfinding.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Pairwise IS not Enough Hypergraph Neural Networks for Multi-Agent Pathfinding.pdf",
+ "title": "Pairwise Is Not Enough: Hypergraph Neural Networks for Multi-Agent Pathfinding",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "超图注意力缓解MAPF注意力稀释，但超边构建开销与真实场景鲁棒性存疑。",
+ "innovations": [
+  "指出MAPF中pairwise消息传递在密集环境下导致注意力稀释与次优行为，忽视群体级交互。",
+  "提出HMAGAT：在有向超图上用注意力机制显式建模群体(group)动态。",
+  "仅1M参数、100倍少训练数据即超越85M参数SoTA，证明合适归纳偏置比数据/参数规模更关键。"
+ ],
+ "method_framework": "把智能体间关系建模为有向超图(超边连接>2个智能体)，用注意力在超边聚合/分发信息，显式表达群体协调；相比只做pairwise消息传递的GNN，超图缓解了密集场景下注意力被摊薄的问题，从而捕获复杂多体交互。",
+ "experiment_framework": "在MAPF标准密集场景基准上评测；对比学习式MAPF求解器含85M参数SoTA；指标为无碰撞完成率/代价与在线推理时间；HMAGAT以1M参数、100倍少数据取得新SoTA；并通过注意力值分析验证超图缓解注意力稀释。",
+ "takeaways": [
+  "群体级(超图)交互建模对密集MAPF至关重要，pairwise表达力不足。",
+  "合适的归纳偏置比参数量/数据量更能决定多智能体学习性能。",
+  "超图注意力可显式缓解GNN的注意力稀释。"
+ ],
+ "weaknesses": [
+  "超边构造依赖启发式/在线生成，大规模智能体下超图构建开销未充分量化。",
+  "主要在仿真MAPF网格/图环境验证，真实机器人动态不确定性下的鲁棒性未涉及。",
+  "结论'归纳偏置>数据'基于特定任务，跨任务普适性需更多证据。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.45,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多智能体路径规划与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/ReSAM_Refine Requery and Reinforce Self-Prompting Point-Supervised Segmentation for Remote.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/ReSAM_Refine Requery and Reinforce Self-Prompting Point-Supervised Segmentation for Remote.pdf",
+ "title": "ReSAM Refine Requery and Reinforce Self-Prompting Point-Supervised Segmentation for Remote",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "基于SAM的点监督分割，自提示循环与轻量特征对齐",
+ "innovations": [
+  "Refine-Requery-Reinforce自提示循环",
+  "Soft Semantic Alignment(SSA)轻量级特征对齐",
+  "重叠区域抑制策略解决密集目标泄漏问题"
+ ],
+ "method_framework": "基于SAM框架，通过Refine(重叠抑制)-Requery(自生成box提示)-Reinforce(SSA特征对齐)循环迭代，结合LoRA微调实现点监督遥感图像分割",
+ "experiment_framework": "在WHU、HRSID、NWPU VHR-10三个遥感数据集上评估，使用1/2/3点监督，对比Direct SAM、Self-Training、PointSAM等方法，采用IoU和F1指标",
+ "takeaways": [
+  "自提示机制可有效将稀疏点提示转化为结构化区域查询",
+  "轻量级SSA替代原型库解决内存问题并提升特征一致性",
+  "重叠抑制策略对密集目标场景尤为重要"
+ ],
+ "weaknesses": [
+  "在HRSID 2点设置上性能与PointSAM相当，可能受限于小目标和复杂背景",
+  "未充分探讨不同遥感传感器类型的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "点监督分割与遥感落地域交点，自提示循环设计有可靠性价值",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

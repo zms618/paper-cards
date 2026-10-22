@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/MixFlow_Training Alleviating Exposure Bias with Slowed Interpolation Mixture.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/MixFlow_Training Alleviating Exposure Bias with Slowed Interpolation Mixture.pdf",
+ "title": "MixFlow Training Alleviating Exposure Bias with Slowed Interpolation Mixture",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "MixFlow通过混合插值缓解扩散模型训练-测试差异，提升生成质量。",
+ "innovations": [
+  "发现Slow Flow现象并据此设计混合插值训练方法",
+  "提出slowed interpolation mixture作为训练输入",
+  "设计简单的采样策略实现均匀采样所有插值对"
+ ],
+ "method_framework": "MixFlow在训练时使用混合插值(包含训练步长和更高噪声步长的插值)作为预测网络输入，通过Beta(2,1)采样训练步长和均匀采样slowed步长，缓解训练-测试差异。",
+ "experiment_framework": "在ImageNet上评估SiT、REPA、RAE等模型，使用gFID、sFID、IS等指标，并与Input Perturbation、Epsilon Scaling等方法对比。",
+ "takeaways": [
+  "训练-测试差异是扩散模型的关键问题，可通过修改训练过程缓解",
+  "简单的方法设计(仅修改几行代码)可带来显著性能提升",
+  "在少步采样场景下改进更明显"
+ ],
+ "weaknesses": [
+  "方法依赖于对Slow Flow现象的观察，缺乏理论证明",
+  "仅在图像生成任务验证，泛化性有待进一步探索",
+  "与现有方法如REPA结合时，IS指标略有下降"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.25,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "缓解扩散模型训练-测试差异，属于可靠性主线但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

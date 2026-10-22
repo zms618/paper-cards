@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/MoH Multi-Head Attention as Mixture-of-Head Attention.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/MoH Multi-Head Attention as Mixture-of-Head Attention.pdf",
+ "title": "MoH: Multi-Head Attention as Mixture-of-Head Attention",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.5,
+  "overall": 5.9
+ },
+ "one_line": "将多头注意力转为混合专家机制，减少计算量但生成性能受限",
+ "innovations": [
+  "将注意力头视为专家的混合专家注意力机制",
+  "引入共享头和两阶段路由策略",
+  "对预训练模型进行继续调优的适配方法"
+ ],
+ "method_framework": "将多头注意力表示为求和形式，引入路由机制选择Top-K注意力头，结合共享头捕获通用知识，通过加权求和替代标准求和增强灵活性",
+ "experiment_framework": "ImageNet-1K分类、ImageNet-1K生成任务、LLM从零训练、LLaMA3-8B继续调优，使用Top-1准确率、FID、IS等指标",
+ "takeaways": [
+  "注意力头存在冗余，可通过动态路由提高效率",
+  "共享头设计能有效捕获跨上下文的通用知识",
+  "方法可适配多种预训练模型"
+ ],
+ "weaknesses": [
+  "图像生成任务中75%注意力头激活时性能下降",
+  "未充分探讨不同任务中最佳激活头比例",
+  "路由机制的计算开销未详细分析"
+ ],
+ "confidence": "high",
+ "raw_overall": 7,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

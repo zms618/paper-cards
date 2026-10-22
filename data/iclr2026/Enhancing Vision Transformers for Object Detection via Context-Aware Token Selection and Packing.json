@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Enhancing Vision Transformers for Object Detection via Context-Aware Token Selection and Packing.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Enhancing Vision Transformers for Object Detection via Context-Aware Token Selection and Packing.pdf",
+ "title": "Enhancing Vision Transformers for Object DE-TECTION via CONTEXT-AWARE Token Selection and Packing",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 5.5,
+  "overall": 5.8
+ },
+ "one_line": "SPA选择打包token提升ViT检测，但效率提升有限",
+ "innovations": [
+  "多尺度监督的token选择机制",
+  "动态token打包方法解决GPU批处理效率问题",
+  "与Swin Transformer集成的分层架构"
+ ],
+ "method_framework": "SPT采用分层结构，后两阶段引入SPA模块，通过线性门控层选择信息丰富token，打包成新批次进行并行计算，结合多尺度监督提升检测性能。",
+ "experiment_framework": "COCO2017/BDD100K/BDD-S数据集上的目标检测，COCO2017上的实例分割，PASCAL VOC上的多标签分类，与Swin/DynamicSwin等基线对比AP/FPS/FLOPs",
+ "takeaways": [
+  "多尺度监督机制提升小目标检测性能",
+  "token打包方法有效解决不规则序列长度问题",
+  "早期阶段保留完整特征避免信息损失"
+ ],
+ "weaknesses": [
+  "仅在后两阶段应用SPA，整体计算效率提升有限",
+  "早期阶段仍处理大量背景token",
+  "实验未充分验证不同任务间的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "ViT检测优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

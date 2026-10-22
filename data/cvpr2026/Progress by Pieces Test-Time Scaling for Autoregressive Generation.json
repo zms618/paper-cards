@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/Progress by Pieces Test-Time Scaling for Autoregressive Generation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Progress by Pieces Test-Time Scaling for Autoregressive Generation.pdf",
+ "title": "Progress by Pieces Test-Time Scaling for Autoregressive Generation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "GridAR通过网格分区和布局提示提升视觉自回归生成效率",
+ "innovations": [
+  "网格分区渐进生成策略，动态计算分配",
+  "布局感知提示重定义，解决自回归模型全局蓝图缺失问题",
+  "三路分类器自由引导机制，平衡原始提示与布局特定信号"
+ ],
+ "method_framework": "GridAR将画布划分为网格，并行生成多个候选片段，通过验证器筛选可行候选作为锚点引导后续生成，结合布局感知提示重定义解决自回归模型全局规划不足问题。",
+ "experiment_framework": "在T2I-CompBench++和GenEval评估文本生成，PIE-Bench评估图像编辑，对比Best-of-N基线，使用BLIP-VQA、UniDet、CLIP等指标。",
+ "takeaways": [
+  "网格分区策略可有效避免错误轨迹的无效计算",
+  "中间结果驱动的提示重定义显著提升生成质量",
+  "三路引导机制平衡原始提示与布局特定信号"
+ ],
+ "weaknesses": [
+  "依赖外部验证器(GPT-4.1)增加计算开销",
+  "网格划分策略可能限制某些复杂场景的生成灵活性",
+  "提示重定义的质量受中间结果质量影响"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视觉生成效率提升，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2025/MaRI Material Retrieval Integration across Domains.pdf",
+ "conf": "cvpr2025",
+ "path": "cvpr2025/MaRI Material Retrieval Integration across Domains.pdf",
+ "title": "MaRI Material Retrieval Integration across Domains",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "微调DINOv2做材料检索，合成-真实对齐提升跨域性能。",
+ "innovations": [
+  "构建合成与真实材料数据集，解决材料多样性问题",
+  "双编码器架构通过对比学习对齐视觉与材料特征",
+  "仅微调DINOv2最后Transformer块保留通用视觉特征"
+ ],
+ "method_framework": "基于DINOv2的双编码器架构，通过对比学习将图像和材料映射到共享特征空间，使用InfoNCE损失拉近相似对，分离不相似对。",
+ "experiment_framework": "在合成材料(Trained)和未见材料(Unseen)数据集上评估，使用Top-1/Top-5实例级准确率、Top-1类别准确率和Top-3 IoU作为指标。",
+ "takeaways": [
+  "材料检索需要专门的嵌入空间而非通用图像搜索",
+  "合成数据与真实数据的结合能有效提升跨域泛化能力",
+  "微调策略对保留通用特征同时学习特定领域变化至关重要"
+ ],
+ "weaknesses": [
+  "仅微调最后Transformer块可能限制了模型对材料特性的深度学习",
+  "未充分讨论模型在不同光照条件下的鲁棒性",
+  "材料类别划分可能不够细致，影响细粒度检索"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.1,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "材料检索属于落地域但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

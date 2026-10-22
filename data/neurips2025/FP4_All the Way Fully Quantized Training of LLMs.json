@@ -1,0 +1,36 @@
+{
+ "key": "neurips2025/FP4_All the Way Fully Quantized Training of LLMs.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/FP4_All the Way Fully Quantized Training of LLMs.pdf",
+ "title": "FP4 All the Way: Fully Quantized Training of LLMs",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6,
+  "relevance": 8,
+  "overall": 7
+ },
+ "one_line": "NVFP4格式与混合舍入策略实现LLaMA全FP4训练，但硬件支持不足",
+ "innovations": [
+  "首次实现全FP4量化训练(权重、激活和梯度)",
+  "NVFP4格式优化(块大小16，E4M3缩放)",
+  "混合舍入策略(前向RtN，反向SR)",
+  "梯度噪声阈值理论分析"
+ ],
+ "method_framework": "采用NVFP4格式(E2M1数据，E4M3缩放)，块大小16，前向使用RtN，反向和更新使用SR，结合QAF阶段消除与BF16的性能差距。",
+ "experiment_framework": "Llama2 7B模型，Red Pajama数据集(1T tokens)，256 Intel Gaudi2加速器，比较不同块大小、缩放格式和舍入策略，评估零样本下游任务性能。",
+ "takeaways": [
+  "NVFP4格式在块大小16和E4M3缩放时表现最佳",
+  "梯度噪声阈值√3倍是量化训练有效性的关键指标"
+ ],
+ "weaknesses": [
+  "缺乏硬件原生FP4支持，无法直接测量加速效果",
+  "仅验证了LLaMA架构，未扩展到MoE或视觉任务"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.875,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

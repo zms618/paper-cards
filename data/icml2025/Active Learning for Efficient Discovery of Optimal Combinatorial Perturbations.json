@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/Active Learning for Efficient Discovery of Optimal Combinatorial Perturbations.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Active Learning for Efficient Discovery of Optimal Combinatorial Perturbations.pdf",
+ "title": "Active Learning for Efficient Discovery of Optimal Combinatorial Perturbations",
+ "scores": {
+  "novelty": 6,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 5.9
+ },
+ "one_line": "自适应基因嵌入+条件化单基因效应的CRISPR组合扰动预测框架",
+ "innovations": [
+  "提出自适应基因嵌入：嵌入维度随训练数据量增长而扩展，小样本时用低维嵌入防过拟合，大样本时用高维嵌入捕捉复杂相互作用",
+  "将单基因扰动效应作为条件输入，显著提升组合扰动预测精度，特别是在小样本场景下",
+  "构建AI+Lab主动学习闭环：推荐系统优先选择预测效应最大的基因对进行实验，加速发现过程"
+ ],
+ "method_framework": "模型架构：(1)过参数化单基因效应编码器——将单基因扰动效应投影到高维空间；(2)基因嵌入层——可学习的基因表示矩阵，维度随数据量自适应调整；(3)组合交互模块——基因嵌入求和后通过压缩层得到交互标量；(4)预测头——融合单基因效应和组合交互预测表型。主动学习：初始均匀采样→训练模型→采集函数选择下一轮实验样本→迭代优化。",
+ "experiment_framework": "4个CRISPR组合扰动数据集（Norman 6328组合、Simpson 147658组合、Horlbeck K562 100576组合、Horlbeck Jurkat 95703组合，总计35万+相互作用）+药物组合数据集（Bertin et al.，2000候选）。基线：线性模型、MLP、GEARS、RECOVER。指标：RMSE、Pearson相关。小样本学习曲线分析、主动学习迭代实验。",
+ "takeaways": [
+  "NAIAD在小样本场景下比次优模型平均提升40%以上RMSE，特别是在每个基因仅观测4次的极低数据量下",
+  "自适应嵌入策略实现了小样本防过拟合和大样本高表达力的统一",
+  "主动学习推荐系统可显著减少所需实验轮次，加速有效基因对的发现"
+ ],
+ "weaknesses": [
+  "模型主要针对双基因组合，高阶组合（3+基因）的扩展未验证",
+  "单基因效应需要预先测量，增加了前置实验成本",
+  "采集函数的设计较简单，未充分探索不确定性与效应的权衡"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.23,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "CRISPR组合扰动预测属于可靠性方法轴，但未触及落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

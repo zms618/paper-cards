@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Can Transformers Reason Logically A Study in SAT Solving.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Can Transformers Reason Logically A Study in SAT Solving.pdf",
+ "title": "Can Transformers Reason Logically? A Study in SAT Solving",
+ "scores": {
+  "novelty": 7,
+  "depth": 7.5,
+  "evidence": 6,
+  "relevance": 6.5,
+  "overall": 6.75
+ },
+ "one_line": "Transformer通过CoT解决3-SAT，但泛化受限且未扩展复杂推理",
+ "innovations": [
+  "证明Transformer在非均匀计算模型下可解决3-SAT问题",
+  "设计PARAT工具将理论构造实现为PyTorch模型",
+  "展示Transformer在相同长度问题上具有分布外泛化能力但缺乏长度泛化"
+ ],
+ "method_framework": "通过构造性证明展示Transformer可通过CoT模拟DPLL算法，实现并行逻辑推理和回溯，使用O(p²)参数解决最多p变量的3-SAT问题",
+ "experiment_framework": "在3种不同难度的3-SAT数据集上测试，包括边际、随机和偏斜数据集，变量数4-20，模型达到完美准确率",
+ "takeaways": [
+  "Transformer可通过CoT实现并行逻辑推理而非顺序检查",
+  "softmax注意力误差随问题规模增大而累积，解释了长度泛化限制",
+  "PARAT工具可高效实现理论构造"
+ ],
+ "weaknesses": [
+  "理论构造需要问题规模相关的参数，缺乏通用性",
+  "训练模型在未见过的变量数量上泛化能力有限",
+  "实验仅限于3-SAT问题，未扩展到更复杂的推理任务"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.25,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

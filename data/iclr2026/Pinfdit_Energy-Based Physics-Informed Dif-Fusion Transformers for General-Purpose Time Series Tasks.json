@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Pinfdit_Energy-Based Physics-Informed Dif-Fusion Transformers for General-Purpose Time Series Tasks.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Pinfdit_Energy-Based Physics-Informed Dif-Fusion Transformers for General-Purpose Time Series Tasks.pdf",
+ "title": "PINFDiT: Energy-Based Physics-Informed Diffusion Transformers for General-Purpose Time Series Tasks",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "扩散Transformer+Langevin校正，PDE数据上表现好但实测验证不足",
+ "innovations": [
+  "提出PINFDiT：扩散Transformer主干捕获时序依赖，配合全面掩码策略处理缺失观测/多分辨率采样等不完美数据。",
+  "推理时无模型的物理引导校正：用校准Langevin动力学将生成样本拉向物理一致解，在分布保真与物理定律符合间平衡，无需改架构或重训。",
+  "在数据稀缺场景注入物理知识，统一覆盖预测/插补/生成等任务，弥合通用模型与领域专用模型差距。"
+ ],
+ "method_framework": "用DiT作为时序骨干并配合掩码策略建模不完美数据；扩散框架提供高质量采样与生成能力；推理阶段以物理方程构造能量势，用校准的Langevin MCMC在采样轨迹上施加梯度校正，将样本推向满足PDE约束的区域，既不改网络结构也不需重训。",
+ "experiment_framework": "在六个PDE仿真器(Advection/Burgers/Navier-Stokes/Diffusion-Sorption/Vorticity/CFD)上做多变量预测；基线含TimesFM/Moirai/Chronos基础模型、DLinear/PatchTST/CSDI/DiffusionTS、NeuralODE/NeuralCDE及推理时物理引导方法SNPE/LFBC；指标RMSE/MAE与概率CRPS(不确定性)，几乎全面最优。",
+ "takeaways": [
+  "推理时的Langevin物理校正可在不重训前提下显著提升物理一致性。",
+  "在六个PDE系统上优于基础时序模型与已嵌入方程的物理信息模型。",
+  "CRPS概率指标表明其同时给出合理的不确定性量化。"
+ ],
+ "weaknesses": [
+  "评测多在合成PDE仿真数据上，真实含噪/复杂物理实测数据验证有限。",
+  "依赖已知可微PDE作为能量势，对物理规律未知或不可微的现实场景不适用。",
+  "推理时Langevin校正引入额外采样开销，实时性未充分报告。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.68,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "PDE物理约束与扩散模型结合，提升时序预测可靠性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

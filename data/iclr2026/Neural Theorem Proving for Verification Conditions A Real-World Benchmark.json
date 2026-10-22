@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Neural Theorem Proving for Verification Conditions A Real-World Benchmark.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Neural Theorem Proving for Verification Conditions A Real-World Benchmark.pdf",
+ "title": "Neural Theorem Proving for Verification Conditions: A Real-World Benchmark",
+ "scores": {
+  "novelty": 7,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 6.0
+ },
+ "one_line": "首个真实世界VC证明基准，但成功率极低且优化空间存疑",
+ "innovations": [
+  "首次针对程序验证的核心瓶颈——验证条件(VC)自动证明——构建真实世界基准，区别于以往以验证相关引理/编程谜题为主的ITP基准。",
+  "利用Why3与Frama-C工业验证流水线，从Linux、Contiki-OS内核等真实项目抽取语料并跨Isabelle/Lean/Rocq三种形式语言翻译为语义等价用例。",
+  "对通用LLM与定理证明专用微调模型做系统评测，量化VC证明任务的难度与差距。"
+ ],
+ "method_framework": "从真实工业C程序与Why3程序出发，经VCG前端/后端生成验证条件，再通过跨prover翻译器映射到Isabelle、Lean、Rocq；任务要求模型自动证明这些VC（或生成证明脚本）。",
+ "experiment_framework": "评测多种定理证明专用微调模型与通用LLM；最佳语言专用模型仅2.08% pass@1，通用GPT-o4-mini-high为1.19% pass@1；对比以往基准VC占比（<20%或0%），本基准VC占比100%。",
+ "takeaways": [
+  "VC自动证明是程序验证的关键瓶颈，现有ATP与LLM在此任务上成功率极低（约1-2%）。",
+  "真实工业验证条件远比竞赛数学/编程谜题困难，是NTP未来的重要方向。",
+  "跨语言语义等价抽取流水线为后续VC证明研究提供了可复现基准。"
+ ],
+ "weaknesses": [
+  "任务成功率极低意味着基准极具挑战但也可能缺乏渐进可优化空间，早期改进难以显现。",
+  "跨语言自动翻译可能引入语义偏差，用例正确性依赖翻译器可靠性。",
+  "主要覆盖C/Why3来源，对其他编程语言与更大规模工业代码的覆盖有限。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "程序验证与可靠性主线无实质交点，仅工业基准构建",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

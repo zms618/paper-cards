@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/OPRIDE_Offline Preference-Based Reinforcement Learning via In-Dataset Exploration.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/OPRIDE_Offline Preference-Based Reinforcement Learning via In-Dataset Exploration.pdf",
+ "title": "OPRIDE: Offline Preference-Based Reinforcement Learning via In-Dataset Exploration",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "离线偏好RL通过数据集内探索减少查询，但未解决核心标注依赖问题",
+ "innovations": [
+  "把离线 PbRL 查询低效归因于探索低效与学到奖励的过优化两点",
+  "提出数据集内(in-dataset)探索策略，最大化每次偏好查询的信息量",
+  "提出折扣调度机制缓解奖励函数过优化，并给出算法效率的理论保证"
+ ],
+ "method_framework": "在离线数据集中选最具信息量的轨迹对发起偏好查询(最大化信息量的探索)；用 M 个 reward/Q 集成估计不确定性；再以折扣调度抑制对学到奖励的过优化；用尽量少的人类偏好查询学策略。",
+ "experiment_framework": "在运动控制、操作、导航任务上评测；对比离线 PbRL 方法；报告达到同等性能所需的偏好查询数与最终性能。",
+ "takeaways": [
+  "在数据集内原则性选查询对象可显著提升偏好查询效率",
+  "折扣调度能缓解学到奖励的过优化问题",
+  "OPRIDE 以更少查询达到并超过此前方法"
+ ],
+ "weaknesses": [
+  "仍需人类偏好标注，未触及无反馈场景",
+  "验证为仿真运动/操作/导航，未扩展到 LLM 偏好对齐(RLHF)",
+  "偏离可靠性/医学影像/多模态推理主线，相关性低"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.75,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "离线偏好RL方法未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

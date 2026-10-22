@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Orion Decoupling and Alignment for Unified Autoregressive Understanding and Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Orion Decoupling and Alignment for Unified Autoregressive Understanding and Generation.pdf",
+ "title": "ORION: Decoupling and Alignment for Unified Autoregressive Understanding and Generation",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "解耦视觉头+表征损失缓解自回归模型语义冲突，但架构不纯且生成质量有限",
+ "innovations": [
+  "形式化统一自回归MLLM中的语义-结构冲突问题：生成任务的低层重构目标导致高层语义理解能力灾难性遗忘",
+  "提出非线性视觉头解耦策略，将结构重建压力从共享表征中分离，保护理解能力",
+  "设计表征一致性损失（Representation Consistency Loss），在生成过程中显式对齐语义，配合渐进式训练方案实现双能力平衡优化"
+ ],
+ "method_framework": "ORION基于单体自回归骨干网络，不引入任务专属独立参数。(1)解耦：通过非线性视觉头将视觉token的结构重建压力从共享语言模型表征中分离，避免生成损失污染语义空间。(2)对齐：表征一致性损失强制生成过程中的中间表征保持与理解任务一致的语义结构。(3)训练策略：渐进式多模态数据训练，从纯文本理解过渡到图文交错生成。",
+ "experiment_framework": "在多个理解基准（VQA、图文检索等）和生成基准（图像生成质量、文本到图像等）上测试，对比Emu、Chameleon等统一自回归模型以及级联/并行架构模型。指标涵盖理解准确率和生成FID/CLIPScore等。",
+ "takeaways": [
+  "单体自回归架构可以通过解耦+对齐策略实现理解与生成的平衡优化，性能匹敌甚至超越更复杂的级联/并行架构",
+  "非线性视觉头解耦有效缓解了生成微调导致的理解能力灾难性遗忘",
+  "表征一致性损失在生成过程中保持语义对齐，是统一模型性能的关键"
+ ],
+ "weaknesses": [
+  "虽然声称无任务专属参数，但非线性视觉头实质上是额外的视觉专用模块，与纯单体架构的理想仍有差距",
+  "图像生成质量与专用扩散模型仍有明显差距，自回归生成的固有局限未解决",
+  "实验主要在英文图文数据上验证，多语言和复杂场景的通用性未充分展示"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.35,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "统一自回归模型架构设计有方法价值，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

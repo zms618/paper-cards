@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Quantized Visual Geometry Grounded Transformer.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Quantized Visual Geometry Grounded Transformer.pdf",
+ "title": "Quantized Visual Geometry Grounded Transformer (QuantVGGT)",
+ "scores": {
+  "novelty": 6,
+  "depth": 6.5,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.5
+ },
+ "one_line": "VGGT后量化方案，解决重尾与多视图校准问题",
+ "innovations": [
+  "首次系统刻画billion级VGGT的PTQ难点：数据无关特殊token造成重尾激活分布、多视图使校准样本选择不稳定",
+  "提出双平滑细粒度量化：预全局Hadamard旋转+后局部通道平滑，鲁棒缓解重尾与通道间方差",
+  "提出噪声过滤多样采样：用深层统计过滤离群样本并构建帧感知多样校准簇，稳定量化范围"
+ ],
+ "method_framework": "对VGGT做PTQ：Hadamard旋转打散重尾、局部通道平滑降低量化误差；校准阶段过滤离群、按帧构建多样簇以覆盖多视图分布，从而在低比特下稳定重建精度。",
+ "experiment_framework": "在3D重建多基准、不同比特宽度上评测；对比通用SOTA量化方法；报告W4A4下的真实硬件显存压缩、加速比与相对全精度的重建精度保持率。",
+ "takeaways": [
+  "4-bit QuantVGGT保持全精度98%以上重建精度，同时获3.7×显存缩减与2.5×真实硬件加速",
+  "在多基准与多比特宽度上大幅超过此前通用SOTA量化方法",
+  "VGGT类模型的量化必须同时处理重尾激活与多视图校准漂移"
+ ],
+ "weaknesses": [
+  "属模型压缩/PTQ方向，与可靠性、不确定性、验证器主线关联弱",
+  "针对特定VGGT架构设计，迁移到一般多视图几何模型的通用性需验证",
+  "校准仍需代表性图像序列，极端视角/分布外数据下的量化鲁棒性未充分"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.95,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4,
+ "relevance_reason": "模型压缩工作，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

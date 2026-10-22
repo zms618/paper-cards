@@ -1,0 +1,40 @@
+{
+ "key": "cvpr2026/Tell Model Where to Look Mitigating Hallucinations in MLLMs by.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Tell Model Where to Look Mitigating Hallucinations in MLLMs by.pdf",
+ "title": "Tell Model Where to Look Mitigating Hallucinations in MLLMs by",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.5
+ },
+ "one_line": "VGA利用视觉置信度引导注意力减少MLLM幻觉，但依赖NLP工具且小型物体定位不足",
+ "innovations": [
+  "视觉语义置信度(VSC)机制",
+  "视觉引导注意力(VGA)方法",
+  "动态视觉引导(PVG)机制"
+ ],
+ "method_framework": "VGA通过VSC从视觉token中提取语义信息构建视觉定位，引导模型关注相关视觉区域，无需额外前向传播，兼容FlashAttention。",
+ "experiment_framework": "POPE(VQA)、CHAIR(图像描述)、AMBER(混合)基准测试，与PAI、VAF、TARAC等方法对比，使用准确率、F1等指标。",
+ "takeaways": [
+  "利用模型内部语义信息构建视觉引导",
+  "动态调整视觉引导以适应生成过程",
+  "注意力头平衡策略保护模型固有视觉能力"
+ ],
+ "weaknesses": [
+  "依赖NLP工具提取对象，可能引入额外错误",
+  "VSC对小型物体的定位能力仍有提升空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "视觉引导注意力减少MLLM幻觉，触及可靠性主线与多模态落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

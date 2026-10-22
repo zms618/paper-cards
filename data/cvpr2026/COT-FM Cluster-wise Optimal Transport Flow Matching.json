@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/COT-FM Cluster-wise Optimal Transport Flow Matching.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/COT-FM Cluster-wise Optimal Transport Flow Matching.pdf",
+ "title": "COT-FM Cluster-wise Optimal Transport Flow Matching",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "聚类最优传输改进流匹配，但计算复杂且依赖聚类质量",
+ "innovations": [
+  "聚类级最优传输策略",
+  "从预训练模型反向获取源分布",
+  "分而治之的传输路径优化"
+ ],
+ "method_framework": "COT-FM通过聚类目标样本，为每个聚类分配专用源分布，并在聚类内近似最优传输，交替优化目标向量和流匹配模型",
+ "experiment_framework": "2D数据集/CIFAR-10/ImageNet/LIBERO，对比Rectified Flow/OT-CFM/MeanFlow，使用Wasserstein距离/曲率/FID/成功率指标",
+ "takeaways": [
+  "聚类策略可有效提升流匹配质量",
+  "直的传输路径对低步数生成至关重要",
+  "方法可作为即插即用模块提升现有模型"
+ ],
+ "weaknesses": [
+  "聚类质量对性能有显著影响",
+  "计算复杂度随聚类数量增加",
+  "未探索动态聚类场景"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.6,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "流匹配方法改进，但未触及可靠性主线或落地域",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

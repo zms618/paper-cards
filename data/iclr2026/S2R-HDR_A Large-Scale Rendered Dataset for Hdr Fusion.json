@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/S2R-HDR_A Large-Scale Rendered Dataset for Hdr Fusion.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/S2R-HDR_A Large-Scale Rendered Dataset for Hdr Fusion.pdf",
+ "title": "S2R-HDR: A Large-Scale Rendered Dataset for HDR Fusion",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 6,
+  "relevance": 4.0,
+  "overall": 5.3
+ },
+ "one_line": "构建大规模合成HDR数据集，用域适配提升泛化，但与主线关联弱。",
+ "innovations": [
+  "构建首个面向 HDR 融合的大规模合成数据集 S2R-HDR，含 2.4 万 HDR 样本，覆盖多种动态元素、运动类型与高动态范围光照。",
+  "开发基于 Unreal Engine 5 的高效渲染管线，生成逼真的多曝光序列与真值 HDR，解决动态场景采集难问题。",
+  "提出 S2R-Adapter 域适配模块，弥合合成数据与真实世界数据的域差，提升模型泛化。"
+ ],
+ "method_framework": "用 UE5 设计多样化逼真 HDR 场景并通过高效渲染管线产出多曝光 LDR 与对应真值 HDR；训练时加入 S2R-Adapter 做域适配，把合成数据上学到的 HDR 融合(尤其大运动鬼影、直射阳光等极端场景)迁移到真实数据，提升泛化。",
+ "experiment_framework": "在真实 HDR 融合数据集上评测，对比在 SCT(2023)、Challenge123(仅 123 样本)等小数据集上训练的模型；报告 PSNR/SSIM 等指标与大运动鬼影、直射阳光等困难场景的视觉效果，S2R-HDR+S2R-Adapter 达 SOTA。",
+ "takeaways": [
+  "现有真实 HDR 数据集规模极小(最新仅 123 样本)，是模型过拟合与泛化差的主因。",
+  "大规模渲染合成数据可显著改善 HDR 融合在大运动、极端动态范围场景的表现。",
+  "域适配模块对桥接合成-真实域差、把合成训练迁移到真实评测至关重要。"
+ ],
+ "weaknesses": [
+  "合成渲染与真实相机噪声/镜头畸变间的域差仍需 S2R-Adapter 补救，像素级逼真度局限未量化。",
+  "实验以计算摄影指标为主，缺乏对下游视觉感知/自动驾驶等任务影响的评估。",
+  "属图像增强数据集方向，与视觉可靠性/医学影像/多模态推理主线关联弱。"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.08,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 5,
+ "relevance_reason": "图像增强数据集，与可靠性主线关联弱",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

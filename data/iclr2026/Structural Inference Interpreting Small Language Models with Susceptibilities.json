@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Structural Inference Interpreting Small Language Models with Susceptibilities.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Structural Inference Interpreting Small Language Models with Susceptibilities.pdf",
+ "title": "Structural Inference: Interpreting Small Language Models with Susceptibilities",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 7.0,
+  "evidence": 5.5,
+  "relevance": 7.5,
+  "overall": 6.7
+ },
+ "one_line": "统计物理框架量化小模型组件敏感度，但大模型适用性存疑",
+ "innovations": [
+  "提出将神经网络视为贝叶斯统计力学系统，用易感性(susceptibility)量化组件对数据分布微扰的一阶线性响应，建立数据结构与模型内部的 principled 联系",
+  "易感性可通过局部SGLD采样高效估计，且分解为带符号的per-token贡献作为归因分数",
+  "构建响应矩阵并利用其低秩结构，自动分离已知功能模块（如多语法头、归纳头），实现结构推断"
+ ],
+ "method_framework": "将模型-真值-先验三元组放入贝叶斯框架，定义退火后验。对数据分布施加微扰（如将Pile向GitHub或法律文本偏移h），计算网络组件可观测量的后验期望对h的一阶导数，即易感性。易感性通过局部SGLD采样估计后验期望并微分。将不同数据偏移下各组件的易感性排列成响应矩阵，对其做低秩分解以发现功能模块。",
+ "experiment_framework": "在3M参数的小型Transformer（在Pile上训练）上验证。施加多种数据分布微扰（不同领域文本偏移），测量各注意力头的易感性。对比已知的功能电路（归纳电路、多语法头）验证结构推断的正确性。",
+ "takeaways": [
+  "统计物理的线性响应理论可以为神经网络可解释性提供严格的数学框架，将数据分布变化与内部组件响应定量关联",
+  "易感性的低秩响应矩阵能自动分离已知功能模块（归纳头、多语法头），无需人工指定即可发现组织结构",
+  "per-token符号贡献提供了细粒度归因，可定位哪些token驱动了特定组件的响应变化"
+ ],
+ "weaknesses": [
+  "仅在3M参数的极小模型上验证，对现代大模型（7B+）的计算可行性和有效性未证明",
+  "局部SGLD采样需要多次后验采样，计算成本在大模型上可能过高",
+  "前9页未展示完整的响应矩阵低秩分析结果，模块分离的定量效果不明确"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.9,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.0,
+ "relevance_reason": "统计物理框架量化模型组件敏感度，可迁移到可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

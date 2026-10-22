@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/DropoutA_Activation by Interval-wise DropoutA Simple Way to Prevent Neural Networks from Plasticity Loss.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/DropoutA_Activation by Interval-wise DropoutA Simple Way to Prevent Neural Networks from Plasticity Loss.pdf",
+ "title": "Activation by Interval-wise Dropout: A Simple Way to Prevent Neural Networks from Plasticity Loss",
+ "scores": {
+  "novelty": 5,
+  "depth": 6,
+  "evidence": 5.5,
+  "relevance": 4,
+  "overall": 5.1
+ },
+ "one_line": "区间式Dropout正则网络趋近线性，缓解持续学习中的可塑性损失。",
+ "innovations": [
+  "提出区间式Dropout：对预激活正值以1-p、负值以p的不同概率丢弃，生成子网络",
+  "利用负向预激活并将网络行为正则化向深层线性网络，而后者不发生可塑性损失",
+  "理论分析AID如何正则化缓解可塑性损失，并在持续学习与RL上验证"
+ ],
+ "method_framework": "将标准激活替换为区间式Dropout：按预激活符号区间施加互补的丢弃概率，使负向信号得以利用、整体非线性被温和正则，从而网络行为趋近深层线性网络；因深层线性网络不存在可塑性损失，该正则在持续/非平稳训练中保持对新任务的适应能力。",
+ "experiment_framework": "在CIFAR10/100、TinyImageNet的持续学习设定与Atari强化学习基准上评测保持可塑性/新任务学习能力，与标准Dropout及其他抗可塑性损失方法对比。",
+ "takeaways": [
+  "区间式丢弃把正则引向深层线性网络行为，可缓解可塑性损失",
+  "利用负向预激活(而非ReLU直接截断)对保持可塑性有益",
+  "该技巧在图像持续学习与Atari RL上均能提升后续学习能力"
+ ],
+ "weaknesses": [
+  "与主线（可信AI核心/医学影像/多模态大模型推理）关联弱，属持续学习正则技巧",
+  "AID在大模型/现代架构上是否仍有效未在前9页展示",
+  "丢弃率p的选择及其对最终性能的副作用需完整消融佐证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.85,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

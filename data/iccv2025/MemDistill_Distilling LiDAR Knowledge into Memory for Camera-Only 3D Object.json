@@ -1,0 +1,40 @@
+{
+ "key": "iccv2025/MemDistill_Distilling LiDAR Knowledge into Memory for Camera-Only 3D Object.pdf",
+ "conf": "iccv2025",
+ "path": "iccv2025/MemDistill_Distilling LiDAR Knowledge into Memory for Camera-Only 3D Object.pdf",
+ "title": "MemDistill Distilling LiDAR Knowledge into Memory for Camera-Only 3D Object",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.0,
+  "overall": 6.2
+ },
+ "one_line": "记忆模块与场景检索机制将LiDAR知识蒸馏到纯相机3D检测",
+ "innovations": [
+  "引入专用记忆单元存储和检索3D LiDAR特征",
+  "场景依赖的记忆检索机制",
+  "两阶段训练策略（记忆蒸馏+学生微调）"
+ ],
+ "method_framework": "结合相机和LiDAR检测器组件，通过记忆模块存储LiDAR特征，使用基于场景的检索器提取相关3D特征，与相机特征融合增强3D检测能力。",
+ "experiment_framework": "nuScenes数据集，mAP和NDS指标，与BEVDepth等基线及UniDistill等KD方法比较，消融研究验证各组件有效性。",
+ "takeaways": [
+  "两阶段训练策略优于端到端训练",
+  "结合LiDAR检测器的颈部和头部有助于特征对齐",
+  "场景相关检索机制能有效利用记忆中的3D信息"
+ ],
+ "weaknesses": [
+  "记忆模块大小固定(160K)，可能无法适应所有场景复杂度",
+  "未充分探讨不同场景类型下的检索效果差异"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.5,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "多模态知识蒸馏，与可靠性主线无实质交织",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,40 @@
+{
+ "key": "iclr2026/Self-Destructive Language Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Self-Destructive Language Models.pdf",
+ "title": "Self-Destructive Language Models (SEAM)",
+ "scores": {
+  "novelty": 7.5,
+  "depth": 6.5,
+  "evidence": 6.0,
+  "relevance": 8.0,
+  "overall": 7.1
+ },
+ "one_line": "SEAM使LLM对有害微调自毁，合法能力保留但攻击后整体崩溃。",
+ "innovations": [
+  "指出现有对齐防御只提高有害微调成本、未触及模型对有害数据的内在'可训练性'，故易被更高学习率/更多有害数据攻破。",
+  "提出新损失耦合benign与harmful数据的优化轨迹，并辅以对抗梯度上升放大自毁效应。",
+  "为实用训练提出带理论误差界的高效Hessian-free梯度估计，实现低强度攻击SOTA鲁棒、高强度攻击下灾难性崩溃的'no-win'局面。"
+ ],
+ "method_framework": "在对齐训练阶段，用耦合benign/harmful优化轨迹的损失+对抗梯度上升，使模型在合法任务上保持能力，但参数对有害数据微调高度敏感；攻击者用少量有害样本微调即触发整体性能崩溃（而非仅仅恢复有害能力），从而失去攻击收益。",
+ "experiment_framework": "跨多个LLM与有害微调数据集评测；对比unlearning、对抗训练、元学习等对齐阶段防御；指标为有害微调攻击后的对齐鲁棒性（拒绝率）与合法能力保留；覆盖不同攻击强度（学习率/有害样本量）。",
+ "takeaways": [
+  "将防御从'提高攻击成本'转为'让模型对有害微调自毁'，可形成攻击者no-win局面。",
+  "高强度攻击下模型灾难性崩溃使其对攻击者失去价值，是区别于传统加固的新防御范式。"
+ ],
+ "weaknesses": [
+  "'自毁'意味着模型被攻击后整体不可用，可用性与安全性的权衡在部署中需谨慎。",
+  "Hessian-free梯度估计的近似误差在大模型上的实际紧度需更多实证。",
+  "前9页未展示对最新最强攻击的完整对比表，跨模型规模泛化需后续确认。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 7.15,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8.0,
+ "relevance_reason": "可靠性主线×LLM安全，自毁防御范式创新",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

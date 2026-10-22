@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Tail-Optimized Caching for LLM Inference.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Tail-Optimized Caching for LLM Inference.pdf",
+ "title": "Tail-Optimized Caching for LLM Inference",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 7.0,
+  "relevance": 8.0,
+  "overall": 6.9
+ },
+ "one_line": "简单LRU修改优化LLM尾部延迟，理论证明但假设局限明显。",
+ "innovations": [
+  "提出Tail-Optimized LRU算法，仅需两行代码修改LRU",
+  "首次为LLM缓存策略提供理论最优性证明",
+  "引入Tail Excess Latency(TEL)作为尾部延迟的实用代理指标"
+ ],
+ "method_framework": "基于对话历史长度和预估下一提示长度，计算TEL安全预算，优先超出预算的缓存块，剩余空间使用LRU策略。",
+ "experiment_framework": "WildChat和ShareGPT数据集，比较LRU和Threshold-LRU，测量P90/P95/P99延迟和SLO违规率。",
+ "takeaways": [
+  "简单算法修改可显著改善尾部延迟",
+  "理论证明为LLM缓存策略提供了新视角",
+  "阈值ξs的选择应与目标尾部百分位匹配"
+ ],
+ "weaknesses": [
+  "假设TTFT与未缓存块数呈线性关系，可能不适用于所有场景",
+  "下一提示长度估计使用固定平均值，可能不够精确",
+  "未考虑跨对话缓存共享的安全和隐私问题"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,42 @@
+{
+ "key": "cvpr2026/Erasing Thousands of Concepts Towards Scalable and Practical Concept Erasure.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Erasing Thousands of Concepts Towards Scalable and Practical Concept Erasure.pdf",
+ "title": "Erasing Thousands of Concepts Towards Scalable and Practical Concept Erasure",
+ "scores": {
+  "novelty": 7,
+  "depth": 7,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.9
+ },
+ "one_line": "tMM建模与MoEraser模块实现大规模概念擦除，但计算复杂度高",
+ "innovations": [
+  "Student's t-distribution Mixture Model (tMM)建模概念分布",
+  "锚点概念无关的精准擦除方法",
+  "基于Mixture-of-Experts的MoEraser模块",
+  "Noise Injection-Restore (NIR)调优策略增强鲁棒性"
+ ],
+ "method_framework": "ETC框架分两阶段：1)用tMM建模概念分布，通过仿射最优传输(AOT)映射目标概念；2)训练MoEraser模块将目标嵌入映射为替代嵌入，同时保留锚点嵌入，并通过NIR增强鲁棒性。",
+ "experiment_framework": "在SDv1.4和SDv3.5-L上评估，擦除2072个跨域概念(名人、角色、艺术风格)，使用用户研究评估概念保留率(CRS)和质量分数(QS)，调和均值H0综合评估。",
+ "takeaways": [
+  "概念分布建模可有效实现大规模精准擦除",
+  "MoE架构结合NIR策略可增强模块鲁棒性",
+  "锚点概念无关设计简化了大规模概念擦除"
+ ],
+ "weaknesses": [
+  "计算复杂度随擦除概念数量增加",
+  "用户研究评估可能存在主观偏差",
+  "未充分探索不同扩散模型的泛化能力"
+ ],
+ "confidence": "high",
+ "raw_overall": 8.5,
+ "tier": "A",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 8,
+ "relevance_reason": "概念擦除与可靠性主线相关，但计算复杂度高限制实用性",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

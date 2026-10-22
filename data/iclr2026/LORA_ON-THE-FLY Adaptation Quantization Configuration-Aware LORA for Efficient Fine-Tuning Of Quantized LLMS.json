@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/LORA_ON-THE-FLY Adaptation Quantization Configuration-Aware LORA for Efficient Fine-Tuning Of Quantized LLMS.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/LORA_ON-THE-FLY Adaptation Quantization Configuration-Aware LORA for Efficient Fine-Tuning Of Quantized LLMS.pdf",
+ "title": "ON-THE-FLY Adaptation Quantization: CONFIGURATION-AWARE LORA for Efficient FINE-TUNING Of Quantized LLMS",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 6.0,
+  "overall": 6.0
+ },
+ "one_line": "配置感知LORA微调量化LLM，避免重复训练但计算开销大",
+ "innovations": [
+  "配置感知的LORA调整模型",
+  "基于Pareto的量化配置搜索",
+  "并行层调整机制"
+ ],
+ "method_framework": "CoA-LoRA包含配置感知LORA调整和量化配置搜索两部分，通过轻量级映射将配置转换为低秩调整矩阵，并使用Pareto优化选择高质量配置集。",
+ "experiment_framework": "在C4和GLUE任务上评估，使用RoBERTa-Large和Qwen模型，比较QLoRA、LQ-LoRA等基线，指标包括准确率、困惑度和超体积(HV)。",
+ "takeaways": [
+  "配置映射到轻量级调整矩阵而非完整参数",
+  "Pareto优化配置集选择",
+  "并行层调整降低维度"
+ ],
+ "weaknesses": [
+  "配置搜索计算开销仍较大",
+  "未探索极端低比特宽度场景",
+  "方法依赖特定量化方案(NF)"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "量化LLM微调方法，可靠性主线边缘但无落地域交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

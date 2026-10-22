@@ -1,0 +1,39 @@
+{
+ "key": "iclr2026/Scaling Group Inference for Diverse and High-Resolution Generation.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Scaling Group Inference for Diverse and High-Resolution Generation.pdf",
+ "title": "Scaling Group Inference for Diverse and High-Resolution Generation",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 6.0,
+  "relevance": 4.5,
+  "overall": 5.4
+ },
+ "one_line": "将多输出生生建模为二次整数规划，用渐进剪枝降低计算复杂度。",
+ "innovations": [
+  "首次将多输出生成从独立采样重构为内聚的群体(group)推断，并形式化为二次整数规划(QIP)，联合优化单样本质量与群体多样性。",
+  "提出基于去噪中间预测的渐进剪枝选择策略，利用中间步作为最终图预览，迭代剔除候选，把复杂度从O(MT)降至O(M+KT)(K<<M)。",
+  "框架跨任务泛化：文生图、图生图、image prompting统一适用，在同算力下比独立采样/近期推理算法得到更多样且高质量的成组输出。"
+ ],
+ "method_framework": "采样M个候选并跑去噪；在中间步用其预测作为最终图预览逐步剪枝候选集，保留K个；最后对保留候选完整去噪，并用QIP(一元质量项+二元多样性项)选出最终K个最优且多样的输出。",
+ "experiment_framework": "在文生图、图生图、image prompting任务上对比独立采样与近期推理时缩放算法，度量群体多样性与单图质量；系统消融渐进剪枝、QIP各项设计；报告M=128、T=20等设置下的效率。",
+ "takeaways": [
+  "将成组输出视为整体联合优化，比独立i.i.d采样显著减少冗余、提升多样性与质量。",
+  "渐进剪枝使大规模候选集群体推断在计算上可行，同预算下产出更多样真实的结果。"
+ ],
+ "weaknesses": [
+  "属图像生成/推理时采样方向，与可靠性×医学影像/多模态推理主线关联弱。",
+  "QIP选择依赖单图质量打分与多样性度量的可靠性，其在复杂多对象/对齐场景下的偏差未深入分析。"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.15,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 4.0,
+ "relevance_reason": "图像生成采样方法，与可靠性主线关联弱但可借鉴设计模式",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

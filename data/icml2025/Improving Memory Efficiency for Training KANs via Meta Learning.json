@@ -1,0 +1,37 @@
+{
+ "key": "icml2025/Improving Memory Efficiency for Training KANs via Meta Learning.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Improving Memory Efficiency for Training KANs via Meta Learning.pdf",
+ "title": "Improving Memory Efficiency for Training KANs via Meta Learning",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 6,
+  "overall": 5.6
+ },
+ "one_line": "MetaKANs用元学习器压缩KAN参数，中小任务有效，大规模扩展性存疑",
+ "innovations": [
+  "用小型meta-learner生成KAN边激活的权重，替代直接存储大量spline参数",
+  "KAN与meta-learner端到端可微训练，在保持可解释性的同时显著压缩参数量",
+  "在符号回归、PDE求解、图像分类上证明参数与显存效率提升"
+ ],
+ "method_framework": "不再为每条边直接优化spline系数，而是训练一个较小的meta-learner网络，输入边/节点信息输出该边的一元函数参数；KAN主体与meta-learner联合端到端反传，从而把大参数KAN压缩为小meta-learner。",
+ "experiment_framework": "在符号回归、偏微分方程求解与图像分类基准上与原始KAN及MLP对比；指标为任务精度、可训练参数量与显存占用。",
+ "takeaways": [
+  "MetaKANs以显著更少参数达到可比甚至更优性能",
+  "meta-learner生成权重的方式缩小了KAN与MLP的训练成本差距",
+  "方法保持了KAN的可解释性优势"
+ ],
+ "weaknesses": [
+  "meta-learner引入额外结构，是否真正减少端到端推理计算量未充分分析",
+  "实验以中小规模任务为主，对大规模视觉/语言任务的可扩展性待验证",
+  "可解释性在权重被meta-learner隐式生成后是否仍保留未充分论证"
+ ],
+ "confidence": "medium",
+ "raw_overall": 5.7,
+ "tier": "C",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

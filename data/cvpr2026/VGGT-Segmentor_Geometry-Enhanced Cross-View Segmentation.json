@@ -1,0 +1,41 @@
+{
+ "key": "cvpr2026/VGGT-Segmentor_Geometry-Enhanced Cross-View Segmentation.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/VGGT-Segmentor_Geometry-Enhanced Cross-View Segmentation.pdf",
+ "title": "VGGT-Segmentor Geometry-Enhanced Cross-View Segmentation",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 6.5,
+  "overall": 6.4
+ },
+ "one_line": "几何增强跨视图分割头，自监督训练减少标注依赖",
+ "innovations": [
+  "Union Segmentation Head三阶段设计",
+  "单图像自监督训练策略",
+  "几何约束减少跨视图匹配歧义"
+ ],
+ "method_framework": "基于VGGT编码器，结合Union Segmentation Head，通过mask提示融合、点引导预测和mask迭代 refinement实现跨视图分割",
+ "experiment_framework": "Ego-Exo4D基准测试，IoU指标，与DOMR、ObjectRelator等方法对比，包含零样本和微调实验",
+ "takeaways": [
+  "几何约束对跨视图目标对应至关重要",
+  "自监督训练减少对配对标注的依赖",
+  "轻量级分割头设计保持效率"
+ ],
+ "weaknesses": [
+  "推理时间较长(161.4ms)",
+  "高分辨率输入导致内存问题",
+  "仅依赖图像特征未利用时序信息"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.95,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "跨视图分割属于多模态落地域，但未触及可靠性主线",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

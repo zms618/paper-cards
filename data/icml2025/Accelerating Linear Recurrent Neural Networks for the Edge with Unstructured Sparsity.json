@@ -1,0 +1,41 @@
+{
+ "title": "Accelerating Linear Recurrent Neural Networks for the Edge with Unstructured Sparsity",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.6
+ },
+ "one_line": "稀疏线性RNN在神经形态芯片上实现高效音频处理，但硬件依赖性强",
+ "innovations": [
+  "系统刻画线性 RNN 在不同推理算力预算下稀疏度与精度的帕累托前沿",
+  "证明高稀疏线性 RNN 在等精度下比稠密基线省 2× 算力、36% 内存，并在流式音频去噪任务上达 SOTA",
+  "将稀疏模型量化为定点并部署到 Intel Loihi 2，相对边缘 GPU 稠密模型取得 42× 延迟、149× 能耗收益"
+ ],
+ "method_framework": "对线性 RNN 施加非结构化稀疏，配合定点量化与硬件感知优化，在 Loihi 2 神经形态芯片上落地流式序列建模；沿推理算力预算扫描稀疏度，找到精度-效率最优折衷。",
+ "experiment_framework": "在流式音频去噪任务上对比稠密/稀疏线性 RNN 的精度、算力、内存；报告 Loihi 2 相对边缘 GPU 的延迟与能耗实测，给出帕累托前沿。",
+ "takeaways": [
+  "非结构化稀疏在线性 RNN 上能稳定获得优于稠密模型的精度-效率折衷",
+  "稀疏+定点+神经形态硬件可把压缩收益转化为数量级的延迟/能耗下降",
+  "线性 RNN 的常数记忆/线性时间特性使其适合资源受限的流式边缘部署"
+ ],
+ "weaknesses": [
+  "非结构化稀疏收益依赖兼容硬件，通用 GPU/CPU 上能否兑现存疑",
+  "实验聚焦音频去噪，语言/基因组等其他线性 RNN 应用的泛化未充分覆盖",
+  "前 9 页未见稀疏训练配方/剪枝敏感性的系统消融"
+ ],
+ "confidence": "medium",
+ "key": "icml2025/Accelerating Linear Recurrent Neural Networks for the Edge with Unstructured Sparsity.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/Accelerating Linear Recurrent Neural Networks for the Edge with Unstructured Sparsity.pdf",
+ "raw_overall": 6.2,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "边缘硬件优化与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

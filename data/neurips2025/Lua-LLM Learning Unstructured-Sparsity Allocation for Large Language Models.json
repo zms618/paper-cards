@@ -1,0 +1,37 @@
+{
+ "key": "neurips2025/Lua-LLM Learning Unstructured-Sparsity Allocation for Large Language Models.pdf",
+ "conf": "neurips2025",
+ "path": "neurips2025/Lua-LLM Learning Unstructured-Sparsity Allocation for Large Language Models.pdf",
+ "title": "Lua-LLM: Learning Unstructured-Sparsity Allocation for Large Language Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 6.5,
+  "relevance": 7.0,
+  "overall": 6.5
+ },
+ "one_line": "行级自适应稀疏分配提升高稀疏率LLM性能，但粒度与泛化有限",
+ "innovations": [
+  "行级自适应稀疏分配策略",
+  "软Top-K算子实现可学习的二值掩码",
+  "端到端优化整体模型性能而非局部层"
+ ],
+ "method_framework": "基于Wanda重要性指标，将全局剪枝问题分解为行级子问题，通过Sigmoid函数近似Top-K选择，实现可学习的行级阈值参数优化",
+ "experiment_framework": "LLaMA和OPT系列模型，WikiText2困惑度，7个下游任务零样本准确率，50%-80%稀疏率",
+ "takeaways": [
+  "行级稀疏分配优于均匀分配",
+  "高稀疏率下重要性分布不均衡问题",
+  "软掩码实现高效梯度优化"
+ ],
+ "weaknesses": [
+  "仅关注行级稀疏分配，未探索更细粒度元素级分配",
+  "未验证方法在不同架构模型上的泛化能力",
+  "计算效率虽优于DSA但仍有优化空间"
+ ],
+ "confidence": "high",
+ "raw_overall": 7.3,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/TEMPFLOW-GRPO_when Timing Matters GRPO In Flow Models.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/TEMPFLOW-GRPO_when Timing Matters GRPO In Flow Models.pdf",
+ "title": "TempFlow-GRPO: When Timing Matters for GRPO in Flow Models",
+ "scores": {
+  "novelty": 6.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 5.5,
+  "overall": 5.9
+ },
+ "one_line": "时序感知GRPO框架，通过轨迹分支和噪声加权提升流模型RL训练效率",
+ "innovations": [
+  "提出轨迹分支机制，在指定分支点集中引入随机性，实现精确的过程信用分配，无需训练中间奖励模型",
+  "设计噪声感知加权方案，根据每个时间步的内在探索潜力调节策略优化权重，优先学习高影响早期阶段",
+  "提出种子组策略控制初始化效应，隔离探索贡献，提高GRPO训练的稳定性和效率"
+ ],
+ "method_framework": "TempFlow-GRPO观察到流模型生成中不同时间步对最终结果的影响差异巨大（早期结构决策步探索潜力高，后期精修步接近确定性）。轨迹分支机制在关键时间步引入随机性，使奖励差异可归因于特定步骤。噪声感知加权根据各步的探索方差调制优化权重。种子组策略共享相同初始化但不同探索路径，控制初始化偏差。",
+ "experiment_framework": "在FLUX.1-dev等流匹配文生图模型上评估；基线包括Flow-GRPO、DanceGRPO等扩散RL方法；指标包括人类偏好对齐分数和标准文生图基准（如DPG-Bench等）。",
+ "takeaways": [
+  "流模型生成中不同时间步的探索潜力差异显著，统一处理会浪费高影响步骤的学习机会",
+  "轨迹分支机制可在不训练过程奖励模型的情况下实现过程级信用分配",
+  "时序感知优化显著提升了流模型RL对齐的效率和最终性能"
+ ],
+ "weaknesses": [
+  "轨迹分支点的选择需要启发式设定，缺乏自适应确定最佳分支位置的方法",
+  "实验主要在文生图模型上验证，视频生成和其他生成任务的适用性未探讨",
+  "种子组策略增加了采样数量，训练成本的权衡分析不够充分"
+ ],
+ "confidence": "high",
+ "raw_overall": 5.85,
+ "tier": "B",
+ "rescore_confidence": "medium",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7.0,
+ "relevance_reason": "时序优化方法与可靠性主线无实质交点，仅属常规RL改进",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

@@ -1,0 +1,41 @@
+{
+ "key": "iclr2026/Beyond Simple Graphs Neural Multi-Objective Routing On Multigraphs.pdf",
+ "conf": "iclr2026",
+ "path": "iclr2026/Beyond Simple Graphs Neural Multi-Objective Routing On Multigraphs.pdf",
+ "title": "Beyond Simple Graphs: Neural MULTI-OBJECTIVE Routing On Multigraphs",
+ "scores": {
+  "novelty": 5.5,
+  "depth": 6.0,
+  "evidence": 5.5,
+  "relevance": 4.5,
+  "overall": 5.3
+ },
+ "one_line": "多图神经路由求解器，双架构设计但计算复杂度高",
+ "innovations": [
+  "首个专门设计用于多图结构的神经求解器",
+  "双任务模型先修剪多图再进行自回归路由",
+  "边基模型直接在多图上进行自回归选择"
+ ],
+ "method_framework": "基于GNN的多图求解器(GMS)，包含边基模型(GMS-EB)和双头模型(GMS-DH)，前者直接在多图上自回归选择边，后者先修剪多图再进行路由选择。",
+ "experiment_framework": "在MOTSP、MOCVRP及其多图变体上测试，对比LKH3、Google OR-tools、HGS等启发式算法和MOEAs，使用超体积(HV)指标评估。",
+ "takeaways": [
+  "多图表示能显著提升路由问题解决方案质量",
+  "双头模型在保持性能的同时提高了可扩展性",
+  "显式设计多图结构比预修剪策略更有效"
+ ],
+ "weaknesses": [
+  "边基模型计算复杂度高，O(MN^4)复杂度",
+  "双头模型中边选择无法依赖部分路径上下文",
+  "实验未充分验证在真实世界数据上的泛化能力"
+ ],
+ "confidence": "medium",
+ "raw_overall": 6.8,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 6.5,
+ "relevance_reason": "图算法与可靠性主线无交点，仅常规优化问题",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}

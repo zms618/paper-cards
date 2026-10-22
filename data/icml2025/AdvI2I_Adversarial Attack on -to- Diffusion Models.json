@@ -1,0 +1,41 @@
+{
+ "key": "icml2025/AdvI2I_Adversarial Attack on -to- Diffusion Models.pdf",
+ "conf": "icml2025",
+ "path": "icml2025/AdvI2I_Adversarial Attack on -to- Diffusion Models.pdf",
+ "title": "AdvI2I: Adversarial Image Attack on Image-to-Image Diffusion Models",
+ "scores": {
+  "novelty": 6,
+  "depth": 5.5,
+  "evidence": 5,
+  "relevance": 4.5,
+  "overall": 5.2
+ },
+ "one_line": "通过对抗图像绕过I2I扩散模型文本安全过滤生成NSFW内容",
+ "innovations": [
+  "首次系统研究针对I2I扩散模型的对抗图像攻击：操纵输入图像诱导模型生成NSFW内容，完全绕过文本prompt过滤器",
+  "提出AdvI2I框架：训练生成器 crafting 对抗输入图像，无需修改文本prompt即可绕过Safe Latent Diffusion(SLD)等防御",
+  "提出AdvI2I-Adaptive增强版：自适应应对防御措施，最小化对抗图像与NSFW概念嵌入的相似度，增强鲁棒性"
+ ],
+ "method_framework": "训练一个图像生成器，输入一个安全参考图像和目标prompt，输出经过对抗扰动的输入图像。当该对抗图像被送入I2I扩散模型（搭配安全prompt）时，模型会生成NSFW内容。由于攻击载体是图像而非文本prompt，现有的文本过滤（困惑度过滤、关键词过滤、LLM过滤）完全失效。自适应版本进一步优化嵌入空间距离以逃避基于嵌入的过滤。",
+ "experiment_framework": "目标模型：Stable Diffusion等I2I扩散模型。防御：Safe Latent Diffusion(SLD)、文本过滤（困惑度/关键词/嵌入/LLM过滤）。基线：现有的对抗prompt攻击。指标：攻击成功率(ASR)、对抗图像与自然图像的相似度、防御绕过率。",
+ "takeaways": [
+  "现有扩散模型安全措施主要防御文本prompt攻击，对图像输入攻击几乎无防御",
+  "仅靠文本侧过滤无法保障I2I扩散模型安全，需要图像侧的安全机制",
+  "AdvI2I-Adaptive可有效应对多种自适应防御，说明I2I扩散模型的安全问题比预想更严峻"
+ ],
+ "weaknesses": [
+  "攻击需要白盒访问扩散模型内部（训练生成器需要梯度），黑盒场景下的迁移性未充分验证",
+  "对抗图像的人眼可见性和实际可传播性未讨论（是否需要极不自然的图像）",
+  "防御建议较泛泛，缺乏具体可落地的图像侧安全方案"
+ ],
+ "confidence": "high",
+ "raw_overall": 6.63,
+ "tier": "B",
+ "rescore_confidence": "high",
+ "rescored": true,
+ "rescore_model": "glm-4.5-flash",
+ "raw_relevance": 7,
+ "relevance_reason": "攻击方法研究，与可靠性主线无实质交点",
+ "rescored3": true,
+ "rescore3_model": "glm-4.5-flash"
+}
