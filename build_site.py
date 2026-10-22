@@ -371,6 +371,7 @@ def page(title, body, depth=0, head=''):
         '\n</main>\n'
         f'<footer class="foot">{TOTAL} {esc(t("footer"))}</footer>\n'
         f'<script>{LANG_SWITCH_JS}</script>\n'
+        f'<script src="{pre}assets/reader.js" defer></script>\n'
         '</body>\n</html>\n'
     )
 
@@ -441,18 +442,20 @@ def card_page(c):
 
 TABLE_JS = """
 (function(){
-  var data = JSON.parse(document.getElementById('cards-data').textContent);
+  var dataEl = document.getElementById('cards-data');
   var state = {key:'overall', dir:-1, q:'', conf:'ALL', page:0, size:60};
   var tb = document.getElementById('tbody'), cnt = document.getElementById('cnt');
   var q = document.getElementById('q'), sel = document.getElementById('confSel');
   var pager = document.getElementById('pager');
+  var DATA = null;
   function num(v){ return (v===null||v===undefined)?-1:v; }
   function apply(){
-    var rows = data.filter(function(r){
+    if(!DATA) return;
+    var rows = DATA.filter(function(r){
       if(state.conf!=='ALL' && r.c!==state.conf) return false;
       if(!state.q) return true;
       var qq = state.q.toLowerCase();
-      return (r.t+' '+(r.o||'')).toLowerCase().indexOf(qq)>=0;
+      return ((r.t||'')+' '+(r.o||'')).toLowerCase().indexOf(qq)>=0;
     });
     rows.sort(function(a,b){
       var av=num(a[state.key]), bv=num(b[state.key]);
@@ -462,7 +465,7 @@ TABLE_JS = """
       }
       return (av-bv)*state.dir;
     });
-    cnt.textContent = rows.length + ' 张';
+    cnt.textContent = rows.length + ' ' + PN_I18N.n_cards;
     var pages = Math.max(1, Math.ceil(rows.length/state.size));
     if(state.page>=pages) state.page=pages-1;
     var start = state.page*state.size, end = Math.min(rows.length, start+state.size);
@@ -484,6 +487,17 @@ TABLE_JS = """
   }
   function f(v){ return (v===null||v===undefined||v==='')?'—':(Math.round(v*10)/10).toString(); }
   function esc(s){ var d=document.createElement('div'); d.textContent=s||''; return d.innerHTML; }
+  function boot(){
+    // 优先用外置 JSON（避免把上万条数据内嵌进 HTML），失败则回退到内嵌数据
+    var src = dataEl.getAttribute('data-src');
+    var inline = dataEl.getAttribute('data-inline') === '1';
+    if (src) {
+      fetch(src).then(function(r){ return r.json(); }).then(function(d){ DATA=d; apply(); })
+                .catch(function(){ if(inline){ DATA=JSON.parse(dataEl.textContent); apply(); } });
+    } else {
+      DATA = JSON.parse(dataEl.textContent); apply();
+    }
+  }
   q.addEventListener('input', function(){ state.q=this.value.trim(); state.page=0; apply(); });
   if(sel) sel.addEventListener('change', function(){ state.conf=this.value; state.page=0; apply(); });
   document.querySelectorAll('th[data-k]').forEach(function(th){
@@ -493,13 +507,13 @@ TABLE_JS = """
       state.page=0; apply();
     });
   });
-  apply();
+  boot();
 })();
 """
 
 
-def make_list_page(title, subtitle, cards, depth, crumb_html, conf_filter=None, base=None):
-    """通用卡片列表页（带筛选/排序/分页）"""
+def make_list_page(title, subtitle, cards, depth, crumb_html, conf_filter=None, data_name=None):
+    """通用卡片列表页（带筛选/排序/分页）；数据外置为 JSON，避免每页内嵌上万条"""
     suffix = '.en' if LANG == 'en' else ''
     rows = [{
         't': c['title'], 'o': c['one_line'], 's': c['overall'], 'r': c['relevance'],
@@ -507,6 +521,13 @@ def make_list_page(title, subtitle, cards, depth, crumb_html, conf_filter=None, 
         'k': c['tier'], 'c': c['conf'], 'u': c['slug'] + suffix,
     } for c in cards]
     payload = json.dumps(rows, ensure_ascii=False, separators=(',', ':'))
+    pre = '../' * depth
+    # 数据文件与页面同目录（xxx.data.json），体积小、可被浏览器缓存
+    dname = (data_name or 'cards') + '.data.json'
+    if depth == 0:
+        data_src = 'data/' + dname
+    else:
+        data_src = dname
     ov = [c['overall'] for c in cards if c['overall'] is not None]
     avg = statistics.mean(ov) if ov else 0
     hi = sum(1 for v in ov if v >= 7)
@@ -529,20 +550,22 @@ def make_list_page(title, subtitle, cards, depth, crumb_html, conf_filter=None, 
 <th data-k="k">{esc(t("th_tier"))}</th></tr></thead>
 <tbody id="tbody"></tbody></table>
 <div class="pager" id="pager"></div>
-<script id="cards-data" type="application/json">{payload}</script>
+<script id="cards-data" type="application/json" data-src="{pre}{data_src}"></script>
 <script>var PN_I18N={json.dumps({'prev': t('prev'), 'next': t('next'), 'no_match': t('no_match'), 'n_cards': t('n_cards')}, ensure_ascii=False)};</script>
 <script>{TABLE_JS}</script>'''
-    return page(title, body, depth=depth)
+    return page(title, body, depth=depth), payload, dname
 
 
 def conference_page(conf, cards):
     suffix = '.en' if LANG == 'en' else ''
-    return make_list_page(
+    html, payload, dname = make_list_page(
         esc(NAMES[conf]) + (' 精读卡片' if LANG == 'zh' else ' Reading Cards'),
         esc(t('conf_sub')),
         cards, 1,
         f'<div class="crumb"><a href="../index{suffix}.html">{esc(t("home"))}</a> / {esc(NAMES[conf])}</div>',
-        conf_filter=conf)
+        conf_filter=conf,
+        data_name=conf + suffix)
+    return html, payload, dname
 
 
 SEARCH_JS = """
@@ -593,6 +616,8 @@ def build():
     with open(os.path.join(ROOT, 'theme.css'), encoding='utf-8') as theme_file:
         write('assets/style.css', CSS + '\n' + theme_file.read())
     write('.nojekyll', '')
+    with open(os.path.join(ROOT, 'reader.js'), encoding='utf-8') as reader_file:
+        write('assets/reader.js', reader_file.read())
 
     by_conf = {}
     for c in cards:
@@ -620,17 +645,22 @@ def build():
         for conf, lst in by_conf.items():
             for c in lst:
                 write(os.path.join(conf, c['slug'] + sfx + '.html'), card_page(c))
-            write(os.path.join(conf, 'index' + sfx + '.html'), conference_page(conf, lst))
+            html, payload, dname = conference_page(conf, lst)
+            write(os.path.join(conf, 'index' + sfx + '.html'), html)
+            write(os.path.join(conf, dname), payload)
 
         # 主题页
         for tkey, lst in by_topic.items():
             name, _col = TOPIC_MAP.get(tkey, FALLBACK_TOPIC[:2])
-            write(os.path.join('topic', tkey + sfx + '.html'),
-                  make_list_page(f'{esc(name)}',
-                                 f'{esc(t("topic_sub"))} {len(lst)} {esc(t("n_cards"))}。',
-                                 lst, 1,
-                                 f'<div class="crumb"><a href="../index{sfx}.html">{esc(t("home"))}</a>'
-                                 f' / {esc(name)}</div>'))
+            html, payload, dname = make_list_page(
+                f'{esc(name)}',
+                f'{esc(t("topic_sub"))} {len(lst)} {esc(t("n_cards"))}。',
+                lst, 1,
+                f'<div class="crumb"><a href="../index{sfx}.html">{esc(t("home"))}</a>'
+                f' / {esc(name)}</div>',
+                data_name=tkey + sfx)
+            write(os.path.join('topic', tkey + sfx + '.html'), html)
+            write(os.path.join('topic', dname), payload)
 
         # 首页
         top = sorted([c for c in cards if c['overall'] is not None],

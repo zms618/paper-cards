@@ -70,10 +70,10 @@
 零依赖静态站，纯 Python 标准库生成：
 
 ```
-paper-site/
+paper-cards/
 ├── build_site.py     # 生成器：卡片 JSON → 静态 HTML
-├── data/             # 卡片数据（按会议分目录）
-└── site/             # 构建产物（42,700 个页面）
+├── data/             # 卡片数据（按会议分目录，21,332 个 JSON）
+└── .github/workflows # 推送后自动构建并部署到 GitHub Pages
 ```
 
 ```bash
@@ -82,6 +82,13 @@ python build_site.py
 ```
 
 生成 21,350 个页面约需 3 分钟。产物分中文（`.html`）与英文（`.en.html`）两套，通过 `localStorage` 记住语言偏好。
+
+构建产物 `site/` **不纳入版本库**——每次推送由 GitHub Actions 重新生成并部署。仓库里只有生成器和数据（约 36 MB），clone 很快。
+
+### 为什么单页只有 4.6 KB
+
+每张卡片页只渲染这一篇的结构化结论，不内联论文正文；列表页只给标题与分数；全站检索数据单独放在 `data/index.json`（5.6 MB）按需加载。对比同类站点（如 papernotes.org）单篇笔记页约 500–890 KB，体积差约 100 倍，但阅读所需的信息密度并不更低。
+
 
 ## 数据来源
 
