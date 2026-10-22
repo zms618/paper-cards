@@ -522,12 +522,9 @@ def make_list_page(title, subtitle, cards, depth, crumb_html, conf_filter=None, 
     } for c in cards]
     payload = json.dumps(rows, ensure_ascii=False, separators=(',', ':'))
     pre = '../' * depth
-    # 数据文件与页面同目录（xxx.data.json），体积小、可被浏览器缓存
+    # 数据文件与页面同目录（xxx.data.json），路径相对于页面自身
     dname = (data_name or 'cards') + '.data.json'
-    if depth == 0:
-        data_src = 'data/' + dname
-    else:
-        data_src = dname
+    data_src = dname
     ov = [c['overall'] for c in cards if c['overall'] is not None]
     avg = statistics.mean(ov) if ov else 0
     hi = sum(1 for v in ov if v >= 7)
@@ -550,7 +547,7 @@ def make_list_page(title, subtitle, cards, depth, crumb_html, conf_filter=None, 
 <th data-k="k">{esc(t("th_tier"))}</th></tr></thead>
 <tbody id="tbody"></tbody></table>
 <div class="pager" id="pager"></div>
-<script id="cards-data" type="application/json" data-src="{pre}{data_src}"></script>
+<script id="cards-data" type="application/json" data-src="{data_src}"></script>
 <script>var PN_I18N={json.dumps({'prev': t('prev'), 'next': t('next'), 'no_match': t('no_match'), 'n_cards': t('n_cards')}, ensure_ascii=False)};</script>
 <script>{TABLE_JS}</script>'''
     return page(title, body, depth=depth), payload, dname
