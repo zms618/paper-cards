@@ -113,6 +113,7 @@ I18N = {
         'innovations': '创新点', 'method': '方法框架', 'experiment': '实验框架',
         'takeaways': '可借鉴点', 'weaknesses': '缺点', 'rel_reason': '相关性判断',
         'tier_label': '档', 'conf_label': '置信度',
+        'paper_link': '论文页', 'code_link': '代码仓库', 'no_link': '未匹配到官方链接',
         'search_h1': '搜索', 'search_p': '在全部卡片的标题与一句话评价里检索。',
         'search_ph': '输入关键词，例如：domain generalization、WSI、reward model…',
         'loading': '正在载入索引…', 'loaded': '张卡片已载入，输入关键词开始搜索',
@@ -141,6 +142,7 @@ I18N = {
         'innovations': 'Key ideas', 'method': 'Method', 'experiment': 'Experiments',
         'takeaways': 'Takeaways', 'weaknesses': 'Weaknesses', 'rel_reason': 'Relevance note',
         'tier_label': 'Tier', 'conf_label': 'confidence',
+        'paper_link': 'Paper', 'code_link': 'Code', 'no_link': 'No official link found',
         'search_h1': 'Search', 'search_p': 'Search titles and one-line summaries across all cards.',
         'search_ph': 'Try: domain generalization, WSI, reward model…',
         'loading': 'Loading index…', 'loaded': 'cards loaded — type to search',
@@ -173,7 +175,19 @@ def slugify(key, path):
     return (s + '-' + h) if s else h
 
 
+def load_links():
+    """读取 enrich 阶段抓到的论文/代码链接。缺失时返回空字典，站点照常构建。"""
+    p = os.path.join(ROOT, 'enrich', 'linkmap.json')
+    if not os.path.exists(p):
+        return {}
+    try:
+        return json.load(open(p, encoding='utf-8'))
+    except Exception:
+        return {}
+
+
 def load_cards():
+    links = load_links()
     cards = []
     for conf in CONFS:
         d = os.path.join(DATA, conf)
@@ -217,6 +231,9 @@ def load_cards():
                 'confidence': (c.get('confidence') or '').strip(),
                 'tier': (c.get('tier') or '').strip(),
                 'rel_reason': (c.get('relevance_reason') or '').strip(),
+                'paper_url': (links.get(key) or {}).get('url', ''),
+                'paper_pdf': (links.get(key) or {}).get('pdf', ''),
+                'code_url': ((links.get(key) or {}).get('code') or [''])[0],
                 'slug': slugify(key, path),
             })
     for c in cards:
@@ -279,6 +296,15 @@ h2.sec small{font-weight:400;color:var(--muted);font-size:13px}
 .ptitle{font-size:26px;line-height:1.4;letter-spacing:-.3px}
 .meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:14px 0 22px;font-size:13px;color:var(--muted)}
 .meta .file{color:#a1a1aa;font-size:12px;word-break:break-all}
+.links{display:flex;gap:9px;flex-wrap:wrap;margin:-6px 0 22px}
+.lk{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border:1px solid var(--border);background:var(--surface);border-radius:9px;font-size:13.5px;color:var(--text);transition:.15s}
+.lk:hover{text-decoration:none;border-color:#93c5fd;box-shadow:0 2px 10px rgba(37,99,235,.09);color:var(--accent)}
+.lk-i{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}
+.lk-code{border-color:#bbf7d0;background:#f0fdf4;color:#047857}
+.lk-code:hover{border-color:#4ade80;color:#047857}
+.lk-code .lk-i{color:#16a34a}
+.lk-none{color:#a1a1aa;border-style:dashed;cursor:default}
+.lk-none:hover{border-color:var(--border);box-shadow:none;color:#a1a1aa}
 .scoreboard{display:flex;gap:22px;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:18px 20px;margin-bottom:22px}
 .bigscore{text-align:center;flex:none;min-width:92px}
 .bigscore b{display:block;font-size:34px;letter-spacing:-1px;line-height:1.1}
@@ -301,7 +327,7 @@ section.tk ul{color:#065f46}
 section.tk li::marker{color:#10b981}
 table.t{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;font-size:13.5px}
 table.t th,table.t td{padding:9px 12px;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
-table.t th{background:#fafafa;color:var(--muted);font-weight:600;font-size:12.5px;cursor:pointer;user-select:none;white-space:nowrap;position:sticky;top:56px}
+table.t th{background:#fafafa;color:var(--muted);font-weight:600;font-size:12.5px;cursor:pointer;user-select:none;white-space:nowrap;position:static}
 table.t th:hover{color:var(--text)}
 table.t td.n{font-variant-numeric:tabular-nums;text-align:right;white-space:nowrap;color:#52525b}
 table.t tr:hover td{background:#fcfcfd}
@@ -417,6 +443,20 @@ def card_page(c):
     if c['confidence']:
         body.append(f'<span class="chip">{esc(t("conf_label"))} {esc(c["confidence"])}</span>')
     body.append(f'<span class="file">{esc(c["path"])}</span></div>')
+    lnk = []
+    if c['paper_url']:
+        lnk.append(f'<a class="lk" href="{esc(c["paper_url"])}" target="_blank" rel="noopener">'
+                   f'<span class="lk-i">↗</span>{esc(t("paper_link"))}</a>')
+    if c['paper_pdf']:
+        lnk.append(f'<a class="lk" href="{esc(c["paper_pdf"])}" target="_blank" rel="noopener">'
+                   f'<span class="lk-i">↓</span>PDF</a>')
+    if c['code_url']:
+        lnk.append(f'<a class="lk lk-code" href="{esc(c["code_url"])}" target="_blank" rel="noopener">'
+                   f'<span class="lk-i">&lt;/&gt;</span>{esc(t("code_link"))}</a>')
+    if lnk:
+        body.append('<div class="links">' + ''.join(lnk) + '</div>')
+    else:
+        body.append(f'<div class="links"><span class="lk lk-none">{esc(t("no_link"))}</span></div>')
     body.append('<div class="scoreboard"><div class="bigscore">'
                 f'<b>{fmt(c["overall"])}</b><span>{esc(t("score_overall"))}</span></div>'
                 f'<div class="bars">{bars}</div></div>')
