@@ -1,0 +1,184 @@
+{
+ "key": "cvpr2026/Thinking in Uncertainty Mitigating Hallucinations in MLRMs with Latent Entropy-Aware.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Thinking in Uncertainty Mitigating Hallucinations in MLRMs with Latent Entropy-Aware.pdf",
+ "title": "Thinking in Uncertainty: Mitigating Hallucinations in MLRMs with Latent Entropy-Aware Decoding",
+ "v": 3,
+ "tldr": "多模态推理模型（MLRM）的长思考链里，幻觉最容易出现在 because / however / wait 这类转折词之后——这些位置恰好是 token 熵最高、注意力离图像最远的时刻。LEAD 不改一个权重、只改解码：高熵时用整张概率分布加权成连续 embedding 喂回模型，让多条推理路径并行；熵落下来再切回离散 token 收敛，同时在高熵段注入视觉锚把注意力拉回图像。R1-Onevision-7B 上 MMHalu 3.52→3.80、Bingo 3.65→3.84，数学/科学基准平均 +2.0%/+3.2%，推理反而更短。",
+ "task": "输入图像 + 问题，输出带长推理链的答案；目标是在不训练、不改权重的前提下，降低推理过程中的幻觉。",
+ "motivation": [
+  {
+   "h": "幻觉不在答案里，而在思考链中段",
+   "d": "错误往往不是「看错了图」，而是模型在 <think> 里自我怀疑、来回改口时跑偏。作者统计发现，but / however / wait / actually 这些转折词附近是幻觉高发区。"
+  },
+  {
+   "h": "转折词 = 高熵 = 不看图",
+   "d": "逐 token 算熵，转折词位置的熵显著高于平均；同一位置的注意力可视化又显示，分给视觉 token 的权重反而最低。两件事重合，构成「最不确定时反而不看图」的失效模式。"
+  },
+  {
+   "h": "现有免训练方法不区分「什么时候不确定」",
+   "d": "VCD / SID 做对比解码，MemVR 重放视觉 token，都是对整段推理一视同仁地激活；而加视觉奖励做 RL 微调的那类方法代价太高。"
+  },
+  {
+   "h": "离散采样本身在丢信息",
+   "d": "标准解码每步把整张分布 p_t 压成一个 one-hot token。模型最需要保留多个假设的时刻，恰恰被迫提前下注。"
+  }
+ ],
+ "idea": "把 token 熵当开关：熵高说明模型拿不准，此时不要硬选一个词，而是把整个概率分布加权成连续向量喂回去，让多条路径同时存在；熵降下来再切回离散 token 收敛。并在高熵段注入视觉锚，把注意力拽回图像。",
+ "method_overview": [
+  {
+   "h": "① 先诊断，再设计",
+   "d": "统计转折词与幻觉的共现 → 可视化 token 熵 → 用 token masking 做因果验证（mask 掉高熵 token 性能掉得最多，且越靠前影响越大），确认高熵 token 是承重节点。"
+  },
+  {
+   "h": "② 双模式解码",
+   "d": "每一步算熵 H_t，与参考阈值 Ĥ 比较，决定这一步走离散解码（收敛）还是隐式解码（探索）。"
+  },
+  {
+   "h": "③ 切换控制",
+   "d": "每次切换后强制在新模式停留 w 个 token，并限制整条推理最多切换 C_max 次，防止两种模式高频抖动。"
+  },
+  {
+   "h": "④ 视觉锚注入",
+   "d": "每次进入高熵段，把预训练视觉特征以强度 λ 混入当步输入 embedding，作为 grounding 信号。"
+  }
+ ],
+ "designs": [
+  {
+   "h": "概率加权 embedding：用「期望」代替「采样」",
+   "d": "离散解码是 r_t ∼ p_t 再取 one-hot；隐式解码换成 ẽ_t = Σ_v p_t[v]·e(v)，用整张分布对词表 embedding 求期望，把「选哪个词」的不确定性原样带到下一步。不需要训练、不增加参数，可直接插在任何 MLRM 上。"
+  },
+  {
+   "h": "熵感知的切换判据",
+   "d": "H_t = −Σ_v p_t[v] log p_t[v]。H_t < Ĥ 走离散，否则走隐式。Ĥ 不是全局常数：每次模式切换后按当前上下文重新估计，因此能随推理进程自适应，而不是靠一组离线调好的固定阈值。"
+  },
+  {
+   "h": "持久窗口 + 切换预算",
+   "d": "切换后必须在新模式停留 w 个 token（最优 128），整条推理最多切 C_max=5 次。没有这两个约束就会横跳：w=∞ 等于退回标准 CoT（Fig.6 里指标直接回落），w 太小则两种模式反复切换、都不收敛。"
+  },
+  {
+   "h": "视觉锚注入与 λ 的拐点",
+   "d": "进入高熵段的第一步 t*，输入改成 ẽ_t* = (1−λ)·Σ_v p_t*[v]·e(v) + λ·e_vis。λ 控制「看图」与「听语言」的配比：0.4 时各项指标峰值，0.6 起视觉 embedding 开始压过语言上下文，指标回落。"
+  }
+ ],
+ "setup": "5 个 7B 级 MLRM 作基座：R1-Onevision / Vision-R1 / VL-Rethinker / VL-Cogito / OpenVLThinker。通用理解 VStar·RealWorldQA·MMVP·MMEval-Pro·VMCBench；幻觉 MMHalu(0–6)·Bingo(1–5)·POPE；数学 MathVision·MathVista·MathVerse·VisuLogic·Geometry3K·MMK12-Math；科学 MMK12 物理/化学/生物。对照 VCD、MemVR、SID 三种免训练解码，另用 PPL 与 GPT-5 评文本质量并测 Pass@k。",
+ "results_table": {
+  "cols": [
+   "R1-Onevision-7B",
+   "VStar",
+   "RealWorldQA",
+   "MMEval-Pro",
+   "MMHalu",
+   "Bingo",
+   "POPE-R"
+  ],
+  "rows": [
+   [
+    "Base",
+    "66.5",
+    "62.5",
+    "69.4",
+    "3.52",
+    "3.65",
+    "84.6"
+   ],
+   [
+    "+ VCD",
+    "67.1",
+    "62.6",
+    "69.8",
+    "3.55",
+    "3.61",
+    "84.4"
+   ],
+   [
+    "+ MemVR",
+    "69.6",
+    "64.3",
+    "71.3",
+    "3.69",
+    "3.68",
+    "82.3"
+   ],
+   [
+    "+ SID",
+    "70.2",
+    "65.2",
+    "71.0",
+    "3.70",
+    "3.65",
+    "85.0"
+   ],
+   [
+    "+ LEAD",
+    "71.2",
+    "66.4",
+    "73.9",
+    "3.80",
+    "3.84",
+    "85.9"
+   ]
+  ],
+  "note": "MMHalu 为 0–6 分、Bingo 为 1–5 分的模型评分，其余为准确率。5 个基座全部正涨：Vision-R1 上 MMHalu 3.64→3.89、POPE-A +3.7；VL-Rethinker 上 MMVP 42.0→46.6。数学基准平均 +2.0%、科学基准平均 +3.2%。"
+ },
+ "nums": [
+  "λ 消融：0→0.4 时 VStar 67.5→71.2、MMHalu 3.59→3.80；λ=0.6 回落至 68.1 / 3.77",
+  "动态阈值 vs 固定阈值：MMHalu 上 R1-Onevision +4.7%、Vision-R1 +4.1%",
+  "持久窗口 w=128 最优，w=∞ 退化为标准 CoT 水平",
+  "MathVision 上准确率最高的同时推理更短；Pass@k 在 k=8 附近即达峰值，基线要 k≥16"
+ ],
+ "findings": [
+  "提升集中在幻觉指标（MMHalu +4.7%、Bingo +3.8%），通用理解只涨 3.6%——它修的是「说错」而不是「看不懂」。",
+  "5 个基座全正涨，包括幻觉分本来就高的 VL-Rethinker（4.06→4.27），说明不是只在弱模型上蹭分。",
+  "视觉锚不是越强越好，0.4 是拐点；再往上视觉 embedding 压过语言上下文，指标反而回落。",
+  "切换也不是越频繁越好：w=128 附近最优，w→∞ 直接退化成标准 CoT，说明收益来自「短暂停留」而不是「一直隐式」。",
+  "免训练方法的证明义务更重：PPL 与 GPT-5 评的语法/流畅/自然度基本不降，否则很容易被质疑拿输出质量换指标。"
+ ],
+ "insights": [
+  "先定位失效位置、再设计机制：共现统计 → 熵可视化 → token masking 因果验证，三步把「转折词容易胡扯」的直觉变成可检验假设，机制是被证据推出来的。这个写法本身就值得抄。",
+  "把「采样」换成「期望」几乎零成本（一次词表加权），却实打实改变了搜索行为——这类 plug-and-play 模块很适合作为自己实验里的强 baseline。",
+  "超参敏感性单独出图（阈值、窗口、λ 各一张），比塞进 appendix 更有说服力；三个超参各自都给出了「为什么到这里就拐」的解释。"
+ ],
+ "limits": [
+  "只在 7B 级、且都是 RL 训出来的推理模型上验证；LLaVA 这类非推理 MLLM 是否成立没测，泛化边界不清。",
+  "阈值 Ĥ 是「按窗口重新估计」，但没给随模型/任务自适应的规则，换模型要重扫一组超参（Fig.5 是逐阈值扫描）。",
+  "「注意力回到图像」与「幻觉减少」之间只有相关性证据（Fig.7a 注意力可视化、Fig.3d 统计），缺干预实验直接证明因果。",
+  "全程是 decoding-time 路线，没和轻量微调比性价比；C_max=5 与 w=128 两个超参也各需一次扫描。"
+ ],
+ "why_me": "与 BETC 同属多模态可靠性：它从解码端用不确定性决定何时回头看图，BETC 从证据一致性建模，可互为 baseline。",
+ "related": [
+  {
+   "h": "VCD / SID（对比解码）",
+   "note": "同样免训练，用「原图 vs 扰动图」的分布差做校正，但不区分模型此刻是否不确定；Table 2 是它与 LEAD 的直接对照。"
+  },
+  {
+   "h": "MemVR（视觉重放）",
+   "note": "在固定层重放视觉 token；LEAD 改成按熵动态注入，同一张表上 MemVR 各项均低于 LEAD。"
+  },
+  {
+   "h": "连续隐空间推理（Coconut 一类）",
+   "note": "同样用连续隐状态替代离散 token，但需要专门训练；LEAD 可看作这条路线的 inference-time 近似版——延伸对比点时值得留意（此条为我的延伸，非论文原文讨论）。"
+  }
+ ],
+ "scores": {
+  "novelty": 7.0,
+  "depth": 7.5,
+  "evidence": 7.0,
+  "relevance": 8.5,
+  "overall": 7.5
+ },
+ "score_notes": {
+  "novelty": "熵驱动双模式切换 + 视觉锚注入，组件不新但「何时切」的判据是新的",
+  "depth": "有诊断—机制—消融的完整链条，公式与实现细节给得干净",
+  "evidence": "5 基座 × 10 基准扎实，但因果链止于相关性",
+  "relevance": "解码端不确定性 + 视觉 grounding，与 BETC 的多模态可靠性同赛道"
+ },
+ "one_line": "用 token 熵当开关：高熵时切连续 embedding 保留多假设，并把注意力拉回图像，免训练降低多模态推理幻觉",
+ "confidence": "high",
+ "tier": "A",
+ "relevance_reason": "解码端不确定性 + 视觉 grounding，与 BETC 的多模态可靠性直接同赛道",
+ "raw_overall": 6.0,
+ "raw_relevance": 8.0,
+ "model": "manual-v3-demo",
+ "source_pdf": "https://openaccess.thecvf.com/content/CVPR2026/papers/Xu_Thinking_in_Uncertainty_Mitigating_Hallucinations_in_MLRMs_with_Latent_Entropy-Aware_CVPR_2026_paper.pdf"
+}

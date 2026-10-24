@@ -115,6 +115,9 @@ I18N = {
         'tier_label': '档', 'conf_label': '置信度',
         'k_problem': '问题', 'k_idea': '核心想法', 'k_how': '怎么做', 'k_setup': '实验设定',
         'k_nums': '关键数字', 'k_limits': '局限', 'k_why': '与我的研究',
+        'k_tldr': '一句话总结', 'k_task': '任务定义', 'k_motiv': '研究背景与动机',
+        'k_method': '方法详解', 'k_overview': '整体框架', 'k_design': '关键设计', 'k_results': '实验关键数据',
+        'k_findings': '关键发现', 'k_insights': '亮点与洞察', 'k_related': '相关工作与启发',
         'verdict': '一句话结论', 'what_it_does': '这篇在做什么', 'setup_h': '实验设定',
         'paper_link': '论文页', 'code_link': '代码仓库', 'no_link': '未匹配到官方链接',
         'search_h1': '搜索', 'search_p': '在全部卡片的标题与一句话评价里检索。',
@@ -147,6 +150,9 @@ I18N = {
         'tier_label': 'Tier', 'conf_label': 'confidence',
         'k_problem': 'Problem', 'k_idea': 'Idea', 'k_how': 'How', 'k_setup': 'Setup',
         'k_nums': 'Key numbers', 'k_limits': 'Limits', 'k_why': 'Why it matters to me',
+        'k_tldr': 'TL;DR', 'k_task': 'Task', 'k_motiv': 'Background & Motivation',
+        'k_method': 'Method', 'k_overview': 'Pipeline', 'k_design': 'Key designs', 'k_results': 'Results',
+        'k_findings': 'Key findings', 'k_insights': 'Insights', 'k_related': 'Related work',
         'verdict': 'Verdict', 'what_it_does': 'What it does', 'setup_h': 'Setup',
         'paper_link': 'Paper', 'code_link': 'Code', 'no_link': 'No official link found',
         'search_h1': 'Search', 'search_p': 'Search titles and one-line summaries across all cards.',
@@ -244,8 +250,17 @@ def load_cards():
                 'how': (c.get('how') or '').strip(),
                 'setup': (c.get('setup') or '').strip(),
                 'nums': [x for x in (c.get('nums') or []) if x],
-                'limits': (c.get('limits') or '').strip(),
+                'limits': (c.get('limits') if isinstance(c.get('limits'), str) else '').strip(),
                 'why_me': (c.get('why_me') or '').strip(),
+                'tldr': (c.get('tldr') or '').strip(),
+                'motivation': c.get('motivation') or [],
+                'method_overview': c.get('method_overview') or [],
+                'designs': c.get('designs') or [],
+                'results_table': c.get('results_table') or {},
+                'findings': [x for x in (c.get('findings') or []) if x],
+                'insights': [x for x in (c.get('insights') or []) if x],
+                'limits_list': [x for x in c['limits'] if x] if isinstance(c.get('limits'), list) else [],
+                'related': c.get('related') or [],
                 'paper_url': (links.get(key) or {}).get('url', ''),
                 'paper_pdf': (links.get(key) or {}).get('pdf', ''),
                 'code_url': ((links.get(key) or {}).get('code') or [''])[0],
@@ -339,6 +354,22 @@ h2.sec small{font-weight:400;color:var(--muted);font-size:13px}
 .q-nums h4,.q-lim h4,.q-why h4{margin:0 0 8px;font-size:13px;color:var(--muted);font-weight:600}
 .q-nums ul{margin:0;padding-left:20px}
 .q-nums li{margin:4px 0;font-size:14.5px;font-variant-numeric:tabular-nums}
+.tldr{background:linear-gradient(180deg,#eff6ff,#f9fbff);border:1px solid #dbeafe;border-radius:var(--r);padding:18px 22px;margin:0 0 12px}
+.tldr h3{margin:0 0 8px;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:#2563eb;font-weight:700}
+.tldr p{margin:0;font-size:17px;line-height:1.85;color:#18181b}
+.taskline{margin:0 0 28px;font-size:14px;color:var(--muted);line-height:1.75}
+.taskline span{display:inline-block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:#2563eb;font-weight:700;margin-right:10px;vertical-align:1px}
+.dd{padding:11px 0;border-top:1px dashed var(--border)}
+.dd:first-child{border-top:0;padding-top:0}
+.dd b{display:block;font-size:14.5px;margin-bottom:3px;color:#18181b}
+.dd p{margin:0;font-size:14.5px;line-height:1.85;color:#3f3f46}
+h4.sub{font-size:12.5px;color:#52525b;font-weight:600;margin:20px 0 10px;padding-left:9px;border-left:3px solid #c7d2fe;letter-spacing:.02em}
+table.rt{display:block;width:100%;overflow-x:auto;border-collapse:collapse;font-size:13.5px;margin:4px 0 0;font-variant-numeric:tabular-nums}
+table.rt th,table.rt td{border-bottom:1px solid var(--border);padding:8px 12px;text-align:right;white-space:nowrap}
+table.rt th:first-child,table.rt td:first-child{text-align:left;font-weight:500}
+table.rt thead th{background:#f4f4f5;font-weight:600;color:#52525b;font-size:12.5px;position:sticky;top:0}
+table.rt tbody tr:nth-child(even){background:#fcfcfd}
+.rt-note{font-size:12.5px;color:var(--muted);margin:10px 0 0;line-height:1.7}
 .q-lim p,.q-why p{margin:0;font-size:14.5px;line-height:1.72}
 .q-why{background:var(--accent-soft);border-radius:8px;padding:12px 14px;border:1px solid #dbeafe}
 .ol-k{display:inline-block;margin-right:10px;padding:1px 8px;border-radius:6px;background:#f4f4f5;color:var(--muted);font-size:12px;font-weight:600;vertical-align:2px}
@@ -461,6 +492,9 @@ def card_page(c):
         f'<span class="sbar-v">{fmt(v)}</span></div>'
         for n, v in sc
     )
+    sb = ('<div class="scoreboard"><div class="bigscore">'
+          f'<b>{fmt(c["overall"])}</b><span>{esc(t("score_overall"))}</span></div>'
+          f'<div class="bars">{bars}</div></div>')
     body = [f'<div class="crumb"><a href="../index{suffix}.html">{esc(t("home"))}</a> / '
             f'<a href="index{suffix}.html">{esc(NAMES[c["conf"]])}</a></div>',
             f'<h1 class="ptitle">{esc(c["title"])}</h1>',
@@ -486,17 +520,87 @@ def card_page(c):
     else:
         body.append(f'<div class="links"><span class="lk lk-none">{esc(t("no_link"))}</span></div>')
 
-    # ---- 首屏：这篇在做什么 ----
-    is_v2 = (c.get('v') or 1) >= 2 and bool(c.get('task'))
+    def ddl(items):
+        out = []
+        for x in items or []:
+            if not isinstance(x, dict):
+                continue
+            h, d = str(x.get('h') or ''), str(x.get('d') or '')
+            if not (h or d):
+                continue
+            out.append('<div class="dd">' + (f'<b>{esc(h)}</b>' if h else '') +
+                       (f'<p>{esc(d)}</p>' if d else '') + '</div>')
+        return ''.join(out)
+
+    def ul(items):
+        items = [x for x in (items or []) if x]
+        if not items:
+            return ''
+        return '<ul>' + ''.join(f'<li>{esc(x)}</li>' for x in items) + '</ul>'
+
+    is_v3 = (c.get('v') or 1) >= 3 and bool(c.get('tldr'))
+    is_v2 = (not is_v3) and (c.get('v') or 1) >= 2 and bool(c.get('task'))
+
+    if is_v3:
+        # 1) 一句话总结：首屏最大字号，读这一句就能知道全篇在干什么
+        body.append(f'<section class="tldr"><h3>{esc(t("k_tldr"))}</h3><p>{esc(c["tldr"])}</p></section>')
+        if c['task']:
+            body.append(f'<p class="taskline"><span>{esc(t("k_task"))}</span>{esc(c["task"])}</p>')
+        # 2) 背景与动机
+        if c['motivation']:
+            body.append(f'<section class="blk"><h3>{esc(t("k_motiv"))}</h3>{ddl(c["motivation"])}</section>')
+        # 3) 核心思想
+        if c['idea']:
+            body.append(f'<section class="blk"><h3>{esc(t("k_idea"))}</h3><p>{esc(c["idea"])}</p></section>')
+        # 4) 方法详解
+        if c['method_overview'] or c['designs']:
+            s_ = f'<section class="blk"><h3>{esc(t("k_method"))}</h3>'
+            if c['method_overview']:
+                s_ += f'<h4 class="sub">{esc(t("k_overview"))}</h4><div class="flow">{ddl(c["method_overview"])}</div>'
+            if c['designs']:
+                s_ += f'<h4 class="sub">{esc(t("k_design"))}</h4><div class="flow">{ddl(c["designs"])}</div>'
+            s_ += '</section>'
+            body.append(s_)
+        # 5) 实验设定
+        if c['setup']:
+            body.append(f'<section class="blk"><h3>{esc(t("k_setup"))}</h3><p>{esc(c["setup"])}</p></section>')
+        # 6) 关键数据表
+        rt = c['results_table'] or {}
+        cols = [str(x) for x in (rt.get('cols') or [])]
+        rows = [r for r in (rt.get('rows') or []) if isinstance(r, list) and r]
+        if cols and rows:
+            th = ''.join(f'<th>{esc(x)}</th>' for x in cols)
+            tr = ''.join('<tr>' + ''.join(f'<td>{esc(x)}</td>' for x in r) + '</tr>' for r in rows)
+            note = f'<p class="rt-note">{esc(rt.get("note"))}</p>' if rt.get('note') else ''
+            body.append(f'<section class="blk"><h3>{esc(t("k_results"))}</h3>'
+                        f'<table class="rt"><thead><tr>{th}</tr></thead><tbody>{tr}</tbody></table>{note}</section>')
+        if c['nums']:
+            body.append(f'<section class="blk"><h3>{esc(t("k_nums"))}</h3>{ul(c["nums"])}</section>')
+        # 7) 关键发现 / 洞察 / 局限
+        if c['findings']:
+            body.append(f'<section class="blk"><h3>{esc(t("k_findings"))}</h3>{ul(c["findings"])}</section>')
+        if c['insights']:
+            body.append(f'<section class="blk tk"><h3>{esc(t("k_insights"))}</h3>{ul(c["insights"])}</section>')
+        lim = c['limits_list'] or ([c['limits']] if c['limits'] else [])
+        if lim:
+            body.append(f'<section class="blk wk"><h3>{esc(t("k_limits"))}</h3>{ul(lim)}</section>')
+        if c['why_me']:
+            body.append(f'<section class="blk"><h3>{esc(t("k_why"))}</h3><p>{esc(c["why_me"])}</p></section>')
+        # 8) 评分 + 相关工作放最后
+        body.append(sb)
+        if c['related']:
+            body.append(f'<section class="blk"><h3>{esc(t("k_related"))}</h3>{ddl(c["related"])}</section>')
+        return page(c['title'] + ' · ' + NAMES[c['conf']], '\n'.join(body), depth=1)
+
     if is_v2:
         q = ['<div class="quick">', f'<p class="q-task">{esc(c["task"])}</p>']
-        rows = ''
+        rows_html = ''
         for k, label in (('problem', t('k_problem')), ('idea', t('k_idea')),
                          ('how', t('k_how')), ('setup', t('k_setup'))):
             if c.get(k):
-                rows += (f'<div class="q-row"><span class="q-k">{esc(label)}</span>'
-                         f'<div class="q-v">{esc(c[k])}</div></div>')
-        q.append(rows)
+                rows_html += (f'<div class="q-row"><span class="q-k">{esc(label)}</span>'
+                              f'<div class="q-v">{esc(c[k])}</div></div>')
+        q.append(rows_html)
         if c['nums']:
             q.append(f'<div class="q-nums"><h4>{esc(t("k_nums"))}</h4><ul>' +
                      ''.join(f'<li>{esc(x)}</li>' for x in c['nums']) + '</ul></div>')
@@ -514,9 +618,7 @@ def card_page(c):
             body.append(f'<section class="blk lead"><h3>{esc(t("setup_h"))}</h3>'
                         f'<p>{esc(c["experiment"])}</p></section>')
 
-    body.append('<div class="scoreboard"><div class="bigscore">'
-                f'<b>{fmt(c["overall"])}</b><span>{esc(t("score_overall"))}</span></div>'
-                f'<div class="bars">{bars}</div></div>')
+    body.append(sb)
     if c['one_line']:
         body.append(f'<p class="oneliner"><span class="ol-k">{esc(t("verdict"))}</span>'
                     f'{esc(c["one_line"])}</p>')

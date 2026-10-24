@@ -1,4 +1,4 @@
-"""卡片 v2 批量重生成器。
+"""卡片 v3（速读卡）批量重生成器。
 
 流程：读 v1 卡片 -> 找到 PDF（linkmap 官方链接或本地 pdf 目录）-> pymupdf 抽文本
       -> 调 OpenAI 兼容端点（vLLM / Ollama / 任意 API）-> validate -> 落盘
@@ -9,7 +9,7 @@
     python regen/run.py --slugs "cvpr2026/Thinking in Uncertainty.pdf" --dry
 
 输出：
-    regen/out/<conf>/<slug>.json      通过的卡片（v1 全字段 + v2 字段，v=2）
+    regen/out/<conf>/<slug>.json      通过的卡片（v1 全字段 + v3 字段，v=3）
     regen/rejected/<conf>/<slug>.json 未通过校验的，附 _errors
 """
 import argparse
@@ -61,8 +61,8 @@ def call_llm(text, base_url, model, api_key, timeout=600):
     payload = {
         'model': model,
         'messages': [{'role': 'user', 'content': PROMPT.replace('<<<PAPER_TEXT>>>', text)}],
-        'temperature': 0.25,
-        'max_tokens': 3000,
+        'temperature': 0.3,
+        'max_tokens': 5200,
     }
     req = urllib.request.Request(
         base_url.rstrip('/') + '/chat/completions',
@@ -106,16 +106,26 @@ def one(card_path, args, linkmap):
         return 'dry', card['key']
 
     try:
-        v2 = call_llm(text, args.base_url, args.model, args.api_key)
+        v3 = call_llm(text, args.base_url, args.model, args.api_key)
     except Exception as e:
         return 'llmerr', f'{card["key"]}: {e}'
 
     merged = dict(card)
-    merged.update({k: v2.get(k, '') for k in
-                   ('task', 'problem', 'idea', 'how', 'setup', 'nums', 'limits', 'why_me')})
-    if not isinstance(merged.get('nums'), list):
-        merged['nums'] = [str(merged.get('nums') or '')]
-    merged['v'] = 2
+    V3_KEYS = ('tldr', 'task', 'motivation', 'idea', 'method_overview', 'designs',
+               'setup', 'results_table', 'nums', 'findings', 'insights', 'limits',
+               'why_me', 'related')
+    merged.update({k: v3.get(k, '' if k not in ('motivation', 'method_overview', 'designs',
+                                                'nums', 'findings', 'insights', 'limits',
+                                                'related', 'results_table') else [])
+                   for k in V3_KEYS})
+    # 统一类型，避免模型偷懒把数组写成字符串
+    for k in ('motivation', 'method_overview', 'designs', 'nums', 'findings',
+              'insights', 'limits', 'related'):
+        if isinstance(merged.get(k), str):
+            merged[k] = [merged[k]] if merged[k].strip() else []
+    if not isinstance(merged.get('results_table'), dict):
+        merged['results_table'] = {'cols': [], 'rows': [], 'note': ''}
+    merged['v'] = 3
     merged['model'] = args.model
     errs = check(merged)
     if errs:
