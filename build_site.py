@@ -382,7 +382,7 @@ def page(title, body, depth=0, head=''):
     pre = '../' * depth
     lang = 'en' if LANG == 'en' else 'zh-CN'
     return (
-        f'<!DOCTYPE html>\n<html lang="{lang}">\n<head>\n<meta charset="utf-8">\n'
+        f'<!DOCTYPE html>\n<html lang="{lang}" data-pre="{pre}">\n<head>\n<meta charset="utf-8">\n'
         '<meta name="viewport" content="width=device-width,initial-scale=1">\n'
         f'<title>{esc(title)}</title>\n'
         f'<link rel="stylesheet" href="{pre}assets/style.css">\n{head}'
@@ -487,6 +487,7 @@ TABLE_JS = """
   var tb = document.getElementById('tbody'), cnt = document.getElementById('cnt');
   var q = document.getElementById('q'), sel = document.getElementById('confSel');
   var pager = document.getElementById('pager');
+  var PRE = document.documentElement.getAttribute('data-pre') || '';
   var DATA = null;
   function num(v){ return (v===null||v===undefined)?-1:v; }
   function apply(){
@@ -512,7 +513,7 @@ TABLE_JS = """
     var h='';
     for(var i=start;i<end;i++){
       var r=rows[i];
-      h+='<tr><td class="n">'+(i+1)+'</td><td><a href="'+r.u+'.html">'+esc(r.t)+'</a>'+
+      h+='<tr><td class="n">'+(i+1)+'</td><td><a href="'+PRE+r.c+'/'+r.u+'.html">'+esc(r.t)+'</a>'+
          (r.o?'<div style="color:#a1a1aa;font-size:12px;margin-top:2px">'+esc(r.o)+'</div>':'')+
          '</td><td class="n">'+f(r.s)+'</td><td class="n">'+f(r.r)+'</td><td class="n">'+f(r.n)+
          '</td><td class="n">'+f(r.d)+'</td><td class="n">'+f(r.e)+'</td><td class="n">'+esc(r.k||'')+'</td></tr>';
@@ -757,6 +758,13 @@ def build():
         write('search' + sfx + '.html', page(t('search_h1'), sbody))
 
     LANG = 'zh'
+    # 自定义 404（GitHub Pages 会优先使用根目录的 404.html）
+    nbody = ('<div class="hero"><h1>页面不存在 · Page not found</h1>'
+             '<p>链接可能已变更或拼写有误。<br>This page may have moved, or the URL is misspelled.</p>'
+             '<p><a class="lk" href="index.html">← 返回首页</a> '
+             '<a class="lk" href="search.html">搜索论文</a> '
+             '<a class="lk" href="index.en.html">English</a></p></div>')
+    write('404.html', page('404', nbody))
     print('OK cards=%d confs=%d topics=%d (zh+en)' % (TOTAL, len(by_conf), len(by_topic)))
 
 
