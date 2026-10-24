@@ -113,6 +113,9 @@ I18N = {
         'innovations': '创新点', 'method': '方法框架', 'experiment': '实验框架',
         'takeaways': '可借鉴点', 'weaknesses': '缺点', 'rel_reason': '相关性判断',
         'tier_label': '档', 'conf_label': '置信度',
+        'k_problem': '问题', 'k_idea': '核心想法', 'k_how': '怎么做', 'k_setup': '实验设定',
+        'k_nums': '关键数字', 'k_limits': '局限', 'k_why': '与我的研究',
+        'verdict': '一句话结论', 'what_it_does': '这篇在做什么', 'setup_h': '实验设定',
         'paper_link': '论文页', 'code_link': '代码仓库', 'no_link': '未匹配到官方链接',
         'search_h1': '搜索', 'search_p': '在全部卡片的标题与一句话评价里检索。',
         'search_ph': '输入关键词，例如：domain generalization、WSI、reward model…',
@@ -142,6 +145,9 @@ I18N = {
         'innovations': 'Key ideas', 'method': 'Method', 'experiment': 'Experiments',
         'takeaways': 'Takeaways', 'weaknesses': 'Weaknesses', 'rel_reason': 'Relevance note',
         'tier_label': 'Tier', 'conf_label': 'confidence',
+        'k_problem': 'Problem', 'k_idea': 'Idea', 'k_how': 'How', 'k_setup': 'Setup',
+        'k_nums': 'Key numbers', 'k_limits': 'Limits', 'k_why': 'Why it matters to me',
+        'verdict': 'Verdict', 'what_it_does': 'What it does', 'setup_h': 'Setup',
         'paper_link': 'Paper', 'code_link': 'Code', 'no_link': 'No official link found',
         'search_h1': 'Search', 'search_p': 'Search titles and one-line summaries across all cards.',
         'search_ph': 'Try: domain generalization, WSI, reward model…',
@@ -231,6 +237,15 @@ def load_cards():
                 'confidence': (c.get('confidence') or '').strip(),
                 'tier': (c.get('tier') or '').strip(),
                 'rel_reason': (c.get('relevance_reason') or '').strip(),
+                'v': c.get('v') or 1,
+                'task': (c.get('task') or '').strip(),
+                'problem': (c.get('problem') or '').strip(),
+                'idea': (c.get('idea') or '').strip(),
+                'how': (c.get('how') or '').strip(),
+                'setup': (c.get('setup') or '').strip(),
+                'nums': [x for x in (c.get('nums') or []) if x],
+                'limits': (c.get('limits') or '').strip(),
+                'why_me': (c.get('why_me') or '').strip(),
                 'paper_url': (links.get(key) or {}).get('url', ''),
                 'paper_pdf': (links.get(key) or {}).get('pdf', ''),
                 'code_url': ((links.get(key) or {}).get('code') or [''])[0],
@@ -315,6 +330,19 @@ h2.sec small{font-weight:400;color:var(--muted);font-size:13px}
 .sbar-t{flex:1;height:6px;background:#f4f4f5;border-radius:3px;overflow:hidden}
 .sbar-t span{display:block;height:100%;background:var(--accent);border-radius:3px}
 .sbar-v{width:28px;flex:none;font-variant-numeric:tabular-nums;color:#52525b}
+.quick{border:1px solid var(--border);background:var(--surface);border-radius:var(--r);padding:20px 22px;margin:0 0 22px}
+.q-task{margin:0 0 16px;font-size:16.5px;line-height:1.7;font-weight:600;color:var(--text)}
+.q-row{display:flex;gap:14px;padding:9px 0;border-top:1px dashed var(--border)}
+.q-k{flex:0 0 72px;color:var(--muted);font-size:13px;padding-top:2px}
+.q-v{flex:1;font-size:14.5px;line-height:1.72}
+.q-nums,.q-lim,.q-why{margin-top:16px;border-top:1px solid var(--border);padding-top:14px}
+.q-nums h4,.q-lim h4,.q-why h4{margin:0 0 8px;font-size:13px;color:var(--muted);font-weight:600}
+.q-nums ul{margin:0;padding-left:20px}
+.q-nums li{margin:4px 0;font-size:14.5px;font-variant-numeric:tabular-nums}
+.q-lim p,.q-why p{margin:0;font-size:14.5px;line-height:1.72}
+.q-why{background:var(--accent-soft);border-radius:8px;padding:12px 14px;border:1px solid #dbeafe}
+.ol-k{display:inline-block;margin-right:10px;padding:1px 8px;border-radius:6px;background:#f4f4f5;color:var(--muted);font-size:12px;font-weight:600;vertical-align:2px}
+.blk.lead{margin-bottom:16px}
 .oneliner{font-size:16px;line-height:1.7;background:var(--accent-soft);border-left:3px solid var(--accent);padding:12px 16px;border-radius:0 8px 8px 0;margin:0 0 28px}
 section.blk{margin:0 0 26px}
 section.blk h3{font-size:14px;color:var(--muted);font-weight:600;letter-spacing:.3px;margin-bottom:8px;text-transform:uppercase}
@@ -457,17 +485,47 @@ def card_page(c):
         body.append('<div class="links">' + ''.join(lnk) + '</div>')
     else:
         body.append(f'<div class="links"><span class="lk lk-none">{esc(t("no_link"))}</span></div>')
+
+    # ---- 首屏：这篇在做什么 ----
+    is_v2 = (c.get('v') or 1) >= 2 and bool(c.get('task'))
+    if is_v2:
+        q = ['<div class="quick">', f'<p class="q-task">{esc(c["task"])}</p>']
+        rows = ''
+        for k, label in (('problem', t('k_problem')), ('idea', t('k_idea')),
+                         ('how', t('k_how')), ('setup', t('k_setup'))):
+            if c.get(k):
+                rows += (f'<div class="q-row"><span class="q-k">{esc(label)}</span>'
+                         f'<div class="q-v">{esc(c[k])}</div></div>')
+        q.append(rows)
+        if c['nums']:
+            q.append(f'<div class="q-nums"><h4>{esc(t("k_nums"))}</h4><ul>' +
+                     ''.join(f'<li>{esc(x)}</li>' for x in c['nums']) + '</ul></div>')
+        if c['limits']:
+            q.append(f'<div class="q-lim"><h4>{esc(t("k_limits"))}</h4><p>{esc(c["limits"])}</p></div>')
+        if c['why_me']:
+            q.append(f'<div class="q-why"><h4>{esc(t("k_why"))}</h4><p>{esc(c["why_me"])}</p></div>')
+        q.append('</div>')
+        body.append(''.join(q))
+    else:
+        if c['method']:
+            body.append(f'<section class="blk lead"><h3>{esc(t("what_it_does"))}</h3>'
+                        f'<p>{esc(c["method"])}</p></section>')
+        if c['experiment']:
+            body.append(f'<section class="blk lead"><h3>{esc(t("setup_h"))}</h3>'
+                        f'<p>{esc(c["experiment"])}</p></section>')
+
     body.append('<div class="scoreboard"><div class="bigscore">'
                 f'<b>{fmt(c["overall"])}</b><span>{esc(t("score_overall"))}</span></div>'
                 f'<div class="bars">{bars}</div></div>')
     if c['one_line']:
-        body.append(f'<p class="oneliner">{esc(c["one_line"])}</p>')
+        body.append(f'<p class="oneliner"><span class="ol-k">{esc(t("verdict"))}</span>'
+                    f'{esc(c["one_line"])}</p>')
     if c['innovations']:
         body.append(f'<section class="blk"><h3>{esc(t("innovations"))}</h3><ol>' +
                     ''.join(f'<li>{esc(x)}</li>' for x in c['innovations']) + '</ol></section>')
-    if c['method']:
+    if not is_v2 and c['method']:
         body.append(f'<section class="blk"><h3>{esc(t("method"))}</h3><p>{esc(c["method"])}</p></section>')
-    if c['experiment']:
+    if not is_v2 and c['experiment']:
         body.append(f'<section class="blk"><h3>{esc(t("experiment"))}</h3><p>{esc(c["experiment"])}</p></section>')
     if c['takeaways']:
         body.append(f'<section class="blk tk"><h3>{esc(t("takeaways"))}</h3><ul>' +
@@ -475,7 +533,7 @@ def card_page(c):
     if c['weaknesses']:
         body.append(f'<section class="blk wk"><h3>{esc(t("weaknesses"))}</h3><ul>' +
                     ''.join(f'<li>{esc(x)}</li>' for x in c['weaknesses']) + '</ul></section>')
-    if c['rel_reason']:
+    if c['rel_reason'] and not c['why_me']:
         body.append(f'<section class="blk"><h3>{esc(t("rel_reason"))}</h3><p>{esc(c["rel_reason"])}</p></section>')
     return page(c['title'] + ' · ' + NAMES[c['conf']], '\n'.join(body), depth=1)
 
@@ -496,7 +554,7 @@ TABLE_JS = """
       if(state.conf!=='ALL' && r.c!==state.conf) return false;
       if(!state.q) return true;
       var qq = state.q.toLowerCase();
-      return ((r.t||'')+' '+(r.o||'')).toLowerCase().indexOf(qq)>=0;
+      return ((r.t||'')+' '+(r.m||'')+' '+(r.o||'')).toLowerCase().indexOf(qq)>=0;
     });
     rows.sort(function(a,b){
       var av=num(a[state.key]), bv=num(b[state.key]);
@@ -514,7 +572,7 @@ TABLE_JS = """
     for(var i=start;i<end;i++){
       var r=rows[i];
       h+='<tr><td class="n">'+(i+1)+'</td><td><a href="'+PRE+r.c+'/'+r.u+'.html">'+esc(r.t)+'</a>'+
-         (r.o?'<div style="color:#a1a1aa;font-size:12px;margin-top:2px">'+esc(r.o)+'</div>':'')+
+         ((r.m||r.o)?'<div style="color:#a1a1aa;font-size:12px;margin-top:2px">'+esc(r.m||r.o)+'</div>':'')+
          '</td><td class="n">'+f(r.s)+'</td><td class="n">'+f(r.r)+'</td><td class="n">'+f(r.n)+
          '</td><td class="n">'+f(r.d)+'</td><td class="n">'+f(r.e)+'</td><td class="n">'+esc(r.k||'')+'</td></tr>';
     }
@@ -556,8 +614,11 @@ TABLE_JS = """
 def make_list_page(title, subtitle, cards, depth, crumb_html, conf_filter=None, data_name=None):
     """通用卡片列表页（带筛选/排序/分页）；数据外置为 JSON，避免每页内嵌上万条"""
     suffix = '.en' if LANG == 'en' else ''
+    def _snip(c):
+        txt = c.get('task') or c.get('method') or c.get('one_line') or ''
+        return txt[:90] + ('…' if len(txt) > 90 else '')
     rows = [{
-        't': c['title'], 'o': c['one_line'], 's': c['overall'], 'r': c['relevance'],
+        't': c['title'], 'o': c['one_line'], 'm': _snip(c), 's': c['overall'], 'r': c['relevance'],
         'n': c['novelty'], 'd': c['depth'], 'e': c['evidence'],
         'k': c['tier'], 'c': c['conf'], 'u': c['slug'] + suffix,
     } for c in cards]

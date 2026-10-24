@@ -1,0 +1,50 @@
+{
+ "key": "cvpr2026/Thinking in Uncertainty_Mitigating Hallucinations in MLRMs with Latent Entropy-Aware Decoding.pdf",
+ "conf": "cvpr2026",
+ "path": "cvpr2026/Thinking in Uncertainty_Mitigating Hallucinations in MLRMs with Latent Entropy-Aware Decoding.pdf",
+ "title": "Thinking in Uncertainty: Mitigating Hallucinations in MLRMs with Latent Entropy-Aware Decoding",
+ "v": 2,
+ "task": "多模态推理模型（MLRM）看图做长链推理时，让它在关键处别胡说——不用训练、只改解码。",
+ "problem": "MLRM 的长思考链里，幻觉集中出现在 because / however / wait 这类转折词之后。作者查证：这些词恰好是 token 熵最高的位置，模型此时对图像的注意力反而最低。现有做法要么加视觉奖励重训、要么做对比解码，前者贵，后者没有针对「推理模型什么时候最不确定」做区分。",
+ "idea": "把「熵」当成一个开关：熵高（模型拿不准）时，不硬选一个 token，而是把整个概率分布加权成连续向量喂回去，让多条推理路径并行存在；熵降下来再切回正常离散 token 收敛。同时在高熵段注入视觉锚向量，把注意力拉回图像。",
+ "how": "① 逐 token 算熵 H_t，用动态阈值判定高低熵；高熵段用 p_t 对全词表 embedding 加权求和，替换 one-hot 输入（即 superposed representation）；② 低熵段切回离散 embedding，两次切换之间强制至少停留一个窗口（最佳 128 token），切换次数上限 C_max=5；③ 高熵时把预训练视觉特征做成的 guidance vector 以强度 λ 注入，λ 过大会压制语言上下文（最佳 0.4）。整体是 plug-and-play，不训练、不改权重。",
+ "setup": "5 个 7B 级 MLRM 作基座（R1-Onevision / Vision-R1 / VL-Rethinker / VL-Cogito / OpenVLThinker）；通用基准 VStar·RealWorldQA·MMVP·MMEval-Pro·VMCBench，幻觉基准 MMHalu·Bingo·POPE，另加数学与科学两个垂直域，并用 GPT-5 评文本自然度。",
+ "nums": [
+  "R1-Onevision-7B：通用理解平均 +3.6%，MMHalu 3.52→3.80（+4.7%），Bingo +3.8%",
+  "同基座：数学基准 +2.0%、科学基准 +3.2%；5 个 7B 模型上均有一致提升",
+  "视觉锚强度 λ=0.4 最佳：VStar 67.5→71.2，MMHalu 3.59→3.80；λ=0.6 开始回落",
+  "动态熵阈值优于固定阈值：MMHalu 上 R1-Onevision +4.7%、Vision-R1 +4.1%"
+ ],
+ "limits": "① 只在 7B 级、且都是 RL 训出来的推理模型上验证，非推理型 MLLM（如 LLaVA 系）是否同样成立没测；② 熵阈值是动态的，但文中没给阈值怎么随模型/任务自适应，换模型要重扫一组超参（Fig.5 逐个阈值扫描）；③ 「高熵段注入视觉」只验证了效果，没有直接证据表明幻觉减少就是注意力真的回到图像（Fig.3d 是相关性统计）；④ 全部结果都是 decoding-time 方法，未与「轻量微调」路线比性价比。",
+ "why_me": "与 BETC 同属多模态可靠性：它从解码端用不确定性决定何时回头看图，BETC 从证据一致性建模，可互为 baseline。",
+ "innovations": [
+  "把「转折词—高熵—幻觉」三者对上，且用 token masking 证明高熵 token 是承重节点（mask 掉性能掉得最多，且越靠前影响越大）",
+  "高熵段用全词表加权 embedding 替代 one-hot，实现无训练的多假设并行，且用切换窗口 + 次数上限避免退化",
+  "视觉锚注入强度 λ 有明确的最优区间，过高会压掉语言上下文"
+ ],
+ "takeaways": [
+  "「先用统计证据定位失效位置（转折词/高熵），再设计机制」的写法：Fig.1 共现统计 → Fig.2 熵可视化 → Fig.3 masking 因果验证，三段递进把一个直觉变成可检验假设",
+  "无训练方法的卖点必须同时给「精度不降」的证据（PPL + GPT-5 评自然度/流畅度/语法），否则容易被质疑拿输出质量换指标",
+  "超参敏感性单独出图（阈值、窗口、λ 各一张），比塞进 appendix 更有说服力"
+ ],
+ "weaknesses": [
+  "缺与非推理型 MLLM 的验证，泛化边界不清",
+  "阈值策略是动态的但未给自适应规则，实际部署需逐模型扫参",
+  "视觉注意力提升与幻觉下降之间只有相关性证据，没有干预实验"
+ ],
+ "scores": {
+  "novelty": 7.0,
+  "depth": 7.5,
+  "evidence": 7.0,
+  "relevance": 8.5,
+  "overall": 7.5
+ },
+ "one_line": "用 token 熵当开关：高熵时切连续 embedding 保留多假设，并把注意力拉回图像，免训练降低多模态推理幻觉",
+ "confidence": "high",
+ "tier": "A",
+ "relevance_reason": "解码端不确定性 + 视觉 grounding，与 BETC 的多模态可靠性与证据一致性直接同赛道",
+ "raw_overall": 6.0,
+ "raw_relevance": 8.0,
+ "model": "manual-v2-demo",
+ "source_pdf": "https://openaccess.thecvf.com/content/CVPR2026/papers/Xu_Thinking_in_Uncertainty_Mitigating_Hallucinations_in_MLRMs_with_Latent_Entropy-Aware_CVPR_2026_paper.pdf"
+}
